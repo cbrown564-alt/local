@@ -5,15 +5,19 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 20 July 2026 · 16 businesses verified · 10 shortlisted
+Snapshot: 20 July 2026 · 16 businesses verified · 10 shortlisted · 1 concept
+published
 
 ## Pipeline stages
 
 Every prospect moves through: **Shortlisted → Concept in progress → Concept
 published → Contacted → Mock-up requested → Client**. A prospect can also be
 **Assessed – not shortlisted** (kept for the knowledge, revisited on refresh).
-Record every stage change in `research/verifications.json` and re-run the
-normaliser.
+Record every stage change in the `stage` field of `research/verifications.json`
+(plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
+prospects with no explicit stage default to Shortlisted.
+
+Current stages: 1 concept published, 9 shortlisted, 6 assessed.
 
 Rules of the road:
 
@@ -27,7 +31,7 @@ Rules of the road:
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| Hotel Enniskeen | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
+| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
 | Mourne Cycles | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | Donard Veterinary Centre | Newcastle | Listed domain dead; real site is a 2017 Divi build, no booking | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
@@ -62,6 +66,44 @@ accommodation runner-up). Details and evidence in
 - Same-name collisions to keep out of concept content: Tool Centre
   (Newcastle-upon-Tyne shops), Kent Amusements (Dundalk), South Downs Signs
   (England), Newcastle Chamber of Commerce (at least eight worldwide).
+
+## Building a concept
+
+Established while building Enniskeen (20 July 2026); reuse rather than
+reinvent:
+
+1. **Read the business's own site first.** Its published words are the best
+   copy source and keep the concept honest. Enniskeen's "mountainside
+   hideaway", Shimna Valley, the twelve acres, Mourne Honey afternoon tea and
+   the Brandy Pad Lounge are all the hotel's own language — the concept
+   reorders what the business already says rather than inventing a new voice.
+2. **Use the business's own photography** where the site publishes usable
+   images, and credit the source on the transformation page. Enniskeen's
+   balcony and terrace photographs are genuinely good; the problem was the
+   frame around them, which is a fairer and more flattering critique than
+   replacing their imagery with stock.
+3. **Keep the existing plumbing.** Point concept actions at whatever the
+   business already pays for (here, the Bookin1 engine and voucher shop) so
+   the proposal reads as an upgrade, not a rebuild that throws away spend.
+4. **Give each concept its own visual identity**, in a separate stylesheet
+   (`src/styles/concept-<slug>.css`) scoped by a body class. Concepts must not
+   look like Mourne & Main or like each other — Castle Farm is warm cream and
+   farm green with Georgia; Enniskeen is deep pine, honey brass and Cormorant
+   Garamond.
+5. **Capture both screens the same way** with
+   `node scripts/capture-concept-screens.mjs <slug>` (needs `pnpm build &&
+   pnpm preview` running). It shoots the live site and the local concept at
+   an identical 1265×710 at 2x through system Chrome, then compresses to JPEG.
+   Leave cookie banners and consent prompts visible: that is what a first-time
+   visitor meets, and hiding them would flatter the comparison. But if the
+   site runs a hero carousel, tune `currentBudgetMs` so the capture is stable
+   across runs and lands on the first slide — Enniskeen's default budget drifted
+   onto an arbitrary later slide with a parasol across the frame, which would
+   have shown the business at a bad moment rather than at its own chosen best.
+   Always look at the captured "current" image before publishing.
+6. **Write the three design notes as observation → change**, naming what is
+   on the captured page without mocking it, and register the new slug in the
+   `CONCEPTS` map in the capture script.
 
 ## The repeatable cycle
 
