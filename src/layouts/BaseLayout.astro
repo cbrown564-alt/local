@@ -1,0 +1,46 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  class?: string;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+  robots?: string;
+}
+
+const {
+  title,
+  description,
+  class: bodyClass = "",
+  hideHeader = false,
+  hideFooter = false,
+  robots,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {!hideHeader && <Header />}
+    <main id="main">
+      <slot />
+    </main>
+    {!hideFooter && <Footer />}
+  </body>
+</html>

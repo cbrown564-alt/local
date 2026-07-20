@@ -1,0 +1,547 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import businesses from "../../data/businesses.json";
+import "../../styles/opportunities.css";
+
+const categories = [...new Set(businesses.map((business) => business.category))].sort();
+const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
+---
+
+<BaseLayout
+  title="Opportunities · Mourne & Main"
+  description="Internal prospecting and research workspace for Dundrum and Newcastle business opportunities."
+  class="opportunities-body"
+  hideHeader
+  hideFooter
+  robots="noindex, nofollow"
+>
+  <section class="opportunities" data-opportunities>
+    <header class="op-topbar">
+      <a class="op-brand" href="/" aria-label="Mourne and Main home">
+        <span>Mourne <b>&amp;</b> Main</span>
+        <small>Internal research</small>
+      </a>
+      <nav class="op-nav" aria-label="Opportunity workspace">
+        <a href="/opportunities/" aria-current="page">Opportunities</a>
+        <button type="button" class="op-shortlist-nav" data-shortlist-filter>
+          Shortlist <span data-shortlist-count>0</span>
+        </button>
+      </nav>
+      <p class="op-snapshot"><strong>381 records</strong><span>Snapshot · 17 July 2026</span></p>
+    </header>
+
+    <div class="op-filterbar" id="opportunity-filters" aria-label="Filter opportunities">
+      <label class="op-search">
+        <span class="op-visually-hidden">Search businesses</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+        <input type="search" data-filter="search" placeholder="Search businesses" autocomplete="off" />
+      </label>
+      <label>
+        <span>Town</span>
+        <select data-filter="town">
+          <option value="">All towns</option>
+          <option value="Dundrum">Dundrum</option>
+          <option value="Newcastle">Newcastle</option>
+        </select>
+      </label>
+      <label>
+        <span>Category</span>
+        <select data-filter="category">
+          <option value="">All categories</option>
+          {categories.map((category) => <option value={category}>{category}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Website</span>
+        <select data-filter="website">
+          <option value="">Any status</option>
+          <option value="missing">No website found</option>
+          <option value="social">Social page only</option>
+          <option value="owned">Owned website found</option>
+        </select>
+      </label>
+      <label>
+        <span>Maps</span>
+        <select data-filter="maps">
+          <option value="">Any status</option>
+          <option value="unverified">Needs verification</option>
+          <option value="verified">Direct listing found</option>
+        </select>
+      </label>
+      <label>
+        <span>Sort</span>
+        <select data-filter="sort">
+          <option value="priority">Priority (high)</option>
+          <option value="name">Business: A–Z</option>
+          <option value="town">Town, then business</option>
+        </select>
+      </label>
+      <button class="op-clear" type="button" data-clear-filters>Clear filters</button>
+    </div>
+
+    <div class="op-workspace">
+      <section class="op-results" aria-labelledby="results-heading">
+        <div class="op-results-heading">
+          <div>
+            <h1 id="results-heading">Opportunities</h1>
+            <p data-results-summary aria-live="polite">381 records</p>
+          </div>
+          <button class="op-filter-toggle" type="button" data-filter-toggle aria-expanded="false" aria-controls="opportunity-filters">Filters</button>
+        </div>
+
+        <div class="op-table-wrap">
+          <table class="op-table">
+            <thead>
+              <tr>
+                <th scope="col">Business</th>
+                <th scope="col">Town</th>
+                <th scope="col">Category</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Gaps</th>
+              </tr>
+            </thead>
+            <tbody data-results-body></tbody>
+          </table>
+          <div class="op-empty" data-empty hidden>
+            <h2>No prospects match these filters</h2>
+            <p>Clear the filters or broaden the search to see more businesses.</p>
+            <button type="button" class="op-button-secondary" data-clear-filters>Clear filters</button>
+          </div>
+        </div>
+
+        <nav class="op-pagination" aria-label="Opportunity results pages">
+          <button type="button" data-page="previous">Previous</button>
+          <span data-page-status>Page 1</span>
+          <button type="button" data-page="next">Next</button>
+        </nav>
+      </section>
+
+      <article class="op-detail" aria-labelledby="detail-name" tabindex="-1">
+        <button class="op-back" type="button" data-back-results>
+          <span aria-hidden="true">←</span> Back to results
+        </button>
+
+        <header class="op-detail-header">
+          <div>
+            <p data-detail-position>Rank 1 of 381</p>
+            <h2 id="detail-name" data-detail="name">Arley Guest House</h2>
+            <p><span data-detail="town">Dundrum</span><span aria-hidden="true"> · </span><span data-detail="category">Accommodation</span></p>
+          </div>
+          <div class="op-priority">
+            <span>Priority</span>
+            <strong data-detail="priority">81</strong>
+          </div>
+          <button type="button" class="op-shortlist-button" data-shortlist-toggle aria-pressed="false">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg>
+            <span>Add to shortlist</span>
+          </button>
+        </header>
+
+        <div class="op-detail-scroll">
+          <section class="op-detail-section" aria-labelledby="facts-heading">
+            <h3 id="facts-heading">What we know</h3>
+            <dl class="op-facts">
+              <div><dt>Website</dt><dd data-detail="website"></dd></div>
+              <div><dt>Maps</dt><dd data-detail="maps"></dd></div>
+              <div><dt>Contact</dt><dd data-detail="contact"></dd></div>
+              <div><dt>Location</dt><dd data-detail="location"></dd></div>
+            </dl>
+          </section>
+
+          <section class="op-detail-section" aria-labelledby="evidence-heading">
+            <h3 id="evidence-heading">Evidence</h3>
+            <div class="op-evidence-grid">
+              <div>
+                <p class="op-field-label">Discovery sources</p>
+                <ul class="op-source-list" data-detail="sources"></ul>
+              </div>
+              <dl class="op-evidence-meta">
+                <div><dt>Source date</dt><dd data-detail="date"></dd></div>
+                <div><dt>Confidence</dt><dd data-detail="confidence"></dd></div>
+              </dl>
+            </div>
+            <p class="op-caution"><span aria-hidden="true">!</span> Blank means not found in reviewed sources, not that it does not exist.</p>
+          </section>
+
+          <section class="op-detail-section op-next" aria-labelledby="next-heading">
+            <div class="op-next-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 4.5 4.5"></path></svg>
+            </div>
+            <div>
+              <h3 id="next-heading">Verify next</h3>
+              <h4 data-detail="action-title"></h4>
+              <p data-detail="action-copy"></p>
+              <div class="op-source-actions">
+                <a data-link="search" target="_blank" rel="noreferrer">Search Google <span aria-hidden="true">↗</span></a>
+                <a data-link="maps" target="_blank" rel="noreferrer">Open Maps <span aria-hidden="true">↗</span></a>
+                <a data-link="source" target="_blank" rel="noreferrer">Open first source <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="op-detail-section op-research" aria-labelledby="research-heading">
+            <div>
+              <label for="research-note" id="research-heading">Research note</label>
+              <textarea id="research-note" data-research-note rows="3" placeholder="Add a private note about what to verify or offer"></textarea>
+              <p class="op-save-state" data-save-state aria-live="polite">Saved locally in this browser.</p>
+            </div>
+            <label>
+              <span>Research status</span>
+              <select data-research-status>
+                <option>Not reviewed</option>
+                <option>Researching</option>
+                <option>Needs follow-up</option>
+                <option>Verified</option>
+              </select>
+            </label>
+          </section>
+        </div>
+
+        <footer class="op-actionbar">
+          <p><strong data-selected-label>1 selected</strong><span data-selected-reason>Weak or missing owned digital/contact assets</span></p>
+          <button type="button" class="op-button-secondary op-action-shortlist" data-shortlist-toggle>Add to shortlist</button>
+          <a class="op-verify-button" data-link="verify" target="_blank" rel="noreferrer">Verify next <span aria-hidden="true">→</span></a>
+        </footer>
+      </article>
+    </div>
+  </section>
+
+  <script id="opportunity-data" type="application/json" is:inline set:html={dataJson}></script>
+
+  <script>
+    type Business = {
+      id: string;
+      name: string;
+      town: string;
+      category: string;
+      subcategory: string;
+      address: string;
+      postcode: string;
+      phone: string;
+      email: string;
+      website: string;
+      facebook: string;
+      instagram: string;
+      googleMapsUrl: string;
+      googleMapsVerified: boolean;
+      lat: number | null;
+      lon: number | null;
+      websiteStatus: string;
+      discoverySources: string[];
+      sourceUrls: string[];
+      sourceAsOf: string;
+      dataConfidence: string;
+      googleSearchUrl: string;
+      priorityScore: number;
+      priorityReason: string;
+    };
+
+    type ResearchState = { note?: string; status?: string };
+
+    const rootNode = document.querySelector<HTMLElement>("[data-opportunities]");
+    const dataNodeCandidate = document.querySelector<HTMLScriptElement>("#opportunity-data");
+    if (!rootNode || !dataNodeCandidate) throw new Error("Opportunity workspace could not start.");
+    const root = rootNode;
+    const dataNode = dataNodeCandidate;
+
+    const businesses = JSON.parse(dataNode.textContent || "[]") as Business[];
+    const pageSize = 25;
+    let currentPage = 1;
+    let selectedId = new URLSearchParams(window.location.search).get("business") || businesses[0]?.id;
+    let shortlist = new Set<string>(readStorage("mourne-main-shortlist", []));
+    let research = readStorage<Record<string, ResearchState>>("mourne-main-research", {});
+    let shortlistOnly = false;
+
+    const filters = {
+      search: root.querySelector<HTMLInputElement>('[data-filter="search"]'),
+      town: root.querySelector<HTMLSelectElement>('[data-filter="town"]'),
+      category: root.querySelector<HTMLSelectElement>('[data-filter="category"]'),
+      website: root.querySelector<HTMLSelectElement>('[data-filter="website"]'),
+      maps: root.querySelector<HTMLSelectElement>('[data-filter="maps"]'),
+      sort: root.querySelector<HTMLSelectElement>('[data-filter="sort"]'),
+    };
+
+    function readStorage<T>(key: string, fallback: T): T {
+      try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function writeStorage(key: string, value: unknown) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Local persistence is optional. */ }
+    }
+
+    function escapeHtml(value: unknown) {
+      return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;",
+      })[character] || character);
+    }
+
+    function filteredBusinesses() {
+      const search = filters.search?.value.trim().toLocaleLowerCase("en-GB") || "";
+      const town = filters.town?.value || "";
+      const category = filters.category?.value || "";
+      const website = filters.website?.value || "";
+      const maps = filters.maps?.value || "";
+      const sort = filters.sort?.value || "priority";
+
+      const rows = businesses.filter((business) => {
+        const haystack = [business.name, business.town, business.category, business.subcategory, business.address, business.postcode]
+          .join(" ").toLocaleLowerCase("en-GB");
+        if (search && !haystack.includes(search)) return false;
+        if (town && business.town !== town) return false;
+        if (category && business.category !== category) return false;
+        if (website === "missing" && business.websiteStatus !== "No website found") return false;
+        if (website === "social" && business.websiteStatus !== "Social page only") return false;
+        if (website === "owned" && !["HTTP website", "HTTPS website"].includes(business.websiteStatus)) return false;
+        if (maps === "verified" && !business.googleMapsVerified) return false;
+        if (maps === "unverified" && business.googleMapsVerified) return false;
+        if (shortlistOnly && !shortlist.has(business.id)) return false;
+        return true;
+      });
+
+      return rows.sort((a, b) => {
+        if (sort === "name") return a.name.localeCompare(b.name, "en-GB");
+        if (sort === "town") return a.town.localeCompare(b.town, "en-GB") || a.name.localeCompare(b.name, "en-GB");
+        return b.priorityScore - a.priorityScore || a.name.localeCompare(b.name, "en-GB");
+      });
+    }
+
+    function gapLabels(business: Business) {
+      const gaps = [];
+      if (business.websiteStatus === "No website found") gaps.push(["Web", "No website found"]);
+      if (!business.googleMapsVerified) gaps.push(["Maps", "Maps listing needs verification"]);
+      if (!business.phone && !business.email) gaps.push(["Contact", "No contact found in reviewed sources"]);
+      return gaps;
+    }
+
+    function renderResults() {
+      const rows = filteredBusinesses();
+      const pages = Math.max(1, Math.ceil(rows.length / pageSize));
+      currentPage = Math.min(currentPage, pages);
+      const start = (currentPage - 1) * pageSize;
+      const visible = rows.slice(start, start + pageSize);
+      const body = root.querySelector<HTMLTableSectionElement>("[data-results-body]");
+      const empty = root.querySelector<HTMLElement>("[data-empty]");
+      if (!body || !empty) return;
+
+      body.innerHTML = visible.map((business) => {
+        const gaps = gapLabels(business);
+        return `<tr class="${business.id === selectedId ? "is-selected" : ""}" data-business-row="${escapeHtml(business.id)}">
+          <td><button type="button" class="op-row-select" data-select-business="${escapeHtml(business.id)}" ${business.id === selectedId ? 'aria-current="true"' : ""}><strong>${escapeHtml(business.name)}</strong><span>${escapeHtml(business.address || business.subcategory || "Public listing")}</span></button></td>
+          <td>${escapeHtml(business.town)}</td>
+          <td>${escapeHtml(business.category)}</td>
+          <td class="op-score">${business.priorityScore}</td>
+          <td><div class="op-gaps">${gaps.length ? gaps.map(([label, title]) => `<span title="${escapeHtml(title)}">${escapeHtml(label)}</span>`).join("") : '<span class="is-clear">Clear</span>'}</div></td>
+        </tr>`;
+      }).join("");
+
+      empty.hidden = rows.length !== 0;
+      root.querySelector<HTMLElement>(".op-table")?.toggleAttribute("hidden", rows.length === 0);
+      const summary = root.querySelector<HTMLElement>("[data-results-summary]");
+      if (summary) summary.textContent = rows.length === businesses.length
+        ? `${rows.length} records`
+        : `${rows.length} of ${businesses.length} records`;
+      const pageStatus = root.querySelector<HTMLElement>("[data-page-status]");
+      if (pageStatus) pageStatus.textContent = `Page ${currentPage} of ${pages}`;
+      root.querySelector<HTMLButtonElement>('[data-page="previous"]')!.disabled = currentPage === 1;
+      root.querySelector<HTMLButtonElement>('[data-page="next"]')!.disabled = currentPage === pages;
+      root.querySelector<HTMLElement>(".op-pagination")!.hidden = rows.length === 0;
+      updateShortlistCounts();
+    }
+
+    function valueOrMissing(value: string, missing: string) {
+      return value ? escapeHtml(value) : `<span class="op-unresolved">${escapeHtml(missing)}</span>`;
+    }
+
+    function recommendedAction(business: Business) {
+      if (business.websiteStatus === "No website found") return {
+        title: "Search for an official site or active social page",
+        copy: "Confirm current trading and whether the business controls an active digital presence.",
+        url: business.googleSearchUrl,
+      };
+      if (!business.googleMapsVerified) return {
+        title: "Confirm the direct Google Maps listing",
+        copy: "Open Maps and verify that the listing belongs to this business before using its details.",
+        url: business.googleMapsUrl,
+      };
+      if (!business.phone && !business.email) return {
+        title: "Find a current contact route",
+        copy: "Check the official website and public listing for a suitable business contact.",
+        url: business.website || business.googleSearchUrl,
+      };
+      return {
+        title: "Review the current digital presentation",
+        copy: "Check the owned website and public listing for a concrete, respectful transformation opportunity.",
+        url: business.website || business.googleMapsUrl,
+      };
+    }
+
+    function setLink(name: string, url: string | undefined) {
+      const link = root.querySelector<HTMLAnchorElement>(`[data-link="${name}"]`);
+      if (!link) return;
+      link.hidden = !url;
+      if (url) link.href = url;
+    }
+
+    function renderDetail() {
+      const business = businesses.find((item) => item.id === selectedId) || businesses[0];
+      if (!business) return;
+      selectedId = business.id;
+      const setText = (name: string, value: string | number) => {
+        const node = root.querySelector<HTMLElement>(`[data-detail="${name}"]`);
+        if (node) node.textContent = String(value);
+      };
+      setText("name", business.name);
+      setText("town", business.town);
+      setText("category", business.category);
+      setText("priority", business.priorityScore);
+      setText("date", new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${business.sourceAsOf}T12:00:00`)));
+      setText("confidence", business.dataConfidence);
+
+      const position = root.querySelector<HTMLElement>("[data-detail-position]");
+      if (position) position.textContent = `Rank ${businesses.indexOf(business) + 1} of ${businesses.length}`;
+      const website = root.querySelector<HTMLElement>('[data-detail="website"]');
+      if (website) website.innerHTML = business.website
+        ? `<a href="${escapeHtml(business.website)}" target="_blank" rel="noreferrer">${escapeHtml(business.websiteStatus)} <span aria-hidden="true">↗</span></a>`
+        : valueOrMissing("", "No website found");
+      const maps = root.querySelector<HTMLElement>('[data-detail="maps"]');
+      if (maps) maps.innerHTML = business.googleMapsVerified
+        ? `<a href="${escapeHtml(business.googleMapsUrl)}" target="_blank" rel="noreferrer">Direct listing found <span aria-hidden="true">↗</span></a>`
+        : '<span class="op-unresolved">Not directly verified</span>';
+      const contacts = [business.phone, business.email].filter(Boolean);
+      const contact = root.querySelector<HTMLElement>('[data-detail="contact"]');
+      if (contact) contact.innerHTML = contacts.length
+        ? contacts.map((item) => escapeHtml(item)).join("<br>")
+        : valueOrMissing("", "Not found in reviewed sources");
+      const location = root.querySelector<HTMLElement>('[data-detail="location"]');
+      if (location) location.innerHTML = business.address
+        ? escapeHtml(business.address)
+        : business.lat != null && business.lon != null
+          ? `Coordinates available · ${business.lat.toFixed(5)}, ${business.lon.toFixed(5)}`
+          : valueOrMissing("", "Location details unavailable");
+
+      const sourceList = root.querySelector<HTMLElement>('[data-detail="sources"]');
+      if (sourceList) sourceList.innerHTML = business.sourceUrls.length
+        ? business.sourceUrls.slice(0, 3).map((url, index) => `<li><a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(business.discoverySources[index] || `Source ${index + 1}`)} <span aria-hidden="true">↗</span></a></li>`).join("")
+        : "<li>No record-level source URL is available.</li>";
+
+      const action = recommendedAction(business);
+      setText("action-title", action.title);
+      setText("action-copy", action.copy);
+      setLink("search", business.googleSearchUrl);
+      setLink("maps", business.googleMapsUrl);
+      setLink("source", business.sourceUrls[0]);
+      setLink("verify", action.url);
+
+      const reason = root.querySelector<HTMLElement>("[data-selected-reason]");
+      if (reason) reason.textContent = business.priorityReason;
+      const saved = research[business.id] || {};
+      const note = root.querySelector<HTMLTextAreaElement>("[data-research-note]");
+      const status = root.querySelector<HTMLSelectElement>("[data-research-status]");
+      if (note) note.value = saved.note || "";
+      if (status) status.value = saved.status || "Not reviewed";
+      updateShortlistButtons(business);
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("business", business.id);
+      history.replaceState(null, "", url);
+    }
+
+    function updateShortlistCounts() {
+      root.querySelectorAll<HTMLElement>("[data-shortlist-count]").forEach((node) => node.textContent = String(shortlist.size));
+      root.querySelector<HTMLElement>("[data-shortlist-filter]")?.classList.toggle("is-active", shortlistOnly);
+    }
+
+    function updateShortlistButtons(business: Business) {
+      const isShortlisted = shortlist.has(business.id);
+      root.querySelectorAll<HTMLButtonElement>("[data-shortlist-toggle]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(isShortlisted));
+        const text = button.querySelector("span") || button;
+        text.textContent = isShortlisted ? "Remove from shortlist" : "Add to shortlist";
+      });
+    }
+
+    function selectBusiness(id: string, showDetail = false) {
+      selectedId = id;
+      renderResults();
+      renderDetail();
+      if (showDetail && window.matchMedia("(max-width: 819px)").matches) {
+        root.dataset.mobileView = "detail";
+        root.querySelector<HTMLElement>(".op-detail")?.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    function clearFilters() {
+      Object.values(filters).forEach((control) => { if (control) control.value = control === filters.sort ? "priority" : ""; });
+      shortlistOnly = false;
+      currentPage = 1;
+      renderResults();
+    }
+
+    Object.values(filters).forEach((control) => control?.addEventListener("input", () => {
+      currentPage = 1;
+      renderResults();
+    }));
+
+    root.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      const select = target.closest<HTMLElement>("[data-select-business]");
+      if (select?.dataset.selectBusiness) selectBusiness(select.dataset.selectBusiness, true);
+      if (target.closest("[data-clear-filters]")) clearFilters();
+      if (target.closest("[data-shortlist-filter]")) {
+        shortlistOnly = !shortlistOnly;
+        currentPage = 1;
+        renderResults();
+      }
+      if (target.closest("[data-shortlist-toggle]")) {
+        if (shortlist.has(selectedId)) shortlist.delete(selectedId); else shortlist.add(selectedId);
+        writeStorage("mourne-main-shortlist", [...shortlist]);
+        renderResults();
+        const business = businesses.find((item) => item.id === selectedId);
+        if (business) updateShortlistButtons(business);
+      }
+      const page = target.closest<HTMLElement>("[data-page]")?.dataset.page;
+      if (page) {
+        currentPage += page === "next" ? 1 : -1;
+        renderResults();
+        root.querySelector<HTMLElement>(".op-results-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      if (target.closest("[data-back-results]")) {
+        root.dataset.mobileView = "results";
+        root.querySelector<HTMLButtonElement>(`[data-select-business="${CSS.escape(selectedId)}"]`)?.focus();
+      }
+      if (target.closest("[data-filter-toggle]")) {
+        const button = root.querySelector<HTMLButtonElement>("[data-filter-toggle]");
+        const panel = root.querySelector<HTMLElement>("#opportunity-filters");
+        if (button && panel) {
+          const open = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", String(!open));
+          panel.classList.toggle("is-mobile-open", !open);
+        }
+      }
+    });
+
+    root.querySelector<HTMLTextAreaElement>("[data-research-note]")?.addEventListener("input", (event) => {
+      research[selectedId] = { ...research[selectedId], note: (event.target as HTMLTextAreaElement).value };
+      writeStorage("mourne-main-research", research);
+      const state = root.querySelector<HTMLElement>("[data-save-state]");
+      if (state) state.textContent = "Note saved locally.";
+    });
+
+    root.querySelector<HTMLSelectElement>("[data-research-status]")?.addEventListener("change", (event) => {
+      research[selectedId] = { ...research[selectedId], status: (event.target as HTMLSelectElement).value };
+      writeStorage("mourne-main-research", research);
+      const state = root.querySelector<HTMLElement>("[data-save-state]");
+      if (state) state.textContent = "Status saved locally.";
+    });
+
+    root.dataset.mobileView = "results";
+    renderResults();
+    renderDetail();
+  </script>
+</BaseLayout>

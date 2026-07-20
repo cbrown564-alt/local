@@ -1,0 +1,60 @@
+---
+interface Props {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+}
+const { before, after, beforeAlt, afterAlt } = Astro.props;
+---
+
+<section class="comparison" data-comparison>
+  <div class="comparison-frame">
+    <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" />
+    <div class="comparison-after" data-after>
+      <img src={after} alt={afterAlt} width="1265" height="710" />
+    </div>
+    <div class="comparison-divider" data-divider aria-hidden="true">
+      <span><span aria-hidden="true">←</span><span aria-hidden="true">→</span></span>
+    </div>
+    <span class="comparison-label comparison-label-before">Current</span>
+    <span class="comparison-label comparison-label-after">Concept</span>
+    <div class="note-layer" data-note-layer hidden aria-hidden="true">
+      <span class="note-pin note-pin-1">1</span>
+      <span class="note-pin note-pin-2">2</span>
+      <span class="note-pin note-pin-3">3</span>
+    </div>
+  </div>
+  <label class="comparison-control">
+    <span>Drag to compare</span>
+    <input type="range" min="8" max="92" value="50" aria-label="Reveal more or less of the concept design" />
+  </label>
+  <button class="notes-toggle" type="button" aria-pressed="false">
+    <span class="notes-icon" aria-hidden="true">+</span>
+    Show the design notes
+  </button>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-comparison]").forEach((comparison) => {
+    const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
+    const after = comparison.querySelector<HTMLElement>("[data-after]");
+    const divider = comparison.querySelector<HTMLElement>("[data-divider]");
+    const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
+    const layer = comparison.querySelector<HTMLElement>("[data-note-layer]");
+    const update = () => {
+      const value = input?.value ?? "50";
+      if (after) after.style.clipPath = `inset(0 0 0 ${value}%)`;
+      if (divider) divider.style.left = `${value}%`;
+    };
+    input?.addEventListener("input", update);
+    update();
+    toggle?.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-pressed") === "true";
+      toggle.setAttribute("aria-pressed", String(!isOpen));
+      toggle.innerHTML = `<span class="notes-icon" aria-hidden="true">${isOpen ? "+" : "−"}</span>${isOpen ? "Show" : "Hide"} the design notes`;
+      if (layer) layer.hidden = isOpen;
+      document.querySelector("#design-notes")?.classList.toggle("notes-active", !isOpen);
+    });
+  });
+</script>

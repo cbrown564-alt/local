@@ -1,0 +1,33 @@
+---
+const pathname = Astro.url.pathname;
+const nav = [
+  { href: "/transformations/", label: "Transformations" },
+  { href: "/about/", label: "Why local" },
+  { href: "/request/", label: "Request a mock-up" },
+];
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Mourne and Main home">
+    <span>Mourne</span><span class="wordmark-amp">&amp;</span><span>Main</span>
+  </a>
+  <nav aria-label="Primary navigation">
+    {nav.map((item) => (
+      <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
+    ))}
+  </nav>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".menu-button");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+  button?.addEventListener("click", () => {
+    const open = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!open));
+    if (menu) menu.hidden = open;
+  });
+</script>
