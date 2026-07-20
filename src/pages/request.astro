@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArrowIcon from "../components/ArrowIcon.astro";
+---
+
+<BaseLayout title="Request a free before-and-after — Mourne & Main" description="Request a free, no-obligation website or digital-content mock-up for a local business or organisation.">
+  <section class="shell request-layout">
+    <div class="request-copy">
+      <p class="eyebrow">Free first look</p>
+      <h1>What would you like to see differently?</h1>
+      <p>Share the current link and the part that matters most. We will choose one useful screen or piece of content and show a clearer direction.</p>
+      <p><strong>No obligation.</strong> No full redesign hiding behind a sales call. Just a focused before-and-after to start the conversation.</p>
+    </div>
+    <form class="request-form" novalidate>
+      <div class="form-error" role="alert" aria-live="assertive"></div>
+      <div class="form-success" role="status" aria-live="polite"></div>
+      <div class="field-grid">
+        <div class="field"><label for="business">Business or organisation</label><input id="business" name="business" autocomplete="organization" required /></div>
+        <div class="field"><label for="town">Town</label><select id="town" name="town" required><option value="">Choose one</option><option>Dundrum</option><option>Newcastle</option><option>Nearby</option></select></div>
+      </div>
+      <div class="field"><label for="link">Current website, menu, listing or page</label><input id="link" name="link" type="url" inputmode="url" placeholder="https://" required /><small>A website or public listing is enough.</small></div>
+      <div class="field"><label for="idea">What should be easier or more impressive?</label><textarea id="idea" name="idea" required placeholder="For example: make the food look better, simplify booking, or show the venue properly on mobile."></textarea></div>
+      <div class="field-grid">
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required /></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+      </div>
+      <button class="button" type="submit">Request the free mock-up <ArrowIcon /></button>
+      <p class="form-note">Prototype note: this form demonstrates the full request experience but does not yet send data to a server.</p>
+    </form>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(".request-form");
+  const error = form?.querySelector<HTMLElement>(".form-error");
+  const success = form?.querySelector<HTMLElement>(".form-success");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (error) error.textContent = "";
+    if (success) success.textContent = "";
+    const invalid = [...form.elements].find((element) => element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement || element instanceof HTMLSelectElement ? !element.checkValidity() : false) as HTMLElement | undefined;
+    if (invalid) {
+      if (error) error.textContent = "Please complete each field and use a valid website and email address.";
+      invalid.focus();
+      return;
+    }
+    const business = new FormData(form).get("business");
+    form.reset();
+    if (success) success.textContent = `Thanks — the request for ${business} is ready. In the live version, this is where it would be sent securely.`;
+    success?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+</script>
