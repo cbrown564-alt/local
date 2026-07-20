@@ -242,6 +242,8 @@ for (const group of grouped.values()) {
       shortlist: verified.shortlist,
       designTask: verified.designTask,
       caveats: verified.caveats,
+      stage: verified.stage || (verified.shortlist === "Not shortlisted" ? "Assessed – not shortlisted" : "Shortlisted"),
+      ...(verified.conceptRoute ? { conceptRoute: verified.conceptRoute } : {}),
     };
   }
   merged.push(base);

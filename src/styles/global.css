@@ -89,7 +89,11 @@ p { margin: 0 0 1.2em; }
 
 .transformation-list { padding: 0 0 120px; }
 .transformation-card { display: grid; grid-template-columns: .9fr 1.1fr; border-top: 1px solid var(--line); padding: 46px 0; gap: 72px; align-items: center; }
-.transformation-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border: 1px solid var(--line); }
+/* height:auto is required — the img carries a height attribute, and with both
+   dimensions specified aspect-ratio is ignored, which squeezes the wide concept
+   screenshot into a portrait box. The ratio matches the 1265x710 capture size
+   so the whole opening screen stays visible. */
+.transformation-card img { width: 100%; height: auto; aspect-ratio: 1265/710; object-fit: cover; object-position: top; border: 1px solid var(--line); }
 .transformation-card h2 { margin-bottom: 20px; font-size: clamp(46px, 5.8vw, 70px); }
 .transformation-card p { max-width: 560px; color: var(--muted); }
 .coming-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 36px; }

@@ -23,6 +23,24 @@ The public homepage is deliberately sparse: proposition, two actions, one featur
 
 The comparison page is the core product. It uses equal-sized current and concept images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer. The explanation follows the markers in order below the comparison.
 
+## Concept identities
+
+Each concept carries the subject's own visual identity, not the studio's. The
+Mourne & Main palette and Antonio display face never appear inside a concept
+screen; the standalone concept pages live at `/concepts/<slug>/` with their
+own stylesheet at `src/styles/concept-<slug>.css`, scoped by a body class so
+identities cannot leak between concepts.
+
+- **Castle Farm** — warm cream and farm green, Georgia serif, produce-led.
+- **Enniskeen** — deep pine `#1E3A2C`, cream `#F5EFE2` and honey brass
+  `#C9973B` with Cormorant Garamond; a hairline inset frame, an asymmetric
+  48/52 split between story and valley view, and an availability bar stitched
+  across the seam. Quiet luxury, chosen against the current site's bright blue
+  menu bar and centred archive logo.
+
+Concept screenshots are always captured at 1265×710 at 2x so comparisons align
+exactly, and concept pages carry a fixed "Independent concept" marker.
+
 ## Components
 
 - Wordmark and compact primary navigation

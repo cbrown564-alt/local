@@ -19,10 +19,11 @@ pnpm build
 
 - `/` — clean public landing page
 - `/transformations/` — concept index
-- `/transformations/castle-farm/` — full before/after comparison and source disclosure
+- `/transformations/hotel-enniskeen/` — before/after comparison for Enniskeen Country House Hotel
+- `/transformations/castle-farm/` — before/after comparison for Castle Farm Fresh Produce
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
-- `/concepts/castle-farm/` — standalone proposed Castle Farm opening screen used in the comparison
+- `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
 
 The request form is intentionally local-only in this prototype and does not transmit data. Concept work is labelled as independent and uncommissioned.
 
@@ -34,5 +35,6 @@ The request form is intentionally local-only in this prototype and does not tran
 - `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline
 - `scripts/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/verifications.json`
+- `scripts/capture-concept-screens.mjs` — matched current/concept screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks
 
