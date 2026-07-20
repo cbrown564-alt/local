@@ -13,6 +13,8 @@ const aliases = new Map([
   ["bao and bento", "bao bento"],
   ["chinese sea palace", "sea palace"],
   ["tonn ruray", "tonn ruray cafe"],
+  ["the tool centre", "tool centre"],
+  ["the avoca hotel", "avoca restaurant and hotel"],
 ]);
 
 // Public details confirmed on the organisation's own website. These records are
@@ -131,6 +133,14 @@ function key(row) {
   return `${row.town}|${aliases.get(n) || n}`;
 }
 
+// Per-business verification knowledge accumulated after the census. Each entry
+// records dated trading evidence, corrections to census fields, and the
+// shortlist/design-task decision. Corrections are authoritative: they overwrite
+// census values, and scores are recomputed from the corrected fields.
+const verificationsFile = path.resolve(import.meta.dirname, "..", "research", "verifications.json");
+const verificationData = JSON.parse(await fs.readFile(verificationsFile, "utf8"));
+const verifications = new Map(verificationData.records.map((record) => [key(record), record]));
+
 function websiteState(website) {
   if (!website) return "No website found";
   try {
@@ -193,8 +203,15 @@ for (const group of grouped.values()) {
     base.sourceUrls = [...new Set([...(base.sourceUrls || []), ...(row.sourceUrls || [])])];
     base.discoverySources = [...new Set([...(base.discoverySources || []), ...(row.discoverySources || [])])];
   }
+  // An earlier run's "castle" pattern matched the "castle" inside "Newcastle",
+  // tagging Newcastle-named organisations as public attractions. The original
+  // entity types are unrecoverable, so reset those rows to the default before
+  // re-deriving.
+  if (base.entityType === "Public attraction" && !/\bcastle\b|reserve|forest park|country park|statue|memorial|public park/i.test(base.name)) base.entityType = "Independent / ownership unverified";
   if (/scouts?\b|\bclub\b/i.test(base.name)) base.entityType = "Club";
-  if (/castle|reserve|forest park|country park|statue|memorial|public park/i.test(base.name) && !/farm|hotel|shop|cafe|café/i.test(base.name)) base.entityType = "Public attraction";
+  if (/\bcastle\b|reserve|forest park|country park|statue|memorial|public park/i.test(base.name) && !/farm|hotel|shop|cafe|café/i.test(base.name)) base.entityType = "Public attraction";
+  if (/fire station|police station|library|primary school|regional college|jobs & benefits|bus station|tourist information|visitor information/i.test(base.name)) base.entityType = "Public service";
+  if (/church|chapel|presbyterian|pentecostal|orange hall|parish/i.test(base.name)) base.entityType = "Charity / community";
   const enrichment = manualEnrichment.get(key(base));
   if (enrichment) {
     for (const field of ["website", "email", "phone", "address", "category", "entityType"]) {
@@ -203,9 +220,31 @@ for (const group of grouped.values()) {
     base.sourceUrls = [...new Set([...(base.sourceUrls || []), ...(enrichment.sourceUrls || [])])];
     base.discoverySources = [...new Set([...(base.discoverySources || []), ...(enrichment.discoverySources || [])])];
   }
+  delete base.verification;
+  delete base.prospect;
+  const verified = verifications.get(key(base));
+  if (verified) {
+    for (const [field, value] of Object.entries(verified.corrections || {})) base[field] = value;
+    base.dataConfidence = `Verified against public sources on ${verified.verifiedOn}; trading status: ${verified.tradingStatus}`;
+  }
   base.category = normalizedCategory(base.category);
   base.websiteStatus = websiteState(base.website);
-  merged.push(score(base));
+  score(base);
+  if (verified) {
+    base.verification = {
+      verifiedOn: verified.verifiedOn,
+      tradingStatus: verified.tradingStatus,
+      tradingEvidence: verified.tradingEvidence,
+      digitalPresence: verified.digitalPresence,
+      sources: verified.sources,
+    };
+    base.prospect = {
+      shortlist: verified.shortlist,
+      designTask: verified.designTask,
+      caveats: verified.caveats,
+    };
+  }
+  merged.push(base);
 }
 
 merged.sort((a, b) => b.priorityScore - a.priorityScore || a.town.localeCompare(b.town) || a.name.localeCompare(b.name));
@@ -218,5 +257,8 @@ summary.directGoogleMapsRecords = merged.filter((row) => row.googleMapsVerified)
 summary.recordsWithWebsite = merged.filter((row) => row.website).length;
 summary.recordsWithPhone = merged.filter((row) => row.phone).length;
 summary.recordsWithEmail = merged.filter((row) => row.email).length;
+summary.verifiedRecords = merged.filter((row) => row.verification).length;
+summary.shortlistedRecords = merged.filter((row) => row.prospect && row.prospect.shortlist !== "Not shortlisted").length;
+summary.verificationAsOf = verificationData.asOf;
 await fs.writeFile(summaryFile, `${JSON.stringify(summary, null, 2)}\n`, "utf8");
 console.log(JSON.stringify({before: rows.length, after: merged.length, removed: rows.length - merged.length}, null, 2));

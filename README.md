@@ -28,9 +28,11 @@ The request form is intentionally local-only in this prototype and does not tran
 
 ## Research artifacts
 
-- `src/data/businesses.json` — consolidated public-source dataset
-- `RESEARCH_METHOD.md` — source and geographic methodology
+- `src/data/businesses.json` — consolidated public-source dataset (379 records)
+- `research/verifications.json` — accumulated per-business verification knowledge: dated trading evidence, census corrections, shortlist decisions and design tasks
+- `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle
+- `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline
-- `scripts/normalize-businesses.mjs` — deterministic deduplication, verified enrichment and scoring
+- `scripts/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/verifications.json`
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks
 
