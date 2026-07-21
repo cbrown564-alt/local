@@ -92,7 +92,9 @@ reinvent:
    (`src/styles/concept-<slug>.css`) scoped by a body class. Concepts must not
    look like Mourne & Main or like each other — Castle Farm is warm cream and
    farm green with Georgia; Enniskeen is deep pine, honey brass and Cormorant
-   Garamond.
+   Garamond; Mourne Cycles is coal black, signal red and Barlow Condensed,
+   drawn from the shop's own logo. (Castle Farm predated this convention and
+   was normalised out of `global.css` on 21 July 2026.)
 5. **Capture both screens the same way** with
    `node scripts/capture-concept-screens.mjs <slug>` (needs `pnpm build &&
    pnpm preview` running). It shoots the live site and the local concept at
