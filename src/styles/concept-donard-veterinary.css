@@ -1,0 +1,295 @@
+/* Donard Veterinary Clinic — independent concept design system.
+   Practice-badge warmth: deep plum, Mourne lavender, caring teal — drawn from
+   the clinic's own circular logo. Distinct from the Mourne & Main brand and
+   from the Castle Farm, Enniskeen and Mourne Cycles concepts. */
+
+.concept-donard-veterinary {
+  --plum: #4d2d5e;
+  --plum-deep: #38203f;
+  --lavender: #cbb8dd;
+  --lavender-soft: #efe8f5;
+  --teal: #2f9d82;
+  --teal-deep: #22755f;
+  --ink-plum: #2b1c33;
+  --warm-white: #fcfaf7;
+  --hairline: rgba(77, 45, 94, 0.16);
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Karla", "Segoe UI", sans-serif;
+  background: var(--warm-white);
+  color: var(--ink-plum);
+  font-family: var(--sans);
+}
+
+/* Emergency strip */
+.dv-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px clamp(20px, 3.5vw, 44px);
+  background: var(--plum-deep);
+  color: var(--lavender);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.dv-strip a { color: #ffffff; text-decoration-color: var(--teal); text-underline-offset: 4px; }
+.dv-strip-hours { font-weight: 400; letter-spacing: 0.02em; }
+
+/* Header */
+.dv-header {
+  height: 80px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--hairline);
+}
+.dv-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-plum); }
+.dv-badge { flex: 0 0 auto; }
+.dv-brand-text { display: flex; flex-direction: column; gap: 2px; }
+.dv-brand-name {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.dv-brand-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+.dv-nav { display: flex; gap: clamp(16px, 2.2vw, 28px); }
+.dv-nav a {
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.dv-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--teal);
+  transition: right 160ms ease;
+}
+.dv-nav a:hover::after { right: 0; }
+.dv-header-actions { display: flex; align-items: center; gap: 18px; }
+.dv-phone { font-size: 15px; font-weight: 700; text-decoration: none; color: var(--plum); white-space: nowrap; }
+.dv-book {
+  padding: 12px 20px;
+  border-radius: 999px;
+  /* teal-deep, not teal: white 15px text needs AA contrast (4.5:1) */
+  background: var(--teal-deep);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.dv-book:hover { background: var(--plum); transform: translateY(-1px); }
+
+/* Hero */
+.dv-hero {
+  position: relative;
+  min-height: calc(100vh - 80px - 37px);
+  display: grid;
+  grid-template-columns: 55% 45%;
+  overflow: hidden;
+}
+/* Mourne silhouette from the practice badge, drawn wide behind both panels */
+.dv-mournes {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 46%;
+  pointer-events: none;
+}
+.dv-story {
+  position: relative;
+  z-index: 1;
+  padding: clamp(38px, 5.5vh, 66px) clamp(26px, 3.6vw, 56px) 176px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dv-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+.dv-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--teal); }
+.dv-story h1 {
+  margin: 0 0 20px;
+  font-family: var(--serif);
+  font-size: clamp(44px, 4.9vw, 66px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--plum);
+  max-width: 10.5em;
+}
+.dv-story h1 em { font-style: italic; color: var(--teal-deep); }
+.dv-lede {
+  margin: 0 0 30px;
+  max-width: 30em;
+  color: #554761;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.dv-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.dv-cta {
+  padding: 15px 26px;
+  border-radius: 999px;
+  background: var(--plum);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.dv-cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
+.dv-link {
+  color: var(--plum);
+  font-size: 15px;
+  font-weight: 700;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--teal);
+}
+
+/* Appointment request card */
+.dv-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px clamp(26px, 3.6vw, 56px) 176px;
+}
+.dv-request {
+  width: min(100%, 380px);
+  padding: 26px 28px 24px;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-top: 6px solid var(--teal);
+  border-radius: 14px;
+  box-shadow: 0 26px 60px rgba(56, 32, 63, 0.22);
+}
+.dv-request h2 {
+  margin: 0 0 4px;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--plum);
+}
+.dv-request > p { margin: 0 0 18px; color: #554761; font-size: 14px; }
+.dv-request label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.dv-request input,
+.dv-request select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--warm-white);
+  color: var(--ink-plum);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.dv-request input:focus, .dv-request select:focus { outline: 3px solid var(--teal); outline-offset: 1px; }
+.dv-request-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dv-request button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 13px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal-deep);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+.dv-request button:hover { background: var(--plum); }
+.dv-request small { display: block; margin-top: 10px; color: #7a6d85; font-size: 12px; text-align: center; }
+.dv-request small a { color: var(--plum); }
+
+/* Services rail */
+.dv-rail {
+  position: absolute;
+  z-index: 2;
+  left: clamp(26px, 3.6vw, 56px);
+  right: clamp(26px, 3.6vw, 56px);
+  /* Clears the fixed concept-disclosure badge so no service label is covered */
+  bottom: 100px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--hairline);
+  background: transparent;
+}
+.dv-service {
+  padding: 16px 6px 18px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--plum);
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: color 150ms ease;
+}
+.dv-service:hover { color: var(--teal-deep); }
+.dv-service span { display: block; margin: 0 auto 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+
+/* Entrance */
+@keyframes dv-rise { from { opacity: 0; transform: translateY(14px); } }
+.dv-kicker { animation: dv-rise 440ms ease backwards; }
+.dv-story h1 { animation: dv-rise 440ms 70ms ease backwards; }
+.dv-lede { animation: dv-rise 440ms 140ms ease backwards; }
+.dv-actions { animation: dv-rise 440ms 210ms ease backwards; }
+.dv-request { animation: dv-rise 480ms 280ms ease backwards; }
+
+@media (max-width: 940px) {
+  .dv-strip { flex-direction: column; gap: 2px; text-align: center; }
+  .dv-nav, .dv-phone { display: none; }
+  .dv-header { height: auto; padding-block: 12px; }
+  .dv-brand-name { font-size: 20px; }
+  .dv-hero { grid-template-columns: 1fr; min-height: 0; }
+  .dv-story { padding: 40px 22px 24px; }
+  .dv-story h1 { max-width: none; font-size: clamp(36px, 9vw, 52px); }
+  .dv-lede { font-size: 16px; }
+  .dv-panel { padding: 10px 22px 40px; }
+  .dv-rail { position: static; grid-template-columns: repeat(2, 1fr); }
+  .dv-mournes { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-kicker, .dv-story h1, .dv-lede, .dv-actions, .dv-request { animation: none; }
+}
