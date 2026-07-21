@@ -1,51 +1,44 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArrowIcon from "../components/ArrowIcon.astro";
+import BeforeAfter from "../components/BeforeAfter.astro";
 import Disclosure from "../components/Disclosure.astro";
+import { featuredTransformation } from "../data/transformations";
 ---
 
 <BaseLayout title="Mourne & Main — Local websites, made visible" description="A local digital studio creating free before-and-after website concepts for Dundrum and Newcastle businesses.">
-  <section class="home-hero">
-    <div class="shell">
-      <p class="eyebrow">Dundrum + Newcastle, County Down</p>
+  <section class="home-hero home-hero--product">
+    <div class="shell home-hero-copy">
+      <p class="brand-hero" aria-label="Mourne and Main">
+        <span>Mourne</span><span class="wordmark-amp">&amp;</span><span>Main</span>
+      </p>
       <h1>See what your business could become online.</h1>
       <p class="lede">We turn a familiar local website into a clear, modern concept — then show you the difference before you spend a penny.</p>
       <div class="button-row">
         <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
         <a class="text-link" href="/transformations/">Browse local transformations <ArrowIcon /></a>
       </div>
-      <div class="home-note" aria-label="What to expect">
-        <span>Independent businesses first</span>
-        <span>A real visual concept</span>
-        <span>No obligation</span>
-      </div>
     </div>
-  </section>
 
-  <section class="feature">
-    <div class="shell">
-      <div class="feature-heading">
-        <div>
-          <p class="eyebrow">The latest transformation</p>
-          <h2>A better opening minute.</h2>
+    <div class="home-hero-stage">
+      <div class="home-hero-stage-bar">
+        <div class="shell home-hero-stage-meta">
+          <p class="home-hero-kicker">Drag to compare · {featuredTransformation.name}, {featuredTransformation.town}</p>
+          <a class="text-link" href={featuredTransformation.href}>Open the full comparison <ArrowIcon /></a>
         </div>
-        <p>One focused example shows how less interruption, stronger local imagery and a clear first action can change the feel of a website.</p>
       </div>
-      <article class="feature-card">
-        <div class="feature-visual">
-          <div class="feature-browser" aria-hidden="true">
-            <div class="browser-bar"><span></span><span></span><span></span></div>
-            <img src="/images/donard-veterinary-concept.jpg" alt="Donard Veterinary Clinic concept homepage showing the practice's plum and teal identity and an appointment request card" />
-          </div>
-        </div>
-        <div class="feature-copy">
-          <Disclosure compact />
-          <span class="tag">Website concept · Newcastle</span>
-          <h3>Donard Veterinary Clinic</h3>
-          <p>From a wall of stock puppies to the practice's own badge — with appointment requests on the first screen and the emergency number one tap away.</p>
-          <a class="text-link" href="/transformations/donard-veterinary/">See the full comparison <ArrowIcon /></a>
-        </div>
-      </article>
+      <div class="home-hero-comparison">
+        <BeforeAfter
+          before={featuredTransformation.before}
+          after={featuredTransformation.after}
+          beforeAlt={featuredTransformation.beforeAlt}
+          afterAlt={featuredTransformation.afterAlt}
+          showNotes={false}
+        />
+      </div>
+      <div class="shell home-hero-disclosure">
+        <Disclosure compact />
+      </div>
     </div>
   </section>
 
