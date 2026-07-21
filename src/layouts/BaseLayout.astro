@@ -10,6 +10,8 @@ interface Props {
   hideHeader?: boolean;
   hideFooter?: boolean;
   robots?: string;
+  ogImage?: string;
+  ogType?: string;
 }
 
 const {
@@ -19,7 +21,11 @@ const {
   hideHeader = false,
   hideFooter = false,
   robots,
+  ogImage = "/images/mourne-cycles-concept.jpg",
+  ogType = "website",
 } = Astro.props;
+
+const ogImageUrl = new URL(ogImage, Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -29,6 +35,14 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     {robots && <meta name="robots" content={robots} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
