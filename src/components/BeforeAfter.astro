@@ -13,22 +13,33 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
     <span class="comparison-legend-item comparison-legend-before">Current</span>
     <span class="comparison-legend-item comparison-legend-after">Concept</span>
   </div>
-  <div class="comparison-frame" data-comparison-frame>
-    <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" draggable="false" />
-    <div class="comparison-after" data-after>
-      <img src={after} alt={afterAlt} width="1265" height="710" draggable="false" />
-    </div>
-    <div class="comparison-divider" data-divider aria-hidden="true">
-      <div class="comparison-handle">
-        <svg class="comparison-handle-grip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <path d="M9 6 5 12l4 6M15 6l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+  <div class="comparison-stage">
+    <div class="comparison-frame" data-comparison-frame>
+      <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" draggable="false" />
+      <div class="comparison-after" data-after>
+        <img src={after} alt={afterAlt} width="1265" height="710" draggable="false" />
+      </div>
+      <div class="comparison-divider" data-divider aria-hidden="true">
+        <div class="comparison-handle">
+          <svg class="comparison-handle-grip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M9 6 5 12l4 6M15 6l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
       </div>
     </div>
-    <div class="note-layer" data-note-layer hidden aria-hidden="true">
-      <span class="note-pin note-pin-1">1</span>
-      <span class="note-pin note-pin-2">2</span>
-      <span class="note-pin note-pin-3">3</span>
+    <div class="note-layer" data-note-layer hidden>
+      <button type="button" class="note-pin note-pin-1" data-note="1" aria-label="Design note 1">
+        <span aria-hidden="true">1</span>
+        <span class="note-pin-tooltip" role="tooltip"></span>
+      </button>
+      <button type="button" class="note-pin note-pin-2" data-note="2" aria-label="Design note 2">
+        <span aria-hidden="true">2</span>
+        <span class="note-pin-tooltip" role="tooltip"></span>
+      </button>
+      <button type="button" class="note-pin note-pin-3" data-note="3" aria-label="Design note 3">
+        <span aria-hidden="true">3</span>
+        <span class="note-pin-tooltip" role="tooltip"></span>
+      </button>
     </div>
   </div>
   <label class="comparison-control">
@@ -37,10 +48,12 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
       <input type="range" min="0" max="100" value="50" aria-label="Reveal more or less of the concept design" />
     </span>
   </label>
-  <button class="notes-toggle" type="button" aria-pressed="false">
-    <span class="notes-icon" aria-hidden="true">+</span>
-    Show the design notes
-  </button>
+  <div class="comparison-actions">
+    <button class="notes-toggle" type="button" aria-pressed="false" aria-controls="design-notes">
+      <span class="notes-icon" aria-hidden="true">+</span>
+      <span class="notes-toggle-label">Show design notes</span>
+    </button>
+  </div>
 </section>
 
 <script>
@@ -50,6 +63,8 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
     const after = comparison.querySelector<HTMLElement>("[data-after]");
     const divider = comparison.querySelector<HTMLElement>("[data-divider]");
     const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
+    const toggleLabel = toggle?.querySelector<HTMLElement>(".notes-toggle-label");
+    const toggleIcon = toggle?.querySelector<HTMLElement>(".notes-icon");
     const layer = comparison.querySelector<HTMLElement>("[data-note-layer]");
 
     const min = Number(input?.min ?? 0);
@@ -98,11 +113,33 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
     frame?.addEventListener("pointerup", stopDrag);
     frame?.addEventListener("pointercancel", stopDrag);
 
+    const populateTooltips = () => {
+      const cards = document.querySelectorAll("#design-notes .note-card");
+      layer?.querySelectorAll<HTMLButtonElement>(".note-pin").forEach((pin, index) => {
+        const card = cards[index];
+        const tooltip = pin.querySelector<HTMLElement>(".note-pin-tooltip");
+        if (!card || !tooltip) return;
+        const title = card.querySelector(".notes-accordion-title, h3")?.textContent?.trim() ?? "";
+        const body = card.querySelector("p:not(.note-change):not(.notes-accordion-change)")?.textContent?.trim() ?? "";
+        tooltip.innerHTML = title ? `<strong>${title}</strong>${body}` : body;
+        const noteNum = pin.dataset.note ?? String(index + 1);
+        pin.setAttribute("aria-label", title ? `Design note ${noteNum}: ${title}` : `Design note ${noteNum}`);
+      });
+    };
+
+    layer?.querySelectorAll(".note-pin").forEach((pin) => {
+      pin.addEventListener("pointerdown", (event) => event.stopPropagation());
+    });
+
     toggle?.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-pressed") === "true";
-      toggle.setAttribute("aria-pressed", String(!isOpen));
-      toggle.innerHTML = `<span class="notes-icon" aria-hidden="true">${isOpen ? "+" : "−"}</span>${isOpen ? "Show" : "Hide"} the design notes`;
-      if (layer) layer.hidden = isOpen;
+      const nextOpen = !isOpen;
+      toggle.setAttribute("aria-pressed", String(nextOpen));
+      if (toggleIcon) toggleIcon.textContent = nextOpen ? "−" : "+";
+      if (toggleLabel) toggleLabel.textContent = nextOpen ? "Hide design notes" : "Show design notes";
+      if (layer) layer.hidden = !nextOpen;
+      comparison.classList.toggle("notes-visible", nextOpen);
+      if (nextOpen) populateTooltips();
     });
   });
 </script>
