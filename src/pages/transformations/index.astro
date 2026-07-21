@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArrowIcon from "../../components/ArrowIcon.astro";
+import BeforeAfter from "../../components/BeforeAfter.astro";
 import Disclosure from "../../components/Disclosure.astro";
+import { transformations } from "../../data/transformations";
+
+const towns = ["All towns", "Dundrum", "Newcastle"] as const;
+const categories = ["All types", ...[...new Set(transformations.map((item) => item.category))]];
 ---
 
 <BaseLayout title="Local transformations — Mourne & Main" description="Browse clear, respectful before-and-after website concepts for businesses around Dundrum and Newcastle.">
@@ -9,81 +14,198 @@ import Disclosure from "../../components/Disclosure.astro";
     <div class="shell page-hero-grid">
       <div>
         <p class="eyebrow">Local transformations</p>
-        <h1>Judge the work by the difference.</h1>
+        <h1>Find a business that feels like yours.</h1>
       </div>
-      <p class="page-hero-meta">Each concept starts with public information. Current presentation, proposed change and supporting sources stay visibly separate.</p>
+      <p class="page-hero-meta">Filter by town or type, then drag each comparison. Current presentation, proposed change and supporting sources stay visibly separate.</p>
     </div>
   </section>
-  <section class="transformation-list">
+
+  <section class="transformation-list" data-transformation-list>
     <div class="shell">
       <Disclosure />
-      <article class="transformation-card">
-        <img src="/images/cupla-concept.jpg" alt="Homepage concept for Cúpla" width="1265" height="710" />
-        <div>
-          <span class="tag">First website · Dundrum</span>
-          <h2>Cúpla</h2>
-          <p>The bilingual café whose name is the Irish for twins — given an identity built on the pair, with every label twinned in Irish and English.</p>
-          <a class="text-link" href="/transformations/cupla/">Open the comparison <ArrowIcon /></a>
+
+      <div class="owner-filters" aria-label="Filter transformations">
+        <div class="owner-filter-group">
+          <p class="owner-filter-label" id="town-filter-label">Town</p>
+          <div class="owner-filter-pills" role="group" aria-labelledby="town-filter-label">
+            {towns.map((town, index) => (
+              <button
+                type="button"
+                class:list={["owner-filter-pill", { "is-active": index === 0 }]}
+                data-filter="town"
+                data-value={town === "All towns" ? "" : town}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                {town}
+              </button>
+            ))}
+          </div>
         </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/scopers-concept.jpg" alt="Homepage concept for Scopers" width="1265" height="710" />
-        <div>
-          <span class="tag">First website · Dundrum</span>
-          <h2>Scopers</h2>
-          <p>Northern Ireland's first zero-waste hot food bar, currently behind a Facebook login — given a first page that leads with the chef and a standing supper-club invitation.</p>
-          <a class="text-link" href="/transformations/scopers/">Open the comparison <ArrowIcon /></a>
+        <div class="owner-filter-group">
+          <p class="owner-filter-label" id="type-filter-label">Type</p>
+          <div class="owner-filter-pills" role="group" aria-labelledby="type-filter-label">
+            {categories.map((category, index) => (
+              <button
+                type="button"
+                class:list={["owner-filter-pill", { "is-active": index === 0 }]}
+                data-filter="category"
+                data-value={category === "All types" ? "" : category}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/bucks-head-concept.jpg" alt="Homepage concept for The Bucks Head" width="1265" height="710" />
-        <div>
-          <span class="tag">Website · Dundrum</span>
-          <h2>The Bucks Head</h2>
-          <p>The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary engine it already runs.</p>
-          <a class="text-link" href="/transformations/bucks-head/">Open the comparison <ArrowIcon /></a>
-        </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/donard-veterinary-concept.jpg" alt="Homepage concept for Donard Veterinary Clinic" width="1265" height="710" />
-        <div>
-          <span class="tag">Website · Newcastle</span>
-          <h2>Donard Veterinary Clinic</h2>
-          <p>The practice's own badge — Mourne silhouette, plum and teal — sets the whole screen, with an appointment-request card up front and the emergency call one tap away.</p>
-          <a class="text-link" href="/transformations/donard-veterinary/">Open the comparison <ArrowIcon /></a>
-        </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/mourne-cycles-concept.jpg" alt="Homepage concept for Mourne Cycles" width="1265" height="710" />
-        <div>
-          <span class="tag">Website · Newcastle</span>
-          <h2>Mourne Cycles</h2>
-          <p>The area's Trek dealer given back its own name — a storefront opening screen with the range, a bookable workshop and the Cycle to Work saving up front.</p>
-          <a class="text-link" href="/transformations/mourne-cycles/">Open the comparison <ArrowIcon /></a>
-        </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/hotel-enniskeen-concept.jpg" alt="Homepage concept for Enniskeen Country House Hotel" width="1265" height="710" />
-        <div>
-          <span class="tag">Website · Newcastle</span>
-          <h2>Enniskeen Country House Hotel</h2>
-          <p>A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking engine.</p>
-          <a class="text-link" href="/transformations/hotel-enniskeen/">Open the comparison <ArrowIcon /></a>
-        </div>
-      </article>
-      <article class="transformation-card">
-        <img src="/images/castle-farm-concept.png" alt="Homepage concept for Castle Farm Fresh Produce" width="1265" height="710" />
-        <div>
-          <span class="tag">Website · Dundrum</span>
-          <h2>Castle Farm Fresh Produce</h2>
-          <p>A calmer arrival, a clear shop action and a stronger explanation of the local product — presented as a direct before-and-after.</p>
-          <a class="text-link" href="/transformations/castle-farm/">Open the comparison <ArrowIcon /></a>
-        </div>
-      </article>
+      </div>
+
+      <p class="owner-filter-status" data-filter-status aria-live="polite">
+        Showing {transformations.length} transformations
+      </p>
+
+      {transformations.map((item) => (
+        <article
+          class="transformation-card"
+          data-transformation-card
+          data-town={item.town}
+          data-category={item.category}
+        >
+          <div class="transformation-preview">
+            <BeforeAfter
+              before={item.before}
+              after={item.after}
+              beforeAlt={item.beforeAlt}
+              afterAlt={item.afterAlt}
+              showNotes={false}
+              compact
+            />
+          </div>
+          <div>
+            <div class="transformation-tags">
+              <span class="tag">{item.town}</span>
+              <span class="tag tag-muted">{item.category}</span>
+            </div>
+            <h2>{item.name}</h2>
+            <p>{item.summary}</p>
+            <a class="text-link" href={item.href}>Open the full comparison <ArrowIcon /></a>
+          </div>
+        </article>
+      ))}
+
+      <p class="owner-filter-empty" data-filter-empty hidden>
+        No transformations match those filters yet. Clear a filter or
+        <a href="/request/">request a free before-and-after</a> for your own business.
+      </p>
+
       <div class="coming-row" aria-label="Next research subjects">
         <article class="coming-card"><span>Concept queue · Newcastle</span><h3>Three verified prospects</h3><p>A hardware yard, a seaside amusement arcade and the town's chamber of commerce — researched and verified against public sources in July 2026.</p></article>
         <article class="coming-card"><span>Community queue · Newcastle</span><h3>Newcastle Chamber of Commerce</h3><p>A civic hub concept planned as a visible community contribution.</p></article>
       </div>
     </div>
   </section>
+
+  <section class="mockup-includes">
+    <div class="shell mockup-includes-grid">
+      <div>
+        <p class="eyebrow">What you get</p>
+        <h2>What a free mock-up includes.</h2>
+        <p class="mockup-includes-lede">A small, concrete look at one useful screen — enough to judge the direction without a sales call.</p>
+      </div>
+      <ol class="mockup-includes-list">
+        <li>
+          <strong>One focused screen</strong>
+          <span>Usually the opening page, booking path or the content that matters most to you.</span>
+        </li>
+        <li>
+          <strong>A clear before-and-after</strong>
+          <span>Your current public presentation beside a proposed concept you can slide and compare.</span>
+        </li>
+        <li>
+          <strong>Plain-language notes</strong>
+          <span>What changed and why, written without jargon and without mocking the current site.</span>
+        </li>
+        <li>
+          <strong>No obligation</strong>
+          <span>Independent concept work from public information. You decide whether a conversation is worth having.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="trust-ladder">
+    <div class="shell">
+      <p class="eyebrow">How the ask stays low-risk</p>
+      <h2>A short ladder from curiosity to a clear yes or no.</h2>
+      <ol class="trust-ladder-list">
+        <li>
+          <span class="trust-ladder-num">01</span>
+          <div>
+            <h3>We look at what the public already sees</h3>
+            <p>Website, listing or menu — the same material a customer finds today.</p>
+          </div>
+        </li>
+        <li>
+          <span class="trust-ladder-num">02</span>
+          <div>
+            <h3>You receive a focused before-and-after</h3>
+            <p>One screen, labelled as an independent concept until any real client work begins.</p>
+          </div>
+        </li>
+        <li>
+          <span class="trust-ladder-num">03</span>
+          <div>
+            <h3>You judge the difference yourself</h3>
+            <p>If it helps, we talk about paid work or a community contribution. If not, nothing further is owed.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="button-row">
+        <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
+        <a class="text-link" href="/about/">Why local comes first <ArrowIcon /></a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-transformation-list]");
+  if (root) {
+    const cards = [...root.querySelectorAll<HTMLElement>("[data-transformation-card]")];
+    const status = root.querySelector<HTMLElement>("[data-filter-status]");
+    const empty = root.querySelector<HTMLElement>("[data-filter-empty]");
+    const filters = {
+      town: "",
+      category: "",
+    };
+
+    const applyFilters = () => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const townMatch = !filters.town || card.dataset.town === filters.town;
+        const categoryMatch = !filters.category || card.dataset.category === filters.category;
+        const show = townMatch && categoryMatch;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (status) {
+        status.textContent =
+          visible === 1 ? "Showing 1 transformation" : `Showing ${visible} transformations`;
+      }
+      if (empty) empty.hidden = visible !== 0;
+    };
+
+    root.querySelectorAll<HTMLButtonElement>(".owner-filter-pill").forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.filter as "town" | "category" | undefined;
+        if (!key) return;
+        filters[key] = button.dataset.value ?? "";
+        root.querySelectorAll<HTMLButtonElement>(`.owner-filter-pill[data-filter="${key}"]`).forEach((peer) => {
+          const active = peer === button;
+          peer.classList.toggle("is-active", active);
+          peer.setAttribute("aria-pressed", String(active));
+        });
+        applyFilters();
+      });
+    });
+  }
+</script>
