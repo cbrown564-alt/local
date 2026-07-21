@@ -21,7 +21,7 @@ Antonio is the display face. Its narrow proportions provide energy without addin
 
 The public homepage is deliberately sparse: proposition, two actions, one featured transformation and the community commitment. Detailed critique appears only on the transformation page. Content uses a 1180px maximum width, long vertical spacing and a small set of strong alignments.
 
-The comparison page is the core product. It uses equal-sized current and concept images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer. The explanation follows the markers in order below the comparison.
+The comparison page is the core product. It uses equal-sized current and concept images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer whose pins carry hover/focus tooltips drawn from the notes below. The explanation follows the markers in order below the comparison as a one-open-at-a-time accordion (chosen from four prototyped layouts at `/prototypes/design-notes/`).
 
 ## Concept identities
 
@@ -47,7 +47,7 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 - Primary yellow button and secondary text link
 - Independent-concept disclosure
 - Before/after range comparison
-- Numbered design-note cards
+- Design-notes accordion with numbered, tooltipped comparison pins
 - Source and limitations block
 - Request form with recovery and success messages
 
