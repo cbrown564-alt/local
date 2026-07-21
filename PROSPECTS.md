@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 3 concepts
+Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 4 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 3 concepts published, 7 shortlisted, 6 assessed.
+Current stages: 4 concepts published, 6 shortlisted, 6 assessed.
 
 Rules of the road:
 
@@ -35,7 +35,7 @@ Rules of the road:
 | **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| The Buck's Head | Dundrum | Current site, but booking CTAs dead-end at phone/email | Reservations flow and menu UX — functional upgrade, not a rebuild |
+| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
@@ -68,6 +68,11 @@ Resolved 21 July 2026 by local first-hand knowledge: Scopers now trades most
 of the week and is very popular (the Thursday-only pattern is outdated), and
 Cúpla is confirmed actively trading. Both recorded in
 `research/verifications.json`.
+
+Superseded 21 July 2026 at build time: The Buck's Head added a ResDiary
+booking widget to its Bookings page after the 20 July verification pass —
+another case for re-reading the live site the day you build. The concept keeps
+ResDiary as the engine; the critique moved to the journey around it.
 
 ## Building a concept
 
