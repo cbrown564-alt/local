@@ -3,7 +3,7 @@ const pathname = Astro.url.pathname;
 const nav = [
   { href: "/transformations/", label: "Transformations" },
   { href: "/about/", label: "Why local" },
-  { href: "/request/", label: "Request a mock-up" },
+  { href: "/request/", label: "Request a free before-and-after" },
 ];
 ---
 
@@ -16,18 +16,40 @@ const nav = [
       <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
     ))}
   </nav>
-  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">Menu</button>
   <div id="mobile-menu" class="mobile-menu" hidden>
-    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    {nav.map((item) => (
+      <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
+    ))}
   </div>
 </header>
 
 <script>
   const button = document.querySelector<HTMLButtonElement>(".menu-button");
   const menu = document.querySelector<HTMLElement>("#mobile-menu");
-  button?.addEventListener("click", () => {
-    const open = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!open));
-    if (menu) menu.hidden = open;
-  });
+
+  if (button && menu) {
+    const setOpen = (open: boolean) => {
+      button.setAttribute("aria-expanded", String(open));
+      button.textContent = open ? "Close" : "Menu";
+      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      menu.hidden = !open;
+      if (open) menu.querySelector<HTMLAnchorElement>("a")?.focus();
+    };
+
+    button.addEventListener("click", () => {
+      setOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        button.focus();
+      }
+    });
+  }
 </script>
