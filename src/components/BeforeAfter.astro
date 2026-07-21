@@ -8,17 +8,23 @@ interface Props {
 const { before, after, beforeAlt, afterAlt } = Astro.props;
 ---
 
-<section class="comparison" data-comparison>
-  <div class="comparison-frame">
-    <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" />
+<section class="comparison" data-comparison style="--comparison-split: 50%">
+  <div class="comparison-legend" aria-hidden="true">
+    <span class="comparison-legend-item comparison-legend-before">Current</span>
+    <span class="comparison-legend-item comparison-legend-after">Concept</span>
+  </div>
+  <div class="comparison-frame" data-comparison-frame>
+    <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" draggable="false" />
     <div class="comparison-after" data-after>
-      <img src={after} alt={afterAlt} width="1265" height="710" />
+      <img src={after} alt={afterAlt} width="1265" height="710" draggable="false" />
     </div>
     <div class="comparison-divider" data-divider aria-hidden="true">
-      <span><span aria-hidden="true">←</span><span aria-hidden="true">→</span></span>
+      <div class="comparison-handle">
+        <svg class="comparison-handle-grip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M9 6 5 12l4 6M15 6l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
     </div>
-    <span class="comparison-label comparison-label-before">Current</span>
-    <span class="comparison-label comparison-label-after">Concept</span>
     <div class="note-layer" data-note-layer hidden aria-hidden="true">
       <span class="note-pin note-pin-1">1</span>
       <span class="note-pin note-pin-2">2</span>
@@ -26,8 +32,10 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
     </div>
   </div>
   <label class="comparison-control">
-    <span>Slide to compare</span>
-    <input type="range" min="8" max="92" value="50" aria-label="Reveal more or less of the concept design" />
+    <span class="comparison-control-label">Slide to compare</span>
+    <span class="comparison-control-track">
+      <input type="range" min="0" max="100" value="50" aria-label="Reveal more or less of the concept design" />
+    </span>
   </label>
   <button class="notes-toggle" type="button" aria-pressed="false">
     <span class="notes-icon" aria-hidden="true">+</span>
@@ -37,18 +45,59 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
 
 <script>
   document.querySelectorAll<HTMLElement>("[data-comparison]").forEach((comparison) => {
+    const frame = comparison.querySelector<HTMLElement>("[data-comparison-frame]");
     const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
     const after = comparison.querySelector<HTMLElement>("[data-after]");
     const divider = comparison.querySelector<HTMLElement>("[data-divider]");
     const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
     const layer = comparison.querySelector<HTMLElement>("[data-note-layer]");
-    const update = () => {
-      const value = input?.value ?? "50";
+
+    const min = Number(input?.min ?? 0);
+    const max = Number(input?.max ?? 100);
+    const clamp = (value: number) => Math.min(max, Math.max(min, value));
+
+    const setSplit = (raw: number) => {
+      const value = clamp(raw);
+      if (input) input.value = String(value);
+      comparison.style.setProperty("--comparison-split", `${value}%`);
       if (after) after.style.clipPath = `inset(0 0 0 ${value}%)`;
       if (divider) divider.style.left = `${value}%`;
     };
-    input?.addEventListener("input", update);
-    update();
+
+    const splitFromPointer = (clientX: number) => {
+      if (!frame) return;
+      const { left, width } = frame.getBoundingClientRect();
+      setSplit(((clientX - left) / width) * 100);
+    };
+
+    input?.addEventListener("input", () => setSplit(Number(input.value)));
+    setSplit(Number(input?.value ?? 50));
+
+    let dragging = false;
+
+    frame?.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) return;
+      dragging = true;
+      frame.setPointerCapture(event.pointerId);
+      frame.classList.add("comparison-dragging");
+      splitFromPointer(event.clientX);
+    });
+
+    frame?.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      splitFromPointer(event.clientX);
+    });
+
+    const stopDrag = (event: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      frame?.classList.remove("comparison-dragging");
+      if (frame?.hasPointerCapture(event.pointerId)) frame.releasePointerCapture(event.pointerId);
+    };
+
+    frame?.addEventListener("pointerup", stopDrag);
+    frame?.addEventListener("pointercancel", stopDrag);
+
     toggle?.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-pressed") === "true";
       toggle.setAttribute("aria-pressed", String(!isOpen));
