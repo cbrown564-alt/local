@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 20 July 2026 · 16 businesses verified · 10 shortlisted · 1 concept
+Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 2 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 1 concept published, 9 shortlisted, 6 assessed.
+Current stages: 2 concepts published, 8 shortlisted, 6 assessed.
 
 Rules of the road:
 
@@ -32,7 +32,7 @@ Rules of the road:
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
 | **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
-| Mourne Cycles | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
+| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | Donard Veterinary Centre | Newcastle | Listed domain dead; real site is a 2017 Divi build, no booking | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
 | The Buck's Head | Dundrum | Current site, but booking CTAs dead-end at phone/email | Reservations flow and menu UX — functional upgrade, not a rebuild |
@@ -81,7 +81,10 @@ reinvent:
    images, and credit the source on the transformation page. Enniskeen's
    balcony and terrace photographs are genuinely good; the problem was the
    frame around them, which is a fairer and more flattering critique than
-   replacing their imagery with stock.
+   replacing their imagery with stock. When what the site publishes is
+   supplier imagery (Mourne Cycles runs Trek dealer photography), reuse it
+   and say so plainly — "the Trek dealer imagery the shop already publishes,
+   reused rather than replaced" — instead of introducing stock of our own.
 3. **Keep the existing plumbing.** Point concept actions at whatever the
    business already pays for (here, the Bookin1 engine and voucher shop) so
    the proposal reads as an upgrade, not a rebuild that throws away spend.
@@ -104,6 +107,13 @@ reinvent:
 6. **Write the three design notes as observation → change**, naming what is
    on the captured page without mocking it, and register the new slug in the
    `CONCEPTS` map in the capture script.
+7. **Check the concept capture too, not just the current one.** Two Mourne
+   Cycles defects only showed up in the captured frame: a portrait hero image
+   sized in-flow stretched the grid row and pushed the range rail below the
+   1265×710 fold (fix: absolutely position imagery inside its panel), and
+   Astro's HTML compression swallowed the space at a source line break before
+   an inline element ("mainTrek") — keep meaningful spaces on the same source
+   line as the tag.
 
 ## The repeatable cycle
 

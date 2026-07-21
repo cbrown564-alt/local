@@ -19,11 +19,12 @@ pnpm build
 
 - `/` — clean public landing page
 - `/transformations/` — concept index
+- `/transformations/mourne-cycles/` — before/after comparison for Mourne Cycles
 - `/transformations/hotel-enniskeen/` — before/after comparison for Enniskeen Country House Hotel
 - `/transformations/castle-farm/` — before/after comparison for Castle Farm Fresh Produce
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
-- `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
+- `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
 
 The request form is intentionally local-only in this prototype and does not transmit data. Concept work is labelled as independent and uncommissioned.
 

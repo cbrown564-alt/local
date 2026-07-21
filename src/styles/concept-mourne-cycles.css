@@ -1,0 +1,331 @@
+/* Mourne Cycles — independent concept design system.
+   Workshop industrial: coal black, signal red, cold white — drawn from the
+   shop's own mountain logo. Distinct from the Mourne & Main brand and from
+   the Castle Farm and Enniskeen concepts. */
+
+.concept-mourne-cycles {
+  --coal: #0f1013;
+  --coal-soft: #17181c;
+  --paper: #f5f4f1;
+  --white: #ffffff;
+  --red: #d7282f;
+  --red-deep: #b01e24;
+  --steel: #7c8088;
+  --steel-light: #b9bcc2;
+  --hairline: rgba(15, 16, 19, 0.14);
+  --hairline-dark: rgba(245, 244, 241, 0.16);
+  --condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --sans: "Barlow", "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--coal);
+  font-family: var(--sans);
+}
+
+/* Top strip */
+.mc-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px clamp(20px, 3.5vw, 44px);
+  background: var(--coal);
+  color: var(--steel-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.mc-strip a { color: var(--white); text-decoration: none; }
+.mc-strip a:hover { color: var(--red); }
+
+/* Header */
+.mc-header {
+  height: 76px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  background: var(--white);
+  border-bottom: 1px solid var(--hairline);
+}
+.mc-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--coal); }
+.mc-peaks { flex: 0 0 auto; }
+.mc-brand-text { display: flex; flex-direction: column; gap: 1px; }
+.mc-brand-name {
+  font-family: var(--condensed);
+  font-size: 27px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.mc-brand-name span { color: var(--red); }
+.mc-brand-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+.mc-nav { display: flex; gap: clamp(16px, 2.2vw, 30px); }
+.mc-nav a {
+  position: relative;
+  padding-bottom: 5px;
+  font-family: var(--condensed);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.mc-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 3px;
+  background: var(--red);
+  transition: right 160ms ease;
+}
+.mc-nav a:hover::after { right: 0; }
+.mc-header-actions { display: flex; align-items: center; gap: 18px; }
+.mc-phone { font-size: 15px; font-weight: 700; text-decoration: none; color: var(--coal); white-space: nowrap; }
+.mc-book {
+  padding: 12px 20px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--condensed);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.mc-book:hover { background: var(--coal); transform: translateY(-1px); }
+
+/* Hero */
+.mc-hero {
+  position: relative;
+  min-height: calc(100vh - 76px - 33px);
+  display: grid;
+  grid-template-columns: 46% 54%;
+}
+.mc-story {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(38px, 5.5vh, 70px) clamp(26px, 3.6vw, 56px) 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(115deg, transparent 0 26px, rgba(245, 244, 241, 0.022) 26px 28px),
+    var(--coal);
+  color: var(--paper);
+}
+.mc-story::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -30px;
+  width: 150px;
+  height: 380px;
+  background: linear-gradient(rgba(215, 40, 47, 0.16), rgba(215, 40, 47, 0));
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.mc-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+}
+.mc-kicker::before {
+  content: "";
+  width: 30px;
+  height: 10px;
+  background: var(--red);
+  transform: skewX(-18deg);
+}
+.mc-story h1 {
+  margin: 0 0 20px;
+  font-family: var(--condensed);
+  font-size: clamp(64px, 7.4vw, 108px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.mc-story h1 em { font-style: italic; color: var(--red); }
+.mc-lede {
+  margin: 0 0 30px;
+  max-width: 30em;
+  color: var(--steel-light);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.mc-lede strong { color: var(--paper); }
+.mc-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.mc-cta {
+  padding: 15px 24px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--condensed);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.mc-cta:hover { background: var(--paper); color: var(--coal); transform: translateY(-1px); }
+.mc-link {
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 700;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--red);
+}
+
+/* Photo panel */
+.mc-visual { position: relative; margin: 0; overflow: hidden; background: var(--coal-soft); }
+/* Absolute, not flow: the portrait source image would otherwise set the grid
+   row's content height and push the range rail below the fold. */
+.mc-visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; }
+.mc-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15, 16, 19, 0.22), transparent 45%);
+  pointer-events: none;
+}
+.mc-visual figcaption {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background: rgba(15, 16, 19, 0.85);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mc-product {
+  position: absolute;
+  z-index: 4;
+  left: 22px;
+  bottom: 176px;
+  width: 210px;
+  padding: 14px 16px 15px;
+  background: var(--white);
+  color: var(--coal);
+  box-shadow: 0 18px 40px rgba(15, 16, 19, 0.35);
+}
+.mc-product img { width: 100%; margin-bottom: 10px; }
+.mc-product-tag {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 3px 7px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.mc-product p { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; }
+
+/* Range rail — stitched across the story/photo seam */
+.mc-rail {
+  position: absolute;
+  z-index: 5;
+  left: clamp(26px, 3.6vw, 56px);
+  right: clamp(26px, 3.6vw, 56px);
+  bottom: 56px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 1.55fr;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 24px 50px rgba(15, 16, 19, 0.4);
+}
+.mc-cell {
+  padding: 14px 16px 15px;
+  border-right: 1px solid var(--hairline);
+  text-decoration: none;
+  color: var(--coal);
+  transition: background 150ms ease, color 150ms ease;
+}
+.mc-cell:hover { background: var(--coal); color: var(--white); }
+.mc-cell-index {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--red);
+}
+.mc-cell-name {
+  font-family: var(--condensed);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.mc-cell-scheme { background: var(--red); color: var(--white); border-right: 0; }
+.mc-cell-scheme:hover { background: var(--coal); }
+.mc-cell-scheme .mc-cell-index { color: var(--white); opacity: 0.75; }
+.mc-cell-scheme small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* Entrance */
+@keyframes mc-rise { from { opacity: 0; transform: translateY(14px); } }
+.mc-kicker { animation: mc-rise 440ms ease backwards; }
+.mc-story h1 { animation: mc-rise 440ms 70ms ease backwards; }
+.mc-lede { animation: mc-rise 440ms 140ms ease backwards; }
+.mc-actions { animation: mc-rise 440ms 210ms ease backwards; }
+.mc-rail { animation: mc-rise 480ms 290ms ease backwards; }
+
+@media (max-width: 940px) {
+  .mc-strip span:first-child { display: none; }
+  .mc-nav, .mc-phone { display: none; }
+  .mc-header { height: auto; padding-block: 12px; }
+  .mc-brand-name { font-size: 23px; }
+  .mc-hero { grid-template-columns: 1fr; min-height: 0; }
+  .mc-visual { order: -1; min-height: 300px; }
+  .mc-visual figcaption { font-size: 11px; }
+  .mc-product { display: none; }
+  .mc-story { padding: 42px 22px 44px; }
+  .mc-story h1 { font-size: clamp(52px, 13vw, 76px); }
+  .mc-lede { font-size: 16px; }
+  .mc-rail {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: none;
+    border-left: 0;
+    border-right: 0;
+  }
+  .mc-cell { border-top: 1px solid var(--hairline); }
+  .mc-cell:nth-child(even) { border-right: 0; }
+  .mc-cell-scheme { grid-column: 1 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-kicker, .mc-story h1, .mc-lede, .mc-actions, .mc-rail { animation: none; }
+}
