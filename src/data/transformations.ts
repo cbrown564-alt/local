@@ -13,6 +13,36 @@ export interface Transformation {
 
 export const transformations: Transformation[] = [
   {
+    slug: "cupla",
+    name: "Cúpla",
+    town: "Dundrum",
+    category: "Café",
+    summary:
+      "The bilingual café whose name is the Irish for twins — given an identity built on the pair, with every label twinned in Irish and English.",
+    before: "/images/cupla-current.jpg",
+    after: "/images/cupla-concept.jpg",
+    beforeAlt:
+      "Cúpla's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the café's name and tagline greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, twin-ring mark, an at-the-counter card and a twinned Irish and English rail",
+    href: "/transformations/cupla/",
+  },
+  {
+    slug: "scopers",
+    name: "Scopers",
+    town: "Dundrum",
+    category: "Hot food",
+    summary:
+      "Northern Ireland's first zero-waste hot food bar, currently behind a Facebook login — given a first page that leads with the chef and a standing supper-club invitation.",
+    before: "/images/scopers-current.jpg",
+    after: "/images/scopers-concept.jpg",
+    beforeAlt:
+      "Scopers' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the bar's introduction greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in cast iron, buttermilk and paprika, with the Northern Ireland's first zero-waste hot food bar headline, a supper club card and a signature-dish rail",
+    href: "/transformations/scopers/",
+  },
+  {
     slug: "bucks-head",
     name: "The Bucks Head",
     town: "Dundrum",
