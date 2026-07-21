@@ -17,7 +17,8 @@ pnpm build
 
 ## Main routes
 
-- `/` — clean public landing page
+- `/` — product-stage landing page (before/after first; place belonging next)
+- `/prototypes/home/` — homepage alternatives explored before shipping Product Stage
 - `/transformations/` — concept index
 - `/transformations/cupla/` — first-website comparison for Cúpla
 - `/transformations/scopers/` — first-website comparison for Scopers
