@@ -4,11 +4,17 @@ interface Props {
   after: string;
   beforeAlt: string;
   afterAlt: string;
+  showNotes?: boolean;
+  compact?: boolean;
 }
-const { before, after, beforeAlt, afterAlt } = Astro.props;
+const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } = Astro.props;
 ---
 
-<section class="comparison" data-comparison style="--comparison-split: 50%">
+<section
+  class:list={["comparison", { "comparison--compact": compact }]}
+  data-comparison
+  style="--comparison-split: 50%"
+>
   <div class="comparison-legend" aria-hidden="true">
     <span class="comparison-legend-item comparison-legend-before">Current</span>
     <span class="comparison-legend-item comparison-legend-after">Concept</span>
@@ -27,20 +33,22 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
         </div>
       </div>
     </div>
-    <div class="note-layer" data-note-layer hidden>
-      <button type="button" class="note-pin note-pin-1" data-note="1" aria-label="Design note 1">
-        <span aria-hidden="true">1</span>
-        <span class="note-pin-tooltip" role="tooltip"></span>
-      </button>
-      <button type="button" class="note-pin note-pin-2" data-note="2" aria-label="Design note 2">
-        <span aria-hidden="true">2</span>
-        <span class="note-pin-tooltip" role="tooltip"></span>
-      </button>
-      <button type="button" class="note-pin note-pin-3" data-note="3" aria-label="Design note 3">
-        <span aria-hidden="true">3</span>
-        <span class="note-pin-tooltip" role="tooltip"></span>
-      </button>
-    </div>
+    {showNotes && (
+      <div class="note-layer" data-note-layer hidden>
+        <button type="button" class="note-pin note-pin-1" data-note="1" aria-label="Design note 1">
+          <span aria-hidden="true">1</span>
+          <span class="note-pin-tooltip" role="tooltip"></span>
+        </button>
+        <button type="button" class="note-pin note-pin-2" data-note="2" aria-label="Design note 2">
+          <span aria-hidden="true">2</span>
+          <span class="note-pin-tooltip" role="tooltip"></span>
+        </button>
+        <button type="button" class="note-pin note-pin-3" data-note="3" aria-label="Design note 3">
+          <span aria-hidden="true">3</span>
+          <span class="note-pin-tooltip" role="tooltip"></span>
+        </button>
+      </div>
+    )}
   </div>
   <label class="comparison-control">
     <span class="comparison-control-label">Slide to compare</span>
@@ -48,12 +56,14 @@ const { before, after, beforeAlt, afterAlt } = Astro.props;
       <input type="range" min="0" max="100" value="50" aria-label="Reveal more or less of the concept design" />
     </span>
   </label>
-  <div class="comparison-actions">
-    <button class="notes-toggle" type="button" aria-pressed="false" aria-controls="design-notes">
-      <span class="notes-icon" aria-hidden="true">+</span>
-      <span class="notes-toggle-label">Show design notes</span>
-    </button>
-  </div>
+  {showNotes && (
+    <div class="comparison-actions">
+      <button class="notes-toggle" type="button" aria-pressed="false" aria-controls="design-notes">
+        <span class="notes-icon" aria-hidden="true">+</span>
+        <span class="notes-toggle-label">Show design notes</span>
+      </button>
+    </div>
+  )}
 </section>
 
 <script>

@@ -1,0 +1,89 @@
+export interface Transformation {
+  slug: string;
+  name: string;
+  town: "Dundrum" | "Newcastle";
+  category: string;
+  summary: string;
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  href: string;
+}
+
+export const transformations: Transformation[] = [
+  {
+    slug: "bucks-head",
+    name: "The Bucks Head",
+    town: "Dundrum",
+    category: "Pub & dining",
+    summary:
+      "The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary engine it already runs.",
+    before: "/images/bucks-head-current.jpg",
+    after: "/images/bucks-head-concept.jpg",
+    beforeAlt:
+      "The Bucks Head's current homepage: a green header with the antler logo and five menu items above a full-width photograph of the owners by Dundrum Bay, with no headline, hours or booking action",
+    afterAlt:
+      "Mourne and Main concept opening in the pub's own spruce green and blush pink, with the Old Charm Modern Flare headline, a book-a-table card over the hearth photograph and a menus rail along the foot",
+    href: "/transformations/bucks-head/",
+  },
+  {
+    slug: "donard-veterinary",
+    name: "Donard Veterinary Clinic",
+    town: "Newcastle",
+    category: "Veterinary",
+    summary:
+      "The practice's own badge — Mourne silhouette, plum and teal — sets the whole screen, with an appointment-request card up front and the emergency call one tap away.",
+    before: "/images/donard-veterinary-current.jpg",
+    after: "/images/donard-veterinary-concept.jpg",
+    beforeAlt:
+      "Donard Veterinary Clinic's current homepage: the practice badge and menu above a wall-to-wall collage of stock puppies and kittens, with a PetsApp chat popup showing the opening hours",
+    afterAlt:
+      "Mourne and Main concept opening in the practice's plum and teal badge colours, with the Taking Care of Your Pets headline, an appointment request card and a services rail over a Mourne silhouette",
+    href: "/transformations/donard-veterinary/",
+  },
+  {
+    slug: "mourne-cycles",
+    name: "Mourne Cycles",
+    town: "Newcastle",
+    category: "Retail",
+    summary:
+      "The area's Trek dealer given back its own name — a storefront opening screen with the range, a bookable workshop and the Cycle to Work saving up front.",
+    before: "/images/mourne-cycles-current.jpg",
+    after: "/images/mourne-cycles-concept.jpg",
+    beforeAlt:
+      "Mourne Cycles' current homepage: a black header with the shop logo and phone number above a collage of Trek, Bontrager and Shimano logos and cut-out bike photographs",
+    afterAlt:
+      "Mourne and Main concept opening on the shop's own black and red identity, the Ride With Us headline, a Trek trail photograph and a numbered range rail with a Cycle to Work cell",
+    href: "/transformations/mourne-cycles/",
+  },
+  {
+    slug: "hotel-enniskeen",
+    name: "Enniskeen Country House Hotel",
+    town: "Newcastle",
+    category: "Hotel",
+    summary:
+      "A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking engine.",
+    before: "/images/hotel-enniskeen-current.jpg",
+    after: "/images/hotel-enniskeen-concept.jpg",
+    beforeAlt: "Enniskeen's current homepage with an archive logo, blue uppercase menu bar, photo carousel and cookie banner",
+    afterAlt: "Mourne and Main concept opening on the valley view from a balcony room, with the hideaway headline and an availability bar",
+    href: "/transformations/hotel-enniskeen/",
+  },
+  {
+    slug: "castle-farm",
+    name: "Castle Farm Fresh Produce",
+    town: "Dundrum",
+    category: "Farm shop",
+    summary:
+      "A calmer arrival, a clear shop action and a stronger explanation of the local product — presented as a direct before-and-after.",
+    before: "/images/castle-farm-current.png",
+    after: "/images/castle-farm-concept.png",
+    beforeAlt: "Castle Farm's current public homepage opening with a newsletter form and privacy prompt covering the page",
+    afterAlt: "Mourne and Main concept showing Castle Farm produce, a concise promise and one clear shop action",
+    href: "/transformations/castle-farm/",
+  },
+];
+
+export const featuredTransformation =
+  transformations.find((item) => item.slug === "donard-veterinary") ?? transformations[0];
