@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 4 concepts
+Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 5 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 4 concepts published, 6 shortlisted, 6 assessed.
+Current stages: 5 concepts published, 5 shortlisted, 6 assessed.
 
 Rules of the road:
 
@@ -41,7 +41,7 @@ Rules of the road:
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| Scopers | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026) | Chef-led brand single-pager with supper club events and booking |
+| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
 | Cúpla | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
 | The Tool Centre | Newcastle | No site; hardware retail + plant hire | Utilitarian trade site: hire prices, stock categories, hours |
 | Kent Amusements | Newcastle | Facebook-only; active (Mar 2026 review, new VR) | Seasonal attraction site: attractions, hours, family offers |
@@ -123,7 +123,13 @@ reinvent:
 6. **Write the three design notes as observation → change**, naming what is
    on the captured page without mocking it, and register the new slug in the
    `CONCEPTS` map in the capture script.
-7. **Check the concept capture too, not just the current one.** Two Mourne
+7. **For first-website prospects, the "current" capture is the business's own
+   primary public presence** — its social page, shot as a first-time visitor
+   without an account meets it, with Meta's cookie dialog and login wall left
+   in place (Scopers set the pattern, 21 July 2026). The critique must then be
+   about access — the wall in front of the story — never a mock of the
+   business's own content behind it.
+8. **Check the concept capture too, not just the current one.** Two Mourne
    Cycles defects only showed up in the captured frame: a portrait hero image
    sized in-flow stretched the grid row and pushed the range rail below the
    1265×710 fold (fix: absolutely position imagery inside its panel), and
