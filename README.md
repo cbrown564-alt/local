@@ -18,6 +18,7 @@ pnpm build
 ## Main routes
 
 - `/` — clean public landing page
+- `/prototypes/home/` — three homepage alternatives (product-led, place-led, promenade-window blend)
 - `/transformations/` — concept index
 - `/transformations/cupla/` — first-website comparison for Cúpla
 - `/transformations/scopers/` — first-website comparison for Scopers
