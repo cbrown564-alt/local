@@ -17,7 +17,7 @@ Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather th
 - Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
 - Foam `#F4F8FA` — main canvas
 
-The homepage opens on a full-bleed photograph of Newcastle beach with the Mournes beyond. Brand, one headline, one short supporting sentence and the CTA group sit over that image; the featured before/after comparison follows immediately below.
+The homepage opens on a full-bleed photograph of Newcastle beach with the Mournes beyond. Brand, one headline, one short supporting sentence, the CTA group and the featured before/after comparison share the first viewport — place sets the atmosphere, the transformation is visible without scrolling.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
