@@ -1,0 +1,55 @@
+---
+interface Note {
+  title: string;
+  body: string;
+  change: string;
+}
+
+interface Props {
+  heading: string;
+  notes: Note[];
+}
+
+const { heading, notes } = Astro.props;
+---
+
+<section id="design-notes" class="notes-section">
+  <div class="shell">
+    <p class="eyebrow">The reasoning, in order</p>
+    <h2>{heading}</h2>
+    <ul class="notes-accordion">
+      {notes.map((note, index) => (
+        <li class="notes-accordion-item note-card" data-open={index === 0 ? "true" : "false"}>
+          <button type="button" class="notes-accordion-trigger" aria-expanded={index === 0 ? "true" : "false"}>
+            <span class="notes-accordion-num">{index + 1}</span>
+            <h3 class="notes-accordion-title">{note.title}</h3>
+            <span class="notes-accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="notes-accordion-panel">
+            <p>{note.body}</p>
+            <p class="notes-accordion-change note-change"><strong>Change:</strong> {note.change}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".notes-accordion").forEach((list) => {
+    list.querySelectorAll<HTMLElement>(".notes-accordion-item").forEach((item) => {
+      const trigger = item.querySelector<HTMLButtonElement>(".notes-accordion-trigger");
+      trigger?.addEventListener("click", () => {
+        const isOpen = item.dataset.open === "true";
+        list.querySelectorAll<HTMLElement>(".notes-accordion-item").forEach((other) => {
+          other.dataset.open = "false";
+          other.querySelector(".notes-accordion-trigger")?.setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          item.dataset.open = "true";
+          trigger.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  });
+</script>
