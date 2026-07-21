@@ -1,10 +1,16 @@
 ---
 const pathname = Astro.url.pathname;
-const nav = [
+
+const navLinks = [
   { href: "/transformations/", label: "Transformations" },
   { href: "/about/", label: "Why local" },
-  { href: "/request/", label: "Request a free before-and-after" },
 ];
+
+const cta = {
+  href: "/request/",
+  label: "Free mock-up",
+  ariaLabel: "Request a free before-and-after",
+};
 ---
 
 <header class="site-header">
@@ -12,15 +18,31 @@ const nav = [
     <span>Mourne</span><span class="wordmark-amp">&amp;</span><span>Main</span>
   </a>
   <nav aria-label="Primary navigation">
-    {nav.map((item) => (
+    {navLinks.map((item) => (
       <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
     ))}
+    <a
+      class="header-cta"
+      href={cta.href}
+      aria-label={cta.ariaLabel}
+      aria-current={pathname.startsWith(cta.href) ? "page" : undefined}
+    >
+      {cta.label}
+    </a>
   </nav>
   <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">Menu</button>
   <div id="mobile-menu" class="mobile-menu" hidden>
-    {nav.map((item) => (
+    {navLinks.map((item) => (
       <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
     ))}
+    <a
+      class="header-cta"
+      href={cta.href}
+      aria-label={cta.ariaLabel}
+      aria-current={pathname.startsWith(cta.href) ? "page" : undefined}
+    >
+      {cta.label}
+    </a>
   </div>
 </header>
 
