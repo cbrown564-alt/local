@@ -8,18 +8,22 @@ The voice is neighbourly, direct and optimistic. It shows a useful change before
 
 ## Visual language
 
-- Cobalt `#4148ED` — primary local-studio colour, links and structural emphasis
-- Deep cobalt `#2F34BF` — readable accent text
-- Mineral yellow `#F1D831` — calls to action, highlights and annotation markers
-- Near black `#11182F` — type, frames and grounded contrast
-- Pale blue `#EDF0FF` — quiet section backgrounds and disclosures
-- Pure white `#FFFFFF` — main canvas
+Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather than generic studio chrome:
+
+- Sea slate `#23485A` — primary local-studio colour, links and structural emphasis
+- Deep sea `#1A3847` — readable accent text
+- Gorse yellow `#E0C14D` — calls to action, highlights and annotation markers
+- Bay ink `#132029` — type, frames and grounded contrast
+- Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
+- Foam `#F4F8FA` — main canvas
+
+The homepage opens on a full-bleed photograph of Newcastle beach with the Mournes beyond. Brand, one headline, one short supporting sentence, the CTA group and the featured before/after comparison share the first viewport — place sets the atmosphere, the transformation is visible without scrolling.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
 ## Layout
 
-The public homepage is deliberately sparse: proposition, two actions, one featured transformation and the community commitment. Detailed critique appears only on the transformation page. Content uses a 1180px maximum width, long vertical spacing and a small set of strong alignments.
+The public homepage is deliberately sparse: place-led opening, two actions, one featured transformation and the community commitment. Detailed critique appears only on the transformation page. Content uses a 1180px maximum width, long vertical spacing and a small set of strong alignments.
 
 The comparison page is the core product. It uses equal-sized current and concept images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer whose pins carry hover/focus tooltips drawn from the notes below. The explanation follows the markers in order below the comparison as a one-open-at-a-time accordion (chosen from four prototyped layouts at `/prototypes/design-notes/`).
 
@@ -44,7 +48,7 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 ## Components
 
 - Wordmark and compact primary navigation
-- Primary yellow button and secondary text link
+- Primary gorse-yellow button and secondary text link
 - Independent-concept disclosure
 - Before/after range comparison
 - Design-notes accordion with numbered, tooltipped comparison pins
@@ -53,4 +57,4 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 
 ## Motion and access
 
-Motion is limited to navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation. The comparison and form are keyboard operable, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.
+Motion includes a slow bay-hero image drift, navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation. The comparison and form are keyboard operable, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.
