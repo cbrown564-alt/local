@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 2 concepts
+Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 3 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 2 concepts published, 8 shortlisted, 6 assessed.
+Current stages: 3 concepts published, 7 shortlisted, 6 assessed.
 
 Rules of the road:
 
@@ -33,16 +33,16 @@ Rules of the road:
 |---|---|---|---|
 | **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
 | **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
-| Donard Veterinary Centre | Newcastle | Listed domain dead; real site is a 2017 Divi build, no booking | Appointment requests, emergency info hierarchy, accessibility fixes |
-| South Down Signs | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
+| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
+| South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
 | The Buck's Head | Dundrum | Current site, but booking CTAs dead-end at phone/email | Reservations flow and menu UX — functional upgrade, not a rebuild |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| Scopers | Dundrum | No site; 4.6★, reviews to Jun 2026; Thursday-only hours | Chef-led brand single-pager with supper club events and booking |
-| Cúpla | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025 | Mobile-first café page with bilingual Irish-language identity |
+| Scopers | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026) | Chef-led brand single-pager with supper club events and booking |
+| Cúpla | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
 | The Tool Centre | Newcastle | No site; hardware retail + plant hire | Utilitarian trade site: hire prices, stock categories, hours |
 | Kent Amusements | Newcastle | Facebook-only; active (Mar 2026 review, new VR) | Seasonal attraction site: attractions, hours, family offers |
 | Newcastle Chamber of Commerce | Newcastle | No site; active into 2026, runs on Gmail | Civic hub: member directory, events, join page — community piece |
@@ -58,14 +58,16 @@ accommodation runner-up). Details and evidence in
 
 ## Outstanding caveats before outreach
 
-- **Scopers**: Thursday-only trading — confirm the owner's ambitions first.
-- **Cúpla**: Companies House confirmation statement overdue at check — walk
-  past or phone before investing design hours.
-- **South Down Signs**: weakest trading recency evidence of the ten — confirm
-  directly.
+- **South Down Signs**: weakest trading recency evidence of the ten — held
+  back from concept work (21 July 2026) until trading is confirmed directly.
 - Same-name collisions to keep out of concept content: Tool Centre
   (Newcastle-upon-Tyne shops), Kent Amusements (Dundalk), South Downs Signs
   (England), Newcastle Chamber of Commerce (at least eight worldwide).
+
+Resolved 21 July 2026 by local first-hand knowledge: Scopers now trades most
+of the week and is very popular (the Thursday-only pattern is outdated), and
+Cúpla is confirmed actively trading. Both recorded in
+`research/verifications.json`.
 
 ## Building a concept
 
@@ -77,6 +79,10 @@ reinvent:
    hideaway", Shimna Valley, the twelve acres, Mourne Honey afternoon tea and
    the Brandy Pad Lounge are all the hotel's own language — the concept
    reorders what the business already says rather than inventing a new voice.
+   Re-read it the day you build, not just at census time: Donard's site
+   gained a PetsApp chat widget between the 20 July verification pass and the
+   21 July build, and the change belonged in both the design notes and
+   `research/verifications.json`.
 2. **Use the business's own photography** where the site publishes usable
    images, and credit the source on the transformation page. Enniskeen's
    balcony and terrace photographs are genuinely good; the problem was the
@@ -93,8 +99,11 @@ reinvent:
    look like Mourne & Main or like each other — Castle Farm is warm cream and
    farm green with Georgia; Enniskeen is deep pine, honey brass and Cormorant
    Garamond; Mourne Cycles is coal black, signal red and Barlow Condensed,
-   drawn from the shop's own logo. (Castle Farm predated this convention and
-   was normalised out of `global.css` on 21 July 2026.)
+   drawn from the shop's own logo; Donard Veterinary is plum, lavender and
+   teal with Fraunces, drawn from the practice's badge — and introduces no
+   photography at all, the honest move when a site's own imagery is stock.
+   (Castle Farm predated this convention and was normalised out of
+   `global.css` on 21 July 2026.)
 5. **Capture both screens the same way** with
    `node scripts/capture-concept-screens.mjs <slug>` (needs `pnpm build &&
    pnpm preview` running). It shoots the live site and the local concept at

@@ -25,6 +25,7 @@ const CONCEPTS = {
   "castle-farm": { current: "https://www.castlefarmni.com/", currentBudgetMs: 12000 },
   "hotel-enniskeen": { current: "https://www.enniskeenhotel.co.uk/", currentBudgetMs: 4000 },
   "mourne-cycles": { current: "https://www.mourne-cycles.co.uk/", currentBudgetMs: 12000 },
+  "donard-veterinary": { current: "https://donardveterinaryclinic.co.uk/", currentBudgetMs: 6000 },
 };
 
 const slug = process.argv[2];
