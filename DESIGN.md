@@ -17,13 +17,13 @@ Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather th
 - Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
 - Foam `#F4F8FA` — main canvas
 
-The homepage opens on a full-bleed photograph of Newcastle beach with the Mournes beyond. Brand, one headline, one short supporting sentence, the CTA group and the featured before/after comparison share the first viewport — place sets the atmosphere, the transformation is visible without scrolling.
+The homepage opens on Product Stage: brand, one headline, one short supporting sentence, the CTA group and a large featured before/after comparison share the first viewport. Place belonging follows as a full-bleed Newcastle shore moment — sequential, not competing in the same screen. Alternative directions remain at `/prototypes/home/`.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
 ## Layout
 
-The public homepage is deliberately sparse: place-led opening, two actions, one featured transformation and the community commitment. Detailed critique appears only on the transformation page. Content uses a 1180px maximum width, long vertical spacing and a small set of strong alignments.
+The public homepage is deliberately sparse: product-led opening, two actions, one featured transformation, then place identity and the community commitment. Detailed critique appears only on the transformation page. Content uses a 1180px maximum width, long vertical spacing and a small set of strong alignments.
 
 The comparison page is the core product. It uses equal-sized current and concept images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer whose pins carry hover/focus tooltips drawn from the notes below. The explanation follows the markers in order below the comparison as a one-open-at-a-time accordion (chosen from four prototyped layouts at `/prototypes/design-notes/`).
 
@@ -57,4 +57,4 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 
 ## Motion and access
 
-Motion includes a slow bay-hero image drift, navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation. The comparison and form are keyboard operable, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.
+Motion includes a short product-stage entrance, a slow bay image drift on the place band, navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation. The comparison and form are keyboard operable, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.
