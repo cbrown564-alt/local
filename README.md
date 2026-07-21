@@ -19,6 +19,7 @@ pnpm build
 
 - `/` — clean public landing page
 - `/transformations/` — concept index
+- `/transformations/cupla/` — first-website comparison for Cúpla
 - `/transformations/scopers/` — first-website comparison for Scopers
 - `/transformations/bucks-head/` — before/after comparison for The Bucks Head
 - `/transformations/donard-veterinary/` — before/after comparison for Donard Veterinary Clinic
@@ -27,7 +28,7 @@ pnpm build
 - `/transformations/castle-farm/` — before/after comparison for Castle Farm Fresh Produce
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
-- `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
+- `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
 
 The request form is intentionally local-only in this prototype and does not transmit data. Concept work is labelled as independent and uncommissioned.
 
