@@ -1,5 +1,4 @@
 ---
-import BeforeAfter from "./BeforeAfter.astro";
 import type { Transformation } from "../data/transformations";
 
 interface Props {
@@ -9,13 +8,13 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<section class="transformation-gallery" data-transformation-gallery aria-label="Before-and-after showcase">
+<section class="transformation-gallery" data-transformation-gallery aria-label="Concept showcase">
   <div class="transformation-gallery-head shell">
     <div class="transformation-gallery-intro">
       <p class="eyebrow">The portfolio</p>
-      <h2>Drag through every local before-and-after.</h2>
+      <h2>Ten finished concepts in one sweep.</h2>
       <p class="transformation-gallery-lede">
-        Ten independent concepts in one sweep — slide each comparison, then read the story below.
+        The proposed screens only — scroll through, then compare before and after in the detail below.
       </p>
     </div>
     <div class="transformation-gallery-toolbar">
@@ -37,9 +36,9 @@ const { items } = Astro.props;
     </div>
   </div>
 
-  <div class="transformation-gallery-scroller" data-gallery-scroller tabindex="0" aria-label="Scrollable transformation gallery">
+  <div class="transformation-gallery-scroller" data-gallery-scroller tabindex="0" aria-label="Scrollable concept gallery">
     <div class="transformation-gallery-track" data-gallery-track>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <article
           class="transformation-gallery-slide"
           data-gallery-slide
@@ -49,37 +48,25 @@ const { items } = Astro.props;
           id={`gallery-${item.slug}`}
           aria-label={`${item.name}, ${item.town}`}
         >
-          <div class="transformation-gallery-card">
-            <div class="transformation-gallery-card-head">
-              <span class="transformation-gallery-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <a class="transformation-gallery-card" href={`#transformation-${item.slug}`}>
+            <div class="transformation-gallery-frame">
+              <img
+                src={item.after}
+                alt={item.afterAlt}
+                width="1265"
+                height="710"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="transformation-gallery-caption">
               <div class="transformation-gallery-tags">
                 <span class="tag">{item.town}</span>
                 <span class="tag tag-muted">{item.category}</span>
               </div>
+              <h3 class="transformation-gallery-name">{item.name}</h3>
             </div>
-            <div class="transformation-gallery-preview">
-              <BeforeAfter
-                before={item.before}
-                after={item.after}
-                beforeAlt={item.beforeAlt}
-                afterAlt={item.afterAlt}
-                showNotes={false}
-                compact
-              />
-            </div>
-            <footer class="transformation-gallery-card-foot">
-              <div>
-                <h3 class="transformation-gallery-name">{item.name}</h3>
-                <p class="transformation-gallery-summary">{item.summary}</p>
-              </div>
-              <a class="transformation-gallery-jump" href={`#transformation-${item.slug}`}>
-                Review below
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path d="M12 5v14M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </footer>
-          </div>
+          </a>
         </article>
       ))}
     </div>
