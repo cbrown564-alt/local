@@ -19,8 +19,8 @@ export const transformations: Transformation[] = [
     category: "Community",
     summary:
       "The Co. Down chamber that runs on Gmail and social — given a civic front door with a member directory tease, town events and a clear join path.",
-    before: "/images/newcastle-chamber-current.jpg",
-    after: "/images/newcastle-chamber-concept.jpg",
+    before: "/images/newcastle-chamber-before.jpg",
+    after: "/images/newcastle-chamber-after.jpg",
     beforeAlt:
       "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by a login form, with the Chamber's introduction greyed out behind the wall",
     afterAlt:
@@ -34,8 +34,8 @@ export const transformations: Transformation[] = [
     category: "Amusement arcade",
     summary:
       "The Central Promenade arcade currently behind a Facebook login — given a first page that leads with fifty summers of family fun, attractions and seasonal hours.",
-    before: "/images/kent-amusements-current.jpg",
-    after: "/images/kent-amusements-concept.jpg",
+    before: "/images/kent-amusements-before.jpg",
+    after: "/images/kent-amusements-after.jpg",
     beforeAlt:
       "Kent Amusements' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the arcade's introduction greyed out behind them",
     afterAlt:
@@ -49,8 +49,8 @@ export const transformations: Transformation[] = [
     category: "Hardware & hire",
     summary:
       "The Main Street hardware and plant-hire counter — currently behind a Facebook login — given a first screen that leads with Co. Down, hire rates and stock categories.",
-    before: "/images/tool-centre-current.jpg",
-    after: "/images/tool-centre-concept.jpg",
+    before: "/images/tool-centre-before.jpg",
+    after: "/images/tool-centre-after.jpg",
     beforeAlt:
       "The Tool Centre's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the shop's introduction greyed out behind them",
     afterAlt:
@@ -64,8 +64,8 @@ export const transformations: Transformation[] = [
     category: "Café",
     summary:
       "The bilingual café whose name is the Irish for twins — given an identity built on the pair, with every label twinned in Irish and English.",
-    before: "/images/cupla-current.jpg",
-    after: "/images/cupla-concept.jpg",
+    before: "/images/cupla-before.jpg",
+    after: "/images/cupla-after.jpg",
     beforeAlt:
       "Cúpla's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the café's name and tagline greyed out behind them",
     afterAlt:
@@ -79,8 +79,8 @@ export const transformations: Transformation[] = [
     category: "Hot food",
     summary:
       "Northern Ireland's first zero-waste hot food bar, currently behind a Facebook login — given a first page that leads with the chef and a standing supper-club invitation.",
-    before: "/images/scopers-current.jpg",
-    after: "/images/scopers-concept.jpg",
+    before: "/images/scopers-before.jpg",
+    after: "/images/scopers-after.jpg",
     beforeAlt:
       "Scopers' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the bar's introduction greyed out behind them",
     afterAlt:
@@ -94,8 +94,8 @@ export const transformations: Transformation[] = [
     category: "Pub & dining",
     summary:
       "The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary engine it already runs.",
-    before: "/images/bucks-head-current.jpg",
-    after: "/images/bucks-head-concept.jpg",
+    before: "/images/bucks-head-before.jpg",
+    after: "/images/bucks-head-after.jpg",
     beforeAlt:
       "The Bucks Head's current homepage: a green header with the antler logo and five menu items above a full-width photograph of the owners by Dundrum Bay, with no headline, hours or booking action",
     afterAlt:
@@ -109,8 +109,8 @@ export const transformations: Transformation[] = [
     category: "Veterinary",
     summary:
       "The practice's own badge — Mourne silhouette, plum and teal — sets the whole screen, with an appointment-request card up front and the emergency call one tap away.",
-    before: "/images/donard-veterinary-current.jpg",
-    after: "/images/donard-veterinary-concept.jpg",
+    before: "/images/donard-veterinary-before.jpg",
+    after: "/images/donard-veterinary-after.jpg",
     beforeAlt:
       "Donard Veterinary Clinic's current homepage: the practice badge and menu above a wall-to-wall collage of stock puppies and kittens, with a PetsApp chat popup showing the opening hours",
     afterAlt:
@@ -124,8 +124,8 @@ export const transformations: Transformation[] = [
     category: "Retail",
     summary:
       "The area's Trek dealer given back its own name — a storefront opening screen with the range, a bookable workshop and the Cycle to Work saving up front.",
-    before: "/images/mourne-cycles-current.jpg",
-    after: "/images/mourne-cycles-concept.jpg",
+    before: "/images/mourne-cycles-before.jpg",
+    after: "/images/mourne-cycles-after.jpg",
     beforeAlt:
       "Mourne Cycles' current homepage: a black header with the shop logo and phone number above a collage of Trek, Bontrager and Shimano logos and cut-out bike photographs",
     afterAlt:
@@ -139,8 +139,8 @@ export const transformations: Transformation[] = [
     category: "Hotel",
     summary:
       "A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking engine.",
-    before: "/images/hotel-enniskeen-current.jpg",
-    after: "/images/hotel-enniskeen-concept.jpg",
+    before: "/images/hotel-enniskeen-before.jpg",
+    after: "/images/hotel-enniskeen-after.jpg",
     beforeAlt: "Enniskeen's current homepage with an archive logo, blue uppercase menu bar, photo carousel and cookie banner",
     afterAlt: "Mourne and Main concept opening on the valley view from a balcony room, with the hideaway headline and an availability bar",
     href: "/transformations/hotel-enniskeen/",
@@ -152,8 +152,8 @@ export const transformations: Transformation[] = [
     category: "Farm shop",
     summary:
       "A calmer arrival, a clear shop action and a stronger explanation of the local product — presented as a direct before-and-after.",
-    before: "/images/castle-farm-current.png",
-    after: "/images/castle-farm-concept.png",
+    before: "/images/castle-farm-before.png",
+    after: "/images/castle-farm-after.png",
     beforeAlt: "Castle Farm's current public homepage opening with a newsletter form and privacy prompt covering the page",
     afterAlt: "Mourne and Main concept showing Castle Farm produce, a concise promise and one clear shop action",
     href: "/transformations/castle-farm/",
