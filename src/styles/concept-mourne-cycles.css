@@ -329,3 +329,331 @@
 @media (prefers-reduced-motion: reduce) {
   .mc-kicker, .mc-story h1, .mc-lede, .mc-actions, .mc-rail { animation: none; }
 }
+
+/* ─── Hire & service page ─────────────────────────────────────────────────── */
+
+.mc-hire-main {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 109px); /* strip + header */
+}
+
+/* Intro bar */
+.mc-hire-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 60px);
+  padding: clamp(26px, 3.5vh, 42px) clamp(26px, 3.6vw, 56px) clamp(22px, 3vh, 36px);
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+}
+.mc-hire-intro-copy { flex: 0 0 auto; }
+.mc-hire-kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--steel);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mc-hire-kicker::before {
+  content: "";
+  width: 24px;
+  height: 8px;
+  background: var(--red);
+  transform: skewX(-18deg);
+}
+.mc-hire-intro h1 {
+  margin: 0;
+  font-family: var(--condensed);
+  font-size: clamp(40px, 4.4vw, 62px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--coal);
+}
+.mc-hire-intro h1 em { font-style: italic; color: var(--red); }
+.mc-hire-sub {
+  max-width: 38em;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--steel);
+}
+
+/* Three-panel strip */
+.mc-service-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex: 1;
+}
+
+/* Individual panels */
+.mc-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mc-panel + .mc-panel { border-left: 1px solid var(--hairline); }
+
+.mc-panel-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(24px, 3.2vh, 40px) clamp(22px, 2.8vw, 38px);
+}
+
+.mc-panel-head { margin-bottom: 20px; }
+
+.mc-panel-num {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--condensed);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.mc-panel h2 {
+  margin: 0 0 12px;
+  font-family: var(--condensed);
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mc-panel p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+/* Hire panel — coal background with trail photo underlaid */
+.mc-panel-hire { background: var(--coal); color: var(--paper); }
+.mc-panel-hire .mc-panel-num { color: var(--red); }
+.mc-panel-hire p { color: var(--steel-light); }
+.mc-panel-hire .mc-panel-inner { border-right: 0; }
+
+.mc-panel-photo {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.mc-panel-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 38%;
+  opacity: 0.2;
+  filter: saturate(0.4);
+}
+
+/* Service panel — paper background */
+.mc-panel-service { background: var(--paper); color: var(--coal); }
+.mc-panel-service .mc-panel-num { color: var(--steel); }
+
+/* Cyclescheme panel — red background */
+.mc-panel-scheme { background: var(--red); color: var(--white); }
+.mc-panel-scheme .mc-panel-num { color: rgba(255, 255, 255, 0.65); }
+.mc-panel-scheme p { color: rgba(255, 255, 255, 0.88); }
+
+/* Tier list — hire options and service tiers */
+.mc-tier-list {
+  margin: 0 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mc-tier-list li {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--hairline-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+.mc-panel-service .mc-tier-list li { border-top-color: var(--hairline); }
+.mc-tier-name { grid-row: 1; grid-column: 1; }
+.mc-tier-bar {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: block;
+  height: 3px;
+  background: rgba(245, 244, 241, 0.15);
+  overflow: hidden;
+}
+.mc-panel-service .mc-tier-bar { background: var(--hairline); }
+.mc-tier-bar span {
+  display: block;
+  height: 100%;
+  background: var(--red);
+}
+.mc-panel-hire .mc-tier-bar span { background: var(--red); }
+.mc-tier-price {
+  grid-row: 1;
+  grid-column: 2;
+  font-family: var(--condensed);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  white-space: nowrap;
+}
+.mc-panel-hire .mc-tier-price { color: var(--red); }
+.mc-tier-detail {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--steel);
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Panel foot — CTA + small note */
+.mc-panel-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+}
+.mc-panel-foot small {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Panel buttons */
+.mc-panel-btn {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--condensed);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  transition: background 140ms ease, transform 140ms ease;
+}
+.mc-panel-btn:hover { background: var(--paper); color: var(--coal); transform: translateY(-1px); }
+
+.mc-panel-btn-outline {
+  background: transparent;
+  color: var(--coal);
+  border: 2px solid var(--coal);
+}
+.mc-panel-btn-outline:hover { background: var(--coal); color: var(--paper); transform: translateY(-1px); }
+
+.mc-panel-btn-white {
+  background: var(--white);
+  color: var(--red);
+}
+.mc-panel-btn-white:hover { background: var(--coal); color: var(--white); transform: translateY(-1px); }
+
+/* Savings block — Cyclescheme panel */
+.mc-savings {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin: 0 0 auto;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+.mc-savings-dial {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.mc-savings-pct {
+  font-family: var(--condensed);
+  font-size: clamp(62px, 6vw, 86px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  color: var(--white);
+}
+.mc-savings-dial sup {
+  font-family: var(--condensed);
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  vertical-align: super;
+  line-height: 1;
+}
+.mc-savings-label {
+  align-self: center;
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.4;
+}
+.mc-savings-steps {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 16px;
+}
+.mc-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+}
+.mc-step-n {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-family: var(--condensed);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* Hire page responsive */
+@media (max-width: 940px) {
+  .mc-hire-intro { flex-direction: column; align-items: start; gap: 14px; }
+  .mc-hire-sub { max-width: 100%; }
+  .mc-service-strip { grid-template-columns: 1fr; }
+  .mc-panel + .mc-panel { border-left: 0; border-top: 1px solid var(--hairline); }
+  .mc-panel-photo { display: none; }
+  .mc-savings { flex-wrap: wrap; }
+}

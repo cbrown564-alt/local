@@ -3,7 +3,7 @@
 Working roadmap for Mourne & Main after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 22 July 2026 · 9 shortlist concepts published · Milestone 1 complete · South Down Signs on hold
+Snapshot: 22 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · South Down Signs on hold
 
 ---
 
@@ -32,9 +32,21 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 
 ---
 
-## Milestone 2 — Second critical page or asset
+## Milestone 2 — Second critical page or asset ✅
 
-**New workstream after Milestone 1.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second mock-up that matches that concept’s own visual identity.
+**Shipped 22 July 2026.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second mock-up that matches that concept’s own visual identity.
+
+### Build conventions (M2)
+
+| Piece | Convention |
+|---|---|
+| Second concept route | `/concepts/<slug>/<asset>/` → `src/pages/concepts/<slug>/<asset>.astro` |
+| Styles | Extend the existing `concept-<slug>.css` with the same class prefix — do not invent a second identity |
+| Captures | `node scripts/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-concept.jpg` (+ optional `-current.jpg` when a real before exists) |
+| Transformation page | After the opening comparison, a `.second-surface` block: either a second `BeforeAfter` with `showNotes={false}`, or a labelled companion still |
+| Docs | Note which asset shipped in `PROSPECTS.md` + `research/verifications.json` |
+
+Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-veterinary/appointments`, `bucks-head/menus`, `scopers/supper-club`, `cupla/menu`, `tool-centre/hire-list`, `kent-amusements/attractions`, `newcastle-chamber/members`.
 
 ### Intent
 
@@ -43,25 +55,27 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 - Shown on the transformation page as a second comparison or a clearly labelled companion asset beside the opening-screen slider
 - Still labelled independent / uncommissioned
 
-### Proposed second assets (working picks — confirm at build time)
+### Second assets shipped
 
-| Business | Proposed second asset | Why this one |
+| Business | Second asset | Route |
 |---|---|---|
-| Hotel Enniskeen | Room / stay detail with Bookin1 deep link | Booking is the conversion; the lander only teases it |
-| Mourne Cycles | Service & hire booking strip or Cyclescheme funnel page | Retail lander; revenue sits in service/hire |
-| Donard Veterinary | Appointment request / emergency info page | Phone-email booking is the core gap |
-| The Buck’s Head | Menus experience (food & drink, not PDF-only) | Current menus are PDF; lander already books tables |
-| Scopers | Supper-club / events booking card or night page | Events are the standing invitation beyond takeaway |
-| Cúpla | Bilingual menu or at-the-counter specials card | Café proof beyond the opening welcome |
-| The Tool Centre | Plant-hire price list or category stock sheet | Trade buyers need prices and categories, not atmosphere |
-| Kent Amusements | Attractions map / family offers / seasonal hours board | Seasonal parks sell the day’s plan |
-| Newcastle Chamber | Member directory or join / events listing | Civic value is the network, not a brochure hero |
+| Hotel Enniskeen | Rooms & stay detail with Bookin1 | [/concepts/hotel-enniskeen/rooms/](/concepts/hotel-enniskeen/rooms/) |
+| Mourne Cycles | Hire, workshop & Cyclescheme funnel | [/concepts/mourne-cycles/hire/](/concepts/mourne-cycles/hire/) |
+| Donard Veterinary | Appointment request / emergency info | [/concepts/donard-veterinary/appointments/](/concepts/donard-veterinary/appointments/) |
+| The Buck’s Head | Menus experience (not PDF-only) | [/concepts/bucks-head/menus/](/concepts/bucks-head/menus/) |
+| Scopers | Supper-club night page | [/concepts/scopers/supper-club/](/concepts/scopers/supper-club/) |
+| Cúpla | Bilingual menu | [/concepts/cupla/menu/](/concepts/cupla/menu/) |
+| The Tool Centre | Plant-hire price list | [/concepts/tool-centre/hire-list/](/concepts/tool-centre/hire-list/) |
+| Kent Amusements | Attractions / hours / family offers board | [/concepts/kent-amusements/attractions/](/concepts/kent-amusements/attractions/) |
+| Newcastle Chamber | Member directory | [/concepts/newcastle-chamber/members/](/concepts/newcastle-chamber/members/) |
 
 ### Exit criteria
 
 - One second asset per published shortlist concept, captured at the same comparison size where it is a page, or as a print-faithful flat where it is a menu/board
 - Transformation page updated so a visitor can judge landing + second surface without leaving the concept story
 - `PROSPECTS.md` / verifications note which second asset shipped
+
+**Exit criteria met 22 July 2026** for all nine second assets above.
 
 ### Out of scope for this milestone
 
@@ -159,7 +173,7 @@ Convert a mock-up request into scoped paid work. Keep concept vs commissioned la
 
 ```
 M1 ✅ Tool Centre / Kent Amusements / Chamber landings
-M2 Second assets for all nine shortlist concepts (batch by town or by asset type)
+M2 ✅ Second assets for all nine shortlist concepts
 M3 Letterbox format decision → artwork → print
 M4 Request form wiring
 M5 Outreach wave 1
