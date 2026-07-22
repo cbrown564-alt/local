@@ -177,12 +177,19 @@ p { margin: 0 0 1.2em; }
 }
 .home-hero-comparison .comparison-stage {
   width: 100%;
-  height: min(52vh, 460px);
-  aspect-ratio: auto;
+  height: auto;
+  /* Match capture ratio (1265×710) so wide screens show the full frame,
+     not a short cropped band capped by a fixed height. */
+  aspect-ratio: 1265 / 710;
 }
 .home-hero-comparison .comparison-frame {
   border-radius: 0;
   box-shadow: 10px 10px 0 var(--ink);
+}
+.home-hero-comparison .comparison-frame > img,
+.home-hero-comparison .comparison-after img {
+  object-fit: cover;
+  object-position: top center;
 }
 
 .home-follow {
@@ -871,7 +878,14 @@ p { margin: 0 0 1.2em; }
   .mobile-menu { position: absolute; top: 70px; right: 0; width: min(320px, calc(100vw - 40px)); padding: 18px; background: var(--ink); color: white; box-shadow: 7px 7px 0 var(--yellow); }
   .mobile-menu:not([hidden]) { display: grid; gap: 12px; }
   .mobile-menu a { padding: 8px; }
-  .home-hero--product { --home-header: 78px; }
+  .home-hero--product {
+    --home-header: 78px;
+    /* Pack the product stage from the top so mobile doesn't get
+       large empty bands above/below a short landscape comparison. */
+    min-height: 0;
+    align-content: start;
+    padding: 18px 0 28px;
+  }
   .home-hero--product h1 {
     max-width: none;
     font-size: clamp(26px, 7vw, 36px);
@@ -879,7 +893,8 @@ p { margin: 0 0 1.2em; }
     text-wrap: balance;
   }
   .brand-hero { font-size: clamp(36px, 11vw, 52px); }
-  .home-hero-stage-footer { padding-top: 14px; }
+  .home-hero-frame { gap: 18px; }
+  .home-hero-stage-footer { padding-top: 12px; }
   .home-hero-stage-links {
     flex-direction: column;
     align-items: stretch;
@@ -887,7 +902,7 @@ p { margin: 0 0 1.2em; }
   }
   .home-hero-stage-browse { flex: none; width: 100%; }
   .home-hero-stage-compare { align-self: flex-start; }
-  .home-hero-comparison .comparison-stage { height: min(38vh, 300px); }
+  .home-hero-comparison .comparison-control { padding-top: 12px; }
   .home-hero--product .button-row { gap: 14px; }
   .home-place { min-height: min(58vh, 520px); }
   .home-place-copy { padding: 56px 0 48px; }
