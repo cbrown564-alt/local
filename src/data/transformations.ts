@@ -13,6 +13,21 @@ export interface Transformation {
 
 export const transformations: Transformation[] = [
   {
+    slug: "tool-centre",
+    name: "The Tool Centre",
+    town: "Newcastle",
+    category: "Hardware & hire",
+    summary:
+      "The Main Street hardware and plant-hire counter — currently behind a Facebook login — given a first screen that leads with Co. Down, hire rates and stock categories.",
+    before: "/images/tool-centre-current.jpg",
+    after: "/images/tool-centre-concept.jpg",
+    beforeAlt:
+      "The Tool Centre's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the shop's introduction greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in yard black, cool concrete and badge yellow, with the Hardware on the shelf Hire on the yard headline, a hire-desk rates board and a stock-category rail",
+    href: "/transformations/tool-centre/",
+  },
+  {
     slug: "cupla",
     name: "Cúpla",
     town: "Dundrum",
