@@ -22,7 +22,7 @@ export const transformations: Transformation[] = [
     before: "/images/newcastle-chamber-current.jpg",
     after: "/images/newcastle-chamber-concept.jpg",
     beforeAlt:
-      "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the Chamber's introduction greyed out behind them",
+      "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by a login form, with the Chamber's introduction greyed out behind the wall",
     afterAlt:
       "Mourne and Main concept opening in harbour navy, sea mist and civic brass, with The town's businesses under one roof headline, a Halloween events card and a members-events-join rail",
     href: "/transformations/newcastle-chamber/",
