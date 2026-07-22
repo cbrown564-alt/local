@@ -34,7 +34,19 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 
 ## Milestone 2 — Second critical page or asset
 
-**New workstream after Milestone 1.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second mock-up that matches that concept’s own visual identity.
+**In progress · kicked off 22 July 2026.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second mock-up that matches that concept’s own visual identity.
+
+### Build conventions (M2)
+
+| Piece | Convention |
+|---|---|
+| Second concept route | `/concepts/<slug>/<asset>/` → `src/pages/concepts/<slug>/<asset>.astro` |
+| Styles | Extend the existing `concept-<slug>.css` with the same class prefix — do not invent a second identity |
+| Captures | `node scripts/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-concept.jpg` (+ optional `-current.jpg` when a real before exists) |
+| Transformation page | After the opening comparison, a `.second-surface` block: either a second `BeforeAfter` with `showNotes={false}`, or a labelled companion still |
+| Docs | Note which asset shipped in `PROSPECTS.md` + `research/verifications.json` |
+
+Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-veterinary/appointments`, `bucks-head/menus`, `scopers/supper-club`, `cupla/menu`, `tool-centre/hire-list`, `kent-amusements/attractions`, `newcastle-chamber/members`.
 
 ### Intent
 
