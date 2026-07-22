@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArrowIcon from "../../components/ArrowIcon.astro";
 import BeforeAfter from "../../components/BeforeAfter.astro";
 import Disclosure from "../../components/Disclosure.astro";
+import TransformationGallery from "../../components/TransformationGallery.astro";
 import { transformations } from "../../data/transformations";
 
 const towns = ["All towns", "Dundrum", "Newcastle"] as const;
@@ -14,9 +15,11 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
     <div class="shell">
       <p class="eyebrow">Local transformations</p>
       <h1>See familiar local sites, before and after.</h1>
-      <p class="lede">Independent concepts for shops and services around Dundrum and Newcastle. Filter by town or type, then drag each comparison.</p>
+      <p class="lede">Independent concepts for shops and services around Dundrum and Newcastle. Swipe the gallery, drag each comparison, then read the detail for each business below.</p>
     </div>
   </section>
+
+  <TransformationGallery items={transformations} />
 
   <section class="transformation-list" data-transformation-list>
     <div class="shell">
@@ -59,11 +62,18 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
         Showing {transformations.length} transformations
       </p>
 
+      <div class="transformation-detail-head">
+        <p class="eyebrow">Review each one</p>
+        <h2>Full detail for every business.</h2>
+        <p class="transformation-detail-lede">Filter by town or type, open the full comparison, or request the same treatment for your own site.</p>
+      </div>
+
       <Disclosure reminder />
 
       {transformations.map((item) => (
         <article
           class="transformation-card"
+          id={`transformation-${item.slug}`}
           data-transformation-card
           data-town={item.town}
           data-category={item.category}
@@ -166,8 +176,11 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
 
 <script>
   const root = document.querySelector<HTMLElement>("[data-transformation-list]");
+  const gallery = document.querySelector<HTMLElement>("[data-transformation-gallery]");
   if (root) {
     const cards = [...root.querySelectorAll<HTMLElement>("[data-transformation-card]")];
+    const gallerySlides = gallery ? [...gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]")] : [];
+    const galleryPills = gallery ? [...gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-pill]")] : [];
     const status = root.querySelector<HTMLElement>("[data-filter-status]");
     const empty = root.querySelector<HTMLElement>("[data-filter-empty]");
     const filters = {
@@ -177,18 +190,31 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
 
     const applyFilters = () => {
       let visible = 0;
+      const match = (town: string | undefined, category: string | undefined) => {
+        const townMatch = !filters.town || town === filters.town;
+        const categoryMatch = !filters.category || category === filters.category;
+        return townMatch && categoryMatch;
+      };
+
       cards.forEach((card) => {
-        const townMatch = !filters.town || card.dataset.town === filters.town;
-        const categoryMatch = !filters.category || card.dataset.category === filters.category;
-        const show = townMatch && categoryMatch;
+        const show = match(card.dataset.town, card.dataset.category);
         card.hidden = !show;
         if (show) visible += 1;
       });
+
+      gallerySlides.forEach((slide) => {
+        slide.hidden = !match(slide.dataset.town, slide.dataset.category);
+      });
+      galleryPills.forEach((pill) => {
+        pill.hidden = !match(pill.dataset.town, pill.dataset.category);
+      });
+
       if (status) {
         status.textContent =
           visible === 1 ? "Showing 1 transformation" : `Showing ${visible} transformations`;
       }
       if (empty) empty.hidden = visible !== 0;
+      gallery?.dispatchEvent(new CustomEvent("gallery:filter"));
     };
 
     root.querySelectorAll<HTMLButtonElement>(".owner-filter-pill").forEach((button) => {
