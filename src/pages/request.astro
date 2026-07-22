@@ -1,17 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArrowIcon from "../components/ArrowIcon.astro";
+import "../styles/request.css";
 ---
 
-<BaseLayout title="Request a free before-and-after — Mourne & Main" description="Request a free, no-obligation website or digital-content mock-up for a local business or organisation.">
+<BaseLayout title="Request a free before-and-after — Mourne & Main" description="Request a free, no-obligation website or digital-content before-and-after for a local business or organisation.">
   <section class="shell request-layout">
     <div class="request-copy">
-      <p class="eyebrow">Free first look</p>
+      <p class="eyebrow">Free before-and-after</p>
       <h1>What would you like to see differently?</h1>
       <p>Share the current link and the part that matters most. We will choose one useful screen or piece of content and show a clearer direction.</p>
       <p><strong>No obligation.</strong> No full redesign hiding behind a sales call. Just a focused before-and-after to start the conversation.</p>
     </div>
     <form class="request-form" novalidate>
+      <div class="form-honeypot" aria-hidden="true">
+        <label for="company">Leave this field empty</label>
+        <input id="company" name="company" tabindex="-1" autocomplete="off" />
+      </div>
       <div class="form-error" role="alert" aria-live="assertive"></div>
       <div class="form-success" role="status" aria-live="polite"></div>
       <div class="field-grid">
@@ -24,10 +29,8 @@ import ArrowIcon from "../components/ArrowIcon.astro";
         <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required /></div>
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
       </div>
-      <button class="button" type="submit">Request a free before-and-after <ArrowIcon /></button>
-      {import.meta.env.DEV && (
-        <p class="form-note">Prototype note: this form demonstrates the full request experience but does not yet send data to a server.</p>
-      )}
+      <button class="button" type="submit"><span data-submit-label>Request a free before-and-after</span> <ArrowIcon /></button>
+      <p class="form-note">Your details are used only to respond to this request.</p>
     </form>
   </section>
 </BaseLayout>
@@ -36,7 +39,9 @@ import ArrowIcon from "../components/ArrowIcon.astro";
   const form = document.querySelector<HTMLFormElement>(".request-form");
   const error = form?.querySelector<HTMLElement>(".form-error");
   const success = form?.querySelector<HTMLElement>(".form-success");
-  form?.addEventListener("submit", (event) => {
+  const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const submitLabel = form?.querySelector<HTMLElement>("[data-submit-label]");
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     form.classList.add("request-form--submitted");
     if (error) error.textContent = "";
@@ -47,9 +52,31 @@ import ArrowIcon from "../components/ArrowIcon.astro";
       invalid.focus();
       return;
     }
-    const business = new FormData(form).get("business");
-    form.reset();
-    if (success) success.textContent = `Thanks — the request for ${business} is ready. In the live version, this is where it would be sent securely.`;
-    success?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const data = Object.fromEntries(new FormData(form).entries());
+    const business = data.business;
+    if (submit) submit.disabled = true;
+    if (submitLabel) submitLabel.textContent = "Sending…";
+
+    try {
+      const response = await fetch("/api/request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "The request could not be sent.");
+      form.reset();
+      form.classList.remove("request-form--submitted");
+      if (success) success.textContent = `Thanks — your request for ${business} has been sent. We’ll reply to the email address you provided.`;
+      success?.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (submissionError) {
+      if (error) error.textContent = submissionError instanceof Error
+        ? submissionError.message
+        : "The request could not be sent just now. Please try again.";
+      error?.scrollIntoView({ behavior: "smooth", block: "center" });
+    } finally {
+      if (submit) submit.disabled = false;
+      if (submitLabel) submitLabel.textContent = "Request a free before-and-after";
+    }
   });
 </script>

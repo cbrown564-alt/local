@@ -34,7 +34,7 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 
 ## Milestone 2 — Second critical page or asset ✅
 
-**Shipped 22 July 2026.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second mock-up that matches that concept’s own visual identity.
+**Shipped 22 July 2026.** Today each concept proves only the opening screen. Owners often decide on the next useful surface — booking, menu, hire list, events — not the hero alone. For every published shortlist concept (the six live ones plus the three from Milestone 1), add **one** second concept screen that matches that concept’s own visual identity.
 
 ### Build conventions (M2)
 
@@ -96,7 +96,7 @@ Ambition runs from a single sharp card to a small printed “local before-and-af
 | Option | Form | Ambition | Notes |
 |---|---|---|---|
 | **A. Proof postcard** | A6 / DL postcard, one local before/after on the face, one CTA on the reverse | Low–medium | Fast to print; easy to hand or post; limited story |
-| **B. Door-drop bifold** | A5 bifold: one featured transformation, “how a free mock-up works”, QR to the live site | Medium | More room for belief ladder; still one piece per drop |
+| **B. Door-drop bifold** | A5 bifold: one featured transformation, “how a free before-and-after works”, QR to the live site | Medium | More room for belief ladder; still one piece per drop |
 | **C. Street sampler** | Short printed folio (4–6 panels) of 3–4 before/afters from the same town | High | Feels like a local exhibition; higher print cost; strongest “we already did the work” signal |
 | **D. Personalised one-sheet** | Single named sheet for one business (“what X could look like”) using their concept | High per door | Best conversion; not viable for every door — use for priority outreach after the generic drop |
 | **E. Window-ready mini-poster** | A4 with a tear-off or QR strip owners could keep | Medium | Doubles as something they might display; risk of looking like junk mail if copy is salesy |
@@ -105,7 +105,7 @@ Ambition runs from a single sharp card to a small printed “local before-and-af
 
 1. **Primary drop:** Option **B** (bifold) or a strong **A** if budget/time is tight — one hero comparison from the recipient’s town, plain neighbourly copy, QR to `/transformations/` and `/request/`.
 2. **Priority follow-up:** Option **D** for the hottest shortlist names once Milestone 2 assets exist (landing + second page in the leave-behind).
-3. **Tone rules (from PRODUCT.md):** show the change before the ask; no SaaS theatre; concept work labelled honestly; CTA = free before-and-after mock-up.
+3. **Tone rules (from PRODUCT.md):** show the change before the ask; no SaaS theatre; concept work labelled honestly; CTA = free before-and-after.
 4. **Production questions to answer in this milestone:** print run size, towns/streets covered, paper stock, whether QR lands on a tracked path, hand-delivery vs Royal Mail, and a single back-side layout that stays readable at arm’s length.
 
 ### Exit criteria
@@ -137,19 +137,19 @@ Only after Milestones 1–3 (and preferably 4). Move published concepts through 
 
 1. Clear remaining caveats (South Down Signs trading; same-name collisions kept out of copy)
 2. Re-verify each target the day before contact
-3. Lead with the printed piece + the live transformation link; offer the free mock-up
+3. Lead with the printed piece + the live transformation link; offer the free before-and-after
 4. Record outcomes in verifications + `PROSPECTS.md`
 
 ### Exit criteria
 
 - First batch contacted with dated notes
-- At least one mock-up request path proven end-to-end (site or reply)
+- At least one before-and-after request path proven end-to-end (site or reply)
 
 ---
 
 ## Milestone 6 — First paid engagement
 
-Convert a mock-up request into scoped paid work. Keep concept vs commissioned labelling honest on the public site until client approval exists.
+Convert a before-and-after request into scoped paid work. Keep concept vs commissioned labelling honest on the public site until client approval exists.
 
 ### Exit criteria
 

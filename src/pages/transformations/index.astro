@@ -5,6 +5,7 @@ import BeforeAfter from "../../components/BeforeAfter.astro";
 import Disclosure from "../../components/Disclosure.astro";
 import TransformationGallery from "../../components/TransformationGallery.astro";
 import { transformations } from "../../data/transformations";
+import "../../styles/transformations.css";
 
 const towns = ["All towns", "Dundrum", "Newcastle"] as const;
 const categories = ["All types", ...[...new Set(transformations.map((item) => item.category))]];
@@ -14,8 +15,8 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
   <section class="page-hero page-hero--list">
     <div class="shell">
       <p class="eyebrow">Local transformations</p>
-      <h1>Local website concepts, ready to browse.</h1>
-      <p class="lede">Real businesses from Dundrum and Newcastle — finished concepts up front, full comparisons when you want the detail.</p>
+      <h1>Ten local website concepts, ready to browse.</h1>
+      <p class="lede">Finished concept screens for real businesses in Dundrum and Newcastle. Swipe through the work, then open a full before-and-after when you want the detail.</p>
     </div>
   </section>
 
@@ -115,7 +116,7 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
     <div class="shell mockup-includes-grid">
       <div>
         <p class="eyebrow">What you get</p>
-        <h2>What a free mock-up includes.</h2>
+        <h2>What a free before-and-after includes.</h2>
         <p class="mockup-includes-lede">A small, concrete look at one useful screen — enough to judge the direction without a sales call.</p>
       </div>
       <ol class="mockup-includes-list">
@@ -180,7 +181,6 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
   if (root) {
     const cards = [...root.querySelectorAll<HTMLElement>("[data-transformation-card]")];
     const gallerySlides = gallery ? [...gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]")] : [];
-    const galleryPills = gallery ? [...gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-pill]")] : [];
     const status = root.querySelector<HTMLElement>("[data-filter-status]");
     const empty = root.querySelector<HTMLElement>("[data-filter-empty]");
     const filters = {
@@ -205,10 +205,6 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
       gallerySlides.forEach((slide) => {
         slide.hidden = !match(slide.dataset.town, slide.dataset.category);
       });
-      galleryPills.forEach((pill) => {
-        pill.hidden = !match(pill.dataset.town, pill.dataset.category);
-      });
-
       if (status) {
         status.textContent =
           visible === 1 ? "Showing 1 transformation" : `Showing ${visible} transformations`;
