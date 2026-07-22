@@ -131,7 +131,7 @@ reinvent:
    in place (Scopers set the pattern, 21 July 2026). The critique must then be
    about access — the wall in front of the story — never a mock of the
    business's own content behind it.
-8. **Check the concept capture too, not just the current one.** Two Mourne
+8. **Check the after capture too, not just the before one.** Two Mourne
    Cycles defects only showed up in the captured frame: a portrait hero image
    sized in-flow stretched the grid row and pushed the range rail below the
    1265×710 fold (fix: absolutely position imagery inside its panel), and
