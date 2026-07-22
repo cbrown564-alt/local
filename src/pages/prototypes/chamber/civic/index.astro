@@ -1,0 +1,53 @@
+---
+import CivicShell from "../../../../components/chamber-prototypes/CivicShell.astro";
+import { chamber, members, events } from "../../../../data/chamber-prototype";
+
+const nextEvent = events.find((e) => e.real)!;
+const sample = members.slice(0, 4);
+const base = "/prototypes/chamber/civic";
+---
+<CivicShell title="Newcastle Chamber of Commerce — Civic Front Door concept" current="home">
+  <section class="cv-hero">
+    <div>
+      <p class="cv-kicker">Civic hub · Main Street</p>
+      <h1>The town's businesses, <em>under one roof.</em></h1>
+      <p class="cv-lede">
+        {chamber.name} — Co. Down, not Tyne — is the volunteer-run hub for traders on Main Street
+        and beyond: a member directory, the town's events, and a clear door to join.
+      </p>
+      <div class="cv-actions">
+        <a class="cv-cta" href={`${base}/join/`}>Join the chamber</a>
+        <a class="cv-link" href={`${base}/members/`}>Browse members →</a>
+      </div>
+    </div>
+    <aside class="cv-event-card">
+      <p class="cv-kicker">Coming up · town calendar</p>
+      <h2>{nextEvent.title}</h2>
+      <p>{nextEvent.blurb}</p>
+      <p class="cv-event-meta"><strong>{nextEvent.date}</strong><br />{nextEvent.place}</p>
+      <a class="cv-cta cv-cta--brass" href={`${base}/events/`}>See all events</a>
+    </aside>
+  </section>
+
+  <nav class="cv-rail" aria-label="Primary sections">
+    <a href={`${base}/members/`}><strong>Members</strong><span>Directory by trade</span></a>
+    <a href={`${base}/events/`}><strong>Events</strong><span>Town calendar</span></a>
+    <a href={`${base}/join/`}><strong>Join</strong><span>Write to the inbox</span></a>
+    <a href={`${base}/about/`}><strong>About</strong><span>Volunteer-run since {chamber.relaunchYear}</span></a>
+  </nav>
+
+  <section class="cv-section">
+    <h2>Members on Main Street</h2>
+    <p>Illustrative sample of the kinds of trade the Chamber exists to list — hospitality, food, retail and services.</p>
+    <ul class="cv-grid">
+      {sample.map((m) => (
+        <li class="cv-card">
+          <h3>{m.name}</h3>
+          <p class="trade">{m.trade}</p>
+          <p>{m.note}</p>
+        </li>
+      ))}
+    </ul>
+    <p style="margin-top: 20px"><a class="cv-link" href={`${base}/members/`}>Full member directory →</a></p>
+  </section>
+</CivicShell>
