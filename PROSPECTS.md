@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 8 concepts
+Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 8 concepts published, 2 shortlisted, 6 assessed.
+Current stages: 9 concepts published, 1 shortlisted (held), 6 assessed.
 
 Rules of the road:
 
@@ -45,7 +45,7 @@ Rules of the road:
 | **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
 | **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
 | **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
-| Newcastle Chamber of Commerce | Newcastle | No site; active into 2026, runs on Gmail | Civic hub: member directory, events, join page — community piece |
+| **Newcastle Chamber of Commerce** — *concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Civic hub: member directory, events, join page — community piece |
 
 ## Assessed — not shortlisted
 
