@@ -24,7 +24,7 @@ export const transformations: Transformation[] = [
     beforeAlt:
       "Kent Amusements' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the arcade's introduction greyed out behind them",
     afterAlt:
-      "Mourne and Main concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a family-offers ticket and an attractions rail",
+      "Mourne and Main concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a proposed hours-and-updates ticket and an attractions rail",
     href: "/transformations/kent-amusements/",
   },
   {
