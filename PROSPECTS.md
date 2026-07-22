@@ -5,7 +5,7 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 6 concepts
+Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
 published
 
 ## Pipeline stages
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 6 concepts published, 4 shortlisted, 6 assessed.
+Current stages: 9 concepts published, 1 shortlisted (held), 6 assessed.
 
 Rules of the road:
 
@@ -43,9 +43,9 @@ Rules of the road:
 |---|---|---|---|
 | **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
 | **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
-| The Tool Centre | Newcastle | No site; hardware retail + plant hire | Utilitarian trade site: hire prices, stock categories, hours |
-| Kent Amusements | Newcastle | Facebook-only; active (Mar 2026 review, new VR) | Seasonal attraction site: attractions, hours, family offers |
-| Newcastle Chamber of Commerce | Newcastle | No site; active into 2026, runs on Gmail | Civic hub: member directory, events, join page — community piece |
+| **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
+| **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
+| **Newcastle Chamber of Commerce** — *concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Civic hub: member directory, events, join page — community piece |
 
 ## Assessed — not shortlisted
 
@@ -106,7 +106,9 @@ reinvent:
    Garamond; Mourne Cycles is coal black, signal red and Barlow Condensed,
    drawn from the shop's own logo; Donard Veterinary is plum, lavender and
    teal with Fraunces, drawn from the practice's badge — and introduces no
-   photography at all, the honest move when a site's own imagery is stock.
+   photography at all, the honest move when a site's own imagery is stock;
+   Kent Amusements is pier navy, spray mist, ticket amber and candy coral with
+   Teko, a promenade-arcade identity.
    (Castle Farm predated this convention and was normalised out of
    `global.css` on 21 July 2026.)
 5. **Capture both screens the same way** with

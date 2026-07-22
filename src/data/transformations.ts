@@ -13,6 +13,51 @@ export interface Transformation {
 
 export const transformations: Transformation[] = [
   {
+    slug: "newcastle-chamber",
+    name: "Newcastle Chamber of Commerce",
+    town: "Newcastle",
+    category: "Community",
+    summary:
+      "The Co. Down chamber that runs on Gmail and social — given a civic front door with a member directory tease, town events and a clear join path.",
+    before: "/images/newcastle-chamber-current.jpg",
+    after: "/images/newcastle-chamber-concept.jpg",
+    beforeAlt:
+      "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by a login form, with the Chamber's introduction greyed out behind the wall",
+    afterAlt:
+      "Mourne and Main concept opening in harbour navy, sea mist and civic brass, with The town's businesses under one roof headline, a Halloween events card and a members-events-join rail",
+    href: "/transformations/newcastle-chamber/",
+  },
+  {
+    slug: "kent-amusements",
+    name: "Kent Amusements",
+    town: "Newcastle",
+    category: "Amusement arcade",
+    summary:
+      "The Central Promenade arcade currently behind a Facebook login — given a first page that leads with fifty summers of family fun, attractions and seasonal hours.",
+    before: "/images/kent-amusements-current.jpg",
+    after: "/images/kent-amusements-concept.jpg",
+    beforeAlt:
+      "Kent Amusements' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the arcade's introduction greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a proposed hours-and-updates ticket and an attractions rail",
+    href: "/transformations/kent-amusements/",
+  },
+  {
+    slug: "tool-centre",
+    name: "The Tool Centre",
+    town: "Newcastle",
+    category: "Hardware & hire",
+    summary:
+      "The Main Street hardware and plant-hire counter — currently behind a Facebook login — given a first screen that leads with Co. Down, hire rates and stock categories.",
+    before: "/images/tool-centre-current.jpg",
+    after: "/images/tool-centre-concept.jpg",
+    beforeAlt:
+      "The Tool Centre's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the shop's introduction greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in yard black, cool concrete and badge yellow, with the Hardware on the shelf Hire on the yard headline, a hire-desk rates board and a stock-category rail",
+    href: "/transformations/tool-centre/",
+  },
+  {
     slug: "cupla",
     name: "Cúpla",
     town: "Dundrum",
