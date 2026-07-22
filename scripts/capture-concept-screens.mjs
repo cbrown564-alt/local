@@ -32,6 +32,7 @@ const CONCEPTS = {
   // account meets it — login walls and app prompts left visible on purpose.
   "scopers": { current: "https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/", currentBudgetMs: 8000 },
   "cupla": { current: "https://www.facebook.com/p/C%C3%BApla-61565293502528/", currentBudgetMs: 8000 },
+  "tool-centre": { current: "https://www.facebook.com/Toolcentreplanthire/", currentBudgetMs: 8000 },
 };
 
 const slug = process.argv[2];
