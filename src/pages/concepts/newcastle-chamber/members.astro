@@ -1,136 +1,60 @@
 ---
-import "../../../styles/global.css";
-import "../../../styles/concept-newcastle-chamber.css";
-const email = "mailto:newcastlechamber2023@gmail.com";
-const facebook = "https://www.facebook.com/newcastlechamberofcommerce/";
-const instagram = "https://www.instagram.com/newcastlechamber_/";
+import ChamberConceptShell from "../../../components/chamber-prototypes/ChamberConceptShell.astro";
+import { chamber, categories, members } from "../../../data/chamber-prototype";
 
-const categories = [
-  {
-    id: "hospitality",
-    label: "Hospitality & Stays",
-    members: [
-      { name: "Slieve Donard Resort & Spa", trade: "Hotel & Spa", note: "Downs Road · Newcastle's landmark hotel" },
-      { name: "Enniskeen Country House Hotel", trade: "Country House Hotel", note: "98 Bryansford Road · under the Mournes" },
-      { name: "The Anchor Inn", trade: "Hotel & Bar", note: "Main Street · bar and accommodation" },
-      { name: "Shore View Guest House", trade: "Bed & Breakfast", note: "Central Promenade · seafront stays" },
-    ],
-  },
-  {
-    id: "food",
-    label: "Food & Drink",
-    members: [
-      { name: "The Harbour Bar & Kitchen", trade: "Pub & Restaurant", note: "Main Street · food and live music" },
-      { name: "Bay Café", trade: "Café", note: "Promenade · all-day breakfast" },
-      { name: "Mourne Seafood Bar", trade: "Restaurant", note: "Main Street · locally caught fish" },
-      { name: "The Corner Bakehouse", trade: "Bakery & Café", note: "South Promenade · bread and pastries" },
-      { name: "Sandy Brae Ice Cream", trade: "Café & Takeaway", note: "Main Street · seasonal, family run" },
-    ],
-  },
-  {
-    id: "retail",
-    label: "Retail & Gifts",
-    members: [
-      { name: "Mourne Gallery & Gifts", trade: "Art & Gifts", note: "Main Street · local prints and crafts" },
-      { name: "Newcastle Outdoor & Leisure", trade: "Outdoor & Sports", note: "Main Street · walking and cycling gear" },
-      { name: "The Linen House", trade: "Home & Textiles", note: "Central Promenade · Irish linen" },
-      { name: "Bookends Newcastle", trade: "Independent Bookshop", note: "Main Street · new and second-hand" },
-    ],
-  },
-  {
-    id: "services",
-    label: "Services & Leisure",
-    members: [
-      { name: "Royal County Down Golf Club", trade: "Golf Club", note: "Golf Links Road · world-ranked links course" },
-      { name: "Newcastle Pharmacy", trade: "Pharmacy", note: "Main Street · prescription and healthcare" },
-      { name: "Mourne Heritage Trust", trade: "Tourism & Conservation", note: "Central Promenade · Mourne walks and heritage" },
-      { name: "Newcastle Credit Union", trade: "Financial Services", note: "Main Street · member-owned savings and loans" },
-    ],
-  },
-];
+const base = "/concepts/newcastle-chamber";
 ---
-<!doctype html>
-<html lang="en-GB">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Member Directory — Newcastle Chamber of Commerce · Co. Down</title>
-  </head>
-  <body class="concept-page concept-newcastle-chamber">
-    <div class="nc-strip">
-      <span><strong>Newcastle, Co. Down</strong> · 50A Main Street · under the Mournes</span>
-      <span>News on <a href={facebook}>Facebook</a> &amp; <a href={instagram}>Instagram</a></span>
-    </div>
-    <header class="nc-header">
-      <a class="nc-brand" href="/concepts/newcastle-chamber/">
-        <svg class="nc-seal" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
-          <circle cx="23" cy="23" r="21.5" stroke="currentColor" stroke-width="1.6" />
-          <circle cx="23" cy="23" r="17.5" stroke="currentColor" stroke-width="1" opacity="0.45" />
-          <path d="M10 28 L16 20 L20 24 L26 14 L32 22 L36 18 L36 30 L10 30 Z" fill="currentColor" opacity="0.9" />
-          <path d="M10 30 H36" stroke="currentColor" stroke-width="1.4" />
-        </svg>
-        <span class="nc-brand-text">
-          <span class="nc-brand-name">Newcastle Chamber</span>
-          <span class="nc-brand-sub">of Commerce · Co. Down</span>
-        </span>
-      </a>
-      <nav class="nc-nav" aria-label="Concept navigation">
-        <a href="/concepts/newcastle-chamber/members/" aria-current="page">Members</a><a href="/concepts/newcastle-chamber/">Events</a><a href={email}>Join</a><a href={instagram}>Find us</a>
-      </nav>
-      <a class="nc-join" href={email}>Join the chamber</a>
-    </header>
-
-    <main class="nc-dir" id="main">
-      <div class="nc-dir-head">
-        <div class="nc-dir-head-text">
-          <p class="nc-kicker">Member directory · Newcastle</p>
-          <h1>Main Street traders, <em>in one place.</em></h1>
-          <p class="nc-dir-intro">
-            Businesses that have joined the Chamber — listed by trade so you can find what you need in town.
-            Updated as membership grows. <a href={email}>Contact the Chamber</a> to appear here.
-          </p>
-        </div>
-        <nav class="nc-dir-tabs" aria-label="Filter by category">
-          <a class="nc-dir-tab nc-dir-tab--active" href="#all">All</a>
-          {categories.map(cat => (
-            <a class="nc-dir-tab" href={`#${cat.id}`}>{cat.label}</a>
-          ))}
-        </nav>
+<ChamberConceptShell
+  title="Member Directory — Newcastle Chamber of Commerce · Co. Down"
+  current="members"
+  disclosure="Independent concept · not a live Chamber site · member list is illustrative"
+>
+  <main class="nc-dir" id="main">
+    <div class="nc-dir-head">
+      <div class="nc-dir-head-text">
+        <p class="nc-kicker">Member directory · Newcastle</p>
+        <h1>Main Street traders, <em>in one place.</em></h1>
+        <p class="nc-dir-intro">
+          Businesses that have joined the Chamber — listed by trade so you can find what you need in town.
+          Updated as membership grows. <a href={`${base}/join/`}>Ask to be listed</a>, or
+          <a href={chamber.emailHref}>email the Chamber</a>.
+        </p>
       </div>
-
-      <div class="nc-dir-body" id="all">
-        {categories.map(cat => (
-          <section class="nc-dir-category" id={cat.id}>
-            <h2 class="nc-dir-cat-label">{cat.label}</h2>
-            <ul class="nc-dir-grid" role="list">
-              {cat.members.map(member => (
-                <li class="nc-dir-card">
-                  <p class="nc-dir-card-name">{member.name}</p>
-                  <p class="nc-dir-card-trade">{member.trade}</p>
-                  <p class="nc-dir-card-note">{member.note}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+      <nav class="nc-dir-tabs" aria-label="Jump to category">
+        <a class="nc-dir-tab nc-dir-tab--active" href="#all">All</a>
+        {categories.map((cat) => (
+          <a class="nc-dir-tab" href={`#${cat.id}`}>{cat.label}</a>
         ))}
-      </div>
+      </nav>
+    </div>
 
-      <div class="nc-dir-join">
-        <div class="nc-dir-join-inner">
-          <p class="nc-dir-join-kicker">Not listed yet?</p>
-          <h2>Join the Chamber and <em>get your business found.</em></h2>
-          <p>The Chamber is run by volunteers from the local business community. Write to the inbox and the committee will be in touch.</p>
-          <div class="nc-actions">
-            <a class="nc-cta" href={email}>Email to join</a>
-            <a class="nc-link" href={facebook}>Follow on Facebook →</a>
-          </div>
+    <div class="nc-dir-body" id="all">
+      {categories.map((cat) => (
+        <section class="nc-dir-category" id={cat.id}>
+          <h2 class="nc-dir-cat-label">{cat.label}</h2>
+          <ul class="nc-dir-grid" role="list">
+            {members.filter((m) => m.category === cat.id).map((member) => (
+              <li class="nc-dir-card">
+                <p class="nc-dir-card-name">{member.name}</p>
+                <p class="nc-dir-card-trade">{member.trade}</p>
+                <p class="nc-dir-card-note">{member.note}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <div class="nc-dir-join">
+      <div class="nc-dir-join-inner">
+        <p class="nc-dir-join-kicker">Not listed yet?</p>
+        <h2>Join the Chamber and <em>get your business found.</em></h2>
+        <p>The directory is the gift. Write to the volunteer inbox and the committee will be in touch.</p>
+        <div class="nc-actions">
+          <a class="nc-cta" href={`${base}/join/`}>Why join</a>
+          <a class="nc-link" href={chamber.facebook}>Follow on Facebook →</a>
         </div>
       </div>
-    </main>
-
-    <div class="concept-disclosure">Independent concept · not a live Chamber site · member list is illustrative</div>
-  </body>
-</html>
+    </div>
+  </main>
+</ChamberConceptShell>

@@ -92,3 +92,14 @@ illustrative; contact details and Halloween are verified.
 3. Does the directory feel like a gift to members, or like admin furniture?
 4. Can the committee maintain this without AMS software?
 5. Which direction feels most like Newcastle under the Mournes — and least like a generic UK chamber theme?
+
+## Decision (22 July 2026)
+
+**Proceed with a B-led hybrid**, published at `/concepts/newcastle-chamber/`:
+
+- **B · Main Street Finder** — IA and homepage (directory as the product)
+- **A · Civic Front Door** — Co. Down strip, seal, harbour-navy / brass chrome
+- **C · Harbour Network** — warmer neighbour voice on the join page
+
+Mailto join; calendar grows from the verified Halloween date. Prototype
+directions at `/prototypes/chamber/` kept for comparison.

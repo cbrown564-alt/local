@@ -32,6 +32,7 @@ pnpm build
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
 - `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
+- `/concepts/newcastle-chamber/` — full linked Chamber concept (Home · Members · Events · Join · About · Contact)
 
 The request form posts to the Vercel Function at `/api/request`, which sends the submission to the configured inbox. Concept work is labelled as independent and uncommissioned.
 

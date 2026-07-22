@@ -1,0 +1,29 @@
+---
+import ChamberConceptShell from "../../../components/chamber-prototypes/ChamberConceptShell.astro";
+import { chamber, joinBenefits } from "../../../data/chamber-prototype";
+---
+<ChamberConceptShell title="Join — Newcastle Chamber of Commerce · Co. Down" current="join">
+  <main class="nc-page">
+    <p class="nc-kicker">Membership</p>
+    <h1>Trade with neighbours who <em>trade with you.</em></h1>
+    <p class="nc-lede">
+      Soft pitch for a volunteer network: get found in the directory, show up for town nights,
+      and stand with Main Street — without membership-portal theatre the committee can't run.
+    </p>
+    <div class="nc-benefits">
+      {joinBenefits.map((b, i) => (
+        <article class="nc-benefit">
+          <span class="nc-benefit-num">{i + 1}</span>
+          <div>
+            <h3>{b.title}</h3>
+            <p>{b.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <a class="nc-cta nc-cta--brass" href={chamber.emailHref}>Email to join</a>
+    <p style="margin-top: 16px; font-size: 14px; color: #5a6e7e;">
+      {chamber.email} · <a class="nc-link" href={chamber.phoneHref}>{chamber.phone}</a> · {chamber.address}
+    </p>
+  </main>
+</ChamberConceptShell>

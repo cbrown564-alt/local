@@ -1,0 +1,30 @@
+---
+import ChamberConceptShell from "../../../components/chamber-prototypes/ChamberConceptShell.astro";
+import { events } from "../../../data/chamber-prototype";
+---
+<ChamberConceptShell title="Events — Newcastle Chamber of Commerce · Co. Down" current="events">
+  <main class="nc-page">
+    <p class="nc-kicker">Town calendar</p>
+    <h1>What's on in <em>Newcastle.</em></h1>
+    <p class="nc-lede">
+      One confirmed town night from public sources, plus illustrative samples of how a standing
+      calendar could grow once the committee owns the page.
+    </p>
+    <div class="nc-event-list">
+      {events.map((event) => (
+        <article class="nc-event-row">
+          <time datetime={event.real ? event.dateSort : undefined}>{event.date}</time>
+          <div>
+            <h2>{event.title}</h2>
+            <p>{event.blurb}</p>
+            <p style="margin-top: 8px; font-size: 13px; color: #5a6e7e;">{event.place}</p>
+            <span class={`nc-badge ${event.real ? "nc-badge--real" : ""}`}>
+              {event.real ? "Verified public date" : "Illustrative concept"}
+            </span>
+          </div>
+          <a class="nc-cta" href={event.ctaHref}>{event.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+  </main>
+</ChamberConceptShell>
