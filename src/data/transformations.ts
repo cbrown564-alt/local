@@ -13,6 +13,21 @@ export interface Transformation {
 
 export const transformations: Transformation[] = [
   {
+    slug: "kent-amusements",
+    name: "Kent Amusements",
+    town: "Newcastle",
+    category: "Amusement arcade",
+    summary:
+      "The Central Promenade arcade currently behind a Facebook login — given a first page that leads with fifty summers of family fun, attractions and seasonal hours.",
+    before: "/images/kent-amusements-current.jpg",
+    after: "/images/kent-amusements-concept.jpg",
+    beforeAlt:
+      "Kent Amusements' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the arcade's introduction greyed out behind them",
+    afterAlt:
+      "Mourne and Main concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a family-offers ticket and an attractions rail",
+    href: "/transformations/kent-amusements/",
+  },
+  {
     slug: "cupla",
     name: "Cúpla",
     town: "Dundrum",
