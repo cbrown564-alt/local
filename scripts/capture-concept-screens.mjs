@@ -7,7 +7,7 @@
 //   node scripts/capture-concept-screens.mjs <slug>/<asset>   # Milestone 2 second surface
 //
 // Output (landing): public/images/<slug>-current.jpg and <slug>-concept.jpg
- // Output (second):  public/images/<slug>-<asset>-concept.jpg
+// Output (second):  public/images/<slug>-<asset>-concept.jpg
 //                   and optional <slug>-<asset>-current.jpg when a before URL exists
 // at 2530x1420 (1265x710 viewport at 2x for crisp comparison rendering).
 // Cookie and consent banners on the current site are left visible on purpose:

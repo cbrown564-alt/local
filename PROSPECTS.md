@@ -6,7 +6,7 @@ Working state of the concept pipeline. The data source of truth is
 summary and must be updated whenever a prospect changes stage.
 
 Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
-published
+published · Milestone 2 second assets shipped for all nine
 
 ## Pipeline stages
 
@@ -31,21 +31,21 @@ Rules of the road:
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
-| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
-| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
+| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* · M2 rooms [/concepts/hotel-enniskeen/rooms/](src/pages/concepts/hotel-enniskeen/rooms.astro) | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
+| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro) | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
+| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro) | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
+| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro) | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
-| **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
-| **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
-| **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
-| **Newcastle Chamber of Commerce** — *concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Civic hub: member directory, events, join page — community piece |
+| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* · M2 supper club [/concepts/scopers/supper-club/](src/pages/concepts/scopers/supper-club.astro) | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
+| **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro) | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
+| **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* · M2 hire list [/concepts/tool-centre/hire-list/](src/pages/concepts/tool-centre/hire-list.astro) | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
+| **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro) | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
+| **Newcastle Chamber of Commerce** — *concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* · M2 members [/concepts/newcastle-chamber/members/](src/pages/concepts/newcastle-chamber/members.astro) | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Civic hub: member directory, events, join page — community piece |
 
 ## Assessed — not shortlisted
 

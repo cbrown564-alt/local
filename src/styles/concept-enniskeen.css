@@ -270,3 +270,357 @@
 @media (prefers-reduced-motion: reduce) {
   .enk-kicker, .enk-story h1, .enk-lede, .enk-actions, .enk-booking { animation: none; }
 }
+
+/* ─── Brand link (rooms page — header wraps in an anchor) ─────────────────── */
+.enk-brand-link {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── Rooms page — /concepts/hotel-enniskeen/rooms/ ──────────────────────── */
+
+/* Hero: image left, copy right (mirrors landing but flipped) */
+.enk-rooms-hero {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  min-height: calc(100vh - 84px);
+}
+.enk-rooms-hero-image {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+.enk-rooms-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 32%;
+}
+.enk-rooms-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(340deg, rgba(21, 41, 31, 0.22), transparent 48%);
+  pointer-events: none;
+}
+.enk-rooms-hero-copy {
+  position: relative;
+  padding: clamp(44px, 6.5vh, 84px) clamp(28px, 4vw, 62px);
+  background:
+    radial-gradient(120% 90% at 100% 100%, rgba(0, 0, 0, 0.22), transparent 60%),
+    var(--pine);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.enk-rooms-hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(245, 239, 226, 0.14);
+  pointer-events: none;
+}
+.enk-rooms-hero-copy .enk-kicker { animation: enk-rise 480ms ease backwards; }
+.enk-rooms-hero-copy h1 {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.2vw, 58px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  animation: enk-rise 480ms 80ms ease backwards;
+}
+.enk-rooms-hero-copy h1 em { font-style: italic; color: var(--honey); }
+.enk-rooms-hero-copy .enk-lede { animation: enk-rise 480ms 160ms ease backwards; }
+.enk-rooms-hero-copy .enk-actions { animation: enk-rise 480ms 240ms ease backwards; }
+
+/* Room types section */
+.enk-room-types {
+  padding: 88px clamp(20px, 4vw, 64px);
+  background: var(--cream-bright);
+}
+.enk-room-types-head { margin-bottom: 52px; }
+.enk-room-types-head h2 {
+  margin: 12px 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+.enk-rooms-sub {
+  max-width: 54ch;
+  color: #4a5e4d;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.enk-room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.enk-room-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream-bright);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.enk-room-card:hover {
+  box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14);
+  transform: translateY(-3px);
+}
+.enk-room-card-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.enk-room-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 380ms ease;
+}
+.enk-room-card:hover .enk-room-card-image img { transform: scale(1.04); }
+
+/* Tint overlays so reused photo reads differently per card */
+.enk-room-card-image--balcony::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(21, 41, 31, 0.35));
+  pointer-events: none;
+}
+.enk-room-card-image--garden img { object-position: 40% 70%; filter: brightness(0.92) saturate(0.92); }
+.enk-room-card-image--family img { object-position: 72% 20%; filter: brightness(0.88) saturate(0.88) hue-rotate(-5deg); }
+
+.enk-room-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 26px 26px;
+  gap: 12px;
+}
+.enk-room-card-body h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.enk-room-view {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+}
+.enk-room-view svg { flex-shrink: 0; color: var(--honey); }
+.enk-room-features {
+  flex: 1;
+  margin: 4px 0 8px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.enk-room-features li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #3a4e3d;
+}
+.enk-room-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: var(--honey);
+}
+.enk-room-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 12px 20px;
+  background: var(--pine);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 160ms ease, gap 160ms ease;
+}
+.enk-room-book:hover { background: var(--honey-deep); gap: 12px; }
+
+/* Amenities strip */
+.enk-amenities {
+  padding: 80px clamp(20px, 4vw, 64px);
+  background: var(--pine);
+  color: var(--cream);
+}
+.enk-amenities .enk-kicker { color: var(--honey); }
+.enk-amenity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px 48px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.enk-amenity {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 6px;
+}
+.enk-amenity-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 6px;
+  color: var(--honey);
+}
+.enk-amenity strong {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.enk-amenity span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--copy-soft);
+}
+
+/* Availability bar — full-width section version for interior pages */
+.enk-page-booking-section {
+  padding: 72px clamp(20px, 4vw, 64px);
+  background: var(--cream);
+  border-top: 1px solid var(--hairline);
+}
+.enk-page-booking-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+.enk-page-booking-copy h2 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 500;
+  line-height: 1.1;
+}
+.enk-page-booking-copy p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #4a5e4d;
+}
+.enk-page-booking {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 0.9fr auto;
+  align-items: stretch;
+  background: var(--cream-bright);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 12px 32px rgba(21, 41, 31, 0.12);
+}
+.enk-page-booking label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px 20px;
+  border-right: 1px solid var(--hairline);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+}
+.enk-page-booking input,
+.enk-page-booking select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink-green);
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+}
+.enk-page-booking input:focus,
+.enk-page-booking select:focus { outline: 2px solid var(--honey); outline-offset: 3px; }
+.enk-page-booking button {
+  border: 0;
+  padding: 0 28px;
+  background: var(--pine);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 160ms ease;
+  white-space: nowrap;
+}
+.enk-page-booking button:hover { background: var(--honey-deep); }
+
+/* Responsive — rooms page */
+@media (max-width: 1100px) {
+  .enk-room-grid { grid-template-columns: repeat(2, 1fr); }
+  .enk-amenity-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .enk-rooms-hero { grid-template-columns: 1fr; min-height: 0; }
+  .enk-rooms-hero-image { min-height: 280px; order: -1; }
+  .enk-rooms-hero-copy { padding: 44px 24px; }
+  .enk-rooms-hero-copy::before { inset: 10px; }
+  .enk-page-booking-inner { grid-template-columns: 1fr; gap: 24px; }
+  .enk-page-booking {
+    grid-template-columns: 1fr 1fr;
+    box-shadow: none;
+    border-left: 0;
+    border-right: 0;
+  }
+  .enk-page-booking label:nth-of-type(2) { border-right: 0; }
+  .enk-page-booking label:nth-of-type(3) { border-top: 1px solid var(--hairline); }
+  .enk-page-booking button { grid-column: 1 / -1; padding: 17px; }
+}
+
+@media (max-width: 640px) {
+  .enk-room-grid { grid-template-columns: 1fr; }
+  .enk-amenity-grid { grid-template-columns: 1fr; gap: 24px; }
+  .enk-room-types { padding-inline: 20px; }
+  .enk-amenities { padding-inline: 20px; }
+  .enk-page-booking-section { padding-inline: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enk-rooms-hero-copy .enk-kicker,
+  .enk-rooms-hero-copy h1,
+  .enk-rooms-hero-copy .enk-lede,
+  .enk-rooms-hero-copy .enk-actions { animation: none; }
+  .enk-room-card,
+  .enk-room-card-image img { transition: none; }
+}

@@ -275,3 +275,177 @@
 @media (prefers-reduced-motion: reduce) {
   .cp-kicker, .cp-story h1, .cp-lede, .cp-actions, .cp-card { animation: none; }
 }
+
+/* Active nav state — marks the current page in sub-page nav */
+.cp-nav a[aria-current="page"]::after { right: 0; }
+
+/* ── Menu page (src/pages/concepts/cupla/menu.astro) ───────────────────────
+   A print-faithful bilingual menu card that also works as a 1265×710 screen
+   capture. Three columns — Caife, Bácús, Babhlaí — divided by hairlines, with
+   a petrol title bar above and a caramel specials strip below. */
+
+.cp-menu {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--oat);
+  min-height: calc(100vh - 80px - 38px);
+}
+
+.cp-menu-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 14px clamp(26px, 3.6vw, 56px) 13px;
+  background: var(--petrol);
+  color: var(--oat);
+}
+.cp-menu-head-copy { flex: 1; min-width: 0; }
+.cp-menu-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--oat);
+}
+.cp-menu-title em { font-style: italic; color: var(--caramel); }
+.cp-menu-address {
+  margin: 6px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 238, 225, 0.6);
+}
+.cp-menu-address em { font-style: italic; text-transform: none; letter-spacing: 0.02em; }
+.cp-menu-today {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding-top: 2px;
+  font-size: 13px;
+  color: #e8c58f;
+  flex-shrink: 0;
+}
+.cp-menu-today a { color: #fff; font-weight: 700; text-underline-offset: 3px; text-decoration-color: var(--caramel); }
+.cp-menu-today-sep { opacity: 0.4; }
+
+/* Three-column menu body */
+.cp-menu-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: start;
+}
+.cp-menu-col {
+  padding: 18px clamp(18px, 2vw, 30px);
+  border-left: 1px solid var(--hairline);
+}
+.cp-menu-col:first-child { border-left: 0; }
+
+/* Section heading: large italic Irish name + small-caps English */
+.cp-menu-col-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--caramel);
+}
+.cp-menu-col-ga {
+  font-family: var(--display);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--petrol);
+}
+.cp-menu-col-en {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--caramel-deep);
+}
+
+/* Menu item row: name (Irish italic) + descriptor + price */
+.cp-menu-list { margin: 0; padding: 0; list-style: none; }
+.cp-menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.cp-menu-item:last-child { border-bottom: 0; }
+.cp-menu-item-ga {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--petrol);
+  line-height: 1.2;
+}
+.cp-menu-item-ga em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7a8a7f;
+  margin-left: 4px;
+}
+.cp-menu-item-en {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #6b7a70;
+  margin-top: 2px;
+}
+.cp-menu-item-price {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--caramel-deep);
+  white-space: nowrap;
+}
+
+/* Specials strip — caramel bar anchoring the bottom of the menu */
+.cp-menu-specials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px clamp(26px, 3.6vw, 56px);
+  background: var(--caramel);
+  color: #2a1d0a;
+  font-size: 14px;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+.cp-menu-specials-ga {
+  font-family: var(--display);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 600;
+}
+.cp-menu-specials-sep { opacity: 0.4; flex-shrink: 0; }
+.cp-menu-specials-en { flex: 1; min-width: 0; }
+.cp-menu-specials-link {
+  color: inherit;
+  text-decoration-color: rgba(42, 29, 10, 0.45);
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.cp-menu-specials-link:hover { text-decoration: underline; }
+
+@media (max-width: 940px) {
+  .cp-menu-cols { grid-template-columns: 1fr; }
+  .cp-menu-col { border-left: 0; }
+  .cp-menu-col:not(:first-child) { border-top: 1px solid var(--hairline); }
+  .cp-menu-head { flex-direction: column; gap: 8px; }
+}
