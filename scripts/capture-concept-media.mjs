@@ -4,7 +4,10 @@
 //
 // Usage:
 //   pnpm build && pnpm preview   (in another terminal, serves 127.0.0.1:4321)
-//   node scripts/capture-concept-media.mjs <slug> [before|after]
+//   node scripts/capture-concept-media.mjs <slug> [both|before|after] [both|video|still]
+//
+// Arg 2 (target) picks which side(s) to capture; arg 3 (what) picks the medium.
+// Use `video` to add demo clips without overwriting verified committed stills.
 //
 // Output:
 //   public/images/<slug>-before.jpg / <slug>-after.jpg  (2530x1420, 2x stills)
@@ -27,46 +30,60 @@ const VIEW = { width: 1265, height: 710 };
 // Per-site capture plan. `dismiss` steps run before the generic overlay pass
 // and accept either a CSS selector or exact visible text; `hide` selectors are
 // removed with injected CSS when a widget cannot be dismissed by clicking.
-// `hover` is the interaction shown near the end of the demo (dropdown menus
-// and primary calls-to-action read best). `scrollStops` are viewport-height
-// multiples; keep the demo inside 9.5–10.5 seconds.
+// `beforeHover`/`afterHover` is the interaction shown near the end of the demo
+// (a CSS selector or `text=Visible Label`, or an array tried in order; dropdown
+// menus and primary CTAs read best). `scrollStops` are viewport-height
+// multiples, clamped to the page's real scroll range; keep the demo ~10s.
+//
+// `before: null` marks a first-website concept: its only public presence is a
+// gated social page (a Facebook login/cookie wall — see the *-before.jpg
+// stills), which is neither meaningful nor permissible to auto-drive. These
+// capture an AFTER demo only; the before stays the honest static still.
+const AFTER_HOVER = [".button", "a.button", ".button-secondary", "nav a", "header a"];
 const CONCEPTS = {
   "castle-farm": {
     before: "https://www.castlefarmni.com/",
     settleMs: 6000,
-    beforeHover: "nav a, header a",
-    afterHover: ".button, a.button",
+    beforeHover: ["text=SHOP", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
   },
   "hotel-enniskeen": {
     before: "https://www.enniskeenhotel.co.uk/",
     settleMs: 4000,
     beforeHover: "text=STAY WITH US",
-    afterHover: ".button, a.button",
+    afterHover: AFTER_HOVER,
   },
   "mourne-cycles": {
     before: "https://www.mourne-cycles.co.uk/",
     settleMs: 6000,
     beforeHover: "text=SHOWROOM",
-    afterHover: ".button, a.button",
+    afterHover: AFTER_HOVER,
   },
   "donard-veterinary": {
     before: "https://donardveterinaryclinic.co.uk/",
     settleMs: 5000,
     beforeHover: "text=Pet Services",
-    afterHover: ".button, a.button",
+    afterHover: AFTER_HOVER,
   },
   "bucks-head": {
     before: "https://thebucksheaddundrum.co.uk/",
     settleMs: 5000,
     beforeHover: "text=MENUS",
-    afterHover: ".button, a.button",
+    afterHover: AFTER_HOVER,
   },
+  // First-website concepts — after demo only (before is a gated social still).
+  "scopers": { before: null, afterHover: AFTER_HOVER },
+  "cupla": { before: null, afterHover: AFTER_HOVER },
+  "tool-centre": { before: null, afterHover: AFTER_HOVER },
+  "kent-amusements": { before: null, afterHover: AFTER_HOVER },
+  "newcastle-chamber": { before: null, afterHover: AFTER_HOVER },
 };
 
 const slug = process.argv[2];
-const only = process.argv[3];
-if (!CONCEPTS[slug]) {
-  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [before|after]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
+const only = process.argv[3] && process.argv[3] !== "both" ? process.argv[3] : null;
+const what = process.argv[4] ?? "both"; // both | video | still
+if (!CONCEPTS[slug] || !["before", "after", null].includes(only) || !["both", "video", "still"].includes(what)) {
+  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [both|before|after] [both|video|still]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
   process.exit(1);
 }
 
@@ -229,39 +246,58 @@ async function animScroll(page, top, ms) {
 
 async function hoverTarget(page, spec) {
   if (!spec) return false;
-  const wanted = spec.startsWith("text=") ? spec.slice(5).toLowerCase() : null;
-  const point = await page.evaluate(({ sel, text }) => {
-    const visible = (el) => {
+  // Accept a single spec or an ordered list; hover the first that resolves.
+  for (const one of [spec].flat()) {
+    const wanted = one.startsWith("text=") ? one.slice(5).toLowerCase() : null;
+    const point = await page.evaluate(({ sel, text }) => {
+      const visible = (el) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 8 && r.height > 8 && r.top >= 0 && r.bottom <= innerHeight && r.left >= 0;
+      };
+      const pool = text
+        ? [...document.querySelectorAll("a, button, [role='button'], li, span")]
+          .filter((el) => (el.innerText || "").trim().toLowerCase() === text)
+        : [...document.querySelectorAll(sel)];
+      const el = pool.find(visible);
+      if (!el) return null;
       const r = el.getBoundingClientRect();
-      return r.width > 8 && r.height > 8 && r.top >= 0 && r.bottom <= innerHeight && r.left >= 0;
-    };
-    const pool = text
-      ? [...document.querySelectorAll("a, button, [role='button'], li, span")]
-        .filter((el) => (el.innerText || "").trim().toLowerCase() === text)
-      : [...document.querySelectorAll(sel)];
-    const el = pool.find(visible);
-    if (!el) return null;
-    const r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-  }, { sel: wanted ? "" : spec, text: wanted });
-  if (!point) return false;
-  await page.mouse.move(point.x, point.y, { steps: 14 });
-  return true;
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    }, { sel: wanted ? "" : one, text: wanted });
+    if (point) {
+      await page.mouse.move(point.x, point.y, { steps: 14 });
+      return true;
+    }
+  }
+  return false;
 }
 
+const DEMO_MS = 10000;
+
 async function runDemoScript(page, hoverSpec, scrollStops) {
-  const stops = scrollStops ?? [0.85, 1.7];
-  await sleep(2200); // hero hold: carousels and entrance animations play
-  for (const stop of stops) {
-    await animScroll(page, Math.round(stop * VIEW.height), 700);
-    await sleep(1600);
+  const started = Date.now();
+  // Clamp the scripted stops to what the page can actually scroll and drop
+  // stops that collapse together — concept opening screens are short, and a
+  // no-op scroll reads as dead air in the clip.
+  const maxScroll = await page.evaluate(
+    () => (document.scrollingElement || document.documentElement).scrollHeight - innerHeight,
+  );
+  const targets = (scrollStops ?? [0.85, 1.7])
+    .map((stop) => Math.min(Math.round(stop * VIEW.height), maxScroll))
+    .filter((top, i, all) => top > 60 && all.indexOf(top) === i);
+
+  await sleep(2000); // hero hold: carousels and entrance animations play
+  for (const top of targets) {
+    await animScroll(page, top, 700);
+    await sleep(1450);
   }
-  await animScroll(page, 0, 900);
-  await sleep(500);
-  const hovered = await hoverTarget(page, hoverSpec);
-  await sleep(hovered ? 1700 : 1100);
+  if (targets.length) {
+    await animScroll(page, 0, 900);
+    await sleep(500);
+  }
+  if (await hoverTarget(page, hoverSpec)) await sleep(1600);
   await page.mouse.move(VIEW.width / 2, VIEW.height * 0.7, { steps: 10 });
-  await sleep(600);
+  // Pad short pages out to a consistent clip length.
+  await sleep(Math.min(4000, Math.max(500, DEMO_MS - (Date.now() - started))));
 }
 
 // ---------------------------------------------------------------------------
@@ -282,14 +318,18 @@ async function recordDemo(page, outName, hoverSpec, scrollStops) {
   const t0 = Date.now();
   await runDemoScript(page, hoverSpec, scrollStops);
   const wallSeconds = (Date.now() - t0) / 1000;
+  const endTs = Date.now() / 1000;
   await cdp.send("Page.stopScreencast");
   await cdp.detach();
   if (frames.length < 10) throw new Error(`only ${frames.length} screencast frames captured`);
 
   // concat demuxer: real per-frame durations preserve the pacing of holds.
+  // Screencast frames arrive only on visual change, so a static closing hold
+  // exists solely as the last frame's duration — measure it from the wall
+  // clock (frame timestamps and Date.now() share the epoch).
   const lines = ["ffconcat version 1.0"];
   for (let i = 0; i < frames.length; i++) {
-    const next = i + 1 < frames.length ? frames[i + 1].ts : frames[i].ts + 0.6;
+    const next = i + 1 < frames.length ? frames[i + 1].ts : Math.min(endTs, frames[i].ts + 4.5);
     lines.push(`file '${frames[i].file.replaceAll("\\", "/")}'`);
     lines.push(`duration ${Math.max(0.016, next - frames[i].ts).toFixed(4)}`);
   }
@@ -326,11 +366,13 @@ async function captureTarget(browser, site, url, outName, hoverSpec) {
   await sleep(site.settleMs ?? 4000);
   await dismissOverlays(page, site);
   await sleep(800);
-  await captureStill(page, outName);
-  await page.setViewport({ ...VIEW, deviceScaleFactor: 1 });
-  await animScroll(page, 0, 200);
-  await sleep(700);
-  await recordDemo(page, outName, hoverSpec, site.scrollStops);
+  if (what !== "video") await captureStill(page, outName);
+  if (what !== "still") {
+    await page.setViewport({ ...VIEW, deviceScaleFactor: 1 });
+    await animScroll(page, 0, 200);
+    await sleep(700);
+    await recordDemo(page, outName, hoverSpec, site.scrollStops);
+  }
   await page.close();
 }
 
@@ -347,7 +389,10 @@ const browser = await puppeteer.launch({
   args: ["--hide-scrollbars", "--mute-audio", "--force-color-profile=srgb", "--disable-gpu"],
 });
 try {
-  if (only !== "after") await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
+  if (only !== "after") {
+    if (site.before) await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
+    else console.log(`${slug}-before: skipped (first-website concept — no live site to demo)`);
+  }
   if (only !== "before") await captureTarget(browser, site, conceptUrl, `${slug}-after`, site.afterHover);
 } finally {
   await browser.close();
