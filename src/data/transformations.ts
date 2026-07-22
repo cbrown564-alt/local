@@ -18,13 +18,13 @@ export const transformations: Transformation[] = [
     town: "Newcastle",
     category: "Community",
     summary:
-      "The Co. Down chamber that runs on Gmail and social — given a civic front door with a member directory tease, town events and a clear join path.",
+      "The Co. Down chamber that runs on Gmail and social — given a Main Street finder with civic chrome, a full member directory, events, join and contact.",
     before: "/images/newcastle-chamber-before.jpg",
     after: "/images/newcastle-chamber-after.jpg",
     beforeAlt:
       "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by a login form, with the Chamber's introduction greyed out behind the wall",
     afterAlt:
-      "Mourne and Main concept opening in harbour navy, sea mist and civic brass, with The town's businesses under one roof headline, a Halloween events card and a members-events-join rail",
+      "Mourne and Main concept opening in harbour navy, sea mist and civic brass: Find a business on Main Street headline, directory search, Halloween events card and trade category rail",
     href: "/transformations/newcastle-chamber/",
   },
   {

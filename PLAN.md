@@ -174,14 +174,17 @@ with that direction, explore fuller site concepts.
 | C · Harbour Network | [/prototypes/chamber/network/](/prototypes/chamber/network/) |
 
 Each direction is a full linked IA: Home · About · Members · Events · Join ·
-Contact. Shared content in `src/data/chamber-prototype.ts`. Choose a direction
-(or hybrid) before expanding the published `/concepts/newcastle-chamber/` set.
+Contact. Shared content in `src/data/chamber-prototype.ts`.
+
+**Decision 22 July 2026:** B-led hybrid published at
+`/concepts/newcastle-chamber/` (Finder IA + civic chrome + warmer join).
+Prototypes retained for comparison.
 
 ### Exit criteria
 
-- Research brief + peer examples recorded
-- Three visually distinct full-site prototypes, every page reachable
-- Review notes captured; winning direction (or blend) decided before Chamber outreach packaging
+- Research brief + peer examples recorded ✅
+- Three visually distinct full-site prototypes, every page reachable ✅
+- Winning direction decided and published as full linked concept site ✅
 
 ---
 
