@@ -1,0 +1,195 @@
+---
+import type { Transformation } from "../data/transformations";
+
+interface Props {
+  items: Transformation[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="transformation-gallery" data-transformation-gallery aria-label="Concept showcase">
+  <div class="transformation-gallery-head shell">
+    <div class="transformation-gallery-intro">
+      <p class="eyebrow">The portfolio</p>
+      <h2>Ten finished concepts in one sweep.</h2>
+      <p class="transformation-gallery-lede">
+        The proposed screens only — scroll through, then compare before and after in the detail below.
+      </p>
+    </div>
+    <div class="transformation-gallery-toolbar">
+      <p class="transformation-gallery-count" data-gallery-count aria-live="polite">
+        {items.length} transformations
+      </p>
+      <div class="transformation-gallery-arrows" aria-label="Gallery navigation">
+        <button type="button" class="transformation-gallery-arrow" data-gallery-prev aria-label="Previous transformation">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button type="button" class="transformation-gallery-arrow" data-gallery-next aria-label="Next transformation">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="transformation-gallery-scroller" data-gallery-scroller tabindex="0" aria-label="Scrollable concept gallery">
+    <div class="transformation-gallery-track" data-gallery-track>
+      {items.map((item) => (
+        <article
+          class="transformation-gallery-slide"
+          data-gallery-slide
+          data-town={item.town}
+          data-category={item.category}
+          data-slug={item.slug}
+          id={`gallery-${item.slug}`}
+          aria-label={`${item.name}, ${item.town}`}
+        >
+          <a class="transformation-gallery-card" href={`#transformation-${item.slug}`}>
+            <div class="transformation-gallery-frame">
+              <img
+                src={item.after}
+                alt={item.afterAlt}
+                width="1265"
+                height="710"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="transformation-gallery-caption">
+              <div class="transformation-gallery-tags">
+                <span class="tag">{item.town}</span>
+                <span class="tag tag-muted">{item.category}</span>
+              </div>
+              <h3 class="transformation-gallery-name">{item.name}</h3>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="transformation-gallery-pills shell">
+    <p class="transformation-gallery-pills-label" id="gallery-pills-label">Jump to</p>
+    <div class="transformation-gallery-pill-row" role="tablist" aria-labelledby="gallery-pills-label" data-gallery-pills>
+      {items.map((item, index) => (
+        <button
+          type="button"
+          class="transformation-gallery-pill"
+          role="tab"
+          data-gallery-pill
+          data-slug={item.slug}
+          data-town={item.town}
+          data-category={item.category}
+          aria-selected={index === 0 ? "true" : "false"}
+          aria-controls={`gallery-${item.slug}`}
+        >
+          {item.name}
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const gallery = document.querySelector<HTMLElement>("[data-transformation-gallery]");
+  if (gallery) {
+    const scroller = gallery.querySelector<HTMLElement>("[data-gallery-scroller]");
+    const slides = [...gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]")];
+    const pills = [...gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-pill]")];
+    const prev = gallery.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+    const next = gallery.querySelector<HTMLButtonElement>("[data-gallery-next]");
+    const count = gallery.querySelector<HTMLElement>("[data-gallery-count]");
+
+    const visibleSlides = () => slides.filter((slide) => !slide.hidden);
+
+    const updateCount = () => {
+      const total = visibleSlides().length;
+      if (count) {
+        count.textContent = total === 1 ? "1 transformation" : `${total} transformations`;
+      }
+    };
+
+    const setActivePill = (slug: string | undefined) => {
+      pills.forEach((pill) => {
+        const active = pill.dataset.slug === slug;
+        pill.classList.toggle("is-active", active);
+        pill.setAttribute("aria-selected", String(active));
+      });
+    };
+
+    const nearestSlide = () => {
+      if (!scroller) return slides[0];
+      const center = scroller.scrollLeft + scroller.clientWidth / 2;
+      let best = visibleSlides()[0];
+      let bestDist = Infinity;
+      visibleSlides().forEach((slide) => {
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const dist = Math.abs(center - slideCenter);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = slide;
+        }
+      });
+      return best;
+    };
+
+    const scrollToSlide = (slide: HTMLElement | undefined, behavior: ScrollBehavior = "smooth") => {
+      if (!scroller || !slide) return;
+      const offset = slide.offsetLeft - (scroller.clientWidth - slide.offsetWidth) / 2;
+      scroller.scrollTo({ left: Math.max(0, offset), behavior });
+      setActivePill(slide.dataset.slug);
+    };
+
+    const step = (direction: 1 | -1) => {
+      const list = visibleSlides();
+      if (!list.length) return;
+      const current = nearestSlide();
+      const index = list.indexOf(current);
+      const nextIndex = Math.min(list.length - 1, Math.max(0, index + direction));
+      scrollToSlide(list[nextIndex]);
+    };
+
+    prev?.addEventListener("click", () => step(-1));
+    next?.addEventListener("click", () => step(1));
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        const slide = slides.find((item) => item.dataset.slug === pill.dataset.slug);
+        scrollToSlide(slide);
+      });
+    });
+
+    let scrollTimer: ReturnType<typeof setTimeout> | undefined;
+    scroller?.addEventListener("scroll", () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        setActivePill(nearestSlide()?.dataset.slug);
+      }, 80);
+    }, { passive: true });
+
+    scroller?.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        step(-1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        step(1);
+      }
+    });
+
+    gallery.addEventListener("gallery:filter", () => {
+      updateCount();
+      const first = visibleSlides()[0];
+      if (first) scrollToSlide(first, "auto");
+      else setActivePill(undefined);
+    });
+
+    updateCount();
+    if (slides[0]) setActivePill(slides[0].dataset.slug);
+  }
+</script>
