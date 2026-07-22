@@ -1,14 +1,14 @@
 // Captures the matched media set for a transformation comparison: a clean
-// "current" and "concept" opening-screen still, plus a ~10-second demo clip
+// "before" and "after" opening-screen still, plus a ~10-second demo clip
 // of each page being visited (hero hold, scroll, key hover interaction).
 //
 // Usage:
 //   pnpm build && pnpm preview   (in another terminal, serves 127.0.0.1:4321)
-//   node scripts/capture-concept-media.mjs <slug> [current|concept]
+//   node scripts/capture-concept-media.mjs <slug> [before|after]
 //
 // Output:
-//   public/images/<slug>-current.jpg / <slug>-concept.jpg  (2530x1420, 2x stills)
-//   public/videos/<slug>-current.mp4 / <slug>-concept.mp4  (1264x710, H.264, ~10s)
+//   public/images/<slug>-before.jpg / <slug>-after.jpg  (2530x1420, 2x stills)
+//   public/videos/<slug>-before.mp4 / <slug>-after.mp4  (1264x710, H.264, ~10s)
 //
 // Consent, sign-up and auto-expanded chat overlays are dismissed before any
 // capture — the comparison judges the page a business designed, not the legal
@@ -32,41 +32,41 @@ const VIEW = { width: 1265, height: 710 };
 // multiples; keep the demo inside 9.5–10.5 seconds.
 const CONCEPTS = {
   "castle-farm": {
-    current: "https://www.castlefarmni.com/",
+    before: "https://www.castlefarmni.com/",
     settleMs: 6000,
-    currentHover: "nav a, header a",
-    conceptHover: ".button, a.button",
+    beforeHover: "nav a, header a",
+    afterHover: ".button, a.button",
   },
   "hotel-enniskeen": {
-    current: "https://www.enniskeenhotel.co.uk/",
+    before: "https://www.enniskeenhotel.co.uk/",
     settleMs: 4000,
-    currentHover: "text=STAY WITH US",
-    conceptHover: ".button, a.button",
+    beforeHover: "text=STAY WITH US",
+    afterHover: ".button, a.button",
   },
   "mourne-cycles": {
-    current: "https://www.mourne-cycles.co.uk/",
+    before: "https://www.mourne-cycles.co.uk/",
     settleMs: 6000,
-    currentHover: "text=SHOWROOM",
-    conceptHover: ".button, a.button",
+    beforeHover: "text=SHOWROOM",
+    afterHover: ".button, a.button",
   },
   "donard-veterinary": {
-    current: "https://donardveterinaryclinic.co.uk/",
+    before: "https://donardveterinaryclinic.co.uk/",
     settleMs: 5000,
-    currentHover: "text=Pet Services",
-    conceptHover: ".button, a.button",
+    beforeHover: "text=Pet Services",
+    afterHover: ".button, a.button",
   },
   "bucks-head": {
-    current: "https://thebucksheaddundrum.co.uk/",
+    before: "https://thebucksheaddundrum.co.uk/",
     settleMs: 5000,
-    currentHover: "text=MENUS",
-    conceptHover: ".button, a.button",
+    beforeHover: "text=MENUS",
+    afterHover: ".button, a.button",
   },
 };
 
 const slug = process.argv[2];
 const only = process.argv[3];
 if (!CONCEPTS[slug]) {
-  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [current|concept]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
+  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [before|after]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
   process.exit(1);
 }
 
@@ -336,7 +336,7 @@ async function captureTarget(browser, site, url, outName, hoverSpec) {
 
 const site = CONCEPTS[slug];
 const conceptUrl = `${previewBase}/concepts/${slug}/`;
-if (only !== "current") {
+if (only !== "before") {
   const alive = await fetch(conceptUrl).then((r) => r.ok).catch(() => false);
   if (!alive) throw new Error(`${conceptUrl} is not serving. Run: pnpm build && pnpm preview`);
 }
@@ -347,8 +347,8 @@ const browser = await puppeteer.launch({
   args: ["--hide-scrollbars", "--mute-audio", "--force-color-profile=srgb", "--disable-gpu"],
 });
 try {
-  if (only !== "concept") await captureTarget(browser, site, site.current, `${slug}-current`, site.currentHover);
-  if (only !== "current") await captureTarget(browser, site, conceptUrl, `${slug}-concept`, site.conceptHover);
+  if (only !== "after") await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
+  if (only !== "before") await captureTarget(browser, site, conceptUrl, `${slug}-after`, site.afterHover);
 } finally {
   await browser.close();
 }

@@ -1,6 +1,6 @@
 # Mourne & Main
 
-A working Astro prototype for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the current and proposed opening screens, reveal the design reasoning, and submit a no-obligation mock-up request.
+A working Astro prototype for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation mock-up request.
 
 ## Run locally
 
@@ -41,6 +41,6 @@ The request form is intentionally local-only in this prototype and does not tran
 - `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline
 - `scripts/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/verifications.json`
-- `scripts/capture-concept-screens.mjs` — matched current/concept screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
+- `scripts/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks
 

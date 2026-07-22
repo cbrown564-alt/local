@@ -42,7 +42,7 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 |---|---|
 | Second concept route | `/concepts/<slug>/<asset>/` → `src/pages/concepts/<slug>/<asset>.astro` |
 | Styles | Extend the existing `concept-<slug>.css` with the same class prefix — do not invent a second identity |
-| Captures | `node scripts/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-concept.jpg` (+ optional `-current.jpg` when a real before exists) |
+| Captures | `node scripts/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-after.jpg` (+ optional `-before.jpg` when a real before exists) |
 | Transformation page | After the opening comparison, a `.second-surface` block: either a second `BeforeAfter` with `showNotes={false}`, or a labelled companion still |
 | Docs | Note which asset shipped in `PROSPECTS.md` + `research/verifications.json` |
 
