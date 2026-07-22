@@ -34,6 +34,7 @@ const CONCEPTS = {
   "cupla": { current: "https://www.facebook.com/p/C%C3%BApla-61565293502528/", currentBudgetMs: 8000 },
   "tool-centre": { current: "https://www.facebook.com/Toolcentreplanthire/", currentBudgetMs: 8000 },
   "kent-amusements": { current: "https://www.facebook.com/kentamusementsnewcastle/", currentBudgetMs: 8000 },
+  "newcastle-chamber": { current: "https://www.facebook.com/newcastlechamberofcommerce/", currentBudgetMs: 8000 },
 };
 
 const slug = process.argv[2];
