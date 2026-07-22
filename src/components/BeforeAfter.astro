@@ -1,4 +1,6 @@
 ---
+import "../styles/comparison.css";
+
 interface Props {
   before: string;
   after: string;
@@ -50,6 +52,10 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       </div>
     )}
   </div>
+  <div class="comparison-mobile-toggle" role="group" aria-label="Choose comparison view">
+    <button type="button" data-comparison-view="before" aria-pressed="false">Before</button>
+    <button type="button" data-comparison-view="after" aria-pressed="false">After</button>
+  </div>
   <label class="comparison-control">
     <span class="comparison-control-label">Slide to compare</span>
     <span class="comparison-control-track">
@@ -72,6 +78,7 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
     const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
     const after = comparison.querySelector<HTMLElement>("[data-after]");
     const divider = comparison.querySelector<HTMLElement>("[data-divider]");
+    const viewButtons = comparison.querySelectorAll<HTMLButtonElement>("[data-comparison-view]");
     const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
     const toggleLabel = toggle?.querySelector<HTMLElement>(".notes-toggle-label");
     const toggleIcon = toggle?.querySelector<HTMLElement>(".notes-icon");
@@ -87,6 +94,11 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       comparison.style.setProperty("--comparison-split", `${value}%`);
       if (after) after.style.clipPath = `inset(0 0 0 ${value}%)`;
       if (divider) divider.style.left = `${value}%`;
+      viewButtons.forEach((button) => {
+        const isBefore = button.dataset.comparisonView === "before" && value === 100;
+        const isAfter = button.dataset.comparisonView === "after" && value === 0;
+        button.setAttribute("aria-pressed", String(isBefore || isAfter));
+      });
     };
 
     const splitFromPointer = (clientX: number) => {
@@ -96,6 +108,11 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
     };
 
     input?.addEventListener("input", () => setSplit(Number(input.value)));
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setSplit(button.dataset.comparisonView === "before" ? 100 : 0);
+      });
+    });
     setSplit(Number(input?.value ?? 50));
 
     let dragging = false;

@@ -14,7 +14,7 @@ The primary audience is independent owner-operated businesses in Dundrum and New
 
 ## Product Purpose
 
-The site shows local organisations what their public digital presence could become through personalised, side-by-side transformations. It exists to make a modern website, richer content, stronger imagery, and a better Maps presence feel exciting, practical, and attainable. Success begins when an owner requests a free before-and-after mock-up; the longer-term aim is affordable paid work supported by visible community contributions.
+The site shows local organisations what their public digital presence could become through personalised, side-by-side transformations. It exists to make a modern website, richer content, stronger imagery, and a better Maps presence feel exciting, practical, and attainable. Success begins when an owner requests a free before-and-after; the longer-term aim is affordable paid work supported by visible community contributions.
 
 ## Positioning
 
@@ -22,10 +22,10 @@ A local studio that invests in the digital appearance of its own community, show
 
 ## Conversion & proof
 
-- Primary CTA: request a free before-and-after mock-up.
+- Primary CTA: request a free before-and-after.
 - Secondary CTA: browse local transformations.
 - The line a visitor remembers after 10 seconds: see what your local business could become online.
-- Belief ladder: the studio understands this place; the current digital presence is underselling the real business; the proposed change is concrete and easy to judge; the work is affordable and low-risk; requesting a mock-up is worth doing now.
+- Belief ladder: the studio understands this place; the current digital presence is underselling the real business; the proposed change is concrete and easy to judge; the work is affordable and low-risk; requesting a before-and-after is worth doing now.
 - Proof on hand: none yet. Initial work must be labelled clearly as concept transformations and must not imply client approval or a commercial relationship.
 
 ## Brand Personality

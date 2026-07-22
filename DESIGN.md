@@ -17,7 +17,7 @@ Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather th
 - Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
 - Foam `#F4F8FA` — main canvas
 
-The homepage opens on Product Stage: brand, one headline, one short supporting sentence, the CTA group and a large featured before/after comparison share the first viewport. Place belonging follows as a full-bleed Newcastle shore moment — sequential, not competing in the same screen. Alternative directions remain at `/prototypes/home/`.
+The homepage opens on Product Stage: a two-column offer pairs one direct headline with a short supporting sentence and CTA. The featured before/after comparison follows immediately at full width, without forcing all of the content into one viewport. Place belonging then arrives as a full-bleed Newcastle shore moment. Alternative directions remain at `/prototypes/home/`.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
