@@ -1,8 +1,14 @@
 ---
-interface Props { compact?: boolean }
-const { compact = false } = Astro.props;
+interface Props { compact?: boolean; reminder?: boolean }
+const { compact = false, reminder = false } = Astro.props;
 ---
-<aside class:list={["disclosure", { "disclosure-compact": compact }]} aria-label="Concept disclosure">
-  <span class="disclosure-mark" aria-hidden="true">C</span>
-  <p><strong>Independent concept.</strong> Created from public information to demonstrate an idea. It is not commissioned or approved by the business shown.</p>
-</aside>
+{reminder ? (
+  <p class="disclosure-reminder" role="note">
+    <strong>Independent concept.</strong> Created from public information to demonstrate an idea. Not commissioned or approved by the business shown.
+  </p>
+) : (
+  <aside class:list={["disclosure", { "disclosure-compact": compact }]} aria-label="Concept disclosure">
+    <span class="disclosure-mark" aria-hidden="true">C</span>
+    <p><strong>Independent concept.</strong> Created from public information to demonstrate an idea. It is not commissioned or approved by the business shown.</p>
+  </aside>
+)}
