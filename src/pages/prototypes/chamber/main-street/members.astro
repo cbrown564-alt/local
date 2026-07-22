@@ -1,0 +1,37 @@
+---
+import MainStreetShell from "../../../../components/chamber-prototypes/MainStreetShell.astro";
+import { categories, members, chamber } from "../../../../data/chamber-prototype";
+const base = "/prototypes/chamber/main-street";
+---
+<MainStreetShell title="Directory — Newcastle Chamber · Main Street concept" current="members">
+  <div class="ms-page">
+    <p class="ms-kicker">Member directory</p>
+    <h1>Who's open in Newcastle, Co. Down</h1>
+    <p class="ms-lede">
+      Search by trade or scroll by category. This is the Chamber's public gift to the town —
+      and the reason members join. <a class="ms-link" href={chamber.emailHref}>Ask to be listed</a>.
+    </p>
+    <nav class="ms-filters" aria-label="Filter by category">
+      <a href="#hospitality" aria-current="false">Hospitality</a>
+      <a href="#food">Food &amp; Drink</a>
+      <a href="#retail">Retail</a>
+      <a href="#services">Services</a>
+    </nav>
+    {categories.map((cat) => (
+      <section class="ms-cat-block" id={cat.id}>
+        <h2>{cat.label}</h2>
+        <ul class="ms-grid">
+          {members.filter((m) => m.category === cat.id).map((m) => (
+            <li class="ms-card">
+              <h3>{m.name}</h3>
+              <p class="trade">{m.trade}</p>
+              <p>{m.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+    <p style="font-size: 13px; color: var(--muted)">Illustrative listings for concept review · not an official roll.</p>
+    <p style="margin-top: 24px"><a class="ms-cta" href={`${base}/join/`}>List your business</a></p>
+  </div>
+</MainStreetShell>

@@ -1,0 +1,154 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ArrowIcon from "../../../components/ArrowIcon.astro";
+import "../../../styles/home-alternatives.css";
+import "../../../styles/proto-chamber-index.css";
+
+const directions = [
+  {
+    id: "A",
+    href: "/prototypes/chamber/civic/",
+    title: "Civic Front Door",
+    metaphor: "Town-hall seal",
+    lead: "Mission + next event",
+    bet: "Institutional trust; evolves the published M1/M2 concept into a full site.",
+    palette: "Harbour navy · brass · Newsreader",
+    image: "/images/newcastle-chamber-after.jpg",
+    alt: "Current civic chamber concept opening screen",
+    pages: ["Home", "About", "Members", "Events", "Join", "Contact"],
+  },
+  {
+    id: "B",
+    href: "/prototypes/chamber/main-street/",
+    title: "Main Street Finder",
+    metaphor: "Shop window",
+    lead: "Search the directory",
+    bet: "Public utility first — member visibility is the join hook.",
+    palette: "Fascia green · paper cream · amber · Fraunces",
+    image: "/images/place/central-promenade.jpg",
+    alt: "Central Promenade, Newcastle",
+    pages: ["Home", "Directory", "What's on", "Join", "About", "Contact"],
+  },
+  {
+    id: "C",
+    href: "/prototypes/chamber/network/",
+    title: "Harbour Network",
+    metaphor: "Neighbour traders",
+    lead: "Why join / belonging",
+    bet: "Softer growth pitch; less institutional intimidation for small traders.",
+    palette: "Sea teal · coral · Literata",
+    image: "/images/place/boats-moored-at-newcastle-harbour.jpg",
+    alt: "Boats moored at Newcastle harbour",
+    pages: ["Home", "Why join", "Members", "Events", "About", "Contact"],
+  },
+];
+
+const examples = [
+  { name: "Tavistock Chamber", why: "Member-driven voice; directory + events + join as equal pillars", href: "https://tavistockchamber.org.uk/" },
+  { name: "Alresford Chamber", why: "Tiny IA; featured member; find-a-member as the utility", href: "https://www.alresfordchamber.co.uk/" },
+  { name: "Bishop's Stortford", why: "Classic small-chamber stack with simple membership pitch", href: "https://bschamber.org/" },
+  { name: "Banbridge Chamber", why: "Local NI peer — market-town voice; currently thin (gap to leapfrog)", href: "https://banbridge.org/" },
+  { name: "Bentonville (small-chamber design)", why: "Proof you need not be metro-scale to look modern", href: "https://simplemachinedesigns.com/our-portfolio/web-design-greater-bentonville-area-chamber-of-commerce/" },
+  { name: "Greater Phoenix directory UX", why: "Steal faceted search patterns; leave the metro CRM", href: "https://southwindmarketing.com/blog/best-chamber-of-commerce-websites-2026/" },
+];
+
+const practices = [
+  { title: "Place identity first", body: "Lead with Co. Down / Main Street / Mournes so searchers never confuse this chamber with Tyne or the other seven namesakes." },
+  { title: "Directory as the product", body: "For small chambers, searchable category listings are the member benefit that sells join — not AMS portals." },
+  { title: "Standing events page", body: "One confirmed date (Halloween 2026) beats a feed behind a login wall; grow the calendar as the committee can." },
+  { title: "Honest join path", body: "Mailto to the existing Gmail matches volunteer capacity. Skip card-taking membership theatre until they ask for it." },
+  { title: "Right-size the checklist", body: "Skip member logins, auto-renewal, site selectors and policy libraries. Banbridge-scale IA wins over Phoenix-scale ambition." },
+  { title: "Maintainable by volunteers", body: "Static pages (or a light CMS later) the committee can update — not ChamberMaster on day one." },
+];
+---
+
+<BaseLayout
+  title="Chamber full-site prototypes — Mourne & Main"
+  description="Research and three full multi-page website directions for Newcastle Chamber of Commerce, Co. Down."
+  robots="noindex, nofollow"
+  class="home-alt chamber-proto-index"
+>
+  <section class="home-alt-index chamber-index">
+    <div class="shell">
+      <p class="eyebrow">Internal prototype · research + exploration</p>
+      <h1>Newcastle Chamber — full-site directions</h1>
+      <p class="lede">
+        The published concept is a homepage plus members screen. Before outreach, this pass researches
+        chamber best practice for a <strong>small volunteer</strong> association, collects peer examples,
+        and prototypes three complete sites — every page linked and reachable — so we can choose a
+        direction deliberately.
+      </p>
+      <p class="chamber-index-links">
+        <a class="text-link" href="/transformations/newcastle-chamber/">Published transformation (M1/M2)</a>
+        ·
+        <a class="text-link" href="/concepts/newcastle-chamber/">Current concept screens</a>
+        ·
+        <span>Brief: <code>research/chamber-website-brief.md</code></span>
+      </p>
+
+      <h2 class="chamber-h2">Three directions</h2>
+      <p class="chamber-intro">
+        Same IA skeleton in each: Home, About, Members, Events, Join, Contact.
+        Click through — headers and footers link every page.
+      </p>
+      <div class="home-alt-index-grid chamber-dir-grid">
+        {directions.map((d) => (
+          <a class="home-alt-index-card chamber-dir-card" href={d.href}>
+            <img src={d.image} alt={d.alt} width="960" height="600" />
+            <div class="home-alt-index-card-body">
+              <p class="chamber-dir-id">Direction {d.id}</p>
+              <h2>{d.title}</h2>
+              <p><strong>{d.metaphor}</strong> · homepage leads with {d.lead}</p>
+              <p>{d.bet}</p>
+              <p class="chamber-dir-meta">{d.palette}</p>
+              <p class="chamber-dir-pages">{d.pages.join(" · ")}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="chamber-h2">What research says (right-sized)</h2>
+      <p class="chamber-intro">
+        Drawn from the 2026 chamber website checklist, Glue Up must-haves, and UK/NI market-town peers.
+        Metro features (portals, AMS billing, EDO site selectors) are noted then parked.
+      </p>
+      <ul class="chamber-practice-grid">
+        {practices.map((p) => (
+          <li>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="chamber-h2">Examples worth stealing from</h2>
+      <ul class="chamber-examples">
+        {examples.map((ex) => (
+          <li>
+            <a href={ex.href} rel="external">{ex.name}</a>
+            <span>{ex.why}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="chamber-h2">How to review</h2>
+      <ol class="chamber-review">
+        <li>Which homepage makes <strong>Co. Down</strong> unmistakable in under three seconds?</li>
+        <li>Which join path fits a volunteer committee (email vs form theatre)?</li>
+        <li>Does the directory feel like a gift to members, or like admin furniture?</li>
+        <li>Could the committee maintain this without AMS software?</li>
+        <li>Which feels most like Newcastle under the Mournes — least like a generic chamber theme?</li>
+      </ol>
+
+      <div class="home-alt-index-meta">
+        <p>
+          Independent concepts · not live Chamber sites · member lists and non-Halloween events are illustrative.
+          Contact details and Halloween 2026 are from verified public sources.
+        </p>
+        <p>
+          <a class="text-link" href="/transformations/newcastle-chamber/">Back to published Chamber transformation <ArrowIcon /></a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

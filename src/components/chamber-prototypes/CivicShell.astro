@@ -1,0 +1,79 @@
+---
+import { chamber } from "../../data/chamber-prototype";
+import "../../styles/global.css";
+import "../../styles/proto-chamber-civic.css";
+
+interface Props {
+  title: string;
+  current: "home" | "about" | "members" | "events" | "join" | "contact";
+}
+
+const { title, current } = Astro.props;
+const base = "/prototypes/chamber/civic";
+const nav = [
+  { id: "home", href: `${base}/`, label: "Home" },
+  { id: "about", href: `${base}/about/`, label: "About" },
+  { id: "members", href: `${base}/members/`, label: "Members" },
+  { id: "events", href: `${base}/events/`, label: "Events" },
+  { id: "join", href: `${base}/join/`, label: "Join" },
+  { id: "contact", href: `${base}/contact/`, label: "Contact" },
+] as const;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="concept-page proto-civic">
+    <div class="cv-strip">
+      <span><strong>Newcastle, Co. Down</strong> · 50A Main Street · under the Mournes</span>
+      <span>Direction A · Civic Front Door · <a href="/prototypes/chamber/">all prototypes</a></span>
+    </div>
+    <header class="cv-header">
+      <a class="cv-brand" href={`${base}/`}>
+        <svg class="cv-seal" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+          <circle cx="23" cy="23" r="21.5" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="23" cy="23" r="17.5" stroke="currentColor" stroke-width="1" opacity="0.45" />
+          <path d="M10 28 L16 20 L20 24 L26 14 L32 22 L36 18 L36 30 L10 30 Z" fill="currentColor" opacity="0.9" />
+          <path d="M10 30 H36" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <span class="cv-brand-text">
+          <span class="cv-brand-name">Newcastle Chamber</span>
+          <span class="cv-brand-sub">of Commerce · Co. Down</span>
+        </span>
+      </a>
+      <nav class="cv-nav" aria-label="Chamber sections">
+        {nav.map((item) => (
+          <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <a class="cv-join" href={`${base}/join/`}>Join the chamber</a>
+    </header>
+    <slot />
+    <footer class="cv-footer">
+      <div class="cv-footer-grid">
+        <div>
+          <p class="cv-footer-brand">{chamber.shortName}</p>
+          <p>{chamber.placeLine}</p>
+          <p>{chamber.address}</p>
+        </div>
+        <div>
+          <p><a href={chamber.emailHref}>{chamber.email}</a></p>
+          <p><a href={chamber.phoneHref}>{chamber.phone}</a></p>
+          <p><a href={chamber.facebook}>Facebook</a> · <a href={chamber.instagram}>Instagram</a></p>
+        </div>
+        <div>
+          <p>Volunteer-run since the {chamber.relaunchYear} relaunch.</p>
+          <p class="cv-footer-note">Independent concept · not a live Chamber site</p>
+        </div>
+      </div>
+    </footer>
+    <div class="concept-disclosure">Independent concept · Direction A · Civic</div>
+  </body>
+</html>
