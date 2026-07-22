@@ -4,8 +4,11 @@
 // Usage:
 //   pnpm build && pnpm preview   (in another terminal, serves 127.0.0.1:4321)
 //   node scripts/capture-concept-screens.mjs <slug>
+//   node scripts/capture-concept-screens.mjs <slug>/<asset>   # Milestone 2 second surface
 //
-// Output: public/images/<slug>-current.jpg and public/images/<slug>-concept.jpg
+// Output (landing): public/images/<slug>-current.jpg and <slug>-concept.jpg
+// Output (second):  public/images/<slug>-<asset>-concept.jpg
+//                   and optional <slug>-<asset>-current.jpg when a before URL exists
 // at 2530x1420 (1265x710 viewport at 2x for crisp comparison rendering).
 // Cookie and consent banners on the current site are left visible on purpose:
 // the capture records the page as a first-time visitor meets it.
@@ -37,9 +40,51 @@ const CONCEPTS = {
   "newcastle-chamber": { current: "https://www.facebook.com/newcastlechamberofcommerce/", currentBudgetMs: 8000 },
 };
 
-const slug = process.argv[2];
-if (!CONCEPTS[slug]) {
-  console.error(`Usage: node scripts/capture-concept-screens.mjs <slug>\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
+// Milestone 2 second surfaces. Key is "<slug>/<asset>". conceptPath is the local
+// preview path; current is optional — omit for companion-only captures (typical
+// for first-website showcases and print-faithful flats with no honest before).
+const SECOND_ASSETS = {
+  "hotel-enniskeen/rooms": {
+    conceptPath: "/concepts/hotel-enniskeen/rooms/",
+    current: "https://www.enniskeenhotel.co.uk/",
+    currentBudgetMs: 4000,
+  },
+  "mourne-cycles/hire": {
+    conceptPath: "/concepts/mourne-cycles/hire/",
+    current: "https://www.mourne-cycles.co.uk/",
+    currentBudgetMs: 12000,
+  },
+  "donard-veterinary/appointments": {
+    conceptPath: "/concepts/donard-veterinary/appointments/",
+    current: "https://donardveterinaryclinic.co.uk/",
+    currentBudgetMs: 6000,
+  },
+  "bucks-head/menus": {
+    conceptPath: "/concepts/bucks-head/menus/",
+    current: "https://thebucksheaddundrum.co.uk/",
+    currentBudgetMs: 6000,
+  },
+  "scopers/supper-club": {
+    conceptPath: "/concepts/scopers/supper-club/",
+  },
+  "cupla/menu": {
+    conceptPath: "/concepts/cupla/menu/",
+  },
+  "tool-centre/hire-list": {
+    conceptPath: "/concepts/tool-centre/hire-list/",
+  },
+  "kent-amusements/attractions": {
+    conceptPath: "/concepts/kent-amusements/attractions/",
+  },
+  "newcastle-chamber/members": {
+    conceptPath: "/concepts/newcastle-chamber/members/",
+  },
+};
+
+const key = process.argv[2];
+const known = { ...Object.fromEntries(Object.keys(CONCEPTS).map((s) => [s, "landing"])), ...Object.fromEntries(Object.keys(SECOND_ASSETS).map((s) => [s, "second"])) };
+if (!key || !known[key]) {
+  console.error(`Usage: node scripts/capture-concept-screens.mjs <slug|slug/asset>\nKnown: ${Object.keys(known).join(", ")}`);
   process.exit(1);
 }
 
@@ -80,9 +125,22 @@ async function capture(url, outName, budgetMs = 12000) {
   console.log(`${outName}.jpg — ${kb} KB from ${url}`);
 }
 
-const conceptUrl = `${previewBase}/concepts/${slug}/`;
-const alive = await fetch(conceptUrl).then((r) => r.ok).catch(() => false);
-if (!alive) throw new Error(`${conceptUrl} is not serving. Run: pnpm build && pnpm preview`);
+if (known[key] === "landing") {
+  const conceptUrl = `${previewBase}/concepts/${key}/`;
+  const alive = await fetch(conceptUrl).then((r) => r.ok).catch(() => false);
+  if (!alive) throw new Error(`${conceptUrl} is not serving. Run: pnpm build && pnpm preview`);
 
-await capture(CONCEPTS[slug].current, `${slug}-current`, CONCEPTS[slug].currentBudgetMs);
-await capture(conceptUrl, `${slug}-concept`);
+  await capture(CONCEPTS[key].current, `${key}-current`, CONCEPTS[key].currentBudgetMs);
+  await capture(conceptUrl, `${key}-concept`);
+} else {
+  const asset = SECOND_ASSETS[key];
+  const outBase = key.replace("/", "-");
+  const conceptUrl = `${previewBase}${asset.conceptPath}`;
+  const alive = await fetch(conceptUrl).then((r) => r.ok).catch(() => false);
+  if (!alive) throw new Error(`${conceptUrl} is not serving. Run: pnpm build && pnpm preview`);
+
+  if (asset.current) {
+    await capture(asset.current, `${outBase}-current`, asset.currentBudgetMs ?? 8000);
+  }
+  await capture(conceptUrl, `${outBase}-concept`);
+}

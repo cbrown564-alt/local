@@ -293,3 +293,199 @@
 @media (prefers-reduced-motion: reduce) {
   .dv-kicker, .dv-story h1, .dv-lede, .dv-actions, .dv-request { animation: none; }
 }
+
+/* ─── Appointments page ──────────────────────────────────────────────────── */
+.dv-appt-page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 32px;
+  padding: 32px clamp(26px, 3.6vw, 56px) 48px;
+  min-height: calc(100vh - 80px - 37px);
+}
+.dv-appt-intro { max-width: 580px; }
+.dv-appt-intro .dv-kicker { margin-bottom: 14px; animation-delay: 0ms; }
+.dv-appt-intro h1 {
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(40px, 3.8vw, 56px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--plum);
+}
+.dv-appt-intro h1 em { font-style: italic; color: var(--teal-deep); }
+.dv-appt-lede {
+  margin: 0;
+  color: #554761;
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 44em;
+}
+
+/* Two-column grid */
+.dv-appt-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Left: form column */
+.dv-appt-left { display: flex; flex-direction: column; gap: 0; }
+.dv-appt-left .dv-request {
+  box-shadow: 0 20px 52px rgba(56, 32, 63, 0.16);
+  animation-delay: 240ms;
+}
+
+/* Direct contact row below the form card */
+.dv-appt-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: var(--lavender-soft);
+  border-radius: 10px;
+}
+.dv-appt-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--plum);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 140ms ease;
+}
+.dv-appt-contact-link:hover { color: var(--teal-deep); }
+.dv-appt-contact-sep { color: var(--lavender); font-size: 18px; font-weight: 300; }
+
+/* Right: emergency card */
+.dv-appt-right { position: sticky; top: 20px; }
+.dv-emergency-card {
+  padding: 28px 26px 24px;
+  background: var(--plum);
+  border-radius: 16px;
+  color: #ffffff;
+  animation: dv-rise 480ms 320ms ease backwards;
+}
+.dv-emergency-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--lavender);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.dv-emergency-tag::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+.dv-emergency-heading {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #ffffff;
+}
+.dv-emergency-body {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--lavender);
+}
+.dv-emergency-call {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background: var(--teal-deep);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 140ms ease, transform 140ms ease;
+}
+.dv-emergency-call:hover { background: #1d6b54; transform: translateY(-1px); }
+.dv-emergency-call-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+.dv-emergency-call-num {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+.dv-emergency-hours {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+}
+.dv-emergency-hours-title {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.dv-emergency-hours ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.dv-emergency-hours li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--lavender);
+}
+.dv-emergency-hours li span:last-child { font-weight: 700; color: #ffffff; }
+.dv-emergency-hours-closed { color: rgba(255, 255, 255, 0.35) !important; }
+.dv-emergency-vidivet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 5px;
+  transition: color 140ms ease;
+}
+.dv-emergency-vidivet:hover { color: #5ecfb2; text-decoration: underline; }
+
+/* Appointments entrance animation */
+.dv-appt-intro { animation: dv-rise 440ms ease backwards; }
+.dv-appt-grid { animation: dv-rise 440ms 80ms ease backwards; }
+
+@media (max-width: 960px) {
+  .dv-appt-grid { grid-template-columns: 1fr; }
+  .dv-appt-right { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-appt-intro,
+  .dv-appt-grid,
+  .dv-emergency-card { animation: none; }
+}
