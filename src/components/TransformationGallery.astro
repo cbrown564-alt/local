@@ -9,14 +9,8 @@ const { items } = Astro.props;
 ---
 
 <section class="transformation-gallery" data-transformation-gallery aria-label="Concept showcase">
-  <div class="transformation-gallery-head shell">
-    <div class="transformation-gallery-intro">
-      <p class="eyebrow">Scroll the work</p>
-      <h2>What ten local sites could look like.</h2>
-      <p class="transformation-gallery-lede">
-        Finished concept screens for cafés, shops, pubs and more. Swipe through, pick a name, then see the before-and-after below.
-      </p>
-    </div>
+  <div class="transformation-gallery-bar shell">
+    <p class="eyebrow">Browse the work</p>
     <div class="transformation-gallery-toolbar">
       <p class="transformation-gallery-count" data-gallery-count aria-live="polite">
         {items.length} transformations
@@ -72,26 +66,6 @@ const { items } = Astro.props;
     </div>
   </div>
 
-  <div class="transformation-gallery-pills shell">
-    <p class="transformation-gallery-pills-label" id="gallery-pills-label">Jump to</p>
-    <div class="transformation-gallery-pill-row" role="tablist" aria-labelledby="gallery-pills-label" data-gallery-pills>
-      {items.map((item, index) => (
-        <button
-          type="button"
-          class="transformation-gallery-pill"
-          role="tab"
-          data-gallery-pill
-          data-slug={item.slug}
-          data-town={item.town}
-          data-category={item.category}
-          aria-selected={index === 0 ? "true" : "false"}
-          aria-controls={`gallery-${item.slug}`}
-        >
-          {item.name}
-        </button>
-      ))}
-    </div>
-  </div>
 </section>
 
 <script>
@@ -99,7 +73,6 @@ const { items } = Astro.props;
   if (gallery) {
     const scroller = gallery.querySelector<HTMLElement>("[data-gallery-scroller]");
     const slides = [...gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]")];
-    const pills = [...gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-pill]")];
     const prev = gallery.querySelector<HTMLButtonElement>("[data-gallery-prev]");
     const next = gallery.querySelector<HTMLButtonElement>("[data-gallery-next]");
     const count = gallery.querySelector<HTMLElement>("[data-gallery-count]");
@@ -111,14 +84,6 @@ const { items } = Astro.props;
       if (count) {
         count.textContent = total === 1 ? "1 transformation" : `${total} transformations`;
       }
-    };
-
-    const setActivePill = (slug: string | undefined) => {
-      pills.forEach((pill) => {
-        const active = pill.dataset.slug === slug;
-        pill.classList.toggle("is-active", active);
-        pill.setAttribute("aria-selected", String(active));
-      });
     };
 
     const nearestSlide = () => {
@@ -141,7 +106,6 @@ const { items } = Astro.props;
       if (!scroller || !slide) return;
       const offset = slide.offsetLeft - (scroller.clientWidth - slide.offsetWidth) / 2;
       scroller.scrollTo({ left: Math.max(0, offset), behavior });
-      setActivePill(slide.dataset.slug);
     };
 
     const step = (direction: 1 | -1) => {
@@ -155,21 +119,6 @@ const { items } = Astro.props;
 
     prev?.addEventListener("click", () => step(-1));
     next?.addEventListener("click", () => step(1));
-
-    pills.forEach((pill) => {
-      pill.addEventListener("click", () => {
-        const slide = slides.find((item) => item.dataset.slug === pill.dataset.slug);
-        scrollToSlide(slide);
-      });
-    });
-
-    let scrollTimer: ReturnType<typeof setTimeout> | undefined;
-    scroller?.addEventListener("scroll", () => {
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        setActivePill(nearestSlide()?.dataset.slug);
-      }, 80);
-    }, { passive: true });
 
     scroller?.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
@@ -186,10 +135,8 @@ const { items } = Astro.props;
       updateCount();
       const first = visibleSlides()[0];
       if (first) scrollToSlide(first, "auto");
-      else setActivePill(undefined);
     });
 
     updateCount();
-    if (slides[0]) setActivePill(slides[0].dataset.slug);
   }
 </script>

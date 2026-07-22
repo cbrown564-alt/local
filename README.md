@@ -1,6 +1,6 @@
 # Mourne & Main
 
-A working Astro prototype for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation mock-up request.
+A working Astro site for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation before-and-after request.
 
 ## Run locally
 
@@ -31,7 +31,26 @@ pnpm build
 - `/request/` — request form with error and success states
 - `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
 
-The request form is intentionally local-only in this prototype and does not transmit data. Concept work is labelled as independent and uncommissioned.
+The request form posts to the Vercel Function at `/api/request`, which sends the submission to the configured inbox. Concept work is labelled as independent and uncommissioned.
+
+## Vercel request email
+
+The request route sends mail through Gmail with an app password. Never add a Gmail password or app password to this repository.
+
+1. Turn on 2-Step Verification for the sending Google account, then create a Google app password for Mourne & Main.
+2. In the Vercel project, add these environment variables:
+   - `GMAIL_USER` — the Gmail address used to send the notification
+   - `GMAIL_APP_PASSWORD` — the Google app password
+   - `REQUEST_TO_EMAIL` — the inbox that receives requests (defaults to `GMAIL_USER`)
+3. Redeploy after adding or changing the variables.
+
+Validate the endpoint's input handling locally without sending an email:
+
+```powershell
+pnpm test:request
+```
+
+To exercise actual delivery in a local Vercel runtime, copy `.env.example` to `.env` and supply local values first.
 
 ## Research artifacts
 
@@ -43,4 +62,3 @@ The request form is intentionally local-only in this prototype and does not tran
 - `scripts/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/verifications.json`
 - `scripts/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks
-
