@@ -64,6 +64,11 @@ const CONCEPTS = {
     settleMs: 5000,
     beforeHover: "text=Pet Services",
     afterHover: AFTER_HOVER,
+    // The PetsApp chat panel auto-expands over the hero as a cross-origin
+    // iframe with variable timing (styled-components hashes, no clickable
+    // close from outside). Hide the widget by its stable iframe title; the
+    // launcher bubble goes with it, which is the accepted last resort.
+    hide: ['iframe[title="petsapp-chat"]'],
   },
   "bucks-head": {
     before: "https://thebucksheaddundrum.co.uk/",
@@ -182,6 +187,15 @@ async function clickOverlayControl(frame, tiers) {
 
 async function dismissOverlays(page, site) {
   const actions = [];
+  // Coordinate clicks for close controls that live in a cross-origin iframe
+  // or shadow DOM and cannot be resolved by selector or text.
+  for (const [x, y] of site.dismissClick ?? []) {
+    try {
+      await page.mouse.click(x, y);
+      actions.push(`clicked (${x},${y})`);
+      await sleep(700);
+    } catch { /* nothing there this run */ }
+  }
   for (const step of site.dismiss ?? []) {
     try {
       if (step.startsWith("text=")) {
@@ -296,8 +310,9 @@ async function runDemoScript(page, hoverSpec, scrollStops) {
   }
   if (await hoverTarget(page, hoverSpec)) await sleep(1600);
   await page.mouse.move(VIEW.width / 2, VIEW.height * 0.7, { steps: 10 });
-  // Pad short pages out to a consistent clip length.
-  await sleep(Math.min(4000, Math.max(500, DEMO_MS - (Date.now() - started))));
+  // Pad short pages (single-screen concepts with no scroll) out to a
+  // consistent ~10s on a held final frame.
+  await sleep(Math.min(6800, Math.max(500, DEMO_MS - (Date.now() - started))));
 }
 
 // ---------------------------------------------------------------------------
@@ -329,7 +344,7 @@ async function recordDemo(page, outName, hoverSpec, scrollStops) {
   // clock (frame timestamps and Date.now() share the epoch).
   const lines = ["ffconcat version 1.0"];
   for (let i = 0; i < frames.length; i++) {
-    const next = i + 1 < frames.length ? frames[i + 1].ts : Math.min(endTs, frames[i].ts + 4.5);
+    const next = i + 1 < frames.length ? frames[i + 1].ts : Math.min(endTs, frames[i].ts + 7.5);
     lines.push(`file '${frames[i].file.replaceAll("\\", "/")}'`);
     lines.push(`duration ${Math.max(0.016, next - frames[i].ts).toFixed(4)}`);
   }
