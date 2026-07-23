@@ -5,8 +5,8 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 21 July 2026 · 16 businesses verified · 10 shortlisted · 6 concepts
-published
+Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
+published · Milestone 2 second assets shipped for all nine
 
 ## Pipeline stages
 
@@ -17,7 +17,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 6 concepts published, 4 shortlisted, 6 assessed.
+Current stages: 9 concepts published, 1 shortlisted (held), 6 assessed.
 
 Rules of the road:
 
@@ -31,21 +31,21 @@ Rules of the road:
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
-| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
-| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
+| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* · M2 rooms [/concepts/hotel-enniskeen/rooms/](src/pages/concepts/hotel-enniskeen/rooms.astro) | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
+| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro) | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
+| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro) | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
+| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro) | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
-| **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
-| The Tool Centre | Newcastle | No site; hardware retail + plant hire | Utilitarian trade site: hire prices, stock categories, hours |
-| Kent Amusements | Newcastle | Facebook-only; active (Mar 2026 review, new VR) | Seasonal attraction site: attractions, hours, family offers |
-| Newcastle Chamber of Commerce | Newcastle | No site; active into 2026, runs on Gmail | Civic hub: member directory, events, join page — community piece |
+| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* · M2 supper club [/concepts/scopers/supper-club/](src/pages/concepts/scopers/supper-club.astro) | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
+| **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro) | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
+| **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* · M2 hire list [/concepts/tool-centre/hire-list/](src/pages/concepts/tool-centre/hire-list.astro) | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
+| **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro) | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
+| **Newcastle Chamber of Commerce** — *full-site concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro) | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
 
 ## Assessed — not shortlisted
 
@@ -106,7 +106,9 @@ reinvent:
    Garamond; Mourne Cycles is coal black, signal red and Barlow Condensed,
    drawn from the shop's own logo; Donard Veterinary is plum, lavender and
    teal with Fraunces, drawn from the practice's badge — and introduces no
-   photography at all, the honest move when a site's own imagery is stock.
+   photography at all, the honest move when a site's own imagery is stock;
+   Kent Amusements is pier navy, spray mist, ticket amber and candy coral with
+   Teko, a promenade-arcade identity.
    (Castle Farm predated this convention and was normalised out of
    `global.css` on 21 July 2026.)
 5. **Capture both screens the same way** with
@@ -129,7 +131,7 @@ reinvent:
    in place (Scopers set the pattern, 21 July 2026). The critique must then be
    about access — the wall in front of the story — never a mock of the
    business's own content behind it.
-8. **Check the concept capture too, not just the current one.** Two Mourne
+8. **Check the after capture too, not just the before one.** Two Mourne
    Cycles defects only showed up in the captured frame: a portrait hero image
    sized in-flow stretched the grid row and pushed the range rail below the
    1265×710 fold (fix: absolutely position imagery inside its panel), and
@@ -142,7 +144,7 @@ reinvent:
 Each round of work follows the same loop, and each loop makes the next one
 cheaper because the knowledge lands in versioned files, not in heads:
 
-1. **Select** from the ranked census (`/opportunities`, workbook).
+1. **Select** from the ranked census (`/opportunities` — dev-only workbench, run `pnpm dev`; never deployed because it embeds the scored dataset — or the workbook).
 2. **Verify** per the protocol in RESEARCH_METHOD.md; record evidence,
    corrections, and the shortlist/design-task decision in
    `research/verifications.json`.

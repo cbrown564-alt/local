@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BeforeAfter from "../../components/BeforeAfter.astro";
+import MotionCompare from "../../components/MotionCompare.astro";
+import ReelPlayer from "../../components/ReelPlayer.astro";
+import Disclosure from "../../components/Disclosure.astro";
+import ArrowIcon from "../../components/ArrowIcon.astro";
+import DesignNotes from "../../components/DesignNotes.astro";
+import TransformationNav from "../../components/TransformationNav.astro";
+import { transformations, type Transformation } from "../../data/transformations";
+import {
+  transformationDetails,
+  type TransformationDetail,
+} from "../../data/transformation-details";
+
+export function getStaticPaths() {
+  const details: Record<string, TransformationDetail> = transformationDetails;
+
+  return transformations.map((transformation) => ({
+    params: { slug: transformation.slug },
+    props: {
+      transformation,
+      detail: details[transformation.slug],
+    },
+  }));
+}
+
+interface Props {
+  transformation: Transformation;
+  detail: TransformationDetail;
+}
+
+const { transformation, detail } = Astro.props;
+const motion = detail.motion;
+const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&town=${encodeURIComponent(transformation.town)}&source=transformation`;
+const responsiveImages = (html: string) =>
+  html.replace(
+    /<img(\s+[^>]*?)src="(\/images\/([^"]+)\.jpg)"([^>]*?)\/?>/g,
+    (_match, before, source, stem, after) =>
+      `<picture class="responsive-content-picture"><source type="image/webp" srcset="/images/${stem}-640.webp 640w, /images/${stem}-1265.webp 1265w" sizes="(max-width: 720px) 100vw, 1180px"><img${before}src="${source}"${after}></picture>`,
+  );
+const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
+---
+
+<BaseLayout
+  title={detail.title}
+  description={detail.description}
+  ogImage={transformation.after}
+>
+  <section class="case-hero">
+    <div class="shell">
+      <p class="eyebrow">{detail.eyebrow}</p>
+      <h1>{detail.headline}</h1>
+      <div class="case-meta">
+        <span>{transformation.name}</span>
+        <span>Concept study</span>
+        <span>{detail.date}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section">
+    <div class="shell">
+      <div class="comparison-intro">
+        <h2>Before vs after</h2>
+        <p>{detail.comparisonIntro}</p>
+      </div>
+      <Disclosure reminder />
+      <BeforeAfter
+        before={transformation.before}
+        after={transformation.after}
+        beforeAlt={transformation.beforeAlt}
+        afterAlt={transformation.afterAlt}
+      />
+      <div class="case-actions">
+        <a class="button" href={claimUrl}>Is this your business? Claim this concept <ArrowIcon /></a>
+        <a class="text-link concept-link" href={detail.conceptHref}>{detail.conceptLabel} <ArrowIcon /></a>
+      </div>
+    </div>
+  </section>
+
+  <MotionCompare
+    slug={transformation.slug}
+    beforeVideo={motion.beforeVideo}
+    afterVideo={motion.afterVideo}
+    beforePoster={motion.beforePoster}
+    afterPoster={motion.afterPoster}
+    beforeAlt={motion.beforeAlt}
+    afterAlt={motion.afterAlt}
+  />
+
+  {detail.reel && (
+    <ReelPlayer
+      slug={transformation.slug}
+      video={detail.reel.video}
+      poster={detail.reel.poster}
+      alt={detail.reel.alt}
+      heading={detail.reel.heading}
+      intro={detail.reel.intro}
+      duration={detail.reel.duration}
+    />
+  )}
+
+  {secondSurfaces.map((html) => <Fragment set:html={html} />)}
+
+  <DesignNotes heading={detail.notesHeading} notes={detail.notes} />
+
+  <Fragment set:html={detail.sourceHtml} />
+
+  <TransformationNav />
+</BaseLayout>

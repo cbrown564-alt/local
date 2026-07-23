@@ -1,0 +1,52 @@
+---
+import ChamberConceptShell from "../../components/chamber-prototypes/ChamberConceptShell.astro";
+import { chamber, categories, members, events } from "../../data/chamber-prototype";
+
+const nextEvent = events.find((e) => e.real)!;
+const base = "/concepts/newcastle-chamber";
+const counts = Object.fromEntries(
+  categories.map((cat) => [cat.id, members.filter((m) => m.category === cat.id).length]),
+);
+---
+<ChamberConceptShell title="Newcastle Chamber of Commerce — independent concept" current="home">
+  <main class="nc-hero">
+    <section class="nc-story">
+      <p class="nc-kicker">Main Street finder · Co. Down</p>
+      <h1>Find a business on <em>Main Street.</em></h1>
+      <p class="nc-lede">
+        {chamber.name} is the volunteer-run hub for traders in Newcastle, Co. Down:
+        a member directory, the town's events, and a clear door to join.
+      </p>
+      <form class="nc-search" action={`${base}/members/`} method="get" role="search">
+        <label class="visually-hidden" for="nc-q">Search the member directory</label>
+        <input id="nc-q" type="search" name="q" placeholder="Café, chemist, guest house…" />
+        <a href={`${base}/members/`}>Search</a>
+      </form>
+      <div class="nc-actions">
+        <a class="nc-cta" href={`${base}/members/`}>Browse the directory</a>
+        <a class="nc-link" href={`${base}/join/`}>List your business →</a>
+      </div>
+    </section>
+    <aside class="nc-panel">
+      <article class="nc-event">
+        <p class="nc-event-kicker">Coming up · town calendar</p>
+        <h2>{nextEvent.title}</h2>
+        <p>{nextEvent.blurb}</p>
+        <p class="nc-event-meta">
+          <strong>{nextEvent.date}</strong>
+          <span>{nextEvent.place}</span>
+        </p>
+        <a class="nc-event-cta" href={`${base}/events/`}>See all events</a>
+        <small>Updates also on Facebook &amp; Instagram</small>
+      </article>
+    </aside>
+    <nav class="nc-rail" aria-label="Browse by trade">
+      {categories.map((cat) => (
+        <a class="nc-rail-cell" href={`${base}/members/#${cat.id}`}>
+          <span class="nc-rail-label">{cat.shortLabel}</span>
+          <span class="nc-rail-note">{counts[cat.id]} listings</span>
+        </a>
+      ))}
+    </nav>
+  </main>
+</ChamberConceptShell>

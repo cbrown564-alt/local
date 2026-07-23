@@ -1,0 +1,65 @@
+---
+import { chamber } from "../../data/chamber-prototype";
+import "../../styles/global.css";
+import "../../styles/proto-chamber-main-street.css";
+
+interface Props {
+  title: string;
+  current: "home" | "about" | "members" | "events" | "join" | "contact";
+}
+
+const { title, current } = Astro.props;
+const base = "/prototypes/chamber/main-street";
+const nav = [
+  { id: "home", href: `${base}/`, label: "Home" },
+  { id: "members", href: `${base}/members/`, label: "Directory" },
+  { id: "events", href: `${base}/events/`, label: "What's on" },
+  { id: "join", href: `${base}/join/`, label: "Join" },
+  { id: "about", href: `${base}/about/`, label: "About" },
+  { id: "contact", href: `${base}/contact/`, label: "Contact" },
+] as const;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="concept-page proto-main-street">
+    <div class="ms-awning" aria-hidden="true"></div>
+    <header class="ms-header">
+      <a class="ms-brand" href={`${base}/`}>
+        <span class="ms-fascia">Main Street</span>
+        <span class="ms-brand-name">Newcastle Chamber</span>
+        <span class="ms-brand-sub">Co. Down · business finder</span>
+      </a>
+      <nav class="ms-nav" aria-label="Chamber sections">
+        {nav.map((item) => (
+          <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <a class="ms-join" href={`${base}/join/`}>List your business</a>
+    </header>
+    <p class="ms-proto-bar">Direction B · Main Street Finder · <a href="/prototypes/chamber/">all prototypes</a></p>
+    <slot />
+    <footer class="ms-footer">
+      <div class="ms-footer-inner">
+        <div>
+          <p class="ms-footer-title">Find it on Main Street</p>
+          <p>{chamber.address}</p>
+        </div>
+        <div>
+          <a href={chamber.emailHref}>{chamber.email}</a>
+          <a href={chamber.phoneHref}>{chamber.phone}</a>
+        </div>
+        <p class="ms-footer-note">Independent concept · illustrative directory · not a live Chamber site</p>
+      </div>
+    </footer>
+    <div class="concept-disclosure">Independent concept · Direction B · Main Street</div>
+  </body>
+</html>

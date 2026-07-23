@@ -1,0 +1,139 @@
+---
+import "../styles/motion-compare.css";
+
+interface Props {
+  /** Concept slug, used only to scope element ids. */
+  slug: string;
+  /** After (concept) demo clip — always present. */
+  afterVideo: string;
+  afterPoster: string;
+  afterAlt: string;
+  /** Before (live site) demo clip. Omit for a first-website concept: the
+      before side then shows the static poster with `beforeNote`. */
+  beforeVideo?: string;
+  beforePoster: string;
+  beforeAlt: string;
+  beforeNote?: string;
+  heading?: string;
+  intro?: string;
+}
+const {
+  slug,
+  afterVideo,
+  afterPoster,
+  afterAlt,
+  beforeVideo,
+  beforePoster,
+  beforeAlt,
+  beforeNote = "This business has no website of its own — its current public presence is a social page behind a login. There is no live site to demo.",
+  heading = "See it in motion",
+  intro = "A still can't show the hero, the menus or how fast you reach the main action. These are ten-second visits to each version, captured the same way.",
+} = Astro.props;
+
+const afterOnly = !beforeVideo;
+const webmSource = (source: string) => source.replace(/\.mp4$/i, ".webm");
+const webpPoster = (source: string) => source.replace(/\.[^/.]+$/, "-1265.webp");
+---
+
+<section class="motion is-paused" data-motion aria-labelledby={`motion-${slug}-heading`}>
+  <div class="shell">
+    <div class="motion-intro">
+      <div>
+        <h2 id={`motion-${slug}-heading`}>{heading}</h2>
+        <p>{intro}</p>
+      </div>
+      <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false">
+        <span class="motion-toggle-icon" aria-hidden="true"></span>
+        <span class="motion-toggle-label">Play demos</span>
+      </button>
+    </div>
+
+    <div class:list={["motion-grid", { "motion-grid--after-only": afterOnly }]}>
+      <figure class="motion-panel">
+        <figcaption class="motion-legend motion-legend-before">Before</figcaption>
+        <div class="motion-frame">
+          {beforeVideo ? (
+            <video
+              class="motion-video"
+              data-motion-video
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster={webpPoster(beforePoster)}
+              aria-label={`Before: ${beforeAlt}`}
+            >
+              <source src={webmSource(beforeVideo)} type="video/webm" />
+              <source src={beforeVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <>
+              <img class="motion-still" src={beforePoster} alt={beforeAlt} width="1265" height="710" loading="lazy" />
+              <p class="motion-static-note">{beforeNote}</p>
+            </>
+          )}
+        </div>
+      </figure>
+
+      <figure class="motion-panel">
+        <figcaption class="motion-legend motion-legend-after">After</figcaption>
+        <div class="motion-frame">
+          <video
+            class="motion-video"
+            data-motion-video
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster={webpPoster(afterPoster)}
+            aria-label={`After: ${afterAlt}`}
+          >
+            <source src={webmSource(afterVideo)} type="video/webm" />
+            <source src={afterVideo} type="video/mp4" />
+          </video>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-motion]").forEach((section) => {
+    const videos = [...section.querySelectorAll<HTMLVideoElement>("[data-motion-video]")];
+    const toggle = section.querySelector<HTMLButtonElement>("[data-motion-toggle]");
+    const label = toggle?.querySelector<HTMLElement>(".motion-toggle-label");
+    if (!videos.length || !toggle) return;
+
+    // Motion and its media requests begin only after an explicit button press.
+    let playing = false;
+
+    const syncButton = () => {
+      toggle.setAttribute("aria-pressed", String(playing));
+      section.classList.toggle("is-paused", !playing);
+      if (label) label.textContent = playing ? "Pause demos" : "Play demos";
+    };
+
+    const playAll = async () => {
+      for (const video of videos) {
+        try {
+          await video.play();
+        } catch {
+          // The poster remains available if a browser refuses playback.
+        }
+      }
+    };
+    const pauseAll = () => videos.forEach((video) => video.pause());
+
+    toggle.addEventListener("click", () => {
+      playing = !playing;
+      syncButton();
+      if (playing) {
+        void playAll();
+      } else {
+        pauseAll();
+      }
+    });
+
+    syncButton();
+  });
+</script>

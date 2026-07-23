@@ -1,0 +1,75 @@
+---
+import { chamber } from "../../data/chamber-prototype";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+import "../../styles/global.css";
+import "../../styles/concept-newcastle-chamber.css";
+
+interface Props {
+  title: string;
+  current: "home" | "about" | "members" | "events" | "join" | "contact";
+  disclosure?: string;
+}
+
+const { title, current, disclosure } = Astro.props;
+const base = "/concepts/newcastle-chamber";
+const nav = [
+  { id: "home", href: `${base}/`, label: "Home" },
+  { id: "members", href: `${base}/members/`, label: "Members" },
+  { id: "events", href: `${base}/events/`, label: "Events" },
+  { id: "join", href: `${base}/join/`, label: "Join" },
+  { id: "about", href: `${base}/about/`, label: "About" },
+  { id: "contact", href: `${base}/contact/`, label: "Contact" },
+] as const;
+---
+
+<ConceptLayout title={title} slug="newcastle-chamber" bodyClass="concept-page concept-newcastle-chamber" bannerNote={disclosure}>
+    <div class="nc-strip">
+      <span><strong>Newcastle, Co. Down</strong> · 50A Main Street · under the Mournes</span>
+      <span class="nc-strip-social">News on <a href={chamber.facebook}>Facebook</a> &amp; <a href={chamber.instagram}>Instagram</a></span>
+    </div>
+    <header class="nc-header">
+      <a class="nc-brand" href={`${base}/`}>
+        <svg class="nc-seal" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+          <circle cx="23" cy="23" r="21.5" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="23" cy="23" r="17.5" stroke="currentColor" stroke-width="1" opacity="0.45" />
+          <path d="M10 28 L16 20 L20 24 L26 14 L32 22 L36 18 L36 30 L10 30 Z" fill="currentColor" opacity="0.9" />
+          <path d="M10 30 H36" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <span class="nc-brand-text">
+          <span class="nc-brand-name">Newcastle Chamber</span>
+          <span class="nc-brand-sub">of Commerce · Co. Down</span>
+        </span>
+      </a>
+      <nav class="nc-nav" aria-label="Chamber sections">
+        {nav.map((item) => (
+          <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <a class="nc-join" href={`${base}/join/`}>Join the chamber</a>
+    </header>
+    <slot />
+    <footer class="nc-site-footer">
+      <div class="nc-site-footer-grid">
+        <div>
+          <p class="nc-site-footer-brand">{chamber.shortName}</p>
+          <p>{chamber.placeLine}</p>
+          <p>{chamber.address}</p>
+        </div>
+        <div>
+          <p><a href={chamber.emailHref}>{chamber.email}</a></p>
+          <p><a href={chamber.phoneHref}>{chamber.phone}</a></p>
+          <p>
+            <a href={chamber.facebook}>Facebook</a>
+            {" · "}
+            <a href={chamber.instagram}>Instagram</a>
+            {" · "}
+            <a href={chamber.linkedin}>LinkedIn</a>
+          </p>
+        </div>
+        <div>
+          <p>Volunteer-run since the {chamber.relaunchYear} relaunch.</p>
+          <p class="nc-site-footer-note">Find a business · join the street · keep the calendar visible</p>
+        </div>
+      </div>
+    </footer>
+  </ConceptLayout>
