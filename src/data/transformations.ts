@@ -93,7 +93,7 @@ export const transformations: Transformation[] = [
     town: "Dundrum",
     category: "Pub & dining",
     summary:
-      "The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary engine it already runs.",
+      "The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary booking system it already runs.",
     before: "/images/bucks-head-before.jpg",
     after: "/images/bucks-head-after.jpg",
     beforeAlt:
@@ -138,7 +138,7 @@ export const transformations: Transformation[] = [
     town: "Newcastle",
     category: "Hotel",
     summary:
-      "A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking engine.",
+      "A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking system.",
     before: "/images/hotel-enniskeen-before.jpg",
     after: "/images/hotel-enniskeen-after.jpg",
     beforeAlt: "Enniskeen's current homepage with an archive oval logo, blue uppercase menu bar and a photo carousel of the house and valley, arrival cookie prompt closed",
