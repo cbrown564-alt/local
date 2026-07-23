@@ -1,11 +1,11 @@
-/** Shared content for Newcastle Chamber full-site prototypes.
+/** Shared content for Newcastle Chamber concept + exploration prototypes.
  *  Real contact / place facts from verification; member names and
  *  non-Halloween events are illustrative concept placeholders. */
 
 export const chamber = {
   name: "Newcastle Chamber of Commerce",
   shortName: "Newcastle Chamber",
-  placeLine: "Newcastle, Co. Down — not Tyne",
+  placeLine: "Newcastle, Co. Down",
   address: "50A Main Street, Newcastle, Co. Down, BT33 0AD",
   email: "newcastlechamber2023@gmail.com",
   emailHref: "mailto:newcastlechamber2023@gmail.com",
@@ -45,10 +45,10 @@ export const members: Member[] = [
 ];
 
 export const categories = [
-  { id: "hospitality" as const, label: "Hospitality & Stays" },
-  { id: "food" as const, label: "Food & Drink" },
-  { id: "retail" as const, label: "Retail & Gifts" },
-  { id: "services" as const, label: "Services & Leisure" },
+  { id: "hospitality" as const, label: "Hospitality & Stays", shortLabel: "Hospitality" },
+  { id: "food" as const, label: "Food & Drink", shortLabel: "Food & Drink" },
+  { id: "retail" as const, label: "Retail & Gifts", shortLabel: "Retail" },
+  { id: "services" as const, label: "Services & Leisure", shortLabel: "Services" },
 ];
 
 export type EventItem = {
@@ -69,7 +69,7 @@ export const events: EventItem[] = [
     date: "Saturday 31 October 2026",
     dateSort: "2026-10-31",
     blurb:
-      "Family night on the town — planned primarily by the Chamber with Newry, Mourne and Down District Council. Details land on Facebook and Instagram as they firm up.",
+      "Family night on the town — planned primarily by the Chamber with Newry, Mourne and Down District Council. Further details on Facebook and Instagram as they land.",
     place: "Newcastle town centre",
     real: true,
     ctaLabel: "Follow updates on Facebook",
@@ -77,10 +77,10 @@ export const events: EventItem[] = [
   },
   {
     title: "Main Street traders' morning",
-    date: "Illustrative · midweek, monthly",
+    date: "Monthly · midweek",
     dateSort: "2026-08-15",
     blurb:
-      "A short coffee catch-up for members — what's working on the street, what's coming up, and who needs a hand. Concept sample of a standing chamber rhythm.",
+      "A short coffee catch-up for members — what's working on the street, what's coming up, and who needs a hand.",
     place: "50A Main Street",
     real: false,
     ctaLabel: "Ask about the next date",
@@ -88,10 +88,10 @@ export const events: EventItem[] = [
   },
   {
     title: "Winter lights & late opening",
-    date: "Illustrative · December",
+    date: "December",
     dateSort: "2026-12-05",
     blurb:
-      "Town-centre evening opening with member shops staying late. Placeholder for how the Chamber could host a seasonal calendar page without inventing a booked date.",
+      "Town-centre evening opening with member shops staying late — the kind of seasonal night the calendar can hold as dates firm up.",
     place: "Main Street & Promenade",
     real: false,
     ctaLabel: "Email the chamber",
@@ -102,7 +102,7 @@ export const events: EventItem[] = [
 export const joinBenefits = [
   {
     title: "Be found on Main Street",
-    body: "A standing directory listing that puts your trade in front of locals and visitors — without asking them to log into Facebook first.",
+    body: "A standing directory listing that puts your trade in front of locals and visitors looking for businesses in town.",
   },
   {
     title: "Town events, together",
@@ -119,7 +119,7 @@ export const joinBenefits = [
 ];
 
 export const aboutParagraphs = [
-  "Newcastle Chamber of Commerce — County Down, not Tyne — is the volunteer-run hub for traders on Main Street and beyond. Reformed in 2023, it still answers from the same Gmail and social channels the committee already uses.",
+  "Newcastle Chamber of Commerce is the volunteer-run hub for traders on Main Street and beyond in Co. Down. Reformed in 2023, it still answers from the same Gmail and social channels the committee already uses.",
   "The Chamber's job is practical: help people find member businesses, keep the town calendar visible, and give traders a clear door to join. It works with Newry, Mourne and Down District Council on nights like Halloween in Newcastle.",
   "This concept site is independent design exploration by Mourne & Main. It is not a live Chamber website and does not claim committee approval.",
 ];

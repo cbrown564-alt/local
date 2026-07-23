@@ -25,7 +25,7 @@ Tavistock, Alresford, Bishop's Stortford, Banbridge, Newry.
 
 | Job | Best practice | Right-sized for Newcastle |
 |---|---|---|
-| **Front door** | Single source of truth; clear place identity | Lead with **Co. Down / Main Street / Mournes** so searchers don't land on Tyne |
+| **Front door** | Single source of truth; clear place identity | Lead with **Co. Down / Main Street / Mournes** so the town is unmistakable |
 | **Directory** | Searchable / faceted by industry — not a flat PDF or A–Z dump | Category filters + cards; illustrative until the committee owns the list |
 | **Events** | Standing calendar with registration where capacity exists | One confirmed date (Halloween) + room for more; deep-link social for updates |
 | **Join** | Clear path on every page; pricing/tiers when ready | Mailto join is honest for volunteer capacity; form can come later |
@@ -68,7 +68,7 @@ succeed with a lean IA: about, members, events, join, contact.
 1. **Prospective members** — traders who need a reason to email the inbox
 2. **Public / visitors** — "find a business in Newcastle Co. Down"
 3. **Existing members** — visibility + event awareness
-4. **Search / AI** — entity clarity so Co. Down wins over Tyne
+4. **Search / AI** — entity clarity so Co. Down is unmistakable
 
 ## Three directions to prototype
 
@@ -98,7 +98,7 @@ illustrative; contact details and Halloween are verified.
 **Proceed with a B-led hybrid**, published at `/concepts/newcastle-chamber/`:
 
 - **B · Main Street Finder** — IA and homepage (directory as the product)
-- **A · Civic Front Door** — Co. Down strip, seal, harbour-navy / brass chrome
+- **A · Civic Front Door** — place strip, seal, harbour-navy / brass chrome
 - **C · Harbour Network** — warmer neighbour voice on the join page
 
 Mailto join; calendar grows from the verified Halloween date. Prototype
