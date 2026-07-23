@@ -75,28 +75,32 @@ tick items here and update the linked docs in the same commit as each fix.
 
 ## P3 — Concept and comparison system (the scaling wall)
 
-- [ ] **Concept pages dead-end.** Concept home pages have no link back to the
-  case study or to Mourne & Main, and carry 5–12 `href="#"` fake nav links
-  each. Add a persistent "Independent concept by Mourne & Main — is this your
-  business? →" banner, and make dead links visibly inert or real.
-- [ ] **`/concepts/*` pages are indexable and name real businesses** — some
-  embed the real phone/email (`concepts/donard-veterinary.astro`). They bypass
-  BaseLayout, so they have no `noindex`, no meta. Add noindex (or a shared
-  concept head) before search engines associate them with the businesses.
+- [x] **Concept pages dead-end.** Fixed 23 July 2026: the shared concept shell
+  adds a persistent case-study link and pre-filled claim action to every
+  concept page. Placeholder `href="#"` links are now visibly inert and exposed
+  to assistive technology as disabled rather than behaving like broken links.
+- [x] **`/concepts/*` pages are indexable and name real businesses.** Fixed
+  23 July 2026: all 23 concept routes use `ConceptLayout.astro`, which supplies
+  `noindex, nofollow`, a plain description, favicon and consistent disclosure.
+  The sitemap also excludes the whole concept tree.
 - [ ] **One CSS file per concept re-implements the same skeleton** — 451–712
   lines each with only tokens and copy differing (`concept-*.css`, ~5,000
-  lines total). Build `ConceptLayout.astro` + shared primitives driven by CSS
-  custom properties; new concepts become a token block plus content.
-- [ ] **Comparison pages are hand-built** (~85–180 lines each) with alt text
-  duplicated 2–3× between `transformations.ts` and the page. Move notes,
-  sources, media paths and headline into the data model and collapse to a
-  single `transformations/[slug].astro`.
-- [ ] Add prev/next navigation between transformations; detail pages currently
-  dead-end.
-- [ ] Add `robots.txt` (disallow `/prototypes/`) and `@astrojs/sitemap` for the
-  public pages; add canonicals, favicon, `LocalBusiness` JSON-LD, and a Google
-  Business Profile. Decide whether `/prototypes/chamber/` should stay linked
-  from the public Chamber transformation page.
+  lines total). `ConceptLayout.astro` now owns the shared head, disclosure,
+  claim action and disabled-link behaviour; the repeated visual skeletons and
+  identity CSS still need consolidation into shared primitives and token
+  blocks.
+- [x] **Comparison pages are hand-built.** Fixed 23 July 2026: headlines,
+  source blocks, design notes and media paths now live in
+  `transformation-details.ts`; one static `[slug].astro` route generates all
+  ten case studies without duplicating the base comparison markup.
+- [x] Added circular previous/next navigation between all transformations.
+- [x] Added `robots.txt`, a filtered public sitemap, canonicals, a favicon and
+  `LocalBusiness`/`ProfessionalService` JSON-LD. The internal Chamber
+  exploration stays buildable under `/prototypes/chamber/`, but is disallowed
+  to crawlers, omitted from the sitemap and no longer linked publicly.
+- [ ] Create and verify a Google Business Profile. This needs the owner's
+  Google account, publishable contact details and real-world business
+  verification; it cannot be completed safely from the repository.
 
 ## P4 — Performance and media
 

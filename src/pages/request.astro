@@ -12,7 +12,7 @@ import "../styles/request.css";
       <p>Share a current link if you have one, then tell us what matters most. We will choose one useful screen or piece of content and show a clearer direction.</p>
       <p><strong>No obligation.</strong> No full redesign hiding behind a sales call. Just a focused before-and-after to start the conversation.</p>
     </div>
-    <form class="request-form" novalidate>
+    <form class="request-form" novalidate data-request-source="direct">
       <div class="form-honeypot" aria-hidden="true">
         <label for="mm-check">Leave this field empty</label>
         <input id="mm-check" name="mm_check_field" tabindex="-1" autocomplete="new-password" />
@@ -21,7 +21,7 @@ import "../styles/request.css";
       <div class="form-success" role="status" aria-live="polite"></div>
       <div class="field-grid">
         <div class="field"><label for="business">Business or organisation</label><input id="business" name="business" autocomplete="organization" required /></div>
-        <div class="field"><label for="town">Town</label><select id="town" name="town" required><option value="">Choose one</option><option>Dundrum</option><option>Newcastle</option><option>Nearby</option></select></div>
+        <div class="field"><label for="town">Town</label><select id="town" name="town" required><option value="">Choose one</option><option value="Dundrum">Dundrum</option><option value="Newcastle">Newcastle</option><option value="Nearby">Nearby</option></select></div>
       </div>
       <div class="field"><label for="link">Current website, menu, listing or page <span class="field-optional">(optional)</span></label><input id="link" name="link" type="text" inputmode="url" autocomplete="url" placeholder="facebook.com/your-page" /><small>Leave this blank if you do not have a website or public page yet.</small></div>
       <div class="field"><label for="idea">What should be easier or more impressive?</label><textarea id="idea" name="idea" required placeholder="For example: make the food look better, simplify booking, or show the venue properly on mobile."></textarea></div>
@@ -43,7 +43,29 @@ import "../styles/request.css";
   const success = form?.querySelector<HTMLElement>(".form-success");
   const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   const submitLabel = form?.querySelector<HTMLElement>("[data-submit-label]");
-  form?.addEventListener("input", () => track("request_form_started"), { once: true });
+  const params = new URLSearchParams(window.location.search);
+  const requestedBusiness = params.get("business")?.slice(0, 120);
+  const requestedTown = params.get("town");
+  const requestSource = params.get("source")?.slice(0, 80);
+  const businessInput = form?.elements.namedItem("business");
+  const townSelect = form?.elements.namedItem("town");
+
+  if (requestedBusiness && businessInput instanceof HTMLInputElement) {
+    businessInput.value = requestedBusiness;
+  }
+  if (
+    requestedTown
+    && townSelect instanceof HTMLSelectElement
+    && [...townSelect.options].some((option) => option.value === requestedTown)
+  ) {
+    townSelect.value = requestedTown;
+  }
+  if (requestSource && form) {
+    form.dataset.requestSource = requestSource;
+  }
+
+  const source = form?.dataset.requestSource ?? "direct";
+  form?.addEventListener("input", () => track("request_form_started", { source }), { once: true });
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     form.classList.add("request-form--submitted");
@@ -70,7 +92,7 @@ import "../styles/request.css";
       if (!response.ok) throw new Error(result.error || "The request could not be sent.");
       form.reset();
       form.classList.remove("request-form--submitted");
-      track("request_form_submitted");
+      track("request_form_submitted", { source });
       if (success) success.textContent = `Thanks — your request for ${business} has been sent. We’ll reply to the email address you provided.`;
       success?.scrollIntoView({ behavior: "smooth", block: "center" });
     } catch (submissionError) {

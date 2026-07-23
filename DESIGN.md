@@ -37,7 +37,10 @@ Each concept carries the subject's own visual identity, not the studio's. The
 Mourne & Main palette and Antonio display face never appear inside a concept
 screen; the standalone concept pages live at `/concepts/<slug>/` with their
 own stylesheet at `src/styles/concept-<slug>.css`, scoped by a body class so
-identities cannot leak between concepts.
+identities cannot leak between concepts. `ConceptLayout.astro` owns the shared
+HTML head, `noindex` rule, fixed disclosure, case-study return, claim action and
+disabled placeholder-link behaviour. Identity CSS remains local until its
+repeated layout patterns are consolidated without flattening the designs.
 
 - **Castle Farm** — warm cream and farm green, Georgia serif, produce-led.
 - **Enniskeen** — deep pine `#1E3A2C`, cream `#F5EFE2` and honey brass
@@ -48,8 +51,8 @@ identities cannot leak between concepts.
 - **Newcastle Chamber** — harbour navy `#182C3F`, sea mist and civic brass
   with Newsreader; Co. Down strip and seal chrome from the civic direction,
   Main Street finder IA (directory as the product), warmer neighbour join
-  voice. Full linked site at `/concepts/newcastle-chamber/`; exploration
-  archive at `/prototypes/chamber/`.
+  voice. Full linked site at `/concepts/newcastle-chamber/`; the unlinked,
+  crawler-blocked exploration archive remains at `/prototypes/chamber/`.
 
 Concept screenshots are always captured at 1265×710 at 2x so comparisons align
 exactly, and concept pages carry a fixed "Independent concept" marker.
