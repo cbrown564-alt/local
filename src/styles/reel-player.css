@@ -60,6 +60,11 @@
   font: inherit;
   text-align: center;
   cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 160ms cubic-bezier(.23, 1, .32, 1),
+    visibility 0s linear;
 }
 
 .reel-player-play::before {
@@ -67,10 +72,8 @@
   position: absolute;
   inset: 0;
   background: rgba(13, 23, 29, .14);
-  transition: background 180ms ease;
+  transition: background 180ms cubic-bezier(.25, .1, .25, 1);
 }
-
-.reel-player-play:hover::before { background: rgba(13, 23, 29, .25); }
 
 .reel-player-play-icon,
 .reel-player-play span:last-child {
@@ -86,7 +89,9 @@
   border-radius: 50%;
   background: var(--yellow);
   box-shadow: 5px 5px 0 var(--ink);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 160ms cubic-bezier(.23, 1, .32, 1),
+    box-shadow 160ms cubic-bezier(.23, 1, .32, 1);
 }
 
 .reel-player-play-icon::after {
@@ -95,11 +100,6 @@
   border-style: solid;
   border-width: 13px 0 13px 21px;
   border-color: transparent transparent transparent var(--ink);
-}
-
-.reel-player-play:hover .reel-player-play-icon {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .reel-player-play strong,
@@ -121,7 +121,14 @@
   font-weight: 700;
 }
 
-.reel-player.is-playing .reel-player-play { display: none; }
+.reel-player.is-playing .reel-player-play {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 160ms cubic-bezier(.23, 1, .32, 1),
+    visibility 0s linear 160ms;
+}
 
 .reel-player-note {
   margin: 20px 0 0;
@@ -130,7 +137,8 @@
 }
 
 .reel-player[data-reduced-motion] .reel-player-play::before,
-.reel-player[data-reduced-motion] .reel-player-play-icon {
+.reel-player[data-reduced-motion] .reel-player-play-icon,
+.reel-player[data-reduced-motion] .reel-player-play {
   transition: none;
 }
 
@@ -138,6 +146,16 @@
   transform: none;
   box-shadow: 5px 5px 0 var(--ink);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .reel-player-play:hover::before { background: rgba(13, 23, 29, .25); }
+  .reel-player-play:hover .reel-player-play-icon {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+
+.reel-player-play:active .reel-player-play-icon { transform: scale(.97); }
 
 @media (max-width: 720px) {
   .reel-player { padding: 58px 0 64px; }
