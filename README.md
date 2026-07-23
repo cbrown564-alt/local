@@ -55,6 +55,10 @@ pnpm test:request
 
 To exercise actual delivery in a local Vercel runtime, copy `.env.example` to `.env` and supply local values first.
 
+## Review backlog
+
+`REVIEW.md` — critical site review (23 July 2026): verified findings with file references and the prioritised P0–P4 backlog plus bold ideas. P0 items are fixed; work the rest top-down and tick them off in the same commit as each fix.
+
 ## Research artifacts
 
 - `src/data/businesses.json` — consolidated public-source dataset (379 records)
