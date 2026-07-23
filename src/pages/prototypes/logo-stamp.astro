@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/logo-stamp-prototypes.css";
+
+const variants = [
+  {
+    id: "side-tab",
+    label: "A",
+    name: "Side tab",
+    description: "The original idea, refined. A gorse tab signs the edge while the place line stays separate.",
+    verdict: "Best balance",
+    qualities: ["Compact without becoming cryptic", "Place remains readable", "Easy to reverse on dark backgrounds"],
+  },
+  {
+    id: "split-field",
+    label: "B",
+    name: "Split field",
+    description: "The name becomes two joined fields, giving “Made” more colour and more emphasis.",
+    verdict: "Boldest",
+    qualities: ["Name reads fastest", "Strong from across a room", "Less like a conventional agency wordmark"],
+  },
+  {
+    id: "open-frame",
+    label: "C",
+    name: "Open frame",
+    description: "A lighter stamp with the same proportions, using outline and a single yellow registration mark.",
+    verdict: "Most flexible",
+    qualities: ["Sits quietly over photography", "Uses less solid ink in print", "Feels more considered than industrial"],
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Mourne Made — maker’s stamp refinements"
+  description="Three refined maker’s-stamp directions for the Mourne Made identity."
+  hideHeader
+  hideFooter
+  robots="noindex, nofollow"
+  class="stamp-lab"
+>
+  <header class="stamp-lab-intro">
+    <nav aria-label="Prototype navigation">
+      <a href="/prototypes/logo/">← All logo directions</a>
+      <a href="/">Current site</a>
+    </nav>
+    <div class="stamp-lab-title">
+      <p>Maker’s stamp refinement · 23 July 2026</p>
+      <h1>Mourne<br />Made</h1>
+    </div>
+    <div class="stamp-lab-brief">
+      <span>The test</span>
+      <p>It should feel like a maker’s label without looking industrial or mass-produced.</p>
+    </div>
+  </header>
+
+  <main class="stamp-variants">
+    {variants.map((variant) => (
+      <article class:list={["stamp-variant", `stamp-variant--${variant.id}`]} aria-labelledby={`${variant.id}-heading`}>
+        <header class="stamp-variant-heading">
+          <span>{variant.label}</span>
+          <div>
+            <p>{variant.verdict}</p>
+            <h2 id={`${variant.id}-heading`}>{variant.name}</h2>
+            <p>{variant.description}</p>
+          </div>
+        </header>
+
+        <div class="stamp-browser">
+          <div class="stamp-browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <header class="stamp-site-header">
+            <a class:list={["stamp-logo", `stamp-logo--${variant.id}`]} href={`#${variant.id}-heading`} aria-label="Mourne Made">
+              {variant.id === "side-tab" && (
+                <>
+                  <span class="stamp-logo-block"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                  <span class="stamp-logo-place">Dundrum<br />+ Newcastle</span>
+                </>
+              )}
+              {variant.id === "split-field" && (
+                <span class="stamp-logo-split">
+                  <b>Mourne</b>
+                  <b>Made</b>
+                </span>
+              )}
+              {variant.id === "open-frame" && (
+                <>
+                  <span class="stamp-logo-frame"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                  <span class="stamp-logo-place">Dundrum<br />+ Newcastle</span>
+                </>
+              )}
+            </a>
+            <nav aria-label={`${variant.name} header example`}>
+              <a href="#0">Transformations</a>
+              <a href="#0">Why local</a>
+              <a class="stamp-cta" href="#0">Free before-and-after</a>
+            </nav>
+          </header>
+          <section class="stamp-site-hero">
+            <p>Dundrum + Newcastle, County Down</p>
+            <h3>See what your local business could become online.</h3>
+          </section>
+        </div>
+
+        <div class="stamp-applications">
+          <section class="stamp-application stamp-application--credit">
+            <p>Concept credit</p>
+            <div class="concept-credit">
+              <span>Independent concept by</span>
+              <div class:list={["stamp-logo", `stamp-logo--${variant.id}`, "stamp-logo--reversed"]}>
+                {variant.id === "side-tab" && (
+                  <>
+                    <span class="stamp-logo-block"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                    <span class="stamp-logo-place">Dundrum<br />+ Newcastle</span>
+                  </>
+                )}
+                {variant.id === "split-field" && (
+                  <span class="stamp-logo-split"><b>Mourne</b><b>Made</b></span>
+                )}
+                {variant.id === "open-frame" && (
+                  <>
+                    <span class="stamp-logo-frame"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                    <span class="stamp-logo-place">Dundrum<br />+ Newcastle</span>
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+
+          <section class="stamp-application stamp-application--avatar">
+            <p>Small mark</p>
+            <div class:list={["stamp-avatar", `stamp-avatar--${variant.id}`]} aria-label={`${variant.name} small mark`}>
+              {variant.id === "side-tab" && <><b>M</b><b>M</b><i aria-hidden="true"></i></>}
+              {variant.id === "split-field" && <><b>M</b><b>M</b></>}
+              {variant.id === "open-frame" && <><b>M</b><b>M</b><i aria-hidden="true"></i></>}
+            </div>
+          </section>
+
+          <section class="stamp-application stamp-application--qualities">
+            <p>What works</p>
+            <ul>
+              {variant.qualities.map((quality) => <li>{quality}</li>)}
+            </ul>
+          </section>
+        </div>
+      </article>
+    ))}
+  </main>
+
+  <footer class="stamp-lab-footer">
+    <p><strong>Recommendation: A, Side tab.</strong> It keeps the character you liked while giving every part of the mark enough room to work.</p>
+    <p>If A is the direction, the final pass should tune letter spacing, tab width and the small MM mark—not change the idea again.</p>
+  </footer>
+</BaseLayout>

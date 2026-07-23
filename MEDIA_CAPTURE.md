@@ -175,23 +175,31 @@ crossfades and remains silent.
 | Direct comparison | `swipe-heroes` | Full before view, then a directional wipe to the full after view |
 | Close | `end-card` | Independent label, case-study URL and free before-and-after line |
 
-The 23 July revision replaced the original rapid page inventory with a guest
-journey: arrive, understand the rooms, see what completes the stay, then book.
+The 23 July revision replaced the original rapid page inventory with a
+guest-first sequence: arrive, understand the rooms, see what completes the
+stay, then book.
 The booking handoff now concludes the concept visit. The closing comparison
 holds each opening view at full size and uses a single wipe from before to
 after, so neither hero is reduced to a narrow crop.
 
+Captions follow three related treatments. Proof captions state a specific
+problem or retained feature during the current-site footage. Numbered
+editorial captions guide the guest from arrival to booking. Quieter serif
+captions sit over the estate and local-area footage, where the photography
+needs more room. The comparison keeps one continuous proof line while the
+image wipes from before to after, avoiding two sentences colliding in motion.
+
 Enniskeen delivery files:
 
-- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 75.83 s,
-  1920×1080, 5.74 MB.
-- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 75.83 s,
-  1920×1080, 5.83 MB.
-- `public/videos/hotel-enniskeen-outreach-reel.mp4` — 49.40 s H.264
-  first-contact edit, 1920×1080, 2.97 MB.
-- `public/videos/hotel-enniskeen-outreach-reel.webm` — 49.40 s VP9
-  first-contact edit, 1920×1080, 3.22 MB. Both outreach files retain the
-  opening, booking journey and full-frame before-to-after wipe and are
+- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 76.00 s,
+  1920×1080, 5.77 MB.
+- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 76.00 s,
+  1920×1080, 6.00 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.mp4` — 49.53 s H.264
+  first-contact edit, 1920×1080, 2.98 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.webm` — 49.53 s VP9
+  first-contact edit, 1920×1080, 3.24 MB. Both outreach files retain the
+  opening, booking sequence and full-frame before-to-after wipe and are
   generated alongside the complete reel.
 - `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 220 KB, with
   responsive WebP derivatives.
@@ -241,7 +249,7 @@ Final local QA on 23 July 2026:
 | --- | --- | --- | --- | --- |
 | castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
 | hotel-enniskeen | 23 Jul 2026 | before still & clip, after clip | Cookie bar → clicked "I Consent" | Before still recaptured clean (was cookie-bar) |
-| hotel-enniskeen flagship | 23 Jul 2026 | 75 s guest-journey reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and revised small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
+| hotel-enniskeen flagship | 23 Jul 2026 | 76 s guest-first reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and revised small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
 | mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 | bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
