@@ -168,5 +168,6 @@ still slider on each transformation page:
 
 | Business | Date | Media | Overlays found → action | Notes |
 | --- | --- | --- | --- | --- |
+| castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
 
 (Log rows are added in the same commit as each recapture.)
