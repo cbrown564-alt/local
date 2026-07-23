@@ -49,6 +49,53 @@
 
 .concept-responsive-picture { display: contents; }
 
+/* Shared concept chrome. Identity styles provide only the tokens and the
+   differences; every direct concept header uses the same layout behaviour. */
+:where(
+  .cp-strip,
+  .dv-strip,
+  .bh-strip,
+  .ka-strip,
+  .mc-strip,
+  .nc-strip,
+  .sc-strip,
+  .tc-strip
+) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* :where() keeps these at element-level specificity so identity rules —
+   including the mobile `.xx-nav { display: none }` breakpoints — still win. */
+:where(body.concept-page) > :where(header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:where(body.concept-page > header) nav {
+  display: flex;
+  gap: var(--concept-nav-gap, clamp(16px, 2.2vw, 28px));
+}
+
+:where(body.concept-page > header nav) a {
+  position: relative;
+  padding-bottom: var(--concept-nav-underline-offset, 5px);
+  text-decoration: none;
+}
+
+:where(body.concept-page > header nav) a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: var(--concept-nav-line, 2px);
+  background: var(--concept-accent, currentColor);
+  transition: right 160ms ease;
+}
+
 @media (max-width: 760px) {
   .mm-concept-banner {
     position: static;
