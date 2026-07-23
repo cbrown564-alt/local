@@ -173,5 +173,10 @@ still slider on each transformation page:
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
 | mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 | bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
+| scopers | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
+| cupla | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
+| tool-centre | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
+| kent-amusements | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
+| newcastle-chamber | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 
 (Log rows are added in the same commit as each recapture.)
