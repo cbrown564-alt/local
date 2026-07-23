@@ -116,7 +116,7 @@ print one-sheet pipeline); F2 reuses it at roughly half the cost.
 
 | Piece | Scope | Why this shape |
 |---|---|---|
-| **F1 · Enniskeen flagship — locally verified** | Full linked concept site (Home · Stay · Dine · The estate · Things to do), 60 s MP4/WebM flagship film, Rooms + Dine companion stills, personalised A4 one-sheet and reviewed pitch | The complete reversible working prototype exists. Build, responsive page review, media decode, deferred loading, reduced-motion and keyboard playback checks pass. Stage stays Concept published; domain resolution, production-form delivery and printed-phone QR verification remain genuine outreach gates |
+| **F1 · Enniskeen flagship — locally verified** | Full linked concept site (Home · Stay · Dine · The estate · Things to do), 75 s MP4/WebM guest-journey film, Rooms + Dine companion stills, personalised A4 one-sheet and reviewed pitch | The complete reversible working prototype exists. Build, responsive page review, media decode, deferred loading, reduced-motion and keyboard playback checks pass. Stage stays Concept published; domain resolution, production-form delivery and printed-phone QR verification remain genuine outreach gates |
 | **F2 · Buck's Head journey case** | Mobile journey films (taps-to-booked-table, menus on a phone), "Two journeys" case-study section, walk-in pitch | Their site is current and well maintained; the verified gap is the journey around the ResDiary engine, so a rebuild pitch would be dishonest — the journey comparison is the winning artifact |
 
 Decision record, phases, gates, risks and estimates live in the two plan

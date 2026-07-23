@@ -21,8 +21,8 @@ been simulated.
 |---|---|---|
 | Phase 0 - re-verify and harvest | **Verified** | Commit `744e6b0`; 23 July live-site re-read recorded in `research/verifications.json`; sourced typed content and 19 distinct JPEG masters with responsive WebPs |
 | Phase 1 - full linked site | **Verified** | Commit `7b9c01f`; five linked pages, working Bookin1 date/length-of-stay handoff, no placeholder links; build, media test and four-viewport responsive captures passed at commit time |
-| Phase 2 - capture infrastructure | **Verified locally** | Declarative 14-segment `reel` mode uses `goto`, `hold`, `scroll`, `hover` and `click`; Chrome-rendered title cards; 1920×1080 CDP capture; ffmpeg split screens and crossfades |
-| Phase 2 - flagship film | **Verified locally; release URL gated** | MP4 and WebM are both 60.03 s at 1920×1080 and 5.25/5.89 MB. Both full decodes passed. Small-frame MP4/WebM contact sheets show legible captions, the first current-site carousel slide and no late overlay. Both booking clicks resolve. The end-card public URL remains unverified because the domain does not resolve. |
+| Phase 2 - capture infrastructure | **Verified locally** | Declarative 13-segment `reel` mode uses `goto`, `hold`, `scroll`, `hover` and `click`; Chrome-rendered title cards; 1920×1080 CDP capture; ffmpeg split screen and crossfades |
+| Phase 2 - flagship film | **Verified locally; release URL gated** | The revised guest-journey MP4 and WebM are both 74.90 s at 1920×1080 and 5.71/5.88 MB. Both full decodes passed. The small-frame contact sheet shows legible captions, the first current-site carousel slide and no late overlay. Both booking clicks resolve. The end-card public URL remains unverified because the domain does not resolve. |
 | Phase 2 - site player | **Verified** | Built page keeps both sources detached until explicit activation; WebM is preferred; reduced-motion remains opt-in; keyboard play/pause passes; `reel_play` is wired |
 | Phase 3 - A4 one-sheet | **Implemented and visually verified locally** | Dev-only print route plus slug-parameterised Chrome PDF script; two-page A4 PDF at `output/pdf/hotel-enniskeen-flagship-onesheet.pdf`; no page overflow; both rendered pages inspected after fixing the print skip-link; QR encodes the tracked `?src=onesheet` URL |
 | Phase 3 - written pitch | **Reviewed locally** | `research/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes; reviewed against `PRODUCT.md` tone and belief order |
@@ -178,16 +178,27 @@ A single ~60–75 s silent, captioned film — a different artifact from the 10 
    `reel_play` analytics event. `transformation-details.ts` gains an optional
    `reel` field; `[slug].astro` renders the section when present.
 
-**Storyboard (~70 s):**
+**Storyboard (~75 s, revised 23 July 2026):**
 
 | Beat | ~s | Content |
 |---|---|---|
-| Open card | 3 | "Enniskeen Country House Hotel, Newcastle" · "An independent concept study by Mourne & Main" — the honesty label leads |
-| Before visit | 15 | Arrival on the live site: archive logo, blue menu bar; the hunt for a room; the dated booking handoff |
-| Turn card | 3 | "The same hotel. Its own photographs. Its own booking engine." |
-| After visit | 30 | Concept hero (valley + availability bar) → check availability into Bookin1 → rooms → dine → estate, quick page-flow beats |
-| Split screen | 8 | Before/after heroes side by side (ffmpeg hstack), then both booking paths |
-| End card | 4 | "Independent concept — not commissioned." · case-study URL · free before-and-after line |
+| Open card | 4 | "Enniskeen Country House Hotel, Newcastle" · "An independent concept study by Mourne & Main" — the honesty label leads |
+| Current visit | 14 | Arrival on the live site: archive logo, blue menu bar; the hunt for a room; the abrupt Bookin1 handoff |
+| Turn card | 4 | "The same hotel. A clearer journey into the stay." The photographs and booking engine remain |
+| Arrival | 7 | The concept holds on the Shimna Valley hero before the availability bar is introduced |
+| Choose a room | 8 | Stay opens through the linked navigation; the room story and published room details have time to register |
+| Complete the picture | 20 | Dine, then the estate and things to do: three representative destinations with restrained scrolling rather than a rapid inventory of pages |
+| Check availability | 7 | Return to the persistent booking bar, choose dates, and enter the hotel's own Bookin1 results route |
+| Direct comparison | 5 | Before and after opening screens side by side |
+| End card | 5 | "Independent concept — not commissioned." · case-study URL · free before-and-after line |
+
+The revised film follows the order in which a guest makes sense of the hotel:
+arrive, understand the rooms, see what completes the stay, then check
+availability. The Bookin1 handoff is the conclusion rather than an interruption
+immediately after the concept hero. The duplicate split-screen booking reprise
+has been removed; showing the handoff once, deliberately, is enough. The
+linked navigation and the three representative interior destinations prove
+the complete-site scope without giving every page an equally short slot.
 
 **Output:** `public/videos/hotel-enniskeen-reel.mp4` (1920×1080, target
 ≤ 12 MB) + WebM via `pnpm optimize:media`; poster still. Same-commit updates:
