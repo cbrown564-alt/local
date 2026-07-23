@@ -114,15 +114,17 @@ const REELS = {
         id: "open-card",
         type: "card",
         duration: 4,
-        eyebrow: "Independent concept study",
-        title: "Enniskeen Country House Hotel, Newcastle",
-        detail: "By Mourne & Main · not commissioned by the hotel",
+        eyebrow: "Independent concept · not commissioned",
+        title: "Enniskeen Country House Hotel",
+        detail: "A guest-first website concept by Mourne & Main · Newcastle, County Down",
       },
       {
         id: "before-home",
         type: "browser",
         side: "before",
-        caption: "The current visit opens on an archive-style house mark and a seven-item blue menu.",
+        captionStyle: "proof",
+        chapter: "Current site",
+        caption: "Seven equal choices appear before the valley has made the case for staying.",
         steps: [
           { action: "goto", url: "https://www.enniskeenhotel.co.uk/", settleMs: 4000 },
           { action: "hold", seconds: 3.2 },
@@ -133,7 +135,9 @@ const REELS = {
         id: "before-rooms",
         type: "browser",
         side: "before",
-        caption: "Finding the rooms means moving through the old navigation and long page.",
+        captionStyle: "proof",
+        chapter: "Current rooms",
+        caption: "Room details are published, but they sit behind the old navigation and a long page.",
         steps: [
           { action: "goto", url: "https://www.enniskeenhotel.co.uk/Rooms.html", settleMs: 3500 },
           { action: "hold", seconds: 2.2 },
@@ -144,7 +148,9 @@ const REELS = {
         id: "before-booking",
         type: "browser",
         side: "before",
-        caption: "Booking leaves the hotel site for the existing Bookin1 engine.",
+        captionStyle: "proof",
+        chapter: "Current booking",
+        caption: "Bookin1 already handles availability. That working handoff stays.",
         steps: [
           { action: "goto", url: "https://www.enniskeenhotel.co.uk/", settleMs: 3500 },
           { action: "click", target: "text=BOOK NOW", seconds: 3.5, navigation: true },
@@ -153,16 +159,19 @@ const REELS = {
       {
         id: "turn-card",
         type: "card",
+        cardStyle: "proof",
         duration: 4,
-        eyebrow: "What changes",
-        title: "The same hotel. A clearer journey into the stay.",
-        detail: "Its own photographs and booking engine—kept, then made easier to understand.",
+        eyebrow: "Keep what works",
+        title: "Keep the hotel. Make the stay easier to choose.",
+        detail: "Its photographs and booking engine remain. The new site changes how guests reach them.",
       },
       {
         id: "after-home",
         type: "browser",
         side: "after",
-        caption: "First, the Shimna Valley has time to make the hotel’s opening impression.",
+        captionStyle: "editorial",
+        chapter: "01 · Arrive",
+        caption: "The valley answers the first question: why stay here?",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/", settleMs: 1600 },
           { action: "hold", seconds: 6.7 },
@@ -173,7 +182,9 @@ const REELS = {
         id: "after-rooms",
         type: "browser",
         side: "after",
-        caption: "Stay gives the room story and each published detail its own place.",
+        captionStyle: "editorial",
+        chapter: "02 · Choose",
+        caption: "Room character, views and practical details appear before the decision.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/rooms/", settleMs: 1200 },
           { action: "hold", seconds: 4.2 },
@@ -184,7 +195,9 @@ const REELS = {
         id: "after-dine",
         type: "browser",
         side: "after",
-        caption: "Dine brings the Oak Restaurant, Mourne Honey tea and Brandy Pad together.",
+        captionStyle: "editorial",
+        chapter: "03 · Dine",
+        caption: "Afternoon tea, the Oak Restaurant and the Brandy Pad become part of the stay.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/dine/", settleMs: 1200 },
           { action: "hold", seconds: 4 },
@@ -195,7 +208,9 @@ const REELS = {
         id: "after-estate",
         type: "browser",
         side: "after",
-        caption: "The estate makes the twelve wooded acres and Shimna trail part of the stay.",
+        captionStyle: "quiet",
+        chapter: "04 · Wander",
+        caption: "Twelve wooded acres, with the Shimna trail from the door.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/estate/", settleMs: 1200 },
           { action: "hold", seconds: 3.6 },
@@ -206,7 +221,9 @@ const REELS = {
         id: "after-things-to-do",
         type: "browser",
         side: "after",
-        caption: "Things to do connects the house with the Mournes, the coast and its own trail.",
+        captionStyle: "quiet",
+        chapter: "05 · Explore",
+        caption: "Routes into the Mournes and along the coast begin at the house.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/things-to-do/", settleMs: 1200 },
           { action: "hold", seconds: 3.6 },
@@ -217,7 +234,9 @@ const REELS = {
         id: "after-booking",
         type: "browser",
         side: "after",
-        caption: "Once the stay makes sense, dates pass into the hotel’s own Bookin1 results route.",
+        captionStyle: "editorial",
+        chapter: "06 · Book",
+        caption: "Choose dates while the stay is still fresh in mind.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/", settleMs: 1200 },
           { action: "click", target: ".enk-booking button", seconds: 5.6, navigation: true },
@@ -229,7 +248,9 @@ const REELS = {
         duration: 6,
         transitionDuration: 1.2,
         transitionOffset: 2,
-        caption: "Before and after: the same hotel, with a clearer opening story.",
+        captionStyle: "proof",
+        chapter: "Before → after",
+        caption: "Seven equal choices become one clear path into the stay.",
         before: { type: "image", path: "/images/hotel-enniskeen-before.jpg" },
         after: { type: "image", path: "/images/hotel-enniskeen-after.jpg" },
       },
@@ -238,7 +259,7 @@ const REELS = {
         type: "card",
         duration: 5,
         eyebrow: "Independent concept · not commissioned",
-        title: "See the complete case study",
+        title: "See every page and the complete comparison",
         detail: "mourneandmain.co.uk/transformations/hotel-enniskeen/ · Free before-and-after for local businesses",
       },
     ],
@@ -616,6 +637,7 @@ async function renderHtmlFrame(browser, html, out, { transparent = false } = {})
 }
 
 async function renderCardFrame(browser, segment, out) {
+  const cardStyle = segment.cardStyle === "proof" ? "proof" : "studio";
   const html = `<!doctype html>
     <html lang="en"><head><meta charset="utf-8"><style>
       ${reelFontCss}
@@ -679,7 +701,41 @@ async function renderCardFrame(browser, segment, out) {
         text-transform: uppercase;
       }
       .wordmark span { color: #e0c14d; }
-    </style></head><body>
+      body.proof {
+        background: #f1eadb;
+        color: #15291f;
+      }
+      body.proof::before {
+        width: 8px;
+        height: 660px;
+        left: 150px;
+        top: 210px;
+        background: #c9973b;
+      }
+      body.proof::after {
+        width: 520px;
+        height: 3px;
+        right: 0;
+        bottom: 104px;
+        background: #c9973b;
+      }
+      body.proof main {
+        width: 1450px;
+        padding-left: 94px;
+      }
+      body.proof .mark { color: #8b651e; }
+      body.proof .mark::before { display: none; }
+      body.proof h1 {
+        max-width: 1360px;
+        color: #15291f;
+        font-size: 120px;
+      }
+      body.proof .detail {
+        max-width: 1250px;
+        color: #3a4e3d;
+      }
+      body.proof .wordmark { color: #15291f; }
+    </style></head><body class="${cardStyle}">
       <div class="wordmark">Mourne <span>&amp;</span> Main</div>
       <main>
         <p class="mark">${escapeHtml(segment.eyebrow)}</p>
@@ -694,38 +750,92 @@ async function renderCaptionFrame(browser, segment, out) {
   const side = segment.side
     ? segment.side[0].toUpperCase() + segment.side.slice(1)
     : "Before / After";
+  const style = ["editorial", "quiet", "proof"].includes(segment.captionStyle)
+    ? segment.captionStyle
+    : "editorial";
+  const label = segment.chapter ?? side;
+  const caption = segment.side === "before"
+    ? segment.beforeCaption ?? segment.caption
+    : segment.side === "after"
+      ? segment.afterCaption ?? segment.caption
+      : segment.caption;
   const html = `<!doctype html>
     <html lang="en"><head><meta charset="utf-8"><style>
       ${reelFontCss}
       * { box-sizing: border-box; }
       html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: transparent; }
       body { font-family: "Atkinson Reel", "Segoe UI", sans-serif; color: #f4f8fa; }
+      .veil { display: none; }
       .caption {
         position: absolute;
         left: 130px;
         right: 130px;
         bottom: 0;
-        height: 126px;
-        display: flex;
+        height: 146px;
+        display: grid;
+        grid-template-columns: 210px 1fr;
         align-items: center;
         gap: 24px;
       }
       .label {
         flex: 0 0 auto;
-        padding: 8px 13px 7px;
-        border: 1px solid ${segment.side === "after" ? "#9bc5d9" : "#c9d9e1"};
-        color: ${segment.side === "after" ? "#b9dbea" : "#f4f8fa"};
+        color: ${style === "editorial" ? "#e0c14d" : segment.side === "after" ? "#9bc5d9" : "#c9d9e1"};
         font-size: 18px;
         font-weight: 760;
-        letter-spacing: .1em;
+        letter-spacing: .12em;
         line-height: 1;
         text-transform: uppercase;
       }
-      p { margin: 0; font-size: 36px; font-weight: 520; line-height: 1.12; }
-    </style></head><body>
+      p {
+        margin: 0;
+        max-width: 1320px;
+        font-size: 38px;
+        font-weight: 520;
+        letter-spacing: -.012em;
+        line-height: 1.12;
+      }
+      body.proof .caption { grid-template-columns: 250px 1fr; }
+      body.proof .label {
+        display: inline-flex;
+        width: fit-content;
+        padding: 9px 13px 8px;
+        border: 1px solid currentColor;
+      }
+      body.proof p { font-size: 35px; }
+      body.quiet .veil {
+        display: block;
+        position: absolute;
+        left: 130px;
+        right: 130px;
+        bottom: 0;
+        height: 238px;
+        background: linear-gradient(to top, rgba(13,23,29,.96), rgba(13,23,29,0));
+      }
+      body.quiet .caption {
+        bottom: 32px;
+        height: auto;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+        padding-left: 46px;
+      }
+      body.quiet .label {
+        padding: 8px 11px 7px;
+        border: 1px solid rgba(255,255,255,.72);
+        color: #fff;
+        font-size: 15px;
+      }
+      body.quiet p {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 35px;
+        font-weight: 500;
+        letter-spacing: -.01em;
+        text-shadow: 0 2px 18px rgba(0,0,0,.55);
+      }
+    </style></head><body class="${style}">
+      <div class="veil"></div>
       <div class="caption">
-        <span class="label">${escapeHtml(side)}</span>
-        <p>${escapeHtml(segment.caption)}</p>
+        <span class="label">${escapeHtml(label)}</span>
+        <p>${escapeHtml(caption)}</p>
       </div>
     </body></html>`;
   await renderHtmlFrame(browser, html, out, { transparent: true });
@@ -941,11 +1051,9 @@ function resolveComparisonInput(input, completed) {
 async function encodeSwipeSegment(browser, segment, completed, workDir) {
   const before = resolveComparisonInput(segment.before, completed);
   const after = resolveComparisonInput(segment.after, completed);
-  const beforeOverlay = path.join(workDir, `${segment.id}-before-caption.png`);
-  const afterOverlay = path.join(workDir, `${segment.id}-after-caption.png`);
+  const overlay = path.join(workDir, `${segment.id}-caption.png`);
   const output = path.join(workDir, `${segment.id}.mp4`);
-  await renderCaptionFrame(browser, { ...segment, side: "before" }, beforeOverlay);
-  await renderCaptionFrame(browser, { ...segment, side: "after" }, afterOverlay);
+  await renderCaptionFrame(browser, segment, overlay);
   const args = ["-y"];
   for (const input of [before, after]) {
     if (input.type === "image") {
@@ -954,7 +1062,7 @@ async function encodeSwipeSegment(browser, segment, completed, workDir) {
       args.push("-i", input.path);
     }
   }
-  args.push("-i", beforeOverlay, "-i", afterOverlay);
+  args.push("-i", overlay);
   const transitionDuration = segment.transitionDuration ?? 1.2;
   const transitionOffset = segment.transitionOffset ?? 2;
   const beforeDuration = transitionOffset + transitionDuration;
@@ -964,15 +1072,14 @@ async function encodeSwipeSegment(browser, segment, completed, workDir) {
     "[0:v]scale=1660:934:force_original_aspect_ratio=increase,crop=1660:934,"
       + "pad=1660:934:(ow-iw)/2:(oh-ih)/2:color=white,"
       + "pad=1920:1080:130:20:color=#132029[before-framed];"
-      + "[before-framed][2:v]overlay=0:0:format=auto,"
-      + `trim=duration=${beforeDuration},setpts=PTS-STARTPTS[before];`
+      + `[before-framed]trim=duration=${beforeDuration},setpts=PTS-STARTPTS[before];`
       + "[1:v]scale=1660:934:force_original_aspect_ratio=increase,crop=1660:934,"
       + "pad=1660:934:(ow-iw)/2:(oh-ih)/2:color=white,"
       + "pad=1920:1080:130:20:color=#132029[after-framed];"
-      + "[after-framed][3:v]overlay=0:0:format=auto,"
-      + `trim=duration=${afterDuration},setpts=PTS-STARTPTS[after];`
+      + `[after-framed]trim=duration=${afterDuration},setpts=PTS-STARTPTS[after];`
       + `[before][after]xfade=transition=wipeleft:duration=${transitionDuration}`
-      + `:offset=${transitionOffset},format=yuv420p[v]`,
+      + `:offset=${transitionOffset}[comparison];`
+      + "[comparison][2:v]overlay=0:0:format=auto,format=yuv420p[v]",
     "-map", "[v]", "-t", String(segment.duration),
     "-c:v", "libx264", "-crf", "20", "-preset", "medium",
     "-pix_fmt", "yuv420p", "-an", output,

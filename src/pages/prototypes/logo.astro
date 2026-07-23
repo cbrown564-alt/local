@@ -1,0 +1,173 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/logo-prototypes.css";
+
+const options = [
+  {
+    id: "wordmark",
+    number: "01",
+    name: "The local wordmark",
+    note: "Clear, confident and closest to the existing identity.",
+    strengths: ["Immediate name recognition", "Works naturally in the current header", "Needs no separate symbol"],
+  },
+  {
+    id: "monogram",
+    number: "02",
+    name: "The twin-M monogram",
+    note: "The two initials become a mountain line above the full name.",
+    strengths: ["Ownable small mark", "Strong favicon and social avatar", "Connects name and place without a literal illustration"],
+  },
+  {
+    id: "stamp",
+    number: "03",
+    name: "The maker’s stamp",
+    note: "A compact label that makes “Made” feel active and practical.",
+    strengths: ["Most distinctive at a glance", "Excellent on project credits and print", "Feels like a mark of authorship"],
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Mourne Made — logo directions"
+  description="Three working logo directions for the Mourne Made identity."
+  hideHeader
+  hideFooter
+  robots="noindex, nofollow"
+  class="logo-lab"
+>
+  <header class="logo-lab-intro">
+    <a href="/" class="logo-lab-back">← Back to current site</a>
+    <div>
+      <p class="logo-lab-kicker">Identity exploration · 23 July 2026</p>
+      <h1>Mourne Made</h1>
+      <p class="logo-lab-lede">
+        Three directions for a shorter, more memorable name. All keep the existing sea-slate,
+        gorse-yellow and bay-ink palette.
+      </p>
+    </div>
+    <div class="logo-lab-principle">
+      <span>What the name should say</span>
+      <strong>Local work, visibly made here.</strong>
+    </div>
+  </header>
+
+  <div class="logo-options">
+    {options.map((option) => (
+      <article class:list={["logo-option", `logo-option--${option.id}`]} aria-labelledby={`${option.id}-title`}>
+        <header class="logo-option-heading">
+          <span>{option.number}</span>
+          <div>
+            <h2 id={`${option.id}-title`}>{option.name}</h2>
+            <p>{option.note}</p>
+          </div>
+        </header>
+
+        <div class="logo-stage logo-stage--light">
+          <div class="browser-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="brand-header">
+            {option.id === "wordmark" && (
+              <a class="brand brand--wordmark" href="#wordmark-title" aria-label="Mourne Made">
+                <span class="brand-word">Mourne</span>
+                <span class="brand-word brand-word--made">Made</span>
+                <svg viewBox="0 0 184 13" role="presentation">
+                  <path d="M1 10.5h49L64 2l13 8.5h106" />
+                </svg>
+              </a>
+            )}
+
+            {option.id === "monogram" && (
+              <a class="brand brand--monogram" href="#monogram-title" aria-label="Mourne Made">
+                <svg class="monogram" viewBox="0 0 72 52" role="presentation">
+                  <path class="monogram-peaks" d="M5 39V11l15 21L36 8l16 24 15-21v28" />
+                  <path class="monogram-shore" d="M5 44h62" />
+                </svg>
+                <span><b>Mourne</b><b>Made</b></span>
+              </a>
+            )}
+
+            {option.id === "stamp" && (
+              <a class="brand brand--stamp" href="#stamp-title" aria-label="Mourne Made">
+                <span class="stamp-block"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                <span class="stamp-place">Dundrum<br />+ Newcastle</span>
+              </a>
+            )}
+
+            <nav aria-label={`${option.name} header example`}>
+              <a href="#0">Transformations</a>
+              <a href="#0">Why local</a>
+              <a class="brand-cta" href="#0">Free before-and-after</a>
+            </nav>
+          </div>
+          <div class="brand-hero">
+            <p>Dundrum + Newcastle, County Down</p>
+            <h3>See what your local business could become online.</h3>
+          </div>
+        </div>
+
+        <div class="logo-uses">
+          <div class="logo-use logo-use--dark">
+            <p>Reversed</p>
+            {option.id === "wordmark" && (
+              <div class="brand brand--wordmark">
+                <span class="brand-word">Mourne</span>
+                <span class="brand-word brand-word--made">Made</span>
+                <svg viewBox="0 0 184 13" role="presentation"><path d="M1 10.5h49L64 2l13 8.5h106" /></svg>
+              </div>
+            )}
+            {option.id === "monogram" && (
+              <div class="brand brand--monogram">
+                <svg class="monogram" viewBox="0 0 72 52" role="presentation">
+                  <path class="monogram-peaks" d="M5 39V11l15 21L36 8l16 24 15-21v28" />
+                  <path class="monogram-shore" d="M5 44h62" />
+                </svg>
+                <span><b>Mourne</b><b>Made</b></span>
+              </div>
+            )}
+            {option.id === "stamp" && (
+              <div class="brand brand--stamp">
+                <span class="stamp-block"><b>Mourne</b><b>Made</b><i aria-hidden="true"></i></span>
+                <span class="stamp-place">Dundrum<br />+ Newcastle</span>
+              </div>
+            )}
+          </div>
+
+          <div class="logo-use logo-use--small">
+            <p>Small mark</p>
+            {option.id === "wordmark" && (
+              <div class="small-mark small-mark--wordmark" aria-label="Mourne Made initials">
+                <b>M</b><span></span><b>M</b>
+              </div>
+            )}
+            {option.id === "monogram" && (
+              <div class="small-mark small-mark--monogram" aria-label="Mourne Made mountain monogram">
+                <svg viewBox="0 0 72 52" role="presentation">
+                  <path class="monogram-peaks" d="M5 39V11l15 21L36 8l16 24 15-21v28" />
+                  <path class="monogram-shore" d="M5 44h62" />
+                </svg>
+              </div>
+            )}
+            {option.id === "stamp" && (
+              <div class="small-mark small-mark--stamp" aria-label="Mourne Made initials">
+                <b>M</b><b>M</b><i aria-hidden="true"></i>
+              </div>
+            )}
+          </div>
+
+          <div class="logo-use logo-use--notes">
+            <p>Best qualities</p>
+            <ul>
+              {option.strengths.map((strength) => <li>{strength}</li>)}
+            </ul>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <footer class="logo-lab-footer">
+    <p><strong>My lean:</strong> option 02 gives Mourne Made the strongest long-term identity while still feeling at home in the current site.</p>
+    <p>The chosen route can be refined before the name is replaced across the site, documentation, metadata and assets.</p>
+  </footer>
+</BaseLayout>
