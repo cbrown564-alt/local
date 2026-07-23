@@ -159,9 +159,9 @@ still slider on each transformation page:
 
 `node scripts/capture-concept-media.mjs hotel-enniskeen reel` uses the same
 Chrome and ffmpeg pipeline for a longer, captioned case-study film. Its
-declarative plan has fourteen segments built from `goto`, `hold`, `scroll`,
-`hover` and `click` actions plus Chrome-rendered title cards and ffmpeg split
-screens. Browser segments capture at 1920×1080; the assembly uses short
+declarative plan has thirteen segments built from `goto`, `hold`, `scroll`,
+`hover` and `click` actions plus Chrome-rendered title cards and an ffmpeg
+split screen. Browser segments capture at 1920×1080; the assembly uses short
 crossfades and remains silent.
 
 | Sequence | Segment IDs | What is shown |
@@ -169,25 +169,35 @@ crossfades and remains silent.
 | Honest opening | `open-card` | Independent concept; not commissioned |
 | Current visit | `before-home`, `before-rooms`, `before-booking` | First carousel slide, room hunt and live Bookin1 handoff |
 | What changes | `turn-card` | Keep the hotel's photographs and booking engine |
-| Complete concept | `after-home`, `after-booking`, `after-rooms`, `after-dine`, `after-estate`, `after-things-to-do` | Home and Bookin1 handoff, then every linked content page |
-| Direct comparison | `split-heroes`, `split-booking` | Matched opening views and both booking routes |
+| Arrive and choose | `after-home`, `after-rooms` | A settled first impression followed by the room story |
+| Complete the stay | `after-dine`, `after-estate`, `after-things-to-do` | Dining, the grounds and the wider Mournes with enough dwell time to read each page |
+| Check availability | `after-booking` | The persistent booking bar leads into the hotel's own Bookin1 results route |
+| Direct comparison | `split-heroes` | Matched opening views |
 | Close | `end-card` | Independent label, case-study URL and free before-and-after line |
+
+The 23 July revision replaced the original rapid page inventory with a guest
+journey: arrive, understand the rooms, see what completes the stay, then book.
+The booking handoff now concludes the concept visit, and the repeated
+split-screen booking proof has been removed.
 
 Enniskeen delivery files:
 
-- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 60.03 s,
-  1920×1080, 5.25 MB.
-- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 60.03 s,
-  1920×1080, 5.89 MB.
-- `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 217 KB, with
+- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 74.90 s,
+  1920×1080, 5.71 MB.
+- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 74.90 s,
+  1920×1080, 5.88 MB.
+- `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 220 KB, with
   responsive WebP derivatives.
 
 Final local QA on 23 July 2026:
 
-- Both encodes decoded from first frame to last without errors.
-- MP4 and WebM contact sheets were inspected at roughly 480 px per frame:
-  captions remain legible, the current site starts on its intended first
-  carousel slide, and no consent or late pop-up overlay appears mid-take.
+- Both encodes decoded from first frame to last without errors. The revised
+  MP4 contact sheet was inspected at roughly 320 px per frame: captions remain
+  legible, the current site starts on its intended first carousel slide, and
+  no consent or late pop-up overlay appears mid-take.
+- The concept opening, Stay, Dine, estate and things-to-do segments now hold
+  for 8.6, 8.9, 8.2, 7.5 and 7.5 seconds respectively before crossfades. The
+  booking handoff follows them instead of interrupting the concept opening.
 - Both recorded booking actions resolve into Bookin1; the concept handoff
   carries arrival date and length of stay.
 - `pnpm test:media` confirms no reel source is requested before explicit
@@ -217,7 +227,7 @@ Final local QA on 23 July 2026:
 | --- | --- | --- | --- | --- |
 | castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
 | hotel-enniskeen | 23 Jul 2026 | before still & clip, after clip | Cookie bar → clicked "I Consent" | Before still recaptured clean (was cookie-bar) |
-| hotel-enniskeen flagship | 23 Jul 2026 | 60 s reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
+| hotel-enniskeen flagship | 23 Jul 2026 | 75 s guest-journey reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and revised small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
 | mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 | bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
