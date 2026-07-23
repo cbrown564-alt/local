@@ -1,5 +1,6 @@
 ---
 import "../styles/comparison.css";
+import ResponsiveImage from "./ResponsiveImage.astro";
 
 interface Props {
   before: string;
@@ -8,8 +9,20 @@ interface Props {
   afterAlt: string;
   showNotes?: boolean;
   compact?: boolean;
+  loading?: "eager" | "lazy";
 }
-const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } = Astro.props;
+const {
+  before,
+  after,
+  beforeAlt,
+  afterAlt,
+  showNotes = true,
+  compact = false,
+  loading = "eager",
+} = Astro.props;
+const sizes = compact
+  ? "(max-width: 720px) 100vw, (max-width: 1100px) 58vw, 650px"
+  : "(max-width: 720px) 100vw, 1180px";
 ---
 
 <section
@@ -23,9 +36,28 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
   </div>
   <div class="comparison-stage">
     <div class="comparison-frame" data-comparison-frame>
-      <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" draggable="false" />
+      <ResponsiveImage
+        pictureClass="comparison-picture comparison-picture-before"
+        class="comparison-before"
+        src={before}
+        alt={beforeAlt}
+        width="1265"
+        height="710"
+        loading={loading}
+        sizes={sizes}
+        draggable={false}
+      />
       <div class="comparison-after" data-after>
-        <img src={after} alt={afterAlt} width="1265" height="710" draggable="false" />
+        <ResponsiveImage
+          pictureClass="comparison-picture"
+          src={after}
+          alt={afterAlt}
+          width="1265"
+          height="710"
+          loading={loading}
+          sizes={sizes}
+          draggable={false}
+        />
       </div>
       <div class="comparison-divider" data-divider aria-hidden="true">
         <div class="comparison-handle">

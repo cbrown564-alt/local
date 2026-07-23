@@ -24,6 +24,7 @@ import os from "node:os";
 import path from "node:path";
 import { createRequire } from "node:module";
 import puppeteer from "puppeteer-core";
+import { findChrome } from "./lib/chrome.mjs";
 
 const VIEW = { width: 1265, height: 710 };
 
@@ -92,14 +93,7 @@ if (!CONCEPTS[slug] || !["before", "after", null].includes(only) || !["both", "v
   process.exit(1);
 }
 
-const chromePath = [
-  process.env.CHROME_PATH,
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  "/usr/bin/google-chrome",
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-].find((p) => p && fs.existsSync(p));
-if (!chromePath) throw new Error("Chrome not found; set CHROME_PATH");
+const chromePath = findChrome();
 
 const require = createRequire(import.meta.url);
 const ffmpeg = require("ffmpeg-static");

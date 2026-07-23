@@ -15,6 +15,13 @@ Production check:
 pnpm build
 ```
 
+Regenerate responsive image and video derivatives after changing a capture:
+
+```powershell
+pnpm optimize:media
+pnpm test:media     # run while pnpm preview serves 127.0.0.1:4321
+```
+
 ## Main routes
 
 - `/` — product-stage landing page (before/after first; place belonging next)
@@ -81,4 +88,6 @@ and successful submission.
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline
 - `scripts/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/verifications.json`
 - `scripts/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
+- `scripts/optimize-public-media.mjs` — derives two responsive WebP sizes and a WebM clip from each committed JPEG/MP4 master
+- `scripts/test-media-loading.mjs` — browser assertion that phone-sized WebP sources are lazy and demo video is fetched only after a play click
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks

@@ -7,7 +7,8 @@ captured by one repeatable script.
 
 ## What gets captured
 
-For a business slug the pipeline can produce four files:
+For a business slug the capture pipeline produces four master files. The
+delivery task then creates the responsive derivatives used by the browser:
 
 | File | Content | Format |
 | --- | --- | --- |
@@ -15,14 +16,15 @@ For a business slug the pipeline can produce four files:
 | `public/images/<slug>-after.jpg` | Concept opening screen from `/concepts/<slug>/` | 2530×1420 JPEG |
 | `public/videos/<slug>-before.mp4` | ~10 s visit to the live site | 1264×710 H.264, muted |
 | `public/videos/<slug>-after.mp4` | ~10 s visit to the concept | 1264×710 H.264, muted |
+| `public/images/<stem>-640.webp` | Phone delivery image | 640px WebP |
+| `public/images/<stem>-1265.webp` | Large delivery image | 1265px WebP |
+| `public/videos/<stem>.webm` | Preferred delivery clip | VP9 WebM, muted |
 
 The stills feed the drag-handle comparison slider (`BeforeAfter.astro`) and
 double as the **poster frames** for the clips, so the two sections always agree
 on what the opening screen looks like. The clips feed the paired demo player
-(`MotionCompare.astro`).
-
-Castle Farm's stills are `.png` (`castle-farm-before.png` / `-after.png`); all
-other slugs use `.jpg`. Posters reference whichever the page already uses.
+(`MotionCompare.astro`). JPEG and MP4 remain the capture masters and browser
+fallbacks; normal delivery prefers the responsive WebP and WebM files.
 
 ## Why demo clips exist
 
@@ -88,6 +90,8 @@ closed before capture, so the transparency stance is preserved.
 - **ffmpeg-static** to assemble frames into H.264 MP4 (`concat` demuxer with
   real per-frame durations, 30 fps output, `yuv420p`, `+faststart`).
 - **sharp** (from Astro's dependency store) for mozjpeg stills.
+- **`scripts/optimize-public-media.mjs`** to derive 640px/1265px WebP images
+  and VP9 WebM clips after the capture masters change.
 
 Per-target flow: open at 1265×710 → wait for network idle + per-site `settleMs`
 → dismiss overlays → capture still (2×) → drop to 1× → record demo.
@@ -116,6 +120,8 @@ node scripts/capture-concept-media.mjs <slug>                 # both sides, stil
 node scripts/capture-concept-media.mjs <slug> both video      # both sides, video only
 node scripts/capture-concept-media.mjs <slug> after video     # concept demo clip only
 node scripts/capture-concept-media.mjs <slug> before still    # refresh one still
+pnpm optimize:media                                           # refresh delivery derivatives
+pnpm test:media                                               # verify delivery in pnpm preview
 ```
 
 - **Arg 2 (target):** `both` (default) · `before` · `after`.
@@ -142,13 +148,12 @@ Add an entry to `CONCEPTS` in the script:
 still slider on each transformation page:
 
 - **Paired mode** — before and after `<video>` side by side, each with a
-  Before/After legend, autoplay-muted-loop-playsinline, poster = the committed
-  still.
+  Before/After legend, a responsive WebP poster and WebM/MP4 sources.
 - **After-only mode** (`beforeVideo` omitted) — the before side shows the
   static still with a short "no live site" note; the after side plays the clip.
-- **Reduced motion** — with `prefers-reduced-motion: reduce`, clips do not
-  autoplay; the poster shows with a play control. A single button pauses/plays
-  the whole section.
+- **Explicit playback** — no visitor receives video bytes on page load or
+  scroll. A single “Play demos” button loads and starts the available clips;
+  the same control pauses them.
 
 ## QA checklist (every capture)
 
