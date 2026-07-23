@@ -55,6 +55,12 @@ pnpm test:request
 
 To exercise actual delivery in a local Vercel runtime, copy `.env.example` to `.env` and supply local values first.
 
+The public endpoint accepts requests without a current website, normalises
+scheme-free public links, rejects missing or cross-site origins, and limits
+each source address to five attempts per hour. Vercel Web Analytics records
+page views plus non-identifying events for comparison interaction, form start,
+and successful submission.
+
 ## Review backlog
 
 `REVIEW.md` — critical site review (23 July 2026): verified findings with file references and the prioritised P0–P4 backlog plus bold ideas. P0 items are fixed; work the rest top-down and tick them off in the same commit as each fix.

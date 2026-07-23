@@ -73,6 +73,15 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
 </section>
 
 <script>
+  import { track } from "@vercel/analytics";
+
+  let comparisonInteractionTracked = false;
+  const trackComparisonInteraction = (method: "slider" | "drag" | "toggle") => {
+    if (comparisonInteractionTracked) return;
+    comparisonInteractionTracked = true;
+    track("comparison_interacted", { method });
+  };
+
   document.querySelectorAll<HTMLElement>("[data-comparison]").forEach((comparison) => {
     const frame = comparison.querySelector<HTMLElement>("[data-comparison-frame]");
     const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
@@ -107,9 +116,13 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       setSplit(((clientX - left) / width) * 100);
     };
 
-    input?.addEventListener("input", () => setSplit(Number(input.value)));
+    input?.addEventListener("input", () => {
+      trackComparisonInteraction("slider");
+      setSplit(Number(input.value));
+    });
     viewButtons.forEach((button) => {
       button.addEventListener("click", () => {
+        trackComparisonInteraction("toggle");
         setSplit(button.dataset.comparisonView === "before" ? 100 : 0);
       });
     });
@@ -120,6 +133,7 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
     frame?.addEventListener("pointerdown", (event) => {
       if (event.button !== 0) return;
       dragging = true;
+      trackComparisonInteraction("drag");
       frame.setPointerCapture(event.pointerId);
       frame.classList.add("comparison-dragging");
       splitFromPointer(event.clientX);
