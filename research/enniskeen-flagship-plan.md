@@ -9,44 +9,36 @@ Written 23 July 2026. Companion plan: `bucks-head-journey-plan.md` (F2, runs
 second and reuses the infrastructure marked ♻ below). Roadmap summary lives in
 `PLAN.md` under "Milestone F".
 
-## Current status - paused 23 July 2026
+## Current status - local working prototype complete 23 July 2026
 
-Work mode: full working prototype. Phases 0 and 1 are complete and committed.
-Phase 2 is implemented through the MP4 capture and page integration, but its
-delivery derivative and final checks remain. Phase 3 has a proofed PDF and a
-pitch draft; the Dine companion still and final case-study refresh remain.
-Nothing has been sent or promoted.
+Work mode: full working prototype. All locally executable build, capture,
+document and verification work is complete. Nothing has been sent or
+promoted. Promotion remains blocked by the public-domain, production-delivery
+and printed-phone QR gates; those require real deployed evidence and have not
+been simulated.
 
 | Area | Status | Evidence |
 |---|---|---|
-| Phase 0 - re-verify and harvest | **Verified** | Commit `744e6b0`; 23 July live-site re-read recorded in `research/verifications.json`; sourced typed content and 18 distinct JPEG masters with responsive WebPs |
+| Phase 0 - re-verify and harvest | **Verified** | Commit `744e6b0`; 23 July live-site re-read recorded in `research/verifications.json`; sourced typed content and 19 distinct JPEG masters with responsive WebPs |
 | Phase 1 - full linked site | **Verified** | Commit `7b9c01f`; five linked pages, working Bookin1 date/length-of-stay handoff, no placeholder links; build, media test and four-viewport responsive captures passed at commit time |
-| Phase 2 - capture infrastructure | **Implemented** | `reel` mode now has a declarative 14-segment Enniskeen plan using `goto`, `hold`, `scroll`, `hover` and `click`; Chrome-rendered title cards; 1920x1080 CDP capture; ffmpeg `hstack` and `xfade` assembly |
-| Phase 2 - flagship film | **Implemented; partly verified** | `public/videos/hotel-enniskeen-reel.mp4` is 60.0 s, 1920x1080 and 5.25 MB; poster is 217 KB. A sampled contact sheet was visually reviewed and both live booking clicks resolved. The final WebM encode was deliberately stopped when work paused and the incomplete file was removed. |
-| Phase 2 - site player | **Implemented; not yet verified in the built page** | `ReelPlayer.astro`, optional transformation `reel` data, click-to-load MP4/WebM sources, `reel_play` event and reduced-motion state are wired into the Enniskeen transformation. `test-media-loading.mjs` covers opt-in loading but has not been run since these changes. |
+| Phase 2 - capture infrastructure | **Verified locally** | Declarative 14-segment `reel` mode uses `goto`, `hold`, `scroll`, `hover` and `click`; Chrome-rendered title cards; 1920×1080 CDP capture; ffmpeg split screens and crossfades |
+| Phase 2 - flagship film | **Verified locally; release URL gated** | MP4 and WebM are both 60.03 s at 1920×1080 and 5.25/5.89 MB. Both full decodes passed. Small-frame MP4/WebM contact sheets show legible captions, the first current-site carousel slide and no late overlay. Both booking clicks resolve. The end-card public URL remains unverified because the domain does not resolve. |
+| Phase 2 - site player | **Verified** | Built page keeps both sources detached until explicit activation; WebM is preferred; reduced-motion remains opt-in; keyboard play/pause passes; `reel_play` is wired |
 | Phase 3 - A4 one-sheet | **Implemented and visually verified locally** | Dev-only print route plus slug-parameterised Chrome PDF script; two-page A4 PDF at `output/pdf/hotel-enniskeen-flagship-onesheet.pdf`; no page overflow; both rendered pages inspected after fixing the print skip-link; QR encodes the tracked `?src=onesheet` URL |
-| Phase 3 - written pitch | **Implemented as a draft** | `research/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes |
-| Phase 3 - case-study refresh | **Remaining** | Register and capture `hotel-enniskeen/dine`, add the Dine companion still, then refresh Enniskeen design notes and source text to the flagship build and capture facts |
-| Phase 4 - project record | **Remaining** | Update `research/verifications.json`, `PROSPECTS.md`, `PLAN.md`, `MEDIA_CAPTURE.md` and `DESIGN.md` after final checks |
-| Promotion and outreach | **Blocked by genuine external gates** | Confirm the public domain resolves, make a production request-form submission and verify delivery, then scan the printed QR on a phone against the deployed case study |
+| Phase 3 - written pitch | **Reviewed locally** | `research/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes; reviewed against `PRODUCT.md` tone and belief order |
+| Phase 3 - case-study refresh | **Verified** | `hotel-enniskeen/dine` is registered and captured with responsive WebPs; the transformation carries Rooms and Dine companion stills plus final build-day source and design facts; 390 px and desktop browser reviews passed |
+| Phase 4 - project record | **Completed** | `research/verifications.json`, `PROSPECTS.md`, `PLAN.md`, `MEDIA_CAPTURE.md`, `DESIGN.md` and this owner plan record the same verified state |
+| Promotion and outreach | **Blocked by genuine external gates** | `mourneandmain.co.uk` returned no DNS record on 23 July 2026. Once it resolves: make a production request-form submission and verify inbox delivery, print the proof, then scan its QR on a phone against the deployed case study. |
 
-### Resume from here
+### Next true dependency
 
-1. Register `hotel-enniskeen/dine` in `capture-concept-screens.mjs`, capture
-   the companion still, and run the media optimiser. This will also produce
-   the missing reel WebM.
-2. Watch the final MP4 and WebM end to end; inspect caption legibility at a
-   small rendered size, first-carousel framing and the absence of mid-take
-   overlays.
-3. Run `pnpm build`, then `pnpm test:media` against preview. Exercise the reel
-   play/pause control by keyboard and confirm no video request occurs before
-   the explicit play action, including with reduced motion requested.
-4. Add the Dine still and final source/design copy to the transformation page.
-   Re-render and inspect the page at 390 px and desktop.
-5. Finish the Phase 4 owner-document updates below. Commit only after these
-   checks pass.
-6. Leave sending, phone QR verification and any production claim blocked until
-   both outreach gates clear.
+1. Configure DNS and deploy the site at `mourneandmain.co.uk`.
+2. Submit the production request form once and confirm that the intended inbox
+   receives it.
+3. Print the proofed PDF and scan its QR on a phone against the deployed
+   `?src=onesheet` route.
+4. Only then mark the outreach gates complete and send or hand over the pitch
+   package.
 
 ## Why Enniskeen (decision record)
 
@@ -165,7 +157,7 @@ reduced-motion checks; `pnpm test:media` still green.
 **Exit criteria:** five linked pages live locally; booking handoff verified
 against the real engine and recorded in the design notes; QA list clear.
 
-## Phase 2 — Flagship film ♻ (in progress)
+## Phase 2 — Flagship film ♻ ✅ locally verified
 
 A single ~60–75 s silent, captioned film — a different artifact from the 10 s
 `MotionCompare` pair, built for the pitch, the homepage later, and sharing.
@@ -207,7 +199,7 @@ mid-take, before side lands on the first carousel slide) and capture-log rows.
 click-to-play; watchable in under 80 s; every claim inside it visually true on
 the day of capture.
 
-## Phase 3 — Case study and pitch package ♻ (in progress)
+## Phase 3 — Case study and pitch package ♻ (implemented locally; deployed QR verification remains)
 
 1. **Transformation page:** add the film section; add one new
    `secondSurfacesHtml` companion still for the strongest new page (likely
@@ -234,14 +226,14 @@ the day of capture.
 the deployed page; pitch doc reviewed against PRODUCT.md tone rules. Delivery
 itself waits for the outreach gates and the M5 wave.
 
-## Phase 4 — Record (remaining)
+## Phase 4 — Record ✅
 
-- `research/verifications.json`: re-verification note, build-day changes,
+- [x] `research/verifications.json`: re-verification note, build-day changes,
   flagship-expansion note (stage stays **Concept published** until contact).
-- `PROSPECTS.md`: Enniskeen row gains the full-site and film links.
-- `PLAN.md`: Milestone F progress.
-- `MEDIA_CAPTURE.md`: reel mode, log rows.
-- `DESIGN.md`: Enniskeen identity entry gains the full-site scope; ReelPlayer
+- [x] `PROSPECTS.md`: Enniskeen row gains the full-site and film links.
+- [x] `PLAN.md`: Milestone F progress.
+- [x] `MEDIA_CAPTURE.md`: reel mode, log rows.
+- [x] `DESIGN.md`: Enniskeen identity entry gains the full-site scope; ReelPlayer
   joins the component list.
 
 ## Out of scope

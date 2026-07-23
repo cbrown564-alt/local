@@ -5,8 +5,9 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 22 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
-published · Milestone 2 second assets shipped for all nine
+Snapshot: 23 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
+published · Milestone 2 second assets shipped for all nine · Enniskeen F1
+flagship working prototype complete locally
 
 ## Pipeline stages
 
@@ -31,7 +32,7 @@ Rules of the road:
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *concept published, [/transformations/hotel-enniskeen/](src/pages/transformations/hotel-enniskeen.astro)* · M2 rooms [/concepts/hotel-enniskeen/rooms/](src/pages/concepts/hotel-enniskeen/rooms.astro) | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | Imagery-led country-house hotel site, responsive, Bookin1 deep links. Most dramatic contrast of the ten |
+| **Hotel Enniskeen** — *concept published, [flagship case study + film](/transformations/hotel-enniskeen/#reel-hotel-enniskeen) · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype: complete responsive site, verified Bookin1 deep links, 60-second film, A4 one-sheet and pitch. Stage remains Concept published; outreach waits for domain, production-form and printed-QR gates |
 | **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro) | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro) | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |

@@ -155,6 +155,48 @@ still slider on each transformation page:
   scroll. A single “Play demos” button loads and starts the available clips;
   the same control pauses them.
 
+## Flagship reel
+
+`node scripts/capture-concept-media.mjs hotel-enniskeen reel` uses the same
+Chrome and ffmpeg pipeline for a longer, captioned case-study film. Its
+declarative plan has fourteen segments built from `goto`, `hold`, `scroll`,
+`hover` and `click` actions plus Chrome-rendered title cards and ffmpeg split
+screens. Browser segments capture at 1920×1080; the assembly uses short
+crossfades and remains silent.
+
+| Sequence | Segment IDs | What is shown |
+| --- | --- | --- |
+| Honest opening | `open-card` | Independent concept; not commissioned |
+| Current visit | `before-home`, `before-rooms`, `before-booking` | First carousel slide, room hunt and live Bookin1 handoff |
+| What changes | `turn-card` | Keep the hotel's photographs and booking engine |
+| Complete concept | `after-home`, `after-booking`, `after-rooms`, `after-dine`, `after-estate`, `after-things-to-do` | Home and Bookin1 handoff, then every linked content page |
+| Direct comparison | `split-heroes`, `split-booking` | Matched opening views and both booking routes |
+| Close | `end-card` | Independent label, case-study URL and free before-and-after line |
+
+Enniskeen delivery files:
+
+- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 60.03 s,
+  1920×1080, 5.25 MB.
+- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 60.03 s,
+  1920×1080, 5.89 MB.
+- `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 217 KB, with
+  responsive WebP derivatives.
+
+Final local QA on 23 July 2026:
+
+- Both encodes decoded from first frame to last without errors.
+- MP4 and WebM contact sheets were inspected at roughly 480 px per frame:
+  captions remain legible, the current site starts on its intended first
+  carousel slide, and no consent or late pop-up overlay appears mid-take.
+- Both recorded booking actions resolve into Bookin1; the concept handoff
+  carries arrival date and length of stay.
+- `pnpm test:media` confirms no reel source is requested before explicit
+  activation, the WebM is preferred, reduced-motion remains opt-in, and the
+  film plays and pauses from the keyboard through native controls.
+- The end-card domain and printed QR are release checks, not local capture
+  checks. `mourneandmain.co.uk` had no DNS record on 23 July 2026, so this
+  film and the one-sheet must not be distributed yet.
+
 ## QA checklist (every capture)
 
 - Still shows the actual homepage — no consent banner, sign-up form, or
@@ -175,6 +217,7 @@ still slider on each transformation page:
 | --- | --- | --- | --- | --- |
 | castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
 | hotel-enniskeen | 23 Jul 2026 | before still & clip, after clip | Cookie bar → clicked "I Consent" | Before still recaptured clean (was cookie-bar) |
+| hotel-enniskeen flagship | 23 Jul 2026 | 60 s reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
 | mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 | bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |

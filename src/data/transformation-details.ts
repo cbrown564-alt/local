@@ -197,10 +197,10 @@ export const transformationDetails = {
     "description": "A respectful, source-backed before-and-after website concept for Enniskeen Country House Hotel in Newcastle.",
     "eyebrow": "Website transformation · Newcastle",
     "headline": "Let the valley make the welcome.",
-    "date": "20 July 2026",
+    "date": "23 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/hotel-enniskeen/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "View the full five-page concept site",
     "motion": {
       "slug": "hotel-enniskeen",
       "beforeVideo": "/videos/hotel-enniskeen-before.mp4",
@@ -215,31 +215,32 @@ export const transformationDetails = {
       "poster": "/images/hotel-enniskeen-reel-poster.jpg",
       "alt": "Captioned flagship film comparing a visit to Enniskeen Country House Hotel's current website with the complete five-page concept and both routes into the hotel's online booking system",
       "heading": "From first visit to checking dates.",
-      "intro": "The complete story in one short, silent film: the current room-finding and booking route, then Home, Stay, Dine and the estate in the linked concept. The hotel’s own photographs and booking system remain throughout.",
+      "intro": "The complete story in one short, silent film: the current room-finding and booking route, then Home, Stay, Dine, the estate and things to do in the linked concept. The hotel’s own photographs and Bookin1 system remain throughout.",
       "duration": "About one minute"
     },
     "secondSurfacesHtml": [
-      "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <p class=\"second-surface-label\">Second surface · Rooms &amp; suites</p>\n      <div class=\"second-surface-intro\">\n        <h2>A room detail that earns the booking.</h2>\n        <p>The hotel has no interior page for rooms — the current site links straight from a photo carousel to the booking system with no copy, no amenities, no sense of what the stay is like. This concept page shows what a guest would want to read before they commit.</p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/images/hotel-enniskeen-rooms-after.jpg\"\n          alt=\"The Enniskeen rooms concept page showing the balcony room hero, room type cards and an availability bar\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">Rooms concept — balcony stay story with availability, matching the opening screen’s valley identity.</p>\n      <a class=\"text-link concept-link\" href=\"/concepts/hotel-enniskeen/rooms/\">View the rooms concept <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </section>"
+      "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <p class=\"second-surface-label\">Second surface · Rooms &amp; suites</p>\n      <div class=\"second-surface-intro\">\n        <h2>A room detail that earns the booking.</h2>\n        <p>The hotel has no interior page for rooms — the current site links straight from a photo carousel to the booking system with no copy, no amenities, no sense of what the stay is like. This concept page shows what a guest would want to read before they commit.</p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/images/hotel-enniskeen-rooms-after.jpg\"\n          alt=\"The Enniskeen rooms concept page showing the balcony room hero, room type cards and an availability bar\"\n          width=\"1265\"\n          height=\"710\"\n          loading=\"lazy\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">Rooms concept — balcony stay story with availability, matching the opening screen’s valley identity.</p>\n      <a class=\"text-link concept-link\" href=\"/concepts/hotel-enniskeen/rooms/\">View the rooms concept <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </section>",
+      "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <p class=\"second-surface-label\">Full-site companion · Dine</p>\n      <div class=\"second-surface-intro\">\n        <h2>Give dining its own window on the Mournes.</h2>\n        <p>The full concept carries the hotel’s published dining offer beyond a dropdown: the Oak Restaurant, Mourne Honey afternoon tea, the Brandy Pad Lounge and the hotel’s own menu PDFs share one clear page, with table booking kept on the published phone line.</p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/images/hotel-enniskeen-dine-after.jpg\"\n          alt=\"The Enniskeen Dine concept page showing the Oak Restaurant beside a mountain-window photograph, with a call-to-book action and menu link\"\n          width=\"1265\"\n          height=\"710\"\n          loading=\"lazy\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">Dine concept — the hotel’s own restaurant, afternoon tea, lounge and menus, reorganised into one linked page.</p>\n      <a class=\"text-link concept-link\" href=\"/concepts/hotel-enniskeen/dine/\">View the Dine concept <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </section>"
     ],
     "notesHeading": "Three changes to make the stay feel closer.",
     "notes": [
       {
         "title": "Open with the valley, not the archive",
         "body": "The captured page leads with an oval archive photograph, a blue serif title and seven uppercase menu items — while the hotel's own phrase, a mountainside hideaway, appears nowhere on the first screen.",
-        "change": "One composed scene — the valley framed from a balcony room, the hideaway line as the headline, and four quiet navigation items."
+        "change": "One composed scene — the valley framed from a balcony room, the hideaway line as the headline, and five linked pages for the complete visit."
       },
       {
         "title": "Make checking dates effortless",
         "body": "Book Now is one menu item among seven, and checking availability means leaving for the booking system with no dates in hand.",
-        "change": "A persistent availability bar — arrive, nights, guests — that passes straight into the hotel's own online booking system."
+        "change": "Availability bars for arrival and nights — exactly the fields the hotel’s Bookin1 search accepts — pass straight into its results route."
       },
       {
         "title": "Let the estate do the selling",
         "body": "Twelve wooded acres, the river trail, Mourne Honey afternoon tea and the Brandy Pad Lounge are real, published draws — but they all live behind dropdown menus.",
-        "change": "The opening copy carries the estate's story in one breath, with afternoon tea one step away."
+        "change": "The opening carries the estate’s story in one breath, with dedicated Dine, Estate and Things to do pages one step away."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and a ten-second demo clip were captured from the public Enniskeen website on 23 July 2026; the arrival cookie prompt was closed first so the comparison shows the page itself. The hotel's name, the mountainside hideaway and Shimna Valley wording, the estate details, the phone number, the photographs and the online booking system all come from that site. The layout, copy hierarchy and proposed experience are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.enniskeenhotel.co.uk/\" rel=\"external\">Enniskeen public website</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The public Enniskeen site was re-read page by page on 23 July 2026 before the flagship build; its hand-built template and Bookin1 hotel code were unchanged. The existing-site still, ten-second demo and before-side film footage were captured that day, with the arrival cookie prompt closed first so the comparison shows the page itself. The hotel’s name, mountainside-hideaway and Shimna Valley wording, room names, dining and estate details, contact information, menu and voucher links, and every photograph used in the concept come from its published site. The five linked concept pages reorganise that material rather than inventing services or prices. Their availability bars pass arrival date and length of stay into the same Bookin1 results route used by the hotel’s own search box. The one-minute flagship film and Rooms and Dine companion stills show the local prototype captured on 23 July 2026. The layout, copy hierarchy and proposed experience are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.enniskeenhotel.co.uk/\" rel=\"external\">Enniskeen public website</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site. The concept and film were not commissioned by the hotel.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "kent-amusements": {
     "title": "Kent Amusements concept transformation — Mourne & Main",

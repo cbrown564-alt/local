@@ -57,7 +57,10 @@ hero and secondary-page layouts local.
   builds the same `#/hotel/ecs/results?date=…&los=…` deep link the hotel's own
   searchbox builds (verified against the live engine on build day). The
   hotel's two small bathroom photographs are matted on pine at natural scale
-  rather than stretched; all imagery is the hotel's own.
+  rather than stretched; all imagery is the hotel's own. The flagship case
+  study adds Rooms and Dine companion stills plus a one-minute silent film
+  covering the current visit, all five concept pages and both routes into
+  Bookin1.
 - **Newcastle Chamber** — harbour navy `#182C3F`, sea mist and civic brass
   with Newsreader; Co. Down strip and seal chrome from the civic direction,
   Main Street finder IA (directory as the product), warmer neighbour join
@@ -73,6 +76,8 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 - Primary gorse-yellow button and secondary text link
 - Independent-concept disclosure
 - Before/after range comparison
+- Click-to-load flagship reel player with WebM/MP4 sources, native
+  keyboard-operable controls, a poster-first state and reduced-motion flag
 - Design-notes accordion with numbered, tooltipped comparison pins
 - Source and limitations block
 - Request form with recovery and success messages

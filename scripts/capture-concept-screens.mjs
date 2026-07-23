@@ -50,6 +50,9 @@ const SECOND_ASSETS = {
     before: "https://www.enniskeenhotel.co.uk/",
     beforeBudgetMs: 4000,
   },
+  "hotel-enniskeen/dine": {
+    conceptPath: "/concepts/hotel-enniskeen/dine/",
+  },
   "mourne-cycles/hire": {
     conceptPath: "/concepts/mourne-cycles/hire/",
     before: "https://www.mourne-cycles.co.uk/",
