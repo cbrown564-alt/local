@@ -17,6 +17,7 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { findChrome } from "./lib/chrome.mjs";
 
 // beforeBudgetMs controls how much virtual time elapses before the live site
 // is shot. Sites with rotating hero carousels advance through slides as that
@@ -88,14 +89,7 @@ if (!key || !known[key]) {
   process.exit(1);
 }
 
-const chrome = [
-  process.env.CHROME_PATH,
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  "/usr/bin/google-chrome",
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-].find((p) => p && fs.existsSync(p));
-if (!chrome) throw new Error("Chrome not found; set CHROME_PATH");
+const chrome = findChrome();
 
 // sharp is not hoisted by pnpm; resolve it from Astro's dependency store.
 const require = createRequire(import.meta.url);

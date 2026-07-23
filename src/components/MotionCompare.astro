@@ -31,18 +31,20 @@ const {
 } = Astro.props;
 
 const afterOnly = !beforeVideo;
+const webmSource = (source: string) => source.replace(/\.mp4$/i, ".webm");
+const webpPoster = (source: string) => source.replace(/\.[^/.]+$/, "-1265.webp");
 ---
 
-<section class="motion" data-motion aria-labelledby={`motion-${slug}-heading`}>
+<section class="motion is-paused" data-motion aria-labelledby={`motion-${slug}-heading`}>
   <div class="shell">
     <div class="motion-intro">
       <div>
         <h2 id={`motion-${slug}-heading`}>{heading}</h2>
         <p>{intro}</p>
       </div>
-      <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="true">
+      <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false">
         <span class="motion-toggle-icon" aria-hidden="true"></span>
-        <span class="motion-toggle-label">Pause</span>
+        <span class="motion-toggle-label">Play demos</span>
       </button>
     </div>
 
@@ -58,9 +60,10 @@ const afterOnly = !beforeVideo;
               loop
               playsinline
               preload="none"
-              poster={beforePoster}
+              poster={webpPoster(beforePoster)}
               aria-label={`Before: ${beforeAlt}`}
             >
+              <source src={webmSource(beforeVideo)} type="video/webm" />
               <source src={beforeVideo} type="video/mp4" />
             </video>
           ) : (
@@ -82,9 +85,10 @@ const afterOnly = !beforeVideo;
             loop
             playsinline
             preload="none"
-            poster={afterPoster}
+            poster={webpPoster(afterPoster)}
             aria-label={`After: ${afterAlt}`}
           >
+            <source src={webmSource(afterVideo)} type="video/webm" />
             <source src={afterVideo} type="video/mp4" />
           </video>
         </div>
@@ -94,54 +98,40 @@ const afterOnly = !beforeVideo;
 </section>
 
 <script>
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-
   document.querySelectorAll<HTMLElement>("[data-motion]").forEach((section) => {
     const videos = [...section.querySelectorAll<HTMLVideoElement>("[data-motion-video]")];
     const toggle = section.querySelector<HTMLButtonElement>("[data-motion-toggle]");
     const label = toggle?.querySelector<HTMLElement>(".motion-toggle-label");
     if (!videos.length || !toggle) return;
 
-    // Intent to play. Reduced-motion visitors start paused and opt in.
-    let wants = !reduce.matches;
-    let inView = false;
+    // Motion and its media requests begin only after an explicit button press.
+    let playing = false;
 
     const syncButton = () => {
-      toggle.setAttribute("aria-pressed", String(wants));
-      section.classList.toggle("is-paused", !wants);
-      if (label) label.textContent = wants ? "Pause" : "Play";
+      toggle.setAttribute("aria-pressed", String(playing));
+      section.classList.toggle("is-paused", !playing);
+      if (label) label.textContent = playing ? "Pause demos" : "Play demos";
     };
 
-    const playAll = () => {
-      for (const v of videos) {
-        const p = v.play();
-        if (p) p.catch(() => {}); // autoplay can still be refused; poster stays
+    const playAll = async () => {
+      for (const video of videos) {
+        try {
+          await video.play();
+        } catch {
+          // The poster remains available if a browser refuses playback.
+        }
       }
     };
-    const pauseAll = () => videos.forEach((v) => v.pause());
-
-    const apply = () => (wants && inView ? playAll() : pauseAll());
-
-    // Only load and play once the section scrolls into view.
-    const io = new IntersectionObserver(
-      (entries) => {
-        inView = entries[0].isIntersecting;
-        apply();
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(section);
+    const pauseAll = () => videos.forEach((video) => video.pause());
 
     toggle.addEventListener("click", () => {
-      wants = !wants;
+      playing = !playing;
       syncButton();
-      apply();
-    });
-
-    reduce.addEventListener?.("change", (event) => {
-      wants = !event.matches;
-      syncButton();
-      apply();
+      if (playing) {
+        void playAll();
+      } else {
+        pauseAll();
+      }
     });
 
     syncButton();

@@ -1,21 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import puppeteer from "puppeteer-core";
+import { findChrome } from "./lib/chrome.mjs";
 
 const base = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
 const out = path.resolve(process.env.SHOT_OUT ?? "outputs/responsive");
-const chrome = [
-  process.env.CHROME_PATH,
-  "/usr/bin/google-chrome-stable",
-  "/usr/bin/google-chrome",
-  "/usr/bin/chromium",
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-].find((candidate) => candidate && fs.existsSync(candidate));
+const chrome = findChrome();
 
-if (!chrome) throw new Error("Chrome not found. Set CHROME_PATH to run responsive captures.");
-
-const pages = [
+const allPages = [
   ["home", "/"],
   ["transformations", "/transformations/"],
   ["about", "/about/"],
@@ -23,7 +15,16 @@ const pages = [
   ["privacy", "/privacy/"],
   ["transformation-donard", "/transformations/donard-veterinary/"],
   ["concept-donard", "/concepts/donard-veterinary/"],
+  ["concept-enniskeen", "/concepts/hotel-enniskeen/"],
 ];
+const pageFilter = process.env.SHOT_PAGE;
+const pages = pageFilter
+  ? allPages.filter(([pageName]) => pageName === pageFilter)
+  : allPages;
+
+if (!pages.length) {
+  throw new Error(`No responsive capture page named "${pageFilter}".`);
+}
 
 const viewports = [
   ["phone", 375, 812],
@@ -53,6 +54,17 @@ for (const [pageName, pagePath] of pages) {
     await page.setViewport({ width, height, deviceScaleFactor: 1 });
     await page.goto(new URL(pagePath, base).href, { waitUntil: "networkidle0", timeout: 60_000 });
     await page.evaluate(async () => document.fonts?.ready);
+    await page.evaluate(async () => {
+      for (const image of document.querySelectorAll('img[loading="lazy"]')) {
+        image.scrollIntoView({ block: "center" });
+        await Promise.race([
+          image.decode().catch(() => {}),
+          new Promise((resolve) => setTimeout(resolve, 5_000)),
+        ]);
+      }
+      window.scrollTo(0, 0);
+    });
+    await page.waitForNetworkIdle({ idleTime: 250, timeout: 10_000 }).catch(() => {});
     const target = path.join(out, `${pageName}-${viewportName}.png`);
     await page.screenshot({ path: target, fullPage: true });
     console.log(`wrote ${target}`);

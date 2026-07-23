@@ -1,9 +1,10 @@
 import puppeteer from "puppeteer-core";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import { findChrome } from "./lib/chrome.mjs";
 
 const BASE = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
-const OUT = process.env.SHOT_OUT ?? "/opt/cursor/artifacts/screenshots";
+const OUT = path.resolve(process.env.SHOT_OUT ?? "outputs/home-alts");
 
 const pages = [
   { slug: "a-product-stage", path: "/prototypes/home/product/" },
@@ -14,7 +15,7 @@ const pages = [
 await mkdir(OUT, { recursive: true });
 
 const browser = await puppeteer.launch({
-  executablePath: process.env.CHROME_PATH ?? "/usr/bin/google-chrome-stable",
+  executablePath: findChrome(),
   headless: true,
   args: ["--no-sandbox", "--disable-dev-shm-usage", "--hide-scrollbars"],
   defaultViewport: { width: 1440, height: 900, deviceScaleFactor: 2 },

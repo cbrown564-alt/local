@@ -1,9 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArrowIcon from "../../components/ArrowIcon.astro";
-import BeforeAfter from "../../components/BeforeAfter.astro";
-import Disclosure from "../../components/Disclosure.astro";
-import TransformationGallery from "../../components/TransformationGallery.astro";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
 import { transformations } from "../../data/transformations";
 import "../../styles/transformations.css";
 
@@ -16,11 +14,9 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
     <div class="shell">
       <p class="eyebrow">Local transformations</p>
       <h1>Ten local website concepts, ready to browse.</h1>
-      <p class="lede">Finished concept screens for real businesses in Dundrum and Newcastle. Swipe through the work, then open a full before-and-after when you want the detail.</p>
+      <p class="lede">Finished concept screens for real businesses in Dundrum and Newcastle. Filter the work, then open a full before-and-after when you want the detail.</p>
     </div>
   </section>
-
-  <TransformationGallery items={transformations} />
 
   <section class="transformation-list" data-transformation-list>
     <div class="shell">
@@ -64,42 +60,41 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
       </p>
 
       <div class="transformation-detail-head">
-        <p class="eyebrow">Go deeper</p>
-        <h2>The full before-and-after.</h2>
-        <p class="transformation-detail-lede">Drag the slider, read the notes, open the case study — or filter to find your town or trade.</p>
+        <p class="eyebrow">Browse the work</p>
+        <h2>Choose a case study.</h2>
+        <p class="transformation-detail-lede">Each card opens the full comparison, motion demos, design notes and source record.</p>
       </div>
 
-      <Disclosure reminder />
-
-      {transformations.map((item) => (
-        <article
-          class="transformation-card"
-          id={`transformation-${item.slug}`}
-          data-transformation-card
-          data-town={item.town}
-          data-category={item.category}
-        >
-          <div class="transformation-preview">
-            <BeforeAfter
-              before={item.before}
-              after={item.after}
-              beforeAlt={item.beforeAlt}
-              afterAlt={item.afterAlt}
-              showNotes={false}
-              compact
-            />
-          </div>
-          <div>
-            <div class="transformation-tags">
-              <span class="tag">{item.town}</span>
-              <span class="tag tag-muted">{item.category}</span>
+      <div class="transformation-card-grid">
+        {transformations.map((item) => (
+          <article
+            class="transformation-card"
+            data-transformation-card
+            data-town={item.town}
+            data-category={item.category}
+          >
+            <a class="transformation-preview" href={item.href} aria-label={`Open the ${item.name} case study`}>
+              <ResponsiveImage
+                src={item.after}
+                alt={item.afterAlt}
+                width="1265"
+                height="710"
+                loading="lazy"
+                sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 390px"
+              />
+            </a>
+            <div class="transformation-card-copy">
+              <div class="transformation-tags">
+                <span class="tag">{item.town}</span>
+                <span class="tag tag-muted">{item.category}</span>
+              </div>
+              <h2>{item.name}</h2>
+              <p>{item.summary}</p>
+              <a class="text-link" href={item.href}>Open the full comparison <ArrowIcon /></a>
             </div>
-            <h2>{item.name}</h2>
-            <p>{item.summary}</p>
-            <a class="text-link" href={item.href}>Open the full comparison <ArrowIcon /></a>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
 
       <p class="owner-filter-empty" data-filter-empty hidden>
         No transformations match those filters yet. Clear a filter or
@@ -177,10 +172,8 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
 
 <script>
   const root = document.querySelector<HTMLElement>("[data-transformation-list]");
-  const gallery = document.querySelector<HTMLElement>("[data-transformation-gallery]");
   if (root) {
     const cards = [...root.querySelectorAll<HTMLElement>("[data-transformation-card]")];
-    const gallerySlides = gallery ? [...gallery.querySelectorAll<HTMLElement>("[data-gallery-slide]")] : [];
     const status = root.querySelector<HTMLElement>("[data-filter-status]");
     const empty = root.querySelector<HTMLElement>("[data-filter-empty]");
     const filters = {
@@ -202,15 +195,11 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
         if (show) visible += 1;
       });
 
-      gallerySlides.forEach((slide) => {
-        slide.hidden = !match(slide.dataset.town, slide.dataset.category);
-      });
       if (status) {
         status.textContent =
           visible === 1 ? "Showing 1 transformation" : `Showing ${visible} transformations`;
       }
       if (empty) empty.hidden = visible !== 0;
-      gallery?.dispatchEvent(new CustomEvent("gallery:filter"));
     };
 
     root.querySelectorAll<HTMLButtonElement>(".owner-filter-pill").forEach((button) => {

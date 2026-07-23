@@ -32,6 +32,13 @@ interface Props {
 const { transformation, detail } = Astro.props;
 const motion = detail.motion;
 const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&town=${encodeURIComponent(transformation.town)}&source=transformation`;
+const responsiveImages = (html: string) =>
+  html.replace(
+    /<img(\s+[^>]*?)src="(\/images\/([^"]+)\.jpg)"([^>]*?)\/?>/g,
+    (_match, before, source, stem, after) =>
+      `<picture class="responsive-content-picture"><source type="image/webp" srcset="/images/${stem}-640.webp 640w, /images/${stem}-1265.webp 1265w" sizes="(max-width: 720px) 100vw, 1180px"><img${before}src="${source}"${after}></picture>`,
+  );
+const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
 ---
 
 <BaseLayout
@@ -81,7 +88,7 @@ const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&
     afterAlt={motion.afterAlt}
   />
 
-  {detail.secondSurfacesHtml.map((html) => <Fragment set:html={html} />)}
+  {secondSurfaces.map((html) => <Fragment set:html={html} />)}
 
   <DesignNotes heading={detail.notesHeading} notes={detail.notes} />
 

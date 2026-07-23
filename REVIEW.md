@@ -104,21 +104,28 @@ tick items here and update the linked docs in the same commit as each fix.
 
 ## P4 — Performance and media
 
-- [ ] **Transformations index eager-loads ~20 comparison images (~4 MB).**
-  `BeforeAfter.astro:26-28` sets no `loading` attribute; add `loading="lazy"`
-  below the fold. The index is ~12,000px tall on phone — consider a card grid
-  linking to detail pages instead of ten stacked sliders.
-- [ ] **`MotionCompare` fetches both clips on scroll** (`MotionCompare.astro:
-  115-123`) — up to 4.1 MB unprompted (castle-farm). Require a tap to play, or
-  play sequentially.
-- [ ] **All media is JPG/MP4** — no webp/avif, no `srcset`, no WebM. 22 MB of
-  `public/`; before-videos up to 2.8 MB. Transcode and add responsive sources;
-  rural mobile is the audience.
-- [ ] Pin dependency versions (`astro`, `@astrojs/check`, `nodemailer`,
-  `typescript` are `"latest"`/floating in `package.json`).
-- [ ] Script cleanup: `capture-home-alts.mjs` is Linux-only dead code on this
-  machine; `capture-concept-screens.mjs` duplicates ~80% of
-  `capture-concept-media.mjs`; factor the shared Chrome-detection block.
+- [x] **Transformations index eager-loaded ~20 comparison images.** Fixed
+  23 July 2026: replaced the ten stacked sliders with a compact, filterable
+  card grid and lazy responsive previews. A 375px browser check now requests
+  two 640px WebP previews at first paint instead of the full before/after set.
+- [x] **`MotionCompare` fetched both clips on scroll.** Fixed 23 July 2026:
+  every motion section starts on its posters and requests no video until the
+  visitor presses “Play demos”; the behaviour is covered by
+  `pnpm test:media`.
+- [x] **All media was JPG/MP4.** Fixed 23 July 2026: the repeatable media task
+  generates 640px and 1265px WebP variants for all 35 JPEG masters and WebM
+  variants for all 15 MP4 clips. Responsive sources are used by comparisons,
+  case-study companion screens, index cards and concept photography. The
+  640px image set is 0.87 MB versus 7.04 MB for the JPEG masters; the WebM set
+  is 5.17 MB versus 13.19 MB for MP4 (61% smaller in aggregate). JPEG/MP4 stay
+  as compatibility and capture masters.
+- [x] Pinned every production and development dependency to the exact version
+  recorded in the lockfile, including Astro, `@astrojs/check`, Nodemailer and
+  TypeScript.
+- [x] Script cleanup: one cross-platform Chrome resolver now serves all four
+  capture scripts, and `capture-home-alts.mjs` uses a repository-local default
+  output on Windows, macOS and Linux. Responsive captures also scroll through
+  lazy images before taking full-page screenshots.
 
 ## Bold ideas (the review's exploratory recommendations)
 

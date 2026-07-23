@@ -13,38 +13,65 @@
   max-width: 46rem;
 }
 
-.transformation-gallery {
-  padding: 0 0 var(--space-section-compact);
-}
-
-.transformation-gallery-bar {
-  min-height: 84px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 16px;
-}
-
-.transformation-gallery-bar .eyebrow { margin: 0; }
-
-.transformation-gallery-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 18px;
-}
-
-.transformation-gallery-slide { width: min(70vw, 680px); }
-
 .transformation-detail-head h2 {
   max-width: none;
   font-size: clamp(40px, 4.5vw, 56px);
 }
 
-.transformation-card h2 {
-  font-size: clamp(38px, 4vw, 52px);
+.transformation-detail-head { margin-bottom: 30px; }
+
+.transformation-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
 }
+
+.transformation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.transformation-card[hidden] { display: none; }
+
+.transformation-preview {
+  display: block;
+  aspect-ratio: 1265 / 710;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--pale);
+}
+
+.transformation-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 220ms ease;
+}
+
+.transformation-preview:hover img { transform: scale(1.018); }
+
+.transformation-card-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.transformation-card h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(30px, 3.2vw, 40px);
+}
+
+.transformation-card p { margin: 0 0 22px; font-size: 16px; }
+.transformation-card .text-link { margin-top: auto; }
 
 .mockup-includes h2,
 .trust-ladder h2 {
@@ -52,12 +79,7 @@
 }
 
 @media (max-width: 1050px) {
-  .transformation-card {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  .transformation-card > div:last-child { max-width: 44rem; }
+  .transformation-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mockup-includes-grid { grid-template-columns: 1fr; gap: 34px; }
 }
 
@@ -65,12 +87,6 @@
   .page-hero--list { padding: 28px 0 22px; }
   .page-hero--list h1 { font-size: clamp(42px, 12vw, 56px); }
 
-  .transformation-gallery-bar {
-    min-height: 76px;
-    align-items: flex-end;
-  }
-
-  .transformation-gallery-toolbar { gap: 12px; }
-  .transformation-gallery-count { display: none; }
-  .transformation-gallery-slide { width: min(86vw, 680px); }
+  .transformation-card-grid { grid-template-columns: 1fr; }
+  .transformation-card-copy { padding: 22px; }
 }
