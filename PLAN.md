@@ -3,7 +3,7 @@
 Working roadmap for Mourne & Main after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 22 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · South Down Signs on hold
+Snapshot: 23 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · South Down Signs on hold
 
 ---
 
@@ -82,6 +82,27 @@ Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-vet
 - Full multi-page site builds
 - CMS, real booking backends, or live data
 - South Down Signs (until trading confirmed)
+
+---
+
+## Motion demos — "See it in motion" ✅
+
+**Shipped 23 July 2026.** A homepage still can't show a rotating hero, a
+dropdown, a hover state or how fast a visitor reaches the main action — exactly
+what the concepts improve. Every transformation now carries a paired
+~10-second demo clip beneath the still slider (`MotionCompare.astro`), captured
+by the same script as the stills (`scripts/capture-concept-media.mjs`, see
+`MEDIA_CAPTURE.md`).
+
+- **Real-website concepts** (castle-farm, hotel-enniskeen, mourne-cycles,
+  donard-veterinary, bucks-head): paired before + after clips.
+- **First-website concepts** (scopers, cupla, tool-centre, kent-amusements,
+  newcastle-chamber): after-only; the before stays the honest gated-social
+  still, since there is no live site to demo.
+- Arrival pop-ups (consent, sign-up, auto-opened chat) are now dismissed before
+  capture, so both the still and the clip show the page a business designed,
+  not the legal chrome on top of it. Castle Farm, Enniskeen and Donard before
+  stills were recaptured clean as part of this.
 
 ---
 
