@@ -144,7 +144,7 @@ reinvent:
 Each round of work follows the same loop, and each loop makes the next one
 cheaper because the knowledge lands in versioned files, not in heads:
 
-1. **Select** from the ranked census (`/opportunities`, workbook).
+1. **Select** from the ranked census (`/opportunities` — dev-only workbench, run `pnpm dev`; never deployed because it embeds the scored dataset — or the workbook).
 2. **Verify** per the protocol in RESEARCH_METHOD.md; record evidence,
    corrections, and the shortlist/design-task decision in
    `research/verifications.json`.

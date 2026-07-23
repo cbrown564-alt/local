@@ -58,6 +58,7 @@ To exercise actual delivery in a local Vercel runtime, copy `.env.example` to `.
 ## Research artifacts
 
 - `src/data/businesses.json` — consolidated public-source dataset (379 records)
+- `/opportunities` — internal prospecting workbench (`src/workbench/opportunities.astro`); served by `pnpm dev` only and deliberately excluded from production builds because it embeds the full scored dataset
 - `research/verifications.json` — accumulated per-business verification knowledge: dated trading evidence, census corrections, shortlist decisions and design tasks
 - `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle
 - `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
