@@ -1,8 +1,8 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// The opportunities workbench embeds the full scored business dataset, so it
-// must never reach the deployed build. It is served on `astro dev` only.
+// Workbench routes contain internal data or print tooling, so they must never
+// reach the deployed build. They are served on `astro dev` only.
 const devOnlyWorkbench = {
   name: "dev-only-workbench",
   hooks: {
@@ -11,6 +11,10 @@ const devOnlyWorkbench = {
         injectRoute({
           pattern: "/opportunities",
           entrypoint: "./src/workbench/opportunities.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/print/enniskeen-onesheet",
+          entrypoint: "./src/workbench/print/enniskeen-onesheet.astro",
         });
       }
     },

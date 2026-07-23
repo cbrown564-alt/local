@@ -4,6 +4,15 @@ export interface TransformationNote {
   change: string;
 }
 
+export interface TransformationReel {
+  video: string;
+  poster: string;
+  alt: string;
+  heading?: string;
+  intro?: string;
+  duration?: string;
+}
+
 export interface TransformationDetail {
   title: string;
   description: string;
@@ -14,6 +23,7 @@ export interface TransformationDetail {
   conceptHref: string;
   conceptLabel: string;
   motion: Record<string, string>;
+  reel?: TransformationReel;
   secondSurfacesHtml: string[];
   notesHeading: string;
   notes: TransformationNote[];
@@ -199,6 +209,14 @@ export const transformationDetails = {
       "afterPoster": "/images/hotel-enniskeen-after.jpg",
       "beforeAlt": "Ten-second visit to Enniskeen's current website — the archive-logo header, the rotating photo carousel and a menu-bar hover",
       "afterAlt": "Ten-second visit to the Enniskeen concept — the balcony-valley opening, the availability bar and the mountainside hideaway headline"
+    },
+    "reel": {
+      "video": "/videos/hotel-enniskeen-reel.mp4",
+      "poster": "/images/hotel-enniskeen-reel-poster.jpg",
+      "alt": "Captioned flagship film comparing a visit to Enniskeen Country House Hotel's current website with the complete five-page concept and both routes into the hotel's Bookin1 engine",
+      "heading": "From first visit to checking dates.",
+      "intro": "The complete story in one short, silent film: the current room-finding and booking route, then Home, Stay, Dine and the estate in the linked concept. The hotel’s own photographs and booking engine remain throughout.",
+      "duration": "About one minute"
     },
     "secondSurfacesHtml": [
       "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <p class=\"second-surface-label\">Second surface · Rooms &amp; suites</p>\n      <div class=\"second-surface-intro\">\n        <h2>A room detail that earns the booking.</h2>\n        <p>The hotel has no interior page for rooms — the current site links straight from a photo carousel to the Bookin1 engine with no copy, no amenities, no sense of what the stay is like. This concept page shows what a guest would want to read before they commit.</p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/images/hotel-enniskeen-rooms-after.jpg\"\n          alt=\"The Enniskeen rooms concept page showing the balcony room hero, room type cards and an availability bar\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">Rooms concept — balcony stay story with Bookin1 availability, matching the opening screen’s valley identity.</p>\n      <a class=\"text-link concept-link\" href=\"/concepts/hotel-enniskeen/rooms/\">View the rooms concept <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </section>"

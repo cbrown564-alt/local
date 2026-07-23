@@ -1,0 +1,106 @@
+---
+import "../styles/reel-player.css";
+
+interface Props {
+  slug: string;
+  video: string;
+  poster: string;
+  alt: string;
+  heading?: string;
+  intro?: string;
+  duration?: string;
+}
+
+const {
+  slug,
+  video,
+  poster,
+  alt,
+  heading = "The complete visit",
+  intro = "A short, silent film following the current route and the full concept site. Captions carry the story, so it works without sound.",
+  duration = "About one minute",
+} = Astro.props;
+
+const webm = video.replace(/\.mp4$/i, ".webm");
+const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
+---
+
+<section class="reel-player" data-reel-player={slug} aria-labelledby={`reel-${slug}-heading`}>
+  <div class="shell">
+    <div class="reel-player-intro">
+      <div>
+        <p class="eyebrow">Flagship film · {duration}</p>
+        <h2 id={`reel-${slug}-heading`}>{heading}</h2>
+      </div>
+      <p>{intro}</p>
+    </div>
+
+    <div class="reel-player-frame">
+      <video
+        data-reel-video
+        playsinline
+        preload="none"
+        poster={webpPoster}
+        aria-label={alt}
+      >
+        <source data-src={webm} type="video/webm" />
+        <source data-src={video} type="video/mp4" />
+      </video>
+      <button type="button" class="reel-player-play" data-reel-play>
+        <span class="reel-player-play-icon" aria-hidden="true"></span>
+        <span>
+          <strong>Play the film</strong>
+          <small>{duration} · silent with captions</small>
+        </span>
+      </button>
+    </div>
+    <p class="reel-player-note">Independent concept study. Not commissioned by Enniskeen Country House Hotel.</p>
+    <noscript><p><a class="text-link" href={video}>Watch or download the captioned film</a></p></noscript>
+  </div>
+</section>
+
+<script>
+  import { track } from "@vercel/analytics";
+
+  document.querySelectorAll<HTMLElement>("[data-reel-player]").forEach((player) => {
+    const video = player.querySelector<HTMLVideoElement>("[data-reel-video]");
+    const button = player.querySelector<HTMLButtonElement>("[data-reel-play]");
+    if (!video || !button) return;
+
+    let loaded = false;
+    let tracked = false;
+    const slug = player.dataset.reelPlayer ?? "unknown";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const loadSources = () => {
+      if (loaded) return;
+      video.querySelectorAll<HTMLSourceElement>("source[data-src]").forEach((source) => {
+        source.src = source.dataset.src ?? "";
+      });
+      video.load();
+      loaded = true;
+    };
+
+    const play = async () => {
+      loadSources();
+      if (!tracked) {
+        track("reel_play", { slug });
+        tracked = true;
+      }
+      try {
+        await video.play();
+        video.controls = true;
+        player.classList.add("is-playing");
+      } catch {
+        player.classList.remove("is-playing");
+      }
+    };
+
+    button.addEventListener("click", () => void play());
+    video.addEventListener("ended", () => player.classList.remove("is-playing"));
+    player.toggleAttribute("data-reduced-motion", reducedMotion.matches);
+    reducedMotion.addEventListener("change", (event) => {
+      player.toggleAttribute("data-reduced-motion", event.matches);
+    });
+  });
+</script>
