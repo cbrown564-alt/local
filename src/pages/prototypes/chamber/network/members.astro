@@ -1,0 +1,34 @@
+---
+import NetworkShell from "../../../../components/chamber-prototypes/NetworkShell.astro";
+import { categories, members, chamber } from "../../../../data/chamber-prototype";
+const base = "/prototypes/chamber/network";
+---
+<NetworkShell title="Members — Newcastle Chamber · Network concept" current="members">
+  <div class="nw-page">
+    <p class="nw-kicker">The network</p>
+    <h1>Meet the <em>members.</em></h1>
+    <p class="nw-lede">
+      Traders looking out for traders. Illustrative list for the concept —
+      <a class="nw-link" href={chamber.emailHref}>ask to be included</a> when the real roll is ready.
+    </p>
+    {categories.map((cat) => (
+      <section class="nw-cat" id={cat.id}>
+        <h2>{cat.label}</h2>
+        <ul class="nw-grid">
+          {members.filter((m) => m.category === cat.id).map((m) => (
+            <li class="nw-card">
+              <h3>{m.name}</h3>
+              <p class="trade">{m.trade}</p>
+              <p>{m.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+    <div class="nw-banner" style="margin: 32px 0 0; width: 100%">
+      <h2>Your name could be here</h2>
+      <p>Join the harbour network — same volunteer inbox.</p>
+      <a class="nw-cta nw-cta--coral" href={`${base}/join/`}>Why join</a>
+    </div>
+  </div>
+</NetworkShell>

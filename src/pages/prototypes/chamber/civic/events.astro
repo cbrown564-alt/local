@@ -1,0 +1,29 @@
+---
+import CivicShell from "../../../../components/chamber-prototypes/CivicShell.astro";
+import { events } from "../../../../data/chamber-prototype";
+---
+<CivicShell title="Events — Newcastle Chamber · Civic concept" current="events">
+  <div class="cv-page cv-shell">
+    <p class="cv-kicker">Town calendar</p>
+    <h1>What's on in <em>Newcastle.</em></h1>
+    <p class="cv-lede">
+      One confirmed town night from public sources, plus illustrative samples of how a standing calendar could look once the committee owns the page.
+    </p>
+    <div class="cv-event-list">
+      {events.map((event) => (
+        <article class="cv-event-row">
+          <time datetime={event.real ? event.dateSort : undefined}>{event.date}</time>
+          <div>
+            <h2>{event.title}</h2>
+            <p>{event.blurb}</p>
+            <p style="margin-top: 8px; font-size: 13px; color: #5a6e7e;">{event.place}</p>
+            <span class={`cv-badge ${event.real ? "cv-badge--real" : ""}`}>
+              {event.real ? "Verified public date" : "Illustrative concept"}
+            </span>
+          </div>
+          <a class="cv-cta" href={event.ctaHref}>{event.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</CivicShell>

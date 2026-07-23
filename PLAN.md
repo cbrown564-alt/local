@@ -179,13 +179,43 @@ Convert a before-and-after request into scoped paid work. Keep concept vs commis
 
 ---
 
+## Chamber full-site exploration (pre-outreach design review)
+
+**Started 22 July 2026.** Newcastle Chamber is the hard first-website case:
+no existing site, volunteer-run, same-name search collision, and the published
+M1/M2 work only proves a homepage + members screen. Before leading outreach
+with that direction, explore fuller site concepts.
+
+| Piece | Location |
+|---|---|
+| Research brief | `research/chamber-website-brief.md` |
+| Prototype index | [/prototypes/chamber/](/prototypes/chamber/) |
+| A · Civic Front Door | [/prototypes/chamber/civic/](/prototypes/chamber/civic/) |
+| B · Main Street Finder | [/prototypes/chamber/main-street/](/prototypes/chamber/main-street/) |
+| C · Harbour Network | [/prototypes/chamber/network/](/prototypes/chamber/network/) |
+
+Each direction is a full linked IA: Home · About · Members · Events · Join ·
+Contact. Shared content in `src/data/chamber-prototype.ts`.
+
+**Decision 22 July 2026:** B-led hybrid published at
+`/concepts/newcastle-chamber/` (Finder IA + civic chrome + warmer join).
+Prototypes retained for comparison.
+
+### Exit criteria
+
+- Research brief + peer examples recorded ✅
+- Three visually distinct full-site prototypes, every page reachable ✅
+- Winning direction decided and published as full linked concept site ✅
+
+---
+
 ## Later backlog (not sequenced yet)
 
 - Confirm or drop South Down Signs; build if trading holds
 - Census refresh (OSM + Maps) and a new shortlist round via the select → verify → normalise → build → record cycle
 - Feature-upgrade cases (booking capability for recent rebuilds such as Dacara / Conlyn)
 - Broader audiences after independents: charities, clubs, public services
-- Community contribution visible on-site (pro-bono / civic piece — Chamber may seed this)
+- Community contribution visible on-site (pro-bono / civic piece — Chamber may seed this; full-site direction under review at `/prototypes/chamber/`)
 - Analytics light enough to see which transformations and CTAs convert, without dashboard theatre on the marketing site
 
 ---

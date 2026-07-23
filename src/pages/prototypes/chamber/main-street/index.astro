@@ -1,0 +1,79 @@
+---
+import MainStreetShell from "../../../../components/chamber-prototypes/MainStreetShell.astro";
+import { categories, members, events, chamber } from "../../../../data/chamber-prototype";
+
+const nextEvent = events.find((e) => e.real)!;
+const featured = members.filter((_, i) => i % 4 === 0).slice(0, 4);
+const base = "/prototypes/chamber/main-street";
+---
+<MainStreetShell title="Newcastle Chamber — Main Street Finder concept" current="home">
+  <section class="ms-hero">
+    <div class="ms-hero-inner">
+      <p class="ms-kicker">Newcastle, Co. Down · under the Mournes</p>
+      <h1>Find a business on Main Street.</h1>
+      <p>
+        The Chamber's job, made useful: a public directory of member traders
+        for locals and visitors in Newcastle, Co. Down.
+      </p>
+      <form class="ms-search" action={`${base}/members/`} method="get" role="search">
+        <label class="visually-hidden" for="ms-q">Search members</label>
+        <input id="ms-q" type="search" name="q" placeholder="Café, chemist, guest house…" />
+        <a href={`${base}/members/`}>Search directory</a>
+      </form>
+    </div>
+  </section>
+
+  <nav class="ms-cats" aria-label="Browse by trade">
+    {categories.map((cat) => (
+      <a href={`${base}/members/#${cat.id}`}>
+        <strong>{cat.label.split(" & ")[0]}</strong>
+        <span>{members.filter((m) => m.category === cat.id).length} illustrative listings</span>
+      </a>
+    ))}
+  </nav>
+
+  <section class="ms-section">
+    <h2>Open on the street</h2>
+    <p>A sample of the directory — illustrative names that reflect Main Street trades.</p>
+    <ul class="ms-grid">
+      {featured.map((m) => (
+        <li class="ms-card">
+          <h3>{m.name}</h3>
+          <p class="trade">{m.trade}</p>
+          <p>{m.note}</p>
+        </li>
+      ))}
+    </ul>
+    <p style="margin-top: 20px"><a class="ms-link" href={`${base}/members/`}>Browse the full directory →</a></p>
+  </section>
+
+  <div class="ms-band">
+    <div>
+      <h2>{nextEvent.title}</h2>
+      <p>{nextEvent.date} · {nextEvent.place}. Planned primarily by the Chamber with the district council.</p>
+    </div>
+    <a class="ms-cta ms-cta--amber" href={`${base}/events/`}>What's on</a>
+  </div>
+
+  <section class="ms-section" style="padding-top: 0">
+    <h2>List your business</h2>
+    <p>
+      Membership is how you appear in the finder. Volunteer committee, same Gmail —
+      <a class="ms-link" href={chamber.emailHref}>{chamber.email}</a>.
+    </p>
+    <a class="ms-cta" href={`${base}/join/`}>Join the chamber</a>
+  </section>
+</MainStreetShell>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

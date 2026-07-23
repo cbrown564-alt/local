@@ -19,6 +19,8 @@ pnpm build
 
 - `/` — product-stage landing page (before/after first; place belonging next)
 - `/prototypes/home/` — homepage alternatives explored before shipping Product Stage
+- `/prototypes/chamber/` — full-site exploration for Newcastle Chamber (research + three multi-page directions)
+- `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
 - `/transformations/` — concept index
 - `/transformations/cupla/` — first-website comparison for Cúpla
 - `/transformations/scopers/` — first-website comparison for Scopers
@@ -30,6 +32,7 @@ pnpm build
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
 - `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
+- `/concepts/newcastle-chamber/` — full linked Chamber concept (Home · Members · Events · Join · About · Contact)
 
 The request form posts to the Vercel Function at `/api/request`, which sends the submission to the configured inbox. Concept work is labelled as independent and uncommissioned.
 
