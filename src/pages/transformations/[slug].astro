@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BeforeAfter from "../../components/BeforeAfter.astro";
 import MotionCompare from "../../components/MotionCompare.astro";
+import ReelPlayer from "../../components/ReelPlayer.astro";
 import Disclosure from "../../components/Disclosure.astro";
 import ArrowIcon from "../../components/ArrowIcon.astro";
 import DesignNotes from "../../components/DesignNotes.astro";
@@ -87,6 +88,18 @@ const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
     beforeAlt={motion.beforeAlt}
     afterAlt={motion.afterAlt}
   />
+
+  {detail.reel && (
+    <ReelPlayer
+      slug={transformation.slug}
+      video={detail.reel.video}
+      poster={detail.reel.poster}
+      alt={detail.reel.alt}
+      heading={detail.reel.heading}
+      intro={detail.reel.intro}
+      duration={detail.reel.duration}
+    />
+  )}
 
   {secondSurfaces.map((html) => <Fragment set:html={html} />)}
 
