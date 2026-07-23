@@ -171,9 +171,14 @@ businessSheet.getRange("A2:X2").formulas = [[
   `=COUNTIF($V$2:$V$${rowEnd},">"&V2)+COUNTIF($V$2:V2,V2)`, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
   `=MIN(100,IF(I2="No website found",Scoring!$B$6,IF(I2="Social page only",Scoring!$B$7,IF(I2="HTTP website",Scoring!$B$8,0)))+IF(P2="",Scoring!$E$6,0)+IF(O2="",Scoring!$E$7,0)+IF(K2="Not directly verified",Scoring!$E$8,0))`,
   `=MIN(100,IFERROR(VLOOKUP(E2,Scoring!$G$6:$H$11,2,FALSE),30)+IFERROR(VLOOKUP(D2,Scoring!$J$6:$K$16,2,FALSE),5)+IF(O2<>"",Scoring!$E$9,0)+IF(P2<>"",Scoring!$E$9,0))`,
-  `=ROUND(T2*Scoring!$B$14+U2*Scoring!$B$15,0)`,
+  // Priority and its reason must respect a verified closure. These columns are
+  // live formulas recomputed from each row's own cells, so a closed business
+  // would otherwise keep the score its missing website earned it and rank near
+  // the top — Squid Shack sat at rank 5 while shut. The confidence column is
+  // the only cell carrying trading status, so the formulas read it.
+  `=IF(ISNUMBER(SEARCH("trading status: Closed",$Z2)),0,ROUND(T2*Scoring!$B$14+U2*Scoring!$B$15,0))`,
   `=IF(OR(E2="Charity / community",E2="Club",E2="Public service",E2="Public attraction",AND(T2>=65,U2<55)),"High","Standard")`,
-  `=IF(T2>=70,"Weak or missing owned digital/contact assets",IF(U2>=75,"Strong visual/commercial case for a transformation","Research and qualify before outreach"))`,
+  `=IF(ISNUMBER(SEARCH("trading status: Closed",$Z2)),"Not trading — confirmed closed, retained so the listing stops resurfacing",IF(T2>=70,"Weak or missing owned digital/contact assets",IF(U2>=75,"Strong visual/commercial case for a transformation","Research and qualify before outreach")))`,
 ]];
 businessSheet.getRange(`A2:A${rowEnd}`).fillDown();
 businessSheet.getRange(`T2:X${rowEnd}`).fillDown();

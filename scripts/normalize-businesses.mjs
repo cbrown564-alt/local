@@ -225,7 +225,12 @@ for (const group of grouped.values()) {
   const verified = verifications.get(key(base));
   if (verified) {
     for (const [field, value] of Object.entries(verified.corrections || {})) base[field] = value;
-    base.dataConfidence = `Verified against public sources on ${verified.verifiedOn}; trading status: ${verified.tradingStatus}`;
+    // Not every verification rests on a public source. Local first-hand
+    // knowledge has twice corrected the census where no dated source existed,
+    // so a source-less record must not claim public-source verification.
+    base.dataConfidence = verified.sources?.length
+      ? `Verified against public sources on ${verified.verifiedOn}; trading status: ${verified.tradingStatus}`
+      : `Verified on ${verified.verifiedOn} by local first-hand report, no public source; trading status: ${verified.tradingStatus}`;
   }
   base.category = normalizedCategory(base.category);
   base.websiteStatus = websiteState(base.website);
@@ -245,6 +250,17 @@ for (const group of grouped.values()) {
       stage: verified.stage || (verified.shortlist === "Not shortlisted" ? "Assessed – not shortlisted" : "Shortlisted"),
       ...(verified.conceptRoute ? { conceptRoute: verified.conceptRoute } : {}),
     };
+    // A business confirmed closed is not a prospect at any priority. Without
+    // this it keeps the score its missing website earned it — Squid Shack
+    // scored 80 while shut — and sorts to the top of the ranked census, the
+    // workbench and the workbook dashboard in every future selection round.
+    if (verified.tradingStatus === "Closed") {
+      base.digitalNeedScore = 0;
+      base.paymentLikelihoodScore = 0;
+      base.priorityScore = 0;
+      base.communityOpportunity = "Standard";
+      base.priorityReason = `Not trading — confirmed closed ${verified.verifiedOn}`;
+    }
   }
   merged.push(base);
 }
