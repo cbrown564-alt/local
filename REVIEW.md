@@ -55,27 +55,23 @@ tick items here and update the linked docs in the same commit as each fix.
 
 ## P2 — Trust and copy
 
-- [ ] **The site is anonymous.** No name, face, phone, email or address
-  anywhere. Add a founder note to `/about/` ("I'm …, from Dundrum") and direct
-  contact routes (email; consider WhatsApp — this audience lives on phones and
-  Facebook, not contact forms).
-- [ ] **No affordability signal.** The belief ladder's "affordable and
-  low-risk" rung is never addressed; add a price anchor ("one-screen sites from
-  £X") or an FAQ covering cost, hosting, timeline, "is the concept really
-  free?".
-- [ ] **"379 public local listings reviewed so far"** (`index.astro:104`) is
-  the largest text on the homepage and reads as surveillance, not craft — and
-  it advertises the scoring operation from P0. Replace with a
-  generosity-framed proof (e.g. concepts built, towns covered).
-- [ ] Hero h1 "Fancy a digital makeover?" is charming but generic; PRODUCT.md's
-  10-second line is "see what your local business could become online" — the
-  h1 should carry *your business*, *free*, *personalised*.
-- [ ] Mission copy ("Good digital work should reach the whole community")
-  interrupts mid-funnel; move the community commitment below the closing CTA or
-  onto `/about/`.
-- [ ] **Privacy page missing** — the form collects personal data with a single
-  reassurance line and no policy (UK GDPR). Add `/privacy/` and link it from
-  the form.
+- [x] **The site is anonymous.** Fixed 23 July 2026: `/about/` now names Conor
+  Brown, locates him in Dundrum, and offers a direct email route. A phone or
+  WhatsApp route was not invented without a number supplied for publication.
+- [x] **No affordability signal.** Fixed 23 July 2026: `/about/` now answers
+  whether the concept is free and explains fixed quotes, small starting scopes,
+  separated hosting/domain costs, and agreed delivery dates.
+- [x] **"379 public local listings reviewed so far."** Fixed 23 July 2026:
+  replaced with a live count of published local transformations framed as work
+  invested across Dundrum and Newcastle.
+- [x] **Generic hero h1.** Fixed 23 July 2026: the homepage now leads with
+  “See what your business could become online — free.”
+- [x] **Mission copy interrupts mid-funnel.** Fixed 23 July 2026: the community
+  commitment now follows the closing request.
+- [x] **Privacy page missing.** Fixed 23 July 2026: added a plain-language
+  `/privacy/` notice covering collection, purpose, lawful basis, processors,
+  retention, rights and ICO complaints, linked beside the submit button and in
+  the footer.
 
 ## P3 — Concept and comparison system (the scaling wall)
 
