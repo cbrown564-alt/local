@@ -1,6 +1,7 @@
 # Enniskeen flagship pitch
 
-Prepared 23 July 2026. This is outreach material, not a record of contact.
+Prepared and reviewed against `PRODUCT.md` on 23 July 2026. This is outreach
+material, not a record of contact.
 Do not send or hand over the QR one-sheet until `mourneandmain.co.uk` resolves
 and a production request-form submission has reached the intended inbox.
 

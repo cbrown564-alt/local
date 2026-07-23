@@ -87,10 +87,25 @@ try {
   if (reelInitial.sources.some(Boolean)) {
     throw new Error("Reel sources were attached before an explicit play.");
   }
-  await reel.click("[data-reel-play]");
+  await reel.focus("[data-reel-play]");
+  await reel.keyboard.press("Enter");
   await new Promise((resolve) => setTimeout(resolve, 1_500));
   if (!reelVideoRequests.some((url) => /hotel-enniskeen-reel\.webm(?:$|\?)/i.test(url))) {
-    throw new Error("Clicking Play the film did not request the reel WebM.");
+    throw new Error("Starting the film by keyboard did not request the reel WebM.");
+  }
+  const reelPlaying = await reel.$eval("[data-reel-video]", (video) => ({
+    controls: video.controls,
+    paused: video.paused,
+  }));
+  if (!reelPlaying.controls || reelPlaying.paused) {
+    throw new Error("The reel did not expose native controls and start after keyboard activation.");
+  }
+  await reel.focus("[data-reel-video]");
+  await reel.keyboard.press("Space");
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  const reelPaused = await reel.$eval("[data-reel-video]", (video) => video.paused);
+  if (!reelPaused) {
+    throw new Error("The reel did not pause from the keyboard through its native controls.");
   }
 
   console.log(JSON.stringify({
@@ -102,6 +117,8 @@ try {
     reelRequestsBeforeClick: 0,
     reelRequestsAfterClick: reelVideoRequests,
     reelReducedMotion: reelInitial.reducedMotion,
+    reelKeyboardPlay: true,
+    reelKeyboardPause: reelPaused,
   }, null, 2));
 } finally {
   await browser.close();
