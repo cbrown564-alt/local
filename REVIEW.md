@@ -83,12 +83,14 @@ tick items here and update the linked docs in the same commit as each fix.
   23 July 2026: all 23 concept routes use `ConceptLayout.astro`, which supplies
   `noindex, nofollow`, a plain description, favicon and consistent disclosure.
   The sitemap also excludes the whole concept tree.
-- [ ] **One CSS file per concept re-implements the same skeleton** — 451–712
-  lines each with only tokens and copy differing (`concept-*.css`, ~5,000
-  lines total). `ConceptLayout.astro` now owns the shared head, disclosure,
-  claim action and disabled-link behaviour; the repeated visual skeletons and
-  identity CSS still need consolidation into shared primitives and token
-  blocks.
+- [x] **One CSS file per concept re-implemented the same shell.** Fixed
+  23 July 2026: `ConceptLayout.astro` owns the head, disclosure, claim action
+  and disabled-link behaviour; `concept-shell.css` now also owns top-strip,
+  direct-header and navigation geometry. Each identity supplies only its
+  accent, gap, underline size and genuinely distinct page rules. The ten
+  published concepts are covered by `pnpm test:concepts`, which verifies the
+  resolved shared layout and identity token in a real browser. Secondary-page
+  CSS remains with its identity because those layouts are not interchangeable.
 - [x] **Comparison pages are hand-built.** Fixed 23 July 2026: headlines,
   source blocks, design notes and media paths now live in
   `transformation-details.ts`; one static `[slug].astro` route generates all

@@ -41,7 +41,9 @@ shared records in `src/data/transformations.ts` and
 `src/data/transformation-details.ts`. Standalone concepts use
 `src/layouts/ConceptLayout.astro` for their metadata, disclosure, case-study
 return and pre-filled claim action while retaining their subject-specific
-visual identity.
+visual identity. Shared concept chrome lives in `src/styles/concept-shell.css`;
+identity sheets provide navigation tokens and the genuinely distinct page
+rules.
 
 The request form posts to the Vercel Function at `/api/request`, which sends the
 submission to the configured inbox. Concept work is labelled as independent
@@ -90,4 +92,5 @@ and successful submission.
 - `scripts/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
 - `scripts/optimize-public-media.mjs` — derives two responsive WebP sizes and a WebM clip from each committed JPEG/MP4 master
 - `scripts/test-media-loading.mjs` — browser assertion that phone-sized WebP sources are lazy and demo video is fetched only after a play click
+- `scripts/test-concept-shell.mjs` — browser assertion that all ten concept identities resolve the shared header/navigation primitives and their own tokens
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks

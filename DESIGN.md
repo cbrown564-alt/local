@@ -39,8 +39,10 @@ screen; the standalone concept pages live at `/concepts/<slug>/` with their
 own stylesheet at `src/styles/concept-<slug>.css`, scoped by a body class so
 identities cannot leak between concepts. `ConceptLayout.astro` owns the shared
 HTML head, `noindex` rule, fixed disclosure, case-study return, claim action and
-disabled placeholder-link behaviour. Identity CSS remains local until its
-repeated layout patterns are consolidated without flattening the designs.
+disabled placeholder-link behaviour. `concept-shell.css` owns the repeated
+top-strip, direct-header and navigation geometry; each identity sets its
+accent, navigation gap and underline-size tokens while keeping its distinct
+hero and secondary-page layouts local.
 
 - **Castle Farm** — warm cream and farm green, Georgia serif, produce-led.
 - **Enniskeen** — deep pine `#1E3A2C`, cream `#F5EFE2` and honey brass
