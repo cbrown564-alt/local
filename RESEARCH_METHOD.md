@@ -68,6 +68,51 @@ Unconfirmed facts are recorded as unconfirmed, never inferred.
   derivation rules now use word boundaries plus public-service/community
   keyword checks.
 
+### Selection limitations observed in the second round (24 July 2026)
+
+- **The priority score cannot rank the site-less band.** Every record without a
+  website scores 80–81 — over a hundred businesses — so selection inside that
+  band is judgement plus fresh evidence, never the ranking.
+- **Name-variant duplicates create false-highs.** Four records scored 76–81 as
+  "no website found" while the same business traded on a live site under a
+  second record (`Donard Hotel`, `Quinns`, `Hugh McCanns`, `Percy French`).
+  Thirteen further duplicate pairs remain unmerged. **Dedupe before selecting**,
+  and extend the alias table in `scripts/normalize-businesses.mjs`.
+- **Listed websites go dead, not just stale.** A liveness probe over candidate
+  domains found DNS failures, HTTPS listeners refusing connections, Wix
+  "ConnectYourDomain" 404s, and a domain silently redirecting to a different
+  business. Probe DNS and both schemes; distinguish `ENOTFOUND` from a 404 from
+  a refused TLS connection, and record which.
+- **A dead domain does not prove a live business.** It is equally consistent
+  with closure. Trading evidence is required *before* the gap is used in a
+  pitch, not after.
+- **OpenStreetMap-only records carry no trading evidence at all.** A node is a
+  map feature that was true once. Nothing in the census separates a business
+  trading today from one that closed years ago — and the priority model rewards
+  that silence with a top-band score, because a closed business has no website.
+  Squid Shack scored 80 and had already ceased trading. **Confirm OSM-only
+  records first-hand before selecting them, not after.**
+- **A closure has no effect unless it is recorded.** Priority is computed from
+  the listing, not from trading status, so a shut business keeps the score its
+  missing website earned it. `scripts/normalize-businesses.mjs` now zeroes the
+  priority of any record whose `tradingStatus` is `Closed` and sorts it last,
+  and the workbook's live formulas do the same, so the listing is retained
+  without resurfacing. Regenerate the workbook after any closure:
+  `node spreadsheet-work/build-business-workbook.mjs`.
+- **Local first-hand knowledge is the cheapest source available and outperforms
+  every online one for trading status.** It has now corrected the census three
+  times where no dated public source existed. It is not a verification pass,
+  though: record a first-hand *closure* (it ends the assessment), but do not
+  write a first-hand "still open" into `research/verifications.json` as if the
+  full protocol had been run. Records without sources must not claim
+  public-source verification — the normaliser now states the basis honestly.
+- **Copyright-year staleness is weak evidence on its own.** Hugh McCann's shows
+  © 2018 in a footer over content maintained into 2026. Read the content dates,
+  not the footer.
+- **Census records can go stale by repurposing.** `hamillharty.com` now serves
+  an unrelated personal consultancy, so the listed business is no longer at its
+  recorded domain.
+
 ## Refresh protocol
 
 Re-run the research script for current OpenStreetMap data, refresh Google Maps/direct search metrics for the highest-ranked prospects, verify trading status against the official website or a recent source, and keep the research date visible. Outreach should use only current published business contact channels and comply with applicable UK privacy and direct-marketing rules.

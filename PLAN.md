@@ -285,7 +285,15 @@ Prototypes retained for comparison.
 ## Later backlog (not sequenced yet)
 
 - Confirm or drop South Down Signs; build if trading holds
-- Census refresh (OSM + Maps) and a new shortlist round via the select → verify → normalise → build → record cycle
+- **Batch two — selected 24 July 2026, verification outstanding.** Ten new
+  prospects (6 Dundrum, 4 Newcastle) chosen to weight home turf and to leave
+  hospitality; see `research/batch-two-selection.md` and `PROSPECTS.md`. Eleven
+  passes outstanding, counting Castle Farm's carried-over cleanup. Sequenced
+  after M3/M4 — outreach on batch one should teach the conversation before the
+  pipeline widens. Prerequisite for a batch three: extend the alias table in
+  `scripts/normalize-businesses.mjs` so name-variant duplicates stop producing
+  false-highs.
+- Census refresh (OSM + Maps) for a batch-three round via the select → verify → normalise → build → record cycle
 - Feature-upgrade cases (booking capability for recent rebuilds such as Dacara / Conlyn)
 - Broader audiences after independents: charities, clubs, public services
 - Community contribution visible on-site (pro-bono / civic piece — Chamber may seed this; full-site direction under review at `/prototypes/chamber/`)

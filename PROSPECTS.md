@@ -5,10 +5,10 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 24 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
+Snapshot: 24 July 2026 · 17 businesses verified · 10 shortlisted · 9 concepts
 published · Milestone 2 second assets shipped for all nine · Enniskeen F1
 flagship working prototype complete locally · Buck's Head F2 journey case
-complete locally
+complete locally · **batch two selected (10 prospects, unverified)**
 
 ## Pipeline stages
 
@@ -19,7 +19,7 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 9 concepts published, 1 shortlisted (held), 6 assessed.
+Current stages: 9 concepts published, 1 shortlisted (held), 7 assessed.
 
 Rules of the road:
 
@@ -49,6 +49,64 @@ Rules of the road:
 | **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro) | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
 | **Newcastle Chamber of Commerce** — *full-site concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro) | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
 
+## Batch two — selected 24 July 2026, not yet verified
+
+Ten new prospects chosen for the second round of the cycle. Full selection
+record, dated probe evidence and open questions in
+`research/batch-two-selection.md`. **None of these is verified**: no concept
+work until each has a pass under `RESEARCH_METHOD.md`, and none has a record in
+`research/verifications.json` yet.
+
+Composition was chosen to weight Dundrum and to leave hospitality — batch one
+was eight of ten hospitality or consumer-facing, and nothing so far tests
+whether the offer lands with a trade, a health practice or a product brand.
+
+| Business | Town | Category | Gap class | Selection evidence |
+|---|---|---|---|---|
+| The Dundrum Inn | Dundrum | Pub / B&B | Journey | Live custom site with booking and 2026 content — **not a rebuild case** |
+| Murdock Brothers | Dundrum | Fuel merchant | Dead site | Wix 404 "ConnectYourDomain Error" |
+| Groves Chemist | Dundrum | Pharmacy | First website | No site found; trading confirmed first-hand 24 Jul 2026 |
+| Tonn Ruray Café | Dundrum | Café + apartments | Redesign | Live site; café/restaurant plus luxury apartment lets off one domain |
+| Kelly, McEvoy & Brown | Dundrum | Building contractor | Redesign | 9.7 KB hand-built site, established 1973 |
+| Betty's Better Butters | Dundrum | Food producer | Redesign | Two-page BaseKit site still titled "Home Page" |
+| Douglas and Cromie | Newcastle | Car dealer | Dead site | Domain does not resolve (ENOTFOUND) |
+| The Donard Hotel | Newcastle | Hotel | Dead site | HTTP 404, HTTPS connection refused |
+| Newcastle Family Dental Care | Newcastle | Dental | Dead site | Redirects to another practice over plain HTTP |
+| Hugh McCann's | Newcastle | Wedding venue | Feature | Maintained to 2026 despite © 2018 footer — **not a rescue** |
+
+**Squid Shack was selected and removed the same day** — local first-hand report,
+24 July 2026: it no longer exists. Recorded in `research/verifications.json` as
+`tradingStatus: "Closed"` so its OpenStreetMap node stops resurfacing near the
+top of the site-less band in future rounds. Tonn Ruray Café took the slot.
+
+The lesson generalises. **OpenStreetMap-only records carry no trading evidence
+at all** — a node is a map feature that was true once — and the priority model
+rewards that silence with a top-band score, because a closed business has no
+website. Squid Shack scored 80. **Confirm OSM-only records first-hand before
+selecting them, not after.** Groves Chemist, Brennan's, Today's and Arley Guest
+House were all confirmed trading in the same conversation, at no research cost.
+
+**A third gap class.** Batch one worked two pitches: redesign a dated site, or
+build a first one. Four of these ten are trading while their website is broken,
+dead, or pointing at someone else — and the owner usually does not know. Donard
+Veterinary reached batch one this way and was treated as a one-off; it is not.
+The pitch is the most verifiable of the three, and also the most embarrassing to
+get wrong: **confirm the business is still trading before leaning on it**, since
+a dead domain is equally consistent with a closed business.
+
+Confirmed trading first-hand on 24 July 2026: Douglas and Cromie, The Donard
+Hotel, Newcastle Family Dental Care. **Murdock Brothers is still unconfirmed** —
+the one dead-site case where the pitch is not yet safe to make.
+
+**The score could not make this choice.** Every site-less record scores 80–81,
+and four records at the top of that band — `Donard Hotel`, `Quinns`,
+`Hugh McCanns`, `Percy French` — are duplicates of businesses that trade on live
+sites. Selecting off the top of the ranking would have pitched a first website
+to four businesses that already have one. Thirteen further duplicate pairs are
+listed in the selection record; the alias table in
+`scripts/normalize-businesses.mjs` holds only five entries. **Fix it before the
+batch-three selection** — this round excluded the duplicates by hand.
+
 ## Assessed — not shortlisted
 
 Golf Links House and Avoca Hotel (sites recently rebuilt with booking),
@@ -57,6 +115,11 @@ House (fresh rebuilds; their gap is booking capability, a possible future
 feature-upgrade case), Hutt Hostel (dated styling but working booking flow —
 accommodation runner-up). Details and evidence in
 `research/verifications.json`.
+
+**Squid Shack** (Dundrum) is recorded here for a different reason: it is closed,
+confirmed first-hand on 24 July 2026. The record exists to keep a dead
+OpenStreetMap node out of future selection rounds, not because the business was
+assessed on its merits.
 
 ## Castle Farm — published but outside the pipeline
 
@@ -71,6 +134,11 @@ The effect is that a real named neighbour's business is displayed publicly
 while sitting outside every honesty mechanism built around the others — it
 cannot change stage, will never be re-verified, and under the M3 walk would be
 the one Dundrum door skipped while three of its neighbours are visited.
+
+**Counted outside batch two (24 July 2026).** It needs a full verification pass
+either way, but it is batch-one cleanup rather than new discovery, so recording
+it inside the ten would have overstated new coverage. Site live, © 2026,
+trading — eleven passes are outstanding this round, not ten.
 
 **Decision (24 July 2026):** verify Castle Farm into batch one. A fresh pass
 first, per the rule below that no concept work proceeds on evidence older than
@@ -176,7 +244,23 @@ reinvent:
 Each round of work follows the same loop, and each loop makes the next one
 cheaper because the knowledge lands in versioned files, not in heads:
 
-1. **Select** from the ranked census (`/opportunities` — dev-only workbench, run `pnpm dev`; never deployed because it embeds the scored dataset — or the workbook).
+1. **Select** from the ranked census (`/opportunities` — dev-only workbench, run
+   `pnpm dev`; never deployed because it embeds the scored dataset). The
+   workbench reads `src/data/businesses.json`, so it reflects every
+   verification, correction and closure.
+   The `.xlsx` workbook is untracked and only as fresh as its last build —
+   regenerate it with `node spreadsheet-work/build-business-workbook.mjs`, which
+   reads the same two files, before trusting it to select. Rebuilt 24 July 2026;
+   it had been ranking the now-closed Squid Shack fifth overall.
+   **It still carries the four duplicate false-highs and merges no aliases** —
+   `Donard Hotel` sits at rank 3 while the same hotel trades on a live site.
+   Selection inside the site-less band is judgement plus fresh evidence, never
+   the ranking — the score is flat at 80–81 across a hundred-plus businesses.
+
+   A business verified as closed now scores 0 and sorts last, in both the
+   dataset and the workbook, with its listing retained so the knowledge is not
+   lost. Scores are otherwise a property of the listing, not of trading status,
+   so a closure has to be recorded to have any effect.
 2. **Verify** per the protocol in RESEARCH_METHOD.md; record evidence,
    corrections, and the shortlist/design-task decision in
    `research/verifications.json`.
