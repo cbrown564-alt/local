@@ -1,6 +1,6 @@
 # Plan
 
-Working roadmap for Mourne & Main after the Product Stage homepage ship.
+Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
 Snapshot: 23 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · F1 Enniskeen flagship working prototype complete locally, with outreach gated by domain/form/printed-QR checks · F2 Buck's Head planned next · South Down Signs on hold
@@ -50,7 +50,7 @@ Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-vet
 
 ### Intent
 
-- Same brand system as the landing (palette, type, voice) — never the Mourne & Main studio chrome inside the concept
+- Same brand system as the landing (palette, type, voice) — never the Mourne Made studio chrome inside the concept
 - Chosen because it is the highest-leverage gap for that business, not because every site needs the same second page
 - Shown on the transformation page as a second comparison or a clearly labelled companion asset beside the opening-screen slider
 - Still labelled independent / uncommissioned

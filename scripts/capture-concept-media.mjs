@@ -116,7 +116,7 @@ const REELS = {
         duration: 4,
         eyebrow: "Independent concept · not commissioned",
         title: "Enniskeen Country House Hotel",
-        detail: "A guest-first website concept by Mourne & Main · Newcastle, County Down",
+        detail: "A guest-first website concept by Mourne Made · Newcastle, County Down",
       },
       {
         id: "before-home",
@@ -260,7 +260,7 @@ const REELS = {
         duration: 5,
         eyebrow: "Independent concept · not commissioned",
         title: "See every page and the complete comparison",
-        detail: "mourneandmain.co.uk/transformations/hotel-enniskeen/ · Free before-and-after for local businesses",
+        detail: "mournemade.co.uk/transformations/hotel-enniskeen/ · Free before-and-after for local businesses",
       },
     ],
   },
@@ -692,15 +692,25 @@ async function renderCardFrame(browser, segment, out) {
       .wordmark {
         position: fixed;
         right: 90px;
-        top: 72px;
-        color: #fff;
+        top: 58px;
+        min-width: 126px;
+        padding: 9px 29px 9px 10px;
+        display: grid;
+        background: #132029;
+        color: #f4f8fa;
         font-family: "Antonio Reel", "Arial Narrow", sans-serif;
-        font-size: 30px;
-        font-weight: 650;
-        letter-spacing: -.015em;
+        font-size: 27px;
+        font-weight: 700;
+        letter-spacing: .01em;
+        line-height: .76;
         text-transform: uppercase;
       }
-      .wordmark span { color: #e0c14d; }
+      .wordmark i {
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: 18px;
+        background: #e0c14d;
+      }
       body.proof {
         background: #f1eadb;
         color: #15291f;
@@ -734,9 +744,9 @@ async function renderCardFrame(browser, segment, out) {
         max-width: 1250px;
         color: #3a4e3d;
       }
-      body.proof .wordmark { color: #15291f; }
+      body.proof .wordmark { background: #15291f; color: #f1eadb; }
     </style></head><body class="${cardStyle}">
-      <div class="wordmark">Mourne <span>&amp;</span> Main</div>
+      <div class="wordmark"><b>Mourne</b><b>Made</b><i></i></div>
       <main>
         <p class="mark">${escapeHtml(segment.eyebrow)}</p>
         <h1>${escapeHtml(segment.title)}</h1>

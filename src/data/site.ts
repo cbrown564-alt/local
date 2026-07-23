@@ -1,5 +1,5 @@
 export const siteDetails = {
-  name: "Mourne & Main",
+  name: "Mourne Made",
   founder: "Conor Brown",
   founderFirstName: "Conor",
   email: "cbrown564@gmail.com",

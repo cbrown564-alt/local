@@ -2,7 +2,9 @@
 
 ## Brand
 
-**Mourne & Main** is a local digital studio for Dundrum and Newcastle. The name combines the landscape with the main street: a local frame broad enough to include independent businesses, clubs, charities and public organisations.
+**Mourne Made** is a local digital studio for Dundrum and Newcastle. The name joins place and practice: work made here for businesses and organisations around the Mournes. It is local without limiting the studio to one street or one kind of client.
+
+The primary identity is the **Side tab maker's stamp**: Mourne and Made stacked in a compact bay-ink field, signed by a narrow gorse-yellow tab. A separate Dundrum + Newcastle place line is used where space permits. At favicon and avatar size, the stamp reduces to two stacked M forms with the same yellow side tab.
 
 The voice is neighbourly, direct and optimistic. It shows a useful change before making a sales claim. Current work is described respectfully; concepts remain clearly separate from commissioned client work.
 
@@ -34,7 +36,7 @@ The comparison page is the core product. It uses equal-sized before and after im
 ## Concept identities
 
 Each concept carries the subject's own visual identity, not the studio's. The
-Mourne & Main palette and Antonio display face never appear inside a concept
+Mourne Made palette and Antonio display face never appear inside a concept
 screen; the standalone concept pages live at `/concepts/<slug>/` with their
 own stylesheet at `src/styles/concept-<slug>.css`, scoped by a body class so
 identities cannot leak between concepts. `ConceptLayout.astro` owns the shared

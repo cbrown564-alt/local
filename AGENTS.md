@@ -2,7 +2,7 @@
 
 ## Cursor Cloud specific instructions
 
-Mourne & Main is a single static [Astro](https://astro.build/) site (no backend, no database). The whole product is the site itself; there is no separate service to run.
+Mourne Made is a single static [Astro](https://astro.build/) site (no backend, no database). The whole product is the site itself; there is no separate service to run.
 
 ### Services
 

@@ -48,7 +48,7 @@ tick items here and update the linked docs in the same commit as each fix.
   says the flow is local-only; `api/request.ts` is fully wired but local `.env`
   lacks the Gmail vars. Verify the Vercel env vars, send a test submission on
   production, then correct PLAN.md.
-- [ ] **`mourneandmain.co.uk` does not resolve.** `astro.config.mjs` claims it
+- [ ] **`mournemade.co.uk` does not resolve.** `astro.config.mjs` claims it
   but the domain is not attached to the Vercel project; the live site is only
   `local-zeta-seven.vercel.app`. Attach (or buy) the domain before anything is
   printed.

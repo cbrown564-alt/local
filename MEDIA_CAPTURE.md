@@ -191,17 +191,17 @@ image wipes from before to after, avoiding two sentences colliding in motion.
 
 Enniskeen delivery files:
 
-- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 76.00 s,
-  1920×1080, 5.77 MB.
-- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 76.00 s,
-  1920×1080, 6.00 MB.
-- `public/videos/hotel-enniskeen-outreach-reel.mp4` — 49.53 s H.264
-  first-contact edit, 1920×1080, 2.98 MB.
-- `public/videos/hotel-enniskeen-outreach-reel.webm` — 49.53 s VP9
-  first-contact edit, 1920×1080, 3.24 MB. Both outreach files retain the
+- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 75.90 s,
+  1920×1080, 5.75 MB.
+- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 75.90 s,
+  1920×1080, 6.04 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.mp4` — 49.40 s H.264
+  first-contact edit, 1920×1080, 2.88 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.webm` — 49.40 s VP9
+  first-contact edit, 1920×1080, 3.27 MB. Both outreach files retain the
   opening, booking sequence and full-frame before-to-after wipe and are
   generated alongside the complete reel.
-- `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 220 KB, with
+- `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 216 KB, with
   responsive WebP derivatives.
 
 Final local QA on 23 July 2026:
@@ -226,7 +226,7 @@ Final local QA on 23 July 2026:
   activation, the WebM is preferred, reduced-motion remains opt-in, and the
   film plays and pauses from the keyboard through native controls.
 - The end-card domain and printed QR are release checks, not local capture
-  checks. `mourneandmain.co.uk` had no DNS record on 23 July 2026, so this
+  checks. `mournemade.co.uk` had no DNS record on 23 July 2026, so this
   film and the one-sheet must not be distributed yet.
 
 ## QA checklist (every capture)

@@ -1,4 +1,4 @@
-# Mourne & Main
+# Mourne Made
 
 A working Astro site for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation before-and-after request.
 
@@ -55,7 +55,7 @@ disallowed in `robots.txt`.
 
 The request route sends mail through Gmail with an app password. Never add a Gmail password or app password to this repository.
 
-1. Turn on 2-Step Verification for the sending Google account, then create a Google app password for Mourne & Main.
+1. Turn on 2-Step Verification for the sending Google account, then create a Google app password for Mourne Made.
 2. In the Vercel project, add these environment variables:
    - `GMAIL_USER` — the Gmail address used to send the notification
    - `GMAIL_APP_PASSWORD` — the Google app password

@@ -26,7 +26,7 @@ const C = {
 };
 
 const workbook = Workbook.create();
-workbook.comments.setSelf({ displayName: "Mourne & Main research" });
+workbook.comments.setSelf({ displayName: "Mourne Made research" });
 const readme = workbook.worksheets.add("Read Me");
 const dashboard = workbook.worksheets.add("Dashboard");
 const businessSheet = workbook.worksheets.add("Businesses");
