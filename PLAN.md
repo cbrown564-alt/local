@@ -3,7 +3,7 @@
 Working roadmap for Mourne & Main after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 23 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · South Down Signs on hold
+Snapshot: 23 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · Milestone F flagship plans written (F1 Enniskeen → F2 Buck's Head) · South Down Signs on hold
 
 ---
 
@@ -103,6 +103,27 @@ by the same script as the stills (`scripts/capture-concept-media.mjs`, see
   capture, so both the still and the clip show the page a business designed,
   not the legal chrome on top of it. Castle Farm, Enniskeen and Donard before
   stills were recaptured clean as part of this.
+
+---
+
+## Milestone F — Flagship case studies (planned 23 July 2026)
+
+Two deep case studies that lead the outreach wave, planned in full in
+`research/enniskeen-flagship-plan.md` (F1) and
+`research/bucks-head-journey-plan.md` (F2). F1 runs first and builds the
+shared infrastructure (reel capture mode, title cards, `ReelPlayer`, print
+one-sheet pipeline); F2 reuses it at roughly half the cost.
+
+| Piece | Scope | Why this shape |
+|---|---|---|
+| **F1 · Enniskeen flagship** | Full linked concept site (Home · Stay · Dine · The estate · Things to do), ~70 s flagship film, personalised one-sheet + pitch | The only prospect where steady business, cinematic story and a genuinely underdeveloped site (~2012) all hold — the honest "full, end to end" case, keeping the Bookin1 plumbing |
+| **F2 · Buck's Head journey case** | Mobile journey films (taps-to-booked-table, menus on a phone), "Two journeys" case-study section, walk-in pitch | Their site is current and well maintained; the verified gap is the journey around the ResDiary engine, so a rebuild pitch would be dishonest — the journey comparison is the winning artifact |
+
+Decision record, phases, gates, risks and estimates live in the two plan
+documents. Hard gates shared by both: day-of-build re-verification (both
+targets have changed their sites mid-build before), and no pitch leaves the
+building until the P1 pair in REVIEW.md clears (domain resolves, form
+delivers).
 
 ---
 
@@ -225,9 +246,11 @@ Prototypes retained for comparison.
 ```
 M1 ✅ Tool Centre / Kent Amusements / Chamber landings
 M2 ✅ Second assets for all nine shortlist concepts
-M3 Letterbox format decision → artwork → print
-M4 Request form wiring
-M5 Outreach wave 1
+F1 Enniskeen flagship (harvest → full site → film → pitch pack)
+F2 Buck's Head journey case (reuses F1 infrastructure)
+M3 Letterbox format decision → artwork (feature F1/F2 output) → print
+M4 Request form delivery + domain (gates any pitch or print going out)
+M5 Outreach wave 1 (led by the flagship film and the walk-in journey pitch)
 M6 First paid job
 ```
 
