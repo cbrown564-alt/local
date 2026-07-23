@@ -20,6 +20,7 @@ const pages = [
   ["transformations", "/transformations/"],
   ["about", "/about/"],
   ["request", "/request/"],
+  ["privacy", "/privacy/"],
 ];
 
 const viewports = [

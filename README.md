@@ -31,6 +31,7 @@ pnpm build
 - `/transformations/castle-farm/` — before/after comparison for Castle Farm Fresh Produce
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
+- `/privacy/` — plain-language privacy notice linked at the point of collection
 - `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
 - `/concepts/newcastle-chamber/` — full linked Chamber concept (Home · Members · Events · Join · About · Contact)
 
