@@ -1,5 +1,6 @@
 ---
 import { chamber } from "../../data/chamber-prototype";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
 import "../../styles/global.css";
 import "../../styles/concept-newcastle-chamber.css";
 
@@ -9,7 +10,7 @@ interface Props {
   disclosure?: string;
 }
 
-const { title, current, disclosure = "Independent concept · not a live Chamber site" } = Astro.props;
+const { title, current, disclosure } = Astro.props;
 const base = "/concepts/newcastle-chamber";
 const nav = [
   { id: "home", href: `${base}/`, label: "Home" },
@@ -20,17 +21,8 @@ const nav = [
   { id: "contact", href: `${base}/contact/`, label: "Contact" },
 ] as const;
 ---
-<!doctype html>
-<html lang="en-GB">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>{title}</title>
-  </head>
-  <body class="concept-page concept-newcastle-chamber">
+
+<ConceptLayout title={title} slug="newcastle-chamber" bodyClass="concept-page concept-newcastle-chamber" bannerNote={disclosure}>
     <div class="nc-strip">
       <span><strong>Newcastle, Co. Down</strong> · 50A Main Street · under the Mournes</span>
       <span class="nc-strip-social">News on <a href={chamber.facebook}>Facebook</a> &amp; <a href={chamber.instagram}>Instagram</a></span>
@@ -80,6 +72,4 @@ const nav = [
         </div>
       </div>
     </footer>
-    <div class="concept-disclosure">{disclosure}</div>
-  </body>
-</html>
+  </ConceptLayout>

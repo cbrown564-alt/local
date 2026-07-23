@@ -18,24 +18,29 @@ pnpm build
 ## Main routes
 
 - `/` — product-stage landing page (before/after first; place belonging next)
-- `/prototypes/home/` — homepage alternatives explored before shipping Product Stage
-- `/prototypes/chamber/` — full-site exploration for Newcastle Chamber (research + three multi-page directions)
+- `/prototypes/home/` — internal homepage alternatives explored before shipping Product Stage
+- `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
 - `/transformations/` — concept index
-- `/transformations/cupla/` — first-website comparison for Cúpla
-- `/transformations/scopers/` — first-website comparison for Scopers
-- `/transformations/bucks-head/` — before/after comparison for The Bucks Head
-- `/transformations/donard-veterinary/` — before/after comparison for Donard Veterinary Clinic
-- `/transformations/mourne-cycles/` — before/after comparison for Mourne Cycles
-- `/transformations/hotel-enniskeen/` — before/after comparison for Enniskeen Country House Hotel
-- `/transformations/castle-farm/` — before/after comparison for Castle Farm Fresh Produce
+- `/transformations/<slug>/` — one of ten data-driven, source-backed before/after case studies
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
 - `/privacy/` — plain-language privacy notice linked at the point of collection
-- `/concepts/cupla/`, `/concepts/scopers/`, `/concepts/bucks-head/`, `/concepts/donard-veterinary/`, `/concepts/mourne-cycles/`, `/concepts/hotel-enniskeen/`, `/concepts/castle-farm/` — standalone proposed opening screens used in the comparisons
+- `/concepts/<slug>/` — standalone proposed screens used in the comparisons
 - `/concepts/newcastle-chamber/` — full linked Chamber concept (Home · Members · Events · Join · About · Contact)
 
-The request form posts to the Vercel Function at `/api/request`, which sends the submission to the configured inbox. Concept work is labelled as independent and uncommissioned.
+`src/pages/transformations/[slug].astro` renders the case studies from the
+shared records in `src/data/transformations.ts` and
+`src/data/transformation-details.ts`. Standalone concepts use
+`src/layouts/ConceptLayout.astro` for their metadata, disclosure, case-study
+return and pre-filled claim action while retaining their subject-specific
+visual identity.
+
+The request form posts to the Vercel Function at `/api/request`, which sends the
+submission to the configured inbox. Concept work is labelled as independent
+and uncommissioned. Concept and prototype routes are intentionally omitted from
+the public sitemap; concept routes are `noindex`, and prototype routes are
+disallowed in `robots.txt`.
 
 ## Vercel request email
 

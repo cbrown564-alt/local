@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
+import { siteDetails } from "../data/site";
 import "@fontsource-variable/antonio/wght.css";
 import "@fontsource-variable/atkinson-hyperlegible-next/wght.css";
 import "../styles/global.css";
@@ -30,7 +31,30 @@ const {
   ogType = "website",
 } = Astro.props;
 
-const ogImageUrl = new URL(ogImage, Astro.url.origin).href;
+const publicOrigin = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(Astro.url.pathname, publicOrigin).href;
+const ogImageUrl = new URL(ogImage, publicOrigin).href;
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  name: siteDetails.name,
+  url: new URL("/", publicOrigin).href,
+  email: siteDetails.email,
+  founder: {
+    "@type": "Person",
+    name: siteDetails.founder,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dundrum",
+    addressRegion: "County Down",
+    addressCountry: "GB",
+  },
+  areaServed: [
+    { "@type": "Place", name: "Dundrum, County Down" },
+    { "@type": "Place", name: "Newcastle, County Down" },
+  ],
+};
 ---
 
 <!doctype html>
@@ -40,6 +64,8 @@ const ogImageUrl = new URL(ogImage, Astro.url.origin).href;
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     {robots && <meta name="robots" content={robots} />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -49,6 +75,7 @@ const ogImageUrl = new URL(ogImage, Astro.url.origin).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
     <title>{title}</title>
     <Analytics />
   </head>

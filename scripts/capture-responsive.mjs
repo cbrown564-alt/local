@@ -21,6 +21,8 @@ const pages = [
   ["about", "/about/"],
   ["request", "/request/"],
   ["privacy", "/privacy/"],
+  ["transformation-donard", "/transformations/donard-veterinary/"],
+  ["concept-donard", "/concepts/donard-veterinary/"],
 ];
 
 const viewports = [

@@ -1,0 +1,78 @@
+---
+import { transformations } from "../data/transformations";
+import "../styles/concept-shell.css";
+
+interface Props {
+  title: string;
+  slug: string;
+  bodyClass: string;
+  lang?: string;
+  fontHref?: string;
+  bannerNote?: string;
+}
+
+const conceptFonts: Record<string, string> = {
+  "bucks-head": "https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;1,400;1,500&display=swap",
+  "castle-farm": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap",
+  "cupla": "https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;700&display=swap",
+  "donard-veterinary": "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;700&display=swap",
+  "hotel-enniskeen": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap",
+  "kent-amusements": "https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap",
+  "mourne-cycles": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;1,600;1,700&family=Barlow:wght@400;600;700&display=swap",
+  "newcastle-chamber": "https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
+  "scopers": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap",
+  "tool-centre": "https://fonts.googleapis.com/css2?family=Chivo:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
+};
+
+const {
+  title,
+  slug,
+  bodyClass,
+  lang = "en-GB",
+  fontHref = conceptFonts[slug],
+  bannerNote,
+} = Astro.props;
+const transformation = transformations.find((item) => item.slug === slug);
+const businessName = transformation?.name ?? slug;
+const town = transformation?.town ?? "";
+const caseStudy = `/transformations/${slug}/`;
+const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${encodeURIComponent(town)}&source=concept`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={`Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {fontHref && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href={fontHref} rel="stylesheet" />
+      </>
+    )}
+    <title>{title}</title>
+  </head>
+  <body class={bodyClass}>
+    <slot />
+    <aside class="mm-concept-banner" aria-label="About this independent concept">
+      <span><strong>Independent concept by Mourne &amp; Main.</strong> Not the live {businessName} website. {bannerNote}</span>
+      <nav aria-label="Concept actions">
+        <a href={caseStudy}>See the case study</a>
+        <a class="mm-concept-claim" href={claimUrl}>Is this your business? Claim this concept →</a>
+      </nav>
+    </aside>
+  </body>
+</html>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('a[href="#"]').forEach((link) => {
+    link.removeAttribute("href");
+    link.setAttribute("aria-disabled", "true");
+    link.setAttribute("title", "Concept preview — this link is not active");
+    link.classList.add("concept-link-inert");
+  });
+</script>

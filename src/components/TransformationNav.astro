@@ -1,0 +1,22 @@
+---
+import { transformations } from "../data/transformations";
+import ArrowIcon from "./ArrowIcon.astro";
+
+const slug = Astro.url.pathname.split("/").filter(Boolean).at(-1) ?? "";
+const index = Math.max(0, transformations.findIndex((item) => item.slug === slug));
+const previous = transformations[(index - 1 + transformations.length) % transformations.length];
+const next = transformations[(index + 1) % transformations.length];
+---
+
+<nav class="transformation-nav shell" aria-label="More transformations">
+  <a class="transformation-nav-link transformation-nav-previous" href={previous.href}>
+    <span class="transformation-nav-direction">← Previous</span>
+    <strong>{previous.name}</strong>
+    <small>{previous.town} · {previous.category}</small>
+  </a>
+  <a class="transformation-nav-link transformation-nav-next" href={next.href}>
+    <span class="transformation-nav-direction">Next <ArrowIcon /></span>
+    <strong>{next.name}</strong>
+    <small>{next.town} · {next.category}</small>
+  </a>
+</nav>
