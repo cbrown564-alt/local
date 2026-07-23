@@ -1,0 +1,62 @@
+---
+import ChamberConceptShell from "../../../components/chamber-prototypes/ChamberConceptShell.astro";
+import { chamber, categories, members } from "../../../data/chamber-prototype";
+
+const base = "/concepts/newcastle-chamber";
+---
+<ChamberConceptShell
+  title="Member Directory — Newcastle Chamber of Commerce · Co. Down"
+  current="members"
+  disclosure="Member list is illustrative."
+>
+  <main class="nc-dir" id="main">
+    <div class="nc-dir-head">
+      <div class="nc-dir-head-text">
+        <p class="nc-kicker">Member directory · Newcastle</p>
+        <h1>Main Street traders, <em>in one place.</em></h1>
+        <p class="nc-dir-intro">
+          Businesses that have joined the Chamber — listed by trade so you can find what you need in town.
+          Updated as membership grows. <a href={`${base}/join/`}>Ask to be listed</a>, or <a href={chamber.emailHref}>email the Chamber</a>.
+        </p>
+      </div>
+      <nav class="nc-dir-tabs" aria-label="Jump to category">
+        <a class="nc-dir-tab nc-dir-tab--active" href="#all">All</a>
+        {categories.map((cat) => (
+          <a class="nc-dir-tab" href={`#${cat.id}`}>
+            <span class="nc-tab-full">{cat.label}</span>
+            <span class="nc-tab-short">{cat.shortLabel}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="nc-dir-body" id="all">
+      {categories.map((cat) => (
+        <section class="nc-dir-category" id={cat.id}>
+          <h2 class="nc-dir-cat-label">{cat.label}</h2>
+          <ul class="nc-dir-grid" role="list">
+            {members.filter((m) => m.category === cat.id).map((member) => (
+              <li class="nc-dir-card">
+                <p class="nc-dir-card-name">{member.name}</p>
+                <p class="nc-dir-card-trade">{member.trade}</p>
+                <p class="nc-dir-card-note">{member.note}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <div class="nc-dir-join">
+      <div class="nc-dir-join-inner">
+        <p class="nc-dir-join-kicker">Not listed yet?</p>
+        <h2>Join the Chamber and <em>get your business found.</em></h2>
+        <p>Write to the volunteer inbox and the committee will be in touch.</p>
+        <div class="nc-actions">
+          <a class="nc-cta" href={`${base}/join/`}>Why join</a>
+          <a class="nc-link" href={chamber.facebook}>Follow on Facebook →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</ChamberConceptShell>

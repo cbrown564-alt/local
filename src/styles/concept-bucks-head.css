@@ -15,6 +15,8 @@
   --hairline: rgba(31, 51, 44, 0.16);
   --display: "Jost", "Segoe UI", sans-serif;
   --serif: "Lora", Georgia, serif;
+  --concept-accent: var(--brick);
+  --concept-nav-gap: clamp(16px, 2vw, 26px);
   background: var(--cream);
   color: var(--ink-green);
   font-family: var(--display);
@@ -39,9 +41,6 @@
 .bh-header {
   height: 82px;
   padding: 0 clamp(20px, 3.5vw, 44px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 26px;
   background: var(--cream);
   border-bottom: 1px solid var(--hairline);
@@ -62,26 +61,12 @@
   text-transform: uppercase;
   color: var(--brick);
 }
-.bh-nav { display: flex; gap: clamp(16px, 2vw, 26px); }
 .bh-nav a {
-  position: relative;
-  padding-bottom: 5px;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-decoration: none;
   color: var(--ink-green);
-}
-.bh-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  height: 2px;
-  background: var(--brick);
-  transition: right 160ms ease;
 }
 .bh-nav a:hover::after { right: 0; }
 .bh-book {
@@ -336,4 +321,297 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bh-kicker, .bh-story h1, .bh-lede, .bh-actions, .bh-booking { animation: none; }
+}
+
+/* ============================================================
+   Menus page — concept surface 2
+   All selectors stay within the bh- namespace.
+   ============================================================ */
+
+/* Active nav link (used on the menus page and any future sub-pages) */
+.bh-nav a[aria-current="page"]::after { right: 0; }
+
+/* Dark green page-header band — title + tab rail */
+.bh-menus-hero {
+  background: var(--spruce-deep);
+  padding: 36px clamp(26px, 4vw, 64px) 0;
+}
+.bh-menus-hero-inner { margin-bottom: 28px; }
+.bh-menus-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blush-deep);
+}
+.bh-menus-eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--blush-deep); }
+.bh-menus-hero h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--cream);
+}
+.bh-menus-hero h1 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--blush);
+}
+
+/* Tab rail — flush with the bottom of the dark band */
+.bh-tabs {
+  display: flex;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-top: 1px solid rgba(240, 213, 203, 0.12);
+}
+.bh-tabs::-webkit-scrollbar { display: none; }
+.bh-tab {
+  flex: 0 0 auto;
+  padding: 15px 22px 13px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--blush-deep);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+.bh-tab span {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(217, 168, 147, 0.6);
+}
+.bh-tab:hover { color: var(--cream); background: rgba(255,255,255,0.04); }
+.bh-tab[aria-selected="true"] {
+  color: var(--cream);
+  border-bottom-color: var(--brick);
+}
+.bh-tab[aria-selected="true"] span { color: var(--blush-deep); }
+
+/* Two-column page body: menu content + booking sidebar */
+.bh-menus-layout {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+  background: var(--cream);
+  min-height: 0;
+}
+
+/* Scrollable menu content column */
+.bh-menus-content { min-width: 0; }
+
+/* Individual tab panels */
+.bh-menu-panel {
+  display: none;
+  padding: clamp(24px, 3.2vw, 44px) clamp(26px, 4vw, 64px);
+}
+.bh-menu-panel[data-active="true"] { display: block; }
+
+/* Two columns inside a panel (e.g. starters + mains side by side) */
+.bh-menu-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+/* Drinks uses the same two-column layout */
+.bh-drinks-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+
+/* Menu section heading (Starters / Mains / etc.) */
+.bh-menu-section { margin: 0 0 32px; }
+.bh-menu-section:last-child { margin-bottom: 0; }
+.bh-menu-section-head {
+  margin: 0 0 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+
+/* Dish rows */
+.bh-dishes { margin: 0; padding: 0; list-style: none; }
+.bh-dish {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(31, 51, 44, 0.07);
+}
+.bh-dish:last-child { border-bottom: 0; }
+.bh-dish-info { min-width: 0; }
+.bh-dish-name {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--spruce-deep);
+  line-height: 1.25;
+}
+.bh-dish-desc {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #5a6b61;
+}
+.bh-dish-price {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--brick);
+  white-space: nowrap;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+.bh-dish-note {
+  margin: 10px 0 0;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  color: #5a6b61;
+  line-height: 1.45;
+}
+.bh-tag-v {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 4px;
+  border: 1px solid var(--spruce);
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-style: normal;
+  vertical-align: middle;
+  color: var(--spruce);
+  font-family: var(--display);
+}
+
+/* Right sidebar */
+.bh-menus-sidebar {
+  border-left: 1px solid var(--hairline);
+  background: var(--cream);
+  padding: clamp(22px, 2.8vw, 36px) 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Booking block inside the sidebar */
+.bh-sidebar-book {
+  padding: 18px 18px 14px;
+  background: var(--spruce-deep);
+  border-top: 4px solid var(--brick);
+}
+.bh-sidebar-book h3 {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.bh-sidebar-book > p {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  color: var(--blush-deep);
+  line-height: 1.4;
+}
+/* Full-width variant of the main CTA pill */
+.bh-cta-full {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+}
+.bh-sidebar-call {
+  display: block;
+  margin-top: 9px;
+  font-family: var(--serif);
+  font-size: 12px;
+  text-align: center;
+  color: var(--blush-deep);
+}
+.bh-sidebar-call a { color: var(--blush); font-weight: 600; }
+
+.bh-sidebar-divider {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 0;
+}
+
+/* Info blocks inside the sidebar */
+.bh-sidebar-info {
+  padding: 14px 16px;
+  border: 1px solid var(--hairline);
+}
+.bh-sidebar-info h3 {
+  margin: 0 0 7px;
+  font-family: var(--display);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--spruce-deep);
+}
+.bh-sidebar-info p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #5a6b61;
+}
+.bh-sidebar-info dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 12px;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  color: #5a6b61;
+}
+.bh-sidebar-info dt { font-weight: 600; color: var(--spruce-deep); }
+
+/* Responsive for the menus page */
+@media (max-width: 940px) {
+  .bh-menus-hero { padding: 26px 22px 0; }
+  .bh-menus-layout { grid-template-columns: 1fr; }
+  .bh-menus-sidebar { border-left: 0; border-top: 1px solid var(--hairline); flex-direction: row; flex-wrap: wrap; }
+  .bh-menus-sidebar > * { flex: 1 1 200px; }
+  .bh-menu-panel { padding: 28px 22px; }
+  .bh-menu-cols, .bh-drinks-cols { grid-template-columns: 1fr; }
+  .bh-sidebar-divider { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bh-tab { transition: none; }
 }

@@ -1,0 +1,510 @@
+/* Kent Amusements — independent concept design system.
+   Pier navy, spray mist, ticket amber and candy coral with Teko: a seaside
+   arcade identity for the Central Promenade. Distinct from the Mourne & Main
+   brand and from the Castle Farm, Enniskeen, Mourne Cycles, Donard, Bucks Head,
+   Scopers and Cúpla concepts. */
+
+.concept-kent {
+  --pier: #13253f;
+  --pier-deep: #0b1726;
+  --spray: #dceef2;
+  --foam: #f7fbfc;
+  --ticket: #e8a317;
+  --ticket-deep: #c4860c;
+  --coral: #e85a4f;
+  --coral-deep: #c9443a;
+  --sea: #3db8a8;
+  --ink-pier: #152536;
+  --hairline: rgba(19, 37, 63, 0.14);
+  --display: "Teko", "Arial Narrow", sans-serif;
+  --body: "Outfit", "Segoe UI", sans-serif;
+  --concept-accent: var(--coral);
+  --concept-nav-gap: clamp(16px, 2.2vw, 28px);
+  background:
+    radial-gradient(ellipse 70% 45% at 88% 8%, rgba(232, 163, 23, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 8% 92%, rgba(61, 184, 168, 0.12), transparent 50%),
+    var(--spray);
+  color: var(--ink-pier);
+  font-family: var(--body);
+}
+
+/* Season strip */
+.ka-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px clamp(20px, 3.5vw, 44px);
+  background: var(--pier-deep);
+  color: var(--foam);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.ka-strip strong { color: #ffffff; font-weight: 600; }
+.ka-strip a { color: var(--ticket); font-weight: 700; text-underline-offset: 4px; }
+
+/* Header */
+.ka-header {
+  height: 80px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  gap: 26px;
+  background: rgba(247, 251, 252, 0.92);
+  border-bottom: 1px solid var(--hairline);
+  backdrop-filter: blur(6px);
+}
+.ka-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-pier); }
+.ka-mark { flex: 0 0 auto; color: var(--coral); }
+.ka-brand-text { display: flex; flex-direction: column; gap: 0; }
+.ka-brand-name {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-brand-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ticket-deep);
+}
+.ka-nav a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-pier);
+}
+.ka-nav a:hover::after { right: 0; }
+.ka-call {
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: var(--coral);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.ka-call:hover { background: var(--pier); transform: translateY(-1px); }
+
+/* Hero — story | promenade stage + ticket | attractions rail */
+.ka-hero {
+  position: relative;
+  min-height: calc(100vh - 80px - 37px);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr auto;
+}
+.ka-story {
+  grid-column: 1;
+  grid-row: 1;
+  padding: clamp(20px, 3vh, 40px) clamp(26px, 3.6vw, 56px) 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ka-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+}
+.ka-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--ticket); }
+.ka-story h1 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: clamp(40px, 4.8vw, 58px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--pier);
+  max-width: 10em;
+  text-transform: uppercase;
+}
+.ka-story h1 em {
+  font-style: normal;
+  color: var(--coral);
+}
+.ka-lede {
+  margin: 0 0 20px;
+  max-width: 32em;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+.ka-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.ka-cta {
+  padding: 14px 24px;
+  border-radius: 6px;
+  background: var(--pier);
+  color: var(--foam);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.ka-cta:hover { background: var(--coral); color: #ffffff; transform: translateY(-1px); }
+.ka-link {
+  color: var(--pier);
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--ticket);
+}
+
+/* Right column: full-bleed promenade illustration with ticket action below it */
+.ka-panel {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 0;
+  padding: 14px clamp(16px, 2.4vw, 28px) 14px 8px;
+  gap: 10px;
+}
+.ka-stage {
+  position: relative;
+  min-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(11, 23, 38, 0.28);
+  background: #1a3a5c;
+}
+.ka-pier {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ka-ticket {
+  width: 100%;
+  padding: 14px 18px 14px;
+  background: var(--pier);
+  color: var(--foam);
+  border-radius: 8px;
+  border-top: 3px solid var(--ticket);
+}
+.ka-ticket-kicker {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ticket);
+}
+.ka-ticket h2 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-offer { margin: 0; padding: 0; list-style: none; }
+.ka-offer li {
+  padding: 7px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px dashed rgba(247, 251, 252, 0.18);
+}
+.ka-offer li:first-child { border-top: 0; }
+.ka-offer-label {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-offer-val {
+  font-size: 12.5px;
+  text-align: right;
+  color: #9eb4c4;
+}
+.ka-ticket-cta {
+  display: block;
+  margin-top: 10px;
+  padding: 11px;
+  border-radius: 6px;
+  background: var(--ticket);
+  color: var(--pier-deep);
+  font-size: 14.5px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+.ka-ticket-cta:hover { background: var(--coral); color: #ffffff; }
+.ka-ticket small { display: block; margin-top: 7px; font-size: 11.5px; text-align: center; color: #7a93a5; }
+
+/* Attractions rail — content right-aligned so the fixed concept-disclosure badge
+   in the bottom-left corner never covers a cell */
+.ka-rail {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  background: var(--pier-deep);
+  padding: 0 clamp(20px, 3.5vw, 44px);
+}
+.ka-rail-cell {
+  padding: 11px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  border-left: 1px solid rgba(247, 251, 252, 0.14);
+}
+.ka-rail-cell:first-child { border-left: 0; }
+.ka-ride {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-ride-note { font-size: 12px; color: #9eb4c4; }
+
+/* Entrance + marquee pulse */
+@keyframes ka-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes ka-bulbs {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+.ka-kicker { animation: ka-rise 440ms ease backwards; }
+.ka-story h1 { animation: ka-rise 440ms 70ms ease backwards; }
+.ka-lede { animation: ka-rise 440ms 140ms ease backwards; }
+.ka-actions { animation: ka-rise 440ms 210ms ease backwards; }
+.ka-stage { animation: ka-rise 520ms 160ms ease backwards; }
+.ka-ticket { animation: ka-rise 480ms 280ms ease backwards; }
+.ka-bulbs circle { animation: ka-bulbs 2.2s ease-in-out infinite; }
+.ka-bulbs circle:nth-child(odd) { animation-delay: 0.35s; }
+
+@media (max-width: 940px) {
+  .ka-strip { flex-direction: column; gap: 2px; text-align: center; }
+  .ka-nav { display: none; }
+  .ka-header { height: auto; padding-block: 12px; }
+  .ka-hero { grid-template-columns: 1fr; min-height: 0; }
+  .ka-story { grid-column: 1; padding: 40px 22px 24px; }
+  .ka-story h1 { max-width: none; }
+  .ka-panel {
+    grid-column: 1;
+    grid-row: auto;
+    padding: 10px 22px 40px;
+  }
+  .ka-stage { min-height: 280px; position: relative; }
+  .ka-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
+  .ka-rail-cell { border-left: 0; flex: 1 1 45%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-kicker, .ka-story h1, .ka-lede, .ka-actions, .ka-stage, .ka-ticket { animation: none; }
+  .ka-bulbs circle { animation: none; }
+}
+
+/* =====================================================================
+   Attractions page — second surface (ka-atx-*)
+   ===================================================================== */
+
+.ka-atx-main {
+  position: relative;
+  min-height: calc(100vh - 80px - 37px);
+  display: grid;
+  grid-template-columns: 54% 46%;
+  grid-template-rows: 1fr auto;
+}
+
+.ka-atx-story {
+  grid-column: 1;
+  grid-row: 1;
+  padding: clamp(20px, 3vh, 40px) clamp(26px, 3.6vw, 56px) 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ka-atx-heading {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: clamp(36px, 4.2vw, 52px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--pier);
+  max-width: 10em;
+  text-transform: uppercase;
+}
+
+.ka-atx-heading em {
+  font-style: normal;
+  color: var(--coral);
+}
+
+.ka-atx-lede {
+  margin: 0 0 18px;
+  max-width: 34em;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+
+.ka-atx-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+
+.ka-atx-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--hairline);
+  border-radius: 7px;
+  text-decoration: none;
+  color: var(--ink-pier);
+  transition: border-left-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.ka-atx-card:hover {
+  border-left-color: var(--coral);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateX(3px);
+}
+
+.ka-atx-mark {
+  flex: 0 0 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--pier);
+  display: grid;
+  place-items: center;
+}
+
+.ka-atx-mark--vr { background: var(--sea); }
+.ka-atx-mark--arcade { background: var(--coral); }
+
+.ka-atx-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ka-atx-name {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+
+.ka-atx-desc {
+  font-size: 13px;
+  color: #3d5260;
+}
+
+/* Right column: hours board + family offers */
+.ka-atx-panel {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px clamp(16px, 2.4vw, 28px) 14px 8px;
+}
+
+.ka-hours-board {
+  flex: 1 1 auto;
+  padding: 14px 18px;
+  background: var(--pier);
+  color: var(--foam);
+  border-radius: 8px;
+  border-top: 3px solid var(--ticket);
+}
+
+.ka-hours-heading {
+  margin: 4px 0 10px;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.ka-family-offers {
+  padding: 14px 18px;
+  background: var(--pier-deep);
+  color: var(--foam);
+  border-radius: 8px;
+  border-top: 3px solid var(--sea);
+}
+
+.ka-family-kicker { color: var(--sea) !important; }
+
+.ka-family-heading {
+  margin: 4px 0 6px;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.ka-family-body {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #9eb4c4;
+}
+
+.ka-offers-link {
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--sea);
+  color: var(--pier-deep);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.ka-offers-link:hover { background: var(--ticket); }
+
+/* Responsive — attractions page */
+@media (max-width: 940px) {
+  .ka-atx-main { grid-template-columns: 1fr; min-height: 0; }
+  .ka-atx-story { grid-column: 1; padding: 36px 22px 20px; }
+  .ka-atx-panel { grid-column: 1; padding: 10px 22px 20px; }
+  .ka-atx-heading { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-atx-card { transition: none; }
+}

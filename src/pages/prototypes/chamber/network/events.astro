@@ -1,0 +1,26 @@
+---
+import NetworkShell from "../../../../components/chamber-prototypes/NetworkShell.astro";
+import { events } from "../../../../data/chamber-prototype";
+---
+<NetworkShell title="Events — Newcastle Chamber · Network concept" current="events">
+  <div class="nw-page">
+    <p class="nw-kicker">Gatherings</p>
+    <h1>Nights we put on <em>together.</em></h1>
+    <p class="nw-lede">
+      Halloween is the confirmed public date. The rest shows how a warmer events list could feel once the committee fills it.
+    </p>
+    <div class="nw-event-list">
+      {events.map((event) => (
+        <article class="nw-event">
+          <div>
+            <time>{event.date}</time>
+            <h2>{event.title}</h2>
+            <p>{event.blurb}</p>
+            <p style="margin-top: 8px; font-size: 13px">{event.place} · {event.real ? "Verified" : "Illustrative"}</p>
+          </div>
+          <a class="nw-cta" href={event.ctaHref}>{event.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</NetworkShell>

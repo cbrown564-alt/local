@@ -8,7 +8,7 @@ const navLinks = [
 
 const cta = {
   href: "/request/",
-  label: "Free mock-up",
+  label: "Free before-and-after",
   ariaLabel: "Request a free before-and-after",
 };
 ---
@@ -72,6 +72,13 @@ const cta = {
         setOpen(false);
         button.focus();
       }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (button.getAttribute("aria-expanded") !== "true") return;
+      const target = event.target;
+      if (!(target instanceof Node) || button.contains(target) || menu.contains(target)) return;
+      setOpen(false);
     });
   }
 </script>

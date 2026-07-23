@@ -1,0 +1,35 @@
+---
+import CivicShell from "../../../../components/chamber-prototypes/CivicShell.astro";
+import { categories, members, chamber } from "../../../../data/chamber-prototype";
+const base = "/prototypes/chamber/civic";
+---
+<CivicShell title="Members — Newcastle Chamber · Civic concept" current="members">
+  <div class="cv-page cv-shell">
+    <p class="cv-kicker">Member directory</p>
+    <h1>Businesses that have joined the <em>Chamber.</em></h1>
+    <p class="cv-lede">
+      Listed by trade so locals and visitors can find what they need. Updated as membership grows.
+      <a class="cv-link" href={chamber.emailHref}>Contact the Chamber</a> to appear here.
+    </p>
+    {categories.map((cat) => (
+      <section class="cv-cat" id={cat.id}>
+        <h2>{cat.label}</h2>
+        <ul class="cv-grid">
+          {members.filter((m) => m.category === cat.id).map((m) => (
+            <li class="cv-card">
+              <h3>{m.name}</h3>
+              <p class="trade">{m.trade}</p>
+              <p>{m.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+    <div style="margin-top: 24px; padding: 28px; background: var(--harbour-deep); border-radius: 4px; color: #a8b6c3;">
+      <h2 style="margin: 0 0 10px; font-family: var(--display); color: #fff; font-size: 28px;">Join and <em style="color: #d4a85a; font-style: italic;">get your business found.</em></h2>
+      <p style="margin: 0 0 18px;">The Chamber is run by volunteers. Write to the inbox and the committee will be in touch.</p>
+      <a class="cv-cta cv-cta--brass" href={`${base}/join/`}>Email to join</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: #5a6e7e;">Member names above are illustrative for this concept.</p>
+  </div>
+</CivicShell>

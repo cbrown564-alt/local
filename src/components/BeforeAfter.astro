@@ -1,4 +1,7 @@
 ---
+import "../styles/comparison.css";
+import ResponsiveImage from "./ResponsiveImage.astro";
+
 interface Props {
   before: string;
   after: string;
@@ -6,8 +9,20 @@ interface Props {
   afterAlt: string;
   showNotes?: boolean;
   compact?: boolean;
+  loading?: "eager" | "lazy";
 }
-const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } = Astro.props;
+const {
+  before,
+  after,
+  beforeAlt,
+  afterAlt,
+  showNotes = true,
+  compact = false,
+  loading = "eager",
+} = Astro.props;
+const sizes = compact
+  ? "(max-width: 720px) 100vw, (max-width: 1100px) 58vw, 650px"
+  : "(max-width: 720px) 100vw, 1180px";
 ---
 
 <section
@@ -16,14 +31,33 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
   style="--comparison-split: 50%"
 >
   <div class="comparison-legend" aria-hidden="true">
-    <span class="comparison-legend-item comparison-legend-before">Current</span>
-    <span class="comparison-legend-item comparison-legend-after">Concept</span>
+    <span class="comparison-legend-item comparison-legend-before">Before</span>
+    <span class="comparison-legend-item comparison-legend-after">After</span>
   </div>
   <div class="comparison-stage">
     <div class="comparison-frame" data-comparison-frame>
-      <img class="comparison-before" src={before} alt={beforeAlt} width="1265" height="710" draggable="false" />
+      <ResponsiveImage
+        pictureClass="comparison-picture comparison-picture-before"
+        class="comparison-before"
+        src={before}
+        alt={beforeAlt}
+        width="1265"
+        height="710"
+        loading={loading}
+        sizes={sizes}
+        draggable={false}
+      />
       <div class="comparison-after" data-after>
-        <img src={after} alt={afterAlt} width="1265" height="710" draggable="false" />
+        <ResponsiveImage
+          pictureClass="comparison-picture"
+          src={after}
+          alt={afterAlt}
+          width="1265"
+          height="710"
+          loading={loading}
+          sizes={sizes}
+          draggable={false}
+        />
       </div>
       <div class="comparison-divider" data-divider aria-hidden="true">
         <div class="comparison-handle">
@@ -50,10 +84,14 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       </div>
     )}
   </div>
+  <div class="comparison-mobile-toggle" role="group" aria-label="Choose comparison view">
+    <button type="button" data-comparison-view="before" aria-pressed="false">Before</button>
+    <button type="button" data-comparison-view="after" aria-pressed="false">After</button>
+  </div>
   <label class="comparison-control">
     <span class="comparison-control-label">Slide to compare</span>
     <span class="comparison-control-track">
-      <input type="range" min="0" max="100" value="50" aria-label="Reveal more or less of the concept design" />
+      <input type="range" min="0" max="100" value="50" aria-label="Reveal more or less of the after design" />
     </span>
   </label>
   {showNotes && (
@@ -67,11 +105,21 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
 </section>
 
 <script>
+  import { track } from "@vercel/analytics";
+
+  let comparisonInteractionTracked = false;
+  const trackComparisonInteraction = (method: "slider" | "drag" | "toggle") => {
+    if (comparisonInteractionTracked) return;
+    comparisonInteractionTracked = true;
+    track("comparison_interacted", { method });
+  };
+
   document.querySelectorAll<HTMLElement>("[data-comparison]").forEach((comparison) => {
     const frame = comparison.querySelector<HTMLElement>("[data-comparison-frame]");
     const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
     const after = comparison.querySelector<HTMLElement>("[data-after]");
     const divider = comparison.querySelector<HTMLElement>("[data-divider]");
+    const viewButtons = comparison.querySelectorAll<HTMLButtonElement>("[data-comparison-view]");
     const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
     const toggleLabel = toggle?.querySelector<HTMLElement>(".notes-toggle-label");
     const toggleIcon = toggle?.querySelector<HTMLElement>(".notes-icon");
@@ -87,6 +135,11 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       comparison.style.setProperty("--comparison-split", `${value}%`);
       if (after) after.style.clipPath = `inset(0 0 0 ${value}%)`;
       if (divider) divider.style.left = `${value}%`;
+      viewButtons.forEach((button) => {
+        const isBefore = button.dataset.comparisonView === "before" && value === 100;
+        const isAfter = button.dataset.comparisonView === "after" && value === 0;
+        button.setAttribute("aria-pressed", String(isBefore || isAfter));
+      });
     };
 
     const splitFromPointer = (clientX: number) => {
@@ -95,7 +148,16 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
       setSplit(((clientX - left) / width) * 100);
     };
 
-    input?.addEventListener("input", () => setSplit(Number(input.value)));
+    input?.addEventListener("input", () => {
+      trackComparisonInteraction("slider");
+      setSplit(Number(input.value));
+    });
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        trackComparisonInteraction("toggle");
+        setSplit(button.dataset.comparisonView === "before" ? 100 : 0);
+      });
+    });
     setSplit(Number(input?.value ?? 50));
 
     let dragging = false;
@@ -103,6 +165,7 @@ const { before, after, beforeAlt, afterAlt, showNotes = true, compact = false } 
     frame?.addEventListener("pointerdown", (event) => {
       if (event.button !== 0) return;
       dragging = true;
+      trackComparisonInteraction("drag");
       frame.setPointerCapture(event.pointerId);
       frame.classList.add("comparison-dragging");
       splitFromPointer(event.clientX);

@@ -1,0 +1,76 @@
+---
+import NetworkShell from "../../../../components/chamber-prototypes/NetworkShell.astro";
+import { members, events, chamber } from "../../../../data/chamber-prototype";
+
+const nextEvent = events.find((e) => e.real)!;
+const neighbours = members.slice(2, 6);
+const base = "/prototypes/chamber/network";
+---
+<NetworkShell title="Newcastle Chamber — Harbour Network concept" current="home">
+  <section class="nw-hero">
+    <div class="nw-hero-copy">
+      <p class="nw-kicker">Harbour network · Co. Down</p>
+      <h1>Trade with neighbours who <em>trade with you.</em></h1>
+      <p class="nw-lede">
+        Newcastle Chamber is a volunteer circle of Main Street traders — not a faceless institution.
+        Join to be found, show up for town nights, and keep the street open year-round.
+      </p>
+      <div class="nw-actions">
+        <a class="nw-cta nw-cta--coral" href={`${base}/join/`}>Why join</a>
+        <a class="nw-link" href={`${base}/members/`}>Meet the members →</a>
+      </div>
+    </div>
+    <div class="nw-hero-visual" role="img" aria-label="Boats moored at Newcastle harbour at low tide"></div>
+  </section>
+
+  <div class="nw-pillars">
+    <article class="nw-pillar">
+      <h2>Be found</h2>
+      <p>A member listing visitors can reach without digging through social feeds.</p>
+      <a href={`${base}/members/`}>Member directory →</a>
+    </article>
+    <article class="nw-pillar">
+      <h2>Show up</h2>
+      <p>{nextEvent.title} · {nextEvent.date}. More nights as the calendar grows.</p>
+      <a href={`${base}/events/`}>Events →</a>
+    </article>
+    <article class="nw-pillar">
+      <h2>Belong</h2>
+      <p>Volunteer-run since {chamber.relaunchYear}. One inbox. Your neighbours.</p>
+      <a href={`${base}/join/`}>Join the network →</a>
+    </article>
+  </div>
+
+  <section class="nw-section">
+    <h2>Neighbours on the street</h2>
+    <p>Illustrative member cards — the kinds of traders the network exists for.</p>
+    <ul class="nw-grid">
+      {neighbours.map((m) => (
+        <li class="nw-card">
+          <h3>{m.name}</h3>
+          <p class="trade">{m.trade}</p>
+          <p>{m.note}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <aside class="nw-story">
+    <img src="/images/place/mournes-newcastle.jpg" alt="Newcastle beach at low tide with the Mourne Mountains beyond" width="800" height="600" />
+    <div>
+      <p class="nw-kicker">Place first</p>
+      <h2>Co. Down, under the Mournes.</h2>
+      <p>
+        Searching the Chamber's name still lands among at least eight same-named chambers worldwide.
+        This site leads with the town so Newcastle, Co. Down is unmistakable.
+      </p>
+      <a class="nw-link" href={`${base}/about/`}>About the chamber →</a>
+    </div>
+  </aside>
+
+  <div class="nw-banner">
+    <h2>Ready to stand with Main Street?</h2>
+    <p>Email the committee — same address they already answer.</p>
+    <a class="nw-cta nw-cta--coral" href={`${base}/join/`}>Join your neighbours</a>
+  </div>
+</NetworkShell>
