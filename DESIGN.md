@@ -41,6 +41,11 @@ identities cannot leak between concepts.
   48/52 split between story and valley view, and an availability bar stitched
   across the seam. Quiet luxury, chosen against the current site's bright blue
   menu bar and centred archive logo.
+- **Newcastle Chamber** — harbour navy `#182C3F`, sea mist and civic brass
+  with Newsreader; Co. Down strip and seal chrome from the civic direction,
+  Main Street finder IA (directory as the product), warmer neighbour join
+  voice. Full linked site at `/concepts/newcastle-chamber/`; exploration
+  archive at `/prototypes/chamber/`.
 
 Concept screenshots are always captured at 1265×710 at 2x so comparisons align
 exactly, and concept pages carry a fixed "Independent concept" marker.

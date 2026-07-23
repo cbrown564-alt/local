@@ -1,0 +1,29 @@
+---
+import NetworkShell from "../../../../components/chamber-prototypes/NetworkShell.astro";
+import { chamber, joinBenefits } from "../../../../data/chamber-prototype";
+---
+<NetworkShell title="Why join — Newcastle Chamber · Network concept" current="join">
+  <div class="nw-page">
+    <p class="nw-kicker">Membership</p>
+    <h1>Why traders <em>join.</em></h1>
+    <p class="nw-lede">
+      Soft pitch for a volunteer network: visibility, town nights, and neighbours —
+      without membership-portal theatre the committee can't run.
+    </p>
+    <div class="nw-benefits">
+      {joinBenefits.map((b, i) => (
+        <article class="nw-benefit">
+          <span class="nw-benefit-num">{i + 1}</span>
+          <div>
+            <h3>{b.title}</h3>
+            <p>{b.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <a class="nw-cta nw-cta--coral" href={chamber.emailHref}>Email to join</a>
+    <p style="margin-top: 14px; color: var(--muted); font-size: 14px">
+      {chamber.email} · <a class="nw-link" href={chamber.phoneHref}>{chamber.phone}</a>
+    </p>
+  </div>
+</NetworkShell>
