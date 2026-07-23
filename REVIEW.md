@@ -24,21 +24,26 @@ tick items here and update the linked docs in the same commit as each fix.
 
 ## P1 — Silent lead-killers (fix before any outreach goes out)
 
-- [ ] **Required URL field blocks the target audience.** `request.astro:26`
-  hard-requires a valid `http(s)` URL and `api/request.ts:60-64` re-validates —
-  but the core prospects have no website. `facebook.com/mybiz` without a scheme
-  is rejected. Make the field optional or add an "I don't have a website yet"
-  branch.
-- [ ] **Honeypot named `company`** (`request.astro:16-19`) — browsers and
+- [x] **Required URL field blocks the target audience.** Fixed 23 July 2026:
+  the field is optional, scheme-free links are normalised to HTTPS, and both
+  the form and endpoint accept businesses with no current public page.
+  Previously, `request.astro:26` required a valid `http(s)` URL and
+  `api/request.ts:60-64` re-validated it, even though core prospects have no
+  website and `facebook.com/mybiz` without a scheme was rejected.
+- [x] **Honeypot named `company`.** Fixed 23 July 2026: renamed to a
+  project-specific field that does not resemble organisation or contact data.
+  Previously (`request.astro:16-19`), browsers and
   password managers autofill organisation fields despite `autocomplete="off"`;
-  an autofilled real lead gets a fake success and is silently dropped. Rename to
-  something autofill ignores.
-- [ ] **No rate limiting on `api/request.ts`**, and the origin check is skipped
+  an autofilled real lead got a fake success and was silently dropped.
+- [x] **No rate limiting on `api/request.ts`.** Fixed 23 July 2026: the
+  endpoint now allows five requests per source address per hour, returns
+  standard limit/retry headers, and rejects requests with a missing or
+  mismatched origin. Previously, the origin check was skipped
   when no `Origin` header is present (`api/request.ts:26`). Abuse burns the
   Gmail ~500/day cap and can lock the sending account mid-campaign.
-- [ ] **No analytics anywhere.** The funnel cannot be measured. Add a
-  lightweight option (Vercel Web Analytics or Plausible) with events for slider
-  interaction, form start, and submit.
+- [x] **No analytics anywhere.** Fixed 23 July 2026: added privacy-friendly
+  Vercel Web Analytics with custom events for comparison interaction, request
+  form start, and successful submission.
 - [ ] **Confirm the deployed form actually delivers.** `PLAN.md` (~L141) still
   says the flow is local-only; `api/request.ts` is fully wired but local `.env`
   lacks the Gmail vars. Verify the Vercel env vars, send a test submission on
