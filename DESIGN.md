@@ -49,7 +49,15 @@ hero and secondary-page layouts local.
   `#C9973B` with Cormorant Garamond; a hairline inset frame, an asymmetric
   48/52 split between story and valley view, and an availability bar stitched
   across the seam. Quiet luxury, chosen against the current site's bright blue
-  menu bar and centred archive logo.
+  menu bar and centred archive logo. Full linked site since the F1 flagship
+  build (23 July 2026): Home · Stay · Dine · The estate · Things to do on a
+  shared shell (`src/components/enniskeen/EnniskeenShell.astro`) with a
+  pine-deep footer. The availability bars take arrival date and nights only —
+  exactly what the hotel's Bookin1 engine accepts — and a small submit handler
+  builds the same `#/hotel/ecs/results?date=…&los=…` deep link the hotel's own
+  searchbox builds (verified against the live engine on build day). The
+  hotel's two small bathroom photographs are matted on pine at natural scale
+  rather than stretched; all imagery is the hotel's own.
 - **Newcastle Chamber** — harbour navy `#182C3F`, sea mist and civic brass
   with Newsreader; Co. Down strip and seal chrome from the civic direction,
   Main Street finder IA (directory as the product), warmer neighbour join

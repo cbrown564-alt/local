@@ -1,0 +1,54 @@
+---
+import { bookin1 } from "../../data/enniskeen-site";
+
+/** Availability bar wired the way the hotel's own site wires it: the
+ *  Bookin1 engine reads arrival date and length of stay from the hash on
+ *  its /results route (and takes no guests parameter), so a submit
+ *  handler builds that deep link. Without JS the form GETs the engine
+ *  with the required ID/hotelCode params preserved as hidden inputs. */
+interface Props {
+  variant?: "hero" | "section";
+}
+
+const { variant = "section" } = Astro.props;
+const defaultArrive = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+---
+
+<form
+  class={variant === "hero" ? "enk-booking" : "enk-page-booking"}
+  action={bookin1.engine}
+  method="get"
+  aria-label="Check availability"
+  data-enk-booking
+>
+  <input type="hidden" name="ID" value={bookin1.params.ID} />
+  <input type="hidden" name="hotelCode" value={bookin1.params.hotelCode} />
+  <label>Arrive <input type="date" name="arrive" value={defaultArrive} /></label>
+  <label>Nights
+    <select name="nights">
+      <option>2</option><option>1</option><option>3</option>
+      <option>4</option><option>5</option><option>7</option>
+    </select>
+  </label>
+  <button type="submit">Check availability</button>
+</form>
+
+<script>
+  import { bookin1 } from "../../data/enniskeen-site";
+
+  document.querySelectorAll<HTMLFormElement>("form[data-enk-booking]").forEach((form) => {
+    const arrive = form.querySelector<HTMLInputElement>('input[name="arrive"]');
+    if (arrive) {
+      const tomorrow = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+      arrive.min = new Date().toISOString().slice(0, 10);
+      if (!arrive.value || arrive.value < tomorrow) arrive.value = tomorrow;
+    }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nights = form.querySelector<HTMLSelectElement>('select[name="nights"]')?.value ?? "2";
+      window.location.href = arrive?.value
+        ? bookin1.deepLink(arrive.value, nights)
+        : bookin1.engine;
+    });
+  });
+</script>

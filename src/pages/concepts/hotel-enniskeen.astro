@@ -1,52 +1,99 @@
 ---
-import "../../styles/global.css";
-import "../../styles/concept-enniskeen.css";
-const bookin1 = "https://www.bookin1.com/bookingEngine/index.jsp?ID=ecs&hotelCode=ecs#/hotel/ecs";
-import ConceptLayout from "../../layouts/ConceptLayout.astro";
+import EnniskeenShell from "../../components/enniskeen/EnniskeenShell.astro";
+import EnkBooking from "../../components/enniskeen/EnkBooking.astro";
 import ResponsiveImage from "../../components/ResponsiveImage.astro";
+import { base, home, enniskeen } from "../../data/enniskeen-site";
+
+const explore = [
+  {
+    href: `${base}/rooms/`,
+    title: "Stay",
+    note: "Twelve individually styled rooms — art-deco baths, the turret, the balconies.",
+    image: "/images/enniskeen-balcony.jpg",
+    width: 1280,
+    height: 853,
+    alt: "French doors open onto a balcony overlooking the Shimna Valley",
+  },
+  {
+    href: `${base}/dine/`,
+    title: "Dine",
+    note: "The Oak Restaurant, Mourne Honey afternoon tea, and the Brandy Pad Lounge.",
+    image: "/images/enniskeen-afternoon-tea.jpg",
+    width: 1280,
+    height: 704,
+    alt: "Mourne Honey afternoon tea laid out on the terrace before the mountains",
+  },
+  {
+    href: `${base}/estate/`,
+    title: "The estate",
+    note: "Twelve wooded acres, the Wishing Well, and the trail down to the Shimna River.",
+    image: "/images/enniskeen-aerial.jpg",
+    width: 1549,
+    height: 588,
+    alt: "The house and its wooded twelve-acre estate from the air",
+  },
+  {
+    href: `${base}/things-to-do/`,
+    title: "Things to do",
+    note: "Slieve Donard from the door, Royal County Down next door, bikes to Spelga Dam.",
+    image: "/images/enniskeen-lawn-view.jpg",
+    width: 1549,
+    height: 588,
+    alt: "Slieve Donard rising beyond the garden lawns",
+  },
+];
 ---
 
-<ConceptLayout title={"Enniskeen Country House Hotel — independent concept"} slug="hotel-enniskeen" bodyClass="concept-page concept-enniskeen" lang="en-GB">
-<header class="enk-header">
-      <div class="enk-brand">
-        <span class="enk-brand-name">Enniskeen</span>
-        <span class="enk-brand-sub">Country House Hotel · Shimna Valley</span>
-      </div>
-      <nav class="enk-nav" aria-label="Concept navigation">
-        <a href="/concepts/hotel-enniskeen/rooms/">Stay</a><a href="#">Dine</a><a href="#">The estate</a><a href="#">Things to do</a>
-      </nav>
-      <div class="enk-header-actions">
-        <a class="enk-phone" href="tel:+442843722392">028 4372 2392</a>
-        <a class="enk-book" href={bookin1} rel="external">Book a room</a>
-      </div>
-    </header>
-    <main class="enk-hero">
+<EnniskeenShell title={"Enniskeen Country House Hotel — independent concept"} current="home">
+    <main>
+    <section class="enk-hero">
       <section class="enk-story">
         <p class="enk-kicker">Newcastle · County Down</p>
         <h1>A mountainside <em>hideaway</em> above the Shimna Valley.</h1>
-        <p class="enk-lede">
-          Family-run, in twelve wooded acres beneath the Mournes — the river trail from the
-          door, Mourne Honey afternoon tea on the terrace, and a quiet nightcap in the
-          Brandy Pad Lounge.
-        </p>
+        <p class="enk-lede">{home.lede}</p>
         <div class="enk-actions">
-          <a class="enk-cta" href="/concepts/hotel-enniskeen/rooms/">See rooms &amp; suites</a>
-          <a class="enk-link" href="#">Afternoon tea →</a>
+          <a class="enk-cta" href={`${base}/rooms/`}>See rooms &amp; suites</a>
+          <a class="enk-link" href={`${base}/dine/`}>Afternoon tea →</a>
         </div>
       </section>
       <figure class="enk-visual">
-        <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/enniskeen-balcony.jpg" alt="A bedroom's french doors open onto a balcony overlooking the Shimna Valley and the Mourne Mountains" width="1280" height="853" loading="eager" />
-        <figcaption>The valley from a balcony room</figcaption>
+        <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/enniskeen-house.jpg" alt="Enniskeen House — the turreted 1890s country house wrapped in autumn ivy" width="1549" height="588" loading="eager" />
+        <figcaption>The house · built 1890s</figcaption>
       </figure>
-      <form class="enk-booking" action={bookin1} method="get" aria-label="Check availability">
-        <label>Arrive <input type="date" name="arrive" value="2026-07-24" /></label>
-        <label>Nights
-          <select name="nights"><option>2</option><option>1</option><option>3</option><option>4</option><option>5</option><option>7</option></select>
-        </label>
-        <label>Guests
-          <select name="guests"><option>2 adults</option><option>1 adult</option><option>2 + child</option><option>Family</option></select>
-        </label>
-        <button type="submit">Check availability</button>
-      </form>
+      <EnkBooking variant="hero" />
+    </section>
+
+    <section class="enk-explore" aria-labelledby="explore-heading">
+      <p class="enk-kicker" style="animation:none">The house &amp; the valley</p>
+      <h2 id="explore-heading">Find your way around</h2>
+      <ul class="enk-explore-grid" role="list">
+        {explore.map((item) => (
+          <li class="enk-explore-card">
+            <a href={item.href}>
+              <span class="enk-explore-image">
+                <ResponsiveImage pictureClass="concept-responsive-picture" src={item.image} alt={item.alt} width={item.width} height={item.height} />
+              </span>
+              <span class="enk-explore-body">
+                <span class="enk-explore-title">{item.title}</span>
+                <span class="enk-explore-note">{item.note}</span>
+                <span class="enk-explore-more" aria-hidden="true">Explore →</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="enk-welcome">
+      <div class="enk-welcome-copy">
+        <p class="enk-kicker" style="animation:none">A warm welcome</p>
+        <h2>Family-run, under the Mournes.</h2>
+        <p>{home.welcome}</p>
+        <p class="enk-welcome-directions">{enniskeen.directions}</p>
+      </div>
+      <figure class="enk-welcome-visual">
+        <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/enniskeen-entrance.jpg" alt="The ivy-framed entrance to the house, stepped in summer flowers" width="1549" height="588" />
+      </figure>
+    </section>
     </main>
-</ConceptLayout>
+</EnniskeenShell>
