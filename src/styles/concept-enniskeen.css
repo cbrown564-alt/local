@@ -13,6 +13,8 @@
   --copy-soft: #c7d2c4;
   --hairline: rgba(201, 151, 59, 0.4);
   --serif: "Cormorant Garamond", Georgia, serif;
+  --enk-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --enk-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   --concept-accent: var(--honey);
   --concept-nav-gap: clamp(18px, 2.6vw, 34px);
   --concept-nav-underline-offset: 6px;
@@ -52,9 +54,8 @@
 .enk-nav a::after {
   left: 50%;
   right: 50%;
-  transition: left 180ms ease, right 180ms ease;
+  transition: left 180ms var(--enk-ease), right 180ms var(--enk-ease);
 }
-.enk-nav a:hover::after { left: 0; right: 0; }
 .enk-header-actions { display: flex; align-items: center; gap: 22px; }
 .enk-phone { font-size: 15px; font-weight: 700; text-decoration: none; color: var(--pine); }
 .enk-book {
@@ -66,9 +67,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms var(--enk-ease), color 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
 }
-.enk-book:hover { background: var(--honey-deep); color: var(--cream-bright); transform: translateY(-1px); }
 
 /* Hero */
 .enk-hero {
@@ -134,9 +134,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
 }
-.enk-cta:hover { background: var(--cream-bright); transform: translateY(-1px); }
 .enk-link {
   color: var(--cream);
   font-size: 15px;
@@ -223,17 +222,16 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 160ms ease;
+  transition: background 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
 }
-.enk-booking button:hover { background: var(--honey-deep); }
 
 /* Entrance */
-@keyframes enk-rise { from { opacity: 0; transform: translateY(14px); } }
-.enk-kicker { animation: enk-rise 480ms ease backwards; }
-.enk-story h1 { animation: enk-rise 480ms 80ms ease backwards; }
-.enk-lede { animation: enk-rise 480ms 160ms ease backwards; }
-.enk-actions { animation: enk-rise 480ms 240ms ease backwards; }
-.enk-booking { animation: enk-rise 520ms 320ms ease backwards; }
+@keyframes enk-rise { from { opacity: 0; transform: translateY(10px); } }
+.enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
+.enk-story h1 { animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards; }
+.enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
+.enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
+.enk-booking { animation: enk-rise 300ms var(--enk-ease-out) backwards; }
 
 @media (max-width: 900px) {
   .enk-nav, .enk-phone { display: none; }
@@ -317,7 +315,7 @@
   border: 1px solid rgba(245, 239, 226, 0.14);
   pointer-events: none;
 }
-.enk-rooms-hero-copy .enk-kicker { animation: enk-rise 480ms ease backwards; }
+.enk-rooms-hero-copy .enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
 .enk-rooms-hero-copy h1 {
   margin: 0 0 24px;
   font-family: var(--serif);
@@ -325,11 +323,11 @@
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.01em;
-  animation: enk-rise 480ms 80ms ease backwards;
+  animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards;
 }
 .enk-rooms-hero-copy h1 em { font-style: italic; color: var(--honey); }
-.enk-rooms-hero-copy .enk-lede { animation: enk-rise 480ms 160ms ease backwards; }
-.enk-rooms-hero-copy .enk-actions { animation: enk-rise 480ms 240ms ease backwards; }
+.enk-rooms-hero-copy .enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
+.enk-rooms-hero-copy .enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
 
 /* Room types section */
 .enk-room-types {
@@ -365,11 +363,11 @@
   background: var(--cream-bright);
   border: 1px solid var(--hairline);
   overflow: hidden;
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: box-shadow 200ms var(--enk-ease-out), transform 200ms var(--enk-ease-out);
 }
-.enk-room-card:hover {
+.enk-room-card:focus-within {
   box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14);
-  transform: translateY(-3px);
+  transition: none;
 }
 .enk-room-card-image {
   position: relative;
@@ -380,9 +378,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 380ms ease;
+  transition: transform 200ms var(--enk-ease-out);
 }
-.enk-room-card:hover .enk-room-card-image img { transform: scale(1.04); }
 
 /* Tint overlays so reused photo reads differently per card */
 .enk-room-card-image--balcony::after {
@@ -461,9 +458,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 160ms ease, gap 160ms ease;
+  transition: background 160ms var(--enk-ease), gap 160ms var(--enk-ease-out), transform 140ms var(--enk-ease-out);
 }
-.enk-room-book:hover { background: var(--honey-deep); gap: 12px; }
 
 /* Amenities strip */
 .enk-amenities {
@@ -573,10 +569,9 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 160ms ease;
+  transition: background 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
   white-space: nowrap;
 }
-.enk-page-booking button:hover { background: var(--honey-deep); }
 
 /* Responsive — rooms page */
 @media (max-width: 1100px) {
@@ -652,12 +647,12 @@
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.01em;
-  animation: enk-rise 480ms 80ms ease backwards;
+  animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards;
 }
 .enk-int-hero-copy h1 em { font-style: italic; color: var(--honey); }
-.enk-int-hero-copy .enk-kicker { animation: enk-rise 480ms ease backwards; }
-.enk-int-hero-copy .enk-lede { animation: enk-rise 480ms 160ms ease backwards; }
-.enk-int-hero-copy .enk-actions { animation: enk-rise 480ms 240ms ease backwards; }
+.enk-int-hero-copy .enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
+.enk-int-hero-copy .enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
+.enk-int-hero-copy .enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
 .enk-int-hero-image { position: relative; margin: 0; overflow: hidden; }
 .enk-int-hero-image img {
   width: 100%;
@@ -734,12 +729,14 @@
   border: 1px solid var(--hairline);
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: box-shadow 200ms var(--enk-ease-out), transform 200ms var(--enk-ease-out);
 }
-.enk-explore-card a:hover { box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14); transform: translateY(-3px); }
 .enk-explore-image { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
-.enk-explore-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 380ms ease; }
-.enk-explore-card a:hover .enk-explore-image img { transform: scale(1.04); }
+.enk-explore-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 200ms var(--enk-ease-out); }
+.enk-explore-card a:focus-visible {
+  box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14);
+  transition: none;
+}
 .enk-explore-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 20px 22px 22px; }
 .enk-explore-title { font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.1; }
 .enk-explore-note { font-size: 14.5px; line-height: 1.5; color: #3a4e3d; flex: 1; }
@@ -781,9 +778,7 @@
   background: var(--cream-bright);
   border: 1px solid var(--hairline);
   overflow: hidden;
-  transition: box-shadow 200ms ease, transform 200ms ease;
 }
-.enk-character-card:hover { box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14); transform: translateY(-3px); }
 .enk-character-image { position: relative; margin: 0; height: 260px; overflow: hidden; background: var(--pine); }
 .enk-character-image img { width: 100%; height: 100%; object-fit: cover; }
 /* The hotel's two bathroom photographs are small portraits — matted on
@@ -850,9 +845,8 @@
   border-bottom: 1px solid var(--hairline);
   text-decoration: none;
   color: inherit;
-  transition: background 160ms ease;
+  transition: background 160ms var(--enk-ease);
 }
-.enk-menu-list a:hover { background: var(--cream-bright); }
 .enk-menu-label { font-family: var(--serif); font-size: 24px; font-weight: 500; }
 .enk-menu-meta {
   font-size: 11px;
@@ -992,9 +986,9 @@
   font-weight: 500;
   text-decoration: none;
   color: inherit;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
 }
-.enk-nearby-grid a:hover { background: var(--cream-bright); transform: translateY(-2px); }
+.enk-nearby-grid a:focus-visible { background: var(--cream-bright); transition: none; }
 .enk-nearby-grid a span { color: var(--honey-deep); font-size: 14px; }
 
 /* ── Footer (all pages) ── */
@@ -1039,7 +1033,33 @@
   text-decoration: none;
   color: var(--copy-soft);
 }
-.enk-footer-nav a:hover { color: var(--cream); }
+@media (hover: hover) and (pointer: fine) {
+  .enk-nav a:hover::after { left: 0; right: 0; }
+  .enk-book:hover { background: var(--honey-deep); color: var(--cream-bright); transform: translateY(-1px); }
+  .enk-cta:hover { background: var(--cream-bright); transform: translateY(-1px); }
+  .enk-booking button:hover,
+  .enk-page-booking button:hover { background: var(--honey-deep); }
+  .enk-room-card:hover,
+  .enk-explore-card a:hover {
+    box-shadow: 0 16px 40px rgba(21, 41, 31, 0.14);
+    transform: translateY(-3px);
+  }
+  .enk-room-card:hover .enk-room-card-image img,
+  .enk-explore-card a:hover .enk-explore-image img { transform: scale(1.025); }
+  .enk-room-book:hover { background: var(--honey-deep); gap: 12px; }
+  .enk-menu-list a:hover { background: var(--cream-bright); }
+  .enk-nearby-grid a:hover { background: var(--cream-bright); transform: translateY(-2px); }
+  .enk-footer-nav a:hover { color: var(--cream); }
+}
+
+.enk-book:active,
+.enk-cta:active,
+.enk-booking button:active,
+.enk-room-book:active,
+.enk-page-booking button:active { transform: scale(0.97); }
+
+.enk-explore-card a:active { transform: scale(0.99); }
+.enk-nearby-grid a:active { transform: scale(0.98); }
 
 /* ── Responsive — full-site sections ── */
 @media (max-width: 1100px) {

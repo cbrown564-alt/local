@@ -91,13 +91,24 @@ const CONCEPTS = {
 };
 
 // A reel is a sequence of independently recorded segments. Browser segments
-// use the same small vocabulary for every business; cards and split screens
+// use the same small vocabulary for every business; cards and comparison wipes
 // are assembled by the same ffmpeg pass. Leading `goto` steps prepare a clean,
 // settled page before recording, so a slow network does not become part of
 // the film. Later `goto` and `click` steps remain visible.
 const REELS = {
   "hotel-enniskeen": {
     posterSegment: "after-home",
+    outreachSegmentIds: [
+      "open-card",
+      "before-home",
+      "before-booking",
+      "turn-card",
+      "after-home",
+      "after-rooms",
+      "after-booking",
+      "swipe-heroes",
+      "end-card",
+    ],
     segments: [
       {
         id: "open-card",
@@ -213,12 +224,14 @@ const REELS = {
         ],
       },
       {
-        id: "split-heroes",
-        type: "split",
-        duration: 5,
+        id: "swipe-heroes",
+        type: "swipe",
+        duration: 6,
+        transitionDuration: 1.2,
+        transitionOffset: 2,
         caption: "Before and after: the same hotel, with a clearer opening story.",
-        left: { type: "image", path: "/images/hotel-enniskeen-before.jpg" },
-        right: { type: "image", path: "/images/hotel-enniskeen-after.jpg" },
+        before: { type: "image", path: "/images/hotel-enniskeen-before.jpg" },
+        after: { type: "image", path: "/images/hotel-enniskeen-after.jpg" },
       },
       {
         id: "end-card",
@@ -678,7 +691,6 @@ async function renderCardFrame(browser, segment, out) {
 }
 
 async function renderCaptionFrame(browser, segment, out) {
-  const split = segment.type === "split";
   const side = segment.side
     ? segment.side[0].toUpperCase() + segment.side.slice(1)
     : "Before / After";
@@ -701,8 +713,8 @@ async function renderCaptionFrame(browser, segment, out) {
       .label {
         flex: 0 0 auto;
         padding: 8px 13px 7px;
-        border: 1px solid ${split ? "#e0c14d" : segment.side === "after" ? "#9bc5d9" : "#c9d9e1"};
-        color: ${split ? "#e0c14d" : segment.side === "after" ? "#b9dbea" : "#f4f8fa"};
+        border: 1px solid ${segment.side === "after" ? "#9bc5d9" : "#c9d9e1"};
+        color: ${segment.side === "after" ? "#b9dbea" : "#f4f8fa"};
         font-size: 18px;
         font-weight: 760;
         letter-spacing: .1em;
@@ -710,26 +722,7 @@ async function renderCaptionFrame(browser, segment, out) {
         text-transform: uppercase;
       }
       p { margin: 0; font-size: 36px; font-weight: 520; line-height: 1.12; }
-      .split-labels {
-        position: absolute;
-        top: 36px;
-        left: 130px;
-        right: 130px;
-        display: ${split ? "flex" : "none"};
-        justify-content: space-between;
-        pointer-events: none;
-      }
-      .split-labels span {
-        padding: 7px 12px;
-        background: rgba(19,32,41,.88);
-        color: #fff;
-        font-size: 18px;
-        font-weight: 760;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-      }
     </style></head><body>
-      <div class="split-labels"><span>Before</span><span>After</span></div>
       <div class="caption">
         <span class="label">${escapeHtml(side)}</span>
         <p>${escapeHtml(segment.caption)}</p>
@@ -930,10 +923,10 @@ async function encodeCardSegment(browser, segment, workDir) {
   return { id: segment.id, path: output, seconds: segment.duration };
 }
 
-function resolveSplitInput(input, completed) {
+function resolveComparisonInput(input, completed) {
   if (input.type === "segment") {
     const segment = completed.find((item) => item.id === input.id);
-    if (!segment) throw new Error(`split source segment not found: ${input.id}`);
+    if (!segment) throw new Error(`comparison source segment not found: ${input.id}`);
     return { ...input, path: segment.path };
   }
   if (input.type === "image") {
@@ -942,33 +935,44 @@ function resolveSplitInput(input, completed) {
       path: path.join(rootDir, "public", input.path.replace(/^[/\\]+/, "")),
     };
   }
-  throw new Error(`unsupported split input: ${input.type}`);
+  throw new Error(`unsupported comparison input: ${input.type}`);
 }
 
-async function encodeSplitSegment(browser, segment, completed, workDir) {
-  const left = resolveSplitInput(segment.left, completed);
-  const right = resolveSplitInput(segment.right, completed);
-  const overlay = path.join(workDir, `${segment.id}-caption.png`);
+async function encodeSwipeSegment(browser, segment, completed, workDir) {
+  const before = resolveComparisonInput(segment.before, completed);
+  const after = resolveComparisonInput(segment.after, completed);
+  const beforeOverlay = path.join(workDir, `${segment.id}-before-caption.png`);
+  const afterOverlay = path.join(workDir, `${segment.id}-after-caption.png`);
   const output = path.join(workDir, `${segment.id}.mp4`);
-  await renderCaptionFrame(browser, segment, overlay);
+  await renderCaptionFrame(browser, { ...segment, side: "before" }, beforeOverlay);
+  await renderCaptionFrame(browser, { ...segment, side: "after" }, afterOverlay);
   const args = ["-y"];
-  for (const input of [left, right]) {
+  for (const input of [before, after]) {
     if (input.type === "image") {
       args.push("-loop", "1", "-framerate", "30", "-t", String(segment.duration), "-i", input.path);
     } else {
       args.push("-i", input.path);
     }
   }
+  args.push("-i", beforeOverlay, "-i", afterOverlay);
+  const transitionDuration = segment.transitionDuration ?? 1.2;
+  const transitionOffset = segment.transitionOffset ?? 2;
+  const beforeDuration = transitionOffset + transitionDuration;
+  const afterDuration = segment.duration - transitionOffset;
   args.push(
-    "-i", overlay,
     "-filter_complex",
-    "[0:v]scale=960:1080:force_original_aspect_ratio=increase,crop=960:1080[left];"
-      + "[1:v]scale=960:1080:force_original_aspect_ratio=increase,crop=960:1080[right];"
-      + "[left][right]hstack=inputs=2,"
-      + "scale=1660:934:force_original_aspect_ratio=decrease,"
+    "[0:v]scale=1660:934:force_original_aspect_ratio=increase,crop=1660:934,"
       + "pad=1660:934:(ow-iw)/2:(oh-ih)/2:color=white,"
-      + "pad=1920:1080:130:20:color=#132029[framed];"
-      + "[framed][2:v]overlay=0:0:format=auto,format=yuv420p[v]",
+      + "pad=1920:1080:130:20:color=#132029[before-framed];"
+      + "[before-framed][2:v]overlay=0:0:format=auto,"
+      + `trim=duration=${beforeDuration},setpts=PTS-STARTPTS[before];`
+      + "[1:v]scale=1660:934:force_original_aspect_ratio=increase,crop=1660:934,"
+      + "pad=1660:934:(ow-iw)/2:(oh-ih)/2:color=white,"
+      + "pad=1920:1080:130:20:color=#132029[after-framed];"
+      + "[after-framed][3:v]overlay=0:0:format=auto,"
+      + `trim=duration=${afterDuration},setpts=PTS-STARTPTS[after];`
+      + `[before][after]xfade=transition=wipeleft:duration=${transitionDuration}`
+      + `:offset=${transitionOffset},format=yuv420p[v]`,
     "-map", "[v]", "-t", String(segment.duration),
     "-c:v", "libx264", "-crf", "20", "-preset", "medium",
     "-pix_fmt", "yuv420p", "-an", output,
@@ -984,14 +988,28 @@ function validateReel(reel) {
   for (const segment of reel.segments) {
     if (!segment.id || ids.has(segment.id)) throw new Error(`invalid or duplicate reel segment id: ${segment.id}`);
     ids.add(segment.id);
-    if (!["card", "browser", "split"].includes(segment.type)) {
+    if (!["card", "browser", "swipe"].includes(segment.type)) {
       throw new Error(`${segment.id}: unsupported segment type ${segment.type}`);
+    }
+    if (segment.type === "swipe") {
+      const transitionDuration = segment.transitionDuration ?? 1.2;
+      const transitionOffset = segment.transitionOffset ?? 2;
+      if (
+        transitionDuration <= 0
+        || transitionOffset < 0
+        || transitionOffset + transitionDuration >= segment.duration
+      ) {
+        throw new Error(`${segment.id}: transition must leave time to hold both complete views`);
+      }
     }
     for (const step of segment.steps ?? []) {
       if (!actions.has(step.action)) throw new Error(`${segment.id}: unsupported action ${step.action}`);
     }
   }
   if (!ids.has(reel.posterSegment)) throw new Error(`poster segment not found: ${reel.posterSegment}`);
+  for (const id of reel.outreachSegmentIds ?? []) {
+    if (!ids.has(id)) throw new Error(`outreach segment not found: ${id}`);
+  }
 }
 
 function assembleReel(segments, out) {
@@ -1032,8 +1050,8 @@ async function captureReel(browser, reelSlug, site) {
     for (const segment of reel.segments) {
       if (segment.type === "card") {
         completed.push(await encodeCardSegment(browser, segment, workDir));
-      } else if (segment.type === "split") {
-        completed.push(await encodeSplitSegment(browser, segment, completed, workDir));
+      } else if (segment.type === "swipe") {
+        completed.push(await encodeSwipeSegment(browser, segment, completed, workDir));
       } else {
         const page = await browser.newPage();
         await page.setViewport({ ...REEL_VIEW, deviceScaleFactor: 1 });
@@ -1057,6 +1075,22 @@ async function captureReel(browser, reelSlug, site) {
     console.log(`  ${path.basename(poster)} — ${Math.round(fs.statSync(poster).size / 1024)} KB`);
     if (seconds >= 80) throw new Error(`reel is ${seconds.toFixed(1)}s; target is under 80s`);
     if (mb > 12) throw new Error(`reel is ${mb.toFixed(2)} MB; target is at most 12 MB`);
+    if (reel.outreachSegmentIds?.length) {
+      const outreachSegments = reel.outreachSegmentIds.map((id) =>
+        completed.find((segment) => segment.id === id),
+      );
+      if (outreachSegments.some((segment) => !segment)) {
+        throw new Error("outreach reel references an incomplete segment");
+      }
+      const outreachOut = path.join(videoDir, `${reelSlug}-outreach-reel.mp4`);
+      const outreachSeconds = assembleReel(outreachSegments, outreachOut);
+      const outreachMb = fs.statSync(outreachOut).size / (1024 * 1024);
+      console.log(`  ${path.basename(outreachOut)} — ${outreachSeconds.toFixed(1)}s, ${outreachMb.toFixed(2)} MB`);
+      if (outreachSeconds < 45 || outreachSeconds > 55) {
+        throw new Error(`outreach reel is ${outreachSeconds.toFixed(1)}s; target is 45–55s`);
+      }
+      if (outreachMb > 10) throw new Error(`outreach reel is ${outreachMb.toFixed(2)} MB; target is at most 10 MB`);
+    }
   } finally {
     fs.rmSync(workDir, { recursive: true, force: true });
   }

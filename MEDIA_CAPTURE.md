@@ -161,7 +161,7 @@ still slider on each transformation page:
 Chrome and ffmpeg pipeline for a longer, captioned case-study film. Its
 declarative plan has thirteen segments built from `goto`, `hold`, `scroll`,
 `hover` and `click` actions plus Chrome-rendered title cards and an ffmpeg
-split screen. Browser segments capture at 1920×1080; the assembly uses short
+comparison wipe. Browser segments capture at 1920×1080; the assembly uses short
 crossfades and remains silent.
 
 | Sequence | Segment IDs | What is shown |
@@ -172,20 +172,27 @@ crossfades and remains silent.
 | Arrive and choose | `after-home`, `after-rooms` | A settled first impression followed by the room story |
 | Complete the stay | `after-dine`, `after-estate`, `after-things-to-do` | Dining, the grounds and the wider Mournes with enough dwell time to read each page |
 | Check availability | `after-booking` | The persistent booking bar leads into the hotel's own Bookin1 results route |
-| Direct comparison | `split-heroes` | Matched opening views |
+| Direct comparison | `swipe-heroes` | Full before view, then a directional wipe to the full after view |
 | Close | `end-card` | Independent label, case-study URL and free before-and-after line |
 
 The 23 July revision replaced the original rapid page inventory with a guest
 journey: arrive, understand the rooms, see what completes the stay, then book.
-The booking handoff now concludes the concept visit, and the repeated
-split-screen booking proof has been removed.
+The booking handoff now concludes the concept visit. The closing comparison
+holds each opening view at full size and uses a single wipe from before to
+after, so neither hero is reduced to a narrow crop.
 
 Enniskeen delivery files:
 
-- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 74.90 s,
-  1920×1080, 5.71 MB.
-- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 74.90 s,
-  1920×1080, 5.88 MB.
+- `public/videos/hotel-enniskeen-reel.mp4` — H.264 fallback, 75.83 s,
+  1920×1080, 5.74 MB.
+- `public/videos/hotel-enniskeen-reel.webm` — VP9 preferred source, 75.83 s,
+  1920×1080, 5.83 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.mp4` — 49.40 s H.264
+  first-contact edit, 1920×1080, 2.97 MB.
+- `public/videos/hotel-enniskeen-outreach-reel.webm` — 49.40 s VP9
+  first-contact edit, 1920×1080, 3.22 MB. Both outreach files retain the
+  opening, booking journey and full-frame before-to-after wipe and are
+  generated alongside the complete reel.
 - `public/images/hotel-enniskeen-reel-poster.jpg` — 1920×1080, 220 KB, with
   responsive WebP derivatives.
 
@@ -198,6 +205,13 @@ Final local QA on 23 July 2026:
 - The concept opening, Stay, Dine, estate and things-to-do segments now hold
   for 8.6, 8.9, 8.2, 7.5 and 7.5 seconds respectively before crossfades. The
   booking handoff follows them instead of interrupting the concept opening.
+- The comparison holds the full current hero for 2 seconds, wipes to the
+  concept over 1.2 seconds, then holds the full concept hero. The Before/After
+  label changes with the image.
+- The outreach edit uses nine existing segments: the honest opening, current
+  arrival and booking handoff, change card, concept arrival, rooms and booking
+  handoff, full-frame comparison and close. It is assembled from the same
+  captured sources rather than maintained as a second manual timeline.
 - Both recorded booking actions resolve into Bookin1; the concept handoff
   carries arrival date and length of stay.
 - `pnpm test:media` confirms no reel source is requested before explicit
