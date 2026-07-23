@@ -228,6 +228,14 @@ Final local QA on 23 July 2026:
 - The end-card domain and printed QR are release checks, not local capture
   checks. `mournemade.co.uk` had no DNS record on 23 July 2026, so this
   film and the one-sheet must not be distributed yet.
+- **Generated assets do not follow a rename or domain change.** A text sweep
+  updates `scripts/print-onesheet.mjs` but not the QR it writes to
+  `public/images/<slug>-onesheet-qr.svg`, and not the reel title cards or the
+  PDF under `output/pdf/`. After any name or URL change, re-run
+  `pnpm print:onesheet <slug>` (with `pnpm dev` serving the dev-only workbench
+  route) and re-render affected film segments, then confirm the QR resolves by
+  scanning the printed sheet on a phone. This was missed once already on
+  23 July 2026 — the QR shipped pointing at the previous domain.
 
 ## QA checklist (every capture)
 

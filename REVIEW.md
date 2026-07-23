@@ -52,6 +52,17 @@ tick items here and update the linked docs in the same commit as each fix.
   but the domain is not attached to the Vercel project; the live site is only
   `local-zeta-seven.vercel.app`. Attach (or buy) the domain before anything is
   printed.
+- [x] **The printed one-sheet QR still encoded the old domain after the
+  rename.** Fixed 23 July 2026: the studio rename (`8f93c5a`) updated
+  `scripts/print-onesheet.mjs` but not the asset it writes, so
+  `public/images/hotel-enniskeen-onesheet-qr.svg` stayed byte-identical to a QR
+  of `mourneandmain.co.uk` — every scan of the flagship leave-behind would have
+  hit a domain that will never resolve. Regenerated against
+  `mournemade.co.uk/transformations/hotel-enniskeen/?src=onesheet` and verified
+  against both URLs. **Generated assets do not follow a text rename** — see
+  MEDIA_CAPTURE.md. The PDF under gitignored `output/pdf/` still predates the
+  rename and must be rebuilt with `pnpm print:onesheet hotel-enniskeen` before
+  anything reaches a printer.
 
 ## P2 — Trust and copy
 
