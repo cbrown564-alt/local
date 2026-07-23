@@ -16,6 +16,10 @@ const allPages = [
   ["transformation-donard", "/transformations/donard-veterinary/"],
   ["concept-donard", "/concepts/donard-veterinary/"],
   ["concept-enniskeen", "/concepts/hotel-enniskeen/"],
+  ["concept-enniskeen-rooms", "/concepts/hotel-enniskeen/rooms/"],
+  ["concept-enniskeen-dine", "/concepts/hotel-enniskeen/dine/"],
+  ["concept-enniskeen-estate", "/concepts/hotel-enniskeen/estate/"],
+  ["concept-enniskeen-things", "/concepts/hotel-enniskeen/things-to-do/"],
 ];
 const pageFilter = process.env.SHOT_PAGE;
 const pages = pageFilter
