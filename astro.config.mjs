@@ -16,6 +16,10 @@ const devOnlyWorkbench = {
           pattern: "/workbench/print/enniskeen-onesheet",
           entrypoint: "./src/workbench/print/enniskeen-onesheet.astro",
         });
+        injectRoute({
+          pattern: "/workbench/print/bucks-head-onesheet",
+          entrypoint: "./src/workbench/print/bucks-head-onesheet.astro",
+        });
       }
     },
   },

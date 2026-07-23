@@ -28,15 +28,16 @@ been simulated.
 | Phase 3 - written pitch | **Reviewed locally** | `research/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes; reviewed against `PRODUCT.md` tone and belief order |
 | Phase 3 - case-study refresh | **Verified** | `hotel-enniskeen/dine` is registered and captured with responsive WebPs; the transformation carries Rooms and Dine companion stills plus final build-day source and design facts; 390 px and desktop browser reviews passed |
 | Phase 4 - project record | **Completed** | `research/verifications.json`, `PROSPECTS.md`, `PLAN.md`, `MEDIA_CAPTURE.md`, `DESIGN.md` and this owner plan record the same verified state |
-| Promotion and outreach | **Blocked by genuine external gates** | `mournemade.co.uk` returned no DNS record on 23 July 2026. Once it resolves: make a production request-form submission and verify inbox delivery, print the proof, then scan its QR on a phone against the deployed case study. |
+| Promotion and outreach | **Domain gate cleared; delivery and QR gates open** | `mournemade.co.uk` now resolves and serves the site over HTTPS from Vercel (verified 23 July 2026), so the film end-card URL and the one-sheet QR target are real. Still open: a production request-form submission verified into the inbox, and a printed proof scanned on a phone against the deployed case study. |
 
 ### Next true dependency
 
-1. Configure DNS and deploy the site at `mournemade.co.uk`.
+1. ~~Configure DNS and deploy the site at `mournemade.co.uk`.~~ Done — verified
+   resolving 23 July 2026.
 2. Submit the production request form once and confirm that the intended inbox
    receives it.
 3. Print the proofed PDF and scan its QR on a phone against the deployed
-   `?src=onesheet` route.
+   route — noting that `?src=onesheet` is currently read by nothing (see M3).
 4. Only then mark the outreach gates complete and send or hand over the pitch
    package.
 

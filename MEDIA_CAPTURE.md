@@ -237,6 +237,79 @@ Final local QA on 23 July 2026:
   scanning the printed sheet on a phone. This was missed once already on
   23 July 2026 — the QR shipped pointing at the previous domain.
 
+## Journey films
+
+`node scripts/capture-concept-media.mjs bucks-head journey` films the same
+errand twice — once on the business's live site, once on the concept — at phone
+size, and assembles a side-by-side edit. It answers a different question from
+the reel: not "what could this look like" but "how far is it to the thing people
+came for".
+
+Steps live in `scripts/lib/journeys.mjs` and are read by two consumers: this
+film mode and the build-day audit (`scripts/audit-journey.mjs`). One definition
+means the film can never show a step count the filed evidence does not.
+
+### The fairness rule
+
+Pacing is fixed; the only variable is how many steps the errand takes.
+
+- Every step holds for the same `JOURNEY_DWELL_SECONDS` on both sides. There is
+  no per-step tuning and no speed-up of the "before" side.
+- Taps get an identical neutral ripple, injected the same way on both sides.
+- **Page loading is never filmed.** A navigating tap is filmed for a fixed beat,
+  the wait for the next page happens off camera, and the destination is then
+  filmed for the same dwell as any other step. Without this the live site would
+  look slow purely because it is on real hosting while the concept is served
+  from `pnpm preview`.
+- Whichever side finishes first freezes on its last frame so the pair stays in
+  step (`tpad`), rather than either side being stretched or compressed.
+- Both sides of a booking errand are made to finish in the same place — the
+  business's own booking engine — because the comparison is about the path
+  around the engine, not the engine itself.
+
+### The no-real-booking rule (hard)
+
+The walk stops at the booking engine's date/party stage. It never types personal
+details and never submits. This is enforced in code, not just documented:
+`assertSafe()` in `scripts/lib/journeys.mjs` refuses `fill` on any live side and
+refuses any target naming a personal-details, confirm or payment control, on
+either side. `capture-concept-media.mjs` calls `getJourney()` before launching,
+so a definition that has drifted stops the run. Review the "before" clip by eye
+after every capture.
+
+### Outputs
+
+| File | Content |
+| --- | --- |
+| `public/videos/<slug>-journey-before.mp4` | Portrait pair, live site, every errand |
+| `public/videos/<slug>-journey-after.mp4` | Portrait pair, concept, every errand |
+| `public/videos/<slug>-journey.mp4` | 1920×1080 side-by-side edit with title and end cards |
+| `public/images/<slug>-journey-poster.jpg` | Poster for the site player |
+
+The combined edit is capped at 60 s and 8 MB; the run fails if either is
+exceeded. WebM variants come from `pnpm optimize:media`.
+
+### Evidence and print assets
+
+`node scripts/audit-journey.mjs <slug>` walks the same steps and screenshots
+every one to `research-renders/<slug>-journey/<date>/`, with `summary.json` and
+a `README.md` tap table. Steps marked `strip: true` also become print-ready
+thumbnails in `public/images/`, so the one-sheet's journey strip is the audit's
+own frames. `node scripts/audit-journey.mjs <slug> strips` regenerates just
+those from evidence already on disk, so print artwork can be reworked without
+walking someone else's live site again.
+
+A tap whose target is off screen fails the audit rather than being scrolled into
+view: a control the visitor cannot see is not one tap away, so the definition
+has to spell out the scroll that reaches it.
+
+### Buck's Head, 24 July 2026
+
+| Errand | Live site | Concept |
+| --- | --- | --- |
+| Book a table for two, Saturday evening | 2 taps · 4 screens | 1 tap · 2 screens |
+| Read the à la carte | 3 taps · 4 screens | 1 tap · 2 screens |
+
 ## QA checklist (every capture)
 
 - Still shows the actual homepage — no consent banner, sign-up form, or
@@ -251,6 +324,18 @@ Final local QA on 23 July 2026:
 - Pages referencing the captured view (alt text, design notes, source dates)
   still describe what the media now shows — update them in the same commit.
 
+Journey films additionally:
+
+- The "before" clip is reviewed by eye and stops at the widget's date/party
+  stage: no personal details typed, no reservation made.
+- Both sides show the same dwell per step; neither side is sped up, and no page
+  load appears in either clip.
+- Every count stated on the case study, the one-sheet or the pitch matches the
+  audit `README.md` for that date. If a count moved, the business changed its
+  site — re-measure or stand down, never reuse the old number.
+- Combined edit inside 60 s and 8 MB; the tap counts in the overlay match the
+  step lists.
+
 ## Capture log
 
 | Business | Date | Media | Overlays found → action | Notes |
@@ -261,6 +346,8 @@ Final local QA on 23 July 2026:
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
 | mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 | bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
+| bucks-head | 24 Jul 2026 | after still + clip recaptured | None found | Booking card rewired to the two parameters ResDiary honours, so the committed after still no longer matched the page |
+| bucks-head journey | 24 Jul 2026 | portrait pair + 48 s side-by-side edit, poster, 6 strip thumbnails | None found | Both errands walked at 390×844; before side stopped at the widget's date/party stage, reviewed by eye — no reservation made |
 | scopers | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | cupla | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | tool-centre | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |

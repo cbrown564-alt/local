@@ -28,10 +28,23 @@ import path from "node:path";
 import { createRequire } from "node:module";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "./lib/chrome.mjs";
+import { JOURNEYS, MOBILE_USER_AGENT, MOBILE_VIEW, countJourney, getJourney } from "./lib/journeys.mjs";
 
 const VIEW = { width: 1265, height: 710 };
 const REEL_VIEW = { width: 1920, height: 1080 };
 const REEL_TRANSITION_SECONDS = 0.45;
+
+// Journey films — the fairness rule (MEDIA_CAPTURE.md, and the reason this mode
+// exists) is that pacing is fixed and the only variable is how many steps an
+// errand takes. Every step on both sides holds for exactly the same time, taps
+// get the same indicator, and page-load time is never recorded: a navigating
+// tap is filmed for JOURNEY_TAP_SECONDS, the wait for the next page happens off
+// camera, and the destination is then filmed for the same dwell as any other
+// step. Without that the live site would look slow simply because it is on a
+// real host while the concept is served from localhost.
+const JOURNEY_DWELL_SECONDS = 2.4;
+const JOURNEY_TAP_SECONDS = 1;
+const JOURNEY_SCROLL_MS = 900;
 
 // Per-site capture plan. `dismiss` steps run before the generic overlay pass
 // and accept either a CSS selector or exact visible text; `hide` selectors are
@@ -271,11 +284,12 @@ const only = process.argv[3] && process.argv[3] !== "both" ? process.argv[3] : n
 const what = process.argv[4] ?? "both"; // both | video | still
 if (
   !CONCEPTS[slug]
-  || !["before", "after", "reel", null].includes(only)
+  || !["before", "after", "reel", "journey", null].includes(only)
   || !["both", "video", "still"].includes(what)
   || (only === "reel" && !REELS[slug])
+  || (only === "journey" && !JOURNEYS[slug])
 ) {
-  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [both|before|after|reel] [both|video|still]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
+  console.error(`Usage: node scripts/capture-concept-media.mjs <slug> [both|before|after|reel|journey] [both|video|still]\nKnown slugs: ${Object.keys(CONCEPTS).join(", ")}`);
   process.exit(1);
 }
 
@@ -917,7 +931,12 @@ function targetPoint(page, spec) {
     const candidates = text
       ? [...document.querySelectorAll("a, button, [role='button'], input[type='submit']")]
         .filter((element) => {
+          // Collapse whitespace before comparing: a link like
+          // `À la carte <span>evenings</span>` reports its innerText across two
+          // lines. The journey audit matches the same way, so a target that
+          // resolves for one consumer resolves for both.
           const label = (element.innerText || element.value || element.getAttribute("aria-label") || "")
+            .replace(/\s+/g, " ")
             .trim()
             .toLowerCase();
           return label === text || label.includes(text);
@@ -1099,6 +1118,293 @@ async function encodeSwipeSegment(browser, segment, completed, workDir) {
   return { id: segment.id, path: output, seconds: segment.duration };
 }
 
+// ---------------------------------------------------------------------------
+// Journey films — see scripts/lib/journeys.mjs for the step definitions and the
+// no-real-booking rule they enforce.
+// ---------------------------------------------------------------------------
+
+// A neutral ripple at the touch point, injected identically on both sides so
+// neither looks more responsive than the other.
+async function showTap(page, point) {
+  await page.evaluate(({ x, y }) => {
+    const dot = document.createElement("div");
+    dot.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:26px;height:26px;`
+      + "margin:-13px 0 0 -13px;border-radius:50%;background:rgba(17,24,47,.28);"
+      + "border:2px solid rgba(17,24,47,.65);z-index:2147483647;pointer-events:none;"
+      + "animation:mm-tap 700ms ease-out forwards;";
+    const style = document.createElement("style");
+    style.textContent = "@keyframes mm-tap{from{transform:scale(.35);opacity:1}"
+      + "to{transform:scale(2.4);opacity:0}}";
+    document.head.append(style);
+    document.body.append(dot);
+    setTimeout(() => { dot.remove(); style.remove(); }, 900);
+  }, point);
+}
+
+async function journeyGoto(page, url) {
+  const target = url.startsWith("/") ? `${previewBase}${url}` : url;
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await page.goto(target, { waitUntil: "networkidle2", timeout: 90000 });
+      break;
+    } catch (error) {
+      if (attempt === 3) throw error;
+      await sleep(attempt * 5000);
+    }
+  }
+}
+
+// One recording of the page as it stands, for a fixed number of seconds.
+async function recordJourneyClip(page, id, workDir, seconds, act) {
+  const capture = await recordReelFrames(page, { id }, workDir, async () => {
+    if (act) await act();
+    await sleep(seconds * 1000);
+  });
+  const out = path.join(workDir, `${id}.mp4`);
+  execFileSync(ffmpeg, [
+    "-y", "-f", "concat", "-safe", "0",
+    "-i", writeFrameConcat(capture.frameDir, capture.frames, capture.endTs),
+    "-vf", `scale=${MOBILE_VIEW.width}:${MOBILE_VIEW.height}:force_original_aspect_ratio=increase,`
+      + `crop=${MOBILE_VIEW.width}:${MOBILE_VIEW.height},fps=30`,
+    "-c:v", "libx264", "-crf", "20", "-preset", "medium",
+    "-pix_fmt", "yuv420p", "-an", out,
+  ], { stdio: "pipe" });
+  return { path: out, seconds: capture.seconds };
+}
+
+// Every step becomes one or two clips of fixed length. Load time is never
+// filmed, so both sides are paced identically whatever their hosting.
+async function recordJourneyStep(page, step, index, side, workDir, site) {
+  const id = `${side.key}-${String(index).padStart(2, "0")}-${step.id}`;
+  const clips = [];
+
+  if (step.action === "goto") {
+    await journeyGoto(page, step.url);
+    await sleep(step.settleMs ?? 1500);
+    await dismissOverlays(page, site);
+    await sleep(400);
+    clips.push(await recordJourneyClip(page, id, workDir, JOURNEY_DWELL_SECONDS));
+  } else if (step.action === "hold") {
+    clips.push(await recordJourneyClip(page, id, workDir, JOURNEY_DWELL_SECONDS));
+  } else if (step.action === "scroll") {
+    clips.push(await recordJourneyClip(page, id, workDir, JOURNEY_DWELL_SECONDS, async () => {
+      const max = await page.evaluate(
+        () => Math.max(0, (document.scrollingElement || document.documentElement).scrollHeight - innerHeight),
+      );
+      const top = step.unit === "page" ? max * step.to : MOBILE_VIEW.height * step.to;
+      await animScroll(page, top, JOURNEY_SCROLL_MS);
+    }));
+  } else if (step.action === "fill") {
+    const point = await targetPoint(page, step.target);
+    if (!point) throw new Error(`${id}: no field ${step.target}`);
+    clips.push(await recordJourneyClip(page, id, workDir, JOURNEY_DWELL_SECONDS, async () => {
+      await showTap(page, point);
+      const handle = await page.$(step.target);
+      const tag = await handle.evaluate((el) => el.tagName);
+      if (tag === "SELECT") await page.select(step.target, step.value);
+      else {
+        await handle.evaluate((el, v) => {
+          el.value = v;
+          el.dispatchEvent(new Event("input", { bubbles: true }));
+          el.dispatchEvent(new Event("change", { bubbles: true }));
+        }, step.value);
+      }
+    }));
+  } else if (step.action === "tap") {
+    const point = await targetPoint(page, step.target);
+    if (!point) throw new Error(`${id}: no visible target ${step.target}`);
+    // The tap itself, filmed for a fixed beat on both sides.
+    const navigation = step.navigation
+      ? page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => null)
+      : null;
+    clips.push(await recordJourneyClip(page, id, workDir, JOURNEY_TAP_SECONDS, async () => {
+      await showTap(page, point);
+      await page.mouse.click(point.x, point.y);
+    }));
+    if (step.navigation) {
+      await navigation; // off camera: hosting speed is not what this compares
+      await sleep(2200);
+      await dismissOverlays(page, site);
+      await sleep(400);
+      clips.push(await recordJourneyClip(page, `${id}-landed`, workDir, JOURNEY_DWELL_SECONDS));
+    }
+  } else if (step.action === "measure") {
+    return []; // audit-only
+  } else {
+    throw new Error(`${id}: unsupported action ${step.action}`);
+  }
+  return clips;
+}
+
+// The concat list lives beside the source clips in the work directory, never
+// beside the finished file — public/videos/ holds delivery media only.
+function concatClips(clips, out, workDir) {
+  const list = clips.map((clip) => `file '${clip.path.replaceAll("\\", "/")}'`).join("\n");
+  const listFile = path.join(workDir, `${path.basename(out, ".mp4")}-concat.txt`);
+  fs.writeFileSync(listFile, list);
+  execFileSync(ffmpeg, [
+    "-y", "-f", "concat", "-safe", "0", "-i", listFile,
+    "-c:v", "libx264", "-crf", "20", "-preset", "medium",
+    "-pix_fmt", "yuv420p", "-an", out,
+  ], { stdio: "pipe" });
+  return clips.reduce((total, clip) => total + clip.seconds, 0);
+}
+
+async function captureJourneySide(browser, errand, sideName, side, workDir, site) {
+  const page = await browser.newPage();
+  await page.setViewport({ ...MOBILE_VIEW, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  await page.setUserAgent(MOBILE_USER_AGENT);
+  const key = `${errand.id}-${sideName}`;
+  const clips = [];
+  try {
+    let index = 0;
+    for (const step of side.steps) {
+      index += 1;
+      clips.push(...await recordJourneyStep(page, step, index, { key }, workDir, site));
+    }
+  } finally {
+    await page.close();
+  }
+  const out = path.join(workDir, `${key}.mp4`);
+  const seconds = concatClips(clips, out, workDir);
+  const counts = countJourney(side);
+  console.log(`  ${key} — ${seconds.toFixed(1)}s, ${counts.taps} tap(s)`);
+  return { path: out, seconds, ...counts };
+}
+
+// The side-by-side edit. Both phones are framed and labelled by one stylesheet,
+// so neither side can be flattered by its presentation.
+async function renderJourneyOverlay(browser, errand, before, after, out) {
+  const column = (title, subtitle, counts, tone) => `
+    <div class="col ${tone}">
+      <p class="who">${escapeHtml(title)}</p>
+      <p class="sub">${escapeHtml(subtitle)}</p>
+      <p class="count"><b>${counts.taps}</b> ${counts.taps === 1 ? "tap" : "taps"}</p>
+    </div>`;
+  const html = `<!doctype html>
+    <html lang="en"><head><meta charset="utf-8"><style>
+      ${reelFontCss}
+      * { box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: transparent; }
+      body { font-family: "Atkinson Reel", "Segoe UI", sans-serif; color: #f4f8fa; }
+      .errand {
+        position: absolute; top: 44px; left: 0; right: 0; text-align: center;
+      }
+      .errand .eyebrow {
+        margin: 0 0 8px; color: #e0c14d; font-size: 19px; font-weight: 760;
+        letter-spacing: .16em; text-transform: uppercase;
+      }
+      .errand h2 {
+        margin: 0; font-family: "Antonio Reel", "Arial Narrow", sans-serif;
+        font-size: 52px; font-weight: 600; letter-spacing: -.02em;
+      }
+      .cols {
+        position: absolute; bottom: 40px; left: 0; right: 0;
+        display: grid; grid-template-columns: 1fr 1fr; width: 1120px; margin: 0 auto;
+      }
+      .col { text-align: center; }
+      .who {
+        margin: 0 0 6px; font-size: 27px; font-weight: 700; letter-spacing: -.01em;
+      }
+      .sub { margin: 0 0 10px; color: #c9d9e1; font-size: 19px; }
+      .count { margin: 0; font-size: 21px; letter-spacing: .04em; color: #9bc5d9; }
+      .count b {
+        font-family: "Antonio Reel", "Arial Narrow", sans-serif;
+        font-size: 34px; color: #e0c14d;
+      }
+      .wordmark {
+        position: fixed; right: 74px; top: 46px; min-width: 116px;
+        padding: 8px 26px 8px 9px; display: grid; background: #132029; color: #f4f8fa;
+        font-family: "Antonio Reel", "Arial Narrow", sans-serif; font-size: 24px;
+        font-weight: 700; line-height: .76; text-transform: uppercase;
+      }
+      .wordmark i { position: absolute; inset: 0 0 0 auto; width: 16px; background: #e0c14d; }
+    </style></head><body>
+      <div class="wordmark"><b>Mourne</b><b>Made</b><i></i></div>
+      <div class="errand">
+        <p class="eyebrow">${escapeHtml(errand.endsAt)}</p>
+        <h2>${escapeHtml(errand.label)}</h2>
+      </div>
+      <div class="cols">
+        ${column("Their site today", "thebucksheaddundrum.co.uk", before, "before")}
+        ${column("The concept", "same brand · same booking engine", after, "after")}
+      </div>
+    </body></html>`;
+  await renderHtmlFrame(browser, html, out, { transparent: true });
+}
+
+async function encodeJourneyComparison(browser, errand, before, after, workDir) {
+  const overlay = path.join(workDir, `${errand.id}-overlay.png`);
+  await renderJourneyOverlay(browser, errand, before, after, overlay);
+  const out = path.join(workDir, `${errand.id}-compare.mp4`);
+  const duration = Math.max(before.seconds, after.seconds);
+  // Freeze whichever side finishes first on its last frame, so the pair stays
+  // in step without either being sped up or slowed down.
+  // Phones are sized to leave the lower band free for the labels; at full
+  // height they overrun the tap counts.
+  const phone = (input, label) =>
+    `[${input}:v]scale=-2:718,tpad=stop_mode=clone:stop_duration=${duration.toFixed(2)},`
+    + `trim=duration=${duration.toFixed(2)},setpts=PTS-STARTPTS,`
+    + `pad=356:734:(ow-iw)/2:8:color=#e6ecef[${label}]`;
+  execFileSync(ffmpeg, [
+    "-y", "-i", before.path, "-i", after.path, "-i", overlay,
+    "-filter_complex",
+    `${phone(0, "l")};${phone(1, "r")};`
+      + "[l][r]hstack=inputs=2[pair];"
+      + "[pair]pad=1920:1080:(ow-iw)/2:172:color=#132029[stage];"
+      + "[stage][2:v]overlay=0:0:format=auto,format=yuv420p[v]",
+    "-map", "[v]", "-t", duration.toFixed(2),
+    "-c:v", "libx264", "-crf", "22", "-preset", "medium",
+    "-pix_fmt", "yuv420p", "-an", out,
+  ], { stdio: "pipe" });
+  console.log(`  ${errand.id} comparison — ${duration.toFixed(1)}s`);
+  return { id: errand.id, path: out, seconds: duration };
+}
+
+async function captureJourney(browser, journeySlug, site) {
+  const journey = getJourney(journeySlug);
+  const workDir = fs.mkdtempSync(path.join(os.tmpdir(), `journey-${journeySlug}-`));
+  console.log(`${journeySlug}-journey: ${journey.errands.length} errands`);
+  try {
+    const sides = { before: [], after: [] };
+    const comparisons = [];
+    for (const errand of journey.errands) {
+      const before = await captureJourneySide(browser, errand, "before", errand.before, workDir, site);
+      const after = await captureJourneySide(browser, errand, "after", errand.after, workDir, site);
+      sides.before.push(before);
+      sides.after.push(after);
+      comparisons.push(await encodeJourneyComparison(browser, errand, before, after, workDir));
+    }
+
+    // The portrait pair: both errands, one side each.
+    for (const sideName of ["before", "after"]) {
+      const out = path.join(videoDir, `${journeySlug}-journey-${sideName}.mp4`);
+      const seconds = concatClips(sides[sideName], out, workDir);
+      const mb = fs.statSync(out).size / (1024 * 1024);
+      console.log(`  ${path.basename(out)} — ${seconds.toFixed(1)}s, ${mb.toFixed(2)} MB`);
+    }
+
+    // The combined edit, opened and closed by the studio's own cards.
+    const cards = journey.filmCards ?? {};
+    const opening = await encodeCardSegment(browser, { ...cards.open, id: "journey-open" }, workDir);
+    const closing = await encodeCardSegment(browser, { ...cards.end, id: "journey-end" }, workDir);
+    const out = path.join(videoDir, `${journeySlug}-journey.mp4`);
+    const seconds = assembleReel([opening, ...comparisons, closing], out);
+    const mb = fs.statSync(out).size / (1024 * 1024);
+    const poster = path.join(imageDir, `${journeySlug}-journey-poster.jpg`);
+    execFileSync(ffmpeg, [
+      "-y", "-ss", "2", "-i", comparisons[0].path,
+      "-frames:v", "1", "-q:v", "2", poster,
+    ], { stdio: "pipe" });
+    console.log(`  ${path.basename(out)} — ${seconds.toFixed(1)}s, ${mb.toFixed(2)} MB`);
+    console.log(`  ${path.basename(poster)} — ${Math.round(fs.statSync(poster).size / 1024)} KB`);
+    if (seconds > 60) throw new Error(`journey edit is ${seconds.toFixed(1)}s; target is at most 60s`);
+    if (mb > 8) throw new Error(`journey edit is ${mb.toFixed(2)} MB; target is at most 8 MB`);
+  } finally {
+    fs.rmSync(workDir, { recursive: true, force: true });
+  }
+}
+
 function validateReel(reel) {
   const ids = new Set();
   const actions = new Set(["goto", "hold", "scroll", "hover", "click"]);
@@ -1220,6 +1526,10 @@ if (only !== "before") {
   if (!alive) throw new Error(`${conceptUrl} is not serving. Run: pnpm build && pnpm preview`);
 }
 
+// The journey film drives the live booking flow. Refuse to run at all if the
+// step definitions have drifted from the no-real-booking rule.
+if (only === "journey") getJourney(slug);
+
 const browser = await puppeteer.launch({
   executablePath: chromePath,
   headless: "new",
@@ -1228,11 +1538,13 @@ const browser = await puppeteer.launch({
 try {
   if (only === "reel") {
     await captureReel(browser, slug, site);
+  } else if (only === "journey") {
+    await captureJourney(browser, slug, site);
   } else if (only !== "after") {
     if (site.before) await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
     else console.log(`${slug}-before: skipped (first-website concept — no live site to demo)`);
   }
-  if (only !== "reel" && only !== "before") {
+  if (only !== "reel" && only !== "journey" && only !== "before") {
     await captureTarget(browser, site, conceptUrl, `${slug}-after`, site.afterHover);
   }
 } finally {

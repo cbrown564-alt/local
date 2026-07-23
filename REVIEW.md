@@ -48,10 +48,12 @@ tick items here and update the linked docs in the same commit as each fix.
   says the flow is local-only; `api/request.ts` is fully wired but local `.env`
   lacks the Gmail vars. Verify the Vercel env vars, send a test submission on
   production, then correct PLAN.md.
-- [ ] **`mournemade.co.uk` does not resolve.** `astro.config.mjs` claims it
-  but the domain is not attached to the Vercel project; the live site is only
-  `local-zeta-seven.vercel.app`. Attach (or buy) the domain before anything is
-  printed.
+- [x] **`mournemade.co.uk` does not resolve.** Fixed 23 July 2026: the domain
+  is registered and attached. Verified live — the apex serves the site over
+  HTTPS from Vercel (`lhr1`), `www` redirects to the apex, and `/`,
+  `/transformations/`, `/transformations/hotel-enniskeen/`, `/request/`,
+  `/about/` and `/privacy/` all return 200. The QR target on printed artwork
+  now resolves.
 - [x] **The printed one-sheet QR still encoded the old domain after the
   rename.** Fixed 23 July 2026: the studio rename (`8f93c5a`) updated
   `scripts/print-onesheet.mjs` but not the asset it writes, so

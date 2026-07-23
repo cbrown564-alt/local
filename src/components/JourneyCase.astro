@@ -1,0 +1,72 @@
+---
+import ReelPlayer from "./ReelPlayer.astro";
+import type { TransformationJourneys } from "../data/transformation-details";
+import "../styles/journey-case.css";
+
+interface Props {
+  slug: string;
+  journeys: TransformationJourneys;
+}
+
+const { slug, journeys } = Astro.props;
+---
+
+<section class="journey-case" id="two-journeys" aria-labelledby={`journeys-${slug}`}>
+  <div class="shell">
+    <div class="journey-case-intro">
+      <div>
+        <p class="eyebrow">{journeys.eyebrow}</p>
+        <h2 id={`journeys-${slug}`}>{journeys.heading}</h2>
+      </div>
+      <p>{journeys.intro}</p>
+    </div>
+
+    <div class="journey-table-wrap">
+      <table class="journey-table">
+        <caption>{journeys.tableCaption}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Errand, on a phone</th>
+            <th scope="col">Their site today</th>
+            <th scope="col">This concept</th>
+          </tr>
+        </thead>
+        <tbody>
+          {journeys.errands.map((errand) => (
+            <tr>
+              <th scope="row">
+                {errand.label}
+                <span>ends at {errand.endsAt}</span>
+              </th>
+              <td>
+                <b>{errand.before}</b>
+                <span>{errand.beforeNote}</span>
+              </td>
+              <td class="is-after">
+                <b>{errand.after}</b>
+                <span>{errand.afterNote}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="journey-measures">
+      {journeys.measures.map((measure) => <li>{measure}</li>)}
+    </ul>
+  </div>
+
+  <ReelPlayer
+    slug={`${slug}-journey`}
+    video={journeys.film.video}
+    poster={journeys.film.poster}
+    alt={journeys.film.alt}
+    heading={journeys.film.heading}
+    intro={journeys.film.intro}
+    duration={journeys.film.duration}
+    eyebrow={journeys.film.eyebrow}
+    note={journeys.film.note}
+    playLabel="Play both journeys"
+  />
+</section>

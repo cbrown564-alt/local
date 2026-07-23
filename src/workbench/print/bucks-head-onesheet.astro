@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteDetails } from "../../data/site";
+import "../../styles/onesheet.css";
+import "../../styles/bucks-head-onesheet.css";
+
+const caseStudyUrl = "mournemade.co.uk/transformations/bucks-head/?src=onesheet";
+const measuredOn = "24 July 2026";
+
+// Thumbnails come from the build-day audit; regenerate with
+// `node scripts/audit-journey.mjs bucks-head strips`.
+const before = [
+  { image: "/images/bucks-head-journey-booking-before-1.jpg", title: "Arrive", note: "No hours, no phone, no way to book." },
+  { image: "/images/bucks-head-journey-booking-before-2.jpg", title: "Tap 1 - menu", note: "Open the navigation." },
+  { image: "/images/bucks-head-journey-booking-before-3.jpg", title: "Tap 2 - Bookings", note: "Opens on the booking notes." },
+  { image: "/images/bucks-head-journey-booking-before-4.jpg", title: "Scroll", note: "The engine arrives blank." },
+];
+const after = [
+  { image: "/images/bucks-head-journey-booking-after-1.jpg", title: "Arrive", note: "Hours, phone and the booking card." },
+  { image: "/images/bucks-head-journey-booking-after-2.jpg", title: "Tap 1 - Check availability", note: "ResDiary, with the date and party carried in." },
+];
+---
+
+<BaseLayout
+  title="Bucks Head journey one-sheet - Mourne Made"
+  description="Internal A4 print artwork for The Bucks Head journey concept study."
+  class="onesheet-doc"
+  hideHeader
+  hideFooter
+  robots="noindex, nofollow"
+>
+  <article class="onesheet-page onesheet-face" aria-label="Bucks Head one-sheet front">
+    <header class="onesheet-brand-row">
+      <p class="onesheet-wordmark"><span>Mourne</span><span>Made</span><i aria-hidden="true"></i></p>
+      <p>Independent concept study<br />Not commissioned by the pub</p>
+    </header>
+
+    <div class="onesheet-face-title">
+      <p class="onesheet-kicker">The Bucks Head - Main Street, Dundrum</p>
+      <h1>The same pub.<br />A shorter walk to the table.</h1>
+      <p class="onesheet-lede">Booking a table for two, walked on a phone on {measuredOn} - on your site, then on a concept that keeps it.</p>
+    </div>
+
+    <div class="onesheet-journey" aria-label="The booking journey, step by step">
+      <section class="onesheet-journey-row">
+        <div class="onesheet-journey-head">
+          <h2>Your site today</h2>
+          <p class="onesheet-journey-count"><strong>2</strong> taps &middot; 4 screens</p>
+        </div>
+        <div class="onesheet-frames">
+          {before.map((step) => (
+            <figure>
+              <img src={step.image} alt={`The Bucks Head current site on a phone: ${step.title}`} />
+              <figcaption><b>{step.title}</b>{step.note}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="onesheet-journey-row is-after">
+        <div class="onesheet-journey-head">
+          <h2>The concept</h2>
+          <p class="onesheet-journey-count"><strong>1</strong> tap &middot; 2 screens</p>
+        </div>
+        <div class="onesheet-frames">
+          {after.map((step) => (
+            <figure>
+              <img src={step.image} alt={`The Bucks Head concept on a phone: ${step.title}`} />
+              <figcaption><b>{step.title}</b>{step.note}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <p class="onesheet-journey-note">Reading the a la carte goes the same way: three taps to an A4 PDF today, one tap to a page you can read.</p>
+      </section>
+    </div>
+
+    <ul class="onesheet-measures">
+      <li>The first Book A Table on the homepage sits 2,254 px down - about 2.7 phone screens.</li>
+      <li>The a la carte is a one-page A4 PDF; fitting it to a 390 px phone shrinks it to 49 per cent.</li>
+      <li>Both journeys were stopped at the widget's date and party stage. No booking was made.</li>
+    </ul>
+
+    <footer class="onesheet-face-footer">
+      <p>Measured {measuredOn} - counts, screenshots and method filed</p>
+      <p>Concept and source notes: {caseStudyUrl}</p>
+    </footer>
+  </article>
+
+  <article class="onesheet-page onesheet-reverse" aria-label="Bucks Head one-sheet reverse">
+    <header class="onesheet-brand-row onesheet-brand-row-dark">
+      <p class="onesheet-wordmark"><span>Mourne</span><span>Made</span><i aria-hidden="true"></i></p>
+      <p>Made in Dundrum<br />for businesses around the Mournes</p>
+    </header>
+
+    <section class="onesheet-change-section">
+      <p class="onesheet-kicker">Three practical changes</p>
+      <h2>Not a new website. A shorter route to the one you have.</h2>
+      <ol class="onesheet-changes">
+        <li>
+          <span>01</span>
+          <div><h3>Put the booking on the first screen</h3><p>Date and party where the visitor already is, then straight into your own ResDiary widget with both carried across.</p></div>
+        </li>
+        <li>
+          <span>02</span>
+          <div><h3>Move the policy beside the booking</h3><p>The party-size limit and area note are fair - they just do not need to come before the form.</p></div>
+        </li>
+        <li>
+          <span>03</span>
+          <div><h3>Let the menus be read, not downloaded</h3><p>The same dishes and prices as a page, at phone size, instead of an A4 PDF at half size.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="onesheet-stays">
+      <div>
+        <p class="onesheet-kicker">What stays</p>
+        <h2>Nothing you have paid for gets thrown away.</h2>
+      </div>
+      <ul>
+        <li>Your ResDiary booking engine</li>
+        <li>Your photography and brand</li>
+        <li>Your menus, prices and wording</li>
+      </ul>
+    </section>
+
+    <section class="onesheet-cta">
+      <img src="/images/bucks-head-onesheet-qr.svg" alt={`QR code for ${caseStudyUrl}`} />
+      <div>
+        <p class="onesheet-kicker">Both journeys, side by side, in fifty seconds</p>
+        <h2>Scan to watch it.</h2>
+        <p>{caseStudyUrl}</p>
+      </div>
+    </section>
+
+    <footer class="onesheet-reverse-footer">
+      <p><strong>A small next step.</strong> The focused before-and-after is free. Paid work starts only after a fixed written quote; the first scope can be one useful page or improvement.</p>
+      <p>{siteDetails.founder}<br />{siteDetails.email}</p>
+    </footer>
+  </article>
+</BaseLayout>
