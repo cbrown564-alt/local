@@ -139,7 +139,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   const safeBusiness = fields.business.replace(/[\r\n]+/g, " ").slice(0, 80);
   const message = [
-    "New Mourne & Main before-and-after request",
+    "New Mourne Made before-and-after request",
     "",
     `Business or organisation: ${fields.business}`,
     `Town: ${fields.town}`,
@@ -153,7 +153,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     await transporter.sendMail({
-      from: { name: "Mourne & Main website", address: gmailUser },
+      from: { name: "Mourne Made website", address: gmailUser },
       to: recipient,
       replyTo: { name: fields.name, address: fields.email },
       subject: `Before-and-after request: ${safeBusiness}`,

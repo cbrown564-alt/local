@@ -11,8 +11,8 @@ const invoke = async (overrides: Record<string, unknown> = {}) => {
   const request = {
     method: "POST",
     headers: {
-      origin: "https://mourneandmain.co.uk",
-      host: "mourneandmain.co.uk",
+      origin: "https://mournemade.co.uk",
+      host: "mournemade.co.uk",
       "x-forwarded-for": `203.0.113.${invocationCount}`,
     },
     body: {},
@@ -29,8 +29,8 @@ const invoke = async (overrides: Record<string, unknown> = {}) => {
 };
 
 assert.equal((await invoke({ method: "GET" })).statusCode, 405);
-assert.equal((await invoke({ headers: { origin: "https://example.com", host: "mourneandmain.co.uk" } })).statusCode, 403);
-assert.equal((await invoke({ headers: { host: "mourneandmain.co.uk" } })).statusCode, 403);
+assert.equal((await invoke({ headers: { origin: "https://example.com", host: "mournemade.co.uk" } })).statusCode, 403);
+assert.equal((await invoke({ headers: { host: "mournemade.co.uk" } })).statusCode, 403);
 assert.equal((await invoke()).statusCode, 400);
 assert.equal((await invoke({ body: { mm_check_field: "bot-filled" } })).statusCode, 200);
 
@@ -48,8 +48,8 @@ assert.equal((await invoke({ body: { ...validRequest, link: "facebook.com/mybiz"
 assert.equal((await invoke({ body: { ...validRequest, link: "javascript:alert(1)" } })).statusCode, 400);
 
 const limitedHeaders = {
-  origin: "https://mourneandmain.co.uk",
-  host: "mourneandmain.co.uk",
+  origin: "https://mournemade.co.uk",
+  host: "mournemade.co.uk",
   "x-forwarded-for": "198.51.100.50",
 };
 for (let attempt = 0; attempt < 5; attempt += 1) {

@@ -102,7 +102,7 @@ reinvent:
    the proposal reads as an upgrade, not a rebuild that throws away spend.
 4. **Give each concept its own visual identity**, in a separate stylesheet
    (`src/styles/concept-<slug>.css`) scoped by a body class. Concepts must not
-   look like Mourne & Main or like each other — Castle Farm is warm cream and
+   look like Mourne Made or like each other — Castle Farm is warm cream and
    farm green with Georgia; Enniskeen is deep pine, honey brass and Cormorant
    Garamond; Mourne Cycles is coal black, signal red and Barlow Condensed,
    drawn from the shop's own logo; Donard Veterinary is plum, lavender and

@@ -121,5 +121,5 @@ export const joinBenefits = [
 export const aboutParagraphs = [
   "Newcastle Chamber of Commerce is the volunteer-run hub for traders on Main Street and beyond in Co. Down. Reformed in 2023, it still answers from the same Gmail and social channels the committee already uses.",
   "The Chamber's job is practical: help people find member businesses, keep the town calendar visible, and give traders a clear door to join. It works with Newry, Mourne and Down District Council on nights like Halloween in Newcastle.",
-  "This concept site is independent design exploration by Mourne & Main. It is not a live Chamber website and does not claim committee approval.",
+  "This concept site is independent design exploration by Mourne Made. It is not a live Chamber website and does not claim committee approval.",
 ];

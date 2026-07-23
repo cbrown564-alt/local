@@ -28,11 +28,11 @@ been simulated.
 | Phase 3 - written pitch | **Reviewed locally** | `research/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes; reviewed against `PRODUCT.md` tone and belief order |
 | Phase 3 - case-study refresh | **Verified** | `hotel-enniskeen/dine` is registered and captured with responsive WebPs; the transformation carries Rooms and Dine companion stills plus final build-day source and design facts; 390 px and desktop browser reviews passed |
 | Phase 4 - project record | **Completed** | `research/verifications.json`, `PROSPECTS.md`, `PLAN.md`, `MEDIA_CAPTURE.md`, `DESIGN.md` and this owner plan record the same verified state |
-| Promotion and outreach | **Blocked by genuine external gates** | `mourneandmain.co.uk` returned no DNS record on 23 July 2026. Once it resolves: make a production request-form submission and verify inbox delivery, print the proof, then scan its QR on a phone against the deployed case study. |
+| Promotion and outreach | **Blocked by genuine external gates** | `mournemade.co.uk` returned no DNS record on 23 July 2026. Once it resolves: make a production request-form submission and verify inbox delivery, print the proof, then scan its QR on a phone against the deployed case study. |
 
 ### Next true dependency
 
-1. Configure DNS and deploy the site at `mourneandmain.co.uk`.
+1. Configure DNS and deploy the site at `mournemade.co.uk`.
 2. Submit the production request form once and confirm that the intended inbox
    receives it.
 3. Print the proofed PDF and scan its QR on a phone against the deployed
@@ -78,7 +78,7 @@ is the only shortlist prospect where all three flagship criteria hold at once:
       dead — stop, record in `research/verifications.json`, and reselect.
 - Pitch-delivery gates (Phase 3 output may be prepared, not sent, before
   these):
-  - [ ] `mourneandmain.co.uk` resolves.
+  - [ ] `mournemade.co.uk` resolves.
   - [ ] A production test submission of the request form reaches the intended
         inbox.
   - [ ] The printed QR is scanned on a phone against the deployed case study.
@@ -182,7 +182,7 @@ A single ~60–75 s silent, captioned film — a different artifact from the 10 
 
 | Beat | ~s | Content |
 |---|---|---|
-| Open card | 4 | "Enniskeen Country House Hotel, Newcastle" · "An independent concept study by Mourne & Main" — the honesty label leads |
+| Open card | 4 | "Enniskeen Country House Hotel, Newcastle" · "An independent concept study by Mourne Made" — the honesty label leads |
 | Current visit | 14 | Arrival on the live site: archive logo, blue menu bar; the hunt for a room; the abrupt Bookin1 handoff |
 | Turn card | 4 | "The same hotel. A clearer journey into the stay." The photographs and booking engine remain |
 | Arrival | 7 | The concept holds on the Shimna Valley hero before the availability bar is introduced |

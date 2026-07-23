@@ -10,7 +10,7 @@ const slug = process.argv[2];
 const sheets = {
   "hotel-enniskeen": {
     route: "/workbench/print/enniskeen-onesheet/",
-    url: "https://mourneandmain.co.uk/transformations/hotel-enniskeen/?src=onesheet",
+    url: "https://mournemade.co.uk/transformations/hotel-enniskeen/?src=onesheet",
     qr: "public/images/hotel-enniskeen-onesheet-qr.svg",
     output: "output/pdf/hotel-enniskeen-flagship-onesheet.pdf",
   },

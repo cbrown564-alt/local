@@ -22,7 +22,7 @@ const devOnlyWorkbench = {
 };
 
 export default defineConfig({
-  site: "https://mourneandmain.co.uk",
+  site: "https://mournemade.co.uk",
   trailingSlash: "always",
   integrations: [
     devOnlyWorkbench,

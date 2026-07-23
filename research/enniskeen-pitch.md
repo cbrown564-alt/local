@@ -2,7 +2,7 @@
 
 Prepared and reviewed against `PRODUCT.md` on 23 July 2026. This is outreach
 material, not a record of contact.
-Do not send or hand over the QR one-sheet until `mourneandmain.co.uk` resolves
+Do not send or hand over the QR one-sheet until `mournemade.co.uk` resolves
 and a production request-form submission has reached the intended inbox.
 
 ## Subject-line options
@@ -26,18 +26,18 @@ things to do a clear page of their own. I also made a one-minute film showing
 the current visit beside the proposed one.
 
 You can see it here:  
-https://mourneandmain.co.uk/transformations/hotel-enniskeen/
+https://mournemade.co.uk/transformations/hotel-enniskeen/
 
 This was not commissioned and there is no obligation. If it is useful, I would
 be glad to talk through what could stay, what could change, and a small first
 scope.
 
 Conor  
-Mourne & Main
+Mourne Made
 
 ## Sixty-second in-person version
 
-Hello, I am Conor from Dundrum. I run a small web studio called Mourne & Main.
+Hello, I am Conor from Dundrum. I run a small web studio called Mourne Made.
 I made something for Enniskeen before asking for a meeting: a complete
 five-page website concept and a one-minute before-and-after film.
 

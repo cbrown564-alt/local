@@ -8,7 +8,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 ---
 
 <BaseLayout
-  title="Opportunities · Mourne & Main"
+  title="Opportunities · Mourne Made"
   description="Internal prospecting and research workspace for Dundrum and Newcastle business opportunities."
   class="opportunities-body"
   hideHeader
@@ -17,8 +17,8 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 >
   <section class="opportunities" data-opportunities>
     <header class="op-topbar">
-      <a class="op-brand" href="/" aria-label="Mourne and Main home">
-        <span>Mourne <b>&amp;</b> Main</span>
+      <a class="op-brand" href="/" aria-label="Mourne Made home">
+        <span>Mourne <b>Made</b></span>
         <small>Internal research</small>
       </a>
       <nav class="op-nav" aria-label="Opportunity workspace">
@@ -248,8 +248,8 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
     const pageSize = 25;
     let currentPage = 1;
     let selectedId = new URLSearchParams(window.location.search).get("business") || businesses[0]?.id;
-    let shortlist = new Set<string>(readStorage("mourne-main-shortlist", []));
-    let research = readStorage<Record<string, ResearchState>>("mourne-main-research", {});
+    let shortlist = new Set<string>(readStorage("mourne-made-shortlist", []));
+    let research = readStorage<Record<string, ResearchState>>("mourne-made-research", {});
     let shortlistOnly = false;
 
     const filters = {
@@ -500,7 +500,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       }
       if (target.closest("[data-shortlist-toggle]")) {
         if (shortlist.has(selectedId)) shortlist.delete(selectedId); else shortlist.add(selectedId);
-        writeStorage("mourne-main-shortlist", [...shortlist]);
+        writeStorage("mourne-made-shortlist", [...shortlist]);
         renderResults();
         const business = businesses.find((item) => item.id === selectedId);
         if (business) updateShortlistButtons(business);
@@ -528,14 +528,14 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 
     root.querySelector<HTMLTextAreaElement>("[data-research-note]")?.addEventListener("input", (event) => {
       research[selectedId] = { ...research[selectedId], note: (event.target as HTMLTextAreaElement).value };
-      writeStorage("mourne-main-research", research);
+      writeStorage("mourne-made-research", research);
       const state = root.querySelector<HTMLElement>("[data-save-state]");
       if (state) state.textContent = "Note saved locally.";
     });
 
     root.querySelector<HTMLSelectElement>("[data-research-status]")?.addEventListener("change", (event) => {
       research[selectedId] = { ...research[selectedId], status: (event.target as HTMLSelectElement).value };
-      writeStorage("mourne-main-research", research);
+      writeStorage("mourne-made-research", research);
       const state = root.querySelector<HTMLElement>("[data-save-state]");
       if (state) state.textContent = "Status saved locally.";
     });
