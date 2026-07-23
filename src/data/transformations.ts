@@ -112,7 +112,7 @@ export const transformations: Transformation[] = [
     before: "/images/donard-veterinary-before.jpg",
     after: "/images/donard-veterinary-after.jpg",
     beforeAlt:
-      "Donard Veterinary Clinic's current homepage: the practice badge and menu above a wall-to-wall collage of stock puppies and kittens, with a PetsApp chat popup showing the opening hours",
+      "Donard Veterinary Clinic's current homepage: the practice badge and menu above a wall-to-wall collage of stock puppies and kittens, with the auto-opening PetsApp chat panel collapsed so the page is visible",
     afterAlt:
       "Mourne and Main concept opening in the practice's plum and teal badge colours, with the Taking Care of Your Pets headline, an appointment request card and a services rail over a Mourne silhouette",
     href: "/transformations/donard-veterinary/",
@@ -141,7 +141,7 @@ export const transformations: Transformation[] = [
       "A loved, family-run country house reframed around its valley view — with a direct availability path into the hotel's existing booking engine.",
     before: "/images/hotel-enniskeen-before.jpg",
     after: "/images/hotel-enniskeen-after.jpg",
-    beforeAlt: "Enniskeen's current homepage with an archive logo, blue uppercase menu bar, photo carousel and cookie banner",
+    beforeAlt: "Enniskeen's current homepage with an archive oval logo, blue uppercase menu bar and a photo carousel of the house and valley, arrival cookie prompt closed",
     afterAlt: "Mourne and Main concept opening on the valley view from a balcony room, with the hideaway headline and an availability bar",
     href: "/transformations/hotel-enniskeen/",
   },

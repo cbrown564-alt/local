@@ -169,5 +169,9 @@ still slider on each transformation page:
 | Business | Date | Media | Overlays found → action | Notes |
 | --- | --- | --- | --- | --- |
 | castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
+| hotel-enniskeen | 23 Jul 2026 | before still & clip, after clip | Cookie bar → clicked "I Consent" | Before still recaptured clean (was cookie-bar) |
+| donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |
+| mourne-cycles | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
+| bucks-head | 23 Jul 2026 | before+after clip | None found | Committed clean stills kept as posters |
 
 (Log rows are added in the same commit as each recapture.)
