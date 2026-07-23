@@ -11,6 +11,34 @@ export interface TransformationReel {
   heading?: string;
   intro?: string;
   duration?: string;
+  eyebrow?: string;
+  note?: string;
+}
+
+/** One errand, walked on both sides at phone size. */
+export interface TransformationErrand {
+  label: string;
+  endsAt: string;
+  before: string;
+  beforeNote: string;
+  after: string;
+  afterNote: string;
+}
+
+/**
+ * The measured journey comparison. Every figure here comes from
+ * `node scripts/audit-journey.mjs <slug>`, which files dated screenshots and a
+ * summary to research-renders/<slug>-journey/<date>/ — nothing on this page is
+ * estimated.
+ */
+export interface TransformationJourneys {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  tableCaption: string;
+  errands: TransformationErrand[];
+  measures: string[];
+  film: TransformationReel;
 }
 
 export interface TransformationDetail {
@@ -24,6 +52,7 @@ export interface TransformationDetail {
   conceptLabel: string;
   motion: Record<string, string>;
   reel?: TransformationReel;
+  journeys?: TransformationJourneys;
   secondSurfacesHtml: string[];
   notesHeading: string;
   notes: TransformationNote[];
@@ -48,6 +77,46 @@ export const transformationDetails = {
       "afterPoster": "/images/bucks-head-after.jpg",
       "beforeAlt": "Ten-second visit to The Bucks Head's current website — the owners' photograph, a scroll down the page and a menus hover",
       "afterAlt": "Ten-second visit to The Bucks Head concept — the Old Charm Modern Flare opening, the book-a-table card over the hearth and the menus rail"
+    },
+    "journeys": {
+      "eyebrow": "Measured 24 July 2026 · walked at 390 × 844",
+      "heading": "Two journeys, walked on a phone.",
+      "intro": "The Bucks Head's website is current, well photographed and actively maintained — this is not a case for rebuilding it. The gap we could measure is the walk to the two things people arrive wanting: a table and tonight's menu. Both errands below were walked on the live site and on the concept the same morning, and every figure is a count from that walk.",
+      "tableCaption": "Counts from the build-day audit. Both booking journeys finish in the same place — the pub's own ResDiary widget.",
+      "errands": [
+        {
+          "label": "Book a table for two, Saturday evening",
+          "endsAt": "the ResDiary widget, ready to choose a time",
+          "before": "2 taps · 4 screens",
+          "beforeNote": "Open the menu, tap Bookings, then read past the booking notes to reach an engine that opens on today's date, with nothing the guest was after carried in.",
+          "after": "1 tap · 2 screens",
+          "afterNote": "Date and party chosen on the page already open, then one tap into the same ResDiary engine with both carried across."
+        },
+        {
+          "label": "Read the à la carte",
+          "endsAt": "the à la carte, readable",
+          "before": "3 taps · 4 screens",
+          "beforeNote": "Open the menu, tap Menus, tap A La Carte — and arrive at an A4 PDF that has to shrink by half to fit the screen.",
+          "after": "1 tap · 2 screens",
+          "afterNote": "The hero's menus link sits on the first screen; dishes, descriptions and prices then read as a page, in the pub's own type."
+        }
+      ],
+      "measures": [
+        "On the current homepage the first Book A Table sits 2,254 pixels down — 2.7 phone screens below the opening view of a 4,241-pixel page.",
+        "The bookings page opens on its Important Booking Notes: the ResDiary widget begins 399 pixels down, and its time list falls below the first screen.",
+        "The à la carte is a one-page A4 PDF, 794 CSS pixels wide. Fitting it to a 390-pixel phone shrinks it to 49 per cent.",
+        "Both booking journeys were stopped at the widget's date and party stage. No personal details were entered and no reservation was made."
+      ],
+      "film": {
+        "video": "/videos/bucks-head-journey.mp4",
+        "poster": "/images/bucks-head-journey-poster.jpg",
+        "alt": "Silent side-by-side film of two phone journeys — booking a table and reading the à la carte — walked on The Bucks Head's current website and on the concept, with the tap counts for each side",
+        "heading": "Both errands, side by side.",
+        "intro": "The two walks, filmed at phone size. Every step is held for exactly the same time on both sides and page-loading is never filmed, so the only thing that varies is how many steps the errand takes.",
+        "duration": "About 50 seconds",
+        "eyebrow": "Journey film",
+        "note": "Independent concept study. Not commissioned by The Bucks Head."
+      }
     },
     "secondSurfacesHtml": [
       "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <div class=\"second-surface-intro\">\n        <div>\n          <p class=\"second-surface-label\">Second surface · Menus</p>\n          <h2>The menus, on the page.</h2>\n        </div>\n        <p>Five menus currently live as PDF downloads — no dish is readable without opening a file. The second concept surface puts every section on the page: browsable tabs, dish names and descriptions in the pub's own design language, with a booking card within reach throughout.</p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/images/bucks-head-menus-after.jpg\"\n          alt=\"The Bucks Head menus concept screen: spruce-green tab rail across the top with À la carte selected, two-column dish listing in cream below, and a booking sidebar on the right\"\n          width=\"1265\"\n          height=\"710\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">Concept only · illustrative dishes drawn from publicly available menus · not a live menu feed</p>\n      <a class=\"text-link concept-link\" href=\"/concepts/bucks-head/menus/\">Browse the menus concept <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </section>"

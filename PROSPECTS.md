@@ -5,9 +5,10 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 23 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
+Snapshot: 24 July 2026 · 16 businesses verified · 10 shortlisted · 9 concepts
 published · Milestone 2 second assets shipped for all nine · Enniskeen F1
-flagship working prototype complete locally
+flagship working prototype complete locally · Buck's Head F2 journey case
+complete locally
 
 ## Pipeline stages
 
@@ -36,7 +37,7 @@ Rules of the road:
 | **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro) | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro) | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| **The Buck's Head** — *concept published, [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro) | Dundrum | Current site; ResDiary widget added by Jul 2026 but buried behind policy warnings, menus PDF-only, first screen wordless | Reservations flow and menu UX — functional upgrade, not a rebuild |
+| **The Buck's Head** — *concept published, [journey case study + film](/transformations/bucks-head/#two-journeys) · [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro) | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | F2 journey case: measured 24 Jul 2026 — booking 2 taps → 1, à la carte 3 taps → 1. Verified ResDiary handoff (`date` + `partySize` only), 48-second side-by-side film, A4 one-sheet and walk-in pitch. Explicitly **not** a rebuild. Stage remains Concept published; outreach waits for domain, production-form and printed-QR gates |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
@@ -57,6 +58,27 @@ feature-upgrade case), Hutt Hostel (dated styling but working booking flow —
 accommodation runner-up). Details and evidence in
 `research/verifications.json`.
 
+## Castle Farm — published but outside the pipeline
+
+Found 24 July 2026 during the M3 plan review. `src/data/transformations.ts`
+carries ten records; this file accounts for nine. **Castle Farm** (Dundrum) has
+a published concept, a captured before from its live site, a demo clip and a
+public transformation page — and no entry in `research/verifications.json` at
+all: no stage, no dated evidence, no design task, no shortlist decision. It
+predates the pipeline and was never brought in.
+
+The effect is that a real named neighbour's business is displayed publicly
+while sitting outside every honesty mechanism built around the others — it
+cannot change stage, will never be re-verified, and under the M3 walk would be
+the one Dundrum door skipped while three of its neighbours are visited.
+
+**Decision (24 July 2026):** verify Castle Farm into batch one. A fresh pass
+first, per the rule below that no concept work proceeds on evidence older than
+a month. If it is trading and the concept still holds, give it a verification
+record, a stage and a one-sheet. If the concept no longer holds, refresh or
+retire the public transformation rather than leaving a stale comparison of a
+real local business on a live site.
+
 ## Outstanding caveats before outreach
 
 - **South Down Signs**: weakest trading recency evidence of the ten — held
@@ -74,6 +96,15 @@ Superseded 21 July 2026 at build time: The Buck's Head added a ResDiary
 booking widget to its Bookings page after the 20 July verification pass —
 another case for re-reading the live site the day you build. The concept keeps
 ResDiary as the engine; the critique moved to the journey around it.
+
+Re-verified 24 July 2026 for the F2 build: nothing had been fixed. The booking
+notes still precede the widget, all five menus are still PDFs — and the à la
+carte PDF had been reissued that morning, which is the clearest evidence that
+the site is actively maintained and that a rebuild pitch would be dishonest.
+Hand-testing the widget that day also settled the handoff question: it honours
+`date` and `partySize` and ignores `covers`, `party`, `guests` and every time
+parameter tried, so the concept's booking card now asks for exactly the two
+fields that carry through.
 
 ## Building a concept
 

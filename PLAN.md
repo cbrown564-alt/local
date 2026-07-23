@@ -3,7 +3,7 @@
 Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 23 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · F1 Enniskeen flagship working prototype complete locally, with outreach gated by domain/form/printed-QR checks · F2 Buck's Head planned next · South Down Signs on hold
+Snapshot: 24 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · F1 Enniskeen flagship and F2 Buck's Head journey case both complete locally, with outreach gated by domain/form/printed-QR checks · South Down Signs on hold
 
 ---
 
@@ -106,18 +106,21 @@ by the same script as the stills (`scripts/capture-concept-media.mjs`, see
 
 ---
 
-## Milestone F — Flagship case studies (F1 complete locally 23 July 2026)
+## Milestone F — Flagship case studies ✅ complete locally (F1 23 July, F2 24 July 2026)
 
 Two deep case studies that lead the outreach wave, planned in full in
 `research/enniskeen-flagship-plan.md` (F1) and
-`research/bucks-head-journey-plan.md` (F2). F1 has built and verified the
-shared infrastructure locally (reel capture mode, title cards, `ReelPlayer`,
-print one-sheet pipeline); F2 reuses it at roughly half the cost.
+`research/bucks-head-journey-plan.md` (F2). F1 built and verified the shared
+infrastructure locally (reel capture mode, title cards, `ReelPlayer`, print
+one-sheet pipeline); F2 reused all of it and added a journey mode — a phone-size
+step vocabulary shared by a build-day audit and the film, so a published tap
+count can never drift from the filed evidence. Both are complete as local
+working prototypes; neither has been sent or promoted.
 
 | Piece | Scope | Why this shape |
 |---|---|---|
 | **F1 · Enniskeen flagship — locally verified** | Full linked concept site (Home · Stay · Dine · The estate · Things to do), 75 s MP4/WebM guest-journey film, Rooms + Dine companion stills, personalised A4 one-sheet and reviewed pitch | The complete reversible working prototype exists. Build, responsive page review, media decode, deferred loading, reduced-motion and keyboard playback checks pass. Stage stays Concept published; domain resolution, production-form delivery and printed-phone QR verification remain genuine outreach gates |
-| **F2 · Buck's Head journey case** | Mobile journey films (taps-to-booked-table, menus on a phone), "Two journeys" case-study section, walk-in pitch | Their site is current and well maintained; the verified gap is the journey around the ResDiary engine, so a rebuild pitch would be dishonest — the journey comparison is the winning artifact |
+| **F2 · Buck's Head journey case — locally verified** | Measured build-day audit of two phone errands, paired portrait journey films plus a 48 s side-by-side edit, "Two journeys" case-study section, A4 one-sheet and walk-in pitch | Their site is current and well maintained — the à la carte PDF was reissued on build day — so the verified gap is the journey around the ResDiary engine, not the site. Booking fell from 2 taps to 1 and the à la carte from 3 taps to 1; the handoff now sends only the two parameters the widget honours. Stage stays Concept published; the walk-in waits on the same domain/form/printed-QR gates |
 
 Decision record, phases, gates, risks and estimates live in the two plan
 documents. Hard gates shared by both: day-of-build re-verification (both
@@ -127,46 +130,95 @@ delivers).
 
 ---
 
-## Milestone 3 — Letterbox marketing (before outreach)
+## Milestone 3 — Personalised one-sheets (before outreach)
 
-**Must complete before starting outreach.** Print something worth posting through every independent shop door on the shortlist streets — concrete proof, not a generic flyer.
+**Must complete before starting outreach.** A printed one-sheet made for one
+named business, showing that business's own concept, handed to the owner in
+person during trading hours. There is no generic door-drop — see
+[ADR 0001](docs/adr/0001-personalised-one-sheets-over-door-drop.md) for the
+options weighed and why the earlier bifold-first recommendation was reversed.
 
-### Brainstorm — what it could be
+Decided 24 July 2026 in a plan review against the domain going live.
 
-Ambition runs from a single sharp card to a small printed “local before-and-after” piece. Decide ambition against cost-per-door, production time, and whether the piece itself demonstrates the craft we sell.
+### Batch one — the Dundrum walk
 
-| Option | Form | Ambition | Notes |
-|---|---|---|---|
-| **A. Proof postcard** | A6 / DL postcard, one local before/after on the face, one CTA on the reverse | Low–medium | Fast to print; easy to hand or post; limited story |
-| **B. Door-drop bifold** | A5 bifold: one featured transformation, “how a free before-and-after works”, QR to the live site | Medium | More room for belief ladder; still one piece per drop |
-| **C. Street sampler** | Short printed folio (4–6 panels) of 3–4 before/afters from the same town | High | Feels like a local exhibition; higher print cost; strongest “we already did the work” signal |
-| **D. Personalised one-sheet** | Single named sheet for one business (“what X could look like”) using their concept | High per door | Best conversion; not viable for every door — use for priority outreach after the generic drop |
-| **E. Window-ready mini-poster** | A4 with a tear-off or QR strip owners could keep | Medium | Doubles as something they might display; risk of looking like junk mail if copy is salesy |
+One afternoon, four doors, on home turf. Batch one exists to teach the
+conversation, not to win the largest client; the flagship is deliberately held
+back until the opener has been said out loud three or four times.
 
-### Working recommendation to stress-test
+| Business | Concept in hand | Note |
+|---|---|---|
+| The Buck's Head | Landing + M2 menus + F2 journey case | F2 landed, so the sheet can carry the journey comparison. M3 was explicitly decoupled from F2 and would have shipped without it |
+| Scopers | Landing + M2 supper club | No pitch document yet |
+| Cúpla | Landing + M2 bilingual menu | No pitch document yet |
+| Castle Farm | Landing (predates the pipeline) | **Verify first.** No record in `research/verifications.json`: no stage, no dated evidence, no design task. Bring it into the pipeline properly, or refresh/retire the public transformation |
 
-1. **Primary drop:** Option **B** (bifold) or a strong **A** if budget/time is tight — one hero comparison from the recipient’s town, plain neighbourly copy, QR to `/transformations/` and `/request/`.
-2. **Priority follow-up:** Option **D** for the hottest shortlist names once Milestone 2 assets exist (landing + second page in the leave-behind).
-3. **Tone rules (from PRODUCT.md):** show the change before the ask; no SaaS theatre; concept work labelled honestly; CTA = free before-and-after.
-4. **Production questions to answer in this milestone:** print run size, towns/streets covered, paper stock, whether QR lands on a tracked path, hand-delivery vs Royal Mail, and a single back-side layout that stays readable at arm’s length.
+Batch two is Newcastle, led by Hotel Enniskeen with the F1 film and one-sheet
+already built.
+
+### Build conventions (M3)
+
+| Piece | Convention |
+|---|---|
+| Print route | Dev-only under `src/workbench/print/`, injected in `astro.config.mjs`; never in a production build |
+| Styles | `src/styles/onesheet.css` — studio chrome, not the business's identity. A one-sheet is *from* Mourne Made; only the comparison imagery is the business's |
+| PDF | `node scripts/print-onesheet.mjs <slug>` → headless Chrome print-to-PDF with a page-count assertion |
+| Ask | **Claim**, not request — see `CONTEXT.md`. The recipient already holds their before-and-after and cannot meaningfully request one. Applies to **every** one-sheet recipient in both batches; Enniskeen does not revert to the request framing once the conversation is learned, because the reason is structural, not a lack of practice |
+| CTA branch | A transformation page arriving with a `source=onesheet-*` parameter knows it is being read by its subject and swaps to the claim CTA; reached any other way it keeps the stranger's request CTA. Builds REVIEW.md bold idea 1 |
+| QR | `/transformations/<slug>/?source=onesheet-<slug>` — see [ADR 0002](docs/adr/0002-printed-qr-attribution-contract.md) |
+
+**Build the first sheets by hand; do not extract a template yet.** Three or
+four real sheets will teach the right abstraction; one will not. This is a
+deliberate deviation from the `transformation-details.ts` + `[slug].astro`
+pattern that REVIEW.md P3 applied to comparison pages — resist "fixing" it
+early. Extract once batch one is printed and the shape has stopped moving.
+
+### Print production
+
+- **Commercial digital short-run.** Home inkjet cannot bleed on A4 and bands on
+  heavy dark coverage; the sheet's whole argument is the quality of the work.
+- **Artwork is not currently printable.** `onesheet.css` sets `@page { size: A4 }`
+  with `.onesheet-page` at exactly `210mm × 297mm`, no bleed and no crop marks,
+  while `.onesheet-reverse` runs `#132029` edge to edge. Trim drift will expose
+  white paper on a near-black page, and a printer handed this file will scale it
+  ~2% to fake the bleed, shifting every element. Add 3mm bleed (216×303mm) and
+  crop marks to the print route **before** any new artwork exists.
+- Chrome print-to-PDF emits RGB with no CMYK profile; saturated accents such as
+  the `#e0c14d` brass kicker will dull in conversion. Check this on the proof.
+- **Proof the existing Enniskeen sheet first**, before designing the other four.
+  Heavy dark ink across A4 is the hardest thing on the sheet to print well; if
+  it looks cheap, that is a design change to discover once, not four times.
+
+### Gate — M4 is a prerequisite, not the next milestone
+
+A printed URL cannot be revised. **Nothing goes to a printer until a production
+request-form submission has been verified arriving in the inbox carrying its
+source.** Artwork may be designed in parallel; it may not be printed. This
+inverts the original M3 → M4 order.
 
 ### Exit criteria
 
-- Chosen format + copy deck + print-ready artwork (PDF)
-- QR / URL path verified on phone
-- Drop list (streets / businesses) and a one-pass delivery plan
-- Explicit go/no-go on personalised sheets vs generic town sampler
+- 3mm bleed and crop marks in the print route; Enniskeen proof printed and judged
+- Four batch-one sheets designed, copy deck written, print-ready PDFs produced
+- QR scanned from printed paper on a phone, landing on the right transformation
+  and carrying `source` through to a delivered email
+- Walk order and a rehearsed spoken opener, including the said-out-loud
+  disclosure that the concept is independent and uncommissioned
+- Castle Farm verified into the pipeline with a stage, or its transformation
+  refreshed or retired
 
 ---
 
 ## Milestone 4 — Wire the request form
 
-The `/request/` flow is still local-only and does not transmit. Before or alongside first outreach, connect a real inbox (or form backend), keep error/success states, and confirm spam/privacy basics for UK contact.
+The `/request/` flow posts through `/api/request` to the configured inbox. Before or alongside first outreach, verify production delivery, keep clear error handling, add a dedicated post-submission confirmation page, and confirm spam/privacy basics for UK contact. Use the confirmation page as the successful-conversion destination for Google Ads.
 
 ### Exit criteria
 
-- Submitted requests arrive in a monitored channel
-- Success/error paths tested on mobile
+- Production requests arrive in a monitored channel
+- Successful submissions redirect to a dedicated `/request/thank-you/` page
+- Google Ads records a conversion only after a successful submission
+- Success and error paths tested on mobile
 - Copy still frames the ask as free, reversible, and no-obligation
 
 ---
@@ -247,10 +299,10 @@ Prototypes retained for comparison.
 M1 ✅ Tool Centre / Kent Amusements / Chamber landings
 M2 ✅ Second assets for all nine shortlist concepts
 F1 ✅ Enniskeen flagship working prototype (outreach gates remain)
-F2 Buck's Head journey case (reuses F1 infrastructure)
-M3 Letterbox format decision → artwork (feature F1/F2 output) → print
-M4 Request form delivery + domain (gates any pitch or print going out)
-M5 Outreach wave 1 (led by the flagship film and the walk-in journey pitch)
+F2 ✅ Buck's Head journey case (outreach gates remain)
+M4 Request form delivery + source attribution (gates any print going out)
+M3 Personalised one-sheets → bleed/crop fix → Enniskeen proof → batch-one artwork → print
+M5 Outreach wave 1 (Dundrum walk first, Newcastle led by the flagship after)
 M6 First paid job
 ```
 

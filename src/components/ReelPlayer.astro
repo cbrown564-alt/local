@@ -9,6 +9,10 @@ interface Props {
   heading?: string;
   intro?: string;
   duration?: string;
+  eyebrow?: string;
+  /** Disclosure under the player — always name the business it is not from. */
+  note?: string;
+  playLabel?: string;
 }
 
 const {
@@ -19,6 +23,9 @@ const {
   heading = "The complete visit",
   intro = "A short, silent film following the current route and the full concept site. Captions carry the story, so it works without sound.",
   duration = "About one minute",
+  eyebrow = "Flagship film",
+  note = "Independent concept study. Not commissioned by Enniskeen Country House Hotel.",
+  playLabel = "Play the film",
 } = Astro.props;
 
 const webm = video.replace(/\.mp4$/i, ".webm");
@@ -34,7 +41,7 @@ const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
   <div class="shell">
     <div class="reel-player-intro">
       <div>
-        <p class="eyebrow">Flagship film · {duration}</p>
+        <p class="eyebrow">{eyebrow} · {duration}</p>
         <h2 id={`reel-${slug}-heading`}>{heading}</h2>
       </div>
       <p>{intro}</p>
@@ -54,12 +61,12 @@ const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
       <button type="button" class="reel-player-play" data-reel-play>
         <span class="reel-player-play-icon" aria-hidden="true"></span>
         <span>
-          <strong>Play the film</strong>
+          <strong>{playLabel}</strong>
           <small>{duration} · silent with captions</small>
         </span>
       </button>
     </div>
-    <p class="reel-player-note">Independent concept study. Not commissioned by Enniskeen Country House Hotel.</p>
+    <p class="reel-player-note">{note}</p>
     <noscript><p><a class="text-link" href={video}>Watch or download the captioned film</a></p></noscript>
   </div>
 </section>

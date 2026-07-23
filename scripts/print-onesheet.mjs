@@ -14,6 +14,12 @@ const sheets = {
     qr: "public/images/hotel-enniskeen-onesheet-qr.svg",
     output: "output/pdf/hotel-enniskeen-flagship-onesheet.pdf",
   },
+  "bucks-head": {
+    route: "/workbench/print/bucks-head-onesheet/",
+    url: "https://mournemade.co.uk/transformations/bucks-head/?src=onesheet",
+    qr: "public/images/bucks-head-onesheet-qr.svg",
+    output: "output/pdf/bucks-head-journey-onesheet.pdf",
+  },
 };
 
 if (!sheets[slug]) {

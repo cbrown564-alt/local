@@ -12,7 +12,7 @@ import ResponsiveImage from "../../components/ResponsiveImage.astro";
       <span class="bh-strip-note">Rooms reopening after refurbishment</span>
     </div>
     <header class="bh-header">
-      <a class="bh-brand" href="#">
+      <a class="bh-brand" href="/concepts/bucks-head/">
         <svg class="bh-antlers" width="50" height="44" viewBox="0 0 50 44" fill="none" aria-hidden="true">
           <path d="M21 42 C21 31 19 24 14 17.5 C11 13.5 9.5 9 10 3.5 M14 17.5 C14 21 15.5 24 18.5 26.5 M12 11.5 C9.5 10.5 7 8 6.5 4.5 M29 42 C29 31 31 24 36 17.5 C39 13.5 40.5 9 40 3.5 M36 17.5 C36 21 34.5 24 31.5 26.5 M38 11.5 C40.5 10.5 43 8 43.5 4.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
         </svg>
@@ -42,21 +42,22 @@ import ResponsiveImage from "../../components/ResponsiveImage.astro";
       </section>
       <aside class="bh-panel">
         <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/bucks-head-hearth.jpg" alt="The restaurant's brick chimney with antlers above the wood-burning stove" width="644" height="1024" loading="eager" />
+        {/*
+          Only `date` and `partySize` are sent: hand-testing the pub's own
+          ResDiary Standard widget on 23 July 2026 showed it honours those two
+          and ignores every time parameter tried (time, timeSlot, bookingTime)
+          along with covers/party/guests. Asking for a time here would be
+          theatre — the widget picks the day's first free slot regardless — so
+          the card asks only what genuinely carries through, and the guest
+          chooses their time on ResDiary's own screen.
+        */}
         <form class="bh-booking" action={resdiary} method="get" aria-label="Book a table">
           <h2>Book a table</h2>
-          <p>Choose a time and we'll confirm straight away.</p>
+          <p>Choose your date and party. The times free that day appear next.</p>
           <div class="bh-booking-row">
             <label>Date <input type="date" name="date" /></label>
-            <label>Time
-              <select name="time"><option>12:00</option><option>12:30</option><option>1:00</option><option>5:30</option><option>6:00</option><option>6:30</option><option>7:00</option></select>
-            </label>
-          </div>
-          <div class="bh-booking-row">
             <label>Party of
-              <select name="party"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
-            </label>
-            <label>Area
-              <select name="area"><option>No preference</option><option>Front Bar</option><option>Main Restaurant</option></select>
+              <select name="partySize"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
             </label>
           </div>
           <button type="submit">Check availability</button>

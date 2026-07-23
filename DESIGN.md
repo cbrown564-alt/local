@@ -63,6 +63,16 @@ hero and secondary-page layouts local.
   study adds Rooms and Dine companion stills plus a one-minute silent film
   covering the current visit, all five concept pages and both routes into
   Bookin1.
+- **The Buck's Head** — spruce green, cream and blush-pink signage lettering
+  with the antler mark, all taken from the pub's own frontage. Sharpened for
+  the F2 journey case (24 July 2026), which is a phone-first argument: the
+  hero, booking card and menus rail now stack in the order the errand runs, so
+  the date-and-party card lands on the first screen instead of below the menus
+  rail; the five-menu tab rail becomes a segmented block on phones, because it
+  needed 594 px in a 346 px rail and silently hid Dessert and Drinks behind a
+  scrollbar-less overflow. The booking card asks only for date and party size —
+  the two parameters the pub's own ResDiary widget honours — so the handoff is
+  real rather than decorative.
 - **Newcastle Chamber** — harbour navy `#182C3F`, sea mist and civic brass
   with Newsreader; Co. Down strip and seal chrome from the civic direction,
   Main Street finder IA (directory as the product), warmer neighbour join
@@ -78,8 +88,13 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 - Primary gorse-yellow button and secondary text link
 - Independent-concept disclosure
 - Before/after range comparison
-- Click-to-load flagship reel player with WebM/MP4 sources, native
-  keyboard-operable controls, a poster-first state and reduced-motion flag
+- Click-to-load reel player with WebM/MP4 sources, native keyboard-operable
+  controls, a poster-first state and reduced-motion flag. Its eyebrow, note and
+  play label are props, so each case study names the business it is *not*
+  commissioned by
+- Journey case block: a measured tap/screen table beside the side-by-side
+  journey film, for cases where the honest argument is the route through a site
+  rather than its appearance
 - Design-notes accordion with numbered, tooltipped comparison pins
 - Source and limitations block
 - Request form with recovery and success messages

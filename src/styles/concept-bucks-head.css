@@ -310,11 +310,15 @@
   .bh-header { height: auto; padding-block: 12px; }
   .bh-brand-name { font-size: 17px; }
   .bh-hero { grid-template-columns: 1fr; min-height: 0; }
-  .bh-story { grid-column: 1; padding: 40px 22px 28px; }
+  /* Stack in the order the errand runs: read the welcome, book, then browse
+     the menus. The desktop grid places the rail in row 2, which on a phone
+     pushed the booking card below it — the one thing this concept exists to
+     bring forward. Rows are stated explicitly so the order cannot drift. */
+  .bh-story { grid-column: 1; grid-row: 1; padding: 32px 22px 22px; }
   .bh-story h1 { max-width: none; }
-  .bh-panel { grid-column: 1; grid-row: auto; padding: 42px 22px; }
+  .bh-panel { grid-column: 1; grid-row: 2; padding: 26px 22px 30px; }
   .bh-panel img { position: absolute; }
-  .bh-rail { flex-wrap: wrap; justify-content: center; padding: 10px 22px 16px; }
+  .bh-rail { grid-row: 3; flex-wrap: wrap; justify-content: center; padding: 10px 22px 16px; }
   .bh-menu { flex: 1 1 40%; }
   .bh-rail-label { grid-column: 1 / -1; border-right: 0; padding: 14px 0 6px; }
 }
@@ -610,6 +614,26 @@
   .bh-menu-panel { padding: 28px 22px; }
   .bh-menu-cols, .bh-drinks-cols { grid-template-columns: 1fr; }
   .bh-sidebar-divider { display: none; }
+}
+
+/* On a phone the five tabs need 594 px in a 346 px rail, and the scrollbar is
+   hidden — so Dessert and Drinks simply vanish. A concept whose whole claim is
+   "the menus, readable on a phone" cannot hide two of the five, so the rail
+   becomes a segmented block with every menu in view. */
+@media (max-width: 640px) {
+  .bh-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-x: visible;
+    column-gap: 1px;
+  }
+  .bh-tab {
+    padding: 11px 8px 9px;
+    text-align: center;
+    background: rgba(240, 213, 203, 0.04);
+  }
+  .bh-tab:last-child { grid-column: 1 / -1; }
+  .bh-tab span { font-size: 10.5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
