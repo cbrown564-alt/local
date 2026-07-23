@@ -3,13 +3,28 @@
    walk to the booking engine, so the sheet has to show the walk. Thumbnails are
    the audit's own frames (scripts/audit-journey.mjs), never redrawn. */
 
+/* Two rows of portrait frames need the height back that the Enniskeen face
+   spends on a headline and a wide before/after pair. */
+.onesheet-face .onesheet-face-title {
+  padding: 9mm 15mm 6mm;
+}
+
+.onesheet-face h1 {
+  font-size: 27pt;
+}
+
+.onesheet-face .onesheet-lede {
+  margin-top: 4mm;
+  font-size: 11.5pt;
+}
+
 .onesheet-journey {
   padding: 0 15mm;
 }
 
 .onesheet-journey-row + .onesheet-journey-row {
-  margin-top: 7mm;
-  padding-top: 7mm;
+  margin-top: 5mm;
+  padding-top: 5mm;
   border-top: .3mm solid #c9d5dc;
 }
 
@@ -51,7 +66,7 @@
    the current site's four — the difference reads as length, at a glance. */
 .onesheet-frames {
   display: grid;
-  grid-template-columns: repeat(4, 38mm);
+  grid-template-columns: repeat(4, 20mm);
   gap: 4mm;
 }
 
@@ -80,7 +95,7 @@
 }
 
 .onesheet-journey-note {
-  margin: 6mm 0 0;
+  margin: 4mm 0 0;
   font-size: 9.5pt;
   line-height: 1.4;
   color: #435863;
@@ -100,6 +115,13 @@
   font-size: 9pt;
   line-height: 1.35;
   color: #435863;
+}
+
+/* The face footer is absolutely positioned, so flowing content must reserve its
+   height. Without this the two silently overlap: the print script's A4 check
+   measures scroll height, which an absolutely positioned footer never adds to. */
+.onesheet-face .onesheet-measures {
+  margin-bottom: 24mm;
 }
 
 .onesheet-measures li::before {

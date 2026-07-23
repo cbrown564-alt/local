@@ -102,7 +102,7 @@ export const transformationDetails = {
         }
       ],
       "measures": [
-        "On the current homepage the first Book A Table sits 2,254 pixels down — 2.7 phone screens below the opening view of a 4,241-pixel page.",
+        "On the current homepage the first Book A Table sits 2,254 pixels down — 2.7 phone screens below the opening view of a 4,242-pixel page.",
         "The bookings page opens on its Important Booking Notes: the ResDiary widget begins 399 pixels down, and its time list falls below the first screen.",
         "The à la carte is a one-page A4 PDF, 794 CSS pixels wide. Fitting it to a 390-pixel phone shrinks it to 49 per cent.",
         "Both booking journeys were stopped at the widget's date and party stage. No personal details were entered and no reservation was made."

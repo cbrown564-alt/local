@@ -38,7 +38,15 @@ const stripsOnly = process.argv[3] === "strips";
 const journey = getJourney(slug);
 const root = path.resolve(import.meta.dirname, "..");
 const previewBase = "http://127.0.0.1:4321";
-const today = new Date().toISOString().slice(0, 10);
+// Local date, not UTC: these walks are dated against a County Down business's
+// day, and a run just after local midnight in summer would otherwise be filed
+// under the previous date.
+const now = new Date();
+const today = [
+  now.getFullYear(),
+  String(now.getMonth() + 1).padStart(2, "0"),
+  String(now.getDate()).padStart(2, "0"),
+].join("-");
 const outDir = path.join(root, "research-renders", `${slug}-journey`, today);
 fs.mkdirSync(outDir, { recursive: true });
 

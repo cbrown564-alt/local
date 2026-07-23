@@ -213,6 +213,33 @@ inverts the original M3 → M4 order.
 
 The `/request/` flow posts through `/api/request` to the configured inbox. Before or alongside first outreach, verify production delivery, keep clear error handling, add a dedicated post-submission confirmation page, and confirm spam/privacy basics for UK contact. Use the confirmation page as the successful-conversion destination for Google Ads.
 
+### Open decision — email transport (raised 24 July 2026, revisit before M5)
+
+Production delivery is still unverified. Google raised a **Critical security
+alert** against the newly created `mournemade0@gmail.com` when the deployed
+function attempted to send, so the current Gmail App Password transport
+(`api/request.ts`, `service: "gmail"`) is not proven.
+
+Clearing that alert is not a durable fix: Vercel functions egress from a
+**rotating pool of datacenter IPs** (`lhr1`), so vouching for the address that
+was just flagged does not authorise the next invocation. New-account SMTP
+restrictions and the ~500/day Gmail cap compound this at outreach volume — the
+exact burst pattern M5 creates, and a risk REVIEW.md already flags.
+
+| Option | Trade-off |
+|---|---|
+| **A · Stay on Gmail App Password** | No new dependency or cost; unpredictable under burst, sender remains `mournemade0@gmail.com` |
+| **B · Transactional provider** (Resend / Postmark) with `mournemade.co.uk` verified | SPF/DKIM on our own domain, so replies land in inboxes rather than spam; `hello@mournemade.co.uk` reads better on a cold approach. Costs a provider account and two DNS records |
+
+Option B is a contained change: only the transporter and the `sendMail` call in
+`api/request.ts` move. Validation, honeypot, rate limiting and the origin check
+stay exactly as they are, so the endpoint's error contract — and the on-screen
+messages `request.astro` renders from it — are unaffected.
+
+**Decide before M5.** M4 cannot meet its exit criteria while delivery is
+unverified, and no pitch should go out against an inbox that may silently drop
+replies.
+
 ### Exit criteria
 
 - Production requests arrive in a monitored channel
