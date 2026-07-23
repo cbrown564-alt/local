@@ -152,9 +152,9 @@ export const transformations: Transformation[] = [
     category: "Farm shop",
     summary:
       "A calmer arrival, a clear shop action and a stronger explanation of the local product — presented as a direct before-and-after.",
-    before: "/images/castle-farm-before.png",
-    after: "/images/castle-farm-after.png",
-    beforeAlt: "Castle Farm's current public homepage opening with a newsletter form and privacy prompt covering the page",
+    before: "/images/castle-farm-before.jpg",
+    after: "/images/castle-farm-after.jpg",
+    beforeAlt: "Castle Farm's current public homepage: the CASTLEFARM logo, main navigation and the opening farm-field photograph, with arrival pop-ups closed",
     afterAlt: "Mourne and Main concept showing Castle Farm produce, a concise promise and one clear shop action",
     href: "/transformations/castle-farm/",
   },
