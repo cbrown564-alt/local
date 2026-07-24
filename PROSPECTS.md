@@ -8,7 +8,7 @@ summary and must be updated whenever a prospect changes stage.
 Snapshot: 24 July 2026 · 27 businesses verified · **zero public transformations
 after Phase Q** · 20 internal concept routes · Enniskeen F1's prior source
 passed design re-review at 7.68; the current disclosed generated-image source
-is Reviewable · Buck's Head F2 is in its one repair cycle after a 6.53 Revise · no
+is Reviewable · Buck's Head F2 is retired after its final 7.15 Revise · no
 one-sheet release or outreach is permitted until a concept has a current
 independent public Pass
 
@@ -67,7 +67,7 @@ consumed. All concept routes remain internal and `noindex`;
 |---|---|---|
 | Hotel Enniskeen | Current generated-image source Reviewable; prior source passed design at 7.68 after its one repair cycle | Keep the disclosed generated version internal; obtain publishable real hotel imagery before re-review because generated scenes do not satisfy subject proof |
 | Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
-| The Buck's Head | Revise at 6.53; one focused repair cycle active | Fix menu routing, tab keyboard/contrast, disclosure placement and first-viewport hierarchy; then return the fixed source to the same reviewer. Pub-photo permission or publishable real subject imagery remains a separate release blocker |
+| The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
 | Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
 | Cúpla | Internal pending review | Add real café/product proof and complete the bilingual visitor loop; resolve image rights before release |
@@ -103,8 +103,12 @@ The Buck's Head received the second independent v1.1 review on 24 July 2026.
 The live ResDiary handoff and unavailable-date recovery worked, but four named
 menu links opened À la carte instead of their requested panels and an
 unselected tab sublabel measured about 3.26:1. The reviewer returned **Revise
-at 6.53**. One focused repair cycle is active; photo permission remains a
-separate public-release condition.
+at 6.53**. The repair fixed routing, history, keyboard state, contrast,
+blank-date recovery, first-screen photo exposure and the disclosure collision.
+The same reviewer scored the fixed source at 7.15, but direct menu hashes
+scrolled past the illustrative-price warning. Claims honesty still failed and
+the core truth score remained 6.5, so the concept is retired after its single
+repair cycle. Photo permission also remains unresolved.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 
@@ -114,7 +118,7 @@ separate public-release condition.
 | **Mourne Cycles** — *internal pending Phase Q evidence · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *internal pending Phase Q evidence · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| **The Buck's Head** — *internal Revise at 6.53 · one repair cycle active · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro)* | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | Repair the named-menu routing, tab accessibility/contrast, truth note and first screen, then complete same-reviewer re-review. Publication and outreach also wait on photo rights or replacement, domain, production-form and printed-QR gates |
+| **The Buck's Head** — *internal retired · final Revise at 7.15 after one repair cycle · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro)* | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | Keep the repaired prototype internal. Reopen only for a materially revised truth/disclosure treatment with publishable real subject imagery, or an explicit flagship decision |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 

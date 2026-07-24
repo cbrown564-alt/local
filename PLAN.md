@@ -3,7 +3,7 @@
 Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q complete with zero public passes; Enniskeen's current generated-image source is Reviewable, Buck's Head is in its one repair cycle after a 6.53 Revise, and 18 concepts remain unreviewed** · South Down Signs on hold
+Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q complete with zero public passes; Enniskeen's current generated-image source is Reviewable, Buck's Head is retired after its one repair cycle, and 18 concepts remain unreviewed** · South Down Signs on hold
 
 ---
 
@@ -265,8 +265,13 @@ internal until publishable real hotel imagery is available for re-review.
 The Buck's Head then received the next independent v1.1 review. Its measured
 ResDiary handoff and unavailable-date recovery worked, but four landing menu
 links opened the wrong panel and a small tab label failed contrast. The initial
-verdict was **Revise at 6.53**. Its single focused repair cycle is now active;
-the same reviewer must check the fixed source before it can pass or be retired.
+verdict was **Revise at 6.53**. The focused repair corrected menu routing,
+history and keyboard state, contrast, blank-date validation, first-screen
+subject proof, disclosure collision and generic entrance motion. The same
+reviewer rescored the fixed source at 7.15, but direct menu hashes scrolled
+past the illustrative-price warning. Claims honesty still failed and the core
+truth score remained below 7.0, so the concept is retired from the public queue
+after its single repair cycle.
 
 ### Q5 — Keep public truth current ✅
 
@@ -337,14 +342,14 @@ checked independently. No historical or superseded score was converted into a
 v1.1 Pass.
 
 **Review backlog:** eighteen concepts remain unreviewed. Hotel Enniskeen has
-used and completed its one focused repair cycle. The Buck's Head is in its one
-focused repair cycle after a 6.53 Revise; `PROSPECTS.md` records the next
-design action and separate release dependency for every candidate.
+used and completed its one focused repair cycle. The Buck's Head also completed
+its one cycle and is retired after a final 7.15 Revise; `PROSPECTS.md` records
+the next design action and separate release dependency for every candidate.
 
-**Next executable action after Phase Q:** complete The Buck's Head repair and
-same-reviewer re-review. Keep Enniskeen's disclosed generated version as an
-internal visual prototype until commissioned, licensed or otherwise
-publishable real hotel imagery is available for targeted re-review.
+**Next executable action after Phase Q:** keep the retired Buck's Head and
+generated-image Enniskeen sources internal. Enniskeen needs publishable real
+hotel imagery before targeted re-review; the next independent full review may
+begin with Mourne Cycles, the strongest unreviewed candidate.
 
 ---
 
