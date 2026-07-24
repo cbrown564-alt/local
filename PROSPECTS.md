@@ -6,9 +6,10 @@ Working state of the concept pipeline. The data source of truth is
 summary and must be updated whenever a prospect changes stage.
 
 Snapshot: 24 July 2026 · 27 businesses verified · **zero public transformations
-while Phase Q review is enforced** · 20 internal concept routes · Enniskeen F1
-and Buck's Head F2 remain complete local prototypes · no one-sheet release or
-outreach is permitted until a concept has a current independent Pass
+after Phase Q** · 20 internal concept routes · Enniskeen F1 passed design
+re-review at 7.68 but is release blocked on photography permission · Buck's
+Head F2 remains a complete local prototype · no one-sheet release or outreach
+is permitted until a concept has a current independent public Pass
 
 ## Pipeline stages
 
@@ -63,7 +64,7 @@ consumed. All concept routes remain internal and `noindex`;
 
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
-| Hotel Enniskeen | Revise; one focused repair cycle in progress; release blocked | Add the missing-date failure/recovery state, remove 390px overflow, repair small-text and focus contrast, then return the candidate to the independent reviewer; photography permission or publishable replacements are required only for release |
+| Hotel Enniskeen | Design pass at 7.68 after its one repair cycle; Release blocked | Secure photography permission or replace the reused hotel photographs with publishable assets; rerun the fingerprint and release check before public restoration |
 | Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
 | The Buck's Head | Internal pending review; release blocked | Complete the two-journey design review under v1.1; pub-photo permission or publishable replacements are required only for release |
 | Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
@@ -85,17 +86,19 @@ consumed. All concept routes remain internal and `noindex`;
 | Murdock Brothers | Internal pending evidence | Confirm trading first; then add specific subject proof and a truthful price/handoff model |
 
 Hotel Enniskeen received the first independent v1.1 verdict on 24 July 2026
-because it has the strongest historical craft and deepest loop. The weighted
-score cleared 7.0, but the missing-date path, 390px header overflow and contrast
-defects failed core floors and design gates, so the result is **Revise**. Its
-one focused repair cycle is now in progress. Photography permission remains a
-separate release blocker and does not consume that cycle.
+because it has the strongest historical craft and deepest loop. The first
+verdict was **Revise** at 7.10 because the missing-date path, 390px header
+overflow and contrast defects failed core floors and design gates. One focused
+repair added the failure/recovery path and exact handoff check, corrected the
+phone and contrast defects, and removed the generic entrance motion. The same
+reviewer passed every design gate at 7.68. Photography permission remains the
+sole release blocker.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *internal pending Phase Q review · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Design review may proceed; publication and outreach wait on photo rights or replacements, a v1.1 Pass, domain, production-form and printed-QR gates |
+| **Hotel Enniskeen** — *internal Release blocked · independent v1.1 design pass at 7.68 · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Publication and outreach wait on photo rights or replacements, then the unchanged fingerprint, domain, production-form and printed-QR gates |
 | **Mourne Cycles** — *internal pending Phase Q evidence · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *internal pending Phase Q evidence · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |

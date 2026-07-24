@@ -12,6 +12,7 @@ interface Props {
 
 const { variant = "section" } = Astro.props;
 const defaultArrive = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+const errorId = `enk-arrival-error-${variant}`;
 ---
 
 <form
@@ -23,7 +24,25 @@ const defaultArrive = new Date(Date.now() + 86_400_000).toISOString().slice(0, 1
 >
   <input type="hidden" name="ID" value={bookin1.params.ID} />
   <input type="hidden" name="hotelCode" value={bookin1.params.hotelCode} />
-  <label>Arrive <input type="date" name="arrive" value={defaultArrive} /></label>
+  <label>
+    Arrive
+    <input
+      type="date"
+      name="arrive"
+      value={defaultArrive}
+      required
+      aria-describedby={errorId}
+    />
+    <span
+      id={errorId}
+      class="enk-booking-error"
+      data-enk-arrival-error
+      aria-live="polite"
+      hidden
+    >
+      Choose an arrival date.
+    </span>
+  </label>
   <label>Nights
     <select name="nights">
       <option>2</option><option>1</option><option>3</option>
@@ -38,17 +57,34 @@ const defaultArrive = new Date(Date.now() + 86_400_000).toISOString().slice(0, 1
 
   document.querySelectorAll<HTMLFormElement>("form[data-enk-booking]").forEach((form) => {
     const arrive = form.querySelector<HTMLInputElement>('input[name="arrive"]');
+    const error = form.querySelector<HTMLElement>("[data-enk-arrival-error]");
+    const showArrivalError = () => {
+      arrive?.setAttribute("aria-invalid", "true");
+      if (error) error.hidden = false;
+    };
+    const clearArrivalError = () => {
+      arrive?.removeAttribute("aria-invalid");
+      if (error) error.hidden = true;
+    };
     if (arrive) {
       const tomorrow = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
       arrive.min = new Date().toISOString().slice(0, 10);
       if (!arrive.value || arrive.value < tomorrow) arrive.value = tomorrow;
+      arrive.addEventListener("invalid", showArrivalError);
+      arrive.addEventListener("input", () => {
+        if (arrive.value) clearArrivalError();
+      });
     }
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+      if (!arrive?.value) {
+        showArrivalError();
+        arrive?.focus();
+        return;
+      }
+      clearArrivalError();
       const nights = form.querySelector<HTMLSelectElement>('select[name="nights"]')?.value ?? "2";
-      window.location.href = arrive?.value
-        ? bookin1.deepLink(arrive.value, nights)
-        : bookin1.engine;
+      window.location.href = bookin1.deepLink(arrive.value, nights);
     });
   });
 </script>

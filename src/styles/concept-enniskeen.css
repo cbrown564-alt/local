@@ -8,7 +8,7 @@
   --cream: #f5efe2;
   --cream-bright: #fbf7ee;
   --honey: #c9973b;
-  --honey-deep: #a97e27;
+  --honey-deep: #795614;
   --ink-green: #16241d;
   --copy-soft: #c7d2c4;
   --hairline: rgba(201, 151, 59, 0.4);
@@ -20,6 +20,12 @@
   --concept-nav-underline-offset: 6px;
   background: var(--cream);
   color: var(--ink-green);
+}
+
+.concept-enniskeen :focus-visible {
+  outline: 3px solid var(--cream-bright);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--pine-deep);
 }
 
 /* Header */
@@ -211,7 +217,22 @@
   font-size: 21px;
   font-weight: 600;
 }
-.enk-booking input:focus, .enk-booking select:focus { outline: 2px solid var(--honey); outline-offset: 3px; }
+.enk-booking input:focus-visible,
+.enk-booking select:focus-visible {
+  outline: 3px solid var(--cream-bright);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--pine-deep);
+}
+.enk-booking-error {
+  margin-top: 2px;
+  color: #8a241c;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-transform: none;
+}
+.enk-booking-error[hidden] { display: none; }
 .enk-booking button {
   border: 0;
   padding: 0 30px;
@@ -225,20 +246,30 @@
   transition: background 160ms var(--enk-ease), transform 140ms var(--enk-ease-out);
 }
 
-/* Entrance */
-@keyframes enk-rise { from { opacity: 0; transform: translateY(10px); } }
-.enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
-.enk-story h1 { animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards; }
-.enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
-.enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
-.enk-booking { animation: enk-rise 300ms var(--enk-ease-out) backwards; }
-
 @media (max-width: 900px) {
   .enk-nav, .enk-phone { display: none; }
-  .enk-header { height: auto; padding-block: 14px; gap: 16px; }
-  .enk-brand-name { font-size: 25px; }
-  .enk-brand-sub { font-size: 10px; letter-spacing: 0.16em; }
-  .enk-book { flex-shrink: 0; padding: 11px 15px; font-size: 13px; }
+  .enk-header {
+    height: auto;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .enk-brand,
+  .enk-brand-link {
+    min-width: 0;
+  }
+  .enk-brand { flex: 1 1 auto; }
+  .enk-brand-name { font-size: 24px; }
+  .enk-brand-sub { font-size: 9px; letter-spacing: 0.12em; }
+  .enk-header-actions { flex: 0 0 auto; gap: 0; }
+  .enk-book {
+    min-height: 44px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
   .enk-hero { grid-template-columns: 1fr; min-height: 0; }
   .enk-visual { order: -1; min-height: 300px; }
   .enk-visual figcaption { top: auto; bottom: 16px; right: 16px; font-size: 11px; }
@@ -256,10 +287,6 @@
   }
   .enk-booking label:nth-of-type(2) { border-right: 0; }
   .enk-booking button { grid-column: 1 / -1; padding: 17px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .enk-kicker, .enk-story h1, .enk-lede, .enk-actions, .enk-booking { animation: none; }
 }
 
 /* ─── Brand link (rooms page — header wraps in an anchor) ─────────────────── */
@@ -315,7 +342,6 @@
   border: 1px solid rgba(245, 239, 226, 0.14);
   pointer-events: none;
 }
-.enk-rooms-hero-copy .enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
 .enk-rooms-hero-copy h1 {
   margin: 0 0 24px;
   font-family: var(--serif);
@@ -323,11 +349,8 @@
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.01em;
-  animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards;
 }
 .enk-rooms-hero-copy h1 em { font-style: italic; color: var(--honey); }
-.enk-rooms-hero-copy .enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
-.enk-rooms-hero-copy .enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
 
 /* Room types section */
 .enk-room-types {
@@ -557,8 +580,12 @@
   font-size: 20px;
   font-weight: 600;
 }
-.enk-page-booking input:focus,
-.enk-page-booking select:focus { outline: 2px solid var(--honey); outline-offset: 3px; }
+.enk-page-booking input:focus-visible,
+.enk-page-booking select:focus-visible {
+  outline: 3px solid var(--cream-bright);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--pine-deep);
+}
 .enk-page-booking button {
   border: 0;
   padding: 0 28px;
@@ -604,10 +631,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .enk-rooms-hero-copy .enk-kicker,
-  .enk-rooms-hero-copy h1,
-  .enk-rooms-hero-copy .enk-lede,
-  .enk-rooms-hero-copy .enk-actions { animation: none; }
   .enk-room-card,
   .enk-room-card-image img { transition: none; }
 }
@@ -647,12 +670,8 @@
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.01em;
-  animation: enk-rise 360ms 60ms var(--enk-ease-out) backwards;
 }
 .enk-int-hero-copy h1 em { font-style: italic; color: var(--honey); }
-.enk-int-hero-copy .enk-kicker { animation: enk-rise 360ms var(--enk-ease-out) backwards; }
-.enk-int-hero-copy .enk-lede { animation: enk-rise 360ms 120ms var(--enk-ease-out) backwards; }
-.enk-int-hero-copy .enk-actions { animation: enk-rise 360ms 180ms var(--enk-ease-out) backwards; }
 .enk-int-hero-image { position: relative; margin: 0; overflow: hidden; }
 .enk-int-hero-image img {
   width: 100%;
@@ -1097,10 +1116,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .enk-int-hero-copy .enk-kicker,
-  .enk-int-hero-copy h1,
-  .enk-int-hero-copy .enk-lede,
-  .enk-int-hero-copy .enk-actions { animation: none; }
   .enk-explore-card a,
   .enk-explore-image img,
   .enk-character-card,

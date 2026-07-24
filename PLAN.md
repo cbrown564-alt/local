@@ -3,7 +3,7 @@
 Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q release gate and retroactive triage complete with zero public passes; all 20 concepts are internal pending evidence** · South Down Signs on hold
+Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q complete with zero public passes; Enniskeen design-cleared at 7.68 but release blocked on photography permission, and 19 concepts remain internal pending review** · South Down Signs on hold
 
 ---
 
@@ -130,10 +130,10 @@ delivers).
 
 ---
 
-## Phase Q — Concept review gate and portfolio requalification ⚠️ v1.1 alignment open
+## Phase Q — Concept review gate and portfolio requalification ✅
 
-**Initial zero-pass release hold completed 24 July 2026; standard corrected to
-v1.1 on 24 July 2026. Work mode: Promote.** `CONCEPT_DESIGN_REVIEW.md` sets the minimum
+**Completed 24 July 2026; standard corrected to v1.1 and proved through one
+complete review-repair-re-review cycle. Work mode: Promote.** `CONCEPT_DESIGN_REVIEW.md` sets the minimum
 standard for every public concept. A concept passes only when one independent
 non-creator reviewer directly inspects one bounded, complete visitor loop, the
 weighted score is at least 7.0, the four core categories score at least 7.0,
@@ -209,7 +209,7 @@ Unavailable permission, photography or external evidence is not a false blocker
 for Phase Q: it prevents that concept from being public, not the portfolio from
 being made truthful.
 
-### Q3 — Review the strongest concepts ✅ first live verdict complete
+### Q3 — Review the strongest concepts ✅ first workflow complete
 
 Fully review concepts in this order:
 
@@ -229,10 +229,12 @@ Hotel Enniskeen was reviewed first because it has the strongest historical
 craft and deepest complete loop. The independent reviewer scored it 7.10 on 24
 July 2026, but returned **Revise** because the missing-date path, exact phone
 layout and small-text/focus contrast failed design gates and core category
-floors. Its imagery must still be licensed or replaced before any public
+floors. After one focused repair, the same reviewer scored the fixed source
+7.68 and passed every design gate. Its final status is **Release blocked**
+because its imagery must still be licensed or replaced before any public
 restoration.
 
-### Q4 — Repair once, restore or retire ⚠️ Enniskeen cycle in progress
+### Q4 — Repair once, restore or retire ✅ Enniskeen cycle complete
 
 - Give a concept that receives Revise one focused repair cycle.
 - Re-run the affected checks and return the fixed version to the independent
@@ -244,8 +246,14 @@ restoration.
 - Restore passing concepts to public transformations individually; do not wait
   for the whole historical portfolio.
 
-Hotel Enniskeen has entered its one focused repair cycle. All other candidates
-remain internal and have not consumed a repair cycle.
+Hotel Enniskeen completed its one focused repair cycle on 24 July 2026. The
+repair added an announced and focused missing-date recovery, preserved the
+selected stay length, verified the exact Bookin1 destination, removed phone
+overflow, raised small-text and focus contrast, and removed the generic
+entrance sequence. The independent re-review passed all six design gates at
+7.68. The concept remains internal only because photography permission or
+publishable replacements are still missing. All other candidates remain
+internal and have not consumed a repair cycle.
 
 ### Q5 — Keep public truth current ✅
 
@@ -287,13 +295,13 @@ categories. An overdue concept leaves public transformations until refreshed.
 - the homepage and `/transformations/` review states were directly checked at
   1265×710 and 390×844 with no horizontal overflow, no portfolio cards and no
   browser warnings
-- the private Hotel Enniskeen record preserves the initial over-strict stop;
-  v1.1 now requires design scoring to continue while recording photography
-  rights as a separate release blocker
+- the private Hotel Enniskeen record proves the complete blind-review,
+  single-repair and independent re-review workflow; the design passed at 7.68
+  while photography rights remained a separate release blocker
 - `PROSPECTS.md` records all twenty concepts as internal pending evidence, and
   the eighteen earlier `Concept published` data stages were returned to
   `Concept in progress`
-- no Pass, one-sheet release, outreach action or repair-cycle claim was created
+- no public Pass, one-sheet release or outreach action was created
 
 ### Current status
 
@@ -308,16 +316,19 @@ conditions, accept the four core floors at 7.0 and three supporting floors at
 valid Release blocked record is accepted while a false Pass fails on its
 design gate, release condition, score floors, truth age and fingerprint.
 
-**Public Passes:** none. Hotel Enniskeen has one independent Revise record; no
-historical craft score was converted into a v1.1 Pass.
+**Public Passes:** none. Hotel Enniskeen has a current independent design pass
+at 7.68, recorded as **Release blocked** because photography permission is
+missing. No historical craft score was converted into a v1.1 Pass.
 
-**Review backlog:** nineteen concepts remain unreviewed. Hotel Enniskeen is in
-its one focused repair cycle; `PROSPECTS.md` records the next design action and
-separate release dependency for every candidate.
+**Review backlog:** nineteen concepts remain unreviewed. Hotel Enniskeen has
+used and completed its one focused repair cycle; `PROSPECTS.md` records the
+next design action and separate release dependency for every candidate.
 
-**Next executable action:** complete Enniskeen's focused repair, rerun the
-affected checks and return it to the same independent reviewer. Resolve or
-replace its photography before restoring it publicly.
+**Next executable action after Phase Q:** secure permission for Enniskeen's
+photography or replace it with publishable assets, then change the release
+condition only after verifying the reviewed source fingerprint is still
+current. In parallel, the next independent design review may begin with the
+strongest remaining internal candidate.
 
 ---
 
