@@ -7,10 +7,11 @@ summary and must be updated whenever a prospect changes stage.
 
 Snapshot: 24 July 2026 · 27 businesses verified · **zero public transformations
 after Phase Q** · 20 internal concept routes · Enniskeen F1's prior source
-passed design re-review at 7.68; the current disclosed generated-image source
-is Reviewable · Buck's Head F2 is retired after its final 7.15 Revise · no
-one-sheet release or outreach is permitted until a concept has a current
-independent public Pass
+passed design re-review at 7.68; its current disclosed generated-image source
+was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
+rights but fail subject proof of the real hotel · Buck's Head F2 is retired
+after its final 7.15 Revise · no one-sheet release or outreach is permitted
+until a concept has a current independent public Pass
 
 ## Pipeline stages
 
@@ -65,7 +66,7 @@ consumed. All concept routes remain internal and `noindex`;
 
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
-| Hotel Enniskeen | Current generated-image source Reviewable; prior source passed design at 7.68 after its one repair cycle | Keep the disclosed generated version internal; obtain publishable real hotel imagery before re-review because generated scenes do not satisfy subject proof |
+| Hotel Enniskeen | Current generated-image source re-reviewed at 7.15 **Revise**: strong loop/truth/responsive, but the *fictional* generated visuals fail the subject-proof gate; prior photography source passed design at 7.68 | Produce faithful, disclosed visualisations of the real Enniskeen (real painted-render facade and rooms) — or licensed real photography — then re-review the affected categories (evidence, identity, first viewport, craft) to clear subject proof. Keep internal until then |
 | Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
 | The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
 | Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
@@ -96,8 +97,18 @@ reviewer passed every design gate at 7.68. Photography permission remains the
 sole blocker on that reviewed source. The reused photography was subsequently
 replaced by original AI-generated visualisations with a site-wide disclosure.
 That resolves the asset-rights condition, but materially changes identity,
-composition and craft, so the current source is Reviewable rather than
+composition and craft, so the current source returned to Reviewable rather than
 inheriting the 7.68 score.
+
+That generated-image source was re-reviewed on 24 July 2026 against the amended
+subject-proof gate and scored 7.15 **Revise**. The bounded loop, Bookin1
+handoff, missing-date recovery, responsive/keyboard behaviour and disclosure
+remain strong, but the generated visuals are declared *fictional* (the data
+file states they "do not document Enniskeen's actual building, rooms, food or
+grounds"), so they clear rights and deception yet do not prove the real hotel —
+the subject-proof gate fails. Publishing needs a faithful, disclosed
+visualisation of the real Enniskeen, or licensed real photography, and a
+re-review of the affected categories.
 
 The Buck's Head received the second independent v1.1 review on 24 July 2026.
 The live ResDiary handoff and unavailable-date recovery worked, but four named
@@ -114,7 +125,7 @@ repair cycle. Photo permission also remains unresolved.
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *internal Reviewable · prior source passed v1.1 design at 7.68 · current source uses disclosed generated visualisations · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Generated assets remove the reused-photo rights issue but do not provide real subject proof; publishable real hotel imagery, targeted re-review, domain, production-form and printed-QR gates remain before publication or outreach |
+| **Hotel Enniskeen** — *internal Revise (7.15) on the current generated-image source · prior photography source passed v1.1 design at 7.68 · current source uses disclosed but fictional generated visualisations · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Generated assets remove the reused-photo rights issue but are declared fictional, so they fail subject proof; faithful disclosed visuals of the real hotel (or licensed photography) + re-review, plus domain, production-form and printed-QR gates, remain before publication or outreach |
 | **Mourne Cycles** — *internal pending Phase Q evidence · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
 | **Donard Veterinary Centre** — *internal pending Phase Q evidence · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
@@ -291,12 +302,15 @@ reinvent:
    use, images must be supplied by the business, captured by Mourne Made or
    covered by permission or a licence that allows that use; publication on the
    business's existing site proves the source, not the right to reuse it.
-   Credit every reused asset on the transformation page. Never use generic
-   stock or generated imagery to impersonate the real premises, staff,
-   products, food, rooms or completed work. An image-led business stays
-   internal until suitable subject imagery is available. For a genuinely
-   non-image-led brief, a specific real artefact may carry the proof; CSS
-   costume may not.
+   Credit every reused asset on the transformation page. Since the
+   24 July 2026 subject-proof amendment, a disclosed, subject-specific
+   generated visualisation faithful to the real premises may carry subject
+   proof and is publishable, so an image-led business need no longer stay
+   internal purely for want of licensed photography. Generic stock never
+   counts, and no image — real or generated — may be passed off as a genuine
+   photograph or impersonate premises, staff, products, food, rooms or
+   completed work that do not exist. For a genuinely non-image-led brief, a
+   specific real artefact may carry the proof; CSS costume may not.
 3. **Keep the existing plumbing.** Point concept actions at whatever the
    business already pays for (here, the Bookin1 engine and voucher shop) so
    the proposal reads as an upgrade, not a rebuild that throws away spend.
