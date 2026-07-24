@@ -42,13 +42,16 @@ pretending that breadth exists is not.
 
 The historical craft scores below are a baseline diagnosis, not passes under
 this rubric. They were holistic judgements made before the rubric existed.
-Eighteen concepts therefore have status **not yet reviewed under v1.1**.
+Thirteen concepts therefore have status **not yet reviewed under v1.1**.
 Enniskeen completed the first independent workflow: the reviewed source passed
 design at 7.68. Its photography was then replaced by disclosed generated
 visualisations; that material change makes the current source Reviewable until
 the affected categories are checked again. The Buck's Head received the second
 workflow's initial verdict, Revise at 6.53. Its one focused repair raised the
 score to 7.15, but a truth gate and core floor still failed, so it is retired.
+The next five candidates — Mourne Cycles, Newcastle Chamber, Kent Amusements,
+Donard Veterinary and Cúpla — each received a first independent v1.1 verdict of
+**Revise** (see the Phase Q review batch below).
 
 ### Acceptance rule
 
@@ -396,8 +399,36 @@ the wrong panel and a small tab label failed contrast. The reviewer returned
 behavior, contrast, blank-date recovery, photo exposure and the disclosure
 collision. The fixed source scored 7.15, but direct hash navigation bypassed
 the illustrative-price warning. Claims honesty and the core truth score still
-failed, so the concept is retired after its one repair cycle. Eighteen
-concepts remain unreviewed.
+failed, so the concept is retired after its one repair cycle.
+
+### Phase Q review batch — next five candidates (24 July 2026)
+
+The next five candidates by public value and historical craft each received a
+first independent v1.1 verdict. **All five returned Revise**, and the same three
+regressions the historical review predicted did the damage: absent real subject
+imagery, invented or misstated claims, and brand-second first viewports. None
+has yet consumed its one repair cycle. Thirteen concepts remain unreviewed.
+
+| Concept | Weighted | Verdict | Design gates failed | Deciding defects |
+|---|---:|---|---|---|
+| Mourne Cycles | 5.93 | Revise | claims, subject proof, responsive | 390 px header overflow clips the primary CTA; generic Trek/stock imagery captioned "from the range in store"; invented, unlabelled hire prices and service tiers |
+| Newcastle Chamber | 6.28 | Revise | claims, real loop, subject proof | Homepage search is theatre (every query returns all 18 cards); real named businesses listed as "members"; no real place/artefact proof |
+| Kent Amusements | 5.88 | Revise | subject proof, responsive | 390 px header overflow clips the "Call" CTA; the whole hero is an SVG booth (costume) with zero real arcade imagery. (Honesty is a genuine strength — offers/hours self-label and defer to Facebook) |
+| Donard Veterinary | 5.93 | Revise | claims, real loop, subject proof | Appointment form is a decorative `mailto` GET — submitting opens a blank email and discards every typed field; names "VidiVet" when the practice uses PetsApp; no pet/clinic imagery |
+| Cúpla | 6.43 | Revise | claims, subject proof | Menu priced in euro for a Co. Down (sterling) café — the exact Dundrum-Dublin conflation the verification warns against — and unlabelled/unsourced; no café imagery. (Strongest identity of the batch: twin-ring, Irish-first bilingual) |
+
+Two portfolio-wide craft defects recurred outside the scored gates and should be
+fixed as a set, not per concept: every home page links its own wordmark with
+`href="#"`, so `ConceptLayout`'s inert-link script renders the **brand mark
+struck-through and disabled** on its own front page; and three of the five wrap
+their header badly at 390 px, pushing the primary action off-screen. Both are
+cheap, shared-chassis fixes.
+
+Calibration checkpoint (seven completed reviews): the batch clusters tightly at
+5.9–6.4 with no gate-clean concept, consistent with Buck's Head's 6.53 opener
+and below Enniskeen's 7.68. No single-reviewer drift is evident — the verdicts
+turn on concrete, reproducible defects (measured overflow, an ignored query
+parameter, a verified blank-email submit, a wrong currency), not taste.
 
 The repository now enforces the state:
 
