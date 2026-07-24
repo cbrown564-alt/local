@@ -1,0 +1,106 @@
+---
+interface Props {
+  id?: string;
+  headingId?: string;
+}
+
+const {
+  id,
+  headingId,
+} = Astro.props;
+---
+
+<form
+  class="dv-request"
+  id={id}
+  method="post"
+  data-dv-request
+  aria-label="Request an appointment"
+>
+  <h2 id={headingId}>Request an appointment</h2>
+  <p>
+    Prepare an email with these details. Nothing is sent until you review and
+    send it from your email app.
+  </p>
+  <label>
+    Your name
+    <input type="text" name="name" autocomplete="name" required />
+  </label>
+  <div class="dv-request-row">
+    <label>
+      Your pet
+      <select name="pet">
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Small pet</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>
+      Preferred day
+      <select name="day">
+        <option>First available</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+      </select>
+    </label>
+  </div>
+  <label>
+    Phone number
+    <input type="tel" name="phone" autocomplete="tel" required />
+  </label>
+  <button type="submit">Prepare email request</button>
+  <div class="dv-request-handoff" data-dv-handoff role="status" hidden tabindex="-1">
+    <strong>Your details are ready.</strong>
+    <span>Open the draft, check it, then press send in your email app.</span>
+    <a data-dv-email-link href="mailto:info@donardveterinaryclinic.co.uk">
+      Open email draft
+    </a>
+  </div>
+  <small>
+    Or call <a href="tel:+442843729414">028 4372 9414</a> · this independent
+    concept does not send appointment requests itself
+  </small>
+</form>
+
+<script>
+  const recipient = "info@donardveterinaryclinic.co.uk";
+
+  document.querySelectorAll<HTMLFormElement>("[data-dv-request]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const name = String(data.get("name") ?? "").trim();
+      const pet = String(data.get("pet") ?? "").trim();
+      const day = String(data.get("day") ?? "").trim();
+      const phone = String(data.get("phone") ?? "").trim();
+      const query = new URLSearchParams({
+        subject: `Appointment request for a ${pet.toLowerCase()}`,
+        body: [
+          "Hello Donard Veterinary Clinic,",
+          "",
+          "I would like to request an appointment.",
+          `Name: ${name}`,
+          `Pet: ${pet}`,
+          `Preferred day: ${day}`,
+          `Phone: ${phone}`,
+          "",
+          "Please call me to confirm a suitable time.",
+        ].join("\n"),
+      });
+      const handoff = form.querySelector<HTMLElement>("[data-dv-handoff]");
+      const link = form.querySelector<HTMLAnchorElement>("[data-dv-email-link]");
+      if (!handoff || !link) return;
+
+      link.href = `mailto:${recipient}?${query}`;
+      handoff.hidden = false;
+      handoff.focus();
+    });
+  });
+</script>

@@ -13,11 +13,14 @@ const base = "/concepts/newcastle-chamber";
     <div class="nc-dir-head">
       <div class="nc-dir-head-text">
         <p class="nc-kicker">Member directory · Newcastle</p>
-        <h1>Main Street traders, <em>in one place.</em></h1>
+        <h1>Example Main Street listings, <em>in one place.</em></h1>
         <p class="nc-dir-intro">
-          Businesses that have joined the Chamber — listed by trade so you can find what you need in town.
-          Updated as membership grows. <a href={`${base}/join/`}>Ask to be listed</a>, or <a href={chamber.emailHref}>email the Chamber</a>.
+          This illustrative list demonstrates the directory experience; it does
+          not identify verified Chamber members. A live version would contain
+          committee-owned membership data. <a href={`${base}/join/`}>Ask to be
+          listed</a>, or <a href={chamber.emailHref}>email the Chamber</a>.
         </p>
+        <p class="nc-dir-search-status" data-nc-search-status role="status" hidden></p>
       </div>
       <nav class="nc-dir-tabs" aria-label="Jump to category">
         <a class="nc-dir-tab nc-dir-tab--active" href="#all">All</a>
@@ -36,7 +39,11 @@ const base = "/concepts/newcastle-chamber";
           <h2 class="nc-dir-cat-label">{cat.label}</h2>
           <ul class="nc-dir-grid" role="list">
             {members.filter((m) => m.category === cat.id).map((member) => (
-              <li class="nc-dir-card">
+              <li
+                class="nc-dir-card"
+                data-nc-member
+                data-search-text={`${member.name} ${member.trade} ${member.note}`.toLowerCase()}
+              >
                 <p class="nc-dir-card-name">{member.name}</p>
                 <p class="nc-dir-card-trade">{member.trade}</p>
                 <p class="nc-dir-card-note">{member.note}</p>
@@ -45,6 +52,10 @@ const base = "/concepts/newcastle-chamber";
           </ul>
         </section>
       ))}
+      <p class="nc-dir-empty" data-nc-empty hidden>
+        No illustrative listings match that search. Try a trade such as café,
+        pharmacy, hotel or gifts.
+      </p>
     </div>
 
     <div class="nc-dir-join">
@@ -60,3 +71,31 @@ const base = "/concepts/newcastle-chamber";
     </div>
   </main>
 </ChamberConceptShell>
+
+<script>
+  const query = new URLSearchParams(window.location.search).get("q")?.trim() ?? "";
+  const normalised = query.toLocaleLowerCase("en-GB");
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-nc-member]")];
+  const categories = [...document.querySelectorAll<HTMLElement>(".nc-dir-category")];
+  const status = document.querySelector<HTMLElement>("[data-nc-search-status]");
+  const empty = document.querySelector<HTMLElement>("[data-nc-empty]");
+
+  if (normalised) {
+    let visibleCount = 0;
+    for (const card of cards) {
+      const matches = card.dataset.searchText?.includes(normalised) ?? false;
+      card.hidden = !matches;
+      if (matches) visibleCount += 1;
+    }
+    for (const category of categories) {
+      category.hidden = !category.querySelector("[data-nc-member]:not([hidden])");
+    }
+    if (status) {
+      status.hidden = false;
+      status.textContent = visibleCount === 1
+        ? `1 illustrative listing for “${query}”.`
+        : `${visibleCount} illustrative listings for “${query}”.`;
+    }
+    if (empty) empty.hidden = visibleCount !== 0;
+  }
+</script>

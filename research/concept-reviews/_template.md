@@ -31,7 +31,9 @@ Exposed routes and actions outside the loop:
 
 Declared placeholders, stubs and limitations:
 
-- [Item and how it is labelled in the experience.]
+- [Item and how it is labelled in the experience. Inactive links use the
+  explicit `data-concept-placeholder` marker; a bare `href="#"` is not
+  permitted.]
 
 Closest portfolio neighbours:
 

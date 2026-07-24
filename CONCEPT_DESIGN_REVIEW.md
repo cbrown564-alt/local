@@ -224,6 +224,16 @@ The creator supplies:
 - `pnpm build`, `pnpm test:concepts` and relevant journey-test output;
 - the two existing concepts most likely to expose portfolio repetition.
 
+`pnpm test:concepts` discovers every route under `src/pages/concepts`, so a new
+concept cannot be omitted from the portfolio check by forgetting to add it to a
+route list. It renders each route at 1265×710 and 390×844 and fails on
+horizontal overflow, clipped header actions, broken internal concept links,
+inert or misdirected brand links, browser errors and undeclared `href="#"`
+placeholders. An intentionally inactive prototype control must use
+`data-concept-placeholder`; real navigation must use its actual destination.
+These mechanical failures are repaired before independent review rather than
+being rediscovered and scored by the reviewer.
+
 The review may start when the reviewer can experience the bounded loop and
 judge every scored category. Missing evidence needed to judge the design must
 be collected or reproduced during review. Missing evidence needed only for
