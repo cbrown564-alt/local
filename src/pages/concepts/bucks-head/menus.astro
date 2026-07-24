@@ -22,13 +22,7 @@ import ConceptLayout from "../../../layouts/ConceptLayout.astro";
         </span>
       </a>
       <nav class="bh-nav" aria-label="Concept navigation">
-        {/* Stubs stay inert here as on the landing: pointing them at the home
-            page would imply pages this concept does not include. */}
         <a href="/concepts/bucks-head/menus/" aria-current="page">Menus</a>
-        <a href="#">Fish &amp; Farm</a>
-        <a href="#">Gift vouchers</a>
-        <a href="#">Rooms</a>
-        <a href="#">Contact</a>
       </nav>
       <a class="bh-book" href={resdiary}>Book a table</a>
     </header>
@@ -37,21 +31,26 @@ import ConceptLayout from "../../../layouts/ConceptLayout.astro";
       <div class="bh-menus-hero-inner">
         <p class="bh-menus-eyebrow">Main Street · Dundrum</p>
         <h1>The menus <em>— read here, not downloaded.</em></h1>
+        <p class="bh-menu-notice">
+          <strong>Illustrative concept menu.</strong> Dishes are adapted from the pub's
+          public menus checked 24 July 2026; prices and availability may differ.
+          Confirm with the restaurant.
+        </p>
       </div>
       <div class="bh-tabs" role="tablist" aria-label="Menu sections">
-        <button class="bh-tab" role="tab" aria-selected="true"  aria-controls="panel-alacarte" id="tab-alacarte">
+        <button class="bh-tab" role="tab" aria-selected="true"  aria-controls="panel-alacarte" id="tab-alacarte" tabindex="0">
           À la carte <span>evenings</span>
         </button>
-        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-bar"      id="tab-bar">
+        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-bar"      id="tab-bar" tabindex="-1">
           Bar menu <span>Front Bar</span>
         </button>
-        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-sunday"   id="tab-sunday">
+        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-sunday"   id="tab-sunday" tabindex="-1">
           Sunday <span>12:30–7:30</span>
         </button>
-        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-dessert"  id="tab-dessert">
+        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-dessert"  id="tab-dessert" tabindex="-1">
           Dessert <span>from the pass</span>
         </button>
-        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-drinks"   id="tab-drinks">
+        <button class="bh-tab" role="tab" aria-selected="false" aria-controls="panel-drinks"   id="tab-drinks" tabindex="-1">
           Drinks <span>cellar &amp; bar</span>
         </button>
       </div>
@@ -647,19 +646,59 @@ import ConceptLayout from "../../../layouts/ConceptLayout.astro";
       </aside>
 
     </div>
-<script>
-      const tabs = document.querySelectorAll<HTMLButtonElement>(".bh-tab");
-      const panels = document.querySelectorAll<HTMLElement>(".bh-menu-panel");
+    <script>
+      const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>(".bh-tab"));
+      const panels = Array.from(document.querySelectorAll<HTMLElement>(".bh-menu-panel"));
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
-          panels.forEach((p) => { delete p.dataset.active; });
+      const tabForHash = () => {
+        const panelId = window.location.hash.slice(1);
+        return tabs.find((tab) => tab.getAttribute("aria-controls") === panelId) ?? tabs[0];
+      };
 
-          tab.setAttribute("aria-selected", "true");
-          const target = document.getElementById(tab.getAttribute("aria-controls") ?? "");
-          if (target) target.dataset.active = "true";
+      const activateTab = (
+        tab: HTMLButtonElement,
+        options: { updateHash?: boolean; focus?: boolean } = {},
+      ) => {
+        const panelId = tab.getAttribute("aria-controls");
+        if (!panelId) return;
+
+        tabs.forEach((candidate) => {
+          const selected = candidate === tab;
+          candidate.setAttribute("aria-selected", String(selected));
+          candidate.tabIndex = selected ? 0 : -1;
+        });
+
+        panels.forEach((panel) => {
+          const selected = panel.id === panelId;
+          panel.hidden = !selected;
+          if (selected) panel.dataset.active = "true";
+          else delete panel.dataset.active;
+        });
+
+        if (options.updateHash && window.location.hash !== `#${panelId}`) {
+          window.history.pushState(null, "", `#${panelId}`);
+        }
+        if (options.focus) tab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => activateTab(tab, { updateHash: true }));
+        tab.addEventListener("keydown", (event) => {
+          let nextIndex: number | undefined;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+          if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = tabs.length - 1;
+          if (nextIndex === undefined) return;
+
+          event.preventDefault();
+          activateTab(tabs[nextIndex], { updateHash: true, focus: true });
         });
       });
+
+      const activateFromHistory = () => activateTab(tabForHash(), { focus: false });
+      window.addEventListener("hashchange", activateFromHistory);
+      window.addEventListener("popstate", activateFromHistory);
+      activateFromHistory();
     </script>
 </ConceptLayout>

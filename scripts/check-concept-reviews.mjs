@@ -343,12 +343,14 @@ const validateScore = (score, label, errors) => {
   }
 };
 
-const weightedScoreFor = (scores) =>
-  Number(
-    scoreKeys
-      .reduce((total, key) => total + scores[key] * scoreWeights[key], 0)
-      .toFixed(2),
+const weightedScoreFor = (scores) => {
+  const halfPointWeightedPercent = scoreKeys.reduce(
+    (total, key) =>
+      total + Math.round(scores[key] * 2) * Math.round(scoreWeights[key] * 100),
+    0,
   );
+  return Math.round(halfPointWeightedPercent / 2) / 100;
+};
 
 const everyBooleanTrue = (value, keys) =>
   isPlainObject(value) && keys.every((key) => value[key] === true);
