@@ -45,8 +45,15 @@ this rubric. They were holistic judgements made before the rubric existed.
 Thirteen concepts therefore have status **not yet reviewed under v1.1**.
 Enniskeen completed the first independent workflow: the reviewed source passed
 design at 7.68. Its photography was then replaced by disclosed generated
-visualisations; that material change makes the current source Reviewable until
-the affected categories are checked again. The Buck's Head received the second
+visualisations; that material change returned the source to Reviewable, and it
+has now been re-reviewed against the amended subject-proof gate (weighted 7.15,
+**Revise**). Everything but the images is strong, but the generated visuals are
+declared *fictional* — the concept's own source states they "do not document
+Enniskeen's actual building, rooms, food or grounds" — so they clear asset
+rights but do not provide subject proof of the real hotel; that gate fails.
+The next step is faithful, disclosed visualisation of the real Enniskeen (or
+licensed real photography), then a re-review of the affected categories. The
+Buck's Head received the second
 workflow's initial verdict, Revise at 6.53. Its one focused repair raised the
 score to 7.15, but a truth gate and core floor still failed, so it is retired.
 The next five candidates — Mourne Cycles, Newcastle Chamber, Kent Amusements,
@@ -85,9 +92,33 @@ verdict **Revise**, regardless of the average.
 | Current and respectful | Verification is no more than one month old; the captured current presence is representative; criticism describes the public experience without mocking the business. |
 | Claims are honest | Every material fact, quotation, price, service and placeholder is sourced or visibly labelled. The concept implies no approval, relationship or result that does not exist. |
 | Real visitor loop | The primary visitor job can be completed, or reaches an explicitly labelled prototype handoff. No fake search, inert filter, decorative submit, invented live status or unavailable price is presented as working. |
-| Subject proof | The first viewport contains convincing visual proof of this subject. Image-led businesses use real subject/product/place imagery for internal evaluation. Generic stock or generated imagery never impersonates the real premises, staff, products, food, rooms or completed work. A non-image-led concept may use an equally specific real artefact; CSS costume is not proof. |
+| Subject proof | The first viewport contains convincing visual proof of this subject. Proof may be real subject/product/place imagery, or a disclosed, subject-specific generated visualisation that is openly labelled as such and stays faithful to the real premises (see the 24 July 2026 amendment below). Generic stock never counts, and no image — real or generated — may be passed off as something it is not: generated imagery presented as a real photograph, or any image impersonating premises, staff, products, food, rooms or completed work that do not exist, fails this gate. A non-image-led concept may use an equally specific real artefact; CSS costume is not proof. |
 | Responsive and keyboard usable | At 390×844 and 1265×710 there is no unintended horizontal overflow, hidden essential content or broken hierarchy. Navigation, controls, disclosure and the primary action work by keyboard with visible focus. |
 | Readable and motion-safe | Body text and controls meet 4.5:1 contrast; large text meets 3:1; meaningful images have useful alternatives; reduced motion removes nonessential movement. |
+
+**Amendment — 24 July 2026 (owner decision).** The subject-proof gate previously
+excluded all generated imagery. It now admits **disclosed generated
+visualisations** as subject proof, subject to three conditions, because the real
+harm the gate protects against is *deception*, not the tool used to make the
+picture:
+
+1. **Subject-specific.** The visualisation depicts *this* business — its actual
+   place, product, rooms or work — accurately. It must not invent features,
+   rooms, views or products the business does not have. A generic or category
+   scene is still stock and still fails.
+2. **Openly disclosed.** The generated origin is stated to the visitor (a
+   site-wide or per-image visualisation notice). An image presented as a genuine
+   photograph of the premises still fails, whether or not it was generated.
+3. **Faithful, not flattering to the point of misrepresentation.** The
+   visualisation may not depict a standard the business cannot deliver.
+
+This makes generated imagery a legitimate *internal design proof and a
+publishable asset*, resolving the common case where a concept cannot obtain real
+photography and cannot license the business's own. It does not lower the bar on
+honesty: undisclosed or impersonating imagery, and generic stock, remain gate
+failures. Rationale: a disclosed visualisation of the real subject is closer to
+an honest architectural render than to stock deception, and the portfolio's
+own ethics rest on disclosure rather than on the capture method.
 
 ### Public release conditions
 
@@ -326,7 +357,12 @@ publishable limitations.
   overdue truth check removes the concept from `/transformations/` until
   refreshed.
 - Change rubric weights or floors only in this document, with a dated reason.
-  Never edit the rule to make a candidate pass.
+  Never edit the rule to make a candidate pass. The 24 July 2026 subject-proof
+  amendment is recorded as a general standard applying to every concept, not an
+  Enniskeen carve-out: it changes what evidence *any* concept may use for
+  subject proof, and each affected concept must still earn its categories and
+  gates on re-review. It does not waive a floor and does not itself pass a
+  candidate.
 - Do not compare the historical holistic scores below directly with v1.1
   scores. A new score replaces the historical one for acceptance purposes but
   the baseline remains as history.
@@ -388,9 +424,27 @@ record was **Release blocked** because no photography permission or
 publishable replacement was filed. The reused photography was subsequently
 replaced by original AI-generated visualisations with an explicit site-wide
 disclosure. The asset-rights condition is now clear, but the material image
-change affects truth/respect, identity, composition and craft. The current
-source therefore returns to **Reviewable** instead of carrying the superseded
-7.68 score forward.
+change affects truth/respect, identity, composition and craft, so the source
+returned to **Reviewable** instead of carrying the superseded 7.68 score
+forward.
+
+That Reviewable source has now been independently re-reviewed against the
+24 July 2026 subject-proof amendment. The bounded loop, honest Bookin1 handoff,
+missing-date recovery, responsive/keyboard behaviour and disclosure are all
+strong, and the weighted score is 7.15. But the amendment admits generated
+imagery only when it is *faithful to the real subject*, and Enniskeen's visuals
+are the opposite by deliberate design: the concept's own data file records that
+they "do not document Enniskeen's actual building, rooms, food or grounds," and
+every alt text calls the house "fictional." A disclosed fictional country house
+resolves rights and deception but is not proof of *this* hotel, so the
+**subject-proof gate fails** and the verdict is **Revise**. The generated set
+is materially grander than the real house (dressed stone under a dramatic peak
+versus the actual painted-render house on a wooded hill), which underlines why
+it cannot stand in as subject proof. The path to a Pass is a faithful,
+disclosed visualisation of the real Enniskeen — or licensed real photography —
+followed by a re-review of the affected categories. As the designated flagship,
+Enniskeen may be reopened on that new imagery under the "new evidence or
+imagery" clause rather than being retired.
 
 The Buck's Head received the next independent v1.1 review. Its exact ResDiary
 handoff and unavailable-date recovery worked, but four named menu links opened
@@ -459,7 +513,7 @@ aesthetic lanes.
 | Can strong categories compensate for weak ones? | Only within limits. Truth, outcome, loop and accessibility must each reach 7.0; identity, composition and craft must each reach 6.0; the weighted result must reach 7.0. | A single supporting weakness should not erase an otherwise publishable concept, while strong styling must not hide a weak outcome, false claim or broken experience. | Review protects the consequential parts without demanding uniform strength in every category. | `CONCEPT_DESIGN_REVIEW.md` |
 | How much of a site must pass? | One bounded, complete visitor loop. Every exposed route or action outside it must work or be unmistakably labelled as outside the prototype. | Project guidance prefers one complete loop to many shallow screens; the portfolio mixes single pages and full sites. | Review rewards experiential depth without forcing every concept to become a full website. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
 | How long may a failed concept remain in repair? | One focused repair cycle. A second failure retires it unless new evidence, imagery, a materially different direction or explicit flagship status justifies reopening it. | An unlimited fix loop conflicts with the lean operating model and encourages polishing a weak thesis. | Revise has a bounded cost and an honest terminal state. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
-| What imagery can count as subject proof? | Real subject imagery, or a specific real artefact for a genuinely non-image-led brief. Generic stock and generated imagery cannot impersonate the business. Public use also requires documented rights or a publishable replacement. | The portfolio review identifies absent subject imagery as the main craft regression, while `PRODUCT.md` requires concepts, facts and client results to remain separate. | Rights can block release without preventing internal design evaluation. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
+| What imagery can count as subject proof? | Real subject imagery; a disclosed, subject-specific generated visualisation faithful to the real business (24 July 2026 amendment); or a specific real artefact for a genuinely non-image-led brief. Generic stock never counts, and no image may be passed off as a real photograph or impersonate what does not exist. Public use requires documented rights or a publishable asset — disclosed generated visuals satisfy the rights condition. | The portfolio review identifies absent subject imagery as the main craft regression; the amendment lets concepts that cannot obtain or license real photography still prove the subject honestly through disclosed visualisation. | Rights need no longer block a concept that can produce a faithful disclosed visualisation; deception still fails the gate. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
 | How does the retroactive audit start? | Review the strongest concepts by public value and likelihood of passing, then resolve release dependencies separately. | Missing paperwork says nothing about design quality, while a broken loop or dishonest claim does. | The review produces useful design evidence without weakening publication safeguards. | This document + `PROSPECTS.md` |
 | What if no concept passes yet? | Show a truthful temporary review state on the homepage and `/transformations/`; keep the request action but show no failed concept as proof. | Transformations are the product's primary proof, but retaining a failed example would contradict the release gate. | Public honesty outranks portfolio volume; concepts return individually after Pass. | `CONCEPT_DESIGN_REVIEW.md` + public routes |
 | How long does a Pass remain current? | The design score persists, but public release requires a lightweight truth refresh every 90 days. | Businesses, websites and external handoffs can change quickly; a dated initial review does not protect an indefinite public claim. | Unchanged concepts update one date; material changes trigger affected categories; overdue concepts leave public transformations. | Release data + verification evidence |
