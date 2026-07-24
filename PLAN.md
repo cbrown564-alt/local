@@ -209,7 +209,7 @@ Unavailable permission, photography or external evidence is not a false blocker
 for Phase Q: it prevents that concept from being public, not the portfolio from
 being made truthful.
 
-### Q3 — Review the strongest concepts ⚠️ reopen under v1.1
+### Q3 — Review the strongest concepts ✅ first live verdict complete
 
 Fully review concepts in this order:
 
@@ -225,14 +225,14 @@ desktop and phone experience before seeing the self-score. There is no owner
 override. One blind appeal by a different qualified reviewer is allowed and
 replaces the first verdict in full.
 
-Hotel Enniskeen was attempted first because it has the strongest historical
-craft and deepest complete loop. Its private record stopped before scoring
-because no photography permission was filed. The v1.1 correction makes that a
-release blocker, not a design-review blocker. Enniskeen now needs the live
-independent design review; its imagery must still be licensed or replaced
-before public restoration.
+Hotel Enniskeen was reviewed first because it has the strongest historical
+craft and deepest complete loop. The independent reviewer scored it 7.10 on 24
+July 2026, but returned **Revise** because the missing-date path, exact phone
+layout and small-text/focus contrast failed design gates and core category
+floors. Its imagery must still be licensed or replaced before any public
+restoration.
 
-### Q4 — Repair once, restore or retire ✅ not triggered
+### Q4 — Repair once, restore or retire ⚠️ Enniskeen cycle in progress
 
 - Give a concept that receives Revise one focused repair cycle.
 - Re-run the affected checks and return the fixed version to the independent
@@ -244,8 +244,8 @@ before public restoration.
 - Restore passing concepts to public transformations individually; do not wait
   for the whole historical portfolio.
 
-No candidate has yet received a v1.1 verdict. All remain internal, so no
-focused repair cycle has been consumed.
+Hotel Enniskeen has entered its one focused repair cycle. All other candidates
+remain internal and have not consumed a repair cycle.
 
 ### Q5 — Keep public truth current ✅
 
@@ -308,16 +308,16 @@ conditions, accept the four core floors at 7.0 and three supporting floors at
 valid Release blocked record is accepted while a false Pass fails on its
 design gate, release condition, score floors, truth age and fingerprint.
 
-**Public Passes:** none. No historical craft score was converted into a v1.1
-release record.
+**Public Passes:** none. Hotel Enniskeen has one independent Revise record; no
+historical craft score was converted into a v1.1 Pass.
 
-**Review backlog:** all twenty concepts. `PROSPECTS.md` records the next design
-review action and separate release dependency for each. Hotel Enniskeen is
-first by readiness; its live independent design scoring may proceed before
-photo permission is resolved.
+**Review backlog:** nineteen concepts remain unreviewed. Hotel Enniskeen is in
+its one focused repair cycle; `PROSPECTS.md` records the next design action and
+separate release dependency for every candidate.
 
-**Next executable action:** run the first live independent Enniskeen design
-review. Resolve or replace its photography before restoring it publicly.
+**Next executable action:** complete Enniskeen's focused repair, rerun the
+affected checks and return it to the same independent reviewer. Resolve or
+replace its photography before restoring it publicly.
 
 ---
 

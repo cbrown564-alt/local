@@ -63,7 +63,7 @@ consumed. All concept routes remain internal and `noindex`;
 
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
-| Hotel Enniskeen | Internal pending review; release blocked | Complete the live phone/desktop, loop and access review; photography permission or publishable replacements are required only for release |
+| Hotel Enniskeen | Revise; one focused repair cycle in progress; release blocked | Add the missing-date failure/recovery state, remove 390px overflow, repair small-text and focus contrast, then return the candidate to the independent reviewer; photography permission or publishable replacements are required only for release |
 | Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
 | The Buck's Head | Internal pending review; release blocked | Complete the two-journey design review under v1.1; pub-photo permission or publishable replacements are required only for release |
 | Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
@@ -84,11 +84,12 @@ consumed. All concept routes remain internal and `noindex`;
 | Castle Farm | Internal pending review; release blocked | Create the missing fresh verification record and complete design review; produce-photo rights or replacements are required for release |
 | Murdock Brothers | Internal pending evidence | Confirm trading first; then add specific subject proof and a truthful price/handoff model |
 
-The first attempted record is Hotel Enniskeen because it has the strongest
-historical craft and deepest loop. Its initial private record stopped before
-scoring because photography permission was missing. Under v1.1, that permission
-still blocks public use of the photographs but does not block live design
-review or category scoring.
+Hotel Enniskeen received the first independent v1.1 verdict on 24 July 2026
+because it has the strongest historical craft and deepest loop. The weighted
+score cleared 7.0, but the missing-date path, 390px header overflow and contrast
+defects failed core floors and design gates, so the result is **Revise**. Its
+one focused repair cycle is now in progress. Photography permission remains a
+separate release blocker and does not consume that cycle.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 
