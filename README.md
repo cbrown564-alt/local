@@ -137,5 +137,11 @@ grandfathering earlier work.
 - `scripts/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node scripts/capture-concept-screens.mjs <slug>`
 - `scripts/optimize-public-media.mjs` — derives two responsive WebP sizes and a WebM clip from each committed JPEG/MP4 master
 - `scripts/test-media-loading.mjs` — browser assertion that phone-sized WebP sources are lazy and demo video is fetched only after a play click
-- `scripts/test-concept-shell.mjs` — browser assertion that all ten concept identities resolve the shared header/navigation primitives and their own tokens
+- `scripts/test-concept-shell.mjs` — auto-discovers every concept route and audits
+  desktop and phone rendering for horizontal overflow, clipped header controls,
+  broken concept links, inert brand links, undeclared placeholders and browser
+  errors. Intentional inactive controls must use
+  `href="#" data-concept-placeholder`; real navigation, including every
+  homepage wordmark, must use its actual route. Run against `pnpm preview` with
+  `pnpm test:concepts`.
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks

@@ -27,7 +27,7 @@ const nights = [
   </div>
 
   <header class="dh-header">
-    <a class="dh-brand" href="#">
+    <a class="dh-brand" href="/concepts/donard-hotel/">
       <span class="dh-brand-crest" aria-hidden="true">D</span>
       <span class="dh-brand-text">
         <span class="dh-brand-name">The Donard</span>
@@ -35,9 +35,9 @@ const nights = [
       </span>
     </a>
     <nav class="dh-nav" aria-label="Concept navigation">
-      <a href="#">Rooms</a><a href="#">Dining</a><a href="#">The town</a><a href="#">Offers</a>
+      <a href="#" data-concept-placeholder>Rooms</a><a href="#" data-concept-placeholder>Dining</a><a href="#" data-concept-placeholder>The town</a><a href="#" data-concept-placeholder>Offers</a>
     </nav>
-    <a class="dh-book" href="#">Book direct</a>
+    <a class="dh-book" href="#" data-concept-placeholder>Book direct</a>
   </header>
 
   <main class="dh-main">
@@ -52,6 +52,10 @@ const nights = [
 
       <!-- The commission argument, made once, plainly. -->
       <div class="dh-direct">
+        <p class="dh-provisional">
+          Illustrative comparison — not current hotel pricing, availability or
+          direct-booking policy.
+        </p>
         <div class="dh-direct-row dh-direct-row--ota">
           <span class="dh-direct-label">Through a travel site</span>
           <span class="dh-direct-price">£119 <em>+ commission</em></span>
@@ -70,7 +74,7 @@ const nights = [
     <!-- Availability bar + room list: the front door the OTA replaced. -->
     <aside class="dh-book-panel" aria-labelledby="dh-book-title">
       <h2 id="dh-book-title">Check availability</h2>
-      <form class="dh-avail" onsubmit="return false">
+      <form class="dh-avail" method="post" data-dh-availability>
         <label class="dh-avail-field">
           <span>Arrive</span>
           <input type="date" value="2026-08-14" />
@@ -83,9 +87,14 @@ const nights = [
             <option>3 nights</option>
           </select>
         </label>
-        <button class="dh-avail-go" type="submit">Search rooms</button>
+        <button class="dh-avail-go" type="submit">Preview booking handoff</button>
       </form>
+      <p class="dh-avail-status" data-dh-availability-status role="status" hidden tabindex="-1">
+        Prototype handoff only — no live availability was checked. A production
+        version would now pass these dates to the hotel's chosen booking engine.
+      </p>
 
+      <p class="dh-book-foot">Illustrative room types and rates — not live availability or current hotel prices.</p>
       <ul class="dh-rooms">
         {nights.map((room) => (
           <li class="dh-room">
@@ -97,7 +106,17 @@ const nights = [
           </li>
         ))}
       </ul>
-      <p class="dh-book-foot">Rates illustrative. A live version runs the hotel's own booking engine — no OTA in between.</p>
     </aside>
   </main>
 </ConceptLayout>
+
+<script>
+  const availability = document.querySelector<HTMLFormElement>("[data-dh-availability]");
+  availability?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const status = document.querySelector<HTMLElement>("[data-dh-availability-status]");
+    if (!status) return;
+    status.hidden = false;
+    status.focus();
+  });
+</script>
