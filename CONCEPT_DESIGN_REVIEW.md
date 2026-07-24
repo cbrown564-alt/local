@@ -42,11 +42,13 @@ pretending that breadth exists is not.
 
 The historical craft scores below are a baseline diagnosis, not passes under
 this rubric. They were holistic judgements made before the rubric existed.
-Nineteen concepts therefore have status **not yet reviewed under v1.1**.
+Eighteen concepts therefore have status **not yet reviewed under v1.1**.
 Enniskeen completed the first independent workflow: the reviewed source passed
 design at 7.68. Its photography was then replaced by disclosed generated
 visualisations; that material change makes the current source Reviewable until
-the affected categories are checked again.
+the affected categories are checked again. The Buck's Head received the second
+workflow's initial verdict, Revise at 6.53, and is in its one focused repair
+cycle.
 
 ### Acceptance rule
 
@@ -385,8 +387,13 @@ replaced by original AI-generated visualisations with an explicit site-wide
 disclosure. The asset-rights condition is now clear, but the material image
 change affects truth/respect, identity, composition and craft. The current
 source therefore returns to **Reviewable** instead of carrying the superseded
-7.68 score forward. Nineteen concepts remain unreviewed and none has consumed
-a repair cycle.
+7.68 score forward.
+
+The Buck's Head received the next independent v1.1 review. Its exact ResDiary
+handoff and unavailable-date recovery worked, but four named menu links opened
+the wrong panel and a small tab label failed contrast. The reviewer returned
+**Revise at 6.53**. Its one focused repair cycle is active. Eighteen concepts
+remain unreviewed.
 
 The repository now enforces the state:
 
