@@ -43,8 +43,10 @@ pretending that breadth exists is not.
 The historical craft scores below are a baseline diagnosis, not passes under
 this rubric. They were holistic judgements made before the rubric existed.
 Nineteen concepts therefore have status **not yet reviewed under v1.1**.
-Enniskeen completed the first independent workflow: its current design passed
-at 7.68, while missing photography permission keeps it Release blocked.
+Enniskeen completed the first independent workflow: the reviewed source passed
+design at 7.68. Its photography was then replaced by disclosed generated
+visualisations; that material change makes the current source Reviewable until
+the affected categories are checked again.
 
 ### Acceptance rule
 
@@ -377,9 +379,14 @@ dependency for each concept. Enniskeen proved the corrected workflow. Its
 first independent verdict was Revise at 7.10; one focused repair corrected the
 missing-date recovery, phone overflow, contrast, focus and generic entrance
 motion. The same reviewer then passed every design gate at 7.68. The compact
-record is **Release blocked** because no photography permission or publishable
-replacement is filed. Nineteen concepts remain unreviewed and none has
-consumed a repair cycle.
+record was **Release blocked** because no photography permission or
+publishable replacement was filed. The reused photography was subsequently
+replaced by original AI-generated visualisations with an explicit site-wide
+disclosure. The asset-rights condition is now clear, but the material image
+change affects truth/respect, identity, composition and craft. The current
+source therefore returns to **Reviewable** instead of carrying the superseded
+7.68 score forward. Nineteen concepts remain unreviewed and none has consumed
+a repair cycle.
 
 The repository now enforces the state:
 

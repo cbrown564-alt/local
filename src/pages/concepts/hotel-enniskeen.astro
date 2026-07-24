@@ -2,44 +2,32 @@
 import EnniskeenShell from "../../components/enniskeen/EnniskeenShell.astro";
 import EnkBooking from "../../components/enniskeen/EnkBooking.astro";
 import ResponsiveImage from "../../components/ResponsiveImage.astro";
-import { base, home, enniskeen } from "../../data/enniskeen-site";
+import { base, generatedVisuals, home, enniskeen } from "../../data/enniskeen-site";
 
 const explore = [
   {
     href: `${base}/rooms/`,
     title: "Stay",
     note: "Twelve individually styled rooms — art-deco baths, the turret, the balconies.",
-    image: "/images/enniskeen-balcony.jpg",
-    width: 1280,
-    height: 853,
-    alt: "French doors open onto a balcony overlooking the Shimna Valley",
+    image: generatedVisuals.balcony,
   },
   {
     href: `${base}/dine/`,
     title: "Dine",
     note: "The Oak Restaurant, Mourne Honey afternoon tea, and the Brandy Pad Lounge.",
-    image: "/images/enniskeen-afternoon-tea.jpg",
-    width: 1280,
-    height: 704,
-    alt: "Mourne Honey afternoon tea laid out on the terrace before the mountains",
+    image: generatedVisuals.afternoonTea,
   },
   {
     href: `${base}/estate/`,
     title: "The estate",
     note: "Twelve wooded acres, the Wishing Well, and the trail down to the Shimna River.",
-    image: "/images/enniskeen-aerial.jpg",
-    width: 1549,
-    height: 588,
-    alt: "The house and its wooded twelve-acre estate from the air",
+    image: generatedVisuals.estate,
   },
   {
     href: `${base}/things-to-do/`,
     title: "Things to do",
     note: "Slieve Donard from the door, Royal County Down next door, bikes to Spelga Dam.",
-    image: "/images/enniskeen-lawn-view.jpg",
-    width: 1549,
-    height: 588,
-    alt: "Slieve Donard rising beyond the garden lawns",
+    image: generatedVisuals.walker,
   },
 ];
 ---
@@ -57,8 +45,8 @@ const explore = [
         </div>
       </section>
       <figure class="enk-visual">
-        <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/enniskeen-house.jpg" alt="Enniskeen House — the turreted 1890s country house wrapped in autumn ivy" width="1549" height="588" loading="eager" />
-        <figcaption>The house · built 1890s</figcaption>
+        <ResponsiveImage pictureClass="concept-responsive-picture" {...generatedVisuals.house} loading="eager" />
+        <figcaption>Provisional visualisation · house built 1890s</figcaption>
       </figure>
       <EnkBooking variant="hero" />
     </section>
@@ -71,7 +59,7 @@ const explore = [
           <li class="enk-explore-card">
             <a href={item.href}>
               <span class="enk-explore-image">
-                <ResponsiveImage pictureClass="concept-responsive-picture" src={item.image} alt={item.alt} width={item.width} height={item.height} />
+                <ResponsiveImage pictureClass="concept-responsive-picture" {...item.image} />
               </span>
               <span class="enk-explore-body">
                 <span class="enk-explore-title">{item.title}</span>
@@ -92,7 +80,7 @@ const explore = [
         <p class="enk-welcome-directions">{enniskeen.directions}</p>
       </div>
       <figure class="enk-welcome-visual">
-        <ResponsiveImage pictureClass="concept-responsive-picture" src="/images/enniskeen-entrance.jpg" alt="The ivy-framed entrance to the house, stepped in summer flowers" width="1549" height="588" />
+        <ResponsiveImage pictureClass="concept-responsive-picture" {...generatedVisuals.house} />
       </figure>
     </section>
     </main>

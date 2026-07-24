@@ -42,6 +42,81 @@ export const bookin1 = {
 
 export const base = "/concepts/hotel-enniskeen";
 
+/** Provisional AI-generated imagery for the independent concept.
+ *
+ * These visuals are original concept assets and do not document Enniskeen's
+ * actual building, rooms, food or grounds. The shared concept banner discloses
+ * that limitation on every route.
+ */
+export const generatedVisuals = {
+  house: {
+    src: "/images/enniskeen-generated-house.jpg",
+    width: 1823,
+    height: 863,
+    alt: "AI-generated visualisation of a fictional late-Victorian country house beneath the Mournes",
+  },
+  estate: {
+    src: "/images/enniskeen-generated-estate.jpg",
+    width: 1717,
+    height: 916,
+    alt: "AI-generated visualisation of a fictional country house in a wooded Mourne estate",
+  },
+  balcony: {
+    src: "/images/enniskeen-generated-balcony.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "AI-generated visualisation of a country-house bedroom opening toward a mountain valley",
+  },
+  bathPink: {
+    src: "/images/enniskeen-generated-bath-pink.jpg",
+    width: 1024,
+    height: 1536,
+    alt: "AI-generated visualisation of a compact pink art-deco bathroom",
+  },
+  bathGreen: {
+    src: "/images/enniskeen-generated-bath-green.jpg",
+    width: 1024,
+    height: 1536,
+    alt: "AI-generated visualisation of a traditional en-suite with a green roll-top bath",
+  },
+  restaurant: {
+    src: "/images/enniskeen-generated-restaurant.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "AI-generated visualisation of a small country-house restaurant overlooking mountain slopes",
+  },
+  afternoonTea: {
+    src: "/images/enniskeen-generated-afternoon-tea.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "AI-generated visualisation of afternoon tea on a stone terrace above a wooded valley",
+  },
+  lounge: {
+    src: "/images/enniskeen-generated-lounge.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "AI-generated visualisation of a country-house lounge beside an open fire",
+  },
+  woodland: {
+    src: "/images/enniskeen-generated-woodland.jpg",
+    width: 1825,
+    height: 862,
+    alt: "AI-generated visualisation of a woodland path beside a river in the Mourne foothills",
+  },
+  walker: {
+    src: "/images/enniskeen-generated-walker.jpg",
+    width: 1536,
+    height: 1024,
+    alt: "AI-generated visualisation of a hillwalker above a reservoir in the Mournes",
+  },
+  cycling: {
+    src: "/images/enniskeen-generated-cycling.jpg",
+    width: 1774,
+    height: 887,
+    alt: "AI-generated visualisation of two leisure cyclists descending a wooded Mourne road",
+  },
+} as const;
+
 export const nav = [
   { id: "home", href: `${base}/`, label: "Home" },
   { id: "rooms", href: `${base}/rooms/`, label: "Stay" },
@@ -73,37 +148,37 @@ export const rooms = {
       name: "Room 6",
       detail: "The original pink art-deco bathroom",
       note: "One of the house's period survivors — individually styled, like every room at Enniskeen.",
-      image: "/images/enniskeen-room6-bathroom.jpg",
-      imageWidth: 231,
-      imageHeight: 300,
-      alt: "The original pink art-deco bathroom suite in Room 6",
+      image: generatedVisuals.bathPink.src,
+      imageWidth: generatedVisuals.bathPink.width,
+      imageHeight: generatedVisuals.bathPink.height,
+      alt: generatedVisuals.bathPink.alt,
     },
     {
       name: "Room 9",
       detail: "Superior room · stunning mountain views",
       note: "The superior room of the house, looking straight onto the Mournes.",
-      image: "/images/enniskeen-room9-bathroom.jpg",
-      imageWidth: 231,
-      imageHeight: 300,
-      alt: "The en-suite bathroom of superior Room 9",
+      image: generatedVisuals.bathGreen.src,
+      imageWidth: generatedVisuals.bathGreen.width,
+      imageHeight: generatedVisuals.bathGreen.height,
+      alt: generatedVisuals.bathGreen.alt,
     },
     {
       name: "Room 15",
       detail: "In the turret · panoramic mountain, forest and sea views",
       note: "Perched in the turret at the top of the house.",
-      image: "/images/enniskeen-house.jpg",
-      imageWidth: 1549,
-      imageHeight: 588,
-      alt: "The turret of Enniskeen House, home to Room 15",
+      image: generatedVisuals.house.src,
+      imageWidth: generatedVisuals.house.width,
+      imageHeight: generatedVisuals.house.height,
+      alt: generatedVisuals.house.alt,
     },
     {
       name: "Balcony rooms",
       detail: "French doors onto the Shimna Valley",
       note: "Many rooms carry striking mountain and sea views; the balcony rooms open straight onto them.",
-      image: "/images/enniskeen-balcony.jpg",
-      imageWidth: 1280,
-      imageHeight: 853,
-      alt: "French doors open onto a private balcony overlooking the Shimna Valley",
+      image: generatedVisuals.balcony.src,
+      imageWidth: generatedVisuals.balcony.width,
+      imageHeight: generatedVisuals.balcony.height,
+      alt: generatedVisuals.balcony.alt,
     },
   ],
   /** Included with every booking (Rooms.html; facilities from OurFacilities.html). */
