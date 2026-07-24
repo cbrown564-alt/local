@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mournemade.co.uk/schemas/concept-review-releases-v1.json",
+  "title": "Mourne Made concept review releases",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releases"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/release"
+      }
+    }
+  },
+  "$defs": {
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "kind"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": ["human", "agent"]
+        }
+      }
+    },
+    "score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 10
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "status",
+        "sourceFingerprint",
+        "reviewer",
+        "gates",
+        "scores",
+        "weightedScore",
+        "reviewedAt",
+        "truthCheckedAt"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "status": {
+          "enum": ["Not ready", "Revise", "Pass"]
+        },
+        "sourceFingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/reviewer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "currentAndRespectful",
+            "claimsAndAssetsHonest",
+            "independentSafeguards",
+            "realVisitorLoop",
+            "subjectProof",
+            "responsiveAndKeyboard",
+            "readableAndMotionSafe",
+            "repositoryChecks"
+          ],
+          "properties": {
+            "currentAndRespectful": { "type": "boolean" },
+            "claimsAndAssetsHonest": { "type": "boolean" },
+            "independentSafeguards": { "type": "boolean" },
+            "realVisitorLoop": { "type": "boolean" },
+            "subjectProof": { "type": "boolean" },
+            "responsiveAndKeyboard": { "type": "boolean" },
+            "readableAndMotionSafe": { "type": "boolean" },
+            "repositoryChecks": { "type": "boolean" }
+          }
+        },
+        "scores": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "evidenceTruthRespect",
+            "visitorOutcome",
+            "subjectIdentity",
+            "firstViewport",
+            "completeLoop",
+            "responsiveAccessibility",
+            "craftFinish"
+          ],
+          "properties": {
+            "evidenceTruthRespect": { "$ref": "#/$defs/score" },
+            "visitorOutcome": { "$ref": "#/$defs/score" },
+            "subjectIdentity": { "$ref": "#/$defs/score" },
+            "firstViewport": { "$ref": "#/$defs/score" },
+            "completeLoop": { "$ref": "#/$defs/score" },
+            "responsiveAccessibility": { "$ref": "#/$defs/score" },
+            "craftFinish": { "$ref": "#/$defs/score" }
+          }
+        },
+        "weightedScore": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 10
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "truthCheckedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "Not ready"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewer": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/reviewer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "scores": {
+                "properties": {
+                  "evidenceTruthRespect": { "type": "null" },
+                  "visitorOutcome": { "type": "null" },
+                  "subjectIdentity": { "type": "null" },
+                  "firstViewport": { "type": "null" },
+                  "completeLoop": { "type": "null" },
+                  "responsiveAccessibility": { "type": "null" },
+                  "craftFinish": { "type": "null" }
+                }
+              },
+              "weightedScore": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reviewer": {
+                "$ref": "#/$defs/reviewer"
+              },
+              "scores": {
+                "properties": {
+                  "evidenceTruthRespect": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "visitorOutcome": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "subjectIdentity": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "firstViewport": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "completeLoop": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "responsiveAccessibility": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  },
+                  "craftFinish": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "multipleOf": 0.5
+                  }
+                }
+              },
+              "weightedScore": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

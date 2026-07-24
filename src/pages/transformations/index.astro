@@ -7,19 +7,41 @@ import "../../styles/transformations.css";
 
 const towns = ["All towns", "Dundrum", "Newcastle"] as const;
 const categories = ["All types", ...[...new Set(transformations.map((item) => item.category))]];
+const hasPublicTransformations = transformations.length > 0;
 ---
 
-<BaseLayout title="Local transformations — Mourne Made" description="Browse clear, respectful before-and-after website concepts for businesses around Dundrum and Newcastle.">
+<BaseLayout
+  title={
+    hasPublicTransformations
+      ? "Local transformations — Mourne Made"
+      : "Portfolio review in progress — Mourne Made"
+  }
+  description={
+    hasPublicTransformations
+      ? "Browse clear, respectful before-and-after website concepts for businesses around Dundrum and Newcastle."
+      : "Mourne Made's public concept portfolio is temporarily closed while every example is independently reviewed against a new publication standard."
+  }
+>
   <section class="page-hero page-hero--list">
     <div class="shell">
-      <p class="eyebrow">Local transformations</p>
-      <h1>Nineteen local website concepts, ready to browse.</h1>
-      <p class="lede">Finished concept screens for real businesses in Dundrum and Newcastle. Filter the work, then open a full before-and-after when you want the detail.</p>
+      <p class="eyebrow">{hasPublicTransformations ? "Local transformations" : "Publication update"}</p>
+      <h1>
+        {hasPublicTransformations
+          ? `${transformations.length} local website concepts, ready to browse.`
+          : "The portfolio is being re-reviewed."}
+      </h1>
+      <p class="lede">
+        {hasPublicTransformations
+          ? "Finished concept screens for real businesses in Dundrum and Newcastle. Filter the work, then open a full before-and-after when you want the detail."
+          : "We introduced a stricter publication standard and applied it to every earlier concept. Public examples are temporarily held until they have complete evidence and an independent Pass."}
+      </p>
     </div>
   </section>
 
   <section class="transformation-list" data-transformation-list>
     <div class="shell">
+      {hasPublicTransformations ? (
+        <>
       <div class="owner-filters" aria-label="Filter transformations">
         <div class="owner-filter-group">
           <p class="owner-filter-label" id="town-filter-label">Town</p>
@@ -105,6 +127,42 @@ const categories = ["All types", ...[...new Set(transformations.map((item) => it
         <article class="coming-card"><span>On hold · Newcastle</span><h3>South Down Signs</h3><p>Held until trading is confirmed in person — researched and verified against public sources in July 2026.</p></article>
         <article class="coming-card"><span>On hold · Dundrum</span><h3>Murdock Brothers</h3><p>The fuel merchant's domain returns a builder error, but its current trading could not be confirmed against a dated source — so the concept stays private until it is. Verified 24 July 2026.</p></article>
       </div>
+        </>
+      ) : (
+        <div class="portfolio-review-state">
+          <div class="portfolio-review-statement">
+            <p class="portfolio-review-label">Current release state</p>
+            <h2>No concept is public just because it used to be.</h2>
+            <p>
+              Earlier work remains available only as internal, noindex concept
+              routes while its sources, asset rights, visitor journey,
+              responsive behaviour and finish are checked. Historical scores
+              do not count as approval.
+            </p>
+            <div class="button-row">
+              <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
+            </div>
+          </div>
+          <dl class="portfolio-review-standard">
+            <div>
+              <dt>Independent review</dt>
+              <dd>One non-creator reviewer must inspect the live phone and desktop experience.</dd>
+            </div>
+            <div>
+              <dt>Mandatory gates</dt>
+              <dd>Truth, asset rights, subject proof, a real visitor loop, access and repository checks must all pass.</dd>
+            </div>
+            <div>
+              <dt>Minimum score</dt>
+              <dd>Every category and the weighted result must reach at least 7.0 out of 10.</dd>
+            </div>
+            <div>
+              <dt>Return to public</dt>
+              <dd>Passing concepts come back individually. None is grandfathered.</dd>
+            </div>
+          </dl>
+        </div>
+      )}
     </div>
   </section>
 
