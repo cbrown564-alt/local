@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mournemade.co.uk/schemas/concept-review-releases-v1.json",
+  "$id": "https://mournemade.co.uk/schemas/concept-review-releases-v1.1.json",
   "title": "Mourne Made concept review releases",
   "type": "object",
   "additionalProperties": false,
@@ -10,7 +10,7 @@
       "type": "string"
     },
     "schemaVersion": {
-      "const": 1
+      "const": "1.1"
     },
     "releases": {
       "type": "array",
@@ -37,7 +37,66 @@
     "score": {
       "type": ["number", "null"],
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "multipleOf": 0.5
+    },
+    "designGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currentAndRespectful",
+        "claimsHonest",
+        "realVisitorLoop",
+        "subjectProof",
+        "responsiveAndKeyboard",
+        "readableAndMotionSafe"
+      ],
+      "properties": {
+        "currentAndRespectful": { "type": "boolean" },
+        "claimsHonest": { "type": "boolean" },
+        "realVisitorLoop": { "type": "boolean" },
+        "subjectProof": { "type": "boolean" },
+        "responsiveAndKeyboard": { "type": "boolean" },
+        "readableAndMotionSafe": { "type": "boolean" }
+      }
+    },
+    "releaseConditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assetPermission",
+        "truthCurrent",
+        "independentSafeguards",
+        "repositoryChecks"
+      ],
+      "properties": {
+        "assetPermission": { "type": "boolean" },
+        "truthCurrent": { "type": "boolean" },
+        "independentSafeguards": { "type": "boolean" },
+        "repositoryChecks": { "type": "boolean" }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceTruthRespect",
+        "visitorOutcome",
+        "subjectIdentity",
+        "firstViewport",
+        "completeLoop",
+        "responsiveAccessibility",
+        "craftFinish"
+      ],
+      "properties": {
+        "evidenceTruthRespect": { "$ref": "#/$defs/score" },
+        "visitorOutcome": { "$ref": "#/$defs/score" },
+        "subjectIdentity": { "$ref": "#/$defs/score" },
+        "firstViewport": { "$ref": "#/$defs/score" },
+        "completeLoop": { "$ref": "#/$defs/score" },
+        "responsiveAccessibility": { "$ref": "#/$defs/score" },
+        "craftFinish": { "$ref": "#/$defs/score" }
+      }
     },
     "release": {
       "type": "object",
@@ -47,7 +106,8 @@
         "status",
         "sourceFingerprint",
         "reviewer",
-        "gates",
+        "designGates",
+        "releaseConditions",
         "scores",
         "weightedScore",
         "reviewedAt",
@@ -59,7 +119,7 @@
           "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
         },
         "status": {
-          "enum": ["Not ready", "Revise", "Pass"]
+          "enum": ["Reviewable", "Release blocked", "Revise", "Pass"]
         },
         "sourceFingerprint": {
           "type": "string",
@@ -67,59 +127,18 @@
         },
         "reviewer": {
           "anyOf": [
-            {
-              "$ref": "#/$defs/reviewer"
-            },
-            {
-              "type": "null"
-            }
+            { "$ref": "#/$defs/reviewer" },
+            { "type": "null" }
           ]
         },
-        "gates": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "currentAndRespectful",
-            "claimsAndAssetsHonest",
-            "independentSafeguards",
-            "realVisitorLoop",
-            "subjectProof",
-            "responsiveAndKeyboard",
-            "readableAndMotionSafe",
-            "repositoryChecks"
-          ],
-          "properties": {
-            "currentAndRespectful": { "type": "boolean" },
-            "claimsAndAssetsHonest": { "type": "boolean" },
-            "independentSafeguards": { "type": "boolean" },
-            "realVisitorLoop": { "type": "boolean" },
-            "subjectProof": { "type": "boolean" },
-            "responsiveAndKeyboard": { "type": "boolean" },
-            "readableAndMotionSafe": { "type": "boolean" },
-            "repositoryChecks": { "type": "boolean" }
-          }
+        "designGates": {
+          "$ref": "#/$defs/designGates"
+        },
+        "releaseConditions": {
+          "$ref": "#/$defs/releaseConditions"
         },
         "scores": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "evidenceTruthRespect",
-            "visitorOutcome",
-            "subjectIdentity",
-            "firstViewport",
-            "completeLoop",
-            "responsiveAccessibility",
-            "craftFinish"
-          ],
-          "properties": {
-            "evidenceTruthRespect": { "$ref": "#/$defs/score" },
-            "visitorOutcome": { "$ref": "#/$defs/score" },
-            "subjectIdentity": { "$ref": "#/$defs/score" },
-            "firstViewport": { "$ref": "#/$defs/score" },
-            "completeLoop": { "$ref": "#/$defs/score" },
-            "responsiveAccessibility": { "$ref": "#/$defs/score" },
-            "craftFinish": { "$ref": "#/$defs/score" }
-          }
+          "$ref": "#/$defs/scores"
         },
         "weightedScore": {
           "type": ["number", "null"],
@@ -139,23 +158,11 @@
         {
           "if": {
             "properties": {
-              "status": {
-                "const": "Not ready"
-              }
+              "status": { "const": "Reviewable" }
             }
           },
           "then": {
             "properties": {
-              "reviewer": {
-                "anyOf": [
-                  {
-                    "$ref": "#/$defs/reviewer"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
               "scores": {
                 "properties": {
                   "evidenceTruthRespect": { "type": "null" },
@@ -167,65 +174,24 @@
                   "craftFinish": { "type": "null" }
                 }
               },
-              "weightedScore": {
-                "type": "null"
-              }
+              "weightedScore": { "type": "null" }
             }
           },
           "else": {
             "properties": {
-              "reviewer": {
-                "$ref": "#/$defs/reviewer"
-              },
+              "reviewer": { "$ref": "#/$defs/reviewer" },
               "scores": {
                 "properties": {
-                  "evidenceTruthRespect": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "visitorOutcome": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "subjectIdentity": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "firstViewport": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "completeLoop": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "responsiveAccessibility": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  },
-                  "craftFinish": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 10,
-                    "multipleOf": 0.5
-                  }
+                  "evidenceTruthRespect": { "type": "number" },
+                  "visitorOutcome": { "type": "number" },
+                  "subjectIdentity": { "type": "number" },
+                  "firstViewport": { "type": "number" },
+                  "completeLoop": { "type": "number" },
+                  "responsiveAccessibility": { "type": "number" },
+                  "craftFinish": { "type": "number" }
                 }
               },
-              "weightedScore": {
-                "type": "number"
-              }
+              "weightedScore": { "type": "number" }
             }
           }
         }

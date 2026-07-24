@@ -301,11 +301,12 @@ categories. An overdue concept leaves public transformations until refreshed.
 invalid-fixture failure, public zero-pass states, internal candidate
 separation, retroactive release hold and stage rollback.
 
-**Enforcement alignment required:** the current schema and checker still use
-the v1.0 eight-gate and seven-category-floor shape. They must be updated to the
-v1.1 split between design gates and public release conditions before the first
-Pass is recorded. The public list is empty, so the current site does not expose
-an invalid release while this work remains.
+**v1.1 enforcement aligned and verified 24 July 2026:** the compact schema and
+checker now separate the six design gates from the four public release
+conditions, accept the four core floors at 7.0 and three supporting floors at
+6.0, and enforce the four review/release states. The focused self-test proves a
+valid Release blocked record is accepted while a false Pass fails on its
+design gate, release condition, score floors, truth age and fingerprint.
 
 **Public Passes:** none. No historical craft score was converted into a v1.1
 release record.
@@ -315,9 +316,8 @@ review action and separate release dependency for each. Hotel Enniskeen is
 first by readiness; its live independent design scoring may proceed before
 photo permission is resolved.
 
-**Next executable action:** align the schema and checker with v1.1, then run the
-first live independent Enniskeen design review. Resolve or replace its
-photography before restoring it publicly.
+**Next executable action:** run the first live independent Enniskeen design
+review. Resolve or replace its photography before restoring it publicly.
 
 ---
 
