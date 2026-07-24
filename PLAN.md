@@ -3,7 +3,7 @@
 Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q complete with zero public passes; Enniskeen design-cleared at 7.68 but release blocked on photography permission, and 19 concepts remain internal pending review** · South Down Signs on hold
+Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q complete with zero public passes; Enniskeen's prior source passed design at 7.68, its current generated-image source is Reviewable, and 19 concepts remain internal pending review** · South Down Signs on hold
 
 ---
 
@@ -232,7 +232,10 @@ layout and small-text/focus contrast failed design gates and core category
 floors. After one focused repair, the same reviewer scored the fixed source
 7.68 and passed every design gate. Its final status is **Release blocked**
 because its imagery must still be licensed or replaced before any public
-restoration.
+restoration. The reused photography was replaced on 24 July 2026 with original
+AI-generated visualisations and an explicit page disclosure. Because imagery
+materially affects identity, composition and craft, the new source is
+**Reviewable** and does not inherit the earlier score.
 
 ### Q4 — Repair once, restore or retire ✅ Enniskeen cycle complete
 
@@ -251,9 +254,13 @@ repair added an announced and focused missing-date recovery, preserved the
 selected stay length, verified the exact Bookin1 destination, removed phone
 overflow, raised small-text and focus contrast, and removed the generic
 entrance sequence. The independent re-review passed all six design gates at
-7.68. The concept remains internal only because photography permission or
-publishable replacements are still missing. All other candidates remain
-internal and have not consumed a repair cycle.
+7.68. That reviewed source remained internal because photography permission or
+publishable replacements were missing. All other candidates remained internal
+and did not consume a repair cycle. A later material update replaced the
+third-party photography with disclosed generated visuals, resolving the
+asset-rights condition without spending another repair cycle. Generated
+imagery does not count as real subject proof, so the current source stays
+internal until publishable real hotel imagery is available for re-review.
 
 ### Q5 — Keep public truth current ✅
 
@@ -296,8 +303,9 @@ categories. An overdue concept leaves public transformations until refreshed.
   1265×710 and 390×844 with no horizontal overflow, no portfolio cards and no
   browser warnings
 - the private Hotel Enniskeen record proves the complete blind-review,
-  single-repair and independent re-review workflow; the design passed at 7.68
-  while photography rights remained a separate release blocker
+  single-repair and independent re-review workflow; the reviewed source passed
+  at 7.68, then a material generated-image replacement correctly returned the
+  new source to Reviewable
 - `PROSPECTS.md` records all twenty concepts as internal pending evidence, and
   the eighteen earlier `Concept published` data stages were returned to
   `Concept in progress`
@@ -316,19 +324,22 @@ conditions, accept the four core floors at 7.0 and three supporting floors at
 valid Release blocked record is accepted while a false Pass fails on its
 design gate, release condition, score floors, truth age and fingerprint.
 
-**Public Passes:** none. Hotel Enniskeen has a current independent design pass
-at 7.68, recorded as **Release blocked** because photography permission is
-missing. No historical craft score was converted into a v1.1 Pass.
+**Public Passes:** none. Hotel Enniskeen's previously reviewed source passed
+design at 7.68. Its current source uses disclosed, original AI-generated
+visualisations and is **Reviewable** because that material image change must be
+checked independently. No historical or superseded score was converted into a
+v1.1 Pass.
 
 **Review backlog:** nineteen concepts remain unreviewed. Hotel Enniskeen has
 used and completed its one focused repair cycle; `PROSPECTS.md` records the
 next design action and separate release dependency for every candidate.
 
-**Next executable action after Phase Q:** secure permission for Enniskeen's
-photography or replace it with publishable assets, then change the release
-condition only after verifying the reviewed source fingerprint is still
-current. In parallel, the next independent design review may begin with the
-strongest remaining internal candidate.
+**Next executable action after Phase Q:** keep Enniskeen's disclosed generated
+version as an internal visual prototype. Obtain commissioned, licensed or
+otherwise publishable real hotel imagery before targeted re-review, because
+generated scenes cannot satisfy the subject-proof gate. In parallel, the next
+independent design review may begin with the strongest remaining internal
+candidate.
 
 ---
 

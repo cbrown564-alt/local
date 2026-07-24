@@ -110,10 +110,12 @@ Detailed critiques, screenshots and licensing evidence remain private. Run
 `pnpm test:enniskeen` for the first candidate's responsive
 failure/recovery and exact Bookin1 handoff check.
 Phase Q completed the enforcement, retroactive triage and first full
-review-repair-re-review cycle with zero public passes. Enniskeen cleared design
-review at 7.68 but remains Release blocked on photography permission; the
-other nineteen concepts are internal pending review. The public homepage and
-index show that state rather than grandfathering earlier work.
+review-repair-re-review cycle with zero public passes. Enniskeen's reviewed
+source cleared design at 7.68; its current source replaces reused photography
+with explicitly disclosed AI-generated visualisations and is Reviewable
+pending the affected visual categories. The other nineteen concepts are
+internal pending review. The public homepage and index show that state rather
+than grandfathering earlier work.
 
 ## Research artifacts
 
