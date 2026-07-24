@@ -108,7 +108,9 @@ checks the compact committed Pass in
 `research/concept-reviews/releases.json` before publishing the transformation.
 Detailed critiques, screenshots and licensing evidence remain private. Run
 `pnpm test:enniskeen` for the first candidate's responsive
-failure/recovery and exact Bookin1 handoff check.
+failure/recovery and exact Bookin1 handoff check, and `pnpm test:bucks-head`
+for its responsive subject proof, ResDiary handoff, menu routing, history,
+keyboard and contrast checks.
 Phase Q completed the enforcement, retroactive triage and first full
 review-repair-re-review cycle with zero public passes. Enniskeen's reviewed
 source cleared design at 7.68; its current source replaces reused photography

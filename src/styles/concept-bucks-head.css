@@ -22,6 +22,10 @@
   font-family: var(--display);
 }
 
+@media (min-width: 761px) {
+  .concept-bucks-head .mm-concept-banner { bottom: 4px; }
+}
+
 /* Hours strip */
 .bh-strip {
   display: flex;
@@ -49,9 +53,9 @@
 .bh-antlers { flex: 0 0 auto; color: var(--spruce); }
 .bh-brand-text { display: flex; flex-direction: column; gap: 3px; }
 .bh-brand-name {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -71,7 +75,7 @@
 .bh-nav a:hover::after { right: 0; }
 .bh-book {
   padding: 13px 22px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: var(--spruce-deep);
   color: var(--blush);
   font-size: 14px;
@@ -80,17 +84,18 @@
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 150ms ease, transform 150ms ease;
+  transition: background 150ms ease;
 }
-.bh-book:hover { background: var(--brick); color: #ffffff; transform: translateY(-1px); }
+.bh-book:hover { background: var(--brick); color: #ffffff; }
 
 /* Hero */
 .bh-hero {
   position: relative;
-  min-height: calc(100vh - 82px - 37px);
+  min-height: calc(100vh - 82px - 37px - 76px);
   display: grid;
   grid-template-columns: 52% 48%;
   grid-template-rows: 1fr auto;
+  margin-bottom: 76px;
 }
 .bh-story {
   grid-column: 1;
@@ -142,7 +147,7 @@
 .bh-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .bh-cta {
   padding: 15px 28px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: var(--spruce-deep);
   color: var(--blush);
   font-size: 15px;
@@ -150,9 +155,9 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 150ms ease, transform 150ms ease;
+  transition: background 150ms ease;
 }
-.bh-cta:hover { background: var(--brick); color: #ffffff; transform: translateY(-1px); }
+.bh-cta:hover { background: var(--brick); color: #ffffff; }
 .bh-link {
   color: var(--spruce-deep);
   font-size: 15px;
@@ -167,8 +172,8 @@
   grid-column: 2;
   grid-row: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
   padding: 30px clamp(26px, 3.2vw, 50px);
   overflow: hidden;
   background: var(--spruce);
@@ -192,11 +197,11 @@
 .bh-booking {
   position: relative;
   z-index: 1;
-  width: min(100%, 372px);
-  padding: 26px 28px 22px;
+  width: min(100%, 332px);
+  padding: 22px 22px 18px;
   background: var(--cream);
   border-top: 5px solid var(--brick);
-  border-radius: 12px;
+  border-radius: 4px;
   box-shadow: 0 26px 60px rgba(20, 33, 27, 0.4);
 }
 .bh-booking h2 {
@@ -223,7 +228,7 @@
   margin-top: 5px;
   padding: 10px 12px;
   border: 1px solid var(--hairline);
-  border-radius: 8px;
+  border-radius: 4px;
   background: #ffffff;
   color: var(--ink-green);
   font-family: var(--display);
@@ -239,7 +244,7 @@
   margin-top: 4px;
   padding: 13px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 4px;
   background: var(--spruce-deep);
   color: var(--blush);
   font-family: var(--display);
@@ -296,35 +301,36 @@
 .bh-menu:hover { background: var(--spruce); color: #ffffff; }
 .bh-menu span { display: block; margin-top: 3px; font-family: var(--serif); font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--blush-deep); }
 
-/* Entrance */
-@keyframes bh-rise { from { opacity: 0; transform: translateY(14px); } }
-.bh-kicker { animation: bh-rise 440ms ease backwards; }
-.bh-story h1 { animation: bh-rise 440ms 70ms ease backwards; }
-.bh-lede { animation: bh-rise 440ms 140ms ease backwards; }
-.bh-actions { animation: bh-rise 440ms 210ms ease backwards; }
-.bh-booking { animation: bh-rise 480ms 280ms ease backwards; }
-
 @media (max-width: 940px) {
   .bh-strip { flex-direction: column; gap: 2px; text-align: center; }
   .bh-nav { display: none; }
   .bh-header { height: auto; padding-block: 12px; }
-  .bh-brand-name { font-size: 17px; }
-  .bh-hero { grid-template-columns: 1fr; min-height: 0; }
+  .bh-brand-name { font-size: 19px; }
+  .bh-hero { grid-template-columns: 1fr; min-height: 0; margin-bottom: 0; }
   /* Stack in the order the errand runs: read the welcome, book, then browse
      the menus. The desktop grid places the rail in row 2, which on a phone
      pushed the booking card below it — the one thing this concept exists to
      bring forward. Rows are stated explicitly so the order cannot drift. */
   .bh-story { grid-column: 1; grid-row: 1; padding: 32px 22px 22px; }
   .bh-story h1 { max-width: none; }
-  .bh-panel { grid-column: 1; grid-row: 2; padding: 26px 22px 30px; }
+  .bh-panel { grid-column: 1; grid-row: 2; min-height: 410px; align-items: flex-end; justify-content: center; padding: 100px 22px 30px; }
   .bh-panel img { position: absolute; }
   .bh-rail { grid-row: 3; flex-wrap: wrap; justify-content: center; padding: 10px 22px 16px; }
   .bh-menu { flex: 1 1 40%; }
   .bh-rail-label { grid-column: 1 / -1; border-right: 0; padding: 14px 0 6px; }
 }
 
+@media (max-width: 640px) {
+  .bh-story { padding-top: 24px; }
+  .bh-story h1 { font-size: 37px; }
+  .bh-lede { font-size: 15px; line-height: 1.5; margin-bottom: 18px; }
+  .bh-actions { gap: 14px; }
+  .bh-cta { padding: 13px 18px; }
+  .bh-link { font-size: 14px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bh-kicker, .bh-story h1, .bh-lede, .bh-actions, .bh-booking { animation: none; }
+  .bh-book, .bh-cta, .bh-booking button, .bh-tab { transition: none; }
 }
 
 /* ============================================================
@@ -371,6 +377,17 @@
   letter-spacing: 0;
   color: var(--blush);
 }
+.bh-menu-notice {
+  max-width: 72ch;
+  margin: 16px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--brick);
+  color: var(--blush);
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.bh-menu-notice strong { color: var(--cream); }
 
 /* Tab rail — flush with the bottom of the dark band */
 .bh-tabs {
@@ -405,9 +422,13 @@
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
-  color: rgba(217, 168, 147, 0.6);
+  color: var(--blush-deep);
 }
 .bh-tab:hover { color: var(--cream); background: rgba(255,255,255,0.04); }
+.bh-tab:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: -4px;
+}
 .bh-tab[aria-selected="true"] {
   color: var(--cream);
   border-bottom-color: var(--brick);
@@ -621,6 +642,8 @@
    "the menus, readable on a phone" cannot hide two of the five, so the rail
    becomes a segmented block with every menu in view. */
 @media (max-width: 640px) {
+  .bh-menus-hero-inner { margin-bottom: 20px; }
+  .bh-menu-notice { font-size: 12.5px; }
   .bh-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
