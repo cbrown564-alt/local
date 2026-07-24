@@ -10,7 +10,10 @@ after Phase Q** · 20 internal concept routes · Enniskeen F1's prior source
 passed design re-review at 7.68; its current disclosed generated-image source
 was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
 rights but fail subject proof of the real hotel · Buck's Head F2 is retired
-after its final 7.15 Revise · no one-sheet release or outreach is permitted
+after its final 7.15 Revise · Mourne Cycles (5.93), Newcastle Chamber (6.28),
+Kent Amusements (5.88), Donard Veterinary (5.93) and Cúpla (6.43) each returned
+a first v1.1 **Revise** and now hold one repair cycle each · seven concepts
+reviewed, thirteen unreviewed · no one-sheet release or outreach is permitted
 until a concept has a current independent public Pass
 
 ## Pipeline stages
@@ -67,14 +70,14 @@ consumed. All concept routes remain internal and `noindex`;
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
 | Hotel Enniskeen | Current generated-image source re-reviewed at 7.15 **Revise**: strong loop/truth/responsive, but the *fictional* generated visuals fail the subject-proof gate; prior photography source passed design at 7.68 | Produce faithful, disclosed visualisations of the real Enniskeen (real painted-render facade and rooms) — or licensed real photography — then re-review the affected categories (evidence, identity, first viewport, craft) to clear subject proof. Keep internal until then |
-| Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
+| Mourne Cycles | First v1.1 verdict **Revise at 5.93** (24 Jul); one repair cycle remains | Fix the 390px header overflow that clips the CTA; add real premises/stock proof; label or remove the invented hire prices/tiers; brand-first retypeset. Trek/stock image rights or replacements still required for release |
 | The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
-| Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
+| Donard Veterinary | First v1.1 verdict **Revise at 5.93** (24 Jul); one repair cycle remains | Make the appointment form actually deliver (it is a `mailto` GET that opens a blank email and drops every field); correct "VidiVet" to the practice's real tool (PetsApp); add real pet/clinic proof; brand-first retypeset |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
-| Cúpla | Internal pending review | Add real café/product proof and complete the bilingual visitor loop; resolve image rights before release |
+| Cúpla | First v1.1 verdict **Revise at 6.43** (24 Jul); one repair cycle remains | Reprice the menu in sterling (it is in euro — the Dundrum-Dublin conflation the verification warns against) and source or label it; add real café/food proof; brand-first retypeset. Strongest identity of the batch |
 | The Tool Centre | Internal pending evidence | Add specific subject proof and source every published hire detail before the hire/call loop is reviewed |
-| Kent Amusements | Internal pending review | Replace illustrative costume with real subject proof and review one complete visit-planning loop; resolve image rights before release |
-| Newcastle Chamber | Internal pending evidence | Make directory search and the selected visitor loop real or explicitly bounded; add specific subject proof |
+| Kent Amusements | First v1.1 verdict **Revise at 5.88** (24 Jul); one repair cycle remains | Fix the 390px header overflow that clips the "Call" CTA; replace the SVG-booth hero with real arcade proof; brand-first retypeset. Honesty (self-labelled offers/hours, Facebook deferral) is a strength to keep |
+| Newcastle Chamber | First v1.1 verdict **Revise at 6.28** (24 Jul); one repair cycle remains | Make the homepage search real (it ignores the query and always returns all 18 cards) or remove it; stop listing real named businesses as "members"; add real place/artefact proof. Directory thesis and honest event badging are strengths |
 | The Dundrum Inn | Internal pending review | Replace invented live status with sourced or explicitly illustrative states and add real place proof; resolve image rights before release |
 | Groves Chemist | Internal pending evidence | Add specific pharmacy proof and an honest prescription-request handoff or clearly labelled prototype end state |
 | Tonn Ruray Café | Internal pending review | Add real café proof and make the visit/menu loop complete rather than decorative; resolve image rights before release |
@@ -120,6 +123,23 @@ The same reviewer scored the fixed source at 7.15, but direct menu hashes
 scrolled past the illustrative-price warning. Claims honesty still failed and
 the core truth score remained 6.5, so the concept is retired after its single
 repair cycle. Photo permission also remains unresolved.
+
+The next five candidates received their first independent v1.1 reviews on 24
+July 2026 — **Mourne Cycles (5.93), Newcastle Chamber (6.28), Kent Amusements
+(5.88), Donard Veterinary (5.93) and Cúpla (6.43)**. All five returned **Revise**
+and each keeps its one repair cycle. The failures are concrete and reproducible,
+not matters of taste: a 390 px header that clips the primary action (Mourne
+Cycles, Kent); a homepage search that ignores its query and always returns the
+full directory (Chamber); an appointment form that opens a blank email and
+discards every typed field, plus a "VidiVet" service the practice does not use —
+it uses PetsApp (Donard Vet); a café menu priced in euro for a sterling
+jurisdiction (Cúpla); and invented, unlabelled prices (Mourne Cycles, Cúpla) or
+real businesses listed as members (Chamber). Across the batch, no first viewport
+carries real subject imagery, every home page renders its own wordmark
+struck-through (an `href="#"` inert-link side effect), and the slogan owns the
+fold. Full per-concept records are private under
+`research/concept-reviews/<slug>.md`; the compact verdicts are committed in
+`releases.json`.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 
