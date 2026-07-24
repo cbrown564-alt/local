@@ -1,0 +1,363 @@
+/* Murdock Brothers — independent concept identity.
+   A fuel merchant, not a restaurant: the direction is deliberately industrial —
+   tank steel, safety orange, stencil-wide caps and a gauge as the primary
+   control. Nothing here is soft-cornered, because nothing on a fuel lorry is.
+   The current murdocksoilcoalandgas.co.uk serves a Wix "ConnectYourDomain"
+   404, so this is what the domain has never shown anyone. */
+
+body.concept-murdock {
+  --mb-black: #15130f;
+  --mb-steel: #2b2f33;
+  --mb-steel-lift: #363b40;
+  --mb-orange: #e4572e;
+  --mb-amber: #f2a65a;
+  --mb-label: #efe9dd;
+  --mb-label-dim: #9a948a;
+  --concept-accent: var(--mb-orange);
+  --concept-nav-gap: clamp(14px, 2vw, 26px);
+  --concept-nav-line: 3px;
+
+  margin: 0;
+  background: var(--mb-black);
+  color: var(--mb-label);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hazard chevrons along the top edge — the one decorative flourish, and it is
+   borrowed from the back of a tanker rather than from a design system. */
+.mb-strip {
+  padding: 10px clamp(16px, 4vw, 44px);
+  background:
+    repeating-linear-gradient(135deg, rgba(228, 87, 46, .22) 0 12px, transparent 12px 24px),
+    var(--mb-steel);
+  border-bottom: 3px solid var(--mb-orange);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.mb-strip-note {
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: .06em;
+  text-transform: none;
+  color: var(--mb-label-dim);
+}
+
+.mb-header {
+  padding: 16px clamp(16px, 4vw, 44px);
+  gap: 22px;
+  border-bottom: 1px solid rgba(239, 233, 221, .12);
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.mb-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+
+.mb-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--mb-orange);
+  color: var(--mb-black);
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+
+.mb-brand-name {
+  display: block;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 900;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+}
+
+.mb-brand-sub {
+  display: block;
+  font-family: "DM Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mb-label-dim);
+}
+
+.mb-nav a {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mb-label);
+}
+
+.mb-nav a:hover::after,
+.mb-nav a:focus-visible::after { right: 0; }
+
+.mb-call {
+  padding: 11px 17px;
+  background: var(--mb-label);
+  color: var(--mb-black);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.mb-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  grid-template-areas: "lede gauge" "fuels gauge";
+  align-content: start;
+  gap: clamp(22px, 3.4vw, 44px);
+  padding: clamp(26px, 4vw, 52px) clamp(16px, 4vw, 44px) 96px;
+}
+
+.mb-lede { grid-area: lede; }
+
+.mb-eyebrow {
+  margin: 0 0 12px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mb-amber);
+}
+
+.mb-lede h1 {
+  margin: 0;
+  font-size: clamp(38px, 6.4vw, 86px);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+
+.mb-lede h1 span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--mb-orange);
+}
+
+.mb-lede > p {
+  max-width: 44ch;
+  margin: clamp(16px, 2vw, 24px) 0 0;
+  font-size: clamp(13.5px, 1.05vw, 15px);
+  line-height: 1.68;
+  color: rgba(239, 233, 221, .78);
+}
+
+.mb-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mb-areas li {
+  padding: 6px 11px;
+  border: 1px solid rgba(239, 233, 221, .26);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+/* The gauge panel: a steel instrument face bolted to the page. */
+.mb-gauge {
+  grid-area: gauge;
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid rgba(239, 233, 221, .18);
+  background: linear-gradient(180deg, var(--mb-steel-lift), var(--mb-steel));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09), 0 26px 54px rgba(0, 0, 0, .5);
+}
+
+.mb-gauge h2 {
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(239, 233, 221, .18);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.mb-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.mb-readout output {
+  font-family: "DM Mono", monospace;
+  font-size: clamp(48px, 7vw, 74px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--mb-amber);
+  font-variant-numeric: tabular-nums;
+}
+
+.mb-readout-unit {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mb-label-dim);
+}
+
+.mb-dial {
+  position: relative;
+  height: 13px;
+  margin: 16px 0 6px;
+  border: 1px solid rgba(239, 233, 221, .3);
+  background: rgba(0, 0, 0, .34);
+  overflow: hidden;
+}
+
+.mb-dial-fill {
+  width: var(--mb-fill, 50%);
+  height: 100%;
+  background: linear-gradient(90deg, var(--mb-orange), var(--mb-amber));
+  transition: width 120ms linear;
+}
+
+.mb-dial-e,
+.mb-dial-f {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--mb-label);
+  mix-blend-mode: difference;
+}
+
+.mb-dial-e { left: 6px; }
+.mb-dial-f { right: 6px; }
+
+.mb-range-label {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "DM Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mb-label-dim);
+}
+
+.mb-range {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--mb-orange);
+}
+
+.mb-range:focus-visible { outline: 2px solid var(--mb-amber); outline-offset: 4px; }
+
+.mb-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  color: var(--mb-label-dim);
+}
+
+.mb-quote {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(239, 233, 221, .28);
+}
+
+.mb-quote-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mb-label-dim);
+}
+
+.mb-quote-value {
+  font-family: "DM Mono", monospace;
+  font-size: 26px;
+  color: var(--mb-label);
+}
+
+.mb-price-note {
+  margin: 10px 0 0;
+  padding: 9px 11px;
+  border-left: 3px solid var(--mb-amber);
+  background: rgba(242, 166, 90, .1);
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(239, 233, 221, .82);
+}
+
+.mb-submit {
+  display: block;
+  margin-top: 16px;
+  padding: 15px;
+  background: var(--mb-orange);
+  color: var(--mb-black);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: filter 140ms ease;
+}
+
+.mb-submit:hover,
+.mb-submit:focus-visible { filter: brightness(1.12); }
+
+.mb-fuels {
+  grid-area: fuels;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: rgba(239, 233, 221, .16);
+  border: 1px solid rgba(239, 233, 221, .16);
+}
+
+.mb-fuel { padding: 16px 14px; background: var(--mb-black); }
+
+.mb-fuel h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.005em;
+}
+
+.mb-fuel-note { margin: 0; font-size: 11.5px; line-height: 1.5; color: var(--mb-label-dim); }
+
+.mb-fuel-unit {
+  margin: 10px 0 0;
+  font-family: "DM Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mb-amber);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-dial-fill { transition: none; }
+}
+
+@media (max-width: 940px) {
+  .mb-main { grid-template-columns: 1fr; grid-template-areas: "lede" "gauge" "fuels"; }
+  .mb-nav { display: none; }
+}
+
+@media (max-width: 520px) {
+  .mb-strip { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .mb-strip-note { letter-spacing: .04em; }
+}

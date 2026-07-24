@@ -1,0 +1,82 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-bettys-butters.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Betty's Better Butters publishes no product names, sizes or prices online, so
+// the flavours below are clearly-marked structure placeholders — never passed
+// off as the real range, which must come from the maker.
+const jars = [
+  { name: "Garlic & Herb", note: "the everyday one", tone: "herb", ph: true },
+  { name: "Chilli & Lime", note: "for corn, for steak", tone: "chilli", ph: true },
+  { name: "Café de Paris", note: "the restaurant classic", tone: "paris", ph: true },
+  { name: "Maple & Sea Salt", note: "breakfast, upgraded", tone: "maple", ph: true },
+];
+---
+
+<ConceptLayout
+  title={"Betty's Better Butters — independent concept"}
+  slug="bettys-butters"
+  bodyClass="concept-page concept-bettys"
+  businessName="Betty's Better Butters"
+  town="Dundrum"
+  bannerNote="Flavours shown are placeholders — the real range must come from the maker."
+>
+  <div class="bb-strip">
+    <span>Betty's Better Butters · Dundrum · made in small batches</span>
+    <span class="bb-strip-r">Collection · local delivery · Royal Mail across the UK</span>
+  </div>
+
+  <header class="bb-header">
+    <a class="bb-brand" href="#">
+      <span class="bb-brand-name">Betty's</span>
+      <span class="bb-brand-sub">Better Butters</span>
+    </a>
+    <nav class="bb-nav" aria-label="Concept navigation">
+      <a href="#">The range</a><a href="#">Our story</a><a href="#">Stockists</a><a href="#">Order</a>
+    </nav>
+    <a class="bb-shop" href="#">Shop the range</a>
+  </header>
+
+  <main class="bb-main">
+    <section class="bb-hero">
+      <p class="bb-kicker">Flavoured butter · Dundrum</p>
+      <h1>
+        Restaurant flavour,
+        <span class="bb-hero-em">brought home</span>
+        <span class="bb-hero-tail">on a knife.</span>
+      </h1>
+      <p class="bb-lede">
+        Bold flavoured butters from recipes collected over ten years in professional
+        kitchens — the kind of thing that turns a one-off treat into a new staple.
+        A pat on the pan, and dinner tastes like somewhere else.
+      </p>
+      <div class="bb-hero-actions">
+        <a class="bb-cta" href="#">See the range →</a>
+        <a class="bb-story" href="#">Read Betty's story</a>
+      </div>
+
+      <p class="bb-current">
+        <strong>The current site shows no products at all</strong> — two pages, both still
+        titled "Home Page". This concept builds the shelf the butters deserve.
+      </p>
+    </section>
+
+    <!-- The range as a shelf of pats. Each jar is a butter round with a wax-paper
+         label; the whole point is that the food is finally visible. -->
+    <section class="bb-shelf" aria-label="The range">
+      {jars.map((jar) => (
+        <article class={`bb-jar bb-jar--${jar.tone}`}>
+          <div class="bb-round" aria-hidden="true">
+            <span class="bb-round-mono">B</span>
+          </div>
+          <div class="bb-jar-label">
+            <h2>{jar.name}</h2>
+            <p>{jar.note}</p>
+            {jar.ph && <span class="bb-ph">placeholder flavour</span>}
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</ConceptLayout>

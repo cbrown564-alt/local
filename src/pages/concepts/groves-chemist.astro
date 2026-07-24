@@ -1,0 +1,114 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-groves-chemist.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Everything here existed on groveschemist.com before it was deactivated. The
+// concept restores the capability, not a redesign of something still running.
+const branches = [
+  { name: "Dundrum", address: "165–167 Main Street, BT33 0LY", phone: "028 4375 1326" },
+  { name: "Killough", address: "Killough Pharmacy", phone: "028 4484 2915" },
+];
+const services = [
+  "Pharmacy First — minor ailments",
+  "Blood pressure monitoring",
+  "Contraception service",
+  "Quit smoking support",
+  "Medicines Use Reviews",
+  "Nursing & residential homes",
+];
+const surgeries = ["Newcastle", "Dundrum", "Clough", "Downpatrick", "Ardglass"];
+---
+
+<ConceptLayout
+  title={"Groves Chemist — independent concept"}
+  slug="groves-chemist"
+  bodyClass="concept-page concept-groves"
+  businessName="Groves Chemist"
+  town="Dundrum"
+  bannerNote="Restores capability the pharmacy's own deactivated site used to carry."
+>
+  <div class="gc-strip">
+    <span>Groves Chemists Ltd · Dundrum &amp; Killough · family owned</span>
+    <span class="gc-strip-hours">Open today until 6.00pm</span>
+  </div>
+
+  <header class="gc-header">
+    <a class="gc-brand" href="#">
+      <svg class="gc-cross" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="12" y="2" width="6" height="26" rx="1.4" fill="currentColor" />
+        <rect x="2" y="12" width="26" height="6" rx="1.4" fill="currentColor" />
+      </svg>
+      <span class="gc-brand-text">
+        <span class="gc-brand-name">Groves Chemist</span>
+        <span class="gc-brand-sub">Health promoting pharmacies</span>
+      </span>
+    </a>
+    <nav class="gc-nav" aria-label="Concept navigation">
+      <a href="#">Prescriptions</a><a href="#">Services</a><a href="#">Branches</a><a href="#">Advice</a>
+    </nav>
+    <a class="gc-phone" href="tel:+442843751326">028 4375 1326</a>
+  </header>
+
+  <main class="gc-main">
+    <section class="gc-lede">
+      <p class="gc-eyebrow">Dundrum &amp; Killough</p>
+      <h1>Your repeat prescription,<br /><em>ordered before you forget.</em></h1>
+      <p class="gc-body">
+        We collect from surgeries in {surgeries.join(", ")}, and deliver free across
+        BT30 and BT33. Tell us what you need and which branch suits — we'll do the
+        chasing and text you when it's ready.
+      </p>
+
+      <ul class="gc-services">
+        {services.map((service) => (
+          <li>{service}</li>
+        ))}
+      </ul>
+
+      <div class="gc-branches">
+        {branches.map((branch) => (
+          <article class="gc-branch">
+            <h2>{branch.name}</h2>
+            <p>{branch.address}</p>
+            <a href={`tel:${branch.phone.replace(/\s/g, "")}`}>{branch.phone}</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- The dispensing label. A pharmacy's most familiar object, used as the
+         form surface — perforated top edge, tabular numerals, warning line. -->
+    <section class="gc-label" aria-labelledby="gc-label-title">
+      <div class="gc-perf" aria-hidden="true"></div>
+      <div class="gc-label-body">
+        <p class="gc-label-org">Groves Chemists Ltd · 165–167 Main Street, Dundrum</p>
+        <h2 id="gc-label-title">Order a repeat</h2>
+
+        <div class="gc-field">
+          <label for="gc-name">Name on the prescription</label>
+          <input id="gc-name" type="text" placeholder="e.g. Margaret Grove" autocomplete="off" />
+        </div>
+
+        <div class="gc-field">
+          <label for="gc-items">Items you need</label>
+          <textarea id="gc-items" rows="3" placeholder="One per line, as printed on your repeat slip"></textarea>
+        </div>
+
+        <fieldset class="gc-field gc-field--choice">
+          <legend>Collect from</legend>
+          <label><input type="radio" name="gc-branch" checked /> <span>Dundrum</span></label>
+          <label><input type="radio" name="gc-branch" /> <span>Killough</span></label>
+          <label><input type="radio" name="gc-branch" /> <span>Deliver to me</span></label>
+        </fieldset>
+
+        <a class="gc-submit" href="#">Send to the pharmacy</a>
+
+        <p class="gc-warn">
+          <strong>Not for emergencies.</strong> If you need urgent help, phone the branch or
+          call 111. We'll confirm every order by text before dispensing.
+        </p>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>

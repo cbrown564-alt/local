@@ -1,0 +1,132 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-murdock-brothers.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Facts from directory listings verified 24 July 2026. The price per litre is a
+// clearly-marked placeholder: Murdock Brothers publishes no price online, and a
+// fuel price invented by us would be the one number a customer acts on.
+const areas = ["Dundrum", "Newcastle", "Castlewellan", "Ballynahinch", "Downpatrick"];
+const fuels = [
+  { name: "Home heating oil", unit: "per litre", note: "Kerosene · 28 sec" },
+  { name: "Coal & smokeless", unit: "per bag", note: "Doubles, singles, ovoids" },
+  { name: "Bottled gas", unit: "per cylinder", note: "Patio, cooker, heater" },
+  { name: "Turf & firewood", unit: "per load", note: "Seasoned, netted" },
+];
+---
+
+<ConceptLayout
+  title={"Murdock Brothers — independent concept"}
+  slug="murdock-brothers"
+  bodyClass="concept-page concept-murdock"
+  businessName="Murdock Brothers"
+  town="Dundrum"
+  bannerNote="Trading status unconfirmed at the time of building — this concept is not outreach material."
+>
+  <div class="mb-strip">
+    <span>Oil · Coal · Gas · Turf — delivered since 1963</span>
+    <span class="mb-strip-note">Mon–Fri 8.30–17.30 · Sat 9.00–15.00</span>
+  </div>
+
+  <header class="mb-header">
+    <a class="mb-brand" href="#">
+      <span class="mb-brand-mark" aria-hidden="true">MB</span>
+      <span class="mb-brand-text">
+        <span class="mb-brand-name">Murdock Brothers</span>
+        <span class="mb-brand-sub">Fuel merchants · Dundrum</span>
+      </span>
+    </a>
+    <nav class="mb-nav" aria-label="Concept navigation">
+      <a href="#">Order oil</a><a href="#">Solid fuel</a><a href="#">Gas</a><a href="#">Account</a>
+    </nav>
+    <a class="mb-call" href="#">Order by phone</a>
+  </header>
+
+  <main class="mb-main">
+    <section class="mb-lede">
+      <p class="mb-eyebrow">Sixty-three years on the same roads</p>
+      <h1>Order a fill<br /><span>in under a minute</span></h1>
+      <p>
+        Oil, coal, gas and turf, delivered across the Mournes since 1963. Set your
+        litres, pick a day, and we'll ring you back to confirm — the same way you'd
+        do it over the phone, only it doesn't have to be during office hours.
+      </p>
+      <ul class="mb-areas">
+        {areas.map((area) => <li>{area}</li>)}
+      </ul>
+    </section>
+
+    <!-- The gauge is the interface. The slider is a real range input so it is
+         keyboard operable and announces its value; the readout is computed. -->
+    <section class="mb-gauge" aria-labelledby="mb-gauge-title">
+      <h2 id="mb-gauge-title">Home heating oil</h2>
+
+      <div class="mb-readout">
+        <output id="mb-litres" for="mb-range">500</output>
+        <span class="mb-readout-unit">litres</span>
+      </div>
+
+      <div class="mb-dial" aria-hidden="true">
+        <div class="mb-dial-fill" id="mb-fill"></div>
+        <span class="mb-dial-e">E</span>
+        <span class="mb-dial-f">F</span>
+      </div>
+
+      <label class="mb-range-label" for="mb-range">Choose your delivery</label>
+      <input
+        class="mb-range"
+        id="mb-range"
+        type="range"
+        min="200"
+        max="1000"
+        step="50"
+        value="500"
+        aria-describedby="mb-price-note"
+      />
+
+      <div class="mb-ticks" aria-hidden="true">
+        <span>200</span><span>500</span><span>1000</span>
+      </div>
+
+      <div class="mb-quote">
+        <span class="mb-quote-label">Estimated total</span>
+        <span class="mb-quote-value">£<output id="mb-price" for="mb-range">—</output></span>
+      </div>
+      <p class="mb-price-note" id="mb-price-note">
+        <strong>Price not shown.</strong> Murdock Brothers publishes no rate online, so this
+        concept leaves it blank rather than invent one. The live version reads the
+        day's price from the yard.
+      </p>
+
+      <a class="mb-submit" href="#">Book this delivery →</a>
+    </section>
+
+    <section class="mb-fuels" aria-label="What we deliver">
+      {fuels.map((fuel) => (
+        <article class="mb-fuel">
+          <h3>{fuel.name}</h3>
+          <p class="mb-fuel-note">{fuel.note}</p>
+          <p class="mb-fuel-unit">{fuel.unit}</p>
+        </article>
+      ))}
+    </section>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var range = document.getElementById("mb-range");
+      var litres = document.getElementById("mb-litres");
+      var fill = document.getElementById("mb-fill");
+      if (!range || !litres || !fill) return;
+      function sync() {
+        var value = Number(range.value);
+        var min = Number(range.min);
+        var max = Number(range.max);
+        litres.textContent = String(value);
+        fill.style.setProperty("--mb-fill", ((value - min) / (max - min)) * 100 + "%");
+      }
+      range.addEventListener("input", sync);
+      sync();
+    })();
+  </script>
+</ConceptLayout>

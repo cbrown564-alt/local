@@ -1,0 +1,103 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-donard-hotel.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// The Donard Hotel trades (Booking.com 8.7, 46 reviews, 2026 prices) but its own
+// site is dead — 404 over HTTP, no HTTPS. Every booking goes through an OTA that
+// takes commission. The concept is a direct front door. Rate below is illustrative.
+const nights = [
+  { room: "Main Street double", note: "Bay-facing, breakfast in", rate: "119" },
+  { room: "Mourne twin", note: "Quiet rear, mountain side", rate: "109" },
+  { room: "Family room", note: "Sleeps four, town centre", rate: "149" },
+];
+---
+
+<ConceptLayout
+  title={"The Donard Hotel — independent concept"}
+  slug="donard-hotel"
+  bodyClass="concept-page concept-donard"
+  businessName="The Donard Hotel"
+  town="Newcastle"
+  bannerNote="Rates are illustrative — the direct booking argument, not a live tariff."
+>
+  <div class="dh-strip">
+    <span>23–29 Main Street, Newcastle · at the foot of Slieve Donard</span>
+    <span class="dh-strip-r">Reception <a href="tel:+442843722203">028 4372 2203</a></span>
+  </div>
+
+  <header class="dh-header">
+    <a class="dh-brand" href="#">
+      <span class="dh-brand-crest" aria-hidden="true">D</span>
+      <span class="dh-brand-text">
+        <span class="dh-brand-name">The Donard</span>
+        <span class="dh-brand-sub">Hotel · Newcastle, Co. Down</span>
+      </span>
+    </a>
+    <nav class="dh-nav" aria-label="Concept navigation">
+      <a href="#">Rooms</a><a href="#">Dining</a><a href="#">The town</a><a href="#">Offers</a>
+    </nav>
+    <a class="dh-book" href="#">Book direct</a>
+  </header>
+
+  <main class="dh-main">
+    <section class="dh-hero">
+      <p class="dh-kicker">Since the promenade was young</p>
+      <h1>A Main Street welcome,<br /><em>booked straight from us.</em></h1>
+      <p class="dh-lede">
+        Large, warm rooms a minute from the sand, a good breakfast, and staff who
+        remember you. Rated 8.7 by recent guests — the only thing missing is a way
+        to book without a middleman taking their cut.
+      </p>
+
+      <!-- The commission argument, made once, plainly. -->
+      <div class="dh-direct">
+        <div class="dh-direct-row dh-direct-row--ota">
+          <span class="dh-direct-label">Through a travel site</span>
+          <span class="dh-direct-price">£119 <em>+ commission</em></span>
+        </div>
+        <div class="dh-direct-row dh-direct-row--us">
+          <span class="dh-direct-label">Booked direct with us</span>
+          <span class="dh-direct-price">£119 <strong>· breakfast on us</strong></span>
+        </div>
+        <p class="dh-direct-note">
+          Same room, same night. The difference is who keeps the margin — and direct
+          guests get breakfast for it.
+        </p>
+      </div>
+    </section>
+
+    <!-- Availability bar + room list: the front door the OTA replaced. -->
+    <aside class="dh-book-panel" aria-labelledby="dh-book-title">
+      <h2 id="dh-book-title">Check availability</h2>
+      <form class="dh-avail" onsubmit="return false">
+        <label class="dh-avail-field">
+          <span>Arrive</span>
+          <input type="date" value="2026-08-14" />
+        </label>
+        <label class="dh-avail-field">
+          <span>Nights</span>
+          <select>
+            <option>1 night</option>
+            <option selected>2 nights</option>
+            <option>3 nights</option>
+          </select>
+        </label>
+        <button class="dh-avail-go" type="submit">Search rooms</button>
+      </form>
+
+      <ul class="dh-rooms">
+        {nights.map((room) => (
+          <li class="dh-room">
+            <span class="dh-room-text">
+              <span class="dh-room-name">{room.room}</span>
+              <span class="dh-room-note">{room.note}</span>
+            </span>
+            <span class="dh-room-rate">£{room.rate}<em>/night</em></span>
+          </li>
+        ))}
+      </ul>
+      <p class="dh-book-foot">Rates illustrative. A live version runs the hotel's own booking engine — no OTA in between.</p>
+    </aside>
+  </main>
+</ConceptLayout>

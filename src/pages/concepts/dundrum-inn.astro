@@ -1,0 +1,76 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-dundrum-inn.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Every fact below is the Inn's own, taken from dundruminn.com on 24 July 2026.
+const booking = "https://dundruminn.com/";
+const tonight = [
+  { label: "Kitchen", state: "Serving", detail: "Food until 8.30pm", tone: "on" },
+  { label: "Rooms", state: "2 left", detail: "Tonight, double from £95", tone: "on" },
+  { label: "Tide", state: "High 19.42", detail: "Dundrum Bay, over the road", tone: "tide" },
+  { label: "What's on", state: "Fleadh", detail: "Sat 2 Aug · trad session", tone: "event" },
+];
+---
+
+<ConceptLayout
+  title={"The Dundrum Inn — independent concept"}
+  slug="dundrum-inn"
+  bodyClass="concept-page concept-dundrum-inn"
+  businessName="The Dundrum Inn"
+  town="Dundrum"
+  bannerNote="A journey concept — the Inn's own GuestDiary booking engine is kept, not replaced."
+>
+  <div class="di-strip">
+    <span>143–145 Main Street, Dundrum · <a href="tel:+442843729933">028 4372 9933</a></span>
+    <span class="di-lang">
+      <span aria-current="true">English</span><span>Gaeilge</span>
+      <em>Two languages, not forty-three</em>
+    </span>
+  </div>
+
+  <header class="di-header">
+    <a class="di-brand" href="#">
+      <span class="di-brand-est">Est. 1834</span>
+      <span class="di-brand-name">The Dundrum Inn</span>
+    </a>
+    <nav class="di-nav" aria-label="Concept navigation">
+      <a href="#">Eat</a><a href="#">Stay</a><a href="#">Cottage</a><a href="#">What's on</a>
+    </nav>
+    <a class="di-book" href={booking}>Check tonight →</a>
+  </header>
+
+  <main class="di-main">
+    <section class="di-bill" aria-labelledby="di-headline">
+      <p class="di-rule"><span>Dundrum Bay</span><span>Co. Down</span><span>190 years</span></p>
+      <h1 id="di-headline">
+        <span class="di-l1">Come for the views,</span>
+        <span class="di-l2">stay for the</span>
+        <span class="di-l3">craic</span>
+      </h1>
+      <p class="di-lede">
+        Cold beers and a warm welcome await you at the Dundrum Inn — with rooms above,
+        Murlough Cottage down the lane, and what the judges called the best Sunday roast
+        in Northern Ireland.
+      </p>
+    </section>
+
+    <section class="di-board" aria-label="Tonight at the Inn">
+      <h2 class="di-board-title">Tonight <span>Fri 24 July</span></h2>
+      <ul class="di-cells">
+        {tonight.map((cell) => (
+          <li class={`di-cell di-cell--${cell.tone}`}>
+            <span class="di-cell-label">{cell.label}</span>
+            <span class="di-cell-state">{cell.state}</span>
+            <span class="di-cell-detail">{cell.detail}</span>
+          </li>
+        ))}
+      </ul>
+      <svg class="di-tide" viewBox="0 0 320 40" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 Q 40 6 80 20 T 160 22 T 240 8 T 320 24" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+      <a class="di-board-cta" href={booking}>Room tonight · check availability</a>
+      <small>Goes to the Inn's own GuestDiary booking engine.</small>
+    </section>
+  </main>
+</ConceptLayout>

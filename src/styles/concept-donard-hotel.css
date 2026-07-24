@@ -1,0 +1,293 @@
+/* The Donard Hotel — independent concept identity.
+   A trading Main Street hotel whose own site is dead, so every booking runs
+   through an OTA on commission. The direction is unfussy heritage — warm stone
+   paper, an oxblood-and-ink palette deliberately away from Enniskeen's pine and
+   brass, Marcellus caps for a Roman-inscription calm. The one argument is
+   commission, so the direct-vs-OTA panel is the only place strong colour lands.
+   Light-themed, because a seaside hotel should feel like morning. */
+
+body.concept-donard {
+  --dh-paper: #f6f1e8;
+  --dh-paper-deep: #ece3d3;
+  --dh-ink: #241f1c;
+  --dh-ink-soft: #6a5f56;
+  --dh-wine: #7c2b34;
+  --dh-wine-deep: #5c1e26;
+  --dh-gold: #b8893f;
+  --dh-sea: #34606a;
+  --dh-rule: #d6c9b3;
+  --concept-accent: var(--dh-wine);
+  --concept-nav-gap: clamp(18px, 2.3vw, 32px);
+  --concept-nav-line: 1px;
+
+  margin: 0;
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--dh-paper) 0%, var(--dh-paper-deep) 100%);
+  color: var(--dh-ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dh-strip {
+  padding: 10px clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--dh-rule);
+  font-size: 12px;
+  letter-spacing: .015em;
+  color: var(--dh-ink-soft);
+}
+
+.dh-strip a { color: var(--dh-wine); text-underline-offset: 3px; font-weight: 600; }
+
+.dh-header {
+  padding: 18px clamp(16px, 4vw, 48px);
+  gap: 24px;
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.dh-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; color: inherit; }
+
+.dh-brand-crest {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--dh-wine);
+  border-radius: 50%;
+  color: var(--dh-wine);
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 24px;
+}
+
+.dh-brand-name {
+  display: block;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: clamp(21px, 2.2vw, 28px);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dh-wine-deep);
+}
+
+.dh-brand-sub {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dh-ink-soft);
+}
+
+.dh-nav a {
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 14.5px;
+  letter-spacing: .04em;
+  color: var(--dh-ink);
+}
+
+.dh-nav a:hover::after,
+.dh-nav a:focus-visible::after { right: 0; }
+
+.dh-book {
+  padding: 12px 20px;
+  background: var(--dh-wine);
+  color: var(--dh-paper);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.dh-book:hover,
+.dh-book:focus-visible { background: var(--dh-wine-deep); }
+
+.dh-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, .9fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  padding: clamp(30px, 4.6vw, 66px) clamp(16px, 4vw, 48px) 96px;
+}
+
+.dh-kicker {
+  margin: 0 0 clamp(14px, 2vw, 20px);
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--dh-gold);
+}
+
+.dh-hero h1 {
+  margin: 0;
+  font-family: "Marcellus", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 66px);
+  line-height: 1.04;
+  letter-spacing: -.005em;
+  color: var(--dh-wine-deep);
+}
+
+.dh-hero h1 em {
+  font-style: italic;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--dh-ink);
+}
+
+.dh-lede {
+  max-width: 50ch;
+  margin: clamp(20px, 2.6vw, 30px) 0 0;
+  font-size: clamp(15px, 1.15vw, 16.5px);
+  line-height: 1.68;
+  color: var(--dh-ink-soft);
+}
+
+/* Direct-vs-OTA card. */
+.dh-direct {
+  margin-top: clamp(26px, 3vw, 36px);
+  max-width: 480px;
+  border: 1px solid var(--dh-rule);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(92, 30, 38, .1);
+}
+
+.dh-direct-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.dh-direct-row--ota {
+  background: var(--dh-paper-deep);
+  color: var(--dh-ink-soft);
+}
+
+.dh-direct-row--ota .dh-direct-price { color: var(--dh-ink-soft); }
+.dh-direct-row--ota .dh-direct-price em { font-style: normal; font-size: 12px; }
+
+.dh-direct-row--us {
+  background: var(--dh-wine);
+  color: var(--dh-paper);
+}
+
+.dh-direct-label { font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+
+.dh-direct-price {
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 22px;
+}
+
+.dh-direct-price strong { font-family: "Figtree", sans-serif; font-size: 12px; font-weight: 600; }
+
+.dh-direct-note {
+  margin: 0;
+  padding: 12px 18px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--dh-ink-soft);
+}
+
+/* Booking panel. */
+.dh-book-panel {
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid var(--dh-rule);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 20px 48px rgba(36, 31, 28, .12);
+}
+
+.dh-book-panel h2 {
+  margin: 0 0 16px;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 20px;
+  letter-spacing: .02em;
+  color: var(--dh-wine-deep);
+}
+
+.dh-avail { display: grid; gap: 12px; margin-bottom: 20px; }
+
+.dh-avail-field { display: grid; gap: 6px; }
+
+.dh-avail-field span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dh-ink-soft);
+}
+
+.dh-avail-field input,
+.dh-avail-field select {
+  padding: 11px 12px;
+  border: 1px solid var(--dh-rule);
+  border-radius: 5px;
+  background: var(--dh-paper);
+  color: var(--dh-ink);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.dh-avail-field input:focus-visible,
+.dh-avail-field select:focus-visible { outline: 2px solid var(--dh-wine); outline-offset: 1px; }
+
+.dh-avail-go {
+  padding: 13px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--dh-wine);
+  color: var(--dh-paper);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.dh-avail-go:hover,
+.dh-avail-go:focus-visible { background: var(--dh-wine-deep); }
+
+.dh-rooms { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--dh-rule); }
+
+.dh-room {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--dh-rule);
+}
+
+.dh-room-name { display: block; font-size: 14.5px; font-weight: 600; }
+.dh-room-note { display: block; margin-top: 2px; font-size: 12px; color: var(--dh-ink-soft); }
+
+.dh-room-rate {
+  flex: none;
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 20px;
+  color: var(--dh-sea);
+}
+
+.dh-room-rate em { font-family: "Figtree", sans-serif; font-style: normal; font-size: 11px; color: var(--dh-ink-soft); }
+
+.dh-book-foot {
+  margin: 14px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--dh-ink-soft);
+}
+
+@media (max-width: 940px) {
+  .dh-main { grid-template-columns: 1fr; }
+  .dh-nav { display: none; }
+}
+
+@media (max-width: 520px) {
+  .dh-strip { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .dh-direct-row { flex-wrap: wrap; }
+}

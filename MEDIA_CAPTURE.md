@@ -353,5 +353,15 @@ Journey films additionally:
 | tool-centre | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | kent-amusements | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | newcastle-chamber | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
+| dundrum-inn | 24 Jul 2026 | before+after still & clip | Consent prompt → clicked "Reject all" | Paired journey capture; live GuestDiary booking destination kept |
+| groves-chemist | 24 Jul 2026 | before still, after still & clip | None; deactivation notice intentionally visible | After-only motion; the pharmacy's own URL is the before finding |
+| tonn-ruray | 24 Jul 2026 | before+after still & clip | Promo lightbox → clicked coordinate (914,76) | Before recaptured clean; paired café-first comparison |
+| kelly-mcevoy-brown | 24 Jul 2026 | before+after still & clip | None found | Paired portfolio comparison; source photography retained |
+| bettys-butters | 24 Jul 2026 | before+after still & clip | None found | Paired comparison; placeholder flavours remain labelled in concept |
+| douglas-cromie | 24 Jul 2026 | before stand-in still, after still & clip | n/a; domain ENOTFOUND | After-only motion; muted before card records the failed address honestly |
+| donard-hotel | 24 Jul 2026 | before 404 still, after still & clip | n/a; HTTP 404 and no HTTPS listener | After-only motion; no OTA photography reused |
+| newcastle-dental | 24 Jul 2026 | before redirect still, after still & clip | n/a; insecure redirect to DJ Maguire page | After-only motion; before records where the practice's address leads |
+| hugh-mccanns | 24 Jul 2026 | before+after still & clip | None found | Paired feature comparison; maintained source site and photography retained |
+| murdock-brothers | 24 Jul 2026 | internal before still, after still & clip | n/a; Wix domain-connection error | Internal-only capture; trading remains unconfirmed, so no transformation case or outreach |
 
 (Log rows are added in the same commit as each recapture.)

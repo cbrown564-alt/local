@@ -1,0 +1,94 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-douglas-cromie.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Douglas & Cromie's own domain returns ENOTFOUND; its stock lives on a
+// third-party marketplace. This concept is the forecourt they'd own. Vehicle
+// details are clearly-marked placeholders — the live version reads the yard.
+const stock = [
+  { make: "Ford", model: "Focus Titanium", year: "2019", miles: "48,200", price: "9,450", fuel: "Diesel" },
+  { make: "Volkswagen", model: "Golf Match", year: "2020", miles: "36,900", price: "12,995", fuel: "Petrol" },
+  { make: "Nissan", model: "Qashqai N-Connecta", year: "2018", miles: "61,400", price: "10,750", fuel: "Diesel" },
+];
+---
+
+<ConceptLayout
+  title={"Douglas & Cromie — independent concept"}
+  slug="douglas-cromie"
+  bodyClass="concept-page concept-dc"
+  businessName="Douglas and Cromie"
+  town="Newcastle"
+  bannerNote="Vehicles shown are placeholders — the live forecourt would read from the dealer's own stock."
+>
+  <div class="dc-strip">
+    <span>Bryansford Service Station · Newcastle, Co. Down · est. 50 years</span>
+    <span class="dc-strip-r"><a href="tel:+442843722382">028 4372 2382</a></span>
+  </div>
+
+  <header class="dc-header">
+    <a class="dc-brand" href="#">
+      <span class="dc-plate" aria-hidden="true">
+        <span class="dc-plate-flag">D&amp;C</span>
+        <span class="dc-plate-reg">CROMIE</span>
+      </span>
+      <span class="dc-brand-text">
+        <span class="dc-brand-name">Douglas &amp; Cromie</span>
+        <span class="dc-brand-sub">Car Sales · Newcastle</span>
+      </span>
+    </a>
+    <nav class="dc-nav" aria-label="Concept navigation">
+      <a href="#">Stock</a><a href="#">Part-ex</a><a href="#">Finance</a><a href="#">Servicing</a>
+    </nav>
+    <a class="dc-value" href="#">Value my car</a>
+  </header>
+
+  <main class="dc-main">
+    <section class="dc-lede">
+      <p class="dc-eyebrow">Fifty years on the Bryansford Road</p>
+      <h1>Your forecourt,<br /><span>not someone else's.</span></h1>
+      <p class="dc-body">
+        Drive away with confidence — the aftercare is what fifty years buys you.
+        Every car below sits on our own site, priced and photographed by us, not
+        buried among competitors on a marketplace page.
+      </p>
+      <div class="dc-lost">
+        <span class="dc-lost-dot" aria-hidden="true"></span>
+        <p><strong>douglasandcromie.co.uk doesn't load.</strong> The domain stopped resolving,
+        so the stock ended up on a third-party site the dealer doesn't control. This is
+        the forecourt brought back home.</p>
+      </div>
+    </section>
+
+    <!-- The forecourt board. Each car is a listing card the dealer owns —
+         price big, the three facts a buyer scans, a part-ex hook. -->
+    <section class="dc-forecourt" aria-labelledby="dc-forecourt-title">
+      <div class="dc-forecourt-head">
+        <h2 id="dc-forecourt-title">On the forecourt</h2>
+        <span class="dc-forecourt-count">3 of 24 in stock</span>
+      </div>
+      <ul class="dc-cards">
+        {stock.map((car) => (
+          <li class="dc-card">
+            <div class="dc-card-photo" aria-hidden="true">
+              <span>photo</span>
+            </div>
+            <div class="dc-card-body">
+              <p class="dc-card-name">{car.make} <strong>{car.model}</strong></p>
+              <dl class="dc-card-facts">
+                <div><dt>Year</dt><dd>{car.year}</dd></div>
+                <div><dt>Miles</dt><dd>{car.miles}</dd></div>
+                <div><dt>Fuel</dt><dd>{car.fuel}</dd></div>
+              </dl>
+              <div class="dc-card-foot">
+                <span class="dc-card-price">£{car.price}</span>
+                <a class="dc-card-cta" href="#">Enquire →</a>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="dc-forecourt-foot">Placeholder stock — the live forecourt reads from the dealer's own list.</p>
+    </section>
+  </main>
+</ConceptLayout>

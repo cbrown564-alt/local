@@ -79,6 +79,55 @@ hero and secondary-page layouts local.
   voice. Full linked site at `/concepts/newcastle-chamber/`; the unlinked,
   crawler-blocked exploration archive remains at `/prototypes/chamber/`.
 
+### Batch two (24 July 2026)
+
+Ten more concept identities, built to break out of hospitality and to give each
+prospect a signature *interaction* rather than only a look. No display face is
+reused from batch one, and each carries its own `src/styles/concept-<slug>.css`
+scoped by a body class. All verified clean at a true 390 px viewport (measured
+via a DevTools-Protocol emulation override, because headless Chrome's window
+floor of ~500 px otherwise crops a wider layout into a narrow image and fakes an
+overflow that is not there).
+
+- **The Dundrum Inn** (`dundrum-inn`) — Victorian playbill on slate: Bodoni
+  Moda mixed-size display over Space Mono, gorse brass. The argument is a
+  **tonight status board** — kitchen, rooms, tide, what's-on — on the first
+  screen, plus the site's 43-language translate widget cut to two. Journey case,
+  keeps the GuestDiary engine.
+- **Murdock Brothers** (`murdock-brothers`) — tanker steel and safety orange,
+  Archivo + DM Mono, hazard chevrons. A **fuel-gauge order slider** (real range
+  input) with the price left blank because the merchant publishes none.
+- **Groves Chemist** (`groves-chemist`) — clinical pharmacy green, Lexend + IBM
+  Plex Mono. A **dispensing-label form** with a perforated tear edge restores
+  the repeat-prescription capability the pharmacy's own deactivated site carried.
+- **Tonn Ruray Café** (`tonn-ruray`) — warm chalk, tide teal and coral, Syne
+  editorial, wave motif — deliberately unlike the apartments' cool navy so the
+  café reads as its own room. A **through-the-day service timeline**.
+- **Kelly, McEvoy & Brown** (`kelly-mcevoy-brown`) — architect's blueprint:
+  grid ground, Familjen Grotesk + Martian Mono, drawing title block. A
+  **filterable project register** turns a 53-year portfolio of text links into
+  an index. First B2B/trade concept.
+- **Betty's Better Butters** (`bettys-butters`) — premium deli label, churned
+  cream and butter gold, a fat Rozha One didone. A **shelf of butter rounds**
+  with wax-paper labels; flavours are marked placeholders (the maker publishes
+  none).
+- **Douglas & Cromie** (`douglas-cromie`) — forecourt after dark, garage
+  graphite and service-station amber, condensed Saira, a UK number-plate motif.
+  A **stock forecourt the dealer owns**, against a marketplace listing it
+  doesn't; vehicles marked placeholder.
+- **The Donard Hotel** (`donard-hotel`) — unfussy heritage in oxblood and warm
+  stone with Marcellus, kept away from Enniskeen's pine/brass. The one argument
+  is commission, so the **direct-vs-OTA panel** is the only strong colour, beside
+  an availability bar.
+- **Newcastle Family Dental Care** (`newcastle-dental`) — clinical periwinkle
+  with a coral accent, Plus Jakarta + Instrument Serif. Security *is* the
+  concept: a **padlocked secure address bar** answers the insecure redirect the
+  practice ships now, above a request form stated as HTTPS.
+- **Hugh McCann's** (`hugh-mccanns`) — delicate Italiana over plaster, forest
+  and antique gold, tuned to sit *beside* the real site's good voice rather than
+  overwrite it. A feature graft: a **date-and-guest-count enquiry** with a
+  season strip — the two facts every wedding call starts with.
+
 Concept screenshots are always captured at 1265×710 at 2x so comparisons align
 exactly, and concept pages carry a fixed "Independent concept" marker.
 
