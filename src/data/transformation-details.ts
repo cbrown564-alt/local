@@ -60,6 +60,357 @@ export interface TransformationDetail {
 }
 
 export const transformationDetails = {
+  "dundrum-inn": {
+    "title": "The Dundrum Inn concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Dundrum Inn in Dundrum.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Answer tonight on the first screen.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/dundrum-inn/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "dundrum-inn",
+      "beforeVideo": "/videos/dundrum-inn-before.mp4",
+      "afterVideo": "/videos/dundrum-inn-after.mp4",
+      "beforePoster": "/images/dundrum-inn-before.jpg",
+      "afterPoster": "/images/dundrum-inn-after.jpg",
+      "beforeAlt": "Ten-second visit to The Dundrum Inn's current website — the GuestDiary homepage under its machine-translation bar, a scroll down the page and a menu hover",
+      "afterAlt": "Ten-second visit to the concept — the Come for the views playbill, the Tonight board of kitchen, rooms, tide and what's on, and the room-tonight action into GuestDiary"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to answer the question people arrive with.",
+    "notes": [
+      {
+        "title": "Put tonight on the first screen",
+        "body": "The captured homepage opens on a photograph beneath a translation bar. Nothing on it says whether the kitchen is serving, whether a room is free tonight, or what is on this weekend — the three things a local or a visitor actually arrives to check.",
+        "change": "A Tonight board across the first screen: kitchen hours, rooms left, the bay's tide and the next event, each answered before a scroll."
+      },
+      {
+        "title": "Two languages, not forty-three",
+        "body": "A machine-translation widget offers the site in more than forty languages, and it is one of the most prominent controls on the page — yet none of its options is the one a Dundrum neighbour or a Mourne visitor needs.",
+        "change": "English and Irish, the two languages the street actually uses, with the machine bar retired so the header can carry a booking action instead."
+      },
+      {
+        "title": "Keep the booking that works",
+        "body": "The inn already runs a real booking engine — GuestDiary — with availability, room types and the self-catering cottage. The gap is not the engine; it is how far you travel down the page before you reach it.",
+        "change": "A room-tonight action on the first screen that hands straight to the inn's own GuestDiary engine: the working booking kept, the route to it shortened."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Dundrum Inn website on 24 July 2026. The inn's own words — Come for the views, stay for the craic, the 190 years, the best Sunday roast award — its 2026 content, the GuestDiary booking engine and Murlough Cottage all come from that site and are kept. The concept corrects one census error rather than inventing anything: the phone number was listed as 028 4375 1211, while the inn's own site publishes 028 4372 9933. This is a maintained, working site with a real booking engine, so this is a journey concept, not a rebuild — the booking stays with GuestDiary. The tide time and room-availability figures are illustrative. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://dundruminn.com/\" rel=\"external\">The Dundrum Inn public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "groves-chemist": {
+    "title": "Groves Chemist concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Groves Chemist in Dundrum and Killough.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Turn the pharmacy back on.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows what a patient currently finds — the pharmacy's own web address returning a deactivation notice, captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/groves-chemist/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "groves-chemist",
+      "afterVideo": "/videos/groves-chemist-after.mp4",
+      "beforePoster": "/images/groves-chemist-before.jpg",
+      "afterPoster": "/images/groves-chemist-after.jpg",
+      "beforeAlt": "Groves Chemist's own web address returning a notice that the website is no longer available, where a working pharmacy site with repeat prescriptions used to be",
+      "afterAlt": "Ten-second visit to the concept — the Your repeat prescription, ordered before you forget opening, the dispensing-label order form and both branches",
+      "beforeNote": "Groves Chemist's own address still answers — with a notice that the site is no longer available. The repeat-prescription ordering, both branches and the delivery map that used to live here have been switched off. There is no live site to demo; this is the page the address returns."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to give patients the pharmacy back.",
+    "notes": [
+      {
+        "title": "Answer the address patients still reach",
+        "body": "groveschemist.com still loads, but only to say the site is no longer available. A patient who searches for the pharmacy or types the address is told nothing useful — not the hours, not the branches, not how to order a repeat.",
+        "change": "A working first screen at the same address, leading with the one thing most people came for: a repeat prescription, requested online."
+      },
+      {
+        "title": "Restore the capability, drop the weight",
+        "body": "The site that was switched off carried prescription accounts, health records and an eight-thousand-item shop — the kind of system that grows expensive to run and easy to abandon.",
+        "change": "Just the repeat-prescription request and the branch and delivery details, without the heavy account system that made the old platform a liability."
+      },
+      {
+        "title": "Both branches, one clear map",
+        "body": "Groves runs Dundrum and Killough, collects prescriptions from five surgeries and delivers free across BT30 and BT33 — knowledge that vanished when the site went dark.",
+        "change": "Both branches with their hours, and the collection-and-delivery area stated plainly, on a page that does not expire."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before image was captured from groveschemist.com on 24 July 2026 — the pharmacy's own domain, now serving a deactivation notice: This website is no longer available. The branches, opening hours, services and the collection-and-delivery area come from the site's own archived structure and the National Pharmacy Network listing; active trading was confirmed by local first-hand knowledge on 24 July 2026 and corroborated by the NPN record. No services are invented — the concept restores what the pharmacy published before the site was switched off. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://groveschemist.com/\" rel=\"external\">Groves Chemist domain (now a deactivation notice)</a></li>\n          <li><a href=\"https://www.npn.org.uk/pharmacies/groves-chemists-ltd-165-167-main-street-dundrum-bt33-0ly-northern-ireland\" rel=\"external\">National Pharmacy Network listing used to verify the pharmacy</a></li>\n        </ul>\n        <p>No claim is made about why the site was deactivated or about the pharmacy's plans for a new one. Nothing here is medical advice.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "tonn-ruray": {
+    "title": "Tonn Ruray Café concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for the café at Tonn Ruray in Dundrum.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Give the café its own front door.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen for the café.",
+    "conceptHref": "/concepts/tonn-ruray/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "tonn-ruray",
+      "beforeVideo": "/videos/tonn-ruray-before.mp4",
+      "afterVideo": "/videos/tonn-ruray-after.mp4",
+      "beforePoster": "/images/tonn-ruray-before.jpg",
+      "afterPoster": "/images/tonn-ruray-after.jpg",
+      "beforeAlt": "Ten-second visit to Tonn Ruray's current website — the homepage opening on Sea View Luxury Apartments and nightly rates, with the café second beneath the accommodation",
+      "afterAlt": "Ten-second visit to the concept — the café's own Coffee is a lot more than just a drink opening and a through-the-day service card"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to let the café stand on its own.",
+    "notes": [
+      {
+        "title": "Stop making the café share a hero",
+        "body": "The current site opens on Sea View Luxury Apartments and nightly rates. The café appears below, in second billing on a page built to let the rooms.",
+        "change": "A café-first screen with its own identity, so someone deciding on coffee is not first sold a hundred-and-forty-nine-pound apartment."
+      },
+      {
+        "title": "Replace the two-year-old PDF",
+        "body": "The café's menu is a downloadable PDF stamped JUN24, and the gallery images date from the same month — so the food a visitor sees is two years old.",
+        "change": "A menu that lives on the page and changes when the counter does, with service times beside it."
+      },
+      {
+        "title": "Keep the apartments exactly as they are",
+        "body": "The accommodation side of the site is genuinely well made; the problem is what the café inherited from it, not the build.",
+        "change": "The concept touches only the café's front door, and leaves the apartment booking — which works — untouched, with a clear link across to it."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Tonn Ruray website on 24 July 2026. This concept addresses the café only; the site's luxury-apartment side is well built and is deliberately left as it is. The name — Tonn Ruray, a wave from local Viking legend — the Main Street address and the phone number are the business's own. The two-year-old JUN24 menu PDF is described from the live site; the menu shown in the concept is illustrative and would be replaced by the café's own. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.tonnruray.com/\" rel=\"external\">Tonn Ruray public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "kelly-mcevoy-brown": {
+    "title": "Kelly, McEvoy & Brown concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Kelly, McEvoy & Brown Building Contractors in Dundrum.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Make fifty-three years of work visible.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/kelly-mcevoy-brown/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "kelly-mcevoy-brown",
+      "beforeVideo": "/videos/kelly-mcevoy-brown-before.mp4",
+      "afterVideo": "/videos/kelly-mcevoy-brown-after.mp4",
+      "beforePoster": "/images/kelly-mcevoy-brown-before.jpg",
+      "afterPoster": "/images/kelly-mcevoy-brown-after.jpg",
+      "beforeAlt": "Ten-second visit to Kelly, McEvoy & Brown's current website — the small hand-built homepage carousel and the portfolio listed underneath as plain text links",
+      "afterAlt": "Ten-second visit to the concept — the Build on experience opening and a project register with drawing numbers, sector filters and named projects"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to let the record do the selling.",
+    "notes": [
+      {
+        "title": "Give the portfolio a shape",
+        "body": "The current site lists a substantial body of work — ecclesiastical, healthcare, education and more — as plain text links beneath a small carousel. The scale is there; the frame that lets a client read it is not.",
+        "change": "A project register, filterable by sector, giving each job a number, a location and a discipline — the drawing index a contractor already thinks in."
+      },
+      {
+        "title": "Lead with the record, not the template",
+        "body": "Established 1973, with named projects from St Patrick's in Magheralin to Knockevin Special School in Dundrum — but the opening screen does not put that record first.",
+        "change": "Build on experience, the firm's own line, over the fifty-three-year figure and the six sectors the practice works across."
+      },
+      {
+        "title": "Show the accreditations as procurement evidence",
+        "body": "ISO 14001, Constructionline, SafeTCert, the CEF and NHBC sit as small logos in the footer — where a specifier weighing a tender will not read them.",
+        "change": "The accreditation marks brought up as what they are — the evidence a main contractor needs before inviting a tender — beside a clear enquiry route."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Kelly, McEvoy & Brown website on 24 July 2026. The establishment date of 1973, the Build on experience line, the six sectors, the named projects and the accreditation marks all come from that site. Any photography in the concept is drawn only from the firm's own carousel — no building the firm did not construct is shown, and no stock imagery is introduced. The project register is illustrative in its ordering; the projects themselves are the firm's own. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.kmbni.com/\" rel=\"external\">Kelly, McEvoy & Brown public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, procurement outcomes or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "bettys-butters": {
+    "title": "Betty's Better Butters concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Betty's Better Butters in Dundrum.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Show the food.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/bettys-butters/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "bettys-butters",
+      "beforeVideo": "/videos/bettys-butters-before.mp4",
+      "afterVideo": "/videos/bettys-butters-after.mp4",
+      "beforePoster": "/images/bettys-butters-before.jpg",
+      "afterPoster": "/images/bettys-butters-after.jpg",
+      "beforeAlt": "Ten-second visit to Betty's Better Butters' current website — the two-page site whose navigation still reads Home Page and Our Store, with no product shown",
+      "afterAlt": "Ten-second visit to the concept — the Restaurant flavour, brought home opening and a shelf of butter rounds with wax-paper labels"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to put the product on the page.",
+    "notes": [
+      {
+        "title": "Get past the builder defaults",
+        "body": "The live site is two pages whose navigation still reads Home Page and Our Store, and whose document title is the lowercased builder default — the first thing a search result shows.",
+        "change": "A real name and structure, and a first screen that says plainly what the business makes."
+      },
+      {
+        "title": "Put a single product on the page",
+        "body": "For a business that sells flavoured butter, the site shows not one product — no flavour, no size, no price, no photograph.",
+        "change": "A shelf of the range, each butter a labelled round, with sizes and prices where the maker supplies them."
+      },
+      {
+        "title": "Use the story that is already written",
+        "body": "Restaurant quality flavours, from recipes collected over ten years in professional kitchens — good copy, buried under the builder chrome.",
+        "change": "That founder story given the room it deserves, above the range and the Royal Mail delivery the site already mentions."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Betty's Better Butters website on 24 July 2026, across both of its pages. The founder story — restaurant-quality flavours, over ten years in professional kitchens — the Main Street address and the collection, local delivery and Royal Mail options are the maker's own words. The site is built on ProSite Hosting, and its navigation and document title were still the builder defaults at capture. No product names, sizes or prices are published, so the flavours shown in the concept are clearly marked placeholders — the real range must come from the maker and is never invented. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.bettysbetterbutters.com/\" rel=\"external\">Betty's Better Butters public website</a></li>\n          <li><a href=\"https://www.bettysbetterbutters.com/our-store\" rel=\"external\">Its store page, used to confirm the delivery options</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the maker's plans for the site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "douglas-cromie": {
+    "title": "Douglas & Cromie concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Douglas & Cromie Car Sales in Newcastle, Co. Down.",
+    "eyebrow": "Website transformation · Newcastle, Co. Down",
+    "headline": "A forecourt the dealer owns.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left stands in for what a customer currently finds — douglasandcromie.co.uk does not resolve, so there is no page to capture; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/douglas-cromie/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "douglas-cromie",
+      "afterVideo": "/videos/douglas-cromie-after.mp4",
+      "beforePoster": "/images/douglas-cromie-before.jpg",
+      "afterPoster": "/images/douglas-cromie-after.jpg",
+      "beforeAlt": "A muted card standing in for douglasandcromie.co.uk, which does not resolve — the domain returns no page at all",
+      "afterAlt": "Ten-second visit to the concept — the Your forecourt, not someone else's opening and stock cards the dealer owns",
+      "beforeNote": "Douglas & Cromie's domain does not resolve at all — typing douglasandcromie.co.uk returns no page. Search engines still show a cached title, so the dealer appears to have a website and has none; its actual stock sits on a third-party marketplace. There is no live site to demo — the panel on the left is a muted stand-in for a domain that answers nothing."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to bring the forecourt home.",
+    "notes": [
+      {
+        "title": "Reconnect an address that returns nothing",
+        "body": "The dealer's domain no longer resolves. A customer who follows a cached search result reaches a dead end — while the business itself may believe it still has a site.",
+        "change": "A working forecourt at an address the dealer controls, so the cached search results finally lead somewhere."
+      },
+      {
+        "title": "Bring the stock home",
+        "body": "The cars are listed on a third-party marketplace, beside competitors, on a page the dealer does not own or control.",
+        "change": "A stock listing the dealer prices and photographs itself, showing the three facts a buyer scans first — year, mileage and price."
+      },
+      {
+        "title": "Carry the fifty years a listing can't",
+        "body": "Fifty years in the trade and drive away with confidence is the dealer's real asset, and a marketplace row has no room for it.",
+        "change": "Part-exchange, finance and the service history brought up front — the things a marketplace listing cannot put beside a car."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 the domain douglasandcromie.co.uk did not resolve on either its apex or www address — a DNS failure, so no page could be captured. The before panel is therefore a muted stand-in, not a screenshot of a live site. The dealer's fifty-year trading history, Bryansford Service Station address and phone number come from public directories, and its stock is published on a third-party marketplace; active trading was confirmed by local first-hand knowledge on 24 July 2026. The vehicles shown in the concept are clearly marked placeholders — a live forecourt would read from the dealer's own stock. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.usedcarsni.com/used-cars/dealers/douglasandcromie\" rel=\"external\">The dealer's stock on a third-party marketplace</a></li>\n          <li><a href=\"https://www.thomsonlocal.com/search/car-dealers/northern-ireland/douglas-cromie/742052/02843722382\" rel=\"external\">Directory listing used for address and phone</a></li>\n        </ul>\n        <p>No claim is made about sales performance or the internal decisions behind the lapsed domain.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "donard-hotel": {
+    "title": "The Donard Hotel concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Donard Hotel in Newcastle, Co. Down.",
+    "eyebrow": "Website transformation · Newcastle, Co. Down",
+    "headline": "Let the hotel take the booking.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows what a guest currently finds — donardhotel.com returning a 404 with no secure version, captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/donard-hotel/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "donard-hotel",
+      "afterVideo": "/videos/donard-hotel-after.mp4",
+      "beforePoster": "/images/donard-hotel-before.jpg",
+      "afterPoster": "/images/donard-hotel-after.jpg",
+      "beforeAlt": "The Donard Hotel's own address returning a 404 error with no secure version — the hotel is reachable only through booking sites that take commission",
+      "afterAlt": "Ten-second visit to the concept — the A Main Street welcome, booked straight from us opening, the direct-versus-travel-site panel and the availability bar",
+      "beforeNote": "The Donard Hotel trades well — rated 8.7 by recent guests — but its own site is dead: donardhotel.com returns a 404 over HTTP and has no secure version at all. Every booking therefore runs through a travel site that takes commission. There is no live site to demo; this is what the address returns."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to win the direct booking.",
+    "notes": [
+      {
+        "title": "Give the hotel an address of its own",
+        "body": "The site returns a 404 with no secure version, so a guest who looks for the hotel directly cannot book direct — only through an online travel agent.",
+        "change": "A working first screen the hotel controls, with rooms, rates and availability in its own hands."
+      },
+      {
+        "title": "Make the commission the argument",
+        "body": "The same room costs the hotel a cut on every travel-site booking; a guest who would happily book direct currently has no route to.",
+        "change": "A plain direct-versus-travel-site panel — same room, same night — with breakfast added for booking direct."
+      },
+      {
+        "title": "Book while the welcome is fresh",
+        "body": "The hotel's strength is the Main Street welcome its reviews describe, yet nothing online lets a guest act on it in the moment.",
+        "change": "An availability bar taking arrival and nights, so a guest can hold a room as soon as they decide."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 donardhotel.com returned a 404 over HTTP and refused a secure connection entirely — that captured error page is the before. The hotel's active trading is well evidenced: a Booking.com listing with 2026 prices and an 8.7 score from 46 reviews, a TripAdvisor listing updated for 2026, and local first-hand confirmation on 24 July 2026. Room rates in the concept are illustrative. Guest photography of the hotel belongs to the travel agents that carry it and is not reused here — real imagery would come from the hotel. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.booking.com/hotel/gb/the-donard-newcastle.html\" rel=\"external\">Booking.com listing used to verify trading and rates</a></li>\n          <li><a href=\"https://www.tripadvisor.com/Hotel_Review-g186478-d191960-Reviews-The_Donard-Newcastle_County_Down_Northern_Ireland.html\" rel=\"external\">TripAdvisor listing updated for 2026</a></li>\n        </ul>\n        <p>No claim is made about the commercial impact of booking direct or about the internal decisions behind the lapsed site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "newcastle-dental": {
+    "title": "Newcastle Family Dental Care concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Newcastle Family Dental Care in Newcastle, Co. Down.",
+    "eyebrow": "Website transformation · Newcastle, Co. Down",
+    "headline": "The practice's own door, served securely.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows what a patient currently finds — the practice's own address redirecting, over insecure HTTP, to a different practice, captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/newcastle-dental/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "newcastle-dental",
+      "afterVideo": "/videos/newcastle-dental-after.mp4",
+      "beforePoster": "/images/newcastle-dental-before.jpg",
+      "afterPoster": "/images/newcastle-dental-after.jpg",
+      "beforeAlt": "The practice's own domain redirecting, over insecure HTTP, to a different practice — DJ Maguire Dentists' Newcastle location page",
+      "afterAlt": "Ten-second visit to the concept — the Your dentist, on your own address opening, a padlocked secure address bar and an appointment-request form",
+      "beforeNote": "Newcastle Family Dental Care trades under its own name, but its own web address redirects — over plain HTTP — to a different practice's page, and the .co.uk it prints on its stationery has no working secure version. There is no site of its own to demo; this is where the address leads."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to give the practice its own address.",
+    "notes": [
+      {
+        "title": "Stop handing patients to someone else",
+        "body": "The practice's domain redirects, over insecure HTTP, to another practice's location page. A patient who types the address — or mails the one printed on the practice's own stationery — lands somewhere else entirely.",
+        "change": "The practice's own front door — its three named dentists, treatments and hours — at an address it controls."
+      },
+      {
+        "title": "Serve a health site over HTTPS",
+        "body": "For a health practice an insecure redirect is not only confusing; it sends patients over plain HTTP, without the encryption a medical site should carry.",
+        "change": "Everything on a secure connection, stated plainly, with the padlock the practice's own domain currently lacks."
+      },
+      {
+        "title": "Let patients register and ask",
+        "body": "Registration, appointments and emergencies exist only by phone, on a page the practice does not control.",
+        "change": "An appointment-request form and clear NHS, private and emergency information, on the practice's own secure page."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 the practice's domain redirected, over plain HTTP, to DJ Maguire Dentists' Newcastle location page, and the .co.uk it publishes in its own email address had no working secure version — that captured redirect target is the before. The practice's three named dentists, its Iveagh Court, 2 Railway Street address and its opening hours all come from that page, where it is branded under its own name; active trading under that name was confirmed by local first-hand knowledge on 24 July 2026. The commercial relationship to DJ Maguire Dental Group is unestablished and may be ownership rather than hosting — this is noted, not assumed. Any treatment list would come from the practice; nothing here is a clinical claim. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"http://www.djmaguiredentists.co.uk/location-newcastle.html\" rel=\"external\">The page the practice's domain currently redirects to</a></li>\n        </ul>\n        <p>No claim is made about the ownership arrangement or the internal decisions behind the redirect.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "hugh-mccanns": {
+    "title": "Hugh McCann's concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Hugh McCann's wedding venue in Newcastle, Co. Down.",
+    "eyebrow": "Website transformation · Newcastle, Co. Down",
+    "headline": "Let couples check the date.",
+    "date": "24 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/hugh-mccanns/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "hugh-mccanns",
+      "beforeVideo": "/videos/hugh-mccanns-before.mp4",
+      "afterVideo": "/videos/hugh-mccanns-after.mp4",
+      "beforePoster": "/images/hugh-mccanns-before.jpg",
+      "afterPoster": "/images/hugh-mccanns-after.jpg",
+      "beforeAlt": "Ten-second visit to Hugh McCann's current website — the well-photographed Boutique Wedding Venue & Gardens homepage, with no enquiry form or date capture anywhere",
+      "afterAlt": "Ten-second visit to the concept — the We do opening and an Is our day free enquiry with a date field, guest-count slider and season strip"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes to capture the enquiry.",
+    "notes": [
+      {
+        "title": "Add the enquiry the venue lacks",
+        "body": "The site is well written and maintained — but for a wedding venue there is no enquiry form, no availability and no way to capture a date. Every enquiry has to become a phone call first.",
+        "change": "An Is our day free enquiry that captures the two facts every venue conversation starts with — the date and the guest count."
+      },
+      {
+        "title": "Keep the voice, add the function",
+        "body": "From today until your day, we do, and three generations in a two-hundred-year-old building — the copy and photography are genuinely good and should not be replaced.",
+        "change": "A feature graft, not a rebuild: the site's own voice and images kept, and the missing date capture added beside them."
+      },
+      {
+        "title": "Refresh what has gone stale underneath",
+        "body": "The copyright reads 2018, the testimonials run 2017 to 2019 and the brochure is dated 2021.22 — even though the menu was uploaded this month, so the maintained and the stale sit side by side.",
+        "change": "The testimonial and brochure surfaces refreshed to match the venue that is clearly still being run."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Hugh McCann's website on 24 July 2026. The venue's own words — From today until your day, we do; three generations; the two-hundred-year-old building; forty to two-hundred-and-fifty guests — its Central Promenade address and its phone number all come from that site. The site is actively maintained (its menu PDF was uploaded in July 2026), so this is a feature upgrade, not a rescue: the © 2018 footer is not used as the argument, and the concept keeps the site's own voice and photography. Availability in the enquiry is illustrative. The layout and the enquiry design are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.hughmccanns.com/\" rel=\"external\">Hugh McCann's public website</a></li>\n          <li><a href=\"https://www.hughmccanns.com/accommodation/\" rel=\"external\">Its accommodation page, used to confirm the Little Haven offering</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
   "bucks-head": {
     "title": "The Bucks Head concept transformation — Mourne Made",
     "description": "A respectful, source-backed before-and-after website concept for The Bucks Head in Dundrum.",

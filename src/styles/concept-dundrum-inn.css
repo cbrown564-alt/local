@@ -1,0 +1,308 @@
+/* The Dundrum Inn — independent concept identity.
+   A 190-year-old bar on Dundrum Bay. The direction is a Victorian playbill
+   printed on slate: heavy mixed-size display lines, hairline rules, and a
+   lime-washed cream on near-black. The argument of the concept is the board —
+   tonight's four answers on the first screen — so the board is the only
+   element allowed to carry colour and mono numerals. */
+
+body.concept-dundrum-inn {
+  --di-slate: #141a1c;
+  --di-slate-lift: #1e2629;
+  --di-cream: #f2ede3;
+  --di-cream-dim: #b9b2a4;
+  --di-tide: #4e97ab;
+  --di-brass: #c9a24a;
+  --di-ember: #cf6844;
+  --concept-accent: var(--di-brass);
+  --concept-nav-gap: clamp(18px, 2.4vw, 34px);
+  --concept-nav-line: 1px;
+
+  margin: 0;
+  background:
+    radial-gradient(120% 80% at 15% 0%, #222c30 0%, transparent 60%),
+    var(--di-slate);
+  color: var(--di-cream);
+  font-family: "Space Mono", ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slate grain, so the dark ground has tooth rather than reading as flat ink. */
+body.concept-dundrum-inn::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+}
+
+body.concept-dundrum-inn > * { position: relative; z-index: 1; }
+
+.di-strip {
+  padding: 9px clamp(16px, 4vw, 46px);
+  border-bottom: 1px solid rgba(242, 237, 227, .14);
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  color: var(--di-cream-dim);
+}
+
+.di-strip a { color: var(--di-cream); text-underline-offset: 3px; }
+
+.di-lang { display: flex; align-items: center; gap: 10px; }
+
+.di-lang span {
+  padding: 2px 8px;
+  border: 1px solid rgba(242, 237, 227, .22);
+}
+
+.di-lang span[aria-current] {
+  border-color: var(--di-brass);
+  color: var(--di-slate);
+  background: var(--di-brass);
+}
+
+.di-lang em {
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 227, .42);
+}
+
+.di-header {
+  padding: 18px clamp(16px, 4vw, 46px);
+  border-bottom: 1px solid rgba(242, 237, 227, .14);
+  gap: 24px;
+  /* Two flex children (brand + CTA) whose combined min-content exceeds a phone;
+     wrapping the CTA to a second line stops the page scrolling sideways. */
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.di-brand { display: grid; gap: 2px; text-decoration: none; color: inherit; }
+
+.di-brand-est {
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--di-brass);
+}
+
+.di-brand-name {
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(20px, 2.1vw, 27px);
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.di-nav a {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--di-cream);
+}
+
+.di-nav a:hover::after,
+.di-nav a:focus-visible::after { right: 0; }
+
+.di-book {
+  padding: 10px 16px;
+  border: 1px solid var(--di-brass);
+  color: var(--di-brass);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.di-book:hover,
+.di-book:focus-visible { background: var(--di-brass); color: var(--di-slate); }
+
+/* The playbill and the board sit side by side on desktop; the board is the
+   thing that must survive the fold, so on phones it moves above the lede. */
+.di-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: start;
+  padding: clamp(26px, 4.4vw, 54px) clamp(16px, 4vw, 46px) 96px;
+}
+
+.di-rule {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 clamp(14px, 2vw, 22px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(242, 237, 227, .18);
+  font-size: 10.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--di-cream-dim);
+}
+
+.di-rule span + span::before { content: "·"; margin-right: 14px; }
+
+/* Playbill: three lines, three sizes, three alignments — the mixed measure is
+   the whole point, so each line is set individually rather than as a block. */
+#di-headline {
+  margin: 0;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-weight: 900;
+  line-height: .84;
+  text-transform: uppercase;
+}
+
+#di-headline span { display: block; }
+
+.di-l1 {
+  font-size: clamp(30px, 4.4vw, 55px);
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+
+.di-l2 {
+  padding-left: .08em;
+  font-size: clamp(22px, 2.9vw, 36px);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: none;
+  color: var(--di-cream-dim);
+}
+
+.di-l3 {
+  margin-top: .04em;
+  font-size: clamp(64px, 11.5vw, 148px);
+  letter-spacing: -.035em;
+  color: var(--di-brass);
+}
+
+.di-lede {
+  max-width: 46ch;
+  margin: clamp(18px, 2.4vw, 28px) 0 0;
+  font-size: clamp(13px, 1.05vw, 14.5px);
+  line-height: 1.72;
+  color: rgba(242, 237, 227, .82);
+}
+
+/* The board. Cream on slate inverted into a lifted panel so it reads as a
+   physical thing hung on the wall rather than another section of page. */
+.di-board {
+  padding: clamp(18px, 2.2vw, 26px);
+  border: 1px solid rgba(242, 237, 227, .2);
+  background:
+    linear-gradient(180deg, rgba(242, 237, 227, .05), transparent 40%),
+    var(--di-slate-lift);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+
+.di-board-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 14px;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.di-board-title span {
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--di-cream-dim);
+}
+
+.di-cells {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(242, 237, 227, .18);
+  border: 1px solid rgba(242, 237, 227, .18);
+}
+
+.di-cell {
+  display: grid;
+  gap: 5px;
+  padding: 14px 13px;
+  background: var(--di-slate);
+}
+
+.di-cell-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--di-cream-dim);
+}
+
+.di-cell-state {
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(20px, 2.2vw, 27px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.di-cell-detail { font-size: 11px; line-height: 1.5; color: rgba(242, 237, 227, .66); }
+
+.di-cell--on .di-cell-state { color: #7fbf8a; }
+.di-cell--tide .di-cell-state { color: var(--di-tide); }
+.di-cell--event .di-cell-state { color: var(--di-ember); }
+
+.di-tide {
+  display: block;
+  width: 100%;
+  height: 34px;
+  margin: 12px 0 4px;
+  color: var(--di-tide);
+  opacity: .55;
+}
+
+.di-board-cta {
+  display: block;
+  margin-top: 8px;
+  padding: 13px;
+  background: var(--di-brass);
+  color: var(--di-slate);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.di-board-cta:hover,
+.di-board-cta:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(201, 162, 74, .28);
+}
+
+.di-board small {
+  display: block;
+  margin-top: 9px;
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  text-align: center;
+  color: rgba(242, 237, 227, .48);
+}
+
+@media (max-width: 900px) {
+  .di-main { grid-template-columns: 1fr; }
+  .di-board { order: -1; }
+  .di-nav { display: none; }
+  .di-lang em { display: none; }
+}
+
+@media (max-width: 520px) {
+  .di-strip { flex-direction: column; align-items: flex-start; gap: 7px; }
+  .di-cells { grid-template-columns: 1fr; }
+  .di-l3 { font-size: clamp(56px, 22vw, 96px); }
+}

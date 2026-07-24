@@ -1,0 +1,105 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-kelly-mcevoy-brown.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Real projects and sectors from kmbni.com, 24 July 2026. The site lists them
+// as plain link lists; this concept turns 53 years of work into a filterable
+// index — the portfolio the firm has, made visible.
+const sectors = [
+  { key: "Ecclesiastical", count: "40+ years" },
+  { key: "Healthcare", count: "" },
+  { key: "Education", count: "" },
+  { key: "Residential", count: "" },
+  { key: "Leisure", count: "" },
+  { key: "Commercial", count: "" },
+];
+const projects = [
+  { name: "St Patrick's & St Ronan's", place: "Magheralin", sector: "Ecclesiastical", no: "047" },
+  { name: "Our Lady of the Angels", place: "Dechomet", sector: "Ecclesiastical", no: "052" },
+  { name: "Rathfriland Manor Nursing Home", place: "Rathfriland", sector: "Healthcare", no: "061" },
+  { name: "St Luke's — Rosewood & Pinewood Villas", place: "Armagh", sector: "Healthcare", no: "063" },
+  { name: "Knockevin Special School", place: "Dundrum", sector: "Education", no: "071" },
+  { name: "Rowallane Credit Union & Community Hub", place: "Saintfield", sector: "Commercial", no: "078" },
+  { name: "Crossmaglen Community Centre", place: "Crossmaglen", sector: "Leisure", no: "082" },
+  { name: "Roslyn Place Apartments & Townhouses", place: "Belfast", sector: "Residential", no: "086" },
+];
+const accreditations = ["ISO 14001", "Constructionline", "SafeTCert", "CEF", "NHBC"];
+---
+
+<ConceptLayout
+  title={"Kelly, McEvoy & Brown — independent concept"}
+  slug="kelly-mcevoy-brown"
+  bodyClass="concept-page concept-kmb"
+  businessName="Kelly, McEvoy & Brown Building Contractors"
+  town="Dundrum"
+  bannerNote="Photography is drawn only from the firm's own site; no buildings it did not build are shown."
+>
+  <div class="kmb-strip">
+    <span>Kelly, McEvoy &amp; Brown — building contractors since 1973</span>
+    <span class="kmb-strip-r">Registered office · Dundrum, Co. Down</span>
+  </div>
+
+  <header class="kmb-header">
+    <a class="kmb-brand" href="#">
+      <span class="kmb-brand-mono">KMB</span>
+      <span class="kmb-brand-text">
+        <span class="kmb-brand-name">Kelly, McEvoy &amp; Brown</span>
+        <span class="kmb-brand-sub">Building Contractors</span>
+      </span>
+    </a>
+    <nav class="kmb-nav" aria-label="Concept navigation">
+      <a href="#">Portfolio</a><a href="#">Sectors</a><a href="#">Accreditations</a><a href="#">About</a>
+    </nav>
+    <a class="kmb-tender" href="#">Invite a tender</a>
+  </header>
+
+  <main class="kmb-main">
+    <section class="kmb-lede">
+      <p class="kmb-titleblock">
+        <span>Est. 1973</span><span>Fifty-three years</span><span>Six sectors</span>
+      </p>
+      <h1>Build on<br /><span>experience.</span></h1>
+      <p class="kmb-body">
+        One of Northern Ireland's most respected construction companies, from
+        ecclesiastical restoration to special-school builds. The work is
+        substantial — this is a way to see it, by sector, at a glance.
+      </p>
+      <div class="kmb-accred" role="list" aria-label="Accreditations">
+        {accreditations.map((mark) => <span role="listitem">{mark}</span>)}
+      </div>
+    </section>
+
+    <!-- The drawing index. A drawing register is how a contractor already files
+         a job: number, title, location, discipline. The portfolio uses the same. -->
+    <section class="kmb-index" aria-labelledby="kmb-index-title">
+      <div class="kmb-index-head">
+        <h2 id="kmb-index-title">Project register</h2>
+        <span class="kmb-index-sub">Drawing no. / title / location / sector</span>
+      </div>
+
+      <div class="kmb-filter" role="list" aria-label="Filter by sector">
+        <span class="kmb-chip kmb-chip--on" role="listitem">All work</span>
+        {sectors.map((sector) => (
+          <span class="kmb-chip" role="listitem">
+            {sector.key}{sector.count && <em>· {sector.count}</em>}
+          </span>
+        ))}
+      </div>
+
+      <ol class="kmb-projects">
+        {projects.map((project) => (
+          <li class="kmb-project">
+            <span class="kmb-project-no">{project.no}</span>
+            <span class="kmb-project-main">
+              <span class="kmb-project-name">{project.name}</span>
+              <span class="kmb-project-place">{project.place}</span>
+            </span>
+            <span class="kmb-project-sector">{project.sector}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="kmb-index-foot">Twelve named projects on the current site — this is the frame they belong in.</p>
+    </section>
+  </main>
+</ConceptLayout>

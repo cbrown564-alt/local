@@ -1,0 +1,108 @@
+---
+import "../../styles/global.css";
+import "../../styles/concept-hugh-mccanns.css";
+import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Hugh McCann's is maintained (July 2026 menu upload) but a wedding venue with
+// no enquiry form, no availability, no date capture — every enquiry is a phone
+// call. This is a feature, not a rebuild: capture the date and the numbers.
+const seasons = [
+  { m: "Apr", state: "open" },
+  { m: "May", state: "few" },
+  { m: "Jun", state: "full" },
+  { m: "Jul", state: "few" },
+  { m: "Aug", state: "open" },
+  { m: "Sep", state: "open" },
+];
+---
+
+<ConceptLayout
+  title={"Hugh McCann's — independent concept"}
+  slug="hugh-mccanns"
+  bodyClass="concept-page concept-hugh"
+  businessName="Hugh McCann's"
+  town="Newcastle"
+  bannerNote="A feature upgrade — the site's own voice and photography stay; this adds the enquiry it lacks."
+>
+  <div class="hm-strip">
+    <span>119–121 Central Promenade, Newcastle · at the foot of the Mournes</span>
+    <span class="hm-strip-r">Three generations · est. before you'd believe</span>
+  </div>
+
+  <header class="hm-header">
+    <a class="hm-brand" href="#">
+      <span class="hm-brand-name">Hugh McCann's</span>
+      <span class="hm-brand-sub">Boutique Wedding Venue &amp; Gardens</span>
+    </a>
+    <nav class="hm-nav" aria-label="Concept navigation">
+      <a href="#">Weddings</a><a href="#">The gardens</a><a href="#">Food &amp; drink</a><a href="#">Stay</a>
+    </nav>
+    <a class="hm-enquire" href="#enquire">Check your date</a>
+  </header>
+
+  <main class="hm-main">
+    <section class="hm-hero">
+      <p class="hm-kicker">From today until your day</p>
+      <h1>We do.</h1>
+      <p class="hm-lede">
+        Passed down through three generations, in a two-hundred-year-old building at
+        the heart of the town — traditional rustic charm and new-world contemporary,
+        for forty guests or two hundred and fifty.
+      </p>
+      <p class="hm-current">
+        The current site tells this story beautifully — and then asks you to phone.
+        This concept adds the one thing a wedding venue can't do without: a way to
+        check your date online.
+      </p>
+    </section>
+
+    <!-- The feature: date + guest count, the two facts every venue call starts
+         with, captured before the phone rings. -->
+    <section class="hm-enquire-panel" id="enquire" aria-labelledby="hm-enquire-title">
+      <p class="hm-enquire-eyebrow">Enquire</p>
+      <h2 id="hm-enquire-title">Is our day free?</h2>
+
+      <div class="hm-field">
+        <label for="hm-date">Your date <span>(or roughly when)</span></label>
+        <input id="hm-date" type="date" value="2027-06-12" />
+      </div>
+
+      <div class="hm-field">
+        <label for="hm-guests">How many guests</label>
+        <div class="hm-guests">
+          <input id="hm-guests" type="range" min="40" max="250" step="10" value="120" aria-describedby="hm-guests-out" />
+          <output id="hm-guests-out" for="hm-guests">120 guests</output>
+        </div>
+        <p class="hm-guests-scale"><span>40 · intimate</span><span>250 · the full room</span></p>
+      </div>
+
+      <div class="hm-season" aria-label="Season at a glance">
+        {seasons.map((s) => (
+          <span class={`hm-month hm-month--${s.state}`}>
+            <span class="hm-month-m">{s.m}</span>
+            <span class="hm-month-dot" aria-hidden="true"></span>
+          </span>
+        ))}
+      </div>
+      <p class="hm-season-key">
+        <span><i class="hm-key hm-key--open"></i> Dates open</span>
+        <span><i class="hm-key hm-key--few"></i> A few left</span>
+        <span><i class="hm-key hm-key--full"></i> Taken</span>
+      </p>
+
+      <a class="hm-submit" href="#">Send our enquiry →</a>
+      <p class="hm-enquire-foot">We'll come back within the day to arrange a viewing. Illustrative availability.</p>
+    </section>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var range = document.getElementById("hm-guests");
+      var out = document.getElementById("hm-guests-out");
+      if (!range || !out) return;
+      function sync() { out.textContent = range.value + " guests"; }
+      range.addEventListener("input", sync);
+      sync();
+    })();
+  </script>
+</ConceptLayout>

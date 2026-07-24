@@ -60,6 +60,66 @@ const JOURNEY_SCROLL_MS = 900;
 // capture an AFTER demo only; the before stays the honest static still.
 const AFTER_HOVER = [".button", "a.button", ".button-secondary", "nav a", "header a"];
 const CONCEPTS = {
+  "dundrum-inn": {
+    before: "https://dundruminn.com/",
+    settleMs: 4500,
+    beforeHover: ["text=BOOK NOW", "text=BOOK", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
+  },
+  "groves-chemist": {
+    beforeStill: "https://groveschemist.com/",
+    afterHover: AFTER_HOVER,
+  },
+  "tonn-ruray": {
+    before: "https://www.tonnruray.com/",
+    settleMs: 5000,
+    dismissClick: [[914, 76]],
+    beforeHover: ["text=BOOK NOW", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
+  },
+  "kelly-mcevoy-brown": {
+    before: "https://www.kmbni.com/",
+    settleMs: 4500,
+    beforeHover: ["text=PROJECTS", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
+  },
+  "bettys-butters": {
+    before: "https://www.bettysbetterbutters.com/",
+    settleMs: 4000,
+    beforeHover: ["text=OUR STORE", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
+  },
+  "douglas-cromie": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#e8e6df;color:#292c2c;font-family:Arial,sans-serif;display:flex;align-items:center">
+        <div style="max-width:760px;border-left:8px solid #c28a3d;padding-left:34px">
+          <p style="margin:0 0 22px;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#6d7270">Before · domain check · 24 July 2026</p>
+          <h1 style="margin:0 0 22px;font-size:54px;line-height:1.04;font-weight:500">No page answers at douglasandcromie.co.uk</h1>
+          <p style="margin:0;font-size:25px;line-height:1.45;color:#555b58">The domain does not resolve. This muted card stands in for the failed address; the dealer's live stock remains on a third-party marketplace.</p>
+        </div>
+      </main>`,
+    afterHover: AFTER_HOVER,
+  },
+  "donard-hotel": {
+    beforeStill: "http://donardhotel.com/",
+    afterHover: AFTER_HOVER,
+  },
+  "newcastle-dental": {
+    beforeStill: "http://newcastlefamilydentalcare.com/",
+    afterHover: AFTER_HOVER,
+  },
+  "hugh-mccanns": {
+    before: "https://www.hughmccanns.com/",
+    settleMs: 4500,
+    beforeHover: ["text=CONTACT", "text=ENQUIRE", "nav a", "header a"],
+    afterHover: AFTER_HOVER,
+  },
+  // Internal concept only. Trading was unconfirmed on 24 July 2026, so this
+  // is intentionally not registered as a public transformation case study.
+  "murdock-brothers": {
+    beforeStill: "https://murdocksoilcoalandgas.co.uk/",
+    afterHover: AFTER_HOVER,
+  },
   "castle-farm": {
     before: "https://www.castlefarmni.com/",
     settleMs: 6000,
@@ -562,12 +622,12 @@ async function recordDemo(page, outName, hoverSpec, scrollStops) {
 async function captureStill(page, outName) {
   const png = await page.screenshot({ type: "png" });
   const out = path.join(imageDir, `${outName}.jpg`);
-  await sharp(png).jpeg({ quality: 82, mozjpeg: true }).toFile(out);
+  await sharp(png).jpeg({ quality: 78, mozjpeg: true }).toFile(out);
   const kb = Math.round(fs.statSync(out).size / 1024);
   console.log(`  ${outName}.jpg — ${kb} KB`);
 }
 
-async function captureTarget(browser, site, url, outName, hoverSpec) {
+async function captureTarget(browser, site, url, outName, hoverSpec, captureWhat = what) {
   console.log(`${outName} <- ${url}`);
   const page = await browser.newPage();
   await page.setViewport({ ...VIEW, deviceScaleFactor: 2 });
@@ -575,8 +635,8 @@ async function captureTarget(browser, site, url, outName, hoverSpec) {
   await sleep(site.settleMs ?? 4000);
   await dismissOverlays(page, site);
   await sleep(800);
-  if (what !== "video") await captureStill(page, outName);
-  if (what !== "still") {
+  if (captureWhat !== "video") await captureStill(page, outName);
+  if (captureWhat !== "still") {
     await page.setViewport({ ...VIEW, deviceScaleFactor: 1 });
     await animScroll(page, 0, 200);
     await sleep(700);
@@ -1541,8 +1601,16 @@ try {
   } else if (only === "journey") {
     await captureJourney(browser, slug, site);
   } else if (only !== "after") {
-    if (site.before) await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
-    else console.log(`${slug}-before: skipped (first-website concept — no live site to demo)`);
+    if (site.before) {
+      await captureTarget(browser, site, site.before, `${slug}-before`, site.beforeHover);
+    } else if (site.beforeStill && what !== "video") {
+      await captureTarget(browser, site, site.beforeStill, `${slug}-before`, site.beforeHover, "still");
+    } else if (site.beforeStillHtml && what !== "video") {
+      const dataUrl = `data:text/html;charset=utf-8,${encodeURIComponent(site.beforeStillHtml)}`;
+      await captureTarget(browser, site, dataUrl, `${slug}-before`, site.beforeHover, "still");
+    } else {
+      console.log(`${slug}-before: skipped (no live site to demo)`);
+    }
   }
   if (only !== "reel" && only !== "journey" && only !== "before") {
     await captureTarget(browser, site, conceptUrl, `${slug}-after`, site.afterHover);

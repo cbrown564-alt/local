@@ -1,0 +1,274 @@
+/* Kelly, McEvoy & Brown — independent concept identity.
+   A building contractor, established 1973, whose site renders a 53-year
+   portfolio as plain text links. The direction is the architect's drawing
+   sheet: blueprint ground, a fine grid, a title block, drawing numbers and a
+   project register set in a technical mono. First B2B/trade concept in the
+   pipeline, so the tone is procurement-grade, not consumer-warm. */
+
+body.concept-kmb {
+  --kmb-blue: #0e2a44;
+  --kmb-blue-deep: #091d30;
+  --kmb-line: rgba(150, 197, 232, .22);
+  --kmb-line-firm: rgba(150, 197, 232, .4);
+  --kmb-paper: #eef4f8;
+  --kmb-paper-dim: #9fb6c8;
+  --kmb-yellow: #f4c752;
+  --kmb-cyan: #6fb7dd;
+  --concept-accent: var(--kmb-yellow);
+  --concept-nav-gap: clamp(16px, 2.2vw, 30px);
+  --concept-nav-line: 2px;
+
+  margin: 0;
+  background:
+    linear-gradient(var(--kmb-line) 1px, transparent 1px) 0 0 / 100% 30px,
+    linear-gradient(90deg, var(--kmb-line) 1px, transparent 1px) 0 0 / 30px 100%,
+    var(--kmb-blue);
+  color: var(--kmb-paper);
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.kmb-strip {
+  padding: 9px clamp(16px, 4vw, 46px);
+  background: var(--kmb-blue-deep);
+  border-bottom: 1px solid var(--kmb-line-firm);
+  font-family: "Martian Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: .02em;
+  color: var(--kmb-paper-dim);
+}
+
+.kmb-header {
+  padding: 18px clamp(16px, 4vw, 46px);
+  gap: 22px;
+  border-bottom: 1px solid var(--kmb-line-firm);
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.kmb-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+
+.kmb-brand-mono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--kmb-yellow);
+  color: var(--kmb-yellow);
+  font-family: "Martian Mono", monospace;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.kmb-brand-name {
+  display: block;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 700;
+  letter-spacing: -.015em;
+}
+
+.kmb-brand-sub {
+  display: block;
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--kmb-paper-dim);
+}
+
+.kmb-nav a { font-size: 13.5px; font-weight: 600; color: var(--kmb-paper); }
+.kmb-nav a:hover::after,
+.kmb-nav a:focus-visible::after { right: 0; }
+
+.kmb-tender {
+  padding: 11px 17px;
+  background: var(--kmb-yellow);
+  color: var(--kmb-blue-deep);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-decoration: none;
+}
+
+.kmb-main {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(340px, 1.08fr);
+  gap: clamp(26px, 4vw, 58px);
+  align-items: start;
+  padding: clamp(28px, 4.4vw, 56px) clamp(16px, 4vw, 46px) 96px;
+}
+
+.kmb-titleblock {
+  display: flex;
+  gap: 0;
+  margin: 0 0 clamp(18px, 2.4vw, 26px);
+  border: 1px solid var(--kmb-line-firm);
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--kmb-cyan);
+}
+
+.kmb-titleblock span {
+  padding: 8px 12px;
+  border-right: 1px solid var(--kmb-line-firm);
+}
+
+.kmb-titleblock span:last-child { border-right: 0; }
+
+.kmb-lede h1 {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 700;
+  line-height: .9;
+  letter-spacing: -.04em;
+}
+
+.kmb-lede h1 span { color: var(--kmb-yellow); }
+
+.kmb-body {
+  max-width: 44ch;
+  margin: clamp(18px, 2.2vw, 26px) 0 0;
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.68;
+  color: rgba(238, 244, 248, .82);
+}
+
+.kmb-accred {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.kmb-accred span {
+  padding: 7px 12px;
+  border: 1px solid var(--kmb-line-firm);
+  font-family: "Martian Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  color: var(--kmb-cyan);
+}
+
+/* The register: a drawing sheet index, right down to the header row. */
+.kmb-index {
+  border: 1px solid var(--kmb-line-firm);
+  background: rgba(9, 29, 48, .55);
+  backdrop-filter: blur(1px);
+}
+
+.kmb-index-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px clamp(16px, 2vw, 22px);
+  border-bottom: 1px solid var(--kmb-line-firm);
+}
+
+.kmb-index-head h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.kmb-index-sub {
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--kmb-paper-dim);
+}
+
+.kmb-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 14px clamp(16px, 2vw, 22px);
+  border-bottom: 1px solid var(--kmb-line);
+}
+
+.kmb-chip {
+  padding: 6px 11px;
+  border: 1px solid var(--kmb-line-firm);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--kmb-paper);
+  cursor: default;
+}
+
+.kmb-chip em { font-style: normal; color: var(--kmb-paper-dim); }
+
+.kmb-chip--on { background: var(--kmb-yellow); color: var(--kmb-blue-deep); border-color: var(--kmb-yellow); }
+
+.kmb-projects { margin: 0; padding: 0; list-style: none; }
+
+.kmb-project {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 13px clamp(16px, 2vw, 22px);
+  border-bottom: 1px solid var(--kmb-line);
+  transition: background 130ms ease;
+}
+
+.kmb-project:hover { background: rgba(111, 183, 221, .08); }
+.kmb-project:last-child { border-bottom: 0; }
+
+.kmb-project-no {
+  font-family: "Martian Mono", monospace;
+  font-size: 12px;
+  color: var(--kmb-yellow);
+  font-variant-numeric: tabular-nums;
+}
+
+.kmb-project-name {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -.005em;
+}
+
+.kmb-project-place {
+  display: block;
+  margin-top: 2px;
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--kmb-paper-dim);
+}
+
+.kmb-project-sector {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--kmb-cyan);
+}
+
+.kmb-index-foot {
+  margin: 0;
+  padding: 13px clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--kmb-line-firm);
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .03em;
+  color: var(--kmb-paper-dim);
+}
+
+@media (max-width: 940px) {
+  .kmb-main { grid-template-columns: 1fr; }
+  .kmb-nav { display: none; }
+}
+
+@media (max-width: 520px) {
+  .kmb-strip { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .kmb-titleblock { flex-wrap: wrap; }
+  .kmb-project { grid-template-columns: 38px 1fr; }
+  .kmb-project-sector { grid-column: 2; margin-top: 2px; }
+}

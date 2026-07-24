@@ -5,10 +5,12 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 24 July 2026 · 17 businesses verified · 10 shortlisted · 9 concepts
+Snapshot: 24 July 2026 · 27 businesses verified · 10 shortlisted · 9 concepts
 published · Milestone 2 second assets shipped for all nine · Enniskeen F1
 flagship working prototype complete locally · Buck's Head F2 journey case
-complete locally · **batch two selected (10 prospects, unverified)**
+complete locally · **batch two verified (10 prospects) and ten new concept
+pages built locally at `/concepts/<slug>/` — stage Concept in progress, not yet
+published as transformations**
 
 ## Pipeline stages
 
@@ -49,30 +51,46 @@ Rules of the road:
 | **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro) | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
 | **Newcastle Chamber of Commerce** — *full-site concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro) | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
 
-## Batch two — selected 24 July 2026, not yet verified
+## Batch two — verified and captured 24 July 2026, ten concept pages built
 
-Ten new prospects chosen for the second round of the cycle. Full selection
-record, dated probe evidence and open questions in
-`research/batch-two-selection.md`. **None of these is verified**: no concept
-work until each has a pass under `RESEARCH_METHOD.md`, and none has a record in
-`research/verifications.json` yet.
+All ten passed a verification pass under `RESEARCH_METHOD.md` on 24 July 2026 and
+have records in `research/verifications.json`. Each now has a concept page built
+locally at `/concepts/<slug>/` with its own scoped identity. Nine are now published
+as `/transformations/` case studies with matched stills and demo media; dead or
+redirected domains use an honest static before panel and an after-only clip. Murdock
+Brothers remains internal-only because trading is still unconfirmed. Full
+selection record and dated probe evidence in `research/batch-two-selection.md`.
 
-Composition was chosen to weight Dundrum and to leave hospitality — batch one
-was eight of ten hospitality or consumer-facing, and nothing so far tests
-whether the offer lands with a trade, a health practice or a product brand.
+Published batch-two cases: `dundrum-inn`, `groves-chemist`, `tonn-ruray`,
+`kelly-mcevoy-brown`, `bettys-butters`, `douglas-cromie`, `donard-hotel`,
+`newcastle-dental`, and `hugh-mccanns`.
 
-| Business | Town | Category | Gap class | Selection evidence |
+Composition weights Dundrum and leaves hospitality — batch one was eight of ten
+hospitality or consumer-facing. Batch two is the first test of whether the offer
+lands with a trade, a health practice or a product brand.
+
+| Business | Town | Gap class | Verified condition (24 Jul 2026) | Concept at `/concepts/…` |
 |---|---|---|---|---|
-| The Dundrum Inn | Dundrum | Pub / B&B | Journey | Live custom site with booking and 2026 content — **not a rebuild case** |
-| Murdock Brothers | Dundrum | Fuel merchant | Dead site | Wix 404 "ConnectYourDomain Error" |
-| Groves Chemist | Dundrum | Pharmacy | First website | No site found; trading confirmed first-hand 24 Jul 2026 |
-| Tonn Ruray Café | Dundrum | Café + apartments | Redesign | Live site; café/restaurant plus luxury apartment lets off one domain |
-| Kelly, McEvoy & Brown | Dundrum | Building contractor | Redesign | 9.7 KB hand-built site, established 1973 |
-| Betty's Better Butters | Dundrum | Food producer | Redesign | Two-page BaseKit site still titled "Home Page" |
-| Douglas and Cromie | Newcastle | Car dealer | Dead site | Domain does not resolve (ENOTFOUND) |
-| The Donard Hotel | Newcastle | Hotel | Dead site | HTTP 404, HTTPS connection refused |
-| Newcastle Family Dental Care | Newcastle | Dental | Dead site | Redirects to another practice over plain HTTP |
-| Hugh McCann's | Newcastle | Wedding venue | Feature | Maintained to 2026 despite © 2018 footer — **not a rescue** |
+| The Dundrum Inn | Dundrum | Journey | Live GuestDiary site, 2026 content, real booking — **not a rebuild**. Phone corrected to 028 4372 9933 | `dundrum-inn/` — a tonight status board (kitchen/rooms/tide/what's-on) on the first screen; 43-language translate widget cut to two |
+| Murdock Brothers | Dundrum | Dead site | Wix "ConnectYourDomain" 404 on a domain the merchant still publishes. **Trading unconfirmed** | `murdock-brothers/` — a fuel-gauge order slider; price left deliberately blank (none published) |
+| Groves Chemist | Dundrum | ~~First website~~ **Dead site** | **Reclassified.** A full pharmacy site with prescription ordering exists at groveschemist.com and has been *deactivated* — live URL, "no longer available" notice | `groves-chemist/` — the deactivated repeat-prescription capability restored, on a dispensing-label form |
+| Tonn Ruray Café | Dundrum | Redesign | Live Webflow site built for the apartments; the café is the failing half — JUN24 menu PDF, no booking | `tonn-ruray/` — the café given its own front door and a live menu |
+| Kelly, McEvoy & Brown | Dundrum | Redesign | Live 9.7 KB hand-built site, est. 1973; a 53-year portfolio rendered as text links | `kelly-mcevoy-brown/` — a filterable drawing-register portfolio |
+| Betty's Better Butters | Dundrum | Redesign | Live two-page **ProSite Hosting** site, nav still "Home Page"/"Our Store", not one product shown | `bettys-butters/` — a food brand that shows the food; flavours marked placeholder |
+| Douglas and Cromie | Newcastle | Dead site | Domain ENOTFOUND; stock lives on a third-party marketplace. Trading confirmed first-hand | `douglas-cromie/` — a forecourt the dealer owns |
+| The Donard Hotel | Newcastle | Dead site | HTTP 404, no HTTPS listener; trading (Booking.com 8.7, 46 reviews). Every booking is an OTA | `donard-hotel/` — book-direct, whose whole argument is commission |
+| Newcastle Family Dental Care | Newcastle | Dead site | Trades under its own name; its domain 301s over plain HTTP to another practice, .co.uk HTTPS times out | `newcastle-dental/` — the practice's own door, served over HTTPS |
+| Hugh McCann's | Newcastle | Feature | Maintained (July 2026 menu upload); a wedding venue with no online enquiry at all | `hugh-mccanns/` — a date-and-guest-count enquiry, the two facts every venue call starts with |
+
+**Three findings changed the batch on verification.** (1) **Groves reclassified**
+from first-website to dead-site: a full pharmacy site with prescription ordering
+exists and was switched off, so batch two is now **five dead-site, four redesign,
+one feature — no first-website case**. (2) **The Dundrum Inn phone** was wrong in
+the census (028 4375 1211); its own site publishes 028 4372 9933 — corrected. (3)
+The **Betty's builder** is ProSite Hosting, not BaseKit as the selection record
+guessed. All ten are recorded honestly in `research/verifications.json`; the
+open apartments-vs-café and DJ-Maguire-ownership questions are resolved in the
+records.
 
 **Squid Shack was selected and removed the same day** — local first-hand report,
 24 July 2026: it no longer exists. Recorded in `research/verifications.json` as
