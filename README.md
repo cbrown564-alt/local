@@ -116,9 +116,10 @@ review-repair-re-review cycle with zero public passes. Enniskeen's reviewed
 source cleared design at 7.68; its current source replaces reused photography
 with explicitly disclosed AI-generated visualisations and is Reviewable
 pending the affected visual categories. Buck's Head received a 6.53 Revise and
-is in its single focused repair cycle; eighteen concepts remain unreviewed.
-The public homepage and index show that state rather than grandfathering
-earlier work.
+completed its single focused repair cycle; the fixed source scored 7.15 but
+still failed claims honesty, so it is retired. Eighteen concepts remain
+unreviewed. The public homepage and index show that state rather than
+grandfathering earlier work.
 
 ## Research artifacts
 
