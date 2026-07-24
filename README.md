@@ -106,10 +106,14 @@ The rule applies retroactively: a concept that receives Revise leaves
 each evidence record from `research/concept-reviews/_template.md`; the build
 checks the compact committed Pass in
 `research/concept-reviews/releases.json` before publishing the transformation.
-Detailed critiques, screenshots and licensing evidence remain private.
-Phase Q completed the enforcement and retroactive triage with zero public
-passes: every historical concept is internal pending evidence, and the public
-homepage/index show that state rather than grandfathering earlier work.
+Detailed critiques, screenshots and licensing evidence remain private. Run
+`pnpm test:enniskeen` for the first candidate's responsive
+failure/recovery and exact Bookin1 handoff check.
+Phase Q completed the enforcement, retroactive triage and first full
+review-repair-re-review cycle with zero public passes. Enniskeen cleared design
+review at 7.68 but remains Release blocked on photography permission; the
+other nineteen concepts are internal pending review. The public homepage and
+index show that state rather than grandfathering earlier work.
 
 ## Research artifacts
 

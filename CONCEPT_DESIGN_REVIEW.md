@@ -41,9 +41,10 @@ unmistakably labelled as outside the prototype. Missing breadth is acceptable;
 pretending that breadth exists is not.
 
 The historical craft scores below are a baseline diagnosis, not passes under
-this rubric. They were holistic judgements made before the rubric existed. All
-twenty concepts therefore have status **not yet reviewed under v1.1**, including
-Enniskeen, whose historical score happens to be 7.0.
+this rubric. They were holistic judgements made before the rubric existed.
+Nineteen concepts therefore have status **not yet reviewed under v1.1**.
+Enniskeen completed the first independent workflow: its current design passed
+at 7.68, while missing photography permission keeps it Release blocked.
 
 ### Acceptance rule
 
@@ -370,13 +371,15 @@ recorded stages returned to Concept in progress; Murdock Brothers was already
 internal. All twenty concept routes remain `noindex` and available for internal
 evidence or repair work.
 
-Every candidate is **internal pending review or release evidence**. No focused
-repair cycle has been consumed. `PROSPECTS.md` owns the next review action and
-any separate publication dependency for each concept. The initial Enniskeen
-record stopped before scoring because no photography permission was filed.
-That was too strict: the missing permission blocks public use of those images,
-but does not block design review. Enniskeen should now receive the live design
-review, with asset permission recorded separately as a release condition.
+Every candidate is **internal pending review or release evidence**.
+`PROSPECTS.md` owns the next review action and any separate publication
+dependency for each concept. Enniskeen proved the corrected workflow. Its
+first independent verdict was Revise at 7.10; one focused repair corrected the
+missing-date recovery, phone overflow, contrast, focus and generic entrance
+motion. The same reviewer then passed every design gate at 7.68. The compact
+record is **Release blocked** because no photography permission or publishable
+replacement is filed. Nineteen concepts remain unreviewed and none has
+consumed a repair cycle.
 
 The repository now enforces the state:
 
