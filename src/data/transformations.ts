@@ -17,7 +17,12 @@ export interface Transformation {
   href: string;
 }
 
-export const transformations: Transformation[] = [
+/**
+ * Internal candidates remain available to noindex concept routes while they
+ * await Phase Q review. Public portfolio membership is controlled only by
+ * `publicTransformationSlugs` below.
+ */
+export const transformationCandidates: Transformation[] = [
   {
     slug: "dundrum-inn",
     name: "The Dundrum Inn",
@@ -301,5 +306,15 @@ export const transformations: Transformation[] = [
   },
 ];
 
+export const publicTransformationSlugs = [] as const;
+
+const publicSlugSet = new Set<string>(publicTransformationSlugs);
+
+export const transformations: Transformation[] = transformationCandidates.filter(
+  (item) => publicSlugSet.has(item.slug),
+);
+
 export const featuredTransformation =
-  transformations.find((item) => item.slug === "donard-veterinary") ?? transformations[0];
+  transformations.find((item) => item.slug === "donard-veterinary") ??
+  transformationCandidates.find((item) => item.slug === "donard-veterinary") ??
+  transformationCandidates[0];

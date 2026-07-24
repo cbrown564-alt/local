@@ -3,7 +3,7 @@
 Working roadmap for Mourne Made after the Product Stage homepage ship.
 Update this file when a milestone starts, finishes, or changes shape.
 
-Snapshot: 24 July 2026 · 9 shortlist concepts published · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped for every transformation · F1 Enniskeen flagship and F2 Buck's Head journey case both complete locally, with outreach gated by domain/form/printed-QR checks · South Down Signs on hold
+Snapshot: 24 July 2026 · Milestone 1 complete · Milestone 2 second assets shipped · "See it in motion" demo clips shipped · F1 Enniskeen flagship and F2 Buck's Head journey case complete locally · **Phase Q release gate and retroactive triage complete with zero public passes; all 20 concepts are internal pending evidence** · South Down Signs on hold
 
 ---
 
@@ -130,11 +130,203 @@ delivers).
 
 ---
 
+## Phase Q — Concept review gate and portfolio requalification ⚠️ v1.1 alignment open
+
+**Initial zero-pass release hold completed 24 July 2026; standard corrected to
+v1.1 on 24 July 2026. Work mode: Promote.** `CONCEPT_DESIGN_REVIEW.md` sets the minimum
+standard for every public concept. A concept passes only when one independent
+non-creator reviewer directly inspects one bounded, complete visitor loop, the
+weighted score is at least 7.0, the four core categories score at least 7.0,
+the three supporting categories score at least 6.0, every design gate passes
+and every public release condition is complete. Missing licensing or other
+external paperwork blocks release but no longer stops design review or consumes
+a repair cycle. The rule applies retroactively.
+
+The initial audit closed with **zero public Passes**. It established that none
+of the nineteen former public transformations had a complete v1.0 release
+record; it did not establish that all nineteen designs were unacceptable.
+Murdock Brothers was already internal. All twenty
+`noindex` concept routes remain available for internal work, while the
+homepage, transformation index, generated case-study routes and prospect stages
+now reflect the zero-pass release state.
+
+New concept publication, one-sheet release and outreach remain unavailable for
+an individual concept until it receives its own current Pass. Phase Q is
+complete because that rule is now enforced and the public portfolio is
+truthful, not because any historical concept was validated.
+
+### Canonical owners
+
+| Concern | Owner |
+|---|---|
+| Rubric, review process, appeals, repair limit and calibration | `CONCEPT_DESIGN_REVIEW.md` |
+| Prospect stage and review hold | `PROSPECTS.md` |
+| Compact committed release decisions | `research/concept-reviews/releases.json` |
+| Private detailed evidence | Git-ignored `research/concept-reviews/<slug>.md` and `research/concept-reviews/evidence/` |
+| Public transformation membership | `src/data/transformations.ts` |
+| Phase status and next action | `PLAN.md` |
+
+### Q1 — Enforce the release rule ✅
+
+Build the smallest repository check that makes the standard unavoidable:
+
+1. Define the compact release-data schema: slug, status, reviewed source
+   fingerprint, reviewer, design-gate and public-release-condition booleans,
+   seven category scores, weighted score, review date and `truthCheckedAt`.
+2. Add `scripts/check-concept-reviews.mjs`. It compares every slug in
+   `src/data/transformations.ts` with `research/concept-reviews/releases.json`
+   and fails when a record is missing or not Pass, a release condition is
+   false, a core category is below 7.0, a supporting category is below 6.0,
+   the weighted score is below 7.0, the truth check is more than 90 days old,
+   or the material source fingerprint changed.
+3. Run the check from `pnpm build`. Internal `noindex` concept routes are not
+   release entries and remain buildable without a Pass.
+4. Verify that detailed scorecards, screenshots and licensing documents remain
+   ignored while the reusable template and compact release data remain tracked.
+
+Introduce the build check after Q2 has reduced the public transformation list
+to passing concepts or the truthful empty state. Do not create grandfather
+records to make the first check green.
+
+### Q2 — Triage the existing public portfolio ✅
+
+Run release-readiness triage across every slug currently exposed through
+`src/data/transformations.ts`, then score the design separately.
+
+- Check fresh verification, respectful current capture, claims and asset
+  rights, independent-concept safeguards, one real visitor loop, subject proof,
+  phone/desktop keyboard use, contrast/reduced motion, and repository checks.
+- Immediately remove **Release blocked** and **Revise** concepts from public
+  transformations and outreach assets. Keep the `noindex` route internally
+  unless truth, safety or respect requires its removal.
+- Missing release evidence does not stop design scoring and does not consume
+  the one permitted repair cycle.
+- If no concept remains public, replace the homepage feature and
+  `/transformations/` index with a truthful review-in-progress state and keep
+  the request CTA without showing failed work as proof.
+
+Unavailable permission, photography or external evidence is not a false blocker
+for Phase Q: it prevents that concept from being public, not the portfolio from
+being made truthful.
+
+### Q3 — Review the strongest concepts ⚠️ reopen under v1.1
+
+Fully review concepts in this order:
+
+1. strongest likely public proof by visitor-loop clarity, strategic relevance
+   and historical craft;
+2. complete the evidence needed to judge the design;
+3. cheapest credible repair that could restore another strong example;
+4. resolve asset rights and other release conditions for designs that pass.
+
+The creator completes the private evidence record and self-review. One
+independent human owner or separate non-creator agent then inspects the live
+desktop and phone experience before seeing the self-score. There is no owner
+override. One blind appeal by a different qualified reviewer is allowed and
+replaces the first verdict in full.
+
+Hotel Enniskeen was attempted first because it has the strongest historical
+craft and deepest complete loop. Its private record stopped before scoring
+because no photography permission was filed. The v1.1 correction makes that a
+release blocker, not a design-review blocker. Enniskeen now needs the live
+independent design review; its imagery must still be licensed or replaced
+before public restoration.
+
+### Q4 — Repair once, restore or retire ✅ not triggered
+
+- Give a concept that receives Revise one focused repair cycle.
+- Re-run the affected checks and return the fixed version to the independent
+  reviewer.
+- If a design gate still fails, a core category remains below 7.0 or a
+  supporting category remains below 6.0, retire it from the public queue.
+  Reopen only with new imagery, evidence, a materially different direction or
+  explicit flagship status.
+- Restore passing concepts to public transformations individually; do not wait
+  for the whole historical portfolio.
+
+No candidate has yet received a v1.1 verdict. All remain internal, so no
+focused repair cycle has been consumed.
+
+### Q5 — Keep public truth current ✅
+
+Every public Pass receives a lightweight truth refresh every 90 days: trading
+status, current public presence, primary external handoff, material claims and
+continuing asset permission. An unchanged concept updates `truthCheckedAt`
+without a full design rescore. A material change triggers the affected review
+categories. An overdue concept leaves public transformations until refreshed.
+
+### Exit criteria
+
+- `pnpm build` runs the release check and fails against a deliberately invalid
+  fixture or temporary record
+- Every slug in `src/data/transformations.ts` has a current Pass with all
+  release conditions true, core category scores at least 7.0, supporting
+  category scores at least 6.0, weighted score at least 7.0, a
+  matching material source fingerprint and `truthCheckedAt` no more than 90
+  days old
+- Every unreviewed, Release blocked, gate-failing or twice-failed concept is absent
+  from public transformations and outreach assets
+- The zero-pass homepage and transformation-index state is directly verified at
+  1265×710 and 390×844, even if at least one concept passes before release
+- At least one complete private review record proves the template and
+  independent-review workflow; its detailed evidence remains outside Git
+- `PROSPECTS.md` records each affected concept as passed, internal pending
+  evidence, in its one repair cycle, or retired
+- No one-sheet is printed and no outreach begins for a concept without its
+  current public Pass
+
+**Exit criteria met 24 July 2026 in the truthful zero-pass state.**
+
+- `pnpm build` runs the release checker before Astro and passes with zero
+  public members; it fails closed against
+  `scripts/fixtures/concept-reviews-invalid.json`
+- the focused self-test rejects false gates, sub-7 scores, stale truth data and
+  a changed source fingerprint
+- `src/data/transformations.ts` keeps internal candidates separate from the
+  empty `publicTransformationSlugs` list, so no unreviewed detail route is built
+- the homepage and `/transformations/` review states were directly checked at
+  1265×710 and 390×844 with no horizontal overflow, no portfolio cards and no
+  browser warnings
+- the private Hotel Enniskeen record preserves the initial over-strict stop;
+  v1.1 now requires design scoring to continue while recording photography
+  rights as a separate release blocker
+- `PROSPECTS.md` records all twenty concepts as internal pending evidence, and
+  the eighteen earlier `Concept published` data stages were returned to
+  `Concept in progress`
+- no Pass, one-sheet release, outreach action or repair-cycle claim was created
+
+### Current status
+
+**Implemented and verified:** source fingerprinting, 90-day truth expiry,
+invalid-fixture failure, public zero-pass states, internal candidate
+separation, retroactive release hold and stage rollback.
+
+**Enforcement alignment required:** the current schema and checker still use
+the v1.0 eight-gate and seven-category-floor shape. They must be updated to the
+v1.1 split between design gates and public release conditions before the first
+Pass is recorded. The public list is empty, so the current site does not expose
+an invalid release while this work remains.
+
+**Public Passes:** none. No historical craft score was converted into a v1.1
+release record.
+
+**Review backlog:** all twenty concepts. `PROSPECTS.md` records the next design
+review action and separate release dependency for each. Hotel Enniskeen is
+first by readiness; its live independent design scoring may proceed before
+photo permission is resolved.
+
+**Next executable action:** align the schema and checker with v1.1, then run the
+first live independent Enniskeen design review. Resolve or replace its
+photography before restoring it publicly.
+
+---
+
 ## Milestone 3 — Personalised one-sheets (before outreach)
 
-**Must complete before starting outreach.** A printed one-sheet made for one
-named business, showing that business's own concept, handed to the owner in
-person during trading hours. There is no generic door-drop — see
+**Must complete before starting outreach, and only for concepts that pass
+Phase Q.** A printed one-sheet made for one named business, showing that
+business's own passing concept, handed to the owner in person during trading
+hours. There is no generic door-drop — see
 [ADR 0001](docs/adr/0001-personalised-one-sheets-over-door-drop.md) for the
 options weighed and why the earlier bifold-first recommendation was reversed.
 
@@ -225,7 +417,8 @@ The `/request/` flow posts through `/api/request` to the configured inbox. Befor
 
 ## Milestone 5 — First outreach wave
 
-Only after Milestones 1–3 (and preferably 4). Move published concepts through **Contacted → Mock-up requested** in `research/verifications.json`.
+Only after Phase Q and Milestones 1–4. Move passing published concepts through
+**Contacted → Mock-up requested** in `research/verifications.json`.
 
 ### Order of operations
 
@@ -308,8 +501,9 @@ M1 ✅ Tool Centre / Kent Amusements / Chamber landings
 M2 ✅ Second assets for all nine shortlist concepts
 F1 ✅ Enniskeen flagship working prototype (outreach gates remain)
 F2 ✅ Buck's Head journey case (outreach gates remain)
+Phase Q ✅ Release gate + zero-pass public state + retroactive triage; restore concepts individually after a current Pass
 M4 Request form delivery + source attribution (gates any print going out)
-M3 Personalised one-sheets → bleed/crop fix → Enniskeen proof → batch-one artwork → print
+M3 Personalised one-sheets for Phase Q passes → bleed/crop fix → first eligible proof → batch-one artwork → print
 M5 Outreach wave 1 (Dundrum walk first, Newcastle led by the flagship after)
 M6 First paid job
 ```

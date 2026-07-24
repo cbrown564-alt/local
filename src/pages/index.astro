@@ -7,12 +7,19 @@ import LocalStrip from "../components/LocalStrip.astro";
 import MourneMotif from "../components/MourneMotif.astro";
 import { featuredTransformation, transformations } from "../data/transformations";
 import "../styles/home.css";
+
+const hasPublicTransformations =
+  transformations.length > 0 && Boolean(featuredTransformation);
 ---
 
 <BaseLayout
   title="Mourne Made — Local websites, made visible"
   description="A local digital studio creating free before-and-after website concepts for Dundrum and Newcastle businesses."
-  ogImage={featuredTransformation.after}
+  ogImage={
+    hasPublicTransformations
+      ? featuredTransformation.after
+      : "/images/place/mournes-newcastle.jpg"
+  }
 >
   <section class="home-hero home-hero--product" aria-label="Mourne Made introduction">
     <div class="home-hero-frame">
@@ -29,28 +36,50 @@ import "../styles/home.css";
         </div>
       </div>
 
-      <div class="home-hero-stage">
-        <div class="home-hero-comparison">
-          <BeforeAfter
-            before={featuredTransformation.before}
-            after={featuredTransformation.after}
-            beforeAlt={featuredTransformation.beforeAlt}
-            afterAlt={featuredTransformation.afterAlt}
-            showNotes={false}
-            compact
-          />
+      {hasPublicTransformations ? (
+        <div class="home-hero-stage">
+          <div class="home-hero-comparison">
+            <BeforeAfter
+              before={featuredTransformation.before}
+              after={featuredTransformation.after}
+              beforeAlt={featuredTransformation.beforeAlt}
+              afterAlt={featuredTransformation.afterAlt}
+              showNotes={false}
+              compact
+            />
+          </div>
+          <footer class="home-hero-stage-footer">
+            <Disclosure reminder />
+            <p class="home-hero-stage-caption">
+              Drag to compare · {featuredTransformation.name}, {featuredTransformation.town}
+            </p>
+            <nav class="home-hero-stage-links" aria-label="Featured comparison">
+              <a class="button button-secondary home-hero-stage-browse" href="/transformations/">Browse local transformations <ArrowIcon /></a>
+              <a class="text-link home-hero-stage-compare" href={featuredTransformation.href}>Open the full comparison <ArrowIcon /></a>
+            </nav>
+          </footer>
         </div>
-        <footer class="home-hero-stage-footer">
-          <Disclosure reminder />
-          <p class="home-hero-stage-caption">
-            Drag to compare · {featuredTransformation.name}, {featuredTransformation.town}
-          </p>
-          <nav class="home-hero-stage-links" aria-label="Featured comparison">
-            <a class="button button-secondary home-hero-stage-browse" href="/transformations/">Browse local transformations <ArrowIcon /></a>
-            <a class="text-link home-hero-stage-compare" href={featuredTransformation.href}>Open the full comparison <ArrowIcon /></a>
-          </nav>
-        </footer>
-      </div>
+      ) : (
+        <section class="home-review-state" aria-labelledby="home-review-heading">
+          <div class="home-review-copy">
+            <p class="home-review-label">Portfolio review in progress</p>
+            <h2 id="home-review-heading">
+              We’re raising the bar before we show the work.
+            </h2>
+            <p>
+              Every concept is being checked for truth, subject proof,
+              accessibility and a complete visitor journey, then inspected by
+              an independent reviewer. Only work that clears the new
+              publication standard will return here.
+            </p>
+          </div>
+          <div class="home-review-status" aria-label="Portfolio publication status">
+            <span>Public examples today</span>
+            <strong>None until they pass</strong>
+            <a href="/transformations/">Read the portfolio update <ArrowIcon /></a>
+          </div>
+        </section>
+      )}
     </div>
   </section>
 
@@ -105,14 +134,21 @@ import "../styles/home.css";
       <p>Tell us about your business and we'll send a free before-and-after concept — no obligation.</p>
       <div class="button-row">
         <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
-        <a class="text-link" href="/transformations/">Browse local transformations <ArrowIcon /></a>
+        <a class="text-link" href="/transformations/">Read the portfolio update <ArrowIcon /></a>
       </div>
     </div>
   </section>
 
   <section class="promise">
     <div class="shell promise-grid">
-      <div class="promise-stat">{transformations.length}<span>local concept transformations built across Dundrum and Newcastle</span></div>
+      {transformations.length > 0 ? (
+        <div class="promise-stat">{transformations.length}<span>independently reviewed local concept transformations</span></div>
+      ) : (
+        <div class="promise-stat promise-stat--review">
+          Review first
+          <span>Public proof returns one concept at a time, after it passes.</span>
+        </div>
+      )}
       <div class="promise-copy">
         <p class="eyebrow">A local commitment</p>
         <h2>Good websites shouldn't only go to those who can pay.</h2>

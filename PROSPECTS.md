@@ -5,12 +5,10 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 24 July 2026 · 27 businesses verified · 10 shortlisted · 9 concepts
-published · Milestone 2 second assets shipped for all nine · Enniskeen F1
-flagship working prototype complete locally · Buck's Head F2 journey case
-complete locally · **batch two verified (10 prospects) and ten new concept
-pages built locally at `/concepts/<slug>/` — stage Concept in progress, not yet
-published as transformations**
+Snapshot: 24 July 2026 · 27 businesses verified · **zero public transformations
+while Phase Q review is enforced** · 20 internal concept routes · Enniskeen F1
+and Buck's Head F2 remain complete local prototypes · no one-sheet release or
+outreach is permitted until a concept has a current independent Pass
 
 ## Pipeline stages
 
@@ -21,47 +19,108 @@ Record every stage change in the `stage` field of `research/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
-Current stages: 9 concepts published, 1 shortlisted (held), 7 assessed.
+Current recorded stages: 19 concepts in progress, 7 shortlisted, 1 assessed.
+Castle Farm remains the one built concept without a verification record and is
+tracked explicitly in the Phase Q table below.
 
 Rules of the road:
 
 - No concept work before a verification pass dated within the last month.
+- **Retroactive review hold (owner decision, 24 July 2026; corrected to v1.1
+  the same day):** pause new concept publication and outreach until each
+  public candidate has completed design review and its release conditions.
+  Remove Release blocked and Revise concepts from `/transformations/` and
+  outreach assets until cleared;
+  keep the `noindex` concept route internally unless truth, safety or respect
+  requires removal. Missing release evidence does not stop design scoring or
+  consume the one repair cycle. If
+  no concept passes, the homepage and transformation index show a truthful
+  temporary review state rather than retaining a failed example. Fully review
+  eligible concepts by evidence readiness, public value and likelihood of
+  passing, not chronological order.
+- A concept remains **Concept in progress** until it passes the independent
+  review in `CONCEPT_DESIGN_REVIEW.md` at 7.0/10 or higher, including every
+  every design gate, core category floors of 7.0 and supporting category
+  floors of 6.0. A local route
+  is not evidence of completion. The build enforces a current machine-readable
+  Pass for every slug published through `src/data/transformations.ts`; internal
+  `noindex` concept routes do not require one. Each public Pass needs a
+  lightweight truth refresh every 90 days; overdue concepts leave public
+  transformations until refreshed.
 - Caveats recorded against a prospect must be resolved before outreach (e.g.
   confirm trading in person where online evidence is soft).
 - Concepts stay clearly labelled independent and uncommissioned until a
   business engages (see PRODUCT.md).
 
+## Phase Q portfolio disposition — 24 July 2026
+
+Release-readiness triage removed all nineteen former public transformations.
+None had the complete private record and independent v1.1 Pass required by the
+release rule. This did not establish that the designs failed. Missing release
+evidence is **Release blocked**, not Revise, so no repair cycle has been
+consumed. All concept routes remain internal and `noindex`;
+`src/data/transformations.ts` has no public members.
+
+| Concept | Current disposition | Next design-review action; separate release dependency |
+|---|---|---|
+| Hotel Enniskeen | Internal pending review; release blocked | Complete the live phone/desktop, loop and access review; photography permission or publishable replacements are required only for release |
+| Mourne Cycles | Internal pending review; release blocked | Complete the primary workshop/hire loop and design review; Trek/dealer image rights or replacements are required only for release |
+| The Buck's Head | Internal pending review; release blocked | Complete the two-journey design review under v1.1; pub-photo permission or publishable replacements are required only for release |
+| Donard Veterinary | Internal pending evidence | Add convincing subject proof that meets the gate, then evidence the appointment/emergency loop at both sizes |
+| Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
+| Cúpla | Internal pending review | Add real café/product proof and complete the bilingual visitor loop; resolve image rights before release |
+| The Tool Centre | Internal pending evidence | Add specific subject proof and source every published hire detail before the hire/call loop is reviewed |
+| Kent Amusements | Internal pending review | Replace illustrative costume with real subject proof and review one complete visit-planning loop; resolve image rights before release |
+| Newcastle Chamber | Internal pending evidence | Make directory search and the selected visitor loop real or explicitly bounded; add specific subject proof |
+| The Dundrum Inn | Internal pending review | Replace invented live status with sourced or explicitly illustrative states and add real place proof; resolve image rights before release |
+| Groves Chemist | Internal pending evidence | Add specific pharmacy proof and an honest prescription-request handoff or clearly labelled prototype end state |
+| Tonn Ruray Café | Internal pending review | Add real café proof and make the visit/menu loop complete rather than decorative; resolve image rights before release |
+| Kelly, McEvoy & Brown | Internal pending review | Add real project proof, remove invented project metadata and wire or cut the filters; resolve image rights before release |
+| Betty's Better Butters | Internal pending review | Add real product proof and keep every unverified flavour or product detail visibly provisional; resolve image rights before release |
+| Douglas & Cromie | Internal pending review | Replace empty vehicle-photo placeholders with real subject proof and source every listing claim; resolve image rights before release |
+| The Donard Hotel | Internal pending review | Add real hotel proof and an honest direct-booking handoff or labelled prototype end state; resolve image rights before release |
+| Newcastle Family Dental Care | Internal pending evidence | Add specific practice proof and make the appointment loop functional or explicitly bounded |
+| Hugh McCann's | Internal pending review | Add real venue proof and complete the enquiry success, failure and recovery states; resolve image rights before release |
+| Castle Farm | Internal pending review; release blocked | Create the missing fresh verification record and complete design review; produce-photo rights or replacements are required for release |
+| Murdock Brothers | Internal pending evidence | Confirm trading first; then add specific subject proof and a truthful price/handoff model |
+
+The first attempted record is Hotel Enniskeen because it has the strongest
+historical craft and deepest loop. Its initial private record stopped before
+scoring because photography permission was missing. Under v1.1, that permission
+still blocks public use of the photographs but does not block live design
+review or category scoring.
+
 ## Shortlist — redesign showcases (current website, visible gap)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Hotel Enniskeen** — *concept published, [flagship case study + film](/transformations/hotel-enniskeen/#reel-hotel-enniskeen) · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype: complete responsive site, verified Bookin1 deep links, 75-second guest-journey film, A4 one-sheet and pitch. Stage remains Concept published; outreach waits for domain, production-form and printed-QR gates |
-| **Mourne Cycles** — *concept published, [/transformations/mourne-cycles/](src/pages/transformations/mourne-cycles.astro)* · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro) | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
-| **Donard Veterinary Centre** — *concept published, [/transformations/donard-veterinary/](src/pages/transformations/donard-veterinary.astro)* · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro) | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
+| **Hotel Enniskeen** — *internal pending Phase Q review · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Design review may proceed; publication and outreach wait on photo rights or replacements, a v1.1 Pass, domain, production-form and printed-QR gates |
+| **Mourne Cycles** — *internal pending Phase Q evidence · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
+| **Donard Veterinary Centre** — *internal pending Phase Q evidence · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
-| **The Buck's Head** — *concept published, [journey case study + film](/transformations/bucks-head/#two-journeys) · [/transformations/bucks-head/](src/pages/transformations/bucks-head.astro)* · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro) | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | F2 journey case: measured 24 Jul 2026 — booking 2 taps → 1, à la carte 3 taps → 1. Verified ResDiary handoff (`date` + `partySize` only), 48-second side-by-side film, A4 one-sheet and walk-in pitch. Explicitly **not** a rebuild. Stage remains Concept published; outreach waits for domain, production-form and printed-QR gates |
+| **The Buck's Head** — *internal pending Phase Q review · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro)* | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | F2 journey case remains a complete local prototype. Design review may proceed; publication and outreach wait on photo rights or replacements, a v1.1 Pass, domain, production-form and printed-QR gates |
 
 ## Shortlist — first-website showcases (no site, verified Maps listing)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
-| **Scopers** — *concept published, [/transformations/scopers/](src/pages/transformations/scopers.astro)* · M2 supper club [/concepts/scopers/supper-club/](src/pages/concepts/scopers/supper-club.astro) | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
-| **Cúpla** — *concept published, [/transformations/cupla/](src/pages/transformations/cupla.astro)* · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro) | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
-| **The Tool Centre** — *concept published, [/transformations/tool-centre/](src/pages/transformations/tool-centre.astro)* · M2 hire list [/concepts/tool-centre/hire-list/](src/pages/concepts/tool-centre/hire-list.astro) | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
-| **Kent Amusements** — *concept published, [/transformations/kent-amusements/](src/pages/transformations/kent-amusements.astro)* · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro) | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
-| **Newcastle Chamber of Commerce** — *full-site concept published, [/transformations/newcastle-chamber/](src/pages/transformations/newcastle-chamber.astro)* · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro) | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
+| **Scopers** — *internal pending Phase Q evidence · M2 supper club [/concepts/scopers/supper-club/](src/pages/concepts/scopers/supper-club.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
+| **Cúpla** — *internal pending Phase Q evidence · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
+| **The Tool Centre** — *internal pending Phase Q evidence · M2 hire list [/concepts/tool-centre/hire-list/](src/pages/concepts/tool-centre/hire-list.astro)* | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
+| **Kent Amusements** — *internal pending Phase Q evidence · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
+| **Newcastle Chamber of Commerce** — *internal pending Phase Q evidence · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
 
 ## Batch two — verified and captured 24 July 2026, ten concept pages built
 
 All ten passed a verification pass under `RESEARCH_METHOD.md` on 24 July 2026 and
-have records in `research/verifications.json`. Each now has a concept page built
-locally at `/concepts/<slug>/` with its own scoped identity. Nine are now published
-as `/transformations/` case studies with matched stills and demo media; dead or
-redirected domains use an honest static before panel and an after-only clip. Murdock
-Brothers remains internal-only because trading is still unconfirmed. Full
-selection record and dated probe evidence in `research/batch-two-selection.md`.
+have records in `research/verifications.json`. Each has a concept page built
+locally at `/concepts/<slug>/` with its own scoped identity. Nine were published
+with matched stills and demo media before Phase Q; all ten are now internal
+pending evidence. Murdock Brothers also waits on trading confirmation. Full
+selection record and dated probe evidence live in
+`research/batch-two-selection.md`.
 
-Published batch-two cases: `dundrum-inn`, `groves-chemist`, `tonn-ruray`,
+Former public batch-two cases: `dundrum-inn`, `groves-chemist`, `tonn-ruray`,
 `kelly-mcevoy-brown`, `bettys-butters`, `douglas-cromie`, `donard-hotel`,
 `newcastle-dental`, and `hugh-mccanns`.
 
@@ -206,14 +265,18 @@ reinvent:
    gained a PetsApp chat widget between the 20 July verification pass and the
    21 July build, and the change belonged in both the design notes and
    `research/verifications.json`.
-2. **Use the business's own photography** where the site publishes usable
-   images, and credit the source on the transformation page. Enniskeen's
-   balcony and terrace photographs are genuinely good; the problem was the
-   frame around them, which is a fairer and more flattering critique than
-   replacing their imagery with stock. When what the site publishes is
-   supplier imagery (Mourne Cycles runs Trek dealer photography), reuse it
-   and say so plainly — "the Trek dealer imagery the shop already publishes,
-   reused rather than replaced" — instead of introducing stock of our own.
+2. **Use real subject photography and record its rights status.** Internal
+   review may use sourced subject imagery to judge the design, but missing
+   public-use permission leaves the concept Release blocked. Before public
+   use, images must be supplied by the business, captured by Mourne Made or
+   covered by permission or a licence that allows that use; publication on the
+   business's existing site proves the source, not the right to reuse it.
+   Credit every reused asset on the transformation page. Never use generic
+   stock or generated imagery to impersonate the real premises, staff,
+   products, food, rooms or completed work. An image-led business stays
+   internal until suitable subject imagery is available. For a genuinely
+   non-image-led brief, a specific real artefact may carry the proof; CSS
+   costume may not.
 3. **Keep the existing plumbing.** Point concept actions at whatever the
    business already pays for (here, the Bookin1 engine and voucher shop) so
    the proposal reads as an upgrade, not a rebuild that throws away spend.
@@ -256,6 +319,15 @@ reinvent:
    Astro's HTML compression swallowed the space at a source line break before
    an inline element ("mainTrek") — keep meaningful spaces on the same source
    line as the tag.
+9. **Review before publishing.** Assemble the desktop, phone, interaction,
+   source and check evidence required by `CONCEPT_DESIGN_REVIEW.md`; complete
+   the self-review, then have an independent reviewer test and score the fixed
+   candidate. Licensing or other release paperwork does not stop design
+   scoring; record it as Release blocked. The concept needs a recorded Pass at
+   7.0/10 or higher before external use. Keep the
+   detailed record privately at `research/concept-reviews/<slug>.md`; commit
+   only its compact release entry in
+   `research/concept-reviews/releases.json`.
 
 ## The repeatable cycle
 
@@ -284,9 +356,16 @@ cheaper because the knowledge lands in versioned files, not in heads:
    `research/verifications.json`.
 3. **Normalise** (`node scripts/normalize-businesses.mjs`) so corrections,
    scores, and prospect fields flow into the dataset and summary.
-4. **Build** the concept; publish under `/transformations/` with source
+4. **Build** one complete local concept loop while the prospect remains
+   Concept in progress.
+5. **Review and repair** under `CONCEPT_DESIGN_REVIEW.md`. Continue design
+   review when release paperwork is incomplete. A public release needs an
+   independent Pass at 7.0/10 or higher, core categories at 7.0 or higher,
+   supporting categories at 6.0 or higher, all design gates passed and all
+   release conditions complete.
+6. **Publish** under `/transformations/` with matched media and source
    disclosure.
-5. **Record the outcome** — stage change, what the concept taught us, any new
+7. **Record the outcome** — stage change, what the concept taught us, any new
    census corrections — back into `research/verifications.json` and this file.
-6. **Update the docs** touched by what changed (this file always; README /
+8. **Update the docs** touched by what changed (this file always; README /
    RESEARCH_METHOD / DESIGN when the process itself moved).

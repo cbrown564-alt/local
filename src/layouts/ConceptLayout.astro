@@ -1,5 +1,8 @@
 ---
-import { transformations } from "../data/transformations";
+import {
+  transformationCandidates,
+  transformations,
+} from "../data/transformations";
 import "../styles/concept-shell.css";
 
 interface Props {
@@ -50,8 +53,10 @@ const {
   town: townProp,
 } = Astro.props;
 const transformation = transformations.find((item) => item.slug === slug);
-const businessName = businessNameProp ?? transformation?.name ?? slug;
-const town = townProp ?? transformation?.town ?? "";
+const candidate = transformationCandidates.find((item) => item.slug === slug);
+const businessName =
+  businessNameProp ?? transformation?.name ?? candidate?.name ?? slug;
+const town = townProp ?? transformation?.town ?? candidate?.town ?? "";
 const caseStudy = `/transformations/${slug}/`;
 const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${encodeURIComponent(town)}&source=concept`;
 ---
