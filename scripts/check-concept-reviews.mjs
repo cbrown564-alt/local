@@ -27,14 +27,19 @@ const releasesPath = process.env.CONCEPT_RELEASES_PATH
       "releases.json",
     );
 
-export const gateKeys = [
+export const designGateKeys = [
   "currentAndRespectful",
-  "claimsAndAssetsHonest",
-  "independentSafeguards",
+  "claimsHonest",
   "realVisitorLoop",
   "subjectProof",
   "responsiveAndKeyboard",
   "readableAndMotionSafe",
+];
+
+export const releaseConditionKeys = [
+  "assetPermission",
+  "truthCurrent",
+  "independentSafeguards",
   "repositoryChecks",
 ];
 
@@ -49,12 +54,24 @@ export const scoreWeights = {
 };
 
 const scoreKeys = Object.keys(scoreWeights);
+export const coreScoreKeys = [
+  "evidenceTruthRespect",
+  "visitorOutcome",
+  "completeLoop",
+  "responsiveAccessibility",
+];
+export const supportingScoreKeys = [
+  "subjectIdentity",
+  "firstViewport",
+  "craftFinish",
+];
 const releaseKeys = [
   "slug",
   "status",
   "sourceFingerprint",
   "reviewer",
-  "gates",
+  "designGates",
+  "releaseConditions",
   "scores",
   "weightedScore",
   "reviewedAt",
@@ -333,6 +350,24 @@ const weightedScoreFor = (scores) =>
       .toFixed(2),
   );
 
+const everyBooleanTrue = (value, keys) =>
+  isPlainObject(value) && keys.every((key) => value[key] === true);
+
+const scoresMeetFloors = (scores) =>
+  isPlainObject(scores) &&
+  coreScoreKeys.every(
+    (key) => typeof scores[key] === "number" && scores[key] >= 7,
+  ) &&
+  supportingScoreKeys.every(
+    (key) => typeof scores[key] === "number" && scores[key] >= 6,
+  );
+
+const designPasses = (release) =>
+  everyBooleanTrue(release.designGates, designGateKeys) &&
+  scoresMeetFloors(release.scores) &&
+  typeof release.weightedScore === "number" &&
+  release.weightedScore >= 7;
+
 export function validateReleaseData(
   data,
   publicSlugs,
@@ -349,8 +384,8 @@ export function validateReleaseData(
       errors.push(`Release data property "${key}" is not allowed.`);
     }
   }
-  if (data.schemaVersion !== 1) {
-    errors.push("schemaVersion must be 1.");
+  if (data.schemaVersion !== "1.1") {
+    errors.push('schemaVersion must be "1.1".');
   }
   if (!Array.isArray(data.releases)) {
     errors.push("releases must be an array.");
@@ -373,7 +408,11 @@ export function validateReleaseData(
     } else {
       releaseBySlug.set(release.slug, release);
     }
-    if (!["Not ready", "Revise", "Pass"].includes(release.status)) {
+    if (
+      !["Reviewable", "Release blocked", "Revise", "Pass"].includes(
+        release.status,
+      )
+    ) {
       errors.push(`${label}.status is invalid.`);
     }
     if (
@@ -383,7 +422,7 @@ export function validateReleaseData(
       errors.push(`${label}.sourceFingerprint must be a SHA-256 fingerprint.`);
     }
 
-    if (release.status === "Not ready") {
+    if (release.status === "Reviewable") {
       if (release.reviewer !== null) {
         validateReviewer(release.reviewer, `${label}.reviewer`, errors);
       }
@@ -391,10 +430,32 @@ export function validateReleaseData(
       validateReviewer(release.reviewer, `${label}.reviewer`, errors);
     }
 
-    if (reportUnexpectedKeys(release.gates, gateKeys, `${label}.gates`, errors)) {
-      for (const key of gateKeys) {
-        if (typeof release.gates[key] !== "boolean") {
-          errors.push(`${label}.gates.${key} must be a boolean.`);
+    if (
+      reportUnexpectedKeys(
+        release.designGates,
+        designGateKeys,
+        `${label}.designGates`,
+        errors,
+      )
+    ) {
+      for (const key of designGateKeys) {
+        if (typeof release.designGates[key] !== "boolean") {
+          errors.push(`${label}.designGates.${key} must be a boolean.`);
+        }
+      }
+    }
+
+    if (
+      reportUnexpectedKeys(
+        release.releaseConditions,
+        releaseConditionKeys,
+        `${label}.releaseConditions`,
+        errors,
+      )
+    ) {
+      for (const key of releaseConditionKeys) {
+        if (typeof release.releaseConditions[key] !== "boolean") {
+          errors.push(`${label}.releaseConditions.${key} must be a boolean.`);
         }
       }
     }
@@ -404,10 +465,10 @@ export function validateReleaseData(
     ) {
       for (const key of scoreKeys) {
         const score = release.scores[key];
-        if (release.status === "Not ready") {
+        if (release.status === "Reviewable") {
           if (score !== null) {
             errors.push(
-              `${label}.scores.${key} must be null while evidence is Not ready.`,
+              `${label}.scores.${key} must be null while the concept is Reviewable.`,
             );
           }
         } else {
@@ -416,9 +477,9 @@ export function validateReleaseData(
       }
     }
 
-    if (release.status === "Not ready") {
+    if (release.status === "Reviewable") {
       if (release.weightedScore !== null) {
-        errors.push(`${label}.weightedScore must be null when Not ready.`);
+        errors.push(`${label}.weightedScore must be null when Reviewable.`);
       }
     } else if (
       isPlainObject(release.scores) &&
@@ -431,6 +492,37 @@ export function validateReleaseData(
       ) {
         errors.push(
           `${label}.weightedScore must equal ${expectedWeightedScore.toFixed(2)}.`,
+        );
+      }
+    }
+
+    const designIsPassing = designPasses(release);
+    const releaseIsClear = everyBooleanTrue(
+      release.releaseConditions,
+      releaseConditionKeys,
+    );
+    if (release.status === "Release blocked") {
+      if (!designIsPassing) {
+        errors.push(
+          `${label} cannot be Release blocked unless its design passes.`,
+        );
+      }
+      if (releaseIsClear) {
+        errors.push(
+          `${label} cannot be Release blocked when every release condition passes.`,
+        );
+      }
+    } else if (release.status === "Revise" && designIsPassing) {
+      errors.push(
+        `${label} cannot be Revise when every design gate and score threshold passes.`,
+      );
+    } else if (release.status === "Pass") {
+      if (!designIsPassing) {
+        errors.push(`${label} cannot be Pass unless its design passes.`);
+      }
+      if (!releaseIsClear) {
+        errors.push(
+          `${label} cannot be Pass unless every release condition passes.`,
         );
       }
     }
@@ -456,15 +548,31 @@ export function validateReleaseData(
     if (release.status !== "Pass") {
       errors.push(`Public transformation "${slug}" is not a Pass.`);
     }
-    for (const key of gateKeys) {
-      if (release.gates?.[key] !== true) {
-        errors.push(`Public transformation "${slug}" fails gate "${key}".`);
+    for (const key of designGateKeys) {
+      if (release.designGates?.[key] !== true) {
+        errors.push(
+          `Public transformation "${slug}" fails design gate "${key}".`,
+        );
       }
     }
-    for (const key of scoreKeys) {
+    for (const key of releaseConditionKeys) {
+      if (release.releaseConditions?.[key] !== true) {
+        errors.push(
+          `Public transformation "${slug}" fails release condition "${key}".`,
+        );
+      }
+    }
+    for (const key of coreScoreKeys) {
       if (typeof release.scores?.[key] !== "number" || release.scores[key] < 7) {
         errors.push(
           `Public transformation "${slug}" has ${key} below 7.0.`,
+        );
+      }
+    }
+    for (const key of supportingScoreKeys) {
+      if (typeof release.scores?.[key] !== "number" || release.scores[key] < 6) {
+        errors.push(
+          `Public transformation "${slug}" has ${key} below 6.0.`,
         );
       }
     }
@@ -514,9 +622,20 @@ const makeSelfTestRelease = () => ({
   status: "Pass",
   sourceFingerprint: `sha256:${"a".repeat(64)}`,
   reviewer: { name: "Independent fixture reviewer", kind: "agent" },
-  gates: Object.fromEntries(gateKeys.map((key) => [key, true])),
-  scores: Object.fromEntries(scoreKeys.map((key) => [key, 7])),
-  weightedScore: 7,
+  designGates: Object.fromEntries(designGateKeys.map((key) => [key, true])),
+  releaseConditions: Object.fromEntries(
+    releaseConditionKeys.map((key) => [key, true]),
+  ),
+  scores: {
+    evidenceTruthRespect: 8,
+    visitorOutcome: 8,
+    subjectIdentity: 6,
+    firstViewport: 6,
+    completeLoop: 8,
+    responsiveAccessibility: 8,
+    craftFinish: 6,
+  },
+  weightedScore: 7.2,
   reviewedAt: "2026-01-01",
   truthCheckedAt: "2026-01-01",
 });
@@ -524,7 +643,7 @@ const makeSelfTestRelease = () => ({
 const runSelfTest = () => {
   const valid = makeSelfTestRelease();
   const validErrors = validateReleaseData(
-    { schemaVersion: 1, releases: [valid] },
+    { schemaVersion: "1.1", releases: [valid] },
     ["fixture-concept"],
     {
       now: new Date("2026-01-30T00:00:00.000Z"),
@@ -535,13 +654,28 @@ const runSelfTest = () => {
     throw new Error(`Valid fixture was rejected:\n${validErrors.join("\n")}`);
   }
 
+  const blocked = structuredClone(valid);
+  blocked.status = "Release blocked";
+  blocked.releaseConditions.assetPermission = false;
+  const blockedErrors = validateReleaseData(
+    { schemaVersion: "1.1", releases: [blocked] },
+    [],
+  );
+  if (blockedErrors.length > 0) {
+    throw new Error(
+      `Valid release-blocked fixture was rejected:\n${blockedErrors.join("\n")}`,
+    );
+  }
+
   const invalid = structuredClone(valid);
-  invalid.gates.realVisitorLoop = false;
-  invalid.scores.firstViewport = 6.5;
-  invalid.weightedScore = 6.93;
+  invalid.designGates.realVisitorLoop = false;
+  invalid.releaseConditions.assetPermission = false;
+  invalid.scores.visitorOutcome = 6.5;
+  invalid.scores.firstViewport = 5.5;
+  invalid.weightedScore = weightedScoreFor(invalid.scores);
   invalid.truthCheckedAt = "2025-01-01";
   const invalidErrors = validateReleaseData(
-    { schemaVersion: 1, releases: [invalid] },
+    { schemaVersion: "1.1", releases: [invalid] },
     ["fixture-concept"],
     {
       now: new Date("2026-01-30T00:00:00.000Z"),
@@ -549,8 +683,12 @@ const runSelfTest = () => {
     },
   );
   const expectedFragments = [
-    "fails gate",
-    "firstViewport below 7.0",
+    "cannot be Pass unless its design passes",
+    "cannot be Pass unless every release condition passes",
+    "fails design gate",
+    "fails release condition",
+    "visitorOutcome below 7.0",
+    "firstViewport below 6.0",
     "weighted score below 7.0",
     "truth check is",
     "source fingerprint has changed",

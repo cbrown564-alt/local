@@ -382,10 +382,11 @@ The repository now enforces the state:
 
 - `publicTransformationSlugs` in `src/data/transformations.ts` is the only
   public membership list; internal candidate metadata remains separate;
-- `research/concept-reviews/releases.schema.json` defines the compact v1
+- `research/concept-reviews/releases.schema.json` defines the compact v1.1
   record and `releases.json` contains no grandfather records;
-- `scripts/check-concept-reviews.mjs` checks status, gates, category floors,
-  the weighted score, 90-day truth expiry and a SHA-256
+- `scripts/check-concept-reviews.mjs` checks the four review/release states,
+  six design gates, four public release conditions, the distinct core and
+  supporting category floors, weighted score, 90-day truth expiry and a SHA-256
   fingerprint of the material concept sources, referenced media and
   slug-specific transformation copy;
 - `pnpm build` runs the release check first and fails closed against the
