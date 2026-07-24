@@ -12,9 +12,13 @@ was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
 rights but fail subject proof of the real hotel · Buck's Head F2 is retired
 after its final 7.15 Revise · Mourne Cycles (5.93), Newcastle Chamber (6.28),
 Kent Amusements (5.88), Donard Veterinary (5.93) and Cúpla (6.43) each returned
-a first v1.1 **Revise** and now hold one repair cycle each · seven concepts
-reviewed, thirteen unreviewed · no one-sheet release or outreach is permitted
-until a concept has a current independent public Pass
+a first v1.1 **Revise** and now hold one repair cycle each · a second batch —
+Tool Centre (6.23), Groves Chemist (5.73), Tonn Ruray (5.43), Hugh McCann's
+(5.43) and Betty's Better Butters (5.28) — also each returned a first v1.1
+**Revise** and holds one repair cycle each (all five fail subject proof for
+absent real imagery; four also fail real loop on inert submits) · twelve
+concepts reviewed, eight unreviewed · no one-sheet release or outreach is
+permitted until a concept has a current independent public Pass
 
 ## Pipeline stages
 
@@ -75,18 +79,18 @@ consumed. All concept routes remain internal and `noindex`;
 | Donard Veterinary | First v1.1 verdict **Revise at 5.93** (24 Jul); one repair cycle remains | Make the appointment form actually deliver (it is a `mailto` GET that opens a blank email and drops every field); correct "VidiVet" to the practice's real tool (PetsApp); add real pet/clinic proof; brand-first retypeset |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
 | Cúpla | First v1.1 verdict **Revise at 6.43** (24 Jul); one repair cycle remains | Reprice the menu in sterling (it is in euro — the Dundrum-Dublin conflation the verification warns against) and source or label it; add real café/food proof; brand-first retypeset. Strongest identity of the batch |
-| The Tool Centre | Internal pending evidence | Add specific subject proof and source every published hire detail before the hire/call loop is reviewed |
+| The Tool Centre | First v1.1 verdict **Revise at 6.23** (24 Jul); one repair cycle remains — the only second-batch concept to clear the real-loop gate | Add real yard/shop proof to replace the self-drawn tool logo (the sole gate failure); lift the four core categories over 7.0 (fill the hollow "rates on request" desk, wire or label the inert secondary nav). Real `tel:` loop, wired hire list and honestly-labelled indicative rates are strengths to keep |
 | Kent Amusements | First v1.1 verdict **Revise at 5.88** (24 Jul); one repair cycle remains | Fix the 390px header overflow that clips the "Call" CTA; replace the SVG-booth hero with real arcade proof; brand-first retypeset. Honesty (self-labelled offers/hours, Facebook deferral) is a strength to keep |
 | Newcastle Chamber | First v1.1 verdict **Revise at 6.28** (24 Jul); one repair cycle remains | Make the homepage search real (it ignores the query and always returns all 18 cards) or remove it; stop listing real named businesses as "members"; add real place/artefact proof. Directory thesis and honest event badging are strengths |
 | The Dundrum Inn | Internal pending review | Replace invented live status with sourced or explicitly illustrative states and add real place proof; resolve image rights before release |
-| Groves Chemist | Internal pending evidence | Add specific pharmacy proof and an honest prescription-request handoff or clearly labelled prototype end state |
-| Tonn Ruray Café | Internal pending review | Add real café proof and make the visit/menu loop complete rather than decorative; resolve image rights before release |
+| Groves Chemist | First v1.1 verdict **Revise at 5.73** (24 Jul); one repair cycle remains | Wire the "Send to the pharmacy" submit to a real handoff or clearly labelled prototype end state (it is inert — the restored repeat order never sends, though branch `tel:` links work); add real pharmacy/shop proof to replace the CSS dispensing label. Strong provenance (every field existed on the deactivated site) is a strength |
+| Tonn Ruray Café | First v1.1 verdict **Revise at 5.43** (24 Jul); one repair cycle remains | Build a working menu/booking loop — every primary action ("See today's menu", "Hold a table") is an inert `href="#"` dead end with no page behind it; add real café proof (only an SVG tideline today); let the café, not a borrowed Stein quote, own the hero |
 | Kelly, McEvoy & Brown | Internal pending review | Add real project proof, remove invented project metadata and wire or cut the filters; resolve image rights before release |
-| Betty's Better Butters | Internal pending review | Add real product proof and keep every unverified flavour or product detail visibly provisional; resolve image rights before release |
+| Betty's Better Butters | First v1.1 verdict **Revise at 5.28** (24 Jul); one repair cycle remains — the batch floor | Show the actual food (the "shelf" is CSS butter rounds, not product) and build a working order/stockist loop (every action is inert). Keep the honestly-labelled placeholder flavours visibly provisional |
 | Douglas & Cromie | Internal pending review | Replace empty vehicle-photo placeholders with real subject proof and source every listing claim; resolve image rights before release |
 | The Donard Hotel | Internal pending review | Add real hotel proof and an honest direct-booking handoff or labelled prototype end state; resolve image rights before release |
 | Newcastle Family Dental Care | Internal pending evidence | Add specific practice proof and make the appointment loop functional or explicitly bounded |
-| Hugh McCann's | Internal pending review | Add real venue proof and complete the enquiry success, failure and recovery states; resolve image rights before release |
+| Hugh McCann's | First v1.1 verdict **Revise at 5.43** (24 Jul); one repair cycle remains | Make "Send our enquiry" actually send and complete the success/failure/recovery states (the date + guest count are captured then dropped by an inert submit); add real venue proof (none present despite a brief that says the site's photography stays); let the venue name, not "We do.", own the hero. Date-and-guests capture is the right feature |
 | Castle Farm | Internal pending review; release blocked | Create the missing fresh verification record and complete design review; produce-photo rights or replacements are required for release |
 | Murdock Brothers | Internal pending evidence | Confirm trading first; then add specific subject proof and a truthful price/handoff model |
 
@@ -140,6 +144,25 @@ struck-through (an `href="#"` inert-link side effect), and the slogan owns the
 fold. Full per-concept records are private under
 `research/concept-reviews/<slug>.md`; the compact verdicts are committed in
 `releases.json`.
+
+A second five received their first independent v1.1 reviews the same day —
+**Tool Centre (6.23), Groves Chemist (5.73), Tonn Ruray (5.43), Hugh McCann's
+(5.43) and Betty's Better Butters (5.28)**, each inspected live at 390×844 and
+1265×710. All five returned **Revise** and each keeps its one repair cycle. Every
+one fails subject proof — none carries real subject imagery, substituting a
+self-authored SVG mark or CSS costume for a photograph. Four of the five also
+fail real loop on the same defect: the featured control (a café menu/booking, a
+butter shop, a wedding enquiry, a repeat-prescription form) collects input and
+then hands off to an inert `href="#"` submit. The Tool Centre is the exception —
+its primary job is a phone call, its `tel:` links and two-page hire list are
+real, and its indicative rates are honestly labelled, so it clears every gate but
+subject proof, though its four core categories still sit below 7.0. Unlike the
+first batch, none of these five overflows the header at 390 px (measured zero at
+both sizes). **Murdock Brothers was held out**: its trading is unconfirmed and it
+has no transformation-candidate record, so it cannot be fingerprinted or released
+and is not yet a reviewable pipeline candidate — confirm trading first. Eight
+concepts remain unreviewed (Murdock, Castle Farm, Scopers, Kelly McEvoy & Brown,
+Douglas & Cromie, Dundrum Inn, Donard Hotel, Newcastle Dental).
 
 ## Shortlist — redesign showcases (current website, visible gap)
 

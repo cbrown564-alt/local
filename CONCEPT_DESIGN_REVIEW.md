@@ -42,7 +42,7 @@ pretending that breadth exists is not.
 
 The historical craft scores below are a baseline diagnosis, not passes under
 this rubric. They were holistic judgements made before the rubric existed.
-Thirteen concepts therefore have status **not yet reviewed under v1.1**.
+Eight concepts therefore have status **not yet reviewed under v1.1**.
 Enniskeen completed the first independent workflow: the reviewed source passed
 design at 7.68. Its photography was then replaced by disclosed generated
 visualisations; that material change returned the source to Reviewable, and it
@@ -58,7 +58,11 @@ workflow's initial verdict, Revise at 6.53. Its one focused repair raised the
 score to 7.15, but a truth gate and core floor still failed, so it is retired.
 The next five candidates — Mourne Cycles, Newcastle Chamber, Kent Amusements,
 Donard Veterinary and Cúpla — each received a first independent v1.1 verdict of
-**Revise** (see the Phase Q review batch below).
+**Revise** (see the first Phase Q review batch below). A second five —
+Tonn Ruray, Betty's Better Butters, Hugh McCann's, Groves Chemist and the Tool
+Centre — then received their first v1.1 verdicts, all **Revise** as well (see the
+second Phase Q review batch below). Twelve concepts are now reviewed and eight
+remain.
 
 ### Acceptance rule
 
@@ -455,7 +459,7 @@ collision. The fixed source scored 7.15, but direct hash navigation bypassed
 the illustrative-price warning. Claims honesty and the core truth score still
 failed, so the concept is retired after its one repair cycle.
 
-### Phase Q review batch — next five candidates (24 July 2026)
+### Phase Q review batch — first five candidates (24 July 2026)
 
 The next five candidates by public value and historical craft each received a
 first independent v1.1 verdict. **All five returned Revise**, and the same three
@@ -483,6 +487,50 @@ Calibration checkpoint (seven completed reviews): the batch clusters tightly at
 and below Enniskeen's 7.68. No single-reviewer drift is evident — the verdicts
 turn on concrete, reproducible defects (measured overflow, an ignored query
 parameter, a verified blank-email submit, a wrong currency), not taste.
+
+### Phase Q review batch — second five candidates (24 July 2026)
+
+The next five reviewable pipeline candidates by historical craft each received a
+first independent v1.1 verdict. Every one was inspected in the browser at
+390×844 and 1265×710, keyboard-run and console-checked before scoring.
+**All five returned Revise**, and every one fails the same core gate: **no first
+viewport carries real subject imagery** — each substitutes a self-authored SVG
+mark or CSS costume for a photograph. Four of the five also fail **real visitor
+loop**: the featured control (a café menu/booking, a butter shop, a wedding
+enquiry, a repeat-prescription form) collects input and then hands off to an
+inert `href="#"` submit that does nothing — a decorative submit presented as
+working. The Tool Centre is the exception: its primary job is a phone call, its
+`tel:` links and two-page hire list are real, and its indicative rates are
+repeatedly labelled indicative, so it clears every gate but subject proof. None
+has yet consumed its one repair cycle. Eight concepts remain unreviewed.
+
+| Concept | Weighted | Verdict | Design gates failed | Deciding defects |
+|---|---:|---|---|---|
+| Tool Centre | 6.23 | Revise | subject proof | No real yard/shop imagery — the only mark is a self-drawn tool logo (costume). Real `tel:` loop and a wired hire-list companion are genuine strengths; indicative rates are honestly labelled. All four core categories still sit below 7.0 |
+| Groves Chemist | 5.73 | Revise | real loop, subject proof | "Send to the pharmacy" is a decorative inert submit — the restored repeat-prescription order never sends (real branch `tel:` links do work); the dispensing label is CSS costume with no shop/van imagery. (Strong provenance: every field existed on the deactivated groveschemist.com) |
+| Tonn Ruray | 5.43 | Revise | real loop, subject proof | Every primary action ("See today's menu", "Hold a table") is an inert `href="#"` with no menu page, booking or phone behind it — a single dead-end screen; no café imagery, only an SVG tideline; the hero is owned by a Gertrude Stein quote, not the café |
+| Hugh McCann's | 5.43 | Revise | real loop, subject proof | The date + guest-count enquiry captures both facts, then "Send our enquiry" is inert — no success, handoff or recovery; zero venue photography despite a feature-upgrade brief that claims the site's photography stays; "We do." crushes the brand |
+| Betty's Better Butters | 5.28 | Revise | real loop, subject proof | A food brand that never shows the food — the "shelf" is CSS butter rounds with a mono "B"; every action ("Order", "Shop the range") is inert with no product or order page. (Flavours are honestly labelled placeholders) |
+
+The shared-chassis defect recurs: all five home pages link their own wordmark
+with `href="#"`, so `ConceptLayout`'s inert-link script renders the **brand mark
+struck-through and disabled** on its own front page (confirmed live on every
+page). Unlike the first batch, **none of these five overflows the header at
+390 px** — measured horizontal overflow is zero at both sizes — so the header
+regression was specific to the first batch's markup, not the shared shell.
+
+Calibration checkpoint (twelve completed reviews): the second batch clusters at
+5.3–6.2, one band below the first batch's 5.9–6.4, matching its one-band-lower
+historical craft (4.2–5.0 vs 5.0–6.5). The ranking is internally consistent —
+the Tool Centre's real two-page phone loop tops the batch and the imageless,
+inert-submit single-pagers (Betty's, Tonn Ruray) sit at the floor. No
+single-reviewer drift is evident across the twelve: every verdict turns on a
+reproducible defect (a measured inert submit, a struck-through wordmark, an
+absent photograph), and the two batches agree that absent subject imagery, not
+taste, is the portfolio's binding constraint. Murdock Brothers was held out of
+this batch: its trading is unconfirmed and it carries no transformation-candidate
+record, so it cannot be fingerprinted or released and is not yet a reviewable
+pipeline candidate.
 
 The repository now enforces the state:
 
