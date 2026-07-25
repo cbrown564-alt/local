@@ -1,4 +1,4 @@
-# Concept review — [business] — [date]
+# Archived v1.1 concept review — [business] — [date]
 
 Status: Reviewable | Release blocked | Revise | Pass
 

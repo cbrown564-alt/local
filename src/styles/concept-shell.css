@@ -1,13 +1,7 @@
-/* The disclosure is a safeguard, so it must be visible without covering the
-   controls beneath it. `--mm-banner-space` reserves real layout room at the
-   foot of every concept page; concept heroes subtract the same variable from
-   their `min-height`, so a first-viewport composition ends above the banner
-   instead of underneath it. Before this, `elementFromPoint` over the bottom
-   rail of four concepts returned the banner and the page could not be
-   scrolled clear (25 July 2026 re-review). */
+/* The disclosure is part of the page flow. It appears before the concept, so
+   visitors see it immediately and it can never cover a control or caption. */
 body.concept-page {
-  --mm-banner-space: 84px;
-  padding-block-end: var(--mm-banner-space);
+  --mm-banner-space: 58px;
 }
 
 /* The studio's gorse yellow was leaking into every concept's focus ring from
@@ -27,28 +21,18 @@ body.concept-page :focus-visible {
   outline-color: #ffffff;
 }
 
-/* Selector is `body.concept-page > .mm-concept-banner`, not `.mm-concept-banner`,
-   because a concept sheet can out-rank a single class: the Dundrum Inn's
-   `body.concept-dundrum-inn > * { position: relative }` (0-1-1) beat the plain
-   class and turned the fixed disclosure into a relatively-positioned block,
-   where `left: 10px` shifted it 10px past the viewport and overflowed the page
-   at 390px. The safeguard must not be repositionable by the concept it sits on. */
+/* The direct-child selector prevents concept-specific rules from repositioning
+   the studio notice. */
 body.concept-page > .mm-concept-banner {
-  position: fixed;
+  position: relative;
   z-index: 1000;
-  right: 16px;
-  bottom: 16px;
-  left: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  max-width: 1180px;
-  margin-inline: auto;
   padding: 11px 13px;
   border: 1px solid rgba(255, 255, 255, .22);
   background: #11182f;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, .28);
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -144,19 +128,11 @@ body.concept-page > .mm-concept-banner {
 }
 
 @media (max-width: 760px) {
-  /* Previously `position: static`, which pushed the disclosure hundreds of
-     pixels below the phone fold: a visitor met a photorealistic hero with no
-     indication the site was an uncommissioned concept. It stays fixed at every
-     size; the reserved space grows to match the stacked layout. */
   body.concept-page {
-    --mm-banner-space: 100px;
+    --mm-banner-space: 92px;
   }
 
   body.concept-page > .mm-concept-banner {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
     gap: 8px;
     padding: 9px 11px;
     flex-direction: column;
