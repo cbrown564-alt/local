@@ -55,6 +55,7 @@ Closest portfolio neighbours:
 - Reduced-motion check: [result]
 - `pnpm build`: [result]
 - `pnpm test:concepts`: [result]
+- `pnpm test:reviewed-concepts`: [result or why no focused assertion applies]
 - Relevant journey or interaction check: [result]
 - Browser console: [result]
 

@@ -12,9 +12,10 @@ was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
 rights but fail subject proof of the real hotel · Buck's Head F2 is retired
 after its final 7.15 Revise · Mourne Cycles (5.93), Newcastle Chamber (6.28),
 Kent Amusements (5.88), Donard Veterinary (5.93) and Cúpla (6.43) each returned
-a first v1.1 **Revise** and now hold one repair cycle each · seven concepts
-reviewed, thirteen unreviewed · no one-sheet release or outreach is permitted
-until a concept has a current independent public Pass
+a first v1.1 **Revise**; their shared mechanical and truth repair candidates
+are implemented but not independently re-reviewed, and all still lack subject
+proof · seven concepts reviewed, thirteen unreviewed · no one-sheet release or
+outreach is permitted until a concept has a current independent public Pass
 
 ## Pipeline stages
 
@@ -70,14 +71,14 @@ consumed. All concept routes remain internal and `noindex`;
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
 | Hotel Enniskeen | Current generated-image source re-reviewed at 7.15 **Revise**: strong loop/truth/responsive, but the *fictional* generated visuals fail the subject-proof gate; prior photography source passed design at 7.68 | Produce faithful, disclosed visualisations of the real Enniskeen (real painted-render facade and rooms) — or licensed real photography — then re-review the affected categories (evidence, identity, first viewport, craft) to clear subject proof. Keep internal until then |
-| Mourne Cycles | First v1.1 verdict **Revise at 5.93** (24 Jul); one repair cycle remains | Fix the 390px header overflow that clips the CTA; add real premises/stock proof; label or remove the invented hire prices/tiers; brand-first retypeset. Trek/stock image rights or replacements still required for release |
+| Mourne Cycles | First v1.1 verdict **Revise at 5.93** (24 Jul); repair candidate implemented, not re-reviewed | Mobile/header, wordmark and truth repairs now pass automated checks; provisional imagery, hire prices, tiers and savings are labelled before use. Add real premises/stock proof and complete independent re-review. Trek/stock image rights or replacements still required for release |
 | The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
-| Donard Veterinary | First v1.1 verdict **Revise at 5.93** (24 Jul); one repair cycle remains | Make the appointment form actually deliver (it is a `mailto` GET that opens a blank email and drops every field); correct "VidiVet" to the practice's real tool (PetsApp); add real pet/clinic proof; brand-first retypeset |
+| Donard Veterinary | First v1.1 verdict **Revise at 5.93** (24 Jul); repair candidate implemented, not re-reviewed | The shared request form now preserves all fields in a reviewable email draft and explicitly says nothing is sent until the visitor sends it; PetsApp naming is corrected. Add real pet/clinic proof, then complete independent re-review |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
-| Cúpla | First v1.1 verdict **Revise at 6.43** (24 Jul); one repair cycle remains | Reprice the menu in sterling (it is in euro — the Dundrum-Dublin conflation the verification warns against) and source or label it; add real café/food proof; brand-first retypeset. Strongest identity of the batch |
+| Cúpla | First v1.1 verdict **Revise at 6.43** (24 Jul); repair candidate implemented, not re-reviewed | Menu now uses sterling and labels its sample items and prices before the first price. Add real café/food proof, then complete independent re-review. Strongest identity of the batch |
 | The Tool Centre | Internal pending evidence | Add specific subject proof and source every published hire detail before the hire/call loop is reviewed |
-| Kent Amusements | First v1.1 verdict **Revise at 5.88** (24 Jul); one repair cycle remains | Fix the 390px header overflow that clips the "Call" CTA; replace the SVG-booth hero with real arcade proof; brand-first retypeset. Honesty (self-labelled offers/hours, Facebook deferral) is a strength to keep |
-| Newcastle Chamber | First v1.1 verdict **Revise at 6.28** (24 Jul); one repair cycle remains | Make the homepage search real (it ignores the query and always returns all 18 cards) or remove it; stop listing real named businesses as "members"; add real place/artefact proof. Directory thesis and honest event badging are strengths |
+| Kent Amusements | First v1.1 verdict **Revise at 5.88** (24 Jul); repair candidate implemented, not re-reviewed | Phone header and Call CTA now fit at 390 px; the illustrated hero openly states that real arcade photography is still required. Add real arcade proof and complete independent re-review. Honesty remains a strength |
+| Newcastle Chamber | First v1.1 verdict **Revise at 6.28** (24 Jul); repair candidate implemented, not re-reviewed | Homepage queries now filter the directory, including a tested empty state; names are visibly illustrative examples rather than verified members. Add real place/artefact proof and complete independent re-review |
 | The Dundrum Inn | Internal pending review | Replace invented live status with sourced or explicitly illustrative states and add real place proof; resolve image rights before release |
 | Groves Chemist | Internal pending evidence | Add specific pharmacy proof and an honest prescription-request handoff or clearly labelled prototype end state |
 | Tonn Ruray Café | Internal pending review | Add real café proof and make the visit/menu loop complete rather than decorative; resolve image rights before release |
@@ -140,6 +141,15 @@ struck-through (an `href="#"` inert-link side effect), and the slogan owns the
 fold. Full per-concept records are private under
 `research/concept-reviews/<slug>.md`; the compact verdicts are committed in
 `releases.json`.
+
+A shared repair pass now prevents those mechanical and truth failures from
+returning: all wordmarks use real routes; Chamber search filters and has an
+empty state; Donard's form preserves its fields into an explicit email draft
+and names PetsApp correctly; Cúpla uses labelled sterling sample prices;
+Mourne labels provisional imagery and commercial details before use; and Kent's
+phone action fits while its illustration limitation is visible. The browser
+checks pass, but this is not an independent re-review and does not clear the
+remaining subject-proof failures.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 

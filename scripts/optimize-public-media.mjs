@@ -20,12 +20,18 @@ const force = process.env.FORCE_MEDIA === "1";
 const isCurrent = (source, target) =>
   !force && fs.existsSync(target) && fs.statSync(target).mtimeMs >= fs.statSync(source).mtimeMs;
 
-for (const name of fs.readdirSync(imageDir).filter((entry) => /\.jpe?g$/i.test(entry))) {
-  const source = path.join(imageDir, name);
-  const stem = path.basename(name, path.extname(name));
+const filesUnder = (directory) =>
+  fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    return entry.isDirectory() ? filesUnder(entryPath) : [entryPath];
+  });
+
+for (const source of filesUnder(imageDir).filter((entry) => /\.jpe?g$/i.test(entry))) {
+  const sourceDir = path.dirname(source);
+  const stem = path.basename(source, path.extname(source));
 
   for (const width of widths) {
-    const target = path.join(imageDir, `${stem}-${width}.webp`);
+    const target = path.join(sourceDir, `${stem}-${width}.webp`);
     if (isCurrent(source, target)) continue;
 
     await sharp(source)

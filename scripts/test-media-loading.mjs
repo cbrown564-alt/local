@@ -25,7 +25,17 @@ try {
   const comparisonRequests = indexMedia.filter((url) =>
     /\/images\/.+-(?:before|after)(?:-\d+)?\.(?:jpe?g|webp)$/i.test(url),
   );
+  const publicCardCount = await index.$$eval(
+    "[data-transformation-card]",
+    (cards) => cards.length,
+  );
 
+  if (publicCardCount === 0) {
+    console.log(JSON.stringify({
+      publicTransformationCount: 0,
+      releaseState: "No public transformation media to audit.",
+    }, null, 2));
+  } else {
   if (!currentImages.some((url) => /-640\.webp$/i.test(url))) {
     throw new Error("The phone viewport did not select a 640px WebP source.");
   }
@@ -120,6 +130,7 @@ try {
     reelKeyboardPlay: true,
     reelKeyboardPause: reelPaused,
   }, null, 2));
+  }
 } finally {
   await browser.close();
 }

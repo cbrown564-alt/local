@@ -99,29 +99,19 @@
   min-height: calc(100vh - 76px - 33px);
   display: grid;
   grid-template-columns: 46% 54%;
+  grid-template-rows: minmax(0, 1fr) auto;
 }
 .mc-story {
   position: relative;
-  overflow: hidden;
-  padding: clamp(38px, 5.5vh, 70px) clamp(26px, 3.6vw, 56px) 168px;
+  padding: clamp(38px, 5.5vh, 70px) clamp(26px, 3.6vw, 56px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background:
-    repeating-linear-gradient(115deg, transparent 0 26px, rgba(245, 244, 241, 0.022) 26px 28px),
-    var(--coal);
+  background: var(--coal);
   color: var(--paper);
 }
 .mc-story::after {
-  content: "";
-  position: absolute;
-  top: -60px;
-  right: -30px;
-  width: 150px;
-  height: 380px;
-  background: linear-gradient(rgba(215, 40, 47, 0.16), rgba(215, 40, 47, 0));
-  transform: skewX(-18deg);
-  pointer-events: none;
+  content: none;
 }
 .mc-kicker {
   display: flex;
@@ -142,16 +132,25 @@
   transform: skewX(-18deg);
 }
 .mc-story h1 {
-  margin: 0 0 20px;
+  margin: 0 0 12px;
   font-family: var(--condensed);
-  font-size: clamp(64px, 7.4vw, 108px);
+  font-size: clamp(60px, 6.5vw, 88px);
   font-weight: 700;
   font-style: italic;
-  line-height: 0.9;
+  line-height: 0.92;
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 .mc-story h1 em { font-style: italic; color: var(--red); }
+.mc-thesis {
+  margin: 0 0 18px;
+  max-width: 18em;
+  font-family: var(--condensed);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--paper);
+}
 .mc-lede {
   margin: 0 0 30px;
   max-width: 30em;
@@ -182,67 +181,45 @@
   text-decoration-color: var(--red);
 }
 
-/* Photo panel */
-.mc-visual { position: relative; margin: 0; overflow: hidden; background: var(--coal-soft); }
-/* Absolute, not flow: the portrait source image would otherwise set the grid
-   row's content height and push the range rail below the fold. */
-.mc-visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; }
-.mc-visual::after {
-  content: "";
+/* Subject proof */
+.mc-visual {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background: var(--coal-soft);
+}
+.mc-visual-image { position: relative; min-height: 360px; overflow: hidden; }
+.mc-visual-picture {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(15, 16, 19, 0.22), transparent 45%);
-  pointer-events: none;
+  display: block;
+}
+.mc-visual-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 50%;
 }
 .mc-visual figcaption {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 8px 12px;
-  background: rgba(15, 16, 19, 0.85);
+  padding: 10px 16px;
+  background: var(--coal);
   color: var(--paper);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
 }
-.mc-product {
-  position: absolute;
-  z-index: 4;
-  left: 22px;
-  bottom: 176px;
-  width: 210px;
-  padding: 14px 16px 15px;
-  background: var(--white);
-  color: var(--coal);
-  box-shadow: 0 18px 40px rgba(15, 16, 19, 0.35);
-}
-.mc-product img { width: 100%; margin-bottom: 10px; }
-.mc-product-tag {
-  display: inline-block;
-  margin-bottom: 6px;
-  padding: 3px 7px;
-  background: var(--red);
-  color: var(--white);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.mc-product p { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; }
 
-/* Range rail — stitched across the story/photo seam */
+/* Range rail */
 .mc-rail {
-  position: absolute;
-  z-index: 5;
-  left: clamp(26px, 3.6vw, 56px);
-  right: clamp(26px, 3.6vw, 56px);
-  bottom: 56px;
+  grid-column: 1 / -1;
+  grid-row: 2;
   display: grid;
   grid-template-columns: repeat(5, 1fr) 1.55fr;
   background: var(--white);
-  border: 1px solid var(--hairline);
-  box-shadow: 0 24px 50px rgba(15, 16, 19, 0.4);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
 }
 .mc-cell {
   padding: 14px 16px 15px;
@@ -282,28 +259,22 @@
 
 /* Entrance */
 @keyframes mc-rise { from { opacity: 0; transform: translateY(14px); } }
-.mc-kicker { animation: mc-rise 440ms ease backwards; }
-.mc-story h1 { animation: mc-rise 440ms 70ms ease backwards; }
-.mc-lede { animation: mc-rise 440ms 140ms ease backwards; }
-.mc-actions { animation: mc-rise 440ms 210ms ease backwards; }
-.mc-rail { animation: mc-rise 480ms 290ms ease backwards; }
-
 @media (max-width: 940px) {
   .mc-strip span:first-child { display: none; }
   .mc-nav, .mc-phone { display: none; }
   .mc-header { height: auto; padding-block: 12px; }
   .mc-brand-name { font-size: 23px; }
   .mc-hero { grid-template-columns: 1fr; min-height: 0; }
-  .mc-visual { order: -1; min-height: 300px; }
-  .mc-visual figcaption { font-size: 11px; }
-  .mc-product { display: none; }
+  .mc-story { grid-column: 1; grid-row: auto; order: 0; }
+  .mc-visual { grid-column: 1; grid-row: auto; order: 1; min-height: 0; }
+  .mc-rail { grid-column: 1; grid-row: auto; order: 2; }
+  .mc-visual-image { min-height: 280px; }
   .mc-story { padding: 42px 22px 44px; }
-  .mc-story h1 { font-size: clamp(52px, 13vw, 76px); }
+  .mc-story h1 { font-size: clamp(52px, 13vw, 72px); }
+  .mc-thesis { font-size: 25px; }
   .mc-lede { font-size: 16px; }
   .mc-rail {
-    position: static;
     grid-template-columns: 1fr 1fr;
-    box-shadow: none;
     border-left: 0;
     border-right: 0;
   }
