@@ -119,9 +119,13 @@ prove the real hotel. Buck's Head received a 6.53 Revise and completed its
 single focused repair cycle; the fixed source scored 7.15 but still failed
 claims honesty, so it is retired. Mourne Cycles, Newcastle Chamber, Kent
 Amusements, Donard Veterinary and Cúpla also received first-round Revise
-verdicts. Their shared mechanical and truth repairs are implemented but have
-not been independently re-reviewed; subject proof remains outstanding.
-Thirteen concepts remain unreviewed. The public homepage and index show that
+verdicts, took one shared repair pass, and were independently re-reviewed on
+25 July 2026: every targeted repair held and subject proof now passes for three
+of them, but all five returned Revise a second time (6.53 down to 5.43) on
+defects the first round had asserted rather than measured — computed contrast,
+hit-testing and phone navigation. Having consumed their one repair cycle they
+are retired from the public queue and kept internal. Thirteen concepts remain
+unreviewed. The public homepage and index show that
 state rather than grandfathering earlier work.
 
 ## Research artifacts
