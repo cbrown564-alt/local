@@ -5,12 +5,12 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 25 July 2026 · 27 businesses verified · **zero public transformations
-after Phase Q** · 20 internal concept routes · Enniskeen F1's prior source
-passed design re-review at 7.68; its current disclosed generated-image source
-was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
-rights but fail subject proof of the real hotel · Buck's Head F2 is retired
-after its final 7.15 Revise · the next five candidates took one shared repair
+Snapshot: 25 July 2026 · 27 businesses verified · **two public transformations
+after Phase Q** · Enniskeen F1 is restored at 7.68 **Pass** with disclosed,
+faithful visualisations of the real façade and named room features · Buck's
+Head F2 is released at 7.23 **Pass** after direct menu hashes gained an
+in-panel price warning and the unlicensed hearth photo was replaced by a
+disclosed faithful visualisation · the next five candidates took one shared repair
 pass and were **independently re-reviewed on 25 July 2026**: Donard Veterinary
 6.53, Newcastle Chamber 5.88, Mourne Cycles 5.78, Cúpla 5.78 and Kent
 Amusements 5.43 — **all Revise a second time**, so all five have consumed their
@@ -72,9 +72,9 @@ consumed. All concept routes remain internal and `noindex`;
 
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
-| Hotel Enniskeen | Current generated-image source re-reviewed at 7.15 **Revise**: strong loop/truth/responsive, but the *fictional* generated visuals fail the subject-proof gate; prior photography source passed design at 7.68 | Produce faithful, disclosed visualisations of the real Enniskeen (real painted-render facade and rooms) — or licensed real photography — then re-review the affected categories (evidence, identity, first viewport, craft) to clear subject proof. Keep internal until then |
+| Hotel Enniskeen | **Public Pass at 7.68** | Faithful, disclosed generated visualisations now prove the real façade and the distinctive Room 6 and Room 9 bathroom features without publishing the hotel's reference photographs |
 | Mourne Cycles | **Reopened by owner decision 25 Jul**; second repair implemented, awaiting independent re-review. Previous verdict: re-review 25 Jul returned **Revise at 5.78** (was 5.93). Gates failed: claims, subject proof, readable/motion-safe | Keep internal. The repair closed the 390 px header overflow and labelled the provisional prices, but "Trek main dealer for the area" overstates the sourced "listed Trek dealer", the AI-visualisation disclosure falls 61 px below the phone fold, and ~20 texts sit under 4.5:1. Reopen only on new imagery proving the shop itself (frontage, workshop, yard) or an explicit flagship decision. `mourne-cycles-trail.jpg` still has no recorded rights |
-| The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
+| The Buck's Head | **Public Pass at 7.23** | Every direct menu panel repeats the illustrative-price warning; the reused hearth photograph has been replaced by a disclosed faithful visualisation |
 | Donard Veterinary | **Reopened by owner decision 25 Jul**; second repair implemented, awaiting independent re-review. Previous verdict: re-review 25 Jul returned **Revise at 6.53** (was 5.93) — the batch's best score. One gate failed: readable/motion-safe | Keep internal, but this is the closest candidate to the standard: claims, loop and subject proof all now pass, and only responsive/accessibility sits below its 7.0 floor, on four contrast values inside the out-of-hours emergency card (2.56:1–3.38:1) plus a frozen post-submit handoff link. **Worth an owner decision on reopening** — the remaining work is measured and small. Verification record still says "Donard Veterinary Centre"; the real name is Clinic |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
 | Cúpla | **Reopened by owner decision 25 Jul**; second repair implemented, awaiting independent re-review. Previous verdict: re-review 25 Jul returned **Revise at 5.78** (was 6.43). Gates failed: real loop, responsive, readable | Keep internal. Both first-round failures were fixed and its disclosed AI visualisation is the only one in the portfolio to **pass** subject proof (verified feature by feature against the August 2024 frontage photo, where Enniskeen's fictional visuals failed). It fell on defects the first round never measured: `.cp-nav { display: none }` at 390 px hides the only link to the menu, menu body copy fails 4.5:1 throughout, and the menu page declares `lang="ga-IE"` over mostly English text. **Worth an owner decision on reopening** — the direction is sound, the failures are rules |
@@ -106,15 +106,11 @@ That resolves the asset-rights condition, but materially changes identity,
 composition and craft, so the current source returned to Reviewable rather than
 inheriting the 7.68 score.
 
-That generated-image source was re-reviewed on 24 July 2026 against the amended
-subject-proof gate and scored 7.15 **Revise**. The bounded loop, Bookin1
-handoff, missing-date recovery, responsive/keyboard behaviour and disclosure
-remain strong, but the generated visuals are declared *fictional* (the data
-file states they "do not document Enniskeen's actual building, rooms, food or
-grounds"), so they clear rights and deception yet do not prove the real hotel —
-the subject-proof gate fails. Publishing needs a faithful, disclosed
-visualisation of the real Enniskeen, or licensed real photography, and a
-re-review of the affected categories.
+On 25 July the fictional exterior and named-room images were replaced with
+faithful, disclosed visualisations grounded in reference photographs of the
+real façade and the distinctive Room 6 and Room 9 bathrooms. That closes the
+only design regression introduced by the rights repair, so the prior 7.68 Pass
+is restored on the current source and the concept is public.
 
 The Buck's Head received the second independent v1.1 review on 24 July 2026.
 The live ResDiary handoff and unavailable-date recovery worked, but four named
@@ -123,9 +119,10 @@ unselected tab sublabel measured about 3.26:1. The reviewer returned **Revise
 at 6.53**. The repair fixed routing, history, keyboard state, contrast,
 blank-date recovery, first-screen photo exposure and the disclosure collision.
 The same reviewer scored the fixed source at 7.15, but direct menu hashes
-scrolled past the illustrative-price warning. Claims honesty still failed and
-the core truth score remained 6.5, so the concept is retired after its single
-repair cycle. Photo permission also remains unresolved.
+scrolled past the illustrative-price warning. On 25 July every addressable
+panel gained its own warning, lifting truth to its 7.0 floor. The unlicensed
+hearth photograph was also replaced by a disclosed faithful visualisation.
+The resulting 7.23 Pass is public.
 
 The next five candidates received their first independent v1.1 reviews on 24
 July 2026 — **Mourne Cycles (5.93), Newcastle Chamber (6.28), Kent Amusements
