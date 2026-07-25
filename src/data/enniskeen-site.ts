@@ -42,18 +42,20 @@ export const bookin1 = {
 
 export const base = "/concepts/hotel-enniskeen";
 
-/** Provisional AI-generated imagery for the independent concept.
+/** Disclosed AI-generated imagery for the independent concept.
  *
- * These visuals are original concept assets and do not document Enniskeen's
- * actual building, rooms, food or grounds. The shared concept banner discloses
- * that limitation on every route.
+ * The house and two named bathroom visuals are faithful visualisations made
+ * from reference photographs of the real Enniskeen. The remaining scenic and
+ * interior images are atmospheric concept visuals rather than documentary
+ * photographs. The shared concept banner discloses both statuses on every
+ * route.
  */
 export const generatedVisuals = {
   house: {
-    src: "/images/enniskeen-generated-house.jpg",
+    src: "/images/enniskeen-faithful-house.png",
     width: 1823,
     height: 863,
-    alt: "AI-generated visualisation of a fictional late-Victorian country house beneath the Mournes",
+    alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel, preserving its rendered gabled façade, turret and ivy",
   },
   estate: {
     src: "/images/enniskeen-generated-estate.jpg",
@@ -68,16 +70,16 @@ export const generatedVisuals = {
     alt: "AI-generated visualisation of a country-house bedroom opening toward a mountain valley",
   },
   bathPink: {
-    src: "/images/enniskeen-generated-bath-pink.jpg",
+    src: "/images/enniskeen-faithful-room6.png",
     width: 1024,
     height: 1536,
-    alt: "AI-generated visualisation of a compact pink art-deco bathroom",
+    alt: "AI-generated faithful visualisation of Room 6's distinctive matching pink basin and bath with chrome cross-head taps",
   },
   bathGreen: {
-    src: "/images/enniskeen-generated-bath-green.jpg",
+    src: "/images/enniskeen-faithful-room9.png",
     width: 1024,
     height: 1536,
-    alt: "AI-generated visualisation of a traditional en-suite with a green roll-top bath",
+    alt: "AI-generated faithful visualisation of Room 9's compact beige-tiled en-suite with wall-mounted basin and magnifying mirror",
   },
   restaurant: {
     src: "/images/enniskeen-generated-restaurant.jpg",

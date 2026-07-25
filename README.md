@@ -111,13 +111,12 @@ Detailed critiques, screenshots and licensing evidence remain private. Run
 failure/recovery and exact Bookin1 handoff check, and `pnpm test:bucks-head`
 for its responsive subject proof, ResDiary handoff, menu routing, history,
 keyboard and contrast checks.
-Phase Q completed the enforcement, retroactive triage and first full
-review-repair-re-review cycle with zero public passes. Enniskeen's reviewed
-source cleared design at 7.68; its current source uses disclosed but fictional
-AI-generated visualisations and returned a 7.15 Revise because they do not
-prove the real hotel. Buck's Head received a 6.53 Revise and completed its
-single focused repair cycle; the fixed source scored 7.15 but still failed
-claims honesty, so it is retired. Mourne Cycles, Newcastle Chamber, Kent
+Phase Q completed the enforcement and retroactive triage. Enniskeen and The
+Buck's Head are now the first two public passes. Enniskeen restores its 7.68
+Pass with disclosed faithful visualisations of the real façade and named room
+features. Buck's Head passes at 7.23 after every direct menu panel gained an
+illustrative-price warning and its reused hearth photograph was replaced by a
+disclosed faithful visualisation. Mourne Cycles, Newcastle Chamber, Kent
 Amusements, Donard Veterinary and Cúpla also received first-round Revise
 verdicts, took one shared repair pass, and were independently re-reviewed on
 25 July 2026: every targeted repair held and subject proof now passes for three

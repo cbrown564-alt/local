@@ -306,7 +306,10 @@ export const transformationCandidates: Transformation[] = [
   },
 ];
 
-export const publicTransformationSlugs = [] as const;
+export const publicTransformationSlugs = [
+  "hotel-enniskeen",
+  "bucks-head",
+] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);
 
