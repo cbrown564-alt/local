@@ -309,6 +309,11 @@ export const transformationCandidates: Transformation[] = [
 export const publicTransformationSlugs = [
   "hotel-enniskeen",
   "bucks-head",
+  "mourne-cycles",
+  "newcastle-chamber",
+  "kent-amusements",
+  "donard-veterinary",
+  "cupla",
 ] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

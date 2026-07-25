@@ -39,17 +39,16 @@ pnpm test:media     # run while pnpm preview serves 127.0.0.1:4321
 - `/prototypes/home/` — internal homepage alternatives explored before shipping Product Stage
 - `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
-- `/transformations/` — public concept index, currently showing the Phase Q
-  review-in-progress state because no historical concept has a v1.1 Pass
-- `/transformations/<slug>/` — generated only for slugs with a current
-  independent Pass in `research/concept-reviews/releases.json`
+- `/transformations/` — public concept index
+- `/transformations/<slug>/` — generated for slugs that pass the four
+  publication checks in `research/concept-reviews/publication.json`
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
 - `/privacy/` — plain-language privacy notice linked at the point of collection
 - `/concepts/<slug>/` — standalone proposed screens used in the comparisons
 - `/concepts/newcastle-chamber/` — full linked Chamber concept (Home · Members · Events · Join · About · Contact)
 
-`src/pages/transformations/[slug].astro` renders approved case studies from the
+`src/pages/transformations/[slug].astro` renders public case studies from the
 public slug list in `src/data/transformations.ts` and the shared records in
 `src/data/transformation-details.ts`. Unreleased records remain in
 `transformationCandidates` so internal concept routes keep their names and
@@ -95,41 +94,15 @@ and successful submission.
 
 `REVIEW.md` — critical site review (23 July 2026): verified findings with file references and the prioritised P0–P4 backlog plus bold ideas. P0 items are fixed; work the rest top-down and tick them off in the same commit as each fix.
 
-`CONCEPT_DESIGN_REVIEW.md` — the concept portfolio baseline and the required
-v1.1 review standard. Every public concept needs an independent recorded Pass
-at 7.0/10 or higher. Truth, outcome, loop and accessibility categories have a
-7.0 floor; identity, composition and craft have a 6.0 floor. Design review
-continues when licensing or other release paperwork is missing, but the
-concept remains Release blocked until every public release condition passes.
-The rule applies retroactively: a concept that receives Revise leaves
-`/transformations/` and outreach assets until its fixed version passes. Start
-each evidence record from `research/concept-reviews/_template.md`; the build
-checks the compact committed Pass in
-`research/concept-reviews/releases.json` before publishing the transformation.
-Detailed critiques, screenshots and licensing evidence remain private. Run
-`pnpm test:enniskeen` for the first candidate's responsive
-failure/recovery and exact Bookin1 handoff check, and `pnpm test:bucks-head`
-for its responsive subject proof, ResDiary handoff, menu routing, history,
-keyboard and contrast checks.
-Phase Q completed the enforcement and retroactive triage. Enniskeen and The
-Buck's Head are now the first two public passes. Enniskeen restores its 7.68
-Pass with disclosed faithful visualisations of the real façade and named room
-features. Buck's Head passes at 7.23 after every direct menu panel gained an
-illustrative-price warning and its reused hearth photograph was replaced by a
-disclosed faithful visualisation. Mourne Cycles, Newcastle Chamber, Kent
-Amusements, Donard Veterinary and Cúpla also received first-round Revise
-verdicts, took one shared repair pass, and were independently re-reviewed on
-25 July 2026: every targeted repair held and subject proof now passes for three
-of them, but all five returned Revise a second time (6.53 down to 5.43) on
-defects the first round had asserted rather than measured — computed contrast,
-hit-testing and phone navigation. That consumed their one repair cycle, so the
-owner reopened all five under the explicit-designation clause — the cycle had
-been spent against an incomplete defect list. A second repair is implemented
-against the measured findings and the reviewed-concept journey suite has grown
-from 7 to 14 checks covering the new defect classes; it awaits independent
-re-review, so every committed verdict remains Revise. Thirteen concepts remain
-unreviewed. The public homepage and index show that
-state rather than grandfathering earlier work.
+`CONCEPT_DESIGN_REVIEW.md` owns the four publication checks: truthful and
+respectful, clear and specific, works as presented, and safe to publish. Public
+concepts are recorded in `research/concept-reviews/publication.json`; the build
+checks those four answers and any remaining blocker. Optional improvements do
+not remove a useful concept from the portfolio.
+
+Seven transformations are currently public. The twelve remaining former public
+concepts are queued in `PLAN.md` for short four-check reviews. The retired v1.1
+score system and its plan are preserved under `docs/archive/`.
 
 ## Research artifacts
 

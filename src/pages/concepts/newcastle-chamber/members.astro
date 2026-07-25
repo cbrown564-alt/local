@@ -54,7 +54,7 @@ const base = "/concepts/newcastle-chamber";
               <li
                 class="nc-dir-card"
                 data-nc-member
-                data-search-text={`${member.name} ${member.trade} ${member.note}`.toLowerCase()}
+                data-search-text={`${member.name} ${member.trade} ${member.note} ${member.name === "Mourne Cycles" ? "bikes cycling cycles" : ""}`.toLowerCase()}
               >
                 <p class="nc-dir-card-name">{member.name}</p>
                 <p class="nc-dir-card-trade">{member.trade}</p>
@@ -123,12 +123,15 @@ const base = "/concepts/newcastle-chamber";
       const categoryLabel = category
         ? document.querySelector<HTMLElement>(`[data-nc-category="${category}"] .nc-dir-cat-label`)?.textContent?.trim()
         : "";
-      const scope = [
-        query ? `“${query}”` : "",
-        categoryLabel ? `in ${categoryLabel}` : "",
-      ].filter(Boolean).join(" ");
+      const scope = query && categoryLabel
+        ? ` for “${query}” in ${categoryLabel}`
+        : query
+          ? ` for “${query}”`
+          : categoryLabel
+            ? ` in ${categoryLabel}`
+            : "";
       status.hidden = false;
-      status.textContent = `${visibleCount} ${visibleCount === 1 ? "listing" : "listings"}${scope ? ` for ${scope}` : ""}. Listed from public sources, not verified members.`;
+      status.textContent = `${visibleCount} ${visibleCount === 1 ? "listing" : "listings"}${scope}. Listed from public sources, not verified members.`;
     }
     if (empty) empty.hidden = visibleCount !== 0;
   }

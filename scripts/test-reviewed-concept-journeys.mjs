@@ -315,6 +315,9 @@ const CONTRAST_PROBE = `(() => {
   const failures = [];
   for (const el of document.querySelectorAll("body *")) {
     if (el.closest(".mm-concept-banner")) continue;
+    // Inactive placeholders are visibly disabled and exempt from the text
+    // contrast requirement. Live destinations and qualifying copy are not.
+    if (el.closest('[aria-disabled="true"]')) continue;
     const text = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent.trim()).join(" ").trim();
     if (!text) continue;
     const r = el.getBoundingClientRect();
@@ -324,7 +327,18 @@ const CONTRAST_PROBE = `(() => {
     const size = parseFloat(cs.fontSize);
     const need = (size >= 24 || (size >= 18.66 && (Number(cs.fontWeight) || 400) >= 700)) ? 3 : 4.5;
     const bg = bgOf(el);
-    const [hi, lo] = [lum(over(parse(cs.color), bg)), lum(bg)].sort((a, b) => b - a);
+    // Inherited CSS opacity fades the text against its backdrop just as an
+    // alpha channel does, but it is NOT part of color. The first version of
+    // this probe composited color alpha only, so it passed 14/14 while three
+    // texts dimmed by an ancestor's opacity were still under 4.5:1
+    // (25 July 2026 re-review of Mourne Cycles). Fold the effective opacity in.
+    let effectiveOpacity = 1;
+    for (let node = el; node; node = node.parentElement) {
+      effectiveOpacity *= Number(getComputedStyle(node).opacity);
+    }
+    const fg = parse(cs.color);
+    fg[3] = (fg[3] ?? 1) * effectiveOpacity;
+    const [hi, lo] = [lum(over(fg, bg)), lum(bg)].sort((a, b) => b - a);
     const ratio = (hi + 0.05) / (lo + 0.05);
     if (ratio + 0.005 < need) failures.push(text.slice(0, 40) + " @ " + ratio.toFixed(2) + ":1 (needs " + need + ")");
   }
