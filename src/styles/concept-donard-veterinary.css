@@ -16,6 +16,7 @@
   --serif: "Fraunces", Georgia, serif;
   --sans: "Karla", "Segoe UI", sans-serif;
   --concept-accent: var(--teal);
+  --concept-focus: #3a2247;
   --concept-nav-gap: clamp(16px, 2.2vw, 28px);
   background: var(--warm-white);
   color: var(--ink-plum);
@@ -83,7 +84,7 @@
 /* Hero */
 .dv-hero {
   position: relative;
-  min-height: calc(100vh - 80px - 37px);
+  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
   display: grid;
   grid-template-columns: 55% 45%;
   grid-template-rows: minmax(0, 1fr) auto;
@@ -327,7 +328,7 @@
   grid-template-rows: auto 1fr;
   gap: 32px;
   padding: 32px clamp(26px, 3.6vw, 56px) 48px;
-  min-height: calc(100vh - 80px - 37px);
+  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
 }
 .dv-appt-intro { max-width: 580px; }
 .dv-appt-intro .dv-kicker { margin-bottom: 14px; animation-delay: 0ms; }
@@ -386,7 +387,7 @@
   transition: color 140ms ease;
 }
 .dv-appt-contact-link:hover { color: var(--teal-deep); }
-.dv-appt-contact-sep { color: var(--lavender); font-size: 18px; font-weight: 300; }
+.dv-appt-contact-sep { color: #6c5b7b; font-size: 18px; font-weight: 300; }
 
 /* Right: emergency card */
 .dv-appt-right { position: sticky; top: 20px; }
@@ -450,7 +451,9 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  /* Was rgba(255,255,255,.65) = 3.34:1 on teal-deep. Emergency information
+     must not be the least readable text on the page (25 July 2026 re-review). */
+  color: rgba(255, 255, 255, 0.92);
 }
 .dv-emergency-call-num {
   font-family: var(--serif);
@@ -471,7 +474,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.9);
 }
 .dv-emergency-hours ul {
   margin: 0;
@@ -488,12 +491,19 @@
   color: var(--lavender);
 }
 .dv-emergency-hours li span:last-child { font-weight: 700; color: #ffffff; }
-.dv-emergency-hours-closed { color: rgba(255, 255, 255, 0.35) !important; }
+/* "Closed" was the lowest-contrast text in the concept at 2.56:1 — the exact
+   word an owner with a sick animal needs to read at a glance. It now carries
+   its meaning by weight and italics rather than by fading out. */
+.dv-emergency-hours-closed {
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-style: italic;
+}
 .dv-emergency-petsapp {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--teal);
+  /* --teal on plum measured 3.38:1 as an interactive control. */
+  color: #7fd9bf;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
@@ -516,3 +526,23 @@
   .dv-appt-grid,
   .dv-emergency-card { animation: none; }
 }
+
+/* Phone-format hint and the stale-draft warning (added 25 July 2026 with the
+   invalid-value state and the draft-invalidation fix). */
+.dv-request-hint {
+  display: block;
+  margin-top: 4px;
+  color: #5b4a68;
+  font-size: 12px;
+  font-weight: 500;
+}
+.dv-request-stale {
+  margin: 12px 0 0;
+  padding: 11px 13px;
+  border-left: 3px solid var(--plum);
+  background: var(--lavender-soft);
+  color: #3a2247;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.dv-request-stale strong { font-weight: 700; }

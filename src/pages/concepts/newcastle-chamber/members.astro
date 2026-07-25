@@ -12,20 +12,26 @@ const base = "/concepts/newcastle-chamber";
   <main class="nc-dir" id="main">
     <div class="nc-dir-head">
       <div class="nc-dir-head-text">
-        <p class="nc-kicker">Member directory · Newcastle</p>
-        <h1>Example Main Street listings, <em>in one place.</em></h1>
+        <p class="nc-kicker">Business directory · Newcastle</p>
+        <h1>Newcastle traders, <em>in one place.</em></h1>
         <p class="nc-dir-intro">
-          This illustrative list demonstrates the directory experience; it does
-          not identify verified Chamber members. A live version would contain
+          Every business below is a real Newcastle trader with a dated
+          public-source record in this project's research file. The Chamber has
+          not confirmed any of them as members — a live directory would carry
           committee-owned membership data. <a href={`${base}/join/`}>Ask to be
           listed</a>, or <a href={chamber.emailHref}>email the Chamber</a>.
         </p>
+        <form class="nc-dir-search" action={`${base}/members/`} method="get" role="search">
+          <label class="visually-hidden" for="nc-dir-q">Search the directory</label>
+          <input id="nc-dir-q" type="search" name="q" placeholder="Hotel, vet, bikes…" data-nc-search-input />
+          <button type="submit">Search</button>
+        </form>
         <p class="nc-dir-search-status" data-nc-search-status role="status" hidden></p>
       </div>
-      <nav class="nc-dir-tabs" aria-label="Jump to category">
-        <a class="nc-dir-tab nc-dir-tab--active" href="#all">All</a>
+      <nav class="nc-dir-tabs" aria-label="Filter by category">
+        <a class="nc-dir-tab" data-nc-tab="all" href={`${base}/members/`}>All</a>
         {categories.map((cat) => (
-          <a class="nc-dir-tab" href={`#${cat.id}`}>
+          <a class="nc-dir-tab" data-nc-tab={cat.id} href={`${base}/members/?cat=${cat.id}`}>
             <span class="nc-tab-full">{cat.label}</span>
             <span class="nc-tab-short">{cat.shortLabel}</span>
           </a>
@@ -35,8 +41,14 @@ const base = "/concepts/newcastle-chamber";
 
     <div class="nc-dir-body" id="all">
       {categories.map((cat) => (
-        <section class="nc-dir-category" id={cat.id}>
+        <section class="nc-dir-category" id={cat.id} data-nc-category={cat.id}>
           <h2 class="nc-dir-cat-label">{cat.label}</h2>
+          {/* Repeated per section so a deep link or a filtered view always
+              lands with the membership disclaimer in view, not hundreds of
+              pixels above it. */}
+          <p class="nc-dir-cat-note">
+            Listed from dated public sources · not a verified membership list
+          </p>
           <ul class="nc-dir-grid" role="list">
             {members.filter((m) => m.category === cat.id).map((member) => (
               <li
@@ -47,14 +59,15 @@ const base = "/concepts/newcastle-chamber";
                 <p class="nc-dir-card-name">{member.name}</p>
                 <p class="nc-dir-card-trade">{member.trade}</p>
                 <p class="nc-dir-card-note">{member.note}</p>
+                <p class="nc-dir-card-source">Public sources checked {member.verified}</p>
               </li>
             ))}
           </ul>
         </section>
       ))}
       <p class="nc-dir-empty" data-nc-empty hidden>
-        No illustrative listings match that search. Try a trade such as café,
-        pharmacy, hotel or gifts.
+        No listing matches that search. Try a trade such as hotel, vet, bikes,
+        gifts or dental — or <a href={`${base}/members/`}>show every listing</a>.
       </p>
     </div>
 
@@ -73,28 +86,49 @@ const base = "/concepts/newcastle-chamber";
 </ChamberConceptShell>
 
 <script>
-  const query = new URLSearchParams(window.location.search).get("q")?.trim() ?? "";
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q")?.trim() ?? "";
+  const category = params.get("cat")?.trim() ?? "";
   const normalised = query.toLocaleLowerCase("en-GB");
   const cards = [...document.querySelectorAll<HTMLElement>("[data-nc-member]")];
-  const categories = [...document.querySelectorAll<HTMLElement>(".nc-dir-category")];
+  const sections = [...document.querySelectorAll<HTMLElement>("[data-nc-category]")];
   const status = document.querySelector<HTMLElement>("[data-nc-search-status]");
   const empty = document.querySelector<HTMLElement>("[data-nc-empty]");
+  const input = document.querySelector<HTMLInputElement>("[data-nc-search-input]");
 
-  if (normalised) {
+  // The active tab is derived from the URL rather than hard-coded, so "All"
+  // cannot keep its active styling while a query or category filter is on.
+  const activeTab = document.querySelector<HTMLElement>(
+    `[data-nc-tab="${category || "all"}"]`,
+  );
+  activeTab?.classList.add("nc-dir-tab--active");
+  activeTab?.setAttribute("aria-current", "true");
+
+  if (input && query) input.value = query;
+
+  if (normalised || category) {
     let visibleCount = 0;
     for (const card of cards) {
-      const matches = card.dataset.searchText?.includes(normalised) ?? false;
+      const section = card.closest<HTMLElement>("[data-nc-category]");
+      const inCategory = !category || section?.dataset.ncCategory === category;
+      const matchesQuery = !normalised || (card.dataset.searchText?.includes(normalised) ?? false);
+      const matches = inCategory && matchesQuery;
       card.hidden = !matches;
       if (matches) visibleCount += 1;
     }
-    for (const category of categories) {
-      category.hidden = !category.querySelector("[data-nc-member]:not([hidden])");
+    for (const section of sections) {
+      section.hidden = !section.querySelector("[data-nc-member]:not([hidden])");
     }
     if (status) {
+      const categoryLabel = category
+        ? document.querySelector<HTMLElement>(`[data-nc-category="${category}"] .nc-dir-cat-label`)?.textContent?.trim()
+        : "";
+      const scope = [
+        query ? `“${query}”` : "",
+        categoryLabel ? `in ${categoryLabel}` : "",
+      ].filter(Boolean).join(" ");
       status.hidden = false;
-      status.textContent = visibleCount === 1
-        ? `1 illustrative listing for “${query}”.`
-        : `${visibleCount} illustrative listings for “${query}”.`;
+      status.textContent = `${visibleCount} ${visibleCount === 1 ? "listing" : "listings"}${scope ? ` for ${scope}` : ""}. Listed from public sources, not verified members.`;
     }
     if (empty) empty.hidden = visibleCount !== 0;
   }

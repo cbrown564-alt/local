@@ -21,34 +21,41 @@ export type Member = {
   name: string;
   trade: string;
   note: string;
-  category: "hospitality" | "food" | "retail" | "services";
+  category: "hospitality" | "retail" | "health" | "leisure";
+  /** Date this business was last verified in research/verifications.json. */
+  verified: string;
 };
 
+/** Every listing is a real Newcastle business with a dated record in
+ *  `research/verifications.json`. The 25 July 2026 re-review failed the claims
+ *  gate because the previous list silently mixed real trading names
+ *  (Royal County Down Golf Club, Slieve Donard) with invented ones (Bookends
+ *  Newcastle, Bay Café, The Linen House), each given a street and a trade, and
+ *  nothing told the visitor which was which. Sourcing every entry removes the
+ *  ambiguity: the remaining disclaimer is only that the Chamber has not
+ *  confirmed these businesses as members, which the page states plainly. */
 export const members: Member[] = [
-  { name: "Slieve Donard Resort & Spa", trade: "Hotel & Spa", note: "Downs Road · Newcastle's landmark hotel", category: "hospitality" },
-  { name: "Enniskeen Country House Hotel", trade: "Country House Hotel", note: "98 Bryansford Road · under the Mournes", category: "hospitality" },
-  { name: "The Anchor Inn", trade: "Hotel & Bar", note: "Main Street · bar and accommodation", category: "hospitality" },
-  { name: "Shore View Guest House", trade: "Bed & Breakfast", note: "Central Promenade · seafront stays", category: "hospitality" },
-  { name: "The Harbour Bar & Kitchen", trade: "Pub & Restaurant", note: "Main Street · food and live music", category: "food" },
-  { name: "Bay Café", trade: "Café", note: "Promenade · all-day breakfast", category: "food" },
-  { name: "Mourne Seafood Bar", trade: "Restaurant", note: "Main Street · locally caught fish", category: "food" },
-  { name: "The Corner Bakehouse", trade: "Bakery & Café", note: "South Promenade · bread and pastries", category: "food" },
-  { name: "Sandy Brae Ice Cream", trade: "Café & Takeaway", note: "Main Street · seasonal, family run", category: "food" },
-  { name: "Mourne Gallery & Gifts", trade: "Art & Gifts", note: "Main Street · local prints and crafts", category: "retail" },
-  { name: "Newcastle Outdoor & Leisure", trade: "Outdoor & Sports", note: "Main Street · walking and cycling gear", category: "retail" },
-  { name: "The Linen House", trade: "Home & Textiles", note: "Central Promenade · Irish linen", category: "retail" },
-  { name: "Bookends Newcastle", trade: "Independent Bookshop", note: "Main Street · new and second-hand", category: "retail" },
-  { name: "Royal County Down Golf Club", trade: "Golf Club", note: "Golf Links Road · world-ranked links course", category: "services" },
-  { name: "Newcastle Pharmacy", trade: "Pharmacy", note: "Main Street · prescription and healthcare", category: "services" },
-  { name: "Mourne Heritage Trust", trade: "Tourism & Conservation", note: "Central Promenade · Mourne walks and heritage", category: "services" },
-  { name: "Newcastle Credit Union", trade: "Financial Services", note: "Main Street · member-owned savings and loans", category: "services" },
+  { name: "Hotel Enniskeen", trade: "Country House Hotel", note: "Bryansford Road · family-run, under the Mournes", category: "hospitality", verified: "2026-07-23" },
+  { name: "The Donard Hotel", trade: "Hotel", note: "23–29 Main Street · town-centre rooms", category: "hospitality", verified: "2026-07-24" },
+  { name: "Avoca Restaurant and Hotel", trade: "Restaurant & Hotel", note: "Central Promenade · independent, family-run", category: "hospitality", verified: "2026-07-20" },
+  { name: "Golf Links House", trade: "Guest House", note: "Golf Links Road · rooms beside the links", category: "hospitality", verified: "2026-07-20" },
+  { name: "Conlyn House", trade: "Bed & Breakfast", note: "Newcastle · independent, owner-run", category: "hospitality", verified: "2026-07-20" },
+  { name: "Hutt Backpackers Hostel", trade: "Hostel", note: "Newcastle · independent hostel beds", category: "hospitality", verified: "2026-07-20" },
+  { name: "Painted Earth", trade: "Jewellery, Art & Gifts", note: "98 Main Street · 20+ years, upstairs gallery", category: "retail", verified: "2026-07-20" },
+  { name: "Mourne Cycles", trade: "Bike Shop & Workshop", note: "Castlewellan Road · Trek dealer, workshop", category: "retail", verified: "2026-07-20" },
+  { name: "The Tool Centre", trade: "Tool Sales & Plant Hire", note: "107 Main Street · seven-day opening", category: "retail", verified: "2026-07-20" },
+  { name: "Donard Veterinary Clinic", trade: "Veterinary Practice", note: "8 Railway Street · independent small-animal clinic", category: "health", verified: "2026-07-21" },
+  { name: "Newcastle Family Dental Care", trade: "Dental Practice", note: "Iveagh Court, 2 Railway Street · NHS and private", category: "health", verified: "2026-07-24" },
+  { name: "Kent Amusements", trade: "Seaside Amusements", note: "77–79 Central Promenade · fifty years on the seafront", category: "leisure", verified: "2026-07-22" },
+  { name: "Hugh McCann's", trade: "Events & Wedding Venue", note: "119–121 Central Promenade · functions and weddings", category: "leisure", verified: "2026-07-24" },
+  { name: "Douglas & Cromie", trade: "Car Sales & Service Station", note: "Bryansford Service Station, 23 Bryansford Village", category: "leisure", verified: "2026-07-24" },
 ];
 
 export const categories = [
   { id: "hospitality" as const, label: "Hospitality & Stays", shortLabel: "Hospitality" },
-  { id: "food" as const, label: "Food & Drink", shortLabel: "Food & Drink" },
-  { id: "retail" as const, label: "Retail & Gifts", shortLabel: "Retail" },
-  { id: "services" as const, label: "Services & Leisure", shortLabel: "Services" },
+  { id: "retail" as const, label: "Shops & Trade", shortLabel: "Shops" },
+  { id: "health" as const, label: "Health & Wellbeing", shortLabel: "Health" },
+  { id: "leisure" as const, label: "Leisure & Services", shortLabel: "Leisure" },
 ];
 
 export type EventItem = {

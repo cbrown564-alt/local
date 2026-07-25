@@ -19,12 +19,15 @@ const counts = Object.fromEntries(
         useful directory, the town calendar and a clear door to join.
       </p>
       <form class="nc-search" action={`${base}/members/`} method="get" role="search">
-        <label class="visually-hidden" for="nc-q">Search the member directory</label>
-        <input id="nc-q" type="search" name="q" placeholder="Café, chemist, guest house…" />
+        <label class="visually-hidden" for="nc-q">Search the business directory</label>
+        {/* Every example in the placeholder returns at least one listing;
+            "chemist" previously returned zero. */}
+        <input id="nc-q" type="search" name="q" placeholder="Hotel, vet, bikes…" />
         <button type="submit">Search</button>
       </form>
       <p class="nc-prototype-note">
-        Directory names are illustrative examples, not a verified membership list.
+        Listings are real Newcastle traders from dated public sources, not a
+        verified membership list.
       </p>
       <div class="nc-actions">
         <a class="nc-cta" href={`${base}/members/`}>Browse the directory</a>
@@ -49,9 +52,9 @@ const counts = Object.fromEntries(
     </figure>
     <nav class="nc-rail" aria-label="Browse by trade">
       {categories.map((cat) => (
-        <a class="nc-rail-cell" href={`${base}/members/#${cat.id}`}>
+        <a class="nc-rail-cell" href={`${base}/members/?cat=${cat.id}`}>
           <span class="nc-rail-label">{cat.shortLabel}</span>
-          <span class="nc-rail-note">{counts[cat.id]} example listings</span>
+          <span class="nc-rail-note">{counts[cat.id]} listings</span>
         </a>
       ))}
     </nav>
