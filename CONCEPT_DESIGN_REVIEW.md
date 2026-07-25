@@ -58,7 +58,10 @@ workflow's initial verdict, Revise at 6.53. Its one focused repair raised the
 score to 7.15, but a truth gate and core floor still failed, so it is retired.
 The next five candidates — Mourne Cycles, Newcastle Chamber, Kent Amusements,
 Donard Veterinary and Cúpla — each received a first independent v1.1 verdict of
-**Revise** (see the Phase Q review batch below).
+**Revise** (see the Phase Q review batch below), took one shared repair pass,
+and were independently re-reviewed on 25 July 2026. All five returned **Revise**
+a second time, consuming their one repair cycle, so all five are retired from
+the public queue and kept internal pending an explicit owner decision.
 
 ### Acceptance rule
 
@@ -537,12 +540,12 @@ then subject evidence, then secondary links.
 | Donard Veterinary | `sha256:b5f4caa3a7cb2b4f3da19cb6e0ac004750e7253913a1e12361e4bc6960725e2b` | claims, visitor loop, subject proof |
 | Cúpla | `sha256:d694b8f163d15a355be0d345f266384efdbe7ba12a9db723010b05c4b5665130` | claims, subject proof |
 
-This is an implementation record, **not a new verdict**. The five concepts have
-not been independently re-reviewed against the repaired source, so every
-committed v1.1 status remains Revise and no transformation returns to the
-public list. The repair candidate passed the 72-case concept audit and all six
-focused reviewed-concept journeys, and direct browser inspection at 1265×710
-and 390×844 found no horizontal overflow or console errors.
+This was an implementation record, **not a verdict**. The repair candidate
+passed the 72-case concept audit and all six focused reviewed-concept journeys,
+and direct browser inspection at 1265×710 and 390×844 found no horizontal
+overflow or console errors. It has since been independently re-reviewed — see
+"Phase Q re-review of the repaired candidates" below for the verdicts, which
+remain Revise for all five.
 
 The repository now enforces the state:
 
@@ -563,6 +566,120 @@ The repository now enforces the state:
 The historical review identifies the first portfolio-wide work: subject
 imagery, brand-first composition, honest interactions and removal of repeated
 aesthetic lanes.
+
+### Phase Q re-review of the repaired candidates — 25 July 2026
+
+The repair candidate above has now been independently re-reviewed. Five
+non-creator agents each inspected one concept live at 1265×710 and a true
+390×844, completed the loop by pointer and keyboard, measured contrast from
+computed styles, and scored before reading the earlier verdicts. **All five
+returned Revise again.** No concept reached the 7.0 weighted threshold and none
+cleared all six gates.
+
+| Concept | Weighted | Earlier | Verdict | Design gates failed | Deciding defects |
+|---|---:|---:|---|---|---|
+| Donard Veterinary | 6.53 | 5.93 | Revise | readable/motion-safe | Four contrast failures inside the out-of-hours emergency card — "Closed" at 2.56:1, the PetsApp control at 3.38:1 — in the one component the concept exists to deliver; the post-submit handoff link freezes, so a visitor who corrects a typo sends the original details |
+| Newcastle Chamber | 5.88 | 6.28 | Revise | claims, real loop, subject proof, responsive, readable | `/contact/`'s "Send an email" button renders navy-on-navy at **1.00:1** — an invisible primary control; `.nc-nav` is hidden below 940 px with no replacement, leaving `/about/` reachable from nowhere on a phone; `#hospitality` deep links land on real trading names with no illustrative label in view |
+| Mourne Cycles | 5.78 | 5.93 | Revise | claims, subject proof, readable | "Trek main dealer for the area" asserts an exclusivity the record does not support and contradicts the hero lede 300 px below; the AI-visualisation disclosure falls 61 px below the phone fold; ~20 texts below 4.5:1, concentrated in the honesty copy itself |
+| Cúpla | 5.78 | 6.43 | Revise | real loop, responsive, readable | `.cp-nav { display: none }` at 390 px hides the only link to the menu — the companion route is unreachable on the phone the concept was designed for; menu body copy fails 4.5:1 throughout; the menu page declares `lang="ga-IE"` over mostly English text |
+| Kent Amusements | 5.43 | 5.88 | Revise | claims, real loop, responsive, readable | `/attractions/` at 390 px paints story and panel into the identical 390×545 rect — 100% overlap, content on top of content; unlabelled invented seasonal hours; the phone primary CTA is not hittable |
+
+**Four of the five scored lower than their first verdict.** That is not a failed
+repair: the repairs did what they targeted. Every gate the shared repair pass
+set out to fix is closed — Mourne Cycles' 390 px header overflow, Kent's clipped
+Call action and SVG-booth costume, Donard's decorative `mailto` and the VidiVet
+misnaming, Cúpla's euro pricing and unlabelled menu, the Chamber's inert search.
+Subject proof now passes for Kent, Donard and Cúpla on real licensed photography
+or a verifiable faithful visualisation. The scores fell because this round
+measured things the first round asserted: contrast computed from live styles
+rather than eyeballed, hit-testing rather than visual inspection, and phone
+navigation enumerated link by link. The defects found are mostly **pre-existing
+and previously undetected**, not regressions — `git` confirms Cúpla's hidden
+mobile nav and Kent's attractions overlap predate the repair.
+
+One genuine regression: Kent's honesty, singled out as the first round's
+strength, now publishes two unlabelled unverified opening-hour ranges under
+"Open this season."
+
+#### Portfolio-wide defect: the disclosure banner occludes the first viewport
+
+Confirmed by the coordinator's own hit-testing, not only by reviewer report. At
+1265×710 the fixed `.mm-concept-banner` sits over the bottom of the first
+viewport, and `document.elementFromPoint` at each control's centre returns the
+banner or its claim link instead of the control:
+
+| Concept | Controls covered at 1265×710 | Max scroll |
+|---|---|---:|
+| Mourne Cycles | all six `.mc-rail` cells, including the Cycle to Work cell | 2 px |
+| Donard Veterinary | all six `.dv-service` cells | 1 px |
+| Kent Amusements | all four `.ka-rail-cell` cells | 1 px |
+| Cúpla | all four `.cp-rail-cell` cells | 1 px |
+| Newcastle Chamber | the primary `.nc-cta` "Browse the directory" | 243 px |
+
+Because the document is 1–2 px taller than the viewport on four of the five,
+the visitor cannot scroll the banner clear. The safeguard that makes these
+concepts ethical is disabling the controls beneath it. At 390 px the banner
+goes `position: static` and the occlusion disappears — but so does the
+disclosure, which then sits below the fold on every concept. **This is one
+shared-chassis fix worth making once for all twenty concepts**, and it should be
+covered by a `test:reviewed-concepts` assertion that every first-viewport
+control returns itself from `elementFromPoint`.
+
+#### Process consequence
+
+Under §5 these five have now consumed their one focused repair cycle. A core
+category is still below 7.0 in all five, a supporting category is below 6.0 in
+the Chamber, and design gates still fail everywhere, so the rule directs that
+they are **retired from the public queue and kept internal**. They stay as
+`noindex` concept routes with their evidence; none returns to `/transformations/`.
+
+Reopening requires an explicit owner decision under the existing clause — new
+evidence, new imagery, a materially different direction, or flagship
+designation. Two are worth that consideration and the owner should decide, not
+the reviewer:
+
+- **Donard Veterinary at 6.53** fails one gate on four contrast values in one
+  card. Every core category except responsive/accessibility already clears 7.0.
+  This is the closest any concept in the batch has come to the standard.
+- **Cúpla** is the only concept in the portfolio whose disclosed AI
+  visualisation *passes* subject proof where Enniskeen's failed — the reviewer
+  verified it against the August 2024 frontage photograph feature by feature.
+  Its failures are a hidden nav rule and contrast, not a weak direction.
+
+#### Corrections to this round's own evidence
+
+- The coordinator's first evidence bundle was invalid: puppeteer's default
+  800×600 viewport silently re-applies its own `Emulation.setDeviceMetricsOverride`
+  and beats a CDP call made on the same page, so every capture was an 800 px
+  layout labelled 1265 or 390. Two reviewers caught it independently and worked
+  from their own captures. Regenerate with `defaultViewport: null`,
+  `captureBeyondViewport: false`, and assert `clientWidth` equals the target
+  both before and after the screenshot. The corrected bundle verifies at 1265 and
+  390 with zero overflow and zero console errors on all ten routes.
+- Kent's reviewer recorded `repositoryChecks` blocked on a `test:concepts`
+  failure at `/concepts/tonn-ruray/`. Re-run serially with no competing agents,
+  the audit passes 72/72; the failure was contention on the shared dev server.
+  The committed record says `repositoryChecks: true`.
+- Two reviewers rounded their weighted score down (5.875 → 5.87, 5.425 → 5.42).
+  `scripts/check-concept-reviews.mjs` is the canonical calculator and rounds
+  half-up, so the committed entries are 5.88 and 5.43. The rubric's "do not
+  round up" rule protects the 7.0 threshold; neither score is near it.
+- `research/verifications.json` carries the census-era name "Donard Veterinary
+  Centre" with no correction, while the concept, the domain, the Instagram
+  handle and the fascia in the hero photograph all read "Donard Veterinary
+  **Clinic**". The concept is right and the record needs the correction before a
+  truth refresh reverses it.
+
+#### Calibration checkpoint (twelve completed reviews)
+
+The five cluster at 5.43–6.53 against Enniskeen's 7.68 and Buck's Head's 7.15
+repaired score. Every verdict turns on a reproducible measurement — a computed
+contrast ratio, an `elementFromPoint` result, an enumerated phone link set, a
+rect overlap — not on taste, and three cross-cutting claims were re-verified
+independently by the coordinator before being recorded. No single-reviewer drift
+is evident. The scoring drift that *is* evident is in the earlier round, which
+passed gates this round measured and failed: **assert, don't eyeball** is the
+lesson to carry into the thirteen unreviewed concepts.
 
 ## Decision ledger
 

@@ -5,17 +5,19 @@ Working state of the concept pipeline. The data source of truth is
 `scripts/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
-Snapshot: 24 July 2026 · 27 businesses verified · **zero public transformations
+Snapshot: 25 July 2026 · 27 businesses verified · **zero public transformations
 after Phase Q** · 20 internal concept routes · Enniskeen F1's prior source
 passed design re-review at 7.68; its current disclosed generated-image source
 was re-reviewed at 7.15 **Revise** — the fictional generated visuals clear
 rights but fail subject proof of the real hotel · Buck's Head F2 is retired
-after its final 7.15 Revise · Mourne Cycles (5.93), Newcastle Chamber (6.28),
-Kent Amusements (5.88), Donard Veterinary (5.93) and Cúpla (6.43) each returned
-a first v1.1 **Revise**; their shared mechanical and truth repair candidates
-are implemented but not independently re-reviewed, and all still lack subject
-proof · seven concepts reviewed, thirteen unreviewed · no one-sheet release or
-outreach is permitted until a concept has a current independent public Pass
+after its final 7.15 Revise · the next five candidates took one shared repair
+pass and were **independently re-reviewed on 25 July 2026**: Donard Veterinary
+6.53, Newcastle Chamber 5.88, Mourne Cycles 5.78, Cúpla 5.78 and Kent
+Amusements 5.43 — **all Revise a second time**, so all five have consumed their
+one repair cycle and are retired from the public queue and kept internal
+pending an explicit owner decision · seven concepts reviewed, thirteen
+unreviewed · no one-sheet release or outreach is permitted until a concept has a
+current independent public Pass
 
 ## Pipeline stages
 
@@ -71,14 +73,14 @@ consumed. All concept routes remain internal and `noindex`;
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
 | Hotel Enniskeen | Current generated-image source re-reviewed at 7.15 **Revise**: strong loop/truth/responsive, but the *fictional* generated visuals fail the subject-proof gate; prior photography source passed design at 7.68 | Produce faithful, disclosed visualisations of the real Enniskeen (real painted-render facade and rooms) — or licensed real photography — then re-review the affected categories (evidence, identity, first viewport, craft) to clear subject proof. Keep internal until then |
-| Mourne Cycles | First v1.1 verdict **Revise at 5.93** (24 Jul); repair candidate implemented, not re-reviewed | Mobile/header, wordmark and truth repairs now pass automated checks; provisional imagery, hire prices, tiers and savings are labelled before use. Add real premises/stock proof and complete independent re-review. Trek/stock image rights or replacements still required for release |
+| Mourne Cycles | **Retired after one repair cycle**; re-review 25 Jul returned **Revise at 5.78** (was 5.93). Gates failed: claims, subject proof, readable/motion-safe | Keep internal. The repair closed the 390 px header overflow and labelled the provisional prices, but "Trek main dealer for the area" overstates the sourced "listed Trek dealer", the AI-visualisation disclosure falls 61 px below the phone fold, and ~20 texts sit under 4.5:1. Reopen only on new imagery proving the shop itself (frontage, workshop, yard) or an explicit flagship decision. `mourne-cycles-trail.jpg` still has no recorded rights |
 | The Buck's Head | Retired after one repair cycle; final Revise at 7.15 | Keep internal. Reopen only with a materially revised truth/disclosure treatment plus publishable real subject imagery, or an explicit flagship decision |
-| Donard Veterinary | First v1.1 verdict **Revise at 5.93** (24 Jul); repair candidate implemented, not re-reviewed | The shared request form now preserves all fields in a reviewable email draft and explicitly says nothing is sent until the visitor sends it; PetsApp naming is corrected. Add real pet/clinic proof, then complete independent re-review |
+| Donard Veterinary | **Retired after one repair cycle**; re-review 25 Jul returned **Revise at 6.53** (was 5.93) — the batch's best score. One gate failed: readable/motion-safe | Keep internal, but this is the closest candidate to the standard: claims, loop and subject proof all now pass, and only responsive/accessibility sits below its 7.0 floor, on four contrast values inside the out-of-hours emergency card (2.56:1–3.38:1) plus a frozen post-submit handoff link. **Worth an owner decision on reopening** — the remaining work is measured and small. Verification record still says "Donard Veterinary Centre"; the real name is Clinic |
 | Scopers | Internal pending review | Add real subject or food proof and replace or clearly label exposed inert actions; resolve image rights before release |
-| Cúpla | First v1.1 verdict **Revise at 6.43** (24 Jul); repair candidate implemented, not re-reviewed | Menu now uses sterling and labels its sample items and prices before the first price. Add real café/food proof, then complete independent re-review. Strongest identity of the batch |
+| Cúpla | **Retired after one repair cycle**; re-review 25 Jul returned **Revise at 5.78** (was 6.43). Gates failed: real loop, responsive, readable | Keep internal. Both first-round failures were fixed and its disclosed AI visualisation is the only one in the portfolio to **pass** subject proof (verified feature by feature against the August 2024 frontage photo, where Enniskeen's fictional visuals failed). It fell on defects the first round never measured: `.cp-nav { display: none }` at 390 px hides the only link to the menu, menu body copy fails 4.5:1 throughout, and the menu page declares `lang="ga-IE"` over mostly English text. **Worth an owner decision on reopening** — the direction is sound, the failures are rules |
 | The Tool Centre | Internal pending evidence | Add specific subject proof and source every published hire detail before the hire/call loop is reviewed |
-| Kent Amusements | First v1.1 verdict **Revise at 5.88** (24 Jul); repair candidate implemented, not re-reviewed | Phone header and Call CTA now fit at 390 px; the illustrated hero openly states that real arcade photography is still required. Add real arcade proof and complete independent re-review. Honesty remains a strength |
-| Newcastle Chamber | First v1.1 verdict **Revise at 6.28** (24 Jul); repair candidate implemented, not re-reviewed | Homepage queries now filter the directory, including a tested empty state; names are visibly illustrative examples rather than verified members. Add real place/artefact proof and complete independent re-review |
+| Kent Amusements | **Retired after one repair cycle**; re-review 25 Jul returned **Revise at 5.43** (was 5.88). Gates failed: claims, real loop, responsive, readable | Keep internal. Subject proof now passes on the licensed 2023 Geograph photograph of the real frontage and the SVG costume is gone, but `/attractions/` paints story and panel into the identical 390×545 rect at phone size (100% overlap), the phone primary CTA is not hittable, and the honesty that was the first round's strength regressed — two unlabelled unverified opening-hour ranges under "Open this season." |
+| Newcastle Chamber | **Retired after one repair cycle**; re-review 25 Jul returned **Revise at 5.88** (was 6.28). Gates failed: claims, real loop, subject proof, responsive, readable — five of six | Keep internal. The search is genuinely wired now, but `/contact/`'s "Send an email" button renders navy-on-navy at **1.00:1** (invisible), `.nc-nav` is hidden below 940 px with no replacement so `/about/` is reachable from nowhere on a phone, category tabs do not clear an active query, and `/members/#hospitality` lands on real trading names with no illustrative label in view. Reopen only on a materially different direction |
 | The Dundrum Inn | Internal pending review | Replace invented live status with sourced or explicitly illustrative states and add real place proof; resolve image rights before release |
 | Groves Chemist | Internal pending evidence | Add specific pharmacy proof and an honest prescription-request handoff or clearly labelled prototype end state |
 | Tonn Ruray Café | Internal pending review | Add real café proof and make the visit/menu loop complete rather than decorative; resolve image rights before release |
@@ -142,22 +144,49 @@ fold. Full per-concept records are private under
 `research/concept-reviews/<slug>.md`; the compact verdicts are committed in
 `releases.json`.
 
-A shared repair pass now prevents those mechanical and truth failures from
-returning: all wordmarks use real routes; Chamber search filters and has an
-empty state; Donard's form preserves its fields into an explicit email draft
-and names PetsApp correctly; Cúpla uses labelled sterling sample prices;
-Mourne labels provisional imagery and commercial details before use; and Kent's
-phone action fits while its illustration limitation is visible. The browser
-checks pass, but this is not an independent re-review and does not clear the
-remaining subject-proof failures.
+A shared repair pass then closed those mechanical and truth failures: all
+wordmarks use real routes; Chamber search filters and has an empty state;
+Donard's form preserves its fields into an explicit email draft and names
+PetsApp correctly; Cúpla uses labelled sterling sample prices; Mourne labels
+provisional imagery and commercial details before use; Kent's phone action fits;
+and a follow-on pass replaced the fictional hero material with real licensed
+photography (Chamber, Kent, Donard) or a faithful disclosed visualisation
+(Cúpla, Mourne Cycles).
+
+**Independent re-review, 25 July 2026 — all five returned Revise again**, at
+Donard Veterinary 6.53, Newcastle Chamber 5.88, Mourne Cycles 5.78, Cúpla 5.78
+and Kent Amusements 5.43. Every repair held: the gates the pass targeted are
+closed, and subject proof now passes for Kent, Donard and Cúpla. Four scores
+nonetheless fell, because this round measured what the first round asserted —
+contrast computed from live styles, `elementFromPoint` hit-testing, phone
+navigation enumerated link by link. The deciding defects are mostly pre-existing
+and previously undetected: an invisible 1.00:1 contact button and a phone nav
+that strands `/about/` (Chamber); a mobile rule hiding the only link to the menu
+(Cúpla); a 100% layout overlap on `/attractions/` at 390 px (Kent); four
+contrast failures in the emergency card (Donard); an unsourced "main dealer"
+claim and a disclosure below the phone fold (Mourne Cycles). One regression:
+Kent's honesty, the first round's strength, now publishes unlabelled opening
+hours.
+
+One defect is portfolio-wide and worth a single shared fix: at 1265×710 the
+fixed `.mm-concept-banner` covers the bottom rail of four of the five concepts
+and the Chamber's primary CTA, and the document is 1–2 px taller than the
+viewport, so it cannot be scrolled clear. Verified by hit-testing on all five.
+
+All five have now consumed their one repair cycle, so under
+`CONCEPT_DESIGN_REVIEW.md` §5 they are retired from the public queue and kept
+internal. Donard Veterinary and Cúpla are the two worth an owner decision on
+reopening. Full per-concept records are private under
+`research/concept-reviews/<slug>.md`; the compact verdicts are committed in
+`releases.json`.
 
 ## Shortlist — redesign showcases (current website, visible gap)
 
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
 | **Hotel Enniskeen** — *internal Revise (7.15) on the current generated-image source · prior photography source passed v1.1 design at 7.68 · current source uses disclosed but fictional generated visualisations · [full five-page concept site](/concepts/hotel-enniskeen/) (Home · Stay · Dine · The estate · Things to do) · [Rooms](/concepts/hotel-enniskeen/rooms/) · [Dine](/concepts/hotel-enniskeen/dine/)* | Newcastle | ~2012 hand-built template site; 2026 reviews, 4.4★ | F1 flagship working prototype remains local. Generated assets remove the reused-photo rights issue but are declared fictional, so they fail subject proof; faithful disclosed visuals of the real hotel (or licensed photography) + re-review, plus domain, production-form and printed-QR gates, remain before publication or outreach |
-| **Mourne Cycles** — *internal pending Phase Q evidence · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
-| **Donard Veterinary Centre** — *internal pending Phase Q evidence · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
+| **Mourne Cycles** — *internal retired · final Revise at 5.78 after one repair cycle (25 Jul) · M2 hire [/concepts/mourne-cycles/hire/](src/pages/concepts/mourne-cycles/hire.astro)* | Newcastle | 2014 free-tier Wix brochure; filings current to Mar 2026 | Retail storefront: range, servicing/hire booking, Cyclescheme funnel |
+| **Donard Veterinary Clinic** — *internal retired · final Revise at 6.53 after one repair cycle (25 Jul); closest to the standard, worth an owner decision on reopening · M2 appointments [/concepts/donard-veterinary/appointments/](src/pages/concepts/donard-veterinary/appointments.astro)* | Newcastle | Listed domain dead; 2017 Divi build; booking = phone/email only, plus a PetsApp bubble added by Jul 2026 | Appointment requests, emergency info hierarchy, accessibility fixes |
 | South Down Signs — *on hold until trading confirmed* | Newcastle | Stale WordPress, content ~2023, no quote flow | Portfolio-led B2B site with quote-request funnel |
 | **The Buck's Head** — *internal retired · final Revise at 7.15 after one repair cycle · M2 menus [/concepts/bucks-head/menus/](src/pages/concepts/bucks-head/menus.astro)* | Dundrum | Current site, actively maintained (à la carte PDF reissued on build day); ResDiary widget behind policy warnings, menus PDF-only, no booking control on the phone's first screen | Keep the repaired prototype internal. Reopen only for a materially revised truth/disclosure treatment with publishable real subject imagery, or an explicit flagship decision |
 
@@ -166,10 +195,10 @@ remaining subject-proof failures.
 | Business | Town | Verified condition | Design task |
 |---|---|---|---|
 | **Scopers** — *internal pending Phase Q evidence · M2 supper club [/concepts/scopers/supper-club/](src/pages/concepts/scopers/supper-club.astro)* | Dundrum | No site; 4.6★; open most of the week and very popular (local report, Jul 2026); Facebook page meets visitors with a login wall | Chef-led brand single-pager with supper club events and booking |
-| **Cúpla** — *internal pending Phase Q evidence · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
+| **Cúpla** — *internal retired · final Revise at 5.78 after one repair cycle (25 Jul); its disclosed visualisation is the only one to pass subject proof, worth an owner decision on reopening · M2 menu [/concepts/cupla/menu/](src/pages/concepts/cupla/menu.astro)* | Dundrum | No site; café founded 2024, hygiene "Good" Jan 2025; trading confirmed Jul 2026 | Mobile-first café page with bilingual Irish-language identity |
 | **The Tool Centre** — *internal pending Phase Q evidence · M2 hire list [/concepts/tool-centre/hire-list/](src/pages/concepts/tool-centre/hire-list.astro)* | Newcastle | No site; hardware retail + plant hire; Facebook as Tool Centre Plant Hire | Utilitarian trade site: hire prices, stock categories, hours |
-| **Kent Amusements** — *internal pending Phase Q evidence · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
-| **Newcastle Chamber of Commerce** — *internal pending Phase Q evidence · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
+| **Kent Amusements** — *internal retired · final Revise at 5.43 after one repair cycle (25 Jul) · M2 attractions [/concepts/kent-amusements/attractions/](src/pages/concepts/kent-amusements/attractions.astro)* | Newcastle | Facebook and Instagram only; active (Mar 2026 review, new VR); Facebook re-confirmed 22 July 2026 | Seasonal attraction site: attractions, hours, family offers |
+| **Newcastle Chamber of Commerce** — *internal retired · final Revise at 5.88 after one repair cycle (25 Jul) · site [/concepts/newcastle-chamber/](src/pages/concepts/newcastle-chamber.astro) (Home · Members · Events · Join · About · Contact) · exploration archive [/prototypes/chamber/](src/pages/prototypes/chamber/index.astro)* | Newcastle | No site; active into 2026, runs on Gmail; Facebook re-confirmed 22 July 2026 | Main Street finder hybrid: directory-first IA, civic Co. Down chrome, neighbour join voice |
 
 ## Batch two — verified and captured 24 July 2026, ten concept pages built
 
