@@ -606,7 +606,8 @@ export function validateReleaseData(
       const currentFingerprint = fingerprintForSlug(slug);
       if (release.sourceFingerprint !== currentFingerprint) {
         errors.push(
-          `Public transformation "${slug}" source fingerprint has changed.`,
+          `Public transformation "${slug}" source fingerprint has changed ` +
+            `(expected ${release.sourceFingerprint}, current ${currentFingerprint}).`,
         );
       }
     } catch (error) {
