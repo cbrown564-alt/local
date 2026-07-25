@@ -60,8 +60,10 @@ The next five candidates — Mourne Cycles, Newcastle Chamber, Kent Amusements,
 Donard Veterinary and Cúpla — each received a first independent v1.1 verdict of
 **Revise** (see the Phase Q review batch below), took one shared repair pass,
 and were independently re-reviewed on 25 July 2026. All five returned **Revise**
-a second time, consuming their one repair cycle, so all five are retired from
-the public queue and kept internal pending an explicit owner decision.
+a second time, which consumed their one repair cycle. The owner then reopened
+all five under the explicit-designation clause, because that cycle had been
+spent against an incomplete defect list; a second repair is implemented and
+awaits independent re-review. All five remain internal `noindex` routes.
 
 ### Acceptance rule
 
@@ -627,16 +629,17 @@ control returns itself from `elementFromPoint`.
 
 #### Process consequence
 
-Under §5 these five have now consumed their one focused repair cycle. A core
-category is still below 7.0 in all five, a supporting category is below 6.0 in
-the Chamber, and design gates still fail everywhere, so the rule directs that
-they are **retired from the public queue and kept internal**. They stay as
-`noindex` concept routes with their evidence; none returns to `/transformations/`.
+Under §5 these five had consumed their one focused repair cycle. A core
+category was still below 7.0 in all five, a supporting category below 6.0 in
+the Chamber, and design gates still failed everywhere, so the rule directed
+that they be **retired from the public queue and kept internal**. The owner
+reopened all five the same day under the explicit-designation clause — see
+"Owner decision — reopen all five" below. They remain `noindex` internal routes
+either way; none returns to `/transformations/` without a Pass.
 
-Reopening requires an explicit owner decision under the existing clause — new
-evidence, new imagery, a materially different direction, or flagship
-designation. Two are worth that consideration and the owner should decide, not
-the reviewer:
+Reopening required an explicit owner decision under the existing clause. The
+owner reopened all five; the two the reviewer flagged as closest to the
+standard were:
 
 - **Donard Veterinary at 6.53** fails one gate on four contrast values in one
   card. Every core category except responsive/accessibility already clears 7.0.
@@ -669,6 +672,86 @@ the reviewer:
   handle and the fascia in the hero photograph all read "Donard Veterinary
   **Clinic**". The concept is right and the record needs the correction before a
   truth refresh reverses it.
+
+### Owner decision — reopen all five (25 July 2026)
+
+The owner reopened all five concepts under the §5 clause, on the ground that
+**the repair cycle was spent against an incomplete defect list**: the first
+round asserted contrast, hit-testing and phone navigation rather than measuring
+them, so the shared repair pass could not have targeted the defects that
+decided the second verdict. This is an explicit owner designation, not a waiver
+— every concept must still earn its categories and gates on re-review, and the
+reopening does not itself change a score.
+
+#### Repair implemented against the second-round findings
+
+**Shared chassis (affects all twenty concepts).** `--mm-banner-space` now
+reserves real layout room at the foot of every concept page and each reopened
+concept subtracts it from its hero `min-height`, so a first-viewport
+composition ends above the disclosure instead of underneath it. The banner is
+`position: fixed` at every size — it was `static` below 760px, which pushed the
+independent-concept disclosure hundreds of pixels below the phone fold. Concept
+focus rings now come from `--concept-focus` rather than inheriting the studio's
+gorse yellow from `global.css`, which measured as low as 1.66:1 on a concept's
+own header and put the Mourne Made brand inside a concept screen.
+
+| Concept | What the repair changed |
+|---|---|
+| Newcastle Chamber | Directory rebuilt from `verifications.json`: all 14 listings are now real Newcastle traders with dated records, ending the real/invented mix. Per-category membership disclaimer so deep links land with it in view; `?cat=` filtering with a derived active tab, so "All" can no longer stay active under a filter; a search input on the directory itself; phone nav restored as a scrollable strip (`/about/`, `/events/`, `/contact/` were reachable from nowhere); the 1.00:1 navy-on-navy contact button fixed by scoping the link colour away from buttons; the photograph moved into the phone first viewport via `display: contents` |
+| Kent Amusements | `grid-row: auto` on the stacked attractions layout, ending the 100% story/panel overlap at 390px; the unverified opening hours replaced by a labelled empty board that states no hours were verified; text-safe `--coral-ink`/`--ticket-ink` for the pier palette (the phone Call button was 3.50:1) |
+| Mourne Cycles | "Trek main dealer for the area" replaced with the sourced "listed Trek dealer & Cyclescheme retailer"; hero alt no longer claims the yard is the shop's premises; the AI-visualisation caption pinned to the image and the phone story compacted so the disclosure sits inside the fold; `--steel` darkened and the scheme panel moved to `--red-deep`, clearing 21 sub-threshold texts; `mourne-cycles-trail.jpg` deleted, clearing the last asset-rights blocker |
+| Cúpla | Phone nav restored, so the menu — the companion route the concept exists to show — is reachable on a phone again; text-safe `--caramel-ink`/`--sage-ink` for the whole menu; `lang="ga-IE"` corrected to `en-GB` with `lang="ga"` on the Irish strings; invented Irish corrected ("Babhla Gránáit" was *granite*; "Aimsigh muid" used a subject pronoun as object); the unsourced "served in both of the town's languages" replaced with a statement of what the concept proposes; "Co. Down" added to both routes |
+| Donard Veterinary | The four emergency-card contrast failures fixed, including "Closed" at 2.56:1; a prepared email draft is now withdrawn the moment any field changes, so a corrected typo cannot send the original details; a real invalid-value state on the phone field |
+
+#### New browser assertions
+
+`pnpm test:reviewed-concepts` grew from 7 to 14 checks. The five new ones cover
+the defect *classes* this round measured for the first time, across all five
+concepts rather than one route each: computed 4.5:1 contrast, controls trapped
+under the disclosure at any scroll position, companion-route reachability at
+390px, generated-image disclosures inside the phone fold, and stacked phone
+layouts that overlap. Three of them failed on first run and caught live
+defects; a fourth caught a bug in its own probe (`scroll-behavior: smooth`
+makes `scrollTo` asynchronous, so an immediate reading reports reachable
+controls as trapped — use `behavior: "instant"`).
+
+One HTML detail worth keeping: the `pattern` attribute compiles with the regex
+`v` flag, where a bare `-`, `(` or `)` inside a character class is a syntax
+error — **and an invalid pattern is silently ignored**, so the field validates
+everything. `[0-9\s+\-\(\)]{7,}` works; `[0-9 +-]{7,}` silently does nothing.
+
+Two further shared-chassis lessons came out of making the banner fixed at every
+size, both caught by the 72-case audit rather than by inspection:
+
+- **A concept sheet can out-rank the safeguard.** The Dundrum Inn's
+  `body.concept-dundrum-inn > * { position: relative }` (0-1-1) beat the plain
+  `.mm-concept-banner` class, turning the fixed disclosure into a relatively
+  positioned block where `left: 10px` shifted it past the viewport and
+  overflowed the page at 390px. The shell now positions the banner through
+  `body.concept-page > .mm-concept-banner`, so a concept cannot reposition the
+  disclosure it sits under.
+- **A horizontally scrollable nav is hidden content, not a fix.** Restoring
+  phone navigation as an `overflow-x: auto` strip put links past the layout
+  width, which the audit correctly reports as clipped header controls. Both
+  restored navs wrap instead, and Cúpla's header was resized so its three
+  bilingual labels fit one row at 390px.
+
+#### Re-review candidate — repaired source fingerprints
+
+| Concept | Repaired fingerprint |
+|---|---|
+| Mourne Cycles | `sha256:c51e0e8d37e7dc365b96d7462334d826ae733c4d9608812a3b6c903969ad66a4` |
+| Newcastle Chamber | `sha256:55432ddf90bda62c62b22eccd5910237903ab25178a6e4bd81d8cd5294151fa3` |
+| Kent Amusements | `sha256:4ceec1f0cc17e48f79827e3ce8dd416c2f12513b5845ca841e892f468f550ade` |
+| Donard Veterinary | `sha256:63771ed5fce81841073287431720a3c7bb6cb08ea7f5d743c2fb86abb1a6473e` |
+| Cúpla | `sha256:a467049ba2b967cdcef8fe14ece0e830b5dc5002f969eea0a2e3a738707baddd` |
+
+This is an implementation record, **not a new verdict**. The committed entries
+in `releases.json` still carry the 25 July Revise verdicts, which describe the
+source that was reviewed. `pnpm build`, the 72-case concept audit and all 14
+reviewed-concept journeys pass, and a 28-route sweep at 1265×710 and a true
+390×844 found zero horizontal overflow, zero console errors and zero
+contrast failures. An independent re-review of this source is the next step.
 
 #### Calibration checkpoint (twelve completed reviews)
 

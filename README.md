@@ -123,8 +123,12 @@ verdicts, took one shared repair pass, and were independently re-reviewed on
 25 July 2026: every targeted repair held and subject proof now passes for three
 of them, but all five returned Revise a second time (6.53 down to 5.43) on
 defects the first round had asserted rather than measured — computed contrast,
-hit-testing and phone navigation. Having consumed their one repair cycle they
-are retired from the public queue and kept internal. Thirteen concepts remain
+hit-testing and phone navigation. That consumed their one repair cycle, so the
+owner reopened all five under the explicit-designation clause — the cycle had
+been spent against an incomplete defect list. A second repair is implemented
+against the measured findings and the reviewed-concept journey suite has grown
+from 7 to 14 checks covering the new defect classes; it awaits independent
+re-review, so every committed verdict remains Revise. Thirteen concepts remain
 unreviewed. The public homepage and index show that
 state rather than grandfathering earlier work.
 

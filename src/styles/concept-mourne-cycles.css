@@ -10,13 +10,19 @@
   --white: #ffffff;
   --red: #d7282f;
   --red-deep: #b01e24;
-  --steel: #7c8088;
+  /* --steel was #7c8088: 3.60:1 on paper and 3.96:1 in the header lockup, so
+     every provisional label, service tier and price on the hire route — the
+     copy carrying this concept's honesty — failed 4.5:1 (25 July 2026
+     re-review). Darkened for light surfaces; --steel-light still serves text
+     on coal. */
+  --steel: #5c6068;
   --steel-light: #b9bcc2;
   --hairline: rgba(15, 16, 19, 0.14);
   --hairline-dark: rgba(245, 244, 241, 0.16);
   --condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
   --sans: "Barlow", "Segoe UI", sans-serif;
   --concept-accent: var(--red);
+  --concept-focus: #0f1013;
   --concept-nav-gap: clamp(16px, 2.2vw, 30px);
   --concept-nav-line: 3px;
   background: var(--paper);
@@ -96,7 +102,7 @@
 /* Hero */
 .mc-hero {
   position: relative;
-  min-height: calc(100vh - 76px - 33px);
+  min-height: calc(100vh - 76px - 33px - var(--mm-banner-space, 0px));
   display: grid;
   grid-template-columns: 46% 54%;
   grid-template-rows: minmax(0, 1fr) auto;
@@ -268,11 +274,26 @@
   .mc-story { grid-column: 1; grid-row: auto; order: 0; }
   .mc-visual { grid-column: 1; grid-row: auto; order: 1; min-height: 0; }
   .mc-rail { grid-column: 1; grid-row: auto; order: 2; }
-  .mc-visual-image { min-height: 280px; }
-  .mc-story { padding: 42px 22px 44px; }
-  .mc-story h1 { font-size: clamp(52px, 13vw, 72px); }
-  .mc-thesis { font-size: 25px; }
-  .mc-lede { font-size: 16px; }
+  /* The AI-visualisation disclosure used to sit 61px below the phone fold, so
+     a phone visitor met a photorealistic bicycle with nothing saying it was
+     generated (25 July 2026 re-review). The story is compacted so the image
+     lands inside the fold, and the caption is pinned to the image itself so
+     the two can never separate again. */
+  .mc-visual-image { min-height: 210px; }
+  .mc-visual { position: relative; }
+  .mc-visual figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(15, 16, 19, 0.92);
+    font-size: 10.5px;
+    padding: 8px 14px;
+  }
+  .mc-story { padding: 22px 22px 20px; }
+  .mc-story h1 { font-size: clamp(44px, 11vw, 58px); }
+  .mc-thesis { font-size: 22px; margin-bottom: 10px; }
+  .mc-lede { font-size: 15.5px; margin-bottom: 16px; }
   .mc-rail {
     grid-template-columns: 1fr 1fr;
     border-left: 0;
@@ -292,7 +313,7 @@
 .mc-hire-main {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 109px); /* strip + header */
+  min-height: calc(100vh - 109px - var(--mm-banner-space, 0px)); /* strip + header */
 }
 
 /* Intro bar */
@@ -413,7 +434,7 @@
 
 /* Hire panel — coal background with trail photo underlaid */
 .mc-panel-hire { background: var(--coal); color: var(--paper); }
-.mc-panel-hire .mc-panel-num { color: var(--red); }
+.mc-panel-hire .mc-panel-num { color: #ff6b70; }
 .mc-panel-hire p { color: var(--steel-light); }
 .mc-panel-hire .mc-panel-inner { border-right: 0; }
 
@@ -438,9 +459,12 @@
 .mc-panel-service .mc-panel-num { color: var(--steel); }
 
 /* Cyclescheme panel — red background */
-.mc-panel-scheme { background: var(--red); color: var(--white); }
-.mc-panel-scheme .mc-panel-num { color: rgba(255, 255, 255, 0.65); }
-.mc-panel-scheme p { color: rgba(255, 255, 255, 0.88); }
+/* Signal red carries the brand but cannot carry white text: at #d7282f the
+   panel's numerals measured 2.82:1 and its body 4.12:1. The deeper red keeps
+   the identity and clears 4.5:1 at full opacity. */
+.mc-panel-scheme { background: var(--red-deep); color: var(--white); }
+.mc-panel-scheme .mc-panel-num { color: #ffffff; }
+.mc-panel-scheme p { color: #ffffff; }
 
 /* Tier list — hire options and service tiers */
 .mc-tier-list {
@@ -488,7 +512,7 @@
   color: var(--red);
   white-space: nowrap;
 }
-.mc-panel-hire .mc-tier-price { color: var(--red); }
+.mc-panel-hire .mc-tier-price { color: #ff6b70; }
 .mc-tier-detail {
   grid-row: 1;
   grid-column: 2;
@@ -584,7 +608,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: #ffffff;
   line-height: 1.4;
 }
 .mc-savings-steps {
