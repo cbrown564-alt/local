@@ -20,10 +20,7 @@
   --body: "Outfit", "Segoe UI", sans-serif;
   --concept-accent: var(--coral);
   --concept-nav-gap: clamp(16px, 2.2vw, 28px);
-  background:
-    radial-gradient(ellipse 70% 45% at 88% 8%, rgba(232, 163, 23, 0.14), transparent 55%),
-    radial-gradient(ellipse 55% 40% at 8% 92%, rgba(61, 184, 168, 0.12), transparent 50%),
-    var(--spray);
+  background: var(--spray);
   color: var(--ink-pier);
   font-family: var(--body);
 }
@@ -48,9 +45,8 @@
   height: 80px;
   padding: 0 clamp(20px, 3.5vw, 44px);
   gap: 26px;
-  background: rgba(247, 251, 252, 0.92);
+  background: var(--foam);
   border-bottom: 1px solid var(--hairline);
-  backdrop-filter: blur(6px);
 }
 .ka-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-pier); }
 .ka-mark { flex: 0 0 auto; color: var(--coral); }
@@ -119,19 +115,29 @@
 }
 .ka-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--ticket); }
 .ka-story h1 {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   font-family: var(--display);
-  font-size: clamp(40px, 4.8vw, 58px);
+  font-size: clamp(58px, 6.8vw, 88px);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 0.86;
   letter-spacing: 0.01em;
   color: var(--pier);
-  max-width: 10em;
+  max-width: 8em;
   text-transform: uppercase;
 }
 .ka-story h1 em {
   font-style: normal;
   color: var(--coral);
+}
+.ka-thesis {
+  margin: 0 0 14px;
+  max-width: 16em;
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--coral-deep);
 }
 .ka-lede {
   margin: 0 0 20px;
@@ -160,15 +166,37 @@
   text-decoration-color: var(--ticket);
 }
 
-/* Right column: full-bleed promenade illustration with ticket action below it */
+/* Subject proof */
 .ka-panel {
   grid-column: 2;
   grid-row: 1;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  min-width: 0;
   min-height: 0;
-  padding: 14px clamp(16px, 2.4vw, 28px) 14px 8px;
-  gap: 10px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background: var(--pier-deep);
+}
+.ka-visual-image { position: relative; min-height: 360px; overflow: hidden; }
+.ka-visual-picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.ka-visual-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 50%;
+}
+.ka-panel figcaption {
+  padding: 10px 16px;
+  color: var(--foam);
+  background: var(--pier-deep);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
 }
 .ka-visual-note {
   margin: 0;
@@ -297,28 +325,20 @@
   0%, 100% { opacity: 0.75; }
   50% { opacity: 1; }
 }
-.ka-kicker { animation: ka-rise 440ms ease backwards; }
-.ka-story h1 { animation: ka-rise 440ms 70ms ease backwards; }
-.ka-lede { animation: ka-rise 440ms 140ms ease backwards; }
-.ka-actions { animation: ka-rise 440ms 210ms ease backwards; }
-.ka-stage { animation: ka-rise 520ms 160ms ease backwards; }
-.ka-ticket { animation: ka-rise 480ms 280ms ease backwards; }
-.ka-bulbs circle { animation: ka-bulbs 2.2s ease-in-out infinite; }
-.ka-bulbs circle:nth-child(odd) { animation-delay: 0.35s; }
-
 @media (max-width: 940px) {
   .ka-strip { flex-direction: column; gap: 2px; text-align: center; }
   .ka-nav { display: none; }
   .ka-header { height: auto; padding-block: 12px; }
   .ka-hero { grid-template-columns: 1fr; min-height: 0; }
-  .ka-story { grid-column: 1; padding: 40px 22px 24px; }
+  .ka-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 24px; }
   .ka-story h1 { max-width: none; }
   .ka-panel {
     grid-column: 1;
     grid-row: auto;
-    padding: 10px 22px 40px;
+    order: 1;
   }
-  .ka-stage { min-height: 280px; position: relative; }
+  .ka-rail { grid-column: 1; grid-row: auto; order: 2; }
+  .ka-visual-image { min-height: 280px; }
   .ka-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
   .ka-rail-cell { border-left: 0; flex: 1 1 45%; }
 }

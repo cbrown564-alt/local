@@ -113,13 +113,16 @@ for its responsive subject proof, ResDiary handoff, menu routing, history,
 keyboard and contrast checks.
 Phase Q completed the enforcement, retroactive triage and first full
 review-repair-re-review cycle with zero public passes. Enniskeen's reviewed
-source cleared design at 7.68; its current source replaces reused photography
-with explicitly disclosed AI-generated visualisations and is Reviewable
-pending the affected visual categories. Buck's Head received a 6.53 Revise and
-completed its single focused repair cycle; the fixed source scored 7.15 but
-still failed claims honesty, so it is retired. Eighteen concepts remain
-unreviewed. The public homepage and index show that state rather than
-grandfathering earlier work.
+source cleared design at 7.68; its current source uses disclosed but fictional
+AI-generated visualisations and returned a 7.15 Revise because they do not
+prove the real hotel. Buck's Head received a 6.53 Revise and completed its
+single focused repair cycle; the fixed source scored 7.15 but still failed
+claims honesty, so it is retired. Mourne Cycles, Newcastle Chamber, Kent
+Amusements, Donard Veterinary and Cúpla also received first-round Revise
+verdicts. Their shared mechanical and truth repairs are implemented but have
+not been independently re-reviewed; subject proof remains outstanding.
+Thirteen concepts remain unreviewed. The public homepage and index show that
+state rather than grandfathering earlier work.
 
 ## Research artifacts
 
@@ -144,4 +147,12 @@ grandfathering earlier work.
   `href="#" data-concept-placeholder`; real navigation, including every
   homepage wordmark, must use its actual route. Run against `pnpm preview` with
   `pnpm test:concepts`.
+- `scripts/test-reviewed-concept-journeys.mjs` — executable repair checks for
+  reviewed and representative concepts: Chamber queries change directory
+  results, Donard form data survives into an explicit email handoff, Cúpla and
+  Mourne provisional claims are disclosed before prices, Kent's illustration
+  limitation is visible, and prototype availability exposes an honest end
+  state. Add a focused assertion here whenever a review identifies a
+  reproducible interaction or claim-ordering defect. Run with
+  `pnpm test:reviewed-concepts` against `pnpm preview`.
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks

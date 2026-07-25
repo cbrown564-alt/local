@@ -136,24 +136,84 @@ await check("Mourne Cycles labels provisional offers before prices and imagery",
   });
 
   await withPage("/concepts/mourne-cycles/", async (page) => {
-    const caption = await page.$eval(".mc-visual figcaption", (element) => element.textContent?.trim());
-    assert.match(caption ?? "", /Illustrative Trek image · current stock not verified/);
+    const evidence = await page.$eval(".mc-visual", (element) => ({
+      caption: element.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
+      src: element.querySelector("img")?.getAttribute("src"),
+      alt: element.querySelector("img")?.getAttribute("alt"),
+    }));
+    assert.match(evidence.caption ?? "", /AI-generated visualisation, faithfully based/);
+    assert.match(evidence.caption ?? "", /does not claim current shop stock/);
+    assert.match(evidence.src ?? "", /mourne-cycles-faithful-visualisation\.jpg$/);
+    assert.match(evidence.alt ?? "", /Trek full-suspension mountain bike/);
   });
 });
 
-await check("Kent identifies its illustration and keeps the phone action visible", async () => {
+await check("Kent identifies its documentary exterior and keeps the phone action visible", async () => {
   await withPage("/concepts/kent-amusements/", async (page) => {
     const result = await page.evaluate(() => {
       const call = document.querySelector(".ka-call");
       const rect = call?.getBoundingClientRect();
+      const visual = document.querySelector(".ka-panel");
       return {
-        note: document.querySelector(".ka-visual-note")?.textContent?.replace(/\s+/g, " ").trim(),
+        caption: visual?.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
+        src: visual?.querySelector("img")?.getAttribute("src"),
+        alt: visual?.querySelector("img")?.getAttribute("alt"),
         callVisible: Boolean(rect && rect.left >= 0 && rect.right <= document.documentElement.clientWidth),
       };
     });
-    assert.match(result.note ?? "", /real arcade photography is still required as subject proof/);
+    assert.match(result.caption ?? "", /Eric Jones, 2023 · CC BY-SA 2\.0/);
+    assert.match(result.src ?? "", /kent-amusements-exterior-2023\.jpg$/);
+    assert.match(result.alt ?? "", /Kent Amusements' long red and cream frontage/);
     assert.equal(result.callVisible, true);
   });
+});
+
+await check("Five repaired concepts load responsive subject-proof images", async () => {
+  const subjects = [
+    {
+      path: "/concepts/mourne-cycles/",
+      selector: ".mc-visual",
+      caption: /AI-generated visualisation, faithfully based/,
+    },
+    {
+      path: "/concepts/newcastle-chamber/",
+      selector: ".nc-panel",
+      caption: /Eric Jones, 2012 · CC BY-SA 2\.0/,
+    },
+    {
+      path: "/concepts/kent-amusements/",
+      selector: ".ka-panel",
+      caption: /Eric Jones, 2023 · CC BY-SA 2\.0/,
+    },
+    {
+      path: "/concepts/donard-veterinary/",
+      selector: ".dv-panel",
+      caption: /Eric Jones, 2023 · CC BY-SA 2\.0/,
+    },
+    {
+      path: "/concepts/cupla/",
+      selector: ".cp-panel",
+      caption: /AI-generated visualisation, faithfully based/,
+    },
+  ];
+
+  for (const subject of subjects) {
+    await withPage(subject.path, async (page) => {
+      const evidence = await page.$eval(subject.selector, (element) => {
+        const image = element.querySelector("img");
+        return {
+          complete: image?.complete,
+          naturalWidth: image?.naturalWidth,
+          currentSrc: image?.currentSrc,
+          caption: element.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
+        };
+      });
+      assert.equal(evidence.complete, true);
+      assert.ok((evidence.naturalWidth ?? 0) > 0);
+      assert.match(evidence.currentSrc ?? "", /-640\.webp$/);
+      assert.match(evidence.caption ?? "", subject.caption);
+    });
+  }
 });
 
 await check("Declared prototype availability shows a recovery-safe handoff", async () => {

@@ -234,6 +234,13 @@ placeholders. An intentionally inactive prototype control must use
 These mechanical failures are repaired before independent review rather than
 being rediscovered and scored by the reviewer.
 
+`pnpm test:reviewed-concepts` owns focused, reproducible assertions discovered
+during review: query-dependent results, form-field preservation into a handoff,
+visible provisional-claim labels before prices and explicit prototype end
+states. When a reviewer can describe a consequential defect as a deterministic
+browser assertion, the repair adds that assertion so the same failure cannot
+return in this or a later concept.
+
 The review may start when the reviewer can experience the bounded loop and
 judge every scored category. Missing evidence needed to judge the design must
 be collected or reproduced during review. Missing evidence needed only for
@@ -493,6 +500,49 @@ Calibration checkpoint (seven completed reviews): the batch clusters tightly at
 and below Enniskeen's 7.68. No single-reviewer drift is evident — the verdicts
 turn on concrete, reproducible defects (measured overflow, an ignored query
 parameter, a verified blank-email submit, a wrong currency), not taste.
+
+### Post-review shared repair pass — 24 July 2026
+
+The five first-round Revise concepts now have an implemented repair candidate
+for the repeatable mechanical and truth defects, backed by browser assertions:
+all home wordmarks use real routes; Chamber search changes its result set and
+labels directory names as illustrative rather than verified members; Donard
+Veterinary preserves every form field in a reviewable email draft and uses the
+verified PetsApp name; Cúpla uses sterling and labels its sample menu before
+the prices; Mourne Cycles labels unverified imagery, prices and tiers before
+they appear; and Kent's phone header fits at 390 px while its illustrated scene
+states that real subject photography is still required. The same audit fixed
+mobile overflow in Scopers and a shared concept-banner offset exposed by the
+Dundrum Inn.
+
+The follow-on subject-proof pass replaces the remaining fictional hero
+material in all five candidates. Newcastle Chamber now uses the licensed 2012
+Central Promenade photograph; Kent Amusements and Donard Veterinary use
+licensed 2023 photographs of their actual premises; Cúpla uses a faithful
+AI-generated visualisation of its photographed 105 Main Street frontage; and
+Mourne Cycles uses a faithful AI-generated visualisation of the Trek bicycle
+and service-yard setting in an April 2026 customer photo. Both generated
+images carry immediate captions that identify their origin and limitations,
+and the image credits record the reference, generation boundary and
+documentary-photo licence. The pass also makes the business name and concrete
+visitor action lead each home page, removes the earlier fictional offer or
+illustration panels, and fixes the phone sequence to show identity and action,
+then subject evidence, then secondary links.
+
+| Re-review candidate | Current repair fingerprint | Earlier failed gates addressed by the repair |
+|---|---|---|
+| Mourne Cycles | `sha256:a7ca30644c4c26bf0333a717a5f68545e7bfa24908bfe5db5f5f27f31296c51c` | claims, subject proof, responsive use |
+| Newcastle Chamber | `sha256:8c734e5a8f325c9a6c081e1222a9aad65c5742a36bbb041ba650d78485877bfb` | claims, visitor loop, subject proof |
+| Kent Amusements | `sha256:426c9eaf8032e782bde4dcb720cca5d55d9b0934fe35fc4db14c8d8ff66f556c` | subject proof, responsive use |
+| Donard Veterinary | `sha256:b5f4caa3a7cb2b4f3da19cb6e0ac004750e7253913a1e12361e4bc6960725e2b` | claims, visitor loop, subject proof |
+| Cúpla | `sha256:d694b8f163d15a355be0d345f266384efdbe7ba12a9db723010b05c4b5665130` | claims, subject proof |
+
+This is an implementation record, **not a new verdict**. The five concepts have
+not been independently re-reviewed against the repaired source, so every
+committed v1.1 status remains Revise and no transformation returns to the
+public list. The repair candidate passed the 72-case concept audit and all six
+focused reviewed-concept journeys, and direct browser inspection at 1265×710
+and 390×844 found no horizontal overflow or console errors.
 
 The repository now enforces the state:
 
