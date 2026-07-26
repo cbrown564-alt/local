@@ -127,8 +127,8 @@ await check("Newcastle Chamber directory names are sourced and disclaimed per ca
 await check("Donard appointment details survive into an explicit email handoff", async () => {
   await withPage("/concepts/donard-veterinary/appointments/", async (page) => {
     const pageText = await page.$eval("body", (body) => body.innerText);
-    assert.match(pageText, /PetsApp/);
-    assert.doesNotMatch(pageText, /VidiVet/);
+    assert.match(pageText, /VidiVet/);
+    assert.doesNotMatch(pageText, /PetsApp/);
     assert.equal(await page.$$("form[action^='mailto:']").then((forms) => forms.length), 0);
 
     await page.type("[data-dv-request] input[name=name]", "Review Test");

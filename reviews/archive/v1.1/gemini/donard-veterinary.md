@@ -1,4 +1,4 @@
-# Concept review — Donard Veterinary Clinic — 25 July 2026
+# Archived concept review — Donard Veterinary Clinic — 25 July 2026
 
 Status: Revise
 

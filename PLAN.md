@@ -4,7 +4,7 @@ Current working plan for Mourne Made. Historical milestone detail and the
 retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md).
 
-Snapshot: 25 July 2026 · seven public transformations · twelve former public
+Snapshot: 26 July 2026 · seven public transformations · twelve former public
 transformations queued for four-check triage · Murdock Brothers remains internal
 until trading is confirmed
 
@@ -56,4 +56,3 @@ pipeline stage in `research/verifications.json`.
 4. Verify the production request form delivers.
 5. Begin the first small outreach wave and record real responses separately
    from prototype evidence.
-

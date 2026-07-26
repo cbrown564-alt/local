@@ -26,7 +26,9 @@ const errors = [];
 
 const arrayBody = (name) => {
   const match = source.match(
-    new RegExp(`export const ${name}[^=]*=\\s*\\[([\\s\\S]*?)\\n\\];`),
+    new RegExp(
+      `export const ${name}[^=]*=\\s*\\[([\\s\\S]*?)\\]\\s*(?:as const)?;`,
+    ),
   );
   if (!match) {
     errors.push(`Could not find ${name} in src/data/transformations.ts.`);

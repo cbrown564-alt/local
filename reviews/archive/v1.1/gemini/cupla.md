@@ -1,4 +1,4 @@
-# Concept review — Cúpla, Dundrum — 25 July 2026
+# Archived concept review — Cúpla, Dundrum — 25 July 2026
 
 Status: Revise
 
