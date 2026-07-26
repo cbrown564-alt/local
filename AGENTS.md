@@ -11,7 +11,7 @@ There is one service: the Astro site. Standard commands live in `package.json`:
 - Lint/typecheck + build: `pnpm build` runs `astro check` (type/diagnostic check, acts as the lint step) followed by `astro build`. There is no separate `lint` or `test` script.
 - Preview the production build: `pnpm preview` (needed by the capture scripts below).
 
-Key routes are documented in `README.md`. The core user flow is the request form at `/request/`, which validates client-side and shows a success/error state without sending data (intentionally local-only in this prototype).
+Key routes are documented in `README.md`. The core user flow is the request form at `/request/`. It posts to the Vercel Function at `api/request.ts`, which validates the submission, rate-limits by source address and sends the lead by email. Without `GMAIL_USER` and `GMAIL_APP_PASSWORD` in the environment — as in a bare local checkout — the endpoint validates but cannot deliver; `pnpm test:request` exercises the input handling without sending anything.
 
 ### Non-obvious notes
 

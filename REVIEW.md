@@ -44,10 +44,12 @@ tick items here and update the linked docs in the same commit as each fix.
 - [x] **No analytics anywhere.** Fixed 23 July 2026: added privacy-friendly
   Vercel Web Analytics with custom events for comparison interaction, request
   form start, and successful submission.
-- [ ] **Confirm the deployed form actually delivers.** `PLAN.md` (~L141) still
-  says the flow is local-only; `api/request.ts` is fully wired but local `.env`
-  lacks the Gmail vars. Verify the Vercel env vars, send a test submission on
-  production, then correct PLAN.md.
+- [ ] **Confirm the deployed form actually delivers.** Still open as of
+  26 July 2026, and now the first item in `PLAN.md` because it blocks outreach.
+  `api/request.ts` is fully wired but the local `.env` lacks the Gmail vars, so
+  delivery has never been exercised against production. Verify the Vercel
+  environment variables, send a test submission on production, then tick this
+  item and `PLAN.md` step 1 in the same commit.
 - [x] **`mournemade.co.uk` does not resolve.** Fixed 23 July 2026: the domain
   is registered and attached. Verified live — the apex serves the site over
   HTTPS from Vercel (`lhr1`), `www` redirects to the apex, and `/`,
