@@ -134,6 +134,25 @@ and an internal concept-imagery audit at `/audits/` (26 July 2026). Internal
 working artifacts belong under `research/`, `docs/` or `src/workbench/` —
 never `public/`.
 
+`pnpm build` now enforces this. `scripts/check-public-assets.mjs` fails the
+build on an unexpected top-level entry in `public/`, and on any document
+extension (`.md`, `.html`, `.json`, `.csv`, `.pdf`, …) anywhere beneath it.
+Adding something genuinely public means adding it to `ALLOWED_TOP_LEVEL` or
+`ALLOWED_DOCUMENTS` in that script, with the reason it must ship — the
+allowlist is the record of what belongs on the site.
+
+The same check reports held images and videos that nothing in `src/`
+references any more:
+
+```powershell
+pnpm test:public-assets
+```
+
+An unused file is not a leak, so this never fails the build. It matters
+because a withdrawn image makes any "Sources & limits" copy describing it
+false — which is exactly how three public case studies came to carry untrue
+sourcing claims on 26 July 2026.
+
 ## Research artifacts
 
 - `src/data/businesses.json` — consolidated public-source dataset (379 records)
@@ -145,6 +164,13 @@ never `public/`.
 - `research/concept-reviews/audits/` — internal design audits kept as
   standalone HTML. Open them directly from disk; they are deliberately outside
   `public/` so they are never deployed
+- `research/concept-reviews/image-provenance.md` — how each concept image was
+  made and whether a concept still uses it. Read it before writing a sourcing
+  claim; the public credits for third-party photographs are separate, in
+  `public/images/place/ATTRIBUTION.md`, which ships with the site because the
+  CC BY-SA licences require it
+- `scripts/check-public-assets.mjs` — guards the deploy boundary and reports
+  unreferenced held assets
 - `scripts/check-concept-publication.mjs` — verifies that every public concept
   has four positive answers and no blocker
 - `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle
