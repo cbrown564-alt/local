@@ -44,10 +44,10 @@ tick items here and update the linked docs in the same commit as each fix.
 - [x] **No analytics anywhere.** Fixed 23 July 2026: added privacy-friendly
   Vercel Web Analytics with custom events for comparison interaction, request
   form start, and successful submission.
-- [ ] **Confirm the deployed form actually delivers.** `PLAN.md` (~L141) still
-  says the flow is local-only; `api/request.ts` is fully wired but local `.env`
-  lacks the Gmail vars. Verify the Vercel env vars, send a test submission on
-  production, then correct PLAN.md.
+- [x] **Confirm the deployed form actually delivers.** Verified 26 July 2026
+  after replacing the rejected Gmail app password. A live browser submission
+  rendered the success state, and the corresponding production
+  `POST /api/request` returned 200 in the Vercel logs.
 - [x] **`mournemade.co.uk` does not resolve.** Fixed 23 July 2026: the domain
   is registered and attached. Verified live — the apex serves the site over
   HTTPS from Vercel (`lhr1`), `www` redirects to the apex, and `/`,
@@ -116,6 +116,19 @@ tick items here and update the linked docs in the same commit as each fix.
 - [ ] Create and verify a Google Business Profile. This needs the owner's
   Google account, publishable contact details and real-world business
   verification; it cannot be completed safely from the repository.
+- [ ] **The Dundrum Inn transformation page shows the wrong "after".** The
+  concept was rebuilt on 26 July 2026 and the stored after still and clip
+  (`/images/dundrum-inn-after.jpg`, `/videos/dundrum-inn-after.mp4`) are
+  captures of the retired black-and-brass version. The case study currently
+  misrepresents the concept it links to. Blocked on the hero image so the
+  capture is run once rather than twice — see `PLAN.md` next milestone 3.
+- [ ] **The four checks did not catch a concept losing to the live site.** The
+  Dundrum Inn passed all four on 26 July and was still weaker than the
+  business's own website. The checks test honesty, not quality, which is
+  deliberate — but nothing in the process asks *is this actually better than
+  what they have?* for the maintained-site cases where that is the whole
+  pitch. Consider adding that single question to the review of any concept
+  whose subject already has a working site.
 
 ## P4 — Performance and media
 

@@ -316,8 +316,6 @@ export const publicTransformationSlugs = [
   "cupla",
   "tool-centre",
   "scopers",
-  "tonn-ruray",
-  "groves-chemist",
   "dundrum-inn",
   "hugh-mccanns",
   "bettys-butters",

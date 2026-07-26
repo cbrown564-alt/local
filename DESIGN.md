@@ -89,11 +89,25 @@ via a DevTools-Protocol emulation override, because headless Chrome's window
 floor of ~500 px otherwise crops a wider layout into a narrow image and fakes an
 overflow that is not there).
 
-- **The Dundrum Inn** (`dundrum-inn`) — Victorian playbill on slate: Bodoni
-  Moda mixed-size display over Space Mono, gorse brass. The argument is a
-  **tonight status board** — kitchen, rooms, tide, what's-on — on the first
-  screen, plus the site's 43-language translate widget cut to two. Journey case,
-  keeps the GuestDiary engine.
+- **The Dundrum Inn** (`dundrum-inn`) — **rebuilt 26 July 2026.** The first
+  version was a Victorian playbill on slate — Bodoni Moda over Space Mono,
+  gorse brass, no photograph — and it was worse than the Inn's own live
+  website, which at least shows Dundrum. It also broke the rule directly above
+  this list: it wore a mood board's identity, not the subject's.
+
+  The rebuild takes its colour from the Inn's own frontage and the plum quay
+  signage over the road — blush `#E2B49E`, cream `#FBF7F2`, quay plum
+  `#57263C` — with Petrona for display and Hanken Grotesk for the working
+  parts. The place gets a full-width hero (a labelled placeholder until a
+  publishable photograph exists). The argument is a **status line and Today
+  board built only from what the Inn publishes**: open-or-closed is computed in
+  the browser from its winter bar hours in Europe/London, the event comes from
+  its events listing, and rooms is a *search* rather than a count. Nothing
+  carries an illustrative-sample label because nothing is sampled — the first
+  version's kitchen closing time, room count and nightly price were all
+  invented, and the Inn publishes none of the three. Journey case; the
+  GuestDiary engine is kept and the four fields it takes move to the first
+  screen.
 - **Murdock Brothers** (`murdock-brothers`) — tanker steel and safety orange,
   Archivo + DM Mono, hazard chevrons. A **fuel-gauge order slider** (real range
   input) with the price left blank because the merchant publishes none.
