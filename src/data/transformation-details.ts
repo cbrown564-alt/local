@@ -64,8 +64,8 @@ export const transformationDetails = {
     "title": "The Dundrum Inn concept transformation — Mourne Made",
     "description": "A respectful, source-backed before-and-after website concept for The Dundrum Inn in Dundrum.",
     "eyebrow": "Website transformation · Dundrum",
-    "headline": "Answer tonight on the first screen.",
-    "date": "24 July 2026",
+    "headline": "Answer today on the first screen.",
+    "date": "26 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/dundrum-inn/",
     "conceptLabel": "View the full concept screen",
@@ -76,28 +76,32 @@ export const transformationDetails = {
       "beforePoster": "/images/dundrum-inn-before.jpg",
       "afterPoster": "/images/dundrum-inn-after.jpg",
       "beforeAlt": "Ten-second visit to The Dundrum Inn's current website — the GuestDiary homepage under its machine-translation bar, a scroll down the page and a menu hover",
-      "afterAlt": "Ten-second visit to the concept — the Come for the views playbill, the Tonight board of kitchen, rooms, tide and what's on, and the room-tonight action into GuestDiary"
+      "afterAlt": "Ten-second visit to the concept — the full-width Come for the views hero, the open-or-closed status rail computed from the Inn's published hours, the booking fields handing to GuestDiary, and the Today board of hours, events and rooms"
     },
     "secondSurfacesHtml": [],
+    /* Rebuilt 26 July 2026. The first concept dressed the inn in black and
+       brass with no photograph, and invented a kitchen closing time, a room
+       count and a nightly price. None of the three is published by the inn,
+       so none survives here. */
     "notesHeading": "Three changes to answer the question people arrive with.",
     "notes": [
       {
-        "title": "Put tonight on the first screen",
-        "body": "The captured homepage opens on a photograph beneath a translation bar. Nothing on it says whether the kitchen is serving, whether a room is free tonight, or what is on this weekend — the three things a local or a visitor actually arrives to check.",
-        "change": "A Tonight board across the first screen: kitchen hours, rooms left, the bay's tide and the next event, each answered before a scroll."
+        "title": "Say whether the door is open",
+        "body": "The inn publishes its opening hours for all seven days, and no food-service time anywhere — so the question the bar is rung about most is the one question the website cannot answer. On the captured homepage even the published hours sit far below a translation bar and a video, where nobody checking on the way out the door will find them.",
+        "change": "A status line on the seam of the first screen that works out open or closed from the inn's own published hours, in local time, next to the event the inn currently lists and the bay across the road."
       },
       {
-        "title": "Two languages, not forty-three",
-        "body": "A machine-translation widget offers the site in more than forty languages, and it is one of the most prominent controls on the page — yet none of its options is the one a Dundrum neighbour or a Mourne visitor needs.",
-        "change": "English and Irish, the two languages the street actually uses, with the machine bar retired so the header can carry a booking action instead."
+        "title": "Retire the machine translation, keep the Irish",
+        "body": "A translation widget offers the site in twenty-eight-plus machine-rendered languages and is among the most prominent controls on the page. Irish is already in that list — buried among the rest rather than offered as the one alternative this street would actually use.",
+        "change": "The machine bar retired and Irish named beside English, which frees the space the widget occupied for a booking action instead."
       },
       {
         "title": "Keep the booking that works",
         "body": "The inn already runs a real booking engine — GuestDiary — with availability, room types and the self-catering cottage. The gap is not the engine; it is how far you travel down the page before you reach it.",
-        "change": "A room-tonight action on the first screen that hands straight to the inn's own GuestDiary engine: the working booking kept, the route to it shortened."
+        "change": "The same four fields the inn's own search takes — dates, adults, children — moved to the first screen and handing to GuestDiary, which keeps the live availability. The working booking kept, the route to it shortened."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Dundrum Inn website on 24 July 2026. The inn's own words — Come for the views, stay for the craic, the 190 years, the best Sunday roast award — its 2026 content, the GuestDiary booking engine and Murlough Cottage all come from that site and are kept. The concept corrects one census error rather than inventing anything: the phone number was listed as 028 4375 1211, while the inn's own site publishes 028 4372 9933. This is a maintained, working site with a real booking engine, so this is a journey concept, not a rebuild — the booking stays with GuestDiary. The tide time and room-availability figures are illustrative. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://dundruminn.com/\" rel=\"external\">The Dundrum Inn public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Dundrum Inn website on 24 July 2026, and the inn's published detail was re-checked on 26 July 2026. The inn's own words — Come for the views, stay for the craic, the 190 years, the best Sunday roast award — its 2026 content, its winter opening hours, the four named rooms, Murlough Cottage, the 2 August Fleadh Cheoil listing and the GuestDiary booking engine all come from that site and are kept. The concept corrects one census error rather than inventing anything: the phone number was listed as 028 4375 1211, while the inn's own site publishes 028 4372 9933. This is a maintained, working site with a real booking engine, so this is a journey concept, not a rebuild — the booking stays with GuestDiary.</p>\n        <p>Two limits are worth stating plainly. The hero image is a placeholder, labelled as one on the concept page itself, until a publishable photograph of the inn exists. And the open-or-closed line is worked out from the inn's published <em>bar</em> hours: the inn does not publish kitchen or food-service times anywhere, which is the gap the concept is arguing about rather than a gap it fills. No kitchen closing time, room count or nightly price appears in the concept, because the inn publishes none of the three. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://dundruminn.com/\" rel=\"external\">The Dundrum Inn public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "groves-chemist": {
     "title": "Groves Chemist concept transformation — Mourne Made",

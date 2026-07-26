@@ -7,8 +7,9 @@ with `node scripts/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 26 July 2026 · nineteen public transformations · two prospects held on
-trading or suitability evidence · **no business contacted yet**
+Snapshot: 26 July 2026 · seventeen public transformations · one active next
+prospect · two prospects held on trading or suitability evidence · **no
+business contacted yet**
 
 ## Stages
 
@@ -31,6 +32,19 @@ Before publishing a concept:
 - add the slug to `publicTransformationSlugs`;
 - update the stage here and in `research/verifications.json`.
 
+## Active next prospect
+
+| Business | Town | Stage | Planned work |
+|---|---|---|---|
+| Painted Earth | Newcastle | Shortlisted | Full representative retail prototype: preserve the existing product photography, pricing, catalogue routes and personal identity while testing clearer collection discovery, product detail, physical-shop and gallery context, customer capture, upkeep and measurement |
+
+Painted Earth already has a functioning, polished ecommerce site. It is not a
+repair case and must not be presented as one. The project owner selected it on
+26 July 2026 because its strong starting point makes it a better test of
+proportionate improvement than another absent or failed website. The business
+has not been contacted. The work remains an independent prototype unless the
+business agrees to a pilot.
+
 ## Public concepts
 
 | Business | Town | Main concept work |
@@ -44,8 +58,6 @@ Before publishing a concept:
 | Cúpla | Dundrum | Bilingual café opening and sample menu |
 | The Tool Centre | Newcastle | Hardware and plant-hire desk with hire-list |
 | Scopers | Dundrum | Zero-waste bar and supper-club night |
-| Tonn Ruray Café | Dundrum | Café-first redesign leaving apartments alone |
-| Groves Chemist | Dundrum | Repeat-prescription restore and branch handoff |
 | The Dundrum Inn | Dundrum | Tonight board and GuestDiary journey |
 | Hugh McCann's | Newcastle | Wedding enquiry graft on a maintained site |
 | Betty's Better Butters | Dundrum | Product shelf with labelled flavour placeholders |
@@ -54,6 +66,17 @@ Before publishing a concept:
 | The Donard Hotel | Newcastle | Direct-booking proposal without OTA photos |
 | Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
 | Castle Farm Fresh Produce | Dundrum | Produce-led shop arrival and weekly boxes |
+
+## Removed from the public list
+
+| Business | Recorded stage | Current public state |
+|---|---|---|
+| Tonn Ruray Café | Concept published | Removed from `publicTransformationSlugs` on 26 July 2026; the reason is not recorded |
+| Groves Chemist | Concept published | Removed from `publicTransformationSlugs` on 26 July 2026; the reason is not recorded |
+
+Their internal concept routes and historical stage records remain. Do not call
+either transformation public unless it is restored to the machine-readable
+public list and passes the current publication check.
 
 ## Held
 
