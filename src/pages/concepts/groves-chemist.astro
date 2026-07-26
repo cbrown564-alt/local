@@ -81,34 +81,88 @@ const surgeries = ["Newcastle", "Dundrum", "Clough", "Downpatrick", "Ardglass"];
          form surface — perforated top edge, tabular numerals, warning line. -->
     <section class="gc-label" aria-labelledby="gc-label-title">
       <div class="gc-perf" aria-hidden="true"></div>
-      <div class="gc-label-body">
+      <form class="gc-label-body" method="post" data-gc-order aria-label="Order a repeat prescription">
         <p class="gc-label-org">Groves Chemists Ltd · 165–167 Main Street, Dundrum</p>
         <h2 id="gc-label-title">Order a repeat</h2>
 
         <div class="gc-field">
           <label for="gc-name">Name on the prescription</label>
-          <input id="gc-name" type="text" placeholder="e.g. Margaret Grove" autocomplete="off" />
+          <input id="gc-name" name="name" type="text" placeholder="e.g. Margaret Grove" autocomplete="name" required />
         </div>
 
         <div class="gc-field">
           <label for="gc-items">Items you need</label>
-          <textarea id="gc-items" rows="3" placeholder="One per line, as printed on your repeat slip"></textarea>
+          <textarea id="gc-items" name="items" rows="3" placeholder="One per line, as printed on your repeat slip" required></textarea>
         </div>
 
         <fieldset class="gc-field gc-field--choice">
           <legend>Collect from</legend>
-          <label><input type="radio" name="gc-branch" checked /> <span>Dundrum</span></label>
-          <label><input type="radio" name="gc-branch" /> <span>Killough</span></label>
-          <label><input type="radio" name="gc-branch" /> <span>Deliver to me</span></label>
+          <label><input type="radio" name="gc-branch" value="dundrum" checked /> <span>Dundrum</span></label>
+          <label><input type="radio" name="gc-branch" value="killough" /> <span>Killough</span></label>
+          <label><input type="radio" name="gc-branch" value="delivery" /> <span>Deliver to me</span></label>
         </fieldset>
 
-        <a class="gc-submit" href="#" data-concept-placeholder>Send to the pharmacy</a>
+        <button class="gc-submit" type="submit">Preview order handoff</button>
+
+        <div class="gc-handoff" data-gc-handoff role="status" hidden tabindex="-1">
+          <strong>Prototype handoff only — nothing is sent from this concept.</strong>
+          <span>
+            In the live site, this repeat request would go to the dispensary team at your
+            chosen branch. For now, call with the details you entered.
+          </span>
+          <a data-gc-call-link href="tel:+442843751326">Call Dundrum · 028 4375 1326</a>
+        </div>
+        <p class="gc-label-stale" data-gc-stale role="status" hidden>
+          Your details changed. Press <strong>Preview order handoff</strong> again so the
+          call link matches what you typed.
+        </p>
+
+        <p class="gc-label-foot">
+          Or call either branch directly · this independent concept does not submit
+          prescription orders itself
+        </p>
 
         <p class="gc-warn">
           <strong>Not for emergencies.</strong> If you need urgent help, phone the branch or
-          call 111. We'll confirm every order by text before dispensing.
+          call 111.
         </p>
-      </div>
+      </form>
     </section>
   </main>
 </ConceptLayout>
+
+<script>
+  const branchPhones: Record<string, { label: string; href: string }> = {
+    dundrum: { label: "Call Dundrum · 028 4375 1326", href: "tel:+442843751326" },
+    killough: { label: "Call Killough · 028 4484 2915", href: "tel:+442844842915" },
+    delivery: { label: "Call Dundrum · 028 4375 1326", href: "tel:+442843751326" },
+  };
+
+  document.querySelectorAll<HTMLFormElement>("[data-gc-order]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const branch = String(new FormData(form).get("gc-branch") ?? "dundrum");
+      const phone = branchPhones[branch] ?? branchPhones.dundrum;
+      const handoff = form.querySelector<HTMLElement>("[data-gc-handoff]");
+      const link = form.querySelector<HTMLAnchorElement>("[data-gc-call-link]");
+      const stale = form.querySelector<HTMLElement>("[data-gc-stale]");
+      if (!handoff || !link) return;
+
+      link.href = phone.href;
+      link.textContent = phone.label;
+      handoff.hidden = false;
+      if (stale) stale.hidden = true;
+      handoff.focus();
+    });
+
+    form.addEventListener("input", () => {
+      const handoff = form.querySelector<HTMLElement>("[data-gc-handoff]");
+      const stale = form.querySelector<HTMLElement>("[data-gc-stale]");
+      if (!handoff || handoff.hidden) return;
+      handoff.hidden = true;
+      if (stale) stale.hidden = false;
+    });
+  });
+</script>

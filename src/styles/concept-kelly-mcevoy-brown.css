@@ -194,10 +194,17 @@ body.concept-kmb {
 .kmb-chip {
   padding: 6px 11px;
   border: 1px solid var(--kmb-line-firm);
+  background: transparent;
+  font: inherit;
   font-size: 11.5px;
   font-weight: 600;
   color: var(--kmb-paper);
-  cursor: default;
+  cursor: pointer;
+}
+
+.kmb-chip:focus-visible {
+  outline: 2px solid var(--kmb-yellow);
+  outline-offset: 2px;
 }
 
 .kmb-chip em { font-style: normal; color: var(--kmb-paper-dim); }
@@ -208,7 +215,7 @@ body.concept-kmb {
 
 .kmb-project {
   display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
   padding: 13px clamp(16px, 2vw, 22px);
@@ -218,13 +225,7 @@ body.concept-kmb {
 
 .kmb-project:hover { background: rgba(111, 183, 221, .08); }
 .kmb-project:last-child { border-bottom: 0; }
-
-.kmb-project-no {
-  font-family: "Martian Mono", monospace;
-  font-size: 12px;
-  color: var(--kmb-yellow);
-  font-variant-numeric: tabular-nums;
-}
+.kmb-project[hidden] { display: none; }
 
 .kmb-project-name {
   display: block;
@@ -269,6 +270,6 @@ body.concept-kmb {
 @media (max-width: 520px) {
   .kmb-strip { flex-direction: column; align-items: flex-start; gap: 5px; }
   .kmb-titleblock { flex-wrap: wrap; }
-  .kmb-project { grid-template-columns: 38px 1fr; }
-  .kmb-project-sector { grid-column: 2; margin-top: 2px; }
+  .kmb-project { grid-template-columns: 1fr; }
+  .kmb-project-sector { margin-top: 2px; }
 }

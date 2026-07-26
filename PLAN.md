@@ -4,9 +4,8 @@ Current working plan for Mourne Made. Historical milestone detail and the
 retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md).
 
-Snapshot: 26 July 2026 · seven public transformations · twelve former public
-transformations queued for four-check triage · Murdock Brothers remains internal
-until trading is confirmed
+Snapshot: 26 July 2026 · nineteen public transformations · Murdock Brothers
+remains internal until trading is confirmed
 
 ## Active work — recover the useful portfolio
 
@@ -21,38 +20,33 @@ clear and specific, works as presented, and safe to publish.
 - Repaired and restored Mourne Cycles, Newcastle Chamber, Kent Amusements,
   Donard Veterinary and Cúpla.
 - Moved the v1.1 criteria, plan and scorecard template into dated archives.
+- Completed four-check triage for the twelve queued concepts and published all
+  twelve after economical blocker repairs where needed.
 
-### Twelve concepts to triage
+### Triage outcomes (26 July 2026)
 
-Check these in order. Default to **Publish** when all four answers are yes.
-Optional improvements do not hold up publication.
-
-| Order | Concept | Truthful | Specific | Works | Safe | Result / next action |
-|---:|---|---|---|---|---|---|
-| 1 | The Tool Centre | To check | To check | To check | To check | Review the hire-list claims and call action |
-| 2 | Scopers | To check | To check | To check | To check | Review the supper-club action and food claims |
-| 3 | Tonn Ruray Café | To check | To check | To check | To check | Review the café/apartments distinction and menu action |
-| 4 | Groves Chemist | To check | To check | To check | To check | Review prescription claims and handoff |
-| 5 | The Dundrum Inn | To check | To check | To check | To check | Review status wording and GuestDiary handoff |
-| 6 | Hugh McCann's | To check | To check | To check | To check | Review the enquiry action and venue claims |
-| 7 | Betty's Better Butters | To check | To check | To check | To check | Review illustrative products and flavours |
-| 8 | Douglas & Cromie | To check | To check | To check | To check | Review vehicle placeholders and listing claims |
-| 9 | Kelly, McEvoy & Brown | To check | To check | To check | To check | Review project metadata and filter labels |
-| 10 | The Donard Hotel | To check | To check | To check | To check | Review direct-booking wording and handoff |
-| 11 | Newcastle Family Dental Care | To check | To check | To check | To check | Review practice claims and appointment action |
-| 12 | Castle Farm Fresh Produce | To check | To check | To check | To check | Create its missing verification record, then review |
-
-For each concept, update this row, `research/concept-reviews/publication.json`
-when publishing, the public slug list in `src/data/transformations.ts`, and the
-pipeline stage in `research/verifications.json`.
+| Concept | Result | Notes |
+|---|---|---|
+| The Tool Centre | Publish | Hire-list labelled illustrative; call focus rings fixed |
+| Scopers | Publish | Supper-club date no longer presents a stale year as upcoming |
+| Tonn Ruray Café | Publish | Café/apartments split and menu placeholders already honest |
+| Groves Chemist | Publish | Prescription handoff now an honest prototype with branch phone |
+| The Dundrum Inn | Publish | Tonight board labelled sample; GuestDiary opens live homepage |
+| Hugh McCann's | Publish | Enquiry prepares mailto with date and guest count |
+| Betty's Better Butters | Publish | Placeholder flavours already disclosed |
+| Douglas & Cromie | Publish | Stock cards labelled as sample placeholders |
+| Kelly, McEvoy & Brown | Publish | Project metadata limited to sourced fields; filters work |
+| The Donard Hotel | Publish | Direct-booking wording already illustrative; no OTA photos |
+| Newcastle Family Dental Care | Publish | Care claims limited to sourced practice items |
+| Castle Farm Fresh Produce | Publish | Verification record created; shop journey concept passes |
 
 ## Next milestones
 
-1. Complete the twelve triage reviews and restore every concept without a
-   serious blocker.
-2. Regenerate public comparison media only where a blocker repair changed the
-   visible result.
-3. Finish personalised one-sheets for concepts selected for direct outreach.
-4. Verify the production request form delivers.
-5. Begin the first small outreach wave and record real responses separately
+1. Regenerate public comparison media only where a blocker repair changed the
+   visible result (Scopers supper-club, Douglas & Cromie forecourt, Kelly
+   register, Groves handoff, Dundrum Inn Tonight board, Hugh McCann's enquiry,
+   Tool Centre hire-list, Newcastle Dental care pills).
+2. Finish personalised one-sheets for concepts selected for direct outreach.
+3. Verify the production request form delivers.
+4. Begin the first small outreach wave and record real responses separately
    from prototype evidence.

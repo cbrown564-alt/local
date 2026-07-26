@@ -193,7 +193,7 @@ export const transformationDetails = {
       "beforePoster": "/images/kelly-mcevoy-brown-before.jpg",
       "afterPoster": "/images/kelly-mcevoy-brown-after.jpg",
       "beforeAlt": "Ten-second visit to Kelly, McEvoy & Brown's current website — the small hand-built homepage carousel and the portfolio listed underneath as plain text links",
-      "afterAlt": "Ten-second visit to the concept — the Build on experience opening and a project register with drawing numbers, sector filters and named projects"
+      "afterAlt": "Ten-second visit to the concept — the Build on experience opening and a project register with sector filters and named projects"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes to let the record do the selling.",

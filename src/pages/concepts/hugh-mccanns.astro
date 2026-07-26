@@ -58,25 +58,29 @@ const seasons = [
 
     <!-- The feature: date + guest count, the two facts every venue call starts
          with, captured before the phone rings. -->
-    <section class="hm-enquire-panel" id="enquire" aria-labelledby="hm-enquire-title">
+    <form class="hm-enquire-panel" id="enquire" data-hm-enquire aria-labelledby="hm-enquire-title">
       <p class="hm-enquire-eyebrow">Enquire</p>
       <h2 id="hm-enquire-title">Is our day free?</h2>
+      <p class="hm-enquire-intro">
+        Prepare an email with your date and guest count. Nothing is sent until you
+        review and send it from your email app.
+      </p>
 
       <div class="hm-field">
         <label for="hm-date">Your date <span>(or roughly when)</span></label>
-        <input id="hm-date" type="date" value="2027-06-12" />
+        <input id="hm-date" name="date" type="date" value="2027-06-12" required />
       </div>
 
       <div class="hm-field">
         <label for="hm-guests">How many guests</label>
         <div class="hm-guests">
-          <input id="hm-guests" type="range" min="40" max="250" step="10" value="120" aria-describedby="hm-guests-out" />
+          <input id="hm-guests" name="guests" type="range" min="40" max="250" step="10" value="120" aria-describedby="hm-guests-out" />
           <output id="hm-guests-out" for="hm-guests">120 guests</output>
         </div>
         <p class="hm-guests-scale"><span>40 · intimate</span><span>250 · the full room</span></p>
       </div>
 
-      <div class="hm-season" aria-label="Season at a glance">
+      <div class="hm-season" aria-label="Season at a glance — illustrative only">
         {seasons.map((s) => (
           <span class={`hm-month hm-month--${s.state}`}>
             <span class="hm-month-m">{s.m}</span>
@@ -90,19 +94,91 @@ const seasons = [
         <span><i class="hm-key hm-key--full"></i> Taken</span>
       </p>
 
-      <a class="hm-submit" href="#" data-concept-placeholder>Send our enquiry →</a>
-      <p class="hm-enquire-foot">We'll come back within the day to arrange a viewing. Illustrative availability.</p>
-    </section>
+      <button class="hm-submit" type="submit">Prepare wedding enquiry →</button>
+      <div class="hm-handoff" data-hm-handoff role="status" hidden tabindex="-1">
+        <strong>Your enquiry is ready.</strong>
+        <span>Open the draft, check it, then press send in your email app.</span>
+        <a data-hm-email-link href="mailto:weddings@hughmccanns.com">Open email draft</a>
+      </div>
+      <p class="hm-enquire-stale" data-hm-stale role="status" hidden>
+        Your details changed. Press <strong>Prepare wedding enquiry</strong> again so
+        the draft matches what you chose.
+      </p>
+      <p class="hm-enquire-foot">
+        Or call <a href="tel:+442843726622">028 4372 6622</a> · season strip is
+        illustrative · this concept does not send enquiries itself
+      </p>
+    </form>
   </main>
 
   <script is:inline>
     (function () {
-      var range = document.getElementById("hm-guests");
-      var out = document.getElementById("hm-guests-out");
-      if (!range || !out) return;
-      function sync() { out.textContent = range.value + " guests"; }
-      range.addEventListener("input", sync);
-      sync();
+      var recipient = "weddings@hughmccanns.com";
+      var form = document.querySelector("[data-hm-enquire]");
+      if (!form) return;
+
+      var range = form.querySelector("#hm-guests");
+      var out = form.querySelector("#hm-guests-out");
+      if (range && out) {
+        function syncGuests() { out.textContent = range.value + " guests"; }
+        range.addEventListener("input", syncGuests);
+        syncGuests();
+      }
+
+      function hideHandoff() {
+        var handoff = form.querySelector("[data-hm-handoff]");
+        var stale = form.querySelector("[data-hm-stale]");
+        if (!handoff || handoff.hidden) return;
+        handoff.hidden = true;
+        if (stale) stale.hidden = false;
+      }
+
+      form.addEventListener("input", hideHandoff);
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var dateInput = form.querySelector("#hm-date");
+        var guestInput = form.querySelector("#hm-guests");
+        var handoff = form.querySelector("[data-hm-handoff]");
+        var link = form.querySelector("[data-hm-email-link]");
+        var stale = form.querySelector("[data-hm-stale]");
+        if (!dateInput || !guestInput || !handoff || !link) return;
+
+        var dateValue = dateInput.value;
+        var dateLabel = dateValue;
+        if (dateValue) {
+          var parsed = new Date(dateValue + "T12:00:00");
+          if (!isNaN(parsed.getTime())) {
+            dateLabel = parsed.toLocaleDateString("en-GB", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            });
+          }
+        }
+
+        var guests = guestInput.value;
+        var query = new URLSearchParams({
+          subject: "Wedding enquiry — " + dateLabel,
+          body: [
+            "Hello Hugh McCann's,",
+            "",
+            "We would like to enquire about holding our wedding with you.",
+            "Preferred date: " + dateLabel,
+            "Guest count: " + guests,
+            "",
+            "Please let us know if this date is available and how we can arrange a viewing.",
+          ].join("\n"),
+        });
+
+        link.href = "mailto:" + recipient + "?" + query;
+        handoff.hidden = false;
+        if (stale) stale.hidden = true;
+        handoff.focus();
+      });
     })();
   </script>
 </ConceptLayout>
