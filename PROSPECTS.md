@@ -4,8 +4,11 @@ Human-readable summary of the Mourne Made concept pipeline. The detailed source
 of truth is `research/verifications.json`; regenerate `src/data/businesses.json`
 with `node scripts/normalize-businesses.mjs` after changing it.
 
+This document owns pipeline state. `PLAN.md` and `README.md` link here rather
+than repeating a count.
+
 Snapshot: 26 July 2026 · nineteen public transformations · two prospects held on
-trading or suitability evidence
+trading or suitability evidence · **no business contacted yet**
 
 ## Stages
 
@@ -14,6 +17,11 @@ requested → Client`
 
 Use **Assessed – not shortlisted** when research is worth keeping but no concept
 is planned. A local route alone does not change a stage.
+
+**Held** is not a stage. It is a flag laid over whatever stage a business has
+reached, recording that it must not be published or contacted until a named
+condition is met. A held business keeps its real stage in
+`research/verifications.json`.
 
 Before publishing a concept:
 
@@ -49,10 +57,13 @@ Before publishing a concept:
 
 ## Held
 
-| Business | Reason | Unblock condition |
-|---|---|---|
-| Murdock Brothers | Trading status is not confirmed strongly enough for public use | Confirm trading from a current authoritative or first-hand source |
-| South Down Signs | Online evidence is stale | Confirm trading in person or from current business evidence |
+| Business | Stage | Reason | Unblock condition |
+|---|---|---|---|
+| Murdock Brothers | Concept in progress | Trading status is not confirmed strongly enough for public use | Confirm trading from a current authoritative or first-hand source |
+| South Down Signs | Shortlisted | Online evidence is stale; no concept work started | Confirm trading in person or from current business evidence |
+
+South Down Signs carries no explicit `stage` in `research/verifications.json`;
+`scripts/normalize-businesses.mjs` defaults an unset stage to **Shortlisted**.
 
 The remaining assessed businesses and their evidence stay in
 `research/verifications.json`. The earlier detailed pipeline, including the
