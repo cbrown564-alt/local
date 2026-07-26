@@ -80,7 +80,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Kelly, McEvoy & Brown's current homepage: a small hand-built site with a carousel and the portfolio listed underneath as plain text links",
     afterAlt:
-      "Mourne Made concept on an architect's blueprint grid: a Build on experience headline beside a project register with drawing numbers, sector filters and named projects",
+      "Mourne Made concept on an architect's blueprint grid: a Build on experience headline beside a project register with sector filters and named projects",
     href: "/transformations/kelly-mcevoy-brown/",
   },
   {
@@ -314,6 +314,18 @@ export const publicTransformationSlugs = [
   "kent-amusements",
   "donard-veterinary",
   "cupla",
+  "tool-centre",
+  "scopers",
+  "tonn-ruray",
+  "groves-chemist",
+  "dundrum-inn",
+  "hugh-mccanns",
+  "bettys-butters",
+  "douglas-cromie",
+  "kelly-mcevoy-brown",
+  "donard-hotel",
+  "newcastle-dental",
+  "castle-farm",
 ] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

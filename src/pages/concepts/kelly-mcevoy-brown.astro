@@ -3,26 +3,31 @@ import "../../styles/global.css";
 import "../../styles/concept-kelly-mcevoy-brown.css";
 import ConceptLayout from "../../layouts/ConceptLayout.astro";
 
-// Real projects and sectors from kmbni.com, 24 July 2026. The site lists them
-// as plain link lists; this concept turns 53 years of work into a filterable
-// index — the portfolio the firm has, made visible.
+// Real projects and sectors from kmbni.com, 24 July 2026. Names and sector
+// groupings match the site's link lists; places are taken only from the site
+// text — nothing inferred beyond it.
 const sectors = [
-  { key: "Ecclesiastical", count: "40+ years" },
-  { key: "Healthcare", count: "" },
-  { key: "Education", count: "" },
-  { key: "Residential", count: "" },
-  { key: "Leisure", count: "" },
-  { key: "Commercial", count: "" },
+  { key: "Ecclesiastical" },
+  { key: "Healthcare" },
+  { key: "Education" },
+  { key: "Residential" },
+  { key: "Leisure" },
+  { key: "Commercial" },
 ];
 const projects = [
-  { name: "St Patrick's & St Ronan's", place: "Magheralin", sector: "Ecclesiastical", no: "047" },
-  { name: "Our Lady of the Angels", place: "Dechomet", sector: "Ecclesiastical", no: "052" },
-  { name: "Rathfriland Manor Nursing Home", place: "Rathfriland", sector: "Healthcare", no: "061" },
-  { name: "St Luke's — Rosewood & Pinewood Villas", place: "Armagh", sector: "Healthcare", no: "063" },
-  { name: "Knockevin Special School", place: "Dundrum", sector: "Education", no: "071" },
-  { name: "Rowallane Credit Union & Community Hub", place: "Saintfield", sector: "Commercial", no: "078" },
-  { name: "Crossmaglen Community Centre", place: "Crossmaglen", sector: "Leisure", no: "082" },
-  { name: "Roslyn Place Apartments & Townhouses", place: "Belfast", sector: "Residential", no: "086" },
+  { name: "Saint Patrick's & Saint Ronan's", place: "Magheralin", sector: "Ecclesiastical" },
+  { name: "Our Lady of the Angels", place: "Dechomet", sector: "Ecclesiastical" },
+  { name: "Rathfriland Manor Nursing Home", place: "", sector: "Healthcare" },
+  { name: "St Luke's Hospital Rosewood & Pinewood Villas", place: "", sector: "Healthcare" },
+  { name: "Roslyn Place Apartments & Townhouses", place: "", sector: "Residential" },
+  { name: "Hacksballscross", place: "", sector: "Residential" },
+  { name: "Mc Kays Road", place: "Castlewellan", sector: "Residential" },
+  { name: "Knockevin Special School", place: "Dundrum", sector: "Education" },
+  { name: "Mount St Patrick", place: "Newry", sector: "Education" },
+  { name: "Culloville Community Centre", place: "", sector: "Leisure" },
+  { name: "Crossmaglen Community Centre", place: "", sector: "Leisure" },
+  { name: "Rowallane Credit Union & Community Hub", place: "", sector: "Commercial" },
+  { name: "The Grove Building", place: "46-48 Main Street, Castlewellan", sector: "Commercial" },
 ];
 const accreditations = ["ISO 14001", "Constructionline", "SafeTCert", "CEF", "NHBC"];
 ---
@@ -75,31 +80,52 @@ const accreditations = ["ISO 14001", "Constructionline", "SafeTCert", "CEF", "NH
     <section class="kmb-index" aria-labelledby="kmb-index-title">
       <div class="kmb-index-head">
         <h2 id="kmb-index-title">Project register</h2>
-        <span class="kmb-index-sub">Drawing no. / title / location / sector</span>
+        <span class="kmb-index-sub">Title / location / sector</span>
       </div>
 
-      <div class="kmb-filter" role="list" aria-label="Filter by sector">
-        <span class="kmb-chip kmb-chip--on" role="listitem">All work</span>
+      <div class="kmb-filter" role="group" aria-label="Filter by sector">
+        <button type="button" class="kmb-chip kmb-chip--on" data-sector="all" aria-pressed="true">All work</button>
         {sectors.map((sector) => (
-          <span class="kmb-chip" role="listitem">
-            {sector.key}{sector.count && <em>· {sector.count}</em>}
-          </span>
+          <button type="button" class="kmb-chip" data-sector={sector.key} aria-pressed="false">
+            {sector.key}
+          </button>
         ))}
       </div>
 
       <ol class="kmb-projects">
         {projects.map((project) => (
-          <li class="kmb-project">
-            <span class="kmb-project-no">{project.no}</span>
+          <li class="kmb-project" data-sector={project.sector}>
             <span class="kmb-project-main">
               <span class="kmb-project-name">{project.name}</span>
-              <span class="kmb-project-place">{project.place}</span>
+              {project.place && <span class="kmb-project-place">{project.place}</span>}
             </span>
             <span class="kmb-project-sector">{project.sector}</span>
           </li>
         ))}
       </ol>
-      <p class="kmb-index-foot">Twelve named projects on the current site — this is the frame they belong in.</p>
+      <p class="kmb-index-foot">Thirteen named projects from the current site — sector labels match the firm's own lists; order is illustrative.</p>
     </section>
   </main>
 </ConceptLayout>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>(".kmb-chip");
+  const rows = document.querySelectorAll<HTMLElement>(".kmb-project");
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const sector = chip.dataset.sector ?? "all";
+
+      chips.forEach((c) => {
+        const active = c === chip;
+        c.classList.toggle("kmb-chip--on", active);
+        c.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      rows.forEach((row) => {
+        const show = sector === "all" || row.dataset.sector === sector;
+        row.hidden = !show;
+      });
+    });
+  });
+</script>

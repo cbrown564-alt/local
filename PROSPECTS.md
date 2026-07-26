@@ -4,9 +4,8 @@ Human-readable summary of the Mourne Made concept pipeline. The detailed source
 of truth is `research/verifications.json`; regenerate `src/data/businesses.json`
 with `node scripts/normalize-businesses.mjs` after changing it.
 
-Snapshot: 26 July 2026 · seven public transformations · twelve built concepts
-awaiting short publication triage · two prospects held on trading or suitability
-evidence
+Snapshot: 26 July 2026 · nineteen public transformations · two prospects held on
+trading or suitability evidence
 
 ## Stages
 
@@ -35,25 +34,18 @@ Before publishing a concept:
 | Kent Amusements | Newcastle | Attractions and seasonal-hours structure |
 | Donard Veterinary Clinic | Newcastle | Appointment request and emergency information |
 | Cúpla | Dundrum | Bilingual café opening and sample menu |
-
-## Built concepts awaiting triage
-
-The order and four-check worksheet live in `PLAN.md`.
-
-| Business | Town | Main question |
-|---|---|---|
-| The Tool Centre | Newcastle | Are the hire claims and call action honest and usable? |
-| Scopers | Dundrum | Does the supper-club action match the published offer? |
-| Tonn Ruray Café | Dundrum | Is the café separated clearly from the apartments? |
-| Groves Chemist | Dundrum | Is the prescription handoff honest? |
-| The Dundrum Inn | Dundrum | Are status wording and GuestDiary handoff accurate? |
-| Hugh McCann's | Newcastle | Does the enquiry action work as presented? |
-| Betty's Better Butters | Dundrum | Are proposed products and flavours labelled? |
-| Douglas & Cromie | Newcastle | Are vehicle placeholders and listing claims clear? |
-| Kelly, McEvoy & Brown | Dundrum | Are project metadata and filters honest? |
-| The Donard Hotel | Newcastle | Is direct-booking wording accurate? |
-| Newcastle Family Dental Care | Newcastle | Are practice claims and the appointment action safe? |
-| Castle Farm Fresh Produce | Dundrum | Create the missing verification record before review |
+| The Tool Centre | Newcastle | Hardware and plant-hire desk with hire-list |
+| Scopers | Dundrum | Zero-waste bar and supper-club night |
+| Tonn Ruray Café | Dundrum | Café-first redesign leaving apartments alone |
+| Groves Chemist | Dundrum | Repeat-prescription restore and branch handoff |
+| The Dundrum Inn | Dundrum | Tonight board and GuestDiary journey |
+| Hugh McCann's | Newcastle | Wedding enquiry graft on a maintained site |
+| Betty's Better Butters | Dundrum | Product shelf with labelled flavour placeholders |
+| Douglas & Cromie | Newcastle | Dealer-owned forecourt with sample listings |
+| Kelly, McEvoy & Brown | Dundrum | Blueprint project register with sector filters |
+| The Donard Hotel | Newcastle | Direct-booking proposal without OTA photos |
+| Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
+| Castle Farm Fresh Produce | Dundrum | Produce-led shop arrival and weekly boxes |
 
 ## Held
 
