@@ -58,7 +58,7 @@ hero and secondary-page layouts local.
   exactly what the hotel's Bookin1 engine accepts — and a small submit handler
   builds the same `#/hotel/ecs/results?date=…&los=…` deep link the hotel's own
   searchbox builds (verified against the live engine on build day). The
-  hotel's two small bathroom photographs are matted on pine at natural scale
+  hotel's small Room 6 bathroom photograph is matted on pine at natural scale
   rather than stretched; all imagery is the hotel's own. The flagship case
   study adds Rooms and Dine companion stills plus a one-minute silent film
   covering the current visit, all five concept pages and both routes into
