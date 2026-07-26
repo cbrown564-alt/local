@@ -95,6 +95,7 @@ because three documents each kept their own copy.
 
 | Document | Owns |
 |---|---|
+| `PRODUCT.md` | Company positioning, audience, offer, product principles and evidence boundaries |
 | `PROSPECTS.md` | Pipeline state: every business's stage, the public list and the held list |
 | `PLAN.md` | Current milestone and the next actions |
 | `REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |

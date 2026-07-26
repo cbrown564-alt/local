@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import nodemailer from "nodemailer";
+import nodemailer, { type SendMailOptions } from "nodemailer";
 
 const MAX = {
   business: 120,
@@ -17,6 +17,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1_000;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
+type SendMail = (options: SendMailOptions) => Promise<unknown>;
 
 const header = (value: string | string[] | undefined) =>
   Array.isArray(value) ? value[0] : value;
@@ -62,7 +63,8 @@ const normaliseLink = (value: string) => {
   return link.href;
 };
 
-export default async function handler(request: VercelRequest, response: VercelResponse) {
+export const createRequestHandler = (sendMailOverride?: SendMail) =>
+async function handler(request: VercelRequest, response: VercelResponse) {
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
     return response.status(405).json({ error: "Method not allowed." });
@@ -132,11 +134,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
     return response.status(503).json({ error: "The request service is not configured yet. Please try again later." });
   }
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: gmailUser, pass: gmailPassword },
-  });
-
   const safeBusiness = fields.business.replace(/[\r\n]+/g, " ").slice(0, 80);
   const message = [
     "New Mourne Made before-and-after request",
@@ -151,16 +148,53 @@ export default async function handler(request: VercelRequest, response: VercelRe
     fields.idea,
   ].join("\n");
 
-  try {
-    await transporter.sendMail({
+  const mail: SendMailOptions = {
       from: { name: "Mourne Made website", address: gmailUser },
       to: recipient,
       replyTo: { name: fields.name, address: fields.email },
       subject: `Before-and-after request: ${safeBusiness}`,
       text: message,
-    });
+  };
+
+  if (sendMailOverride) {
+    try {
+      await sendMailOverride(mail);
+    } catch {
+      return response.status(503).json({
+        error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
+      });
+    }
     return response.status(200).json({ ok: true });
-  } catch {
-    return response.status(502).json({ error: "The request could not be sent just now. Please try again shortly." });
   }
-}
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: gmailUser, pass: gmailPassword },
+    connectionTimeout: 8_000,
+    greetingTimeout: 8_000,
+    socketTimeout: 12_000,
+  });
+
+  try {
+    await transporter.sendMail(mail);
+    return response.status(200).json({ ok: true });
+  } catch (deliveryError) {
+    const failure = deliveryError as {
+      code?: unknown;
+      command?: unknown;
+      responseCode?: unknown;
+    };
+    console.error("Request email delivery failed", {
+      code: typeof failure.code === "string" ? failure.code : "unknown",
+      command: typeof failure.command === "string" ? failure.command : "unknown",
+      responseCode: typeof failure.responseCode === "number" ? failure.responseCode : undefined,
+    });
+    return response.status(503).json({
+      error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
+    });
+  } finally {
+    transporter.close();
+  }
+};
+
+export default createRequestHandler();

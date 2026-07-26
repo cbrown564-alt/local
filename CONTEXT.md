@@ -1,8 +1,8 @@
 # Mourne Made
 
 A local digital studio serving Dundrum and Newcastle, County Down. It shows a
-business a concrete, side-by-side picture of what its public digital presence
-could become, before asking it to buy anything.
+business a concrete change to the route from online discovery to a booking,
+order, enquiry or visit before asking it to buy anything.
 
 ## Language
 
@@ -29,6 +29,17 @@ ownership of it and says what is wrong with it. The call to action for a
 one-sheet recipient, who has already been given the before-and-after and
 cannot meaningfully request one.
 _Avoid_: Request, enquiry, lead (for this act)
+
+**Representative prototype**:
+A complete, uncommissioned experience built to test whether one form of the
+Mourne Made offer works. It may use a real business as its subject, but it is
+not client work and does not provide evidence of business demand or results.
+
+**Pilot**:
+Agreed work with a participating business. A pilot has a recorded baseline,
+one primary customer action, business-owned accounts, a named upkeep
+responsibility and a dated review. Do not call an independent concept or
+representative prototype a pilot.
 
 ### Printed pieces
 

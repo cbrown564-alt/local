@@ -88,8 +88,18 @@ import "../styles/request.css";
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || "The request could not be sent.");
+      const contentType = response.headers.get("content-type") ?? "";
+      const result = contentType.includes("application/json")
+        ? await response.json().catch(() => ({}))
+        : {};
+      if (!response.ok) {
+        throw new Error(
+          result.error
+          || (response.status >= 500
+            ? "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead."
+            : "The request could not be sent."),
+        );
+      }
       form.reset();
       form.classList.remove("request-form--submitted");
       track("request_form_submitted", { source });
