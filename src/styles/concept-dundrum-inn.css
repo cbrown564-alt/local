@@ -1,316 +1,494 @@
 /* The Dundrum Inn — independent concept identity.
-   A 190-year-old bar on Dundrum Bay. The direction is a Victorian playbill
-   printed on slate: heavy mixed-size display lines, hairline rules, and a
-   lime-washed cream on near-black. The argument of the concept is the board —
-   tonight's four answers on the first screen — so the board is the only
-   element allowed to carry colour and mono numerals. */
+
+   Rebuilt 26 July 2026. The first version dressed a 190-year-old bar on
+   Dundrum Bay as a black-and-brass city steakhouse: no photograph, Bodoni on
+   near-black, Space Mono for body copy, and none of the Inn's own marks. The
+   live site beat it, because the live site at least shows Dundrum.
+
+   This version takes its colour from the Inn's own frontage and signage —
+   the blush of the wordmark, cream plaster, and the plum of the Keel Point
+   and The Quay signs across the road — and gives the place back the space.
+   Petrona carries the warmth of an old-style serif without the coldness of a
+   Didone; Hanken Grotesk does the working parts: labels, hours, the booking
+   fields. The board is no longer the only thing on the page allowed colour,
+   because the photograph now carries the first screen. */
 
 body.concept-dundrum-inn {
-  --di-slate: #141a1c;
-  --di-slate-lift: #1e2629;
-  --di-cream: #f2ede3;
-  --di-cream-dim: #b9b2a4;
-  --di-tide: #4e97ab;
-  --di-brass: #c9a24a;
-  --di-ember: #cf6844;
-  --concept-accent: var(--di-brass);
-  --concept-nav-gap: clamp(18px, 2.4vw, 34px);
-  --concept-nav-line: 1px;
+  --di-blush: #e2b49e;
+  --di-blush-deep: #c98f74;
+  --di-cream: #fbf7f2;
+  --di-cream-warm: #f3e9df;
+  --di-plum: #57263c;
+  --di-plum-lift: #6d3550;
+  --di-bay: #35505c;
+  --di-ink: #2a211d;
+  --di-soft: #7d6a63;
+  --di-open: #2f7d46;
+
+  --concept-accent: var(--di-plum);
+  --concept-focus: var(--di-plum);
+  --concept-nav-gap: clamp(14px, 1.9vw, 26px);
+  --concept-nav-line: 2px;
 
   margin: 0;
-  background:
-    radial-gradient(120% 80% at 15% 0%, #222c30 0%, transparent 60%),
-    var(--di-slate);
-  color: var(--di-cream);
-  font-family: "Space Mono", ui-monospace, monospace;
+  background: var(--di-cream);
+  color: var(--di-ink);
+  font-family: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Slate grain, so the dark ground has tooth rather than reading as flat ink. */
-body.concept-dundrum-inn::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: .05;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+body.concept-dundrum-inn h1,
+body.concept-dundrum-inn h2,
+body.concept-dundrum-inn h3 {
+  font-family: Petrona, Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.06;
+  text-wrap: balance;
+  margin: 0;
 }
 
-body.concept-dundrum-inn > * { position: relative; z-index: 1; }
+/* ---- Top strip -------------------------------------------------------- */
 
 .di-strip {
+  gap: 16px;
   padding: 9px clamp(16px, 4vw, 46px);
-  border-bottom: 1px solid rgba(242, 237, 227, .14);
-  font-size: 11.5px;
-  letter-spacing: .04em;
-  color: var(--di-cream-dim);
+  background: var(--di-plum);
+  color: #f2ded2;
+  font-size: 13px;
+  letter-spacing: .015em;
 }
 
-.di-strip a { color: var(--di-cream); text-underline-offset: 3px; }
+.di-strip a { color: #fff; text-underline-offset: 3px; }
 
 .di-lang { display: flex; align-items: center; gap: 10px; }
 
+.di-lang a,
 .di-lang span {
-  padding: 2px 8px;
-  border: 1px solid rgba(242, 237, 227, .22);
+  padding: 2px 9px;
+  border: 1px solid rgba(255, 255, 255, .32);
+  color: #f2ded2;
+  font-size: 12.5px;
+  text-decoration: none;
 }
 
-.di-lang span[aria-current] {
-  border-color: var(--di-brass);
-  color: var(--di-slate);
-  background: var(--di-brass);
+.di-lang [aria-current] {
+  border-color: transparent;
+  background: var(--di-blush);
+  color: var(--di-plum);
+  font-weight: 600;
 }
 
-.di-lang em {
-  font-style: normal;
-  font-size: 10.5px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: rgba(242, 237, 227, .42);
-}
+/* ---- Header ----------------------------------------------------------- */
 
 .di-header {
-  padding: 18px clamp(16px, 4vw, 46px);
-  border-bottom: 1px solid rgba(242, 237, 227, .14);
-  gap: 24px;
-  /* Two flex children (brand + CTA) whose combined min-content exceeds a phone;
-     wrapping the CTA to a second line stops the page scrolling sideways. */
+  gap: 22px;
+  padding: 15px clamp(16px, 4vw, 46px);
+  background: var(--di-cream);
+  border-bottom: 1px solid rgba(42, 33, 29, .12);
   flex-wrap: wrap;
-  row-gap: 14px;
+  row-gap: 12px;
 }
 
-.di-brand { display: grid; gap: 2px; text-decoration: none; color: inherit; }
+.di-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
 
-.di-brand-est {
-  font-size: 10px;
-  letter-spacing: .3em;
+/* A plain drawn oval standing in for the Inn's own crest. It carries the
+   founding date and nothing else, so it never impersonates their mark. */
+.di-crest {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border: 1.5px solid var(--di-plum);
+  border-radius: 46% 46% 42% 42% / 38% 38% 56% 56%;
+  color: var(--di-plum);
+  font-family: Petrona, Georgia, serif;
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+.di-name { display: grid; gap: 1px; }
+
+.di-name b {
+  font-family: Petrona, Georgia, serif;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 500;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--di-brass);
+  color: var(--di-plum);
 }
 
-.di-brand-name {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: clamp(20px, 2.1vw, 27px);
-  font-weight: 700;
-  letter-spacing: .01em;
+.di-name span {
+  font-size: 10.5px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--di-soft);
 }
 
 .di-nav a {
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--di-cream);
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: #4a3b34;
+  font-weight: 500;
 }
 
 .di-nav a:hover::after,
 .di-nav a:focus-visible::after { right: 0; }
 
 .di-book {
-  padding: 10px 16px;
-  border: 1px solid var(--di-brass);
-  color: var(--di-brass);
-  font-size: 12px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  padding: 11px 20px;
+  background: var(--di-plum);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease;
+  transition: background 160ms ease;
 }
 
 .di-book:hover,
-.di-book:focus-visible { background: var(--di-brass); color: var(--di-slate); }
+.di-book:focus-visible { background: var(--di-plum-lift); }
 
-/* The playbill and the board sit side by side on desktop; the board is the
-   thing that must survive the fold, so on phones it moves above the lede. */
-.di-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
-  gap: clamp(24px, 4vw, 58px);
-  align-items: start;
-  padding: clamp(26px, 4.4vw, 54px) clamp(16px, 4vw, 46px) 96px;
-}
+/* ---- Hero -------------------------------------------------------------
+   The argument of this rebuild: the place comes first and full width. The
+   figure is a sized slot so the Inn's own photograph can drop straight in
+   without the layout moving. */
 
-.di-rule {
+.di-hero {
+  position: relative;
   display: flex;
+  align-items: flex-end;
+  min-height: clamp(340px, 46vw, 560px);
+  overflow: hidden;
+}
+
+/* The faithful exterior visualisation sits behind everything and is cropped
+   rather than letterboxed. `object-position` keeps the Inn's yellow-and-black
+   frontage in view when the frame narrows on a phone. */
+.di-hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 50%;
+}
+
+.di-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28, 20, 24, .1) 0%, rgba(28, 20, 24, .06) 34%, rgba(30, 18, 24, .74) 100%);
+}
+
+.di-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(24px, 4vw, 52px) clamp(16px, 4vw, 46px);
+  color: #fff;
+}
+
+.di-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(34px, 5.6vw, 72px);
+  letter-spacing: -.012em;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, .48);
+}
+
+.di-hero p {
+  max-width: 52ch;
+  margin: clamp(12px, 1.6vw, 18px) 0 0;
+  font-size: clamp(15px, 1.35vw, 17.5px);
+  line-height: 1.6;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .6);
+}
+
+/* The placeholder disclosure sits inside the frame it describes, so it can
+   never be read as a caption for a real photograph. */
+.di-hero-placeholder {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  right: clamp(16px, 4vw, 46px);
+  padding: 5px 9px;
+  background: rgba(30, 18, 24, .72);
+  color: rgba(255, 255, 255, .92);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: .03em;
+}
+
+/* ---- Status rail ------------------------------------------------------
+   Every value here is derived from the Inn's own published information. The
+   open state is computed in the browser from the winter hours table. */
+
+.di-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(18px, 3vw, 40px);
+  padding: 14px clamp(16px, 4vw, 46px);
+  background: var(--di-plum);
+  color: #f6e7dd;
+  font-size: 15px;
+}
+
+.di-rail-item { display: flex; align-items: center; gap: 9px; }
+
+.di-rail-item b { font-weight: 600; color: #fff; }
+.di-rail-item span { color: rgba(246, 231, 221, .74); }
+
+.di-dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  background: #8fd0a1;
+}
+
+.di-dot[data-state="shut"] { background: var(--di-blush-deep); }
+
+/* ---- Booking bar ------------------------------------------------------
+   The same four fields the Inn's own GuestDiary search takes. The submit
+   hands to their live site rather than pretending to hold availability. */
+
+.di-book-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
   gap: 14px;
-  margin: 0 0 clamp(14px, 2vw, 22px);
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(242, 237, 227, .18);
-  font-size: 10.5px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--di-cream-dim);
+  align-items: end;
+  padding: clamp(18px, 2.4vw, 26px) clamp(16px, 4vw, 46px);
+  background: var(--di-cream-warm);
+  border-bottom: 1px solid rgba(42, 33, 29, .1);
 }
 
-.di-rule span + span::before { content: "·"; margin-right: 14px; }
+.di-field { display: grid; gap: 6px; min-width: 0; }
 
-/* Playbill: three lines, three sizes, three alignments — the mixed measure is
-   the whole point, so each line is set individually rather than as a block. */
-#di-headline {
+.di-field label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--di-soft);
+}
+
+.di-field input,
+.di-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid rgba(42, 33, 29, .26);
+  border-radius: 0;
+  background: #fff;
+  color: var(--di-ink);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.di-submit {
+  padding: 12.5px 24px;
+  border: 0;
+  background: var(--di-plum);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 160ms ease;
+}
+
+.di-submit:hover,
+.di-submit:focus-visible { background: var(--di-plum-lift); }
+
+.di-book-note {
+  grid-column: 1 / -1;
   margin: 0;
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-weight: 900;
-  line-height: .84;
-  text-transform: uppercase;
+  font-size: 12.5px;
+  color: var(--di-soft);
 }
 
-#di-headline span { display: block; }
+/* ---- Today board ------------------------------------------------------
+   The rescued idea from the first version, rebuilt so that every cell is
+   derived from something the Inn already publishes. Nothing here carries an
+   illustrative-sample label because nothing here is a sample. */
 
-.di-l1 {
-  font-size: clamp(30px, 4.4vw, 55px);
-  font-weight: 500;
+.di-today {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(26px, 4vw, 64px);
+  align-items: start;
+  padding: clamp(38px, 5vw, 76px) clamp(16px, 4vw, 46px);
+}
+
+.di-today h2 {
+  font-size: clamp(27px, 3.4vw, 42px);
   letter-spacing: -.01em;
 }
 
-.di-l2 {
-  padding-left: .08em;
-  font-size: clamp(22px, 2.9vw, 36px);
-  font-weight: 500;
-  font-style: italic;
-  text-transform: none;
-  color: var(--di-cream-dim);
-}
-
-.di-l3 {
-  margin-top: .04em;
-  font-size: clamp(64px, 11.5vw, 148px);
-  letter-spacing: -.035em;
-  color: var(--di-brass);
-}
-
-.di-lede {
+.di-today-lede {
   max-width: 46ch;
-  margin: clamp(18px, 2.4vw, 28px) 0 0;
-  font-size: clamp(13px, 1.05vw, 14.5px);
-  line-height: 1.72;
-  color: rgba(242, 237, 227, .82);
+  margin: 16px 0 0;
+  color: #4a3b34;
 }
 
-/* The board. Cream on slate inverted into a lifted panel so it reads as a
-   physical thing hung on the wall rather than another section of page. */
+.di-hours {
+  margin: 24px 0 0;
+  border-top: 1px solid rgba(42, 33, 29, .14);
+  font-size: 14.5px;
+}
+
+.di-hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 8px 2px;
+  border-bottom: 1px solid rgba(42, 33, 29, .1);
+  font-variant-numeric: tabular-nums;
+}
+
+.di-hours-row[data-today] {
+  padding-inline: 9px;
+  background: var(--di-cream-warm);
+  font-weight: 600;
+}
+
+.di-hours-row dt { margin: 0; color: #4a3b34; }
+.di-hours-row dd { margin: 0; }
+
+.di-hours-src {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--di-soft);
+}
+
 .di-board {
-  padding: clamp(18px, 2.2vw, 26px);
-  border: 1px solid rgba(242, 237, 227, .2);
-  background:
-    linear-gradient(180deg, rgba(242, 237, 227, .05), transparent 40%),
-    var(--di-slate-lift);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  padding: clamp(20px, 2.6vw, 30px);
+  background: var(--di-plum);
+  color: #f6f0e6;
 }
 
-.di-board-title {
+.di-board-top {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin: 0 0 14px;
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: .01em;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
-.di-board-title span {
-  font-family: "Space Mono", monospace;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: .1em;
+.di-board-top h3 {
+  font-size: clamp(21px, 2.2vw, 27px);
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--di-cream-dim);
+  color: #fff;
 }
 
-.di-cells {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background: rgba(242, 237, 227, .18);
-  border: 1px solid rgba(242, 237, 227, .18);
+.di-board-top time {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(246, 240, 230, .66);
 }
+
+.di-cells { display: grid; gap: 0; margin: 0; }
 
 .di-cell {
   display: grid;
-  gap: 5px;
-  padding: 14px 13px;
-  background: var(--di-slate);
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 4px 18px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(246, 240, 230, .18);
 }
 
-.di-cell-label {
-  font-size: 10px;
-  letter-spacing: .2em;
+.di-cell dt {
+  grid-row: span 3;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--di-cream-dim);
+  color: rgba(246, 240, 230, .6);
+  padding-top: 4px;
 }
 
-.di-cell-state {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: clamp(20px, 2.2vw, 27px);
-  font-weight: 700;
-  line-height: 1;
+.di-cell-value {
+  margin: 0;
+  font-family: Petrona, Georgia, serif;
+  font-size: clamp(20px, 2.1vw, 26px);
+  font-weight: 500;
+  line-height: 1.14;
+  color: #fff;
 }
 
-.di-cell-detail { font-size: 11px; line-height: 1.5; color: rgba(242, 237, 227, .66); }
+.di-cell-detail { margin: 0; font-size: 14px; color: rgba(246, 240, 230, .74); }
 
-.di-cell--on .di-cell-state { color: #7fbf8a; }
-.di-cell--tide .di-cell-state { color: var(--di-tide); }
-.di-cell--event .di-cell-state { color: var(--di-ember); }
-
-.di-tide {
-  display: block;
-  width: 100%;
-  height: 34px;
-  margin: 12px 0 4px;
-  color: var(--di-tide);
-  opacity: .55;
-}
-
-.di-board-note {
-  margin: 12px 0 0;
-  font-size: 10.5px;
-  line-height: 1.55;
-  letter-spacing: .02em;
-  color: rgba(242, 237, 227, .52);
-}
-
-.di-board-cta {
-  display: block;
-  margin-top: 10px;
-  padding: 13px;
-  background: var(--di-brass);
-  color: var(--di-slate);
-  font-size: 12.5px;
-  font-weight: 700;
+.di-cell-src {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: .1em;
-  text-align: center;
   text-transform: uppercase;
-  text-decoration: none;
-  transition: transform 140ms ease, box-shadow 140ms ease;
+  color: var(--di-blush);
 }
 
-.di-board-cta:hover,
-.di-board-cta:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(201, 162, 74, .28);
+.di-cell a { color: #fff; text-underline-offset: 3px; }
+
+.di-board-foot {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(246, 240, 230, .18);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(246, 240, 230, .7);
 }
 
-.di-board small {
-  display: block;
-  margin-top: 9px;
-  font-size: 10.5px;
-  letter-spacing: .04em;
-  text-align: center;
-  color: rgba(242, 237, 227, .48);
+/* ---- Find us ----------------------------------------------------------- */
+
+.di-find {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(20px, 3vw, 44px);
+  padding: clamp(34px, 4.4vw, 62px) clamp(16px, 4vw, 46px);
+  background: var(--di-cream-warm);
+  border-top: 1px solid rgba(42, 33, 29, .12);
 }
 
-@media (max-width: 900px) {
-  .di-main { grid-template-columns: 1fr; }
-  .di-board { order: -1; }
+.di-find h2 {
+  grid-column: 1 / -1;
+  font-size: clamp(24px, 2.8vw, 34px);
+}
+
+.di-find h3 {
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--di-soft);
+  margin-bottom: 7px;
+}
+
+.di-find p { margin: 0; }
+.di-find a { color: var(--di-plum); text-underline-offset: 3px; }
+
+/* ---- Responsive -------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .di-today { grid-template-columns: 1fr; }
+  .di-book-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .di-submit { grid-column: 1 / -1; }
+}
+
+@media (max-width: 760px) {
   .di-nav { display: none; }
-  .di-lang em { display: none; }
 }
 
 @media (max-width: 520px) {
-  .di-strip { flex-direction: column; align-items: flex-start; gap: 7px; }
-  .di-cells { grid-template-columns: 1fr; }
-  .di-l3 { font-size: clamp(56px, 22vw, 96px); }
+  .di-strip { flex-direction: column; align-items: flex-start; gap: 8px; }
+  /* Stays out of the flex flow — going static would make it a sibling of the
+     hero copy and push the headline sideways. */
+  .di-hero-placeholder { left: 16px; right: 16px; max-width: none; }
+  .di-cell { grid-template-columns: 1fr; }
+  .di-cell dt { grid-row: auto; padding-top: 0; }
 }

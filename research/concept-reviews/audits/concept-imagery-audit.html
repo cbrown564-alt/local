@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concept imagery audit — Mourne Made</title>
+  <style>
+    :root {
+      --ink: #141414;
+      --muted: #5a5a5a;
+      --line: #d8d4cc;
+      --paper: #f7f4ef;
+      --card: #ffffff;
+      --keep: #1f6b45;
+      --keep-bg: #e7f4ec;
+      --replace: #9a2f1f;
+      --replace-bg: #f8ebe7;
+      --tighten: #8a5a12;
+      --tighten-bg: #f7efd9;
+      --ok-gap: #2c4a6e;
+      --ok-gap-bg: #e8eef5;
+      --accent: #1c1c1c;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, #efe8dc 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, #e4ebe6 0%, transparent 50%),
+        var(--paper);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 2.5rem 0 5rem;
+    }
+
+    header.page-head {
+      display: grid;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.05;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .lede {
+      max-width: 62ch;
+      font-size: 1.12rem;
+      color: #2a2a2a;
+      margin: 0;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 800px) {
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 1rem 1.1rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .implementation-note {
+      padding: 1rem 1.1rem;
+      border: 1px solid #8fb69d;
+      background: #edf7f0;
+      color: #183b25;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .implementation-note strong { display: block; margin-bottom: 0.2rem; }
+
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin: 1.5rem 0 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    nav.toc a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.1rem;
+    }
+
+    nav.toc a:hover { border-color: var(--ink); }
+
+    section.block {
+      margin-top: 2.75rem;
+    }
+
+    section.block > h2 {
+      font-size: 1.55rem;
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    section.block > .section-intro {
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 1.25rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .verdict-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--line);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .verdict-table th,
+    .verdict-table td {
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .verdict-table th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+      background: #faf8f4;
+    }
+
+    .verdict-table tr:last-child td { border-bottom: 0; }
+
+    .badge {
+      display: inline-block;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.45rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .badge-replace { color: var(--replace); background: var(--replace-bg); }
+    .badge-tighten { color: var(--tighten); background: var(--tighten-bg); }
+    .badge-keep { color: var(--keep); background: var(--keep-bg); }
+    .badge-functional { color: var(--ok-gap); background: var(--ok-gap-bg); }
+
+    .priority-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .priority {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.85rem;
+    }
+
+    @media (max-width: 700px) {
+      .priority { grid-template-columns: 1fr; }
+    }
+
+    .priority img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .priority h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+    }
+
+    .priority p {
+      margin: 0.35rem 0 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .priority .rec {
+      margin-top: 0.55rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid var(--line);
+      color: var(--replace);
+      font-weight: 600;
+    }
+
+    .catalog {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+    }
+
+    @media (max-width: 800px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .card-media {
+      background: #1a1a1a;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+    }
+
+    .card-media img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+    }
+
+    .card-body {
+      padding: 1.1rem 1.2rem 1.25rem;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.75rem;
+      align-items: center;
+      margin-bottom: 0.55rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.015em;
+    }
+
+    .card .path {
+      font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+      font-size: 0.78rem;
+      color: #444;
+      word-break: break-all;
+      margin: 0 0 0.75rem;
+    }
+
+    .card .assess,
+    .card .action {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.92rem;
+      margin: 0.45rem 0 0;
+    }
+
+    .card .action {
+      margin-top: 0.7rem;
+      padding: 0.65rem 0.75rem;
+      background: #faf8f4;
+      border-left: 3px solid var(--ink);
+    }
+
+    .no-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .no-photo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .no-photo h3 {
+      margin: 0 0 0.35rem;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+    }
+
+    .no-photo p { margin: 0; color: #333; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin: 0 0 1rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    footer.page-foot {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Mourne Made · visual audit · 26 July 2026</p>
+      <h1>Concept imagery audit</h1>
+      <p class="lede">
+        Review of the photographs and AI visualisations rendered on published
+        concept routes before the 26 July implementation pass. The recurring failure mode was
+        <em>truthful-but-dead</em> hero space: documentary street shots and
+        unstyled product snaps used because no strong location photo exists —
+        when that slot should carry mood, illustration, or a functional panel instead.
+      </p>
+      <div class="summary-grid">
+        <div class="stat"><strong>20</strong><span>published concepts</span></div>
+        <div class="stat"><strong>3</strong><span>concepts with photos</span></div>
+        <div class="stat"><strong>12</strong><span>unique image files in use</span></div>
+        <div class="stat"><strong>0</strong><span>priority replacements open</span></div>
+      </div>
+      <div class="implementation-note">
+        <strong>Implemented · 26 July 2026</strong>
+        Donard Veterinary, Kent Amusements, Mourne Cycles and Castle Farm now use
+        concept-specific functional hero panels. Cúpla now leads with its bilingual
+        counter identity, Room 9 has left Enniskeen’s featured set, and the Chamber
+        photograph is recropped toward the mountain and town. The original findings
+        below are retained as the decision record.
+      </div>
+      <nav class="toc" aria-label="Report sections">
+        <a href="#priority">Priority replacements</a>
+        <a href="#verdicts">Concept verdicts</a>
+        <a href="#catalog">Full image catalog</a>
+        <a href="#no-photo">Typography / functional heroes</a>
+        <a href="#principle">Working principle</a>
+      </nav>
+    </header>
+
+    <section class="block" id="priority">
+      <h2>Original priority replacements · implemented</h2>
+      <p class="section-intro">
+        These homepage (or featured) images are the clearest cases of over-indexing
+        on documentary truth at the expense of presence. Each should leave the hero
+        slot for mood, conceptual illustration, or a functional element.
+      </p>
+      <div class="priority-list">
+        <article class="priority">
+          <img src="../../../public/images/donard-veterinary-exterior-2023.jpg" alt="Donard Veterinary street exterior" />
+          <div>
+            <span class="badge badge-replace">Replace</span>
+            <h3>Donard Veterinary — Railway Street exterior</h3>
+            <p>
+              Flat overcast street record. Half the frame is Post Office red, parked
+              cars, and a cropped Skoda in the foreground. The clinic itself is a
+              minor strip of teal signage. Truthful about the address; useless as a
+              care brand signal.
+            </p>
+            <p class="rec">
+              Prefer: warm clinic mood (hands/animal care illustration), calm pet
+              atmosphere, or keep the functional services rail and drop the photo panel.
+            </p>
+          </div>
+        </article>
+
+        <article class="priority">
+          <img src="../../../public/images/kent-amusements-exterior-2023.jpg" alt="Kent Amusements promenade exterior" />
+          <div>
+            <span class="badge badge-replace">Replace</span>
+            <h3>Kent Amusements — promenade exterior</h3>
+            <p>
+              Grey day, gold hatchback dominant, road signs and bins competing with
+              the arcade. The brand promise is “fifty summers of seaside fun”; the
+              photo sells traffic and weather. Neon inside is visible but lost.
+            </p>
+            <p class="rec">
+              Prefer: night/neon arcade mood, dodgems/VR detail, illustrated seaside
+              mark, or a functional “today’s attractions / hours” panel (Scopers pattern).
+            </p>
+          </div>
+        </article>
+
+        <article class="priority">
+          <img src="../../../public/images/mourne-cycles-faithful-visualisation.jpg" alt="Trek bike against orange fence with blue bin" />
+          <div>
+            <span class="badge badge-replace">Replace</span>
+            <h3>Mourne Cycles — bike + bin visualisation</h3>
+            <p>
+              Faithful to a customer photo, and honestly captioned — but the hero is
+              a charcoal Trek against a screaming orange fence and blue bin “48”.
+              Reads as alley snapshot, not workshop expertise or Mournes riding.
+            </p>
+            <p class="rec">
+              Prefer: trail/mood riding imagery, clean product cutout, workshop tool
+              illustration, or a functional “book a service / Cycle to Work” desk panel.
+            </p>
+          </div>
+        </article>
+
+        <article class="priority">
+          <img src="../../../public/images/castle-farm-box.jpg" alt="Castle Farm delivery crate of produce and meat" />
+          <div>
+            <span class="badge badge-replace">Replace</span>
+            <h3>Castle Farm — delivery crate</h3>
+            <p>
+              Literal packed crate under harsh light: plastic glare, supermarket tomato
+              brand label, raw trays. Honest about what arrives; visually unappetising
+              as the first brand impression for a farm produce story.
+            </p>
+            <p class="rec">
+              Prefer: styled produce still-life, field/soil mood, illustrated box mark,
+              or a functional “this week’s box / order” panel.
+            </p>
+          </div>
+        </article>
+
+        <article class="priority">
+          <img src="../../../public/images/enniskeen-faithful-room9.png" alt="Beige hotel bathroom with sink and magnifying mirror" />
+          <div>
+            <span class="badge badge-replace">Replace / demote</span>
+            <h3>Enniskeen — Room 9 bathroom (featured)</h3>
+            <p>
+              Beige-on-beige inventory photo energy. Useful as a truthful room detail
+              deep in a gallery; weak as a featured room visual next to the pink Room 6
+              character piece and the strong balcony mood shot.
+            </p>
+            <p class="rec">
+              Prefer: keep for disclosure/detail only, or swap featured slot for room
+              atmosphere (bedding, view, seating) rather than sink inventory.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="verdicts">
+      <h2>Concept verdicts</h2>
+      <p class="section-intro">Homepage visual strategy by concept — including the twelve with no photography.</p>
+      <div class="legend">
+        <span><span class="badge badge-replace">Replace</span> remove from hero</span>
+        <span><span class="badge badge-tighten">Tighten</span> keep idea, improve crop/asset</span>
+        <span><span class="badge badge-keep">Keep</span> working</span>
+        <span><span class="badge badge-functional">Functional / type</span> no photo by design</span>
+      </div>
+      <table class="verdict-table">
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Hero visual</th>
+            <th>Verdict</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Donard Veterinary</td>
+            <td>Documentary exterior</td>
+            <td><span class="badge badge-replace">Replace</span></td>
+            <td>Street clutter; clinic not the subject</td>
+          </tr>
+          <tr>
+            <td>Kent Amusements</td>
+            <td>Documentary exterior</td>
+            <td><span class="badge badge-replace">Replace</span></td>
+            <td>Cars/overcast kill the fun promise</td>
+          </tr>
+          <tr>
+            <td>Mourne Cycles</td>
+            <td>AI faithful product-in-context</td>
+            <td><span class="badge badge-replace">Replace</span></td>
+            <td>Bin + orange fence dominate</td>
+          </tr>
+          <tr>
+            <td>Castle Farm</td>
+            <td>Product crate photo</td>
+            <td><span class="badge badge-replace">Replace</span></td>
+            <td>Utilitarian packing shot, not appetite</td>
+          </tr>
+          <tr>
+            <td>Newcastle Chamber</td>
+            <td>Place / promenade</td>
+            <td><span class="badge badge-tighten">Tighten</span></td>
+            <td>Mountain mood works; lamp/path clutter — crop or better place plate</td>
+          </tr>
+          <tr>
+            <td>Cúpla</td>
+            <td>AI faithful façade</td>
+            <td><span class="badge badge-tighten">Tighten</span></td>
+            <td>Readable brand frontage; flat light — coffee mood would outsell the wall</td>
+          </tr>
+          <tr>
+            <td>The Buck’s Head</td>
+            <td>AI faithful hearth interior</td>
+            <td><span class="badge badge-keep">Keep</span></td>
+            <td>Warm, atmospheric, brand-true — model for “truthful but beautiful”</td>
+          </tr>
+          <tr>
+            <td>Hotel Enniskeen</td>
+            <td>Faithful house + generated mood set</td>
+            <td><span class="badge badge-keep">Keep</span></td>
+            <td>Strong set overall; demote Room 9 bath; woodland is flatter than peers</td>
+          </tr>
+          <tr>
+            <td>Scopers</td>
+            <td>Supper-club functional panel</td>
+            <td><span class="badge badge-functional">Functional / type</span></td>
+            <td>Right pattern when no good location photo exists</td>
+          </tr>
+          <tr>
+            <td>The Tool Centre</td>
+            <td>Hire-desk functional panel</td>
+            <td><span class="badge badge-functional">Functional / type</span></td>
+            <td>Same — useful hero without fake exterior</td>
+          </tr>
+          <tr>
+            <td>Betty’s / Dundrum Inn / Donard Hotel / Douglas &amp; Cromie / Groves / Hugh McCann’s / Kelly / Murdock / Newcastle Dental / Tonn Ruray</td>
+            <td>Typography-led heroes</td>
+            <td><span class="badge badge-functional">Functional / type</span></td>
+            <td>Generally healthier than weak exteriors; only add imagery if it elevates mood</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block" id="catalog">
+      <h2>Full image catalog</h2>
+      <p class="section-intro">The pre-implementation image catalog, retained with its original assessment and recommended action.</p>
+      <div class="catalog">
+
+        <article class="card" id="img-donard-vet">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/donard-veterinary-exterior-2023.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-replace">Replace</span>
+                <span>donard-veterinary · homepage hero</span>
+                <span>Documentary · Eric Jones 2023 · CC BY-SA 2.0</span>
+              </div>
+              <h3>Railway Street exterior</h3>
+              <p class="path">/images/donard-veterinary-exterior-2023.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Wide street plate under flat cloud. Neighbouring Post Office and parked cars carry more visual weight than the clinic. Reads as “where it is,” not “what care feels like.”</p>
+              <p class="action"><strong>Action.</strong> Remove from hero. Use mood/illustration of care, or expand the services rail into the panel. Keep the captioned street photo only if needed on an About/Find us surface.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-kent">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/kent-amusements-exterior-2023.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-replace">Replace</span>
+                <span>kent-amusements · homepage hero</span>
+                <span>Documentary · Eric Jones 2023 · CC BY-SA 2.0</span>
+              </div>
+              <h3>Central Promenade exterior</h3>
+              <p class="path">/images/kent-amusements-exterior-2023.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Arcade frontage is present but subordinated to vehicles, railings, and grey sky. Energy of dodgems/VR/arcade never reaches the first viewport.</p>
+              <p class="action"><strong>Action.</strong> Replace with neon/night mood, ride detail, or a bright functional attractions panel. Exterior can live on Find us if still useful.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-mourne">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/mourne-cycles-faithful-visualisation.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-replace">Replace</span>
+                <span>mourne-cycles · homepage hero</span>
+                <span>AI faithful from customer photo</span>
+              </div>
+              <h3>Trek bike, orange fence, bin 48</h3>
+              <p class="path">/images/mourne-cycles-faithful-visualisation.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Honesty of source is good; hero quality is poor. Clashing orange/blue domestic backdrop fights the bike and implies yard clutter rather than a specialist shop.</p>
+              <p class="action"><strong>Action.</strong> Replace with trail mood, clean product hero, or workshop booking panel. Do not keep “faithful alley” as the brand face.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-castle">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/castle-farm-box.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-replace">Replace</span>
+                <span>castle-farm · homepage hero</span>
+                <span>Product / packing photo</span>
+              </div>
+              <h3>Packed produce crate</h3>
+              <p class="path">/images/castle-farm-box.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Informative about contents; visually harsh (plastic speculars, mixed brands, raw trays). First impression is logistics, not farm freshness.</p>
+              <p class="action"><strong>Action.</strong> Restyle produce for appetite, or move to a functional weekly-box UI. Avoid unstyled crate as hero.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-chamber">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/place/central-promenade.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-tighten">Tighten</span>
+                <span>newcastle-chamber · homepage hero</span>
+                <span>Place documentary · Eric Jones · CC BY-SA 2.0</span>
+              </div>
+              <h3>Central Promenade + Slieve Donard</h3>
+              <p class="path">/images/place/central-promenade.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> The mountain and cloud are genuinely evocative and civic-appropriate. The sail lamp, bins, and path occupy too much foreground — the photo splits between municipal furniture and landscape drama.</p>
+              <p class="action"><strong>Action.</strong> Recrop toward mountain/town, or commission/select a cleaner place plate. Do not replace with another weak street frontage.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-cupla">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/cupla-faithful-visualisation.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-tighten">Tighten</span>
+                <span>cupla · homepage hero</span>
+                <span>AI faithful façade</span>
+              </div>
+              <h3>Cúpla storefront</h3>
+              <p class="path">/images/cupla-faithful-visualisation.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Cleaner than the Eric Jones street plates — flowers and navy trim help — but still a flat documentary wall. Coffee atmosphere is stronger brand fuel than façade ID for a café concept.</p>
+              <p class="action"><strong>Action.</strong> Optional upgrade to interior/cup mood or illustrated twin-rings identity; façade can remain secondary.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-bucks">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/bucks-head-faithful-hearth.png" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>bucks-head · homepage hero</span>
+                <span>AI faithful interior</span>
+              </div>
+              <h3>Hearth through the arch</h3>
+              <p class="path">/images/bucks-head-faithful-hearth.png</p>
+              <p class="assess"><strong>Assessment.</strong> Benchmark asset. Warm light, clear focal chimney/antlers/stove, dining atmosphere without street clutter. Truthful to the room and still emotionally useful.</p>
+              <p class="action"><strong>Action.</strong> Keep. Use as the reference standard when judging other “faithful” visuals.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-house">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-faithful-house.png" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · home + estate</span>
+                <span>AI faithful exterior</span>
+              </div>
+              <h3>Enniskeen house</h3>
+              <p class="path">/images/enniskeen-faithful-house.png</p>
+              <p class="assess"><strong>Assessment.</strong> Strong hero architecture: turret, ivy, golden light, estate setting. Communicates country-house stay without documentary street mess.</p>
+              <p class="action"><strong>Action.</strong> Keep as primary brand visual.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-estate">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-estate.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · home / estate / things-to-do</span>
+                <span>AI atmospheric (disclosed fictional)</span>
+              </div>
+              <h3>Wooded estate mood</h3>
+              <p class="path">/images/enniskeen-generated-estate.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Moody, secluded, on-brand for Shimna Valley positioning. Correct use of non-documentary atmosphere with disclosure.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-balcony">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-balcony.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · home explore + rooms hero</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Bedroom to valley</h3>
+              <p class="path">/images/enniskeen-generated-balcony.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Excellent stay mood — linen, open doors, Mournes-like view. Sells the night, not the floor plan.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-tea">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-afternoon-tea.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · home + dine</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Afternoon tea terrace</h3>
+              <p class="path">/images/enniskeen-generated-afternoon-tea.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Appetite + place in one frame. Clear example of mood imagery doing hospitality work.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-restaurant">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-restaurant.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · dine</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Dining room with mountain windows</h3>
+              <p class="path">/images/enniskeen-generated-restaurant.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Evocative, set, quiet luxury. Aligns with disclosed concept visuals.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-lounge">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-lounge.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · dine</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Fireside lounge</h3>
+              <p class="path">/images/enniskeen-generated-lounge.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Strong warmth and retreat mood for Brandy Pad Lounge positioning.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-walker">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-walker.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · home + things-to-do</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Mountain walker</h3>
+              <p class="path">/images/enniskeen-generated-walker.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Quiet adventure mood; supports “things to do” without pretending to be a specific trail photo.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-cycling">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-cycling.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · things-to-do</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Valley cycling</h3>
+              <p class="path">/images/enniskeen-generated-cycling.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Active, scenic, on-theme. Better “bike lifestyle” reference than the Mourne Cycles alley shot.</p>
+              <p class="action"><strong>Action.</strong> Keep.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-woodland">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-generated-woodland.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-tighten">Tighten</span>
+                <span>hotel-enniskeen · estate</span>
+                <span>AI atmospheric</span>
+              </div>
+              <h3>Woodland path + river</h3>
+              <p class="path">/images/enniskeen-generated-woodland.jpg</p>
+              <p class="assess"><strong>Assessment.</strong> Pleasant and truthful-feeling, but flatter and less decisive than estate/walker/tea. Blank signpost is a small oddity.</p>
+              <p class="action"><strong>Action.</strong> Optional upgrade for stronger light/composition; not a homepage emergency.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-room6">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-faithful-room6.png" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-keep">Keep</span>
+                <span>hotel-enniskeen · rooms featured</span>
+                <span>AI faithful bathroom</span>
+              </div>
+              <h3>Room 6 pink bathroom</h3>
+              <p class="path">/images/enniskeen-faithful-room6.png</p>
+              <p class="assess"><strong>Assessment.</strong> Characterful and specific — the rare bathroom photo that earns its place because the fixtures are the story.</p>
+              <p class="action"><strong>Action.</strong> Keep as a featured distinctive detail.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="img-enk-room9">
+          <div class="card-grid">
+            <div class="card-media"><img src="../../../public/images/enniskeen-faithful-room9.png" alt="" /></div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-replace">Replace / demote</span>
+                <span>hotel-enniskeen · rooms featured</span>
+                <span>AI faithful bathroom</span>
+              </div>
+              <h3>Room 9 beige bathroom</h3>
+              <p class="path">/images/enniskeen-faithful-room9.png</p>
+              <p class="assess"><strong>Assessment.</strong> Accurate inventory energy. No distinctive mood or character compared with Room 6 or the balcony stay shot.</p>
+              <p class="action"><strong>Action.</strong> Demote from featured card; reserve for detail gallery or replace with room atmosphere.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="block" id="no-photo">
+      <h2>Typography / functional heroes (no photography)</h2>
+      <p class="section-intro">
+        Thirteen concepts now ship with no content photography. That is often the correct call —
+        especially where Scopers and The Tool Centre put a useful panel in the hero slot
+        instead of a weak exterior. Only add imagery if it raises mood; do not add
+        “truthful” street snaps to fill space.
+      </p>
+      <div class="no-photo-grid">
+        <article class="no-photo">
+          <span class="badge badge-functional">Functional</span>
+          <h3>Scopers</h3>
+          <p>Supper-club panel carries the second column. Model pattern for “no good location photo.”</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Functional</span>
+          <h3>The Tool Centre</h3>
+          <p>Hire desk with rates/ask-the-counter. Better than a Main Street façade snap.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Betty’s Better Butters</h3>
+          <p>Wordmark/headline carry brand. Optional: product still-life only if beautiful.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>The Dundrum Inn</h3>
+          <p>Tonight board / booking UI energy — keep functional, avoid grey pub exterior.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>The Donard Hotel</h3>
+          <p>Right to avoid OTA/scraped room photos. Booking illustration &gt; bland façade.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Douglas &amp; Cromie</h3>
+          <p>Sample stock cards already honest. Don’t fill with forecourt documentary.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Groves Chemist</h3>
+          <p>Trust/script UI &gt; shopfront plate. Keep typography + handoff clarity.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Hugh McCann’s</h3>
+          <p>Enquiry/functional hospitality UI is enough without generic B&amp;B exteriors.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Kelly, McEvoy &amp; Brown</h3>
+          <p>Project grid can stay image-light until sourced project photos exist.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Murdock Brothers</h3>
+          <p>Internal until trading confirmed — no imagery push needed.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Newcastle Family Dental</h3>
+          <p>Care claims + booking clarity beat stock clinic corridors.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Type-led</span>
+          <h3>Tonn Ruray Café</h3>
+          <p>Menu/apartment split already honest; add food mood only if strong.</p>
+        </article>
+        <article class="no-photo">
+          <span class="badge badge-functional">Functional / type</span>
+          <h3>Cúpla</h3>
+          <p>Bilingual counter identity and menu handoff now lead; the façade is no longer asked to sell the café atmosphere.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="principle">
+      <h2>Working principle</h2>
+      <p class="section-intro" style="margin-bottom:0.75rem;">
+        Use this test before any concept homepage image ships:
+      </p>
+      <table class="verdict-table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>If no…</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Does the image make the brand’s promise feel true in under one second?</td>
+            <td>Don’t use it in the hero — even if it is geographically accurate.</td>
+          </tr>
+          <tr>
+            <td>Is the subject the business experience (care, food, ride, stay, fun) — not parked cars / neighbour signage / bins?</td>
+            <td>Crop harder or abandon the plate.</td>
+          </tr>
+          <tr>
+            <td>Would removing the photo and putting a booking/menu/hire panel there be clearer?</td>
+            <td>Prefer the functional panel (Scopers / Tool Centre).</td>
+          </tr>
+          <tr>
+            <td>If using AI or mood imagery, is the disclosure honest and the atmosphere on-brand?</td>
+            <td>Enniskeen / Buck’s Head pattern — keep; Mourne Cycles alley — don’t.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="section-intro" style="margin-top:1.25rem;">
+        <strong>Scope note.</strong> Transformation before/after assets under
+        <code>/transformations/</code> were excluded — this audit covers imagery
+        rendered on published <code>/concepts/*</code> routes only. Murdock Brothers
+        remains internal per plan; it has no concept photography.
+      </p>
+    </section>
+
+    <footer class="page-foot">
+      Internal artifact — deliberately outside <code>public/</code> so it is never deployed. Open this file
+      directly from disk. Images resolve relatively from <code>public/images/</code>.
+    </footer>
+  </div>
+</body>
+</html>

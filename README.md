@@ -87,7 +87,35 @@ each source address to five attempts per hour. Vercel Web Analytics records
 page views plus non-identifying events for comparison interaction, form start,
 and successful submission.
 
-## Review backlog
+## Documents and ownership
+
+Each fact has one owner. Do not restate a number that another document owns —
+link to the owner instead. Counts drifted twelve concepts out of date once
+because three documents each kept their own copy.
+
+| Document | Owns |
+|---|---|
+| `PRODUCT.md` | Company positioning, audience, offer, product principles and evidence boundaries |
+| `PROSPECTS.md` | Pipeline state: every business's stage, the public list and the held list |
+| `PLAN.md` | Current milestone and the next actions |
+| `REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |
+| `CONCEPT_DESIGN_REVIEW.md` | The publication standard (the four checks) |
+| `DESIGN.md` | Brand, visual language and concept identities |
+| `CONTEXT.md` | Project vocabulary |
+| `MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
+| `RESEARCH_METHOD.md` | Source and geographic methodology |
+| `README.md` (this file) | How to run the project and where things live |
+
+Machine-readable sources of truth, which override any prose:
+
+| File | Owns |
+|---|---|
+| `src/data/transformations.ts` | `publicTransformationSlugs` — exactly what is public |
+| `research/concept-reviews/publication.json` | The four-check answers per public concept |
+| `research/verifications.json` | Per-business evidence, corrections and stage |
+
+`pnpm build` fails if a slug in `publicTransformationSlugs` has no publication
+record, a false check, or an unresolved blocker.
 
 `REVIEW.md` — critical site review (23 July 2026): verified findings with file references and the prioritised P0–P4 backlog plus bold ideas. P0 items are fixed; work the rest top-down and tick them off in the same commit as each fix.
 
@@ -95,11 +123,36 @@ and successful submission.
 respectful, clear and specific, works as presented, and safe to publish. Public
 concepts are recorded in `research/concept-reviews/publication.json`; the build
 checks those four answers and any remaining blocker. Optional improvements do
-not remove a useful concept from the portfolio.
+not remove a useful concept from the portfolio. The retired v1.1 score system
+and its plan are preserved under `docs/archive/`.
 
-Seven transformations are currently public. The twelve remaining former public
-concepts are queued in `PLAN.md` for short four-check reviews. The retired v1.1
-score system and its plan are preserved under `docs/archive/`.
+## Nothing internal in `public/`
+
+Everything under `public/` is copied verbatim into the deployed site, with no
+`noindex` and no `robots.txt` entry unless one is added by hand. This has caused
+two leaks: the scored prospect dataset at `/opportunities/` (P0, 23 July 2026)
+and an internal concept-imagery audit at `/audits/` (26 July 2026). Internal
+working artifacts belong under `research/`, `docs/` or `src/workbench/` —
+never `public/`.
+
+`pnpm build` now enforces this. `scripts/check-public-assets.mjs` fails the
+build on an unexpected top-level entry in `public/`, and on any document
+extension (`.md`, `.html`, `.json`, `.csv`, `.pdf`, …) anywhere beneath it.
+Adding something genuinely public means adding it to `ALLOWED_TOP_LEVEL` or
+`ALLOWED_DOCUMENTS` in that script, with the reason it must ship — the
+allowlist is the record of what belongs on the site.
+
+The same check reports held images and videos that nothing in `src/`
+references any more:
+
+```powershell
+pnpm test:public-assets
+```
+
+An unused file is not a leak, so this never fails the build. It matters
+because a withdrawn image makes any "Sources & limits" copy describing it
+false — which is exactly how three public case studies came to carry untrue
+sourcing claims on 26 July 2026.
 
 ## Research artifacts
 
@@ -108,6 +161,17 @@ score system and its plan are preserved under `docs/archive/`.
 - `research/verifications.json` — accumulated per-business verification knowledge: dated trading evidence, census corrections, shortlist decisions and design tasks
 - `research/concept-reviews/publication.json` — four-check publication record
   for concepts shown on the public site
+- `research/concept-reviews/triage/` — per-concept four-check triage records
+- `research/concept-reviews/audits/` — internal design audits kept as
+  standalone HTML. Open them directly from disk; they are deliberately outside
+  `public/` so they are never deployed
+- `research/concept-reviews/image-provenance.md` — how each concept image was
+  made and whether a concept still uses it. Read it before writing a sourcing
+  claim; the public credits for third-party photographs are separate, in
+  `public/images/place/ATTRIBUTION.md`, which ships with the site because the
+  CC BY-SA licences require it
+- `scripts/check-public-assets.mjs` — guards the deploy boundary and reports
+  unreferenced held assets
 - `scripts/check-concept-publication.mjs` — verifies that every public concept
   has four positive answers and no blocker
 - `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle

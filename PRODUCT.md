@@ -10,23 +10,107 @@ web
 
 ## Users
 
-The primary audience is independent owner-operated businesses in Dundrum and Newcastle, County Down. The next audiences, in order, are charities, clubs, public services, and larger chains. Visitors are busy local decision-makers who need to understand the value of better digital presentation quickly and without technical language.
+The primary audience is independent owner-operated businesses in Dundrum and
+Newcastle, County Down. The next audiences, in order, are charities, clubs,
+public services, and larger chains. Visitors are busy local decision-makers
+who need to understand a useful commercial change quickly and without
+technical language.
+
+The offer must fit the business. Accommodation, destination food, events,
+specialist retail and high-value services can often justify a deeper route to
+a booking, order or enquiry. A walk-in shop, café or seasonal operator may
+need only an accurate, owned page connected to Google and social media.
 
 ## Product Purpose
 
-The site shows local organisations what their public digital presence could become through personalised, side-by-side transformations. It exists to make a modern website, richer content, stronger imagery, and a better Maps presence feel exciting, practical, and attainable. Success begins when an owner requests a free before-and-after; the longer-term aim is affordable paid work supported by visible community contributions.
+Mourne Made helps a local business turn discovery through Google, tourism
+pages, social media and local coverage into a current, business-owned route to
+a booking, order, enquiry or repeat customer.
+
+The site makes that opportunity visible through a personalised,
+side-by-side transformation before asking the business to buy. The
+transformation is the start of the conversation. Paid work can include the
+smallest useful website change, the customer action it supports, the
+measurement needed to judge it and the recurring work required to keep it
+accurate.
+
+Paid commercial work funds time for local clubs, charities and organisations
+that cannot stretch to a full commercial project.
 
 ## Positioning
 
-A local studio that invests in the digital appearance of its own community, showing each business a concrete transformation before asking it to buy.
+A local digital studio that helps businesses around Dundrum and Newcastle own
+and maintain the route from local interest to direct business. It shows the
+change before asking the business to buy.
+
+## Offer
+
+The free before-and-after remains the entry point. It must show one useful
+customer action alongside the visual treatment. Where the evidence supports
+it, the recommendation also states:
+
+- the smallest sensible set of pages or tools;
+- what the business must keep current;
+- what observable action would indicate improvement.
+
+Paid work has three possible scopes. These are service boundaries, not public
+price bands:
+
+1. **Presence repair** — domain and account ownership, one to five accurate
+   pages, Google Business Profile, hours, prices, menus, contact details,
+   local-search basics, analytics and scheduled updates.
+2. **Direct action** — booking, ordering, reservations, vouchers,
+   click-and-collect, event registration, qualified enquiries or customer
+   capture for a business with a measurable customer action.
+3. **Ongoing growth** — landing pages, campaigns, customer retention,
+   conversion improvements, attribution and monthly reporting after the
+   underlying economics and maintenance capacity are known.
+
+Prefer a specialist booking, ordering or retail platform when it handles the
+customer task better than a custom implementation. Mourne Made is responsible
+for the quality of the full route and need not force every function into a
+bespoke site.
 
 ## Conversion & proof
 
 - Primary CTA: request a free before-and-after.
 - Secondary CTA: browse local transformations.
-- The line a visitor remembers after 10 seconds: see what your local business could become online.
-- Belief ladder: the studio understands this place; the current digital presence is underselling the real business; the proposed change is concrete and easy to judge; the work is affordable and low-risk; requesting a before-and-after is worth doing now.
-- Proof on hand: none yet. Initial work must be labelled clearly as concept transformations and must not imply client approval or a commercial relationship.
+- The line a visitor remembers after 10 seconds: turn more local interest into
+  direct business, with a right-sized website that stays useful.
+- Belief sequence: the studio understands this place; the current route from
+  discovery to action can be clearer; the proposed change is concrete and easy
+  to judge; its scope fits the business; requesting a before-and-after is worth
+  doing now.
+- Proof on hand: independently reviewed concept transformations and an
+  outside-in market audit. No business has approved the work and no client
+  result has been measured. Concept work must never imply otherwise.
+
+## Evidence and measurement
+
+The July 2026
+[`Commercial Digital Landscape`](research/Newcastle_Dundrum_Commercial_Digital_Landscape_2026.pdf)
+supports the offer as a market hypothesis. It reviewed public digital assets;
+it did not test willingness to pay, business margins or realised returns.
+
+For a real pilot, record a baseline and choose one primary measure before work
+begins. Depending on the business, that may be completed bookings,
+reservations, orders, qualified enquiries, customer sign-ups, repeat purchases
+or platform costs avoided. Page count, launch and visual approval are not
+commercial results.
+
+Any site Mourne Made delivers must use accounts controlled by the business,
+name who keeps changing information current and include an agreed check of
+forms, booking paths, menus, hours, prices, events and broken links.
+
+## Shared local discovery
+
+Newcastle's tourism and media pages can supply discovery, but they should lead
+to business-owned actions where possible. Dundrum may benefit from a shared
+visitor guide for places to stay, eat, shop and visit. Treat that as a future
+partnership project, not part of the current studio offer. It requires current
+listings, direct links to each business's own action and a named organisation
+responsible for upkeep. It must not become another unattended directory or
+take transactions away from participating businesses.
 
 ## Brand Personality
 
@@ -41,6 +125,11 @@ The site must not resemble a generic AI or SaaS landing page. Avoid interchangea
 - Make the transformation visible before explaining it.
 - Use real local context and plain evidence instead of generic claims.
 - Treat the existing business with respect: identify missed opportunities without mocking the owner or their current work.
+- Preserve what already works. A strong identity, useful photography, clear
+  pricing or a functioning sales route is evidence to build on, not material
+  to replace for contrast.
+- Match the scope to the likely value of the customer action and the
+  business's ability to keep the result current.
 - Make every next step feel small, clear, and reversible.
 - Separate concept work, researched facts, and future client results truthfully.
 
