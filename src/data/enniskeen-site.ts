@@ -44,7 +44,7 @@ export const base = "/concepts/hotel-enniskeen";
 
 /** Disclosed AI-generated imagery for the independent concept.
  *
- * The house and two named bathroom visuals are faithful visualisations made
+ * The house and named Room 6 bathroom visual are faithful visualisations made
  * from reference photographs of the real Enniskeen. The remaining scenic and
  * interior images are atmospheric concept visuals rather than documentary
  * photographs. The shared concept banner discloses both statuses on every
@@ -74,12 +74,6 @@ export const generatedVisuals = {
     width: 1024,
     height: 1536,
     alt: "AI-generated faithful visualisation of Room 6's distinctive matching pink basin and bath with chrome cross-head taps",
-  },
-  bathGreen: {
-    src: "/images/enniskeen-faithful-room9.png",
-    width: 1024,
-    height: 1536,
-    alt: "AI-generated faithful visualisation of Room 9's compact beige-tiled en-suite with wall-mounted basin and magnifying mirror",
   },
   restaurant: {
     src: "/images/enniskeen-generated-restaurant.jpg",
@@ -154,15 +148,6 @@ export const rooms = {
       imageWidth: generatedVisuals.bathPink.width,
       imageHeight: generatedVisuals.bathPink.height,
       alt: generatedVisuals.bathPink.alt,
-    },
-    {
-      name: "Room 9",
-      detail: "Superior room · stunning mountain views",
-      note: "The superior room of the house, looking straight onto the Mournes.",
-      image: generatedVisuals.bathGreen.src,
-      imageWidth: generatedVisuals.bathGreen.width,
-      imageHeight: generatedVisuals.bathGreen.height,
-      alt: generatedVisuals.bathGreen.alt,
     },
     {
       name: "Room 15",
