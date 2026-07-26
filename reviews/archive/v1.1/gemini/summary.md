@@ -1,4 +1,4 @@
-# Batch Review Summary — Gemini — 25 July 2026
+# Archived batch review summary — Gemini — 25 July 2026
 
 Independent v1.1 design re-review of the five Phase Q candidate concept sites following their shared repair and subject-proof passes (24–25 July 2026).
 

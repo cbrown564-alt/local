@@ -16,13 +16,10 @@ pnpm build
 ```
 
 The build starts by checking every slug in the public transformation list
-against `research/concept-reviews/releases.json`. Run the deliberately invalid
-release fixture and the checker's focused self-test with:
+against `research/concept-reviews/publication.json`. Run the focused publication
+check with:
 
 ```powershell
-$env:CONCEPT_RELEASES_PATH = "scripts/fixtures/concept-reviews-invalid.json"
-pnpm build # expected to fail before Astro runs
-Remove-Item Env:CONCEPT_RELEASES_PATH
 pnpm test:reviews
 ```
 
@@ -109,10 +106,10 @@ score system and its plan are preserved under `docs/archive/`.
 - `src/data/businesses.json` — consolidated public-source dataset (379 records)
 - `/opportunities` — internal prospecting workbench (`src/workbench/opportunities.astro`); served by `pnpm dev` only and deliberately excluded from production builds because it embeds the full scored dataset
 - `research/verifications.json` — accumulated per-business verification knowledge: dated trading evidence, census corrections, shortlist decisions and design tasks
-- `research/concept-reviews/releases.schema.json` — compact public release
-  schema; `releases.json` holds only committed release decisions
-- `scripts/check-concept-reviews.mjs` — public membership, score floor,
-  mandatory-gate, 90-day truth expiry and material-source fingerprint check
+- `research/concept-reviews/publication.json` — four-check publication record
+  for concepts shown on the public site
+- `scripts/check-concept-publication.mjs` — verifies that every public concept
+  has four positive answers and no blocker
 - `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle
 - `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline

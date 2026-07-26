@@ -4,7 +4,7 @@ Human-readable summary of the Mourne Made concept pipeline. The detailed source
 of truth is `research/verifications.json`; regenerate `src/data/businesses.json`
 with `node scripts/normalize-businesses.mjs` after changing it.
 
-Snapshot: 25 July 2026 · seven public transformations · twelve built concepts
+Snapshot: 26 July 2026 · seven public transformations · twelve built concepts
 awaiting short publication triage · two prospects held on trading or suitability
 evidence
 
