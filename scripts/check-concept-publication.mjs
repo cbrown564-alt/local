@@ -68,6 +68,16 @@ const checkNames = [
   "safeToPublish",
 ];
 
+// The fifth check — would the owner recognise themselves in this? — was added on
+// 27 July 2026 after three concepts passed the first four and were withdrawn
+// anyway. It is required of every review from that date. The concepts published
+// before it were never asked the question and cannot be answered by backfilling
+// a value here, so they are reported as owing a re-review on every build instead
+// of failing one. See CONCEPT_DESIGN_REVIEW.md.
+const OWNER_CHECK = "ownerWouldRecognise";
+const OWNER_CHECK_FROM = "2026-07-27";
+const owesOwnerCheck = [];
+
 for (const slug of publicSlugs) {
   if (!candidateSlugs.has(slug)) {
     errors.push(`Public transformation "${slug}" is not a concept candidate.`);
@@ -93,6 +103,14 @@ for (const slug of publicSlugs) {
   if (!Array.isArray(review.blockers) || review.blockers.length > 0) {
     errors.push(`Public transformation "${slug}" still has a publication blocker.`);
   }
+
+  if ((review.checkedAt ?? "") >= OWNER_CHECK_FROM) {
+    if (review.checks?.[OWNER_CHECK] !== true) {
+      errors.push(`Public transformation "${slug}" fails "${OWNER_CHECK}".`);
+    }
+  } else if (review.checks?.[OWNER_CHECK] !== true) {
+    owesOwnerCheck.push(slug);
+  }
 }
 
 if (new Set(publicSlugs).size !== publicSlugs.length) {
@@ -105,5 +123,11 @@ if (errors.length) {
 } else {
   console.log(
     `Concept publication check passed for ${publicSlugs.length} public transformations.`,
+  );
+}
+
+if (owesOwnerCheck.length) {
+  console.warn(
+    `Owed re-review — ${owesOwnerCheck.length} public concept(s) published before ${OWNER_CHECK_FROM} were never asked "${OWNER_CHECK}": ${owesOwnerCheck.join(", ")}.`,
   );
 }

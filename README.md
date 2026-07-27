@@ -37,7 +37,7 @@ pnpm test:media     # run while pnpm preview serves 127.0.0.1:4321
 - `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
 - `/transformations/` — public concept index
-- `/transformations/<slug>/` — generated for slugs that pass the four
+- `/transformations/<slug>/` — generated for slugs that pass the five
   publication checks in `research/concept-reviews/publication.json`
 - `/about/` — local and community commitment
 - `/request/` — request form with error and success states
@@ -99,7 +99,7 @@ because three documents each kept their own copy.
 | `PROSPECTS.md` | Pipeline state: every business's stage, the public list and the held list |
 | `PLAN.md` | Current milestone and the next actions |
 | `REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |
-| `CONCEPT_DESIGN_REVIEW.md` | The publication standard (the four checks) |
+| `CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
 | `DESIGN.md` | Brand, visual language and concept identities |
 | `CONTEXT.md` | Project vocabulary |
 | `MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
@@ -111,7 +111,7 @@ Machine-readable sources of truth, which override any prose:
 | File | Owns |
 |---|---|
 | `src/data/transformations.ts` | `publicTransformationSlugs` — exactly what is public |
-| `research/concept-reviews/publication.json` | The four-check answers per public concept |
+| `research/concept-reviews/publication.json` | The five-check answers per public concept |
 | `research/verifications.json` | Per-business evidence, corrections and stage |
 
 `pnpm build` fails if a slug in `publicTransformationSlugs` has no publication
@@ -119,10 +119,13 @@ record, a false check, or an unresolved blocker.
 
 `REVIEW.md` — critical site review (23 July 2026): verified findings with file references and the prioritised P0–P4 backlog plus bold ideas. P0 items are fixed; work the rest top-down and tick them off in the same commit as each fix.
 
-`CONCEPT_DESIGN_REVIEW.md` owns the four publication checks: truthful and
-respectful, clear and specific, works as presented, and safe to publish. Public
-concepts are recorded in `research/concept-reviews/publication.json`; the build
-checks those four answers and any remaining blocker. Optional improvements do
+`CONCEPT_DESIGN_REVIEW.md` owns the five publication checks: truthful and
+respectful, clear and specific, works as presented, safe to publish, and the
+owner would recognise themselves in it. Public concepts are recorded in
+`research/concept-reviews/publication.json`; the build checks those answers and
+any remaining blocker. The fifth check is required from 27 July 2026; the
+seventeen concepts published before it are named on every build as owing a
+re-review. Optional improvements do
 not remove a useful concept from the portfolio. The retired v1.1 score system
 and its plan are preserved under `docs/archive/`.
 
@@ -159,9 +162,10 @@ sourcing claims on 26 July 2026.
 - `src/data/businesses.json` — consolidated public-source dataset (379 records)
 - `/opportunities` — internal prospecting workbench (`src/workbench/opportunities.astro`); served by `pnpm dev` only and deliberately excluded from production builds because it embeds the full scored dataset
 - `research/verifications.json` — accumulated per-business verification knowledge: dated trading evidence, census corrections, shortlist decisions and design tasks
-- `research/concept-reviews/publication.json` — four-check publication record
+- `research/concept-reviews/publication.json` — five-check publication record
   for concepts shown on the public site
-- `research/concept-reviews/triage/` — per-concept four-check triage records
+- `research/concept-reviews/triage/` — per-concept triage records, including the
+  retirement reason for a concept that has been withdrawn
 - `research/concept-reviews/audits/` — internal design audits kept as
   standalone HTML. Open them directly from disk; they are deliberately outside
   `public/` so they are never deployed
@@ -173,7 +177,8 @@ sourcing claims on 26 July 2026.
 - `scripts/check-public-assets.mjs` — guards the deploy boundary and reports
   unreferenced held assets
 - `scripts/check-concept-publication.mjs` — verifies that every public concept
-  has four positive answers and no blocker
+  has positive answers and no blocker, and names the concepts that predate the
+  fifth check
 - `PROSPECTS.md` — human-readable pipeline state: current shortlist, caveats, and the repeatable select → verify → normalise → build → record cycle
 - `RESEARCH_METHOD.md` — source and geographic methodology, plus the verification protocol
 - `scripts/research-businesses.mjs` — repeatable discovery pipeline
