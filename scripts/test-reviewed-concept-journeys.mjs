@@ -271,6 +271,20 @@ await check("Five repaired concepts load responsive subject-proof images", async
 
 await check("Declared prototype availability shows a recovery-safe handoff", async () => {
   await withPage("/concepts/donard-hotel/", async (page) => {
+    const evidence = await page.$eval(".dh-hero", (element) => {
+      const image = element.querySelector("img");
+      return {
+        complete: image?.complete,
+        naturalWidth: image?.naturalWidth,
+        currentSrc: image?.currentSrc,
+        disclosure: element.querySelector(".dh-photo-credit")?.textContent?.replace(/\s+/g, " ").trim(),
+      };
+    });
+    assert.equal(evidence.complete, true);
+    assert.ok((evidence.naturalWidth ?? 0) > 0);
+    assert.match(evidence.currentSrc ?? "", /donard-hotel-exterior-visualisation-640\.webp$/);
+    assert.match(evidence.disclosure ?? "", /Faithful visualisation.*Eric Jones.*CC BY-SA 2\.0/);
+
     await page.click("[data-dh-availability] button[type=submit]");
     const status = await page.$eval(
       "[data-dh-availability-status]:not([hidden])",

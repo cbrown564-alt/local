@@ -90,7 +90,9 @@ const CONCEPTS = {
     afterHover: AFTER_HOVER,
   },
   "donard-hotel": {
-    beforeStill: "http://donardhotel.com/",
+    before: "https://www.thedonard.co.uk/",
+    settleMs: 6000,
+    beforeHover: ["text=Rooms", "text=ROOMS", "nav a", "header a"],
     afterHover: AFTER_HOVER,
   },
   "newcastle-dental": {

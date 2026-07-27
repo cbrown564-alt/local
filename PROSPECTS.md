@@ -7,7 +7,7 @@ with `node scripts/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 27 July 2026 · twelve public transformations · five concepts withdrawn
+Snapshot: 27 July 2026 · sixteen public transformations · one concept withdrawn
 for fifth-check repair · two concepts retired · one active next prospect · two
 prospects held on trading or suitability evidence · **no business contacted
 yet**
@@ -72,8 +72,12 @@ prototype is limited to visible original-art fulfilment and sold-work recovery.
 | The Tool Centre | Newcastle | Hardware and plant-hire desk with hire-list |
 | Scopers | Dundrum | Zero-waste bar and supper-club night |
 | The Dundrum Inn | Dundrum | Tonight board and GuestDiary journey |
+| The Donard Hotel | Newcastle | Property-first arrival, published room rates and official booking handoff |
 | Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
 | Hugh McCann's | Newcastle | Venue-led date and guest-count wedding enquiry |
+| Betty's Better Butters | Dundrum | Product-led range using the maker's real mark and butter photography |
+| Douglas & Cromie | Newcastle | Restored garage identity, direct contact details and current-vehicle check |
+| Castle Farm Fresh Produce | Dundrum | Produce-led weekly-box journey with the farm's navy-and-gold identity |
 
 ## Withdrawn for fifth-check repair
 
@@ -83,11 +87,7 @@ identity blocker is repaired and all five publication checks pass again.
 
 | Business | Town | Unblock condition |
 |---|---|---|
-| Betty's Better Butters | Dundrum | Restore product-led imagery and remove the critique of the current site from the proposed page |
-| Douglas & Cromie | Newcastle | Use confirmed business identity and publishable real-stock photography; keep the marketplace diagnosis in the case study |
 | Kelly, McEvoy & Brown | Dundrum | Carry the firm's yellow-and-grey mark and project photography into the filterable register |
-| The Donard Hotel | Newcastle | Use confirmed hotel identity and publishable property photography; keep the commission argument in the case study |
-| Castle Farm Fresh Produce | Dundrum | Carry the farm's navy-and-gold mark and produce photography into the weekly-box journey |
 
 ## Retired concepts
 

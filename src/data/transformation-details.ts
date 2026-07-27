@@ -127,7 +127,7 @@ export const transformationDetails = {
       {
         "title": "Give the portfolio a shape",
         "body": "The current site lists a substantial body of work — ecclesiastical, healthcare, education and more — as plain text links beneath a small carousel. The scale is there; the frame that lets a client read it is not.",
-        "change": "A project register, filterable by sector, giving each job a number, a location and a discipline — the drawing index a contractor already thinks in."
+        "change": "A project register, filterable by sector, keeps the firm's project names and locations together and brings source-matched photography into the same view."
       },
       {
         "title": "Lead with the record, not the template",
@@ -140,7 +140,7 @@ export const transformationDetails = {
         "change": "The accreditation marks brought up as what they are — the evidence a main contractor needs before inviting a tender — beside a clear enquiry route."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Kelly, McEvoy & Brown website on 24 July 2026. The establishment date of 1973, the Build on experience line, the six sectors, the named projects and the accreditation marks all come from that site. Any photography in the concept is drawn only from the firm's own carousel — no building the firm did not construct is shown, and no stock imagery is introduced. The project register is illustrative in its ordering; the projects themselves are the firm's own. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.kmbni.com/\" rel=\"external\">Kelly, McEvoy & Brown public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, procurement outcomes or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Kelly, McEvoy & Brown website on 24 July 2026. The establishment date of 1973, the Build on experience line, the six sectors, the named projects and the accreditation marks all come from that site. The mark and photography in the concept come only from the firm's own public site and project pages: Saint Patrick's & Saint Ronan's in Magheralin and Rowallane Credit Union & Community Hub in Saintfield. No building the firm did not construct is shown, and no stock imagery is introduced. The project register is illustrative in its ordering; the projects themselves are the firm's own. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.kmbni.com/\" rel=\"external\">Kelly, McEvoy & Brown public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, procurement outcomes or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "bettys-butters": {
     "title": "Betty's Better Butters concept transformation — Mourne Made",
@@ -158,7 +158,7 @@ export const transformationDetails = {
       "beforePoster": "/images/bettys-butters-before.jpg",
       "afterPoster": "/images/bettys-butters-after.jpg",
       "beforeAlt": "Ten-second visit to Betty's Better Butters' current website — the two-page site whose navigation still reads Home Page and Our Store, with no product shown",
-      "afterAlt": "Ten-second visit to the concept — the Restaurant flavour, brought home opening and a shelf of butter rounds with wax-paper labels"
+      "afterAlt": "Ten-second visit to the concept — Betty's mountain-ring mark, a butter-on-a-board photograph and an illustrative flavour range"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes to put the product on the page.",
@@ -171,7 +171,7 @@ export const transformationDetails = {
       {
         "title": "Put a single product on the page",
         "body": "For a business that sells flavoured butter, the site shows not one product — no flavour, no size, no price, no photograph.",
-        "change": "A shelf of the range, each butter a labelled round, with sizes and prices where the maker supplies them."
+        "change": "The maker's own butter photograph leads into an illustrative range, ready for real flavours, sizes and prices when supplied."
       },
       {
         "title": "Use the story that is already written",
@@ -179,13 +179,13 @@ export const transformationDetails = {
         "change": "That founder story given the room it deserves, above the range and the Royal Mail delivery the site already mentions."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Betty's Better Butters website on 24 July 2026, across both of its pages. The founder story — restaurant-quality flavours, over ten years in professional kitchens — the Main Street address and the collection, local delivery and Royal Mail options are the maker's own words. The site is built on ProSite Hosting, and its navigation and document title were still the builder defaults at capture. No product names, sizes or prices are published, so the flavours shown in the concept are clearly marked placeholders — the real range must come from the maker and is never invented. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.bettysbetterbutters.com/\" rel=\"external\">Betty's Better Butters public website</a></li>\n          <li><a href=\"https://www.bettysbetterbutters.com/our-store\" rel=\"external\">Its store page, used to confirm the delivery options</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the maker's plans for the site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Betty's Better Butters website on 24 July 2026, across both of its pages. The concept directly reuses the business's mountain-ring mark and the butter photograph from its homepage, downloaded on 27 July 2026. The founder story — restaurant-quality flavours, over ten years in professional kitchens — the Main Street address and the collection, local delivery and Royal Mail options are the maker's own words. No product names, sizes or prices are published, so the flavours shown in the concept are labelled illustrative — the real range must come from the maker and is never invented. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.bettysbetterbutters.com/\" rel=\"external\">Betty's Better Butters public website</a></li>\n          <li><a href=\"https://www.bettysbetterbutters.com/our-store\" rel=\"external\">Its store page, used to confirm the delivery options</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the maker's plans for the site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "douglas-cromie": {
     "title": "Douglas & Cromie concept transformation — Mourne Made",
     "description": "A respectful, source-backed before-and-after website concept for Douglas & Cromie Car Sales in Newcastle, Co. Down.",
     "eyebrow": "Website transformation · Newcastle, Co. Down",
-    "headline": "A forecourt the dealer owns.",
+    "headline": "Put the garage back at its own address.",
     "date": "24 July 2026",
     "comparisonIntro": "Drag the handle. The left stands in for what a customer currently finds — douglasandcromie.co.uk does not resolve, so there is no page to capture; the right shows the proposed first screen.",
     "conceptHref": "/concepts/douglas-cromie/",
@@ -196,37 +196,37 @@ export const transformationDetails = {
       "beforePoster": "/images/douglas-cromie-before.jpg",
       "afterPoster": "/images/douglas-cromie-after.jpg",
       "beforeAlt": "A muted card standing in for douglasandcromie.co.uk, which does not resolve — the domain returns no page at all",
-      "afterAlt": "Ten-second visit to the concept — the Your forecourt, not someone else's opening and stock cards the dealer owns",
-      "beforeNote": "Douglas & Cromie's domain does not resolve at all — typing douglasandcromie.co.uk returns no page. Search engines still show a cached title, so the dealer appears to have a website and has none; its actual stock sits on a third-party marketplace. There is no live site to demo — the panel on the left is a muted stand-in for a domain that answers nothing."
+      "afterAlt": "Ten-second view of the concept — Douglas & Cromie's own wordmark and vehicle photography beside a Drive away with confidence opening",
+      "beforeNote": "Douglas & Cromie's domain does not resolve at all — typing douglasandcromie.co.uk returns no page. Search engines still show a cached title, so the dealer appears to have a website and has none. There is no live site to demo; the panel on the left is a muted stand-in for a domain that answers nothing."
     },
     "secondSurfacesHtml": [],
-    "notesHeading": "Three changes to bring the forecourt home.",
+    "notesHeading": "Three changes to restore the garage's front door.",
     "notes": [
       {
-        "title": "Reconnect an address that returns nothing",
+        "title": "Reconnect the address customers already know",
         "body": "The dealer's domain no longer resolves. A customer who follows a cached search result reaches a dead end — while the business itself may believe it still has a site.",
-        "change": "A working forecourt at an address the dealer controls, so the cached search results finally lead somewhere."
+        "change": "A working page at an address the dealer controls, with the phone number, opening hours and directions available immediately."
       },
       {
-        "title": "Bring the stock home",
-        "body": "The cars are listed on a third-party marketplace, beside competitors, on a page the dealer does not own or control.",
-        "change": "A stock listing the dealer prices and photographs itself, showing the three facts a buyer scans first — year, mileage and price."
+        "title": "Restore the identity the garage chose",
+        "body": "The archived homepage preserves Douglas & Cromie's slate-and-coral palette, wordmark, vehicle photography and drive away with confidence wording.",
+        "change": "Those recognisable materials lead the concept instead of a new number-plate identity invented by the studio."
       },
       {
-        "title": "Carry the fifty years a listing can't",
-        "body": "Fifty years in the trade and drive away with confidence is the dealer's real asset, and a marketplace row has no room for it.",
-        "change": "Part-exchange, finance and the service history brought up front — the things a marketplace listing cannot put beside a car."
+        "title": "Make the aftercare easy to act on",
+        "body": "The dealer's own homepage put fifty years in the trade, MOT preparation, servicing and parts sales at the centre of its offer.",
+        "change": "A direct call, current-vehicle link, directions, hours and workshop services now sit together without inventing live inventory."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 the domain douglasandcromie.co.uk did not resolve on either its apex or www address — a DNS failure, so no page could be captured. The before panel is therefore a muted stand-in, not a screenshot of a live site. The dealer's fifty-year trading history, Bryansford Service Station address and phone number come from public directories, and its stock is published on a third-party marketplace; active trading was confirmed by local first-hand knowledge on 24 July 2026. The vehicles shown in the concept are clearly marked placeholders — a live forecourt would read from the dealer's own stock. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.usedcarsni.com/used-cars/dealers/douglasandcromie\" rel=\"external\">The dealer's stock on a third-party marketplace</a></li>\n          <li><a href=\"https://www.thomsonlocal.com/search/car-dealers/northern-ireland/douglas-cromie/742052/02843722382\" rel=\"external\">Directory listing used for address and phone</a></li>\n        </ul>\n        <p>No claim is made about sales performance or the internal decisions behind the lapsed domain.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 the domain douglasandcromie.co.uk did not resolve on either its apex or www address — a DNS failure, so no page could be captured. The before panel is therefore a muted stand-in, not a screenshot of a live site. The concept restores the wordmark, slate-and-coral palette, Hind type, vehicle photograph, drive away with confidence wording, fifty-year history, services, address, phone number and opening hours from Douglas & Cromie's archived January 2024 public homepage. The dealer's current Used Cars NI profile still confirms its identity, address and phone numbers, but showed no vehicles on 27 July 2026, so the concept does not invent or imply live inventory. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://web.archive.org/web/20240117041804/http://www.douglasandcromie.co.uk/\" rel=\"external\">Archived Douglas &amp; Cromie public homepage</a></li>\n          <li><a href=\"https://www.usedcarsni.com/search_results.php?dealer=26586938&amp;search_type=1\" rel=\"external\">Current Used Cars NI dealer profile</a></li>\n          <li><a href=\"https://www.thomsonlocal.com/search/car-dealers/northern-ireland/douglas-cromie/742052/02843722382\" rel=\"external\">Directory listing used to cross-check the address and phone</a></li>\n        </ul>\n        <p>No claim is made about current vehicle availability, sales performance or the internal decisions behind the lapsed domain.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "donard-hotel": {
     "title": "The Donard Hotel concept transformation — Mourne Made",
-    "description": "A respectful, source-backed before-and-after website concept for The Donard Hotel in Newcastle, Co. Down.",
-    "eyebrow": "Website transformation · Newcastle, Co. Down",
-    "headline": "Let the hotel take the booking.",
-    "date": "24 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows what a guest currently finds — donardhotel.com returning a 404 with no secure version, captured during research; the right shows the proposed first screen.",
+    "description": "A respectful, source-backed property-first feature concept for The Donard in Newcastle, Co. Down.",
+    "eyebrow": "Website feature · Newcastle, Co. Down",
+    "headline": "Put the hotel before the destination.",
+    "date": "27 July 2026",
+    "comparisonIntro": "Drag the handle. The left shows The Donard's new official homepage, captured during the build-day re-check; the right shows a property-first feature proposal that keeps its identity and booking route.",
     "conceptHref": "/concepts/donard-hotel/",
     "conceptLabel": "View the full concept screen",
     "motion": {
@@ -234,30 +234,30 @@ export const transformationDetails = {
       "afterVideo": "/videos/donard-hotel-after.mp4",
       "beforePoster": "/images/donard-hotel-before.jpg",
       "afterPoster": "/images/donard-hotel-after.jpg",
-      "beforeAlt": "The Donard Hotel's own address returning a 404 error with no secure version — the hotel is reachable only through booking sites that take commission",
-      "afterAlt": "Ten-second visit to the concept — the A Main Street welcome, booked straight from us opening, the direct-versus-travel-site panel and the availability bar",
-      "beforeNote": "The Donard Hotel trades well — rated 8.7 by recent guests — but its own site is dead: donardhotel.com returns a 404 over HTTP and has no secure version at all. Every booking therefore runs through a travel site that takes commission. There is no live site to demo; this is what the address returns."
+      "beforeAlt": "Ten-second visit to The Donard's current official homepage — the navy-and-gold building logo, wide Mournes landscape, welcome line and booking search",
+      "afterAlt": "View of the feature concept — The Donard's navy-and-gold identity, a disclosed visualisation of its Main Street frontage, published room rates and an official booking handoff",
+      "beforeNote": "The build-day re-check found a new official website at thedonard.co.uk, including a working booking search. That evidence retires the original first-website premise. The live page shown here is the new baseline, not the dead domain captured three days earlier."
     },
     "secondSurfacesHtml": [],
-    "notesHeading": "Three changes to win the direct booking.",
+    "notesHeading": "Three changes to make the hotel recognisable sooner.",
     "notes": [
       {
-        "title": "Give the hotel an address of its own",
-        "body": "The site returns a 404 with no secure version, so a guest who looks for the hotel directly cannot book direct — only through an online travel agent.",
-        "change": "A working first screen the hotel controls, with rooms, rates and availability in its own hands."
+        "title": "Show the hotel, not only the destination",
+        "body": "The new official homepage opens on a wide Mournes landscape. It establishes the place beautifully, but the first screen does not show the red-brick Main Street building a guest will arrive at.",
+        "change": "A property-first opening built from a clearly disclosed visualisation of the real frontage, so the first frame belongs to this hotel rather than to accommodation in the Mournes generally."
       },
       {
-        "title": "Make the commission the argument",
-        "body": "The same room costs the hotel a cut on every travel-site booking; a guest who would happily book direct currently has no route to.",
-        "change": "A plain direct-versus-travel-site panel — same room, same night — with breakfast added for booking direct."
+        "title": "Keep the identity the hotel chose",
+        "body": "The official site establishes a specific identity: deep navy, soft gold, a line drawing of the corner turret and the ESTD 1946 date.",
+        "change": "The proposal carries that navy, gold, wide-spaced name and founding date. It does not reuse the unlicensed logo artwork or replace the hotel with a studio-made crest."
       },
       {
-        "title": "Book while the welcome is fresh",
-        "body": "The hotel's strength is the Main Street welcome its reviews describe, yet nothing online lets a guest act on it in the moment.",
-        "change": "An availability bar taking arrival and nights, so a guest can hold a room as soon as they decide."
+        "title": "Keep direct booking, add room context",
+        "body": "The current site already puts its booking search on the first screen. Replacing that working route would solve nothing.",
+        "change": "The proposal keeps the official engine as the handoff and places the hotel's published starting rates beside it, so a guest has useful room context before continuing."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 donardhotel.com returned a 404 over HTTP and refused a secure connection entirely — that captured error page is the before. The hotel's active trading is well evidenced: a Booking.com listing with 2026 prices and an 8.7 score from 46 reviews, a TripAdvisor listing updated for 2026, and local first-hand confirmation on 24 July 2026. Room rates in the concept are illustrative. Guest photography of the hotel belongs to the travel agents that carry it and is not reused here — real imagery would come from the hotel. The layout and copy hierarchy are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.booking.com/hotel/gb/the-donard-newcastle.html\" rel=\"external\">Booking.com listing used to verify trading and rates</a></li>\n          <li><a href=\"https://www.tripadvisor.com/Hotel_Review-g186478-d191960-Reviews-The_Donard-Newcastle_County_Down_Northern_Ireland.html\" rel=\"external\">TripAdvisor listing updated for 2026</a></li>\n        </ul>\n        <p>No claim is made about the commercial impact of booking direct or about the internal decisions behind the lapsed site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what changed.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 donardhotel.com returned a 404 over HTTP and refused a secure connection, which originally made this a first-website and commission case. The 27 July build-day re-check found a new official site at thedonard.co.uk with the hotel's navy-and-gold identity, property pages and a working booking search. That new evidence changes the proposal: the dead-domain and commission diagnosis is retained only as dated case-study history and does not appear inside the guest page. The concept uses the official Rooms page for the 19-room count, room types and starting rates.</p>\n        <p>The exterior hero is a disclosed generated visualisation based on Eric Jones's 24 March 2023 photograph of the real Main Street facade, licensed CC BY-SA 2.0. The shutters are shown open and parked cars removed; it is not presented as a documentary photograph. The hotel logo informed the palette, ESTD 1946 date and wide-spaced name, but the unlicensed logo artwork itself is not reused.</p>\n        <ul>\n          <li><a href=\"https://www.thedonard.co.uk/\" rel=\"external\">The Donard's current official homepage and booking search</a></li>\n          <li><a href=\"https://www.thedonard.co.uk/bedrooms\" rel=\"external\">Official Rooms page used for room types and starting rates</a></li>\n          <li><a href=\"https://www.geograph.org.uk/photo/7440264\" rel=\"external\">Eric Jones's source photograph, CC BY-SA 2.0</a></li>\n          <li><a href=\"https://creativecommons.org/licenses/by-sa/2.0/\" rel=\"external\">Creative Commons Attribution-ShareAlike 2.0 licence</a></li>\n        </ul>\n        <p>No claim is made about booking conversion, commission saved, customer approval or the hotel's plans for its new site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "newcastle-dental": {
     "title": "Newcastle Family Dental Care concept transformation — Mourne Made",
@@ -452,10 +452,10 @@ export const transformationDetails = {
       {
         "title": "Show why local matters",
         "body": "The existing mark is distinctive, but the opening screen does not immediately connect it to produce, provenance or delivery.",
-        "change": "Pair real product imagery with three short promises: Dundrum-grown, weekly boxes and local collection."
+        "change": "Keep the farm's navy-and-gold mark and pair it with a clearly labelled faithful visualisation of the mixed produce box, weekly-box route and collection or Northern Ireland delivery."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The business name, published phone number and store categories came from that site. The concept introduces no photography; the produce shelf and weekly-box panels are drawn concept work. The layout, copy hierarchy and proposed experience are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The business name, navy-and-gold mark, published phone number, store categories, collection and Northern Ireland delivery offer came from that site. The concept's opening produce image is a disclosed AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph: it preserves the recognisable vegetables, eggs, chicken and butcher items while removing labels and supermarket branding and recomposing them in a navy crate. The layout, copy hierarchy and proposed experience are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about exact box contents or availability, sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "cupla": {
     "title": "Cúpla concept transformation — Mourne Made",

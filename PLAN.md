@@ -33,6 +33,10 @@ recognise themselves in it. The fifth was added on 27 July 2026 — see below.
   concept. The index summary and alt text were corrected in the same pass.
 - Retired the Tonn Ruray Café and Groves Chemist concepts and added the fifth
   publication check.
+- Rebuilt The Donard after its build-day re-check found a new official website:
+  restored its navy-and-gold identity, added licensed-source property imagery,
+  kept the working booking engine and moved the obsolete dead-domain and
+  commission diagnosis into dated case-study history.
 
 ### Triage outcomes (26 July 2026)
 
@@ -106,7 +110,7 @@ were never asked, so the build names them on every run rather than failing;
 
 ## Next milestones
 
-Eleven concepts are public and no business has been contacted. The next
+Sixteen concepts are public and no business has been contacted. The next
 piece of product work is one deliberate exception to the closed portfolio:
 Painted Earth will test the broader commercial offer in a strong retail
 setting. It is a representative prototype until the business agrees to take
@@ -151,7 +155,21 @@ part; it must not be described as a client pilot or client work.
    disclosed faithful view of its dining room and the Mournes, removing
    current-site criticism from the customer page and using the published email
    address; it passed all five checks and returned to the public list later
-   that day. Twelve concepts are now public and five remain withdrawn.
+   that day. Betty's Better Butters was repaired next by restoring its real
+   mark and butter photograph, removing the current-site critique from the
+   customer page and strengthening the illustrative-range disclosure. It
+   passed the fifth check and returned to the public list. Douglas & Cromie
+   followed: the repair restored the wordmark, palette, vehicle photography,
+   aftercare wording, services and hours from its archived public homepage,
+   removed the dealer criticism and sample inventory from the proposed page,
+   and corrected the stale claim that its marketplace profile still carries
+   live stock. Castle Farm was repaired by restoring its navy-and-gold mark and
+   adding a disclosed faithful produce-box visualisation to the weekly-box
+   journey; it also passed all five checks. The Donard followed after its new
+   official site changed the premise: the rebuild now preserves the hotel's
+   identity, property and existing booking route, so it passed all five checks
+   and returned to the public list. Sixteen concepts are now public and one
+   remains withdrawn.
 3. **Completed 27 July 2026 — regenerate public comparison media only where a
    blocker repair changed the visible result.** Recaptured the Scopers
    supper-club and Tool Centre hire-list stills, plus the Douglas & Cromie
