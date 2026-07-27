@@ -46,7 +46,7 @@ top-strip, direct-header and navigation geometry; each identity sets its
 accent, navigation gap and underline-size tokens while keeping its distinct
 hero and secondary-page layouts local.
 
-- **Castle Farm** — warm cream and farm green, Georgia serif, produce-led.
+- **Castle Farm** — the farm's navy-and-gold mark, Georgia serif and a disclosed faithful mixed-box visualisation, with the produce-led weekly-box journey kept as the proposed improvement.
 - **Enniskeen** — deep pine `#1E3A2C`, cream `#F5EFE2` and honey brass
   `#C9973B` with Cormorant Garamond; a hairline inset frame, an asymmetric
   48/52 split between story and valley view, and an availability bar stitched
@@ -111,22 +111,35 @@ overflow that is not there).
 - **Murdock Brothers** (`murdock-brothers`) — tanker steel and safety orange,
   Archivo + DM Mono, hazard chevrons. A **fuel-gauge order slider** (real range
   input) with the price left blank because the merchant publishes none.
-- **Kelly, McEvoy & Brown** (`kelly-mcevoy-brown`) — architect's blueprint:
-  grid ground, Familjen Grotesk + Martian Mono, drawing title block. A
-  **filterable project register** turns a 53-year portfolio of text links into
-  an index. First B2B/trade concept.
-- **Betty's Better Butters** (`bettys-butters`) — premium deli label, churned
-  cream and butter gold, a fat Rozha One didone. A **shelf of butter rounds**
-  with wax-paper labels; flavours are marked placeholders (the maker publishes
-  none).
-- **Douglas & Cromie** (`douglas-cromie`) — forecourt after dark, garage
-  graphite and service-station amber, condensed Saira, a UK number-plate motif.
-  A **stock forecourt the dealer owns**, against a marketplace listing it
-  doesn't; vehicles marked placeholder.
-- **The Donard Hotel** (`donard-hotel`) — unfussy heritage in oxblood and warm
-  stone with Marcellus, kept away from Enniskeen's pine/brass. The one argument
-  is commission, so the **direct-vs-OTA panel** is the only strong colour, beside
-  an availability bar.
+- **Kelly, McEvoy & Brown** (`kelly-mcevoy-brown`) — **rebuilt 27 July
+  2026.** The first version replaced the firm's recognisable identity with an
+  architect's blueprint treatment and removed the project photography that
+  proves its work. The rebuild carries the firm's own yellow-and-grey mark and
+  source-matched photographs into the page. The useful structural change
+  remains: a **filterable project register** turns a 53-year portfolio of text
+  links into an index without inventing projects or image matches. First
+  B2B/trade concept.
+- **Betty's Better Butters** (`bettys-butters`) — the maker's real
+  mountain-ring mark and butter photograph lead a butter-gold product page,
+  with Rozha One for the large flavour language. A ruled **illustrative range**
+  shows how flavours, allergens, serving ideas, sizes and delivery could be
+  organised without presenting invented products as real.
+- **Douglas & Cromie** (`douglas-cromie`) — **rebuilt 27 July 2026.** The
+  first version replaced the dealer's identity with garage graphite,
+  service-station amber and a number-plate motif, then placed the dead-domain
+  diagnosis inside the customer page. The rebuild restores the archived
+  slate-and-coral wordmark, Hind typography, vehicle photography, aftercare
+  promise, services, hours and direct garage details. It shows no invented
+  inventory; current vehicles remain a neutral external check.
+- **The Donard Hotel** (`donard-hotel`) — **rebuilt 27 July 2026 after the
+  build-day re-check found its new official site.** The invented oxblood,
+  Marcellus and D crest are gone. The proposal now carries the hotel's chosen
+  navy, soft gold, wide-spaced name and ESTD 1946 date without reusing its
+  unlicensed logo artwork. A disclosed faithful visualisation based on Eric
+  Jones's CC BY-SA 2.0 exterior photograph puts the Main Street property before
+  the destination. The official booking engine remains the handoff, with the
+  hotel's published room types and starting rates beside it. The earlier dead
+  domain and commission diagnosis survives only as dated case-study history.
 - **Newcastle Family Dental Care** (`newcastle-dental`) — clinical periwinkle
   with a coral accent, Plus Jakarta + Instrument Serif. Security *is* the
   concept: a **padlocked secure address bar** answers the insecure redirect the

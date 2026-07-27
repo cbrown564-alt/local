@@ -3,14 +3,8 @@ import "../../styles/global.css";
 import "../../styles/concept-douglas-cromie.css";
 import ConceptLayout from "../../layouts/ConceptLayout.astro";
 
-// Douglas & Cromie's own domain returns ENOTFOUND; its stock lives on a
-// third-party marketplace. This concept is the forecourt they'd own. Vehicle
-// details are clearly-marked placeholders — the live version reads the yard.
-const stock = [
-  { make: "Ford", model: "Focus Titanium", year: "2019", miles: "48,200", price: "9,450", fuel: "Diesel" },
-  { make: "Volkswagen", model: "Golf Match", year: "2020", miles: "36,900", price: "12,995", fuel: "Petrol" },
-  { make: "Nissan", model: "Qashqai N-Connecta", year: "2018", miles: "61,400", price: "10,750", fuel: "Diesel" },
-];
+const marketplaceHref =
+  "https://www.usedcarsni.com/search_results.php?dealer=26586938&search_type=1";
 ---
 
 <ConceptLayout
@@ -19,77 +13,94 @@ const stock = [
   bodyClass="concept-page concept-dc"
   businessName="Douglas and Cromie"
   town="Newcastle"
-  bannerNote="Vehicles shown are placeholders — the live forecourt would read from the dealer's own stock."
+  bannerNote="Identity, wording and photography are preserved from the dealer's archived public homepage."
 >
   <div class="dc-strip">
-    <span>Bryansford Service Station · Newcastle, Co. Down · est. 50 years</span>
-    <span class="dc-strip-r"><a href="tel:+442843722382">028 4372 2382</a></span>
+    <span>Bryansford Service Station · 23 Bryansford Village · Newcastle</span>
+    <span class="dc-strip-r">
+      <span>Mon–Fri 08:00–18:00 · Sat 09:00–13:00</span>
+      <a href="tel:+442843722382">028 4372 2382</a>
+    </span>
   </div>
 
   <header class="dc-header">
-    <a class="dc-brand" href="/concepts/douglas-cromie/">
-      <span class="dc-plate" aria-hidden="true">
-        <span class="dc-plate-flag">D&amp;C</span>
-        <span class="dc-plate-reg">CROMIE</span>
-      </span>
-      <span class="dc-brand-text">
-        <span class="dc-brand-name">Douglas &amp; Cromie</span>
-        <span class="dc-brand-sub">Car Sales · Newcastle</span>
-      </span>
+    <a class="dc-brand" href="/concepts/douglas-cromie/" aria-label="Douglas and Cromie home">
+      <img
+        src="/images/douglas-cromie-logo.png"
+        width="640"
+        height="100"
+        alt="Douglas and Cromie — New and Used Car Sales"
+      />
     </a>
     <nav class="dc-nav" aria-label="Concept navigation">
-      <a href="#" data-concept-placeholder>Stock</a><a href="#" data-concept-placeholder>Part-ex</a><a href="#" data-concept-placeholder>Finance</a><a href="#" data-concept-placeholder>Servicing</a>
+      <a href="#why-us">Why us</a>
+      <a href="#services">Workshop</a>
+      <a href="#visit">Find us</a>
     </nav>
-    <a class="dc-value" href="#" data-concept-placeholder>Value my car</a>
+    <a class="dc-stock" href={marketplaceHref} rel="external">
+      Check current vehicles
+    </a>
   </header>
 
-  <main class="dc-main">
-    <section class="dc-lede">
-      <p class="dc-eyebrow">Fifty years on the Bryansford Road</p>
-      <h1>Your forecourt,<br /><span>not someone else's.</span></h1>
-      <p class="dc-body">
-        Drive away with confidence — the aftercare is what fifty years buys you.
-        A forecourt of its own would show stock the dealer prices and photographs,
-        not rows buried among competitors on a marketplace page.
-      </p>
-      <div class="dc-lost">
-        <span class="dc-lost-dot" aria-hidden="true"></span>
-        <p><strong>douglasandcromie.co.uk doesn't load.</strong> The domain stopped resolving,
-        so the stock ended up on a third-party site the dealer doesn't control. This is
-        the forecourt brought back home.</p>
+  <main>
+    <section class="dc-hero" aria-labelledby="dc-title">
+      <div class="dc-hero-copy">
+        <p class="dc-kicker">New &amp; used car sales · MOT preparation · servicing</p>
+        <h1 id="dc-title">Drive away<br />with confidence.</h1>
+        <p class="dc-intro">
+          Backed by 50 years in the business, our experienced staff are always
+          on hand to help — before you buy and after you leave the forecourt.
+        </p>
+        <div class="dc-actions">
+          <a class="dc-call" href="tel:+442843722382">Call 028 4372 2382</a>
+          <a class="dc-directions" href="#visit">Get directions <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
+      <figure class="dc-hero-image">
+        <img
+          src="/images/douglas-cromie-forecourt.jpg"
+          width="1280"
+          height="480"
+          alt="Blue, red and yellow cars lined up on a forecourt"
+        />
+        <figcaption>Douglas &amp; Cromie homepage photography</figcaption>
+      </figure>
     </section>
 
-    <!-- The forecourt board. Each car is a listing card the dealer owns —
-         price big, the three facts a buyer scans, a part-ex hook. -->
-    <section class="dc-forecourt" aria-labelledby="dc-forecourt-title">
-      <div class="dc-forecourt-head">
-        <h2 id="dc-forecourt-title">On the forecourt</h2>
-        <span class="dc-forecourt-count">Sample cards · not live stock</span>
+    <section class="dc-proof" id="why-us" aria-label="Why choose Douglas and Cromie">
+      <p class="dc-proof-number">50</p>
+      <p class="dc-proof-label">years in the business</p>
+      <p class="dc-proof-copy">
+        We pride ourselves on excellent after-sales care. You receive the same
+        attention whether you are buying a new or used vehicle.
+      </p>
+    </section>
+
+    <section class="dc-service-row" id="services" aria-label="Garage services">
+      <p>New &amp; used car sales</p>
+      <p>MOT preparation</p>
+      <p>Servicing all makes</p>
+      <p>Parts sales</p>
+    </section>
+
+    <section class="dc-visit" id="visit">
+      <div>
+        <p class="dc-visit-label">Visit the garage</p>
+        <h2>Bryansford Service Station</h2>
+        <p>23 Bryansford Village<br />Newcastle, Co. Down<br />BT33 0PT</p>
       </div>
-      <ul class="dc-cards">
-        {stock.map((car) => (
-          <li class="dc-card">
-            <div class="dc-card-photo" aria-hidden="true">
-              <span>placeholder</span>
-            </div>
-            <div class="dc-card-body">
-              <p class="dc-card-name">{car.make} <strong>{car.model}</strong></p>
-              <span class="dc-ph">placeholder listing</span>
-              <dl class="dc-card-facts">
-                <div><dt>Year</dt><dd>{car.year}</dd></div>
-                <div><dt>Miles</dt><dd>{car.miles}</dd></div>
-                <div><dt>Fuel</dt><dd>{car.fuel}</dd></div>
-              </dl>
-              <div class="dc-card-foot">
-                <span class="dc-card-price">£{car.price}</span>
-                <a class="dc-card-cta" href="#" data-concept-placeholder>Enquire →</a>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p class="dc-forecourt-foot">Placeholder stock — the live forecourt reads from the dealer's own list.</p>
+      <div class="dc-hours">
+        <p><span>Monday–Friday</span><strong>08:00–18:00</strong></p>
+        <p><span>Saturday</span><strong>09:00–13:00</strong></p>
+        <p><span>Sunday</span><strong>Closed</strong></p>
+      </div>
+      <a
+        class="dc-map"
+        href="https://www.google.com/maps/search/?api=1&query=Douglas%20and%20Cromie%2C%2023%20Bryansford%20Village%2C%20Newcastle%2C%20BT33%200PT"
+        rel="external"
+      >
+        Open in maps <span aria-hidden="true">↗</span>
+      </a>
     </section>
   </main>
 </ConceptLayout>

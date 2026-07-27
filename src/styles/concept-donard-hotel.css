@@ -1,312 +1,490 @@
-/* The Donard Hotel — independent concept identity.
-   A trading Main Street hotel whose own site is dead, so every booking runs
-   through an OTA on commission. The direction is unfussy heritage — warm stone
-   paper, an oxblood-and-ink palette deliberately away from Enniskeen's pine and
-   brass, Marcellus caps for a Roman-inscription calm. The one argument is
-   commission, so the direct-vs-OTA panel is the only place strong colour lands.
-   Light-themed, because a seaside hotel should feel like morning. */
+/* The Donard — direct-booking feature concept.
+   The navy, soft gold, wide-spaced sans wordmark and ESTD 1946 line come from
+   the hotel's current identity at thedonard.co.uk. The exterior hero is a
+   disclosed faithful visualisation based on Eric Jones's 2023 Geograph image,
+   reused under CC BY-SA 2.0. */
 
 body.concept-donard {
-  --dh-paper: #f6f1e8;
-  --dh-paper-deep: #ece3d3;
-  --dh-ink: #241f1c;
-  --dh-ink-soft: #6a5f56;
-  --dh-wine: #7c2b34;
-  --dh-wine-deep: #5c1e26;
-  --dh-gold: #b8893f;
-  --dh-sea: #34606a;
-  --dh-rule: #d6c9b3;
-  --concept-accent: var(--dh-wine);
-  --concept-nav-gap: clamp(18px, 2.3vw, 32px);
-  --concept-nav-line: 1px;
+  --dh-navy: #1b3769;
+  --dh-navy-deep: #10274f;
+  --dh-gold: #f0d06f;
+  --dh-gold-soft: #f7e8b1;
+  --dh-sky: #edf3f8;
+  --dh-white: #ffffff;
+  --dh-ink: #13213a;
+  --dh-muted: #536078;
+  --dh-rule: #ccd6e1;
+  --concept-accent: var(--dh-gold);
+  --concept-nav-gap: clamp(16px, 2vw, 28px);
+  --concept-nav-line: 2px;
 
   margin: 0;
-  background:
-    radial-gradient(120% 90% at 100% 0%, var(--dh-paper) 0%, var(--dh-paper-deep) 100%);
+  background: var(--dh-sky);
   color: var(--dh-ink);
   font-family: "Figtree", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 .dh-strip {
-  padding: 10px clamp(16px, 4vw, 48px);
-  border-bottom: 1px solid var(--dh-rule);
+  padding: 9px clamp(16px, 4vw, 48px);
+  background: var(--dh-navy-deep);
+  color: #f8f3e5;
   font-size: 12px;
   letter-spacing: .015em;
-  color: var(--dh-ink-soft);
 }
 
-.dh-strip a { color: var(--dh-wine); text-underline-offset: 3px; font-weight: 600; }
+.dh-strip-r {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.dh-strip a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
 
 .dh-header {
-  padding: 18px clamp(16px, 4vw, 48px);
-  gap: 24px;
-  flex-wrap: wrap;
-  row-gap: 14px;
+  padding: 15px clamp(16px, 4vw, 48px);
+  gap: clamp(18px, 3vw, 44px);
+  background: var(--dh-navy);
+  color: var(--dh-white);
 }
 
-.dh-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; color: inherit; }
-
-.dh-brand-crest {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border: 1.5px solid var(--dh-wine);
-  border-radius: 50%;
-  color: var(--dh-wine);
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 24px;
+.dh-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  color: var(--dh-gold);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .dh-brand-name {
-  display: block;
-  font-family: "Marcellus", Georgia, serif;
-  font-size: clamp(21px, 2.2vw, 28px);
-  letter-spacing: .06em;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 500;
+  letter-spacing: .16em;
+  line-height: 1;
   text-transform: uppercase;
-  color: var(--dh-wine-deep);
 }
 
-.dh-brand-sub {
-  display: block;
-  font-size: 10.5px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--dh-ink-soft);
+.dh-brand-year {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .16em;
 }
 
 .dh-nav a {
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 14.5px;
-  letter-spacing: .04em;
-  color: var(--dh-ink);
+  color: var(--dh-white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .025em;
+}
+
+.dh-nav a::after {
+  background: var(--dh-gold);
 }
 
 .dh-nav a:hover::after,
-.dh-nav a:focus-visible::after { right: 0; }
+.dh-nav a:focus-visible::after {
+  right: 0;
+}
 
 .dh-book {
-  padding: 12px 20px;
-  background: var(--dh-wine);
-  color: var(--dh-paper);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  padding: 11px 17px;
+  border: 1px solid var(--dh-gold);
+  color: var(--dh-gold-soft);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
   text-decoration: none;
-  transition: background 160ms ease;
+  text-transform: uppercase;
+  transition:
+    background 180ms cubic-bezier(.22, 1, .36, 1),
+    color 180ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .dh-book:hover,
-.dh-book:focus-visible { background: var(--dh-wine-deep); }
+.dh-book:focus-visible {
+  background: var(--dh-gold);
+  color: var(--dh-navy-deep);
+}
 
 .dh-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(300px, .9fr);
-  gap: clamp(28px, 4vw, 64px);
-  align-items: start;
-  padding: clamp(30px, 4.6vw, 66px) clamp(16px, 4vw, 48px) 96px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(340px, .75fr);
+  min-height: calc(100svh - 128px);
+  background: var(--dh-white);
+}
+
+.dh-hero {
+  position: relative;
+  min-height: 590px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--dh-navy-deep);
+  color: var(--dh-white);
+}
+
+.dh-hero-image,
+.dh-hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dh-hero-image {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 52% center;
+  filter: saturate(.88) contrast(1.04);
+}
+
+.dh-hero-shade {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 24, 49, .91) 0%, rgba(10, 24, 49, .68) 48%, rgba(10, 24, 49, .1) 82%),
+    linear-gradient(0deg, rgba(10, 24, 49, .56) 0%, transparent 45%);
+}
+
+.dh-hero-copy {
+  display: flex;
+  min-height: 590px;
+  max-width: 650px;
+  padding: clamp(50px, 7vw, 94px) clamp(24px, 6vw, 76px) 82px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dh-kicker {
-  margin: 0 0 clamp(14px, 2vw, 20px);
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 13px;
-  letter-spacing: .22em;
+  margin: 0 0 17px;
+  color: var(--dh-gold-soft);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .13em;
   text-transform: uppercase;
-  color: var(--dh-gold);
 }
 
 .dh-hero h1 {
+  max-width: 12ch;
   margin: 0;
-  font-family: "Marcellus", Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(34px, 5vw, 66px);
-  line-height: 1.04;
-  letter-spacing: -.005em;
-  color: var(--dh-wine-deep);
-}
-
-.dh-hero h1 em {
-  font-style: italic;
-  font-family: "Figtree", system-ui, sans-serif;
-  font-weight: 400;
-  color: var(--dh-ink);
+  color: var(--dh-white);
+  font-size: clamp(43px, 5.2vw, 74px);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: .98;
+  text-wrap: balance;
 }
 
 .dh-lede {
-  max-width: 50ch;
-  margin: clamp(20px, 2.6vw, 30px) 0 0;
-  font-size: clamp(15px, 1.15vw, 16.5px);
-  line-height: 1.68;
-  color: var(--dh-ink-soft);
+  max-width: 45ch;
+  margin: 24px 0 0;
+  color: #f5f7fb;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 
-/* Direct-vs-OTA card. */
-.dh-direct {
-  margin-top: clamp(26px, 3vw, 36px);
-  max-width: 480px;
-  border: 1px solid var(--dh-rule);
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 16px 40px rgba(92, 30, 38, .1);
+.dh-hero-link {
+  align-self: flex-start;
+  margin-top: 26px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--dh-gold);
+  color: var(--dh-gold-soft);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
 }
-.dh-provisional {
+
+.dh-photo-credit {
+  position: absolute;
+  right: 14px;
+  bottom: 11px;
   margin: 0;
-  padding: 9px 12px;
-  border-bottom: 1px solid var(--dh-rule);
-  background: #f6efe4;
-  color: var(--dh-ink-soft);
-  font-size: 11px;
-  line-height: 1.45;
+  padding: 5px 7px;
+  background: rgba(10, 24, 49, .82);
+  color: #f5f7fb;
+  font-size: 10px;
 }
 
-.dh-direct-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 16px 18px;
+.dh-photo-credit a {
+  color: inherit;
+  text-underline-offset: 2px;
 }
 
-.dh-direct-row--ota {
-  background: var(--dh-paper-deep);
-  color: var(--dh-ink-soft);
-}
-
-.dh-direct-row--ota .dh-direct-price { color: var(--dh-ink-soft); }
-.dh-direct-row--ota .dh-direct-price em { font-style: normal; font-size: 12px; }
-
-.dh-direct-row--us {
-  background: var(--dh-wine);
-  color: var(--dh-paper);
-}
-
-.dh-direct-label { font-size: 13px; font-weight: 600; letter-spacing: .02em; }
-
-.dh-direct-price {
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 22px;
-}
-
-.dh-direct-price strong { font-family: "Figtree", sans-serif; font-size: 12px; font-weight: 600; }
-
-.dh-direct-note {
-  margin: 0;
-  padding: 12px 18px;
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--dh-ink-soft);
-}
-
-/* Booking panel. */
 .dh-book-panel {
-  padding: clamp(20px, 2.4vw, 28px);
-  border: 1px solid var(--dh-rule);
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 20px 48px rgba(36, 31, 28, .12);
+  padding: clamp(34px, 4.5vw, 58px) clamp(24px, 3.4vw, 46px);
+  background: var(--dh-white);
+}
+
+.dh-book-intro {
+  margin: 0 0 11px;
+  color: var(--dh-navy);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
 .dh-book-panel h2 {
-  margin: 0 0 16px;
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 20px;
-  letter-spacing: .02em;
-  color: var(--dh-wine-deep);
+  max-width: 12ch;
+  margin: 0;
+  color: var(--dh-navy-deep);
+  font-size: clamp(30px, 3vw, 43px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.02;
+  text-wrap: balance;
 }
 
-.dh-avail { display: grid; gap: 12px; margin-bottom: 20px; }
-.dh-avail-status {
-  margin: -8px 0 18px;
-  padding: 11px 12px;
-  border-left: 3px solid var(--dh-gold);
-  background: var(--dh-paper-deep);
-  color: var(--dh-ink-soft);
-  font-size: 12px;
-  line-height: 1.5;
+.dh-book-copy {
+  max-width: 37ch;
+  margin: 15px 0 22px;
+  color: var(--dh-muted);
+  font-size: 13px;
+  line-height: 1.55;
 }
-.dh-avail-status[hidden] { display: none; }
 
-.dh-avail-field { display: grid; gap: 6px; }
+.dh-avail {
+  display: grid;
+  gap: 12px;
+}
+
+.dh-avail-dates {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(110px, .65fr);
+  gap: 9px;
+}
+
+.dh-avail-field {
+  display: grid;
+  gap: 6px;
+}
 
 .dh-avail-field span {
-  font-size: 11px;
-  font-weight: 600;
+  color: var(--dh-muted);
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--dh-ink-soft);
 }
 
 .dh-avail-field input,
 .dh-avail-field select {
-  padding: 11px 12px;
+  min-width: 0;
+  padding: 11px 10px;
   border: 1px solid var(--dh-rule);
-  border-radius: 5px;
-  background: var(--dh-paper);
+  border-radius: 0;
+  background: var(--dh-white);
   color: var(--dh-ink);
-  font-family: inherit;
-  font-size: 14px;
+  font: inherit;
+  font-size: 13px;
 }
 
 .dh-avail-field input:focus-visible,
-.dh-avail-field select:focus-visible { outline: 2px solid var(--dh-wine); outline-offset: 1px; }
+.dh-avail-field select:focus-visible,
+.dh-avail-go:focus-visible,
+.dh-avail-status:focus-visible {
+  outline: 3px solid var(--dh-gold);
+  outline-offset: 2px;
+}
 
 .dh-avail-go {
-  padding: 13px;
+  padding: 13px 15px;
   border: 0;
-  border-radius: 5px;
-  background: var(--dh-wine);
-  color: var(--dh-paper);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: .04em;
+  border-radius: 0;
+  background: var(--dh-navy);
+  color: var(--dh-white);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: background 180ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .dh-avail-go:hover,
-.dh-avail-go:focus-visible { background: var(--dh-wine-deep); }
+.dh-avail-go:focus-visible {
+  background: var(--dh-navy-deep);
+}
 
-.dh-rooms { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--dh-rule); }
+.dh-avail-status {
+  display: grid;
+  gap: 5px;
+  margin: 13px 0 0;
+  padding: 12px;
+  border: 1px solid #b8c7d8;
+  background: var(--dh-sky);
+  color: var(--dh-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.dh-avail-status[hidden] {
+  display: none;
+}
+
+.dh-avail-status strong {
+  color: var(--dh-navy-deep);
+  font-size: 12px;
+}
+
+.dh-avail-status a {
+  justify-self: start;
+  color: var(--dh-navy);
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.dh-room-heading {
+  margin: 24px 0 0;
+  padding-top: 17px;
+  border-top: 1px solid var(--dh-rule);
+  color: var(--dh-navy);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.dh-rooms {
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+}
 
 .dh-room {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 14px 0;
+  padding: 9px 0;
   border-bottom: 1px solid var(--dh-rule);
 }
 
-.dh-room-name { display: block; font-size: 14.5px; font-weight: 600; }
-.dh-room-note { display: block; margin-top: 2px; font-size: 12px; color: var(--dh-ink-soft); }
+.dh-room-name {
+  display: block;
+  color: var(--dh-ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dh-room-note {
+  display: block;
+  margin-top: 1px;
+  color: var(--dh-muted);
+  font-size: 10.5px;
+}
 
 .dh-room-rate {
   flex: none;
-  font-family: "Marcellus", Georgia, serif;
-  font-size: 20px;
-  color: var(--dh-sea);
+  color: var(--dh-navy);
+  font-size: 12px;
+  font-weight: 800;
 }
-
-.dh-room-rate em { font-family: "Figtree", sans-serif; font-style: normal; font-size: 11px; color: var(--dh-ink-soft); }
 
 .dh-book-foot {
-  margin: 14px 0 0;
-  font-size: 11px;
-  line-height: 1.5;
-  color: var(--dh-ink-soft);
+  margin: 11px 0 0;
+  color: var(--dh-muted);
+  font-size: 10px;
+  line-height: 1.45;
 }
 
-@media (max-width: 940px) {
-  .dh-main { grid-template-columns: 1fr; }
-  .dh-nav { display: none; }
+@media (max-width: 980px) {
+  .dh-nav {
+    display: none;
+  }
+
+  .dh-main {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-hero {
+    min-height: 560px;
+  }
+
+  .dh-hero-copy {
+    min-height: 560px;
+  }
+
+  .dh-book-panel {
+    max-width: none;
+  }
+
+  .dh-book-panel h2 {
+    max-width: 17ch;
+  }
 }
 
-@media (max-width: 520px) {
-  .dh-strip { flex-direction: column; align-items: flex-start; gap: 5px; }
-  .dh-direct-row { flex-wrap: wrap; }
+@media (max-width: 560px) {
+  .dh-strip {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .dh-strip-r {
+    flex-wrap: wrap;
+  }
+
+  .dh-header {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .dh-brand-year {
+    display: none;
+  }
+
+  .dh-brand-name {
+    font-size: 18px;
+    letter-spacing: .11em;
+  }
+
+  .dh-book {
+    padding: 9px 10px;
+    font-size: 10px;
+  }
+
+  .dh-hero,
+  .dh-hero-copy {
+    min-height: 535px;
+  }
+
+  .dh-hero-image {
+    object-position: 43% center;
+  }
+
+  .dh-hero-shade {
+    background:
+      linear-gradient(90deg, rgba(10, 24, 49, .86), rgba(10, 24, 49, .42)),
+      linear-gradient(0deg, rgba(10, 24, 49, .72), transparent 60%);
+  }
+
+  .dh-hero-copy {
+    justify-content: flex-end;
+    padding: 54px 20px 76px;
+  }
+
+  .dh-hero h1 {
+    font-size: clamp(39px, 12vw, 55px);
+  }
+
+  .dh-photo-credit {
+    right: auto;
+    left: 14px;
+  }
+
+  .dh-avail-dates {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-book,
+  .dh-avail-go {
+    transition: none;
+  }
 }

@@ -16,10 +16,41 @@ sourcing copy afterwards.
 `node scripts/check-public-assets.mjs` reports images held in `public/images/`
 that no longer appear anywhere in `src/`.
 
+## Business-owned site assets
+
+- `douglas-cromie-logo.png` and `douglas-cromie-forecourt.jpg` — **in use.**
+  Recovered on 27 July 2026 from Douglas & Cromie's archived January 2024
+  public homepage. The first is the dealer's slate wordmark; the second is one
+  of the vehicle photographs the business selected for its homepage slider.
+  The concept does not present the photographed cars as current inventory.
+- `kmb-logo.png`, `kmb-saint-patricks-ronans.jpg` and
+  `kmb-rowallane-credit-union.jpg` — **in use.** Downloaded from the Kelly,
+  McEvoy & Brown public site and the matching Magheralin ecclesiastical and
+  Saintfield commercial project pages on 27 July 2026. The concept uses the
+  firm's mark directly. Each photograph is attached only to its named project;
+  the other register entries remain text-only rather than implying an
+  unsourced image match.
+- `bettys-butters-brand-mark.png` and `bettys-butters-source-butter.jpg` —
+  **in use.** Downloaded from the Betty's Better Butters public homepage on
+  27 July 2026. The first is the business's mountain-ring mark. The second is
+  the butter-on-a-board photograph used as that site's hero background. The
+  concept uses both directly and does not present the illustrative flavour
+  names as photographed products.
+
 ## Generated imagery
 
 Every page carrying one of these labels it as generated on the page itself.
 
+- `donard-hotel-exterior-visualisation.jpg` — **in use.** AI-generated faithful
+  visualisation based on Eric Jones's 24 March 2023 photograph of The Donard's
+  Main Street facade, licensed CC BY-SA 2.0 and retained at
+  `research/concept-reviews/evidence/donard-hotel/source-eric-jones-2023.jpg`.
+  The prompt preserved the brick facade, corner turret, roofline, window rhythm,
+  perspective and neighbouring edges; it raised the winter shutters, removed
+  parked cars and changed the light to a clear late-summer afternoon. The first
+  viewport labels it a faithful visualisation and links both the source and
+  licence.
+- `castle-farm-weekly-box-faithful.webp` — **in use.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `public/images/castle-farm-box.jpg`. The prompt preserved the recognisable broccoli, corn, peppers, onions, potatoes, eggs, chicken and packaged butcher items while removing labels and supermarket branding and recomposing the contents in a navy crate. The concept labels the image in the first viewport and makes no claim about exact current contents or availability.
 - `dundrum-inn-faithful-exterior.jpg` — **in use.** AI-generated faithful visualisation based on the Inn's own exterior hero photograph, downloaded from its GuestDiary CDN on 26 July 2026 and held privately at `.tmp/concept-subject-references/dundrum-inn-exterior-reference.jpg`. The prompt preserved the yellow-and-black terraced façade, shopfront, roof and window rhythm, blue-edged awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring blue/purple fronts. It changed only lighting, minor street clutter and framing; it expressly forbade an invented bay view, mountains, garden, hotel extension or new architecture. The concept labels the image as generated in the first viewport and its alt text repeats the reference boundary. The rejected first attempt (`dundrum-inn-hero-generated-v1.png`) invented a cream country inn and false bay setting and was removed.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
@@ -36,6 +67,12 @@ Credited publicly in `public/images/place/ATTRIBUTION.md`. Status here.
 - `mournes-newcastle.jpg`, `businesses-main-street-dundrum.jpg`, `main-street-1.jpg`, `houses.jpg`, `boats-moored-at-newcastle-harbour.jpg`, `central-promenade.jpg` — **in use** on the public site.
 - `kent-amusements-exterior-2023.jpg` — **not in use since 26 July 2026.** Still held, so its CC BY-SA 2.0 credit stays in the public file.
 - `donard-veterinary-exterior-2023.jpg` — **not in use since 26 July 2026.** Still held, so its CC BY-SA 2.0 credit stays in the public file.
+- `source-eric-jones-2023.jpg` — **source for an in-use visualisation.** Eric
+  Jones, “The Main Street facade of the Donard Hotel,” 24 March 2023, CC BY-SA
+  2.0. The public concept credits the photographer and licence beside the hero;
+  the source file is held under
+  `research/concept-reviews/evidence/donard-hotel/`, not shipped as concept
+  photography.
 
 ## Withdrawn
 

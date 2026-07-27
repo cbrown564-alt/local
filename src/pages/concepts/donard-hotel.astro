@@ -3,120 +3,155 @@ import "../../styles/global.css";
 import "../../styles/concept-donard-hotel.css";
 import ConceptLayout from "../../layouts/ConceptLayout.astro";
 
-// The Donard Hotel trades (Booking.com 8.7, 46 reviews, 2026 prices) but its own
-// site is dead — 404 over HTTP, no HTTPS. Every booking goes through an OTA that
-// takes commission. The concept is a direct front door. Rate below is illustrative.
-const nights = [
-  { room: "Main Street double", note: "Bay-facing, breakfast in", rate: "119" },
-  { room: "Mourne twin", note: "Quiet rear, mountain side", rate: "109" },
-  { room: "Family room", note: "Sleeps four, town centre", rate: "149" },
+// Build-day re-check, 27 July 2026: thedonard.co.uk is now the hotel's live,
+// official site. These room types and starting rates are published on its
+// Rooms page. The proposal keeps the hotel's current identity and booking
+// engine, moving that working direct route onto the first screen.
+const rooms = [
+  { room: "Double or twin", note: "For two guests", rate: "115" },
+  { room: "Family room", note: "Double bed and bunk-bed", rate: "145" },
+  { room: "Single room", note: "Queen-sized bed", rate: "85" },
 ];
+
+const officialSite = "https://www.thedonard.co.uk";
+const bookingEngine = `${officialSite}/booking-engine`;
 ---
 
 <ConceptLayout
-  title={"The Donard Hotel — independent concept"}
+  title={"The Donard — direct-booking feature concept"}
   slug="donard-hotel"
   bodyClass="concept-page concept-donard"
-  businessName="The Donard Hotel"
+  businessName="The Donard"
   town="Newcastle"
-  bannerNote="Rates are illustrative — the direct booking argument, not a live tariff."
+  bannerNote="Feature proposal based on the hotel's current site and identity; exterior is a disclosed visualisation."
 >
   <div class="dh-strip">
-    <span>23–29 Main Street, Newcastle · at the foot of Slieve Donard</span>
-    <span class="dh-strip-r">Reception <a href="tel:+442843722203">028 4372 2203</a></span>
+    <span>29 Main Street, Newcastle · at the foot of the Mournes</span>
+    <span class="dh-strip-r">
+      <a href="mailto:info@thedonard.co.uk">info@thedonard.co.uk</a>
+      <span aria-hidden="true">·</span>
+      <a href="tel:+442843722203">028 4372 2203</a>
+    </span>
   </div>
 
   <header class="dh-header">
-    <a class="dh-brand" href="/concepts/donard-hotel/">
-      <span class="dh-brand-crest" aria-hidden="true">D</span>
-      <span class="dh-brand-text">
-        <span class="dh-brand-name">The Donard</span>
-        <span class="dh-brand-sub">Hotel · Newcastle, Co. Down</span>
-      </span>
+    <a class="dh-brand" href="/concepts/donard-hotel/" aria-label="The Donard concept home">
+      <span class="dh-brand-year">ESTD</span>
+      <span class="dh-brand-name">The Donard</span>
+      <span class="dh-brand-year">1946</span>
     </a>
-    <nav class="dh-nav" aria-label="Concept navigation">
-      <a href="#" data-concept-placeholder>Rooms</a><a href="#" data-concept-placeholder>Dining</a><a href="#" data-concept-placeholder>The town</a><a href="#" data-concept-placeholder>Offers</a>
+    <nav class="dh-nav" aria-label="Hotel navigation">
+      <a href={`${officialSite}/bedrooms`} rel="external">Rooms</a>
+      <a href={`${officialSite}/breakfast`} rel="external">Breakfast</a>
+      <a href={`${officialSite}/facilities`} rel="external">Facilities</a>
+      <a href={`${officialSite}/parking`} rel="external">Parking</a>
+      <a href={`${officialSite}/contact`} rel="external">Contact</a>
     </nav>
-    <a class="dh-book" href="#" data-concept-placeholder>Book direct</a>
+    <a class="dh-book" href="#availability">Check availability</a>
   </header>
 
   <main class="dh-main">
-    <section class="dh-hero">
-      <p class="dh-kicker">Since the promenade was young</p>
-      <h1>A Main Street welcome,<br /><em>booked straight from us.</em></h1>
-      <p class="dh-lede">
-        Large, warm rooms a minute from the sand, a good breakfast, and staff who
-        remember you. Rated 8.7 by recent guests — the only thing missing is a way
-        to book without a middleman taking their cut.
-      </p>
-
-      <!-- The commission argument, made once, plainly. -->
-      <div class="dh-direct">
-        <p class="dh-provisional">
-          Illustrative comparison — not current hotel pricing, availability or
-          direct-booking policy.
+    <section class="dh-hero" aria-labelledby="dh-title">
+      <img
+        class="dh-hero-image"
+        src="/images/donard-hotel-exterior-visualisation.jpg"
+        srcset="/images/donard-hotel-exterior-visualisation-640.webp 640w, /images/donard-hotel-exterior-visualisation-1265.webp 1265w, /images/donard-hotel-exterior-visualisation.jpg 1448w"
+        sizes="(max-width: 980px) 100vw, 68vw"
+        alt="Faithful visualisation of The Donard's red-brick Main Street frontage and corner turret, with the ground-floor shutters open"
+        width="1448"
+        height="1086"
+      />
+      <div class="dh-hero-shade" aria-hidden="true"></div>
+      <div class="dh-hero-copy">
+        <p class="dh-kicker">Family-run in the heart of Newcastle</p>
+        <h1 id="dh-title">Main Street below.<br />The Mournes ahead.</h1>
+        <p class="dh-lede">
+          Nineteen cosy rooms, a relaxed welcome and Newcastle on the doorstep.
+          Settle in, then choose the mountains, the beach or the town.
         </p>
-        <div class="dh-direct-row dh-direct-row--ota">
-          <span class="dh-direct-label">Through a travel site</span>
-          <span class="dh-direct-price">£119 <em>+ commission</em></span>
-        </div>
-        <div class="dh-direct-row dh-direct-row--us">
-          <span class="dh-direct-label">Booked direct with us</span>
-          <span class="dh-direct-price">£119 <strong>· breakfast on us</strong></span>
-        </div>
-        <p class="dh-direct-note">
-          Same room, same night. The difference is who keeps the margin — and direct
-          guests get breakfast for it.
-        </p>
+        <a class="dh-hero-link" href={`${officialSite}/facilities`} rel="external">
+          See what is waiting inside <span aria-hidden="true">→</span>
+        </a>
       </div>
+      <p class="dh-photo-credit">
+        Faithful visualisation from a
+        <a href="https://www.geograph.org.uk/photo/7440264" rel="external">photo by Eric Jones</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="external">CC BY-SA 2.0</a>
+      </p>
     </section>
 
-    <!-- Availability bar + room list: the front door the OTA replaced. -->
-    <aside class="dh-book-panel" aria-labelledby="dh-book-title">
-      <h2 id="dh-book-title">Check availability</h2>
-      <form class="dh-avail" method="post" data-dh-availability>
-        <label class="dh-avail-field">
-          <span>Arrive</span>
-          <input type="date" value="2026-08-14" />
-        </label>
-        <label class="dh-avail-field">
-          <span>Nights</span>
-          <select>
-            <option>1 night</option>
-            <option selected>2 nights</option>
-            <option>3 nights</option>
-          </select>
-        </label>
-        <button class="dh-avail-go" type="submit">Preview booking handoff</button>
-      </form>
-      <p class="dh-avail-status" data-dh-availability-status role="status" hidden tabindex="-1">
-        Prototype handoff only — no live availability was checked. A production
-        version would now pass these dates to the hotel's chosen booking engine.
+    <aside class="dh-book-panel" id="availability" aria-labelledby="dh-book-title">
+      <p class="dh-book-intro">Book your stay</p>
+      <h2 id="dh-book-title">Find a room in Newcastle.</h2>
+      <p class="dh-book-copy">
+        Choose your dates here, then continue to The Donard's official booking
+        page for live rooms and prices.
       </p>
 
-      <p class="dh-book-foot">Illustrative room types and rates — not live availability or current hotel prices.</p>
+      <form class="dh-avail" data-dh-availability>
+        <div class="dh-avail-dates">
+          <label class="dh-avail-field">
+            <span>Arrive</span>
+            <input type="date" name="arrival" required />
+          </label>
+          <label class="dh-avail-field">
+            <span>Nights</span>
+            <select name="nights">
+              <option>1 night</option>
+              <option selected>2 nights</option>
+              <option>3 nights</option>
+              <option>4 nights</option>
+            </select>
+          </label>
+        </div>
+        <button class="dh-avail-go" type="submit">Continue to official booking</button>
+      </form>
+
+      <div class="dh-avail-status" data-dh-availability-status role="status" hidden tabindex="-1">
+        <strong>Your dates are ready.</strong>
+        <span>
+          Prototype handoff only — no live availability was checked on this concept. Continue to the
+          hotel's official booking page to search current rooms and prices.
+        </span>
+        <a href={bookingEngine} rel="external">Open official booking <span aria-hidden="true">→</span></a>
+      </div>
+
+      <p class="dh-room-heading">Published room rates</p>
       <ul class="dh-rooms">
-        {nights.map((room) => (
+        {rooms.map((room) => (
           <li class="dh-room">
             <span class="dh-room-text">
               <span class="dh-room-name">{room.room}</span>
               <span class="dh-room-note">{room.note}</span>
             </span>
-            <span class="dh-room-rate">£{room.rate}<em>/night</em></span>
+            <span class="dh-room-rate">from £{room.rate}</span>
           </li>
         ))}
       </ul>
+      <p class="dh-book-foot">
+        Starting rates shown on The Donard's official Rooms page on 27 July 2026.
+        Live prices and availability may differ.
+      </p>
     </aside>
   </main>
 </ConceptLayout>
 
 <script>
-  const availability = document.querySelector<HTMLFormElement>("[data-dh-availability]");
-  availability?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const status = document.querySelector<HTMLElement>("[data-dh-availability-status]");
-    if (!status) return;
-    status.hidden = false;
-    status.focus();
+  document.querySelectorAll<HTMLFormElement>("[data-dh-availability]").forEach((form) => {
+    const arrival = form.elements.namedItem("arrival");
+    if (arrival instanceof HTMLInputElement && !arrival.value) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      arrival.value = tomorrow.toISOString().slice(0, 10);
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const status = form.parentElement?.querySelector<HTMLElement>("[data-dh-availability-status]");
+      if (!status) return;
+      status.hidden = false;
+      status.focus();
+    });
   });
 </script>

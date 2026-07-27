@@ -50,7 +50,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Kelly, McEvoy & Brown's current homepage: a small hand-built site with a carousel and the portfolio listed underneath as plain text links",
     afterAlt:
-      "Mourne Made concept on an architect's blueprint grid: a Build on experience headline beside a project register with sector filters and named projects",
+      "Mourne Made concept carrying Kelly, McEvoy & Brown's yellow-and-grey identity and project photography into a filterable register of named work",
     href: "/transformations/kelly-mcevoy-brown/",
   },
   {
@@ -59,13 +59,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Food & drink",
     summary:
-      "A chef-founded flavoured-butter maker whose two-page site shows no product at all and is still titled 'Home Page' — given a shelf that finally shows the food.",
+      "A chef-founded flavoured-butter maker whose two-page site publishes no named product, size or price — given a product-led range structure that keeps the maker's own mark and butter imagery.",
     before: "/images/bettys-butters-before.jpg",
     after: "/images/bettys-butters-after.jpg",
     beforeAlt:
-      "Betty's Better Butters' current homepage: a two-page ProSite site whose navigation still reads 'Home Page' and 'Our Store', with no product shown",
+      "Betty's Better Butters' current homepage: its mountain-ring mark, a butter photograph and navigation reading 'Home Page' and 'Our Store'",
     afterAlt:
-      "Mourne Made concept in churned cream and butter gold with a Rozha One didone: a Restaurant flavour, brought home headline above a shelf of butter rounds with wax-paper labels, flavours marked placeholder",
+      "Mourne Made concept carrying Betty's mountain-ring mark and butter photograph into a Restaurant flavour, brought home opening and clearly illustrative range",
     href: "/transformations/bettys-butters/",
   },
   {
@@ -74,13 +74,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Shops & services",
     summary:
-      "A 50-year car dealer whose domain no longer resolves, its stock stranded on a marketplace it doesn't control — given a forecourt of its own.",
+      "A 50-year car dealer whose domain no longer resolves — restored with its own wordmark, vehicle photography, aftercare promise and direct garage details.",
     before: "/images/douglas-cromie-before.jpg",
     after: "/images/douglas-cromie-after.jpg",
     beforeAlt:
       "Douglas & Cromie's current website: a muted card standing in for douglasandcromie.co.uk, which does not resolve — the domain returns no page at all",
     afterAlt:
-      "Mourne Made concept in garage graphite and service-station amber with a number-plate motif: a Your forecourt, not someone else's headline beside stock cards the dealer owns, vehicles marked placeholder",
+      "Mourne Made concept preserving Douglas & Cromie's slate wordmark and colourful vehicle photography beside a Drive away with confidence headline and direct phone action",
     href: "/transformations/douglas-cromie/",
   },
   {
@@ -89,13 +89,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Hospitality",
     summary:
-      "A trading Main Street hotel whose own site is dead, so every booking runs through a travel site on commission — given a book-direct front door.",
+      "A property-first feature proposal for The Donard's new official site: its real navy-and-gold identity, Main Street frontage, published room rates and existing direct-booking route on one screen.",
     before: "/images/donard-hotel-before.jpg",
     after: "/images/donard-hotel-after.jpg",
     beforeAlt:
-      "The Donard Hotel's current website: donardhotel.com returning a 404 with no secure version — the hotel is reachable only through booking sites that take commission",
+      "The Donard's current official homepage in navy and gold: its building logo and navigation above a wide Mournes landscape, welcome line and booking search",
     afterAlt:
-      "Mourne Made concept in oxblood and warm stone with Marcellus caps: an A Main Street welcome, booked straight from us headline beside a direct-versus-travel-site panel and an availability bar",
+      "Mourne Made feature concept carrying The Donard's navy-and-gold identity: a disclosed visualisation of its Main Street frontage beside published room rates and an official booking handoff",
     href: "/transformations/donard-hotel/",
   },
   {
@@ -287,8 +287,12 @@ export const publicTransformationSlugs = [
   "tool-centre",
   "scopers",
   "dundrum-inn",
+  "donard-hotel",
   "newcastle-dental",
   "hugh-mccanns",
+  "bettys-butters",
+  "douglas-cromie",
+  "castle-farm",
 ] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);
