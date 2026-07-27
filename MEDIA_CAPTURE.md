@@ -354,8 +354,8 @@ Journey films additionally:
 | kent-amusements | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | newcastle-chamber | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | dundrum-inn | 24 Jul 2026 | before+after still & clip | Consent prompt → clicked "Reject all" | Paired journey capture; live GuestDiary booking destination kept |
-| groves-chemist | 24 Jul 2026 | before still, after still & clip | None; deactivation notice intentionally visible | After-only motion; the pharmacy's own URL is the before finding |
-| tonn-ruray | 24 Jul 2026 | before+after still & clip | Promo lightbox → clicked coordinate (914,76) | Before recaptured clean; paired café-first comparison |
+| groves-chemist | 24 Jul 2026 | before still, after still & clip | None; deactivation notice intentionally visible | Concept retired 27 Jul 2026; all media deleted from `public/`, retrievable at commit dc87b15 |
+| tonn-ruray | 24 Jul 2026 | before+after still & clip | Promo lightbox → clicked coordinate (914,76) | Concept retired 27 Jul 2026; all media deleted from `public/`, retrievable at commit dc87b15. The before clip is the evidence that contradicted the apartment-first claim |
 | kelly-mcevoy-brown | 24 Jul 2026 | before+after still & clip | None found | Paired portfolio comparison; source photography retained |
 | bettys-butters | 24 Jul 2026 | before+after still & clip | None found | Paired comparison; placeholder flavours remain labelled in concept |
 | douglas-cromie | 24 Jul 2026 | before stand-in still, after still & clip | n/a; domain ENOTFOUND | After-only motion; muted before card records the failed address honestly |
