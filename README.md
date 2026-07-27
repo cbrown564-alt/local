@@ -124,10 +124,10 @@ respectful, clear and specific, works as presented, safe to publish, and the
 owner would recognise themselves in it. Public concepts are recorded in
 `research/concept-reviews/publication.json`; the build checks those answers and
 any remaining blocker. The fifth check is required from 27 July 2026; the
-seventeen concepts published before it are named on every build as owing a
-re-review. Optional improvements do
-not remove a useful concept from the portfolio. The retired v1.1 score system
-and its plan are preserved under `docs/archive/`.
+seventeen concepts published before it were re-reviewed on that date. Twelve
+are public and five are recorded as `Fix blocker` outside the public list.
+Optional improvements do not remove a useful concept from the portfolio. The
+retired v1.1 score system and its plan are preserved under `docs/archive/`.
 
 ## Nothing internal in `public/`
 

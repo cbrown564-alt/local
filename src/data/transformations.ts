@@ -110,7 +110,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Newcastle Family Dental Care's current website: its domain redirecting over insecure HTTP to a different practice, DJ Maguire Dentists' Newcastle location page",
     afterAlt:
-      "Mourne Made concept in clinical periwinkle: a Your dentist, on your own address headline with a padlocked secure address bar and an appointment-request form stated as HTTPS",
+      "Mourne Made concept in clinical periwinkle: a Your family dentist, close to home headline with a padlocked secure address bar and an appointment-request form stated as HTTPS",
     href: "/transformations/newcastle-dental/",
   },
   {
@@ -125,7 +125,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Hugh McCann's current homepage: the Boutique Wedding Venue & Gardens site, well photographed and maintained, with no enquiry form or date capture anywhere",
     afterAlt:
-      "Mourne Made concept in plaster, forest and antique gold with a delicate Italiana display: a We do headline beside an Is our day free enquiry with a date field, guest-count slider and season strip",
+      "Mourne Made concept carrying Hugh McCann's dining-room view towards the Mournes: a We do headline beside an Is our day free enquiry with a date field, guest-count slider and season strip",
     href: "/transformations/hugh-mccanns/",
   },
   {
@@ -287,13 +287,8 @@ export const publicTransformationSlugs = [
   "tool-centre",
   "scopers",
   "dundrum-inn",
-  "hugh-mccanns",
-  "bettys-butters",
-  "douglas-cromie",
-  "kelly-mcevoy-brown",
-  "donard-hotel",
   "newcastle-dental",
-  "castle-farm",
+  "hugh-mccanns",
 ] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);
