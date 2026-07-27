@@ -1,0 +1,258 @@
+---
+import PaintedEarthArt from "../../../components/painted-earth/PaintedEarthArt.astro";
+import PaintedEarthShell from "../../../components/painted-earth/PaintedEarthShell.astro";
+import {
+  paintedEarthArtworks,
+  paintedEarthBase,
+  paintedEarthLive,
+} from "../../../data/painted-earth";
+---
+
+<PaintedEarthShell title="Original art — Painted Earth concept" current="originals">
+  <main class="pe-originals">
+    <section class="pe-originals-head">
+      <div>
+        <p class="pe-intro">Original art · upstairs gallery</p>
+        <h1>Know what happens before checkout.</h1>
+        <p>
+          Painted Earth's live shop now filters by price, artist, product type
+          and stock. This prototype adds the missing fulfilment and recovery
+          layer: every work says collection only, shipping quote available, or
+          sold before you open it.
+        </p>
+      </div>
+      <aside class="pe-terms">
+        <strong>How original art is fulfilled</strong>
+        <span>Collect from 98 Main Street</span>
+        <span>Ask Painted Earth for a shipping quote</span>
+        <span>No returns on original art</span>
+      </aside>
+    </section>
+
+    <section class="pe-shelf" aria-labelledby="pe-shelf-heading">
+      <div class="pe-shelf-bar">
+        <div>
+          <h2 id="pe-shelf-heading">Original art examples</h2>
+          <p id="pe-result-count" aria-live="polite">Showing {paintedEarthArtworks.length} example records</p>
+        </div>
+        <button class="pe-refine-button" type="button" aria-controls="pe-filter-dialog">Refine results</button>
+      </div>
+
+      <div class="pe-shelf-layout">
+        <form class="pe-filters pe-filters--desktop" id="pe-filter-form" aria-label="Filter example artworks">
+          <fieldset>
+            <legend>Availability</legend>
+            <label><input type="radio" name="availability" value="all" checked /> All example records</label>
+            <label><input type="radio" name="availability" value="available" /> Available now</label>
+            <label><input type="radio" name="availability" value="sold" /> Sold — show recovery</label>
+          </fieldset>
+          <label>
+            Place
+            <select name="place">
+              <option value="">Any place</option>
+              <option>Mournes</option>
+              <option>Sea</option>
+              <option>County Down</option>
+              <option>Garden</option>
+            </select>
+          </label>
+          <label>
+            Artist
+            <select name="artist">
+              <option value="">Any artist</option>
+              <option>Gary Murray</option>
+              <option>Deirdre Oram</option>
+              <option>Julieanne Ashfield</option>
+              <option>John O'Flaherty-Lynch</option>
+            </select>
+          </label>
+          <label>
+            Maximum price
+            <select name="price">
+              <option value="">Any price</option>
+              <option value="400">Up to £400</option>
+              <option value="500">Up to £500</option>
+              <option value="600">Up to £600</option>
+              <option value="700">Up to £700</option>
+            </select>
+          </label>
+          <button class="pe-clear-filters" type="reset">Clear filters</button>
+        </form>
+
+        <div class="pe-results">
+          <div class="pe-filter-summary" id="pe-filter-summary" aria-live="polite"></div>
+          <div class="pe-empty" id="pe-empty" hidden>
+            <h3>No example artwork matches all those choices.</h3>
+            <p>Remove the price limit or browse the live gallery to see the current range.</p>
+            <button type="button" data-clear-filters>Clear filters</button>
+            <a href={`${paintedEarthLive}/pages/art-craft-gallery`}>Open the live gallery ↗</a>
+          </div>
+          <ul class="pe-artwork-list" id="pe-artwork-list" role="list">
+            {paintedEarthArtworks.map((artwork) => (
+              <li
+                class:list={["pe-artwork", !artwork.available && "pe-artwork--sold"]}
+                data-artwork
+                data-available={String(artwork.available)}
+                data-place={artwork.place}
+                data-artist={artwork.artist}
+                data-price={String(artwork.price)}
+              >
+                <PaintedEarthArt theme={artwork.theme} />
+                <div class="pe-artwork-copy">
+                  <p class="pe-artwork-medium">{artwork.medium}</p>
+                  <h3>{artwork.title}</h3>
+                  <p class="pe-artwork-artist">by {artwork.artist}</p>
+                  <p class="pe-artwork-price">£{artwork.price.toLocaleString("en-GB")}</p>
+                  <div class="pe-fulfilment">
+                    <strong>{artwork.available ? "Available" : "Sold"}</strong>
+                    <span>{artwork.available ? "Collection only · shipping quote available" : "See available work by this artist"}</span>
+                  </div>
+                  {artwork.slug === "rossglass-to-mournes" ? (
+                    <a class="pe-card-link" href={`${paintedEarthBase}/originals/rossglass-to-mournes/`}>View collection and shipping choices</a>
+                  ) : artwork.slug === "cutie-the-puffin" ? (
+                    <a class="pe-card-link" href={`${paintedEarthBase}/originals/cutie-the-puffin/`}>Find another work by Gary Murray</a>
+                  ) : artwork.available ? (
+                    <a class="pe-card-link" href={`${paintedEarthLive}${artwork.livePath}`}>Check this work on the live shop ↗</a>
+                  ) : (
+                    <button class="pe-card-link pe-card-button" type="button" data-artist-filter={artwork.artist}>Show available work by {artwork.artist}</button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="pe-filter-dialog" id="pe-filter-dialog">
+    <form method="dialog" class="pe-dialog-head">
+      <strong>Refine example artworks</strong>
+      <button value="close" aria-label="Close filters">Close</button>
+    </form>
+    <form class="pe-filters pe-filters--dialog" id="pe-filter-dialog-form">
+      <fieldset>
+        <legend>Availability</legend>
+        <label><input type="radio" name="availability" value="all" checked /> All example records</label>
+        <label><input type="radio" name="availability" value="available" /> Available now</label>
+        <label><input type="radio" name="availability" value="sold" /> Sold — show recovery</label>
+      </fieldset>
+      <label>Place
+        <select name="place">
+          <option value="">Any place</option><option>Mournes</option><option>Sea</option><option>County Down</option><option>Garden</option>
+        </select>
+      </label>
+      <label>Artist
+        <select name="artist">
+          <option value="">Any artist</option><option>Gary Murray</option><option>Deirdre Oram</option><option>Julieanne Ashfield</option><option>John O'Flaherty-Lynch</option>
+        </select>
+      </label>
+      <label>Maximum price
+        <select name="price">
+          <option value="">Any price</option><option value="400">Up to £400</option><option value="500">Up to £500</option><option value="600">Up to £600</option><option value="700">Up to £700</option>
+        </select>
+      </label>
+      <button class="pe-primary" type="submit">Show matching examples</button>
+      <button class="pe-clear-filters" type="reset">Clear filters</button>
+    </form>
+  </dialog>
+</PaintedEarthShell>
+
+<script>
+  const desktopForm = document.querySelector<HTMLFormElement>("#pe-filter-form");
+  const dialogForm = document.querySelector<HTMLFormElement>("#pe-filter-dialog-form");
+  const dialog = document.querySelector<HTMLDialogElement>("#pe-filter-dialog");
+  const refineButton = document.querySelector<HTMLButtonElement>(".pe-refine-button");
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-artwork]")];
+  const count = document.querySelector<HTMLElement>("#pe-result-count");
+  const summary = document.querySelector<HTMLElement>("#pe-filter-summary");
+  const empty = document.querySelector<HTMLElement>("#pe-empty");
+
+  const readValues = (form: HTMLFormElement) => {
+    const data = new FormData(form);
+    return {
+      availability: String(data.get("availability") ?? "all"),
+      place: String(data.get("place") ?? ""),
+      artist: String(data.get("artist") ?? ""),
+      price: Number(data.get("price") || Infinity),
+    };
+  };
+
+  const setValues = (form: HTMLFormElement, values: ReturnType<typeof readValues>) => {
+    const availability = form.querySelector<HTMLInputElement>(`input[name="availability"][value="${values.availability}"]`);
+    if (availability) availability.checked = true;
+    const place = form.querySelector<HTMLSelectElement>('select[name="place"]');
+    const artist = form.querySelector<HTMLSelectElement>('select[name="artist"]');
+    const price = form.querySelector<HTMLSelectElement>('select[name="price"]');
+    if (place) place.value = values.place;
+    if (artist) artist.value = values.artist;
+    if (price) price.value = Number.isFinite(values.price) ? String(values.price) : "";
+  };
+
+  const applyFilters = (values: ReturnType<typeof readValues>) => {
+    let shown = 0;
+    cards.forEach((card) => {
+      const available = card.dataset.available === "true";
+      const matchesAvailability = values.availability === "all"
+        || (values.availability === "available" && available)
+        || (values.availability === "sold" && !available);
+      const matches = matchesAvailability
+        && (!values.place || card.dataset.place === values.place)
+        && (!values.artist || card.dataset.artist === values.artist)
+        && Number(card.dataset.price) <= values.price;
+      card.hidden = !matches;
+      if (matches) shown += 1;
+    });
+    if (count) count.textContent = `Showing ${shown} of ${cards.length} example records`;
+    if (empty) empty.hidden = shown > 0;
+    const labels = [
+      values.availability !== "all" ? values.availability : "",
+      values.place,
+      values.artist,
+      Number.isFinite(values.price) ? `up to £${values.price}` : "",
+    ].filter(Boolean);
+    if (summary) summary.textContent = labels.length ? `Applied: ${labels.join(" · ")}` : "No filters applied";
+  };
+
+  const applyFrom = (source: HTMLFormElement) => {
+    const values = readValues(source);
+    if (desktopForm && source !== desktopForm) setValues(desktopForm, values);
+    if (dialogForm && source !== dialogForm) setValues(dialogForm, values);
+    applyFilters(values);
+  };
+
+  desktopForm?.addEventListener("change", () => applyFrom(desktopForm));
+  desktopForm?.addEventListener("reset", () => setTimeout(() => applyFrom(desktopForm), 0));
+  dialogForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    applyFrom(dialogForm);
+    dialog?.close();
+  });
+  dialogForm?.addEventListener("reset", () => setTimeout(() => applyFrom(dialogForm), 0));
+  refineButton?.addEventListener("click", () => {
+    if (desktopForm && dialogForm) setValues(dialogForm, readValues(desktopForm));
+    dialog?.showModal();
+  });
+  document.querySelectorAll<HTMLElement>("[data-clear-filters]").forEach((button) => {
+    button.addEventListener("click", () => desktopForm?.reset());
+  });
+  document.querySelectorAll<HTMLButtonElement>("[data-artist-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!desktopForm) return;
+      desktopForm.reset();
+      const artist = desktopForm.querySelector<HTMLSelectElement>('select[name="artist"]');
+      const available = desktopForm.querySelector<HTMLInputElement>('input[name="availability"][value="available"]');
+      if (artist) artist.value = button.dataset.artistFilter ?? "";
+      if (available) available.checked = true;
+      applyFrom(desktopForm);
+      document.querySelector("#pe-shelf-heading")?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  const initialPlace = new URLSearchParams(location.search).get("place");
+  if (initialPlace && desktopForm) {
+    const place = desktopForm.querySelector<HTMLSelectElement>('select[name="place"]');
+    if (place && [...place.options].some((option) => option.value === initialPlace)) place.value = initialPlace;
+  }
+  if (desktopForm) applyFrom(desktopForm);
+</script>

@@ -127,16 +127,31 @@ part; it must not be described as a client pilot or client work.
    the five checks and a separate Publish decision, and the fifth applies with
    particular force here: Painted Earth's site is already good, so the concept
    has to beat it on its own terms or not ship.
+
+   The concept is written up in
+   [`research/painted-earth-concept-plan.md`](research/painted-earth-concept-plan.md),
+   with its dated evidence in `research/painted-earth-catalogue-2026-07-26.json`.
+   The 27 July build-day re-check found that the shop had added the price,
+   artist or brand, product-type and stock filters central to the original
+   plan, so the broad catalogue treatment was stood down. A narrower internal
+   prototype is implemented at `/concepts/painted-earth/`: familiar shopping
+   routes first, place second, then one complete original-art loop with
+   collection/shipping terms and sold-work recovery. It is build- and
+   journey-verified on desktop and phone, but it is not publication-reviewed
+   and is not public.
 2. **Re-review the seventeen published concepts against the fifth check.** Each
    needs the live site and the concept open side by side, and an
    `ownerWouldRecognise` answer written into its publication record. `pnpm
    build` names the outstanding ones on every run. Three of nineteen concepts
    from the same batch have already failed this question, so treat a *no* as
    likely rather than exceptional.
-3. Regenerate public comparison media only where a blocker repair changed the
-   visible result (Scopers supper-club, Douglas & Cromie forecourt, Kelly
-   register, Hugh McCann's enquiry, Tool Centre hire-list, Newcastle Dental
-   care pills).
+3. **Completed 27 July 2026 — regenerate public comparison media only where a
+   blocker repair changed the visible result.** Recaptured the Scopers
+   supper-club and Tool Centre hire-list stills, plus the Douglas & Cromie
+   forecourt, Kelly register, Hugh McCann's enquiry and Newcastle Dental care
+   pills still-and-clip pairs. Responsive WebP and WebM derivatives were
+   rebuilt, and the six results passed direct visual review and the media
+   loading check.
 4. Finish personalised one-sheets for the concepts selected for direct
    outreach. Rebuild each PDF after the rename — see the QR contract in
    `docs/adr/0002-printed-qr-attribution-contract.md`.

@@ -36,7 +36,14 @@ Before publishing a concept:
 
 | Business | Town | Stage | Planned work |
 |---|---|---|---|
-| Painted Earth | Newcastle | Shortlisted | Full representative retail prototype: preserve the existing product photography, pricing, catalogue routes and personal identity while testing clearer collection discovery, product detail, physical-shop and gallery context, customer capture, upkeep and measurement |
+| Painted Earth | Newcastle | Shortlisted | Internal representative prototype: existing live filters preserved; product and occasion routes lead, place remains optional, and the original-art loop exposes collection/shipping terms and sold-work recovery |
+
+The concept is planned in
+[`research/painted-earth-concept-plan.md`](research/painted-earth-concept-plan.md)
+(updated after the 27 July 2026 build-day re-check), with its dated catalogue
+evidence in `research/painted-earth-catalogue-2026-07-26.json`. The internal
+noindex prototype is implemented at `/concepts/painted-earth/`; it has not
+passed publication review and is not part of the public transformation list.
 
 Painted Earth already has a functioning, polished ecommerce site. It is not a
 repair case and must not be presented as one. The project owner selected it on
@@ -44,6 +51,11 @@ repair case and must not be presented as one. The project owner selected it on
 proportionate improvement than another absent or failed website. The business
 has not been contacted. The work remains an independent prototype unless the
 business agrees to a pilot.
+
+The 27 July re-check contradicted the original claim that collection pages had
+no filters: the live shop now exposes price, artist or brand, product-type and
+stock controls. The broad catalogue treatment was stood down. The surviving
+prototype is limited to visible original-art fulfilment and sold-work recovery.
 
 ## Public concepts
 
