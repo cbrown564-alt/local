@@ -127,6 +127,16 @@ pnpm test:media                                               # verify delivery 
 - **Arg 2 (target):** `both` (default) · `before` · `after`.
 - **Arg 3 (what):** `both` (default) · `video` · `still`. Use `video` to add
   demo clips without overwriting verified committed stills.
+- **`CHROME_PATH`** points the resolver at a Chrome or Chromium binary when it
+  is not in a standard location.
+- **`CHROME_NO_SANDBOX=1`** adds `--no-sandbox`, which Chrome requires when it
+  runs as root inside a container. Leave it unset on a workstation so the
+  sandbox stays on.
+
+`pnpm optimize:media` rewrites every derivative, not only the ones whose master
+changed, so the encoder's output churns files that are otherwise untouched.
+After recapturing one slug, revert the derivatives belonging to the others
+before committing.
 
 ### Adding a business
 
@@ -354,8 +364,9 @@ Journey films additionally:
 | kent-amusements | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | newcastle-chamber | 23 Jul 2026 | after clip | n/a (after only) | First-website: before stays the gated-social still |
 | dundrum-inn | 24 Jul 2026 | before+after still & clip | Consent prompt → clicked "Reject all" | Paired journey capture; live GuestDiary booking destination kept |
-| groves-chemist | 24 Jul 2026 | before still, after still & clip | None; deactivation notice intentionally visible | After-only motion; the pharmacy's own URL is the before finding |
-| tonn-ruray | 24 Jul 2026 | before+after still & clip | Promo lightbox → clicked coordinate (914,76) | Before recaptured clean; paired café-first comparison |
+| dundrum-inn | 27 Jul 2026 | after still & clip recaptured | None found | Concept rebuilt 26 Jul and the hero image shipped, so the 24 Jul after-media showed the retired black-and-brass page. Before capture unchanged. Ran with `CHROME_NO_SANDBOX=1` in a container |
+| groves-chemist | 24 Jul 2026 | before still, after still & clip | None; deactivation notice intentionally visible | Concept retired 27 Jul 2026; all media deleted from `public/`, retrievable at commit dc87b15 |
+| tonn-ruray | 24 Jul 2026 | before+after still & clip | Promo lightbox → clicked coordinate (914,76) | Concept retired 27 Jul 2026; all media deleted from `public/`, retrievable at commit dc87b15. The before clip is the evidence that contradicted the apartment-first claim |
 | kelly-mcevoy-brown | 24 Jul 2026 | before+after still & clip | None found | Paired portfolio comparison; source photography retained |
 | bettys-butters | 24 Jul 2026 | before+after still & clip | None found | Paired comparison; placeholder flavours remain labelled in concept |
 | douglas-cromie | 24 Jul 2026 | before stand-in still, after still & clip | n/a; domain ENOTFOUND | After-only motion; muted before card records the failed address honestly |

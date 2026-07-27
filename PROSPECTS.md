@@ -7,9 +7,9 @@ with `node scripts/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 26 July 2026 · seventeen public transformations · one active next
-prospect · two prospects held on trading or suitability evidence · **no
-business contacted yet**
+Snapshot: 27 July 2026 · seventeen public transformations · two concepts
+retired · one active next prospect · two prospects held on trading or
+suitability evidence · **no business contacted yet**
 
 ## Stages
 
@@ -27,7 +27,7 @@ condition is met. A held business keeps its real stage in
 Before publishing a concept:
 
 - verify the business and material claims;
-- answer the four checks in `CONCEPT_DESIGN_REVIEW.md`;
+- answer the five checks in `CONCEPT_DESIGN_REVIEW.md`;
 - add a Publish record to `research/concept-reviews/publication.json`;
 - add the slug to `publicTransformationSlugs`;
 - update the stage here and in `research/verifications.json`.
@@ -67,16 +67,53 @@ business agrees to a pilot.
 | Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
 | Castle Farm Fresh Produce | Dundrum | Produce-led shop arrival and weekly boxes |
 
-## Removed from the public list
+## Retired concepts
 
-| Business | Recorded stage | Current public state |
-|---|---|---|
-| Tonn Ruray Café | Concept published | Removed from `publicTransformationSlugs` on 26 July 2026; the reason is not recorded |
-| Groves Chemist | Concept published | Removed from `publicTransformationSlugs` on 26 July 2026; the reason is not recorded |
+Both were unpublished on 26 July 2026 and retired outright on 27 July 2026. The
+concept pages, styles and media are deleted; the verification records and the
+triage records in `research/concept-reviews/triage/` are kept, and they carry
+the full reasoning. Neither is a candidate for republication.
 
-Their internal concept routes and historical stage records remain. Do not call
-either transformation public unless it is restored to the machine-readable
-public list and passes the current publication check.
+### Tonn Ruray Café · Dundrum
+
+**The concept was worse than the website it proposed to replace, and all four
+checks passed it.** Tonn Ruray is a new business whose site is personal and
+deliberate: its own shopfront photograph in low golden light, its own food
+photography, a Gertrude Stein quote on coffee that someone chose because they
+liked it, a hand-drawn squiggle under *See the Menu*, one consistent dusty-pink
+and italic-serif identity. The concept deleted the photography in favour of
+typography on cream, compressed the owners' chosen quote into a grotesk slogan
+and credited it back to them, replaced their palette with the studio's, rendered
+all seven of its links as struck-through dead placeholders, and printed a remark
+about the owners' own room pricing inside the page being offered to them.
+
+The gap on that site is real but it is not a design gap: a menu PDF stamped
+JUN24, two years stale, and a *BOOK NOW* that resolves to a contact form. Those
+are maintenance problems, and a redesign does not fix them.
+
+**A false claim was found during the retirement.** The published case study and
+the before-clip alt text both stated that the homepage opens on *Sea View Luxury
+Apartments* and nightly rates with the café second beneath the accommodation.
+The capture we published shows the homepage opening on the café shopfront with
+`EAT` first in the navigation, and no apartments or rates anywhere in the
+captured scroll. The first of the three case-study notes rested entirely on that
+claim. This is a fourth false sourcing claim of the class corrected on 26 July,
+and that sweep did not catch it. `research/verifications.json` now records the
+apartment-first reading as contradicted.
+
+### Groves Chemist · Dundrum and Killough
+
+**The concept proposed to rebuild something the pharmacy came off.** The live
+domain serves a centralised platform's deactivation notice — *"If you are the
+pharmacy owner, please contact The Pharmacy Centre to re-activate"* — so what
+was switched off was The Pharmacy Centre / Medicine Chest product, not something
+Groves built. The design task was written as *restore the capability that was
+switched off*, which presumes they want it back. The evidence establishes only
+that it stopped, and not whether they opted out, let it lapse, or had it retired
+for them. Offering to rebuild it is offering work they have already declined.
+
+The pharmacy stays in `research/verifications.json` as an assessed business.
+Nothing about its trading status is in doubt.
 
 ## Held
 

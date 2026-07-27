@@ -111,12 +111,6 @@ overflow that is not there).
 - **Murdock Brothers** (`murdock-brothers`) — tanker steel and safety orange,
   Archivo + DM Mono, hazard chevrons. A **fuel-gauge order slider** (real range
   input) with the price left blank because the merchant publishes none.
-- **Groves Chemist** (`groves-chemist`) — clinical pharmacy green, Lexend + IBM
-  Plex Mono. A **dispensing-label form** with a perforated tear edge restores
-  the repeat-prescription capability the pharmacy's own deactivated site carried.
-- **Tonn Ruray Café** (`tonn-ruray`) — warm chalk, tide teal and coral, Syne
-  editorial, wave motif — deliberately unlike the apartments' cool navy so the
-  café reads as its own room. A **through-the-day service timeline**.
 - **Kelly, McEvoy & Brown** (`kelly-mcevoy-brown`) — architect's blueprint:
   grid ground, Familjen Grotesk + Martian Mono, drawing title block. A
   **filterable project register** turns a 53-year portfolio of text links into

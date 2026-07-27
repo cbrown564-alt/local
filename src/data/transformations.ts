@@ -29,44 +29,14 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Hospitality",
     summary:
-      "A 190-year-old inn with a real booking engine and a 43-language translate widget — given a first screen that answers tonight: is the kitchen on, is there a room, what's the tide, what's on.",
+      "A 190-year-old inn whose own website never says when the kitchen is on — given a first screen that works out open or closed from the Inn's published hours, offers Irish beside English in place of the machine-translation dropdown, and keeps the pub's own GuestDiary booking.",
     before: "/images/dundrum-inn-before.jpg",
     after: "/images/dundrum-inn-after.jpg",
     beforeAlt:
-      "The Dundrum Inn's current homepage: the GuestDiary site opening on a photograph with a machine-translation bar offering more than forty languages across the top",
+      "The Dundrum Inn's current homepage: the GuestDiary site opening on a silent video of a Dundrum signpost, under a two-row menu and a Select language dropdown, with a Book your stay card across the lower right",
     afterAlt:
-      "Mourne Made concept in slate and gorse brass: a Come for the views, stay for the craic playbill headline beside a Tonight board showing kitchen, rooms, tide and what's on, over the pub's own GuestDiary booking",
+      "Mourne Made concept in the Inn's plum and cream: the 1834 crest wordmark and a Come for the views, stay for the craic headline over a full-width visualisation of the Inn's yellow-and-black frontage, labelled on the image as AI-generated, with English and Gaeilge offered where the translation dropdown was",
     href: "/transformations/dundrum-inn/",
-  },
-  {
-    slug: "groves-chemist",
-    name: "Groves Chemist",
-    town: "Dundrum",
-    category: "Shops & services",
-    summary:
-      "A pharmacy whose full website — repeat prescriptions, both branches, delivery map — was switched off, leaving a live URL that tells patients nothing. The concept turns the capability back on.",
-    before: "/images/groves-chemist-before.jpg",
-    after: "/images/groves-chemist-after.jpg",
-    beforeAlt:
-      "Groves Chemist's current website: groveschemist.com showing a deactivation notice — 'This website is no longer available' — where a working pharmacy site used to be",
-    afterAlt:
-      "Mourne Made concept in clinical pharmacy green: a Your repeat prescription, ordered before you forget headline beside a dispensing-label order form with a perforated tear edge",
-    href: "/transformations/groves-chemist/",
-  },
-  {
-    slug: "tonn-ruray",
-    name: "Tonn Ruray Café",
-    town: "Dundrum",
-    category: "Food & drink",
-    summary:
-      "A café that shares one site with luxury apartments and loses every fight for billing — given its own front door and a live menu in place of a two-year-old PDF.",
-    before: "/images/tonn-ruray-before.jpg",
-    after: "/images/tonn-ruray-after.jpg",
-    beforeAlt:
-      "Tonn Ruray's current homepage: the Webflow site opening on Sea View Luxury Apartments and nightly rates, with the café second beneath the accommodation",
-    afterAlt:
-      "Mourne Made concept in warm chalk, tide teal and coral: a Coffee is a lot more than just a drink headline for the café alone, beside a through-the-day service card",
-    href: "/transformations/tonn-ruray/",
   },
   {
     slug: "kelly-mcevoy-brown",
