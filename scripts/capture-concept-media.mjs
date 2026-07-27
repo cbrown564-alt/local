@@ -1579,10 +1579,19 @@ if (only !== "before") {
 // step definitions have drifted from the no-real-booking rule.
 if (only === "journey") getJourney(slug);
 
+// Chrome refuses to start as root without --no-sandbox, which is the situation
+// inside a container. It stays opt-in via CHROME_NO_SANDBOX=1 so a capture on a
+// normal workstation keeps the sandbox.
 const browser = await puppeteer.launch({
   executablePath: chromePath,
   headless: "new",
-  args: ["--hide-scrollbars", "--mute-audio", "--force-color-profile=srgb", "--disable-gpu"],
+  args: [
+    "--hide-scrollbars",
+    "--mute-audio",
+    "--force-color-profile=srgb",
+    "--disable-gpu",
+    ...(process.env.CHROME_NO_SANDBOX === "1" ? ["--no-sandbox"] : []),
+  ],
 });
 try {
   if (only === "reel") {

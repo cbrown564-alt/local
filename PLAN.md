@@ -27,6 +27,12 @@ recognise themselves in it. The fifth was added on 27 July 2026 — see below.
 - Restored production request delivery after replacing the rejected Gmail app
   password. A live browser submission returned 200 and rendered the success
   state on 26 July 2026.
+- Generated the Dundrum Inn hero — a disclosed faithful visualisation of the
+  Inn's own frontage — and recaptured the after still and clip on 27 July 2026,
+  so the transformation page no longer shows the retired black-and-brass
+  concept. The index summary and alt text were corrected in the same pass.
+- Retired the Tonn Ruray Café and Groves Chemist concepts and added the fifth
+  publication check.
 
 ### Triage outcomes (26 July 2026)
 
@@ -121,29 +127,22 @@ part; it must not be described as a client pilot or client work.
    the five checks and a separate Publish decision, and the fifth applies with
    particular force here: Painted Earth's site is already good, so the concept
    has to beat it on its own terms or not ship.
-2. **Generate the Dundrum Inn hero image, then regenerate its media.** The
-   concept was rebuilt on 26 July 2026 (see below) and its hero is a labelled
-   placeholder until a publishable image of the Inn exists. Generate the image,
-   disclose it on the page and in `public/images/place/ATTRIBUTION.md` as the
-   file requires, then capture the after still and clip once — not twice.
-   Until then the transformation page's after-media still shows the retired
-   black-and-brass concept and misrepresents the current page.
-3. **Re-review the seventeen published concepts against the fifth check.** Each
+2. **Re-review the seventeen published concepts against the fifth check.** Each
    needs the live site and the concept open side by side, and an
    `ownerWouldRecognise` answer written into its publication record. `pnpm
    build` names the outstanding ones on every run. Three of nineteen concepts
    from the same batch have already failed this question, so treat a *no* as
    likely rather than exceptional.
-4. Regenerate public comparison media only where a blocker repair changed the
+3. Regenerate public comparison media only where a blocker repair changed the
    visible result (Scopers supper-club, Douglas & Cromie forecourt, Kelly
    register, Hugh McCann's enquiry, Tool Centre hire-list, Newcastle Dental
    care pills).
-5. Finish personalised one-sheets for the concepts selected for direct
+4. Finish personalised one-sheets for the concepts selected for direct
    outreach. Rebuild each PDF after the rename — see the QR contract in
    `docs/adr/0002-printed-qr-attribution-contract.md`.
-6. Begin the first small outreach wave and record real responses separately
+5. Begin the first small outreach wave and record real responses separately
    from prototype evidence.
-7. After one business agrees to a pilot, record its baseline, implement one
+6. After one business agrees to a pilot, record its baseline, implement one
    primary customer action with business-owned accounts, name the upkeep
    responsibility and review the agreed measure after 30 days. Use that
    evidence before setting public service prices or making return claims.

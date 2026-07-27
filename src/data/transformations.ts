@@ -29,13 +29,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Hospitality",
     summary:
-      "A 190-year-old inn with a real booking engine and a 43-language translate widget — given a first screen that answers tonight: is the kitchen on, is there a room, what's the tide, what's on.",
+      "A 190-year-old inn whose own website never says when the kitchen is on — given a first screen that works out open or closed from the Inn's published hours, offers Irish beside English in place of the machine-translation dropdown, and keeps the pub's own GuestDiary booking.",
     before: "/images/dundrum-inn-before.jpg",
     after: "/images/dundrum-inn-after.jpg",
     beforeAlt:
-      "The Dundrum Inn's current homepage: the GuestDiary site opening on a photograph with a machine-translation bar offering more than forty languages across the top",
+      "The Dundrum Inn's current homepage: the GuestDiary site opening on a silent video of a Dundrum signpost, under a two-row menu and a Select language dropdown, with a Book your stay card across the lower right",
     afterAlt:
-      "Mourne Made concept in slate and gorse brass: a Come for the views, stay for the craic playbill headline beside a Tonight board showing kitchen, rooms, tide and what's on, over the pub's own GuestDiary booking",
+      "Mourne Made concept in the Inn's plum and cream: the 1834 crest wordmark and a Come for the views, stay for the craic headline over a full-width visualisation of the Inn's yellow-and-black frontage, labelled on the image as AI-generated, with English and Gaeilge offered where the translation dropdown was",
     href: "/transformations/dundrum-inn/",
   },
   {
