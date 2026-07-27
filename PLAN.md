@@ -10,9 +10,10 @@ the current milestone and the next actions.
 
 ## Completed — recover the useful portfolio
 
-The publication standard is the four checks in
+The publication standard is the five checks in
 [`CONCEPT_DESIGN_REVIEW.md`](CONCEPT_DESIGN_REVIEW.md): truthful and respectful,
-clear and specific, works as presented, and safe to publish.
+clear and specific, works as presented, safe to publish, and the owner would
+recognise themselves in it. The fifth was added on 27 July 2026 — see below.
 
 ### Completed in this pass
 
@@ -33,8 +34,8 @@ clear and specific, works as presented, and safe to publish.
 |---|---|---|
 | The Tool Centre | Publish | Hire-list labelled illustrative; call focus rings fixed |
 | Scopers | Publish | Supper-club date no longer presents a stale year as upcoming |
-| Tonn Ruray Café | Publish | Café/apartments split and menu placeholders already honest |
-| Groves Chemist | Publish | Prescription handoff now an honest prototype with branch phone |
+| Tonn Ruray Café | Publish, then retired 27 Jul | Passed all four checks and was worse than the café's own site — see `PROSPECTS.md` |
+| Groves Chemist | Publish, then retired 27 Jul | Proposed rebuilding the centralised platform the pharmacy came off — see `PROSPECTS.md` |
 | The Dundrum Inn | Publish, then rebuilt 26 Jul | Passed triage but lost to the Inn's own live site; rebuilt — see below |
 | Hugh McCann's | Publish | Enquiry prepares mailto with date and guest count |
 | Betty's Better Butters | Publish | Placeholder flavours already disclosed |
@@ -78,6 +79,25 @@ reserves for evidence from a real conversation or pilot. It was directed
 explicitly and it repairs fabricated data, so it is recorded here as a
 correction rather than as new portfolio work. It adds no concept.
 
+### The fifth check (27 July 2026)
+
+The Inn was not an isolated case. Tonn Ruray Café and Groves Chemist passed the
+same four checks on the same day and were retired on 27 July for the same
+reason: honest concepts that the business would not have wanted. All three broke
+the `DESIGN.md` rule that a concept carries the subject's identity, and no check
+asked about it.
+
+`CONCEPT_DESIGN_REVIEW.md` now carries a fifth check — **would the owner
+recognise themselves in this?** — with four questions behind it: does what they
+chose deliberately survive, is this better than what they already have, would
+they read anything here as criticism of them, and are we solving a problem they
+have. A *no* is a blocker.
+
+`scripts/check-concept-publication.mjs` requires the answer for every review
+dated 27 July 2026 or later. The seventeen concepts published before that date
+were never asked, so the build names them on every run rather than failing;
+`PROSPECTS.md` records the two retirements in full.
+
 ## Next milestones
 
 Seventeen concepts are public and no business has been contacted. The next
@@ -98,7 +118,9 @@ part; it must not be described as a client pilot or client work.
    inventing stock, fulfilment terms, workshops or customer results. Record
    the proposed customer action, upkeep responsibility and measurement plan.
    Verify the full prototype on phone and desktop. Publication still requires
-   the four checks and a separate Publish decision.
+   the five checks and a separate Publish decision, and the fifth applies with
+   particular force here: Painted Earth's site is already good, so the concept
+   has to beat it on its own terms or not ship.
 2. **Generate the Dundrum Inn hero image, then regenerate its media.** The
    concept was rebuilt on 26 July 2026 (see below) and its hero is a labelled
    placeholder until a publishable image of the Inn exists. Generate the image,
@@ -106,16 +128,22 @@ part; it must not be described as a client pilot or client work.
    file requires, then capture the after still and clip once — not twice.
    Until then the transformation page's after-media still shows the retired
    black-and-brass concept and misrepresents the current page.
-3. Regenerate public comparison media only where a blocker repair changed the
+3. **Re-review the seventeen published concepts against the fifth check.** Each
+   needs the live site and the concept open side by side, and an
+   `ownerWouldRecognise` answer written into its publication record. `pnpm
+   build` names the outstanding ones on every run. Three of nineteen concepts
+   from the same batch have already failed this question, so treat a *no* as
+   likely rather than exceptional.
+4. Regenerate public comparison media only where a blocker repair changed the
    visible result (Scopers supper-club, Douglas & Cromie forecourt, Kelly
-   register, Groves handoff, Hugh McCann's enquiry, Tool Centre hire-list,
-   Newcastle Dental care pills).
-4. Finish personalised one-sheets for the concepts selected for direct
+   register, Hugh McCann's enquiry, Tool Centre hire-list, Newcastle Dental
+   care pills).
+5. Finish personalised one-sheets for the concepts selected for direct
    outreach. Rebuild each PDF after the rename — see the QR contract in
    `docs/adr/0002-printed-qr-attribution-contract.md`.
-5. Begin the first small outreach wave and record real responses separately
+6. Begin the first small outreach wave and record real responses separately
    from prototype evidence.
-6. After one business agrees to a pilot, record its baseline, implement one
+7. After one business agrees to a pilot, record its baseline, implement one
    primary customer action with business-owned accounts, name the upkeep
    responsibility and review the agreed measure after 30 days. Use that
    evidence before setting public service prices or making return claims.
@@ -128,5 +156,8 @@ part; it must not be described as a client pilot or client work.
   evidence from a real conversation or pilot.
 - A publication standard that is not enforced by a script in `pnpm build` is
   not a standard. The scored v1.1 process existed only as prose and was
-  rewritten twice in three days; `scripts/check-concept-publication.mjs` has
-  never needed a change.
+  rewritten twice in three days; `scripts/check-concept-publication.mjs` needed
+  its first change on 27 July 2026, to carry the fifth check.
+- A concept is an offer to a business, not an exercise. Before building one, and
+  again before publishing it, open the live site beside the concept. If the live
+  site wins, there is no offer to make.

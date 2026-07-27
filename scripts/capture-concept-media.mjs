@@ -66,17 +66,6 @@ const CONCEPTS = {
     beforeHover: ["text=BOOK NOW", "text=BOOK", "nav a", "header a"],
     afterHover: AFTER_HOVER,
   },
-  "groves-chemist": {
-    beforeStill: "https://groveschemist.com/",
-    afterHover: AFTER_HOVER,
-  },
-  "tonn-ruray": {
-    before: "https://www.tonnruray.com/",
-    settleMs: 5000,
-    dismissClick: [[914, 76]],
-    beforeHover: ["text=BOOK NOW", "nav a", "header a"],
-    afterHover: AFTER_HOVER,
-  },
   "kelly-mcevoy-brown": {
     before: "https://www.kmbni.com/",
     settleMs: 4500,

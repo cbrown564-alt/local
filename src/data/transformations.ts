@@ -39,36 +39,6 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/dundrum-inn/",
   },
   {
-    slug: "groves-chemist",
-    name: "Groves Chemist",
-    town: "Dundrum",
-    category: "Shops & services",
-    summary:
-      "A pharmacy whose full website — repeat prescriptions, both branches, delivery map — was switched off, leaving a live URL that tells patients nothing. The concept turns the capability back on.",
-    before: "/images/groves-chemist-before.jpg",
-    after: "/images/groves-chemist-after.jpg",
-    beforeAlt:
-      "Groves Chemist's current website: groveschemist.com showing a deactivation notice — 'This website is no longer available' — where a working pharmacy site used to be",
-    afterAlt:
-      "Mourne Made concept in clinical pharmacy green: a Your repeat prescription, ordered before you forget headline beside a dispensing-label order form with a perforated tear edge",
-    href: "/transformations/groves-chemist/",
-  },
-  {
-    slug: "tonn-ruray",
-    name: "Tonn Ruray Café",
-    town: "Dundrum",
-    category: "Food & drink",
-    summary:
-      "A café that shares one site with luxury apartments and loses every fight for billing — given its own front door and a live menu in place of a two-year-old PDF.",
-    before: "/images/tonn-ruray-before.jpg",
-    after: "/images/tonn-ruray-after.jpg",
-    beforeAlt:
-      "Tonn Ruray's current homepage: the Webflow site opening on Sea View Luxury Apartments and nightly rates, with the café second beneath the accommodation",
-    afterAlt:
-      "Mourne Made concept in warm chalk, tide teal and coral: a Coffee is a lot more than just a drink headline for the café alone, beside a through-the-day service card",
-    href: "/transformations/tonn-ruray/",
-  },
-  {
     slug: "kelly-mcevoy-brown",
     name: "Kelly, McEvoy & Brown",
     town: "Dundrum",
