@@ -7,9 +7,10 @@ with `node scripts/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 27 July 2026 · seventeen public transformations · two concepts
-retired · one active next prospect · two prospects held on trading or
-suitability evidence · **no business contacted yet**
+Snapshot: 27 July 2026 · twelve public transformations · five concepts withdrawn
+for fifth-check repair · two concepts retired · one active next prospect · two
+prospects held on trading or suitability evidence · **no business contacted
+yet**
 
 ## Stages
 
@@ -71,13 +72,22 @@ prototype is limited to visible original-art fulfilment and sold-work recovery.
 | The Tool Centre | Newcastle | Hardware and plant-hire desk with hire-list |
 | Scopers | Dundrum | Zero-waste bar and supper-club night |
 | The Dundrum Inn | Dundrum | Tonight board and GuestDiary journey |
-| Hugh McCann's | Newcastle | Wedding enquiry graft on a maintained site |
-| Betty's Better Butters | Dundrum | Product shelf with labelled flavour placeholders |
-| Douglas & Cromie | Newcastle | Dealer-owned forecourt with sample listings |
-| Kelly, McEvoy & Brown | Dundrum | Blueprint project register with sector filters |
-| The Donard Hotel | Newcastle | Direct-booking proposal without OTA photos |
 | Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
-| Castle Farm Fresh Produce | Dundrum | Produce-led shop arrival and weekly boxes |
+| Hugh McCann's | Newcastle | Venue-led date and guest-count wedding enquiry |
+
+## Withdrawn for fifth-check repair
+
+These concepts remain as internal, noindex work but are no longer public
+transformations. Each is back at **Concept in progress** until the named
+identity blocker is repaired and all five publication checks pass again.
+
+| Business | Town | Unblock condition |
+|---|---|---|
+| Betty's Better Butters | Dundrum | Restore product-led imagery and remove the critique of the current site from the proposed page |
+| Douglas & Cromie | Newcastle | Use confirmed business identity and publishable real-stock photography; keep the marketplace diagnosis in the case study |
+| Kelly, McEvoy & Brown | Dundrum | Carry the firm's yellow-and-grey mark and project photography into the filterable register |
+| The Donard Hotel | Newcastle | Use confirmed hotel identity and publishable property photography; keep the commission argument in the case study |
+| Castle Farm Fresh Produce | Dundrum | Carry the farm's navy-and-gold mark and produce photography into the weekly-box journey |
 
 ## Retired concepts
 

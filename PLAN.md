@@ -106,7 +106,7 @@ were never asked, so the build names them on every run rather than failing;
 
 ## Next milestones
 
-Seventeen concepts are public and no business has been contacted. The next
+Eleven concepts are public and no business has been contacted. The next
 piece of product work is one deliberate exception to the closed portfolio:
 Painted Earth will test the broader commercial offer in a strong retail
 setting. It is a representative prototype until the business agrees to take
@@ -139,12 +139,19 @@ part; it must not be described as a client pilot or client work.
    collection/shipping terms and sold-work recovery. It is build- and
    journey-verified on desktop and phone, but it is not publication-reviewed
    and is not public.
-2. **Re-review the seventeen published concepts against the fifth check.** Each
-   needs the live site and the concept open side by side, and an
-   `ownerWouldRecognise` answer written into its publication record. `pnpm
-   build` names the outstanding ones on every run. Three of nineteen concepts
-   from the same batch have already failed this question, so treat a *no* as
-   likely rather than exceptional.
+2. **Completed 27 July 2026 — re-review the seventeen published concepts
+   against the fifth check.** Eleven passed immediately. Newcastle Family Dental Care passed
+   after an economical repair removed the platform criticism from the proposed
+   patient page while retaining the practice's real identity and appointment
+   task. Six failed and were withdrawn from the public list: Hugh McCann's,
+   Betty's Better Butters, Douglas & Cromie, Kelly, McEvoy & Brown, The Donard
+   Hotel and Castle Farm Fresh Produce. Their publication records and
+   `PROSPECTS.md` name the identity or customer-facing-criticism blocker and the
+   evidence needed to return. Hugh McCann's was then repaired by restoring a
+   disclosed faithful view of its dining room and the Mournes, removing
+   current-site criticism from the customer page and using the published email
+   address; it passed all five checks and returned to the public list later
+   that day. Twelve concepts are now public and five remain withdrawn.
 3. **Completed 27 July 2026 — regenerate public comparison media only where a
    blocker repair changed the visible result.** Recaptured the Scopers
    supper-club and Tool Centre hire-list stills, plus the Douglas & Cromie

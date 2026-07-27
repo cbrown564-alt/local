@@ -274,7 +274,7 @@ export const transformationDetails = {
       "beforePoster": "/images/newcastle-dental-before.jpg",
       "afterPoster": "/images/newcastle-dental-after.jpg",
       "beforeAlt": "The practice's own domain redirecting, over insecure HTTP, to a different practice — DJ Maguire Dentists' Newcastle location page",
-      "afterAlt": "Ten-second visit to the concept — the Your dentist, on your own address opening, a padlocked secure address bar and an appointment-request form",
+      "afterAlt": "Ten-second visit to the concept — the Your family dentist, close to home opening, a padlocked secure address bar and an appointment-request form",
       "beforeNote": "Newcastle Family Dental Care trades under its own name, but its own web address redirects — over plain HTTP — to a different practice's page, and the .co.uk it prints on its stationery has no working secure version. There is no site of its own to demo; this is where the address leads."
     },
     "secondSurfacesHtml": [],
@@ -314,7 +314,7 @@ export const transformationDetails = {
       "beforePoster": "/images/hugh-mccanns-before.jpg",
       "afterPoster": "/images/hugh-mccanns-after.jpg",
       "beforeAlt": "Ten-second visit to Hugh McCann's current website — the well-photographed Boutique Wedding Venue & Gardens homepage, with no enquiry form or date capture anywhere",
-      "afterAlt": "Ten-second visit to the concept — the We do opening and an Is our day free enquiry with a date field, guest-count slider and season strip"
+      "afterAlt": "Ten-second visit to the concept — Hugh McCann's dining-room view towards the Mournes behind the We do opening, beside an Is our day free enquiry with a date field, guest-count slider and season strip"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes to capture the enquiry.",
@@ -335,7 +335,7 @@ export const transformationDetails = {
         "change": "The testimonial and brochure surfaces refreshed to match the venue that is clearly still being run."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Hugh McCann's website on 24 July 2026. The venue's own words — From today until your day, we do; three generations; the two-hundred-year-old building; forty to two-hundred-and-fifty guests — its Central Promenade address and its phone number all come from that site. The site is actively maintained (its menu PDF was uploaded in July 2026), so this is a feature upgrade, not a rescue: the © 2018 footer is not used as the argument, and the concept keeps the site's own voice and photography. Availability in the enquiry is illustrative. The layout and the enquiry design are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.hughmccanns.com/\" rel=\"external\">Hugh McCann's public website</a></li>\n          <li><a href=\"https://www.hughmccanns.com/accommodation/\" rel=\"external\">Its accommodation page, used to confirm the Little Haven offering</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Hugh McCann's website on 24 July 2026. The venue's own words — From today until your day, we do; three generations; the two-hundred-year-old building; forty to two-hundred-and-fifty guests — its Central Promenade address, phone number and info@ email address all come from that site. The site is actively maintained (its menu PDF was uploaded in July 2026), so this is a feature upgrade, not a rescue: the © 2018 footer is not used as the argument. The concept uses a disclosed AI-generated faithful visualisation based on the venue's dining-room photograph; it preserves the broad window bays, room scale, garden and Mourne view without republishing the original photograph. Availability in the enquiry is illustrative. The layout and the enquiry design are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.hughmccanns.com/\" rel=\"external\">Hugh McCann's public website</a></li>\n          <li><a href=\"https://www.hughmccanns.com/accommodation/\" rel=\"external\">Its accommodation page, used to confirm the Little Haven offering</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "bucks-head": {
     "title": "The Bucks Head concept transformation — Mourne Made",

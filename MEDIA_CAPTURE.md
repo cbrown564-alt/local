@@ -374,5 +374,11 @@ Journey films additionally:
 | newcastle-dental | 24 Jul 2026 | before redirect still, after still & clip | n/a; insecure redirect to DJ Maguire page | After-only motion; before records where the practice's address leads |
 | hugh-mccanns | 24 Jul 2026 | before+after still & clip | None found | Paired feature comparison; maintained source site and photography retained |
 | murdock-brothers | 24 Jul 2026 | internal before still, after still & clip | n/a; Wix domain-connection error | Internal-only capture; trading remains unconfirmed, so no transformation case or outreach |
+| scopers | 27 Jul 2026 | supper-club after still recaptured | n/a (local concept) | Removed the stale dated event from the second-surface comparison |
+| tool-centre | 27 Jul 2026 | hire-list after still recaptured | n/a (local concept) | Captures the repaired illustrative-equipment, conditions and rates disclosure |
+| douglas-cromie | 27 Jul 2026 | after still & clip recaptured | None found | Captures the placeholder labels added to every sample forecourt listing |
+| kelly-mcevoy-brown | 27 Jul 2026 | after still & clip recaptured | None found | Captures the repaired project register and its source-bounded metadata |
+| hugh-mccanns | 27 Jul 2026 | after still & clip recaptured after fifth-check repair | None found | Carries a disclosed faithful visualisation of the venue's dining-room view and captures the enquiry handoff to the published email address |
+| newcastle-dental | 27 Jul 2026 | after still & clip recaptured | None found | Captures the care pills after unsupported treatment claims were removed; recaptured again after the fifth-check repair moved current-site criticism out of the proposed patient page |
 
 (Log rows are added in the same commit as each recapture.)
