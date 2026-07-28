@@ -1,7 +1,16 @@
 import { spawn } from "node:child_process";
 import { setTimeout as delay } from "node:timers/promises";
 
-const base = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
+// The preview is started on this host and port, and the suites are pointed at
+// the same URL. Reading SHOT_BASE here but hardcoding the preview meant a set
+// SHOT_BASE silently tested a different target than the server this script
+// started.
+const host = process.env.PREVIEW_HOST ?? "127.0.0.1";
+const port = process.env.PREVIEW_PORT ?? "4321";
+const base = `http://${host}:${port}`;
+// SKIP_BUILD also skips the prose-count, concept-publication and public-asset
+// checks, which only run as part of `pnpm build`. It is a fast inner-loop
+// switch, not a full verification.
 const skipBuild = process.env.SKIP_BUILD === "1";
 const useShell = process.platform === "win32";
 
@@ -60,7 +69,7 @@ if (!skipBuild) {
 }
 
 console.log("\n==> pnpm preview");
-const preview = spawn("pnpm", ["preview", "--host", "127.0.0.1", "--port", "4321"], {
+const preview = spawn("pnpm", ["preview", "--host", host, "--port", port], {
   stdio: ["ignore", "pipe", "pipe"],
   shell: useShell,
   env: { ...process.env },
@@ -89,22 +98,45 @@ const suites = [
   ["test:painted-earth"],
 ];
 
+// Every suite runs even when an earlier one fails. Aborting on the first
+// failure hid the state of the other six: on 28 July 2026 a single
+// reviewed-concept failure meant the media, Buck's Head, Enniskeen and
+// Painted Earth suites never ran at all, while the plan recorded all seven as
+// green. A verification baseline has to report the whole picture.
+const failures = [];
+
 try {
   await waitForServer(base);
   for (const args of suites) {
     console.log(`\n==> pnpm ${args.join(" ")}`);
-    await run("pnpm", args, {
-      env: { ...process.env, SHOT_BASE: base },
-    });
+    try {
+      await run("pnpm", args, {
+        env: { ...process.env, SHOT_BASE: base },
+      });
+    } catch (error) {
+      failures.push({ suite: args.join(" "), message: error.message });
+      console.error(`\n${args.join(" ")} FAILED: ${error.message}`);
+    }
   }
-  console.log("\nVerification passed.");
 } catch (error) {
-  console.error(`\nVerification failed: ${error.message}`);
+  failures.push({ suite: "preview", message: error.message });
+  console.error(`\nVerification could not start: ${error.message}`);
+}
+
+if (failures.length) {
+  console.error(
+    `\nVerification failed: ${failures.length} of ${suites.length} suites did not pass.`,
+  );
+  for (const failure of failures) console.error(`  - ${failure.suite}: ${failure.message}`);
   if (previewLog.trim()) {
     console.error("Preview log tail:\n" + previewLog.trim().split(/\r?\n/).slice(-20).join("\n"));
   }
   process.exitCode = 1;
-} finally {
+} else {
+  console.log(`\nVerification passed: ${suites.length}/${suites.length} suites.`);
+}
+
+{
   stop(preview);
   await Promise.race([
     new Promise((resolve) => preview.on("exit", resolve)),

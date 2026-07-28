@@ -93,20 +93,29 @@ try {
   // The studio banner is in document flow, not a fixed footer. Fail only when
   // a control stays covered by `.mm-concept-banner` at every scroll position.
   const trapped = await page.evaluate(() => {
+    // Controls are keyed by their position in the document, not by their label.
+    // Keying on `textContent` collapsed same-named controls — two "Book a
+    // table" links became one entry, so a permanently covered control could be
+    // marked reachable by its twin elsewhere on the page.
+    const controls = [...document.querySelectorAll("main a[href], main button, main input, main select")];
+    const describe = (el, index) => {
+      const label = (el.textContent || el.getAttribute("name") || el.tagName)
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 40);
+      return `#${index} ${el.tagName.toLowerCase()}${label ? ` "${label}"` : ""}`;
+    };
+
     const probe = () => {
       const out = [];
-      for (const el of document.querySelectorAll("main a[href], main button, main input, main select")) {
+      for (const [index, el] of controls.entries()) {
         const r = el.getBoundingClientRect();
         if (r.width === 0 || r.height === 0) continue;
         const cy = r.y + r.height / 2;
         if (cy < 0 || cy > window.innerHeight) continue;
         const top = document.elementFromPoint(r.x + r.width / 2, cy);
         if (top && top.tagName.toLowerCase() === "astro-dev-toolbar") continue;
-        const label = (el.textContent || el.getAttribute("name") || el.tagName)
-          .replace(/\s+/g, " ")
-          .trim()
-          .slice(0, 40);
-        out.push({ label, covered: Boolean(top?.closest(".mm-concept-banner")) });
+        out.push({ index, covered: Boolean(top?.closest(".mm-concept-banner")) });
       }
       return out;
     };
@@ -117,12 +126,14 @@ try {
     for (const y of [0, Math.round(maxScroll / 2), maxScroll]) {
       window.scrollTo({ top: y, behavior: "instant" });
       for (const entry of probe()) {
-        seen.add(entry.label);
-        if (!entry.covered) reachable.add(entry.label);
+        seen.add(entry.index);
+        if (!entry.covered) reachable.add(entry.index);
       }
     }
     window.scrollTo({ top: 0, behavior: "instant" });
-    return [...seen].filter((label) => !reachable.has(label));
+    return [...seen]
+      .filter((index) => !reachable.has(index))
+      .map((index) => describe(controls[index], index));
   });
   assert.deepEqual(
     trapped,

@@ -56,6 +56,23 @@ Every page carrying one of these labels it as generated on the page itself.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
 - `enniskeen-faithful-room6.png` — **in use.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 6's distinctive matching pink basin and bath. The prompt preserved the fixture colour, forms and chrome cross-head tap arrangement and forbade invented luxury features.
 - `bucks-head-faithful-hearth.png` — **in use.** AI-generated faithful visualisation based on the pub's reference photograph of its real hearth. The prompt preserved the rounded arch, brick chimney breast, stove, antlers, wall colours, seating and floor materials while forbidding redesign or invented amenities.
+- `enniskeen-generated-estate.jpg`, `enniskeen-generated-balcony.jpg`,
+  `enniskeen-generated-afternoon-tea.jpg`, `enniskeen-generated-walker.jpg`,
+  `enniskeen-generated-restaurant.jpg` and `enniskeen-generated-lounge.jpg` —
+  **in use.** AI-generated illustrative visualisations. Unlike the `-faithful-`
+  files above, these were not made from a reference photograph of the hotel:
+  they depict generic country-house and Mourne estate scenes, which their alt
+  text states ("a fictional country house in a wooded Mourne estate"). They
+  carry no claim to show the real property, its rooms or its grounds. Recorded
+  28 July 2026 from the repository's own `generatedVisuals` definitions in
+  `src/data/enniskeen-site.ts` after the journey suite found them rendered with
+  no provenance entry; confirm the generation details before relying on this
+  record for a sourcing claim.
+- `castle-farm-produce.jpg` — **in use.** AI-generated. Cropped by CSS to a
+  190×43 window and shown as the concept's wordmark in the page header, so the
+  visible slice reads as a brand mark rather than as photography. It is not the
+  farm's own mark. Recorded 28 July 2026 after the journey suite found it
+  rendered with no provenance entry.
 - `enniskeen-faithful-room9.png` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 9's compact beige-tiled en-suite. The prompt preserved the wall-mounted basin, mirror, magnifying mirror and towel-ring arrangement and forbade an invented bath or spa setting.
 - `cupla-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the photographed frontage at 105 Main Street, Dundrum. The source reference was an August 2024 Google Maps user photo; the prompt forbade invented seating, people, products or amenities.
 - `mourne-cycles-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on an April 2026 Mourne Cycles customer photo. The prompt preserved the photographed bicycle, red fence, paving and numbered blue bin while forbidding invented shop, rider, trail or product context. The reference evidences the bicycle and its surroundings only, not the ownership of the yard, so neither the caption nor the alt text called the fence the shop's own premises (corrected 25 July 2026 after the re-review flagged the alt text as an unsourced premises claim).

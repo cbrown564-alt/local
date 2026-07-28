@@ -2,12 +2,16 @@
 import "../../styles/global.css";
 import "../../styles/concept-castle-farm.css";
 import ConceptLayout from "../../layouts/ConceptLayout.astro";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
 ---
 
-<ConceptLayout title={"Castle Farm — independent concept"} slug="castle-farm" bodyClass="concept-page concept-castle-farm" lang="en-GB">
+<ConceptLayout title={"Castle Farm — independent concept"} slug="castle-farm" bodyClass="concept-page concept-castle-farm" lang="en-GB" bannerNote="Concept imagery is AI-generated: the wordmark is not the farm's own mark, and the weekly-box image is a faithful visualisation of Castle Farm's published photograph.">
 <header class="concept-header">
       <div class="concept-logo">
-        <span class="farm-wordmark"><img src="/images/castle-farm-produce.jpg" alt="Castle Farm" /></span>
+        {/* Cropped by CSS to a 190x43 window. The source is square, so every
+            derivative shares the master's aspect ratio and the crop offset holds;
+            `sizes` keeps the phone on the 640px file instead of the 1200px master. */}
+        <span class="farm-wordmark"><ResponsiveImage src="/images/castle-farm-produce.jpg" alt="Castle Farm" width="1200" height="1200" sizes="190px" loading="eager" /></span>
         <span>Dundrum · County Down</span>
       </div>
       <nav class="concept-nav" aria-label="Concept navigation"><a href="#" data-concept-placeholder>Box deals</a><a href="#" data-concept-placeholder>Fruit &amp; veg</a><a href="#" data-concept-placeholder>Butchery</a><a href="#" data-concept-placeholder>Groceries</a></nav>
