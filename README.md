@@ -15,7 +15,14 @@ Production check:
 pnpm build
 ```
 
-The build starts by checking every slug in the public transformation list
+Full verification (build, preview, request and browser suites):
+
+```powershell
+pnpm test
+```
+
+The build starts by checking prose public-count claims against
+`publicTransformationSlugs`, then every slug in the public transformation list
 against `research/concept-reviews/publication.json`. Run the focused publication
 check with:
 
@@ -105,6 +112,7 @@ because three documents each kept their own copy.
 | `MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
 | `RESEARCH_METHOD.md` | Source and geographic methodology |
 | `README.md` (this file) | How to run the project and where things live |
+| `docs/dependency-advisories.md` | Accepted/overrides for known dependency advisories |
 
 Machine-readable sources of truth, which override any prose:
 
@@ -193,12 +201,15 @@ sourcing claims on 26 July 2026.
   `href="#" data-concept-placeholder`; real navigation, including every
   homepage wordmark, must use its actual route. Run against `pnpm preview` with
   `pnpm test:concepts`.
-- `scripts/test-reviewed-concept-journeys.mjs` — executable repair checks for
-  reviewed and representative concepts: Chamber queries change directory
-  results, Donard form data survives into an explicit email handoff, Cúpla and
-  Mourne provisional claims are disclosed before prices, Kent's illustration
-  limitation is visible, and prototype availability exposes an honest end
-  state. Add a focused assertion here whenever a review identifies a
-  reproducible interaction or claim-ordering defect. Run with
-  `pnpm test:reviewed-concepts` against `pnpm preview`.
+- `scripts/test-reviewed-concept-journeys.mjs` — durable checks for public and
+  representative concepts: Chamber queries change directory results, Donard
+  form data survives into an explicit email handoff, Cúpla and Mourne
+  provisional claims are disclosed before prices, every public concept's
+  rendered third-party or generated imagery carries disclosure, and Sources &
+  limits cannot describe photography the concept no longer uses. Add a focused
+  assertion here whenever a review identifies a reproducible interaction or
+  claim-ordering defect. Run with `pnpm test:reviewed-concepts` against
+  `pnpm preview`, or as part of `pnpm test`.
+- `docs/dependency-advisories.md` — overrides and exposure boundaries for known
+  dependency advisories
 - `spreadsheet-work/build-business-workbook.mjs` — workbook builder and checks

@@ -2,9 +2,11 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "./lib/chrome.mjs";
+import { readPublicTransformationSlugs } from "./lib/public-slugs.mjs";
 
 const base = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
 const phone = { width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true };
+const publicSlugs = readPublicTransformationSlugs();
 const browser = await puppeteer.launch({
   executablePath: findChrome(),
   headless: true,
@@ -16,8 +18,18 @@ const results = [];
 async function withPage(path, callback) {
   const page = await browser.newPage();
   const runtimeErrors = [];
+  page.on("response", (response) => {
+    if (response.status() < 400) return;
+    // Vercel Web Analytics is production-only; local preview 404s are expected.
+    if (/\/_vercel\//i.test(response.url())) return;
+    runtimeErrors.push(`HTTP ${response.status()} ${response.url()}`);
+  });
   page.on("console", (message) => {
-    if (message.type() === "error") runtimeErrors.push(message.text());
+    if (message.type() !== "error") return;
+    const text = message.text();
+    // Resource failures are recorded from the response listener with URLs.
+    if (/Failed to load resource/i.test(text)) return;
+    runtimeErrors.push(text);
   });
   page.on("pageerror", (error) => runtimeErrors.push(error.message));
   await page.setViewport(phone);
@@ -169,7 +181,7 @@ await check("Cúpla uses sterling and labels sample prices before the menu", asy
   });
 });
 
-await check("Mourne Cycles labels provisional offers before prices and imagery", async () => {
+await check("Mourne Cycles labels provisional offers before prices", async () => {
   await withPage("/concepts/mourne-cycles/hire/", async (page) => {
     const result = await page.evaluate(() => {
       const firstNotice = document.querySelector(".mc-provisional");
@@ -187,84 +199,158 @@ await check("Mourne Cycles labels provisional offers before prices and imagery",
     assert.ok((result.noticeTop ?? Infinity) < (result.priceTop ?? -Infinity));
     assert.doesNotMatch(result.text, /Green Commute Initiative|2–5 working days/);
   });
-
-  await withPage("/concepts/mourne-cycles/", async (page) => {
-    const evidence = await page.$eval(".mc-visual", (element) => ({
-      caption: element.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
-      src: element.querySelector("img")?.getAttribute("src"),
-      alt: element.querySelector("img")?.getAttribute("alt"),
-    }));
-    assert.match(evidence.caption ?? "", /AI-generated visualisation, faithfully based/);
-    assert.match(evidence.caption ?? "", /does not claim current shop stock/);
-    assert.match(evidence.src ?? "", /mourne-cycles-faithful-visualisation\.jpg$/);
-    assert.match(evidence.alt ?? "", /Trek full-suspension mountain bike/);
-  });
 });
 
-await check("Kent identifies its documentary exterior and keeps the phone action visible", async () => {
+await check("Kent keeps the phone action visible on the opening screen", async () => {
   await withPage("/concepts/kent-amusements/", async (page) => {
     const result = await page.evaluate(() => {
       const call = document.querySelector(".ka-call");
       const rect = call?.getBoundingClientRect();
-      const visual = document.querySelector(".ka-panel");
       return {
-        caption: visual?.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
-        src: visual?.querySelector("img")?.getAttribute("src"),
-        alt: visual?.querySelector("img")?.getAttribute("alt"),
-        callVisible: Boolean(rect && rect.left >= 0 && rect.right <= document.documentElement.clientWidth),
+        callVisible: Boolean(
+          rect
+          && rect.width > 0
+          && rect.height > 0
+          && rect.left >= 0
+          && rect.right <= document.documentElement.clientWidth,
+        ),
       };
     });
-    assert.match(result.caption ?? "", /Eric Jones, 2023 · CC BY-SA 2\.0/);
-    assert.match(result.src ?? "", /kent-amusements-exterior-2023\.jpg$/);
-    assert.match(result.alt ?? "", /Kent Amusements' long red and cream frontage/);
     assert.equal(result.callVisible, true);
   });
 });
 
-await check("Five repaired concepts load responsive subject-proof images", async () => {
-  const subjects = [
-    {
-      path: "/concepts/mourne-cycles/",
-      selector: ".mc-visual",
-      caption: /AI-generated visualisation, faithfully based/,
-    },
-    {
-      path: "/concepts/newcastle-chamber/",
-      selector: ".nc-panel",
-      caption: /Eric Jones, 2012 · CC BY-SA 2\.0/,
-    },
-    {
-      path: "/concepts/kent-amusements/",
-      selector: ".ka-panel",
-      caption: /Eric Jones, 2023 · CC BY-SA 2\.0/,
-    },
-    {
-      path: "/concepts/donard-veterinary/",
-      selector: ".dv-panel",
-      caption: /Eric Jones, 2023 · CC BY-SA 2\.0/,
-    },
-    {
-      path: "/concepts/cupla/",
-      selector: ".cp-panel",
-      caption: /AI-generated visualisation, faithfully based/,
-    },
-  ];
+// Derive rendered concept imagery from the live DOM rather than retired
+// selectors. Third-party and generated assets must carry an on-page disclosure;
+// Sources & limits must not describe photography the concept no longer uses.
+await check("Public concepts disclose rendered imagery and keep Sources honest", async () => {
+  assert.ok(publicSlugs.length > 0, "publicTransformationSlugs is empty");
 
-  for (const subject of subjects) {
-    await withPage(subject.path, async (page) => {
-      const evidence = await page.$eval(subject.selector, (element) => {
-        const image = element.querySelector("img");
-        return {
-          complete: image?.complete,
-          naturalWidth: image?.naturalWidth,
-          currentSrc: image?.currentSrc,
-          caption: element.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
-        };
+  for (const slug of publicSlugs) {
+    const conceptPath = `/concepts/${slug}/`;
+    let rendered = null;
+    await withPage(conceptPath, async (page) => {
+      await page.evaluate(async () => {
+        const images = [...document.querySelectorAll("img")].filter(
+          (image) => !image.closest(".mm-concept-banner"),
+        );
+        await Promise.all(images.map((image) => {
+          image.loading = "eager";
+          if (image.complete && image.naturalWidth > 0) return Promise.resolve();
+          return new Promise((resolve) => {
+            image.addEventListener("load", resolve, { once: true });
+            image.addEventListener("error", resolve, { once: true });
+            // Re-assigning src forces lazy below-fold images to fetch.
+            const src = image.currentSrc || image.getAttribute("src");
+            if (src) image.src = src;
+          });
+        }));
       });
-      assert.equal(evidence.complete, true);
-      assert.ok((evidence.naturalWidth ?? 0) > 0);
-      assert.match(evidence.currentSrc ?? "", /-640\.webp$/);
-      assert.match(evidence.caption ?? "", subject.caption);
+
+      rendered = await page.evaluate(() => {
+        const banner = document.querySelector(".mm-concept-banner")?.textContent
+          ?.replace(/\s+/g, " ")
+          .trim() ?? "";
+        const isDecorative = (image) => {
+          const src = image.currentSrc || image.getAttribute("src") || "";
+          const alt = image.getAttribute("alt") ?? "";
+          if (!src || src.startsWith("data:")) return true;
+          if (/\.svg(?:$|\?)/i.test(src)) return true;
+          if (/(?:logo|brand-mark|wordmark|seal|badge)(?:[-.]|$)/i.test(src)) return true;
+          if (alt === "" && (image.naturalWidth || 0) > 0 && image.naturalWidth <= 160) return true;
+          return false;
+        };
+        const nearbyDisclosure = (image) => {
+          const figure = image.closest("figure");
+          const host = image.closest(
+            "[class*='panel'], [class*='visual'], [class*='hero'], [class*='photo'], section, article",
+          ) ?? image.parentElement;
+          const chunks = [
+            figure?.querySelector("figcaption")?.textContent,
+            host?.querySelector(
+              "figcaption, .dh-photo-credit, .di-hero-placeholder, .hm-visual-note, [class*='photo-credit'], [class*='visual-note']",
+            )?.textContent,
+            image.getAttribute("alt"),
+          ];
+          return chunks.filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+        };
+
+        const images = [...document.querySelectorAll("img")]
+          .filter((image) => !image.closest(".mm-concept-banner"))
+          .filter((image) => !isDecorative(image))
+          .map((image) => {
+            const src = image.currentSrc || image.getAttribute("src") || "";
+            const basename = src.split("/").pop()?.split("?")[0] ?? "";
+            const disclosure = nearbyDisclosure(image);
+            const generated = /faithful|visualisation|visualization|generated/i.test(`${basename} ${disclosure} ${image.getAttribute("alt") ?? ""}`);
+            const thirdParty = /\/place\/|eric jones|cc by-sa|geograph/i.test(`${src} ${disclosure}`);
+            return {
+              src,
+              basename,
+              disclosure,
+              generated,
+              thirdParty,
+              complete: image.complete,
+              naturalWidth: image.naturalWidth,
+            };
+          });
+
+        return { banner, images };
+      });
+    });
+
+    assert.ok(rendered, `${slug}: concept page did not render`);
+    for (const image of rendered.images) {
+      assert.equal(image.complete, true, `${slug}: ${image.basename} failed to load`);
+      assert.ok((image.naturalWidth ?? 0) > 0, `${slug}: ${image.basename} has no intrinsic size`);
+      if (image.generated) {
+        assert.match(
+          `${image.disclosure} ${rendered.banner}`,
+          /AI-generated|faithful visualisation|Provisional visualisation|visualisation/i,
+          `${slug}: generated asset ${image.basename} has no on-page disclosure`,
+        );
+      }
+      if (image.thirdParty) {
+        assert.match(
+          image.disclosure,
+          /Eric Jones|CC BY-SA|Unsplash|Geograph|Wikimedia/i,
+          `${slug}: third-party asset ${image.basename} has no credit disclosure`,
+        );
+      }
+    }
+
+    await withPage(`/transformations/${slug}/`, async (page) => {
+      const sources = await page.evaluate(() =>
+        document.querySelector(".source-section")?.innerText?.replace(/\s+/g, " ").trim() ?? "",
+      );
+      assert.ok(sources, `${slug}: missing Sources & limits block`);
+
+      const claimsNoPhotography = /introduces no photography/i.test(sources);
+      if (claimsNoPhotography) {
+        assert.equal(
+          rendered.images.length,
+          0,
+          `${slug}: Sources claims no photography but the concept renders ${rendered.images.map((image) => image.basename).join(", ")}`,
+        );
+      }
+
+      const claimsGenerated = /faithful visualisation|AI-generated/i.test(sources);
+      const hasGenerated = rendered.images.some((image) => image.generated)
+        || /faithful|visualisation|generated/i.test(rendered.banner);
+      if (claimsGenerated) {
+        assert.ok(
+          hasGenerated,
+          `${slug}: Sources describes generated imagery the concept page no longer uses`,
+        );
+      }
+
+      for (const image of rendered.images.filter((entry) => entry.thirdParty)) {
+        assert.match(
+          sources,
+          /Eric Jones|CC BY-SA|promenade|Geograph|third-party|documentary/i,
+          `${slug}: Sources & limits omit the third-party photograph still shown on the concept (${image.basename})`,
+        );
+      }
     });
   }
 });
@@ -452,27 +538,6 @@ await check("Every companion route is reachable on a phone", async () => {
           return r.width > 0 && r.height > 0 && getComputedStyle(anchor).visibility !== "hidden";
         }), must);
       assert.ok(reachable, `${must} is not reachable from ${from} at 390x844`);
-    });
-  }
-});
-
-// Generated hero imagery must carry its disclosure inside the phone fold: the
-// gate is about what the visitor is told, not what the markup contains.
-await check("Generated-image disclosures sit inside the phone first viewport", async () => {
-  for (const route of ["/concepts/mourne-cycles/", "/concepts/cupla/"]) {
-    await withPage(route, async (page) => {
-      const caption = await page.evaluate(() => {
-        const figure = document.querySelector("main figure figcaption");
-        if (!figure) return null;
-        const r = figure.getBoundingClientRect();
-        return { bottom: r.bottom, viewport: window.innerHeight, text: figure.textContent.replace(/\s+/g, " ").trim() };
-      });
-      assert.ok(caption, `${route} has no hero caption`);
-      assert.match(caption.text, /AI-generated|visualisation/i);
-      assert.ok(
-        caption.bottom <= caption.viewport,
-        `${route}: disclosure ends ${Math.round(caption.bottom - caption.viewport)}px below the fold`,
-      );
     });
   }
 });

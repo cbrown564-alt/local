@@ -1,202 +1,218 @@
 # Plan
 
-Current working plan for Mourne Made. Historical milestone detail and the
-retired v1.1 review process are preserved in
-[`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md).
+Current working plan for Mourne Made. `PROSPECTS.md` owns pipeline state,
+including the public, withdrawn, retired and held lists. The publication
+standard lives in `CONCEPT_DESIGN_REVIEW.md`. Historical milestone detail and
+the retired v1.1 review process are preserved in
+[`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
+and in the commit history.
 
-Snapshot: 26 July 2026. `PROSPECTS.md` owns pipeline state — the public list,
-the two held prospects and their unblock conditions. This document owns only
-the current milestone and the next actions.
+Snapshot: 28 July 2026. The portfolio recovery and fifth-check re-review are
+complete, and sixteen transformations are public. The Buck's Head has replied
+to the first outreach: it already has a new website built and plans to launch
+it when its accommodation is ready.
 
-## Completed — recover the useful portfolio
+The verification baseline is restored: `pnpm test` builds from the frozen
+lockfile, starts preview, and runs the request, concept-shell, reviewed-concept,
+media, Buck's Head, Enniskeen and Painted Earth checks green locally. GitHub
+Actions runs the same command. Remaining `@vercel/node` advisories are recorded
+in `docs/dependency-advisories.md`.
 
-The publication standard is the five checks in
-[`CONCEPT_DESIGN_REVIEW.md`](CONCEPT_DESIGN_REVIEW.md): truthful and respectful,
-clear and specific, works as presented, safe to publish, and the owner would
-recognise themselves in it. The fifth was added on 27 July 2026 — see below.
+No business has approved the concept work and no client result has been
+measured. The ordered plan is therefore: close the two open publication
+decisions, protect the request path, finish the two remaining outreach sheets
+and learn from real conversations before expanding the portfolio or offer.
 
-### Completed in this pass
+## 1. Restore a trustworthy verification baseline — done 28 July 2026
 
-- Replaced the scored review and one-repair rule with the four-check review.
-- Kept Hotel Enniskeen and The Buck's Head public.
-- Repaired and restored Mourne Cycles, Newcastle Chamber, Kent Amusements,
-  Donard Veterinary and Cúpla.
-- Moved the v1.1 criteria, plan and scorecard template into dated archives.
-- Completed four-check triage for the twelve queued concepts and published all
-  twelve after economical blocker repairs where needed.
-- Restored production request delivery after replacing the rejected Gmail app
-  password. A live browser submission returned 200 and rendered the success
-  state on 26 July 2026.
-- Generated the Dundrum Inn hero — a disclosed faithful visualisation of the
-  Inn's own frontage — and recaptured the after still and clip on 27 July 2026,
-  so the transformation page no longer shows the retired black-and-brass
-  concept. The index summary and alt text were corrected in the same pass.
-- Retired the Tonn Ruray Café and Groves Chemist concepts and added the fifth
-  publication check.
-- Rebuilt The Donard after its build-day re-check found a new official website:
-  restored its navy-and-gold identity, added licensed-source property imagery,
-  kept the working booking engine and moved the obsolete dead-domain and
-  commission diagnosis into dated case-study history.
+Completed before another publication decision or printed outreach sheet.
 
-### Triage outcomes (26 July 2026)
+1. Repaired `test:reviewed-concepts` around durable evidence: each public
+   transformation's rendered third-party or generated assets require disclosure,
+   and Sources & limits may not claim photography the concept no longer uses.
+   Retired Mourne Cycles, Kent, Donard Veterinary and Cúpla hero selectors are
+   gone.
+2. Replaced the Buck's Head sticky-banner comparison with a real occlusion
+   check. Revised Enniskeen's first-viewport requirement to keep the booking
+   control visible (and sized the hero against `--mm-banner-space`) rather than
+   asserting a pre-banner whole-hero fit.
+3. Added `pnpm test` and `.github/workflows/verify.yml` that install from the
+   frozen lockfile, build, start `pnpm preview`, and run the request,
+   concept-shell, reviewed-concept, media, Buck's Head, Enniskeen and Painted
+   Earth checks.
+4. Corrected documentation drift: prose public counts are checked against
+   `publicTransformationSlugs`, the obsolete Dundrum Inn after-media item in
+   `REVIEW.md` is closed, and the superseded form-success note is removed from
+   `AGENTS.md`.
+5. Overrode the `fast-uri` and `esbuild` advisories, updated Astro to 7.1.4 with
+   focused checks still passing, moved `@astrojs/check` and TypeScript to
+   development dependencies, and restored exact versions for the font packages.
 
-| Concept | Result | Notes |
-|---|---|---|
-| The Tool Centre | Publish | Hire-list labelled illustrative; call focus rings fixed |
-| Scopers | Publish | Supper-club date no longer presents a stale year as upcoming |
-| Tonn Ruray Café | Publish, then retired 27 Jul | Passed all four checks and was worse than the café's own site — see `PROSPECTS.md` |
-| Groves Chemist | Publish, then retired 27 Jul | Proposed rebuilding the centralised platform the pharmacy came off — see `PROSPECTS.md` |
-| The Dundrum Inn | Publish, then rebuilt 26 Jul | Passed triage but lost to the Inn's own live site; rebuilt — see below |
-| Hugh McCann's | Publish | Enquiry prepares mailto with date and guest count |
-| Betty's Better Butters | Publish | Placeholder flavours already disclosed |
-| Douglas & Cromie | Publish | Stock cards labelled as sample placeholders |
-| Kelly, McEvoy & Brown | Publish | Project metadata limited to sourced fields; filters work |
-| The Donard Hotel | Publish | Direct-booking wording already illustrative; no OTA photos |
-| Newcastle Family Dental Care | Publish | Care claims limited to sourced practice items |
-| Castle Farm Fresh Produce | Publish | Verification record created; shop journey concept passes |
+## 2. Close the remaining publication decisions
 
-### The Dundrum Inn rebuild (26 July 2026)
+### Kelly, McEvoy & Brown
 
-The Inn passed four-check triage on 26 July and was still a bad concept. The
-checks caught its disclosure problems and had nothing to say about the fact
-that the Inn's own live website was the better page. That is a real limit of
-the standard, not a failure to apply it: the four checks test whether a concept
-is honest, not whether it is good.
+The 27 July rebuild now carries the firm's mark, yellow-and-grey identity and
+two photographs from its own named project pages. It remains withdrawn because
+the publication record still contains the earlier identity blocker and the
+comparison media predates the rebuild.
 
-What was wrong, in the order it mattered. It carried no photograph of a
-business whose product is a view, a garden and a Sunday roast, while the live
-site opens on a film of the village. It replaced the Inn's blush-and-cream
-identity and 1834 crest with black, brass and Bodoni, against the rule in
-`DESIGN.md` that a concept carries the subject's identity. It set body copy in
-Space Mono. Its whole four-item navigation rendered struck through, because
-every item was a `data-concept-placeholder`. It printed a remark about the
-client's current site — *Two languages, not forty-three* — inside the client's
-proposed site. And its single argument, the Tonight board, was disclosed twice
-as illustrative while the control it displaced, GuestDiary's date and guest
-search, genuinely worked.
+1. Inspect the rebuilt concept beside the live site on phone and desktop.
+2. Correct the stale comparison `afterAlt` text in
+   `src/data/transformation-details.ts`.
+3. Run the five publication checks again. If the concept passes, update
+   `research/concept-reviews/publication.json`, `PROSPECTS.md`,
+   `research/verifications.json` and `publicTransformationSlugs` together.
+   If it does not pass, keep it withdrawn and record the remaining blocker.
+4. Only after a Publish decision, recapture and visually inspect its after
+   still and clip, regenerate responsive derivatives and run the media and
+   concept checks.
 
-Re-checking the Inn's site for the rebuild produced a better argument than the
-one that was invented. The Inn publishes bar hours for all seven days and **no
-kitchen or food-service time anywhere**, which is the call the bar takes most
-often. It publishes no room prices either. So the first concept's "kitchen
-until 8.30pm" and "double from £95" were both fabrications, and the honest
-version of the board is stronger: the open state is computed in the browser
-from the published winter hours, the event comes from the Inn's events listing,
-and the rooms cell is a search rather than a count.
+### Painted Earth
 
-This is a restyle of a published concept, which the standing constraint below
-reserves for evidence from a real conversation or pilot. It was directed
-explicitly and it repairs fabricated data, so it is recorded here as a
-correction rather than as new portfolio work. It adds no concept.
+The internal prototype at `/concepts/painted-earth/` is implemented and its
+desktop and phone shopping journeys pass. It is not publication-reviewed and
+is not public. Its live shop added the catalogue filters that motivated the
+first proposal, so the surviving case is deliberately narrow: make
+original-art collection or shipping terms visible before purchase and give a
+useful route forward when an original has sold.
 
-### The fifth check (27 July 2026)
+1. Open the live shop beside the prototype and decide whether that narrower
+   loop is a meaningful improvement the owner would recognise, not merely a
+   different design.
+2. Run the five publication checks and record one explicit outcome:
+   **Publish**, **Fix blocker** or **stop as an internal exploration**.
+3. If Publish, add the transformation record and source disclosure, capture
+   comparison media, regenerate derivatives, add it to the public list and run
+   the full build plus the focused Painted Earth journey check.
+4. If it does not clearly beat the live experience, do not expand the
+   prototype to manufacture a case for publication.
 
-The Inn was not an isolated case. Tonn Ruray Café and Groves Chemist passed the
-same four checks on the same day and were retired on 27 July for the same
-reason: honest concepts that the business would not have wanted. All three broke
-the `DESIGN.md` rule that a concept carries the subject's identity, and no check
-asked about it.
+Do not start another concept while either decision is open.
 
-`CONCEPT_DESIGN_REVIEW.md` now carries a fifth check — **would the owner
-recognise themselves in this?** — with four questions behind it: does what they
-chose deliberately survive, is this better than what they already have, would
-they read anything here as criticism of them, and are we solving a problem they
-have. A *no* is a blocker.
+## 3. Protect the request path and prepare the remaining first-wave outreach
 
-`scripts/check-concept-publication.mjs` requires the answer for every review
-dated 27 July 2026 or later. The seventeen concepts published before that date
-were never asked, so the build names them on every run rather than failing;
-`PROSPECTS.md` records the two retirements in full.
+The original Dundrum batch named in
+[`docs/adr/0001-personalised-one-sheets-over-door-drop.md`](docs/adr/0001-personalised-one-sheets-over-door-drop.md)
+was The Buck's Head, Scopers and Cúpla. The Buck's Head has now replied: a
+replacement website is already built and is waiting on accommodation readiness
+before launch. Do not continue that pitch or send its one-sheet. Re-check the
+public site after launch, or respond sooner only if the business invites
+follow-up.
 
-## Next milestones
+The remaining first wave is Scopers and Cúpla. Do not add a replacement merely
+to restore the original batch size. Hotel Enniskeen remains in batch two so the
+highest-stakes conversation is not used to rehearse the approach.
 
-Sixteen concepts are public and no business has been contacted. The next
-piece of product work is one deliberate exception to the closed portfolio:
-Painted Earth will test the broader commercial offer in a strong retail
-setting. It is a representative prototype until the business agrees to take
-part; it must not be described as a client pilot or client work.
+1. Replace the module-level request-rate `Map` with a shared per-source store
+   that enforces five attempts in one hour across serverless instances. Keep
+   the existing origin, field, honeypot and delivery tests.
+2. Make a failed delivery visible without logging submitted content. At
+   minimum, retain structured failure codes and add an alert or production
+   canary; use a transactional provider or queue only when the first-wave
+   volume or delivery evidence justifies it.
+3. Produce one personalised one-sheet for each of the two businesses using
+   its current published transformation. Do not wait for optional extra media.
+4. Give every sheet the slug-qualified QR destination required by
+   [`docs/adr/0002-printed-qr-attribution-contract.md`](docs/adr/0002-printed-qr-attribution-contract.md):
+   `/transformations/<slug>/?source=onesheet-<slug>`.
+5. Rebuild the PDFs, inspect the rendered pages and scan every QR from the
+   rendered artwork. Check the destination, business name, town, disclosure,
+   contact route and trim-safe layout.
+6. Before printing, make one production submission through a one-sheet link
+   and verify that the notification arriving in the inbox carries the expected
+   `source`. A 200 response or browser success message alone is not enough.
+7. Print only the two verified sheets.
 
-1. **Give Painted Earth a full representative retail treatment.** Start from
-   what already works: real product photography, clear prices, several routes
-   through the catalogue and a personal identity that feels carefully made.
-   Re-check the live site and source record before design work because
-   products, prices and services can change. Build one complete mobile-first
-   retail loop from arrival through collection discovery and product detail to
-   the existing checkout, including a useful recovery when an item is
-   unavailable or no product fits. Show how the shop, gallery, makers and
-   online range belong together without replacing the owner's character or
-   inventing stock, fulfilment terms, workshops or customer results. Record
-   the proposed customer action, upkeep responsibility and measurement plan.
-   Verify the full prototype on phone and desktop. Publication still requires
-   the five checks and a separate Publish decision, and the fifth applies with
-   particular force here: Painted Earth's site is already good, so the concept
-   has to beat it on its own terms or not ship.
+## 4. Run the first outreach conversations
 
-   The concept is written up in
-   [`research/painted-earth-concept-plan.md`](research/painted-earth-concept-plan.md),
-   with its dated evidence in `research/painted-earth-catalogue-2026-07-26.json`.
-   The 27 July build-day re-check found that the shop had added the price,
-   artist or brand, product-type and stock filters central to the original
-   plan, so the broad catalogue treatment was stood down. A narrower internal
-   prototype is implemented at `/concepts/painted-earth/`: familiar shopping
-   routes first, place second, then one complete original-art loop with
-   collection/shipping terms and sold-work recovery. It is build- and
-   journey-verified on desktop and phone, but it is not publication-reviewed
-   and is not public.
-2. **Completed 27 July 2026 — re-review the seventeen published concepts
-   against the fifth check.** Eleven passed immediately. Newcastle Family Dental Care passed
-   after an economical repair removed the platform criticism from the proposed
-   patient page while retaining the practice's real identity and appointment
-   task. Six failed and were withdrawn from the public list: Hugh McCann's,
-   Betty's Better Butters, Douglas & Cromie, Kelly, McEvoy & Brown, The Donard
-   Hotel and Castle Farm Fresh Produce. Their publication records and
-   `PROSPECTS.md` name the identity or customer-facing-criticism blocker and the
-   evidence needed to return. Hugh McCann's was then repaired by restoring a
-   disclosed faithful view of its dining room and the Mournes, removing
-   current-site criticism from the customer page and using the published email
-   address; it passed all five checks and returned to the public list later
-   that day. Betty's Better Butters was repaired next by restoring its real
-   mark and butter photograph, removing the current-site critique from the
-   customer page and strengthening the illustrative-range disclosure. It
-   passed the fifth check and returned to the public list. Douglas & Cromie
-   followed: the repair restored the wordmark, palette, vehicle photography,
-   aftercare wording, services and hours from its archived public homepage,
-   removed the dealer criticism and sample inventory from the proposed page,
-   and corrected the stale claim that its marketplace profile still carries
-   live stock. Castle Farm was repaired by restoring its navy-and-gold mark and
-   adding a disclosed faithful produce-box visualisation to the weekly-box
-   journey; it also passed all five checks. The Donard followed after its new
-   official site changed the premise: the rebuild now preserves the hotel's
-   identity, property and existing booking route, so it passed all five checks
-   and returned to the public list. Sixteen concepts are now public and one
-   remains withdrawn.
-3. **Completed 27 July 2026 — regenerate public comparison media only where a
-   blocker repair changed the visible result.** Recaptured the Scopers
-   supper-club and Tool Centre hire-list stills, plus the Douglas & Cromie
-   forecourt, Kelly register, Hugh McCann's enquiry and Newcastle Dental care
-   pills still-and-clip pairs. Responsive WebP and WebM derivatives were
-   rebuilt, and the six results passed direct visual review and the media
-   loading check.
-4. Finish personalised one-sheets for the concepts selected for direct
-   outreach. Rebuild each PDF after the rename — see the QR contract in
-   `docs/adr/0002-printed-qr-attribution-contract.md`.
-5. Begin the first small outreach wave and record real responses separately
-   from prototype evidence.
-6. After one business agrees to a pilot, record its baseline, implement one
-   primary customer action with business-owned accounts, name the upkeep
-   responsibility and review the agreed measure after 30 days. Use that
-   evidence before setting public service prices or making return claims.
+Hand the sheets to the owner or decision-maker during trading hours. Explain
+that each concept is independent and uncommissioned, then ask whether the
+proposed customer journey addresses a problem they recognise.
 
-## Standing constraints
+After each visit:
 
-- Painted Earth is the only planned addition to the portfolio. It was selected
-  to test the retail form of the broader offer, not to increase the concept
-  count. After it, another concept or a restyle of a published one requires
-  evidence from a real conversation or pilot.
-- A publication standard that is not enforced by a script in `pnpm build` is
-  not a standard. The scored v1.1 process existed only as prose and was
-  rewritten twice in three days; `scripts/check-concept-publication.mjs` needed
-  its first change on 27 July 2026, to carry the fifth check.
-- A concept is an offer to a business, not an exercise. Before building one, and
-  again before publishing it, open the live site beside the concept. If the live
-  site wins, there is no offer to make.
+- update the business stage and dated evidence in
+  `research/verifications.json`, then regenerate `src/data/businesses.json`;
+- update the human-readable pipeline in `PROSPECTS.md`;
+- record the response separately from prototype evidence, including objections,
+  requested changes, the person able to approve a pilot and the agreed next
+  action;
+- do not treat delivery, politeness, a page view or silence as validation.
+
+Review the Buck's Head response together with the Scopers and Cúpla outcomes
+before preparing batch two. Change the opener, one-sheet or offer only when the
+conversations identify a repeated problem; do not restyle the portfolio
+speculatively.
+
+## 5. Turn one agreement into a measured pilot
+
+When a business agrees to continue:
+
+1. Record the baseline for one primary customer action and the evidence source.
+2. Agree the bounded change, success measure, review date and who owns copy,
+   prices, stock, photography, accounts and ongoing updates.
+3. Implement the action using business-owned production accounts. Keep
+   provisional content visibly provisional until the owner supplies or
+   approves it.
+4. Verify the live customer journey and its failure or recovery path.
+5. Review the agreed measure after 30 days and record the result, including a
+   null or negative result.
+
+Use pilot evidence before publishing service prices, return claims or a broader
+rollout plan.
+
+## 6. Reduce recurring cost before broader promotion
+
+Do not let this section delay the two-business outreach wave once sections 1
+and 3 are complete. Apply each item at the stated boundary.
+
+1. Before the next deploy after the baseline repair, remove unreferenced media
+   from `public/` or give it an explicit held record and reason in
+   `research/concept-reviews/image-provenance.md`. Make the asset check fail
+   when an orphan has neither outcome. The 28 July review found 36 orphan
+   groups; keeping withdrawn bytes at guessable production URLs works against
+   the provenance standard.
+2. Before the next recapture wave, decide how masters leave normal Git history:
+   Git LFS or externally stored masters with reproducible derivative
+   generation. Separately decide whether to purge the previously exposed
+   business and verification datasets from history; repository privacy does
+   not remove the earlier exposure.
+3. Before building another concept after Painted Earth, extract a small shared
+   type scale and the repeated panel, grid, rail and disclosure geometry.
+   Identity sheets should continue to own subject-specific colour, typeface
+   and character. Do not flatten the concepts into one template.
+4. Before another case-study format is added, replace raw HTML strings and
+   regex image rewriting in `transformation-details.ts` with typed sections or
+   Astro content components.
+5. Before a broader public campaign, move genuinely internal `/prototypes/`
+   routes to dev-only or protected preview hosting unless a route has a named
+   public-review purpose. Add automated accessibility checks and adopt WCAG
+   2.2 AA as the promotion target.
+6. Promote useful contrast, fold and occlusion probes from `.tmp/` into named
+   scripts or `scripts/lib/`, then clear disposable probes instead of letting
+   the temporary workspace become undocumented tooling.
+
+## Blocked or deferred
+
+- Create and verify a Google Business Profile only when the owner supplies the
+  Google account, publishable contact details and real-world verification
+  needed by the platform. This does not block the first outreach batch.
+- Do not publish or contact held prospects until the unblock condition in
+  `PROSPECTS.md` is met.
+- After Painted Earth, a new concept or a restyle of a published concept
+  requires evidence from a real conversation or pilot.
+
+## Completion checks
+
+- The repository build must enforce every public concept's publication record.
+- Repository verification is complete only when the aggregate test command
+  passes locally and in CI; a green Astro build is not a substitute.
+- Visual work is complete only after direct phone and desktop inspection.
+- Printed work is complete only after rendered-PDF inspection, QR scanning and
+  source-attributed inbox delivery.
+- Request protection is complete only when the rate limit is shared across
+  serverless instances and a delivery failure is observable.
+- Outreach learning is validated only by recorded business responses.
+- A pilot is not promoted client work until the business has agreed to it and
+  the named production boundary has been crossed.

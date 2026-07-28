@@ -7,10 +7,10 @@ with `node scripts/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 27 July 2026 · sixteen public transformations · one concept withdrawn
+Snapshot: 28 July 2026 · sixteen public transformations · one concept withdrawn
 for fifth-check repair · two concepts retired · one active next prospect · two
-prospects held on trading or suitability evidence · **no business contacted
-yet**
+prospects held on trading or suitability evidence · **one business contacted
+and replied**
 
 ## Stages
 
@@ -57,6 +57,18 @@ The 27 July re-check contradicted the original claim that collection pages had
 no filters: the live shop now exposes price, artist or brand, product-type and
 stock controls. The broad catalogue treatment was stood down. The surviving
 prototype is limited to visible original-art fulfilment and sold-work recovery.
+
+## Outreach responses
+
+| Business | Stage | Reported response | Next action |
+|---|---|---|---|
+| The Buck's Head | Contacted | A director replied on 27 July 2026 that a new website has already been built and will launch when the accommodation is ready. | Stop the redesign pitch. Re-check after the accommodation and site launch, or reply sooner only if invited. |
+
+This is recorded as **no current opportunity**, not as a rejection: the reply
+establishes that replacement work is already complete, but it does not state a
+launch date or rule out future contact. The existing public concept remains
+dated portfolio work for now. Re-review it against the launched site before
+using it in any later outreach.
 
 ## Public concepts
 

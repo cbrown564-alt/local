@@ -116,12 +116,11 @@ tick items here and update the linked docs in the same commit as each fix.
 - [ ] Create and verify a Google Business Profile. This needs the owner's
   Google account, publishable contact details and real-world business
   verification; it cannot be completed safely from the repository.
-- [ ] **The Dundrum Inn transformation page shows the wrong "after".** The
-  concept was rebuilt on 26 July 2026 and the stored after still and clip
-  (`/images/dundrum-inn-after.jpg`, `/videos/dundrum-inn-after.mp4`) are
-  captures of the retired black-and-brass version. The case study currently
-  misrepresents the concept it links to. Blocked on the hero image so the
-  capture is run once rather than twice — see `PLAN.md` next milestone 3.
+- [x] **The Dundrum Inn transformation page showed the wrong "after".** Closed
+  28 July 2026: the 27 July recapture replaced the retired black-and-brass
+  still and clip (`/images/dundrum-inn-after.jpg`,
+  `/videos/dundrum-inn-after.mp4`) so the case study matches the current
+  concept. The open process gap below still stands.
 - [ ] **The four checks did not catch a concept losing to the live site.** The
   Dundrum Inn passed all four on 26 July and was still weaker than the
   business's own website. The checks test honesty, not quality, which is
