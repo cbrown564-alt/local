@@ -53,15 +53,25 @@ try {
   await page.goto(route, { waitUntil: "networkidle0", timeout: 60_000 });
 
   const desktop = await page.evaluate(() => {
-    const hero = document.querySelector(".enk-hero")?.getBoundingClientRect();
-    const booking = document
-      .querySelector(".enk-booking")
-      ?.getBoundingClientRect();
+    const booking = document.querySelector(".enk-booking");
+    const bookingRect = booking?.getBoundingClientRect();
+    const bookingCentre = bookingRect
+      ? {
+          x: bookingRect.x + bookingRect.width / 2,
+          y: bookingRect.y + bookingRect.height / 2,
+        }
+      : null;
+    const top = bookingCentre
+      ? document.elementFromPoint(bookingCentre.x, bookingCentre.y)
+      : null;
     return {
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
-      heroBottom: hero?.bottom,
-      bookingBottom: booking?.bottom,
+      bookingBottom: bookingRect?.bottom,
+      bookingVisibleHeight: bookingRect
+        ? Math.min(bookingRect.bottom, innerHeight) - Math.max(bookingRect.top, 0)
+        : 0,
+      bookingCoveredByBanner: Boolean(top?.closest(".mm-concept-banner")),
       viewportHeight: innerHeight,
       robots: document
         .querySelector('meta[name="robots"]')
@@ -69,13 +79,20 @@ try {
     };
   });
   assert.equal(desktop.scrollWidth, desktop.clientWidth, "desktop must not overflow");
+  // The in-flow studio banner changed the old “whole hero ≤ 710px” geometry.
+  // The durable requirement is that the Bookin1 control stays visible and usable.
   assert.ok(
-    desktop.heroBottom <= desktop.viewportHeight + 1,
-    "desktop hero must fit its intended first viewport",
+    desktop.bookingVisibleHeight >= 48,
+    "desktop availability control must remain visible in the first viewport",
+  );
+  assert.equal(
+    desktop.bookingCoveredByBanner,
+    false,
+    "desktop availability control must not sit under the studio disclosure",
   );
   assert.ok(
     desktop.bookingBottom <= desktop.viewportHeight,
-    "desktop availability control must remain visible",
+    "desktop availability control must remain inside the first viewport",
   );
   assert.equal(desktop.robots, "noindex, nofollow");
 
@@ -142,7 +159,15 @@ try {
   );
   assert.equal(phone.arrivalRequired, true, "arrival must be required");
 
-  await page.keyboard.press("Tab");
+  // The studio banner owns the first tab stops. Reach the concept brand next and
+  // check its focus treatment rather than assuming it is document-first.
+  for (let i = 0; i < 8; i += 1) {
+    await page.keyboard.press("Tab");
+    const reached = await page.evaluate(
+      () => document.activeElement?.classList?.contains("enk-brand-link") ?? false,
+    );
+    if (reached) break;
+  }
   const focus = await page.evaluate(() => {
     const active = document.activeElement;
     const style = getComputedStyle(active);
@@ -154,7 +179,7 @@ try {
       boxShadow: style.boxShadow,
     };
   });
-  assert.equal(focus.className, "enk-brand-link");
+  assert.match(String(focus.className), /enk-brand-link/);
   assert.equal(focus.outlineStyle, "solid");
   assert.ok(parseFloat(focus.outlineWidth) >= 3);
   assert.notEqual(focus.boxShadow, "none", "focus needs a two-tone outer ring");
