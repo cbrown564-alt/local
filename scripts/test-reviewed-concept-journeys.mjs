@@ -15,6 +15,28 @@ const browser = await puppeteer.launch({
 
 const results = [];
 
+// Seven concepts open with a `*-rise` entrance animation that fades opacity
+// from 0 and translates by ~14px. `networkidle0` resolves while those are
+// still running, so every probe that reads colour or geometry measured a
+// half-faded, half-moved page and reported different failures on different
+// runs — on 28 July 2026 the contrast probe caught Donard Veterinary's
+// emergency card at 0.586 opacity and failed two texts that measure 4.60:1
+// and 4.99:1 once settled. Wait for finite animations before any check reads
+// the page. Infinite animations never finish, so they are excluded, and the
+// wait is bounded so a paused or pathological animation cannot hang the suite.
+async function settleAnimations(page) {
+  await page.evaluate(async () => {
+    const finite = document
+      .getAnimations()
+      .filter((animation) => Number.isFinite(animation.effect?.getComputedTiming?.().endTime))
+      .map((animation) => animation.finished.catch(() => {}));
+    await Promise.race([
+      Promise.all(finite),
+      new Promise((resolve) => setTimeout(resolve, 3_000)),
+    ]);
+  });
+}
+
 async function withPage(path, callback) {
   const page = await browser.newPage();
   const runtimeErrors = [];
@@ -38,6 +60,7 @@ async function withPage(path, callback) {
     timeout: 60_000,
   });
   assert.ok(response && response.status() < 400, `${path} returned ${response?.status()}`);
+  await settleAnimations(page);
   try {
     await callback(page);
     assert.deepEqual(runtimeErrors, [], `${path} logged browser errors`);
