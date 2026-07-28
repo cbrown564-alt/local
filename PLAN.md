@@ -14,9 +14,12 @@ it when its accommodation is ready.
 
 The verification baseline is restored: `pnpm test` builds from the frozen
 lockfile, starts preview, and runs the request, concept-shell, reviewed-concept,
-media, Buck's Head, Enniskeen and Painted Earth checks green locally. GitHub
-Actions runs the same command. Remaining `@vercel/node` advisories are recorded
-in `docs/dependency-advisories.md`.
+media, Buck's Head, Enniskeen and Painted Earth checks — 7/7 green locally on
+28 July 2026 after the hardening pass in section 1a. `.github/workflows/verify.yml`
+runs the same command, but has not executed yet: the work is on
+`fix/verification-baseline-hardening` and CI first runs when that branch is
+pushed. Remaining `@vercel/node` advisories are recorded in
+`docs/dependency-advisories.md`.
 
 No business has approved the concept work and no client result has been
 measured. The ordered plan is therefore: close the two open publication
@@ -47,6 +50,38 @@ Completed before another publication decision or printed outreach sheet.
 5. Overrode the `fast-uri` and `esbuild` advisories, updated Astro to 7.1.4 with
    focused checks still passing, moved `@astrojs/check` and TypeScript to
    development dependencies, and restored exact versions for the font packages.
+
+## 1a. Harden that baseline — done 28 July 2026
+
+A code review of the section 1 commit found the suite was not actually green,
+and that two of its checks could not fail. Fixed in the same pass:
+
+1. Entrance animations are settled before any probe reads the page. Seven
+   concepts fade and translate on load, so contrast and geometry probes were
+   measuring a half-rendered page and reporting different failures on different
+   runs. `.dv-emergency-tag` was lifted to `--lavender-soft` because it settled
+   at 4.60:1 against a 4.5 floor.
+2. Rendered concept imagery is classified from
+   `research/concept-reviews/image-provenance.md` rather than from the filename,
+   caption and alt text the check then asserted against — which made it
+   tautological for any image whose alt already read "AI-generated
+   visualisation", and blind to a generated image with a neutral name. Alt text
+   no longer counts as disclosure: it is not what a sighted visitor is told.
+   `nearbyDisclosure` was also matching the `<img>` itself, hiding the real
+   disclosures on Dundrum Inn and Hugh McCann's.
+3. Restored the two requirements deleted with the retired selectors: a
+   generated image inside the phone first viewport needs its disclosure there
+   too, and where a `-640.webp` derivative exists the phone must be served it.
+4. That first run surfaced five rendered images with no provenance entry
+   (four Enniskeen estate visuals and the Castle Farm wordmark) and two
+   concepts serving oversized masters. Provenance is now recorded, Castle Farm
+   carries a banner disclosure for its AI-generated wordmark, and both images
+   use `ResponsiveImage`.
+5. `pnpm test` runs every suite even when one fails. A single failure used to
+   abort the run, so the media, Buck's Head, Enniskeen and Painted Earth
+   checks had never executed since section 1 was written.
+6. CI now runs once per pull request rather than twice, with
+   `permissions: contents: read`.
 
 ## 2. Close the remaining publication decisions
 

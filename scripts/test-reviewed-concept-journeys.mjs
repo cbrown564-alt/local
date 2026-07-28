@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import path from "node:path";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "./lib/chrome.mjs";
-import { readPublicTransformationSlugs } from "./lib/public-slugs.mjs";
+import { projectRoot, readPublicTransformationSlugs } from "./lib/public-slugs.mjs";
+import { lookupProvenance, readImageProvenance } from "./lib/image-provenance.mjs";
 
 const base = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
 const phone = { width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true };
@@ -243,13 +245,31 @@ await check("Kent keeps the phone action visible on the opening screen", async (
   });
 });
 
-// Derive rendered concept imagery from the live DOM rather than retired
-// selectors. Third-party and generated assets must carry an on-page disclosure;
-// Sources & limits must not describe photography the concept no longer uses.
+// Classification comes from `image-provenance.md`, not from the page. The
+// previous version derived "is this generated?" from the filename, caption and
+// alt text, then asserted a disclosure against those same strings — so an image
+// whose alt already read "AI-generated visualisation" satisfied the check by
+// definition and could never fail, while a generated image with a neutral
+// filename and no caption was never examined at all. The studio's own record is
+// the only independent account of how an image was made.
 await check("Public concepts disclose rendered imagery and keep Sources honest", async () => {
   assert.ok(publicSlugs.length > 0, "publicTransformationSlugs is empty");
+  const provenance = readImageProvenance();
+  // Restores the responsive-derivative assertion deleted on 28 July 2026. That
+  // version pinned `-640.webp` on five named concept selectors, four of which
+  // no longer render an image at all. The durable form of the same requirement:
+  // where a phone-sized derivative was generated, the phone must be served it.
+  const availableDerivatives = new Set(
+    fs.readdirSync(path.join(projectRoot, "public", "images"))
+      .filter((file) => /-640\.webp$/i.test(file)),
+  );
+
+  // Report every concept's imagery problems in one run. Asserting inline meant
+  // the first bad slug masked the other fifteen.
+  const problems = [];
 
   for (const slug of publicSlugs) {
+    try {
     const conceptPath = `/concepts/${slug}/`;
     let rendered = null;
     await withPage(conceptPath, async (page) => {
@@ -260,13 +280,19 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
         await Promise.all(images.map((image) => {
           image.loading = "eager";
           if (image.complete && image.naturalWidth > 0) return Promise.resolve();
-          return new Promise((resolve) => {
-            image.addEventListener("load", resolve, { once: true });
-            image.addEventListener("error", resolve, { once: true });
-            // Re-assigning src forces lazy below-fold images to fetch.
-            const src = image.currentSrc || image.getAttribute("src");
-            if (src) image.src = src;
-          });
+          // An <img> with no usable src never fires load or error, and
+          // page.evaluate has no timeout of its own, so an unbounded wait here
+          // would hang the suite until the CI job cap.
+          return Promise.race([
+            new Promise((resolve) => {
+              image.addEventListener("load", resolve, { once: true });
+              image.addEventListener("error", resolve, { once: true });
+              // Re-assigning src forces lazy below-fold images to fetch.
+              const src = image.currentSrc || image.getAttribute("src");
+              if (src) image.src = src;
+            }),
+            new Promise((resolve) => setTimeout(resolve, 5_000)),
+          ]);
         }));
       });
 
@@ -279,23 +305,39 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
           const alt = image.getAttribute("alt") ?? "";
           if (!src || src.startsWith("data:")) return true;
           if (/\.svg(?:$|\?)/i.test(src)) return true;
-          if (/(?:logo|brand-mark|wordmark|seal|badge)(?:[-.]|$)/i.test(src)) return true;
           if (alt === "" && (image.naturalWidth || 0) > 0 && image.naturalWidth <= 160) return true;
           return false;
         };
-        const nearbyDisclosure = (image) => {
-          const figure = image.closest("figure");
-          const host = image.closest(
-            "[class*='panel'], [class*='visual'], [class*='hero'], [class*='photo'], section, article",
-          ) ?? image.parentElement;
-          const chunks = [
-            figure?.querySelector("figcaption")?.textContent,
-            host?.querySelector(
-              "figcaption, .dh-photo-credit, .di-hero-placeholder, .hm-visual-note, [class*='photo-credit'], [class*='visual-note']",
-            )?.textContent,
-            image.getAttribute("alt"),
-          ];
-          return chunks.filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+        // `closest` matches the element itself, so an image whose own class
+        // contained "hero", "visual" or "photo" — `.di-hero-art`,
+        // `.hm-hero-image` — resolved to the <img>, and querySelect on an <img>
+        // finds nothing. Real disclosures were invisible to this helper and the
+        // alt text quietly stood in for them. Search upward from the parent.
+        const visibleDisclosure = (image) => {
+          const scopes = [
+            image.closest("figure"),
+            image.parentElement?.closest(
+              "[class*='panel'], [class*='visual'], [class*='hero'], [class*='photo'], section, article",
+            ),
+          ].filter(Boolean);
+          const found = [];
+          for (const scope of scopes) {
+            for (const node of scope.querySelectorAll(
+              "figcaption, .dh-photo-credit, .di-hero-placeholder, .hm-visual-note, [class*='photo-credit'], [class*='visual-note'], [class*='caption']",
+            )) {
+              const text = node.textContent?.replace(/\s+/g, " ").trim();
+              if (!text) continue;
+              const style = getComputedStyle(node);
+              if (style.visibility === "hidden" || style.display === "none") continue;
+              found.push({ text, bottom: node.getBoundingClientRect().bottom });
+            }
+          }
+          return {
+            // Alt text is deliberately excluded: it is not what a sighted
+            // visitor is told, and including it made the check tautological.
+            text: [...new Set(found.map((entry) => entry.text))].join(" "),
+            bottom: found.length ? Math.max(...found.map((entry) => entry.bottom)) : null,
+          };
         };
 
         const images = [...document.querySelectorAll("img")]
@@ -303,43 +345,88 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
           .filter((image) => !isDecorative(image))
           .map((image) => {
             const src = image.currentSrc || image.getAttribute("src") || "";
-            const basename = src.split("/").pop()?.split("?")[0] ?? "";
-            const disclosure = nearbyDisclosure(image);
-            const generated = /faithful|visualisation|visualization|generated/i.test(`${basename} ${disclosure} ${image.getAttribute("alt") ?? ""}`);
-            const thirdParty = /\/place\/|eric jones|cc by-sa|geograph/i.test(`${src} ${disclosure}`);
+            const rect = image.getBoundingClientRect();
+            const disclosure = visibleDisclosure(image);
             return {
               src,
-              basename,
-              disclosure,
-              generated,
-              thirdParty,
+              basename: src.split("/").pop()?.split("?")[0] ?? "",
+              disclosure: disclosure.text,
+              disclosureBottom: disclosure.bottom,
+              inFirstViewport: rect.top < window.innerHeight && rect.bottom > 0,
               complete: image.complete,
               naturalWidth: image.naturalWidth,
             };
           });
 
-        return { banner, images };
+        return { banner, images, viewportHeight: window.innerHeight };
       });
     });
 
     assert.ok(rendered, `${slug}: concept page did not render`);
+
+    const classify = (image) => lookupProvenance(provenance, image.basename);
+    const unrecorded = rendered.images.filter((image) => !classify(image));
+    assert.deepEqual(
+      unrecorded.map((image) => image.basename),
+      [],
+      `${slug}: rendered image has no entry in research/concept-reviews/image-provenance.md`,
+    );
+
     for (const image of rendered.images) {
+      const record = classify(image);
       assert.equal(image.complete, true, `${slug}: ${image.basename} failed to load`);
       assert.ok((image.naturalWidth ?? 0) > 0, `${slug}: ${image.basename} has no intrinsic size`);
-      if (image.generated) {
-        assert.match(
-          `${image.disclosure} ${rendered.banner}`,
-          /AI-generated|faithful visualisation|Provisional visualisation|visualisation/i,
-          `${slug}: generated asset ${image.basename} has no on-page disclosure`,
+      assert.notEqual(
+        record.inUse,
+        false,
+        `${slug}: renders ${image.basename}, which the provenance record marks as no longer in use`,
+      );
+
+      const masterStem = image.basename.replace(/\.[^.]+$/, "").replace(/-\d+$/, "");
+      const derivative = `${masterStem}-640.webp`;
+      if (availableDerivatives.has(derivative) && image.basename !== derivative) {
+        problems.push(
+          `${slug}: serves ${image.basename} (${image.naturalWidth}px) to a 390px viewport while ${derivative} exists`,
         );
       }
-      if (image.thirdParty) {
-        assert.match(
-          image.disclosure,
-          /Eric Jones|CC BY-SA|Unsplash|Geograph|Wikimedia/i,
-          `${slug}: third-party asset ${image.basename} has no credit disclosure`,
-        );
-      }
+
+      if (record.classification !== "generated" && record.classification !== "third-party") continue;
+
+      // The banner is a page-level disclosure and sits above the concept, so it
+      // counts — but something visible must say it, not just the alt attribute.
+      const disclosed = `${image.disclosure} ${rendered.banner}`;
+      const pattern = record.classification === "generated"
+        ? /AI-generated|faithful visualisation|Provisional visualisation|visualisation/i
+        : /Eric Jones|CC BY-SA|Unsplash|Geograph|Wikimedia/i;
+      assert.match(
+        disclosed,
+        pattern,
+        `${slug}: ${record.classification} asset ${image.basename} has no visible on-page disclosure`,
+      );
+
+      // Restores the first-viewport gate deleted on 28 July 2026. The point was
+      // never markup presence — it is whether the visitor is told before they
+      // have scrolled. An adjacent caption below the fold does not qualify
+      // unless the banner already carries the disclosure.
+      //
+      // Scoped to generated imagery, matching the deleted check. Third-party
+      // photographs carry their credit on the page and in
+      // `public/images/place/ATTRIBUTION.md`; whether that credit must also sit
+      // above the fold is a publication-standard decision that
+      // CONCEPT_DESIGN_REVIEW.md does not currently make.
+      if (record.classification !== "generated") continue;
+      if (!image.inFirstViewport) continue;
+      const bannerDiscloses = pattern.test(rendered.banner);
+      const captionInFold = image.disclosureBottom !== null
+        && image.disclosureBottom <= rendered.viewportHeight
+        && pattern.test(image.disclosure);
+      assert.ok(
+        bannerDiscloses || captionInFold,
+        `${slug}: ${image.basename} is in the phone first viewport but its disclosure is not`
+          + (image.disclosureBottom === null
+            ? " (no visible caption found)"
+            : ` (caption ends ${Math.round(image.disclosureBottom - rendered.viewportHeight)}px below the fold)`),
+      );
     }
 
     await withPage(`/transformations/${slug}/`, async (page) => {
@@ -358,8 +445,9 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
       }
 
       const claimsGenerated = /faithful visualisation|AI-generated/i.test(sources);
-      const hasGenerated = rendered.images.some((image) => image.generated)
-        || /faithful|visualisation|generated/i.test(rendered.banner);
+      const hasGenerated = rendered.images.some(
+        (image) => classify(image)?.classification === "generated",
+      );
       if (claimsGenerated) {
         assert.ok(
           hasGenerated,
@@ -367,7 +455,10 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
         );
       }
 
-      for (const image of rendered.images.filter((entry) => entry.thirdParty)) {
+      const thirdPartyImages = rendered.images.filter(
+        (image) => classify(image)?.classification === "third-party",
+      );
+      for (const image of thirdPartyImages) {
         assert.match(
           sources,
           /Eric Jones|CC BY-SA|promenade|Geograph|third-party|documentary/i,
@@ -375,7 +466,12 @@ await check("Public concepts disclose rendered imagery and keep Sources honest",
         );
       }
     });
+    } catch (error) {
+      problems.push(error.message.split("\n")[0]);
+    }
   }
+
+  assert.deepEqual(problems, [], `concept imagery problems:\n- ${problems.join("\n- ")}`);
 });
 
 await check("Declared prototype availability shows a recovery-safe handoff", async () => {

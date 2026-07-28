@@ -161,13 +161,24 @@ try {
 
   // The studio banner owns the first tab stops. Reach the concept brand next and
   // check its focus treatment rather than assuming it is document-first.
-  for (let i = 0; i < 8; i += 1) {
+  const TAB_BUDGET = 8;
+  let reachedBrand = false;
+  const tabStops = [];
+  for (let i = 0; i < TAB_BUDGET && !reachedBrand; i += 1) {
     await page.keyboard.press("Tab");
-    const reached = await page.evaluate(
-      () => document.activeElement?.classList?.contains("enk-brand-link") ?? false,
-    );
-    if (reached) break;
+    const stop = await page.evaluate(() => ({
+      reached: document.activeElement?.classList?.contains("enk-brand-link") ?? false,
+      label: document.activeElement?.className || document.activeElement?.tagName || "?",
+    }));
+    tabStops.push(stop.label);
+    reachedBrand = stop.reached;
   }
+  // Without this the run would assert against whatever the last Tab happened to
+  // land on and report a confusing class mismatch instead of the real fault.
+  assert.ok(
+    reachedBrand,
+    `the concept brand link was not reachable within ${TAB_BUDGET} tab stops: ${tabStops.join(" → ")}`,
+  );
   const focus = await page.evaluate(() => {
     const active = document.activeElement;
     const style = getComputedStyle(active);

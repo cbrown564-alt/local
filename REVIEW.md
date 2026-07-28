@@ -154,6 +154,33 @@ tick items here and update the linked docs in the same commit as each fix.
   output on Windows, macOS and Linux. Responsive captures also scroll through
   lazy images before taking full-page screenshots.
 
+## P5 — Open after the 28 July 2026 verification hardening
+
+- [ ] **`astro check` runs at build time from a development dependency.**
+  `pnpm build` calls `astro check`, but `@astrojs/check` and `typescript` moved
+  to `devDependencies` on 28 July 2026. CI installs development dependencies,
+  so a green CI run does not prove the deploy install has them. Confirm the
+  Vercel build still installs development dependencies (it does by default, but
+  a project-level `NODE_ENV=production` would break it), or move the two
+  packages back to `dependencies`.
+- [ ] **Newcastle Chamber's CC BY-SA credit sits below the phone fold.** The
+  Eric Jones promenade photograph is in the first viewport at 390px; its credit
+  caption ends 199px below it. The licence is honoured — the credit is on the
+  page and in `public/images/place/ATTRIBUTION.md` — so this is a standard
+  question, not a breach: decide whether `CONCEPT_DESIGN_REVIEW.md` should
+  require third-party credits above the fold as it does for generated imagery.
+  The journey suite's fold gate is deliberately scoped to generated imagery
+  until that decision is made.
+- [ ] **Confirm the drafted provenance entries.** The Enniskeen estate visuals
+  and `castle-farm-produce.jpg` were recorded on 28 July 2026 from repository
+  evidence (the `generatedVisuals` definitions and their alt text) after the
+  journey suite found them rendered with no entry, not from a generation
+  record. Re-read both entries before relying on them for a sourcing claim, and
+  review the Castle Farm banner disclosure copy added at the same time.
+- [ ] `concept-enniskeen.css` falls back to `var(--mm-banner-space, 58px)` where
+  the other six concepts use `0px`. Inert — `body.concept-page` always defines
+  the variable — but inconsistent, and `0px` is the safer default.
+
 ## Bold ideas (the review's exploratory recommendations)
 
 1. **Flip the funnel from inbound to claim.** The concepts already exist before
