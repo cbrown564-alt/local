@@ -43,10 +43,10 @@ git filter-repo --force \
   --paths-from-file "$PATHS_FILE"
 
 echo "Restoring local-only evidence masters"
-if [[ -d "$EVIDENCE_BACKUP/evidence" ]]; then
+if [[ -d "$EVIDENCE_BACKUP" ]]; then
   mkdir -p research/concept-reviews
   rm -rf research/concept-reviews/evidence
-  cp -R "$EVIDENCE_BACKUP/evidence" research/concept-reviews/evidence
+  cp -R "$EVIDENCE_BACKUP" research/concept-reviews/evidence
 fi
 
 echo "Recommitting operational datasets"
