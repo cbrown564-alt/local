@@ -214,11 +214,14 @@ and 3 are complete. Apply each item at the stated boundary.
    when an orphan has neither outcome. The 28 July review found 36 orphan
    groups; keeping withdrawn bytes at guessable production URLs works against
    the provenance standard.
-2. Before the next recapture wave, decide how masters leave normal Git history:
+2. ~~Before the next recapture wave, decide how masters leave normal Git history:
    Git LFS or externally stored masters with reproducible derivative
    generation. Separately decide whether to purge the previously exposed
    business and verification datasets from history; repository privacy does
-   not remove the earlier exposure.
+   not remove the earlier exposure.~~ **Done 31 July 2026** — masters stay
+   git-ignored under `research/concept-reviews/evidence/`; sensitive blobs
+   were purged from history with `scripts/purge-sensitive-git-history.sh`.
+   Recorded in [`docs/adr/0003-master-storage-and-history-purge.md`](docs/adr/0003-master-storage-and-history-purge.md).
 3. Before building another concept after Painted Earth, extract a small shared
    type scale and the repeated panel, grid, rail and disclosure geometry.
    Identity sheets should continue to own subject-specific colour, typeface

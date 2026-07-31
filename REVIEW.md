@@ -14,8 +14,9 @@ tick items here and update the linked docs in the same commit as each fix.
   `research/verifications.json` carry 379 real named businesses with phones,
   emails, `digitalNeedScore`, `paymentLikelihoodScore` and candid verdicts.
   Repo switched to private (verified via API). Treat the dataset as previously
-  exposed — history was public until today. Optional belt-and-braces: purge the
-  two files from git history.
+  exposed — history was public until that day. **Purged 31 July 2026** from
+  every commit with `scripts/purge-sensitive-git-history.sh`; current copies
+  recommitted. See `docs/adr/0003-master-storage-and-history-purge.md`.
 - [x] **`/opportunities/` shipped the full scored dataset** in public static
   HTML (439 KB, view-source plain text, `noindex` only). The page now lives at
   `src/workbench/opportunities.astro` and is injected as a route only under

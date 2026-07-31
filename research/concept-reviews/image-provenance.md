@@ -164,9 +164,11 @@ outreach material and future faithful visualisations still need them; the
 `-640.webp` and `-1265.webp` derivatives were deleted rather than moved, since
 they regenerate from the master with `pnpm optimize:media`.
 
-Being out of `public/` stops them being served from here on. It does not
-remove them from Git history, and the earlier exposure already happened —
-history treatment remains `PLAN.md` §6.2.
+Being out of `public/` stops them being served from here on. Git history was
+rewritten on 31 July 2026 to drop the earlier `public/` copies, the mistaken
+`evidence/` commit, and historical versions of the scored datasets — see
+`docs/adr/0003-master-storage-and-history-purge.md`. That does not undo clones
+or caches from the public period.
 
 - **Enniskeen, 19 photographs** — `enniskeen-aerial`, `-afternoon-tea`,
   `-balcony`, `-bedroom`, `-bencrom-walker`, `-bike-hire`, `-dining-fire`,
