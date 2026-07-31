@@ -14,6 +14,9 @@
   --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
   --body: "Work Sans", "Segoe UI", sans-serif;
   --concept-accent: var(--paprika);
+  /* One photographic voice: the same faint grade on every image so the
+     generated set reads as one shoot rather than six separate generations. */
+  --sc-grade: saturate(1.04) contrast(1.03) brightness(1.01);
   --concept-nav-gap: clamp(16px, 2.2vw, 28px);
   background: var(--buttermilk);
   color: var(--ink-warm);
@@ -43,7 +46,9 @@
   border-bottom: 1px solid var(--hairline);
 }
 .sc-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-warm); }
-.sc-stamp { flex: 0 0 auto; color: var(--kelp); }
+/* The bar's own round badge, used as it is rather than redrawn — owner
+   recognition is worth more than palette obedience. */
+.sc-badge { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; }
 .sc-brand-text { display: flex; flex-direction: column; gap: 2px; }
 .sc-brand-name {
   font-family: var(--display);
@@ -82,7 +87,10 @@
 /* Hero */
 .sc-hero {
   position: relative;
-  min-height: calc(100vh - 80px - 37px);
+  /* Everything above the hero: the concept-disclosure banner (56), the
+     announcement strip (38) and the header (80). Subtracting all three keeps
+     the signature rail — now the first food on the screen — inside the fold. */
+  min-height: calc(100vh - 174px);
   display: grid;
   grid-template-columns: 57% 43%;
   grid-template-rows: 1fr auto;
@@ -244,15 +252,23 @@
   padding: 0 clamp(20px, 3.5vw, 44px);
 }
 .sc-rail-cell {
-  padding: 12px 22px;
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
   border-left: 1px solid rgba(247, 242, 227, 0.22);
 }
 .sc-rail-cell:first-child { border-left: 0; }
+.sc-rail-thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  filter: var(--sc-grade);
+}
+.sc-rail-text { display: flex; flex-direction: column; gap: 2px; }
 .sc-dish { font-family: var(--display); font-size: 15px; font-weight: 600; color: #ffffff; }
 .sc-dish-note { font-size: 12px; color: #dfe4cd; }
 
@@ -266,14 +282,34 @@
 
 @media (max-width: 940px) {
   .sc-strip { flex-direction: column; gap: 2px; text-align: center; }
-  .sc-nav { display: none; }
-  .sc-header { height: auto; padding-block: 12px; }
+  /* The nav stays on phones rather than disappearing: this concept is shown
+     to the owner on a handset, and every entry now goes somewhere real. */
+  .sc-header { height: auto; padding-block: 12px; flex-wrap: wrap; row-gap: 10px; }
+  .sc-nav {
+    order: 3;
+    flex: 1 0 100%;
+    gap: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .sc-nav::-webkit-scrollbar { display: none; }
+  .sc-nav a { font-size: 14px; white-space: nowrap; }
   .sc-hero { grid-template-columns: 1fr; min-height: 0; }
   .sc-story { grid-column: 1; padding: 40px 22px 24px; }
   .sc-story h1 { max-width: none; }
   .sc-panel { grid-column: 1; grid-row: auto; padding: 10px 22px 40px; }
-  .sc-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
-  .sc-rail-cell { border-left: 0; flex: 1 1 45%; }
+  .sc-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; gap: 10px; }
+  .sc-rail-cell {
+    border-left: 0;
+    flex: 1 1 45%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .sc-rail-thumb { width: 100%; height: 74px; }
 }
 
 @media (max-width: 520px) {
@@ -291,6 +327,129 @@
   .sc-kicker, .sc-story h1, .sc-lede, .sc-actions, .sc-club { animation: none; }
 }
 
+/* ─── Below the fold: food, story, find us ───────────────────────────────── */
+
+.sc-h2 {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--iron);
+  max-width: 15em;
+}
+.sc-section-head { max-width: 40em; margin-bottom: clamp(28px, 3.5vh, 44px); }
+.sc-section-lede { margin: 0; font-size: 16.5px; line-height: 1.65; color: #59523f; max-width: 34em; }
+
+/* The food */
+.sc-food {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-dish-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 1.6vw, 26px);
+}
+.sc-dish-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sc-dish-card img {
+  width: 100%;
+  height: clamp(150px, 17vw, 210px);
+  object-fit: cover;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-dish-card figcaption { padding: 16px 18px 18px; }
+.sc-dish-card h3 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--iron);
+}
+.sc-dish-card p { margin: 0; font-size: 14.5px; line-height: 1.55; color: #59523f; }
+.sc-food-foot {
+  margin: clamp(24px, 3vh, 36px) 0 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.sc-provenance { font-size: 13px; line-height: 1.5; color: #7a7060; max-width: 42em; }
+
+/* Our story */
+.sc-storyline {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 400px);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: start;
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-storyline .sc-kicker { color: #d8a06e; }
+.sc-storyline .sc-kicker::before { background: #d8a06e; }
+.sc-storyline .sc-h2 { color: #ffffff; }
+.sc-storyline-copy p { margin: 0 0 16px; font-size: 16.5px; line-height: 1.7; color: #cfc8b4; max-width: 34em; }
+.sc-storyline .sc-link { color: var(--buttermilk); text-decoration-color: var(--paprika); }
+.sc-storyline-figure { margin: 0; }
+.sc-storyline-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  filter: var(--sc-grade);
+}
+.sc-storyline-figure figcaption { margin-top: 10px; font-size: 12.5px; color: #a89f87; }
+
+/* Find us */
+.sc-find {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--kelp);
+  color: var(--buttermilk);
+}
+.sc-find .sc-kicker { color: rgba(247, 242, 227, 0.75); }
+.sc-find .sc-kicker::before { background: rgba(247, 242, 227, 0.45); }
+.sc-find .sc-h2 { color: #ffffff; }
+.sc-find-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+  margin-top: clamp(20px, 2.6vh, 32px);
+}
+.sc-find-block h3 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(247, 242, 227, 0.7);
+}
+.sc-find-block p { margin: 0 0 12px; font-size: 16px; line-height: 1.6; color: #ffffff; }
+.sc-find .sc-link { color: var(--buttermilk); text-decoration-color: rgba(247, 242, 227, 0.6); }
+
+@media (max-width: 940px) {
+  .sc-dish-grid { grid-template-columns: repeat(2, 1fr); }
+  .sc-storyline { grid-template-columns: 1fr; padding: 44px 22px; }
+  .sc-find-grid { grid-template-columns: 1fr; }
+  .sc-food, .sc-find { padding: 44px 22px; }
+}
+
+@media (max-width: 560px) {
+  .sc-dish-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── Supper club night page ─────────────────────────────────────────────── */
 
 /* Outline CTA variant */
@@ -300,6 +459,26 @@
   box-shadow: inset 0 0 0 2px var(--iron);
 }
 .sc-cta-outline:hover { background: var(--iron); color: var(--buttermilk); }
+
+/* Night hero band */
+.sc-night-figure {
+  margin: 0;
+  position: relative;
+  background: var(--iron);
+}
+.sc-night-figure img {
+  width: 100%;
+  height: clamp(180px, 30vh, 280px);
+  object-fit: cover;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-night-figure figcaption {
+  padding: 8px clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: #a89f87;
+  font-size: 12.5px;
+}
 
 /* Night hero */
 .sc-night-hero {

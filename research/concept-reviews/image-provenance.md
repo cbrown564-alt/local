@@ -16,6 +16,30 @@ sourcing copy afterwards.
 `node scripts/check-public-assets.mjs` reports images held in `public/images/`
 that no longer appear anywhere in `src/`.
 
+## Studio-drawn concept assets
+
+Neither photographed nor generated: vector artwork drawn by hand for a concept.
+The distinction matters because a mark reads as a business's identity, and none
+of these businesses supplied one.
+
+- `brand/enniskeen-mark.svg` — **in use** (31 July 2026). A line monogram drawn
+  for the Enniskeen concept: an "E" beneath the conical turret roofline and
+  weathervane finial taken from the building's own silhouette. Used as the
+  concept's favicon, header lockup, section ornament and footer seal; the
+  drawing lives in `src/components/enniskeen/EnkMark.astro` and this file is
+  the favicon copy of it, kept in step by hand. **This is not Enniskeen's
+  logo.** The hotel publishes no mark of its own; nothing on the concept
+  presents this as the hotel's existing identity, and the concept's header
+  keeps the text wordmark beside it. Withdraw it if the hotel ever supplies a
+  real mark.
+- `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
+  **declared but not yet made.** The day-part hero in
+  `src/components/enniskeen/EnkHero.astro` skips any variant whose file is
+  absent, so these names are reserved rather than shipped. Prompts, the
+  reference boundary and the post-generation steps — including adding a real
+  entry per file under **Generated imagery** below — are in
+  `research/enniskeen-day-part-hero-brief.md`.
+
 ## Business-owned site assets
 
 - `douglas-cromie-logo.png` and `douglas-cromie-forecourt.jpg` — **in use.**
@@ -30,6 +54,13 @@ that no longer appear anywhere in `src/`.
   firm's mark directly. Each photograph is attached only to its named project;
   the other register entries remain text-only rather than implying an
   unsourced image match.
+- `scopers-badge.png` — **in use.** Downloaded from Scopers' public Instagram
+  profile (`@scopersdundrum`) on 31 July 2026 at the only size the logged-out
+  page serves, 100x100. It is the bar's own round purple badge — "SCOPERS",
+  a circular produce motif, "DUNDRUM · CO DOWN" — and the concept header now
+  uses it directly in place of the redrawn stamp mark it previously carried.
+  Too small for print; the one-sheet needs a larger copy from the business or
+  a redraw before it is used at that size.
 - `bettys-butters-brand-mark.png` and `bettys-butters-source-butter.jpg` —
   **in use.** Downloaded from the Betty's Better Butters public homepage on
   27 July 2026. The first is the business's mountain-ring mark. The second is
@@ -68,6 +99,19 @@ Every page carrying one of these labels it as generated on the page itself.
   `src/data/enniskeen-site.ts` after the journey suite found them rendered with
   no provenance entry; confirm the generation details before relying on this
   record for a sourcing claim.
+- `scopers-generated-chicken-burger.jpg`, `scopers-generated-loaded-fries.jpg`,
+  `scopers-generated-carrots.jpg`, `scopers-generated-bread.jpg`,
+  `scopers-generated-counter.jpg` and `scopers-generated-supper-table.jpg` —
+  **placeholders, 31 July 2026.** Not yet generated. Each name currently holds
+  a flat "IMAGE PENDING" card so the concept's layout is real while the
+  generations are made to `research/scopers-image-brief.md`. The finished files
+  will be AI-generated illustrative visualisations — made from no reference
+  photograph of Scopers, their food or their premises — of dishes the bar
+  describes in its own public Instagram captions. The dish names are theirs;
+  the pictures are not, and the alt text, the visible provenance line in the
+  food section and the case study's sources block all say so. **The concept
+  must not be deployed or shown while the placeholders are in place.** Replace
+  this entry with the real generation details before publication.
 - `castle-farm-produce.jpg` — **in use.** AI-generated. Cropped by CSS to a
   190×43 window and shown as the concept's wordmark in the page header, so the
   visible slice reads as a brand mark rather than as photography. It is not the

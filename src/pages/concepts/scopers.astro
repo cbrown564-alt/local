@@ -3,7 +3,43 @@ import "../../styles/global.css";
 import "../../styles/concept-scopers.css";
 const instagram = "https://www.instagram.com/scopersdundrum/";
 const facebook = "https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/";
+const directions = "https://www.google.com/maps/search/?api=1&query=Scopers%2C%20169%20Main%20Street%2C%20Dundrum%2C%20Co%20Down";
 import ConceptLayout from "../../layouts/ConceptLayout.astro";
+
+// Dish names and descriptions are quoted from Scopers' own public Instagram
+// captions (read 31 July 2026 — see research/scopers-image-brief.md). The
+// images are generated illustrations, never photographs of their food: the
+// public site stays AI-imagery-only by the privacy decision of 31 July 2026.
+const dishes = [
+  {
+    image: "/images/scopers-generated-chicken-burger.jpg",
+    name: "Buttermilk chicken burger",
+    note: "wild garlic mayo, tomato salsa",
+    copy: "Proper quality chicken, marinated in buttermilk and breaded to order, with homemade wild garlic mayo and tomato salsa, in a home-baked milk bread bun.",
+    alt: "Generated illustration of a buttermilk-fried chicken burger in a seeded milk bread bun — not a photograph of Scopers' food",
+  },
+  {
+    image: "/images/scopers-generated-loaded-fries.jpg",
+    name: "BBQ pork loaded fries",
+    note: "chipotle mayo, crispy jalapeños",
+    copy: "Slow-cooked BBQ pork over thick-cut chips, chipotle mayo and crisp jalapeños. The takeaway box that tastes like a kitchen.",
+    alt: "Generated illustration of a kraft box of chips loaded with BBQ pork, chipotle mayo and jalapeños — not a photograph of Scopers' food",
+  },
+  {
+    image: "/images/scopers-generated-carrots.jpg",
+    name: "Seasonal carrots",
+    note: "fresh · local · seasonal",
+    copy: "“Carrots like you've never tasted them before.” The side dish that explains the whole kitchen: what the Mourne Larder gives, cooked properly, nothing wasted.",
+    alt: "Generated illustration of glazed carrots with sesame, spring onion and edible flowers — not a photograph of Scopers' food",
+  },
+  {
+    image: "/images/scopers-generated-bread.jpg",
+    name: "Bread baked each day",
+    note: "every bun, every loaf",
+    copy: "Fresh bread baked each day on the premises — including the milk bread buns the burgers are built on.",
+    alt: "Generated illustration of two rustic loaves cooling on a wire rack — not a photograph of Scopers' bread",
+  },
+];
 ---
 
 <ConceptLayout title={"Scopers — independent concept"} slug="scopers" bodyClass="concept-page concept-scopers" lang="en-GB">
@@ -13,17 +49,14 @@ import ConceptLayout from "../../layouts/ConceptLayout.astro";
     </div>
     <header class="sc-header">
       <a class="sc-brand" href="/concepts/scopers/">
-        <svg class="sc-stamp" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-          <circle cx="22" cy="22" r="20.5" stroke="currentColor" stroke-width="2" />
-          <path d="M22 33 C22 26 22 20 22 13 M22 20 C18 18 15.5 15 15 10.5 C19.5 11 22 14 22 18 M22 25 C26 23 28.5 20 29 15.5 C24.5 16 22 19 22 23" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
+        <img class="sc-badge" src="/images/scopers-badge.png" width="44" height="44" alt="" aria-hidden="true" />
         <span class="sc-brand-text">
           <span class="sc-brand-name">Scopers</span>
           <span class="sc-brand-sub">Zero-waste hot food bar</span>
         </span>
       </a>
       <nav class="sc-nav" aria-label="Concept navigation">
-        <a href="#" data-concept-placeholder>The food</a><a href="/concepts/scopers/supper-club/">Supper club</a><a href="#" data-concept-placeholder>Our story</a><a href="#" data-concept-placeholder>Find us</a>
+        <a href="#food">The food</a><a href="/concepts/scopers/supper-club/">Supper club</a><a href="#story">Our story</a><a href="#find-us">Find us</a>
       </nav>
       <a class="sc-book" href="/concepts/scopers/supper-club/">Book the supper club</a>
     </header>
@@ -37,8 +70,8 @@ import ConceptLayout from "../../layouts/ConceptLayout.astro";
           the Mourne Larder: only what the local Mourne area provides, nothing wasted.
         </p>
         <div class="sc-actions">
-          <a class="sc-cta" href={facebook}>See this week's menu</a>
-          <a class="sc-link" href={instagram}>Follow @scopersdundrum →</a>
+          <a class="sc-cta" href="#food">See the food</a>
+          <a class="sc-link" href={facebook}>This week's menu on Facebook →</a>
         </div>
       </section>
       <aside class="sc-panel">
@@ -46,16 +79,107 @@ import ConceptLayout from "../../layouts/ConceptLayout.astro";
           <p class="sc-club-kicker">The Supper Club</p>
           <h2>Up to eleven courses. Somewhere unique.</h2>
           <p>Secret pop-up dining events in unique locations — seasonal courses from the Mourne Larder, open for private booking.</p>
-          <p class="sc-club-meta"><strong>Next date announced soon</strong><span>Tickets released on Facebook and Instagram</span></p>
+          <p class="sc-club-meta"><strong>Next night · Wednesday 26 August</strong><span>Location revealed to guests the week before</span></p>
           <a class="sc-club-cta" href="/concepts/scopers/supper-club/">See the supper-club page</a>
           <small>Booking via Instagram · <a href={instagram} style="color:inherit;">message to reserve</a></small>
         </article>
       </aside>
-      <nav class="sc-rail" aria-label="Signatures and hours">
-        <a class="sc-rail-cell" href="#" data-concept-placeholder><span class="sc-dish">Buttermilk pancakes</span><span class="sc-dish-note">maple syrup, fresh berries</span></a>
-        <a class="sc-rail-cell" href="#" data-concept-placeholder><span class="sc-dish">Smoked haddock</span><span class="sc-dish-note">golden batter, cider mayo</span></a>
-        <a class="sc-rail-cell" href="#" data-concept-placeholder><span class="sc-dish">Specialty coffee</span><span class="sc-dish-note">breakfast, brunch &amp; lunch</span></a>
-        <a class="sc-rail-cell" href={facebook}><span class="sc-dish">Open most days</span><span class="sc-dish-note">today's hours on Facebook →</span></a>
+      <nav class="sc-rail" aria-label="Signature dishes">
+        {dishes.map((dish) => (
+          <a class="sc-rail-cell" href="#food">
+            <img class="sc-rail-thumb" src={dish.image} width="56" height="56" alt="" aria-hidden="true" />
+            <span class="sc-rail-text">
+              <span class="sc-dish">{dish.name}</span>
+              <span class="sc-dish-note">{dish.note}</span>
+            </span>
+          </a>
+        ))}
       </nav>
     </main>
+
+    <section class="sc-food" id="food">
+      <div class="sc-section-head">
+        <p class="sc-kicker">The food</p>
+        <h2 class="sc-h2">Proper food, made with care.</h2>
+        <p class="sc-section-lede">
+          Breakfast, brunch and lunch, cooked to order from what's local and in season.
+          The menu moves with the week — this is what keeps coming back.
+        </p>
+      </div>
+      <div class="sc-dish-grid">
+        {dishes.map((dish) => (
+          <figure class="sc-dish-card">
+            <img src={dish.image} alt={dish.alt} width="1600" height="1067" loading="lazy" />
+            <figcaption>
+              <h3>{dish.name}</h3>
+              <p>{dish.copy}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="sc-food-foot">
+        <a class="sc-cta" href={facebook}>This week's menu</a>
+        <span class="sc-provenance">
+          Dish names and descriptions are Scopers' own words from their public posts.
+          The images are generated illustrations, not photographs of the food.
+        </span>
+      </p>
+    </section>
+
+    <section class="sc-storyline" id="story">
+      <div class="sc-storyline-copy">
+        <p class="sc-kicker">Our story</p>
+        <h2 class="sc-h2">A Great British Menu kitchen, on Dundrum Main Street.</h2>
+        <p>
+          Paul Cunningham cooked on Great British Menu in 2021. He came home to
+          Dundrum and opened a hot food bar built on the way his grandfather fed a
+          family — forage what's there, use every part of it, waste nothing.
+        </p>
+        <p>
+          That's the Mourne Larder: only what the mountains, the coast and the
+          farms around us actually give. It decides the menu, not the other way
+          round. Bread is baked here each day, the meat is properly reared, and
+          the sides get the same attention as the burgers.
+        </p>
+        <p>
+          Four years of it in July 2026 — and still the only zero-waste hot food
+          bar of its kind in Northern Ireland.
+        </p>
+        <a class="sc-link" href={instagram}>Follow @scopersdundrum →</a>
+      </div>
+      <figure class="sc-storyline-figure">
+        <img
+          src="/images/scopers-generated-counter.jpg"
+          alt="Generated illustration of a small hot food bar counter with kraft boxes, loaves and a cast-iron pan — not a photograph of Scopers' premises"
+          width="1200"
+          height="1500"
+          loading="lazy"
+        />
+        <figcaption>Generated illustration — not a photograph of 169 Main Street.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sc-find" id="find-us">
+      <div class="sc-find-inner">
+        <p class="sc-kicker">Find us</p>
+        <h2 class="sc-h2">169 Main Street, Dundrum.</h2>
+        <div class="sc-find-grid">
+          <div class="sc-find-block">
+            <h3>Where</h3>
+            <p>169 Main Street<br />Dundrum, Co Down</p>
+            <a class="sc-link" href={directions}>Directions on Google Maps →</a>
+          </div>
+          <div class="sc-find-block">
+            <h3>When</h3>
+            <p>Open most of the week for breakfast, brunch and lunch. Hours move with the season.</p>
+            <a class="sc-link" href={facebook}>Today's hours on Facebook →</a>
+          </div>
+          <div class="sc-find-block">
+            <h3>Talk to us</h3>
+            <p>Supper-club places, private bookings and big orders are all arranged by message — the same inbox the kitchen already answers.</p>
+            <a class="sc-link" href={instagram}>Message on Instagram →</a>
+          </div>
+        </div>
+      </div>
+    </section>
 </ConceptLayout>
