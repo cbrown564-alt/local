@@ -118,12 +118,16 @@ reject it. The move works because the house looks *lived in*, not marketed.
    under **Generated imagery**, recording the reference plate and the
    change-the-light-only boundary. Do this in the same commit as the images.
 
-## Note on the reference photographs still in `public/`
+## Where the reference photographs live now
 
-The hotel's own photographs — `enniskeen-house.jpg`, `enniskeen-entrance.jpg`,
-`enniskeen-aerial.jpg` and around twenty more groups — are still deployed at
-guessable production URLs while being referenced nowhere in `src/`. That
-predates this brief and sits against the 31 July privacy decision that the
-public site carries AI imagery only. It is already assigned as `PLAN.md` §6.1
-and is not resolved here; do not use those files as the generation reference
-regardless, for the composition reason given above.
+The hotel's own photographs were moved out of `public/` on 31 July 2026 and
+are held at `research/concept-reviews/evidence/hotel-enniskeen/` — nineteen
+frames including `enniskeen-house.jpg`, the original reference behind the day
+plate. They were being served at guessable production URLs while referenced
+nowhere in `src/`, against the privacy decision that the public site carries
+AI imagery only. See the "Withdrawn from the deploy boundary, still held"
+section of `research/concept-reviews/image-provenance.md`.
+
+They remain available for personal outreach material and for any future
+faithful visualisation. For *this* hero, still generate from the existing day
+plate rather than from them, for the composition reason given above.

@@ -74,7 +74,7 @@ Every page carrying one of these labels it as generated on the page itself.
   parked cars and changed the light to a clear late-summer afternoon. The first
   viewport labels it a faithful visualisation and links both the source and
   licence.
-- `castle-farm-weekly-box-faithful.webp` — **in use.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `public/images/castle-farm-box.jpg`. The prompt preserved the recognisable broccoli, corn, peppers, onions, potatoes, eggs, chicken and packaged butcher items while removing labels and supermarket branding and recomposing the contents in a navy crate. The concept labels the image in the first viewport and makes no claim about exact current contents or availability.
+- `castle-farm-weekly-box-faithful.webp` — **in use.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `research/concept-reviews/evidence/castle-farm/castle-farm-box.jpg`. The prompt preserved the recognisable broccoli, corn, peppers, onions, potatoes, eggs, chicken and packaged butcher items while removing labels and supermarket branding and recomposing the contents in a navy crate. The concept labels the image in the first viewport and makes no claim about exact current contents or availability.
 - `dundrum-inn-faithful-exterior.jpg` — **in use.** AI-generated faithful visualisation based on the Inn's own exterior hero photograph, downloaded from its GuestDiary CDN on 26 July 2026 and held privately at `.tmp/concept-subject-references/dundrum-inn-exterior-reference.jpg`. The prompt preserved the yellow-and-black terraced façade, shopfront, roof and window rhythm, blue-edged awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring blue/purple fronts. It changed only lighting, minor street clutter and framing; it expressly forbade an invented bay view, mountains, garden, hotel extension or new architecture. The concept labels the image as generated in the first viewport and its alt text repeats the reference boundary. The rejected first attempt (`dundrum-inn-hero-generated-v1.png`) invented a cream country inn and false bay setting and was removed.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
@@ -143,6 +143,51 @@ Credited publicly in `public/images/place/ATTRIBUTION.md`. Status here.
   `research/concept-reviews/evidence/donard-hotel/`, not shipped as concept
   photography.
 
+## Withdrawn from the deploy boundary, still held
+
+Moved out of `public/` on 31 July 2026 and held under
+`research/concept-reviews/evidence/<slug>/`. All of these were businesses' own
+photographs that no concept referenced any more, so they were being served at
+guessable production URLs for no purpose — against the 31 July privacy
+decision that the public site carries AI imagery only and a business's own
+photographs are reserved for personal outreach. The masters are kept because
+outreach material and future faithful visualisations still need them; the
+`-640.webp` and `-1265.webp` derivatives were deleted rather than moved, since
+they regenerate from the master with `pnpm optimize:media`.
+
+Being out of `public/` stops them being served from here on. It does not
+remove them from Git history, and the earlier exposure already happened —
+history treatment remains `PLAN.md` §6.2.
+
+- **Enniskeen, 19 photographs** — `enniskeen-aerial`, `-afternoon-tea`,
+  `-balcony`, `-bedroom`, `-bencrom-walker`, `-bike-hire`, `-dining-fire`,
+  `-entrance`, `-gardens`, `-house`, `-lawn-view`, `-lounge`, `-mournes`,
+  `-oak-restaurant`, `-old-house`, `-picnic-sign`, `-room6-bathroom`,
+  `-room9-bathroom`, `-terrace-view`. The hotel's own published photography,
+  harvested with the rest of its site on 23 July 2026. `enniskeen-house.jpg`
+  is the reference behind `enniskeen-faithful-house.png`; the room and
+  interior frames are the references behind the faithful Room 6 and Room 9
+  visualisations. Held at
+  `research/concept-reviews/evidence/hotel-enniskeen/`.
+- `bucks-head-hearth.jpg` — the pub's own hearth photograph, copied from its
+  public site, and the reference behind `bucks-head-faithful-hearth.png`. The
+  v1.1 evidence note already recorded that public-use permission was never
+  documented, which made its presence in `public/` the weaker position. Held
+  at `research/concept-reviews/evidence/bucks-head/`.
+- `castle-farm-box.jpg` — Castle Farm's published mixed-box photograph, the
+  reference behind `castle-farm-weekly-box-faithful.webp`. Held at
+  `research/concept-reviews/evidence/castle-farm/`. The sourcing sentence in
+  the Generated imagery entry above was updated to the new path in the same
+  commit.
+
 ## Withdrawn
 
+- `mourne-cycles-ebike.jpg` — **deleted 31 July 2026.** Trek dealer marketing
+  photography of an electric bike, the same class of asset as
+  `mourne-cycles-trail.jpg` below and reused from the same source with no
+  recorded licence. It was missed by the 25 July removal and sat unreferenced
+  in `public/` for six days afterwards, so the claim that the 25 July deletion
+  "cleared the only outstanding asset-rights blocker on that concept" was not
+  quite true when written. Deleted rather than held: unlike a business's own
+  photograph there is no legitimate future use for it here.
 - `mourne-cycles-trail.jpg` — **deleted 25 July 2026.** Trek/Bontrager dealer marketing photography reused from the shop's own site, used decoratively at 20% opacity behind a hire panel with no recorded licence. Removing it cleared the only outstanding asset-rights blocker on that concept. The Mourne Cycles case study went on claiming the concept reused this imagery until 26 July 2026.
