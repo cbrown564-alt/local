@@ -1,0 +1,67 @@
+---
+import { chamber } from "../../site/data/chamber-prototype";
+import "../../site/styles/global.css";
+import "../../site/styles/proto-chamber-network.css";
+
+interface Props {
+  title: string;
+  current: "home" | "about" | "members" | "events" | "join" | "contact";
+}
+
+const { title, current } = Astro.props;
+const base = "/prototypes/chamber/network";
+const nav = [
+  { id: "home", href: `${base}/`, label: "Home" },
+  { id: "join", href: `${base}/join/`, label: "Why join" },
+  { id: "members", href: `${base}/members/`, label: "Members" },
+  { id: "events", href: `${base}/events/`, label: "Events" },
+  { id: "about", href: `${base}/about/`, label: "About" },
+  { id: "contact", href: `${base}/contact/`, label: "Contact" },
+] as const;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,700;1,7..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="concept-page proto-network">
+    <header class="nw-header">
+      <a class="nw-brand" href={`${base}/`}>
+        <span class="nw-mark" aria-hidden="true"></span>
+        <span>
+          <span class="nw-brand-name">Newcastle Chamber</span>
+          <span class="nw-brand-sub">Harbour network · Co. Down</span>
+        </span>
+      </a>
+      <nav class="nw-nav" aria-label="Chamber sections">
+        {nav.map((item) => (
+          <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <a class="nw-join" href={`${base}/join/`}>Join your neighbours</a>
+    </header>
+    <p class="nw-proto-bar">Direction C · Harbour Network · <a href="/prototypes/chamber/">all prototypes</a></p>
+    <slot />
+    <footer class="nw-footer">
+      <div class="nw-footer-grid">
+        <div>
+          <p class="nw-footer-brand">Trade with neighbours who trade with you.</p>
+          <p>{chamber.placeLine}</p>
+        </div>
+        <div>
+          <p><a href={chamber.emailHref}>{chamber.email}</a></p>
+          <p><a href={chamber.phoneHref}>{chamber.phone}</a></p>
+          <p>{chamber.address}</p>
+        </div>
+        <p class="nw-footer-note">Independent concept · not a live Chamber site · volunteer-run since {chamber.relaunchYear}</p>
+      </div>
+    </footer>
+    <div class="concept-disclosure">Independent concept · Direction C · Network</div>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 # Archived concept portfolio design review — 24 July 2026
 
 Critical design review of all 20 concept sites (batch 1 × 10, batch 2 × 10).
-Method: twenty independent subagent reviews against DESIGN.md and the project
+Method: twenty independent subagent reviews against docs/DESIGN.md and the project
 frontend rules, then batch-level synthesis, then a birds-eye portfolio read.
 
 **Verdict.** The first-glance suspicion holds. Batch 2 mean craft is **4.1/10**
@@ -17,8 +17,8 @@ shell reads louder when the photo is gone.
 | Concepts that pass the brand-first / remove-nav test | ~2 / 20 |
 | Batch 2 concepts with a strong photograph in the first fold | 0 / 10 |
 
-Related: [`DESIGN.md`](DESIGN.md) (system), [`PROSPECTS.md`](PROSPECTS.md)
-(pipeline), [`REVIEW.md`](REVIEW.md) (site/ops review — different artefact).
+Related: [`docs/DESIGN.md`](docs/DESIGN.md) (system), [`PROSPECTS.md`](PROSPECTS.md)
+(pipeline), [`docs/REVIEW.md`](docs/REVIEW.md) (site/ops review — different artefact).
 
 ---
 
@@ -160,7 +160,7 @@ weakness; a row with praise but no observed limitation is incomplete.
 | First viewport and visual composition | 15% | The first screen is one legible composition with a dominant visual plane, clear brand, short proposition and one primary action. Real imagery or an earned subject artefact carries the proof; chrome, cards and widgets do not consume the scene. | Desktop and mobile first-viewport captures, plus a sentence naming what the eye meets first, second and third. |
 | Complete loop and functional integrity | 15% | The bounded visitor loop includes the primary action, important failure or empty state, recovery and honest handoff. Interactions change state or do useful work; external integrations accept the parameters collected. | Walkthrough steps, interaction test, failure/recovery capture and destination URL/parameter check. |
 | Responsive use and accessibility | 15% | Hierarchy, content order and controls survive phone and desktop; text is readable; keyboard and focus behaviour work; semantics, labels, alternatives and reduced motion support access. | 390×844 and 1265×710 checks, keyboard run, contrast results, reduced-motion check and any known limitation. |
-| Craft and finish | 10% | Typography, spacing, image treatment, copy, states and motion feel deliberate at both sizes. No generic rise animation, reflex card grid, over-rounding, cramped display type, decorative UI theatre or visible browser-console defect remains. | Captures at both sizes, console check and a named polish pass against `DESIGN.md` and the project frontend rules. |
+| Craft and finish | 10% | Typography, spacing, image treatment, copy, states and motion feel deliberate at both sizes. No generic rise animation, reflex card grid, over-rounding, cramped display type, decorative UI theatre or visible browser-console defect remains. | Captures at both sizes, console check and a named polish pass against `docs/DESIGN.md` and the project frontend rules. |
 
 Weighted score:
 
@@ -325,12 +325,12 @@ indefinitely.
 
 ### 6. Record and release
 
-Create the private `research/concept-reviews/<slug>.md` from
-`research/concept-reviews/_template.md`. Keep its detailed critique,
+Create the private `research/<slug>.md` from
+`research/_template.md`. Keep its detailed critique,
 screenshots, licensing documents and working evidence out of Git. The private
 record owns the evidence and decision for that concept; this document owns the
 rubric and portfolio calibration. Commit only the compact release entry in
-`research/concept-reviews/releases.json`: slug, status, reviewed source
+`research/releases.json`: slug, status, reviewed source
 fingerprint, reviewer identity, gate booleans, category scores, weighted score
 review date and `truthCheckedAt`. On Pass:
 
@@ -342,8 +342,8 @@ review date and `truthCheckedAt`. On Pass:
 5. only then use the concept for outreach, a one-sheet or a public claim.
 
 The release rule is enforced by the repository, not memory. A build check
-compares every slug published through `src/data/transformations.ts` with its
-committed entry in `research/concept-reviews/releases.json` and fails when:
+compares every slug published through `src/site/data/transformations.ts` with its
+committed entry in `research/releases.json` and fails when:
 
 - the record is missing or not Pass;
 - any public release condition is not true;
@@ -552,11 +552,11 @@ remain Revise for all five.
 
 The repository now enforces the state:
 
-- `publicTransformationSlugs` in `src/data/transformations.ts` is the only
+- `publicTransformationSlugs` in `src/site/data/transformations.ts` is the only
   public membership list; internal candidate metadata remains separate;
-- `research/concept-reviews/releases.schema.json` defines the compact v1.1
+- `research/releases.schema.json` defines the compact v1.1
   record and `releases.json` contains no grandfather records;
-- `scripts/check-concept-reviews.mjs` checks the four review/release states,
+- `tools/check-concept-reviews.mjs` checks the four review/release states,
   six design gates, four public release conditions, the distinct core and
   supporting category floors, weighted score, 90-day truth expiry and a SHA-256
   fingerprint of the material concept sources, referenced media and
@@ -665,10 +665,10 @@ standard were:
   the audit passes 72/72; the failure was contention on the shared dev server.
   The committed record says `repositoryChecks: true`.
 - Two reviewers rounded their weighted score down (5.875 → 5.87, 5.425 → 5.42).
-  `scripts/check-concept-reviews.mjs` is the canonical calculator and rounds
+  `tools/check-concept-reviews.mjs` is the canonical calculator and rounds
   half-up, so the committed entries are 5.88 and 5.43. The rubric's "do not
   round up" rule protects the 7.0 threshold; neither score is near it.
-- `research/verifications.json` carries the census-era name "Donard Veterinary
+- `research/pipeline/verifications.json` carries the census-era name "Donard Veterinary
   Centre" with no correction, while the concept, the domain, the Instagram
   handle and the fascia in the hero photograph all read "Donard Veterinary
   **Clinic**". The concept is right and the record needs the correction before a
@@ -816,20 +816,20 @@ lesson to carry into the thirteen unreviewed concepts.
 
 | Question | Decision or assumption | Evidence | Consequence | Owner |
 |---|---|---|---|---|
-| What does “minimum 7” control? | Completion and external use, not disposable exploration. | Project guidance separates Explore, Build and Promote. | Local studies may be rough; transformations and outreach may not. | `CONCEPT_DESIGN_REVIEW.md` |
-| Is a 7 average sufficient? | No. Gates and category floors also apply. | Current portfolio contains strong research paired with inert controls, missing imagery and weak mobile compositions. | Visual flair cannot hide truth, access or function failures. | `CONCEPT_DESIGN_REVIEW.md` |
-| Can strong categories compensate for weak ones? | Only within limits. Truth, outcome, loop and accessibility must each reach 7.0; identity, composition and craft must each reach 6.0; the weighted result must reach 7.0. | A single supporting weakness should not erase an otherwise publishable concept, while strong styling must not hide a weak outcome, false claim or broken experience. | Review protects the consequential parts without demanding uniform strength in every category. | `CONCEPT_DESIGN_REVIEW.md` |
-| How much of a site must pass? | One bounded, complete visitor loop. Every exposed route or action outside it must work or be unmistakably labelled as outside the prototype. | Project guidance prefers one complete loop to many shallow screens; the portfolio mixes single pages and full sites. | Review rewards experiential depth without forcing every concept to become a full website. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
-| How long may a failed concept remain in repair? | One focused repair cycle. A second failure retires it unless new evidence, imagery, a materially different direction or explicit flagship status justifies reopening it. | An unlimited fix loop conflicts with the lean operating model and encourages polishing a weak thesis. | Revise has a bounded cost and an honest terminal state. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
-| What imagery can count as subject proof? | Real subject imagery; a disclosed, subject-specific generated visualisation faithful to the real business (24 July 2026 amendment); or a specific real artefact for a genuinely non-image-led brief. Generic stock never counts, and no image may be passed off as a real photograph or impersonate what does not exist. Public use requires documented rights or a publishable asset — disclosed generated visuals satisfy the rights condition. | The portfolio review identifies absent subject imagery as the main craft regression; the amendment lets concepts that cannot obtain or license real photography still prove the subject honestly through disclosed visualisation. | Rights need no longer block a concept that can produce a faithful disclosed visualisation; deception still fails the gate. | `CONCEPT_DESIGN_REVIEW.md` + per-concept review |
+| What does “minimum 7” control? | Completion and external use, not disposable exploration. | Project guidance separates Explore, Build and Promote. | Local studies may be rough; transformations and outreach may not. | `docs/CONCEPT_DESIGN_REVIEW.md` |
+| Is a 7 average sufficient? | No. Gates and category floors also apply. | Current portfolio contains strong research paired with inert controls, missing imagery and weak mobile compositions. | Visual flair cannot hide truth, access or function failures. | `docs/CONCEPT_DESIGN_REVIEW.md` |
+| Can strong categories compensate for weak ones? | Only within limits. Truth, outcome, loop and accessibility must each reach 7.0; identity, composition and craft must each reach 6.0; the weighted result must reach 7.0. | A single supporting weakness should not erase an otherwise publishable concept, while strong styling must not hide a weak outcome, false claim or broken experience. | Review protects the consequential parts without demanding uniform strength in every category. | `docs/CONCEPT_DESIGN_REVIEW.md` |
+| How much of a site must pass? | One bounded, complete visitor loop. Every exposed route or action outside it must work or be unmistakably labelled as outside the prototype. | Project guidance prefers one complete loop to many shallow screens; the portfolio mixes single pages and full sites. | Review rewards experiential depth without forcing every concept to become a full website. | `docs/CONCEPT_DESIGN_REVIEW.md` + per-concept review |
+| How long may a failed concept remain in repair? | One focused repair cycle. A second failure retires it unless new evidence, imagery, a materially different direction or explicit flagship status justifies reopening it. | An unlimited fix loop conflicts with the lean operating model and encourages polishing a weak thesis. | Revise has a bounded cost and an honest terminal state. | `docs/CONCEPT_DESIGN_REVIEW.md` + per-concept review |
+| What imagery can count as subject proof? | Real subject imagery; a disclosed, subject-specific generated visualisation faithful to the real business (24 July 2026 amendment); or a specific real artefact for a genuinely non-image-led brief. Generic stock never counts, and no image may be passed off as a real photograph or impersonate what does not exist. Public use requires documented rights or a publishable asset — disclosed generated visuals satisfy the rights condition. | The portfolio review identifies absent subject imagery as the main craft regression; the amendment lets concepts that cannot obtain or license real photography still prove the subject honestly through disclosed visualisation. | Rights need no longer block a concept that can produce a faithful disclosed visualisation; deception still fails the gate. | `docs/CONCEPT_DESIGN_REVIEW.md` + per-concept review |
 | How does the retroactive audit start? | Review the strongest concepts by public value and likelihood of passing, then resolve release dependencies separately. | Missing paperwork says nothing about design quality, while a broken loop or dishonest claim does. | The review produces useful design evidence without weakening publication safeguards. | This document + `PROSPECTS.md` |
-| What if no concept passes yet? | Show a truthful temporary review state on the homepage and `/transformations/`; keep the request action but show no failed concept as proof. | Transformations are the product's primary proof, but retaining a failed example would contradict the release gate. | Public honesty outranks portfolio volume; concepts return individually after Pass. | `CONCEPT_DESIGN_REVIEW.md` + public routes |
+| What if no concept passes yet? | Show a truthful temporary review state on the homepage and `/transformations/`; keep the request action but show no failed concept as proof. | Transformations are the product's primary proof, but retaining a failed example would contradict the release gate. | Public honesty outranks portfolio volume; concepts return individually after Pass. | `docs/CONCEPT_DESIGN_REVIEW.md` + public routes |
 | How long does a Pass remain current? | The design score persists, but public release requires a lightweight truth refresh every 90 days. | Businesses, websites and external handoffs can change quickly; a dated initial review does not protect an indefinite public claim. | Unchanged concepts update one date; material changes trigger affected categories; overdue concepts leave public transformations. | Release data + verification evidence |
-| Is the release gate documentary or enforced? | Enforced. The build checks every public transformation against committed machine-readable Pass data and the reviewed source fingerprint. | A documented process can be skipped accidentally, especially in a lean operation. | Public concepts cannot build without current evidence of every gate and category floor. | `research/concept-reviews/releases.json` + build check |
+| Is the release gate documentary or enforced? | Enforced. The build checks every public transformation against committed machine-readable Pass data and the reviewed source fingerprint. | A documented process can be skipped accidentally, especially in a lean operation. | Public concepts cannot build without current evidence of every gate and category floor. | `research/releases.json` + build check |
 | Who can approve? | One human owner or separate non-creator agent after direct inspection; a fresh context for the creator does not count. | The operation must stay lean, while creator-only or prose-only approval would provide fictional independence. | One non-creator owns the decision; evidence requirements and five-review calibration control drift. | Per-concept review record |
 | Can the owner override a failure? | No. One blind appeal by a different qualified non-creator is allowed; its complete verdict replaces the first. | Direct override makes the threshold ceremonial, while a single reviewer can still make a factual or calibration error. | There is a bounded correction path without score shopping. | Per-concept review record |
 | Does the rule apply retrospectively? | Yes. Pause new publication and outreach; review the existing public portfolio; remove failed or release-blocked concepts from `/transformations/` until cleared. | The transformations are the product's main proof, while all twenty concepts are unreviewed under v1.1. | No false grandfathering; public proof and the stated quality floor agree. | This document + `PROSPECTS.md` |
-| Where do records live? | Detailed evidence stays private and Git-ignored under `research/concept-reviews/`; a compact release entry is committed in `releases.json`. | Named-business criticism and licensing evidence should not become public merely to enforce the build. | The gate remains auditable without exposing private working material. | This document + release data |
+| Where do records live? | Detailed evidence stays private and Git-ignored under `research/`; a compact release entry is committed in `releases.json`. | Named-business criticism and licensing evidence should not become public merely to enforce the build. | The gate remains auditable without exposing private working material. | This document + release data |
 
 ---
 
@@ -865,7 +865,7 @@ visual proof of the subject (not stock abstraction or CSS costume).
 
 ## Core design principles
 
-Drawn from `DESIGN.md`, `ConceptLayout` / `concept-shell` practice, and the
+Drawn from `docs/DESIGN.md`, `ConceptLayout` / `concept-shell` practice, and the
 frontend rules the reviewers scored against.
 
 ### Identity

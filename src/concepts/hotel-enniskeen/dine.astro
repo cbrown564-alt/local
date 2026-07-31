@@ -1,0 +1,281 @@
+---
+import EnniskeenShell from "./components/EnniskeenShell.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { dine, enniskeen, generatedVisuals } from "./content";
+---
+
+<EnniskeenShell title={"Dine — Enniskeen Country House Hotel — independent concept"} current="dine">
+    <main>
+      <!-- Hero: the Oak Restaurant -->
+      <section class="enk-int-hero">
+        <div class="enk-int-hero-copy">
+          <p class="enk-kicker">Dine · The Oak Restaurant</p>
+          <h1>Dinner with the <em>Mournes</em> at the window.</h1>
+          <p class="enk-lede">{dine.restaurant.copy}</p>
+          <div class="enk-actions">
+            <a class="enk-cta" href={enniskeen.phoneHref}>Call {enniskeen.phone} to book</a>
+            <a class="enk-link" href="#menus">See the menus →</a>
+          </div>
+        </div>
+        <figure class="enk-int-hero-image">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.restaurant}
+            loading="eager"
+          />
+          <figcaption>The Oak Restaurant</figcaption>
+        </figure>
+      </section>
+
+      <!-- Mourne Honey afternoon tea -->
+      <section class="enk-tea" aria-labelledby="tea-heading">
+        <figure class="enk-tea-visual">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.afternoonTea}
+          />
+          <figcaption>On the terrace</figcaption>
+        </figure>
+        <div class="enk-tea-copy">
+          <p class="enk-kicker" style="animation:none">{dine.afternoonTea.name}</p>
+          <h2 id="tea-heading">Honey from the slopes of Slieve Donard.</h2>
+          <p>{dine.afternoonTea.copy}</p>
+          <p class="enk-tea-booking">{dine.afternoonTea.booking}</p>
+          <div class="enk-actions">
+            <a class="enk-cta" href={enniskeen.phoneHref}>Reserve a table</a>
+            <a class="enk-link" href="#panel-tea">The afternoon tea menu →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="enk-menus" id="menus" aria-labelledby="menus-heading">
+        <div class="enk-menus-hero">
+          <div class="enk-menus-hero-inner">
+            <p class="enk-menus-eyebrow">From the kitchen</p>
+            <h2 id="menus-heading">The menus</h2>
+            <p class="enk-menu-notice">
+              <strong>The hotel's own published menus.</strong> Dishes and prices
+              from the house listings; availability may differ.
+              Confirm with the restaurant.
+            </p>
+          </div>
+          <div class="enk-tabs" role="tablist" aria-label="Menus">
+            {dine.menus.map((menu, index) => (
+              <button
+                class="enk-tab"
+                type="button"
+                role="tab"
+                id={`tab-${menu.id}`}
+                aria-controls={`panel-${menu.id}`}
+                aria-selected={index === 0 ? "true" : "false"}
+                tabindex={index === 0 ? 0 : -1}
+              >
+                {menu.label} <span>{menu.subtitle}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="enk-menus-layout">
+          <div class="enk-menus-content">
+            {dine.menus.map((menu, index) => (
+              <div
+                id={`panel-${menu.id}`}
+                class="enk-menu-panel"
+                role="tabpanel"
+                aria-labelledby={`tab-${menu.id}`}
+                data-active={index === 0 ? "true" : undefined}
+                hidden={index !== 0}
+              >
+                <div class="enk-panel-meta">
+                  <p class="enk-panel-price">{menu.priceNote}</p>
+                  {menu.hours && <p class="enk-panel-hours">{menu.hours}</p>}
+                </div>
+                <div class="enk-menu-cols">
+                  {menu.columns.map((column) => (
+                    <div>
+                      {column.sections.map((section) => (
+                        <div class="enk-menu-section">
+                          <h3 class="enk-menu-section-head">{section.head}</h3>
+                          <ul class="enk-dishes">
+                            {section.dishes.map((dish) => (
+                              <li class="enk-dish">
+                                <div class="enk-dish-info">
+                                  <p class="enk-dish-name">{dish.name}</p>
+                                  {"desc" in dish && dish.desc && (
+                                    <p class="enk-dish-desc">{dish.desc}</p>
+                                  )}
+                                </div>
+                                {"price" in dish && dish.price && (
+                                  <p class="enk-dish-price">{dish.price}</p>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                          {"note" in section && section.note && (
+                            <p class="enk-dish-note">{section.note}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <p class="enk-panel-pdf">
+                  <a href={menu.href} rel="external">Download menu (PDF) →</a>
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <aside class="enk-menus-sidebar">
+            <div class="enk-sidebar-book">
+              <h3>Book a table</h3>
+              <p>Oak Restaurant and afternoon tea are reserved by phone — the house keeps it personal.</p>
+              <a class="enk-cta enk-cta-full" href={enniskeen.phoneHref}>Call {enniskeen.phone}</a>
+            </div>
+            <hr class="enk-sidebar-divider" />
+            <div class="enk-sidebar-info">
+              <h3>Dining hours</h3>
+              <dl>
+                <dt>Lunch</dt><dd>12.30 – 2.30</dd>
+                <dt>Afternoon tea</dt><dd>1.00 – 4.30</dd>
+                <dt>Early evening</dt><dd>5.00 – 6.15</dd>
+                <dt>Dinner</dt><dd>5.00 – 7.30</dd>
+              </dl>
+            </div>
+            <div class="enk-sidebar-info">
+              <h3>Allergens</h3>
+              <p>Please tell a member of staff about any food allergy or special dietary requirement before ordering.</p>
+            </div>
+            <div class="enk-sidebar-info">
+              <h3>About these menus</h3>
+              <p>Menus from the hotel's published listings. Prices, descriptions and availability may differ — please check with the restaurant directly.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <script>
+        const menusSection = document.getElementById("menus");
+        const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>(".enk-tab"));
+        const panels = Array.from(document.querySelectorAll<HTMLElement>(".enk-menu-panel"));
+
+        const tabForHash = () => {
+          const panelId = window.location.hash.slice(1);
+          return tabs.find((tab) => tab.getAttribute("aria-controls") === panelId) ?? tabs[0];
+        };
+
+        const activateTab = (
+          tab: HTMLButtonElement,
+          options: { updateHash?: boolean; focus?: boolean; scroll?: boolean } = {},
+        ) => {
+          const panelId = tab.getAttribute("aria-controls");
+          if (!panelId) return;
+
+          tabs.forEach((candidate) => {
+            const selected = candidate === tab;
+            candidate.setAttribute("aria-selected", String(selected));
+            candidate.tabIndex = selected ? 0 : -1;
+          });
+
+          panels.forEach((panel) => {
+            const selected = panel.id === panelId;
+            panel.hidden = !selected;
+            if (selected) panel.dataset.active = "true";
+            else delete panel.dataset.active;
+          });
+
+          if (options.updateHash && window.location.hash !== `#${panelId}`) {
+            window.history.pushState(null, "", `#${panelId}`);
+          }
+          if (options.focus) tab.focus();
+          if (options.scroll && menusSection) {
+            // Instant: native hash scroll targets the panel id; we then lift
+            // back to the section so the tab rail stays in view.
+            menusSection.scrollIntoView({ behavior: "auto", block: "start" });
+          }
+        };
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => activateTab(tab, { updateHash: true }));
+          tab.addEventListener("keydown", (event) => {
+            let nextIndex: number | undefined;
+            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+            if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = tabs.length - 1;
+            if (nextIndex === undefined) return;
+
+            event.preventDefault();
+            activateTab(tabs[nextIndex], { updateHash: true, focus: true });
+          });
+        });
+
+        const activateFromHistory = (options: { scroll?: boolean } = {}) => {
+          const hash = window.location.hash.slice(1);
+          if (hash === "menus") {
+            activateTab(tabs[0], { focus: false });
+            return;
+          }
+          const tab = tabForHash();
+          const isPanelHash = Boolean(
+            tabs.find((candidate) => candidate.getAttribute("aria-controls") === hash),
+          );
+          activateTab(tab, {
+            focus: false,
+            scroll: options.scroll && isPanelHash,
+          });
+        };
+
+        window.addEventListener("hashchange", () => {
+          // After the browser's own hash scroll, lift to the menus band.
+          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
+        });
+        window.addEventListener("popstate", () => {
+          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
+        });
+        if (window.location.hash.startsWith("#panel-")) {
+          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
+        } else {
+          activateFromHistory();
+        }
+      </script>
+
+      <!-- Brandy Pad Lounge + special occasions -->
+      <section class="enk-lounge" aria-labelledby="lounge-heading">
+        <div class="enk-lounge-grid">
+          <article class="enk-lounge-card">
+            <figure class="enk-lounge-visual">
+              <ResponsiveImage
+                pictureClass="concept-responsive-picture"
+                {...generatedVisuals.lounge}
+              />
+            </figure>
+            <h2 id="lounge-heading">{dine.brandyPad.name}</h2>
+            <p>{dine.brandyPad.copy}</p>
+          </article>
+          <article class="enk-lounge-card">
+            <figure class="enk-lounge-visual">
+              <ResponsiveImage
+                pictureClass="concept-responsive-picture"
+                {...generatedVisuals.restaurant}
+              />
+            </figure>
+            <h2>{dine.occasions.name}</h2>
+            <p>{dine.occasions.copy}</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Book a table -->
+      <section class="enk-phone-band">
+        <div class="enk-phone-band-inner">
+          <div>
+            <h2>Book a table</h2>
+            <p>Tables in the Oak Restaurant and afternoon tea on the terrace are reserved by phone — the house keeps it personal.</p>
+          </div>
+          <a class="enk-cta" href={enniskeen.phoneHref}>Call {enniskeen.phone}</a>
+        </div>
+      </section>
+    </main>
+</EnniskeenShell>

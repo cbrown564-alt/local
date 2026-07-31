@@ -1,0 +1,99 @@
+---
+import EnniskeenShell from "./components/EnniskeenShell.astro";
+import EnkBooking from "./components/EnkBooking.astro";
+import EnkHero from "./components/EnkHero.astro";
+import EnkMark from "./components/EnkMark.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { base, generatedVisuals, home, enniskeen, review } from "./content";
+
+const explore = [
+  {
+    href: `${base}/rooms/`,
+    title: "Stay",
+    note: "Twelve individually styled rooms — art-deco baths, the turret, the balconies.",
+    image: generatedVisuals.balcony,
+  },
+  {
+    href: `${base}/dine/`,
+    title: "Dine",
+    note: "The Oak Restaurant, Mourne Honey afternoon tea, and the Brandy Pad Lounge.",
+    image: generatedVisuals.afternoonTea,
+  },
+  {
+    href: `${base}/estate/`,
+    title: "The estate",
+    note: "Twelve wooded acres, the Wishing Well, and the trail down to the Shimna River.",
+    image: generatedVisuals.estate,
+  },
+  {
+    href: `${base}/things-to-do/`,
+    title: "Things to do",
+    note: "Slieve Donard from the door, Royal County Down next door, bikes to Spelga Dam.",
+    image: generatedVisuals.walker,
+  },
+];
+---
+
+<EnniskeenShell title={"Enniskeen Country House Hotel — independent concept"} current="home">
+    <main>
+    <section class="enk-hero">
+      <section class="enk-story">
+        <p class="enk-kicker">Newcastle · County Down</p>
+        <h1>A mountainside <em>hideaway</em> above the Shimna Valley.</h1>
+        <p class="enk-lede">{home.lede}</p>
+        <div class="enk-actions">
+          <a class="enk-cta" href={`${base}/rooms/`}>See rooms &amp; suites</a>
+          <a class="enk-link" href={`${base}/dine/`}>Afternoon tea →</a>
+        </div>
+      </section>
+      <EnkHero />
+      <EnkBooking variant="hero" />
+    </section>
+
+    <p class="enk-ornament"><EnkMark size={26} /></p>
+
+    <section class="enk-explore" aria-labelledby="explore-heading">
+      <p class="enk-kicker" style="animation:none">The house &amp; the valley</p>
+      <h2 id="explore-heading">Find your way around</h2>
+      <ul class="enk-explore-grid" role="list">
+        {explore.map((item) => (
+          <li class="enk-explore-card">
+            <a href={item.href}>
+              <span class="enk-explore-image">
+                <ResponsiveImage pictureClass="concept-responsive-picture" {...item.image} />
+              </span>
+              <span class="enk-explore-body">
+                <span class="enk-explore-title">{item.title}</span>
+                <span class="enk-explore-note">{item.note}</span>
+                <span class="enk-explore-more" aria-hidden="true">Explore →</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="enk-welcome">
+      <div class="enk-welcome-copy">
+        <p class="enk-kicker" style="animation:none">A warm welcome</p>
+        <h2>Family-run, under the Mournes.</h2>
+        <p class="enk-dropcap">{home.welcome}</p>
+        <!-- A guest's own words, at a size the studio's own copy never gets.
+             The attribution and date are part of the quote, not decoration:
+             this is a real, checkable TripAdvisor review, and the concept is
+             worth nothing if the owner cannot go and find it. -->
+        <figure class="enk-pullquote">
+          <blockquote cite={review.source}>“{review.text}”</blockquote>
+          <figcaption>
+            {review.attribution}
+            <span>{review.context}</span>
+          </figcaption>
+        </figure>
+        <p class="enk-welcome-directions">{enniskeen.directions}</p>
+      </div>
+      <figure class="enk-welcome-visual">
+        <ResponsiveImage pictureClass="concept-responsive-picture" {...generatedVisuals.house} />
+      </figure>
+    </section>
+    </main>
+</EnniskeenShell>

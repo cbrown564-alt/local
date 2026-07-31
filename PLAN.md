@@ -2,7 +2,7 @@
 
 Current working plan for Mourne Made. `PROSPECTS.md` owns pipeline state,
 including the public, withdrawn, retired and held lists. The publication
-standard lives in `CONCEPT_DESIGN_REVIEW.md`. Historical milestone detail and
+standard lives in `docs/CONCEPT_DESIGN_REVIEW.md`. Historical milestone detail and
 the retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
 and in the commit history.
@@ -45,7 +45,7 @@ Completed before another publication decision or printed outreach sheet.
    Earth checks.
 4. Corrected documentation drift: prose public counts are checked against
    `publicTransformationSlugs`, the obsolete Dundrum Inn after-media item in
-   `REVIEW.md` is closed, and the superseded form-success note is removed from
+   `docs/REVIEW.md` is closed, and the superseded form-success note is removed from
    `AGENTS.md`.
 5. Overrode the `fast-uri` and `esbuild` advisories, updated Astro to 7.1.4 with
    focused checks still passing, moved `@astrojs/check` and TypeScript to
@@ -62,7 +62,7 @@ and that two of its checks could not fail. Fixed in the same pass:
    runs. `.dv-emergency-tag` was lifted to `--lavender-soft` because it settled
    at 4.60:1 against a 4.5 floor.
 2. Rendered concept imagery is classified from
-   `research/concept-reviews/image-provenance.md` rather than from the filename,
+   `research/image-provenance.md` rather than from the filename,
    caption and alt text the check then asserted against — which made it
    tautological for any image whose alt already read "AI-generated
    visualisation", and blind to a generated image with a neutral name. Alt text
@@ -94,10 +94,10 @@ comparison media predates the rebuild.
 
 1. Inspect the rebuilt concept beside the live site on phone and desktop.
 2. Correct the stale comparison `afterAlt` text in
-   `src/data/transformation-details.ts`.
+   `src/site/data/transformation-details.ts`.
 3. Run the five publication checks again. If the concept passes, update
-   `research/concept-reviews/publication.json`, `PROSPECTS.md`,
-   `research/verifications.json` and `publicTransformationSlugs` together.
+   `research/publication.json`, `PROSPECTS.md`,
+   `research/pipeline/verifications.json` and `publicTransformationSlugs` together.
    If it does not pass, keep it withdrawn and record the remaining blocker.
 4. Only after a Publish decision, recapture and visually inspect its after
    still and clip, regenerate responsive derivatives and run the media and
@@ -149,8 +149,8 @@ highest-stakes conversation is not used to rehearse the approach.
 3. Produce one personalised one-sheet for each of the two businesses using
    its current published transformation. Do not wait for optional extra media.
    Scopers is further on: its journey was walked and filed on 31 July 2026
-   (`research-renders/scopers-journey/2026-07-31/`) and the walk-in script is
-   written (`research/scopers-pitch.md`). The six generated food images landed
+   (`.scratch/renders/scopers-journey/2026-07-31/`) and the walk-in script is
+   written (`research/concepts/scopers/scopers-pitch.md`). The six generated food images landed
    the same day and the comparison still, clip and supper-club still were
    recaptured with them, so the concept is showable. What remains before
    outreach is its one-sheet and the standing gates below.
@@ -174,7 +174,7 @@ proposed customer journey addresses a problem they recognise.
 After each visit:
 
 - update the business stage and dated evidence in
-  `research/verifications.json`, then regenerate `src/data/businesses.json`;
+  `research/pipeline/verifications.json`, then regenerate `src/site/data/businesses.json`;
 - update the human-readable pipeline in `PROSPECTS.md`;
 - record the response separately from prototype evidence, including objections,
   requested changes, the person able to approve a pilot and the agreed next
@@ -210,7 +210,7 @@ and 3 are complete. Apply each item at the stated boundary.
 
 1. Before the next deploy after the baseline repair, remove unreferenced media
    from `public/` or give it an explicit held record and reason in
-   `research/concept-reviews/image-provenance.md`. Make the asset check fail
+   `research/image-provenance.md`. Make the asset check fail
    when an orphan has neither outcome. The 28 July review found 36 orphan
    groups; keeping withdrawn bytes at guessable production URLs works against
    the provenance standard.
@@ -219,8 +219,8 @@ and 3 are complete. Apply each item at the stated boundary.
    generation. Separately decide whether to purge the previously exposed
    business and verification datasets from history; repository privacy does
    not remove the earlier exposure.~~ **Done 31 July 2026** — masters stay
-   git-ignored under `research/concept-reviews/evidence/`; sensitive blobs
-   were purged from history with `scripts/purge-sensitive-git-history.sh`.
+   git-ignored under `research/evidence/`; sensitive blobs
+   were purged from history with `tools/purge-sensitive-git-history.sh`.
    Recorded in [`docs/adr/0003-master-storage-and-history-purge.md`](docs/adr/0003-master-storage-and-history-purge.md).
 3. Before building another concept after Painted Earth, extract a small shared
    type scale and the repeated panel, grid, rail and disclosure geometry.
@@ -234,7 +234,7 @@ and 3 are complete. Apply each item at the stated boundary.
    public-review purpose. Add automated accessibility checks and adopt WCAG
    2.2 AA as the promotion target.
 6. Promote useful contrast, fold and occlusion probes from `.tmp/` into named
-   scripts or `scripts/lib/`, then clear disposable probes instead of letting
+   scripts or `tools/lib/`, then clear disposable probes instead of letting
    the temporary workspace become undocumented tooling.
 
 ## Blocked or deferred

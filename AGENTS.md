@@ -16,5 +16,6 @@ Key routes are documented in `README.md`. The core user flow is the request form
 
 ### Non-obvious notes
 
-- The `scripts/capture-*.mjs` screenshot/media utilities rely on `puppeteer-core` + a system Chrome/Chromium binary and a running `pnpm preview` server. They are optional tooling for regenerating comparison images and are not required to run or develop the site. `ffmpeg-static` is bundled for the media capture script.
-- `scripts/normalize-businesses.mjs` regenerates `src/data/businesses.json` from `research/verifications.json`; re-run it after editing verification data.
+- Directory layout: see [`docs/REPO_MAP.md`](docs/REPO_MAP.md). Edit `public/`, never `dist/`. Concept work lives under `src/concepts/<slug>/`, `public/media/concepts/<slug>/`, and `research/concepts/<slug>/`.
+- Capture tools live in `tools/capture/` and need `puppeteer-core` + system Chrome/Chromium plus a running `pnpm preview` server. `ffmpeg-static` is bundled for media capture.
+- `tools/pipeline/normalize-businesses.mjs` regenerates `src/site/data/businesses.json` from `research/pipeline/verifications.json`; re-run it after editing verification data.

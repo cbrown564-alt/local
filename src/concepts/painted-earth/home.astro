@@ -1,0 +1,127 @@
+---
+import PaintedEarthArt from "./components/PaintedEarthArt.astro";
+import PaintedEarthShell from "./components/PaintedEarthShell.astro";
+import {
+  paintedEarthBase,
+  paintedEarthLive,
+  paintedEarthPlaces,
+} from "./content";
+
+const routes = [
+  {
+    title: "Original art",
+    note: "Available work, collection terms and shipping quotes before checkout.",
+    href: `${paintedEarthBase}/originals/`,
+    theme: "evening",
+  },
+  {
+    title: "Gifts under £30",
+    note: "Cards, prints, books and small pieces from Irish makers.",
+    href: `${paintedEarthLive}/collections/gifts-under-30`,
+    theme: "bloom",
+  },
+  {
+    title: "Birthday gifts & cards",
+    note: "Start with the occasion, then choose the piece or price.",
+    href: `${paintedEarthLive}/collections/birthday-cards`,
+    theme: "robin",
+  },
+  {
+    title: "Jewellery",
+    note: "Browse by type or by the artist whose work you already know.",
+    href: `${paintedEarthLive}/collections/irish-craft-jewellery`,
+    theme: "tide",
+  },
+  {
+    title: "Home & body",
+    note: "Ceramics, textiles, fragrance and everyday craft.",
+    href: `${paintedEarthLive}/collections/home-body`,
+    theme: "dunes",
+  },
+];
+---
+
+<PaintedEarthShell title="Painted Earth" current="home">
+  <main>
+    <section class="pe-arrival">
+      <div class="pe-arrival-copy">
+        <p class="pe-intro">A small team with a big dream</p>
+        <h1>What are you looking for?</h1>
+        <p>
+          Start with the piece, the occasion or the price. If a place matters
+          more, take the local route just below.
+        </p>
+        <form class="pe-search" action={`${paintedEarthLive}/search`} method="get">
+          <label for="pe-home-search">Search the shop</label>
+          <div>
+            <input id="pe-home-search" name="q" type="search" placeholder="A maker, a gift, a place…" />
+            <button type="submit">Search the shop</button>
+          </div>
+        </form>
+        <a class="pe-text-link" href={`${paintedEarthLive}/collections/all`}>Browse the full catalogue ↗</a>
+      </div>
+      <div class="pe-arrival-art" aria-label="Upstairs gallery">
+        <PaintedEarthArt theme="mountain" label="Original art in the upstairs gallery" />
+        <div class="pe-arrival-note">
+          <span>Upstairs gallery</span>
+          <strong>Original work, with the practical details up front.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="pe-shop-routes" aria-labelledby="pe-routes-heading">
+      <div class="pe-section-head">
+        <h2 id="pe-routes-heading">Shop by what you need</h2>
+        <p>Cards, prints, jewellery and original art — choose the route that fits.</p>
+      </div>
+      <ul class="pe-route-list" role="list">
+        {routes.map((route) => (
+          <li>
+            <a href={route.href}>
+              <PaintedEarthArt theme={route.theme} compact />
+              <span class="pe-route-copy">
+                <strong>{route.title}</strong>
+                <span>{route.note}</span>
+              </span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="pe-place-route" aria-labelledby="pe-place-heading">
+      <div class="pe-place-copy">
+        <p class="pe-intro">A second way in</p>
+        <h2 id="pe-place-heading">Take a piece of this place with you.</h2>
+        <p>
+          Useful for visitors and gift buyers, optional for everyone else.
+          Choosing a place applies a removable filter to the original-art shelf.
+        </p>
+      </div>
+      <ul class="pe-place-list" role="list">
+        {paintedEarthPlaces.map((place) => (
+          <li>
+            <a href={`${paintedEarthBase}/originals/?place=${encodeURIComponent(place.name)}`}>
+              <PaintedEarthArt theme={place.theme} compact label={`Art inspired by ${place.name}`} />
+              <strong>{place.name}</strong>
+              <span>{place.count} pieces inspired by {place.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="pe-gallery-callout">
+      <div>
+        <p class="pe-intro">Upstairs in Newcastle</p>
+        <h2>The gallery is part of the shop, not a separate story.</h2>
+      </div>
+      <p>
+        Original art is collection-only from 98 Main Street. Painted Earth can
+        arrange a shipping quote when needed.
+      </p>
+      <a class="pe-primary" href={`${paintedEarthBase}/originals/`}>Explore available original art</a>
+    </section>
+  </main>
+</PaintedEarthShell>

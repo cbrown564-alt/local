@@ -1,0 +1,141 @@
+---
+interface Props {
+  id?: string;
+  headingId?: string;
+}
+
+const {
+  id,
+  headingId,
+} = Astro.props;
+---
+
+<form
+  class="dv-request"
+  id={id}
+  method="post"
+  data-dv-request
+  aria-label="Request an appointment"
+>
+  <h2 id={headingId}>Request an appointment</h2>
+  <p>
+    Tell us what you need and we'll call you back to confirm a time. Your email
+    app will open so you can review and send the request.
+  </p>
+  <label>
+    Your name
+    <input type="text" name="name" autocomplete="name" required />
+  </label>
+  <div class="dv-request-row">
+    <label>
+      Your pet
+      <select name="pet">
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Small pet</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>
+      Preferred day
+      <select name="day">
+        <option>First available</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+      </select>
+    </label>
+  </div>
+  <label>
+    Phone number
+    {/* `type="tel"` alone accepted "not-a-phone!!!" and carried it verbatim
+        into the email body: the only failure state was "empty" (25 July 2026
+        re-review). The pattern is deliberately permissive — spaces, +, dashes
+        and parentheses all pass — but demands at least seven characters of
+        them. Note the escaping: HTML `pattern` compiles with the regex `v`
+        flag, where a bare `-`, `(` or `)` inside a character class is a syntax
+        error — and an invalid pattern is silently ignored, so the field
+        happily accepts "not-a-phone!!!". */}
+    <input
+      type="tel"
+      name="phone"
+      inputmode="tel"
+      autocomplete="tel"
+      pattern="[0-9\s+\-\(\)]{7,}"
+      title="Enter a phone number the clinic can call back on — at least seven digits."
+      required
+    />
+    <small class="dv-request-hint">Digits, spaces, + ( ) and - only</small>
+  </label>
+  <button type="submit">Prepare email request</button>
+  <div class="dv-request-handoff" data-dv-handoff role="status" hidden tabindex="-1">
+    <strong>Review your request.</strong>
+    <span>Check the details, then send from your email app.</span>
+    <a data-dv-email-link href="mailto:info@donardveterinaryclinic.co.uk">
+      Open email draft
+    </a>
+  </div>
+  {/* Editing a field after preparing the draft used to leave the old mailto in
+      place, so a visitor correcting a typo sent the original details. */}
+  <p class="dv-request-stale" data-dv-stale role="status" hidden>
+    Your details changed. Press <strong>Prepare email request</strong> again so
+    the draft matches what you typed.
+  </p>
+  <small>
+    Or call <a href="tel:+442843729414">028 4372 9414</a> to book by phone.
+  </small>
+</form>
+
+<script>
+  const recipient = "info@donardveterinaryclinic.co.uk";
+
+  document.querySelectorAll<HTMLFormElement>("[data-dv-request]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const name = String(data.get("name") ?? "").trim();
+      const pet = String(data.get("pet") ?? "").trim();
+      const day = String(data.get("day") ?? "").trim();
+      const phone = String(data.get("phone") ?? "").trim();
+      const query = new URLSearchParams({
+        subject: `Appointment request for a ${pet.toLowerCase()}`,
+        body: [
+          "Hello Donard Veterinary Clinic,",
+          "",
+          "I would like to request an appointment.",
+          `Name: ${name}`,
+          `Pet: ${pet}`,
+          `Preferred day: ${day}`,
+          `Phone: ${phone}`,
+          "",
+          "Please call me to confirm a suitable time.",
+        ].join("\n"),
+      });
+      const handoff = form.querySelector<HTMLElement>("[data-dv-handoff]");
+      const link = form.querySelector<HTMLAnchorElement>("[data-dv-email-link]");
+      const stale = form.querySelector<HTMLElement>("[data-dv-stale]");
+      if (!handoff || !link) return;
+
+      link.href = `mailto:${recipient}?${query}`;
+      handoff.hidden = false;
+      if (stale) stale.hidden = true;
+      handoff.focus();
+    });
+
+    // A prepared draft is only valid for the values it was built from. Any
+    // later edit withdraws it and says so, rather than leaving a link that
+    // quietly sends superseded details.
+    form.addEventListener("input", () => {
+      const handoff = form.querySelector<HTMLElement>("[data-dv-handoff]");
+      const stale = form.querySelector<HTMLElement>("[data-dv-stale]");
+      if (!handoff || handoff.hidden) return;
+      handoff.hidden = true;
+      if (stale) stale.hidden = false;
+    });
+  });
+</script>

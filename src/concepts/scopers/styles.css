@@ -1,0 +1,865 @@
+/* Scopers — independent concept design system.
+   Cast iron, buttermilk and paprika: a chef-led, zero-waste hot food bar,
+   set in Bricolage Grotesque. Distinct from the Mourne Made brand and from
+   the Castle Farm, Enniskeen, Mourne Cycles, Donard and Bucks Head concepts. */
+
+.concept-scopers {
+  --iron: #26231e;
+  --iron-deep: #191713;
+  --buttermilk: #f7f2e3;
+  --paprika: #b4511d;
+  --kelp: #5c6b3d;
+  --ink-warm: #2a2620;
+  --hairline: rgba(38, 35, 30, 0.16);
+  --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --body: "Work Sans", "Segoe UI", sans-serif;
+  --concept-accent: var(--paprika);
+  /* One photographic voice: the same faint grade on every image so the
+     generated set reads as one shoot rather than six separate generations. */
+  --sc-grade: saturate(1.04) contrast(1.03) brightness(1.01);
+  --concept-nav-gap: clamp(16px, 2.2vw, 28px);
+  background: var(--buttermilk);
+  color: var(--ink-warm);
+  font-family: var(--body);
+}
+
+/* Announcement strip */
+.sc-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px clamp(20px, 3.5vw, 44px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.sc-strip strong { color: #ffffff; font-weight: 600; }
+.sc-strip a { color: #fff; font-weight: 600; }
+
+/* Header */
+.sc-header {
+  height: 80px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  gap: 26px;
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-warm); }
+/* The bar's own badge, used as it is rather than redrawn — owner recognition
+   is worth more than palette obedience. Contained, not clipped: the mark is a
+   pin, and a circular crop would cut its point off. */
+.sc-badge { flex: 0 0 auto; width: 40px; height: 46px; object-fit: contain; }
+.sc-brand-text { display: flex; flex-direction: column; gap: 2px; }
+.sc-brand-name {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.sc-brand-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--paprika);
+}
+.sc-nav a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-warm);
+}
+.sc-nav a:hover::after { right: 0; }
+.sc-book {
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--paprika);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.sc-book:hover { background: var(--iron); transform: translateY(-1px); }
+
+/* Hero */
+.sc-hero {
+  position: relative;
+  /* Everything above the hero: the concept-disclosure banner (56), the
+     announcement strip (38) and the header (80). Subtracting all three keeps
+     the signature rail — now the first food on the screen — inside the fold. */
+  min-height: calc(100vh - 174px);
+  display: grid;
+  grid-template-columns: 57% 43%;
+  grid-template-rows: 1fr auto;
+}
+.sc-story {
+  grid-column: 1;
+  grid-row: 1;
+  padding: clamp(24px, 3.4vh, 44px) clamp(26px, 3.6vw, 56px) 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sc-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--kelp);
+}
+.sc-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--kelp); }
+.sc-story h1 {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 50px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--iron);
+  max-width: 11em;
+}
+.sc-story h1 em {
+  font-style: normal;
+  color: var(--paprika);
+}
+.sc-lede {
+  margin: 0 0 24px;
+  max-width: 32em;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: #59523f;
+}
+.sc-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.sc-cta {
+  padding: 15px 26px;
+  border-radius: 999px;
+  background: var(--iron);
+  color: var(--buttermilk);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.sc-cta:hover { background: var(--paprika); color: #ffffff; transform: translateY(-1px); }
+.sc-link {
+  color: var(--iron);
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--paprika);
+}
+
+/* Supper club card */
+.sc-panel {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px clamp(26px, 3.2vw, 50px);
+}
+.sc-club {
+  width: min(100%, 384px);
+  padding: 20px 24px 20px;
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-radius: 14px;
+  box-shadow: 0 26px 60px rgba(25, 23, 19, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+.sc-club::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border: 1.5px solid rgba(247, 242, 227, 0.18);
+  border-radius: 50%;
+}
+.sc-club::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 88px;
+  height: 88px;
+  border: 1.5px solid rgba(247, 242, 227, 0.14);
+  border-radius: 50%;
+}
+.sc-club-kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-club h2 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #ffffff;
+}
+.sc-club > p { margin: 0 0 14px; font-size: 14px; line-height: 1.6; color: #cfc8b4; }
+.sc-club-meta {
+  margin: 0 0 14px;
+  padding: 11px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(247, 242, 227, 0.07);
+  border-left: 3px solid var(--paprika);
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: var(--buttermilk);
+}
+.sc-club-meta strong { color: #ffffff; font-weight: 600; }
+.sc-club-cta {
+  display: block;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--paprika);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+.sc-club-cta:hover { background: var(--buttermilk); color: var(--iron); }
+.sc-club small { display: block; margin-top: 10px; font-size: 12px; text-align: center; color: #a89f87; }
+
+/* Signature rail — content right-aligned so the fixed concept-disclosure badge
+   in the bottom-left corner never covers a cell */
+.sc-rail {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  background: var(--kelp);
+  padding: 0 clamp(20px, 3.5vw, 44px);
+}
+.sc-rail-cell {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  border-left: 1px solid rgba(247, 242, 227, 0.22);
+}
+.sc-rail-cell:first-child { border-left: 0; }
+.sc-rail-thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  filter: var(--sc-grade);
+}
+.sc-rail-text { display: flex; flex-direction: column; gap: 2px; }
+.sc-dish { font-family: var(--display); font-size: 15px; font-weight: 600; color: #ffffff; }
+.sc-dish-note { font-size: 12px; color: #dfe4cd; }
+
+/* Entrance */
+@keyframes sc-rise { from { opacity: 0; transform: translateY(14px); } }
+.sc-kicker { animation: sc-rise 440ms ease backwards; }
+.sc-story h1 { animation: sc-rise 440ms 70ms ease backwards; }
+.sc-lede { animation: sc-rise 440ms 140ms ease backwards; }
+.sc-actions { animation: sc-rise 440ms 210ms ease backwards; }
+.sc-club { animation: sc-rise 480ms 280ms ease backwards; }
+
+@media (max-width: 940px) {
+  .sc-strip { flex-direction: column; gap: 2px; text-align: center; }
+  /* The nav stays on phones rather than disappearing: this concept is shown
+     to the owner on a handset, and every entry now goes somewhere real. */
+  .sc-header { height: auto; padding-block: 6px; flex-wrap: wrap; row-gap: 4px; }
+  .sc-nav {
+    order: 3;
+    flex: 1 0 100%;
+    gap: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .sc-nav::-webkit-scrollbar { display: none; }
+  .sc-nav a { font-size: 14px; white-space: nowrap; }
+  .sc-hero { grid-template-columns: 1fr; min-height: 0; }
+  .sc-story { grid-column: 1; grid-row: auto; order: 0; padding: 16px 22px 10px; }
+  .sc-story h1 { max-width: none; text-wrap: balance; font-size: clamp(32px, 9vw, 42px); }
+  .sc-lede { margin-bottom: 12px; font-size: 14.5px; line-height: 1.45; }
+  /* Explicit rows — desktop `grid-row: 2` on the rail was jumping it above the club card. */
+  .sc-panel { grid-column: 1; grid-row: auto; order: 1; padding: 0 22px 14px; }
+  .sc-club { padding: 14px 16px; }
+  .sc-club > p:not(.sc-club-meta) { display: none; }
+  .sc-club h2 { font-size: 20px; margin-bottom: 6px; }
+  .sc-club-meta { margin-bottom: 8px; padding: 8px 10px; }
+  .sc-rail {
+    grid-column: 1;
+    grid-row: auto;
+    order: 2;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 8px 22px 12px;
+    gap: 0;
+  }
+  .sc-rail::-webkit-scrollbar { display: none; }
+  .sc-rail-cell {
+    border-left: 1px solid rgba(247, 242, 227, 0.22);
+    flex: 0 0 140px;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+  }
+  .sc-rail-cell:first-child { border-left: 0; }
+  .sc-rail-thumb { width: 48px; height: 48px; }
+}
+
+@media (max-width: 520px) {
+  .sc-header {
+    gap: 10px;
+    padding-inline: 16px;
+  }
+  .sc-brand { gap: 8px; min-width: 0; }
+  .sc-badge { width: 33px; height: 38px; }
+  .sc-brand-sub { display: none; }
+  .sc-book { padding: 10px 13px; font-size: 0; letter-spacing: 0; }
+  .sc-book::before { content: "Supper club"; font-size: 14px; font-weight: 600; }
+  /* Landing: two links only — story and find-us wait for scroll. */
+  .sc-nav a[href="#story"],
+  .sc-nav a[href="#find-us"] { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-kicker, .sc-story h1, .sc-lede, .sc-actions, .sc-club { animation: none; }
+}
+
+/* ─── Below the fold: food, story, find us ───────────────────────────────── */
+
+.sc-h2 {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--iron);
+  max-width: 15em;
+}
+.sc-section-head { max-width: 40em; margin-bottom: clamp(28px, 3.5vh, 44px); }
+.sc-section-lede { margin: 0; font-size: 16.5px; line-height: 1.65; color: #59523f; max-width: 34em; }
+
+/* The food */
+.sc-food {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-dish-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 1.6vw, 26px);
+}
+.sc-dish-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sc-dish-card img {
+  width: 100%;
+  height: clamp(150px, 17vw, 210px);
+  object-fit: cover;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-dish-card figcaption { padding: 16px 18px 18px; }
+.sc-dish-card h3 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--iron);
+}
+.sc-dish-card p { margin: 0; font-size: 14.5px; line-height: 1.55; color: #59523f; }
+.sc-food-foot {
+  margin: clamp(24px, 3vh, 36px) 0 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.sc-provenance { font-size: 13px; line-height: 1.5; color: #7a7060; max-width: 42em; }
+
+/* Our story */
+.sc-storyline {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 480px);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: start;
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-storyline .sc-kicker { color: #d8a06e; }
+.sc-storyline .sc-kicker::before { background: #d8a06e; }
+.sc-storyline .sc-h2 { color: #ffffff; }
+.sc-storyline-copy p { margin: 0 0 16px; font-size: 16.5px; line-height: 1.7; color: #cfc8b4; max-width: 34em; }
+.sc-storyline .sc-link { color: var(--buttermilk); text-decoration-color: var(--paprika); }
+.sc-storyline-figure { margin: 0; }
+.sc-storyline-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  filter: var(--sc-grade);
+}
+.sc-storyline-figure figcaption { margin-top: 10px; font-size: 12.5px; color: #a89f87; }
+
+/* Editorial: one drop cap on the story note only — a page of them is a ransom note. */
+.sc-dropcap::first-letter {
+  float: left;
+  margin: 4px 10px 0 0;
+  font-family: var(--display);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 0.72;
+  color: #d8a06e;
+}
+
+/* Editorial: pull-quote — large enough to stop the eye, always carrying its
+   attribution. A quotation without a source is atmosphere this concept refuses. */
+.sc-pullquote {
+  margin: 28px 0 24px;
+  padding-left: clamp(18px, 2.4vw, 28px);
+  border-left: 2px solid var(--paprika);
+  max-width: 34em;
+}
+.sc-pullquote blockquote {
+  max-width: 18em;
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+.sc-pullquote figcaption {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-pullquote figcaption span {
+  display: block;
+  margin-top: 6px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #a89f87;
+}
+
+/* Find us */
+.sc-find {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--kelp);
+  color: var(--buttermilk);
+}
+.sc-find .sc-kicker { color: rgba(247, 242, 227, 0.75); }
+.sc-find .sc-kicker::before { background: rgba(247, 242, 227, 0.45); }
+.sc-find .sc-h2 { color: #ffffff; }
+.sc-find-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+  margin-top: clamp(20px, 2.6vh, 32px);
+}
+.sc-find-block h3 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(247, 242, 227, 0.7);
+}
+.sc-find-block p { margin: 0 0 12px; font-size: 16px; line-height: 1.6; color: #ffffff; }
+.sc-find .sc-link { color: var(--buttermilk); text-decoration-color: rgba(247, 242, 227, 0.6); }
+
+@media (max-width: 940px) {
+  .sc-dish-grid { grid-template-columns: repeat(2, 1fr); }
+  .sc-storyline { grid-template-columns: 1fr; padding: 44px 22px; }
+  .sc-find-grid { grid-template-columns: 1fr; }
+  .sc-food, .sc-find { padding: 44px 22px; }
+}
+
+@media (max-width: 560px) {
+  .sc-dish-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Supper club night page ─────────────────────────────────────────────── */
+
+/* Outline CTA variant */
+.sc-cta-outline {
+  background: transparent;
+  color: var(--iron);
+  box-shadow: inset 0 0 0 2px var(--iron);
+}
+.sc-cta-outline:hover { background: var(--iron); color: var(--buttermilk); }
+
+/* Night hero band */
+.sc-night-figure {
+  margin: 0;
+  position: relative;
+  background: var(--iron);
+}
+.sc-night-figure img {
+  width: 100%;
+  height: clamp(180px, 30vh, 280px);
+  object-fit: cover;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-night-figure figcaption {
+  padding: 8px clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: #a89f87;
+  font-size: 12.5px;
+}
+
+/* Night hero */
+.sc-night-hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: start;
+  padding: clamp(40px, 5vh, 80px) clamp(26px, 3.6vw, 56px) clamp(48px, 6vh, 88px);
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-night-eyebrow {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: -16px;
+}
+.sc-night-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: var(--paprika);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.sc-night-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kelp);
+  letter-spacing: 0.04em;
+}
+.sc-night-title {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 68px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--iron);
+}
+.sc-night-title em {
+  font-style: normal;
+  color: var(--paprika);
+}
+.sc-night-lede {
+  margin: 0 0 28px;
+  max-width: 34em;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #59523f;
+}
+.sc-night-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+/* Details card — right column */
+.sc-night-card {
+  grid-row: 2 / 5;
+  grid-column: 2;
+  padding: 24px 24px 20px;
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-radius: 14px;
+  box-shadow: 0 26px 60px rgba(25, 23, 19, 0.30);
+  position: relative;
+  overflow: hidden;
+}
+.sc-night-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 160px;
+  height: 160px;
+  border: 1.5px solid rgba(247, 242, 227, 0.15);
+  border-radius: 50%;
+}
+.sc-night-card-label {
+  margin: 0 0 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-night-details {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sc-night-details li {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(247, 242, 227, 0.1);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.sc-night-details li:last-child { border-bottom: 0; }
+.sc-detail-key {
+  font-weight: 600;
+  color: #a89f87;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 1px;
+}
+.sc-detail-val { color: var(--buttermilk); }
+.sc-night-card-cta {
+  display: block;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--paprika);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+.sc-night-card-cta:hover { background: var(--buttermilk); color: var(--iron); }
+.sc-night-card-note {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #a89f87;
+}
+
+/* Philosophy + course list */
+.sc-night-philosophy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-night-phil-inner {
+  padding: clamp(48px, 6vh, 80px) clamp(26px, 3.6vw, 56px);
+  border-right: 1px solid var(--hairline);
+}
+.sc-night-phil-h2 {
+  margin: 0 0 22px;
+  font-family: var(--display);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--iron);
+  max-width: 14em;
+}
+.sc-night-phil-body p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #59523f;
+  margin: 0 0 14px;
+  max-width: 34em;
+}
+.sc-night-phil-body p:last-child { margin: 0; }
+.sc-night-course-list {
+  padding: clamp(48px, 6vh, 80px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: var(--buttermilk);
+}
+.sc-night-course-label {
+  margin: 0 0 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-night-course-list ol {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  counter-reset: course;
+}
+.sc-night-course-list ol li {
+  counter-increment: course;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(247, 242, 227, 0.1);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.sc-night-course-list ol li:last-child { border-bottom: 0; }
+.sc-night-course-list ol li::before {
+  content: counter(course, decimal-leading-zero);
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--paprika);
+  letter-spacing: 0.04em;
+}
+.sc-night-course-list ol li span { color: #cfc8b4; }
+.sc-night-course-note {
+  margin: 0;
+  font-size: 12.5px;
+  color: #7a7060;
+  font-style: italic;
+}
+
+/* Booking section */
+.sc-night-book-section {
+  padding: clamp(48px, 6vh, 80px) clamp(26px, 3.6vw, 56px);
+  background: var(--kelp);
+  color: var(--buttermilk);
+}
+.sc-night-book-section .sc-kicker { color: rgba(247, 242, 227, 0.7); }
+.sc-night-book-section .sc-kicker::before { background: rgba(247, 242, 227, 0.4); }
+.sc-night-book-inner {
+  max-width: 620px;
+  margin-bottom: 36px;
+}
+.sc-night-book-h2 {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+.sc-night-book-copy {
+  margin: 0 0 28px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(247, 242, 227, 0.85);
+}
+.sc-night-book-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.sc-night-book-section .sc-cta {
+  background: var(--paprika);
+  color: #ffffff;
+}
+.sc-night-book-section .sc-cta:hover { background: var(--iron); }
+.sc-night-book-section .sc-cta-outline {
+  background: transparent;
+  color: var(--buttermilk);
+  box-shadow: inset 0 0 0 2px rgba(247, 242, 227, 0.5);
+}
+.sc-night-book-section .sc-cta-outline:hover {
+  background: rgba(247, 242, 227, 0.12);
+  box-shadow: inset 0 0 0 2px rgba(247, 242, 227, 0.7);
+  color: #ffffff;
+}
+.sc-night-book-meta {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(247, 242, 227, 0.65);
+}
+.sc-night-book-meta strong { color: rgba(247, 242, 227, 0.9); }
+.sc-night-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(247, 242, 227, 0.6);
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 140ms ease;
+}
+.sc-night-back:hover { color: var(--buttermilk); text-decoration: underline; }
+
+/* Night page entrance animations */
+@keyframes sc-night-rise { from { opacity: 0; transform: translateY(18px); } }
+.sc-night-eyebrow { animation: sc-night-rise 420ms ease backwards; }
+.sc-night-title { animation: sc-night-rise 420ms 60ms ease backwards; }
+.sc-night-lede { animation: sc-night-rise 420ms 120ms ease backwards; }
+.sc-night-actions { animation: sc-night-rise 420ms 180ms ease backwards; }
+.sc-night-card { animation: sc-night-rise 480ms 240ms ease backwards; }
+
+/* Night page responsive */
+@media (max-width: 940px) {
+  .sc-night-hero {
+    grid-template-columns: 1fr;
+    padding: 32px 22px 40px;
+    gap: 28px;
+  }
+  .sc-night-eyebrow { grid-column: 1; margin-bottom: 0; }
+  .sc-night-card { grid-row: auto; grid-column: 1; }
+  .sc-night-philosophy { grid-template-columns: 1fr; }
+  .sc-night-phil-inner { border-right: 0; border-bottom: 1px solid var(--hairline); padding: 40px 22px; }
+  .sc-night-course-list { padding: 40px 22px; }
+  .sc-night-book-section { padding: 48px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-night-eyebrow, .sc-night-title, .sc-night-lede, .sc-night-actions, .sc-night-card { animation: none; }
+}
