@@ -1,0 +1,118 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+// The practice trades under its own name but its domain currently hands patients
+// to a group page. Keep that diagnosis in the case study; the proposed page
+// should speak to patients about the practice, not criticise its current setup.
+const team = [
+  { name: "Dr David Knowles", cred: "BDS QUB 2014" },
+  { name: "Dr Rebecca McCarey", cred: "BDS QUB 2014" },
+  { name: "Dr Daniel Sandford", cred: "Odontología UCV 2023" },
+];
+// From the practice's Newcastle page (24 July 2026): new-patient nav, private
+// appointments, and the Family & General Dentistry heading — not a treatment list.
+const care = ["New patients", "Private appointments", "Family & general dentistry", "Mon–Fri 9–5"];
+---
+
+<ConceptLayout
+  title={"Newcastle Family Dental Care — independent concept"}
+  slug="newcastle-dental"
+  bodyClass="concept-page concept-dental"
+  businessName="Newcastle Family Dental Care"
+  town="Newcastle"
+>
+  <div class="nd-strip">
+    <span>Iveagh Court, 2 Railway Street, Newcastle · Mon–Fri 9–5</span>
+    <span class="nd-strip-r"><a href="tel:+442843723776">028 4372 3776</a></span>
+  </div>
+
+  <header class="nd-header">
+    <a class="nd-brand" href="/concepts/newcastle-dental/">
+      <span class="nd-brand-mark" aria-hidden="true">
+        <svg width="26" height="30" viewBox="0 0 26 30" fill="none">
+          <path d="M13 3C8 1 2 3 2 10c0 6 2 9 3 13 1 3 3 4 4 1l3-8h2l3 8c1 3 3 2 4-1 1-4 3-7 3-13 0-7-6-9-11-7Z" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        </svg>
+      </span>
+      <span class="nd-brand-text">
+        <span class="nd-brand-name">Newcastle Family Dental Care</span>
+        <span class="nd-brand-sub">2 Railway Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="nd-nav" aria-label="Concept navigation">
+      <a href="#" data-concept-placeholder>The practice</a><a href="#" data-concept-placeholder>Treatments</a><a href="#" data-concept-placeholder>Register</a><a href="#" data-concept-placeholder>Contact</a>
+    </nav>
+    <a class="nd-book" href="#" data-concept-placeholder>Request a visit</a>
+  </header>
+
+  <main class="nd-main">
+    <section class="nd-lede">
+      <!-- The secure address bar makes the proposed patient route visible
+           without turning the current-site diagnosis into customer-facing copy. -->
+      <div class="nd-urlbar" aria-label="Secure address">
+        <span class="nd-lock" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="2" y="6" width="9" height="6" rx="1.2" fill="currentColor"/>
+            <path d="M4 6V4.2a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.3" fill="none"/>
+          </svg>
+        </span>
+        <span class="nd-url">https://<strong>newcastlefamilydentalcare.co.uk</strong></span>
+        <span class="nd-url-tag">Secure connection</span>
+      </div>
+
+      <p class="nd-eyebrow">A family practice on Railway Street</p>
+      <h1>Your family dentist,<br /><em>close to home.</em></h1>
+      <p class="nd-body">
+        Three dentists, private appointments, and a calm room on Railway Street.
+        Register or request an appointment securely, and the Newcastle team will
+        ring back to confirm a time.
+      </p>
+
+      <ul class="nd-care">
+        {care.map((item) => <li>{item}</li>)}
+      </ul>
+
+      <div class="nd-team">
+        {team.map((person) => (
+          <article class="nd-member">
+            <span class="nd-member-initial" aria-hidden="true">{person.name.split(" ").slice(-1)[0][0]}</span>
+            <span class="nd-member-text">
+              <span class="nd-member-name">{person.name}</span>
+              <span class="nd-member-cred">{person.cred}</span>
+            </span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <aside class="nd-request" aria-labelledby="nd-request-title">
+      <h2 id="nd-request-title">Request an appointment</h2>
+      <p class="nd-request-sub">We'll ring back to confirm a time. No details shared off-site.</p>
+
+      <div class="nd-field">
+        <label for="nd-who">Your name</label>
+        <input id="nd-who" type="text" autocomplete="name" placeholder="First and last" />
+      </div>
+      <div class="nd-field">
+        <label for="nd-tel">Best number</label>
+        <input id="nd-tel" type="tel" autocomplete="tel" placeholder="Mobile or landline" />
+      </div>
+      <fieldset class="nd-field nd-field--choice">
+        <legend>Reason</legend>
+        <label><input type="radio" name="nd-reason" checked /> <span>Register</span></label>
+        <label><input type="radio" name="nd-reason" /> <span>Check-up</span></label>
+        <label><input type="radio" name="nd-reason" /> <span>In pain</span></label>
+      </fieldset>
+
+      <a class="nd-submit" href="#" data-concept-placeholder>Send request securely</a>
+
+      <p class="nd-request-foot">
+        <span class="nd-lock nd-lock--foot" aria-hidden="true">
+          <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><rect x="2" y="6" width="9" height="6" rx="1.2" fill="currentColor"/><path d="M4 6V4.2a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+        </span>
+        Sent over HTTPS. In an emergency out of hours, call 111.
+      </p>
+    </aside>
+  </main>
+</ConceptLayout>

@@ -11,18 +11,18 @@ decisions before the next recapture wave.
 **Git LFS and external object stores were rejected.** The masters that must not
 ship are reference photographs held for outreach and future faithful
 visualisations. They are few, change rarely, and must never deploy. Keeping them
-on disk under `research/concept-reviews/evidence/`, which is listed in
+on disk under `research/evidence/`, which is listed in
 `.gitignore`, is enough: local checkout carries them, CI and deploys never see
 them, and `pnpm optimize:media` regenerates any `public/` derivatives from the
 masters when needed.
 
 Derivative generation stays reproducible: committed JPEG/MP4 masters in
-`public/` plus `scripts/optimize-public-media.mjs`.
+`public/` plus `tools/media/optimize-public-media.mjs`.
 
 ## History purge — decided and executed 31 July 2026
 
 **Purged from every commit** with `git filter-repo` (see
-`scripts/purge-sensitive-git-history.sh`):
+`tools/purge-sensitive-git-history.sh`):
 
 - `public/audits/concept-imagery-audit.html` — internal audit that reached
   production once.
@@ -30,9 +30,9 @@ Derivative generation stays reproducible: committed JPEG/MP4 masters in
   Enniskeen (19), Castle Farm box, Buck's Head hearth — including their
   `-640.webp` and `-1265.webp` derivatives.
 - The same masters after they were mistakenly committed under
-  `research/concept-reviews/evidence/` in the deploy-boundary pass; evidence
+  `research/evidence/` in the deploy-boundary pass; evidence
   must remain git-ignored.
-- `src/data/businesses.json` and `research/verifications.json` — named
+- `src/site/data/businesses.json` and `research/pipeline/verifications.json` — named
   businesses, phones, emails and candid pipeline scores. The repo is private
   since 23 July 2026, but history was public until that day.
 
@@ -54,6 +54,6 @@ new clones and Git hosting from carrying the old blobs forward.
   of the rewritten `master`.
 - New evidence masters are added only on disk under the git-ignored tree; never
   `git add -f`.
-- `research/concept-reviews/image-provenance.md` records held paths; the audit
-  HTML at `research/concept-reviews/audits/` resolves held images from
+- `research/image-provenance.md` records held paths; the audit
+  HTML at `research/audits/` resolves held images from
   `../evidence/`.

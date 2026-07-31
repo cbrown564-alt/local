@@ -1,18 +1,18 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import BeforeAfter from "../../components/BeforeAfter.astro";
-import MotionCompare from "../../components/MotionCompare.astro";
-import ReelPlayer from "../../components/ReelPlayer.astro";
-import JourneyCase from "../../components/JourneyCase.astro";
-import Disclosure from "../../components/Disclosure.astro";
-import ArrowIcon from "../../components/ArrowIcon.astro";
-import DesignNotes from "../../components/DesignNotes.astro";
-import TransformationNav from "../../components/TransformationNav.astro";
-import { transformations, type Transformation } from "../../data/transformations";
+import BaseLayout from "../../site/layouts/BaseLayout.astro";
+import BeforeAfter from "../../site/components/BeforeAfter.astro";
+import MotionCompare from "../../site/components/MotionCompare.astro";
+import ReelPlayer from "../../site/components/ReelPlayer.astro";
+import JourneyCase from "../../site/components/JourneyCase.astro";
+import Disclosure from "../../site/components/Disclosure.astro";
+import ArrowIcon from "../../site/components/ArrowIcon.astro";
+import DesignNotes from "../../site/components/DesignNotes.astro";
+import TransformationNav from "../../site/components/TransformationNav.astro";
+import { transformations, type Transformation } from "../../site/data/transformations";
 import {
   transformationDetails,
   type TransformationDetail,
-} from "../../data/transformation-details";
+} from "../../site/data/transformation-details";
 
 export function getStaticPaths() {
   const details: Record<string, TransformationDetail> = transformationDetails;
@@ -36,9 +36,9 @@ const motion = detail.motion;
 const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&town=${encodeURIComponent(transformation.town)}&source=transformation`;
 const responsiveImages = (html: string) =>
   html.replace(
-    /<img(\s+[^>]*?)src="(\/images\/([^"]+)\.jpg)"([^>]*?)\/?>/g,
-    (_match, before, source, stem, after) =>
-      `<picture class="responsive-content-picture"><source type="image/webp" srcset="/images/${stem}-640.webp 640w, /images/${stem}-1265.webp 1265w" sizes="(max-width: 720px) 100vw, 1180px"><img${before}src="${source}"${after}></picture>`,
+    /<img(\s+[^>]*?)src="((\/media\/(?:concepts\/[^/]+|place)\/)([^"]+))\.jpg"([^>]*?)\/?>/g,
+    (_match, before, source, dir, stem, after) =>
+      `<picture class="responsive-content-picture"><source type="image/webp" srcset="${dir}${stem}-640.webp 640w, ${dir}${stem}-1265.webp 1265w" sizes="(max-width: 720px) 100vw, 1180px"><img${before}src="${source}.jpg"${after}></picture>`,
   );
 const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
 ---

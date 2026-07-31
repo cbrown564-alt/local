@@ -1,0 +1,48 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number | string;
+  height: number | string;
+  class?: string;
+  pictureClass?: string;
+  loading?: "eager" | "lazy";
+  sizes?: string;
+  draggable?: boolean;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className,
+  pictureClass,
+  loading = "lazy",
+  sizes = "(max-width: 720px) 100vw, 1265px",
+  draggable,
+} = Astro.props;
+const base = src.replace(/\.[^/.]+$/, "");
+const supportsGeneratedWebp = /^\/media\/.+\.(?:jpe?g)$/i.test(src);
+---
+
+<picture class={pictureClass}>
+  {supportsGeneratedWebp && (
+    <source
+      type="image/webp"
+      srcset={`${base}-640.webp 640w, ${base}-1265.webp 1265w`}
+      sizes={sizes}
+    />
+  )}
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    decoding="async"
+    fetchpriority={loading === "eager" ? "high" : "auto"}
+    draggable={draggable}
+  />
+</picture>

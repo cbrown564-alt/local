@@ -1,0 +1,81 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+const resdiary = "https://booking.resdiary.com/widget/Standard/TheBucksHeadRestaurantwithRooms/50459";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+---
+
+<ConceptLayout
+  title={"The Bucks Head — independent concept"}
+  slug="bucks-head"
+  bodyClass="concept-page concept-bucks-head"
+  lang="en-GB"
+  bannerNote="Hearth imagery is AI-generated."
+>
+<div class="bh-strip">
+      <span>Thurs 12–2:30 &amp; 5:30–8 · Fri–Sat 12–2:30 &amp; 5:30–9 · Sun 12:30–7:30 · <a href="tel:+442843751868">028 4375 1868</a></span>
+      <span class="bh-strip-note">Rooms reopening after refurbishment</span>
+    </div>
+    <header class="bh-header">
+      <a class="bh-brand" href="/concepts/bucks-head/">
+        <svg class="bh-antlers" width="50" height="44" viewBox="0 0 50 44" fill="none" aria-hidden="true">
+          <path d="M21 42 C21 31 19 24 14 17.5 C11 13.5 9.5 9 10 3.5 M14 17.5 C14 21 15.5 24 18.5 26.5 M12 11.5 C9.5 10.5 7 8 6.5 4.5 M29 42 C29 31 31 24 36 17.5 C39 13.5 40.5 9 40 3.5 M36 17.5 C36 21 34.5 24 31.5 26.5 M38 11.5 C40.5 10.5 43 8 43.5 4.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+        </svg>
+        <span class="bh-brand-text">
+          <span class="bh-brand-name">The Bucks Head</span>
+          <span class="bh-brand-sub">Restaurant + Rooms</span>
+        </span>
+      </a>
+      <nav class="bh-nav" aria-label="Concept navigation">
+        <a href="/concepts/bucks-head/menus/">Menus</a>
+      </nav>
+      <a class="bh-book" href={resdiary}>Book a table</a>
+    </header>
+    <main class="bh-hero">
+      <section class="bh-story">
+        <p class="bh-kicker">The Buck's Head · Main Street, Dundrum</p>
+        <h1>Old charm, modern flare <em>from the pass to your plate.</em></h1>
+        <p class="bh-lede">
+          Bronagh McCormick and chef Alex Greene keep the Front Bar's stove warm, with
+          the Main Restaurant's open kitchen in view.
+        </p>
+        <div class="bh-actions">
+          <a class="bh-cta" href={resdiary}>Book a table</a>
+          <a class="bh-link" href="/concepts/bucks-head/menus/">This week's menus →</a>
+        </div>
+      </section>
+      <aside class="bh-panel">
+        <ResponsiveImage pictureClass="concept-responsive-picture" src="/media/concepts/bucks-head/bucks-head-faithful-hearth.png" alt="The restaurant's rounded arch, brick chimney, antlers and wood-burning stove" width="1024" height="1638" loading="eager" />
+        {/*
+          Only `date` and `partySize` are sent: hand-testing the pub's own
+          ResDiary Standard widget on 23 July 2026 showed it honours those two
+          and ignores every time parameter tried (time, timeSlot, bookingTime)
+          along with covers/party/guests. Asking for a time here would be
+          theatre — the widget picks the day's first free slot regardless — so
+          the card asks only what genuinely carries through, and the guest
+          chooses their time on ResDiary's own screen.
+        */}
+        <form class="bh-booking" action={resdiary} method="get" aria-label="Book a table">
+          <h2>Book a table</h2>
+          <p>Choose your date and party. The times free that day appear next.</p>
+          <div class="bh-booking-row">
+            <label>Date <input type="date" name="date" required /></label>
+            <label>Party of
+              <select name="partySize"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+            </label>
+          </div>
+          <button type="submit">Check availability</button>
+          <small>Parties of up to 8 · or call <a href="tel:+442843751868">028 4375 1868</a></small>
+        </form>
+      </aside>
+      <nav class="bh-rail" aria-label="Menus">
+        <span class="bh-rail-label">The menus</span>
+        <a class="bh-menu" href="/concepts/bucks-head/menus/#panel-alacarte">À la carte <span>evenings</span></a>
+        <a class="bh-menu" href="/concepts/bucks-head/menus/#panel-bar">Bar menu <span>Front Bar</span></a>
+        <a class="bh-menu" href="/concepts/bucks-head/menus/#panel-sunday">Sunday <span>12:30–7:30</span></a>
+        <a class="bh-menu" href="/concepts/bucks-head/menus/#panel-dessert">Dessert <span>from the pass</span></a>
+        <a class="bh-menu" href="/concepts/bucks-head/menus/#panel-drinks">Drinks <span>cellar &amp; bar</span></a>
+      </nav>
+    </main>
+</ConceptLayout>

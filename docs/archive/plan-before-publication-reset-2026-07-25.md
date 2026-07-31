@@ -21,7 +21,7 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 
 - Concept page at `/concepts/<slug>/` with its own scoped stylesheet
 - Transformation page at `/transformations/<slug>/` with matched 1265×710 captures, three design notes, and independent-concept disclosure
-- Registered in `src/data/transformations.ts`, capture script `CONCEPTS` map, `research/verifications.json` (stage → Concept published), and `PROSPECTS.md`
+- Registered in `src/site/data/transformations.ts`, capture script `CONCEPTS` map, `research/pipeline/verifications.json` (stage → Concept published), and `PROSPECTS.md`
 - Re-read live public presence the day of build; leave cookie/login walls visible on first-website “current” captures
 
 **Exit criteria met 22 July 2026** for all three landings above.
@@ -42,9 +42,9 @@ Complete the opening-screen concept for each remaining shortlisted prospect, usi
 |---|---|
 | Second concept route | `/concepts/<slug>/<asset>/` → `src/pages/concepts/<slug>/<asset>.astro` |
 | Styles | Extend the existing `concept-<slug>.css` with the same class prefix — do not invent a second identity |
-| Captures | `node scripts/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-after.jpg` (+ optional `-before.jpg` when a real before exists) |
+| Captures | `node tools/capture/capture-concept-screens.mjs <slug>/<asset>` → `public/images/<slug>-<asset>-after.jpg` (+ optional `-before.jpg` when a real before exists) |
 | Transformation page | After the opening comparison, a `.second-surface` block: either a second `BeforeAfter` with `showNotes={false}`, or a labelled companion still |
-| Docs | Note which asset shipped in `PROSPECTS.md` + `research/verifications.json` |
+| Docs | Note which asset shipped in `PROSPECTS.md` + `research/pipeline/verifications.json` |
 
 Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-veterinary/appointments`, `bucks-head/menus`, `scopers/supper-club`, `cupla/menu`, `tool-centre/hire-list`, `kent-amusements/attractions`, `newcastle-chamber/members`.
 
@@ -91,8 +91,8 @@ Working asset routes: `hotel-enniskeen/rooms`, `mourne-cycles/hire`, `donard-vet
 dropdown, a hover state or how fast a visitor reaches the main action — exactly
 what the concepts improve. Every transformation now carries a paired
 ~10-second demo clip beneath the still slider (`MotionCompare.astro`), captured
-by the same script as the stills (`scripts/capture-concept-media.mjs`, see
-`MEDIA_CAPTURE.md`).
+by the same script as the stills (`tools/capture/capture-concept-media.mjs`, see
+`docs/MEDIA_CAPTURE.md`).
 
 - **Real-website concepts** (castle-farm, hotel-enniskeen, mourne-cycles,
   donard-veterinary, bucks-head): paired before + after clips.
@@ -109,8 +109,8 @@ by the same script as the stills (`scripts/capture-concept-media.mjs`, see
 ## Milestone F — Flagship case studies ✅ complete locally (F1 23 July, F2 24 July 2026)
 
 Two deep case studies that lead the outreach wave, planned in full in
-`research/enniskeen-flagship-plan.md` (F1) and
-`research/bucks-head-journey-plan.md` (F2). F1 built and verified the shared
+`research/concepts/hotel-enniskeen/enniskeen-flagship-plan.md` (F1) and
+`research/concepts/bucks-head/bucks-head-journey-plan.md` (F2). F1 built and verified the shared
 infrastructure locally (reel capture mode, title cards, `ReelPlayer`, print
 one-sheet pipeline); F2 reused all of it and added a journey mode — a phone-size
 step vocabulary shared by a build-day audit and the film, so a published tap
@@ -125,7 +125,7 @@ working prototypes; neither has been sent or promoted.
 Decision record, phases, gates, risks and estimates live in the two plan
 documents. Hard gates shared by both: day-of-build re-verification (both
 targets have changed their sites mid-build before), and no pitch leaves the
-building until the P1 pair in REVIEW.md clears (domain resolves, form
+building until the P1 pair in docs/REVIEW.md clears (domain resolves, form
 delivers).
 
 ---
@@ -133,7 +133,7 @@ delivers).
 ## Phase Q — Concept review gate and portfolio requalification ✅
 
 **Completed 24 July 2026; standard corrected to v1.1 and proved through one
-complete review-repair-re-review cycle. Work mode: Promote.** `CONCEPT_DESIGN_REVIEW.md` sets the minimum
+complete review-repair-re-review cycle. Work mode: Promote.** `docs/CONCEPT_DESIGN_REVIEW.md` sets the minimum
 standard for every public concept. A concept passes only when one independent
 non-creator reviewer directly inspects one bounded, complete visitor loop, the
 weighted score is at least 7.0, the four core categories score at least 7.0,
@@ -159,11 +159,11 @@ truthful, not because any historical concept was validated.
 
 | Concern | Owner |
 |---|---|
-| Rubric, review process, appeals, repair limit and calibration | `CONCEPT_DESIGN_REVIEW.md` |
+| Rubric, review process, appeals, repair limit and calibration | `docs/CONCEPT_DESIGN_REVIEW.md` |
 | Prospect stage and review hold | `PROSPECTS.md` |
-| Compact committed release decisions | `research/concept-reviews/releases.json` |
-| Private detailed evidence | Git-ignored `research/concept-reviews/<slug>.md` and `research/concept-reviews/evidence/` |
-| Public transformation membership | `src/data/transformations.ts` |
+| Compact committed release decisions | `research/releases.json` |
+| Private detailed evidence | Git-ignored `research/<slug>.md` and `research/evidence/` |
+| Public transformation membership | `src/site/data/transformations.ts` |
 | Phase status and next action | `PLAN.md` |
 
 ### Q1 — Enforce the release rule ✅
@@ -173,8 +173,8 @@ Build the smallest repository check that makes the standard unavoidable:
 1. Define the compact release-data schema: slug, status, reviewed source
    fingerprint, reviewer, design-gate and public-release-condition booleans,
    seven category scores, weighted score, review date and `truthCheckedAt`.
-2. Add `scripts/check-concept-reviews.mjs`. It compares every slug in
-   `src/data/transformations.ts` with `research/concept-reviews/releases.json`
+2. Add `tools/check-concept-reviews.mjs`. It compares every slug in
+   `src/site/data/transformations.ts` with `research/releases.json`
    and fails when a record is missing or not Pass, a release condition is
    false, a core category is below 7.0, a supporting category is below 6.0,
    the weighted score is below 7.0, the truth check is more than 90 days old,
@@ -191,7 +191,7 @@ records to make the first check green.
 ### Q2 — Triage the existing public portfolio ✅
 
 Run release-readiness triage across every slug currently exposed through
-`src/data/transformations.ts`, then score the design separately.
+`src/site/data/transformations.ts`, then score the design separately.
 
 - Check fresh verification, respectful current capture, claims and asset
   rights, independent-concept safeguards, one real visitor loop, subject proof,
@@ -285,7 +285,7 @@ categories. An overdue concept leaves public transformations until refreshed.
 
 - `pnpm build` runs the release check and fails against a deliberately invalid
   fixture or temporary record
-- Every slug in `src/data/transformations.ts` has a current Pass with all
+- Every slug in `src/site/data/transformations.ts` has a current Pass with all
   release conditions true, core category scores at least 7.0, supporting
   category scores at least 6.0, weighted score at least 7.0, a
   matching material source fingerprint and `truthCheckedAt` no more than 90
@@ -305,10 +305,10 @@ categories. An overdue concept leaves public transformations until refreshed.
 
 - `pnpm build` runs the release checker before Astro and passes with zero
   public members; it fails closed against
-  `scripts/fixtures/concept-reviews-invalid.json`
+  `tools/fixtures/concept-reviews-invalid.json`
 - the focused self-test rejects false gates, sub-7 scores, stale truth data and
   a changed source fingerprint
-- `src/data/transformations.ts` keeps internal candidates separate from the
+- `src/site/data/transformations.ts` keeps internal candidates separate from the
   empty `publicTransformationSlugs` list, so no unreviewed detail route is built
 - the homepage and `/transformations/` review states were directly checked at
   1265×710 and 390×844 with no horizontal overflow, no portfolio cards and no
@@ -375,7 +375,7 @@ back until the opener has been said out loud three or four times.
 | The Buck's Head | Landing + M2 menus + F2 journey case | F2 landed, so the sheet can carry the journey comparison. M3 was explicitly decoupled from F2 and would have shipped without it |
 | Scopers | Landing + M2 supper club | No pitch document yet |
 | Cúpla | Landing + M2 bilingual menu | No pitch document yet |
-| Castle Farm | Landing (predates the pipeline) | **Verify first.** No record in `research/verifications.json`: no stage, no dated evidence, no design task. Bring it into the pipeline properly, or refresh/retire the public transformation |
+| Castle Farm | Landing (predates the pipeline) | **Verify first.** No record in `research/pipeline/verifications.json`: no stage, no dated evidence, no design task. Bring it into the pipeline properly, or refresh/retire the public transformation |
 
 Batch two is Newcastle, led by Hotel Enniskeen with the F1 film and one-sheet
 already built.
@@ -386,15 +386,15 @@ already built.
 |---|---|
 | Print route | Dev-only under `src/workbench/print/`, injected in `astro.config.mjs`; never in a production build |
 | Styles | `src/styles/onesheet.css` — studio chrome, not the business's identity. A one-sheet is *from* Mourne Made; only the comparison imagery is the business's |
-| PDF | `node scripts/print-onesheet.mjs <slug>` → headless Chrome print-to-PDF with a page-count assertion |
-| Ask | **Claim**, not request — see `CONTEXT.md`. The recipient already holds their before-and-after and cannot meaningfully request one. Applies to **every** one-sheet recipient in both batches; Enniskeen does not revert to the request framing once the conversation is learned, because the reason is structural, not a lack of practice |
-| CTA branch | A transformation page arriving with a `source=onesheet-*` parameter knows it is being read by its subject and swaps to the claim CTA; reached any other way it keeps the stranger's request CTA. Builds REVIEW.md bold idea 1 |
+| PDF | `node tools/print/print-onesheet.mjs <slug>` → headless Chrome print-to-PDF with a page-count assertion |
+| Ask | **Claim**, not request — see `docs/CONTEXT.md`. The recipient already holds their before-and-after and cannot meaningfully request one. Applies to **every** one-sheet recipient in both batches; Enniskeen does not revert to the request framing once the conversation is learned, because the reason is structural, not a lack of practice |
+| CTA branch | A transformation page arriving with a `source=onesheet-*` parameter knows it is being read by its subject and swaps to the claim CTA; reached any other way it keeps the stranger's request CTA. Builds docs/REVIEW.md bold idea 1 |
 | QR | `/transformations/<slug>/?source=onesheet-<slug>` — see [ADR 0002](docs/adr/0002-printed-qr-attribution-contract.md) |
 
 **Build the first sheets by hand; do not extract a template yet.** Three or
 four real sheets will teach the right abstraction; one will not. This is a
 deliberate deviation from the `transformation-details.ts` + `[slug].astro`
-pattern that REVIEW.md P3 applied to comparison pages — resist "fixing" it
+pattern that docs/REVIEW.md P3 applied to comparison pages — resist "fixing" it
 early. Extract once batch one is printed and the shape has stopped moving.
 
 ### Print production
@@ -450,7 +450,7 @@ The `/request/` flow posts through `/api/request` to the configured inbox. Befor
 ## Milestone 5 — First outreach wave
 
 Only after Phase Q and Milestones 1–4. Move passing published concepts through
-**Contacted → Mock-up requested** in `research/verifications.json`.
+**Contacted → Mock-up requested** in `research/pipeline/verifications.json`.
 
 ### Order of operations
 
@@ -516,7 +516,7 @@ Prototypes retained for comparison.
   passes outstanding, counting Castle Farm's carried-over cleanup. Sequenced
   after M3/M4 — outreach on batch one should teach the conversation before the
   pipeline widens. Prerequisite for a batch three: extend the alias table in
-  `scripts/normalize-businesses.mjs` so name-variant duplicates stop producing
+  `tools/pipeline/normalize-businesses.mjs` so name-variant duplicates stop producing
   false-highs.
 - Census refresh (OSM + Maps) for a batch-three round via the select → verify → normalise → build → record cycle
 - Feature-upgrade cases (booking capability for recent rebuilds such as Dacara / Conlyn)

@@ -1,8 +1,8 @@
 # Prospects
 
 Human-readable summary of the Mourne Made concept pipeline. The detailed source
-of truth is `research/verifications.json`; regenerate `src/data/businesses.json`
-with `node scripts/normalize-businesses.mjs` after changing it.
+of truth is `research/pipeline/verifications.json`; regenerate `src/site/data/businesses.json`
+with `node tools/pipeline/normalize-businesses.mjs` after changing it.
 
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
@@ -23,15 +23,15 @@ is planned. A local route alone does not change a stage.
 **Held** is not a stage. It is a flag laid over whatever stage a business has
 reached, recording that it must not be published or contacted until a named
 condition is met. A held business keeps its real stage in
-`research/verifications.json`.
+`research/pipeline/verifications.json`.
 
 Before publishing a concept:
 
 - verify the business and material claims;
-- answer the five checks in `CONCEPT_DESIGN_REVIEW.md`;
-- add a Publish record to `research/concept-reviews/publication.json`;
+- answer the five checks in `docs/CONCEPT_DESIGN_REVIEW.md`;
+- add a Publish record to `research/publication.json`;
 - add the slug to `publicTransformationSlugs`;
-- update the stage here and in `research/verifications.json`.
+- update the stage here and in `research/pipeline/verifications.json`.
 
 ## Active next prospect
 
@@ -40,9 +40,9 @@ Before publishing a concept:
 | Painted Earth | Newcastle | Shortlisted | Internal representative prototype: existing live filters preserved; product and occasion routes lead, place remains optional, and the original-art loop exposes collection/shipping terms and sold-work recovery |
 
 The concept is planned in
-[`research/painted-earth-concept-plan.md`](research/painted-earth-concept-plan.md)
+[`research/concepts/painted-earth/painted-earth-concept-plan.md`](research/concepts/painted-earth/painted-earth-concept-plan.md)
 (updated after the 27 July 2026 build-day re-check), with its dated catalogue
-evidence in `research/painted-earth-catalogue-2026-07-26.json`. The internal
+evidence in `research/concepts/painted-earth/painted-earth-catalogue-2026-07-26.json`. The internal
 noindex prototype is implemented at `/concepts/painted-earth/`; it has not
 passed publication review and is not part of the public transformation list.
 
@@ -105,7 +105,7 @@ identity blocker is repaired and all five publication checks pass again.
 
 Both were unpublished on 26 July 2026 and retired outright on 27 July 2026. The
 concept pages, styles and media are deleted; the verification records and the
-triage records in `research/concept-reviews/triage/` are kept, and they carry
+triage records in `research/triage/` are kept, and they carry
 the full reasoning. Neither is a candidate for republication.
 
 ### Tonn Ruray Café · Dundrum
@@ -132,7 +132,7 @@ The capture we published shows the homepage opening on the café shopfront with
 `EAT` first in the navigation, and no apartments or rates anywhere in the
 captured scroll. The first of the three case-study notes rested entirely on that
 claim. This is a fourth false sourcing claim of the class corrected on 26 July,
-and that sweep did not catch it. `research/verifications.json` now records the
+and that sweep did not catch it. `research/pipeline/verifications.json` now records the
 apartment-first reading as contradicted.
 
 ### Groves Chemist · Dundrum and Killough
@@ -146,7 +146,7 @@ switched off*, which presumes they want it back. The evidence establishes only
 that it stopped, and not whether they opted out, let it lapse, or had it retired
 for them. Offering to rebuild it is offering work they have already declined.
 
-The pharmacy stays in `research/verifications.json` as an assessed business.
+The pharmacy stays in `research/pipeline/verifications.json` as an assessed business.
 Nothing about its trading status is in doubt.
 
 ## Held
@@ -156,10 +156,10 @@ Nothing about its trading status is in doubt.
 | Murdock Brothers | Concept in progress | Trading status is not confirmed strongly enough for public use | Confirm trading from a current authoritative or first-hand source |
 | South Down Signs | Shortlisted | Online evidence is stale; no concept work started | Confirm trading in person or from current business evidence |
 
-South Down Signs carries no explicit `stage` in `research/verifications.json`;
-`scripts/normalize-businesses.mjs` defaults an unset stage to **Shortlisted**.
+South Down Signs carries no explicit `stage` in `research/pipeline/verifications.json`;
+`tools/pipeline/normalize-businesses.mjs` defaults an unset stage to **Shortlisted**.
 
 The remaining assessed businesses and their evidence stay in
-`research/verifications.json`. The earlier detailed pipeline, including the
+`research/pipeline/verifications.json`. The earlier detailed pipeline, including the
 retired v1.1 score history, is archived at
 `docs/archive/prospects-before-publication-reset-2026-07-25.md`.

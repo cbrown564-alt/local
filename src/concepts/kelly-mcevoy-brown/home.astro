@@ -1,0 +1,189 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+// Real projects and sectors from kmbni.com, 24 July 2026. Names and sector
+// groupings match the site's link lists; places are taken only from the site
+// text — nothing inferred beyond it.
+const sectors = [
+  { key: "Ecclesiastical" },
+  { key: "Healthcare" },
+  { key: "Education" },
+  { key: "Residential" },
+  { key: "Leisure" },
+  { key: "Commercial" },
+];
+const projects = [
+  { name: "Saint Patrick's & Saint Ronan's", place: "Magheralin", sector: "Ecclesiastical" },
+  { name: "Our Lady of the Angels", place: "Dechomet", sector: "Ecclesiastical" },
+  { name: "Rathfriland Manor Nursing Home", place: "", sector: "Healthcare" },
+  { name: "St Luke's Hospital Rosewood & Pinewood Villas", place: "", sector: "Healthcare" },
+  { name: "Roslyn Place Apartments & Townhouses", place: "", sector: "Residential" },
+  { name: "Hacksballscross", place: "", sector: "Residential" },
+  { name: "Mc Kays Road", place: "Castlewellan", sector: "Residential" },
+  { name: "Knockevin Special School", place: "Dundrum", sector: "Education" },
+  { name: "Mount St Patrick", place: "Newry", sector: "Education" },
+  { name: "Culloville Community Centre", place: "", sector: "Leisure" },
+  { name: "Crossmaglen Community Centre", place: "", sector: "Leisure" },
+  { name: "Rowallane Credit Union & Community Hub", place: "", sector: "Commercial" },
+  { name: "The Grove Building", place: "46-48 Main Street, Castlewellan", sector: "Commercial" },
+];
+const accreditations = ["ISO 14001", "Constructionline", "SafeTCert", "CEF", "NHBC"];
+const projectPhotography = [
+  {
+    name: "Saint Patrick's & Saint Ronan's",
+    place: "Magheralin",
+    sector: "Ecclesiastical",
+    image: "/media/concepts/kelly-mcevoy-brown/kmb-saint-patricks-ronans.jpg",
+    alt: "Stone church building at Saint Patrick's and Saint Ronan's in Magheralin",
+  },
+  {
+    name: "Rowallane Credit Union & Community Hub",
+    place: "Saintfield",
+    sector: "Commercial",
+    image: "/media/concepts/kelly-mcevoy-brown/kmb-rowallane-credit-union.jpg",
+    alt: "Rowallane Credit Union and Community Hub on the main street in Saintfield",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Kelly, McEvoy & Brown — independent concept"}
+  slug="kelly-mcevoy-brown"
+  bodyClass="concept-page concept-kmb"
+  businessName="Kelly, McEvoy & Brown Building Contractors"
+  town="Dundrum"
+  bannerNote="Photography from the firm's own site only."
+>
+  <div class="kmb-strip">
+    <span>Kelly, McEvoy &amp; Brown — building contractors since 1973</span>
+    <span class="kmb-strip-r">Registered office · Dundrum, Co. Down</span>
+  </div>
+
+  <header class="kmb-header">
+    <a class="kmb-brand" href="/concepts/kelly-mcevoy-brown/" aria-label="Kelly, McEvoy & Brown home">
+      <img
+        src="/media/concepts/kelly-mcevoy-brown/kmb-logo.png"
+        width="404"
+        height="292"
+        alt="Kelly, McEvoy & Brown Building Contractors"
+      />
+    </a>
+    <nav class="kmb-nav" aria-label="Concept navigation">
+      <a href="#" data-concept-placeholder>Portfolio</a><a href="#" data-concept-placeholder>Sectors</a><a href="#" data-concept-placeholder>Accreditations</a><a href="#" data-concept-placeholder>About</a>
+    </nav>
+    <a class="kmb-tender" href="#" data-concept-placeholder>Contact the team</a>
+  </header>
+
+  <main class="kmb-main">
+    <section class="kmb-lede">
+      <div class="kmb-lede-copy">
+        <p class="kmb-titleblock">
+          <span>Established 1973</span><span>Six sectors</span>
+        </p>
+        <h1>Build on<br />experience.</h1>
+        <p class="kmb-body">
+          One of Northern Ireland's most respected construction companies,
+          with completed work across commercial, healthcare, education,
+          ecclesiastical, leisure and residential sectors.
+        </p>
+        <a class="kmb-view-work" href="#kmb-index-title">View completed work <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="kmb-lede-image">
+        <img
+          src="/media/concepts/kelly-mcevoy-brown/kmb-saint-patricks-ronans.jpg"
+          width="750"
+          height="500"
+          alt="Stone church building at Saint Patrick's and Saint Ronan's in Magheralin"
+        />
+        <figcaption>
+          <span>Ecclesiastical</span>
+          Saint Patrick's &amp; Saint Ronan's · Magheralin
+        </figcaption>
+      </figure>
+      <div class="kmb-accred" role="list" aria-label="Accreditations">
+        {accreditations.map((mark) => <span role="listitem">{mark}</span>)}
+      </div>
+    </section>
+
+    <!-- Project names, sectors and photography are drawn from the firm's site.
+         Images appear only where the source page gives a direct match. -->
+    <section class="kmb-index" aria-labelledby="kmb-index-title">
+      <div class="kmb-index-head">
+        <div>
+          <h2 id="kmb-index-title">Completed projects</h2>
+          <p>Filter the firm's published portfolio by sector.</p>
+        </div>
+        <span class="kmb-index-sub" data-project-count aria-live="polite">13 projects</span>
+      </div>
+
+      <div class="kmb-filter" role="group" aria-label="Filter by sector">
+        <button type="button" class="kmb-chip kmb-chip--on" data-sector="all" aria-pressed="true">All work</button>
+        {sectors.map((sector) => (
+          <button type="button" class="kmb-chip" data-sector={sector.key} aria-pressed="false">
+            {sector.key}
+          </button>
+        ))}
+      </div>
+
+      <div class="kmb-project-media" data-project-media aria-label="Selected project photography">
+        {projectPhotography.map((project) => (
+          <figure data-sector={project.sector} data-sector-entry>
+            <img src={project.image} width="760" height="500" alt={project.alt} loading="lazy" />
+            <figcaption>
+              <span>{project.sector}</span>
+              <strong>{project.name}</strong>
+              <small>{project.place}</small>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <ol class="kmb-projects">
+        {projects.map((project) => (
+          <li class="kmb-project" data-sector={project.sector} data-sector-entry>
+            <span class="kmb-project-main">
+              <span class="kmb-project-name">{project.name}</span>
+              {project.place && <span class="kmb-project-place">{project.place}</span>}
+            </span>
+            <span class="kmb-project-sector">{project.sector}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="kmb-index-foot">Selected completed projects across our six sectors.</p>
+    </section>
+  </main>
+</ConceptLayout>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>(".kmb-chip");
+  const entries = document.querySelectorAll<HTMLElement>("[data-sector-entry]");
+  const rows = document.querySelectorAll<HTMLElement>(".kmb-project");
+  const media = document.querySelector<HTMLElement>("[data-project-media]");
+  const count = document.querySelector<HTMLElement>("[data-project-count]");
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const sector = chip.dataset.sector ?? "all";
+
+      chips.forEach((c) => {
+        const active = c === chip;
+        c.classList.toggle("kmb-chip--on", active);
+        c.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      entries.forEach((entry) => {
+        entry.hidden = sector !== "all" && entry.dataset.sector !== sector;
+      });
+
+      const visibleRows = Array.from(rows).filter((row) => !row.hidden).length;
+      if (count) count.textContent = `${visibleRows} ${visibleRows === 1 ? "project" : "projects"}`;
+
+      const hasVisibleMedia = media
+        ? Array.from(media.querySelectorAll<HTMLElement>("figure")).some((figure) => !figure.hidden)
+        : false;
+      if (media) media.hidden = !hasVisibleMedia;
+    });
+  });
+</script>

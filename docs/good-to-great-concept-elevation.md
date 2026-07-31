@@ -2,7 +2,10 @@
 
 Written 31 July 2026 as a reference for the Enniskeen flagship upgrade and as
 the studio's general playbook for taking a concept from "well designed" to
-"I can't believe that's *our* place".
+"I can't believe that's *our* place". Since generalised: this is the hotel
+instance of `docs/the-elevation-method.md`, which derives the moves per
+business shape (see the Scopers, Betty's Butters, Donard Veterinary and
+Mourne Cycles elevation briefs in `research/`).
 
 **Status, 31 July 2026:** built for Enniskeen — six of the seven moves in
 full, including the day-part hero. See "What shipped" below.
@@ -80,7 +83,7 @@ one-sheet and the reel.
 
 | Move | Where it lives | State |
 |---|---|---|
-| Day-part hero | `src/components/enniskeen/EnkHero.astro`, bands in `enniskeen-site.ts` | **Done.** Dawn, day and dusk, swapped on the visitor's local clock; the daytime plate stays the pre-script state so no-JS, crawlers, print and capture are untouched. Prompts and boundary in `research/enniskeen-day-part-hero-brief.md` |
+| Day-part hero | `src/components/enniskeen/EnkHero.astro`, bands in `enniskeen-site.ts` | **Done.** Dawn, day and dusk, swapped on the visitor's local clock; the daytime plate stays the pre-script state so no-JS, crawlers, print and capture are untouched. Prompts and boundary in `research/concepts/hotel-enniskeen/enniskeen-day-part-hero-brief.md` |
 | Illustrated map | `src/components/enniskeen/EnkEstateMap.astro`, estate page | **Done.** Brass-line plate of the twelve acres — drive, house and turret, lawn, trail, Wishing Well, Shimna, sightlines to Donard and the sea |
 | One photographic voice | SVG filter in `EnniskeenShell.astro`, `--enk-grade` in the stylesheet | **Done.** Pine shadows, warm highlights, eased saturation, fine grain — one filter over every image in the concept |
 | Editorial details | Home welcome note | **Done.** One drop cap, and one verbatim TripAdvisor review — Carolyn K, 22 July 2026 — set as a large Cormorant italic pull-quote with its date and source, so the owner can go and find it |
@@ -126,7 +129,7 @@ reaches the page.
   the hotel's own photographs are reserved for personal outreach material.
   Day-part variants must carry the same disclosure as the current hero.
 - History and review content must be sourced the same way as everything else
-  in `research/verifications.json` — real reviews, documented dates, nothing
+  in `research/pipeline/verifications.json` — real reviews, documented dates, nothing
   invented for atmosphere.
 - None of the moves touch the booking handoff or the five-page IA, so the
   flagship film stays largely accurate; a re-capture is only needed if the

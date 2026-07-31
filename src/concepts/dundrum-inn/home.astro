@@ -1,0 +1,311 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+
+/* Every value on this page comes from the Inn's own public website
+   (dundruminn.com, re-checked 26 July 2026). The first version of this concept
+   invented a kitchen closing time, a room count and a nightly price; none of
+   the three is published anywhere by the Inn, so none of them appears here.
+
+   The finding that replaced them is more useful than the invention was: the
+   Inn publishes when the *bar* is open and never says when the *kitchen* is
+   serving — which is the call the bar staff take most often. */
+
+const booking = "https://dundruminn.com/";
+
+/* Winter 2026 opening hours, verbatim from the Inn's own site. `close` values
+   past 24:00 are the following morning — Friday and Saturday shut at 1am,
+   Sunday at midnight. */
+const hours = [
+  { day: "Monday", short: "Mon", open: 16 * 60, close: 22 * 60 },
+  { day: "Tuesday", short: "Tue", open: 16 * 60, close: 22 * 60 },
+  { day: "Wednesday", short: "Wed", open: 16 * 60, close: 22 * 60 },
+  { day: "Thursday", short: "Thu", open: 16 * 60, close: 23 * 60 },
+  { day: "Friday", short: "Fri", open: 9 * 60, close: 25 * 60 },
+  { day: "Saturday", short: "Sat", open: 9 * 60, close: 25 * 60 },
+  { day: "Sunday", short: "Sun", open: 9 * 60, close: 24 * 60 },
+];
+
+const label = (minutes: number) => {
+  const m = minutes % (24 * 60);
+  const h = Math.floor(m / 60);
+  const suffix = h < 12 || h === 24 ? "am" : "pm";
+  const twelve = h % 12 === 0 ? 12 : h % 12;
+  const mins = m % 60;
+  return `${twelve}${mins ? `.${String(mins).padStart(2, "0")}` : ""}${suffix}`;
+};
+
+const hoursRows = hours.map((entry) => ({
+  ...entry,
+  range: `${label(entry.open)} – ${label(entry.close)}`,
+}));
+
+/* The one event the Inn currently lists with a date. */
+const event = {
+  name: "Fleadh Cheoil na hÉireann",
+  when: "Saturday 2 August",
+  href: "https://dundruminn.com/events-parties/events",
+};
+---
+
+<ConceptLayout
+  title={"The Dundrum Inn — independent concept"}
+  slug="dundrum-inn"
+  bodyClass="concept-page concept-dundrum-inn"
+  businessName="The Dundrum Inn"
+  town="Dundrum"
+  bannerNote="Hero imagery is AI-generated."
+>
+  <div class="di-strip">
+    <span>143–145 Main Street, Dundrum · <a href="tel:+442843729933">028 4372 9933</a></span>
+    <span class="di-lang">
+      <span aria-current="true">English</span>
+      <a href="https://dundruminn.com/?lang=ga" hreflang="ga" lang="ga">Gaeilge</a>
+    </span>
+  </div>
+
+  <header class="di-header">
+    <a class="di-brand" href="/concepts/dundrum-inn/">
+      <span class="di-crest" aria-hidden="true">1834</span>
+      <span class="di-name">
+        <b>Dundrum Inn</b>
+        <span>Pub and Garden · Co Down</span>
+      </span>
+    </a>
+    <nav class="di-nav" aria-label="Concept navigation">
+      <a href="#today">Today</a><a href="#rooms">Rooms</a><a href="#find">Find us</a>
+    </nav>
+    <a class="di-book" href="#rooms">Check availability</a>
+  </header>
+
+  <main>
+    <section class="di-hero" aria-labelledby="di-headline">
+      {/* Faithful visualisation made from the Inn's own exterior photograph.
+          The label and alt text keep its generated origin visible rather than
+          allowing the improved light and framing to read as documentary. */}
+      <ResponsiveImage
+        pictureClass="concept-responsive-picture"
+        class="di-hero-art"
+        src="/media/concepts/dundrum-inn/dundrum-inn-faithful-exterior.jpg"
+        alt="The Dundrum Inn's yellow-and-black Main Street frontage"
+        width="1672"
+        height="941"
+        loading="eager"
+        sizes="100vw"
+      />
+      <div class="di-hero-scrim" aria-hidden="true"></div>
+      <div class="di-hero-copy">
+        <h1 id="di-headline">Come for the views, stay for the craic.</h1>
+        <p>
+          Cold beers and a warm welcome at the Dundrum Inn — with rooms above,
+          Murlough Cottage down the lane, and what the judges called the best
+          Sunday roast in Northern Ireland.
+        </p>
+      </div>
+    </section>
+
+    <div class="di-rail">
+      <span class="di-rail-item">
+        <span class="di-dot" id="di-dot" aria-hidden="true"></span>
+        <b id="di-state">Open today</b>
+        <span id="di-state-detail">See today's hours</span>
+      </span>
+      <span class="di-rail-item">
+        <b>{event.name}</b>
+        <span>{event.when}</span>
+      </span>
+      <span class="di-rail-item">
+        <b>Dundrum Bay</b>
+        <span>over the road</span>
+      </span>
+    </div>
+
+    {/* target="_blank" implies noopener in current browsers; Astro's form
+        types do not accept an explicit rel. */}
+    <form class="di-book-bar" id="rooms" action={booking} method="get" target="_blank">
+      {/* The fields carry no `name`, so submitting lands on dundruminn.com
+          exactly. GuestDiary's own parameter format has not been verified
+          against the live engine, and inventing one would put made-up query
+          strings on the Inn's URL. The note below says so plainly. */}
+      <div class="di-field">
+        <label for="di-in">Check in</label>
+        <input type="date" id="di-in" />
+      </div>
+      <div class="di-field">
+        <label for="di-out">Check out</label>
+        <input type="date" id="di-out" />
+      </div>
+      <div class="di-field">
+        <label for="di-adults">Adults</label>
+        <select id="di-adults">
+          <option>1</option><option selected>2</option><option>3</option><option>4</option>
+        </select>
+      </div>
+      <div class="di-field">
+        <label for="di-children">Children</label>
+        <select id="di-children">
+          <option selected>0</option><option>1</option><option>2</option><option>3</option>
+        </select>
+      </div>
+      <button class="di-submit" type="submit">Check availability</button>
+      <p class="di-book-note">
+        Opens dundruminn.com for live availability and prices.
+      </p>
+    </form>
+
+    <section class="di-today" id="today" aria-labelledby="di-today-title">
+      <div>
+        <h2 id="di-today-title">When is food served?</h2>
+        <p class="di-today-lede">
+          Bar hours are below. Kitchen times are not published online —
+          ring the bar for when food is served.
+        </p>
+        <dl class="di-hours" id="di-hours">
+          {hoursRows.map((row) => (
+            <div class="di-hours-row" data-day={row.short}>
+              <dt>{row.day}</dt>
+              <dd>{row.range}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="di-hours-src">
+          Winter 2026 bar hours as published — call for kitchen times.
+        </p>
+      </div>
+
+      <div class="di-board">
+        <div class="di-board-top">
+          <h3>Today</h3>
+          <time id="di-date"></time>
+        </div>
+        <dl class="di-cells">
+          <div class="di-cell">
+            <dt>Open</dt>
+            <dd class="di-cell-value" id="di-cell-open">Check today's hours</dd>
+            <dd class="di-cell-detail" id="di-cell-open-detail">Bar hours, published by the Inn</dd>
+          </div>
+          <div class="di-cell">
+            <dt>What's on</dt>
+            <dd class="di-cell-value">{event.name}</dd>
+            <dd class="di-cell-detail">
+              {event.when} · <a href={event.href}>see the Inn's events page</a>
+            </dd>
+          </div>
+          <div class="di-cell">
+            <dt>Rooms</dt>
+            <dd class="di-cell-value">Four rooms and a cottage</dd>
+            <dd class="di-cell-detail">
+              The King, the Savage, the McLatchie, the Patterson, and Murlough
+              Cottage for self-catering. <a href="#rooms">Check your dates</a>.
+            </dd>
+          </div>
+        </dl>
+        <p class="di-board-foot">
+          Room prices on the Inn's booking site.
+        </p>
+      </div>
+    </section>
+
+    <section class="di-find" id="find" aria-labelledby="di-find-title">
+      <h2 id="di-find-title">Find us</h2>
+      <div>
+        <h3>The Inn</h3>
+        <p>143–145 Main Street<br />Dundrum, Co. Down<br />BT33 0LY</p>
+      </div>
+      <div>
+        <h3>Call the bar</h3>
+        <p><a href="tel:+442843729933">028 4372 9933</a></p>
+      </div>
+      <div>
+        <h3>Serving since</h3>
+        <p>1834 — over 190 years on Main Street.</p>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
+
+<script is:inline define:vars={{ hours }}>
+  /* Derives the open state from the Inn's published winter hours. This is the
+     change that retired the old "illustrative sample" board: the state is
+     computed from sourced data, in the visitor's own time, so it is either
+     correct or the hours themselves have changed.
+
+     Hours are stated in local Northern Ireland time, so the comparison is made
+     in Europe/London rather than the visitor's zone. */
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/London",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    day: "numeric",
+    month: "long",
+    /* h23 rather than hour12:false — some engines render midnight as "24"
+       under h24, which would push nowMinutes a full day out. */
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+
+  const get = (type) => parts.find((part) => part.type === type)?.value ?? "";
+  const order = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const todayIndex = order.indexOf(get("weekday"));
+  const nowMinutes = Number(get("hour")) * 60 + Number(get("minute"));
+
+  const pad = (value) => String(value).padStart(2, "0");
+  const clock = (minutes) => {
+    const m = minutes % (24 * 60);
+    const h = Math.floor(m / 60);
+    const suffix = h < 12 || h === 24 ? "am" : "pm";
+    const twelve = h % 12 === 0 ? 12 : h % 12;
+    return `${twelve}${m % 60 ? `.${pad(m % 60)}` : ""}${suffix}`;
+  };
+
+  if (todayIndex >= 0) {
+    const today = hours[todayIndex];
+    const yesterday = hours[(todayIndex + 6) % 7];
+
+    /* Yesterday's session can still be running — Friday's 1am close belongs to
+       Saturday morning. */
+    const spillover = yesterday.close > 24 * 60 && nowMinutes < yesterday.close - 24 * 60;
+    const openNow = spillover || (nowMinutes >= today.open && nowMinutes < today.close);
+
+    const stateEl = document.getElementById("di-state");
+    const detailEl = document.getElementById("di-state-detail");
+    const dotEl = document.getElementById("di-dot");
+    const cellEl = document.getElementById("di-cell-open");
+    const cellDetailEl = document.getElementById("di-cell-open-detail");
+    const dateEl = document.getElementById("di-date");
+
+    if (dateEl) dateEl.textContent = `${get("weekday")} ${get("day")} ${get("month")}`;
+
+    if (openNow) {
+      const closes = spillover ? yesterday.close : today.close;
+      if (stateEl) stateEl.textContent = "Open now";
+      if (detailEl) detailEl.textContent = `until ${clock(closes)}`;
+      if (cellEl) cellEl.textContent = `Open until ${clock(closes)}`;
+      if (dotEl) dotEl.dataset.state = "open";
+    } else {
+      const opensToday = nowMinutes < today.open;
+      const next = opensToday ? today : hours[(todayIndex + 1) % 7];
+      if (stateEl) stateEl.textContent = "Closed";
+      if (detailEl) {
+        detailEl.textContent = opensToday
+          ? `opens at ${clock(next.open)}`
+          : `opens ${next.day} at ${clock(next.open)}`;
+      }
+      if (cellEl) {
+        cellEl.textContent = opensToday
+          ? `Opens at ${clock(next.open)}`
+          : `Opens ${next.day} at ${clock(next.open)}`;
+      }
+      if (dotEl) dotEl.dataset.state = "shut";
+    }
+
+    if (cellDetailEl) {
+      cellDetailEl.textContent = `Bar hours. The Inn does not publish kitchen times.`;
+    }
+
+    const row = document.querySelector(`.di-hours-row[data-day="${today.short}"]`);
+    if (row) row.setAttribute("data-today", "true");
+  }
+</script>

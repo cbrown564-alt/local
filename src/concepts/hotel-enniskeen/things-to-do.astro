@@ -1,0 +1,116 @@
+---
+import EnniskeenShell from "./components/EnniskeenShell.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { thingsToDo, enniskeen, generatedVisuals } from "./content";
+---
+
+<EnniskeenShell title={"Things to do — Enniskeen Country House Hotel — independent concept"} current="things-to-do">
+    <main>
+      <!-- Hero: Slieve Donard from the lawn -->
+      <section class="enk-int-hero">
+        <div class="enk-int-hero-copy">
+          <p class="enk-kicker">Things to do · From the door</p>
+          <h1>The <em>Mournes</em> start at the garden gate.</h1>
+          <p class="enk-lede">
+            Northern Ireland's highest mountains, its most photographed golf links and a Blue Flag
+            beach are all on the doorstep — and the house is set up for the people who come for them.
+          </p>
+          <div class="enk-actions">
+            <a class="enk-cta" href="#walking">Walking from the house</a>
+            <a class="enk-link" href="#cycling">Bike hire →</a>
+          </div>
+        </div>
+        <figure class="enk-int-hero-image">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.estate}
+            loading="eager"
+          />
+          <figcaption>The Mournes from the grounds</figcaption>
+        </figure>
+      </section>
+
+      <!-- Walking -->
+      <section class="enk-todo" id="walking" aria-labelledby="walking-heading">
+        <div class="enk-todo-copy">
+          <p class="enk-kicker" style="animation:none">{thingsToDo.walking.title}</p>
+          <h2 id="walking-heading">Boots on at the front door.</h2>
+          <p>{thingsToDo.walking.copy}</p>
+          <ul class="enk-todo-routes">
+            {thingsToDo.walking.routes.map((route) => (
+              <li>{route}</li>
+            ))}
+          </ul>
+          <p>{thingsToDo.walking.support}</p>
+        </div>
+        <figure class="enk-todo-visual">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.walker}
+          />
+          <figcaption>Above Ben Crom</figcaption>
+        </figure>
+      </section>
+
+      <!-- Golf -->
+      <section class="enk-golf" aria-labelledby="golf-heading">
+        <figure class="enk-golf-visual">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.royalCountyDown}
+          />
+          <figcaption>Royal County Down</figcaption>
+        </figure>
+        <div class="enk-golf-inner">
+          <p class="enk-kicker" style="animation:none">{thingsToDo.golf.title}</p>
+          <h2 id="golf-heading">Royal County Down, next door.</h2>
+          <p>{thingsToDo.golf.copy}</p>
+          <p>{thingsToDo.golf.support}</p>
+        </div>
+      </section>
+
+      <!-- Cycling -->
+      <section class="enk-todo enk-todo--flip" id="cycling" aria-labelledby="cycling-heading">
+        <div class="enk-todo-copy">
+          <p class="enk-kicker" style="animation:none">{thingsToDo.cycling.title}</p>
+          <h2 id="cycling-heading">Uphill by shuttle, downhill by bike.</h2>
+          <p>{thingsToDo.cycling.copy}</p>
+          <p>{thingsToDo.cycling.tour}</p>
+          <p class="enk-todo-booking">Advance booking for bikes — call reception on <a href={enniskeen.phoneHref}>{enniskeen.phone}</a>.</p>
+        </div>
+        <figure class="enk-todo-visual">
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.cycling}
+          />
+          <figcaption>All downhill from Spelga</figcaption>
+        </figure>
+      </section>
+
+      <!-- Mournes band -->
+      <section class="enk-gardens-band">
+        <figure>
+          <ResponsiveImage
+            pictureClass="concept-responsive-picture"
+            {...generatedVisuals.walker}
+            sizes="100vw"
+          />
+          <figcaption>The Mournes from the grounds</figcaption>
+        </figure>
+      </section>
+
+      <!-- Nearby -->
+      <section class="enk-nearby" aria-labelledby="nearby-heading">
+        <div class="enk-room-types-head">
+          <p class="enk-kicker" style="animation:none">Worth the short drive</p>
+          <h2 id="nearby-heading">Nearby</h2>
+          <p class="enk-rooms-sub">The places the hotel points its guests to — each link goes to the attraction itself.</p>
+        </div>
+        <ul class="enk-nearby-grid" role="list">
+          {thingsToDo.nearby.map((place) => (
+            <li><a href={place.href} rel="external">{place.label} <span aria-hidden="true">↗</span></a></li>
+          ))}
+        </ul>
+      </section>
+    </main>
+</EnniskeenShell>

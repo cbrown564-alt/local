@@ -1,8 +1,8 @@
 # Archived prospects record — before the publication review reset
 
 Working state of the concept pipeline. The data source of truth is
-`research/verifications.json` (merged into `src/data/businesses.json` by
-`scripts/normalize-businesses.mjs`); this document is the human-readable
+`research/pipeline/verifications.json` (merged into `src/site/data/businesses.json` by
+`tools/pipeline/normalize-businesses.mjs`); this document is the human-readable
 summary and must be updated whenever a prospect changes stage.
 
 Snapshot: 25 July 2026 · 27 businesses verified · **two public transformations
@@ -24,7 +24,7 @@ current independent public Pass
 Every prospect moves through: **Shortlisted → Concept in progress → Concept
 published → Contacted → Mock-up requested → Client**. A prospect can also be
 **Assessed – not shortlisted** (kept for the knowledge, revisited on refresh).
-Record every stage change in the `stage` field of `research/verifications.json`
+Record every stage change in the `stage` field of `research/pipeline/verifications.json`
 (plus `conceptRoute` once a comparison page exists) and re-run the normaliser;
 prospects with no explicit stage default to Shortlisted.
 
@@ -48,11 +48,11 @@ Rules of the road:
   eligible concepts by evidence readiness, public value and likelihood of
   passing, not chronological order.
 - A concept remains **Concept in progress** until it passes the independent
-  review in `CONCEPT_DESIGN_REVIEW.md` at 7.0/10 or higher, including every
+  review in `docs/CONCEPT_DESIGN_REVIEW.md` at 7.0/10 or higher, including every
   every design gate, core category floors of 7.0 and supporting category
   floors of 6.0. A local route
   is not evidence of completion. The build enforces a current machine-readable
-  Pass for every slug published through `src/data/transformations.ts`; internal
+  Pass for every slug published through `src/site/data/transformations.ts`; internal
   `noindex` concept routes do not require one. Each public Pass needs a
   lightweight truth refresh every 90 days; overdue concepts leave public
   transformations until refreshed.
@@ -68,7 +68,7 @@ None had the complete private record and independent v1.1 Pass required by the
 release rule. This did not establish that the designs failed. Missing release
 evidence is **Release blocked**, not Revise, so no repair cycle has been
 consumed. All concept routes remain internal and `noindex`;
-`src/data/transformations.ts` has no public members.
+`src/site/data/transformations.ts` has no public members.
 
 | Concept | Current disposition | Next design-review action; separate release dependency |
 |---|---|---|
@@ -138,7 +138,7 @@ real businesses listed as members (Chamber). Across the batch, no first viewport
 carries real subject imagery, every home page renders its own wordmark
 struck-through (an `href="#"` inert-link side effect), and the slogan owns the
 fold. Full per-concept records are private under
-`research/concept-reviews/<slug>.md`; the compact verdicts are committed in
+`research/<slug>.md`; the compact verdicts are committed in
 `releases.json`.
 
 A shared repair pass then closed those mechanical and truth failures: all
@@ -181,7 +181,7 @@ verified records, Kent's overlap and unlabelled hours fixed, Donard's stale
 draft withdrawn) and `pnpm test:reviewed-concepts` has grown from 7 to 14
 checks covering the new defect classes. That source has **not yet been
 independently re-reviewed**, so every committed verdict remains Revise. Full
-per-concept records are private under `research/concept-reviews/<slug>.md`; the
+per-concept records are private under `research/<slug>.md`; the
 compact verdicts are committed in `releases.json`.
 
 ## Shortlist — redesign showcases (current website, visible gap)
@@ -206,8 +206,8 @@ compact verdicts are committed in `releases.json`.
 
 ## Batch two — verified and captured 24 July 2026, ten concept pages built
 
-All ten passed a verification pass under `RESEARCH_METHOD.md` on 24 July 2026 and
-have records in `research/verifications.json`. Each has a concept page built
+All ten passed a verification pass under `docs/RESEARCH_METHOD.md` on 24 July 2026 and
+have records in `research/pipeline/verifications.json`. Each has a concept page built
 locally at `/concepts/<slug>/` with its own scoped identity. Nine were published
 with matched stills and demo media before Phase Q; all ten are now internal
 pending evidence. Murdock Brothers also waits on trading confirmation. Full
@@ -241,12 +241,12 @@ exists and was switched off, so batch two is now **five dead-site, four redesign
 one feature — no first-website case**. (2) **The Dundrum Inn phone** was wrong in
 the census (028 4375 1211); its own site publishes 028 4372 9933 — corrected. (3)
 The **Betty's builder** is ProSite Hosting, not BaseKit as the selection record
-guessed. All ten are recorded honestly in `research/verifications.json`; the
+guessed. All ten are recorded honestly in `research/pipeline/verifications.json`; the
 open apartments-vs-café and DJ-Maguire-ownership questions are resolved in the
 records.
 
 **Squid Shack was selected and removed the same day** — local first-hand report,
-24 July 2026: it no longer exists. Recorded in `research/verifications.json` as
+24 July 2026: it no longer exists. Recorded in `research/pipeline/verifications.json` as
 `tradingStatus: "Closed"` so its OpenStreetMap node stops resurfacing near the
 top of the site-less band in future rounds. Tonn Ruray Café took the slot.
 
@@ -275,7 +275,7 @@ and four records at the top of that band — `Donard Hotel`, `Quinns`,
 sites. Selecting off the top of the ranking would have pitched a first website
 to four businesses that already have one. Thirteen further duplicate pairs are
 listed in the selection record; the alias table in
-`scripts/normalize-businesses.mjs` holds only five entries. **Fix it before the
+`tools/pipeline/normalize-businesses.mjs` holds only five entries. **Fix it before the
 batch-three selection** — this round excluded the duplicates by hand.
 
 ## Assessed — not shortlisted
@@ -285,7 +285,7 @@ Painted Earth (census missed its live e-commerce site), Dacara and Conlyn
 House (fresh rebuilds; their gap is booking capability, a possible future
 feature-upgrade case), Hutt Hostel (dated styling but working booking flow —
 accommodation runner-up). Details and evidence in
-`research/verifications.json`.
+`research/pipeline/verifications.json`.
 
 **Squid Shack** (Dundrum) is recorded here for a different reason: it is closed,
 confirmed first-hand on 24 July 2026. The record exists to keep a dead
@@ -294,10 +294,10 @@ assessed on its merits.
 
 ## Castle Farm — published but outside the pipeline
 
-Found 24 July 2026 during the M3 plan review. `src/data/transformations.ts`
+Found 24 July 2026 during the M3 plan review. `src/site/data/transformations.ts`
 carries ten records; this file accounts for nine. **Castle Farm** (Dundrum) has
 a published concept, a captured before from its live site, a demo clip and a
-public transformation page — and no entry in `research/verifications.json` at
+public transformation page — and no entry in `research/pipeline/verifications.json` at
 all: no stage, no dated evidence, no design task, no shortlist decision. It
 predates the pipeline and was never brought in.
 
@@ -329,7 +329,7 @@ real local business on a live site.
 Resolved 21 July 2026 by local first-hand knowledge: Scopers now trades most
 of the week and is very popular (the Thursday-only pattern is outdated), and
 Cúpla is confirmed actively trading. Both recorded in
-`research/verifications.json`.
+`research/pipeline/verifications.json`.
 
 Superseded 21 July 2026 at build time: The Buck's Head added a ResDiary
 booking widget to its Bookings page after the 20 July verification pass —
@@ -358,7 +358,7 @@ reinvent:
    Re-read it the day you build, not just at census time: Donard's site
    gained a PetsApp chat widget between the 20 July verification pass and the
    21 July build, and the change belonged in both the design notes and
-   `research/verifications.json`.
+   `research/pipeline/verifications.json`.
 2. **Use real subject photography and record its rights status.** Internal
    review may use sourced subject imagery to judge the design, but missing
    public-use permission leaves the concept Release blocked. Before public
@@ -390,7 +390,7 @@ reinvent:
    (Castle Farm predated this convention and was normalised out of
    `global.css` on 21 July 2026.)
 5. **Capture both screens the same way** with
-   `node scripts/capture-concept-screens.mjs <slug>` (needs `pnpm build &&
+   `node tools/capture/capture-concept-screens.mjs <slug>` (needs `pnpm build &&
    pnpm preview` running). It shoots the live site and the local concept at
    an identical 1265×710 at 2x through system Chrome, then compresses to JPEG.
    Leave cookie banners and consent prompts visible: that is what a first-time
@@ -417,14 +417,14 @@ reinvent:
    an inline element ("mainTrek") — keep meaningful spaces on the same source
    line as the tag.
 9. **Review before publishing.** Assemble the desktop, phone, interaction,
-   source and check evidence required by `CONCEPT_DESIGN_REVIEW.md`; complete
+   source and check evidence required by `docs/CONCEPT_DESIGN_REVIEW.md`; complete
    the self-review, then have an independent reviewer test and score the fixed
    candidate. Licensing or other release paperwork does not stop design
    scoring; record it as Release blocked. The concept needs a recorded Pass at
    7.0/10 or higher before external use. Keep the
-   detailed record privately at `research/concept-reviews/<slug>.md`; commit
+   detailed record privately at `research/<slug>.md`; commit
    only its compact release entry in
-   `research/concept-reviews/releases.json`.
+   `research/releases.json`.
 
 ## The repeatable cycle
 
@@ -433,10 +433,10 @@ cheaper because the knowledge lands in versioned files, not in heads:
 
 1. **Select** from the ranked census (`/opportunities` — dev-only workbench, run
    `pnpm dev`; never deployed because it embeds the scored dataset). The
-   workbench reads `src/data/businesses.json`, so it reflects every
+   workbench reads `src/site/data/businesses.json`, so it reflects every
    verification, correction and closure.
    The `.xlsx` workbook is untracked and only as fresh as its last build —
-   regenerate it with `node spreadsheet-work/build-business-workbook.mjs`, which
+   regenerate it with `node tools/spreadsheet/build-business-workbook.mjs`, which
    reads the same two files, before trusting it to select. Rebuilt 24 July 2026;
    it had been ranking the now-closed Squid Shack fifth overall.
    **It still carries the four duplicate false-highs and merges no aliases** —
@@ -448,14 +448,14 @@ cheaper because the knowledge lands in versioned files, not in heads:
    dataset and the workbook, with its listing retained so the knowledge is not
    lost. Scores are otherwise a property of the listing, not of trading status,
    so a closure has to be recorded to have any effect.
-2. **Verify** per the protocol in RESEARCH_METHOD.md; record evidence,
+2. **Verify** per the protocol in docs/RESEARCH_METHOD.md; record evidence,
    corrections, and the shortlist/design-task decision in
-   `research/verifications.json`.
-3. **Normalise** (`node scripts/normalize-businesses.mjs`) so corrections,
+   `research/pipeline/verifications.json`.
+3. **Normalise** (`node tools/pipeline/normalize-businesses.mjs`) so corrections,
    scores, and prospect fields flow into the dataset and summary.
 4. **Build** one complete local concept loop while the prospect remains
    Concept in progress.
-5. **Review and repair** under `CONCEPT_DESIGN_REVIEW.md`. Continue design
+5. **Review and repair** under `docs/CONCEPT_DESIGN_REVIEW.md`. Continue design
    review when release paperwork is incomplete. A public release needs an
    independent Pass at 7.0/10 or higher, core categories at 7.0 or higher,
    supporting categories at 6.0 or higher, all design gates passed and all
@@ -463,6 +463,6 @@ cheaper because the knowledge lands in versioned files, not in heads:
 6. **Publish** under `/transformations/` with matched media and source
    disclosure.
 7. **Record the outcome** — stage change, what the concept taught us, any new
-   census corrections — back into `research/verifications.json` and this file.
+   census corrections — back into `research/pipeline/verifications.json` and this file.
 8. **Update the docs** touched by what changed (this file always; README /
    RESEARCH_METHOD / DESIGN when the process itself moved).

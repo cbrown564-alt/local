@@ -1,0 +1,98 @@
+---
+/** The house at the visitor's own time of day.
+ *
+ *  Every available variant is rendered; the default one is visible and the
+ *  rest are inert until a tiny inline script picks the band matching the
+ *  visitor's local hour. That ordering means no-JS visits, crawlers and the
+ *  print/capture pipeline all see the same daytime image the concept has
+ *  always shown, and the swap is a progressive enhancement on top.
+ *
+ *  With fewer than two generations present the swap is not emitted at all.
+ */
+import fs from "node:fs";
+import path from "node:path";
+import ResponsiveImage from "../../../site/components/ResponsiveImage.astro";
+import { dayParts } from "../content";
+
+/** Resolved against `public/` at build time — a declared variant whose
+ *  generation has not landed yet is skipped rather than shipped as a broken
+ *  image. The check lives here, not in the shared data module, because that
+ *  module is also imported by the booking component's client script. */
+const parts = dayParts.filter((part) =>
+  fs.existsSync(path.join(process.cwd(), "public", part.src.replace(/^\//, ""))),
+);
+
+/** The variant rendered before any script runs, and the only one a no-JS
+ *  visit, a crawler or the capture pipeline ever sees. */
+const fallback = parts.find((part) => part.id === "day") ?? parts[0];
+const swaps = parts
+  .filter((part) => part.id !== fallback.id)
+  .map(({ id, from, to }) => ({ id, from, to }));
+---
+
+<figure class="enk-visual" data-enk-daypart>
+  {parts.map((part) => (
+    <div
+      class="enk-visual-frame"
+      data-daypart={part.id}
+      hidden={part.id !== fallback.id ? true : undefined}
+    >
+      <ResponsiveImage
+        pictureClass="concept-responsive-picture"
+        src={part.src}
+        alt={part.alt}
+        width={part.width}
+        height={part.height}
+        loading={part.id === fallback.id ? "eager" : "lazy"}
+      />
+    </div>
+  ))}
+  <figcaption data-enk-daypart-caption>{fallback.caption}</figcaption>
+</figure>
+
+{swaps.length > 0 && (
+  <Fragment>
+  <script
+    is:inline
+    type="application/json"
+    data-enk-daypart-bands
+    set:html={JSON.stringify(
+      parts.map(({ id, from, to, caption }) => ({ id, from, to, caption })),
+    )}
+  />
+  <script is:inline>
+    (() => {
+      const figure = document.querySelector("[data-enk-daypart]");
+      const config = document.querySelector("[data-enk-daypart-bands]");
+      if (!figure || !config) return;
+
+      let bands;
+      try {
+        bands = JSON.parse(config.textContent || "[]");
+      } catch {
+        return;
+      }
+
+      const hour = new Date().getHours();
+      // Bands may wrap past midnight (dusk runs 18:00 to 04:00).
+      const band = bands.find(({ from, to }) =>
+        from < to ? hour >= from && hour < to : hour >= from || hour < to,
+      );
+      if (!band) return;
+
+      const target = figure.querySelector(`[data-daypart="${band.id}"]`);
+      if (!target || !target.hidden) return;
+
+      figure
+        .querySelectorAll("[data-daypart]")
+        .forEach((frame) => (frame.hidden = frame !== target));
+
+      const image = target.querySelector("img");
+      if (image) image.loading = "eager";
+
+      const caption = figure.querySelector("[data-enk-daypart-caption]");
+      if (caption) caption.textContent = band.caption;
+    })();
+  </script>
+  </Fragment>
+)}

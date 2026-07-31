@@ -1,0 +1,30 @@
+---
+import ChamberConceptShell from "../../prototypes/chamber-prototypes/ChamberConceptShell.astro";
+import { events } from "../../site/data/chamber-prototype";
+---
+<ChamberConceptShell
+  title="Events — Newcastle Chamber of Commerce · Co. Down"
+  current="events"
+>
+  <main class="nc-page">
+    <p class="nc-kicker">Town calendar</p>
+    <h1>What's on in <em>Newcastle.</em></h1>
+    <p class="nc-lede">
+      Nights the Chamber helps put on in Newcastle — starting with Halloween, with more to follow as dates are announced.
+    </p>
+    <div class="nc-event-list">
+      {events.map((event) => (
+        <article class="nc-event-row">
+          <time datetime={event.real ? event.dateSort : undefined}>{event.date}</time>
+          <div>
+            <h2>{event.title}</h2>
+            <p>{event.blurb}</p>
+            <p class="nc-event-place">{event.place}</p>
+            {!event.real && <span class="nc-badge">Date TBC</span>}
+          </div>
+          <a class="nc-cta" href={event.ctaHref}>{event.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+  </main>
+</ChamberConceptShell>

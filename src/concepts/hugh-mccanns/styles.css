@@ -1,0 +1,407 @@
+/* Hugh McCann's — independent feature-graft concept.
+   The venue's dining-room view and own words lead; the proposed date-and-guest
+   enquiry sits beside them rather than replacing the identity with a new one. */
+
+body.concept-hugh {
+  --hm-plaster: #f4ece2;
+  --hm-plaster-deep: #e9ddcd;
+  --hm-forest: #2f4634;
+  --hm-forest-deep: #22331f;
+  --hm-gold: #a6842f;
+  --hm-blush: #cf9e86;
+  --hm-ink: #2b2721;
+  --hm-ink-soft: #6d6355;
+  --hm-rule: #ddceb9;
+  --concept-accent: var(--hm-gold);
+  --concept-nav-gap: clamp(18px, 2.4vw, 34px);
+  --concept-nav-line: 1px;
+
+  margin: 0;
+  background:
+    radial-gradient(120% 100% at 50% -20%, var(--hm-plaster) 0%, var(--hm-plaster-deep) 100%);
+  color: var(--hm-ink);
+  font-family: "Lato", system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hm-strip {
+  padding: 10px clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--hm-rule);
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--hm-ink);
+}
+
+.hm-header {
+  padding: 20px clamp(16px, 4vw, 48px);
+  gap: 24px;
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.hm-brand { display: grid; gap: 3px; text-decoration: none; color: inherit; }
+
+.hm-brand-name {
+  font-family: "Italiana", Georgia, serif;
+  font-size: clamp(24px, 2.5vw, 32px);
+  letter-spacing: .02em;
+  color: var(--hm-forest-deep);
+}
+
+.hm-brand-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--hm-gold);
+}
+
+.hm-nav a {
+  font-family: "Italiana", Georgia, serif;
+  font-size: 15px;
+  letter-spacing: .04em;
+  color: var(--hm-ink);
+}
+
+.hm-nav a:hover::after,
+.hm-nav a:focus-visible::after { right: 0; }
+
+.hm-enquire {
+  padding: 12px 20px;
+  border: 1px solid var(--hm-forest);
+  color: var(--hm-forest-deep);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.hm-enquire:hover,
+.hm-enquire:focus-visible { background: var(--hm-forest); color: var(--hm-plaster); }
+
+.hm-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(340px, .72fr);
+  align-items: stretch;
+  background: var(--hm-forest-deep);
+}
+
+.hm-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(560px, 72vh, 720px);
+  align-items: flex-start;
+  overflow: hidden;
+  padding: clamp(34px, 5vw, 68px);
+  isolation: isolate;
+}
+
+.hm-hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 24, 18, .42) 0%, rgba(15, 24, 18, .28) 28%, rgba(15, 24, 18, .82) 100%),
+    linear-gradient(90deg, rgba(15, 24, 18, .55) 0%, rgba(15, 24, 18, .28) 45%, transparent 72%);
+  content: "";
+}
+
+.hm-hero-image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% center;
+}
+
+.hm-hero-copy {
+  max-width: 640px;
+}
+
+.hm-kicker {
+  margin: 0 0 clamp(12px, 1.8vw, 18px);
+  font-family: "Italiana", Georgia, serif;
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-style: italic;
+  letter-spacing: .04em;
+  color: #f3e6b8;
+  text-shadow: 0 1px 12px rgba(15, 24, 18, .55);
+}
+
+.hm-hero h1 {
+  margin: 0;
+  font-family: "Italiana", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(64px, 9vw, 96px);
+  line-height: .9;
+  letter-spacing: -.01em;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(15, 24, 18, .28);
+}
+
+.hm-lede {
+  max-width: 52ch;
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, .94);
+  text-shadow: 0 1px 8px rgba(15, 24, 18, .45);
+}
+
+.hm-visual-note {
+  max-width: 46ch;
+  margin: 18px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .76);
+}
+
+/* The enquiry panel — the whole reason the concept exists. */
+.hm-enquire-panel {
+  align-self: center;
+  margin: clamp(24px, 3.5vw, 52px);
+  padding: clamp(24px, 3vw, 34px);
+  background: var(--hm-plaster);
+  box-shadow: 0 6px 8px rgba(9, 18, 12, .22);
+}
+
+.hm-enquire-eyebrow {
+  margin: 0 0 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--hm-gold);
+}
+
+#hm-enquire-title {
+  margin: 0 0 10px;
+  font-family: "Italiana", Georgia, serif;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 400;
+  letter-spacing: .01em;
+  color: var(--hm-forest-deep);
+}
+
+.hm-enquire-intro {
+  margin: 0 0 22px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--hm-ink-soft);
+}
+
+.hm-field { margin-bottom: 22px; }
+
+.hm-field > label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hm-ink);
+}
+
+.hm-field > label span {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--hm-ink-soft);
+}
+
+.hm-field input[type="date"] {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--hm-rule);
+  background: #fff;
+  color: var(--hm-ink);
+  font-family: "Italiana", Georgia, serif;
+  font-size: 19px;
+}
+
+.hm-field input[type="date"]:focus-visible { outline: 2px solid var(--hm-forest); outline-offset: 1px; }
+
+.hm-guests { display: flex; align-items: center; gap: 16px; }
+
+.hm-guests input[type="range"] { flex: 1; accent-color: var(--hm-forest); }
+.hm-guests input[type="range"]:focus-visible { outline: 2px solid var(--hm-gold); outline-offset: 4px; }
+
+.hm-guests output {
+  flex: none;
+  min-width: 96px;
+  font-family: "Italiana", Georgia, serif;
+  font-size: 22px;
+  color: var(--hm-forest-deep);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-guests-scale {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 0;
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--hm-ink-soft);
+}
+
+/* Season strip — a warm-glance availability, not a real calendar. */
+.hm-season {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+  padding: 14px;
+  border: 1px solid var(--hm-rule);
+  background: #fff;
+}
+
+.hm-month { display: grid; justify-items: center; gap: 8px; }
+
+.hm-month-m {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--hm-ink);
+}
+
+.hm-month-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hm-month--open .hm-month-dot { background: var(--hm-forest); }
+.hm-month--few .hm-month-dot { background: var(--hm-gold); }
+.hm-month--full .hm-month-dot { background: var(--hm-blush); opacity: .55; }
+.hm-month--full .hm-month-m { color: var(--hm-ink-soft); }
+
+.hm-season-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--hm-ink-soft);
+}
+
+.hm-season-key span { display: flex; align-items: center; gap: 6px; }
+
+.hm-key { width: 9px; height: 9px; border-radius: 50%; }
+.hm-key--open { background: var(--hm-forest); }
+.hm-key--few { background: var(--hm-gold); }
+.hm-key--full { background: var(--hm-blush); opacity: .55; }
+
+.hm-submit {
+  display: block;
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  border: none;
+  background: var(--hm-forest);
+  color: var(--hm-plaster);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.hm-submit:hover,
+.hm-submit:focus-visible { background: var(--hm-forest-deep); }
+
+.hm-handoff {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--hm-forest);
+  background: rgba(47, 70, 52, .08);
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--hm-ink);
+}
+
+.hm-handoff strong {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--hm-forest-deep);
+}
+
+.hm-handoff a {
+  justify-self: start;
+  padding: 10px 14px;
+  border: 1px solid var(--hm-forest);
+  color: var(--hm-forest-deep);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hm-handoff a:hover,
+.hm-handoff a:focus-visible {
+  background: var(--hm-forest);
+  color: var(--hm-plaster);
+}
+
+.hm-enquire-stale {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #7a4a2a;
+}
+
+.hm-enquire-foot {
+  margin: 12px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--hm-ink-soft);
+}
+
+.hm-enquire-foot a { color: var(--hm-forest-deep); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hm-submit { transition: background 160ms ease, letter-spacing 200ms ease; }
+  .hm-submit:hover { letter-spacing: .16em; }
+}
+
+@media (max-width: 940px) {
+  .hm-main {
+    grid-template-columns: 1fr;
+    background: var(--hm-plaster-deep);
+  }
+  .hm-hero { min-height: clamp(500px, 68vh, 640px); }
+  .hm-enquire-panel {
+    position: relative;
+    z-index: 1;
+    margin: -34px clamp(16px, 5vw, 48px) 56px;
+  }
+  .hm-nav { display: none; }
+}
+
+@media (max-width: 520px) {
+  .hm-strip { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .hm-hero {
+    min-height: 520px;
+    padding: 34px 20px 52px;
+  }
+  .hm-hero-image { object-position: 58% center; }
+  .hm-guests output { min-width: 78px; font-size: 18px; }
+}
