@@ -33,3 +33,16 @@ PRODUCT.md's anti-references warn against.
   second asset is enough for a one-sheet; if F2 lands first it enriches that
   sheet, and if it does not the sheet ships regardless.
 - Revisit the door-drop only if the named wave under-converts.
+
+## Outcome update — 27 July 2026
+
+The Buck's Head was contacted before the three-sheet walk. A director replied
+that a new website has already been built and will launch when the
+accommodation is ready. The reply establishes no current redesign opportunity;
+it is not recorded as a rejection because it did not decline future contact.
+
+The Buck's Head leaves the active first wave and its one-sheet will not be
+sent. Scopers and Cúpla remain the first-wave conversations. No replacement is
+added simply to restore the original batch size. The public Buck's Head concept
+remains dated portfolio work and must be re-reviewed against the replacement
+site before any later outreach.
