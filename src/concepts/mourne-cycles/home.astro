@@ -2,6 +2,12 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import McTrailsMap from "./components/McTrailsMap.astro";
+import {
+  rangeCategories,
+  shopVoice,
+  standToday,
+} from "./content";
 ---
 
 <ConceptLayout title={"Mourne Cycles — independent concept"} slug="mourne-cycles" bodyClass="concept-page concept-mourne-cycles" lang="en-GB">
@@ -21,7 +27,11 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
         </span>
       </a>
       <nav class="mc-nav" aria-label="Concept navigation">
-        <a href="/concepts/mourne-cycles/" aria-current="page">Bikes</a><a href="#" data-concept-placeholder>Accessories</a><a href="/concepts/mourne-cycles/hire/">Workshop</a><a href="/concepts/mourne-cycles/hire/">Cycle to Work</a><a href="#" data-concept-placeholder>Visit us</a>
+        <a href="/concepts/mourne-cycles/" aria-current="page">Bikes</a>
+        <a href="#" data-concept-placeholder>Accessories</a>
+        <a href="/concepts/mourne-cycles/hire/">Workshop</a>
+        <a href="/concepts/mourne-cycles/hire/#panel-scheme-h">Cycle to Work</a>
+        <a href="#trails">Trails</a>
       </nav>
       <div class="mc-header-actions">
         <a class="mc-phone" href="tel:+442843727272">028 4372 7272</a>
@@ -32,13 +42,23 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
       <section class="mc-story">
         <p class="mc-kicker">Newcastle · local since 2002</p>
         <h1>Mourne <em>Cycles</em></h1>
-        <p class="mc-thesis">Bikes, workshop care and straight local advice.</p>
+        <figure class="mc-voice">
+          <blockquote cite={shopVoice.source}>
+            “{shopVoice.text}”
+          </blockquote>
+          <figcaption>
+            {shopVoice.attribution}
+            <span>{shopVoice.context}</span>
+          </figcaption>
+        </figure>
         <p class="mc-lede">
-          An established local bike shop, listed as a <strong>Trek</strong> dealer and Cyclescheme retailer, with a workshop on Castlewellan Road.
+          The shop calls itself the main dealer in Trek bikes in the area —
+          listed as a <strong>Trek</strong> dealer and Cyclescheme retailer, with a
+          workshop on Castlewellan Road — the road out toward the Mournes' trail country.
         </p>
         <div class="mc-actions">
           <a class="mc-cta" href="/concepts/mourne-cycles/hire/">Book a workshop slot</a>
-          <a class="mc-link" href="#" data-concept-placeholder>Explore the bike range →</a>
+          <a class="mc-link" href="#trails">Where each bike goes →</a>
         </div>
       </section>
       <section class="mc-workshop-desk" aria-labelledby="mc-workshop-heading">
@@ -49,6 +69,20 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
         <div class="mc-workshop-body">
           <p class="mc-workshop-label">Workshop desk</p>
           <h2 id="mc-workshop-heading">Get your bike checked.</h2>
+          <div class="mc-stand" aria-labelledby="mc-stand-heading">
+            <div class="mc-stand-head">
+              <h3 id="mc-stand-heading">On the stand today</h3>
+              <span class="mc-stand-tag">On the stand</span>
+            </div>
+            <ol class="mc-stand-jobs" role="list">
+              {standToday.map((item) => (
+                <li>
+                  <span class="mc-stand-ticket" aria-hidden="true">{item.ticket}</span>
+                  <span>{item.job}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
           <ol class="mc-workshop-steps">
             <li>
               <span class="mc-workshop-num">01</span>
@@ -68,19 +102,34 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
           <a href="/concepts/mourne-cycles/hire/#panel-service-h">Start a workshop enquiry <span aria-hidden="true">→</span></a>
           <a href="tel:+442843727272">Call the shop</a>
         </div>
-        <p class="mc-workshop-note">Call for price and availability.</p>
+        <p class="mc-workshop-note">Call for price, scope and availability.</p>
       </section>
-      <nav class="mc-rail" aria-label="Bike range">
-        <a class="mc-cell" href="#" data-concept-placeholder><span class="mc-cell-index">01</span><span class="mc-cell-name">Electric</span></a>
-        <a class="mc-cell" href="#" data-concept-placeholder><span class="mc-cell-index">02</span><span class="mc-cell-name">Road</span></a>
-        <a class="mc-cell" href="#" data-concept-placeholder><span class="mc-cell-index">03</span><span class="mc-cell-name">Mountain</span></a>
-        <a class="mc-cell" href="#" data-concept-placeholder><span class="mc-cell-index">04</span><span class="mc-cell-name">Hybrid</span></a>
-        <a class="mc-cell" href="#" data-concept-placeholder><span class="mc-cell-index">05</span><span class="mc-cell-name">Kids</span></a>
-        <a class="mc-cell mc-cell-scheme" href="/concepts/mourne-cycles/hire/">
+      <nav class="mc-rail" aria-label="Bike range by terrain">
+        {rangeCategories.map((category) => (
+          <a class="mc-cell" href="#trails">
+            <span class="mc-cell-index">{category.index}</span>
+            <span class="mc-cell-name">{category.name}</span>
+            <small class="mc-cell-terrain">{category.terrain}</small>
+          </a>
+        ))}
+        <a class="mc-cell mc-cell-scheme" href="/concepts/mourne-cycles/hire/#panel-scheme-h">
           <span class="mc-cell-index">Cycle to Work</span>
           <span class="mc-cell-name">Save through work</span>
           <small>Listed Cyclescheme retailer</small>
         </a>
       </nav>
     </main>
+
+    <section class="mc-trails" id="trails" aria-labelledby="mc-trails-heading">
+      <div class="mc-trails-head">
+        <p class="mc-kicker">Our local trails</p>
+        <h2 class="mc-section-h2" id="mc-trails-heading">The shop at the trailhead.</h2>
+        <p class="mc-section-lede">
+          63A Castlewellan Road is the road out of Newcastle toward Castlewellan — the
+          gateway to the riding country Mourne Cycles names on its own site. Buy a bike
+          here, ride the trails, and bring it back to the workshop when it needs looking after.
+        </p>
+      </div>
+      <McTrailsMap headingId="mc-trails-heading" />
+    </section>
 </ConceptLayout>

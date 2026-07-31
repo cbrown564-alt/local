@@ -247,8 +247,9 @@ await check("Mourne Cycles labels provisional offers before prices", async () =>
         priceTop: firstPrice?.getBoundingClientRect().top,
       };
     });
-    assert.equal(result.notices.length, 2);
+    assert.equal(result.notices.length, 3);
     assert.match(result.notices[0] ?? "", /Prices indicative|call to confirm/i);
+    assert.match(result.notices[2] ?? "", /Worked example|confirm your own saving/i);
     assert.ok((result.noticeTop ?? Infinity) < (result.priceTop ?? -Infinity));
     assert.doesNotMatch(result.text, /Green Commute Initiative|2–5 working days/);
   });

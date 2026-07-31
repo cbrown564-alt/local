@@ -5,14 +5,15 @@ const phone = "028 4372 7272";
 const phoneHref = "tel:+442843727272";
 const serviceMail = "mailto:mournecycles@gmail.com?subject=Workshop%20booking";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import { schemeExample } from "./content";
 ---
 
 <ConceptLayout
-  title={"Hire & service — Mourne Cycles concept"}
+  title={"Hire & service — Mourne Cycles"}
   slug="mourne-cycles"
   bodyClass="concept-page concept-mourne-cycles"
   lang="en-GB"
-  bannerNote="Hire prices are indicative."
+  bannerNote="Hire prices and scheme figures are indicative."
 >
 <div class="mc-strip">
       <span>Est. 2002 · listed Trek dealer &amp; Cyclescheme retailer</span>
@@ -34,8 +35,8 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
         <a href="/concepts/mourne-cycles/">Bikes</a>
         <a href="#" data-concept-placeholder>Accessories</a>
         <a href="/concepts/mourne-cycles/hire/" aria-current="page">Workshop</a>
-        <a href="/concepts/mourne-cycles/hire/">Cycle to Work</a>
-        <a href="#" data-concept-placeholder>Visit us</a>
+        <a href="#panel-scheme-h">Cycle to Work</a>
+        <a href="/concepts/mourne-cycles/#trails">Trails</a>
       </nav>
       <div class="mc-header-actions">
         <a class="mc-phone" href={phoneHref}>{phone}</a>
@@ -127,19 +128,40 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
             <div class="mc-panel-head">
               <span class="mc-panel-num" aria-hidden="true">03</span>
               <h2 id="panel-scheme-h">Cycle to Work</h2>
-              <p>Mourne Cycles is listed as a Cyclescheme retailer. Eligibility and savings depend on the employee's circumstances and current scheme rules.</p>
+              <p>Mourne Cycles is listed as a {schemeExample.scheme} retailer. Eligibility and savings depend on your employer and current scheme rules.</p>
             </div>
-            <div class="mc-savings">
-              <div class="mc-savings-dial">
-                <span class="mc-savings-pct">42</span>
-                <sup>%</sup>
-                <span class="mc-savings-label">illustrative<br />scheme example</span>
-              </div>
-              <div class="mc-savings-steps" aria-label="How it works">
-                <div class="mc-step"><span class="mc-step-n">1</span><span>Your employer agrees</span></div>
-                <div class="mc-step"><span class="mc-step-n">2</span><span>Choose from the range</span></div>
-                <div class="mc-step"><span class="mc-step-n">3</span><span>Salary sacrifice pays</span></div>
-              </div>
+            <p class="mc-provisional">Worked example — confirm your own saving with the shop.</p>
+            <div class="mc-scheme-example" aria-label="Cyclescheme worked example">
+              <dl class="mc-scheme-facts">
+                <div>
+                  <dt>Scheme</dt>
+                  <dd>{schemeExample.scheme}</dd>
+                </div>
+                <div>
+                  <dt>Salary band</dt>
+                  <dd>{schemeExample.salaryBand}</dd>
+                </div>
+                <div>
+                  <dt>Bike package</dt>
+                  <dd>{schemeExample.bikePackage}</dd>
+                </div>
+                <div>
+                  <dt>Repayment</dt>
+                  <dd>{schemeExample.monthlySacrifice} · {schemeExample.term}</dd>
+                </div>
+                <div class="mc-scheme-saving">
+                  <dt>Example saving</dt>
+                  <dd>{schemeExample.illustrativeSaving}</dd>
+                </div>
+              </dl>
+              <ol class="mc-scheme-steps" aria-label="How it works">
+                {schemeExample.steps.map((step, index) => (
+                  <li>
+                    <span class="mc-step-n" aria-hidden="true">{index + 1}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
             <div class="mc-panel-foot">
               <a class="mc-panel-btn mc-panel-btn-white" href="#" data-concept-placeholder>Start your application →</a>

@@ -1,0 +1,78 @@
+---
+/** An indicative map of the trails Mourne Cycles points to.
+ *
+ *  Every named feature is either the shop's own address on Castlewellan Road or
+ *  a public trail designation named in the shop's "Our local Trails" section
+ *  and verifiable from Forest Service / National Trust sources. Relative
+ *  positions are indicative — drawn in the order a rider leaves Newcastle toward
+ *  the Mournes — and the caption says exactly that.
+ *
+ *  Plate and pins come from the shared map shell
+ *  (src/concepts/_shell/MapPlate.astro); the scene below is the concept's
+ *  own drawing. */
+import MapPin from "../../_shell/MapPin.astro";
+import MapPlate from "../../_shell/MapPlate.astro";
+import { trailPins } from "../content";
+
+interface Props {
+  headingId?: string;
+}
+
+const { headingId } = Astro.props;
+---
+
+<MapPlate
+  id="mc-map"
+  viewBox="0 0 800 480"
+  title="Local trails around Mourne Cycles"
+  desc="An indicative drawing of Mourne Cycles at 63A Castlewellan Road, Newcastle, with Castlewellan Forest, Tollymore Forest, Slieve Donard and the coast road shown as public riding country the shop's own site names."
+  headingId={headingId}
+>
+  <!-- The Mournes -->
+  <path
+    class="mc-map-hills"
+    d="M88 248c52-96 148-132 236-136s176 30 228 98 48 112 24 152H88Z"
+  />
+  <path class="mc-map-hill-line" d="M156 188c76 20 140 16 204-6" />
+  <path class="mc-map-hill-line" d="M236 156c92 12 168 4 244-20" />
+  <path class="mc-map-summit" d="M500 108 L536 56 L572 108" />
+
+  <!-- Irish Sea / coast -->
+  <path
+    class="mc-map-sea"
+    d="M612 118c40 18 84 42 112 78s36 82 22 118-56 58-98 48"
+  />
+  <path class="mc-map-coast" d="M584 206c56-8 104-2 152 18s80 48 94 82" />
+
+  <!-- Castlewellan Road out of town -->
+  <path class="mc-map-road" d="M108 360c84-18 148-44 208-78s116-72 168-108" />
+  <path class="mc-map-road" d="M168 318c48-28 96-52 148-72" />
+
+  <!-- Forest blocks -->
+  <rect class="mc-map-forest" x="248" y="196" width="108" height="72" rx="6" />
+  <rect class="mc-map-forest" x="372" y="220" width="96" height="64" rx="6" />
+
+  <!-- Shop frontage -->
+  <rect class="mc-map-shop" x="142" y="300" width="52" height="28" rx="3" />
+
+  {
+    trailPins.map((pin) => (
+      <MapPin
+        x={pin.x}
+        y={pin.y}
+        label={pin.label}
+        sub={pin.note}
+        labelDy={-12}
+        dotR={5}
+        labelClass="mc-map-pin-label"
+        subClass="mc-map-pin-note"
+      />
+    ))
+  }
+
+  <Fragment slot="caption">
+    An indicative map — not a survey. Trail names come from Mourne Cycles' own
+    "Our local Trails" section and publicly designated riding country; positions
+    are drawn, not measured.
+  </Fragment>
+</MapPlate>
