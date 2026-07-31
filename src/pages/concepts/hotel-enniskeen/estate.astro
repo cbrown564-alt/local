@@ -1,5 +1,6 @@
 ---
 import EnniskeenShell from "../../../components/enniskeen/EnniskeenShell.astro";
+import EnkEstateMap from "../../../components/enniskeen/EnkEstateMap.astro";
 import ResponsiveImage from "../../../components/ResponsiveImage.astro";
 import { estate, base, generatedVisuals } from "../../../data/enniskeen-site";
 ---
@@ -42,6 +43,20 @@ import { estate, base, generatedVisuals } from "../../../data/enniskeen-site";
         </figure>
       </section>
 
+      <!-- The estate, drawn -->
+      <section class="enk-map-section" aria-labelledby="map-heading">
+        <div class="enk-map-head">
+          <p class="enk-kicker" style="animation:none">The grounds</p>
+          <h2 id="map-heading">The twelve acres, drawn.</h2>
+          <p>
+            The drive in off the Bryansford Road, the house and its turret, the
+            lawns below the terrace, and the trail that leaves the gardens for
+            the woods, passes the Wishing Well and comes out on the Shimna.
+          </p>
+        </div>
+        <EnkEstateMap headingId="map-heading" />
+      </section>
+
       <!-- Gardens band -->
       <section class="enk-gardens-band">
         <figure>
@@ -69,6 +84,25 @@ import { estate, base, generatedVisuals } from "../../../data/enniskeen-site";
           <p>{estate.history.built}</p>
           <p>{estate.history.titanic}</p>
         </div>
+      </section>
+
+      <!-- The same history as a dated band. The hotel already owns a better
+           story than anything a competitor could buy; it was previously two
+           paragraphs beside a photograph. -->
+      <section class="enk-timeline-band" aria-labelledby="timeline-heading">
+        <div class="enk-timeline-head">
+          <p class="enk-kicker" style="animation:none">A hundred and thirty years</p>
+          <h2 id="timeline-heading">How the house got here.</h2>
+        </div>
+        <ol class="enk-timeline" role="list">
+          {estate.timeline.map((entry) => (
+            <li>
+              <span class="enk-timeline-marker">{entry.marker}</span>
+              <h3>{entry.title}</h3>
+              <p>{entry.copy}</p>
+            </li>
+          ))}
+        </ol>
       </section>
     </main>
 </EnniskeenShell>

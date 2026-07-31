@@ -1,0 +1,44 @@
+---
+/** The house mark: an E under the turret roofline.
+ *
+ *  Drawn from the building's own silhouette in the faithful visualisation —
+ *  the conical slate turret with its weathervane finial, which is the one
+ *  feature of Enniskeen no other hotel in Newcastle has. Used as the header
+ *  lockup, as a section ornament between bands, and as the favicon
+ *  (`public/brand/enniskeen-mark.svg`, kept in step with this file by hand).
+ *
+ *  Purely decorative in every placement — the header keeps its text wordmark
+ *  beside it — so it is hidden from assistive technology.
+ */
+interface Props {
+  /** Rendered size in px; the mark is drawn on a 44 × 52 grid. */
+  size?: number;
+  class?: string;
+}
+
+const { size = 34, class: className } = Astro.props;
+---
+
+<svg
+  class:list={["enk-mark", className]}
+  width={size}
+  height={Math.round((size * 52) / 44)}
+  viewBox="0 0 44 52"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Weathervane finial -->
+  <path d="M22 2v4" />
+  <!-- Turret roof -->
+  <path d="M8 22 22 6l14 16" />
+  <!-- The E, its top arm doubling as the eaves line -->
+  <path d="M8 22h28" />
+  <path d="M13 22v26" />
+  <path d="M13 35h15" />
+  <path d="M13 48h23" />
+</svg>

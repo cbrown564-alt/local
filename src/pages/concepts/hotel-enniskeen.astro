@@ -1,8 +1,10 @@
 ---
 import EnniskeenShell from "../../components/enniskeen/EnniskeenShell.astro";
 import EnkBooking from "../../components/enniskeen/EnkBooking.astro";
+import EnkHero from "../../components/enniskeen/EnkHero.astro";
+import EnkMark from "../../components/enniskeen/EnkMark.astro";
 import ResponsiveImage from "../../components/ResponsiveImage.astro";
-import { base, generatedVisuals, home, enniskeen } from "../../data/enniskeen-site";
+import { base, generatedVisuals, home, enniskeen, review } from "../../data/enniskeen-site";
 
 const explore = [
   {
@@ -44,12 +46,11 @@ const explore = [
           <a class="enk-link" href={`${base}/dine/`}>Afternoon tea →</a>
         </div>
       </section>
-      <figure class="enk-visual">
-        <ResponsiveImage pictureClass="concept-responsive-picture" {...generatedVisuals.house} loading="eager" />
-        <figcaption>Provisional visualisation · house built 1890s</figcaption>
-      </figure>
+      <EnkHero />
       <EnkBooking variant="hero" />
     </section>
+
+    <p class="enk-ornament"><EnkMark size={26} /></p>
 
     <section class="enk-explore" aria-labelledby="explore-heading">
       <p class="enk-kicker" style="animation:none">The house &amp; the valley</p>
@@ -76,7 +77,18 @@ const explore = [
       <div class="enk-welcome-copy">
         <p class="enk-kicker" style="animation:none">A warm welcome</p>
         <h2>Family-run, under the Mournes.</h2>
-        <p>{home.welcome}</p>
+        <p class="enk-dropcap">{home.welcome}</p>
+        <!-- A guest's own words, at a size the studio's own copy never gets.
+             The attribution and date are part of the quote, not decoration:
+             this is a real, checkable TripAdvisor review, and the concept is
+             worth nothing if the owner cannot go and find it. -->
+        <figure class="enk-pullquote">
+          <blockquote cite={review.source}>“{review.text}”</blockquote>
+          <figcaption>
+            {review.attribution}
+            <span>{review.context}</span>
+          </figcaption>
+        </figure>
         <p class="enk-welcome-directions">{enniskeen.directions}</p>
       </div>
       <figure class="enk-welcome-visual">

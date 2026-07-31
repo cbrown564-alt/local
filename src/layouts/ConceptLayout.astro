@@ -12,6 +12,9 @@ interface Props {
   lang?: string;
   fontHref?: string;
   bannerNote?: string;
+  /** A concept with its own house mark can seal the browser tab with it;
+      everything else keeps the studio favicon. */
+  favicon?: string;
   /** Concepts are now built before their case study exists, so the banner and
       claim link can no longer rely on a published transformation record. */
   businessName?: string;
@@ -47,6 +50,7 @@ const {
   lang = "en-GB",
   fontHref = conceptFonts[slug],
   bannerNote,
+  favicon = "/favicon.svg",
   businessName: businessNameProp,
   town: townProp,
 } = Astro.props;
@@ -66,7 +70,7 @@ const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="description" content={`Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
     {fontHref && (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

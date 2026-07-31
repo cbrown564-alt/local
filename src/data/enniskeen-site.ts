@@ -113,6 +113,61 @@ export const generatedVisuals = {
   },
 } as const;
 
+/** Day-part hero.
+ *
+ *  The same faithful visualisation of the house at three times of day, swapped
+ *  on the visitor's local clock so an owner opening the concept in the evening
+ *  meets their own building with the windows lit.
+ *
+ *  Each variant is a separate generation from the same reference photograph and
+ *  the same composition as `generatedVisuals.house` — see
+ *  `research/enniskeen-day-part-hero-brief.md` for the prompts and the standing
+ *  reference boundary. A variant appears only once its file is actually present
+ *  in `public/`, so the page is never wrong about what it is showing: drop the
+ *  generation in, rebuild, and it joins the rotation. With one variant present
+ *  the hero is a plain static image and no swap script is emitted.
+ */
+const dayPartSources = [
+  {
+    id: "dawn",
+    /** Local hours, inclusive of `from`, exclusive of `to`. */
+    from: 4,
+    to: 10,
+    src: "/images/enniskeen-faithful-house-dawn.jpg",
+    width: 1823,
+    height: 863,
+    alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel at dawn, mist across the valley behind its gabled façade, turret and ivy",
+    caption: "Provisional visualisation · the house at dawn",
+  },
+  {
+    id: "day",
+    from: 10,
+    to: 18,
+    src: generatedVisuals.house.src,
+    width: generatedVisuals.house.width,
+    height: generatedVisuals.house.height,
+    alt: generatedVisuals.house.alt,
+    caption: "Provisional visualisation · house built 1890s",
+  },
+  {
+    id: "dusk",
+    from: 18,
+    to: 4,
+    src: "/images/enniskeen-faithful-house-dusk.jpg",
+    width: 1823,
+    height: 863,
+    alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel at dusk, its windows lit against the darkening Shimna Valley",
+    caption: "Provisional visualisation · the house at dusk",
+  },
+] as const;
+
+export type DayPart = (typeof dayPartSources)[number];
+
+/** The declared set. Which of these actually ship is resolved against
+ *  `public/` in `EnkHero.astro` — this module is imported by the booking
+ *  component's client script, so it must stay free of Node built-ins. */
+export const dayParts: readonly DayPart[] = dayPartSources;
+
 export const nav = [
   { id: "home", href: `${base}/`, label: "Home" },
   { id: "rooms", href: `${base}/rooms/`, label: "Stay" },
@@ -129,6 +184,24 @@ export const home = {
     "Family-run, in twelve wooded acres beneath the Mournes — the river trail from the door, Mourne Honey afternoon tea on the terrace, and a quiet nightcap in the Brandy Pad Lounge.",
   welcome:
     "Enniskeen Country House Hotel is a mountainside hideaway resting in the lush Shimna Valley just outside Newcastle, Co. Down — explore the twelve-acre estate and the winding woodland trail down to the Shimna River, enjoy the views over Slieve Donard and the Irish Sea, or spot wildlife roaming the gardens.",
+};
+
+/** A real guest's own words, quoted verbatim from the hotel's public
+ *  TripAdvisor page — one of the ~389 reviews behind its 4.4 rating (see
+ *  research/verifications.json). The studio writes none of this: the sentence
+ *  is contiguous in the original, trimmed only of its leading "First,", and
+ *  the reviewer's display name and city are quoted as TripAdvisor publishes
+ *  them. Read 31 July 2026.
+ *
+ *  Withdraw it if the review is edited or removed — a quotation that no longer
+ *  exists at its source is exactly the kind of unverifiable atmosphere the
+ *  rest of this file exists to avoid. */
+export const review = {
+  text:
+    "This country house is beautiful, the grounds are beautiful, and our room was absolutely lovely.",
+  attribution: "Carolyn K · Asheville, North Carolina",
+  context: "Reviewed on TripAdvisor, 22 July 2026 · stayed July 2026",
+  source: "https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012",
 };
 
 /** ${site}/Rooms.html */
@@ -223,6 +296,35 @@ export const estate = {
     titanic:
       "The house later passed to linen manufacturer H. Liddell, whose table linens dressed the finest dining rooms aboard RMS Titanic — including the Captain's table. In the 1960s the house became a hotel.",
   },
+  /** The same History.html facts as a dated band. Only the two dates the
+   *  hotel actually publishes are given as dates; the Liddell era is
+   *  undated there, so it stays undated here. */
+  timeline: [
+    {
+      marker: "Late 1890s",
+      title: "Built for a tobacco man",
+      copy:
+        "R.W. Murray — principal of the Murray Sons & Co. tobacco house behind 'Erinmore' and 'Murray's Mellow Mixture', and a director of the Belfast Ropeworks, then the biggest rope maker in the world — builds Enniskeen House above the Shimna Valley.",
+    },
+    {
+      marker: "The linen years",
+      title: "Table linen for the Titanic",
+      copy:
+        "The house passes to linen manufacturer H. Liddell, whose table linens dressed the finest dining rooms aboard RMS Titanic — including the Captain's table.",
+    },
+    {
+      marker: "1960s",
+      title: "The house becomes a hotel",
+      copy:
+        "Enniskeen opens its doors as a country house hotel, keeping the rooms individually styled — the turret room, the pink art-deco bathroom — rather than matching them to one another.",
+    },
+    {
+      marker: "Today",
+      title: "Family-run, twelve acres",
+      copy:
+        "Twelve wooded acres, the woodland trail past the Wishing Well down to the Shimna, and the Brandy Pad Lounge — named for the old smugglers' route through the Mournes above the house.",
+    },
+  ],
 };
 
 /** ${site}/Walking.html, Golf.html, BikeHire.html, Mourne-FoodsFilms-CycleTour.html */

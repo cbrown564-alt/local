@@ -295,11 +295,13 @@
 /* ─── Brand link (rooms page — header wraps in an anchor) ─────────────────── */
 .enk-brand-link {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  align-items: center;
+  gap: 14px;
   text-decoration: none;
   color: inherit;
 }
+.enk-brand-text { display: flex; flex-direction: column; gap: 3px; }
+.enk-brand-mark { color: var(--honey-deep); flex-shrink: 0; }
 
 /* ─── Rooms page — /concepts/hotel-enniskeen/rooms/ ──────────────────────── */
 
@@ -415,8 +417,8 @@
   background: linear-gradient(180deg, transparent 55%, rgba(21, 41, 31, 0.35));
   pointer-events: none;
 }
-.enk-room-card-image--garden img { object-position: 40% 70%; filter: brightness(0.92) saturate(0.92); }
-.enk-room-card-image--family img { object-position: 72% 20%; filter: brightness(0.88) saturate(0.88) hue-rotate(-5deg); }
+.enk-room-card-image--garden img { object-position: 40% 70%; filter: brightness(0.92) saturate(0.92) var(--enk-grade); }
+.enk-room-card-image--family img { object-position: 72% 20%; filter: brightness(0.88) saturate(0.88) hue-rotate(-5deg) var(--enk-grade); }
 
 .enk-room-card-body {
   flex: 1;
@@ -940,7 +942,7 @@
   color: var(--cream);
 }
 .enk-history-visual { position: relative; margin: 0; overflow: hidden; border: 1px solid rgba(245, 239, 226, 0.2); }
-.enk-history-visual img { width: 100%; height: auto; display: block; filter: sepia(0.12); }
+.enk-history-visual img { width: 100%; height: auto; display: block; filter: var(--enk-grade); }
 .enk-history-copy p { color: var(--copy-soft); }
 
 /* ── Things to do ── */
@@ -1124,3 +1126,312 @@
   .enk-character-card,
   .enk-nearby-grid a { transition: none; }
 }
+
+/* ═══ Elevation: one voice, one mark, one estate ══════════════════════════════
+   Added 31 July 2026 against docs/good-to-great-concept-elevation.md. Nothing
+   below is decoration for its own sake: each block is either recognition (the
+   owner sees their own place) or theatre (the concept gets shown to someone
+   else). */
+
+/* ── One photographic voice ──
+   A single graded pass over every image in the concept: shadows carried toward
+   the house pine, highlights warmed, saturation eased, a fine grain over the
+   top. Defined once as an SVG filter in the shell and referenced here through
+   a custom property, so the handful of images that carry their own framing
+   filters can compose with it rather than fight it. */
+.concept-enniskeen {
+  --enk-grade: url(#enk-grade);
+}
+.concept-enniskeen img {
+  filter: var(--enk-grade);
+}
+/* The plate is already drawn in the concept's own ink — grading it would only
+   muddy the line work. */
+.concept-enniskeen .enk-map-plate,
+.concept-enniskeen .enk-mark {
+  filter: none;
+}
+.enk-grade-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ── Day-part hero ──
+   Frames are stacked in the grid cell so the swap cannot reflow the hero or
+   shift the booking bar stitched across its seam. */
+.enk-visual[data-enk-daypart] { display: grid; }
+.enk-visual-frame {
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 0;
+}
+.enk-visual-frame[hidden] { display: none; }
+.enk-visual-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 46%;
+}
+
+/* ── House mark as a section ornament ──
+   A brass seal on the hairline between bands: the mark centred on a rule that
+   runs out to both margins. */
+.enk-ornament {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0 clamp(20px, 4vw, 64px);
+  background: var(--cream-bright);
+  color: var(--honey);
+}
+.enk-ornament::before,
+.enk-ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+.enk-ornament--pine { background: var(--pine); }
+.enk-footer-mark { color: var(--honey); margin-bottom: 10px; }
+
+/* ── Editorial: drop cap ──
+   One cap, on the welcome note only. A page of drop caps is a ransom note. */
+.enk-dropcap::first-letter {
+  float: left;
+  margin: 6px 12px 0 0;
+  font-family: var(--serif);
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 0.72;
+  color: var(--honey-deep);
+}
+
+/* ── Editorial: pull-quote ──
+   Set large enough to stop the eye, and always carrying its attribution — a
+   quotation without a source is the kind of atmosphere this studio does not
+   trade in. */
+.enk-pullquote {
+  margin: 44px 0 30px;
+  padding-left: clamp(20px, 3vw, 34px);
+  border-left: 2px solid var(--honey);
+}
+.enk-pullquote blockquote {
+  /* Measured on the quote's own large serif, not on the figure's body font —
+     a ch limit set on the figure resolves against 16px and strangles it. */
+  max-width: 17em;
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(27px, 3.1vw, 40px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.enk-pullquote figcaption {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+}
+.enk-pullquote figcaption span {
+  display: block;
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* ── The estate map ── */
+.enk-map-section {
+  padding: 84px clamp(20px, 4vw, 64px) 88px;
+  background: var(--cream-bright);
+}
+.enk-map-head { max-width: 58ch; margin-bottom: 34px; }
+.enk-map-head h2 {
+  margin: 12px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+.enk-map-head p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #3a4e3d;
+}
+.enk-map { margin: 0; }
+.enk-map-plate {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+}
+.enk-map figcaption {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #55684f;
+  max-width: 56ch;
+}
+.enk-map-ground { fill: var(--cream); }
+.enk-map-rule { fill: none; stroke: var(--honey); stroke-opacity: 0.55; stroke-width: 1.2; }
+.enk-map-rule--inner { stroke-opacity: 0.3; stroke-width: 0.7; }
+.enk-map-boundary {
+  fill: rgba(30, 58, 44, 0.035);
+  stroke: var(--honey-deep);
+  stroke-opacity: 0.45;
+  stroke-width: 1.3;
+  stroke-dasharray: 1 6;
+  stroke-linecap: round;
+}
+.enk-map-river { fill: none; stroke: var(--pine); stroke-opacity: 0.5; stroke-width: 2.6; stroke-linecap: round; }
+.enk-map-river--shadow { stroke-opacity: 0.22; stroke-width: 1.4; }
+.enk-map-drive { fill: none; stroke: var(--honey-deep); stroke-opacity: 0.5; stroke-width: 1.6; }
+.enk-map-drive--edge { stroke-opacity: 0.28; stroke-width: 1; }
+.enk-map-trail {
+  fill: none;
+  stroke: var(--honey-deep);
+  stroke-width: 1.8;
+  stroke-dasharray: 3 7;
+  stroke-linecap: round;
+}
+.enk-map-lawn { fill: rgba(201, 151, 59, 0.07); stroke: var(--honey-deep); stroke-opacity: 0.3; stroke-width: 0.9; }
+.enk-map-wood path { fill: none; stroke: var(--pine); stroke-opacity: 0.55; stroke-width: 1.3; stroke-linecap: round; }
+.enk-map-house path,
+.enk-map-house circle { fill: var(--cream); stroke: var(--ink-green); stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.enk-map-well ellipse,
+.enk-map-well path { fill: var(--cream); stroke: var(--honey-deep); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.enk-map-compass circle { fill: none; stroke: var(--honey); stroke-opacity: 0.5; stroke-width: 1; }
+.enk-map-compass path { fill: var(--honey-deep); fill-opacity: 0.75; stroke: none; }
+.enk-map-compass-south { fill-opacity: 0.22; }
+.enk-map-compass text {
+  fill: var(--honey-deep);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+}
+.enk-map-sight path { fill: none; stroke: var(--pine); stroke-opacity: 0.4; stroke-width: 1; stroke-dasharray: 5 5; }
+.enk-map-labels text {
+  fill: var(--ink-green);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.enk-map-label--house {
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.enk-map-label--sight {
+  font-size: 14px;
+  fill: #55684f;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── History timeline band ── */
+.enk-timeline-band {
+  padding: 80px clamp(20px, 4vw, 64px) 86px;
+  background: var(--pine);
+  color: var(--cream);
+}
+.enk-timeline-head { max-width: 56ch; margin-bottom: 44px; }
+.enk-timeline-head h2 {
+  margin: 12px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+.enk-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.6vw, 38px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.enk-timeline li { position: relative; padding-top: 30px; }
+/* The rule runs the width of each entry and carries the marker dot, so the
+   band reads as one continuous line across the four moments. */
+.enk-timeline li::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: calc(clamp(20px, 2.6vw, 38px) * -1);
+  height: 1px;
+  background: rgba(201, 151, 59, 0.35);
+}
+.enk-timeline li:last-child::before { right: 0; }
+.enk-timeline li::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--honey);
+}
+.enk-timeline-marker {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--honey);
+}
+.enk-timeline h3 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+.enk-timeline p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--copy-soft);
+}
+
+@media (max-width: 1100px) {
+  .enk-timeline { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .enk-timeline li:nth-child(2)::before { right: 0; }
+}
+
+@media (max-width: 900px) {
+  .enk-brand-mark { width: 28px; height: auto; }
+  .enk-map-section { padding-block: 60px 64px; }
+  .enk-timeline-band { padding-block: 60px 64px; }
+  .enk-pullquote blockquote { max-width: none; }
+}
+
+@media (max-width: 640px) {
+  .enk-timeline { grid-template-columns: 1fr; }
+  .enk-timeline li::before { right: 0; }
+  /* Labels set for a 800-unit plate become unreadable once the plate is
+     scaled to a phone; the figure's own caption and the SVG description
+     carry the same information. */
+  .enk-map-labels text { font-size: 21px; }
+  .enk-map-label--house { font-size: 25px; }
+  .enk-map-label--sight { font-size: 18px; }
+}
+
+/* Compass disc sits over the boundary hedge rather than being crossed by it. */
+.enk-map-compass circle { fill: var(--cream); }
+.enk-map-sight-head { stroke-dasharray: none; stroke-opacity: 0.55; stroke-width: 1.4; }

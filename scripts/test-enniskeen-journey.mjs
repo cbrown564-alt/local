@@ -261,8 +261,219 @@ try {
 
   await client.detach();
   await page.close();
+
+  // ── Elevation checks ──────────────────────────────────────────────────────
+  // Added 31 July 2026 with the day-part hero, estate map, history band, house
+  // mark, shared grade and pull-quote. These exist so the elevation cannot rot
+  // quietly: each one fails loudly if the piece is removed or stops working.
+
+  const elevation = await browser.newPage();
+  const elevationErrors = [];
+  elevation.on("console", (message) => {
+    if (message.type() === "error" || message.type() === "warning") {
+      elevationErrors.push(message.text());
+    }
+  });
+  elevation.on("pageerror", (error) => elevationErrors.push(error.message));
+  await elevation.setViewport({ width: 1265, height: 800, deviceScaleFactor: 1 });
+
+  /** Pin the clock the swap script reads, before any page script runs. */
+  const pinHour = (target, hour) =>
+    target.evaluateOnNewDocument((value) => {
+      Date.prototype.getHours = function getHours() {
+        return value;
+      };
+    }, hour);
+
+  const visibleDayPart = () =>
+    elevation.evaluate(() => {
+      const frame = document.querySelector(
+        ".enk-visual[data-enk-daypart] [data-daypart]:not([hidden])",
+      );
+      return {
+        id: frame?.dataset.daypart ?? null,
+        declared: document.querySelectorAll("[data-daypart]").length,
+        caption: document
+          .querySelector("[data-enk-daypart-caption]")
+          ?.textContent?.trim(),
+      };
+    });
+
+  await pinHour(elevation, 12);
+  await elevation.goto(route, { waitUntil: "networkidle0", timeout: 60_000 });
+  const midday = await visibleDayPart();
+  assert.equal(
+    midday.id,
+    "day",
+    "the hero must show the daytime plate at midday, and before any script runs",
+  );
+  assert.match(
+    midday.caption ?? "",
+    /provisional visualisation/i,
+    "every hero variant must carry the provisional-visualisation disclosure",
+  );
+
+  // The dawn and dusk generations are briefed but not yet made
+  // (research/enniskeen-day-part-hero-brief.md). Assert the swap for real as
+  // soon as a second variant exists rather than leaving a permanently green
+  // test that never exercised it.
+  if (midday.declared > 1) {
+    await pinHour(elevation, 21);
+    await elevation.goto(route, { waitUntil: "networkidle0", timeout: 60_000 });
+    const evening = await visibleDayPart();
+    assert.notEqual(
+      evening.id,
+      "day",
+      "an evening visit must swap the hero away from the daytime plate",
+    );
+    assert.match(
+      evening.caption ?? "",
+      /provisional visualisation/i,
+      "the swapped caption must keep the disclosure",
+    );
+    const stillOne = await elevation.evaluate(
+      () =>
+        document.querySelectorAll(
+          ".enk-visual[data-enk-daypart] [data-daypart]:not([hidden])",
+        ).length,
+    );
+    assert.equal(stillOne, 1, "exactly one hero variant may be visible at a time");
+  }
+
+  const home = await elevation.evaluate(() => {
+    const image = document.querySelector(".enk-explore-image img");
+    return {
+      grade: image ? getComputedStyle(image).filter : null,
+      markInHeader: Boolean(document.querySelector(".enk-brand-link .enk-mark")),
+      markHidden:
+        document.querySelector(".enk-mark")?.getAttribute("aria-hidden") === "true",
+      favicon: document
+        .querySelector('link[rel="icon"]')
+        ?.getAttribute("href"),
+      dropCaps: document.querySelectorAll(".enk-dropcap").length,
+    };
+  });
+  assert.match(
+    String(home.grade),
+    /enk-grade/,
+    "concept imagery must carry the shared grade, so the set reads as one shoot",
+  );
+  assert.equal(home.markInHeader, true, "the house mark must seal the header");
+  assert.equal(home.markHidden, true, "the decorative mark must be hidden from AT");
+  assert.equal(home.favicon, "/brand/enniskeen-mark.svg");
+  assert.equal(home.dropCaps, 1, "exactly one drop cap — a page of them is a ransom note");
+
+  // Estate page: the map and the history band.
+  await elevation.goto(new URL(`${base}/concepts/hotel-enniskeen/estate/`).href, {
+    waitUntil: "networkidle0",
+    timeout: 60_000,
+  });
+  const estate = await elevation.evaluate(() => {
+    const plate = document.querySelector(".enk-map-plate");
+    const labelled = plate?.getAttribute("aria-labelledby")?.split(/\s+/) ?? [];
+    const box = plate?.getBoundingClientRect();
+    // A label drawn outside the viewBox is clipped, which silently loses a
+    // named feature from the drawing.
+    const clipped = plate
+      ? [...plate.querySelectorAll("text")]
+          .map((node) => {
+            const bounds = node.getBBox();
+            const shift = node.closest("g[transform]");
+            const offset = shift
+              ? Number(
+                  /translate\(([-\d.]+)/.exec(shift.getAttribute("transform"))?.[1] ?? 0,
+                )
+              : 0;
+            return {
+              text: node.textContent.trim().slice(0, 28),
+              left: bounds.x + offset,
+              right: bounds.x + bounds.width + offset,
+            };
+          })
+          .filter((label) => label.left < 21 || label.right > 779)
+      : [];
+    return {
+      hasPlate: Boolean(plate),
+      labelled,
+      describedByHeading: labelled.includes("map-heading"),
+      hasDescription: Boolean(plate?.querySelector("desc")?.textContent?.trim()),
+      caption: document.querySelector(".enk-map figcaption")?.textContent?.trim(),
+      overflows: box ? box.width > document.documentElement.clientWidth : false,
+      clipped,
+      timelineEntries: document.querySelectorAll(".enk-timeline li").length,
+      timelineMarkers: [
+        ...document.querySelectorAll(".enk-timeline-marker"),
+      ].map((node) => node.textContent.trim()),
+    };
+  });
+  assert.equal(estate.hasPlate, true, "the estate page must carry the drawn plan");
+  assert.equal(
+    estate.describedByHeading,
+    true,
+    "the plate must be named by the section heading",
+  );
+  assert.equal(estate.hasDescription, true, "the plate needs a text description");
+  assert.deepEqual(
+    estate.clipped,
+    [],
+    "no map label may be drawn outside the plate",
+  );
+  assert.equal(estate.overflows, false, "the plate must not overflow its column");
+  // The drawing is not a survey and must never imply that it is.
+  assert.match(
+    estate.caption ?? "",
+    /indicative/i,
+    "the map caption must disclose that the plan is indicative",
+  );
+  assert.match(estate.caption ?? "", /not a survey/i);
+  assert.equal(estate.timelineEntries, 4, "the history band carries four moments");
+  assert.ok(
+    estate.timelineMarkers.includes("Late 1890s") &&
+      estate.timelineMarkers.includes("1960s"),
+    `the timeline must keep the two dates the hotel actually publishes: ${estate.timelineMarkers.join(" · ")}`,
+  );
+
+  // Home: the guest pull-quote, and whether an owner could go and check it.
+  await elevation.goto(route, { waitUntil: "networkidle0", timeout: 60_000 });
+  const quote = await elevation.evaluate(() => {
+    const figure = document.querySelector(".enk-pullquote");
+    const block = figure?.querySelector("blockquote");
+    return {
+      text: block?.textContent?.trim(),
+      cite: block?.getAttribute("cite"),
+      caption: figure?.querySelector("figcaption")?.textContent?.replace(/\s+/g, " ").trim(),
+      size: block ? parseFloat(getComputedStyle(block).fontSize) : 0,
+    };
+  });
+  assert.match(
+    quote.text ?? "",
+    /the grounds are beautiful/i,
+    "the pull-quote must be the guest's own verbatim words",
+  );
+  assert.ok(quote.size >= 26, `a pull-quote set at ${quote.size}px is just a paragraph`);
+  assert.match(quote.caption ?? "", /Carolyn K/, "a quotation must carry its attribution");
+  // A review quoted without a date and a findable source is unverifiable
+  // atmosphere, which is the one thing this concept must never trade in.
+  assert.match(
+    quote.caption ?? "",
+    /22 July 2026/,
+    "the pull-quote must date the review",
+  );
+  assert.match(
+    String(quote.cite),
+    /tripadvisor/i,
+    "the pull-quote must cite where the owner can go and read it",
+  );
+
+  assert.deepEqual(
+    elevationErrors,
+    [],
+    "the elevated pages must keep the browser console clean",
+  );
+  await elevation.close();
+
   console.log(
-    "Enniskeen journey passed: responsive, accessible failure/recovery and Bookin1 destination verified.",
+    "Enniskeen journey passed: responsive, accessible failure/recovery, Bookin1 destination, day-part hero, graded imagery, estate plate, history band and sourced pull-quote verified.",
   );
 } finally {
   await browser.close();
