@@ -1,0 +1,63 @@
+---
+/** Phone → fork → two call routes. Shared by the home safety net and the
+ *  urgent-help page so both surfaces draw the same branch. */
+import {
+  clinicPhone,
+  clinicPhoneHref,
+  safetyRoutes,
+} from "../content";
+---
+
+<div class="dv-net-branch">
+  <div class="dv-net-start">
+    <svg class="dv-net-art" viewBox="0 0 120 120" role="img" aria-label="A ringing telephone handset">
+      <path class="dv-draw-stroke" d="M34 82 C26 74 24 62 30 56 L40 46 C44 42 50 42 53 46 L57 50 C60 53 60 58 57 61 L54 64 C60 71 65 76 72 81 L75 78 C78 75 83 75 86 78 L90 82 C94 85 94 91 90 95 L82 103 C76 109 66 107 58 101 C49 94 40 88 34 82 Z" />
+      <path class="dv-draw-accent" d="M74 30 C80 32 86 36 89 42" />
+      <path class="dv-draw-accent" d="M82 20 C92 24 100 32 104 42" />
+    </svg>
+    <a class="dv-net-number" href={clinicPhoneHref}>{clinicPhone}</a>
+    <span class="dv-net-start-label">One number, day or night</span>
+  </div>
+
+  <div class="dv-net-split" aria-hidden="true">
+    <svg class="dv-net-split-art" viewBox="0 0 400 64" preserveAspectRatio="xMidYMid meet">
+      <!-- stem down from the phone, then out to each route column -->
+      <path d="M200 2 V22" />
+      <path d="M200 22 H70" />
+      <path d="M200 22 H330" />
+      <path d="M70 22 V50" />
+      <path d="M330 22 V50" />
+      <path d="M64 44 L70 54 L76 44" />
+      <path d="M324 44 L330 54 L336 44" />
+    </svg>
+  </div>
+
+  <ul class="dv-net-routes" role="list">
+    {safetyRoutes.map((route) => (
+      <li class="dv-net-route">
+        <span class="dv-net-tag">{route.when}</span>
+        {route.vignette === "clinic" && (
+          <svg class="dv-net-art" viewBox="0 0 120 120" role="img" aria-label="The clinic building">
+            <rect class="dv-draw-stroke dv-net-fill" x="30" y="52" width="60" height="42" rx="2" />
+            <path class="dv-draw-stroke" d="M24 52 L60 28 L96 52" />
+            <path class="dv-draw-accent" d="M52 68 L68 68 M60 60 L60 76" />
+            <rect class="dv-draw-stroke" x="38" y="72" width="11" height="22" />
+            <rect class="dv-draw-stroke" x="73" y="72" width="11" height="22" />
+          </svg>
+        )}
+        {route.vignette === "oncall" && (
+          <svg class="dv-net-art" viewBox="0 0 120 120" role="img" aria-label="A handset with an on-call cross badge">
+            <path class="dv-draw-stroke" d="M28 88 C22 82 20 72 25 67 L33 59 C36 56 41 56 44 59 L47 62 C50 65 50 69 47 72 L45 74 C50 80 54 84 60 88 L62 86 C65 83 69 83 72 86 L75 89 C78 92 78 97 75 100 L69 106 C64 111 56 109 49 104 C41 98 33 93 28 88 Z" />
+            <circle class="dv-draw-stroke dv-net-fill" cx="84" cy="40" r="20" />
+            <path class="dv-draw-accent" d="M77 40 L91 40 M84 33 L84 47" />
+          </svg>
+        )}
+        <div class="dv-net-card">
+          <h3>{route.title}</h3>
+          <p>{route.copy}</p>
+          <p class="dv-safety-detail">{route.detail}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>

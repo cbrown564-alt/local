@@ -1,0 +1,64 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import DvChrome from "./components/DvChrome.astro";
+import {
+  clinicPhone,
+  clinicPhoneHref,
+  vidivetCover,
+  vidivetUrl,
+} from "./content";
+---
+
+<ConceptLayout
+  title={"VidiVet support — Donard Veterinary Clinic"}
+  slug="donard-veterinary"
+  bodyClass="concept-page concept-donard-veterinary"
+  lang="en-GB"
+  bannerNote="Pet illustrations and the catchment map are drawn — not photographs or a boundary survey."
+>
+  <DvChrome current="vidivet" />
+
+  <main class="dv-route-page">
+    <div class="dv-route-intro">
+      <p class="dv-kicker">VidiVet support</p>
+      <h1>Expert digital advice.<br /><em>Free for our clients.</em></h1>
+      <p class="dv-route-lede">
+        {vidivetCover.copy} {vidivetCover.detail}
+      </p>
+    </div>
+
+    <div class="dv-vidivet-panel">
+      <span class="dv-vidivet-badge">{vidivetCover.badge}</span>
+      <h2>When VidiVet helps</h2>
+      <ul role="list">
+        <li>Questions about symptoms, behaviour or medication between visits</li>
+        <li>A second opinion when you are unsure whether to come in</li>
+        <li>Peace of mind overnight, at weekends, or while travelling</li>
+      </ul>
+      <div class="dv-vidivet-actions">
+        <a class="dv-cta" href={vidivetUrl} rel="external">Open VidiVet</a>
+        <a class="dv-link" href="/concepts/donard-veterinary/emergency/">
+          Pet emergency? Call {clinicPhone} →
+        </a>
+      </div>
+    </div>
+
+    <aside class="dv-vidivet-note" aria-label="When to call instead">
+      <h2>If you are worried right now</h2>
+      <p>
+        VidiVet is advice — not a substitute for urgent care. If your pet needs
+        help today, call the clinic line and a vet will take the call.
+      </p>
+      <a class="dv-cta dv-cta--compact" href={clinicPhoneHref}>{clinicPhone}</a>
+    </aside>
+
+    <div class="dv-route-next">
+      <p>
+        Prefer a scheduled visit?
+        <a href="/concepts/donard-veterinary/appointments/">Request an appointment →</a>
+      </p>
+    </div>
+  </main>
+</ConceptLayout>

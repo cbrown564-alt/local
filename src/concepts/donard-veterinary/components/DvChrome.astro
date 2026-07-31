@@ -1,0 +1,47 @@
+---
+/** Shared strip + header for Donard companion routes. */
+import { clinicPhone, clinicPhoneHref } from "../content";
+
+interface Props {
+  current?: "appointments" | "emergency" | "vidivet";
+}
+
+const { current } = Astro.props;
+
+const home = "/concepts/donard-veterinary/";
+const routes = {
+  appointments: `${home}appointments/`,
+  emergency: `${home}emergency/`,
+  vidivet: `${home}vidivet/`,
+} as const;
+---
+
+<div class="dv-strip">
+  <span>Pet emergency? Call <a href={clinicPhoneHref}>{clinicPhone}</a></span>
+  <span class="dv-strip-hours">Mon–Fri 8:30am–6:30pm · Wed until 7pm · Sat 9am–1pm</span>
+</div>
+
+<header class="dv-header">
+  <a class="dv-brand" href={home}>
+    <svg class="dv-badge" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+      <circle cx="23" cy="23" r="21.5" stroke="#2a6b8f" stroke-width="2.6" />
+      <path d="M7 30 L16 17 L21 23 L28 13 L39 30" stroke="#2a6b8f" stroke-width="2.6" stroke-linejoin="round" fill="none" />
+      <path d="M25.5 16.5 L28 13 L30.5 16.5" stroke="#2f9d82" stroke-width="2.6" stroke-linejoin="round" />
+    </svg>
+    <span class="dv-brand-text">
+      <span class="dv-brand-name">Donard Veterinary Clinic</span>
+      <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
+    </span>
+  </a>
+  <nav class="dv-nav" aria-label="Primary">
+    <a href={`${home}#life`}>Pet services</a>
+    <a href={routes.emergency} aria-current={current === "emergency" ? "page" : undefined}>Emergency</a>
+    <a href={routes.vidivet} aria-current={current === "vidivet" ? "page" : undefined}>VidiVet</a>
+    <a href={`${home}#catchment`}>Near you</a>
+    <a href={routes.appointments} aria-current={current === "appointments" ? "page" : undefined}>Appointments</a>
+  </nav>
+  <div class="dv-header-actions">
+    <a class="dv-phone" href={clinicPhoneHref}>{clinicPhone}</a>
+    <a class="dv-book" href={routes.appointments}>Request appointment</a>
+  </div>
+</header>

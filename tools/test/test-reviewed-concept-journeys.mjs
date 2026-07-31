@@ -120,7 +120,7 @@ await check("Newcastle Chamber search changes the directory result", async () =>
 // trading names with invented ones under one word, "illustrative".
 await check("Newcastle Chamber directory names are sourced and disclaimed per category", async () => {
   const verifications = JSON.parse(
-    fs.readFileSync(new URL("../research/pipeline/verifications.json", import.meta.url), "utf8"),
+    fs.readFileSync(new URL("../../research/pipeline/verifications.json", import.meta.url), "utf8"),
   );
   const simplify = (value) => value
     .toLocaleLowerCase("en-GB")
@@ -184,29 +184,66 @@ await check("Donard appointment details survive into an explicit email handoff",
   });
 });
 
+await check("Donard care desk routes open urgent help and VidiVet pages", async () => {
+  await withPage("/concepts/donard-veterinary/", async (page) => {
+    const hrefs = await page.$$eval(".dv-care-options a", (anchors) =>
+      anchors.map((a) => new URL(a.href).pathname));
+    assert.deepEqual(hrefs, [
+      "/concepts/donard-veterinary/appointments/",
+      "/concepts/donard-veterinary/emergency/",
+      "/concepts/donard-veterinary/vidivet/",
+    ]);
+  });
+
+  await withPage("/concepts/donard-veterinary/emergency/", async (page) => {
+    const text = await page.$eval("body", (body) => body.innerText);
+    assert.match(text, /Diverted to the on-call vet/);
+    assert.match(text, /028 4372 9414/);
+    assert.equal(await page.$$eval(".dv-net-route", (nodes) => nodes.length), 2);
+    const callHref = await page.$eval(".dv-net-number", (a) => a.getAttribute("href"));
+    assert.equal(callHref, "tel:+442843729414");
+  });
+
+  await withPage("/concepts/donard-veterinary/vidivet/", async (page) => {
+    const text = await page.$eval("body", (body) => body.innerText);
+    assert.match(text, /Free for our clients/i);
+    assert.match(text, /Open VidiVet/);
+    assert.doesNotMatch(text, /PetsApp/);
+    const openHref = await page.$eval('a[href*="donardveterinaryclinic.co.uk/vidivet"]', (a) =>
+      a.getAttribute("href"));
+    assert.equal(openHref, "https://donardveterinaryclinic.co.uk/vidivet/");
+  });
+});
+
 await check("Donard elevation surfaces sourced care content on the home page", async () => {
   await withPage("/concepts/donard-veterinary/", async (page) => {
     const pageText = await page.$eval("body", (body) => body.innerText);
-    assert.match(pageText, /illustrated pets/i);
     assert.match(pageText, /As pet owners ourselves we fully understand/);
     assert.match(pageText, /diverted to the on-call vet/);
     assert.match(pageText, /Castlewellan/);
     assert.match(pageText, /Opened 2017/);
     assert.doesNotMatch(pageText, /Sunday/);
 
-    // The drawn cast anchors the hero, disclosed as studio drawings.
-    assert.equal(await page.$$eval(".dv-story .dv-cast-art", (nodes) => nodes.length), 3);
-    assert.match(pageText, /studio drawings, not photographs of patients/);
-    // The safety net is a mechanism: three routing-tagged connectors.
-    assert.equal(await page.$$eval(".dv-net-conn", (nodes) => nodes.length), 3);
-    assert.match(pageText, /Outside clinic hours/);
-    assert.match(pageText, /Free for clients · 24\/7/);
+    // Drawn cast names the species in the life section; honesty lives in the banner.
+    assert.equal(await page.$$eval(".dv-life .dv-pets .dv-cast-art", (nodes) => nodes.length), 3);
+    assert.match(pageText, /\bDog\b/);
+    assert.match(pageText, /\bCat\b/);
+    assert.match(pageText, /Small pet/);
+    assert.match(pageText, /Pet illustrations and the catchment map are drawn/);
+    // The safety net is a branch: two call routes plus companion VidiVet cover.
+    assert.equal(await page.$$eval(".dv-net-route", (nodes) => nodes.length), 2);
+    assert.ok(await page.$(".dv-net-companion"));
+    assert.match(pageText, /Outside clinic hours/i);
+    assert.match(pageText, /Free for clients · 24\/7/i);
     // The life arc ends quietly on the practice's bereavement page.
     assert.ok(await page.$(".dv-life-arc"));
     assert.ok(await page.$(".dv-life-card--quiet a[href*='say-goodbye']"));
-    // The catchment map is a drawn plate with real geography marks.
+    // The catchment map names real geography; drawing honesty lives in the banner.
     assert.match(pageText, /Slieve Donard/);
-    assert.match(pageText, /indicative, not a survey/);
+    assert.match(pageText, /Villages we serve around Newcastle/);
+    assert.doesNotMatch(pageText, /Make it easy to ask for help/);
+    assert.doesNotMatch(pageText, /Choose the right first step/);
+    assert.doesNotMatch(pageText, /bereavement page/i);
     // The independence timeline keeps only documented beats.
     assert.doesNotMatch(pageText, /Nine years of independence/);
     assert.match(pageText, /Donard Vet Club/);
@@ -544,7 +581,7 @@ const REOPENED = [
   { slug: "mourne-cycles", routes: ["/concepts/mourne-cycles/", "/concepts/mourne-cycles/hire/"] },
   { slug: "newcastle-chamber", routes: ["/concepts/newcastle-chamber/", "/concepts/newcastle-chamber/members/", "/concepts/newcastle-chamber/contact/"] },
   { slug: "kent-amusements", routes: ["/concepts/kent-amusements/", "/concepts/kent-amusements/attractions/"] },
-  { slug: "donard-veterinary", routes: ["/concepts/donard-veterinary/", "/concepts/donard-veterinary/appointments/"] },
+  { slug: "donard-veterinary", routes: ["/concepts/donard-veterinary/", "/concepts/donard-veterinary/appointments/", "/concepts/donard-veterinary/emergency/", "/concepts/donard-veterinary/vidivet/"] },
   { slug: "cupla", routes: ["/concepts/cupla/", "/concepts/cupla/menu/"] },
 ];
 
@@ -680,6 +717,8 @@ await check("Every companion route is reachable on a phone", async () => {
     { from: "/concepts/newcastle-chamber/", must: "/concepts/newcastle-chamber/contact/" },
     { from: "/concepts/newcastle-chamber/", must: "/concepts/newcastle-chamber/events/" },
     { from: "/concepts/donard-veterinary/", must: "/concepts/donard-veterinary/appointments/" },
+    { from: "/concepts/donard-veterinary/", must: "/concepts/donard-veterinary/emergency/" },
+    { from: "/concepts/donard-veterinary/", must: "/concepts/donard-veterinary/vidivet/" },
     { from: "/concepts/kent-amusements/", must: "/concepts/kent-amusements/attractions/" },
     { from: "/concepts/mourne-cycles/", must: "/concepts/mourne-cycles/hire/" },
   ];

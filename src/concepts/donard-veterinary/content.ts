@@ -22,41 +22,38 @@ export const bereavementQuote = {
   source: bereavementUrl,
 } as const;
 
-/** Three-layer safety net, in the practice's own published words. Each layer
- *  carries the vignette drawn for it and the tag on the connector that
- *  brings the call to it — the flow is the mechanism the section draws. */
-export const safetyNetLayers = [
+/** Call routing: one number, two conditional routes. VidiVet is companion
+ *  cover for clients, not a third step in the call path. */
+export const safetyRoutes = [
   {
-    step: "1",
-    vignette: "clinic",
-    incoming: "During clinic hours",
-    title: "Call the clinic",
-    copy: "Ring 028 4372 9414 — the number on every page and on the practice's own site.",
-    detail: "During clinic hours you reach the team at 8 Railway Street.",
+    id: "clinic",
+    vignette: "clinic" as const,
+    when: "During clinic hours",
+    title: "You reach the clinic",
+    copy: "Ring 028 4372 9414 and you speak to the team at 8 Railway Street.",
+    detail: "Mon–Fri 8:30–6:30 · Wednesday until 7 · Saturday 9–1.",
   },
   {
-    step: "2",
-    vignette: "oncall",
-    incoming: "Outside clinic hours",
+    id: "oncall",
+    vignette: "oncall" as const,
+    when: "Outside clinic hours",
     title: "Diverted to the on-call vet",
-    copy: "Outside clinic hours, the practice's own policy is that you are diverted to the on-call vet.",
-    detail: "No out-of-hours shifts for staff — the chain is structural.",
-  },
-  {
-    step: "3",
-    vignette: "vidivet",
-    incoming: "Free for clients · 24/7",
-    title: "VidiVet, free for clients",
-    copy: "VidiVet is the practice's trusted partner for out-of-hours support — 24/7 access to expert digital vet advice, free for clinic clients.",
-    detail: "Response within minutes, as VidiVet themselves publish.",
-    href: vidivetUrl,
+    copy: "Outside clinic hours, you are diverted to the on-call vet — the same number, day or night.",
+    detail: "No need to find a different line.",
   },
 ] as const;
 
+export const vidivetCover = {
+  title: "VidiVet, free for our clients",
+  copy: "Alongside the phone, our clients have free 24/7 access to expert digital vet advice through VidiVet.",
+  detail: "Response within minutes.",
+  badge: "Free for clients · 24/7",
+  href: vidivetUrl,
+} as const;
+
 /** A pet's whole life — structured around services the practice actually
  *  publishes. `cast` places a drawn cast member at that stage on the arc;
- *  the last stage is quiet by design: it honours their bereavement page, so
- *  the card changes register and their own words lead. */
+ *  the last stage is quiet by design: it honours their bereavement page. */
 export const lifeStages = [
   {
     marker: "Routine",
@@ -69,27 +66,27 @@ export const lifeStages = [
     marker: "Weight",
     cast: "rabbit",
     title: "Weight clinic",
-    copy: "Structured support when diet and exercise need attention — one of the services Donard Veterinary lists for pets of every age.",
+    copy: "Structured support when diet and exercise need attention — for pets of every age.",
     service: "Weight Clinic",
   },
   {
     marker: "Dental",
     cast: "cat",
     title: "Dental clinic",
-    copy: "Dental treatment as a named service — part of the care a pet needs through its life.",
+    copy: "Dental checks and treatment as part of lifelong care — not an afterthought.",
     service: "Dental",
   },
   {
     marker: "Emergency",
     title: "Emergency",
-    copy: "When something cannot wait — call 028 4372 9414, with diversion to the on-call vet and VidiVet beyond clinic hours.",
+    copy: "When something cannot wait — call 028 4372 9414. Outside hours you are diverted to the on-call vet, with VidiVet alongside.",
     service: "Emergency",
   },
   {
     marker: "Goodbye",
     tone: "quiet",
     title: "When the time comes",
-    copy: "The practice publishes a bereavement page with care for the hardest step. Their own words lead.",
+    copy: "We understand how hard this day is. Support is here when you need it.",
     service: "Bereavement support",
     href: bereavementUrl,
   },
@@ -116,17 +113,17 @@ export const independenceTimeline = [
   {
     marker: "2017",
     title: "Opened by Catherine Savage",
-    copy: "Donard Veterinary Clinic opened in 2017 — independently owned, 100% small-animal, on Railway Street in Newcastle.",
+    copy: "We opened in 2017 — independently owned, 100% small-animal, on Railway Street in Newcastle.",
   },
   {
     marker: "July 2026",
     title: "Growing the team",
-    copy: "Nine years in and still independent — the practice was actively recruiting experienced small-animal vets in July 2026.",
+    copy: "Nine years in and still independent — we're recruiting experienced small-animal vets.",
     href: recruitmentUrl,
   },
   {
     marker: "Soon",
     title: "Donard Vet Club",
-    copy: "Donard Vet Club is coming soon — named as the practice has named it on its own channels.",
+    copy: "Donard Vet Club is coming soon.",
   },
 ] as const;

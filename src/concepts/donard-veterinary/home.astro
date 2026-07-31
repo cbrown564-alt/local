@@ -2,26 +2,26 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import DvPetIllustrations from "./components/DvPetIllustrations.astro";
 import DvSafetyNet from "./components/DvSafetyNet.astro";
 import DvCatchmentMap from "./components/DvCatchmentMap.astro";
 import DvLifeArc from "./components/DvLifeArc.astro";
 import {
   bereavementQuote,
   independenceTimeline,
-  vidivetUrl,
+  clinicPhone,
+  clinicPhoneHref,
 } from "./content";
 ---
 
 <ConceptLayout
-  title={"Donard Veterinary Clinic — independent concept"}
+  title={"Donard Veterinary Clinic"}
   slug="donard-veterinary"
   bodyClass="concept-page concept-donard-veterinary"
   lang="en-GB"
-  bannerNote="Pet illustrations are drawn, not photographs."
+  bannerNote="Pet illustrations and the catchment map are drawn — not photographs or a boundary survey."
 >
 <div class="dv-strip">
-      <span>Pet emergency? Call <a href="tel:+442843729414">028 4372 9414</a></span>
+      <span>Pet emergency? Call <a href={clinicPhoneHref}>{clinicPhone}</a></span>
       <span class="dv-strip-hours">Mon–Fri 8:30am–6:30pm · Wed until 7pm · Sat 9am–1pm</span>
     </div>
     <header class="dv-header">
@@ -36,17 +36,21 @@ import {
           <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
         </span>
       </a>
-      <nav class="dv-nav" aria-label="Concept navigation">
-        <a href="#life">Pet services</a><a href="#safety-net">Emergency</a><a href={vidivetUrl} rel="external">VidiVet</a><a href="#catchment">Catchment</a><a href="/concepts/donard-veterinary/appointments/">Appointments</a>
+      <nav class="dv-nav" aria-label="Primary">
+        <a href="#life">Pet services</a>
+        <a href="/concepts/donard-veterinary/emergency/">Emergency</a>
+        <a href="/concepts/donard-veterinary/vidivet/">VidiVet</a>
+        <a href="#catchment">Near you</a>
+        <a href="/concepts/donard-veterinary/appointments/">Appointments</a>
       </nav>
       <div class="dv-header-actions">
-        <a class="dv-phone" href="tel:+442843729414">028 4372 9414</a>
+        <a class="dv-phone" href={clinicPhoneHref}>{clinicPhone}</a>
         <a class="dv-book" href="/concepts/donard-veterinary/appointments/">Book an appointment</a>
       </div>
     </header>
     <main>
     <div class="dv-hero">
-      <!-- the Mournes, drawn low and faint behind the story panel — the same
+      <!-- the Mournes, drawn low behind the story panel — the same
            range as the catchment map, here as backdrop, not information -->
       <svg class="dv-hero-hills" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
         <path class="dv-hero-ridge" d="M-20 196 C60 152 112 122 162 96 C192 130 212 140 242 124 C292 88 332 60 382 44 C422 90 452 110 492 96 C542 66 582 52 632 48 C682 92 722 116 782 110 C832 104 872 118 912 136 C952 152 992 164 1030 168" />
@@ -58,15 +62,14 @@ import {
       <section class="dv-story">
         <p class="dv-kicker">8 Railway Street · Newcastle</p>
         <h1>Donard Veterinary <em>Clinic</em></h1>
-        <p class="dv-thesis">Make it easy to ask for help.</p>
+        <p class="dv-thesis">We're here when you need us.</p>
         <p class="dv-lede">
-          An independent small-animal clinic providing routine care, diagnostics,
+          We're an independent small-animal clinic providing routine care, diagnostics,
           surgery and dental treatment — with a phone line that always finds a vet.
         </p>
-        <DvPetIllustrations />
         <div class="dv-actions">
           <a class="dv-cta" href="/concepts/donard-veterinary/appointments/">Request an appointment</a>
-          <a class="dv-link" href="/concepts/donard-veterinary/appointments/#emergency-heading">Emergency information →</a>
+          <a class="dv-link" href="/concepts/donard-veterinary/emergency/">Emergency information →</a>
         </div>
       </section>
       <section class="dv-care-desk" aria-labelledby="dv-care-heading">
@@ -75,37 +78,37 @@ import {
           <span>Small-animal clinic · Newcastle</span>
         </div>
         <div class="dv-care-body">
-          <h2 id="dv-care-heading">Choose the right first step.</h2>
+          <h2 id="dv-care-heading">What do you need today?</h2>
           <div class="dv-care-options">
             <a href="/concepts/donard-veterinary/appointments/">
               <span class="dv-care-icon" aria-hidden="true">+</span>
               <span><strong>Routine appointment</strong><small>Health checks, diagnostics, surgery, dental care and more.</small></span>
               <span aria-hidden="true">→</span>
             </a>
-            <a href="tel:+442843729414">
+            <a href="/concepts/donard-veterinary/emergency/">
               <span class="dv-care-icon dv-care-icon--urgent" aria-hidden="true">!</span>
               <span><strong>Urgent help</strong><small>Call the clinic directly if you are worried about your pet.</small></span>
               <span aria-hidden="true">→</span>
             </a>
-            <a href={vidivetUrl} rel="external">
+            <a href="/concepts/donard-veterinary/vidivet/">
               <span class="dv-care-icon dv-care-icon--online" aria-hidden="true">V</span>
-              <span><strong>VidiVet support</strong><small>Free 24/7 digital vet advice for clinic clients.</small></span>
+              <span><strong>VidiVet support</strong><small>Free 24/7 digital vet advice for our clients.</small></span>
               <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
         <div class="dv-care-hours">
           <span><strong>Clinic hours</strong> Mon–Fri 8:30–6:30 · Wednesday until 7</span>
-          <a href="tel:+442843729414">028 4372 9414</a>
+          <a href={clinicPhoneHref}>{clinicPhone}</a>
         </div>
       </section>
       <nav class="dv-rail" aria-label="Pet services">
         <a class="dv-service" href="#life"><span></span>Routine health care</a>
-        <a class="dv-service" href="#life"><span></span>Diagnostics</a>
-        <a class="dv-service" href="#life"><span></span>Surgery</a>
-        <a class="dv-service" href="#life"><span></span>Dental clinic</a>
         <a class="dv-service" href="#life"><span></span>Weight clinic</a>
-        <a class="dv-service" href="#safety-net"><span></span>Emergency</a>
+        <a class="dv-service" href="#life"><span></span>Dental clinic</a>
+        <a class="dv-service" href="/concepts/donard-veterinary/emergency/"><span></span>Emergency</a>
+        <a class="dv-service" href="#catchment"><span></span>Near you</a>
+        <a class="dv-service" href="/concepts/donard-veterinary/appointments/"><span></span>Book</a>
       </nav>
     </div>
 
@@ -115,11 +118,12 @@ import {
       <blockquote cite={bereavementQuote.source}>
         “{bereavementQuote.text}”
       </blockquote>
-      <figcaption>
-        Donard Veterinary Clinic
-        <span>
-          <a href={bereavementQuote.source} rel="external">{bereavementQuote.context}</a>
-        </span>
+      <figcaption class="dv-caption-meta">
+        <span class="dv-caption-by">Donard Veterinary Clinic</span>
+        <a class="dv-caption-cta" href={bereavementQuote.source} rel="external">
+          {bereavementQuote.context}
+          <span aria-hidden="true">→</span>
+        </a>
       </figcaption>
     </figure>
 
@@ -128,10 +132,10 @@ import {
     <section class="dv-map-section" id="catchment" aria-labelledby="dv-map-heading">
       <div class="dv-map-head">
         <p class="dv-kicker">Your local practice</p>
-        <h2 class="dv-h2" id="dv-map-heading">Close to home — with a geography.</h2>
+        <h2 class="dv-h2" id="dv-map-heading">Close to home across the Mournes.</h2>
         <p class="dv-section-lede">
-          Newcastle plus the eight villages the practice names on its own site —
-          Castlewellan, Dundrum, Bryansford, Clough, Annalong, Kilcoo and Hilltown.
+          Newcastle plus Castlewellan, Dundrum, Bryansford, Clough, Annalong,
+          Kilcoo and Hilltown.
         </p>
       </div>
       <DvCatchmentMap headingId="dv-map-heading" />
@@ -140,7 +144,7 @@ import {
     <section class="dv-timeline-band" id="story" aria-labelledby="dv-timeline-heading">
       <div class="dv-timeline-head">
         <p class="dv-kicker">Still independent</p>
-        <h2 class="dv-h2" id="dv-timeline-heading">Opened 2017. Nine years on, still theirs.</h2>
+        <h2 class="dv-h2" id="dv-timeline-heading">Opened 2017. Nine years on, still ours.</h2>
       </div>
       <ol class="dv-timeline" role="list">
         {independenceTimeline.map((entry) => (
