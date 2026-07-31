@@ -1,0 +1,53 @@
+---
+/** Compass rose for a MapPlate scene, in the three variants the concept maps
+ *  use: a filled north "dart" on a ringed face (the default), the same with a
+ *  fainter "south" dart, or a paper "disc" with a penned arrow. Styled from
+ *  the plate's --map-accent / --map-compass-* properties in map-plate.css. */
+interface Props {
+  x: number;
+  y: number;
+  variant?: "dart" | "south" | "disc";
+  /** Extra class for the "N", when a concept's type register styles it. */
+  textClass?: string;
+}
+
+const { x, y, variant = "dart", textClass } = Astro.props;
+---
+
+<g class="mm-map-compass" transform={`translate(${x} ${y})`}>
+  {
+    variant === "disc" && (
+      <>
+        <circle class="mm-map-compass-disc" r="20" />
+        <circle class="mm-map-compass-ring" r="20" />
+        <path class="mm-map-compass-arrow" d="M0 12 L0 -12 M-4 -6 L0 -12 L4 -6" />
+        <text class={textClass} x="0" y="-26" text-anchor="middle">
+          N
+        </text>
+      </>
+    )
+  }
+  {
+    variant === "south" && (
+      <>
+        <circle class="mm-map-compass-face" r="26" />
+        <path class="mm-map-compass-dart" d="M0-33 8-6 0 2-8-6Z" />
+        <path class="mm-map-compass-dart mm-map-compass-south" d="M0 33 8 6 0-2-8 6Z" />
+        <text class={textClass} x="0" y="-38" text-anchor="middle">
+          N
+        </text>
+      </>
+    )
+  }
+  {
+    variant === "dart" && (
+      <>
+        <circle class="mm-map-compass-face" r="17" />
+        <path class="mm-map-compass-dart" d="M0-11 4 6 0 2-4 6Z" />
+        <text class={textClass} y="-24" text-anchor="middle">
+          N
+        </text>
+      </>
+    )
+  }
+</g>

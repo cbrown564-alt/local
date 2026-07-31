@@ -1,0 +1,89 @@
+---
+/** Shared plate for the hand-drawn concept maps.
+ *
+ *  Owns everything that is not the drawing: the figure, the SVG a11y wiring
+ *  (role/title/desc, or the section heading via `headingId`), the paper
+ *  ground, the double rule, an optional clip to the inner rule, and the
+ *  figcaption that carries the "indicative, not a survey" disclosure. The
+ *  scene — coastline, hills, vignettes, labels — goes in the default slot;
+ *  the caption in the named "caption" slot. Pins and the compass are
+ *  separate components (MapPin.astro, MapCompass.astro) rendered as part of
+ *  the scene.
+ *
+ *  Theme with custom properties on the figure (see map-plate.css). Per the
+ *  estate-map lesson in docs/the-elevation-method.md, a map is a drawing,
+ *  not a diagram: the caption slot should always say what is indicative. */
+import "./map-plate.css";
+
+interface Props {
+  /** Concept map prefix, e.g. "sc-map". Gives the figure and svg their
+      concept classes and names the a11y/clip ids (`sc-map-title`,
+      `sc-map-desc`, `sc-map-clip`). */
+  id: string;
+  /** Plate viewBox, e.g. "0 0 800 520"; width and height are read from it. */
+  viewBox: string;
+  /** Accessible name, used when no section heading labels the map. */
+  title: string;
+  /** Accessible description of what the drawing shows. */
+  desc: string;
+  /** Id of the section's heading when the map is its own section. */
+  headingId?: string;
+  /** Crop the scene to the inner rule (for scenery that runs off the plate). */
+  clip?: boolean;
+  /** Outer rule inset in plate units; the inner rule sits 7 units inside it. */
+  ruleInset?: number;
+}
+
+const {
+  id,
+  viewBox,
+  title,
+  desc,
+  headingId,
+  clip = false,
+  ruleInset = 14,
+} = Astro.props;
+
+const [, , width, height] = viewBox.split(/\s+/).map(Number);
+const inner = ruleInset + 7;
+---
+
+<figure class:list={["mm-map", id]}>
+  <svg
+    class:list={["mm-map-plate", `${id}-plate`]}
+    viewBox={viewBox}
+    role="img"
+    aria-labelledby={headingId ? `${headingId} ${id}-desc` : `${id}-title ${id}-desc`}
+  >
+    {!headingId && <title id={`${id}-title`}>{title}</title>}
+    <desc id={`${id}-desc`}>{desc}</desc>
+
+    {
+      clip && (
+        <defs>
+          <clipPath id={`${id}-clip`}>
+            <rect x={inner} y={inner} width={width - inner * 2} height={height - inner * 2} rx="2" />
+          </clipPath>
+        </defs>
+      )
+    }
+
+    <!-- Paper and double rule -->
+    <rect class="mm-map-ground" x="0" y="0" width={width} height={height} />
+    <rect class="mm-map-rule" x={ruleInset} y={ruleInset} width={width - ruleInset * 2} height={height - ruleInset * 2} rx="3" />
+    <rect class="mm-map-rule mm-map-rule--inner" x={inner} y={inner} width={width - inner * 2} height={height - inner * 2} rx="2" />
+
+    {
+      clip ? (
+        <g clip-path={`url(#${id}-clip)`}>
+          <slot />
+        </g>
+      ) : (
+        <slot />
+      )
+    }
+  </svg>
+  <figcaption>
+    <slot name="caption" />
+  </figcaption>
+</figure>

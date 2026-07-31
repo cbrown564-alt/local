@@ -1,0 +1,74 @@
+---
+/** A labelled pin for a MapPlate scene: optional paper halo behind the label,
+ *  optional leader line, halo ring, dot, label and an optional second line
+ *  (a dish, a street, a note). Label positions are relative to the dot so a
+ *  pin moves as one piece. Typography comes from the concept's own styles via
+ *  `labelClass` / `subClass`; geometry from map-plate.css. */
+interface Props {
+  x: number;
+  y: number;
+  label: string;
+  /** Second line under (or above) the label. */
+  sub?: string;
+  anchor?: "start" | "middle" | "end";
+  labelDx?: number;
+  labelDy?: number;
+  /** Defaults to labelDx so the two lines stay aligned. */
+  subDx?: number;
+  subDy?: number;
+  /** End of a leader line from the dot toward the label, relative to the dot. */
+  leader?: { x: number; y: number };
+  /** Halo ring radius; omitted, no ring is drawn. */
+  haloR?: number;
+  dotR?: number;
+  /** Paper knockout behind the label, in absolute plate coordinates. */
+  labelHalo?: { x: number; y: number; width: number; height: number };
+  labelClass?: string;
+  subClass?: string;
+}
+
+const {
+  x,
+  y,
+  label,
+  sub,
+  anchor = "middle",
+  labelDx = 0,
+  labelDy = -16,
+  subDx,
+  subDy = 22,
+  leader,
+  haloR,
+  dotR = 4.5,
+  labelHalo,
+  labelClass,
+  subClass,
+} = Astro.props;
+---
+
+<g class="mm-map-pin" transform={`translate(${x} ${y})`}>
+  {
+    labelHalo && (
+      <rect
+        class="mm-map-halo"
+        x={labelHalo.x - x}
+        y={labelHalo.y - y}
+        width={labelHalo.width}
+        height={labelHalo.height}
+      />
+    )
+  }
+  {leader && <path class="mm-map-pin-leader" d={`M0 0L${leader.x} ${leader.y}`} />}
+  {haloR && <circle class="mm-map-pin-halo" r={haloR} />}
+  <circle class="mm-map-pin-dot" r={dotR} />
+  <text class:list={["mm-map-pin-label", labelClass]} x={labelDx} y={labelDy} text-anchor={anchor}>
+    {label}
+  </text>
+  {
+    sub && (
+      <text class:list={["mm-map-pin-sub", subClass]} x={subDx ?? labelDx} y={subDy} text-anchor={anchor}>
+        {sub}
+      </text>
+    )
+  }
+</g>

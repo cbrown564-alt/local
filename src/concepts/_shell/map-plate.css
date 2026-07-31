@@ -1,0 +1,82 @@
+/* Shared chrome for the hand-drawn concept maps — used by MapPlate.astro,
+   MapCompass.astro and MapPin.astro. A concept themes its plate by setting
+   custom properties on the figure (see each concept's styles.css):
+
+     --map-paper    plate ground; also label halos and the pin-dot knockout
+     --map-rule     double-rule stroke colour
+     --map-accent   pin ink, and the default compass ink
+
+   Drawing techniques the concepts share, kept here as documentation rather
+   than classes because each map tunes them differently:
+   - stipple: a round-capped dashed stroke (`stroke-dasharray: 1 7` and
+     friends) reads as hand-dotted ground — a patch, dunes, a hedge boundary;
+   - paired strokes: a firm line with a fainter twin alongside reads as a
+     penned road, river or drive. */
+
+.mm-map { margin: 0; }
+.mm-map-plate { display: block; width: 100%; height: auto; }
+
+.mm-map-ground { fill: var(--map-paper); }
+.mm-map-rule {
+  fill: none;
+  stroke: var(--map-rule);
+  stroke-opacity: var(--map-rule-opacity, 0.45);
+  stroke-width: var(--map-rule-width, 1.2);
+}
+.mm-map-rule--inner {
+  stroke-opacity: var(--map-rule-inner-opacity, 0.25);
+  stroke-width: var(--map-rule-inner-width, 0.7);
+}
+
+/* Paper-coloured knockout so linework passes behind a label. */
+.mm-map-halo { fill: var(--map-paper); }
+
+/* Compass. The "dart" and "south" variants draw a filled north dart on a
+   ringed face; the "disc" variant draws a paper disc, a ring and a penned
+   arrow instead. */
+.mm-map-compass-face {
+  fill: var(--map-compass-disc, none);
+  stroke: var(--map-compass-ring, var(--map-accent));
+  stroke-opacity: var(--map-compass-opacity, 0.55);
+  stroke-width: var(--map-compass-width, 1.1);
+}
+.mm-map-compass-dart {
+  fill: var(--map-compass-accent, var(--map-accent));
+  fill-opacity: 0.75;
+  stroke: none;
+}
+.mm-map-compass-south { fill-opacity: 0.22; }
+.mm-map-compass-disc { fill: var(--map-paper); stroke: none; }
+.mm-map-compass-ring {
+  fill: none;
+  stroke: var(--map-compass-accent, var(--map-accent));
+  stroke-opacity: 0.4;
+  stroke-width: 1.1;
+}
+.mm-map-compass-arrow {
+  fill: none;
+  stroke: var(--map-compass-accent, var(--map-accent));
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mm-map-compass text { fill: var(--map-compass-accent, var(--map-accent)); }
+
+/* Pins. The halo defaults to a translucent accent wash; set --map-pin-halo
+   and --map-pin-halo-opacity for a paper knockout instead. Label typography
+   is part of each concept's voice and stays in its own styles.css. */
+.mm-map-pin-halo {
+  fill: var(--map-pin-halo, var(--map-accent));
+  fill-opacity: var(--map-pin-halo-opacity, 0.18);
+}
+.mm-map-pin-dot {
+  fill: var(--map-accent);
+  stroke: var(--map-paper);
+  stroke-width: var(--map-pin-dot-stroke, 1.5);
+}
+.mm-map-pin-leader {
+  fill: none;
+  stroke: var(--map-accent);
+  stroke-opacity: 0.55;
+  stroke-width: 1;
+}
