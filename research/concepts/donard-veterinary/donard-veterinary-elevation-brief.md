@@ -5,9 +5,17 @@ Written 31 July 2026, as part of the expansion of the elevation work beyond
 `research/concepts/scopers/scopers-elevation-brief.md` (food-bar-shaped). The general method
 these briefs follow is in `docs/the-elevation-method.md`.
 
-**Status: thinking only, nothing built.** The landmines at the end are fixed
-before any move starts; the honesty constraints decide what every move is
-allowed to say.
+**Status: all five moves shipped 31 July 2026; craft rebuild same day.** The
+landmines at the end are fixed before any move starts; the honesty
+constraints decide what every move is allowed to say. The 31 July first pass
+was rebuilt on 31 July to drawing-kit standard: the cast is hand-drawn
+(spaniel, cat, rabbit, reused across hero and life arc, with reduced-motion-
+safe micro-animation), the safety net is a drawn mechanism with routing-tagged
+connectors, the catchment map is a true plate (real relative geography —
+Newcastle on the coast at the foot of Donard, the Mournes sweeping
+south-west — double rules, three type registers, halos, cartouche), the life
+arc ends in a deliberately quiet goodbye card, the timeline keeps only
+documented beats, and the hero regains its Mourne backdrop.
 
 ## The shape of this business
 

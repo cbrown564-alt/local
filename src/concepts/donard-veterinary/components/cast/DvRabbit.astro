@@ -1,0 +1,52 @@
+---
+/** Drawn rabbit — one ear up, one flopped, hand-authored line illustration
+ *  in the concept palette. Studio drawing, not a photograph of a patient.
+ *  Part of the drawn cast (DvDog, DvCat) reused across the concept. */
+interface Props {
+  class?: string;
+  label?: string;
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+}
+
+const { class: className, label = "Illustrated rabbit — one ear up, one flopped", x, y, width, height } = Astro.props;
+---
+
+<svg class:list={["dv-cast-art", className]} viewBox="0 0 240 260" role="img" aria-label={label} x={x} y={y} width={width} height={height}>
+  <ellipse class="dv-draw-wash" cx="120" cy="188" rx="30" ry="26" />
+  <!-- body -->
+  <path class="dv-draw-stroke" d="M96 116 C82 148 79 188 92 213 C108 223 134 223 150 213 C161 188 158 148 144 116" />
+  <!-- flopped ear (behind head) -->
+  <path class="dv-draw-stroke" d="M136 66 C158 72 169 92 164 112 C161 125 150 129 142 122 C136 115 136 96 140 82" />
+  <path class="dv-draw-fine" d="M143 74 C156 81 161 95 158 108" />
+  <!-- head -->
+  <path class="dv-draw-stroke" d="M90 96 C86 74 100 62 120 62 C140 62 154 74 150 96 C152 110 142 122 120 123 C98 122 88 110 90 96 Z" />
+  <!-- upright ear -->
+  <g class="dv-rabbit-ear">
+    <path class="dv-draw-stroke" d="M106 64 C96 44 94 24 103 14 C114 22 117 46 114 66" />
+    <path class="dv-draw-fine" d="M107 56 C101 40 100 28 104 22" />
+  </g>
+  <!-- eyes -->
+  <circle class="dv-draw-fill" cx="104" cy="94" r="4" />
+  <circle class="dv-draw-fill" cx="136" cy="94" r="4" />
+  <!-- nose + mouth -->
+  <path class="dv-draw-fill" d="M116 106 L124 106 L120 112 Z" />
+  <path class="dv-draw-fine" d="M120 112 C117 116 113 116 111 113" />
+  <path class="dv-draw-fine" d="M120 112 C123 116 127 116 129 113" />
+  <!-- cheek dots -->
+  <circle class="dv-draw-fill" cx="98" cy="106" r="1" opacity="0.6" />
+  <circle class="dv-draw-fill" cx="94" cy="110" r="1" opacity="0.6" />
+  <circle class="dv-draw-fill" cx="142" cy="106" r="1" opacity="0.6" />
+  <circle class="dv-draw-fill" cx="146" cy="110" r="1" opacity="0.6" />
+  <!-- front paws -->
+  <path class="dv-draw-stroke" d="M108 176 C106 192 106 204 109 211" />
+  <path class="dv-draw-stroke" d="M130 176 C132 192 132 204 129 211" />
+  <path class="dv-draw-fine" d="M113 200 L113 209 M125 200 L125 209" />
+  <!-- haunches -->
+  <path class="dv-draw-fine" d="M138 186 C147 192 150 202 148 212" />
+  <path class="dv-draw-fine" d="M100 186 C92 192 89 202 91 212" />
+  <!-- ground -->
+  <path class="dv-draw-ground" d="M62 228 Q120 236 178 228" />
+</svg>

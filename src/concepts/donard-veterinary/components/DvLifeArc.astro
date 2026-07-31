@@ -1,0 +1,85 @@
+---
+/** Move 3 — a pet's whole life, drawn as an arc.
+ *
+ *  A rolling drawn path carries the section: paw prints between the stages,
+ *  the drawn cast standing at the stages their species introduces, and a
+ *  deliberate register change at the end — the path's line goes finer and
+ *  fainter approaching the goodbye, whose card drops the teal bar for a
+ *  quiet, hairline treatment. The courage is the last step: the practice's
+ *  own bereavement page, linked and credited, in the register they wrote
+ *  it. Stops sit at 10/30/50/70/90% to align with the five card columns. */
+import { lifeStages } from "../content";
+import DvDog from "./cast/DvDog.astro";
+import DvCat from "./cast/DvCat.astro";
+import DvRabbit from "./cast/DvRabbit.astro";
+
+/* Stop positions (viewBox 1200×170) aligned to the five card columns. */
+const stops = [120, 360, 600, 840, 1080];
+const castAt: Record<string, { x: number; y: number; width: number; height: number }> = {
+  dog: { x: 76, y: 48, width: 62, height: 67 },
+  rabbit: { x: 318, y: 54, width: 56, height: 61 },
+  cat: { x: 556, y: 50, width: 60, height: 65 },
+};
+const paws = [210, 262, 452, 504, 694, 746, 936, 988];
+---
+
+<section class="dv-life" id="life" aria-labelledby="dv-life-heading">
+  <div class="dv-life-head">
+    <p class="dv-kicker">A pet's whole life</p>
+    <h2 class="dv-h2" id="dv-life-heading">From first jabs to the hardest day.</h2>
+    <p class="dv-section-lede">
+      Structured around the services the practice publishes — from routine
+      care through to bereavement support.
+    </p>
+  </div>
+
+  <svg class="dv-life-arc" viewBox="0 0 1200 170" aria-hidden="true">
+    <!-- the life path; the last segment is drawn finer and fainter -->
+    <path
+      class="dv-life-path"
+      d="M40 118 C180 92 300 138 460 112 C620 88 740 132 880 116"
+    />
+    <path
+      class="dv-life-path dv-life-path--quiet"
+      d="M880 116 C960 106 1060 104 1160 110"
+    />
+    <!-- paw prints along the way -->
+    {paws.map((x, i) => (
+      <g class="dv-life-paw" transform={`translate(${x} ${i % 2 ? 132 : 122}) rotate(${i % 2 ? 12 : -10}) scale(0.42)`}>
+        <ellipse cx="0" cy="6" rx="7" ry="5.5" />
+        <ellipse cx="-8" cy="-3" rx="3" ry="4" />
+        <ellipse cx="-2.5" cy="-7" rx="3" ry="4" />
+        <ellipse cx="2.5" cy="-7" rx="3" ry="4" />
+        <ellipse cx="8" cy="-3" rx="3" ry="4" />
+      </g>
+    ))}
+    <!-- the cast at their stages -->
+    <DvDog class="dv-life-cast" label="" x={castAt.dog.x} y={castAt.dog.y} width={castAt.dog.width} height={castAt.dog.height} />
+    <DvRabbit class="dv-life-cast" label="" x={castAt.rabbit.x} y={castAt.rabbit.y} width={castAt.rabbit.width} height={castAt.rabbit.height} />
+    <DvCat class="dv-life-cast" label="" x={castAt.cat.x} y={castAt.cat.y} width={castAt.cat.width} height={castAt.cat.height} />
+    <!-- stage stops; the last is an open circle -->
+    {stops.map((x, i) => (
+      i < stops.length - 1
+        ? <circle class="dv-life-stop" cx={x} cy={i === 0 ? 118 : i === 1 ? 112 : i === 2 ? 112 : 116} r="5" />
+        : <circle class="dv-life-stop dv-life-stop--open" cx={x} cy="110" r="5" />
+    ))}
+  </svg>
+
+  <ol class="dv-life-stages" role="list">
+    {lifeStages.map((stage) => (
+      <li>
+        <span class="dv-life-marker">{stage.marker}</span>
+        <div class:list={["dv-life-card", { "dv-life-card--quiet": "tone" in stage && stage.tone === "quiet" }]}>
+          <h3>{stage.title}</h3>
+          <p>{stage.copy}</p>
+          <span class="dv-life-service">{stage.service}</span>
+          {"href" in stage && stage.href && (
+            <a class="dv-link" href={stage.href} rel="external">
+              Read the practice's bereavement page →
+            </a>
+          )}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

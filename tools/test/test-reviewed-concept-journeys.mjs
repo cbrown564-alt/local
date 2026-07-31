@@ -184,6 +184,34 @@ await check("Donard appointment details survive into an explicit email handoff",
   });
 });
 
+await check("Donard elevation surfaces sourced care content on the home page", async () => {
+  await withPage("/concepts/donard-veterinary/", async (page) => {
+    const pageText = await page.$eval("body", (body) => body.innerText);
+    assert.match(pageText, /illustrated pets/i);
+    assert.match(pageText, /As pet owners ourselves we fully understand/);
+    assert.match(pageText, /diverted to the on-call vet/);
+    assert.match(pageText, /Castlewellan/);
+    assert.match(pageText, /Opened 2017/);
+    assert.doesNotMatch(pageText, /Sunday/);
+
+    // The drawn cast anchors the hero, disclosed as studio drawings.
+    assert.equal(await page.$$eval(".dv-story .dv-cast-art", (nodes) => nodes.length), 3);
+    assert.match(pageText, /studio drawings, not photographs of patients/);
+    // The safety net is a mechanism: three routing-tagged connectors.
+    assert.equal(await page.$$eval(".dv-net-conn", (nodes) => nodes.length), 3);
+    assert.match(pageText, /Outside clinic hours/);
+    assert.match(pageText, /Free for clients · 24\/7/);
+    // The life arc ends quietly on the practice's bereavement page.
+    assert.ok(await page.$(".dv-life-arc"));
+    assert.ok(await page.$(".dv-life-card--quiet a[href*='say-goodbye']"));
+    // The catchment map is a drawn plate with real geography marks.
+    assert.match(pageText, /Slieve Donard/);
+    assert.match(pageText, /indicative, not a survey/);
+    // The independence timeline keeps only documented beats.
+    assert.doesNotMatch(pageText, /Nine years of independence/);
+    assert.match(pageText, /Donard Vet Club/);
+  });
+});
 await check("Cúpla uses sterling and labels sample prices before the menu", async () => {
   await withPage("/concepts/cupla/menu/", async (page) => {
     const result = await page.evaluate(() => {
