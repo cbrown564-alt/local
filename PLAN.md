@@ -150,12 +150,10 @@ highest-stakes conversation is not used to rehearse the approach.
    its current published transformation. Do not wait for optional extra media.
    Scopers is further on: its journey was walked and filed on 31 July 2026
    (`research-renders/scopers-journey/2026-07-31/`) and the walk-in script is
-   written (`research/scopers-pitch.md`). One blocker stands in front of all
-   of it — the six food images in `research/scopers-image-brief.md` are still
-   "IMAGE PENDING" placeholders, so **the Scopers concept must not be deployed
-   or shown to anyone until they are generated and dropped in**. Recapture its
-   comparison still and clip in the same commit as the swap; the fold has
-   changed.
+   written (`research/scopers-pitch.md`). The six generated food images landed
+   the same day and the comparison still, clip and supper-club still were
+   recaptured with them, so the concept is showable. What remains before
+   outreach is its one-sheet and the standing gates below.
 4. Give every sheet the slug-qualified QR destination required by
    [`docs/adr/0002-printed-qr-attribution-contract.md`](docs/adr/0002-printed-qr-attribution-contract.md):
    `/transformations/<slug>/?source=onesheet-<slug>`.

@@ -148,11 +148,12 @@ before.
 4. Add the six provenance entries; update the "Sources & limits" paragraph.
 5. `node scripts/run-verification.mjs` and the concept journey checks.
 
-**Placeholders:** until real generations arrive, each name above is a flat
-paprika/kelp card stamped "IMAGE PENDING — generated illustration to be
-supplied". They exist only so the layout is real and the swap is a file
-replace. **The concept must not be published or shown to anyone in this
-state.**
+**Delivered 31 July 2026.** All six were generated to this brief and are in
+place; the placeholders are gone. The originals arrived as 1402x1122 PNGs and
+are held outside the repository at `.tmp/scopers-source-images/`. The counter
+and supper-table images came back at 5:4 rather than the portrait and 16:9
+asked for here, which the layout absorbs. Every step in the list above has been
+carried out.
 
 ## Sources for the dish claims
 

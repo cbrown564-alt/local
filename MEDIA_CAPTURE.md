@@ -378,6 +378,7 @@ Journey films additionally:
 | tool-centre | 27 Jul 2026 | hire-list after still recaptured | n/a (local concept) | Captures the repaired illustrative-equipment, conditions and rates disclosure |
 | douglas-cromie | 27 Jul 2026 | after still & clip recaptured | None found | Captures the placeholder labels added to every sample forecourt listing |
 | kelly-mcevoy-brown | 27 Jul 2026 | after still & clip recaptured | None found | Captures the repaired project register and its source-bounded metadata |
+| scopers | 31 Jul 2026 | after still & clip, supper-club after still, all recaptured | n/a (local concept) | The fold changed: generated food imagery, a signature rail of dishes, and the bar's own badge in place of the redrawn stamp |
 | hugh-mccanns | 27 Jul 2026 | after still & clip recaptured after fifth-check repair | None found | Carries a disclosed faithful visualisation of the venue's dining-room view and captures the enquiry handoff to the published email address |
 | newcastle-dental | 27 Jul 2026 | after still & clip recaptured | None found | Captures the care pills after unsupported treatment claims were removed; recaptured again after the fifth-check repair moved current-site criticism out of the proposed patient page |
 

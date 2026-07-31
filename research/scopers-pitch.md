@@ -9,10 +9,8 @@ supper club as the standout offer.
 
 **Do not hand anything over until all four gates clear:**
 
-1. The six generated food images in `research/scopers-image-brief.md` have
-   replaced the "IMAGE PENDING" placeholders, and the concept has been looked
-   at with human eyes afterwards. **The concept is not showable until this is
-   done** — the placeholders are the whole reason it is currently withheld.
+1. ~~The six generated food images are in place.~~ Done 31 July 2026, with the
+   comparison still, clip and supper-club still recaptured to match.
 2. `mournemade.co.uk` resolves and `/transformations/scopers/` is deployed.
 3. A production request-form submission has reached the intended inbox.
 4. The printed one-sheet's QR has been scanned on a phone against the live page.
@@ -103,9 +101,9 @@ Supporting, if pressed:
   to both and hands every booking to the Instagram inbox they already answer.
 - **Their words.** Every dish name and description on the page is quoted from
   their own captions.
-- **Their badge.** The concept uses their real round mark, not a redraw.
-- **Their prices, their menu, their hours** — the page links out to Facebook
-  for the current menu rather than pretending to hold it.
+- **Their badge.** The concept uses their own mark, not a redraw of it.
+- **Their menu and their hours** — the page carries no prices and no menu of
+  its own; it links out to the Facebook page they already post them on.
 
 ## What is *not* theirs, and say so unprompted
 
