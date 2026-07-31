@@ -44,7 +44,226 @@ const RESDIARY_WIDGET =
 const FORBIDDEN_TARGETS =
   /(first ?name|last ?name|surname|full ?name|e-?mail|phone|mobile|telephone|card|cvv|postcode|confirm|complete booking|pay|checkout)/i;
 
+const SCOPERS_FACEBOOK =
+  "https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/";
+const SCOPERS_INSTAGRAM = "https://www.instagram.com/scopersdundrum/";
+
 export const JOURNEYS = {
+  // Scopers has no website at all, so the "before" side is their social
+  // presence — which is the honest comparison, not a straw man: the live
+  // Facebook page is genuinely where a customer ends up.
+  //
+  // One step is deliberately missing. The walk starts at the Facebook page
+  // rather than at a Google search, because Google refuses scripted access
+  // (recorded 31 July 2026: the search returns its unusual-traffic page). The
+  // tap from the search result to the page is therefore *not* counted, which
+  // understates the live side by one tap. Never present these counts as
+  // including the search.
+  scopers: {
+    liveHome: SCOPERS_FACEBOOK,
+    conceptHome: "/concepts/scopers/",
+    evidenceNote:
+      "Scopers has no website; the live side is their public Facebook page and Instagram profile, "
+      + "walked logged out, as a customer without an account meets them. Nothing was posted, "
+      + "messaged, followed or logged into. The tap from a Google result to the page is not "
+      + "counted, because Google blocks scripted search — the live counts are one tap short.",
+    errands: [
+      {
+        id: "hours",
+        label: "Find today's opening hours and what's on the menu",
+        endsAt: "The concept's Find us block · on Facebook, no published hours or menu",
+        before: {
+          live: true,
+          steps: [
+            {
+              id: "consent",
+              action: "goto",
+              url: SCOPERS_FACEBOOK,
+              settleMs: 5000,
+              screen: true,
+              strip: true,
+              note: "Meta's cookie dialog is the whole first screen. Not one word about the business yet.",
+            },
+            { id: "consent-hold", action: "hold", seconds: 2.6 },
+            {
+              id: "consent-scroll",
+              action: "scroll",
+              to: 1,
+              unit: "page",
+              seconds: 1.8,
+              note: "The dialog's buttons sit below the fold: a full screen of cookie policy has to be scrolled past before the page can be dismissed.",
+            },
+            {
+              id: "accept-essential",
+              action: "tap",
+              target: "text=Only allow essential cookies",
+              via: "element",
+              seconds: 6,
+              navigation: true,
+              screen: true,
+              strip: true,
+              note: "Tap one only clears the dialog. The page beneath opens on a login prompt and an app banner.",
+            },
+            {
+              id: "measure-page",
+              action: "measure",
+              targets: {
+                details: "text=Details",
+                phone: "text=028 4375 8436",
+              },
+              note: "Where the only trading-status words on the page sit.",
+            },
+            {
+              id: "hunt-hours",
+              action: "scroll",
+              to: 1,
+              unit: "viewport",
+              seconds: 2.4,
+              note: "Scrolling for opening times. There are none: the page says only 'Closing soon', with no day, no hours and no menu.",
+            },
+            { id: "hunt-hold", action: "hold", seconds: 2.6 },
+          ],
+        },
+        after: {
+          steps: [
+            {
+              id: "home",
+              action: "goto",
+              url: "/concepts/scopers/",
+              settleMs: 2600,
+              screen: true,
+              strip: true,
+              note: "The first screen names the street, says the bar is open most of the week and links today's hours.",
+            },
+            { id: "home-hold", action: "hold", seconds: 2.4 },
+            {
+              id: "to-find-us",
+              action: "tap",
+              target: "text=Find us",
+              seconds: 2.2,
+              screen: true,
+              strip: true,
+              note: "Tap one: address, the hours handoff to their own Facebook, directions and the message route, on one screen.",
+            },
+            { id: "find-hold", action: "hold", seconds: 2.6 },
+          ],
+        },
+      },
+      {
+        id: "supper",
+        label: "Find the date of the next supper club",
+        endsAt: "The concept's supper-club page · on Instagram, a wall",
+        before: {
+          live: true,
+          steps: [
+            {
+              id: "instagram",
+              action: "goto",
+              url: SCOPERS_INSTAGRAM,
+              settleMs: 5000,
+              screen: true,
+              strip: true,
+              note: "Instagram, logged out on a phone: the bio, the follower count, and no posts at all. The supper club is not reachable from here without an account.",
+            },
+            { id: "instagram-hold", action: "hold", seconds: 3 },
+            {
+              id: "measure-instagram",
+              action: "measure",
+              targets: { anyPost: "main a[href*='/p/']", signUp: "text=Sign up" },
+              note: "Whether a single post is reachable on the logged-out profile.",
+            },
+            {
+              id: "facebook",
+              action: "goto",
+              url: SCOPERS_FACEBOOK,
+              settleMs: 5000,
+              screen: true,
+              note: "The only route left is the Facebook page — and the cookie dialog again.",
+            },
+            {
+              id: "consent-scroll",
+              action: "scroll",
+              to: 1,
+              unit: "page",
+              seconds: 1.8,
+              note: "The dialog's buttons sit below the fold: a full screen of cookie policy has to be scrolled past before the page can be dismissed.",
+            },
+            {
+              id: "accept-essential",
+              action: "tap",
+              target: "text=Only allow essential cookies",
+              via: "element",
+              seconds: 6,
+              navigation: true,
+              screen: true,
+              strip: true,
+              note: "Tap one clears the dialog. The date is not on the page: it is inside a post, in the feed.",
+            },
+            {
+              id: "hunt-feed",
+              action: "scroll",
+              to: 1,
+              unit: "viewport",
+              seconds: 2.6,
+              screen: true,
+              note: "Scrolling the feed past pinned posts and a birthday post to reach the supper-club announcement of 10 July, which sinks further with every new post.",
+            },
+            {
+              id: "dismiss-wall",
+              action: "tap",
+              target: "[aria-label='Close']",
+              via: "element",
+              seconds: 2.4,
+              screen: true,
+              strip: true,
+              note: "Tap two closes Facebook's login wall, which drops over the feed the moment the posts start.",
+            },
+            {
+              id: "hunt-feed-2",
+              action: "scroll",
+              to: 4.4,
+              unit: "viewport",
+              seconds: 2.6,
+              note: "Scrolling on, past the pinned posts, towards the supper-club announcement of 10 July — which sinks further with every new post.",
+            },
+            {
+              id: "measure-post",
+              action: "measure",
+              targets: { supperPost: "text=Supper Club New date 26th August, 7pm" },
+              note: "How far down the feed the only public statement of the next date sits.",
+            },
+            { id: "feed-hold", action: "hold", seconds: 3 },
+          ],
+        },
+        after: {
+          steps: [
+            {
+              id: "home",
+              action: "goto",
+              url: "/concepts/scopers/",
+              settleMs: 2600,
+              screen: true,
+              strip: true,
+              note: "The date is on the first screen: next night, Wednesday 26 August.",
+            },
+            { id: "home-hold", action: "hold", seconds: 2.4 },
+            {
+              id: "to-supper",
+              action: "tap",
+              target: "text=Book the supper club",
+              seconds: 3,
+              navigation: true,
+              screen: true,
+              strip: true,
+              note: "Tap one: a standing page for the night — date, format, sample menu and the same Instagram inbox to reserve.",
+            },
+            { id: "supper-hold", action: "hold", seconds: 3 },
+          ],
+        },
+      },
+    ],
+  },
+
   "bucks-head": {
     liveHome: "https://thebucksheaddundrum.co.uk/",
     conceptHome: "/concepts/bucks-head/",

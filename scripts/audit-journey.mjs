@@ -137,6 +137,27 @@ function locate(page, spec, { requireInView = false } = {}) {
   }, { target: spec, mustBeInView: requireInView });
 }
 
+// Click the same element `locate` resolves, from inside the page. Used only
+// where a site ignores synthesised pointer input (see the tap branch below).
+function clickElement(page, spec) {
+  return page.evaluate((target) => {
+    const text = target.startsWith("text=") ? target.slice(5).trim().toLowerCase() : null;
+    const pool = text
+      ? [...document.querySelectorAll("a, button, [role='button'], li, span, div")].filter((el) => {
+        const label = (el.innerText || el.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim().toLowerCase();
+        return label === text;
+      })
+      : [...document.querySelectorAll(target)];
+    const el = pool.find((node) => {
+      const r = node.getBoundingClientRect();
+      return r.width > 6 && r.height > 6;
+    });
+    if (!el) return false;
+    el.click();
+    return true;
+  }, spec);
+}
+
 async function shoot(page, name) {
   const file = path.join(outDir, `${name}.png`);
   await page.screenshot({ path: file, type: "png" });
@@ -179,7 +200,12 @@ async function pageFacts(page) {
 }
 
 async function walk(browser, errand, sideName, side) {
-  const page = await browser.newPage();
+  // Every side starts as a stranger: its own browser context, so no cookie
+  // choice, consent or session carries over from an earlier errand. Without
+  // this, the second walk of a Meta page skips the cookie dialog the first
+  // one dismissed and the count silently flatters the live side.
+  const context = await browser.createBrowserContext();
+  const page = await context.newPage();
   await page.setViewport({ ...MOBILE_VIEW, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   await page.setUserAgent(MOBILE_USER_AGENT);
 
@@ -216,7 +242,15 @@ async function walk(browser, errand, sideName, side) {
         const navigation = step.navigation
           ? page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 30000 }).catch(() => null)
           : Promise.resolve(null);
-        await page.mouse.click(point.x, point.y);
+        // Meta's cookie dialog ignores synthesised input entirely — mouse
+        // clicks, touch sequences and Input.synthesizeTapGesture at the
+        // button's own coordinates all leave it on screen (checked three ways,
+        // 31 July 2026). A step may therefore declare `via: "element"`, which
+        // dispatches the click on the element instead of at a point. It is the
+        // same one tap for counting purposes; only the delivery differs, and
+        // the frame after it proves the dialog actually went away.
+        if (step.via === "element") await clickElement(page, step.target);
+        else await page.mouse.click(point.x, point.y);
         await navigation;
         await sleep((step.seconds ?? 1.5) * 1000);
       } else if (step.action === "fill") {
@@ -292,6 +326,7 @@ async function walk(browser, errand, sideName, side) {
     }
   } finally {
     await page.close();
+    await context.close();
   }
 
   return { ...countJourney(side), live: Boolean(side.live), frames, measurements };
@@ -323,8 +358,9 @@ const lines = [
   `# ${slug} journey audit — ${today}`,
   "",
   `Walked at ${MOBILE_VIEW.width}×${MOBILE_VIEW.height}, the live site and the concept, one errand at a time.`,
-  "Both sides of the booking errand stop at the same place: the pub's own ResDiary widget,",
-  "ready to choose a time. No personal details were entered and no reservation was made.",
+  journey.evidenceNote
+    ?? "Both sides of the booking errand stop at the same place: the pub's own ResDiary widget, "
+      + "ready to choose a time. No personal details were entered and no reservation was made.",
   "",
   "| Errand | Side | Taps | Screens | Scrolls | Ends at |",
   "| --- | --- | ---: | ---: | ---: | --- |",
