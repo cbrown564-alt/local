@@ -4,8 +4,8 @@ Written 31 July 2026 as a reference for the Enniskeen flagship upgrade and as
 the studio's general playbook for taking a concept from "well designed" to
 "I can't believe that's *our* place".
 
-**Status, 31 July 2026:** built for Enniskeen — six of the seven moves, plus
-the swap mechanism for the seventh. See "What shipped" below.
+**Status, 31 July 2026:** built for Enniskeen — six of the seven moves in
+full, including the day-part hero. See "What shipped" below.
 
 ## The principle
 
@@ -80,7 +80,7 @@ one-sheet and the reel.
 
 | Move | Where it lives | State |
 |---|---|---|
-| Day-part hero | `src/components/enniskeen/EnkHero.astro`, bands in `enniskeen-site.ts` | **Mechanism done, images pending.** A variant renders only if its file exists in `public/`, so today the hero is the unchanged daytime plate. Prompts in `research/enniskeen-day-part-hero-brief.md`; drop the files in, run `pnpm optimize:media`, done |
+| Day-part hero | `src/components/enniskeen/EnkHero.astro`, bands in `enniskeen-site.ts` | **Done.** Dawn, day and dusk, swapped on the visitor's local clock; the daytime plate stays the pre-script state so no-JS, crawlers, print and capture are untouched. Prompts and boundary in `research/enniskeen-day-part-hero-brief.md` |
 | Illustrated map | `src/components/enniskeen/EnkEstateMap.astro`, estate page | **Done.** Brass-line plate of the twelve acres — drive, house and turret, lawn, trail, Wishing Well, Shimna, sightlines to Donard and the sea |
 | One photographic voice | SVG filter in `EnniskeenShell.astro`, `--enk-grade` in the stylesheet | **Done.** Pine shadows, warm highlights, eased saturation, fine grain — one filter over every image in the concept |
 | Editorial details | Home welcome note | **Done.** One drop cap, and one verbatim TripAdvisor review — Carolyn K, 22 July 2026 — set as a large Cormorant italic pull-quote with its date and source, so the owner can go and find it |
@@ -92,8 +92,8 @@ All of it is covered by `pnpm test:enniskeen`, which now also asserts the
 day-part swap (pinning the clock to 12:00 and 21:00), the shared grade, no
 clipped map labels, the map's "indicative · not a survey" disclosure, the four
 timeline moments, and that the pull-quote carries its attribution, its date and
-a citation an owner can follow. The swap assertions self-activate when a second
-variant lands.
+a citation an owner can follow, and that every day-part file on disk actually
+reaches the page.
 
 ### What the build taught us
 
@@ -107,8 +107,11 @@ variant lands.
   assertion because the failure is invisible in code review.
 - **Ship the mechanism before the assets.** Resolving day-part variants against
   the filesystem meant the swap could land, be tested and be reviewed with zero
-  images in hand, and turns the generation session into a drop-in. Every move
-  that waits on a generation should be built this way.
+  images in hand; when the two generations arrived they needed a format
+  conversion and nothing else. Every move that waits on a generation should be
+  built this way — but pair it with a test that compares what is on disk to
+  what reached the page, because a cached Astro build silently dropped a newly
+  added variant and looked exactly like a broken swap.
 - **A grade must compose, not override.** `--enk-grade` is a custom property so
   the few images with their own framing filters can chain it. A blanket
   `filter:` on `img` would have been silently overridden by them.

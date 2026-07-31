@@ -1,9 +1,12 @@
 # Enniskeen — generation brief for the day-part hero
 
 Written 31 July 2026 alongside the elevation build in
-`docs/good-to-great-concept-elevation.md` (move 1). The swap mechanism is
-already shipped and tested; this brief is the remaining half — two generations
-that do not exist yet.
+`docs/good-to-great-concept-elevation.md` (move 1).
+
+**Done, 31 July 2026.** Both generations were made against the prompts below,
+converted to JPEG, optimised and shipped; all three day parts are live and
+covered by `pnpm test:enniskeen`. The brief stays as the record of how they
+were made and the boundary they must respect if either is ever regenerated.
 
 ## What it is for
 
@@ -22,15 +25,20 @@ matching the visitor's local clock:
 
 | Variant | Local hours | File |
 |---|---|---|
-| `dawn` | 04:00 – 09:59 | `public/images/enniskeen-faithful-house-dawn.jpg` |
+| `dawn` | 04:00 – 09:59 | `public/images/enniskeen-faithful-house-dawn.jpg` *(exists)* |
 | `day` | 10:00 – 17:59 | `public/images/enniskeen-faithful-house.png` *(exists)* |
-| `dusk` | 18:00 – 03:59 | `public/images/enniskeen-faithful-house-dusk.jpg` |
+| `dusk` | 18:00 – 03:59 | `public/images/enniskeen-faithful-house-dusk.jpg` *(exists)* |
 
 Consequences worth knowing before generating:
 
-- **A missing file is skipped, not broken.** Today only `day` exists, so the
-  hero is a plain static image and no swap script is emitted at all. Drop a
-  file in, run `pnpm build`, and it joins the rotation. Nothing else to edit.
+- **A missing file is skipped, not broken.** With one variant the hero is a
+  plain static image and no swap script is emitted at all. Drop a file in,
+  rebuild, and it joins the rotation. Nothing else to edit.
+- **Clear the Astro cache when adding a variant.** A cached build silently
+  omitted a newly added file during this session — the page looked correct and
+  simply never swapped. `rm -rf dist node_modules/.astro node_modules/.vite`
+  before rebuilding. `pnpm test:enniskeen` now fails loudly on the mismatch
+  rather than leaving it to be noticed by eye.
 - **`day` is always the pre-script state**, so no-JS visits, crawlers, the
   print one-sheet and the capture scripts keep seeing exactly what they see
   today. The film does not need re-capturing for this move.
@@ -39,8 +47,10 @@ Consequences worth knowing before generating:
 - Both new files are `.jpg` so `pnpm optimize:media` generates the `-640.webp`
   and `-1265.webp` derivatives the responsive `<picture>` expects. **Run it
   after adding them.** A `.png` would silently skip the WebP path.
-- Target **1823 × 863** — the same aspect as the existing plate. A different
-  ratio will crop unpredictably against `object-position: 40% 46%`.
+- Match the existing plate's **2.10:1** aspect. The delivered files are
+  1820 × 864 (dawn) and 1818 × 865 (dusk) against the day plate's 1819 × 865 —
+  within a pixel, which is what matters: a different ratio crops
+  unpredictably against `object-position: 40% 46%`.
 
 ## The reference boundary (non-negotiable)
 
@@ -96,13 +106,14 @@ reject it. The move works because the house looks *lived in*, not marketed.
 
 ## After the files land
 
-1. `pnpm optimize:media` — generates the WebP derivatives.
+1. Convert to `.jpg` if the generator emitted PNG — the 2.3 MB PNGs that came
+   back first time became 175–200 KB JPEGs with no visible loss, and only
+   `.jpg` gets WebP derivatives. Then `pnpm optimize:media`.
 2. `pnpm build` — the variants join the rotation automatically.
 3. `pnpm test:enniskeen` — the journey suite asserts the swap for real: it
-   pins the clock to 21:00 and requires the visible frame to change, and pins
-   it to 12:00 and requires the daytime frame back. **Those two assertions are
-   skipped while only one variant exists**, so they start enforcing the moment
-   you add a file.
+   pins the clock to 21:00 and requires the visible frame to change, pins it
+   to 12:00 and requires the daytime frame back, and separately requires every
+   variant present on disk to reach the page.
 4. Add an entry per file to `research/concept-reviews/image-provenance.md`
    under **Generated imagery**, recording the reference plate and the
    change-the-light-only boundary. Do this in the same commit as the images.

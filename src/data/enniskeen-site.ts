@@ -53,8 +53,8 @@ export const base = "/concepts/hotel-enniskeen";
 export const generatedVisuals = {
   house: {
     src: "/images/enniskeen-faithful-house.png",
-    width: 1823,
-    height: 863,
+    width: 1819,
+    height: 865,
     alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel, preserving its rendered gabled façade, turret and ivy",
   },
   estate: {
@@ -134,8 +134,8 @@ const dayPartSources = [
     from: 4,
     to: 10,
     src: "/images/enniskeen-faithful-house-dawn.jpg",
-    width: 1823,
-    height: 863,
+    width: 1820,
+    height: 864,
     alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel at dawn, mist across the valley behind its gabled façade, turret and ivy",
     caption: "Provisional visualisation · the house at dawn",
   },
@@ -154,8 +154,8 @@ const dayPartSources = [
     from: 18,
     to: 4,
     src: "/images/enniskeen-faithful-house-dusk.jpg",
-    width: 1823,
-    height: 863,
+    width: 1818,
+    height: 865,
     alt: "AI-generated faithful visualisation of Enniskeen Country House Hotel at dusk, its windows lit against the darkening Shimna Valley",
     caption: "Provisional visualisation · the house at dusk",
   },

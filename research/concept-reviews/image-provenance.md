@@ -32,13 +32,6 @@ of these businesses supplied one.
   presents this as the hotel's existing identity, and the concept's header
   keeps the text wordmark beside it. Withdraw it if the hotel ever supplies a
   real mark.
-- `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
-  **declared but not yet made.** The day-part hero in
-  `src/components/enniskeen/EnkHero.astro` skips any variant whose file is
-  absent, so these names are reserved rather than shipped. Prompts, the
-  reference boundary and the post-generation steps — including adding a real
-  entry per file under **Generated imagery** below — are in
-  `research/enniskeen-day-part-hero-brief.md`.
 
 ## Business-owned site assets
 
@@ -85,6 +78,21 @@ Every page carrying one of these labels it as generated on the page itself.
 - `dundrum-inn-faithful-exterior.jpg` — **in use.** AI-generated faithful visualisation based on the Inn's own exterior hero photograph, downloaded from its GuestDiary CDN on 26 July 2026 and held privately at `.tmp/concept-subject-references/dundrum-inn-exterior-reference.jpg`. The prompt preserved the yellow-and-black terraced façade, shopfront, roof and window rhythm, blue-edged awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring blue/purple fronts. It changed only lighting, minor street clutter and framing; it expressly forbade an invented bay view, mountains, garden, hotel extension or new architecture. The concept labels the image as generated in the first viewport and its alt text repeats the reference boundary. The rejected first attempt (`dundrum-inn-hero-generated-v1.png`) invented a cream country inn and false bay setting and was removed.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
+- `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
+  **in use** (31 July 2026). AI-generated faithful visualisations of the same
+  view as `enniskeen-faithful-house.png`, at first light and at dusk, made for
+  the concept's day-part hero. The reference was the existing
+  `enniskeen-faithful-house.png` plate rather than the original photograph, so
+  the three frames share one composition and the house does not appear to move
+  when the hero swaps. The prompts preserved the painted-render gabled façade,
+  conical slate turret and weathervane, chimneys, window rhythm and ivy, and
+  changed only light and atmosphere — dawn mist and unlit windows; dusk sky
+  with warm domestic lamplight in the lower windows. Both expressly forbade
+  architectural change, people, cars, signage, exterior floodlighting and
+  invented grounds. Delivered as PNG and converted to JPEG so the responsive
+  WebP derivatives generate. Each variant carries its own
+  "Provisional visualisation" caption on the page, and the daytime plate
+  remains the pre-script state. Prompts and boundary: `research/enniskeen-day-part-hero-brief.md`.
 - `enniskeen-faithful-room6.png` — **in use.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 6's distinctive matching pink basin and bath. The prompt preserved the fixture colour, forms and chrome cross-head tap arrangement and forbade invented luxury features.
 - `bucks-head-faithful-hearth.png` — **in use.** AI-generated faithful visualisation based on the pub's reference photograph of its real hearth. The prompt preserved the rounded arch, brick chimney breast, stove, antlers, wall colours, seating and floor materials while forbidding redesign or invented amenities.
 - `enniskeen-generated-estate.jpg`, `enniskeen-generated-balcony.jpg`,

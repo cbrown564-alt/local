@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "./lib/chrome.mjs";
 
@@ -313,10 +315,29 @@ try {
     "every hero variant must carry the provisional-visualisation disclosure",
   );
 
-  // The dawn and dusk generations are briefed but not yet made
-  // (research/enniskeen-day-part-hero-brief.md). Assert the swap for real as
-  // soon as a second variant exists rather than leaving a permanently green
-  // test that never exercised it.
+  // Every day-part file present on disk must actually reach the page. Astro
+  // has been seen serving a cached build that silently omitted a newly added
+  // variant, which looks exactly like "the swap does not work" — and the rest
+  // of this block would have passed anyway, because a single-variant hero is
+  // a legitimate state. Compare the two directly.
+  const onDisk = ["dawn", "dusk"].filter((id) =>
+    fs.existsSync(
+      path.join(
+        process.cwd(),
+        "public",
+        "images",
+        `enniskeen-faithful-house-${id}.jpg`,
+      ),
+    ),
+  );
+  assert.equal(
+    midday.declared,
+    onDisk.length + 1,
+    `${onDisk.length + 1} day-part variants exist on disk but the page declares ${midday.declared} — rebuild after clearing node_modules/.astro`,
+  );
+
+  // With a second variant present the swap must be exercised for real, rather
+  // than leaving a permanently green test that never ran it.
   if (midday.declared > 1) {
     await pinHour(elevation, 21);
     await elevation.goto(route, { waitUntil: "networkidle0", timeout: 60_000 });
