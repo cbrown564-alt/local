@@ -23,14 +23,17 @@ food, and nothing on the page may imply otherwise.
 
 The **dish names are real** — each one is quoted from Scopers' own public
 Instagram caption, listed in Sources below. The **pictures are not**. That
-distinction has to survive on the page itself, not just in this file:
+distinction has to survive on the page itself, not just in this file — but
+lightly. Revised 31 July 2026: the first pass asked for per-image alt-text
+disclosure plus a visible line in the food section; that proved
+heavy-handed. The kept register is:
 
-- Alt text names the dish and states the image is a generated illustration.
-- The food section carries one visible line: *"Dishes from Scopers' own posts.
-  Images are generated illustrations, not photographs of the food."*
-- The transformation page's "Sources & limits" block is updated in the same
-  commit — its current sentence "The concept introduces no photography" becomes
-  false the moment these land.
+- Each generated plate is captioned as what it is — *"a generated riff on
+  Scopers' own Instagram post"* — one honest clause, not a disclaimer block.
+- The concept banner carries the standing line: *"Food imagery is
+  AI-generated."*
+- The transformation page's "Sources & limits" block says it in full, and is
+  updated in the same commit as any imagery change.
 - `research/image-provenance.md` gets an entry per file, under
   **Generated imagery**, before the concept is re-published.
 
@@ -154,6 +157,47 @@ are held outside the repository at `.tmp/scopers-source-images/`. The counter
 and supper-table images came back at 5:4 rather than the portrait and 16:9
 asked for here, which the layout absorbs. Every step in the list above has been
 carried out.
+
+## The menu-cover hero — delivered 7 August 2026 (added 31 July 2026)
+
+The elevation brief's move 3 in its full vision: one signature dish
+art-directed like a menu cover — macro, the wild garlic mayo mid-drip — with
+deliberate negative space for the cover type. **Delivered as a risograph
+illustration plus a four-second animated loop**, not the photoreal macro
+first specced here: when both directions were tried, the risograph won on
+identity and on honesty (an illustration is its own disclosure — nobody
+mistakes it for the real plate), and the animation supplies the appetite the
+photoreal route was meant to protect. The elevation brief's photoreal
+decision stands for the food cards below the hero; the hero itself took the
+illustration fallback.
+
+Delivered files, in `public/media/concepts/scopers/`:
+
+- `risograph-chicken-burger.png` — 1536x1024 master, burger right of frame,
+  the left third quiet buttermilk paper for the cover type.
+- `risograph-chicken-burger.mp4` — 1280x720, four seconds, static camera,
+  line-work steam and drip glisten. The pipeline webm strips the audio.
+- jpg + webp derivatives via `pnpm optimize:media`.
+
+Wiring: the midday entry of `dayPartSources` in
+`src/concepts/scopers/content.ts` points at the still, with `video` set to
+the loop's basename — `ScHero` upgrades the frame to `<video>` only when
+both transcodes exist, keeps the still as poster/alt carrier, flips the
+cover type to dark-on-paper (`tone: "light"`), pauses offscreen, and falls
+back to the still under `prefers-reduced-motion`. The page caption runs in
+the lightened register: *"illustrated after Scopers' own post."*
+
+The original photoreal prompt is kept below for the record; it was not used.
+
+> A buttermilk-fried chicken burger in a dark home-baked milk bread bun
+> scattered with black sesame seeds, craggy golden breadcrumb crust, pale
+> wild garlic mayo caught mid-drip down one side, orange-red tomato salsa,
+> fresh green leaves. Standing on pale oak at the right of the frame,
+> three-quarter view at plate height, macro close at 85 mm equivalent; the
+> left third of the frame is quiet, empty pale-oak surface falling into soft
+> cast-iron shadow, composed to carry cover type. Soft cool window light
+> from the left, warm buttermilk highlights, fine grain. No hands, no faces,
+> no logos, no text.
 
 ## Sources for the dish claims
 

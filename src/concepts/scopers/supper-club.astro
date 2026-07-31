@@ -1,10 +1,10 @@
 ---
 import "../../site/styles/global.css";
 import "./styles.css";
-const instagram = "https://www.instagram.com/scopersdundrum/";
-const facebook = "https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/";
-const bookingLink = instagram;
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import { facebook, instagram, supperClub } from "./content";
+
+const bookingLink = instagram;
 ---
 
 <ConceptLayout title={"The Supper Club — Scopers · independent concept"} slug="scopers" bodyClass="concept-page concept-scopers" lang="en-GB" bannerNote="Food imagery is AI-generated.">
@@ -26,7 +26,27 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
       <a class="sc-book" href={bookingLink}>Book your place</a>
     </header>
 
-    <main>
+    <main class="sc-invitation">
+      <section class="sc-invite-hero" aria-labelledby="invite-heading">
+        <img class="sc-invite-seal" src="/media/concepts/scopers/scopers-badge.png" width="88" height="102" alt="" aria-hidden="true" />
+        <p class="sc-invite-kicker">You are invited</p>
+        <h1 class="sc-invite-title" id="invite-heading">The Supper Club</h1>
+        <p class="sc-invite-date">{supperClub.nextDate} <span>· {supperClub.nextTime}</span></p>
+        <p class="sc-invite-lede">
+          Up to eleven courses drawn entirely from what the Mourne Larder gives — gathered,
+          foraged and cooked by Paul Cunningham at a location announced to guests the week
+          before the night.
+        </p>
+        <p class="sc-invite-secret">
+          <strong>The location is revealed to guests the week before.</strong>
+          <span>Not a footnote — the game. You will receive the address by direct message once your place is confirmed.</span>
+        </p>
+        <div class="sc-invite-actions">
+          <a class="sc-cta" href={bookingLink}>Message to reserve</a>
+          <a class="sc-link" href={facebook}>See announcements on Facebook →</a>
+        </div>
+      </section>
+
       <figure class="sc-night-figure">
         <img
           src="/media/concepts/scopers/scopers-generated-supper-table.jpg"
@@ -36,49 +56,6 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
         />
         <figcaption>Supper-club table laid for an evening in the Mourne countryside.</figcaption>
       </figure>
-      <section class="sc-night-hero">
-        <div class="sc-night-eyebrow">
-          <span class="sc-night-tag">Supper club</span>
-          <span class="sc-night-date">Wednesday 26 August 2026 · 7 pm</span>
-        </div>
-        <h1 class="sc-night-title">Late summer.<br /><em>Mourne table.</em></h1>
-        <p class="sc-night-lede">
-          Up to eleven courses drawn entirely from what the Mourne Larder gives in August —
-          gathered, foraged and cooked by Paul Cunningham at a location announced to guests
-          the week before the night. The next table is Wednesday 26 August, from 7 pm.
-        </p>
-        <div class="sc-night-actions">
-          <a class="sc-cta" href={bookingLink}>Message to reserve</a>
-          <a class="sc-link" href={facebook}>See past events on Facebook →</a>
-        </div>
-        <aside class="sc-night-card">
-          <p class="sc-night-card-label">The details</p>
-          <ul class="sc-night-details" aria-label="Event details">
-            <li>
-              <span class="sc-detail-key">When</span>
-              <span class="sc-detail-val">Wednesday 26 August 2026 · from 7 pm</span>
-            </li>
-            <li>
-              <span class="sc-detail-key">Where</span>
-              <span class="sc-detail-val">A unique Mourne location — revealed to guests by DM</span>
-            </li>
-            <li>
-              <span class="sc-detail-key">Courses</span>
-              <span class="sc-detail-val">Up to eleven · entirely seasonal</span>
-            </li>
-            <li>
-              <span class="sc-detail-key">Drinks</span>
-              <span class="sc-detail-val">Natural wine and local beers available on the night</span>
-            </li>
-            <li>
-              <span class="sc-detail-key">Spaces</span>
-              <span class="sc-detail-val">Limited · private booking only</span>
-            </li>
-          </ul>
-          <a class="sc-night-card-cta" href={bookingLink}>Reserve via Instagram DM</a>
-          <small class="sc-night-card-note">Book through the same inbox the kitchen already answers</small>
-        </aside>
-      </section>
 
       <section class="sc-night-philosophy">
         <div class="sc-night-phil-inner">
@@ -108,7 +85,7 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
             <li><span>Foraged leaf salad · hazelnut vinaigrette</span></li>
             <li><span>Slow-cooked Mourne lamb · sorrel</span></li>
             <li><span>Blackberry &amp; elderflower palate cleanser</span></li>
-            <li><span>Cheese · Drumlin Farm · Coolattin cheddar</span></li>
+            <li><span>Local cheese · oat biscuit</span></li>
             <li><span>Hedgerow fruit tart · clotted cream</span></li>
             <li><span>Petit fours · bee pollen &amp; dark chocolate</span></li>
           </ol>
@@ -122,7 +99,7 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
           <h2 class="sc-night-book-h2">Places are limited. The list fills quickly.</h2>
           <p class="sc-night-book-copy">
             Message us on Instagram or Facebook to take a place at the table on
-            Wednesday 26 August, or to join the list for the night after it.
+            {supperClub.nextDate}, or to join the list for the night after it.
             We'll reply within a day with availability, pricing and everything you need to know.
           </p>
           <div class="sc-night-book-actions">
@@ -130,7 +107,7 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
             <a class="sc-cta sc-cta-outline" href={facebook}>Message on Facebook</a>
           </div>
           <p class="sc-night-book-meta">
-            <strong>Next date:</strong> Wednesday 26 August 2026 — announced on Instagram and Facebook
+            <strong>Next date:</strong> {supperClub.nextDate} — announced on Instagram and Facebook
           </p>
         </div>
         <a class="sc-night-back" href="/concepts/scopers/">← Back to the hot food bar</a>

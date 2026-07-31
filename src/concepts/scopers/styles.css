@@ -86,21 +86,116 @@
 }
 .sc-book:hover { background: var(--iron); transform: translateY(-1px); }
 
-/* Hero */
-.sc-hero {
+/* Hero — appetite first: the plate leads, typography follows. */
+.sc-hero-appetite {
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-hero-plate {
   position: relative;
-  /* Everything above the hero: the concept-disclosure banner (56), the
-     announcement strip (38) and the header (80). Subtracting all three keeps
-     the signature rail — now the first food on the screen — inside the fold. */
-  min-height: calc(100vh - 174px);
+  min-height: clamp(280px, 52vh, 520px);
+  background: var(--iron-deep);
+}
+.sc-hero-visual {
+  margin: 0;
+  position: absolute;
+  inset: 0;
   display: grid;
-  grid-template-columns: 57% 43%;
-  grid-template-rows: 1fr auto;
+}
+.sc-hero-frame {
+  grid-area: 1 / 1;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+.sc-hero-frame[hidden] { display: none; }
+.sc-hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+/* Light plates (the risograph): the cover type flips to dark-on-paper. */
+.sc-hero-plate[data-tone="light"]::after { border-color: rgba(38, 35, 30, 0.42); }
+.sc-hero-plate[data-tone="light"] .sc-hero-overlay {
+  background: linear-gradient(90deg, rgba(247, 242, 227, 0.88) 0%, rgba(247, 242, 227, 0.45) 42%, rgba(247, 242, 227, 0) 68%);
+}
+.sc-hero-plate[data-tone="light"] .sc-hero-overlay .sc-kicker { color: var(--paprika); }
+.sc-hero-plate[data-tone="light"] .sc-hero-overlay .sc-kicker::before { background: var(--paprika); }
+.sc-hero-plate[data-tone="light"] .sc-hero-overlay h1 { color: var(--iron); }
+.sc-hero-plate[data-tone="light"] .sc-hero-overlay h1 em { color: var(--paprika); }
+.sc-hero-visual figcaption {
+  position: absolute;
+  right: clamp(24px, 3vw, 40px);
+  bottom: 26px;
+  margin: 0;
+  padding: 6px 10px 6px 12px;
+  background: rgba(25, 23, 19, 0.72);
+  border-left: 3px solid var(--paprika);
+  color: #d8cfc0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border-radius: 0 6px 6px 0;
+  z-index: 3;
+}
+/* The plate as a menu cover: an inset hairline frame, and the title set in
+   the quiet side of the photograph like cover type. */
+.sc-hero-plate::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(247, 242, 227, 0.38);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+.sc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vh, 48px) clamp(34px, 4vw, 64px);
+  background: linear-gradient(90deg, rgba(25, 23, 19, 0.80) 0%, rgba(25, 23, 19, 0.45) 42%, rgba(25, 23, 19, 0) 68%);
+  color: var(--buttermilk);
+  pointer-events: none;
+  z-index: 3;
+}
+.sc-hero-overlay .sc-kicker { color: #d8a06e; animation: none; }
+.sc-hero-overlay .sc-kicker::before { background: #d8a06e; }
+.sc-hero-overlay h1 {
+  margin: 0;
+  max-width: 9.5em;
+  font-family: var(--display);
+  font-size: clamp(32px, 4.6vw, 54px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  animation: none;
+}
+.sc-hero-overlay h1 em {
+  font-style: normal;
+  color: #f0b07a;
+}
+.sc-hero-lower {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 384px);
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(20px, 3vh, 32px) clamp(26px, 3.6vw, 56px) clamp(24px, 3vh, 36px);
+  align-items: start;
 }
 .sc-story {
-  grid-column: 1;
-  grid-row: 1;
-  padding: clamp(24px, 3.4vh, 44px) clamp(26px, 3.6vw, 56px) 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -158,17 +253,14 @@
   text-decoration-color: var(--paprika);
 }
 
-/* Supper club card */
+/* Supper club invitation card */
 .sc-panel {
-  grid-column: 2;
-  grid-row: 1;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  padding: 22px clamp(26px, 3.2vw, 50px);
 }
 .sc-club {
-  width: min(100%, 384px);
+  width: 100%;
   padding: 20px 24px 20px;
   background: var(--iron);
   color: var(--buttermilk);
@@ -176,6 +268,35 @@
   box-shadow: 0 26px 60px rgba(25, 23, 19, 0.35);
   position: relative;
   overflow: hidden;
+  text-align: center;
+}
+.sc-club--invite { padding-top: 16px; }
+.sc-club-seal {
+  display: block;
+  width: 52px;
+  height: auto;
+  margin: 0 auto 12px;
+  padding: 9px;
+  box-sizing: content-box;
+  background: var(--buttermilk);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(180, 81, 29, 0.5), 0 5px 14px rgba(0, 0, 0, 0.35);
+}
+.sc-club-date {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+.sc-club-secret {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #d8a06e;
+  font-style: italic;
 }
 .sc-club::before {
   content: "";
@@ -242,50 +363,77 @@
 .sc-club-cta:hover { background: var(--buttermilk); color: var(--iron); }
 .sc-club small { display: block; margin-top: 10px; font-size: 12px; text-align: center; color: #a89f87; }
 
-/* Signature rail — content right-aligned so the fixed concept-disclosure badge
-   in the bottom-left corner never covers a cell */
-.sc-rail {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
-  background: var(--kelp);
-  padding: 0 clamp(20px, 3.5vw, 44px);
+/* Steam wisp — cheap surprise on the hot plates only. */
+.sc-steam {
+  position: absolute;
+  left: 18%;
+  bottom: 22%;
+  width: clamp(80px, 14vw, 140px);
+  height: auto;
+  pointer-events: none;
+  opacity: 0.55;
 }
-.sc-rail-cell {
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  border-left: 1px solid rgba(247, 242, 227, 0.22);
+.sc-steam-wisp {
+  fill: none;
+  stroke: rgba(247, 242, 227, 0.72);
+  stroke-width: 2.4;
+  stroke-linecap: round;
 }
-.sc-rail-cell:first-child { border-left: 0; }
-.sc-rail-thumb {
-  flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
-  object-fit: cover;
-  filter: var(--sc-grade);
+@keyframes sc-steam-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  50% { opacity: 0.7; }
+  to { opacity: 0; transform: translateY(-18px); }
 }
-.sc-rail-text { display: flex; flex-direction: column; gap: 2px; }
-.sc-dish { font-family: var(--display); font-size: 15px; font-weight: 600; color: #ffffff; }
-.sc-dish-note { font-size: 12px; color: #dfe4cd; }
+.sc-steam-wisp--1 { animation: sc-steam-rise 3.2s ease-in-out infinite; }
+.sc-steam-wisp--2 { animation: sc-steam-rise 3.8s 0.6s ease-in-out infinite; }
+.sc-steam-wisp--3 { animation: sc-steam-rise 3.4s 1.1s ease-in-out infinite; }
+
+/* Paul's caption — their voice, not ours. */
+.sc-caption-quote {
+  margin: 0;
+  padding: clamp(36px, 5vh, 64px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  text-align: center;
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-caption-quote blockquote {
+  max-width: 14em;
+  margin: 0 auto;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+.sc-caption-quote figcaption {
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-caption-quote figcaption span {
+  display: block;
+  margin-top: 6px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #a89f87;
+}
 
 /* Entrance */
 @keyframes sc-rise { from { opacity: 0; transform: translateY(14px); } }
-.sc-kicker { animation: sc-rise 440ms ease backwards; }
-.sc-story h1 { animation: sc-rise 440ms 70ms ease backwards; }
-.sc-lede { animation: sc-rise 440ms 140ms ease backwards; }
-.sc-actions { animation: sc-rise 440ms 210ms ease backwards; }
+.sc-hero-lower .sc-lede { animation: sc-rise 440ms 140ms ease backwards; }
+.sc-hero-lower .sc-actions { animation: sc-rise 440ms 210ms ease backwards; }
 .sc-club { animation: sc-rise 480ms 280ms ease backwards; }
 
 @media (max-width: 940px) {
   .sc-strip { flex-direction: column; gap: 2px; text-align: center; }
-  /* The nav stays on phones rather than disappearing: this concept is shown
-     to the owner on a handset, and every entry now goes somewhere real. */
   .sc-header { height: auto; padding-block: 6px; flex-wrap: wrap; row-gap: 4px; }
   .sc-nav {
     order: 3;
@@ -297,39 +445,22 @@
   }
   .sc-nav::-webkit-scrollbar { display: none; }
   .sc-nav a { font-size: 14px; white-space: nowrap; }
-  .sc-hero { grid-template-columns: 1fr; min-height: 0; }
-  .sc-story { grid-column: 1; grid-row: auto; order: 0; padding: 16px 22px 10px; }
-  .sc-story h1 { max-width: none; text-wrap: balance; font-size: clamp(32px, 9vw, 42px); }
+  .sc-hero-plate { min-height: clamp(240px, 44vh, 380px); }
+  .sc-hero-plate::after { inset: 10px; }
+  .sc-hero-visual figcaption { top: 22px; right: 22px; bottom: auto; max-width: 240px; }
+  .sc-hero-overlay {
+    justify-content: flex-end;
+    padding: 20px 22px 26px;
+    background: linear-gradient(180deg, rgba(25, 23, 19, 0) 0%, rgba(25, 23, 19, 0.88) 68%);
+  }
+  .sc-hero-plate[data-tone="light"] .sc-hero-overlay {
+    background: linear-gradient(180deg, rgba(247, 242, 227, 0) 0%, rgba(247, 242, 227, 0.92) 68%);
+  }
+  .sc-hero-lower { grid-template-columns: 1fr; padding: 16px 22px 20px; }
+  .sc-hero-overlay h1 { max-width: none; font-size: clamp(28px, 8vw, 36px); }
   .sc-lede { margin-bottom: 12px; font-size: 14.5px; line-height: 1.45; }
-  /* Explicit rows — desktop `grid-row: 2` on the rail was jumping it above the club card. */
-  .sc-panel { grid-column: 1; grid-row: auto; order: 1; padding: 0 22px 14px; }
   .sc-club { padding: 14px 16px; }
-  .sc-club > p:not(.sc-club-meta) { display: none; }
   .sc-club h2 { font-size: 20px; margin-bottom: 6px; }
-  .sc-club-meta { margin-bottom: 8px; padding: 8px 10px; }
-  .sc-rail {
-    grid-column: 1;
-    grid-row: auto;
-    order: 2;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 8px 22px 12px;
-    gap: 0;
-  }
-  .sc-rail::-webkit-scrollbar { display: none; }
-  .sc-rail-cell {
-    border-left: 1px solid rgba(247, 242, 227, 0.22);
-    flex: 0 0 140px;
-    min-width: 0;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 14px;
-  }
-  .sc-rail-cell:first-child { border-left: 0; }
-  .sc-rail-thumb { width: 48px; height: 48px; }
 }
 
 @media (max-width: 520px) {
@@ -348,7 +479,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sc-kicker, .sc-story h1, .sc-lede, .sc-actions, .sc-club { animation: none; }
+  .sc-hero-lower .sc-lede,
+  .sc-hero-lower .sc-actions,
+  .sc-club { animation: none; }
+  .sc-steam-wisp { animation: none; opacity: 0.35; }
+  /* The video loop falls back to its still poster underneath. */
+  .sc-hero-video { display: none; }
 }
 
 /* ─── Below the fold: food, story, find us ───────────────────────────────── */
@@ -366,7 +502,344 @@
 .sc-section-head { max-width: 40em; margin-bottom: clamp(28px, 3.5vh, 44px); }
 .sc-section-lede { margin: 0; font-size: 16.5px; line-height: 1.65; color: #59523f; max-width: 34em; }
 
-/* The food */
+/* Nothing wasted — intro split, then the trace as a horizontal pass rail:
+   one ingredient's week read left to right along the pass, the last step
+   punched in paprika because it is the creed. */
+.sc-larder {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-larder-top {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 440px);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.sc-trace {
+  margin: clamp(32px, 4vh, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 2.2vw, 32px);
+  counter-reset: sc-step;
+}
+.sc-trace li {
+  counter-increment: sc-step;
+  position: relative;
+  padding: 20px 0 0;
+  border-top: 2px solid var(--kelp);
+}
+.sc-trace li:last-child { border-top-color: var(--paprika); }
+.sc-trace li::before {
+  content: counter(sc-step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--paprika);
+}
+.sc-trace li::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--kelp);
+  box-shadow: 0 0 0 3px rgba(92, 107, 61, 0.18);
+}
+.sc-trace li:last-child::after {
+  background: var(--paprika);
+  box-shadow: 0 0 0 3px rgba(180, 81, 29, 0.22);
+}
+.sc-trace h3 {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--iron);
+}
+.sc-trace p { margin: 0; font-size: 14px; line-height: 1.55; color: #59523f; }
+.sc-larder-visual { margin: 0; }
+.sc-larder-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  filter: var(--sc-grade);
+}
+.sc-larder-visual figcaption { margin-top: 10px; font-size: 12px; line-height: 1.45; color: #7a7060; }
+
+/* The anchor quote: the carrot caption, set as the trace's thesis. */
+.sc-larder-anchor {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--paprika);
+  max-width: 30em;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(17px, 1.9vw, 20px);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+  color: var(--iron);
+}
+
+/* The counter — dishes in a row like the glass display */
+.sc-counter {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--kelp);
+  color: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-counter .sc-kicker { color: rgba(247, 242, 227, 0.75); }
+.sc-counter .sc-kicker::before { background: rgba(247, 242, 227, 0.45); }
+.sc-counter .sc-h2 { color: #ffffff; max-width: none; }
+.sc-counter-scarcity {
+  margin: 12px 0 0;
+  font-family: var(--display);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 600;
+  font-style: italic;
+  color: #f0d9b8;
+  letter-spacing: -0.01em;
+}
+.sc-counter-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.4vw, 20px);
+  margin-top: clamp(24px, 3vh, 36px);
+}
+.sc-counter-cell {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(25, 23, 19, 0.42);
+  border: 1px solid rgba(247, 242, 227, 0.16);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sc-counter-cell img {
+  width: 100%;
+  height: clamp(120px, 14vw, 170px);
+  object-fit: cover;
+  display: block;
+  filter: var(--sc-grade);
+}
+.sc-counter-cell figcaption { padding: 14px 14px 16px; }
+.sc-counter-label {
+  display: block;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+}
+.sc-counter-note {
+  display: block;
+  margin: 4px 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-counter-cell p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(247, 242, 227, 0.78);
+}
+.sc-counter .sc-food-foot { margin-top: clamp(24px, 3vh, 32px); }
+.sc-counter .sc-provenance { color: rgba(247, 242, 227, 0.65); }
+.sc-counter .sc-cta { background: var(--paprika); color: #ffffff; }
+.sc-counter .sc-cta:hover { background: var(--iron); }
+
+/* Mourne Larder map */
+.sc-map-section {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-map-head { max-width: 52ch; margin-bottom: clamp(24px, 3vh, 36px); }
+/* Theme for the shared map plate (src/concepts/_shell/map-plate.css). */
+.sc-map {
+  --map-paper: var(--buttermilk);
+  --map-rule: var(--paprika);
+  --map-accent: var(--paprika);
+}
+.sc-map-plate {
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.sc-map figcaption {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7a7060;
+  max-width: 56ch;
+}
+/* Water: calm fill, a shore wash under the firm coastline, engraved tide
+   channels and wave marks. */
+.sc-map-sea { fill: rgba(92, 107, 61, 0.12); stroke: none; }
+.sc-map-flats { fill: var(--buttermilk); fill-opacity: 0.32; stroke: none; }
+.sc-map-coast-wash { fill: none; stroke: var(--kelp); stroke-opacity: 0.14; stroke-width: 7; stroke-linecap: round; }
+.sc-map-coastline { fill: none; stroke: var(--kelp); stroke-opacity: 0.65; stroke-width: 1.6; stroke-linecap: round; }
+.sc-map-tide path { fill: none; stroke: var(--kelp); stroke-opacity: 0.45; stroke-width: 1.1; stroke-linecap: round; stroke-dasharray: 4 5; }
+.sc-map-waves path { fill: none; stroke: var(--kelp); stroke-opacity: 0.4; stroke-width: 1.2; stroke-linecap: round; }
+.sc-map-boat-sail { fill: var(--paprika); fill-opacity: 0.55; }
+.sc-map-boat-hull { fill: none; stroke: var(--iron); stroke-opacity: 0.5; stroke-width: 1.2; stroke-linecap: round; }
+.sc-map-birds path { fill: none; stroke: var(--iron); stroke-opacity: 0.45; stroke-width: 1.1; stroke-linecap: round; }
+/* Mountains: layered rounded ridges, hachured crests, cropped by the rule. */
+.sc-map-ridge--back { fill: rgba(92, 107, 61, 0.14); stroke: var(--kelp); stroke-opacity: 0.55; stroke-width: 1.3; }
+.sc-map-ridge--front { fill: rgba(92, 107, 61, 0.07); stroke: var(--kelp); stroke-opacity: 0.42; stroke-width: 1.1; }
+.sc-map-hachures path { fill: none; stroke: var(--kelp); stroke-opacity: 0.35; stroke-width: 1; stroke-linecap: round; }
+.sc-map-peak-tick { fill: none; stroke: var(--iron); stroke-opacity: 0.6; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+/* Dunes: stippled bands hugging the shore. */
+.sc-map-dunes {
+  fill: none;
+  stroke: var(--paprika);
+  stroke-opacity: 0.4;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 8;
+}
+.sc-map-dunes--wide { stroke-opacity: 0.22; stroke-width: 12; }
+/* Fields: complete hedgerow parcels, alternating tone, loose hedges. */
+.sc-map-field { fill: none; stroke: var(--kelp); stroke-opacity: 0.4; stroke-width: 1.1; stroke-linecap: round; }
+.sc-map-field--toned { fill: rgba(92, 107, 61, 0.05); }
+.sc-map-hedges path { fill: none; stroke: var(--kelp); stroke-opacity: 0.35; stroke-width: 1; stroke-linecap: round; }
+/* Settlement. */
+.sc-map-street { fill: none; stroke: var(--iron); stroke-opacity: 0.5; stroke-width: 2.2; stroke-linecap: round; }
+.sc-map-lane { fill: none; stroke: var(--iron); stroke-opacity: 0.35; stroke-width: 1.1; stroke-linecap: round; }
+.sc-map-buildings rect, .sc-map-buildings path { fill: var(--iron); fill-opacity: 0.55; }
+.sc-map-town rect { fill: var(--iron); fill-opacity: 0.5; }
+.sc-map-castle-keep { fill: var(--iron); fill-opacity: 0.7; }
+.sc-map-castle-hill { fill: none; stroke: var(--kelp); stroke-opacity: 0.45; stroke-width: 1.2; stroke-linecap: round; }
+.sc-map .mm-map-compass text { font-family: var(--display); font-size: 11px; font-weight: 700; }
+/* A label system: water in letterspaced italic caps, land features in
+   letterspaced caps, settlements in display type, peaks and the castle in
+   italic. */
+.sc-map-water-label {
+  fill: var(--kelp);
+  fill-opacity: 0.85;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 12.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.sc-map-feature-label {
+  fill: var(--iron);
+  fill-opacity: 0.8;
+  font-family: var(--display);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.sc-map-place-label {
+  fill: var(--iron);
+  font-family: var(--display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.sc-map-town-label {
+  fill: var(--iron);
+  fill-opacity: 0.75;
+  font-family: var(--display);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+}
+.sc-map-peak-label, .sc-map-castle-label {
+  fill: #59523f;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+.sc-map-note { fill: #7a7060; font-family: var(--body); font-size: 9.5px; letter-spacing: 0.06em; }
+.sc-map-pin-label {
+  fill: var(--iron);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.sc-map-pin-dish {
+  fill: #59523f;
+  font-family: var(--body);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+
+/* Chef timeline */
+.sc-timeline-band {
+  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-timeline-band .sc-kicker { color: #d8a06e; }
+.sc-timeline-band .sc-kicker::before { background: #d8a06e; }
+.sc-timeline-band .sc-h2 { color: #ffffff; max-width: 22em; }
+.sc-timeline-head { max-width: 56ch; margin-bottom: 44px; }
+.sc-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0 20px;
+}
+.sc-timeline li { position: relative; padding-top: 30px; }
+.sc-timeline li::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 0;
+  right: -20px;
+  height: 1px;
+  background: rgba(247, 242, 227, 0.18);
+}
+.sc-timeline li:last-child::before { right: 0; }
+.sc-timeline li::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paprika);
+  box-shadow: 0 0 0 3px rgba(180, 81, 29, 0.25);
+}
+.sc-timeline-marker {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-timeline h3 {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+}
+.sc-timeline p { margin: 0; font-size: 13.5px; line-height: 1.55; color: #cfc8b4; }
+
+/* The food — legacy grid kept for any downstream references */
 .sc-food {
   padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
   background: var(--buttermilk);
@@ -411,41 +884,33 @@
 }
 .sc-provenance { font-size: 13px; line-height: 1.5; color: #7a7060; max-width: 42em; }
 
-/* Our story */
-.sc-storyline {
-  display: grid;
-  grid-template-columns: 1fr minmax(320px, 480px);
-  gap: clamp(32px, 4vw, 64px);
-  align-items: start;
-  padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
-  background: var(--iron);
-  color: var(--buttermilk);
-  border-bottom: 1px solid var(--hairline);
+/* The counter, full-bleed: a photographic break between the timeline and
+   find-us, and the appetite the page ends on. */
+.sc-counter-photo {
+  margin: 0;
+  position: relative;
+  background: var(--iron-deep);
 }
-.sc-storyline .sc-kicker { color: #d8a06e; }
-.sc-storyline .sc-kicker::before { background: #d8a06e; }
-.sc-storyline .sc-h2 { color: #ffffff; }
-.sc-storyline-copy p { margin: 0 0 16px; font-size: 16.5px; line-height: 1.7; color: #cfc8b4; max-width: 34em; }
-.sc-storyline .sc-link { color: var(--buttermilk); text-decoration-color: var(--paprika); }
-.sc-storyline-figure { margin: 0; }
-.sc-storyline-figure img {
+.sc-counter-photo img {
   width: 100%;
-  height: auto;
+  height: clamp(260px, 46vh, 480px);
+  object-fit: cover;
+  object-position: center 58%;
   display: block;
-  border-radius: 12px;
   filter: var(--sc-grade);
 }
-.sc-storyline-figure figcaption { margin-top: 10px; font-size: 12.5px; color: #a89f87; }
-
-/* Editorial: one drop cap on the story note only — a page of them is a ransom note. */
-.sc-dropcap::first-letter {
-  float: left;
-  margin: 4px 10px 0 0;
-  font-family: var(--display);
-  font-size: 58px;
-  font-weight: 700;
-  line-height: 0.72;
-  color: #d8a06e;
+.sc-counter-photo figcaption {
+  position: absolute;
+  left: clamp(26px, 3.6vw, 56px);
+  bottom: 22px;
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(25, 23, 19, 0.72);
+  border-left: 3px solid var(--paprika);
+  border-radius: 0 6px 6px 0;
+  color: #d8cfc0;
+  font-size: 13px;
+  letter-spacing: 0.03em;
 }
 
 /* Editorial: pull-quote — large enough to stop the eye, always carrying its
@@ -512,15 +977,154 @@
 .sc-find .sc-link { color: var(--buttermilk); text-decoration-color: rgba(247, 242, 227, 0.6); }
 
 @media (max-width: 940px) {
+  .sc-larder { padding: 44px 22px; }
+  .sc-larder-top { grid-template-columns: 1fr; }
+  .sc-trace { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
+  .sc-counter { padding: 44px 22px; }
+  .sc-counter-row { grid-template-columns: repeat(2, 1fr); }
+  .sc-map-section { padding: 44px 22px; }
+  .sc-timeline-band { padding: 44px 22px; }
+  .sc-timeline { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+  .sc-timeline li:nth-child(2)::before { right: 0; }
   .sc-dish-grid { grid-template-columns: repeat(2, 1fr); }
-  .sc-storyline { grid-template-columns: 1fr; padding: 44px 22px; }
   .sc-find-grid { grid-template-columns: 1fr; }
   .sc-food, .sc-find { padding: 44px 22px; }
 }
 
 @media (max-width: 560px) {
+  .sc-counter-row { grid-template-columns: 1fr; }
+  .sc-trace { grid-template-columns: 1fr; }
+  .sc-timeline { grid-template-columns: 1fr; }
+  .sc-timeline li::before { right: 0; }
   .sc-dish-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── Supper club invitation page ────────────────────────────────────────── */
+
+.sc-invitation { background: var(--buttermilk); }
+.sc-invite-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(40px, 6vh, 72px) clamp(26px, 3.6vw, 56px) clamp(28px, 4vh, 44px);
+  background: var(--iron);
+  color: var(--buttermilk);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-invite-seal {
+  width: clamp(72px, 10vw, 88px);
+  height: auto;
+  margin-bottom: 18px;
+  padding: 12px;
+  box-sizing: content-box;
+  background: var(--buttermilk);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(180, 81, 29, 0.55), 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+.sc-invite-kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+/* The invitation hierarchy: the club named like a card heading, the date
+   set as the hero — on this business the date is the pitch. */
+.sc-invite-title {
+  margin: 0 0 18px;
+  font-family: var(--display);
+  font-size: clamp(19px, 2.2vw, 24px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #d8a06e;
+}
+.sc-invite-date {
+  margin: 0 0 22px;
+  max-width: 16em;
+  font-family: var(--display);
+  font-size: clamp(38px, 5.4vw, 62px);
+  font-weight: 700;
+  line-height: 1.02;
+  color: #ffffff;
+  letter-spacing: -0.018em;
+}
+.sc-invite-date span {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #d8a06e;
+  vertical-align: baseline;
+}
+.sc-invite-lede {
+  margin: 0 0 22px;
+  max-width: 36em;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #cfc8b4;
+}
+.sc-invite-secret {
+  margin: 0 0 28px;
+  max-width: 32em;
+  padding: 16px 20px;
+  background: rgba(247, 242, 227, 0.06);
+  border: 1px solid rgba(247, 242, 227, 0.14);
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--buttermilk);
+}
+.sc-invite-secret strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--display);
+  font-size: 18px;
+  color: #f0b07a;
+}
+.sc-invite-secret span { color: #a89f87; font-size: 14px; }
+.sc-invite-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.sc-invite-actions .sc-link { color: var(--buttermilk); }
+.sc-invite-clues {
+  padding: clamp(40px, 5vh, 64px) clamp(26px, 3.6vw, 56px);
+  border-bottom: 1px solid var(--hairline);
+}
+.sc-clue-list {
+  margin: 24px 0 20px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 36em;
+}
+.sc-clue-list li {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.sc-clue-date {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--iron);
+}
+.sc-clue-note { font-size: 14px; line-height: 1.5; color: #59523f; }
+.sc-clue-next { margin: 0; font-size: 14px; color: #59523f; }
+.sc-clue-next strong { color: var(--iron); }
 
 /* ─── Supper club night page ─────────────────────────────────────────────── */
 

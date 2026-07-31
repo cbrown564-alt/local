@@ -95,6 +95,7 @@ const suites = [
   ["test:media"],
   ["test:bucks-head"],
   ["test:enniskeen"],
+  ["test:scopers"],
   ["test:painted-earth"],
 ];
 

@@ -33,6 +33,12 @@ of these businesses supplied one.
   keeps the text wordmark beside it. Withdraw it if the hotel ever supplies a
   real mark.
 
+- Donard Veterinary pet illustrations and catchment map — **in use** (31 July
+  2026). Inline SVG line drawings in `DvPetIllustrations.astro` and
+  `DvCatchmentMap.astro` — warm, obviously commissioned, disclosed on the page
+  as illustrations and an indicative map, not photographs of patients or a
+  boundary survey.
+
 ## Business-owned site assets
 
 - `douglas-cromie-logo.png` and `douglas-cromie-forecourt.jpg` — **in use.**
@@ -63,7 +69,9 @@ of these businesses supplied one.
   27 July 2026. The first is the business's mountain-ring mark. The second is
   the butter-on-a-board photograph used as that site's hero background. The
   concept uses both directly and does not present the illustrative flavour
-  names as photographed products.
+  names as photographed products. The melt hero reuses the butter photograph
+  with illustrative day-part serving captions (breakfast/evening); no separate
+  melt imagery was generated.
 
 ## Generated imagery
 
@@ -123,12 +131,27 @@ Every page carrying one of these labels it as generated on the page itself.
   supper-club table described, not the real ones. The dish names and
   descriptions beside them are quoted from Scopers' own public Instagram
   captions, read 31 July 2026 — the words are theirs, the pictures are not.
-  Every one carries that boundary in its alt text; the food section states it
-  visibly; the counter and supper-table images add a caption saying they are
-  not photographs of 169 Main Street or of an event. The prompts forbade faces,
+  That boundary is carried in the lightened register settled 31 July 2026:
+  each generated plate is captioned as a riff on the bar's own post, the
+  concept banner states the imagery is AI-generated, and the case study's
+  Sources & limits block says it in full. The prompts forbade faces,
   hands, logos, text and any recognisable Dundrum premises. The bar's own
   photography stays off the public site by the privacy decision of 31 July 2026
   and is reserved for personal outreach material.
+- `risograph-chicken-burger.jpg`, `risograph-chicken-burger.mp4` and
+  `risograph-chicken-burger.webm` — **in use.** AI-generated risograph-style
+  illustration of the buttermilk chicken burger (dish and caption from the
+  bar's 14 March Instagram post) plus a four-second animated loop made from
+  it, delivered 7 August 2026 to the menu-cover spec in
+  `research/concepts/scopers/scopers-image-brief.md` §7 and chosen over the
+  photoreal macro originally specced there — an illustration is its own
+  disclosure. Not a depiction of the real dish. The still is the midday
+  day-part hero on `/concepts/scopers/` and the video's poster; the loop
+  plays only in that frame, is stripped of audio, and falls back to the
+  still under `prefers-reduced-motion`. The 1536x1024 PNG master
+  (`risograph-chicken-burger.png`) sits alongside as the print-resolution
+  source; webp derivatives and the webm are pipeline products of the jpg
+  and mp4.
 - `castle-farm-produce.jpg` — **in use.** AI-generated. Cropped by CSS to a
   190×43 window and shown as the concept's wordmark in the page header, so the
   visible slice reads as a brand mark rather than as photography. It is not the

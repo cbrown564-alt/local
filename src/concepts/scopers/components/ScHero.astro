@@ -1,0 +1,151 @@
+---
+/** Appetite as theatre — the plate leads the first screen.
+ *
+ *  Three appetite states swap on the visitor's local clock: bread in the
+ *  morning, the burger at midday, the supper-club table in the evening.
+ *  The swap changes appetite, never availability — hours stay on Facebook.
+ *
+ *  The midday signature carries a short video loop alongside its still: the
+ *  frame upgrades to <video> only when both transcodes exist in public/,
+ *  with the still kept underneath as poster, alt carrier and the
+ *  prefers-reduced-motion fallback. A subtle steam wisp sits on the hot
+ *  photoreal plates only, and is suppressed under prefers-reduced-motion.
+ *
+ *  `tone` flips the cover type: pale plates (the risograph) get dark type on
+ *  a paper scrim, dark plates get the original light type. */
+import fs from "node:fs";
+import path from "node:path";
+import { dayParts } from "../content";
+
+const inPublic = (asset: string) =>
+  fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
+
+const parts = dayParts
+  .filter((part) => inPublic(part.src))
+  .map((part) => ({
+    ...part,
+    video:
+      part.video && inPublic(`${part.video}.webm`) && inPublic(`${part.video}.mp4`)
+        ? part.video
+        : undefined,
+  }));
+
+const fallback = parts.find((part) => part.id === "midday") ?? parts[0];
+const swaps = parts
+  .filter((part) => part.id !== fallback.id)
+  .map(({ id, from, to }) => ({ id, from, to }));
+---
+
+<div class="sc-hero-plate" data-sc-hero-plate data-tone={fallback.tone ?? "dark"}>
+  <figure class="sc-hero-visual" data-sc-daypart>
+    {parts.map((part) => (
+      <div
+        class="sc-hero-frame"
+        data-daypart={part.id}
+        data-steam={part.steam ? "" : undefined}
+        hidden={part.id !== fallback.id ? true : undefined}
+      >
+        <img
+          src={part.src}
+          alt={part.alt}
+          width={part.width}
+          height={part.height}
+          loading={part.id === fallback.id ? "eager" : "lazy"}
+          style={part.position ? `object-position: ${part.position};` : undefined}
+        />
+        {part.video && (
+          <video
+            class="sc-hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={part.src}
+            aria-hidden="true"
+            style={part.position ? `object-position: ${part.position};` : undefined}
+          >
+            <source src={`${part.video}.webm`} type="video/webm" />
+            <source src={`${part.video}.mp4`} type="video/mp4" />
+          </video>
+        )}
+        {part.steam && (
+          <svg class="sc-steam" viewBox="0 0 120 80" aria-hidden="true">
+            <path class="sc-steam-wisp sc-steam-wisp--1" d="M28 62c6-18 4-32-2-44" />
+            <path class="sc-steam-wisp sc-steam-wisp--2" d="M52 64c8-20 6-36-2-48" />
+            <path class="sc-steam-wisp sc-steam-wisp--3" d="M76 60c5-16 3-28-3-40" />
+          </svg>
+        )}
+      </div>
+    ))}
+    <figcaption data-sc-daypart-caption>{fallback.caption}</figcaption>
+  </figure>
+  <slot />
+</div>
+
+<script
+  is:inline
+  type="application/json"
+  data-sc-daypart-bands
+  set:html={JSON.stringify(
+    parts.map(({ id, from, to, caption, tone }) => ({ id, from, to, caption, tone })),
+  )}
+/>
+<script is:inline>
+  (() => {
+    const figure = document.querySelector("[data-sc-daypart]");
+    const config = document.querySelector("[data-sc-daypart-bands]");
+    if (!figure || !config) return;
+    const plate = figure.closest("[data-sc-hero-plate]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let bands;
+    try {
+      bands = JSON.parse(config.textContent || "[]");
+    } catch {
+      bands = [];
+    }
+
+    const syncPlayback = () => {
+      figure.querySelectorAll("[data-daypart]").forEach((frame) => {
+        const video = frame.querySelector("video");
+        if (!video) return;
+        if (frame.hidden || reduceMotion.matches) video.pause();
+        else video.play().catch(() => {});
+      });
+    };
+
+    const hour = new Date().getHours();
+    const band = bands.find(({ from, to }) =>
+      from < to ? hour >= from && hour < to : hour >= from || hour < to,
+    );
+
+    if (band) {
+      const target = figure.querySelector(`[data-daypart="${band.id}"]`);
+      if (target) {
+        figure
+          .querySelectorAll("[data-daypart]")
+          .forEach((frame) => (frame.hidden = frame !== target));
+
+        const image = target.querySelector("img");
+        if (image) image.loading = "eager";
+
+        const caption = figure.querySelector("[data-sc-daypart-caption]");
+        if (caption) caption.textContent = band.caption;
+
+        if (plate) plate.dataset.tone = band.tone ?? "dark";
+      }
+    }
+
+    if (figure.querySelector("video")) {
+      syncPlayback();
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) entry.target.pause();
+          else syncPlayback();
+        });
+      }).observe(figure);
+      reduceMotion.addEventListener("change", syncPlayback);
+    }
+  })();
+</script>

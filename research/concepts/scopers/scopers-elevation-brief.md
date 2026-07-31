@@ -7,9 +7,28 @@ grounds, rooms, dusk windows. Scopers has none of those raw materials. This
 brief re-derives the elevation from the materials this business actually has,
 and supersedes the Scopers section of that review.
 
-**Status: thinking only, nothing built.** Every move below needs its own
-sourcing pass before a line of code is written; the honesty constraints at the
-end decide what each move is allowed to say.
+**Status: shipped 31 July 2026; design pass two the same day.** Moves 1–7 are
+live on `/concepts/scopers/` and `/concepts/scopers/supper-club/`, pinned by
+`pnpm test:scopers`. Pass two, after comparing the pages against this brief:
+the map (move 6) was redrawn as real geography — bay, dunes, hedgerow fields,
+Main Street at the head of the bay, the Mournes along the south; the hero got
+its menu-cover treatment (inset frame, type in the quiet side) pending the
+full-vision macro generation now specced in `scopers-image-brief.md` §7; the
+move-2 anchor quote moved into the trace section; the move-5 "past nights"
+clues were dropped — past locations are the secret, and the section claimed
+knowledge the studio does not have; the legacy story panel (a duplicate of
+moves 4 and 7) became a full-bleed counter-photograph band; the supper-club
+date now outranks the title, and the badge seal sits on a buttermilk disc
+instead of floating dark-on-dark. Pass three, 31 July 2026: the map redrawn
+again, this time true to the real lay of the land so a local recognises it —
+the inner bay and its tidal channel behind the village, Murlough named on
+the dune shore, Newcastle and Slieve Donard where the Mournes meet the sea,
+the castle on its hill north-west of the village; layered ridge silhouettes
+instead of the sawtooth, stippled dunes hugging the coast, real hedgerow
+parcels, and a consistent label system (italic caps for water, caps for
+features, leader lines for the pins). Comparison stills and clip still need
+recapture before outreach (see `docs/MEDIA_CAPTURE.md`) — they predate all
+three passes.
 
 ## The organising principle
 
@@ -71,14 +90,25 @@ not just light.
 and live on Facebook; the day-part changes appetite, never availability. The
 "Today's hours on Facebook" strip stays untouched.
 
-**Creative fork to decide before generating:** photoreal vs illustration.
-Photoreal imitates the feed and carries a standing honesty tension — it looks
-like a photograph of their food until the caption is read. A commissioned
-cookbook/menu-cover illustration style is more honest, differentiates from
-the feed instead of competing with it, and is more ownable across the
-one-sheet and print. Photoreal is more appetizing. This is a deliberate
-choice, not a default; the existing six images are photoreal, so switching is
-a regeneration, not a restyle.
+**Creative fork — decided 31 July 2026: photoreal stays.** The fork was
+photoreal vs illustration. Photoreal imitates the feed and carries a standing
+honesty tension — it looks like a photograph of their food until the caption
+is read; a commissioned cookbook/menu-cover illustration style would be more
+honest, more differentiated from the feed, and more ownable across one-sheet
+and print. Photoreal is more appetizing, appetite is the hero's whole job,
+and the six existing generations are already photoreal — so the concept keeps
+them, lightens the disclosure wording to match (each generated plate is
+captioned as a generated riff on the bar's own post), and pursues the
+full-vision macro hero (below) as a new photoreal generation. Illustration
+remains the fallback if the honesty tension ever bites in outreach.
+
+**Amended 7 August 2026:** the fallback was taken — for the hero only. The
+menu-cover hero shipped as a risograph illustration with a four-second
+animated loop (`risograph-chicken-burger.*`), chosen over both the photoreal
+macro and a photoreal cinemagraph after seeing real outputs. The food cards,
+morning and evening day-parts stay photoreal; the midday signature is
+illustrated and moving. Also shipped the same pass: the zero-waste trace
+became a horizontal pass rail under the carrots photograph.
 
 ### 4. The counter
 
