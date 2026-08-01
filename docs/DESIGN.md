@@ -19,17 +19,27 @@ Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather th
 - Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
 - Foam `#F4F8FA` — main canvas
 
-The homepage opens on Product Stage: a two-column offer pairs one direct headline with a short supporting sentence and CTA. The featured before/after comparison follows immediately at full width, without forcing all of the content into one viewport. Place belonging then arrives as a full-bleed Newcastle shore moment. Alternative directions remain at `/prototypes/home/`.
+The homepage opens on Product Stage: a two-column offer pairs one direct headline with a short supporting sentence and CTA, and the featured before/after comparison performs the offer — it arrives fully "before" and sweeps once to the settled split on load (`BeforeAfter`'s `sweep` prop, reduced-motion safe, cancelled by any user takeover). A quiet claim-door link ("if one is yours, it's yours") sits under the hero CTA. Place belonging arrives as the drawn town map: Dundrum and Newcastle with every public transformation pinned, elevated from the former photo band. Alternative directions remain at `/prototypes/home/`.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
 ## Layout
 
-The public homepage is deliberately sparse: product-led opening, two actions,
-one featured transformation, then place identity, a closing request, and the
-community commitment. Detailed critique appears only on the transformation
-page. Content uses a 1180px maximum width, long vertical spacing and a small
-set of strong alignments.
+The public homepage is deliberately sparse: product-led opening with the
+reveal sweep, a visual recognition rail of the public transformations
+(thumbnails, real names and towns — never the studio's chrome), the town
+map, a closing request, and the community commitment. Detailed critique
+appears only on the transformation page. Content uses a 1180px maximum
+width, long vertical spacing and a small set of strong alignments.
+
+The town map (`src/site/components/TownMap.astro`) is the studio's keepable
+artifact: an indicative drawn map of Dundrum and Newcastle — the castle
+keep, Murlough, the bay, the Mourne ridges — with a gorse pin per public
+transformation. Pins are proof, not a directory: each names and opens its
+transformation and nothing else is listed. Pin coordinates live on each
+record in `src/site/data/transformations.ts`; the component throws at build
+if a public slug has no pin, so a newly published concept never ships
+invisible on the map.
 
 The comparison page is the core product. It uses equal-sized before and after images, a keyboard-operable range input, a visible split handle, and an optional numbered annotation layer whose pins carry hover/focus tooltips drawn from the notes below. The explanation follows the markers in order below the comparison as a one-open-at-a-time accordion (chosen from four prototyped layouts at `/prototypes/design-notes/`).
 
@@ -157,7 +167,8 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 - Wordmark and compact primary navigation
 - Primary gorse-yellow button and secondary text link
 - Independent-concept disclosure
-- Before/after range comparison
+- Before/after range comparison, with an opt-in load sweep for the homepage hero
+- Town map with per-transformation pins and hover/focus name chips
 - Click-to-load reel player with WebM/MP4 sources, native keyboard-operable
   controls, a poster-first state and reduced-motion flag. Its eyebrow, note and
   play label are props, so each case study names the business it is *not*
@@ -171,4 +182,4 @@ exactly, and concept pages carry a fixed "Independent concept" marker.
 
 ## Motion and access
 
-Motion includes a short product-stage entrance, a slow bay image drift on the place band, navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation. The comparison and form are keyboard operable, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.
+Motion includes a short product-stage entrance, the hero comparison's single load sweep, navigation underlines, button feedback and the numbered marker entrance. `prefers-reduced-motion` removes nonessential animation (the sweep renders settled instead). The comparison and form are keyboard operable, map pins are focusable links whose name chips appear on focus, focus remains visible, images have meaningful alternatives, and concept disclosures are present in text rather than colour alone.

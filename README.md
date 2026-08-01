@@ -39,7 +39,7 @@ pnpm test:media     # run while pnpm preview serves 127.0.0.1:4321
 
 ## Main routes
 
-- `/` — product-stage landing page (before/after first; place belonging next)
+- `/` — product-stage landing page (hero before/after with the load sweep, transformation rail, town map)
 - `/prototypes/home/` — internal homepage alternatives explored before shipping Product Stage
 - `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
@@ -113,6 +113,7 @@ because three documents each kept their own copy.
 | `PLAN.md` | Current milestone and the next actions |
 | `docs/REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |
 | `docs/CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
+| `docs/shell-elevation-brief.md` | The studio shell elevation brief (1 August 2026 decisions and build order) |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
 | `docs/CONTEXT.md` | Project vocabulary |
 | `docs/MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
@@ -124,7 +125,7 @@ Machine-readable sources of truth, which override any prose:
 
 | File | Owns |
 |---|---|
-| `src/site/data/transformations.ts` | `publicTransformationSlugs` — exactly what is public |
+| `src/site/data/transformations.ts` | `publicTransformationSlugs` — exactly what is public — and the town-map pin per record |
 | `research/publication.json` | The five-check answers per public concept |
 | `research/pipeline/verifications.json` | Per-business evidence, corrections and stage |
 
@@ -201,6 +202,11 @@ sourcing claims on 26 July 2026.
 - `tools/capture/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node tools/capture/capture-concept-screens.mjs <slug>`
 - `tools/media/optimize-public-media.mjs` — derives two responsive WebP sizes and a WebM clip from each committed JPEG/MP4 master
 - `tools/test/test-media-loading.mjs` — browser assertion that phone-sized WebP sources are lazy and demo video is fetched only after a play click
+- `tools/test/test-shell-home.mjs` — homepage shell journey: the hero
+  comparison sweep arms at full "before", travels, settles at the resting
+  split and stays interactive; reduced-motion renders settled; the
+  claim-door link is present. Run with `pnpm test:shell-home` against
+  `pnpm preview`, or as part of `pnpm test`.
 - `tools/test/test-concept-shell.mjs` — auto-discovers every concept route and audits
   desktop and phone rendering for horizontal overflow, clipped header controls,
   broken concept links, inert brand links, undeclared placeholders and browser

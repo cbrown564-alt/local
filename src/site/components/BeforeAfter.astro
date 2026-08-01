@@ -10,6 +10,8 @@ interface Props {
   showNotes?: boolean;
   compact?: boolean;
   loading?: "eager" | "lazy";
+  /** Homepage hero: arrive fully "before" and sweep once to the settled split. */
+  sweep?: boolean;
 }
 const {
   before,
@@ -19,6 +21,7 @@ const {
   showNotes = true,
   compact = false,
   loading = "eager",
+  sweep = false,
 } = Astro.props;
 const sizes = compact
   ? "(max-width: 720px) 100vw, (max-width: 1100px) 58vw, 650px"
@@ -28,6 +31,7 @@ const sizes = compact
 <section
   class:list={["comparison", { "comparison--compact": compact }]}
   data-comparison
+  {...(sweep ? { "data-comparison-sweep": "" } : {})}
   style="--comparison-split: 50%"
 >
   <div class="comparison-legend" aria-hidden="true">
@@ -159,6 +163,50 @@ const sizes = compact
       });
     });
     setSplit(Number(input?.value ?? 50));
+
+    // Homepage hero reveal: arrive fully "before", then sweep once to the
+    // settled split. Any user takeover cancels the sweep instantly, and
+    // reduced motion renders the settled state with no animation. The SSR
+    // markup stays at the settled split so no-JS, crawlers, print and
+    // capture are untouched.
+    const sweep = comparison.hasAttribute("data-comparison-sweep");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (sweep && !reducedMotion && input && frame) {
+      const target = clamp(Number(input.value ?? 50));
+      let cancelled = false;
+      const cancel = () => {
+        if (cancelled) return;
+        cancelled = true;
+        comparison.setAttribute("data-comparison-sweep-state", "interrupted");
+      };
+      input.addEventListener("input", cancel, { once: true });
+      frame.addEventListener("pointerdown", cancel, { once: true });
+      viewButtons.forEach((button) => button.addEventListener("click", cancel, { once: true }));
+
+      setSplit(100);
+      comparison.setAttribute("data-comparison-sweep-state", "armed");
+      const sweepDelayMs = 600;
+      const sweepDurationMs = 1500;
+      window.setTimeout(() => {
+        if (cancelled) return;
+        comparison.setAttribute("data-comparison-sweep-state", "running");
+        const start = performance.now();
+        const tick = (now: number) => {
+          if (cancelled) return;
+          const t = Math.min(1, (now - start) / sweepDurationMs);
+          const eased = 1 - Math.pow(1 - t, 3);
+          setSplit(100 + (target - 100) * eased);
+          if (t < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            comparison.setAttribute("data-comparison-sweep-state", "settled");
+          }
+        };
+        requestAnimationFrame(tick);
+      }, sweepDelayMs);
+    } else if (sweep) {
+      comparison.setAttribute("data-comparison-sweep-state", "settled");
+    }
 
     let dragging = false;
 

@@ -1,21 +1,30 @@
 ---
 import { transformations } from "../data/transformations";
+import ResponsiveImage from "./ResponsiveImage.astro";
 ---
 
 <section class="local-strip" aria-label="Local businesses in the portfolio">
   <div class="shell local-strip-shell">
-    <p class="local-strip-label">Portfolio</p>
+    <p class="local-strip-label">Already made — free concepts for these businesses</p>
     {transformations.length > 0 ? (
-      <ul class="local-strip-list">
-        {transformations.map((business, index) => (
-          <li class="local-strip-item">
-            <a class="local-strip-link" href={business.href}>
-              <span class="local-strip-name">{business.name}</span>
-              <span class="local-strip-town">{business.town}</span>
+      <ul class="local-strip-rail">
+        {transformations.map((business) => (
+          <li class="local-strip-card">
+            <a class="local-strip-link" href={business.href} aria-label={`Open the ${business.name} before-and-after`}>
+              <ResponsiveImage
+                pictureClass="local-strip-thumb"
+                src={business.after}
+                alt={business.afterAlt}
+                width="1265"
+                height="710"
+                loading="lazy"
+                sizes="220px"
+              />
+              <span class="local-strip-card-copy">
+                <span class="local-strip-name">{business.name}</span>
+                <span class="local-strip-town">{business.town}</span>
+              </span>
             </a>
-            {index < transformations.length - 1 && (
-              <span class="local-strip-sep" aria-hidden="true">·</span>
-            )}
           </li>
         ))}
       </ul>

@@ -1,0 +1,149 @@
+---
+import { transformations } from "../data/transformations";
+import "../styles/town-map.css";
+
+/**
+ * The town map — the studio's keepable artifact (docs/shell-elevation-brief.md,
+ * move 3). A drawn, indicative map of Dundrum and Newcastle with every public
+ * transformation pinned. Pins are concept-work proof, not a directory: each
+ * links to its transformation and nothing else is listed.
+ *
+ * The build check lives here: a public transformation without a pin fails the
+ * build, so a newly published concept can never ship invisible on the map.
+ */
+const unpinned = transformations.filter((item) => !item.pin);
+if (unpinned.length > 0) {
+  throw new Error(
+    `Town map: every public transformation needs a pin. Missing: ${unpinned
+      .map((item) => item.slug)
+      .join(", ")}`,
+  );
+}
+
+const pins = transformations.map((item) => ({
+  ...item,
+  pin: item.pin!,
+  tipWidth: Math.max(120, Math.round(item.name.length * 9.5 + 30)),
+}));
+---
+
+<div class="town-map" data-town-map>
+  <svg
+    class="town-map-svg"
+    viewBox="0 0 1200 720"
+    role="group"
+    aria-label="Indicative map of Dundrum and Newcastle with a pin for every business that has a public concept"
+  >
+    <defs>
+      <linearGradient id="town-map-sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3d6a80" />
+        <stop offset="1" stop-color="#23485a" />
+      </linearGradient>
+    </defs>
+
+    <!-- Land -->
+    <rect x="0" y="0" width="1200" height="720" fill="#eef4f1" />
+
+    <!-- the Mournes: organic background and foreground ridges rising behind Newcastle (Left) -->
+    <!-- Far mountain ridge (Slieve Commedagh, Slieve Donard high summits) -->
+    <path
+      class="town-map-ridge town-map-ridge-far"
+      d="M 0 280
+         C 40 240, 80 200, 130 170
+         C 170 145, 210 95, 245 105
+         C 285 115, 320 175, 370 215
+         C 420 250, 480 280, 540 310
+         C 580 328, 620 340, 660 350"
+    />
+    <!-- Mid mountain ridge (Slieve Donard shoulder dropping to the sea at Newcastle) -->
+    <path
+      class="town-map-ridge"
+      d="M 0 315
+         C 60 275, 120 235, 175 195
+         C 215 165, 240 130, 270 155
+         C 305 185, 345 240, 410 270
+         C 470 298, 530 325, 600 345
+         C 640 355, 680 365, 720 370"
+    />
+    <!-- Foothills / Tollymore valley slopes -->
+    <path
+      class="town-map-ridge"
+      d="M 0 355
+         C 70 330, 140 290, 210 275
+         C 275 260, 335 295, 400 320
+         C 460 342, 520 358, 580 370"
+    />
+
+    <!-- Sea: Dundrum Bay sweeping from Dundrum Inner Bay (top right) around Murlough to Newcastle shore (left) -->
+    <path
+      class="town-map-sea-fill"
+      d="M 1200 360
+         C 1120 375, 1050 410, 980 435
+         C 900 460, 800 495, 700 515
+         C 600 530, 480 525, 380 515
+         C 280 505, 200 510, 140 540
+         C 100 560, 50 575, 0 585
+         L 0 720 L 1200 720 Z"
+    />
+    <path
+      class="town-map-coast"
+      d="M 1200 360
+         C 1120 375, 1050 410, 980 435
+         C 900 460, 800 495, 700 515
+         C 600 530, 480 525, 380 515
+         C 280 505, 200 510, 140 540
+         C 100 560, 50 575, 0 585"
+    />
+    <path class="town-map-wave" d="M 750 590 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 520 630 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 310 610 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 980 560 q 26 -10 52 0 q 26 10 52 0" />
+
+    <!-- Coast road, Dundrum to Newcastle -->
+    <path
+      class="town-map-road"
+      d="M 980 415 C 840 455, 680 490, 520 485 C 440 480, 360 460, 260 475"
+    />
+
+    <!-- Dundrum: castle keep on its hill above the village (Right) -->
+    <g class="town-map-castle" transform="translate(630, -40)" aria-hidden="true">
+      <path d="M 305 324 Q 345 288 385 324 Z" />
+      <rect x="331" y="262" width="28" height="36" />
+      <rect x="331" y="254" width="8" height="8" />
+      <rect x="341" y="254" width="8" height="8" />
+      <rect x="351" y="254" width="8" height="8" />
+    </g>
+
+    <!-- Newcastle: Main Street down to the shore and Promenade (Left) -->
+    <path class="town-map-street" d="M 440 420 L 320 450 L 220 480" />
+    <path class="town-map-street" d="M 350 445 C 280 410, 230 360, 210 320" />
+
+    <!-- Place labels -->
+    <text class="town-map-label-town town-map-label-right" x="1090" y="315">Dundrum</text>
+    <text class="town-map-label-town" x="70" y="470">Newcastle</text>
+    <text class="town-map-label-sea" x="620" y="628">Dundrum Bay</text>
+    <text class="town-map-label-small" x="140" y="90">the Mournes</text>
+    <text class="town-map-label-small" x="240" y="85">Slieve Donard</text>
+    <text class="town-map-label-small town-map-label-faint" x="615" y="440">Murlough</text>
+
+    <!-- A pin for every public transformation -->
+    {pins.map((item) => (
+      <a
+        href={item.href}
+        class="town-map-pin"
+        aria-label={`${item.name}, ${item.town} — open the before-and-after`}
+      >
+        <g transform={`translate(${item.pin.x} ${item.pin.y})`}>
+          <circle class="town-map-pin-ring" r="10" />
+          <circle class="town-map-pin-dot" r="4" />
+          <g class="town-map-pin-tip" aria-hidden="true">
+            <rect x={-item.tipWidth / 2} y="-58" width={item.tipWidth} height="36" rx="8" />
+            <path d="M -7 -22 L 7 -22 L 0 -13 Z" />
+            <text x="0" y="-35">{item.name}</text>
+          </g>
+        </g>
+      </a>
+    ))}
+  </svg>
+  <p class="town-map-note">Indicative · not a survey · each pin opens that business's before-and-after</p>
+</div>
