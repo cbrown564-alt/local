@@ -4,10 +4,11 @@ Written 31 July 2026. `docs/good-to-great-concept-elevation.md` is the hotel
 instance of this method, written when Enniskeen was the only elevated
 concept. The Scopers review showed the failure mode of applying it literally:
 day-part heroes, estate maps and history bands are *place* moves, and a zero-
-waste hot food bar has no place in that sense. Four derived briefs now exist —
+waste hot food bar has no place in that sense. Five derived briefs now exist —
 `research/concepts/scopers/scopers-elevation-brief.md`, `research/concepts/bettys-butters/bettys-butters-elevation-brief.md`,
 `research/concepts/donard-veterinary/donard-veterinary-elevation-brief.md`,
-`research/concepts/mourne-cycles/mourne-cycles-elevation-brief.md` — and this document is the process
+`research/concepts/mourne-cycles/mourne-cycles-elevation-brief.md`,
+`research/concepts/dundrum-inn/dundrum-inn-elevation-brief.md` — and this document is the process
 they were derived by, so the next concept does not need to rediscover it.
 
 ## What "great" is made of

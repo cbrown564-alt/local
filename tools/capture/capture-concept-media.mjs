@@ -62,6 +62,7 @@ const JOURNEY_SCROLL_MS = 900;
 // openings still produce a visible hover moment for the screencast.
 const AFTER_HOVER = [
   ".bh-cta", ".bh-book", ".cp-cta", ".tc-cta", ".ka-cta", ".nc-cta",
+  ".pe-primary", ".pe-live-link", ".pe-search button",
   ".button", "a.button", ".button-secondary", "nav a", "header a", "main a",
 ];
 const CONCEPTS = {
@@ -150,6 +151,14 @@ const CONCEPTS = {
     settleMs: 5000,
     beforeHover: "text=MENUS",
     afterHover: AFTER_HOVER,
+  },
+  // Representative retail prototype (already has a polished Shopify store).
+  // Internal / noindex until Publish — still captured like any live-site pair.
+  "painted-earth": {
+    before: "https://www.paintedearthgifts.com/",
+    settleMs: 5000,
+    beforeHover: ["text=Shop Collections", "text=Original Art", "text=Shop Now", "nav a", "header a"],
+    afterHover: [".pe-primary", ".pe-live-link", ".pe-search button", "nav a", "header a", "main a"],
   },
   // First-website concepts — after demo only (before is a gated social still).
   "scopers": { before: null, afterHover: AFTER_HOVER },

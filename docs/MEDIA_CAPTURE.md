@@ -38,7 +38,7 @@ choreography, same length — to keep the comparison fair.
 
 | Group | Concepts | Before demo | After demo |
 | --- | --- | --- | --- |
-| **Real live website** | castle-farm, hotel-enniskeen, mourne-cycles, donard-veterinary, bucks-head | ✅ clip | ✅ clip |
+| **Real live website** | castle-farm, hotel-enniskeen, mourne-cycles, donard-veterinary, bucks-head, painted-earth | ✅ clip | ✅ clip |
 | **First-website** | scopers, cupla, tool-centre, kent-amusements, newcastle-chamber | ✖ still only | ✅ clip |
 
 **First-website concepts have no site of their own** — their only public
@@ -392,5 +392,7 @@ Journey films additionally:
 | hugh-mccanns | 27 Jul 2026 | after still & clip recaptured after fifth-check repair | None found | Carries a disclosed faithful visualisation of the venue's dining-room view and captures the enquiry handoff to the published email address |
 | newcastle-dental | 27 Jul 2026 | after still & clip recaptured | None found | Captures the care pills after unsupported treatment claims were removed; recaptured again after the fifth-check repair moved current-site criticism out of the proposed patient page |
 | hotel-enniskeen | 31 Jul 2026 | after still & clip, Dine companion still, 76.9 s flagship reel + 50.7 s outreach, poster, onesheet | Cookie bar → clicked "I Consent"; concept overlays none | Dine beat opens on on-page Honey afternoon tea; Things to do scrolls to Royal County Down golf image; case-study dine copy updated off PDF-only wording |
+| public portfolio (16) | 1 Aug 2026 | before+after stills & clips where configured; all second surfaces; Enniskeen reel + outreach; Buck's Head journey | Per-site overlay pass; first-website befores skipped (no live site) | Full recapture after elevation work. Scopers journey blocked on Instagram login-wall Close control (live UI drift). Capture tool gained paint-nudge for single-screen after demos |
+| painted-earth | 1 Aug 2026 | before+after still & clip; originals after still | Cookie/decline + close dialog on live Shopify | Capture config added; representative retail prototype remains internal/noindex |
 
 (Log rows are added in the same commit as each recapture.)

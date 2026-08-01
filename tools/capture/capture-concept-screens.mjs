@@ -31,6 +31,7 @@ const CONCEPTS = {
   "mourne-cycles": { before: "https://www.mourne-cycles.co.uk/", beforeBudgetMs: 12000 },
   "donard-veterinary": { before: "https://donardveterinaryclinic.co.uk/", beforeBudgetMs: 6000 },
   "bucks-head": { before: "https://thebucksheaddundrum.co.uk/", beforeBudgetMs: 6000 },
+  "painted-earth": { before: "https://www.paintedearthgifts.com/", beforeBudgetMs: 5000 },
   // First-website showcases: the "before" capture is the business's own primary
   // public presence (its social page), met as a first-time visitor without an
   // account meets it — login walls and app prompts left visible on purpose.
@@ -82,6 +83,9 @@ const SECOND_ASSETS = {
   },
   "newcastle-chamber/members": {
     conceptPath: "/concepts/newcastle-chamber/members/",
+  },
+  "painted-earth/originals": {
+    conceptPath: "/concepts/painted-earth/originals/",
   },
 };
 

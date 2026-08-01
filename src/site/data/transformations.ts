@@ -230,7 +230,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Food & drink",
     summary:
-      "The village pub under chef Alex Greene, given a first screen that books tables — date, party and area passing straight into the ResDiary booking system it already runs.",
+      "The village pub under chef Alex Greene, given a first screen that books tables — date and party passing straight into the ResDiary booking system it already runs.",
     before: "/media/concepts/bucks-head/bucks-head-before.jpg",
     after: "/media/concepts/bucks-head/bucks-head-after.jpg",
     beforeAlt:
@@ -252,7 +252,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Donard Veterinary Clinic's current homepage: the practice badge and menu above a wall-to-wall collage of stock puppies and kittens, with the auto-opening PetsApp chat panel collapsed so the page is visible",
     afterAlt:
-      "Mourne Made concept opening in the practice's plum and teal badge colours, with the Taking Care of Your Pets headline, an appointment request card and a services rail over a Mourne silhouette",
+      "Mourne Made concept opening in the practice's plum and teal badge colours, with the Donard Veterinary Clinic wordmark, We're here when you need us subhead, drawn pets above the care desk and an appointment request card",
     href: "/transformations/donard-veterinary/",
     pin: { x: 377, y: 401 },
   },
@@ -268,7 +268,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Mourne Cycles' current homepage: a black header with the shop logo and phone number above a collage of Trek, Bontrager and Shimano logos and cut-out bike photographs",
     afterAlt:
-      "Mourne Made concept opening on the shop's own black and red identity, the Ride With Us headline, a Trek trail photograph and a numbered range rail with a Cycle to Work cell",
+      "Mourne Made concept opening on the shop's own black and red identity, the Mourne Cycles wordmark, a Trek trail photograph and a numbered range rail with a Cycle to Work cell",
     href: "/transformations/mourne-cycles/",
     pin: { x: 250, y: 445 },
   },

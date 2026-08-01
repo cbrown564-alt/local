@@ -69,10 +69,19 @@ const pins = transformations.map((item) => {
   return { ...item, pin, tipCardShift: tipCardLeft - pin.x };
 });
 
-const townGroups = (["Newcastle", "Dundrum"] as const).map((town) => ({
+const previewSlugsByTown = {
+  Dundrum: ["scopers", "bucks-head", "dundrum-inn"],
+  Newcastle: ["hotel-enniskeen", "mourne-cycles", "donard-veterinary"],
+} as const;
+
+const townGroups = (["Dundrum", "Newcastle"] as const).map((town) => ({
   town,
   pins: pins.filter((item) => item.town === town),
-  previewPins: pins.filter((item) => item.town === town).slice(0, 3),
+  previewPins: previewSlugsByTown[town].map((slug) => {
+    const item = pins.find((pin) => pin.slug === slug);
+    if (!item) throw new Error(`Town map: mobile example is not public: ${slug}`);
+    return item;
+  }),
 }));
 
 /**
@@ -146,7 +155,7 @@ const bridges = [
 ];
 ---<div class="town-map" data-town-map>
   <p class="town-map-description" id="town-map-description">
-    An indicative map with {pins.length} business transformations: {townGroups[0].pins.length} in Newcastle and {townGroups[1].pins.length} in Dundrum. Use the business links after the map on a small screen.
+    An indicative map with {pins.length} website examples across Dundrum and Newcastle. Use the business links after the map on a small screen.
   </p>
   <svg
     class="town-map-svg"
@@ -525,7 +534,7 @@ const bridges = [
       ))}
     </div>
     <a class="button button-secondary town-map-index-all" href="/transformations/">
-      Browse all {pins.length} transformations
+      Browse all {pins.length} website examples
     </a>
   </div>
   <p class="town-map-status" aria-live="polite" data-town-map-status></p>
@@ -581,7 +590,7 @@ const bridges = [
       });
     });
 
-    map.querySelectorAll<HTMLAnchorElement>(".town-map-index a").forEach((link) => {
+    map.querySelectorAll<HTMLAnchorElement>(".town-map-index-group a").forEach((link) => {
       link.addEventListener("click", (event) => {
         if (!smallScreen.matches || (selectionLocked && selectedSlug === link.dataset.mapBusiness)) return;
         event.preventDefault();

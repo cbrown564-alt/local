@@ -408,7 +408,7 @@ export const transformationDetails = {
       {
         "title": "Start booking on the first screen",
         "body": "Book A Table leads to a page that opens with Important Booking Notes — the eight-seat maximum and cancellation warnings — before the ResDiary widget appears below them.",
-        "change": "A booking card on the first screen — date, time, party, area — passing straight into the same ResDiary booking system the pub already runs, with the party-size limit reduced to one calm line beneath the button."
+        "change": "A booking card on the first screen — date and party — passing straight into the same ResDiary booking system the pub already runs, with the party-size limit reduced to one calm line beneath the button."
       },
       {
         "title": "Put the menus on the page",
@@ -644,7 +644,7 @@ export const transformationDetails = {
       "beforePoster": "/media/concepts/mourne-cycles/mourne-cycles-before.jpg",
       "afterPoster": "/media/concepts/mourne-cycles/mourne-cycles-after.jpg",
       "beforeAlt": "Ten-second visit to Mourne Cycles' current website — the logo collage of brand marks and cut-out bikes, a scroll through the page and a showroom hover",
-      "afterAlt": "Ten-second visit to the Mourne Cycles concept — the shop's black-and-red Ride With Us opening, the Trek trail hero and the numbered range rail"
+      "afterAlt": "Ten-second visit to the Mourne Cycles concept — the shop's black-and-red Mourne Cycles opening, the Trek trail hero and the numbered range rail"
     },
     "secondSurfacesHtml": [
       "<section class=\"second-surface\">\n    <div class=\"shell\">\n      <div class=\"second-surface-intro\">\n        <div>\n          <p class=\"second-surface-label\">Second surface · Hire &amp; service</p>\n          <h2>Where the booking happens.</h2>\n        </div>\n        <p>\n          The same identity — shop name over the door, coal and red — carries into the hire and service page.\n          Three panels in one view: bike hire with day rates, a workshop booking path, and a Cyclescheme worked example with every figure labelled illustrative.\n          <a class=\"text-link\" href=\"/concepts/mourne-cycles/hire/\">Open the live concept <span aria-hidden=\"true\">→</span></a>\n        </p>\n      </div>\n      <div class=\"second-surface-frame\">\n        <img\n          src=\"/media/concepts/mourne-cycles/mourne-cycles-hire-after.jpg\"\n          alt=\"The Mourne Cycles hire and service concept page: three panels showing bike hire day rates, a workshop booking prompt, and a Cyclescheme worked example with illustrative figures\"\n        />\n      </div>\n      <p class=\"second-surface-caption\">\n        Hire &amp; service — <a href=\"/concepts/mourne-cycles/hire/\">mourne-cycles/hire/</a> · capture at 1265 × 710\n      </p>\n    </div>\n  </section>"

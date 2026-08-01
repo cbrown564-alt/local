@@ -1,0 +1,98 @@
+---
+/**
+ * A deliberately small place plate: the Inn at 143–145 Main Street, Dundrum
+ * Bay over the road, and Murlough Cottage down the lane. It is a place
+ * relationship, not a route map or boundary survey. The double-rule plate and
+ * compass come from the shared concept map shell; the linework is local to
+ * this concept.
+ */
+import MapCompass from "../../_shell/MapCompass.astro";
+import MapPlate from "../../_shell/MapPlate.astro";
+
+interface Props {
+  headingId?: string;
+}
+
+const { headingId } = Astro.props;
+---
+
+<MapPlate
+  id="di-place"
+  viewBox="0 0 780 440"
+  title="The Dundrum Inn beside Dundrum Bay"
+  desc="An indicative place plate showing the Dundrum Inn on Main Street, Dundrum Bay over the road, and Murlough Cottage down the lane."
+  headingId={headingId}
+  ruleInset={16}
+>
+  <!-- Bay and shore: a broad, quiet shape keeps the one useful relationship
+       legible without pretending to show a surveyed coastline. -->
+  <path
+    class="di-map-water"
+    d="M444 30C500 48 550 74 588 110C628 148 653 193 664 244C674 291 701 340 748 396L764 408V30Z"
+  />
+  <path
+    class="di-map-shore"
+    d="M444 30C500 48 550 74 588 110C628 148 653 193 664 244C674 291 701 340 748 396"
+  />
+  <g class="di-map-waves" aria-hidden="true">
+    <path d="M588 112q11-7 22 0t22 0" />
+    <path d="M626 182q11-7 22 0t22 0" />
+    <path d="M650 270q11-7 22 0t22 0" />
+    <path d="M690 344q11-7 22 0t22 0" />
+  </g>
+
+  <!-- Main Street and the short lane to the cottage. Paired lines read as
+       a drawn road without adding unsupported turnings or destinations. -->
+  <path class="di-map-road" d="M72 260C198 254 310 250 454 248C532 247 590 246 664 244" />
+  <path class="di-map-road-twin" d="M72 270C198 264 310 260 454 258C532 257 590 256 664 254" />
+  <path class="di-map-lane" d="M298 260C286 294 273 329 251 365" />
+
+  <!-- A restrained row of Main Street buildings, with the Inn pulled forward
+       as the only filled vignette. -->
+  <g class="di-map-buildings" aria-hidden="true">
+    <rect x="116" y="225" width="28" height="30" rx="1" />
+    <path d="M112 225l18-15 18 15" />
+    <rect x="154" y="230" width="25" height="25" rx="1" />
+    <path d="M151 230l15-12 15 12" />
+    <rect x="189" y="220" width="32" height="35" rx="1" />
+    <path d="M185 220l20-17 20 17" />
+    <rect x="350" y="226" width="27" height="29" rx="1" />
+    <path d="M346 226l17-14 18 14" />
+    <rect x="388" y="231" width="24" height="24" rx="1" />
+    <path d="M385 231l15-11 15 11" />
+  </g>
+
+  <!-- The Inn: its position is the argument, so it gets a small facade rather
+       than a generic pin. -->
+  <g class="di-map-inn" transform="translate(278 211)">
+    <rect x="0" y="0" width="62" height="46" rx="1" />
+    <path class="di-map-inn-roof" d="M-6 0L31-24 68 0Z" />
+    <rect class="di-map-inn-door" x="25" y="23" width="12" height="23" />
+    <path class="di-map-inn-window" d="M9 20h12M15 14v13M41 20h12M47 14v13" />
+    <circle class="di-map-inn-dot" cx="31" cy="-9" r="4" />
+  </g>
+  <rect class="mm-map-halo" x="252" y="165" width="114" height="23" rx="2" />
+  <text class="di-map-town-label" x="309" y="182" text-anchor="middle">The Dundrum Inn</text>
+  <text class="di-map-small-label" x="309" y="201" text-anchor="middle">143–145 Main Street</text>
+
+  <!-- Murlough Cottage is placed down the lane, as the Inn describes it. -->
+  <g class="di-map-cottage" transform="translate(222 354)">
+    <rect x="0" y="0" width="42" height="27" rx="1" />
+    <path d="M-5 0L21-19 47 0Z" />
+    <rect class="di-map-cottage-door" x="17" y="13" width="8" height="14" />
+  </g>
+  <path class="di-map-leader" d="M258 348C275 319 289 291 302 265" />
+  <rect class="mm-map-halo" x="145" y="387" width="158" height="23" rx="2" />
+  <text class="di-map-place-label" x="224" y="404" text-anchor="middle">Murlough Cottage</text>
+  <text class="di-map-small-label" x="224" y="423" text-anchor="middle">down the lane · self-catering</text>
+
+  <text class="di-map-water-label" x="612" y="202" transform="rotate(67 612 202)">DUNDRUM BAY</text>
+  <text class="di-map-street-label" x="112" y="286">MAIN STREET</text>
+  <text class="di-map-note" x="42" y="52">The Inn and the bay · a short relationship</text>
+  <MapCompass x={710} y={76} variant="disc" textClass="di-map-small-label" />
+
+  <Fragment slot="caption">
+    Indicative place plate — Dundrum Bay is over the road; Murlough Cottage is
+    down the lane. Not a survey.
+  </Fragment>
+</MapPlate>
