@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../../site/components/ArrowIcon.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { transformations } from "../../site/data/transformations";
+import "../../site/styles/card-study.css";
+const items = transformations.slice(0, 3);
+---
+
+<BaseLayout title="Card study — Mourne Made" description="A visual study of transformation cards for Mourne Made." hideFooter>
+  <main class="card-study">
+    <div class="shell card-study-intro">
+      <a class="card-study-back" href="/prototypes/link-study/">← Link study</a>
+      <p class="home-kicker">Mourne Made · component study</p>
+      <h1>How much frame does a case study need?</h1>
+      <p class="card-study-lede">Three card directions using real transformation content. The structure stays the same; the treatment changes.</p>
+    </div>
+    <div class="shell card-study-grid">
+      {items.map((item, index) => (
+        <article class:list={["study-card", `study-card--${index + 1}`]}>
+          <a class="study-card-image" href={item.href}><ResponsiveImage src={item.after} alt={item.afterAlt} width="1265" height="710" loading="lazy" sizes="(max-width: 760px) 100vw, 33vw" /></a>
+          <div class="study-card-copy"><div class="study-card-meta"><span>{item.town}</span><span>{item.category}</span></div><h2>{item.name}</h2><p>{item.summary}</p><a class="text-link" href={item.href}>Open the full comparison <ArrowIcon /></a></div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

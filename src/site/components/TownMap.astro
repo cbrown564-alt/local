@@ -20,14 +20,21 @@ if (unpinned.length > 0) {
   );
 }
 
-const pins = transformations.map((item) => ({
-  ...item,
-  pin: item.pin!,
-  tipWidth: Math.max(120, Math.round(item.name.length * 9.5 + 30)),
-}));
----
+const MAP_WIDTH = 1200;
+const TIP_PAD = 12;
 
-<div class="town-map" data-town-map>
+const pins = transformations.map((item) => {
+  const pin = item.pin!;
+  const tipWidth = Math.max(120, Math.round(item.name.length * 9.5 + 30));
+  // Shift edge-pin tooltips back inside the viewBox; the pointer triangle is
+  // drawn at the opposite offset so it still points at the pin.
+  const half = tipWidth / 2;
+  const tipShift =
+    Math.min(0, MAP_WIDTH - TIP_PAD - (pin.x + half)) +
+    Math.max(0, TIP_PAD - (pin.x - half));
+  return { ...item, pin, tipWidth, tipShift };
+});
+---<div class="town-map" data-town-map>
   <svg
     class="town-map-svg"
     viewBox="0 0 1200 720"
@@ -36,97 +43,328 @@ const pins = transformations.map((item) => ({
   >
     <defs>
       <linearGradient id="town-map-sea" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#3d6a80" />
-        <stop offset="1" stop-color="#23485a" />
+        <stop offset="0%" stop-color="#2a5063" />
+        <stop offset="100%" stop-color="#193645" />
       </linearGradient>
+
+      <linearGradient id="town-map-inner-sea" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2c566b" />
+        <stop offset="100%" stop-color="#1c3c4e" />
+      </linearGradient>
+
+      <!-- Mountain gradients for depth -->
+      <linearGradient id="mourne-far-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#d3e2db" />
+        <stop offset="100%" stop-color="#c2d7cd" />
+      </linearGradient>
+
+      <linearGradient id="mourne-mid-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#bdcfc6" />
+        <stop offset="100%" stop-color="#a6beb4" />
+      </linearGradient>
+
+      <linearGradient id="mourne-front-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a9bfb4" />
+        <stop offset="100%" stop-color="#93aca0" />
+      </linearGradient>
+
+      <!-- Reusable tree icon for Tollymore Forest -->
+      <g id="tree-icon" class="town-map-tree">
+        <path d="M 0 -9 L -4 -2 L -2.5 -2 L -5 4 L 5 4 L 2.5 -2 L 4 -2 Z" />
+        <rect x="-0.8" y="4" width="1.6" height="3" fill="#4e685c" />
+      </g>
     </defs>
 
-    <!-- Land -->
-    <rect x="0" y="0" width="1200" height="720" fill="#eef4f1" />
+    <!-- Base Land Background -->
+    <rect x="0" y="0" width="1200" height="720" fill="#f0f5f2" />
 
-    <!-- the Mournes: organic background and foreground ridges rising behind Newcastle (Left) -->
-    <!-- Far mountain ridge (Slieve Commedagh, Slieve Donard high summits) -->
+    <!-- 1. MOURNE MOUNTAINS RANGE (Scaled down 3x to top-left backdrop) -->
+    <!-- Far Ridge (Slieve Commedagh & High Mournes Silhouette) -->
     <path
-      class="town-map-ridge town-map-ridge-far"
-      d="M 0 280
-         C 40 240, 80 200, 130 170
-         C 170 145, 210 95, 245 105
-         C 285 115, 320 175, 370 215
-         C 420 250, 480 280, 540 310
-         C 580 328, 620 340, 660 350"
-    />
-    <!-- Mid mountain ridge (Slieve Donard shoulder dropping to the sea at Newcastle) -->
-    <path
-      class="town-map-ridge"
-      d="M 0 315
-         C 60 275, 120 235, 175 195
-         C 215 165, 240 130, 270 155
-         C 305 185, 345 240, 410 270
-         C 470 298, 530 325, 600 345
-         C 640 355, 680 365, 720 370"
-    />
-    <!-- Foothills / Tollymore valley slopes -->
-    <path
-      class="town-map-ridge"
-      d="M 0 355
-         C 70 330, 140 290, 210 275
-         C 275 260, 335 295, 400 320
-         C 460 342, 520 358, 580 370"
+      fill="url(#mourne-far-grad)"
+      stroke="#7c9b8e"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M 0 110
+         C 20 90, 45 65, 75 50
+         C 95 40, 115 28, 140 24
+         C 160 20, 180 34, 205 48
+         C 230 62, 260 85, 300 102
+         C 335 118, 370 128, 410 135
+         L 410 160 L 0 160 Z"
     />
 
-    <!-- Sea: Dundrum Bay sweeping from Dundrum Inner Bay (top right) around Murlough to Newcastle shore (left) -->
+    <!-- Mid Ridge (Slieve Donard - 850m dome scaled to upper left) -->
+    <path
+      fill="url(#mourne-mid-grad)"
+      stroke="#658678"
+      stroke-width="1.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M 0 130
+         C 30 105, 60 78, 100 58
+         C 130 42, 155 32, 180 36
+         C 210 40, 235 66, 265 86
+         C 300 108, 340 125, 380 138
+         L 380 170 L 0 170 Z"
+    />
+    <!-- Slieve Donard peak contour accent -->
+    <path
+      fill="none"
+      stroke="#527365"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      d="M 150 42 Q 180 33 195 45"
+    />
+    <path
+      fill="none"
+      stroke="#527365"
+      stroke-width="1"
+      stroke-dasharray="2 2"
+      d="M 180 36 L 180 75"
+    />
+
+    <!-- Front Ridge / Foothills backdrop -->
+    <path
+      fill="url(#mourne-front-grad)"
+      stroke="#4b6b5d"
+      stroke-width="1.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M 0 145
+         C 30 130, 70 110, 115 95
+         C 150 82, 190 85, 230 100
+         C 270 115, 315 130, 360 142
+         L 360 180 L 0 180 Z"
+    />
+
+    <!-- 2. TOLLYMORE FOREST (Inland woodland area near Enniskeen Hotel) -->
+    <!-- Forest region backdrop path -->
+    <path
+      class="town-map-forest-area"
+      d="M 100 158
+         C 140 142, 200 146, 260 152
+         C 310 158, 340 182, 330 212
+         C 320 242, 280 262, 230 267
+         C 170 272, 112 250, 96 214
+         C 86 190, 90 170, 100 158 Z"
+    />
+
+    <!-- Tree canopy in three staggered rows under the forest label.
+         translate-then-scale keeps each tree exactly at its placed point. -->
+    <use href="#tree-icon" transform="translate(125 200) scale(1.2)" />
+    <use href="#tree-icon" transform="translate(160 200) scale(1.35)" />
+    <use href="#tree-icon" transform="translate(195 200) scale(1.25)" />
+    <use href="#tree-icon" transform="translate(230 200) scale(1.4)" />
+    <use href="#tree-icon" transform="translate(265 200) scale(1.2)" />
+    <use href="#tree-icon" transform="translate(295 200) scale(1.3)" />
+
+    <use href="#tree-icon" transform="translate(140 225) scale(1.4)" />
+    <use href="#tree-icon" transform="translate(175 225) scale(1.25)" />
+    <use href="#tree-icon" transform="translate(210 225) scale(1.45)" />
+    <use href="#tree-icon" transform="translate(245 225) scale(1.3)" />
+    <use href="#tree-icon" transform="translate(280 225) scale(1.2)" />
+
+    <use href="#tree-icon" transform="translate(155 250) scale(1.2)" />
+    <use href="#tree-icon" transform="translate(190 250) scale(1.35)" />
+    <use href="#tree-icon" transform="translate(225 250) scale(1.25)" />
+    <use href="#tree-icon" transform="translate(260 250) scale(1.3)" />
+
+    <!-- 3. RIVERS -->
+    <!-- Shimna River (From Tollymore Forest through Newcastle to the sea) -->
+    <path
+      class="town-map-river"
+      d="M 170 195
+         C 185 220, 200 240, 218 258
+         C 245 280, 295 315, 342 348
+         C 382 378, 414 409, 443 442
+         C 463 467, 481 493, 498 518"
+    />
+
+    <!-- Moneycarragh River (South into the north-west corner of Dundrum Inner Bay) -->
+    <path
+      class="town-map-river"
+      d="M 815 45
+         C 838 82, 858 120, 874 158
+         C 888 195, 898 235, 905 268
+         C 908 282, 909 290, 910 296"
+    />
+
+    <!-- 4. WATER: DUNDRUM BAY, DUNDRUM INNER BAY & MURLOUGH DUNES -->
+    <!-- Outer Dundrum Bay & Main Ocean Body. The coastline rounds the
+         headland east of the inner bay, crosses the bay mouth (unstroked)
+         and follows the seaward side of the Murlough spit to Newcastle. -->
     <path
       class="town-map-sea-fill"
-      d="M 1200 360
-         C 1120 375, 1050 410, 980 435
-         C 900 460, 800 495, 700 515
-         C 600 530, 480 525, 380 515
-         C 280 505, 200 510, 140 540
-         C 100 560, 50 575, 0 585
+      d="M 1200 180
+         C 1192 225, 1180 285, 1168 335
+         C 1160 352, 1152 356, 1146 358
+         L 1020 420
+         C 945 450, 860 470, 770 488
+         C 680 505, 570 516, 480 522
+         C 320 540, 160 562, 0 592
          L 0 720 L 1200 720 Z"
+    />
+
+    <!-- Dundrum Inner Bay (Enclosed south-east of the village, opening to
+         Dundrum Bay through the channel beside the spit tip) -->
+    <path
+      fill="url(#town-map-inner-sea)"
+      d="M 1150 235
+         C 1080 222, 1010 238, 960 268
+         C 928 285, 905 308, 898 332
+         C 890 352, 894 368, 910 382
+         C 940 400, 982 414, 1020 420
+         L 1146 358
+         C 1158 318, 1156 272, 1150 235 Z"
+    />
+
+    <!-- Murlough Dunes (Sand band between the inner bay and the open sea,
+         tapering back towards Newcastle) -->
+    <path
+      class="town-map-dunes"
+      d="M 480 518
+         C 570 514, 680 505, 770 488
+         C 860 470, 945 450, 1020 420
+         C 985 408, 940 392, 898 372
+         C 840 385, 780 415, 700 445
+         C 620 472, 548 497, 480 514 Z"
+    />
+
+    <!-- Coastline strokes -->
+    <!-- Headland east of the bay mouth -->
+    <path
+      class="town-map-coast"
+      d="M 1200 180
+         C 1192 225, 1180 285, 1168 335
+         C 1160 352, 1152 356, 1146 358"
+    />
+    <!-- Inner bay shores (the mouth stays unstroked open water) -->
+    <path
+      class="town-map-coast"
+      d="M 1150 235
+         C 1080 222, 1010 238, 960 268
+         C 928 285, 905 308, 898 332
+         C 890 352, 894 368, 910 382
+         C 940 400, 982 414, 1020 420"
     />
     <path
       class="town-map-coast"
-      d="M 1200 360
-         C 1120 375, 1050 410, 980 435
-         C 900 460, 800 495, 700 515
-         C 600 530, 480 525, 380 515
-         C 280 505, 200 510, 140 540
-         C 100 560, 50 575, 0 585"
+      d="M 1146 358
+         C 1158 318, 1156 272, 1150 235"
     />
-    <path class="town-map-wave" d="M 750 590 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 520 630 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 310 610 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 980 560 q 26 -10 52 0 q 26 10 52 0" />
+    <!-- Main coastline along the spit to Newcastle -->
+    <path
+      class="town-map-coast"
+      d="M 1020 420
+         C 945 450, 860 470, 770 488
+         C 680 505, 570 516, 480 522
+         C 320 540, 160 562, 0 592"
+    />
 
-    <!-- Coast road, Dundrum to Newcastle -->
+    <!-- Waves on Dundrum Bay -->
+    <path class="town-map-wave" d="M 780 590 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 520 635 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 290 620 q 30 -12 60 0 q 30 12 60 0" />
+    <path class="town-map-wave" d="M 980 570 q 26 -10 52 0 q 26 10 52 0" />
+
+    <!-- 5. ROADS, STREETS & TRAILS (DEPTH LEADING LINES) -->
+    <!-- Coast Road A2 connecting Dundrum to Newcastle, running between the
+         village pins and the bay, then along the seafront promenade -->
     <path
       class="town-map-road"
-      d="M 980 415 C 840 455, 680 490, 520 485 C 440 480, 360 460, 260 475"
+      d="M 1160 190
+         C 1080 220, 1010 250, 930 290
+         C 870 320, 770 365, 670 410
+         C 570 455, 460 480, 350 510
+         C 260 535, 180 545, 100 555"
     />
 
-    <!-- Dundrum: castle keep on its hill above the village (Right) -->
-    <g class="town-map-castle" transform="translate(630, -40)" aria-hidden="true">
-      <path d="M 305 324 Q 345 288 385 324 Z" />
-      <rect x="331" y="262" width="28" height="36" />
-      <rect x="331" y="254" width="8" height="8" />
-      <rect x="341" y="254" width="8" height="8" />
-      <rect x="351" y="254" width="8" height="8" />
+    <!-- Bryansford Road A24 (Leading inland from Newcastle to Tollymore Forest & Enniskeen) -->
+    <path
+      class="town-map-road"
+      d="M 430 435
+         C 380 395, 330 350, 280 310
+         C 250 285, 210 260, 170 235"
+    />
+
+    <!-- Newcastle Main Street (One block inland of the promenade) -->
+    <path
+      class="town-map-street"
+      d="M 480 400
+         C 400 435, 320 465, 240 490
+         C 190 505, 150 515, 120 522
+         C 130 528, 118 538, 112 548"
+    />
+    <!-- Cross street joining Main Street to the Bryansford Road -->
+    <path
+      class="town-map-street"
+      d="M 310 468
+         C 316 430, 320 385, 324 345"
+    />
+
+    <!-- Tollymore / Mourne Way Hiking Trail (Up the forest edge into the mountain gap) -->
+    <path
+      class="town-map-trail"
+      d="M 150 260
+         C 135 225, 122 190, 112 155
+         C 102 120, 95 92, 90 66"
+    />
+
+    <!-- Murlough Dune Trail (Along the spit towards the bay channel) -->
+    <path
+      class="town-map-trail"
+      d="M 510 508
+         C 610 495, 710 475, 800 455
+         C 870 440, 940 428, 1000 418"
+    />
+
+    <!-- Path from the coast road up to Dundrum Castle -->
+    <path
+      class="town-map-trail"
+      d="M 1042 234
+         C 1044 205, 1040 172, 1034 146"
+    />
+
+    <!-- 6. LANDMARKS -->
+    <!-- Dundrum Castle (On the hill north of the village, under the town label) -->
+    <g class="town-map-castle" transform="translate(1010, 95)" aria-hidden="true">
+      <!-- Hill mound -->
+      <path d="M 0 55 Q 35 35 70 55 Z" fill="#d2e3dc" opacity="0.8" />
+      <!-- Castle keep -->
+      <rect x="22" y="20" width="26" height="34" rx="2" />
+      <!-- Battlements -->
+      <rect x="22" y="13" width="6" height="7" />
+      <rect x="32" y="13" width="6" height="7" />
+      <rect x="42" y="13" width="6" height="7" />
+      <!-- Arch door & windows -->
+      <path d="M 30 54 L 30 45 A 5 5 0 0 1 40 45 L 40 54 Z" fill="#f0f5f2" />
+      <rect x="32" y="28" width="6" height="9" rx="3" fill="#f0f5f2" />
     </g>
 
-    <!-- Newcastle: Main Street down to the shore and Promenade (Left) -->
-    <path class="town-map-street" d="M 440 420 L 320 450 L 220 480" />
-    <path class="town-map-street" d="M 350 445 C 280 410, 230 360, 210 320" />
+    <!-- 7. PLACE & LANDMARK LABELS -->
+    <!-- Dundrum label (Above the castle, clear of the pins) -->
+    <text class="town-map-label-town" x="1045" y="80" text-anchor="middle">Dundrum</text>
 
-    <!-- Place labels -->
-    <text class="town-map-label-town town-map-label-right" x="1090" y="315">Dundrum</text>
-    <text class="town-map-label-town" x="70" y="470">Newcastle</text>
-    <text class="town-map-label-sea" x="620" y="628">Dundrum Bay</text>
-    <text class="town-map-label-small" x="140" y="90">the Mournes</text>
-    <text class="town-map-label-small" x="240" y="85">Slieve Donard</text>
-    <text class="town-map-label-small town-map-label-faint" x="615" y="440">Murlough</text>
+    <!-- Newcastle label (Open land between the forest and the town pins) -->
+    <text class="town-map-label-town" x="72" y="418">Newcastle</text>
 
-    <!-- A pin for every public transformation -->
+    <!-- Dundrum Bay label (Outer deep sea water) -->
+    <text class="town-map-label-sea" x="620" y="645">Dundrum Bay</text>
+
+    <!-- Water feature labels sit in the water they name -->
+    <text class="town-map-label-water" x="1025" y="340" text-anchor="middle">Dundrum Inner Bay</text>
+    <text class="town-map-label-water" x="560" y="556" transform="rotate(-11 560 556)">Murlough Beach</text>
+
+    <!-- Mountain labels (Top left sky) -->
+    <text class="town-map-label-small" x="40" y="30">the Mournes</text>
+    <text class="town-map-label-small" x="190" y="24">Slieve Donard <tspan font-size="12" font-weight="500">(850m)</tspan></text>
+
+    <!-- Tollymore Forest label (Above the tree rows, inside the forest edge) -->
+    <text class="town-map-label-small" x="200" y="170" text-anchor="middle">Tollymore Forest</text>
+
+    <!-- 8. BUSINESS PINS -->
     {pins.map((item) => (
       <a
         href={item.href}
@@ -136,9 +374,9 @@ const pins = transformations.map((item) => ({
         <g transform={`translate(${item.pin.x} ${item.pin.y})`}>
           <circle class="town-map-pin-ring" r="10" />
           <circle class="town-map-pin-dot" r="4" />
-          <g class="town-map-pin-tip" aria-hidden="true">
+          <g class="town-map-pin-tip" aria-hidden="true" transform={`translate(${item.tipShift} 0)`}>
             <rect x={-item.tipWidth / 2} y="-58" width={item.tipWidth} height="36" rx="8" />
-            <path d="M -7 -22 L 7 -22 L 0 -13 Z" />
+            <path d={`M ${-7 - item.tipShift} -22 L ${7 - item.tipShift} -22 L ${-item.tipShift} -13 Z`} />
             <text x="0" y="-35">{item.name}</text>
           </g>
         </g>
