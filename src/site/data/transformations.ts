@@ -46,7 +46,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept in the Inn's plum and cream: the 1834 crest wordmark and a Come for the views, stay for the craic headline over a full-width visualisation of the Inn's yellow-and-black frontage, labelled on the image as AI-generated, with English and Gaeilge offered where the translation dropdown was",
     href: "/transformations/dundrum-inn/",
-    pin: { x: 1025, y: 218 },
+    pin: { x: 890, y: 288 },
   },
   {
     slug: "kelly-mcevoy-brown",
@@ -78,7 +78,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept carrying Betty's mountain-ring mark and butter photograph into a Restaurant flavour, brought home opening and clearly illustrative range",
     href: "/transformations/bettys-butters/",
-    pin: { x: 935, y: 265 },
+    pin: { x: 1025, y: 218 },
   },
   {
     slug: "douglas-cromie",
@@ -94,7 +94,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept preserving Douglas & Cromie's slate wordmark and colourful vehicle photography beside a Drive away with confidence headline and direct phone action",
     href: "/transformations/douglas-cromie/",
-    pin: { x: 420, y: 355 },
+    pin: { x: 230, y: 280 },
   },
   {
     slug: "donard-hotel",
@@ -110,7 +110,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made feature concept carrying The Donard's navy-and-gold identity: a disclosed visualisation of its Main Street frontage beside published room rates and an official booking handoff",
     href: "/transformations/donard-hotel/",
-    pin: { x: 220, y: 495 },
+    pin: { x: 290, y: 475 },
   },
   {
     slug: "newcastle-dental",
@@ -126,7 +126,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept in clinical periwinkle: a Your family dentist, close to home headline with a padlocked secure address bar and an appointment-request form stated as HTTPS",
     href: "/transformations/newcastle-dental/",
-    pin: { x: 375, y: 395 },
+    pin: { x: 335, y: 435 },
   },
   {
     slug: "hugh-mccanns",
@@ -158,7 +158,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in harbour navy, sea mist and civic brass: Find a business on Main Street headline, directory search, Halloween events card and trade category rail",
     href: "/transformations/newcastle-chamber/",
-    pin: { x: 290, y: 475 },
+    pin: { x: 515, y: 428 },
   },
   {
     slug: "kent-amusements",
@@ -174,7 +174,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a proposed hours-and-updates ticket and an attractions rail",
     href: "/transformations/kent-amusements/",
-    pin: { x: 170, y: 520 },
+    pin: { x: 168, y: 504 },
   },
   {
     slug: "tool-centre",
@@ -190,7 +190,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in yard black, cool concrete and badge yellow, with the Hardware on the shelf Hire on the yard headline, a hire-desk rates board and a stock-category rail",
     href: "/transformations/tool-centre/",
-    pin: { x: 335, y: 435 },
+    pin: { x: 220, y: 495 },
   },
   {
     slug: "cupla",
@@ -206,7 +206,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, twin-ring mark, an at-the-counter card and a twinned Irish and English rail",
     href: "/transformations/cupla/",
-    pin: { x: 980, y: 240 },
+    pin: { x: 935, y: 265 },
   },
   {
     slug: "scopers",
@@ -222,7 +222,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in cast iron, buttermilk and paprika, with the Northern Ireland's first zero-waste hot food bar headline, a supper club card and a signature-dish rail",
     href: "/transformations/scopers/",
-    pin: { x: 890, y: 288 },
+    pin: { x: 848, y: 312 },
   },
   {
     slug: "bucks-head",
@@ -238,7 +238,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in the pub's own spruce green and blush pink, with the Old Charm Modern Flare headline, a book-a-table card over the hearth photograph and a menus rail along the foot",
     href: "/transformations/bucks-head/",
-    pin: { x: 848, y: 312 },
+    pin: { x: 980, y: 240 },
   },
   {
     slug: "donard-veterinary",
@@ -254,7 +254,7 @@ export const transformationCandidates: Transformation[] = [
     afterAlt:
       "Mourne Made concept opening in the practice's plum and teal badge colours, with the Taking Care of Your Pets headline, an appointment request card and a services rail over a Mourne silhouette",
     href: "/transformations/donard-veterinary/",
-    pin: { x: 515, y: 428 },
+    pin: { x: 377, y: 401 },
   },
   {
     slug: "mourne-cycles",
@@ -284,7 +284,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt: "Enniskeen's current homepage with an archive oval logo, blue uppercase menu bar and a photo carousel of the house and valley, arrival cookie prompt closed",
     afterAlt: "Mourne Made concept opening on the valley view from a balcony room, with the hideaway headline and an availability bar",
     href: "/transformations/hotel-enniskeen/",
-    pin: { x: 230, y: 280 },
+    pin: { x: 420, y: 355 },
   },
   {
     slug: "castle-farm",
