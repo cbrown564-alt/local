@@ -7,9 +7,10 @@
  *  positions are indicative — drawn in the order a rider leaves Newcastle toward
  *  the Mournes — and the caption says exactly that.
  *
- *  Plate and pins come from the shared map shell
+ *  Plate, compass and pins come from the shared map shell
  *  (src/concepts/_shell/MapPlate.astro); the scene below is the concept's
  *  own drawing. */
+import MapCompass from "../../_shell/MapCompass.astro";
 import MapPin from "../../_shell/MapPin.astro";
 import MapPlate from "../../_shell/MapPlate.astro";
 import { trailPins } from "../content";
@@ -19,51 +20,149 @@ interface Props {
 }
 
 const { headingId } = Astro.props;
+
+// Carefully placed map pins with dedicated label coordinates to guarantee zero text collisions.
+const mapPins = [
+  {
+    ...trailPins[0], // Mourne Cycles shop at (160, 385)
+    x: 160,
+    y: 385,
+    anchor: "middle" as const,
+    labelDx: 0,
+    labelDy: -60,
+    subDy: -45,
+  },
+  {
+    ...trailPins[1], // Castlewellan Forest at (260, 145)
+    x: 260,
+    y: 145,
+    anchor: "middle" as const,
+    labelDx: 0,
+    labelDy: -50,
+    subDy: -33,
+  },
+  {
+    ...trailPins[2], // Tollymore Forest at (440, 230)
+    x: 440,
+    y: 230,
+    anchor: "middle" as const,
+    labelDx: 0,
+    labelDy: -45,
+    subDy: -28,
+  },
+  {
+    ...trailPins[3], // Slieve Donard at (600, 150)
+    x: 600,
+    y: 150,
+    anchor: "start" as const,
+    labelDx: 18,
+    labelDy: -8,
+    subDy: 8,
+  },
+  {
+    ...trailPins[4], // Coast road at (680, 340)
+    x: 680,
+    y: 340,
+    anchor: "end" as const,
+    labelDx: -18,
+    labelDy: -8,
+    subDy: 8,
+  },
+];
 ---
 
 <MapPlate
   id="mc-map"
   viewBox="0 0 800 480"
   title="Local trails around Mourne Cycles"
-  desc="An indicative drawing of Mourne Cycles at 63A Castlewellan Road, Newcastle, with Castlewellan Forest, Tollymore Forest, Slieve Donard and the coast road shown as public riding country the shop's own site names."
+  desc="An indicative drawing of Mourne Cycles at 63A Castlewellan Road, Newcastle, with Castlewellan Forest, Tollymore Forest, Slieve Donard and the coast road shown as public riding country around the Mournes."
   headingId={headingId}
 >
-  <!-- The Mournes -->
+  <!-- Irish Sea coastline & water ripples -->
   <path
-    class="mc-map-hills"
-    d="M88 248c52-96 148-132 236-136s176 30 228 98 48 112 24 152H88Z"
+    class="mc-map-coast"
+    d="M 640 30 C 655 120 675 220 685 300 C 690 370 675 430 650 470"
   />
-  <path class="mc-map-hill-line" d="M156 188c76 20 140 16 204-6" />
-  <path class="mc-map-hill-line" d="M236 156c92 12 168 4 244-20" />
-  <path class="mc-map-summit" d="M500 108 L536 56 L572 108" />
+  <path class="mc-map-sea-wave" d="M 695 90 q 10 -5 20 0 t 20 0" />
+  <path class="mc-map-sea-wave" d="M 710 180 q 10 -5 20 0 t 20 0" />
+  <path class="mc-map-sea-wave" d="M 720 270 q 10 -5 20 0 t 20 0" />
+  <path class="mc-map-sea-wave" d="M 695 380 q 10 -5 20 0 t 20 0" />
+  <text class="mc-map-sea-text" x="735" y="240" transform="rotate(78 735 240)">IRISH SEA</text>
 
-  <!-- Irish Sea / coast -->
+  <!-- The Mourne Mountains: line work ridges sweeping down to Newcastle -->
   <path
-    class="mc-map-sea"
-    d="M612 118c40 18 84 42 112 78s36 82 22 118-56 58-98 48"
+    class="mc-map-ridge-back"
+    d="M 220 375 C 320 325 400 290 480 260 C 530 220 570 160 600 100 C 620 160 635 240 645 340"
   />
-  <path class="mc-map-coast" d="M584 206c56-8 104-2 152 18s80 48 94 82" />
+  <path
+    class="mc-map-ridge-front"
+    d="M 320 380 C 400 340 470 310 540 280 C 580 250 610 200 625 150"
+  />
+  <!-- Slieve Donard peak summit contour & ticks -->
+  <path class="mc-map-summit" d="M 585 125 L 600 100 L 615 125" />
+  <g class="mc-map-hachures">
+    <path d="M 440 280 l 8 -8 M 500 245 l 8 -8 M 550 200 l 8 -8" />
+    <path d="M 360 360 l 8 -8 M 430 325 l 8 -8 M 500 295 l 8 -8" />
+  </g>
+  <!-- Region title placed cleanly in open valley area below mountain ridge -->
+  <text class="mc-map-range-text" x="380" y="345" text-anchor="middle">THE MOURNES</text>
 
-  <!-- Castlewellan Road out of town -->
-  <path class="mc-map-road" d="M108 360c84-18 148-44 208-78s116-72 168-108" />
-  <path class="mc-map-road" d="M168 318c48-28 96-52 148-72" />
+  <!-- Castlewellan Forest Park boundary & tree icons -->
+  <rect class="mc-map-forest-bg" x="190" y="75" width="140" height="85" rx="10" />
+  <g class="mc-map-trees">
+    <path d="M 210 98 L 215 86 L 220 98 M 215 98 L 215 102" />
+    <path d="M 305 98 L 310 86 L 315 98 M 310 98 L 310 102" />
+  </g>
 
-  <!-- Forest blocks -->
-  <rect class="mc-map-forest" x="248" y="196" width="108" height="72" rx="6" />
-  <rect class="mc-map-forest" x="372" y="220" width="96" height="64" rx="6" />
+  <!-- Tollymore Forest Park boundary & tree icons -->
+  <rect class="mc-map-forest-bg" x="360" y="165" width="160" height="85" rx="10" />
+  <g class="mc-map-trees">
+    <path d="M 380 185 L 385 173 L 390 185 M 385 185 L 385 189" />
+    <path d="M 490 185 L 495 173 L 500 185 M 495 185 L 495 189" />
+  </g>
 
-  <!-- Shop frontage -->
-  <rect class="mc-map-shop" x="142" y="300" width="52" height="28" rx="3" />
+  <!-- Main Castlewellan Road (A50) - Graceful Paired Pen Stroke Curves -->
+  <path class="mc-map-road" d="M 160 385 C 175 300 210 210 260 145" />
+  <path class="mc-map-road-twin" d="M 164 385 C 179 300 214 210 264 145" />
 
+  <!-- Tollymore Road Spur branching off Castlewellan Road -->
+  <path class="mc-map-road" d="M 195 250 C 270 250 350 240 440 230" />
+  <path class="mc-map-road-twin" d="M 195 254 C 270 254 350 244 440 234" />
+
+  <!-- Coast Road (A2) along Newcastle seafront -->
+  <path class="mc-map-road" d="M 160 385 C 240 410 400 420 560 410 C 620 400 660 375 680 340" />
+  <path class="mc-map-road-twin" d="M 160 389 C 240 414 400 424 560 414 C 622 404 662 377 680 342" />
+
+  <!-- Dedicated Trail Spurs & Mountain Access (Subtle Dashed Lines) -->
+  <!-- Castlewellan Red MTB Trail Loop -->
+  <path class="mc-map-trail-red" d="M 285 145 C 310 135 325 150 315 162 C 295 170 270 160 285 145" />
+  <!-- Mountain Access Trail up to Slieve Donard -->
+  <path class="mc-map-trail-mountain" d="M 560 410 C 580 330 590 230 600 150" />
+
+  <!-- Mourne Cycles Shop Vignette at 63A Castlewellan Road (placed BELOW its text) -->
+  <g transform="translate(160 385)">
+    <rect class="mc-map-shop-base" x="-18" y="-10" width="36" height="20" rx="2" />
+    <path class="mc-map-shop-roof" d="M -22 -10 L 0 -20 L 22 -10 Z" />
+    <path class="mc-map-shop-stripe" d="M -16 -9 L 16 -9" />
+  </g>
+
+  <!-- Compass Rose -->
+  <MapCompass x={72} y={72} variant="disc" textClass="mc-map-pin-label" />
+
+  <!-- Map Pins -->
   {
-    trailPins.map((pin) => (
+    mapPins.map((pin) => (
       <MapPin
         x={pin.x}
         y={pin.y}
         label={pin.label}
         sub={pin.note}
-        labelDy={-12}
-        dotR={5}
+        anchor={pin.anchor}
+        labelDx={pin.labelDx}
+        labelDy={pin.labelDy}
+        subDy={pin.subDy}
+        haloR={7}
+        dotR={4}
         labelClass="mc-map-pin-label"
         subClass="mc-map-pin-note"
       />
@@ -71,8 +170,10 @@ const { headingId } = Astro.props;
   }
 
   <Fragment slot="caption">
-    An indicative map — not a survey. Trail names come from Mourne Cycles' own
-    "Our local Trails" section and publicly designated riding country; positions
-    are drawn, not measured.
+    An indicative map — not a survey. Trail names are public riding country we
+    send people toward from Castlewellan Road; positions are drawn, not measured.
   </Fragment>
 </MapPlate>
+
+
+

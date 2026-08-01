@@ -1,16 +1,35 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import McTrailsMap from "./components/McTrailsMap.astro";
 import {
-  rangeCategories,
+  bikeTypes,
   shopVoice,
   standToday,
 } from "./content";
+
+const inPublic = (asset: string) =>
+  fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
+
+const heroImage = "/media/concepts/mourne-cycles/mourne-cycles-hero.jpg";
+const hasHeroImage = inPublic(heroImage);
+
+const bikePanels = bikeTypes.map((bike) => ({
+  ...bike,
+  hasImage: inPublic(bike.image),
+}));
 ---
 
-<ConceptLayout title={"Mourne Cycles — independent concept"} slug="mourne-cycles" bodyClass="concept-page concept-mourne-cycles" lang="en-GB">
+<ConceptLayout
+  title={"Mourne Cycles — independent concept"}
+  slug="mourne-cycles"
+  bodyClass="concept-page concept-mourne-cycles"
+  lang="en-GB"
+  bannerNote="Workshop stand tickets are illustrative. Bike drawings are not showroom photographs."
+>
 <div class="mc-strip">
       <span>Est. 2002 · listed Trek dealer &amp; Cyclescheme retailer</span>
       <span>63A Castlewellan Road, Newcastle · <a href="tel:+442843727272">028 4372 7272</a></span>
@@ -26,9 +45,8 @@ import {
           <span class="mc-brand-sub">Newcastle · County Down</span>
         </span>
       </a>
-      <nav class="mc-nav" aria-label="Concept navigation">
+      <nav class="mc-nav" aria-label="Main navigation">
         <a href="/concepts/mourne-cycles/" aria-current="page">Bikes</a>
-        <a href="#" data-concept-placeholder>Accessories</a>
         <a href="/concepts/mourne-cycles/hire/">Workshop</a>
         <a href="/concepts/mourne-cycles/hire/#panel-scheme-h">Cycle to Work</a>
         <a href="#trails">Trails</a>
@@ -38,30 +56,100 @@ import {
         <a class="mc-book" href="/concepts/mourne-cycles/hire/">Book a service</a>
       </div>
     </header>
-    <main class="mc-hero">
-      <section class="mc-story">
+
+    <main>
+    <section class="mc-hero" aria-labelledby="mc-hero-heading">
+      <figure class="mc-hero-visual">
+        {hasHeroImage ? (
+          <img
+            src={heroImage}
+            alt="Mountain bike on a Castlewellan Forest trail with the Mournes ahead"
+            width="1024"
+            height="682"
+            loading="eager"
+            fetchpriority="high"
+          />
+        ) : (
+          <svg class="mc-hero-fallback" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="1440" height="900" fill="#17181c" />
+            <path class="mc-hero-ridge" d="M-40 620 C120 480 220 420 340 380 C420 470 500 500 580 450 C700 360 820 300 960 280 C1080 400 1180 460 1480 520 L1480 900 L-40 900 Z" />
+            <path class="mc-hero-ridge-far" d="M200 560 C360 470 480 430 620 420 C760 500 880 520 1020 470 C1140 430 1260 450 1480 510 L1480 900 L200 900 Z" />
+            <path class="mc-hero-summit" d="M920 300 L960 220 L1000 300" />
+            <path class="mc-hero-road" d="M-20 780 C280 720 520 640 760 560 S1180 420 1480 380" />
+            <rect class="mc-hero-shop" x="180" y="700" width="72" height="36" rx="3" />
+          </svg>
+        )}
+        <figcaption class="visually-hidden">
+          Trail country above Newcastle — where we send riders from Castlewellan Road.
+        </figcaption>
+      </figure>
+      <div class="mc-hero-copy">
         <p class="mc-kicker">Newcastle · local since 2002</p>
-        <h1>Mourne <em>Cycles</em></h1>
-        <figure class="mc-voice">
-          <blockquote cite={shopVoice.source}>
-            “{shopVoice.text}”
-          </blockquote>
-          <figcaption>
-            {shopVoice.attribution}
-            <span>{shopVoice.context}</span>
-          </figcaption>
-        </figure>
+        <h1 id="mc-hero-heading">Mourne <em>Cycles</em></h1>
         <p class="mc-lede">
-          The shop calls itself the main dealer in Trek bikes in the area —
-          listed as a <strong>Trek</strong> dealer and Cyclescheme retailer, with a
-          workshop on Castlewellan Road — the road out toward the Mournes' trail country.
+          Trek dealer and workshop on Castlewellan Road — the road out toward trail country.
         </p>
         <div class="mc-actions">
           <a class="mc-cta" href="/concepts/mourne-cycles/hire/">Book a workshop slot</a>
-          <a class="mc-link" href="#trails">Where each bike goes →</a>
+          <a class="mc-link" href="#bikes">Find your kind of ride →</a>
         </div>
-      </section>
-      <section class="mc-workshop-desk" aria-labelledby="mc-workshop-heading">
+      </div>
+    </section>
+
+    <nav class="mc-rail" aria-label="Bike range by terrain">
+      {bikePanels.map((bike) => (
+        <a class="mc-cell" href={`#${bike.id}`}>
+          <span class="mc-cell-index">{bike.index}</span>
+          <span class="mc-cell-name">{bike.name}</span>
+          <small class="mc-cell-terrain">{bike.terrain}</small>
+        </a>
+      ))}
+      <a class="mc-cell mc-cell-scheme" href="/concepts/mourne-cycles/hire/#panel-scheme-h">
+        <span class="mc-cell-index">Cycle to Work</span>
+        <span class="mc-cell-name">Save through work</span>
+        <small>Listed Cyclescheme retailer</small>
+      </a>
+    </nav>
+
+    <section class="mc-bikes" id="bikes" aria-labelledby="mc-bikes-heading">
+      <div class="mc-bikes-head">
+        <p class="mc-kicker">What we fit you for</p>
+        <h2 class="mc-section-h2" id="mc-bikes-heading">Three kinds of riding from this road.</h2>
+        <p class="mc-section-lede">
+          Start with where you want to ride. Call us and we will match a bike
+          from what is on the floor.
+        </p>
+      </div>
+      <div class="mc-bike-grid">
+        {bikePanels.map((bike) => (
+          <article class="mc-bike-panel" id={bike.id} aria-labelledby={`${bike.id}-heading`}>
+            <div class="mc-bike-visual" data-has-image={bike.hasImage ? "" : undefined}>
+              {bike.hasImage ? (
+                <img src={bike.image} alt={bike.imageAlt} width="800" height="600" loading="lazy" />
+              ) : (
+                <div class="mc-bike-visual-empty" aria-hidden="true">
+                  <span>{bike.name}</span>
+                </div>
+              )}
+            </div>
+            <div class="mc-bike-copy">
+              <p class="mc-bike-index">{bike.index}</p>
+              <h3 id={`${bike.id}-heading`}>{bike.name}</h3>
+              <p class="mc-bike-terrain">{bike.terrain}</p>
+              <p class="mc-bike-for">{bike.forWhom}</p>
+              <p class="mc-bike-rides">{bike.rides}</p>
+              <div class="mc-bike-actions">
+                <a class="mc-bike-cta" href={`tel:+442843727272`}>Call us about {bike.name}</a>
+                <a class="mc-bike-map" href="#trails">{bike.mapNote} →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mc-workshop" aria-labelledby="mc-workshop-heading">
+      <div class="mc-workshop-desk">
         <div class="mc-workshop-head">
           <span class="mc-workshop-status"><span aria-hidden="true"></span> Workshop enquiries open</span>
           <span class="mc-workshop-code" aria-hidden="true">MC · 2002</span>
@@ -69,20 +157,7 @@ import {
         <div class="mc-workshop-body">
           <p class="mc-workshop-label">Workshop desk</p>
           <h2 id="mc-workshop-heading">Get your bike checked.</h2>
-          <div class="mc-stand" aria-labelledby="mc-stand-heading">
-            <div class="mc-stand-head">
-              <h3 id="mc-stand-heading">On the stand today</h3>
-              <span class="mc-stand-tag">On the stand</span>
-            </div>
-            <ol class="mc-stand-jobs" role="list">
-              {standToday.map((item) => (
-                <li>
-                  <span class="mc-stand-ticket" aria-hidden="true">{item.ticket}</span>
-                  <span>{item.job}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <p class="mc-voice">{shopVoice.text}</p>
           <ol class="mc-workshop-steps">
             <li>
               <span class="mc-workshop-num">01</span>
@@ -90,7 +165,7 @@ import {
             </li>
             <li>
               <span class="mc-workshop-num">02</span>
-              <span><strong>The shop confirms the job</strong><small>Scope, price and turnaround come directly from Mourne Cycles.</small></span>
+              <span><strong>We confirm the job</strong><small>Scope, price and turnaround come straight from us.</small></span>
             </li>
             <li>
               <span class="mc-workshop-num">03</span>
@@ -98,38 +173,38 @@ import {
             </li>
           </ol>
         </div>
+        <div class="mc-stand" aria-labelledby="mc-stand-heading">
+          <div class="mc-stand-head">
+            <h3 id="mc-stand-heading">On the stand today</h3>
+          </div>
+          <ol class="mc-stand-jobs" role="list">
+            {standToday.map((item) => (
+              <li>
+                <span class="mc-stand-ticket" aria-hidden="true">{item.ticket}</span>
+                <span>{item.job}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
         <div class="mc-workshop-actions">
           <a href="/concepts/mourne-cycles/hire/#panel-service-h">Start a workshop enquiry <span aria-hidden="true">→</span></a>
-          <a href="tel:+442843727272">Call the shop</a>
+          <a href="tel:+442843727272">Call us</a>
         </div>
         <p class="mc-workshop-note">Call for price, scope and availability.</p>
-      </section>
-      <nav class="mc-rail" aria-label="Bike range by terrain">
-        {rangeCategories.map((category) => (
-          <a class="mc-cell" href="#trails">
-            <span class="mc-cell-index">{category.index}</span>
-            <span class="mc-cell-name">{category.name}</span>
-            <small class="mc-cell-terrain">{category.terrain}</small>
-          </a>
-        ))}
-        <a class="mc-cell mc-cell-scheme" href="/concepts/mourne-cycles/hire/#panel-scheme-h">
-          <span class="mc-cell-index">Cycle to Work</span>
-          <span class="mc-cell-name">Save through work</span>
-          <small>Listed Cyclescheme retailer</small>
-        </a>
-      </nav>
-    </main>
+      </div>
+    </section>
 
     <section class="mc-trails" id="trails" aria-labelledby="mc-trails-heading">
       <div class="mc-trails-head">
         <p class="mc-kicker">Our local trails</p>
-        <h2 class="mc-section-h2" id="mc-trails-heading">The shop at the trailhead.</h2>
+        <h2 class="mc-section-h2" id="mc-trails-heading">Trailhead on Castlewellan Road.</h2>
         <p class="mc-section-lede">
-          63A Castlewellan Road is the road out of Newcastle toward Castlewellan — the
-          gateway to the riding country Mourne Cycles names on its own site. Buy a bike
-          here, ride the trails, and bring it back to the workshop when it needs looking after.
+          63A is the road out of Newcastle toward Castlewellan — the gateway to the
+          riding country around the Mournes. Buy a bike here, ride the trails, and
+          bring it back to the workshop when it needs looking after.
         </p>
       </div>
       <McTrailsMap headingId="mc-trails-heading" />
     </section>
+    </main>
 </ConceptLayout>

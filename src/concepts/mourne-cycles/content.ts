@@ -7,31 +7,53 @@
 
 export const siteUrl = "https://www.mourne-cycles.co.uk/";
 
-/** Verbatim from the shop homepage — the parenthetical is the best line on the site. */
+/** Shop thesis — guest voice speaks as Mourne Cycles, not about them. */
 export const shopVoice = {
-  text: "one of Northern Ireland's premier local bike shops (or \"LBS\" to bike aficionados)",
-  attribution: "Mourne Cycles",
-  context: "mourne-cycles.co.uk homepage",
-  source: siteUrl,
+  text: "We're one of Northern Ireland's premier local bike shops — or \"LBS\" to bike aficionados.",
 } as const;
 
-/** Five showroom categories mapped to local terrain — no product data exists. */
-export const rangeCategories = [
+/** Showroom categories mapped to local terrain — no product SKUs exist.
+ *  `bikeTypes` are the three rails with real destinations (terrain panels).
+ *  Hybrid / Kids stay in the wider list for research; they are not on the rail. */
+export const bikeTypes = [
   {
+    id: "bike-electric",
     index: "01",
     name: "Electric",
     terrain: "The coast road without the hills",
+    forWhom: "Riders who want Newcastle seafront miles without grinding every rise.",
+    rides: "Coast road spins, harbour loops, and easy range for everyday riding around town.",
+    mapNote: "Coast road on the trails map",
+    image: "/media/concepts/mourne-cycles/mourne-cycles-bike-electric.jpg",
+    imageAlt: "Electric bike for coast riding around Newcastle",
   },
   {
+    id: "bike-road",
     index: "02",
     name: "Road",
     terrain: "Newcastle to Dundrum and back",
+    forWhom: "Riders chasing clean miles on the corridor between Newcastle and Dundrum.",
+    rides: "Tarmac days out, group spins, and the road routes we send people toward.",
+    mapNote: "Coast road and town approaches",
+    image: "/media/concepts/mourne-cycles/mourne-cycles-bike-road.jpg",
+    imageAlt: "Road bike for Newcastle to Dundrum tarmac",
   },
   {
+    id: "bike-mountain",
     index: "03",
     name: "Mountain",
     terrain: "Built for Castlewellan reds",
+    forWhom: "Riders headed into Castlewellan Forest and the red-graded trails beyond.",
+    rides: "Forest singletrack, trail-centre days, and bikes that come back to the workshop muddy.",
+    mapNote: "Castlewellan Forest on the trails map",
+    image: "/media/concepts/mourne-cycles/mourne-cycles-bike-mountain.jpg",
+    imageAlt: "Mountain bike for Castlewellan Forest red trails",
   },
+] as const;
+
+/** Full five-category list kept for research parity; rail uses `bikeTypes`. */
+export const rangeCategories = [
+  ...bikeTypes.map(({ index, name, terrain }) => ({ index, name, terrain })),
   {
     index: "04",
     name: "Hybrid",
@@ -104,6 +126,6 @@ export const schemeExample = {
   steps: [
     "Your employer registers with Cyclescheme",
     "Choose a bike and accessories within your limit",
-    "Monthly sacrifice begins — Mourne Cycles confirms the order",
+    "Monthly sacrifice begins — we confirm the order",
   ],
 } as const;
