@@ -10,6 +10,8 @@
   --paprika: #b4511d;
   --kelp: #5c6b3d;
   --ink-warm: #2a2620;
+  --ink-on-paper: #2a2620;
+  --muted-on-paper: #4a4336;
   --hairline: rgba(38, 35, 30, 0.16);
   --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
   --body: "Work Sans", "Segoe UI", sans-serif;
@@ -18,8 +20,10 @@
      generated set reads as one shoot rather than six separate generations. */
   --sc-grade: saturate(1.04) contrast(1.03) brightness(1.01);
   --concept-nav-gap: clamp(16px, 2.2vw, 28px);
-  background: var(--buttermilk);
-  color: var(--ink-warm);
+  /* Cast iron owns the scroll; buttermilk is paper for artifacts only
+     (map plate, seal discs, carrot still). */
+  background: var(--iron-deep);
+  color: var(--buttermilk);
   font-family: var(--body);
 }
 
@@ -38,13 +42,14 @@
 .sc-strip strong { color: #ffffff; font-weight: 600; }
 .sc-strip a { color: #fff; font-weight: 600; }
 
-/* Header */
+/* Header — buttermilk paper for the brand mark only */
 .sc-header {
   height: 80px;
   padding: 0 clamp(20px, 3.5vw, 44px);
   gap: 26px;
   background: var(--buttermilk);
   border-bottom: 1px solid var(--hairline);
+  color: var(--ink-on-paper);
 }
 .sc-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-warm); }
 /* The bar's own badge, used as it is rather than redrawn — owner recognition
@@ -116,6 +121,10 @@
   display: block;
   filter: var(--sc-grade);
 }
+.sc-hero-frame[data-daypart="midday"] img,
+.sc-hero-frame[data-daypart="midday"] .sc-hero-video {
+  object-position: 72% 50%;
+}
 .sc-hero-video {
   position: absolute;
   inset: 0;
@@ -139,13 +148,13 @@
   right: clamp(24px, 3vw, 40px);
   bottom: 26px;
   margin: 0;
-  padding: 6px 10px 6px 12px;
-  background: rgba(25, 23, 19, 0.72);
-  border-left: 3px solid var(--paprika);
+  padding: 7px 12px;
+  background: rgba(25, 23, 19, 0.78);
+  box-shadow: inset 0 2px 0 var(--paprika);
   color: #d8cfc0;
   font-size: 12px;
   letter-spacing: 0.04em;
-  border-radius: 0 6px 6px 0;
+  border-radius: 4px;
   z-index: 3;
 }
 /* The plate as a menu cover: an inset hairline frame, and the title set in
@@ -171,6 +180,7 @@
   pointer-events: none;
   z-index: 3;
 }
+.sc-hero-overlay[hidden] { display: none !important; }
 .sc-hero-overlay .sc-kicker { color: #d8a06e; animation: none; }
 .sc-hero-overlay .sc-kicker::before { background: #d8a06e; }
 .sc-hero-overlay h1 {
@@ -189,16 +199,16 @@
   color: #f0b07a;
 }
 .sc-hero-lower {
-  display: grid;
-  grid-template-columns: 1fr minmax(280px, 384px);
-  gap: clamp(20px, 3vw, 40px);
-  padding: clamp(20px, 3vh, 32px) clamp(26px, 3.6vw, 56px) clamp(24px, 3vh, 36px);
-  align-items: start;
+  display: block;
+  padding: clamp(24px, 3.4vh, 40px) clamp(26px, 3.6vw, 56px) clamp(28px, 3.6vh, 44px);
+  background: var(--iron);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
 .sc-story {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 40em;
 }
 .sc-kicker {
   display: flex;
@@ -212,60 +222,50 @@
   color: var(--kelp);
 }
 .sc-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--kelp); }
-.sc-story h1 {
-  margin: 0 0 16px;
-  font-family: var(--display);
-  font-size: clamp(36px, 4vw, 50px);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.015em;
-  color: var(--iron);
-  max-width: 11em;
-}
-.sc-story h1 em {
-  font-style: normal;
-  color: var(--paprika);
-}
 .sc-lede {
   margin: 0 0 24px;
-  max-width: 32em;
+  max-width: 36em;
   font-size: 16.5px;
   line-height: 1.6;
-  color: #59523f;
+  color: #cfc8b4;
 }
 .sc-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .sc-cta {
   padding: 15px 26px;
   border-radius: 999px;
-  background: var(--iron);
-  color: var(--buttermilk);
+  background: var(--paprika);
+  color: #ffffff;
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   transition: background 150ms ease, transform 150ms ease;
 }
-.sc-cta:hover { background: var(--paprika); color: #ffffff; transform: translateY(-1px); }
+.sc-cta:hover { background: var(--buttermilk); color: var(--iron); transform: translateY(-1px); }
 .sc-link {
-  color: var(--iron);
+  color: var(--buttermilk);
   font-size: 15px;
   font-weight: 600;
   text-underline-offset: 6px;
   text-decoration-color: var(--paprika);
 }
 
-/* Supper club invitation card */
-.sc-panel {
+/* Supper club invitation — secondary band after the carrot proof */
+.sc-invite-band {
+  padding: clamp(36px, 5vh, 64px) clamp(26px, 3.6vw, 56px);
+  background: var(--iron-deep);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
   display: flex;
-  align-items: stretch;
   justify-content: center;
 }
 .sc-club {
   width: 100%;
+  max-width: 420px;
   padding: 20px 24px 20px;
   background: var(--iron);
   color: var(--buttermilk);
-  border-radius: 14px;
-  box-shadow: 0 26px 60px rgba(25, 23, 19, 0.35);
+  border: 1px solid rgba(247, 242, 227, 0.12);
+  border-radius: 4px;
+  box-shadow: none;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -342,8 +342,8 @@
   flex-direction: column;
   gap: 6px;
   background: rgba(247, 242, 227, 0.07);
-  border-left: 3px solid var(--paprika);
-  border-radius: 6px;
+  box-shadow: inset 0 2px 0 var(--paprika);
+  border-radius: 4px;
   font-size: 13.5px;
   color: var(--buttermilk);
 }
@@ -361,7 +361,8 @@
   transition: background 150ms ease;
 }
 .sc-club-cta:hover { background: var(--buttermilk); color: var(--iron); }
-.sc-club small { display: block; margin-top: 10px; font-size: 12px; text-align: center; color: #a89f87; }
+.sc-club small { display: block; margin-top: 10px; font-size: 12.5px; text-align: center; color: #c4baa8; }
+.sc-club small a { color: inherit; }
 
 /* Steam wisp — cheap surprise on the hot plates only. */
 .sc-steam {
@@ -433,7 +434,15 @@
 .sc-club { animation: sc-rise 480ms 280ms ease backwards; }
 
 @media (max-width: 940px) {
-  .sc-strip { flex-direction: column; gap: 2px; text-align: center; }
+  .sc-strip {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 14px;
+    padding-block: 7px;
+    font-size: 12px;
+    text-align: center;
+  }
   .sc-header { height: auto; padding-block: 6px; flex-wrap: wrap; row-gap: 4px; }
   .sc-nav {
     order: 3;
@@ -456,9 +465,10 @@
   .sc-hero-plate[data-tone="light"] .sc-hero-overlay {
     background: linear-gradient(180deg, rgba(247, 242, 227, 0) 0%, rgba(247, 242, 227, 0.92) 68%);
   }
-  .sc-hero-lower { grid-template-columns: 1fr; padding: 16px 22px 20px; }
+  .sc-hero-lower { padding: 18px 22px 22px; }
   .sc-hero-overlay h1 { max-width: none; font-size: clamp(28px, 8vw, 36px); }
   .sc-lede { margin-bottom: 12px; font-size: 14.5px; line-height: 1.45; }
+  .sc-invite-band { padding: 28px 22px; }
   .sc-club { padding: 14px 16px; }
   .sc-club h2 { font-size: 20px; margin-bottom: 6px; }
 }
@@ -471,11 +481,12 @@
   .sc-brand { gap: 8px; min-width: 0; }
   .sc-badge { width: 33px; height: 38px; }
   .sc-brand-sub { display: none; }
-  .sc-book { padding: 10px 13px; font-size: 0; letter-spacing: 0; }
-  .sc-book::before { content: "Supper club"; font-size: 14px; font-weight: 600; }
-  /* Landing: two links only — story and find-us wait for scroll. */
+  .sc-book { padding: 10px 14px; font-size: 14px; }
+  /* Landing + supper: story and find-us wait for scroll. */
   .sc-nav a[href="#story"],
-  .sc-nav a[href="#find-us"] { display: none; }
+  .sc-nav a[href="#find-us"],
+  .sc-nav a[href="/concepts/scopers/#story"],
+  .sc-nav a[href="/concepts/scopers/#find-us"] { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -496,19 +507,18 @@
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -0.015em;
-  color: var(--iron);
+  color: #ffffff;
   max-width: 15em;
 }
 .sc-section-head { max-width: 40em; margin-bottom: clamp(28px, 3.5vh, 44px); }
-.sc-section-lede { margin: 0; font-size: 16.5px; line-height: 1.65; color: #59523f; max-width: 34em; }
+.sc-section-lede { margin: 0; font-size: 16.5px; line-height: 1.65; color: #cfc8b4; max-width: 34em; }
 
-/* Nothing wasted — intro split, then the trace as a horizontal pass rail:
-   one ingredient's week read left to right along the pass, the last step
-   punched in paprika because it is the creed. */
+/* Nothing wasted — kelp band; carrot still sits on buttermilk paper. */
 .sc-larder {
   padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
-  background: var(--buttermilk);
-  border-bottom: 1px solid var(--hairline);
+  background: var(--kelp);
+  color: var(--buttermilk);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
 .sc-larder-top {
   display: grid;
@@ -529,9 +539,9 @@
   counter-increment: sc-step;
   position: relative;
   padding: 20px 0 0;
-  border-top: 2px solid var(--kelp);
+  border-top: 2px solid rgba(247, 242, 227, 0.35);
 }
-.sc-trace li:last-child { border-top-color: var(--paprika); }
+.sc-trace li:last-child { border-top-color: #f0b07a; }
 .sc-trace li::before {
   content: counter(sc-step, decimal-leading-zero);
   display: block;
@@ -540,7 +550,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--paprika);
+  color: #f0b07a;
 }
 .sc-trace li::after {
   content: "";
@@ -550,36 +560,47 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--kelp);
-  box-shadow: 0 0 0 3px rgba(92, 107, 61, 0.18);
+  background: var(--buttermilk);
+  box-shadow: 0 0 0 3px rgba(247, 242, 227, 0.18);
 }
 .sc-trace li:last-child::after {
-  background: var(--paprika);
-  box-shadow: 0 0 0 3px rgba(180, 81, 29, 0.22);
+  background: #f0b07a;
+  box-shadow: 0 0 0 3px rgba(240, 176, 122, 0.22);
 }
 .sc-trace h3 {
   margin: 0 0 6px;
   font-family: var(--display);
   font-size: 17px;
   font-weight: 700;
-  color: var(--iron);
+  color: #ffffff;
 }
-.sc-trace p { margin: 0; font-size: 14px; line-height: 1.55; color: #59523f; }
-.sc-larder-visual { margin: 0; }
+.sc-trace p { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(247, 242, 227, 0.82); }
+.sc-larder-visual {
+  margin: 0;
+  padding: 14px;
+  background: var(--buttermilk);
+  border-radius: 4px;
+  color: var(--ink-on-paper);
+}
 .sc-larder-visual img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
+  border-radius: 2px;
   filter: var(--sc-grade);
 }
-.sc-larder-visual figcaption { margin-top: 10px; font-size: 12px; line-height: 1.45; color: #7a7060; }
+.sc-larder-visual figcaption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted-on-paper);
+}
 
 /* The anchor quote: the carrot caption, set as the trace's thesis. */
 .sc-larder-anchor {
   margin: 18px 0 0;
   padding-left: 18px;
-  border-left: 2px solid var(--paprika);
+  box-shadow: inset 2px 0 0 #f0b07a;
   max-width: 30em;
   font-family: var(--display);
   font-style: italic;
@@ -587,7 +608,7 @@
   font-weight: 500;
   line-height: 1.42;
   letter-spacing: -0.01em;
-  color: var(--iron);
+  color: #ffffff;
 }
 
 /* The counter — dishes in a row like the glass display */
@@ -595,10 +616,8 @@
   padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
   background: var(--kelp);
   color: var(--buttermilk);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
-.sc-counter .sc-kicker { color: rgba(247, 242, 227, 0.75); }
-.sc-counter .sc-kicker::before { background: rgba(247, 242, 227, 0.45); }
 .sc-counter .sc-h2 { color: #ffffff; max-width: none; }
 .sc-counter-scarcity {
   margin: 12px 0 0;
@@ -612,18 +631,22 @@
 .sc-counter-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(12px, 1.4vw, 20px);
+  gap: 0;
   margin-top: clamp(24px, 3vh, 36px);
+  border-top: 1px solid rgba(247, 242, 227, 0.22);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.22);
 }
 .sc-counter-cell {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(25, 23, 19, 0.42);
-  border: 1px solid rgba(247, 242, 227, 0.16);
-  border-radius: 10px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(247, 242, 227, 0.18);
+  border-radius: 0;
   overflow: hidden;
 }
+.sc-counter-cell:last-child { border-right: 0; }
 .sc-counter-cell img {
   width: 100%;
   height: clamp(120px, 14vw, 170px);
@@ -631,7 +654,7 @@
   display: block;
   filter: var(--sc-grade);
 }
-.sc-counter-cell figcaption { padding: 14px 14px 16px; }
+.sc-counter-cell figcaption { padding: 14px 16px 18px; }
 .sc-counter-label {
   display: block;
   font-family: var(--display);
@@ -660,12 +683,15 @@
 .sc-counter .sc-cta { background: var(--paprika); color: #ffffff; }
 .sc-counter .sc-cta:hover { background: var(--iron); }
 
-/* Mourne Larder map */
+/* Mourne Larder map — buttermilk paper for the artifact */
 .sc-map-section {
   padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
   background: var(--buttermilk);
+  color: var(--ink-on-paper);
   border-bottom: 1px solid var(--hairline);
 }
+.sc-map-section .sc-h2 { color: var(--iron); }
+.sc-map-section .sc-section-lede { color: var(--muted-on-paper); }
 .sc-map-head { max-width: 52ch; margin-bottom: clamp(24px, 3vh, 36px); }
 /* Theme for the shared map plate (src/concepts/_shell/map-plate.css). */
 .sc-map {
@@ -675,14 +701,39 @@
 }
 .sc-map-plate {
   border: 1px solid var(--hairline);
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .sc-map figcaption {
   margin-top: 14px;
   font-size: 13px;
   line-height: 1.5;
-  color: #7a7060;
+  color: var(--muted-on-paper);
   max-width: 56ch;
+}
+.sc-map-legend {
+  display: none;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.sc-map-legend li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 0;
+  border-top: 1px solid var(--hairline);
+}
+.sc-map-legend li:last-child { border-bottom: 1px solid var(--hairline); }
+.sc-map-legend strong {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--iron);
+}
+.sc-map-legend span {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-on-paper);
 }
 /* Water: calm fill, a shore wash under the firm coastline, engraved tide
    channels and wave marks. */
@@ -758,13 +809,13 @@
   letter-spacing: 0.05em;
 }
 .sc-map-peak-label, .sc-map-castle-label {
-  fill: #59523f;
+  fill: var(--muted-on-paper);
   font-family: var(--body);
   font-style: italic;
   font-size: 10px;
   letter-spacing: 0.06em;
 }
-.sc-map-note { fill: #7a7060; font-family: var(--body); font-size: 9.5px; letter-spacing: 0.06em; }
+.sc-map-note { fill: var(--muted-on-paper); font-family: var(--body); font-size: 9.5px; letter-spacing: 0.06em; }
 .sc-map-pin-label {
   fill: var(--iron);
   font-family: var(--display);
@@ -773,7 +824,7 @@
   letter-spacing: 0.04em;
 }
 .sc-map-pin-dish {
-  fill: #59523f;
+  fill: var(--muted-on-paper);
   font-family: var(--body);
   font-size: 10.5px;
   letter-spacing: 0.06em;
@@ -784,10 +835,8 @@
   padding: clamp(48px, 6vh, 84px) clamp(26px, 3.6vw, 56px);
   background: var(--iron);
   color: var(--buttermilk);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
-.sc-timeline-band .sc-kicker { color: #d8a06e; }
-.sc-timeline-band .sc-kicker::before { background: #d8a06e; }
 .sc-timeline-band .sc-h2 { color: #ffffff; max-width: 22em; }
 .sc-timeline-head { max-width: 56ch; margin-bottom: 44px; }
 .sc-timeline {
@@ -905,9 +954,9 @@
   bottom: 22px;
   margin: 0;
   padding: 8px 12px;
-  background: rgba(25, 23, 19, 0.72);
-  border-left: 3px solid var(--paprika);
-  border-radius: 0 6px 6px 0;
+  background: rgba(25, 23, 19, 0.78);
+  box-shadow: inset 0 2px 0 var(--paprika);
+  border-radius: 4px;
   color: #d8cfc0;
   font-size: 13px;
   letter-spacing: 0.03em;
@@ -956,8 +1005,6 @@
   background: var(--kelp);
   color: var(--buttermilk);
 }
-.sc-find .sc-kicker { color: rgba(247, 242, 227, 0.75); }
-.sc-find .sc-kicker::before { background: rgba(247, 242, 227, 0.45); }
 .sc-find .sc-h2 { color: #ffffff; }
 .sc-find-grid {
   display: grid;
@@ -982,6 +1029,8 @@
   .sc-trace { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
   .sc-counter { padding: 44px 22px; }
   .sc-counter-row { grid-template-columns: repeat(2, 1fr); }
+  .sc-counter-cell:nth-child(2n) { border-right: 0; }
+  .sc-counter-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(247, 242, 227, 0.18); }
   .sc-map-section { padding: 44px 22px; }
   .sc-timeline-band { padding: 44px 22px; }
   .sc-timeline { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
@@ -993,15 +1042,33 @@
 
 @media (max-width: 560px) {
   .sc-counter-row { grid-template-columns: 1fr; }
+  .sc-counter-cell {
+    border-right: 0;
+    border-bottom: 1px solid rgba(247, 242, 227, 0.18);
+  }
+  .sc-counter-cell:last-child { border-bottom: 0; }
+  .sc-counter-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(247, 242, 227, 0.18); }
   .sc-trace { grid-template-columns: 1fr; }
   .sc-timeline { grid-template-columns: 1fr; }
   .sc-timeline li::before { right: 0; }
   .sc-dish-grid { grid-template-columns: 1fr; }
+  .sc-map-legend { display: block; }
+  .sc-map-pin-label,
+  .sc-map-pin-dish,
+  .sc-map-note,
+  .sc-map-feature-label,
+  .sc-map-water-label,
+  .sc-map-peak-label,
+  .sc-map-castle-label,
+  .sc-map-dunes-label,
+  .sc-map-place-label,
+  .sc-map-town-label { display: none; }
+  .sc-map-plate { min-height: 280px; }
 }
 
 /* ─── Supper club invitation page ────────────────────────────────────────── */
 
-.sc-invitation { background: var(--buttermilk); }
+.sc-invitation { background: var(--iron-deep); }
 .sc-invite-hero {
   display: flex;
   flex-direction: column;
@@ -1010,7 +1077,7 @@
   padding: clamp(40px, 6vh, 72px) clamp(26px, 3.6vw, 56px) clamp(28px, 4vh, 44px);
   background: var(--iron);
   color: var(--buttermilk);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
 .sc-invite-seal {
   width: clamp(72px, 10vw, 88px);
@@ -1296,16 +1363,17 @@
   color: #a89f87;
 }
 
-/* Philosophy + course list */
+/* Philosophy + season voice (no invented tasting menu) */
 .sc-night-philosophy {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid rgba(247, 242, 227, 0.08);
 }
 .sc-night-phil-inner {
   padding: clamp(48px, 6vh, 80px) clamp(26px, 3.6vw, 56px);
-  border-right: 1px solid var(--hairline);
+  background: var(--kelp);
+  border-right: 1px solid rgba(247, 242, 227, 0.12);
 }
 .sc-night-phil-h2 {
   margin: 0 0 22px;
@@ -1314,17 +1382,18 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.015em;
-  color: var(--iron);
+  color: #ffffff;
   max-width: 14em;
 }
 .sc-night-phil-body p {
   font-size: 16px;
   line-height: 1.7;
-  color: #59523f;
+  color: rgba(247, 242, 227, 0.88);
   margin: 0 0 14px;
   max-width: 34em;
 }
 .sc-night-phil-body p:last-child { margin: 0; }
+.sc-night-season,
 .sc-night-course-list {
   padding: clamp(48px, 6vh, 80px) clamp(26px, 3.6vw, 56px);
   background: var(--iron);
@@ -1338,6 +1407,26 @@
   text-transform: uppercase;
   color: #d8a06e;
 }
+.sc-night-season-lede {
+  margin: 0 0 22px;
+  max-width: 34em;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #cfc8b4;
+}
+.sc-night-kitchen-voice {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+.sc-night-kitchen-voice li {
+  padding: 12px 0;
+  border-top: 1px solid rgba(247, 242, 227, 0.12);
+  font-size: 15px;
+  line-height: 1.5;
+  color: #cfc8b4;
+}
+.sc-night-kitchen-voice li:last-child { border-bottom: 1px solid rgba(247, 242, 227, 0.12); }
 .sc-night-course-list ol {
   margin: 0 0 16px;
   padding: 0;
@@ -1367,8 +1456,8 @@
 .sc-night-course-list ol li span { color: #cfc8b4; }
 .sc-night-course-note {
   margin: 0;
-  font-size: 12.5px;
-  color: #7a7060;
+  font-size: 13px;
+  color: #c4baa8;
   font-style: italic;
 }
 
@@ -1378,8 +1467,6 @@
   background: var(--kelp);
   color: var(--buttermilk);
 }
-.sc-night-book-section .sc-kicker { color: rgba(247, 242, 227, 0.7); }
-.sc-night-book-section .sc-kicker::before { background: rgba(247, 242, 227, 0.4); }
 .sc-night-book-inner {
   max-width: 620px;
   margin-bottom: 36px;
@@ -1459,7 +1546,8 @@
   .sc-night-eyebrow { grid-column: 1; margin-bottom: 0; }
   .sc-night-card { grid-row: auto; grid-column: 1; }
   .sc-night-philosophy { grid-template-columns: 1fr; }
-  .sc-night-phil-inner { border-right: 0; border-bottom: 1px solid var(--hairline); padding: 40px 22px; }
+  .sc-night-phil-inner { border-right: 0; border-bottom: 1px solid rgba(247, 242, 227, 0.12); padding: 40px 22px; }
+  .sc-night-season,
   .sc-night-course-list { padding: 40px 22px; }
   .sc-night-book-section { padding: 48px 22px; }
 }

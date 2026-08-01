@@ -19,7 +19,7 @@ import {
 <ConceptLayout title={"Scopers — independent concept"} slug="scopers" bodyClass="concept-page concept-scopers" lang="en-GB" bannerNote="Food imagery is AI-generated.">
 <div class="sc-strip">
       <span><strong>Now open most of the week</strong> · 169 Main Street, Dundrum</span>
-      <span>Today's hours on <a href={facebook} style="color:#fff;">Facebook</a></span>
+      <span>Today's hours on <a href={facebook}>Facebook</a></span>
     </div>
     <header class="sc-header">
       <a class="sc-brand" href="/concepts/scopers/">
@@ -32,14 +32,18 @@ import {
       <nav class="sc-nav" aria-label="Concept navigation">
         <a href="#food">The food</a><a href="/concepts/scopers/supper-club/">Supper club</a><a href="#story">Our story</a><a href="#find-us">Find us</a>
       </nav>
-      <a class="sc-book" href="/concepts/scopers/supper-club/">Book the supper club</a>
+      <a class="sc-book" href="#food">See the food</a>
     </header>
 
     <main class="sc-hero-appetite">
       <ScHero>
-        <div class="sc-hero-overlay">
+        <div class="sc-hero-overlay" data-sc-overlay data-for="morning midday">
           <p class="sc-kicker">Main Street · Dundrum</p>
           <h1>Northern Ireland's first <em>zero-waste</em> hot food bar.</h1>
+        </div>
+        <div class="sc-hero-overlay" data-sc-overlay data-for="evening" hidden>
+          <p class="sc-kicker">The Supper Club</p>
+          <h1>Up to eleven courses. <em>Somewhere unique.</em></h1>
         </div>
       </ScHero>
       <div class="sc-hero-lower">
@@ -54,17 +58,6 @@ import {
             <a class="sc-link" href={facebook}>This week's menu on Facebook →</a>
           </div>
         </section>
-        <aside class="sc-panel">
-          <article class="sc-club sc-club--invite">
-            <img class="sc-club-seal" src="/media/concepts/scopers/scopers-badge.png" width="52" height="60" alt="" aria-hidden="true" />
-            <p class="sc-club-kicker">The Supper Club</p>
-            <p class="sc-club-date">{supperClub.nextDate}</p>
-            <h2>Up to eleven courses. Somewhere unique.</h2>
-            <p class="sc-club-secret">The location is revealed to guests the week before.</p>
-            <a class="sc-club-cta" href="/concepts/scopers/supper-club/">Open the invitation</a>
-            <small>Booking via Instagram · <a href={instagram} style="color:inherit;">message to reserve</a></small>
-          </article>
-        </aside>
       </div>
     </main>
 
@@ -81,11 +74,10 @@ import {
     <section class="sc-larder" id="philosophy" aria-labelledby="larder-heading">
       <div class="sc-larder-top">
         <div class="sc-larder-copy">
-          <p class="sc-kicker">Nothing wasted</p>
-          <h2 class="sc-h2" id="larder-heading">Made visible in one side dish.</h2>
+          <h2 class="sc-h2" id="larder-heading">One side dish. The whole kitchen.</h2>
           <p class="sc-section-lede">
-            Zero-waste is kitchen logic at Scopers — not a hyphen in the headline. Trace one
-            ingredient through the week, in the bar's own words.
+            Zero-waste is how we cook — forage what is there, use every part, waste nothing.
+            Follow one ingredient through the week.
           </p>
           <p class="sc-larder-anchor">
             “Carrots like you've never tasted them before” — the side dish that explains
@@ -100,9 +92,7 @@ import {
             height="1122"
             loading="lazy"
           />
-          <figcaption>
-            Seasonal carrots · a generated riff on Scopers' own Instagram post
-          </figcaption>
+          <figcaption>Seasonal carrots</figcaption>
         </figure>
       </div>
       <ol class="sc-trace" role="list">
@@ -115,10 +105,22 @@ import {
       </ol>
     </section>
 
+  <!-- Supper invite after the carrot proof — secondary path, not the home hero job. -->
+    <aside class="sc-invite-band" aria-labelledby="home-invite-heading">
+      <article class="sc-club sc-club--invite">
+        <img class="sc-club-seal" src="/media/concepts/scopers/scopers-badge.png" width="52" height="60" alt="" aria-hidden="true" />
+        <p class="sc-club-kicker">The Supper Club</p>
+        <p class="sc-club-date">{supperClub.nextDate}</p>
+        <h2 id="home-invite-heading">Up to eleven courses. Somewhere unique.</h2>
+        <p class="sc-club-secret">The location is revealed to guests the week before.</p>
+        <a class="sc-club-cta" href="/concepts/scopers/supper-club/">Open the invitation</a>
+        <small>Booking via Instagram · <a href={instagram}>message to reserve</a></small>
+      </article>
+    </aside>
+
   <!-- Move 4: the counter — dishes in a row, chalkboard labels, honest scarcity. -->
     <section class="sc-counter" id="food">
       <div class="sc-counter-head">
-        <p class="sc-kicker">The counter</p>
         <h2 class="sc-h2">Point, queue, eat.</h2>
         <p class="sc-counter-scarcity">Baked this morning. When it's gone, it's gone.</p>
       </div>
@@ -142,12 +144,11 @@ import {
   <!-- Move 6: the menu is a map — Mourne Larder drawn, indicative disclosure. -->
     <section class="sc-map-section" aria-labelledby="map-heading">
       <div class="sc-map-head">
-        <p class="sc-kicker">The Mourne Larder</p>
         <h2 class="sc-h2" id="map-heading">The menu is a map.</h2>
         <p class="sc-section-lede">
-          For Scopers the ten square miles around Dundrum are the supply chain and the creed.
-          Each signature dish is pinned to the place their own captions describe — hedgerows,
-          the coast, the foothills, the counter where bread is baked each day.
+          The ten square miles around Dundrum are our supply chain and our creed.
+          Each dish is pinned to where it comes from — hedgerows, the coast, the foothills,
+          the counter where bread is baked each day.
         </p>
       </div>
       <ScLarderMap headingId="map-heading" />
@@ -156,7 +157,6 @@ import {
   <!-- Move 7: from the banquet to the bar — documented dates only. -->
     <section class="sc-timeline-band" id="story" aria-labelledby="timeline-heading">
       <div class="sc-timeline-head">
-        <p class="sc-kicker">From the banquet to the bar</p>
         <h2 class="sc-h2" id="timeline-heading">The man who cooked for the nation now judges his day in milk bread buns.</h2>
       </div>
       <ol class="sc-timeline" role="list">
@@ -183,7 +183,6 @@ import {
 
     <section class="sc-find" id="find-us">
       <div class="sc-find-inner">
-        <p class="sc-kicker">Find us</p>
         <h2 class="sc-h2">169 Main Street, Dundrum.</h2>
         <div class="sc-find-grid">
           <div class="sc-find-block">

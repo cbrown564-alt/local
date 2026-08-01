@@ -172,12 +172,33 @@ try {
     secret: document.querySelector(".sc-invite-secret strong")?.textContent?.trim(),
     nextDate: document.querySelector(".sc-night-book-meta")?.textContent?.trim(),
     courseCount: document.querySelectorAll(".sc-night-course-list ol li").length,
+    seasonNote: document.querySelector(".sc-night-season-lede")?.textContent?.replace(/\s+/g, " ").trim(),
+    eveningOverlay: null,
   }));
   assert.equal(invite.seal, true, "the invitation must carry the wax-seal badge");
   assert.match(invite.date ?? "", /26 August 2026/, "the date must be the invitation's hero");
   assert.match(invite.secret ?? "", /revealed to guests the week before/i);
   assert.match(invite.nextDate ?? "", /26 August 2026/);
-  assert.ok(invite.courseCount >= 10, "the sample course list must survive");
+  assert.equal(invite.courseCount, 0, "no invented tasting-menu sample should ship");
+  assert.match(
+    invite.seasonNote ?? "",
+    /season decides/i,
+    "the invitation must explain that the night's menu is set by the forage",
+  );
+
+  await pinHour(page, 21);
+  await page.goto(home, { waitUntil: "networkidle0", timeout: 60_000 });
+  const eveningCopy = await page.evaluate(() => {
+    const overlay = document.querySelector(
+      '.sc-hero-overlay[data-sc-overlay]:not([hidden])',
+    );
+    return overlay?.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  });
+  assert.match(
+    eveningCopy,
+    /somewhere unique/i,
+    "evening day-part must sell the supper club, not the lunch bar",
+  );
 
   assert.deepEqual(consoleErrors, [], "browser console must stay clean");
 

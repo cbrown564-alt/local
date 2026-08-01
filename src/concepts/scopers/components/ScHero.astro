@@ -4,6 +4,8 @@
  *  Three appetite states swap on the visitor's local clock: bread in the
  *  morning, the burger at midday, the supper-club table in the evening.
  *  The swap changes appetite, never availability — hours stay on Facebook.
+ *  Overlay copy swaps with the plate so the evening banquet is never sold
+ *  under the lunch-bar claim.
  *
  *  The midday signature carries a short video loop alongside its still: the
  *  frame upgrades to <video> only when both transcodes exist in public/,
@@ -31,9 +33,6 @@ const parts = dayParts
   }));
 
 const fallback = parts.find((part) => part.id === "midday") ?? parts[0];
-const swaps = parts
-  .filter((part) => part.id !== fallback.id)
-  .map(({ id, from, to }) => ({ id, from, to }));
 ---
 
 <div class="sc-hero-plate" data-sc-hero-plate data-tone={fallback.tone ?? "dark"}>
@@ -115,6 +114,17 @@ const swaps = parts
       });
     };
 
+    const syncOverlay = (bandId) => {
+      if (!plate) return;
+      plate.querySelectorAll("[data-sc-overlay]").forEach((overlay) => {
+        const forBands = (overlay.getAttribute("data-for") || "")
+          .split(/\s+/)
+          .filter(Boolean);
+        const match = forBands.includes(bandId);
+        overlay.hidden = !match;
+      });
+    };
+
     const hour = new Date().getHours();
     const band = bands.find(({ from, to }) =>
       from < to ? hour >= from && hour < to : hour >= from || hour < to,
@@ -134,6 +144,7 @@ const swaps = parts
         if (caption) caption.textContent = band.caption;
 
         if (plate) plate.dataset.tone = band.tone ?? "dark";
+        syncOverlay(band.id);
       }
     }
 
@@ -141,8 +152,11 @@ const swaps = parts
       syncPlayback();
       new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) entry.target.pause();
-          else syncPlayback();
+          if (!entry.isIntersecting) {
+            entry.target.querySelectorAll("video").forEach((video) => video.pause());
+          } else {
+            syncPlayback();
+          }
         });
       }).observe(figure);
       reduceMotion.addEventListener("change", syncPlayback);

@@ -5,9 +5,9 @@
  *  the land so a local recognises it: Dundrum Inner Bay behind the village,
  *  the tidal channel running out past the Murlough dunes to Dundrum Bay,
  *  Newcastle and the Mournes sweeping down to the sea along the southern
- *  shore, and Dundrum Castle on its wooded hill north-west of the village,
- *  where it really stands. Main Street runs to the head of the bay, where
- *  bread is baked and dishes are served.
+ *  shore, and Dundrum Castle just up the hill west of Main Street, where it
+ *  really stands. Main Street runs with the shore at the head of the bay,
+ *  where bread is baked and dishes are served.
  *
  *  Every sourcing pin is one Scopers publishes about itself — carrots from
  *  the hedgerows, wild garlic for the mayo, bread from the counter. There
@@ -34,7 +34,7 @@ const { headingId } = Astro.props;
   id="sc-map"
   viewBox="0 0 800 520"
   title="The Mourne Larder around Dundrum"
-  desc="An indicative drawing of the ten square miles around Dundrum: Dundrum Inner Bay behind the village, the tidal channel running out past the Murlough dunes to Dundrum Bay, Newcastle and the Mourne mountains along the southern shore, Dundrum Castle on its hill north-west of the village, and Scopers on Main Street at the head of the bay."
+  desc="An indicative drawing of the ten square miles around Dundrum: Dundrum Inner Bay behind the village, the tidal channel running out past the Murlough dunes to Dundrum Bay, Newcastle and the Mourne mountains along the southern shore, Dundrum Castle just up the hill west of Main Street, and Scopers on Main Street along the shore at the head of the bay."
   headingId={headingId}
   clip
 >
@@ -147,31 +147,32 @@ const { headingId } = Astro.props;
     <path d="M296 150C332 144 364 148 392 160" />
   </g>
 
-  <!-- Lanes, then Main Street running to the head of the bay -->
-  <path class="sc-map-lane" d="M205 348C196 320 190 285 187 258" />
-  <path class="sc-map-lane" d="M260 350C268 385 276 415 284 442" />
-  <path class="sc-map-street" d="M150 355C210 348 275 340 332 331" />
-  <!-- The village: a scatter of buildings along the street, one spire -->
+  <!-- Lanes inland, then Main Street hugging the shore at the bay head. -->
+  <path class="sc-map-lane" d="M300 250C325 245 350 250 372 265" />
+  <path class="sc-map-lane" d="M378 320C395 350 418 380 440 405" />
+  <path class="sc-map-street" d="M382 335C376 305 375 278 380 252" />
+  <!-- The village: buildings face the street, running with the coast -->
   <g class="sc-map-buildings">
-    <rect x="196" y="332" width="9" height="6" />
-    <rect x="226" y="327" width="7" height="6" />
-    <rect x="252" y="322" width="10" height="7" />
-    <rect x="284" y="316" width="8" height="6" />
-    <rect x="306" y="313" width="7" height="5" />
-    <path d="M240 330v-9l3-5 3 5v9Z" />
+    <rect x="366" y="318" width="6" height="10" />
+    <rect x="367" y="300" width="5" height="8" />
+    <rect x="365" y="280" width="7" height="11" />
+    <rect x="386" y="274" width="6" height="9" />
+    <rect x="387" y="256" width="5" height="8" />
+    <rect x="366" y="254" width="6" height="9" />
+    <path d="M368 288v-11l3-5 3 5v11Z" />
   </g>
 
-  <!-- Dundrum Castle on its wooded hill north-west of the village -->
-  <g class="sc-map-castle" transform="translate(185 244)">
-    <path class="sc-map-castle-hill" d="M-36 20C-22 2 22 2 36 20" />
-    <path class="sc-map-castle-hill" d="M-24 12C-13 -1 13 -1 24 12" />
+  <!-- Dundrum Castle: just up the hill west of Main Street -->
+  <g class="sc-map-castle" transform="translate(342 252)">
+    <path class="sc-map-castle-hill" d="M-28 16C-17 2 17 2 28 16" />
+    <path class="sc-map-castle-hill" d="M-18 10C-10 -1 10 -1 18 10" />
     <path class="sc-map-castle-keep" d="M-7 6V-9h3v3h4v-5h3v4h4v-2h3v15Z" />
   </g>
-  <text class="sc-map-castle-label" x="185" y="212" text-anchor="middle">Dundrum Castle</text>
+  <text class="sc-map-castle-label" x="342" y="224" text-anchor="middle">Dundrum Castle</text>
 
   <!-- Place names -->
   <text class="sc-map-water-label" x="694" y="196" text-anchor="middle">Dundrum Bay</text>
-  <text class="sc-map-place-label" x="206" y="380">Dundrum</text>
+  <text class="sc-map-place-label" x="318" y="318">Dundrum</text>
   <g class="sc-map-town" transform="translate(660 470)">
     <rect x="0" y="0" width="8" height="5" />
     <rect x="12" y="3" width="7" height="5" />
@@ -208,3 +209,14 @@ const { headingId } = Astro.props;
     suppliers appear here.
   </Fragment>
 </MapPlate>
+
+<ul class="sc-map-legend">
+  {
+    larderPins.map((pin) => (
+      <li>
+        <strong>{pin.label}</strong>
+        <span>{pin.dish}</span>
+      </li>
+    ))
+  }
+</ul>
