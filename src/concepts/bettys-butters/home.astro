@@ -3,16 +3,12 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import BbMeltHero from "./components/BbMeltHero.astro";
+import BbMark from "./components/BbMark.astro";
+import { delivery, founderVoice, jars, plates, website } from "./content";
 
-// Betty's Better Butters publishes no product names, sizes or prices online, so
-// the flavours below are clearly-marked structure placeholders — never passed
-// off as the real range, which must come from the maker.
-const jars = [
-  { name: "Garlic & Herb", note: "the everyday one", tone: "herb", ph: true },
-  { name: "Chilli & Lime", note: "for corn, for steak", tone: "chilli", ph: true },
-  { name: "Café de Paris", note: "the restaurant classic", tone: "paris", ph: true },
-  { name: "Maple & Sea Salt", note: "breakfast, upgraded", tone: "maple", ph: true },
-];
+const treatJar = jars.find((jar) => jar.register === "treat");
+const stapleJar = jars.find((jar) => jar.register === "staple");
 ---
 
 <ConceptLayout
@@ -21,87 +17,168 @@ const jars = [
   bodyClass="concept-page concept-bettys"
   businessName="Betty's Better Butters"
   town="Dundrum"
-  bannerNote="Flavour names are placeholders."
+  bannerNote="Flavour names are placeholders. Serving imagery is AI-generated."
+  favicon="/media/concepts/bettys-butters/bettys-butters-brand-mark.png"
 >
   <div class="bb-strip">
-    <span>Betty's Better Butters · Dundrum · made in small batches</span>
-    <span class="bb-strip-r">Collection · local delivery · Royal Mail across the UK</span>
+    <span>Betty's Better Butters · Dundrum</span>
+    <span class="bb-strip-r">{delivery.line}</span>
   </div>
 
   <header class="bb-header">
     <a class="bb-brand" href="/concepts/bettys-butters/">
       <img
         src="/media/concepts/bettys-butters/bettys-butters-brand-mark.png"
-        alt="Betty's Better Butters — locally crafted flavours"
+        alt=""
         width="346"
         height="346"
+        aria-hidden="true"
       />
+      <span class="bb-brand-text">
+        <span class="bb-brand-name">Betty's Better Butters</span>
+        <span class="bb-brand-sub">Locally crafted flavours · Dundrum</span>
+      </span>
     </a>
     <nav class="bb-nav" aria-label="Concept navigation">
-      <a href="#" data-concept-placeholder>The range</a><a href="#" data-concept-placeholder>Our story</a><a href="#" data-concept-placeholder>Stockists</a><a href="#" data-concept-placeholder>Order</a>
+      <a href="#range">The range</a>
+      <a href="#story">Our story</a>
     </nav>
-    <a class="bb-shop" href="#" data-concept-placeholder>Shop the range</a>
+    <a class="bb-shop" href={website} rel="noopener noreferrer">Visit the shop</a>
   </header>
 
   <main class="bb-main">
-    <section class="bb-hero">
-      <div class="bb-hero-copy">
-        <p class="bb-kicker">Flavoured butter · Dundrum</p>
-        <h1>
-          Restaurant flavour,
-          <span class="bb-hero-em">brought home.</span>
-        </h1>
-        <p class="bb-lede">
-          Bold flavoured butters from recipes collected over ten years in professional
-          kitchens — made to turn a one-off treat into a new staple.
-        </p>
-        <div class="bb-hero-actions">
-          <a class="bb-cta" href="#" data-concept-placeholder>See the range →</a>
-          <a class="bb-story" href="#" data-concept-placeholder>Our story</a>
+    <section class="bb-melt-band" aria-labelledby="bb-brand-title">
+      <div class="bb-melt-stage">
+        <div class="bb-melt-intro">
+          <p class="bb-kicker">Flavoured butter · Dundrum</p>
+          <h1 id="bb-brand-title">Betty's Better Butters</h1>
+          <p class="bb-lede">Restaurant flavour, brought home.</p>
+          <div class="bb-melt-actions">
+            <a class="bb-cta" href="#range">See the range</a>
+            <a class="bb-story" href="#story">Our story</a>
+          </div>
         </div>
+        <BbMeltHero />
       </div>
-
-      <figure class="bb-hero-media">
-        <ResponsiveImage
-          pictureClass="bb-hero-picture"
-          src="/media/concepts/bettys-butters/bettys-butters-source-butter.jpg"
-          alt="A knife slicing through butter on a wooden board"
-          width="5184"
-          height="3456"
-          loading="eager"
-          sizes="(max-width: 820px) 100vw, 54vw"
-        />
-        <figcaption>Made for the table · crafted in Dundrum</figcaption>
-      </figure>
     </section>
 
-    <section class="bb-range" aria-labelledby="bb-range-title">
-      <div class="bb-range-intro">
-        <p class="bb-range-number" aria-hidden="true">01</p>
-        <div>
-          <h2 id="bb-range-title">Make more of every meal.</h2>
-          <p>
-            Flavoured butters for everyday meals and special occasions — with
-            allergens, serving ideas and delivery details where you need them.
-          </p>
-        </div>
+    <section class="bb-quote" id="story" aria-label="Our story">
+      <p class="bb-quote-lead">{founderVoice.lead}</p>
+      <p class="bb-quote-detail">{founderVoice.detail}</p>
+    </section>
+
+    <section class="bb-arc" aria-labelledby="bb-arc-title">
+      <div class="bb-arc-head">
+        <h2 id="bb-arc-title">
+          A one off treat — or a new staple ingredient of your kitchen.
+        </h2>
+        <p class="bb-arc-lead">
+          Two jobs on the same shelf: the dinner-party finish, and the jar that
+          earns a place beside the hob.
+        </p>
       </div>
 
-      <div class="bb-shelf" aria-label="The range">
+      <article class="bb-plate bb-plate--treat">
+        <figure class="bb-plate-media">
+          <ResponsiveImage
+            pictureClass="bb-plate-picture"
+            src={plates.treat.src}
+            alt={plates.treat.alt}
+            width={plates.treat.width}
+            height={plates.treat.height}
+            sizes="(max-width: 820px) 100vw, 52vw"
+          />
+          <figcaption>{plates.treat.caption}</figcaption>
+        </figure>
+        <div class="bb-plate-copy">
+          <p class="bb-arc-role">The treat</p>
+          <h3>{treatJar?.name}</h3>
+          <p class="bb-arc-note">{treatJar?.note}</p>
+          <p class="bb-plate-body">
+            For when the steak deserves a restaurant finish — one knob, and the
+            table changes gear.
+          </p>
+        </div>
+      </article>
+
+      <article class="bb-plate bb-plate--staple">
+        <figure class="bb-plate-media">
+          <ResponsiveImage
+            pictureClass="bb-plate-picture"
+            src={plates.staple.src}
+            alt={plates.staple.alt}
+            width={plates.staple.width}
+            height={plates.staple.height}
+            sizes="(max-width: 820px) 100vw, 52vw"
+          />
+          <figcaption>{plates.staple.caption}</figcaption>
+        </figure>
+        <div class="bb-plate-copy">
+          <p class="bb-arc-role">The staple</p>
+          <h3>{stapleJar?.name}</h3>
+          <p class="bb-arc-note">{stapleJar?.note}</p>
+          <p class="bb-plate-body">
+            Through new potatoes on a Tuesday — the everyday jar that stays
+            beside the hob.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <p class="bb-ornament" aria-hidden="true"><BbMark size={22} /></p>
+
+    <section class="bb-range" id="range" aria-labelledby="bb-range-title">
+      <div class="bb-range-intro">
+        <h2 id="bb-range-title">What it does to a Tuesday.</h2>
+        <p>
+          Flavoured butters for everyday meals and special occasions — each
+          jar paired with the ordinary weeknight plate it transforms.
+        </p>
+      </div>
+
+      <div class="bb-wheel" role="list" aria-label="The range">
+        <div class="bb-wheel-ring" aria-hidden="true"></div>
+        <div class="bb-wheel-hub" aria-hidden="true">
+          <BbMark size={28} />
+          <span>Tuesday</span>
+        </div>
         {jars.map((jar) => (
-          <article class={`bb-jar bb-jar--${jar.tone}`}>
-            <span class="bb-jar-dot" aria-hidden="true"></span>
-            <div class="bb-jar-label">
+          <article
+            class={`bb-wheel-item bb-wheel-item--${jar.slot} bb-wheel-item--${jar.tone}`}
+            style={`--angle: ${jar.angle}deg`}
+            role="listitem"
+          >
+            <figure class="bb-wheel-cube">
+              <ResponsiveImage
+                pictureClass="bb-wheel-picture"
+                src={jar.cube.src}
+                alt={jar.cube.alt}
+                width={jar.cube.width}
+                height={jar.cube.height}
+                sizes="(max-width: 720px) 42vw, 180px"
+              />
+            </figure>
+            <div class="bb-wheel-copy">
               <h3>{jar.name}</h3>
-              <p>{jar.note}</p>
+              <p class="bb-wheel-note">{jar.note}</p>
+              <p class="bb-wheel-tuesday">{jar.tuesday}</p>
             </div>
           </article>
         ))}
       </div>
+
       <p class="bb-range-note">
-        For the full range, ingredients, allergens and stockists, get in touch
-        with Betty's Better Butters directly.
+        For the full range, ingredients, allergens and stockists,
+        <a href={website} rel="noopener noreferrer">visit the shop</a>.
       </p>
     </section>
+
+    <footer class="bb-footer">
+      <BbMark size={56} class="bb-footer-mark" />
+      <p class="bb-footer-delivery">{delivery.line}</p>
+      <p class="bb-footer-note">
+        <a href={website} rel="noopener noreferrer">bettysbetterbutters.com</a>
+      </p>
+    </footer>
   </main>
 </ConceptLayout>

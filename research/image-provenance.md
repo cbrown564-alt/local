@@ -65,13 +65,29 @@ of these businesses supplied one.
   larger copy came from before making any sourcing claim about it**, and before
   using the mark in print.
 - `bettys-butters-brand-mark.png` and `bettys-butters-source-butter.jpg` —
-  **in use.** Downloaded from the Betty's Better Butters public homepage on
-  27 July 2026. The first is the business's mountain-ring mark. The second is
-  the butter-on-a-board photograph used as that site's hero background. The
-  concept uses both directly and does not present the illustrative flavour
-  names as photographed products. The melt hero reuses the butter photograph
-  with illustrative day-part serving captions (breakfast/evening); no separate
-  melt imagery was generated.
+  **in use (mark) / held (source butter).** Downloaded from the Betty's Better
+  Butters public homepage on 27 July 2026. The mark remains the concept
+  favicon, header seal and ornaments. The butter-on-a-board photograph stays
+  in `public/` as provenance for the maker's own visual language; the live
+  melt hero now uses the generated plate below rather than this file.
+- `bettys-butters-generated-melt.jpg`, `bettys-butters-generated-treat.jpg`
+  and `bettys-butters-generated-staple.jpg` — **in use** (1 August 2026).
+  AI-generated illustrative visualisations in the table register: a knife
+  through soft butter on a wooden board (melt hero), steak with a melting
+  herb-butter knob (treat / Café de Paris), and new potatoes with herb butter
+  melting through (staple / Garlic & Herb). None depicts the maker's real
+  range, packaging or premises. Guest captions describe the plate only; the
+  concept banner states "Serving imagery is AI-generated." Flavour names
+  beside the plates remain illustrative placeholders. Responsive WebP
+  derivatives at 640 and 1265.
+- `bettys-butters-generated-cube-herb.jpg`,
+  `bettys-butters-generated-cube-chilli.jpg`,
+  `bettys-butters-generated-cube-paris.jpg` and
+  `bettys-butters-generated-cube-maple.jpg` — **in use** (1 August 2026).
+  AI-generated illustrative butter-cube stills for the Tuesday range wheel
+  (Garlic & Herb, Chilli & Lime, Café de Paris, Maple & Sea Salt). Same
+  disclosure boundary as the serving plates: not the maker's real products;
+  flavour names remain placeholders. Responsive WebP at 640 and 1265.
 
 ## Generated imagery
 

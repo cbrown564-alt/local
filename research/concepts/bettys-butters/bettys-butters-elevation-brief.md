@@ -5,9 +5,11 @@ Written 31 July 2026, as part of the expansion of the elevation work beyond
 `research/concepts/scopers/scopers-elevation-brief.md` (food-bar-shaped). The general method
 these briefs follow is in `docs/the-elevation-method.md`.
 
-**Status: thinking only, nothing built.** The landmines at the end are fixed
-before any move starts; the honesty constraints decide what every move is
-allowed to say.
+**Status: all six moves shipped 31 July 2026; serving plates added 1 August
+2026.** Imagery decision: AI-generated table-register plates for melt, treat
+and staple (banner-disclosed); maker mark retained; source butter photograph
+held for provenance. Comparison stills and clip need recapture
+(docs/MEDIA_CAPTURE.md).
 
 ## The shape of this business
 
