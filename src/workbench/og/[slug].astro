@@ -1,0 +1,49 @@
+---
+import OgCaptureShell from "./OgCaptureShell.astro";
+import {
+  transformationCandidates,
+  publicTransformationSlugs,
+} from "../../site/data/transformations";
+
+export function getStaticPaths() {
+  return publicTransformationSlugs.map((slug) => {
+    const transformation = transformationCandidates.find((item) => item.slug === slug);
+    if (!transformation) {
+      throw new Error(`Missing transformation candidate for OG slug: ${slug}`);
+    }
+    return { params: { slug }, props: { transformation } };
+  });
+}
+
+interface Props {
+  transformation: (typeof transformationCandidates)[number];
+}
+
+const { transformation } = Astro.props;
+---
+
+<OgCaptureShell title={`OG card — ${transformation.name}`}>
+  <article class="og-card og-card--case" aria-label={`${transformation.name} transformation share card`}>
+    <header>
+      <div class="og-case-title">
+        <p class="og-eyebrow">{transformation.town} · {transformation.category}</p>
+        <h1 class="og-case-name">{transformation.name}</h1>
+      </div>
+      <p class="og-wordmark og-wordmark--compact"><span>Mourne</span><span>Made</span><i aria-hidden="true"></i></p>
+    </header>
+    <div class="og-comparison" aria-hidden="true">
+      <figure>
+        <figcaption>Before</figcaption>
+        <img src={transformation.before} alt="" width="548" height="360" />
+      </figure>
+      <figure class="is-after">
+        <figcaption>After</figcaption>
+        <img src={transformation.after} alt="" width="548" height="360" />
+      </figure>
+    </div>
+    <footer>
+      <p class="og-summary">{transformation.summary}</p>
+      <p class="og-note">Independent concept study</p>
+    </footer>
+  </article>
+</OgCaptureShell>
