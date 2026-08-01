@@ -58,7 +58,12 @@ const JOURNEY_SCROLL_MS = 900;
 // gated social page (a Facebook login/cookie wall — see the *-before.jpg
 // stills), which is neither meaningful nor permissible to auto-drive. These
 // capture an AFTER demo only; the before stays the honest static still.
-const AFTER_HOVER = [".button", "a.button", ".button-secondary", "nav a", "header a"];
+// Prefer primary CTAs (concept-local class names first) so single-screen
+// openings still produce a visible hover moment for the screencast.
+const AFTER_HOVER = [
+  ".bh-cta", ".bh-book", ".cp-cta", ".tc-cta", ".ka-cta", ".nc-cta",
+  ".button", "a.button", ".button-secondary", "nav a", "header a", "main a",
+];
 const CONCEPTS = {
   "dundrum-inn": {
     before: "https://dundruminn.com/",
@@ -572,6 +577,19 @@ async function runDemoScript(page, hoverSpec, scrollStops) {
 // Recording
 // ---------------------------------------------------------------------------
 
+// Single-screen concepts often have no scroll and no painted cursor, so Chrome
+// screencast (visual-change only) can stall on the first frame. A tiny
+// brightness nudge forces a paint without a readable flash in the final clip.
+async function nudgeScreencastPaint(page) {
+  await page.evaluate(() => {
+    document.documentElement.style.filter = "brightness(1.012)";
+  });
+  await sleep(40);
+  await page.evaluate(() => {
+    document.documentElement.style.filter = "";
+  });
+}
+
 async function recordDemo(page, outName, hoverSpec, scrollStops) {
   const frameDir = fs.mkdtempSync(path.join(os.tmpdir(), `demo-${outName}-`));
   const frames = [];
@@ -584,7 +602,14 @@ async function recordDemo(page, outName, hoverSpec, scrollStops) {
   });
   await cdp.send("Page.startScreencast", { format: "jpeg", quality: 85, maxWidth: 1280, maxHeight: 720, everyNthFrame: 1 });
   const t0 = Date.now();
-  await runDemoScript(page, hoverSpec, scrollStops);
+  const paintNudge = setInterval(() => {
+    nudgeScreencastPaint(page).catch(() => {});
+  }, 650);
+  try {
+    await runDemoScript(page, hoverSpec, scrollStops);
+  } finally {
+    clearInterval(paintNudge);
+  }
   const wallSeconds = (Date.now() - t0) / 1000;
   const endTs = Date.now() / 1000;
   await cdp.send("Page.stopScreencast");

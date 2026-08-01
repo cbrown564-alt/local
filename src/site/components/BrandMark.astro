@@ -2,15 +2,19 @@
 interface Props {
   class?: string;
   showPlace?: boolean;
+  variant?: "default" | "inverse";
 }
 
-const { class: className = "", showPlace = true } = Astro.props;
+const { class: className = "", showPlace = true, variant = "default" } = Astro.props;
+const logoSrc = variant === "inverse"
+  ? "/brand/mourne-made-logo-inverse.png"
+  : "/brand/mourne-made-logo.png";
 ---
 
 <span class:list={["brand-mark", className]} aria-hidden="true">
   <img
     class="brand-mark-logo"
-    src="/brand/mourne-made-logo.png"
+    src={logoSrc}
     alt=""
     width="600"
     height="164"

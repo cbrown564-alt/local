@@ -1,9 +1,9 @@
 ---
-interface Props { compact?: boolean; reminder?: boolean }
-const { compact = false, reminder = false } = Astro.props;
+interface Props { compact?: boolean; reminder?: boolean; quiet?: boolean }
+const { compact = false, reminder = false, quiet = false } = Astro.props;
 ---
 {reminder ? (
-  <p class="disclosure-reminder" role="note">
+  <p class:list={["disclosure-reminder", { "disclosure-reminder--quiet": quiet }]} role="note">
     <span class="disclosure-reminder-mark" aria-hidden="true">C</span>
     <span><strong>Independent concept.</strong> Created from public information to demonstrate an idea. Not commissioned or approved by the business shown.</span>
   </p>

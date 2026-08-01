@@ -250,7 +250,7 @@ export const JOURNEYS = {
             {
               id: "to-supper",
               action: "tap",
-              target: "text=Book the supper club",
+              target: "text=Supper club",
               seconds: 3,
               navigation: true,
               screen: true,
