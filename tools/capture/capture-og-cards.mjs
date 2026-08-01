@@ -12,7 +12,7 @@ import path from "node:path";
 import { createRequire } from "node:module";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
-import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
+import { projectRoot, readTransformationCandidateSlugs } from "../lib/public-slugs.mjs";
 
 const root = projectRoot;
 const base = process.env.OG_CAPTURE_BASE ?? "http://127.0.0.1:4321";
@@ -26,7 +26,7 @@ const fixedCards = [
   { name: "transformations", route: "/workbench/og/transformations/" },
 ];
 
-const slugCards = readPublicTransformationSlugs().map((slug) => ({
+const slugCards = readTransformationCandidateSlugs().map((slug) => ({
   name: slug,
   route: `/workbench/og/${slug}/`,
 }));

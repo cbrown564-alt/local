@@ -12,3 +12,7 @@ export const ogImages = {
 export function transformationOgImage(slug: string): string {
   return `/media/og/${slug}.jpg`;
 }
+
+export function conceptOgImage(slug: string, hasCandidate: boolean): string {
+  return hasCandidate ? transformationOgImage(slug) : ogImages.studio;
+}

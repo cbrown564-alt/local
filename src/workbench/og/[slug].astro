@@ -2,17 +2,13 @@
 import OgCaptureShell from "./OgCaptureShell.astro";
 import {
   transformationCandidates,
-  publicTransformationSlugs,
 } from "../../site/data/transformations";
 
 export function getStaticPaths() {
-  return publicTransformationSlugs.map((slug) => {
-    const transformation = transformationCandidates.find((item) => item.slug === slug);
-    if (!transformation) {
-      throw new Error(`Missing transformation candidate for OG slug: ${slug}`);
-    }
-    return { params: { slug }, props: { transformation } };
-  });
+  return transformationCandidates.map((transformation) => ({
+    params: { slug: transformation.slug },
+    props: { transformation },
+  }));
 }
 
 interface Props {

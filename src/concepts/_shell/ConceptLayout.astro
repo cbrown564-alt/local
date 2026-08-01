@@ -3,6 +3,11 @@ import {
   transformationCandidates,
   transformations,
 } from "../../site/data/transformations";
+import { siteDetails } from "../../site/data/site";
+import {
+  conceptOgImage,
+  OG_IMAGE_SIZE,
+} from "../../site/data/og-images";
 import "./concept-shell.css";
 
 interface Props {
@@ -61,6 +66,14 @@ const businessName =
 const town = townProp ?? transformation?.town ?? candidate?.town ?? "";
 const caseStudy = `/transformations/${slug}/`;
 const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${encodeURIComponent(town)}&source=concept`;
+const description = `Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`;
+const publicOrigin = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(Astro.url.pathname, publicOrigin).href;
+const ogImage = conceptOgImage(slug, Boolean(candidate));
+const ogImageUrl = new URL(ogImage, publicOrigin).href;
+const ogImageAlt = candidate
+  ? `Before-and-after website concept for ${businessName}${town ? ` in ${town}` : ""}`
+  : `Mourne Made — independent website concept for ${businessName}`;
 ---
 
 <!doctype html>
@@ -69,8 +82,24 @@ const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="description" content={`Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href={favicon} type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteDetails.name} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content={String(OG_IMAGE_SIZE.width)} />
+    <meta property="og:image:height" content={String(OG_IMAGE_SIZE.height)} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     {fontHref && (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
