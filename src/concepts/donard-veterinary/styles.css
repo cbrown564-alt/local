@@ -40,23 +40,43 @@
 }
 .dv-strip-hours { font-weight: 400; letter-spacing: 0.02em; }
 
-/* Header */
+/* Header
+   Shell defaults to space-between, which parks free space in *two* gutters
+   and lets the nav shrink until labels wrap. Pack brand + nav, put the only
+   flexible spacer before the actions, and never wrap chrome labels. */
 .dv-header {
   height: 80px;
   padding: 0 clamp(20px, 3.5vw, 44px);
-  gap: 26px;
+  gap: clamp(14px, 1.6vw, 22px);
   background: var(--warm-white);
   border-bottom: 1px solid var(--hairline);
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  --concept-nav-gap: clamp(14px, 1.5vw, 22px);
 }
-.dv-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.dv-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  max-width: 100%;
+  text-decoration: none;
+  color: var(--ink);
+}
 .dv-badge { flex: 0 0 auto; }
-.dv-brand-text { display: flex; flex-direction: column; gap: 2px; }
+.dv-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
 .dv-brand-name {
   font-family: var(--serif);
   font-size: 23px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .dv-brand-sub {
   font-size: 10px;
@@ -64,16 +84,27 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--teal-deep);
+  white-space: nowrap;
+}
+.dv-nav {
+  flex: 0 0 auto;
 }
 .dv-nav a {
   font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
 }
 .dv-nav a:hover::after { right: 0; }
-.dv-header-actions { display: flex; align-items: center; gap: 18px; }
+.dv-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
 .dv-phone { font-size: 15px; font-weight: 700; text-decoration: none; color: var(--blue); white-space: nowrap; }
 .dv-book {
-  padding: 12px 20px;
+  padding: 12px 18px;
   border-radius: 999px;
   /* teal-deep, not teal: white 15px text needs AA contrast (4.5:1) */
   background: var(--teal-deep);
@@ -81,6 +112,7 @@
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
   transition: background 150ms ease, transform 150ms ease;
 }
 .dv-book:hover { background: var(--blue); transform: translateY(-1px); }
@@ -250,12 +282,13 @@
   border-top: 1px solid rgba(42, 107, 143, 0.38);
 }
 .dv-care-options a {
-  flex: 1 1 0;
+  /* Grow to share spare height, but never shrink below the label copy —
+     min-height:0 + flex-basis:0 was stacking wrapped lines on the next row. */
+  flex: 1 1 auto;
   display: grid;
-  grid-template-columns: 48px 1fr auto;
-  align-items: center;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: start;
   gap: 16px;
-  min-height: 0;
   padding: clamp(16px, 2.4vh, 30px) 0;
   border-bottom: 1px solid var(--hairline);
   color: var(--ink);
@@ -288,6 +321,7 @@
 .dv-care-options a > span:last-child {
   font-size: 18px;
   color: var(--blue);
+  line-height: 42px; /* keep the arrow optically centred with the icon */
 }
 .dv-care-hours {
   padding: 14px clamp(24px, 3vw, 40px);
@@ -405,12 +439,38 @@
 
 /* Entrance */
 @keyframes dv-rise { from { opacity: 0; transform: translateY(14px); } }
+/* Progressive collapse — shed density before labels wrap.
+   Phone is duplicated in the emergency strip, so it goes first. */
+@media (max-width: 1180px) {
+  .dv-nav-wide { display: none; }
+}
+
+@media (max-width: 1100px) {
+  .dv-phone { display: none; }
+  .dv-brand-sub { display: none; }
+  .dv-brand-name { font-size: 20px; }
+  .dv-header { --concept-nav-gap: 18px; gap: 16px; }
+}
+
 @media (max-width: 940px) {
   .dv-strip { flex-direction: column; gap: 2px; text-align: center; }
-  .dv-nav, .dv-phone { display: none; }
-  .dv-header { height: auto; padding-block: 12px; }
-  .dv-brand-name { font-size: 20px; }
-  .dv-brand-sub { font-size: 11px; letter-spacing: 0.14em; }
+  .dv-header {
+    height: auto;
+    min-height: 64px;
+    padding-block: 12px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .dv-brand-name { font-size: 18px; }
+  .dv-header-actions {
+    margin-left: 0;
+    flex: 1 0 100%;
+    justify-content: stretch;
+  }
+  .dv-book {
+    flex: 1;
+    text-align: center;
+  }
   .dv-hero { grid-template-columns: 1fr; min-height: 0; }
   .dv-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 32px; }
   .dv-story h1 { max-width: none; font-size: clamp(36px, 9vw, 52px); }
@@ -422,6 +482,10 @@
   .dv-care-hours { padding-inline: 22px; align-items: flex-start; flex-direction: column; gap: 8px; }
   .dv-rail { grid-column: 1; grid-row: auto; order: 2; grid-template-columns: repeat(2, 1fr); }
   .dv-hero-hills { display: none; }
+}
+
+@media (max-width: 720px) {
+  .dv-nav { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

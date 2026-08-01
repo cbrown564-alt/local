@@ -8,6 +8,9 @@ const pagesRoot = path.join(root, "src", "pages", "concepts");
 const base = process.env.SHOT_BASE ?? "http://127.0.0.1:4321";
 const viewports = [
   { name: "desktop", width: 1265, height: 710 },
+  /* Mid-widths are where dense headers usually collapse into wrapped labels
+     before a phone breakpoint fires. 1100 catches laptop + side-panel chrome. */
+  { name: "laptop", width: 1100, height: 710 },
   { name: "phone", width: 390, height: 844, isMobile: true, hasTouch: true },
 ];
 
@@ -111,6 +114,23 @@ try {
           const rect = element.getBoundingClientRect();
           return rect.left < -1 || rect.right > layoutWidth + 1;
         }).map(describe);
+        const wrappedHeaderLabels = [
+          ...document.querySelectorAll("header a, header button"),
+        ].filter(visible).filter((element) => {
+          const style = getComputedStyle(element);
+          if (style.whiteSpace === "nowrap" || style.display === "none") return false;
+          /* Brand lockups often stack name + strapline on purpose. */
+          if (element.querySelector("span, small, strong, em, svg")) return false;
+          const fontSize = Number.parseFloat(style.fontSize) || 16;
+          const lineHeight = Number.parseFloat(style.lineHeight) || fontSize * 1.2;
+          const paddingY = (Number.parseFloat(style.paddingTop) || 0)
+            + (Number.parseFloat(style.paddingBottom) || 0);
+          const borderY = (Number.parseFloat(style.borderTopWidth) || 0)
+            + (Number.parseFloat(style.borderBottomWidth) || 0);
+          const contentHeight = element.clientHeight - paddingY - borderY;
+          /* More than ~1.5 lines of content means a label wrapped inside chrome. */
+          return contentHeight > lineHeight * 1.55;
+        }).map(describe);
         const placeholders = [...document.querySelectorAll("a[data-concept-placeholder]")];
         const invalidPlaceholders = placeholders.filter((element) => (
           element.hasAttribute("href")
@@ -172,6 +192,7 @@ try {
           htmlWidth: `${document.documentElement.clientWidth}/${document.documentElement.scrollWidth}`,
           bodyWidth: `${document.body.clientWidth}/${document.body.scrollWidth}`,
           clippedHeaderControls,
+          wrappedHeaderLabels,
           placeholderCount: placeholders.length,
           invalidPlaceholders,
           brandLinks,
@@ -203,6 +224,9 @@ try {
       }
       if (facts.clippedHeaderControls.length) {
         failures.push(`clipped header controls: ${facts.clippedHeaderControls.join(", ")}`);
+      }
+      if (facts.wrappedHeaderLabels.length) {
+        failures.push(`wrapped header labels: ${facts.wrappedHeaderLabels.join(", ")}`);
       }
       if (facts.invalidPlaceholders.length) {
         failures.push(`placeholder setup failed: ${facts.invalidPlaceholders.join(", ")}`);
