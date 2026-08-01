@@ -146,7 +146,7 @@ const stays = [
 
         <details class="di-hours-details">
           <summary>See all bar hours <span aria-hidden="true">+</span></summary>
-          <dl class="di-hours" id="di-hours">
+            <dl class="di-hours" id="di-hours" data-hours={JSON.stringify(hours)}>
             {hoursRows.map((row) => (
               <div class="di-hours-row" data-day={row.short}>
                 <dt>{row.day}</dt>
@@ -313,10 +313,11 @@ const stays = [
   </main>
 </ConceptLayout>
 
-<script is:inline define:vars={{ hours, eventDateKey: event.dateKey }}>
+<script is:inline>
   /* One signature motion: daylight yields to the blue-hour frame when the
      visitor arrives in the evening. Reduced motion leaves the daytime frame
      in place. The swap changes atmosphere, never trading status. */
+  const hours = JSON.parse(document.getElementById("di-hours")?.dataset.hours ?? "[]");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Europe/London",
@@ -357,6 +358,7 @@ const stays = [
   const eventCard = document.getElementById("di-event-card");
   const eventName = document.getElementById("di-event-name");
   const eventDate = document.getElementById("di-event-date");
+  const eventDateKey = eventCard?.dataset.eventDate ?? "";
   if (eventCard && todayKey > eventDateKey) {
     eventCard.dataset.state = "past";
     if (eventName) eventName.textContent = "Check the events page";
