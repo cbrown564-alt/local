@@ -219,10 +219,10 @@ export const larderPins: readonly LarderPin[] = [
     x: 378,
     y: 272,
     anchor: "start",
-    labelDx: 36,
-    labelDy: -24,
-    dishDy: -10,
-    leader: { x: 30, y: -18 },
+    labelDx: 44,
+    labelDy: -32,
+    dishDy: -18,
+    leader: { x: 38, y: -26 },
   },
 ];
 
