@@ -325,7 +325,9 @@ try {
       path.join(
         process.cwd(),
         "public",
-        "images",
+        "media",
+        "concepts",
+        "hotel-enniskeen",
         `enniskeen-faithful-house-${id}.jpg`,
       ),
     ),

@@ -44,14 +44,21 @@ const fallback = parts.find((part) => part.id === "midday") ?? parts[0];
         data-steam={part.steam ? "" : undefined}
         hidden={part.id !== fallback.id ? true : undefined}
       >
-        <img
-          src={part.src}
-          alt={part.alt}
-          width={part.width}
-          height={part.height}
-          loading={part.id === fallback.id ? "eager" : "lazy"}
-          style={part.position ? `object-position: ${part.position};` : undefined}
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcset={`${part.src.slice(0, part.src.lastIndexOf("."))}-640.webp 640w, ${part.src.slice(0, part.src.lastIndexOf("."))}-1265.webp 1265w`}
+            sizes="(max-width: 720px) 100vw, 1265px"
+          />
+          <img
+            src={part.src}
+            alt={part.alt}
+            width={part.width}
+            height={part.height}
+            loading={part.id === fallback.id ? "eager" : "lazy"}
+            style={part.position ? `object-position: ${part.position};` : undefined}
+          />
+        </picture>
         {part.video && (
           <video
             class="sc-hero-video"

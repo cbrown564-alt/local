@@ -4,6 +4,7 @@ import path from "node:path";
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import McTrailsMap from "./components/McTrailsMap.astro";
 import {
   bikeTypes,
@@ -28,7 +29,7 @@ const bikePanels = bikeTypes.map((bike) => ({
   slug="mourne-cycles"
   bodyClass="concept-page concept-mourne-cycles"
   lang="en-GB"
-  bannerNote="Workshop stand tickets are illustrative. Bike drawings are not showroom photographs."
+  bannerNote="Workshop stand tickets are illustrative. Bike imagery is AI-generated and is not showroom photography."
 >
 <div class="mc-strip">
       <span>Est. 2002 · listed Trek dealer &amp; Cyclescheme retailer</span>
@@ -61,13 +62,12 @@ const bikePanels = bikeTypes.map((bike) => ({
     <section class="mc-hero" aria-labelledby="mc-hero-heading">
       <figure class="mc-hero-visual">
         {hasHeroImage ? (
-          <img
+          <ResponsiveImage
             src={heroImage}
             alt="Mountain bike on a Castlewellan Forest trail with the Mournes ahead"
             width="1024"
             height="682"
             loading="eager"
-            fetchpriority="high"
           />
         ) : (
           <svg class="mc-hero-fallback" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
