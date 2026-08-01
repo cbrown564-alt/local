@@ -1,0 +1,28 @@
+---
+import OgCaptureShell from "./OgCaptureShell.astro";
+import { transformations } from "../../site/data/transformations";
+
+const preview = transformations.slice(0, 8);
+---
+
+<OgCaptureShell title="OG card — Local transformations">
+  <article class="og-card og-card--transformations" aria-label="Mourne Made transformations index share card">
+    <header>
+      <p class="og-wordmark og-wordmark--compact"><span>Mourne</span><span>Made</span><i aria-hidden="true"></i></p>
+      <p class="og-eyebrow">{transformations.length} local website concepts</p>
+      <h1 class="og-headline">Before-and-after studies around Dundrum and Newcastle.</h1>
+    </header>
+    <div class="og-grid" aria-hidden="true">
+      {preview.map((item) => (
+        <span>
+          <img src={item.after} alt="" width="128" height="80" />
+          {item.name}
+        </span>
+      ))}
+    </div>
+    <footer>
+      <p class="og-lede">Browse respectful, source-backed concepts for food, hospitality, shops and community.</p>
+      <p class="og-note">mournemade.co.uk/transformations</p>
+    </footer>
+  </article>
+</OgCaptureShell>

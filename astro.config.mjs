@@ -20,6 +20,26 @@ const devOnlyWorkbench = {
           pattern: "/workbench/print/bucks-head-onesheet",
           entrypoint: "./src/workbench/print/bucks-head-onesheet.astro",
         });
+        injectRoute({
+          pattern: "/workbench/og/studio",
+          entrypoint: "./src/workbench/og/studio.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/og/home",
+          entrypoint: "./src/workbench/og/home.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/og/request",
+          entrypoint: "./src/workbench/og/request.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/og/transformations",
+          entrypoint: "./src/workbench/og/transformations.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/og/[slug]",
+          entrypoint: "./src/workbench/og/[slug].astro",
+        });
       }
     },
   },
