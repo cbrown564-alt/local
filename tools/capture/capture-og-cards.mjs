@@ -31,13 +31,14 @@ const slugCards = readPublicTransformationSlugs().map((slug) => ({
   route: `/workbench/og/${slug}/`,
 }));
 
+const allCards = [...fixedCards, ...slugCards];
 const cards = slugArg
-  ? slugCards.filter((card) => card.name === slugArg)
-  : [...fixedCards, ...slugCards];
+  ? allCards.filter((card) => card.name === slugArg)
+  : allCards;
 
 if (slugArg && cards.length === 0) {
   console.error(
-    `Unknown slug: ${slugArg}\nKnown public slugs: ${readPublicTransformationSlugs().join(", ")}`,
+    `Unknown card: ${slugArg}\nKnown: ${allCards.map((card) => card.name).join(", ")}`,
   );
   process.exit(1);
 }
