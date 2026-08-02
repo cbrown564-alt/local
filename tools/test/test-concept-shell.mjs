@@ -120,7 +120,10 @@ try {
           const style = getComputedStyle(element);
           if (style.whiteSpace === "nowrap" || style.display === "none") return false;
           /* Brand lockups often stack name + strapline on purpose. */
-          if (element.querySelector("span, small, strong, em, svg")) return false;
+          if (element.querySelector("span, small, strong, em, svg")
+            || element.matches('a[class*="brand"], a[class*="logo"], a[class*="wordmark"]')) {
+            return false;
+          }
           const fontSize = Number.parseFloat(style.fontSize) || 16;
           const lineHeight = Number.parseFloat(style.lineHeight) || fontSize * 1.2;
           const paddingY = (Number.parseFloat(style.paddingTop) || 0)

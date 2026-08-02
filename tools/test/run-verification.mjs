@@ -93,6 +93,7 @@ const suites = [
   ["test:shell-home"],
   ["test:concepts"],
   ["test:reviewed-concepts"],
+  ["test:dundrum-inn"],
   ["test:media"],
   ["test:bucks-head"],
   ["test:enniskeen"],

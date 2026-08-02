@@ -38,7 +38,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Hospitality",
     summary:
-      "A 190-year-old inn whose own website never says when the kitchen is on — given a first screen that works out open or closed from the Inn's published hours, offers Irish beside English in place of the machine-translation dropdown, and keeps the pub's own GuestDiary booking.",
+      "A 190-year-old inn whose own website publishes bar hours but no full kitchen schedule — given a first screen that works out open or closed from the Inn's published hours, offers Irish beside English in place of the machine-translation dropdown, and keeps the pub's own GuestDiary booking.",
     before: "/media/concepts/dundrum-inn/dundrum-inn-before.jpg",
     after: "/media/concepts/dundrum-inn/dundrum-inn-after.jpg",
     beforeAlt:
@@ -118,11 +118,11 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Shops & services",
     summary:
-      "A dental practice whose own domain hands patients — over plain HTTP — to a different practice's page. The concept is simply its own door, served securely.",
+      "A dental practice whose own domain hands patients — over plain HTTP — to a DJ Maguire Dentists location page branded Newcastle Family Dental Care. The concept is simply its own door, served securely.",
     before: "/media/concepts/newcastle-dental/newcastle-dental-before.jpg",
     after: "/media/concepts/newcastle-dental/newcastle-dental-after.jpg",
     beforeAlt:
-      "Newcastle Family Dental Care's current website: its domain redirecting over insecure HTTP to a different practice, DJ Maguire Dentists' Newcastle location page",
+      "Newcastle Family Dental Care's current website: its domain redirecting over insecure HTTP to a DJ Maguire Dentists location page branded Newcastle Family Dental Care",
     afterAlt:
       "Mourne Made concept in clinical periwinkle: a Your family dentist, close to home headline with a padlocked secure address bar and an appointment-request form stated as HTTPS",
     href: "/transformations/newcastle-dental/",
@@ -134,7 +134,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Hospitality",
     summary:
-      "A maintained, well-written wedding venue with no way to enquire online — given the one feature every venue needs: check your date and guest count before you phone.",
+      "A maintained, well-written wedding venue with no way to enquire online — given a simple way to check your date and guest count before you phone.",
     before: "/media/concepts/hugh-mccanns/hugh-mccanns-before.jpg",
     after: "/media/concepts/hugh-mccanns/hugh-mccanns-after.jpg",
     beforeAlt:
@@ -150,13 +150,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Community & leisure",
     summary:
-      "The Co. Down chamber that runs on Gmail and social — given a Main Street finder with civic chrome, a full member directory, events, join and contact.",
+      "The Co. Down chamber that runs on Gmail and social — given a Main Street finder with a local business directory, events, joining and contact.",
     before: "/media/concepts/newcastle-chamber/newcastle-chamber-before.jpg",
     after: "/media/concepts/newcastle-chamber/newcastle-chamber-after.jpg",
     beforeAlt:
       "Newcastle Chamber of Commerce's current public presence: its Facebook page covered by a login form, with the Chamber's introduction greyed out behind the wall",
     afterAlt:
-      "Mourne Made concept opening in harbour navy, sea mist and civic brass: Find a business on Main Street headline, directory search, Halloween events card and trade category rail",
+      "Mourne Made concept opening in harbour navy, sea mist and civic brass: Find a business on Main Street headline, directory search, Halloween events card and trade categories",
     href: "/transformations/newcastle-chamber/",
     pin: { x: 515, y: 428 },
   },
@@ -172,7 +172,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Kent Amusements' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the arcade's introduction greyed out behind them",
     afterAlt:
-      "Mourne Made concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a proposed hours-and-updates ticket and an attractions rail",
+      "Mourne Made concept opening in pier navy, spray mist and ticket amber, with the Fifty summers on the Central Promenade headline, a promenade marquee illustration, a proposed hours-and-updates panel and an attractions list",
     href: "/transformations/kent-amusements/",
     pin: { x: 168, y: 504 },
   },
@@ -188,7 +188,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "The Tool Centre's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the shop's introduction greyed out behind them",
     afterAlt:
-      "Mourne Made concept opening in yard black, cool concrete and badge yellow, with the Hardware on the shelf Hire on the yard headline, a hire-desk rates board and a stock-category rail",
+      "Mourne Made concept opening in yard black, cool concrete and badge yellow, with the Hardware on the shelf Hire on the yard headline, a hire-desk rates board and stock categories",
     href: "/transformations/tool-centre/",
     pin: { x: 220, y: 495 },
   },
@@ -204,7 +204,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Cúpla's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the café's name and tagline greyed out behind them",
     afterAlt:
-      "Mourne Made concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, twin-ring mark, an at-the-counter card and a twinned Irish and English rail",
+      "Mourne Made concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, twin-ring mark, an at-the-counter card and paired Irish and English copy",
     href: "/transformations/cupla/",
     pin: { x: 935, y: 265 },
   },
@@ -214,13 +214,13 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Food & drink",
     summary:
-      "Northern Ireland's first zero-waste hot food bar, currently behind a Facebook login — given a first page that leads with the chef and a standing supper-club invitation.",
+      "Northern Ireland's first zero-waste hot food bar, currently behind a Facebook login — given a first page that leads with the chef and keeps the supper club visible.",
     before: "/media/concepts/scopers/scopers-before.jpg",
     after: "/media/concepts/scopers/scopers-after.jpg",
     beforeAlt:
       "Scopers' current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the bar's introduction greyed out behind them",
     afterAlt:
-      "Mourne Made concept opening in cast iron, buttermilk and paprika, with the Northern Ireland's first zero-waste hot food bar headline, a supper club card and a signature-dish rail",
+      "Mourne Made concept opening in cast iron, buttermilk and paprika, with the Northern Ireland's first zero-waste hot food bar headline, a supper club card and a signature-dish list",
     href: "/transformations/scopers/",
     pin: { x: 848, y: 312 },
   },
@@ -236,7 +236,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "The Bucks Head's current homepage: a green header with the antler logo and five menu items above a full-width photograph of the owners by Dundrum Bay, with no headline, hours or booking action",
     afterAlt:
-      "Mourne Made concept opening in the pub's own spruce green and blush pink, with the Old Charm Modern Flare headline, a book-a-table card over the hearth photograph and a menus rail along the foot",
+      "Mourne Made concept opening in the pub's own spruce green and blush pink, with the Old Charm Modern Flare headline, a book-a-table card over the hearth photograph and a menus list along the foot",
     href: "/transformations/bucks-head/",
     pin: { x: 980, y: 240 },
   },
@@ -268,7 +268,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Mourne Cycles' current homepage: a black header with the shop logo and phone number above a collage of Trek, Bontrager and Shimano logos and cut-out bike photographs",
     afterAlt:
-      "Mourne Made concept opening on the shop's own black and red identity, the Mourne Cycles wordmark, a Trek trail photograph and a numbered range rail with a Cycle to Work cell",
+      "Mourne Made concept opening on the shop's own black and red identity, the Mourne Cycles wordmark, a Trek trail photograph and a numbered range list with a Cycle to Work option",
     href: "/transformations/mourne-cycles/",
     pin: { x: 250, y: 445 },
   },

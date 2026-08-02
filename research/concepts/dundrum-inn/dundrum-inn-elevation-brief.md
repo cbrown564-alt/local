@@ -5,13 +5,15 @@ checks but still felt emotionally flat beside the place it represents. The
 general method is in `docs/the-elevation-method.md`; this is the Inn-shaped
 application of it.
 
-**Status: proposed; no moves shipped.** The rebuild on 26 July fixed the real
-problems: it restored the Inn's colour, put a faithful frontage visualisation
-on the first screen, kept the GuestDiary destination, and made the published
-bar hours do useful work. It is honest and more useful than the first pass. It
-is still a hero, a status rail, a booking strip and a Today board. The next
-pass should make those facts feel like one lived place rather than a set of
-hospitality widgets.
+**Status: implemented 1 August 2026; moves 1–6 are in the concept page.** The
+rebuild on 26 July fixed the real problems: it restored the Inn's colour, put a
+faithful frontage visualisation on the first screen, kept the GuestDiary
+destination, and made the published bar hours do useful work. This pass carries
+the brief through: the Inn now has a name-and-date lock-up, one Today panel,
+the bay-to-bed sequence, five named keys, a composition-matched blue-hour
+frame, and an indicative Inn-to-bay place plate. The open decisions below stay
+open where they require owner permission or a verified GuestDiary parameter
+format; the concept does not pretend those questions are settled.
 
 ## The shape of this business
 
@@ -258,6 +260,10 @@ Each move should have a small proof attached to it:
   disclosure remains attached to the image.
 - If the place plate lands, inspect it at desktop and phone width and assert
   that its labels are not clipped and its indicative disclosure is present.
+- The focused proof for these checks is `tools/test/test-dundrum-inn-journey.mjs`:
+  it runs at desktop, laptop and 390px, verifies both hero sources and all
+  five keys, checks the dated event and booking handoff, rejects horizontal
+  overflow, and confirms reduced motion keeps the daytime frame.
 - Run the swap test on the final page: remove the name “Dundrum Inn”. If the
   sequence still works for any hotel, the elevation has not gone far enough.
 
