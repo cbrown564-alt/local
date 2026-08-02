@@ -223,10 +223,12 @@ export const rooms = {
       name: "Room 6",
       detail: "The original pink art-deco bathroom",
       note: "One of the house's period survivors — individually styled, like every room at Enniskeen.",
-      image: generatedVisuals.bathPink.src,
-      imageWidth: generatedVisuals.bathPink.width,
-      imageHeight: generatedVisuals.bathPink.height,
-      alt: generatedVisuals.bathPink.alt,
+      // The landscape visual is art-directed for the room-card crop. The
+      // faithful portrait remains available for the full story treatment.
+      image: "/media/concepts/hotel-enniskeen/enniskeen-generated-bath-pink.jpg",
+      imageWidth: 1536,
+      imageHeight: 1024,
+      alt: "Room 6's pink art-deco bath and matching basin with chrome taps",
     },
     {
       name: "Room 15",
