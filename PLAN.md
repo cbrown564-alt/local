@@ -7,24 +7,23 @@ the retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
 and in the commit history.
 
-Snapshot: 28 July 2026. The portfolio recovery and fifth-check re-review are
-complete, and sixteen transformations are public. The Buck's Head has replied
-to the first outreach: it already has a new website built and plans to launch
-it when its accommodation is ready.
+Snapshot: 3 August 2026. Sixteen transformations are public. The Buck's Head has
+replied to the first outreach: it already has a new website built and plans to
+launch it when its accommodation is ready. Both open publication decisions are
+now closed and neither published — see section 2.
 
-The verification baseline is restored: `pnpm test` builds from the frozen
-lockfile, starts preview, and runs the request, concept-shell, reviewed-concept,
-media, Buck's Head, Enniskeen and Painted Earth checks — 7/7 green locally on
-28 July 2026 after the hardening pass in section 1a. `.github/workflows/verify.yml`
-runs the same command, but has not executed yet: the work is on
-`fix/verification-baseline-hardening` and CI first runs when that branch is
-pushed. Remaining `@vercel/node` advisories are recorded in
-`docs/dependency-advisories.md`.
+**The verification baseline is red.** `pnpm test` was 7/7 green on 28 July after
+the hardening pass in section 1a. On 3 August it is **6 of 9 suites passing**,
+and the three failures were all introduced by the 31 July – 2 August design wave
+(homepage redesign, brand palette refresh, image optimisation, concept
+elevation) — work that section 2 said not to start while the publication
+decisions were open. Repair is section 1b, before anything else. Remaining
+`@vercel/node` advisories are recorded in `docs/dependency-advisories.md`.
 
 No business has approved the concept work and no client result has been
-measured. The ordered plan is therefore: close the two open publication
-decisions, protect the request path, finish the two remaining outreach sheets
-and learn from real conversations before expanding the portfolio or offer.
+measured. The ordered plan is therefore: repair the baseline, protect the
+request path, finish the two remaining outreach sheets and learn from real
+conversations before expanding the portfolio or offer.
 
 ## 1. Restore a trustworthy verification baseline — done 28 July 2026
 
@@ -83,47 +82,88 @@ and that two of its checks could not fail. Fixed in the same pass:
 6. CI now runs once per pull request rather than twice, with
    `permissions: contents: read`.
 
-## 2. Close the remaining publication decisions
+## 1b. Repair the baseline the design wave broke — open
 
-### Kelly, McEvoy & Brown
+Full run on 3 August 2026: 6 of 9 suites pass. `test:request`, `test:media`,
+`test:bucks-head`, `test:enniskeen`, `test:scopers` and `test:painted-earth`
+(34/34) are green. Three fail, and none of the failures is in the plan:
 
-The 27 July rebuild now carries the firm's mark, yellow-and-grey identity and
-two photographs from its own named project pages. It remains withdrawn because
-the publication record still contains the earlier identity blocker and the
-comparison media predates the rebuild.
+1. **`test:shell-home`** — "homepage hero must carry the claim-door link". The
+   31 July – 1 August homepage redesign (reveal hero, town map) dropped the
+   claim-door link from the hero. That link is the route a business owner takes
+   to claim their own concept, so this is a real loss, not a stale assertion.
+   Restore it or, if the redesign moved it deliberately, move the assertion to
+   where it now lives — decide which, and say so here.
+2. **`test:reviewed-concepts`** — 14/15. Mourne Cycles serves the 1024px
+   `-electric`, `-road` and `-mountain` masters to a 390px viewport while the
+   `-640.webp` derivatives exist, and one rendered Dundrum Inn image has no
+   entry in `research/image-provenance.md`. Both are regressions of section 1a
+   items 3 and 4, from the 1 August imagery pass.
+3. **`test:concepts`** — 97/120 route × viewport combinations pass; 23 fail, all
+   `wrapped header labels`. Two different things are hiding under one message:
+   - **False positives.** Kelly, McEvoy & Brown and Douglas & Cromie are flagged
+     for their brand link, which wraps a tall `<img>` logo. The check exempts a
+     link containing `span, small, strong, em, svg` as a deliberate brand
+     lockup, but not one containing `img`. Painted Earth's nav links measure
+     over 1.55 lines because of an underline element the height maths does not
+     subtract; they render on one line.
+   - **Possibly real.** Hotel Enniskeen fails on all five routes at laptop width
+     only, with six labels flagged including the phone number and "Book a room".
+     Check that before widening the exemption.
 
-1. Inspect the rebuilt concept beside the live site on phone and desktop.
-2. Correct the stale comparison `afterAlt` text in
-   `src/site/data/transformation-details.ts`.
-3. Run the five publication checks again. If the concept passes, update
-   `research/publication.json`, `PROSPECTS.md`,
-   `research/pipeline/verifications.json` and `publicTransformationSlugs` together.
-   If it does not pass, keep it withdrawn and record the remaining blocker.
-4. Only after a Publish decision, recapture and visually inspect its after
-   still and clip, regenerate responsive derivatives and run the media and
-   concept checks.
+   Fix the check first — `img` belongs in the brand-lockup exemption and the
+   underline height needs subtracting — then re-read what is left. Do not
+   silence the whole assertion; it caught the Donard Veterinary header problem
+   on 1 August.
 
-### Painted Earth
+Nothing in sections 3–6 starts until `pnpm test` is green again.
 
-The internal prototype at `/concepts/painted-earth/` is implemented and its
-desktop and phone shopping journeys pass. It is not publication-reviewed and
-is not public. Its live shop added the catalogue filters that motivated the
-first proposal, so the surviving case is deliberately narrow: make
-original-art collection or shipping terms visible before purchase and give a
-useful route forward when an original has sold.
+## 2. Close the remaining publication decisions — done 3 August 2026
 
-1. Open the live shop beside the prototype and decide whether that narrower
-   loop is a meaningful improvement the owner would recognise, not merely a
-   different design.
-2. Run the five publication checks and record one explicit outcome:
-   **Publish**, **Fix blocker** or **stop as an internal exploration**.
-3. If Publish, add the transformation record and source disclosure, capture
-   comparison media, regenerate derivatives, add it to the public list and run
-   the full build plus the focused Painted Earth journey check.
-4. If it does not clearly beat the live experience, do not expand the
-   prototype to manufacture a case for publication.
+Both were reviewed against the live site at phone and desktop on 3 August 2026.
+Neither publishes. The public list is unchanged at sixteen. Outcomes and their
+evidence are in `research/publication.json`; `PROSPECTS.md` carries the
+human-readable version.
 
-Do not start another concept while either decision is open.
+### Kelly, McEvoy & Brown — Fix blocker, stays withdrawn
+
+The 27 July identity blocker is repaired: the concept carries the firm's own
+mark, its yellow-and-grey palette and two source-matched project photographs,
+and the stale comparison `afterAlt` is corrected in both `transformations.ts`
+and `transformation-details.ts`.
+
+A different blocker replaced it. The case study's premise — a portfolio
+"rendered as plain text links beneath a small carousel" — is not true of
+`kmbni.com`, whose `/portfolio` page is a photographed six-sector grid leading
+to per-project pages with their own images. Only the nav dropdown is a text
+list. This is the Painted Earth build-day failure again: a discovery claim the
+live site has outgrown.
+
+The repair is to rewrite the premise around what the concept actually adds — one
+filterable register across all thirteen projects instead of drilling sector by
+sector, and the accreditation marks promoted from the footer to procurement
+evidence — or to drop the claim. Do that before any further work on this
+concept, and re-run the five checks. Only after a Publish decision should the
+after still and clip be recaptured.
+
+### Painted Earth — stopped as an internal exploration
+
+The prototype stays at `/concepts/painted-earth/`, internal and noindex, with no
+transformation record, no comparison media and no place in the public list. Its
+own journey checks pass 34/34; this is a publication decision, not a defect.
+
+The shop is a gallery whose strength is photography of real work by named
+makers, and the prototype cannot show any of it — republishing catalogue
+photography spanning 92 third-party makers has no recorded licence, so every
+artwork is a drawn placeholder tile. The imagery policy that keeps the prototype
+honest is the same policy that makes it unpublishable. The live shop wins on
+what the business actually sells.
+
+What survives is smaller than a website transformation: collection-only and
+shipping-quote terms visible before the Add to Cart button, a route forward from
+a sold original, and the hand-run workshop waiting list. Offer that as a
+merchandising fix to their existing product template if the shop is ever
+approached. Do not expand the prototype to manufacture a case for publication.
 
 ## 3. Protect the request path and prepare the remaining first-wave outreach
 

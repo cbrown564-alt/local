@@ -7,10 +7,10 @@ with `node tools/pipeline/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 28 July 2026 · sixteen public transformations · one concept withdrawn
-for fifth-check repair · two concepts retired · one active next prospect · two
-prospects held on trading or suitability evidence · **one business contacted
-and replied**
+Snapshot: 3 August 2026 · sixteen public transformations · one concept withdrawn
+and still blocked · two concepts retired · one prototype stopped as an internal
+exploration · no active next prospect · two prospects held on trading or
+suitability evidence · **one business contacted and replied**
 
 ## Stages
 
@@ -33,30 +33,66 @@ Before publishing a concept:
 - add the slug to `publicTransformationSlugs`;
 - update the stage here and in `research/pipeline/verifications.json`.
 
-## Active next prospect
+## Closed publication decisions
 
-| Business | Town | Stage | Planned work |
+Both decisions left open by `PLAN.md` section 2 were answered on 3 August 2026,
+each after a live side-by-side at phone and desktop. Neither concept publishes.
+
+| Business | Town | Stage | Outcome |
 |---|---|---|---|
-| Painted Earth | Newcastle | Shortlisted | Internal representative prototype: existing live filters preserved; product and occasion routes lead, place remains optional, and the original-art loop exposes collection/shipping terms and sold-work recovery |
+| Painted Earth | Newcastle | Assessed – not shortlisted | **Stop as an internal exploration** |
+| Kelly, McEvoy & Brown | Dundrum | Concept in progress | **Fix blocker** — stays withdrawn |
 
-The concept is planned in
+### Painted Earth — stopped as an internal exploration
+
+The internal noindex prototype at `/concepts/painted-earth/` is implemented, and
+its own journey checks pass. It is not published, has no transformation record
+or comparison media, and is not in the public transformation list. It stays in
+the repository as internal work.
+
+The decision is not a defect finding. The shop is a gallery and craft shop whose
+strength is photography of real work by named makers, and the prototype cannot
+show any of it: republishing catalogue photography spanning 92 third-party
+makers has no recorded licence, so every artwork is a drawn placeholder tile.
+The imagery policy that keeps the prototype honest is the same policy that makes
+it unpublishable — eight identical mountain-and-sun tiles cannot be offered to
+this owner as an improvement on their own gallery pages.
+
+What survives is smaller than a website transformation and worth keeping: making
+collection-only and shipping-quote terms visible before the Add to Cart button,
+a route forward from a sold original, and the hand-run workshop waiting list. If
+the shop is ever approached, that is a merchandising fix to their existing
+product template.
+
+Background remains in
 [`research/concepts/painted-earth/painted-earth-concept-plan.md`](research/concepts/painted-earth/painted-earth-concept-plan.md)
-(updated after the 27 July 2026 build-day re-check), with its dated catalogue
-evidence in `research/concepts/painted-earth/painted-earth-catalogue-2026-07-26.json`. The internal
-noindex prototype is implemented at `/concepts/painted-earth/`; it has not
-passed publication review and is not part of the public transformation list.
+with its dated catalogue evidence in
+`research/concepts/painted-earth/painted-earth-catalogue-2026-07-26.json`. The
+27 July re-check that contradicted the original no-filters claim still holds:
+the live shop exposes price, artist or brand, product-type and stock controls.
+Painted Earth was never a repair case and must not be presented as one. The
+business has not been contacted.
 
-Painted Earth already has a functioning, polished ecommerce site. It is not a
-repair case and must not be presented as one. The project owner selected it on
-26 July 2026 because its strong starting point makes it a better test of
-proportionate improvement than another absent or failed website. The business
-has not been contacted. The work remains an independent prototype unless the
-business agrees to a pilot.
+### Kelly, McEvoy & Brown — blocker replaced, still withdrawn
 
-The 27 July re-check contradicted the original claim that collection pages had
-no filters: the live shop now exposes price, artist or brand, product-type and
-stock controls. The broad catalogue treatment was stood down. The surviving
-prototype is limited to visible original-art fulfilment and sold-work recovery.
+The 27 July identity blocker is repaired. The concept now carries the firm's own
+mark, its yellow-and-grey palette and two source-matched project photographs,
+and the stale comparison `afterAlt` is corrected in both `transformations.ts`
+and `transformation-details.ts`.
+
+A fresh comparison against the live site on 3 August 2026 raised a different and
+larger blocker in its place. The case study's premise — a portfolio "rendered as
+plain text links beneath a small carousel" — is not true of `kmbni.com`. Its
+`/portfolio` page is a photographed six-sector grid leading to per-project pages
+with their own images; only the nav dropdown is a text list. This is the same
+failure the Painted Earth build-day re-check caught: a discovery claim that the
+live site has since outgrown.
+
+The concept still adds something real — one filterable register across all
+thirteen projects instead of drilling sector by sector, and the accreditation
+marks promoted from the footer to procurement evidence. The repair is to rewrite
+the premise around that, or drop the claim. Recorded in
+`research/publication.json`.
 
 ## Outreach responses
 
@@ -91,15 +127,15 @@ using it in any later outreach.
 | Douglas & Cromie | Newcastle | Restored garage identity, direct contact details and current-vehicle check |
 | Castle Farm Fresh Produce | Dundrum | Produce-led weekly-box journey with the farm's navy-and-gold identity |
 
-## Withdrawn for fifth-check repair
+## Withdrawn
 
 These concepts remain as internal, noindex work but are no longer public
 transformations. Each is back at **Concept in progress** until the named
-identity blocker is repaired and all five publication checks pass again.
+blocker is repaired and all five publication checks pass again.
 
 | Business | Town | Unblock condition |
 |---|---|---|
-| Kelly, McEvoy & Brown | Dundrum | Carry the firm's yellow-and-grey mark and project photography into the filterable register |
+| Kelly, McEvoy & Brown | Dundrum | Rewrite the case-study premise so it describes the live `kmbni.com/portfolio` — a photographed six-sector grid, not plain text links — or drop the claim. The 27 July identity blocker is repaired. |
 
 ## Retired concepts
 
