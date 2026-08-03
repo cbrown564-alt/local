@@ -54,11 +54,11 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Shops & services",
     summary:
-      "A building contractor since 1973 whose 53-year portfolio is rendered as plain text links — given a filterable project register that makes the work visible by sector.",
+      "A building contractor since 1973 whose thirteen completed projects open one sector at a time, four clicks from the front page — given a single filterable register that shows the whole record at once.",
     before: "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-before.jpg",
     after: "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-after.jpg",
     beforeAlt:
-      "Kelly, McEvoy & Brown's current homepage: a small hand-built site with a carousel and the portfolio listed underneath as plain text links",
+      "Kelly, McEvoy & Brown's current homepage: a small hand-built site opening on a rotating carousel, with the portfolio reached through a sector-by-sector menu",
     afterAlt:
       "Mourne Made concept carrying Kelly, McEvoy & Brown's yellow-and-grey identity and project photography into a filterable register of named work",
     href: "/transformations/kelly-mcevoy-brown/",
@@ -300,6 +300,22 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/castle-farm/",
     pin: { x: 1115, y: 178 },
   },
+  {
+    slug: "painted-earth",
+    name: "Painted Earth",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A gift shop and upstairs art gallery whose £700 originals are collection-only, sell through the same Add to Cart button as a £3 card, and stay listed once sold — given a gallery shelf that puts collection and shipping terms before the checkout and a route on from work that has gone.",
+    before: "/media/concepts/painted-earth/painted-earth-before.jpg",
+    after: "/media/concepts/painted-earth/painted-earth-after.jpg",
+    beforeAlt:
+      "Painted Earth's current shop homepage: the hand-lettered roundel over a rotating workshop banner, with the Shop Collections menu opening into lists of maker names",
+    afterAlt:
+      "Mourne Made concept in the shop's own teal and antique gold: a What are you looking for? opening that starts from the piece, the occasion or the price, with drawn placeholder tiles standing in for the makers' work",
+    href: "/transformations/painted-earth/",
+    pin: { x: 205, y: 455 },
+  },
 ];
 
 export const publicTransformationSlugs = [
@@ -319,6 +335,8 @@ export const publicTransformationSlugs = [
   "bettys-butters",
   "douglas-cromie",
   "castle-farm",
+  "kelly-mcevoy-brown",
+  "painted-earth",
 ] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

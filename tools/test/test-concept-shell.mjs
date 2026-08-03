@@ -119,14 +119,26 @@ try {
         ].filter(visible).filter((element) => {
           const style = getComputedStyle(element);
           if (style.whiteSpace === "nowrap" || style.display === "none") return false;
-          /* Brand lockups often stack name + strapline on purpose. */
-          if (element.querySelector("span, small, strong, em, svg")) return false;
+          /* Brand lockups often stack name + strapline on purpose, and a logo
+             image is tall by design — measuring either as wrapped text flagged
+             Kelly, McEvoy & Brown and Douglas & Cromie for their marks on
+             3 August 2026. */
+          if (element.querySelector("span, small, strong, em, svg, img")) return false;
           const fontSize = Number.parseFloat(style.fontSize) || 16;
           const lineHeight = Number.parseFloat(style.lineHeight) || fontSize * 1.2;
           const paddingY = (Number.parseFloat(style.paddingTop) || 0)
             + (Number.parseFloat(style.paddingBottom) || 0);
           const borderY = (Number.parseFloat(style.borderTopWidth) || 0)
             + (Number.parseFloat(style.borderBottomWidth) || 0);
+          /* An active-state underline drawn as ::after adds height that is not
+             wrapped text. Measure the text itself where the browser will report
+             it: a single-line label occupies one client rect. */
+          const rectCount = element.getClientRects().length;
+          if (rectCount === 1 && element.childElementCount === 0) {
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            if (range.getClientRects().length <= 1) return false;
+          }
           const contentHeight = element.clientHeight - paddingY - borderY;
           /* More than ~1.5 lines of content means a label wrapped inside chrome. */
           return contentHeight > lineHeight * 1.55;

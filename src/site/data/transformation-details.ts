@@ -118,16 +118,16 @@ export const transformationDetails = {
       "afterVideo": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-after.mp4",
       "beforePoster": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-before.jpg",
       "afterPoster": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-after.jpg",
-      "beforeAlt": "Ten-second visit to Kelly, McEvoy & Brown's current website — the small hand-built homepage carousel and the portfolio listed underneath as plain text links",
+      "beforeAlt": "Ten-second visit to Kelly, McEvoy & Brown's current website — the small hand-built homepage carousel, then the portfolio page's six sector tiles, each opening its own project pages",
       "afterAlt": "Ten-second visit to the concept — the Build on experience opening and a project register with sector filters and named projects"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes to let the record do the selling.",
     "notes": [
       {
-        "title": "Give the portfolio a shape",
-        "body": "The current site lists a substantial body of work — ecclesiastical, healthcare, education and more — as plain text links beneath a small carousel. The scale is there; the frame that lets a client read it is not.",
-        "change": "A project register, filterable by sector, keeps the firm's project names and locations together and brings source-matched photography into the same view."
+        "title": "Show the whole record at once",
+        "body": "The work is all there and photographed, but it opens one sector at a time: homepage, portfolio, a sector tile, then a project page. Four clicks to reach one building, and no screen anywhere shows fifty-three years as a single body of work.",
+        "change": "One project register, filterable by sector, holds all thirteen published projects in a single view with their names, locations and the firm's own photography."
       },
       {
         "title": "Lead with the record, not the template",
@@ -456,6 +456,45 @@ export const transformationDetails = {
       }
     ],
     "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The business name, navy-and-gold mark, published phone number, store categories, collection and Northern Ireland delivery offer came from that site. The concept's opening produce image is a disclosed AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph: it preserves the recognisable vegetables, eggs, chicken and butcher items while removing labels and supermarket branding and recomposing them in a navy crate. The layout, copy hierarchy and proposed experience are independent concept work.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about exact box contents or availability, sales performance, customer approval or the internal decisions behind the current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "painted-earth": {
+    "title": "Painted Earth concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Painted Earth, the gift shop and art gallery on Main Street, Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Know what happens before checkout.",
+    "date": "3 August 2026",
+    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "conceptHref": "/concepts/painted-earth/",
+    "conceptLabel": "View the full concept screen",
+    "motion": {
+      "slug": "painted-earth",
+      "beforeVideo": "/media/concepts/painted-earth/painted-earth-before.mp4",
+      "afterVideo": "/media/concepts/painted-earth/painted-earth-after.mp4",
+      "beforePoster": "/media/concepts/painted-earth/painted-earth-before.jpg",
+      "afterPoster": "/media/concepts/painted-earth/painted-earth-after.jpg",
+      "beforeAlt": "Ten-second visit to Painted Earth's current shop — the rotating workshop banner, then the Shop Collections menu opening into lists of maker names",
+      "afterAlt": "Ten-second visit to the concept — the What are you looking for? opening, then the original-art shelf showing collection and shipping terms against each piece"
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "Three changes for the work that costs the most.",
+    "notes": [
+      {
+        "title": "Say how an original gets home",
+        "body": "An £850 oil on canvas carries COLLECTION ONLY and a request to contact the shop before shipping — stated twice, in capitals, inside the description body — under an Add to Cart button identical to the one on a £3 greeting card.",
+        "change": "Collection, shipping-quote and no-returns terms sit against each original before the buying action, not underneath it."
+      },
+      {
+        "title": "Give sold work somewhere to go",
+        "body": "232 originals are listed and 124 of them have already sold. A visitor who arrives on one — from a search, a share or a saved link — reaches a full stop.",
+        "change": "A sold piece offers available work by the same artist and the gallery's current collection, so the visit continues instead of ending."
+      },
+      {
+        "title": "Start from the piece, not the maker",
+        "body": "The shop's own filters for price, artist, product type and stock already work. What the menu asks first is which of 92 makers you want, which only helps if you already know them.",
+        "change": "Product, occasion and price lead the way in; place stays as an optional local route; the shop's existing filters are named on the page rather than replaced."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Painted Earth shop on 3 August 2026; a cookie prompt and a sign-up dialog were declined and closed first so the comparison shows the page itself. The address, opening hours, phone number, contact addresses, shipping and returns terms, artwork titles, artists, prices and sold status all come from the shop's own public pages and product data, sampled on 26 July 2026 and re-checked on 27 July and 3 August.</p>\n        <p><strong>No artwork is shown.</strong> Every tile on the concept is a drawn placeholder, labelled as one on the image itself. Painted Earth sells work by 92 named makers and the shop does not hold publishable rights to all of that photography, so none of it is reproduced here. A placeholder attributes the product record — title, artist, price, availability — to the artist named beside it, and the drawing to nobody. The real work is on the shop's own pages, which every tile links to.</p>\n        <p>This is not a repair case. The shop runs a polished, working store with catalogue filters it added before this concept was built, and the concept says so on the page. Its proposal is limited to what happens around original art: fulfilment terms before checkout, and a route on from sold work.</p>\n        <ul>\n          <li><a href=\"https://www.paintedearthgifts.com/\" rel=\"external\">Painted Earth public shop</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval, click-and-collect (which the shop does not offer and the concept only proposes), or the internal decisions behind the current site. The business has not been contacted and has not approved this work.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "cupla": {
     "title": "Cúpla concept transformation — Mourne Made",

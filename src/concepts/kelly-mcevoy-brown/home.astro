@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 // Real projects and sectors from kmbni.com, 24 July 2026. Names and sector
 // groupings match the site's link lists; places are taken only from the site
@@ -73,7 +74,13 @@ const projectPhotography = [
     <nav class="kmb-nav" aria-label="Concept navigation">
       <a href="#" data-concept-placeholder>Portfolio</a><a href="#" data-concept-placeholder>Sectors</a><a href="#" data-concept-placeholder>Accreditations</a><a href="#" data-concept-placeholder>About</a>
     </nav>
-    <a class="kmb-tender" href="#" data-concept-placeholder>Contact the team</a>
+    {/* The firm's own published enquiry route, carried across from its live
+        header rather than replaced by an inert button. Both are taken from
+        kmbni.com. */}
+    <div class="kmb-contact">
+      <a class="kmb-phone" href="tel:+442843770011">028 4377 0011</a>
+      <a class="kmb-email" href="mailto:info@kmbni.com">info@kmbni.com</a>
+    </div>
   </header>
 
   <main class="kmb-main">
@@ -91,11 +98,13 @@ const projectPhotography = [
         <a class="kmb-view-work" href="#kmb-index-title">View completed work <span aria-hidden="true">↓</span></a>
       </div>
       <figure class="kmb-lede-image">
-        <img
+        <ResponsiveImage
           src="/media/concepts/kelly-mcevoy-brown/kmb-saint-patricks-ronans.jpg"
-          width="750"
-          height="500"
+          width={750}
+          height={500}
           alt="Stone church building at Saint Patrick's and Saint Ronan's in Magheralin"
+          loading="eager"
+          sizes="(max-width: 900px) 100vw, 60vw"
         />
         <figcaption>
           <span>Ecclesiastical</span>
@@ -130,7 +139,13 @@ const projectPhotography = [
       <div class="kmb-project-media" data-project-media aria-label="Selected project photography">
         {projectPhotography.map((project) => (
           <figure data-sector={project.sector} data-sector-entry>
-            <img src={project.image} width="760" height="500" alt={project.alt} loading="lazy" />
+            <ResponsiveImage
+              src={project.image}
+              width={760}
+              height={500}
+              alt={project.alt}
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
             <figcaption>
               <span>{project.sector}</span>
               <strong>{project.name}</strong>
