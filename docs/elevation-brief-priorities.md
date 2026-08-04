@@ -150,6 +150,9 @@ review the bilingual menu before client use.
 
 ### 6. Kelly, McEvoy & Brown — a fifty-three-year arc, handled gently
 
+**Brief written 4 August 2026:**
+`research/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-elevation-brief.md`.
+
 Established 1973 with "Build On Experience" as its own words and thirteen
 named projects across six sectors — churches, hospitals, schools and
 community halls from Magheralin to Crossmaglen. The keepable artifact
