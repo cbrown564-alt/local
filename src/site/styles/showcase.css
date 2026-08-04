@@ -1,0 +1,366 @@
+/* Sensory system — internal prototype grid at /prototypes/showcase/. */
+
+.showcase-page {
+  background: #0d151c;
+  color: #e6eef2;
+}
+
+.showcase-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  padding: 0.9rem 1.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgb(230 238 242 / 12%);
+}
+
+.showcase-nav a {
+  color: rgb(230 238 242 / 76%);
+  text-decoration: none;
+}
+
+.showcase-nav a:hover,
+.showcase-nav a[aria-current="page"] {
+  color: #ffc46a;
+}
+
+.showcase-intro {
+  width: min(calc(100% - 40px), 1180px);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 96px) 0 clamp(32px, 5vw, 56px);
+}
+
+.showcase-intro .eyebrow {
+  color: #ffc46a;
+}
+
+.showcase-intro .eyebrow::before {
+  background: #ffc46a;
+}
+
+.showcase-intro h1 {
+  max-width: 16ch;
+  font-size: clamp(44px, 6vw, 82px);
+  color: #f4f8fa;
+}
+
+.showcase-intro .lede {
+  max-width: 62ch;
+  color: rgb(230 238 242 / 78%);
+}
+
+.showcase-criteria {
+  display: grid;
+  gap: 18px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgb(230 238 242 / 14%);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgb(230 238 242 / 72%);
+}
+
+.showcase-criteria strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #f4f8fa;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Grid ---------------------------------------------------------------- */
+
+/* Two columns so a wide tile is exactly the full measure and never strands
+   an empty cell beside it. */
+.showcase-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(calc(100% - 40px), 1180px);
+  margin: 0 auto clamp(56px, 8vw, 104px);
+}
+
+@media (max-width: 780px) {
+  .showcase-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.showcase-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #121d26;
+  border: 1px solid rgb(230 238 242 / 12%);
+  border-radius: 4px;
+}
+
+.showcase-card.is-wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 780px) {
+  .showcase-card.is-wide {
+    grid-column: span 1;
+  }
+}
+
+.showcase-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a1119;
+  border-bottom: 1px solid rgb(230 238 242 / 10%);
+}
+
+.showcase-stage canvas,
+.showcase-stage video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  left: 12px;
+  padding: 4px 8px;
+  background: rgb(10 17 25 / 78%);
+  color: rgb(230 238 242 / 82%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.showcase-badge.is-warning {
+  color: #ffb45c;
+}
+
+.showcase-readout {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 10px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: rgb(255 196 106 / 90%);
+}
+
+.showcase-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 22px 24px;
+}
+
+.showcase-index {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #ffc46a;
+}
+
+.showcase-index span:last-child {
+  color: rgb(230 238 242 / 52%);
+}
+
+.showcase-card h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.02;
+  color: #f4f8fa;
+}
+
+.showcase-card p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: rgb(230 238 242 / 76%);
+}
+
+.showcase-meta {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgb(230 238 242 / 12%);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgb(230 238 242 / 66%);
+}
+
+.showcase-meta div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px;
+}
+
+.showcase-meta dt,
+.showcase-meta b {
+  color: rgb(230 238 242 / 46%);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+/* Voice tile ---------------------------------------------------------- */
+
+.voice-stage {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 16px 16px 12px;
+  background: #0f1a22;
+}
+
+.voice-zones {
+  display: grid;
+  gap: 8px;
+  grid-template-areas:
+    "name  before"
+    "hero  hero"
+    "action action";
+  grid-template-rows: auto 1fr auto;
+}
+
+.voice-zone {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid rgb(230 238 242 / 14%);
+  border-radius: 3px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgb(230 238 242 / 55%);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+.voice-zone[data-active="true"] {
+  border-color: #ffc46a;
+  background: rgb(255 196 106 / 12%);
+  color: #ffe0ad;
+}
+
+.voice-zone[data-zone="name"] { grid-area: name; }
+.voice-zone[data-zone="before"] { grid-area: before; }
+.voice-zone[data-zone="action"] { grid-area: action; }
+
+/* The hero zone shows the screen the narration is actually describing, so
+   the tile reads as a page and not as a wireframe. */
+.voice-zone[data-zone="hero"] {
+  position: relative;
+  grid-area: hero;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 0;
+  background:
+    linear-gradient(180deg, rgb(10 17 25 / 10%), rgb(10 17 25 / 82%)),
+    url("/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room-dusk.jpg")
+      center 22% / cover no-repeat;
+  filter: saturate(0.75) brightness(0.72);
+  transition: filter 260ms ease, border-color 220ms ease;
+}
+
+.voice-zone[data-zone="hero"] span {
+  padding: 8px 12px;
+}
+
+.voice-zone[data-zone="hero"][data-active="true"] {
+  background-color: transparent;
+  filter: none;
+}
+
+.voice-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.voice-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid #ffc46a;
+  color: #ffc46a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.voice-play:hover {
+  background: rgb(255 196 106 / 14%);
+}
+
+.voice-play .voice-pause-label { display: none; }
+.voice-play[data-state="playing"] .voice-play-label { display: none; }
+.voice-play[data-state="playing"] .voice-pause-label { display: inline; }
+
+.voice-caption {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgb(230 238 242 / 80%);
+}
+
+/* Weather tile — light ground so the type reads ------------------------ */
+
+.showcase-stage.is-paper {
+  background: #f4f8fa;
+}
+
+/* Notes --------------------------------------------------------------- */
+
+.showcase-notes {
+  width: min(calc(100% - 40px), 820px);
+  margin: 0 auto clamp(64px, 9vw, 120px);
+  padding-top: 40px;
+  border-top: 1px solid rgb(230 238 242 / 14%);
+}
+
+.showcase-notes h2 {
+  color: #f4f8fa;
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+.showcase-notes h3 {
+  margin: 34px 0 12px;
+  color: #ffc46a;
+  font-size: 21px;
+}
+
+.showcase-notes p,
+.showcase-notes li {
+  color: rgb(230 238 242 / 76%);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.showcase-notes code {
+  padding: 1px 5px;
+  background: rgb(230 238 242 / 10%);
+  font-size: 0.88em;
+}
+
+.showcase-notes a {
+  color: #ffc46a;
+}

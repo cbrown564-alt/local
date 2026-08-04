@@ -1,0 +1,354 @@
+---
+/**
+ * Sensory system — eight miniature demonstrations of techniques we could take
+ * across every surface of the site. Deliberately small: enough to judge the
+ * idea, not a finished surface. Research and evaluation:
+ * `research/sensory-system.md`.
+ */
+import BaseLayout from "../../../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../../../site/components/ArrowIcon.astro";
+import businesses from "../../../site/data/businesses.json";
+import "../../../site/styles/showcase.css";
+
+const points = businesses.flatMap((b) =>
+  typeof b.lat === "number" && typeof b.lon === "number"
+    ? [
+        {
+          lat: b.lat,
+          lon: b.lon,
+          lit:
+            b.websiteStatus === "HTTPS website" ||
+            b.websiteStatus === "HTTP website",
+        },
+      ]
+    : [],
+);
+const total = businesses.length;
+const litCount = points.filter((p) => p.lit).length;
+---
+
+<BaseLayout
+  title="Sensory system — eight demonstrations — Mourne Made"
+  description="Internal prototype: eight miniature demonstrations of generated film, voice, terrain and real-time graphics, sized to be judged before any of them is built out."
+  robots="noindex, nofollow"
+  class="showcase-page"
+  hideHeader
+  hideFooter
+>
+  <nav class="showcase-nav" aria-label="Internal prototypes">
+    <a href="/prototypes/showcase/" aria-current="page">Sensory system</a>
+    <a href="/prototypes/home/">Homepage directions</a>
+    <a href="/prototypes/home/lit-town/">D · Lit Town</a>
+    <a href="/prototypes/home/film/">E · Film</a>
+    <a href="/">Live homepage</a>
+  </nav>
+
+  <header class="showcase-intro">
+    <p class="eyebrow">Internal prototype · August 2026</p>
+    <h1>Eight things no other local studio can show.</h1>
+    <p class="lede">
+      Generated film, generated voice, real terrain and real-time graphics are
+      all sitting unused. Each tile below is a working miniature of one
+      technique — small enough to kill cheaply, honest enough to judge. None of
+      them is a finished surface.
+    </p>
+    <div class="showcase-criteria">
+      <p>
+        <strong>The test</strong>
+        A busy owner in Newcastle should feel it in two seconds, without being
+        told what they are looking at.
+      </p>
+      <p>
+        <strong>The constraint</strong>
+        Nothing may claim more than the dataset supports. Sound is opt-in.
+        Reduced motion gets a settled frame.
+      </p>
+      <p>
+        <strong>The advantage</strong>
+        A template studio can buy motion. It cannot buy our terrain, our review
+        dataset, or a film of this town.
+      </p>
+    </div>
+  </header>
+
+  <div class="showcase-grid">
+    <!-- 1 · Ridgeline -->
+    <article class="showcase-card">
+      <div class="showcase-stage" data-demo="ridgeline">
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge">Real elevation data</p>
+        <p class="showcase-readout" data-ridge-readout aria-hidden="true"></p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>01 · Ridgeline</span><span>Sitewide</span></p>
+        <h2>Read the page, walk the Mournes.</h2>
+        <p>
+          The actual skyline — highest ground in every column of the baked SRTM
+          grid — drawn as a line that doubles as scroll position. Reading a page
+          moves a marker along the real mountains, with the real height beside
+          it. One shared motif that binds every surface together and costs no
+          media at all.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Every page: header rule, section dividers, footer</dd></div>
+          <div><dt>Cost</dt><dd>Zero — the terrain is already baked</dd></div>
+          <div><dt>Risk</dt><dd>Low. Decorative only; hidden from screen readers</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 2 · Depth -->
+    <article class="showcase-card">
+      <div
+        class="showcase-stage"
+        data-demo="depth"
+        data-src="/media/place/businesses-main-street-dundrum.jpg"
+      >
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge">Move your pointer across</p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>02 · Depth</span><span>Concept heroes</span></p>
+        <h2>Their street, with the camera moving.</h2>
+        <p>
+          One flat photograph, sliced into bands and slid by how near each band
+          is to the camera. A still of Main Street becomes a slow dolly past the
+          shops. Production drives the offsets from a generated depth map — or,
+          for a business worth the trip, a phone-video Gaussian splat of the
+          real frontage.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Concept hero screens, transformation openers</dd></div>
+          <div><dt>Cost</dt><dd>Minutes per business; the photo already exists</dd></div>
+          <div><dt>Risk</dt><dd>Banding on hard vertical edges — needs a depth map to fix properly</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 3 · Rebuild -->
+    <article class="showcase-card is-wide">
+      <div
+        class="showcase-stage"
+        data-demo="rebuild"
+        data-before="/media/concepts/hugh-mccanns/hugh-mccanns-before.jpg"
+        data-after="/media/concepts/hugh-mccanns/hugh-mccanns-after.jpg"
+      >
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge" data-rebuild-label>Today</p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>03 · Rebuild</span><span>The proof fold</span></p>
+        <h2>The old page taken apart, the new one laid in.</h2>
+        <p>
+          The before/after handover as a build rather than a wipe. The current
+          site comes apart in tiles on a diagonal and the concept lands in its
+          place, piece by piece — the same gesture as a shopfront going up.
+          It says <em>work was done here</em> in a way a drag handle never has,
+          and it plays itself, so an owner who never touches the slider still
+          sees the change. Real Hugh McCann's screens, both ends honest.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Homepage proof fold, every transformation page, the OG card</dd></div>
+          <div><dt>Cost</dt><dd>Zero — runs on the capture pairs we already make</dd></div>
+          <div><dt>Risk</dt><dd>Must keep a manual compare for anyone who wants to study the detail</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 4 · Lights -->
+    <article class="showcase-card">
+      <div class="showcase-stage" data-demo="lights">
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge">{litCount} lit of {points.length} plotted</p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>04 · Lights</span><span>Sitewide footer</span></p>
+        <h2>The town, with the lights coming on.</h2>
+        <p>
+          Every one of the {total} businesses we reviewed at its real
+          coordinates. Dark ones arrive first; the ones with a website of their
+          own light up after. The picture and the claim are the same JSON file,
+          so the image can never overstate what we found — and each new
+          transformation lights one more point.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Footer strip on every page; the request confirmation</dd></div>
+          <div><dt>Cost</dt><dd>Zero — the pipeline already maintains the dataset</dd></div>
+          <div><dt>Risk</dt><dd>Reads as a scoreboard of who is behind. Never name a dark point</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 5 · Voice -->
+    <article class="showcase-card">
+      <div class="showcase-stage voice-stage" data-demo="voice">
+        <div class="voice-zones">
+          <p class="voice-zone" data-zone="name">Hugh McCann's · Main Street</p>
+          <p class="voice-zone" data-zone="before">Today's page</p>
+          <p class="voice-zone" data-zone="hero"><span>The room at dusk</span></p>
+          <p class="voice-zone" data-zone="action">Open now · Book a table</p>
+        </div>
+        <div class="voice-controls">
+          <button class="voice-play" type="button" data-voice-play data-state="paused">
+            <span class="voice-play-label">▶ Hear it</span>
+            <span class="voice-pause-label">❚❚ Pause</span>
+          </button>
+          <p class="voice-caption" data-voice-caption></p>
+        </div>
+        <audio preload="none" src="/media/prototypes/showcase/showcase-narration-hugh-mccanns.mp3"></audio>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>05 · Voice</span><span>Every concept</span></p>
+        <h2>Someone walks them through it, in a voice from here.</h2>
+        <p>
+          Real generated narration — twenty-four seconds, one API call — with
+          the page lighting up as the voice reaches each part. The owner does
+          not have to work out what changed; they are told, by a voice that
+          sounds local, while looking at it. Captions carry every word, so the
+          tile works with the sound off, and nothing plays until it is asked for.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Concept pages, transformations, the pitch email as an audio file</dd></div>
+          <div><dt>Cost</dt><dd>Pennies and about a minute per business</dd></div>
+          <div><dt>Risk</dt><dd>A synthetic accent can grate locally. Test the voice on real owners before it ships</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 6 · Tideline -->
+    <article class="showcase-card">
+      <div class="showcase-stage" data-demo="tide">
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge">Your local time</p>
+        <p class="showcase-readout" data-tide-readout aria-hidden="true"></p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>06 · Tideline</span><span>Page ambience</span></p>
+        <h2>The site knows what the bay is doing.</h2>
+        <p>
+          Sky, sea and tide drawn for the hour the visitor is actually reading
+          in, with the real ridgeline on the horizon. Open the page at seven on
+          a winter evening and it is dark over Dundrum Bay, because it is. A
+          national template cannot be in the same place as its reader; we can.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Section dividers, request page, 404, concept shells</dd></div>
+          <div><dt>Cost</dt><dd>Zero, plus a baked tide table for Dundrum Bay</dd></div>
+          <div><dt>Risk</dt><dd>The demo tide is a plain harmonic, not a real table. Do not publish it as fact until it reads a real one</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 7 · Film -->
+    <article class="showcase-card">
+      <div class="showcase-stage" data-demo="film">
+        <video
+          src="/media/home/dundrum-film-mobile.mp4"
+          poster="/media/home/dundrum-film-poster.jpg"
+          muted
+          loop
+          playsinline
+          preload="none"
+          aria-hidden="true"></video>
+        <p class="showcase-badge is-warning">Stand-in clip — not for release</p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>07 · Film</span><span>Every concept hero</span></p>
+        <h2>A generated establishing shot for one business.</h2>
+        <p>
+          Direction E already generates a day per town. The bigger move is one
+          per <em>business</em>: a six-second establishing shot of their trade —
+          the pour, the workshop, the tide beyond the room — generated to their
+          own reference photographs, sitting behind their own first screen. No
+          competitor is handing a Dundrum café a film of itself for free.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>Concept hero, transformation opener, the pitch itself</dd></div>
+          <div><dt>Cost</dt><dd>Free generation; the work is direction and the labelling discipline</dd></div>
+          <div><dt>Risk</dt><dd>High. Generated imagery of a real business must be labelled on the frame, every time</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 8 · Weather -->
+    <article class="showcase-card is-wide">
+      <div class="showcase-stage is-paper" data-demo="weather" data-word="Newcastle">
+        <canvas aria-hidden="true"></canvas>
+        <p class="showcase-badge">Onshore wind, live</p>
+      </div>
+      <div class="showcase-body">
+        <p class="showcase-index"><span>08 · Weather</span><span>Headlines</span></p>
+        <h2>Type with the wind through it.</h2>
+        <p>
+          The headline holds its shape while the air moves across it, one
+          scanline at a time. A small, cheap signature that makes our typography
+          unmistakably ours on any page it lands on — and, tied to the same
+          conditions as tile 06, it blows harder when it is actually blowing.
+        </p>
+        <dl class="showcase-meta">
+          <div><dt>Applies to</dt><dd>H1 on the homepage, about, request</dd></div>
+          <div><dt>Cost</dt><dd>Zero</dd></div>
+          <div><dt>Risk</dt><dd>Legibility. Real text must sit behind it for search and screen readers</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+
+  <section class="showcase-notes">
+    <h2>How to judge these.</h2>
+    <p>
+      Everything here runs live in the browser at tile size. Nothing has been
+      built into a real surface yet, and nothing should be until we pick. Full
+      research, the survey of what the cutting edge is doing and the case for
+      and against each one:
+      <code>research/sensory-system.md</code>.
+    </p>
+
+    <h3>What they have in common</h3>
+    <p>
+      Six of the eight are made of things we already own — the terrain grid, the
+      review dataset, the capture pairs, the visitor's own clock. That is the
+      part a competitor cannot copy. The two generative ones (film and voice)
+      are the part that feels impossible for a studio this size, and they are
+      also the two that carry real risk, because both invent something about a
+      real business.
+    </p>
+
+    <h3>The honesty line</h3>
+    <p>
+      Generated film and audio of a real business must be labelled on the frame
+      and recorded in <code>research/image-provenance.md</code>. The stand-in
+      clip on tile 07 is exactly the failure mode to avoid: it is a tone render,
+      not Dundrum, and it is marked as such. Tile 06's tide is a shape, not a
+      forecast, until it reads a published table.
+    </p>
+
+    <h3>If we only did three</h3>
+    <p>
+      <strong>03 Rebuild</strong> — it improves the thing we already sell on,
+      costs nothing and carries no honesty risk.
+      <strong>05 Voice</strong> — it is the one that will make an owner sit up,
+      and it scales to every business we approach.
+      <strong>01 Ridgeline</strong> — it is what turns eight tricks into one
+      studio with a house style.
+    </p>
+
+    <p>
+      <a class="text-link" href="/prototypes/home/"
+        >Back to the homepage directions <ArrowIcon /></a
+      >
+    </p>
+  </section>
+
+  <script
+    type="application/json"
+    id="showcase-points"
+    is:inline
+    set:html={JSON.stringify(points)}
+  />
+</BaseLayout>
+
+<script>
+  import { mountShowcase } from "../../../site/scripts/showcase-demos";
+  mountShowcase();
+</script>
