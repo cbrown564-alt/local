@@ -187,6 +187,9 @@ version, not borrow the bike shop's.
 
 ### 8. Newcastle Chamber of Commerce — the map business, already built out
 
+**Brief written 4 August 2026:**
+`research/concepts/newcastle-chamber/newcastle-chamber-elevation-brief.md`.
+
 The Chamber is the town's map business, and a drawn Main Street plate of
 member trades would be the natural keepable artifact — for the Chamber and
 for every business on it. It sits at eight because the concept is already
