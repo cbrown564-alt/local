@@ -104,7 +104,19 @@ Every page carrying one of these labels it as generated on the page itself.
   licence.
 - `castle-farm-weekly-box-faithful.webp` — **in use.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `research/concepts/castle-farm/evidence/castle-farm-box.jpg`. The prompt preserved the recognisable broccoli, corn, peppers, onions, potatoes, eggs, chicken and packaged butcher items while removing labels and supermarket branding and recomposing the contents in a navy crate. The concept labels the image in the first viewport and makes no claim about exact current contents or availability.
 - `dundrum-inn-faithful-exterior.jpg` — **in use.** AI-generated faithful visualisation based on the Inn's own exterior hero photograph, downloaded from its GuestDiary CDN on 26 July 2026 and held privately at `.tmp/concept-subject-references/dundrum-inn-exterior-reference.jpg`. The prompt preserved the yellow-and-black terraced façade, shopfront, roof and window rhythm, blue-edged awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring blue/purple fronts. It changed only lighting, minor street clutter and framing; it expressly forbade an invented bay view, mountains, garden, hotel extension or new architecture. The concept labels the image as generated in the first viewport and its alt text repeats the reference boundary. The rejected first attempt (`dundrum-inn-hero-generated-v1.png`) invented a cream country inn and false bay setting and was removed.
-- `dundrum-inn-faithful-exterior-blue-hour.jpg` — **in use** (1 August 2026). AI-generated blue-hour sibling of the faithful exterior visualisation above, made from that existing day frame so the façade, awning, signs, benches, barrels, baskets, toucan and neighbouring fronts stay fixed between day parts. The prompt changed only the sky, street light and warm interior glow; it expressly forbade a new bay view, people, architecture or signage. The concept labels the frame as generated and names the blue-hour state. Responsive WebP at 640 and 1265.
+- `dundrum-inn-faithful-exterior-blue-hour.jpg` — **in use** (1 August 2026).
+  AI-generated blue-hour sibling of the faithful exterior visualisation above,
+  made for the concept's day-part hero. The reference was that existing daytime
+  plate rather than the original GuestDiary photograph, so the same reference
+  boundary and prohibitions carry over — no invented bay view, mountains,
+  garden, hotel extension or new architecture — and the façade, awning, signs,
+  benches, barrels, baskets, toucan and neighbouring fronts stay fixed between
+  day parts. The prompt changed only the sky, street light and warm interior
+  glow, and expressly forbade people or new signage. The second frame changes
+  atmosphere only and never represents whether the bar is open: it is
+  decorative, carries an empty alt, and sits behind the same first-viewport
+  generated-image disclosure as the daytime plate, which names the blue-hour
+  state. Responsive WebP at 640 and 1265.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
 - `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —

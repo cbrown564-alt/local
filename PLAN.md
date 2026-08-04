@@ -7,24 +7,20 @@ the retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
 and in the commit history.
 
-Snapshot: 28 July 2026. The portfolio recovery and fifth-check re-review are
-complete, and sixteen transformations are public. The Buck's Head has replied
-to the first outreach: it already has a new website built and plans to launch
-it when its accommodation is ready.
+Snapshot: 3 August 2026. Eighteen transformations are public. The Buck's Head has
+replied to the first outreach: it already has a new website built and plans to
+launch it when its accommodation is ready. Both open publication decisions are
+now closed and both published — see section 2.
 
-The verification baseline is restored: `pnpm test` builds from the frozen
-lockfile, starts preview, and runs the request, concept-shell, reviewed-concept,
-media, Buck's Head, Enniskeen and Painted Earth checks — 7/7 green locally on
-28 July 2026 after the hardening pass in section 1a. `.github/workflows/verify.yml`
-runs the same command, but has not executed yet: the work is on
-`fix/verification-baseline-hardening` and CI first runs when that branch is
-pushed. Remaining `@vercel/node` advisories are recorded in
+The verification baseline is green again. `pnpm test` was 7/7 on 28 July, fell
+to 6 of 9 under the 31 July – 2 August design wave, and was repaired on
+3 August — see section 1b. Remaining `@vercel/node` advisories are recorded in
 `docs/dependency-advisories.md`.
 
 No business has approved the concept work and no client result has been
-measured. The ordered plan is therefore: close the two open publication
-decisions, protect the request path, finish the two remaining outreach sheets
-and learn from real conversations before expanding the portfolio or offer.
+measured. The ordered plan is therefore: protect the request path, finish the
+two remaining outreach sheets and learn from real conversations before expanding
+the portfolio or offer.
 
 ## 1. Restore a trustworthy verification baseline — done 28 July 2026
 
@@ -83,47 +79,90 @@ and that two of its checks could not fail. Fixed in the same pass:
 6. CI now runs once per pull request rather than twice, with
    `permissions: contents: read`.
 
-## 2. Close the remaining publication decisions
+## 1b. Repair the baseline the design wave broke — done 3 August 2026
 
-### Kelly, McEvoy & Brown
+A full run on 3 August 2026 found 6 of 9 suites passing, down from 7/7 on
+28 July. Every failure came from the 31 July – 2 August design wave. Repaired in
+the same pass, before either publication decision was recorded:
 
-The 27 July rebuild now carries the firm's mark, yellow-and-grey identity and
-two photographs from its own named project pages. It remains withdrawn because
-the publication record still contains the earlier identity blocker and the
-comparison media predates the rebuild.
+1. **`test:shell-home`** — the homepage redesign dropped the claim-door link
+   from the hero, and its CSS with it. A business owner landing on the homepage
+   had no route to the concept already made for them, only the request form for
+   work that already existed. Restored to `.home-hero-action` with a comment
+   saying why it is there.
+2. **`test:reviewed-concepts`** — Mourne Cycles served its three 1024px bike
+   masters to a 390px viewport although the `-640.webp` derivatives existed; the
+   panel images now use `ResponsiveImage` like the rest of the concept. The
+   Dundrum Inn blue-hour hero plate, added 1 August, had no provenance entry;
+   recorded in `research/image-provenance.md` with the reference boundary it
+   inherits from the daytime plate.
+3. **`test:concepts`** — 23 failures, all reported as `wrapped header labels`,
+   and two different things were hiding under the one message:
+   - **Eighteen were false positives.** The check exempted a header link
+     containing `span, small, strong, em, svg` as a deliberate brand lockup but
+     not one containing `img`, so Kelly, McEvoy & Brown and Douglas & Cromie
+     were flagged for their logos. Painted Earth's nav links measured over 1.55
+     lines because of an underline drawn as `::after`. The exemption now covers
+     `img`, and a single-line label is confirmed against its own text rects
+     before the height maths runs.
+   - **Five were real.** Hotel Enniskeen's header genuinely wrapped at 1100px —
+     "The estate", "Things to do", the phone number and "Book a room" each broke
+     onto two lines, on all five routes. Fixed with a mid-width band that
+     tightens the type and gaps between the phone breakpoint and full desktop,
+     the same treatment Donard Veterinary got on 1 August.
 
-1. Inspect the rebuilt concept beside the live site on phone and desktop.
-2. Correct the stale comparison `afterAlt` text in
-   `src/site/data/transformation-details.ts`.
-3. Run the five publication checks again. If the concept passes, update
-   `research/publication.json`, `PROSPECTS.md`,
-   `research/pipeline/verifications.json` and `publicTransformationSlugs` together.
-   If it does not pass, keep it withdrawn and record the remaining blocker.
-4. Only after a Publish decision, recapture and visually inspect its after
-   still and clip, regenerate responsive derivatives and run the media and
-   concept checks.
+The assertion itself was kept rather than silenced: it caught a real defect on a
+flagship concept, on the one prospect the plan deliberately holds back for
+batch two.
 
-### Painted Earth
+`pnpm test` is 9/9 green again.
 
-The internal prototype at `/concepts/painted-earth/` is implemented and its
-desktop and phone shopping journeys pass. It is not publication-reviewed and
-is not public. Its live shop added the catalogue filters that motivated the
-first proposal, so the surviving case is deliberately narrow: make
-original-art collection or shipping terms visible before purchase and give a
-useful route forward when an original has sold.
+## 2. Close the remaining publication decisions — done 3 August 2026
 
-1. Open the live shop beside the prototype and decide whether that narrower
-   loop is a meaningful improvement the owner would recognise, not merely a
-   different design.
-2. Run the five publication checks and record one explicit outcome:
-   **Publish**, **Fix blocker** or **stop as an internal exploration**.
-3. If Publish, add the transformation record and source disclosure, capture
-   comparison media, regenerate derivatives, add it to the public list and run
-   the full build plus the focused Painted Earth journey check.
-4. If it does not clearly beat the live experience, do not expand the
-   prototype to manufacture a case for publication.
+Both were reviewed against the live site at phone and desktop on 3 August 2026.
+Both publish, taking the public portfolio to eighteen. Outcomes and their
+evidence are in `research/publication.json`; `PROSPECTS.md` carries the
+human-readable version.
 
-Do not start another concept while either decision is open.
+### Kelly, McEvoy & Brown — published
+
+Two blockers cleared in sequence. The 27 July identity blocker is repaired: the
+concept carries the firm's own mark, its yellow-and-grey palette and two
+source-matched project photographs.
+
+The live comparison then found the case-study premise false. A portfolio
+"rendered as plain text links beneath a small carousel" is not `kmbni.com`:
+its `/portfolio` page is a photographed six-sector grid leading to per-project
+pages with their own images, and only the nav dropdown is a text list. This was
+the Painted Earth build-day failure repeating — a discovery claim the live site
+had outgrown.
+
+The premise now describes the real improvement: on the live site the work opens
+one sector at a time and reaching a single building takes four clicks, while the
+concept holds all thirteen projects in one register filterable by sector. The
+inert "Contact the team" button is replaced by the firm's own published phone
+number and email, carried across from its live header.
+
+### Painted Earth — published on the project owner's decision
+
+Recorded as a disagreement rather than settled silently. The review recommended
+stopping it as an internal exploration: the shop is a gallery whose strength is
+photography of real work by named makers, its catalogue spans 92 makers with no
+recorded licence, so every artwork in the concept is a drawn placeholder tile,
+and on "is this better than what they already have" the live gallery wins on
+imagery.
+
+The project owner's decision was to publish — the tiles are visibly labelled
+placeholders, the loop around them carries enough on its own, and asking an
+owner to picture their own photography in place of a labelled placeholder is a
+small ask. Betty's Better Butters and Douglas & Cromie are public on the same
+basis.
+
+The concept stays limited to what happens around original art: collection and
+shipping-quote terms before the buying action, and a route on from sold work. It
+is not a repair case and must never be presented as one. The business has not
+been contacted. If it ever engages, the first improvement to raise is replacing
+the placeholders with the shop's own photography.
 
 ## 3. Protect the request path and prepare the remaining first-wave outreach
 
