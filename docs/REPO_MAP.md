@@ -21,6 +21,8 @@ Where things live after the A→D restructure (31 July 2026).
 | `public/media/concepts/<slug>/` | Comparison stills, concept imagery, videos for that slug. |
 | `public/media/place/` | CC place photographs + `ATTRIBUTION.md`. |
 | `public/brand/` | Studio and concept marks. |
+| `src/site/scripts/` | Client modules for canvas/WebGL effects (`lit-town-hero.ts`, `showcase-demos.ts`). |
+| `public/media/prototypes/<name>/` | Assets used only by an internal prototype route. Generated audio and video here still need a `research/image-provenance.md` entry. |
 | `research/publication.json` | Central five-check publication gate. |
 | `research/image-provenance.md` | How each concept image was made / whether it ships. |
 | `research/pipeline/` | `verifications.json`, discovery summaries, landscape PDF. |

@@ -325,6 +325,34 @@ and 3 are complete. Apply each item at the stated boundary.
    scripts or `tools/lib/`, then clear disposable probes instead of letting
    the temporary workspace become undocumented tooling.
 
+## 7. Build the sensory system — gated behind section 4
+
+Prototyped 4 August 2026. Eight miniature demonstrations of generated film,
+generated voice, real terrain and real-time graphics run at
+`/prototypes/showcase/`; the survey behind them and the case for and against
+each is `research/sensory-system.md`. Six are approved to build — Rebuild,
+Voice, Ridgeline, Film, Depth, Lights — and the implementation plan, its phases
+and its gates are [`docs/sensory-system-plan.md`](docs/sensory-system-plan.md).
+
+**None of it starts before section 4.** The plan exists now so the work is
+designed rather than improvised later; building it ahead of the first outreach
+conversations would be exactly the speculative portfolio expansion this plan is
+ordered to prevent. Two specific dependencies on the ordering above:
+
+1. Ridgeline and Lights have a proven mechanism and no agreed end product. The
+   plan's phase 0 resolves that on paper — as a single `Shore` component drawn
+   at three scales — before any production component is written.
+2. Film may not be generated for a business that has not agreed to it in
+   writing, which makes it dependent on section 4 outcomes, not merely
+   sequenced after them.
+
+One item from the plan is worth pulling forward on its own merits: "stand-ins
+must never deploy" is currently discipline rather than a guard, and the town
+films in `public/media/home/` are stand-ins today. A build check that fails when
+a `.demo` marker exists for any film referenced from `src/` belongs with the
+other publication guards regardless of whether the rest of this section is ever
+built.
+
 ## Blocked or deferred
 
 - Create and verify a Google Business Profile only when the owner supplies the

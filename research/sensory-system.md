@@ -8,6 +8,15 @@ building, across every surface, and what would only be decoration?
 Prototype grid: `/prototypes/showcase/`. Demo code:
 `src/site/scripts/showcase-demos.ts`.
 
+**Decided 4 August 2026.** Six of the eight are approved to build — 03 Rebuild,
+05 Voice, 01 Ridgeline, 07 Film, 02 Depth, 04 Lights. 06 Tideline and 08 Weather
+are held. Ridgeline and Lights were approved with the end product explicitly
+undecided, and are resolved on paper before any component is written. The
+phases, gates and acceptance criteria are
+[`docs/sensory-system-plan.md`](../docs/sensory-system-plan.md); the whole
+section is gated behind `PLAN.md` section 4. This file remains the record of
+*why*, not of what to build.
+
 ## 1. What the cutting edge is doing
 
 Surveyed August 2026.

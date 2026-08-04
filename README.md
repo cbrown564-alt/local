@@ -41,6 +41,7 @@ pnpm optimize:media
 - `/` — product-stage landing page (hero before/after with the load sweep, transformation rail, town map)
 - `/prototypes/home/` — internal homepage alternatives explored before shipping Product Stage
 - `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
+- `/prototypes/showcase/` — internal grid of eight miniature demonstrations of generated film, generated voice, real terrain and real-time graphics (`docs/sensory-system-plan.md`)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
 - `/transformations/` — public concept index
 - `/transformations/<slug>/` — generated for slugs that pass the five
@@ -130,6 +131,7 @@ because three documents each kept their own copy.
 | `docs/REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |
 | `docs/CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
 | `docs/shell-elevation-brief.md` | The studio shell elevation brief (1 August 2026 decisions and build order) |
+| `docs/sensory-system-plan.md` | The sensory-system phases, gates and acceptance criteria (film, voice, terrain, real-time graphics) |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
 | `docs/CONTEXT.md` | Project vocabulary |
 | `docs/MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
