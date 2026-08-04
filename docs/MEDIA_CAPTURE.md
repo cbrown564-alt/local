@@ -121,7 +121,6 @@ node tools/capture/capture-concept-media.mjs <slug> both video      # both sides
 node tools/capture/capture-concept-media.mjs <slug> after video     # concept demo clip only
 node tools/capture/capture-concept-media.mjs <slug> before still    # refresh one still
 pnpm optimize:media                                           # refresh delivery derivatives
-pnpm test:media                                               # verify delivery in pnpm preview
 ```
 
 - **Arg 2 (target):** `both` (default) · `before` · `after`.

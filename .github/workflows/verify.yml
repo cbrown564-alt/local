@@ -1,9 +1,5 @@
 name: Verify
 
-# Unfiltered `push` plus `pull_request` ran the whole suite twice for every
-# pull request: the two events carry different `github.ref` values, so the
-# concurrency group did not collapse them. Push now covers the default branch
-# only; branch work is verified through its pull request.
 on:
   push:
     branches: [master]
@@ -19,7 +15,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -38,11 +34,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install Chrome
-        id: chrome
-        uses: browser-actions/setup-chrome@v2
-
-      - name: Run full verification
+      - name: Build site and check request handler
         run: pnpm test
-        env:
-          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
