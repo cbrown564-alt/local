@@ -167,6 +167,9 @@ honestly promise.
 
 ### 7. The Tool Centre — a staged mechanism waiting on its voice
 
+**Brief written 4 August 2026:**
+`research/concepts/tool-centre/tool-centre-elevation-brief.md`.
+
 The concept already stages the business's real mechanism — the hire desk
 with its "day rate on request" board — and the shelf-versus-yard tension
 (hardware retail in front, plant hire out the back, two names on Facebook)
