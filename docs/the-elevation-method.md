@@ -10,6 +10,8 @@ waste hot food bar has no place in that sense. Five derived briefs now exist —
 `research/concepts/mourne-cycles/mourne-cycles-elevation-brief.md`,
 `research/concepts/dundrum-inn/dundrum-inn-elevation-brief.md` — and this document is the process
 they were derived by, so the next concept does not need to rediscover it.
+The order the remaining concepts should be briefed in, and why, is kept in
+`docs/elevation-brief-priorities.md`.
 
 ## What "great" is made of
 
