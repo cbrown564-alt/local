@@ -100,6 +100,9 @@ delivery map and the family-farm claim rather than to add to them.
 
 ### 3. Newcastle Family Dental Care — a typographic page in a proven register
 
+**Brief written 4 August 2026:**
+`research/concepts/newcastle-dental/newcastle-dental-elevation-brief.md`.
+
 The publication record says it plainly: the page is entirely typographic
 today. The Care shape's elevation register is already worked out — the
 Donard Veterinary brief proved that reassurance, not spectacle, is the
