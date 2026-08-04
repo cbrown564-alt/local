@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer, { type SendMailOptions } from "nodemailer";
+import { publicTransformationSlugs } from "../src/site/data/transformations.ts";
 
 const MAX = {
   business: 120,
@@ -8,12 +9,28 @@ const MAX = {
   idea: 2_000,
   name: 120,
   email: 254,
+  source: 80,
 } as const;
 
 const clean = (value: unknown, max: number) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/**
+ * `source` arrives from a query string a stranger can retype, so it is
+ * allow-listed rather than trusted (docs/adr/0002). An unrecognised value is
+ * recorded as such instead of rejecting the submission: attribution is worth
+ * less than the lead, and a printed sheet cannot be corrected after the run.
+ */
+const publicSlugs = new Set<string>(publicTransformationSlugs);
+const normaliseSource = (value: string) => {
+  if (!value) return "direct";
+  if (value === "direct" || value === "transformation") return value;
+  const onesheet = /^onesheet-([a-z][a-z\d-]*)$/.exec(value);
+  if (onesheet && publicSlugs.has(onesheet[1])) return value;
+  return "unrecognised";
+};
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1_000;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
@@ -112,6 +129,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     idea: clean(body?.idea, MAX.idea),
     name: clean(body?.name, MAX.name),
     email: clean(body?.email, MAX.email),
+    source: normaliseSource(clean(body?.source, MAX.source)),
   };
 
   const requiredFields = [fields.business, fields.town, fields.idea, fields.name, fields.email];
@@ -143,6 +161,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     `Current link: ${currentLink || "Not supplied — no current website or public page"}`,
     `Contact: ${fields.name}`,
     `Email: ${fields.email}`,
+    `Came from: ${fields.source}`,
     "",
     "What should be easier or more impressive?",
     fields.idea,

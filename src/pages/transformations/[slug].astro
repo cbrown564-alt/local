@@ -76,7 +76,7 @@ const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
         afterAlt={transformation.afterAlt}
       />
       <div class="case-actions">
-        <a class="button" href={claimUrl}>Is this your business? Claim this concept <ArrowIcon /></a>
+        <a class="button" data-claim-link href={claimUrl}>Is this your business? Claim this concept <ArrowIcon /></a>
         <a class="text-link concept-link" href={detail.conceptHref}>{detail.conceptLabel} <ArrowIcon /></a>
       </div>
     </div>
@@ -117,3 +117,21 @@ const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
 
   <TransformationNav />
 </BaseLayout>
+
+<script>
+  /* The QR on a printed sheet lands here, not on /request/, so this page is
+     the hop where attribution used to die: the claim CTA is prerendered with
+     source=transformation and knew nothing about the sheet that sent the
+     visitor (docs/adr/0002).
+
+     A sheet's slug is carried through even when it does not match this page.
+     That is deliberate — a scan of one business's sheet that ends in a request
+     for a different business is still the sheet that caused it. */
+  const claim = document.querySelector<HTMLAnchorElement>("a[data-claim-link]");
+  const incoming = new URLSearchParams(window.location.search).get("source");
+  if (claim && incoming && /^onesheet-[a-z][a-z\d-]{0,60}$/.test(incoming)) {
+    const url = new URL(claim.href, window.location.origin);
+    url.searchParams.set("source", incoming);
+    claim.href = `${url.pathname}${url.search}`;
+  }
+</script>

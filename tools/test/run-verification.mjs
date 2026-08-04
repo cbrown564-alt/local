@@ -90,6 +90,7 @@ preview.on("error", (error) => {
 
 const suites = [
   ["test:request"],
+  ["test:source-attribution"],
   ["test:shell-home"],
   ["test:concepts"],
   ["test:reviewed-concepts"],

@@ -3,31 +3,20 @@ import path from "node:path";
 import QRCode from "qrcode";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
+import { oneSheets, oneSheetUrl } from "../../src/site/data/onesheets.ts";
 
 const root = path.resolve(import.meta.dirname, "..", "..");
 const base = process.env.PRINT_BASE ?? "http://127.0.0.1:4321";
 const slug = process.argv[2];
-const sheets = {
-  "hotel-enniskeen": {
-    route: "/workbench/print/enniskeen-onesheet/",
-    url: "https://mournemade.co.uk/transformations/hotel-enniskeen/?src=onesheet",
-    qr: "public/media/concepts/hotel-enniskeen/hotel-enniskeen-onesheet-qr.svg",
-    output: ".scratch/print/pdf/hotel-enniskeen-flagship-onesheet.pdf",
-  },
-  "bucks-head": {
-    route: "/workbench/print/bucks-head-onesheet/",
-    url: "https://mournemade.co.uk/transformations/bucks-head/?src=onesheet",
-    qr: "public/media/concepts/bucks-head/bucks-head-onesheet-qr.svg",
-    output: ".scratch/print/pdf/bucks-head-journey-onesheet.pdf",
-  },
-};
 
-if (!sheets[slug]) {
-  console.error(`Usage: node tools/print/print-onesheet.mjs <slug>\nKnown slugs: ${Object.keys(sheets).join(", ")}`);
+if (!oneSheets[slug]) {
+  console.error(`Usage: node tools/print/print-onesheet.mjs <slug>\nKnown slugs: ${Object.keys(oneSheets).join(", ")}`);
   process.exit(1);
 }
 
-const sheet = sheets[slug];
+// The same source the artwork prints. Both read src/site/data/onesheets.ts so
+// the QR cannot encode one destination while the page shows another.
+const sheet = { ...oneSheets[slug], url: oneSheetUrl(slug).href };
 const qrPath = path.join(root, sheet.qr);
 const outputPath = path.join(root, sheet.output);
 fs.mkdirSync(path.dirname(qrPath), { recursive: true });

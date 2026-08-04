@@ -193,9 +193,23 @@ highest-stakes conversation is not used to rehearse the approach.
    the same day and the comparison still, clip and supper-club still were
    recaptured with them, so the concept is showable. What remains before
    outreach is its one-sheet and the standing gates below.
-4. Give every sheet the slug-qualified QR destination required by
+4. ~~Give every sheet the slug-qualified QR destination required by
    [`docs/adr/0002-printed-qr-attribution-contract.md`](docs/adr/0002-printed-qr-attribution-contract.md):
-   `/transformations/<slug>/?source=onesheet-<slug>`.
+   `/transformations/<slug>/?source=onesheet-<slug>`.~~ **Done 4 August 2026.**
+   The ADR was a decision record with nothing behind it: all three breaks it
+   described were still open, plus a fourth it had not reached — `source` was
+   not an accepted field in `api/request.ts` at all, so no submission could
+   ever have carried one. Item 6 below was therefore not merely unverified but
+   impossible. Now: the destination is built once in
+   `src/site/data/onesheets.ts` and read by both the artwork and the print
+   script, so the printed page and its QR cannot disagree; the transformation
+   page carries a scanned `source` across the claim hop; the request form
+   submits it as a real field; and the endpoint allow-lists it against
+   `publicTransformationSlugs` and prints it in the notification email. An
+   unrecognised value is recorded as `unrecognised` rather than rejected —
+   attribution is worth less than the lead. `pnpm test:source-attribution`
+   walks the whole path in a browser, and an unpublished slug fails the build
+   rather than printing a QR that scans to a 404.
 5. Rebuild the PDFs, inspect the rendered pages and scan every QR from the
    rendered artwork. Check the destination, business name, town, disclosure,
    contact route and trim-safe layout.

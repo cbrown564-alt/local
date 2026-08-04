@@ -19,6 +19,10 @@ import "../site/styles/request.css";
       <p><strong>No obligation.</strong> No full redesign hiding behind a sales call. Just a focused before-and-after to start the conversation.</p>
     </div>
     <form class="request-form" novalidate data-request-source="direct">
+      {/* Submitted as a real field, not just tracked. Attribution that lives
+          only in dataset never reaches the inbox, where the decision to keep
+          printing a sheet actually gets made (docs/adr/0002). */}
+      <input type="hidden" name="source" value="direct" />
       <div class="form-honeypot" aria-hidden="true">
         <label for="mm-check">Leave this field empty</label>
         <input id="mm-check" name="mm_check_field" tabindex="-1" autocomplete="new-password" />
@@ -66,8 +70,15 @@ import "../site/styles/request.css";
   ) {
     townSelect.value = requestedTown;
   }
+  const sourceInput = form?.elements.namedItem("source");
   if (requestSource && form) {
     form.dataset.requestSource = requestSource;
+    if (sourceInput instanceof HTMLInputElement) {
+      // defaultValue too: the success path calls form.reset(), and a second
+      // submission from the same page would otherwise revert to "direct".
+      sourceInput.value = requestSource;
+      sourceInput.defaultValue = requestSource;
+    }
   }
 
   const source = form?.dataset.requestSource ?? "direct";

@@ -64,6 +64,34 @@ const successfulDelivery = await invoke(
 assert.equal(successfulDelivery.statusCode, 200);
 assert.deepEqual(successfulDelivery.payload, { ok: true });
 
+// docs/adr/0002: a printed sheet's source has to survive as far as the email,
+// because the inbox is where the decision to keep printing it gets made. The
+// value arrives from a query string, so it is allow-listed — but an
+// unrecognised one is recorded, never allowed to cost the lead.
+const deliveredSource = async (source?: string) => {
+  let text = "";
+  const result = await invoke(
+    { body: source === undefined ? validRequest : { ...validRequest, source } },
+    createRequestHandler(async (mail) => {
+      text = String(mail.text ?? "");
+      return { messageId: "test-message" };
+    }),
+  );
+  assert.equal(result.statusCode, 200);
+  const line = text.split("\n").find((entry) => entry.startsWith("Came from: "));
+  return line?.slice("Came from: ".length);
+};
+
+assert.equal(await deliveredSource(), "direct");
+assert.equal(await deliveredSource(""), "direct");
+assert.equal(await deliveredSource("transformation"), "transformation");
+assert.equal(await deliveredSource("onesheet-scopers"), "onesheet-scopers");
+assert.equal(await deliveredSource("onesheet-hotel-enniskeen"), "onesheet-hotel-enniskeen");
+// Not a public transformation, so no sheet can legitimately carry it.
+assert.equal(await deliveredSource("onesheet-not-a-business"), "unrecognised");
+assert.equal(await deliveredSource("<script>alert(1)</script>"), "unrecognised");
+assert.equal(await deliveredSource("onesheet-../../etc/passwd"), "unrecognised");
+
 const failedDelivery = await invoke(
   { body: validRequest },
   createRequestHandler(async () => {
