@@ -2,17 +2,96 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
-// Hugh McCann's is maintained (July 2026 menu upload) but a wedding venue with
-// no enquiry form, no availability, no date capture — every enquiry is a phone
-// call. This is a feature, not a rebuild: capture the date and the numbers.
-const seasons = [
-  { m: "Apr", state: "open" },
-  { m: "May", state: "few" },
-  { m: "Jun", state: "full" },
-  { m: "Jul", state: "few" },
-  { m: "Aug", state: "open" },
-  { m: "Sep", state: "open" },
+/* Hugh McCann's is maintained (July 2026 menu upload) but a wedding venue with
+   no enquiry form, no availability and no date capture — every enquiry is a
+   phone call. This stays a feature graft, not a rebuild.
+
+   Every sentence in quotation marks below, and every capacity, is the venue's
+   own published wording, re-read from hughmccanns.com on 4 August 2026:
+   the home page, /weddings/ and /accommodation/. Nothing here is invented for
+   atmosphere, and nothing on this page states or implies which dates are free —
+   the venue publishes no availability, so neither does this. */
+
+const email = "info@hughmccanns.com";
+const phone = "028 4372 6622";
+
+/* The five real destinations a wedding here moves between. Character and
+   capacity wording is quoted from /weddings/ and /accommodation/. */
+const destinations = [
+  {
+    id: "loft",
+    name: "The Loft Suite",
+    where: "Upstairs",
+    line: "Beautiful unique stone walls, twinkling candle light and open fire.",
+    capacity: "Up to 120 seated · room for 120 more in the evening",
+  },
+  {
+    id: "coast",
+    name: "The Coast Suite",
+    where: "Ground floor",
+    line: "Glamorous lighting, contemporary cocktail bar and lavish drapes.",
+    capacity: "Up to 250 seated · more than enough space for evening guests",
+  },
+  {
+    id: "garden",
+    name: "The Secret Garden",
+    where: "Behind the house",
+    line: "Lavender lined pathways leading to your happy ever after beneath our charming gazebo.",
+    capacity: "Licensed for civil ceremonies and partnerships",
+  },
+  {
+    id: "haven",
+    name: "Little Haven",
+    where: "Where you wake up",
+    line: "A beautiful Georgian house with a NITB 4 Star rating, at the foot of the Mourne Mountains facing the Irish Sea.",
+    capacity: "Eight bedrooms sleeping seventeen · the bridal suite among them",
+  },
+  {
+    id: "avoca",
+    name: "The Avoca Hotel",
+    where: "Day two",
+    line: "A family run licensed hotel overlooking Newcastle's promenade and Dundrum Bay.",
+    capacity: "The perfect location for a Day 2 wedding, private party or celebration",
+  },
+];
+
+/* From today until your day — the venue's own sequence, in the order it sells
+   it. Each step carries one published sentence and nothing more. */
+const sequence = [
+  {
+    step: "The viewing",
+    line: "From your initial viewing, right until your big day, we will remain by your side.",
+  },
+  {
+    step: "The planning",
+    line: "We offer complete wedding planning.",
+  },
+  {
+    step: "The ceremony",
+    line: "With a full license to hold civil ceremonies and partnerships you have the choice of exchanging your vows in our secret garden or inside our charming wedding venue.",
+  },
+  {
+    step: "The meal",
+    line: "Whether it is a three or five course meal you require, or whether you opt for something different, we cater for every need.",
+  },
+  {
+    step: "The reception",
+    line: "Renowned for our cocktails, our quirky vintage tea party and our outstanding drinks receptions.",
+  },
+  {
+    step: "The evening",
+    line: "The Coast Suite becomes truly magical during the evening.",
+  },
+  {
+    step: "The night",
+    line: "The bridal suite waits at Little Haven, our Georgian guest house facing the Irish Sea.",
+  },
+  {
+    step: "Day two",
+    line: "The Avoca is the perfect location for a Day 2 wedding, private party or celebration.",
+  },
 ];
 ---
 
@@ -26,7 +105,7 @@ const seasons = [
 >
   <div class="hm-strip">
     <span>119–121 Central Promenade, Newcastle · at the foot of the Mournes</span>
-    <span class="hm-strip-r">Three generations · est. before you'd believe</span>
+    <span class="hm-strip-r">Three generations · a two-hundred-year-old house</span>
   </div>
 
   <header class="hm-header">
@@ -35,86 +114,150 @@ const seasons = [
       <span class="hm-brand-sub">Boutique Wedding Venue &amp; Gardens</span>
     </a>
     <nav class="hm-nav" aria-label="Concept navigation">
-      <a href="#" data-concept-placeholder>Weddings</a><a href="#" data-concept-placeholder>The gardens</a><a href="#" data-concept-placeholder>Food &amp; drink</a><a href="#" data-concept-placeholder>Stay</a>
+      <a href="#loft">The Loft Suite</a><a href="#coast">The Coast Suite</a><a href="#garden">The Secret Garden</a><a href="#sequence">Your day</a>
     </nav>
     <a class="hm-enquire" href="#enquire">Check your date</a>
   </header>
 
   <main class="hm-main">
-    <section class="hm-hero">
-      <picture>
-        <source media="(max-width: 700px)" srcset="/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room-640.webp" />
-        <source srcset="/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room-1265.webp" />
-        <img
+    <div class="hm-first">
+      <section class="hm-hero" aria-labelledby="hm-headline">
+        <ResponsiveImage
+          pictureClass="concept-responsive-picture hm-hero-picture"
           class="hm-hero-image"
           src="/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room.jpg"
           alt="Hugh McCann's dining room looking through its broad windows towards the Mournes"
+          width="1672"
+          height="941"
+          loading="eager"
+          sizes="100vw"
         />
-      </picture>
-      <div class="hm-hero-copy">
-        <p class="hm-kicker">From today until your day</p>
-        <h1>We do.</h1>
-        <p class="hm-lede">
-          Passed down through three generations, in a two-hundred-year-old building at
-          the heart of the town — traditional rustic charm and new-world contemporary,
-          for forty guests or two hundred and fifty.
+        <div class="hm-hero-copy">
+          <p class="hm-kicker">At the foot of the Mournes</p>
+          <h1 id="hm-headline" class="hm-headline">
+            <span>From Today</span>
+            <span>Until Your Day,</span>
+            <em>We Do.</em>
+          </h1>
+          <p class="hm-lede">
+            Passed down through three generations Hugh McCann's is at the very heart
+            of the community — a 200 year old building of traditional rustic charm as
+            well as the new world contemporary style, for weddings of 40 guests or 250.
+          </p>
+        </div>
+      </section>
+
+      <!-- The feature: date + guest count, the two facts every venue call starts
+           with, captured before the phone rings. No date is ever shown as free or
+           taken here; the venue holds every date by conversation. -->
+      <form class="hm-enquire-panel" id="enquire" data-hm-enquire aria-labelledby="hm-enquire-title">
+        <p class="hm-enquire-eyebrow">Enquire</p>
+        <h2 id="hm-enquire-title">Is our day free?</h2>
+        <p class="hm-enquire-intro">
+          Every date is held in conversation, and this is how the conversation starts.
+          Tell us when, and how many, and we will come back to you about that day.
         </p>
+
+        <div class="hm-field">
+          <label for="hm-date">Your date <span>(or roughly when)</span></label>
+          <input id="hm-date" name="date" type="date" value="2027-06-12" required />
+        </div>
+
+        <div class="hm-field">
+          <label for="hm-guests">How many guests</label>
+          <div class="hm-guests">
+            <input id="hm-guests" name="guests" type="range" min="40" max="250" step="10" value="120" aria-describedby="hm-guests-out" />
+            <output id="hm-guests-out" for="hm-guests">120 guests</output>
+          </div>
+          <p class="hm-guests-scale"><span>40 · intimate</span><span>250 · the full room</span></p>
+        </div>
+
+        <button class="hm-submit" type="submit">Prepare wedding enquiry →</button>
+        <div class="hm-handoff" data-hm-handoff role="status" hidden tabindex="-1">
+          <strong>Your enquiry is ready.</strong>
+          <span>Open the draft, check it, then press send in your email app.</span>
+          <a data-hm-email-link href={`mailto:${email}`}>Open email draft</a>
+        </div>
+        <p class="hm-enquire-stale" data-hm-stale role="status" hidden>
+          Your details changed. Press <strong>Prepare wedding enquiry</strong> again so
+          the draft matches what you chose.
+        </p>
+        <p class="hm-enquire-foot">
+          Or call <a href="tel:+442843726622">{phone}</a> · your enquiry opens in your
+          email app; nothing is sent from this page
+        </p>
+      </form>
+    </div>
+
+    <section class="hm-places" id="destinations" aria-labelledby="hm-places-title">
+      <div class="hm-section-head">
+        <p class="hm-eyebrow">Where your day happens</p>
+        <h2 id="hm-places-title">Five rooms, a garden and a walk along the promenade.</h2>
       </div>
+      <ul class="hm-place-list">
+        {destinations.map((place) => (
+          <li class="hm-place" id={place.id}>
+            <p class="hm-place-where">{place.where}</p>
+            <h3 class="hm-place-name">{place.name}</h3>
+            <p class="hm-place-line">{place.line}</p>
+            <p class="hm-place-capacity">{place.capacity}</p>
+            <a class="hm-place-link" href="#enquire">Ask about a date here <span aria-hidden="true">→</span></a>
+          </li>
+        ))}
+      </ul>
     </section>
 
-    <!-- The feature: date + guest count, the two facts every venue call starts
-         with, captured before the phone rings. -->
-    <form class="hm-enquire-panel" id="enquire" data-hm-enquire aria-labelledby="hm-enquire-title">
-      <p class="hm-enquire-eyebrow">Enquire</p>
-      <h2 id="hm-enquire-title">Is our day free?</h2>
-      <p class="hm-enquire-intro">
-        Prepare an email with your date and guest count. Nothing is sent until you
-        review and send it from your email app.
-      </p>
-
-      <div class="hm-field">
-        <label for="hm-date">Your date <span>(or roughly when)</span></label>
-        <input id="hm-date" name="date" type="date" value="2027-06-12" required />
+    <section class="hm-sequence" id="sequence" aria-labelledby="hm-sequence-title">
+      <div class="hm-section-head">
+        <p class="hm-eyebrow">From today until your day</p>
+        <h2 id="hm-sequence-title">How the day is put together, from the first viewing on.</h2>
       </div>
-
-      <div class="hm-field">
-        <label for="hm-guests">How many guests</label>
-        <div class="hm-guests">
-          <input id="hm-guests" name="guests" type="range" min="40" max="250" step="10" value="120" aria-describedby="hm-guests-out" />
-          <output id="hm-guests-out" for="hm-guests">120 guests</output>
-        </div>
-        <p class="hm-guests-scale"><span>40 · intimate</span><span>250 · the full room</span></p>
-      </div>
-
-      <div class="hm-season" aria-label="Season at a glance">
-        {seasons.map((s) => (
-          <span class={`hm-month hm-month--${s.state}`}>
-            <span class="hm-month-m">{s.m}</span>
-            <span class="hm-month-dot" aria-hidden="true"></span>
-          </span>
+      <ol class="hm-steps">
+        {sequence.map((entry, index) => (
+          <li class="hm-step">
+            <span class="hm-step-n" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <h3 class="hm-step-name">{entry.step}</h3>
+            <p class="hm-step-line">{entry.line}</p>
+          </li>
         ))}
-      </div>
-      <p class="hm-season-key">
-        <span><i class="hm-key hm-key--open"></i> Dates open</span>
-        <span><i class="hm-key hm-key--few"></i> A few left</span>
-        <span><i class="hm-key hm-key--full"></i> Taken</span>
-      </p>
+        <li class="hm-step hm-step--close">
+          <span class="hm-step-n" aria-hidden="true">09</span>
+          <h3 class="hm-step-name">And it starts with a date</h3>
+          <p class="hm-step-line">
+            Tell us when you are thinking of, and roughly how many will be with you.
+          </p>
+          <a class="hm-step-link" href="#enquire">Check your date <span aria-hidden="true">→</span></a>
+        </li>
+      </ol>
+    </section>
 
-      <button class="hm-submit" type="submit">Prepare wedding enquiry →</button>
-      <div class="hm-handoff" data-hm-handoff role="status" hidden tabindex="-1">
-        <strong>Your enquiry is ready.</strong>
-        <span>Open the draft, check it, then press send in your email app.</span>
-        <a data-hm-email-link href="mailto:info@hughmccanns.com">Open email draft</a>
-      </div>
-      <p class="hm-enquire-stale" data-hm-stale role="status" hidden>
-        Your details changed. Press <strong>Prepare wedding enquiry</strong> again so
-        the draft matches what you chose.
+    <!-- Verbatim, dated and attributed. Withdraw rather than freshen if the
+         venue's testimonial page changes. -->
+    <figure class="hm-quote">
+      <blockquote cite="https://www.hughmccanns.com/">
+        <p>
+          Everyone complemented the food, the decor, the views. The bar service was
+          great, the food was great and we couldn't have asked for better.
+        </p>
+      </blockquote>
+      <figcaption>
+        Donna and Chris · 12.10.17 ·
+        <a href="https://www.hughmccanns.com/" rel="external">read with our other guest reviews</a>
+      </figcaption>
+    </figure>
+
+    <section class="hm-close" aria-labelledby="hm-close-title">
+      <h2 id="hm-close-title">Exchange your vows in our secret garden, or inside the house.</h2>
+      <p>
+        Whether your dream is grand and extravagant or cosy and intimate, we guarantee
+        that we will deliver exactly the wedding you want.
       </p>
-      <p class="hm-enquire-foot">
-        Or call <a href="tel:+442843726622">028 4372 6622</a> · season guide is
-        indicative — enquiry opens in your email app; nothing is sent from this page
+      <p class="hm-close-actions">
+        <a class="hm-close-cta" href="#enquire">Check your date</a>
+        <span>or call <a href="tel:+442843726622">{phone}</a> · <a href={`mailto:${email}`}>{email}</a></span>
       </p>
-    </form>
+      <p class="hm-close-address">119–121 Central Promenade, Newcastle, BT33 0EU</p>
+    </section>
   </main>
 
   <script is:inline>

@@ -7,13 +7,44 @@ The verification record (`research/pipeline/verifications.json`, "Hugh
 McCanns", 24 July 2026) names this the highest-value single target in its
 batch and sets the accuracy bar to match.
 
-**Status: written 4 August 2026; not yet implemented.** The current concept
-is an honest feature graft — one faithful dining-room visualisation, the "We
-do." lock-up, and a date-and-guest-count enquiry that drafts an email to the
-venue's published address. It passes the five publication checks. What it
-does not yet do is make the venue recognisable to the family who runs it: the
-named suites, the garden ceremony, the planning ritual and the two-hundred-
-year arc are all in the public record and none of them is on the page.
+**Status: written 4 August 2026; first pass (moves 1–4) implemented the same
+day.** The concept before that pass was an honest feature graft — one
+faithful dining-room visualisation, the "We do." lock-up, and a
+date-and-guest-count enquiry that drafts an email to the venue's published
+address. It passed the five publication checks but did not make the venue
+recognisable to the family who runs it.
+
+**What shipped, 4 August 2026 (moves 1–4).** Every fact below was re-read
+from hughmccanns.com — the home, `/weddings/` and `/accommodation/` pages —
+on 4 August 2026, and only what those pages publish is on the concept:
+
+- The complete "From Today Until Your Day, We Do." is the headline, with
+  "Passed down through three generations Hugh McCann's is at the very heart
+  of the community" opening the first screen beneath it (move 1).
+- The Donna and Chris review is carried verbatim as a pull-quote with its
+  date, 12.10.17, and a link to the venue's own reviews (move 1). The open
+  decision is resolved as *keep, dated*; the withdrawal condition stands.
+- The placeholder navigation is gone. The Loft Suite, the Coast Suite, the
+  Secret Garden, Little Haven and the Avoca Hotel are named with their
+  published character and capacities, and each routes to the same enquiry
+  (move 2).
+- The day runs as the venue's own sequence — viewing, planning, ceremony,
+  meal, reception, evening, night, Day 2 — arriving at the date (move 3).
+- The invented season strip is removed from markup and stylesheet, and the
+  "season guide is indicative" footnote with it. The enquiry now says every
+  date is held in conversation. The 40–250 guest slider stays (move 4).
+- `tools/test/test-hugh-mccanns-elevation.mjs` pins all four moves against
+  the built page, including "no availability claim survives", and runs in
+  `pnpm test`. The comparison still and demo clip were recaptured in the
+  same commit; the case-study Sources & limits block now records the 4 August
+  read date, the weddings-page source, and that the page shows no
+  availability of any kind.
+
+The published "from £995" figure stays off the page (open decision resolved
+as *omit*: the brief does not depend on it and pricing raises the
+re-verification bar before every use). Moves 5 (dusk visualisation) and 6
+(the where-your-day-happens plate) are unstarted — both need an asset session
+this pass did not include.
 
 ## The shape of this business
 
@@ -272,13 +303,16 @@ Each move ships with a small proof:
 
 ## Open decisions
 
-- Is the Donna and Chris testimonial (12.10.17) fresh enough to carry, given
-  the record's testimonial set ends in 2019? Its content is timeless — the
-  mountain is still there — but the date must stay attached, and the
-  fallback is no quote, not a vaguer one.
-- Does the published "from £995" package figure belong on the page? It is
-  real and dated, but pricing copy raises the re-verification bar before
-  every use; the brief does not depend on it.
+- ~~Is the Donna and Chris testimonial (12.10.17) fresh enough to carry?~~
+  **Resolved 4 August 2026: kept, verbatim, with its date and a link to the
+  venue's own reviews.** The wording used is the one published today —
+  "Everyone complemented the food, the decor, the views…" — not the summit
+  story this brief described from the earlier read; only what was verified on
+  4 August 2026 is on the page. Withdraw the quote if the venue edits or
+  removes it.
+- ~~Does the published "from £995" package figure belong on the page?~~
+  **Resolved 4 August 2026: omitted.** Real and dated, but pricing raises the
+  re-verification bar before every use and nothing here depends on it.
 - Does the dusk variant stay photoreal after generation review, or is a
   drawn evening plate more honest and more ownable beside the faithful
   daytime room?

@@ -64,6 +64,9 @@ ranks below a moderate record the brief can use immediately.
 
 **Brief written 4 August 2026:**
 `research/concepts/hugh-mccanns/hugh-mccanns-elevation-brief.md`.
+**First pass (moves 1–4) implemented 4 August 2026;** moves 5 (the dusk
+visualisation) and 6 (the where-your-day-happens plate) wait on their asset
+sessions.
 
 `research/pipeline/verifications.json` calls it the highest-value single
 target in its batch and sets the accuracy bar to match. The record holds the

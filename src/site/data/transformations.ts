@@ -140,7 +140,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Hugh McCann's current homepage: the Boutique Wedding Venue & Gardens site, well photographed and maintained, with no enquiry form or date capture anywhere",
     afterAlt:
-      "Mourne Made concept carrying Hugh McCann's dining-room view towards the Mournes: a We do headline beside an Is our day free enquiry with a date field, guest-count slider and season strip",
+      "Mourne Made concept carrying Hugh McCann's dining-room view towards the Mournes: a From Today Until Your Day, We Do headline beside an Is our day free enquiry with a date field and guest-count slider",
     href: "/transformations/hugh-mccanns/",
     pin: { x: 120, y: 550 },
   },
