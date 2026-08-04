@@ -62,6 +62,9 @@ ranks below a moderate record the brief can use immediately.
 
 ### 1. Hugh McCann's — the wedding venue with the fullest record and the thinnest page
 
+**Brief written 4 August 2026:**
+`research/concepts/hugh-mccanns/hugh-mccanns-elevation-brief.md`.
+
 `research/pipeline/verifications.json` calls it the highest-value single
 target in its batch and sets the accuracy bar to match. The record holds the
 method's favourite raw materials in every head: their voice ("From Today
