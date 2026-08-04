@@ -15,7 +15,7 @@ Production check:
 pnpm build
 ```
 
-Full verification (build, preview, request and browser suites):
+CI and local smoke check (build plus request-handler validation):
 
 ```powershell
 pnpm test
@@ -34,7 +34,6 @@ Regenerate responsive image and video derivatives after changing a capture:
 
 ```powershell
 pnpm optimize:media
-pnpm test:media     # run while pnpm preview serves 127.0.0.1:4321
 ```
 
 ## Main routes
@@ -218,28 +217,7 @@ sourcing claims on 26 July 2026.
 - `tools/pipeline/normalize-businesses.mjs` — deterministic deduplication, enrichment, verification merge and scoring; re-run after editing `research/pipeline/verifications.json`
 - `tools/capture/capture-concept-screens.mjs` — matched before/after screenshots via system Chrome; run `pnpm build && pnpm preview` first, then `node tools/capture/capture-concept-screens.mjs <slug>`
 - `tools/media/optimize-public-media.mjs` — derives two responsive WebP sizes and a WebM clip from each committed JPEG/MP4 master
-- `tools/test/test-media-loading.mjs` — browser assertion that phone-sized WebP sources are lazy and demo video is fetched only after a play click
-- `tools/test/test-shell-home.mjs` — homepage shell journey: the hero
-  comparison sweep arms at full "before", travels, settles at the resting
-  split and stays interactive; reduced-motion renders settled; the
-  claim-door link is present. Run with `pnpm test:shell-home` against
-  `pnpm preview`, or as part of `pnpm test`.
-- `tools/test/test-concept-shell.mjs` — auto-discovers every concept route and audits
-  desktop and phone rendering for horizontal overflow, clipped header controls,
-  broken concept links, inert brand links, undeclared placeholders and browser
-  errors. Intentional inactive controls must use
-  `href="#" data-concept-placeholder`; real navigation, including every
-  homepage wordmark, must use its actual route. Run against `pnpm preview` with
-  `pnpm test:concepts`.
-- `tools/test/test-reviewed-concept-journeys.mjs` — durable checks for public and
-  representative concepts: Chamber queries change directory results, Donard
-  form data survives into an explicit email handoff, Cúpla and Mourne
-  provisional claims are disclosed before prices, every public concept's
-  rendered third-party or generated imagery carries disclosure, and Sources &
-  limits cannot describe photography the concept no longer uses. Add a focused
-  assertion here whenever a review identifies a reproducible interaction or
-  claim-ordering defect. Run with `pnpm test:reviewed-concepts` against
-  `pnpm preview`, or as part of `pnpm test`.
+- `tools/test/test-request-function.ts` — validates the request API handler without sending mail
 - `docs/dependency-advisories.md` — overrides and exposure boundaries for known
   dependency advisories
 - `tools/spreadsheet/build-business-workbook.mjs` — workbook builder and checks
