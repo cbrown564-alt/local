@@ -325,7 +325,7 @@ and 3 are complete. Apply each item at the stated boundary.
    scripts or `tools/lib/`, then clear disposable probes instead of letting
    the temporary workspace become undocumented tooling.
 
-## 7. Build the sensory system — gated behind section 4
+## 7. Build the sensory system — in parallel with sections 3 and 4
 
 Prototyped 4 August 2026. Eight miniature demonstrations of generated film,
 generated voice, real terrain and real-time graphics run at
@@ -334,17 +334,29 @@ each is `research/sensory-system.md`. Six are approved to build — Rebuild,
 Voice, Ridgeline, Film, Depth, Lights — and the implementation plan, its phases
 and its gates are [`docs/sensory-system-plan.md`](docs/sensory-system-plan.md).
 
-**None of it starts before section 4.** The plan exists now so the work is
-designed rather than improvised later; building it ahead of the first outreach
-conversations would be exactly the speculative portfolio expansion this plan is
-ordered to prevent. Two specific dependencies on the ordering above:
+**This runs in parallel with sections 3 and 4, not behind them** (decided
+4 August 2026). It is deliberately not treated as speculative portfolio
+expansion: it does not add a concept, restyle a published one, or change the
+offer, all of which remain gated on evidence from a real conversation. It
+changes how the work we already have is presented, and the outreach wave is
+limited by conversations rather than by build capacity.
 
-1. Ridgeline and Lights have a proven mechanism and no agreed end product. The
-   plan's phase 0 resolves that on paper — as a single `Shore` component drawn
-   at three scales — before any production component is written.
-2. Film may not be generated for a business that has not agreed to it in
-   writing, which makes it dependent on section 4 outcomes, not merely
-   sequenced after them.
+Three constraints survive that decision:
+
+1. **Section 3 outranks it.** That section protects the request path. If this
+   work ever competes with that path — for attention, or for page weight on the
+   way to the form — that path wins.
+2. **Film needs consent, not sequencing.** A generated film of a real business
+   may not be generated at all until that business has agreed in writing. The
+   same applies to a splat capture of a real premises. Either gate can open the
+   day a business says yes, which may be during section 4 or long after it.
+3. **Ridgeline and Lights have a proven mechanism and no agreed end product.**
+   Phase 0 of the plan resolves that on paper — as a single `Shore` component
+   drawn at three scales, since the skyline and the town lights are the same
+   picture — before any production component is written.
+
+Phases 0 and 1 (the `Shore` design resolution, and Rebuild) are independent of
+each other and of everything above. Both can start now.
 
 One item from the plan is worth pulling forward on its own merits: "stand-ins
 must never deploy" is currently discipline rather than a guard, and the town

@@ -67,6 +67,7 @@ const ASSET_EXTENSIONS = new Set([
   ".avif",
   ".mp4",
   ".webm",
+  ".mp3",
   ".ico",
   ".woff",
   ".woff2",

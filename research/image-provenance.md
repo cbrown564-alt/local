@@ -16,6 +16,35 @@ sourcing copy afterwards.
 `node tools/check/check-public-assets.mjs` reports images held in `public/images/`
 that no longer appear anywhere in `src/`.
 
+## Site films ("One Day, Made Here")
+
+- `media/home/<town>-film.{mp4,webm}`, `<town>-film-mobile.{mp4,webm}`,
+  `<town>-film-poster.*`, `<town>-ambience.mp3` — **stand-ins in place** (4
+  August 2026). Town hero films, one per town (Dundrum, Newcastle), shown in
+  prototype E at `/prototypes/home/film/`. Assembled by
+  `tools/pipeline/assemble-hero-film.mjs` from clips generated with Gemini
+  Omni and ambience stems generated with ElevenLabs (treatment and prompts:
+  `research/film/one-day-made-here.md`). The films are
+  **generated, not footage**: the hero carries an on-page disclosure
+  ("An imagined day … not footage") and the video aria-labels say the same.
+  The clips currently in `research/film/clips/<town>/` are `--demo`
+  tone-gradient stand-ins (marked by a `.demo` file) so the hero can be
+  reviewed end-to-end. **Stand-ins must not deploy**: replace with the Gemini
+  Omni renders, rerun `pnpm assemble:film`, and update this entry's status.
+
+## Generated narration
+
+- `media/prototypes/showcase/showcase-narration-hugh-mccanns.mp3` — **internal
+  prototype only** (4 August 2026). 24 seconds of synthetic speech generated
+  with ElevenLabs (`eleven_multilingual_v2`, voice "Irish Cultural Guide",
+  `NPWroowF4phQhaPWjXPj`) for demonstration 05 on `/prototypes/showcase/`. It
+  is **not a recording of anyone**, and no real person's voice was cloned. The
+  script describes the published Hugh McCann's concept and makes no claim the
+  concept does not already make. If narration ever ships on a guest-facing
+  page it must be disclosed as synthetic on that page, and the script must be
+  checked against the concept's own copy the same way the "Sources & limits"
+  block is.
+
 ## Studio-drawn concept assets
 
 Neither photographed nor generated: vector artwork drawn by hand for a concept.
@@ -118,6 +147,8 @@ Every page carrying one of these labels it as generated on the page itself.
   generated-image disclosure as the daytime plate, which names the blue-hour
   state. Responsive WebP at 640 and 1265.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
+- `hugh-mccanns-faithful-room-dusk.jpg` — **in use** (4 August 2026). AI-generated dusk sibling of the faithful room visualisation above, edited from the existing daytime plate so the broad window bays, table settings, garden edge and Mourne profile stay fixed. The prompt changed only the time of day and warm interior illumination, and forbade people, new furniture, ceremony dressing, signage, terrace, sea view or extra windows. The page keeps the daytime plate as its no-JS and reduced-motion default, then swaps to dusk during the visitor's local evening hours; both states carry the same faithful-visualisation boundary in alt text and the visible caption.
+- `hugh-mccanns-where-your-day-happens.jpg` — **in use** (4 August 2026). AI-generated illustrative hand-drawn geography plate showing only the published relationship between Hugh McCann's on Central Promenade, the Secret Garden, the Mourne Mountains, Dundrum Bay, Little Haven and The Avoca Hotel. It is an indicative drawing rather than a survey: no scale, route time, street network, extra building, garden, terrace or unsupported sightline is claimed. The page labels it "Indicative · not a survey" and repeats the boundary in alt text.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
 - `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
   **in use** (31 July 2026). AI-generated faithful visualisations of the same

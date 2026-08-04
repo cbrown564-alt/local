@@ -8,10 +8,19 @@ Six of the eight are approved to build: **03 Rebuild, 05 Voice, 01 Ridgeline,
 07 Film, 02 Depth, 04 Lights**. Not approved: 06 Tideline (no real tide data;
 see "Held" below) and 08 Weather (nice-to-have, no case).
 
-**This plan is gated.** It sits behind section 4 of `PLAN.md` — the first
-outreach conversations. Nothing here is worth building before we know what a
-real owner says about the concepts we already have. The plan exists now so
-that the work is designed rather than improvised when the gate opens.
+**This runs in parallel with `PLAN.md` sections 3 and 4.** It is not sequenced
+behind the first outreach conversations. Two constraints survive that decision,
+because they are about consent and evidence rather than ordering:
+
+- **Nothing generated about a business without its agreement.** Phase 4 (Film)
+  and phase 5b (splat capture) depict a real premises, and need that business's
+  written agreement before generation, not before publication.
+- **Nothing that claims a result we have not produced.** Anything whose meaning
+  depends on a completed pilot waits for one. See phase 0, question 5.
+
+And one standing precedence: `PLAN.md` section 3 protects the request path. If
+work here ever competes with that path for attention or for page weight, that
+path wins.
 
 ## What the prototypes are and are not
 
@@ -280,15 +289,24 @@ These apply to every phase and should be built once, in Phase 1.
 
 ## Sequencing and gates
 
+Phases 0 and 1 can both start now, and are independent of each other: phase 0
+is design work on paper, phase 1 is code. Nothing here is gated on the outreach
+wave.
+
 | Phase | Item | Gate to start |
 |---|---|---|
-| 0 | Shore design resolution | `PLAN.md` section 4 — first outreach conversations recorded |
-| 1 | 03 Rebuild | Phase 0 does not block it; may run in parallel |
+| 0 | Shore design resolution | None — start now |
+| 1 | 03 Rebuild | None — start now, in parallel with phase 0 |
 | 2 | 05 Voice | Phase 1 shipped and stable |
 | 3 | 01 + 04 Shore | Phase 0 decision written down |
 | 4 | 07 Film | A business has agreed, in writing, to a generated film of itself |
 | 5a | 02 Depth stills | Phases 1–3 shipped |
 | 5b | 02 Splat capture | A business worth the trip has agreed |
+
+The two consent gates (4 and 5b) are the only ones that depend on a
+conversation, and either could open early — a business that agrees during the
+first outreach wave unblocks its phase that day, regardless of where the rest
+of this plan has reached.
 
 ## Held
 

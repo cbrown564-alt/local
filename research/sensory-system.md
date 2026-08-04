@@ -13,9 +13,11 @@ Prototype grid: `/prototypes/showcase/`. Demo code:
 are held. Ridgeline and Lights were approved with the end product explicitly
 undecided, and are resolved on paper before any component is written. The
 phases, gates and acceptance criteria are
-[`docs/sensory-system-plan.md`](../docs/sensory-system-plan.md); the whole
-section is gated behind `PLAN.md` section 4. This file remains the record of
-*why*, not of what to build.
+[`docs/sensory-system-plan.md`](../docs/sensory-system-plan.md), and the work
+runs in parallel with `PLAN.md` sections 3 and 4 rather than behind them. The
+only remaining gates are about consent: nothing generated about a business
+without its written agreement. This file remains the record of *why*, not of
+what to build.
 
 ## 1. What the cutting edge is doing
 

@@ -93,6 +93,25 @@ const sequence = [
     line: "The Avoca is the perfect location for a Day 2 wedding, private party or celebration.",
   },
 ];
+
+const dayParts = [
+  {
+    id: "day",
+    from: 7,
+    to: 17,
+    src: "/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room.jpg",
+    alt: "Faithful AI-generated visualisation of Hugh McCann's dining room by day, looking through its broad windows towards the Mournes; based on the venue's published room photograph",
+    caption: "Faithful visualisation · daytime plate",
+  },
+  {
+    id: "dusk",
+    from: 17,
+    to: 7,
+    src: "/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room-dusk.jpg",
+    alt: "Faithful AI-generated visualisation of Hugh McCann's dining room at dusk, with the same broad windows, table settings and Mourne profile; based on the venue's published room photograph",
+    caption: "Faithful visualisation · dusk plate",
+  },
+];
 ---
 
 <ConceptLayout
@@ -122,16 +141,23 @@ const sequence = [
   <main class="hm-main">
     <div class="hm-first">
       <section class="hm-hero" aria-labelledby="hm-headline">
-        <ResponsiveImage
-          pictureClass="concept-responsive-picture hm-hero-picture"
-          class="hm-hero-image"
-          src="/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room.jpg"
-          alt="Hugh McCann's dining room looking through its broad windows towards the Mournes"
-          width="1672"
-          height="941"
-          loading="eager"
-          sizes="100vw"
-        />
+        <div class="hm-hero-frames" data-hm-daypart>
+          {dayParts.map((part, index) => (
+            <div class="hm-hero-frame" data-daypart={part.id} hidden={index !== 0 ? true : undefined}>
+              <ResponsiveImage
+                pictureClass="concept-responsive-picture hm-hero-picture"
+                class="hm-hero-image"
+                src={part.src}
+                alt={part.alt}
+                width="1672"
+                height="941"
+                loading={index === 0 ? "eager" : "lazy"}
+                sizes="100vw"
+              />
+            </div>
+          ))}
+        </div>
+        <p class="hm-hero-disclosure" data-hm-daypart-caption>{dayParts[0].caption}</p>
         <div class="hm-hero-copy">
           <p class="hm-kicker">At the foot of the Mournes</p>
           <h1 id="hm-headline" class="hm-headline">
@@ -229,6 +255,26 @@ const sequence = [
           <a class="hm-step-link" href="#enquire">Check your date <span aria-hidden="true">→</span></a>
         </li>
       </ol>
+    </section>
+
+    <section class="hm-day-plate" aria-labelledby="hm-day-plate-title">
+      <div class="hm-section-head">
+        <p class="hm-eyebrow">Where your day happens</p>
+        <h2 id="hm-day-plate-title">The house, the garden, the mountains, the bay.</h2>
+        <p class="hm-day-plate-intro">An indicative sketch of the addresses your day can move between.</p>
+      </div>
+      <figure class="hm-day-plate-figure">
+        <ResponsiveImage
+          pictureClass="concept-responsive-picture hm-day-plate-picture"
+          src="/media/concepts/hugh-mccanns/hugh-mccanns-where-your-day-happens.jpg"
+          alt="Indicative hand-drawn plate of Hugh McCann's on Central Promenade, the Secret Garden behind it, the Mourne Mountains, Dundrum Bay, Little Haven and The Avoca Hotel"
+          width="1536"
+          height="1024"
+          loading="lazy"
+          sizes="(max-width: 900px) 100vw, 1265px"
+        />
+        <figcaption>Indicative · not a survey</figcaption>
+      </figure>
     </section>
 
     <!-- Verbatim, dated and attributed. Withdraw rather than freshen if the
@@ -331,3 +377,26 @@ const sequence = [
     })();
   </script>
 </ConceptLayout>
+
+<script is:inline>
+  (() => {
+    const hero = document.querySelector("[data-hm-daypart]");
+    const config = hero?.closest(".hm-hero");
+    const caption = config?.querySelector("[data-hm-daypart-caption]");
+    if (!hero || !caption || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const bands = [
+      { id: "day", from: 7, to: 17, caption: "Faithful visualisation · daytime plate" },
+      { id: "dusk", from: 17, to: 7, caption: "Faithful visualisation · dusk plate" },
+    ];
+    const hour = new Date().getHours();
+    const band = bands.find(({ from, to }) => from < to ? hour >= from && hour < to : hour >= from || hour < to);
+    if (!band) return;
+    const target = hero.querySelector(`[data-daypart="${band.id}"]`);
+    if (!target || !target.hidden) return;
+    hero.querySelectorAll("[data-daypart]").forEach((frame) => (frame.hidden = frame !== target));
+    const image = target.querySelector("img");
+    if (image) image.loading = "eager";
+    caption.textContent = band.caption;
+  })();
+</script>
