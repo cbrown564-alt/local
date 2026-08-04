@@ -21,6 +21,14 @@ const devOnlyWorkbench = {
           entrypoint: "./src/workbench/print/bucks-head-onesheet.astro",
         });
         injectRoute({
+          pattern: "/workbench/print/scopers-onesheet",
+          entrypoint: "./src/workbench/print/scopers-onesheet.astro",
+        });
+        injectRoute({
+          pattern: "/workbench/print/cupla-onesheet",
+          entrypoint: "./src/workbench/print/cupla-onesheet.astro",
+        });
+        injectRoute({
           pattern: "/workbench/og/studio",
           entrypoint: "./src/workbench/og/studio.astro",
         });

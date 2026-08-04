@@ -12,8 +12,25 @@ supper club as the standout offer.
 1. ~~The six generated food images are in place.~~ Done 31 July 2026, with the
    comparison still, clip and supper-club still recaptured to match.
 2. `mournemade.co.uk` resolves and `/transformations/scopers/` is deployed.
-3. A production request-form submission has reached the intended inbox.
-4. The printed one-sheet's QR has been scanned on a phone against the live page.
+3. A production request-form submission has reached the intended inbox,
+   **carrying `source=onesheet-scopers`**. The chain that makes this possible
+   was only built on 4 August 2026 — before that, `source` was not an accepted
+   field in `api/request.ts` at all, so this gate could never have cleared.
+   A 200 response is not enough; the email itself must show the "Came from"
+   line.
+4. The printed one-sheet's QR has been scanned on a phone against the live
+   page. The artwork is verified — the QR encodes
+   `https://mournemade.co.uk/transformations/scopers/?source=onesheet-scopers`
+   exactly, and `pnpm print:onesheet scopers` now fails rather than rendering
+   if the sheet's embedded QR, printed URL, business name, town, contact route
+   or uncommissioned disclosure is wrong. What remains is optical: only a phone
+   proves the paper.
+
+The sheet itself was built and inspected on 4 August 2026
+(`.scratch/print/pdf/scopers-onesheet.pdf`, two A4 pages). **No supper-club
+date is printed on it**, deliberately — their date has moved once already, and
+a printed sheet cannot be corrected, so it points at the page that always holds
+the current one.
 
 **And re-verify on the morning of the walk-in.** Re-run
 `node tools/capture/audit-journey.mjs scopers` (with `pnpm build && pnpm preview`

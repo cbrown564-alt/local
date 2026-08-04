@@ -185,14 +185,27 @@ highest-stakes conversation is not used to rehearse the approach.
    minimum, retain structured failure codes and add an alert or production
    canary; use a transactional provider or queue only when the first-wave
    volume or delivery evidence justifies it.
-3. Produce one personalised one-sheet for each of the two businesses using
-   its current published transformation. Do not wait for optional extra media.
-   Scopers is further on: its journey was walked and filed on 31 July 2026
-   (`.scratch/renders/scopers-journey/2026-07-31/`) and the walk-in script is
-   written (`research/concepts/scopers/scopers-pitch.md`). The six generated food images landed
-   the same day and the comparison still, clip and supper-club still were
-   recaptured with them, so the concept is showable. What remains before
-   outreach is its one-sheet and the standing gates below.
+3. ~~Produce one personalised one-sheet for each of the two businesses using
+   its current published transformation.~~ **Done 4 August 2026.** Both are
+   two A4 pages built on the existing sheet template, from each concept's own
+   published case-study notes: `.scratch/print/pdf/scopers-onesheet.pdf` and
+   `.scratch/print/pdf/cupla-onesheet.pdf`.
+
+   Each carries a media disclosure written for the owner rather than for the
+   record — Scopers' food is drawn, not photographed, and the Cúpla concept
+   uses no photographs of the café at all. The Scopers sheet prints no
+   supper-club date: their date has moved once already and a printed sheet
+   cannot be corrected, so it points at the page that always holds the current
+   one.
+
+   Rendering them surfaced two layout defects in the shared sheet stylesheet,
+   both fixed and both affecting the existing Enniskeen sheet as well. The
+   comparison slot was 88x58mm while every capture is 2530x1420, so
+   `object-fit: cover` silently cropped the sides — the concept frame lost its
+   logo and the first word of its headline, which is the one thing the sheet
+   exists to show. And the reverse footer is an absolutely positioned
+   two-column grid, so the disclosure became a third child and overlapped the
+   QR block; it now has its own element above the footer.
 4. ~~Give every sheet the slug-qualified QR destination required by
    [`docs/adr/0002-printed-qr-attribution-contract.md`](docs/adr/0002-printed-qr-attribution-contract.md):
    `/transformations/<slug>/?source=onesheet-<slug>`.~~ **Done 4 August 2026.**
