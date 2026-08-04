@@ -82,6 +82,9 @@ repairing one.
 
 ### 2. Castle Farm Fresh Produce — the least-elevated public page
 
+**Brief written 4 August 2026:**
+`research/concepts/castle-farm/castle-farm-elevation-brief.md`.
+
 The concept is a single hero screen: placeholder navigation, an inert
 basket, a steps strip and a proof band. Every other public concept has had
 more passes. The shape is Product/Counter, and the record holds a real
