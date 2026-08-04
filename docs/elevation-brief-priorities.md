@@ -203,6 +203,9 @@ supplied.
 
 ### 9. Painted Earth — rich material, blocked lever
 
+**Brief written 4 August 2026:**
+`research/concepts/painted-earth/painted-earth-elevation-brief.md`.
+
 Ninety-two named makers, an on-site goldsmith, an upstairs gallery opened
 April 2025, twenty-plus years trading, and their own sentence already on the
 page ("A small team with a big dream"). By unmined magic alone this ranks
