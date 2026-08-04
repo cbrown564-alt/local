@@ -134,6 +134,9 @@ brief must respect: no confirmed seasonal hours exist anywhere, so the
 
 ### 5. Cúpla — the name is the essence
 
+**Brief written 4 August 2026:**
+`research/concepts/cupla/cupla-elevation-brief.md`.
+
 The method says the essence is usually a paradox; Cúpla hands it over
 wrapped: the Irish for twins, opened by twin owners, every label twinned in
 Irish and English. The concept already does real recognition work — the
