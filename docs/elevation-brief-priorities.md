@@ -118,6 +118,9 @@ assume nothing about who decides.
 
 ### 4. Kent Amusements — fifty summers on the promenade
 
+**Brief written 4 August 2026:**
+`research/concepts/kent-amusements/kent-amusements-elevation-brief.md`.
+
 The strongest keepable-artifact candidate among the twelve: over fifty years
 on the same Central Promenade site, with a BBC *Your Place and Mine* entry
 in the sources — an arc and a geography that want a drawn plate the way
