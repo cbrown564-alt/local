@@ -178,13 +178,35 @@ The remaining first wave is Scopers and Cúpla. Do not add a replacement merely
 to restore the original batch size. Hotel Enniskeen remains in batch two so the
 highest-stakes conversation is not used to rehearse the approach.
 
-1. Replace the module-level request-rate `Map` with a shared per-source store
-   that enforces five attempts in one hour across serverless instances. Keep
-   the existing origin, field, honeypot and delivery tests.
-2. Make a failed delivery visible without logging submitted content. At
-   minimum, retain structured failure codes and add an alert or production
-   canary; use a transactional provider or queue only when the first-wave
-   volume or delivery evidence justifies it.
+1. ~~Replace the module-level request-rate `Map` with a shared per-source store
+   that enforces five attempts in one hour across serverless instances.~~
+   **Done 4 August 2026.** Backed by the Upstash-compatible REST API that both
+   Vercel KV and Upstash expose, over plain `fetch` — no client dependency in
+   a function whose only other job is sending one email. `INCR` then
+   `EXPIRE NX`, so the window starts on the first attempt and later attempts
+   cannot roll it forward into an hour that never resets.
+
+   Only a salted digest of the caller's address is sent to the store: it
+   counts the same caller just as well, and a leak of the store is not a leak
+   of who submitted a request. A store outage fails open and logs — this
+   endpoint exists to deliver a handful of leads a week from printed sheets,
+   and silently dropping a real business's request is worse than an unlimited
+   hour. Unconfigured, it falls back to the per-instance map, which is what
+   the bare local checkout and CI use.
+2. ~~Make a failed delivery visible without logging submitted content.~~
+   **Done 4 August 2026.** The structured failure codes are kept and now also
+   POST to `REQUEST_ALERT_WEBHOOK` when one is configured — a failed delivery
+   is a lead that was typed and lost, and the function log is not somewhere
+   anyone is watching. The payload carries the SMTP code and the `source`
+   attribution only: never the business, idea, name or email, since routing an
+   enquiry through a third-party webhook to announce that the email failed
+   would leak the content the alert exists to protect. A webhook that is
+   itself down changes nothing the visitor is told.
+
+   The test-facing delivery path was swallowing its error with a bare `catch`,
+   so the failure handling the tests exercised was not the failure handling
+   that runs. Both paths now report identically. No transactional provider or
+   queue yet: first-wave volume does not justify one.
 3. ~~Produce one personalised one-sheet for each of the two businesses using
    its current published transformation.~~ **Done 4 August 2026.** Both are
    two A4 pages built on the existing sheet template, from each concept's own

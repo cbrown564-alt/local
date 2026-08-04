@@ -36,6 +36,63 @@ const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1_000;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
 type SendMail = (options: SendMailOptions) => Promise<unknown>;
 
+/**
+ * A failed delivery is a lead that was typed and lost. The visitor is told to
+ * email directly, but nobody finds out unless someone happens to read the
+ * function logs, so the failure is also pushed somewhere that interrupts.
+ *
+ * Nothing the visitor typed is included — not the business, the idea, the
+ * name or the email. A delivery alert is an operational signal, and routing
+ * someone's enquiry through a third-party webhook to say "the email failed"
+ * would leak exactly the content the alert exists to protect. `source` is the
+ * one non-content field carried: it comes from a printed sheet, not the
+ * visitor, and says which sheet is at risk of losing responses.
+ */
+/** Nodemailer's SMTP fields, narrowed to the three that identify a failure. */
+const failureDetail = (deliveryError: unknown) => {
+  const failure = deliveryError as {
+    code?: unknown;
+    command?: unknown;
+    responseCode?: unknown;
+  };
+  return {
+    code: typeof failure.code === "string" ? failure.code : "unknown",
+    command: typeof failure.command === "string" ? failure.command : "unknown",
+    responseCode: typeof failure.responseCode === "number" ? failure.responseCode : undefined,
+  };
+};
+
+const reportDeliveryFailure = async (detail: {
+  code: string;
+  command: string;
+  responseCode?: number;
+  source: string;
+}) => {
+  console.error("Request email delivery failed", detail);
+  const webhook = process.env.REQUEST_ALERT_WEBHOOK;
+  if (!webhook) return;
+  try {
+    await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: "request_delivery_failed",
+        at: new Date().toISOString(),
+        ...detail,
+      }),
+      // Serverless kills un-awaited work, but a slow webhook must not hold the
+      // visitor's response open either.
+      signal: AbortSignal.timeout(2_000),
+    });
+  } catch (alertError) {
+    // The alert failing is itself only worth a log line: the submission has
+    // already failed, and nothing here can recover it.
+    console.error("Request delivery alert could not be sent", {
+      code: alertError instanceof Error ? alertError.message : "unknown",
+    });
+  }
+};
+
 const header = (value: string | string[] | undefined) =>
   Array.isArray(value) ? value[0] : value;
 
@@ -48,7 +105,7 @@ const clientAddress = (request: VercelRequest) =>
   request.socket?.remoteAddress ||
   "unknown";
 
-const takeRateLimitSlot = (key: string, now = Date.now()) => {
+const takeLocalRateLimitSlot = (key: string, now = Date.now()) => {
   const current = rateLimits.get(key);
   if (!current || current.resetAt <= now) {
     const next = { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS };
@@ -66,6 +123,91 @@ const takeRateLimitSlot = (key: string, now = Date.now()) => {
     remaining: RATE_LIMIT_MAX - current.count,
     resetAt: current.resetAt,
   };
+};
+
+/**
+ * The limit has to hold across serverless instances, not per instance.
+ * `rateLimits` above is a module-level Map, so it lives and dies with one warm
+ * function: five attempts per instance is not five attempts, and a caller who
+ * lands on a fresh instance each time is never limited at all.
+ *
+ * Backed by the Upstash-compatible REST API that both Vercel KV and Upstash
+ * itself expose, over plain `fetch` — no client dependency in a function whose
+ * only other job is sending one email.
+ */
+const restStore = () => {
+  const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
+  return url && token ? { url, token } : null;
+};
+
+/**
+ * The caller's address is a live IP, and this sends it to a third-party store.
+ * Only a salted digest leaves the function: it counts the same caller just as
+ * well, and a leak of the store is not a leak of who submitted a request.
+ * Without a configured salt the digest is still per-deployment stable, which
+ * is all the counting needs.
+ */
+const rateLimitKey = async (address: string) => {
+  const { createHash } = await import("node:crypto");
+  const salt = process.env.REQUEST_RATE_SALT ?? "mourne-made";
+  return `mm:request-rate:${createHash("sha256").update(`${salt}:${address}`).digest("hex").slice(0, 32)}`;
+};
+
+const takeSharedRateLimitSlot = async (
+  store: { url: string; token: string },
+  address: string,
+) => {
+  const key = await rateLimitKey(address);
+  const seconds = Math.floor(RATE_LIMIT_WINDOW_MS / 1_000);
+  const response = await fetch(`${store.url}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${store.token}`,
+      "Content-Type": "application/json",
+    },
+    // INCR then EXPIRE NX: the window starts on the first attempt and is not
+    // pushed back by later ones, so five attempts in an hour cannot become a
+    // rolling hour that never resets.
+    body: JSON.stringify([
+      ["INCR", key],
+      ["EXPIRE", key, String(seconds), "NX"],
+      ["PTTL", key],
+    ]),
+  });
+  if (!response.ok) throw new Error(`rate-limit store returned ${response.status}`);
+  const results = (await response.json()) as { result?: unknown; error?: unknown }[];
+  const failed = results.find((entry) => entry?.error);
+  if (failed) throw new Error(String(failed.error));
+
+  const count = Number(results[0]?.result);
+  const ttl = Number(results[2]?.result);
+  if (!Number.isFinite(count)) throw new Error("rate-limit store returned no count");
+  // A missing or non-expiring TTL still yields a usable window rather than a
+  // NaN reset header.
+  const resetAt = Date.now() + (Number.isFinite(ttl) && ttl > 0 ? ttl : RATE_LIMIT_WINDOW_MS);
+  return {
+    allowed: count <= RATE_LIMIT_MAX,
+    remaining: Math.max(0, RATE_LIMIT_MAX - count),
+    resetAt,
+  };
+};
+
+const takeRateLimitSlot = async (address: string) => {
+  const store = restStore();
+  if (!store) return takeLocalRateLimitSlot(address);
+  try {
+    return await takeSharedRateLimitSlot(store, address);
+  } catch (error) {
+    /* Fails open, deliberately. This endpoint exists to deliver a handful of
+       leads a week from printed sheets; a store outage silently dropping a
+       real business's request is a worse outcome than an unlimited hour. The
+       failure is recorded so it is visible rather than assumed. */
+    console.error("Request rate-limit store unavailable, falling back per-instance", {
+      code: error instanceof Error ? error.message : "unknown",
+    });
+    return takeLocalRateLimitSlot(address);
+  }
 };
 
 const normaliseLink = (value: string) => {
@@ -111,7 +253,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     return response.status(200).json({ ok: true });
   }
 
-  const rateLimit = takeRateLimitSlot(clientAddress(request));
+  const rateLimit = await takeRateLimitSlot(clientAddress(request));
   response.setHeader("RateLimit-Limit", String(RATE_LIMIT_MAX));
   response.setHeader("RateLimit-Remaining", String(rateLimit.remaining));
   response.setHeader("RateLimit-Reset", String(Math.ceil(rateLimit.resetAt / 1_000)));
@@ -178,7 +320,11 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   if (sendMailOverride) {
     try {
       await sendMailOverride(mail);
-    } catch {
+    } catch (deliveryError) {
+      // Reported like the real path rather than swallowed: this branch is what
+      // the tests exercise, so a silent catch here meant the failure handling
+      // was never actually covered.
+      await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source });
       return response.status(503).json({
         error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
       });
@@ -198,16 +344,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     await transporter.sendMail(mail);
     return response.status(200).json({ ok: true });
   } catch (deliveryError) {
-    const failure = deliveryError as {
-      code?: unknown;
-      command?: unknown;
-      responseCode?: unknown;
-    };
-    console.error("Request email delivery failed", {
-      code: typeof failure.code === "string" ? failure.code : "unknown",
-      command: typeof failure.command === "string" ? failure.command : "unknown",
-      responseCode: typeof failure.responseCode === "number" ? failure.responseCode : undefined,
-    });
+    await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source });
     return response.status(503).json({
       error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
     });

@@ -80,6 +80,23 @@ The request route sends mail through Gmail with an app password. Never add a Gma
    - `REQUEST_TO_EMAIL` — the inbox that receives requests (defaults to `GMAIL_USER`)
 3. Redeploy after adding or changing the variables.
 
+Three optional variables harden the same route. Without them it still works,
+but with the weaker behaviour noted:
+
+- `KV_REST_API_URL` and `KV_REST_API_TOKEN` (or the `UPSTASH_REDIS_REST_*`
+  pair) hold the five-per-hour rate limit across serverless instances. Unset,
+  the limit falls back to a module-level map, which means five attempts *per
+  warm instance* — so a caller who lands on a fresh instance each time is
+  never limited. A store outage fails open and logs, rather than dropping a
+  real lead.
+- `REQUEST_RATE_SALT` salts the digest used as the rate-limit key, so the
+  caller's IP is never written to the store in clear.
+- `REQUEST_ALERT_WEBHOOK` receives a JSON POST when a delivery fails, because
+  a failed delivery is a lead that was typed and lost and the function log is
+  not somewhere anyone is watching. The payload carries the SMTP failure code
+  and the `source` attribution only — never the business, idea, name or email
+  the visitor typed.
+
 Validate the endpoint's input handling locally without sending an email:
 
 ```powershell
