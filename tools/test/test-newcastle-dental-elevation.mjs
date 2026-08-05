@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pins the Newcastle Family Dental Care elevation (moves 1, 2, 3 and 5 of
+ * Pins the Newcastle Family Dental Care elevation (moves 1–5 of
  * research/concepts/newcastle-dental/newcastle-dental-elevation-brief.md).
  *
  * Runs against the built page, not the source, so a template that stops
@@ -21,6 +21,15 @@ import { projectRoot } from "../lib/public-slugs.mjs";
 
 const builtPath = path.join(projectRoot, "dist", "concepts", "newcastle-dental", "index.html");
 const sourcePath = path.join(projectRoot, "src", "concepts", "newcastle-dental", "home.astro");
+const caseStudyPath = path.join(projectRoot, "dist", "transformations", "newcastle-dental", "index.html");
+const platePath = path.join(
+  projectRoot,
+  "public",
+  "media",
+  "concepts",
+  "newcastle-dental",
+  "newcastle-dental-calm-room-plate.png",
+);
 
 if (!existsSync(builtPath)) {
   console.error(`Missing ${path.relative(projectRoot, builtPath)} — run \`pnpm build\` first.`);
@@ -135,7 +144,7 @@ check(
 for (const [name, cred] of [
   ["Dr David Knowles", "BDS QUB 2014"],
   ["Dr Rebecca McCarey", "BDS QUB 2014"],
-  ["Dr Daniel Sandford", "Odontología UCV 2023"],
+  ["Dr Daniel Sandford", "Grado en Odontología UCV 2023"],
 ]) {
   check(`dentist missing: ${name}`, text.includes(name));
   check(`published credential missing for ${name}: ${cred}`, text.includes(cred));
@@ -160,6 +169,53 @@ check(
   "the urgent panel is not staged as steps",
   (urgent.match(/class="nd-step"/g) ?? []).length === 2,
 );
+
+// Move 4 — the calm-room plate: disclosed as a drawn plate on the page, in
+// alt text and in the case study, and never presented as the real room.
+const calm = block('class="nd-calm-room"', "</section>");
+const calmText = visible(calm);
+check("the calm-room plate section is missing", calm.length > 0);
+check(
+  "the calm-room plate asset is missing from public media",
+  existsSync(platePath),
+);
+check(
+  "the calm-room plate is not on the page",
+  /newcastle-dental-calm-room-plate\.png/.test(calm),
+);
+check(
+  "the calm-room plate alt does not name it as a hand-drawn plate",
+  /alt="Hand-drawn plate of a calm dental room[^"]*"/.test(calm),
+);
+check(
+  "the calm-room plate caption does not disclose it as a drawn plate",
+  calmText.includes("shown as a drawn plate"),
+);
+check(
+  "the calm-room plate claims the practice's furnishings or Railway Street view",
+  calmText.includes("not the practice's furnishings or the view from Railway Street"),
+);
+check(
+  "the banner note no longer discloses the calm-room plate",
+  /calm-room plate is an AI-generated illustration/i.test(text),
+);
+if (existsSync(caseStudyPath)) {
+  const caseStudy = readFileSync(caseStudyPath, "utf8")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ");
+  check(
+    "the case study does not disclose the calm-room plate",
+    caseStudy.includes("calm-room plate is a disclosed AI-generated illustration") &&
+      caseStudy.includes("not a photograph or record of the practice's actual interior"),
+  );
+} else {
+  check("the newcastle-dental case study did not build", false);
+}
 
 // Move 5 — the request panel does its one job honestly and nothing else sends.
 check("the request panel is no longer a form", /<form[^>]*data-nd-request/.test(html));

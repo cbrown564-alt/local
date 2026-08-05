@@ -6,15 +6,15 @@ Written 4 August 2026, second in the ranked sequence in
 ranked review called this the least-elevated public page: a single hero
 screen with placeholder navigation and an inert basket.
 
-**Status: written 4 August 2026. Moves 1, 2, 3 and 6 implemented 5 August
-2026** — the farm's own sentence and both dates lead the page, the weekly
-round is on it with the published cutoffs, days, towns and terms and a town
-lookup, the stock is told in the farm's two-source shape, and every control
-either reaches `castlefarmni.com` or is gone. Moves 4 (the table as theatre)
-and 5 (the drawn delivery-round plate) are unstarted; both need their own
-asset session, and until move 4 lands the mixed-box visualisation keeps its
-existing disclosure chain. `tools/test/test-castle-farm-elevation.mjs` pins
-what shipped and runs in `pnpm test`.
+**Status: written 4 August 2026. Moves 1, 2, 3, 4, 5 and 6 implemented 5
+August 2026** — the farm's own sentence and both dates lead the page, the
+weekly round is on it with the published cutoffs, days, towns and terms and a
+town lookup, the stock is told in the farm's two-source shape, the week's
+table is the theatre plate, the delivery-round plate is the keepable artifact,
+and every control either reaches `castlefarmni.com` or is gone. Recipe dishes
+hand off to the live blog index: the shop sitemap listed no per-post URLs on
+5 August 2026. `tools/test/test-castle-farm-elevation.mjs` pins what shipped
+and runs in `pnpm test`.
 
 Two open decisions below were resolved in the cautious direction when the
 moves shipped: the £45 Medium Mixed Box price is **not** quoted (the page

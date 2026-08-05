@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pins the Castle Farm elevation (moves 1, 2, 3 and 6 of
+ * Pins the Castle Farm elevation (moves 1–6 of
  * research/concepts/castle-farm/castle-farm-elevation-brief.md).
  *
  * Runs against the built page, not the source, so a template that stops
@@ -13,7 +13,8 @@
  * the `data-cf-town` / `data-cf-day` pairs the page renders, so checking those
  * pairs in the built HTML is checking what the lookup can answer — and it is
  * the same check that catches an invented town, which is the honesty risk the
- * brief actually names.
+ * brief actually names. Move 5's phone-width label review stays a visual
+ * gate; this file pins that the plate and its indicative disclosure ship.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -169,7 +170,7 @@ for (const [label, value] of [
 const termsBlock = section('class="cf-terms"', "</section>");
 check(
   "the figures are not adjacent to the delivery source link",
-  /href="https:\/\/www\.castlefarmni\.com\/"/.test(termsBlock) &&
+  /href="https:\/\/www\.castlefarmni\.com\/pages\/delivery-schedule"/.test(termsBlock) &&
     /read 4 August 2026/.test(termsBlock.replace(/<[^>]+>/g, " ")),
 );
 check(
@@ -206,6 +207,44 @@ check(
 for (const dish of ["Beef bourguignon", "Shepherd's cottage pie", "Goulash"]) {
   check(`recipe pairing missing: ${dish}`, text.includes(dish));
 }
+check(
+  "recipe dishes are not linked to the live blog",
+  (html.match(/href="https:\/\/www\.castlefarmni\.com\/blogs\/news"/g) ?? []).length >= 3,
+);
+
+// Move 4 — the week's table is the theatre, with its disclosure chain.
+check(
+  "the week's table plate is missing from the first screen",
+  hero.includes("castle-farm-weekly-table-illustration.png"),
+);
+check(
+  "the retired mixed-box still is back in the first screen",
+  !hero.includes("castle-farm-weekly-box-faithful.webp"),
+);
+check(
+  "the table plate has no visible disclosure",
+  /possible week'?s table|painted plate/i.test(heroText),
+);
+check(
+  "the table plate has no alt boundary",
+  /weekly table|Angus|yoghurt|yogurt/i.test(hero),
+);
+
+// Move 5 — the delivery-round plate ships with its indicative disclosure.
+check(
+  "the delivery-round plate is missing",
+  html.includes("castle-farm-delivery-round-plate.png"),
+);
+check(
+  "the delivery-round plate has no indicative disclosure",
+  /indicative,\s*not a survey/i.test(text),
+);
+check(
+  "the delivery-round plate has no alt that names the four day-loops",
+  /castle-farm-delivery-round-plate\.png"\s+alt="[^"]*Tuesday, Wednesday, Thursday and Friday/i.test(
+    html,
+  ),
+);
 
 // Move 6 — every control is honest. No placeholders, no basket, and every
 // commerce route resolves to the live store.
@@ -232,8 +271,20 @@ check(
   externalLinks.some((href) => href.startsWith("https://www.castlefarmni.com/")),
 );
 check(
+  "produce CTAs do not reach the live box listings",
+  externalLinks.includes("https://www.castlefarmni.com/collections/meal-deal-boxes"),
+);
+check(
+  "terms do not reach the live delivery schedule",
+  externalLinks.includes("https://www.castlefarmni.com/pages/delivery-schedule"),
+);
+check(
   "the page must not take an order itself",
   !/<form[^>]*\baction=/.test(html) && !/fetch\(|XMLHttpRequest|mailto:/.test(html),
+);
+check(
+  "the lookup hard-codes the phone instead of reading the page data",
+  source.includes('data-cf-phone={PHONE}') && source.includes('getAttribute("data-cf-phone")'),
 );
 
 // The swap test, as far as a file can carry it: strip the name and the round,

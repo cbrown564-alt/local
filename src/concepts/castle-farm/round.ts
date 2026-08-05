@@ -15,6 +15,13 @@
 
 export const ROUND_READ_ON = "4 August 2026";
 export const SHOP_URL = "https://www.castlefarmni.com/";
+/** Live box listings — the handoff for "shop this week's produce". */
+export const BOXES_URL = "https://www.castlefarmni.com/collections/meal-deal-boxes";
+/** Published schedule and delivery terms — source of truth for the figures. */
+export const DELIVERY_URL = "https://www.castlefarmni.com/pages/delivery-schedule";
+/** The farm's blog index. Individual recipe posts are not currently listed in
+ *  the shop sitemap (checked 5 August 2026), so dishes below hand off here. */
+export const BLOG_URL = "https://www.castlefarmni.com/blogs/news";
 export const PHONE = "07568 436413";
 export const PHONE_HREF = "tel:+447568436413";
 
@@ -159,10 +166,11 @@ export const neighbours = {
   line: "Their food travels the round with ours, which gives a small producer a platform right across Ulster.",
 };
 
-/** Dishes named on the farm's recipe blog. Read-dated; the posting cadence is
-    not established, so the page dates the reading rather than the writing. */
+/** Dishes named on the farm's recipe blog as read on ROUND_READ_ON. The shop's
+    current sitemap lists only the blog index and one news post, so each dish
+    hands off to the blog rather than inventing a per-post URL. */
 export const recipes = [
-  "Beef bourguignon",
-  "Shepherd's cottage pie",
-  "Goulash",
+  { name: "Beef bourguignon", href: BLOG_URL },
+  { name: "Shepherd's cottage pie", href: BLOG_URL },
+  { name: "Goulash", href: BLOG_URL },
 ];

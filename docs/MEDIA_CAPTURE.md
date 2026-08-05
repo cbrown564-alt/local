@@ -360,6 +360,7 @@ Journey films additionally:
 | Business | Date | Media | Overlays found → action | Notes |
 | --- | --- | --- | --- | --- |
 | castle-farm | 23 Jul 2026 | before+after still & clip | Sign-up lightbox + cookie banner → clicked "Decline" | Stills normalised `.png`→`.jpg`; old popup still replaced |
+| castle-farm | 5 Aug 2026 | after still & clip | none on concept | First viewport recapture after the week's-table theatre plate replaced the mixed-box still; before side unchanged |
 | hotel-enniskeen | 23 Jul 2026 | before still & clip, after clip | Cookie bar → clicked "I Consent" | Before still recaptured clean (was cookie-bar) |
 | hotel-enniskeen flagship | 23 Jul 2026 | 76 s guest-first reel, poster, Rooms + Dine companion stills | Cookie bar → clicked "I Consent"; no late overlays | MP4/WebM full-decode and revised small-frame visual QA passed; player loading, reduced-motion and keyboard checks passed |
 | donard-veterinary | 23 Jul 2026 | before still & clip, after clip | PetsApp chat panel → `hide iframe[title="petsapp-chat"]` | Panel auto-opens with variable timing; hidden (bubble goes too) |

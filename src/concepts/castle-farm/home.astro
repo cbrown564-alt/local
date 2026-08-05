@@ -5,6 +5,9 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 import {
   ROUND_READ_ON,
   SHOP_URL,
+  BOXES_URL,
+  DELIVERY_URL,
+  BLOG_URL,
   PHONE,
   PHONE_HREF,
   roundDays,
@@ -37,7 +40,7 @@ import {
   lang="en-GB"
   businessName="Castle Farm Fresh Produce"
   town="Dundrum"
-  bannerNote="The produce image is an AI-generated faithful visualisation; the name is set in type, not the farm's mark."
+  bannerNote="The table and delivery-round plates are AI-generated illustrations; neither is a photograph or survey."
 >
   <div class="cf-strip">
     <span>Dundrum, County Down · in the foothills of the Mournes, beside the castle</span>
@@ -74,7 +77,7 @@ import {
 
         <p class="cf-lede">Simply browse our fresh produce, add to cart and checkout.</p>
 
-        <a class="cf-button" href={SHOP_URL} rel="external">
+        <a class="cf-button" href={BOXES_URL} rel="external">
           Shop this week's produce <span aria-hidden="true">→</span>
         </a>
 
@@ -92,12 +95,12 @@ import {
 
       <figure class="cf-produce">
         <img
-          src="/media/concepts/castle-farm/castle-farm-weekly-box-faithful.webp"
-          alt="Faithful visualisation of Castle Farm's mixed weekly box, with vegetables, eggs, chicken and butcher items in a navy crate"
-          width="1200"
-          height="900"
+          src="/media/concepts/castle-farm/castle-farm-weekly-table-illustration.png"
+          alt="Illustrated Castle Farm weekly table laid from a possible mixed box: an Angus beef joint, eggs, potatoes, seasonal vegetables and plain yoghurt on a farmhouse table"
+          width="1536"
+          height="1024"
         />
-        <figcaption>Faithful visualisation based on Castle Farm’s published mixed-box photograph.</figcaption>
+        <figcaption>A possible week's table, shown as a painted plate — exact contents vary.</figcaption>
       </figure>
     </section>
 
@@ -157,7 +160,7 @@ import {
           text. If nobody is in, the box or bags are left out for you.
         </p>
         <p class="cf-terms-source">
-          <a href={SHOP_URL} rel="external">Full delivery terms and the whole schedule on castlefarmni.com</a>
+          <a href={DELIVERY_URL} rel="external">Full delivery terms and the whole schedule on castlefarmni.com</a>
           <span>· read {ROUND_READ_ON}</span>
         </p>
       </div>
@@ -165,7 +168,7 @@ import {
       <!-- The lookup indexes the towns rendered above, so it can only ever
            answer with what the page publishes. A town that is not listed gets
            the farm's own answer — get in touch — never an invented day. -->
-      <form class="cf-lookup" id="town" data-cf-lookup>
+      <form class="cf-lookup" id="town" data-cf-lookup data-cf-phone={PHONE}>
         <label class="cf-lookup-label" for="cf-town">Is your town on the round?</label>
         <p class="cf-lookup-help">Type a town and we will tell you which day it goes out.</p>
         <div class="cf-lookup-row">
@@ -174,6 +177,17 @@ import {
         </div>
         <p class="cf-lookup-answer" data-cf-answer role="status"></p>
       </form>
+
+      <figure class="cf-round-plate">
+        <img
+          src="/media/concepts/castle-farm/castle-farm-delivery-round-plate.png"
+          alt="Hand-drawn Castle Farm delivery round plate with the farm beside Dundrum Castle at the centre and four loops labelled Tuesday, Wednesday, Thursday and Friday, carrying the published town names"
+          width="1254"
+          height="1254"
+          loading="lazy"
+        />
+        <figcaption>Delivery-round plate · indicative, not a survey.</figcaption>
+      </figure>
     </section>
 
     <section class="cf-stock" id="farm" aria-labelledby="cf-stock-title">
@@ -212,10 +226,14 @@ import {
         <h2 id="cf-kitchen-title">What the box turns into.</h2>
       </div>
       <ul class="cf-recipes">
-        {recipes.map((dish) => <li>{dish}</li>)}
+        {recipes.map((dish) => (
+          <li>
+            <a href={dish.href} rel="external">{dish.name}</a>
+          </li>
+        ))}
       </ul>
       <p class="cf-recipes-foot">
-        <a href={SHOP_URL} rel="external">Read the recipes on castlefarmni.com</a>
+        <a href={BLOG_URL} rel="external">Read the recipes on castlefarmni.com</a>
         <span>· read {ROUND_READ_ON}</span>
       </p>
     </section>
@@ -227,7 +245,7 @@ import {
         plant. The round goes out every week either way.
       </p>
       <p class="cf-close-actions">
-        <a class="cf-button" href={SHOP_URL} rel="external">Shop this week's produce <span aria-hidden="true">→</span></a>
+        <a class="cf-button" href={BOXES_URL} rel="external">Shop this week's produce <span aria-hidden="true">→</span></a>
         <span>or ring <a href={PHONE_HREF}>{PHONE}</a></span>
       </p>
       <p class="cf-close-address">Castle Farm Fresh Produce · Dundrum, County Down</p>
@@ -271,6 +289,7 @@ import {
       if (!form) return;
       var field = form.querySelector("#cf-town");
       var answer = form.querySelector("[data-cf-answer]");
+      var phone = form.getAttribute("data-cf-phone") || "";
       if (!field || !answer) return;
 
       var index = {};
@@ -329,7 +348,7 @@ import {
         answer.setAttribute("data-cf-answer-state", "off");
         answer.textContent =
           "We do not list " + typed + " on the published round. Ring " +
-          "07568 436413 and we will tell you what we can do.";
+          phone + " and we will tell you what we can do.";
       });
     })();
   </script>

@@ -4,15 +4,18 @@
  * research/concepts/cupla/cupla-elevation-brief.md) and the repairs carried
  * into the same passes from the 25 July review and the 31 July audit.
  *
- * Runs against the built pages, not the source, so a template that stops
- * rendering the frontage — the way the restructure quietly did — fails here.
- * It is a static check, not a browser one: the Puppeteer suites were retired on
- * 4 August 2026, so every claim below is a fact about the delivered HTML, the
- * stylesheet, or the provenance record. Requires `pnpm build` first; `pnpm test`
- * runs the build ahead of it.
+ * Static checks run against the built pages, stylesheet, provenance record and
+ * one-sheet source. The brief's phone-fold and caption hit-test pins then run
+ * in headless Chrome against the built home route — a single focused probe, not
+ * the retired journey suite. Requires `pnpm build` first; `pnpm test` runs the
+ * build ahead of it. Needs system Chrome (`CHROME_PATH` or the usual install
+ * locations via `tools/lib/chrome.mjs`).
  */
-import { existsSync, readFileSync } from "node:fs";
+import { createReadStream, existsSync, readFileSync, statSync } from "node:fs";
+import http from "node:http";
 import path from "node:path";
+import puppeteer from "puppeteer-core";
+import { findChrome } from "../lib/chrome.mjs";
 import { projectRoot } from "../lib/public-slugs.mjs";
 
 const homePath = path.join(projectRoot, "dist", "concepts", "cupla", "index.html");
@@ -186,7 +189,8 @@ check(
 // opening screen, so its Sources & limits block has to say what is in it.
 const caseStudyPath = path.join(projectRoot, "dist", "transformations", "cupla", "index.html");
 if (existsSync(caseStudyPath)) {
-  const caseStudy = textOf(readFileSync(caseStudyPath, "utf8"));
+  const caseStudyHtml = readFileSync(caseStudyPath, "utf8");
+  const caseStudy = textOf(caseStudyHtml);
   check(
     "the case study does not disclose the generated shopfront",
     caseStudy.includes("AI-generated visualisation, faithful to a photograph of the premises taken in August 2024"),
@@ -199,9 +203,26 @@ if (existsSync(caseStudyPath)) {
     "the case study does not source the café's three words",
     caseStudy.includes("read 21 July 2026"),
   );
+  check(
+    "the case study second-surface label still carries the Menu/p> typo",
+    !caseStudyHtml.includes("Menu/p>") && /second-surface-label">\s*Menu\s*<\/p>/.test(caseStudyHtml),
+  );
 } else {
   check("the cupla case study did not build", false);
 }
+
+const onesheetPath = path.join(projectRoot, "src", "workbench", "print", "cupla-onesheet.astro");
+const onesheet = readFileSync(onesheetPath, "utf8");
+check(
+  "the one-sheet no longer labels the menu a sample awaiting Irish review",
+  onesheet.includes("sample menu, Irish review pending")
+    && onesheet.includes("labelled sample")
+    && onesheet.includes("sterling prices are for design reading only"),
+);
+check(
+  "the one-sheet still claims no unpublished prices or zero invented menu items",
+  !onesheet.includes("price you have not published") && !onesheet.includes("invented menu items"),
+);
 
 check(
   "the provenance record does not carry the visualisation as in use",
@@ -284,7 +305,11 @@ const irish = [
   "an Lae", "Blasta", "Bán", "Scagtha",
 ];
 /** English that must never be announced in an Irish voice. */
-const english = ["Menu", "Home", "Our story", "At the counter", "Coffee", "Morning bakes", "Brunch bowls", "Today", "Scone", "Cake", "Toast", "Tea", "Granola", "Filter", "Flat White", "bowl of the day"];
+const english = [
+  "Menu", "Home", "Our story", "At the counter", "Coffee", "Morning bakes", "Brunch bowls",
+  "Today", "Scone", "Cake", "Toast", "Tea", "Granola", "Filter", "Flat White", "bowl of the day",
+  "Instagram",
+];
 
 for (const [route, html] of [["home", home], ["menu", menu]]) {
   const chunks = textByLang(bodyOf(html));
@@ -318,6 +343,139 @@ for (const [route, text] of [["home", homeText], ["menu", menuText]]) {
 // The disambiguation the verification record asks for, on every route.
 for (const [route, text] of [["home", homeText], ["menu", menuText]]) {
   check(`Co. Down is missing from the ${route} route`, text.includes("Co. Down"));
+}
+
+// ── Move 4 geometry — the brief's phone-fold and caption hit-test pins ─────
+const distRoot = path.join(projectRoot, "dist");
+const mimeByExt = {
+  ".css": "text/css; charset=utf-8",
+  ".html": "text/html; charset=utf-8",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".js": "text/javascript; charset=utf-8",
+  ".json": "application/json",
+  ".mjs": "text/javascript; charset=utf-8",
+  ".png": "image/png",
+  ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+};
+
+const serveDist = () =>
+  new Promise((resolve, reject) => {
+    const server = http.createServer((req, res) => {
+      const url = new URL(req.url ?? "/", "http://127.0.0.1");
+      let rel = decodeURIComponent(url.pathname);
+      if (rel.endsWith("/")) rel += "index.html";
+      const filePath = path.normalize(path.join(distRoot, rel));
+      if (!filePath.startsWith(distRoot) || !existsSync(filePath) || statSync(filePath).isDirectory()) {
+        res.writeHead(404).end("Not found");
+        return;
+      }
+      res.writeHead(200, { "Content-Type": mimeByExt[path.extname(filePath)] ?? "application/octet-stream" });
+      createReadStream(filePath).pipe(res);
+    });
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      if (!address || typeof address === "string") {
+        reject(new Error("Could not bind the Cúpla geometry probe server."));
+        return;
+      }
+      resolve({ server, base: `http://127.0.0.1:${address.port}` });
+    });
+  });
+
+const measureHome = async (page) =>
+  page.evaluate(() => {
+    const wordmark = document.querySelector(".cp-hero h1");
+    const image = document.querySelector(".cp-frontage img");
+    const caption = document.querySelector(".cp-frontage figcaption");
+    if (!wordmark || !image || !caption) {
+      return { ok: false, reason: "missing wordmark, frontage image or caption" };
+    }
+    const word = wordmark.getBoundingClientRect();
+    const img = image.getBoundingClientRect();
+    const cap = caption.getBoundingClientRect();
+    const hit = document.elementFromPoint(cap.left + cap.width / 2, cap.top + cap.height / 2);
+    return {
+      ok: true,
+      viewportHeight: window.innerHeight,
+      wordmarkTop: word.top,
+      wordmarkBottom: word.bottom,
+      imageTop: img.top,
+      imageBottom: img.bottom,
+      captionTop: cap.top,
+      captionBottom: cap.bottom,
+      hitCaption: Boolean(hit && caption.contains(hit)),
+    };
+  });
+
+let chromePath;
+try {
+  chromePath = findChrome();
+} catch (error) {
+  check(`Chrome is required for the Cúpla geometry pins: ${error instanceof Error ? error.message : error}`, false);
+}
+
+if (chromePath) {
+  const { server, base } = await serveDist();
+  const browser = await puppeteer.launch({
+    executablePath: chromePath,
+    headless: "new",
+    args: [
+      "--hide-scrollbars",
+      "--force-color-profile=srgb",
+      ...(process.env.CI || process.env.CHROME_NO_SANDBOX === "1" ? ["--no-sandbox"] : []),
+    ],
+  });
+  try {
+    const page = await browser.newPage();
+    const homeUrl = new URL("/concepts/cupla/", base).href;
+
+    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    await page.goto(homeUrl, { waitUntil: "load", timeout: 60000 });
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const phone = await measureHome(page);
+    check(`phone geometry could not measure the home route: ${phone.reason ?? "unknown"}`, phone.ok);
+    if (phone.ok) {
+      check(
+        `at 390×844 the wordmark is not in the first viewport (top ${phone.wordmarkTop.toFixed(1)}, bottom ${phone.wordmarkBottom.toFixed(1)})`,
+        phone.wordmarkTop >= 0 && phone.wordmarkBottom <= phone.viewportHeight,
+      );
+      check(
+        `at 390×844 the frontage does not begin above y 520 (top ${phone.imageTop.toFixed(1)})`,
+        phone.imageTop >= 0 && phone.imageTop < 520,
+      );
+      check(
+        `at 390×844 the caption is not visible without scrolling (top ${phone.captionTop.toFixed(1)}, bottom ${phone.captionBottom.toFixed(1)})`,
+        phone.captionTop < phone.viewportHeight && phone.captionBottom > 0,
+      );
+      check("at 390×844 elementFromPoint at the caption centre does not return the caption", phone.hitCaption);
+    }
+
+    await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 1 });
+    await page.goto(homeUrl, { waitUntil: "load", timeout: 60000 });
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const desktop = await measureHome(page);
+    check(`desktop geometry could not measure the home route: ${desktop.reason ?? "unknown"}`, desktop.ok);
+    if (desktop.ok) {
+      check(
+        "at 1265×710 elementFromPoint at the caption centre does not return the caption",
+        desktop.hitCaption,
+      );
+      check(
+        `at 1265×710 the caption is not in the first viewport (top ${desktop.captionTop.toFixed(1)}, bottom ${desktop.captionBottom.toFixed(1)})`,
+        desktop.captionTop < desktop.viewportHeight && desktop.captionBottom > 0,
+      );
+    }
+  } finally {
+    await browser.close();
+    await new Promise((resolve) => server.close(resolve));
+  }
 }
 
 if (failures.length > 0) {

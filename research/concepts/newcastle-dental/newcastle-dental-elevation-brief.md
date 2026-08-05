@@ -8,22 +8,24 @@ it. The Care register was first worked out in
 the register transfers, the moves do not; everything below is derived from
 this practice's own record.
 
-**Status: written 4 August 2026. Moves 1, 2, 3 and 5 implemented 5 August
-2026** — "We love to make you smile!" leads the page with its capture year,
-the practice band carries 2014, the 2017 award, 2023 and today with a source
-against every entry, the emergency path is a two-step mechanism panel, and
-the request panel drafts a real email to the practice's own address instead
-of pretending to send. Move 4 (the drawn calm room) is unstarted; it needs
-its own asset session, and the page is still typographic until it lands.
-`tools/test/test-newcastle-dental-elevation.mjs` pins what shipped — including
-the layer rules as absences — and runs in `pnpm test`.
+**Status: written 4 August 2026. Moves 1–5 implemented 5 August 2026** —
+"We love to make you smile!" leads the page with its capture year, the
+practice band carries 2014, the 2017 award, 2023 and today with a source
+against every entry, the emergency path is a two-step mechanism panel, the
+request panel drafts a real email to the practice's own address instead of
+pretending to send, and a disclosed drawn calm-room plate supplies the one
+human-scale moment. Caption, banner note and case-study Sources & limits all
+say the plate is not the practice's furnishings or the view from Railway
+Street. `tools/test/test-newcastle-dental-elevation.mjs` pins what shipped —
+including the layer rules as absences — and runs in `pnpm test`.
 
-Two open decisions below were resolved when the moves shipped: the archived
-smile line **is** the lede quote, attributed and dated, because the current
-alternative is markedly weaker; and the two published GDC numbers are
-**omitted entirely**, because the third dentist's is not in the record and an
-uneven row would read as a gap in his credentials rather than in ours. The
-banner note now names the padlock as the proposed address rather than a live
+Open decisions resolved when the moves shipped: the archived smile line **is**
+the lede quote, attributed and dated, because the current alternative is
+markedly weaker; the two published GDC numbers are **omitted entirely**,
+because the third dentist's is not in the record and an uneven row would read
+as a gap in his credentials rather than in ours; and the calm-room plate is
+the honest bridge until a practice-supplied photograph can replace it. The
+banner note names the padlock as the proposed address rather than a live
 certificate, which is what the publication record asked for.
 
 The concept before this pass was an honest security case — the padlocked
@@ -258,20 +260,11 @@ implying online booking.
 
 ## Open decisions
 
-- Is the archived smile line the right lede quote, given the practice no
-  longer publishes it? Attributed and dated, it is honest; the alternative
-  is the current "help you with your dental care needs", which is weaker.
-  Decide at review.
-- Do the two published GDC numbers (250740, 250716) belong on the team
-  cards? They are the practice's own published credentials, but Dr
-  Sandford's is not in the record, so the row would be uneven. Include
-  with dates, or omit entirely.
 - Should the recorded-message out-of-hours protocol ever be published?
   Only after someone has rung the practice line out of hours and heard it
   first-hand; until then the 111 line stands.
-- The calm-room plate versus waiting for a practice-supplied photograph —
-  the publication record already names the photograph as the first
-  improvement on engagement; the plate is the honest bridge until then.
+- A practice-supplied photograph of the room remains the engagement upgrade
+  the publication record names first; the drawn plate stands until then.
 
 ## When a move ships
 

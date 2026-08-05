@@ -64,9 +64,8 @@ ranks below a moderate record the brief can use immediately.
 
 **Brief written 4 August 2026:**
 `research/concepts/hugh-mccanns/hugh-mccanns-elevation-brief.md`.
-**First pass (moves 1–4) implemented 4 August 2026;** moves 5 (the dusk
-visualisation) and 6 (the where-your-day-happens plate) wait on their asset
-sessions.
+**Moves 1–6 implemented 4 August 2026** — the first pass, then the dusk
+visualisation and the where-your-day-happens plate from their asset session.
 
 `research/pipeline/verifications.json` calls it the highest-value single
 target in its batch and sets the accuracy bar to match. The record holds the
@@ -87,8 +86,8 @@ repairing one.
 
 **Brief written 4 August 2026:**
 `research/concepts/castle-farm/castle-farm-elevation-brief.md`.
-**Moves 1, 2, 3 and 6 implemented 5 August 2026;** moves 4 (the table as
-theatre) and 5 (the drawn delivery-round plate) wait on their asset sessions.
+**Moves 1–6 implemented 5 August 2026** — voice, round, stock, table theatre,
+delivery-round plate and honest controls.
 
 The concept was a single hero screen: placeholder navigation, an inert
 basket, a steps strip and a proof band. Every other public concept has had
@@ -107,9 +106,9 @@ delivery map and the family-farm claim rather than to add to them.
 
 **Brief written 4 August 2026:**
 `research/concepts/newcastle-dental/newcastle-dental-elevation-brief.md`.
-**Moves 1, 2, 3 and 5 implemented 5 August 2026;** move 4 (the drawn calm
-room) waits on its asset session, and the page stays typographic until it
-lands.
+**Moves 1–5 implemented 5 August 2026** — the drawn calm room landed with the
+rest, so the page is no longer wholly typographic; the plate is disclosed as
+an illustration in caption, banner note and Sources & limits.
 
 The publication record said it plainly: the page was entirely typographic. The Care shape's elevation register is already worked out — the
 Donard Veterinary brief proved that reassurance, not spectacle, is the

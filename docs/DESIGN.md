@@ -56,7 +56,7 @@ top-strip, direct-header and navigation geometry; each identity sets its
 accent, navigation gap and underline-size tokens while keeping its distinct
 hero and secondary-page layouts local.
 
-- **Castle Farm** — the farm's navy-and-gold mark, Georgia serif and a disclosed faithful mixed-box visualisation, with the produce-led weekly-box journey kept as the proposed improvement.
+- **Castle Farm** — navy and gold, Georgia serif, the farm's own sentence on the first screen, a disclosed week's-table plate, and the weekly round as the working heart of the page.
 - **Enniskeen** — deep pine `#1E3A2C`, cream `#F5EFE2` and honey brass
   `#C9973B` with Cormorant Garamond; a hairline inset frame, an asymmetric
   48/52 split between story and valley view, and an availability bar stitched
