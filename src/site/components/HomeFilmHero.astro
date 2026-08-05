@@ -1,0 +1,300 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+import type { TownFilm } from "../data/home-films";
+import "../styles/home-film.css";
+
+interface Props {
+  towns: TownFilm[];
+}
+
+const { towns } = Astro.props;
+// Newcastle leads: the mountains-to-sea opening is the stronger first
+// impression. The switcher keeps the familiar Dundrum + Newcastle order.
+const first = towns.find((town) => town.id === "newcastle") ?? towns[0];
+---
+
+{
+  first && (
+    <section
+      class="film-hero"
+      data-film-hero
+      data-active={first.id}
+      aria-label="Mourne Made introduction"
+    >
+      {towns.map((town) => (
+        <video
+          class:list={["film-hero-video", { "is-active": town.id === first.id }]}
+          data-town={town.id}
+          data-mobile-ready={town.mobileReady ? "true" : "false"}
+          data-sound-src={town.soundReady ? `/media/home/${town.id}-ambience.mp3` : undefined}
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster={`/media/home/${town.id}-film-poster-1265.webp`}
+          aria-label={town.ariaLabel}
+        >
+          <source data-kind="webm" type="video/webm" />
+          <source data-kind="mp4" type="video/mp4" />
+        </video>
+      ))}
+      <div class="film-hero-scrim" aria-hidden="true" />
+
+      <div class="film-hero-copy">
+        <p class="home-kicker film-hero-kicker">One day, made here</p>
+        <div class="film-hero-switch" role="group" aria-label="Choose a town">
+          {towns.map((town) => (
+            <button
+              type="button"
+              data-town-switch={town.id}
+              data-name={town.name}
+              data-sound-label={town.soundLabel}
+              data-sound-ready={town.soundReady ? "true" : "false"}
+              aria-pressed={town.id === first.id ? "true" : "false"}
+            >
+              {town.name}
+            </button>
+          ))}
+        </div>
+        <h1>Let’s show your business at its best.</h1>
+        <p class="film-hero-outcome">A clearer route to book, order or get in touch.</p>
+        <p class="lede">
+          We’ll make you a free before-and-after concept, so you can see what’s
+          possible before spending a penny.
+        </p>
+        <div class="button-row">
+          <a class="button film-hero-cta" href="/request/">
+            Request a free before-and-after <ArrowIcon />
+          </a>
+        </div>
+        <a class="text-link film-hero-claim" href="/transformations/">
+          We've already made some local concepts — if one is yours, it's yours. <ArrowIcon />
+        </a>
+        <div class="film-hero-controls">
+          <button type="button" class="film-hero-play" data-film-play aria-pressed="false">
+            Play the film
+          </button>
+          <button type="button" class="film-hero-sound" data-film-sound aria-pressed="false">
+            <span data-film-sound-label>{first.soundLabel}</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="film-hero-honesty">
+        An imagined day in <strong data-film-honesty-town>{first.name}</strong>,
+        County Down — generated frame by frame, not footage.
+      </p>
+    </section>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-film-hero]").forEach((hero) => {
+    const videos = new Map<string, HTMLVideoElement>();
+    hero
+      .querySelectorAll<HTMLVideoElement>("video[data-town]")
+      .forEach((video) => videos.set(video.dataset.town ?? "", video));
+
+    const switches = new Map<string, HTMLButtonElement>();
+    hero
+      .querySelectorAll<HTMLButtonElement>("[data-town-switch]")
+      .forEach((button) => switches.set(button.dataset.townSwitch ?? "", button));
+
+    const playButton = hero.querySelector<HTMLButtonElement>("[data-film-play]");
+    const soundButton = hero.querySelector<HTMLButtonElement>("[data-film-sound]");
+    const soundLabel = hero.querySelector<HTMLElement>("[data-film-sound-label]");
+    const honestyTown = hero.querySelector<HTMLElement>("[data-film-honesty-town]");
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const smallScreen = window.matchMedia("(max-width: 720px)");
+    const connection = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection;
+    const saveData = Boolean(connection?.saveData);
+
+    const beds = new Map<string, HTMLAudioElement>();
+    let active = hero.dataset.active ?? "";
+    let soundOn = false;
+    let everPlayed = false;
+
+    // Stored choice wins over the default so a returning Dundrum owner lands
+    // back on their own bay.
+    try {
+      const stored = window.localStorage.getItem("mm-film-town");
+      if (stored && videos.has(stored)) {
+        const previous = videos.get(active);
+        previous?.classList.remove("is-active");
+        active = stored;
+        videos.get(active)?.classList.add("is-active");
+      }
+    } catch {
+      // Private browsing — the default town simply stays.
+    }
+
+    const syncControls = () => {
+      switches.forEach((button, id) => {
+        button.setAttribute("aria-pressed", id === active ? "true" : "false");
+      });
+      const current = switches.get(active);
+      if (current && soundLabel) soundLabel.textContent = current.dataset.soundLabel ?? "";
+      if (current && honestyTown) honestyTown.textContent = current.dataset.name ?? "";
+      if (soundButton && current) {
+        const ready = current.dataset.soundReady === "true";
+        soundButton.hidden = !ready;
+        if (!ready && soundOn) toggleSound();
+      }
+    };
+
+    const load = (video: HTMLVideoElement) => {
+      if (video.dataset.loaded) return;
+      const town = video.dataset.town ?? "";
+      const mobile = smallScreen.matches && video.dataset.mobileReady === "true";
+      const base = `/media/home/${town}-film${mobile ? "-mobile" : ""}`;
+      video.querySelectorAll<HTMLSourceElement>("source[data-kind]").forEach((source) => {
+        source.src = `${base}.${source.dataset.kind}`;
+      });
+      video.load();
+      video.dataset.loaded = "true";
+    };
+
+    const bed = (town: string): HTMLAudioElement | null => {
+      const video = videos.get(town);
+      const src = video?.dataset.soundSrc;
+      if (!src) return null;
+      let audio = beds.get(town);
+      if (!audio) {
+        audio = new Audio(src);
+        audio.loop = true;
+        audio.volume = 0;
+        beds.set(town, audio);
+      }
+      return audio;
+    };
+
+    const fadeBed = (town: string, to: number) => {
+      const audio = beds.get(town);
+      if (!audio) return;
+      const from = audio.volume;
+      const started = performance.now();
+      const step = (now: number) => {
+        const t = Math.min((now - started) / 900, 1);
+        audio.volume = from + (to - from) * t;
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else if (to === 0) {
+          audio.pause();
+        }
+      };
+      if (to > 0) void audio.play().catch(() => {});
+      requestAnimationFrame(step);
+    };
+
+    function toggleSound() {
+      soundOn = !soundOn;
+      soundButton?.setAttribute("aria-pressed", soundOn ? "true" : "false");
+      if (soundOn) {
+        bed(active);
+        fadeBed(active, 0.55);
+      } else {
+        beds.forEach((_, town) => fadeBed(town, 0));
+      }
+    }
+
+    const play = async (video: HTMLVideoElement) => {
+      load(video);
+      try {
+        await video.play();
+        everPlayed = true;
+        playButton?.setAttribute("aria-pressed", "true");
+        if (playButton) playButton.textContent = "Pause the film";
+      } catch {
+        hero.classList.add("film-hero--manual");
+      }
+    };
+
+    const pause = (video: HTMLVideoElement) => {
+      video.pause();
+      playButton?.setAttribute("aria-pressed", "false");
+      if (playButton) playButton.textContent = "Play the film";
+    };
+
+    playButton?.addEventListener("click", () => {
+      const video = videos.get(active);
+      if (!video) return;
+      hero.classList.remove("film-hero--manual");
+      if (video.paused) {
+        void play(video);
+      } else {
+        pause(video);
+      }
+    });
+
+    soundButton?.addEventListener("click", toggleSound);
+
+    const switchTown = (next: string) => {
+      if (next === active) return;
+      const from = videos.get(active);
+      const to = videos.get(next);
+      if (!to) return;
+      const wasPlaying = from ? !from.paused : false;
+
+      from?.classList.remove("is-active");
+      to.classList.add("is-active");
+      active = next;
+      hero.dataset.active = next;
+      syncControls();
+      try {
+        window.localStorage.setItem("mm-film-town", next);
+      } catch {
+        // Preference is a nicety, never a requirement.
+      }
+
+      if (soundOn) {
+        beds.forEach((_, town) => {
+          if (town !== next) fadeBed(town, 0);
+        });
+        bed(next);
+        fadeBed(next, 0.55);
+      }
+
+      if (from) pause(from);
+      if (wasPlaying || (!reducedMotion.matches && !saveData && everPlayed)) {
+        void play(to);
+      }
+    };
+
+    switches.forEach((button, id) => {
+      button.addEventListener("click", () => switchTown(id));
+    });
+
+    // The film is ambience, not content: motion-sensitive and data-conscious
+    // visitors get the poster and an explicit play control instead.
+    if (reducedMotion.matches || saveData) {
+      hero.classList.add("film-hero--manual");
+    }
+
+    let inView = false;
+    let resumeOnReturn = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        inView = entries.some((entry) => entry.isIntersecting);
+        const video = videos.get(active);
+        if (!video) return;
+        if (inView) {
+          if (!everPlayed && !reducedMotion.matches && !saveData) void play(video);
+          else if (resumeOnReturn && !hero.classList.contains("film-hero--manual")) {
+            resumeOnReturn = false;
+            void play(video);
+          }
+        } else if (!video.paused) {
+          resumeOnReturn = true;
+          video.pause();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(hero);
+
+    syncControls();
+  });
+</script>
