@@ -422,7 +422,7 @@ export const transformationDetails = {
     "title": "Castle Farm concept transformation — Mourne Made",
     "description": "A respectful, source-backed before-and-after website concept for Castle Farm Fresh Produce in Dundrum.",
     "eyebrow": "Website transformation · Dundrum",
-    "headline": "Let the produce make the first impression.",
+    "headline": "Show the week the farm actually runs.",
     "date": "17 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/castle-farm/",
@@ -434,28 +434,28 @@ export const transformationDetails = {
       "beforePoster": "/media/concepts/castle-farm/castle-farm-before.jpg",
       "afterPoster": "/media/concepts/castle-farm/castle-farm-after.jpg",
       "beforeAlt": "Ten-second visit to Castle Farm's current website — the opening screen, a scroll through the produce boxes and a menu hover",
-      "afterAlt": "Ten-second visit to the Castle Farm concept — the produce hero, one clear shop action and a scroll through the weekly promises"
+      "afterAlt": "Ten-second visit to the Castle Farm concept — Let us worry about digging it up. over the mixed box, then this week's round: the two published cutoffs, the delivery days with their named towns, the published minimums and the is-your-town-on-it lookup"
     },
     "secondSurfacesHtml": [],
-    "notesHeading": "Three changes to make the first visit easier.",
+    "notesHeading": "Three changes to put the farm's own week on the page.",
     "notes": [
       {
         "title": "Give the business the opening moment",
         "body": "The captured page places a newsletter request above the farm, before a visitor has had time to understand what is on offer.",
-        "change": "Lead with the weekly box and move newsletter sign-up until after value has been shown."
+        "change": "Open on the farm's own sentence — Let us worry about digging it up. — beside the two dates no box scheme can copy: generations of the same family beside Dundrum Castle, and online ordering and home delivery since 2008."
       },
       {
-        "title": "Make the next action obvious",
-        "body": "Several layers compete at once, so the route into the shop is harder to see than it needs to be.",
-        "change": "Offer one primary action — shop this week's produce — with quieter navigation behind it."
+        "title": "Make every control do something",
+        "body": "Several layers compete at once on arrival, so the route into the working shop is harder to see than it needs to be.",
+        "change": "One primary action — shop this week's produce — pointing at the farm's own store, with no basket and no category rail that leads nowhere."
       },
       {
-        "title": "Show why local matters",
-        "body": "The existing mark is distinctive, but the opening screen does not immediately connect it to produce, provenance or delivery.",
-        "change": "Keep the farm's navy-and-gold mark and pair it with a clearly labelled faithful visualisation of the mixed produce box, weekly-box route and collection or Northern Ireland delivery."
+        "title": "Put the weekly round on the page",
+        "body": "The delivery schedule is published in full but as dense paragraphs of town names, so a customer has to read the lot to find out which day their own town goes out.",
+        "change": "The round set out day by day with the towns the farm names, the two 3pm cutoffs, the published minimums and delivery fee, and a lookup that answers one question — is your town on it, and when?"
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The business name, navy-and-gold mark, published phone number, store categories, collection and Northern Ireland delivery offer came from that site. The concept's opening produce image is a disclosed AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph: it preserves the recognisable vegetables, eggs, chicken and butcher items while removing labels and supermarket branding and recomposing them in a navy crate. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about exact box contents or availability, sales performance, customer approval or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The concept's first screen was rebuilt on 5 August 2026 from the farm's own About and Delivery pages, re-read on 4 August 2026, and the comparison media was recaptured the same day.</p><p>Everything the concept says as the farm is the farm's own published wording, quoted verbatim: &ldquo;Let us worry about digging it up.&rdquo;, &ldquo;Simply browse our fresh produce, add to cart and checkout&rdquo;, the castle-grounds and same-family provenance, &ldquo;established as a web based order and home delivery service in 2008&rdquo;, and the aim of keeping money circulating in the local economy, providing jobs for local people and cutting down on food miles. The delivery days, the towns named against each of them, the two 3pm order cutoffs, the &pound;40 local minimum, the &pound;76 outlying minimum and the &pound;4 delivery fee are the farm's published schedule and terms as read on 4 August 2026. They are live business facts and they move — the October 2025 archive already shows the local minimum going from &pound;36 to &pound;40 — so the page carries the read date and links to the farm's own delivery page as the source of truth. No town appears that the farm does not list, and a town that is not on the published round is told so rather than given a day. The Aberdeen Angus herd, the 300-ewe flock behind the Mourne lamb, the Gloucestershire Old Spot pork, the free-range eggs and the seasonal vegetables are the farm's own published stock; the local producers who travel the round with it are described, as the farm describes them, without naming suppliers the farm does not name. The Medium Mixed Box price is deliberately not quoted here — prices are the most perishable thing the farm publishes, so the page links to the shop instead.</p><p>The opening produce image is a disclosed AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph: it preserves the recognisable vegetables, eggs, chicken and butcher items while removing labels and supermarket branding and recomposing them in a navy crate. The concept previously cropped a second generated produce photograph into a wordmark window; that was withdrawn on 5 August 2026 because it was not the farm's mark, and the name is now set in type. Castle Farm runs a working online shop with live checkout, so nothing here sells: every commerce control on the concept hands off to castlefarmni.com, and there is no basket. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website, shop and delivery pages</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about exact box contents or availability, sales performance, customer approval or the business&#39;s plans for its current site. The figures above were true on 4 August 2026 and are re-verified before any contact.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">&rarr;</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "painted-earth": {
     "title": "Painted Earth concept transformation — Mourne Made",

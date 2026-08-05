@@ -2,50 +2,335 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import {
+  ROUND_READ_ON,
+  SHOP_URL,
+  PHONE,
+  PHONE_HREF,
+  roundDays,
+  cutoffs,
+  terms,
+  fromTheFarm,
+  neighbours,
+  recipes,
+} from "./round";
+
+/* Castle Farm runs a working Shopify store with live checkout, so this page
+   argues first-screen clarity and the story the store never tells — never a
+   replacement shop. Every transaction control below hands off to
+   castlefarmni.com; nothing here takes an order, and there is no basket.
+
+   Every quoted sentence, every town, every figure and every animal comes from
+   the farm's own About and Delivery pages, re-read 4 August 2026. The round
+   data lives in ./round.ts with its read date. Two open decisions from the
+   brief are resolved here in the cautious direction: the £45 Medium Mixed Box
+   price is not quoted (prices are the most perishable thing the farm
+   publishes, so the page names the box and links out for the price), and the
+   "approximately 50,000 kept up to date" figure is left out — it is the farm's
+   claim to make, not a boast the concept should make for it. */
 ---
 
-<ConceptLayout title={"Castle Farm — independent concept"} slug="castle-farm" bodyClass="concept-page concept-castle-farm" lang="en-GB" bannerNote="Imagery is AI-generated; the wordmark is not the farm's.">
-<header class="concept-header">
-      <div class="concept-logo">
-        {/* Cropped by CSS to a 190x43 window. The source is square, so every
-            derivative shares the master's aspect ratio and the crop offset holds;
-            `sizes` keeps the phone on the 640px file instead of the 1200px master. */}
-        <span class="farm-wordmark"><ResponsiveImage src="/media/concepts/castle-farm/castle-farm-produce.jpg" alt="Castle Farm" width="1200" height="1200" sizes="190px" loading="eager" /></span>
-        <span>Dundrum · County Down</span>
-      </div>
-      <nav class="concept-nav" aria-label="Concept navigation"><a href="#" data-concept-placeholder>Box deals</a><a href="#" data-concept-placeholder>Fruit &amp; veg</a><a href="#" data-concept-placeholder>Butchery</a><a href="#" data-concept-placeholder>Groceries</a></nav>
-      <a class="concept-basket" href="#" data-concept-placeholder>Basket · 0</a>
-    </header>
-    <main>
-      <section class="farm-hero">
-        <div class="farm-hero-copy">
-          <p class="farm-kicker">The weekly shop, from Dundrum</p>
-          <h1>This week's shop, sorted.</h1>
-          <p>Fruit and veg, butchery and grocery favourites, with produce boxes ready to collect or deliver across Northern Ireland.</p>
-          <a class="farm-button" href="#" data-concept-placeholder>Choose a produce box <span aria-hidden="true">→</span></a>
-          <ol class="farm-steps" aria-label="How the weekly box journey works">
-            <li><span>1</span><strong>Choose a box</strong></li>
-            <li><span>2</span><strong>Add the staples</strong></li>
-            <li><span>3</span><strong>Collect or deliver</strong></li>
-          </ol>
-        </div>
-        <figure class="farm-produce">
-          <img src="/media/concepts/castle-farm/castle-farm-weekly-box-faithful.webp" alt="Faithful visualisation of Castle Farm's mixed weekly box, with vegetables, eggs, chicken and butcher items in a navy crate" />
-          <figcaption>Faithful visualisation based on Castle Farm’s published mixed-box photograph.</figcaption>
-          <div class="farm-box-action">
-            <div>
-              <span>Build around your week</span>
-              <strong>Start with a box. Add what your household needs.</strong>
-            </div>
-            <a href="#" data-concept-placeholder aria-label="Start this week's box">Start a box <span aria-hidden="true">→</span></a>
-          </div>
+<ConceptLayout
+  title={"Castle Farm — independent concept"}
+  slug="castle-farm"
+  bodyClass="concept-page concept-castle-farm"
+  lang="en-GB"
+  businessName="Castle Farm Fresh Produce"
+  town="Dundrum"
+  bannerNote="The produce image is an AI-generated faithful visualisation; the name is set in type, not the farm's mark."
+>
+  <div class="cf-strip">
+    <span>Dundrum, County Down · in the foothills of the Mournes, beside the castle</span>
+    <span class="cf-strip-r">Deliveries Tuesday to Saturday · <a href={PHONE_HREF}>{PHONE}</a></span>
+  </div>
+
+  <header class="cf-header">
+    <a class="cf-brand" href="/concepts/castle-farm/">
+      <span class="cf-brand-name">Castle Farm</span>
+      <span class="cf-brand-sub">Fresh Produce · Dundrum</span>
+    </a>
+    <nav class="cf-nav" aria-label="Concept navigation">
+      <a href="#round">This week's round</a><a href="#town">Is your town on it?</a><a href="#farm">From the farm</a><a href="#kitchen">In the kitchen</a>
+    </nav>
+    <a class="cf-shop" href={SHOP_URL} rel="external">Shop at castlefarmni.com</a>
+  </header>
+
+  <main class="cf-main">
+    <section class="cf-hero" aria-labelledby="cf-headline">
+      <div class="cf-hero-copy">
+        <p class="cf-kicker">Beside Dundrum Castle</p>
+
+        <!-- Their sentence, verbatim, with its source and read date. It passes
+             the best-sentence test outright: plain, funny, and only a farm
+             could have written it. -->
+        <figure class="cf-say">
+          <blockquote cite={SHOP_URL}>
+            <h1 id="cf-headline">Let us worry about digging it up.</h1>
+          </blockquote>
+          <figcaption>
+            Our own words on <a href={SHOP_URL} rel="external">castlefarmni.com</a> · read {ROUND_READ_ON}
+          </figcaption>
         </figure>
-      </section>
-      <section class="farm-proof" aria-label="Service highlights">
-        <div><strong>Family farm in Dundrum</strong><span>Local produce from County Down</span></div>
-        <div><strong>Weekly produce box</strong><span>Start with a box, add what you need</span></div>
-        <div><strong>Collect or deliver</strong><span>Across Northern Ireland</span></div>
-      </section>
-    </main>
+
+        <p class="cf-lede">Simply browse our fresh produce, add to cart and checkout.</p>
+
+        <a class="cf-button" href={SHOP_URL} rel="external">
+          Shop this week's produce <span aria-hidden="true">→</span>
+        </a>
+
+        <dl class="cf-dates">
+          <div>
+            <dt>Hundreds of years</dt>
+            <dd>Farmed by generations of the same family. Our ancestors lived in the castle grounds.</dd>
+          </div>
+          <div>
+            <dt>Since 2008</dt>
+            <dd>Established as a web based order and home delivery service.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="cf-produce">
+        <img
+          src="/media/concepts/castle-farm/castle-farm-weekly-box-faithful.webp"
+          alt="Faithful visualisation of Castle Farm's mixed weekly box, with vegetables, eggs, chicken and butcher items in a navy crate"
+          width="1200"
+          height="900"
+        />
+        <figcaption>Faithful visualisation based on Castle Farm’s published mixed-box photograph.</figcaption>
+      </figure>
+    </section>
+
+    <!-- The essence made visible: the round is the business. Nothing here is a
+         pressure timer — the cutoffs are the farm's published ones, and the
+         "next" marker only says which of the two comes round first. -->
+    <section class="cf-round" id="round" aria-labelledby="cf-round-title">
+      <div class="cf-section-head">
+        <p class="cf-eyebrow">This week's round</p>
+        <h2 id="cf-round-title">Order by the cutoff, and it goes out on your town's day.</h2>
+        <p class="cf-section-intro">
+          Bespoke orders close at 3pm. Which cutoff you need depends on the day
+          your town is on.
+        </p>
+      </div>
+
+      <ul class="cf-cutoffs" data-cf-cutoffs>
+        {cutoffs.map((cutoff) => (
+          <li class="cf-cutoff" data-cf-cutoff={cutoff.id}>
+            <span class="cf-cutoff-next" data-cf-cutoff-next hidden>Next</span>
+            <p class="cf-cutoff-label">Order by</p>
+            <p class="cf-cutoff-when">{cutoff.orderBy}</p>
+            <p class="cf-cutoff-covers">for {cutoff.covers}</p>
+          </li>
+        ))}
+      </ul>
+
+      <ol class="cf-days">
+        {roundDays.map((entry) => (
+          <li class="cf-day" id={`day-${entry.id}`}>
+            <p class="cf-day-name">{entry.day}</p>
+            <p class="cf-day-heading">{entry.heading}</p>
+            {entry.towns.length > 0 && (
+              <ul class="cf-towns">
+                {entry.towns.map((town) => (
+                  <li data-cf-town={town} data-cf-day={entry.day}>{town}</li>
+                ))}
+              </ul>
+            )}
+            {entry.andMore && <p class="cf-day-more">and more</p>}
+            {entry.note && <p class="cf-day-note">{entry.note}</p>}
+          </li>
+        ))}
+      </ol>
+
+      <div class="cf-terms">
+        <dl>
+          {terms.map((term) => (
+            <div>
+              <dt>{term.label}</dt>
+              <dd>{term.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="cf-terms-foot">
+          On the day your order goes out we send a despatch note by email or
+          text. If nobody is in, the box or bags are left out for you.
+        </p>
+        <p class="cf-terms-source">
+          <a href={SHOP_URL} rel="external">Full delivery terms and the whole schedule on castlefarmni.com</a>
+          <span>· read {ROUND_READ_ON}</span>
+        </p>
+      </div>
+
+      <!-- The lookup indexes the towns rendered above, so it can only ever
+           answer with what the page publishes. A town that is not listed gets
+           the farm's own answer — get in touch — never an invented day. -->
+      <form class="cf-lookup" id="town" data-cf-lookup>
+        <label class="cf-lookup-label" for="cf-town">Is your town on the round?</label>
+        <p class="cf-lookup-help">Type a town and we will tell you which day it goes out.</p>
+        <div class="cf-lookup-row">
+          <input id="cf-town" name="town" type="text" autocomplete="address-level2" placeholder="Downpatrick" />
+          <button type="submit">Check the round</button>
+        </div>
+        <p class="cf-lookup-answer" data-cf-answer role="status"></p>
+      </form>
+    </section>
+
+    <section class="cf-stock" id="farm" aria-labelledby="cf-stock-title">
+      <div class="cf-section-head">
+        <p class="cf-eyebrow">What travels the round</p>
+        <h2 id="cf-stock-title">From this farm, and from our neighbours.</h2>
+      </div>
+      <div class="cf-stock-grid">
+        <div class="cf-stock-ours">
+          <h3>From this farm</h3>
+          <dl>
+            {fromTheFarm.map((item) => (
+              <div>
+                <dt>{item.name}</dt>
+                <dd>{item.line}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div class="cf-stock-theirs">
+          <h3>From our neighbours</h3>
+          <p class="cf-neighbours-lead">{neighbours.lead}</p>
+          <p>{neighbours.line}</p>
+          <p class="cf-neighbours-aim">
+            Only the best fine foods that the local area has to offer — and
+            keeping money circulating in the local economy, providing jobs for
+            local people and cutting down on food miles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cf-kitchen" id="kitchen" aria-labelledby="cf-kitchen-title">
+      <div class="cf-section-head">
+        <p class="cf-eyebrow">This week's box, this week's dinner</p>
+        <h2 id="cf-kitchen-title">What the box turns into.</h2>
+      </div>
+      <ul class="cf-recipes">
+        {recipes.map((dish) => <li>{dish}</li>)}
+      </ul>
+      <p class="cf-recipes-foot">
+        <a href={SHOP_URL} rel="external">Read the recipes on castlefarmni.com</a>
+        <span>· read {ROUND_READ_ON}</span>
+      </p>
+    </section>
+
+    <section class="cf-close" aria-labelledby="cf-close-title">
+      <h2 id="cf-close-title">A farm beside a Norman castle, running its round since 2008.</h2>
+      <p>
+        The sheep flock is growing, and there are trees and a small orchard to
+        plant. The round goes out every week either way.
+      </p>
+      <p class="cf-close-actions">
+        <a class="cf-button" href={SHOP_URL} rel="external">Shop this week's produce <span aria-hidden="true">→</span></a>
+        <span>or ring <a href={PHONE_HREF}>{PHONE}</a></span>
+      </p>
+      <p class="cf-close-address">Castle Farm Fresh Produce · Dundrum, County Down</p>
+    </section>
+  </main>
+
+  <script is:inline>
+    (function () {
+      /* Which of the two published cutoffs comes round first from the
+         visitor's clock. It marks a card and says nothing else: no countdown,
+         no "order in the next N hours", nothing that rushes anybody. */
+      var list = document.querySelector("[data-cf-cutoffs]");
+      if (list) {
+        var schedule = [
+          { id: "midweek", weekday: 0, hour: 15 },
+          { id: "endweek", weekday: 3, hour: 15 },
+        ];
+        var now = new Date();
+        var soonest = null;
+        var soonestGap = Infinity;
+        for (var i = 0; i < schedule.length; i += 1) {
+          var gapDays = (schedule[i].weekday - now.getDay() + 7) % 7;
+          if (gapDays === 0 && now.getHours() >= schedule[i].hour) gapDays = 7;
+          var gap = gapDays * 24 + (schedule[i].hour - now.getHours());
+          if (gap < soonestGap) {
+            soonestGap = gap;
+            soonest = schedule[i].id;
+          }
+        }
+        var card = list.querySelector('[data-cf-cutoff="' + soonest + '"]');
+        var tag = card && card.querySelector("[data-cf-cutoff-next]");
+        if (card && tag) {
+          card.classList.add("is-next");
+          tag.hidden = false;
+        }
+      }
+
+      /* The lookup reads the towns the page has already published, so the
+         answer and the schedule cannot disagree. */
+      var form = document.querySelector("[data-cf-lookup]");
+      if (!form) return;
+      var field = form.querySelector("#cf-town");
+      var answer = form.querySelector("[data-cf-answer]");
+      if (!field || !answer) return;
+
+      var index = {};
+      var order = [];
+      var normalise = function (value) {
+        return value.toLowerCase().replace(/^the\s+/, "").replace(/[^a-z]/g, "");
+      };
+      document.querySelectorAll("[data-cf-town]").forEach(function (node) {
+        var key = normalise(node.getAttribute("data-cf-town") || "");
+        if (!key) return;
+        if (!index[key]) {
+          index[key] = { name: node.getAttribute("data-cf-town"), days: [] };
+          order.push(key);
+        }
+        var day = node.getAttribute("data-cf-day");
+        if (day && index[key].days.indexOf(day) === -1) index[key].days.push(day);
+      });
+
+      var listDays = function (days) {
+        if (days.length === 1) return days[0];
+        return days.slice(0, -1).join(", ") + " and " + days[days.length - 1];
+      };
+
+      /* Two of the published entries begin "the" — the Ards, the Ards
+         Peninsula — and they open the answer sentence. */
+      var opening = function (name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+      };
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var typed = field.value.trim();
+        if (!typed) {
+          answer.textContent = "";
+          answer.removeAttribute("data-cf-answer-state");
+          return;
+        }
+        var key = normalise(typed);
+        var hit = index[key];
+        if (!hit) {
+          for (var i = 0; i < order.length; i += 1) {
+            if (order[i].indexOf(key) === 0 && key.length > 2) {
+              hit = index[order[i]];
+              break;
+            }
+          }
+        }
+        if (hit) {
+          answer.setAttribute("data-cf-answer-state", "on");
+          answer.textContent =
+            hit.days.length > 1
+              ? opening(hit.name) + " is on the round on " + listDays(hit.days) + "."
+              : opening(hit.name) + " goes out on " + hit.days[0] + ".";
+          return;
+        }
+        answer.setAttribute("data-cf-answer-state", "off");
+        answer.textContent =
+          "We do not list " + typed + " on the published round. Ring " +
+          "07568 436413 and we will tell you what we can do.";
+      });
+    })();
+  </script>
 </ConceptLayout>

@@ -242,11 +242,14 @@ Every page carrying one of these labels it as generated on the page itself.
   (`risograph-chicken-burger.png`) sits alongside as the print-resolution
   source; webp derivatives and the webm are pipeline products of the jpg
   and mp4.
-- `castle-farm-produce.jpg` — **in use.** AI-generated. Cropped by CSS to a
-  190×43 window and shown as the concept's wordmark in the page header, so the
-  visible slice reads as a brand mark rather than as photography. It is not the
-  farm's own mark. Recorded 28 July 2026 after the journey suite found it
-  rendered with no provenance entry.
+- `castle-farm-produce.jpg` — **not in use since 5 August 2026.** AI-generated.
+  It was cropped by CSS to a 190×43 window and shown as the concept's wordmark
+  in the page header, so the visible slice read as a brand mark rather than as
+  photography. It was never the farm's own mark, which is why the elevation
+  retired it: `research/concepts/castle-farm/castle-farm-elevation-brief.md`
+  asks for plain type until the farm's production wordmark is cleared. Recorded
+  28 July 2026 after the journey suite found it rendered with no provenance
+  entry; withdrawn from the page 5 August 2026.
 - `enniskeen-faithful-room9.png` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 9's compact beige-tiled en-suite. The prompt preserved the wall-mounted basin, mirror, magnifying mirror and towel-ring arrangement and forbade an invented bath or spa setting.
 - `cupla-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the photographed frontage at 105 Main Street, Dundrum. The source reference was an August 2024 Google Maps user photo; the prompt forbade invented seating, people, products or amenities.
 - `mourne-cycles-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on an April 2026 Mourne Cycles customer photo. The prompt preserved the photographed bicycle, red fence, paving and numbered blue bin while forbidding invented shop, rider, trail or product context. The reference evidences the bicycle and its surroundings only, not the ownership of the yard, so neither the caption nor the alt text called the fence the shop's own premises (corrected 25 July 2026 after the re-review flagged the alt text as an unsourced premises claim).
