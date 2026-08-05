@@ -204,7 +204,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Cúpla's current public presence: its Facebook page covered by Meta's cookie consent dialog and login form, with the café's name and tagline greyed out behind them",
     afterAlt:
-      "Mourne Made concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, twin-ring mark, an at-the-counter card and paired Irish and English copy",
+      "Mourne Made concept opening in petrol, oat and caramel, with the bilingual Fáilte isteach Come on in headline, the twin-ring mark, paired Irish and English copy and a visualisation of the CÚPLA shopfront beside it",
     href: "/transformations/cupla/",
     pin: { x: 935, y: 265 },
   },

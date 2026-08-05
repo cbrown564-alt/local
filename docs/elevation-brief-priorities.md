@@ -139,6 +139,10 @@ brief must respect: no confirmed seasonal hours exist anywhere, so the
 
 **Brief written 4 August 2026:**
 `research/concepts/cupla/cupla-elevation-brief.md`.
+**Moves 1–4 implemented 5 August 2026** — the three words credited, the pair
+staged, the day in two beats and the frontage restored to the home route with
+its disclosure chain and the reference photograph's rights position recorded.
+Move 5 (the keepable menu card) stays gated on the fluent-Irish review.
 
 The method says the essence is usually a paradox; Cúpla hands it over
 wrapped: the Irish for twins, opened by twin owners, every label twinned in
