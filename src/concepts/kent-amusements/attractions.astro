@@ -1,151 +1,150 @@
 ---
 import "../../site/styles/global.css";
 import "./styles.css";
-const facebook = "https://www.facebook.com/kentamusementsnewcastle/";
-const phone = "028 4372 2515";
-const phoneHref = "tel:+442843722515";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import SeasonPanel from "./SeasonPanel.astro";
+import {
+  ADDRESS,
+  AVOCA,
+  FACEBOOK,
+  PHONE,
+  PHONE_HREF,
+  attractions,
+  avoca,
+} from "./record";
+
+/* The second surface. Three attractions, each carrying where it is verified
+   from, and the season panel that replaced the three empty rows the 27 July
+   2026 publication record asked to be replaced.
+
+   The list is closed: dodgems, VR games and arcade machines are what the record
+   holds. No tokens, tickets, 2p pushers, party rooms, loyalty cards or prices —
+   several of those appeared in earlier drafts and none of them are verified.
+   And no time of day, anywhere; see rule 1 in ./record.ts. */
+
+const marks: Record<string, { cls: string; svg: string }> = {
+  dodgems: { cls: "", svg: "dodgems" },
+  vr: { cls: "ka-atx-mark--vr", svg: "vr" },
+  arcade: { cls: "ka-atx-mark--arcade", svg: "arcade" },
+};
 ---
 
-<ConceptLayout title={"Kent Amusements — Attractions & Seasonal Hours — independent concept"} slug="kent-amusements" bodyClass="concept-page concept-kent" lang="en-GB">
-<div class="ka-strip">
-      <span><strong>77–79 Central Promenade</strong> · Newcastle, Co. Down</span>
-      <span>Seasonal hours on <a href={facebook}>Facebook</a></span>
-    </div>
-    <header class="ka-header">
-      <a class="ka-brand" href="/concepts/kent-amusements/">
-        <svg class="ka-mark" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
-          <rect x="1.5" y="1.5" width="39" height="39" rx="4" stroke="currentColor" stroke-width="2.2" />
-          <path d="M8 28 V14 H14.5 C17.8 14 20 16 20 18.8 C20 21.6 17.8 23.6 14.5 23.6 H11.2 V28 Z M11.2 20.6 H14.2 C15.7 20.6 16.7 19.7 16.7 18.8 C16.7 17.9 15.7 17 14.2 17 H11.2 Z" fill="currentColor" />
-          <circle cx="29.5" cy="18" r="5.2" stroke="currentColor" stroke-width="2.2" />
-          <path d="M26.2 28 L29.5 21.2 L32.8 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="29.5" cy="18" r="1.6" fill="currentColor" />
-        </svg>
-        <span class="ka-brand-text">
-          <span class="ka-brand-name">Kent Amusements</span>
-          <span class="ka-brand-sub">Central Promenade · Newcastle</span>
-        </span>
+<ConceptLayout
+  title={"Kent Amusements — What's inside & seasonal hours — independent concept"}
+  slug="kent-amusements"
+  bodyClass="concept-page concept-kent"
+  lang="en-GB"
+  bannerNote="The quoted description is the Avoca Hotel's, not ours; the arcade's own hours live on its Facebook page."
+>
+  <div class="ka-strip">
+    <span><strong>{ADDRESS}</strong> · Newcastle, Co. Down</span>
+    <span>Seasonal hours on <a href={FACEBOOK}>Facebook</a></span>
+  </div>
+
+  <header class="ka-header">
+    <a class="ka-brand" href="/concepts/kent-amusements/">
+      <svg class="ka-mark" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="39" height="39" rx="4" stroke="currentColor" stroke-width="2.2" />
+        <path d="M8 28 V14 H14.5 C17.8 14 20 16 20 18.8 C20 21.6 17.8 23.6 14.5 23.6 H11.2 V28 Z M11.2 20.6 H14.2 C15.7 20.6 16.7 19.7 16.7 18.8 C16.7 17.9 15.7 17 14.2 17 H11.2 Z" fill="currentColor" />
+        <circle cx="29.5" cy="18" r="5.2" stroke="currentColor" stroke-width="2.2" />
+        <path d="M26.2 28 L29.5 21.2 L32.8 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="29.5" cy="18" r="1.6" fill="currentColor" />
+      </svg>
+      <span class="ka-brand-text">
+        <span class="ka-brand-name">Kent Amusements</span>
+        <span class="ka-brand-sub">Central Promenade · Newcastle</span>
+      </span>
+    </a>
+    <nav class="ka-nav" aria-label="Concept navigation">
+      <a href="/concepts/kent-amusements/">Home</a>
+      <a href="/concepts/kent-amusements/#summers">Fifty summers</a>
+      <a href="/concepts/kent-amusements/attractions/" aria-current="page">What's inside</a>
+      <a href="#season">Hours &amp; offers</a>
+    </nav>
+    <a class="ka-call" href={PHONE_HREF}>Call {PHONE}</a>
+  </header>
+
+  <main class="ka-atx-main">
+    <section class="ka-atx-story">
+      <p class="ka-kicker">What's inside</p>
+      <h1 class="ka-atx-heading">Three things, and <em>fifty summers</em> of them.</h1>
+      <p class="ka-atx-lede">
+        The list is short and it has not needed to be long. Here is what is on
+        the floor before you cross the promenade.
+      </p>
+      <div class="ka-atx-cards">
+        {attractions.map((item) => (
+          <article class="ka-atx-card">
+            <div class:list={["ka-atx-mark", marks[item.id]?.cls]} aria-hidden="true">
+              {marks[item.id]?.svg === "dodgems" && (
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="3" y="10" width="16" height="7" rx="3.5" stroke="white" stroke-width="1.8" />
+                  <path d="M7 10 V7.5 Q11 5 15 7.5 V10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="7.5" cy="17.5" r="1.6" fill="white" />
+                  <circle cx="14.5" cy="17.5" r="1.6" fill="white" />
+                </svg>
+              )}
+              {marks[item.id]?.svg === "vr" && (
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="8" width="18" height="9" rx="3" stroke="white" stroke-width="1.8" />
+                  <circle cx="7.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
+                  <circle cx="14.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
+                  <path d="M9.5 12.5 H12.5" stroke="white" stroke-width="1.4" />
+                  <path d="M8 8 V5.5 Q11 4 14 5.5 V8" stroke="white" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+              )}
+              {marks[item.id]?.svg === "arcade" && (
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="white" stroke-width="1.8" />
+                  <circle cx="11" cy="9" r="2.8" stroke="white" stroke-width="1.5" />
+                  <circle cx="8" cy="15.5" r="1.2" fill="white" />
+                  <circle cx="11" cy="15.5" r="1.2" fill="white" />
+                  <circle cx="14" cy="15.5" r="1.2" fill="white" />
+                </svg>
+              )}
+            </div>
+            <div class="ka-atx-body">
+              <strong class="ka-atx-name">{item.name}</strong>
+              <span class="ka-atx-desc">{item.desc}</span>
+              <small class="ka-atx-source">{item.note}</small>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="ka-actions">
+        <a class="ka-cta" href="/concepts/kent-amusements/#afternoon">How an afternoon goes</a>
+        <a class="ka-link" href="/concepts/kent-amusements/">← Home</a>
+      </div>
+    </section>
+
+    <aside class="ka-atx-panel" id="season">
+      <SeasonPanel headingId="ka-season-heading" />
+      <figure class="ka-avoca ka-avoca--atx">
+        <blockquote><p>{avoca.quote}</p></blockquote>
+        <figcaption>
+          <strong>{avoca.who}</strong> · {avoca.source}.
+          <a href={AVOCA} rel="external">See their listing <span aria-hidden="true">→</span></a>
+        </figcaption>
+      </figure>
+    </aside>
+
+    <nav class="ka-rail" aria-label="Sections and contact">
+      <a class="ka-rail-cell" href="/concepts/kent-amusements/">
+        <span class="ka-ride">Home</span>
+        <span class="ka-ride-note">The promenade</span>
       </a>
-      <nav class="ka-nav" aria-label="Concept navigation">
-        <a href="/concepts/kent-amusements/">Home</a>
-        <a href="/concepts/kent-amusements/attractions/" aria-current="page">Attractions</a>
-        <a href="/concepts/kent-amusements/attractions/">Hours</a>
-        <a href="/concepts/kent-amusements/attractions/">Family offers</a>
-        <a href={facebook} rel="external">Find us</a>
-      </nav>
-      <a class="ka-call" href={phoneHref}>Call {phone}</a>
-    </header>
-    <main class="ka-atx-main">
-      <section class="ka-atx-story">
-        <p class="ka-kicker">Attractions</p>
-        <h1 class="ka-atx-heading">Plan your time on <em>the promenade</em>.</h1>
-        <p class="ka-atx-lede">
-          Three things families come back to — here is what is inside before you arrive at the Central Promenade.
-        </p>
-        <div class="ka-atx-cards">
-          <article class="ka-atx-card">
-            <div class="ka-atx-mark" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <rect x="3" y="10" width="16" height="7" rx="3.5" stroke="white" stroke-width="1.8" />
-                <path d="M7 10 V7.5 Q11 5 15 7.5 V10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="7.5" cy="17.5" r="1.6" fill="white" />
-                <circle cx="14.5" cy="17.5" r="1.6" fill="white" />
-              </svg>
-            </div>
-            <div class="ka-atx-body">
-              <strong class="ka-atx-name">Dodgems</strong>
-              <span class="ka-atx-desc">Indoor bumper cars for all the family</span>
-            </div>
-          </article>
-          <article class="ka-atx-card">
-            <div class="ka-atx-mark ka-atx-mark--vr" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <rect x="2" y="8" width="18" height="9" rx="3" stroke="white" stroke-width="1.8" />
-                <circle cx="7.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
-                <circle cx="14.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
-                <path d="M9.5 12.5 H12.5" stroke="white" stroke-width="1.4" />
-                <path d="M8 8 V5.5 Q11 4 14 5.5 V8" stroke="white" stroke-width="1.6" stroke-linecap="round" />
-              </svg>
-            </div>
-            <div class="ka-atx-body">
-              <strong class="ka-atx-name">VR games</strong>
-              <span class="ka-atx-desc">New virtual reality zone · 2026</span>
-            </div>
-          </article>
-          <article class="ka-atx-card">
-            <div class="ka-atx-mark ka-atx-mark--arcade" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="white" stroke-width="1.8" />
-                <circle cx="11" cy="9" r="2.8" stroke="white" stroke-width="1.5" />
-                <circle cx="8" cy="15.5" r="1.2" fill="white" />
-                <circle cx="11" cy="15.5" r="1.2" fill="white" />
-                <circle cx="14" cy="15.5" r="1.2" fill="white" />
-              </svg>
-            </div>
-            <div class="ka-atx-body">
-              <strong class="ka-atx-name">Arcade</strong>
-              <span class="ka-atx-desc">Machines for all ages on the floor</span>
-            </div>
-          </article>
-        </div>
-        <div class="ka-actions">
-          <a class="ka-cta" href={facebook} rel="external">Check today's hours</a>
-          <a class="ka-link" href="/concepts/kent-amusements/">← Home</a>
-        </div>
-      </section>
-      <aside class="ka-atx-panel">
-        <div class="ka-hours-board">
-          <p class="ka-ticket-kicker">Seasonal hours</p>
-          <h2 class="ka-hours-heading">Opening hours</h2>
-          {/* The 25 July 2026 re-review failed the claims gate here: this board
-              published "School holidays 10 am – 9 pm" and "Weekends 11 am – 8 pm"
-              as fact, and no source in verifications.json records any opening
-              hours for Kent Amusements. The shape of the board is the design
-              proposal; the times are shown as the placeholder they are. */}
-          <p class="ka-provisional">
-            Hours vary by season — check Facebook for today's times.
-          </p>
-          <ul class="ka-offer">
-            <li>
-              <span class="ka-offer-label">School holidays</span>
-              <span class="ka-offer-val ka-offer-val--empty">Seasonal — check Facebook</span>
-            </li>
-            <li>
-              <span class="ka-offer-label">Weekends</span>
-              <span class="ka-offer-val ka-offer-val--empty">Seasonal — check Facebook</span>
-            </li>
-            <li>
-              <span class="ka-offer-label">Weekdays (term)</span>
-              <span class="ka-offer-val ka-offer-val--empty">See Facebook</span>
-            </li>
-          </ul>
-          <a class="ka-ticket-cta" href={facebook} rel="external">Check today's hours on Facebook →</a>
-          <small>Hours are seasonal and managed on the Facebook page the arcade already updates.</small>
-        </div>
-        <div class="ka-family-offers">
-          <p class="ka-ticket-kicker ka-family-kicker">Family offers</p>
-          <h2 class="ka-family-heading">Updated when they run.</h2>
-          <p class="ka-family-body">Family offers are posted on Facebook when they run.</p>
-          <a class="ka-offers-link" href={facebook} rel="external">See current offers on Facebook →</a>
-        </div>
-      </aside>
-      <nav class="ka-rail" aria-label="Attractions and contact">
-        <a class="ka-rail-cell" href="/concepts/kent-amusements/">
-          <span class="ka-ride">Home</span>
-          <span class="ka-ride-note">Home</span>
-        </a>
-        <a class="ka-rail-cell" href="#" data-concept-placeholder>
-          <span class="ka-ride">Dodgems</span>
-          <span class="ka-ride-note">Indoor bumper cars</span>
-        </a>
-        <a class="ka-rail-cell" href="#" data-concept-placeholder>
-          <span class="ka-ride">VR games</span>
-          <span class="ka-ride-note">New for 2026</span>
-        </a>
-        <a class="ka-rail-cell" href={phoneHref}>
-          <span class="ka-ride">Call us</span>
-          <span class="ka-ride-note">{phone} →</span>
-        </a>
-      </nav>
-    </main>
+      <a class="ka-rail-cell" href="/concepts/kent-amusements/#summers">
+        <span class="ka-ride">Fifty summers</span>
+        <span class="ka-ride-note">Late 1960s to 2026</span>
+      </a>
+      <a class="ka-rail-cell" href="/concepts/kent-amusements/#afternoon">
+        <span class="ka-ride">An afternoon</span>
+        <span class="ka-ride-note">Six steps, in order</span>
+      </a>
+      <a class="ka-rail-cell" href={PHONE_HREF}>
+        <span class="ka-ride">Call us</span>
+        <span class="ka-ride-note">{PHONE} →</span>
+      </a>
+    </nav>
+  </main>
 </ConceptLayout>

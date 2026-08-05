@@ -6,8 +6,12 @@ Written 4 August 2026, fourth in the ranked sequence in
 it. The ranked review called this the strongest keepable-artifact candidate
 among the unbriefed concepts and the one whose swap test fails most plainly.
 
-**Status: written 4 August 2026; not yet implemented.** The current concept
-is an honest first-website case — "Fifty summers of seaside fun", three
+**Status: written 4 August 2026. Moves 1–4 implemented 5 August 2026** — the
+town's memory, the dated fifty-summers band, the staged afternoon and the
+honest season panel. Move 5 (the drawn promenade-at-dusk plate and the
+day/dusk clock swap) is unstarted: it needs its own drawing session, and until
+it lands both screens carry no image at all. The concept as first published
+was an honest first-website case — "Fifty summers of seaside fun", three
 verified attractions, an explicitly empty seasonal-hours board — and it
 passes the publication checks. It is also type and SVG chrome from top to
 bottom, and almost nothing on it is only true of *this* arcade. The re-read
@@ -179,10 +183,13 @@ one-sheet taking the dusk plate on its cover.
 
 - **First pass:** moves 1, 2 and 4 — the town's memory, the dated arc, the
   honest season panel. No new assets; it fixes the swap test, the voice
-  gap and the publication-flagged board in one pass.
+  gap and the publication-flagged board in one pass. **Shipped 5 August 2026,
+  with move 3 alongside it.**
 - **Theatre session:** move 3 (staged visit) with move 5's mechanism —
-  the clock swap built and tested against empty slots.
+  the clock swap built and tested against empty slots. **Move 3 shipped; the
+  clock swap waits on the plates it swaps.**
 - **The drawing session:** move 5's two plates, then the one-sheet.
+  **Unstarted.**
 
 ## Honesty constraints
 
@@ -234,21 +241,33 @@ one-sheet taking the dusk plate on its cover.
 
 ## Open decisions
 
-- Is the BBC memory the right emotional centre, given it is a third
-  party's nostalgia rather than the arcade's own voice? The alternative is
-  no quotation at all — the record holds nothing first-party. Review at
-  build.
-- May the Avoca "only homes to indoor Dodgem Cars" claim be quoted
-  (attributed), or does it wait for first-party confirmation? It is the
-  strongest scarcity hook in the record and the least verifiable.
-- Should the held 2023 CC BY-SA photograph serve as a private drawing
-  reference for the frontage, per the Dundrum Inn private-reference
-  pattern, or is the drawn frontage composed from verified geography
-  alone?
-- Does the clock swap earn its place on a page whose honest answer to
-  "open now?" is "check Facebook"? The swap is mood, not a claim of being
-  open — but the pairing of a lit-dusk plate with an unanswered hours
-  question needs a reviewer's eye.
+Resolved at build, 5 August 2026:
+
+- **Is the BBC memory the right emotional centre?** Yes. The record holds no
+  first-party sentence, and the alternative — no quotation at all — leaves the
+  page as the type-and-chrome page the diagnosis condemned. It carries its era
+  in the panel head ("A memory of the late 1960s"), names the speaker and the
+  decade in the caption, cites the archive with the read date and links it. The
+  second memory (the juke-box) sits inside the arc band's own late-1960s entry,
+  where its era cannot detach from it.
+- **One correction to move 1.** The change-booth memory is quoted with its
+  shift times elided — "You had to work long hours … but we didn't care, it was
+  summer and we hadn't a care in the world" — and the caption says so. The full
+  quotation carries "8.30am to 10.30pm", which is a 1960s summer job; on an
+  arcade page, next to an hours panel, it would read as opening hours to anyone
+  scanning, which is precisely the 25 July 2026 failure. Eliding it lets the
+  standing scan be absolute rather than carved out, which is the stronger test.
+- **May the Avoca claim be quoted?** Yes, attributed, and it is — on both
+  screens, verbatim, dated 5 August 2026, captioned "their words, not ours".
+  The test asserts that outside the quotation marks neither "premier" nor the
+  indoor-dodgems scarcity appears in the concept's own voice.
+- **Private drawing reference for the frontage?** Deferred with move 5. Until
+  the drawing session runs, the withdrawn 2023 photograph is not used in any
+  capacity, and the test asserts both pages carry no image at all.
+- **Does the clock swap earn its place?** Deferred with move 5. The season
+  panel answers "open now?" by naming the ritual and handing off, and that
+  answer now has the weight the swap was meant to supply; the pairing gets a
+  reviewer's eye when the plates exist.
 
 ## When a move ships
 
@@ -259,3 +278,18 @@ the first viewport recaptures the comparison stills and clip in the same
 commit. Update this status line as moves land; do not call the concept
 validated until an owner or representative visitor has supplied that
 evidence.
+
+**Landed 5 August 2026 (moves 1–4).** Every fact and borrowed sentence lives in
+`src/concepts/kent-amusements/record.ts` with its source and read date; the
+season panel is `SeasonPanel.astro`, shared by both screens, and its
+`confirmedHours` array is the designed home the publication record asked for,
+empty until a published source fills it.
+`tools/test/test-kent-amusements-elevation.mjs` pins all four moves against the
+built pages and runs in `pnpm test`: the no-time-of-day scan on both screens,
+the two quotations verbatim with their era and dates, four dated arc entries
+with four sources, the six steps in order, the closed inventory as a set of
+absences, and both pages image-free while the photograph stays withdrawn. The
+after still and demo clip are recaptured, the attractions still with them, and
+the case study's Sources & limits block now runs to four paragraphs naming what
+is quoted, what is elided and what is deliberately absent. No new assets, so
+`research/image-provenance.md` is unchanged.

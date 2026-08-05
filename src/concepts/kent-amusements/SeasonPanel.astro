@@ -1,0 +1,40 @@
+---
+/* The season panel — move 4 of the elevation brief.
+   One confident ticket instead of three apologetic rows. The arcade's hours
+   really do move with the season and really are posted on Facebook as they
+   change, so the panel states that ritual as the information rather than as an
+   absence, and hands today's answer to the channel that owns it.
+
+   `confirmedHours` is empty and stays empty until the arcade publishes hours
+   with a source; when it fills, the rows appear here. The panel never renders
+   an empty row, and it never renders a time. */
+import { FACEBOOK, confirmedHours, season } from "./record";
+
+interface Props {
+  /** `full` on the attractions page, `compact` beside the arc on the home page. */
+  variant?: "full" | "compact";
+  headingId?: string;
+}
+const { variant = "full", headingId = "ka-season-heading" } = Astro.props;
+---
+
+<div class:list={["ka-season", variant === "compact" && "ka-season--compact"]}>
+  <p class="ka-season-kicker">Seasonal hours</p>
+  <h2 class="ka-season-heading" id={headingId}>The season sets the hours.</h2>
+  <p class="ka-season-ritual">{season.ritual}</p>
+  {confirmedHours.length > 0 && (
+    <ul class="ka-season-rows">
+      {confirmedHours.map((row) => (
+        <li>
+          <span class="ka-season-row-label">{row.label}</span>
+          <span class="ka-season-row-val">{row.value}</span>
+          <small class="ka-season-row-source">{row.source}</small>
+        </li>
+      ))}
+    </ul>
+  )}
+  <a class="ka-season-cta" href={FACEBOOK} rel="external">
+    Open the arcade's Facebook page <span aria-hidden="true">→</span>
+  </a>
+  <p class="ka-season-why">{season.why}</p>
+</div>

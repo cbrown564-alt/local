@@ -97,7 +97,7 @@
 }
 .ka-call:hover { background: var(--pier); transform: translateY(-1px); }
 
-/* Hero — story | promenade stage + ticket | attractions rail */
+/* Hero — story | the town's memory | section rail */
 .ka-hero {
   position: relative;
   min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
@@ -108,7 +108,7 @@
 .ka-story {
   grid-column: 1;
   grid-row: 1;
-  padding: clamp(20px, 3vh, 40px) clamp(26px, 3.6vw, 56px) 24px;
+  padding: clamp(20px, 3vh, 40px) clamp(26px, 3.6vw, 56px) 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,9 +126,9 @@
 }
 .ka-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--ticket); }
 .ka-story h1 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-family: var(--display);
-  font-size: clamp(58px, 6.8vw, 88px);
+  font-size: clamp(52px, 5.6vw, 76px);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: 0.01em;
@@ -141,7 +141,7 @@
   color: var(--coral-ink);
 }
 .ka-thesis {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   max-width: 16em;
   font-family: var(--display);
   font-size: clamp(28px, 3vw, 40px);
@@ -151,7 +151,7 @@
   color: var(--coral-ink);
 }
 .ka-lede {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   max-width: 32em;
   font-size: 16px;
   line-height: 1.55;
@@ -177,8 +177,10 @@
   text-decoration-color: var(--ticket);
 }
 
-/* Attractions board — experience and current-hours path instead of traffic */
-.ka-now-board {
+/* Move 1 — the town's memory, which is the only voice the record holds.
+   The panel is the pier-deep counterweight to the type on the left, and the
+   era tag sits in the head so it is read before the quotation, never after. */
+.ka-remember {
   grid-column: 2;
   grid-row: 1;
   min-width: 0;
@@ -189,162 +191,91 @@
   background: var(--pier-deep);
   color: var(--foam);
 }
-.ka-now-head {
+.ka-remember-head {
   min-height: 48px;
-  padding: 0 clamp(24px, 3vw, 42px);
+  padding: 10px clamp(24px, 3vw, 42px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border-bottom: 1px solid rgba(247,251,252,.16);
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(247, 251, 252, .16);
   color: #c3d3de;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
-.ka-now-body { flex: 1 1 auto; padding: clamp(25px, 3.5vh, 40px) clamp(24px, 3vw, 42px) 24px; }
-.ka-now-kicker { margin: 0 0 5px; color: var(--ticket); font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-.ka-now-board h2 {
-  margin: 0 0 20px;
-  color: #fff;
-  font-family: var(--display);
-  font-size: clamp(43px, 4.5vw, 66px);
-  font-weight: 700;
-  letter-spacing: .01em;
-  line-height: .86;
-  text-transform: uppercase;
-}
-.ka-now-attractions { border-top: 2px solid var(--ticket); }
-.ka-now-attractions a {
-  display: grid;
-  grid-template-columns: 34px 1fr 1fr auto;
-  align-items: baseline;
-  gap: 12px;
-  padding: 12px 0 10px;
-  border-bottom: 1px solid rgba(247,251,252,.16);
-  color: var(--foam);
-  text-decoration: none;
-}
-.ka-now-attractions a:hover strong { color: var(--ticket); }
-.ka-now-attractions span { color: var(--coral); font-family: var(--display); font-size: 18px; font-weight: 700; }
-.ka-now-attractions strong { font-family: var(--display); font-size: 27px; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
-.ka-now-attractions small { color: #c3d3de; font-size: 12px; }
-.ka-now-attractions b { color: var(--ticket); font-size: 18px; }
-.ka-now-hours {
-  padding: 14px clamp(24px, 3vw, 42px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+.ka-era-tag {
+  padding: 4px 9px;
+  border-radius: 999px;
   background: var(--ticket);
   color: var(--pier-deep);
-  font-size: 12px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  white-space: nowrap;
 }
-.ka-now-hours a { color: var(--pier-deep); font-weight: 800; text-underline-offset: 4px; white-space: nowrap; }
-.ka-now-hours strong { font-size: 14px; }
-.ka-visual-note {
+.ka-memory {
+  flex: 1 1 auto;
   margin: 0;
-  padding: 8px 10px;
-  border-left: 3px solid var(--ticket);
-  background: rgba(247, 251, 252, .82);
-  color: #3d5260;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-.ka-stage {
-  position: relative;
-  min-height: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 14px 36px rgba(11, 23, 38, 0.28);
-  background: #1a3a5c;
-}
-.ka-pier {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.ka-ticket {
-  width: 100%;
-  padding: 14px 18px 14px;
-  background: var(--pier);
-  color: var(--foam);
-  border-radius: 8px;
-  border-top: 3px solid var(--ticket);
-}
-.ka-ticket-kicker {
-  margin: 0 0 4px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--ticket);
-}
-.ka-ticket h2 {
-  margin: 0 0 8px;
-  font-family: var(--display);
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-.ka-offer { margin: 0; padding: 0; list-style: none; }
-.ka-offer li {
-  padding: 4px 0;
+  padding: clamp(18px, 2.6vh, 32px) clamp(24px, 3vw, 42px) 16px;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  border-top: 1px dashed rgba(247, 251, 252, 0.18);
+  flex-direction: column;
+  justify-content: center;
 }
-.ka-offer li:first-child { border-top: 0; }
-.ka-offer-label {
+.ka-memory blockquote { margin: 0 0 12px; }
+.ka-memory blockquote p {
+  margin: 0;
   font-family: var(--display);
-  font-size: 17px;
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  line-height: 1;
+  letter-spacing: .01em;
   text-transform: uppercase;
   color: #ffffff;
+  text-wrap: balance;
 }
-.ka-offer-val {
-  font-size: 12.5px;
-  text-align: right;
+/* The quotation marks are the design; the marks themselves stay decorative so
+   a screen reader is not read punctuation twice. */
+.ka-memory blockquote p::before,
+.ka-memory blockquote p::after { content: '\201C'; color: var(--ticket); }
+.ka-memory blockquote p::after { content: '\201D'; }
+.ka-memory figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 12px;
+  border-top: 2px solid var(--ticket);
+  font-size: 12px;
+  line-height: 1.45;
   color: #c3d3de;
 }
-.ka-offer-val--empty { font-style: italic; }
-/* Placed before the values it qualifies, so the disclaimer cannot be missed
-   by a visitor who reads the board top-down. */
-.ka-provisional {
-  margin: 0 0 7px;
-  padding: 8px 10px;
-  border-radius: 6px;
-  background: rgba(247, 251, 252, 0.12);
-  color: #f2f7fa;
-  font-size: 12.5px;
-  font-weight: 600;
-  line-height: 1.45;
-}
-.ka-ticket-cta {
-  display: block;
-  margin-top: 10px;
-  padding: 11px;
-  border-radius: 6px;
-  background: var(--ticket);
-  color: var(--pier-deep);
-  font-size: 14.5px;
+.ka-memory figcaption strong { color: #ffffff; font-weight: 700; font-size: 13px; }
+.ka-memory figcaption a,
+.ka-avoca figcaption a {
+  color: var(--ticket);
   font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  transition: background 150ms ease, color 150ms ease;
+  text-underline-offset: 4px;
 }
-.ka-ticket-cta:hover { background: var(--coral); color: #ffffff; }
-.ka-ticket small { display: block; margin-top: 7px; font-size: 11.5px; text-align: center; color: #7a93a5; }
+/* The Avoca's present-tense description, beside the memory and never blended
+   into it: a second voice, in a smaller register, with its own attribution. */
+.ka-avoca {
+  margin: 0;
+  padding: 13px clamp(24px, 3vw, 42px) 14px;
+  background: rgba(61, 184, 168, .12);
+  border-top: 1px solid rgba(247, 251, 252, .16);
+}
+.ka-avoca blockquote { margin: 0 0 6px; }
+.ka-avoca blockquote p {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #ffffff;
+}
+.ka-avoca figcaption { font-size: 11.5px; line-height: 1.5; color: #9eb4c4; }
+.ka-avoca figcaption strong { color: var(--sea); font-weight: 700; }
 
 /* Attractions rail — content right-aligned so the fixed concept-disclosure badge
    in the bottom-left corner never covers a cell */
@@ -377,12 +308,6 @@
 }
 .ka-ride-note { font-size: 12px; color: #9eb4c4; }
 
-/* Entrance + marquee pulse */
-@keyframes ka-rise { from { opacity: 0; transform: translateY(14px); } }
-@keyframes ka-bulbs {
-  0%, 100% { opacity: 0.75; }
-  50% { opacity: 1; }
-}
 @media (max-width: 940px) {
   .ka-strip { flex-direction: column; gap: 2px; text-align: center; }
   .ka-nav { display: none; }
@@ -390,16 +315,14 @@
   .ka-hero { grid-template-columns: 1fr; min-height: 0; }
   .ka-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 24px; }
   .ka-story h1 { max-width: none; }
-  .ka-now-board {
+  .ka-remember {
     grid-column: 1;
     grid-row: auto;
     order: 1;
   }
-  .ka-now-head { padding-inline: 22px; }
-  .ka-now-body { padding: 28px 22px 22px; }
-  .ka-now-attractions a { grid-template-columns: 32px 1fr auto; }
-  .ka-now-attractions small { display: none; }
-  .ka-now-hours { padding-inline: 22px; align-items: flex-start; flex-direction: column; gap: 8px; }
+  .ka-remember-head { padding-inline: 22px; }
+  .ka-memory { padding: 28px 22px 22px; }
+  .ka-avoca { padding-inline: 22px; }
   .ka-rail { grid-column: 1; grid-row: auto; order: 2; }
   .ka-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
   .ka-rail-cell { border-left: 0; flex: 1 1 45%; }
@@ -418,8 +341,268 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ka-kicker, .ka-story h1, .ka-lede, .ka-actions, .ka-stage, .ka-ticket { animation: none; }
-  .ka-bulbs circle { animation: none; }
+  .ka-visit-step, .ka-arc-entry { transition: none; }
+}
+
+/* =====================================================================
+   Move 2 — the fifty-summers band. Jukebox to VR in one glance, and every
+   entry wearing the date that earns it its place.
+   ===================================================================== */
+.ka-summers {
+  display: grid;
+  grid-template-columns: minmax(0, 22em) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--foam);
+  border-top: 3px solid var(--ticket);
+}
+.ka-summers h2,
+.ka-afternoon h2 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-weight: 700;
+  line-height: .94;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-summers h2 em,
+.ka-afternoon h2 em { font-style: normal; color: var(--coral-ink); }
+.ka-summers-lede,
+.ka-afternoon-lede {
+  margin: 0;
+  max-width: 26em;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+.ka-arc {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.ka-arc-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 9em) minmax(0, 1fr);
+  gap: 6px clamp(16px, 2.4vw, 32px);
+  padding: 18px 0;
+  border-top: 1px solid var(--hairline);
+}
+.ka-arc-entry:first-child { border-top: 0; padding-top: 0; }
+.ka-arc-when {
+  grid-row: 1 / span 3;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--coral-ink);
+}
+.ka-arc-line {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-pier);
+}
+/* The sixties entry carries the jukebox memory itself, so the far end of the
+   line is a quotation rather than a claim. */
+.ka-arc-quote {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--sea);
+  background: rgba(61, 184, 168, .1);
+}
+.ka-arc-quote blockquote { margin: 0 0 5px; }
+.ka-arc-quote blockquote p {
+  margin: 0;
+  font-size: 14.5px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--pier);
+}
+.ka-arc-quote figcaption { font-size: 11.5px; color: #4c6274; }
+.ka-arc-source {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ticket-ink);
+}
+
+/* =====================================================================
+   Move 3 — the afternoon staged in the order it happens. Six steps, verified
+   material only; step 02 is where the sixties memory and today meet.
+   ===================================================================== */
+.ka-afternoon {
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--pier);
+  color: var(--foam);
+}
+.ka-afternoon h2 { color: #ffffff; }
+.ka-afternoon h2 em { color: var(--ticket); }
+.ka-afternoon .ka-kicker { color: var(--ticket); }
+.ka-afternoon-lede { color: #c3d3de; }
+.ka-afternoon-intro { margin: 0 0 clamp(24px, 3.5vh, 40px); }
+.ka-visit {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  /* Three across, two down: the six steps still read left-to-right in order,
+     and no row is left with a dead cell the way auto-fit's five-and-one did. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(247, 251, 252, .16);
+  border: 1px solid rgba(247, 251, 252, .16);
+}
+.ka-visit-step {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 18px 22px;
+  background: var(--pier);
+  transition: background 160ms ease;
+}
+.ka-visit-step:hover { background: var(--pier-deep); }
+.ka-visit-step--hinge { background: var(--pier-deep); box-shadow: inset 3px 0 0 var(--ticket); }
+.ka-visit-num {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: var(--ticket);
+}
+.ka-visit-name {
+  font-family: var(--display);
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-visit-line { font-size: 14px; line-height: 1.55; color: #c3d3de; }
+
+/* =====================================================================
+   Move 4 — the season panel. A ticket, not a placeholder.
+   ===================================================================== */
+.ka-season-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 26em);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--spray);
+}
+.ka-season-lede {
+  margin: 0 0 14px;
+  max-width: 26em;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.35;
+  color: var(--pier);
+}
+.ka-season {
+  padding: 20px clamp(18px, 2vw, 26px) 18px;
+  background: var(--pier);
+  color: var(--foam);
+  border-radius: 8px;
+  border-top: 3px solid var(--ticket);
+  /* The notch pair reads the panel as a torn ticket rather than an empty board
+     waiting to be filled in. */
+  box-shadow: 0 14px 36px rgba(11, 23, 38, .22);
+}
+.ka-season-kicker {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ticket);
+}
+.ka-season-heading {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-season-ritual {
+  margin: 0 0 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(247, 251, 252, .28);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #f2f7fa;
+}
+/* Empty by design until the arcade publishes hours with a source; the rows
+   below are the home those hours will land in. */
+.ka-season-rows { margin: 0 0 14px; padding: 0; list-style: none; }
+.ka-season-rows li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 7px 0;
+  border-top: 1px dashed rgba(247, 251, 252, .18);
+}
+.ka-season-row-label {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-season-row-val { font-size: 13.5px; color: #f2f7fa; }
+.ka-season-row-source { flex: 1 0 100%; font-size: 11px; color: #9eb4c4; }
+.ka-season-cta {
+  display: block;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--ticket);
+  color: var(--pier-deep);
+  font-size: 14.5px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+.ka-season-cta:hover { background: var(--coral); color: #ffffff; }
+.ka-season-why {
+  margin: 9px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  text-align: center;
+  color: #9eb4c4;
+}
+
+/* Responsive — the three bands. This block has to sit after the band rules it
+   narrows: an earlier media query loses to a later base rule at equal
+   specificity, which is how the summers band first overflowed 390px by 82px. */
+@media (max-width: 940px) {
+  .ka-summers,
+  .ka-season-band {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .ka-summers,
+  .ka-afternoon,
+  .ka-season-band { padding-inline: 22px; }
+  .ka-arc-entry { grid-template-columns: 1fr; gap: 4px; }
+  .ka-arc-when { grid-row: auto; }
+  .ka-visit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .ka-visit { grid-template-columns: 1fr; }
 }
 
 /* =====================================================================
@@ -470,18 +653,21 @@
   color: #3d5260;
 }
 
+/* Three across rather than stacked: the list is short, and the column has to
+   clear the first viewport at 1265x710 with its actions and rail intact. */
 .ka-atx-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
   margin: 0 0 22px;
 }
 
 .ka-atx-card {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 13px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 15px 15px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid var(--hairline);
   border-left: 3px solid var(--hairline);
@@ -494,12 +680,12 @@
 .ka-atx-card:hover {
   border-left-color: var(--coral);
   background: rgba(255, 255, 255, 0.95);
-  transform: translateX(3px);
 }
 
 .ka-atx-mark {
-  flex: 0 0 42px;
-  height: 42px;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--pier);
   display: grid;
@@ -536,72 +722,37 @@
   grid-row: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
   padding: 10px clamp(16px, 2.4vw, 28px) 10px 8px;
 }
 
-.ka-hours-board {
-  flex: 1 1 auto;
-  padding: 9px 14px;
-  background: var(--pier);
-  color: var(--foam);
-  border-radius: 8px;
-  border-top: 3px solid var(--ticket);
+/* The attractions panel now holds one thing: the season ticket. The three
+   apologetic "Seasonal — check Facebook" rows it used to hold were the
+   improvement the 27 July 2026 publication record named. */
+.ka-atx-panel .ka-season { flex: 0 0 auto; }
+
+.ka-atx-source {
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ticket-ink);
 }
 
-.ka-hours-heading {
-  margin: 4px 0 10px;
-  font-family: var(--display);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
+/* On the second surface the Avoca quotation sits on spray rather than pier, so
+   it needs the light-ground treatment of the same two voices. */
+.ka-avoca--atx {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border-radius: 7px;
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--sea);
+  background: rgba(61, 184, 168, .1);
 }
-
-.ka-family-offers {
-  padding: 10px 16px;
-  background: var(--pier-deep);
-  color: var(--foam);
-  border-radius: 8px;
-  border-top: 3px solid var(--sea);
-}
-
-.ka-family-kicker { color: var(--sea) !important; }
-
-.ka-family-heading {
-  margin: 2px 0 4px;
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.ka-family-body {
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.45;
-  color: #9eb4c4;
-}
-
-.ka-offers-link {
-  display: block;
-  padding: 10px;
-  border-radius: 6px;
-  background: var(--sea);
-  color: var(--pier-deep);
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  transition: background 150ms ease, color 150ms ease;
-}
-
-.ka-offers-link:hover { background: var(--ticket); }
+.ka-avoca--atx blockquote p { color: var(--pier); }
+.ka-avoca--atx figcaption { color: #4c6274; }
+.ka-avoca--atx figcaption strong { color: #1f6f65; }
+.ka-avoca--atx figcaption a { color: var(--coral-ink); }
 
 /* Responsive — attractions page */
 @media (max-width: 940px) {
@@ -611,6 +762,8 @@
      overlap that painted the heading, lede and all three attraction cards
      underneath the hours and offers panels (25 July 2026 re-review). */
   .ka-atx-story { grid-column: 1; grid-row: auto; padding: 36px 22px 20px; }
+  .ka-atx-cards { grid-template-columns: 1fr; gap: 8px; }
+  .ka-atx-card { flex-direction: row; align-items: center; gap: 16px; }
   .ka-atx-panel { grid-column: 1; grid-row: auto; padding: 10px 22px 20px; }
   .ka-atx-heading { max-width: none; }
 }

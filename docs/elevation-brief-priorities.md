@@ -126,6 +126,11 @@ assume nothing about who decides.
 
 **Brief written 4 August 2026:**
 `research/concepts/kent-amusements/kent-amusements-elevation-brief.md`.
+**Moves 1–4 implemented 5 August 2026** — the town's memory as the emotional
+centre, the dated fifty-summers band, the staged afternoon and the honest
+season panel. Move 5's drawn promenade-at-dusk plate is unstarted, so this is
+the only elevated concept still carrying no image; the withdrawn 2023 exterior
+stays withdrawn until the drawing session runs.
 
 The strongest keepable-artifact candidate among the twelve: over fifty years
 on the same Central Promenade site, with a BBC *Your Place and Mine* entry
