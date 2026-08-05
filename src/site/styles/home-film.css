@@ -1,0 +1,250 @@
+/* "One Day, Made Here" film hero — see research/film/one-day-made-here.md */
+
+.film-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #10182b 0%,
+    #232f4f 46%,
+    #5c4340 76%,
+    #b97e49 100%
+  );
+  color: #f4f8fa;
+}
+
+.film-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.film-hero-video.is-active {
+  opacity: 1;
+}
+
+.film-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(5 9 18 / 38%) 0%, transparent 26%, transparent 44%, rgb(5 9 18 / 64%) 100%),
+    linear-gradient(100deg, rgb(5 9 18 / 42%) 0%, transparent 58%);
+  pointer-events: none;
+}
+
+.film-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 46rem;
+  padding: clamp(5rem, 9vh, 7.5rem) clamp(1.4rem, 5vw, 4.5rem) clamp(3.2rem, 6vh, 4.6rem);
+}
+
+.film-hero-kicker {
+  color: rgb(244 248 250 / 74%);
+}
+
+.film-hero-switch {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin: 0 0 1.5rem;
+  padding: 0.25rem;
+  border: 1px solid rgb(244 248 250 / 30%);
+  border-radius: 999px;
+  background: rgb(5 9 18 / 32%);
+  backdrop-filter: blur(6px);
+}
+
+.film-hero-switch button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.38rem 1.15rem;
+  background: transparent;
+  color: rgb(244 248 250 / 78%);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 240ms ease,
+    color 240ms ease;
+}
+
+.film-hero-switch button:hover {
+  color: #f4f8fa;
+}
+
+.film-hero-switch button[aria-pressed="true"] {
+  background: #ffc46a;
+  color: #241a08;
+}
+
+.film-hero h1 {
+  max-width: 12ch;
+  margin: 0 0 0.9rem;
+  color: #ffffff;
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.film-hero-outcome {
+  margin: 0 0 1.1rem;
+  color: #ffd9a0;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.film-hero .lede {
+  max-width: 32rem;
+  margin: 0;
+  color: rgb(244 248 250 / 90%);
+  font-size: clamp(18px, 1.8vw, 21px);
+}
+
+.film-hero .button-row {
+  margin-top: 22px;
+}
+
+.film-hero-cta {
+  border-color: #ffc46a;
+  background: #ffc46a;
+  color: #241a08;
+}
+
+.film-hero-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #10182b;
+}
+
+.film-hero-claim {
+  display: block;
+  width: fit-content;
+  max-width: 32rem;
+  margin-top: 14px;
+  color: rgb(244 248 250 / 72%);
+  font-size: 14px;
+  font-weight: 650;
+  text-underline-offset: 4px;
+}
+
+.film-hero-claim:hover {
+  color: #ffffff;
+}
+
+.film-hero-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.film-hero-play,
+.film-hero-sound {
+  border: 1px solid rgb(244 248 250 / 38%);
+  border-radius: 999px;
+  padding: 0.36rem 1.05rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.film-hero-play:hover,
+.film-hero-sound:hover {
+  border-color: rgb(244 248 250 / 75%);
+}
+
+.film-hero-sound[aria-pressed="true"] {
+  border-color: #ffc46a;
+  background: rgb(255 196 106 / 16%);
+  color: #ffd9a0;
+}
+
+/* The play control exists for visitors the film must not ambush — reduced
+   motion, data-saver, or a browser that refused autoplay. */
+.film-hero-play {
+  display: none;
+}
+
+.film-hero--manual .film-hero-play {
+  display: inline-block;
+}
+
+.film-hero-honesty {
+  position: absolute;
+  right: clamp(1.2rem, 3vw, 2.4rem);
+  bottom: 1.1rem;
+  z-index: 2;
+  max-width: 21rem;
+  margin: 0;
+  color: rgb(244 248 250 / 56%);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.film-hero-honesty strong {
+  color: rgb(244 248 250 / 80%);
+  font-weight: 650;
+}
+
+/* Proof fold — the before/after stage once the film holds the first fold. */
+.home-proof {
+  padding: clamp(3.4rem, 6vw, 5.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+  background: var(--foam);
+}
+
+.home-proof-head {
+  margin-bottom: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.home-proof-head h2 {
+  max-width: 16ch;
+  margin-bottom: 0.9rem;
+}
+
+.home-proof-head p {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .film-hero {
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .film-hero-copy {
+    padding: 5.5rem 1.4rem 1.8rem;
+  }
+
+  .film-hero h1 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .film-hero-honesty {
+    position: static;
+    max-width: none;
+    padding: 0 1.4rem 1.2rem;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-hero-video {
+    transition: none;
+  }
+}

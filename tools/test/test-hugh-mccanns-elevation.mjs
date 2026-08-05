@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pins the Hugh McCann's elevation (moves 1–4 of
+ * Pins the Hugh McCann's elevation (moves 1–6 of
  * research/concepts/hugh-mccanns/hugh-mccanns-elevation-brief.md).
  *
  * Runs against the built page, not the source, so a template that stops
@@ -16,6 +16,7 @@ import { projectRoot } from "../lib/public-slugs.mjs";
 const builtPath = path.join(projectRoot, "dist", "concepts", "hugh-mccanns", "index.html");
 const sourcePath = path.join(projectRoot, "src", "concepts", "hugh-mccanns", "home.astro");
 const stylesPath = path.join(projectRoot, "src", "concepts", "hugh-mccanns", "styles.css");
+const mediaDir = path.join(projectRoot, "public", "media", "concepts", "hugh-mccanns");
 
 if (!existsSync(builtPath)) {
   console.error(`Missing ${path.relative(projectRoot, builtPath)} — run \`pnpm build\` first.`);
@@ -113,7 +114,6 @@ const availability = [
   /few left/i,
   /dates open/i,
   /season guide/i,
-  /indicative/i,
   /availability at a glance/i,
   />\s*Taken\s*</i,
 ];
@@ -141,6 +141,24 @@ check(
   "the page must not post to a form backend",
   !/<form[^>]*\baction=/.test(html) && !/fetch\(|XMLHttpRequest/.test(source),
 );
+
+// Move 5 — the dusk plate is a progressive enhancement: daytime remains the
+// no-JS and reduced-motion default, and both files are actually shipped.
+const dayImage = path.join(mediaDir, "hugh-mccanns-faithful-room.jpg");
+const duskImage = path.join(mediaDir, "hugh-mccanns-faithful-room-dusk.jpg");
+check("daytime hero asset is missing", existsSync(dayImage));
+check("dusk hero asset is missing", existsSync(duskImage));
+check("dusk asset is not rendered in the page", html.includes("hugh-mccanns-faithful-room-dusk.jpg"));
+check("day-part swap does not use the local hour", source.includes("new Date().getHours()"));
+check("reduced-motion does not settle on daytime", source.includes('prefers-reduced-motion: reduce'));
+check("the faithful visualisation disclosure is missing", text.includes("Faithful visualisation"));
+
+// Move 6 — the keepable geography plate is present with its boundary note.
+const plateImage = path.join(mediaDir, "hugh-mccanns-where-your-day-happens.jpg");
+check("where-your-day-happens plate is missing", existsSync(plateImage));
+check("where-your-day-happens plate is not rendered", html.includes("hugh-mccanns-where-your-day-happens.jpg"));
+check("the plate does not carry its indicative boundary", text.includes("Indicative · not a survey"));
+check("the plate section is missing its geography heading", text.includes("The house, the garden, the mountains, the bay."));
 
 // The swap test, as far as a file can carry it: the page has to be anchored to
 // this venue in more than its name. Every anchor below is published fact.

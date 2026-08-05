@@ -12,6 +12,12 @@ interface Props {
   loading?: "eager" | "lazy";
   /** Homepage hero: arrive fully "before" and sweep once to the settled split. */
   sweep?: boolean;
+  /**
+   * Carry a `RebuildStage` canvas over the frame. The sweep then waits for the
+   * build to finish instead of running on a timer. Set by `RebuildStage.astro`
+   * — pages should use that component rather than this flag.
+   */
+  rebuild?: boolean;
 }
 const {
   before,
@@ -22,6 +28,7 @@ const {
   compact = false,
   loading = "eager",
   sweep = false,
+  rebuild = false,
 } = Astro.props;
 const sizes = compact
   ? "(max-width: 720px) 100vw, (max-width: 1100px) 58vw, 650px"
@@ -32,6 +39,7 @@ const sizes = compact
   class:list={["comparison", { "comparison--compact": compact }]}
   data-comparison
   {...(sweep ? { "data-comparison-sweep": "" } : {})}
+  {...(rebuild ? { "data-comparison-rebuild": "", "data-rebuild-stage": "" } : {})}
   style="--comparison-split: 50%"
 >
   <div class="comparison-legend" aria-hidden="true">
@@ -51,6 +59,7 @@ const sizes = compact
         loading={loading}
         sizes={sizes}
         draggable={false}
+        {...(rebuild ? { "data-rebuild-before": "" } : {})}
       />
       <div class="comparison-after" data-after>
         <ResponsiveImage
@@ -62,8 +71,12 @@ const sizes = compact
           loading={loading}
           sizes={sizes}
           draggable={false}
+          {...(rebuild ? { "data-rebuild-after": "" } : {})}
         />
       </div>
+      {rebuild && (
+        <canvas class="comparison-build" data-rebuild-canvas aria-hidden="true"></canvas>
+      )}
       <div class="comparison-divider" data-divider aria-hidden="true">
         <div class="comparison-handle">
           <svg class="comparison-handle-grip" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -123,7 +136,6 @@ const sizes = compact
     const frame = comparison.querySelector<HTMLElement>("[data-comparison-frame]");
     const input = comparison.querySelector<HTMLInputElement>('input[type="range"]');
     const after = comparison.querySelector<HTMLElement>("[data-after]");
-    const divider = comparison.querySelector<HTMLElement>("[data-divider]");
     const viewButtons = comparison.querySelectorAll<HTMLButtonElement>("[data-comparison-view]");
     const toggle = comparison.querySelector<HTMLButtonElement>(".notes-toggle");
     const toggleLabel = toggle?.querySelector<HTMLElement>(".notes-toggle-label");
@@ -139,7 +151,8 @@ const sizes = compact
       if (input) input.value = String(value);
       comparison.style.setProperty("--comparison-split", `${value}%`);
       if (after) after.style.clipPath = `inset(0 0 0 ${value}%)`;
-      if (divider) divider.style.left = `${value}%`;
+      // The divider follows `--comparison-split` through a transform; setting
+      // its `left` here would put the split back into layout.
       viewButtons.forEach((button) => {
         const isBefore = button.dataset.comparisonView === "before" && value === 100;
         const isAfter = button.dataset.comparisonView === "after" && value === 0;
@@ -186,9 +199,14 @@ const sizes = compact
 
       setSplit(100);
       comparison.setAttribute("data-comparison-sweep-state", "armed");
-      const sweepDelayMs = 600;
       const sweepDurationMs = 1500;
-      window.setTimeout(() => {
+      // With a RebuildStage over the frame the sweep is the handover, not the
+      // reveal: it waits for the build to land on the concept, so the two never
+      // move at once. `rebuild-stage.ts` fires this event even when it cannot
+      // draw, so the comparison can never be left stuck fully "before".
+      const rebuilding = comparison.hasAttribute("data-comparison-rebuild");
+      const sweepDelayMs = rebuilding ? 0 : 600;
+      const runSweep = () => {
         if (cancelled) return;
         comparison.setAttribute("data-comparison-sweep-state", "running");
         const start = performance.now();
@@ -204,7 +222,16 @@ const sizes = compact
           }
         };
         requestAnimationFrame(tick);
-      }, sweepDelayMs);
+      };
+
+      if (rebuilding) {
+        // The two scripts are separate modules and either may run first, so the
+        // handover is checked as state as well as awaited as an event.
+        if (comparison.dataset.rebuildState === "settled") runSweep();
+        else comparison.addEventListener("rebuild:settled", runSweep, { once: true });
+      } else {
+        window.setTimeout(runSweep, sweepDelayMs);
+      }
     } else if (sweep) {
       comparison.setAttribute("data-comparison-sweep-state", "settled");
     }

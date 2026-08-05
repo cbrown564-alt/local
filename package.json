@@ -7,10 +7,12 @@
     "dev": "astro dev",
     "build": "node tools/check/check-prose-counts.mjs && node tools/check/check-concept-publication.mjs && node tools/check/check-public-assets.mjs && node tools/check/check-og-assets.mjs && node tools/check/check-concept-guest-voice.mjs && astro check && astro build",
     "preview": "astro preview",
-    "test": "pnpm build && pnpm test:request && pnpm test:hugh-mccanns",
+    "test": "pnpm build && pnpm test:request && pnpm test:hugh-mccanns && pnpm test:rebuild",
+    "test:rebuild": "node tools/check/check-rebuild-stage.mjs",
     "capture:responsive": "node tools/capture/capture-responsive.mjs",
     "print:onesheet": "node --experimental-strip-types tools/print/print-onesheet.mjs",
     "optimize:media": "node tools/media/optimize-public-media.mjs",
+    "assemble:film": "node tools/pipeline/assemble-hero-film.mjs",
     "capture:og": "node tools/capture/capture-og-cards.mjs",
     "test:og": "node tools/check/check-og-assets.mjs",
     "test:reviews": "node tools/check/check-concept-publication.mjs",
@@ -28,13 +30,16 @@
     "@fontsource/yeseva-one": "5.3.0",
     "@vercel/analytics": "2.0.1",
     "astro": "7.1.4",
-    "nodemailer": "9.0.3"
+    "nodemailer": "9.0.3",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@types/nodemailer": "8.0.1",
+    "@types/three": "^0.185.4",
     "@vercel/node": "5.8.26",
     "ffmpeg-static": "5.3.0",
+    "pngjs": "^7.0.0",
     "puppeteer-core": "24.43.1",
     "qrcode": "1.5.4",
     "typescript": "6.0.3"

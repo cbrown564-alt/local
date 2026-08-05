@@ -9,12 +9,92 @@ function norm(value = "") {
     .replace(/[^a-zA-Z0-9]+/g, " ").trim().toLowerCase();
 }
 
+// Map corrected / variant names onto the verification-record name so a rename
+// in corrections does not orphan the row on the next normalise pass.
 const aliases = new Map([
   ["bao and bento", "bao bento"],
   ["chinese sea palace", "sea palace"],
   ["tonn ruray", "tonn ruray cafe"],
   ["the tool centre", "tool centre"],
   ["the avoca hotel", "avoca restaurant and hotel"],
+  // Corrected names → verification-record name (so renames survive re-normalise).
+  ["art gallery and picture framing", "art gallery and picture framining"],
+  ["base coffee company", "base coffee"],
+  ["simon brien bradley", "bradley"],
+  ["bu trading", "bu"],
+  ["bundle baby", "bundle baby nursery store"],
+  ["newcastle car and truck wash", "car and truck wash"],
+  ["castle corrigs house", "castlecorrigs house bed and breakfast"],
+  ["coco s adventure playground", "cocos"],
+  // Cookie Jar Unit 4 and Cookie Jar at 121 Main Street are distinct FSA
+  // premises — do not alias them together.
+  ["crystal clean", "cryral clean"],
+  ["deja vu", "deja vu hair company"],
+  ["dominic mcinerney solicitors", "dominic mcinerney"],
+  ["donard dental laboratories", "donard dental laboratory"],
+  ["first4floors", "first 4 floors"],
+  ["fish farm", "fish and farm"],
+  ["funland newcastle", "fun land"],
+  ["the gadget xchange", "gadget exchange"],
+  // Hale's (20 Main Street shop) and Hales Fruit Wholesale (Dundrum Road)
+  // stay distinct census rows even when they share a company name.
+  ["herrons country fried chicken", "herron s fried chicken"],
+  ["hillen architects", "hillen"],
+  ["home instead care agency", "home instead care agecy"],
+  ["hugh mccann s cafe bar", "hugh mccanns"],
+  ["joyland amusement centres", "joyland"],
+  ["keown nugent solicitors ltd", "keown nugent solicitor"],
+  ["lindsay graham estate agents", "lindsay graham"],
+  ["p t maguire limited", "maguires"],
+  ["marine wellness", "marine sports"],
+  ["cafe mauds", "mauds cafe"],
+  ["mcclure s funeral service", "mcclure s funeral services"],
+  ["mccomb 4x4", "mccombs 4x4"],
+  ["mccready footwear", "mccready shoe style"],
+  ["p j mcgloin optician", "mcgloin"],
+  ["mckeevers chemists", "mckeever s"],
+  ["michael f curran", "michael f curren solicitor"],
+  ["morelli s ice cream", "morelli"],
+  ["mourne magic house riverside luxury in newcastle", "mourne magic house"],
+  ["macken s bar restaurant", "n macken"],
+  ["fix auto newcastle ni", "newcastle accident repair"],
+  ["lower limb clinic", "newcastle footcare"],
+  ["nikis kitchen cafe", "niki s kitchen cafe"],
+  ["no 9 experts in hair beauty", "no 9 hair and beauty"],
+  ["nutty chef sandwich bar", "nutty chef"],
+  ["o hares", "o hare s pub"],
+  ["pacha restaurant", "pacha"],
+  ["paulies gym", "paulie s gym"],
+  ["peak financial solutions trading style of peak fs ltd", "peak financial solutions"],
+  ["piccolo kitchen ltd", "piccolo kitchen"],
+  ["pizza umami ltd", "pizza umami"],
+  ["pretty woman boutique limited", "pretty woman"],
+  ["primal effect coffee", "primal coffee"],
+  ["railway street cafe brew bar", "railway street cafe and brew bar"],
+  ["the ritz", "ritz"],
+  ["salir restaurant", "salis"],
+  ["savoy cafe", "savoy"],
+  ["scott paints supplies", "scott paints"],
+  ["seamus delaney law", "seamus delaney solicitors"],
+  ["the shimna cafe", "shimna cafe"],
+  ["shimna taxis ltd", "shimna taxis"],
+  ["small s butchers deli ltd", "smalls"],
+  ["specsxpress opticians", "specs xpress"],
+  ["spudz co", "spuds and co"],
+  ["stephen morgan funeral directors", "stephen morgan funeral director"],
+  ["sucos shake n juice", "sucos juice bar"],
+  ["ireland s appliance centre", "the appliance centre"],
+  ["the bonbon", "the bon bon"],
+  ["rock pool", "the rock pool"],
+  ["the studio makeup beauty", "the studio"],
+  ["medicare thorntons pharmacy", "thornton s pharmacy"],
+  ["thumbelina toy shop", "thumbelina"],
+  ["toals bookmakers", "toals"],
+  ["turkish kebab pizza house", "turkish kebab and pizza"],
+  ["wadsworth of newcastle", "wadsworth"],
+  ["the wool shop", "wool shop"],
+  ["zenith hair consultants", "zenith"],
+  ["morellis", "morelli"],
 ]);
 
 // Public details confirmed on the organisation's own website. These records are
@@ -124,6 +204,71 @@ const manualEnrichment = new Map(Object.entries({
     category: "Food & drink",
     entityType: "Independent / ownership unverified",
     sourceUrls: ["https://thebucksheaddundrum.co.uk/"],
+    discoverySources: ["Official website verification"],
+  },
+  // Brand/franchise branches confirmed in the Aug 2026 reclassification pass
+  // that have no verification record yet — entityType drives payment scoring.
+  "Newcastle|around a pound": {
+    entityType: "Larger chain / brand",
+    sourceUrls: ["https://www.aroundapound.com/about-us/"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|emo oil newcastle": {
+    entityType: "Larger chain / brand",
+    sourceUrls: ["https://www.emooil.com/"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|tollymore forest": {
+    entityType: "Public attraction",
+    sourceUrls: ["https://www.nidirect.gov.uk/articles/tollymore-forest-park"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|ymca": {
+    entityType: "Charity / community",
+  },
+  "Newcastle|banking hub": {
+    entityType: "Public service",
+    sourceUrls: ["https://www.cashaccess.co.uk/hubs/newcastle-county-down/"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|dromara drumgooland creditunion ltd": {
+    entityType: "Charity / community",
+    sourceUrls: ["https://www.ddcreditunion.com/"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|newcastle centre": {
+    entityType: "Public service",
+    sourceUrls: ["https://www.newrymournedown.org/newcastle-centre"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|tropicana": {
+    entityType: "Public service",
+    sourceUrls: ["https://www.newrymournedown.org/newcastle-centre"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|tropicana outdoor swimming complex": {
+    entityType: "Public service",
+    sourceUrls: ["https://www.newrymournedown.org/newcastle-centre"],
+    discoverySources: ["Official website verification"],
+  },
+  "Dundrum|knockevin early years centre": {
+    entityType: "Public service",
+    sourceUrls: ["https://www.knockevinschool.co.uk/"],
+    discoverySources: ["Official website verification"],
+  },
+  "Newcastle|dv8": {
+    entityType: "Larger chain / brand",
+  },
+  "Newcastle|sea spar": {
+    entityType: "Larger chain / brand",
+  },
+  "Newcastle|gordons chemist": {
+    entityType: "Larger chain / brand",
+  },
+  "Newcastle|royal county down golf course": {
+    entityType: "Independent / ownership unverified",
+    website: "https://www.royalcountydown.org/",
+    sourceUrls: ["https://www.royalcountydown.org/"],
     discoverySources: ["Official website verification"],
   },
 }));

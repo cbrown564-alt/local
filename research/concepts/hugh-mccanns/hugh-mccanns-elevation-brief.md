@@ -7,8 +7,8 @@ The verification record (`research/pipeline/verifications.json`, "Hugh
 McCanns", 24 July 2026) names this the highest-value single target in its
 batch and sets the accuracy bar to match.
 
-**Status: written 4 August 2026; first pass (moves 1–4) implemented the same
-day.** The concept before that pass was an honest feature graft — one
+**Status: written and implemented 4 August 2026; moves 1–6 are now in the
+concept.** The concept before that pass was an honest feature graft — one
 faithful dining-room visualisation, the "We do." lock-up, and a
 date-and-guest-count enquiry that drafts an email to the venue's published
 address. It passed the five publication checks but did not make the venue
@@ -42,9 +42,10 @@ on 4 August 2026, and only what those pages publish is on the concept:
 
 The published "from £995" figure stays off the page (open decision resolved
 as *omit*: the brief does not depend on it and pricing raises the
-re-verification bar before every use). Moves 5 (dusk visualisation) and 6
-(the where-your-day-happens plate) are unstarted — both need an asset session
-this pass did not include.
+re-verification bar before every use). Moves 5 and 6 are now implemented: the
+dusk visualisation swaps in during local evening hours while daytime remains
+the no-JS and reduced-motion default, and the where-your-day-happens plate is
+shipped with its indicative boundary.
 
 ## The shape of this business
 

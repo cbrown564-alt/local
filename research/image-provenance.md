@@ -16,6 +16,35 @@ sourcing copy afterwards.
 `node tools/check/check-public-assets.mjs` reports images held in `public/images/`
 that no longer appear anywhere in `src/`.
 
+## Site films ("One Day, Made Here")
+
+- `media/home/<town>-film.{mp4,webm}`, `<town>-film-mobile.{mp4,webm}`,
+  `<town>-film-poster.*`, `<town>-ambience.mp3` — **stand-ins in place** (4
+  August 2026). Town hero films, one per town (Dundrum, Newcastle), shown in
+  prototype E at `/prototypes/home/film/`. Assembled by
+  `tools/pipeline/assemble-hero-film.mjs` from clips generated with Gemini
+  Omni and ambience stems generated with ElevenLabs (treatment and prompts:
+  `research/film/one-day-made-here.md`). The films are
+  **generated, not footage**: the hero carries an on-page disclosure
+  ("An imagined day … not footage") and the video aria-labels say the same.
+  The clips currently in `research/film/clips/<town>/` are `--demo`
+  tone-gradient stand-ins (marked by a `.demo` file) so the hero can be
+  reviewed end-to-end. **Stand-ins must not deploy**: replace with the Gemini
+  Omni renders, rerun `pnpm assemble:film`, and update this entry's status.
+
+## Generated narration
+
+- `media/prototypes/showcase/showcase-narration-hugh-mccanns.mp3` — **internal
+  prototype only** (4 August 2026). 24 seconds of synthetic speech generated
+  with ElevenLabs (`eleven_multilingual_v2`, voice "Irish Cultural Guide",
+  `NPWroowF4phQhaPWjXPj`) for demonstration 05 on `/prototypes/showcase/`. It
+  is **not a recording of anyone**, and no real person's voice was cloned. The
+  script describes the published Hugh McCann's concept and makes no claim the
+  concept does not already make. If narration ever ships on a guest-facing
+  page it must be disclosed as synthetic on that page, and the script must be
+  checked against the concept's own copy the same way the "Sources & limits"
+  block is.
+
 ## Studio-drawn concept assets
 
 Neither photographed nor generated: vector artwork drawn by hand for a concept.
@@ -91,6 +120,13 @@ of these businesses supplied one.
 
 ## Generated imagery
 
+- `research/film/stills/dundrum/01-pre-dawn-bay.png`, `02-first-light-mudflats.png`, `04-cafe-window-bay.png` and `05-golden-hour-castle.png` — **internal film reference stills** (regenerated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real view "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum" (Geograph 7677782, CC BY-SA 2.0) and Eschadew's supporting castle detail "Dundrum Castle from outside" (CC BY-SA 4.0). The frames preserve the real camera direction, tidal-channel pattern, village placement, wooded hill and the castle's small distant relationship to the bay while changing light, mist, birds, a tiny walker and, for 04, adding a generic café interior. Shots 02 and 05 were edited from the new 01 master for continuity. They remain generated visualisations, not documentary photographs or evidence of exact weather, activity or a real café view.
+- `research/film/stills/dundrum/03-morning-main-street.png` and `06-blue-hour-street.png` — **internal film reference stills** (regenerated twice 5 August 2026 after local-accuracy review). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's real photograph "Crawling Sunday afternoon traffic in Main Street, Dundrum" (Geograph 4140783, CC BY-SA 2.0). They preserve one documented camera position: the bus-stop and road markings, exact stepped building row, grey three-storey quoined house, roofs, chimneys, doors, windows, church tower, lamps and overhead wires. Shot 03 changes traffic, rain and early-morning light; 06 is a blue-hour edit of 03. The tool followed the source's 4:3 frame, so both were centre-cropped identically to 1440×810 after generation; the crop added no content. Four Eric Jones photographs from 11 April 2025 were also checked to identify the rejected first pair's errors: it had conflated separate stretches of Main Street, invented a continuous shop row, and changed locally recognisable façades. Those 2025 images were not composited into the replacement pair. The fictional castle-at-the-end-of-the-street geography remains explicitly removed because the castle is not visible from this viewpoint. These are generated visualisations, not documentary photographs or evidence of exact businesses or activity. Source files and attribution: `research/film/stills/dundrum/sources/README.md`.
+- `research/film/stills/newcastle/01-pre-dawn-beach.png`, `02-first-light-ridge.png` and `04-midday-beach.png` — **internal film reference stills** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real photograph "Beach and old groynes with view towards Newcastle, Co Down" (Geograph 7677784, CC BY-SA 2.0). The frames preserve one southwest beach camera position: old groyne posts, low-tide pools and sand, Murlough dune edge and rock armour, distant town skyline and the true Mourne profile. Shots 02 and 04 are atmosphere edits of 01. The old prompt's fictional open surf and enlarged Victorian town are explicitly removed. These remain generated visualisations, not documentary photographs or evidence of exact weather or activity.
+- `research/film/stills/newcastle/03-morning-promenade.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's March 2025 photograph "Public gardens on the Central Promenade at Newcastle" (Geograph 8011492, CC BY-SA 2.0). It preserves the real gardens, railings, path, mature trees, modern lamp columns, breakwater, road, houses and mountain relationship while changing rain, traffic and early-morning light. It does not invent the old prompt's Victorian shop row, bike shop or ornate lamps.
+- `research/film/stills/newcastle/05-golden-harbour.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, using Eric Jones's 2019 Newcastle Harbour photographs (Geograph 6138550 as the primary camera position and 6138558 as a boat-and-wall reference, CC BY-SA 2.0). It preserves the strongly tidal low-water basin, grounded boats, harbour walls, houses and steep wooded mountain instead of replacing them with boats floating on generic calm water.
+- `research/film/stills/newcastle/06-dusk-amusements.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's October 2025 photograph "Kent Amusements overlooking the Central Promenade, Newcastle" (Geograph 8170874, CC BY-SA 2.0). It preserves the current red-and-grey façade, fascia, glass frontage, yellow accessibility ramp, signs, road and perspective while changing only traffic, rain and blue-hour light. It intentionally uses a separate real camera position from 03 rather than inserting a fictional arcade into the promenade gardens. All six Newcastle outputs were cropped without content addition and normalised to 1600×900. Full source roles and attribution: `research/film/stills/newcastle/sources/README.md`.
+
 Every page carrying one of these labels it as generated on the page itself.
 
 - `donard-hotel-exterior-visualisation.jpg` — **in use.** AI-generated faithful
@@ -118,6 +154,8 @@ Every page carrying one of these labels it as generated on the page itself.
   generated-image disclosure as the daytime plate, which names the blue-hour
   state. Responsive WebP at 640 and 1265.
 - `hugh-mccanns-faithful-room.jpg` — **in use.** AI-generated faithful visualisation based on the venue's own dining-room photograph from its public site, downloaded on 27 July 2026 and held privately at `.tmp/hugh-reference-venue.jpg`. The prompt preserved the broad window bays, room scale, table settings, garden character and Mourne mountain profile while forbidding people, invented architecture, a ballroom, ceremony dressing, a terrace or a sea view. The concept labels the image as a faithful visualisation in the first viewport and its alt text repeats the reference boundary.
+- `hugh-mccanns-faithful-room-dusk.jpg` — **in use** (4 August 2026). AI-generated dusk sibling of the faithful room visualisation above, edited from the existing daytime plate so the broad window bays, table settings, garden edge and Mourne profile stay fixed. The prompt changed only the time of day and warm interior illumination, and forbade people, new furniture, ceremony dressing, signage, terrace, sea view or extra windows. The page keeps the daytime plate as its no-JS and reduced-motion default, then swaps to dusk during the visitor's local evening hours; both states carry the same faithful-visualisation boundary in alt text and the visible caption.
+- `hugh-mccanns-where-your-day-happens.jpg` — **in use** (4 August 2026). AI-generated illustrative hand-drawn geography plate showing only the published relationship between Hugh McCann's on Central Promenade, the Secret Garden, the Mourne Mountains, Dundrum Bay, Little Haven and The Avoca Hotel. It is an indicative drawing rather than a survey: no scale, route time, street network, extra building, garden, terrace or unsupported sightline is claimed. The page labels it "Indicative · not a survey" and repeats the boundary in alt text.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
 - `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
   **in use** (31 July 2026). AI-generated faithful visualisations of the same

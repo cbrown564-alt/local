@@ -1,0 +1,42 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+import Disclosure from "./Disclosure.astro";
+import RebuildStage from "./RebuildStage.astro";
+
+interface Props {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  name: string;
+  town: string;
+  href: string;
+}
+
+const { before, after, beforeAlt, afterAlt, name, town, href } = Astro.props;
+---
+
+<div class="home-hero-stage">
+  <div class="home-hero-comparison">
+    <RebuildStage
+      before={before}
+      after={after}
+      beforeAlt={beforeAlt}
+      afterAlt={afterAlt}
+      showNotes={false}
+      compact
+    />
+  </div>
+  <footer class="home-hero-stage-footer">
+    <Disclosure reminder quiet />
+    <div class="home-hero-stage-meta">
+      <p class="home-hero-stage-caption">
+        {name}, {town}
+      </p>
+      <a class="text-link home-hero-stage-compare" href={href}>Open full comparison <ArrowIcon /></a>
+    </div>
+    <nav class="home-hero-stage-links" aria-label="Featured comparison">
+      <a class="button button-secondary home-hero-stage-browse" href="/transformations/">Browse local website examples <ArrowIcon /></a>
+    </nav>
+  </footer>
+</div>

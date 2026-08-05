@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../../../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../../../site/components/ArrowIcon.astro";
+import HomeFilmHero from "../../../site/components/HomeFilmHero.astro";
+import HomeProofStage from "../../../site/components/HomeProofStage.astro";
+import { getTownFilms } from "../../../site/data/home-films";
+import { featuredTransformation, transformations } from "../../../site/data/transformations";
+import "../../../site/styles/home.css";
+
+const townFilms = getTownFilms();
+const hasPublicTransformations =
+  transformations.length > 0 && Boolean(featuredTransformation);
+---
+
+<BaseLayout
+  title="Direction E · One Day, Made Here — Mourne Made"
+  description="Homepage alternative: a generated dawn-to-dusk film for each town, with the before-and-after as the proof fold beneath."
+  robots="noindex, nofollow"
+  class="film-proto-page"
+  hideHeader
+  ogImage="/media/home/newcastle-film-poster.jpg"
+>
+  <nav class="film-proto-nav" aria-label="Homepage alternatives">
+    <a href="/prototypes/home/">Index</a>
+    <a href="/prototypes/home/signal/">A · Signal</a>
+    <a href="/prototypes/home/field/">B · Field note</a>
+    <a href="/prototypes/home/channel/">C · Open channel</a>
+    <a href="/prototypes/home/lit-town/">D · Lit Town</a>
+    <a href="/prototypes/home/film/" aria-current="page">E · Film</a>
+    <a href="/">Live homepage</a>
+  </nav>
+
+  {townFilms.length > 0 ? (
+    <HomeFilmHero towns={townFilms} />
+  ) : (
+    <section class="film-proto-empty" aria-label="Film assets not assembled">
+      <div>
+        <p class="film-proto-empty-label">Direction E · assets missing</p>
+        <h1>The town films haven't been assembled yet.</h1>
+        <p>
+          Run <code>pnpm assemble:film --demo</code> for tone stand-ins, or drop
+          the Gemini Omni renders into <code>research/film/clips/&lt;town&gt;/</code>
+          and run <code>pnpm assemble:film</code>. Restart the dev server
+          afterwards — the asset check runs at build time.
+        </p>
+      </div>
+    </section>
+  )}
+
+  {hasPublicTransformations && (
+    <section class="home-proof" aria-labelledby="home-proof-heading">
+      <div class="shell home-proof-head">
+        <p class="home-kicker">The proof</p>
+        <h2 id="home-proof-heading">Before, and after.</h2>
+        <p>Every free concept is a pair: your business online as it stands today, and the clearer route to book, order or get in touch it could be.</p>
+      </div>
+      <div class="shell">
+        <HomeProofStage
+          before={featuredTransformation.before}
+          after={featuredTransformation.after}
+          beforeAlt={featuredTransformation.beforeAlt}
+          afterAlt={featuredTransformation.afterAlt}
+          name={featuredTransformation.name}
+          town={featuredTransformation.town}
+          href={featuredTransformation.href}
+        />
+      </div>
+    </section>
+  )}
+
+  <section class="film-proto-note">
+    <div class="shell">
+      <p class="eyebrow">Internal prototype · August 2026</p>
+      <h2>Direction E — the day as the pitch.</h2>
+      <p>
+        One generated dawn-to-dusk film per town — Dundrum: “The quiet bay”,
+        Newcastle: “Where the mountains sweep to the sea” — playing behind the
+        unchanged pitch. The town switcher is the emotional hook: an owner
+        sees <em>their</em> town’s day, not a generic showreel. The
+        before/after drops one fold to become the proof. Full treatment and
+        generation prompts: <code>research/film/one-day-made-here.md</code>.
+      </p>
+
+      <h3>What still needs to be done</h3>
+      <ol class="film-proto-todo">
+        <li>
+          <strong>Replace the stand-in clips.</strong> The current films are
+          <code>--demo</code> tone gradients (marked by
+          <code>research/film/clips/&lt;town&gt;/.demo</code>). Generate the six
+          shots per town with Gemini Omni using the prompt table in the
+          treatment, drop them in as <code>01-….mp4 … 06-….mp4</code>, then run
+          <code>pnpm assemble:film</code> and restart the dev server.
+          <strong>Stand-ins must never deploy</strong> — the provenance record
+          in <code>research/image-provenance.md</code> tracks this.
+        </li>
+        <li>
+          <strong>Generate the ElevenLabs sound beds.</strong> Four stems per
+          town (prompts and mix levels in the treatment) into
+          <code>research/film/audio/&lt;town&gt;/</code>. The “Hear the bay /
+          Hear the sea” toggle appears on its own once
+          <code>&lt;town&gt;-ambience.mp3</code> exists. Sound is opt-in only,
+          never autoplay — that decision is baked in.
+        </li>
+        <li>
+          <strong>Judge the loop seam on real footage.</strong> Dusk dissolves
+          back into dawn over 0.8s (<code>XFADE_SECONDS</code> in
+          <code>tools/pipeline/assemble-hero-film.mjs</code>). Tune once the
+          real renders exist.
+        </li>
+        <li>
+          <strong>Performance pass on real footage.</strong> Stand-ins are
+          light; real clips won’t be. Check the CRF 23 master weight, poster
+          LCP cost, and whether the 51s loop should be trimmed.
+        </li>
+        <li>
+          <strong>Review the mobile cut.</strong> Phones get only the dusk
+          pair (clips 05–06). Confirm those are the right two shots once the
+          real footage exists.
+        </li>
+        <li>
+          <strong>Sign off the honesty wording.</strong> The corner disclosure
+          (“An imagined day … not footage”), the video aria-labels and the
+          provenance entry all need a final read before this could promote.
+        </li>
+        <li>
+          <strong>Decide the default town.</strong> Newcastle leads for the
+          mountains-to-sea opening; the switcher keeps the familiar
+          Dundrum-first order. A returning visitor lands on their last choice.
+        </li>
+        <li>
+          <strong>Promotion path, if chosen.</strong> The homepage renders
+          <code>HomeFilmHero</code> when <code>getTownFilms()</code> finds
+          assets and keeps the product hero otherwise, with the before/after
+          becoming the proof fold exactly as shown here — reverting is
+          deleting <code>public/media/home/</code>.
+        </li>
+      </ol>
+
+      <p><a class="text-link" href="/prototypes/home/">Back to the prototype index <ArrowIcon /></a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .film-proto-nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    padding: 0.9rem 1.4rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    background: linear-gradient(180deg, rgb(6 10 20 / 55%), transparent);
+  }
+
+  .film-proto-nav a {
+    color: rgb(235 242 248 / 82%);
+    text-decoration: none;
+  }
+
+  .film-proto-nav a[aria-current="page"] {
+    color: #ffc46a;
+  }
+
+  .film-proto-empty {
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(180deg, #10182b 0%, #232f4f 46%, #5c4340 76%, #b97e49 100%);
+    color: #f4f8fa;
+  }
+
+  .film-proto-empty > div {
+    max-width: 44rem;
+    padding: 6.5rem clamp(1.4rem, 5vw, 4.5rem) 4.6rem;
+  }
+
+  .film-proto-empty-label {
+    color: #ffc46a;
+    font-size: 0.85rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .film-proto-empty h1 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height: 1.04;
+    margin: 0.4rem 0 1.2rem;
+  }
+
+  .film-proto-empty code,
+  .film-proto-note code {
+    font-size: 0.92em;
+  }
+
+  .film-proto-note {
+    padding: 4.5rem 0 5.5rem;
+    background: var(--white);
+  }
+
+  .film-proto-note h2 {
+    font-family: var(--display);
+    margin: 0.5rem 0 1rem;
+  }
+
+  .film-proto-note h3 {
+    margin: 2.2rem 0 0.8rem;
+  }
+
+  .film-proto-note p {
+    max-width: 46rem;
+  }
+
+  .film-proto-todo {
+    max-width: 46rem;
+    padding-left: 1.3rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .film-proto-todo li {
+    line-height: 1.55;
+  }
+</style>

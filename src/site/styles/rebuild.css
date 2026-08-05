@@ -1,0 +1,36 @@
+/**
+ * 03 Rebuild — the canvas that plays the handover.
+ *
+ * It sits in the comparison frame's box exactly, so there is no layout shift
+ * whether it draws or not. It is hidden until the script has both images and
+ * can paint the *before* frame: until then the comparison beneath must be what
+ * shows. When the build lands it fades out onto identical pixels.
+ */
+.comparison-build {
+  position: absolute;
+  inset: 0;
+  z-index: 3; /* over both images, under the divider and handle */
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+/* Armed: the before frame is drawn and the canvas takes the frame over. */
+[data-rebuild-state="armed"] .comparison-build { opacity: 1; }
+
+/* Settled: the canvas and the images beneath show the same thing, so this
+   fade is invisible — it exists only to give the handle back. */
+[data-rebuild-state="settled"] .comparison-build { opacity: 0; }
+
+/* The handle is the reader's control and belongs to them, not to the build. */
+[data-rebuild-state="armed"] .comparison-divider { opacity: 0; }
+.comparison-divider { transition: opacity 240ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* No build plays: the canvas is never armed, and nothing transitions. */
+  .comparison-build { display: none; }
+  .comparison-divider { transition: none; opacity: 1; }
+}

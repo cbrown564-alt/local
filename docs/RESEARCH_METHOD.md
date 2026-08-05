@@ -53,6 +53,87 @@ recomputed from the corrected fields, and verified records carry
 `verification` and `prospect` objects plus an updated data-confidence line.
 Unconfirmed facts are recorded as unconfirmed, never inferred.
 
+### Tooling for steps 1 and 2 (5 August 2026)
+
+Two of the four steps are mechanical and are now scripted, so the manual effort
+goes to steps 3 and 4, which genuinely need judgement.
+
+- `tools/pipeline/probe-sites.mjs --in urls.json --out probes.json` answers
+  step 1 for any list of domains: DNS, HTTPS and HTTP, redirect chain, builder,
+  copyright and content dates, and whether a customer can actually transact.
+  It separates the failure modes rather than collapsing them — dead DNS,
+  refused TLS, Wix `ConnectYourDomain`, parked and "coming soon" pages that
+  return 200, and redirects to a *different* business.
+- `tools/pipeline/fsa-register.mjs --out fsa-matches.json` answers step 2 for
+  every food-handling business from the Food Standards Agency register. A
+  hygiene inspection is a dated official visit to premises that were open,
+  which is the strongest dated evidence available here and exactly what
+  OpenStreetMap-only rows lack. It matched 94 of the 229 trading rows, 90 of
+  them inspected since 2024.
+- `tools/pipeline/merge-verifications.mjs --in staging.jsonl` folds findings
+  into `verifications.json` one line at a time, so a pass this long survives
+  interruption, and rejects any record claiming a status with neither a source
+  nor a stated basis.
+
+**What the scripts may not be read as saying.** FSA *absence* is not evidence of
+closure — a solicitor or barber never appears, because they handle no food. FSA
+*presence* proves trading on the inspection date, not today. A live site is not
+a live business, and a name match is not an identity match: every FSA match
+carries a confidence, and only `high` should be accepted without a human look.
+
+### Limitations observed in the third round (5 August 2026)
+
+- **"No website" and "no digital presence" are different findings.** Beauty
+  Haven has no site and takes real bookings through Booksy. Counting it as dark
+  would be true about the domain and false about the business. Platform-only
+  traders need their own status.
+- **Franchise branches hide inside the independent count.** Brennan's trades as
+  a SPAR, whose web presence comes from the brand. `census-class.mjs` catches
+  chains by keyword and cannot catch a franchise trading under a family name.
+- **Businesses trade under names the census never recorded**, which is the
+  mechanism behind most missed websites: Arley Guest House is Arley House B&B,
+  Binghams is Binghams Menswear, Beauty Haven is Marine Sports Beauty Haven. A
+  name-only search under-reports; search the address too.
+- **A fetch failure on the day is not a dead site.** `bonnys.net` is indexed and
+  advertised and returned HTTP 500 when probed. Recorded as unconfirmed.
+- **Some live sites serve no crawlable text**, so the probe can confirm the
+  domain resolves and say nothing about the site. Never describe such a site's
+  quality without opening it.
+
+### Limitations observed in the fourth round (5 August 2026) — steps 3 and 4
+
+Steps 3 and 4 were completed for every dark, mapped, trading row. The blocking
+count (dark, mapped, trading, never independently confirmed) fell **150 → 0**.
+See `research/pipeline/verification-pass-status.md`.
+
+- **A name correction orphans the verification unless the alias table grows.**
+  Corrections overwrite `name` in `businesses.json`; the next normalise keys by
+  the new name and misses the verification record keyed by the old one. Every
+  rename this pass was added to the alias maps in
+  `normalize-businesses.mjs` and `merge-verifications.mjs`.
+- **The business and the census row can have different statuses.** Rhiannon's
+  still trades in Craigavon and Portadown; the Newcastle shop closed December
+  2024. Record the *row*'s status, and say so in caveats.
+- **National-brand location pages are live sites and not local websites.**
+  Home Instead, Specs Xpress, Fix Auto, McKeevers, Toals — counting them as
+  "lit independents" overstates local digital maturity the same way counting
+  them dark overstated need.
+- **Azure WAF 403 is not a dead domain.** `bundlebaby.com` resolves and blocks
+  the probe; open it before calling it dead.
+- **Same-named businesses elsewhere remain the standing trap**, especially
+  Newcastle-upon-Tyne restaurant closures and Newcastle Ontario retailers.
+  Address match is mandatory before accepting a result.
+- **Do not alias distinct premises that share a trading name.** Cookie Jar at
+  Unit 4 and Cookie Jar at 121 Main Street are separate FSA establishments;
+  Hale's on Main Street and Hales Fruit Wholesale on Dundrum Road likewise.
+  Alias only when two census rows are the same door.
+- **Franchise and brand branches found in steps 3–4 must be reclassified**, not
+  left as dark or lit independents. `census-class.mjs` `CHAIN_NAMES` now covers
+  Brennan's/SPAR, Home Instead, Specs Xpress, Fix Auto, McKeevers, MediCare
+  Thorntons, Herrons CFC, Around A Pound, Toals, Morelli's, Simon Brien Bradley
+  and Emo Oil. Wrong entity types that made Tollymore Forest, YMCA and Royal
+  County Down look like chains were corrected by name/tag rules.
+
 ### Census limitations observed in the first pass
 
 - A Google Maps listing can omit a live website (Painted Earth), so "no
