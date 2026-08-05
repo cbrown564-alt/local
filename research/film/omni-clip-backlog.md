@@ -72,6 +72,11 @@ Suggested next days (opinionated):
 | C | Kent comic reel + kinetic type (playful arcade register) |
 | D | Castle Farm table drift + Cupla twin pour (appetite / motif) |
 | E | Chamber harbour audio-first + Mourne Cycles ghost bike (civic / trade risk) |
+| F | A24 drift characterisation — all ten gens, one prompt, no edits (decides how much later days can trust this file) |
+| G | A23 audio A/B + A28 seam bridge ×2 + A25 verticals ×2 (craft debts that close open pipeline questions) |
+
+**Take day F early.** A24 measures whether the prompts in this file actually
+reproduce. Every other day here assumes they do.
 
 ---
 
@@ -97,10 +102,21 @@ Suggested next days (opinionated):
 | A19 | Elevation claymation | Studio | World-knowledge | Low | Research only |
 | A21 | Risograph × Betty melt | Experiment | Style transfer | Med | Research first |
 | A22 | Chamber brass / harbour | Civic | Native audio | Med | Prototype + consent |
+| A23 | Native audio vs stem mix | Craft | Single-pass sync audio | Low | Decides a pipeline |
+| A24 | Drift characterisation | Craft | (measures the model) | Low | Research only |
+| A25 | Vertical town cuts | Reach | 9:16 native | Low | Off-site deliverable |
+| A26 | Weather variants | Place | Same still, four skies | Med | Reopens 08 Weather |
+| A27 | Curlew subject lock | Craft | Reference consistency | Low | Dundrum regen |
+| A28 | Loop seam bridge | Craft | First-frame conditioning | Low | High (assembly) |
+| A29 | Live edit in the room | Studio | Multi-turn statefulness | Med | Outreach, not an asset |
+| A30 | 404 tide loop | Site chrome | Water physics | Low | Blocked (no 404 page) |
+| A31 | Fabricated vox-pop | **Refused** | Lip-synced dialogue | — | **Do not generate** |
 
 ---
 
 ## A3 — Kent afternoon storyboard → living comic
+
+**Status.** Held clips on disk (5 Aug 2026): `kent-amusements-afternoon-comic-01-03.mp4`, `…-04-06.mp4`. Not wired.
 
 **Intent.** Turn the verified six-beat afternoon (promenade → change → floor → dodgems → VR → sea) into one looping comic reel. Omni’s drawing-to-video lane; arcade register without claiming a survey.
 
@@ -192,6 +208,8 @@ Audio: quiet room, soft cutlery settle once, distant muted kitchen. No music, no
 
 ## A6 — Enniskeen day→dusk continuous take
 
+**Status.** Held: `enniskeen-house-day-dusk-loop.mp4` (5 Aug 2026). Not wired.
+
 **Intent.** One continuous light slide across the faithful house plate — place theatre without inventing events.
 
 **Attach.** Prefer day master as start frame:  
@@ -225,6 +243,8 @@ Audio: soft valley air, distant quiet birds early then hush, no music, no voiceo
 
 ## A7 — Hugh McCann’s dining room — table being set
 
+**Status.** Held: `hugh-mccanns-table-setting-loop.mp4` (5 Aug 2026). Not wired.
+
 **Intent.** Quiet wedding-venue theatre: the room prepared for a day that has not happened yet. Recognition of the faithful room; surprise is stillness with purpose.
 
 **Attach.** `public/media/concepts/hugh-mccanns/hugh-mccanns-faithful-room.jpg`  
@@ -257,6 +277,8 @@ Audio: soft linen, faint glass chime once, quiet room. No music, no voiceover.
 
 ## A8 — Dundrum Inn blue-hour façade
 
+**Status.** Held: `dundrum-inn-blue-hour-loop.mp4` (5 Aug 2026; signage-correction edit). Not wired.
+
 **Intent.** Existing day→blue-hour still swap becomes a continuous window-lighting loop. Place register, journey not rebuild.
 
 **Attach.** `public/media/concepts/dundrum-inn/dundrum-inn-faithful-exterior.jpg`  
@@ -288,6 +310,8 @@ Audio: quiet village evening, soft distant murmur, no music, no voiceover.
 ---
 
 ## A9 — Castle Farm weekly table / delivery round
+
+**Status.** Held: `castle-farm-weekly-table-loop.mp4`, `castle-farm-delivery-round-loop.mp4` (5 Aug 2026). Not wired.
 
 **Intent.** Keepable artifact in motion: produce still-life drift, or a ghosted van along the indicative round — product register, not fake photography of a real box.
 
@@ -363,6 +387,8 @@ Audio: soft digital dissolve, then quiet air. No voiceover, no music bed that se
 ---
 
 ## A11 — Newcastle Chamber harbour / living map
+
+**Status.** Held: `newcastle-chamber-harbour-loop.mp4` (5 Aug 2026). Not wired; keep place-photo credit chain if guest-facing.
 
 **Intent.** Civic mood: harbour breath under brass/harbour-navy grammar. Map light-up waits on the town-trades plate (brief move 2) — until then, harbour atmosphere only.
 
@@ -745,6 +771,362 @@ Image-to-video from this harbour still. Same lock rules as the harbour loop. Ove
 
 ---
 
+## A23 — Native audio vs the ElevenLabs stem mix (craft decision)
+
+**Intent.** Settle which audio path the house style uses. `one-day-made-here.md`
+specifies four separately-generated ambience stems per town, mixed at hand-tuned
+dB by `tools/pipeline/generate-hero-ambience.mjs`. Omni generates ambience *in
+the same pass as the picture*, so the surf matches the wave you are looking at
+and the shutter rattles when the hand pulls it. Synchronisation is the thing a
+mixed bed structurally cannot do. If native wins, a whole subsystem and its
+mixing table leave the pipeline.
+
+**Attach.** Dundrum shot 03 street master: `research/film/stills/dundrum/03-morning-main-street.png`
+— chosen because it is the one town shot with a discrete Foley event (the shutter)
+rather than a continuous bed, which is where the two approaches actually differ.
+
+**Destination.** `research/film/clips/craft/a23-native-audio-{a,b}.mp4` — never
+overwrite the assembled town films.
+**Hook.** None. Output is a decision recorded in `one-day-made-here.md`.
+
+**Constraints.** Two gens, same still, same visual prompt — only the audio clause
+changes. Judge on headphones and phone speaker. Do not let "new capability" decide
+it: the existing beds are sparse and opt-in by design, and a synced bed that draws
+attention to itself loses on this site even if it is more impressive.
+
+**Prompt — A (native audio):**
+
+```
+Image-to-video from this exact village street still. Lock the road, the stepped row of houses, the church tower, the lamp columns and overhead wires. Do not invent shopfront lettering.
+
+Over 8 seconds: early morning light, one shop shutter drawn up, quiet street, gentle slow forward drift at walking pace. No faces toward camera, no readable new text, no logos.
+
+Audio: synchronised to picture — the shutter rattle occurs exactly on the shutter motion, quiet village room tone underneath, one distant bird. No music, no voiceover.
+```
+
+**Prompt — B (silent plate, current pipeline):** as above, ending
+`No audio at all — silent plate.`
+
+**Edit turns.**
+
+1. `Quieter overall — ambience should sit under a page, not lead it.`
+2. `Remove any music bed that appeared.`
+
+**Acceptance.** Write the verdict into `one-day-made-here.md` § Sound the same
+day, with the losing option and its reason kept. If native wins, note that
+per-clip audio must still be strippable — the hero is opt-in and must be able to
+play silent.
+
+---
+
+## A24 — Drift characterisation (make regenerate-ability real)
+
+**Intent.** This file ends by promising to "keep prompts for regenerate-ability."
+That promise has never been tested. Ten gens of one prompt from one still, to
+measure what actually varies between identical runs — grade, camera speed,
+whether locked geography stays locked. Deliberately wasteful, and only affordable
+because the day is free.
+
+**Attach.** `research/film/stills/dundrum/05-golden-hour-castle.png` — the shot
+whose take-1 failure (four different castles) created the whole stills approach.
+
+**Destination.** `research/film/clips/craft/a24-drift-01…10.mp4` + a contact
+sheet.
+**Hook.** None. Output is a section in this file.
+
+**Constraints.** Same prompt, verbatim, ten times. No edit turns — edits are the
+thing being measured against. Resist improving the prompt mid-run; that makes it
+a different experiment.
+
+**What to record.** For each run: geography held / drifted; grade delta; camera
+speed; any invented lettering; whether audio varied. Then the useful output —
+**which prompt clauses are load-bearing and which are decoration**. A clause that
+appears in all ten outputs whether or not you asked for it can come out of every
+prompt in this file.
+
+**Acceptance.** A short table in this file under A24, and any prompt-hygiene rule
+it produces folded into A20's checklist. If drift turns out to be low, say so —
+that would mean stills are doing more work than prompts, and future days should
+be spent on stills.
+
+---
+
+## A25 — Vertical town cuts (the deliverable, not the site)
+
+**Intent.** The first paid scope in `PRODUCT.md` is presence repair — Google
+Business Profile, hours, local-search basics. Omni does 9:16 natively. Two
+vertical town loops are simultaneously the studio's own GBP and social post
+*and* a demonstration of the thing being sold: this is what goes on your profile,
+and it costs minutes. Everything else in this file points inward at the site;
+this points at where local discovery actually happens.
+
+**Attach.** Newcastle: `research/film/stills/newcastle/06-dusk-amusements.png`.
+Dundrum: `research/film/stills/dundrum/06-blue-hour-street.png`. Dusk shots
+because vertical is watched small, on a phone, usually muted — light doing
+something is legible at that size; landscape atmosphere is not.
+
+**Destination.** `public/media/social/<town>-vertical.mp4` (+ poster).
+**Hook.** None on the site. Off-site asset.
+
+**Constraints.** 9:16 crops discard the horizon, which is the whole Newcastle
+composition — expect to reframe rather than crop, and accept these are siblings
+of the town films, not cuts of them. Same honesty line as the hero when posted:
+an imagined day, not footage. Muted-first: whatever the clip says, it must say
+without audio.
+
+**Prompt (Newcastle):**
+
+```
+Image-to-video from this exact seafront still, composed for 9:16 vertical. Recompose for the tall frame: promenade and arcade frontage filling the lower two thirds, sky and the first stars above. Keep the building geography and the light.
+
+Over 8 seconds: dusk deepens; arcade and window lights come on one by one; the sea goes dark blue. Almost locked camera with a barely perceptible rise. No readable fascia lettering, no logos, no faces toward camera.
+
+Audio: quiet seafront evening, distant muffled arcade. No music, no voiceover.
+```
+
+**Edit turns.**
+
+1. `Recompose tighter for vertical — less empty sky.`
+2. `Remove any invented signage lettering.`
+
+**Acceptance.** Reads at phone size, muted, in under two seconds. If it needs
+sound or a caption to work, it has failed at the job it was made for.
+
+---
+
+## A26 — Weather variants (reopens 08 Weather)
+
+**Intent.** `docs/sensory-system-plan.md` cut 08 Weather with "no case beyond
+that it looks good." The unstated half of that case was cost: weather variants
+meant a shoot. Four gens from one still is not a shoot. `research/sensory-system.md`
+argues place-awareness is the studio's unfair advantage over a firm pitching from
+London — and a hero matching the weather outside the reader's window is the
+strongest available version of that argument.
+
+**Attach.** `research/film/stills/newcastle/04-midday-beach.png` — one still,
+four skies, so the variants are provably the same place.
+
+**Destination.** `research/film/clips/craft/a26-weather-{bright,haar,rain,winter}.mp4`.
+**Hook.** None yet. This is an argument for a decision, not a wire-up. If it
+persuades, the decision belongs in `docs/sensory-system-plan.md` as a revision to
+the 08 Weather hold, with `ADR 0004`'s identity/evidence rule applied: **weather
+is identity, not evidence** — it makes no claim about anyone, so it may go
+anywhere the budget allows.
+
+**Constraints.** Same lock rules as the town films. Four variants is four times
+the hero payload, so any real wire-up serves one and preloads none; mobile gets
+the poster. Do not let this creep into a live-weather API — the 06 Tideline hold
+is precedent: the site does not publish the *shape* of a thing as the thing.
+Time-of-day is already known client-side and is honest; live conditions are a
+data claim.
+
+**Prompt (per variant, changing only the weather clause):**
+
+```
+Image-to-video from this exact beach still. Lock the tide line, the groyne posts, the dune edge, the town and church tower in the middle distance, and the true Mourne ridge profile. Do not move the mountains.
+
+Over 8 seconds: [WEATHER]. Almost locked camera with a slow forward drift at walking pace. No people facing camera, no text, no logos.
+
+Audio: matching sea and wind only. No music, no voiceover.
+```
+
+`[WEATHER]` — `bright clear day, hard sunlight on wet sand, sharp shadows` ·
+`sea haar rolling in, the ridge half-erased, flat soft light` ·
+`steady rain on the sand, rings in the shallow water, low grey sky` ·
+`low winter sun, long shadows, cold blue air, frost light on the dunes`.
+
+**Edit turns.**
+
+1. `Keep the mountains exactly as the still — weather only.`
+2. `Less dramatic — this is ordinary weather, not a storm sequence.`
+
+**Acceptance.** Put the four side by side. If they read as four places rather
+than one place four times, the idea is dead and the still-lock has a limit worth
+recording. If they read as one place, take the case back to the 08 Weather hold.
+
+---
+
+## A27 — Curlew subject lock (continuity character)
+
+**Intent.** Test Omni's reference-image subject consistency using a subject that
+carries no honesty risk. Dundrum shot 01 already has a curlew walking the wet
+sand. Lock it as a subject reference and put the same bird in shots 01, 02 and 05
+— the three Dundrum shots that share the bay. A continuity failure produces a
+different bird, which is charming; the same technique applied to a building
+produces a different building, which is a lie. So this is the safe place to learn
+where the lock breaks.
+
+**Attach.** Master: `research/film/stills/dundrum/01-pre-dawn-bay.png`, plus a
+crop of the curlew alone as the subject reference. Then the shot 02 and 05 stills
+as first frames.
+
+**Destination.** `research/film/clips/craft/a27-curlew-{01,02,05}.mp4`. Only
+promote into `research/film/clips/dundrum/` if all three hold — a bird appearing
+in two shots of six reads as an accident, not a signature.
+
+**Constraints.** Never on the Newcastle film; a shared mascot would flatten the
+two towns into one work, and the treatment is explicit that a day belongs to one
+place. The bird must stay incidental — far off, doing bird things. The moment it
+looks at camera it is a character, and this site does not have characters.
+
+**Prompt (shot 02, with subject reference attached):**
+
+```
+Image-to-video from this exact first-light mudflats still. Lock the channel geography, the far shore village, and the castle on the wooded hill. Use the attached bird reference: the same curlew, same plumage and proportions, appears in this frame — distant, walking the wet sand, incidental to the composition.
+
+Over 8 seconds: first sun catches the shallow channels; mist burns off; the bird walks a few steps and stills. Slow forward drift. No people, no text, no logos.
+
+Audio: very quiet estuary, one curlew call distant. No music, no voiceover.
+```
+
+**Edit turns.**
+
+1. `Same bird, smaller and further away — incidental, not the subject.`
+2. `Never let the bird face camera.`
+
+**Acceptance.** Three shots, one bird, or drop the idea entirely. Record in A24's
+findings whether subject lock held across day-parts — that is the transferable
+result, and it is what tells us whether locking a *person* would ever be viable.
+
+---
+
+## A28 — Loop seam bridge
+
+**Intent.** The treatment wants the dusk frame to crossfade back into pre-dawn so
+the loop reads as "tomorrow" rather than a seam. `assemble-hero-film.mjs`
+currently does this with an 0.8s dissolve and hope. Omni cannot interpolate
+between two videos — but it can take shot 01's still as first frame and be
+prompted *backwards* toward dusk light, producing a purpose-built bridge that
+meets shot 06 in the middle. One gen per town replaces a compromise.
+
+**Attach.** `research/film/stills/<town>/01-pre-dawn-*.png` as first frame.
+
+**Destination.** `research/film/clips/<town>/07-bridge.mp4`. The assembly matches
+`/^\d{2}.*\.(mp4|mov|webm|mkv)$/i` and plain-sorts, so `07-` places the bridge
+last — a `00-` prefix would put it first and invert the day.
+**Hook.** `tools/pipeline/assemble-hero-film.mjs` — shortens the final crossfade
+to a cut if the bridge lands.
+
+**Constraints.** The bridge must end on the pre-dawn still almost exactly, or it
+is worse than the dissolve. Judge it only in the assembled loop, played three
+times round — a bridge that reads well in isolation and badly on the second lap
+has failed.
+
+**Prompt:**
+
+```
+Image-to-video from this exact pre-dawn still, played as the end of a day rather than the start. Lock all geography exactly.
+
+Over 6 seconds: begin at last blue-hour light with the faintest warm glow remaining, and settle into the exact pre-dawn stillness and colour of this still — the frame should finish indistinguishable from the attached image. Almost locked camera. No people, no text, no logos.
+
+Audio: settling to near silence. No music, no voiceover.
+```
+
+**Edit turns.**
+
+1. `The final frame must match the attached still exactly — hold the last half-second.`
+2. `Less light at the start; the change should be barely perceptible.`
+
+**Acceptance.** Watch the assembled film loop three times. If you can find the
+seam, keep the dissolve and record that Omni could not close it.
+
+---
+
+## A29 — The live conversational edit, in the room (outreach instrument)
+
+**Intent.** Not an asset — a **use**. Omni's multi-turn statefulness is the one
+capability a competitor cannot reproduce on a laptop at a kitchen table. In front
+of an owner, you do not show a finished film; you change it while they watch, by
+talking. *"Make it evening." "Take the parked car out." "Slower."* What that
+demonstrates is not the film. It is that we can change what you do not like,
+which is the exact fear a local owner has about paying a studio.
+
+**Build.** A small CLI — `tools/pipeline/omni-session.mjs` — that holds
+`previous_interaction_id` across turns, takes a line of English on stdin, and
+prints the resulting file path. Everything else in this file is a prompt; this is
+the only entry that is code.
+
+**Constraints.** The premises-consent gate (non-negotiable 6) governs *what* is on
+screen. Editing a town film or a generic plate in the room is free of it. Editing
+a film of *their* frontage is not — that needs written agreement before
+generation, and "they were sitting beside me and said go on" is not it. So the
+in-room demo runs on town or generic material, and the business's own film is the
+thing that happens *after* they sign, not the thing that closes them.
+
+**Also.** Every turn is a gen. A five-minute demo can eat a day's quota. Rehearse
+the sequence beforehand and know which three edits land.
+
+**Acceptance.** If the owner asks "can you make it X" unprompted, it worked. If
+they watch politely, the technology impressed nobody and the pitch should go back
+to the before/after, which is the actual product.
+
+---
+
+## A30 — 404 tide loop (site chrome)
+
+**Intent.** Ten seconds of the tide going out over Dundrum's flats on a
+not-found page. The smallest possible piece of craft, in the place a visitor is
+most annoyed.
+
+**Blocked, mildly.** There is no `src/pages/404.astro`. The page is the work;
+the clip is an afternoon.
+
+**Attach.** `research/film/stills/dundrum/02-first-light-mudflats.png`.
+**Destination.** `public/media/site/404-tide.{mp4,webm}` + poster.
+**Hook.** A new `src/pages/404.astro`, Scopers pattern — still is the default,
+video only if both codecs exist.
+
+**Constraints.** **This is not Tideline.** 06 Tideline is held because the site
+will not publish the shape of a tide as the tide. This clip must therefore carry
+no time, no state, and no implication that it reflects the water right now — it
+is decoration on an error page, and the copy beside it must not mention tides at
+all. If that constraint feels like it spoils the idea, it is doing its job.
+
+**Prompt:**
+
+```
+Image-to-video from this exact tidal flats still. Lock the channel geography and the far shore.
+
+Over 8 seconds: shallow water draws slowly back across rippled sand, leaving wet reflections. Almost locked camera. No birds, no people, no text, no logos.
+
+Audio: none — silent plate.
+```
+
+**Acceptance.** Ships with the 404 page or not at all. A held clip for a page
+that does not exist is clutter.
+
+---
+
+## A31 — Fabricated vox-pop — refused, with reasons
+
+**Recorded so no later session re-derives it as a good idea.**
+
+**The idea.** Omni does lip-synced dialogue. Ten seconds of a visitor on the
+promenade: *"I tried to book but the number went to voicemail, so we ate in
+Newry."* For an outreach deck it lands harder than any figure in the July 2026
+Commercial Digital Landscape.
+
+**Why not.** It is a fabricated testimonial produced by a studio whose entire
+differentiator is that it does not fabricate. It fails non-negotiable 5 (no
+invented facts), fails the guest-voice rule, and is the precise thing S5 in
+`research/studio-storytelling.md` — "Independent, not approved" — exists to
+stamp on. The failure mode is not subtle: one screenshot out of context and a
+generated person is saying a real thing about a real town's businesses. On-frame
+labelling does not survive a screenshot, and the whole point of showing it in a
+room is that it is affecting, which is to say that it works by being believed.
+
+**What it is allowed to become.** The *observation* is sound and worth keeping —
+a discovery route that dead-ends is the core of the pitch. That belongs to S2
+("The miss"), where the subject is drawn or abstract, no one is impersonated, and
+the scene is visibly a story rather than a report. Route the impulse there.
+
+**Standing rule this establishes.** Generated human speech asserting an
+experience of a real place or business is out of scope for this studio,
+regardless of labelling. Synthetic *studio* voice reading *our own* copy (S9)
+remains fine — it says only what we already say in text.
+
+---
+
 ## Wiring checklist (when a held clip earns a page)
 
 1. Still on disk remains poster + reduced-motion experience.
@@ -764,7 +1146,18 @@ Image-to-video from this harbour still. Same lock rules as the harbour loop. Ove
 | `research/film/clips/<town>/01–06-*.mp4` | #1 town films | Prototype film hero |
 | `public/media/home/<town>-film.*` | #1 assembled | Prototype |
 | `kent-amusements-promenade-lights.mp4` | #2 | Held |
+| `kent-amusements-afternoon-comic-01-03.mp4` | A3 | Held (worked) |
+| `kent-amusements-afternoon-comic-04-06.mp4` | A3 | Held (worked) |
 | `bettys-butters-melt-loop.mp4` | #5 | Held |
+| `enniskeen-house-day-dusk-loop.mp4` | A6 | Held (worked) |
+| `hugh-mccanns-table-setting-loop.mp4` | A7 | Held (worked) |
+| `dundrum-inn-blue-hour-loop.mp4` | A8 | Held (worked; signage edit) |
+| `castle-farm-weekly-table-loop.mp4` | A9 | Held (worked) |
+| `castle-farm-delivery-round-loop.mp4` | A9 | Held (worked) |
+| `newcastle-chamber-harbour-loop.mp4` | A11 | Held (worked) |
 | `scopers/risograph-chicken-burger.{mp4,webm}` | Pre-Omni appetite loop | **Wired** |
+
+**Not in the 5 Aug evening “worked” set:** A4 Scopers breathe, A10 rebuild
+metaphor (studio — see `research/studio-storytelling.md`).
 
 When a backlog ID ships, move its row to this table and trim the section above to a short “shipped” pointer — keep prompts for regenerate-ability.
