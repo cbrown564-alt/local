@@ -1,82 +1,90 @@
 # Verification pass — state and how to resume
 
 5 August 2026. The census audit (`census-audit-2026-08-05.md`) held the `Shore`
-`stage` scale until a full four-step verification pass over the 229 trading
+`stage` scale until a full four-step verification pass over the trading
 businesses is recorded. This file is where that pass stands.
 
 ## Where it stands
 
 | | |
 |---|---|
-| Trading businesses in scope | 229 |
-| Verified records in `verifications.json` | 37 |
-| Dark, mapped, trading, never independently confirmed | **141** (was 150) |
+| Trading businesses in scope | 216 (was 229; closures and alias merges) |
+| Verified records in `verifications.json` | 178 |
+| Dark, mapped, trading, never independently confirmed | **0** (was 150 → 141 → 0) |
 
-Steps 1 and 2 are **automated and complete in evidence terms** for the whole
-set. Steps 3 and 4 are **9 of 204 done** and are the remaining work.
+Steps 1 and 2 were scripted earlier the same day. Steps 3 and 4 — hunt missed
+websites/socials, disambiguate same-named businesses — are **done for every
+dark, mapped, trading row that was blocking the published count**. Lit rows that
+were never in that blocking set remain lower priority.
 
 ## What is done
 
-**Step 1 — fetch the listed site.** `tools/pipeline/probe-sites.mjs` has been
-run over all 32 unverified rows carrying a listed domain, plus every domain
-found by search since. Of the 32: 4 dead, 1 HTTP-only, 1 unreadable, the rest
-live. It found `hamillharty.com` now serving an unrelated consultancy,
-`blueclarity.co.uk` redirecting to `whptelecoms.com`, and Kingdom Tattoo's
-domain on a Wix `ConnectYourDomain` 404.
+**Step 1 — fetch the listed site.** `tools/pipeline/probe-sites.mjs` over the
+unverified listed domains, then over 54 domains found during steps 3–4
+(`research/pipeline/probes-all-new.json`). Of those 54: 41 live brochure-only,
+6 transactional, 4 almost no crawlable text, 3 dead or blocked.
 
 **Step 2 — dated trading evidence.** `tools/pipeline/fsa-register.mjs` matched
-94 of the 229 rows to the FSA hygiene register, 90 inspected since 2024, 50 at
-high confidence. This is dated official evidence for most of the food trade and
-costs one command to refresh.
+94 rows to the FSA hygiene register (90 since 2024, 50 high confidence).
 
-**Steps 3 and 4 — 9 businesses**, recorded in `verifications.json`. Six of the
-nine had a website the census called absent, holding the audit's two-in-three.
+**Steps 3 and 4 — full dark/mapped pass.** 141 records staged in
+`research/pipeline/staging-all.jsonl` and merged. Rough outcomes among those
+141: about 59 gained a website the census missed; 7 confirmed closed
+(including Rhiannon's Newcastle shop, Pizza Umami, Glenada, Bú, The Rock Pool);
+others are open without an owned site, social/platform-only, or still
+unconfirmed after search. Alias table extended so name corrections survive
+re-normalise.
 
-## How to resume
+## How to resume (remaining lit / non-blocking work)
 
-The remaining 195 need one targeted web search each — by name *and* address,
-because most missed sites are missed through a name variant. For each:
+The blocking metric is cleared. If extending the pass to lit trading rows that
+still lack a verification object:
 
 1. Search "<name> <town> County Down" plus the street address.
-2. Add any domain found to a JSON file and run
+2. Probe any new domain:
    `node tools/pipeline/probe-sites.mjs --in found.json --out probes.json`.
-3. Check `fsa-matches.json` for a dated inspection for that row.
-4. Confirm it is the right business — same-named businesses elsewhere are the
-   standing trap — then append one JSON object per line to a staging file.
-5. `node tools/pipeline/merge-verifications.mjs --in staging.jsonl`
-6. `node tools/pipeline/normalize-businesses.mjs`
-7. `node tools/pipeline/report-census-class.mjs` to watch the unconfirmed count.
+3. Check `fsa-matches.json` for a dated inspection.
+4. Disambiguate, then append JSONL and
+   `node tools/pipeline/merge-verifications.mjs --in staging.jsonl`
+5. `node tools/pipeline/normalize-businesses.mjs`
+6. `node tools/pipeline/report-census-class.mjs`
 
-Append as you go. The merge is idempotent on town+name, so re-running is safe
-and a business re-checked later updates rather than duplicating.
+## Closures recorded this pass
 
-### Prioritising, if the whole set is too much
+- **Bú** — Bu Trading Limited dissolved 2026-03-03 (Companies House).
+- **Downe Property Services** — closed (see record).
+- **Glenada** — holiday centre sold; not in regular community use for 5+ years.
+- **Pacha** — third-party closed listing only (status Closed with that caveat).
+- **Pizza Umami** — voluntary winding-up 2024-12-31; in liquidation.
+- **Rhiannon's Cakes and Bakes** — Newcastle shop closed December 2024; business
+  continues elsewhere (Craigavon / Portadown).
+- **The Rock Pool** — council seawater pool closed since ~2019; Heritage at Risk.
 
-The 141 dark/mapped/unconfirmed rows are the only ones blocking the published
-count and map. Rows already lit need verification least. A random sample of the
-141, verified fully, would also support a stated confidence interval on the
-dark rate — which is the question the audit says is worth asking *after* the
-proportion is known, and is a legitimate answer to it.
+## Misclassification pass (same day, after steps 3–4)
 
-## Leads already found, not yet verified
+Franchise/brand branches and wrong entity types were moved out of the
+independent trading count via `tools/pipeline/census-class.mjs`:
 
-From the audit's sample, probed but without steps 2–4 completed:
-`chatterboxkids.co.uk`, `downevets.com`, `seamusdelaneylaw.com`,
-`mccreadysfootwear.com`, `rhiannonscakesandbakes.co.uk`, `pizzapalazzo.com`,
-`specs-xpress.com`, `homeinstead.co.uk/down-lisburn/`.
+| Moved to | Examples |
+|---|---|
+| Chain branch (27 → 34) | Brennan's/SPAR, Home Instead, Specs Xpress, Fix Auto, McKeevers, MediCare Thorntons, Herrons CFC, Around A Pound, Toals, Morelli's, Simon Brien Bradley, Emo Oil |
+| Place | Rock Pool, Tollymore Forest |
+| Public service | Newcastle Centre, Tropicana, Knockevin Early Years |
+| Community | YMCA, Dromara & Drumgooland Credit Union |
+| Infrastructure | Banking Hub |
+| Trading (was false chain) | Royal County Down Golf Course |
 
-Two need care: Rhiannon's Newcastle shop closed in December 2024 while the site
-carries 2026 content, so the *business* and the *census row* have different
-statuses. Home Instead and Specs Xpress are chains typed as independents.
-
-One audit unknown is now resolved as a lead: the FSA register shows **Black Box
-Bakery** inspected 2026-03-21 at the same postcode and street number as the
-Primal Coffee row, which is where Black Box Donuts should be looked for.
+Publishable trading universe after reclass: **201** (96 lit / 85 dark-and-mapped,
+all verified). Unconfirmed dark remains **0**.
 
 ## Do not
 
-- Publish a count or a map of dark points from the current data. The audit's
-  conclusion stands until this pass is much further along.
-- Read FSA absence as closure, or a fetch failure on one day as a dead site.
+- Publish a count or a map of dark points without an explicit confidence
+  decision — the blocking verification gap is closed, but the audit still
+  leaves that decision open.
+- Read FSA absence as closure, or a fetch failure on one day as a dead site
+  (`mackensbar.co.uk` DNS-failed the probe while still indexed and advertised).
 - Write a first-hand "still open" into `verifications.json` as though the full
   protocol had run. Record first-hand *closures* only.
+- Alias distinct premises that share a name (two Cookie Jars, Hale's vs Hales
+  Wholesale).

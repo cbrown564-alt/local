@@ -39,16 +39,32 @@ export const CLOSED = "Closed";
 export const NEEDS_REVIEW = "Needs review";
 
 /**
- * Brands whose web presence is supplied nationally, typed as independents by
- * the census because the name carries no chain keyword. The test is not
- * ownership — a SPAR franchisee genuinely owns their shop — but whether the
- * premises needs a website of its own. A branch of a national brand does not,
- * so counting it as a local business without a website overstates the claim.
+ * Brands whose web presence is supplied nationally or regionally, typed as
+ * independents by the census because the name carries no chain keyword. The
+ * test is not ownership — a SPAR franchisee genuinely owns their shop — but
+ * whether the premises needs a website of its own. A branch of a national or
+ * regional brand does not, so counting it as a local business without a
+ * website overstates the claim.
+ *
+ * Names must match the census row *after* verification corrections.
  */
 const CHAIN_NAMES = new Set([
+  "Around A Pound",
+  "Brennan's",
   "DV8",
+  "Emo Oil - Newcastle",
+  "Fix Auto Newcastle NI",
   "Gordons Chemist",
+  "Herrons Country Fried Chicken",
+  "Home Instead Care Agency",
+  "McKeevers Chemists",
+  "MediCare - Thorntons Pharmacy",
+  "Morelli's Ice Cream",
+  "Morellis",
   "Sea Spar",
+  "Simon Brien Bradley",
+  "SpecsXpress Opticians",
+  "Toals Bookmakers",
 ]);
 
 /**
@@ -70,6 +86,8 @@ const TAG_CLASS = new Map(Object.entries({
   wilderness_hut: PLACE,
   attraction: PLACE,
   garden: PLACE,
+  swimming_pool: PLACE,
+  water_park: PLACE,
 
   // Built infrastructure.
   parking: INFRASTRUCTURE,
@@ -125,20 +143,38 @@ const BY_NAME = new Map(Object.entries({
   "Dundrum Coastal Path, Murlough": PLACE,
   "Tollymore Forest Park Entrance": PLACE,
   "Tollymore Arboretum": PLACE,
+  "Tollymore Forest": PLACE,
+  "Tollymore Forest Park": PLACE,
+  "Tollymore Forest Park Play Park": PLACE,
   "Parkaneety Graveyard": PLACE,
   "Drumee Cemetery": PLACE,
   "Castle Park": PLACE,
   "Donard Park": PLACE,
+  // Council seawater pool — closed since ~2019, never a private trader.
+  "Rock Pool": PLACE,
 
   // Infrastructure that reads as a business in a Maps listing.
   "Dundrum WwTW": INFRASTRUCTURE,
   "DHL eCommerce ServicePoint Dundrum": INFRASTRUCTURE,
   "InPost Shop": INFRASTRUCTURE,
+  "Banking Hub": INFRASTRUCTURE,
 
-  // Public services that arrived untagged from Google Maps.
+  // Public services that arrived untagged from Google Maps / council pages.
   "Newcastle Visitor Information Centre | Northern Ireland": PUBLIC_SERVICE,
   "Newcastle Jobs & Benefits Office": PUBLIC_SERVICE,
   "Newcastle Tourist Information Centre": PUBLIC_SERVICE,
+  "Newcastle Centre": PUBLIC_SERVICE,
+  "Tropicana": PUBLIC_SERVICE,
+  "Tropicana Outdoor Swimming Complex": PUBLIC_SERVICE,
+  "Knockevin Early Years Centre": PUBLIC_SERVICE,
+
+  // Mutual / community finance mistyped as a brand chain via OSM.
+  "Dromara & Drumgooland CreditUnion Ltd": COMMUNITY,
+  "YMCA": COMMUNITY,
+
+  // Private club with a famous site — OSM/wikidata marked it as a brand chain.
+  // It trades (green fees, membership) and is not a multi-branch retail brand.
+  "Royal County Down Golf Course": TRADING,
 }));
 
 /**
@@ -148,23 +184,29 @@ const BY_NAME = new Map(Object.entries({
  * @returns {string} one of the exported class constants
  */
 export function censusClass(row) {
-  // Verification outranks everything: a business confirmed shut is not a
-  // business without a website, it is a business that closed.
-  if (row.verification?.tradingStatus === "Closed") return CLOSED;
-
+  // Explicit name rules first: they correct tag and entity-type errors, and
+  // they outrank a Closed verification on rows that were never businesses
+  // (Rock Pool is a shut council amenity, not a closed shop).
   const byName = BY_NAME.get(row.name);
   if (byName) return byName;
+
+  // A trading business confirmed shut is not a dark prospect.
+  if (row.verification?.tradingStatus === "Closed") return CLOSED;
+
   if (CHAIN_NAMES.has(row.name)) return CHAIN;
 
+  // Definitive OSM tags outrank a wrong "Larger chain / brand" entity type —
+  // Tollymore Forest and YMCA were both typed as chains while tagged park /
+  // charity.
+  const byTag = TAG_CLASS.get(row.subcategory);
+  if (byTag) return byTag;
+
   // Entity type is set by the normaliser's own derivation rules and by
-  // verification, so it outranks the raw tag where the two disagree.
+  // verification, so it outranks weak tags (null placeholders) below.
   if (row.entityType === "Larger chain / brand") return CHAIN;
   if (row.entityType === "Public service") return PUBLIC_SERVICE;
   if (row.entityType === "Charity / community" || row.entityType === "Club") return COMMUNITY;
   if (row.entityType === "Public attraction") return PLACE;
-
-  const byTag = TAG_CLASS.get(row.subcategory);
-  if (byTag) return byTag;
 
   const byCategory = NON_TRADING_CATEGORIES.get(row.category);
   if (byCategory) return byCategory;

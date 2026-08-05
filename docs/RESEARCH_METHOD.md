@@ -100,6 +100,40 @@ carries a confidence, and only `high` should be accepted without a human look.
   domain resolves and say nothing about the site. Never describe such a site's
   quality without opening it.
 
+### Limitations observed in the fourth round (5 August 2026) — steps 3 and 4
+
+Steps 3 and 4 were completed for every dark, mapped, trading row. The blocking
+count (dark, mapped, trading, never independently confirmed) fell **150 → 0**.
+See `research/pipeline/verification-pass-status.md`.
+
+- **A name correction orphans the verification unless the alias table grows.**
+  Corrections overwrite `name` in `businesses.json`; the next normalise keys by
+  the new name and misses the verification record keyed by the old one. Every
+  rename this pass was added to the alias maps in
+  `normalize-businesses.mjs` and `merge-verifications.mjs`.
+- **The business and the census row can have different statuses.** Rhiannon's
+  still trades in Craigavon and Portadown; the Newcastle shop closed December
+  2024. Record the *row*'s status, and say so in caveats.
+- **National-brand location pages are live sites and not local websites.**
+  Home Instead, Specs Xpress, Fix Auto, McKeevers, Toals — counting them as
+  "lit independents" overstates local digital maturity the same way counting
+  them dark overstated need.
+- **Azure WAF 403 is not a dead domain.** `bundlebaby.com` resolves and blocks
+  the probe; open it before calling it dead.
+- **Same-named businesses elsewhere remain the standing trap**, especially
+  Newcastle-upon-Tyne restaurant closures and Newcastle Ontario retailers.
+  Address match is mandatory before accepting a result.
+- **Do not alias distinct premises that share a trading name.** Cookie Jar at
+  Unit 4 and Cookie Jar at 121 Main Street are separate FSA establishments;
+  Hale's on Main Street and Hales Fruit Wholesale on Dundrum Road likewise.
+  Alias only when two census rows are the same door.
+- **Franchise and brand branches found in steps 3–4 must be reclassified**, not
+  left as dark or lit independents. `census-class.mjs` `CHAIN_NAMES` now covers
+  Brennan's/SPAR, Home Instead, Specs Xpress, Fix Auto, McKeevers, MediCare
+  Thorntons, Herrons CFC, Around A Pound, Toals, Morelli's, Simon Brien Bradley
+  and Emo Oil. Wrong entity types that made Tollymore Forest, YMCA and Royal
+  County Down look like chains were corrected by name/tag rules.
+
 ### Census limitations observed in the first pass
 
 - A Google Maps listing can omit a live website (Painted Earth), so "no

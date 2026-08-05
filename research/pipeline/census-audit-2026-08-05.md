@@ -123,3 +123,23 @@ called absent: the two-in-three finding above holds on a fresh sample.
 
 Unconfirmed dark rows: **150 → 141**. The conclusion is unchanged — no count,
 no map — and the `Shore` `stage` scale stays held.
+
+## Progress against that (5 August 2026, steps 3 and 4 complete)
+
+Steps 3 and 4 were run over every dark, mapped, trading row. Unconfirmed dark
+rows: **150 → 141 → 0**. About three in five of that blocking set gained a
+website the census had missed, matching the sample's direction. Seven closures
+were recorded. Trading universe after merges and closures: 216 rows, of which
+107 lit and 88 dark-and-mapped — all of those dark points now carry a
+verification object.
+
+The audit's original conclusion — that a count must not be published from the
+*unverified* census — is satisfied for the blocking set. Whether a number and
+map may now be published is the confidence question the audit left open; that
+decision is still not taken here.
+
+Franchise and entity-type misclassifications flagged in the sample and the
+verification pass were corrected the same day — see
+`verification-pass-status.md`. Trading universe after reclass: **201** rows
+(96 lit, 85 dark-and-mapped, all of those verified). The `Shore` `stage` scale
+stays held until the confidence decision is made explicitly.
