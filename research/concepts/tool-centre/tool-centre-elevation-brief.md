@@ -12,7 +12,15 @@ structural, and the record does not support manufactured spectacle. The
 method's discipline for a thin inventory applies: make much of what
 exists rather than add to it.
 
-**Status: written 4 August 2026; not yet implemented.** The current
+**Status: moves 2 and 3 shipped 5 August 2026. Move 1's harvest was run and
+failed; move 4 stays gated on the shop's engagement.** The voice slot is
+landed, typed and empty — see
+`research/concepts/tool-centre/voice-harvest.md` for what was searched, what
+the promising-looking sentences turned out to be, and why nothing was quoted.
+The concept is not validated: no owner or representative visitor has seen it.
+The paragraph below describes the concept as it stood before those moves.
+
+The current
 concept passes the publication checks and already stages the business's
 real mechanism — the hire desk with its "day rate on request" board, the
 firm's sourced counter number on every action, the two service lines
