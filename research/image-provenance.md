@@ -120,6 +120,23 @@ of these businesses supplied one.
   2026). Image-to-video of the melt still: knife finishing a cut through soft
   butter. Soft-body physics land; a hand appears in frame and is accepted for
   this pass. Still remains the reduced-motion default if this ever wires in.
+
+### Held Omni concept loops (5 August 2026 evening slate)
+
+Judged “worked reasonably well” from backlog A3–A11; **not wired**. Stills
+remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
+
+- `hotel-enniskeen/enniskeen-house-day-dusk-loop.mp4` — A6; day→dusk on the
+  faithful house plate.
+- `hugh-mccanns/hugh-mccanns-table-setting-loop.mp4` — A7; quiet table-setting
+  in the faithful dining room.
+- `dundrum-inn/dundrum-inn-blue-hour-loop.mp4` — A8; façade loop after a
+  signage-correction edit pass (`Correcting_text_on_sign_…`).
+- `castle-farm/castle-farm-weekly-table-loop.mp4` — A9 theatre still-life.
+- `castle-farm/castle-farm-delivery-round-loop.mp4` — A9 delivery-round plate
+  with gentle van drift.
+- `newcastle-chamber/newcastle-chamber-harbour-loop.mp4` — A11; harbour photo
+  to motion. Guest wire must keep Eric Jones / place attribution chain.
 - `bettys-butters-generated-cube-herb.jpg`,
   `bettys-butters-generated-cube-chilli.jpg`,
   `bettys-butters-generated-cube-paris.jpg` and
@@ -180,6 +197,11 @@ of these businesses supplied one.
   invented a "VARIETY" fascia; conversational edit removed fascia lettering and
   kept the yellow panels blank. Day plate remains the reduced-motion default if
   this ever wires in.
+- `kent-amusements-afternoon-comic-01-03.mp4` and
+  `kent-amusements-afternoon-comic-04-06.mp4` — **held / not wired** (Gemini
+  Omni, 5 August 2026). Image-to-video of the researched storyboard strips
+  (backlog A3). Indicative comic motion only; still strips remain the
+  reduced-motion default.
 - `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png`
   — **source master** (generated 5 August 2026). AI-generated six-panel 2×3
   comic storyboard made with GPT image generation for Kent Amusements move 3.
