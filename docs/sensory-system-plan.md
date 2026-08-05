@@ -38,10 +38,10 @@ The other four have a clear target surface and need production quality rather
 than a design answer. So this plan runs in two stages: **resolve the two
 unknowns first**, then build in priority order.
 
-## Phase 0 — resolve Ridgeline and Lights (design, not code)
+## Phase 0 — resolve Ridgeline and Lights — **resolved, 5 August 2026**
 
-Do this before writing any production component. Output is a decision recorded
-here, not a prototype.
+Output is a decision recorded here, not a prototype. The decision is
+[ADR 0004](adr/0004-shore-horizon-and-lights.md); the reasoning is below.
 
 ### The proposal: they are one artefact, not two
 
@@ -63,32 +63,98 @@ One component, one budget, one accessibility story. A reader meets the same
 image at three weights as they move through the site, which is what makes it a
 house style rather than a set of effects.
 
-### Decide before building
+### The decision
 
-1. **Is `Shore` right, or do Ridgeline and Lights stay separate?** If separate,
-   both need their own surface decision and this plan gains a step.
-2. **Does the footer band animate at all?** Recommendation: no. A footer that
-   moves on every page is a tax on every page.
-3. **Does `rule` track scroll, or is it static?** Scroll-tracking is the whole
-   idea of Ridgeline; it is also the thing most likely to feel like decoration
-   pretending to be a control. Test it on one page before adopting it on all.
-4. **What does the `stage` scale say in text?** The count must be real prose
-   near the image, not a caption inside it — the claim has to survive with the
-   canvas switched off.
-5. **What fires on request confirmation?** The intended moment: one more light
-   comes on, for them. Decide whether that is honest before we have actually
-   built them anything. Recommendation: it is not. Hold it until a pilot
-   completes, then it is true.
+**`Shore` is adopted, at two scales, not three.**
 
-### How to resolve it
+| Scale | Where | What it does | Status |
+|---|---|---|---|
+| `band` | Inside `Footer.astro`, every page, ~120px | Horizon only. No lights. Painted once, never animated. | **Build now** |
+| ~~`rule`~~ | — | — | **Cut** |
+| `stage` | `/about/`, ~50vh | Horizon, lights, dated count in prose beside it | **Held** — see gate below |
 
-Build the three scales as static SVG or PNG comps at real page width, drop them
-into a copy of the live homepage, footer and `/about/`, and look at them on a
-phone. Do not build the component to find out. Record the decision in this file
-and in an ADR if `Shore` is adopted, because it becomes a sitewide dependency.
+The governing distinction, which decides everything else:
 
-**Gate:** Phase 0 is complete when the surface, scale and motion of every place
-`Shore` appears is written down here.
+> **The horizon is identity. The lights are evidence.**
+> Identity can go anywhere. Evidence only appears where prose can stand beside
+> it, and only where the prose is true.
+
+Taken in order:
+
+1. **`Shore`, not Lit Town.** The prototype at `/prototypes/home/lit-town/`
+   already unified terrain and lights, as a three.js hero. Measured in a real
+   build it costs **132KB gzipped for the script and 46KB for the terrain
+   grid** — about seven times the budget for the whole sensory system, on one
+   page. `PLAN.md` section 3 outranks this plan, and that is the heaviest thing
+   we could put in front of the request path. It is also, being one hero on one
+   page, the one shape that cannot become a house style. Lit Town stays in the
+   prototype record as the thing we did not build.
+2. **`band` goes in the footer of every page, and replaces `MourneMotif`.**
+   Not beside it: `MourneMotif` is an *invented* skyline, a hand-drawn zigzag
+   path. The whole claim of Ridgeline is that it is the real one. A site
+   showing a true horizon and a made-up one has no truth claim left. `band`
+   also sits *inside* the footer as its top edge rather than floating above it
+   — a horizon that is structurally part of the footer is architecture, one
+   hovering above it is a sticker. No carve-out for `/request/`: a static image
+   painted once does not compete with a form above it.
+3. **`band` carries no lights, and therefore does not animate.** A footer has
+   no room for prose, so lights there would be an assertion about real
+   businesses made silently on every page, including `/privacy/`. At 120px they
+   would be texture, not information — all of the honesty risk, none of the
+   evidence. With no lights there is nothing left to animate.
+4. **`rule` is cut.** With `band` static and lightless, a static `rule` is the
+   same drawing at 28px in a third place — a duplicate, not a third weight. And
+   a scroll-tracking `rule` would put the same image on the same page with a
+   different behaviour: frozen at the bottom, animating in the middle. One
+   picture, two rules, reads as inconsistency rather than as a system. A
+   progress indicator that cannot be clicked, dragged, or read a position from
+   is decoration in a control's costume.
+5. **`stage` is held until the census is verified.** See below — this is the
+   substantial finding of the session.
+6. **Nothing fires on request confirmation.** The intended moment — one more
+   light comes on, for them — is a claim we have built them something. Held
+   until a pilot completes, at which point it is true and can be revisited.
+
+### Why `stage` is held: the census is not a business list
+
+The claim `stage` was to carry did not survive contact with
+`src/site/data/businesses.json`. Of the 379 rows, 281 are marked as having no
+website. That set is not 281 local businesses that are behind. It contains:
+
+- **Royal County Down Golf Course**, which has one of the better-known websites
+  in Irish sport;
+- **KFC, Subway, Centra, SuperValu, Poundland, Superdrug, BP, Circle K,
+  Trespass, Regatta** — national chains, where "no website found" means *this
+  branch* has no site of its own, a different claim entirely;
+- **Newcastle police station, fire station, primary school and tourist
+  information centre**, all covered by PSNI, NIFRS, EA and DiscoverNI;
+- **Parkaneety Graveyard, Drumee Cemetery, the Granite Trail, Slieve Donard
+  Trail** and **"High Mournes scenic loop"**, which is a road;
+- **duplicate rows** — Newcastle Challenge Trail appears four times, Tollymore
+  Forest Park Entrance three.
+
+246 of the 281 carry `dataConfidence: "Public listing; ownership and trading
+status not independently confirmed"`. We had not confirmed they trade, let
+alone that they lack a site.
+
+Filtering to independent, trading, non-duplicate businesses in commercial
+categories leaves **213 businesses, 187 of them placeable on a map, 156 of
+those dark**. That is a defensible *shape* — most independent businesses here
+have no site of their own — but **149 of the 156 are still unconfirmed**, so
+publishing the figure would assert that 156 specific premises are behind on
+evidence we ourselves labelled unconfirmed.
+
+This is the plan's own stop condition: *a claim we cannot evidence is removed,
+not softened*. The glossary gap that allowed it is now closed — `docs/CONTEXT.md`
+defines **Census**, **Trading business** and **Lit / dark**, and the term
+`Prospect` no longer points at an undefined "census".
+
+**Gate for `stage`:** a further research round refines the census to trading
+businesses and verifies website status as far as is possible digitally. Only
+then do we decide what level of confidence is required to publish a number and
+the locations. `stage` does not ship before that decision.
+
+**Gate for `band`:** none. It carries no claim. Build it.
 
 ## Phase 1 — 03 Rebuild — **built, 5 August 2026**
 
@@ -214,24 +280,42 @@ fake, stop at one and do not roll it out.
 
 ## Phase 3 — 01 + 04 Shore (Ridgeline and Lights)
 
-Build only after Phase 0 has produced a written surface decision.
+Phase 0 is resolved (ADR 0004). This phase now splits: **3a `band` is
+unblocked; 3b `stage` is held behind the census work.**
 
-**Build.**
+**Build — 3a, `band`.**
 
-1. `src/site/scripts/shore.ts` — one renderer, `scale: "band" | "rule" |
-   "stage"`. Skyline profile precomputed at build time into a small typed array
-   rather than derived from the 50k-point terrain grid in the client; the
-   client bundle should carry a profile of ~200 numbers, not the grid.
-2. Business points continue to arrive as a JSON script tag from the page, and
-   only the fields the picture needs (`lat`, `lon`, `lit`). Never the names.
-3. `Shore.astro` renders the canvas plus the real prose claim beside it.
-4. Footer usage paints once and stops.
+1. `src/site/scripts/shore.ts` — one renderer, `scale: "band" | "stage"`.
+   Skyline profile precomputed at build time into a small typed array rather
+   than derived from the 50k-point terrain grid in the client; the client
+   bundle should carry a profile of ~200 numbers, not the grid.
+2. `Shore.astro` renders the canvas. At `band` it paints once and stops, and
+   carries no lights and no claim.
+3. `band` goes inside `Footer.astro` as the footer's own top edge, on every
+   page. `MourneMotif.astro` is deleted in the same change, and its use on the
+   homepage removed — a real horizon and an invented one cannot share a site.
 
-**Acceptance.**
+**Acceptance — 3a.**
 
 - Bundle cost of the terrain profile is under 2KB.
+- Reduced motion and no-JS both get the settled horizon; the footer's links and
+  text are untouched by either.
+- The canvas is `aria-hidden` and adds nothing to the accessibility tree.
+
+**Build — 3b, `stage`.** Held. When the gate opens:
+
+1. Business points arrive as a JSON script tag from the page, and only the
+   fields the picture needs (`lat`, `lon`, `lit`). Never the names.
+2. Points are **trading businesses** only, as defined in `docs/CONTEXT.md` —
+   never raw census rows.
+3. `Shore.astro` at `stage` renders the canvas plus the real prose claim beside
+   it, carrying the review date.
+
+**Acceptance — 3b.**
+
 - The count in prose is derived from the same array the canvas draws, so they
   cannot disagree.
+- The prose names its date and its scope, and is true of the set drawn.
 - Reduced motion: settled frame, no arrival animation.
 - No dark point is ever labelled, hoverable, or otherwise identifiable. This is
   a hard rule, not a preference — the image is a map of who is behind.
@@ -329,10 +413,11 @@ wave.
 
 | Phase | Item | Gate to start |
 |---|---|---|
-| 0 | Shore design resolution | None — start now |
+| 0 | Shore design resolution | ~~None~~ **resolved 5 August 2026**, ADR 0004 |
 | 1 | 03 Rebuild | ~~None~~ **built 5 August 2026** |
 | 2 | 05 Voice | Phase 1 shipped and stable |
-| 3 | 01 + 04 Shore | Phase 0 decision written down |
+| 3a | `Shore` `band` | None — Phase 0 is resolved and the band carries no claim |
+| 3b | `Shore` `stage` | Census verified to trading businesses, **and** a confidence bar agreed for publishing a number and locations |
 | 4 | 07 Film | A business has agreed, in writing, to a generated film of itself |
 | 5a | 02 Depth stills | Phases 1–3 shipped |
 | 5b | 02 Splat capture | A business worth the trip has agreed |

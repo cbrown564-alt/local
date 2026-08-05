@@ -56,8 +56,31 @@ _Avoid_: Letterbox marketing, mailshot, bifold
 
 ### The pipeline
 
+**Census**:
+The raw catalogue of everything we found in Dundrum and Newcastle from public
+listings — `src/site/data/businesses.json`. A census row is a *place that was
+listed*, not a business: the catalogue also contains roads, graveyards, forest
+trails, chain branches, churches and public services, and it carries duplicate
+rows for the same place. Most rows are marked as never having had their
+ownership or trading status confirmed. The census is a starting point for
+review, and is not evidence about any business in it.
+_Avoid_: Business list, directory, database (all imply the rows are businesses)
+
+**Trading business**:
+A census row confirmed to be an independent local business that is open for
+custom. Reaching this from a census row takes work: filtering out what is not
+a business, removing duplicates, and confirming the business trades. Only
+trading businesses may be counted in anything we publish.
+
+**Lit / dark**:
+Whether a trading business has a website of its own. Publishable only in
+aggregate, and only over trading businesses — never over raw census rows. A
+dark business is never named, labelled, linked or made hoverable. Saying a
+place is dark is an assertion about a real business that can be wrong, so it
+requires the same evidence as any other public claim.
+
 **Prospect**:
-A local business assessed against the census, whatever stage it has reached.
+A trading business assessed for concept work, whatever stage it has reached.
 
 **Shortlist**:
 The prospects chosen for concept work. Membership is a decision, recorded with
