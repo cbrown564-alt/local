@@ -1,77 +1,178 @@
 ---
 import "../../site/styles/global.css";
 import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+
 const instagram = "https://www.instagram.com/cuplabrewbar/";
 const facebook = "https://www.facebook.com/p/C%C3%BApla-61565293502528/";
-import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+/* Move 3 of research/concepts/cupla/cupla-elevation-brief.md — the day in two
+   beats. Phases of the counter's day, never times: the record holds no hours,
+   and the feed keeps them. The Irish here is the same vocabulary the concept
+   already carries (Maidin, Lón, Caife, Bácús, Babhlaí); no new Irish is coined
+   ahead of the fluent-speaker review named in research/publication.json. */
+const beats = [
+  {
+    id: "cp-maidin",
+    ga: "Maidin",
+    en: "Morning",
+    line: "Coffee, and the bakes that come out with it.",
+    offer: [
+      { ga: "Caife", en: "Coffee" },
+      { ga: "Bácús", en: "Morning bakes" },
+    ],
+  },
+  {
+    id: "cp-lon",
+    ga: "Lón",
+    en: "Lunch",
+    line: "The counter turns to bowls.",
+    offer: [{ ga: "Babhlaí", en: "Brunch bowls" }],
+  },
+];
+
+/* Move 2 — the pair, staged from the three facts the record holds and nothing
+   else. No owner names, no photograph, no anecdote: everything past this is
+   the twins' to tell. */
+const pairs = [
+  { term: "Cúpla", gloss: "the Irish for twins", termLang: "ga" },
+  { term: "Twin owners", gloss: "opened the café in 2024" },
+  { term: "Est. 2024", gloss: "on the door at 105 Main Street" },
+];
 ---
 
-<ConceptLayout title={"Cúpla — independent concept"} slug="cupla" bodyClass="concept-page concept-cupla" lang="en-GB">
-<div class="cp-strip">
-      <span>105 Main Street, Dundrum, Co. Down · <em lang="ga">ar an bpríomhshráid</em></span>
-      <span>Today's hours on <a href={instagram}>Instagram</a></span>
-    </div>
-    <header class="cp-header">
-      <a class="cp-brand" href="/concepts/cupla/">
-        <svg class="cp-rings" width="46" height="34" viewBox="0 0 46 34" fill="none" aria-hidden="true">
-          <circle cx="16" cy="17" r="13.5" stroke="#1d4e54" stroke-width="2.4" />
-          <circle cx="30" cy="17" r="13.5" stroke="#c98a3b" stroke-width="2.4" />
-        </svg>
-        <span class="cp-brand-text">
-          <span class="cp-brand-name">Cúpla</span>
-          <span class="cp-brand-sub">Brews · Bakes · Bowls</span>
-        </span>
-      </a>
-      <nav class="cp-nav" aria-label="Concept navigation">
-        <a href="/concepts/cupla/menu/"><span lang="ga">An biachlár</span> <span aria-hidden="true">·</span> Menu</a><a href="#" data-concept-placeholder><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</a><a href="#" data-concept-placeholder><span lang="ga">Aimsigh sinn</span> <span aria-hidden="true">·</span> Find us</a>
-      </nav>
-      <a class="cp-follow" href={instagram}>Follow @cuplabrewbar</a>
-    </header>
-    <main class="cp-hero">
-      <section class="cp-story">
+<ConceptLayout
+  title={"Cúpla — independent concept"}
+  slug="cupla"
+  bodyClass="concept-page concept-cupla"
+  lang="en-GB"
+  bannerNote="The shopfront image is an AI-generated visualisation."
+>
+  <div class="cp-strip">
+    <span>105 Main Street, Dundrum, Co. Down · <em lang="ga">ar an bpríomhshráid</em></span>
+    <span>Today's hours on <a href={instagram}>Instagram</a></span>
+  </div>
+
+  <header class="cp-header">
+    <a class="cp-brand" href="/concepts/cupla/">
+      <svg class="cp-rings" width="46" height="34" viewBox="0 0 46 34" fill="none" aria-hidden="true">
+        <circle cx="16" cy="17" r="13.5" stroke="#1d4e54" stroke-width="2.4" />
+        <circle cx="30" cy="17" r="13.5" stroke="#c98a3b" stroke-width="2.4" />
+      </svg>
+      <span class="cp-brand-text">
+        <span class="cp-brand-name">Cúpla</span>
+        <span class="cp-brand-sub">Brews · Bakes · Bowls</span>
+      </span>
+    </a>
+    <nav class="cp-nav" aria-label="Concept navigation">
+      <a href="/concepts/cupla/menu/"><span lang="ga">An biachlár</span> <span aria-hidden="true">·</span> Menu</a><a href="#cp-day"><span lang="ga">Ag an gcuntar</span> <span aria-hidden="true">·</span> At the counter</a><a href="#cp-pair"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</a>
+    </nav>
+    <a class="cp-follow" href={instagram}>Follow @cuplabrewbar</a>
+  </header>
+
+  <main id="main">
+    <section class="cp-hero">
+      <div class="cp-story-head">
         <p class="cp-kicker" lang="ga">Caife · Bácús · Babhlaí</p>
         <h1>Cúpla</h1>
         <p class="cp-thesis"><span lang="ga">Fáilte isteach.</span> <em>Come on in.</em></p>
+      </div>
+
+      <!-- Move 4 — the frontage home. Faithful to the privately held August 2024
+           reference; the disclosure runs alt → caption → case study, and the
+           reference's rights position is recorded in
+           research/image-provenance.md. -->
+      <figure class="cp-frontage">
+        <ResponsiveImage
+          pictureClass="concept-responsive-picture cp-frontage-picture"
+          src="/media/concepts/cupla/cupla-faithful-visualisation.jpg"
+          alt="Faithful AI-generated visualisation of Cúpla's three-bay shopfront at 105 Main Street: white render with navy joinery, the painted CÚPLA fascia board, two hanging baskets, two window boxes and the Est. 2024 decal on the open navy door"
+          width="1536"
+          height="1024"
+          loading="eager"
+          sizes="(max-width: 940px) 100vw, 620px"
+        />
+        <figcaption>
+          AI-generated visualisation · the shopfront at 105 Main Street, drawn from
+          a photograph of the premises taken in August 2024
+        </figcaption>
+      </figure>
+
+      <div class="cp-story-body">
         <p class="cp-lede">
           <strong>Cúpla — the Irish for twins</strong> — is the café twin owners opened on
-          the main street of Dundrum, Co. Down in 2024: specialty coffee, bakes from the
-          counter and brunch bowls. Irish and English sit side by side here, as they do
-          in the café's own name and branding.
+          the main street of Dundrum, Co. Down in 2024. Brews, bakes and bowls, over one
+          counter.
         </p>
         <div class="cp-actions">
-          <a class="cp-cta" href={instagram}>See today's counter</a>
-          <a class="cp-link" href={facebook}>Find us on Facebook →</a>
+          <a class="cp-cta" href="/concepts/cupla/menu/">
+            <span lang="ga">Féach ar an mbiachlár</span> · See the menu
+          </a>
+          <a class="cp-link" href={instagram}>Today's counter on Instagram →</a>
         </div>
-      </section>
-      <section class="cp-counter-panel" aria-labelledby="cp-counter-heading">
-        <div class="cp-counter-head">
-          <span lang="ga">Ag an gcuntar</span>
-          <span>At the counter</span>
-        </div>
-        <div class="cp-counter-body">
-          <svg class="cp-counter-rings" viewBox="0 0 180 110" fill="none" aria-hidden="true">
-            <circle cx="66" cy="55" r="48" stroke="currentColor" stroke-width="4" />
-            <circle cx="114" cy="55" r="48" stroke="#c98a3b" stroke-width="4" />
-          </svg>
-          <p class="cp-counter-kicker" lang="ga">Caife · Bácús · Babhlaí</p>
-          <h2 id="cp-counter-heading">Brews, bakes and bowls.</h2>
-          <ul class="cp-counter-list">
-            <li><span lang="ga">Caife</span><span>Coffee</span></li>
-            <li><span lang="ga">Bácús</span><span>Morning bakes</span></li>
-            <li><span lang="ga">Babhlaí</span><span>Brunch bowls</span></li>
-          </ul>
-        </div>
-        <div class="cp-counter-actions">
-          <a href="/concepts/cupla/menu/"><span lang="ga">Féach ar an mbiachlár</span> · See the menu <span aria-hidden="true">→</span></a>
-          <a href={instagram}>Today on Instagram</a>
-        </div>
-        <p class="cp-counter-note">Menu on this site is a sample — see Instagram for what's on the counter today.</p>
-      </section>
-      <nav class="cp-rail" aria-label="Bilingual site sections">
-        <a class="cp-rail-cell" href="#" data-concept-placeholder><span class="cp-rail-ga" lang="ga">Maidin</span><span class="cp-rail-en">Morning</span></a>
-        <a class="cp-rail-cell" href="#" data-concept-placeholder><span class="cp-rail-ga" lang="ga">Lón</span><span class="cp-rail-en">Lunch</span></a>
-        <a class="cp-rail-cell" href="#" data-concept-placeholder><span class="cp-rail-ga" lang="ga">Le tabhairt leat</span><span class="cp-rail-en">Takeaway</span></a>
-        <a class="cp-rail-cell" href={instagram}><span class="cp-rail-ga" lang="ga">Ar oscailt</span><span class="cp-rail-en">Today's hours →</span></a>
-      </nav>
-    </main>
+      </div>
+    </section>
+
+    <section class="cp-day" id="cp-day" aria-labelledby="cp-day-heading">
+      <div class="cp-day-head">
+        <p class="cp-day-kicker"><span lang="ga">Ag an gcuntar</span> <span aria-hidden="true">·</span> At the counter</p>
+        <h2 id="cp-day-heading">Brews, bakes and bowls — the counter changes as the day does.</h2>
+      </div>
+      <div class="cp-beats">
+        {beats.map((beat) => (
+          <article class="cp-beat" id={beat.id}>
+            <h3 class="cp-beat-name">
+              <span class="cp-beat-ga" lang="ga">{beat.ga}</span>
+              <span class="cp-beat-en">{beat.en}</span>
+            </h3>
+            <p class="cp-beat-line">{beat.line}</p>
+            <ul class="cp-beat-offer">
+              {beat.offer.map((item) => (
+                <li>
+                  <span class="cp-beat-offer-ga" lang="ga">{item.ga}</span>
+                  <span class="cp-beat-offer-en">{item.en}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="cp-day-handoff">
+        <p>
+          What's on the counter today — and today's hours — go up on{" "}
+          <a href={instagram}>@cuplabrewbar</a>.
+          <a class="cp-day-facebook" href={facebook}>Find us on Facebook →</a>
+        </p>
+        <p class="cp-day-sample">
+          The menu on this site is a sample of what the counter holds, not today's list.
+        </p>
+      </div>
+    </section>
+
+    <section class="cp-pair" id="cp-pair" aria-labelledby="cp-pair-heading">
+      <div class="cp-pair-copy">
+        <p class="cp-kicker"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</p>
+        <h2 id="cp-pair-heading">Everything here comes in twos.</h2>
+        <p class="cp-pair-line">
+          Irish and English sit side by side here, as they do in the café's own name and
+          branding.
+        </p>
+      </div>
+      <dl class="cp-pair-list">
+        {pairs.map((pair) => (
+          <div class="cp-pair-row">
+            <dt lang={pair.termLang}>{pair.term}</dt>
+            <dd>
+              <svg class="cp-pair-rings" width="34" height="20" viewBox="0 0 46 34" fill="none" aria-hidden="true">
+                <circle cx="16" cy="17" r="13.5" stroke="currentColor" stroke-width="2.4" />
+                <circle cx="30" cy="17" r="13.5" stroke="#e8c58f" stroke-width="2.4" />
+              </svg>
+              {pair.gloss}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  </main>
 </ConceptLayout>

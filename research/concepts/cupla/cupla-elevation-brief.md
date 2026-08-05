@@ -8,17 +8,24 @@ essence already wrapped — and the brief with a named dependency carried
 from the publication record: a fluent Irish speaker must review the
 bilingual menu before client use.
 
-**Status: written 4 August 2026; not yet implemented.** The current
-concept passes the publication checks and does real recognition work —
+**Status: written 4 August 2026. Moves 1–4 implemented 5 August 2026** — the
+first pass and the theatre pass, with the carried repairs that share their
+components. Move 5 (the keepable menu card) stays gated on the fluent-Irish
+review named in `research/publication.json`; the card ships labelled a sample
+until then. What landed, and what it measured, is recorded under "When a move
+ships" at the foot of this brief.
+
+The diagnosis below is the state of the concept *before* that pass. The
+concept passed the publication checks and did real recognition work —
 the twin-ring mark, the paired Irish-and-English copy, the café's own
-three-word tagline structuring the page — but it is type and chrome from
-top to bottom, the twins are a single clause in the lede, and the day's
-own rhythm sits behind struck-through placeholder cells. The re-read for
+three-word tagline structuring the page — but it was type and chrome from
+top to bottom, the twins were a single clause in the lede, and the day's
+own rhythm sat behind struck-through placeholder cells. The re-read for
 this brief found one material change since the July reviews: the faithful
 frontage visualisation — the concept's subject proof, and per the
 archived review the portfolio's only generated visualisation that earns
-its disclosure — no longer renders on either concept route after the repo
-restructure; it survives only in the public case study's comparison.
+its disclosure — no longer rendered on either concept route after the repo
+restructure; it survived only in the public case study's comparison.
 
 ## The shape of this business
 
@@ -253,21 +260,24 @@ correct in both languages, with the one-sheet carrying it.
 
 ## Open decisions
 
-- Does the frontage restoration wait on the `ATTRIBUTION` rights position
-  being recorded, or does the recording ship in the same commit as the
-  restoration? The July review flagged the question for external use; the
-  concept routes are internal, but the public case study already carries
-  the image.
-- Does the story block ship now in its honest few-fact form, or wait in
-  hope of owner-supplied material? This brief's position: ship it — the
-  designed-home framing only works if the home exists.
-- Two beats or three for the day? The menu supports *maidin* and *lón*; a
-  third would invent a service the record does not hold. Kept at two
-  unless the café publishes otherwise.
+- ~~Does the frontage restoration wait on the rights position being
+  recorded, or does the recording ship in the same commit as the
+  restoration?~~ **Settled 5 August 2026: same commit.** The position is
+  recorded in `research/image-provenance.md` beside the file, which is
+  where generation provenance now lives (the public
+  `public/media/place/ATTRIBUTION.md` carries third-party photograph
+  credits only and says so). It records the position as it stands rather
+  than a clearance: the reference is an unlicensed third-party photograph,
+  held privately, and either permission or a re-generation from an owned
+  reference is required before any external use.
+- ~~Does the story block ship now in its honest few-fact form?~~ **Shipped**
+  — the name, the twin owners, Est. 2024, and nothing else.
+- ~~Two beats or three for the day?~~ **Two**, and the test fails on a
+  third.
 - Who performs the fluent-Irish review, and does the printed one-sheet
-  wait for it? The sheet currently exists with the menu as a sample; the
-  dependency says it should not reach the business until the Irish is
-  reviewed.
+  wait for it? Still open, and still the gate on move 5. The sheet exists
+  with the menu as a sample; the dependency says it should not reach the
+  business until the Irish is reviewed.
 
 ## When a move ships
 
@@ -278,3 +288,55 @@ changes the first viewport recaptures the comparison stills and clip in
 the same commit. Update this status line as moves land; do not call the
 concept validated until an owner or representative visitor has supplied
 that evidence.
+
+### Landed 5 August 2026 — moves 1–4
+
+Built from the record as it stands (`research/pipeline/verifications.json`,
+verified 21 July 2026); no new fact, and no new Irish string, was added to
+the concept in this pass.
+
+1. **The three words credit throughout.** "Brews · Bakes · Bowls" stays in
+   the brand lockup, "Brews, bakes and bowls" leads the day band and closes
+   the lede, and *Caife · Bácús · Babhlaí* names the beats' offer and the
+   menu's three columns. No new studio sentence in the café's voice.
+2. **The pair is staged** in `#cp-pair` — *Ár scéal · Our story*,
+   "Everything here comes in twos", and the three verified facts paired by
+   the twin-ring device. No names, no biography; the test fails on
+   biography language.
+3. **The day runs in two beats** — `#cp-maidin` and `#cp-lon` — carrying
+   their part of the offer and one handoff: today's counter and today's
+   hours go up on `@cuplabrewbar`. No hours, no specials, no prices on the
+   home route. The rail's three struck-through cells are gone, and with the
+   nav's two placeholder links, so is every placeholder on both routes.
+4. **The frontage is home** on `/concepts/cupla/`, beside the wordmark,
+   with alt text, a visible caption and the case-study Sources & limits
+   block all disclosing the generated origin. Measured at 1265×710: the
+   image occupies y 174–557 with the caption 557–613, and
+   `elementFromPoint` at the caption's centre returns the caption. At
+   390×844: the wordmark at 384, the image beginning at **480** — the brief
+   asked for above 520 — the fascia and the Est. 2024 decal both inside the
+   frame, and the caption at 740–796, visible without scrolling. The studio
+   banner sits in the page flow now, so nothing can paint over the
+   disclosure; the hero's height is capped so a tall window cannot crop the
+   fascia out of the frame.
+
+Carried repairs landed in the same passes: a two-tone focus ring (white
+outline over a dark inner band) that reads past 3:1 on the oat, caramel and
+petrol grounds alike; the *Babhla Blasta* gloss corrected to *tasty*; the
+sample label moved to its own sticky row above the menu columns so a
+hand-built column hash cannot scroll it off a phone screen; and the dead
+`.cp-card*`, `.cp-offer*`, `.cp-rail*`, `.cp-counter*` and `@keyframes
+cp-rise` CSS the last two reviews named.
+
+Pinned by `tools/test/test-cupla-elevation.mjs` (`pnpm test:cupla`, part of
+`pnpm test`): all four moves, the standing no-hours scan on both routes, the
+`lang` audit — every Irish string announced as Irish and no English
+announced as Irish, walked with a lang stack rather than a filename
+convention — the absence of placeholders and dead CSS, the disclosure chain,
+the provenance record's in-use status and rights position, and the swap-test
+anchors.
+
+Not done, and not started: **move 5**. The card is still labelled a sample
+and the one-sheet still carries it as one; both wait on the fluent-Irish
+review. The concept is not validated — no owner or representative visitor
+has seen it.

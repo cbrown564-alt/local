@@ -21,11 +21,31 @@
   --display: "Vollkorn", Georgia, serif;
   --body: "Mulish", "Segoe UI", sans-serif;
   --concept-accent: var(--caramel);
-  --concept-focus: #0d2f33;
+  --concept-focus: #ffffff;
+  --focus-ink: #10262a;
   --concept-nav-gap: clamp(16px, 2.2vw, 28px);
   background: #fff;
   color: var(--ink-petrol);
   font-family: var(--body);
+}
+
+/* Two-tone focus ring (4 August 2026). The single dark ring measured 1.14:1 on
+   the petrol-deep strip — tab stop 1 of both routes — and 1.54:1 behind the
+   primary action, because `outline-offset` paints it onto the parent surface.
+   The page has both oat/caramel and petrol grounds, so the ring carries one of
+   each: a dark band filling the offset gap, then a white outline outside it.
+   Whichever ground the ring lands on, one of the two reads well past 3:1.
+   Specificity (0-3-1) clears `body.concept-page :focus-visible` (0-2-1) in the
+   shared shell regardless of stylesheet order. */
+body.concept-page.concept-cupla :focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--focus-ink);
+}
+/* The studio banner is not the concept's surface; it keeps its own white ring
+   on navy without the concept's dark inner band. */
+body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
+  box-shadow: none;
 }
 
 /* Greeting strip */
@@ -39,11 +59,6 @@
 }
 .cp-strip em { font-style: italic; color: #e8c58f; }
 .cp-strip a { color: #ffffff; font-weight: 700; text-decoration-color: var(--caramel); text-underline-offset: 4px; }
-.cp-strip :focus-visible,
-.cp-story :focus-visible,
-.cp-menu-head :focus-visible {
-  outline-color: #ffffff;
-}
 
 /* Header */
 .cp-header {
@@ -89,24 +104,35 @@
 }
 .cp-follow:hover { background: var(--caramel-deep); color: #ffffff; transform: translateY(-1px); }
 
-/* Hero */
+/* Hero — the name and the frontage together.
+   The petrol story column is split in two so the frontage can slide between
+   its halves at ≤940px: both halves share one background and read as a single
+   panel at desktop width. The phone order is load-bearing — the elevation
+   brief pins the wordmark inside the first viewport with the image beginning
+   above y 520, which the old type-first stack could not do. */
 .cp-hero {
   position: relative;
-  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
   display: grid;
-  grid-template-columns: 56% 44%;
-  grid-template-rows: 1fr auto;
-}
-.cp-story {
-  grid-column: 1;
-  grid-row: 1;
-  padding: clamp(24px, 3.4vh, 44px) clamp(26px, 3.6vw, 56px) 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
+  grid-template-columns: 54% 46%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "head figure"
+    "body figure";
+  /* 96px less than the full screen, so the day's first beat is visible at the
+     desktop fold rather than hidden behind it — and capped, because a tall
+     window would otherwise stretch the frontage into a crop tight enough to
+     lose the fascia lettering, the single most identifying thing in the frame. */
+  min-height: min(calc(100vh - 80px - 37px - 96px - var(--mm-banner-space, 0px)), 560px);
   background: var(--petrol);
 }
+.cp-story-head,
+.cp-story-body {
+  padding-inline: clamp(26px, 3.6vw, 56px);
+  background: var(--petrol);
+  color: #fff;
+}
+.cp-story-head { grid-area: head; padding-top: clamp(24px, 3.4vh, 44px); }
+.cp-story-body { grid-area: body; padding-bottom: clamp(24px, 3.4vh, 40px); }
 .cp-kicker {
   display: flex;
   align-items: center;
@@ -118,8 +144,9 @@
   text-transform: uppercase;
   color: #f0cfad;
 }
-.cp-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--caramel); }
-.cp-story h1 {
+.cp-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--caramel); flex: 0 0 auto; }
+.cp-kicker [lang="ga"] { font-family: var(--display); font-size: 15px; font-style: italic; letter-spacing: 0.06em; text-transform: none; }
+.cp-story-head h1 {
   margin: 0 0 14px;
   font-family: var(--display);
   font-size: clamp(58px, 7vw, 92px);
@@ -128,20 +155,17 @@
   color: #fff;
   max-width: 8em;
 }
-.cp-story h1 em {
-  font-style: italic;
-  color: var(--caramel-deep);
-}
 .cp-thesis {
   max-width: 27em;
-  margin: 0 0 16px;
+  margin: 0 0 4px;
   font-family: var(--display);
   font-size: clamp(22px, 2vw, 30px);
   line-height: 1.08;
   color: #f0cfad;
 }
+.cp-thesis span[lang="ga"] { color: #fff; }
 .cp-lede {
-  margin: 0 0 22px;
+  margin: 18px 0 22px;
   max-width: 31em;
   font-size: 16.5px;
   line-height: 1.6;
@@ -159,6 +183,7 @@
   text-decoration: none;
   transition: background 150ms ease, transform 150ms ease;
 }
+.cp-cta [lang="ga"] { font-family: var(--display); font-style: italic; font-size: 17px; }
 .cp-cta:hover { background: var(--caramel-deep); color: #ffffff; transform: translateY(-1px); }
 .cp-link {
   color: #fff;
@@ -168,160 +193,159 @@
   text-decoration-color: var(--caramel);
 }
 
-/* Counter identity — the café experience in place of a flat façade */
-.cp-counter-panel {
-  grid-column: 2;
-  grid-row: 1;
-  min-width: 0;
+/* The frontage — the concept's subject proof, faithful to the August 2024
+   reference. The disclosure sits directly beneath the image in the page flow,
+   so nothing can paint over it: the caption is the visible half of the
+   disclosure chain that runs alt → caption → case-study sources. */
+.cp-frontage {
+  grid-area: figure;
+  margin: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  background: var(--petrol);
-  color: var(--oat);
-  overflow: hidden;
+  background: var(--petrol-deep);
 }
-.cp-counter-head {
-  min-height: 48px;
-  padding: 0 clamp(24px,3vw,42px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  border-bottom: 1px solid rgba(245,238,225,.18);
-  color: #cfdad2;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.cp-counter-body {
-  position: relative;
+.cp-frontage img {
+  /* `height: 0` with flex-grow, not `height: auto`: the width/height
+     attributes are presentational hints, so an auto-height image in a column
+     flex container lays out at its full 1024px and drags the whole hero down
+     with it. The figure takes its height from the grid area instead. */
   flex: 1 1 auto;
-  padding: clamp(28px,4vh,46px) clamp(24px,3vw,42px) 26px;
+  width: 100%;
+  height: 0;
+  min-height: 0;
+  /* Vertically complete at every width: the CÚPLA fascia is the single most
+     identifying feature in the frame and must never be cropped out. */
+  object-fit: cover;
+  object-position: 50% 40%;
 }
-.cp-counter-rings {
-  position: absolute;
-  top: 20px;
-  right: 18px;
-  width: min(32%,170px);
-  color: #1d4e54;
-  opacity: .55;
+.cp-frontage figcaption {
+  flex: 0 0 auto;
+  padding: 10px clamp(18px, 2vw, 26px);
+  background: #0b231d;
+  color: #c5d4cb;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
-.cp-counter-kicker { position: relative; margin: 0 0 7px; color: #e8c58f; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.cp-counter-panel h2 {
-  position: relative;
-  max-width: 7.5em;
+
+/* The day in two beats — the counter's own rhythm, in phases and never in
+   times. Hours and today's counter stay with the feed the café runs. */
+.cp-day {
+  padding: clamp(26px, 4vh, 44px) clamp(26px, 3.6vw, 56px) clamp(22px, 3vh, 36px);
+  background: var(--oat);
+  border-top: 1px solid var(--hairline);
+}
+.cp-day-head { display: flex; flex-direction: column; gap: 10px; }
+.cp-day-kicker {
   margin: 0;
-  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--caramel-ink);
+}
+.cp-day-kicker [lang="ga"] { font-family: var(--display); font-size: 15px; font-style: italic; letter-spacing: 0.06em; text-transform: none; }
+.cp-day h2 {
+  margin: 0;
+  max-width: 18em;
   font-family: var(--display);
-  font-size: clamp(43px,4.3vw,62px);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.06;
+  color: var(--petrol);
+}
+.cp-beats {
+  margin-top: clamp(20px, 3vh, 32px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
+}
+.cp-beat { padding-top: 14px; border-top: 3px solid var(--caramel); }
+.cp-beat-name { margin: 0 0 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.cp-beat-ga {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
   font-style: italic;
   font-weight: 600;
-  letter-spacing: -.02em;
-  line-height: .96;
+  line-height: 1;
+  color: var(--petrol);
 }
-.cp-counter-list { position: relative; margin: 26px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(245,238,225,.45); }
-.cp-counter-list li { padding: 11px 0; display: flex; justify-content: space-between; gap: 18px; border-bottom: 1px solid rgba(245,238,225,.18); }
-.cp-counter-list li span:first-child { color: #fff; font-family: var(--display); font-size: 19px; font-style: italic; font-weight: 600; }
-.cp-counter-list li span:last-child { color: #cfdad2; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.cp-counter-actions { display: grid; grid-template-columns: 1.45fr 1fr; }
-.cp-counter-actions a { min-height: 58px; padding: 13px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--caramel); color: #132f27; font-size: 14px; font-weight: 800; text-decoration: none; }
-.cp-counter-actions a + a { justify-content: center; background: var(--oat); border-left: 1px solid var(--hairline); }
-.cp-counter-actions a:hover { background: #fff; }
-.cp-counter-note {
-  margin: 0;
-  padding: 8px 15px;
-  background: #0b231d;
-  color: #a9bfb3;
-  font-size: 11px;
-  line-height: 1.4;
-  text-align: center;
-}
-.cp-card {
-  width: min(100%, 384px);
-  padding: 22px 26px 22px;
-  background: var(--petrol);
-  color: var(--oat);
-  border-radius: 14px;
-  box-shadow: 0 26px 60px rgba(20, 57, 62, 0.35);
-}
-.cp-card-kicker {
-  margin: 0 0 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #e8c58f;
-}
-.cp-offer { margin: 0; padding: 0; list-style: none; }
-.cp-offer li {
-  padding: 13px 0;
+.cp-beat-en { font-size: 11.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--caramel-ink); }
+.cp-beat-line { margin: 0 0 14px; max-width: 26em; font-size: 15.5px; line-height: 1.5; color: var(--ink-petrol); }
+.cp-beat-offer { margin: 0; padding: 0; list-style: none; }
+.cp-beat-offer li {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
-  border-top: 1px solid rgba(245, 238, 225, 0.18);
-}
-.cp-offer li:first-child { border-top: 0; }
-.cp-offer-ga {
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 600;
-  font-style: italic;
-  color: #ffffff;
-}
-.cp-offer-en {
-  font-size: 13.5px;
-  text-align: right;
-  color: #cfdad2;
-}
-.cp-card-cta {
-  display: block;
-  margin-top: 16px;
-  padding: 13px;
-  border-radius: 999px;
-  background: var(--caramel);
-  color: #2a1d0a;
-  font-size: 15px;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  transition: background 150ms ease, color 150ms ease;
-}
-.cp-card-cta:hover { background: var(--oat); color: var(--petrol); }
-.cp-card small { display: block; margin-top: 10px; font-size: 12px; text-align: center; color: #a9bfb3; }
-
-/* Bilingual rail — content right-aligned so the fixed concept-disclosure badge
-   in the bottom-left corner never covers a cell */
-.cp-rail {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
-  background: var(--oat);
+  gap: 16px;
+  padding: 9px 0;
   border-top: 1px solid var(--hairline);
-  padding: 0 clamp(20px, 3.5vw, 44px);
 }
-.cp-rail-cell {
-  padding: 12px 24px;
+.cp-beat-offer-ga { font-family: var(--display); font-size: 18px; font-style: italic; font-weight: 600; color: var(--petrol); }
+.cp-beat-offer-en { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-ink); }
+.cp-day-handoff {
+  margin-top: clamp(18px, 2.6vh, 28px);
+  padding-top: 14px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1px;
-  text-decoration: none;
-  border-left: 1px solid var(--hairline);
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  border-top: 1px solid var(--hairline);
 }
-.cp-rail-cell:first-child { border-left: 0; }
-.cp-rail-ga { font-family: var(--display); font-size: 16px; font-weight: 600; font-style: italic; color: var(--petrol); }
-.cp-rail-en { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-ink); }
+.cp-day-handoff p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-petrol); }
+.cp-day-handoff a { color: var(--petrol); font-weight: 700; text-underline-offset: 4px; text-decoration-color: var(--caramel); }
+.cp-day-facebook { margin-left: 12px; white-space: nowrap; }
+.cp-day-sample { font-size: 13px; color: var(--sage-ink); }
 
-/* Entrance */
-@keyframes cp-rise { from { opacity: 0; transform: translateY(14px); } }
+/* Our story — the pair, staged from the three facts the record holds. The
+   twin-ring device does the telling; the section is deliberately short, and
+   deliberately open for whatever the owners one day want told. */
+.cp-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 52px);
+  align-items: start;
+  padding: clamp(30px, 4.5vh, 52px) clamp(26px, 3.6vw, 56px);
+  background: var(--petrol);
+  color: #fff;
+}
+.cp-pair h2 {
+  margin: 0 0 14px;
+  max-width: 10em;
+  font-family: var(--display);
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 600;
+  line-height: 1.04;
+  color: #fff;
+}
+.cp-pair-line { margin: 0; max-width: 30em; font-size: 16px; line-height: 1.6; color: #e6ece8; }
+.cp-pair-list { margin: 0; padding: 0; }
+.cp-pair-row {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px 20px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(245, 238, 225, 0.28);
+}
+.cp-pair-row:first-child { border-top: 0; padding-top: 0; }
+.cp-pair-row dt {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #fff;
+}
+.cp-pair-row dd { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15.5px; line-height: 1.45; color: #e6ece8; }
+.cp-pair-rings { flex: 0 0 auto; color: var(--caramel); }
+
 @media (max-width: 940px) {
   .cp-strip { flex-direction: column; gap: 2px; text-align: center; }
   /* Was `display: none`, which hid the only link to the menu — the companion
      route this concept exists to show — from every phone visitor (25 July 2026
-     re-review). It becomes a scrollable strip under the brand instead. */
+     re-review). It becomes a wrapped strip under the brand instead. */
   .cp-nav {
     order: 3;
     width: 100%;
@@ -333,39 +357,33 @@
     gap: 4px 9px;
     padding-bottom: 2px;
   }
-  /* Sized so all three bilingual labels fit one row at 390px: a wrapped nav
-     was costing 118px of the first viewport and pushing the visualisation
-     disclosure back below the fold. */
   .cp-nav a { flex: 0 0 auto; white-space: nowrap; font-size: 11.5px; }
   .cp-header { height: auto; gap: 10px; padding: 12px 16px; flex-wrap: wrap; }
   /* Brand and follow share one row at 390px; the pill was 4px too wide and
      wrapped onto its own, costing another 43px of the first viewport. */
   .cp-brand { flex: 0 1 auto; min-width: 0; }
   .cp-follow { flex: 0 0 auto; padding: 9px 11px; font-size: 12px; }
-  .cp-hero { grid-template-columns: 1fr; min-height: 0; }
-  /* Brand first on phones — counter-first was pushing the h1 below the fold. */
-  .cp-story {
-    grid-column: 1;
-    grid-row: auto;
-    order: 0;
-    padding: 18px 22px 16px;
+  /* Wordmark, then proof, then the offer: the frontage slides between the two
+     halves of the story column so it begins high in the phone viewport. */
+  .cp-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "head"
+      "figure"
+      "body";
+    min-height: 0;
   }
-  .cp-story h1 { max-width: none; font-size: clamp(40px, 10.5vw, 50px); }
-  .cp-counter-panel { grid-column: 1; grid-row: auto; order: 1; min-height: 0; }
-  .cp-rail { grid-column: 1; grid-row: auto; order: 2; flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
-  .cp-counter-rings { display: none; }
-  .cp-counter-head { padding-inline: 22px; }
-  .cp-counter-body { padding: 28px 22px 22px; }
-  .cp-counter-actions { grid-template-columns: 1fr; }
-  .cp-counter-actions a + a { border-top: 1px solid var(--hairline); border-left: 0; }
-  .cp-thesis { font-size: 20px; margin-bottom: 8px; }
-  .cp-lede { font-size: 15px; line-height: 1.5; margin-bottom: 14px; }
+  .cp-story-head { padding: 16px 22px 14px; }
+  .cp-story-body { padding: 18px 22px 20px; }
+  .cp-story-head h1 { max-width: none; font-size: clamp(40px, 10.5vw, 50px); }
+  .cp-thesis { font-size: 20px; }
+  .cp-lede { margin-top: 0; font-size: 15px; line-height: 1.5; margin-bottom: 14px; }
   .cp-kicker { margin-bottom: 8px; }
-  .cp-rail-cell { border-left: 0; flex: 1 1 45%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cp-kicker, .cp-story h1, .cp-lede, .cp-actions, .cp-card { animation: none; }
+  /* No crop at all on phones: the whole frontage, fascia included. */
+  .cp-frontage img { flex: 0 0 auto; height: auto; aspect-ratio: 1536 / 1024; }
+  .cp-beats { grid-template-columns: 1fr; }
+  .cp-pair { grid-template-columns: 1fr; }
 }
 
 /* Active nav state — marks the current page in sub-page nav */
@@ -378,7 +396,7 @@
 
 .cp-menu {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   background: var(--oat);
   min-height: calc(100vh - 80px - 38px - var(--mm-banner-space, 0px));
 }
@@ -410,12 +428,20 @@
   color: rgba(245, 238, 225, 0.86);
 }
 .cp-menu-address em { font-style: italic; text-transform: none; letter-spacing: 0.02em; }
+/* The sample label travels with the prices. It is its own sticky row rather
+   than a line in the head bar, because a hand-built column hash used to scroll
+   the head bar — and the label with it — clean off a phone screen. */
 .cp-menu-provisional {
-  max-width: 58ch;
-  margin: 7px 0 0;
-  color: #e8c58f;
-  font-size: 11px;
-  line-height: 1.4;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 7px clamp(26px, 3.6vw, 56px);
+  background: var(--caramel);
+  color: #2a1d0a;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 .cp-menu-today {
   display: flex;
