@@ -90,9 +90,40 @@ and in an ADR if `Shore` is adopted, because it becomes a sitewide dependency.
 **Gate:** Phase 0 is complete when the surface, scale and motion of every place
 `Shore` appears is written down here.
 
-## Phase 1 — 03 Rebuild
+## Phase 1 — 03 Rebuild — **built, 5 August 2026**
 
 The highest-value, lowest-risk item. Build first.
+
+**As built.** `RebuildStage.astro` (drop-in for `BeforeAfter`) on the homepage
+proof fold and every `/transformations/<slug>/` opener;
+`src/site/scripts/rebuild-stage.ts` for the renderer,
+`src/site/scripts/motion.ts` for the scheduler, `src/site/styles/rebuild.css`.
+Checked by `pnpm test:rebuild`, which runs inside `pnpm test`.
+
+Three things went differently from the sketch above:
+
+- **No second image download.** The canvas draws the frames from the `<img>`
+  elements already in the page rather than loading its own copies, so the
+  effect adds no bytes to the comparison it decorates.
+- **The build and the sweep are one move.** The comparison arrives fully
+  *before*; the build plays over it; when the build lands on the concept the
+  canvas fades onto identical pixels and the existing sweep then opens the
+  split to 50%, which is what tells the reader the handle is theirs. The
+  canvas fires `rebuild:settled` even when it cannot draw at all, so a broken
+  image or a missing 2D context can never strand the page on *before*.
+- **Settled state is the comparison at 50%, not the after frame alone.** Under
+  reduced motion no canvas is created and the page is exactly the comparison as
+  it was: after image present, static, handle in the middle. Ending on the
+  after frame alone would put the handle against the left edge with nothing to
+  suggest dragging it.
+
+Measured, not assumed: scheduler and renderer together are **1.34KB gzipped**,
+and the stage records **zero** layout shift where it previously recorded ~0.019
+— sweeping the split used to move `.comparison-divider` through `left`, a
+layout property, and it now moves through a transform.
+
+Still open: the concept comparison (`MotionCompare`) is untouched. It compares
+two *videos*, not two stills, so the tile build does not transfer to it as-is.
 
 **What it is.** The before/after handover as a build: the current site comes
 apart in tiles on a diagonal, the concept lands in its place. Replaces the
@@ -271,10 +302,13 @@ These apply to every phase and should be built once, in Phase 1.
 
 1. **One scheduler.** A single module owns "is this on screen, is motion
    allowed, is the tab visible" and every effect registers with it. Two canvases
-   must never both hold a rAF loop on the same screen.
+   must never both hold a rAF loop on the same screen. **Built:**
+   `src/site/scripts/motion.ts`. Later phases register with it rather than
+   calling `requestAnimationFrame` themselves.
 2. **Budget.** No more than one animating canvas in the first viewport. Total
    added JavaScript for the whole system under 25KB gzipped, terrain profile
-   included. Measure, do not assume.
+   included. Measure, do not assume. **Spent so far: 1.34KB** (scheduler and
+   03 Rebuild).
 3. **Reduced motion is a first-class state**, not a disable switch: every
    effect has a designed settled frame. The prototype already found the trap —
    a `ResizeObserver` firing after the single settled paint wipes the canvas.
@@ -296,7 +330,7 @@ wave.
 | Phase | Item | Gate to start |
 |---|---|---|
 | 0 | Shore design resolution | None — start now |
-| 1 | 03 Rebuild | None — start now, in parallel with phase 0 |
+| 1 | 03 Rebuild | ~~None~~ **built 5 August 2026** |
 | 2 | 05 Voice | Phase 1 shipped and stable |
 | 3 | 01 + 04 Shore | Phase 0 decision written down |
 | 4 | 07 Film | A business has agreed, in writing, to a generated film of itself |

@@ -9,6 +9,8 @@ interface Props {
   loading?: "eager" | "lazy";
   sizes?: string;
   draggable?: boolean;
+  /** Anything else lands on the `<img>` — `data-*` hooks, mostly. */
+  [key: string]: unknown;
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   loading = "lazy",
   sizes = "(max-width: 720px) 100vw, 1265px",
   draggable,
+  ...rest
 } = Astro.props;
 const base = src.replace(/\.[^/.]+$/, "");
 const supportsGeneratedWebp = /^\/media\/.+\.(?:jpe?g)$/i.test(src);
@@ -44,5 +47,6 @@ const supportsGeneratedWebp = /^\/media\/.+\.(?:jpe?g)$/i.test(src);
     decoding="async"
     fetchpriority={loading === "eager" ? "high" : "auto"}
     draggable={draggable}
+    {...rest}
   />
 </picture>

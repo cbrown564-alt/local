@@ -1,0 +1,51 @@
+---
+/**
+ * 03 Rebuild — the before/after comparison with the handover played as a build.
+ *
+ * A drop-in for `BeforeAfter` on the surfaces where the comparison is the point
+ * of the page: the homepage proof fold and every transformation opener. It is
+ * the same comparison with the same images, the same alt text and the same drag
+ * handle; the canvas over the top is decorative, runs once, and hands back.
+ *
+ * See `docs/sensory-system-plan.md`, phase 1.
+ */
+import "../styles/rebuild.css";
+import BeforeAfter from "./BeforeAfter.astro";
+
+interface Props {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  showNotes?: boolean;
+  compact?: boolean;
+  loading?: "eager" | "lazy";
+}
+
+const {
+  before,
+  after,
+  beforeAlt,
+  afterAlt,
+  showNotes = true,
+  compact = false,
+  loading = "eager",
+} = Astro.props;
+---
+
+<BeforeAfter
+  before={before}
+  after={after}
+  beforeAlt={beforeAlt}
+  afterAlt={afterAlt}
+  showNotes={showNotes}
+  compact={compact}
+  loading={loading}
+  sweep
+  rebuild
+/>
+
+<script>
+  import { mountRebuildStages } from "../scripts/rebuild-stage";
+  mountRebuildStages();
+</script>
