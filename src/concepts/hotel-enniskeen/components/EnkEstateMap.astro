@@ -1,195 +1,34 @@
 ---
-/** An illustrated plan of the twelve acres.
- *
- *  Every named feature is one the hotel publishes about its own grounds — the
- *  house, the lawn and gardens, the woodland trail, the Wishing Well, the
- *  Shimna River, the drive off the Bryansford Road, and the views over Slieve
- *  Donard and the Irish Sea (index.html, WoodlandRiverTrail.html). Nothing is
- *  added for decoration: there is no invented pond, folly, courtyard or
- *  terrace bar on this drawing.
- *
- *  What it is *not* is a survey. The hotel publishes no site plan, so the
- *  relative positions here are indicative — drawn in the order a guest meets
- *  them walking down from the house — and the caption says exactly that. It is
- *  a country-house foyer map, not a claim about where the boundary runs.
- *
- *  The plate is laid out on an 800 × 560 grid in bands: road and drive across
- *  the top, the house and its lawn through the middle, the trail and the
- *  Wishing Well below, and the Shimna along the foot. Woodland fills what is
- *  left, Slieve Donard rises along the southern edge and the Irish Sea breaks
- *  beyond the eastern hedge; every cluster is placed to stay clear of a label.
- *
- *  Plate and compass come from the shared map shell
- *  (src/concepts/_shell/MapPlate.astro), as does the wobble jitter behind
- *  the woodland; the scene below is the concept's own drawing. */
-import MapCompass from "../../_shell/MapCompass.astro";
-import MapPlate from "../../_shell/MapPlate.astro";
-import { wobble } from "../../_shell/map-wobble";
+import GeneratedMapPlate from "../../_shell/GeneratedMapPlate.astro";
 
-interface Props {
-  /** Set on the estate page, where the map is the section's own heading. */
-  headingId?: string;
-}
-
+interface Props { headingId?: string; }
 const { headingId } = Astro.props;
 
-/** Woodland: cluster centre, spread and count, drawn as small arcs rather than
- *  filled shapes so the whole plate stays a line drawing. */
-const woods = [
-  { x: 400, y: 162, spread: 112, rows: 1, count: 5, seed: 17 },
-  { x: 150, y: 322, spread: 68, rows: 3, count: 6, seed: 3 },
-  { x: 622, y: 258, spread: 78, rows: 3, count: 6, seed: 11 },
-];
-
-const trees = woods.flatMap((wood, woodIndex) =>
-  Array.from({ length: wood.rows * wood.count }, (_, index) => {
-    const row = Math.floor(index / wood.count);
-    const column = index % wood.count;
-    const step = (wood.spread * 2) / Math.max(wood.count - 1, 1);
-    return {
-      key: `${woodIndex}-${index}`,
-      x: wood.x - wood.spread + column * step + wobble(wood.seed, index, 10),
-      y: wood.y + row * 28 + wobble(wood.seed + 1, index, 8),
-      r: 8 + wobble(wood.seed + 2, index, 2.2),
-    };
-  }),
-);
+const places = [
+  { label: "Bryansford Road", note: "" },
+  { label: "Enniskeen House", note: "Twelve wooded acres" },
+  { label: "Lawn & gardens", note: "" },
+  { label: "The Wishing Well", note: "" },
+  { label: "The Shimna River", note: "" },
+  { label: "Slieve Donard", note: "" },
+  { label: "Newcastle & the Irish Sea", note: "" },
+] as const;
 ---
 
-<MapPlate
+<GeneratedMapPlate
   id="enk-map"
-  viewBox="0 0 800 560"
+  src="/media/maps/enniskeen-estate-generated.png"
+  width={1448}
+  height={1086}
   title="Plan of the Enniskeen estate"
-  desc="An indicative drawing of the twelve-acre estate: the drive arriving from the Bryansford Road to the house and its turret, lawns and gardens below the terrace, woodland on every side, and the trail running down past the Wishing Well to the Shimna River along the foot of the grounds. Slieve Donard rises beyond the southern edge, and to the east the view runs out to Newcastle and the waves of the Irish Sea."
+  desc="An indicative illustrated relationship between Enniskeen House, its gardens and woodland trail, the Wishing Well, the Shimna River, Slieve Donard and the Irish Sea."
   headingId={headingId}
 >
-  <!-- Estate boundary: a soft irregular envelope, drawn as a hedge line -->
-  <path
-    class="enk-map-boundary"
-    d="M70 212C120 152 260 120 400 118c145-2 280 32 326 90 28 36 16 96 4 152-12 62-58 82-198 86-140 4-300 0-380-20C68 412 50 372 56 318c6-52-2-84 14-106Z"
-  />
-
-  <!-- The Shimna, running along the foot of the grounds -->
-  <path
-    class="enk-map-river"
-    d="M38 486c58-14 106-2 158 8s96 12 152-2 108-24 168-14 106 20 152 10"
-  />
-  <path
-    class="enk-map-river enk-map-river--shadow"
-    d="M38 497c58-14 106-2 158 8s96 12 152-2 108-24 168-14 106 20 152 10"
-  />
-
-  <!-- The drive, in from the Bryansford Road, up to the door -->
-  <path class="enk-map-drive" d="M40 224c88 8 152 26 210 38 34 6 68 4 104 2" />
-  <path class="enk-map-drive enk-map-drive--edge" d="M40 233c88 8 152 26 210 38 34 6 68 4 104 2" />
-
-  <!-- Lawn and gardens, below the terrace -->
-  <path
-    class="enk-map-lawn"
-    d="M416 296c74 0 132 12 132 26s-58 26-132 26-132-12-132-26 58-26 132-26Z"
-  />
-
-  <!-- The woodland trail: out of the gardens, past the Wishing Well, to the river -->
-  <path
-    class="enk-map-trail"
-    d="M404 350c-4 22-30 34-54 42s-42 12-48 26 10 26 40 30 74-6 116-14 76-6 100 12"
-  />
-
-  <!-- Woodland -->
-  <g class="enk-map-wood">
-    {trees.map((tree) => (
-      <path
-        d={`M${tree.x - tree.r} ${tree.y}a${tree.r} ${tree.r * 0.86} 0 0 1 ${tree.r * 2} 0`}
-      />
-    ))}
-  </g>
-
-  <!-- Slieve Donard: a small massif rising beyond the southern hedge -->
-  <g class="enk-map-hills">
-    <path d="M96 458 134 412 172 458Z" />
-    <path d="M196 458 228 420 260 458Z" />
-    <path d="M136 458 180 410 224 458Z" />
-    <path class="enk-map-hill-line" d="M126 426l8-6 8 6 8-6" />
-    <path class="enk-map-hill-line" d="M170 428l10-8 10 8 10-8" />
-  </g>
-
-  <!-- The Irish Sea: wave lines breaking beyond the eastern hedge -->
-  <g class="enk-map-sea">
-    <path d="M578 414q14-9 28 0t28 0t28 0t28 0" />
-    <path d="M596 428q14-9 28 0t28 0t28 0t28 0" />
-    <path d="M584 442q14-9 28 0t28 0t28 0" />
-  </g>
-
-  <!-- Sightlines out of the gardens: a fine quill line ending exactly at
-       the arrow tip, where two curved barbs meet it -->
-  <g class="enk-map-sight">
-    <path d="M286 318c-28 12-60 28-96 48" />
-    <path class="enk-map-sight-head" d="M190 366q7-2.2 12 0.2M190 366q3.5-5.7 6.2-10.3" />
-    <path d="M548 320c34 8 70 18 108 32" />
-    <path class="enk-map-sight-head" d="M656 352q-7.5 1-12.8 2.2M656 352q-4.2-5-8.3-10" />
-  </g>
-
-  <!-- The house: a two-storey range under a pitched roof — string course,
-       chimneys, arched sash windows and a door with a fanlight arch — with
-       the turret in front, flying a small pennant -->
-  <g class="enk-map-house" transform="translate(352 206)">
-    <path d="M102 54h24v30h-24Z" />
-    <path d="M102 54l12-9 12 9" />
-    <path d="M18 42h84v42H18Z" />
-    <path d="M28 42 64 14l36 28" />
-    <path d="M37 35V21h8v9" />
-    <path d="M85 30V19h8v18" />
-    <path d="M18 60h84" />
-    <path d="M31.5 56v-7a4.5 4.5 0 0 1 9 0v7Z" />
-    <path d="M59.5 56v-7a4.5 4.5 0 0 1 9 0v7Z" />
-    <path d="M87.5 56v-7a4.5 4.5 0 0 1 9 0v7Z" />
-    <path d="M31.5 79v-8a4.5 4.5 0 0 1 9 0v8Z" />
-    <path d="M87.5 79v-8a4.5 4.5 0 0 1 9 0v8Z" />
-    <path d="M58 84v-13a6 6 0 0 1 12 0v13" />
-    <path d="M109.5 79v-8a4.5 4.5 0 0 1 9 0v8Z" />
-    <circle cx="18" cy="54" r="16" />
-    <path d="M14 62v-7a4 4 0 0 1 8 0v7Z" />
-    <path d="M2 38 18 15l16 23" />
-    <path d="M18 15V3" />
-    <path d="M18 3l11 3-11 3Z" />
-  </g>
-
-  <!-- The Wishing Well: a stone well with a pitched roof on posts, a crank
-       and a bucket hanging over the mouth -->
-  <g class="enk-map-well" transform="translate(300 408)">
-    <ellipse cx="0" cy="8" rx="12" ry="5" />
-    <path d="M-12 8v7a12 5 0 0 0 24 0V8" />
-    <path d="M-11 11c4 3 18 3 22 0" />
-    <path d="M-10.5 13.5c4 3 17 3 21 0" />
-    <path d="M-9 8V-6" />
-    <path d="M9 8V-6" />
-    <path d="M-15-6 0-17 15-6Z" />
-    <circle cx="0" cy="-19" r="1.6" />
-    <path d="M-9-2h18" />
-    <path d="M9-2l4.5 1.5v4" />
-    <path d="M0-2v3.5" />
-    <path d="M-2.8 1.5h5.6l-1.2 5h-3.2Z" />
-  </g>
-
-  <MapCompass x={688} y={108} variant="south" />
-
-  <g class="enk-map-labels">
-    <text x="416" y="194" text-anchor="middle" class="enk-map-label--house">Enniskeen House</text>
-    <text x="416" y="328" text-anchor="middle">Lawn &amp; gardens</text>
-    <text x="300" y="374" text-anchor="middle">The Wishing Well</text>
-    <text x="506" y="410" text-anchor="middle">Woodland trail</text>
-    <text x="150" y="524" text-anchor="middle">The Shimna River</text>
-    <text x="46" y="196" text-anchor="start">Bryansford Road</text>
-    <text x="150" y="286" text-anchor="middle">Twelve wooded acres</text>
-    <text x="178" y="400" text-anchor="middle" class="enk-map-label--sight">Slieve Donard</text>
-    <text x="654" y="374" text-anchor="middle" class="enk-map-label--sight">
-      Newcastle
-      <tspan x="654" dy="17">&amp; the Irish Sea</tspan>
-    </text>
-  </g>
-
+  <span class="mm-generated-map-label" style="--map-x:44%;--map-y:28%">Enniskeen House</span>
   <Fragment slot="caption">
-    Indicative plan of the twelve acres, drawn from the hotel's own description
-    of the grounds — the order a guest meets them, not a survey.
+    Indicative plan drawn from the hotel's description of the grounds — the order a guest meets them, not a survey.
   </Fragment>
-</MapPlate>
+  <ul slot="key">
+    {places.map((place) => <li><strong>{place.label}</strong>{place.note && <span>{place.note}</span>}</li>)}
+  </ul>
+</GeneratedMapPlate>
