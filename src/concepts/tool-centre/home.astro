@@ -1,16 +1,27 @@
 ---
 import "../../site/styles/global.css";
 import "./styles.css";
-const facebook = "https://www.facebook.com/Toolcentreplanthire/";
-const phone = "tel:+442843725010";
-const phoneDisplay = "028 4372 5010";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CounterBridge from "./CounterBridge.astro";
+import {
+  ADDRESS,
+  FACEBOOK,
+  HOURS,
+  INDICATIVE,
+  NAME_COUNTER,
+  NAME_YARD,
+  PHONE,
+  PHONE_HREF,
+  PLACE,
+  POSTCODE,
+  yard,
+} from "./record";
 ---
 
 <ConceptLayout title={"The Tool Centre — independent concept"} slug="tool-centre" bodyClass="concept-page concept-tool-centre" lang="en-GB">
 <div class="tc-strip">
-      <span><strong>107 Main Street</strong> · Newcastle, Co. Down · BT33 0AE</span>
-      <span>Mon–Sat 9–5 · Sun 10–4 · <a href={phone}>{phoneDisplay}</a></span>
+      <span><strong>{ADDRESS}</strong> · {PLACE} · {POSTCODE}</span>
+      <span>{HOURS} · <a href={PHONE_HREF}>{PHONE}</a></span>
     </div>
     <header class="tc-header">
       <a class="tc-brand" href="/concepts/tool-centre/">
@@ -20,32 +31,32 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
           <path d="M12 24 H28 V28 H12 Z" fill="#0e0e0e" />
         </svg>
         <span class="tc-brand-text">
-          <span class="tc-brand-name">The Tool Centre</span>
-          <span class="tc-brand-sub">Hardware · Plant &amp; tool hire</span>
+          <span class="tc-brand-name">{NAME_COUNTER}</span>
+          <span class="tc-brand-sub">{NAME_YARD} · one counter</span>
         </span>
       </a>
       <nav class="tc-nav" aria-label="Concept navigation">
-        <a href="/concepts/tool-centre/hire-list/">Hire</a><a href="#" data-concept-placeholder>Hardware</a><a href="#" data-concept-placeholder>Gas</a><a href="#" data-concept-placeholder>Hours</a><a href="#" data-concept-placeholder>Find us</a>
+        <a href="#tc-counter">The shop</a><a href="/concepts/tool-centre/hire-list/">Hire</a><a href={PHONE_HREF}>Call the counter</a>
       </nav>
-      <a class="tc-call" href={phone}>Call {phoneDisplay}</a>
+      <a class="tc-call" href={PHONE_HREF}>Call {PHONE}</a>
     </header>
     <main class="tc-hero">
       <section class="tc-story">
-        <p class="tc-kicker">Newcastle, Co. Down · under the Mournes</p>
+        <p class="tc-kicker">{PLACE}</p>
         <h1>Hardware on the shelf.<br aria-hidden="true" /><em>Hire on the yard.</em></h1>
         <p class="tc-lede">
-          The Tool Centre on Main Street stocks the trade counter and hires plant
-          and tools out the back — the same shop Facebook lists as <strong>Tool Centre Plant Hire</strong>, for contractors and DIY across
-          Newcastle, Co. Down.
+          <strong>{NAME_COUNTER}</strong> on Main Street and <strong>{NAME_YARD}</strong> on
+          Facebook are the same shop — one counter, one number, one address, in
+          the Newcastle that sits under the Mournes in Co. Down.
         </p>
         <div class="tc-actions">
-          <a class="tc-cta" href={phone}>Call for hire rates</a>
-          <a class="tc-link" href="/concepts/tool-centre/hire-list/">See hire price list →</a>
+          <a class="tc-cta" href={PHONE_HREF}>Call for hire rates</a>
+          <a class="tc-link" href="/concepts/tool-centre/hire-list/">See the hire list →</a>
         </div>
       </section>
       <aside class="tc-panel">
         <article class="tc-desk">
-          <p class="tc-desk-kicker">Hire desk</p>
+          <p class="tc-desk-kicker">Hire desk · {yard.tradingAs}</p>
           <h2>Today's rates — ask the counter.</h2>
           <ul class="tc-rates">
             <li><span class="tc-rate-item">Power tools</span><span class="tc-rate-ask">Day rate on request</span></li>
@@ -53,16 +64,10 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
             <li><span class="tc-rate-item">Plant &amp; site gear</span><span class="tc-rate-ask">Day rate on request</span></li>
             <li><span class="tc-rate-item">Access equipment</span><span class="tc-rate-ask">Day rate on request</span></li>
           </ul>
-          <a class="tc-desk-cta" href={phone}>Call {phoneDisplay}</a>
-          <small>Straight through to the number the yard already answers</small>
+          <a class="tc-desk-cta" href={PHONE_HREF}>Call {PHONE}</a>
+          <small class="tc-indicative">{INDICATIVE}</small>
         </article>
       </aside>
-      <nav class="tc-rail" aria-label="Stock categories and hours">
-        <a class="tc-rail-cell" href="#" data-concept-placeholder><span class="tc-cat">Hardware</span><span class="tc-cat-note">Trade &amp; DIY stock</span></a>
-        <a class="tc-rail-cell" href="/concepts/tool-centre/hire-list/"><span class="tc-cat">Tool hire</span><span class="tc-cat-note">Day &amp; weekend</span></a>
-        <a class="tc-rail-cell" href="/concepts/tool-centre/hire-list/"><span class="tc-cat">Plant hire</span><span class="tc-cat-note">Site machinery</span></a>
-        <a class="tc-rail-cell" href="#" data-concept-placeholder><span class="tc-cat">Bottled gas</span><span class="tc-cat-note">Calor cylinders</span></a>
-        <a class="tc-rail-cell" href={facebook}><span class="tc-cat">Open today</span><span class="tc-cat-note">Hours on Facebook →</span></a>
-      </nav>
+      <CounterBridge facebook={FACEBOOK} />
     </main>
 </ConceptLayout>

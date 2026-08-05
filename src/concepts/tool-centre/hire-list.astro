@@ -1,15 +1,43 @@
 ---
 import "../../site/styles/global.css";
 import "./styles.css";
-const phone = "tel:+442843725010";
-const phoneDisplay = "028 4372 5010";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CounterBridge from "./CounterBridge.astro";
+import {
+  ADDRESS,
+  FACEBOOK,
+  HOURS,
+  INDICATIVE,
+  NAME_COUNTER,
+  NAME_YARD,
+  PHONE,
+  PHONE_HREF,
+  PLACE,
+  POSTCODE,
+  askAtTheCounter,
+  hire,
+  hireIsConfirmed,
+  hireStanding,
+} from "./record";
+
+/* One icon per verified category, keyed by id so a category cannot silently
+   lose its mark when the sheet is replaced by the shop's own. */
+const icons: Record<string, string> = {
+  power:
+    '<rect x="2" y="12" width="16" height="4" rx="1" fill="currentColor" opacity=".25"/><path d="M6 12 L8 4 H14 L12 12 Z" fill="currentColor"/>',
+  garden:
+    '<circle cx="5" cy="15" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="15" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 14 L7 6 H17 L17 14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>',
+  plant:
+    '<rect x="1" y="12" width="18" height="5" rx="1" fill="currentColor" opacity=".2"/><path d="M4 12 V7 H10 V12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="11" y="9" width="6" height="3" rx=".5" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="16" r="1.5" fill="currentColor"/><circle cx="15" cy="16" r="1.5" fill="currentColor"/>',
+  access:
+    '<rect x="7" y="2" width="6" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M4 6 H7 M13 6 H16 M4 10 H7 M13 10 H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="6" y="16" width="8" height="2" rx=".5" fill="currentColor" opacity=".4"/>',
+};
 ---
 
 <ConceptLayout title={"Hire price list — The Tool Centre concept"} slug="tool-centre" bodyClass="concept-page concept-tool-centre" lang="en-GB">
 <div class="tc-strip">
-      <span><strong>107 Main Street</strong> · Newcastle, Co. Down · BT33 0AE</span>
-      <span>Mon–Sat 9–5 · Sun 10–4 · <a href={phone}>{phoneDisplay}</a></span>
+      <span><strong>{ADDRESS}</strong> · {PLACE} · {POSTCODE}</span>
+      <span>{HOURS} · <a href={PHONE_HREF}>{PHONE}</a></span>
     </div>
     <header class="tc-header">
       <a class="tc-brand" href="/concepts/tool-centre/">
@@ -19,224 +47,87 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
           <path d="M12 24 H28 V28 H12 Z" fill="#0e0e0e" />
         </svg>
         <span class="tc-brand-text">
-          <span class="tc-brand-name">The Tool Centre</span>
-          <span class="tc-brand-sub">Hardware · Plant &amp; tool hire</span>
+          <span class="tc-brand-name">{NAME_COUNTER}</span>
+          <span class="tc-brand-sub">{NAME_YARD} · one counter</span>
         </span>
       </a>
       <nav class="tc-nav" aria-label="Concept navigation">
-        <a href="/concepts/tool-centre/hire-list/" aria-current="page">Hire</a><a href="#" data-concept-placeholder>Hardware</a><a href="#" data-concept-placeholder>Gas</a><a href="#" data-concept-placeholder>Hours</a><a href="#" data-concept-placeholder>Find us</a>
+        <a href="/concepts/tool-centre/#tc-counter">The shop</a><a href="/concepts/tool-centre/hire-list/" aria-current="page">Hire</a><a href={PHONE_HREF}>Call the counter</a>
       </nav>
-      <a class="tc-call" href={phone}>Call {phoneDisplay}</a>
+      <a class="tc-call" href={PHONE_HREF}>Call {PHONE}</a>
     </header>
 
     <main>
       <section class="tc-hl-page">
         <div class="tc-hl-page-inner">
-          <p class="tc-kicker">Plant &amp; tool hire · Newcastle, Co. Down</p>
+          <p class="tc-kicker">{NAME_YARD} · {PLACE}</p>
           <h1>Hire price list.</h1>
-          <p class="tc-hl-sub">Day and weekend rates for plant, power tools, garden machinery and access equipment. Rates indicative — call the counter for current stock and terms.</p>
+          <p class="tc-hl-sub">
+            Day rates for plant, power tools, garden machinery and access
+            equipment — the hire side of {NAME_COUNTER} at {ADDRESS}, out the
+            back of the same shop the trade counter is in.
+          </p>
         </div>
         <div class="tc-hl-notice" aria-label="Pricing notice">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
             <path d="M9 5v4M9 12v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
-          <span>Indicative rates only · call <a href={phone}>{phoneDisplay}</a> to confirm</span>
+          <span class="tc-indicative">{INDICATIVE}</span>
         </div>
       </section>
 
       <div class="tc-hl-body">
         <div class="tc-hl-cats">
-
-          <article class="tc-hl-cat">
-            <header class="tc-hl-cat-head">
-              <span class="tc-hl-cat-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="2" y="12" width="16" height="4" rx="1" fill="currentColor" opacity=".25"/>
-                  <path d="M6 12 L8 4 H14 L12 12 Z" fill="currentColor"/>
-                </svg>
-              </span>
-              <h2>Power tools</h2>
-              <span class="tc-hl-cat-note">Day hire</span>
-            </header>
-            <ul class="tc-hl-items">
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Angle grinder (115/230 mm)</span>
-                <span class="tc-hl-item-rate">~£18–25 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">SDS rotary hammer drill</span>
-                <span class="tc-hl-item-rate">~£20–30 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Random orbital sander</span>
-                <span class="tc-hl-item-rate">~£14–18 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Jigsaw / circular saw</span>
-                <span class="tc-hl-item-rate">~£16–22 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Demolition hammer / breaker</span>
-                <span class="tc-hl-item-rate">~£35–55 / day</span>
-              </li>
-              <li class="tc-hl-item tc-hl-item--week">
-                <span class="tc-hl-item-name">Weekend rate</span>
-                <span class="tc-hl-item-rate tc-hl-item-rate--week">1.5× day rate</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="tc-hl-cat">
-            <header class="tc-hl-cat-head">
-              <span class="tc-hl-cat-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="5" cy="15" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="15" cy="15" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M3 14 L7 6 H17 L17 14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <h2>Garden machinery</h2>
-              <span class="tc-hl-cat-note">Day hire</span>
-            </header>
-            <ul class="tc-hl-items">
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Petrol rotavator / tiller</span>
-                <span class="tc-hl-item-rate">~£45–60 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Lawn scarifier / aerator</span>
-                <span class="tc-hl-item-rate">~£35–50 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Petrol pressure washer</span>
-                <span class="tc-hl-item-rate">~£40–55 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Petrol hedge trimmer</span>
-                <span class="tc-hl-item-rate">~£25–35 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Stump grinder (mid-size)</span>
-                <span class="tc-hl-item-rate">~£80–110 / day</span>
-              </li>
-              <li class="tc-hl-item tc-hl-item--week">
-                <span class="tc-hl-item-name">Weekend rate</span>
-                <span class="tc-hl-item-rate tc-hl-item-rate--week">1.5× day rate</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="tc-hl-cat">
-            <header class="tc-hl-cat-head">
-              <span class="tc-hl-cat-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="1" y="12" width="18" height="5" rx="1" fill="currentColor" opacity=".2"/>
-                  <path d="M4 12 V7 H10 V12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                  <rect x="11" y="9" width="6" height="3" rx=".5" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="5" cy="16" r="1.5" fill="currentColor"/>
-                  <circle cx="15" cy="16" r="1.5" fill="currentColor"/>
-                </svg>
-              </span>
-              <h2>Plant &amp; site</h2>
-              <span class="tc-hl-cat-note">Day hire</span>
-            </header>
-            <ul class="tc-hl-items">
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Wacker plate compactor</span>
-                <span class="tc-hl-item-rate">~£40–55 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Petrol generator (2–3 kVA)</span>
-                <span class="tc-hl-item-rate">~£35–50 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Cement / mortar mixer (130–150 L)</span>
-                <span class="tc-hl-item-rate">~£30–45 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Submersible pump</span>
-                <span class="tc-hl-item-rate">~£25–35 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Site lighting / tripod</span>
-                <span class="tc-hl-item-rate">~£18–25 / day</span>
-              </li>
-              <li class="tc-hl-item tc-hl-item--week">
-                <span class="tc-hl-item-name">Week rate</span>
-                <span class="tc-hl-item-rate tc-hl-item-rate--week">Call for quote</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="tc-hl-cat">
-            <header class="tc-hl-cat-head">
-              <span class="tc-hl-cat-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="7" y="2" width="6" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M4 6 H7 M13 6 H16 M4 10 H7 M13 10 H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <rect x="6" y="16" width="8" height="2" rx=".5" fill="currentColor" opacity=".4"/>
-                </svg>
-              </span>
-              <h2>Access equipment</h2>
-              <span class="tc-hl-cat-note">Day hire</span>
-            </header>
-            <ul class="tc-hl-items">
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Aluminium tower scaffold (low)</span>
-                <span class="tc-hl-item-rate">~£35–50 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Extension ladder (3-section)</span>
-                <span class="tc-hl-item-rate">~£12–18 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Platform step ladder</span>
-                <span class="tc-hl-item-rate">~£10–15 / day</span>
-              </li>
-              <li class="tc-hl-item">
-                <span class="tc-hl-item-name">Hop-up / mini scaffold</span>
-                <span class="tc-hl-item-rate">~£14–20 / day</span>
-              </li>
-              <li class="tc-hl-item tc-hl-item--week">
-                <span class="tc-hl-item-name">Week rate</span>
-                <span class="tc-hl-item-rate tc-hl-item-rate--week">Call for quote</span>
-              </li>
-            </ul>
-          </article>
-
+          {hire.map((category) => (
+            <article class="tc-hl-cat">
+              <header class="tc-hl-cat-head">
+                <span class="tc-hl-cat-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" set:html={icons[category.id] ?? ""} />
+                </span>
+                <h2>{category.name}</h2>
+                <span class="tc-hl-cat-note">{hireIsConfirmed ? "Day hire" : "Suggested"}</span>
+              </header>
+              <ul class="tc-hl-items">
+                {category.items.map((item) => (
+                  <li class="tc-hl-item">
+                    <span class="tc-hl-item-name">{item.name}</span>
+                    <span class="tc-hl-item-rate">{item.rate}</span>
+                  </li>
+                ))}
+                <li class="tc-hl-item tc-hl-item--week">
+                  <span class="tc-hl-item-name">{category.extra}</span>
+                </li>
+              </ul>
+            </article>
+          ))}
         </div>
 
         <aside class="tc-hl-sidebar">
           <div class="tc-hl-panel">
             <p class="tc-desk-kicker">Hire desk</p>
             <h2>Ready to hire?</h2>
-            <p class="tc-hl-panel-body">Straight through to the yard — the number the counter already answers.</p>
-            <a class="tc-desk-cta" href={phone}>Call {phoneDisplay}</a>
-            <small>Mon–Sat 9–5 · Sun 10–4</small>
+            <p class="tc-hl-panel-body">Straight through to the yard — the number the counter already answers, seven days.</p>
+            <a class="tc-desk-cta" href={PHONE_HREF}>Call {PHONE}</a>
+            <small>{HOURS}</small>
           </div>
 
           <div class="tc-hl-conditions">
-            <p class="tc-hl-cond-head">What to bring</p>
+            <p class="tc-hl-cond-head">What to ask when you ring</p>
             <ul>
-              <li>Photo ID</li>
-              <li>Credit or debit card (deposit)</li>
-              <li>Vehicle with adequate space</li>
+              {askAtTheCounter.map((question) => <li>{question}</li>)}
             </ul>
-            <p class="tc-hl-cond-head">Good to know</p>
-            <ul>
-              <li>Fuel is the hirer's responsibility unless agreed</li>
-              <li>Rates confirmed at counter on collection</li>
-              <li>Damage waiver available on request</li>
-            </ul>
+            <p class="tc-hl-standing">{hireStanding}</p>
           </div>
 
           <div class="tc-hl-also">
-            <p class="tc-hl-cond-head">Also stocked</p>
-            <a class="tc-hl-also-link" href="/concepts/tool-centre/">Hardware &amp; trade counter →</a>
-            <a class="tc-hl-also-link" href="/concepts/tool-centre/">Calor bottled gas →</a>
+            <p class="tc-hl-cond-head">Also at the counter</p>
+            <a class="tc-hl-also-link" href="/concepts/tool-centre/#tc-counter">Hardware &amp; trade counter →</a>
+            <a class="tc-hl-also-link" href="/concepts/tool-centre/#tc-counter">Calor bottled gas →</a>
           </div>
         </aside>
       </div>
+
+      <CounterBridge facebook={FACEBOOK} />
     </main>
 </ConceptLayout>

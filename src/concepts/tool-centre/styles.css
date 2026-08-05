@@ -253,37 +253,152 @@
   text-align: center;
   color: #8a959e;
 }
+/* The board shows no figure at all, and this line says why. It qualifies the
+   whole panel, so it does not shrink into a footnote. */
+.tc-desk small.tc-indicative {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(236, 238, 240, 0.16);
+  font-size: 12.5px;
+  text-align: left;
+  color: var(--hivis);
+}
 
-/* Category rail — content right-aligned so the fixed concept-disclosure badge
-   in the bottom-left corner never covers a cell */
-.tc-rail {
+/* The indicative-rates line, in the same words wherever a rate could be
+   mistaken for the shop's own. Never smaller than the body text it qualifies —
+   an 11px footnote under invented numbers is cover, not honesty. */
+.tc-indicative {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--hivis);
+}
+
+/* ─── Two names, one counter ──────────────────────────────────────────────
+   Shelf and yard either side of the counter that answers for both, so the
+   layout carries the claim before the copy does. Left-hand padding clears the
+   fixed concept-disclosure badge in the bottom-left corner. */
+.tc-counter {
   grid-column: 1 / -1;
   grid-row: 2;
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 0.9fr) 1fr;
   align-items: stretch;
   background: var(--slate-mid);
-  padding: 0 clamp(20px, 3.5vw, 44px);
+  color: #ffffff;
+  padding: clamp(18px, 2.4vh, 26px) clamp(20px, 3.5vw, 44px) clamp(22px, 3vh, 32px) clamp(150px, 12vw, 200px);
+  gap: clamp(20px, 2.6vw, 40px);
 }
-.tc-rail-cell {
-  padding: 12px 22px;
+main > .tc-counter {
+  margin-top: clamp(12px, 2vh, 24px);
+}
+.tc-counter-side,
+.tc-counter-bridge {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  text-decoration: none;
-  border-left: 1px solid rgba(236, 238, 240, 0.14);
+  gap: 6px;
 }
-.tc-rail-cell:first-child { border-left: 0; }
-.tc-cat {
-  font-family: var(--display);
-  font-size: 14px;
+.tc-counter-label {
+  margin: 0;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8a959e;
+}
+.tc-counter-label--bridge { color: var(--hivis); }
+.tc-counter-name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #ffffff;
 }
-.tc-cat-note { font-size: 12px; color: #a8b2ba; }
+.tc-counter-as {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  color: #9aa5ae;
+}
+.tc-counter-as strong { color: var(--hivis); font-weight: 700; }
+.tc-counter-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(236, 238, 240, 0.14);
+}
+.tc-counter-lines li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(236, 238, 240, 0.1);
+}
+.tc-counter-line-name { font-size: 13.5px; font-weight: 600; color: #ffffff; }
+.tc-counter-line-note { font-size: 12px; line-height: 1.45; color: #a8b2ba; }
+.tc-counter-more {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--hivis);
+  text-decoration: none;
+}
+.tc-counter-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* The bridge itself: the one thing on the page that is not a proposal. */
+.tc-counter-bridge {
+  padding: 0 clamp(18px, 2vw, 30px);
+  border-left: 1px solid rgba(236, 238, 240, 0.18);
+  border-right: 1px solid rgba(236, 238, 240, 0.18);
+  text-align: center;
+  align-items: center;
+}
+.tc-counter-claim {
+  margin: 2px 0 0;
+  font-family: var(--display);
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+  max-width: 22em;
+}
+.tc-counter-proof {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #a8b2ba;
+  max-width: 24em;
+}
+.tc-counter-call {
+  margin-top: 4px;
+  padding: 9px 20px;
+  border-radius: 4px;
+  background: var(--hivis);
+  color: var(--slate);
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+.tc-counter-call:hover { background: #ffffff; }
+.tc-counter-ritual {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #9aa5ae;
+  max-width: 24em;
+}
+.tc-counter-fb {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a8b2ba;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(236, 238, 240, 0.24);
+}
+.tc-counter-fb:hover { color: var(--hivis); }
 
 /* Entrance */
 @keyframes tc-rise { from { opacity: 0; transform: translateY(14px); } }
@@ -305,8 +420,23 @@
     letter-spacing: 0;
   }
   .tc-panel { grid-column: 1; grid-row: auto; padding: 10px 22px 40px; }
-  .tc-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
-  .tc-rail-cell { border-left: 0; flex: 1 1 40%; }
+  .tc-counter {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: 1fr;
+    padding: 24px 22px 84px;
+    gap: 26px;
+  }
+  /* Stacked, the counter has to come between the two sides it bridges. */
+  .tc-counter-bridge {
+    order: 2;
+    padding: 22px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid rgba(236, 238, 240, 0.18);
+    border-bottom: 1px solid rgba(236, 238, 240, 0.18);
+  }
+  .tc-counter-side--yard { order: 3; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -358,7 +488,7 @@
   color: #9aa5ae;
   font-size: 13px;
   font-weight: 600;
-  white-space: nowrap;
+  max-width: 30em;
 }
 .tc-hl-notice svg { flex: 0 0 auto; color: var(--hivis); }
 .tc-hl-notice a { color: var(--hivis); text-decoration: none; font-weight: 700; }
@@ -445,6 +575,8 @@
   white-space: nowrap;
   text-align: right;
 }
+/* Weekend and week terms are not in the record. The row that used to publish
+   "1.5× day rate" as this shop's multiplier now asks instead. */
 .tc-hl-item--week { background: rgba(240, 208, 0, 0.06); }
 .tc-hl-item--week .tc-hl-item-name {
   font-size: 12.5px;
@@ -453,7 +585,15 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.tc-hl-item-rate--week {
+
+/* What the sheet is, said plainly at the foot of the questions panel. */
+.tc-hl-standing {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.5;
   color: var(--hivis-deep);
 }
 
