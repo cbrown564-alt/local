@@ -3,17 +3,72 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 
-// The practice trades under its own name but its domain currently hands patients
-// to a group page. Keep that diagnosis in the case study; the proposed page
-// should speak to patients about the practice, not criticise its current setup.
+/* The practice trades under its own name but its domain currently hands
+   patients to a group page over plain HTTP. Keep that diagnosis in the case
+   study; this page speaks to patients about the practice and never criticises
+   its current setup, and it says nothing in either direction about the
+   commercial relationship to the DJ Maguire group — the record cannot say what
+   that relationship is.
+
+   The record has two layers and they are never blended here:
+
+   CURRENT  — the group's Newcastle location page, read 4 August 2026: the
+              three named dentists and their credentials, Iveagh Court,
+              Mon–Fri 9–5, the phone number, the published email address, and
+              the private-appointments line.
+   ARCHIVED — the practice's own website, captured by the Internet Archive in
+              2018 and live to at least May 2019: "We love to make you smile!",
+              the ethical-dentistry sentence, the 2017 Randox Healthcare Dental
+              Practice of the Year award, the BDA Good Practice Scheme, and the
+              two surgeries. Every archived fact on this page carries its
+              capture year in the visible layer.
+
+   Deliberately absent, per research/concepts/newcastle-dental/newcastle-dental-elevation-brief.md:
+   NHS availability in either direction (the 2018 site welcomed NHS patients;
+   the current page mentions only private appointments); the archived
+   recorded-message out-of-hours protocol, which nobody has re-heard; the two
+   published GDC numbers, because the third dentist's is not in the record and
+   the row would be uneven; and any treatment beyond the published items. */
+
+const phone = "028 4372 3776";
+const phoneHref = "tel:+442843723776";
+const email = "info@newcastlefamilydentalcare.co.uk";
+
 const team = [
   { name: "Dr David Knowles", cred: "BDS QUB 2014" },
   { name: "Dr Rebecca McCarey", cred: "BDS QUB 2014" },
   { name: "Dr Daniel Sandford", cred: "Odontología UCV 2023" },
 ];
-// From the practice's Newcastle page (24 July 2026): new-patient nav, private
-// appointments, and the Family & General Dentistry heading — not a treatment list.
+
+// From the practice's Newcastle page (24 July 2026, re-read 4 August 2026):
+// new-patient nav, private appointments, and the Family & General Dentistry
+// heading — not a treatment list.
 const care = ["New patients", "Private appointments", "Family & general dentistry", "Mon–Fri 9–5"];
+
+/* The arc, dates only where documented, each entry carrying the layer it came
+   from so a nine-year-old award can never read as this year's. */
+const arc = [
+  {
+    year: "2014",
+    line: "Dr David Knowles and Dr Rebecca McCarey qualify at Queen's in the same year. They still practise together here.",
+    source: "Their degrees, published with the practice · read 4 August 2026",
+  },
+  {
+    year: "2017",
+    line: "Named Dental Practice of the Year by Randox Healthcare, and awarded the BDA Good Practice Scheme. What a start to 2017 for the team.",
+    source: "Announced on our own website · archived 2018",
+  },
+  {
+    year: "2023",
+    line: "Dr Daniel Sandford joins the practice.",
+    source: "His degree, published with the practice · read 4 August 2026",
+  },
+  {
+    year: "Today",
+    line: "Three dentists on Railway Street, Monday to Friday, nine until five, and one number to ring.",
+    source: "Read 4 August 2026",
+  },
+];
 ---
 
 <ConceptLayout
@@ -22,10 +77,11 @@ const care = ["New patients", "Private appointments", "Family & general dentistr
   bodyClass="concept-page concept-dental"
   businessName="Newcastle Family Dental Care"
   town="Newcastle"
+  bannerNote="The padlocked address bar shows the proposed secure address; it is not a live certificate."
 >
   <div class="nd-strip">
     <span>Iveagh Court, 2 Railway Street, Newcastle · Mon–Fri 9–5</span>
-    <span class="nd-strip-r"><a href="tel:+442843723776">028 4372 3776</a></span>
+    <span class="nd-strip-r"><a href={phoneHref}>{phone}</a></span>
   </div>
 
   <header class="nd-header">
@@ -41,15 +97,17 @@ const care = ["New patients", "Private appointments", "Family & general dentistr
       </span>
     </a>
     <nav class="nd-nav" aria-label="Concept navigation">
-      <a href="#" data-concept-placeholder>The practice</a><a href="#" data-concept-placeholder>Treatments</a><a href="#" data-concept-placeholder>Register</a><a href="#" data-concept-placeholder>Contact</a>
+      <a href="#practice">The practice</a><a href="#care">Our care</a><a href="#urgent">If it's urgent</a>
     </nav>
-    <a class="nd-book" href="#" data-concept-placeholder>Request a visit</a>
+    <a class="nd-book" href="#request">Request a visit</a>
   </header>
 
   <main class="nd-main">
+    <div class="nd-top">
     <section class="nd-lede">
       <!-- The secure address bar makes the proposed patient route visible
-           without turning the current-site diagnosis into customer-facing copy. -->
+           without turning the current-site diagnosis into customer-facing
+           copy. It is chrome, and the banner note says so. -->
       <div class="nd-urlbar" aria-label="Secure address">
         <span class="nd-lock" aria-hidden="true">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -62,14 +120,26 @@ const care = ["New patients", "Private appointments", "Family & general dentistr
       </div>
 
       <p class="nd-eyebrow">A family practice on Railway Street</p>
+
+      <!-- Their words lead; ours frame. The smile line is the practice's own,
+           and it carries the year it was captured so nobody reads it as new
+           copy written for them. -->
+      <figure class="nd-say">
+        <blockquote>
+          <p>We love to make you smile!</p>
+        </blockquote>
+        <figcaption>Our own words on newcastlefamilydentalcare.co.uk · archived 2018</figcaption>
+      </figure>
+
       <h1>Your family dentist,<br /><em>close to home.</em></h1>
       <p class="nd-body">
-        Three dentists, private appointments, and a calm room on Railway Street.
-        Register or request an appointment securely, and the Newcastle team will
-        ring back to confirm a time.
+        Three dentists and a calm room on Railway Street. We are now offering
+        you the option to make a private appointment to help you with your
+        dental care needs — tell us who you are and we will ring back to
+        confirm a time.
       </p>
 
-      <ul class="nd-care">
+      <ul class="nd-care" id="care">
         {care.map((item) => <li>{item}</li>)}
       </ul>
 
@@ -86,33 +156,151 @@ const care = ["New patients", "Private appointments", "Family & general dentistr
       </div>
     </section>
 
-    <aside class="nd-request" aria-labelledby="nd-request-title">
+    <!-- The one function this page claims. Nothing is sent from here: the
+         details are assembled into a draft that opens in the patient's own
+         email app, and all three labels say so. -->
+    <form class="nd-request" id="request" data-nd-request aria-labelledby="nd-request-title">
       <h2 id="nd-request-title">Request an appointment</h2>
       <p class="nd-request-sub">We'll ring back to confirm a time. No details shared off-site.</p>
 
       <div class="nd-field">
         <label for="nd-who">Your name</label>
-        <input id="nd-who" type="text" autocomplete="name" placeholder="First and last" />
+        <input id="nd-who" name="name" type="text" autocomplete="name" placeholder="First and last" required />
       </div>
       <div class="nd-field">
         <label for="nd-tel">Best number</label>
-        <input id="nd-tel" type="tel" autocomplete="tel" placeholder="Mobile or landline" />
+        <input id="nd-tel" name="tel" type="tel" autocomplete="tel" placeholder="Mobile or landline" required />
       </div>
       <fieldset class="nd-field nd-field--choice">
         <legend>Reason</legend>
-        <label><input type="radio" name="nd-reason" checked /> <span>Register</span></label>
-        <label><input type="radio" name="nd-reason" /> <span>Check-up</span></label>
-        <label><input type="radio" name="nd-reason" /> <span>In pain</span></label>
+        <label><input type="radio" name="nd-reason" value="Register" checked /> <span>Register</span></label>
+        <label><input type="radio" name="nd-reason" value="Check-up" /> <span>Check-up</span></label>
+        <label><input type="radio" name="nd-reason" value="In pain" /> <span>In pain</span></label>
       </fieldset>
 
-      <a class="nd-submit" href="#" data-concept-placeholder>Send request securely</a>
+      <button class="nd-submit" type="submit">Prepare my request</button>
+
+      <div class="nd-handoff" data-nd-handoff role="status" hidden tabindex="-1">
+        <strong>Your request is ready.</strong>
+        <span>Open the draft, check it, then press send in your email app.</span>
+        <a data-nd-email-link href={`mailto:${email}`}>Open email draft</a>
+      </div>
+      <p class="nd-stale" data-nd-stale role="status" hidden>
+        Your details changed. Press <strong>Prepare my request</strong> again so
+        the draft matches what you typed.
+      </p>
 
       <p class="nd-request-foot">
         <span class="nd-lock nd-lock--foot" aria-hidden="true">
           <svg width="11" height="11" viewBox="0 0 13 13" fill="none"><rect x="2" y="6" width="9" height="6" rx="1.2" fill="currentColor"/><path d="M4 6V4.2a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
         </span>
-        Sent over HTTPS. In an emergency out of hours, call 111.
+        <span>
+          Nothing is sent from this page — your request opens as a draft in
+          your own email app. Or ring <a href={phoneHref}>{phone}</a>.
+        </span>
       </p>
-    </aside>
+    </form>
+    </div>
+
+  <section class="nd-practice" id="practice" aria-labelledby="nd-practice-title">
+    <div class="nd-section-head">
+      <p class="nd-eyebrow">The practice</p>
+      <h2 id="nd-practice-title">The same two dentists since 2014, and an award we are still proud of.</h2>
+      <p class="nd-practice-intro">
+        Established for many years, with two surgeries equipped to the highest
+        standards. <span>Our own words, archived 2018.</span>
+      </p>
+    </div>
+    <ol class="nd-arc">
+      {arc.map((entry) => (
+        <li class="nd-arc-item">
+          <p class="nd-arc-year">{entry.year}</p>
+          <p class="nd-arc-line">{entry.line}</p>
+          <p class="nd-arc-source">{entry.source}</p>
+        </li>
+      ))}
+    </ol>
+    <!-- Verbatim and dated, like the smile line. It makes no clinical claim. -->
+    <figure class="nd-creed">
+      <blockquote>
+        <p>We provide high quality, ethical dentistry in a caring environment.</p>
+      </blockquote>
+      <figcaption>Our own words on newcastlefamilydentalcare.co.uk · archived 2018</figcaption>
+    </figure>
+  </section>
+
+  <!-- Reassurance is the theatre here: what happens when you ring, in two
+       steps, with no promise the record does not carry. -->
+  <section class="nd-urgent" id="urgent" aria-labelledby="nd-urgent-title">
+    <div class="nd-section-head">
+      <p class="nd-eyebrow">If it's urgent</p>
+      <h2 id="nd-urgent-title">What happens when you ring.</h2>
+    </div>
+    <ol class="nd-steps">
+      <li class="nd-step">
+        <p class="nd-step-when">Monday to Friday, 9 until 5</p>
+        <p class="nd-step-do">Ring the practice on <a href={phoneHref}>{phone}</a> and we will fit you in as soon as we can.</p>
+      </li>
+      <li class="nd-step">
+        <p class="nd-step-when">Evenings, weekends and holidays</p>
+        <p class="nd-step-do">Ring <a href="tel:111">111</a>.</p>
+      </li>
+    </ol>
+    <ul class="nd-urgent-foot">
+      <li>Iveagh Court, 2 Railway Street, Newcastle, BT33 0SP</li>
+      <li><a href={phoneHref}>{phone}</a></li>
+      <li><a href={`mailto:${email}`}>{email}</a></li>
+    </ul>
+  </section>
   </main>
+
+  <script is:inline>
+    (function () {
+      var recipient = "info@newcastlefamilydentalcare.co.uk";
+      var form = document.querySelector("[data-nd-request]");
+      if (!form) return;
+
+      var handoff = form.querySelector("[data-nd-handoff]");
+      var stale = form.querySelector("[data-nd-stale]");
+      var link = form.querySelector("[data-nd-email-link]");
+      if (!handoff || !link) return;
+
+      /* A draft that no longer matches what is on screen is worse than no
+         draft, so any edit withdraws it and says why. */
+      form.addEventListener("input", function () {
+        if (handoff.hidden) return;
+        handoff.hidden = true;
+        if (stale) stale.hidden = false;
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var name = form.querySelector("#nd-who").value.trim();
+        var tel = form.querySelector("#nd-tel").value.trim();
+        var chosen = form.querySelector('input[name="nd-reason"]:checked');
+        var reason = chosen ? chosen.value : "Register";
+
+        var query = new URLSearchParams({
+          subject: "Appointment request — " + reason,
+          body: [
+            "Hello Newcastle Family Dental Care,",
+            "",
+            "I would like to request an appointment.",
+            "Name: " + name,
+            "Best number: " + tel,
+            "Reason: " + reason,
+            "",
+            "Please ring me back to confirm a time.",
+          ].join("\n"),
+        });
+
+        link.href = "mailto:" + recipient + "?" + query;
+        handoff.hidden = false;
+        if (stale) stale.hidden = true;
+        handoff.focus();
+      });
+    })();
+  </script>
 </ConceptLayout>

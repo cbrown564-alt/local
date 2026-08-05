@@ -120,6 +120,29 @@ of these businesses supplied one.
 
 ## Generated imagery
 
+### Generated map previews
+
+- `public/media/maps/town-coverage-generated.png` — **in use** (5 August
+  2026). AI-generated illustrative map of Dundrum and
+  Newcastle, revised to place Dundrum Castle above Dundrum village, Murlough
+  Beach between the towns, Royal County Down Golf Course south-east of
+  Newcastle, and Tollymore Forest inland south-west of Newcastle. The saved
+  version has all generated pin markers removed. Town labels, business pins,
+  focus states, hover cards and links are HTML overlays on the interactive
+  site map. The page labels the artwork as AI-generated and indicative; it is
+  not a survey or navigational map.
+- `public/media/maps/enniskeen-estate-generated.png`,
+  `donard-catchment-generated.png`, `mourne-cycles-trails-generated.png`,
+  `scopers-larder-generated.png` and `dundrum-inn-place-generated.png` —
+  **in use** (5 August 2026). AI-generated illustrative
+  map previews made with the built-in OpenAI image generation tool. They show
+  the published place relationships and visual themes described by their
+  corresponding concepts, but are indicative drawings rather than surveys,
+  exact site plans, navigational routes, or evidence of current business
+  operations. Their readable labels and legends are HTML overlays, with a
+  separate text key on small screens. Each figure visibly labels the artwork
+  as AI-generated and states its concept-specific evidence boundary.
+
 - `research/film/stills/dundrum/01-pre-dawn-bay.png`, `02-first-light-mudflats.png`, `04-cafe-window-bay.png` and `05-golden-hour-castle.png` — **internal film reference stills** (regenerated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real view "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum" (Geograph 7677782, CC BY-SA 2.0) and Eschadew's supporting castle detail "Dundrum Castle from outside" (CC BY-SA 4.0). The frames preserve the real camera direction, tidal-channel pattern, village placement, wooded hill and the castle's small distant relationship to the bay while changing light, mist, birds, a tiny walker and, for 04, adding a generic café interior. Shots 02 and 05 were edited from the new 01 master for continuity. They remain generated visualisations, not documentary photographs or evidence of exact weather, activity or a real café view.
 - `research/film/stills/dundrum/03-morning-main-street.png` and `06-blue-hour-street.png` — **internal film reference stills** (regenerated twice 5 August 2026 after local-accuracy review). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's real photograph "Crawling Sunday afternoon traffic in Main Street, Dundrum" (Geograph 4140783, CC BY-SA 2.0). They preserve one documented camera position: the bus-stop and road markings, exact stepped building row, grey three-storey quoined house, roofs, chimneys, doors, windows, church tower, lamps and overhead wires. Shot 03 changes traffic, rain and early-morning light; 06 is a blue-hour edit of 03. The tool followed the source's 4:3 frame, so both were centre-cropped identically to 1440×810 after generation; the crop added no content. Four Eric Jones photographs from 11 April 2025 were also checked to identify the rejected first pair's errors: it had conflated separate stretches of Main Street, invented a continuous shop row, and changed locally recognisable façades. Those 2025 images were not composited into the replacement pair. The fictional castle-at-the-end-of-the-street geography remains explicitly removed because the castle is not visible from this viewpoint. These are generated visualisations, not documentary photographs or evidence of exact businesses or activity. Source files and attribution: `research/film/stills/dundrum/sources/README.md`.
 - `research/film/stills/newcastle/01-pre-dawn-beach.png`, `02-first-light-ridge.png` and `04-midday-beach.png` — **internal film reference stills** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real photograph "Beach and old groynes with view towards Newcastle, Co Down" (Geograph 7677784, CC BY-SA 2.0). The frames preserve one southwest beach camera position: old groyne posts, low-tide pools and sand, Murlough dune edge and rock armour, distant town skyline and the true Mourne profile. Shots 02 and 04 are atmosphere edits of 01. The old prompt's fictional open surf and enlarged Victorian town are explicitly removed. These remain generated visualisations, not documentary photographs or evidence of exact weather or activity.
@@ -219,11 +242,14 @@ Every page carrying one of these labels it as generated on the page itself.
   (`risograph-chicken-burger.png`) sits alongside as the print-resolution
   source; webp derivatives and the webm are pipeline products of the jpg
   and mp4.
-- `castle-farm-produce.jpg` — **in use.** AI-generated. Cropped by CSS to a
-  190×43 window and shown as the concept's wordmark in the page header, so the
-  visible slice reads as a brand mark rather than as photography. It is not the
-  farm's own mark. Recorded 28 July 2026 after the journey suite found it
-  rendered with no provenance entry.
+- `castle-farm-produce.jpg` — **not in use since 5 August 2026.** AI-generated.
+  It was cropped by CSS to a 190×43 window and shown as the concept's wordmark
+  in the page header, so the visible slice read as a brand mark rather than as
+  photography. It was never the farm's own mark, which is why the elevation
+  retired it: `research/concepts/castle-farm/castle-farm-elevation-brief.md`
+  asks for plain type until the farm's production wordmark is cleared. Recorded
+  28 July 2026 after the journey suite found it rendered with no provenance
+  entry; withdrawn from the page 5 August 2026.
 - `enniskeen-faithful-room9.png` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 9's compact beige-tiled en-suite. The prompt preserved the wall-mounted basin, mirror, magnifying mirror and towel-ring arrangement and forbade an invented bath or spa setting.
 - `cupla-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the photographed frontage at 105 Main Street, Dundrum. The source reference was an August 2024 Google Maps user photo; the prompt forbade invented seating, people, products or amenities.
 - `mourne-cycles-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on an April 2026 Mourne Cycles customer photo. The prompt preserved the photographed bicycle, red fence, paving and numbered blue bin while forbidding invented shop, rider, trail or product context. The reference evidences the bicycle and its surroundings only, not the ownership of the yard, so neither the caption nor the alt text called the fence the shop's own premises (corrected 25 July 2026 after the re-review flagged the alt text as an unsourced premises claim).

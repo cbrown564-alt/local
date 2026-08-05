@@ -1,116 +1,33 @@
 ---
-/** The catchment map — a drawn plate of the practice's patch.
- *
- *  What is drawn and why: Newcastle sits on the Irish Sea coast at the foot
- *  of Slieve Donard, and the Mournes sweep south-west behind the town; the
- *  eight villages the practice names on its own site are placed around it in
- *  their real relative directions — Dundrum up the coast, Annalong down it,
- *  Castlewellan, Clough, Bryansford, Kilcoo and Hilltown inland. It is a
- *  waiting-room map, not a survey: distances are indicative, the stippled
- *  patch claims no boundary, and the cartouche says so on the plate.
- *
- *  Drawing discipline per docs/the-elevation-method.md (the estate-map
- *  lesson): line work only, no filled scenery; paired pen strokes for roads;
- *  three type registers — town (roman), villages (italic), regions
- *  (letterspaced caps); labels carry halos where the country passes behind
- *  them. The clinic itself is the only filled vignette, on the coast at the
- *  foot of Donard, where the practice is.
- *
- *  Plate, compass and pins come from the shared map shell
- *  (src/concepts/_shell/MapPlate.astro); the scene below is the concept's
- *  own drawing. */
-import MapCompass from "../../_shell/MapCompass.astro";
-import MapPin from "../../_shell/MapPin.astro";
-import MapPlate from "../../_shell/MapPlate.astro";
+import GeneratedMapPlate from "../../_shell/GeneratedMapPlate.astro";
 import { catchmentPlaces } from "../content";
 
-interface Props {
-  headingId?: string;
-}
-
+interface Props { headingId?: string; }
 const { headingId } = Astro.props;
+
+const places = [
+  ...catchmentPlaces.map((place) => ({
+    label: place.label,
+    note: "",
+  })),
+  { label: "Newcastle", note: "8 Railway Street" },
+] as const;
 ---
 
-<MapPlate
+<GeneratedMapPlate
   id="dv-map"
-  viewBox="0 0 760 480"
-  title="Areas we serve from Newcastle"
-  desc="Newcastle on the coast at the foot of Slieve Donard, with Castlewellan, Dundrum, Bryansford, Clough, Annalong, Kilcoo and Hilltown nearby — the villages we look after."
+  src="/media/maps/donard-catchment-generated.png"
+  width={1448}
+  height={1086}
+  title="Areas served from Newcastle"
+  desc="Newcastle on the coast at the foot of the Mournes, with Castlewellan, Dundrum, Bryansford, Clough, Annalong, Kilcoo and Hilltown nearby — the villages the practice says it looks after."
   headingId={headingId}
-  ruleInset={16}
 >
-  <!-- Irish Sea: the coast runs north-east to south-west, sea beyond it -->
-  <path class="dv-map-sea-line" d="M560 30 C600 90 640 140 652 210 C662 270 648 330 610 380 C585 415 550 440 520 452" />
-  <path class="dv-map-sea-wave" d="M600 70 q10 -6 20 0 t20 0" />
-  <path class="dv-map-sea-wave" d="M640 130 q10 -6 20 0 t20 0" />
-  <path class="dv-map-sea-wave" d="M668 200 q10 -6 20 0 t20 0" />
-  <path class="dv-map-sea-wave" d="M650 290 q10 -6 20 0 t20 0" />
-  <path class="dv-map-sea-wave" d="M600 380 q10 -6 20 0 t20 0" />
-  <text class="dv-map-t-region" x="640" y="245" transform="rotate(74 640 245)">IRISH SEA</text>
-
-  <!-- The Mournes: varied peaks sweeping down toward Hilltown -->
-  <path class="dv-map-hill" d="M112 336 C126 306 138 282 154 262 C166 284 176 292 188 280 C202 258 214 236 228 218 C240 244 250 258 262 248 C276 228 286 212 298 200 C310 226 320 242 334 236 C348 220 360 210 372 204 C386 230 396 250 408 260 C418 268 426 280 432 290" />
-  <path class="dv-map-hill-tick" d="M228 230 L228 248 M232 238 L238 248" />
-  <path class="dv-map-hill-tick" d="M298 212 L298 230 M302 220 L308 230" />
-  <path class="dv-map-hill-tick" d="M154 272 L154 290 M158 280 L164 290" />
-  <path class="dv-map-hill-tick" d="M372 216 L372 234 M376 224 L382 234" />
-  <!-- Donard, the peak above Newcastle, drawn apart and tallest -->
-  <path class="dv-map-hill" d="M442 288 L456 218 C460 208 466 208 470 218 L475 230 L482 218 C486 208 492 208 496 218 L514 288" />
-  <path class="dv-map-hill-tick" d="M465 230 L465 248 M469 238 L474 247" />
-  <text class="dv-map-t-region" x="196" y="186">THE MOURNES</text>
-  <text class="dv-map-t-village dv-map-t-feature" x="476" y="194" text-anchor="middle">Slieve Donard</text>
-
-  <!-- roads: paired pen strokes, curving with the geography -->
-  <path class="dv-map-road" d="M512 262 C540 220 560 170 568 120 C572 96 572 78 568 66" />
-  <path class="dv-map-road-twin" d="M518 264 C546 222 566 172 574 122 C578 98 578 80 574 68" />
-  <path class="dv-map-road" d="M508 288 C520 330 528 370 524 408" />
-  <path class="dv-map-road-twin" d="M514 286 C526 328 534 368 530 406" />
-  <path class="dv-map-road" d="M492 258 C440 240 380 200 330 160 C300 136 280 116 268 100" />
-  <path class="dv-map-road-twin" d="M496 264 C444 246 384 206 334 166 C304 142 284 122 272 106" />
-  <path class="dv-map-road" d="M494 290 C436 310 354 330 268 342 C224 348 180 354 152 356" />
-  <path class="dv-map-road-twin" d="M498 296 C440 316 358 336 272 348 C228 354 184 360 156 362" />
-
-  <!-- the patch: a stippled indicative catchment, claiming no boundary -->
-  <path class="dv-map-patch" d="M508 250 C560 200 590 140 585 80 C560 60 520 60 480 90 C420 70 340 60 270 75 C200 90 150 140 130 210 C115 270 130 330 180 370 C250 410 350 420 430 390 C480 370 505 320 508 250 Z" />
-
-  <!-- villages: MapPin with optional paper halo behind the label -->
-  {
-    catchmentPlaces.map((place) => (
-      <MapPin
-        x={place.x}
-        y={place.y}
-        label={place.label}
-        anchor={place.anchor}
-        labelDx={place.lx - place.x}
-        labelDy={place.ly - place.y}
-        haloR={9}
-        dotR={4}
-        labelHalo={"halo" in place ? place.halo : undefined}
-        labelClass="dv-map-t-village"
-      />
-    ))
-  }
-
-  <!-- Newcastle: the clinic vignette on the coast at the foot of Donard -->
-  <g transform="translate(512 272)">
-    <rect class="dv-map-clinic-fill" x="-22" y="-16" width="44" height="30" rx="2" />
-    <path class="dv-map-clinic" d="M-26 -16 L0 -32 L26 -16" />
-    <path class="dv-map-clinic-accent" d="M-6 -5 L6 -5 M0 -11 L0 1" />
-    <rect class="dv-map-clinic" x="-16" y="0" width="8" height="14" />
-    <rect class="dv-map-clinic" x="10" y="0" width="8" height="14" />
-  </g>
-  <!-- town label, haloed so the Donard slopes pass behind it -->
-  <rect class="mm-map-halo" x="382" y="250" width="90" height="40" />
-  <text class="dv-map-t-town" x="470" y="266" text-anchor="end">Newcastle</text>
-  <text class="dv-map-t-village dv-map-t-street" x="470" y="282" text-anchor="end">8 Railway Street</text>
-
-  <MapCompass x={84} y={84} variant="disc" textClass="dv-map-t-village" />
-
-  <!-- cartouche, haloed so the stippled patch passes behind it -->
-  <rect class="mm-map-halo" x="118" y="438" width="524" height="19" />
-  <text class="dv-map-t-cartouche" x="380" y="452" text-anchor="middle">Villages we serve around Newcastle</text>
-
+  <span class="mm-generated-map-label" style="--map-x:69%;--map-y:57%">Newcastle · Railway Street</span>
   <Fragment slot="caption">
-    Newcastle and the villages nearby that we look after.
+    Newcastle and the nearby villages the practice says it looks after. Indicative, not a boundary survey.
   </Fragment>
-</MapPlate>
+  <ul slot="key">
+    {places.map((place) => <li><strong>{place.label}</strong>{place.note && <span>{place.note}</span>}</li>)}
+  </ul>
+</GeneratedMapPlate>

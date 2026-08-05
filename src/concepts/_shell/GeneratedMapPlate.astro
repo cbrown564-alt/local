@@ -1,0 +1,41 @@
+---
+/** Shared shell for generated map artwork with semantic HTML overlays.
+ * The raster is decorative: the accessible description, labels and any
+ * controls live in the DOM so they remain readable, selectable and responsive. */
+import "./generated-map-plate.css";
+
+interface Props {
+  id: string;
+  src: string;
+  width: number;
+  height: number;
+  title: string;
+  desc: string;
+  headingId?: string;
+}
+
+const { id, src, width, height, title, desc, headingId } = Astro.props;
+---
+
+<figure class:list={["mm-generated-map", id]}>
+  <div
+    class="mm-generated-map-frame"
+    role="img"
+    aria-labelledby={headingId ? `${headingId} ${id}-desc` : `${id}-title ${id}-desc`}
+  >
+    {!headingId && <span class="mm-generated-map-sr" id={`${id}-title`}>{title}</span>}
+    <span class="mm-generated-map-sr" id={`${id}-desc`}>{desc}</span>
+    <img src={src} width={width} height={height} alt="" loading="lazy" decoding="async" />
+    <div class="mm-generated-map-overlay" aria-hidden="true">
+      <slot />
+    </div>
+  </div>
+  <figcaption>
+    <span class="mm-generated-map-disclosure">AI-generated artwork</span>
+    <span aria-hidden="true"> · </span>
+    <slot name="caption" />
+  </figcaption>
+  <div class="mm-generated-map-key">
+    <slot name="key" />
+  </div>
+</figure>

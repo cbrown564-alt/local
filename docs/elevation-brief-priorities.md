@@ -87,8 +87,10 @@ repairing one.
 
 **Brief written 4 August 2026:**
 `research/concepts/castle-farm/castle-farm-elevation-brief.md`.
+**Moves 1, 2, 3 and 6 implemented 5 August 2026;** moves 4 (the table as
+theatre) and 5 (the drawn delivery-round plate) wait on their asset sessions.
 
-The concept is a single hero screen: placeholder navigation, an inert
+The concept was a single hero screen: placeholder navigation, an inert
 basket, a steps strip and a proof band. Every other public concept has had
 more passes. The shape is Product/Counter, and the record holds a real
 ritual — the weekly box: choose a box, add the staples, collect or get it
@@ -105,9 +107,11 @@ delivery map and the family-farm claim rather than to add to them.
 
 **Brief written 4 August 2026:**
 `research/concepts/newcastle-dental/newcastle-dental-elevation-brief.md`.
+**Moves 1, 2, 3 and 5 implemented 5 August 2026;** move 4 (the drawn calm
+room) waits on its asset session, and the page stays typographic until it
+lands.
 
-The publication record says it plainly: the page is entirely typographic
-today. The Care shape's elevation register is already worked out — the
+The publication record said it plainly: the page was entirely typographic. The Care shape's elevation register is already worked out — the
 Donard Veterinary brief proved that reassurance, not spectacle, is the
 theatre — but the method's warning applies: the brief must be derived from
 this practice's record, not copied from the vet's. What the record holds:

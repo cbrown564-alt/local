@@ -1,223 +1,26 @@
 ---
-/** An indicative map of the Mourne Larder.
- *
- *  Drawn like a cookbook endpaper, not a survey, and true to the real lay of
- *  the land so a local recognises it: Dundrum Inner Bay behind the village,
- *  the tidal channel running out past the Murlough dunes to Dundrum Bay,
- *  Newcastle and the Mournes sweeping down to the sea along the southern
- *  shore, and Dundrum Castle just up the hill west of Main Street, where it
- *  really stands. Main Street runs with the shore at the head of the bay,
- *  where bread is baked and dishes are served.
- *
- *  Every sourcing pin is one Scopers publishes about itself — carrots from
- *  the hedgerows, wild garlic for the mayo, bread from the counter. There
- *  are no named farms, no invented suppliers, no boundary that implies a
- *  survey; the figcaption says exactly that. Place names (Murlough,
- *  Newcastle, Slieve Donard) are geography, not sourcing claims.
- *
- *  Plate, compass and pins come from the shared map shell
- *  (src/concepts/_shell/MapPlate.astro); the scene below is the concept's
- *  own drawing. */
-import MapCompass from "../../_shell/MapCompass.astro";
-import MapPin from "../../_shell/MapPin.astro";
-import MapPlate from "../../_shell/MapPlate.astro";
+import GeneratedMapPlate from "../../_shell/GeneratedMapPlate.astro";
 import { larderPins } from "../content";
 
-interface Props {
-  headingId?: string;
-}
-
+interface Props { headingId?: string; }
 const { headingId } = Astro.props;
+
+const places = larderPins;
 ---
 
-<MapPlate
+<GeneratedMapPlate
   id="sc-map"
-  viewBox="0 0 800 520"
+  src="/media/maps/scopers-larder-generated.png"
+  width={1536}
+  height={1024}
   title="The Mourne Larder around Dundrum"
-  desc="An indicative drawing of the ten square miles around Dundrum: Dundrum Inner Bay behind the village, the tidal channel running out past the Murlough dunes to Dundrum Bay, Newcastle and the Mourne mountains along the southern shore, Dundrum Castle just up the hill west of Main Street, and Scopers on Main Street along the shore at the head of the bay."
+  desc="An indicative illustrated relationship between Dundrum, its bay, Murlough, Newcastle and the Mournes, with hedgerows, foothills and the Main Street counter representing ingredients Scopers mentions publicly."
   headingId={headingId}
-  clip
 >
-  <!-- The sea: Dundrum Bay east of the coast, the tidal channel and the
-       inner bay behind the village — one connected water shape -->
-  <path
-    class="sc-map-sea"
-    d="M560 21C588 62 608 112 602 152C599 170 598 182 600 195C555 208 520 218 490 228C445 238 405 252 388 272C368 296 364 316 380 330C415 346 465 341 505 326C535 315 565 295 585 270C575 305 580 345 606 390C632 432 668 470 706 499L779 499L779 21Z"
-  />
-  <!-- Sand and mud flats: the inner bay is shallow, drawn lighter -->
-  <path
-    class="sc-map-flats"
-    d="M600 195C555 208 520 218 490 228C445 238 405 252 388 272C368 296 364 316 380 330C415 346 465 341 505 326C535 315 565 295 585 270C589 245 595 220 600 195Z"
-  />
-  <!-- Shore wash, then the firm coastline -->
-  <path
-    class="sc-map-coast-wash"
-    d="M560 21C588 62 608 112 602 152C599 170 598 182 600 195C555 208 520 218 490 228C445 238 405 252 388 272C368 296 364 316 380 330C415 346 465 341 505 326C535 315 565 295 585 270C575 305 580 345 606 390C632 432 668 470 706 499"
-  />
-  <path
-    class="sc-map-coastline"
-    d="M560 21C588 62 608 112 602 152C599 170 598 182 600 195C555 208 520 218 490 228C445 238 405 252 388 272C368 296 364 316 380 330C415 346 465 341 505 326C535 315 565 295 585 270C575 305 580 345 606 390C632 432 668 470 706 499"
-  />
-  <!-- Tidal channels inside the inner bay -->
-  <g class="sc-map-tide">
-    <path d="M478 258C448 272 424 290 406 308" />
-    <path d="M452 282C438 296 428 308 420 320" />
-  </g>
-  <!-- Wave marks -->
-  <g class="sc-map-waves">
-    <path d="M642 116c8-6 18-6 26 0" />
-    <path d="M744 148c8-6 18-6 26 0" />
-    <path d="M676 244c8-6 18-6 26 0" />
-    <path d="M734 320c8-6 18-6 26 0" />
-    <path d="M700 384c8-6 18-6 26 0" />
-    <path d="M652 186c8-6 18-6 26 0" />
-  </g>
-  <!-- A small boat in the bay, two seabirds above it -->
-  <g class="sc-map-boat" transform="translate(700 122)">
-    <path class="sc-map-boat-sail" d="M0 0V-15l8 12Z" />
-    <path class="sc-map-boat-hull" d="M-8 2c3 4 13 4 16 0" />
-  </g>
-  <g class="sc-map-birds">
-    <path d="M632 76c2-3 6-3 8 0M646 88c2-3 6-3 8 0" />
-  </g>
-
-  <!-- The Mournes: two rounded ridges sweeping down to the sea at
-       Newcastle, cropped by the plate's inner rule -->
-  <path
-    class="sc-map-ridge sc-map-ridge--back"
-    d="M280 499C310 450 355 432 410 438C465 444 495 418 548 410C590 404 620 400 655 415C685 428 700 460 706 499Z"
-  />
-  <path
-    class="sc-map-ridge sc-map-ridge--front"
-    d="M200 499C235 468 290 452 350 460C410 468 460 450 520 456C575 462 625 458 665 475C685 484 698 492 706 499Z"
-  />
-  <g class="sc-map-hachures">
-    <path d="M356 446l12-10M472 440l10-11M524 423l8-11M624 414l4-11" />
-    <path d="M282 478l10-9M402 470l8-9M502 464l6-9M602 460l4-9" />
-  </g>
-  <!-- Slieve Donard: the peak above Newcastle -->
-  <path class="sc-map-peak-tick" d="M534 412l6-8 6 8" />
-  <text class="sc-map-peak-label" x="524" y="386" text-anchor="middle">Slieve Donard</text>
-  <text class="sc-map-feature-label" x="548" y="436" text-anchor="middle">The Mournes</text>
-
-  <!-- The Murlough dunes: a stippled band hugging the shore from the
-       channel mouth toward Newcastle -->
-  <!-- The Murlough dunes: a stippled band hugging the shore from the
-       channel mouth toward Newcastle -->
-  <path
-    class="sc-map-dunes sc-map-dunes--wide"
-    d="M582 296C570 326 574 354 594 390C618 428 650 464 686 494"
-  />
-  <path
-    class="sc-map-dunes"
-    d="M568 304C558 332 560 358 580 394C602 430 632 462 664 486"
-  />
-  <text class="sc-map-feature-label sc-map-dunes-label" x="636" y="352" text-anchor="middle" transform="rotate(63 636 352)">Murlough</text>
-
-  <!-- Hedgerow fields: complete agricultural parcels with soft rounded corners
-       plus hedges connecting toward the village -->
-  <path
-    class="sc-map-field sc-map-field--toned"
-    d="M72 82C110 70 170 72 192 90C210 106 206 138 184 150C150 166 96 160 74 142C58 126 56 98 72 82Z"
-  />
-  <path
-    class="sc-map-field"
-    d="M60 192C100 184 140 188 160 202C174 216 168 238 148 248C115 258 75 252 60 236C48 222 48 202 60 192Z"
-  />
-  <path
-    class="sc-map-field sc-map-field--toned"
-    d="M120 396C165 386 215 388 238 402C254 414 250 436 226 445C188 456 140 448 120 432C106 418 108 405 120 396Z"
-  />
-  <path
-    class="sc-map-field"
-    d="M248 200C282 192 316 198 328 212C338 226 328 242 304 248C276 254 252 242 248 224C245 212 245 204 248 200Z"
-  />
-  <path
-    class="sc-map-field"
-    d="M440 70C480 60 520 64 542 82C556 96 550 118 528 128C498 140 458 136 438 120C426 102 428 82 440 70Z"
-  />
-  <g class="sc-map-hedges">
-    <path d="M192 90C240 108 285 132 312 165" />
-    <path d="M160 202C185 218 205 235 220 258" />
-    <path d="M238 402C280 414 318 420 350 418" />
-    <path d="M108 252C130 278 145 305 150 332" />
-    <path d="M118 168C110 176 104 186 102 194" />
-    <path d="M100 262C96 298 100 338 118 376" />
-    <path d="M452 136C462 158 472 180 484 200" />
-    <path d="M280 96C320 90 355 94 385 106" />
-    <path d="M296 150C332 144 364 148 392 160" />
-  </g>
-
-  <!-- Lanes inland, then Main Street hugging the shore at the bay head. -->
-  <path class="sc-map-lane" d="M300 250C325 245 350 250 372 265" />
-  <path class="sc-map-lane" d="M378 320C395 350 418 380 440 405" />
-  <path class="sc-map-street" d="M382 335C376 305 375 278 380 252" />
-  <!-- The village: buildings face the street, running with the coast -->
-  <g class="sc-map-buildings">
-    <rect x="366" y="318" width="6" height="10" />
-    <rect x="367" y="300" width="5" height="8" />
-    <rect x="365" y="280" width="7" height="11" />
-    <rect x="386" y="274" width="6" height="9" />
-    <rect x="387" y="256" width="5" height="8" />
-    <rect x="366" y="254" width="6" height="9" />
-    <path d="M368 288v-11l3-5 3 5v11Z" />
-  </g>
-
-  <!-- Dundrum Castle: just up the hill west of Main Street -->
-  <g class="sc-map-castle" transform="translate(342 252)">
-    <path class="sc-map-castle-hill" d="M-28 16C-17 2 17 2 28 16" />
-    <path class="sc-map-castle-hill" d="M-18 10C-10 -1 10 -1 18 10" />
-    <path class="sc-map-castle-keep" d="M-7 6V-9h3v3h4v-5h3v4h4v-2h3v15Z" />
-  </g>
-  <text class="sc-map-castle-label" x="342" y="214" text-anchor="middle">Dundrum Castle</text>
-
-  <!-- Place names -->
-  <text class="sc-map-water-label" x="694" y="196" text-anchor="middle">Dundrum Bay</text>
-  <text class="sc-map-place-label" x="296" y="306" text-anchor="end">Dundrum</text>
-  <g class="sc-map-town" transform="translate(660 470)">
-    <rect x="0" y="0" width="8" height="5" />
-    <rect x="12" y="3" width="7" height="5" />
-  </g>
-  <text class="sc-map-town-label" x="684" y="466">Newcastle</text>
-
-  <!-- Cartouche note -->
-  <text class="sc-map-note" x="40" y="48">Ten square miles around Dundrum · indicative, not a survey</text>
-
-  <MapCompass x={735} y={70} />
-
-  <!-- Sourcing pins: only what their own captions claim -->
-  {
-    larderPins.map((pin) => (
-      <MapPin
-        x={pin.x}
-        y={pin.y}
-        label={pin.label}
-        sub={pin.dish}
-        anchor={pin.anchor}
-        labelDx={pin.labelDx}
-        labelDy={pin.labelDy}
-        subDy={pin.dishDy}
-        leader={pin.leader}
-        haloR={10}
-        labelClass="sc-map-pin-label"
-        subClass="sc-map-pin-dish"
-      />
-    ))
-  }
   <Fragment slot="caption">
-    An indicative map of the Mourne Larder — not a survey. Positions are drawn
-    from what Scopers publicly says about its sourcing; no named farms or
-    suppliers appear here.
+    Indicative Mourne Larder artwork, based on Scopers' public sourcing language. No named farm, supplier or surveyed origin is claimed.
   </Fragment>
-</MapPlate>
-
-<ul class="sc-map-legend">
-  {
-    larderPins.map((pin) => (
-      <li>
-        <strong>{pin.label}</strong>
-        <span>{pin.dish}</span>
-      </li>
-    ))
-  }
-</ul>
+  <ul slot="key">
+    {places.map((place) => <li><strong>{place.label}</strong><span>{place.dish}</span></li>)}
+  </ul>
+</GeneratedMapPlate>

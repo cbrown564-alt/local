@@ -8,13 +8,31 @@ it. The Care register was first worked out in
 the register transfers, the moves do not; everything below is derived from
 this practice's own record.
 
-**Status: written 4 August 2026; not yet implemented.** The current concept
-is an honest security case — the padlocked address bar, "Your family
-dentist, close to home", the three named dentists, a request panel — and it
-passes the publication checks. It is also entirely typographic and entirely
-studio-voiced. The re-read for this brief found the practice's own former
-website in the Internet Archive (live to May 2019), and with it the
-practice's own words and its proudest fact — none of which is on the page.
+**Status: written 4 August 2026. Moves 1, 2, 3 and 5 implemented 5 August
+2026** — "We love to make you smile!" leads the page with its capture year,
+the practice band carries 2014, the 2017 award, 2023 and today with a source
+against every entry, the emergency path is a two-step mechanism panel, and
+the request panel drafts a real email to the practice's own address instead
+of pretending to send. Move 4 (the drawn calm room) is unstarted; it needs
+its own asset session, and the page is still typographic until it lands.
+`tools/test/test-newcastle-dental-elevation.mjs` pins what shipped — including
+the layer rules as absences — and runs in `pnpm test`.
+
+Two open decisions below were resolved when the moves shipped: the archived
+smile line **is** the lede quote, attributed and dated, because the current
+alternative is markedly weaker; and the two published GDC numbers are
+**omitted entirely**, because the third dentist's is not in the record and an
+uneven row would read as a gap in his credentials rather than in ours. The
+banner note now names the padlock as the proposed address rather than a live
+certificate, which is what the publication record asked for.
+
+The concept before this pass was an honest security case — the padlocked
+address bar, "Your family dentist, close to home", the three named dentists,
+a request panel — and it passed the publication checks. It was also entirely
+typographic and entirely studio-voiced. The re-read for this brief found the
+practice's own former website in the Internet Archive (live to May 2019), and
+with it the practice's own words and its proudest fact — none of which was on
+the page.
 
 ## The shape of this business
 

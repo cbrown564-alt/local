@@ -6,13 +6,31 @@ Written 4 August 2026, second in the ranked sequence in
 ranked review called this the least-elevated public page: a single hero
 screen with placeholder navigation and an inert basket.
 
-**Status: written 4 August 2026; not yet implemented.** The current concept
-is an honest clarity case — "This week's shop, sorted.", a disclosed faithful
-visualisation of the mixed box, a three-step strip — and it passes the
-publication checks. What it does not do is tell the farm's own story. The
-record re-read for this brief (the farm's About and Delivery pages, 4 August
-2026) turned out to be one of the richest inventories in the pipeline, and
-almost none of it is on the page.
+**Status: written 4 August 2026. Moves 1, 2, 3 and 6 implemented 5 August
+2026** — the farm's own sentence and both dates lead the page, the weekly
+round is on it with the published cutoffs, days, towns and terms and a town
+lookup, the stock is told in the farm's two-source shape, and every control
+either reaches `castlefarmni.com` or is gone. Moves 4 (the table as theatre)
+and 5 (the drawn delivery-round plate) are unstarted; both need their own
+asset session, and until move 4 lands the mixed-box visualisation keeps its
+existing disclosure chain. `tools/test/test-castle-farm-elevation.mjs` pins
+what shipped and runs in `pnpm test`.
+
+Two open decisions below were resolved in the cautious direction when the
+moves shipped: the £45 Medium Mixed Box price is **not** quoted (the page
+names the box and links out, because prices are the most perishable thing the
+farm publishes), and the "approximately 50,000" bulletin figure is **left
+out** — it reads as a boast the farm never asked for. One correction to the
+test list below: the recorded schedule names Dundrum on Tuesday only, not on
+four days, so the page and its test claim Tuesday and nothing more.
+Castlewellan is the town the published schedule really does name twice.
+
+The concept before this pass was an honest clarity case — "This week's shop,
+sorted.", a disclosed faithful visualisation of the mixed box, a three-step
+strip — and it passed the publication checks. What it did not do is tell the
+farm's own story. The record re-read for this brief (the farm's About and
+Delivery pages, 4 August 2026) turned out to be one of the richest
+inventories in the pipeline, and almost none of it was on the page.
 
 ## The shape of this business
 

@@ -2,71 +2,30 @@
 import { transformations } from "../data/transformations";
 import "../styles/town-map.css";
 
-/**
- * The town map — the studio's keepable artifact (docs/shell-elevation-brief.md,
- * move 3). A drawn, indicative map of Dundrum and Newcastle with every public
- * transformation pinned. Pins are concept-work proof, not a directory: each
- * links to its transformation and nothing else is listed.
- *
- * The build check lives here: a public transformation without a pin fails the
- * build, so a newly published concept can never ship invisible on the map.
- */
 const unpinned = transformations.filter((item) => !item.pin);
 if (unpinned.length > 0) {
-  throw new Error(
-    `Town map: every public transformation needs a pin. Missing: ${unpinned
-      .map((item) => item.slug)
-      .join(", ")}`,
-  );
+  throw new Error(`Town map: every public transformation needs a pin. Missing: ${unpinned.map((item) => item.slug).join(", ")}`);
 }
 
 const MAP_WIDTH = 1200;
 const MAP_HEIGHT = 720;
-const TIP_PAD = 12;
-const TIP_CARD_WIDTH = 320;
-const MIN_PIN_DISTANCE = 44;
-
-const invalidPins = transformations.filter(({ pin }) =>
-  pin && (pin.x < 0 || pin.x > MAP_WIDTH || pin.y < 0 || pin.y > MAP_HEIGHT)
-);
+const invalidPins = transformations.filter(({ pin }) => pin && (
+  pin.x < 0 || pin.x > MAP_WIDTH || pin.y < 0 || pin.y > MAP_HEIGHT
+));
 if (invalidPins.length > 0) {
-  throw new Error(
-    `Town map: pins must stay inside the ${MAP_WIDTH}×${MAP_HEIGHT} viewBox. Invalid: ${invalidPins
-      .map((item) => item.slug)
-      .join(", ")}`,
-  );
-}
-
-const crowdedPins: string[] = [];
-for (let index = 0; index < transformations.length; index += 1) {
-  const current = transformations[index];
-  if (!current.pin) continue;
-  for (let compareIndex = index + 1; compareIndex < transformations.length; compareIndex += 1) {
-    const compared = transformations[compareIndex];
-    if (!compared.pin) continue;
-    const distance = Math.hypot(
-      current.pin.x - compared.pin.x,
-      current.pin.y - compared.pin.y,
-    );
-    if (distance < MIN_PIN_DISTANCE) {
-      crowdedPins.push(`${current.name} / ${compared.name} (${Math.round(distance)} units)`);
-    }
-  }
-}
-if (crowdedPins.length > 0) {
-  console.warn(
-    `Town map: pins closer than ${MIN_PIN_DISTANCE} viewBox units may collide: ${crowdedPins.join(", ")}`,
-  );
+  throw new Error(`Town map: pins must stay inside the ${MAP_WIDTH}×${MAP_HEIGHT} source grid. Invalid: ${invalidPins.map((item) => item.slug).join(", ")}`);
 }
 
 const pins = transformations.map((item) => {
-  const pin = item.pin!;
-  // Keep the summary card inside the viewBox while its pointer stays on the pin.
-  const tipCardLeft = Math.min(
-    MAP_WIDTH - TIP_PAD - TIP_CARD_WIDTH,
-    Math.max(TIP_PAD, pin.x - TIP_CARD_WIDTH / 2),
-  );
-  return { ...item, pin, tipCardShift: tipCardLeft - pin.x };
+  const source = item.pin!;
+  const isDundrum = item.town === "Dundrum";
+  const x = isDundrum
+    ? 39 + ((source.x - 848) / (1115 - 848)) * 10
+    : 39 + ((source.x - 120) / (515 - 120)) * 18;
+  const y = isDundrum
+    ? 21 + ((source.y - 178) / (312 - 178)) * 13
+    : 58 + ((source.y - 280) / (550 - 280)) * 14;
+  return { ...item, source, display: { x, y } };
 });
 
 const previewSlugsByTown = {
@@ -83,449 +42,59 @@ const townGroups = (["Dundrum", "Newcastle"] as const).map((town) => ({
     return item;
   }),
 }));
+---
 
-/**
- * Road geometry. Every road is drawn twice from the same path data — a thick
- * casing stroke, then a light dotted centre line — so the two passes can
- * never drift apart and every road on the map shares one style.
- */
-const roads = [
-  // Coast Road A2: in from the top-right edge, hugging the landward edge of
-  // the Dundrum pins, then along the seaward edge of the Newcastle pins.
-  `M 1190 140
-   C 1160 148, 1135 152, 1115 156
-   C 1025 201, 945 246, 848 290
-   C 760 330, 680 375, 600 415
-   C 540 445, 470 462, 400 477
-   C 340 490, 290 497, 240 506
-   C 200 513, 170 520, 140 528
-   C 130 530, 120 529, 110 528`,
-  // Bryansford Road A24: inland from the coast road to Tollymore Forest,
-  // ending beside the Enniskeen pin.
-  `M 430 472
-   C 395 435, 358 388, 322 338
-   C 292 296, 260 278, 232 262
-   C 198 246, 164 226, 132 204
-   C 88 176, 42 162, -12 154`,
-  // Newcastle Main Street: off the coast road at the east end of town,
-  // along the landward edge of the inland pin row, rejoining the coast
-  // road at the west end.
-  `M 515 449
-   C 480 420, 455 395, 435 380
-   C 415 365, 395 372, 380 382
-   C 360 395, 348 408, 335 417
-   C 305 428, 278 428, 250 430
-   C 200 435, 160 485, 140 528`,
-  // Cross street joining Main Street to the Bryansford Road.
-  `M 340 414
-   C 343 397, 343 380, 341 363`,
-  // Lane from the coast road up to Dundrum Castle.
-  `M 1036 196
-   C 1034 182, 1032 165, 1031 149`,
-];
-
-/**
- * River geometry. Like the roads, every river is drawn twice from the same
- * path data — a darker bank stroke, then a lighter water core — so both
- * passes stay in lockstep and each river reads as water cut into the land.
- */
-const rivers = [
-  // Shimna River (From Tollymore Forest through Newcastle to the sea)
-  `M 280 200
-   C 290 224, 302 246, 318 266
-   C 340 292, 366 322, 392 354
-   C 416 384, 438 416, 458 448
-   C 472 472, 488 498, 503 530`,
-  // Moneycarragh River (South into the north-west corner of Dundrum Inner Bay)
-  `M 815 45
-   C 838 82, 858 120, 874 158
-   C 888 195, 900 240, 908 278
-   C 911 292, 913 302, 914 310`,
-];
-
-/**
- * Bridges: one small deck glyph wherever a road crosses a river, rotated to
- * the road's direction, so the crossings read as bridges rather than lines
- * overlapping.
- */
-const bridges = [
-  { x: 406, y: 372, angle: -7 }, // Newcastle Main Street over the Shimna
-  { x: 466, y: 462, angle: -14 }, // Coast Road over the Shimna
-  { x: 905, y: 263, angle: -24 }, // Coast Road over the Moneycarragh
-];
----<div class="town-map" data-town-map>
+<div class="town-map" data-town-map>
   <p class="town-map-description" id="town-map-description">
-    An indicative map with {pins.length} website examples across Dundrum and Newcastle. Use the business links after the map on a small screen.
+    An indicative illustrated map with {pins.length} website examples across Dundrum and Newcastle. Each pin is followed by an equivalent business link.
   </p>
-  <svg
-    class="town-map-svg"
-    viewBox="0 0 1200 720"
+  <div
+    class="town-map-art"
     role="group"
     aria-label="Indicative map of Dundrum and Newcastle with a pin for every business that has a public concept"
     aria-describedby="town-map-description"
-    data-town-map-svg
+    data-town-map-art
   >
-    <defs>
-      <linearGradient id="town-map-sea" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#2a5063" />
-        <stop offset="100%" stop-color="#193645" />
-      </linearGradient>
-
-      <linearGradient id="town-map-inner-sea" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#2c566b" />
-        <stop offset="100%" stop-color="#1c3c4e" />
-      </linearGradient>
-
-      <!-- Mountain gradients for depth -->
-      <linearGradient id="mourne-far-grad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#d3e2db" />
-        <stop offset="100%" stop-color="#c2d7cd" />
-      </linearGradient>
-
-      <linearGradient id="mourne-mid-grad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#bdcfc6" />
-        <stop offset="100%" stop-color="#a6beb4" />
-      </linearGradient>
-
-      <linearGradient id="mourne-front-grad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#a9bfb4" />
-        <stop offset="100%" stop-color="#93aca0" />
-      </linearGradient>
-
-      <!-- Reusable tree icon for Tollymore Forest -->
-      <g id="tree-icon" class="town-map-tree">
-        <path d="M 0 -9 L -4 -2 L -2.5 -2 L -5 4 L 5 4 L 2.5 -2 L 4 -2 Z" />
-        <rect x="-0.8" y="4" width="1.6" height="3" fill="#4e685c" />
-      </g>
-    </defs>
-
-    <!-- Base Land Background -->
-    <rect x="0" y="0" width="1200" height="720" fill="#f0f5f2" />
-
-    <!-- 1. MOURNE MOUNTAINS RANGE (Running down the left edge, foot of the
-             range reaching the land behind Newcastle) -->
-    <!-- Far Ridge (High Mournes silhouette, top of the range) -->
-    <path
-      fill="url(#mourne-far-grad)"
-      stroke="#7c9b8e"
-      stroke-width="1.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M 0 24
-         C 30 34, 52 56, 64 88
-         C 72 110, 66 132, 78 152
-         C 92 174, 102 196, 96 224
-         C 90 250, 62 274, 42 292
-         C 28 305, 12 314, 0 320
-         L 0 24 Z"
+    <img
+      src="/media/maps/town-coverage-generated.png"
+      width="1672"
+      height="941"
+      alt=""
+      loading="lazy"
+      decoding="async"
     />
-
-    <!-- Mid Ridge (Stepped down and further inland) -->
-    <path
-      fill="url(#mourne-mid-grad)"
-      stroke="#658678"
-      stroke-width="1.4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M 0 84
-         C 40 92, 76 110, 100 140
-         C 118 162, 122 186, 138 206
-         C 154 226, 162 250, 150 276
-         C 138 302, 104 322, 76 340
-         C 50 356, 22 370, 0 378
-         L 0 84 Z"
-    />
-
-    <!-- Front Ridge / Foothills (Lowest, reaching furthest inland behind
-             Newcastle; the three ridges cascade down-right so the peaks
-             spread along the range instead of stacking) -->
-    <path
-      fill="url(#mourne-front-grad)"
-      stroke="#4b6b5d"
-      stroke-width="1.4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M 0 176
-         C 46 184, 92 202, 122 232
-         C 146 256, 152 282, 168 306
-         C 184 330, 182 352, 158 372
-         C 134 392, 92 402, 56 410
-         C 34 415, 14 418, 0 420
-         L 0 176 Z"
-    />
-
-    <!-- 2. TOLLYMORE FOREST (Inland woodland at the foot of the Mournes,
-             near the Enniskeen Hotel) -->
-    <!-- Forest region backdrop path -->
-    <path
-      class="town-map-forest-area"
-      d="M 170 158
-         C 210 142, 270 146, 330 152
-         C 380 158, 410 182, 400 212
-         C 390 242, 350 262, 300 267
-         C 240 272, 182 250, 166 214
-         C 156 190, 160 170, 170 158 Z"
-    />
-
-    <!-- Tree canopy in three staggered rows under the forest label.
-         translate-then-scale keeps each tree exactly at its placed point. -->
-    <use href="#tree-icon" transform="translate(195 200) scale(1.2)" />
-    <use href="#tree-icon" transform="translate(230 200) scale(1.35)" />
-    <use href="#tree-icon" transform="translate(265 200) scale(1.25)" />
-    <use href="#tree-icon" transform="translate(300 200) scale(1.4)" />
-    <use href="#tree-icon" transform="translate(335 200) scale(1.2)" />
-    <use href="#tree-icon" transform="translate(365 200) scale(1.3)" />
-
-    <use href="#tree-icon" transform="translate(210 225) scale(1.4)" />
-    <use href="#tree-icon" transform="translate(245 225) scale(1.25)" />
-    <use href="#tree-icon" transform="translate(280 225) scale(1.45)" />
-    <use href="#tree-icon" transform="translate(315 225) scale(1.3)" />
-    <use href="#tree-icon" transform="translate(350 225) scale(1.2)" />
-
-    <use href="#tree-icon" transform="translate(225 250) scale(1.2)" />
-    <use href="#tree-icon" transform="translate(260 250) scale(1.35)" />
-    <use href="#tree-icon" transform="translate(295 250) scale(1.25)" />
-    <use href="#tree-icon" transform="translate(330 250) scale(1.3)" />
-
-    <!-- 3. RIVERS (Drawn before the sea fills, so their mouths run under
-             the water and read as flowing into it). Two passes from the
-             shared path data: darker banks, then a lighter water core. -->
-    <g>
-      {rivers.map((d) => (
-        <path class="town-map-river-bank" d={d} />
-      ))}
-      {rivers.map((d) => (
-        <path class="town-map-river" d={d} />
-      ))}
-    </g>
-
-    <!-- 4. WATER: DUNDRUM BAY, DUNDRUM INNER BAY & MURLOUGH DUNES -->
-    <!-- Outer Dundrum Bay & Main Ocean Body. The coastline rounds the
-         headland east of the inner bay, crosses the bay mouth (unstroked)
-         and follows the seaward side of the Murlough spit to Newcastle. -->
-    <path
-      class="town-map-sea-fill"
-      d="M 1200 180
-         C 1192 225, 1180 285, 1168 335
-         C 1160 352, 1152 356, 1146 358
-         L 1020 420
-         C 945 450, 860 470, 770 488
-         C 680 505, 570 516, 480 522
-         C 320 540, 160 562, 0 592
-         L 0 720 L 1200 720 Z"
-    />
-
-    <!-- Dundrum Inner Bay (Enclosed south-east of the village, opening to
-         Dundrum Bay through the channel beside the spit tip) -->
-    <path
-      fill="url(#town-map-inner-sea)"
-      d="M 1150 235
-         C 1080 222, 1010 238, 960 268
-         C 928 285, 905 308, 898 332
-         C 890 352, 894 368, 910 382
-         C 940 400, 982 414, 1020 420
-         L 1146 358
-         C 1158 318, 1156 272, 1150 235 Z"
-    />
-
-    <!-- Murlough Dunes (Sand band between the inner bay and the open sea,
-         tapering back towards Newcastle) -->
-    <path
-      class="town-map-dunes"
-      d="M 480 518
-         C 570 514, 680 505, 770 488
-         C 860 470, 945 450, 1020 420
-         C 985 408, 940 392, 898 372
-         C 840 385, 780 415, 700 445
-         C 620 472, 548 497, 480 514 Z"
-    />
-
-    <!-- Low dune ridges along the Murlough spit -->
-    <g class="town-map-dune-ridges" aria-hidden="true">
-      <path d="M 550 502 Q 566 485, 582 499 Q 598 488, 614 497" />
-      <path d="M 666 482 Q 684 462, 702 478 Q 720 464, 738 473" />
-      <path d="M 806 449 Q 826 424, 846 444 Q 866 427, 886 438" />
-      <path d="M 910 427 Q 924 410, 938 424 Q 952 413, 966 421" />
-    </g>
-
-    <!-- Coastline strokes -->
-    <!-- Headland east of the bay mouth -->
-    <path
-      class="town-map-coast"
-      d="M 1200 180
-         C 1192 225, 1180 285, 1168 335
-         C 1160 352, 1152 356, 1146 358"
-    />
-    <!-- Inner bay shores (the mouth stays unstroked open water) -->
-    <path
-      class="town-map-coast"
-      d="M 1150 235
-         C 1080 222, 1010 238, 960 268
-         C 928 285, 905 308, 898 332
-         C 890 352, 894 368, 910 382
-         C 940 400, 982 414, 1020 420"
-    />
-    <path
-      class="town-map-coast"
-      d="M 1146 358
-         C 1158 318, 1156 272, 1150 235"
-    />
-    <!-- Main coastline along the spit to Newcastle -->
-    <path
-      class="town-map-coast"
-      d="M 1020 420
-         C 945 450, 860 470, 770 488
-         C 680 505, 570 516, 480 522
-         C 320 540, 160 562, 0 592"
-    />
-
-    <!-- Waves on Dundrum Bay -->
-    <path class="town-map-wave" d="M 780 590 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 520 635 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 290 620 q 30 -12 60 0 q 30 12 60 0" />
-    <path class="town-map-wave" d="M 980 570 q 26 -10 52 0 q 26 10 52 0" />
-
-    <!-- 5. ROADS & TRAILS (DEPTH LEADING LINES) -->
-    <!-- Roads: one consistent style everywhere — a thick casing with a light
-         dotted centre line, drawn in two passes from the shared path data. -->
-    <g>
-      {roads.map((d) => (
-        <path class="town-map-road" d={d} />
-      ))}
-      {roads.map((d) => (
-        <path class="town-map-road-line" d={d} />
-      ))}
-    </g>
-
-    <!-- Bridges where the roads cross the rivers, drawn over the road
-         passes so the deck and parapet edges sit on top. -->
-    {bridges.map((bridge) => (
-      <g
-        class="town-map-bridge"
-        transform={`translate(${bridge.x} ${bridge.y}) rotate(${bridge.angle})`}
-        aria-hidden="true"
-      >
-        <rect x="-14" y="-5.5" width="28" height="11" rx="2.5" />
-      </g>
-    ))}
-
-    <!-- Trails keep their own distinct dashed style. -->
-    <!-- Tollymore / Mourne Way Hiking Trail (Out of the forest, snaking up
-             the mountain slope) -->
-    <path
-      class="town-map-trail"
-      d="M 170 209
-         C 156 207, 142 205, 132 201
-         C 124 198, 118 194, 119 189
-         C 120 184, 114 186, 109 194
-         C 104 202, 98 197, 93 187
-         C 88 177, 80 166, 74 158
-         C 71 153, 69 150, 68 147
-         C 62 138, 65 128, 73 120
-         C 81 112, 78 101, 70 92
-         C 62 83, 64 72, 72 63
-         C 80 54, 77 42, 70 32
-         C 63 22, 65 10, 70 -12"
-    />
-
-    <!-- Murlough Dune Trail (Along the spit towards the bay channel) -->
-    <path
-      class="town-map-trail"
-      d="M 510 508
-         C 548 503, 568 490, 600 493
-         C 630 496, 650 486, 680 480
-         C 710 474, 722 482, 750 472
-         C 780 462, 790 450, 820 452
-         C 850 454, 864 442, 892 438
-         C 920 434, 944 441, 965 428
-         C 980 422, 990 420, 1000 418"
-    />
-
-    <!-- 6. LANDMARKS -->
-    <!-- Dundrum Castle (On the hill north of the village, under the town label) -->
-    <g class="town-map-castle" transform="translate(1010, 95)" aria-hidden="true">
-      <!-- A low mound with a short crown for the keep to stand on -->
-      <path class="town-map-castle-hill" d="M 0 60 Q 13 46 25 43 L 45 43 Q 57 46 70 60 Z" />
-      <!-- Compact keep, ending exactly at the mound's crown -->
-      <rect x="24" y="14" width="22" height="29" rx="1" />
-      <rect x="23" y="8" width="6" height="6" />
-      <rect x="32" y="8" width="6" height="6" />
-      <rect x="41" y="8" width="6" height="6" />
-      <!-- Arch door and narrow window slits -->
-      <path class="town-map-castle-opening" d="M 31 43 V 36 A 4 4 0 0 1 39 36 V 43 Z" />
-      <rect class="town-map-castle-opening" x="28" y="22" width="3" height="7" rx="1.5" />
-      <rect class="town-map-castle-opening" x="39" y="22" width="3" height="7" rx="1.5" />
-    </g>
-
-    <!-- 7. PLACE & LANDMARK LABELS -->
-    <!-- Dundrum label (Above the castle, clear of the pins) -->
-    <text class="town-map-label-town" x="1045" y="80" text-anchor="middle" data-map-town="Dundrum">Dundrum</text>
-
-    <!-- Newcastle label (Open land between the forest and the town pins) -->
-    <text class="town-map-label-town" x="86" y="428" data-map-town="Newcastle">Newcastle</text>
-
-    <!-- Irish Sea label (Outer deep sea water) -->
-    <text class="town-map-label-sea" x="620" y="645">Irish Sea</text>
-
-    <!-- Water feature labels sit in the water they name -->
-    <text class="town-map-label-water town-map-label-secondary" x="1025" y="340" text-anchor="middle">Dundrum Inner Bay</text>
-    <text class="town-map-label-water town-map-label-secondary" x="560" y="556" transform="rotate(-11 560 556)">Murlough Beach</text>
-
-    <!-- Mountain label (Beside the top of the range) -->
-    <text class="town-map-label-small town-map-label-secondary" x="104" y="44">the Mournes</text>
-
-    <!-- Tollymore Forest label (Above the tree rows, inside the forest edge) -->
-    <text class="town-map-label-small town-map-label-secondary" x="270" y="170" text-anchor="middle">Tollymore Forest</text>
-
-    <!-- 8. BUSINESS PINS -->
+    <span class="town-map-place town-map-place--dundrum" data-map-town="Dundrum">Dundrum</span>
+    <span class="town-map-place town-map-place--newcastle" data-map-town="Newcastle">Newcastle</span>
     {pins.map((item) => (
       <a
         href={item.href}
         class="town-map-pin"
-        aria-label={`${item.name}, ${item.town} — show the pin, then open the before-and-after`}
+        style={`--pin-x:${item.display.x}%;--pin-y:${item.display.y}%`}
+        aria-label={`${item.name}, ${item.town} — show details, then open the before-and-after`}
         data-map-business={item.slug}
         data-map-town-name={item.town}
       >
-        <g transform={`translate(${item.pin.x} ${item.pin.y})`}>
-          <circle class="town-map-pin-hit" r="28" />
-          <circle class="town-map-pin-ring" r="10" />
-          <circle class="town-map-pin-dot" r="4" />
-          <g class="town-map-pin-tip" aria-hidden="true">
-            <rect x={item.tipCardShift} y="-162" width={TIP_CARD_WIDTH} height="132" rx="10" />
-            <path d="M -8 -30 L 8 -30 L 0 -18 Z" />
-            <foreignObject x={item.tipCardShift + 16} y="-150" width={TIP_CARD_WIDTH - 32} height="108">
-              <div class="town-map-pin-tip-content">
-                <strong>{item.name}</strong>
-                <small>{item.category}</small>
-                <p>{item.summary}</p>
-                <span>Click again to view the full page →</span>
-              </div>
-            </foreignObject>
-          </g>
-        </g>
+        <span class="town-map-pin-dot" aria-hidden="true"></span>
+        <span class="town-map-pin-tip" aria-hidden="true">
+          <strong>{item.name}</strong>
+          <small>{item.category}</small>
+          <b>View the before-and-after →</b>
+        </span>
       </a>
     ))}
-  </svg>
-  <p class="town-map-note">Indicative map · not to scale</p>
+  </div>
+  <p class="town-map-note"><strong>AI-generated artwork</strong> · Indicative map, not to scale</p>
   <div class="town-map-index" aria-label="Businesses on the map">
     <p class="town-map-index-intro">A few places from each town. Choose one to see its before-and-after.</p>
     <div class="town-map-index-groups">
       {townGroups.map((group) => (
         <section class="town-map-index-group" aria-labelledby={`town-map-${group.town.toLowerCase()}`}>
-          <h3 id={`town-map-${group.town.toLowerCase()}`}>
-            {group.town}<span>{group.pins.length}</span>
-          </h3>
+          <h3 id={`town-map-${group.town.toLowerCase()}`}>{group.town}<span>{group.pins.length}</span></h3>
           <ul>
             {group.previewPins.map((item) => (
               <li>
-                <a
-                  href={item.href}
-                  data-map-business={item.slug}
-                  data-map-town-name={item.town}
-                >
-                  <span>{item.name}</span>
-                  <small>{item.category}</small>
-                  <p>{item.summary}</p>
+                <a href={item.href} data-map-business={item.slug} data-map-town-name={item.town}>
+                  <span>{item.name}</span><small>{item.category}</small><p>{item.summary}</p>
                 </a>
               </li>
             ))}
@@ -533,9 +102,7 @@ const bridges = [
         </section>
       ))}
     </div>
-    <a class="button button-secondary town-map-index-all" href="/transformations/">
-      Browse all {pins.length} website examples
-    </a>
+    <a class="button button-secondary town-map-index-all" href="/transformations/">Browse all {pins.length} website examples</a>
   </div>
   <p class="town-map-status" aria-live="polite" data-town-map-status></p>
 </div>
@@ -543,8 +110,8 @@ const bridges = [
 <script>
   document.querySelectorAll<HTMLElement>("[data-town-map]").forEach((map) => {
     const businesses = [...map.querySelectorAll<HTMLElement>("[data-map-business]")];
-    const townLabels = [...map.querySelectorAll<SVGElement>("[data-map-town]")];
-    const svg = map.querySelector<SVGElement>("[data-town-map-svg]");
+    const townLabels = [...map.querySelectorAll<HTMLElement>("[data-map-town]")];
+    const art = map.querySelector<HTMLElement>("[data-town-map-art]");
     const status = map.querySelector<HTMLElement>("[data-town-map-status]");
     const smallScreen = window.matchMedia("(max-width: 820px)");
     let selectedSlug = "";
@@ -566,30 +133,27 @@ const bridges = [
       });
       townLabels.forEach((label) => label.toggleAttribute("data-selected", label.dataset.mapTown === town));
       if (announce && status && selected) {
-        const name = selected.getAttribute("aria-label")?.split(",")[0]
-          ?? selected.querySelector("span")?.textContent?.trim()
-          ?? "Business";
-        status.textContent = `${name} selected. Tap the selected business again to open its before-and-after.`;
+        const name = selected.getAttribute("aria-label")?.split(",")[0] ?? selected.querySelector("span")?.textContent?.trim() ?? "Business";
+        status.textContent = `${name} selected. Activate it again to open its before-and-after.`;
       }
     };
 
     const syncSmallScreenSemantics = () => {
       const isSmall = smallScreen.matches;
-      svg?.setAttribute("aria-hidden", String(isSmall));
-      map.querySelectorAll<SVGAElement>(".town-map-pin").forEach((pin) => {
+      art?.setAttribute("aria-hidden", String(isSmall));
+      map.querySelectorAll<HTMLAnchorElement>(".town-map-pin").forEach((pin) => {
         if (isSmall) pin.setAttribute("tabindex", "-1");
         else pin.removeAttribute("tabindex");
       });
     };
 
-    map.querySelectorAll<SVGAElement>(".town-map-pin").forEach((pin) => {
+    map.querySelectorAll<HTMLAnchorElement>(".town-map-pin").forEach((pin) => {
       pin.addEventListener("click", (event) => {
         if (selectionLocked && selectedSlug === pin.dataset.mapBusiness) return;
         event.preventDefault();
         setSelection(pin.dataset.mapBusiness, true, true);
       });
     });
-
     map.querySelectorAll<HTMLAnchorElement>(".town-map-index-group a").forEach((link) => {
       link.addEventListener("click", (event) => {
         if (!smallScreen.matches || (selectionLocked && selectedSlug === link.dataset.mapBusiness)) return;
@@ -597,7 +161,6 @@ const bridges = [
         setSelection(link.dataset.mapBusiness, true, true);
       });
     });
-
     businesses.forEach((business) => {
       business.addEventListener("pointerenter", (event) => {
         if (event.pointerType === "touch" || selectionLocked) return;
@@ -608,20 +171,13 @@ const bridges = [
         setSelection();
       });
       business.addEventListener("focus", () => setSelection(business.dataset.mapBusiness));
-      business.addEventListener("blur", () => {
-        if (!selectionLocked) setSelection();
-      });
+      business.addEventListener("blur", () => { if (!selectionLocked) setSelection(); });
     });
-
     document.addEventListener("pointerdown", (event) => {
       if (!selectionLocked || (event.target instanceof Node && map.contains(event.target))) return;
       setSelection();
     });
-    map.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
-      setSelection();
-    });
-
+    map.addEventListener("keydown", (event) => { if (event.key === "Escape") setSelection(); });
     syncSmallScreenSemantics();
     smallScreen.addEventListener("change", syncSmallScreenSemantics);
   });
