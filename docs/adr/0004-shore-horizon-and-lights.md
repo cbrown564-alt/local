@@ -108,3 +108,19 @@ place with online ordering — and only three genuinely without one. One had
 closed its Newcastle shop twenty months before the census recorded it. The dark
 flag is wrong about two times in three, so a published map would be wrong about
 roughly a hundred real businesses in a town of 7,500.
+
+## Confidence decision (same day, after the verification pass)
+
+Recorded in
+`research/pipeline/census-confidence-decision-2026-08-05.md`.
+
+The four-step website hunt over every dark, mapped, trading row reduced
+unconfirmed dark-mapped rows to **0**. The publishable trading universe after
+reclass is **201** (96 lit, 85 dark-and-mapped). Darkness is roughly **half**
+of mapped traders (85 of 166), not “most”.
+
+**Website-status bar — `stage` is unblocked** for a dated aggregate count and
+anonymous lights over trading businesses with a joined verification object.
+Dark points stay unnamed and unhoverable. Weak trading confirmation is accepted
+for that aggregate claim only; it remains a pitch gate for outreach. The old
+claim wording (“most… no website”) is retired.

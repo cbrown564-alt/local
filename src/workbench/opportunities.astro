@@ -27,7 +27,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
           Shortlist <span data-shortlist-count>0</span>
         </button>
       </nav>
-      <p class="op-snapshot"><strong>379 records</strong><span>Snapshot · 17 July 2026</span></p>
+      <p class="op-snapshot"><strong>{businesses.length} records</strong><span>Select by gap class · score is triage only</span></p>
     </header>
 
     <div class="op-filterbar" id="opportunity-filters" aria-label="Filter opportunities">
@@ -61,6 +61,17 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
         </select>
       </label>
       <label>
+        <span>Gap class</span>
+        <select data-filter="gap">
+          <option value="">Any gap</option>
+          <option value="dead-site">Dead site</option>
+          <option value="first-website">First website</option>
+          <option value="platform-social">Platform / social only</option>
+          <option value="redesign">Redesign</option>
+          <option value="journey">Journey / feature</option>
+        </select>
+      </label>
+      <label>
         <span>Maps</span>
         <select data-filter="maps">
           <option value="">Any status</option>
@@ -71,9 +82,10 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       <label>
         <span>Sort</span>
         <select data-filter="sort">
-          <option value="priority">Priority (high)</option>
-          <option value="name">Business: A–Z</option>
           <option value="town">Town, then business</option>
+          <option value="name">Business: A–Z</option>
+          <option value="gap">Gap class</option>
+          <option value="priority">Score (triage aid)</option>
         </select>
       </label>
       <button class="op-clear" type="button" data-clear-filters>Clear filters</button>
@@ -96,8 +108,8 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
                 <th scope="col">Business</th>
                 <th scope="col">Town</th>
                 <th scope="col">Category</th>
-                <th scope="col">Priority</th>
-                <th scope="col">Gaps</th>
+                <th scope="col">Gap class</th>
+                <th scope="col" title="Triage aid only — select by gap class, not score">Score</th>
               </tr>
             </thead>
             <tbody data-results-body></tbody>
@@ -123,12 +135,12 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 
         <header class="op-detail-header">
           <div>
-            <p data-detail-position>Rank 1 of 379</p>
+            <p data-detail-position>1 of 373</p>
             <h2 id="detail-name" data-detail="name">Arley Guest House</h2>
-            <p><span data-detail="town">Dundrum</span><span aria-hidden="true"> · </span><span data-detail="category">Accommodation</span></p>
+            <p><span data-detail="town">Dundrum</span><span aria-hidden="true"> · </span><span data-detail="category">Accommodation</span><span aria-hidden="true"> · </span><span data-detail="gap-class">First website</span></p>
           </div>
-          <div class="op-priority">
-            <span>Priority</span>
+          <div class="op-priority" title="Triage aid only — not a shortlist threshold">
+            <span>Score</span>
             <strong data-detail="priority">81</strong>
           </div>
           <button type="button" class="op-shortlist-button" data-shortlist-toggle aria-pressed="false">
@@ -141,6 +153,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
           <section class="op-detail-section" aria-labelledby="facts-heading">
             <h3 id="facts-heading">What we know</h3>
             <dl class="op-facts">
+              <div><dt>Gap class</dt><dd data-detail="gap"></dd></div>
               <div><dt>Website</dt><dd data-detail="website"></dd></div>
               <div><dt>Maps</dt><dd data-detail="maps"></dd></div>
               <div><dt>Contact</dt><dd data-detail="contact"></dd></div>
@@ -234,7 +247,36 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       googleSearchUrl: string;
       priorityScore: number;
       priorityReason: string;
+      verification?: { digitalPresence?: string };
     };
+
+    const GAP_LABELS: Record<string, string> = {
+      "dead-site": "Dead site",
+      "first-website": "First website",
+      "platform-social": "Platform / social only",
+      redesign: "Redesign",
+      journey: "Journey / feature",
+    };
+
+    /** Heuristic triage labels from websiteStatus + verification text — not a scored model. */
+    function gapClass(business: Business): string {
+      const presence = (business.verification?.digitalPresence || "").toLowerCase();
+      const status = business.websiteStatus;
+      const deadSignal = /dead site|dns (does not|fail)|enotfound|connectyourdomain|econnrefused|no tls|parked domain|coming soon/.test(presence);
+      const platformSignal = /booksy|platform-only|platform only|social-only|social only|instagram only|facebook only|takes (bookings|orders) through/.test(presence);
+      const journeySignal = /journey|capability gap|booking (gap|widget|handoff)|maintained/.test(presence)
+        && /specific|feature|menu|hire|enquiry|guest.?diary|bookin/.test(presence);
+
+      if (deadSignal && (status === "No website found" || status === "HTTP website" || status === "HTTPS website")) {
+        return "dead-site";
+      }
+      if (status === "Social page only" || platformSignal) return "platform-social";
+      if (status === "HTTPS website" || status === "HTTP website") {
+        if (journeySignal) return "journey";
+        return "redesign";
+      }
+      return "first-website";
+    }
 
     type ResearchState = { note?: string; status?: string };
 
@@ -257,6 +299,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       town: root.querySelector<HTMLSelectElement>('[data-filter="town"]'),
       category: root.querySelector<HTMLSelectElement>('[data-filter="category"]'),
       website: root.querySelector<HTMLSelectElement>('[data-filter="website"]'),
+      gap: root.querySelector<HTMLSelectElement>('[data-filter="gap"]'),
       maps: root.querySelector<HTMLSelectElement>('[data-filter="maps"]'),
       sort: root.querySelector<HTMLSelectElement>('[data-filter="sort"]'),
     };
@@ -285,8 +328,9 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       const town = filters.town?.value || "";
       const category = filters.category?.value || "";
       const website = filters.website?.value || "";
+      const gap = filters.gap?.value || "";
       const maps = filters.maps?.value || "";
-      const sort = filters.sort?.value || "priority";
+      const sort = filters.sort?.value || "town";
 
       const rows = businesses.filter((business) => {
         const haystack = [business.name, business.town, business.category, business.subcategory, business.address, business.postcode]
@@ -297,6 +341,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
         if (website === "missing" && business.websiteStatus !== "No website found") return false;
         if (website === "social" && business.websiteStatus !== "Social page only") return false;
         if (website === "owned" && !["HTTP website", "HTTPS website"].includes(business.websiteStatus)) return false;
+        if (gap && gapClass(business) !== gap) return false;
         if (maps === "verified" && !business.googleMapsVerified) return false;
         if (maps === "unverified" && business.googleMapsVerified) return false;
         if (shortlistOnly && !shortlist.has(business.id)) return false;
@@ -305,17 +350,14 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 
       return rows.sort((a, b) => {
         if (sort === "name") return a.name.localeCompare(b.name, "en-GB");
-        if (sort === "town") return a.town.localeCompare(b.town, "en-GB") || a.name.localeCompare(b.name, "en-GB");
-        return b.priorityScore - a.priorityScore || a.name.localeCompare(b.name, "en-GB");
+        if (sort === "priority") return b.priorityScore - a.priorityScore || a.name.localeCompare(b.name, "en-GB");
+        if (sort === "gap") {
+          return gapClass(a).localeCompare(gapClass(b), "en-GB")
+            || a.town.localeCompare(b.town, "en-GB")
+            || a.name.localeCompare(b.name, "en-GB");
+        }
+        return a.town.localeCompare(b.town, "en-GB") || a.name.localeCompare(b.name, "en-GB");
       });
-    }
-
-    function gapLabels(business: Business) {
-      const gaps = [];
-      if (business.websiteStatus === "No website found") gaps.push(["Web", "No website found"]);
-      if (!business.googleMapsVerified) gaps.push(["Maps", "Maps listing needs verification"]);
-      if (!business.phone && !business.email) gaps.push(["Contact", "No contact found in reviewed sources"]);
-      return gaps;
     }
 
     function renderResults() {
@@ -329,13 +371,13 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       if (!body || !empty) return;
 
       body.innerHTML = visible.map((business) => {
-        const gaps = gapLabels(business);
+        const gap = gapClass(business);
         return `<tr class="${business.id === selectedId ? "is-selected" : ""}" data-business-row="${escapeHtml(business.id)}">
           <td><button type="button" class="op-row-select" data-select-business="${escapeHtml(business.id)}" ${business.id === selectedId ? 'aria-current="true"' : ""}><strong>${escapeHtml(business.name)}</strong><span>${escapeHtml(business.address || business.subcategory || "Public listing")}</span></button></td>
           <td>${escapeHtml(business.town)}</td>
           <td>${escapeHtml(business.category)}</td>
-          <td class="op-score">${business.priorityScore}</td>
-          <td><div class="op-gaps">${gaps.length ? gaps.map(([label, title]) => `<span title="${escapeHtml(title)}">${escapeHtml(label)}</span>`).join("") : '<span class="is-clear">Clear</span>'}</div></td>
+          <td>${escapeHtml(GAP_LABELS[gap] || gap)}</td>
+          <td class="op-score" title="Triage aid only">${business.priorityScore}</td>
         </tr>`;
       }).join("");
 
@@ -395,15 +437,21 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
         const node = root.querySelector<HTMLElement>(`[data-detail="${name}"]`);
         if (node) node.textContent = String(value);
       };
+      const gap = gapClass(business);
       setText("name", business.name);
       setText("town", business.town);
       setText("category", business.category);
+      setText("gap-class", GAP_LABELS[gap] || gap);
       setText("priority", business.priorityScore);
       setText("date", new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${business.sourceAsOf}T12:00:00`)));
       setText("confidence", business.dataConfidence);
 
       const position = root.querySelector<HTMLElement>("[data-detail-position]");
-      if (position) position.textContent = `Rank ${businesses.indexOf(business) + 1} of ${businesses.length}`;
+      if (position) position.textContent = `${businesses.indexOf(business) + 1} of ${businesses.length}`;
+      const gapDetail = root.querySelector<HTMLElement>('[data-detail="gap"]');
+      if (gapDetail) {
+        gapDetail.textContent = `${GAP_LABELS[gap] || gap} (heuristic — confirm before shortlist)`;
+      }
       const website = root.querySelector<HTMLElement>('[data-detail="website"]');
       if (website) website.innerHTML = business.website
         ? `<a href="${escapeHtml(business.website)}" target="_blank" rel="noreferrer">${escapeHtml(business.websiteStatus)} <span aria-hidden="true">↗</span></a>`
@@ -438,7 +486,9 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
       setLink("verify", action.url);
 
       const reason = root.querySelector<HTMLElement>("[data-selected-reason]");
-      if (reason) reason.textContent = business.priorityReason;
+      if (reason) {
+        reason.textContent = `${GAP_LABELS[gap] || gap} · score ${business.priorityScore} (triage aid)`;
+      }
       const saved = research[business.id] || {};
       const note = root.querySelector<HTMLTextAreaElement>("[data-research-note]");
       const status = root.querySelector<HTMLSelectElement>("[data-research-status]");
@@ -477,7 +527,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
     }
 
     function clearFilters() {
-      Object.values(filters).forEach((control) => { if (control) control.value = control === filters.sort ? "priority" : ""; });
+      Object.values(filters).forEach((control) => { if (control) control.value = control === filters.sort ? "town" : ""; });
       shortlistOnly = false;
       currentPage = 1;
       renderResults();

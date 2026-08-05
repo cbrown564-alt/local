@@ -141,5 +141,13 @@ decision is still not taken here.
 Franchise and entity-type misclassifications flagged in the sample and the
 verification pass were corrected the same day — see
 `verification-pass-status.md`. Trading universe after reclass: **201** rows
-(96 lit, 85 dark-and-mapped, all of those verified). The `Shore` `stage` scale
-stays held until the confidence decision is made explicitly.
+(96 lit, 85 dark-and-mapped, all of those verified).
+
+## Confidence decision (same day)
+
+Taken explicitly in `census-confidence-decision-2026-08-05.md`: **website-status
+bar**. Shore `stage` may publish a dated aggregate count and anonymous lights
+for dark ∩ mapped ∩ Trading rows that carry a verification object. Current
+figure **85 of 166** (~half) — never “most”. The audit’s hold on publishing
+from the *unverified* census stands; the verified set under that bar is now
+cleared to ship.

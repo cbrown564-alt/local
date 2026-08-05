@@ -77,7 +77,17 @@ Whether a trading business has a website of its own. Publishable only in
 aggregate, and only over trading businesses — never over raw census rows. A
 dark business is never named, labelled, linked or made hoverable. Saying a
 place is dark is an assertion about a real business that can be wrong, so it
-requires the same evidence as any other public claim.
+requires the same evidence as any other public claim. The publish bar for a
+dated count and anonymous map is the website-status decision in
+`research/pipeline/census-confidence-decision-2026-08-05.md`: Trading ∩ mapped
+rows whose website status was verified. Current honest shape is about half
+dark, not “most”.
+
+**Gap class**:
+The pitch shape that selects a prospect — dead site, first website,
+platform/social only, redesign, or journey/feature. Selection is by gap class,
+composition, and recorded evidence, not by priority score. See
+`docs/RESEARCH_METHOD.md`.
 
 **Prospect**:
 A trading business assessed for concept work, whatever stage it has reached.

@@ -109,13 +109,14 @@ Taken in order:
    picture, two rules, reads as inconsistency rather than as a system. A
    progress indicator that cannot be clicked, dragged, or read a position from
    is decoration in a control's costume.
-5. **`stage` is held until the census is verified.** See below — this is the
-   substantial finding of the session.
+5. **`stage` was held until the census was verified and a confidence bar
+   agreed.** Both landed 5 August 2026 (website-status bar). Build is still
+   pending — see phase 3b.
 6. **Nothing fires on request confirmation.** The intended moment — one more
    light comes on, for them — is a claim we have built them something. Held
    until a pilot completes, at which point it is true and can be revisited.
 
-### Why `stage` is held: the census is not a business list
+### Why `stage` was held: the census is not a business list
 
 The claim `stage` was to carry did not survive contact with
 `src/site/data/businesses.json`. Of the 379 rows, 281 are marked as having no
@@ -152,37 +153,17 @@ not softened*. The glossary gap that allowed it is now closed — `docs/CONTEXT.
 defines **Census**, **Trading business** and **Lit / dark**, and the term
 `Prospect` no longer points at an undefined "census".
 
-**Gate for `stage`:** a further research round refines the census to trading
-businesses and verifies website status as far as is possible digitally. Only
-then do we decide what level of confidence is required to publish a number and
-the locations. `stage` does not ship before that decision.
-
-**That round ran on 5 August 2026 —
-[`research/pipeline/census-audit-2026-08-05.md`](../research/pipeline/census-audit-2026-08-05.md).
-It closed the gate harder.** `tools/pipeline/census-class.mjs` now classifies
-every census row, which reduces the honest headline from "281 of 379" to **155
-trading businesses, mapped, flagged dark — 150 of them never confirmed**. A
-sample of 16 of those 150 was then checked against the open web:
-
-- **Ten of sixteen had a website the census missed**, among them a solicitor, a
-  vet, an optician, a shoe shop and a pizza place with online ordering.
-- Only three were genuinely without a site of their own, and one of those is
-  social-only, which is a different census status.
-- One had **closed its Newcastle shop twenty months before the census recorded
-  it**.
-- Two were national or regional chains typed as independents.
-- One name in the sample is corrupt and returns nothing at all.
-
-The dark flag is wrong roughly two times in three. The true dark count is
-plausibly nearer 50 than 155, and we do not know which 50. A published map
-would be wrong about roughly a hundred real businesses in a town of 7,500.
-
-**Unblocking it needs the full four-step pass from `docs/RESEARCH_METHOD.md`
-over all 229 trading businesses**, recorded in
-`research/pipeline/verifications.json` so the normaliser merges the
-corrections. The confidence question — what proportion must be confirmed before
-a number and locations may be published — is worth asking only after that. The
-current proportion is 7 of 155.
+**Gate for `stage` (opened 5 August 2026).** The census audit
+([`census-audit-2026-08-05.md`](../research/pipeline/census-audit-2026-08-05.md))
+showed the dark flag was wrong about two times in three on an unverified sample.
+The four-step pass then cleared every dark, mapped, trading row
+([`verification-pass-status.md`](../research/pipeline/verification-pass-status.md)).
+The confidence decision
+([`census-confidence-decision-2026-08-05.md`](../research/pipeline/census-confidence-decision-2026-08-05.md))
+adopts the **website-status bar**: publish a dated aggregate and anonymous
+lights over Trading ∩ mapped ∩ dark rows that carry a verification object.
+Current figure **85 of 166** (~half) — never “most”, never raw census rows,
+never a named or hoverable dark point.
 
 **Gate for `band`:** none. It carries no claim. Build it.
 
@@ -311,7 +292,8 @@ fake, stop at one and do not roll it out.
 ## Phase 3 — 01 + 04 Shore (Ridgeline and Lights)
 
 Phase 0 is resolved (ADR 0004). This phase now splits: **3a `band` is
-unblocked; 3b `stage` is held behind the census work.**
+unblocked; 3b `stage` is unblocked under the website-status bar** (confidence
+decision 5 August 2026) — build still pending.
 
 **Build — 3a, `band`.**
 
@@ -332,14 +314,16 @@ unblocked; 3b `stage` is held behind the census work.**
   text are untouched by either.
 - The canvas is `aria-hidden` and adds nothing to the accessibility tree.
 
-**Build — 3b, `stage`.** Held. When the gate opens:
+**Build — 3b, `stage`.** Gate open. Claim constraints from the confidence
+decision:
 
 1. Business points arrive as a JSON script tag from the page, and only the
    fields the picture needs (`lat`, `lon`, `lit`). Never the names.
 2. Points are **trading businesses** only, as defined in `docs/CONTEXT.md` —
-   never raw census rows.
+   never raw census rows. Dark lights are the verified dark ∩ mapped subset.
 3. `Shore.astro` at `stage` renders the canvas plus the real prose claim beside
-   it, carrying the review date.
+   it, carrying the review date. Wording is the dated fraction (currently
+   85 of 166) or “about half” — never “most”.
 
 **Acceptance — 3b.**
 
@@ -447,7 +431,7 @@ wave.
 | 1 | 03 Rebuild | ~~None~~ **built 5 August 2026** |
 | 2 | 05 Voice | Phase 1 shipped and stable |
 | 3a | `Shore` `band` | None — Phase 0 is resolved and the band carries no claim |
-| 3b | `Shore` `stage` | Census verified to trading businesses, **and** a confidence bar agreed for publishing a number and locations |
+| 3b | `Shore` `stage` | ~~Census verified + confidence bar~~ **unblocked 5 August 2026** (website-status bar; see confidence decision) — build pending |
 | 4 | 07 Film | A business has agreed, in writing, to a generated film of itself |
 | 5a | 02 Depth stills | Phases 1–3 shipped |
 | 5b | 02 Splat capture | A business worth the trip has agreed |

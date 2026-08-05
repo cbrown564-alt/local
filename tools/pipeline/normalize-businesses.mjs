@@ -27,8 +27,11 @@ const aliases = new Map([
   ["castle corrigs house", "castlecorrigs house bed and breakfast"],
   ["coco s adventure playground", "cocos"],
   // Cookie Jar Unit 4 and Cookie Jar at 121 Main Street are distinct FSA
-  // premises — do not alias them together.
+  // premises — do not alias them together. The census row at 121 Main Street
+  // is titled "The Cookie Jar"; its verification is "Cookie Jar - Mourne and Bread".
+  ["the cookie jar", "cookie jar mourne and bread"],
   ["crystal clean", "cryral clean"],
+  ["donard veterinary clinic", "donard veterinary centre"],
   ["deja vu", "deja vu hair company"],
   ["dominic mcinerney solicitors", "dominic mcinerney"],
   ["donard dental laboratories", "donard dental laboratory"],
@@ -37,7 +40,9 @@ const aliases = new Map([
   ["funland newcastle", "fun land"],
   ["the gadget xchange", "gadget exchange"],
   // Hale's (20 Main Street shop) and Hales Fruit Wholesale (Dundrum Road)
-  // stay distinct census rows even when they share a company name.
+  // stay distinct census rows even when they share a company name. The census
+  // company name for the Main Street shop is "Hales Fruit Sales Limited".
+  ["hales fruit sales limited", "hale s"],
   ["herrons country fried chicken", "herron s fried chicken"],
   ["hillen architects", "hillen"],
   ["home instead care agency", "home instead care agecy"],
@@ -376,6 +381,10 @@ for (const group of grouped.values()) {
     base.dataConfidence = verified.sources?.length
       ? `Verified against public sources on ${verified.verifiedOn}; trading status: ${verified.tradingStatus}`
       : `Verified on ${verified.verifiedOn} by local first-hand report, no public source; trading status: ${verified.tradingStatus}`;
+  } else if (/^Verified\b/.test(base.dataConfidence ?? "")) {
+    // A prior join wrote a Verified confidence line; if the key no longer
+    // matches (rename without alias), do not keep the claim without the object.
+    base.dataConfidence = "Public listing; ownership and trading status not independently confirmed";
   }
   base.category = normalizedCategory(base.category);
   base.websiteStatus = websiteState(base.website);

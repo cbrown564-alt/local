@@ -77,14 +77,24 @@ independent trading count via `tools/pipeline/census-class.mjs`:
 Publishable trading universe after reclass: **201** (96 lit / 85 dark-and-mapped,
 all verified). Unconfirmed dark remains **0**.
 
+## Confidence decision
+
+Taken the same day — `census-confidence-decision-2026-08-05.md`. Website-status
+bar unlocks Shore `stage` for a dated **85 of 166** aggregate and anonymous
+lights. Join-key orphans (Cookie Jar / Hale's / Donard Veterinary Clinic) were
+re-aliased so every dark-mapped trading row carries a verification object;
+`report-census-class.mjs` now counts confirmation by joined object, not by a
+stale confidence string.
+
 ## Do not
 
-- Publish a count or a map of dark points without an explicit confidence
-  decision — the blocking verification gap is closed, but the audit still
-  leaves that decision open.
+- Publish a raw-census count, or say “most” when the honest figure is about half.
+- Name, label, or make hoverable any dark point.
 - Read FSA absence as closure, or a fetch failure on one day as a dead site
   (`mackensbar.co.uk` DNS-failed the probe while still indexed and advertised).
 - Write a first-hand "still open" into `verifications.json` as though the full
   protocol had run. Record first-hand *closures* only.
 - Alias distinct premises that share a name (two Cookie Jars, Hale's vs Hales
   Wholesale).
+- Treat weak trading confirmation as enough for a dead-site or OSM-only *pitch*
+  — that gate is stricter than the aggregate publish bar.

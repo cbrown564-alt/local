@@ -61,8 +61,13 @@ console.log(`  dark                 ${trading.filter((r) => !lit(r)).length}`);
 console.log(`  placeable on a map   ${mapped.length}`);
 console.log(`    of those, dark     ${mapped.filter((r) => !lit(r)).length}`);
 
-const unconfirmed = mapped.filter(
-  (r) => !lit(r) && /^Public listing|^Local directory listing/.test(r.dataConfidence ?? ""),
-);
+// Independently confirmed means a joined verification object, not a leftover
+// Verified-looking dataConfidence string after a rename orphaned the join.
+const unconfirmed = mapped.filter((r) => !lit(r) && !r.verification);
 console.log(`\nDark, mapped, trading — but never independently confirmed: ${unconfirmed.length}`);
-console.log("This is the number the verification round has to reduce.");
+console.log("This is the number the verification round has to reduce (no verification object).");
+if (unconfirmed.length) {
+  for (const row of unconfirmed) {
+    console.log(`  - ${row.town}: ${row.name}`);
+  }
+}

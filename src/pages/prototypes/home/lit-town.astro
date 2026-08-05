@@ -2,27 +2,21 @@
 import BaseLayout from "../../../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../../../site/components/ArrowIcon.astro";
 import businesses from "../../../site/data/businesses.json";
+import { isTradingBusiness } from "../../../../tools/pipeline/census-class.mjs";
 
-// Every figure on this page is computed from the dataset so it can never
-// drift from `src/site/data/businesses.json`.
-const total = businesses.length;
-const noSite = businesses.filter(
-  (b) => b.websiteStatus === "No website found",
-).length;
-const points = businesses.flatMap((b) =>
+// Prototype only (noindex). Counts follow the website-status publish bar:
+// Trading businesses, mapped points, never raw census rows. See
+// research/pipeline/census-confidence-decision-2026-08-05.md.
+const trading = businesses.filter((b) => isTradingBusiness(b));
+const isLit = (b: (typeof businesses)[number]) =>
+  b.websiteStatus === "HTTPS website" || b.websiteStatus === "HTTP website";
+const points = trading.flatMap((b) =>
   typeof b.lat === "number" && typeof b.lon === "number"
-    ? [
-        {
-          lat: b.lat,
-          lon: b.lon,
-          lit:
-            b.websiteStatus === "HTTPS website" ||
-            b.websiteStatus === "HTTP website",
-        },
-      ]
+    ? [{ lat: b.lat, lon: b.lon, lit: isLit(b) }]
     : [],
 );
 const plotted = points.length;
+const darkMapped = points.filter((p) => !p.lit).length;
 const litCount = points.filter((p) => p.lit).length;
 ---
 
@@ -75,9 +69,9 @@ const litCount = points.filter((p) => p.lit).length;
     <div class="lt-copy">
       <p class="lt-kicker">Dundrum + Newcastle, County Down</p>
       <p class="lt-brand" aria-label="Mourne Made"><span>Mourne</span><span class="wordmark-amp">Made</span></p>
-      <h1>Where the mountains sweep down to the sea, most businesses are still in the dark online.</h1>
+      <h1>Where the mountains sweep down to the sea, about half the independent traders we mapped still have no site of their own.</h1>
       <p class="lt-count" aria-live="polite">
-        <strong>{noSite} of {total}</strong> local businesses we reviewed have no website of their own.
+        <strong>{darkMapped} of {plotted}</strong> mapped independent traders have no website of their own.
       </p>
       <div class="button-row lt-actions">
         <a class="button" href="/request/">Light yours — free before-and-after <ArrowIcon /></a>
@@ -94,9 +88,10 @@ const litCount = points.filter((p) => p.lit).length;
     </div>
 
     <p class="lt-honesty">
-      Real terrain from open elevation data. {plotted} of the {total} reviewed
-      businesses shown at their public map coordinates ({litCount} with a
-      website, July 2026). Lighting follows your local time. Sound, when on,
+      Real terrain from open elevation data. {plotted} mapped independent
+      traders at their public coordinates ({litCount} with a website,
+      {darkMapped} without — August 2026 verification pass). Prototype only;
+      not the live homepage. Lighting follows your local time. Sound, when on,
       is synthesised in your browser — no recording plays.
     </p>
 

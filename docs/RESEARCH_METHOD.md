@@ -20,9 +20,42 @@ Public website, email, phone, address, social profile, and location fields are t
 
 Google ratings and review counts are blank unless directly observed on the Maps listing. A blank metric means “not collected”, not zero.
 
-## Priority model
+## Publish bar for aggregate lit/dark claims
 
-The initial ranking is a prospecting aid, not a claim about revenue or ownership.
+Shore `stage` and any public count of darkness use the **website-status bar**
+recorded in `research/pipeline/census-confidence-decision-2026-08-05.md`:
+Trading businesses only; dated fraction of mapped rows with no owned site;
+anonymous lights; never “most” when the figure is about half; never raw census
+rows. Confirmation means a joined `verification` object after the four-step
+pass — not a leftover confidence string.
+
+## Selection model (gap class)
+
+Shortlisting is a human decision (`docs/CONTEXT.md`). The priority score is a
+**secondary sort inside a filtered bucket**, not the selector.
+
+**Selector = gap class → composition → gates → dated selection record.**
+
+| Gap class | Signal | Pitch shape |
+|---|---|---|
+| Dead site | Listed domain DNS/TLS/builder-dead; business still trading | Restore / replace |
+| First website | No owned site; not platform-booked | First owned surface |
+| Platform / social only | Bookings or presence on Instagram/Booksy/etc., no owned site | Own the handoff |
+| Redesign | Live owned site, dated or weak | Rebuild identity/structure |
+| Journey / feature | Maintained site with a specific capability gap | One journey fix |
+
+**Pre-select gates:** Trading class only; closed zeroed; alias-deduped; not
+already published/contacted/held without unblock; dead-site and OSM-only need
+trading evidence before selection; probe listed domains (one-day fetch failure
+is not “dead”).
+
+**Composition** is chosen per batch and written into a dated
+`research/pipeline/batch-*-selection.md` (town mix, category novelty, gap mix).
+
+## Priority score (triage aid only)
+
+Kept as a within-bucket sort. Not a claim about revenue or ownership, and not
+a shortlist threshold.
 
 - Digital need: missing website, social-only presence, HTTP-only website, missing public email/phone, and an unverified Maps record.
 - Payment likelihood: organisation type, category fit for visual digital work, and evidence of established public contact channels.

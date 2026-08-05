@@ -49,8 +49,11 @@ const aliases = new Map([
   ["castle corrigs house", "castlecorrigs house bed and breakfast"],
   ["coco s adventure playground", "cocos"],
   // Cookie Jar Unit 4 and Cookie Jar at 121 Main Street are distinct FSA
-  // premises — do not alias them together.
+  // premises — do not alias them together. The census row at 121 Main Street
+  // is titled "The Cookie Jar"; its verification is "Cookie Jar - Mourne and Bread".
+  ["the cookie jar", "cookie jar mourne and bread"],
   ["crystal clean", "cryral clean"],
+  ["donard veterinary clinic", "donard veterinary centre"],
   ["deja vu", "deja vu hair company"],
   ["dominic mcinerney solicitors", "dominic mcinerney"],
   ["donard dental laboratories", "donard dental laboratory"],
@@ -59,7 +62,9 @@ const aliases = new Map([
   ["funland newcastle", "fun land"],
   ["the gadget xchange", "gadget exchange"],
   // Hale's (20 Main Street shop) and Hales Fruit Wholesale (Dundrum Road)
-  // stay distinct census rows even when they share a company name.
+  // stay distinct census rows even when they share a company name. The census
+  // company name for the Main Street shop is "Hales Fruit Sales Limited".
+  ["hales fruit sales limited", "hale s"],
   ["herrons country fried chicken", "herron s fried chicken"],
   ["hillen architects", "hillen"],
   ["home instead care agency", "home instead care agecy"],
