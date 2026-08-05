@@ -112,3 +112,14 @@ Only then is the confidence question worth asking: what proportion of the set
 must be independently confirmed before a number and a map of locations may be
 published? That decision is deliberately left open here — this audit exists to
 show that the current proportion, **7 of 155**, is not a candidate answer.
+
+## Progress against that (5 August 2026, later the same day)
+
+Steps 1 and 2 of the four are now scripted and have been run over the whole
+set — see `verification-pass-status.md` for state and
+`docs/RESEARCH_METHOD.md` for what the tools may and may not be read as saying.
+Steps 3 and 4 stand at 9 of 204, and six of those nine had a website the census
+called absent: the two-in-three finding above holds on a fresh sample.
+
+Unconfirmed dark rows: **150 → 141**. The conclusion is unchanged — no count,
+no map — and the `Shore` `stage` scale stays held.
