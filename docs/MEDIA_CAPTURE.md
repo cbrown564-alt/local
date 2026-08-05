@@ -394,5 +394,6 @@ Journey films additionally:
 | hotel-enniskeen | 31 Jul 2026 | after still & clip, Dine companion still, 76.9 s flagship reel + 50.7 s outreach, poster, onesheet | Cookie bar → clicked "I Consent"; concept overlays none | Dine beat opens on on-page Honey afternoon tea; Things to do scrolls to Royal County Down golf image; case-study dine copy updated off PDF-only wording |
 | public portfolio (16) | 1 Aug 2026 | before+after stills & clips where configured; all second surfaces; Enniskeen reel + outreach; Buck's Head journey | Per-site overlay pass; first-website befores skipped (no live site) | Full recapture after elevation work. Scopers journey blocked on Instagram login-wall Close control (live UI drift). Capture tool gained paint-nudge for single-screen after demos |
 | painted-earth | 1 Aug 2026 | before+after still & clip; originals after still | Cookie/decline + close dialog on live Shopify | Capture config added; representative retail prototype remains internal/noindex |
+| kelly-mcevoy-brown | 5 Aug 2026 | after still & clip | none on concept | First viewport recapture after the elevation: the fifty-three-year arc joined the kicker, and the drawn patch plate and evidence pack landed below; before side unchanged |
 
 (Log rows are added in the same commit as each recapture.)

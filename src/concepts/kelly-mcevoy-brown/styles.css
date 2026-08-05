@@ -1,6 +1,8 @@
 /* Kelly, McEvoy & Brown — independent concept identity.
    The firm's yellow-and-grey mark and its own project photography lead.
-   The filterable register remains the useful structural change. */
+   The filterable register remains the useful structural change; the drawn
+   patch plate above it is the record shown as a territory, and its pins
+   answer the same sector chips the register does. */
 
 body.concept-kmb {
   --kmb-yellow: #eabe22;
@@ -327,6 +329,388 @@ body.concept-kmb {
   color: #deded9;
 }
 
+/* The patch plate. A hand-drawn plate in the firm's own yellow-and-grey:
+   sector-keyed pins, a penned coast and border, and a cartouche that carries
+   the arc. The plate's svg scales with the card; on phones it keeps a
+   readable minimum width and pans instead of shrinking past legibility. */
+
+.kmb-patch {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(240px, 1fr);
+  gap: clamp(18px, 3vw, 34px);
+  padding: clamp(18px, 3vw, 34px);
+  border-bottom: 1px solid var(--kmb-line);
+}
+
+.kmb-map {
+  --map-paper: #f6f2dd;
+  --map-rule: var(--kmb-charcoal);
+  --map-accent: var(--kmb-ink);
+
+  align-self: start;
+  min-width: 0;
+}
+
+.kmb-map figcaption {
+  margin-top: 8px;
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .05em;
+  color: var(--kmb-mid);
+}
+
+.kmb-map-coast {
+  fill: none;
+  stroke: var(--kmb-charcoal);
+  stroke-opacity: .55;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.kmb-map-water {
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  fill: var(--kmb-mid);
+}
+
+.kmb-map-hills path {
+  fill: none;
+  stroke: var(--kmb-charcoal);
+  stroke-opacity: .4;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.kmb-map-hills-label {
+  font-family: "Martian Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  fill: var(--kmb-mid);
+}
+
+.kmb-map-border {
+  fill: none;
+  stroke: var(--kmb-charcoal);
+  stroke-opacity: .5;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1 8;
+}
+
+.kmb-map-border-label {
+  font-family: "Martian Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: .18em;
+  fill: var(--kmb-mid);
+}
+
+.kmb-map-cartouche-title {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  fill: var(--kmb-ink);
+}
+
+.kmb-map-cartouche-sub {
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  fill: var(--kmb-charcoal);
+}
+
+.kmb-map-cartouche-rule {
+  stroke: var(--kmb-charcoal);
+  stroke-opacity: .5;
+  stroke-width: 1;
+}
+
+.kmb-map-compass-n {
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+}
+
+.kmb-map-pin {
+  transition: opacity 160ms ease;
+}
+
+.kmb-map-pin-halo {
+  fill: var(--kmb-yellow-bright);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.kmb-map-glyph {
+  fill: none;
+  stroke: var(--kmb-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.kmb-map-glyph--disc { fill: var(--kmb-ink); stroke: none; }
+.kmb-map-glyph--ring { fill: none; }
+
+.kmb-map-pin-label {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--kmb-ink);
+}
+
+.kmb-map-pin-sub {
+  font-family: "Martian Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .04em;
+  fill: var(--kmb-mid);
+}
+
+/* The sector chips light the plate exactly as they filter the register:
+   matching pins come up on the firm's yellow, the rest fall back. With no
+   JavaScript the attribute never changes and every pin stays lit. */
+.kmb-patch[data-active-sector="Ecclesiastical"] .kmb-map-pin:not([data-sector="Ecclesiastical"]),
+.kmb-patch[data-active-sector="Healthcare"] .kmb-map-pin:not([data-sector="Healthcare"]),
+.kmb-patch[data-active-sector="Education"] .kmb-map-pin:not([data-sector="Education"]),
+.kmb-patch[data-active-sector="Residential"] .kmb-map-pin:not([data-sector="Residential"]),
+.kmb-patch[data-active-sector="Leisure"] .kmb-map-pin:not([data-sector="Leisure"]),
+.kmb-patch[data-active-sector="Commercial"] .kmb-map-pin:not([data-sector="Commercial"]) {
+  opacity: .16;
+}
+
+.kmb-patch[data-active-sector="Ecclesiastical"] .kmb-map-pin[data-sector="Ecclesiastical"] .kmb-map-pin-halo,
+.kmb-patch[data-active-sector="Healthcare"] .kmb-map-pin[data-sector="Healthcare"] .kmb-map-pin-halo,
+.kmb-patch[data-active-sector="Education"] .kmb-map-pin[data-sector="Education"] .kmb-map-pin-halo,
+.kmb-patch[data-active-sector="Residential"] .kmb-map-pin[data-sector="Residential"] .kmb-map-pin-halo,
+.kmb-patch[data-active-sector="Leisure"] .kmb-map-pin[data-sector="Leisure"] .kmb-map-pin-halo,
+.kmb-patch[data-active-sector="Commercial"] .kmb-map-pin[data-sector="Commercial"] .kmb-map-pin-halo {
+  opacity: .85;
+}
+
+.kmb-patch-unplaced li {
+  transition: opacity 160ms ease;
+}
+
+.kmb-patch[data-active-sector="Ecclesiastical"] .kmb-patch-unplaced li:not([data-sector="Ecclesiastical"]),
+.kmb-patch[data-active-sector="Healthcare"] .kmb-patch-unplaced li:not([data-sector="Healthcare"]),
+.kmb-patch[data-active-sector="Education"] .kmb-patch-unplaced li:not([data-sector="Education"]),
+.kmb-patch[data-active-sector="Residential"] .kmb-patch-unplaced li:not([data-sector="Residential"]),
+.kmb-patch[data-active-sector="Leisure"] .kmb-patch-unplaced li:not([data-sector="Leisure"]),
+.kmb-patch[data-active-sector="Commercial"] .kmb-patch-unplaced li:not([data-sector="Commercial"]) {
+  opacity: .3;
+}
+
+.kmb-patch-side h3 {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.kmb-patch-side > p {
+  margin: 10px 0 0;
+  max-width: 38ch;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--kmb-charcoal);
+}
+
+.kmb-patch-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 16px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--kmb-line);
+  list-style: none;
+}
+
+.kmb-patch-key li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--kmb-charcoal);
+}
+
+.kmb-patch-key svg {
+  width: 14px;
+  height: 14px;
+}
+
+.kmb-patch-unplaced {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--kmb-line);
+  border-left: 3px solid var(--kmb-yellow);
+}
+
+.kmb-patch-unplaced h4 {
+  margin: 0;
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--kmb-charcoal);
+}
+
+.kmb-patch-unplaced > p {
+  margin: 7px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--kmb-mid);
+}
+
+.kmb-patch-unplaced ul {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kmb-patch-unplaced li {
+  padding: 7px 0;
+  border-top: 1px solid var(--kmb-line);
+}
+
+.kmb-patch-unplaced-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.kmb-patch-unplaced-sector {
+  display: block;
+  margin-top: 2px;
+  font-family: "Martian Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--kmb-mid);
+}
+
+.kmb-patch-read {
+  margin: 16px 0 0;
+  font-family: "Martian Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .04em;
+  line-height: 1.6;
+  color: var(--kmb-mid);
+}
+
+/* The evidence pack: the accreditation wall told as what it is for a client
+   checking a contractor, beside the firm's own enquiry route. */
+
+.kmb-evidence {
+  display: grid;
+  grid-template-columns: minmax(220px, .9fr) minmax(0, 1.5fr) minmax(220px, .8fr);
+  gap: clamp(20px, 3.5vw, 46px);
+  max-width: 1180px;
+  margin: clamp(28px, 4vw, 54px) auto 0;
+  padding: clamp(24px, 3.5vw, 42px) clamp(20px, 3vw, 40px);
+  background: var(--kmb-charcoal);
+  color: var(--kmb-white);
+}
+
+.kmb-evidence-kicker {
+  margin: 0 0 10px;
+  font-family: "Martian Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--kmb-yellow-bright);
+}
+
+.kmb-evidence-head h2 {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.kmb-evidence-head p:not(.kmb-evidence-kicker) {
+  margin: 12px 0 0;
+  max-width: 34ch;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #deded9;
+}
+
+.kmb-evidence-marks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  background: #737370;
+  border: 1px solid #737370;
+  list-style: none;
+}
+
+.kmb-evidence-marks li {
+  padding: 13px 15px;
+  background: var(--kmb-charcoal);
+}
+
+.kmb-evidence-marks strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.kmb-evidence-marks span {
+  display: block;
+  margin-top: 4px;
+  font-family: "Martian Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .04em;
+  line-height: 1.5;
+  color: var(--kmb-yellow-bright);
+}
+
+.kmb-evidence-contact {
+  align-self: center;
+  text-align: right;
+}
+
+.kmb-evidence-contact p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #deded9;
+}
+
+.kmb-evidence-routes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.kmb-evidence-phone {
+  color: var(--kmb-yellow-bright);
+  font-size: 19px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.kmb-evidence-email {
+  color: var(--kmb-white);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kmb-evidence-phone:hover,
+.kmb-evidence-email:hover { color: var(--kmb-yellow); }
+
 .kmb-projects { margin: 0; padding: 0; list-style: none; }
 
 .kmb-project {
@@ -382,8 +766,13 @@ body.concept-kmb {
 @media (max-width: 940px) {
   .kmb-lede { grid-template-columns: 1fr; }
   .kmb-lede-image { min-height: 390px; }
-  .kmb-index { margin-inline: 16px; }
+  .kmb-index,
+  .kmb-evidence { margin-inline: 16px; }
   .kmb-nav { display: none; }
+  .kmb-patch { grid-template-columns: 1fr; }
+  .kmb-evidence { grid-template-columns: 1fr; }
+  .kmb-evidence-contact { text-align: left; }
+  .kmb-evidence-routes { align-items: flex-start; }
 }
 
 @media (max-width: 520px) {
@@ -397,12 +786,21 @@ body.concept-kmb {
   .kmb-accred { padding-inline: 12px; }
   .kmb-accred span { padding: 10px 8px; font-size: 8px; }
   .kmb-index-head { align-items: start; flex-direction: column; gap: 14px; }
+  .kmb-patch { padding: 14px; }
+  /* The plate keeps a legible minimum width on phones and pans horizontally
+     rather than shrinking its labels past reading. */
+  .kmb-map { overflow-x: auto; }
+  .kmb-map-plate { width: 620px; max-width: none; }
   .kmb-project-media { grid-template-columns: 1fr; }
   .kmb-project-media figure { min-height: 230px; }
   .kmb-project { grid-template-columns: 1fr; }
   .kmb-project-sector { margin-top: 2px; }
+  .kmb-evidence { padding: 22px 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .kmb-project-media img { transition: none; }
+  .kmb-map-pin,
+  .kmb-map-pin-halo,
+  .kmb-patch-unplaced li { transition: none; }
 }

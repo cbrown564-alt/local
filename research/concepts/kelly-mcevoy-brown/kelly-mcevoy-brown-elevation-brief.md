@@ -9,15 +9,32 @@ any build comes quietly second — the concept has spent two repair cycles
 in ten days and does not need a third surprise — and the imagery lever is
 blocked, which caps the theatre the brief may honestly promise.
 
-**Status: written 4 August 2026; not yet implemented.** The current
-concept passed publication on 3 August 2026 after both blockers cleared:
-it carries the firm's own mark, the yellow-and-grey palette, two
-source-matched project photographs, all thirteen published projects in
-one sector-filterable register, and the firm's own published phone and
-email. That is a competent page. What it does not yet do is show the
-shape of the work — fifty-three years as a body, spread across a patch —
-which is the one thing the firm's own site, for all its photography,
-cannot do either.
+**Status: moves 1–4 landed 5 August 2026.** The arc is made visible
+(Established 1973 · Fifty-three years · Six sectors beside the firm's own
+line), the tender ritual is staged as the evidence pack — five marks with
+their plain-English procurement weights beside the firm's own phone and
+email — and the patch plate is drawn and pinned: eleven published places
+sector-keyed on a hand-drawn plate, the two unplaced projects beside it,
+"indicative · not a survey" on the caption, and the sector chips lighting
+map and register together with the full record as the no-JS state. The
+flagged `afterAlt` repair was already landed when this pass began; the
+clip has since been recaptured, so `afterAlt` now describes the map it
+shows. Pinned by `tools/test/test-kelly-mcevoy-brown-elevation.mjs`
+(drawing-number scan, pin grounding, one-date rule, filter–map
+consistency, no-JS full record); the plate passed the 390px label review;
+the after still and clip were recaptured in the same pass. The one-sheet
+with the map on its reverse is deliberately not built — the open decision
+below on whether it precedes first outreach stands. The concept is not
+validated: no owner or representative visitor has supplied that evidence.
+
+The current concept passed publication on 3 August 2026 after both
+blockers cleared: it carries the firm's own mark, the yellow-and-grey
+palette, two source-matched project photographs, all thirteen published
+projects in one sector-filterable register, and the firm's own published
+phone and email. That is a competent page. What it did not yet do was
+show the shape of the work — fifty-three years as a body, spread across a
+patch — which is the one thing the firm's own site, for all its
+photography, cannot do either. The patch plate now does that.
 
 ## The shape of this business
 

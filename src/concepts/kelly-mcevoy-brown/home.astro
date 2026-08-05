@@ -2,19 +2,16 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import MapPlate from "../_shell/MapPlate.astro";
+import MapCompass from "../_shell/MapCompass.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { evidenceMarks, patchPins, sectorGlyphs, sectors, unplacedProjects } from "./record";
 
 // Real projects and sectors from kmbni.com, 24 July 2026. Names and sector
 // groupings match the site's link lists; places are taken only from the site
-// text — nothing inferred beyond it.
-const sectors = [
-  { key: "Ecclesiastical" },
-  { key: "Healthcare" },
-  { key: "Education" },
-  { key: "Residential" },
-  { key: "Leisure" },
-  { key: "Commercial" },
-];
+// text — nothing inferred beyond it. The patch plate in ./record.ts follows
+// the same rule: pins only where the site text or a project name carries the
+// place, the two unplaced projects beside the plate, never on it.
 const projects = [
   { name: "Saint Patrick's & Saint Ronan's", place: "Magheralin", sector: "Ecclesiastical" },
   { name: "Our Lady of the Angels", place: "Dechomet", sector: "Ecclesiastical" },
@@ -87,7 +84,7 @@ const projectPhotography = [
     <section class="kmb-lede">
       <div class="kmb-lede-copy">
         <p class="kmb-titleblock">
-          <span>Established 1973</span><span>Six sectors</span>
+          <span>Established 1973</span><span>Fifty-three years</span><span>Six sectors</span>
         </p>
         <h1>Build on<br />experience.</h1>
         <p class="kmb-body">
@@ -136,6 +133,118 @@ const projectPhotography = [
         ))}
       </div>
 
+      <!-- The essence made visible: the record as a territory. A hand-drawn
+           plate, sector-keyed; the sector chips above light its pins exactly
+           as they filter the register below. With JavaScript off, every pin
+           and every row shows — the full record is the default state. -->
+      <div class="kmb-patch" data-patch data-active-sector="all">
+        <MapPlate
+          id="kmb-map"
+          viewBox="0 0 760 600"
+          title="The patch — a map of completed work"
+          desc="A drawn map of the firm's patch with eleven published places pinned: Magheralin and Dechomet in the north, Rathfriland, Castlewellan, Dundrum, Newry and Saintfield across the middle, and Crossmaglen, Culloville and Hacksballscross in the south-west."
+        >
+          <path
+            class="kmb-map-coast"
+            d="M726 30 C700 92, 742 158, 716 228 C696 286, 724 344, 692 402 C676 434, 682 478, 664 520"
+          />
+          <text class="kmb-map-water" transform="rotate(-79 706 430)" x="706" y="430">Dundrum Bay</text>
+          <g class="kmb-map-hills" aria-hidden="true">
+            <path d="M548 396l11-15 11 15" />
+            <path d="M576 408l12-16 12 16" />
+            <path d="M604 392l10-14 10 14" />
+            <path d="M566 428l10-13 10 13" />
+            <path d="M622 420l11-15 11 15" />
+          </g>
+          <text class="kmb-map-hills-label" x="600" y="452" text-anchor="middle">the Mournes</text>
+          <path class="kmb-map-border" d="M28 428 C120 412, 210 436, 300 448 C352 456, 356 500, 340 556" />
+          <text class="kmb-map-border-label" x="196" y="420">border</text>
+          <g class="kmb-map-cartouche">
+            <text class="kmb-map-cartouche-title" x="40" y="60">The patch</text>
+            <text class="kmb-map-cartouche-sub" x="40" y="78">Fifty-three years of built work</text>
+            <path class="kmb-map-cartouche-rule" d="M40 88H252" />
+          </g>
+          <MapCompass x={706} y={66} variant="dart" textClass="kmb-map-compass-n" />
+          {patchPins.map((pin) => (
+            <g
+              class="kmb-map-pin"
+              data-sector={pin.sector}
+              data-place={pin.place}
+              transform={`translate(${pin.x} ${pin.y})`}
+            >
+              {pin.leader && <path class="mm-map-pin-leader" d={`M0 0L${pin.leader.x} ${pin.leader.y}`} />}
+              <circle class="kmb-map-pin-halo" r="13" />
+              {sectorGlyphs[pin.sector] === "cross" && <path class="kmb-map-glyph" d="M0-6V6M-4.5-2H4.5" />}
+              {sectorGlyphs[pin.sector] === "square" && (
+                <rect class="kmb-map-glyph" x="-4.5" y="-4.5" width="9" height="9" />
+              )}
+              {sectorGlyphs[pin.sector] === "diamond" && <path class="kmb-map-glyph" d="M0-6L5 0 0 6-5 0Z" />}
+              {sectorGlyphs[pin.sector] === "roof" && <path class="kmb-map-glyph" d="M-6 4.5L0-5.5 6 4.5Z" />}
+              {sectorGlyphs[pin.sector] === "ring" && <circle class="kmb-map-glyph kmb-map-glyph--ring" r="4.5" />}
+              {sectorGlyphs[pin.sector] === "disc" && <circle class="kmb-map-glyph kmb-map-glyph--disc" r="4.5" />}
+              <text
+                class="kmb-map-pin-label"
+                x={pin.labelDx ?? 0}
+                y={pin.labelDy ?? -16}
+                text-anchor={pin.anchor ?? "middle"}
+              >
+                {pin.place}
+              </text>
+              {pin.sub && (
+                <text
+                  class="kmb-map-pin-sub"
+                  x={pin.labelDx ?? 0}
+                  y={(pin.labelDy ?? -16) + 13}
+                  text-anchor={pin.anchor ?? "middle"}
+                >
+                  {pin.sub}
+                </text>
+              )}
+            </g>
+          ))}
+          <Fragment slot="caption">The patch · indicative, not a survey.</Fragment>
+        </MapPlate>
+
+        <aside class="kmb-patch-side">
+          <h3>The patch.</h3>
+          <p>
+            Fifty-three years of work, from Magheralin to Crossmaglen — every
+            published place on the record, pinned. One of them, Knockevin
+            Special School, is in our own town.
+          </p>
+          <ul class="kmb-patch-key" aria-label="Sector key">
+            {sectors.map((sector) => (
+              <li>
+                <svg viewBox="-8 -8 16 16" aria-hidden="true" focusable="false">
+                  {sectorGlyphs[sector.key] === "cross" && <path class="kmb-map-glyph" d="M0-6V6M-4.5-2H4.5" />}
+                  {sectorGlyphs[sector.key] === "square" && (
+                    <rect class="kmb-map-glyph" x="-4.5" y="-4.5" width="9" height="9" />
+                  )}
+                  {sectorGlyphs[sector.key] === "diamond" && <path class="kmb-map-glyph" d="M0-6L5 0 0 6-5 0Z" />}
+                  {sectorGlyphs[sector.key] === "roof" && <path class="kmb-map-glyph" d="M-6 4.5L0-5.5 6 4.5Z" />}
+                  {sectorGlyphs[sector.key] === "ring" && <circle class="kmb-map-glyph kmb-map-glyph--ring" r="4.5" />}
+                  {sectorGlyphs[sector.key] === "disc" && <circle class="kmb-map-glyph kmb-map-glyph--disc" r="4.5" />}
+                </svg>
+                {sector.key}
+              </li>
+            ))}
+          </ul>
+          <div class="kmb-patch-unplaced">
+            <h4>Also on the record</h4>
+            <p>Two completed projects without a published place — on the register, not on the map.</p>
+            <ul>
+              {unplacedProjects.map((project) => (
+                <li data-sector={project.sector}>
+                  <span class="kmb-patch-unplaced-name">{project.name}</span>
+                  <span class="kmb-patch-unplaced-sector">{project.sector}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p class="kmb-patch-read">Places and project names as we publish them.</p>
+        </aside>
+      </div>
+
       <div class="kmb-project-media" data-project-media aria-label="Selected project photography">
         {projectPhotography.map((project) => (
           <figure data-sector={project.sector} data-sector-entry>
@@ -168,6 +277,36 @@ const projectPhotography = [
       </ol>
       <p class="kmb-index-foot">Selected completed projects across our six sectors.</p>
     </section>
+
+    <!-- The accreditation wall told as what it is: the evidence pack a client
+         checks before an invitation to tender. The marks as our own site
+         lists them, each with its plain-English weight, beside the same
+         published enquiry route the header carries. -->
+    <section class="kmb-evidence" aria-labelledby="kmb-evidence-title">
+      <div class="kmb-evidence-head">
+        <p class="kmb-evidence-kicker">Before the tender</p>
+        <h2 id="kmb-evidence-title">The evidence pack.</h2>
+        <p>
+          Checking contractors ahead of an invitation to tender? These are the
+          marks behind our name — and the number beside them is the one to call.
+        </p>
+      </div>
+      <ul class="kmb-evidence-marks" role="list">
+        {evidenceMarks.map(({ mark, weight }) => (
+          <li>
+            <strong>{mark}</strong>
+            <span>{weight}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="kmb-evidence-contact">
+        <p>Shortlists, frameworks and site visits start here.</p>
+        <div class="kmb-evidence-routes">
+          <a class="kmb-evidence-phone" href="tel:+442843770011">028 4377 0011</a>
+          <a class="kmb-evidence-email" href="mailto:info@kmbni.com">info@kmbni.com</a>
+        </div>
+      </div>
+    </section>
   </main>
 </ConceptLayout>
 
@@ -177,10 +316,13 @@ const projectPhotography = [
   const rows = document.querySelectorAll<HTMLElement>(".kmb-project");
   const media = document.querySelector<HTMLElement>("[data-project-media]");
   const count = document.querySelector<HTMLElement>("[data-project-count]");
+  const patch = document.querySelector<HTMLElement>("[data-patch]");
 
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       const sector = chip.dataset.sector ?? "all";
+
+      patch?.setAttribute("data-active-sector", sector);
 
       chips.forEach((c) => {
         const active = c === chip;
