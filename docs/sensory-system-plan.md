@@ -129,9 +129,12 @@ website. That set is not 281 local businesses that are behind. It contains:
 - **Newcastle police station, fire station, primary school and tourist
   information centre**, all covered by PSNI, NIFRS, EA and DiscoverNI;
 - **Parkaneety Graveyard, Drumee Cemetery, the Granite Trail, Slieve Donard
-  Trail** and **"High Mournes scenic loop"**, which is a road;
-- **duplicate rows** — Newcastle Challenge Trail appears four times, Tollymore
-  Forest Park Entrance three.
+  Trail** and **"High Mournes scenic loop"**, which is a road.
+
+Duplication is the least of it — the normaliser already dedupes on
+`town|aliased-name`, and only three near-duplicate pairs survive it (Donard
+Hotel, Granite Trail, Percy French, each a bare and a "The" form), plus one
+trail assigned to both towns. The problem is category error, not repetition.
 
 246 of the 281 carry `dataConfidence: "Public listing; ownership and trading
 status not independently confirmed"`. We had not confirmed they trade, let
@@ -153,6 +156,33 @@ defines **Census**, **Trading business** and **Lit / dark**, and the term
 businesses and verifies website status as far as is possible digitally. Only
 then do we decide what level of confidence is required to publish a number and
 the locations. `stage` does not ship before that decision.
+
+**That round ran on 5 August 2026 —
+[`research/pipeline/census-audit-2026-08-05.md`](../research/pipeline/census-audit-2026-08-05.md).
+It closed the gate harder.** `tools/pipeline/census-class.mjs` now classifies
+every census row, which reduces the honest headline from "281 of 379" to **155
+trading businesses, mapped, flagged dark — 150 of them never confirmed**. A
+sample of 16 of those 150 was then checked against the open web:
+
+- **Ten of sixteen had a website the census missed**, among them a solicitor, a
+  vet, an optician, a shoe shop and a pizza place with online ordering.
+- Only three were genuinely without a site of their own, and one of those is
+  social-only, which is a different census status.
+- One had **closed its Newcastle shop twenty months before the census recorded
+  it**.
+- Two were national or regional chains typed as independents.
+- One name in the sample is corrupt and returns nothing at all.
+
+The dark flag is wrong roughly two times in three. The true dark count is
+plausibly nearer 50 than 155, and we do not know which 50. A published map
+would be wrong about roughly a hundred real businesses in a town of 7,500.
+
+**Unblocking it needs the full four-step pass from `docs/RESEARCH_METHOD.md`
+over all 229 trading businesses**, recorded in
+`research/pipeline/verifications.json` so the normaliser merges the
+corrections. The confidence question — what proportion must be confirmed before
+a number and locations may be published — is worth asking only after that. The
+current proportion is 7 of 155.
 
 **Gate for `band`:** none. It carries no claim. Build it.
 

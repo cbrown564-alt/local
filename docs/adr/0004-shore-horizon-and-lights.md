@@ -72,9 +72,14 @@ Of 379 rows in `src/site/data/businesses.json`, 281 are marked as having no
 website. That set includes Royal County Down Golf Course; ten national chains
 where the flag means *this branch* has no site; the police station, fire
 station, primary school and tourist information centre; two graveyards, four
-walking trails, and a road called "High Mournes scenic loop". Several rows are
-duplicates. **246 of the 281** carry `dataConfidence: "Public listing;
-ownership and trading status not independently confirmed"`.
+walking trails, and a road called "High Mournes scenic loop". **246 of the 281**
+carry `dataConfidence: "Public listing; ownership and trading status not
+independently confirmed"`.
+
+Duplication is a smaller problem than category error: the normaliser already
+dedupes on `town|aliased-name`, leaving three near-duplicate pairs it does not
+catch (Donard Hotel, Granite Trail, Percy French — each a bare and a "The"
+form) and one trail assigned to both towns.
 
 Filtering to independent, trading, non-duplicate commercial businesses leaves
 213, of which 187 are placeable on a map and 156 are dark — a defensible shape,
@@ -92,3 +97,14 @@ now defines **Census**, **Trading business** and **Lit / dark**.
 businesses and verifies website status as far as is possible digitally, and
 after a separate decision on what level of confidence is required to publish
 both a number and the locations.
+
+**That round ran the same day and closed the gate harder**
+(`research/pipeline/census-audit-2026-08-05.md`). Classifying every row with
+`tools/pipeline/census-class.mjs` reduces the honest headline to 155 trading
+businesses, mapped and flagged dark, 150 of them never confirmed. Checking a
+sample of 16 of those 150 against the open web found **ten with a website the
+census had missed** — a solicitor, a vet, an optician, a shoe shop, a pizza
+place with online ordering — and only three genuinely without one. One had
+closed its Newcastle shop twenty months before the census recorded it. The dark
+flag is wrong about two times in three, so a published map would be wrong about
+roughly a hundred real businesses in a town of 7,500.
