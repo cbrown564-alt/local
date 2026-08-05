@@ -2,6 +2,9 @@
 
 Studio working document. Not guest-facing.
 
+Further Omni clip ideas (Kent comic, Scopers breathe, place loops, studio
+experiments, paste-ready prompts): [`omni-clip-backlog.md`](./omni-clip-backlog.md).
+
 Two sibling films, one per town, each a single dawn-to-dusk day. They share a
 visual grammar so they read as one work in two parts — but each town keeps its
 own light, its own pace, its own sound. The homepage hero plays one at a time

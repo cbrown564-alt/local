@@ -8,6 +8,9 @@
   --petrol: #1d4e54;
   --petrol-deep: #14393e;
   --oat: #f7f8f6;
+  /* Sampled from the twin-cup still's outer matte so its right-hand field
+     reads as one continuous oat plane rather than a framed photograph. */
+  --twin-oat: #eaddcf;
   --caramel: #c98a3b;
   --caramel-deep: #a56a24;
   /* Text-safe variants added 25 July 2026. The caramel pair and the muted
@@ -303,12 +306,16 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
    deliberately open for whatever the owners one day want told. */
 .cp-pair {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(22px, 3vw, 52px);
-  align-items: start;
+  grid-template-columns: 44% 56%;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+  color: #fff;
+}
+.cp-pair-content {
+  min-width: 0;
   padding: clamp(30px, 4.5vh, 52px) clamp(26px, 3.6vw, 56px);
   background: var(--petrol);
-  color: #fff;
 }
 .cp-pair h2 {
   margin: 0 0 14px;
@@ -320,7 +327,7 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   color: #fff;
 }
 .cp-pair-line { margin: 0; max-width: 30em; font-size: 16px; line-height: 1.6; color: #e6ece8; }
-.cp-pair-list { margin: 0; padding: 0; }
+.cp-pair-list { margin: clamp(20px, 3vh, 30px) 0 0; padding: 0; }
 .cp-pair-row {
   display: grid;
   grid-template-columns: minmax(0, auto) minmax(0, 1fr);
@@ -340,6 +347,33 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
 }
 .cp-pair-row dd { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15.5px; line-height: 1.45; color: #e6ece8; }
 .cp-pair-rings { flex: 0 0 auto; color: var(--caramel); }
+.cp-pair-image-note {
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  color: #f0cfad;
+}
+.cp-pair-image-note p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 600;
+}
+.cp-pair-image-note span { font-size: 12.5px; font-weight: 700; line-height: 1.4; }
+.cp-twin-cups {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(30px, 4.5vh, 52px);
+  padding-inline: 0;
+  background: var(--twin-oat);
+}
+.cp-twin-cups picture { display: block; width: 100%; }
+.cp-twin-cups img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 
 @media (max-width: 940px) {
   .cp-strip { flex-direction: column; gap: 2px; text-align: center; }
@@ -384,6 +418,8 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   .cp-frontage img { flex: 0 0 auto; height: auto; aspect-ratio: 1536 / 1024; }
   .cp-beats { grid-template-columns: 1fr; }
   .cp-pair { grid-template-columns: 1fr; }
+  .cp-twin-cups { padding: 26px; }
+  .cp-pair-image-note { align-items: flex-start; flex-direction: column; }
 }
 
 /* Active nav state — marks the current page in sub-page nav */

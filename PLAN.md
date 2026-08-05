@@ -365,6 +365,32 @@ a `.demo` marker exists for any film referenced from `src/` belongs with the
 other publication guards regardless of whether the rest of this section is ever
 built.
 
+## 8. Studio storytelling — product showcases & explainers (opened 5 August 2026)
+
+In parallel with sections 3–4 and 7. The free before-and-after and the concept
+portfolio prove craft; they do not yet carry the full *why this studio / why
+care* story for a busy owner. This workstream builds product showcases and
+explainers — claymation, kinetic type, humour, scene stories, audio — using
+generated film and voice as accelerators.
+
+Control doc: [`research/studio-storytelling.md`](research/studio-storytelling.md).
+Concept Omni theatre stays in `research/film/omni-clip-backlog.md`; town films
+stay in `research/film/one-day-made-here.md`. Studio clips land under
+`research/film/clips/studio/` and prototype surfaces before any homepage trial.
+Request path still wins on attention weight. No invented client results.
+
+**Next pick-up (before burning more studio Omni gens on explainers):** distill
+5–10 recurring themes across the redesigned concept sites — problems owners
+would recognise on their own websites, generalised into clear self-contained
+scenes that make the improvement intuitive and sometimes visceral. Multi-stage
+creative work: explore the idea space → craft the key message per theme →
+build out scenes → storyboard → refine. Log findings in
+`research/studio-storytelling.md` (or a linked brief under `research/film/`).
+Only then run format/bakeoff gens against those scenes.
+
+Also queued after that: day-one Omni slate in the control doc (S1–S7 bakeoff),
+then a noindex prototype host for the contact sheet.
+
 ## Blocked or deferred
 
 - Create and verify a Google Business Profile only when the owner supplies the

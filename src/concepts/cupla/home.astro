@@ -47,7 +47,7 @@ const pairs = [
   slug="cupla"
   bodyClass="concept-page concept-cupla"
   lang="en-GB"
-  bannerNote="The shopfront image is an AI-generated visualisation."
+  bannerNote="The shopfront image is an AI-generated visualisation. The twin-cup image is AI-generated and illustrative."
 >
   <div class="cp-strip">
     <span>105 Main Street, Dundrum, Co. Down · <em lang="ga">ar an bpríomhshráid</em></span>
@@ -151,28 +151,52 @@ const pairs = [
     </section>
 
     <section class="cp-pair" id="cp-pair" aria-labelledby="cp-pair-heading">
-      <div class="cp-pair-copy">
-        <p class="cp-kicker"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</p>
-        <h2 id="cp-pair-heading">Everything here comes in twos.</h2>
-        <p class="cp-pair-line">
-          Irish and English sit side by side here, as they do in the café's own name and
-          branding.
-        </p>
+      <div class="cp-pair-content">
+        <div class="cp-pair-copy">
+          <p class="cp-kicker"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</p>
+          <h2 id="cp-pair-heading">Everything here comes in twos.</h2>
+          <p class="cp-pair-line">
+            Irish and English sit side by side here, as they do in the café's own name and
+            branding.
+          </p>
+        </div>
+        <dl class="cp-pair-list">
+          {pairs.map((pair) => (
+            <div class="cp-pair-row">
+              <dt lang={pair.termLang}>{pair.term}</dt>
+              <dd>
+                <svg class="cp-pair-rings" width="34" height="20" viewBox="0 0 46 34" fill="none" aria-hidden="true">
+                  <circle cx="16" cy="17" r="13.5" stroke="currentColor" stroke-width="2.4" />
+                  <circle cx="30" cy="17" r="13.5" stroke="#e8c58f" stroke-width="2.4" />
+                </svg>
+                {pair.gloss}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <div class="cp-pair-image-note">
+          <p>Two cups. One counter.</p>
+          <span id="cp-twin-cups-disclosure">Illustrative AI-generated image</span>
+        </div>
       </div>
-      <dl class="cp-pair-list">
-        {pairs.map((pair) => (
-          <div class="cp-pair-row">
-            <dt lang={pair.termLang}>{pair.term}</dt>
-            <dd>
-              <svg class="cp-pair-rings" width="34" height="20" viewBox="0 0 46 34" fill="none" aria-hidden="true">
-                <circle cx="16" cy="17" r="13.5" stroke="currentColor" stroke-width="2.4" />
-                <circle cx="30" cy="17" r="13.5" stroke="#e8c58f" stroke-width="2.4" />
-              </svg>
-              {pair.gloss}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <figure class="cp-twin-cups">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/media/concepts/cupla/cupla-twin-cups-640.webp 640w, /media/concepts/cupla/cupla-twin-cups-1265.webp 1265w"
+            sizes="(max-width: 940px) 100vw, 56vw"
+          />
+          <img
+            src="/media/concepts/cupla/cupla-twin-cups.png"
+            alt="Two identical petrol-blue ceramic coffee cups with matching oat saucers and equal fills, arranged as a mirrored pair"
+            aria-describedby="cp-twin-cups-disclosure"
+            width="1664"
+            height="936"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </figure>
     </section>
   </main>
 </ConceptLayout>

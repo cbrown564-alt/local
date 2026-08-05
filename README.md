@@ -132,6 +132,7 @@ because three documents each kept their own copy.
 | `docs/CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
 | `docs/shell-elevation-brief.md` | The studio shell elevation brief (1 August 2026 decisions and build order) |
 | `docs/sensory-system-plan.md` | The sensory-system phases, gates and acceptance criteria (film, voice, terrain, real-time graphics) |
+| `research/studio-storytelling.md` | Studio product showcases & explainers workstream (claymation, kinetic type, humour, belief-sequence film/audio) |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
 | `docs/CONTEXT.md` | Project vocabulary |
 | `docs/MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
