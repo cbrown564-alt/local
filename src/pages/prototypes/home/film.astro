@@ -84,38 +84,31 @@ const hasPublicTransformations =
       <h3>What still needs to be done</h3>
       <ol class="film-proto-todo">
         <li>
-          <strong>Replace the stand-in clips.</strong> The current films are
-          <code>--demo</code> tone gradients (marked by
-          <code>research/film/clips/&lt;town&gt;/.demo</code>). Generate the six
-          shots per town with Gemini Omni using the prompt table in the
-          treatment, drop them in as <code>01-….mp4 … 06-….mp4</code>, then run
-          <code>pnpm assemble:film</code> and restart the dev server.
-          <strong>Stand-ins must never deploy</strong> — the provenance record
-          in <code>research/image-provenance.md</code> tracks this.
+          <strong>Done — Gemini Omni clips assembled.</strong> Twelve exports
+          in <code>research/film/clips/&lt;town&gt;/</code>; demo markers gone.
+          Provenance: <code>research/image-provenance.md</code>.
         </li>
         <li>
-          <strong>Generate the ElevenLabs sound beds.</strong> Four stems per
-          town (prompts and mix levels in the treatment) into
-          <code>research/film/audio/&lt;town&gt;/</code>. The “Hear the bay /
-          Hear the sea” toggle appears on its own once
-          <code>&lt;town&gt;-ambience.mp3</code> exists. Sound is opt-in only,
-          never autoplay — that decision is baked in.
+          <strong>Done — ElevenLabs sound beds.</strong> Four 10s loopable
+          stems per town via <code>pnpm generate:ambience</code>, mixed to
+          <code>&lt;town&gt;-ambience.mp3</code>. Opt-in toggle only, never
+          autoplay. Spot-listen and re-roll with
+          <code>pnpm generate:ambience --force --town=…</code> if a stem
+          sentimentalises or loops badly.
         </li>
         <li>
-          <strong>Judge the loop seam on real footage.</strong> Dusk dissolves
-          back into dawn over 0.8s (<code>XFADE_SECONDS</code> in
-          <code>tools/pipeline/assemble-hero-film.mjs</code>). Tune once the
-          real renders exist.
+          <strong>Judge the loop seam.</strong> Dusk dissolves back into dawn
+          over 0.8s (<code>XFADE_SECONDS</code> in
+          <code>tools/pipeline/assemble-hero-film.mjs</code>). Tune if the
+          real renders seam.
         </li>
         <li>
-          <strong>Performance pass on real footage.</strong> Stand-ins are
-          light; real clips won’t be. Check the CRF 23 master weight, poster
-          LCP cost, and whether the 51s loop should be trimmed.
+          <strong>Performance pass.</strong> Check the CRF 23 master weight,
+          poster LCP cost, and whether the ~40s loop should be trimmed.
         </li>
         <li>
           <strong>Review the mobile cut.</strong> Phones get only the dusk
-          pair (clips 05–06). Confirm those are the right two shots once the
-          real footage exists.
+          pair (clips 05–06). Confirm those are the right two shots.
         </li>
         <li>
           <strong>Sign off the honesty wording.</strong> The corner disclosure

@@ -19,18 +19,25 @@ that no longer appear anywhere in `src/`.
 ## Site films ("One Day, Made Here")
 
 - `media/home/<town>-film.{mp4,webm}`, `<town>-film-mobile.{mp4,webm}`,
-  `<town>-film-poster.*`, `<town>-ambience.mp3` — **stand-ins in place** (4
-  August 2026). Town hero films, one per town (Dundrum, Newcastle), shown in
+  `<town>-film-poster.*`, `<town>-ambience.mp3` — **Gemini Omni clips assembled**
+  (5 August 2026). Town hero films, one per town (Dundrum, Newcastle), shown in
   prototype E at `/prototypes/home/film/`. Assembled by
-  `tools/pipeline/assemble-hero-film.mjs` from clips generated with Gemini
-  Omni and ambience stems generated with ElevenLabs (treatment and prompts:
-  `research/film/one-day-made-here.md`). The films are
+  `tools/pipeline/assemble-hero-film.mjs` from twelve Gemini Omni exports
+  (~6s each, padded to 8s) dropped into `research/film/clips/<town>/01–06-*.mp4`
+  (treatment and prompts: `research/film/one-day-made-here.md`). Demo
+  tone-gradient stand-ins and `.demo` markers removed. The films are
   **generated, not footage**: the hero carries an on-page disclosure
   ("An imagined day … not footage") and the video aria-labels say the same.
-  The clips currently in `research/film/clips/<town>/` are `--demo`
-  tone-gradient stand-ins (marked by a `.demo` file) so the hero can be
-  reviewed end-to-end. **Stand-ins must not deploy**: replace with the Gemini
-  Omni renders, rerun `pnpm assemble:film`, and update this entry's status.
+  Ambience stems generated 5 August 2026 with ElevenLabs Sound Effects
+  (`eleven_text_to_sound_v2`, 10s, `loop: true`) via
+  `pnpm generate:ambience` into `research/film/audio/<town>/`, then mixed to
+  ~60s `<town>-ambience.mp3` beds by `pnpm assemble:film`. Review notes
+  before any promotion off the prototype: (1) Newcastle 03 reads as a
+  bike-shop promenade rather than the gardens still in
+  `research/film/stills/newcastle/03-morning-promenade.png`; (2) Dundrum 06
+  and Newcastle 06 were replaced 5 August 2026 evening with still-locked Omni
+  re-renders (`Quiet_village_street_at_blue_…`,
+  `Arcade_frontage_during_blue_hour_…`).
 
 ## Generated narration
 
@@ -109,6 +116,10 @@ of these businesses supplied one.
   concept banner states "Serving imagery is AI-generated." Flavour names
   beside the plates remain illustrative placeholders. Responsive WebP
   derivatives at 640 and 1265.
+- `bettys-butters-melt-loop.mp4` — **held / not wired** (Gemini Omni, 5 August
+  2026). Image-to-video of the melt still: knife finishing a cut through soft
+  butter. Soft-body physics land; a hand appears in frame and is accepted for
+  this pass. Still remains the reduced-motion default if this ever wires in.
 - `bettys-butters-generated-cube-herb.jpg`,
   `bettys-butters-generated-cube-chilli.jpg`,
   `bettys-butters-generated-cube-paris.jpg` and
@@ -163,6 +174,12 @@ of these businesses supplied one.
   the withdrawn 2023 exterior photograph; any guest-facing use must disclose
   the generated illustrative boundary and keep the day plate as the reduced-
   motion/no-JavaScript default.
+- `public/media/concepts/kent-amusements/kent-amusements-promenade-lights.mp4`
+  — **held / not wired** (Gemini Omni, 5 August 2026; lettering edit same day).
+  Image-to-video day→dusk transition from the day promenade plate. First pass
+  invented a "VARIETY" fascia; conversational edit removed fascia lettering and
+  kept the yellow panels blank. Day plate remains the reduced-motion default if
+  this ever wires in.
 - `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png`
   — **source master** (generated 5 August 2026). AI-generated six-panel 2×3
   comic storyboard made with GPT image generation for Kent Amusements move 3.

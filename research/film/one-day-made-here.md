@@ -94,35 +94,44 @@ wall. Bigger weather, bigger sky.
 
 ## Sound — ElevenLabs
 
-Two seamless 60s ambience beds, generated as separate stems and mixed by the
-assembly pipeline (`tools/pipeline/assemble-hero-film.mjs`). Everything is
-generated ambience — no music library, no recording. Keep beds sparse; the
-hero plays them at low volume and they are opt-in only, never autoplay.
+Two seamless ambience beds, built from short loopable stems and mixed by the
+assembly pipeline (`tools/pipeline/assemble-hero-film.mjs`) to a 60s bed.
+Generate stems with the Sound Effects API (`POST /v1/sound-generation`,
+`eleven_text_to_sound_v2`, `duration_seconds: 10`, `loop: true`) — the API
+caps at 30s, so do not ask for minute-long clips. The mixer stream-loops each
+stem to fill the bed. Everything is generated ambience — no music library, no
+recording. Keep beds sparse; the hero plays them at low volume and they are
+opt-in only, never autoplay.
 
-### Dundrum bed — stems
+```bash
+# needs ELEVENLABS_API_KEY in the environment
+pnpm generate:ambience
+pnpm assemble:film
+```
+
+### Dundrum bed — stems (10s, loopable)
 
 1. `water` — "very still shallow tidal water lapping gently over mudflats,
-   close and quiet, no waves" (60s)
+   close and quiet, no waves, seamless ambient loop"
 2. `birds` — "curlew and oystercatcher calls across a still estuary,
-   occasional, distant, early morning" (60s)
-3. `village` — "quiet Irish village morning, a shop shutter rattling up once,
-   cup set on a saucer, a door closing softly, far away" (30s, looped ×2)
-4. `evening` — "still village evening, faint distant trad session through a
-   pub door, very quiet, occasional car passing slowly" (30s, looped ×2)
+   occasional, distant, early morning, sparse seamless ambient loop"
+3. `village` — "quiet Irish village morning ambience, distant shop shutter,
+   soft cup on saucer, door closing far away, sparse seamless loop"
+4. `evening` — "still village evening ambience, faint distant trad session
+   through a pub door, very quiet, occasional slow car, seamless loop"
 
 Mix: water −6 dB, birds −10 dB, village −16 dB, evening −14 dB, evening stem
 only in the second half of the bed.
 
-### Newcastle bed — stems
+### Newcastle bed — stems (10s, loopable)
 
 1. `surf` — "steady surf washing a sandy beach, medium distance, rhythmic,
-   no people" (60s)
+   no people, seamless ambient loop"
 2. `gulls` — "herring gulls calling over a seaside promenade, occasional,
-   bright daytime" (60s)
-3. `wind` — "soft sea wind, open and empty, no whistle" (60s)
+   bright daytime, sparse seamless ambient loop"
+3. `wind` — "soft sea wind, open and empty, no whistle, seamless ambient loop"
 4. `arcade` — "faint seaside amusement arcade heard from outside at dusk,
-   muffled electronic jingles and distant ride hum, very quiet" (30s,
-   looped ×2)
+   muffled electronic jingles and distant ride hum, very quiet, seamless loop"
 
 Mix: surf −6 dB, gulls −12 dB, wind −14 dB, arcade −16 dB, arcade only in
 the second half.
