@@ -97,12 +97,12 @@
 }
 .ka-call:hover { background: var(--pier); transform: translateY(-1px); }
 
-/* Hero — story | the town's memory | section rail */
+/* Hero — story | promenade plate | section rail */
 .ka-hero {
   position: relative;
   min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 46% 54%;
   grid-template-rows: 1fr auto;
 }
 .ka-story {
@@ -112,6 +112,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.ka-hero-plate {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Fill the hero column the way Cúpla's frontage does: the figure takes its
+   height from the grid area, not from the PNG's intrinsic size. */
+.ka-hero-plate .ka-promenade-plate {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+.ka-hero-plate .ka-promenade-frames {
+  flex: 1 1 auto;
+  aspect-ratio: auto;
+  height: 0;
+  min-height: 0;
 }
 .ka-kicker {
   display: flex;
@@ -177,35 +200,7 @@
   text-decoration-color: var(--ticket);
 }
 
-/* Move 1 — the town's memory, which is the only voice the record holds.
-   The panel is the pier-deep counterweight to the type on the left, and the
-   era tag sits in the head so it is read before the quotation, never after. */
-.ka-remember {
-  grid-column: 2;
-  grid-row: 1;
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--pier-deep);
-  color: var(--foam);
-}
-.ka-remember-head {
-  min-height: 48px;
-  padding: 10px clamp(24px, 3vw, 42px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid rgba(247, 251, 252, .16);
-  color: #c3d3de;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
+/* Era tag on BBC memory ticks (and anywhere else it appears). */
 .ka-era-tag {
   padding: 4px 9px;
   border-radius: 999px;
@@ -216,66 +211,6 @@
   letter-spacing: .1em;
   white-space: nowrap;
 }
-.ka-memory {
-  flex: 1 1 auto;
-  margin: 0;
-  padding: clamp(18px, 2.6vh, 32px) clamp(24px, 3vw, 42px) 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.ka-memory blockquote { margin: 0 0 12px; }
-.ka-memory blockquote p {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: .01em;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-wrap: balance;
-}
-/* The quotation marks are the design; the marks themselves stay decorative so
-   a screen reader is not read punctuation twice. */
-.ka-memory blockquote p::before,
-.ka-memory blockquote p::after { content: '\201C'; color: var(--ticket); }
-.ka-memory blockquote p::after { content: '\201D'; }
-.ka-memory figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 12px;
-  border-top: 2px solid var(--ticket);
-  font-size: 12px;
-  line-height: 1.45;
-  color: #c3d3de;
-}
-.ka-memory figcaption strong { color: #ffffff; font-weight: 700; font-size: 13px; }
-.ka-memory figcaption a,
-.ka-avoca figcaption a {
-  color: var(--ticket);
-  font-weight: 700;
-  text-underline-offset: 4px;
-}
-/* The Avoca's present-tense description, beside the memory and never blended
-   into it: a second voice, in a smaller register, with its own attribution. */
-.ka-avoca {
-  margin: 0;
-  padding: 13px clamp(24px, 3vw, 42px) 14px;
-  background: rgba(61, 184, 168, .12);
-  border-top: 1px solid rgba(247, 251, 252, .16);
-}
-.ka-avoca blockquote { margin: 0 0 6px; }
-.ka-avoca blockquote p {
-  margin: 0;
-  font-size: 14px;
-  font-style: italic;
-  line-height: 1.5;
-  color: #ffffff;
-}
-.ka-avoca figcaption { font-size: 11.5px; line-height: 1.5; color: #9eb4c4; }
-.ka-avoca figcaption strong { color: var(--sea); font-weight: 700; }
 
 /* Attractions rail — content right-aligned so the fixed concept-disclosure badge
    in the bottom-left corner never covers a cell */
@@ -315,17 +250,20 @@
   .ka-hero { grid-template-columns: 1fr; min-height: 0; }
   .ka-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 24px; }
   .ka-story h1 { max-width: none; }
-  .ka-remember {
+  .ka-hero-plate {
     grid-column: 1;
     grid-row: auto;
     order: 1;
+    min-height: 220px;
   }
-  .ka-remember-head { padding-inline: 22px; }
-  .ka-memory { padding: 28px 22px 22px; }
-  .ka-avoca { padding-inline: 22px; }
+  .ka-hero-plate .ka-promenade-frames {
+    height: auto;
+    aspect-ratio: 1672 / 941;
+  }
   .ka-rail { grid-column: 1; grid-row: auto; order: 2; }
   .ka-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
   .ka-rail-cell { border-left: 0; flex: 1 1 45%; }
+  .ka-promenade-plate figcaption { flex-direction: column; gap: 4px; }
 }
 
 @media (max-width: 520px) {
@@ -345,17 +283,18 @@
 }
 
 /* =====================================================================
-   Move 2 — the fifty-summers band. Jukebox to VR in one glance, and every
-   entry wearing the date that earns it its place.
+   Move 1+2 — two-stop timeline (c. 1968 → 2026) with quote ticks loosely
+   on the spine. Dots sit on a dedicated track so they cannot drift.
    ===================================================================== */
 .ka-summers {
-  display: grid;
-  grid-template-columns: minmax(0, 22em) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vh, 48px);
   padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
   background: var(--foam);
   border-top: 3px solid var(--ticket);
 }
+.ka-summers-intro { max-width: 36em; }
 .ka-summers h2,
 .ka-afternoon h2 {
   margin: 0 0 12px;
@@ -372,59 +311,94 @@
 .ka-summers-lede,
 .ka-afternoon-lede {
   margin: 0;
-  max-width: 26em;
+  max-width: 34em;
   font-size: 15.5px;
   line-height: 1.55;
   color: #3d5260;
 }
-.ka-arc {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+
+.ka-timeline {
   display: flex;
   flex-direction: column;
+  gap: 0;
+}
+.ka-timeline-band {
+  position: relative;
+  min-height: 7.5rem;
+}
+.ka-timeline-band--above { margin-bottom: 10px; }
+/* Pull the below-band memory tick up into the empty middle of the arc,
+   closer to the spine, without covering the end-year labels. */
+.ka-timeline-band--below {
+  margin-top: -4.25rem;
+  min-height: 10rem;
+  z-index: 1;
+}
+
+.ka-timeline-rail {
+  position: relative;
+  padding-top: 16px;
+}
+.ka-timeline-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 16px;
+  pointer-events: none;
+}
+.ka-timeline-spine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.5px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ticket), var(--coral), var(--ticket));
+}
+.ka-timeline-dot {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ticket);
+  border: 3px solid var(--pier);
+  box-sizing: border-box;
+}
+.ka-timeline-dot--start { left: 0; }
+.ka-timeline-dot--end { right: 0; }
+
+.ka-arc {
+  margin: 0;
+  padding: 22px 0 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
 }
 .ka-arc-entry {
-  display: grid;
-  grid-template-columns: minmax(0, 9em) minmax(0, 1fr);
-  gap: 6px clamp(16px, 2.4vw, 32px);
-  padding: 18px 0;
-  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(22em, 42%);
 }
-.ka-arc-entry:first-child { border-top: 0; padding-top: 0; }
+.ka-arc-entry--sixties { align-items: flex-start; text-align: left; }
+.ka-arc-entry--twenty-six { align-items: flex-end; text-align: right; margin-left: auto; }
 .ka-arc-when {
-  grid-row: 1 / span 3;
   font-family: var(--display);
-  font-size: 24px;
+  font-size: clamp(28px, 3vw, 40px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: var(--coral-ink);
+  color: var(--pier);
 }
 .ka-arc-line {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.45;
   color: var(--ink-pier);
 }
-/* The sixties entry carries the jukebox memory itself, so the far end of the
-   line is a quotation rather than a claim. */
-.ka-arc-quote {
-  margin: 4px 0 0;
-  padding: 12px 14px;
-  border-left: 3px solid var(--sea);
-  background: rgba(61, 184, 168, .1);
-}
-.ka-arc-quote blockquote { margin: 0 0 5px; }
-.ka-arc-quote blockquote p {
-  margin: 0;
-  font-size: 14.5px;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--pier);
-}
-.ka-arc-quote figcaption { font-size: 11.5px; color: #4c6274; }
 .ka-arc-source {
   font-size: 11.5px;
   font-weight: 600;
@@ -432,9 +406,83 @@
   color: var(--ticket-ink);
 }
 
+.ka-timeline-tick {
+  position: absolute;
+  left: var(--tick);
+  width: min(16.5rem, 36vw);
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--pier-deep);
+  color: var(--foam);
+  border: 2px solid var(--pier-deep);
+  box-shadow: 3px 3px 0 var(--ticket);
+  transform: translateX(-50%);
+}
+.ka-timeline-band--above .ka-timeline-tick { bottom: 0; }
+.ka-timeline-band--below .ka-timeline-tick {
+  top: 0;
+  width: min(20rem, 44vw);
+}
+.ka-timeline-tick .ka-era-tag { align-self: flex-start; }
+.ka-timeline-tick blockquote { margin: 0; }
+.ka-timeline-tick blockquote p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-wrap: balance;
+}
+.ka-timeline-tick.ka-memory blockquote p::before,
+.ka-timeline-tick.ka-memory blockquote p::after,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::before,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::after {
+  content: '\201C';
+  color: var(--ticket);
+}
+.ka-timeline-tick.ka-memory blockquote p::after,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::after {
+  content: '\201D';
+}
+.ka-timeline-tick.ka-avoca blockquote p {
+  font-family: var(--body);
+  font-size: 12.5px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.ka-timeline-tick figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #c3d3de;
+}
+.ka-timeline-tick figcaption strong { color: #ffffff; font-weight: 700; }
+.ka-timeline-tick figcaption a {
+  color: var(--ticket);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+.ka-timeline-tick.ka-avoca {
+  background: #14363a;
+  border-color: var(--sea);
+  box-shadow: 3px 3px 0 var(--sea);
+}
+.ka-timeline-tick.ka-avoca figcaption strong { color: var(--sea); }
+
 /* =====================================================================
-   Move 3 — the afternoon staged in the order it happens. Six steps, verified
-   material only; step 02 is where the sixties memory and today meet.
+   Move 3 — comic storyboard: two three-panel strips with captions under
+   each strip. Verified material only; step 02 is the hinge.
    ===================================================================== */
 .ka-afternoon {
   padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
@@ -446,45 +494,118 @@
 .ka-afternoon .ka-kicker { color: var(--ticket); }
 .ka-afternoon-lede { color: #c3d3de; }
 .ka-afternoon-intro { margin: 0 0 clamp(24px, 3.5vh, 40px); }
+
+.ka-comic {
+  background: #f2e6d4;
+  color: var(--ink-pier);
+  border: 4px solid var(--pier-deep);
+  box-shadow: 7px 7px 0 var(--ticket);
+  padding: 14px;
+}
+.ka-comic-strip {
+  margin: 0 0 18px;
+  padding: 0;
+  background: #fffaf1;
+  border: 3px solid var(--pier-deep);
+}
+.ka-comic-strip:last-of-type { margin-bottom: 12px; }
+.ka-comic-picture,
+.ka-comic-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid var(--pier-deep);
+}
 .ka-visit {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  /* Three across, two down: the six steps still read left-to-right in order,
-     and no row is left with a dead cell the way auto-fit's five-and-one did. */
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: rgba(247, 251, 252, .16);
-  border: 1px solid rgba(247, 251, 252, .16);
+  gap: 3px;
+  background: var(--pier-deep);
 }
 .ka-visit-step {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 20px 18px 22px;
-  background: var(--pier);
-  transition: background 160ms ease;
+  gap: 5px;
+  padding: 14px 12px 16px;
+  background: #fffaf1;
 }
-.ka-visit-step:hover { background: var(--pier-deep); }
-.ka-visit-step--hinge { background: var(--pier-deep); box-shadow: inset 3px 0 0 var(--ticket); }
+.ka-visit-step--hinge {
+  background: #fff3d6;
+  box-shadow: inset 0 -4px 0 var(--ticket);
+}
 .ka-visit-num {
   font-family: var(--display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .16em;
-  color: var(--ticket);
+  color: var(--coral-ink);
 }
 .ka-visit-name {
   font-family: var(--display);
-  font-size: 27px;
-  font-weight: 600;
+  font-size: clamp(18px, 1.7vw, 26px);
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: .04em;
+  letter-spacing: .03em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--pier);
 }
-.ka-visit-line { font-size: 14px; line-height: 1.55; color: #c3d3de; }
+.ka-visit-line {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #3d5260;
+}
+.ka-comic-disclosure {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 2px 4px 0;
+  font-size: 11px;
+  letter-spacing: .08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #5a4630;
+}
+.ka-comic-disclosure span:last-child { color: var(--ticket-ink); font-weight: 700; }
+
+/* Move 5 — the frontage is a generated illustration, never a claim that the
+   drawing is a photograph or an exact survey. The light plate stays in the
+   document for no-JavaScript and reduced-motion users; the local-clock script
+   only changes which already-rendered frame is visible. */
+.ka-promenade-plate {
+  margin: 0;
+  background: var(--pier-deep);
+  color: var(--foam);
+}
+.ka-promenade-frames {
+  position: relative;
+  aspect-ratio: 1672 / 941;
+  overflow: hidden;
+}
+.ka-promenade-frame,
+.ka-promenade-picture,
+.ka-promenade-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ka-promenade-frame { position: absolute; inset: 0; }
+.ka-promenade-image { object-fit: cover; }
+.ka-promenade-plate figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(22px, 3.6vw, 56px) 14px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #c3d3de;
+}
+.ka-promenade-plate figcaption span:last-child { color: var(--ticket); }
 
 /* =====================================================================
    Move 4 — the season panel. A ticket, not a placeholder.
@@ -589,20 +710,42 @@
    specificity, which is how the summers band first overflowed 390px by 82px. */
 @media (max-width: 940px) {
   .ka-summers,
-  .ka-season-band {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+  .ka-season-band { gap: 24px; }
   .ka-summers,
   .ka-afternoon,
   .ka-season-band { padding-inline: 22px; }
-  .ka-arc-entry { grid-template-columns: 1fr; gap: 4px; }
-  .ka-arc-when { grid-row: auto; }
-  .ka-visit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ka-timeline-band { min-height: 0; }
+  .ka-timeline-band--above,
+  .ka-timeline-band--below {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0;
+  }
+  .ka-timeline-tick {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+  .ka-arc-entry { max-width: min(20em, 48%); }
+  .ka-comic { box-shadow: 4px 4px 0 var(--ticket); padding: 10px; }
+  .ka-comic-disclosure { flex-direction: column; gap: 4px; }
 }
 
 @media (max-width: 620px) {
-  .ka-visit { grid-template-columns: 1fr; }
+  .ka-arc {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ka-arc-entry,
+  .ka-arc-entry--twenty-six {
+    max-width: none;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+  .ka-visit { grid-template-columns: 1fr; gap: 2px; }
+  .ka-visit-step { padding: 12px 14px; }
 }
 
 /* =====================================================================

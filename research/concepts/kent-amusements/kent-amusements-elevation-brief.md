@@ -6,11 +6,12 @@ Written 4 August 2026, fourth in the ranked sequence in
 it. The ranked review called this the strongest keepable-artifact candidate
 among the unbriefed concepts and the one whose swap test fails most plainly.
 
-**Status: written 4 August 2026. Moves 1–4 implemented 5 August 2026** — the
+**Status: written 4 August 2026. Moves 1–5 implemented 5 August 2026** — the
 town's memory, the dated fifty-summers band, the staged afternoon and the
-honest season panel. Move 5 (the drawn promenade-at-dusk plate and the
-day/dusk clock swap) is unstarted: it needs its own drawing session, and until
-it lands both screens carry no image at all. The concept as first published
+honest season panel. Move 5 (the generated promenade plates and the day/lit
+clock swap) is implemented: both screens carry the same illustrative geography
+plate, with the light version as the no-JavaScript and reduced-motion default.
+The concept as first published
 was an honest first-website case — "Fifty summers of seaside fun", three
 verified attractions, an explicitly empty seasonal-hours board — and it
 passes the publication checks. It is also type and SVG chrome from top to
@@ -186,10 +187,10 @@ one-sheet taking the dusk plate on its cover.
   gap and the publication-flagged board in one pass. **Shipped 5 August 2026,
   with move 3 alongside it.**
 - **Theatre session:** move 3 (staged visit) with move 5's mechanism —
-  the clock swap built and tested against empty slots. **Move 3 shipped; the
-  clock swap waits on the plates it swaps.**
+  the clock swap built and tested against empty slots. **Shipped 5 August
+  2026; the light plate is the no-JavaScript and reduced-motion default.**
 - **The drawing session:** move 5's two plates, then the one-sheet.
-  **Unstarted.**
+  **Plates shipped 5 August 2026; one-sheet remains separate.**
 
 ## Honesty constraints
 
@@ -243,11 +244,13 @@ one-sheet taking the dusk plate on its cover.
 
 Resolved at build, 5 August 2026:
 
-- **Is the BBC memory the right emotional centre?** Yes. The record holds no
-  first-party sentence, and the alternative — no quotation at all — leaves the
-  page as the type-and-chrome page the diagnosis condemned. It carries its era
-  in the panel head ("A memory of the late 1960s"), names the speaker and the
-  decade in the caption, cites the archive with the read date and links it. The
+- **Is the BBC memory the right emotional centre?** Yes as a voice, no longer as
+  the first-viewport visual. The record holds no first-party sentence, and the
+  alternative — no quotation at all — leaves the page without the town's
+  recognition. It carries its era in the panel head ("A memory of the late
+  1960s"), names the speaker and the decade in the caption, cites the archive
+  with the read date and links it — as a supporting band just below the opening.
+  The first viewport itself is brand beside the generated promenade plate. The
   second memory (the juke-box) sits inside the arc band's own late-1960s entry,
   where its era cannot detach from it.
 - **One correction to move 1.** The change-booth memory is quoted with its
@@ -261,13 +264,13 @@ Resolved at build, 5 August 2026:
   screens, verbatim, dated 5 August 2026, captioned "their words, not ours".
   The test asserts that outside the quotation marks neither "premier" nor the
   indoor-dodgems scarcity appears in the concept's own voice.
-- **Private drawing reference for the frontage?** Deferred with move 5. Until
-  the drawing session runs, the withdrawn 2023 photograph is not used in any
-  capacity, and the test asserts both pages carry no image at all.
-- **Does the clock swap earn its place?** Deferred with move 5. The season
-  panel answers "open now?" by naming the ritual and handing off, and that
-  answer now has the weight the swap was meant to supply; the pairing gets a
-  reviewer's eye when the plates exist.
+- **Private drawing reference for the frontage?** Resolved with move 5. The
+  withdrawn 2023 photograph is not used; both pages carry generated
+  illustrative plates labelled as indicative, not a survey.
+- **Does the clock swap earn its place?** Resolved with move 5. The light plate
+  remains the no-JavaScript and reduced-motion default, while the visitor's
+  local clock selects the lit sibling as a progressive enhancement. The season
+  panel still answers "open now?" by naming the ritual and handing off.
 
 ## When a move ships
 
@@ -279,17 +282,19 @@ commit. Update this status line as moves land; do not call the concept
 validated until an owner or representative visitor has supplied that
 evidence.
 
-**Landed 5 August 2026 (moves 1–4).** Every fact and borrowed sentence lives in
+**Landed 5 August 2026 (moves 1–5).** Every fact and borrowed sentence lives in
 `src/concepts/kent-amusements/record.ts` with its source and read date; the
 season panel is `SeasonPanel.astro`, shared by both screens, and its
 `confirmedHours` array is the designed home the publication record asked for,
-empty until a published source fills it.
-`tools/test/test-kent-amusements-elevation.mjs` pins all four moves against the
+empty until a published source fills it. Move 5 ships two generated illustrative
+promenade plates via `PromenadePlate.astro`, with the light plate as the
+no-JavaScript and reduced-motion default and the lit sibling selected by the
+visitor's local clock.
+`tools/test/test-kent-amusements-elevation.mjs` pins all five moves against the
 built pages and runs in `pnpm test`: the no-time-of-day scan on both screens,
 the two quotations verbatim with their era and dates, four dated arc entries
 with four sources, the six steps in order, the closed inventory as a set of
-absences, and both pages image-free while the photograph stays withdrawn. The
-after still and demo clip are recaptured, the attractions still with them, and
-the case study's Sources & limits block now runs to four paragraphs naming what
-is quoted, what is elided and what is deliberately absent. No new assets, so
-`research/image-provenance.md` is unchanged.
+absences, both plate variants on each page with the light default, and the
+disclosure chain. The withdrawn 2023 exterior stays unused.
+`research/image-provenance.md` records both plates; the case study's Sources &
+limits block names the generated-plate boundary. The one-sheet remains separate.

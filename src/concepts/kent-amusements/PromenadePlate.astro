@@ -1,0 +1,70 @@
+---
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+
+interface Props {
+  sizes?: string;
+}
+const { sizes = "(max-width: 940px) 100vw, 1265px" } = Astro.props;
+
+const plates = [
+  {
+    id: "light",
+    src: "/media/concepts/kent-amusements/kent-amusements-promenade-day.png",
+    alt: "AI-generated illustrative plate of a modest arcade frontage on Newcastle's Central Promenade, with the sea across the road and the Mourne Mountains behind the town; indicative, not a survey",
+  },
+  {
+    id: "lit",
+    src: "/media/concepts/kent-amusements/kent-amusements-promenade-dusk.png",
+    alt: "AI-generated illustrative plate of the same Newcastle promenade frontage with warm arcade light, the sea across the road and the Mourne Mountains behind the town; indicative, not a survey",
+  },
+];
+---
+
+<figure class="ka-promenade-plate" data-ka-promenade-plate>
+  <div class="ka-promenade-frames">
+    {plates.map((plate, index) => (
+      <div class="ka-promenade-frame" data-ka-plate={plate.id} hidden={index !== 0 ? true : undefined}>
+        <ResponsiveImage
+          pictureClass="ka-promenade-picture"
+          class="ka-promenade-image"
+          src={plate.src}
+          alt={plate.alt}
+          width="1672"
+          height="941"
+          loading={index === 0 ? "eager" : "lazy"}
+          sizes={sizes}
+        />
+      </div>
+    ))}
+  </div>
+  <figcaption>
+    <span>AI-generated image · indicative, not a survey</span>
+    <span aria-hidden="true">77–79 · Central Promenade · Newcastle</span>
+  </figcaption>
+</figure>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll("[data-ka-promenade-plate]").forEach((plate) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const bands = [
+        { id: "light", from: 7, to: 17 },
+        { id: "lit", from: 17, to: 7 },
+      ];
+      const hour = new Date().getHours();
+      const band = bands.find(({ from, to }) =>
+        from < to ? hour >= from && hour < to : hour >= from || hour < to,
+      );
+      if (!band) return;
+
+      const target = plate.querySelector(`[data-ka-plate="${band.id}"]`);
+      if (!target || !target.hidden) return;
+      plate.querySelectorAll("[data-ka-plate]").forEach((frame) => {
+        frame.hidden = frame !== target;
+      });
+      const image = target.querySelector("img");
+      if (image) image.loading = "eager";
+    });
+  })();
+</script>

@@ -3,19 +3,16 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import SeasonPanel from "./SeasonPanel.astro";
+import PromenadePlate from "./PromenadePlate.astro";
+import JourneyPlate from "./JourneyPlate.astro";
 import {
   ADDRESS,
-  AVOCA,
-  BBC_ARCHIVE,
   FACEBOOK,
   INSTAGRAM,
   PHONE,
   PHONE_HREF,
-  READ_ON,
   arc,
-  avoca,
-  changeMemory,
-  visit,
+  timelineTicks,
 } from "./record";
 
 /* The elevation of this page follows
@@ -31,10 +28,12 @@ import {
    one rule that overrides everything else on this page: no time of day, ever
    — see rule 1 in record.ts.
 
-   Move 5 (the drawn promenade-at-dusk plate, and the day/dusk clock swap that
-   would ride on it) is not built. It needs its own drawing session; the
-   withdrawn 2023 exterior photograph stays withdrawn until then, and the page
-   carries no depiction of the frontage. */
+   First viewport: brand and thesis beside the generated promenade plate (move
+   5). The late-1960s memory (move 1) sits just below as a supporting voice —
+   still dated, sourced and era-framed, but no longer the right-hand half of
+   the opening. The light plate is the no-JavaScript and reduced-motion
+   default; the lit sibling is a progressive enhancement on the visitor's
+   local clock. */
 ---
 
 <ConceptLayout
@@ -42,7 +41,7 @@ import {
   slug="kent-amusements"
   bodyClass="concept-page concept-kent"
   lang="en-GB"
-  bannerNote="The quoted memories are other people's, carried with their era and their source; the arcade's own hours live on its Facebook page."
+  bannerNote="The promenade plates and afternoon storyboard are AI-generated illustrations; the quoted memories and the Avoca listing are other people's words; the arcade's own hours live on its Facebook page."
 >
   <div class="ka-strip">
     <span><strong>{ADDRESS}</strong> · Newcastle, Co. Down</span>
@@ -87,90 +86,113 @@ import {
         </div>
       </section>
 
-      <!-- Move 1. No sentence the arcade wrote about itself exists on the open
-           web — its channels are all behind Meta's login. So the town speaks
-           instead, verbatim, dated, and unmistakably about the sixties. -->
-      <section class="ka-remember" aria-labelledby="ka-remember-heading">
-        <div class="ka-remember-head">
-          <span id="ka-remember-heading">Newcastle remembers the change booth</span>
-          <span class="ka-era-tag">A memory of the late 1960s</span>
-        </div>
-        <figure class="ka-memory">
-          <blockquote>
-            <p>{changeMemory.quote}</p>
-          </blockquote>
-          <figcaption>
-            <strong>{changeMemory.who}.</strong>
-            <span>{changeMemory.source} · read {READ_ON} · quoted with its shift hours left out</span>
-            <a href={BBC_ARCHIVE} rel="external">Read the rest of the archive <span aria-hidden="true">→</span></a>
-          </figcaption>
-        </figure>
-        <figure class="ka-avoca">
-          <blockquote>
-            <p>{avoca.quote}</p>
-          </blockquote>
-          <figcaption>
-            <strong>{avoca.who}</strong> · {avoca.source}.
-            <a href={AVOCA} rel="external">See their listing <span aria-hidden="true">→</span></a>
-          </figcaption>
-        </figure>
-      </section>
+      <!-- Move 5. The promenade is the first-viewport visual: same geography
+           plate the brief asked for, filling the column the quote used to own. -->
+      <div class="ka-hero-plate">
+        <PromenadePlate sizes="(max-width: 940px) 100vw, 50vw" />
+      </div>
 
       <nav class="ka-rail" aria-label="Sections and contact">
-        <a class="ka-rail-cell" href="#summers"><span class="ka-ride">Fifty summers</span><span class="ka-ride-note">Late 1960s to 2026</span></a>
+        <a class="ka-rail-cell" href="#summers"><span class="ka-ride">Fifty summers</span><span class="ka-ride-note">1968 to 2026</span></a>
         <a class="ka-rail-cell" href="#afternoon"><span class="ka-ride">An afternoon</span><span class="ka-ride-note">Six steps, in order</span></a>
         <a class="ka-rail-cell" href="#season"><span class="ka-ride">Hours</span><span class="ka-ride-note">They move with the season</span></a>
         <a class="ka-rail-cell" href={PHONE_HREF}><span class="ka-ride">Call us</span><span class="ka-ride-note">{PHONE} →</span></a>
       </nav>
     </div>
 
-    <!-- Move 2. The jukebox-to-VR line in one glance, dated at both ends.
-         Every entry carries its source; an undated milestone does not appear. -->
+    <!-- Move 1 + 2. A two-stop timeline from c. 1968 to the VR launch, with the
+         town's memories and the Avoca line as loose ticks on the spine. -->
     <section class="ka-summers" id="summers" aria-labelledby="ka-summers-heading">
       <div class="ka-summers-intro">
         <p class="ka-kicker">Fifty summers</p>
         <h2 id="ka-summers-heading">Same promenade. <em>Different machines.</em></h2>
         <p class="ka-summers-lede">
-          Four dates we can prove. Everything between them is summers.
+          From about 1968 on the Central Promenade to the VR zone — and the
+          summers, and the voices, between them.
         </p>
       </div>
-      <ol class="ka-arc">
-        {arc.map((entry) => (
-          <li class="ka-arc-entry" id={`summer-${entry.id}`}>
-            <span class="ka-arc-when">{entry.when}</span>
-            <p class="ka-arc-line">{entry.line}</p>
-            {entry.quote && (
-              <figure class="ka-arc-quote">
-                <blockquote><p>{entry.quote.quote}</p></blockquote>
-                <figcaption>{entry.quote.who} · {entry.quote.source}</figcaption>
-              </figure>
-            )}
-            <span class="ka-arc-source">{entry.source}</span>
-          </li>
-        ))}
-      </ol>
+
+      <div class="ka-timeline">
+        <div class="ka-timeline-band ka-timeline-band--above">
+          {timelineTicks.filter((tick) => tick.band === "above").map((tick) => (
+            <figure
+              class:list={[
+                tick.kind === "avoca" && "ka-avoca",
+                "ka-timeline-tick",
+              ]}
+              style={`--tick: ${tick.at}%;`}
+            >
+              {tick.era && <span class="ka-era-tag">{tick.era}</span>}
+              <blockquote><p>{tick.quote}</p></blockquote>
+              <figcaption>
+                <strong>{tick.who}{tick.kind === "memory" ? "." : ""}</strong>
+                <span>{tick.source}</span>
+                {tick.href && (
+                  <a href={tick.href} rel="external">
+                    {tick.kind === "avoca" ? "See their listing" : "Read the archive"}
+                    <span aria-hidden="true"> →</span>
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div class="ka-timeline-rail">
+          <div class="ka-timeline-track" aria-hidden="true">
+            <span class="ka-timeline-spine"></span>
+            <span class="ka-timeline-dot ka-timeline-dot--start"></span>
+            <span class="ka-timeline-dot ka-timeline-dot--end"></span>
+          </div>
+          <ol class="ka-arc" aria-label="Kent Amusements on the promenade, 1968 to 2026">
+            {arc.map((entry) => (
+              <li class:list={["ka-arc-entry", `ka-arc-entry--${entry.id}`]} id={`summer-${entry.id}`}>
+                <span class="ka-arc-when">{entry.when}</span>
+                <p class="ka-arc-line">{entry.line}</p>
+                <span class="ka-arc-source">{entry.source}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="ka-timeline-band ka-timeline-band--below">
+          {timelineTicks.filter((tick) => tick.band === "below").map((tick) => (
+            <figure
+              class:list={["ka-memory", "ka-timeline-tick"]}
+              style={`--tick: ${tick.at}%;`}
+            >
+              {tick.era && <span class="ka-era-tag">{tick.era}</span>}
+              <blockquote><p>{tick.quote}</p></blockquote>
+              <figcaption>
+                <strong>{tick.who}.</strong>
+                <span>
+                  {tick.source}
+                  {tick.elided ? " · quoted with its shift hours left out" : ""}
+                </span>
+                {tick.href && (
+                  <a href={tick.href} rel="external">
+                    Read the archive <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
     </section>
 
-    <!-- Move 3. The ritual staged in the order it happens, using only verified
-         material. Step 02 is the hinge: the change is where the sixties memory
-         and this afternoon are the same afternoon. -->
+    <!-- Move 3. The researched storyboard split into two three-panel strips,
+         with each beat's description under the art. Step 02 is the hinge. -->
     <section class="ka-afternoon" id="afternoon" aria-labelledby="ka-afternoon-heading">
       <div class="ka-afternoon-intro">
         <p class="ka-kicker">An afternoon here</p>
         <h2 id="ka-afternoon-heading">How it goes.</h2>
         <p class="ka-afternoon-lede">
-          Six steps, the same six for fifty summers.
+          Six steps, the same six for fifty summers — in, through, and back out
+          to the sea.
         </p>
       </div>
-      <ol class="ka-visit">
-        {visit.map((step) => (
-          <li class:list={["ka-visit-step", step.id === "change" && "ka-visit-step--hinge"]}>
-            <span class="ka-visit-num">{step.step}</span>
-            <strong class="ka-visit-name">{step.name}</strong>
-            <span class="ka-visit-line">{step.line}</span>
-          </li>
-        ))}
-      </ol>
+      <JourneyPlate />
     </section>
 
     <!-- Move 4. The ritual is the information; today's answer belongs to the

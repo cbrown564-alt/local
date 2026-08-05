@@ -145,6 +145,42 @@ of these businesses supplied one.
 
 ### Castle Farm and Newcastle Family Dental concept plates
 
+### Kent Amusements concept plates
+
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard.png` — **concept asset** (generated 5 August 2026). AI-generated single wide six-panel ink-and-gouache storyboard made with the built-in OpenAI image generation tool for Kent Amusements move 3 / the staged afternoon. It follows the promenade, change, arcade floor, dodgems, VR and return to the sea in one continuous indicative scene. It is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, attractions beyond the published list, opening hours, prices, or premises detail; the panel numbers are the only text in the artwork.
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3.png` — **concept asset / alternate composition** (generated 5 August 2026). AI-generated 2-row × 3-column version of the six-panel ink-and-gouache storyboard above, made with the built-in OpenAI image generation tool from that plate as a composition reference. It keeps the same scene order, numbering, palette and indicative geography; it is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, opening hours, prices, or premises detail.
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png` — **concept asset / researched revision** (generated 5 August 2026). AI-generated revision of the 2-row × 3-column storyboard, made with the built-in OpenAI image generation tool after reviewing the current seafront frontage references, the public business-page mirror's recent posts, and public visitor-photo descriptions. It carries researched cues — long glazed red-grey terrace, promenade railings, front cash desk, broad machine floor, distinct windowed dodgem room and compact VR island — without copying signage or claiming an exact interior survey. It remains indicative comic-book artwork, not a photograph, map, floorplan, or evidence of current premises detail.
+- `public/media/concepts/kent-amusements/kent-amusements-promenade-day.png` and
+  `kent-amusements-promenade-dusk.png` — **concept assets** (generated 5 August
+  2026). AI-generated hand-drawn ink-and-gouache promenade plates made with the
+  built-in OpenAI image generation tool for Kent Amusements move 5. The day
+  plate shows an indicative illustration of a modest arcade frontage on
+  Newcastle's Central Promenade with the sea and Mourne Mountains; the dusk
+  plate is a lighting-only edit of the same composition with warm interior
+  light. They are not photographs, an exact architectural reconstruction, a
+  survey, a navigational map, or evidence of current signage, opening hours,
+  attractions, or premises detail. The frontage is drawn rather than based on
+  the withdrawn 2023 exterior photograph; any guest-facing use must disclose
+  the generated illustrative boundary and keep the day plate as the reduced-
+  motion/no-JavaScript default.
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png`
+  — **source master** (generated 5 August 2026). AI-generated six-panel 2×3
+  comic storyboard made with GPT image generation for Kent Amusements move 3.
+  Panels follow the verified afternoon in order: promenade, change, machine
+  floor, indoor dodgems, VR, back out to the sea. It is not a photograph,
+  floorplan, survey, or evidence of the arcade's real interior layout,
+  equipment, signage or hours.
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-01-03.png`
+  and `kent-amusements-afternoon-storyboard-04-06.png` — **in use** (cropped
+  5 August 2026 from the researched 2×3 master). Top and bottom three-panel
+  strips served on the concept with captions under each strip; same honesty
+  boundary as the master, disclosed on the page.
+- `public/media/concepts/kent-amusements/kent-amusements-afternoon-journey.png`,
+  `kent-amusements-afternoon-storyboard.png` and
+  `kent-amusements-afternoon-storyboard-2x3.png` — **held** (generated 5 August
+  2026). Earlier afternoon-journey and storyboard attempts kept for reference;
+  not linked from the concept.
+
 - `public/media/concepts/castle-farm/castle-farm-weekly-table-illustration.png` — **in use** (generated 5 August 2026). AI-generated hand-painted editorial still-life made with the built-in OpenAI image generation tool for Castle Farm move 4, showing a possible week's table from the published food categories. It is an illustrative visualisation, not a photograph of Castle Farm, its kitchen or an exact current box, and carries no brand, packaging or availability claim.
 - `public/media/concepts/castle-farm/castle-farm-delivery-round-plate.png` — **in use** (generated and revised 5 August 2026). AI-generated hand-drawn ink-and-gouache route plate made with the built-in OpenAI image generation tool for Castle Farm move 5. It uses only towns named in the farm's published schedule and arranges Tuesday, Wednesday, Thursday and Friday clockwise; it is an indicative drawing, not a survey, navigational map or exact route record.
 - `public/media/concepts/newcastle-dental/newcastle-dental-calm-room-plate.png` — **concept asset** (generated 5 August 2026). AI-generated hand-drawn periwinkle room illustration made with the built-in OpenAI image generation tool for Newcastle Family Dental Care move 4. It imagines a calm treatment room with a chair by a window and plants; it is not a photograph or evidence of the practice's actual interior, facilities or furnishings.

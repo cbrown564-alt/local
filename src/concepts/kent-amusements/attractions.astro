@@ -3,6 +3,7 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import SeasonPanel from "./SeasonPanel.astro";
+import PromenadePlate from "./PromenadePlate.astro";
 import {
   ADDRESS,
   AVOCA,
@@ -64,87 +65,93 @@ const marks: Record<string, { cls: string; svg: string }> = {
     <a class="ka-call" href={PHONE_HREF}>Call {PHONE}</a>
   </header>
 
-  <main class="ka-atx-main">
-    <section class="ka-atx-story">
-      <p class="ka-kicker">What's inside</p>
-      <h1 class="ka-atx-heading">Three things, and <em>fifty summers</em> of them.</h1>
-      <p class="ka-atx-lede">
-        The list is short and it has not needed to be long. Here is what is on
-        the floor before you cross the promenade.
-      </p>
-      <div class="ka-atx-cards">
-        {attractions.map((item) => (
-          <article class="ka-atx-card">
-            <div class:list={["ka-atx-mark", marks[item.id]?.cls]} aria-hidden="true">
-              {marks[item.id]?.svg === "dodgems" && (
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="3" y="10" width="16" height="7" rx="3.5" stroke="white" stroke-width="1.8" />
-                  <path d="M7 10 V7.5 Q11 5 15 7.5 V10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                  <circle cx="7.5" cy="17.5" r="1.6" fill="white" />
-                  <circle cx="14.5" cy="17.5" r="1.6" fill="white" />
-                </svg>
-              )}
-              {marks[item.id]?.svg === "vr" && (
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="2" y="8" width="18" height="9" rx="3" stroke="white" stroke-width="1.8" />
-                  <circle cx="7.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
-                  <circle cx="14.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
-                  <path d="M9.5 12.5 H12.5" stroke="white" stroke-width="1.4" />
-                  <path d="M8 8 V5.5 Q11 4 14 5.5 V8" stroke="white" stroke-width="1.6" stroke-linecap="round" />
-                </svg>
-              )}
-              {marks[item.id]?.svg === "arcade" && (
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="white" stroke-width="1.8" />
-                  <circle cx="11" cy="9" r="2.8" stroke="white" stroke-width="1.5" />
-                  <circle cx="8" cy="15.5" r="1.2" fill="white" />
-                  <circle cx="11" cy="15.5" r="1.2" fill="white" />
-                  <circle cx="14" cy="15.5" r="1.2" fill="white" />
-                </svg>
-              )}
-            </div>
-            <div class="ka-atx-body">
-              <strong class="ka-atx-name">{item.name}</strong>
-              <span class="ka-atx-desc">{item.desc}</span>
-              <small class="ka-atx-source">{item.note}</small>
-            </div>
-          </article>
-        ))}
-      </div>
-      <div class="ka-actions">
-        <a class="ka-cta" href="/concepts/kent-amusements/#afternoon">How an afternoon goes</a>
-        <a class="ka-link" href="/concepts/kent-amusements/">← Home</a>
-      </div>
-    </section>
+  <main>
+    <!-- First viewport stays a two-column grid; the promenade plate is theatre
+         below it, not an auto-placed cell inside it. -->
+    <div class="ka-atx-main">
+      <section class="ka-atx-story">
+        <p class="ka-kicker">What's inside</p>
+        <h1 class="ka-atx-heading">Three things, and <em>fifty summers</em> of them.</h1>
+        <p class="ka-atx-lede">
+          The list is short and it has not needed to be long. Here is what is on
+          the floor before you cross the promenade.
+        </p>
+        <div class="ka-atx-cards">
+          {attractions.map((item) => (
+            <article class="ka-atx-card">
+              <div class:list={["ka-atx-mark", marks[item.id]?.cls]} aria-hidden="true">
+                {marks[item.id]?.svg === "dodgems" && (
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="3" y="10" width="16" height="7" rx="3.5" stroke="white" stroke-width="1.8" />
+                    <path d="M7 10 V7.5 Q11 5 15 7.5 V10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="7.5" cy="17.5" r="1.6" fill="white" />
+                    <circle cx="14.5" cy="17.5" r="1.6" fill="white" />
+                  </svg>
+                )}
+                {marks[item.id]?.svg === "vr" && (
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="2" y="8" width="18" height="9" rx="3" stroke="white" stroke-width="1.8" />
+                    <circle cx="7.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
+                    <circle cx="14.5" cy="12.5" r="2" stroke="white" stroke-width="1.5" />
+                    <path d="M9.5 12.5 H12.5" stroke="white" stroke-width="1.4" />
+                    <path d="M8 8 V5.5 Q11 4 14 5.5 V8" stroke="white" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                )}
+                {marks[item.id]?.svg === "arcade" && (
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="white" stroke-width="1.8" />
+                    <circle cx="11" cy="9" r="2.8" stroke="white" stroke-width="1.5" />
+                    <circle cx="8" cy="15.5" r="1.2" fill="white" />
+                    <circle cx="11" cy="15.5" r="1.2" fill="white" />
+                    <circle cx="14" cy="15.5" r="1.2" fill="white" />
+                  </svg>
+                )}
+              </div>
+              <div class="ka-atx-body">
+                <strong class="ka-atx-name">{item.name}</strong>
+                <span class="ka-atx-desc">{item.desc}</span>
+                <small class="ka-atx-source">{item.note}</small>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="ka-actions">
+          <a class="ka-cta" href="/concepts/kent-amusements/#afternoon">How an afternoon goes</a>
+          <a class="ka-link" href="/concepts/kent-amusements/">← Home</a>
+        </div>
+      </section>
 
-    <aside class="ka-atx-panel" id="season">
-      <SeasonPanel headingId="ka-season-heading" />
-      <figure class="ka-avoca ka-avoca--atx">
-        <blockquote><p>{avoca.quote}</p></blockquote>
-        <figcaption>
-          <strong>{avoca.who}</strong> · {avoca.source}.
-          <a href={AVOCA} rel="external">See their listing <span aria-hidden="true">→</span></a>
-        </figcaption>
-      </figure>
-    </aside>
+      <aside class="ka-atx-panel" id="season">
+        <SeasonPanel headingId="ka-season-heading" />
+        <figure class="ka-avoca ka-avoca--atx">
+          <blockquote><p>{avoca.quote}</p></blockquote>
+          <figcaption>
+            <strong>{avoca.who}</strong> · {avoca.source}.
+            <a href={AVOCA} rel="external">See their listing <span aria-hidden="true">→</span></a>
+          </figcaption>
+        </figure>
+      </aside>
 
-    <nav class="ka-rail" aria-label="Sections and contact">
-      <a class="ka-rail-cell" href="/concepts/kent-amusements/">
-        <span class="ka-ride">Home</span>
-        <span class="ka-ride-note">The promenade</span>
-      </a>
-      <a class="ka-rail-cell" href="/concepts/kent-amusements/#summers">
-        <span class="ka-ride">Fifty summers</span>
-        <span class="ka-ride-note">Late 1960s to 2026</span>
-      </a>
-      <a class="ka-rail-cell" href="/concepts/kent-amusements/#afternoon">
-        <span class="ka-ride">An afternoon</span>
-        <span class="ka-ride-note">Six steps, in order</span>
-      </a>
-      <a class="ka-rail-cell" href={PHONE_HREF}>
-        <span class="ka-ride">Call us</span>
-        <span class="ka-ride-note">{PHONE} →</span>
-      </a>
-    </nav>
+      <nav class="ka-rail" aria-label="Sections and contact">
+        <a class="ka-rail-cell" href="/concepts/kent-amusements/">
+          <span class="ka-ride">Home</span>
+          <span class="ka-ride-note">The promenade</span>
+        </a>
+        <a class="ka-rail-cell" href="/concepts/kent-amusements/#summers">
+          <span class="ka-ride">Fifty summers</span>
+          <span class="ka-ride-note">1968 to 2026</span>
+        </a>
+        <a class="ka-rail-cell" href="/concepts/kent-amusements/#afternoon">
+          <span class="ka-ride">An afternoon</span>
+          <span class="ka-ride-note">Six steps, in order</span>
+        </a>
+        <a class="ka-rail-cell" href={PHONE_HREF}>
+          <span class="ka-ride">Call us</span>
+          <span class="ka-ride-note">{PHONE} →</span>
+        </a>
+      </nav>
+    </div>
+
+    <PromenadePlate />
   </main>
 </ConceptLayout>

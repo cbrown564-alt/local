@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pins the Kent Amusements elevation (moves 1–4 of
+ * Pins the Kent Amusements elevation (moves 1–5 of
  * research/concepts/kent-amusements/kent-amusements-elevation-brief.md).
  *
  * Runs against the built pages, not the source, so a template that stops
@@ -106,50 +106,58 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
 }
 
 // ---------------------------------------------------------------------------
-// Move 1 — the town's memory, verbatim, dated, sourced, and framed as its era.
+// Moves 1–2 — two-stop timeline with three quote ticks. Memories stay framed
+// as their era; Avoca stays attributed; no duplicate remember strip.
 // ---------------------------------------------------------------------------
 const MEMORY =
   "You had to work long hours … but we didn't care, it was summer and we hadn't a care in the world";
-const remember = block(home.flat, 'class="ka-remember"', "</section>");
-check("the memory panel is missing from the home page", remember.length > 0);
+const summers = block(home.flat, 'class="ka-summers"', 'class="ka-afternoon"');
+check("the fifty-summers band is missing", summers.length > 0);
+check("the timeline is missing", /class="ka-timeline"/.test(summers));
+check(
+  "the duplicate remember strip is still on the home page",
+  !/class="ka-remember"/.test(home.flat),
+);
+check(
+  "the promenade plate is not in the first viewport, ahead of the timeline",
+  home.flat.indexOf('class="ka-hero-plate"') < home.flat.indexOf('class="ka-summers"'),
+);
+
+const memoryTick = block(summers, 'class="ka-memory', "</figure>");
+check("the change-booth memory tick is missing", memoryTick.length > 0);
 check(
   "the change-booth memory is not quoted verbatim",
-  visible(remember).includes(MEMORY),
+  visible(memoryTick).includes(MEMORY),
 );
 check(
   "the memory is not marked as a memory of its era",
-  visible(remember).includes("A memory of the late 1960s"),
+  visible(memoryTick).includes("A memory of the late 1960s"),
 );
 check(
   "the memory does not name who is speaking or when",
-  visible(remember).includes(
+  visible(memoryTick).includes(
     "A summer worker at Kent Amusements, dishing out the change in the late 1960s",
   ),
 );
 check(
   "the memory does not carry its archive and read date",
-  /BBC Your Place and Mine · Newcastle memory archive · read 4 August 2026/.test(visible(remember)),
+  /BBC Your Place and Mine · Newcastle memory archive · read 4 August 2026/.test(
+    visible(memoryTick),
+  ),
 );
 check(
   "the memory does not disclose that its shift hours are elided",
-  visible(remember).includes("quoted with its shift hours left out"),
+  visible(memoryTick).includes("quoted with its shift hours left out"),
 );
 check(
   "the BBC archive is not linked so the owner can read the rest",
-  remember.includes("bbc.co.uk/northernireland/yourplaceandmine/down/A781698.shtml"),
+  memoryTick.includes("bbc.co.uk/northernireland/yourplaceandmine/down/A781698.shtml"),
 );
 check(
   "the memory is not inside a blockquote",
-  /class="ka-memory"[\s\S]{0,400}<blockquote>/.test(remember),
-);
-/* The memory must lead: it is the recognition that makes an owner stop, and it
-   has to be in the first screen the comparison still captures. */
-check(
-  "the memory is not in the first screen, above the arc band",
-  home.flat.indexOf('class="ka-remember"') < home.flat.indexOf('class="ka-summers"'),
+  /<blockquote>/.test(memoryTick),
 );
 
-// The Avoca's words stay the Avoca's, on both pages, never adopted as ours.
 const AVOCA_QUOTE =
   "Newcastle County Down's premier family entertainment centre. Amusement arcade and one of NI's only homes to indoor Dodgem Cars.";
 for (const [name, page] of Object.entries({ home, attractions: atx })) {
@@ -172,63 +180,59 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
     `the Avoca description is not inside a blockquote on the ${name} page`,
     /<blockquote>/.test(avoca),
   );
-  /* "Premier" and the indoor-dodgems scarcity are their claim. Outside the
-     quotation the page may not say either in its own voice. */
   const withoutQuote = page.text.split(AVOCA_QUOTE).join(" ");
   check(`the page adopts "premier" in its own voice on the ${name} page`, !/\bpremier\b/i.test(withoutQuote));
   check(
     `the page adopts the indoor-dodgems scarcity claim in its own voice on the ${name} page`,
-    !/only homes? to indoor/i.test(withoutQuote),
+    !/\bonly\b.{0,40}\bindoor\b/i.test(withoutQuote),
   );
 }
 
-// ---------------------------------------------------------------------------
-// Move 2 — the fifty-summers band. Every entry dated; no undated milestone.
-// ---------------------------------------------------------------------------
-const summers = block(home.flat, 'class="ka-summers"', 'class="ka-afternoon"');
-check("the fifty-summers band is missing", summers.length > 0);
-for (const when of ["Late 1960s", "Over fifty summers", "November 2025", "2026"]) {
+for (const when of ["1968", "2026"]) {
   check(
     `arc entry missing: ${when}`,
     new RegExp(`class="ka-arc-when">${when}<`).test(summers),
   );
 }
+check(
+  "the dull middle stops are still on the timeline",
+  !/Over fifty summers|November 2025|Companies House NI688147/.test(visible(summers)),
+);
 const arcSources = summers.match(/class="ka-arc-source">([^<]+)</g) ?? [];
 check(
-  `every arc entry must carry a dated source (found ${arcSources.length} of 4)`,
-  arcSources.length === 4 &&
-    arcSources.every((entry) => /(4 August 2026|22 July 2026|March 2026)/.test(entry)),
+  `every arc entry must carry a dated source (found ${arcSources.length} of 2)`,
+  arcSources.length === 2 &&
+    arcSources.every((entry) => /(4 August 2026|March 2026|1968)/.test(entry)),
 );
-const arcEntries = summers.match(/class="ka-arc-entry"/g) ?? [];
+const arcEntries = summers.match(/class="ka-arc-entry[\s"]/g) ?? [];
 check(
   `the band holds an entry with no source (${arcEntries.length} entries, ${arcSources.length} sources)`,
   arcEntries.length === arcSources.length,
 );
-/* Both ends of the jukebox-to-VR line, which is the essence in one glance. */
 check("the jukebox end of the line is missing", /jukebox/i.test(visible(summers)));
 check("the VR end of the line is missing", /VR zone/.test(visible(summers)));
 check(
-  "the Companies House filing is not attributed to NI688147",
-  visible(summers).includes("Companies House NI688147"),
+  "the opening year is not marked as an estimate from the late-1960s archive",
+  /c\. 1968|late-1960s BBC archive/i.test(visible(summers)),
 );
 check(
   "the VR entry is not attributed to the March 2026 review",
   visible(summers).includes("TripAdvisor review, March 2026"),
 );
-/* The second memory carries the Kent Cafe. It is quoted, and the name appears
-   nowhere else: the cafe's relationship to the arcade is not in the record. */
-const jukeboxQuote = block(summers, 'class="ka-arc-quote"', "</figure>");
+
+const ticks = [...summers.matchAll(/ka-timeline-tick/g)];
+check(`the timeline is missing its three quote ticks (found ${ticks.length})`, ticks.length === 3);
 check(
-  "the jukebox memory is not quoted verbatim",
-  visible(jukeboxQuote).includes("used to hang out at the Kent Cafe playing the juke-box"),
+  "the jukebox memory is not quoted on the timeline",
+  visible(summers).includes("used to hang out at the Kent Cafe playing the juke-box"),
 );
 check(
   "the jukebox memory is not attributed to the archive",
-  visible(jukeboxQuote).includes("BBC Your Place and Mine"),
+  visible(summers).includes("BBC Your Place and Mine"),
 );
 for (const [name, page] of Object.entries({ home, attractions: atx })) {
   const cafeHits = (page.text.match(/Kent Cafe/g) ?? []).length;
-  const insideQuote = visible(jukeboxQuote).includes("Kent Cafe") && name === "home" ? 1 : 0;
+  const insideQuote = visible(summers).includes("Kent Cafe") && name === "home" ? 1 : 0;
   check(
     `the Kent Cafe is named outside the quoted memory on the ${name} page (${cafeHits} mentions)`,
     cafeHits === insideQuote,
@@ -240,6 +244,19 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
 // ---------------------------------------------------------------------------
 const afternoon = block(home.flat, 'class="ka-afternoon"', 'class="ka-season-band"');
 check("the staged afternoon is missing", afternoon.length > 0);
+check(
+  "the afternoon storyboard strips are missing",
+  afternoon.includes("kent-amusements-afternoon-storyboard-01-03.png") &&
+    afternoon.includes("kent-amusements-afternoon-storyboard-04-06.png"),
+);
+check(
+  "the afternoon storyboard disclosure is missing",
+  visible(afternoon).includes("AI-generated image · indicative journey, not a survey"),
+);
+check(
+  "the removed journey-path visual is still on the page",
+  !/ka-journey-path/.test(afternoon),
+);
 const stepNames = [...afternoon.matchAll(/class="ka-visit-name">([^<]+)</g)].map((m) => m[1]);
 check(
   `the afternoon is not the six verified steps in order (got ${JSON.stringify(stepNames)})`,
@@ -251,11 +268,16 @@ check(
   "the steps are not numbered 01 to 06",
   stepNumbers.join("") === "010203040506",
 );
-/* Step 02 is the hinge between the sixties memory and this afternoon, and it
-   is marked as such so the sequence has a centre. */
+/* Step 02 is the hinge between the sixties memory and this afternoon; the VR
+   beat shares the same comic highlight so both ends of the machines-change
+   line read as marked. */
 check(
   "the change step is not marked as the hinge",
   /class="[^"]*ka-visit-step--hinge[^"]*"[\s\S]{0,200}The change/.test(afternoon),
+);
+check(
+  "the VR step does not share the hinge highlight",
+  /class="[^"]*ka-visit-step--hinge[^"]*"[\s\S]{0,200}The VR/.test(afternoon),
 );
 
 // The closed inventory. Every one of these was invented by an earlier draft or
@@ -338,13 +360,27 @@ for (const [label, pattern] of anchors) {
 // Standing constraints that outlive the moves.
 // ---------------------------------------------------------------------------
 /* The 2023 CC BY-SA exterior photograph was withdrawn on 26 July 2026 and
-   stays withdrawn; move 5's drawn plate is not built, so neither page carries
-   any depiction of the frontage. */
+   stays withdrawn. Move 5 uses two generated illustrative plates instead; the
+   light plate remains the no-JavaScript and reduced-motion default. */
 for (const [name, page] of Object.entries({ home, attractions: atx })) {
   const images = [...page.html.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
+  const plate = block(page.flat, 'class="ka-promenade-plate"', "</figure>");
   check(
-    `an image reached the ${name} page while the frontage photograph is withdrawn and the drawn plate unbuilt: ${images.join(" ")}`,
-    images.length === 0,
+    `the promenade plate is missing from the ${name} page`,
+    images.some((image) => image.includes("kent-amusements-promenade-day.png")),
+  );
+  check(
+    `the lit promenade plate is missing from the ${name} page`,
+    images.some((image) => image.includes("kent-amusements-promenade-dusk.png")),
+  );
+  check(
+    `the light plate is not the no-JavaScript default on the ${name} page`,
+    /data-ka-plate="light"(?![^>]*\bhidden\b)/.test(plate) &&
+      /data-ka-plate="lit"[^>]*\bhidden\b/.test(plate),
+  );
+  check(
+    `the generated plate disclosure is missing from the ${name} page`,
+    page.text.includes("AI-generated image · indicative, not a survey"),
   );
   check(
     `the withdrawn 2023 exterior photograph is referenced on the ${name} page`,
@@ -369,9 +405,23 @@ check(
   "the case study does not name the elided shift hours as a limit",
   /shift hours/.test(caseStudy.text),
 );
+/* Pin the Sources & limits block itself — a change-note mention must not
+   greenwash a stale honesty paragraph that still denies any frontage image. */
+const sourcesLimits = block(caseStudy.flat, "Sources &amp; limits", "</section>");
 check(
-  "the case study does not record that the drawn promenade plate is unbuilt",
-  /no depiction of the frontage|frontage is not depicted/i.test(caseStudy.text),
+  "the case study Sources & limits block is missing",
+  sourcesLimits.length > 0,
+);
+check(
+  "the case study Sources & limits block does not record the generated promenade plate boundary",
+  /generated illustrative/i.test(visible(sourcesLimits)) &&
+    /indicative, not a survey/i.test(visible(sourcesLimits)),
+);
+check(
+  "the case study Sources & limits block still denies any frontage depiction",
+  !/Neither screen carries any photograph or illustration|promenade-at-dusk plate proposed|no depiction of the frontage/i.test(
+    visible(sourcesLimits),
+  ),
 );
 
 if (failures.length > 0) {

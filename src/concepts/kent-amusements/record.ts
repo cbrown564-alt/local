@@ -86,39 +86,76 @@ export interface ArcEntry {
   line: string;
   /** Every entry carries a date. An undated milestone does not go in the band. */
   source: string;
-  quote?: Memory;
 }
 
-/** Fifty summers, dated at both ends: the jukebox in the archive, the VR zone
- *  in a review from this year. No entry without a date. */
+/** The timeline runs from an estimated opening year to the VR launch.
+ *  1968 is the middle of the late-1960s band the BBC archive dates; the
+ *  source line says so. No Companies House filler, no undated milestone. */
 export const arc: ArcEntry[] = [
   {
     id: "sixties",
-    when: "Late 1960s",
+    when: "1968",
     line:
-      "The Kent name is already on the promenade. Somebody is in the booth dishing out the change, the jukebox is on, and the Bee Gees are on the jukebox.",
-    source: `BBC memory archive · read ${READ_ON}`,
-    quote: jukeboxMemory,
-  },
-  {
-    id: "fifty",
-    when: "Over fifty summers",
-    line:
-      "The arcade opens on the same Central Promenade site, summer after summer, while the Pierrots, the bandstand and the Palace go from the seafront around it.",
-    source: `Same site verified ${VERIFIED_ON} · the lost seafront from the BBC memory archive, read ${READ_ON}`,
-  },
-  {
-    id: "twenty-five",
-    when: "November 2025",
-    line: "The company files its confirmation statement. Still going, still on the promenade.",
-    source: `Companies House NI688147 · verified ${VERIFIED_ON}`,
+      "The Kent name is already on the promenade — change booth, jukebox, Bee Gees on the speaker.",
+    source: `c. 1968 · mid-point of the late-1960s BBC archive date · read ${READ_ON}`,
   },
   {
     id: "twenty-six",
     when: "2026",
     line:
-      "The VR zone opens — the newest thing on the seafront, inside the oldest thing on it. A visitor's review in March picks it out by name.",
+      "The VR zone opens — newest thing on the seafront, inside the oldest. A March review names it.",
     source: `TripAdvisor review, March 2026 · verified ${VERIFIED_ON}`,
+  },
+];
+
+export type TimelineTick = {
+  id: string;
+  /** 0–100 along the spine; loose placement between the two ends. */
+  at: number;
+  band: "above" | "below";
+  kind: "memory" | "avoca";
+  quote: string;
+  who: string;
+  source: string;
+  era?: string;
+  elided?: boolean;
+  href?: string;
+};
+
+/** Colour on the line: two late-1960s memories and the Avoca's present-tense
+ *  description, loosely between the ends. */
+export const timelineTicks: TimelineTick[] = [
+  {
+    id: "jukebox",
+    at: 28,
+    band: "above",
+    kind: "memory",
+    quote: jukeboxMemory.quote,
+    who: jukeboxMemory.who,
+    source: jukeboxMemory.source,
+    era: "A memory of the late 1960s",
+  },
+  {
+    id: "change",
+    at: 52,
+    band: "below",
+    kind: "memory",
+    quote: changeMemory.quote,
+    who: changeMemory.who,
+    source: `${changeMemory.source} · read ${READ_ON}`,
+    era: "A memory of the late 1960s",
+    elided: true,
+    href: BBC_ARCHIVE,
+  },
+  {
+    id: "avoca",
+    at: 76,
+    band: "above",
+    kind: "avoca",
+    quote: avoca.quote,
+    who: avoca.who,
+    source: avoca.source,
+    href: AVOCA,
   },
 ];
 
@@ -157,7 +194,7 @@ export const visit: VisitStep[] = [
     id: "dodgems",
     step: "04",
     name: "The dodgems",
-    line: "Indoor bumper cars — the Avoca Hotel calls them one of NI's only indoor Dodgem Cars.",
+    line: "Indoor bumper cars — named on the Avoca Hotel's activities page.",
   },
   {
     id: "vr",

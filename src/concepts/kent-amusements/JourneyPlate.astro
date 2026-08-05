@@ -1,0 +1,53 @@
+---
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { visit } from "./record";
+
+/* Move 3 theatre — the researched 2×3 storyboard, split into two three-panel
+   strips so each beat can carry its description under the art. Comic frame
+   styling lives in styles.css; honesty stays in the shared disclosure. */
+
+const strips = [
+  {
+    id: "in",
+    src: "/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-01-03.png",
+    alt: "AI-generated comic strip of the first half of a seaside-arcade afternoon: the promenade, the change, and the machine floor; indicative journey, not a survey",
+    steps: visit.slice(0, 3),
+  },
+  {
+    id: "out",
+    src: "/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-04-06.png",
+    alt: "AI-generated comic strip of the second half of a seaside-arcade afternoon: indoor dodgems, the VR corner, and back out to the sea; indicative journey, not a survey",
+    steps: visit.slice(3, 6),
+  },
+];
+---
+
+<div class="ka-comic">
+  {strips.map((strip) => (
+    <figure class="ka-comic-strip">
+      <ResponsiveImage
+        pictureClass="ka-comic-picture"
+        class="ka-comic-image"
+        src={strip.src}
+        alt={strip.alt}
+        width="1536"
+        height="512"
+        loading="lazy"
+        sizes="(max-width: 940px) 100vw, 1265px"
+      />
+      <ol class="ka-visit" aria-label={strip.id === "in" ? "Afternoon steps 01 to 03" : "Afternoon steps 04 to 06"}>
+        {strip.steps.map((step) => (
+          <li class:list={["ka-visit-step", (step.id === "change" || step.id === "vr") && "ka-visit-step--hinge"]}>
+            <span class="ka-visit-num">{step.step}</span>
+            <strong class="ka-visit-name">{step.name}</strong>
+            <span class="ka-visit-line">{step.line}</span>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  ))}
+  <p class="ka-comic-disclosure">
+    <span>AI-generated image · indicative journey, not a survey</span>
+    <span aria-hidden="true">01–06 · promenade to sea</span>
+  </p>
+</div>
