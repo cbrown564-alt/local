@@ -4,14 +4,16 @@ import SwapShop from "./SwapShop.astro";
 
 interface Props {
   theme: SwapTestTheme;
+  /** Page order 1–10 — internal theme ids stay off-stage. */
+  n: number;
 }
 
-const { theme } = Astro.props;
+const { theme, n } = Astro.props;
 ---
 
 <section class="wwlf-theme wwlf-theme--swap" id={theme.id} data-theme={theme.id}>
   <header class="wwlf-theme-head">
-    <p class="wwlf-theme-id">{theme.id}</p>
+    <p class="wwlf-theme-id">{String(n).padStart(2, "0")}</p>
     <div class="wwlf-theme-titles">
       <p class="wwlf-theme-shape">{theme.shape}</p>
       <h3 class="wwlf-theme-name">{theme.theme}</h3>
@@ -21,8 +23,8 @@ const { theme } = Astro.props;
 
   <div class="swap" data-swap-test data-phase="start">
     <p class="swap-errand">
-      <strong>The errand:</strong> tell these two apart. Then drag the blank nameplate from one
-      to the other.
+      <strong>Try this:</strong> tell these two apart. Then drag the blank nameplate from one to
+      the other.
     </p>
 
     <div class="swap-static" data-swap-static>

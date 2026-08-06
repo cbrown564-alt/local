@@ -1,5 +1,5 @@
 /**
- * The ten fault-walks for /prototypes/what-we-look-for/ — the page briefed in
+ * The ten fault-walks for /what-we-look-for/ — the page briefed in
  * research/what-we-look-for-brief.md, staging the fault taxonomy from
  * research/film/studio-recurring-themes.md as invented wireframes.
  *
@@ -163,9 +163,9 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
           {
             kind: "button",
             x: 22,
-            y: 63,
-            w: 40,
-            h: 6,
+            y: 62,
+            w: 48,
+            h: 7,
             label: "Manage choices",
             note: "A maze of toggles. The page is still behind it.",
           },
@@ -530,7 +530,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     id: "t8",
     theme: "Locked in a file",
     shape: "a counter business",
-    message: "A menu nobody opens is a menu nobody read.",
+    message: "A menu nobody opens is a menu nobody reads.",
     decision:
       "The PDF was easy — export, upload, done. It was made for the kitchen printer, not for a phone in the street.",
     errand: "Read tonight's main courses",
@@ -803,12 +803,12 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
           { kind: "card", x: 10, y: 10, w: 80, h: 22 },
           band(16, 15, 64, 3),
           band(16, 20, 70, 3),
-          band(16, 26, 40, 2.5, { label: "three summers ago" }),
+          band(16, 26, 48, 2.5, { label: "three summers ago" }),
           band(10, 38, 80, 4),
           { kind: "card", x: 10, y: 44, w: 80, h: 22 },
           band(16, 49, 60, 3),
           band(16, 54, 68, 3),
-          band(16, 60, 40, 2.5, { label: "four summers ago" }),
+          band(16, 60, 48, 2.5, { label: "four summers ago" }),
           { kind: "scroll", x: 10, y: 86, w: 80, h: 8, label: "scroll", tap: "foot" },
         ],
       },
@@ -913,16 +913,16 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
           band(10, 18, 60, 4),
           {
             kind: "band",
-            x: 10,
+            x: 6,
             y: 66,
-            w: 76,
-            h: 4,
+            w: 88,
+            h: 5,
             label: "the years · the award · the accreditations",
             goal: true,
           },
-          { kind: "mark", x: 16, y: 74, w: 10, h: 10 },
-          { kind: "mark", x: 34, y: 74, w: 10, h: 10 },
-          { kind: "mark", x: 52, y: 74, w: 10, h: 10 },
+          { kind: "mark", x: 16, y: 76, w: 10, h: 10 },
+          { kind: "mark", x: 34, y: 76, w: 10, h: 10 },
+          { kind: "mark", x: 52, y: 76, w: 10, h: 10 },
         ],
       },
     ],
@@ -933,9 +933,9 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         blocks: [
           {
             kind: "status",
-            x: 10,
+            x: 2,
             y: 10,
-            w: 80,
+            w: 96,
             h: 6,
             label: "the years · the award · the accreditations",
             goal: true,

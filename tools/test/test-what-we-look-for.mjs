@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pins the /prototypes/what-we-look-for/ fault-walks, from
+ * Pins the /what-we-look-for/ fault-walks, from
  * research/what-we-look-for-brief.md: "Test the fault, not the fix."
  *
  * The failure mode this guards is a mock whose fault becomes accidentally
@@ -18,18 +18,10 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
 
-const pagePath = path.join(
-  projectRoot,
-  "dist",
-  "prototypes",
-  "what-we-look-for",
-  "index.html",
-);
+const pagePath = path.join(projectRoot, "dist", "what-we-look-for", "index.html");
 
 if (!existsSync(pagePath)) {
-  console.error(
-    "Missing dist/prototypes/what-we-look-for/index.html — run `pnpm build` first.",
-  );
+  console.error("Missing dist/what-we-look-for/index.html — run `pnpm build` first.");
   process.exit(1);
 }
 
@@ -178,7 +170,7 @@ const MESSAGES = {
   t4: "People arrive with one question. The first screen should answer it.",
   t5: "“Get in touch” means the customer does the work.",
   t6: "Your website greets people with what worries you. They came with a question.",
-  t8: "A menu nobody opens is a menu nobody read.",
+  t8: "A menu nobody opens is a menu nobody reads.",
   t2: "Every link that ends in nothing was somebody deciding to visit you.",
   t3: "The biggest name on your website should be yours.",
   t9: "Your site is telling people how old it is, not how good you are.",
@@ -200,7 +192,7 @@ check(
 // The page's own rules: invented mocks, stated once, plainly, up top.
 check(
   "the invented-demonstrations statement is missing or reworded",
-  text.includes("Every demonstration on this page is invented") &&
+  text.includes("These are made-up sites") &&
     text.includes("never onto a public page"),
 );
 check(

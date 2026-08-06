@@ -4,9 +4,11 @@ import FaultPanelView from "./FaultPanelView.astro";
 
 interface Props {
   walk: FaultWalk;
+  /** Page order 1–10 — internal theme ids stay off-stage. */
+  n: number;
 }
 
-const { walk } = Astro.props;
+const { walk, n } = Astro.props;
 
 const panelById = (id: string) => {
   const panel = [...walk.before, ...walk.after].find((entry) => entry.id === id);
@@ -34,7 +36,7 @@ const graph = {
 
 <section class="wwlf-theme" id={walk.id} data-theme={walk.id}>
   <header class="wwlf-theme-head">
-    <p class="wwlf-theme-id">{walk.id}</p>
+    <p class="wwlf-theme-id">{String(n).padStart(2, "0")}</p>
     <div class="wwlf-theme-titles">
       <p class="wwlf-theme-shape">{walk.shape}</p>
       <h3 class="wwlf-theme-name">{walk.theme}</h3>
@@ -43,7 +45,7 @@ const graph = {
   </header>
 
   <div class="fw" data-fault-walk>
-    <p class="fw-errand"><strong>Your errand:</strong> {walk.errand.toLowerCase()}.</p>
+    <p class="fw-errand"><strong>Try this:</strong> {walk.errand.toLowerCase()}.</p>
 
     <div class="fw-static" data-fw-static>
       <div class="fw-plates">

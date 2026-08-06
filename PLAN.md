@@ -430,12 +430,16 @@ and "no single form", and its resolution is
 Order: fault walk first, shapes second, assembly last; none ships ahead of the
 request path.
 
+**Done 6 August 2026 — `/what-we-look-for/` is public.** The fault-walk study
+shipped as a main page: page-order numbering 1–10 (internal theme ids off-stage),
+a task strip of the jobs a stranger might try, guest-facing copy without studio
+repo paths, and links from the site header and footer. Watch outreach before
+deciding whether the shapes and assembly briefs become pages.
+
 **Next pick-up:** run the revised slate in the themes brief — gens 1–6 are T7,
 T1, T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
 blank-lettering pass first on every survivor. Sidecars to
-`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day. In
-parallel, and not blocked on any gen: the fault-walk study under
-`src/pages/prototypes/`, which is where `/what-we-look-for/` gets proven.
+`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day.
 
 ## Blocked or deferred
 

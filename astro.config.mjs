@@ -56,6 +56,10 @@ const devOnlyWorkbench = {
 export default defineConfig({
   site: "https://mournemade.co.uk",
   trailingSlash: "always",
+  redirects: {
+    "/prototypes/what-we-look-for": "/what-we-look-for/",
+    "/prototypes/what-we-look-for/": "/what-we-look-for/",
+  },
   integrations: [
     devOnlyWorkbench,
     sitemap({

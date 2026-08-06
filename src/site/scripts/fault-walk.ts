@@ -1,6 +1,6 @@
 /**
- * Behaviour for /prototypes/what-we-look-for/ — the walkable errand and the
- * swap test, from research/what-we-look-for-brief.md.
+ * Behaviour for /what-we-look-for/ — the walkable errand and the swap test,
+ * from research/what-we-look-for-brief.md.
  *
  * Both controls are progressive enhancement. No JS or prefers-reduced-motion
  * leaves the static plates in place: the two wireframe states side by side
@@ -169,12 +169,12 @@ function mountWalk(root: HTMLElement): void {
     outcomeEl.textContent = "";
     actualsEl.textContent = "";
     fixButton.classList.remove("is-ready");
-    fixButton.textContent = mode === "after" ? "Walk the fault again" : "Fix it";
+    fixButton.textContent = mode === "after" ? "Show the fault again" : "Fix it";
     const first = panelsData()[0];
     showPanel(first.id);
-    setNote(mode === "after" ? "Same errand. Walk it again." : (first.note ?? ""));
+    setNote(mode === "after" ? "Same job. Try it again." : (first.note ?? ""));
     sr.textContent =
-      mode === "after" ? "The fixed version. Same errand." : "The fault, again.";
+      mode === "after" ? "The fixed version. Same job." : "The fault, again.";
   });
 
   staticLayer.hidden = true;
