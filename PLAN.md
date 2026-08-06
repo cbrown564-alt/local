@@ -318,9 +318,30 @@ highest-stakes conversation is not used to rehearse the approach.
    day after this item was written, and rebuilt without the browser on
    6 August — section 1c item 3. It reaches the endpoint, not the inbox;
    item 6 below is what closes that gap.)
-5. Rebuild the PDFs, inspect the rendered pages and scan every QR from the
+5. ~~Rebuild the PDFs, inspect the rendered pages and scan every QR from the
    rendered artwork. Check the destination, business name, town, disclosure,
-   contact route and trim-safe layout.
+   contact route and trim-safe layout.~~ **Done 6 August 2026, with one
+   question left for the walk-in.** Both sheets rebuilt and all four pages
+   inspected as rendered. Both QRs were decoded from the rasterised PDF rather
+   than from the source SVG — the artwork the printer receives — and resolve to
+   `/transformations/<slug>/?source=onesheet-<slug>`. Town, disclosure, contact
+   route and margins check out on both; the reverse disclosure sits above the
+   footer on both, so the 4 August overlap has not returned.
+
+   **The Scopers sheet promised a "one-minute film".** The page its QR opens
+   carries an eleven-second after clip, which its own aria-label calls a
+   ten-second visit. A printed promise of something four times longer than
+   what exists, on the first thing an owner is handed. Corrected to "the
+   ten-second walk-through" and the PDF rebuilt. Cúpla's equivalent claim —
+   "and bilingual menu" — was checked and is true: `/concepts/cupla/menu/`
+   exists and is bilingual.
+
+   **Open, and for the walk-in to settle: is the bar "Scopers" or
+   "Scoper's"?** The sheet, `research/pipeline/verifications.json` and
+   `businesses.json` all say Scopers; the 31 July walk notes quote their own
+   Facebook as "See more from Scoper's". Confirm against the shopfront before
+   printing — a misspelt trading name on the first thing handed over is worse
+   than anything else on the sheet.
 6. Before printing, make one production submission through a one-sheet link
    and verify that the notification arriving in the inbox carries the expected
    `source`. A 200 response or browser success message alone is not enough.
