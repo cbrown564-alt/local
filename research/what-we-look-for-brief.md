@@ -5,7 +5,12 @@
 Uses invented demonstrations only — no real business's fault appears here.
 Recorded faults about real businesses stay in `verifications.json` and go out
 one-to-one on a postcard (`research/outreach-postcards.md`), never onto a public
-page.*
+page. One of three sibling approaches to describing the work — the map and the
+argument between them is
+[`three-ways-to-describe-the-work.md`](three-ways-to-describe-the-work.md);
+the other two are the assembly
+([`how-a-site-goes-together-brief.md`](how-a-site-goes-together-brief.md)) and
+the shapes ([`five-shapes-brief.md`](five-shapes-brief.md)).*
 
 ## The name does the tonal work
 
