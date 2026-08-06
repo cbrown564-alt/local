@@ -253,7 +253,7 @@ const REELS = {
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/", settleMs: 1600 },
           { action: "hold", seconds: 6.7 },
-          { action: "hover", target: ".enk-booking button", seconds: 1.5 },
+          { action: "hover", target: ".enk-booking > button[type=\"submit\"]", seconds: 1.5 },
         ],
       },
       {
@@ -317,7 +317,7 @@ const REELS = {
         caption: "Choose dates while the stay is still fresh in mind.",
         steps: [
           { action: "goto", url: "/concepts/hotel-enniskeen/", settleMs: 1200 },
-          { action: "click", target: ".enk-booking button", seconds: 5.6, navigation: true },
+          { action: "click", target: ".enk-booking > button[type=\"submit\"]", seconds: 5.6, navigation: true },
         ],
       },
       {

@@ -11,8 +11,26 @@ interface Props {
 }
 
 const { variant = "section" } = Astro.props;
-const defaultArrive = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+
+const tomorrow = new Date();
+tomorrow.setHours(0, 0, 0, 0);
+tomorrow.setDate(tomorrow.getDate() + 1);
+const defaultArrive = [
+  tomorrow.getFullYear(),
+  String(tomorrow.getMonth() + 1).padStart(2, "0"),
+  String(tomorrow.getDate()).padStart(2, "0"),
+].join("-");
+const defaultArriveLabel = new Intl.DateTimeFormat("en-GB", {
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+}).format(tomorrow);
+
 const errorId = `enk-arrival-error-${variant}`;
+const arriveLabelId = `enk-arrive-label-${variant}`;
+const calId = `enk-cal-${variant}`;
+const nightsLabelId = `enk-nights-label-${variant}`;
+const defaultNights = 2;
 ---
 
 <form
@@ -24,15 +42,45 @@ const errorId = `enk-arrival-error-${variant}`;
 >
   <input type="hidden" name="ID" value={bookin1.params.ID} />
   <input type="hidden" name="hotelCode" value={bookin1.params.hotelCode} />
-  <label>
-    Arrive
+  <div class="enk-arrive" data-enk-arrive>
+    <span class="enk-arrive-caption" id={arriveLabelId}>Arrive</span>
+    <button
+      type="button"
+      class="enk-arrive-trigger"
+      data-enk-arrive-trigger
+      aria-haspopup="dialog"
+      aria-expanded="false"
+      aria-controls={calId}
+      aria-labelledby={arriveLabelId}
+      aria-describedby={errorId}
+    >
+      <span data-enk-arrive-display>{defaultArriveLabel}</span>
+    </button>
     <input
-      type="date"
+      type="hidden"
       name="arrive"
       value={defaultArrive}
-      required
-      aria-describedby={errorId}
+      data-enk-arrive-input
     />
+    <div
+      id={calId}
+      class="enk-cal"
+      data-enk-cal
+      role="dialog"
+      aria-modal="true"
+      aria-label="Choose arrival date"
+      hidden
+    >
+      <div class="enk-cal-head">
+        <button type="button" class="enk-cal-nav" data-enk-cal-prev aria-label="Previous month">‹</button>
+        <p class="enk-cal-month" data-enk-cal-month></p>
+        <button type="button" class="enk-cal-nav" data-enk-cal-next aria-label="Next month">›</button>
+      </div>
+      <div class="enk-cal-weekdays" aria-hidden="true">
+        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+      </div>
+      <div class="enk-cal-grid" data-enk-cal-grid role="grid" aria-labelledby={arriveLabelId}></div>
+    </div>
     <span
       id={errorId}
       class="enk-booking-error"
@@ -42,49 +90,329 @@ const errorId = `enk-arrival-error-${variant}`;
     >
       Choose an arrival date.
     </span>
-  </label>
-  <label>Nights
-    <select name="nights">
-      <option>2</option><option>1</option><option>3</option>
-      <option>4</option><option>5</option><option>7</option>
-    </select>
-  </label>
+  </div>
+  <div class="enk-nights" data-enk-nights>
+    <span class="enk-nights-caption" id={nightsLabelId}>Nights</span>
+    <div class="enk-nights-control" role="group" aria-labelledby={nightsLabelId}>
+      <button
+        type="button"
+        class="enk-nights-step"
+        data-enk-nights-dec
+        aria-label="Fewer nights"
+      >
+        −
+      </button>
+      <input type="hidden" name="nights" value={String(defaultNights)} data-enk-nights-input />
+      <span class="enk-nights-value" data-enk-nights-value aria-live="polite">{defaultNights}</span>
+      <button
+        type="button"
+        class="enk-nights-step"
+        data-enk-nights-inc
+        aria-label="More nights"
+      >
+        +
+      </button>
+    </div>
+  </div>
   <button type="submit">Check availability</button>
 </form>
 
 <script>
   import { bookin1 } from "../content";
 
+  const MIN_NIGHTS = 1;
+  const MAX_NIGHTS = 7;
+  const WEEKDAYS_MON_FIRST = 1;
+
+  const displayFmt = new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+  const monthFmt = new Intl.DateTimeFormat("en-GB", {
+    month: "long",
+    year: "numeric",
+  });
+
+  const toIso = (date: Date) => {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  };
+
+  const fromIso = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  };
+
+  const startOfDay = (date: Date) => {
+    const next = new Date(date);
+    next.setHours(0, 0, 0, 0);
+    return next;
+  };
+
+  const todayIso = () => toIso(startOfDay(new Date()));
+
+  const tomorrowIso = () => {
+    const d = startOfDay(new Date());
+    d.setDate(d.getDate() + 1);
+    return toIso(d);
+  };
+
   document.querySelectorAll<HTMLFormElement>("form[data-enk-booking]").forEach((form) => {
-    const arrive = form.querySelector<HTMLInputElement>('input[name="arrive"]');
+    const arriveRoot = form.querySelector<HTMLElement>("[data-enk-arrive]");
+    const arriveInput = arriveRoot?.querySelector<HTMLInputElement>("[data-enk-arrive-input]");
+    const arriveTrigger = arriveRoot?.querySelector<HTMLButtonElement>("[data-enk-arrive-trigger]");
+    const arriveDisplay = arriveRoot?.querySelector<HTMLElement>("[data-enk-arrive-display]");
+    const cal = arriveRoot?.querySelector<HTMLElement>("[data-enk-cal]");
+    const calMonth = arriveRoot?.querySelector<HTMLElement>("[data-enk-cal-month]");
+    const calGrid = arriveRoot?.querySelector<HTMLElement>("[data-enk-cal-grid]");
+    const calPrev = arriveRoot?.querySelector<HTMLButtonElement>("[data-enk-cal-prev]");
+    const calNext = arriveRoot?.querySelector<HTMLButtonElement>("[data-enk-cal-next]");
     const error = form.querySelector<HTMLElement>("[data-enk-arrival-error]");
+    const nightsRoot = form.querySelector<HTMLElement>("[data-enk-nights]");
+    const nightsInput = nightsRoot?.querySelector<HTMLInputElement>("[data-enk-nights-input]");
+    const nightsValue = nightsRoot?.querySelector<HTMLElement>("[data-enk-nights-value]");
+    const dec = nightsRoot?.querySelector<HTMLButtonElement>("[data-enk-nights-dec]");
+    const inc = nightsRoot?.querySelector<HTMLButtonElement>("[data-enk-nights-inc]");
+
+    let viewYear = fromIso(arriveInput?.value || tomorrowIso()).getFullYear();
+    let viewMonth = fromIso(arriveInput?.value || tomorrowIso()).getMonth();
+
     const showArrivalError = () => {
-      arrive?.setAttribute("aria-invalid", "true");
+      arriveTrigger?.setAttribute("aria-invalid", "true");
       if (error) error.hidden = false;
     };
     const clearArrivalError = () => {
-      arrive?.removeAttribute("aria-invalid");
+      arriveTrigger?.removeAttribute("aria-invalid");
       if (error) error.hidden = true;
     };
-    if (arrive) {
-      const tomorrow = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
-      arrive.min = new Date().toISOString().slice(0, 10);
-      if (!arrive.value || arrive.value < tomorrow) arrive.value = tomorrow;
-      arrive.addEventListener("invalid", showArrivalError);
-      arrive.addEventListener("input", () => {
-        if (arrive.value) clearArrivalError();
-      });
+
+    const syncArriveDisplay = (iso: string) => {
+      if (!arriveInput || !arriveDisplay) return;
+      arriveInput.value = iso;
+      arriveDisplay.textContent = displayFmt.format(fromIso(iso));
+      clearArrivalError();
+    };
+
+    const syncNights = (next: number) => {
+      if (!nightsInput || !nightsValue || !dec || !inc) return;
+      const value = Math.min(MAX_NIGHTS, Math.max(MIN_NIGHTS, next));
+      nightsInput.value = String(value);
+      nightsValue.textContent = String(value);
+      dec.disabled = value <= MIN_NIGHTS;
+      inc.disabled = value >= MAX_NIGHTS;
+    };
+
+    const isOpen = () => cal != null && !cal.hidden;
+
+    const closeCal = ({ restoreFocus = true } = {}) => {
+      if (!cal || !arriveTrigger || cal.hidden) return;
+      cal.hidden = true;
+      arriveTrigger.setAttribute("aria-expanded", "false");
+      if (restoreFocus) arriveTrigger.focus();
+    };
+
+    const renderCal = () => {
+      if (!calGrid || !calMonth || !arriveInput) return;
+      const minIso = todayIso();
+      const selectedIso = arriveInput.value;
+      const first = new Date(viewYear, viewMonth, 1);
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const lead = (first.getDay() - WEEKDAYS_MON_FIRST + 7) % 7;
+
+      calMonth.textContent = monthFmt.format(first);
+      calGrid.replaceChildren();
+
+      for (let i = 0; i < lead; i += 1) {
+        const blank = document.createElement("span");
+        blank.className = "enk-cal-blank";
+        blank.setAttribute("aria-hidden", "true");
+        calGrid.append(blank);
+      }
+
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const date = new Date(viewYear, viewMonth, day);
+        const iso = toIso(date);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "enk-cal-day";
+        btn.textContent = String(day);
+        btn.dataset.iso = iso;
+        btn.setAttribute("role", "gridcell");
+        btn.setAttribute("tabindex", iso === selectedIso ? "0" : "-1");
+        btn.setAttribute("aria-selected", iso === selectedIso ? "true" : "false");
+        btn.setAttribute(
+          "aria-label",
+          displayFmt.format(date) + (iso === todayIso() ? ", today" : ""),
+        );
+        if (iso === todayIso()) btn.classList.add("enk-cal-day--today");
+        if (iso < minIso) {
+          btn.disabled = true;
+        } else {
+          btn.addEventListener("click", () => {
+            syncArriveDisplay(iso);
+            closeCal();
+          });
+        }
+        calGrid.append(btn);
+      }
+    };
+
+    const openCal = () => {
+      if (!cal || !arriveTrigger || !arriveInput) return;
+      const selected = fromIso(arriveInput.value || tomorrowIso());
+      viewYear = selected.getFullYear();
+      viewMonth = selected.getMonth();
+      renderCal();
+      cal.hidden = false;
+      arriveTrigger.setAttribute("aria-expanded", "true");
+      const focusDay =
+        calGrid?.querySelector<HTMLButtonElement>('.enk-cal-day[aria-selected="true"]:not(:disabled)')
+        ?? calGrid?.querySelector<HTMLButtonElement>(".enk-cal-day:not(:disabled)");
+      focusDay?.focus();
+    };
+
+    const moveDayFocus = (current: HTMLButtonElement, delta: number) => {
+      if (!calGrid) return;
+      const days = [...calGrid.querySelectorAll<HTMLButtonElement>(".enk-cal-day:not(:disabled)")];
+      const index = days.indexOf(current);
+      if (index < 0) return;
+      const next = days[index + delta];
+      if (next) {
+        days.forEach((day) => day.setAttribute("tabindex", day === next ? "0" : "-1"));
+        next.focus();
+        return;
+      }
+      if (delta < 0) {
+        viewMonth -= 1;
+        if (viewMonth < 0) {
+          viewMonth = 11;
+          viewYear -= 1;
+        }
+        renderCal();
+        const prevDays = [...calGrid.querySelectorAll<HTMLButtonElement>(".enk-cal-day:not(:disabled)")];
+        prevDays.at(-1)?.focus();
+      } else {
+        viewMonth += 1;
+        if (viewMonth > 11) {
+          viewMonth = 0;
+          viewYear += 1;
+        }
+        renderCal();
+        calGrid.querySelector<HTMLButtonElement>(".enk-cal-day:not(:disabled)")?.focus();
+      }
+    };
+
+    if (arriveInput && arriveDisplay) {
+      const min = tomorrowIso();
+      if (!arriveInput.value || arriveInput.value < min) syncArriveDisplay(min);
+      else syncArriveDisplay(arriveInput.value);
     }
+
+    arriveTrigger?.addEventListener("click", () => {
+      if (isOpen()) closeCal({ restoreFocus: false });
+      else openCal();
+    });
+
+    calPrev?.addEventListener("click", () => {
+      viewMonth -= 1;
+      if (viewMonth < 0) {
+        viewMonth = 11;
+        viewYear -= 1;
+      }
+      renderCal();
+      calPrev.focus();
+    });
+
+    calNext?.addEventListener("click", () => {
+      viewMonth += 1;
+      if (viewMonth > 11) {
+        viewMonth = 0;
+        viewYear += 1;
+      }
+      renderCal();
+      calNext.focus();
+    });
+
+    cal?.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeCal();
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = [
+          calPrev,
+          calNext,
+          ...Array.from(calGrid?.querySelectorAll<HTMLButtonElement>(".enk-cal-day:not(:disabled)") ?? []),
+        ].filter((el): el is HTMLButtonElement => el != null);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+        if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof HTMLButtonElement) || !target.classList.contains("enk-cal-day")) return;
+      const key = event.key;
+      if (key === "ArrowLeft") {
+        event.preventDefault();
+        moveDayFocus(target, -1);
+      } else if (key === "ArrowRight") {
+        event.preventDefault();
+        moveDayFocus(target, 1);
+      } else if (key === "ArrowUp") {
+        event.preventDefault();
+        moveDayFocus(target, -7);
+      } else if (key === "ArrowDown") {
+        event.preventDefault();
+        moveDayFocus(target, 7);
+      } else if (key === "Home") {
+        event.preventDefault();
+        calGrid?.querySelector<HTMLButtonElement>(".enk-cal-day:not(:disabled)")?.focus();
+      } else if (key === "End") {
+        event.preventDefault();
+        const days = [
+          ...Array.from(calGrid?.querySelectorAll<HTMLButtonElement>(".enk-cal-day:not(:disabled)") ?? []),
+        ];
+        days.at(-1)?.focus();
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!isOpen() || !arriveRoot) return;
+      const target = event.target;
+      if (target instanceof Node && arriveRoot.contains(target)) return;
+      closeCal({ restoreFocus: false });
+    });
+
+    if (nightsInput) {
+      syncNights(Number(nightsInput.value) || 2);
+      dec?.addEventListener("click", () => syncNights(Number(nightsInput.value) - 1));
+      inc?.addEventListener("click", () => syncNights(Number(nightsInput.value) + 1));
+    }
+
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!arrive?.value) {
+      if (!arriveInput?.value) {
         showArrivalError();
-        arrive?.focus();
+        arriveTrigger?.focus();
         return;
       }
       clearArrivalError();
-      const nights = form.querySelector<HTMLSelectElement>('select[name="nights"]')?.value ?? "2";
-      window.location.href = bookin1.deepLink(arrive.value, nights);
+      const nights = nightsInput?.value ?? "2";
+      window.location.href = bookin1.deepLink(arriveInput.value, nights);
     });
   });
 </script>
