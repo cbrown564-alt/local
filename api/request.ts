@@ -31,6 +31,26 @@ const normaliseSource = (value: string) => {
   if (onesheet && publicSlugs.has(onesheet[1])) return value;
   return "unrecognised";
 };
+
+/** Claim sources already saw the before-and-after (docs/CONTEXT.md). */
+const isClaimSource = (source: string) =>
+  source === "transformation" || source.startsWith("onesheet-");
+
+const titleCaseSlug = (slug: string) =>
+  slug
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+
+const describeSource = (source: string) => {
+  if (source === "direct") return "Direct";
+  if (source === "transformation") return "Case study";
+  if (source === "unrecognised") return "Unrecognised";
+  const onesheet = /^onesheet-(.+)$/.exec(source);
+  if (onesheet) return `Printed one-sheet (${titleCaseSlug(onesheet[1])})`;
+  return source;
+};
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1_000;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
@@ -274,8 +294,13 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     source: normaliseSource(clean(body?.source, MAX.source)),
   };
 
-  const requiredFields = [fields.business, fields.town, fields.idea, fields.name, fields.email];
-  if (requiredFields.some((value) => !value) || !emailPattern.test(fields.email)) {
+  const claim = isClaimSource(fields.source);
+  const requiredFields = claim
+    ? [fields.business, fields.town, fields.name]
+    : [fields.business, fields.town, fields.idea, fields.name];
+  // Email is optional — local businesses often prefer a walk-in or a call —
+  // but if one is typed it still has to be a usable address.
+  if (requiredFields.some((value) => !value) || (fields.email && !emailPattern.test(fields.email))) {
     return response.status(400).json({ error: "Please complete each required field with valid details." });
   }
 
@@ -295,27 +320,46 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   }
 
   const safeBusiness = fields.business.replace(/[\r\n]+/g, " ").slice(0, 80);
-  const message = [
-    "New Mourne Made before-and-after request",
-    "",
-    `Business or organisation: ${fields.business}`,
-    `Town: ${fields.town}`,
-    `Current link: ${currentLink || "Not supplied — no current website or public page"}`,
-    `Contact: ${fields.name}`,
-    `Email: ${fields.email}`,
-    `Came from: ${fields.source}`,
-    "",
-    "What should be easier or more impressive?",
-    fields.idea,
-  ].join("\n");
+  const sourceLabel = describeSource(fields.source);
+  const emailLine = fields.email || "Not supplied";
+  const message = claim
+    ? [
+        "New Mourne Made concept claim",
+        "",
+        `Contact: ${fields.name}`,
+        `Email: ${emailLine}`,
+        "",
+        `Business or organisation: ${fields.business}`,
+        `Town: ${fields.town}`,
+        `Came from: ${sourceLabel}`,
+        "",
+        "Note",
+        fields.idea || "No note",
+      ].join("\n")
+    : [
+        "New Mourne Made before-and-after request",
+        "",
+        `Contact: ${fields.name}`,
+        `Email: ${emailLine}`,
+        "",
+        `Business or organisation: ${fields.business}`,
+        `Town: ${fields.town}`,
+        `Current link: ${currentLink || "Not supplied — no current website or public page"}`,
+        `Came from: ${sourceLabel}`,
+        "",
+        "What should be clearer?",
+        fields.idea,
+      ].join("\n");
 
   const mail: SendMailOptions = {
       from: { name: "Mourne Made website", address: gmailUser },
       to: recipient,
-      replyTo: { name: fields.name, address: fields.email },
-      subject: `Before-and-after request: ${safeBusiness}`,
+      subject: claim ? `Claim: ${safeBusiness}` : `Before-and-after request: ${safeBusiness}`,
       text: message,
   };
+  if (fields.email) {
+    mail.replyTo = { name: fields.name, address: fields.email };
+  }
 
   if (sendMailOverride) {
     try {

@@ -150,12 +150,20 @@ process.env.GMAIL_USER = "sender@example.com";
 process.env.GMAIL_APP_PASSWORD = "test-password";
 process.env.REQUEST_TO_EMAIL = "recipient@example.com";
 
+const titleCaseSlug = (value: string) =>
+  value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+
 for (const slug of slugs) {
   const source = oneSheetSource(slug);
+  const expected = `Printed one-sheet (${titleCaseSlug(slug)})`;
   assert.equal(
     await deliveredSource(source),
-    source,
-    `${source} does not reach the inbox as itself, so a scan of ${slug}'s sheet is unattributable`,
+    expected,
+    `${source} does not reach the inbox as ${expected}, so a scan of ${slug}'s sheet is unattributable`,
   );
 }
 

@@ -82,15 +82,134 @@ const deliveredSource = async (source?: string) => {
   return line?.slice("Came from: ".length);
 };
 
-assert.equal(await deliveredSource(), "direct");
-assert.equal(await deliveredSource(""), "direct");
-assert.equal(await deliveredSource("transformation"), "transformation");
-assert.equal(await deliveredSource("onesheet-scopers"), "onesheet-scopers");
-assert.equal(await deliveredSource("onesheet-hotel-enniskeen"), "onesheet-hotel-enniskeen");
+assert.equal(await deliveredSource(), "Direct");
+assert.equal(await deliveredSource(""), "Direct");
+assert.equal(await deliveredSource("transformation"), "Case study");
+assert.equal(await deliveredSource("onesheet-scopers"), "Printed one-sheet (Scopers)");
+assert.equal(await deliveredSource("onesheet-hotel-enniskeen"), "Printed one-sheet (Hotel Enniskeen)");
 // Not a public transformation, so no sheet can legitimately carry it.
-assert.equal(await deliveredSource("onesheet-not-a-business"), "unrecognised");
-assert.equal(await deliveredSource("<script>alert(1)</script>"), "unrecognised");
-assert.equal(await deliveredSource("onesheet-../../etc/passwd"), "unrecognised");
+assert.equal(await deliveredSource("onesheet-not-a-business"), "Unrecognised");
+assert.equal(await deliveredSource("<script>alert(1)</script>"), "Unrecognised");
+assert.equal(await deliveredSource("onesheet-../../etc/passwd"), "Unrecognised");
+
+/* Claim sources already hold the before-and-after, so the note is optional.
+   Cold /request/ still needs the idea field. */
+const claimWithoutIdea = await invoke(
+  {
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "",
+      name: "Test visitor",
+      email: "visitor@example.com",
+      source: "onesheet-scopers",
+    },
+  },
+  createRequestHandler(async () => ({ messageId: "test-message" })),
+);
+assert.equal(claimWithoutIdea.statusCode, 200);
+
+const transformationWithoutIdea = await invoke(
+  {
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "",
+      name: "Test visitor",
+      email: "visitor@example.com",
+      source: "transformation",
+    },
+  },
+  createRequestHandler(async () => ({ messageId: "test-message" })),
+);
+assert.equal(transformationWithoutIdea.statusCode, 200);
+
+assert.equal(
+  (await invoke({
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "",
+      name: "Test visitor",
+      email: "visitor@example.com",
+      source: "direct",
+    },
+  })).statusCode,
+  400,
+);
+
+let claimMail: { subject?: string; text?: string } = {};
+const claimDelivery = await invoke(
+  {
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "",
+      name: "Jenny",
+      email: "jenny@example.com",
+      source: "onesheet-scopers",
+    },
+  },
+  createRequestHandler(async (mail) => {
+    claimMail = { subject: String(mail.subject ?? ""), text: String(mail.text ?? "") };
+    return { messageId: "test-message" };
+  }),
+);
+assert.equal(claimDelivery.statusCode, 200);
+assert.equal(claimMail.subject, "Claim: Scopers");
+assert.ok(claimMail.text?.startsWith("New Mourne Made concept claim\n"));
+assert.ok(claimMail.text?.includes("Contact: Jenny\nEmail: jenny@example.com\n"));
+assert.ok(claimMail.text?.includes("Came from: Printed one-sheet (Scopers)"));
+assert.ok(claimMail.text?.includes("Note\nNo note"));
+assert.ok(!claimMail.text?.includes("Current link:"));
+
+/* Local businesses — email is optional on both Claim and Request. */
+const withoutEmail = await invoke(
+  {
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "Make the supper club easier to find",
+      name: "Paul",
+      email: "",
+      source: "direct",
+    },
+  },
+  createRequestHandler(async (mail) => {
+    assert.equal(mail.replyTo, undefined);
+    assert.ok(String(mail.text ?? "").includes("Email: Not supplied"));
+    return { messageId: "test-message" };
+  }),
+);
+assert.equal(withoutEmail.statusCode, 200);
+
+const claimWithoutEmail = await invoke(
+  {
+    body: {
+      business: "Scopers",
+      town: "Dundrum",
+      link: "",
+      idea: "",
+      name: "Jenny",
+      email: "",
+      source: "onesheet-scopers",
+    },
+  },
+  createRequestHandler(async () => ({ messageId: "test-message" })),
+);
+assert.equal(claimWithoutEmail.statusCode, 200);
+
+assert.equal(
+  (await invoke({
+    body: { ...validRequest, email: "not-an-email" },
+  })).statusCode,
+  400,
+);
 
 const failedDelivery = await invoke(
   { body: validRequest },

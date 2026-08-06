@@ -34,7 +34,7 @@ interface Props {
 
 const { transformation, detail } = Astro.props;
 const motion = detail.motion;
-const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&town=${encodeURIComponent(transformation.town)}&source=transformation`;
+const claimUrl = `/request/?business=${encodeURIComponent(transformation.name)}&town=${encodeURIComponent(transformation.town)}&source=transformation&case=${encodeURIComponent(transformation.slug)}`;
 const responsiveImages = (html: string) =>
   html.replace(
     /<img(\s+[^>]*?)src="((\/media\/(?:concepts\/[^/]+|place)\/)([^"]+))\.jpg"([^>]*?)\/?>/g,
@@ -76,7 +76,7 @@ const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
         afterAlt={transformation.afterAlt}
       />
       <div class="case-actions">
-        <a class="button" data-claim-link href={claimUrl}>Is this your business? Claim this concept <ArrowIcon /></a>
+        <a class="button" data-claim-link href={claimUrl}><span data-claim-label>Is this your business? Claim this concept</span> <ArrowIcon /></a>
         <a class="text-link concept-link" href={detail.conceptHref}>{detail.conceptLabel} <ArrowIcon /></a>
       </div>
     </div>
@@ -128,10 +128,14 @@ const secondSurfaces = detail.secondSurfacesHtml.map(responsiveImages);
      That is deliberate — a scan of one business's sheet that ends in a request
      for a different business is still the sheet that caused it. */
   const claim = document.querySelector<HTMLAnchorElement>("a[data-claim-link]");
+  const claimLabel = claim?.querySelector<HTMLElement>("[data-claim-label]");
   const incoming = new URLSearchParams(window.location.search).get("source");
   if (claim && incoming && /^onesheet-[a-z][a-z\d-]{0,60}$/.test(incoming)) {
     const url = new URL(claim.href, window.location.origin);
     url.searchParams.set("source", incoming);
     claim.href = `${url.pathname}${url.search}`;
+    /* Sheet readers already hold the before-and-after (docs/CONTEXT.md Claim).
+       Keep "request" out of the button — they cannot meaningfully request one. */
+    if (claimLabel) claimLabel.textContent = "This is yours — tell us if you want to talk";
   }
 </script>
