@@ -336,12 +336,11 @@ highest-stakes conversation is not used to rehearse the approach.
    "and bilingual menu" — was checked and is true: `/concepts/cupla/menu/`
    exists and is bilingual.
 
-   **Open, and for the walk-in to settle: is the bar "Scopers" or
-   "Scoper's"?** The sheet, `research/pipeline/verifications.json` and
-   `businesses.json` all say Scopers; the 31 July walk notes quote their own
-   Facebook as "See more from Scoper's". Confirm against the shopfront before
-   printing — a misspelt trading name on the first thing handed over is worse
-   than anything else on the sheet.
+   **The name is "Scopers", settled 6 August 2026 by the project owner.** The
+   apostrophe in "See more from Scoper's" is Facebook's own possessive
+   phrasing in the walk notes, not the trading name. The sheet,
+   `research/pipeline/verifications.json` and `businesses.json` already agree
+   and need no change. Do not reopen this at the door.
 6. Before printing, make one production submission through a one-sheet link
    and verify that the notification arriving in the inbox carries the expected
    `source`. A 200 response or browser success message alone is not enough.
