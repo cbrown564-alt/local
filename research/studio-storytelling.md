@@ -146,7 +146,27 @@ S1 and S7 already have prompt sketches in `research/film/omni-clip-backlog.md`
 (A19, A10). **Migrate ownership here** as those clips are generated; leave
 backlog pointers.
 
+**Where the themes sit against this table (6 August 2026).** The T-scenes in
+[`film/studio-recurring-themes.md`](film/studio-recurring-themes.md) are the
+*subjects* these S-jobs were missing, not a replacement slate:
+
+| S | Now carried by |
+| --- | --- |
+| S1 recognition + theatre | **T7** (cellar → windowsill) and **T10** (the plate that won't fit) |
+| S2 the miss | **T1**, **T4**, **T2** — the miss is three different faults, staged separately |
+| S6 nicer is not elevation | **Cut as a scene.** See the refinement pass: staging ugliness argues for prettiness |
+| S10 why a website at all | **T1** — the login at the door is the honest version of this |
+| S3, S4, S5, S8, S9 | Unchanged; no theme in the corpus covers them (they are offer, not fault) |
+
 ## 7. Day-one Omni slate (studio jobs only)
+
+**Superseded 6 August 2026 by [`research/film/studio-recurring-themes.md`](film/studio-recurring-themes.md)
+→ "The revised slate".** This slate was formats in search of a subject. The
+themes brief distils ten recurring faults from the twenty concepts' documented
+before-states and stages each as a scene; the bakeoff now runs against those.
+The table below stays as the record of what was planned, and gens 3 (S6
+template sludge) and 10 are the two items the refinement pass deliberately cut
+or absorbed.
 
 Ten free gens. Goal: learn which formats carry the belief sequence — not to
 ship a homepage.
@@ -201,6 +221,8 @@ Possible later homes (decide after prototypes):
 | `docs/the-elevation-method.md` | Craft truth; S1 is the felt translation, not a replacement |
 | `research/sensory-system.md` | Techniques (film, voice) are shared tools; **jobs** differ |
 | `research/film/omni-clip-backlog.md` | Concept + shared Omni craft; studio IDs S* live here |
+| `research/film/studio-recurring-themes.md` | The ten faults (T1–T10) distilled from the concepts' before-states, staged as scenes; owns the current bakeoff slate |
+| `src/site/data/transformation-details.ts` | The evidence base — every documented fault and fix the themes were derived from |
 | `research/film/one-day-made-here.md` | Place atmosphere for the site; not a product explainer |
 | Showcase prototype | May host early S* miniatures beside sensory tiles |
 
@@ -229,11 +251,17 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 
 ## 12. Immediate next actions
 
-1. **Next (PLAN.md §8):** Distill 5–10 recurring themes across redesigned
+1. ~~**Next (PLAN.md §8):** Distill 5–10 recurring themes across redesigned
    concepts into generalisable, self-contained scenes (explore → message →
-   scene → storyboard → refine) before further studio Omni bakeoff gens.
-2. ~~Create `research/film/clips/studio/`~~ — folder ready; run the day-one slate
-   (section 7) against those scenes once they exist.
+   scene → storyboard → refine) before further studio Omni bakeoff gens.~~
+   **Done 6 August 2026** — ten themes (T1–T10), each with a key message,
+   scene, storyboard, prompt and edit turns, in
+   [`research/film/studio-recurring-themes.md`](film/studio-recurring-themes.md).
+   Object theatre (no faces, no hands, no lettering) is the locked grammar and
+   the reason the scenes stay honest and generalisable.
+2. ~~Create `research/film/clips/studio/`~~ — folder ready; **next action:** run
+   the revised slate in the themes brief (gens 1–6 = T7, T1, T4, T10, T8, T5),
+   sidecars as `T<id>-<slug>.md`.
 3. Add a noindex `/prototypes/studio/` (or extend showcase) to host the contact
    sheet and surviving clips.
 4. Write short prompt sidecars as files land; update the seed table statuses.

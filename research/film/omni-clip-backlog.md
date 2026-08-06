@@ -18,6 +18,10 @@ Companion docs:
   belief-sequence films) — [`research/studio-storytelling.md`](../studio-storytelling.md).
   Studio-owned backlog items **A10** and **A19** migrate there as S7 / S1 when
   generated; this file stays the concept + shared Omni craft list.
+- **The ten recurring faults, staged as scenes** (T1–T10 — object theatre, no
+  faces, no hands, no lettering) — [`research/film/studio-recurring-themes.md`](studio-recurring-themes.md).
+  Holds the current studio bakeoff slate. A19's `recognition` / `theatre` beats
+  pair with **T7** and **T10**; A30's 404 tide loop has an alternative in **T2**.
 
 ## What Omni is for here
 

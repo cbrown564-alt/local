@@ -379,17 +379,22 @@ stay in `research/film/one-day-made-here.md`. Studio clips land under
 `research/film/clips/studio/` and prototype surfaces before any homepage trial.
 Request path still wins on attention weight. No invented client results.
 
-**Next pick-up (before burning more studio Omni gens on explainers):** distill
-5–10 recurring themes across the redesigned concept sites — problems owners
-would recognise on their own websites, generalised into clear self-contained
-scenes that make the improvement intuitive and sometimes visceral. Multi-stage
-creative work: explore the idea space → craft the key message per theme →
-build out scenes → storyboard → refine. Log findings in
-`research/studio-storytelling.md` (or a linked brief under `research/film/`).
-Only then run format/bakeoff gens against those scenes.
+**Done 6 August 2026 — the theme distillation.** Ten recurring faults (T1–T10)
+derived from the ~60 documented before-states in
+`src/site/data/transformation-details.ts` across twenty concepts, each with a
+key message, a self-contained scene, a storyboard, an Omni prompt and edit
+turns, plus the refinement pass recording what was cut and why:
+[`research/film/studio-recurring-themes.md`](research/film/studio-recurring-themes.md).
+Locked grammar is **object theatre** — no faces, no hands, no lettering — which
+is what keeps the scenes honest (no invented owners, no mockable fake brands)
+and generalisable. The S6 "template sludge" idea was cut: staging ugliness
+argues for prettiness, which the elevation method disowns.
 
-Also queued after that: day-one Omni slate in the control doc (S1–S7 bakeoff),
-then a noindex prototype host for the contact sheet.
+**Next pick-up:** run the revised slate in that brief — gens 1–6 are T7, T1,
+T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
+blank-lettering pass first on every survivor. Sidecars to
+`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day. Then a
+noindex prototype host for the contact sheet.
 
 ## Blocked or deferred
 
