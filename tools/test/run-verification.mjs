@@ -38,6 +38,7 @@ const run = (args) =>
 // scanned by nothing at all once this runner was removed.
 const suites = [
   ["test:request"],
+  ["test:source-attribution"],
   ["test:public-assets"],
   ["test:rebuild"],
   ["test:hugh-mccanns"],

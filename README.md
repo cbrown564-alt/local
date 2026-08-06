@@ -16,8 +16,9 @@ pnpm build
 ```
 
 CI and local verification (build, then every suite — the request handler, the
-orphan-media scan, the rebuild-canvas guard and the nine per-page pins). A
-failing suite does not stop the rest, so one run reports the whole picture:
+printed-QR attribution chain, the orphan-media scan, the rebuild-canvas guard
+and the nine per-page pins). A failing suite does not stop the rest, so one run
+reports the whole picture:
 
 ```powershell
 pnpm test

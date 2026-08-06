@@ -139,12 +139,28 @@ What did not survive the simplification, and is now repaired:
    only in `pnpm test:public-assets`, which nothing invoked. It is now a suite
    in the runner, and section 6 item 1 has since given it teeth.
 
-`pnpm test` is 12/12 green. Two things named as evidence elsewhere in this plan
-are still missing and are **not** repaired here: `test:source-attribution`,
-which section 3 item 4 cites as walking the printed-QR path end to end, and the
-Enniskeen and Buck's Head pins. Section 3 cannot be completed until the
-attribution path is verifiable again. Documentation across `docs/` still refers
-to `test:concepts`, `test:media`, `test:shell-home` and `test:enniskeen`.
+3. **`test:source-attribution` was deleted the day after it was written.**
+   Section 3 item 4 cites it as walking the printed-QR path end to end, and it
+   went with the browser suites on 4 August. Rebuilt 6 August as
+   `tools/test/test-source-attribution.ts`: static checks plus a real
+   invocation of the endpoint, no browser. It pins that every sheet's slug is
+   published, that the committed QR artwork re-encodes to the URL the code
+   builds today, that the print page derives that URL rather than writing it
+   out, that the claim hop's carry regex accepts every sheet's source, that
+   the built pages still carry `data-claim-link` and the form's hidden field,
+   that each source reaches the notification email as itself, and that the
+   source field is wide enough to hold it. Coverage is driven by `oneSheets`,
+   so a new sheet cannot be added uncovered.
+
+   Each assertion was confirmed to fail under mutation before the check was
+   wired in — section 1a found two checks that could not fail, and a green
+   suite is worth nothing until its failure is demonstrated.
+
+`pnpm test` is 13/13 green. What is still missing: the Enniskeen and Buck's
+Head pins, and the live scan-to-inbox hop, which no static check replaces —
+that is section 3 item 6 and it still has to be done by hand. Documentation
+across `docs/` still refers to `test:concepts`, `test:media`,
+`test:shell-home` and `test:enniskeen`.
 
 ## 2. Close the remaining publication decisions — done 3 August 2026
 
@@ -272,8 +288,11 @@ highest-stakes conversation is not used to rehearse the approach.
    `publicTransformationSlugs` and prints it in the notification email. An
    unrecognised value is recorded as `unrecognised` rather than rejected —
    attribution is worth less than the lead. `pnpm test:source-attribution`
-   walks the whole path in a browser, and an unpublished slug fails the build
-   rather than printing a QR that scans to a 404.
+   walks the whole path, and an unpublished slug fails the build rather than
+   printing a QR that scans to a 404. (That suite was deleted on 4 August, a
+   day after this item was written, and rebuilt without the browser on
+   6 August — section 1c item 3. It reaches the endpoint, not the inbox;
+   item 6 below is what closes that gap.)
 5. Rebuild the PDFs, inspect the rendered pages and scan every QR from the
    rendered artwork. Check the destination, business name, town, disclosure,
    contact route and trim-safe layout.
