@@ -78,24 +78,26 @@ if (!requestExample) {
       <div class="form-success" role="status" aria-live="polite"></div>
       <div class="claim-summary" data-claim-summary hidden>
         <p class="claim-summary-label">Concept for</p>
-        <p class="claim-summary-value"><strong data-claim-business></strong><span data-claim-town-wrap> · <span data-claim-town></span></span></p>
+        <p class="claim-summary-value"><strong data-claim-business></strong></p>
       </div>
-      <div data-identity-fields>
-        <div class="field"><label for="business">Business or organisation</label><input id="business" name="business" autocomplete="organization" required /></div>
-        <fieldset class="field town-choice">
-          <legend>Town</legend>
-          <div class="town-choice-options">
-            <label><input type="radio" name="town" value="Dundrum" required /> Dundrum</label>
-            <label><input type="radio" name="town" value="Newcastle" /> Newcastle</label>
-            <label><input type="radio" name="town" value="Nearby" /> Nearby</label>
-          </div>
-        </fieldset>
+      <div class="field" data-business-field>
+        <label for="business">Business or organisation</label>
+        <input id="business" name="business" autocomplete="organization" required />
       </div>
-      <div class="field" data-link-field><label for="link">Current website, menu, listing or page <span class="field-optional">(optional)</span></label><input id="link" name="link" type="text" inputmode="url" autocomplete="url" placeholder="facebook.com/your-page" /><small>Leave this blank if you do not have a website or public page yet.</small></div>
-      <div class="field" data-idea-field><label for="idea" data-idea-label>What should be clearer?</label><textarea id="idea" name="idea" required placeholder="Booking, the menu, how you look on a phone — whatever matters most."></textarea></div>
-      <div class="field-grid">
-        <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required /></div>
-        <div class="field"><label for="email">Email <span class="field-optional">(optional)</span></label><input id="email" name="email" type="email" autocomplete="email" /><small>Leave blank if you would rather we find you locally.</small></div>
+      <div class="request-optional" data-optional-fields>
+        <p class="request-optional-label">Optional</p>
+        <div class="field" data-idea-field>
+          <label for="idea" data-idea-label>What should be clearer?</label>
+          <textarea id="idea" name="idea" placeholder="Booking, the menu, how you look on a phone — whatever matters most."></textarea>
+        </div>
+        <div class="field" data-link-field>
+          <label for="link">Current website or page</label>
+          <input id="link" name="link" type="text" inputmode="url" autocomplete="url" placeholder="facebook.com/your-page" />
+        </div>
+        <div class="field-grid">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" /></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" /></div>
+        </div>
       </div>
       <button class="button" type="submit"><span data-submit-label>Request a free before-and-after</span> <ArrowIcon /></button>
       <p class="form-note" data-form-note>Your details are used only to respond to this request. <a href="/privacy/">Read the privacy notice.</a></p>
@@ -126,18 +128,15 @@ if (!requestExample) {
   const submitLabel = form?.querySelector<HTMLElement>("[data-submit-label]");
   const params = new URLSearchParams(window.location.search);
   const requestedBusiness = params.get("business")?.slice(0, 120);
-  const requestedTown = params.get("town");
   const requestSource = params.get("source")?.slice(0, 80);
   const caseSlug = params.get("case")?.slice(0, 80);
   const businessInput = form?.elements.namedItem("business");
+  const businessField = form?.querySelector<HTMLElement>("[data-business-field]");
   const ideaField = form?.querySelector<HTMLTextAreaElement>("#idea");
   const ideaLabel = form?.querySelector<HTMLElement>("[data-idea-label]");
-  const identityFields = form?.querySelector<HTMLElement>("[data-identity-fields]");
   const linkField = form?.querySelector<HTMLElement>("[data-link-field]");
   const claimSummary = form?.querySelector<HTMLElement>("[data-claim-summary]");
   const claimBusiness = form?.querySelector<HTMLElement>("[data-claim-business]");
-  const claimTown = form?.querySelector<HTMLElement>("[data-claim-town]");
-  const claimTownWrap = form?.querySelector<HTMLElement>("[data-claim-town-wrap]");
   const formNote = form?.querySelector<HTMLElement>("[data-form-note]");
   const confirmationTitle = confirmation?.querySelector<HTMLElement>("[data-confirmation-title]");
   const confirmationBody = confirmation?.querySelector<HTMLElement>("[data-confirmation-body]");
@@ -160,15 +159,7 @@ if (!requestExample) {
 
   if (requestedBusiness && businessInput instanceof HTMLInputElement) {
     businessInput.value = requestedBusiness;
-  }
-  if (requestedTown && form) {
-    const townRadio = form.querySelector<HTMLInputElement>(
-      `input[name="town"][value="${CSS.escape(requestedTown)}"]`,
-    );
-    if (townRadio) {
-      townRadio.checked = true;
-      townRadio.defaultChecked = true;
-    }
+    businessInput.defaultValue = requestedBusiness;
   }
   const sourceInput = form?.elements.namedItem("source");
   if (requestSource && form) {
@@ -209,26 +200,13 @@ if (!requestExample) {
     if (claimSummary && claimBusiness) {
       claimSummary.hidden = false;
       claimBusiness.textContent = requestedBusiness || "Your business";
-      if (requestedTown && claimTown) {
-        claimTown.textContent = requestedTown;
-      } else if (claimTownWrap) {
-        claimTownWrap.hidden = true;
-      }
     }
-    if (identityFields) identityFields.hidden = true;
+    if (businessField) businessField.hidden = true;
     if (linkField) linkField.hidden = true;
     if (ideaField) {
-      ideaField.required = false;
-      ideaField.placeholder = "A correction, a better time to talk, or anything else — optional.";
+      ideaField.placeholder = "A correction, a better time to talk, or anything else.";
     }
-    if (ideaLabel) {
-      ideaLabel.replaceChildren();
-      ideaLabel.append("Anything we should know? ");
-      const optional = document.createElement("span");
-      optional.className = "field-optional";
-      optional.textContent = "(optional)";
-      ideaLabel.append(optional);
-    }
+    if (ideaLabel) ideaLabel.textContent = "Anything we should know?";
     if (submitLabel) submitLabel.textContent = defaultSubmitLabel;
     if (formNote) {
       formNote.replaceChildren();
@@ -260,7 +238,7 @@ if (!requestExample) {
       if (error) {
         error.textContent = invalid instanceof HTMLInputElement && invalid.type === "email" && invalid.value
           ? "Please use a valid email address, or leave the email field blank."
-          : "Please complete each required field.";
+          : "Please enter the business or organisation name.";
       }
       invalid.focus();
       return;

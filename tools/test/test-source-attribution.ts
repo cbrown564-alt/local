@@ -122,7 +122,6 @@ const deliveredSource = async (source: string) => {
     },
     body: {
       business: "Test business",
-      town: "Dundrum",
       link: "https://example.com",
       idea: "Make booking clearer",
       name: "Test visitor",

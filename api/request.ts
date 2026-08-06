@@ -4,7 +4,6 @@ import { publicTransformationSlugs } from "./public-transformation-slugs.mjs";
 
 const MAX = {
   business: 120,
-  town: 80,
   link: 500,
   idea: 2_000,
   name: 120,
@@ -286,7 +285,6 @@ async function handler(request: VercelRequest, response: VercelResponse) {
 
   const fields = {
     business: clean(body?.business, MAX.business),
-    town: clean(body?.town, MAX.town),
     link: clean(body?.link, MAX.link),
     idea: clean(body?.idea, MAX.idea),
     name: clean(body?.name, MAX.name),
@@ -295,13 +293,10 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   };
 
   const claim = isClaimSource(fields.source);
-  const requiredFields = claim
-    ? [fields.business, fields.town, fields.name]
-    : [fields.business, fields.town, fields.idea, fields.name];
-  // Email is optional — local businesses often prefer a walk-in or a call —
-  // but if one is typed it still has to be a usable address.
-  if (requiredFields.some((value) => !value) || (fields.email && !emailPattern.test(fields.email))) {
-    return response.status(400).json({ error: "Please complete each required field with valid details." });
+  // Only the business name is required. Everything else is optional — local
+  // owners can leave a name and go, and the studio can find them from that.
+  if (!fields.business || (fields.email && !emailPattern.test(fields.email))) {
+    return response.status(400).json({ error: "Please enter the business or organisation name." });
   }
 
   let currentLink = "";
@@ -321,34 +316,32 @@ async function handler(request: VercelRequest, response: VercelResponse) {
 
   const safeBusiness = fields.business.replace(/[\r\n]+/g, " ").slice(0, 80);
   const sourceLabel = describeSource(fields.source);
+  const contactLine = fields.name || "Not supplied";
   const emailLine = fields.email || "Not supplied";
+  const noteLine = fields.idea || "No note";
   const message = claim
     ? [
         "New Mourne Made concept claim",
         "",
-        `Contact: ${fields.name}`,
-        `Email: ${emailLine}`,
-        "",
         `Business or organisation: ${fields.business}`,
-        `Town: ${fields.town}`,
+        `Contact: ${contactLine}`,
+        `Email: ${emailLine}`,
         `Came from: ${sourceLabel}`,
         "",
         "Note",
-        fields.idea || "No note",
+        noteLine,
       ].join("\n")
     : [
         "New Mourne Made before-and-after request",
         "",
-        `Contact: ${fields.name}`,
-        `Email: ${emailLine}`,
-        "",
         `Business or organisation: ${fields.business}`,
-        `Town: ${fields.town}`,
-        `Current link: ${currentLink || "Not supplied — no current website or public page"}`,
+        `Contact: ${contactLine}`,
+        `Email: ${emailLine}`,
+        `Current link: ${currentLink || "Not supplied"}`,
         `Came from: ${sourceLabel}`,
         "",
         "What should be clearer?",
-        fields.idea,
+        noteLine,
       ].join("\n");
 
   const mail: SendMailOptions = {
@@ -358,7 +351,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
       text: message,
   };
   if (fields.email) {
-    mail.replyTo = { name: fields.name, address: fields.email };
+    mail.replyTo = { name: fields.name || fields.business, address: fields.email };
   }
 
   if (sendMailOverride) {
