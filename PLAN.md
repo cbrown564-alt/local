@@ -416,6 +416,20 @@ studio wrote up in its own case-study notes (three per concept, a page-template
 artifact) and are never a prevalence claim about websites; and no score, grade
 or count is ever applied to a named business.
 
+**Mapped, 6 August 2026 — the fault walk is one of three.** Working the page
+brief surfaced two sibling answers to the same underlying brief — a public
+surface for what the studio does and what a good local site is made of. The
+assembly ([`research/how-a-site-goes-together-brief.md`](research/how-a-site-goes-together-brief.md))
+builds one wireframe in front of the visitor, each layer a theme answered in
+the method's build order, halting at the swap test where the generic form runs
+out. The shapes ([`research/five-shapes-brief.md`](research/five-shapes-brief.md))
+draw the elevation method's five shapes as an annotated pattern book —
+explicitly not templates. The map, the tension between "one idealised form"
+and "no single form", and its resolution is
+[`research/three-ways-to-describe-the-work.md`](research/three-ways-to-describe-the-work.md).
+Order: fault walk first, shapes second, assembly last; none ships ahead of the
+request path.
+
 **Next pick-up:** run the revised slate in the themes brief — gens 1–6 are T7,
 T1, T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
 blank-lettering pass first on every survivor. Sidecars to
