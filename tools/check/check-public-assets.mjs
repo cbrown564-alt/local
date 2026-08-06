@@ -13,10 +13,17 @@
  *   - a reference in src/ with no asset behind it fails the build. That is a
  *     broken image on a live page, and one shipped to production on 5 August
  *     2026 while this script reported a pass.
- *   - an asset in public/ that nothing references any more is a note rather
- *     than a failure — an unused file is not a leak — but a withdrawn image
- *     makes any "Sources & limits" copy describing it false, which is how three
- *     public case studies came to carry untrue sourcing claims.
+ *   - an asset in public/ that nothing references any more must have an
+ *     outcome recorded in research/image-provenance.md. An unused file is not
+ *     a leak, but a withdrawn image makes any "Sources & limits" copy
+ *     describing it false — which is how three public case studies came to
+ *     carry untrue sourcing claims — and unreferenced bytes stay reachable at
+ *     a guessable production URL until someone decides they should not.
+ *
+ * The record requirement is enforced in both modes. `--orphans` only controls
+ * whether the full list is printed. An earlier split, where the scan itself
+ * lived behind the flag, meant the flag was passed by nothing and the scan ran
+ * nowhere at all between 4 and 6 August 2026.
  *
  *   node tools/check/check-public-assets.mjs            # guard, quiet summary
  *   node tools/check/check-public-assets.mjs --orphans  # list unreferenced assets
@@ -155,13 +162,7 @@ for (const [rel, referrers] of [...missing].sort(([a], [b]) => a.localeCompare(b
   );
 }
 
-if (failures.length > 0) {
-  console.error("Public asset check failed:\n");
-  for (const failure of failures) console.error(`  - ${failure}\n`);
-  process.exit(1);
-}
-
-// 4. Held assets that nothing references (reported, never fatal).
+// 4. Assets that nothing references, and whether an outcome is recorded.
 
 const logical = new Map();
 for (const rel of publicFiles) {
@@ -177,26 +178,69 @@ const orphans = [...logical.entries()]
   .filter(([name]) => !isReferenced(haystack, name))
   .sort(([a], [b]) => a.localeCompare(b));
 
+const PROVENANCE = "research/image-provenance.md";
+const provenance = fs.readFileSync(PROVENANCE, "utf8");
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Is there an outcome recorded for this asset?
+ *
+ * Records name a file by its basename. Some cover a family with an
+ * angle-bracket placeholder standing in for one hyphen-separated token —
+ * `<town>-ambience.mp3` covers Dundrum and Newcastle — so a basename also
+ * matches when any single token is replaced by a placeholder. That is the
+ * whole convention: it is deliberately not a glob language, because a record
+ * broad enough to match anything records nothing.
+ */
+function isRecorded(name) {
+  const base = name.split("/").pop();
+  if (provenance.includes(base)) return true;
+  const tokens = base.split("-");
+  return tokens.some((_, i) =>
+    new RegExp(
+      tokens.map((token, j) => (i === j ? "<[^>]+>" : escapeRe(token))).join("-"),
+    ).test(provenance),
+  );
+}
+
+const unrecorded = orphans.filter(([name]) => !isRecorded(name));
+
+for (const [name, files] of unrecorded) {
+  failures.push(
+    `public/${name} (${files.length} file${files.length === 1 ? "" : "s"}) — ` +
+      `nothing under src/ references it and ${PROVENANCE} records no outcome for it. ` +
+      `Delete it, or record what it is and why it is still held. Unreferenced bytes ` +
+      `stay reachable at their production URL until one of those two things happens.`,
+  );
+}
+
+if (failures.length > 0) {
+  console.error("Public asset check failed:\n");
+  for (const failure of failures) console.error(`  - ${failure}\n`);
+  process.exit(1);
+}
+
 const showOrphans = process.argv.includes("--orphans");
 
 if (orphans.length > 0) {
   const fileCount = orphans.reduce((n, [, files]) => n + files.length, 0);
   if (showOrphans) {
     console.log(
-      `${orphans.length} held asset(s) are not referenced from src/ (${fileCount} files including derivatives):\n`,
+      `${orphans.length} held asset(s) are not referenced from src/ (${fileCount} files ` +
+        `including derivatives). Each has an outcome recorded in ${PROVENANCE}:\n`,
     );
     for (const [name, files] of orphans) {
       console.log(`  ${name}  (${files.length} file${files.length === 1 ? "" : "s"})`);
     }
     console.log(
       "\nAn unused file is not a problem in itself. It is a problem when a" +
-        '\n"Sources & limits" block still describes it. Record status in' +
-        "\nresearch/image-provenance.md.\n",
+        '\n"Sources & limits" block still describes it.\n',
     );
   } else {
     console.log(
-      `Public asset check passed. Note: ${orphans.length} held asset(s) unreferenced from src/ — ` +
-        `run \`node tools/check/check-public-assets.mjs --orphans\` to list them.`,
+      `Public asset check passed. Note: ${orphans.length} recorded held asset(s) ` +
+        `unreferenced from src/ — run with \`--orphans\` to list them.`,
     );
   }
 } else {

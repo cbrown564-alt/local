@@ -137,8 +137,7 @@ What did not survive the simplification, and is now repaired:
 2. **The orphan-media scan was running nowhere.** `pnpm build` calls
    `check-public-assets.mjs` without `--orphans`; the `--orphans` variant lived
    only in `pnpm test:public-assets`, which nothing invoked. It is now a suite
-   in the runner. It still exits 0 on finding orphans — giving it teeth is
-   section 6 item 1, which remains open.
+   in the runner, and section 6 item 1 has since given it teeth.
 
 `pnpm test` is 12/12 green. Two things named as evidence elsewhere in this plan
 are still missing and are **not** repaired here: `test:source-attribution`,
@@ -326,12 +325,31 @@ rollout plan.
 Do not let this section delay the two-business outreach wave once sections 1
 and 3 are complete. Apply each item at the stated boundary.
 
-1. Before the next deploy after the baseline repair, remove unreferenced media
+1. ~~Before the next deploy after the baseline repair, remove unreferenced media
    from `public/` or give it an explicit held record and reason in
    `research/image-provenance.md`. Make the asset check fail
    when an orphan has neither outcome. The 28 July review found 36 orphan
    groups; keeping withdrawn bytes at guessable production URLs works against
-   the provenance standard.
+   the provenance standard.~~ **Done 6 August 2026.** The 36 had become 45 by
+   the time the scan was made fatal, 21 of them with no outcome recorded
+   anywhere.
+
+   The requirement is now enforced in both of the script's modes rather than
+   behind `--orphans`. Splitting it was what let the scan run nowhere at all
+   between 4 and 6 August: `pnpm build` called the script without the flag, and
+   nothing called it with one.
+
+   Seventeen groups were deleted — 51 files, 5.5 MB, every one a capture of a
+   real business's own live website that no page had referenced for days or
+   weeks. Holding them was the weaker of the two outcomes this item allows: an
+   unused screenshot of a named business still answers at a guessable
+   production URL. Four were held with reasons and dates: two dropped Enniskeen
+   illustrative visuals, the unbuilt Enniskeen outreach reel, and the
+   superseded Painted Earth originals capture.
+
+   Nothing on a page moved. All 36 before/after references across the eighteen
+   public transformations still resolve, and none of the deleted names appears
+   anywhere in `src/`.
 2. ~~Before the next recapture wave, decide how masters leave normal Git history:
    Git LFS or externally stored masters with reproducible derivative
    generation. Separately decide whether to purge the previously exposed

@@ -331,6 +331,31 @@ Every page carrying one of these labels it as generated on the page itself.
   asks for plain type until the farm's production wordmark is cleared. Recorded
   28 July 2026 after the journey suite found it rendered with no provenance
   entry; withdrawn from the page 5 August 2026.
+- `enniskeen-generated-house.jpg` and `enniskeen-generated-bath-green.jpg` —
+  **held, not in use.** Two more of the AI-generated *illustrative* Enniskeen
+  visuals described in the `enniskeen-generated-*` entry above, dropped from
+  `src/concepts/hotel-enniskeen/content.ts` by the 25 July 2026 public pass and
+  never re-wired. Like their siblings they were not made from a reference
+  photograph and depict a generic country house and bathroom, so neither may
+  ever be captioned as the hotel's own property or its rooms. Held rather than
+  deleted because Enniskeen is the batch-two flagship and its `generatedVisuals`
+  set is still being chosen; recorded 6 August 2026. Confirm the generation
+  details before relying on this record for a sourcing claim.
+- `hotel-enniskeen-outreach-reel.{mp4,webm}` — **held, not in use.** A short
+  reel assembled by `tools/capture/capture-concept-media.mjs` for the Enniskeen
+  outreach one-sheet, which ships as a printed PDF and shows no video. Nothing
+  on the site has ever referenced it. Held because the Enniskeen outreach
+  conversation has not happened yet and a reel is the obvious thing to want on
+  a phone during it; recorded 6 August 2026. It is assembled from the concept's
+  own generated and faithful visuals, so the disclosure that governs them
+  governs it.
+- `painted-earth-originals-after.jpg` — **held, not in use.** An after-state
+  capture of the Painted Earth originals view, superseded by the 6 August 2026
+  elevation (makers' roll, handover, waiting list) before it was ever wired to
+  a page. Held because the concept is public and this is a capture of the
+  studio's own concept rather than of anyone's live site; recorded 6 August
+  2026. It shows the drawn placeholder tiles, so it must never be presented as
+  the gallery's artwork.
 - `enniskeen-faithful-room9.png` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 9's compact beige-tiled en-suite. The prompt preserved the wall-mounted basin, mirror, magnifying mirror and towel-ring arrangement and forbade an invented bath or spa setting.
 - `cupla-faithful-visualisation.jpg` — **in use** on `/concepts/cupla/` again since 5 August 2026, having dropped off the route in the repo restructure. AI-generated faithful visualisation based on the photographed frontage at 105 Main Street, Dundrum. The source reference was an August 2024 Google Maps user photo; the prompt forbade invented seating, people, products or amenities. Verified feature by feature against the reference in the 25 July 2026 review: same three-bay white-render frontage with navy joinery, same CÚPLA fascia board with the Facebook and Instagram glyphs, same hanging baskets, window boxes and "CÚPLA COFFEE SHOP Est. 2024" door decal.
   **Rights position (recorded 5 August 2026, the question the July review left open).** The reference photograph is a third-party Google Maps user photo, held privately at `.tmp/concept-subject-references/cupla-exterior-google-2024.jpg` and never published, redistributed or shipped. No licence to it has been obtained, and the studio does not hold one. The visualisation is a close derivative of that specific photograph of a building elevation visible from a public street, and it is used on an internal, `noindex` concept route and in the concept's own case-study comparison. That is the position as it stands, not a clearance: **before any external use — client pitch material, print, or any surface outside the concept routes and their case study — either the photographer's permission is obtained, or the image is replaced by a visualisation generated from a reference the studio owns.** The generation boundary above still applies: nothing in the frame is invented.
@@ -403,3 +428,45 @@ or caches from the public period.
   quite true when written. Deleted rather than held: unlike a business's own
   photograph there is no legitimate future use for it here.
 - `mourne-cycles-trail.jpg` — **deleted 25 July 2026.** Trek/Bontrager dealer marketing photography reused from the shop's own site, used decoratively at 20% opacity behind a hire panel with no recorded licence. Removing it cleared the only outstanding asset-rights blocker on that concept. The Mourne Cycles case study went on claiming the concept reused this imagery until 26 July 2026.
+
+### Journey captures — deleted 6 August 2026
+
+Seventeen groups, 51 files, 5.5 MB. Every one is a capture of a real
+business's own live website, made for a before/after journey comparison, that
+no page had referenced for days or weeks. They were found when the orphan scan
+was made fatal (`PLAN.md` section 1c) — the scan itself had been running
+nowhere since 4 August, so nothing reported them.
+
+Deleted rather than held, because holding was the weaker of the two outcomes
+`PLAN.md` section 6.1 allows. A screenshot of a named business's website, used
+by nothing, still answers at a guessable production URL. The Buck's Head
+captures document a site the business is in the middle of replacing, and the
+Murdock Brothers pair belongs to a concept with no public transformation page
+at all. The evidence they were made from is unaffected —
+it lives under `research/concepts/<slug>/evidence/` per ADR-0003, and the walk
+counts they support are quoted from `research/pipeline/verifications.json` and
+`.scratch/renders/`, not from these files.
+
+Git first-appearance dates are not capture dates for anything here: the history
+purge of 31 July 2026 (ADR-0003) rewrote every earlier commit, so a blob that
+predates it reads as added that day. Dates below are given only where a source
+outside git records them.
+
+- `scopers-journey-hours-before-{1,2}`, `-hours-after-{1,2}`,
+  `-supper-before-{1,2,3}`, `-supper-after-{1,2}` (nine groups) — frames from
+  the phone walk of Scoper's public Facebook and Instagram pages, and of the
+  concept beside them. `research/pipeline/verifications.json` dates that walk
+  to 31 July 2026 and holds its counts; the frames are in
+  `.scratch/renders/scopers-journey/2026-07-31/`.
+- `bucks-head-journey-before`, `-journey-after` (mp4/webm) and
+  `bucks-head-menus-before` — the booking and menu journeys on
+  `thebucksheaddundrum.com`. The pub replied on 3 August 2026 that a
+  replacement site is already built and waiting on accommodation readiness, so
+  these capture a site that is about to stop existing. The still frames the
+  Buck's Head one-sheet uses (`bucks-head-journey-booking-*`) are referenced
+  and stay.
+- `donard-veterinary-appointments-before`, `hotel-enniskeen-rooms-before`,
+  `mourne-cycles-hire-before` — single before-captures, each dropped when its
+  concept was reworked on 1 August 2026.
+- `murdock-brothers-before`, `-after` — before/after pair for a concept that
+  has no public transformation page.
