@@ -117,6 +117,36 @@ batch two.
 
 `pnpm test` is 9/9 green again.
 
+## 1c. Restore the run-every-suite baseline — done 6 August 2026
+
+Sections 1, 1a and 1b describe a suite that no longer exists. On 4 August 2026,
+commit `5c23a5b` removed the Puppeteer journey orchestrator and eleven browser
+suites: the full run took 45+ minutes in GitHub Actions and often timed out
+after the tests had passed, because the preview server never shut down.
+Pre-first-sale, that cost was not justified, and the decision stands. Static
+per-page pins reading `dist/` have since replaced most of the coverage.
+
+What did not survive the simplification, and is now repaired:
+
+1. **Abort-on-first-failure came back.** `pnpm test` was re-chained with `&&`,
+   undoing section 1a item 5 — the fix made because a single failure had once
+   hidden four suites the plan recorded as green. `tools/test/run-verification.mjs`
+   is restored, without the preview server no suite needs any more: it builds
+   once, then runs all twelve and reports `N of 12`. The build stays fail-fast,
+   since every suite reads `dist/`.
+2. **The orphan-media scan was running nowhere.** `pnpm build` calls
+   `check-public-assets.mjs` without `--orphans`; the `--orphans` variant lived
+   only in `pnpm test:public-assets`, which nothing invoked. It is now a suite
+   in the runner. It still exits 0 on finding orphans — giving it teeth is
+   section 6 item 1, which remains open.
+
+`pnpm test` is 12/12 green. Two things named as evidence elsewhere in this plan
+are still missing and are **not** repaired here: `test:source-attribution`,
+which section 3 item 4 cites as walking the printed-QR path end to end, and the
+Enniskeen and Buck's Head pins. Section 3 cannot be completed until the
+attribution path is verifiable again. Documentation across `docs/` still refers
+to `test:concepts`, `test:media`, `test:shell-home` and `test:enniskeen`.
+
 ## 2. Close the remaining publication decisions — done 3 August 2026
 
 Both were reviewed against the live site at phone and desktop on 3 August 2026.
