@@ -390,11 +390,38 @@ is what keeps the scenes honest (no invented owners, no mockable fake brands)
 and generalisable. The S6 "template sludge" idea was cut: staging ugliness
 argues for prettiness, which the elevation method disowns.
 
-**Next pick-up:** run the revised slate in that brief — gens 1–6 are T7, T1,
-T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
+**Put to work, 6 August 2026 — the taxonomy is not only film.** Three surfaces
+now consume it:
+
+- **Upstream into research.** `docs/RESEARCH_METHOD.md` gains a fault-taxonomy
+  section and a fifth verification step: record which of the ten a candidate's
+  public surface shows, dated, in a `faults` array on the verification record.
+  A coarse gap class becomes the pitch sentence, and the three case-study notes
+  get written from the record instead of rediscovered per concept. T2, T5 and T9
+  already fall out of `probe-sites.mjs`; T3, T4, T6, T7 and T10 need a human
+  opening the page.
+- **Print outreach.** [`research/outreach-postcards.md`](research/outreach-postcards.md)
+  — ten postcards, one per theme, sent only where that fault is actually
+  recorded. Front is the clip's departure frame; the reverse leads with a true
+  good thing about the recipient *before* the page fault, dated and checkable.
+- **A public page.** [`research/what-we-look-for-brief.md`](research/what-we-look-for-brief.md)
+  — `/what-we-look-for/`, the ten staged as invented wireframes with a walkable
+  errand each ("find out if they're open now"), the visitor's own taps counted.
+  Not a before/after slider: that control belongs to the measured transformation
+  pages, and every one of the ten faults is structural rather than aesthetic. No
+  real business's fault appears on a public surface.
+
+Two constraints propagate to all three: the per-theme tallies count what the
+studio wrote up in its own case-study notes (three per concept, a page-template
+artifact) and are never a prevalence claim about websites; and no score, grade
+or count is ever applied to a named business.
+
+**Next pick-up:** run the revised slate in the themes brief — gens 1–6 are T7,
+T1, T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
 blank-lettering pass first on every survivor. Sidecars to
-`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day. Then a
-noindex prototype host for the contact sheet.
+`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day. In
+parallel, and not blocked on any gen: the fault-walk study under
+`src/pages/prototypes/`, which is where `/what-we-look-for/` gets proven.
 
 ## Blocked or deferred
 

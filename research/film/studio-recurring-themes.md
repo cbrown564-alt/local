@@ -799,6 +799,25 @@ output, and lettering is the first check every time. Sidecars go to
 
 ---
 
+## Where the themes are put to work (6 August 2026)
+
+The scenes are one use of the taxonomy, not the point of it. Three surfaces now
+depend on this file:
+
+| Surface | Brief | What it takes from here |
+| --- | --- | --- |
+| **The research method** | [`docs/RESEARCH_METHOD.md`](../../docs/RESEARCH_METHOD.md) → "Fault taxonomy" | Step 5 of verification: record which of the ten a candidate's public surface shows, dated, in a `faults` array. Turns a coarse gap class into the pitch sentence, and the case-study notes get written from the record instead of rediscovered. Three of the ten (T2, T5, T9) already fall out of `probe-sites.mjs`; five need a human look |
+| **Print outreach** | [`research/outreach-postcards.md`](../outreach-postcards.md) | Ten postcards, one per theme — front is the clip's **departure** frame, reverse leads with a true good thing about the recipient before the page fault. Only the theme actually recorded for that business gets sent |
+| **A public page** | [`research/what-we-look-for-brief.md`](../what-we-look-for-brief.md) | `/what-we-look-for/` — the ten staged as **invented wireframes** with a walkable errand each. No real business's fault appears publicly; those go one-to-one on a postcard |
+
+Two constraints propagate to all three and are restated in each brief: the
+per-theme tallies below count *what the studio wrote up in its own case-study
+notes* (three per concept, because the page template takes three) and are never
+a prevalence claim about websites; and no score, grade or count is ever applied
+to a named business.
+
+---
+
 ## Theme → source → job → destination
 
 | Theme | Source concepts | Studio job (`studio-storytelling.md` §2) | Likely destination |

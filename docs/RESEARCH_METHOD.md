@@ -77,6 +77,10 @@ verification pass (first pass: 20 July 2026, 16 businesses):
    adverts. Prefer evidence with a visible date.
 3. Hunt for websites the census missed and for social profiles.
 4. Disambiguate same-named businesses elsewhere before accepting any result.
+5. Record **which of the ten faults** the public surface actually shows, with
+   dated evidence for each. See "Fault taxonomy" below. This is the step that
+   turns a gap class into a pitch sentence, and it replaces deriving the three
+   case-study notes from scratch at design time.
 
 Findings are recorded in `research/pipeline/verifications.json`: dated trading
 evidence with source URLs, corrections to census fields, and the shortlist
@@ -226,6 +230,105 @@ See `research/pipeline/verification-pass-status.md`.
 - **Census records can go stale by repurposing.** `hamillharty.com` now serves
   an unrelated personal consultancy, so the listed business is no longer at its
   recorded domain.
+
+## Fault taxonomy — which of the ten (added 6 August 2026)
+
+Twenty published concepts carry three documented before-states each in
+`src/site/data/transformation-details.ts` — roughly sixty observed faults. Ten
+patterns account for nearly all of them. The taxonomy, with the evidence behind
+each pattern, is
+[`research/film/studio-recurring-themes.md`](../research/film/studio-recurring-themes.md).
+
+Why it belongs in the research method rather than only in marketing: the gap
+class says *there is a gap*, and its "pitch shape" column is deliberately
+coarse. The fault IDs say **which gap and what the first sentence to the owner
+is**. Recording them at verification time means design starts with the pitch
+already found, and the case-study notes are written from the record instead of
+rediscovered.
+
+| ID | Fault | Gap classes it usually accompanies |
+|---|---|---|
+| T1 | The front door is somebody else's login | First website; Platform / social only |
+| T2 | The route ends in nothing — dead domain, off-domain redirect, unavailable item | Dead site; Redesign |
+| T3 | Suppliers, stock imagery or a parent brand outrank the business's own mark | Redesign |
+| T4 | The arrival question — open? where? how much? — is not answered on the first screen | Journey / feature; Redesign |
+| T5 | The action exists as a word, not a mechanism | Journey / feature |
+| T6 | The business's own worries sit in front of the customer's question | Journey / feature |
+| T7 | The strongest true thing about the business is in the footer, or absent | Redesign |
+| T8 | The information is present in the wrong shape — a file, a wall of prose, an insider taxonomy | Journey / feature |
+| T9 | The page's clock has stopped while the business has not | Redesign; Platform / social only |
+| T10 | Swap the name for a competitor's and nothing breaks | Redesign (and the closer for every class) |
+
+### What is already mechanical
+
+`tools/pipeline/probe-sites.mjs` (step 1) already produces three of the ten
+without a human look, because it separates failure modes rather than collapsing
+them:
+
+- **T2** — dead DNS, refused TLS, `ConnectYourDomain`, parked and "coming soon"
+  200s, and redirects to a *different* business.
+- **T9** — copyright years, content dates, builder staleness signals.
+- **T5** — whether a customer can actually transact, or the site is
+  brochure-only.
+
+**T1** falls out of the census plus the `digitalPresence` finding. **T8** is
+cheap to add and not yet detected: content reachable only as a linked file.
+The remaining five — **T3, T4, T6, T7, T10** — need a human opening the page,
+and T4 needs it rendered at phone width rather than fetched. Same division of
+labour as steps 1–2 versus 3–4: script what is mechanical, spend judgement on
+the rest.
+
+### How a fault is recorded
+
+Add a `faults` array to the business's record in
+`research/pipeline/verifications.json`, beside `digitalPresence` and
+`designTask`:
+
+```json
+"faults": [
+  {
+    "id": "T7",
+    "observed": "Established 1973 and thirteen named projects; the fifty-three-year record appears on no single screen, and five accreditation marks sit only in the footer.",
+    "where": "https://example.com/",
+    "seenOn": "2026-08-06",
+    "basis": "human"
+  }
+]
+```
+
+Rules, in the same register as the rest of this file:
+
+- **A fault is an observation, not a verdict.** `observed` describes what is on
+  the page. It never rates the business, never guesses intent, and never
+  compares to a competitor.
+- **`basis` is `probe` or `human`.** A probe result may be recorded without a
+  human look; the other six may not. Arley House is the standing warning: *do
+  not describe its quality without opening it.*
+- **Undated means unrecorded.** Anything that will appear in outreach needs
+  `seenOn`, because the postcard and the case study both quote it back.
+- **Four at most.** More than four is a survey of somebody's website, not a
+  pitch. Rank and keep the ones a fix would actually change.
+- **No fault recorded is a valid finding** for a maintained, well-run site.
+  Buck's Head is the model: current, well photographed, actively maintained,
+  and the case was made on two measurable errands rather than on a fault list.
+
+### What the counts may not be read as saying
+
+The tallies in the taxonomy brief — T7 on six concepts, T1 on five — count
+**what the studio chose to write up in its own case-study notes**, three per
+concept because the page template takes three. They are not a survey of small
+business websites, and the ratio of faults to concepts is an artifact of that
+template. Two things therefore never get said, on any surface:
+
+- Any prevalence claim about websites in general ("most small business sites
+  have three of these"). The arithmetic is the template's, not the world's.
+- Any score, grade or count applied to a named business ("your site fails six
+  of ten"). The taxonomy names faults on pages; it does not rate businesses.
+
+Downstream users of this pass: `research/outreach-postcards.md` (which theme
+gets sent, and the evidence line it quotes) and
+`research/what-we-look-for-brief.md` (the public page, which uses invented
+wireframes and never a real business's fault).
 
 ## Refresh protocol
 

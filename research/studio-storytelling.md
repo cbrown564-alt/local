@@ -223,6 +223,9 @@ Possible later homes (decide after prototypes):
 | `research/film/omni-clip-backlog.md` | Concept + shared Omni craft; studio IDs S* live here |
 | `research/film/studio-recurring-themes.md` | The ten faults (T1–T10) distilled from the concepts' before-states, staged as scenes; owns the current bakeoff slate |
 | `src/site/data/transformation-details.ts` | The evidence base — every documented fault and fix the themes were derived from |
+| `docs/RESEARCH_METHOD.md` → Fault taxonomy | The taxonomy fed back upstream: step 5 of verification records which of the ten a candidate shows, so design starts with the pitch found |
+| `research/outreach-postcards.md` | Ten postcards, one per theme — consumes the clips' departure frames as print fronts |
+| `research/what-we-look-for-brief.md` | `/what-we-look-for/` — the ten as walkable invented wireframes; hosts the clips beside the interactive, not above it |
 | `research/film/one-day-made-here.md` | Place atmosphere for the site; not a product explainer |
 | Showcase prototype | May host early S* miniatures beside sensory tiles |
 
