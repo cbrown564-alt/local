@@ -306,7 +306,10 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
    deliberately open for whatever the owners one day want told. */
 .cp-pair {
   display: grid;
-  grid-template-columns: 44% 56%;
+  /* An even split, which is the section's own argument and also what the
+     mirrored list needs: at 44% the longest gloss broke the address across
+     lines ("105 Main / Street"). The cups still read at half the width. */
+  grid-template-columns: 50% 50%;
   gap: 0;
   align-items: stretch;
   padding: 0;
@@ -327,26 +330,75 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   color: #fff;
 }
 .cp-pair-line { margin: 0; max-width: 30em; font-size: 16px; line-height: 1.6; color: #e6ece8; }
+/* The pair, mirrored. Fact and meaning are equal halves either side of one
+   axis; the twin rings sit on that axis once per row, threaded on a spine that
+   runs the height of the list. The two sides share the display family and
+   differ only in italic versus roman — same voice, two forms, which is the
+   name's own idea rendered typographically. Sequential Irish-then-English
+   reads as a translation; this reads as a pair. */
 .cp-pair-list { margin: clamp(20px, 3vh, 30px) 0 0; padding: 0; }
 .cp-pair-row {
   display: grid;
-  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-  align-items: baseline;
-  gap: 6px 20px;
+  /* Equal outer tracks: a mirror whose halves are unequal is not a mirror. The
+     spine and the rings are placed into the middle track rather than at a
+     hard-coded 50%, so the axis stays true whatever the tracks resolve to. */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(12px, 1.4vw, 17px);
+}
+/* The spine, drawn full-height in the axis track so consecutive rows join into
+   one continuous thread. Decoration: both pseudo-elements are, which is why
+   the rings left the pairing markup. */
+.cp-pair-row::before {
+  content: "";
+  grid-area: 1 / 2;
+  align-self: stretch;
+  justify-self: center;
+  width: 1px;
+  background: rgba(245, 238, 225, 0.28);
+}
+/* The thread runs between the rings it joins — first pair to last — rather
+   than trailing off past either end of the list. */
+.cp-pair-row:first-child::before { align-self: end; height: 50%; }
+.cp-pair-row:last-child::before { align-self: start; height: 50%; }
+/* The rings, centred on their row and carrying their own petrol ground, so the
+   thread passes behind the twins rather than across them. */
+.cp-pair-row::after {
+  content: "";
+  grid-area: 1 / 2;
+  align-self: center;
+  justify-self: center;
+  width: 46px;
+  height: 34px;
+  background: var(--petrol) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='34' viewBox='0 0 46 34' fill='none'%3E%3Ccircle cx='16' cy='17' r='13.5' stroke='%23f5eee1' stroke-width='2.4'/%3E%3Ccircle cx='30' cy='17' r='13.5' stroke='%23e8c58f' stroke-width='2.4'/%3E%3C/svg%3E") center / 46px 34px no-repeat;
+}
+/* Each half carries its own rule, so the row divider breaks at the axis
+   instead of crossing it — the mirror again, at the horizontal. */
+.cp-pair-row dt,
+.cp-pair-row dd {
+  margin: 0;
   padding: 14px 0;
   border-top: 1px solid rgba(245, 238, 225, 0.28);
-}
-.cp-pair-row:first-child { border-top: 0; padding-top: 0; }
-.cp-pair-row dt {
   font-family: var(--display);
-  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.25;
+}
+.cp-pair-row:first-child dt,
+.cp-pair-row:first-child dd { border-top: 0; padding-top: 0; }
+.cp-pair-row dt {
+  grid-column: 1;
+  text-align: right;
+  font-size: clamp(20px, 2vw, 27px);
   font-style: italic;
   font-weight: 600;
-  line-height: 1.1;
   color: #fff;
 }
-.cp-pair-row dd { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15.5px; line-height: 1.45; color: #e6ece8; }
-.cp-pair-rings { flex: 0 0 auto; color: var(--caramel); }
+.cp-pair-row dd {
+  grid-column: 3;
+  text-align: left;
+  font-size: clamp(15px, 1.3vw, 17px);
+  font-weight: 400;
+  color: #dfe8e3;
+}
 .cp-pair-image-note {
   margin-top: 20px;
   display: flex;
@@ -420,6 +472,18 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   .cp-pair { grid-template-columns: 1fr; }
   .cp-twin-cups { padding: 26px; }
   .cp-pair-image-note { align-items: flex-start; flex-direction: column; }
+}
+
+/* The mirror survives to the phone — it is the section's whole argument — but
+   the axis and both halves tighten so three facts still read in two columns at
+   390px rather than collapsing into a stack that loses the pairing. */
+@media (max-width: 560px) {
+  .cp-pair-row { column-gap: 9px; }
+  .cp-pair-row::after { width: 34px; height: 25px; background-size: 34px 25px; }
+  .cp-pair-row dt { font-size: clamp(17px, 4.8vw, 21px); }
+  .cp-pair-row dd { font-size: 14px; }
+  .cp-pair-row dt,
+  .cp-pair-row dd { padding: 11px 0; }
 }
 
 /* Active nav state — marks the current page in sub-page nav */

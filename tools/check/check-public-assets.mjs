@@ -8,10 +8,15 @@
  * /opportunities/ (23 July 2026) and the concept imagery audit at /audits/
  * (26 July 2026). This check fails the build on the third.
  *
- * It also reports held images and videos that nothing in src/ references any
- * more. That is a note rather than a failure — an unused file is not a leak —
- * but a withdrawn image makes any "Sources & limits" copy describing it false,
- * which is how three public case studies came to carry untrue sourcing claims.
+ * It also checks both directions between src/ and public/:
+ *
+ *   - a reference in src/ with no asset behind it fails the build. That is a
+ *     broken image on a live page, and one shipped to production on 5 August
+ *     2026 while this script reported a pass.
+ *   - an asset in public/ that nothing references any more is a note rather
+ *     than a failure — an unused file is not a leak — but a withdrawn image
+ *     makes any "Sources & limits" copy describing it false, which is how three
+ *     public case studies came to carry untrue sourcing claims.
  *
  *   node tools/check/check-public-assets.mjs            # guard, quiet summary
  *   node tools/check/check-public-assets.mjs --orphans  # list unreferenced assets
@@ -112,17 +117,53 @@ for (const rel of publicFiles) {
   );
 }
 
+const srcFiles = walk(SRC_DIR).filter((f) =>
+  /\.(astro|ts|tsx|js|mjs|css|json|md)$/.test(f),
+);
+const sources = srcFiles.map((f) => [f, fs.readFileSync(f, "utf8")]);
+const haystack = sources.map(([, text]) => text).join("\n");
+
+/*
+ * 3. References in src/ to assets that are not under public/ — the other
+ * direction, and the one that actually broke.
+ *
+ * Check 4 below has only ever asked "is this file referenced?". Nothing asked
+ * "does this reference resolve?", so on 5 August 2026 the Cúpla story section
+ * shipped to production with markup, CSS and a provenance entry for three
+ * twin-cup files that were never committed. The page rendered its alt text
+ * across the panel, and this script reported a pass. A reference with no asset
+ * is a broken image on a public page, so it fails the build.
+ *
+ * Static literals only: a path assembled at runtime (`${base}.mp4`) cannot be
+ * resolved here and is skipped rather than guessed at.
+ */
+const ASSET_REFERENCE =
+  /(?:\/media\/|\/brand\/)[A-Za-z0-9._/-]+\.(?:jpg|jpeg|png|webp|svg|gif|avif|mp4|webm|mp3|ico|woff2?)/g;
+
+const missing = new Map();
+for (const [file, text] of sources) {
+  for (const match of text.matchAll(ASSET_REFERENCE)) {
+    const rel = match[0].replace(/^\//, "");
+    if (fs.existsSync(path.join(PUBLIC_DIR, rel))) continue;
+    if (!missing.has(rel)) missing.set(rel, new Set());
+    missing.get(rel).add(posix(file));
+  }
+}
+
+for (const [rel, referrers] of [...missing].sort(([a], [b]) => a.localeCompare(b))) {
+  failures.push(
+    `public/${rel} — referenced by ${[...referrers].join(", ")} but not present under public/. ` +
+      `Commit the asset, or remove the reference. A missing asset renders as alt text on a live page.`,
+  );
+}
+
 if (failures.length > 0) {
   console.error("Public asset check failed:\n");
   for (const failure of failures) console.error(`  - ${failure}\n`);
   process.exit(1);
 }
 
-// 3. Held assets that nothing references (reported, never fatal).
-const srcFiles = walk(SRC_DIR).filter((f) =>
-  /\.(astro|ts|tsx|js|mjs|css|json|md)$/.test(f),
-);
-const haystack = srcFiles.map((f) => fs.readFileSync(f, "utf8")).join("\n");
+// 4. Held assets that nothing references (reported, never fatal).
 
 /** Collapse responsive derivatives onto the master they were built from. */
 function logicalName(rel) {
