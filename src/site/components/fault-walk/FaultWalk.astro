@@ -34,13 +34,12 @@ const graph = {
 
 <section class="wwlf-theme" id={walk.id} data-theme={walk.id}>
   <header class="wwlf-theme-head">
-    <p class="wwlf-theme-kicker">
-      <span class="wwlf-theme-id">{walk.id}</span>
-      <span class="wwlf-theme-shape">{walk.shape}</span>
-    </p>
-    <h3 class="wwlf-theme-name">{walk.theme}</h3>
-    <p class="wwlf-theme-message">{walk.message}</p>
-    <p class="wwlf-theme-decision">{walk.decision}</p>
+    <p class="wwlf-theme-id">{walk.id}</p>
+    <div class="wwlf-theme-titles">
+      <p class="wwlf-theme-shape">{walk.shape}</p>
+      <h3 class="wwlf-theme-name">{walk.theme}</h3>
+      <p class="wwlf-theme-message">{walk.message}</p>
+    </div>
   </header>
 
   <div class="fw" data-fault-walk>
@@ -70,9 +69,11 @@ const graph = {
       </p>
     </div>
 
-    <div class="fw-live" data-fw-live hidden>
+    <div class="fw-live" data-fw-live data-fw-mode="before" hidden>
       <div class="fw-row">
-        <div class="fw-frame" data-fw-frame>
+        <div class="fw-stage">
+          <span class="fw-badge" data-fw-badge aria-hidden="true">the fault</span>
+          <div class="fw-frame" data-fw-frame>
           {walk.before.map((panel, index) => (
             <FaultPanelView
               panel={panel}
@@ -85,6 +86,7 @@ const graph = {
           {walk.after.map((panel) => (
             <FaultPanelView panel={panel} mode="after" interactive hidden={true} />
           ))}
+          </div>
         </div>
         <div class="fw-rail">
           <dl class="fw-counts" aria-hidden="true">
@@ -116,16 +118,21 @@ const graph = {
 
   {/* The clip slots in beside the interactive here, still-first and muted,
       once research/film/clips/studio/ has the scene. */}
-  <p class="wwlf-fixed">
-    <span class="wwlf-fixed-lead">We fixed this here —</span>
-    {
-      walk.links.map((link, index) => (
-        <>
-          <a href={`/transformations/${link.slug}/`}>{link.name}</a>
-          {index < walk.links.length - 1 && <span aria-hidden="true"> · </span>}
-        </>
-      ))
-    }
-    <span class="wwlf-fixed-label">independent concepts</span>
-  </p>
+  <footer class="wwlf-theme-foot">
+    <p class="wwlf-theme-decision">
+      <span class="wwlf-decision-lead">How it happens.</span> {walk.decision}
+    </p>
+    <p class="wwlf-fixed">
+      <span class="wwlf-fixed-lead">We fixed this here —</span>
+      {
+        walk.links.map((link, index) => (
+          <>
+            <a href={`/transformations/${link.slug}/`}>{link.name}</a>
+            {index < walk.links.length - 1 && <span aria-hidden="true"> · </span>}
+          </>
+        ))
+      }
+      <span class="wwlf-fixed-label">independent concepts</span>
+    </p>
+  </footer>
 </section>

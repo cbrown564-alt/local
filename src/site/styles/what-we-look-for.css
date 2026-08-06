@@ -1,7 +1,9 @@
 /* /prototypes/what-we-look-for/ — the ten faults as walkable wireframes.
-   The mocks are deliberately colourless: grey blocks and ruled bands only,
+   The mocks stay deliberately colourless: grey blocks and ruled bands only,
    so attention goes to structure, where every one of the ten faults lives.
-   The single exception is brass, reserved for the T10 nameplate. */
+   Two controlled exceptions: the fix state of each walk turns the errand's
+   goal blue (colour arrives exactly where the repair lands), and brass is
+   reserved for T10 — the nameplate, and the closer's waypoint. */
 
 .wwlf {
   --wwlf-paper: #eef1f3;
@@ -14,105 +16,376 @@
   --wwlf-brass-dark: #8f6f38;
 }
 
+/* --- the opening --------------------------------------------------------- */
+
 .wwlf-hero {
-  padding: 4.5rem 0 2.5rem;
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0 3.5rem;
+}
+
+.wwlf-hero-ten {
+  position: absolute;
+  top: -0.24em;
+  right: max(-2rem, -4vw);
+  margin: 0;
+  color: rgba(35, 72, 90, 0.1);
+  font-family: var(--display);
+  font-size: clamp(16rem, 34vw, 30rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  pointer-events: none;
+  user-select: none;
 }
 
 .wwlf-hero h1 {
-  max-width: 14ch;
-  margin-bottom: 1.25rem;
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  position: relative;
+  max-width: 15ch;
+  margin-bottom: 1.5rem;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  text-wrap: balance;
 }
 
 .wwlf-hero .lede {
-  max-width: 56ch;
+  position: relative;
+  max-width: 46ch;
 }
 
-.wwlf-invented {
-  max-width: 60ch;
-  margin-top: 1.75rem;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid var(--blue);
-  background: rgba(35, 72, 90, 0.06);
-  font-size: 0.95rem;
+.wwlf-howto {
+  max-width: 62ch;
+  margin-top: 2.25rem;
+  padding: 1.1rem 1.4rem;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: 5px 5px 0 var(--ink);
+  font-size: 1.05rem;
+  text-wrap: pretty;
 }
 
-.wwlf-themes {
-  padding-bottom: 2rem;
-}
-
-.wwlf-theme {
-  padding: 3.25rem 0;
-  border-top: 1px solid rgba(35, 72, 90, 0.18);
-}
-
-.wwlf-theme-kicker {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 0 0 0.9rem;
+.wwlf-howto-lead {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--blue-deep);
   font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.wwlf-theme-id {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  background: var(--ink);
-  color: var(--foam);
-  font-weight: 800;
-}
-
-.wwlf-theme-shape {
-  color: var(--blue-deep);
-  font-weight: 700;
-}
-
-.wwlf-theme-name {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
-}
-
-.wwlf-theme-message {
-  max-width: 44ch;
-  margin: 0 0 0.4rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.wwlf-theme-decision {
-  max-width: 56ch;
-  margin: 0;
-  color: var(--muted, #4a5a64);
+.wwlf-invented {
+  max-width: 58ch;
+  margin-top: 1.75rem;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
-.fw {
-  margin-top: 1.75rem;
+/* --- the index: a map of the ten before the walk ------------------------- */
+
+.wwlf-index {
+  padding: 2.75rem 0 3rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--pale);
 }
+
+.wwlf-index h2 {
+  max-width: 20ch;
+  margin-bottom: 2rem;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.wwlf-index-groups {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.wwlf-index-group h3 {
+  margin-bottom: 1rem;
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.wwlf-index-group h3 span {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--blue-deep);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wwlf-index-group ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wwlf-index-group a {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0 0.75rem;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.16);
+  color: inherit;
+  text-decoration: none;
+}
+
+.wwlf-index-group li:last-child a {
+  border-bottom: 1px solid rgba(35, 72, 90, 0.16);
+}
+
+.wwlf-index-id {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.wwlf-index-name {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.wwlf-index-errand {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.wwlf-index-group a:hover .wwlf-index-name {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.wwlf-index-group a:hover .wwlf-index-id {
+  transform: translateX(2px);
+}
+
+.wwlf-index-id {
+  transition: transform 160ms ease;
+}
+
+/* --- part bands: the three movements ------------------------------------- */
+
+.wwlf-part {
+  padding: 4.5rem 0 1rem;
+}
+
+.wwlf-part-tag {
+  margin: 0 0 0.6rem;
+  color: var(--blue-deep);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.wwlf-part-title {
+  max-width: 22ch;
+  margin-bottom: 0.9rem;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  text-wrap: balance;
+}
+
+.wwlf-part-blurb {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* --- a theme: waypoint header, the walk, the foot ------------------------- */
+
+.wwlf-theme {
+  padding: 3.5rem 0 4.5rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.wwlf-themes .wwlf-theme + .wwlf-theme {
+  border-top: 1px solid rgba(35, 72, 90, 0.16);
+}
+
+.wwlf-theme-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.wwlf-theme-id {
+  margin: 0.35rem 0 0;
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: clamp(3.2rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.wwlf-theme-shape {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.wwlf-theme-name {
+  margin-bottom: 0.6rem;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  text-wrap: balance;
+}
+
+.wwlf-theme-message {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.wwlf-theme-foot {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(35, 72, 90, 0.3);
+}
+
+.wwlf-theme-decision {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.wwlf-decision-lead {
+  color: var(--ink);
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* --- the errand: the assignment tag above the stage ----------------------- */
 
 .fw-errand,
 .swap-errand {
-  margin: 0 0 1rem;
+  display: inline-block;
+  margin: 0 0 1.5rem;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: 4px 4px 0 var(--ink);
   font-size: 1rem;
+  transform: rotate(-0.4deg);
 }
 
-/* --- the phone frame and its blocks ------------------------------------ */
+.fw-errand strong,
+.swap-errand strong {
+  color: var(--blue-deep);
+}
+
+/* --- the phone frame and its blocks -------------------------------------- */
+
+.fw {
+  margin-top: 0;
+}
+
+.fw-stage {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
 
 .fw-frame {
   position: relative;
   width: 100%;
-  max-width: 290px;
   aspect-ratio: 9 / 16;
   background: var(--wwlf-paper);
   border: 2px solid var(--wwlf-ink);
   border-radius: 16px;
+  box-shadow: 10px 10px 0 rgba(19, 32, 41, 0.16);
   overflow: hidden;
+  transition:
+    border-color 240ms ease,
+    box-shadow 240ms ease;
 }
 
 .fw-frame--plate {
-  max-width: 210px;
+  max-width: 220px;
+  box-shadow: 6px 6px 0 rgba(19, 32, 41, 0.14);
+}
+
+.fw-badge {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 50%;
+  padding: 0.3rem 0.9rem 0.36rem;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 999px;
+  background: var(--wwlf-deep);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  transition:
+    background-color 240ms ease,
+    border-color 240ms ease;
+}
+
+.fw-live[data-fw-mode="after"] .fw-frame {
+  border-color: var(--blue);
+  box-shadow: 10px 10px 0 rgba(35, 72, 90, 0.3);
+}
+
+.fw-live[data-fw-mode="after"] .fw-badge {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
+/* In the fixed walk the errand's goal turns blue — the one colour beat
+   inside the grey, exactly where the repair landed. */
+.fwp[data-mode="after"] .fwb.is-goal {
+  box-shadow: inset 0 0 0 2px var(--blue);
+}
+
+.fwp[data-mode="after"] .fwb.is-goal.fwb-button,
+.fwp[data-mode="after"] .fwb.is-goal.fwb-status,
+.fwp[data-mode="after"] .fwb.is-goal.fwb-mark {
+  background: var(--blue);
+  box-shadow: none;
+}
+
+.fwp[data-mode="after"] .fwb.is-goal.fwb-status::before {
+  background: #fff;
+}
+
+.fwp[data-mode="after"] .fwb.is-goal .fwb-label {
+  color: var(--blue);
+}
+
+.fwp[data-mode="after"] .fwb.is-goal.fwb-button .fwb-label,
+.fwp[data-mode="after"] .fwb.is-goal.fwb-status .fwb-label {
+  color: #fff;
 }
 
 .fwp {
@@ -143,6 +416,10 @@ button.fwb:focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 1px;
   z-index: 2;
+}
+
+button.fwb:hover {
+  filter: brightness(0.94);
 }
 
 .fwb.is-dim {
@@ -242,6 +519,7 @@ button.fwb:focus-visible {
 
 button.fwb-button:hover {
   background: var(--wwlf-ink);
+  filter: none;
 }
 
 .fwb-field {
@@ -292,6 +570,7 @@ button.fwb-button:hover {
 
 button.fwb-row:hover {
   border-color: var(--wwlf-ink);
+  filter: none;
 }
 
 .fwb-shield {
@@ -302,6 +581,7 @@ button.fwb-row:hover {
 
 button.fwb-shield:hover {
   background: var(--wwlf-mid);
+  filter: none;
 }
 
 .fwb-mark {
@@ -343,6 +623,7 @@ button.fwb-mark {
 button.fwb-scroll:hover {
   border-color: var(--wwlf-ink);
   background: #fff;
+  filter: none;
 }
 
 .fwb-empty {
@@ -388,43 +669,47 @@ button.fwb-scroll:hover {
   box-shadow: 0 3px 10px rgba(38, 50, 59, 0.22);
 }
 
-/* --- the rail: counters, narration, the one control -------------------- */
+/* --- the rail: counters, narration, the one control ----------------------- */
 
 .fw-row {
   display: grid;
-  grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 3rem;
   align-items: start;
 }
 
 .fw-rail {
-  max-width: 34ch;
+  max-width: 36ch;
+  padding-top: 0.5rem;
 }
 
 .fw-counts {
   display: flex;
-  gap: 2.25rem;
-  margin: 0 0 1rem;
+  gap: 2.75rem;
+  margin: 0 0 1.25rem;
 }
 
 .fw-counts > div {
   display: grid;
-  gap: 0.15rem;
+  gap: 0.2rem;
 }
 
 .fw-counts dt {
-  color: var(--wwlf-deep);
+  color: var(--muted);
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .fw-counts dd {
   margin: 0;
   font-family: var(--display);
-  font-size: 2.4rem;
-  line-height: 1;
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  transform-origin: left bottom;
 }
 
 .fw-note {
@@ -437,27 +722,35 @@ button.fwb-scroll:hover {
 
 .fw-outcome {
   min-height: 3.2em;
-  margin: 0 0 0.35rem;
-  font-weight: 700;
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .fw-actuals {
   min-height: 1.4em;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
   color: var(--wwlf-deep);
   font-size: 0.9rem;
 }
 
 .fw-fix {
-  min-height: 48px;
-  padding: 0.6rem 1.4rem;
+  min-height: 56px;
+  min-width: 210px;
+  padding: 0.7rem 1.6rem;
   border: 2px solid var(--ink);
   border-radius: 4px;
   background: transparent;
   color: var(--ink);
   font: inherit;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .fw-fix:hover {
@@ -467,6 +760,7 @@ button.fwb-scroll:hover {
 .fw-fix.is-ready {
   background: var(--ink);
   color: var(--foam);
+  box-shadow: 5px 5px 0 rgba(35, 72, 90, 0.35);
 }
 
 .fw-fix.is-ready:hover {
@@ -485,12 +779,12 @@ button.fwb-scroll:hover {
   white-space: nowrap;
 }
 
-/* --- static plates (the no-JS / reduced-motion layer) ------------------- */
+/* --- static plates (the no-JS / reduced-motion layer) --------------------- */
 
 .fw-plates {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .fw-plate {
@@ -499,13 +793,13 @@ button.fwb-scroll:hover {
 
 .fw-plate figcaption {
   max-width: 26ch;
-  margin-top: 0.75rem;
+  margin-top: 0.9rem;
   font-size: 0.9rem;
 }
 
 .fw-static-arc {
   max-width: 62ch;
-  margin: 1.5rem 0 0;
+  margin: 1.75rem 0 0;
 }
 
 .fw-static-hint {
@@ -515,10 +809,10 @@ button.fwb-scroll:hover {
   font-style: italic;
 }
 
-/* --- fixed-here links ---------------------------------------------------- */
+/* --- fixed-here links ------------------------------------------------------ */
 
 .wwlf-fixed {
-  margin: 1.75rem 0 0;
+  margin: 0;
   font-size: 0.95rem;
 }
 
@@ -529,24 +823,100 @@ button.fwb-scroll:hover {
 .wwlf-fixed a {
   color: var(--blue-deep);
   font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.wwlf-fixed a:hover {
+  color: var(--blue);
 }
 
 .wwlf-fixed-label {
   margin-left: 0.6rem;
   color: var(--wwlf-deep);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-style: italic;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* --- T10: the swap test --------------------------------------------------- */
+/* --- the closer: T10 staged on ink, brass in the dark ---------------------- */
+
+.wwlf-finale {
+  padding: 1rem 0 5rem;
+  background: var(--ink);
+  color: var(--foam);
+}
+
+.wwlf-finale .wwlf-part-tag {
+  color: var(--wwlf-brass);
+}
+
+.wwlf-finale .wwlf-part-blurb {
+  color: #a9bcc9;
+}
+
+.wwlf-finale .wwlf-theme {
+  padding-bottom: 0;
+}
+
+.wwlf-finale .wwlf-theme-id {
+  color: var(--wwlf-brass);
+}
+
+.wwlf-finale .wwlf-theme-shape {
+  color: #93a7b3;
+}
+
+.wwlf-finale .wwlf-theme-message {
+  color: var(--foam);
+}
+
+.wwlf-finale .swap-errand {
+  border-color: var(--foam);
+  background: rgba(244, 248, 250, 0.06);
+  box-shadow: 4px 4px 0 rgba(244, 248, 250, 0.28);
+  color: var(--foam);
+}
+
+.wwlf-finale .swap-errand strong {
+  color: var(--wwlf-brass);
+}
+
+.wwlf-finale .wwlf-theme-decision {
+  color: #93a7b3;
+}
+
+.wwlf-finale .wwlf-decision-lead {
+  color: var(--foam);
+}
+
+.wwlf-finale .wwlf-theme-foot {
+  border-top-color: rgba(244, 248, 250, 0.25);
+}
+
+.wwlf-finale .wwlf-fixed a {
+  color: #cfe3ee;
+}
+
+.wwlf-finale .wwlf-fixed a:hover {
+  color: #fff;
+}
+
+.wwlf-finale .wwlf-fixed-label {
+  color: #93a7b3;
+}
+
+.wwlf-finale .fw-static-hint {
+  color: #93a7b3;
+}
+
+/* --- T10: the swap test ---------------------------------------------------- */
 
 .swap-stage {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  max-width: 560px;
+  max-width: 620px;
 }
 
 .swap-shop {
@@ -555,6 +925,7 @@ button.fwb-scroll:hover {
   background: var(--wwlf-paper);
   border: 2px solid var(--wwlf-ink);
   border-radius: 10px;
+  box-shadow: 8px 8px 0 rgba(244, 248, 250, 0.14);
 }
 
 .swap-fascia {
@@ -591,7 +962,7 @@ button.fwb-scroll:hover {
 }
 
 .swap-plate:focus-visible {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--wwlf-brass);
   outline-offset: 2px;
 }
 
@@ -606,6 +977,10 @@ button.fwb-scroll:hover {
 
 .swap-plate.is-dragging {
   transition: none;
+}
+
+.swap-plate.is-dragging .swap-plate-face {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 .swap-plate--seated {
@@ -695,30 +1070,36 @@ button.fwb-scroll:hover {
 
 .swap-rail {
   max-width: 46ch;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .swap-outcome {
   min-height: 3.2em;
-  margin: 0 0 0.75rem;
-  font-weight: 700;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .swap-details {
-  min-height: 48px;
-  padding: 0.6rem 1.4rem;
-  border: 2px solid var(--ink);
+  min-height: 56px;
+  padding: 0.7rem 1.6rem;
+  border: 2px solid var(--wwlf-brass-dark);
   border-radius: 4px;
-  background: var(--ink);
-  color: var(--foam);
+  background: var(--wwlf-brass);
+  color: var(--ink);
   font: inherit;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
 
 .swap-details:hover {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: #c9a45c;
+  border-color: var(--wwlf-brass);
 }
 
 /* the static swap plates */
@@ -731,6 +1112,10 @@ button.fwb-scroll:hover {
   max-width: 340px;
 }
 
+.swap-pair .swap-shop {
+  box-shadow: 6px 6px 0 rgba(244, 248, 250, 0.12);
+}
+
 .swap-plate--hovering {
   position: absolute;
   top: -7%;
@@ -740,15 +1125,16 @@ button.fwb-scroll:hover {
   transform: rotate(-8deg);
 }
 
-/* --- page sections after the ten ---------------------------------------- */
+/* --- after the ten: the quiet note, then the heaviest ask ------------------ */
 
 .wwlf-purpose {
-  padding: 3.5rem 0;
-  border-top: 1px solid rgba(35, 72, 90, 0.18);
+  padding: 4.5rem 0;
 }
 
 .wwlf-purpose h2 {
+  max-width: 20ch;
   font-size: clamp(1.9rem, 4vw, 2.6rem);
+  text-wrap: balance;
 }
 
 .wwlf-purpose p {
@@ -756,38 +1142,101 @@ button.fwb-scroll:hover {
 }
 
 .wwlf-close {
-  padding: 4rem 0 5rem;
-  text-align: left;
+  padding: 6rem 0 7rem;
+  background: var(--blue);
+  color: var(--foam);
+}
+
+.wwlf-close .eyebrow {
+  color: #cfe3ee;
+}
+
+.wwlf-close .eyebrow::before {
+  background: var(--foam);
 }
 
 .wwlf-close h2 {
-  max-width: 18ch;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  max-width: 17ch;
+  font-size: clamp(2.6rem, 5.6vw, 4.4rem);
+  text-wrap: balance;
 }
 
 .wwlf-close p {
-  max-width: 52ch;
-  margin-bottom: 1.75rem;
+  max-width: 50ch;
+  margin-bottom: 2.25rem;
+  color: #d3e2ea;
+  font-size: 1.15rem;
+}
+
+.wwlf-close .button {
+  min-height: 60px;
+  padding: 14px 26px;
+  border-color: var(--foam);
+  background: var(--foam);
+  color: var(--ink);
   font-size: 1.1rem;
 }
 
-@media (max-width: 720px) {
-  .fw-row {
+.wwlf-close .button:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--foam);
+}
+
+/* --- smaller viewports ------------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .wwlf-index-groups {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .wwlf-hero {
+    padding: 4rem 0 2.75rem;
   }
 
-  .fw-frame {
-    max-width: 250px;
+  .wwlf-hero-ten {
+    font-size: 13rem;
+    right: -3rem;
+  }
+
+  .wwlf-theme-head {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .wwlf-theme-id {
+    margin-top: 0;
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+
+  .fw-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .fw-stage {
+    max-width: 270px;
   }
 
   .fw-rail {
     max-width: none;
   }
+
+  .wwlf-close {
+    padding: 4.5rem 0 5.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .swap-plate,
-  .swap-detail {
+  .wwlf-index-id,
+  .fw-frame,
+  .fw-badge,
+  .fw-fix,
+  .swap-details {
     transition: none !important;
   }
 }

@@ -3,8 +3,31 @@ import BaseLayout from "../../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../../site/components/ArrowIcon.astro";
 import FaultWalk from "../../site/components/fault-walk/FaultWalk.astro";
 import SwapTest from "../../site/components/fault-walk/SwapTest.astro";
+import type { FaultWalk as FaultWalkData, SwapTestTheme } from "../../site/data/fault-walks";
 import { whatWeLookFor } from "../../site/data/fault-walks";
 import "../../site/styles/what-we-look-for.css";
+
+const walks = whatWeLookFor.filter((entry): entry is FaultWalkData => entry.kind === "walk");
+const swap = whatWeLookFor.find((entry): entry is SwapTestTheme => entry.kind === "swap");
+if (!swap) throw new Error("what-we-look-for: the swap test is missing from the reel");
+
+/* The ten run as three movements: the access faults, the identity faults,
+   then the swap test as the closer. The bands are the pacing — they break a
+   long scroll into an argument with a beginning, a turn and an ending. */
+const parts: Record<string, { tag: string; title: string; blurb: string }> = {
+  t1: {
+    tag: "Part one",
+    title: "Six ordinary errands, stopped or made to wander.",
+    blurb:
+      "Every stop below was a reasonable decision when somebody made it. Walk the errand yourself and feel where it breaks.",
+  },
+  t3: {
+    tag: "Part two",
+    title: "Three working sites that stopped sounding like anyone.",
+    blurb:
+      "Nothing in this movement is broken. That is what makes these three harder to see.",
+  },
+};
 ---
 
 <BaseLayout
@@ -15,11 +38,17 @@ import "../../site/styles/what-we-look-for.css";
   <div class="wwlf">
     <section class="wwlf-hero">
       <div class="shell">
+        <p class="wwlf-hero-ten" aria-hidden="true">10</p>
         <p class="eyebrow">Mourne Made · prototype study · August 2026</p>
         <h1>Ten things we look for before we redesign anything.</h1>
         <p class="lede">
           What twenty concepts taught us to check first — and what each one costs the person
           standing outside your shop.
+        </p>
+        <p class="wwlf-howto">
+          <span class="wwlf-howto-lead">How to read this page.</span> Tap around inside each
+          phone. The fault will stop you, or make you hunt — that cost is the point. Then press
+          <strong>Fix it</strong> and walk the same errand again.
         </p>
         <p class="wwlf-invented">
           Every demonstration on this page is invented: grey blocks, no business names, no real
@@ -30,24 +59,92 @@ import "../../site/styles/what-we-look-for.css";
       </div>
     </section>
 
+    <nav class="wwlf-index" aria-label="The ten themes, in the order we check them">
+      <div class="shell">
+        <h2>The ten, in the order we check them.</h2>
+        <div class="wwlf-index-groups">
+          <section class="wwlf-index-group">
+            <h3><span>Part one</span> The errand fails</h3>
+            <ol>
+              {
+                walks.slice(0, 6).map((walk) => (
+                  <li>
+                    <a href={`#${walk.id}`}>
+                      <span class="wwlf-index-id">{walk.id}</span>
+                      <span class="wwlf-index-name">{walk.theme}</span>
+                      <span class="wwlf-index-errand">{walk.errand.toLowerCase()}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </section>
+          <section class="wwlf-index-group">
+            <h3><span>Part two</span> It could be anyone's</h3>
+            <ol>
+              {
+                walks.slice(6).map((walk) => (
+                  <li>
+                    <a href={`#${walk.id}`}>
+                      <span class="wwlf-index-id">{walk.id}</span>
+                      <span class="wwlf-index-name">{walk.theme}</span>
+                      <span class="wwlf-index-errand">{walk.errand.toLowerCase()}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </section>
+          <section class="wwlf-index-group">
+            <h3><span>The closer</span> Done by hand</h3>
+            <ol>
+              <li>
+                <a href={`#${swap.id}`}>
+                  <span class="wwlf-index-id">{swap.id}</span>
+                  <span class="wwlf-index-name">{swap.theme}</span>
+                  <span class="wwlf-index-errand">tell two shopfronts apart</span>
+                </a>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </div>
+    </nav>
+
     <div class="wwlf-themes">
       <div class="shell">
         {
-          whatWeLookFor.map((entry) => {
-            switch (entry.kind) {
-              case "walk":
-                return <FaultWalk walk={entry} />;
-              case "swap":
-                return <SwapTest theme={entry} />;
-              default: {
-                const neverEntry: never = entry;
-                throw new Error(`Unknown entry kind: ${JSON.stringify(neverEntry)}`);
-              }
-            }
+          walks.map((walk) => {
+            const part = parts[walk.id];
+            return (
+              <>
+                {part && (
+                  <header class="wwlf-part">
+                    <p class="wwlf-part-tag">{part.tag}</p>
+                    <h2 class="wwlf-part-title">{part.title}</h2>
+                    <p class="wwlf-part-blurb">{part.blurb}</p>
+                  </header>
+                )}
+                <FaultWalk walk={walk} />
+              </>
+            );
           })
         }
       </div>
     </div>
+
+    <section class="wwlf-finale">
+      <div class="shell">
+        <header class="wwlf-part">
+          <p class="wwlf-part-tag">The closer</p>
+          <h2 class="wwlf-part-title">The last check is done by hand.</h2>
+          <p class="wwlf-part-blurb">
+            Not an errand — a test you perform yourself, on two invented shopfronts.
+          </p>
+        </header>
+        <SwapTest theme={swap} />
+      </div>
+    </section>
 
     <section class="wwlf-purpose">
       <div class="shell">

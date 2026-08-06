@@ -11,13 +11,12 @@ const { theme } = Astro.props;
 
 <section class="wwlf-theme wwlf-theme--swap" id={theme.id} data-theme={theme.id}>
   <header class="wwlf-theme-head">
-    <p class="wwlf-theme-kicker">
-      <span class="wwlf-theme-id">{theme.id}</span>
-      <span class="wwlf-theme-shape">{theme.shape}</span>
-    </p>
-    <h3 class="wwlf-theme-name">{theme.theme}</h3>
-    <p class="wwlf-theme-message">{theme.message}</p>
-    <p class="wwlf-theme-decision">{theme.decision}</p>
+    <p class="wwlf-theme-id">{theme.id}</p>
+    <div class="wwlf-theme-titles">
+      <p class="wwlf-theme-shape">{theme.shape}</p>
+      <h3 class="wwlf-theme-name">{theme.theme}</h3>
+      <p class="wwlf-theme-message">{theme.message}</p>
+    </div>
   </header>
 
   <div class="swap" data-swap-test data-phase="start">
@@ -83,16 +82,21 @@ const { theme } = Astro.props;
     </div>
   </div>
 
-  <p class="wwlf-fixed">
-    <span class="wwlf-fixed-lead">We fixed this here —</span>
-    {
-      theme.links.map((link, index) => (
-        <>
-          <a href={`/transformations/${link.slug}/`}>{link.name}</a>
-          {index < theme.links.length - 1 && <span aria-hidden="true"> · </span>}
-        </>
-      ))
-    }
-    <span class="wwlf-fixed-label">independent concepts</span>
-  </p>
+  <footer class="wwlf-theme-foot">
+    <p class="wwlf-theme-decision">
+      <span class="wwlf-decision-lead">How it happens.</span> {theme.decision}
+    </p>
+    <p class="wwlf-fixed">
+      <span class="wwlf-fixed-lead">We fixed this here —</span>
+      {
+        theme.links.map((link, index) => (
+          <>
+            <a href={`/transformations/${link.slug}/`}>{link.name}</a>
+            {index < theme.links.length - 1 && <span aria-hidden="true"> · </span>}
+          </>
+        ))
+      }
+      <span class="wwlf-fixed-label">independent concepts</span>
+    </p>
+  </footer>
 </section>

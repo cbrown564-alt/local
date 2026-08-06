@@ -50,6 +50,7 @@ function mountWalk(root: HTMLElement): void {
   const outcomeEl = live.querySelector<HTMLElement>("[data-fw-outcome]");
   const actualsEl = live.querySelector<HTMLElement>("[data-fw-actuals]");
   const fixButton = live.querySelector<HTMLButtonElement>("[data-fw-fix]");
+  const badgeEl = live.querySelector<HTMLElement>("[data-fw-badge]");
   const sr = live.querySelector<HTMLElement>("[data-fw-sr]");
   const panels = [...live.querySelectorAll<HTMLElement>("[data-panel]")];
   if (!tapsEl || !screensEl || !noteEl || !outcomeEl || !actualsEl || !fixButton || !sr) {
@@ -68,9 +69,24 @@ function mountWalk(root: HTMLElement): void {
     noteEl.textContent = text;
   };
 
+  /* A quick scale tick as the visitor's own count climbs — the number is the
+     lesson, so it gets a pulse. The whole live layer only mounts when motion
+     is allowed, so no reduced-motion guard is needed here. */
+  const pop = (el: HTMLElement) => {
+    el.animate(
+      [
+        { transform: "scale(1.22)", color: "var(--blue)" },
+        { transform: "scale(1)" },
+      ],
+      { duration: 220, easing: "cubic-bezier(.2,.7,.2,1)" },
+    );
+  };
+
   const updateCounts = () => {
     tapsEl.textContent = String(taps);
     screensEl.textContent = String(screens);
+    pop(tapsEl);
+    if (screens > 0) pop(screensEl);
   };
 
   const showPanel = (id: string, byVisitor = false) => {
@@ -82,6 +98,13 @@ function mountWalk(root: HTMLElement): void {
     }
     if (!shown || currentPanel === id) return;
     currentPanel = id;
+    shown.animate(
+      [
+        { opacity: 0, transform: "translateY(8px)" },
+        { opacity: 1, transform: "none" },
+      ],
+      { duration: 200, easing: "cubic-bezier(.2,.7,.2,1)" },
+    );
     const data = panelsData().find((panel) => panel.id === id);
     setNote(data?.note ?? "");
     if (byVisitor) {
@@ -99,6 +122,14 @@ function mountWalk(root: HTMLElement): void {
     actualsEl.textContent = `Your walk: ${plural(taps, "tap")} · ${plural(screens, "screen")}.`;
     sr.textContent = `${note} You took ${plural(taps, "tap")} across ${plural(screens, "screen")}.`;
     fixButton.classList.add("is-ready");
+    fixButton.animate(
+      [
+        { transform: "scale(1)" },
+        { transform: "scale(1.045)" },
+        { transform: "scale(1)" },
+      ],
+      { duration: 340, easing: "ease-out" },
+    );
   };
 
   frame.addEventListener("click", (event) => {
@@ -132,6 +163,8 @@ function mountWalk(root: HTMLElement): void {
     screens = 0;
     ended = false;
     currentPanel = null;
+    live.dataset.fwMode = mode;
+    if (badgeEl) badgeEl.textContent = mode === "after" ? "the fix" : "the fault";
     updateCounts();
     outcomeEl.textContent = "";
     actualsEl.textContent = "";
@@ -239,7 +272,7 @@ function mountSwap(root: HTMLElement): void {
       dragging = true;
       plate.classList.add("is-dragging");
     }
-    if (dragging) plate.style.transform = `translate(${dx}px, ${dy}px)`;
+    if (dragging) plate.style.transform = `translate(${dx}px, ${dy}px) rotate(-3deg)`;
   });
 
   plate.addEventListener("pointerup", (event) => {
