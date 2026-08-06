@@ -1,73 +1,110 @@
-# The Tool Centre — voice harvest, 5 August 2026
+# The Tool Centre — voice harvest
 
 Move 1 of `research/concepts/tool-centre/tool-centre-elevation-brief.md` is a
 research action before it is a build move: read the Google reviews the
 verification points at and harvest one verbatim sentence to carry the page.
 
-**Outcome: the harvest failed. No sentence shipped.**
+**Outcome: move 1 shipped 6 August 2026.** Two Google review sentences — one
+for the shop floor on the landing page, one for hire on the hire list. Light
+attribution (`Google review · Month Year`). No star ratings. Maps relative
+dates and studio read stamps stay in this file.
+
+## What shipped
+
+### Shop voice — landing page (`shopVoice`)
+
+| Field | Value |
+| --- | --- |
+| Quote | What an incredible shop, a true aladdins cave of everything you need for home DIY and more, the shop is well and truly stocked from floor to ceiling with so many things. |
+| Who | Tony's Reviews |
+| Platform context | Local Guide · 629 reviews · 1432 photos (not on the page) |
+| When shown on Maps | "10 months ago" as of 6 August 2026 (~October 2025) |
+| Source on the page | Google review · October 2025 |
+
+The rest of that review (not on the page) also praises "very reasonable prices"
+and knowledgeable staff. **Name care:** "Tony's Reviews" is a Local Guide
+display name, not a claim that the owner's name is Tony.
+
+### Hire voice — hire list (`hireVoice`)
+
+| Field | Value |
+| --- | --- |
+| Quote | I hire the large range of hoists from them and they always go the extra mile to ensure the best service possible. |
+| Who | chris keag |
+| When shown on Maps | "2 years ago" as of 6 August 2026 (~August 2024) |
+| Source on the page | Google review · August 2024 |
+
+Full review body as pasted (6 August 2026):
+
+> Tony and Gerard are fantastic to deal with. I hire the large range of hoists
+> from them and they always go the extra mile to ensure the best service
+> possible. Couldn't recommend these guys enough. Quality kit with a quality
+> service.
+
+**Name care:** Tony and Gerard appear inside this quotation only — that is the
+record gaining names from a sourced review; they are not used elsewhere on
+either route.
 
 ## What the record promised
 
 `research/pipeline/verifications.json` (verified 20 July 2026) records, under
-trading evidence: *"Google reviews praising the owner and prices"*. No sentence
-was ever captured, and no rating, count or reviewer was recorded — only that
-such reviews were seen.
+trading evidence: *"Google reviews praising the owner and the prices"*. No
+sentence was captured at verification — only that such reviews were seen.
 
-## What was attempted, 5 August 2026
+---
+
+## Pass 1 — 5 August 2026
+
+**Outcome of pass 1: the harvest failed.** Maps unreachable; Cylex published an
+**AI Review Summary** whose fluent praise could not be found as anyone's words;
+Big Red had no comments. Full table and the AI-summary trap are kept below for
+the audit trail.
 
 | Source | Result |
 | --- | --- |
-| Google Maps place page for The Tool Centre, BT33 0AE | Not reachable — Google search and Maps returned a redirect interstitial to this environment; no review text retrieved |
-| Cylex UK listing (`the-tool-centre-13395845`) | HTTP 403. The listing's own title is **"AI Review Summary"** — see below |
-| Yell listing (`the-tool-centre-newcastle-893055`) | HTTP 403 |
-| construction.co.uk listing (`c/281260`) | HTTP 403 |
-| Kompass listing (`gb55266254`) | HTTP 403 |
-| Big Red Directory (`tool-centre-newcastle`) | Retrieved. **"No comments posted yet."** Hours re-confirmed: Mon–Sat 9–5, Sun 10–4 |
-| Central Index / 192.com (`438612459827201`) | Retrieved. No customer reviews on the listing |
-| Wanderlog | No entry for this business |
-| The shop's Facebook page (`Toolcentreplanthire`) | Behind Meta's login wall, as recorded on 22 July 2026 |
+| Google Maps place page | Not reachable — redirect interstitial; no review text |
+| Cylex UK (`the-tool-centre-13395845`) | HTTP 403; listing titled **"AI Review Summary"** |
+| Yell / construction.co.uk / Kompass | HTTP 403 |
+| Big Red Directory | **"No comments posted yet."** Hours Mon–Sat 9–5, Sun 10–4 |
+| Central Index / 192.com | No customer reviews |
+| Facebook (`Toolcentreplanthire`) | Meta login wall |
 
-## Why nothing shipped
+Web search also surfaced summary-style praise that matched no page — not
+harvested. An owner's first name appeared inside that summary and was used
+nowhere.
 
-Web search surfaced fluent, quotable-sounding praise — *"stands out for
-quality, price and the superb friendly highly intelligent staff"*, *"the number
-one choice for plant hire and the purchase of tools and hardware in Newcastle
-(County Down)"* — and it was tempting. It failed verification twice over:
+---
 
-1. The listing it traces back to is published as an **AI review summary**, not
-   as anyone's review. A summary is nobody's words.
-2. Searching those exact phrases returns **no page anywhere** that contains
-   them, which is what you would expect of text generated on the way to the
-   answer rather than quoted from a source.
+## Pass 2 — 6 August 2026 (before the Maps paste)
 
-Either way it is not a customer's sentence, and putting it on the page in
-quotation marks would have been a fabrication of exactly the kind the brief's
-honesty constraints exist to prevent. The brief's discipline is absolute: *"if
-the harvest yields nothing clean, nothing ships"*.
+| Source | Result |
+| --- | --- |
+| Google Maps (automated) | HTTP 200 shell; no review bodies in HTML |
+| Chamber of Commerce UK ([503643](https://www.chamberofcommerce.uk/business-directory/northern-ireland/newcastle/miscellaneous/503643-the-tool-centre)) | Retrieved Google-attributed shorts (Martine Kenny, mike naylor). Hours on that listing are nonsense — not used for hours or for the shipped quote |
+| localitybiz.co.uk | Cloudflare — unread; search index showed longer text including the sentence that later shipped |
+| Big Red Directory | Still no reviews |
 
-The same search surfaced an owner's first name inside that summary. It is
-recorded here and used nowhere: an unverified name from a generated summary is
-not the record gaining a name, and no name appears on either route.
+Chamber candidates were held for a second pair of eyes and were **not** shipped
+once a primary Maps read arrived the same day.
 
-## What shipped instead
+---
 
-Moves 2 and 3, per the brief's own answer to a failed harvest — *"the structure
-moves stand alone; the brief recommends shipping them and leaving the voice slot
-designed but empty."*
+## Pass 3 — 6 August 2026 (primary Maps read)
 
-The slot is `customerVoice` in `src/concepts/tool-centre/record.ts`, typed and
-documented and set to `null`. Null renders nothing; there is no empty band, no
-placeholder quotation and no apology on the page. The test suite asserts that
-no quotation, blockquote or star rating exists while it is null, and asserts the
-attribution and read date the moment it is filled.
+A Google Maps place-page read was pasted into the studio session. Full review
+body as shown:
 
-## What would succeed
+> What an incredible shop, a true aladdins cave of everything you need for home
+> DIY and more, the shop is well and truly stocked from floor to ceiling with so
+> many things. You will have to visit many times to see what you missed, we got
+> all we needed and more at very reasonable prices so happy with the quality of
+> the items too, staff are polite, very helpful and very knowledgeable. I'll be
+> using this tool shop many times and I recommend everyone to go in and check it
+> out you'll be surprised there will definitely be something you'll need, see
+> you soon and thank you for your help
 
-A read of the Google Maps place page from a browser session that reaches it, or
-the shop's own engagement. One sentence is enough. Record it in
-`record.ts` with the reviewer as published, the platform, and the read date —
-then run `pnpm test:tool-centre`, which will start enforcing the attribution
-rather than the absence.
+Attribution chrome as shown: **Tony's Reviews** · Local Guide · 629 reviews ·
+1432 photos · **10 months ago**.
 
-Per the brief's open decisions, the harvest should be read by a second pair of
-eyes before any sentence ships.
+The opening sentence (through the first period) is what ships. Spelling
+`aladdins` is as published — not corrected.

@@ -3,13 +3,12 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import CounterBridge from "./CounterBridge.astro";
+import CustomerVoice from "./CustomerVoice.astro";
 import {
   ADDRESS,
-  FACEBOOK,
   HOURS,
   INDICATIVE,
   NAME_COUNTER,
-  NAME_YARD,
   PHONE,
   PHONE_HREF,
   PLACE,
@@ -48,11 +47,11 @@ const icons: Record<string, string> = {
         </svg>
         <span class="tc-brand-text">
           <span class="tc-brand-name">{NAME_COUNTER}</span>
-          <span class="tc-brand-sub">{NAME_YARD} · one counter</span>
+          <span class="tc-brand-sub">Hardware · Hire</span>
         </span>
       </a>
       <nav class="tc-nav" aria-label="Concept navigation">
-        <a href="/concepts/tool-centre/#tc-counter">The shop</a><a href="/concepts/tool-centre/hire-list/" aria-current="page">Hire</a><a href={PHONE_HREF}>Call the counter</a>
+        <a href="/concepts/tool-centre/#tc-counter">The shop</a><a href="/concepts/tool-centre/hire-list/" aria-current="page">Hire</a>
       </nav>
       <a class="tc-call" href={PHONE_HREF}>Call {PHONE}</a>
     </header>
@@ -60,12 +59,11 @@ const icons: Record<string, string> = {
     <main>
       <section class="tc-hl-page">
         <div class="tc-hl-page-inner">
-          <p class="tc-kicker">{NAME_YARD} · {PLACE}</p>
+          <p class="tc-kicker">{PLACE}</p>
           <h1>Hire price list.</h1>
           <p class="tc-hl-sub">
             Day rates for plant, power tools, garden machinery and access
-            equipment — the hire side of {NAME_COUNTER} at {ADDRESS}, out the
-            back of the same shop the trade counter is in.
+            equipment — collected out the back at {ADDRESS}.
           </p>
         </div>
         <div class="tc-hl-notice" aria-label="Pricing notice">
@@ -78,36 +76,39 @@ const icons: Record<string, string> = {
       </section>
 
       <div class="tc-hl-body">
-        <div class="tc-hl-cats">
-          {hire.map((category) => (
-            <article class="tc-hl-cat">
-              <header class="tc-hl-cat-head">
-                <span class="tc-hl-cat-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" set:html={icons[category.id] ?? ""} />
-                </span>
-                <h2>{category.name}</h2>
-                <span class="tc-hl-cat-note">{hireIsConfirmed ? "Day hire" : "Suggested"}</span>
-              </header>
-              <ul class="tc-hl-items">
-                {category.items.map((item) => (
-                  <li class="tc-hl-item">
-                    <span class="tc-hl-item-name">{item.name}</span>
-                    <span class="tc-hl-item-rate">{item.rate}</span>
+        <div class="tc-hl-main">
+          <div class="tc-hl-cats">
+            {hire.map((category) => (
+              <article class="tc-hl-cat">
+                <header class="tc-hl-cat-head">
+                  <span class="tc-hl-cat-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" set:html={icons[category.id] ?? ""} />
+                  </span>
+                  <h2>{category.name}</h2>
+                  <span class="tc-hl-cat-note">{hireIsConfirmed ? "Day hire" : "Suggested"}</span>
+                </header>
+                <ul class="tc-hl-items">
+                  {category.items.map((item) => (
+                    <li class="tc-hl-item">
+                      <span class="tc-hl-item-name">{item.name}</span>
+                      <span class="tc-hl-item-rate">{item.rate}</span>
+                    </li>
+                  ))}
+                  <li class="tc-hl-item tc-hl-item--week">
+                    <span class="tc-hl-item-name">{category.extra}</span>
                   </li>
-                ))}
-                <li class="tc-hl-item tc-hl-item--week">
-                  <span class="tc-hl-item-name">{category.extra}</span>
-                </li>
-              </ul>
-            </article>
-          ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <CustomerVoice which="hire" />
         </div>
 
         <aside class="tc-hl-sidebar">
           <div class="tc-hl-panel">
             <p class="tc-desk-kicker">Hire desk</p>
             <h2>Ready to hire?</h2>
-            <p class="tc-hl-panel-body">Straight through to the yard — the number the counter already answers, seven days.</p>
+            <p class="tc-hl-panel-body">Ring the yard — seven days, same number as the shop.</p>
             <a class="tc-desk-cta" href={PHONE_HREF}>Call {PHONE}</a>
             <small>{HOURS}</small>
           </div>
@@ -128,6 +129,6 @@ const icons: Record<string, string> = {
         </aside>
       </div>
 
-      <CounterBridge facebook={FACEBOOK} />
+      <CounterBridge />
     </main>
 </ConceptLayout>

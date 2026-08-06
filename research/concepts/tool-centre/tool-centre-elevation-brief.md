@@ -12,12 +12,11 @@ structural, and the record does not support manufactured spectacle. The
 method's discipline for a thin inventory applies: make much of what
 exists rather than add to it.
 
-**Status: moves 2 and 3 shipped 5 August 2026. Move 1's harvest was run and
-failed; move 4 stays gated on the shop's engagement.** The voice slot is
-landed, typed and empty — see
-`research/concepts/tool-centre/voice-harvest.md` for what was searched, what
-the promising-looking sentences turned out to be, and why nothing was quoted.
-The concept is not validated: no owner or representative visitor has seen it.
+**Status: moves 1, 2 and 3 shipped. Moves 2–3 on 5 August 2026; move 1 on
+6 August 2026 after a primary Google Maps read.** Move 4 stays gated on the
+shop's engagement. The harvested sentence, attribution and dead ends of the
+earlier passes are in `research/concepts/tool-centre/voice-harvest.md`. The
+concept is not validated: no owner or representative visitor has seen it.
 The paragraph below describes the concept as it stood before those moves.
 
 The current
@@ -123,26 +122,28 @@ gated on engagement.
 
 The research action the verification has been waiting for: read the
 Google reviews and harvest the best sentence — the ones the record says
-praise the owner and the prices. One sentence, verbatim, attributed as a
-Google review with its read date recorded, becomes the page's emotional
-centre: the shop spoken for by someone who has paid at its counter. This
-is the best-sentence test run on the only public voice the shop has, and
-it doubles as the moment worth showing — the owner reading what a
-customer bothered to write. The discipline is absolute: if the harvest
-yields nothing clean, nothing ships — the page keeps its studio voice and
-does not pretend otherwise.
+praise the owner and the prices. One sentence, verbatim, attributed lightly
+as a Google review with a reasonable month/year on the guest page (full
+harvest trail and read date in `voice-harvest.md`), becomes the page's
+emotional centre: the shop spoken for by someone who has paid at its
+counter. This is the best-sentence test run on the only public voice the
+shop has, and it doubles as the moment worth showing — the owner reading
+what a customer bothered to write. The discipline is absolute: if the
+harvest yields nothing clean, nothing ships — the page keeps its studio
+voice and does not pretend otherwise.
 
 ### 2. One counter, two names
 
-The essence made structural. Every screen resolves the two names into one
-business — The Tool Centre, trading on Facebook as Tool Centre Plant
-Hire, one address, one number — and the shelf/yard split becomes the
-page's organising pair rather than a headline: hardware, gas and the
-trade counter on one side; hire on the other; the counter bridging both.
-The disambiguation moves from good practice to grammar: Newcastle,
-Co. Down, under the Mournes, stated where a stranger would need it,
-because the shop's actual web problem is being mistaken for a city three
-hundred miles away.
+The essence made structural. Every screen carries both trades in the shop's
+own voice — hardware as The Tool Centre, hire as Tool Centre Plant Hire,
+one address, one number — and the shelf/yard split becomes the page's
+organising pair rather than a headline: hardware, gas and the trade
+counter on one side; hire on the other; the counter bridging both. Do not
+explain the dual naming as a research finding ("X on Facebook and Y on Main
+Street are the same shop"); speak as the counter. The disambiguation moves
+from good practice to grammar: Newcastle, Co. Down, under the Mournes,
+stated where a stranger would need it, because the shop's actual web
+problem is being mistaken for a city three hundred miles away.
 
 ### 3. Close the rate-sheet honesty loop
 
@@ -176,12 +177,13 @@ would look like with a permanent address.
 
 ## Honesty constraints
 
-- **Reviews are quoted verbatim, attributed and dated**, with the read
-  date recorded in the research folder — the Kent pattern. No edited
-  quotes, no star-rating claims (the record holds none), no review
-  presented as the shop's own words. If a quoted review names the owner,
-  that is the record gaining a name — source and date it; otherwise no
-  names anywhere.
+- **Reviews are quoted verbatim and attributed lightly on the guest
+  page** (platform + month/year). The read date and harvest trail live in
+  the research folder — the Kent pattern, corrected 6 August 2026 so trust
+  is not mistaken for research chrome. No edited quotes, no star-rating
+  claims (the record holds none), no review presented as the shop's own
+  words. If a quoted review names the owner, that is the record gaining a
+  name — source and date it in research; otherwise no names anywhere.
 - **Every rate on every surface stays indicative and prominently
   labelled.** The landing board asks; the hire list proposes; the case
   study says so in the same words. No figure may read as the shop's
@@ -204,8 +206,9 @@ would look like with a permanent address.
 ## Tests that pin the elevation
 
 - If the voice move ships: assert the quotation is verbatim against the
-  harvested source note, carries its attribution and date, and that no
-  star rating or unquoted review content appears anywhere.
+  harvested source note, carries a light guest attribution (not a studio
+  read stamp), and that no star rating or unquoted review content appears
+  anywhere.
 - Assert no owner name appears on either route unless it arrives inside a
   sourced quotation recorded in research.
 - A standing scan asserts every £ figure on both routes sits under the
@@ -238,10 +241,14 @@ would look like with a permanent address.
 
 ## When a move ships
 
-Record the source and read date for every new fact — the harvested review
-above all — add provenance for any new asset in the same commit, update
-the case-study Sources & limits block, and pin new behaviour in the
-verification tooling. Any move that changes the first viewport recaptures
-the comparison stills and clip in the same commit. Update this status
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour. The harvested review's Maps relative date collapses to a month/year on the page; the full harvest trail stays in `voice-harvest.md`.
+
+Update this status
 line as moves land; do not call the concept validated until an owner or
 representative visitor has supplied that evidence.

@@ -1,0 +1,23 @@
+---
+/* Customer sentence — only when that slot is filled.
+   Null renders nothing: no empty band, no placeholder, no apology. */
+import { hireVoice, shopVoice, type CustomerVoice } from "./record";
+
+interface Props {
+  /** Shop floor on the landing page; yard hire on the hire list. */
+  which: "shop" | "hire";
+}
+
+const { which } = Astro.props;
+const voice: CustomerVoice | null = which === "shop" ? shopVoice : hireVoice;
+---
+
+{voice && (
+  <figure class="tc-voice">
+    <blockquote class="tc-voice-quote" cite={voice.href}>{voice.quote}</blockquote>
+    <figcaption class="tc-voice-by">
+      <span class="tc-voice-who">{voice.who}</span>
+      <span class="tc-voice-source">{voice.source}</span>
+    </figcaption>
+  </figure>
+)}

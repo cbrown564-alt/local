@@ -1,59 +1,38 @@
 ---
-/* Two names, one counter — the essence made structural.
+/* Shelf and yard — the two offers, side by side.
    ============================================================
-   Both routes end on this band, so no screen of the concept can be read
-   without learning that The Tool Centre and Tool Centre Plant Hire are one
-   shop, and without being told which Newcastle it is in. That is not
-   decoration: search puts the same-named Newcastle-upon-Tyne shops above this
-   one on every query, so the county is the disambiguation and the disambiguation
-   is the point.
-
-   The shape is the argument. Shelf on the left, yard on the right, the counter
-   physically between them holding the number that answers for both. */
-import { PHONE, PHONE_HREF, counter, shelf, yard } from "./record";
-
-interface Props {
-  facebook: string;
-}
-const { facebook } = Astro.props;
+   Guests care that the shop sells hardware and hires plant, not which
+   Facebook trading name covers which half. Co. Down stays in the strip and
+   lede; the Plant Hire name lives once, quietly, on the Facebook link. */
+import { FACEBOOK, NAME_YARD, PHONE, PHONE_HREF, shelf, yard } from "./record";
 ---
 
-<section class="tc-counter" id="tc-counter" aria-labelledby="tc-counter-claim">
-  <div class="tc-counter-side tc-counter-side--shelf">
-    <p class="tc-counter-label">{shelf.label}</p>
-    <h2 class="tc-counter-name">{shelf.name}</h2>
-    <p class="tc-counter-as">Trading as <strong>{shelf.tradingAs}</strong></p>
-    <ul class="tc-counter-lines">
-      {shelf.lines.map((line) => (
-        <li>
-          <span class="tc-counter-line-name">{line.name}</span>
-          <span class="tc-counter-line-note">{line.note}</span>
-        </li>
-      ))}
-    </ul>
+<section class="tc-offer" id="tc-counter" aria-label="Hardware and hire">
+  <div class="tc-offer-pair">
+    <article class="tc-offer-side tc-offer-side--shelf">
+      <p class="tc-offer-label">{shelf.label}</p>
+      <h2 class="tc-offer-name">{shelf.name}</h2>
+      <ul class="tc-offer-lines">
+        {shelf.lines.map((line) => (
+          <li>{line.name}{line.note ? ` — ${line.note}` : ""}</li>
+        ))}
+      </ul>
+    </article>
+
+    <article class="tc-offer-side tc-offer-side--yard">
+      <p class="tc-offer-label">{yard.label}</p>
+      <h2 class="tc-offer-name">{yard.name}</h2>
+      <ul class="tc-offer-lines">
+        {yard.lines.map((line) => (
+          <li>{line.name}{line.note ? ` — ${line.note}` : ""}</li>
+        ))}
+      </ul>
+      <a class="tc-offer-more" href="/concepts/tool-centre/hire-list/">See the hire list →</a>
+    </article>
   </div>
 
-  <div class="tc-counter-bridge">
-    <p class="tc-counter-label tc-counter-label--bridge">{counter.label}</p>
-    <p class="tc-counter-claim" id="tc-counter-claim">{counter.claim}</p>
-    <p class="tc-counter-proof">{counter.proof}</p>
-    <a class="tc-counter-call" href={PHONE_HREF}>{PHONE}</a>
-    <p class="tc-counter-ritual">{counter.ritual}</p>
-    <a class="tc-counter-fb" href={facebook}>The {yard.tradingAs} page on Facebook →</a>
-  </div>
-
-  <div class="tc-counter-side tc-counter-side--yard">
-    <p class="tc-counter-label">{yard.label}</p>
-    <h2 class="tc-counter-name">{yard.name}</h2>
-    <p class="tc-counter-as">Trading as <strong>{yard.tradingAs}</strong></p>
-    <ul class="tc-counter-lines">
-      {yard.lines.map((line) => (
-        <li>
-          <span class="tc-counter-line-name">{line.name}</span>
-          <span class="tc-counter-line-note">{line.note}</span>
-        </li>
-      ))}
-    </ul>
-    <a class="tc-counter-more" href="/concepts/tool-centre/hire-list/">See the hire list →</a>
+  <div class="tc-offer-foot">
+    <a class="tc-offer-call" href={PHONE_HREF}>Call {PHONE}</a>
+    <a class="tc-offer-fb" href={FACEBOOK}>{NAME_YARD} on Facebook →</a>
   </div>
 </section>

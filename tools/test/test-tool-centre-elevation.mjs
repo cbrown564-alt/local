@@ -22,8 +22,9 @@
  * nothing reachable was a customer's actual words, and the one promising
  * listing publishes an AI review summary. While `customerVoice` in record.ts is
  * null, no quotation, blockquote, rating or owner name may exist on either
- * route. The moment it is filled, the same block starts demanding attribution
- * and a read date instead. Neither state is allowed to be silent.
+ * route. The moment it is filled, the same block starts demanding a light
+ * guest attribution (platform + month/year) instead — never a studio read
+ * stamp. Neither state is allowed to be silent.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -210,66 +211,53 @@ check(
 );
 check(
   "the hire list does not say what the sheet is",
-  hireList.text.includes("A suggested sheet, offered for the counter to correct"),
+  hireList.text.includes("Call the counter for today's rates"),
 );
 
 // ---------------------------------------------------------------------------
-// Move 2 — one counter, two names, on every screen.
+// Move 2 — shelf and yard, on every screen (not a dual-name lecture).
 // ---------------------------------------------------------------------------
-const CLAIM =
-  "The Tool Centre on Main Street and Tool Centre Plant Hire on Facebook are one shop.";
 for (const [name, page] of Object.entries(routes)) {
-  const counter = block(page.flat, 'class="tc-counter"', "</section>");
-  check(`the counter band is missing from the ${name} page`, counter.length > 0);
+  const offer = block(page.flat, 'class="tc-offer"', "</section>");
+  check(`the shelf/yard band is missing from the ${name} page`, offer.length > 0);
   check(
-    `the counter band does not resolve the two names on the ${name} page`,
-    visible(counter).includes(CLAIM),
+    `the shelf/yard band no longer names both offers on the ${name} page`,
+    visible(offer).includes("On the shelf") && visible(offer).includes("On the yard"),
   );
   check(
-    `the counter band does not carry the one address on the ${name} page`,
-    /One counter, one number, one address: 107 Main Street, Newcastle, Co\. Down, BT33 0AE/.test(
-      visible(counter),
+    `the shelf/yard band has no call action on the ${name} page`,
+    /Call 028 4372 5010/.test(visible(offer)),
+  );
+  check(
+    `trading-as / one-counter lecture reached the ${name} page`,
+    !/Trading as|one counter|Hardware as The Tool Centre|are one shop|are the same shop/i.test(
+      page.text,
     ),
   );
-  /* The shape is the argument: shelf, then the counter, then yard. Reordering
-     them turns the essence back into a headline. */
-  const order = ["tc-counter-side--shelf", "tc-counter-bridge", "tc-counter-side--yard"].map(
-    (marker) => counter.indexOf(marker),
+  const order = ["tc-offer-side--shelf", "tc-offer-side--yard", "tc-offer-foot"].map((marker) =>
+    offer.indexOf(marker),
   );
   check(
-    `the counter no longer sits between the shelf and the yard on the ${name} page`,
+    `the offer band is no longer shelf, yard, then call on the ${name} page`,
     order.every((index) => index >= 0) && order[0] < order[1] && order[1] < order[2],
-  );
-  check(
-    `the counter band does not name which side trades under which name on the ${name} page`,
-    visible(counter).includes("Trading as The Tool Centre") &&
-      visible(counter).includes("Trading as Tool Centre Plant Hire"),
-  );
-  check(
-    `the ask — the shop's actual mechanism — is missing from the ${name} page`,
-    visible(counter).includes(
-      "Ring and ask. The rate, the stock and the day it is free are all one question.",
-    ),
   );
 
   /* The disambiguation is permanent, not good practice: search buries this
      shop under the same-named Newcastle-upon-Tyne ones on every query. */
   check(`"Co. Down" is missing from the ${name} page`, /Co\. Down/.test(page.text));
   check(`the Mournes are missing from the ${name} page`, /Mournes/.test(page.text));
-  for (const name_ of ["The Tool Centre", "Tool Centre Plant Hire"]) {
-    check(
-      `"${name_}" is missing from the ${name} page`,
-      page.text.includes(name_),
-    );
-  }
+  check(`"The Tool Centre" is missing from the ${name} page`, page.text.includes("The Tool Centre"));
+  /* Facebook trading name once, quietly — not as a structural claim. */
+  check(
+    `"Tool Centre Plant Hire" is missing from the ${name} page`,
+    page.text.includes("Tool Centre Plant Hire"),
+  );
   const tyne = page.text.match(/Tyne|Tyneside|Northumberland/i);
   check(
     `something from the same-named English shops reached the ${name} page ("${tyne?.[0]}")`,
     !tyne,
   );
 
-  /* Nav that goes nowhere was the old page's other defect: three of five header
-     links and two rail cells were inert placeholders. */
   check(
     `a placeholder link survives on the ${name} page`,
     !/<a\b[^>]*data-concept-placeholder/.test(page.html),
@@ -277,21 +265,70 @@ for (const [name, page] of Object.entries(routes)) {
 }
 
 // ---------------------------------------------------------------------------
-// Move 1 — the voice slot, whichever state it is in.
+// Move 1 — shop voice on the landing page, hire voice on the hire list.
 // ---------------------------------------------------------------------------
-const voiceIsEmpty = /export const customerVoice: CustomerVoice \| null = null;/.test(record);
+const parseVoice = (exportName) => {
+  const blockMatch = record.match(
+    new RegExp(
+      `export const ${exportName}: CustomerVoice \\| null = (\\{([\\s\\S]*?)\\n\\};|null;)`,
+    ),
+  );
+  if (!blockMatch) return null;
+  if (blockMatch[1] === "null;") return null;
+  const body = blockMatch[2];
+  const quote = body.match(/quote:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1]?.replace(/\\"/g, '"');
+  const who = body.match(/who:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1]?.replace(/\\"/g, '"');
+  const source = body.match(/source:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1]?.replace(/\\"/g, '"');
+  return { quote, who, source };
+};
+
+const shop = parseVoice("shopVoice");
+const hireVoiceRecord = parseVoice("hireVoice");
+const voiceIsEmpty = shop === null && hireVoiceRecord === null;
 check(
-  "the voice slot has been deleted rather than filled or left empty",
-  voiceIsEmpty || /export const customerVoice: CustomerVoice \| null = \{/.test(record),
+  "both voice slots have been deleted rather than filled or left empty",
+  /export const shopVoice: CustomerVoice \| null =/.test(record) &&
+    /export const hireVoice: CustomerVoice \| null =/.test(record),
 );
 check(
   "the failed harvest is no longer written up in research",
   readFileSync(harvestPath, "utf8").includes("the harvest failed"),
 );
 
+const assertVoiceOnPage = (pageName, page, voice) => {
+  check(`the ${pageName} voice slot has no quotation in it`, Boolean(voice?.quote));
+  check(
+    `the quotation is not carried verbatim on the ${pageName} page`,
+    Boolean(voice?.quote) && page.text.includes(voice.quote),
+  );
+  check(
+    `the quotation is not attributed on the ${pageName} page`,
+    Boolean(voice?.who) && page.text.includes(voice.who),
+  );
+  check(
+    `the quotation does not carry a light attribution on the ${pageName} page`,
+    Boolean(voice?.source) &&
+      page.text.includes(voice.source) &&
+      /Google review · (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d/i.test(
+        voice.source,
+      ),
+  );
+  check(
+    `research read-stamp attribution reached the ${pageName} page voice`,
+    !/shown as|· read \d/i.test(voice?.source ?? ""),
+  );
+  check(
+    `the quotation is not inside a blockquote on the ${pageName} page`,
+    /<blockquote/i.test(page.html),
+  );
+  const rating = page.text.match(/\b\d(\.\d)?\s?(out of 5|stars?|★)/i);
+  check(
+    `a star rating the record does not hold reached the ${pageName} page ("${rating?.[0]}")`,
+    !rating,
+  );
+};
+
 if (voiceIsEmpty) {
-  /* Nothing may stand in for the sentence that was not found: no blockquote,
-     no rating, no anonymous praise, no owner named from an AI review summary. */
   const noVoiceYet = [
     /<blockquote/i,
     /\b\d(\.\d)?\s?(out of 5|stars?|★)/i,
@@ -311,37 +348,22 @@ if (voiceIsEmpty) {
     }
   }
 } else {
-  /* Filled: the Kent pattern applies in full — verbatim, attributed, dated,
-     and inside a blockquote so it can never read as the shop's own words. */
-  const quote = record.match(/quote:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1]?.replace(/\\"/g, '"');
-  check("the filled voice slot has no quotation in it", Boolean(quote));
-  const who = record.match(/who:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1];
-  const source = record.match(/source:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1];
-  for (const [name, page] of Object.entries(routes)) {
+  assertVoiceOnPage("home", home, shop);
+  assertVoiceOnPage("hire list", hireList, hireVoiceRecord);
+  /* Each route keeps its own sentence — the shop quote stays off the hire list
+     and the hire quote stays off the landing page. */
+  if (shop?.quote && hireVoiceRecord?.quote) {
     check(
-      `the quotation is not carried verbatim on the ${name} page`,
-      Boolean(quote) && page.text.includes(quote),
+      "the hire quotation leaked onto the home page",
+      !home.text.includes(hireVoiceRecord.quote),
     );
     check(
-      `the quotation is not attributed on the ${name} page`,
-      Boolean(who) && page.text.includes(who),
-    );
-    check(
-      `the quotation does not carry where it was published and when it was read on the ${name} page`,
-      Boolean(source) && page.text.includes(source) && /read \d{1,2} \w+ 20\d\d/i.test(source),
-    );
-    check(
-      `the quotation is not inside a blockquote on the ${name} page`,
-      /<blockquote/i.test(page.html),
-    );
-    const rating = page.text.match(/\b\d(\.\d)?\s?(out of 5|stars?|★)/i);
-    check(
-      `a star rating the record does not hold reached the ${name} page ("${rating?.[0]}")`,
-      !rating,
+      "the shop quotation leaked onto the hire list",
+      !hireList.text.includes(shop.quote),
     );
   }
   check(
-    "the case study does not record where the quotation came from",
+    "the case study does not record where the quotations came from",
     /review/i.test(visible(sourcesLimits)),
   );
 }
@@ -397,9 +419,9 @@ const anchors = [
   ["the Main Street address", /107 Main Street/],
   ["the counter number", /028 4372 5010/],
   ["the directory hours", /Mon–Sat 9–5 · Sun 10–4/],
-  ["the second trading name", /Tool Centre Plant Hire/],
+  ["the Facebook trading name", /Tool Centre Plant Hire/],
   ["the Calor dealership", /Calor/],
-  ["the two-names claim", /are one shop/],
+  ["the shelf/yard pair", /On the shelf[\s\S]*On the yard|On the yard[\s\S]*On the shelf/],
 ];
 for (const [label, pattern] of anchors) {
   check(`the home page no longer carries ${label}`, pattern.test(home.text));

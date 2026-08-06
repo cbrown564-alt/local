@@ -37,8 +37,9 @@ export const ADDRESS = "107 Main Street";
 export const POSTCODE = "BT33 0AE";
 export const FACEBOOK = "https://www.facebook.com/Toolcentreplanthire/";
 
-/** The two names, and the fact that they are one shop. This is the concept's
- *  organising claim, so both names live here rather than in page copy. */
+/** Directory name and Facebook trading name. Guests meet the shop as The Tool
+ *  Centre; the Plant Hire name appears once, on the Facebook link — not as a
+ *  structural claim about two businesses. */
 export const NAME_COUNTER = "The Tool Centre";
 export const NAME_YARD = "Tool Centre Plant Hire";
 
@@ -50,7 +51,8 @@ export const UNDER = "under the Mournes";
 export const PLACE = `${TOWN} · ${UNDER}`;
 
 export const HOURS = "Mon–Sat 9–5 · Sun 10–4";
-export const HOURS_SOURCE = `Big Red Directory · read ${READ_ON}`;
+/** Provenance only — not guest-facing. Hours on the page carry no directory stamp. */
+export const HOURS_SOURCE = `Big Red Directory (${READ_ON})`;
 
 /** Move 3's one sentence, in the same words on all three surfaces: the hire
  *  desk board, the hire list notice and the case study's Sources & limits
@@ -59,55 +61,38 @@ export const HOURS_SOURCE = `Big Red Directory · read ${READ_ON}`;
 export const INDICATIVE =
   "No rate here is the shop's own — call the counter for today's rate and terms.";
 
-export interface CounterSide {
+export interface OfferSide {
   id: string;
   /** SHELF or YARD — the pair the h1 names. */
   label: string;
   name: string;
-  /** Which of the two names this side of the shop trades under. */
-  tradingAs: string;
   lines: { name: string; note: string }[];
 }
 
-/** The essence, made structural: two service lines under two names, bridged by
- *  one counter. Every line below is verified; nothing is here to fill a column.
- *  The shelf side is short because the record is short — four hire categories
- *  are named and the retail side is not itemised anywhere public. */
-export const shelf: CounterSide = {
+/** Two offers, short. The shelf side is short because the record is short —
+ *  four hire categories are named and the retail side is not itemised anywhere
+ *  public. No trading-as lines: guests do not need the Facebook name twice. */
+export const shelf: OfferSide = {
   id: "shelf",
   label: "On the shelf",
-  name: "Hardware, trade and DIY",
-  tradingAs: NAME_COUNTER,
+  name: "Hardware & DIY",
   lines: [
-    { name: "Trade counter", note: "Hardware and DIY stock, over the counter" },
-    { name: "Bottled gas", note: `Calor cylinder dealer · verified ${VERIFIED_ON}` },
+    { name: "Trade counter", note: "tools, fixings and DIY stock" },
+    { name: "Bottled gas", note: "Calor cylinder dealer" },
   ],
 };
 
-/* The four categories are listed once here, as a set, because the hire desk
-   beside this column already lists them as rows. Two treatments of the same
-   four words on one screen reads as padding. */
-export const yard: CounterSide = {
+export const yard: OfferSide = {
   id: "yard",
   label: "On the yard",
-  name: "Plant and tool hire",
-  tradingAs: NAME_YARD,
+  name: "Plant & tool hire",
   lines: [
     {
-      name: "Four categories to hire",
-      note: "Power tools · Garden machinery · Plant & site · Access equipment",
+      name: "Day hire",
+      note: "power, garden, plant & site, access",
     },
-    { name: "Collected out the back", note: `Off ${ADDRESS}, seven days · ${HOURS}` },
+    { name: "Collect out the back", note: `seven days · ${HOURS}` },
   ],
-};
-
-/** The bridge between them, and the whole business in three facts. The counter
- *  is the only thing on the page that is not a proposal. */
-export const counter = {
-  label: "One counter",
-  claim: `${NAME_COUNTER} on Main Street and ${NAME_YARD} on Facebook are one shop.`,
-  proof: `One counter, one number, one address: ${ADDRESS}, ${TOWN}, ${POSTCODE} — ${UNDER}.`,
-  ritual: "Ring and ask. The rate, the stock and the day it is free are all one question.",
 };
 
 export interface HireItem {
@@ -194,7 +179,7 @@ export const hire: HireCategory[] = hireIsConfirmed ? confirmedHire : proposedHi
 /** What the sheet is, in one line, switched by the gate above. */
 export const hireStanding = hireIsConfirmed
   ? `Rates supplied by the counter · ${HOURS}`
-  : "A suggested sheet, offered for the counter to correct";
+  : "Call the counter for today's rates";
 
 /** The questions the sidebar asks instead of the terms an earlier draft stated.
  *  Photo ID, a card deposit, fuel liability and damage waiver were all written
@@ -207,33 +192,36 @@ export const askAtTheCounter = [
   "Fuel, and who loads it into the car",
 ];
 
-/** The customer sentence this page is designed around, and does not have.
+/** Customer sentences — one for the shop floor, one for the yard.
  *
- *  Move 1 of the brief is a harvest: read the Google reviews the verification
- *  notes ("Google reviews praising the owner and the prices", 20 July 2026) and
- *  quote the best sentence verbatim, attributed and dated, as the page's
- *  emotional centre. The harvest was run on 5 August 2026 and failed — the
- *  attempt and its dead ends are written up in
- *  research/concepts/tool-centre/voice-harvest.md. Nothing reachable was a
- *  customer's actual words: the one promising listing publishes an *AI review
- *  summary*, and the brief's discipline is absolute, so no sentence shipped.
- *
- *  The slot stays here, designed and empty, because the brief's answer to a
- *  failed harvest is to ship the structure and leave the voice slot open. Fill
- *  it only with a sentence someone really wrote, quoted exactly as they wrote
- *  it, with where it was published and the date it was read. Never a summary,
- *  never a paraphrase, never a star rating — the record holds none. If the
- *  quotation names the owner, that is the record gaining a name and it is
- *  sourced by the quotation; otherwise no name appears anywhere on either
- *  route. Non-null renders the quotation band; null renders nothing at all. */
+ *  Primary Maps reads supplied 6 August 2026 — see
+ *  research/concepts/tool-centre/voice-harvest.md. No star rating ships.
+ *  Names that appear inside a quotation (Tony, Gerard) are the record gaining
+ *  them from that source; they are not used elsewhere. */
 export interface CustomerVoice {
   /** Verbatim. Any elision marked. Never edited for tone. */
   quote: string;
   /** Who wrote it, as they are published — no more identifying than that. */
   who: string;
-  /** Where it is published, and the date it was read. */
+  /** Where it is published, and a reasonable date — month and year, not the
+   *  studio read stamp. */
   source: string;
   href?: string;
 }
 
-export const customerVoice: CustomerVoice | null = null;
+/** Landing page — the stocked shop. Reviewer display name is "Tony's Reviews"
+ *  (a Local Guide); that is not a claim about the owner's name. */
+export const shopVoice: CustomerVoice | null = {
+  quote:
+    "What an incredible shop, a true aladdins cave of everything you need for home DIY and more, the shop is well and truly stocked from floor to ceiling with so many things.",
+  who: "Tony's Reviews",
+  source: "Google review · October 2025",
+};
+
+/** Hire list — hiring their kit. "2 years ago" on Maps as of 6 August 2026. */
+export const hireVoice: CustomerVoice | null = {
+  quote:
+    "I hire the large range of hoists from them and they always go the extra mile to ensure the best service possible.",
+  who: "chris keag",
+  source: "Google review · August 2024",
+};
