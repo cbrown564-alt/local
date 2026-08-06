@@ -18,10 +18,13 @@ Key routes are documented in `README.md`. The core user flow is the request form
 
 Guest-visible concept copy must speak as the business. Do not narrate the website, the concept, the prototype, the elevation method, or studio process in headings, body, notices, captions, alts, aria-labels, or footers.
 
+Trust is not research chrome. Guest attribution stays light (who spoke + a reasonable month/year or era). Studio read stamps, relative "shown as N months ago" dates, "their words, not ours", and dual-name findings phrased as research notes belong in `research/`, code comments, banners, and case-study Sources & limits — not on the guest page. See the three-layer honesty split in [`docs/the-elevation-method.md`](docs/the-elevation-method.md).
+
 Studio / meta voice belongs only in:
 - `ConceptLayout` banner text and `bannerNote` props
 - `research/`
 - code comments
+- transformation case-study Sources & limits
 
 `pnpm build` runs `tools/check/check-concept-guest-voice.mjs` against `src/concepts/` (excluding `_shell/`). Keep that denylist honest when new failure phrases appear.
 

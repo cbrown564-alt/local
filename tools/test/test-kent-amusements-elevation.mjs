@@ -16,8 +16,9 @@
  *
  * The other checks defend the two borrowed voices. This arcade has no
  * first-party sentence anywhere on the open web, so the page speaks through
- * the BBC memory archive and the Avoca Hotel's listing. Both must stay quoted,
- * attributed and dated, and the memories must stay unmistakably of their era.
+ * the BBC memory archive and the Avoca Hotel's listing. Both must stay quoted
+ * and lightly attributed, and the memories must stay unmistakably of their
+ * era. Studio read stamps and research caveats stay off the guest layer.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -140,14 +141,12 @@ check(
   ),
 );
 check(
-  "the memory does not carry its archive and read date",
-  /BBC Your Place and Mine · Newcastle memory archive · read 4 August 2026/.test(
-    visible(memoryTick),
-  ),
+  "the memory does not carry its archive attribution",
+  /BBC Your Place and Mine · Newcastle memory archive/.test(visible(memoryTick)),
 );
 check(
-  "the memory does not disclose that its shift hours are elided",
-  visible(memoryTick).includes("quoted with its shift hours left out"),
+  "a research read-stamp reached the memory caption",
+  !/· read \d|quoted with its shift hours left out/i.test(visible(memoryTick)),
 );
 check(
   "the BBC archive is not linked so the owner can read the rest",
@@ -169,12 +168,12 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
   );
   check(
     `the Avoca description is not attributed on the ${name} page`,
-    visible(avoca).includes("The Avoca Hotel's activities page") &&
-      visible(avoca).includes("their words, not ours"),
+    visible(avoca).includes("The Avoca Hotel") &&
+      visible(avoca).includes("avocahotel.com"),
   );
   check(
-    `the Avoca description does not carry its read date on the ${name} page`,
-    visible(avoca).includes("Read 5 August 2026"),
+    `research caveats reached the Avoca attribution on the ${name} page`,
+    !/their words, not ours|Read 5 August 2026|activities page/i.test(visible(avoca)),
   );
   check(
     `the Avoca description is not inside a blockquote on the ${name} page`,
@@ -200,9 +199,10 @@ check(
 );
 const arcSources = summers.match(/class="ka-arc-source">([^<]+)</g) ?? [];
 check(
-  `every arc entry must carry a dated source (found ${arcSources.length} of 2)`,
+  `every arc entry must carry a light dated source (found ${arcSources.length} of 2)`,
   arcSources.length === 2 &&
-    arcSources.every((entry) => /(4 August 2026|March 2026|1968)/.test(entry)),
+    arcSources.every((entry) => /(late 1960s|March 2026)/.test(entry)) &&
+    !arcSources.some((entry) => /read \d|mid-point|verified \d/i.test(entry)),
 );
 const arcEntries = summers.match(/class="ka-arc-entry[\s"]/g) ?? [];
 check(
@@ -212,12 +212,12 @@ check(
 check("the jukebox end of the line is missing", /jukebox/i.test(visible(summers)));
 check("the VR end of the line is missing", /VR zone/.test(visible(summers)));
 check(
-  "the opening year is not marked as an estimate from the late-1960s archive",
-  /c\. 1968|late-1960s BBC archive/i.test(visible(summers)),
+  "the opening year is not attributed to the late-1960s archive",
+  /BBC · late 1960s/i.test(visible(summers)),
 );
 check(
   "the VR entry is not attributed to the March 2026 review",
-  visible(summers).includes("TripAdvisor review, March 2026"),
+  visible(summers).includes("TripAdvisor · March 2026"),
 );
 
 const ticks = [...summers.matchAll(/ka-timeline-tick/g)];
@@ -310,7 +310,7 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
 // time, and one honest handoff to the channel that owns today's answer.
 // ---------------------------------------------------------------------------
 const RITUAL =
-  "Hours change with the season — the arcade posts them on Facebook as they change. Family offers are posted there when they run.";
+  "Hours change with the season — we post them on Facebook as they change. Family offers go up there when they run.";
 for (const [name, page] of Object.entries({ home, attractions: atx })) {
   const season = block(page.flat, 'class="ka-season', 'class="ka-rail"');
   check(`the season panel is missing from the ${name} page`, season.length > 0);
@@ -319,8 +319,12 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
     visible(season).includes(RITUAL),
   );
   check(
-    `the season panel does not explain why Facebook is the freshest source on the ${name} page`,
-    visible(season).includes("because the arcade updates it itself"),
+    `the season panel does not hand off in the arcade's voice on the ${name} page`,
+    visible(season).includes("Check before you come"),
+  );
+  check(
+    `research-facing freshest-source language reached the ${name} page`,
+    !/freshest source|updates it itself/i.test(visible(season)),
   );
   check(
     `the season panel does not hand off to the arcade's own page on the ${name} page`,

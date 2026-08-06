@@ -19,6 +19,15 @@ matched to a volunteer committee's capacity. What it does not yet stage
 is the thing that makes a chamber of commerce different from a directory
 template — the town itself, shown whole.
 
+**Guest voice (read before building).** Speak as the Chamber. Trust is not
+research chrome — see the three-layer honesty split in
+`docs/the-elevation-method.md`. Verification dates, "sourced from…", and
+studio read stamps stay in `research/`, `chamber-prototype.ts` comments,
+and case-study Sources & limits. Guest copy carries light useful
+attribution only (e.g. the membership disclaimer, the CC BY-SA photo
+credit, "Halloween · 31 October 2026"). Do not stamp directory cards or
+map pins with when the studio verified them.
+
 ## The shape of this business
 
 The Chamber is a **civic business with two customers**: the visitor
@@ -118,9 +127,10 @@ wears it). The events rail re-weights around the one confirmed date:
 Halloween in Newcastle leads as what it is — the town's night, planned
 primarily by the Chamber, per the council's listing — and the
 illustrative rows are visibly a different class of thing. Fold in the
-caption repair: the case-study members surface describes the directory as
-what it now is — real businesses, dated sources, membership unconfirmed —
-in the same words the members page uses.
+caption repair: the case-study members surface and the guest members page
+use the same Chamber-voice disclaimer — real businesses from public
+listings, membership unconfirmed — without pasting verification dates onto
+every card.
 
 ### 2. Draw the town with its trades on it
 
@@ -130,11 +140,13 @@ sit on — with the sourced businesses pinned from their published places
 and keyed to the directory's four categories. The plate carries the
 directory's own discipline: "indicative · not a survey", and the
 membership disclaimer travels with it — pins mark where these businesses
-trade, from dated public sources, not who has joined. The two listings
-with only a town-level place stand beside the plate, not on it. Drawn,
-budgeted as its own session, reviewed at phone width for clipped labels;
-the one-sheet takes the plate as its cover — a map of the town's trades
-is the thing a chamber pins up, and the thing every business on it keeps.
+trade, not who has joined. Do not caption the plate with research
+provenance ("from dated public sources · read…"); that honesty lives in
+Sources & limits. The two listings with only a town-level place stand
+beside the plate, not on it. Drawn, budgeted as its own session, reviewed
+at phone width for clipped labels; the one-sheet takes the plate as its
+cover — a map of the town's trades is the thing a chamber pins up, and
+the thing every business on it keeps.
 
 ### 3. Let the directory drive the plate
 
@@ -157,29 +169,39 @@ whole town, not a degraded one.
 
 ## Honesty constraints
 
+- **Guest voice is Chamber voice.** No studio narration, no dual-listing
+  findings phrased as research, no `· read …` or verification stamps on
+  directory cards, pins, or captions. Speak as the committee would speak
+  to a visitor or a trader considering joining.
 - **The membership disclaimer travels with the plate.** Every pin is a
-  business's published trading place from a dated source; the plate never
-  reads as a membership map. The two town-level listings are listed, not
-  pinned — the same rule the Kelly, McEvoy & Brown brief sets, applied
-  here first.
+  business's published trading place; the plate never reads as a
+  membership map. The two town-level listings are listed, not pinned —
+  the same rule the Kelly, McEvoy & Brown brief sets, applied here first.
+  The guest disclaimer is short; the dated provenance for each listing
+  stays in `chamber-prototype.ts` / research.
 - **The claims-gate failure stays pinned.** The 25 July defect —
   invented businesses mixed silently with real ones — is the standing
   warning: no business name, trade or place enters the directory or the
-  plate without a dated record in `verifications.json`.
-- **Halloween is the only dated event.** Everything else on the calendar
-  stays visibly illustrative; no seasonal market, late opening or
-  traders' morning acquires a date the Chamber has not published.
+  plate without a dated record in `verifications.json`. That gate is a
+  build/test constraint, not guest copy.
+- **Halloween is the only dated event on the guest calendar.** Everything
+  else stays visibly illustrative; no seasonal market, late opening or
+  traders' morning acquires a date the Chamber has not published. Event
+  dates that are real (31 October 2026) are guest-useful; studio read
+  dates of the council listing are not.
 - **No officer names, no membership numbers, no committee claims** beyond
   volunteer-run and reformed 2023. The Gmail, phone and socials are
   carried as published.
 - **The seal stays concept work**; the Eric Jones photograph keeps its
-  CC BY-SA credit line; no crest, flag or civic regalia is invented.
+  CC BY-SA credit line (required licence attribution, not research
+  chrome); no crest, flag or civic regalia is invented.
 - **The disambiguation is permanent:** Newcastle, Co. Down, on every
   route — eight same-named chambers worldwide are the reason the concept
   exists.
-- A drawn plate keeps the disclosure chain — alt text, visible note,
-  case-study Sources & limits, same-commit provenance — and any motion in
-  the plate mechanism respects `prefers-reduced-motion`.
+- A drawn plate keeps the disclosure chain — short visible note, alt text,
+  case-study Sources & limits, same-commit provenance — without
+  over-explaining. Any motion in the plate mechanism respects
+  `prefers-reduced-motion`.
 - Any change to the first viewport recaptures the comparison stills and
   clip in the same commit, per `docs/MEDIA_CAPTURE.md`.
 
@@ -190,9 +212,11 @@ whole town, not a degraded one.
   `verifications.json` — the claims-gate repair held by test, not memory.
 - Assert the membership disclaimer renders wherever the directory or the
   plate renders, including at every category and search state — the
-  hash-landing failure of 25 July, pinned.
+  hash-landing failure of 25 July, pinned. Assert no guest-visible
+  verification or studio read stamp appears beside listings or pins.
 - Assert the caption consistency: members page, home note and case-study
-  surface describe the directory in the same words.
+  surface describe the directory in the same Chamber-voice words (case
+  study may add provenance the guest page omits).
 - Assert Halloween in Newcastle is the only fully dated event and leads
   the calendar; illustrative rows carry their label.
 - Assert the plate pins only sourced places, lists the town-level two
@@ -226,10 +250,14 @@ whole town, not a degraded one.
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for
-any new asset in the same commit, update the case-study Sources & limits
-block, and pin new behaviour in the verification tooling. Any move that
-changes the first viewport recaptures the comparison stills and clip in
-the same commit. Update this status line as moves land; do not call the
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Update this status line as moves land; do not call the
 concept validated until the committee or a representative visitor has
 supplied that evidence.

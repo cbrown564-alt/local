@@ -62,8 +62,8 @@ const section = (startMarker, endMarker) => {
   return flat.slice(start, end > start ? end : undefined);
 };
 
-// Move 1 — the farm says its own sentence, on the first screen, with its
-// source and read date, and both dates stand beside it.
+// Move 1 — the farm says its own sentence, on the first screen, with light
+// source attribution (no studio read stamp), and both dates stand beside it.
 const hero = section('class="cf-hero"', 'class="cf-round"');
 const heroText = hero.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 check("hero section not found", hero.length > 0);
@@ -76,8 +76,8 @@ check(
   /href="https:\/\/www\.castlefarmni\.com\/"/.test(hero) && /castlefarmni\.com/.test(heroText),
 );
 check(
-  "the farm's sentence does not carry its read date",
-  heroText.includes("read 4 August 2026"),
+  "a research read-stamp reached the farm's sentence attribution",
+  !/read 4 August 2026/.test(heroText),
 );
 check(
   "the hundreds-of-years date is not on the first screen",
@@ -170,8 +170,11 @@ for (const [label, value] of [
 const termsBlock = section('class="cf-terms"', "</section>");
 check(
   "the figures are not adjacent to the delivery source link",
-  /href="https:\/\/www\.castlefarmni\.com\/pages\/delivery-schedule"/.test(termsBlock) &&
-    /read 4 August 2026/.test(termsBlock.replace(/<[^>]+>/g, " ")),
+  /href="https:\/\/www\.castlefarmni\.com\/pages\/delivery-schedule"/.test(termsBlock),
+);
+check(
+  "a research read-stamp reached the delivery terms foot",
+  !/read 4 August 2026/.test(termsBlock.replace(/<[^>]+>/g, " ")),
 );
 check(
   "the £45 box price is quoted without a verified read date beside it",

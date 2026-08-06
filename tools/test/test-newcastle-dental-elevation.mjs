@@ -97,9 +97,10 @@ for (const year of ["2014", "2017", "2023", "Today"]) {
 }
 const arcSources = practice.match(/class="nd-arc-source">([^<]+)</g) ?? [];
 check(
-  `every arc entry must carry a source and a date (found ${arcSources.length} of 4)`,
+  `every arc entry must carry a light source (found ${arcSources.length} of 4)`,
   arcSources.length === 4 &&
-    arcSources.every((entry) => /archived 2018|4 August 2026/.test(entry)),
+    arcSources.every((entry) => /published with the practice|archived 2018|Railway Street/.test(entry)) &&
+    !arcSources.some((entry) => /read \d/i.test(entry)),
 );
 check("the award is missing", practiceText.includes("Dental Practice of the Year"));
 check("the award is not attributed to Randox Healthcare", practiceText.includes("Randox Healthcare"));
@@ -189,11 +190,13 @@ check(
 );
 check(
   "the calm-room plate caption does not disclose it as a drawn plate",
-  calmText.includes("shown as a drawn plate"),
+  /drawn plate/i.test(calmText),
 );
 check(
-  "the calm-room plate claims the practice's furnishings or Railway Street view",
-  calmText.includes("not the practice's furnishings or the view from Railway Street"),
+  "over-explained room caveats reached the calm-room caption",
+  !/not the practice's furnishings|view from Railway Street|shown as a drawn plate/i.test(
+    calmText,
+  ),
 );
 check(
   "the banner note no longer discloses the calm-room plate",

@@ -156,13 +156,14 @@ it. Beneath it, the welcome note opens on "Passed down through three
 generations", in their words or a plainly-credited quotation, so the first
 screen tells the family the concept was made for one venue.
 
-Add one verbatim testimonial as a large pull-quote, dated and sourced: the
-Donna and Chris review (12.10.17) — a couple who met climbing Slieve Donard,
-got engaged at its summit, and married with the mountain behind them — is
-the strongest recognition story in the record. It must carry its date and
-its source; the record's testimonials end in 2019 and the page must never
-imply otherwise. If the staleness reads badly on review, drop the quote
-rather than freshen it silently.
+Add one verbatim testimonial as a large pull-quote, lightly dated and
+sourced: the Donna and Chris review (12.10.17) — a couple who met climbing
+Slieve Donard, got engaged at its summit, and married with the mountain
+behind them — is the strongest recognition story in the record. It must
+carry its review date and source on the guest page; the studio read stamp
+stays in research. The record's testimonials end in 2019 and the page must
+never imply otherwise. If the staleness reads badly on review, drop the
+quote rather than freshen it silently.
 
 ### 2. Name the suites and the garden
 
@@ -253,16 +254,18 @@ the "indicative · not a survey" disclosure.
   from the page.
 - Nothing invented for atmosphere: no room features, menu items, prices,
   packages, garden details, staff names or availability beyond what the
-  venue publishes, each with a read date recorded. The "packages for 100
-  guests from £995" figure is published on the weddings page (read 4 August
-  2026); if it is used, cite the read date and re-verify before any
-  outreach — pricing is live business fact, not editorial copy.
+  venue publishes, each with a read date recorded in research. The "packages
+  for 100 guests from £995" figure is published on the weddings page (read
+  4 August 2026); if it is used, re-verify before any outreach and keep the
+  read date in research / Sources & limits — pricing is live business fact,
+  not editorial copy, and not guest chrome.
 - The season strip must not return in any form that reads as real
   availability. Illustrative numbers are the highest-risk content type, and
   in a booked-date business they can cost the venue an enquiry.
-- Testimonials are quoted verbatim with their dates and sources, and
-  withdrawn if edited or removed. The page never implies a review is more
-  recent than 2019; the 2021.22 brochure is not cited as current.
+- Testimonials are quoted verbatim with light guest attribution (review date
+  + source), and withdrawn if edited or removed. The page never implies a
+  review is more recent than 2019; the 2021.22 brochure is not cited as
+  current.
 - The public site stays AI-imagery-only (privacy decision, 31 July 2026).
   Any generated variant keeps the triple disclosure — alt text, visible page
   note, case-study Sources & limits — plus a provenance entry in the same
@@ -323,9 +326,15 @@ Each move ships with a small proof:
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for any
-new asset in the same commit, update the case-study Sources & limits block,
-and add journey coverage for new behaviour. Any move that changes the first
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Any move that changes the first
 viewport recaptures the comparison stills and clip in the same commit.
 Update this status line as moves land; do not call the concept validated
 until an owner or representative visitor has supplied that evidence.

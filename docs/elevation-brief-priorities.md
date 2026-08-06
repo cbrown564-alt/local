@@ -7,6 +7,11 @@ that do not yet have an elevation brief, in the order they would most benefit
 from one, so the next brief is chosen deliberately rather than by whichever
 concept happens to be open.
 
+When writing or revising a brief: keep the method's three-layer honesty split.
+Research records read dates; guest pages get light attribution and owner voice.
+Do not prescribe `· read …`, "shown as N months ago", or research caveats as
+guest-facing copy — that mistakes trust for audit chrome.
+
 Update the status line of a concept's entry here when its brief is written;
 do not re-derive this ranking from scratch each time.
 

@@ -14,19 +14,22 @@ practice band carries 2014, the 2017 award, 2023 and today with a source
 against every entry, the emergency path is a two-step mechanism panel, the
 request panel drafts a real email to the practice's own address instead of
 pretending to send, and a disclosed drawn calm-room plate supplies the one
-human-scale moment. Caption, banner note and case-study Sources & limits all
-say the plate is not the practice's furnishings or the view from Railway
-Street. `tools/test/test-newcastle-dental-elevation.mjs` pins what shipped —
+human-scale moment. The guest caption names it as a drawn plate; the banner
+note and case-study Sources & limits carry the fuller boundary (not the
+practice's furnishings or the Railway Street view). Guest attribution was
+tightened 6 August 2026 so studio read stamps stay off the page.
+`tools/test/test-newcastle-dental-elevation.mjs` pins what shipped —
 including the layer rules as absences — and runs in `pnpm test`.
 
 Open decisions resolved when the moves shipped: the archived smile line **is**
-the lede quote, attributed and dated, because the current alternative is
-markedly weaker; the two published GDC numbers are **omitted entirely**,
-because the third dentist's is not in the record and an uneven row would read
-as a gap in his credentials rather than in ours; and the calm-room plate is
-the honest bridge until a practice-supplied photograph can replace it. The
-banner note names the padlock as the proposed address rather than a live
-certificate, which is what the publication record asked for.
+the lede quote, attributed lightly with its capture year (`archived 2018`),
+because the current alternative is markedly weaker; the two published GDC
+numbers are **omitted entirely**, because the third dentist's is not in the
+record and an uneven row would read as a gap in his credentials rather than
+in ours; and the calm-room plate is the honest bridge until a
+practice-supplied photograph can replace it. The banner note names the
+padlock as the proposed address rather than a live certificate, which is
+what the publication record asked for.
 
 The concept before this pass was an honest security case — the padlocked
 address bar, "Your family dentist, close to home", the three named dentists,
@@ -238,11 +241,12 @@ implying online booking.
 
 ## Tests that pin the elevation
 
-- Assert the smile line reaches the page with its attribution and archived
-  date, and that the award line carries "2017" and its source — no
-  undated glory.
-- Assert every arc entry carries its date, and no archived-era claim
-  (NHS places, late nights, recorded message) appears presented as current.
+- Assert the smile line reaches the page with light attribution and its
+  archived year, and that the award line carries "2017" and its source — no
+  undated glory, no studio read stamp on the guest layer.
+- Assert every arc entry carries a light source (not a `· read …` stamp),
+  and no archived-era claim (NHS places, late nights, recorded message)
+  appears presented as current.
 - Assert the request panel drafts an email to
   `info@newcastlefamilydentalcare.co.uk` carrying name, number and reason,
   that nothing else sends, and that editing a detail withdraws the prepared
@@ -251,8 +255,9 @@ implying online booking.
   promise (no "seen the same day", no Sunday line).
 - Assert the padlock chrome and the banner note survive together in the
   rendered first viewport.
-- If the calm-room plate lands, assert its illustration disclosure in alt
-  text, on the page and in the case study, and inspect it at 390px.
+- If the calm-room plate lands, assert a short illustration disclosure on
+  the page (drawn plate / AI), fuller boundary in the banner and case study,
+  and inspect it at 390px.
 - Run the guest-voice guard and the publication checks; then the swap test:
   remove "Newcastle Family Dental Care", the award and the three dentists,
   and if the page still works for any practice, the elevation has not gone
@@ -268,11 +273,16 @@ implying online booking.
 
 ## When a move ships
 
-Record the source and read or capture date for every new fact — archived
-facts cite the Wayback capture, current facts cite the read date — add
-provenance for any new asset in the same commit, update the case-study
-Sources & limits block, and add journey coverage for new behaviour. Any
-move that changes the first viewport recaptures the comparison stills and
-clip in the same commit. Update this status line as moves land; do not
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Archived facts cite the Wayback capture in research; current facts cite the read date there too — neither stamp belongs on the guest layer.
+
+Update this status line as moves land; do not
 call the concept validated until an owner or representative visitor has
 supplied that evidence.

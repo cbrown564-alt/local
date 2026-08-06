@@ -281,9 +281,15 @@ Each move should have a small proof attached to it:
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for any new
-asset in the same commit, update the case-study Sources & limits block, and
-add journey coverage for new behaviour. Any move that changes the first
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Any move that changes the first
 viewport recaptures the comparison stills and clip in the same commit. Update
 this status line as moves land; do not call the concept validated until an
 owner or representative visitor has supplied that evidence.

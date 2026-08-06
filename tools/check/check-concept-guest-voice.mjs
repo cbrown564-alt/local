@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /**
  * Fail the build when studio/meta narration slips into guest-facing concept
- * copy. Honesty belongs in ConceptLayout banner notes, research/, and code
- * comments — not in page body, captions, alts, or footers.
+ * copy. Honesty belongs in ConceptLayout banner notes, research/, case-study
+ * Sources & limits, and code comments — not in page body, captions, alts, or
+ * footers. Trust is not research chrome: studio read stamps, relative
+ * "shown as N months ago" dates, and dual-name findings phrased as research
+ * notes are banned here. See docs/the-elevation-method.md (three-layer
+ * honesty) and .cursor/rules/concept-guest-voice.mdc.
  */
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -43,6 +47,18 @@ const banned = [
   /\babout this concept\b/i,
   /\bindependent concept by mourne made\b/i,
   /\bmourne made\b/i,
+  // Research / studio audit trail that belongs in research/ or case-study
+  // Sources & limits — not in guest-facing concept copy.
+  /\bshown as "/i,
+  /\b· read \d/i,
+  /\btheir words, not ours\b/i,
+  /\bfreshest source\b/i,
+  /\bmid-point of the\b/i,
+  /\bare the same shop\b/i,
+  /\bon Facebook are one shop\b/i,
+  /\bquoted with its shift\b/i,
+  /\bwhere it is verified\b/i,
+  /\bmonths ago\b/i,
 ];
 
 const stripComments = (source) =>

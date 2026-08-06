@@ -127,17 +127,40 @@ If the moment of magic is not tested, it will quietly regress to good.
 
 ## The honesty boundary (applies to every move, every business)
 
-- Every claim comes from `research/pipeline/verifications.json` or the business's own
-  public words, with the read date recorded. Nothing invented for atmosphere:
-  no owners the record does not name, no dates the business does not publish,
-  no suppliers, farms, trails, reviews or past events conjured to fill a
-  section.
+Honesty is real. Over-specific research chrome is not honesty — it is the
+studio narrating its audit trail to a guest. Trust and transparency mean the
+claim is true and checkable; they do not mean the page shows when we read the
+directory, that a Maps relative date was "shown as 10 months ago", or that a
+quote is "their words, not ours".
+
+Keep three layers apart:
+
+1. **Research / record / code comments** — full provenance. Every claim comes
+   from `research/pipeline/verifications.json` or the business's own public
+   words, with the read date recorded here. Nothing invented for atmosphere:
+   no owners the record does not name, no dates the business does not publish,
+   no suppliers, farms, trails, reviews or past events conjured to fill a
+   section.
+2. **Case-study Sources & limits, and `ConceptLayout` banner notes** — studio
+   voice. Read dates, elisions, limits, and "we verified this" belong here.
+3. **Guest-facing concept copy** — speak as the business. Attribution stays
+   light and useful: who spoke, and a reasonable date (month and year, or an
+   era), not a studio read stamp. Prefer `Google review · October 2025` over
+   `Google review · shown as "10 months ago" · read 6 August 2026`. Prefer
+   `The Avoca Hotel · avocahotel.com` over `Read 5 August 2026 · their words,
+   not ours`. Dual-name or dual-channel facts are stated in the owner's voice
+   ("Hardware as… Hire as…"), never as a research finding ("X on Facebook and
+   Y on Main Street are the same shop").
+
+Also standing:
+
 - AI-imagery-only on the public site (privacy decision, 31 July 2026);
   businesses' own photographs are for personal outreach material. Withdrawn
   imagery stays withdrawn.
 - Generated imagery keeps the triple disclosure: alt text, a visible line on
   the page, the case study's Sources & limits block — and a provenance entry
-  in the same commit as the file.
+  in the same commit as the file. The visible line names the medium; it does
+  not lecture ("not the practice's furnishings or the view from…").
 - Illustrative content (flavours, prices, jobs boards) is labelled
   *prominently* — an 11px footnote under invented numbers is not honesty, it
   is cover. Illustrative numbers are the highest-risk content type: owners

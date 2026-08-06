@@ -181,6 +181,9 @@ documented, per the Enniskeen timeline rule.
 
 ## When a move ships
 
+
+Guest-facing attribution stays light (who spoke + a reasonable month/year or era). Studio read stamps and research caveats belong in research and Sources & limits — see the three-layer honesty split in `docs/the-elevation-method.md`.
+
 Each landed move gets: provenance entries for any new file in the same
 commit; a check in the concept journey coverage (and the case for a
 `test:scopers` suite grows with each one — the date, the provenance line and

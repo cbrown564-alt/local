@@ -134,11 +134,12 @@ made visible, then theatre, then the keepable artifact.
 ### 1. Let the farm say its own sentence
 
 Open the page on "Let us worry about digging it up." — quoted verbatim,
-attributed to the farm's own site with its read date. Pair it with the two
-dates: "Farmed by generations of the same family for hundreds of years · on
-the web since 2008." Set the Castle Farm name in type; retire the cropped-
-produce wordmark, which is nobody's mark. The first screen should make the
-owner feel seen before it asks anyone to buy anything.
+attributed to the farm's own site (`Our own words on castlefarmni.com`). The
+studio read date stays in research and Sources & limits, not beside the quote.
+Pair it with the two dates: "Farmed by generations of the same family for
+hundreds of years · on the web since 2008." Set the Castle Farm name in type;
+retire the cropped-produce wordmark, which is nobody's mark. The first screen
+should make the owner feel seen before it asks anyone to buy anything.
 
 ### 2. Put the weekly round on the page
 
@@ -152,8 +153,9 @@ only from the published schedule:
 - The delivery days as the farm publishes them, each with a handful of its
   named towns and a route to the full schedule on the live site.
 - The honest numbers: £40 local minimum, £76 outlying, £4 delivery at
-  checkout, each carried with its read date and linked to the farm's
-  delivery page rather than restated as the concept's own promise.
+  checkout, each linked to the farm's delivery page rather than restated as
+  the concept's own promise. Read dates for those figures live in research
+  and Sources & limits — not as `· read …` chrome beside every number.
 - A **Is your town on the round?** lookup against the published town list:
   type a town, get its delivery day. Every entry is a published fact, so the
   feature is honest by construction — and it is the one thing their own
@@ -233,10 +235,11 @@ Replace every placeholder with a real destination or remove it:
   pop-ups, the stale seasonal categories all stay in the case study), and
   every transaction hands off to `castlefarmni.com`.
 - Every figure — £40, £76, the £4 fee, the 3pm cutoffs, the £45 Medium Mixed
-  Box if quoted — is carried with its read date and re-verified before any
-  outreach. These are live business facts; the October 2025 archive already
+  Box if quoted — is re-verified before any outreach, with the read date in
+  research. These are live business facts; the October 2025 archive already
   shows the local minimum moving from £36 to £40, so treat them as
-  perishable.
+  perishable. Guest pages link the source; they do not stamp every figure
+  with when the studio last checked.
 - No invented stock: only the animals, crops and producers the farm
   publishes. No invented towns on the round, and no claiming a delivery day
   for a town the schedule does not list — the lookup must say "not on the
@@ -244,8 +247,9 @@ Replace every placeholder with a real destination or remove it:
   farm itself says.
 - The "approximately 50,000" bulletin figure is their claim: quote it as
   theirs ("they say"), with its source, or leave it out.
-- Quotes are verbatim with read dates: "Let us worry about digging it up."
-  and the castle-grounds line come from the farm's own pages, 4 August 2026.
+- Quotes are verbatim with light guest attribution: "Let us worry about
+  digging it up." and the castle-grounds line come from the farm's own pages
+  (read 4 August 2026 — recorded in research, not beside the quote).
 - The public site stays AI-imagery-only (privacy decision, 31 July 2026);
   any new plate keeps the triple disclosure and a same-commit provenance
   entry. The current faithful box visualisation's disclosure chain stays
@@ -261,11 +265,13 @@ Replace every placeholder with a real destination or remove it:
 ## Tests that pin the elevation
 
 - Assert "Let us worry about digging it up." reaches the first screen with
-  its attribution, and both dates (hundreds of years / 2008) appear with it.
-- Assert the round data lives in one data module with its read date, and the
-  town lookup answers correctly for a fixed sample — Dundrum on four days,
-  Kilkeel on Wednesday, Portaferry on Thursday, Bangor on Tuesday, Larne on
-  Friday — and declines honestly for a town the schedule does not list.
+  light attribution to the farm's site (no studio read stamp on the guest
+  layer), and both dates (hundreds of years / 2008) appear with it.
+- Assert the round data lives in one data module with its research read date,
+  and the town lookup answers correctly for a fixed sample — Dundrum on four
+  days, Kilkeel on Wednesday, Portaferry on Thursday, Bangor on Tuesday,
+  Larne on Friday — and declines honestly for a town the schedule does not
+  list.
 - Assert every commerce control resolves to a `castlefarmni.com` URL and
   that no `data-concept-placeholder` or inert basket survives.
 - Assert the minimums, fee and box price each appear at most once, each
@@ -279,12 +285,12 @@ Replace every placeholder with a real destination or remove it:
 
 ## Open decisions
 
-- Does the £45 Medium Mixed Box stay quoted on the page (read-dated, and the
-  only named product with a verified price) or does the page name the box
-  and link out for the price? Prices are the most perishable content the
-  farm publishes.
+- Does the £45 Medium Mixed Box stay quoted on the page (the only named
+  product with a verified price, re-checked in research) or does the page
+  name the box and link out for the price? Prices are the most perishable
+  content the farm publishes.
 - Is the recipe pairing current enough to feature? The blog's posting
-  cadence is unverified; read-dated and linked, it is honest either way.
+  cadence is unverified; linked to the live post, it is honest either way.
 - Does the 50,000-bulletin claim earn its place, attributed, or does it read
   as boasting the farm never asked the concept to make?
 - Theatre composition: the week's table versus the box on the doorstep —
@@ -292,12 +298,14 @@ Replace every placeholder with a real destination or remove it:
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for any
-new asset in the same commit, update the case-study Sources & limits block,
-and add journey coverage for new behaviour. Any move that changes the first
-viewport recaptures the comparison stills and clip in the same commit. The
-publication record already asks for two things this brief satisfies: a
-sources note on the concept banner, and a second surface — the round panel
-is that surface. Update this status line as moves land; do not call the
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Update this status line as moves land; do not call the
 concept validated until an owner or representative visitor has supplied
 that evidence.

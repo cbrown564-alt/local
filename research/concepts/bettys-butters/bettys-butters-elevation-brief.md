@@ -133,6 +133,9 @@ reputation.
 
 ## When a move ships
 
+
+Guest-facing attribution stays light (who spoke + a reasonable month/year or era). Studio read stamps and research caveats belong in research and Sources & limits — see the three-layer honesty split in `docs/the-elevation-method.md`.
+
 Each landed move gets: provenance entries for any new file in the same
 commit; the case study's Sources & limits block updated the same day; journey
 coverage for any new behaviour; and a note in this file's status line. If

@@ -72,12 +72,13 @@ export const jukeboxMemory: Memory = {
 };
 
 /** The Avoca Hotel's description, verbatim from their activities page. Present
- *  tense, because it is a present-day description — but it is theirs. */
+ *  tense, because it is a present-day description — but it is theirs. Guest
+ *  attribution stays light: who said it, and where — not when we read it. */
 export const avoca = {
   quote:
     "Newcastle County Down's premier family entertainment centre. Amusement arcade and one of NI's only homes to indoor Dodgem Cars.",
-  who: "The Avoca Hotel's activities page",
-  source: "Read 5 August 2026 · their words, not ours",
+  who: "The Avoca Hotel",
+  source: "avocahotel.com",
 };
 
 export interface ArcEntry {
@@ -89,22 +90,23 @@ export interface ArcEntry {
 }
 
 /** The timeline runs from an estimated opening year to the VR launch.
- *  1968 is the middle of the late-1960s band the BBC archive dates; the
- *  source line says so. No Companies House filler, no undated milestone. */
+ *  1968 is the middle of the late-1960s band the BBC archive dates; that
+ *  estimate stays in research comments, not on the guest source line.
+ *  No Companies House filler, no undated milestone. */
 export const arc: ArcEntry[] = [
   {
     id: "sixties",
     when: "1968",
     line:
       "The Kent name is already on the promenade — change booth, jukebox, Bee Gees on the speaker.",
-    source: `c. 1968 · mid-point of the late-1960s BBC archive date · read ${READ_ON}`,
+    source: "BBC · late 1960s",
   },
   {
     id: "twenty-six",
     when: "2026",
     line:
       "The VR zone opens — newest thing on the seafront, inside the oldest. A March review names it.",
-    source: `TripAdvisor review, March 2026 · verified ${VERIFIED_ON}`,
+    source: "TripAdvisor · March 2026",
   },
 ];
 
@@ -142,8 +144,10 @@ export const timelineTicks: TimelineTick[] = [
     kind: "memory",
     quote: changeMemory.quote,
     who: changeMemory.who,
-    source: `${changeMemory.source} · read ${READ_ON}`,
+    source: changeMemory.source,
     era: "A memory of the late 1960s",
+    /* Shift hours were elided from the quote (rule 1) — that honesty lives in
+       research/ and the case study, not in the guest caption. */
     elided: true,
     href: BBC_ARCHIVE,
   },
@@ -182,7 +186,7 @@ export const visit: VisitStep[] = [
     step: "02",
     name: "The change",
     line:
-      "Where a seaside afternoon has always started. In the sixties somebody handed it over from a booth, and the archive holds a whole summer of it.",
+      "Where a seaside afternoon has always started — change for the machines, same as it was in the sixties.",
   },
   {
     id: "floor",
@@ -194,13 +198,13 @@ export const visit: VisitStep[] = [
     id: "dodgems",
     step: "04",
     name: "The dodgems",
-    line: "Indoor bumper cars — named on the Avoca Hotel's activities page.",
+    line: "Indoor bumper cars — one of the things people come for.",
   },
   {
     id: "vr",
     step: "05",
     name: "The VR",
-    line: "The zone that opened this year, and the reason a March 2026 review singled the place out.",
+    line: "The zone that opened this year — newest thing on the seafront, inside the oldest.",
   },
   {
     id: "sea",
@@ -210,25 +214,26 @@ export const visit: VisitStep[] = [
   },
 ];
 
-/** The three verified attractions, and nothing beyond them. */
+/** The three verified attractions, and nothing beyond them. Notes speak to the
+ *  visitor, not to the research trail that put each item on the list. */
 export const attractions = [
   {
     id: "dodgems",
     name: "Dodgems",
     desc: "Indoor bumper cars",
-    note: "Named on the Avoca Hotel's activities page",
+    note: "On the floor, across from the beach",
   },
   {
     id: "vr",
     name: "VR games",
     desc: "The zone new in 2026",
-    note: "Picked out by a March 2026 visitor review",
+    note: "Opened 2026",
   },
   {
     id: "arcade",
     name: "Arcade",
     desc: "Machines for all ages",
-    note: `Verified ${VERIFIED_ON}`,
+    note: "Lit and loud, the length of the room",
   },
 ];
 
@@ -238,8 +243,8 @@ export const attractions = [
    owns it. It never states a time. */
 export const season = {
   ritual:
-    "Hours change with the season — the arcade posts them on Facebook as they change. Family offers are posted there when they run.",
-  why: "That page is the freshest source there is, because the arcade updates it itself.",
+    "Hours change with the season — we post them on Facebook as they change. Family offers go up there when they run.",
+  why: "Check before you come — we keep that page up to date as the season turns.",
 };
 
 /** Confirmed seasonal hours, when the arcade publishes them.

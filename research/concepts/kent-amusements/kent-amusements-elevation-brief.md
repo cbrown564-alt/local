@@ -154,16 +154,16 @@ is still how the afternoon starts.
 
 ### 4. Replace the empty board with the honest season panel
 
-One confident panel instead of three apologetic rows: **"Hours change with
-the season — the arcade posts them on Facebook as they change. Family
-offers are posted there when they run."** One tap to the page, one line
-explaining why this is the freshest source there is (the arcade updates it
-itself), and the panel designed as a ticket, not a placeholder. This is
-the feed test applied properly: the concept concedes today's hours to the
-incumbent channel *on purpose*, and turns the concession into part of the
-design. If the arcade ever publishes confirmed seasonal hours, the panel
-has a designed home for them — that is the publication improvement, landed
-in advance.
+One confident panel instead of three apologetic rows, in the arcade's
+voice: **"Hours change with the season — we post them on Facebook as they
+change. Family offers go up there when they run."** One tap to the page,
+and a short owner-voice line to check before coming — not a research note
+about the "freshest source". The panel is designed as a ticket, not a
+placeholder. This is the feed test applied properly: the concept concedes
+today's hours to the incumbent channel *on purpose*, and turns the
+concession into part of the design. If the arcade ever publishes confirmed
+seasonal hours, the panel has a designed home for them — that is the
+publication improvement, landed in advance.
 
 ### 5. Draw the promenade at dusk
 
@@ -202,12 +202,17 @@ one-sheet taking the dusk plate on its cover.
   machines are the verified list — nothing else: no tokens, tickets,
   change machines by name, 2p pushers, party rooms, loyalty cards or
   family-offer specifics.
-- **The BBC memories stay framed as memories.** Verbatim, dated, sourced,
-  and unmistakably of their era. They must never read as the arcade's own
-  marketing copy or as a description of the arcade today.
-- **The Avoca description stays attributed.** "Premier" is their word, not
-  a fact; the indoor-dodgems scarcity is their claim, quoted as such. The
-  concept never adopts either in its own voice.
+- **The BBC memories stay framed as memories.** Verbatim, lightly
+  attributed (archive + era), and unmistakably of their era. They must
+  never read as the arcade's own marketing copy or as a description of the
+  arcade today. Studio read dates and elision notes stay in research and
+  Sources & limits — not in the guest caption.
+- **The Avoca description stays attributed lightly.** "Premier" is their
+  word, not a fact; the indoor-dodgems scarcity is their claim, quoted as
+  such. Name the speaker and where it lives (`The Avoca Hotel ·
+  avocahotel.com`); do not caption research caveats ("their words, not
+  ours", "Read 5 August…"). The concept never adopts either claim in its
+  own voice.
 - **The Dundalk exclusion stands.** Nothing from the same-named arcade in
   the Republic of Ireland may touch this page.
 - **The Kent Cafe is not claimed.** The BBC mentions it once; its
@@ -227,8 +232,10 @@ one-sheet taking the dusk plate on its cover.
 
 - A standing scan asserts no time-of-day string appears on either page —
   the claims-gate failure pinned as a test, not a memory.
-- Assert the BBC quotation is verbatim, carries its date and era framing,
-  and links the archive source; assert the Avoca line is attributed.
+- Assert the BBC quotation is verbatim, carries era framing and a light
+  archive attribution (no studio read stamp or elision lecture on the guest
+  layer), and links the archive source; assert the Avoca line is attributed
+  lightly.
 - Assert every arc-band entry carries its date, and the band contains no
   undated milestone.
 - Assert the season panel contains the ritual statement and the Facebook
@@ -249,21 +256,24 @@ Resolved at build, 5 August 2026:
   alternative — no quotation at all — leaves the page without the town's
   recognition. It carries its era in the panel head ("A memory of the late
   1960s"), names the speaker and the decade in the caption, cites the archive
-  with the read date and links it — as a supporting band just below the opening.
-  The first viewport itself is brand beside the generated promenade plate. The
+  lightly and links it — as a supporting band just below the opening. The
+  first viewport itself is brand beside the generated promenade plate. The
   second memory (the juke-box) sits inside the arc band's own late-1960s entry,
   where its era cannot detach from it.
 - **One correction to move 1.** The change-booth memory is quoted with its
   shift times elided — "You had to work long hours … but we didn't care, it was
-  summer and we hadn't a care in the world" — and the caption says so. The full
-  quotation carries "8.30am to 10.30pm", which is a 1960s summer job; on an
-  arcade page, next to an hours panel, it would read as opening hours to anyone
-  scanning, which is precisely the 25 July 2026 failure. Eliding it lets the
-  standing scan be absolute rather than carved out, which is the stronger test.
-- **May the Avoca claim be quoted?** Yes, attributed, and it is — on both
-  screens, verbatim, dated 5 August 2026, captioned "their words, not ours".
-  The test asserts that outside the quotation marks neither "premier" nor the
-  indoor-dodgems scarcity appears in the concept's own voice.
+  summer and we hadn't a care in the world". The full quotation carries
+  "8.30am to 10.30pm", which is a 1960s summer job; on an arcade page, next to
+  an hours panel, it would read as opening hours to anyone scanning, which is
+  precisely the 25 July 2026 failure. Eliding it lets the standing scan be
+  absolute rather than carved out. The elision is recorded in research and
+  Sources & limits — the guest caption does not lecture about it (corrected
+  6 August 2026).
+- **May the Avoca claim be quoted?** Yes, attributed lightly, and it is — on
+  both screens, verbatim, as `The Avoca Hotel · avocahotel.com` (studio read
+  date in research, not on the guest layer). The test asserts that outside the
+  quotation marks neither "premier" nor the indoor-dodgems scarcity appears in
+  the concept's own voice.
 - **Private drawing reference for the frontage?** Resolved with move 5. The
   withdrawn 2023 photograph is not used; both pages carry generated
   illustrative plates labelled as indicative, not a survey.
@@ -274,17 +284,22 @@ Resolved at build, 5 August 2026:
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for any
-new asset in the same commit, update the case-study Sources & limits
-block, and add journey coverage for new behaviour. Any move that changes
-the first viewport recaptures the comparison stills and clip in the same
-commit. Update this status line as moves land; do not call the concept
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Update this status line as moves land; do not call the concept
 validated until an owner or representative visitor has supplied that
 evidence.
 
-**Landed 5 August 2026 (moves 1–5).** Every fact and borrowed sentence lives in
-`src/concepts/kent-amusements/record.ts` with its source and read date; the
-season panel is `SeasonPanel.astro`, shared by both screens, and its
+**Landed 5 August 2026 (moves 1–5); guest attribution tightened 6 August 2026.**
+Every fact and borrowed sentence lives in `src/concepts/kent-amusements/record.ts`
+with research provenance in comments and light guest attributions on the page;
+the season panel is `SeasonPanel.astro`, shared by both screens, and its
 `confirmedHours` array is the designed home the publication record asked for,
 empty until a published source fills it. Move 5 ships two generated illustrative
 promenade plates via `PromenadePlate.astro`, with the light plate as the

@@ -58,7 +58,8 @@ is not on this list.
 7. **Editorial details.** Drop caps, and one *real* guest review set as a
    large italic pull-quote. A guest's own words land harder with an owner
    than any copy the studio writes — and quoting a public review stays inside
-   the honesty rules.
+   the honesty rules. Guest attribution is light (speaker + month/year or
+   platform); the studio read date stays in research and Sources & limits.
 
 Moves 1–4 create the feeling; 5–7 make it hold together under scrutiny.
 
@@ -86,7 +87,7 @@ one-sheet and the reel.
 | Day-part hero | `src/components/enniskeen/EnkHero.astro`, bands in `enniskeen-site.ts` | **Done.** Dawn, day and dusk, swapped on the visitor's local clock; the daytime plate stays the pre-script state so no-JS, crawlers, print and capture are untouched. Prompts and boundary in `research/concepts/hotel-enniskeen/enniskeen-day-part-hero-brief.md` |
 | Illustrated map | `src/components/enniskeen/EnkEstateMap.astro`, estate page | **Done.** Brass-line plate of the twelve acres — drive, house and turret, lawn, trail, Wishing Well, Shimna, sightlines to Donard and the sea |
 | One photographic voice | SVG filter in `EnniskeenShell.astro`, `--enk-grade` in the stylesheet | **Done.** Pine shadows, warm highlights, eased saturation, fine grain — one filter over every image in the concept |
-| Editorial details | Home welcome note | **Done.** One drop cap, and one verbatim TripAdvisor review — Carolyn K, 22 July 2026 — set as a large Cormorant italic pull-quote with its date and source, so the owner can go and find it |
+| Editorial details | Home welcome note | **Done.** One drop cap, and one verbatim TripAdvisor review — Carolyn K, July 2026 — set as a large Cormorant italic pull-quote with a light attribution the owner can follow; the studio read stamp stays off the guest layer |
 | History timeline | Estate page, `estate.timeline` | **Done.** Four moments; only the two dates the hotel actually publishes are given as dates |
 | House mark | `EnkMark.astro`, `public/brand/enniskeen-mark.svg` | **Done.** E-under-turret monogram: header, footer seal, section ornament, favicon. Recorded in `image-provenance.md` as studio-drawn, explicitly *not* the hotel's logo |
 | A day at Enniskeen | — | **Not built.** It restructures the homepage, which is the one change that invalidates the flagship film and forces a re-capture. Left as a deliberate, separate decision |
@@ -94,9 +95,9 @@ one-sheet and the reel.
 All of it is covered by `pnpm test:enniskeen`, which now also asserts the
 day-part swap (pinning the clock to 12:00 and 21:00), the shared grade, no
 clipped map labels, the map's "indicative · not a survey" disclosure, the four
-timeline moments, and that the pull-quote carries its attribution, its date and
-a citation an owner can follow, and that every day-part file on disk actually
-reaches the page.
+timeline moments, and that the pull-quote carries a light attribution and a
+citation an owner can follow (not a studio read stamp), and that every
+day-part file on disk actually reaches the page.
 
 ### What the build taught us
 
