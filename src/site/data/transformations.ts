@@ -1,3 +1,7 @@
+import { publicTransformationSlugs } from "../../../api/public-transformation-slugs.mjs";
+
+export { publicTransformationSlugs };
+
 export type TransformationCategory =
   | "Community & leisure"
   | "Shops & services"
@@ -29,7 +33,7 @@ export interface Transformation {
 /**
  * Internal candidates remain available to noindex concept routes while they
  * await Phase Q review. Public portfolio membership is controlled only by
- * `publicTransformationSlugs` below.
+ * `publicTransformationSlugs` (re-exported from the request allow-list).
  */
 export const transformationCandidates: Transformation[] = [
   {
@@ -317,27 +321,6 @@ export const transformationCandidates: Transformation[] = [
     pin: { x: 205, y: 455 },
   },
 ];
-
-export const publicTransformationSlugs = [
-  "hotel-enniskeen",
-  "bucks-head",
-  "mourne-cycles",
-  "newcastle-chamber",
-  "kent-amusements",
-  "donard-veterinary",
-  "cupla",
-  "tool-centre",
-  "scopers",
-  "dundrum-inn",
-  "donard-hotel",
-  "newcastle-dental",
-  "hugh-mccanns",
-  "bettys-butters",
-  "douglas-cromie",
-  "castle-farm",
-  "kelly-mcevoy-brown",
-  "painted-earth",
-] as const;
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);
 

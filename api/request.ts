@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer, { type SendMailOptions } from "nodemailer";
-import { publicTransformationSlugs } from "../src/site/data/transformations.ts";
+import { publicTransformationSlugs } from "./public-transformation-slugs.mjs";
 
 const MAX = {
   business: 120,

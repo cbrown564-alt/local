@@ -1,0 +1,27 @@
+/**
+ * Public portfolio slugs. Owned here so the Vercel request function can load
+ * them after compile — importing the Astro data TypeScript module left a
+ * runtime `.ts` path that Node cannot resolve in `/var/task`.
+ *
+ * Site code re-exports this list from `src/site/data/transformations.ts`.
+ */
+export const publicTransformationSlugs = Object.freeze([
+  "hotel-enniskeen",
+  "bucks-head",
+  "mourne-cycles",
+  "newcastle-chamber",
+  "kent-amusements",
+  "donard-veterinary",
+  "cupla",
+  "tool-centre",
+  "scopers",
+  "dundrum-inn",
+  "donard-hotel",
+  "newcastle-dental",
+  "hugh-mccanns",
+  "bettys-butters",
+  "douglas-cromie",
+  "castle-farm",
+  "kelly-mcevoy-brown",
+  "painted-earth",
+]);

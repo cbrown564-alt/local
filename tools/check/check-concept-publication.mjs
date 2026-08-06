@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -41,9 +42,7 @@ const candidateSlugs = new Set(
   [...arrayBody("transformationCandidates").matchAll(/slug:\s*"([^"]+)"/g)]
     .map((match) => match[1]),
 );
-const publicSlugs = [
-  ...arrayBody("publicTransformationSlugs").matchAll(/"([^"]+)"/g),
-].map((match) => match[1]);
+const publicSlugs = readPublicTransformationSlugs();
 
 if (publication.schemaVersion !== 1 || !Array.isArray(publication.reviews)) {
   errors.push("publication.json must use schemaVersion 1 with a reviews array.");
