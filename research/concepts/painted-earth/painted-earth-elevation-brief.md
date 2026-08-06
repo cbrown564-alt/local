@@ -15,14 +15,31 @@ photography**, which is what the ranking prescribed: mine the maker
 register and the collection-only ritual. The honest final artefact is the
 engagement conversation, and this brief is written to serve it.
 
-**Status: written 4 August 2026; not yet implemented.** The current
-concept is a competent, honest four-state loop — arrival, example shelf,
+**Status: moves 1–3 shipped 6 August 2026** — the makers' roll with its
+catalogue date, the staged handover, and the named waiting list are on the
+page, pinned by `tools/test/test-painted-earth-elevation.mjs`; the voice
+harvest is recorded in
+`research/concepts/painted-earth/voice-harvest.md`. Move 4 (the engagement
+ask) waits for the outreach decision it serves, per the bundle order below.
+What follows is the brief as written; its description of the concept below is
+the pre-elevation state.
+
+The concept was a competent, honest four-state loop — arrival, example shelf,
 available detail, sold recovery — that names the live shop's strengths on
 the page, carries the shop's own sentence ("A small team with a big
 dream"), and labels every artwork tile as the drawn placeholder it is.
 What it does not yet do is use the two richest seams in the record: the
 makers themselves, ninety-two named people, and the ritual that makes an
 original different from everything else the shop sells.
+
+**Guest voice (read before building).** Speak as the shop. Trust is not
+research chrome — see the three-layer honesty split in
+`docs/the-elevation-method.md`. Harvested reviews and shop quotes get
+light guest attribution (platform + month/year, or "our own words");
+studio read stamps, relative "shown as N months ago", and research
+caveats stay in `research/` and Sources & limits. The catalogue snapshot
+date ("as of 26 July 2026") is guest-useful data freshness; "re-checked
+27 July" is not.
 
 ## The shape of this business
 
@@ -70,7 +87,7 @@ the publication record (3 August 2026).
   upstairs gallery space has added a new dimension to Painted Earth. It
   is the perfect canvas to showcase our Artist and Craftspeople." The
   gallery page also carries three named visitor reviews — harvestable,
-  verbatim, attributed.
+  verbatim, attributed lightly on the guest page.
 - **Their geography:** 98 Main Street, and the place shelf the shop
   maintains itself: `mournes` tags on 45 products and nine place
   collections — Mournes, Murlough, Tollymore, Newcastle, Royal County
@@ -124,9 +141,12 @@ names from the dated snapshot, typeset with the care the roundel
 promises, each linked to its real collection on the live shop. No
 biographies beyond the makers' own published words; no imagery; the
 names themselves are the content, because the names are the shop. The
-snapshot date travels with the roll, and the voice work lands beside it:
-the gallery's own sentence and one harvest from the three named visitor
-reviews, verbatim and attributed, per the Kent and Tool Centre pattern.
+catalogue snapshot date travels with the roll as data freshness ("as of
+26 July 2026") — not as a studio audit trail. The voice work lands beside
+it: the gallery's own sentence and one harvest from the three named
+visitor reviews, verbatim and attributed lightly, per the Kent and Tool
+Centre pattern (month/year on the guest page; full harvest trail in
+research).
 
 ### 2. Stage the handover
 
@@ -169,6 +189,10 @@ page, not the pipeline.
 
 ## Honesty constraints
 
+- **Guest voice is the shop's voice.** No studio narration of the elevation
+  method, the blocked lever, or the disagreement protocol on the guest
+  page. Move 4's engagement ask may name photography as the missing piece
+  in plain shop-facing language; it must not read as a research memo.
 - **The repair-case line is absolute.** The live shop is polished and the
   page says so; no "before/after", no implication of failure, no
   repetition of the stale 26 July filters claim — the concept names the
@@ -176,12 +200,18 @@ page, not the pipeline.
 - **No photography until it is licensed.** Every tile stays a visibly
   labelled drawn placeholder; no drawing ever reads as a named maker's
   work; the product record is attributed to the maker and the drawing to
-  nobody. The Mourne Cycles deletion precedent governs.
+  nobody. The Mourne Cycles deletion precedent governs. Placeholder
+  disclosure stays short on the guest layer; fuller boundary text belongs
+  in the banner and Sources & limits.
 - **Snapshot discipline.** Makers, counts, prices and availability come
-  from the dated 26 July 2026 snapshot and are presented as dated; nothing
-  claims to be the live catalogue.
+  from the dated 26 July 2026 snapshot and are presented as of that
+  catalogue date; nothing claims to be the live catalogue. Do not add
+  studio re-check dates beside the figures.
 - **Maker biographies only in the makers' own published words; reviews
-  verbatim, attributed, dated.** No invented praise, no invented lives.
+  verbatim, attributed lightly on the guest page** (platform + month/year),
+  with full read dates in research. No invented praise, no invented lives.
+  Prefer `Visitor review · July 2025` over `shown as "N months ago" · read
+  …`.
 - **The four workshop records are the whole workshop truth.** No new
   dates, no "regular programme", no availability claims.
 - **Click-and-collect is a proposal wherever it appears**, and no
@@ -195,16 +225,19 @@ page, not the pipeline.
 ## Tests that pin the elevation
 
 - Assert every maker name on the roll matches the dated snapshot, the
-  snapshot date renders with it, and every name links to the real live
-  collection.
+  catalogue date ("as of 26 July 2026" or equivalent) renders with it, and
+  every name links to the real live collection — with no studio read stamp
+  beside the roll.
 - Assert no raster catalogue imagery appears anywhere in the concept, and
-  every artwork tile carries its placeholder label.
+  every artwork tile carries a short placeholder label (not an
+  over-explained research caveat).
 - Assert the shop's quoted sentences and any review harvest are verbatim
-  against the recorded source, attributed and dated.
+  against the recorded source, with light guest attribution (platform +
+  month/year; not `· read …` or `shown as`).
 - Assert the workshop section contains only the four real records and the
   proposal is labelled.
 - Assert the engagement ask names photography as the missing piece without
-  implying contact, approval or a pilot.
+  implying contact, approval or a pilot, and without studio/meta narration.
 - Run the guest-voice guard and the publication checks; then the swap
   test: remove the makers' names, 98 Main Street and the roundel — if the
   page still works for any gift shop, the elevation has not gone far
@@ -231,10 +264,14 @@ page, not the pipeline.
 
 ## When a move ships
 
-Record the source and read date for every new fact, add provenance for
-any new asset in the same commit, update the case-study Sources & limits
-block, and pin new behaviour in the verification tooling. Any move that
-changes the first viewport recaptures the comparison stills and clip in
-the same commit. Update this status line as moves land; do not call the
+Record the source and read date for every new fact in `research/` and in
+the case-study Sources & limits block — that is studio provenance, not guest
+copy. Guest-facing attribution stays light (who spoke + a reasonable
+month/year or era); never put a studio read stamp, relative "shown as N months
+ago", or research caveats on the guest page. Speak as the business. Add
+provenance for any new asset in the same commit, update Sources & limits, and
+add journey coverage for new behaviour.
+
+Update this status line as moves land; do not call the
 concept validated until the shop has supplied that evidence — and for
 this concept, that bar is the engagement itself.

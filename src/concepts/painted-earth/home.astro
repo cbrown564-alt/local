@@ -3,8 +3,18 @@ import PaintedEarthArt from "./components/PaintedEarthArt.astro";
 import PaintedEarthShell from "./components/PaintedEarthShell.astro";
 import {
   paintedEarthBase,
+  paintedEarthCatalogueDate,
+  paintedEarthGalleryWords,
+  paintedEarthHandoverTerms,
   paintedEarthLive,
+  paintedEarthMakerHref,
+  paintedEarthMakers,
+  paintedEarthMakerTotal,
   paintedEarthPlaces,
+  paintedEarthVisitorVoice,
+  paintedEarthWaitingListWords,
+  paintedEarthWorkshops,
+  paintedEarthWorkshopsHref,
 } from "./content";
 
 const routes = [
@@ -90,6 +100,42 @@ const routes = [
       </ul>
     </section>
 
+    <section class="pe-makers" aria-labelledby="pe-makers-heading">
+      <div class="pe-section-head">
+        <div>
+          <p class="pe-intro">The makers' roll</p>
+          <h2 id="pe-makers-heading">Ninety-two makers under one roof.</h2>
+        </div>
+        <p>
+          Everything on our shelves is made by someone we can name — these are
+          the names the catalogue knows best, as of {paintedEarthCatalogueDate}.
+          Every name opens that maker's collection on our own shop.
+        </p>
+      </div>
+      <div class="pe-makers-layout">
+        <ul class="pe-makers-roll" role="list">
+          {paintedEarthMakers.map((maker) => (
+            <li>
+              <a href={paintedEarthMakerHref(maker.name)}>
+                <strong>{maker.name}</strong>
+                {maker.pieces !== null && <span>{maker.pieces} pieces</span>}
+              </a>
+            </li>
+          ))}
+          <li class="pe-makers-rest">
+            <span>…plus the rest of the {paintedEarthMakerTotal} — every maker on our shelves has a name.</span>
+          </li>
+        </ul>
+        <div class="pe-makers-voice">
+          <p class="pe-makers-own">{paintedEarthGalleryWords}</p>
+          <blockquote class="pe-makers-review">
+            <p>&ldquo;{paintedEarthVisitorVoice.quote}&rdquo;</p>
+            <footer>{paintedEarthVisitorVoice.who} · {paintedEarthVisitorVoice.source}</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
     <section class="pe-place-route" aria-labelledby="pe-place-heading">
       <div class="pe-place-copy">
         <p class="pe-intro">A second way in</p>
@@ -112,16 +158,53 @@ const routes = [
       </ul>
     </section>
 
-    <section class="pe-gallery-callout">
-      <div>
-        <p class="pe-intro">Upstairs in Newcastle</p>
-        <h2>The gallery is part of the shop, not a separate story.</h2>
+    <section class="pe-handover" aria-labelledby="pe-handover-heading">
+      <div class="pe-handover-copy">
+        <p class="pe-intro">The handover</p>
+        <h2 id="pe-handover-heading">An original is not posted. It is collected.</h2>
+        <p>
+          The most precious thing we sell changes hands in person — up the
+          stairs at 98 Main Street, in the lightfilled gallery we opened in
+          April 2025. You meet the work, and the people who chose it, before
+          it is yours.
+        </p>
+        <a class="pe-primary" href={`${paintedEarthBase}/originals/`}>Explore available original art</a>
       </div>
-      <p>
-        Original art is collection-only from 98 Main Street. Painted Earth can
-        arrange a shipping quote when needed.
-      </p>
-      <a class="pe-primary" href={`${paintedEarthBase}/originals/`}>Explore available original art</a>
+      <ul class="pe-handover-terms" role="list" aria-label="How an original reaches you">
+        {paintedEarthHandoverTerms.map((term) => (
+          <li>{term}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="pe-workshops" aria-labelledby="pe-workshops-heading">
+      <div class="pe-section-head">
+        <div>
+          <p class="pe-intro">Workshops</p>
+          <h2 id="pe-workshops-heading">Four workshops, and every one of them full.</h2>
+        </div>
+        <p>
+          Places go quickly, and the waiting list runs by hand — as the
+          sold-out listings say: &ldquo;{paintedEarthWaitingListWords}&rdquo;
+        </p>
+      </div>
+      <ul class="pe-workshop-list" role="list">
+        {paintedEarthWorkshops.map((workshop) => (
+          <li>
+            <span class="pe-workshop-date">{workshop.date}</span>
+            <strong>{workshop.title} with {workshop.tutor}</strong>
+            <span class="pe-workshop-price">£{workshop.price}</span>
+            <span class="pe-workshop-status">Fully booked</span>
+          </li>
+        ))}
+      </ul>
+      <div class="pe-workshop-next">
+        <p>
+          <strong>Proposal:</strong> a waiting list you can join from this
+          page, instead of a note inside a sold-out listing. Until then,
+          <a href={paintedEarthWorkshopsHref}>our workshops live on the shop ↗</a>
+        </p>
+      </div>
     </section>
   </main>
 </PaintedEarthShell>
