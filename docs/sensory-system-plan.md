@@ -231,10 +231,14 @@ passive state of the comparison, not the comparison itself.
 - First frame is the *before* image, so a reader who arrives mid-scroll never
   sees the concept without its counterpart.
 - Under reduced motion, no build plays and the after image is shown settled.
-- Passes `pnpm test:shell-home` with the claim-door link still in the hero.
+- Keeps the claim-door link in the hero. `pnpm test:shell-home` used to hold
+  this and was retired on 4 August 2026 (`PLAN.md` section 1c), so this phase
+  now has to re-establish the guard rather than inherit it.
 
-**Check.** Extend the homepage shell test to assert the `<img>` pair and the
-manual compare control both exist when the canvas is present.
+**Check.** There is no homepage shell test left to extend. Write one, asserting
+the `<img>` pair, the manual compare control and the claim-door link — the
+first two because a canvas must stay decoration over a real comparison, the
+third because it is the homepage's only route to a business's own concept.
 
 ## Phase 2 — 05 Voice
 

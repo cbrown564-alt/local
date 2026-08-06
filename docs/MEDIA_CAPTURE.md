@@ -241,9 +241,12 @@ Earlier local QA on 23 July 2026:
   captured sources rather than maintained as a second manual timeline.
 - Both recorded booking actions resolve into Bookin1; the concept handoff
   carries arrival date and length of stay.
-- `pnpm test:media` confirms no reel source is requested before explicit
+- `pnpm test:media` confirmed no reel source is requested before explicit
   activation, the WebM is preferred, reduced-motion remains opt-in, and the
-  film plays and pauses from the keyboard through native controls.
+  film plays and pauses from the keyboard through native controls. **The suite
+  was retired on 4 August 2026 and nothing replaces it** (`PLAN.md`
+  section 1c), so these four properties now have to be checked by hand after
+  any change to the reel components.
 - The end-card domain and printed QR are release checks, not local capture
   checks. `mournemade.co.uk` had no DNS record on 23 July 2026, so this
   film and the one-sheet must not be distributed yet.

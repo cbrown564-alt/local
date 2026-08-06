@@ -4,9 +4,11 @@ Written 31 July 2026 alongside the elevation build in
 `docs/good-to-great-concept-elevation.md` (move 1).
 
 **Done, 31 July 2026.** Both generations were made against the prompts below,
-converted to JPEG, optimised and shipped; all three day parts are live and
-covered by `pnpm test:enniskeen`. The brief stays as the record of how they
-were made and the boundary they must respect if either is ever regenerated.
+converted to JPEG, optimised and shipped; all three day parts are live. They
+were covered by `pnpm test:enniskeen` until that suite was retired on
+4 August 2026 (`PLAN.md` section 1c); nothing pins them today. The brief stays
+as the record of how they were made and the boundary they must respect if
+either is ever regenerated.
 
 ## What it is for
 
@@ -37,8 +39,8 @@ Consequences worth knowing before generating:
 - **Clear the Astro cache when adding a variant.** A cached build silently
   omitted a newly added file during this session — the page looked correct and
   simply never swapped. `rm -rf dist node_modules/.astro node_modules/.vite`
-  before rebuilding. `pnpm test:enniskeen` now fails loudly on the mismatch
-  rather than leaving it to be noticed by eye.
+  before rebuilding. `pnpm test:enniskeen` used to fail loudly on the mismatch;
+  since its retirement on 4 August 2026 it is back to being noticed by eye.
 - **`day` is always the pre-script state**, so no-JS visits, crawlers, the
   print one-sheet and the capture scripts keep seeing exactly what they see
   today. The film does not need re-capturing for this move.
@@ -110,10 +112,12 @@ reject it. The move works because the house looks *lived in*, not marketed.
    back first time became 175–200 KB JPEGs with no visible loss, and only
    `.jpg` gets WebP derivatives. Then `pnpm optimize:media`.
 2. `pnpm build` — the variants join the rotation automatically.
-3. `pnpm test:enniskeen` — the journey suite asserts the swap for real: it
-   pins the clock to 21:00 and requires the visible frame to change, pins it
-   to 12:00 and requires the daytime frame back, and separately requires every
-   variant present on disk to reach the page.
+3. `pnpm test:enniskeen` — **retired 4 August 2026, not yet replaced.** It
+   asserted the swap for real: pinning the clock to 21:00 and requiring the
+   visible frame to change, pinning it to 12:00 and requiring the daytime
+   frame back, and separately requiring every variant present on disk to reach
+   the page. Re-establish it before regenerating any day part; until then this
+   step is a manual check at both clock times.
 4. Add an entry per file to `research/image-provenance.md`
    under **Generated imagery**, recording the reference plate and the
    change-the-light-only boundary. Do this in the same commit as the images.

@@ -8,8 +8,10 @@ brief re-derives the elevation from the materials this business actually has,
 and supersedes the Scopers section of that review.
 
 **Status: shipped 31 July 2026; design pass two the same day.** Moves 1–7 are
-live on `/concepts/scopers/` and `/concepts/scopers/supper-club/`, pinned by
-`pnpm test:scopers`. Pass two, after comparing the pages against this brief:
+live on `/concepts/scopers/` and `/concepts/scopers/supper-club/`. They were
+pinned by `pnpm test:scopers`, retired on 4 August 2026 (`PLAN.md`
+section 1c) — which matters here, because Scopers is in the live outreach
+wave and its sheet is about to be printed. Pass two, after comparing the pages against this brief:
 the map (move 6) was redrawn as real geography — bay, dunes, hedgerow fields,
 Main Street at the head of the bay, the Mournes along the south; the hero got
 its menu-cover treatment (inset frame, type in the quiet side) pending the

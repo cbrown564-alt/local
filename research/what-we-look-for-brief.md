@@ -190,8 +190,8 @@ one clip expanded at a time, and the close is the heaviest element on the page.
 - **Test the fault, not the fix.** The failure mode is a mock whose fault is
   accidentally walkable — someone tidies the wireframe and the hours land on the
   first screen. Assert, per theme, that the before-walk cannot reach the errand's
-  goal in fewer than N steps, the same way `pnpm test:enniskeen` pins the
-  day-part swap. This is `the-elevation-method.md` §5 applied to our own page:
+  goal in fewer than N steps, the same way `pnpm test:enniskeen` pinned the
+  day-part swap before it was retired. This is `the-elevation-method.md` §5 applied to our own page:
   unpinned magic regresses.
 - Keyboard-walkable and screen-reader-sane, or the page is a fault of its own.
 - The wireframes are drawn, not generated — CSS and SVG. No provenance entry

@@ -24,6 +24,11 @@ the portfolio or offer.
 
 ## 1. Restore a trustworthy verification baseline — done 28 July 2026
 
+**Sections 1, 1a and 1b describe a suite that was retired on 4 August 2026.**
+They are kept as the record of what was built and why, but every `test:` name
+below except `test:request` has since been deleted. Section 1c has the
+replacement, and the table of what is no longer covered.
+
 Completed before another publication decision or printed outreach sheet.
 
 1. Repaired `test:reviewed-concepts` around durable evidence: each public
@@ -156,11 +161,31 @@ What did not survive the simplification, and is now repaired:
    wired in — section 1a found two checks that could not fail, and a green
    suite is worth nothing until its failure is demonstrated.
 
-`pnpm test` is 13/13 green. What is still missing: the Enniskeen and Buck's
-Head pins, and the live scan-to-inbox hop, which no static check replaces —
-that is section 3 item 6 and it still has to be done by hand. Documentation
-across `docs/` still refers to `test:concepts`, `test:media`,
-`test:shell-home` and `test:enniskeen`.
+`pnpm test` is 13/13 green.
+
+### What the retired suites covered, and what does not replace it
+
+Sections 1, 1a and 1b name these as evidence. They no longer exist. Where a
+row says nothing replaces it, that is a real gap and not an oversight — record
+it here rather than let a doc go on citing a green suite that cannot run.
+
+| Retired suite | What it held | Now |
+| --- | --- | --- |
+| `test:concepts` | Shared shell geometry and header-label wrapping across every concept route, in a browser | Nothing. The 1b header-wrap defect would not be caught today |
+| `test:reviewed-concepts` | Per-concept publication evidence: disclosure of generated imagery, responsive derivatives, first-viewport rules | Partly `test:reviews` (publication records) and `test:public-assets`, both static |
+| `test:shell-home` | The homepage claim-door link, and the load sweep's reduced-motion and takeover behaviour | Nothing. The claim door is the route from the homepage to a business's own concept, and it went missing once already |
+| `test:media` | No reel source requested before activation, WebM preferred, reduced-motion opt-in, keyboard play/pause | Nothing |
+| `test:enniskeen` | The flagship's day-part swap, grade, map labels and disclosure, timeline and pull-quote | Nothing. Enniskeen is the batch-two flagship |
+| `test:bucks-head`, `test:dundrum-inn`, `test:scopers` | Per-concept journey pins | `test:scopers` has no successor; the other two are unreplaced |
+| `test:source-attribution` | The printed-QR chain, in a browser | Rebuilt 6 August without the browser (item 3 above) |
+
+Nine per-page pins exist for concepts elevated since 4 August — Hugh McCann's,
+Cúpla, Castle Farm, Newcastle Dental, Kent Amusements, Kelly McEvoy & Brown,
+Tool Centre, Painted Earth and the fault walk — so the coverage that came back
+is the coverage that was rewritten, not the coverage that was lost.
+
+The live scan-to-inbox hop is section 3 item 6 and still has to be done by
+hand.
 
 ## 2. Close the remaining publication decisions — done 3 August 2026
 

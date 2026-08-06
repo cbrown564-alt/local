@@ -102,9 +102,12 @@ tick items here and update the linked docs in the same commit as each fix.
   and disabled-link behaviour; `concept-shell.css` now also owns top-strip,
   direct-header and navigation geometry. Each identity supplies only its
   accent, gap, underline size and genuinely distinct page rules. The ten
-  published concepts are covered by `pnpm test:concepts`, which verifies the
+  published concepts were covered by `pnpm test:concepts`, which verified the
   resolved shared layout and identity token in a real browser. Secondary-page
   CSS remains with its identity because those layouts are not interchangeable.
+  **That suite was retired on 4 August 2026 and nothing replaces it** — the
+  shared shell is currently unpinned across concept routes (`PLAN.md`
+  section 1c).
 - [x] **Comparison pages are hand-built.** Fixed 23 July 2026: headlines,
   source blocks, design notes and media paths now live in
   `transformation-details.ts`; one static `[slug].astro` route generates all
@@ -138,8 +141,9 @@ tick items here and update the linked docs in the same commit as each fix.
   two 640px WebP previews at first paint instead of the full before/after set.
 - [x] **`MotionCompare` fetched both clips on scroll.** Fixed 23 July 2026:
   every motion section starts on its posters and requests no video until the
-  visitor presses “Play demos”; the behaviour is covered by
-  `pnpm test:media`.
+  visitor presses “Play demos”; the behaviour was covered by `pnpm test:media`
+  until that suite was retired on 4 August 2026. The behaviour is still in the
+  code and nothing now checks it (`PLAN.md` section 1c).
 - [x] **All media was JPG/MP4.** Fixed 23 July 2026: the repeatable media task
   generates 640px and 1265px WebP variants for all 35 JPEG masters and WebM
   variants for all 15 MP4 clips. Responsive sources are used by comparisons,

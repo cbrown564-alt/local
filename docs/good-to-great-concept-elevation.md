@@ -92,7 +92,10 @@ one-sheet and the reel.
 | House mark | `EnkMark.astro`, `public/brand/enniskeen-mark.svg` | **Done.** E-under-turret monogram: header, footer seal, section ornament, favicon. Recorded in `image-provenance.md` as studio-drawn, explicitly *not* the hotel's logo |
 | A day at Enniskeen | — | **Not built.** It restructures the homepage, which is the one change that invalidates the flagship film and forces a re-capture. Left as a deliberate, separate decision |
 
-All of it is covered by `pnpm test:enniskeen`, which now also asserts the
+All of it was covered by `pnpm test:enniskeen`, **retired on 4 August 2026
+with nothing in its place** (`PLAN.md` section 1c). Enniskeen is the batch-two
+flagship and is now the largest concept without a pin; re-establishing one
+belongs with any further work on it. That suite also asserted the
 day-part swap (pinning the clock to 12:00 and 21:00), the shared grade, no
 clipped map labels, the map's "indicative · not a survey" disclosure, the four
 timeline moments, and that the pull-quote carries a light attribution and a

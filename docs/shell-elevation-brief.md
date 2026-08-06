@@ -197,7 +197,10 @@ Per the method — voice first, mechanism before assets, the map alone:
 - The swap test, run by hand on the final homepage copy before
   publication — the same test the concepts face.
 - `pnpm test:concepts` and the reviewed-journeys suite must stay green;
-  the shell changes touch no concept page.
+  the shell changes touch no concept page. **Both were retired on 4 August
+  2026** (`PLAN.md` section 1c). Until something replaces them, "touches no
+  concept page" is an argument rather than a checked fact, and the nine
+  per-page pins are what is left to lean on.
 
 ## Open questions
 
@@ -224,9 +227,11 @@ All five build-order steps landed in one session:
    comparison arms at full "before", sweeps once to the resting split,
    cancels on any user takeover, and renders settled under
    `prefers-reduced-motion`. SSR stays at the settled split, so no-JS,
-   crawlers, print and capture are untouched. Pinned by the new
-   `tools/test/test-shell-home.mjs` suite (`pnpm test:shell-home`, part
-   of `pnpm test`).
+   crawlers, print and capture are untouched. Was pinned by
+   `tools/test/test-shell-home.mjs` (`pnpm test:shell-home`), retired on
+   4 August 2026 with nothing in its place (`PLAN.md` section 1c). The same
+   suite held the homepage claim-door link, which had already gone missing
+   once — see section 1b item 1.
 3. **Transformations by town + thumbnails.** `/transformations/` already
    filtered by town with image cards; the homepage `LocalStrip` is now a
    visual rail of the public transformations (thumbnail, name, town), and

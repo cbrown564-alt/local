@@ -153,7 +153,8 @@ with WebP variants; IA table confirmed or amended with reasons.
 
 **QA:** `pnpm build` clean; every page reachable from every page; zero
 placeholder links; 390 px pass via `pnpm capture:responsive`; keyboard and
-reduced-motion checks; `pnpm test:media` still green.
+reduced-motion checks. `pnpm test:media` was retired on 4 August 2026
+(`PLAN.md` section 1c), so its four properties are now hand checks.
 
 **Exit criteria:** five linked pages live locally; booking handoff verified
 against the real engine and recorded in the design notes; QA list clear.
