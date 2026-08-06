@@ -24,6 +24,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { isReferenced, logicalName, readSources } from "../lib/media-references.mjs";
 
 const PUBLIC_DIR = "public";
 const SRC_DIR = "src";
@@ -117,10 +118,7 @@ for (const rel of publicFiles) {
   );
 }
 
-const srcFiles = walk(SRC_DIR).filter((f) =>
-  /\.(astro|ts|tsx|js|mjs|css|json|md)$/.test(f),
-);
-const sources = srcFiles.map((f) => [f, fs.readFileSync(f, "utf8")]);
+const sources = readSources(SRC_DIR);
 const haystack = sources.map(([, text]) => text).join("\n");
 
 /*
@@ -165,13 +163,6 @@ if (failures.length > 0) {
 
 // 4. Held assets that nothing references (reported, never fatal).
 
-/** Collapse responsive derivatives onto the master they were built from. */
-function logicalName(rel) {
-  return rel
-    .replace(/\.[a-z0-9]+$/i, "")
-    .replace(/-(?:640|1265)$/, "");
-}
-
 const logical = new Map();
 for (const rel of publicFiles) {
   const ext = path.extname(rel).toLowerCase();
@@ -183,7 +174,7 @@ for (const rel of publicFiles) {
 }
 
 const orphans = [...logical.entries()]
-  .filter(([name]) => !haystack.includes(path.basename(name)))
+  .filter(([name]) => !isReferenced(haystack, name))
   .sort(([a], [b]) => a.localeCompare(b));
 
 const showOrphans = process.argv.includes("--orphans");
