@@ -1,0 +1,793 @@
+/* /prototypes/what-we-look-for/ — the ten faults as walkable wireframes.
+   The mocks are deliberately colourless: grey blocks and ruled bands only,
+   so attention goes to structure, where every one of the ten faults lives.
+   The single exception is brass, reserved for the T10 nameplate. */
+
+.wwlf {
+  --wwlf-paper: #eef1f3;
+  --wwlf-line: #d3dade;
+  --wwlf-block: #c3cdd3;
+  --wwlf-mid: #97a3ab;
+  --wwlf-deep: #4d5b65;
+  --wwlf-ink: #26323b;
+  --wwlf-brass: #b08a48;
+  --wwlf-brass-dark: #8f6f38;
+}
+
+.wwlf-hero {
+  padding: 4.5rem 0 2.5rem;
+}
+
+.wwlf-hero h1 {
+  max-width: 14ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+}
+
+.wwlf-hero .lede {
+  max-width: 56ch;
+}
+
+.wwlf-invented {
+  max-width: 60ch;
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--blue);
+  background: rgba(35, 72, 90, 0.06);
+  font-size: 0.95rem;
+}
+
+.wwlf-themes {
+  padding-bottom: 2rem;
+}
+
+.wwlf-theme {
+  padding: 3.25rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.18);
+}
+
+.wwlf-theme-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wwlf-theme-id {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: var(--ink);
+  color: var(--foam);
+  font-weight: 800;
+}
+
+.wwlf-theme-shape {
+  color: var(--blue-deep);
+  font-weight: 700;
+}
+
+.wwlf-theme-name {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+}
+
+.wwlf-theme-message {
+  max-width: 44ch;
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.wwlf-theme-decision {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--muted, #4a5a64);
+  font-size: 0.95rem;
+}
+
+.fw {
+  margin-top: 1.75rem;
+}
+
+.fw-errand,
+.swap-errand {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+/* --- the phone frame and its blocks ------------------------------------ */
+
+.fw-frame {
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+  aspect-ratio: 9 / 16;
+  background: var(--wwlf-paper);
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.fw-frame--plate {
+  max-width: 210px;
+}
+
+.fwp {
+  position: absolute;
+  inset: 0;
+}
+
+.fwp[hidden] {
+  display: none;
+}
+
+.fwb {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  font: inherit;
+}
+
+button.fwb {
+  cursor: pointer;
+}
+
+button.fwb:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+  z-index: 2;
+}
+
+.fwb.is-dim {
+  opacity: 0.4;
+}
+
+.fwb-label {
+  display: block;
+  overflow: hidden;
+  color: var(--wwlf-ink);
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.fw-frame {
+  container-type: inline-size;
+}
+
+@supports (font-size: 1cqw) {
+  .fwb-label {
+    font-size: 4.2cqw;
+  }
+}
+
+.fwb-band {
+  background: var(--wwlf-line);
+}
+
+.fwb-band .fwb-label,
+.fwb-micro .fwb-label {
+  padding: 0 4%;
+  text-align: left;
+  line-height: inherit;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.fwb-micro {
+  background: var(--wwlf-line);
+  border-radius: 1px;
+}
+
+.fwb-micro .fwb-label {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wwlf-deep);
+}
+
+.fwb-block {
+  background: var(--wwlf-block);
+}
+
+.fwb-media {
+  background-color: var(--wwlf-block);
+  background-image:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    );
+}
+
+.fwb-media .fwb-label {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--wwlf-deep);
+  font-style: italic;
+}
+
+.fwb-button {
+  display: grid;
+  place-items: center;
+  background: var(--wwlf-deep);
+  border-radius: 4px;
+}
+
+.fwb-button .fwb-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+button.fwb-button:hover {
+  background: var(--wwlf-ink);
+}
+
+.fwb-field {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--wwlf-mid);
+  border-radius: 4px;
+}
+
+.fwb-field .fwb-label {
+  padding: 0 6%;
+  color: var(--wwlf-deep);
+  text-align: left;
+}
+
+.fwb-card {
+  background: #fff;
+  border: 1px solid var(--wwlf-mid);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(38, 50, 59, 0.18);
+}
+
+.fwb-row {
+  background: #fff;
+  border: 1px solid var(--wwlf-mid);
+  border-radius: 4px;
+}
+
+.fwb-row::before {
+  content: "";
+  position: absolute;
+  top: 22%;
+  bottom: 22%;
+  left: 4%;
+  aspect-ratio: 1;
+  background: var(--wwlf-line);
+  border-radius: 2px;
+}
+
+.fwb-row .fwb-label {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 18%;
+  text-align: left;
+}
+
+button.fwb-row:hover {
+  border-color: var(--wwlf-ink);
+}
+
+.fwb-shield {
+  background: var(--wwlf-block);
+  border: 1px solid var(--wwlf-mid);
+  border-radius: 10% 10% 50% 50% / 8% 8% 42% 42%;
+}
+
+button.fwb-shield:hover {
+  background: var(--wwlf-mid);
+}
+
+.fwb-mark {
+  background: var(--wwlf-deep);
+  border-radius: 2px;
+}
+
+.fwb-mark .fwb-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  color: var(--wwlf-deep);
+  font-size: 9px;
+}
+
+button.fwb-mark {
+  outline-offset: 2px;
+}
+
+.fwb-scroll {
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--wwlf-mid);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.fwb-scroll .fwb-label {
+  color: var(--wwlf-deep);
+  font-weight: 600;
+}
+
+.fwb-scroll .fwb-label::before {
+  content: "↓ ";
+}
+
+button.fwb-scroll:hover {
+  border-color: var(--wwlf-ink);
+  background: #fff;
+}
+
+.fwb-empty {
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--wwlf-mid);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.fwb-empty .fwb-label {
+  color: var(--wwlf-mid);
+  font-style: italic;
+}
+
+.fwb-status {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  background: var(--wwlf-line);
+  border-radius: 999px;
+}
+
+.fwb-status::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 4%;
+  border-radius: 50%;
+  background: var(--wwlf-deep);
+}
+
+.fwb-status .fwb-label {
+  font-weight: 600;
+  text-align: left;
+}
+
+.fwb-sheet {
+  background: #fff;
+  border: 1px solid var(--wwlf-mid);
+  border-radius: 2px;
+  box-shadow: 0 3px 10px rgba(38, 50, 59, 0.22);
+}
+
+/* --- the rail: counters, narration, the one control -------------------- */
+
+.fw-row {
+  display: grid;
+  grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.fw-rail {
+  max-width: 34ch;
+}
+
+.fw-counts {
+  display: flex;
+  gap: 2.25rem;
+  margin: 0 0 1rem;
+}
+
+.fw-counts > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.fw-counts dt {
+  color: var(--wwlf-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fw-counts dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.fw-note {
+  min-height: 2.6em;
+  margin: 0 0 0.75rem;
+  color: var(--wwlf-deep);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.fw-outcome {
+  min-height: 3.2em;
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+}
+
+.fw-actuals {
+  min-height: 1.4em;
+  margin: 0 0 1.1rem;
+  color: var(--wwlf-deep);
+  font-size: 0.9rem;
+}
+
+.fw-fix {
+  min-height: 48px;
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fw-fix:hover {
+  background: rgba(19, 32, 41, 0.07);
+}
+
+.fw-fix.is-ready {
+  background: var(--ink);
+  color: var(--foam);
+}
+
+.fw-fix.is-ready:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.fw-sr,
+.swap-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- static plates (the no-JS / reduced-motion layer) ------------------- */
+
+.fw-plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.fw-plate {
+  margin: 0;
+}
+
+.fw-plate figcaption {
+  max-width: 26ch;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.fw-static-arc {
+  max-width: 62ch;
+  margin: 1.5rem 0 0;
+}
+
+.fw-static-hint {
+  margin: 0.75rem 0 0;
+  color: var(--wwlf-deep);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* --- fixed-here links ---------------------------------------------------- */
+
+.wwlf-fixed {
+  margin: 1.75rem 0 0;
+  font-size: 0.95rem;
+}
+
+.wwlf-fixed-lead {
+  font-weight: 700;
+}
+
+.wwlf-fixed a {
+  color: var(--blue-deep);
+  font-weight: 700;
+}
+
+.wwlf-fixed-label {
+  margin-left: 0.6rem;
+  color: var(--wwlf-deep);
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --- T10: the swap test --------------------------------------------------- */
+
+.swap-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 560px;
+}
+
+.swap-shop {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--wwlf-paper);
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 10px;
+}
+
+.swap-fascia {
+  position: absolute;
+  top: 8%;
+  right: 10%;
+  left: 10%;
+  height: 12%;
+  background: var(--wwlf-line);
+  border-radius: 3px;
+}
+
+.swap-slot {
+  position: absolute;
+  inset: 20% 24%;
+  border: 1px dashed var(--wwlf-mid);
+  border-radius: 3px;
+}
+
+.swap-plate {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+  touch-action: none;
+}
+
+.swap-plate:active {
+  cursor: grabbing;
+}
+
+.swap-plate:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.swap-plate-face {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #c9a45c, var(--wwlf-brass) 60%, var(--wwlf-brass-dark));
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(38, 50, 59, 0.35);
+}
+
+.swap-plate.is-dragging {
+  transition: none;
+}
+
+.swap-plate--seated {
+  cursor: default;
+}
+
+.swap-window {
+  position: absolute;
+  top: 28%;
+  right: 10%;
+  left: 10%;
+  height: 30%;
+  background-color: var(--wwlf-block);
+  background-image:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% - 1px),
+      rgba(38, 50, 59, 0.22) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    );
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.swap-door {
+  position: absolute;
+  bottom: 0;
+  left: 38%;
+  width: 24%;
+  height: 30%;
+  background: var(--wwlf-mid);
+  border: 2px solid var(--wwlf-ink);
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.swap-detail-hill {
+  position: absolute;
+  inset: 14% 8%;
+  width: 84%;
+  height: 72%;
+  stroke: var(--wwlf-ink);
+  stroke-width: 3;
+}
+
+.swap-detail-number {
+  position: absolute;
+  top: 16%;
+  right: -26%;
+  width: 16%;
+  height: 24%;
+  background: var(--wwlf-brass);
+  border-radius: 2px;
+}
+
+.swap-detail-step {
+  position: absolute;
+  bottom: -4px;
+  left: -18%;
+  width: 136%;
+  height: 5%;
+  min-height: 3px;
+  background: var(--wwlf-mid);
+  border-radius: 0 0 6px 6px;
+}
+
+.swap-live .swap-detail {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.swap-live[data-swap-details="shown"] .swap-detail {
+  opacity: 1;
+  transform: none;
+}
+
+.swap-rail {
+  max-width: 46ch;
+  margin-top: 1.25rem;
+}
+
+.swap-outcome {
+  min-height: 3.2em;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.swap-details {
+  min-height: 48px;
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--foam);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.swap-details:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* the static swap plates */
+
+.swap-pair {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 340px;
+}
+
+.swap-plate--hovering {
+  position: absolute;
+  top: -7%;
+  left: 45%;
+  width: 13%;
+  height: 8%;
+  transform: rotate(-8deg);
+}
+
+/* --- page sections after the ten ---------------------------------------- */
+
+.wwlf-purpose {
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.18);
+}
+
+.wwlf-purpose h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+}
+
+.wwlf-purpose p {
+  max-width: 62ch;
+}
+
+.wwlf-close {
+  padding: 4rem 0 5rem;
+  text-align: left;
+}
+
+.wwlf-close h2 {
+  max-width: 18ch;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+
+.wwlf-close p {
+  max-width: 52ch;
+  margin-bottom: 1.75rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 720px) {
+  .fw-row {
+    grid-template-columns: 1fr;
+  }
+
+  .fw-frame {
+    max-width: 250px;
+  }
+
+  .fw-rail {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swap-plate,
+  .swap-detail {
+    transition: none !important;
+  }
+}

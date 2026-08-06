@@ -1,0 +1,63 @@
+---
+interface Props {
+  /** The plate lives in the fascia slot: as the draggable button (live), as
+      a seated brass div (static), or absent leaving a dashed slot. */
+  plate?: "button" | "seated" | "none";
+  /** The three true details: hill silhouette, worn step, brass door number. */
+  details?: boolean;
+  /** Wireframe caption for the shop, used as its accessible name. */
+  label: string;
+}
+
+const { plate = "none", details = false, label } = Astro.props;
+---
+
+<div
+  class:list={["swap-shop", { "swap-shop--detailed": details }]}
+  data-swap-shop
+  role="img"
+  aria-label={label}
+>
+  <div class="swap-fascia" aria-hidden="true">
+    <div class="swap-slot" data-swap-slot>
+      {plate === "button" && (
+        <button
+          type="button"
+          class="swap-plate"
+          data-swap-plate
+          aria-label="The blank nameplate. Activate to press it onto the other shopfront."
+        >
+          <span class="swap-plate-face" aria-hidden="true"></span>
+        </button>
+      )}
+      {plate === "seated" && (
+        <div class="swap-plate swap-plate--seated" aria-hidden="true">
+          <span class="swap-plate-face"></span>
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="swap-window" aria-hidden="true">
+    {
+      details && (
+        <svg
+          class="swap-detail swap-detail-hill"
+          data-swap-detail
+          viewBox="0 0 100 40"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 34 L20 14 L34 26 L52 8 L68 24 L82 16 L100 32"
+            fill="none"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+          />
+        </svg>
+      )
+    }
+  </div>
+  <div class="swap-door" aria-hidden="true">
+    {details && <span class="swap-detail swap-detail-number" data-swap-detail />}
+    {details && <span class="swap-detail swap-detail-step" data-swap-detail />}
+  </div>
+</div>

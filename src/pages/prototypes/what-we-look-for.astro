@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../../site/components/ArrowIcon.astro";
+import FaultWalk from "../../site/components/fault-walk/FaultWalk.astro";
+import SwapTest from "../../site/components/fault-walk/SwapTest.astro";
+import { whatWeLookFor } from "../../site/data/fault-walks";
+import "../../site/styles/what-we-look-for.css";
+---
+
+<BaseLayout
+  title="What we look for · fault-walk study — Mourne Made"
+  description="Prototype of the ten fault themes as walkable wireframes — the page briefed in research/what-we-look-for-brief.md."
+  robots="noindex, nofollow"
+>
+  <div class="wwlf">
+    <section class="wwlf-hero">
+      <div class="shell">
+        <p class="eyebrow">Mourne Made · prototype study · August 2026</p>
+        <h1>Ten things we look for before we redesign anything.</h1>
+        <p class="lede">
+          What twenty concepts taught us to check first — and what each one costs the person
+          standing outside your shop.
+        </p>
+        <p class="wwlf-invented">
+          Every demonstration on this page is invented: grey blocks, no business names, no real
+          site's fault. The faults we record about real businesses go to the business concerned,
+          one to one — never onto a public page. The numbers here are each mock's own; the
+          measured figures stay with the named case studies.
+        </p>
+      </div>
+    </section>
+
+    <div class="wwlf-themes">
+      <div class="shell">
+        {
+          whatWeLookFor.map((entry) => {
+            switch (entry.kind) {
+              case "walk":
+                return <FaultWalk walk={entry} />;
+              case "swap":
+                return <SwapTest theme={entry} />;
+              default: {
+                const neverEntry: never = entry;
+                throw new Error(`Unknown entry kind: ${JSON.stringify(neverEntry)}`);
+              }
+            }
+          })
+        }
+      </div>
+    </div>
+
+    <section class="wwlf-purpose">
+      <div class="shell">
+        <p class="eyebrow">What this is for</p>
+        <h2>This is the diagnostic, not a quiz.</h2>
+        <p>
+          These ten are step 5 of the studio's research method — the check run on every
+          business's public surface before anything is redesigned. The method lives in the
+          studio repo at <code>docs/RESEARCH_METHOD.md</code>; the themes and their scenes in
+          <code>research/film/studio-recurring-themes.md</code>.
+          {/* The public page should link the method doc once it has a public URL. */}
+        </p>
+        <p>
+          Two things this page never does. It never turns the tally into a claim about websites
+          in general — the counts count our own case-study notes, not the world. And it never
+          grades you: the taps you rack up above are yours, on invented mocks, and nothing here
+          scores your site.
+        </p>
+      </div>
+    </section>
+
+    <section class="wwlf-close">
+      <div class="shell">
+        <p class="eyebrow">Your turn</p>
+        <h2>Send a link. Get the same walk done on your own site.</h2>
+        <p>
+          We record what stops a stranger, fix the worst of it as a free before-and-after, and
+          show you both. No obligation.
+        </p>
+        <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  import { mountFaultWalks } from "../../site/scripts/fault-walk";
+
+  mountFaultWalks();
+</script>

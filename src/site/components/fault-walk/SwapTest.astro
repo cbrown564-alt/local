@@ -1,0 +1,98 @@
+---
+import type { SwapTestTheme } from "../../data/fault-walks";
+import SwapShop from "./SwapShop.astro";
+
+interface Props {
+  theme: SwapTestTheme;
+}
+
+const { theme } = Astro.props;
+---
+
+<section class="wwlf-theme wwlf-theme--swap" id={theme.id} data-theme={theme.id}>
+  <header class="wwlf-theme-head">
+    <p class="wwlf-theme-kicker">
+      <span class="wwlf-theme-id">{theme.id}</span>
+      <span class="wwlf-theme-shape">{theme.shape}</span>
+    </p>
+    <h3 class="wwlf-theme-name">{theme.theme}</h3>
+    <p class="wwlf-theme-message">{theme.message}</p>
+    <p class="wwlf-theme-decision">{theme.decision}</p>
+  </header>
+
+  <div class="swap" data-swap-test data-phase="start">
+    <p class="swap-errand">
+      <strong>The errand:</strong> tell these two apart. Then drag the blank nameplate from one
+      to the other.
+    </p>
+
+    <div class="swap-static" data-swap-static>
+      <div class="fw-plates">
+        <figure class="fw-plate">
+          <div class="swap-pair">
+            <SwapShop plate="none" label="A wireframe shopfront with an empty nameplate slot" />
+            <SwapShop plate="seated" label="An identical wireframe shopfront, nameplate seated" />
+          </div>
+          <figcaption>
+            <strong>The fault.</strong> The plate seats perfectly. Nothing else needs changing.
+          </figcaption>
+        </figure>
+        <figure class="fw-plate">
+          <div class="swap-pair swap-pair--refusing">
+            <SwapShop plate="none" label="A wireframe shopfront with an empty nameplate slot" />
+            <SwapShop
+              plate="none"
+              details
+              label="A wireframe shopfront with a hill silhouette etched in the window, a worn doorstep and a brass door number"
+            />
+            <div class="swap-plate swap-plate--hovering" aria-hidden="true">
+              <span class="swap-plate-face"></span>
+            </div>
+          </div>
+          <figcaption>
+            <strong>The fix.</strong> Three true details later, the plate won't seat.
+          </figcaption>
+        </figure>
+      </div>
+      <p class="fw-static-arc">
+        Swap the name and nothing breaks — that is the fault. <strong>Fixed:</strong> three true
+        details, and the plate will not seat. You aren't generic; the website was.
+      </p>
+      <p class="fw-static-hint">
+        The draggable version needs JavaScript with motion allowed; these two plates are the
+        same two states.
+      </p>
+    </div>
+
+    <div class="swap-live" data-swap-live hidden>
+      <div class="swap-stage">
+        <SwapShop plate="button" label="The first of two identical wireframe shopfronts" />
+        <SwapShop
+          plate="none"
+          details
+          label="The second of two identical wireframe shopfronts"
+        />
+      </div>
+      <div class="swap-rail">
+        <p class="swap-outcome" data-swap-outcome></p>
+        <button type="button" class="swap-details" data-swap-details hidden>
+          Now give the right-hand shop three true details
+        </button>
+      </div>
+      <p class="swap-sr" data-swap-sr aria-live="polite"></p>
+    </div>
+  </div>
+
+  <p class="wwlf-fixed">
+    <span class="wwlf-fixed-lead">We fixed this here —</span>
+    {
+      theme.links.map((link, index) => (
+        <>
+          <a href={`/transformations/${link.slug}/`}>{link.name}</a>
+          {index < theme.links.length - 1 && <span aria-hidden="true"> · </span>}
+        </>
+      ))
+    }
+    <span class="wwlf-fixed-label">independent concepts</span>
+  </p>
+</section>

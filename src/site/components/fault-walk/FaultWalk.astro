@@ -1,0 +1,131 @@
+---
+import type { FaultWalk } from "../../data/fault-walks";
+import FaultPanelView from "./FaultPanelView.astro";
+
+interface Props {
+  walk: FaultWalk;
+}
+
+const { walk } = Astro.props;
+
+const panelById = (id: string) => {
+  const panel = [...walk.before, ...walk.after].find((entry) => entry.id === id);
+  if (!panel) throw new Error(`${walk.id}: unknown poster panel "${id}"`);
+  return panel;
+};
+
+const posterBefore = panelById(walk.posters.before);
+const posterAfter = panelById(walk.posters.after);
+
+/* The graph blob is the page's own record of the walk: the client script
+   reads it for the stop config, and tools/test/test-what-we-look-for.mjs
+   parses it from the built HTML to pin that the fault stays unwalkable. */
+const graph = {
+  id: walk.id,
+  minBeforeTaps: walk.minBeforeTaps,
+  afterTaps: walk.afterTaps,
+  goalIsHidden: walk.goalIsHidden ?? false,
+  stop: walk.stop,
+  fixedNote: walk.fixedNote,
+  before: walk.before,
+  after: walk.after,
+};
+---
+
+<section class="wwlf-theme" id={walk.id} data-theme={walk.id}>
+  <header class="wwlf-theme-head">
+    <p class="wwlf-theme-kicker">
+      <span class="wwlf-theme-id">{walk.id}</span>
+      <span class="wwlf-theme-shape">{walk.shape}</span>
+    </p>
+    <h3 class="wwlf-theme-name">{walk.theme}</h3>
+    <p class="wwlf-theme-message">{walk.message}</p>
+    <p class="wwlf-theme-decision">{walk.decision}</p>
+  </header>
+
+  <div class="fw" data-fault-walk>
+    <p class="fw-errand"><strong>Your errand:</strong> {walk.errand.toLowerCase()}.</p>
+
+    <div class="fw-static" data-fw-static>
+      <div class="fw-plates">
+        <figure class="fw-plate">
+          <div class="fw-frame fw-frame--plate">
+            <FaultPanelView panel={posterBefore} mode="before" interactive={false} />
+          </div>
+          <figcaption><strong>The fault.</strong> {walk.beforeCost}.</figcaption>
+        </figure>
+        <figure class="fw-plate">
+          <div class="fw-frame fw-frame--plate">
+            <FaultPanelView panel={posterAfter} mode="after" interactive={false} />
+          </div>
+          <figcaption><strong>The fix.</strong> {walk.afterCost}.</figcaption>
+        </figure>
+      </div>
+      <p class="fw-static-arc">
+        {walk.stop.note} <strong>Fixed:</strong> {walk.fixedNote}
+      </p>
+      <p class="fw-static-hint">
+        The walkable version needs JavaScript with motion allowed; these two plates are the
+        same states, with the taps counted.
+      </p>
+    </div>
+
+    <div class="fw-live" data-fw-live hidden>
+      <div class="fw-row">
+        <div class="fw-frame" data-fw-frame>
+          {walk.before.map((panel, index) => (
+            <FaultPanelView
+              panel={panel}
+              mode="before"
+              interactive
+              hidden={index !== 0}
+            />
+          ))}
+          {/* After panels stay hidden until the "Fix it" toggle. */}
+          {walk.after.map((panel) => (
+            <FaultPanelView panel={panel} mode="after" interactive hidden={true} />
+          ))}
+        </div>
+        <div class="fw-rail">
+          <dl class="fw-counts" aria-hidden="true">
+            <div>
+              <dt>taps</dt>
+              <dd data-fw-taps>0</dd>
+            </div>
+            <div>
+              <dt>screens</dt>
+              <dd data-fw-screens>0</dd>
+            </div>
+          </dl>
+          <p class="fw-note" data-fw-note aria-hidden="true"></p>
+          <p class="fw-outcome" data-fw-outcome></p>
+          <p class="fw-actuals" data-fw-actuals aria-hidden="true"></p>
+          <button type="button" class="fw-fix" data-fw-fix>Fix it</button>
+        </div>
+      </div>
+      <p class="fw-sr" data-fw-sr aria-live="polite"></p>
+    </div>
+
+    <script
+      type="application/json"
+      data-fault-graph
+      is:inline
+      set:html={JSON.stringify(graph)}
+    />
+  </div>
+
+  {/* The clip slots in beside the interactive here, still-first and muted,
+      once research/film/clips/studio/ has the scene. */}
+  <p class="wwlf-fixed">
+    <span class="wwlf-fixed-lead">We fixed this here —</span>
+    {
+      walk.links.map((link, index) => (
+        <>
+          <a href={`/transformations/${link.slug}/`}>{link.name}</a>
+          {index < walk.links.length - 1 && <span aria-hidden="true"> · </span>}
+        </>
+      ))
+    }
+    <span class="wwlf-fixed-label">independent concepts</span>
+  </p>
+</section>

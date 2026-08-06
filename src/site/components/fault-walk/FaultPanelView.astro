@@ -1,0 +1,62 @@
+---
+import type { FaultBlock, FaultPanel } from "../../data/fault-walks";
+
+interface Props {
+  panel: FaultPanel;
+  /** "before" panels form the fault walk, "after" panels the fixed walk. */
+  mode: "before" | "after";
+  /** Interactive panels carry tappable blocks; static plates are inert. */
+  interactive: boolean;
+  hidden?: boolean;
+}
+
+const { panel, mode, interactive, hidden = false } = Astro.props;
+
+const styleFor = (block: FaultBlock) =>
+  `left:${block.x}%;top:${block.y}%;width:${block.w}%;height:${block.h}%;`;
+
+const classFor = (block: FaultBlock) =>
+  [
+    "fwb",
+    `fwb-${block.kind}`,
+    block.dim ? "is-dim" : null,
+    block.goal ? "is-goal" : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+const isTappable = (block: FaultBlock) =>
+  block.tap !== undefined || block.goal === true || block.note !== undefined;
+---
+
+<div
+  class:list={["fwp", { "fwp--static": !interactive }]}
+  data-panel={panel.id}
+  data-mode={mode}
+  role={interactive ? "group" : "img"}
+  aria-label={panel.caption}
+  tabindex={interactive ? "-1" : undefined}
+  hidden={hidden}
+>
+  {
+    panel.blocks.map((block) =>
+      interactive && isTappable(block) ? (
+        <button
+          type="button"
+          class={classFor(block)}
+          style={styleFor(block)}
+          data-tap={block.tap}
+          data-goal={block.goal ? "true" : undefined}
+          data-note={block.note}
+          aria-label={block.label ?? block.note ?? "wireframe block"}
+        >
+          {block.label && <span class="fwb-label">{block.label}</span>}
+        </button>
+      ) : (
+        <div class={classFor(block)} style={styleFor(block)} aria-hidden="true">
+          {block.label && <span class="fwb-label">{block.label}</span>}
+        </div>
+      ),
+    )
+  }
+</div>
