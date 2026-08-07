@@ -93,3 +93,52 @@ Restated once here; each brief carries the ones it needs.
   public URL.
 - **Reduced motion gets a designed settled state**, not an off-switch. The
   static plate of each page is designed first, and it is also the print story.
+
+## Which grammar describes a fault (added 7 August 2026)
+
+This file arbitrates between the three approaches, and until now it has said
+nothing about motion — which was fine while the only motion was concept loops
+about named businesses, and stopped being fine when
+[`film/studio-recurring-themes.md`](film/studio-recurring-themes.md) proposed
+staging the *same ten faults* as clay-and-weather scenes.
+
+So there are two visual languages for one taxonomy:
+
+| | Grammar | Where it lives | What it is good at |
+| --- | --- | --- | --- |
+| **Screen** | Grey wireframe, drawn in CSS and SVG | All three pages — the walk's mocks, the plates that reuse "the same grey grammar", the assembly beats sharing the walk's data module | Being *walked*. A fault you can tap into is a fault you have felt happen to you, counted in your own taps |
+| **Post** | Object theatre — clay, weather, boots, an umbrella, a bell | The postcard front, at the departure beat | Being *looked at* once, with no context and no interaction available, and still landing |
+
+**The split is deliberate, and this is the rule: wireframe for the diagnosis on
+screen, object theatre for the invitation in the post.**
+
+The reasoning, so it is not relitigated:
+
+- **The pages already win on screen.** An interactive errand beats a depicted
+  loss on every axis the studio cares about — it is the visitor's own
+  experience rather than an assertion about someone's, it is argued in the
+  `TransformationErrand` currency the case studies already use, it degrades to
+  the designed settled state the rules above require anyway, and it carries no
+  generated-media disclosure. Putting a clip on these pages would swap a
+  measurement for an illustration.
+- **A postcard cannot be walked.** It gets one glance, face-up on a mat, from
+  someone who did not ask for it. That is a poster problem, and a grey
+  wireframe is not a poster. The departure beat is the only device in either
+  grammar that carries loss with no interaction and no caption.
+- **Object theatre is the honest choice for a stranger.** A clip staged with
+  objects names no business, invents no owner, and cannot be mistaken for a
+  capture of the recipient's own site — which a realistic wireframe of "a
+  counter business" arguably could, arriving in that counter business's post.
+
+**What follows from it.** No generated clip goes on any of the three pages —
+A, B or C, under whatever names they publish — and the rule that wireframes and
+plates are drawn rather than generated is now a rule about the *whole surface*,
+not only about how the drawings are made. And a scene that only works as a
+walked interaction is not a scene; it is a page beat that has wandered into the
+film backlog, and belongs back on the page.
+
+**Left open deliberately.** Whether the postcard's departure still ever earns a
+place on a public page — as the poster for an outreach explainer, say — is not
+decided here. If it is ever proposed, it arrives with the full weight: a
+provenance entry, a visible disclosure, and the argument for why an
+illustration is doing work the errand cannot.
