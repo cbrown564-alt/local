@@ -10,9 +10,12 @@
  * else, the differences that remain are exactly the ones the business forces.
  * The screens are invented — grey blocks, mechanism words only, no business's
  * name, palette or typeface (a plate with a finish becomes the template
- * gallery this page exists not to be). The wrong-register control from the
- * brief is deliberately absent: the page must be complete without it, and it
- * has not survived a prototype.
+ * gallery this page exists not to be). The one exception is the theatre
+ * beat: that block carries a drawn scene (`art`) in the same line hand —
+ * the windows at dusk, the steaming dish, the melt, the safety net, the
+ * open road — because staging is the one thing a wireframe can only name.
+ * The wrong-register control from the brief is deliberately absent: the page
+ * must be complete without it, and it has not survived a prototype.
  *
  * Shape labels reuse the fault walk's exact wording, so the two pages teach
  * one vocabulary. Worked-example links go only to public transformations,
@@ -126,7 +129,7 @@ export const fiveShapes: ShapePlate[] = [
       caption:
         "Wireframe of a place's first screen: the windows lit at dusk above the business's name, fields for the dates and the party, one button to ask about a stay, and the season handed to the source.",
       blocks: [
-        { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the windows at dusk", goal: true },
+        { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the windows at dusk", goal: true, art: "dusk" },
         band(10, 38, 54, 5),
         band(10, 45, 70, 4),
         { kind: "field", x: 10, y: 55, w: 38, h: 8, label: "the dates" },
@@ -175,7 +178,7 @@ export const fiveShapes: ShapePlate[] = [
         "Wireframe of a counter business's first screen: open-now hours at the top, one steaming dish, the business's name, the week in rows, a walk-in line, and today's board handed to the source. No button anywhere.",
       blocks: [
         { kind: "status", x: 10, y: 8, w: 72, h: 6, label: "open now · until 3 today" },
-        { kind: "media", x: 10, y: 20, w: 80, h: 24, label: "steaming", goal: true },
+        { kind: "media", x: 10, y: 20, w: 80, h: 24, label: "steaming", goal: true, art: "steam" },
         band(10, 48, 52, 5),
         { kind: "row", x: 10, y: 58, w: 80, h: 7, label: "the week" },
         { kind: "row", x: 10, y: 68, w: 80, h: 7 },
@@ -223,7 +226,7 @@ export const fiveShapes: ShapePlate[] = [
       caption:
         "Wireframe of a product's first screen: the product at its moment above the product's name, one button to find it near you, the stockists, and market days handed to the source.",
       blocks: [
-        { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the melt", goal: true },
+        { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the melt", goal: true, art: "melt" },
         band(10, 38, 52, 5),
         band(10, 45, 68, 4),
         { kind: "button", x: 10, y: 56, w: 58, h: 8, label: "find it near you" },
@@ -272,7 +275,7 @@ export const fiveShapes: ShapePlate[] = [
         { kind: "status", x: 10, y: 8, w: 74, h: 6, label: "seeing patients today" },
         band(10, 20, 56, 5),
         band(10, 27, 72, 4),
-        { kind: "button", x: 10, y: 38, w: 80, h: 9, label: "the emergency route", goal: true },
+        { kind: "button", x: 10, y: 38, w: 80, h: 9, label: "the emergency route", goal: true, art: "net" },
         { kind: "field", x: 10, y: 54, w: 38, h: 8, label: "who needs seen" },
         { kind: "field", x: 52, y: 54, w: 38, h: 8, label: "when" },
         { kind: "button", x: 10, y: 68, w: 80, h: 9, label: "ask for a slot" },
@@ -317,7 +320,7 @@ export const fiveShapes: ShapePlate[] = [
         "Wireframe of a trade's first screen: the record as the first line, the open road beneath it, the shop's name, fields for the job and the week, one button to book the bench, and the queue handed to the counter.",
       blocks: [
         { kind: "status", x: 10, y: 8, w: 88, h: 6, label: "the years · the record" },
-        { kind: "media", x: 10, y: 20, w: 80, h: 22, label: "the open road", goal: true },
+        { kind: "media", x: 10, y: 20, w: 80, h: 22, label: "the open road", goal: true, art: "road" },
         band(10, 46, 54, 5),
         { kind: "field", x: 10, y: 56, w: 38, h: 8, label: "the job" },
         { kind: "field", x: 52, y: 56, w: 38, h: 8, label: "the week" },

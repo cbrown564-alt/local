@@ -16,6 +16,160 @@
   --fvs-peek: 2.5rem;
 }
 
+/* --- the hero art: the thesis drawn — five miniatures of the plates below,
+   one fan, same grey grammar, the blue theatre beat in a different place on
+   every frame. Decorative (aria-hidden); the h1 and lede carry the words. */
+
+.fvs-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* Grid items default to min-width auto — without this the fan's min-content
+   would push the whole hero wider than the shell and clip the lede. */
+.fvs-hero-copy,
+.fsh {
+  min-width: 0;
+}
+
+.fsh {
+  margin: 0;
+}
+
+.fsh-fan {
+  display: flex;
+  align-items: flex-start;
+}
+
+.fsh-plate {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-left: -7%;
+}
+
+.fsh-plate:first-child {
+  margin-left: 0;
+}
+
+/* The fan: plates trade heights in pairs, tilting a degree or two off square
+   — a spread from the pattern book, not a product grid. Later plates sit on
+   top, so the eye walks place → trade left to right. */
+.fsh-plate:nth-child(odd) {
+  transform: translateY(7%) rotate(-2deg);
+}
+
+.fsh-plate:nth-child(even) {
+  transform: rotate(1.6deg);
+}
+
+.fsh-plate:nth-child(3) {
+  transform: translateY(3%) rotate(-0.8deg);
+}
+
+.fsh-frame.fw-frame--plate {
+  width: 100%;
+  max-width: none;
+  box-shadow: 5px 5px 0 rgba(19, 32, 41, 0.14);
+}
+
+/* At miniature size the block labels would be specks — the blocks alone carry
+   the drawing, and the plates below keep their labels at full size. */
+.fsh .fwb-label {
+  display: none;
+}
+
+/* One key line for the whole fan, in plate order — a pill per frame collides
+   at fan pitch; a single line wraps instead. The margin clears the staggered
+   plates' translateY, which the fan's own box doesn't include. */
+.fsh-key {
+  display: block;
+  margin-top: 2rem;
+  color: var(--wwlf-deep);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* --- the theatre scenes: one drawn moment per plate -------------------------
+   The goal block stops being a hatched placeholder and becomes a small line
+   drawing (components/five-shapes/TheatreArt.astro). Same ink stroke as the
+   grammar, paper ground, and the blue spent on the single staged detail, so
+   the one-colour-beat rule survives the drawing. */
+
+.fwb-media.has-art {
+  background-color: var(--wwlf-paper);
+  background-image: none;
+}
+
+.fwb-media.has-art > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Care's theatre is the solid button — the net glyph rides beside the words,
+   which stay: the mechanism word is the block's job. */
+.fwb-button.has-art {
+  gap: 5%;
+}
+
+.fwb-button.has-art > svg {
+  flex: none;
+  width: auto;
+  height: 60%;
+}
+
+/* The drawn hand: one ink weight, round caps, blue for the staged detail,
+   white on care's solid button. Strokes scale with the drawing, so the hero
+   miniatures get the same hand at a smaller size. */
+.ta-line {
+  fill: none;
+  stroke: var(--wwlf-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ta-blue {
+  fill: var(--blue);
+  stroke: none;
+}
+
+/* Paper-filled shapes sit in front of background lines (the house over the
+   hill) without the line showing through. */
+.ta-paper {
+  fill: var(--wwlf-paper);
+  stroke: none;
+}
+
+.ta-blue-line {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+.ta-white {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 960px) {
+  .fvs-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+}
+
 /* --- the strip: five shapes, one question each — also the reel pager ------ */
 
 .fvs-strip {

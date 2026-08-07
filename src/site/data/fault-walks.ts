@@ -59,6 +59,10 @@ export interface FaultBlock {
   note?: string;
   /** Greyed-out content behind a dialog. */
   dim?: boolean;
+  /** Drawn line art for the block, rendered by FaultPanelView through
+   *  five-shapes/TheatreArt.astro — used only by the /five-shapes/ plates,
+   *  where the theatre beat is a drawn scene, not a hatched placeholder. */
+  art?: string;
 }
 
 export interface FaultPanel {

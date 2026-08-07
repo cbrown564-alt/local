@@ -1,0 +1,32 @@
+---
+/**
+ * The /five-shapes/ hero illustration — the page's thesis drawn, not said.
+ * Five miniatures of the plates below, fanned in the fault walk's grey
+ * grammar: same frame, same blocks, and the one blue theatre beat landing
+ * in a different place on every shape. "There is no standard website" in
+ * one glance, before a word is read.
+ *
+ * Purely decorative: the h1 and lede already carry every word of it, so the
+ * whole figure is aria-hidden. Drawn in DOM and CSS like the plates
+ * themselves — the brief forbids generated imagery anywhere on this page.
+ */
+import { fiveShapes } from "../../data/five-shapes";
+import FaultPanelView from "../fault-walk/FaultPanelView.astro";
+---
+
+<figure class="fsh" aria-hidden="true">
+  <div class="fsh-fan">
+    {
+      fiveShapes.map((plate, index) => (
+        <div class="fsh-plate" style={`--fsh-i:${index};`}>
+          <div class="fw-frame fw-frame--plate fsh-frame">
+            <FaultPanelView panel={plate.screen} mode="after" interactive={false} />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <figcaption class="fsh-key">
+    {fiveShapes.map((plate) => plate.shape).join(" · ")}
+  </figcaption>
+</figure>

@@ -1,5 +1,6 @@
 ---
 import type { FaultBlock, FaultPanel } from "../../data/fault-walks";
+import TheatreArt from "../five-shapes/TheatreArt.astro";
 
 interface Props {
   panel: FaultPanel;
@@ -21,12 +22,18 @@ const classFor = (block: FaultBlock) =>
     `fwb-${block.kind}`,
     block.dim ? "is-dim" : null,
     block.goal ? "is-goal" : null,
+    block.art ? "has-art" : null,
   ]
     .filter(Boolean)
     .join(" ");
 
 const isTappable = (block: FaultBlock) =>
   block.tap !== undefined || block.goal === true || block.note !== undefined;
+
+/* A drawn scene replaces the placeholder's words on media blocks; on a
+   button the words stay — the mechanism word is the block's job. */
+const showLabel = (block: FaultBlock) =>
+  block.label !== undefined && (block.art === undefined || block.kind === "button");
 ---
 
 <div
@@ -50,11 +57,13 @@ const isTappable = (block: FaultBlock) =>
           data-note={block.note}
           aria-label={block.label ?? block.note ?? "wireframe block"}
         >
-          {block.label && <span class="fwb-label">{block.label}</span>}
+          {block.art && <TheatreArt name={block.art} />}
+          {showLabel(block) && <span class="fwb-label">{block.label}</span>}
         </button>
       ) : (
         <div class={classFor(block)} style={styleFor(block)} aria-hidden="true">
-          {block.label && <span class="fwb-label">{block.label}</span>}
+          {block.art && <TheatreArt name={block.art} />}
+          {showLabel(block) && <span class="fwb-label">{block.label}</span>}
         </div>
       ),
     )
