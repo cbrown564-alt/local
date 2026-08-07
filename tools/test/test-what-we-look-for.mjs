@@ -16,7 +16,7 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
+import { projectRoot } from "../lib/public-slugs.mjs";
 
 const pagePath = path.join(projectRoot, "dist", "what-we-look-for", "index.html");
 
@@ -206,19 +206,22 @@ for (const cost of ["no way through", "1 tap", "2 screens down"]) {
   check(`the static plates no longer state "${cost}"`, text.includes(cost));
 }
 
-// "We fixed this here" links point only at public transformation pages.
-const publicSlugs = new Set(readPublicTransformationSlugs());
+// Named businesses stay off this page — faults go one-to-one, never as a
+// public "we fixed this here" trail from a mock to a case study.
 const linkedSlugs = [...html.matchAll(/href="\/transformations\/([^/"]+)\/"/g)].map(
   (match) => match[1],
 );
-check("no case-study links found", linkedSlugs.length > 0);
-for (const slug of linkedSlugs) {
-  check(`a "fixed here" link points at non-public transformation "${slug}"`, publicSlugs.has(slug));
-}
-const conceptLabels = text.match(/independent concepts/gi) ?? [];
 check(
-  `the independent-concept label should travel with every theme (found ${conceptLabels.length} of 5)`,
-  conceptLabels.length === 5,
+  `named case-study links should not appear on this page (found ${linkedSlugs.join(", ") || "none"})`,
+  linkedSlugs.length === 0,
+);
+check(
+  'the "we fixed this here" trail should be gone',
+  !/we fixed this here/i.test(text),
+);
+check(
+  "the independent-concept label should not appear on this page",
+  !/independent concepts/i.test(text),
 );
 
 if (failures.length > 0) {

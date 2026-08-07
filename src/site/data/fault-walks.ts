@@ -83,12 +83,6 @@ export interface FaultWalkStop {
   note: string;
 }
 
-export interface FaultLink {
-  /** A public transformation slug — the business named, the audit dated. */
-  slug: string;
-  name: string;
-}
-
 export interface FaultWalk {
   kind: "walk";
   id: string;
@@ -118,7 +112,6 @@ export interface FaultWalk {
   afterTaps: number;
   /** True when the fault is that the goal is the smallest target on screen. */
   goalIsHidden?: boolean;
-  links: FaultLink[];
 }
 
 export interface SwapTestTheme {
@@ -130,7 +123,6 @@ export interface SwapTestTheme {
   /** The self-check the owner takes away — one question per fault. */
   check: string;
   decision: string;
-  links: FaultLink[];
 }
 
 export type WhatWeLookForEntry = FaultWalk | SwapTestTheme;
@@ -147,7 +139,7 @@ const band = (
  *  The studio taxonomy still has ten; this page walks the five that earn a
  *  public demonstration. */
 export const whatWeLookFor: WhatWeLookForEntry[] = [
-{
+  {
     kind: "walk",
     id: "t1",
     theme: "The login at the door",
@@ -246,13 +238,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: null,
     afterTaps: 1,
-    links: [
-      { slug: "cupla", name: "Cúpla" },
-      { slug: "scopers", name: "Scopers" },
-      { slug: "tool-centre", name: "The Tool Centre" },
-    ],
   },
-{
+  {
     kind: "walk",
     id: "t4",
     theme: "Nobody answers “are you open?”",
@@ -354,13 +341,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: 3,
     afterTaps: 1,
-    links: [
-      { slug: "dundrum-inn", name: "The Dundrum Inn" },
-      { slug: "bucks-head", name: "The Bucks Head" },
-      { slug: "donard-veterinary", name: "Donard Veterinary Clinic" },
-    ],
   },
-{
+  {
     kind: "walk",
     id: "t5",
     theme: "The bell with no clapper",
@@ -434,13 +416,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: null,
     afterTaps: 1,
-    links: [
-      { slug: "hugh-mccanns", name: "Hugh McCann's" },
-      { slug: "donard-veterinary", name: "Donard Veterinary Clinic" },
-      { slug: "mourne-cycles", name: "Mourne Cycles" },
-    ],
   },
-{
+  {
     kind: "walk",
     id: "t7",
     theme: "The best thing about you is in the footer",
@@ -530,13 +507,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: 3,
     afterTaps: 1,
-    links: [
-      { slug: "kelly-mcevoy-brown", name: "Kelly, McEvoy & Brown" },
-      { slug: "kent-amusements", name: "Kent Amusements" },
-      { slug: "hugh-mccanns", name: "Hugh McCann's" },
-    ],
   },
-{
+  {
     kind: "swap",
     id: "t10",
     theme: "The swap test",
@@ -546,9 +518,5 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     check: "Swap your name for a competitor's — would anything else need to change?",
     decision:
       "A clean template with the name dropped in looked like a safe, professional choice. It looked like everyone else's, too.",
-    links: [
-      { slug: "kent-amusements", name: "Kent Amusements" },
-      { slug: "mourne-cycles", name: "Mourne Cycles" },
-    ],
   },
 ];

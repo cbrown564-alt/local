@@ -139,11 +139,12 @@ fiction, and it is the single most likely honesty failure on this page.
 
 **The taxonomy tallies do not appear as prevalence.** "Found on six of twenty
 concepts" counts what the studio wrote up in its own case-study notes, three per
-concept because the template takes three. On the page, a theme may say *the one
-we hit most often* and link to the concepts where it was fixed. It may never say
+concept because the template takes three. On the page, a theme may never say
 *most small business websites have three of these* — that arithmetic belongs to
 the page template, not the world. Same prohibition as
-`docs/RESEARCH_METHOD.md` → "What the counts may not be read as saying".
+`docs/RESEARCH_METHOD.md` → "What the counts may not be read as saying". Named
+businesses stay off this page entirely; a mock next to a case-study link would
+point the finger.
 
 **No score.** The page never totals anything about the visitor's own site, and
 the request form does not grade them (see below).
@@ -162,8 +163,11 @@ the request form does not grade them (see below).
                                  the reasonable decision behind it (one line)
                                  → walk the errand  (the interactive)
                                  → the clip         (still-first, muted)
-                                 → "we fixed this here" (1–3 concept links,
-                                    independent-concept label intact)
+
+                    No "we fixed this here" links. Naming a business next to a
+                    fault on a public page points the finger; recorded faults
+                    stay one-to-one (postcard / verification), and named work
+                    stays on the transformation pages.
 
 3  What this is     The diagnostic is step 5 of the research method. Link the
    for              method doc. This is the paragraph that makes the page read
