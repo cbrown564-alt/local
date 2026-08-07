@@ -12,16 +12,16 @@ const walks = whatWeLookFor.filter((entry): entry is FaultWalkData => entry.kind
 const swap = whatWeLookFor.find((entry): entry is SwapTestTheme => entry.kind === "swap");
 if (!swap) throw new Error("what-we-look-for: the swap test is missing from the reel");
 
-/* Page order is 1–10. Internal theme ids (t1, t4…) stay in data and anchors
+/* Page order is 1–5. Internal theme ids (t1, t4…) stay in data and anchors
    only — never as guest-facing labels. The strip derives from the reel
    itself: a group starts wherever the parts map has an entry, and every
-   number is the walk's own position — nothing is hardcoded to today's ten. */
+   number is the walk's own position — nothing is hardcoded to today's five. */
 type StripItem = { href: string; task: string; n: number; verdict: string };
 type StripGroup = { tag: string; label: string; start: number; items: StripItem[] };
 
-/* The ten run as three movements: the access faults, the identity faults,
+/* The five run as three movements: the access faults, the identity fault,
    then the swap test as the closer. The bands are the pacing — they break a
-   long scroll into an argument with a beginning, a turn and an ending. */
+   scroll into an argument with a beginning, a turn and an ending. */
 const parts: Record<
   string,
   { tag: string; stripLabel: string; title: string; blurb: string }
@@ -29,15 +29,15 @@ const parts: Record<
   t1: {
     tag: "Part one",
     stripLabel: "Something simple gets hard",
-    title: "Six ordinary jobs, stopped or made hard.",
+    title: "Three ordinary jobs, stopped or made hard.",
     blurb:
       "Each one below started as a reasonable decision. Try it yourself and feel where it breaks.",
   },
-  t3: {
+  t7: {
     tag: "Part two",
     stripLabel: "It could be anyone's",
-    title: "Three working sites that stopped sounding like anyone.",
-    blurb: "Nothing here is broken. That is what makes these three harder to spot.",
+    title: "A working site that stopped sounding like anyone.",
+    blurb: "Nothing here is broken. That is what makes this one harder to spot.",
   },
 };
 
@@ -81,16 +81,16 @@ strip.push({
 
 <BaseLayout
   title="What we look for — Mourne Made"
-  description="Ten things we look for before we redesign anything — walked as made-up wireframes, so you can feel what each one costs a stranger."
+  description="Five things we look for before we redesign anything — walked as made-up wireframes, so you can feel what each one costs a stranger."
   ogImage={ogImages.studio}
   ogImageAlt="Mourne Made — local websites for Dundrum and Newcastle"
 >
   <div class="wwlf">
     <section class="wwlf-hero">
       <div class="shell">
-        <p class="wwlf-hero-ten" aria-hidden="true">10</p>
+        <p class="wwlf-hero-count" aria-hidden="true">5</p>
         <p class="eyebrow">Mourne Made</p>
-        <h1>Ten things we look for before we redesign anything.</h1>
+        <h1>Five things we look for before we redesign anything.</h1>
         <p class="lede">
           What twenty concepts taught us to check first — and what each one costs someone
           standing outside your door.
@@ -108,9 +108,9 @@ strip.push({
       </div>
     </section>
 
-    <nav class="wwlf-index" aria-label="Ten things a stranger might try">
+    <nav class="wwlf-index" aria-label="Five things a stranger might try">
       <div class="shell">
-        <h2>Ten things a stranger might try.</h2>
+        <h2>Five things a stranger might try.</h2>
         <div class="wwlf-strip">
           {
             strip.map((group) => (
@@ -180,14 +180,14 @@ strip.push({
             Not a job to finish — a quick test on two made-up shopfronts.
           </p>
         </header>
-        <SwapTest theme={swap} n={10} />
+        <SwapTest theme={swap} n={walks.length + 1} />
       </div>
     </section>
 
     <section class="wwlf-checklist">
       <div class="shell">
         <p class="eyebrow">Take it with you</p>
-        <h2>Run the ten on your own site.</h2>
+        <h2>Run the five on your own site.</h2>
         <p class="wwlf-checklist-lede">
           One question per check, in the same order as the walks above. Any "no" is a fault a
           stranger is already paying for.
@@ -220,7 +220,7 @@ strip.push({
         <p class="eyebrow">What this is for</p>
         <h2>A checklist we run before we redesign anything — not a quiz about you.</h2>
         <p>
-          These ten are step 5 of the studio's research method: the check on a business's public
+          These five are step 5 of the studio's research method: the check on a business's public
           site before anything is redesigned. The mocks above stay nameless; the measurements
           don't — <a href="/transformations/">the case studies</a> name the business and date
           the audit.

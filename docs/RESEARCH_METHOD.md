@@ -327,8 +327,8 @@ template. Two things therefore never get said, on any surface:
 
 Downstream users of this pass: `research/outreach-postcards.md` (which theme
 gets sent, and the evidence line it quotes) and
-`research/what-we-look-for-brief.md` (the public page, which uses invented
-wireframes and never a real business's fault).
+`research/what-we-look-for-brief.md` (the public page, which walks five of
+these ten as invented wireframes and never a real business's fault).
 
 ## Refresh protocol
 

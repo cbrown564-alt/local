@@ -1,10 +1,10 @@
 /**
- * The ten fault-walks for /what-we-look-for/ — the page briefed in
- * research/what-we-look-for-brief.md, staging the fault taxonomy from
- * research/film/studio-recurring-themes.md as invented wireframes.
+ * The five fault-walks for /what-we-look-for/ — a curated public reel from
+ * the ten-fault taxonomy in research/film/studio-recurring-themes.md, briefed
+ * in research/what-we-look-for-brief.md.
  *
  * The discipline is the same as transformation-details.ts: the errands are
- * data, one component walks all ten. Every mock is invented — grey blocks,
+ * data, one component walks all five. Every mock is invented — grey blocks,
  * no business name, no real site's fault. Blocks carry a legible label only
  * when the errand needs the mechanism word ("translate", "book", "download
  * menu"); everything else is a placeholder bar.
@@ -139,10 +139,11 @@ const band = (
   extra: Partial<FaultBlock> = {},
 ): FaultBlock => ({ kind: "band", x, y, w, h, ...extra });
 
-/** Reel order from the taxonomy: access faults first, identity faults
- *  second, the swap test last. */
+/** Reel order: three access faults, one identity fault, the swap test last.
+ *  The studio taxonomy still has ten; this page walks the five that earn a
+ *  public demonstration. */
 export const whatWeLookFor: WhatWeLookForEntry[] = [
-  {
+{
     kind: "walk",
     id: "t1",
     theme: "The login at the door",
@@ -247,7 +248,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
       { slug: "tool-centre", name: "The Tool Centre" },
     ],
   },
-  {
+{
     kind: "walk",
     id: "t4",
     theme: "Nobody answers “are you open?”",
@@ -355,7 +356,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
       { slug: "donard-veterinary", name: "Donard Veterinary Clinic" },
     ],
   },
-  {
+{
     kind: "walk",
     id: "t5",
     theme: "The bell with no clapper",
@@ -435,453 +436,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
       { slug: "mourne-cycles", name: "Mourne Cycles" },
     ],
   },
-  {
-    kind: "walk",
-    id: "t6",
-    theme: "Your worries, in front of their question",
-    shape: "a product",
-    message:
-      "Your website greets people with what worries you. They came with a question.",
-    check: "Would a buyer see your terms before the button?",
-    decision:
-      "The newsletter capture was advised, and the capitalised terms were self-defence. Both made sense when they were added.",
-    errand: "Buy the expensive one",
-    before: [
-      {
-        id: "overlay",
-        caption: "A newsletter panel opens before the item.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22, dim: true },
-          band(10, 34, 50, 5, { dim: true }),
-          { kind: "button", x: 10, y: 44, w: 44, h: 8, label: "Add to basket", dim: true },
-          band(10, 56, 80, 4, { dim: true }),
-          { kind: "card", x: 14, y: 24, w: 72, h: 46 },
-          band(22, 32, 48, 4),
-          { kind: "field", x: 22, y: 40, w: 56, h: 7, label: "your email" },
-          {
-            kind: "button",
-            x: 22,
-            y: 54,
-            w: 40,
-            h: 6,
-            label: "No thanks",
-            tap: "item",
-          },
-          {
-            kind: "band",
-            x: 22,
-            y: 62,
-            w: 40,
-            h: 5,
-            label: "Sign up",
-            note: "The newsletter. Not the item.",
-          },
-        ],
-      },
-      {
-        id: "item",
-        caption:
-          "The item at last. The terms sit below the button, in capitals, inside the description.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22 },
-          band(10, 34, 50, 5),
-          band(10, 41, 24, 4),
-          { kind: "button", x: 10, y: 49, w: 44, h: 8, label: "Add to basket", goal: true },
-          band(10, 61, 80, 3),
-          band(10, 66, 76, 3),
-          {
-            kind: "micro",
-            x: 10,
-            y: 71,
-            w: 64,
-            h: 3,
-            label: "COLLECTION ONLY",
-            note: "There they are. Below the button, in capitals.",
-          },
-          band(10, 76, 80, 3),
-        ],
-      },
-    ],
-    after: [
-      {
-        id: "terms",
-        caption: "The same item. The terms sit beside it, above the button.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22 },
-          band(10, 34, 50, 5),
-          band(10, 41, 24, 4),
-          { kind: "status", x: 10, y: 49, w: 56, h: 6, label: "Collection only" },
-          { kind: "button", x: 10, y: 58, w: 44, h: 8, label: "Add to basket", goal: true },
-          band(10, 70, 80, 3),
-          band(10, 75, 76, 3),
-        ],
-      },
-    ],
-    posters: { before: "overlay", after: "terms" },
-    stop: {
-      kind: "found",
-      note: "Bought. And the collection-only terms? Below the button, in capitals, the whole time.",
-    },
-    fixedNote: "One tap — and the terms were in front of you the whole time.",
-    beforeCost: "2 taps · the terms missed",
-    afterCost: "1 tap · terms in view",
-    minBeforeTaps: 2,
-    afterTaps: 1,
-    links: [
-      { slug: "painted-earth", name: "Painted Earth" },
-      { slug: "castle-farm", name: "Castle Farm Fresh Produce" },
-      { slug: "dundrum-inn", name: "The Dundrum Inn" },
-    ],
-  },
-  {
-    kind: "walk",
-    id: "t8",
-    theme: "Locked in a file",
-    shape: "a counter business",
-    message: "A menu nobody opens is a menu nobody reads.",
-    check: "Can tonight's menu be read on a phone, on the page?",
-    decision:
-      "The PDF was easy — export, upload, done. It was made for the kitchen printer, not for a phone in the street.",
-    errand: "Read tonight's main courses",
-    before: [
-      {
-        id: "page",
-        caption: "Tonight's menu is a file to download.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 20 },
-          band(10, 32, 56, 5),
-          band(10, 39, 80, 4),
-          {
-            kind: "button",
-            x: 10,
-            y: 50,
-            w: 52,
-            h: 8,
-            label: "Download menu",
-            tap: "file",
-          },
-          band(10, 64, 70, 4),
-        ],
-      },
-      {
-        id: "file",
-        caption: "The file, shrunk to fit the phone. The mains are in there, at half size.",
-        blocks: [
-          { kind: "sheet", x: 16, y: 8, w: 68, h: 74 },
-          { kind: "micro", x: 22, y: 14, w: 56, h: 1.8 },
-          { kind: "micro", x: 22, y: 19, w: 44, h: 1.8 },
-          { kind: "micro", x: 22, y: 24, w: 60, h: 1.8 },
-          { kind: "micro", x: 22, y: 29, w: 38, h: 1.8 },
-          { kind: "micro", x: 22, y: 34, w: 56, h: 1.8 },
-          { kind: "micro", x: 22, y: 39, w: 48, h: 1.8 },
-          { kind: "micro", x: 22, y: 44, w: 60, h: 1.8 },
-          { kind: "micro", x: 22, y: 49, w: 42, h: 1.8 },
-          { kind: "micro", x: 22, y: 54, w: 56, h: 1.8 },
-          { kind: "micro", x: 22, y: 59, w: 50, h: 1.8 },
-          { kind: "micro", x: 22, y: 64, w: 58, h: 1.8 },
-          { kind: "micro", x: 22, y: 69, w: 40, h: 1.8 },
-          { kind: "micro", x: 22, y: 74, w: 54, h: 1.8 },
-          {
-            kind: "band",
-            x: 10,
-            y: 88,
-            w: 30,
-            h: 5,
-            label: "zoom",
-            note: "Pinching helps. Reading, not really.",
-          },
-        ],
-      },
-    ],
-    after: [
-      {
-        id: "dishes",
-        caption: "The dishes are the page.",
-        blocks: [
-          band(10, 10, 44, 5, { label: "main courses" }),
-          { kind: "row", x: 10, y: 20, w: 80, h: 14, label: "the first main", goal: true },
-          { kind: "row", x: 10, y: 38, w: 80, h: 14 },
-          { kind: "row", x: 10, y: 56, w: 80, h: 14 },
-          band(10, 76, 70, 4),
-        ],
-      },
-    ],
-    posters: { before: "file", after: "dishes" },
-    stop: {
-      kind: "blocked",
-      panel: "file",
-      note: "Stopped. The dishes exist — at half size, inside a file. Nobody reads them.",
-    },
-    fixedNote: "One tap. Tonight's mains, readable from the street.",
-    beforeCost: "no way through",
-    afterCost: "1 tap",
-    minBeforeTaps: null,
-    afterTaps: 1,
-    links: [
-      { slug: "bucks-head", name: "The Bucks Head" },
-      { slug: "hugh-mccanns", name: "Hugh McCann's" },
-      { slug: "castle-farm", name: "Castle Farm Fresh Produce" },
-    ],
-  },
-  {
-    kind: "walk",
-    id: "t2",
-    theme: "The dead end",
-    shape: "a product",
-    message: "Every link that ends in nothing was somebody deciding to visit you.",
-    check: "Does every address and link of yours still lead somewhere?",
-    decision:
-      "The domain lapsed in a renewal nobody saw, and the sold piece stayed listed because taking it down felt like losing the photograph.",
-    errand: "Go to the address on the van",
-    before: [
-      {
-        id: "address",
-        caption: "The address from the van, typed in.",
-        blocks: [
-          {
-            kind: "field",
-            x: 10,
-            y: 12,
-            w: 72,
-            h: 7,
-            label: "the address from the van",
-            tap: "nowhere",
-          },
-          band(10, 30, 80, 4),
-          band(10, 36, 60, 4),
-        ],
-      },
-      {
-        id: "nowhere",
-        caption: "Nothing here. The address leads nowhere.",
-        note: "The route ends. The search result below still lists the one thing you came for.",
-        blocks: [
-          { kind: "empty", x: 10, y: 10, w: 80, h: 44, label: "nothing here" },
-          {
-            kind: "row",
-            x: 10,
-            y: 62,
-            w: 80,
-            h: 9,
-            label: "the item you came for",
-            tap: "gone",
-          },
-        ],
-      },
-      {
-        id: "gone",
-        caption: "The one item, marked unavailable. Nothing else offered.",
-        blocks: [
-          { kind: "media", x: 10, y: 10, w: 80, h: 22 },
-          band(10, 36, 56, 5),
-          { kind: "status", x: 10, y: 44, w: 34, h: 5, label: "unavailable" },
-          band(10, 56, 80, 4),
-          band(10, 62, 66, 4),
-        ],
-      },
-    ],
-    after: [
-      {
-        id: "detour",
-        caption: "The address works. The item is still gone — so three others stand beside it.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 20 },
-          band(10, 32, 56, 5),
-          { kind: "status", x: 10, y: 39, w: 34, h: 5, label: "unavailable" },
-          { kind: "row", x: 10, y: 50, w: 80, h: 8, label: "another one", goal: true },
-          { kind: "row", x: 10, y: 60, w: 80, h: 8, label: "another one", goal: true },
-          { kind: "row", x: 10, y: 70, w: 80, h: 8, label: "another one", goal: true },
-        ],
-      },
-    ],
-    posters: { before: "nowhere", after: "detour" },
-    stop: {
-      kind: "blocked",
-      panel: "gone",
-      note: "Stopped. The address goes nowhere, and the one thing you wanted has nowhere after it.",
-    },
-    fixedNote: "One tap. The address works, and a gone item offers three others.",
-    beforeCost: "no way through",
-    afterCost: "1 tap",
-    minBeforeTaps: null,
-    afterTaps: 1,
-    links: [
-      { slug: "douglas-cromie", name: "Douglas & Cromie" },
-      { slug: "newcastle-dental", name: "Newcastle Family Dental Care" },
-      { slug: "painted-earth", name: "Painted Earth" },
-    ],
-  },
-  {
-    kind: "walk",
-    id: "t3",
-    theme: "Whose shop is this?",
-    shape: "a trade",
-    message: "The biggest name on your website should be yours.",
-    check: "Is the biggest name on your website yours?",
-    decision:
-      "The supplier assets were free, high-resolution and came with brand guidance. Somebody said they added credibility.",
-    errand: "Work out whose business this is",
-    before: [
-      {
-        id: "wall",
-        caption:
-          "Six supplier shields across the fascia. The business's own mark is here somewhere.",
-        blocks: [
-          { kind: "shield", x: 6, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 21.6, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 37.2, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 52.8, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 68.4, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 84, y: 14, w: 12, h: 20, note: "A supplier's mark." },
-          { kind: "shield", x: 14, y: 40, w: 10, h: 14, note: "A supplier's mark." },
-          { kind: "shield", x: 33, y: 40, w: 10, h: 14, note: "A supplier's mark." },
-          { kind: "shield", x: 52, y: 40, w: 10, h: 14, note: "A supplier's mark." },
-          { kind: "shield", x: 71, y: 40, w: 10, h: 14, note: "A supplier's mark." },
-          { kind: "block", x: 40, y: 64, w: 20, h: 28 },
-          {
-            kind: "mark",
-            x: 63,
-            y: 66,
-            w: 5,
-            h: 7,
-            label: "the business's own mark",
-            goal: true,
-          },
-        ],
-      },
-    ],
-    after: [
-      {
-        id: "own",
-        caption: "The business's own mark takes the fascia. The suppliers hold one line.",
-        blocks: [
-          { kind: "mark", x: 20, y: 14, w: 60, h: 18, label: "the business's own mark", goal: true },
-          { kind: "shield", x: 14, y: 44, w: 8, h: 8 },
-          { kind: "shield", x: 26, y: 44, w: 8, h: 8 },
-          { kind: "shield", x: 38, y: 44, w: 8, h: 8 },
-          { kind: "shield", x: 50, y: 44, w: 8, h: 8 },
-          { kind: "shield", x: 62, y: 44, w: 8, h: 8 },
-          { kind: "shield", x: 74, y: 44, w: 8, h: 8 },
-          band(10, 60, 70, 4),
-          band(10, 66, 52, 4),
-          { kind: "block", x: 40, y: 76, w: 20, h: 16 },
-        ],
-      },
-    ],
-    posters: { before: "wall", after: "own" },
-    stop: {
-      kind: "found",
-      note: "Found it — an eighth the size of the shields. That's whose shop it is. Probably.",
-    },
-    fixedNote: "One tap. The biggest name on the page is the business's own.",
-    beforeCost: "6 shields · the answer an eighth their size",
-    afterCost: "1 tap",
-    minBeforeTaps: 1,
-    afterTaps: 1,
-    goalIsHidden: true,
-    links: [
-      { slug: "mourne-cycles", name: "Mourne Cycles" },
-      { slug: "donard-veterinary", name: "Donard Veterinary Clinic" },
-      { slug: "newcastle-dental", name: "Newcastle Family Dental Care" },
-    ],
-  },
-  {
-    kind: "walk",
-    id: "t9",
-    theme: "The stopped clock",
-    shape: "a care practice",
-    message: "Your site is telling people how old it is, not how good you are.",
-    check: "Could a stranger tell that you're still running?",
-    decision:
-      "Nobody changed the footer because nobody was looking at the footer. The business moved; the page didn't.",
-    errand: "Check they're still running",
-    before: [
-      {
-        id: "top",
-        caption: "A tidy first screen. Nothing on it carries a date.",
-        blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22 },
-          band(10, 34, 60, 5),
-          band(10, 41, 80, 4),
-          band(10, 47, 72, 4),
-          { kind: "scroll", x: 10, y: 86, w: 80, h: 8, label: "scroll", tap: "mid" },
-        ],
-      },
-      {
-        id: "mid",
-        caption: "Kind words — from three summers ago.",
-        note: "Still running? Keep looking.",
-        blocks: [
-          { kind: "card", x: 10, y: 10, w: 80, h: 22 },
-          band(16, 15, 64, 3),
-          band(16, 20, 70, 3),
-          band(16, 26, 48, 2.5, { label: "three summers ago" }),
-          band(10, 38, 80, 4),
-          { kind: "card", x: 10, y: 44, w: 80, h: 22 },
-          band(16, 49, 60, 3),
-          band(16, 54, 68, 3),
-          band(16, 60, 48, 2.5, { label: "four summers ago" }),
-          { kind: "scroll", x: 10, y: 86, w: 80, h: 8, label: "scroll", tap: "foot" },
-        ],
-      },
-      {
-        id: "foot",
-        caption: "The foot of the page: a copyright line from three years ago.",
-        blocks: [
-          band(10, 14, 80, 4),
-          band(10, 20, 58, 4),
-          {
-            kind: "band",
-            x: 10,
-            y: 80,
-            w: 48,
-            h: 3.5,
-            label: "© three years ago",
-            note: "The newest dated thing on the page.",
-          },
-        ],
-      },
-    ],
-    after: [
-      {
-        id: "fresh",
-        caption:
-          "The page holds what doesn't go stale, and hands today to the source that stays fresh.",
-        blocks: [
-          { kind: "status", x: 10, y: 10, w: 52, h: 6, label: "here this week" },
-          {
-            kind: "button",
-            x: 10,
-            y: 20,
-            w: 52,
-            h: 7,
-            label: "today, at the source",
-            goal: true,
-          },
-          { kind: "media", x: 10, y: 33, w: 80, h: 20 },
-          band(10, 57, 64, 4),
-          band(10, 63, 80, 4),
-        ],
-      },
-    ],
-    posters: { before: "foot", after: "fresh" },
-    stop: {
-      kind: "blocked",
-      panel: "foot",
-      note: "Stopped. The newest dated thing on the page is three years old. Still running? You can't tell.",
-    },
-    fixedNote: "One tap. Freshness is handed to the thing that stays fresh.",
-    beforeCost: "no way to tell",
-    afterCost: "1 tap",
-    minBeforeTaps: null,
-    afterTaps: 1,
-    links: [
-      { slug: "hugh-mccanns", name: "Hugh McCann's" },
-      { slug: "bettys-butters", name: "Betty's Better Butters" },
-      { slug: "kent-amusements", name: "Kent Amusements" },
-    ],
-  },
-  {
+{
     kind: "walk",
     id: "t7",
     theme: "The best thing about you is in the footer",
@@ -977,7 +532,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
       { slug: "hugh-mccanns", name: "Hugh McCann's" },
     ],
   },
-  {
+{
     kind: "swap",
     id: "t10",
     theme: "The swap test",

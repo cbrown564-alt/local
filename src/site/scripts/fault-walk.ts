@@ -37,7 +37,7 @@ const plural = (count: number, word: string) =>
   `${count} ${word}${count === 1 ? "" : "s"}`;
 
 /* Finishing a walk marks every in-page link to that theme (the strip, the
-   takeaway checklist) as walked — the page keeps track of which of the ten
+   takeaway checklist) as walked — the page keeps track of which of the five
    the visitor has felt for themselves. */
 const markWalked = (id: string) => {
   document

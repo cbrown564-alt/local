@@ -1,12 +1,15 @@
-# `/what-we-look-for/` — the ten faults as a page
+# `/what-we-look-for/` — five faults as a page
 
-*Written 6 August 2026. The public surface for the fault taxonomy in
+*Written 6 August 2026; reel cut to five on 7 August 2026. The public surface
+for the fault taxonomy in
 [`research/film/studio-recurring-themes.md`](film/studio-recurring-themes.md).
-Uses invented demonstrations only — no real business's fault appears here.
-Recorded faults about real businesses stay in `verifications.json` and go out
-one-to-one on a postcard (`research/outreach-postcards.md`), never onto a public
-page. One of three sibling approaches to describing the work — the map and the
-argument between them is
+The studio taxonomy still has ten IDs; this page walks the five that earn a
+public demonstration. Uses invented demonstrations only — no real business's
+fault appears here. Recorded faults about real businesses stay in
+`verifications.json` and go out one-to-one on a postcard
+(`research/outreach-postcards.md`), never onto a public page. One of three
+sibling approaches to describing the work — the map and the argument between
+them is
 [`three-ways-to-describe-the-work.md`](three-ways-to-describe-the-work.md);
 the other two are the assembly
 ([`how-a-site-goes-together-brief.md`](how-a-site-goes-together-brief.md)) and
@@ -14,15 +17,15 @@ the shapes ([`five-shapes-brief.md`](five-shapes-brief.md)).*
 
 ## The name does the tonal work
 
-Not `/website-faults/`, not `/what-goes-wrong/`, not `/ten-mistakes/`. The page
+Not `/website-faults/`, not `/what-goes-wrong/`, not `/five-mistakes/`. The page
 is called **what we look for** because that is literally true — it is now the
 step-5 diagnostic in `docs/RESEARCH_METHOD.md` — and because it points the
-sentence at the studio rather than at the reader. A page titled *ten mistakes
-you're making* is a page an owner closes; a page titled *ten things we look for
+sentence at the studio rather than at the reader. A page titled *five mistakes
+you're making* is a page an owner closes; a page titled *five things we look for
 before we redesign anything* is a page an owner reads to find out whether we
 know what we're doing.
 
-Working headline: **Ten things we look for before we redesign anything.**
+Working headline: **Five things we look for before we redesign anything.**
 Subhead: what twenty concepts taught us to check first — and what each one costs
 the person standing outside your shop.
 
@@ -102,19 +105,19 @@ construction rather than in a disclaimer.
    says so. This single move turns the page from criticism into sympathy, and it
    has the advantage of being true.
 
-## The ten errands
+## The five errands
+
+The studio taxonomy still names ten faults (T1–T10). The page walks five —
+three access faults, one identity fault, and the swap-test closer. Cut from the
+public reel (still recorded in outreach and verifications): T2 dead end, T3
+whose shop, T6 worries in front, T8 locked in a file, T9 stopped clock.
 
 | Theme | Your errand | What stops you | The fixed walk |
 | --- | --- | --- | --- |
 | **T1** | See what they sell | Consent dialog, then a login panel over greyed-out content | The content, no account |
-| **T2** | Go to the address on the van | The route ends on an empty page. Then: the one item you came for, marked unavailable, with nowhere to go | A working address; the unavailable item offers three others |
-| **T3** | Work out whose business this is | Six supplier shields; the business's own mark is an eighth their size | Own mark on the fascia, suppliers in one confident line |
 | **T4** | Find out if they're open now | Hours below a translate bar and a video, two screens down | A status line on the first screen |
 | **T5** | Ask whether the 14th is free | *Book* leads to a page with a phone number on it | Two fields — the date and the number of people |
-| **T6** | Buy the expensive one | A newsletter panel first; then the terms, in capitals, inside the description, below the button | The terms beside the item, above the button |
 | **T7** | Find the best reason to choose them | The years, the award and the accreditations are in the footer | The record on the first screen |
-| **T8** | Read tonight's main courses | A file that shrinks to fit a phone | The dishes, as a page |
-| **T9** | Check they're still running | An old year in the footer, testimonials from three years before it | The page holds what doesn't go stale and hands today to the source that's fresh |
 | **T10** | Tell these two apart | *(not an errand — see below)* | — |
 
 **T10 is the closer and gets the one drag control on the page.** Two identical
@@ -148,12 +151,12 @@ the request form does not grade them (see below).
 ## Page structure
 
 ```
-1  Opening          Ten things we look for. What the page is, and that the
+1  Opening          Five things we look for. What the page is, and that the
                     demonstrations are invented — stated once, plainly, up top.
 
-2  The ten          One block per theme, in the taxonomy's reel order:
-                    T1 T4 T5 T6 T8 T2 T3 T9 T7 T10 — access faults first,
-                    identity faults second, the swap test last.
+2  The five         One block per theme, in reel order:
+                    T1 T4 T5 T7 T10 — access faults first, identity fault
+                    second, the swap test last.
 
                     Each block:  message (one line)
                                  the reasonable decision behind it (one line)
@@ -175,18 +178,16 @@ argument; the clip is the mnemonic that makes it repeatable to a spouse. If the
 clips aren't generated yet, the page ships without them — every block must work
 as wireframe-plus-two-lines on day one. Nothing here is blocked on a gen.
 
-**Request path wins on attention weight** (workstream rule 5). Ten interactive
-toys plus ten films is more than enough to out-shout a CTA, so: no autoplay,
-one clip expanded at a time, and the close is the heaviest element on the page.
+**Request path wins on attention weight** (workstream rule 5). Five interactive
+toys plus films is enough to out-shout a CTA, so: no autoplay, one clip expanded
+at a time, and the close is the heaviest element on the page.
 
 ## Build notes
 
-- Lives on `/prototypes/` first — the studio's own convention, and this page has
-  ten novel controls. `src/pages/prototypes/` already hosts study pages; add the
-  fault-walk study there before the public route.
-- One component, ten data entries. The errands are data (`theme`, `errand`,
-  `shape`, `beforeSteps[]`, `afterSteps[]`, `stopsAt`) — the same discipline as
-  `transformation-details.ts`. Ten bespoke components would be ten bespoke bugs.
+- Public at `/what-we-look-for/` (promoted from `/prototypes/`).
+- One component, five data entries. The errands are data (`theme`, `errand`,
+  `shape`, `before[]`, `after[]`, `stop`) — the same discipline as
+  `transformation-details.ts`. Five bespoke components would be five bespoke bugs.
 - **Test the fault, not the fix.** The failure mode is a mock whose fault is
   accidentally walkable — someone tidies the wireframe and the hours land on the
   first screen. Assert, per theme, that the before-walk cannot reach the errand's
@@ -201,11 +202,8 @@ one clip expanded at a time, and the close is the heaviest element on the page.
 
 - Does the errand read without instruction, or does each block need "tap the
   grey blocks"? Prototype answers it.
-- Is ten interactives on one page too many? Fallback: the page presents all ten
-  as static plates and only three are walkable — chosen as the three that are
-  most physical (T4, T8, T10).
-- Should the visitor's tap count persist across themes ("you've spent 34 taps
-  failing to do nine ordinary things")? Powerful, and one step from being a
+- ~~Is ten interactives on one page too many?~~ Resolved: cut to five
+  (T1, T4, T5, T7, T10). The other five stay in the studio taxonomy and outreach.
+- Should the visitor's tap count persist across themes ("you've spent N taps
+  failing to do ordinary things")? Powerful, and one step from being a
   score. Probably not.
-- Does the T2 mock — a route that ends in nothing — read as our page being
-  broken? Likely needs the emptiness framed rather than blank.

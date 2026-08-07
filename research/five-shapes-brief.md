@@ -15,7 +15,7 @@ and "templated for ten" is precisely the accusation the swap test makes. Not
 `/examples/` — vague, and it invites reading the plates as portfolio. Not
 `/styles/` — the five shapes differ by *task*, not by decoration, and a style
 word concedes the aesthetic framing the whole method refuses. **Five shapes**
-is countable and concrete, the natural sibling of *ten things we look for* —
+is countable and concrete, the natural sibling of *five things we look for* —
 and the smallness of the number does the anti-template work by itself. Nobody
 mistakes five for a catalogue.
 

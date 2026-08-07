@@ -12,7 +12,7 @@ The three briefs:
 
 | | Approach | Brief | Status |
 | --- | --- | --- | --- |
-| **A** | The diagnosis — ten faults, walked | [`what-we-look-for-brief.md`](what-we-look-for-brief.md) | Public at [`/what-we-look-for/`](../src/pages/what-we-look-for.astro) |
+| **A** | The diagnosis — five faults, walked | [`what-we-look-for-brief.md`](what-we-look-for-brief.md) | Public at [`/what-we-look-for/`](../src/pages/what-we-look-for.astro) |
 | **B** | The assembly — one site, built in front of you | [`how-a-site-goes-together-brief.md`](how-a-site-goes-together-brief.md) | Brief done |
 | **C** | The shapes — a drawn, annotated pattern book | [`five-shapes-brief.md`](five-shapes-brief.md) | Brief done |
 

@@ -79,8 +79,8 @@ const graphs = [...html.matchAll(/<script[^>]*data-fault-graph[^>]*>([\s\S]*?)<\
 );
 
 check(
-  `expected 9 walk graphs on the page (found ${graphs.length})`,
-  graphs.length === 9,
+  `expected 4 walk graphs on the page (found ${graphs.length})`,
+  graphs.length === 4,
 );
 
 for (const graph of graphs) {
@@ -156,9 +156,9 @@ for (const graph of graphs) {
   );
 }
 
-// The reel order is the argument: access faults first, identity faults
-// second, the swap test last.
-const EXPECTED_ORDER = ["t1", "t4", "t5", "t6", "t8", "t2", "t3", "t9", "t7", "t10"];
+// The reel order is the argument: access faults first, identity fault
+// second, the swap test last. Five of the studio's ten, curated for the page.
+const EXPECTED_ORDER = ["t1", "t4", "t5", "t7", "t10"];
 const pageOrder = [...html.matchAll(/data-theme="(t\d+)"/g)].map((match) => match[1]);
 check(
   `the themes no longer run in reel order (${pageOrder.join(" ")})`,
@@ -169,11 +169,6 @@ const MESSAGES = {
   t1: "A stranger should not need an account to find your front door.",
   t4: "People arrive with one question. The first screen should answer it.",
   t5: "“Get in touch” means the customer does the work.",
-  t6: "Your website greets people with what worries you. They came with a question.",
-  t8: "A menu nobody opens is a menu nobody reads.",
-  t2: "Every link that ends in nothing was somebody deciding to visit you.",
-  t3: "The biggest name on your website should be yours.",
-  t9: "Your site is telling people how old it is, not how good you are.",
   t7: "The thing you'd say in ten seconds at the counter isn't on the site at all.",
   t10: "Swap your name for a competitor's. If nothing else needs changing, the site isn't yours.",
 };
@@ -222,8 +217,8 @@ for (const slug of linkedSlugs) {
 }
 const conceptLabels = text.match(/independent concepts/gi) ?? [];
 check(
-  `the independent-concept label should travel with every theme (found ${conceptLabels.length} of 10)`,
-  conceptLabels.length === 10,
+  `the independent-concept label should travel with every theme (found ${conceptLabels.length} of 5)`,
+  conceptLabels.length === 5,
 );
 
 if (failures.length > 0) {
