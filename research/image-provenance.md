@@ -52,6 +52,42 @@ that no longer appear anywhere in `src/`.
   checked against the concept's own copy the same way the "Sources & limits"
   block is.
 
+## Studio storytelling bakeoff (7 August 2026)
+
+- `research/film/clips/studio/T*.mp4`, `X*.{png,mp4}` — **held / research only**
+  (7 August 2026). Format-bakeoff stills and Gemini Omni clips for
+  [`research/film/studio-media-experiments.md`](film/studio-media-experiments.md)
+  and theme controls from
+  [`research/film/studio-recurring-themes.md`](film/studio-recurring-themes.md).
+  Stills from GPT-Image (Codex Image downloads); videos from Gemini Omni
+  (Flow exports). Object theatre only — no real businesses, no faces, no
+  lettering intended. Inventory and source download names:
+  [`research/film/clips/studio/MANIFEST.md`](film/clips/studio/MANIFEST.md).
+  Not wired to guest routes; any later prototype use needs on-page disclosure
+  ("imagined, not footage") and a reduced-motion poster. Includes X26
+  (`X26-choir-of-clocks.{png,mp4}`) and X27 (`X27-nicer-dissolve.mp4`) from
+  the same bakeoff evening.
+- `public/media/coastal-sequence/X23-*.png` — **held / research drop** (7 August
+  2026). Twelve GPT-Image stills for experiment X23 (day-in-the-town mosaic):
+  locked coastal street camera across fog → dawn return. Named
+  `X23-01-0600-fog.png` … `X23-12-dawn-return.png`. README in that folder.
+  Generated, not footage; disclose before any guest-facing use. Omni breaths
+  and assembled film not yet landed.
+- `research/film/clips/studio/X25-postcard-fronts/X25-T*.png` — **held /
+  research only** (7 August 2026). Ten GPT-Image 2 departure-beat postcard
+  fronts for experiment X25 (one per theme T1–T10), plus contact sheets and
+  an unselected T6 v1. Sidecar:
+  `research/film/clips/studio/X25-postcard-fronts/X25-postcard-fronts.md`.
+  Object theatre only; no real businesses. Print crop at A6 still open.
+- `research/film/clips/studio/X25-postcard-fronts/X25-T*.mp3` — **held /
+  research only** (7 August 2026). Ten synthetic whispers (theme messages)
+  for the matching postcard QR tap-to-hear. ElevenLabs
+  `eleven_multilingual_v2`, voice Irish Cultural Guide
+  (`NPWroowF4phQhaPWjXPj`). Scripts and regenerator notes:
+  `X25-whispers.md`; generator
+  `tools/pipeline/generate-x25-whispers.mjs`. Disclose as synthetic wherever
+  guest-facing.
+
 ## Studio-drawn concept assets
 
 Neither photographed nor generated: vector artwork drawn by hand for a concept.

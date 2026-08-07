@@ -1,7 +1,21 @@
 # Studio storytelling clips
 
-Outputs for [`research/studio-storytelling.md`](../../../studio-storytelling.md).
+Outputs for [`research/studio-storytelling.md`](../../../studio-storytelling.md)
+and the format bakeoff in
+[`research/film/studio-media-experiments.md`](../../studio-media-experiments.md).
 
-Name files `S<id>-<slug>.mp4` and keep a sidecar `S<id>-<slug>.md` with the
-exact prompt, date, model, and pass/fail notes. Contact-sheet the slate before
-promoting anything to `/prototypes/`.
+## Naming
+
+| Prefix | Meaning |
+| --- | --- |
+| `T<nn>-<slug>` | Recurring-theme clay controls ([`studio-recurring-themes.md`](../../studio-recurring-themes.md)) |
+| `X<nn>-<slug>` | Media-experiment sidecars ([`studio-media-experiments.md`](../../studio-media-experiments.md)) |
+| `S<nn>-<slug>` | Legacy studio-job IDs from storytelling §6 (if any land here) |
+
+Prefer matching still + video stems (`X02-….png` beside `X02-….mp4`).
+Keep a per-clip sidecar `*.md` only when the prompt drifts from the research
+doc; otherwise log pass/fail in [`MANIFEST.md`](MANIFEST.md).
+
+Contact-sheet before promoting anything to `/prototypes/`.
+
+X23 coastal mosaic stills live under `public/media/coastal-sequence/`, not here.
