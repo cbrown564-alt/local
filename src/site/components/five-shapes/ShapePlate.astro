@@ -1,0 +1,90 @@
+---
+import type { ShapePlate } from "../../data/five-shapes";
+import {
+  SHAPE_ANSWER_ORDER,
+  SHAPE_PLATE_LAYOUT,
+  SHAPE_QUESTIONS,
+} from "../../data/five-shapes";
+import FaultPanelView from "../fault-walk/FaultPanelView.astro";
+
+interface Props {
+  plate: ShapePlate;
+  /** Page order 1–5. */
+  n: number;
+}
+
+const { plate, n } = Astro.props;
+
+const answers = SHAPE_ANSWER_ORDER.map((key, i) => ({
+  key,
+  n: i + 1,
+  question: SHAPE_QUESTIONS[key],
+  ...plate.answers[key],
+}));
+---
+
+<section class="fsp" id={plate.id}>
+  <header class="fsp-head">
+    <p class="fsp-id" aria-hidden="true">{String(n).padStart(2, "0")}</p>
+    <div class="fsp-titles">
+      <h3 class="fsp-shape">{plate.shape}</h3>
+      <p class="fsp-essence">{plate.essence}</p>
+    </div>
+  </header>
+
+  <div
+    class="fsp-stage"
+    style={`--fsp-frame-w:${SHAPE_PLATE_LAYOUT.frameWidthPx}px;--fsp-gap:${SHAPE_PLATE_LAYOUT.gapPx}px;`}
+  >
+    <div class="fsp-frame-wrap">
+      <div class="fw-frame fw-frame--plate fsp-frame">
+        {/* mode "after" so the theatre block takes the grammar's one colour
+            beat — the eye finds it in a different place on every plate. */}
+        <FaultPanelView panel={plate.screen} mode="after" interactive={false} />
+        {
+          answers.map((answer) => (
+            <span
+              class="fsp-marker"
+              style={`left:${answer.marker.x}%;top:${answer.marker.y}%;`}
+              aria-hidden="true"
+            >
+              {answer.n}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* The same five questions, in the same order, on every plate. Beside the
+        plate at desktop width; a numbered key beneath it on the phone. */}
+    <dl class="fsp-notes">
+      {
+        answers.map((note) => (
+          <div class="fsp-note">
+            <dt>
+              <span class="fsp-note-n" aria-hidden="true">{note.n}</span>
+              {note.question}
+            </dt>
+            <dd>{note.answer}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+
+  <footer class="fsp-foot">
+    <p class="fsp-drew">
+      <span class="fsp-drew-lead">We drew one of these</span>
+      {" "}
+      {
+        plate.examples.map((example, index) => (
+          <>
+            <a href={`/transformations/${example.slug}/`}>{example.name}</a>
+            {index < plate.examples.length - 1 && <span aria-hidden="true"> · </span>}
+          </>
+        ))
+      }
+      <span class="fsp-drew-label">independent concepts</span>
+    </p>
+  </footer>
+</section>

@@ -49,6 +49,7 @@ const suites = [
   ["test:kelly-mcevoy-brown"],
   ["test:tool-centre"],
   ["test:painted-earth"],
+  ["test:five-shapes"],
   ["test:what-we-look-for"],
 ];
 

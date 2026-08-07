@@ -13,53 +13,70 @@ const swap = whatWeLookFor.find((entry): entry is SwapTestTheme => entry.kind ==
 if (!swap) throw new Error("what-we-look-for: the swap test is missing from the reel");
 
 /* Page order is 1–10. Internal theme ids (t1, t4…) stay in data and anchors
-   only — never as guest-facing labels. */
-type StripItem = { href: string; task: string; n: number };
-const strip: { tag: string; label: string; start: number; items: StripItem[] }[] = [
-  {
-    tag: "Part one",
-    label: "Something simple gets hard",
-    start: 1,
-    items: walks.slice(0, 6).map((walk, i) => ({
-      href: `#${walk.id}`,
-      task: walk.errand.toLowerCase(),
-      n: i + 1,
-    })),
-  },
-  {
-    tag: "Part two",
-    label: "It could be anyone's",
-    start: 7,
-    items: walks.slice(6).map((walk, i) => ({
-      href: `#${walk.id}`,
-      task: walk.errand.toLowerCase(),
-      n: i + 7,
-    })),
-  },
-  {
-    tag: "The closer",
-    label: "Done by hand",
-    start: 10,
-    items: [{ href: `#${swap.id}`, task: "tell two shopfronts apart", n: 10 }],
-  },
-];
+   only — never as guest-facing labels. The strip derives from the reel
+   itself: a group starts wherever the parts map has an entry, and every
+   number is the walk's own position — nothing is hardcoded to today's ten. */
+type StripItem = { href: string; task: string; n: number; verdict: string };
+type StripGroup = { tag: string; label: string; start: number; items: StripItem[] };
 
 /* The ten run as three movements: the access faults, the identity faults,
    then the swap test as the closer. The bands are the pacing — they break a
    long scroll into an argument with a beginning, a turn and an ending. */
-const parts: Record<string, { tag: string; title: string; blurb: string }> = {
+const parts: Record<
+  string,
+  { tag: string; stripLabel: string; title: string; blurb: string }
+> = {
   t1: {
     tag: "Part one",
+    stripLabel: "Something simple gets hard",
     title: "Six ordinary jobs, stopped or made hard.",
     blurb:
       "Each one below started as a reasonable decision. Try it yourself and feel where it breaks.",
   },
   t3: {
     tag: "Part two",
+    stripLabel: "It could be anyone's",
     title: "Three working sites that stopped sounding like anyone.",
     blurb: "Nothing here is broken. That is what makes these three harder to spot.",
   },
 };
+
+/* The verdict under each errand: does the fault stop the stranger outright,
+   or let them through at a cost? That is part one's point against part two's. */
+const verdictFor = (walk: FaultWalkData) =>
+  walk.stop.kind === "blocked" ? "stops you" : "found, at a cost";
+
+const strip: StripGroup[] = [];
+walks.forEach((walk, index) => {
+  const part = parts[walk.id];
+  if (part || strip.length === 0) {
+    strip.push({
+      tag: part?.tag ?? "Part one",
+      label: part?.stripLabel ?? "",
+      start: index + 1,
+      items: [],
+    });
+  }
+  strip.at(-1)!.items.push({
+    href: `#${walk.id}`,
+    task: walk.errand.toLowerCase(),
+    n: index + 1,
+    verdict: verdictFor(walk),
+  });
+});
+strip.push({
+  tag: "The closer",
+  label: "Done by hand",
+  start: walks.length + 1,
+  items: [
+    {
+      href: `#${swap.id}`,
+      task: "tell two shopfronts apart",
+      n: walks.length + 1,
+      verdict: "by hand",
+    },
+  ],
+});
 ---
 
 <BaseLayout
@@ -104,9 +121,10 @@ const parts: Record<string, { tag: string; title: string; blurb: string }> = {
                 <ol start={group.start}>
                   {group.items.map((item) => (
                     <li>
-                      <a href={item.href}>
+                      <a href={item.href} data-walk-ref={item.href.slice(1)}>
                         <span class="wwlf-strip-n">{item.n}</span>
                         <span class="wwlf-strip-task">{item.task}</span>
+                        <span class="wwlf-strip-verdict">{item.verdict}</span>
                       </a>
                     </li>
                   ))}
@@ -141,6 +159,18 @@ const parts: Record<string, { tag: string; title: string; blurb: string }> = {
       </div>
     </div>
 
+    <aside class="wwlf-midcta">
+      <div class="shell">
+        <p>
+          Recognised your own site a couple of times already? That's the norm — every one of
+          these started as a reasonable decision.
+        </p>
+        <a href="/request/">
+          Send a link — we'll walk your site the same way <ArrowIcon />
+        </a>
+      </div>
+    </aside>
+
     <section class="wwlf-finale">
       <div class="shell">
         <header class="wwlf-part">
@@ -154,13 +184,46 @@ const parts: Record<string, { tag: string; title: string; blurb: string }> = {
       </div>
     </section>
 
+    <section class="wwlf-checklist">
+      <div class="shell">
+        <p class="eyebrow">Take it with you</p>
+        <h2>Run the ten on your own site.</h2>
+        <p class="wwlf-checklist-lede">
+          One question per check, in the same order as the walks above. Any "no" is a fault a
+          stranger is already paying for.
+        </p>
+        <ol class="wwlf-checklist-list">
+          {
+            walks.map((walk, index) => (
+              <li>
+                <a href={`#${walk.id}`} data-walk-ref={walk.id}>
+                  <span class="wwlf-checklist-n">{String(index + 1).padStart(2, "0")}</span>
+                  <span class="wwlf-checklist-q">{walk.check}</span>
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={`#${swap.id}`} data-walk-ref={swap.id}>
+              <span class="wwlf-checklist-n">
+                {String(walks.length + 1).padStart(2, "0")}
+              </span>
+              <span class="wwlf-checklist-q">{swap.check}</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section class="wwlf-purpose">
       <div class="shell">
         <p class="eyebrow">What this is for</p>
         <h2>A checklist we run before we redesign anything — not a quiz about you.</h2>
         <p>
           These ten are step 5 of the studio's research method: the check on a business's public
-          site before anything is redesigned.
+          site before anything is redesigned. The mocks above stay nameless; the measurements
+          don't — <a href="/transformations/">the case studies</a> name the business and date
+          the audit.
         </p>
         <p>
           Two things this page never does. It never turns our case-study notes into a claim about
@@ -185,7 +248,8 @@ const parts: Record<string, { tag: string; title: string; blurb: string }> = {
 </BaseLayout>
 
 <script>
-  import { mountFaultWalks } from "../site/scripts/fault-walk";
+  import { mountFaultWalks, mountShareLinks } from "../site/scripts/fault-walk";
 
+  mountShareLinks();
   mountFaultWalks();
 </script>

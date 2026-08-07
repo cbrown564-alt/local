@@ -36,6 +36,23 @@ interface FaultGraph {
 const plural = (count: number, word: string) =>
   `${count} ${word}${count === 1 ? "" : "s"}`;
 
+/* Finishing a walk marks every in-page link to that theme (the strip, the
+   takeaway checklist) as walked — the page keeps track of which of the ten
+   the visitor has felt for themselves. */
+const markWalked = (id: string) => {
+  document
+    .querySelectorAll<HTMLElement>(`[data-walk-ref="${id}"]`)
+    .forEach((el) => {
+      el.classList.add("is-done");
+      if (!el.querySelector(".wwlf-done-vh")) {
+        const vh = document.createElement("span");
+        vh.className = "wwlf-done-vh";
+        vh.textContent = " (walked)";
+        el.appendChild(vh);
+      }
+    });
+};
+
 function mountWalk(root: HTMLElement): void {
   const blob = root.querySelector("script[data-fault-graph]");
   const staticLayer = root.querySelector<HTMLElement>("[data-fw-static]");
@@ -121,6 +138,7 @@ function mountWalk(root: HTMLElement): void {
     outcomeEl.textContent = note;
     actualsEl.textContent = `Your walk: ${plural(taps, "tap")} · ${plural(screens, "screen")}.`;
     sr.textContent = `${note} You took ${plural(taps, "tap")} across ${plural(screens, "screen")}.`;
+    markWalked(graph.id);
     fixButton.classList.add("is-ready");
     fixButton.animate(
       [
@@ -136,12 +154,17 @@ function mountWalk(root: HTMLElement): void {
     const block = (event.target as HTMLElement).closest<HTMLElement>(
       "[data-tap], [data-goal], [data-note]",
     );
-    taps += 1;
-    updateCounts();
+    /* Once the walk is decided the count is the record — further taps still
+       narrate, but no longer inflate it. */
     if (ended) {
-      if (block?.dataset.note) setNote(block.dataset.note);
+      if (block?.dataset.note) {
+        setNote(block.dataset.note);
+        sr.textContent = block.dataset.note;
+      }
       return;
     }
+    taps += 1;
+    updateCounts();
     if (block?.dataset.goal === "true") {
       endWalk();
       return;
@@ -154,7 +177,10 @@ function mountWalk(root: HTMLElement): void {
       }
       return;
     }
-    if (block?.dataset.note) setNote(block.dataset.note);
+    if (block?.dataset.note) {
+      setNote(block.dataset.note);
+      sr.textContent = block.dataset.note;
+    }
   });
 
   fixButton.addEventListener("click", () => {
@@ -231,6 +257,9 @@ function mountSwap(root: HTMLElement): void {
       { duration: 520, easing: "ease-out" },
     );
     say("It won't seat. You aren't generic — the website was.");
+    /* The refusal is the closer's payoff — the walk counts as felt. */
+    const themeId = root.closest("[data-theme]")?.id;
+    if (themeId) markWalked(themeId);
   };
 
   const seat = (target: HTMLElement) => {
@@ -323,4 +352,28 @@ export function mountFaultWalks(): void {
   document
     .querySelectorAll<HTMLElement>("[data-swap-test]")
     .forEach((root) => mountSwap(root));
+}
+
+/** The per-theme anchor links: a click copies a link to that check and shows
+ *  the "copied" tip. Without clipboard access they stay plain anchors. */
+export function mountShareLinks(): void {
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-copy-anchor]")
+    .forEach((link) => {
+      link.addEventListener("click", async (event) => {
+        const hash = link.getAttribute("href") ?? "";
+        if (!navigator.clipboard || !hash.startsWith("#")) return;
+        event.preventDefault();
+        try {
+          await navigator.clipboard.writeText(
+            new URL(hash, window.location.href).toString(),
+          );
+          history.replaceState(null, "", hash);
+          link.classList.add("is-copied");
+          window.setTimeout(() => link.classList.remove("is-copied"), 1600);
+        } catch {
+          window.location.hash = hash;
+        }
+      });
+    });
 }

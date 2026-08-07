@@ -1,0 +1,414 @@
+/* /five-shapes/ — the five shapes as drawn, annotated plates.
+   The wireframe grammar (frame, blocks, the blue theatre beat) is borrowed
+   from /what-we-look-for/ — same stroke, same grey, so difference reads as
+   meaning rather than house-style variety. This sheet carries the pattern
+   book: the index strip, the horizontal plate reel, the marginalia, the
+   misfit panel. */
+
+.fvs {
+  --wwlf-paper: #eef1f3;
+  --wwlf-line: #d3dade;
+  --wwlf-block: #c3cdd3;
+  --wwlf-mid: #97a3ab;
+  --wwlf-deep: #4d5b65;
+  --wwlf-ink: #26323b;
+  --fvs-shell-inline: max(20px, calc((100vw - var(--max)) / 2 + 20px));
+  --fvs-peek: 2.5rem;
+}
+
+/* --- the strip: five shapes, one question each — also the reel pager ------ */
+
+.fvs-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fvs-strip a {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr;
+  gap: 0 0.7rem;
+  align-items: baseline;
+  min-height: 2.4rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.14);
+  color: inherit;
+  text-decoration: none;
+}
+
+.fvs-strip li:last-child a {
+  border-bottom: 1px solid rgba(35, 72, 90, 0.14);
+}
+
+.fvs-strip a:hover .wwlf-strip-task,
+.fvs-strip a[aria-current="true"] .wwlf-strip-task {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.fvs-strip a:hover .wwlf-strip-n,
+.fvs-strip a[aria-current="true"] .wwlf-strip-n {
+  transform: translateX(2px);
+}
+
+.fvs-strip-q {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* --- the reel: one plate at a time, next plate lightly peeking ------------ */
+
+.fvs-reel {
+  padding: 1rem 0 1.75rem;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 0%, rgba(35, 72, 90, 0.06), transparent 55%),
+    var(--foam);
+}
+
+.fvs-reel-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.65rem;
+}
+
+.fvs-reel-arrows {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.fvs-reel-arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.fvs-reel-arrow:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+  background: var(--blue);
+  color: var(--white);
+}
+
+.fvs-reel-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fvs-reel-arrow-icon {
+  display: grid;
+  place-items: center;
+}
+
+.fvs-reel-arrow-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fvs-reel-arrow-icon--prev {
+  transform: scaleX(-1);
+}
+
+.fvs-reel-scroller {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--fvs-shell-inline);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+  padding: 0.15rem 0 0.85rem;
+}
+
+.fvs-reel-scroller:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: -3px;
+}
+
+.fvs-reel-scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.fvs-reel-scroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--blue) 55%, transparent);
+}
+
+.fvs-reel-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  padding-inline: var(--fvs-shell-inline);
+}
+
+.fvs-reel-slide {
+  flex: 0 0 auto;
+  width: min(var(--max), calc(100vw - 40px - var(--fvs-peek)));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* --- a plate: the drawing, the marginalia, the worked examples ------------- */
+
+.fsp {
+  height: 100%;
+  padding: 1.1rem 1.15rem 1rem;
+  border: 2px solid var(--wwlf-ink);
+  background: var(--white);
+  box-shadow: 6px 6px 0 rgba(19, 32, 41, 0.1);
+  scroll-margin-top: 1.5rem;
+}
+
+.fsp-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.fsp-id {
+  margin: 0.2rem 0 0;
+  color: var(--wwlf-mid);
+  font-family: var(--display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fsp-shape {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+  text-wrap: balance;
+}
+
+.fsp-essence {
+  max-width: 48ch;
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.fsp-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.fsp-frame-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.fsp-frame.fw-frame--plate {
+  max-width: 200px;
+}
+
+/* The numbered markers tie the notes to the parts — the surveyor's markup.
+   The notes carry the same numbers, so the key reads in either layout. */
+.fsp-marker {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 50%;
+  background: var(--wwlf-paper);
+  color: var(--wwlf-ink);
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+
+.fsp-notes {
+  margin: 0;
+}
+
+.fsp-note {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.fsp-note:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.fsp-note dt {
+  display: flex;
+  gap: 0.45rem;
+  align-items: baseline;
+  color: var(--wwlf-deep);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fsp-note-n {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 50%;
+  background: var(--wwlf-paper);
+  font-size: 10px;
+  letter-spacing: 0;
+  transform: translateY(2px);
+}
+
+.fsp-note dd {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.fsp-foot {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.fsp-drew {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.fsp-drew-lead {
+  font-weight: 700;
+}
+
+.fsp-drew-label {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --- the misfit panel: two of these, or none — not optional ---------------- */
+
+.fvs-misfit {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--pale);
+}
+
+.fvs-misfit h2 {
+  max-width: 18ch;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.fvs-misfit p {
+  max-width: 62ch;
+}
+
+/* --- desktop: phone + numbered key side by side --------------------------
+   Frame width and column gap come from ShapePlate via --fsp-* variables
+   (SHAPE_PLATE_LAYOUT in five-shapes.ts). No leader lines — the matching
+   numbers on the phone and in the key are the join. */
+
+@media (min-width: 880px) {
+  .fsp {
+    padding: 1.15rem 1.5rem 1.1rem;
+  }
+
+  .fsp-stage {
+    grid-template-columns: var(--fsp-frame-w) minmax(0, 1fr);
+    gap: var(--fsp-gap);
+    align-items: start;
+  }
+
+  .fsp-frame-wrap {
+    justify-content: flex-start;
+  }
+
+  .fsp-frame.fw-frame--plate {
+    width: var(--fsp-frame-w);
+    max-width: none;
+  }
+
+  .fsp-notes {
+    min-width: 0;
+  }
+
+  .fsp-note {
+    padding: 0.5rem 0;
+  }
+
+  .fsp-note:first-child {
+    padding-top: 0;
+  }
+
+  .fsp-note dd {
+    max-width: 52ch;
+  }
+}
+
+/* --- smaller viewports ------------------------------------------------------ */
+
+@media (max-width: 720px) {
+  .fvs-reel-slide {
+    width: min(100vw - 40px, calc(100vw - 28px - var(--fvs-peek)));
+  }
+
+  .fsp {
+    padding: 1rem 0.95rem 0.95rem;
+  }
+
+  .fsp-head {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .fsp-id {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  .fsp-note dd {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fvs-reel-scroller {
+    scroll-behavior: auto;
+  }
+
+  .fvs-reel-arrow {
+    transition: none;
+  }
+}

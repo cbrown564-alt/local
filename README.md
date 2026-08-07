@@ -50,6 +50,7 @@ pnpm optimize:media
 - `/transformations/<slug>/` — generated for slugs that pass the five
   publication checks in `research/publication.json`
 - `/about/` — local and community commitment
+- `/five-shapes/` — the five shapes a local site takes, drawn as annotated plates (the elevation method's shape → register table)
 - `/request/` — request form with error and success states
 - `/privacy/` — plain-language privacy notice linked at the point of collection
 - `/concepts/<slug>/` — standalone proposed screens used in the comparisons

@@ -92,6 +92,8 @@ export interface FaultWalk {
   shape: FaultShape;
   /** The line an owner should be able to say back after ten seconds. */
   message: string;
+  /** The self-check the owner takes away — one question per fault. */
+  check: string;
   /** The reasonable decision behind the fault — somebody was advised to do it. */
   decision: string;
   errand: string;
@@ -121,6 +123,8 @@ export interface SwapTestTheme {
   theme: string;
   shape: FaultShape;
   message: string;
+  /** The self-check the owner takes away — one question per fault. */
+  check: string;
   decision: string;
   links: FaultLink[];
 }
@@ -144,6 +148,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "The login at the door",
     shape: "a counter business",
     message: "A stranger should not need an account to find your front door.",
+    check: "Can a stranger see what you sell without an account?",
     decision:
       "The social page was free and quick to set up, and the login wall came with it. It felt like having a website.",
     errand: "See what they sell",
@@ -248,6 +253,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "Nobody answers “are you open?”",
     shape: "a counter business",
     message: "People arrive with one question. The first screen should answer it.",
+    check: "Does your first screen say whether you're open now?",
     decision:
       "The hours are on the site — they're just two screens down, under a translate bar somebody recommended and a video somebody paid for.",
     errand: "Find out if they're open now",
@@ -355,6 +361,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "The bell with no clapper",
     shape: "a place",
     message: "“Get in touch” means the customer does the work.",
+    check: "Can someone ask about a date on the page itself?",
     decision:
       "A form felt like a big build. A phone number was already on the page, and everybody knows how a phone works.",
     errand: "Ask whether the 14th is free",
@@ -435,6 +442,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     shape: "a product",
     message:
       "Your website greets people with what worries you. They came with a question.",
+    check: "Would a buyer see your terms before the button?",
     decision:
       "The newsletter capture was advised, and the capitalised terms were self-defence. Both made sense when they were added.",
     errand: "Buy the expensive one",
@@ -531,6 +539,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "Locked in a file",
     shape: "a counter business",
     message: "A menu nobody opens is a menu nobody reads.",
+    check: "Can tonight's menu be read on a phone, on the page?",
     decision:
       "The PDF was easy — export, upload, done. It was made for the kitchen printer, not for a phone in the street.",
     errand: "Read tonight's main courses",
@@ -620,6 +629,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "The dead end",
     shape: "a product",
     message: "Every link that ends in nothing was somebody deciding to visit you.",
+    check: "Does every address and link of yours still lead somewhere?",
     decision:
       "The domain lapsed in a renewal nobody saw, and the sold piece stayed listed because taking it down felt like losing the photograph.",
     errand: "Go to the address on the van",
@@ -707,6 +717,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "Whose shop is this?",
     shape: "a trade",
     message: "The biggest name on your website should be yours.",
+    check: "Is the biggest name on your website yours?",
     decision:
       "The supplier assets were free, high-resolution and came with brand guidance. Somebody said they added credibility.",
     errand: "Work out whose business this is",
@@ -780,6 +791,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     theme: "The stopped clock",
     shape: "a care practice",
     message: "Your site is telling people how old it is, not how good you are.",
+    check: "Could a stranger tell that you're still running?",
     decision:
       "Nobody changed the footer because nobody was looking at the footer. The business moved; the page didn't.",
     errand: "Check they're still running",
@@ -876,6 +888,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     shape: "a trade",
     message:
       "The thing you'd say in ten seconds at the counter isn't on the site at all.",
+    check: "Is the best reason to choose you the first thing on the page?",
     decision:
       "The record felt like boasting, so it went in the footer, where modest things go to hide.",
     errand: "Find the best reason to choose them",
@@ -971,6 +984,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     shape: "a trade",
     message:
       "Swap your name for a competitor's. If nothing else needs changing, the site isn't yours.",
+    check: "Swap your name for a competitor's — would anything else need to change?",
     decision:
       "A clean template with the name dropped in looked like a safe, professional choice. It looked like everyone else's, too.",
     links: [

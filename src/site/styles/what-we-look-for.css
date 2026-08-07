@@ -164,6 +164,42 @@
   text-wrap: pretty;
 }
 
+.wwlf-strip-verdict {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* A walk the visitor has finished turns its number into a tick — the page's
+   own record of which of the ten they have felt. */
+.wwlf-strip a.is-done .wwlf-strip-n,
+.wwlf-checklist a.is-done .wwlf-checklist-n {
+  font-size: 0;
+}
+
+.wwlf-strip a.is-done .wwlf-strip-n::before,
+.wwlf-checklist a.is-done .wwlf-checklist-n::before {
+  content: "✓";
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.wwlf-checklist a.is-done .wwlf-checklist-q {
+  color: var(--muted);
+}
+
+.wwlf-done-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .wwlf-strip-group a:hover .wwlf-strip-task {
   color: var(--blue);
   text-decoration: underline;
@@ -217,10 +253,54 @@
 
 .wwlf-theme-head {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 0 2rem;
   align-items: start;
   margin-bottom: 2rem;
+}
+
+/* The per-theme anchor: copies a link to this check, so one fault can be
+   sent to the person who needs it. */
+.wwlf-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.6rem;
+  border: 1.5px solid rgba(35, 72, 90, 0.3);
+  border-radius: 999px;
+  color: var(--wwlf-deep);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.wwlf-anchor:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.wwlf-anchor-tip {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  padding: 0.2rem 0.55rem 0.16rem;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--foam);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.wwlf-anchor.is-copied .wwlf-anchor-tip {
+  opacity: 1;
 }
 
 .wwlf-theme-id {
@@ -901,6 +981,128 @@ button.fwb-scroll:hover {
   color: var(--foam);
 }
 
+.wwlf-finale .wwlf-anchor {
+  border-color: rgba(244, 248, 250, 0.35);
+  color: #93a7b3;
+}
+
+.wwlf-finale .wwlf-anchor:hover {
+  border-color: var(--wwlf-brass);
+  color: var(--wwlf-brass);
+}
+
+.wwlf-finale .wwlf-anchor-tip {
+  background: var(--foam);
+  color: var(--ink);
+}
+
+/* --- the mid-page ask: quiet, for the ones who have seen enough ------------ */
+
+.wwlf-midcta {
+  padding: 1rem 0 4.5rem;
+}
+
+.wwlf-midcta .shell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 3rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  border: 2px solid var(--ink);
+  background: var(--white);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.wwlf-midcta p {
+  max-width: 42ch;
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.wwlf-midcta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--blue-deep);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.wwlf-midcta a:hover {
+  color: var(--blue);
+}
+
+/* --- the takeaway: run the ten on your own site ----------------------------- */
+
+.wwlf-checklist {
+  padding: 4.5rem 0 5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--pale);
+}
+
+.wwlf-checklist h2 {
+  max-width: 20ch;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.wwlf-checklist-lede {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.wwlf-checklist-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wwlf-checklist-list a {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 0 0.8rem;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.14);
+  color: inherit;
+  text-decoration: none;
+}
+
+.wwlf-checklist-n {
+  color: var(--blue);
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.wwlf-checklist-q {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: pretty;
+  transition: color 160ms ease;
+}
+
+.wwlf-checklist-list a:hover .wwlf-checklist-q {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
 .wwlf-finale .swap-errand {
   border-color: var(--foam);
   background: rgba(244, 248, 250, 0.06);
@@ -1171,6 +1373,16 @@ button.fwb-scroll:hover {
   max-width: 62ch;
 }
 
+.wwlf-purpose a {
+  color: var(--blue-deep);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.wwlf-purpose a:hover {
+  color: var(--blue);
+}
+
 .wwlf-close {
   padding: 6rem 0 7rem;
   background: var(--blue);
@@ -1220,6 +1432,10 @@ button.fwb-scroll:hover {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .wwlf-checklist-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1233,27 +1449,40 @@ button.fwb-scroll:hover {
   }
 
   .wwlf-theme-head {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
+    grid-template-columns: 1fr auto;
+    gap: 0.35rem 1rem;
   }
 
   .wwlf-theme-id {
+    grid-column: 1 / -1;
     margin-top: 0;
     font-size: 2.6rem;
     line-height: 1;
   }
 
+  .wwlf-anchor {
+    margin-top: 0.2rem;
+  }
+
+  /* The narration belongs next to the phone the visitor is tapping, not
+     below the counters: on small screens the note moves above the frame. */
   .fw-row {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+  }
+
+  .fw-rail {
+    display: contents;
+  }
+
+  .fw-note {
+    order: -1;
+    margin-bottom: 0;
   }
 
   .fw-stage {
     max-width: 270px;
-  }
-
-  .fw-rail {
-    max-width: none;
   }
 
   .wwlf-close {
