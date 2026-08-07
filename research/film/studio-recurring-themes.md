@@ -779,18 +779,90 @@ watched nine specific things go wrong.
 This replaces `studio-storytelling.md` §7 as the next Omni day. Same discipline:
 ten gens, half reserved for edit turns, contact-sheet before promoting.
 
-| Gen | Scene | Why this one first |
+### Re-aimed 7 August 2026 — read this before the table
+
+The slate below was written on 6 August, when the scenes were the only planned
+surface for the taxonomy. Three things changed within the day, and they change
+what the gens are *for* rather than which they are.
+
+**The fault walk took the scenes' first job.** The public page walks five faults
+as wireframes with an errand, and it makes the loss felt better than a depicted
+loss can: the count on screen is the visitor's own taps, it is argued in the
+studio's existing `TransformationErrand` currency, it degrades to the static
+pair that was required anyway, and it carries no generated-media disclosure. A
+scene is not competing with a still here — it is competing with a working
+interaction, and losing.
+
+**The convergence is worth recording.** Two passes with different criteria —
+"which scene reads without a caption" here, "which fault earns a public
+demonstration" on the page — independently picked almost the same set. The page
+kept T1, T4, T5, T7, T10; gens 1–6 below are T7, T1, T4, T10, T8, T5. Five of
+six agree. **T8 is the only gen with nothing behind it**, and it was chosen for
+being "likeliest to be beautiful", which was a fair criterion when the scenes
+were the product and is not one now. It comes off the slate.
+
+**One job is still exclusively the scenes'.** `research/outreach-postcards.md`
+needs a full-bleed **departure-beat still** per theme for the postcard front. A
+wireframe cannot be a poster. That is now the reason to generate, and it
+re-orders everything, because postcards go one-to-one to a business with a
+*recorded* fault.
+
+### Which themes have recipients
+
+`research/pipeline/verifications.json` carries `faults` arrays as of 7 August
+(`tools/pipeline/derive-faults.mjs`). Recorded so far, across 177 records:
+
+| Theme | Businesses with it recorded |
+| --- | --- |
+| T9 | 13 |
+| T1 | 9 |
+| T2 | 7 |
+| T5 | 2 |
+| T8 | 2 |
+| T3, T4, T6, T7, T10 | **0 — nobody has looked yet** |
+
+**This table is a detection artifact, not a prevalence finding**, and it must
+never be read as one — the same caution the concept tallies carry above. The
+five with recipients are exactly the five the research method calls mechanical;
+the five reading zero are exactly the five it says need a human opening the
+page. T7 is on six concepts in the corpus and zero in the pipeline for one
+reason only: no one has run the human pass.
+
+So the slate now splits by what is *sendable*, not by what is interesting:
+
+| Gen | Scene | Why now |
 | --- | --- | --- |
-| 1 | **T7** cellar → windowsill | The recognition argument, and the first/last frame pair is the studio's whole before/after in one still |
-| 2 | **T1** pane across the door | Most common fault in the corpus (5 concepts); tests whether object theatre reads without a caption |
-| 3 | **T4** umbrella in the rain | Tests the identical-composition constraint that makes a still pair work on a page |
-| 4 | **T10** the plate that won't fit | Tests whether Omni can *refuse* a physical action — the riskiest gen here |
-| 5 | **T8** the concertina unfold | Pure physics; likeliest to be beautiful on the first pass |
-| 6 | **T5** the bell with no clapper | Decides whether any of this survives muted (A23 audio question, on studio material) |
+| 1 | **T1** pane across the door | Nine recipients, and the studio's most-evidenced fault; tests whether object theatre reads without a caption |
+| 2 | **T9** dust on the stopped clock | Thirteen recipients — the largest sendable set — and the hardest front to write kindly, so it is worth learning early |
+| 3 | **T2** the route that ends | Seven recipients, four of them probe-confirmed dead; the flight is already storyboarded |
+| 4 | **T7** cellar → windowsill | No recipients *yet*, but it is the recognition argument and the first/last pair is the studio's whole before/after in one still |
+| 5 | **T10** the plate that won't fit | Tests whether Omni can *refuse* a physical action — the riskiest gen here, and the closer the reel needs |
+| 6 | **T5** the bell with no clapper | Only two recipients, but it decides whether any of this survives muted (A23 audio question, on studio material) |
 | 7–10 | Edit turns | Blank-lettering pass first on every survivor, then hold-longer and loop-freeze passes |
 
-Held back for a second day: T2, T3, T6, T9 — all four are safe, and none tests
-anything the first six don't.
+Off the slate: **T8**, for the reason above. Held for a second day: **T3, T4,
+T6** — all safe, none tests anything the first six don't, and none has a
+recipient until the human pass runs.
+
+**T4 loses its old justification.** It was gen 3 to test the
+identical-composition constraint that makes a still pair work on a page. The
+fault walk now tests that constraint in the browser, on the real surface, for
+free.
+
+### The unsettled question: two grammars for one taxonomy
+
+Three pages now describe the taxonomy in grey wireframe — the fault walk, the
+shapes plates ("the same grey grammar as the fault walk's mocks"), and the
+assembly page, which shares the walk's data module so the two cannot drift. The
+scenes propose a second, unrelated language: clay, weather, boots, an umbrella,
+a bell.
+
+Nothing is wrong with two grammars if the split is deliberate — wireframe for
+the *diagnosis* on screen, object theatre for the *invitation* in the post.
+But it has not been decided, and it should be before ten clips exist. The
+adjudicating document is
+[`three-ways-to-describe-the-work.md`](../three-ways-to-describe-the-work.md),
+which currently says nothing about motion.
 
 **Before generating.** Every prompt above needs the A20 checklist run on its
 output, and lettering is the first check every time. Sidecars go to
