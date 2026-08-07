@@ -8,7 +8,7 @@ Plans are read-only artefacts about source code — writing a plan never changes
 
 | # | Title | Severity | Category | Status |
 | --- | --- | --- | --- | --- |
-| [001](001-button-press-feedback.md) | Give `.button` press feedback on tap | HIGH | Physicality / Accessibility | APPLIED — device check pending |
+| [001](001-button-press-feedback.md) | Give `.button` press feedback on tap | HIGH | Physicality / Accessibility | DONE |
 
 ## Execution order
 

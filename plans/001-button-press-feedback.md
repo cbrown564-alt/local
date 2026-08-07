@@ -1,6 +1,6 @@
 # 001 — Give `.button` press feedback on tap
 
-- **Status**: APPLIED on master — awaiting real-device feel-check
+- **Status**: DONE — verified on device 2026-08-07 (commit d22516b)
 - **Commit**: 3f9d543
 - **Severity**: HIGH
 - **Category**: Physicality & origin (missing press feedback) / Accessibility
