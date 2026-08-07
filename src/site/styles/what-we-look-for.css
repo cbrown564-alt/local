@@ -52,6 +52,101 @@
   max-width: 46ch;
 }
 
+/* --- the hero art: the thesis drawn — five miniatures of the fixed walks
+   below, one fan, same grey grammar, the blue goal beat in a different place
+   on every frame. The same move as the /five-shapes/ hero. Decorative
+   (aria-hidden); the h1 and lede carry the words. */
+
+.wwlf-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* Grid items default to min-width auto — without this the fan's min-content
+   would push the whole hero wider than the shell and clip the lede. */
+.wwlf-hero-copy,
+.wlh {
+  min-width: 0;
+}
+
+.wlh {
+  margin: 0;
+}
+
+.wlh-fan {
+  display: flex;
+  align-items: flex-start;
+}
+
+.wlh-plate {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-left: -7%;
+}
+
+.wlh-plate:first-child {
+  margin-left: 0;
+}
+
+/* The fan: plates trade heights in pairs, tilting a degree or two off square
+   — a spread of worked examples, not a product grid. Later plates sit on
+   top, so the eye walks the five left to right. */
+.wlh-plate:nth-child(odd) {
+  transform: translateY(7%) rotate(-2deg);
+}
+
+.wlh-plate:nth-child(even) {
+  transform: rotate(1.6deg);
+}
+
+.wlh-plate:nth-child(3) {
+  transform: translateY(3%) rotate(-0.8deg);
+}
+
+.wlh-frame.fw-frame--plate {
+  width: 100%;
+  max-width: none;
+  box-shadow: 5px 5px 0 rgba(19, 32, 41, 0.14);
+}
+
+/* At miniature size the block labels would be specks — the blocks alone carry
+   the drawing, and the walks below keep their labels at full size. */
+.wlh .fwb-label {
+  display: none;
+}
+
+/* The fifth miniature is the swap test's shopfront, not a phone: same fan,
+   wider frame. Its own shadow is mixed for the dark finale band — the hero
+   sits on paper, so it takes the plates' shadow instead. */
+.wlh-shop .swap-shop {
+  width: 100%;
+  box-shadow: 5px 5px 0 rgba(19, 32, 41, 0.14);
+}
+
+/* One key line for the whole fan, in walk order — a pill per frame collides
+   at fan pitch; a single line wraps instead. The margin clears the staggered
+   plates' translateY, which the fan's own box doesn't include. */
+.wlh-key {
+  display: block;
+  margin-top: 2rem;
+  color: var(--wwlf-deep);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 960px) {
+  .wwlf-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+}
+
 .wwlf-howto {
   max-width: 62ch;
   margin-top: 2.25rem;

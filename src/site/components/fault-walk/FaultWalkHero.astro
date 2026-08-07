@@ -1,0 +1,56 @@
+---
+/**
+ * The /what-we-look-for/ hero illustration — the same move as the
+ * /five-shapes/ hero: the page's thesis drawn, not said. Miniatures of the
+ * five checks below, fanned in the fault walk's grey grammar — the four
+ * walks as fixed panels, the blue goal beat in a different place on every
+ * frame, and the swap test as the detailed shopfront, its brass door number
+ * where the walks spend their blue. "Five things we look for" in one glance,
+ * before a word is read.
+ *
+ * Purely decorative: the h1 and lede already carry every word of it, so the
+ * whole figure is aria-hidden. Drawn in DOM and CSS like the walks
+ * themselves — no imagery anywhere on this page.
+ */
+import { whatWeLookFor } from "../../data/fault-walks";
+import type { FaultWalk, SwapTestTheme } from "../../data/fault-walks";
+import FaultPanelView from "./FaultPanelView.astro";
+import SwapShop from "./SwapShop.astro";
+
+const walks = whatWeLookFor.filter((entry): entry is FaultWalk => entry.kind === "walk");
+const swap = whatWeLookFor.find((entry): entry is SwapTestTheme => entry.kind === "swap");
+---
+
+<figure class="wlh" aria-hidden="true">
+  <div class="wlh-fan">
+    {
+      walks.map((walk) => (
+        <div class="wlh-plate">
+          <div class="fw-frame fw-frame--plate wlh-frame">
+            <FaultPanelView panel={walk.after[0]} mode="after" interactive={false} />
+          </div>
+        </div>
+      ))
+    }
+    {
+      swap && (
+        <div class="wlh-plate">
+          <div class="wlh-shop">
+            <SwapShop
+              plate="none"
+              details
+              label="A wireframe shopfront with a hill silhouette etched in the window, a worn doorstep and a brass door number"
+            />
+          </div>
+        </div>
+      )
+    }
+  </div>
+  <figcaption class="wlh-key">
+    {
+      [...walks.map((walk) => walk.errand.toLowerCase()), swap?.theme.toLowerCase()]
+        .filter(Boolean)
+        .join(" · ")
+    }
+  </figcaption>
+</figure>
