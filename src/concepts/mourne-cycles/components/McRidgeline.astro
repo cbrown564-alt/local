@@ -1,0 +1,43 @@
+---
+/**
+ * The ridgeline — the real Mourne skyline the shop trades under.
+ *
+ * At build time this samples the baked terrain grid
+ * (src/site/data/mourne-terrain.json — open SRTM-derived elevation, baked by
+ * tools/pipeline/bake-mourne-terrain.mjs): the highest ground in each
+ * north–south column, exactly the skyline seen from the bay. The client
+ * bundle carries only the 140 sampled points, not the 176KB grid.
+ *
+ * mc-ridgeline.ts draws the line in over ~2.6s when the section scrolls
+ * into view, then a marker walks it with a live metre readout. Reduced
+ * motion paints the fully drawn skyline once — the settled frame.
+ */
+
+import terrain from "../../../site/data/mourne-terrain.json";
+
+const SAMPLES = 140;
+const range = terrain.maxHeight - terrain.minHeight || 1;
+const profile = Array.from({ length: SAMPLES }, (_, i) => {
+  const col = Math.round((i / (SAMPLES - 1)) * (terrain.width - 1));
+  let peak = -Infinity;
+  for (let row = 0; row < terrain.height; row += 1) {
+    const v = terrain.heights[row * terrain.width + col];
+    if (v > peak) peak = v;
+  }
+  return Math.round(((peak - terrain.minHeight) / range) * 1000) / 1000;
+});
+---
+
+<div
+  class="mc-ridge"
+  data-ridgeline
+  data-profile={JSON.stringify(profile)}
+  data-min={terrain.minHeight}
+  data-max={terrain.maxHeight}
+>
+  <canvas class="mc-ridge-canvas" aria-hidden="true"></canvas>
+  <p class="mc-ridge-readout">
+    <span class="mc-ridge-metres" data-ridge-readout>The high Mournes</span>
+    <span class="mc-ridge-note">above Newcastle and the bay</span>
+  </p>
+</div>
