@@ -517,7 +517,7 @@ now consume it:
   recorded. Front is the clip's departure frame; the reverse leads with a true
   good thing about the recipient *before* the page fault, dated and checkable.
 - **A public page.** [`research/what-we-look-for-brief.md`](research/what-we-look-for-brief.md)
-  — `/what-we-look-for/`, the ten staged as invented wireframes with a walkable
+  — `/where-it-fails/`, the faults staged as invented wireframes with a walkable
   errand each ("find out if they're open now"), the visitor's own taps counted.
   Not a before/after slider: that control belongs to the measured transformation
   pages, and every one of the ten faults is structural rather than aesthetic. No
@@ -542,16 +542,32 @@ and "no single form", and its resolution is
 Order: fault walk first, shapes second, assembly last; none ships ahead of the
 request path.
 
-**Done 6 August 2026 — `/what-we-look-for/` is public.** The fault-walk study
+**Done 6 August 2026 — `/where-it-fails/` is public.** The fault-walk study
 shipped as a main page: page-order numbering 1–10 (internal theme ids off-stage),
 a task strip of the jobs a stranger might try, guest-facing copy without studio
 repo paths, and links from the site header and footer. Watch outreach before
 deciding whether the shapes and assembly briefs become pages.
 
-**Next pick-up:** run the revised slate in the themes brief — gens 1–6 are T7,
-T1, T4, T10, T8, T5, with half the day's gens reserved for edit turns and the
-blank-lettering pass first on every survivor. Sidecars to
-`research/film/clips/studio/T<id>-<slug>.md`, provenance the same day.
+**Curated 7 August 2026 — exploratory generation is closed.** The contact-sheet
+and frame-sequence review selected T01 and T04 as the two fault films, X18 as
+the offer film to rework, X19 as page-only scope support, and X25 T04/T07 as
+the first print proofs with T10 as a hand-delivered leave-behind. X13 and X16
+survive as distribution/DOM rules; X22 survives in the existing interactive,
+not as film. The detailed kill list and asset evidence are in
+[`research/film/clips/studio/MANIFEST.md`](research/film/clips/studio/MANIFEST.md).
+No synthetic studio voice advances from the bakeoff.
+
+**Sequence proof implemented 7 August 2026:**
+[`studio-reel-v0.mp4`](research/film/clips/studio/studio-reel-v0.mp4) is the
+26-second silent T01 → T04 → provisional X18 assembly. Media probing and frame
+inspection verified its order, format, duration and lack of audio. It is an
+internal pacing proof, not corrected production media.
+
+**Next pick-up:** review that sequence as a whole and print X25 T04/T07 at A6.
+Correct the T01/T04 generation faults before a page trial. T01's mail use needs
+a face-to-face tone check; X17 remains a research interaction until an ear
+test shows it preserves owner dignity. Do not generate the retired slate to
+fill the old matrix.
 
 ## Blocked or deferred
 

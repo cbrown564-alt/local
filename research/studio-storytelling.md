@@ -225,7 +225,7 @@ Possible later homes (decide after prototypes):
 | `src/site/data/transformation-details.ts` | The evidence base — every documented fault and fix the themes were derived from |
 | `docs/RESEARCH_METHOD.md` → Fault taxonomy | The taxonomy fed back upstream: step 5 of verification records which of the ten a candidate shows, so design starts with the pitch found |
 | `research/outreach-postcards.md` | Ten postcards, one per theme — consumes the clips' departure frames as print fronts |
-| `research/what-we-look-for-brief.md` | `/what-we-look-for/` — the ten as walkable invented wireframes; hosts the clips beside the interactive, not above it |
+| `research/what-we-look-for-brief.md` | `/where-it-fails/` — five walkable invented wireframes; selected clips may sit beside the interactive, never above it |
 | `research/film/one-day-made-here.md` | Place atmosphere for the site; not a product explainer |
 | Showcase prototype | May host early S* miniatures beside sensory tiles |
 
@@ -235,9 +235,9 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 
 | Phase | Outcome | Gate |
 | --- | --- | --- |
-| **0 — Open** | This doc; folder `research/film/clips/studio/`; day-one slate | Done when first contact sheet exists |
-| **1 — Format bakeoff** | 8–12 clips across ≥4 formats; kill list written | At least two formats clearly carry a PRODUCT belief |
-| **2 — Prototype reel** | One 30–45s assembled “what we do” from winners | Internal review: would you send this to Buck’s Head / next prospect? |
+| **0 — Complete, 7 Aug** | This doc; folder `research/film/clips/studio/`; day-one slate | Contact sheets and intake manifest exist. |
+| **1 — Complete, 7 Aug** | 8–12 clips across ≥4 formats; kill list written | Clay fault film (T01/T04) and selective printed object theatre (X25) carry PRODUCT beliefs. |
+| **2 — Active** | One 24–28s silent sequence test: T01 → T04 → provisional X18 → DOM request close | Internal review: does the sequence make the offer clearer without making the work look expensive? |
 | **3 — Page trial** | One guest-facing studio page section (about or transformations) | Disclosure, provenance, reduced-motion, request path not harmed |
 | **4 — Repeatable kit** | Prompt templates + character refs + assemble notes | Another person can cut a new explainer chapter in a day |
 
@@ -262,23 +262,38 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
    [`research/film/studio-recurring-themes.md`](film/studio-recurring-themes.md).
    Object theatre (no faces, no hands, no lettering) is the locked grammar and
    the reason the scenes stay honest and generalisable.
-2. ~~Create `research/film/clips/studio/`~~ — folder ready; **next action:** run
-   the revised slate in the themes brief (gens 1–6 = T7, T1, T4, T10, T8, T5),
-   sidecars as `T<id>-<slug>.md`.
-3. Add a noindex `/prototypes/studio/` (or extend showcase) to host the contact
-   sheet and surviving clips.
-4. Write short prompt sidecars as files land; update the seed table statuses.
-5. After bakeoff: draft `docs/studio-storytelling-plan.md` only if Phase 2+
-   needs formal gates.
-6. Keep concept Omni backlog for business theatre; move studio-owned items
-   (A10, A19) under S7 / S1 as they are produced.
+2. ~~Run and curate the wide format bakeoff.~~ **Done 7 August 2026.** The
+   promotion set, reserves and retirements are recorded in
+   [`film/studio-media-experiments.md`](film/studio-media-experiments.md) and
+   [`film/clips/studio/MANIFEST.md`](film/clips/studio/MANIFEST.md). Do not
+   finish the unmade prompts by default.
+3. **Implemented 7 August — sequence proof:**
+   [`studio-reel-v0.mp4`](film/clips/studio/studio-reel-v0.mp4) is the silent
+   T01 → T04 → provisional X18 cut at 26 seconds. Direct frame inspection and
+   media probing verified the order, 1280 × 720 frame, 24 fps, duration and
+   absence of audio. It remains an internal pacing proof: the page supplies
+   the final request line as live DOM type, and the T01/T04 generation faults
+   must be corrected before any page trial.
+4. **Active — print proof:** print only X25 T04 and T07 at A6. Print T10 as a
+   hand-delivered leave-behind. T01 needs a face-to-face tone check before it
+   can enter a mail batch. No X25 whisper ships with the cards.
+5. **Held — page trial:** T01 and T04 may sit beside their matching fault-walk
+   interactives after corrected exports, disclosure, poster and reduced-motion
+   treatment exist. X19 belongs only on a later scope explanation with live
+   labels. X18 belongs on the request path only after its plates are reworked.
+6. Keep X2, X6, X14 and X17 as research references. Reopen one only for a
+   named product need. Retire the other generated branches; X22's idea is
+   already owned by the interactive swap test.
 7. Registered in `PLAN.md` §8 and the README ownership table.
 
-## 13. Open questions
+## 13. Open questions after curation
 
-- Do we want a recurring character, or only scenes/objects?
-- Is kinetic type allowed burned-in on social cuts but forbidden on-site?
-- Should outreach QR land on a prototype explainer before about-page integration?
-- How much of the elevation method is *teachable* to owners vs kept as craft?
+- Does the 24–28 second silent sequence clarify the offer without signalling an
+  expensive production package?
+- Do the T04 and T07 fronts remain legible and humane at actual A6 size?
+- Does T01 feel respectful when its reverse is read face-to-face to a business
+  with no owned site?
+- Does X17's meant/heard toggle preserve owner dignity when tested by ear? It
+  remains research-only until that answer is supported.
 
 Answer these from contact sheets, not from speculation.

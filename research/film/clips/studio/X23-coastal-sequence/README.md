@@ -1,7 +1,7 @@
 # X23 — Day-in-the-town mosaic
 
 Twelve GPT-Image stills for experiment **X23** in
-[`research/film/studio-media-experiments.md`](../../../research/film/studio-media-experiments.md).
+[`research/film/studio-media-experiments.md`](../../../studio-media-experiments.md).
 Same locked street camera; only light and weather change. Final plate
 (`X23-12-dawn-return.png`) is the open-door / boots return beat.
 
@@ -20,6 +20,7 @@ Same locked street camera; only light and weather change. Final plate
 | 11 | `X23-11-0000-midnight.png` | Midnight |
 | 12 | `X23-12-dawn-return.png` | Dawn return, open door |
 
-Omni micro-breathes and assembly not landed yet. Bakeoff inventory pointer:
-[`research/film/clips/studio/MANIFEST.md`](../../../research/film/clips/studio/MANIFEST.md).
-Generated — not footage; disclose if guest-facing.
+The 7 August curation retired the sequence because a fictional generic town
+weakened the local-trust claim. It was moved here from `public/`; the planned
+micro-breathes and assembly are cancelled. Bakeoff inventory:
+[`research/film/clips/studio/MANIFEST.md`](../MANIFEST.md).

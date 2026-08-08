@@ -1,15 +1,22 @@
 # Studio bakeoff intake — 7 August 2026
 
 Collected from `~/Downloads` plus Codex stills. X23 coastal stills live under
-[`public/media/coastal-sequence/`](../../../../public/media/coastal-sequence/)
-(not duplicated here). X25 postcard fronts + whispers live in
+[`X23-coastal-sequence/`](X23-coastal-sequence/) after retirement from the
+public deploy boundary. X25 postcard fronts + whispers live in
 [`X25-postcard-fronts/`](X25-postcard-fronts/).
 
 Prompts: [`../../studio-media-experiments.md`](../../studio-media-experiments.md),
 [`../../studio-recurring-themes.md`](../../studio-recurring-themes.md).
 Jobs / honesty: [`../../../studio-storytelling.md`](../../../studio-storytelling.md).
 
-Originals left in Downloads. Score column blank until contact-sheet review.
+Originals left in Downloads. Scores and promotion decisions were recorded from
+the 7 August contact-sheet, frame-sequence and mastering review.
+
+## Phase 2 sequence proof
+
+`studio-reel-v0.mp4` is a 26-second silent internal assembly of T01 → T04 →
+provisional X18. It tests sequence only; the known source faults remain. See
+[`studio-reel-v0.md`](studio-reel-v0.md). Do not copy it to `public/`.
 
 ## Theme controls (Flow clay)
 
@@ -53,17 +60,35 @@ Originals left in Downloads. Score column blank until contact-sheet review.
 | `X26-choir-of-clocks.mp4` | `seconds_Nine_dusty_clay_clo.mp4` | X26 |
 | `X27-nicer-dissolve.mp4` | `seconds_Abstract_miniature.mp4` | X27 |
 
-## X23 — coastal mosaic (elsewhere)
+## X23 — coastal mosaic (retired)
 
-Twelve stills in
-[`public/media/coastal-sequence/`](../../../../public/media/coastal-sequence/)
-as `X23-01-0600-fog.png` … `X23-12-dawn-return.png`. See that folder’s README.
-Omni breaths / assembled film not in this intake.
+Twelve stills in [`X23-coastal-sequence/`](X23-coastal-sequence/) as
+`X23-01-0600-fog.png` … `X23-12-dawn-return.png`. The fictional generic town
+weakened rather than supported local trust, so the sequence was moved out of
+`public/`. Do not assemble the planned film.
 
 ## X24 — killed
 
 Mythic object quest did not work out. No assets retained. Do not regenerate
 without a rewritten brief.
+
+## Voice bakeoff (research cast only)
+
+Folder: [`voice-bakeoff/`](voice-bakeoff/). Generation cast:
+`harbour-whisper`, `rain-glass`, `slate-narrator`, `harbour-brass`.
+
+These choices explain how the research files were generated; they are not
+production approval. The listening score sheet and local-listener gate remain
+open, and the curation decision promotes no synthetic studio voice.
+
+| Doc / tool | Role |
+| --- | --- |
+| [`voice-bakeoff/roster.json`](voice-bakeoff/roster.json) | voice_ids + job assignments |
+| [`voice-bakeoff/CAST.md`](voice-bakeoff/CAST.md) | Cast sheet |
+| [`voice-bakeoff/listen.html`](voice-bakeoff/listen.html) | Click-to-hear compare |
+| `tools/pipeline/bakeoff-studio-voices.mjs` | Design / create / sample |
+
+X25 whispers use `harbour-whisper` by default and `rain-glass` for T02 / T09.
 
 ## X25 — postcard fronts + whispers
 
@@ -86,41 +111,61 @@ Folder: [`X25-postcard-fronts/`](X25-postcard-fronts/). Sidecars:
 Also: `X25-T06-worries-first.png` (unselected v1), contact sheets v1/v2.
 Whispers generated via `node --env-file=.env tools/pipeline/generate-x25-whispers.mjs`.
 
+## Audio (ElevenLabs VO + Foley)
+
+Folder: [`audio/`](audio/). Index: [`audio/AUDIO.md`](audio/AUDIO.md).
+Generator: `node --env-file=.env tools/pipeline/generate-studio-audio.mjs`.
+
+| File | Experiment | Kind | Cast |
+| --- | --- | --- | --- |
+| `X06-radio-play.mp3` | X6 | mixed radio play | visitor=`harbour-whisper`, bot=`consent-bot`, narrator=`slate-narrator` |
+| `X07-asmr-counter-foley.mp3` | X7 | Foley bed | SFX only |
+| `X08-T01.mp3` … `X08-T10.mp3` | X8 | proverb + room tone | `slate-narrator` |
+| `X09-binaural-walk.mp3` | X9 | binaural mix | bot=`consent-bot`, narrator=`slate-narrator` |
+| `X17-meant.mp3` / `X17-heard.mp3` | X17 | split VO | owner=`harbour-brass`, heard=`rain-glass` |
+| `X18-send-the-link.mp3` | X18 | ask line | `harbour-brass` |
+| `X26-choir-of-clocks-bed.mp3` | X26 | clock bed | SFX only |
+
+Stems under `audio/stems/X0N/`. Sidecars beside mixed files.
+
 ## Not in this intake
 
 | Gap | Why |
 | --- | --- |
 | X1 video | Still only so far |
 | X3, X4 | No keepers |
-| X6–X9 audio | Not in this batch (X25 whispers cover the theme lines) |
-| X11–X13, X15, X17 | No keepers / not run |
+| X11–X13, X15 | No keepers / not run |
 | X14 video variants | Master still only |
+| X17 picture | Audio done; still uses X07 plate |
 | X24 | Killed |
 | X27 still | Video only so far |
 
-## Score sheet (fill on contact sheet)
+## Curation score sheet — 7 August 2026
 
 | ID | Assets | pass / soft-fail / kill | 10s belief? | Notes |
 | --- | --- | --- | --- | --- |
-| T01 | mp4 | | | |
-| T04 | mp4 | | | |
-| T07 | mp4 | | | |
-| T10 | mp4 | | | |
-| X01 | png | | | |
-| X02 | png + mp4 | | | |
-| X05 | png + mp4 | | | |
-| X06 | png | | | |
-| X07 | png | | | |
-| X10 | png + mp4 | | | |
-| X14 | png | | | |
-| X16 | mp4 | | | |
-| X18 | png + mp4 | | | |
-| X19 | png + mp4 | | | |
-| X20 | png + mp4 | | | |
-| X21 | png + mp4 | | | |
-| X22 | mp4 | | | |
-| X23 | 12 png @ coastal-sequence | | | |
-| X24 | — | kill | | Mythic quest failed |
-| X25 | 10 png + 10 mp3 | | | Print crop still open |
-| X26 | png + mp4 | | | |
-| X27 | mp4 | | | |
+| T01 | mp4 | **pass after edit** | yes | Promotion candidate; clean boot continuity and final bridge gesture. |
+| T04 | mp4 | **pass after edit** | yes | Strongest film; remove generated clock numerals and lengthen the loss hold. |
+| T07 | mp4 | soft-fail | no | Theme survives; floating key and repair do not read clearly enough. |
+| T10 | mp4 | soft-fail | no | Use the existing interactive swap test instead. |
+| X01 | png | kill | no | Historical treatment overwhelms the present-day fault. |
+| X02 | png + mp4 | soft-fail | no | Visual-style reserve; T01 tells the same story more clearly. |
+| X05 | png + mp4 | kill | no | Generic rain atmosphere, not a commercial answer. |
+| X06 | png + mp3 | soft-fail | no | Internal radio reference only; too long and antagonist-heavy. |
+| X07 | png + mp3 | kill | no | Still needs the brief; Foley adds no missing meaning. |
+| X08 | 10 mp3 | soft-fail | yes | Keep scripts as copy; retire the synthetic audio series. |
+| X09 | mp3 | kill | no | Headphone-only, 50 seconds, too much explanation. |
+| X10 | png + mp4 | kill | no | Reads as a generic AI product demo. |
+| X14 | png | soft-fail | no | Research reference for locked-camera series grammar only. |
+| X16 | mp4 | soft-fail | no | Keep the DOM-type rule; retire the generated loop. |
+| X17 | 2 mp3 | soft-fail | no | Insightful interaction reserve; voice and owner-empathy risk unvalidated. |
+| X18 | png + mp4 + mp3 | **soft-fail / rework** | no | Offer idea advances; current plates and house-like after tile do not. |
+| X19 | png + mp4 | **pass page-only** | yes with DOM labels | Scope support; keep out of the first reel. |
+| X20 | png + mp4 | kill | no | Defensive framing; final stamp becomes an illegible blot. |
+| X21 | png + mp4 | kill | no | Duplicates the assembly page and becomes clutter. |
+| X22 | mp4 | soft-fail | no | Retain the T10 idea in the interactive, not this film. |
+| X23 | 12 png @ `X23-coastal-sequence/` | kill | no | Fictional generic town weakens local trust; removed from `public/`. |
+| X24 | — | kill | no | Mythic quest failed; do not reopen. |
+| X25 | 10 png + 10 mp3 | **pass selectively** | yes with front line | Print T04/T07; T10 leave-behind; hold T01; retire whispers and the remaining first batch. |
+| X26 | png + mp4 + mp3 | kill | no | Watch-ad reading, forbidden numerals, clipped audio. |
+| X27 | mp4 | kill | no | Attractive clarity metaphor with no self-contained commercial meaning. |

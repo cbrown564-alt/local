@@ -67,25 +67,39 @@ that no longer appear anywhere in `src/`.
   ("imagined, not footage") and a reduced-motion poster. Includes X26
   (`X26-choir-of-clocks.{png,mp4}`) and X27 (`X27-nicer-dissolve.mp4`) from
   the same bakeoff evening.
-- `public/media/coastal-sequence/X23-*.png` — **held / research drop** (7 August
-  2026). Twelve GPT-Image stills for experiment X23 (day-in-the-town mosaic):
-  locked coastal street camera across fog → dawn return. Named
-  `X23-01-0600-fog.png` … `X23-12-dawn-return.png`. README in that folder.
-  Generated, not footage; disclose before any guest-facing use. Omni breaths
-  and assembled film not yet landed.
+- `research/film/clips/studio/studio-reel-v0.mp4` — **internal sequence proof**
+  (7 August 2026). A silent FFmpeg concatenation of the existing T01, T04 and
+  X18 research exports; no generated frames were added. It tests pacing while
+  the source corrections remain open and must not be copied to `public/`.
+  Sidecar: `research/film/clips/studio/studio-reel-v0.md`.
+- `research/film/clips/studio/X23-coastal-sequence/X23-*.png` — **retired /
+  research only** (7 August 2026). Twelve GPT-Image stills for X23's proposed
+  day-in-the-town mosaic. The fictional generic coastal street weakened the
+  studio's local-trust claim, so the set was moved out of `public/` and the
+  assembled film was cancelled. Do not promote or regenerate it.
 - `research/film/clips/studio/X25-postcard-fronts/X25-T*.png` — **held /
   research only** (7 August 2026). Ten GPT-Image 2 departure-beat postcard
   fronts for experiment X25 (one per theme T1–T10), plus contact sheets and
   an unselected T6 v1. Sidecar:
   `research/film/clips/studio/X25-postcard-fronts/X25-postcard-fronts.md`.
-  Object theatre only; no real businesses. Print crop at A6 still open.
-- `research/film/clips/studio/X25-postcard-fronts/X25-T*.mp3` — **held /
+  Object theatre only; no real businesses. Curation advances T04 and T07 to
+  A6 print proof and T10 to a hand-delivered leave-behind; T01 is held for a
+  face-to-face tone check. The remaining fronts stay research-only.
+- `research/film/clips/studio/X25-postcard-fronts/X25-T*.mp3` — **retired /
   research only** (7 August 2026). Ten synthetic whispers (theme messages)
   for the matching postcard QR tap-to-hear. ElevenLabs
-  `eleven_multilingual_v2`, voice Irish Cultural Guide
-  (`NPWroowF4phQhaPWjXPj`). Scripts and regenerator notes:
+  `eleven_multilingual_v2`; cast from voice bake-off —
+  MM Harbour Whisper default, MM Rain Glass for T02/T09. Scripts:
   `X25-whispers.md`; generator
   `tools/pipeline/generate-x25-whispers.mjs`. Disclose as synthetic wherever
+  guest-facing. The 7 August curation cut the audio companion; postcard QR
+  destinations must not use these files.
+- `research/film/clips/studio/audio/` — **held / research only** (7 August
+  2026). Studio bakeoff VO + Foley for X6–X9, X17, X18, X26. ElevenLabs
+  `eleven_multilingual_v2` (speech) and `eleven_text_to_sound_v2` (beds).
+  Voices: MM Harbour Whisper, MM Rain Glass, MM Slate Narrator, MM Harbour
+  Brass, MM Consent Bot (UI antagonist). Index `AUDIO.md`; generator
+  `tools/pipeline/generate-studio-audio.mjs`. Disclose as synthetic wherever
   guest-facing.
 
 ## Studio-drawn concept assets

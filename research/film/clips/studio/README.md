@@ -18,4 +18,5 @@ doc; otherwise log pass/fail in [`MANIFEST.md`](MANIFEST.md).
 
 Contact-sheet before promoting anything to `/prototypes/`.
 
-X23 coastal mosaic stills live under `public/media/coastal-sequence/`, not here.
+The retired X23 coastal mosaic stills live under `X23-coastal-sequence/`; they
+were removed from `public/` after curation.

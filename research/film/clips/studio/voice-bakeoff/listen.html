@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Studio voice bake-off — listen</title>
+    <style>
+      :root {
+        --ink: #1c2430;
+        --muted: #5c6775;
+        --line: #d5dbe3;
+        --paper: #f4f1ea;
+        --amber: #c9852d;
+        --slate: #2f3d4c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.45 "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+        color: var(--ink);
+        background:
+          radial-gradient(1200px 500px at 10% -10%, #e7eef5 0%, transparent 55%),
+          radial-gradient(900px 400px at 90% 0%, #f3e6d2 0%, transparent 50%),
+          var(--paper);
+      }
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+      h1 {
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.35rem;
+      }
+      .lede {
+        color: var(--muted);
+        max-width: 40rem;
+        margin: 0 0 1.75rem;
+      }
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .tabs button {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--slate);
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        cursor: pointer;
+        font: 600 0.85rem/1 system-ui, sans-serif;
+      }
+      .tabs button[aria-selected="true"] {
+        background: var(--slate);
+        border-color: var(--slate);
+        color: #fff;
+      }
+      .panel[hidden] {
+        display: none;
+      }
+      .voice {
+        border-top: 1px solid var(--line);
+        padding: 1rem 0;
+        display: grid;
+        grid-template-columns: minmax(10rem, 14rem) 1fr;
+        gap: 0.75rem 1.25rem;
+      }
+      .voice h2 {
+        font-size: 1.05rem;
+        margin: 0 0 0.2rem;
+      }
+      .meta {
+        color: var(--muted);
+        font: 0.82rem/1.35 system-ui, sans-serif;
+      }
+      audio {
+        width: 100%;
+        height: 2.25rem;
+      }
+      .score {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 0.45rem;
+      }
+      .score button {
+        font: 600 0.75rem/1 system-ui, sans-serif;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 0.35rem;
+        padding: 0.3rem 0.5rem;
+        cursor: pointer;
+      }
+      .score button.is-on {
+        background: var(--amber);
+        border-color: var(--amber);
+        color: #1a1208;
+      }
+      .note {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font: 0.9rem/1.45 system-ui, sans-serif;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.85em;
+      }
+      @media (max-width: 700px) {
+        .voice {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Studio voice bake-off</h1>
+      <p class="lede">
+        Same lines, different throats. Start with <strong>X25 whisper</strong>.
+        Score by ear: pass / soft / kill. Winners feed
+        <code>generate-x25-whispers.mjs</code> and later X6 / X8 / X17.
+      </p>
+      <div class="tabs" role="tablist" aria-label="Sample line"></div>
+      <div id="panels"></div>
+      <p class="note">
+        Open via a local server from the repo root, e.g.
+        <code>pnpm exec serve research/film/clips/studio/voice-bakeoff -p 8765</code>
+        then visit <code>http://localhost:8765/listen.html</code>.
+        Scores save in <code>localStorage</code> only.
+      </p>
+    </main>
+    <script type="module">
+      const LINES = [
+        { id: "x25-whisper", label: "X25 whisper (T4)" },
+        { id: "x8-proverb", label: "X8 proverb (T1)" },
+        { id: "x6-punch", label: "X6 deadpan punch" },
+        { id: "x6-visitor", label: "X6 visitor" },
+        { id: "x17-owner", label: "X17 owner" },
+        { id: "x6-bot", label: "X6 consent bot" },
+      ];
+
+      const VOICES = [
+        { key: "harbour-whisper", name: "MM Harbour Whisper", role: "Intimate postcard whisper", designed: true },
+        { key: "rain-glass", name: "MM Rain Glass", role: "Serious / weighty", designed: true },
+        { key: "slate-narrator", name: "MM Slate Narrator", role: "Calm proverb / narrator", designed: true },
+        { key: "brass-deadpan", name: "MM Brass Deadpan", role: "Dry humour punch", designed: true },
+        { key: "boots-visitor", name: "MM Boots Visitor", role: "Visitor / customer", designed: true },
+        { key: "control-irish-guide", name: "Irish Cultural Guide", role: "Current X25 baseline", designed: false },
+        { key: "control-lily", name: "Lily", role: "Velvety British", designed: false },
+        { key: "control-alice", name: "Alice", role: "Clear educator", designed: false },
+        { key: "control-george", name: "George", role: "Warm storyteller", designed: false },
+        { key: "control-daniel", name: "Daniel", role: "Steady broadcaster", designed: false },
+        { key: "control-river", name: "River", role: "Neutral calm", designed: false },
+        { key: "control-village-elder", name: "Old Irish Village Elder", role: "Folkloric Irish", designed: false },
+        { key: "control-bill", name: "Bill", role: "Wise mature (US)", designed: false },
+      ];
+
+      const storageKey = "mm-voice-bakeoff-scores-v1";
+      const scores = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      const tabs = document.querySelector(".tabs");
+      const panels = document.querySelector("#panels");
+
+      const save = () => localStorage.setItem(storageKey, JSON.stringify(scores));
+
+      for (const line of LINES) {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.role = "tab";
+        tab.id = `tab-${line.id}`;
+        tab.textContent = line.label;
+        tab.setAttribute("aria-selected", line.id === "x25-whisper" ? "true" : "false");
+        tab.addEventListener("click", () => select(line.id));
+        tabs.append(tab);
+
+        const panel = document.createElement("section");
+        panel.className = "panel";
+        panel.id = `panel-${line.id}`;
+        panel.role = "tabpanel";
+        panel.hidden = line.id !== "x25-whisper";
+
+        for (const voice of VOICES) {
+          const row = document.createElement("article");
+          row.className = "voice";
+          const sid = `${voice.key}__${line.id}`;
+          const current = scores[sid] || "";
+          row.innerHTML = `
+            <div>
+              <h2>${voice.name}</h2>
+              <div class="meta">${voice.role}${voice.designed ? " · designed" : " · library"}</div>
+              <div class="score" data-sid="${sid}">
+                <button type="button" data-v="pass" class="${current === "pass" ? "is-on" : ""}">pass</button>
+                <button type="button" data-v="soft" class="${current === "soft" ? "is-on" : ""}">soft</button>
+                <button type="button" data-v="kill" class="${current === "kill" ? "is-on" : ""}">kill</button>
+              </div>
+            </div>
+            <audio controls preload="none" src="samples/${sid}.mp3"></audio>
+          `;
+          panel.append(row);
+        }
+        panels.append(panel);
+      }
+
+      panels.addEventListener("click", (event) => {
+        const button = event.target.closest(".score button");
+        if (!button) return;
+        const wrap = button.parentElement;
+        const sid = wrap.dataset.sid;
+        const value = button.dataset.v;
+        scores[sid] = value;
+        save();
+        for (const b of wrap.querySelectorAll("button")) {
+          b.classList.toggle("is-on", b === button);
+        }
+      });
+
+      function select(id) {
+        for (const line of LINES) {
+          document.getElementById(`tab-${line.id}`).setAttribute("aria-selected", line.id === id ? "true" : "false");
+          document.getElementById(`panel-${line.id}`).hidden = line.id !== id;
+        }
+        for (const audio of document.querySelectorAll("audio")) audio.pause();
+      }
+    </script>
+  </body>
+</html>

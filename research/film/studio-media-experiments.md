@@ -41,6 +41,36 @@ brass. Dry, specific humour — never sneering at businesses that lack a site.
 **Acceptance line (default).** A viewer with no sound and no surrounding copy
 can say what went wrong or what was offered. Sidecars may tighten this.
 
+## Curation decision — 7 August 2026
+
+The divergent bakeoff is closed. Do not generate the remaining prompts simply
+because they are present in this file. The contact-sheet and frame-sequence
+review produced this deliberately small promotion set:
+
+| Role | Survives | Operating decision |
+| --- | --- | --- |
+| Fault films | **T01**, **T04** | Correct the visible generation faults, then use as the two film chapters beside the fault walk. |
+| Offer film | **X18** | Re-cut or regenerate the before/after plates; on-site meaning comes from live DOM type: `send the link` → `see the change` → `no obligation`. |
+| Scope film | **X19** | Page-only support for the three service scopes, always with live labels; not part of the first reel. |
+| Print | **X25-T04**, **X25-T07** | First A6 print proofs. |
+| Conversation leave-behind | **X25-T10** | Hand-delivered only; not a mailer. |
+| Distribution / implementation rules | **X13**, **X16** | X13 is a 9:16 derivative of T04, not a new scene. X16 contributes the live-DOM-type rule; its generated loop is retired. |
+| Idea retained in another medium | **X22** | The swap test stays as the existing interactive T10 demonstration; the generated film is retired. |
+
+X2, X6, X14 and X17 remain research references. They require a new, named
+product need before any further generation. X8's lines remain a copy bank, but
+the synthetic proverb series does not advance. X1, X3–X5, X7, X9–X12, X15,
+X20–X21, X23–X24 and X26–X27 are retired. X25 whispers are retired; no
+synthetic studio voice is production-approved by this bakeoff.
+
+The first sequence test is the 26-second
+[`studio-reel-v0.mp4`](clips/studio/studio-reel-v0.mp4): T01 → T04 → a
+provisional X18, followed by a DOM request close when it is put on a page. It
+is silent. X19 belongs later, after the visitor understands the offer. The
+detailed asset decisions live in
+[`clips/studio/MANIFEST.md`](clips/studio/MANIFEST.md); this file remains the
+historical prompt record.
+
 ---
 
 ## Bakeoff days (suggested)
@@ -387,8 +417,11 @@ faces, no hands. Departure-beat composition — empty street energy. County Down
 palette.
 ```
 
-**ElevenLabs script (≈45s).** Single calm studio voice, dry, local, not salesy.
-Disclose as synthetic wherever this ships.
+**ElevenLabs script (≈45s).** Multi-voice cast from
+[`clips/studio/voice-bakeoff/roster.json`](clips/studio/voice-bakeoff/roster.json):
+Visitor = `harbour-whisper`, Voice-from-nowhere = `consent-bot`, Narrator =
+`slate-narrator`. Dry, local, not salesy. Disclose as synthetic wherever this
+ships. Regenerator: `tools/pipeline/generate-studio-audio.mjs --only=X6`.
 
 ```
 [soft street rain under]
@@ -460,8 +493,9 @@ readable fake policies.
 **Stack.** ElevenLabs primary; optional GPT-Image 2 poster per line.  
 **Message.** Each T1–T10 message, ten seconds, same voice, different room tone.
 
-**Voice direction.** One consistent calm NI / coastal voice. Not cartoon. Not
-RP announcer. Disclose synthetic.
+**Voice direction.** One consistent calm voice — research cast choice
+`slate-narrator` (not tour-guide Irish, not RP announcer). Disclose synthetic.
+Regenerator: `tools/pipeline/generate-studio-audio.mjs --only=X8`.
 
 **Scripts (one file each: `X8-T01.mp3` … `X8-T10.mp3`).**
 
@@ -1055,6 +1089,15 @@ tap-to-hear whisper.
 **Whisper script (≤8s).** Theme message only — e.g. T4 line. No “we audited
 you” language on the audio; the postcard copy owns the one-to-one address.
 
+**Voice.** Do **not** default to a single tour-guide Irish voice. First pass
+(Irish Cultural Guide) was too uniform for ten themes and too “guide-like”
+for a tap-to-hear whisper. Cast from the bake-off in
+[`clips/studio/voice-bakeoff/`](clips/studio/voice-bakeoff/) — at minimum a
+harbour whisper + a serious alternate for weightier themes (T2 / T9). Wider
+studio roles (narrator, visitor, owner, consent-bot, deadpan) live in the same
+roster for X6 / X8 / X17. Near-miss NI accents lose to a clear neutral British
+neighbour voice.
+
 **Acceptance.** Front works offline as print. Clip works mute. Kill if QR lands
 on a marketing menu.
 
@@ -1149,6 +1192,7 @@ gradient makeover (that’s the villain).
 | [`omni-clip-backlog.md`](omni-clip-backlog.md) | Shared Omni craft, A20 edit protocol, concept clips |
 | [`../image-provenance.md`](../image-provenance.md) | Required before commit |
 | [`../outreach-postcards.md`](../outreach-postcards.md) | X25 consumer |
+| [`clips/studio/voice-bakeoff/`](clips/studio/voice-bakeoff/) | Multi-voice cast + listen sheet |
 
 When a format clearly wins a belief test, graduate it into
 `studio-storytelling.md` §4/§6 and retire or demote the rest here — do not let

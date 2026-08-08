@@ -5,7 +5,8 @@
 - Prompt source: `research/film/studio-media-experiments.md` §X25 and
   `research/film/studio-recurring-themes.md` §T1–T10
 - Output: ten 1536 × 1024 PNG stills plus a contact sheet
-- Status: initial generation pass; not yet print-proofed or promoted
+- Status: curated 7 August 2026; T04/T07 advance to A6 proof, T10 to a
+  hand-delivered leave-behind, T01 is held for a face-to-face tone check
 
 ## Common prompt
 
@@ -47,11 +48,12 @@ order. `X25-contact-sheet.png` records the pre-edit T6 set.
 
 Ten matching ElevenLabs lines (theme messages only) generated 7 August 2026 —
 see [`X25-whispers.md`](X25-whispers.md). Regenerator:
-`node --env-file=.env tools/pipeline/generate-x25-whispers.mjs`.
+`node --env-file=.env tools/pipeline/generate-x25-whispers.mjs`. The curation
+retired the audio companion; the files and generator remain research records.
 
 ## Next test
 
-Crop and print these at 105 × 148 mm before promotion. The screen review does
-not answer whether each loss beat remains legible at postcard size. Add the
-required generated-media entry to `research/image-provenance.md` before any of
-these files are committed.
+Crop and print **T04 and T07 only** at 105 × 148 mm; print T10 separately as a
+hand-delivered leave-behind. Inspect legibility, disclosure, reverse hierarchy
+and QR scanning at actual size. Do not widen the batch from the screen review.
+The provenance entry is recorded in `research/image-provenance.md`.

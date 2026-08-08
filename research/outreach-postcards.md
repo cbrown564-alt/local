@@ -23,6 +23,27 @@ card stops being advertising and becomes a small piece of evidence.
 business's `faults` array, with its dated evidence. No fault recorded → no
 mailer. A business gets one card, not a set.
 
+## First print decision — 7 August 2026
+
+The ten-card taxonomy remains useful, but the first production proof is not a
+ten-card batch:
+
+- **Print at A6 now:** T4 (the safest, clearest errand) and T7 (the most
+  generous argument).
+- **Print as a hand-delivered leave-behind:** T10. It is not a mailer.
+- **Hold for a face-to-face tone check:** T1. The front is strong; posting a
+  message about having no owned site carries the greatest relationship risk.
+- **Do not print in the first batch:** T2, T3, T5, T6, T8 and T9. Their current
+  fronts are either too ambiguous without explanation or too easy to read as
+  criticism of the business rather than the page.
+- **No audio companion:** the X25 whispers are retired. The QR leads to the
+  matching fault-walk anchor or a later measured conversion variant, never to
+  tap-to-hear synthetic speech.
+
+The next evidence is a physical 105 × 148 mm proof, not another screen review.
+Do not widen the print batch until the T4/T7 front line, disclosure, reverse
+hierarchy and QR have been inspected and scanned at actual size.
+
 ## Anatomy
 
 ### Front — the fault, felt
@@ -50,7 +71,7 @@ the recipient's own site is not on it.
    independent-concept label the site uses. *"One register, filterable, all
    thirteen in a single view — the shape we built for [concept], an independent
    concept, not commissioned."*
-4. **QR → the theme's own anchor** on `/what-we-look-for/#t7`, so the card and
+4. **QR → the theme's own anchor** on `/where-it-fails/#t7`, so the card and
    the page make the same argument rather than two.
 5. **The offer:** free before-and-after, no obligation, what we need from them
    (a link), and the studio's local address.
