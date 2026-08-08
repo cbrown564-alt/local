@@ -272,7 +272,7 @@ export const transformationCandidates: Transformation[] = [
     beforeAlt:
       "Mourne Cycles' current homepage: a black header with the shop logo and phone number above a collage of Trek, Bontrager and Shimano logos and cut-out bike photographs",
     afterAlt:
-      "Mourne Made concept opening on the shop's own black and red identity, the Mourne Cycles wordmark, a Trek trail photograph and a numbered range list with a Cycle to Work option",
+      "Mourne Made concept opening on the shop's own black and red identity, the kinetic Mourne Cycles wordmark riding in over a generated trail plate, and a terrain-mapped range rail with a Cycle to Work option",
     href: "/transformations/mourne-cycles/",
     pin: { x: 250, y: 445 },
   },

@@ -8,6 +8,20 @@ these briefs follow is in `docs/the-elevation-method.md`.
 **Status: moves 1–5 shipped 31 July 2026.** Move 6 (founding arc) waits on an
 ownership sourcing decision in `research/pipeline/verifications.json`.
 
+**Flagship rebuild shipped 8 August 2026.** The concept is now a complete
+six-page site (home, bikes, workshop, hire, cycle-to-work, trails) on a shared
+shell with the mobile-nav defect fixed, kinetic typography (hero ride-in +
+scroll-velocity lean, both on the one scheduler with designed reduced-motion
+settled states), a trails theatre session (the real Mourne skyline sampled at
+build time from the baked SRTM-derived terrain grid, drawn in on arrival with
+a walking marker and metre readout), an accessible workshop booking widget
+that composes an email carrying service + day (the thin mailto loop, fixed
+honestly), and a single `#mc-grade` photographic voice. No new generated
+media shipped with the rebuild, so `research/image-provenance.md` needed no
+new entries; the three plates left open are briefed in
+`mc-generation-brief.md`. The mobile nav is no longer absent — the standing
+constraint below is closed.
+
 ## The shape of this business
 
 A **trade** business — and the archived reviews were blunt: "nothing on the
