@@ -11,7 +11,7 @@ import "../site/styles/what-we-look-for.css";
 
 const walks = whatWeLookFor.filter((entry): entry is FaultWalkData => entry.kind === "walk");
 const swap = whatWeLookFor.find((entry): entry is SwapTestTheme => entry.kind === "swap");
-if (!swap) throw new Error("what-we-look-for: the swap test is missing from the reel");
+if (!swap) throw new Error("where-it-fails: the swap test is missing from the reel");
 
 /* Page order is 1–5. Internal theme ids (t1, t4…) stay in data and anchors
    only — never as guest-facing labels. The strip derives from the reel
@@ -20,7 +20,7 @@ if (!swap) throw new Error("what-we-look-for: the swap test is missing from the 
 type StripItem = { href: string; task: string; n: number; verdict: string };
 type StripGroup = { tag: string; label: string; start: number; items: StripItem[] };
 
-/* The five run as three movements: the access faults, the identity fault,
+/* The five run as three movements: the access snags, the identity snag,
    then the swap test as the closer. The bands are the pacing — they break a
    scroll into an argument with a beginning, a turn and an ending. */
 const parts: Record<
@@ -42,7 +42,7 @@ const parts: Record<
   },
 };
 
-/* The verdict under each errand: does the fault stop the stranger outright,
+/* The verdict under each errand: does the snag stop the visitor outright,
    or let them through at a cost? That is part one's point against part two's. */
 const verdictFor = (walk: FaultWalkData) =>
   walk.stop.kind === "blocked" ? "stops you" : "found, at a cost";
@@ -81,8 +81,8 @@ strip.push({
 ---
 
 <BaseLayout
-  title="What we look for — Mourne Made"
-  description="Five things we look for before we redesign anything — walked as made-up wireframes, so you can feel what each one costs a stranger."
+  title="Where it fails — Mourne Made"
+  description="Five ordinary things a visitor tries on a local site — and what each one costs them when the site isn’t ready."
   ogImage={ogImages.studio}
   ogImageAlt="Mourne Made — local websites for Dundrum and Newcastle"
 >
@@ -92,10 +92,10 @@ strip.push({
         <p class="wwlf-hero-count" aria-hidden="true">5</p>
         <div class="wwlf-hero-copy">
           <p class="eyebrow">Mourne Made</p>
-          <h1>Five things we look for before we redesign anything.</h1>
+          <h1>Where it fails.</h1>
           <p class="lede">
-            What twenty concepts taught us to check first — and what each one costs someone
-            standing outside your door.
+            Five ordinary things a visitor tries on a local site — and what each one costs them
+            when the site isn’t ready.
           </p>
           <p class="wwlf-howto">
             <span class="wwlf-howto-lead">How it works.</span>
@@ -103,18 +103,17 @@ strip.push({
             effort is the point. Then press <strong>Fix it</strong> and try the same thing again.
           </p>
           <p class="wwlf-invented">
-            These are made-up sites — grey blocks, no business names. Faults we find on a real site
-            go only to that business, never onto a public page. The numbers here are yours, tapping
-            these mocks; measured figures stay with the named case studies.
+            These are made-up sites — grey blocks, no business names. If we find the same thing on
+            your site, it stays between us.
           </p>
         </div>
         <FaultWalkHero />
       </div>
     </section>
 
-    <nav class="wwlf-index" aria-label="Five things a stranger might try">
+    <nav class="wwlf-index" aria-label="Five things a visitor might try">
       <div class="shell">
-        <h2>Five things a stranger might try.</h2>
+        <h2>Five things a visitor might try.</h2>
         <div class="wwlf-strip">
           {
             strip.map((group) => (
@@ -193,8 +192,8 @@ strip.push({
         <p class="eyebrow">Take it with you</p>
         <h2>Run the five on your own site.</h2>
         <p class="wwlf-checklist-lede">
-          One question per check, in the same order as the walks above. Any "no" is a fault a
-          stranger is already paying for.
+          One question per check, in the same order as the walks above. Any "no" is something a
+          visitor is already paying for.
         </p>
         <ol class="wwlf-checklist-list">
           {
@@ -219,30 +218,12 @@ strip.push({
       </div>
     </section>
 
-    <section class="wwlf-purpose">
-      <div class="shell">
-        <p class="eyebrow">What this is for</p>
-        <h2>A checklist we run before we redesign anything — not a quiz about you.</h2>
-        <p>
-          These five are step 5 of the studio's research method: the check on a business's public
-          site before anything is redesigned. The mocks above stay nameless; the measurements
-          don't — <a href="/transformations/">the case studies</a> name the business and date
-          the audit.
-        </p>
-        <p>
-          Two things this page never does. It never turns our case-study notes into a claim about
-          websites in general. And it never grades you: the taps above are yours, on these made-up
-          phones — nothing here scores your site.
-        </p>
-      </div>
-    </section>
-
     <section class="wwlf-close">
       <div class="shell">
         <p class="eyebrow">Your turn</p>
         <h2>Send a link. We'll walk your site the same way.</h2>
         <p>
-          We note what stops a stranger, fix the worst of it as a free before-and-after, and show
+          We note what stops a visitor, fix the worst of it as a free before-and-after, and show
           you both. No obligation.
         </p>
         <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>

@@ -1,0 +1,115 @@
+---
+/**
+ * The assembly's wireframe chassis — one grey frame with layers 1..N seated,
+ * in the fault walk's grammar. Every state of the build is this one
+ * component: the reel slides (upto = fresh = N, so the arriving layer carries
+ * its gesture), the exploded plate (upto 5, numbered markers), the stop's
+ * chassis (the register slot swapped in, the blank nameplate hovering), and
+ * the hero fan miniatures.
+ *
+ * Two forms of the one build: "phone" (the default, the tall frame every
+ * other page in the family uses) and "desktop" (a browser window — tab
+ * strip, address bar, the same layers re-laid for a wide screen). The build
+ * order is the argument; the desktop form exists so the argument is seen to
+ * survive the change of screen.
+ *
+ * The frame is decorative everywhere it appears: the narration lines are
+ * real DOM text beside it, so the whole chassis is aria-hidden.
+ */
+import type { FaultPanel } from "../../data/fault-walks";
+import { assemblyBeats, assemblyStop } from "../../data/assembly";
+import FaultPanelView from "../fault-walk/FaultPanelView.astro";
+
+interface Props {
+  /** Layers 1..upto are seated. */
+  upto: number;
+  /** The layer arriving now — its gesture runs when the slide is current. */
+  fresh?: number;
+  /** The exploded plate: a numbered marker per layer. */
+  numbered?: boolean;
+  /** The stop: the register slot replaces the name band, plate hovering.
+   *  Phone only — the stop's drawn beat belongs to the one chassis. */
+  stop?: boolean;
+  /** "phone" (default) or "desktop" — the browser-window chassis. */
+  form?: "phone" | "desktop";
+  frameClass?: string;
+}
+
+const { upto, fresh, numbered = false, stop = false, form = "phone", frameClass } = Astro.props;
+const desktop = form === "desktop";
+
+const layers = assemblyBeats.slice(0, upto).map((beat, index) => {
+  const n = index + 1;
+  /* The stop's chassis keeps every layer but swaps the register's own block
+     for the empty slot — the build is finished, and grey has nothing to
+     offer the one block that cannot stay anyone's. */
+  let blocks = desktop ? beat.desktopBlocks : beat.blocks;
+  if (stop && beat.beat === assemblyStop.slotBeat) {
+    blocks = blocks.map((block, blockIndex) =>
+      blockIndex === assemblyStop.slotBlock
+        ? { ...block, kind: "empty" as const, label: undefined }
+        : block,
+    );
+  }
+  const panel: FaultPanel = {
+    id: `layer-${n}`,
+    caption: `Layer ${n} of the assembly`,
+    blocks,
+  };
+  return { beat, n, panel };
+});
+---
+
+<div
+  class:list={[
+    "fw-frame fw-frame--plate hasg-chassis",
+    desktop && "hasg-chassis--desktop",
+    frameClass,
+  ]}
+  aria-hidden="true"
+>
+  {
+    desktop && (
+      <div class="hasg-chrome">
+        <span class="hasg-chrome-dots">
+          <span class="hasg-chrome-dot" />
+          <span class="hasg-chrome-dot" />
+          <span class="hasg-chrome-dot" />
+        </span>
+        <span class="hasg-chrome-address" />
+      </div>
+    )
+  }
+  {
+    layers.map(({ beat, n, panel }) => (
+      <div
+        class:list={[
+          "hasg-layer",
+          `hasg-g--${beat.gesture}`,
+          fresh === n && "hasg-layer--fresh",
+        ]}
+        data-layer={n}
+      >
+        <FaultPanelView panel={panel} mode="before" interactive={false} />
+      </div>
+    ))
+  }
+  {
+    numbered &&
+      layers.map(({ beat, n }) => {
+        const marker = desktop ? beat.desktopMarker : beat.marker;
+        return (
+          <span class="hasg-marker" style={`left:${marker.x}%;top:${marker.y}%;`}>
+            {n}
+          </span>
+        );
+      })
+  }
+  {
+    stop && (
+      <div class="swap-plate hasg-nameplate" data-drawn-beat>
+        <span class="swap-plate-face" />
+      </div>
+    )
+  }
+</div>

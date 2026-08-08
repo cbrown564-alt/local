@@ -1,4 +1,10 @@
-# `/five-shapes/` — a pattern book, not a template gallery
+# `/why-its-yours/` — a pattern book, not a template gallery
+
+> **Guest voice, titles, and URLs:** superseded by
+> [`owner-voice-on-the-three-pages.md`](owner-voice-on-the-three-pages.md).
+> Public route is `/why-its-yours/` (was `/five-shapes/`). This brief still owns
+> structure, interaction, and honesty constraints.
+
 
 *Written 6 August 2026. Sibling of
 [`what-we-look-for-brief.md`](what-we-look-for-brief.md) — the third of the

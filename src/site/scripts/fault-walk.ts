@@ -190,12 +190,12 @@ function mountWalk(root: HTMLElement): void {
     ended = false;
     currentPanel = null;
     live.dataset.fwMode = mode;
-    if (badgeEl) badgeEl.textContent = mode === "after" ? "the fix" : "the fault";
+    if (badgeEl) badgeEl.textContent = mode === "after" ? "the fix" : "the snag";
     updateCounts();
     outcomeEl.textContent = "";
     actualsEl.textContent = "";
     fixButton.classList.remove("is-ready");
-    fixButton.textContent = mode === "after" ? "Show the fault again" : "Fix it";
+    fixButton.textContent = mode === "after" ? "Show the snag again" : "Fix it";
     const first = panelsData()[0];
     showPanel(first.id);
     setNote(mode === "after" ? "Same job. Try it again." : (first.note ?? ""));

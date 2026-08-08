@@ -1,5 +1,10 @@
 # Three ways to describe the work
 
+> **Guest voice, titles, and URLs:** superseded by
+> [`owner-voice-on-the-three-pages.md`](owner-voice-on-the-three-pages.md).
+> The owner jobs in the table below still hold; the published names and ledes
+> do not.
+
 *Written 6 August 2026. [`what-we-look-for-brief.md`](what-we-look-for-brief.md)
 staged the fault taxonomy as a public page, and working on it surfaced that it
 is one of three plausible answers to the same underlying brief — a public
@@ -12,9 +17,9 @@ The three briefs:
 
 | | Approach | Brief | Status |
 | --- | --- | --- | --- |
-| **A** | The diagnosis — five faults, walked | [`what-we-look-for-brief.md`](what-we-look-for-brief.md) | Public at [`/what-we-look-for/`](../src/pages/what-we-look-for.astro) |
-| **B** | The assembly — one site, built in front of you | [`how-a-site-goes-together-brief.md`](how-a-site-goes-together-brief.md) | Brief done |
-| **C** | The shapes — a drawn, annotated pattern book | [`five-shapes-brief.md`](five-shapes-brief.md) | Brief done |
+| **A** | The diagnosis — five snags, walked | [`what-we-look-for-brief.md`](what-we-look-for-brief.md) | Public at [`/where-it-fails/`](../src/pages/where-it-fails.astro) |
+| **B** | The build — one site, put together in front of you | [`how-a-site-goes-together-brief.md`](how-a-site-goes-together-brief.md) | Public at [`/how-its-made/`](../src/pages/how-its-made.astro) |
+| **C** | Why it’s yours — a drawn, annotated pattern book | [`five-shapes-brief.md`](five-shapes-brief.md) | Public at [`/why-its-yours/`](../src/pages/why-its-yours.astro) |
 
 ## One method, three directions
 

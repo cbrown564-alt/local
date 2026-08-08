@@ -57,8 +57,10 @@ export default defineConfig({
   site: "https://mournemade.co.uk",
   trailingSlash: "always",
   redirects: {
-    "/prototypes/what-we-look-for": "/what-we-look-for/",
-    "/prototypes/what-we-look-for/": "/what-we-look-for/",
+    "/prototypes/what-we-look-for/": "/where-it-fails/",
+    "/what-we-look-for/": "/where-it-fails/",
+    "/how-a-site-goes-together/": "/how-its-made/",
+    "/five-shapes/": "/why-its-yours/",
   },
   integrations: [
     devOnlyWorkbench,

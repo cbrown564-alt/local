@@ -1,0 +1,53 @@
+---
+/**
+ * The no-JS / reduced-motion state: the exploded diagram. The finished
+ * wireframe drawn once with numbered markers and leader ticks, the five
+ * narration lines as a numbered list beside it, and the stop as the final
+ * entry. This plate is designed first — it is the settled frame the sensory
+ * rules require, it is what prints, and it carries the full argument as
+ * text, so the live reel can stay an enhancement mounted over it.
+ *
+ * Like the live build, the chassis matches the screen: phone below the wide
+ * breakpoint, browser window at and above it — same layers, same numbers.
+ *
+ * The beat anchors live on these list items (never on the reel slides): a
+ * strip or checklist link resolves here without JS, and the reel script
+ * intercepts the same hrefs to page the live reel when it is mounted.
+ */
+import { assemblyBeats, assemblyStop } from "../../data/assembly";
+import AssemblyChassis from "./AssemblyChassis.astro";
+---
+
+<div class="hgx" data-hasg-static>
+  <div class="hgx-stage">
+    <div class="hgx-frames">
+      <div class="hgx-frame-wrap hgx-frame-wrap--phone">
+        <AssemblyChassis upto={assemblyBeats.length} numbered frameClass="hgx-frame" />
+      </div>
+      <div class="hgx-frame-wrap hgx-frame-wrap--desktop">
+        <AssemblyChassis
+          upto={assemblyBeats.length}
+          numbered
+          form="desktop"
+          frameClass="hgx-frame"
+        />
+      </div>
+    </div>
+    <ol class="hgx-key">
+      {
+        assemblyBeats.map((beat) => (
+          <li id={beat.id} class="hgx-key-item">
+            <strong class="hgx-key-name">{beat.name}.</strong> {beat.narration}
+          </li>
+        ))
+      }
+      <li class="hgx-key-item hgx-key-stop">
+        <strong class="hgx-key-name">{assemblyStop.name}.</strong> {assemblyStop.keyLine}
+      </li>
+    </ol>
+  </div>
+  <p class="hgx-hint">
+    The building version needs JavaScript with motion allowed; this plate is the same argument,
+    settled — every part numbered, in the order it was built.
+  </p>
+</div>

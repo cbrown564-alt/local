@@ -1,0 +1,970 @@
+/* /how-a-site-goes-together/ — one wireframe, assembled in front of you.
+   The wireframe grammar (frame, blocks, brass nameplate) is borrowed from
+   /what-we-look-for/ — same stroke, same grey, so the family reads as one
+   vocabulary. This sheet carries the assembly: the scroll-driven build (a
+   tall section, a pinned stage, scroll position as time), the layer gestures
+   (seat, slide, unfold, light — the studio's physical verbs done in CSS),
+   the walk-again vignettes, the exploded plate, and the stop on ink with its
+   one drawn beat. The build and the plate draw the chassis twice — phone
+   below the wide breakpoint, browser window at and above it — one build
+   driven on both, the matching one shown. Beats 1–5 carry no register
+   styling: the only colour on the page is the brass plate at the stop, and
+   it is the page's one drawn beat. */
+
+.hasg {
+  --wwlf-paper: #eef1f3;
+  --wwlf-line: #d3dade;
+  --wwlf-block: #c3cdd3;
+  --wwlf-mid: #97a3ab;
+  --wwlf-deep: #4d5b65;
+  --wwlf-ink: #26323b;
+  --wwlf-brass: #b08a48;
+  --wwlf-brass-dark: #8f6f38;
+}
+
+/* --- the hero: copy only — the build itself is the illustration ------------
+   No fan, no diagram: the page's verb is done, not drawn, one scroll below. */
+
+.hasg-hero-copy {
+  max-width: 46rem;
+}
+
+/* --- the assembly section: exploded plate first, the build mounted over it - */
+
+.hasg-assembly {
+  padding: 3rem 0 0;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 0%, rgba(35, 72, 90, 0.06), transparent 55%),
+    var(--foam);
+}
+
+.hasg-assembly-title {
+  max-width: 18ch;
+  margin-bottom: 2rem;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.hasg-assembly .hgx {
+  padding-bottom: 4rem;
+}
+
+/* --- the build: a tall section, a pinned stage, scroll as time -------------
+   Six scroll windows (the empty page, then one per layer); the sticky stage
+   holds the chassis, the rising annotation, and the build-order ticks. */
+
+.hasg-build {
+  position: relative;
+  height: 560vh;
+}
+
+.hasg-build-pin {
+  position: sticky;
+  top: 0;
+  display: grid;
+  align-content: center;
+  gap: 2.25rem;
+  min-height: 100vh;
+  padding: 5rem 0 3rem;
+}
+
+.hasg-build-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hasg-build-frames {
+  min-width: 0;
+}
+
+.hasg-build-frame-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: min(100%, 220px);
+  margin: 0 auto;
+}
+
+/* One build, two chassis: the phone below the wide breakpoint, the browser
+   window at and above it. Both are driven; the stylesheet shows the one
+   that matches the screen. */
+.hasg-build-frame-wrap--desktop {
+  display: none;
+}
+
+.hasg-build-frame.fw-frame--plate {
+  width: 100%;
+  max-width: 220px;
+  box-shadow: 8px 8px 0 rgba(19, 32, 41, 0.12);
+}
+
+/* The build is the page's verb — on a wide screen it should fill it. The
+   pin's shell gets a wider cap than the prose sections, so the chassis and
+   its annotation hold the big canvas instead of floating in it. */
+.hasg-build-pin > .shell {
+  width: min(calc(100% - 40px), 1440px);
+}
+
+@media (min-width: 880px) {
+  .hasg-build-stage {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+    gap: 4.5rem;
+  }
+
+  .hasg-build-frame-wrap--phone {
+    display: none;
+  }
+
+  .hasg-build-frame-wrap--desktop {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+
+  .hasg-build-frame.hasg-chassis--desktop.fw-frame--plate {
+    max-width: 760px;
+  }
+}
+
+/* The chassis starts empty: layers are hidden until the scroll seats them.
+   is-seated is the instant state (jumps, mid-page loads); hasg-play runs the
+   arriving gesture and its fill holds the seated state; hasg-unplay runs the
+   same gesture in reverse — scrolling back lifts the layer off again. */
+
+.hasg-build .hasg-layer {
+  opacity: 0;
+}
+
+.hasg-build .hasg-layer.is-seated,
+.hasg-build .hasg-layer.hasg-play,
+.hasg-build .hasg-layer.hasg-unplay {
+  opacity: 1;
+}
+
+/* --- the gestures — the studio's physical verbs, done in CSS ----------------
+   hasg-play arrives, hasg-unplay departs; the vignette replay uses the same
+   hasg-play on its fresh layer. The live build only mounts with motion
+   allowed, and the stylesheet guards twice. */
+
+.hasg-play.hasg-g--light {
+  animation: hasg-light 720ms ease-out 90ms both;
+}
+
+.hasg-play.hasg-g--seat {
+  animation: hasg-seat 580ms cubic-bezier(0.22, 0.9, 0.32, 1) both;
+}
+
+.hasg-play.hasg-g--slide {
+  animation: hasg-slide 560ms cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+.hasg-play.hasg-g--unfold .fwb {
+  transform-origin: 50% 0;
+  animation: hasg-unfold 520ms cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.hasg-play.hasg-g--unfold .fwb:nth-child(2) {
+  animation-delay: 110ms;
+}
+
+.hasg-play.hasg-g--unfold .fwb:nth-child(3) {
+  animation-delay: 220ms;
+}
+
+.hasg-unplay.hasg-g--light {
+  animation: hasg-light 480ms ease-in both reverse;
+}
+
+.hasg-unplay.hasg-g--seat {
+  animation: hasg-seat 480ms cubic-bezier(0.4, 0, 0.6, 1) both reverse;
+}
+
+.hasg-unplay.hasg-g--slide {
+  animation: hasg-slide 480ms cubic-bezier(0.4, 0, 0.6, 1) both reverse;
+}
+
+.hasg-unplay.hasg-g--unfold .fwb {
+  transform-origin: 50% 0;
+  animation: hasg-unfold 420ms cubic-bezier(0.4, 0, 0.6, 1) both reverse;
+}
+
+/* A status line lights — the two lines that can go stale arrive lit. */
+@keyframes hasg-light {
+  from {
+    opacity: 0;
+    filter: brightness(1.6);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* A nameplate seats on the fascia — dropped from just above the frame, with
+   the small settle of a thing pressed into place. */
+@keyframes hasg-seat {
+  0% {
+    transform: translateY(-56%);
+  }
+  72% {
+    transform: translateY(1.6%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* The ask slides in from off-frame — placed in front of everything else. */
+@keyframes hasg-slide {
+  from {
+    transform: translateX(115%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* A concertina unfolds where the file was — row by row, top to bottom. */
+@keyframes hasg-unfold {
+  from {
+    transform: scaleY(0.06);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* The surveyor's numbered marker rides with the layer being built — the
+   annotation on the drawing itself, on only while its layer is current. */
+.hasg-marker {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 50%;
+  background: var(--wwlf-paper);
+  color: var(--wwlf-ink);
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+
+.hasg-marker::before {
+  content: "";
+  position: absolute;
+  right: calc(100% + 1px);
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background: var(--wwlf-ink);
+  transform: translateY(-50%);
+}
+
+.hasg-build-marker {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.hasg-build-marker.is-on {
+  opacity: 1;
+}
+
+/* --- the annotations: one note per window, rising as its layer lands ------- */
+
+.hasg-build-notes {
+  position: relative;
+  min-width: 0;
+  min-height: 17rem;
+}
+
+.hasg-note {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 380ms ease,
+    transform 380ms ease;
+  pointer-events: none;
+}
+
+.hasg-note.is-on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.hasg-note-kicker {
+  margin: 0 0 0.6rem;
+  color: var(--wwlf-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hasg-note-name {
+  max-width: 22ch;
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.hasg-note-text {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+@media (min-width: 880px) {
+  .hasg-build-notes {
+    min-height: 13rem;
+  }
+}
+
+/* --- the ticks: the build order as progress, and the way to jump ------------ */
+
+.hasg-build-ticks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hasg-tick {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  border: none;
+  border-top: 2px solid rgba(35, 72, 90, 0.18);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hasg-tick-n {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 50%;
+  background: var(--wwlf-paper);
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background 200ms ease,
+    color 200ms ease;
+}
+
+/* A layer you have passed stays seated — its tick fills, the page's own
+   record of what is already built. */
+.hasg-tick.is-built .hasg-tick-n {
+  background: var(--wwlf-ink);
+  color: var(--wwlf-paper);
+}
+
+.hasg-tick-key {
+  color: var(--wwlf-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hasg-tick:hover .hasg-tick-key,
+.hasg-tick.is-current .hasg-tick-key {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.hasg-tick:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* --- the walk-again vignettes: the build, slowed down ----------------------
+   Not a stepper — an annotated film-strip read top to bottom. Each vignette
+   shows the layers seated so far and replays the arriving one on ask. */
+
+.hasg-again {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hasg-again-lede {
+  max-width: 56ch;
+  font-size: 1.1rem;
+  text-wrap: pretty;
+}
+
+.hgv-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hgv {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2.75rem 0;
+  border-top: 1px solid rgba(35, 72, 90, 0.14);
+}
+
+.hgv:last-child {
+  border-bottom: 1px solid rgba(35, 72, 90, 0.14);
+}
+
+.hgv-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hgv-frame-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hgv-frame.fw-frame--plate {
+  width: 100%;
+  max-width: 190px;
+  box-shadow: 5px 5px 0 rgba(19, 32, 41, 0.1);
+}
+
+.hgv-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0;
+  border: none;
+  border-bottom: 2px solid currentColor;
+  background: none;
+  color: var(--blue-deep);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hgv-replay:hover {
+  color: var(--blue);
+}
+
+.hgv-replay:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+.hgv-replay-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.hgv-copy {
+  min-width: 0;
+}
+
+.hgv-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.hgv-n {
+  color: var(--wwlf-mid);
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hgv-q {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.hgv-name {
+  max-width: 26ch;
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  text-wrap: balance;
+}
+
+.hgv-check {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.hgv-prevents {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.hgv-prevents-lead {
+  margin-right: 0.4rem;
+  color: var(--wwlf-deep);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hgv-prevents a {
+  color: var(--blue-deep);
+  font-weight: 600;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.hgv-prevents a:hover {
+  color: var(--blue);
+}
+
+@media (min-width: 880px) {
+  .hgv {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 3.5rem;
+  }
+
+  .hgv-visual {
+    align-items: flex-start;
+  }
+
+  .hgv-frame-wrap {
+    justify-content: flex-start;
+  }
+}
+
+/* --- the chassis and its layers --------------------------------------------
+   Every state of the build is one component: layers stack absolutely in the
+   one frame, so a vignette for beat N holds layers 1..N and stepping back
+   removes a layer by construction. */
+
+.hasg-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* --- the browser-window chassis: the same build on a wide screen ----------
+   The frame turns landscape and gains a chrome strip — tab dots and an
+   address pill in the same grey grammar, drawn as part of the frame so it
+   is present from the empty page on. Layers keep clear of the strip; their
+   desktop coordinates start below it. */
+
+.fw-frame.hasg-chassis--desktop {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  /* The frame is a container, so the mechanism words scale with it — the
+     blocks are percentages of the frame, and the labels must be too, or a
+     wide frame outgrows its words. */
+  container-type: inline-size;
+}
+
+.hasg-chrome {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  height: 9%;
+  padding: 0 3.5%;
+  border-bottom: 2px solid var(--wwlf-line);
+}
+
+.hasg-chrome-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.hasg-chrome-dot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--wwlf-mid);
+  border-radius: 50%;
+}
+
+.hasg-chrome-address {
+  flex: 1;
+  height: 52%;
+  border: 1.5px solid var(--wwlf-line);
+  border-radius: 999px;
+  background: #f7f9fa;
+}
+
+/* The status pill's gap and padding are percentages of the panel in the
+   phone grammar — on a wide frame that eats the label's room. Frame-relative
+   spacing keeps the mechanism words whole at any size. */
+.hasg-chassis--desktop .fwb-label {
+  font-size: 2cqw;
+}
+
+.hasg-chassis--desktop .fwb-status {
+  gap: 1cqw;
+  padding-right: 1.8cqw;
+}
+
+.hasg-chassis--desktop .fwb-status::before {
+  margin-left: 1.8cqw;
+}
+
+/* --- the exploded plate: the settled frame, and what prints ----------------
+   The no-JS / reduced-motion state carries the full argument: the finished
+   wireframe numbered, the five narration lines as a numbered list, the stop
+   as the final entry. */
+
+.hgx-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.hgx-frames {
+  min-width: 0;
+}
+
+.hgx-frame-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* The plate matches the screen too: phone below, browser window above. */
+.hgx-frame-wrap--desktop {
+  display: none;
+}
+
+.hgx-frame.fw-frame--plate {
+  max-width: 230px;
+}
+
+.hgx-key {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: hasg-layer;
+}
+
+.hgx-key-item {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 2.5rem;
+  border-top: 1px solid rgba(35, 72, 90, 0.14);
+  counter-increment: hasg-layer;
+  line-height: 1.45;
+  scroll-margin-top: 5.5rem;
+  text-wrap: pretty;
+}
+
+.hgx-key-item:last-child {
+  border-bottom: 1px solid rgba(35, 72, 90, 0.14);
+}
+
+.hgx-key-item::before {
+  content: counter(hasg-layer);
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 50%;
+  background: var(--wwlf-paper);
+  color: var(--wwlf-ink);
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hgx-key-name {
+  font-weight: 800;
+}
+
+/* The final entry is the stop: its marker is the empty register slot, not
+   the next number — the build does not continue past it. */
+.hgx-key-stop {
+  counter-increment: none;
+  color: var(--wwlf-deep);
+}
+
+.hgx-key-stop::before {
+  content: "";
+  border-radius: 3px;
+  background: transparent;
+}
+
+.hgx-hint {
+  margin: 1rem 0 0;
+  color: var(--wwlf-deep);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (min-width: 880px) {
+  .hgx-stage {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .hgx-frame-wrap {
+    justify-content: flex-start;
+  }
+
+  .hgx-frame-wrap--phone {
+    display: none;
+  }
+
+  .hgx-frame-wrap--desktop {
+    display: flex;
+  }
+
+  .hgx-frame.hasg-chassis--desktop.fw-frame--plate {
+    max-width: 600px;
+  }
+}
+
+/* --- the stop: on ink, brass in the dark — the closer's register -----------
+   The same stage the swap test gets: the page's one drawn beat earns the
+   family's one dark band. */
+
+.hasg-stop {
+  padding: 4.5rem 0 5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--foam);
+}
+
+.hasg-stop-tag {
+  margin: 0 0 0.6rem;
+  color: var(--wwlf-brass);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hasg-stop-title {
+  max-width: 20ch;
+  margin-bottom: 0.9rem;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  text-wrap: balance;
+}
+
+.hasg-stop-blurb {
+  max-width: 54ch;
+  margin: 0;
+  color: #a9bcc9;
+  font-size: 1.05rem;
+}
+
+.hasg-stop-head {
+  margin-bottom: 3rem;
+}
+
+.hgstop-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hgstop-frame-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.hgstop-frame.fw-frame--plate {
+  max-width: 230px;
+  border-color: var(--foam);
+  box-shadow: 8px 8px 0 rgba(244, 248, 250, 0.14);
+}
+
+.hgstop-copy {
+  min-width: 0;
+}
+
+.hgstop-line {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.hgstop-swap {
+  max-width: 46ch;
+  margin: 1.25rem 0 0;
+  color: #a9bcc9;
+  font-size: 0.95rem;
+}
+
+.hgstop-swap a {
+  color: var(--wwlf-brass);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.hgstop-swap a:hover {
+  color: #c9a45c;
+}
+
+.hgstop-handoff {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 46ch;
+  margin-top: 2rem;
+}
+
+.hgstop-link {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 3.2rem 1rem 1.2rem;
+  border: 1.5px solid rgba(244, 248, 250, 0.3);
+  border-radius: 6px;
+  color: var(--foam);
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.hgstop-link:hover {
+  border-color: var(--wwlf-brass);
+  background: rgba(244, 248, 250, 0.05);
+}
+
+.hgstop-link-lead {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.hgstop-link-sub {
+  color: #a9bcc9;
+  font-size: 0.88rem;
+}
+
+.hgstop-link-arrow {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--wwlf-brass);
+  transform: translateY(-50%);
+}
+
+/* The page's one drawn beat: the blank nameplate hovering over the register
+   slot, seating perfectly because nothing on it is anyone's yet. The brass
+   face is the swap test's own; the hover and shadow float it off the
+   chassis. */
+.hasg-nameplate {
+  top: 31%;
+  left: 22%;
+  width: 56%;
+  height: 5.4%;
+  transform: rotate(-7deg);
+  cursor: default;
+}
+
+.hasg-nameplate .swap-plate-face {
+  box-shadow: 0 16px 22px rgba(19, 32, 41, 0.4);
+}
+
+@media (min-width: 880px) {
+  .hgstop-stage {
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 3.5rem;
+  }
+
+  .hgstop-frame-wrap {
+    justify-content: flex-start;
+  }
+}
+
+/* --- smaller viewports ------------------------------------------------------ */
+
+@media (max-width: 720px) {
+  .hasg-build-pin {
+    gap: 1.5rem;
+  }
+
+  .hasg-build-ticks {
+    gap: 0.25rem 1.1rem;
+  }
+
+  .hgv {
+    padding: 2.25rem 0;
+  }
+}
+
+/* --- motion, honoured twice; the plate is what prints -----------------------
+   matchMedia keeps the build unmounted under reduced motion; the stylesheet
+   says it again, so even a mid-session change leaves the settled plate in
+   place. Print gets the same settled plate — the build is a moving state. */
+
+@media (prefers-reduced-motion: reduce), print {
+  .hasg [data-hasg-live] {
+    display: none !important;
+  }
+
+  .hasg [data-hasg-static] {
+    display: block !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hasg-layer,
+  .hasg-layer .fwb {
+    animation: none !important;
+  }
+
+  .hasg-tick-n,
+  .hasg-build-marker {
+    transition: none;
+  }
+}

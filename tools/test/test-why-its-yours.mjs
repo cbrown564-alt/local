@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
- * Pins the /five-shapes/ pattern book, from research/five-shapes-brief.md:
- * "Data completeness is a test: a plate missing any of the five answers
- * fails, and exampleSlugs are checked against publicTransformationSlugs."
+ * Pins /why-its-yours/, from research/five-shapes-brief.md structure and
+ * research/owner-voice-on-the-three-pages.md guest voice.
  *
  * The failure modes this guards: a plate quietly dropping one of the five
  * questions (the parallel structure is the argument), a plate gaining a
@@ -16,10 +15,10 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
 
-const pagePath = path.join(projectRoot, "dist", "five-shapes", "index.html");
+const pagePath = path.join(projectRoot, "dist", "why-its-yours", "index.html");
 
 if (!existsSync(pagePath)) {
-  console.error("Missing dist/five-shapes/index.html — run `pnpm build` first.");
+  console.error("Missing dist/why-its-yours/index.html — run `pnpm build` first.");
   process.exit(1);
 }
 
@@ -68,7 +67,7 @@ for (const id of EXPECTED_ORDER) {
 // Per-plate completeness: all five questions answered, five markers tying
 // the notes to the drawing, and exactly one theatre beat of colour.
 const QUESTIONS = [
-  "What does the customer buy?",
+  "What does the visitor buy?",
   "What is the first screen for?",
   "What does the action ask?",
   "What must stay current, and where does that live?",
@@ -102,47 +101,37 @@ for (const label of ["a place", "a counter business", "a product", "a care pract
   check(`the shape label "${label}" left the page`, text.includes(label));
 }
 
-// Strip questions are first-class data (ownerQuestion), not parsed out of the
-// plate answers — the scan path an owner uses to find themselves.
+// Owner questions lead (strip + plate heads) — first-class data, not parsed
+// out of the plate answers.
 for (const question of [
-  "is this where i want to wake up?",
-  "what's on today, and until when?",
-  "when would i open this?",
-  "can they see us, and soon?",
-  "do they know their stuff, and can they fix mine?",
+  "Is this where I want to wake up?",
+  "What's on today, and until when?",
+  "When would I open this?",
+  "Can they see us, and soon?",
+  "Do they know their stuff, and can they fix mine?",
 ]) {
-  check(`the strip no longer carries "${question}"`, text.includes(question));
+  check(`the owner question "${question}" left the page`, text.includes(question));
 }
 
-// The thesis and the honesty rules, stated plainly, up top.
-check(
-  "the opening thesis is missing or reworded",
-  text.includes("There is no standard website."),
-);
+// Owner voice: H1, light honesty, no method lecture.
+check("the H1 left the page", text.includes("Why it’s yours."));
 check(
   "the not-a-shop statement is missing or reworded",
   text.includes("nothing to pick, price or download"),
-);
-check(
-  "the no-prevalence rule is not stated",
-  text.includes("how common anything is, this page never claims"),
 );
 
 // The misfit panel is not optional — it is what stops the page reading as a
 // quiz.
 check(
   "the misfit panel is missing or reworded",
-  text.includes("Two of these, or none of them.") && text.includes("reading aid"),
+  text.includes("Two of these, or none of them.") &&
+    text.includes("Naming yours is our job"),
 );
 
-// The method framing, and the family cross-link.
 check(
-  "the step-2 method framing is missing",
-  /step 2 of the studio's research method/.test(text),
-);
-check(
-  "the cross-link to /what-we-look-for/ is missing",
-  html.includes('href="/what-we-look-for/"'),
+  "the method-step lecture should be gone",
+  !/step 2 of the studio's research method/.test(text) &&
+    !/What this is for/.test(text),
 );
 check("the close does not lead to /request/", html.includes('href="/request/"'));
 
@@ -170,9 +159,9 @@ check(
 );
 
 if (failures.length > 0) {
-  console.error(`Five-shapes pattern book: ${failures.length} check(s) failed.\n`);
+  console.error(`Why-its-yours: ${failures.length} check(s) failed.\n`);
   for (const failure of failures) console.error(`  ✗ ${failure}`);
   process.exit(1);
 }
 
-console.log("Five-shapes pattern book: all checks passed.");
+console.log("Why-its-yours: all checks passed.");

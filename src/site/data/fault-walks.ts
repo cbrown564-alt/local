@@ -26,6 +26,26 @@ export const FAULT_SHAPES = [
 /** The elevation method's five shapes — the only label a mock ever gets. */
 export type FaultShape = (typeof FAULT_SHAPES)[number];
 
+/** The studio's ten-fault taxonomy, from
+ *  research/film/studio-recurring-themes.md stage 2. The fault walk publishes
+ *  five of the ten as walkable errands; the assembly page
+ *  (/how-a-site-goes-together/) answers all ten as layers. Ids and names live
+ *  here once so the two pages cannot drift apart. */
+export const FAULT_THEMES = {
+  t1: "The login at the door",
+  t2: "The dead end",
+  t3: "Whose shop is this?",
+  t4: "Nobody answers “are you open?”",
+  t5: "The bell with no clapper",
+  t6: "Your worries, in front of their question",
+  t7: "The best thing about you is in the footer",
+  t8: "Locked in a file",
+  t9: "The stopped clock",
+  t10: "The swap test",
+} as const;
+
+export type FaultThemeId = keyof typeof FAULT_THEMES;
+
 export type FaultBlockKind =
   | "band"
   | "micro"
@@ -144,8 +164,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     id: "t1",
     theme: "The login at the door",
     shape: "a counter business",
-    message: "A stranger should not need an account to find your front door.",
-    check: "Can a stranger see what you sell without an account?",
+    message: "A visitor should not need an account to find your front door.",
+    check: "Can a visitor see what you sell without an account?",
     decision:
       "The social page was free and quick to set up, and the login wall came with it. It felt like having a website.",
     errand: "See what they sell",
@@ -347,7 +367,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     id: "t5",
     theme: "The bell with no clapper",
     shape: "a place",
-    message: "“Get in touch” means the customer does the work.",
+    message: "“Get in touch” means the visitor does the work.",
     check: "Can someone ask about a date on the page itself?",
     decision:
       "A form felt like a big build. A phone number was already on the page, and everybody knows how a phone works.",
@@ -520,3 +540,17 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
       "A clean template with the name dropped in looked like a safe, professional choice. It looked like everyone else's, too.",
   },
 ];
+
+/* The taxonomy is the single source for ids and names: a walk whose id or
+   theme drifts from FAULT_THEMES fails the build, not just a review. */
+for (const entry of whatWeLookFor) {
+  const name = FAULT_THEMES[entry.id as FaultThemeId];
+  if (!name) {
+    throw new Error(`fault-walks: "${entry.id}" is not a theme in the shared taxonomy.`);
+  }
+  if (name !== entry.theme) {
+    throw new Error(
+      `fault-walks: ${entry.id} is named "${entry.theme}" here but "${name}" in the shared taxonomy.`,
+    );
+  }
+}

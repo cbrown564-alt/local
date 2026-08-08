@@ -1,0 +1,61 @@
+---
+/**
+ * The walk-again index: five compact vignettes, one per layer, after the
+ * build has been felt. Each carries the layer seated on its chassis (1..N,
+ * the arriving layer ready to replay), the customer question it answers, the
+ * owner self-check, and the quiet cross-reference to the faults it prevents.
+ * Not a stepper — an annotated film-strip of the construction, read top to
+ * bottom; any layer's arrival replays in place on ask (or once, the first
+ * time the vignette scrolls into view).
+ */
+import { assemblyBeats } from "../../data/assembly";
+import AssemblyChassis from "./AssemblyChassis.astro";
+---
+
+<ol class="hgv-list">
+  {
+    assemblyBeats.map((beat, index) => (
+      <li class="hgv" data-beat={beat.id}>
+        <div class="hgv-visual">
+          <div class="hgv-frame-wrap">
+            <AssemblyChassis upto={index + 1} fresh={index + 1} frameClass="hgv-frame" />
+          </div>
+          <button
+            type="button"
+            class="hgv-replay"
+            data-replay={beat.beat}
+            aria-label={`Replay part ${beat.beat} arriving — ${beat.name}`}
+          >
+            <span class="hgv-replay-icon" aria-hidden="true">
+              ↺
+            </span>
+            Build it again
+          </button>
+        </div>
+        <div class="hgv-copy">
+          <p class="hgv-head">
+            <span class="hgv-n" aria-hidden="true">
+              {String(beat.beat).padStart(2, "0")}
+            </span>
+            <span class="hgv-q">{beat.question.toLowerCase()}</span>
+          </p>
+          <h3 class="hgv-name">{beat.name}</h3>
+          <p class="hgv-check">{beat.check}</p>
+          <p class="hgv-prevents">
+            <span class="hgv-prevents-lead">Stops</span>
+            {beat.prevents.map((prevent, preventIndex) => (
+              <>
+                {preventIndex > 0 && <span aria-hidden="true"> · </span>}
+                {prevent.walkId ? (
+                  <a href={`/where-it-fails/#${prevent.walkId}`}>{prevent.label}</a>
+                ) : (
+                  <span>{prevent.label}</span>
+                )}
+              </>
+            ))}
+          </p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

@@ -1,4 +1,9 @@
-# `/what-we-look-for/` — five faults as a page
+# `/where-it-fails/` — five snags as a page
+
+> **Guest voice, titles, and URLs:** superseded by
+> [`owner-voice-on-the-three-pages.md`](owner-voice-on-the-three-pages.md).
+> Public route is `/where-it-fails/` (was `/what-we-look-for/`). This brief
+> still owns structure, interaction, and honesty constraints.
 
 *Written 6 August 2026; reel cut to five on 7 August 2026. The public surface
 for the fault taxonomy in
@@ -182,13 +187,20 @@ argument; the clip is the mnemonic that makes it repeatable to a spouse. If the
 clips aren't generated yet, the page ships without them — every block must work
 as wireframe-plus-two-lines on day one. Nothing here is blocked on a gen.
 
+**Film curation, 7 August 2026.** Only T1 and T4 have film candidates worth a
+corrective edit and a page trial. T5 and T7 keep the interactive without a
+film; their generated alternatives did not add enough meaning. T10 must remain
+the interactive swap test because the gesture itself is the argument; the T10
+and X22 generated films are retired. Do not fill all five film slots for visual
+consistency.
+
 **Request path wins on attention weight** (workstream rule 5). Five interactive
 toys plus films is enough to out-shout a CTA, so: no autoplay, one clip expanded
 at a time, and the close is the heaviest element on the page.
 
 ## Build notes
 
-- Public at `/what-we-look-for/` (promoted from `/prototypes/`).
+- Public at `/where-it-fails/` (renamed from `/what-we-look-for/`).
 - One component, five data entries. The errands are data (`theme`, `errand`,
   `shape`, `before[]`, `after[]`, `stop`) — the same discipline as
   `transformation-details.ts`. Five bespoke components would be five bespoke bugs.

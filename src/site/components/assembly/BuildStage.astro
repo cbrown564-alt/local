@@ -1,0 +1,104 @@
+---
+/**
+ * The live build: one pinned stage the visitor constructs by scrolling. The
+ * section is tall; the stage inside is sticky, so scroll position is time —
+ * each scroll window seats the next layer with its gesture while its
+ * annotation rises beside the chassis. Scrolling back lifts layers off again.
+ * Nothing runs on a timer: every state change is a scroll position.
+ *
+ * Two chassis render the same build: the phone below the wide breakpoint,
+ * the browser window at and above it. The script drives both at once and the
+ * stylesheet shows the one that matches the screen — the build order is the
+ * argument, and it survives the change of screen.
+ *
+ * Progressive enhancement, the fault walk's contract: this ships hidden, and
+ * the script mounts it over the exploded plate only with JS and motion
+ * allowed. No-JS, reduced motion and print all keep the settled plate.
+ */
+import { assemblyBeats } from "../../data/assembly";
+import AssemblyChassis from "./AssemblyChassis.astro";
+---
+
+<div class="hasg-build" data-hasg-live hidden>
+  <div class="hasg-build-pin">
+    <div class="shell">
+      <div class="hasg-build-stage">
+        <div class="hasg-build-frames">
+          <div class="hasg-build-frame-wrap hasg-build-frame-wrap--phone">
+            <AssemblyChassis upto={assemblyBeats.length} frameClass="hasg-build-frame" />
+            {
+              assemblyBeats.map((beat) => (
+                <span
+                  class="hasg-marker hasg-build-marker"
+                  data-marker={beat.id}
+                  style={`left:${beat.marker.x}%;top:${beat.marker.y}%;`}
+                  aria-hidden="true"
+                >
+                  {beat.beat}
+                </span>
+              ))
+            }
+          </div>
+          <div class="hasg-build-frame-wrap hasg-build-frame-wrap--desktop">
+            <AssemblyChassis
+              upto={assemblyBeats.length}
+              form="desktop"
+              frameClass="hasg-build-frame"
+            />
+            {
+              assemblyBeats.map((beat) => (
+                <span
+                  class="hasg-marker hasg-build-marker"
+                  data-marker={beat.id}
+                  style={`left:${beat.desktopMarker.x}%;top:${beat.desktopMarker.y}%;`}
+                  aria-hidden="true"
+                >
+                  {beat.beat}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <div class="hasg-build-notes">
+          <article class="hasg-note" data-note="0">
+            <p class="hasg-note-kicker">Before the first part</p>
+            <h3 class="hasg-note-name">An empty page.</h3>
+            <p class="hasg-note-text">
+              Keep scrolling — the build follows you. Five parts, in the order they are built.
+            </p>
+          </article>
+          {
+            assemblyBeats.map((beat) => (
+              <article class="hasg-note" data-note={beat.beat} aria-hidden="true">
+                <p class="hasg-note-kicker">
+                  Part {beat.beat} of {assemblyBeats.length} · {beat.key}
+                </p>
+                <h3 class="hasg-note-name">{beat.name}</h3>
+                <p class="hasg-note-text">{beat.narration}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+      <ol class="hasg-build-ticks" aria-label="The five parts, in build order">
+        {
+          assemblyBeats.map((beat) => (
+            <li>
+              <button
+                type="button"
+                class="hasg-tick"
+                data-tick={beat.beat}
+                aria-label={`Scroll to part ${beat.beat} — ${beat.name}`}
+              >
+                <span class="hasg-tick-n" aria-hidden="true">
+                  {beat.beat}
+                </span>
+                <span class="hasg-tick-key">{beat.key}</span>
+              </button>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,7 @@ import type { FaultBlock, FaultPanel, FaultShape } from "./fault-walks";
 
 /** The five questions every plate answers, in plate order. */
 export const SHAPE_QUESTIONS = {
-  buys: "What does the customer buy?",
+  buys: "What does the visitor buy?",
   firstScreen: "What is the first screen for?",
   action: "What does the action ask?",
   handoff: "What must stay current, and where does that live?",
@@ -127,7 +127,7 @@ export const fiveShapes: ShapePlate[] = [
     screen: {
       id: "screen",
       caption:
-        "Wireframe of a place's first screen: the windows lit at dusk above the business's name, fields for the dates and the party, one button to ask about a stay, and the season handed to the source.",
+        "Grey layout of a place's first screen: the windows lit at dusk above the business's name, fields for the dates and the party, one button to ask about a stay, and the season handed to the source.",
       blocks: [
         { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the windows at dusk", goal: true, art: "dusk" },
         band(10, 38, 54, 5),
@@ -175,7 +175,7 @@ export const fiveShapes: ShapePlate[] = [
     screen: {
       id: "screen",
       caption:
-        "Wireframe of a counter business's first screen: open-now hours at the top, one steaming dish, the business's name, the week in rows, a walk-in line, and today's board handed to the source. No button anywhere.",
+        "Grey layout of a counter business's first screen: open-now hours at the top, one steaming dish, the business's name, the week in rows, a walk-in line, and today's board handed to the source. No button anywhere.",
       blocks: [
         { kind: "status", x: 10, y: 8, w: 72, h: 6, label: "open now · until 3 today" },
         { kind: "media", x: 10, y: 20, w: 80, h: 24, label: "steaming", goal: true, art: "steam" },
@@ -224,7 +224,7 @@ export const fiveShapes: ShapePlate[] = [
     screen: {
       id: "screen",
       caption:
-        "Wireframe of a product's first screen: the product at its moment above the product's name, one button to find it near you, the stockists, and market days handed to the source.",
+        "Grey layout of a product's first screen: the product at its moment above the product's name, one button to find it near you, the stockists, and market days handed to the source.",
       blocks: [
         { kind: "media", x: 10, y: 8, w: 80, h: 26, label: "the melt", goal: true, art: "melt" },
         band(10, 38, 52, 5),
@@ -270,7 +270,7 @@ export const fiveShapes: ShapePlate[] = [
     screen: {
       id: "screen",
       caption:
-        "Wireframe of a care practice's first screen: a seeing-patients-today line, the practice's name, the emergency route as the one solid button, fields asking who needs seen and when, and today's diary handed to the source.",
+        "Grey layout of a care practice's first screen: a seeing-patients-today line, the practice's name, the emergency route as the one solid button, fields asking who needs seen and when, and today's diary handed to the source.",
       blocks: [
         { kind: "status", x: 10, y: 8, w: 74, h: 6, label: "seeing patients today" },
         band(10, 20, 56, 5),
@@ -317,7 +317,7 @@ export const fiveShapes: ShapePlate[] = [
     screen: {
       id: "screen",
       caption:
-        "Wireframe of a trade's first screen: the record as the first line, the open road beneath it, the shop's name, fields for the job and the week, one button to book the bench, and the queue handed to the counter.",
+        "Grey layout of a trade's first screen: the record as the first line, the open road beneath it, the shop's name, fields for the job and the week, one button to book the bench, and the queue handed to the counter.",
       blocks: [
         { kind: "status", x: 10, y: 8, w: 88, h: 6, label: "the years · the record" },
         { kind: "media", x: 10, y: 20, w: 80, h: 22, label: "the open road", goal: true, art: "road" },

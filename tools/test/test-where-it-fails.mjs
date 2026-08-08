@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * Pins the /what-we-look-for/ fault-walks, from
- * research/what-we-look-for-brief.md: "Test the fault, not the fix."
+ * Pins /where-it-fails/, from research/what-we-look-for-brief.md interaction
+ * rules and research/owner-voice-on-the-three-pages.md guest voice:
+ * "Test the snag, not the fix."
  *
- * The failure mode this guards is a mock whose fault becomes accidentally
- * walkable — someone tidies a wireframe and the hours land on the first
+ * The failure mode this guards is a mock whose snag becomes accidentally
+ * walkable — someone tidies a grey layout and the hours land on the first
  * screen. Each walk carries its graph as a JSON blob in the built page
  * (script[data-fault-graph]); this test parses those blobs and asserts, per
  * theme, that the before-walk cannot reach the errand's goal in fewer taps
@@ -18,15 +19,14 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { projectRoot } from "../lib/public-slugs.mjs";
 
-const pagePath = path.join(projectRoot, "dist", "what-we-look-for", "index.html");
+const pagePath = path.join(projectRoot, "dist", "where-it-fails", "index.html");
 
 if (!existsSync(pagePath)) {
-  console.error("Missing dist/what-we-look-for/index.html — run `pnpm build` first.");
+  console.error("Missing dist/where-it-fails/index.html — run `pnpm build` first.");
   process.exit(1);
 }
 
 const html = readFileSync(pagePath, "utf8");
-const flat = html.replace(/\s+/g, " ");
 const text = html
   .replace(/<script[\s\S]*?<\/script>/gi, " ")
   .replace(/<style[\s\S]*?<\/style>/gi, " ")
@@ -107,7 +107,7 @@ for (const graph of graphs) {
   const beforeTaps = shortestToGoal(graph.before);
   if (graph.minBeforeTaps === null) {
     check(
-      `${prefix}: the fault became walkable — the goal is reachable in ${beforeTaps} taps`,
+      `${prefix}: the snag became walkable — the goal is reachable in ${beforeTaps} taps`,
       beforeTaps === null,
     );
     check(
@@ -166,9 +166,9 @@ check(
 );
 
 const MESSAGES = {
-  t1: "A stranger should not need an account to find your front door.",
+  t1: "A visitor should not need an account to find your front door.",
   t4: "People arrive with one question. The first screen should answer it.",
-  t5: "“Get in touch” means the customer does the work.",
+  t5: "“Get in touch” means the visitor does the work.",
   t7: "The thing you'd say in ten seconds at the counter isn't on the site at all.",
   t10: "Swap your name for a competitor's. If nothing else needs changing, the site isn't yours.",
 };
@@ -184,19 +184,16 @@ check(
     text.includes("Three true details later, the plate won't seat."),
 );
 
-// The page's own rules: invented mocks, stated once, plainly, up top.
+// Owner voice: H1, light honesty, no method lecture.
+check("the H1 left the page", text.includes("Where it fails."));
 check(
   "the invented-demonstrations statement is missing or reworded",
-  text.includes("These are made-up sites") &&
-    text.includes("never onto a public page"),
+  text.includes("These are made-up sites") && text.includes("stays between us"),
 );
 check(
-  "the no-score rule is not stated",
-  text.includes("never grades you") || text.includes("never score"),
-);
-check(
-  "the step-5 method framing is missing",
-  /step 5 of the studio's research method/.test(text),
+  "the method-step lecture should be gone",
+  !/step 5 of the studio's research method/.test(text) &&
+    !/What this is for/.test(text),
 );
 check("the close does not lead to /request/", html.includes('href="/request/"'));
 
@@ -225,9 +222,9 @@ check(
 );
 
 if (failures.length > 0) {
-  console.error(`What-we-look-for fault-walks: ${failures.length} check(s) failed.\n`);
+  console.error(`Where-it-fails: ${failures.length} check(s) failed.\n`);
   for (const failure of failures) console.error(`  ✗ ${failure}`);
   process.exit(1);
 }
 
-console.log("What-we-look-for fault-walks: all checks passed.");
+console.log("Where-it-fails: all checks passed.");

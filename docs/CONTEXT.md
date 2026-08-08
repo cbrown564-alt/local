@@ -6,6 +6,18 @@ order, enquiry or visit before asking it to buy anything.
 
 ## Language
 
+### Who we talk about
+
+**Owner**:
+The person who runs the trading business. Guest-facing studio pages address the
+owner.
+_Avoid_: Client, customer (when the owner/visitor distinction matters)
+
+**Visitor**:
+Someone arriving from outside with an errand — find hours, book, call, order,
+or visit. The person the site must work for.
+_Avoid_: Stranger, user, customer (when the owner/visitor distinction matters)
+
 ### The work we make
 
 **Concept**:
@@ -20,8 +32,8 @@ _Avoid_: Case study, comparison, before/after (as a noun for the page)
 
 **Before-and-after**:
 The free, no-obligation offer made to a business that has not yet seen its
-concept: we will show you your own before and after. The call to action for a
-stranger arriving cold.
+concept: we will show you your own before and after. The call to action for an
+owner arriving cold.
 
 **Claim**:
 What a business does when handed a concept it never asked for — takes

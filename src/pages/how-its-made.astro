@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../site/components/ArrowIcon.astro";
+import BuildStage from "../site/components/assembly/BuildStage.astro";
+import AssemblyVignettes from "../site/components/assembly/AssemblyVignettes.astro";
+import AssemblyStop from "../site/components/assembly/AssemblyStop.astro";
+import ExplodedPlate from "../site/components/assembly/ExplodedPlate.astro";
+import { assemblyBeats, assemblyStop } from "../site/data/assembly";
+import { ogImages } from "../site/data/og-images";
+import "../site/styles/what-we-look-for.css";
+import "../site/styles/assembly.css";
+---
+
+<BaseLayout
+  title="How it’s made — Mourne Made"
+  description="Scroll and watch one page get put together — each part there because of something a visitor actually needs to do."
+  ogImage={ogImages.studio}
+  ogImageAlt="Mourne Made — local websites for Dundrum and Newcastle"
+>
+  <div class="hasg">
+    <section class="wwlf-hero hasg-hero">
+      <div class="shell">
+        <div class="hasg-hero-copy">
+          <p class="eyebrow">Mourne Made</p>
+          <h1>How it’s made.</h1>
+          <p class="lede">
+            Scroll and watch one page get put together — each part there because of something a
+            visitor actually needs to do.
+          </p>
+          <p class="wwlf-invented">
+            This is a drawn build — grey blocks, no business names, nothing to pick, price or
+            download.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hasg-assembly" data-hasg-assembly aria-label="The build, put together as you scroll">
+      <div class="shell">
+        <h2 class="hasg-assembly-title">The build.</h2>
+      </div>
+      <div class="shell">
+        <ExplodedPlate />
+      </div>
+      <BuildStage />
+    </section>
+
+    <section class="hasg-again">
+      <div class="shell">
+        <p class="eyebrow">Walk it again</p>
+        <h2>Five parts, annotated.</h2>
+        <p class="hasg-again-lede">
+          The build, slowed down — each part with the question it answers, the check you can run
+          on your own site, and what goes wrong without it. Replay any arrival.
+        </p>
+        <AssemblyVignettes />
+      </div>
+    </section>
+
+    <section class="hasg-stop" id={assemblyStop.id}>
+      <div class="shell">
+        <header class="hasg-stop-head">
+          <p class="hasg-stop-tag">{assemblyStop.name}</p>
+          <h2 class="hasg-stop-title">Up to here, every good site is the same site.</h2>
+          <p class="hasg-stop-blurb">Past here, it has to be yours.</p>
+        </header>
+        <AssemblyStop />
+      </div>
+    </section>
+
+    <section class="wwlf-checklist">
+      <div class="shell">
+        <p class="eyebrow">Take it with you</p>
+        <h2>Check your own site against the five parts.</h2>
+        <p class="wwlf-checklist-lede">
+          One question per part, in the order they were built. Any “no” is a part a visitor is
+          already missing.
+        </p>
+        <ol class="wwlf-checklist-list">
+          {
+            assemblyBeats.map((beat, index) => (
+              <li>
+                <a href={`#${beat.id}`} data-hasg-page={beat.id}>
+                  <span class="wwlf-checklist-n">{String(index + 1).padStart(2, "0")}</span>
+                  <span class="wwlf-checklist-q">{beat.check}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="wwlf-close">
+      <div class="shell">
+        <p class="eyebrow">Your turn</p>
+        <h2>Send a link. We'll tell you which parts you already have.</h2>
+        <p>
+          Most sites have some of the five. We'll name the ones you have, fix the worst gap as a
+          free before-and-after, and show you both. No obligation.
+        </p>
+        <a class="button" href="/request/">Request a free before-and-after <ArrowIcon /></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  import { mountAssemblyBuild } from "../site/scripts/assembly-build";
+  mountAssemblyBuild();
+</script>

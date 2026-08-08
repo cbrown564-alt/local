@@ -10,7 +10,7 @@
  *
  * The build is the exception. Every suite below reads `dist/`, so a failed
  * build leaves nothing to check and the run stops there rather than reporting
- * ten identical "missing dist" failures.
+ * fifteen identical "missing dist" failures.
  *
  * SKIP_BUILD=1 reuses the existing `dist/`. It is a fast inner-loop switch,
  * not a full verification: it also skips the prose-count, publication,
@@ -49,8 +49,9 @@ const suites = [
   ["test:kelly-mcevoy-brown"],
   ["test:tool-centre"],
   ["test:painted-earth"],
-  ["test:five-shapes"],
-  ["test:what-we-look-for"],
+  ["test:where-it-fails"],
+  ["test:how-its-made"],
+  ["test:why-its-yours"],
 ];
 
 if (skipBuild) {
