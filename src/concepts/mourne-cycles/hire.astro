@@ -1,15 +1,6 @@
 ---
-import fs from "node:fs";
-import path from "node:path";
 import McShell from "./components/McShell.astro";
-import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import { contact, hireTiers } from "./content";
-
-const inPublic = (asset: string) =>
-  fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
-
-const hireImage = "/media/concepts/mourne-cycles/mourne-cycles-hire-after.jpg";
-const hasHireImage = inPublic(hireImage);
 ---
 
 <McShell
@@ -24,23 +15,13 @@ const hasHireImage = inPublic(hireImage);
         <h1>Two wheels<br /><em>for the day.</em></h1>
       </div>
       <p class="mc-page-sub">
-        Take a bike out toward the forest or along the coast road. Call
+        Take a bike out toward the forest or along the coast road. Call{" "}
         {contact.phone} to confirm what is available before you set off.
       </p>
     </div>
 
     <section class="mc-hire-section" aria-labelledby="mc-hire-heading">
       <div class="mc-hire-panel">
-        {hasHireImage && (
-          <figure class="mc-hire-photo" aria-hidden="true">
-            <ResponsiveImage
-              src={hireImage}
-              alt=""
-              width={1024}
-              height={682}
-            />
-          </figure>
-        )}
         <div class="mc-hire-panel-inner">
           <p class="mc-workshop-label">Day hire</p>
           <h2 id="mc-hire-heading">Pick your bike.</h2>
