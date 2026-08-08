@@ -33,6 +33,17 @@ check with:
 pnpm test:reviews
 ```
 
+Assemble a working publication packet for one concept. The packet gathers the
+canonical business evidence, publication review, transformation records,
+provenance and media checks; it does not add the concept to the public list:
+
+```powershell
+pnpm publication:pack painted-earth
+pnpm publication:pack painted-earth --check
+```
+
+Packets are written to `research/concepts/<slug>/publication-packet.md`.
+
 Regenerate responsive image and video derivatives after changing a capture:
 
 ```powershell
