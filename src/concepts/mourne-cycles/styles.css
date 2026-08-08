@@ -1639,3 +1639,22 @@
   .mc-scheme-facts dd { text-align: left; }
   .mc-footer-grid { grid-template-columns: 1fr; gap: 22px; }
 }
+
+/* ─── Kinetic type (src/site/scripts/kinetic-type.ts) ─────────────────────── */
+
+/* Words never break mid-word; chars are the animatable unit. Without JS the
+   spans are ordinary inline type — the static condensed italic caps are the
+   designed settled state under reduced motion. */
+.mc-kin-word { display: inline-block; white-space: nowrap; }
+.mc-kin-char { display: inline-block; will-change: transform, opacity; }
+.mc-kin-accent { color: var(--red); }
+.mc-page-intro-red .mc-kin-accent { color: var(--coal); }
+.mc-kinetic[data-kinetic="lean"] {
+  transform-origin: left bottom;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-kin-char,
+  .mc-kinetic[data-kinetic="lean"] { will-change: auto; }
+}

@@ -1,0 +1,71 @@
+---
+/**
+ * Kinetic display heading: splits text into per-character spans that
+ * kinetic-type.ts animates. The accessible text stays on the element's
+ * aria-label; the split spans are aria-hidden decoration. Without JS the
+ * heading renders as ordinary static type.
+ *
+ * `parts` lets one phrase carry the brand's red accent (the <em> in the
+ * identity's display headings).
+ */
+interface Part {
+  text: string;
+  accent?: boolean;
+}
+
+interface Props {
+  parts: Part[];
+  as?: "h1" | "h2" | "h3" | "p" | "span";
+  effect?: "ride" | "lean";
+  class?: string;
+  id?: string;
+}
+
+const { parts, as: Tag = "span", effect = "ride", class: className, id } = Astro.props as Props;
+const label = parts.map((part) => part.text).join("");
+
+interface Char {
+  ch: string;
+  accent: boolean;
+}
+const chars: Char[] = [];
+for (const part of parts) {
+  for (const ch of part.text) chars.push({ ch, accent: Boolean(part.accent) });
+}
+
+// Group into words so wrapping never breaks mid-word; spaces stay real
+// whitespace between the word spans.
+const words: Char[][] = [];
+let word: Char[] = [];
+for (const char of chars) {
+  if (char.ch === " ") {
+    if (word.length) words.push(word);
+    word = [];
+  } else {
+    word.push(char);
+  }
+}
+if (word.length) words.push(word);
+---
+
+<Tag
+  id={id}
+  class:list={[className, "mc-kinetic"]}
+  data-kinetic={effect}
+  aria-label={label}
+>
+  {
+    words.map((w, wi) => (
+      <>
+        <span class="mc-kin-word" aria-hidden="true">
+          {w.map((char) => (
+            <span class:list={["mc-kin-char", char.accent && "mc-kin-accent"]}>
+              {char.ch}
+            </span>
+          ))}
+        </span>
+        {wi < words.length - 1 ? " " : null}
+      </>
+    ))
+  }
+</Tag>
