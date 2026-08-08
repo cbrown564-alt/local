@@ -1,0 +1,428 @@
+---
+/**
+ * Workshop booking widget — the honest version of a booking engine for a
+ * shop that has none. The visitor picks a service and a preferred day; the
+ * submit composes an email to the workshop with the details carried, and
+ * the copy says the shop confirms the slot. No availability is implied.
+ *
+ * The calendar dialog follows the EnkBooking pattern: grid keyboard nav,
+ * focus trap, Escape/Tab handling, aria-selected, disabled past days.
+ * Without JS the form is hidden and plain phone/email links stand in.
+ */
+import { contact, workshopTiers } from "../content";
+
+const services = [
+  ...workshopTiers.map((tier) => `${tier.name} — ${tier.detail.toLowerCase()}`),
+  "A repair",
+  "Not sure yet",
+] as const;
+
+const tomorrow = new Date();
+tomorrow.setHours(0, 0, 0, 0);
+tomorrow.setDate(tomorrow.getDate() + 1);
+const defaultDay = [
+  tomorrow.getFullYear(),
+  String(tomorrow.getMonth() + 1).padStart(2, "0"),
+  String(tomorrow.getDate()).padStart(2, "0"),
+].join("-");
+const defaultDayLabel = new Intl.DateTimeFormat("en-GB", {
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+}).format(tomorrow);
+---
+
+<section class="mc-booking-section" id="mc-booking" aria-labelledby="mc-booking-heading" data-mc-booking-section>
+  <div class="mc-booking-card">
+    <div class="mc-booking-head">
+      <p class="mc-workshop-label">Book a service</p>
+      <h2 id="mc-booking-heading">Pick a day, tell us the bike.</h2>
+      <p class="mc-booking-sub">
+        This emails the workshop with your details — we confirm every slot by
+        phone or email before anything is booked.
+      </p>
+    </div>
+
+    <div class="mc-booking-fallback" data-mc-booking-fallback>
+      <p>
+        Call <a href={contact.phoneHref}>{contact.phone}</a> or email{" "}
+        <a href={contact.emailHref}>{contact.email}</a> to book.
+      </p>
+    </div>
+
+    <form class="mc-booking" data-mc-booking aria-label="Start a workshop enquiry" hidden>
+      <fieldset class="mc-booking-services">
+        <legend>What does the bike need?</legend>
+        <div class="mc-booking-service-grid" data-mc-services>
+          {services.map((service, index) => (
+            <label class="mc-booking-service">
+              <input
+                type="radio"
+                name="service"
+                value={service}
+                checked={index === services.length - 1}
+              />
+              <span>{service}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="mc-booking-row">
+        <div class="mc-day" data-mc-day>
+          <span class="mc-day-caption" id="mc-day-label">Preferred day</span>
+          <button
+            type="button"
+            class="mc-day-trigger"
+            data-mc-day-trigger
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="mc-cal"
+            aria-labelledby="mc-day-label"
+            aria-describedby="mc-day-error"
+          >
+            <span data-mc-day-display>{defaultDayLabel}</span>
+          </button>
+          <input type="hidden" name="day" value={defaultDay} data-mc-day-input />
+          <div
+            id="mc-cal"
+            class="mc-cal"
+            data-mc-cal
+            role="dialog"
+            aria-modal="true"
+            aria-label="Choose a preferred day"
+            hidden
+          >
+            <div class="mc-cal-head">
+              <button type="button" class="mc-cal-nav" data-mc-cal-prev aria-label="Previous month">‹</button>
+              <p class="mc-cal-month" data-mc-cal-month></p>
+              <button type="button" class="mc-cal-nav" data-mc-cal-next aria-label="Next month">›</button>
+            </div>
+            <div class="mc-cal-weekdays" aria-hidden="true">
+              <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+            </div>
+            <div class="mc-cal-grid" data-mc-cal-grid role="grid" aria-labelledby="mc-day-label"></div>
+          </div>
+          <span id="mc-day-error" class="mc-booking-error" data-mc-day-error aria-live="polite" hidden>
+            Choose a preferred day.
+          </span>
+        </div>
+
+        <label class="mc-booking-notes">
+          <span class="mc-day-caption">The bike, and what it's doing (optional)</span>
+          <input
+            type="text"
+            name="notes"
+            data-mc-notes
+            autocomplete="off"
+            placeholder="e.g. Trek hardtail, creak under load"
+          />
+        </label>
+      </div>
+
+      <div class="mc-booking-actions">
+        <button type="submit" class="mc-booking-submit">Email the workshop →</button>
+        <small>
+          Prefer to talk? Call <a href={contact.phoneHref}>{contact.phone}</a>.
+          The shop confirms scope, price and the slot itself.
+        </small>
+        <p class="mc-booking-result" data-mc-booking-result hidden>
+          Your email app should open with everything filled in. If it doesn't,
+          <a href={contact.emailHref} data-mc-booking-link>open the email here</a>.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { contact } from "../content";
+
+  const WEEKDAYS_MON_FIRST = 1;
+  const displayFmt = new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+  const monthFmt = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
+
+  const toIso = (date: Date) => {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  };
+  const fromIso = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  };
+  const startOfDay = (date: Date) => {
+    const next = new Date(date);
+    next.setHours(0, 0, 0, 0);
+    return next;
+  };
+  const todayIso = () => toIso(startOfDay(new Date()));
+  const tomorrowIso = () => {
+    const d = startOfDay(new Date());
+    d.setDate(d.getDate() + 1);
+    return toIso(d);
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-mc-booking-section]").forEach((section) => {
+    const form = section.querySelector<HTMLFormElement>("form[data-mc-booking]");
+    const fallback = section.querySelector<HTMLElement>("[data-mc-booking-fallback]");
+    if (!form) return;
+
+    // JS is up: the widget replaces the phone/email fallback.
+    form.hidden = false;
+    if (fallback) fallback.hidden = true;
+
+    const dayRoot = form.querySelector<HTMLElement>("[data-mc-day]");
+    const dayInput = dayRoot?.querySelector<HTMLInputElement>("[data-mc-day-input]");
+    const dayTrigger = dayRoot?.querySelector<HTMLButtonElement>("[data-mc-day-trigger]");
+    const dayDisplay = dayRoot?.querySelector<HTMLElement>("[data-mc-day-display]");
+    const cal = dayRoot?.querySelector<HTMLElement>("[data-mc-cal]");
+    const calMonth = dayRoot?.querySelector<HTMLElement>("[data-mc-cal-month]");
+    const calGrid = dayRoot?.querySelector<HTMLElement>("[data-mc-cal-grid]");
+    const calPrev = dayRoot?.querySelector<HTMLButtonElement>("[data-mc-cal-prev]");
+    const calNext = dayRoot?.querySelector<HTMLButtonElement>("[data-mc-cal-next]");
+    const error = dayRoot?.querySelector<HTMLElement>("[data-mc-day-error]");
+    const notes = form.querySelector<HTMLInputElement>("[data-mc-notes]");
+
+    let viewYear = fromIso(dayInput?.value || tomorrowIso()).getFullYear();
+    let viewMonth = fromIso(dayInput?.value || tomorrowIso()).getMonth();
+
+    const showError = () => {
+      dayTrigger?.setAttribute("aria-invalid", "true");
+      if (error) error.hidden = false;
+    };
+    const clearError = () => {
+      dayTrigger?.removeAttribute("aria-invalid");
+      if (error) error.hidden = true;
+    };
+    const syncDay = (iso: string) => {
+      if (!dayInput || !dayDisplay) return;
+      dayInput.value = iso;
+      dayDisplay.textContent = displayFmt.format(fromIso(iso));
+      clearError();
+    };
+
+    const isOpen = () => cal != null && !cal.hidden;
+    const closeCal = ({ restoreFocus = true } = {}) => {
+      if (!cal || !dayTrigger || cal.hidden) return;
+      cal.hidden = true;
+      dayTrigger.setAttribute("aria-expanded", "false");
+      if (restoreFocus) dayTrigger.focus();
+    };
+
+    const renderCal = () => {
+      if (!calGrid || !calMonth || !dayInput) return;
+      const minIso = todayIso();
+      const selectedIso = dayInput.value;
+      const first = new Date(viewYear, viewMonth, 1);
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const lead = (first.getDay() - WEEKDAYS_MON_FIRST + 7) % 7;
+
+      calMonth.textContent = monthFmt.format(first);
+      calGrid.replaceChildren();
+
+      for (let i = 0; i < lead; i += 1) {
+        const blank = document.createElement("span");
+        blank.className = "mc-cal-blank";
+        blank.setAttribute("aria-hidden", "true");
+        calGrid.append(blank);
+      }
+
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const date = new Date(viewYear, viewMonth, day);
+        const iso = toIso(date);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "mc-cal-day";
+        btn.textContent = String(day);
+        btn.dataset.iso = iso;
+        btn.setAttribute("role", "gridcell");
+        btn.setAttribute("tabindex", iso === selectedIso ? "0" : "-1");
+        btn.setAttribute("aria-selected", iso === selectedIso ? "true" : "false");
+        btn.setAttribute(
+          "aria-label",
+          displayFmt.format(date) + (iso === todayIso() ? ", today" : ""),
+        );
+        if (iso === todayIso()) btn.classList.add("mc-cal-day--today");
+        if (iso < minIso) {
+          btn.disabled = true;
+        } else {
+          btn.addEventListener("click", () => {
+            syncDay(iso);
+            closeCal();
+          });
+        }
+        calGrid.append(btn);
+      }
+    };
+
+    const openCal = () => {
+      if (!cal || !dayTrigger || !dayInput) return;
+      const selected = fromIso(dayInput.value || tomorrowIso());
+      viewYear = selected.getFullYear();
+      viewMonth = selected.getMonth();
+      renderCal();
+      cal.hidden = false;
+      dayTrigger.setAttribute("aria-expanded", "true");
+      const focusDay =
+        calGrid?.querySelector<HTMLButtonElement>('.mc-cal-day[aria-selected="true"]:not(:disabled)')
+        ?? calGrid?.querySelector<HTMLButtonElement>(".mc-cal-day:not(:disabled)");
+      focusDay?.focus();
+    };
+
+    const moveDayFocus = (current: HTMLButtonElement, delta: number) => {
+      if (!calGrid) return;
+      const days = [...calGrid.querySelectorAll<HTMLButtonElement>(".mc-cal-day:not(:disabled)")];
+      const index = days.indexOf(current);
+      if (index < 0) return;
+      const next = days[index + delta];
+      if (next) {
+        days.forEach((day) => day.setAttribute("tabindex", day === next ? "0" : "-1"));
+        next.focus();
+        return;
+      }
+      if (delta < 0) {
+        viewMonth -= 1;
+        if (viewMonth < 0) {
+          viewMonth = 11;
+          viewYear -= 1;
+        }
+        renderCal();
+        const prevDays = [...calGrid.querySelectorAll<HTMLButtonElement>(".mc-cal-day:not(:disabled)")];
+        prevDays.at(-1)?.focus();
+      } else {
+        viewMonth += 1;
+        if (viewMonth > 11) {
+          viewMonth = 0;
+          viewYear += 1;
+        }
+        renderCal();
+        calGrid.querySelector<HTMLButtonElement>(".mc-cal-day:not(:disabled)")?.focus();
+      }
+    };
+
+    if (dayInput && dayDisplay) {
+      const min = tomorrowIso();
+      if (!dayInput.value || dayInput.value < min) syncDay(min);
+      else syncDay(dayInput.value);
+    }
+
+    dayTrigger?.addEventListener("click", () => {
+      if (isOpen()) closeCal({ restoreFocus: false });
+      else openCal();
+    });
+    calPrev?.addEventListener("click", () => {
+      viewMonth -= 1;
+      if (viewMonth < 0) {
+        viewMonth = 11;
+        viewYear -= 1;
+      }
+      renderCal();
+      calPrev.focus();
+    });
+    calNext?.addEventListener("click", () => {
+      viewMonth += 1;
+      if (viewMonth > 11) {
+        viewMonth = 0;
+        viewYear += 1;
+      }
+      renderCal();
+      calNext.focus();
+    });
+
+    cal?.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeCal();
+        return;
+      }
+      if (event.key === "Tab") {
+        const focusable = [
+          calPrev,
+          calNext,
+          ...Array.from(calGrid?.querySelectorAll<HTMLButtonElement>(".mc-cal-day:not(:disabled)") ?? []),
+        ].filter((el): el is HTMLButtonElement => el != null);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+        if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+        return;
+      }
+      const target = event.target;
+      if (!(target instanceof HTMLButtonElement) || !target.classList.contains("mc-cal-day")) return;
+      const key = event.key;
+      if (key === "ArrowLeft") {
+        event.preventDefault();
+        moveDayFocus(target, -1);
+      } else if (key === "ArrowRight") {
+        event.preventDefault();
+        moveDayFocus(target, 1);
+      } else if (key === "ArrowUp") {
+        event.preventDefault();
+        moveDayFocus(target, -7);
+      } else if (key === "ArrowDown") {
+        event.preventDefault();
+        moveDayFocus(target, 7);
+      } else if (key === "Home") {
+        event.preventDefault();
+        calGrid?.querySelector<HTMLButtonElement>(".mc-cal-day:not(:disabled)")?.focus();
+      } else if (key === "End") {
+        event.preventDefault();
+        const days = [
+          ...Array.from(calGrid?.querySelectorAll<HTMLButtonElement>(".mc-cal-day:not(:disabled)") ?? []),
+        ];
+        days.at(-1)?.focus();
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!isOpen() || !dayRoot) return;
+      const target = event.target;
+      if (target instanceof Node && dayRoot.contains(target)) return;
+      closeCal({ restoreFocus: false });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!dayInput?.value) {
+        showError();
+        dayTrigger?.focus();
+        return;
+      }
+      clearError();
+      const service =
+        form.querySelector<HTMLInputElement>('input[name="service"]:checked')?.value
+        ?? "Not sure yet";
+      const date = fromIso(dayInput.value);
+      const dayLabel = displayFmt.format(date);
+      const subject = `Workshop enquiry — ${service} — ${dayLabel}`;
+      const body = [
+        `Service: ${service}`,
+        `Preferred day: ${dayLabel} (${dayInput.value})`,
+        notes?.value.trim() ? `Bike / notes: ${notes.value.trim()}` : "",
+        "",
+        "I understand the shop confirms scope, price and the slot itself before anything is booked.",
+      ]
+        .filter((line, index) => line !== "" || index > 2)
+        .join("\n");
+      const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const result = form.querySelector<HTMLElement>("[data-mc-booking-result]");
+      const link = form.querySelector<HTMLAnchorElement>("[data-mc-booking-link]");
+      if (link) link.href = mailto;
+      if (result) result.hidden = false;
+      window.location.href = mailto;
+    });
+  });
+</script>
