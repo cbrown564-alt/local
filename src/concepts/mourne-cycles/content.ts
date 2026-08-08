@@ -7,6 +7,35 @@
 
 export const siteUrl = "https://www.mourne-cycles.co.uk/";
 
+/** Contact + routing constants shared by every page of the concept. */
+export const base = "/concepts/mourne-cycles";
+
+export const contact = {
+  phone: "028 4372 7272",
+  phoneHref: "tel:+442843727272",
+  email: "mournecycles@gmail.com",
+  emailHref: "mailto:mournecycles@gmail.com",
+  address: "63A Castlewellan Road, Newcastle",
+  region: "County Down",
+} as const;
+
+export type NavId =
+  | "home"
+  | "bikes"
+  | "workshop"
+  | "hire"
+  | "cycle-to-work"
+  | "trails";
+
+export const nav = [
+  { id: "home", label: "Home", href: `${base}/` },
+  { id: "bikes", label: "Bikes", href: `${base}/bikes/` },
+  { id: "workshop", label: "Workshop", href: `${base}/workshop/` },
+  { id: "hire", label: "Hire", href: `${base}/hire/` },
+  { id: "cycle-to-work", label: "Cycle to Work", href: `${base}/cycle-to-work/` },
+  { id: "trails", label: "Trails", href: `${base}/trails/` },
+] as const;
+
 /** Shop thesis — guest voice speaks as Mourne Cycles, not about them. */
 export const shopVoice = {
   text: "We're one of Northern Ireland's premier local bike shops — or \"LBS\" to bike aficionados.",
@@ -129,3 +158,19 @@ export const schemeExample = {
     "Monthly sacrifice begins — we confirm the order",
   ],
 } as const;
+
+/** Hire tiers — indicative prices, confirmed by phone. Bar widths are purely
+ *  visual (relative to the dearest tier). */
+export const hireTiers = [
+  { name: "Trek hybrid", price: "from £20 / day", bar: 46 },
+  { name: "Trek mountain", price: "from £30 / day", bar: 67 },
+  { name: "Trek e-bike", price: "from £45 / day", bar: 100 },
+] as const;
+
+/** Workshop service tiers — indicative packages, scope and price confirmed
+ *  by the shop before any work starts. */
+export const workshopTiers = [
+  { name: "Bronze", detail: "Safety check + lube" },
+  { name: "Silver", detail: "Full tune-up + brake adjust" },
+  { name: "Gold", detail: "Complete overhaul" },
+] as const;

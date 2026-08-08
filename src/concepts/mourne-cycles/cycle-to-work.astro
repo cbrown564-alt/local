@@ -1,0 +1,89 @@
+---
+import McShell from "./components/McShell.astro";
+import { contact, schemeExample } from "./content";
+---
+
+<McShell
+  title={"Cycle to Work — Mourne Cycles, Newcastle"}
+  current="cycle-to-work"
+  bannerNote="Scheme figures are an illustrative worked example — savings depend on your employer and current scheme rules."
+>
+    <main>
+    <div class="mc-page-intro mc-page-intro-red">
+      <div class="mc-page-intro-copy">
+        <p class="mc-page-kicker">Cycle to Work</p>
+        <h1>A better bike,<br /><em>through work.</em></h1>
+      </div>
+      <p class="mc-page-sub">
+        We're listed as a {schemeExample.scheme} retailer. Eligibility and
+        savings depend on your employer and current scheme rules — call
+        {contact.phone} and we will walk you through it.
+      </p>
+    </div>
+
+    <section class="mc-scheme-section" aria-labelledby="mc-scheme-heading">
+      <div class="mc-scheme-panel">
+        <div class="mc-scheme-panel-head">
+          <h2 id="mc-scheme-heading">How the saving works.</h2>
+          <p class="mc-provisional mc-provisional-dark">
+            Worked example — confirm your own saving with us.
+          </p>
+        </div>
+        <div class="mc-scheme-example" aria-label="Cyclescheme worked example">
+          <dl class="mc-scheme-facts">
+            <div>
+              <dt>Scheme</dt>
+              <dd>{schemeExample.scheme}</dd>
+            </div>
+            <div>
+              <dt>Salary band</dt>
+              <dd>{schemeExample.salaryBand}</dd>
+            </div>
+            <div>
+              <dt>Bike package</dt>
+              <dd>{schemeExample.bikePackage}</dd>
+            </div>
+            <div>
+              <dt>Repayment</dt>
+              <dd>{schemeExample.monthlySacrifice} · {schemeExample.term}</dd>
+            </div>
+            <div class="mc-scheme-saving">
+              <dt>Example saving</dt>
+              <dd>{schemeExample.illustrativeSaving}</dd>
+            </div>
+          </dl>
+          <ol class="mc-scheme-steps" aria-label="How it works">
+            {schemeExample.steps.map((step, index) => (
+              <li>
+                <span class="mc-step-n" aria-hidden="true">{index + 1}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div class="mc-scheme-actions">
+          <a class="mc-panel-btn mc-panel-btn-white" href={contact.phoneHref}>Call to start · {contact.phone}</a>
+          <small>Confirm the current application route with us</small>
+        </div>
+      </div>
+
+      <div class="mc-scheme-side">
+        <h3>What you can put on the scheme</h3>
+        <p>
+          A bike and accessories within your employer's limit — electric, road,
+          mountain, hybrid or kids. Start with where you want to ride:
+        </p>
+        <ul>
+          <li><a href="/concepts/mourne-cycles/bikes/#bike-electric">Electric — the coast road without the hills</a></li>
+          <li><a href="/concepts/mourne-cycles/bikes/#bike-road">Road — Newcastle to Dundrum and back</a></li>
+          <li><a href="/concepts/mourne-cycles/bikes/#bike-mountain">Mountain — built for Castlewellan reds</a></li>
+        </ul>
+        <p>
+          Not sure whether your employer is registered? Call the shop on
+          {contact.phone} — we deal with {schemeExample.scheme} applications
+          regularly and can tell you what happens next.
+        </p>
+      </div>
+    </section>
+    </main>
+</McShell>

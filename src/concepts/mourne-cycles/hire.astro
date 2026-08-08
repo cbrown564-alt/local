@@ -1,174 +1,76 @@
 ---
-import "../../site/styles/global.css";
-import "./styles.css";
-const phone = "028 4372 7272";
-const phoneHref = "tel:+442843727272";
-const serviceMail = "mailto:mournecycles@gmail.com?subject=Workshop%20booking";
-import ConceptLayout from "../_shell/ConceptLayout.astro";
-import { schemeExample } from "./content";
+import fs from "node:fs";
+import path from "node:path";
+import McShell from "./components/McShell.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { contact, hireTiers } from "./content";
+
+const inPublic = (asset: string) =>
+  fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
+
+const hireImage = "/media/concepts/mourne-cycles/mourne-cycles-hire-after.jpg";
+const hasHireImage = inPublic(hireImage);
 ---
 
-<ConceptLayout
-  title={"Hire & service — Mourne Cycles"}
-  slug="mourne-cycles"
-  bodyClass="concept-page concept-mourne-cycles"
-  lang="en-GB"
-  bannerNote="Hire prices and scheme figures are indicative."
+<McShell
+  title={"Hire a bike — Mourne Cycles, Newcastle"}
+  current="hire"
+  bannerNote="Hire prices are indicative — the shop confirms availability, equipment and opening hours by phone."
 >
-<div class="mc-strip">
-      <span>Est. 2002 · listed Trek dealer &amp; Cyclescheme retailer</span>
-      <span>63A Castlewellan Road, Newcastle · <a href={phoneHref}>{phone}</a></span>
+    <main>
+    <div class="mc-page-intro mc-page-intro-dark">
+      <div class="mc-page-intro-copy">
+        <p class="mc-page-kicker">Hire</p>
+        <h1>Two wheels<br /><em>for the day.</em></h1>
+      </div>
+      <p class="mc-page-sub">
+        Take a bike out toward the forest or along the coast road. Call
+        {contact.phone} to confirm what is available before you set off.
+      </p>
     </div>
 
-    <header class="mc-header">
-      <a class="mc-brand" href="/concepts/mourne-cycles/">
-        <svg class="mc-peaks" width="44" height="26" viewBox="0 0 44 26" fill="none" aria-hidden="true">
-          <path d="M1 25 L13 6 L19 14 L27 1 L43 25" stroke="#0f1013" stroke-width="2.4" stroke-linejoin="round" />
-          <path d="M23.5 6.5 L27 1 L30.5 6.5" stroke="#d7282f" stroke-width="2.4" stroke-linejoin="round" />
-        </svg>
-        <span class="mc-brand-text">
-          <span class="mc-brand-name">Mourne<span>&nbsp;Cycles</span></span>
-          <span class="mc-brand-sub">Newcastle · County Down</span>
-        </span>
-      </a>
-      <nav class="mc-nav" aria-label="Main navigation">
-        <a href="/concepts/mourne-cycles/">Bikes</a>
-        <a href="/concepts/mourne-cycles/hire/" aria-current="page">Workshop</a>
-        <a href="#panel-scheme-h">Cycle to Work</a>
-        <a href="/concepts/mourne-cycles/#trails">Trails</a>
-      </nav>
-      <div class="mc-header-actions">
-        <a class="mc-phone" href={phoneHref}>{phone}</a>
-        <a class="mc-book" href={serviceMail}>Book a service</a>
-      </div>
-    </header>
-
-    <main class="mc-hire-main">
-
-      <div class="mc-hire-intro">
-        <div class="mc-hire-intro-copy">
-          <p class="mc-hire-kicker">Workshop · hire · Cycle to Work</p>
-          <h1>Two wheels,<br /><em>looked after.</em></h1>
+    <section class="mc-hire-section" aria-labelledby="mc-hire-heading">
+      <div class="mc-hire-panel">
+        {hasHireImage && (
+          <figure class="mc-hire-photo" aria-hidden="true">
+            <ResponsiveImage
+              src={hireImage}
+              alt=""
+              width={1024}
+              height={682}
+            />
+          </figure>
+        )}
+        <div class="mc-hire-panel-inner">
+          <p class="mc-workshop-label">Day hire</p>
+          <h2 id="mc-hire-heading">Pick your bike.</h2>
+          <p class="mc-provisional mc-provisional-dark">
+            Prices indicative — call to confirm.
+          </p>
+          <ul class="mc-tier-list" aria-label="Hire options and prices">
+            {hireTiers.map((tier) => (
+              <li>
+                <span class="mc-tier-name">{tier.name}</span>
+                <span class="mc-tier-bar" aria-hidden="true"><span style={`width:${tier.bar}%`}></span></span>
+                <span class="mc-tier-price">{tier.price}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mc-hire-actions">
+            <a class="mc-cta" href={contact.phoneHref}>Call to book · {contact.phone}</a>
+            <small>Confirm availability, equipment and opening hours by phone</small>
+          </div>
         </div>
-        <p class="mc-hire-sub">
-          Hire a bike, book workshop time, or explore Cycle to Work — call on
-          {phone} to confirm availability and pricing.
-        </p>
       </div>
 
-      <div class="mc-service-strip">
-
-        <!-- 01 Hire -->
-        <section class="mc-panel mc-panel-hire" aria-labelledby="panel-hire-h">
-          <div class="mc-panel-inner">
-            <div class="mc-panel-head">
-              <span class="mc-panel-num" aria-hidden="true">01</span>
-              <h2 id="panel-hire-h">Hire a bike</h2>
-              <p>Compare hire options below, then call to book.</p>
-            </div>
-            <p class="mc-provisional">Prices indicative — call to confirm.</p>
-            <ul class="mc-tier-list" aria-label="Hire options and prices">
-              <li>
-                <span class="mc-tier-name">Trek hybrid</span>
-                <span class="mc-tier-bar" aria-hidden="true"><span style="width:46%"></span></span>
-                <span class="mc-tier-price">from £20 / day</span>
-              </li>
-              <li>
-                <span class="mc-tier-name">Trek mountain</span>
-                <span class="mc-tier-bar" aria-hidden="true"><span style="width:67%"></span></span>
-                <span class="mc-tier-price">from £30 / day</span>
-              </li>
-              <li>
-                <span class="mc-tier-name">Trek e-bike</span>
-                <span class="mc-tier-bar" aria-hidden="true"><span style="width:100%"></span></span>
-                <span class="mc-tier-price">from £45 / day</span>
-              </li>
-            </ul>
-            <div class="mc-panel-foot">
-              <a class="mc-panel-btn" href={phoneHref}>Call to book · {phone}</a>
-              <small>Confirm availability, equipment and opening hours by phone</small>
-            </div>
-          </div>
-        </section>
-
-        <!-- 02 Workshop -->
-        <section class="mc-panel mc-panel-service" aria-labelledby="panel-service-h">
-          <div class="mc-panel-inner">
-            <div class="mc-panel-head">
-              <span class="mc-panel-num" aria-hidden="true">02</span>
-              <h2 id="panel-service-h">Workshop &amp; service</h2>
-              <p>Choose a service tier, then email or call to book.</p>
-            </div>
-            <p class="mc-provisional">Packages indicative — call to confirm.</p>
-            <ul class="mc-tier-list" aria-label="Service tiers">
-              <li>
-                <span class="mc-tier-name">Bronze</span>
-                <span class="mc-tier-detail">Safety check + lube</span>
-              </li>
-              <li>
-                <span class="mc-tier-name">Silver</span>
-                <span class="mc-tier-detail">Full tune-up + brake adjust</span>
-              </li>
-              <li>
-                <span class="mc-tier-name">Gold</span>
-                <span class="mc-tier-detail">Complete overhaul</span>
-              </li>
-            </ul>
-            <div class="mc-panel-foot">
-              <a class="mc-panel-btn mc-panel-btn-outline" href={serviceMail}>Email to book a slot →</a>
-              <small>We'll confirm scope, price and turnaround</small>
-            </div>
-          </div>
-        </section>
-
-        <!-- 03 Cyclescheme -->
-        <section class="mc-panel mc-panel-scheme" aria-labelledby="panel-scheme-h">
-          <div class="mc-panel-inner">
-            <div class="mc-panel-head">
-              <span class="mc-panel-num" aria-hidden="true">03</span>
-              <h2 id="panel-scheme-h">Cycle to Work</h2>
-              <p>We're listed as a {schemeExample.scheme} retailer. Eligibility and savings depend on your employer and current scheme rules.</p>
-            </div>
-            <p class="mc-provisional">Worked example — confirm your own saving with us.</p>
-            <div class="mc-scheme-example" aria-label="Cyclescheme worked example">
-              <dl class="mc-scheme-facts">
-                <div>
-                  <dt>Scheme</dt>
-                  <dd>{schemeExample.scheme}</dd>
-                </div>
-                <div>
-                  <dt>Salary band</dt>
-                  <dd>{schemeExample.salaryBand}</dd>
-                </div>
-                <div>
-                  <dt>Bike package</dt>
-                  <dd>{schemeExample.bikePackage}</dd>
-                </div>
-                <div>
-                  <dt>Repayment</dt>
-                  <dd>{schemeExample.monthlySacrifice} · {schemeExample.term}</dd>
-                </div>
-                <div class="mc-scheme-saving">
-                  <dt>Example saving</dt>
-                  <dd>{schemeExample.illustrativeSaving}</dd>
-                </div>
-              </dl>
-              <ol class="mc-scheme-steps" aria-label="How it works">
-                {schemeExample.steps.map((step, index) => (
-                  <li>
-                    <span class="mc-step-n" aria-hidden="true">{index + 1}</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div class="mc-panel-foot">
-              <a class="mc-panel-btn mc-panel-btn-white" href={phoneHref}>Call to start · {phone}</a>
-              <small>Confirm the current application route with us</small>
-            </div>
-          </div>
-        </section>
-
+      <div class="mc-hire-notes">
+        <h3>Before you set off</h3>
+        <ul>
+          <li><strong>Bring ID and a contact number</strong><span>We will sort fit and saddle height before you leave.</span></li>
+          <li><strong>Tell us where you are headed</strong><span>Castlewellan reds, Tollymore or the coast road — we will point you at the right route for the day.</span></li>
+          <li><strong>Back before closing</strong><span>Confirm opening hours when you book — they change with the season.</span></li>
+        </ul>
       </div>
+    </section>
     </main>
-</ConceptLayout>
+</McShell>

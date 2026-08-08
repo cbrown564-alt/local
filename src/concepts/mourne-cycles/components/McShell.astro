@@ -1,0 +1,89 @@
+---
+import ConceptLayout from "../../_shell/ConceptLayout.astro";
+import { contact, nav, type NavId } from "../content";
+import "../../../site/styles/global.css";
+import "../styles.css";
+
+interface Props {
+  title: string;
+  current: NavId;
+  bannerNote?: string;
+}
+
+const { title, current, bannerNote } = Astro.props;
+
+const mainNav = nav.filter((item) => item.id !== "home");
+---
+
+<ConceptLayout
+  title={title}
+  slug="mourne-cycles"
+  bodyClass="concept-page concept-mourne-cycles"
+  lang="en-GB"
+  bannerNote={bannerNote}
+>
+    <div class="mc-strip">
+      <span>Est. 2002 · listed Trek dealer &amp; Cyclescheme retailer</span>
+      <span>{contact.address} · <a href={contact.phoneHref}>{contact.phone}</a></span>
+    </div>
+    <header class="mc-header">
+      <a class="mc-brand" href="/concepts/mourne-cycles/">
+        <svg class="mc-peaks" width="44" height="26" viewBox="0 0 44 26" fill="none" aria-hidden="true">
+          <path d="M1 25 L13 6 L19 14 L27 1 L43 25" stroke="#0f1013" stroke-width="2.4" stroke-linejoin="round" />
+          <path d="M23.5 6.5 L27 1 L30.5 6.5" stroke="#d7282f" stroke-width="2.4" stroke-linejoin="round" />
+        </svg>
+        <span class="mc-brand-text">
+          <span class="mc-brand-name">Mourne<span>&nbsp;Cycles</span></span>
+          <span class="mc-brand-sub">Newcastle · County Down</span>
+        </span>
+      </a>
+      <nav class="mc-nav" aria-label="Main navigation">
+        {mainNav.map((item) => (
+          <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <div class="mc-header-actions">
+        <a class="mc-phone" href={contact.phoneHref}>{contact.phone}</a>
+        <a class="mc-book" href="/concepts/mourne-cycles/workshop/">Book a service</a>
+      </div>
+      <details class="mc-menu">
+        <summary aria-label="Open menu"><span aria-hidden="true"></span>Menu</summary>
+        <nav class="mc-menu-nav" aria-label="Menu">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+          ))}
+          <a class="mc-menu-book" href="/concepts/mourne-cycles/workshop/">Book a service</a>
+          <a class="mc-menu-phone" href={contact.phoneHref}>Call {contact.phone}</a>
+        </nav>
+      </details>
+    </header>
+    <slot />
+    <footer class="mc-footer">
+      <div class="mc-footer-grid">
+        <div class="mc-footer-col">
+          <svg class="mc-peaks" width="40" height="24" viewBox="0 0 44 26" fill="none" aria-hidden="true">
+            <path d="M1 25 L13 6 L19 14 L27 1 L43 25" stroke="#f5f4f1" stroke-width="2.4" stroke-linejoin="round" />
+            <path d="M23.5 6.5 L27 1 L30.5 6.5" stroke="#d7282f" stroke-width="2.4" stroke-linejoin="round" />
+          </svg>
+          <p class="mc-footer-brand">Mourne Cycles</p>
+          <p>{contact.address}, {contact.region}</p>
+          <p>The road out of Newcastle toward trail country — local since 2002.</p>
+        </div>
+        <div class="mc-footer-col">
+          <p class="mc-footer-head">Talk to the shop</p>
+          <p><a href={contact.phoneHref}>{contact.phone}</a></p>
+          <p><a href={contact.emailHref}>{contact.email}</a></p>
+        </div>
+        <div class="mc-footer-col">
+          <p class="mc-footer-head">Good to know</p>
+          <p>Listed Trek dealer · listed Cyclescheme retailer.</p>
+          <p>Hire prices and scheme figures are indicative — call the shop to confirm.</p>
+        </div>
+      </div>
+      <nav class="mc-footer-nav" aria-label="Footer navigation">
+        {nav.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+    </footer>
+</ConceptLayout>

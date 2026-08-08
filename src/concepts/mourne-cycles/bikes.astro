@@ -1,0 +1,93 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import McShell from "./components/McShell.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import { bikeTypes, contact, rangeCategories } from "./content";
+
+const inPublic = (asset: string) =>
+  fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
+
+const bikePanels = bikeTypes.map((bike) => ({
+  ...bike,
+  hasImage: inPublic(bike.image),
+}));
+
+/** Hybrid and kids have no generated plates and no rail destination of their
+ *  own — they are listed as rows so the range reads complete without
+ *  inventing product photography. */
+const extraRows = rangeCategories.filter(
+  (cat) => !bikeTypes.some((bike) => bike.name === cat.name),
+);
+---
+
+<McShell
+  title={"Bikes — Mourne Cycles, Newcastle"}
+  current="bikes"
+  bannerNote="Bike imagery is AI-generated and is not showroom photography."
+>
+    <main>
+    <div class="mc-page-intro">
+      <div class="mc-page-intro-copy">
+        <p class="mc-page-kicker">The range</p>
+        <h1>Start with where<br /><em>you want to ride.</em></h1>
+      </div>
+      <p class="mc-page-sub">
+        We are a listed Trek dealer. Stock changes with the season, so call
+        {contact.phone} and we will tell you what is on the floor — and order
+        in what isn't.
+      </p>
+    </div>
+
+    <section class="mc-bikes mc-bikes-page" aria-label="Bikes by kind of riding">
+      <div class="mc-bike-grid">
+        {bikePanels.map((bike) => (
+          <article class="mc-bike-panel" id={bike.id} aria-labelledby={`${bike.id}-heading`}>
+            <div class="mc-bike-visual" data-has-image={bike.hasImage ? "" : undefined}>
+              {bike.hasImage ? (
+                <ResponsiveImage
+                  src={bike.image}
+                  alt={bike.imageAlt}
+                  width={800}
+                  height={600}
+                  sizes="(max-width: 720px) 100vw, 400px"
+                />
+              ) : (
+                <div class="mc-bike-visual-empty" aria-hidden="true">
+                  <span>{bike.name}</span>
+                </div>
+              )}
+            </div>
+            <div class="mc-bike-copy">
+              <p class="mc-bike-index">{bike.index}</p>
+              <h2 id={`${bike.id}-heading`}>{bike.name}</h2>
+              <p class="mc-bike-terrain">{bike.terrain}</p>
+              <p class="mc-bike-for">{bike.forWhom}</p>
+              <p class="mc-bike-rides">{bike.rides}</p>
+              <div class="mc-bike-actions">
+                <a class="mc-bike-cta" href={contact.phoneHref}>Call us about {bike.name}</a>
+                <a class="mc-bike-map" href="/concepts/mourne-cycles/trails/">{bike.mapNote} →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mc-range-rows" aria-label="Also in the range">
+        {extraRows.map((cat) => (
+          <div class="mc-range-row">
+            <span class="mc-range-row-index" aria-hidden="true">{cat.index}</span>
+            <span class="mc-range-row-name">{cat.name}</span>
+            <span class="mc-range-row-terrain">{cat.terrain}</span>
+            <a class="mc-range-row-call" href={contact.phoneHref}>Call us →</a>
+          </div>
+        ))}
+      </div>
+
+      <p class="mc-bikes-foot">
+        Cycle to Work can cover any of these — see how the scheme works on our
+        <a href="/concepts/mourne-cycles/cycle-to-work/">Cycle to Work page</a>.
+      </p>
+    </section>
+    </main>
+</McShell>

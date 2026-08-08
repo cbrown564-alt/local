@@ -1,0 +1,78 @@
+---
+import McShell from "./components/McShell.astro";
+import { contact, shopVoice, standToday, workshopTiers } from "./content";
+---
+
+<McShell
+  title={"Workshop & service — Mourne Cycles, Newcastle"}
+  current="workshop"
+  bannerNote="Workshop stand tickets are illustrative. Service packages are indicative — the shop confirms scope, price and turnaround."
+>
+    <main>
+    <div class="mc-page-intro">
+      <div class="mc-page-intro-copy">
+        <p class="mc-page-kicker">The workshop</p>
+        <h1>Get your bike<br /><em>checked.</em></h1>
+      </div>
+      <p class="mc-page-sub">
+        {shopVoice.text}
+      </p>
+    </div>
+
+    <section class="mc-workshop mc-workshop-page" aria-labelledby="mc-service-heading">
+      <div class="mc-workshop-desk">
+        <div class="mc-workshop-head">
+          <span class="mc-workshop-status"><span aria-hidden="true"></span> Workshop enquiries open</span>
+          <span class="mc-workshop-code" aria-hidden="true">MC · 2002</span>
+        </div>
+        <div class="mc-workshop-body">
+          <p class="mc-workshop-label">Service tiers</p>
+          <h2 id="mc-service-heading">Pick a tier, or just describe the noise.</h2>
+          <ul class="mc-tier-list mc-tier-list-page" aria-label="Service tiers">
+            {workshopTiers.map((tier) => (
+              <li>
+                <span class="mc-tier-name">{tier.name}</span>
+                <span class="mc-tier-detail">{tier.detail}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mc-provisional mc-provisional-page">
+            Packages indicative — we confirm scope, price and turnaround before any work starts.
+          </p>
+          <ol class="mc-workshop-steps">
+            <li>
+              <span class="mc-workshop-num">01</span>
+              <span><strong>Tell us what the bike needs</strong><small>A repair, a tune-up, or advice before you ride.</small></span>
+            </li>
+            <li>
+              <span class="mc-workshop-num">02</span>
+              <span><strong>We confirm the job</strong><small>Scope, price and turnaround come straight from us.</small></span>
+            </li>
+            <li>
+              <span class="mc-workshop-num">03</span>
+              <span><strong>Bring the bike to Newcastle</strong><small>{contact.address} · call {contact.phone}.</small></span>
+            </li>
+          </ol>
+        </div>
+        <div class="mc-stand" aria-labelledby="mc-stand-heading-page">
+          <div class="mc-stand-head">
+            <h3 id="mc-stand-heading-page">On the stand today</h3>
+          </div>
+          <ol class="mc-stand-jobs" role="list">
+            {standToday.map((item) => (
+              <li>
+                <span class="mc-stand-ticket" aria-hidden="true">{item.ticket}</span>
+                <span>{item.job}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div class="mc-workshop-actions">
+          <a href={contact.emailHref}>Email the workshop <span aria-hidden="true">→</span></a>
+          <a href={contact.phoneHref}>Call {contact.phone}</a>
+        </div>
+        <p class="mc-workshop-note">Call for price, scope and availability.</p>
+      </div>
+    </section>
+    </main>
+</McShell>
