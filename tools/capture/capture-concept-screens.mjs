@@ -12,11 +12,16 @@
 // at 2530x1420 (1265x710 viewport at 2x for crisp comparison rendering).
 // Cookie and consent banners on the current site are left visible on purpose:
 // the capture records the page as a first-time visitor meets it.
+// A second asset with `scrollTo` is captured with a puppeteer pass instead of
+// the CLI: the page settles, the subject scrolls into the viewport and any
+// in-view effects paint — use it for rAF-driven theatre the one-shot CLI
+// screenshot cannot advance.
 
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
 
 // beforeBudgetMs controls how much virtual time elapses before the live site
@@ -58,6 +63,25 @@ const SECOND_ASSETS = {
     conceptPath: "/concepts/mourne-cycles/hire/",
     before: "https://www.mourne-cycles.co.uk/",
     beforeBudgetMs: 12000,
+  },
+  // Companion-only: the live site has no separate workshop or trails pages,
+  // so there is no honest before to pair these against.
+  "mourne-cycles/workshop": {
+    conceptPath: "/concepts/mourne-cycles/workshop/",
+  },
+  // The ridgeline draw is rAF-driven, which one-shot CLI capture barely
+  // advances, and the CLI scrolls to a fragment before the hero image grows
+  // the page, landing the frame above the theatre. So this still is taken
+  // with a real browser pass: chromeFlags forces reduced motion (motion.ts
+  // paints the designed settled frame — full skyline, marker on the massif —
+  // on the first frame) and scrollTo puts that theatre in the viewport after
+  // the page has settled. It records exactly what a reduced-motion visitor
+  // meets.
+  "mourne-cycles/trails": {
+    conceptPath: "/concepts/mourne-cycles/trails/",
+    scrollTo: "#mc-ridgeline",
+    scrollOffset: -60,
+    chromeFlags: ["--force-prefers-reduced-motion"],
   },
   "donard-veterinary/appointments": {
     conceptPath: "/concepts/donard-veterinary/appointments/",
@@ -136,6 +160,41 @@ async function capture(url, outName, budgetMs = 12000) {
   console.log(`${outName}.jpg — ${kb} KB from ${url}`);
 }
 
+// For surfaces whose subject is rAF-driven or below the fold: a real browser
+// pass that waits for the page to settle, scrolls the subject into the
+// viewport and shoots the same 1265×710 @2x frame as the CLI path.
+async function captureScrolled(url, outName, { scrollTo, scrollOffset = 0, chromeFlags = [] }) {
+  const browser = await puppeteer.launch({
+    executablePath: chrome,
+    headless: "new",
+    args: chromeFlags,
+  });
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 2 });
+    await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
+    await page.evaluate(
+      (selector, offset) => {
+        document.querySelector(selector).scrollIntoView({ block: "start", behavior: "instant" });
+        window.scrollBy(0, offset);
+      },
+      scrollTo,
+      scrollOffset,
+    );
+    // Let the scroll land and any in-view effects paint their first frame.
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    const tmp = path.join(outDir, `${outName}.tmp.png`);
+    await page.screenshot({ path: tmp });
+    const out = path.join(outDir, `${outName}.jpg`);
+    await sharp(tmp).jpeg({ quality: 82, mozjpeg: true }).toFile(out);
+    fs.unlinkSync(tmp);
+    const kb = Math.round(fs.statSync(out).size / 1024);
+    console.log(`${outName}.jpg — ${kb} KB from ${url} (scrolled to ${scrollTo})`);
+  } finally {
+    await browser.close();
+  }
+}
+
 if (known[key] === "landing") {
   const conceptUrl = `${previewBase}/concepts/${key}/`;
   const alive = await fetch(conceptUrl).then((r) => r.ok).catch(() => false);
@@ -153,5 +212,9 @@ if (known[key] === "landing") {
   if (asset.before) {
     await capture(asset.before, `${outBase}-before`, asset.beforeBudgetMs ?? 8000);
   }
-  await capture(conceptUrl, `${outBase}-after`);
+  if (asset.scrollTo) {
+    await captureScrolled(conceptUrl, `${outBase}-after`, asset);
+  } else {
+    await capture(conceptUrl, `${outBase}-after`);
+  }
 }

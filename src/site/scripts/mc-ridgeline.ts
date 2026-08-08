@@ -89,8 +89,8 @@ export function mountMcRidgeline(root: ParentNode = document): void {
           }
         }
       },
-      // The settled frame is the full skyline with the marker mid-ridge.
-      { settledAt: DRAW_SECONDS + Math.PI / 0.9 },
+      // The settled frame is the full skyline with the marker up on the massif.
+      { settledAt: DRAW_SECONDS + 0.29 },
     );
   });
 }
