@@ -13,7 +13,7 @@ Mourne Cycles, Donard Veterinary and Castle Farm — because commit `b9e28aa`
 replaced concept hero imagery with drawn service panels and nothing re-read the
 sourcing copy afterwards.
 
-`node tools/check/check-public-assets.mjs` reports images held in `public/images/`
+`node tools/check/check-public-assets.mjs` reports images held under `public/`
 that no longer appear anywhere in `src/`.
 
 ## Codex image recovery archive (10 August 2026)
@@ -416,7 +416,7 @@ of these businesses supplied one.
   for the Enniskeen concept: an "E" beneath the conical turret roofline and
   weathervane finial taken from the building's own silhouette. Used as the
   concept's favicon, header lockup, section ornament and footer seal; the
-  drawing lives in `src/components/enniskeen/EnkMark.astro` and this file is
+  drawing lives in `src/concepts/hotel-enniskeen/components/EnkMark.astro` and this file is
   the favicon copy of it, kept in step by hand. **This is not Enniskeen's
   logo.** The hotel publishes no mark of its own; nothing on the concept
   presents this as the hotel's existing identity, and the concept's header

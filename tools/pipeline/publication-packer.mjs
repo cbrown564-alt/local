@@ -119,7 +119,7 @@ function assetStatus(urls) {
  * suffix (`-640.webp`), which is why they are built here and not by swapping
  * the extension.
  */
-function mediaStatus(slug, candidate, details) {
+function mediaStatus(candidate, details) {
   const stems = [candidate.before, candidate.after]
     .filter(Boolean)
     .map((url) => `public/${url.replace(/^\//, "").replace(/\.[a-z0-9]+$/i, "")}`);
@@ -196,7 +196,7 @@ function buildPacket(slug) {
   const route = routeSource(candidate.href);
   const conceptRoute = verification?.conceptRoute ?? `/concepts/${slug}/`;
   const secondRoute = verification?.secondAssetRoute ?? null;
-  const media = mediaStatus(slug, candidate, details);
+  const media = mediaStatus(candidate, details);
   const assets = assetStatus([candidate.before, candidate.after].filter(Boolean));
   const provenance = provenanceStatus(slug, candidate.name);
   const checklist = [
