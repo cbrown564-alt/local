@@ -102,6 +102,12 @@ check(
   "kinetic splitter ships its char and word spans",
   docs.home.flat.includes("mc-kin-char") && docs.home.flat.includes("mc-kin-word"),
 );
+check(
+  "generated rider hero video ships with its poster",
+  docs.home.flat.includes("mourne-cycles-hero.webm") &&
+    docs.home.flat.includes("mourne-cycles-hero.mp4") &&
+    docs.home.flat.includes("mourne-cycles-hero-video-source.png"),
+);
 
 /* Ridgeline: real data sampled at build time, canvas aria-hidden, disclosed. */
 check(

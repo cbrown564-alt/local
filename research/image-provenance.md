@@ -247,6 +247,23 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   invented a "VARIETY" fascia; conversational edit removed fascia lettering and
   kept the yellow panels blank. Day plate remains the reduced-motion default if
   this ever wires in.
+- `public/media/concepts/kent-amusements/kent-amusements-hero-video-source.png`
+  — **in use.** AI-generated edit created 9 August 2026 for a
+  stylised human-motion capability test. The in-use day promenade plate was
+  the edit target; one anonymous adult, one child and a plain red balloon were
+  added in the same ink-and-gouache style, walking toward the indicative
+  arcade. They do not depict identified customers or a recorded event. The
+  building, blank fascia panels and place remain subject to the day plate's
+  indicative-not-a-survey boundary. Generated with the built-in image tool at
+  1672 × 941. It is the poster and reduced-motion fallback for the hero video.
+- `public/media/concepts/kent-amusements/kent-amusements-hero.{mp4,webm}` —
+  **in use.** Six-second image-to-video derivative of the source above: the
+  anonymous adult and child walk into the indicative arcade while the balloon
+  trails behind. Selected 9 August 2026 after review found stable architecture,
+  coherent figures and a clean ending; it plays once and holds rather than
+  forcing a narrative action to loop. Both web files are stripped of audio.
+  The visible in-frame generated-scene label covers the generator mark while
+  preserving explicit disclosure.
 - `kent-amusements-afternoon-comic-01-03.mp4` and
   `kent-amusements-afternoon-comic-04-06.mp4` — **held / not wired** (Gemini
   Omni, 5 August 2026). Image-to-video of the researched storyboard strips
@@ -271,6 +288,23 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   not linked from the concept.
 
 - `public/media/concepts/castle-farm/castle-farm-weekly-table-illustration.png` — **in use** (generated 5 August 2026). AI-generated hand-painted editorial still-life made with the built-in OpenAI image generation tool for Castle Farm move 4, showing a possible week's table from the published food categories. It is an illustrative visualisation, not a photograph of Castle Farm, its kitchen or an exact current box, and carries no brand, packaging or availability claim.
+- `public/media/concepts/castle-farm/castle-farm-hero-video-source.png` —
+  **in use.** AI-generated edit created 9 August 2026 for a
+  hand-and-object interaction capability test. The in-use weekly-table
+  illustration was the edit target; one anonymous partial arm and hand holding
+  a small bunch of carrots were added in the same painted style. The generator
+  produced four carrots despite a request for exactly three; that miss is
+  retained as evidence for the capability test. The image remains a possible
+  week's table, not Castle Farm's current box, kitchen, produce selection or a
+  real person. Generated with the built-in image tool at 1672 × 941. It is the
+  poster and reduced-motion fallback for the hero video.
+- `public/media/concepts/castle-farm/castle-farm-hero.{mp4,webm}` — **in
+  use.** Six-second image-to-video derivative of the source above: one
+  anonymous hand sets the four visible carrots into the illustrative box and
+  withdraws. Selected 9 August 2026 after frame review found coherent contact,
+  a stable table and a clean final arrangement. It plays once and holds; both
+  web files are stripped of audio. The visible in-frame generated-scene label
+  covers the generator mark while preserving explicit disclosure.
 - `public/media/concepts/castle-farm/castle-farm-delivery-round-plate.png` — **in use** (generated and revised 5 August 2026). AI-generated hand-drawn ink-and-gouache route plate made with the built-in OpenAI image generation tool for Castle Farm move 5. It uses only towns named in the farm's published schedule and arranges Tuesday, Wednesday, Thursday and Friday clockwise; it is an indicative drawing, not a survey, navigational map or exact route record.
 - `public/media/concepts/newcastle-dental/newcastle-dental-calm-room-plate.png` — **concept asset** (generated 5 August 2026). AI-generated hand-drawn periwinkle room illustration made with the built-in OpenAI image generation tool for Newcastle Family Dental Care move 4. It imagines a calm treatment room with a chair by a window and plants; it is not a photograph or evidence of the practice's actual interior, facilities or furnishings.
 
@@ -326,8 +360,32 @@ Every page carrying one of these labels it as generated on the page itself.
   WebP derivatives generate. Each variant carries its own
   "Provisional visualisation" caption on the page, and the daytime plate
   remains the pre-script state. Prompts and boundary: `research/concepts/hotel-enniskeen/enniskeen-day-part-hero-brief.md`.
+- `enniskeen-hero-video-source.png` — **held, not in use.** AI-generated
+  weather-only edit created 9 August 2026 for a near-static atmospheric-loop
+  capability test. The in-use faithful dawn plate was the edit target; the
+  generation refined only the mist into two thin ribbons over the left lawn
+  and distant trees. The house architecture, grounds, camera, dawn light and
+  empty windows retain the faithful dawn plate's boundary. Generated with the
+  built-in image tool at 1821 × 864. Record any video derivative separately,
+  strip its audio and keep the existing dawn still as the reduced-motion
+  fallback.
 - `enniskeen-faithful-room6.png` — **in use.** AI-generated faithful visualisation based on the hotel's reference photograph of Room 6's distinctive matching pink basin and bath. The prompt preserved the fixture colour, forms and chrome cross-head tap arrangement and forbade invented luxury features.
 - `bucks-head-faithful-hearth.png` — **in use.** AI-generated faithful visualisation based on the pub's reference photograph of its real hearth. The prompt preserved the rounded arch, brick chimney breast, stove, antlers, wall colours, seating and floor materials while forbidding redesign or invented amenities.
+- `bucks-head-hero-video-source.png` — **in use.** AI-generated
+  edit created 9 August 2026 as the source frame for a restrained hearth-loop
+  experiment. The in-use `bucks-head-faithful-hearth.png` was the edit target;
+  the generation changed only the existing stove from dark to a small fire
+  visible behind its closed glass door. The rounded arch, brick chimney
+  breast, antlers, wall colours, lighting, seating, shelving, floor and empty
+  room remain based on that faithful visualisation. Generated with the
+  built-in image tool at the original 992 × 1586 dimensions. It is the poster
+  and reduced-motion fallback for the hero video.
+- `bucks-head-hero.{mp4,webm}` — **in use.** Ten-second image-to-video
+  derivative of the source above, added 9 August 2026 after review found the
+  room stable and the low fire naturally contained behind the stove glass.
+  It loops in the hero; both web files are stripped of audio. The visible
+  in-frame generated-scene label covers the generator mark while preserving
+  explicit disclosure.
 - `enniskeen-generated-estate.jpg`, `enniskeen-generated-balcony.jpg`,
   `enniskeen-generated-afternoon-tea.jpg`, `enniskeen-generated-walker.jpg`,
   `enniskeen-generated-restaurant.jpg` and `enniskeen-generated-lounge.jpg` —
@@ -373,6 +431,16 @@ Every page carrying one of these labels it as generated on the page itself.
   (`risograph-chicken-burger.png`) sits alongside as the print-resolution
   source; webp derivatives and the webm are pipeline products of the jpg
   and mp4.
+- `scopers-hero-video-source.png` — **held, not in use.** AI-generated
+  photoreal source frame created 9 August 2026 for a quieter alternative to
+  the in-use risograph hero loop. The generated
+  `scopers-generated-chicken-burger.jpg` was supplied as a dish reference;
+  the wide pass composition, spoon and anonymous partial hand are newly
+  generated. It depicts the kind of buttermilk chicken burger described in
+  Scopers' public post, not the real dish, premises, chef or service. Generated
+  with the built-in image tool at 1672 × 941. If a video derivative ships,
+  record it separately here, strip its audio and retain the concept's visible
+  generated-media disclosure.
 - `castle-farm-produce.jpg` — **not in use since 5 August 2026.** AI-generated.
   It was cropped by CSS to a 190×43 window and shown as the concept's wordmark
   in the page header, so the visible slice read as a brand mark rather than as
@@ -413,6 +481,21 @@ Every page carrying one of these labels it as generated on the page itself.
 - `mourne-cycles-faithful-visualisation.jpg` — **not in use since 26 July 2026.** AI-generated faithful visualisation based on an April 2026 Mourne Cycles customer photo. The prompt preserved the photographed bicycle, red fence, paving and numbered blue bin while forbidding invented shop, rider, trail or product context. The reference evidences the bicycle and its surroundings only, not the ownership of the yard, so neither the caption nor the alt text called the fence the shop's own premises (corrected 25 July 2026 after the re-review flagged the alt text as an unsourced premises claim).
 - `mourne-cycles-bike-electric.jpg`, `mourne-cycles-bike-road.jpg` and `mourne-cycles-bike-mountain.jpg` — **in use.** AI-generated illustrative bike-category visuals added 31 July 2026 for the Electric, Road and Mountain terrain panels. They show the kind of bike and riding context named by each panel, not stock held by the shop or its premises; no product model, price or availability claim is attached to them.
 - `mourne-cycles-hero.jpg` — **in use.** AI-generated illustrative landscape visual added 31 July 2026 for the concept's hero. It is a drawn riding context for the Mourne/Castlewellan route, not a photograph of the shop, its premises or a specific current trail condition.
+- `mourne-cycles-hero-video-source.png` — **in use.** AI-generated
+  illustrative source frame created 9 August 2026 for a possible short hero
+  loop. The in-use `mourne-cycles-hero.jpg` was supplied as a visual reference
+  for its cool overcast light, forest texture, muted grade and Mourne setting;
+  the composition and anonymous rider are newly generated. It does not depict
+  a customer, shop premises, a stocked bike or a specific current trail
+  condition. Generated with the built-in image tool at 1672 × 941. It is the
+  hero poster and reduced-motion fallback.
+- `mourne-cycles-hero.{mp4,webm}` — **in use.** Six-second image-to-video
+  derivative of the source above: the anonymous rider crosses the locked-off
+  trail view and exits behind the edge trees. Added 9 August 2026 after review
+  found stable landscape geometry, coherent bicycle movement and a quiet loop
+  point. Both web files are stripped of audio. The visible in-frame
+  generated-scene label covers the generator mark while preserving explicit
+  disclosure.
 
 ## Third-party photographs
 

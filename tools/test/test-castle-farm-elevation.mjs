@@ -218,7 +218,11 @@ check(
 // Move 4 — the week's table is the theatre, with its disclosure chain.
 check(
   "the week's table plate is missing from the first screen",
-  hero.includes("castle-farm-weekly-table-illustration.png"),
+  hero.includes("castle-farm-hero-video-source.png"),
+);
+check(
+  "the week's table video is missing from the first screen",
+  hero.includes("castle-farm-hero.webm") && hero.includes("castle-farm-hero.mp4"),
 );
 check(
   "the retired mixed-box still is back in the first screen",

@@ -14,7 +14,7 @@ import {
 const inPublic = (asset: string) =>
   fs.existsSync(path.join(process.cwd(), "public", asset.replace(/^\//, "")));
 
-const heroImage = "/media/concepts/mourne-cycles/mourne-cycles-hero.jpg";
+const heroImage = "/media/concepts/mourne-cycles/mourne-cycles-hero-video-source.png";
 const hasHeroImage = inPublic(heroImage);
 
 const bikePanels = bikeTypes.map((bike) => ({
@@ -32,13 +32,29 @@ const bikePanels = bikeTypes.map((bike) => ({
     <section class="mc-hero" aria-labelledby="mc-hero-heading">
       <figure class="mc-hero-visual">
         {hasHeroImage ? (
-          <ResponsiveImage
-            src={heroImage}
-            alt="Mountain bike on a Castlewellan Forest trail with the Mournes ahead"
-            width="1024"
-            height="682"
-            loading="eager"
-          />
+          <>
+            <ResponsiveImage
+              src={heroImage}
+              alt="A mountain-bike rider crossing a forest trail with the Mournes ahead"
+              width="1672"
+              height="941"
+              loading="eager"
+            />
+            <video
+              class="mc-hero-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster={heroImage}
+              aria-hidden="true"
+            >
+              <source src="/media/concepts/mourne-cycles/mourne-cycles-hero.webm" type="video/webm" />
+              <source src="/media/concepts/mourne-cycles/mourne-cycles-hero.mp4" type="video/mp4" />
+            </video>
+            <span class="mc-video-note">AI-generated scene</span>
+          </>
         ) : (
           <svg class="mc-hero-fallback" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="1440" height="900" fill="#17181c" />

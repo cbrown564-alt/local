@@ -371,7 +371,7 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
   const plate = block(page.flat, 'class="ka-promenade-plate"', "</figure>");
   check(
     `the promenade plate is missing from the ${name} page`,
-    images.some((image) => image.includes("kent-amusements-promenade-day.png")),
+    images.some((image) => image.includes("kent-amusements-hero-video-source.png")),
   );
   check(
     `the lit promenade plate is missing from the ${name} page`,
@@ -385,6 +385,11 @@ for (const [name, page] of Object.entries({ home, attractions: atx })) {
   check(
     `the generated plate disclosure is missing from the ${name} page`,
     page.text.includes("AI-generated image · indicative, not a survey"),
+  );
+  check(
+    `the promenade video is missing from the ${name} page`,
+    page.html.includes("kent-amusements-hero.webm") &&
+      page.html.includes("kent-amusements-hero.mp4"),
   );
   check(
     `the withdrawn 2023 exterior photograph is referenced on the ${name} page`,
