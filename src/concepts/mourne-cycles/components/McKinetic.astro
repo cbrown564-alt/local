@@ -16,7 +16,7 @@ interface Part {
 interface Props {
   parts: Part[];
   as?: "h1" | "h2" | "h3" | "p" | "span";
-  effect?: "ride" | "lean";
+  effect?: "ride" | "static";
   class?: string;
   id?: string;
 }
@@ -51,7 +51,7 @@ if (word.length) words.push(word);
 <Tag
   id={id}
   class:list={[className, "mc-kinetic"]}
-  data-kinetic={effect}
+  data-kinetic={effect === "ride" ? effect : undefined}
   aria-label={label}
 >
   {

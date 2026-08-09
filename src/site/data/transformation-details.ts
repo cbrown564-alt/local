@@ -715,7 +715,7 @@ export const transformationDetails = {
       {
         "title": "Make the type move like the riding",
         "body": "A bike shop sells access to riding, and the old page — like the current Wix site — sat still. The concept's condensed italic caps were already the sportiest thing about it.",
-        "change": "Kinetic typography as the site's signature: the headline on every page rides in character by character and settles, and the big section headings lean into scroll velocity and ease back, the way a rider corners. Under reduced motion the static italic caps are the designed settled state, not a disabled version."
+        "change": "Kinetic typography as the site's signature: the headline on every page rides in character by character and settles. The big section headings stay still, letting the condensed italic caps carry the cycling character without reacting to scroll. Under reduced motion the static type is the designed settled state, not a disabled version."
       },
       {
         "title": "Draw the country the shop trades in",
