@@ -182,3 +182,31 @@ Stems under `audio/stems/X0N/`. Sidecars beside mixed files.
 | X25 | 10 png + 10 mp3 | **pass selectively** | yes with front line | Print T04/T07; T10 leave-behind; hold T01; retire whispers and the remaining first batch. |
 | X26 | png + mp4 + mp3 | kill | no | Watch-ad reading, forbidden numerals, clipped audio. |
 | X27 | mp4 | kill | no | Attractive clarity metaphor with no self-contained commercial meaning. |
+
+## Reference plates — 10 August 2026
+
+Nine stills extracted from the T-clips into
+[`../../stills/studio/`](../../stills/studio/), for the trailer shot list in
+[`../../trailer-shot-prompts.md`](../../trailer-shot-prompts.md). No still had
+ever been pulled from a studio clip; `stills/` held only the two town films.
+These are the conditioning inputs an image-to-video pass needs.
+
+| Plate | From | At |
+| --- | --- | --- |
+| `T01-01-approach.png` | T01 | 1.2s — boots mid-stride at the door |
+| `T01-02-forms-on-glass.png` | T01 | 4.0s — two blank forms on the frosted pane |
+| `T01-03-empty-street.png` | T01 | 5.2s — the departure |
+| `T01-04-walks-in.png` | T01 | 7.5s — pane down, amber back |
+| `T04-01-dark-window.png` | T04 | 4.2s — rain on an unreadable window |
+| `T04-02-clock-lights.png` | T04 | 6.2s — the clock resolves; the best fix frame in the corpus |
+| `T05-01-bell.png` | T05 | 5.0s — the bell |
+| `T10-01-plate-left.png` | T10 | 0.4s — plate on the left fascia |
+| `T10-02-plate-seated-right.png` | T10 | 4.5s — plate level on the right fascia |
+
+All are **1280×720**, the clips' source resolution — below anything generated
+fresh, so the mix needs an upscale pass or a contact-sheet check before it is
+cut together.
+
+**T10 does not contain a seated ending.** The plate hovers and finishes askew;
+4.5s and 5.5s are the only clean level frames. The swap works as a still and
+fails as motion until the clip is regenerated.
