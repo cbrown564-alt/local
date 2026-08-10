@@ -29,13 +29,17 @@ retake factor and a sound-design reserve, the true budget is:
 
 > **~26 to 34 minutes of finished, kept narration.**
 
-**Measured 10 August, and the rate is not a constant.** The audition script ran
-830 characters per minute; the trailer ran a little over 1,000. Dense
-short-sentence copy with held beats is slow; flowing copy is fast. Credits are
-billed per *character*, so the credit budget below is unaffected either way —
-but the minute totals are an estimate with real spread in them, and a piece
-that must hit a duration has to be timed after generation, not predicted before
-it.
+**Measured 10 August, and the rate is not a constant — voice moves it more than
+copy does.** Measured range across the day: **666 to 1,040 characters per
+minute.** The same 1,380-character trailer script ran 1:20 in one voice and
+2:04 in another — a 55% spread from casting alone, before a word changed.
+Content matters too (held beats are slow, flowing copy is fast), but it is the
+smaller effect.
+
+Credits bill per *character*, so the credit budget below is unaffected either
+way. The minute totals are estimates with real spread in them, and **any piece
+that must hit a duration is timed after generation, never predicted before
+it.**
 
 Two consequences, both load-bearing:
 
@@ -53,45 +57,79 @@ audition in §5, where only timbre is being judged.
 
 ### Allocation
 
-| # | Piece | Finished | Script chars | Credits (1.3×) |
-| --- | --- | --- | --- | --- |
-| 0 | Narrator audition (§5) | — | — | 1,200 |
-| 1 | **Trailer** — cold open | 1.5 min | 1,300 | 1,700 |
-| 2 | **Long A** — The elevation method | 11 min | 9,400 | 12,200 |
-| 3 | **Long B** — The honesty is compiled | 8 min | 6,800 | 8,800 |
-| 4 | **Shorts I** — Five snags × 5 | 5 min | 4,300 | 5,600 |
-| 5 | **Shorts II** — Concept vignettes × 6 | 6 min | 5,100 | 6,600 |
-| — | Sound design reserve | — | — | 3,000 |
-| | **Total** | **~32 min** | **~27,000** | **39,100** |
+**Revised 10 August, after §2 was settled.** The set is owner-facing; Long B and
+Shorts II are cut. Actuals, not estimates:
 
-~900 credits of headroom. Generate in the order 0 → 1 → 4 → 5 → 2 → 3: the
-audition validates the voice, the trailer validates the register on something
-cheap, the shorts bank complete deliverables, and the two long pieces — the
-expensive, hardest-to-abandon items — go last when everything upstream is
-known good.
+| # | Piece | Finished | Chars | Credits | Status |
+| --- | --- | --- | --- | --- | --- |
+| 0 | Narrator audition + 3 voice designs | — | ~1,600 | ~2,800 | done |
+| 1 | **Trailer** — cold open | 2:04 | 1,380 | 2,760 | done, twice — recast |
+| 2 | **Shorts I** — Five snags | 4:57 | 4,070 | 4,070 | done |
+| — | *Long A — the elevation method* | *8:31* | *7,600* | *7,600* | *outlier, see below* |
+| | **Spent** | | | **~17,200** | |
+| | **Remaining** | | | **~22,800** | |
+
+Cut: **Long B — The honesty is compiled** (developer-facing, no longer has an
+audience here) and **Shorts II — concept vignettes** (abandoned in drafting;
+two of the six businesses carry a place name inside their trading name, and
+naming businesses at all sits badly beside the §3 policy).
+
+**Long A is kept but is not part of the set.** It is doctrine, addressed to a
+peer studio or to the studio itself — an owner buying a website does not need
+to know how elevation works. It is the best-made piece of the day and it costs
+nothing to keep; it is filed as a standalone, not as episode two of anything.
+
+The remaining ~22,800 credits are uncommitted. They are enough to remake the
+whole owner set several times over, which means **recasting or rewriting is
+cheap and should be the default response to any doubt** — the constraint that
+opened this plan is no longer the binding one.
 
 ---
 
-## 2. Why this material, and what it actually is
+## 2. Who this is for
 
-The repo's problem is the one `studio-storytelling.md` already named: the offer
-is abstract and the writing that explains it is *written*, not spoken. Two
-bodies of knowledge carry the weight —
-[`the-elevation-method.md`](../docs/the-elevation-method.md) (what "great" is
-made of) and [`studio-recurring-themes.md`](film/studio-recurring-themes.md)
-(ten faults, auditable to sixty observed instances across twenty concepts).
-Both are strong source material for audio for the same reason: **they are full
-of paradoxes and specifics**, and audio lives on concrete nouns.
+**One audience: the owner of a local business who suspects something is wrong
+with their website and cannot name it.** Everything in the set addresses that
+person, in second person, and the set exists to name the thing for them.
 
-The five pieces map onto three audiences without competing:
+That is the whole answer, and it replaces what this section said first.
 
-| Piece | Audience | The turn it delivers |
-| --- | --- | --- |
-| Trailer | anyone, cold | there is a method here, and it has teeth |
-| Long A | an owner, a peer studio | "nicer" is not the goal; recognition and theatre are |
-| Long B | a developer, a collaborator | the ethics are enforced by the build, not by good intentions |
-| Shorts I | an owner who suspects something's wrong | naming the snag they couldn't name |
-| Shorts II | anyone | twenty businesses, each with one paradox |
+### The mistake this section used to make
+
+The first version of §2 carried a table assigning an audience *per piece* —
+"anyone, cold" for the trailer, "an owner, a peer studio" for Long A, "a
+developer" for Long B. Four pieces, four audiences. It read like rigour and was
+the opposite: it let the plan avoid choosing, and produced a lineup with no
+through-line. The confusion it caused was correctly identified as confusion in
+the plan, not in the listener.
+
+Recording it here rather than deleting it, because the failure is
+generalisable: **a per-item audience table is a sign that the audience question
+has been dodged.** One line naming one person is worth more than a matrix.
+
+### What the set is
+
+The offer is abstract and the writing that explains it is *written*, not spoken
+— the problem `studio-storytelling.md` §1 named. The set makes one facet of it
+audible: [`studio-recurring-themes.md`](film/studio-recurring-themes.md), ten
+faults auditable to roughly sixty observed instances across twenty concepts.
+Good audio material because it is full of specifics, and audio lives on
+concrete nouns.
+
+| Piece | What it does for that owner |
+| --- | --- |
+| **Trailer** | shows them the cost they never see — the visitor who left and said nothing |
+| **Five snags** | names the snag, and says why their choice was reasonable at the time |
+
+The trailer previews the set and ends on the swap test; snag five is the swap
+test in full. That repetition is deliberate now that the trailer is a trailer —
+it is the set's strongest idea, and previewing it is what a cold open is for.
+
+### One voice
+
+The set is one voice: **Old Irish Village Elder**. The trailer was first cut
+with MM Down Narrator and recast to match the snags once the set became the
+product. A marketing set in two voices is two sets.
 
 ---
 
@@ -205,7 +243,13 @@ site isn't yours.* Ends pointing at the work, not at a form.
 Source: [`studio-recurring-themes.md`](film/studio-recurring-themes.md) T1,
 X08's proverb bank (T10 is already the swap test, already scripted).
 
-### 2. Long A — The elevation method (11 min)
+### Outlier — Long A: the elevation method (8:31, made)
+
+**Not part of the owner set.** This is doctrine, addressed to a peer studio or
+to the studio itself; an owner buying a website does not need to know how
+elevation works. Made before §2 was settled, kept because it is the best-made
+piece of the day, filed standalone in
+`research/narration/long-a-elevation/`.
 
 The strongest material in the repo and the piece most worth the credits.
 Thesis: competence gets you correct information and a coherent palette;
@@ -232,28 +276,14 @@ broke is more persuasive than one that doesn't, and it is the honest version.
 Source: [`the-elevation-method.md`](../docs/the-elevation-method.md), the five
 derived elevation briefs.
 
-### 3. Long B — The honesty is compiled (8 min)
+### Cut — Long B: the honesty is compiled
 
-The repo tour, and the one piece that is genuinely about *this repository*.
-A developer-facing walk whose turn is that the studio's ethics are not a
-promise in a README — they are build failures.
-
-Beats: `pnpm build` refuses to complete if prose claims a public count the data
-doesn't support. `check-concept-guest-voice.mjs` fails the build when studio
-voice leaks into guest copy. A slug reaches `/transformations/` only by passing
-five checks in `publication.json`. Every generated image, film **and synthetic
-voice** needs an entry in [`image-provenance.md`](image-provenance.md) before
-it is committed — including the file you are listening to right now, which is
-the natural closing beat.
-
-Then the honest counterweight, because Long B without it is an advertisement:
-the 7 August curation held every file in `research/film/clips/studio/audio/`
-back from production. No listening score sheet, no local-listener evidence, and
-mixes with a 4.8 LU spread and clipping at +0.97 dBTP. The guards are real;
-the taste is still human, and it said no.
-
-Source: [`AGENTS.md`](../AGENTS.md), [`REPO_MAP.md`](../docs/REPO_MAP.md),
-`tools/check/`, [`AUDIO.md`](film/clips/studio/audio/AUDIO.md).
+The repo tour: a developer-facing walk whose turn was that the studio's ethics
+are build failures, not README promises. Cut 10 August when §2 settled on the
+owner as the single audience — it was the best-argued piece in the plan and it
+had no listener left in it. The material is undiminished and still sits in
+[`AGENTS.md`](../AGENTS.md), [`docs/REPO_MAP.md`](../docs/REPO_MAP.md) and
+`tools/check/`, if a developer-facing audience is ever named.
 
 ### 4. Shorts I — Five snags (5 × ~60s)
 
@@ -267,18 +297,13 @@ These are the most reusable artefacts in the plan — social cuts, print QR
 destinations, page companions — and the cheapest to abandon if the register
 is wrong.
 
-### 5. Shorts II — Concept vignettes (6 × ~60s)
+### Cut — Shorts II: concept vignettes
 
-Six of the twenty concepts, one paradox each, chosen for range across category
-and town: **Cúpla**, **Painted Earth**, **Mourne Cycles**, **Dundrum Inn**,
-**Kent Amusements**, **Scopers**. Each: what the business is, the paradox, the
-one move the concept made. Every claim traceable to
-`transformation-details.ts` and the concept's own brief.
-
-Concepts stay labelled independent and uncommissioned in the spoken copy, not
-only in the metadata — one clause, early, in the studio's own voice.
-
----
+Abandoned in drafting, 10 August. Two of the six chosen businesses carry a
+place name inside their trading name, so under §3 they would have to be
+paraphrased into vagueness. Naming businesses at all sits badly beside a policy
+written to stop small places being identifiable. The paradoxes it wanted are
+safe in Long A, told as shapes.
 
 ## 5. Voice casting
 
@@ -391,21 +416,36 @@ Per [`AGENTS.md`](../AGENTS.md), before anything is committed:
 
 ---
 
-## 8. Order of work today
+## 8. What happened, and what is left
 
-1. Narrator audition (§5). **Gate: one voice that holds eleven minutes.**
-2. Trailer script → generate → listen. **Gate: is the register right?** If not,
-   fix it here, where it costs 1,700 credits and not 12,000.
-3. Shorts I and II scripts → generate. Banks complete deliverables early.
-4. Long A script, read aloud in full, cut to 9,400 characters → generate in
-   sections.
-5. Long B same.
-6. Master everything through `loudnorm`, write `research/narration/INDEX.md`,
-   file provenance entries, commit.
+Done, in this order: audition and three voice designs → trailer (MM Down
+Narrator) → five snags (Village Elder) → Long A (Irish Cultural Guide) → §2
+settled on one audience → trailer recast to Village Elder to match the set.
 
-If the window closes early, the plan degrades in reverse order and the pieces
-already banked are complete in themselves. That is why the shorts come before
-the long pieces despite the long pieces being the point.
+**The order was right and the sequencing saved money.** Cheap pieces first
+meant the two register misses — a narrator that did not land, and a lineup with
+no audience — both surfaced on work that cost hundreds of credits to redo, not
+thousands. ~17,200 of 40,000 spent, with a complete owner set standing.
+
+**The one thing the order could not catch** was the audience question, because
+it is not a generation step. It sat unasked through four pieces and was
+answered only when a listener said they were confused. A "who is this for, in
+one sentence" gate belongs before step 1 of any future run, not inside §2 where
+it can be answered with a table.
+
+Left, if wanted:
+
+1. **Trim the trailer.** 2:04 is long for a cold open; the Village Elder reads
+   it 44 seconds slower than the voice it was written for. Cutting ~300
+   characters would bring it near 1:30. Costs ~1,100 credits.
+2. **More snags.** The taxonomy has ten patterns; the page walks five. The
+   other five are already written up in
+   [`studio-recurring-themes.md`](film/studio-recurring-themes.md).
+3. **Sound design.** Untouched. The 3,000-credit reserve still stands, and
+   X08's room-tone vocabulary is proven.
+4. **The curation gate (§7).** Nothing ships until there is a listening score
+   sheet and local-listener evidence. On the 7 August precedent that is a real
+   gate, not a formality — it held an entire batch back.
 
 ---
 

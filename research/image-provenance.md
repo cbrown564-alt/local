@@ -89,6 +89,13 @@ that no longer appear anywhere in `src/`.
   level spec. If it ever goes guest-facing it needs a visible synthetic-speech
   disclosure in the visible layer, not only in an `alt` or `aria-label`.
 
+  **Recast 10 August.** `trailer.mp3` is now the same script in **Old Irish
+  Village Elder** (`eEzkfaTvgdaH5to7Cn0M`), 2 min 4s, −17.4 LUFS / −1.8 dBTP,
+  so the trailer shares the five snags' voice once the set settled on a single
+  owner audience. The MM Down Narrator cut is kept as
+  `trailer-down-narrator-superseded.mp3`; both raws are in `raw/`. Same script,
+  same honesty check — only the casting changed.
+
 - `research/narration/shorts-snags/` — **held / research only** (10 August
   2026). Five 57–62 second snag explainers, mastered in the folder with
   generator output in `raw/`. ElevenLabs `eleven_v3`, voice **Old Irish Village

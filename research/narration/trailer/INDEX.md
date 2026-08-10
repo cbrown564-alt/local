@@ -8,22 +8,37 @@
 
 | File | What |
 | --- | --- |
-| `trailer.mp3` | mastered — **listen to this one** |
-| `trailer-raw.mp3` | generator output, kept for comparison |
+| `trailer.mp3` | 2:04, Village Elder, mastered — **listen to this one** |
+| `trailer-down-narrator-superseded.mp3` | the first cut, 1:20, kept for the pacing comparison |
+| `raw/` | both generator outputs |
 | [`script.md`](script.md) | script, sources and the honesty check |
 
-Voice MM Down Narrator (`5D9bboiw6vTiK5plwIve`), model `eleven_v3`,
+Voice **Old Irish Village Elder** (`eEzkfaTvgdaH5to7Cn0M`), model `eleven_v3`,
 `stability` 0.5, five audio tags. 1,380 characters.
+
+**Recast 10 August.** The first cut used MM Down Narrator and is kept as
+`trailer-down-narrator-superseded.mp3`. Once §2 settled the set on one
+audience, the trailer had to share the snags' voice — a marketing set in two
+voices is two sets.
 
 ## Measured
 
-| | Length | Integrated | True peak | LRA |
-| --- | --- | --- | --- | --- |
-| Raw | 1:19.8 | −16.2 LUFS | −0.8 dBTP | 4.5 |
-| Mastered | 1:19.8 | **−16.4 LUFS** | **−1.7 dBTP** | 4.1 |
+| Cut | Length | Integrated | True peak |
+| --- | --- | --- | --- |
+| Village Elder (current) | **2:04.4** | −17.4 LUFS | −1.8 dBTP |
+| MM Down Narrator (superseded) | 1:19.8 | −16.4 LUFS | −1.7 dBTP |
 
-`loudnorm=I=-16:TP=-1.5:LRA=11`. First piece in this workstream to meet the
-level spec — the 7 August batch never did.
+`loudnorm=I=-16:TP=-1.5:LRA=11` on both.
+
+**The same script, 44 seconds apart.** 1,040 characters per minute against 666
+— a 55% pacing spread from casting alone, before a word changed. This is the
+single most useful measurement of the day and it is recorded in plan §1: rate
+is a property of the voice at least as much as of the copy, so a piece that
+must hit a duration gets timed after generation, never predicted before it.
+
+It also means **the trailer is now long for a cold open.** It was written to
+1:30 and reads at 2:04. Cutting ~300 characters would bring it back; see plan
+§8.
 
 ## What this take is for
 
