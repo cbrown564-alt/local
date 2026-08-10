@@ -28,16 +28,21 @@ been simulated.
 | Phase 3 - written pitch | **Reviewed locally** | `research/concepts/hotel-enniskeen/enniskeen-pitch.md` contains subject lines, the email, a sixty-second in-person version, two follow-ups and objection notes; reviewed against `PRODUCT.md` tone and belief order |
 | Phase 3 - case-study refresh | **Verified** | `hotel-enniskeen/dine` is registered and captured with responsive WebPs; the transformation carries Rooms and Dine companion stills plus final build-day source and design facts; 390 px and desktop browser reviews passed |
 | Phase 4 - project record | **Completed** | `research/pipeline/verifications.json`, `PROSPECTS.md`, `PLAN.md`, `docs/MEDIA_CAPTURE.md`, `docs/DESIGN.md` and this owner plan record the same verified state |
-| Promotion and outreach | **Domain gate cleared; delivery and QR gates open** | `mournemade.co.uk` now resolves and serves the site over HTTPS from Vercel (verified 23 July 2026), so the film end-card URL and the one-sheet QR target are real. Still open: a production request-form submission verified into the inbox, and a printed proof scanned on a phone against the deployed case study. |
+| Promotion and outreach | **Domain and delivery gates cleared; QR gate open** | `mournemade.co.uk` now resolves and serves the site over HTTPS from Vercel (verified 23 July 2026), so the film end-card URL and the one-sheet QR target are real. A production submission through this sheet's link reached the inbox carrying `Came from: Printed one-sheet (Hotel Enniskeen)` (6 August 2026), clearing the [ADR-0002](../../../docs/adr/0002-printed-qr-attribution-contract.md) print gate. Still open: a printed proof scanned on a phone against the deployed case study. |
 
 ### Next true dependency
 
 1. ~~Configure DNS and deploy the site at `mournemade.co.uk`.~~ Done — verified
    resolving 23 July 2026.
-2. Submit the production request form once and confirm that the intended inbox
-   receives it.
+2. ~~Submit the production request form once and confirm that the intended inbox
+   receives it.~~ Done 6 August 2026 — through this sheet's own link, the email
+   reading `Came from: Printed one-sheet (Hotel Enniskeen)`.
 3. Print the proofed PDF and scan its QR on a phone against the deployed
-   route — noting that `?src=onesheet` is currently read by nothing (see M3).
+   route. (The `?src=onesheet` note here is superseded: the field is
+   `?source=`, it is read end to end, and the drift between the two is what
+   [ADR-0002](../../../docs/adr/0002-printed-qr-attribution-contract.md)
+   exists to prevent recurring.) Printing is now gated on the stock and bleed
+   decisions in `PLAN.md` section 9.
 4. Only then mark the outreach gates complete and send or hand over the pitch
    package.
 

@@ -34,3 +34,26 @@ where the decision actually gets made.
   different business is still attributable to the sheet that caused it.
 - `source` must be allow-listed and length-capped in `api/request.ts` like every
   other accepted field; it arrives from a query string and is attacker-supplied.
+
+## Outcome update — 6 August 2026: the gate cleared
+
+A production submission through the Hotel Enniskeen sheet's link reached the
+watched inbox carrying `Came from: Printed one-sheet (Hotel Enniskeen)`,
+verified by the project owner. The decision above is satisfied and no longer
+blocks a print run.
+
+The live check was made once, through one sheet, which is what this decision
+asks for. What varies between sheets — the encoded destination, the printed
+text, the claim hop, the built form's hidden field, the allow-list result and
+the composed email line — is pinned for all four sheets by
+`pnpm test:source-attribution`, rebuilt without a browser on 6 August. What
+could not be proven any other way is that a real deployment reaches a real
+inbox, and that now has a dated observation behind it.
+
+Two cautions the cleared gate does not cover. Production submissions were
+returning 500 earlier the same day, because Vercel compiled `api/request.ts`
+but left a runtime import of `transformations.ts` that Node could not load; the
+allow-list moved to `api/public-transformation-slugs.mjs` to fix it. And a
+delivered email proves only the Gmail credentials — the shared rate-limit store
+and the delivery-failure webhook both fail quietly when unconfigured, so
+neither is evidenced by this result.

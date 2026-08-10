@@ -341,37 +341,49 @@ highest-stakes conversation is not used to rehearse the approach.
    phrasing in the walk notes, not the trading name. The sheet,
    `research/pipeline/verifications.json` and `businesses.json` already agree
    and need no change. Do not reopen this at the door.
-6. Before printing, make one production submission through a one-sheet link
+6. ~~Before printing, make one production submission through a one-sheet link
    and verify that the notification arriving in the inbox carries the expected
-   `source`. A 200 response or browser success message alone is not enough.
+   `source`. A 200 response or browser success message alone is not enough.~~
+   **Done 6 August 2026 by the project owner**, through the Hotel Enniskeen
+   sheet's link. The notification arrived carrying
+   `Came from: Printed one-sheet (Hotel Enniskeen)`, so the live hop is proven
+   where it matters: production Gmail credentials deliver to the watched inbox,
+   the deployed form submits `source` as a real field, and the endpoint reads it
+   back out as itself rather than as `Direct` or `Unrecognised`. This is the gate
+   [`docs/adr/0002`](docs/adr/0002-printed-qr-attribution-contract.md) puts in
+   front of the print run.
 
-   **Narrowed 10 August 2026 to exactly what a script cannot prove.**
-   Everything up to the composed email is now covered and passing:
-   `pnpm test:source-attribution` drives a real submission per sheet through
+   **Verified through Enniskeen, not through Scopers or Cúpla.** One live
+   submission is what this item asks for, and the per-sheet differences it does
+   not cover are the ones a script covers better:
+   `pnpm test:source-attribution` drives a submission per sheet through
    `createRequestHandler`, captures the mail object and asserts the body line
-   reads `Came from: Printed one-sheet (Scopers)` — so the QR, the printed
-   text, the claim hop, the built form's hidden field, the endpoint allow-list
-   and the email composition all hold for four sheets. What remains is the
-   production hop, and it needs a deployment and an inbox:
+   for each of the four, and checks the built `dist/request/index.html` still
+   carries the hidden `source` field. So the parts that vary by sheet are
+   pinned, and the part that cannot be faked locally — a real deployment
+   reaching a real inbox — was done once, which is the right division.
 
-   - **`REQUEST_TO_EMAIL`, `GMAIL_USER` and `GMAIL_APP_PASSWORD` must be set in
-     the Vercel production environment.** Unset, the endpoint returns 503 and
-     delivers nothing; `REQUEST_TO_EMAIL` unset silently sends to `GMAIL_USER`,
-     which may not be the inbox being watched.
-   - Scan the printed sheet's QR with a phone, submit the form, and read the
-     received email. Confirm `Came from:` names that sheet and not `Direct` or
-     `Unrecognised`, and that it did not land in spam.
-   - Note that a mistake costs one of five attempts per hour from that
-     connection.
+   Worth knowing about the same day: production submissions were 500ing until
+   the afternoon of 6 August, because Vercel compiled `api/request.ts` but left
+   a runtime import of `transformations.ts` that Node could not load
+   (`f1e4cec`); the slug allow-list moved to `api/public-transformation-slugs.mjs`
+   to fix it. The form was then reshaped twice more the same evening
+   (`695703c`, `90fb240`). Whichever order the live check fell in, the current
+   build is pinned by the suite above rather than by that afternoon's memory.
 
-   Two protections finished on 4 August are also inert unless configured, and
-   nothing in the repository said so until `.env.example` was corrected on
-   10 August: without `KV_REST_API_URL`/`KV_REST_API_TOKEN` the rate limit is
-   per-instance rather than shared, and without `REQUEST_ALERT_WEBHOOK` a failed
-   delivery is logged and nothing else. Both fail quietly, so an unconfigured
-   deployment looks healthy while providing neither. Check them while checking
-   the delivery.
-7. Print only the two verified sheets.
+   Two protections finished on 4 August remain inert unless configured, and
+   they are not covered by the check above: without
+   `KV_REST_API_URL`/`KV_REST_API_TOKEN` the rate limit is per-instance rather
+   than shared, and without `REQUEST_ALERT_WEBHOOK` a failed delivery is logged
+   and nothing else. Both fail quietly, so an unconfigured deployment looks
+   healthy while providing neither. `README.md` documents all three; the
+   omission was in `.env.example`, the file actually copied to `.env`, which
+   listed only the Gmail trio until 10 August. Confirm both are set in the
+   production environment — a delivered test email proves the Gmail trio, and
+   nothing else.
+7. Print only the two verified sheets — now gated on section 9 items 1 and 2
+   (choose the stock and finish; give the artwork bleed and a trim-safe inset)
+   rather than on anything in this section.
 
 ## 4. Run the first outreach conversations
 

@@ -2,8 +2,13 @@
 
 Prepared and reviewed against `PRODUCT.md` on 23 July 2026. This is outreach
 material, not a record of contact.
-Do not send or hand over the QR one-sheet until `mournemade.co.uk` resolves
-and a production request-form submission has reached the intended inbox.
+Both delivery gates are now cleared: `mournemade.co.uk` resolves (23 July 2026)
+and a production request-form submission through this sheet's own link reached
+the intended inbox carrying `Came from: Printed one-sheet (Hotel Enniskeen)`
+(6 August 2026). What still stands between this sheet and a handover is the
+optical QR scan from printed paper, and Enniskeen remains batch two by
+[`docs/adr/0001`](../../../docs/adr/0001-personalised-one-sheets-over-door-drop.md)
+so the highest-stakes room is not used to rehearse the approach.
 
 ## Subject-line options
 

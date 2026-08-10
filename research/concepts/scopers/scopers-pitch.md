@@ -12,12 +12,17 @@ supper club as the standout offer.
 1. ~~The six generated food images are in place.~~ Done 31 July 2026, with the
    comparison still, clip and supper-club still recaptured to match.
 2. `mournemade.co.uk` resolves and `/transformations/scopers/` is deployed.
-3. A production request-form submission has reached the intended inbox,
-   **carrying `source=onesheet-scopers`**. The chain that makes this possible
-   was only built on 4 August 2026 — before that, `source` was not an accepted
-   field in `api/request.ts` at all, so this gate could never have cleared.
-   A 200 response is not enough; the email itself must show the "Came from"
-   line.
+3. ~~A production request-form submission has reached the intended inbox,
+   **carrying `source=onesheet-scopers`**.~~ **Cleared 6 August 2026.** The
+   chain was only built on 4 August 2026 — before that, `source` was not an
+   accepted field in `api/request.ts` at all, so this gate could never have
+   cleared. The live submission was made through the Hotel Enniskeen sheet and
+   its email read `Came from: Printed one-sheet (Hotel Enniskeen)`, which is
+   what [`docs/adr/0002`](../../../docs/adr/0002-printed-qr-attribution-contract.md)
+   asks for: one production hop, proven once. That this sheet's own
+   `onesheet-scopers` survives the endpoint as itself rather than as
+   `Unrecognised` is pinned by `pnpm test:source-attribution`, which drives a
+   submission per sheet and asserts the composed "Came from" line for each.
 4. The printed one-sheet's QR has been scanned on a phone against the live
    page. The artwork is verified — the QR encodes
    `https://mournemade.co.uk/transformations/scopers/?source=onesheet-scopers`
