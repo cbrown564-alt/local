@@ -190,4 +190,6 @@ for (const slug of slugs) {
 }
 
 console.log(`Source attribution: the printed-QR chain holds for ${slugs.length} one-sheets.`);
-console.log("The live scan-to-inbox hop is PLAN.md section 3 item 6 and is not checked here.");
+console.log(
+  "The live scan-to-inbox hop is not checked here: it needs a deployment and an inbox. Verified once on 6 August 2026 through the Hotel Enniskeen sheet (docs/adr/0002).",
+);

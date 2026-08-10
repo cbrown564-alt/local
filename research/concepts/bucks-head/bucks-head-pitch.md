@@ -6,7 +6,11 @@ material, not a record of contact. Nothing here has been said to anyone.
 **Do not hand anything over until all three gates clear:**
 
 1. `mournemade.co.uk` resolves and the case study is deployed there.
-2. A production request-form submission has reached the intended inbox.
+2. ~~A production request-form submission has reached the intended inbox.~~
+   Cleared 6 August 2026 — see
+   [`docs/adr/0002`](../../../docs/adr/0002-printed-qr-attribution-contract.md).
+   (Moot for this sheet either way: The Buck's Head left the active wave on
+   3 August and its one-sheet must not be handed over.)
 3. The printed one-sheet's QR has been scanned on a phone against the live page.
 
 **And re-verify on the morning of the walk-in.** This site changes fast — a

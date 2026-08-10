@@ -282,10 +282,20 @@
 
 .og-card--case .og-comparison img {
   width: 100%;
-  height: 100%;
+  /* The captures are 2530x1420. A slot sized by the leftover row height was
+     549x364 — ratio 1.508 against the asset's 1.782 — so `cover` trimmed 100px,
+     15% of the image, 50px off each side. On the before frame that costs white
+     margin; on the after frame it cost the concept's own booking CTA on the
+     right and the first characters of the headline on the left, which are the
+     two things the card exists to show. `object-position` cannot fix this — it
+     only chooses which edge pays. Matching the box to the asset means `cover`
+     has nothing to trim, the same correction already made for the printed
+     sheet in onesheet.css. */
+  aspect-ratio: 2530 / 1420;
+  height: auto;
+  align-self: start;
   min-height: 0;
   object-fit: cover;
-  object-position: top center;
   border: 2px solid #132029;
   box-shadow: 4px 4px 0 rgb(19 32 41 / 0.14);
 }

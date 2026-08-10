@@ -1,8 +1,11 @@
 ---
 import {
+  publicTransformationSlugs,
   transformationCandidates,
   transformations,
 } from "../../site/data/transformations";
+import { OG_IMAGE_SIZE, ogImages, transformationOgImage } from "../../site/data/og-images";
+import { siteDetails } from "../../site/data/site";
 import "./concept-shell.css";
 
 interface Props {
@@ -61,6 +64,51 @@ const businessName =
 const town = townProp ?? transformation?.town ?? candidate?.town ?? "";
 const caseStudy = `/transformations/${slug}/`;
 const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${encodeURIComponent(town)}&source=concept`;
+
+/**
+ * A concept link is shared far more often than it is searched for — it goes
+ * into a message to an owner, or into a group chat — and this layout emitted no
+ * Open Graph tags at all, so it previewed as a bare URL.
+ *
+ * The card is the slug's own before-and-after, which is the right image for the
+ * job twice over: it shows the change rather than describing it, and its footer
+ * already reads "Independent concept study", so the disclosure survives into a
+ * preview that has no room for the banner. `noindex` is unaffected — it governs
+ * search listings, not link unfurling.
+ *
+ * Gated on the published-slug list rather than on candidate data, because that
+ * is exactly the set `tools/check/check-og-assets.mjs` guarantees a card file
+ * for; a concept without one falls back to the studio card instead of naming an
+ * image that would 404 in a scraper.
+ */
+/**
+ * Concepts whose own surface publishes no raster imagery cannot advertise a
+ * raster share card either. Painted Earth's pages are drawn throughout because
+ * the maker's photography is not licensed, and the before panel of a share card
+ * is a screenshot of their live shop — a grid of their own product photographs.
+ * Publishing that as the preview image for a page that carries none would route
+ * around the licensing rule rather than honour it, so these concepts get a
+ * text-only preview. Kept as a set here rather than a per-page prop so a new
+ * route cannot quietly omit it; `tools/test/test-painted-earth-elevation.mjs`
+ * fails the build if a raster reference reaches any of those pages.
+ */
+const noRasterConcepts = new Set(["painted-earth"]);
+const hasOwnCard =
+  !noRasterConcepts.has(slug) && new Set<string>(publicTransformationSlugs).has(slug);
+const ogImage = noRasterConcepts.has(slug)
+  ? null
+  : hasOwnCard
+    ? transformationOgImage(slug)
+    : ogImages.studio;
+const description = `Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`;
+/* Phrased without a possessive: trading names ending in s ("Scopers") and in an
+   accent ("Cúpla") both read badly with one bolted on. */
+const ogImageAlt = hasOwnCard
+  ? `Before-and-after share card: the current website for ${businessName} beside the independent Mourne Made concept.`
+  : `Mourne Made — free before-and-after concepts for independent businesses around Dundrum and Newcastle.`;
+const publicOrigin = Astro.site ?? Astro.url;
+const ogUrl = new URL(Astro.url.pathname, publicOrigin).href;
+const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
 ---
 
 <!doctype html>
@@ -69,7 +117,30 @@ const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="description" content={`Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:site_name" content={siteDetails.name} />
+    <meta property="og:locale" content="en_GB" />
+    {ogImageUrl && (
+      <>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content={String(OG_IMAGE_SIZE.width)} />
+        <meta property="og:image:height" content={String(OG_IMAGE_SIZE.height)} />
+        <meta property="og:image:alt" content={ogImageAlt} />
+      </>
+    )}
+    <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && (
+      <>
+        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image:alt" content={ogImageAlt} />
+      </>
+    )}
     <link rel="icon" href={favicon} type="image/svg+xml" />
     {fontHref && (
       <>
