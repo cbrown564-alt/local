@@ -20,14 +20,22 @@ arithmetic, so it goes at the top rather than in an appendix.
 | --- | --- |
 | Eleven v3 / Multilingual v2 | 1 credit per character |
 | Flash / Turbo v2.5 | 0.5 credits per character |
-| Measured narration rate | ~140 wpm ≈ **850 characters per finished minute** |
+| Measured narration rate | **830–1,040 characters per finished minute** (see below) |
 | Sound effects | ~100 credits per generation |
 
 At 1 credit per character, 40,000 credits is about **47 minutes of speech if
 nothing is ever regenerated** — which never happens. With a realistic 1.3×
 retake factor and a sound-design reserve, the true budget is:
 
-> **~33 minutes of finished, kept narration.**
+> **~26 to 34 minutes of finished, kept narration.**
+
+**Measured 10 August, and the rate is not a constant.** The audition script ran
+830 characters per minute; the trailer ran a little over 1,000. Dense
+short-sentence copy with held beats is slow; flowing copy is fast. Credits are
+billed per *character*, so the credit budget below is unaffected either way —
+but the minute totals are an estimate with real spread in them, and a piece
+that must hit a duration has to be timed after generation, not predicted before
+it.
 
 Two consequences, both load-bearing:
 

@@ -70,6 +70,25 @@ that no longer appear anywhere in `src/`.
   none is fit for use as-is. Casting is undecided; nothing here advances to
   production, and the two unchosen designed previews expire unsaved.
 
+  **Cast 10 August:** preview `5D9bboiw6vTiK5plwIve` (A5) was saved as
+  **MM Down Narrator**, keeping the same ID. It is a designed voice, generated
+  from a written description of a County Down accent and manner — **not a
+  clone, and not a recording of anyone**. The two unchosen previews were left
+  to expire.
+
+- `research/narration/trailer/` — **held / research only** (10 August 2026).
+  One 1 min 20s studio trailer, `trailer.mp3` (mastered) and `trailer-raw.mp3`
+  (as generated). ElevenLabs `eleven_v3`, voice MM Down Narrator
+  (`5D9bboiw6vTiK5plwIve`), `stability` 0.5, five audio tags. Script and its
+  honesty check: `trailer/script.md`. Speaks in studio voice about the studio's
+  own method; names no business, no client and no place. The two figures it
+  states — twenty businesses looked at, roughly sixty faults found — are
+  auditable to `src/site/data/transformation-details.ts`. No testimonial, no
+  ranking, no measured result, no prevalence claim. Mastered to −16.4 LUFS /
+  −1.7 dBTP with `loudnorm`, the first file in this workstream to meet the
+  level spec. If it ever goes guest-facing it needs a visible synthetic-speech
+  disclosure in the visible layer, not only in an `alt` or `aria-label`.
+
 ## Owner's operating page prototype (9 August 2026)
 
 - `media/prototypes/operating-page/tomato-fennel-galette.webp`,
