@@ -1,0 +1,197 @@
+---
+import ImpossibleLocalShell from "../../../prototypes/impossible-local/ImpossibleLocalShell.astro";
+import {
+  chapters,
+  concerns,
+  route,
+  routeProfilePath,
+  workshop,
+} from "../../../prototypes/impossible-local/journey";
+
+const profilePath = routeProfilePath();
+---
+
+<ImpossibleLocalShell
+  title={workshop.name}
+  description="A synthetic Newcastle workshop journey in which real elevation becomes the navigation, pacing and route into a useful enquiry."
+>
+  <div class="il-page" data-journey-root data-chapter="street">
+    <h1 class="il-visually-hidden">{workshop.name} terrain journey</h1>
+    <div class="il-disclosure">
+      <p><strong>Synthetic representative prototype.</strong> No real business, route, stock or current conditions.</p>
+      <a href="/">Mourne Made</a>
+    </div>
+
+    <header class="il-masthead">
+      <a class="il-wordmark" href="#journey" aria-label={`${workshop.name}, start of journey`}>
+        <span>LINE</span><i aria-hidden="true"></i><span>BEARING</span>
+      </a>
+      <p>{workshop.place}<span>Workshop study 01</span></p>
+    </header>
+
+    <div class="il-instrument" id="journey">
+      <nav class="il-route-index" aria-label="Journey chapters">
+        <ol>
+          {chapters.map((chapter, index) => (
+            <li>
+              <button
+                type="button"
+                data-chapter-button={chapter.id}
+                data-progress={chapter.progress}
+                aria-current={index === 0 ? "step" : undefined}
+              >
+                <span aria-hidden="true">{chapter.index}</span>
+                <b>{chapter.label}</b>
+              </button>
+            </li>
+          ))}
+        </ol>
+        <a href="#sources">Sources & limits</a>
+      </nav>
+
+      <section class="il-stage" aria-label="Terrain journey" data-journey-stage>
+        <canvas data-terrain-canvas aria-hidden="true"></canvas>
+        <svg
+          class="il-terrain-fallback"
+          data-terrain-fallback
+          viewBox="0 0 1000 260"
+          preserveAspectRatio="none"
+          role="img"
+          aria-labelledby="il-profile-title il-profile-description"
+        >
+          <title id="il-profile-title">Indicative Newcastle to high ground terrain profile</title>
+          <desc id="il-profile-description">A line rises from near sea level to 837 metres and returns to near sea level across a 10.3 kilometre expressive terrain study.</desc>
+          <path class="il-profile-fill" d={`${profilePath} L988 260 L12 260 Z`}></path>
+          <path class="il-profile-line" d={profilePath}></path>
+        </svg>
+
+        <div class="il-stage-shade" aria-hidden="true"></div>
+
+        <div class="il-readout" aria-live="off">
+          <p><span>Distance</span><strong data-distance>0.0 km</strong></p>
+          <p><span>Elevation</span><strong data-elevation>{route.summary.minElevationM} m</strong></p>
+          <p><span>Climb</span><strong data-climb>0 m</strong></p>
+        </div>
+
+        <div class="il-chapters">
+          {chapters.map((chapter, index) => (
+            <section
+              class="il-chapter"
+              id={chapter.id}
+              data-chapter-panel={chapter.id}
+              data-active={index === 0 ? "true" : undefined}
+              aria-labelledby={`${chapter.id}-heading`}
+            >
+              <p class="il-chapter-position">{chapter.index} / {chapter.label}</p>
+              <h2 id={`${chapter.id}-heading`}>{chapter.heading}</h2>
+              {chapter.body && <p class="il-chapter-body">{chapter.body}</p>}
+              {chapter.id === "descent" && (
+                <fieldset class="il-concerns">
+                  <legend>What did the ride expose?</legend>
+                  <div>
+                    {concerns.map((concern) => (
+                      <label data-concern-option={concern.id}>
+                        <input type="radio" name="journey-concern" value={concern.id} />
+                        <span>{concern.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              )}
+              {chapter.id === "workshop" && (
+                <a class="il-workshop-link" href="#workshop-request">Ask the workshop <span aria-hidden="true">↘</span></a>
+              )}
+            </section>
+          ))}
+        </div>
+
+        <p class="il-terrain-note">Indicative terrain study—not navigation or current trail advice.</p>
+      </section>
+
+      <aside class="il-controls" aria-label="Journey controls">
+        <button class="il-play" type="button" data-play-journey>
+          <span data-play-label>Take the line</span><i aria-hidden="true"></i>
+        </button>
+        <label class="il-progress-label" for="il-progress">
+          <span>Route position</span>
+          <output for="il-progress" data-progress-output>Street</output>
+        </label>
+        <input
+          id="il-progress"
+          data-progress-input
+          type="range"
+          min="0"
+          max="1000"
+          step="1"
+          value="0"
+        />
+        <div class="il-step-controls">
+          <button type="button" data-previous disabled>Previous chapter</button>
+          <button type="button" data-next>Next chapter</button>
+        </div>
+      </aside>
+    </div>
+
+    <p class="il-live" data-live-region aria-live="polite" aria-atomic="true"></p>
+
+    <section class="il-request" id="workshop-request" aria-labelledby="request-heading">
+      <div class="il-request-intro">
+        <p>Line returned / workshop</p>
+        <h2 id="request-heading">Tell us what changed under load.</h2>
+        <p>This representative enquiry stays in your browser. It demonstrates the handoff; it does not contact a business.</p>
+      </div>
+
+      <form data-workshop-form novalidate>
+        <div class="il-form-context" aria-live="polite">
+          <p><span>Study</span><strong>{route.summary.distanceKm} km mixed-height cross-section</strong></p>
+          <p><span>Concern</span><strong data-concern-summary>Not chosen yet</strong></p>
+        </div>
+        <label>
+          Your name
+          <input name="name" autocomplete="name" required />
+          <span class="il-field-error" data-error-for="name"></span>
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" autocomplete="email" required />
+          <span class="il-field-error" data-error-for="email"></span>
+        </label>
+        <label>
+          What happened?
+          <textarea name="note" rows="4" required placeholder="For example: the rear brake faded during the descent."></textarea>
+          <span class="il-field-error" data-error-for="note"></span>
+        </label>
+        <input type="hidden" name="journeyContext" data-journey-context value="No concern chosen" />
+        <button class="il-submit" type="submit">Send representative enquiry</button>
+        <p class="il-form-note">Nothing is sent or stored. No availability, diagnosis or safety advice is implied.</p>
+        <div class="il-form-success" data-form-success hidden tabindex="-1">
+          <strong>Request prepared.</strong>
+          <p>A real workshop would now receive the journey context and your note. This prototype has sent nothing.</p>
+          <button type="button" data-reset-form>Prepare another</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="il-sources" id="sources">
+      <div>
+        <p>Source / terrain</p>
+        <h2>Real height. Expressive line.</h2>
+      </div>
+      <div class="il-source-copy">
+        <p>The elevation profile is baked from the project’s AWS Open Data Terrain Tiles grid (Terrarium, SRTM-derived), sampled across Newcastle and Mourne high ground on 9 August 2026.</p>
+        <p>Coordinates are used only to form this cross-section. The line is not trail geometry, a survey, an access statement or current advice. The workshop, identity and enquiry are synthetic.</p>
+        <dl>
+          <div><dt>Samples</dt><dd>{route.sampling.sampleCount}</dd></div>
+          <div><dt>Height range</dt><dd>{route.summary.minElevationM}–{route.summary.maxElevationM} m</dd></div>
+          <div><dt>Renderer</dt><dd>Decorative Canvas 2D over a complete SVG and DOM fallback</dd></div>
+        </dl>
+        <a href="/">Return to Mourne Made</a>
+      </div>
+    </footer>
+  </div>
+</ImpossibleLocalShell>
+
+<script>
+  import { initImpossibleLocalJourney } from "../../../prototypes/impossible-local/client";
+  initImpossibleLocalJourney();
+</script>
