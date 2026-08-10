@@ -7,9 +7,10 @@
  * rendering the makers' roll fails here. Requires `pnpm build` first —
  * `pnpm test` runs the build ahead of it.
  *
- * This concept's lever is blocked: the catalogue's photography spans 92
- * makers with no recorded licence, so recognition has to work without a
- * single photograph. The sharp checks are therefore about names and words.
+ * The catalogue's photography spans 92 makers with no recorded licence, so
+ * no maker or product photograph may cross into the concept. A separately
+ * generated, owner-approved materials sequence may appear on the home page
+ * only when it is visibly disclosed and cannot be mistaken for a maker's work.
  *
  * The makers' roll is only as honest as its source. Every name and count on
  * the page must come from the dated 26 July 2026 snapshot, the catalogue date
@@ -235,13 +236,31 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// No photography until it is licensed — on every route.
+// No maker or product photography until it is licensed — on every route.
 // ---------------------------------------------------------------------------
 for (const [name, page] of Object.entries(routes)) {
-  check(
-    `raster imagery reached the ${name} page`,
-    !/<img\b/i.test(page.html) && !/\.(jpe?g|png|webp|avif)\b/i.test(page.html),
-  );
+  if (name === "home") {
+    const rasterImages = [...page.html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)];
+    check(
+      `the home page should contain only the five approved materials-sequence images (found ${rasterImages.length})`,
+      rasterImages.length === 5 && rasterImages.every((match) =>
+        /\/media\/concepts\/painted-earth\/essence-sequence-0[1-5]\.jpg/.test(match[1]),
+      ),
+    );
+    check(
+      "an approved materials-sequence image lost its generated-original alt boundary",
+      rasterImages.every((match) => /alt="AI-generated original craft scene of /.test(match[0])),
+    );
+    check(
+      "the approved materials sequence lost its visible generated-media disclosure",
+      page.text.includes("AI-generated illustration"),
+    );
+  } else {
+    check(
+      `raster imagery reached the ${name} page`,
+      !/<img\b/i.test(page.html) && !/\.(jpe?g|png|webp|avif)\b/i.test(page.html),
+    );
+  }
   /* A tile that stands for a maker's product record — a shelf card, a product
      hero, a recovery preview, a route card — must say the drawing is a
      placeholder, so the record belongs to the maker and the drawing to

@@ -1,0 +1,116 @@
+---
+interface Props {
+  mp4: string;
+  webm: string;
+  poster: string;
+  label: string;
+}
+
+const { mp4, webm, poster, label } = Astro.props;
+---
+
+<div class="essence-film" data-essence-film>
+  <video
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster={poster}
+    aria-label={label}
+    data-essence-film-video
+  >
+    <source src={webm} type="video/webm" />
+    <source src={mp4} type="video/mp4" />
+  </video>
+  <button type="button" class="essence-film__toggle" data-essence-film-toggle>
+    Play film
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-essence-film]").forEach((root) => {
+    if (root.dataset.essenceFilmReady === "true") return;
+    const video = root.querySelector<HTMLVideoElement>("[data-essence-film-video]");
+    const toggle = root.querySelector<HTMLButtonElement>("[data-essence-film-toggle]");
+    if (!video || !toggle) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let userPaused = false;
+
+    const sync = () => {
+      toggle.textContent = video.paused ? "Play film" : "Pause film";
+      toggle.setAttribute("aria-pressed", String(!video.paused));
+    };
+
+    const play = async () => {
+      try {
+        await video.play();
+      } catch {
+        // The poster and explicit play control remain when autoplay is blocked.
+      }
+      sync();
+    };
+
+    toggle.addEventListener("click", () => {
+      if (video.paused) {
+        userPaused = false;
+        void play();
+      } else {
+        userPaused = true;
+        video.pause();
+        sync();
+      }
+    });
+
+    reducedMotion.addEventListener("change", () => {
+      if (reducedMotion.matches) {
+        video.pause();
+        video.currentTime = 0;
+        sync();
+      } else if (!userPaused) {
+        void play();
+      }
+    });
+
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    root.dataset.essenceFilmReady = "true";
+    sync();
+    if (!reducedMotion.matches) void play();
+  });
+</script>
+
+<style>
+  .essence-film {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111;
+  }
+
+  .essence-film video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .essence-film__toggle {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 999px;
+    background: rgba(17, 24, 47, 0.9);
+    color: #fff;
+    font: 700 0.75rem/1 Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+
+  .essence-film__toggle:hover,
+  .essence-film__toggle:focus-visible {
+    background: #fff;
+    color: #11182f;
+  }
+</style>

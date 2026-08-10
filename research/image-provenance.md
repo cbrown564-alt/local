@@ -628,9 +628,57 @@ outside git records them.
 - `murdock-brothers-before`, `-after` — before/after pair for a concept that
   has no public transformation page.
 
+## Concept essence production seeds — approved for publication
+
+Generated 10 August 2026 with the built-in OpenAI image tool and held under
+`research/concepts/*/essence-media/`. The set contains ten 16:9 film source
+stills and nine complete composition-matched sequences totalling thirty-four
+frames. The Cúpla seed is a research copy of the already recorded
+`public/media/concepts/cupla/cupla-twin-cups.png`; the other forty-three images
+were generated for this brief. The prompts and direct asset links are owned by
+`research/concept-essence-media-brief.md`.
+
+For each sequence, the opening composition was generated from its complete
+prompt and each later frame was edited from the preceding image to retain the
+camera, layout, materials and visual language. Workspace copies were
+centre-cropped to 1664 × 936; uncropped generation masters remain in Codex's
+generated-image store. The project owner reviewed the complete set and
+approved it for publication on 10 August 2026. These remain generated
+illustrations, not documentary photographs or evidence of real premises,
+products, people, routes, projects, patients, stock, menus or results. The
+indicative maps and views are not surveys. Guest-facing use needs a visible
+generated-media disclosure and the normal factual, crop and reduced-motion
+checks.
+
+Publication copies were made on 10 August 2026 as quality-88 JPEG masters at
+`public/media/concepts/<slug>/essence-video-seed.jpg` and
+`public/media/concepts/<slug>/essence-sequence-*.jpg`. They are rendered by the
+shared `EssenceMedia` section on eighteen concept home pages, with an adjacent
+visible generated-media label and user-controlled sequence navigation. Cúpla
+continues to use its established twin-cup section, now with the approved still
+as the poster for its essence film rather than publishing a duplicate section.
+
+Three owner-supplied generated films were reviewed and integrated on 10 August
+2026. Their supplied AAC tracks were removed for silent page playback; the
+H.264 video streams were copied without visual re-encoding and moved to the
+start of each MP4 for fast loading. Responsive WebM alternatives are generated
+by the normal media optimiser. All three use the approved still as their
+poster and reduced-motion frame, carry an adjacent visible AI-generated-film
+disclosure, and provide an explicit play/pause control.
+
+- `public/media/concepts/cupla/essence-twin-pour.mp4` — six seconds, 1920 ×
+  1080; supplied as
+  `/Users/cobro/Downloads/Steel_jugs_pouring_steamed_milk_202608100849.mp4`.
+- `public/media/concepts/scopers/essence-whole-carrot.mp4` — eight seconds,
+  1280 × 720; supplied as
+  `/Users/cobro/Downloads/Stop-motion_carrot_food_film_202608100959.mp4`.
+- `public/media/concepts/donard-hotel/essence-open-newcastle.mp4` — eight
+  seconds, 1280 × 720; supplied as
+  `/Users/cobro/Downloads/Curtains_opening_to_reveal_Newca…_202608100958.mp4`.
+
 ## Two-day media sprint research masters — held outside public
 
-Generated 9 August 2026 with the built-in OpenAI image tool and held under
+Generated 9–10 August 2026 with the built-in OpenAI image tool and held under
 `research/media-sprint/masters/`. These are synthetic prototype or general
 studio research ingredients, not evidence about a real business, customer,
 stock level, route, current condition or commercial result. The job prompts,
@@ -639,11 +687,17 @@ reference roles, dimensions and advance/reserve decisions live beside them in
 batch boundary. None is guest-facing or referenced from `src/`.
 
 - **Studio object theatre:** `T04-corrected-poster-v1.png`,
-  `X18-reworked-before-v1.png`, `X18-reworked-after-v1.png`. The first removes
-  generated clock marks from a generalised opening-hours scene. The X18 pair
-  is a blank paper-envelope metaphor for showing a change before a decision.
-  No named business or realised result is represented. Existing extracted
-  frames in the same folder are references, not new generated masters.
+  `X18-reworked-before-v1.png`, `X18-reworked-after-v1.png`,
+  `T05-bell-no-clapper-reference-v1.png`,
+  `T05-bell-no-clapper-reference-v2.png`. The first removes generated clock
+  marks from a generalised opening-hours scene. The X18 pair is a blank
+  paper-envelope metaphor for showing a change before a decision. T05 is a
+  16:9 clay-object-theatre video reference: one brass counter bell and waiting
+  boots in front of an unanswered telephone, empty chair and lamp. T05 v2 is
+  the selected reference with the lamp off; v1 is reserve because the lit lamp
+  spent the scene's final response beat in the opening frame. No named
+  business or realised result is represented. Existing extracted frames in
+  the same folder are references, not new generated masters.
 - **Synthetic owner-operating-page:** `weekly-offering-source-v1.png`,
   `week-reset-source-v2.png`, `packing-requests-source-v1.png`,
   `next-week-blank-source-v1.png`, `open-week-finite-row-source-v1.png`,
@@ -667,10 +721,10 @@ DOM copy, and the normal reduced-motion and publication checks. The impossible
 site's actual elevation must remain derived from attributed source data rather
 than from these plates.
 
-### Studio sprint selections published as illustrations — 10 August 2026
+### Studio sprint selections published as illustrations and films — 10 August 2026
 
-Four byte-identical derivatives from approved studio object-theatre scene
-assets are in use on `/where-it-fails/`:
+Four approved studio object-theatre still derivatives are in use on
+`/where-it-fails/`:
 
 - `public/media/studio/login-at-the-door-settled.png`, copied from
   `research/media-sprint/masters/studio-film/T01-existing-final.png`;
@@ -680,20 +734,37 @@ assets are in use on `/where-it-fails/`:
   `show-the-change-open.png`, copied from the matching
   `X18-reworked-{before,after}-v1.png` masters.
 
-`public/media/studio/are-you-open.{mp4,webm}` is the corrected public T04 page
-trial assembled on 10 August 2026. It retains the original umbrella approach
-and departure through 5 seconds, extends the empty dark-window hold, then
-crossfades to `T04-corrected-poster-v1.png` and holds on that numeral-free
-settled frame. Both delivery files are silent. The page keeps the corrected
-poster as its default and reduced-motion experience and requests neither video
-source until the visitor presses “Watch the scene.”
+Five silent public page trials were prepared on 10 August 2026:
+
+- `public/media/studio/login-at-the-door.{mp4,webm}`, derived from
+  `research/film/clips/studio/T01-login-at-the-door.mp4`;
+- `public/media/studio/are-you-open.{mp4,webm}`, the corrected T04 edit that
+  resolves onto the numeral-free settled frame;
+- `public/media/studio/bell-no-clapper.{mp4,webm}`, derived from
+  `research/film/clips/studio/T05-bell-no-clapper.mp4`, with
+  `bell-no-clapper-settled.png` extracted from its final half-second. The
+  research master was generated from `T05-bell-no-clapper-reference-v2.png`;
+  its generated audio is retained only in research and removed from public
+  delivery;
+- `public/media/studio/best-thing-hidden.{mp4,webm}`, derived from
+  `research/film/clips/studio/T07-best-thing-hidden.mp4`, with
+  `best-thing-hidden-settled.png` extracted from its final half-second;
+- `public/media/studio/swap-test.{mp4,webm}`, derived from
+  `research/film/clips/studio/T10-swap-test.mp4`, with
+  `swap-test-settled.png` extracted from frame 120 at 5.00 seconds. The public
+  edit ends on that seated nameplate and excludes the incorrect movement in
+  the source's final three seconds.
+
+All five use the settled poster as the default and reduced-motion experience;
+the page requests no video source until the visitor presses “Watch the scene.”
+The compact “AI-made” corner mark on each player is the visible generated-media
+disclosure. T07 retains its intake clarity caveat, and T10 remains supporting
+material beneath the interactive swap test rather than a replacement for it.
 
 They depict general synthetic object theatre, no named business, owner,
-customer or realised result. The page visibly labels the T01/T04 plates as
-synthetic illustrations and the X18 pair as a synthetic paper study. These
-approved settled scene assets are used instead of the reviewed-but-unrepaired
-T01 motion and the rejected provisional X18 motion. T04 is the one corrected
-motion exception described above. Source hashes and job prompts remain in the
+customer or realised result. The X18 pair remains labelled as a synthetic
+paper study. The five films use the compact disclosure described above; T04
+is the one corrected motion edit. Source hashes and job prompts remain in the
 media-sprint records.
 
 ### Reusable tactile transition components

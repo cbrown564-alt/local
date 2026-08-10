@@ -1,0 +1,239 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+import EssenceFilm from "./EssenceFilm.astro";
+import { essenceMedia } from "../data/essence-media";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const media = essenceMedia[slug];
+const headingId = `${slug}-essence-title`;
+const isSequence = media.frames.length > 1;
+---
+
+<section class="essence-media" aria-labelledby={headingId} data-essence-media={slug}>
+  <div class="essence-media__copy">
+    <h2 id={headingId}>{media.heading}</h2>
+    <p>{media.lede}</p>
+    <p class="essence-media__disclosure">AI-generated {media.video ? "film" : "illustration"}</p>
+  </div>
+
+  <figure class:list={["essence-media__figure", { "essence-media__figure--sequence": isSequence }]}>
+    <div class="essence-media__viewport" data-essence-sequence={isSequence ? "" : undefined}>
+      {media.video ? (
+        <EssenceFilm
+          mp4={media.video.mp4}
+          webm={media.video.webm}
+          poster={media.frames[0].src}
+          label={media.frames[0].alt}
+        />
+      ) : (
+        media.frames.map((frame, index) => (
+          <ResponsiveImage
+            pictureClass="essence-media__picture"
+            class:list={["essence-media__image", { "is-active": index === 0 }]}
+            src={frame.src}
+            alt={frame.alt}
+            width="1664"
+            height="936"
+            sizes="(max-width: 820px) 100vw, 68vw"
+            loading="lazy"
+            data-essence-frame={index}
+            aria-hidden={index === 0 ? "false" : "true"}
+          />
+        ))
+      )}
+    </div>
+
+    <figcaption>
+      <span data-essence-label>{media.frames[0].label}</span>
+      {isSequence && (
+        <span class="essence-media__controls">
+          <button type="button" data-essence-previous aria-label="Show previous image">←</button>
+          <span data-essence-status aria-live="polite">1 / {media.frames.length}</span>
+          <button type="button" data-essence-next aria-label="Show next image">→</button>
+        </span>
+      )}
+    </figcaption>
+    {isSequence && <script is:inline type="application/json" data-essence-labels set:html={JSON.stringify(media.frames.map((frame) => frame.label))} />}
+  </figure>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-essence-media]").forEach((section) => {
+    const sequence = section.querySelector<HTMLElement>("[data-essence-sequence]");
+    const frames = Array.from(section.querySelectorAll<HTMLElement>("[data-essence-frame]"));
+    if (!sequence || frames.length < 2 || section.dataset.essenceReady === "true") return;
+
+    const labelsNode = section.querySelector<HTMLScriptElement>("[data-essence-labels]");
+    const label = section.querySelector<HTMLElement>("[data-essence-label]");
+    const status = section.querySelector<HTMLElement>("[data-essence-status]");
+    const previous = section.querySelector<HTMLButtonElement>("[data-essence-previous]");
+    const next = section.querySelector<HTMLButtonElement>("[data-essence-next]");
+    const labels: string[] = labelsNode ? JSON.parse(labelsNode.textContent || "[]") : [];
+    let active = 0;
+
+    const show = (requested: number) => {
+      active = (requested + frames.length) % frames.length;
+      frames.forEach((frame, index) => {
+        const isActive = index === active;
+        frame.classList.toggle("is-active", isActive);
+        frame.setAttribute("aria-hidden", String(!isActive));
+      });
+      if (label) label.textContent = labels[active] || "";
+      if (status) status.textContent = `${active + 1} / ${frames.length}`;
+    };
+
+    previous?.addEventListener("click", () => show(active - 1));
+    next?.addEventListener("click", () => show(active + 1));
+    section.dataset.essenceReady = "true";
+  });
+</script>
+
+<style>
+  .essence-media {
+    box-sizing: border-box;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(14rem, 0.36fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 5rem);
+    align-items: center;
+    width: min(100%, 94rem);
+    margin: clamp(4rem, 9vw, 9rem) auto;
+    padding: clamp(1.25rem, 3vw, 3rem);
+    color: inherit;
+  }
+
+  .essence-media__copy { max-width: 33rem; }
+
+  .essence-media h2 {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    font-size: clamp(2rem, 4vw, 4.6rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .essence-media__copy > p:not(.essence-media__disclosure) {
+    max-width: 39ch;
+    margin: 1.25rem 0 0;
+    color: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.22rem);
+    line-height: 1.55;
+    opacity: 0.82;
+    text-wrap: pretty;
+  }
+
+  .essence-media__disclosure {
+    display: inline-block;
+    margin: 1.5rem 0 0;
+    padding: 0.38rem 0.65rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: inherit;
+    font-size: 0.76rem;
+    line-height: 1;
+    opacity: 0.72;
+  }
+
+  .essence-media__figure { min-width: 0; margin: 0; }
+
+  .essence-media__viewport {
+    display: grid;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    border-radius: min(1vw, 12px);
+  }
+
+  :global(.essence-media__picture) {
+    display: contents;
+  }
+
+  :global(.essence-media__image) {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .essence-media__figure--sequence :global(.essence-media__image) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .essence-media__figure--sequence :global(.essence-media__image.is-active) {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .essence-media figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-top: 0.75rem;
+    color: inherit;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    opacity: 0.78;
+  }
+
+  .essence-media__controls {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .essence-media__controls button {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .essence-media__controls button:hover,
+  .essence-media__controls button:focus-visible {
+    background: currentColor;
+    color: Canvas;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .essence-media__figure--sequence :global(.essence-media__image) {
+      transition: opacity 420ms cubic-bezier(0.16, 1, 0.3, 1), visibility 420ms;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .essence-media {
+      grid-template-columns: 1fr;
+      margin-block: clamp(3rem, 14vw, 6rem);
+    }
+
+    .essence-media__copy { max-width: 42rem; }
+    .essence-media h2 { max-width: 16ch; }
+  }
+
+  @media (max-width: 480px) {
+    .essence-media { padding-inline: 1rem; }
+    .essence-media figcaption { align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .essence-media__figure--sequence :global(.essence-media__image) { transition: none; }
+  }
+</style>

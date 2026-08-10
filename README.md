@@ -156,6 +156,7 @@ because three documents each kept their own copy.
 | `docs/impossible-local-website-spec.md` | Full specification for the second new representative prototype: a singular place-and-trade experience built from a blank canvas |
 | `docs/owner-operated-impossible-site-brief.md` | Deferred brief and entry gate for combining the first two forms after both are built |
 | `research/studio-storytelling.md` | Studio product showcases & explainers workstream (claymation, kinetic type, humour, belief-sequence film/audio) |
+| `research/concept-essence-media-brief.md` | The signature image or short-film idea that expresses the essence of each concept site |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
 | `docs/CONTEXT.md` | Project vocabulary |
 | `docs/MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |

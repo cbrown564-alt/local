@@ -157,6 +157,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
       <nav aria-label="Concept actions">
         {transformation && <a href={caseStudy}>See the case study</a>}
         <a class="mm-concept-claim" href={claimUrl}>Is this your business? Claim this concept →</a>
+        <button class="mm-concept-back" type="button" data-concept-back>← Back</button>
       </nav>
     </aside>
     <slot />
@@ -169,5 +170,16 @@ const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
     link.setAttribute("aria-disabled", "true");
     link.setAttribute("title", "Concept preview — this link is not active");
     link.classList.add("concept-link-inert");
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-concept-back]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const previous = document.referrer ? new URL(document.referrer) : null;
+      if (previous?.origin === window.location.origin) {
+        window.history.back();
+      } else {
+        window.location.assign("/transformations/");
+      }
+    });
   });
 </script>
