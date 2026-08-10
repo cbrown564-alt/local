@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../site/layouts/BaseLayout.astro";
+import "@fontsource-variable/manrope/wght.css";
+import "./operating-page.css";
+
+interface Props {
+  title: string;
+  description: string;
+  editor?: boolean;
+}
+
+const { title, description, editor = false } = Astro.props;
+---
+
+<BaseLayout
+  title={`${title} — owner’s operating page prototype`}
+  description={description}
+  robots="noindex, nofollow"
+  class={`operating-page-prototype${editor ? " operating-page-editor" : ""}`}
+  hideHeader
+  hideFooter
+>
+  <slot />
+</BaseLayout>
