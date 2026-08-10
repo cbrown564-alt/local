@@ -57,10 +57,11 @@ what the trailer is for, so it is filed as a question rather than a candidate.
 
 Against [`../../film/trailer-visuals-brief.md`](../../film/trailer-visuals-brief.md):
 
-- C6 removes **shot 14** (the hold on 13). No loss — it was a freeze.
-- C8 weakens **shot 16**, which stages the plate seating on the twin. If C8
-  goes, shot 16 has to carry the whole idea silently. It can — that is what
-  T10 already does — but it becomes load-bearing.
-- C9 preserves **shot 17**, the only fix in the film. Protect that clause in
-  any further edit.
-- Nothing in Tier 1 touches picture.
+**Resolved 10 August — Tier 1 and C9 taken, C6 and C8 declined.** All eighteen
+shots survive. Shot 14 keeps its line; shot 16 keeps the template image rather
+than having to carry it silently; C9's rewrite kept "what the person outside
+came to ask", so shot 17 — the only fix in the film — still rhymes with shot 1.
+Nothing in Tier 1 touched picture. **Protect that clause in any further edit.**
+
+Generated as `trailer-trim.mp3`: 1,134 characters, **1:35.6**, −17.2 LUFS /
+−1.8 dBTP. The spine in the visuals brief has been re-measured against it.

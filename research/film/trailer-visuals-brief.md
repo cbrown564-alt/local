@@ -51,40 +51,46 @@ cut back onto them.
 
 ## 2. The timing spine
 
-Measured from `trailer.mp3` by `ffmpeg silencedetect` (`-30dB`, 0.4s).
-**Bold timecodes are the four long holds (1.8–1.9s)** — the `[pause]`,
-`[reflective]` and `[matter-of-fact]` tags landing as real silence. These are
-the act breaks and every cut of consequence should sit on one.
+**Re-measured 10 August against `trailer-trim.mp3` (1:35.6)**, which is now the
+cut picture is being built to. The 2:04 spine this brief first carried is dead —
+every timecode moved. `ffmpeg silencedetect` (`-30dB`, 0.4s).
+
+**Bold timecodes are the long holds (1.4–1.9s)** — the `[pause]`, `[reflective]`
+and `[matter-of-fact]` tags landing as real silence. These are the act breaks
+and every cut of consequence should sit on one.
 
 | | In | Out | Line |
 | --- | --- | --- | --- |
-| **Act 1 — the approach** | 0:00 | **0:30.8** | door → login wall → two dead taps |
-| **Act 2 — the leaving** | 0:32.7 | **0:51.8** | next door, and nobody ever tells you |
-| **Act 3 — the count** | 0:53.7 | **1:20.2** | twenty businesses, sixty faults, ten patterns |
-| **Act 4 — the swap test** | 1:22.0 | 2:04.4 | the turn, the fix, the offer |
+| **Act 1 — the approach** | 0:00 | **0:25.2** | door → login wall → three dead taps |
+| **Act 2 — the leaving** | 0:26.8 | **0:42.5** | next door, and nobody ever tells you |
+| **Act 3 — the count** | 0:44.4 | **1:04.6** | twenty businesses, sixty faults, ten patterns |
+| **Act 4 — the swap test** | 1:06.0 | 1:35.6 | the turn, the fix, the offer |
 
 Sentence-level boundaries inside Act 4, where the cutting is tightest:
 
 | In | Line |
 | --- | --- |
-| 1:22.0 | "Here's the one that stings." |
-| 1:24.5 | "Open your website." |
-| 1:26.2 | "Find your name." |
-| 1:28.3 | "Now swap it for the business up the street." |
-| 1:32.4 | "If nothing else on the page needs changing…" |
-| 1:35.6 | "…the site isn't yours." |
-| 1:38.6 | "It's a template with your name in the corner." |
-| 1:42.2 | "And people can feel that," |
-| 1:44.2 | "even if they'd never say it out loud." |
-| 1:47.6 | "A site that's actually yours knows the one thing a template never can." |
-| 1:50.1 | "What the person outside came to ask." |
-| 1:54.4 | "That's the work." |
-| 1:58.6 | "We'll show you yours…" |
-| 2:00.9 | "…before we ask you for anything." |
+| 1:06.0 | "Here's the one that stings." |
+| 1:08.4 | "Open your website." |
+| 1:10.0 | "Find your name." |
+| 1:11.9 | "Now swap it for the business up the street." |
+| 1:15.3 | "If nothing else on the page needs changing…" |
+| 1:18.5 | "…the site isn't yours." |
+| 1:20.7 | "It's a template with your name in the corner." |
+| 1:24.7 | "A site that's yours knows what the person outside came to ask." |
+| 1:29.8 | "That's the work." |
+| 1:31.9 | "We'll show you yours before we ask you for anything." |
 
 Act 1–3 boundaries are exact at the act breaks and within ±1s inside them.
 If frame-accurate word timings are ever needed for a tight sync, ElevenLabs
 speech-to-text will return them; it was not run for this draft.
+
+**The trim helped the picture, not just the runtime.** Act 1 lost nine seconds
+of talk over what was always going to be one held image, and the three taps now
+land as three isolated beats — "They tap it" at 0:20.7, "Nothing" at 0:22.4,
+"They tap it again" at 0:24.2, each with a full second of silence around it.
+Shot 5 was always the first shot that had to move. It now has its own rhythm to
+move to.
 
 ## 3. The shot list
 
@@ -96,23 +102,23 @@ note. The page is the antagonist, never the owner.**
 | # | In | Beat | Frame | Source |
 | --- | --- | --- | --- | --- |
 | 1 | 0:00 | someone outside your door | Boots stop at a shut clay shopfront. Wet slate. | **T01** (opening) |
-| 2 | 0:03.8 | *hold* | Same frame, nothing happens. The hold is the shot. | T01 freeze |
-| 3 | 0:05.4 | not lost — they want to know if you're open | A small lit rectangle at boot height, the only warm thing in frame. | new still |
-| 4 | 0:11.5 | what comes back is a login screen | Frosted pane, blank forms, the fascia name greyed behind the glass. | **T01** |
-| 5 | 0:21 | they tap it. Nothing. Again. | Two taps on glass. The ripple does not propagate. | **new — must move** |
-| 6 | 0:32.7 | then they go next door | Boots exit frame. One door along is lit. | new |
-| 7 | 0:35 | no complaint, no bad review, no email | Empty envelope on an empty desk. | **X18** |
-| 8 | 0:43 | just a quiet person who came and left | Counter bell with no clapper. Silence where a sound should be. | **T05** |
-| 9 | 0:53.7 | twenty businesses round here | Slow lateral move along a continuous clay street. | **X14** + push |
-| 10 | 1:00 | not their marketing — their websites | The same street seen through a pane, not from the pavement. | new |
-| 11 | 1:06 | on a phone, in the rain, in a hurry | Rain on glass. | **X05** |
-| 12 | 1:09 | roughly sixty things wrong → ten patterns | Top-down: sixty small brass objects sorted into ten trays. | **new — the signature shot** |
-| 13 | 1:17 | not one of them is that it looked ugly | A handsome façade, immaculate, and nobody at it. | new |
-| 14 | 1:22 | here's the one that stings | *Hold on 13.* | — |
-| 15 | 1:24.5 | open your site, find your name, swap it | Blank brass nameplate lifts from one shopfront. | **T10** |
-| 16 | 1:32.4 | …the site isn't yours | It seats perfectly on the identical twin next door. Nothing else changes. | **T10** |
-| 17 | 1:47.6 | what the person outside came to ask | Back to shot 1. The boots are still there. This time the window answers. | **new — must move** |
-| 18 | 1:54.4 | that's the work / we'll show you yours | The offer beat, live DOM type over the plate. | **X18** + X16 rule |
+| 2 | 0:03.2 | *hold* | Same frame, nothing happens. The hold is the shot. | T01 freeze |
+| 3 | 0:05.1 | they want to know if you're open | A small lit rectangle at boot height, the only warm thing in frame. | new still |
+| 4 | 0:07.4 | what comes back is a login screen | Frosted pane, blank forms, the fascia name greyed behind the glass. | **T01** |
+| 5 | 0:20.7 | they tap it. Nothing. Again. | Three taps on glass, one per beat. The ripple does not propagate. | **new — must move** |
+| 6 | 0:26.8 | then they go next door | Boots exit frame. One door along is lit. | new |
+| 7 | 0:29.2 | no complaint, no bad review, no email | Empty envelope on an empty desk. | **X18** |
+| 8 | 0:36.2 | just a quiet person who came and left | Counter bell with no clapper. Silence where a sound should be. | **T05** |
+| 9 | 0:44.4 | twenty businesses round here | Slow lateral move along a continuous clay street. | **X14** + push |
+| 10 | 0:48 | not their marketing — their websites | The same street seen through a pane, not from the pavement. | new |
+| 11 | 0:50.8 | on a phone, in the rain, in a hurry | Rain on glass. | **X05** |
+| 12 | 0:55.1 | roughly sixty things wrong → ten patterns | Top-down: sixty small brass objects sorted into ten trays. | **new — the signature shot** |
+| 13 | 1:01.5 | not one of them is that it looked ugly | A handsome façade, immaculate, and nobody at it. | new |
+| 14 | 1:06.0 | here's the one that stings | *Hold on 13.* | — |
+| 15 | 1:08.4 | open your site, find your name, swap it | Blank brass nameplate lifts from one shopfront. | **T10** |
+| 16 | 1:15.3 | …the site isn't yours | It seats perfectly on the identical twin next door. Nothing else changes. | **T10** |
+| 17 | 1:24.7 | what the person outside came to ask | Back to shot 1. The boots are still there. This time the window answers. | **new — must move** |
+| 18 | 1:29.8 | that's the work / we'll show you yours | The offer beat, live DOM type over the plate. | **X18** + X16 rule |
 
 **Seven of eighteen exist.** Five are new stills. Two must be generated as
 motion (5 and 17). Shot 12 is the one genuinely new scene worth spending on —
@@ -144,10 +150,12 @@ Inherited constraints, not new ones:
 
 ## 5. Open questions
 
-1. **Trim first?** Plan §8 item 1 wants ~300 characters cut to bring the
-   trailer near 1:30. **Cut before cutting picture** — every frame timed
-   against 2:04 is wasted if the audio changes. This is the one decision that
-   blocks step 2.
+1. ~~**Trim first?**~~ **Settled 10 August.** Six cuts taken, `trailer-trim.mp3`
+   at 1:35.6, spine above re-measured against it. Step 2 is unblocked. The
+   cuts that would have cost picture — deleting "Here's the one that stings"
+   (shot 14) and "It's a template with your name in the corner" (shot 16) —
+   were both declined, so all eighteen shots stand and shot 17 keeps its
+   rhyme back to the opening image.
 2. **Aspect.** 16:9 for the site, 9:16 for anything distributed. X13 is
    already a 9:16 derivative of T04, so the precedent exists; shot 12's
    top-down sort is the only one that will not survive the crop.

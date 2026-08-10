@@ -8,10 +8,12 @@
 
 | File | What |
 | --- | --- |
-| `trailer.mp3` | 2:04, Village Elder, mastered — **listen to this one** |
+| `trailer-trim.mp3` | 1:35.6, Village Elder, six cuts — **listen to this one** |
+| `trailer.mp3` | 2:04, Village Elder, the full script |
 | `trailer-down-narrator-superseded.mp3` | the first cut, 1:20, kept for the pacing comparison |
-| `raw/` | both generator outputs |
-| [`script.md`](script.md) | script, sources and the honesty check |
+| `raw/` | all three generator outputs |
+| [`script.md`](script.md) | both scripts, sources and the honesty check |
+| [`trim-candidates.md`](trim-candidates.md) | the nine cuts offered, and the four lines ruled out |
 
 Voice **Old Irish Village Elder** (`eEzkfaTvgdaH5to7Cn0M`), model `eleven_v3`,
 `stability` 0.5, five audio tags. 1,380 characters.
@@ -23,12 +25,21 @@ voices is two sets.
 
 ## Measured
 
-| Cut | Length | Integrated | True peak |
-| --- | --- | --- | --- |
-| Village Elder (current) | **2:04.4** | −17.4 LUFS | −1.8 dBTP |
-| MM Down Narrator (superseded) | 1:19.8 | −16.4 LUFS | −1.7 dBTP |
+| Cut | Chars | Length | Rate | Integrated | True peak |
+| --- | --- | --- | --- | --- | --- |
+| Village Elder, trimmed (current) | 1,134 | **1:35.6** | 712 c/m | −17.2 LUFS | −1.8 dBTP |
+| Village Elder, full script | 1,382 | 2:04.4 | 666 c/m | −17.4 LUFS | −1.8 dBTP |
+| MM Down Narrator (superseded) | 1,382 | 1:19.8 | 1,040 c/m | −16.4 LUFS | −1.7 dBTP |
 
-`loudnorm=I=-16:TP=-1.5:LRA=11` on both.
+`loudnorm=I=-16:TP=-1.5:LRA=11` on all three. The trim sits 0.2 LU from the
+full cut and inside the 0.6 LU spread of the five snags, so it drops into the
+set without remastering anything else.
+
+**And the rate moved again with the voice held constant.** Same narrator, same
+model, same settings, 18% less text — 666 characters per minute became 712. A
+7% swing from copy alone, on top of the 55% already measured from casting. The
+predicted length was 1:40; it came in at 1:35.6. This is the third measurement
+in a day saying the same thing: **time it after generation.**
 
 **The same script, 44 seconds apart.** 1,040 characters per minute against 666
 — a 55% pacing spread from casting alone, before a word changed. This is the

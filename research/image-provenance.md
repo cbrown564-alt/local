@@ -96,6 +96,14 @@ that no longer appear anywhere in `src/`.
   `trailer-down-narrator-superseded.mp3`; both raws are in `raw/`. Same script,
   same honesty check — only the casting changed.
 
+  **Trimmed 10 August.** `trailer-trim.mp3` is the same piece with six cuts —
+  1,134 characters against 1,382, **1:35.6**, −17.2 LUFS / −1.8 dBTP, raw in
+  `raw/trailer-trim-raw.mp3`. Same voice, model and settings as the 2:04 cut;
+  candidates and reasoning in `trailer/trim-candidates.md`. Every cut removed
+  words already said elsewhere in the piece — **no claim, figure or source
+  changed**, so the honesty check in `trailer/script.md` carries over intact.
+  Not yet promoted over `trailer.mp3`; both stand until the trim is heard.
+
 - `research/narration/shorts-snags/` — **held / research only** (10 August
   2026). Five 57–62 second snag explainers, mastered in the folder with
   generator output in `raw/`. ElevenLabs `eleven_v3`, voice **Old Irish Village

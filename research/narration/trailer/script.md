@@ -24,9 +24,72 @@ being unarguable.
 
 **No place names**, per §3. "Round here" does the work that a town name would.
 
+**Trimmed 10 August** to 1,134 characters / 1:35.6, generated as
+`trailer-trim.mp3`. Six cuts, all of them words already said elsewhere in the
+piece; the candidate list and the reasoning are in
+[`trim-candidates.md`](trim-candidates.md). The trimmed text is §Script below;
+the original 1,382-character version is kept under §Script as first read. **No
+claim, figure or source was touched**, so the honesty check above applies
+unchanged to both.
+
 ---
 
 ## Script
+
+*1,134 characters, 1:35.6.*
+
+Someone is standing outside your door, on their phone.
+
+[pause]
+
+They want to know if you're open.
+
+So they search your name. And what comes back is a login screen. Your name is
+behind it — greyed out, underneath a box asking them to accept cookies.
+
+They tap it. Nothing. They tap it again.
+
+[pause]
+
+Then they go next door.
+
+Nobody will ever tell you that happened. There's no complaint, no bad review,
+no email. Just a quiet person, outside, who came all the way to your door and
+left.
+
+[reflective]
+
+We've looked closely at twenty businesses round here. Not their marketing —
+their websites. On a phone, in the rain, in a hurry.
+
+Roughly sixty things were wrong. Ten patterns account for nearly all of them.
+
+Not one of them is that the site looked ugly.
+
+[pause]
+
+Here's the one that stings.
+
+Open your website. Find your name. Now swap it for the business up the street.
+
+[pause]
+
+If nothing else on the page needs changing... the site isn't yours. It's a
+template with your name in the corner.
+
+[matter-of-fact]
+
+A site that's yours knows what the person outside came to ask.
+
+That's the work.
+
+We'll show you yours before we ask you for anything.
+
+---
+
+## Script as first read
+
+*1,382 characters, 2:04.4. Kept for the comparison.*
 
 Someone is standing outside your door, on their phone.
 
