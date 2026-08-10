@@ -89,6 +89,22 @@ that no longer appear anywhere in `src/`.
   level spec. If it ever goes guest-facing it needs a visible synthetic-speech
   disclosure in the visible layer, not only in an `alt` or `aria-label`.
 
+- `research/narration/shorts-snags/` — **held / research only** (10 August
+  2026). Five 57–62 second snag explainers, mastered in the folder with
+  generator output in `raw/`. ElevenLabs `eleven_v3`, voice **Old Irish Village
+  Elder** (`eEzkfaTvgdaH5to7Cn0M`, a 7 August bakeoff control), `stability`
+  0.5. It is a designed voice, **not a recording of anyone**, and no real
+  person's voice was cloned. Scripts and sourcing: `shorts-snags/script.md`.
+  Every beat derives from `src/site/data/fault-walks.ts`, the same five entries
+  `/where-it-fails/` walks, using each entry's `errand`, `decision` and
+  `check`. The visitor in each is an invented visitor on a named errand,
+  matching the page's invented-mock rule. Names no business, no client and no
+  place; makes no prevalence claim and promises no result. Mastered to −16.9 to
+  −17.5 LUFS / −1.8 dBTP, 0.6 LU spread across the set. Casting is unresolved —
+  the voice's folklore-storyteller brief may not suit practical explainers —
+  and `S5` duplicates the swap test used in the trailer, so at most one of the
+  two survives. Guest-facing use needs a visible synthetic-speech disclosure.
+
 ## Owner's operating page prototype (9 August 2026)
 
 - `media/prototypes/operating-page/tomato-fennel-galette.webp`,
