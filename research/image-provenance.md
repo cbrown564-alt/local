@@ -52,6 +52,24 @@ that no longer appear anywhere in `src/`.
   checked against the concept's own copy the same way the "Sources & limits"
   block is.
 
+- `research/narration/audition/` — **held / research only** (10 August 2026).
+  Five ~34-second takes of one ~450-character audition script, for casting the
+  long-form narrator in
+  [`narrative-audio-plan.md`](narrative-audio-plan.md) §5. ElevenLabs
+  `eleven_v3` (`stability` 0.5). Two existing designed voices — MM Slate
+  Narrator (`5vykio5nGgdGfnCLEAJ3`) and MM Harbour Brass
+  (`UDLQOECmLD4JOGNJYCNd`) — plus three unsaved voice-design previews for a
+  County Down long-form narrator (`azdpqdBfa91lH9AfZglr`,
+  `uxNnEZY19YXVgxaDYabn`, `5D9bboiw6vTiK5plwIve`). None of the five **is a
+  recording of anyone**, and no real person's voice was cloned; the three
+  designed previews were generated from a written description of an accent and
+  a manner, not from any person's audio. The script is the studio's own copy
+  from [`the-elevation-method.md`](../docs/the-elevation-method.md) and makes
+  no claim about any business. Names no place, per the plan's §3 policy.
+  Unmastered — the five span 2.8 LU and two exceed the −1.5 dBTP ceiling, so
+  none is fit for use as-is. Casting is undecided; nothing here advances to
+  production, and the two unchosen designed previews expire unsaved.
+
 ## Owner's operating page prototype (9 August 2026)
 
 - `media/prototypes/operating-page/tomato-fennel-galette.webp`,

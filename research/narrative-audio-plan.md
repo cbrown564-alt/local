@@ -151,15 +151,37 @@ passages punctuation cannot reach. A script leaning on tags for every line is
 under-written. Establish a baseline style setting per voice first, then reach
 for tags.
 
-### Pronunciation — a real risk here
+### Place names — do not use them
 
-Irish and County Down place names will be mangled by default and every
-instance is a wasted regeneration. Build a pronunciation table **before**
-scripting and test it in the audition pass: **Cúpla** (KOOP-la), **Tonn
-Rúray**, **Slieve Donard**, **Mourne**, **Dundrum**, **Enniskeen**,
-**Murdock**, **Kilkeel**. Where a name resists, either respell it phonetically
-in the script or use an alias/pronunciation dictionary — and record which
-technique worked in the manifest so the next run doesn't rediscover it.
+**No spoken piece names a town, village, mountain or street.** Decided
+10 August, for two reasons that happen to point the same way:
+
+1. **Respect.** These are small places and the businesses in them are
+   identifiable by town alone. `studio-recurring-themes.md` already reached
+   this position for a different reason — faults are generalised deliberately
+   so "an owner should recognise the pattern in their own site, not recognise
+   a neighbour being made an example of." Naming the town undoes that in one
+   word. Audio travels further than a page and detaches from its context on
+   the way.
+2. **Simplicity.** Irish and County Down names are mangled by default, and
+   every instance is a wasted regeneration and a pronunciation table to
+   maintain. Removing them removes a whole class of retake.
+
+Say instead: *the town*, *a small town on the coast*, *round here*, *the
+mountains behind it*. This is a **gain, not a concession** — "a shop whose
+shelf was never stocked" is a stronger line than the same sentence with a
+postcode in it, and the generalised version is the one an owner anywhere
+recognises themselves in.
+
+Two carve-outs, both deliberate:
+
+- **The studio's own name** stays. It is the studio's to say.
+- **Business names in Shorts II** stay — those concepts are already published
+  at `/transformations/` under those names, and the paradox needs a subject.
+  But the *towns* they sit in do not, and the paradoxes carry perfectly well
+  without them.
+
+Applies to spoken copy only. Briefs, research and case studies are unchanged.
 
 ---
 
@@ -258,15 +280,29 @@ The existing cast in
 Endurance across eleven minutes was never tested, and it is a different
 property. Do not assume the bakeoff winners transfer.
 
-**Audition first (~1,200 credits).** Three candidates × ~400 characters of real
-Long A copy — including a paradox line and three of the hard place names.
-Judge on: does it hold attention past thirty seconds; does it vary; does it
-say *Mourne* and *Cúpla* correctly.
+**Audition first (~1,200 credits).** Three candidates × ~450 characters of real
+Long A copy, carrying a paradox line and the dry beat. With place names out of
+the scripts, the audition judges three things only:
 
-Candidates: **MM Slate Narrator** (`5vykio5nGgdGfnCLEAJ3`) as incumbent — the
-calm proverb/radio narrator, closest to the job; **MM Harbour Brass**
-(`UDLQOECmLD4JOGNJYCNd`) — warm neighbour register, which is the studio voice
-as described in §3; and one new long-form candidate from the voice library.
+1. Does it hold attention past thirty seconds?
+2. Does the cadence vary, or does every sentence land the same way?
+3. Is it dry without being cold — a neighbour, not an agency?
+
+Candidates:
+
+| Key | Voice | ID | Case |
+| --- | --- | --- | --- |
+| Incumbent | MM Slate Narrator | `5vykio5nGgdGfnCLEAJ3` | the calm proverb/radio narrator, closest to the job on paper |
+| Incumbent | MM Harbour Brass | `UDLQOECmLD4JOGNJYCNd` | warm neighbour register — the studio voice as §3 describes it |
+| Challenger | Bren — Calm Irish Conversational | `RlSVB64yXMZJjq67jbB1` | library voice built for long-form; "quiet authority that feels human rather than performed" |
+
+**Accent caveat.** The library's Irish narration voices are southern —
+Waterford, the west, neutral Dublin — not Ulster. Bren may read as *Irish but
+from elsewhere*, which for a County Down studio is a real, if quiet, wrongness.
+The two MM voices were designed rather than picked, which is why they stay in
+the running despite being cast for short forms. If the audition splits on
+accent rather than endurance, the answer is a designed voice, not a library
+one.
 
 Provisional assignment, subject to the audition:
 
@@ -349,7 +385,7 @@ Per [`AGENTS.md`](../AGENTS.md), before anything is committed:
 
 ## 8. Order of work today
 
-1. Pronunciation table + narrator audition (§5). **Gate: place names correct.**
+1. Narrator audition (§5). **Gate: one voice that holds eleven minutes.**
 2. Trailer script → generate → listen. **Gate: is the register right?** If not,
    fix it here, where it costs 1,700 credits and not 12,000.
 3. Shorts I and II scripts → generate. Banks complete deliverables early.
