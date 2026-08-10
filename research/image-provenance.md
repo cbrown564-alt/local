@@ -105,6 +105,23 @@ that no longer appear anywhere in `src/`.
   and `S5` duplicates the swap test used in the trailer, so at most one of the
   two survives. Guest-facing use needs a visible synthetic-speech disclosure.
 
+- `research/narration/long-a-elevation/` — **held / research only** (10 August
+  2026). One 8 min 31s studio essay, `long-a-elevation-method.mp3`, built from
+  eight separately generated sections kept in `raw/`. ElevenLabs `eleven_v3`,
+  voice **Irish Cultural Guide** (`NPWroowF4phQhaPWjXPj`), `stability` 0.5. Not
+  a recording of anyone; no real person's voice was cloned. Script and sourcing:
+  `long-a-elevation/script.md`. Every claim derives from
+  [`docs/the-elevation-method.md`](../docs/the-elevation-method.md) — the four
+  paradoxes, five shapes, six tests and honesty boundary are verbatim or
+  lightly recast from it. **Names no business at all**, only shapes (a country
+  house hotel, a zero-waste hot food bar, a shop whose shelf was never
+  stocked), which goes beyond the place-name rule in
+  [`narrative-audio-plan.md`](narrative-audio-plan.md) §3. No client, no
+  testimonial, no ranking, no measured result, no prevalence claim; the opening
+  scene of an owner reading a link at nine at night is explicitly a scene and
+  reports no actual event. Mastered to −16.6 LUFS / −1.8 dBTP. Guest-facing use
+  needs a visible synthetic-speech disclosure in the visible layer.
+
 ## Owner's operating page prototype (9 August 2026)
 
 - `media/prototypes/operating-page/tomato-fennel-galette.webp`,
