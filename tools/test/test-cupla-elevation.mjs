@@ -146,7 +146,25 @@ for (const [route, text] of [["home", homeText], ["menu", menuText]]) {
   }
 }
 
-// ── Move 4 — the frontage is home, with its disclosure chain intact ────────
+// ── Move 4 — the essence film leads, the frontage proves, both disclosed ───
+// The hero figure and the Our story figure swapped places on 10 August 2026.
+// The disclosure obligation did not move with them: whichever figure holds the
+// hero has to carry a caption that survives the fold and the fixed chrome, and
+// the frontage keeps its full alt → caption → case-study chain wherever it sits.
+check(
+  "the essence film no longer leads the hero",
+  /<figure class="cp-essence-hero">[\s\S]*?essence-twin-pour\.mp4/.test(homeFlat),
+);
+check(
+  "the hero film lost its visible generated-origin caption",
+  /AI-generated film · two flat whites poured together, an illustration of the counter rather than a recording of it/.test(
+    homeFlat.replace(/\s+/g, " "),
+  ),
+);
+check(
+  "the frontage no longer sits in the Our story section",
+  /<section class="cp-pair"[\s\S]*?<figure class="cp-frontage">[\s\S]*?cupla-faithful-visualisation/.test(homeFlat),
+);
 check("the frontage visualisation is missing from public/", existsSync(visualisation));
 check(
   "the frontage visualisation no longer renders on the home route",
@@ -178,12 +196,15 @@ check(
   /<\/picture>\s*<figcaption>/.test(homeFlat),
 );
 check(
-  "the phone stack no longer places the frontage between the wordmark and the offer",
+  "the phone stack no longer places the hero figure between the wordmark and the offer",
   /grid-template-areas:\s*"head"\s*"figure"\s*"body";/.test(styles),
 );
+// Freed from the hero's fixed grid area, the frontage sizes to its own aspect
+// ratio at every width, so the fascia can no longer be cropped out by a tall
+// window — the defect the old flex/height:0 pair existed to bound.
 check(
-  "the phone rule no longer renders the frontage uncropped",
-  /\.cp-frontage img \{ flex: 0 0 auto; height: auto; aspect-ratio: 1536 \/ 1024; \}/.test(styles),
+  "the frontage is no longer rendered uncropped at its natural height",
+  /\.cp-frontage img \{ display: block; width: 100%; height: auto; \}/.test(styles),
 );
 // The third link in the disclosure chain: the case study carries the concept's
 // opening screen, so its Sources & limits block has to say what is in it.
@@ -390,10 +411,10 @@ const serveDist = () =>
 const measureHome = async (page) =>
   page.evaluate(() => {
     const wordmark = document.querySelector(".cp-hero h1");
-    const image = document.querySelector(".cp-frontage img");
-    const caption = document.querySelector(".cp-frontage figcaption");
+    const image = document.querySelector(".cp-essence-hero video");
+    const caption = document.querySelector(".cp-essence-hero figcaption");
     if (!wordmark || !image || !caption) {
-      return { ok: false, reason: "missing wordmark, frontage image or caption" };
+      return { ok: false, reason: "missing wordmark, hero film or caption" };
     }
     const word = wordmark.getBoundingClientRect();
     const img = image.getBoundingClientRect();
@@ -411,6 +432,37 @@ const measureHome = async (page) =>
       hitCaption: Boolean(hit && caption.contains(hit)),
     };
   });
+
+/* The frontage now sits below the fold, so its disclosure cannot be pinned to
+   the first viewport — but the original defect was a caption painted over by
+   fixed chrome, which below-fold content is no less exposed to. Scroll it into
+   view and hit-test it there. */
+const measureFrontageCaption = async (page) => {
+  await page.evaluate(() => {
+    /* "instant", not the default: global.css sets scroll-behavior: smooth, and
+       a smooth scroll is still animating when the rects are read. */
+    document.querySelector(".cp-frontage figcaption")?.scrollIntoView({
+      block: "center",
+      behavior: "instant",
+    });
+  });
+  return page.evaluate(() => {
+    const image = document.querySelector(".cp-frontage img");
+    const caption = document.querySelector(".cp-frontage figcaption");
+    if (!image || !caption) return { ok: false, reason: "missing frontage image or caption" };
+    const img = image.getBoundingClientRect();
+    const cap = caption.getBoundingClientRect();
+    const hit = document.elementFromPoint(cap.left + cap.width / 2, cap.top + cap.height / 2);
+    return {
+      ok: true,
+      /* Uncropped: the rendered box keeps the source 3:2, so the fascia and the
+         Est. 2024 decal are both still in frame. */
+      ratio: img.height > 0 ? img.width / img.height : 0,
+      captionBelowImage: cap.top >= img.bottom - 1,
+      hitCaption: Boolean(hit && caption.contains(hit)),
+    };
+  });
+};
 
 let chromePath;
 try {
@@ -446,7 +498,7 @@ if (chromePath) {
         phone.wordmarkTop >= 0 && phone.wordmarkBottom <= phone.viewportHeight,
       );
       check(
-        `at 390×844 the frontage does not begin above y 520 (top ${phone.imageTop.toFixed(1)})`,
+        `at 390×844 the hero film does not begin above y 520 (top ${phone.imageTop.toFixed(1)})`,
         phone.imageTop >= 0 && phone.imageTop < 520,
       );
       check(
@@ -454,6 +506,20 @@ if (chromePath) {
         phone.captionTop < phone.viewportHeight && phone.captionBottom > 0,
       );
       check("at 390×844 elementFromPoint at the caption centre does not return the caption", phone.hitCaption);
+    }
+
+    const phoneFrontage = await measureFrontageCaption(page);
+    check(`phone geometry could not measure the frontage: ${phoneFrontage.reason ?? "unknown"}`, phoneFrontage.ok);
+    if (phoneFrontage.ok) {
+      check(
+        `at 390×844 the frontage is not rendered uncropped (ratio ${phoneFrontage.ratio.toFixed(3)})`,
+        Math.abs(phoneFrontage.ratio - 1536 / 1024) < 0.02,
+      );
+      check("at 390×844 the frontage caption does not sit below its image", phoneFrontage.captionBelowImage);
+      check(
+        "at 390×844 elementFromPoint at the frontage caption centre does not return the caption",
+        phoneFrontage.hitCaption,
+      );
     }
 
     await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 1 });
@@ -470,6 +536,20 @@ if (chromePath) {
       check(
         `at 1265×710 the caption is not in the first viewport (top ${desktop.captionTop.toFixed(1)}, bottom ${desktop.captionBottom.toFixed(1)})`,
         desktop.captionTop < desktop.viewportHeight && desktop.captionBottom > 0,
+      );
+    }
+
+    const desktopFrontage = await measureFrontageCaption(page);
+    check(`desktop geometry could not measure the frontage: ${desktopFrontage.reason ?? "unknown"}`, desktopFrontage.ok);
+    if (desktopFrontage.ok) {
+      check(
+        `at 1265×710 the frontage is not rendered uncropped (ratio ${desktopFrontage.ratio.toFixed(3)})`,
+        Math.abs(desktopFrontage.ratio - 1536 / 1024) < 0.02,
+      );
+      check("at 1265×710 the frontage caption does not sit below its image", desktopFrontage.captionBelowImage);
+      check(
+        "at 1265×710 elementFromPoint at the frontage caption centre does not return the caption",
+        desktopFrontage.hitCaption,
       );
     }
   } finally {

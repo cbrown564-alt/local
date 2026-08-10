@@ -123,8 +123,8 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
     "body figure";
   /* 96px less than the full screen, so the day's first beat is visible at the
      desktop fold rather than hidden behind it — and capped, because a tall
-     window would otherwise stretch the frontage into a crop tight enough to
-     lose the fascia lettering, the single most identifying thing in the frame. */
+     window would otherwise stretch the 16:9 film into a crop tight enough to
+     lose one of the two cups, which is the whole point of the shot. */
   min-height: min(calc(100vh - 80px - 37px - 96px - var(--mm-banner-space, 0px)), 560px);
   background: var(--petrol);
 }
@@ -196,33 +196,30 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   text-decoration-color: var(--caramel);
 }
 
-/* The frontage — the concept's subject proof, faithful to the August 2024
-   reference. The disclosure sits directly beneath the image in the page flow,
-   so nothing can paint over it: the caption is the visible half of the
-   disclosure chain that runs alt → caption → case-study sources. */
-.cp-frontage {
+/* The essence film — the hero's subject. The disclosure sits directly beneath
+   it in the page flow, so nothing can paint over it: the caption is the visible
+   half of the chain that runs aria-label → caption → case-study sources. */
+.cp-essence-hero {
   grid-area: figure;
   margin: 0;
+  /* Both axes: a grid item defaults to min-width/min-height auto, and the
+     video's intrinsic 1920px would otherwise set the item's minimum and push
+     the hero wider than the phone viewport. */
   min-height: 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   background: var(--petrol-deep);
 }
-.cp-frontage img {
-  /* `height: 0` with flex-grow, not `height: auto`: the width/height
-     attributes are presentational hints, so an auto-height image in a column
-     flex container lays out at its full 1024px and drags the whole hero down
-     with it. The figure takes its height from the grid area instead. */
+.cp-essence-stage {
+  /* `height: 0` with flex-grow, not the film's own 16:9: the figure takes its
+     height from the grid area, and an intrinsically sized child in a column
+     flex container would drag the whole hero down to suit the video instead. */
   flex: 1 1 auto;
-  width: 100%;
-  height: 0;
   min-height: 0;
-  /* Vertically complete at every width: the CÚPLA fascia is the single most
-     identifying feature in the frame and must never be cropped out. */
-  object-fit: cover;
-  object-position: 50% 40%;
+  height: 0;
 }
-.cp-frontage figcaption {
+.cp-essence-hero figcaption {
   flex: 0 0 auto;
   padding: 10px clamp(18px, 2vw, 26px);
   background: #0b231d;
@@ -414,17 +411,32 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   font-style: italic;
   font-weight: 600;
 }
-.cp-pair-image-note span { font-size: 12.5px; font-weight: 700; line-height: 1.4; }
-.cp-twin-cups {
+/* The frontage, in its second home. Here the figure is a column in a stretched
+   grid rather than a fixed hero area, so the image sizes to its own aspect
+   ratio and the caption sits under it; the oat ground carries over from the
+   twin-cups plate it replaces. */
+.cp-frontage {
   margin: 0;
   min-width: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding-block: clamp(30px, 4.5vh, 52px);
   padding-inline: 0;
   background: var(--twin-oat);
 }
-.cp-twin-cups > div { width: 100%; aspect-ratio: 16 / 9; }
+.cp-frontage picture { display: block; width: 100%; }
+/* No crop at any width now that the figure is no longer bound to a hero area:
+   the CÚPLA fascia is the single most identifying feature in the frame, and
+   here the whole frontage fits. */
+.cp-frontage img { display: block; width: 100%; height: auto; }
+.cp-frontage figcaption {
+  flex: 0 0 auto;
+  padding: 10px clamp(18px, 2vw, 26px) 0;
+  color: #4a5a51;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
 
 @media (max-width: 940px) {
   .cp-strip { flex-direction: column; gap: 2px; text-align: center; }
@@ -448,7 +460,7 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
      wrapped onto its own, costing another 43px of the first viewport. */
   .cp-brand { flex: 0 1 auto; min-width: 0; }
   .cp-follow { flex: 0 0 auto; padding: 9px 11px; font-size: 12px; }
-  /* Wordmark, then proof, then the offer: the frontage slides between the two
+  /* Wordmark, then the film, then the offer: the figure slides between the two
      halves of the story column so it begins high in the phone viewport. */
   .cp-hero {
     grid-template-columns: 1fr;
@@ -465,11 +477,12 @@ body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
   .cp-thesis { font-size: 20px; }
   .cp-lede { margin-top: 0; font-size: 15px; line-height: 1.5; margin-bottom: 14px; }
   .cp-kicker { margin-bottom: 8px; }
-  /* No crop at all on phones: the whole frontage, fascia included. */
-  .cp-frontage img { flex: 0 0 auto; height: auto; aspect-ratio: 1536 / 1024; }
+  /* The hero row is auto-height on phones, so the film sizes to its own 16:9
+     rather than to a grid area that no longer constrains it. */
+  .cp-essence-stage { flex: 0 0 auto; height: auto; aspect-ratio: 16 / 9; }
   .cp-beats { grid-template-columns: 1fr; }
   .cp-pair { grid-template-columns: 1fr; }
-  .cp-twin-cups { padding: 26px; }
+  .cp-frontage { padding: 26px; }
   .cp-pair-image-note { align-items: flex-start; flex-direction: column; }
 }
 
