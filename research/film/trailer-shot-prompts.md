@@ -14,12 +14,14 @@ and the A20 edit protocol from
 ## 1. What we actually had, once we looked
 
 The brief said seven of eighteen shots already exist. That was true of the
-*scenes*. It was not true of the *assets*, and the difference matters.
+*scenes*, but it understated the still-image archive. Most of the recent
+Codex-generated stills were created in Codex threads and are now also archived
+in [`../media-sprint/codex-generated/2026-08-03--2026-08-10/`](../media-sprint/codex-generated/2026-08-03--2026-08-10/), with source thread IDs in its manifest.
 
-**No still exists for any studio clip.** `stills/` holds only the two town
-films. Every frame we planned to reuse was locked inside an 8-second MP4.
-Extracted now to [`stills/studio/`](stills/studio/) as nine reference plates,
-which is the thing an image-to-video pass needs as conditioning input.
+The studio clip frames were also extracted to [`stills/studio/`](stills/studio/)
+as nine reference plates. Those plates are separate from the original Codex
+still generations: they are conditioning inputs pulled from the 8-second
+MP4s, not newly generated images.
 
 **Everything reused is capped at 1280×720.** That is the source resolution of
 the studio clips. It is fine for a web hero and it is *not* fine beside a newly

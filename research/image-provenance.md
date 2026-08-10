@@ -16,6 +16,18 @@ sourcing copy afterwards.
 `node tools/check/check-public-assets.mjs` reports images held in `public/images/`
 that no longer appear anywhere in `src/`.
 
+## Codex image recovery archive (10 August 2026)
+
+- `research/media-sprint/codex-generated/2026-08-03--2026-08-10/` — **research
+  masters only**, recovered from the local Codex generated-image cache. It
+  contains 131 PNG outputs from ten Mourne Made Codex threads covering the
+  coastal sequence, X25, studio references, concept move images, the owner
+  operating-page prototype, the media sprint, reserved video integration and
+  the concept essence work. The folder's `MANIFEST.md` records each source
+  thread ID and count. Other-project threads, uploaded photographs and browser
+  screenshots were excluded. These copies are not product approval and are
+  not wired to guest routes.
+
 ## Site films ("One Day, Made Here")
 
 - `media/home/<town>-film.{mp4,webm}`, `<town>-film-mobile.{mp4,webm}`,
