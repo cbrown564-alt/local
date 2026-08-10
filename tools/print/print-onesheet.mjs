@@ -3,6 +3,7 @@ import path from "node:path";
 import QRCode from "qrcode";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
+import { removeDevToolbar } from "../lib/dev-chrome.mjs";
 import { oneSheets, oneSheetUrl } from "../../src/site/data/onesheets.ts";
 import { transformations } from "../../src/site/data/transformations.ts";
 import { siteDetails } from "../../src/site/data/site.ts";
@@ -49,6 +50,11 @@ try {
   await page.goto(route, { waitUntil: "networkidle0", timeout: 60000 });
   await page.emulateMediaType("print");
   await page.evaluate(() => document.fonts.ready);
+  /* The sheet routes are dev-only, so the dev toolbar is on the page. It is
+     fixed-position and has not appeared in a rendered sheet so far, but a
+     development pill printed onto the first thing an owner is handed is not a
+     defect worth leaving to chance. */
+  await removeDevToolbar(page, slug);
   const metrics = await page.$$eval(".onesheet-page", (pages) =>
     pages.map((item) => ({
       clientWidth: item.clientWidth,

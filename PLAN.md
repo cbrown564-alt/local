@@ -344,6 +344,33 @@ highest-stakes conversation is not used to rehearse the approach.
 6. Before printing, make one production submission through a one-sheet link
    and verify that the notification arriving in the inbox carries the expected
    `source`. A 200 response or browser success message alone is not enough.
+
+   **Narrowed 10 August 2026 to exactly what a script cannot prove.**
+   Everything up to the composed email is now covered and passing:
+   `pnpm test:source-attribution` drives a real submission per sheet through
+   `createRequestHandler`, captures the mail object and asserts the body line
+   reads `Came from: Printed one-sheet (Scopers)` — so the QR, the printed
+   text, the claim hop, the built form's hidden field, the endpoint allow-list
+   and the email composition all hold for four sheets. What remains is the
+   production hop, and it needs a deployment and an inbox:
+
+   - **`REQUEST_TO_EMAIL`, `GMAIL_USER` and `GMAIL_APP_PASSWORD` must be set in
+     the Vercel production environment.** Unset, the endpoint returns 503 and
+     delivers nothing; `REQUEST_TO_EMAIL` unset silently sends to `GMAIL_USER`,
+     which may not be the inbox being watched.
+   - Scan the printed sheet's QR with a phone, submit the form, and read the
+     received email. Confirm `Came from:` names that sheet and not `Direct` or
+     `Unrecognised`, and that it did not land in spam.
+   - Note that a mistake costs one of five attempts per hour from that
+     connection.
+
+   Two protections finished on 4 August are also inert unless configured, and
+   nothing in the repository said so until `.env.example` was corrected on
+   10 August: without `KV_REST_API_URL`/`KV_REST_API_TOKEN` the rate limit is
+   per-instance rather than shared, and without `REQUEST_ALERT_WEBHOOK` a failed
+   delivery is logged and nothing else. Both fail quietly, so an unconfigured
+   deployment looks healthy while providing neither. Check them while checking
+   the delivery.
 7. Print only the two verified sheets.
 
 ## 4. Run the first outreach conversations
@@ -568,6 +595,146 @@ Correct the T01/T04 generation faults before a page trial. T01's mail use needs
 a face-to-face tone check; X17 remains a research interaction until an ear
 test shows it preserves owner dignity. Do not generate the retired slate to
 fill the old matrix.
+
+## 9. The paper object — a print system worth handing over (opened 10 August 2026)
+
+The most persuasive thing this studio can do is put something on paper into an
+owner's hands. It meets a busy local decision-maker in a medium they already
+trust, it survives being put in a drawer and found again, and on a walk it does
+the job the website does for a visitor who found us on their own. It is also
+the first physical evidence that the studio exists.
+
+This workstream has been under-thought, and the shape of the gap is specific:
+**everything the repository decides about paper is layout, and all of it is
+decided in CSS.** There are four renderable A4 sheets, a shared stylesheet, a
+QR contract enforced at build time and a rendering script with real guards. What
+no file decides is the *object* — stock, weight, finish, format family, bleed,
+ink, who prints it, what it costs. Premium in print is almost entirely material
+and restraint, and none of it is reachable from a stylesheet. A well-set sheet
+on 100gsm office paper from a desktop laser reads as a flyer no matter how good
+the typography is, and the two doors in the first wave are the two best doors
+we have.
+
+What already exists and is not reopened here:
+
+- **[`docs/adr/0001`](docs/adr/0001-personalised-one-sheets-over-door-drop.md)** —
+  personalised, hand-delivered, no untargeted door-drop. Stands.
+- **[`docs/adr/0002`](docs/adr/0002-printed-qr-attribution-contract.md)** — the
+  printed-QR attribution contract, derived once in
+  `src/site/data/onesheets.ts` and walked by `pnpm test:source-attribution`.
+  Stands, and every new printed format inherits it.
+- **The four A4 sheets** in `src/workbench/print/`, on `src/site/styles/onesheet.css`,
+  rendered by `tools/print/print-onesheet.mjs`. The script's content guards —
+  destination, business name, town, contact route, uncommissioned disclosure,
+  A4 overflow — are good and stay.
+- **[`research/outreach-postcards.md`](research/outreach-postcards.md)** — ten
+  cards, the selection rule, the tone rules, the reverse hierarchy, and the only
+  material decision recorded anywhere in the repository: A6, 350gsm, matte.
+
+1. **Decide the object, and write the control doc.** One place —
+   `research/print-system.md` — absorbing the material half of the three
+   sources above and deciding: the format family; one stock and weight per
+   format; finish; and the supplier and route (short-run digital on good
+   uncoated, trimmed, is the honest choice at these quantities — litho cannot
+   be justified at two sheets, and a box of 500 of anything before a
+   conversation has happened is section 6's problem in paper form). Uncoated
+   over gloss, because gloss is the junk-mail signal that PRODUCT.md's
+   anti-references warn against; the object should feel like stationery from a
+   working studio, not like a leaflet. Record cost per piece so paper falls
+   under the same cost discipline as everything else.
+
+   **This gates section 3 item 7** — those two sheets are going to be printed
+   on something, and nothing has chosen what.
+2. **Give the artwork bleed and a trim-safe inset.** `onesheet.css` sets
+   `@page { size: A4 }` at exactly 210 × 297mm and `print-onesheet.mjs` renders
+   `format: "A4"` with zero margins, so the artwork is trim-size with **no
+   bleed at all** — while the sheet puts ink at the edge (the wordmark block,
+   the brand rule, the accent band). A commercial printer needs 3mm bleed and
+   will reject or silently scale it; a desktop printer will inset the whole
+   page by its own unprintable margin and shift every millimetre measurement on
+   it. Move to a bleed-aware page box with a declared trim-safe content inset,
+   crop marks per the supplier's spec, and the PDF box set to match.
+
+   **This gates any print run, including the two pending sheets**, and it is
+   the cheapest item in the section.
+3. **Decide colour management.** The PDFs are rendered sRGB
+   (`--force-color-profile=srgb`) with no CMYK intent. Either hand the supplier
+   RGB and accept their conversion, or convert against a named profile — but
+   decide, and check the two studio inks (`#132029`, `#e0c14d`) on the chosen
+   uncoated stock in a physical proof before any run. An accent yellow that
+   goes muddy on uncoated is exactly the difference between premium and cheap,
+   and it is invisible on screen.
+4. **Solve the before-and-after on paper.** This is the workstream's central
+   design problem and it has never been named. The studio's whole argument is
+   an interaction — a slider, an errand walk with counted taps — and paper
+   cannot slide. The current sheets answer it with a side-by-side comparison
+   slot, which is the weakest form available: two small screenshots of
+   websites, on the one piece of evidence that is supposed to make an owner
+   feel something. Candidates, to be judged from physical proofs rather than on
+   screen: the errand walk printed as the two-column taps-and-screens the
+   transformation pages already model in `TransformationErrand`; a fold that
+   withholds the after until the reader opens it; or one large after with the
+   before at thumbnail scale, on the argument that the after is what we want
+   remembered. Sequencing on paper is a fold, and a fold is a format decision —
+   so this and item 1 answer each other.
+5. **Build a print design system rather than converted screen CSS.** A type
+   scale in points with leading chosen for paper, a millimetre grid, a minimum
+   size for the disclosure and small print that an owner over fifty can
+   actually read at arm's length (9pt today, unverified in the hand), and a
+   wordmark that holds in one ink at small scale. Extract the shared geometry
+   out of `onesheet.css` and `bucks-head-onesheet.css` the way section 6 item 3
+   asks for the concept pages: one shared print system, subject-specific
+   character on top, no flattening of four sheets into one template.
+6. **Decide the physical signature — the character.** One restrained set of
+   choices, repeated until it is recognisable: one accent ink, one uncoated
+   stock, one format family, and the object-theatre grammar already locked for
+   the postcard fronts in
+   [`research/film/studio-recurring-themes.md`](research/film/studio-recurring-themes.md).
+   Explicitly rejected: gloss, spot UV, foil, rounded corners and anything that
+   reads as agency swagger. The character has to come from restraint and from
+   the fact that the piece names a real place and shows real work, because
+   those are the two things a generic flyer cannot copy.
+7. **Turn the postcards into artwork.** `research/outreach-postcards.md` is a
+   finished brief with nothing built. Produce the T4 and T7 fronts and reverses
+   as real artwork at 105 × 148mm plus bleed on the system from item 5, and
+   print the two A6 proofs the storytelling workstream already asked for. The
+   selection rule is load-bearing and survives into production: send only a
+   fault that business's own record holds, dated. T10 stays a hand-delivered
+   leave-behind; T1 stays held for a face-to-face tone check.
+8. **Extend verification to the object.** Add to `print-onesheet.mjs` and its
+   postcard equivalent: a bleed box is present, no load-bearing content sits
+   inside the trim-safe inset, no type falls under the minimum size, and any
+   generated still in print artwork has a provenance entry — print is not an
+   exemption from the media guard. Then the three human gates no script
+   replaces: a physical proof inspected at actual size, a phone scan from the
+   printed piece rather than the PDF, and the source-attributed inbox delivery
+   in section 3 item 6.
+
+   The precedent for taking this seriously is on the site already. Both the
+   sheet routes and the share-card routes are dev-only, so they can only be
+   captured from `pnpm dev` — and on 10 August every committed Open Graph card
+   in `public/media/og/` was found to have Astro's development toolbar
+   screenshotted into it, `studio.jpg` included: the card that appears when
+   anyone shares the site in a group chat. Nothing failed, because nothing
+   looked. `tools/lib/dev-chrome.mjs` now strips the toolbar and both capture
+   tools fail if it survives. Artwork rendered from a development server picks
+   up whatever the development server adds.
+
+Constraints:
+
+1. **Section 3 outranks this section, but items 1 and 2 are inside it, not
+   competing with it.** They are the unmade decisions standing between the two
+   verified sheets and a print run, so they come first and they are small. The
+   layout and format work in items 4–6 waits behind the walk and is better for
+   it: two conversations will teach more about what the paper must carry than
+   another screen review will.
+2. **Every honesty rule that governs the site governs the paper.** No invented
+   client, testimonial or result; no named or implied competitor; no score,
+   grade or count applied to a named business; the fault stated about the page
+   and never the owner. Generated imagery in print needs its provenance entry
+   before the artwork is committed and a visible disclosure on the piece.
+3. **The independent-concept label survives onto paper**, in type a reader will
+   actually see — not in small print sized to be missed.
 
 ## Blocked or deferred
 

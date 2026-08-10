@@ -12,6 +12,7 @@ import path from "node:path";
 import { createRequire } from "node:module";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
+import { removeDevToolbar } from "../lib/dev-chrome.mjs";
 import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
 
 const root = projectRoot;
@@ -71,6 +72,9 @@ try {
     const url = new URL(card.route, base).href;
     await page.goto(url, { waitUntil: "networkidle0", timeout: 60000 });
     await page.evaluate(() => document.fonts.ready);
+    // These are dev-only routes, so the dev toolbar is always present and sits
+    // inside the 1200×630 clip below.
+    await removeDevToolbar(page, card.name);
 
     const metrics = await page.$eval(".og-card", (element) => ({
       clientWidth: element.clientWidth,
