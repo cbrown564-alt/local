@@ -238,7 +238,7 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 | **0 — Complete, 7 Aug** | This doc; folder `research/film/clips/studio/`; day-one slate | Contact sheets and intake manifest exist. |
 | **1 — Complete, 7 Aug** | 8–12 clips across ≥4 formats; kill list written | Clay fault film (T01/T04) and selective printed object theatre (X25) carry PRODUCT beliefs. |
 | **2 — Active** | One 24–28s silent sequence test: T01 → T04 → provisional X18 → DOM request close | Internal review: does the sequence make the offer clearer without making the work look expensive? |
-| **3 — Active, first slice 10 Aug** | T04 beside its matching `/where-it-fails/` interaction | Corrected edit, disclosure, provenance and reduced-motion poster are in place; direct page and request-weight review remains |
+| **3 — Active, expanded 10 Aug** | T01, T04, T05, T07 and T10 beside their matching `/where-it-fails/` sections | Silent delivery files, disclosure and reduced-motion posters are in place; T10 remains subordinate to the interaction and direct request-weight review remains |
 | **4 — Repeatable kit** | Prompt templates + character refs + assemble notes | Another person can cut a new explainer chapter in a day |
 
 ## 11. Working agreements
@@ -277,11 +277,13 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 4. **Active — print proof:** print only X25 T04 and T07 at A6. Print T10 as a
    hand-delivered leave-behind. T01 needs a face-to-face tone check before it
    can enter a mail batch. No X25 whisper ships with the cards.
-5. **T04 page trial implemented 10 August; T01 still held:** T04 now sits beside
-   its matching fault-walk interactive using a corrected silent MP4/WebM edit,
-   explicit playback, visible disclosure and the numeral-free settled poster
-   for reduced motion. Review it in the full page before repeating the pattern.
-   T01 still needs its corrected export and face-to-face tone check. X19 belongs
+5. **Five page trials implemented 10 August:** T01, T04, T05, T07 and T10 now sit
+   after their matching sections with silent MP4/WebM delivery files, explicit
+   playback, a compact visible disclosure and settled reduced-motion posters.
+   T04 uses the corrected edit. T05 uses its dedicated generated scene with
+   public audio removed. T07 retains its original clarity caveat. T10
+   supports rather than replaces the swap interaction. Review their combined
+   page and request weight before promoting the pattern elsewhere. X19 belongs
    only on a later scope explanation with live labels. X18 belongs on the
    request path only after its plates are reworked.
 6. Keep X2, X6, X14 and X17 as research references. Reopen one only for a

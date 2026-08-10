@@ -20,20 +20,56 @@ const panelById = (id: string) => {
 const posterBefore = panelById(walk.posters.before);
 const posterAfter = panelById(walk.posters.after);
 
-type StudioPlate = { src: string; alt: string; caption: string; width: number; height: number };
+type StudioFilm = {
+  poster: string;
+  mp4: string;
+  webm: string;
+  alt: string;
+  width: number;
+  height: number;
+  duration: string;
+};
 
-const studioPlate: Partial<Record<string, StudioPlate>> = {
+const studioFilm: Partial<Record<string, StudioFilm>> = {
   t1: {
-    src: "/media/studio/login-at-the-door-settled.png",
-    alt: "A synthetic clay shopfront with a blank pane forming a clear route into the warmly lit interior.",
-    caption: "The entrance becomes a route through, not another account wall.",
+    poster: "/media/studio/login-at-the-door-settled.png",
+    mp4: "/media/studio/login-at-the-door.mp4",
+    webm: "/media/studio/login-at-the-door.webm",
+    alt: "A miniature clay shopfront changes from a blocked entrance into a clear route through to the warmly lit interior.",
     width: 1280,
     height: 720,
+    duration: "8 seconds",
+  },
+  t4: {
+    poster: "/media/studio/are-you-open-settled.png",
+    mp4: "/media/studio/are-you-open.mp4",
+    webm: "/media/studio/are-you-open.webm",
+    alt: "A miniature shopfront in rain: an umbrella approaches, leaves when the dark window gives no answer, then returns when a warm window and plain clock make the opening status clear.",
+    width: 1672,
+    height: 941,
+    duration: "9 seconds",
+  },
+  t5: {
+    poster: "/media/studio/bell-no-clapper-settled.png",
+    mp4: "/media/studio/bell-no-clapper.mp4",
+    webm: "/media/studio/bell-no-clapper.webm",
+    alt: "A pair of miniature clay boots waits at a shop counter while a brass bell is answered by a blank card dropping into a tray and a lamp coming on beside the telephone in the back room.",
+    width: 1280,
+    height: 720,
+    duration: "10 seconds",
+  },
+  t7: {
+    poster: "/media/studio/best-thing-hidden-settled.png",
+    mp4: "/media/studio/best-thing-hidden.mp4",
+    webm: "/media/studio/best-thing-hidden.webm",
+    alt: "A miniature clay shop hides a small brass key in a drawer before bringing it into view at the front of the shop.",
+    width: 1280,
+    height: 720,
+    duration: "8 seconds",
   },
 };
 
-const selectedPlate = studioPlate[walk.id];
-const showOpeningHoursFilm = walk.id === "t4";
+const selectedFilm = studioFilm[walk.id];
 
 /* The graph blob is the page's own record of the walk: the client script
    reads it for the stop config, and tools/test/test-where-it-fails.mjs
@@ -156,37 +192,20 @@ const graph = {
     />
   </div>
 
-  {/* Selected studio scenes sit beside the interactive, never above it. T04
-      is the first motion trial; the other selected scene remains a still. */}
+  {/* Selected studio scenes sit after the interactive, never above it. */}
   <footer class="wwlf-theme-foot">
     <p class="wwlf-theme-decision">
       <span class="wwlf-decision-lead">How it happens.</span> {walk.decision}
     </p>
-    {selectedPlate && (
-      <figure class="wwlf-studio-plate">
-        <img
-          src={selectedPlate.src}
-          alt={selectedPlate.alt}
-          width={selectedPlate.width}
-          height={selectedPlate.height}
-          loading="lazy"
-        />
-        <figcaption>
-          <strong>{selectedPlate.caption}</strong>
-          <span>Synthetic object theatre, shown as an illustration rather than a real business.</span>
-        </figcaption>
-      </figure>
-    )}
-    {showOpeningHoursFilm && (
+    {selectedFilm && (
       <FaultFilm
-        poster="/media/studio/are-you-open-settled.png"
-        mp4="/media/studio/are-you-open.mp4"
-        webm="/media/studio/are-you-open.webm"
-        alt="A synthetic miniature shopfront in rain: an umbrella approaches, leaves when the dark window gives no answer, then returns when a warm window and plain clock make the opening status clear."
-        caption="The first glance answers the immediate question."
-        width={1672}
-        height={941}
-        duration="9 seconds"
+        poster={selectedFilm.poster}
+        mp4={selectedFilm.mp4}
+        webm={selectedFilm.webm}
+        alt={selectedFilm.alt}
+        width={selectedFilm.width}
+        height={selectedFilm.height}
+        duration={selectedFilm.duration}
       />
     )}
   </footer>

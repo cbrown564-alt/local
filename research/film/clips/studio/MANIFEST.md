@@ -18,15 +18,16 @@ the 7 August contact-sheet, frame-sequence and mastering review.
 provisional X18. It tests sequence only; the known source faults remain. See
 [`studio-reel-v0.md`](studio-reel-v0.md). Do not copy it to `public/`.
 
-## First public page trial — 10 August 2026
+## Public page trials — 10 August 2026
 
-T04 now has a corrected, silent derivative at
-`public/media/studio/are-you-open.{mp4,webm}` beside its matching
-`/where-it-fails/` errand. The edit preserves the umbrella approach and loss,
-extends the empty hold, and resolves onto the numeral-free corrected poster.
-It is poster-first, explicitly played, visibly disclosed and unavailable under
-reduced motion. The original intake file below remains the research master and
-the sequence proof remains internal.
+T01, T04, T05, T07 and T10 now have silent MP4/WebM delivery derivatives beside
+their matching `/where-it-fails/` sections. T04 retains its corrected edit;
+T01, T07 and T10 retain the reviewed intake sequence; T05 uses the new
+10 August image-to-video result. Each is poster-first,
+explicitly played, minimally disclosed in its control and unavailable under
+reduced motion. T10 supports rather than replaces the interactive swap test.
+The original intake files below remain the research masters and the sequence
+proof remains internal.
 
 ## Theme controls (Flow clay)
 
@@ -34,6 +35,7 @@ the sequence proof remains internal.
 | --- | --- | --- |
 | `T01-login-at-the-door.mp4` | `Clay_boots_walk_to_shop_202608071709.mp4` | Frosted pane + blank forms; boots |
 | `T04-are-you-open.mp4` | `Umbrella_approaches_illuminated_…_202608071709.mp4` | Rain, umbrella, dark window |
+| `T05-bell-no-clapper.mp4` | `Clay_boots_ringing_counter_bell_202608100847.mp4` | Brass counter bell, boots, blank reply card and back-room lamp |
 | `T07-best-thing-hidden.mp4` | `Clay_object_moves_to_window_202608071711.mp4` | Brass key in cellar drawer |
 | `T10-swap-test.mp4` | `Clay_shopfront_nameplate_moves_202608071808.mp4` | Blank brass plate moves between twins |
 
@@ -154,10 +156,11 @@ Stems under `audio/stems/X0N/`. Sidecars beside mixed files.
 
 | ID | Assets | pass / soft-fail / kill | 10s belief? | Notes |
 | --- | --- | --- | --- | --- |
-| T01 | mp4 | **pass after edit** | yes | Promotion candidate; clean boot continuity and final bridge gesture. |
+| T01 | mp4 + public MP4/WebM | **page trial** | yes | Silent delivery derivative beside the matching fault walk. |
 | T04 | mp4 + corrected public MP4/WebM | **page trial** | yes | Corrected 10 Aug: generated numerals removed in the settled frame and the loss hold lengthened; wired only beside the matching fault walk. |
-| T07 | mp4 | soft-fail | no | Theme survives; floating key and repair do not read clearly enough. |
-| T10 | mp4 | soft-fail | no | Use the existing interactive swap test instead. |
+| T05 | mp4 + public MP4/WebM | **page trial** | yes muted | Generated 10 Aug from the approved reference frame; blank card and lamp make the response visible without relying on generated audio. |
+| T07 | mp4 + public MP4/WebM | **page trial with caveat** | no | User-directed supporting trial; the original floating-key clarity caveat remains. |
+| T10 | mp4 + public MP4/WebM | **page trial with caveat** | no | Public edit cuts after frame 120 (5.00s), with the plate seated on the detailed shop; the later incorrect plate movement is excluded. Supporting film only; the interactive remains primary. |
 | X01 | png | kill | no | Historical treatment overwhelms the present-day fault. |
 | X02 | png + mp4 | soft-fail | no | Visual-style reserve; T01 tells the same story more clearly. |
 | X05 | png + mp4 | kill | no | Generic rain atmosphere, not a commercial answer. |

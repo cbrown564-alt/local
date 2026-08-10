@@ -193,27 +193,39 @@ check(
 for (const mediaPath of [
   "/media/studio/login-at-the-door-settled.png",
   "/media/studio/are-you-open-settled.png",
+  "/media/studio/bell-no-clapper-settled.png",
+  "/media/studio/best-thing-hidden-settled.png",
+  "/media/studio/swap-test-settled.png",
   "/media/studio/show-the-change-closed.png",
   "/media/studio/show-the-change-open.png",
 ]) {
   check(`the selected studio scene is missing: ${mediaPath}`, html.includes(mediaPath));
 }
 for (const mediaPath of [
+  "/media/studio/login-at-the-door.webm",
+  "/media/studio/login-at-the-door.mp4",
   "/media/studio/are-you-open.webm",
   "/media/studio/are-you-open.mp4",
+  "/media/studio/bell-no-clapper.webm",
+  "/media/studio/bell-no-clapper.mp4",
+  "/media/studio/best-thing-hidden.webm",
+  "/media/studio/best-thing-hidden.mp4",
+  "/media/studio/swap-test.webm",
+  "/media/studio/swap-test.mp4",
 ]) {
-  check(`the opening-hours film is missing: ${mediaPath}`, html.includes(mediaPath));
+  check(`a selected studio film is missing: ${mediaPath}`, html.includes(mediaPath));
 }
 check(
-  "the opening-hours film must remain poster-first and explicitly loaded",
-  /<video[^>]*preload="none"[^>]*data-fault-film-video/.test(html) &&
-    /<source[^>]*data-src="\/media\/studio\/are-you-open\.webm"/.test(html) &&
-    /<source[^>]*data-src="\/media\/studio\/are-you-open\.mp4"/.test(html) &&
+  "the studio films must remain poster-first and explicitly loaded",
+  (html.match(/data-fault-film>/g) ?? []).length === 5 &&
+    (html.match(/<video[^>]*preload="none"[^>]*data-fault-film-video/g) ?? []).length === 5 &&
+    (html.match(/<source[^>]*data-src="\/media\/studio\/[^\"]+\.webm"/g) ?? []).length === 5 &&
+    (html.match(/<source[^>]*data-src="\/media\/studio\/[^\"]+\.mp4"/g) ?? []).length === 5 &&
     !/<video[^>]*autoplay/.test(html),
 );
 check(
   "the selected studio scenes lost their visible synthetic-media status",
-  text.includes("Synthetic object theatre") && text.includes("Synthetic paper study"),
+  (text.match(/AI-made/g) ?? []).length === 5 && text.includes("Synthetic paper study"),
 );
 check(
   "the method-step lecture should be gone",

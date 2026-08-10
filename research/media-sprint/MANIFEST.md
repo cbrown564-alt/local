@@ -31,6 +31,7 @@ normal publication checks pass.
 | `ST-T01-REPAIR` | General studio object theatre | corrected 16:9 film source + poster | show the account wall becoming a usable entrance | poster selected; central Gemini motion handoff queued |
 | `ST-T04-REPAIR` | General studio object theatre | corrected 16:9 film source + poster; 9:16 crop candidate | show the first screen answering “are you open?” | poster selected; central Gemini motion handoff queued |
 | `ST-X18-REWORK` | General studio object theatre | clean before / after source plates | support live DOM sequence: send the link → see the change → no obligation | after plate selected |
+| `ST-T05-FRAME` | General studio object theatre | 16:9 image-to-video reference frame | make the bell, waiting visitor and unanswered back room readable without sound | candidate |
 | `OP-PRODUCTS` | Synthetic seasonal food business | coherent product-photo source set | make the weekly availability list credible and editable | source master selected |
 | `OP-STATES` | Synthetic seasonal food business | open / closed / reset environmental plates | give the weekly operating states distinct settled frames | reserve; cleanup needed |
 | `IW-MATERIALS` | Synthetic mountain-bike workshop | material and inspection-light studies | establish a non-generic visual identity from workshop materials | exploration selected |
@@ -40,18 +41,12 @@ normal publication checks pass.
 
 ## Integration checkpoint — 10 August 2026
 
-No new Local video was expected from the manual browser pass. Integration
-reuses existing, reviewed scene assets rather than recording an absent return.
-The 7 August T01 and T04 videos remain conditional `pass after edit` assets
-with documented continuity/content defects, and the provisional X18 video
-remains a rework. They are not relabelled as approved.
-
-The smallest reversible public integration uses the approved settled scene
-assets on `/where-it-fails/`: T01 and T04 beside their fault chapters, and the
-X18 closed/open pair beside the request invitation. All four public files are
-byte-identical copies of traceable masters, visibly disclosed as synthetic
-illustration or paper study. No synthetic voice or optional audio is needed
-for meaning.
+The reversible public integration now places T01, T04, T05, T07 and T10 beside
+their matching `/where-it-fails/` sections, with the X18 closed/open pair beside
+the request invitation. T05 was generated from the selected T05 reference
+frame; its public derivatives are silent and use the final frame as the settled
+poster. Every film is poster-first and visibly disclosed. No synthetic voice or
+optional audio is needed for meaning.
 
 ## Existing selections carried into the wave
 
