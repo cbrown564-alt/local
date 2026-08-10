@@ -54,6 +54,9 @@ pnpm optimize:media
 
 - `/` — product-stage landing page (hero before/after with the load sweep, transformation rail, town map)
 - `/prototypes/home/` — internal homepage alternatives explored before shipping Product Stage
+- `/prototypes/futures/` — five developed future-work prototypes: the living storefront, evidence-bounded instant intake, business rituals, transformation performance and the field publication
+- `/prototypes/operating-page/` — representative owner-operated weekly page with a visitor request loop; the private prototype link is `/prototypes/operating-page/edit/`
+- `/prototypes/impossible-local/` — a five-chapter synthetic workshop journey in which attributed Mourne elevation becomes the navigation, pacing and enquiry context
 - `/prototypes/chamber/` — internal full-site exploration for Newcastle Chamber (research + three multi-page directions)
 - `/prototypes/showcase/` — internal grid of eight miniature demonstrations of generated film, generated voice, real terrain and real-time graphics (`docs/sensory-system-plan.md`)
 - `research/chamber-website-brief.md` — chamber website best-practice brief and peer examples
@@ -149,6 +152,9 @@ because three documents each kept their own copy.
 | `docs/CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
 | `docs/shell-elevation-brief.md` | The studio shell elevation brief (1 August 2026 decisions and build order) |
 | `docs/sensory-system-plan.md` | The sensory-system phases, gates and acceptance criteria (film, voice, terrain, real-time graphics) |
+| `docs/owners-operating-page-spec.md` | Full specification for the first new representative prototype: a public page and its owner upkeep loop |
+| `docs/impossible-local-website-spec.md` | Full specification for the second new representative prototype: a singular place-and-trade experience built from a blank canvas |
+| `docs/owner-operated-impossible-site-brief.md` | Deferred brief and entry gate for combining the first two forms after both are built |
 | `research/studio-storytelling.md` | Studio product showcases & explainers workstream (claymation, kinetic type, humour, belief-sequence film/audio) |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
 | `docs/CONTEXT.md` | Project vocabulary |

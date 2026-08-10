@@ -22,6 +22,31 @@ measured. The ordered plan is therefore: protect the request path, finish the
 two remaining outreach sheets and learn from real conversations before expanding
 the portfolio or offer.
 
+## New representative-prototype sequence — decided 9 August 2026
+
+The next creative exploration is three forms built in order. This does not add
+businesses to the public portfolio, change the first-wave outreach list or
+create evidence of demand.
+
+1. Build the pure **owner’s operating page** from
+   [`docs/owners-operating-page-spec.md`](docs/owners-operating-page-spec.md): a
+   new synthetic subject, one complete phone-first upkeep loop and one complete
+   visitor request loop. Start from a blank canvas; existing concepts supply
+   operational lessons, not layouts or identity.
+2. After that loop is implemented and reviewed, build the pure **impossible
+   local website** from
+   [`docs/impossible-local-website-spec.md`](docs/impossible-local-website-spec.md):
+   a new synthetic subject whose real place and trade structure the whole
+   experience. It must not extend or reskin the existing Mourne Cycles, Lit Town
+   or Shore work.
+3. Do not build the combination until both pure forms meet their specifications.
+   [`docs/owner-operated-impossible-site-brief.md`](docs/owner-operated-impossible-site-brief.md)
+   owns the entry gate and the first combined slice.
+
+These are representative prototypes under `docs/CONTEXT.md`, not pilots. Their
+purpose is to reveal what a local business could work towards beyond the
+current grounded concept portfolio.
+
 ## 1. Restore a trustworthy verification baseline — done 28 July 2026
 
 **Sections 1, 1a and 1b describe a suite that was retired on 4 August 2026.**
