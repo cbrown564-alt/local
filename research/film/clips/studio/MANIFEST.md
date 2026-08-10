@@ -18,6 +18,16 @@ the 7 August contact-sheet, frame-sequence and mastering review.
 provisional X18. It tests sequence only; the known source faults remain. See
 [`studio-reel-v0.md`](studio-reel-v0.md). Do not copy it to `public/`.
 
+## First public page trial — 10 August 2026
+
+T04 now has a corrected, silent derivative at
+`public/media/studio/are-you-open.{mp4,webm}` beside its matching
+`/where-it-fails/` errand. The edit preserves the umbrella approach and loss,
+extends the empty hold, and resolves onto the numeral-free corrected poster.
+It is poster-first, explicitly played, visibly disclosed and unavailable under
+reduced motion. The original intake file below remains the research master and
+the sequence proof remains internal.
+
 ## Theme controls (Flow clay)
 
 | File | Source download | Notes |
@@ -145,7 +155,7 @@ Stems under `audio/stems/X0N/`. Sidecars beside mixed files.
 | ID | Assets | pass / soft-fail / kill | 10s belief? | Notes |
 | --- | --- | --- | --- | --- |
 | T01 | mp4 | **pass after edit** | yes | Promotion candidate; clean boot continuity and final bridge gesture. |
-| T04 | mp4 | **pass after edit** | yes | Strongest film; remove generated clock numerals and lengthen the loss hold. |
+| T04 | mp4 + corrected public MP4/WebM | **page trial** | yes | Corrected 10 Aug: generated numerals removed in the settled frame and the loss hold lengthened; wired only beside the matching fault walk. |
 | T07 | mp4 | soft-fail | no | Theme survives; floating key and repair do not read clearly enough. |
 | T10 | mp4 | soft-fail | no | Use the existing interactive swap test instead. |
 | X01 | png | kill | no | Historical treatment overwhelms the present-day fault. |

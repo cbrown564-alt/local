@@ -1,0 +1,112 @@
+---
+interface Props {
+  poster: string;
+  mp4: string;
+  webm: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  duration: string;
+}
+
+const { poster, mp4, webm, alt, caption, width, height, duration } = Astro.props;
+---
+
+<figure class="wwlf-studio-plate wwlf-studio-film" data-fault-film>
+  <div class="wwlf-studio-film-stage">
+    <img
+      src={poster}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      data-fault-film-poster
+    />
+    <video
+      hidden
+      muted
+      playsinline
+      preload="none"
+      poster={poster}
+      aria-label={alt}
+      data-fault-film-video
+    >
+      <source data-src={webm} type="video/webm" />
+      <source data-src={mp4} type="video/mp4" />
+    </video>
+    <button
+      class="wwlf-studio-film-play"
+      type="button"
+      aria-pressed="false"
+      data-fault-film-play
+    >
+      <span data-fault-film-label>Watch the scene</span>
+      <small>{duration} · silent</small>
+    </button>
+  </div>
+  <figcaption>
+    <strong>{caption}</strong>
+    <span>Synthetic object theatre, shown as an illustration rather than a real business.</span>
+  </figcaption>
+</figure>
+
+<noscript>
+  <style>
+    .wwlf-studio-film-play { display: none; }
+  </style>
+</noscript>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-fault-film]").forEach((film) => {
+    const poster = film.querySelector<HTMLImageElement>("[data-fault-film-poster]");
+    const video = film.querySelector<HTMLVideoElement>("[data-fault-film-video]");
+    const button = film.querySelector<HTMLButtonElement>("[data-fault-film-play]");
+    const label = film.querySelector<HTMLElement>("[data-fault-film-label]");
+    if (!poster || !video || !button || !label) return;
+
+    const load = () => {
+      if (video.dataset.loaded) return;
+      video.querySelectorAll<HTMLSourceElement>("source[data-src]").forEach((source) => {
+        source.src = source.dataset.src ?? "";
+      });
+      video.load();
+      video.dataset.loaded = "true";
+    };
+
+    const setPaused = (text = "Watch the scene") => {
+      button.setAttribute("aria-pressed", "false");
+      label.textContent = text;
+    };
+
+    button.addEventListener("click", async () => {
+      if (!video.paused) {
+        video.pause();
+        setPaused("Continue the scene");
+        return;
+      }
+
+      document.querySelectorAll<HTMLVideoElement>("[data-fault-film-video]").forEach((other) => {
+        if (other !== video) other.pause();
+      });
+
+      load();
+      video.hidden = false;
+      poster.hidden = true;
+      try {
+        await video.play();
+        button.setAttribute("aria-pressed", "true");
+        label.textContent = "Pause the scene";
+      } catch {
+        video.hidden = true;
+        poster.hidden = false;
+        setPaused();
+      }
+    });
+
+    video.addEventListener("ended", () => setPaused("Watch again"));
+    video.addEventListener("pause", () => {
+      if (!video.ended) setPaused("Continue the scene");
+    });
+  });
+</script>

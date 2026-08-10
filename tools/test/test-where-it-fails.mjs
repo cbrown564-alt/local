@@ -190,6 +190,31 @@ check(
   "the invented-demonstrations statement is missing or reworded",
   text.includes("These are made-up sites") && text.includes("stays between us"),
 );
+for (const mediaPath of [
+  "/media/studio/login-at-the-door-settled.png",
+  "/media/studio/are-you-open-settled.png",
+  "/media/studio/show-the-change-closed.png",
+  "/media/studio/show-the-change-open.png",
+]) {
+  check(`the selected studio scene is missing: ${mediaPath}`, html.includes(mediaPath));
+}
+for (const mediaPath of [
+  "/media/studio/are-you-open.webm",
+  "/media/studio/are-you-open.mp4",
+]) {
+  check(`the opening-hours film is missing: ${mediaPath}`, html.includes(mediaPath));
+}
+check(
+  "the opening-hours film must remain poster-first and explicitly loaded",
+  /<video[^>]*preload="none"[^>]*data-fault-film-video/.test(html) &&
+    /<source[^>]*data-src="\/media\/studio\/are-you-open\.webm"/.test(html) &&
+    /<source[^>]*data-src="\/media\/studio\/are-you-open\.mp4"/.test(html) &&
+    !/<video[^>]*autoplay/.test(html),
+);
+check(
+  "the selected studio scenes lost their visible synthetic-media status",
+  text.includes("Synthetic object theatre") && text.includes("Synthetic paper study"),
+);
 check(
   "the method-step lecture should be gone",
   !/step 5 of the studio's research method/.test(text) &&

@@ -1,6 +1,7 @@
 ---
 import type { FaultWalk } from "../../data/fault-walks";
 import FaultPanelView from "./FaultPanelView.astro";
+import FaultFilm from "./FaultFilm.astro";
 
 interface Props {
   walk: FaultWalk;
@@ -18,6 +19,21 @@ const panelById = (id: string) => {
 
 const posterBefore = panelById(walk.posters.before);
 const posterAfter = panelById(walk.posters.after);
+
+type StudioPlate = { src: string; alt: string; caption: string; width: number; height: number };
+
+const studioPlate: Partial<Record<string, StudioPlate>> = {
+  t1: {
+    src: "/media/studio/login-at-the-door-settled.png",
+    alt: "A synthetic clay shopfront with a blank pane forming a clear route into the warmly lit interior.",
+    caption: "The entrance becomes a route through, not another account wall.",
+    width: 1280,
+    height: 720,
+  },
+};
+
+const selectedPlate = studioPlate[walk.id];
+const showOpeningHoursFilm = walk.id === "t4";
 
 /* The graph blob is the page's own record of the walk: the client script
    reads it for the stop config, and tools/test/test-where-it-fails.mjs
@@ -140,11 +156,38 @@ const graph = {
     />
   </div>
 
-  {/* The clip slots in beside the interactive here, still-first and muted,
-      once research/film/clips/studio/ has the scene. */}
+  {/* Selected studio scenes sit beside the interactive, never above it. T04
+      is the first motion trial; the other selected scene remains a still. */}
   <footer class="wwlf-theme-foot">
     <p class="wwlf-theme-decision">
       <span class="wwlf-decision-lead">How it happens.</span> {walk.decision}
     </p>
+    {selectedPlate && (
+      <figure class="wwlf-studio-plate">
+        <img
+          src={selectedPlate.src}
+          alt={selectedPlate.alt}
+          width={selectedPlate.width}
+          height={selectedPlate.height}
+          loading="lazy"
+        />
+        <figcaption>
+          <strong>{selectedPlate.caption}</strong>
+          <span>Synthetic object theatre, shown as an illustration rather than a real business.</span>
+        </figcaption>
+      </figure>
+    )}
+    {showOpeningHoursFilm && (
+      <FaultFilm
+        poster="/media/studio/are-you-open-settled.png"
+        mp4="/media/studio/are-you-open.mp4"
+        webm="/media/studio/are-you-open.webm"
+        alt="A synthetic miniature shopfront in rain: an umbrella approaches, leaves when the dark window gives no answer, then returns when a warm window and plain clock make the opening status clear."
+        caption="The first glance answers the immediate question."
+        width={1672}
+        height={941}
+        duration="9 seconds"
+      />
+    )}
   </footer>
 </section>

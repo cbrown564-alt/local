@@ -52,6 +52,30 @@ that no longer appear anywhere in `src/`.
   checked against the concept's own copy the same way the "Sources & limits"
   block is.
 
+## Owner's operating page prototype (9 August 2026)
+
+- `media/prototypes/operating-page/tomato-fennel-galette.webp`,
+  `blackberry-rye-buns.webp` and `lemon-herb-chicken.webp` — **in use on an
+  internal representative prototype.** Generated with the built-in Codex
+  image tool (GPT Image) as serving imagery for the clearly synthetic Salt &
+  Stem seasonal food-and-delivery business. The three square overhead images
+  show, respectively, a tomato and fennel galette, six blackberry rye buns,
+  and a lemon-herb chicken tray on cobalt enamel trays. They do not depict a
+  real maker, product range, premises or fulfilled order. The public prototype
+  labels both the business and the serving imagery as synthetic/generated in
+  the masthead and trust footer. Source outputs remain under the session's
+  Codex generated-images directory; project copies are 1200px WebP derivatives.
+
+## Impossible local website prototype (9 August 2026)
+
+- **No generated media is in use.** The selected `IW-MATERIALS` and
+  `IW-CHAPTERS` studies remain under
+  `research/media-sprint/masters/impossible-local-website/` and are not loaded
+  by `/prototypes/impossible-local/`. They informed the reflective material
+  direction only. The shipped visual is Canvas/SVG geometry derived from the
+  attributed terrain samples recorded in
+  `research/prototypes/impossible-local/SOURCES.md`.
+
 ## Studio storytelling bakeoff (7 August 2026)
 
 - `research/film/clips/studio/T*.mp4`, `X*.{png,mp4}` — **held / research only**
@@ -603,3 +627,88 @@ outside git records them.
   concept was reworked on 1 August 2026.
 - `murdock-brothers-before`, `-after` — before/after pair for a concept that
   has no public transformation page.
+
+## Two-day media sprint research masters — held outside public
+
+Generated 9 August 2026 with the built-in OpenAI image tool and held under
+`research/media-sprint/masters/`. These are synthetic prototype or general
+studio research ingredients, not evidence about a real business, customer,
+stock level, route, current condition or commercial result. The job prompts,
+reference roles, dimensions and advance/reserve decisions live beside them in
+`research/media-sprint/jobs/`; `research/media-sprint/MANIFEST.md` owns the
+batch boundary. None is guest-facing or referenced from `src/`.
+
+- **Studio object theatre:** `T04-corrected-poster-v1.png`,
+  `X18-reworked-before-v1.png`, `X18-reworked-after-v1.png`. The first removes
+  generated clock marks from a generalised opening-hours scene. The X18 pair
+  is a blank paper-envelope metaphor for showing a change before a decision.
+  No named business or realised result is represented. Existing extracted
+  frames in the same folder are references, not new generated masters.
+- **Synthetic owner-operating-page:** `weekly-offering-source-v1.png`,
+  `week-reset-source-v2.png`, `packing-requests-source-v1.png`,
+  `next-week-blank-source-v1.png`, `open-week-finite-row-source-v1.png`,
+  `close-consequence-source-v1.png`. A fictional weekly food business shown on a
+  cool-steel working surface. No menu, stock, order or fulfilment is real.
+  `week-reset-source-v2.png` remains reserve-only because a faint generator
+  trace survived cleanup; the other three advanced as source ingredients.
+- **Synthetic impossible local website:**
+  `reflective-elevation-material-source-v1.png`,
+  `high-ground-settled-source-v1.png`, `street-settled-source-v1.png`,
+  `descent-settled-source-v1.png`, `workshop-settled-source-v1.png`,
+  `bench-to-terrain-transition-source-v1.png`,
+  `forest-settled-source-v1.png`. These use
+  a reflective bicycle-tape elevation instrument across fictional workshop
+  and mineral scenes. They own material and pacing exploration only. They are
+  not terrain data, a route, a survey, safety advice, current conditions, a
+  real workshop or evidence of stock/services.
+
+Any future guest-facing use needs a visible generated-media disclosure, live
+DOM copy, and the normal reduced-motion and publication checks. The impossible
+site's actual elevation must remain derived from attributed source data rather
+than from these plates.
+
+### Studio sprint selections published as illustrations — 10 August 2026
+
+Four byte-identical derivatives from approved studio object-theatre scene
+assets are in use on `/where-it-fails/`:
+
+- `public/media/studio/login-at-the-door-settled.png`, copied from
+  `research/media-sprint/masters/studio-film/T01-existing-final.png`;
+- `public/media/studio/are-you-open-settled.png`, copied from
+  `research/media-sprint/masters/studio-film/T04-corrected-poster-v1.png`;
+- `public/media/studio/show-the-change-closed.png` and
+  `show-the-change-open.png`, copied from the matching
+  `X18-reworked-{before,after}-v1.png` masters.
+
+`public/media/studio/are-you-open.{mp4,webm}` is the corrected public T04 page
+trial assembled on 10 August 2026. It retains the original umbrella approach
+and departure through 5 seconds, extends the empty dark-window hold, then
+crossfades to `T04-corrected-poster-v1.png` and holds on that numeral-free
+settled frame. Both delivery files are silent. The page keeps the corrected
+poster as its default and reduced-motion experience and requests neither video
+source until the visitor presses “Watch the scene.”
+
+They depict general synthetic object theatre, no named business, owner,
+customer or realised result. The page visibly labels the T01/T04 plates as
+synthetic illustrations and the X18 pair as a synthetic paper study. These
+approved settled scene assets are used instead of the reviewed-but-unrepaired
+T01 motion and the rejected provisional X18 motion. T04 is the one corrected
+motion exception described above. Source hashes and job prompts remain in the
+media-sprint records.
+
+### Reusable tactile transition components
+
+Also generated 9 August 2026 with the built-in OpenAI image tool and held under
+`research/media-sprint/masters/transition-components/`:
+
+- `paper-to-steel-reveal-source-v1.png` — blank fibrous paper curling away
+  from a cool steel plane, intended as a draft/live wipe or compositing mask;
+- `brass-rail-reversal-source-v1.png` — three blank tabs on a bounded brass
+  rail, intended as a reversible state-transition ingredient;
+- `inspection-aperture-source-v1.png` — the synthetic reflective elevation
+  instrument passing through a black mechanical light slot, intended as a
+  chapter/scale handoff mask.
+
+They depict no location, business, owner, customer, product, testimony or
+result. They are research-only material plates, not interface screenshots or
+evidence. Their job prompts and reviews live in `research/media-sprint/jobs/`.

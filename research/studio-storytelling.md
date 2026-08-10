@@ -238,7 +238,7 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 | **0 — Complete, 7 Aug** | This doc; folder `research/film/clips/studio/`; day-one slate | Contact sheets and intake manifest exist. |
 | **1 — Complete, 7 Aug** | 8–12 clips across ≥4 formats; kill list written | Clay fault film (T01/T04) and selective printed object theatre (X25) carry PRODUCT beliefs. |
 | **2 — Active** | One 24–28s silent sequence test: T01 → T04 → provisional X18 → DOM request close | Internal review: does the sequence make the offer clearer without making the work look expensive? |
-| **3 — Page trial** | One guest-facing studio page section (about or transformations) | Disclosure, provenance, reduced-motion, request path not harmed |
+| **3 — Active, first slice 10 Aug** | T04 beside its matching `/where-it-fails/` interaction | Corrected edit, disclosure, provenance and reduced-motion poster are in place; direct page and request-weight review remains |
 | **4 — Repeatable kit** | Prompt templates + character refs + assemble notes | Another person can cut a new explainer chapter in a day |
 
 ## 11. Working agreements
@@ -277,10 +277,13 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 4. **Active — print proof:** print only X25 T04 and T07 at A6. Print T10 as a
    hand-delivered leave-behind. T01 needs a face-to-face tone check before it
    can enter a mail batch. No X25 whisper ships with the cards.
-5. **Held — page trial:** T01 and T04 may sit beside their matching fault-walk
-   interactives after corrected exports, disclosure, poster and reduced-motion
-   treatment exist. X19 belongs only on a later scope explanation with live
-   labels. X18 belongs on the request path only after its plates are reworked.
+5. **T04 page trial implemented 10 August; T01 still held:** T04 now sits beside
+   its matching fault-walk interactive using a corrected silent MP4/WebM edit,
+   explicit playback, visible disclosure and the numeral-free settled poster
+   for reduced motion. Review it in the full page before repeating the pattern.
+   T01 still needs its corrected export and face-to-face tone check. X19 belongs
+   only on a later scope explanation with live labels. X18 belongs on the
+   request path only after its plates are reworked.
 6. Keep X2, X6, X14 and X17 as research references. Reopen one only for a
    named product need. Retire the other generated branches; X22's idea is
    already owned by the interactive swap test.
