@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../site/layouts/BaseLayout.astro";
+import "../../site/styles/prototype-futures.css";
+
+interface Props {
+  title: string;
+  description: string;
+  current?: string;
+  tone?: string;
+}
+
+const { title, description, current = "", tone = "bay" } = Astro.props;
+const routes = [
+  ["storefront", "Living storefront", "/prototypes/futures/living-storefront/"],
+  ["try", "Try it first", "/prototypes/futures/try-it-first/"],
+  ["ritual", "Business ritual", "/prototypes/futures/business-ritual/"],
+  ["performance", "Performance", "/prototypes/futures/performance/"],
+  ["publication", "Field publication", "/prototypes/futures/publication/"],
+];
+---
+
+<BaseLayout title={`${title} — Mourne Made prototype`} description={description} robots="noindex, nofollow" class={`future-prototype future-${tone}`} hideHeader hideFooter>
+  <header class="future-header">
+    <a class="future-mark" href="/prototypes/futures/" aria-label="Mourne Made future directions">
+      <strong>Mourne<br />Made</strong><span>Future<br />work</span>
+    </a>
+    <button class="future-menu-button" type="button" aria-expanded="false" aria-controls="future-menu">Five directions</button>
+    <nav class="future-nav" id="future-menu" aria-label="Future prototype directions">
+      {routes.map(([key, label, href]) => <a href={href} aria-current={current === key ? "page" : undefined}>{label}</a>)}
+      <a href="/">Live site</a>
+    </nav>
+  </header>
+  <slot />
+  <footer class="future-footer">
+    <a href="/prototypes/futures/">All five directions</a>
+    <p>Internal working prototype · August 2026</p>
+  </footer>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".future-menu-button").forEach((button) => {
+    const menu = document.getElementById(button.getAttribute("aria-controls") ?? "");
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(open));
+      menu?.toggleAttribute("data-open", open);
+    });
+  });
+</script>

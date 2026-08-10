@@ -1,0 +1,59 @@
+---
+import FutureShell from "../../../prototypes/futures/FutureShell.astro";
+---
+<FutureShell title="Living storefront" description="A developed prototype for a place-led Mourne Made front door." current="storefront" tone="night">
+  <section class="street" id="street" data-time="dusk">
+    <img class="street-place" src="/media/place/businesses-main-street-dundrum.jpg" alt="Shopfronts along Main Street in Dundrum" width="2000" height="1250" loading="eager" />
+    <div class="street-weather" aria-hidden="true"></div>
+    <div class="street-sky" aria-hidden="true"></div>
+    <div class="street-intro">
+      <p class="future-label">Dundrum · Saturday · <span data-clock>18:42</span></p>
+      <h1 class="future-display">The street is the portfolio.</h1>
+      <p>Move through a local evening. Each light is a different reason somebody needs a useful website now.</p>
+      <div class="street-controls" aria-label="Change the town conditions">
+        <button type="button" data-set-time="day">Day</button><button type="button" data-set-time="dusk" aria-pressed="true">Dusk</button><button type="button" data-set-time="night">Night</button>
+        <button type="button" data-weather>Rain off</button>
+      </div>
+    </div>
+    <div class="errands" aria-label="Choose a visitor errand">
+      <button class="errand" type="button" data-errand="stay" style="--x:18%;--y:58%"><i></i><span><b>One room tonight</b>18:42 · visitor from Belfast</span></button>
+      <button class="errand" type="button" data-errand="repair" style="--x:51%;--y:48%"><i></i><span><b>Bike needs fixed</b>08:10 tomorrow · local rider</span></button>
+      <button class="errand" type="button" data-errand="eat" style="--x:79%;--y:62%"><i></i><span><b>Kitchen still serving?</b>20:16 · family passing through</span></button>
+    </div>
+    <aside class="errand-drawer" aria-live="polite" hidden>
+      <button class="drawer-close" type="button" aria-label="Close errand">×</button>
+      <p class="drawer-moment"></p><h2 class="future-display"></h2><p class="drawer-copy"></p>
+      <div class="drawer-route"><span>Discovery</span><b>→</b><span class="route-middle">Business-owned answer</span><b>→</b><span>Direct action</span></div>
+      <a class="future-button drawer-link" href="#">Open the working concept →</a>
+    </aside>
+    <p class="street-note">The living world is navigation, local proof and a demonstration of the offer at once. No directory. No invented live availability.</p>
+  </section>
+  <section class="storefront-second future-shell">
+    <p class="future-label">What this develops beyond Lit Town</p>
+    <h2 class="future-display">The lights are no longer a statistic. They are moments of intent.</h2>
+    <div class="storefront-sequence"><p><b>1</b>A person arrives with an errand.</p><p><b>2</b>The storefront answers in its own way.</p><p><b>3</b>The concept opens at the useful action—not its homepage.</p></div>
+  </section>
+</FutureShell>
+<script>
+  const street=document.getElementById("street");
+  const drawer=street?.querySelector<HTMLElement>(".errand-drawer");
+  const data={
+    stay:{moment:"A wet Saturday · 18:42",title:"Is there a room tonight?",copy:"The hotel light opens a two-field stay search: arrival and nights. The specialist booking engine remains the final handoff.",middle:"Check the stay",href:"/concepts/hotel-enniskeen/"},
+    repair:{moment:"Sunday ride planned · 08:10",title:"Can the workshop look at this?",copy:"The shop light opens the repair ritual: choose the job, offer a day, let the workshop confirm. No false live slots.",middle:"Describe the repair",href:"/concepts/mourne-cycles/workshop/"},
+    eat:{moment:"Passing Dundrum · 20:16",title:"Is the kitchen still serving?",copy:"The inn light answers from its published hours and current event, then offers the shortest route to call or book.",middle:"See tonight",href:"/concepts/dundrum-inn/"}
+  };
+  street?.querySelectorAll<HTMLButtonElement>("[data-set-time]").forEach(button=>button.addEventListener("click",()=>{street.dataset.time=button.dataset.setTime;street.querySelectorAll("[data-set-time]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)))}));
+  street?.querySelector<HTMLButtonElement>("[data-weather]")?.addEventListener("click",event=>{const button=event.currentTarget as HTMLButtonElement;const on=street.toggleAttribute("data-rain");button.textContent=`Rain ${on?"on":"off"}`});
+  street?.querySelectorAll<HTMLButtonElement>("[data-errand]").forEach(button=>button.addEventListener("click",()=>{if(!drawer)return;const item=data[button.dataset.errand as keyof typeof data];drawer.hidden=false;drawer.querySelector<HTMLElement>(".drawer-moment")!.textContent=item.moment;drawer.querySelector("h2")!.textContent=item.title;drawer.querySelector<HTMLElement>(".drawer-copy")!.textContent=item.copy;drawer.querySelector<HTMLElement>(".route-middle")!.textContent=item.middle;drawer.querySelector<HTMLAnchorElement>(".drawer-link")!.href=item.href;drawer.querySelector<HTMLButtonElement>(".drawer-close")?.focus()}));
+  drawer?.querySelector(".drawer-close")?.addEventListener("click",()=>drawer.hidden=true);
+</script>
+<style>
+  .street{position:relative;min-height:calc(100svh - 82px);overflow:hidden;color:var(--future-foam);background:#172a36}.street-place{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.48) saturate(.75);transition:filter .7s}.street[data-time="day"] .street-place{filter:brightness(.92) saturate(.82)}.street[data-time="night"] .street-place{filter:brightness(.23) saturate(.58)}
+  .street-sky{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,27,41,.05) 25%,rgba(10,19,25,.86) 100%),linear-gradient(90deg,rgba(9,20,27,.72),transparent 62%);transition:background .7s}.street[data-time="day"] .street-sky{background:linear-gradient(90deg,rgba(231,240,244,.58),transparent 65%)}.street[data-time="night"] .street-sky{background:linear-gradient(180deg,rgba(4,10,16,.35),rgba(4,10,16,.9)),linear-gradient(90deg,rgba(4,10,16,.7),transparent)}
+  .street-weather{position:absolute;inset:-20%;opacity:0;pointer-events:none;background-image:linear-gradient(105deg,transparent 47%,rgba(214,235,244,.45) 48%,transparent 49%);background-size:31px 31px;animation:rain .7s linear infinite}.street[data-rain] .street-weather{opacity:.52}@keyframes rain{to{transform:translate(-31px,31px)}}
+  .street-intro{position:relative;z-index:2;width:min(620px,86%);padding:clamp(5rem,13vh,9rem) 0 4rem clamp(1.3rem,5vw,4.5rem)}.street-intro h1{max-width:8ch;margin:.4rem 0 1rem;font-size:clamp(4.5rem,10vw,6rem);line-height:.85}.street-intro>p:not(.future-label){max-width:36rem;font-size:1.1rem;line-height:1.55}.street-controls{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:2rem}.street-controls button{min-height:42px;padding:.5rem .9rem;color:var(--future-foam);background:rgb(19 32 41 / 72%);border:1px solid rgb(244 248 250 / 45%)}.street-controls button[aria-pressed="true"]{color:var(--future-ink);background:var(--future-gorse);border-color:var(--future-gorse)}
+  .errand{position:absolute;z-index:3;left:var(--x);top:var(--y);display:flex;align-items:center;gap:.7rem;padding:0;color:white;background:transparent;border:0;text-align:left}.errand i{width:18px;height:18px;background:var(--future-gorse);border:4px solid white;border-radius:50%;box-shadow:0 0 0 9px rgb(224 193 77 / 24%);animation:pulse 2.2s infinite}.errand span{display:none;min-width:190px;padding:.65rem .8rem;color:var(--future-ink);background:var(--future-foam);font-size:.74rem}.errand:hover span,.errand:focus-visible span{display:block}.errand b{display:block;font-size:.9rem}@keyframes pulse{50%{box-shadow:0 0 0 16px rgb(224 193 77 / 2%)}}
+  .errand-drawer{position:absolute;z-index:6;inset:0 0 0 auto;width:min(480px,100%);padding:clamp(5rem,12vh,8rem) clamp(1.5rem,4vw,3rem);color:var(--future-ink);background:var(--future-gorse);box-shadow:-10px 0 0 rgb(19 32 41 / 30%)}.drawer-close{position:absolute;right:1.2rem;top:1rem;width:46px;height:46px;border:2px solid var(--future-ink);background:transparent;font-size:1.8rem}.drawer-moment{font-weight:750}.errand-drawer h2{margin:1.2rem 0;font-size:clamp(3.2rem,6vw,5.2rem);line-height:.88}.drawer-copy{font-size:1.05rem;line-height:1.55}.drawer-route{display:flex;align-items:center;gap:.5rem;margin:2rem 0;font-size:.72rem;font-weight:700}.drawer-route span{padding:.5rem;background:rgb(244 248 250 / 55%)}.drawer-link{background:var(--future-foam)}.street-note{position:absolute;z-index:2;right:1.3rem;bottom:1.1rem;max-width:420px;margin:0;font-size:.72rem;color:rgb(244 248 250 / 62%)}
+  .storefront-second{padding-block:clamp(5rem,10vw,9rem)}.storefront-second h2{max-width:13ch;margin:.8rem 0 3rem;font-size:clamp(3rem,7vw,5.8rem);line-height:.92}.storefront-sequence{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:2px solid var(--future-ink);padding-top:1.3rem}.storefront-sequence p{font-size:1.05rem}.storefront-sequence b{display:block;color:var(--future-sea);font:700 2rem Antonio,sans-serif}
+  @media(max-width:760px){.street{min-height:780px}.street-intro{padding-top:4rem}.errand{left:clamp(1.4rem,var(--x),78%);top:var(--y)}.street-note{left:1.3rem;right:1.3rem}.storefront-sequence{grid-template-columns:1fr}.drawer-route{align-items:stretch;flex-direction:column}.drawer-route b{display:none}}
+</style>

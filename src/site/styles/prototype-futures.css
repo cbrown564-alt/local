@@ -1,0 +1,120 @@
+.future-prototype {
+  --future-ink: #132029;
+  --future-foam: #f4f8fa;
+  --future-mist: #e6eef2;
+  --future-sea: #23485a;
+  --future-deep: #1a3847;
+  --future-gorse: #e0c14d;
+  margin: 0;
+  color: var(--future-ink);
+  background: var(--future-foam);
+}
+
+.future-prototype main { min-height: 100vh; }
+.future-prototype :where(h1, h2, h3, p) { text-wrap: pretty; }
+.future-prototype :where(h1, h2, h3) { text-wrap: balance; }
+.future-prototype button, .future-prototype input, .future-prototype select { font: inherit; }
+.future-prototype button { cursor: pointer; }
+
+.future-header {
+  position: relative;
+  z-index: 20;
+  min-height: 82px;
+  display: flex;
+  align-items: stretch;
+  color: var(--future-foam);
+  background: var(--future-ink);
+  border-bottom: 1px solid rgb(244 248 250 / 22%);
+}
+
+.future-mark {
+  width: 210px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: inherit;
+  text-decoration: none;
+  border-right: 1px solid rgb(244 248 250 / 22%);
+}
+
+.future-mark strong {
+  position: relative;
+  font-family: "Antonio Variable", sans-serif;
+  font-size: 1.2rem;
+  line-height: .82;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+
+.future-mark strong::after {
+  content: "";
+  position: absolute;
+  inset: 0 -8px 0 auto;
+  width: 4px;
+  background: var(--future-gorse);
+}
+
+.future-mark span { font-size: .72rem; line-height: 1.05; color: rgb(244 248 250 / 64%); }
+.future-nav { flex: 1; display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none; }
+.future-nav a {
+  min-width: max-content;
+  display: grid;
+  place-items: center;
+  padding: 0 clamp(.8rem, 1.7vw, 1.45rem);
+  color: rgb(244 248 250 / 68%);
+  font-size: .78rem;
+  text-decoration: none;
+  border-right: 1px solid rgb(244 248 250 / 12%);
+}
+.future-nav a:hover, .future-nav a:focus-visible { color: var(--future-foam); background: rgb(244 248 250 / 7%); }
+.future-nav a[aria-current="page"] { color: var(--future-ink); background: var(--future-gorse); }
+.future-menu-button { display: none; }
+
+.future-footer {
+  min-height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem clamp(1.2rem, 5vw, 4.5rem);
+  color: var(--future-foam);
+  background: var(--future-ink);
+}
+.future-footer a { color: var(--future-gorse); font-weight: 700; }
+.future-footer p { margin: 0; color: rgb(244 248 250 / 58%); font-size: .82rem; }
+
+.future-shell { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+.future-display { font-family: "Antonio Variable", sans-serif; font-weight: 680; letter-spacing: -.03em; }
+.future-label { font-size: .76rem; font-weight: 720; letter-spacing: .1em; text-transform: uppercase; }
+.future-button {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  padding: .75rem 1.15rem;
+  color: var(--future-ink);
+  background: var(--future-gorse);
+  border: 2px solid var(--future-ink);
+  font-weight: 760;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--future-ink);
+}
+.future-button:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--future-ink); }
+.future-button:focus-visible, .future-prototype :where(button, a, input, select):focus-visible { outline: 3px solid #ff6b4a; outline-offset: 3px; }
+
+@media (max-width: 860px) {
+  .future-header { min-height: 70px; flex-wrap: wrap; }
+  .future-mark { width: auto; min-height: 70px; flex: 1; }
+  .future-menu-button { display: block; padding: 0 1.1rem; color: var(--future-foam); background: transparent; border: 0; }
+  .future-nav { display: none; flex: 1 0 100%; align-items: stretch; flex-direction: column; background: var(--future-deep); }
+  .future-nav[data-open] { display: flex; }
+  .future-nav a { min-height: 48px; place-items: center start; border-bottom: 1px solid rgb(244 248 250 / 12%); }
+  .future-footer { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .future-prototype *, .future-prototype *::before, .future-prototype *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

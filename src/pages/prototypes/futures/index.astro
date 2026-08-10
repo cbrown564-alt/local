@@ -1,0 +1,52 @@
+---
+import FutureShell from "../../../prototypes/futures/FutureShell.astro";
+
+const directions = [
+  { href: "/prototypes/futures/living-storefront/", name: "Living storefront", question: "Can the town itself become the studio’s front door?", image: "/media/place/businesses-main-street-dundrum.jpg", state: "Developed world" },
+  { href: "/prototypes/futures/try-it-first/", name: "Try it first", question: "Can the free before-and-after begin immediately, without faking an audit?", image: "/media/concepts/mourne-cycles/mourne-cycles-after-1265.webp", state: "Working proof loop" },
+  { href: "/prototypes/futures/business-ritual/", name: "Business ritual", question: "What changes when a website behaves like the work behind the counter?", image: "/media/concepts/castle-farm/castle-farm-after-1265.webp", state: "Three live examples" },
+  { href: "/prototypes/futures/performance/", name: "Performance", question: "Where can a transformation be felt before its reasoning is explained?", image: "/media/concepts/mourne-cycles/mourne-cycles-before-1265.webp", state: "Placed in the real journey" },
+  { href: "/prototypes/futures/publication/", name: "Field publication", question: "Can the studio become a useful local publication, in print and on the street?", image: "/media/place/boats-moored-at-newcastle-harbour.jpg", state: "Full workstream" },
+];
+---
+
+<FutureShell title="Five futures" description="Five developed product and creative directions for Mourne Made.">
+  <section class="gallery-intro">
+    <div>
+      <p>Five things Mourne Made could become next.</p>
+      <h1 class="future-display">Not moodboards.<br />Working propositions.</h1>
+    </div>
+    <p class="gallery-intro-note">Each route contains the interaction that makes or breaks the idea. Enter anywhere.</p>
+  </section>
+  <section class="gallery-list" aria-label="Future directions">
+    {directions.map((direction, index) => (
+      <a href={direction.href} class="gallery-item">
+        <span class="gallery-index">{String(index + 1).padStart(2, "0")}</span>
+        <div class="gallery-image"><img src={direction.image} alt="" width="1265" height="710" loading={index < 2 ? "eager" : "lazy"} /></div>
+        <div class="gallery-copy"><h2 class="future-display">{direction.name}</h2><p>{direction.question}</p></div>
+        <span class="gallery-state">{direction.state} <b>→</b></span>
+      </a>
+    ))}
+  </section>
+</FutureShell>
+
+<style>
+  .gallery-intro { min-height: 48vh; display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 3rem; padding: clamp(4rem, 10vw, 9rem) clamp(1.2rem, 5vw, 4.5rem) 3rem; background: var(--future-gorse); }
+  .gallery-intro p { max-width: 32rem; font-size: 1.05rem; }
+  .gallery-intro h1 { max-width: 10ch; margin: .65rem 0 0; font-size: clamp(3.8rem, 9vw, 6rem); line-height: .88; }
+  .gallery-intro-note { justify-self: end; align-self: end; }
+  .gallery-list { background: var(--future-ink); }
+  .gallery-item { position: relative; min-height: 230px; display: grid; grid-template-columns: 55px minmax(180px, 30%) 1fr auto; align-items: center; gap: clamp(1rem, 3vw, 3rem); padding: 1.4rem clamp(1.2rem, 4vw, 3.5rem); color: var(--future-foam); text-decoration: none; border-top: 1px solid rgb(244 248 250 / 20%); overflow: hidden; }
+  .gallery-item::after { content: ""; position: absolute; inset: 0; background: var(--future-sea); transform: translateX(-101%); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .gallery-item:hover::after, .gallery-item:focus-visible::after { transform: none; }
+  .gallery-item > * { position: relative; z-index: 1; }
+  .gallery-index { align-self: start; color: var(--future-gorse); font-weight: 800; }
+  .gallery-image { height: 170px; overflow: hidden; }
+  .gallery-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72); transition: transform .6s cubic-bezier(.2,.8,.2,1),filter .4s; }
+  .gallery-item:hover img { transform: scale(1.04); filter: saturate(1); }
+  .gallery-copy h2 { margin: 0; font-size: clamp(2.3rem, 5vw, 4.8rem); line-height: .9; }
+  .gallery-copy p { max-width: 38rem; margin: .8rem 0 0; color: rgb(244 248 250 / 70%); }
+  .gallery-state { max-width: 12rem; font-size: .78rem; font-weight: 700; text-align: right; }
+  .gallery-state b { color: var(--future-gorse); margin-left: .5rem; }
+  @media (max-width: 760px) { .gallery-intro { grid-template-columns: 1fr; min-height: 58vh; align-content: end; }.gallery-intro-note{justify-self:start}.gallery-item{grid-template-columns:38px 1fr;min-height:unset}.gallery-image{grid-column:2;height:150px}.gallery-copy{grid-column:2}.gallery-state{grid-column:2;text-align:left}.gallery-copy h2{font-size:2.8rem} }
+</style>
