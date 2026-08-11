@@ -48,13 +48,16 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 ```
 A small green-painted clay shopfront at dusk, three glazed bays with a recessed
 central door between them, dark slate stall-riser below the windows, a cobbled
-street in front, warm amber light inside. Dusk has gone blue. On the cobbles
-directly in front of the recessed door, at ground level, a single small pale
-rectangle of light lies face up, as if a lit screen had been set down on the
-stones. It is the only warm thing in the lower half of the frame and it throws a
-soft glow up onto the stall-riser and the doorframe. The little rectangle is
-brighter than the shop's own interior. It is featureless glowing white — no
-icons, no interface, no image on it. Nothing else in frame.
+street in front, warm amber light inside. Dusk has gone blue. A small pale
+phone-shaped rectangle of light is propped upright against the lower half of
+the recessed door, angled toward the street as if someone has just stopped to
+search it. A pair of clay boots is only partly visible at the bottom edge, close
+to the glowing screen but not touching it. The screen is the only warm thing in
+the lower half of the frame and throws a soft glow up onto the stall-riser and
+the doorframe. It is featureless glowing white — no icons, no interface, no
+image on it. The shop's own interior light is dimmer. The action should read as
+a person trying to find the door on a phone, not an object abandoned on the
+ground.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -91,12 +94,13 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 ```
 Close on a sheet of frosted glass sealing the doorway of a small green-painted
 clay shopfront, with two blank white paper rectangles pressed flat against the
-outside of the glass at eye height. A single soft circular ripple has started at
-the centre of the lower paper rectangle and travelled outward about an inch,
-where it has stopped dead and begun to flatten — it never reaches the edge of
-the paper or the glass. Behind the frosted pane the interior is cold slate grey
-and completely still. The dark slate stall-riser and a little of the cobbled
-street are visible at the bottom of the frame.
+outside of the glass at eye height. On the lower paper rectangle are three
+small circular impact marks: two older, flattened impressions and one fresh
+shallow dimple at the centre, with a tight ring around it. The marks stop well
+short of the paper's edge. They should read as repeated taps that met a dead
+surface, not as rain or a decorative interface. Behind the frosted pane the
+interior is cold slate grey and completely still. The dark slate stall-riser and
+a little of the cobbled street are visible at the bottom of the frame.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -135,11 +139,14 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 ## 07 — 0:29.2 — no complaint, no bad review, no email
 
 ```
-A plain unmarked pale paper envelope lies open and completely empty on a dark
-slate desktop, its flap folded back. There is nothing inside it and nothing else
-on the desk. Behind the desk a small window shows a flat grey sea under a pale
-sky. Cool daylight from the window, one soft highlight along the fold of the
-envelope. The emptiness of the envelope is the subject of the picture.
+A small brass letter slot is set into a dark green clay door above a dark slate
+threshold. Its flap hangs open onto an empty black interior: no letter, card or
+reply has arrived. Beyond the lower glass of the door, a pair of small clay
+walking boots is already receding down the wet street, soft and out of focus.
+The door and threshold are still; the departing boots are the only trace that
+someone came. A single cool window reflection lies across the brass slot. The
+image should say that the failure leaves no report behind, only the evidence of
+someone quietly gone.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -193,13 +200,14 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 ```
 A row of small clay shopfronts and houses along a gently curving street, slate
 roofs, red brick chimneys, plain rendered fronts, simple lamp columns, no
-signage on any fascia — seen through a large pane of window glass held in the
-near foreground. The pane fills the frame, slightly out of focus at its edges,
-with faint dust and a few dry rain spots on it, and the reflection of a pale
-grey sky lying across its upper part. The street beyond the glass is sharp,
-ordinary and completely empty. The glass sits between the camera and the street,
-so the whole row is met through it rather than from the pavement. The pane has
-no frame, no border and no device body around it.
+signage on any fascia. The row is seen through a single large dark glass pane
+in the near foreground. Across the pane, the shopfronts flatten into a neat
+sequence of identical pale rectangular windows, each holding a small blurred
+version of a different premises, as if the street has been reduced to a row of
+web pages. The real street remains visible behind them, ordinary and empty, but
+the repeated rectangles interrupt it and make every place feel interchangeable.
+The glass has faint dust, dry rain spots and a pale grey sky reflection. No
+frame, border, device body or readable interface appears anywhere.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -214,11 +222,14 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 
 ```
 Very close on a large pane of glass streaming with heavy rain, water running
-down it in fast rivulets and gathering at the bottom edge. Beyond the glass, a
-green-painted clay shopfront is reduced to soft blurred shapes of sea green and
-warm amber, unreadable through the water. The rain on the near surface is sharp
-and the shopfront behind is entirely out of focus. Cold blue-grey light with one
-warm amber smear at the centre.
+down it in fast rivulets and gathering at the bottom edge. A small phone-shaped
+rectangle of pale light is pressed close to the near side of the pane at a
+slight hurried angle, its face completely blank and unreadable. Beyond the
+glass, a green-painted clay shopfront is reduced to soft blurred shapes of sea
+green and warm amber. At the bottom edge, one clay boot has just splashed into
+a shallow puddle and is already leaving the frame; no person or hand is shown.
+The near rain and the interrupted boot make the moment feel hurried rather than
+calm. Cold blue-grey light with one warm amber smear at the centre.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -349,11 +360,14 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 
 ```
 A plain unmarked pale paper envelope lies open on a dark slate desktop, its flap
-folded back — the same envelope and the same desk as before. This time warm
-amber light is spilling out of the open envelope onto the slate around it, as if
-something lit were inside. Nothing is visible inside it except the light. Behind
-the desk a small window shows a flat grey sea under a pale sky. The light from
-the envelope is the brightest thing in the frame.
+folded back — the same envelope and the same desk as before. Inside it sits a
+tiny handmade clay version of the three-bay green shopfront from the opening,
+small enough to fit inside the envelope, with its blank fascia and warm door
+lit from within. The miniature is not a real business and carries no name. Warm
+amber light spills from the little doorway onto the envelope and slate around
+it. Behind the desk a small window shows a flat grey sea under a pale sky. The
+envelope is now a precise offer: a first glimpse of a site made for this place,
+before any request for money or commitment.
 
 Miniature clay and paper-craft set, stop-motion animation look, shot slightly
 above eye level on a long lens with shallow depth of field. No people, no faces,
@@ -411,3 +425,24 @@ paired shot's status.** The clearest gaps for a first generation pass are
 of the existing studio material touches these compositions at all, so
 budget the most re-rolls there alongside shot 12's stated signature-shot
 allowance.
+
+## Narrative revision pass (11 August 2026)
+
+The first slideshow proof showed that six frames represented their written
+scenes without carrying enough of the narration's human consequence. The next
+generation pass should replace 03, 05, 07, 10, 11 and 18. The current stills
+remain useful as look references; do not delete them until the replacements
+have been cut into the slideshow and reviewed.
+
+- **03:** make the phone-like light read as an active search at the door, not an
+  abandoned glowing object on the ground.
+- **05:** replace the decorative ripple with visible accumulated tap marks that
+  stop at the dead surface.
+- **07:** show the absence of a report through an open, empty letter slot and
+  the trace of boots quietly leaving, rather than repeating the envelope.
+- **10:** make the street flatten into interchangeable page-like windows while
+  keeping the real row visible behind the glass.
+- **11:** add a blank phone-like light and a boot leaving through rain so the
+  frame carries hurry as well as weather.
+- **18:** replace the generic internal glow with a tiny handmade version of the
+  opening shopfront inside the envelope, making the offer visible without text.
