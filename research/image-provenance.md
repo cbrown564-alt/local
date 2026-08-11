@@ -137,6 +137,22 @@ that no longer appear anywhere in `src/`.
   website or customer interaction. They are not deployed, approved for motion,
   or approved for guest-facing use.
 
+## Shorts snags — S3 literal-phone revision (11 August 2026)
+
+- `media/film/stills/shorts-snags/S3/s3-03-disconnected-clapper-v2.png` and
+  `s3-05-phone-v1.png` — **research masters only**, generated with the built-in
+  Codex image tool as a direction change after review. The abstract brass-loop
+  motif was replaced with a recognisable vintage telephone, while dial details
+  remain unreadable and contain no visible lettering. These frames remain
+  imagined miniature clay object theatre, not a real business, place, person,
+  website or customer interaction. They are not deployed, approved for motion,
+  or approved for guest-facing use.
+
+- `media/film/clips/shorts-snags/S3/S3-stills-v2.mp4` — **research-only
+  slideshow edit**, rebuilt 11 August 2026 with the literal-phone frames and
+  the same narration/timing. This remains a still-under-voice proof, not motion
+  footage and not approved for guest-facing use.
+
 ## Shorts snags — S4 first continuity test (11 August 2026)
 
 - `media/film/stills/shorts-snags/S4/s4-01-three-shopfronts-v0.png`,
