@@ -374,3 +374,40 @@ sixteen before anything is cut.
 
 Provenance entry in `../image-provenance.md` before commit: generated stills,
 not photographs, of a fictional clay set — no real premises depicted.
+
+## Coverage assessment (Phase 5, 11 August 2026)
+
+Walked against the named, deduplicated plates in `media/`. This doesn't
+change the standing decision above — **all eighteen are still generated
+fresh** — because every existing frame is 1280×720 studio-clip footage
+being used as look reference only, not final trailer resolution. What's
+new is a clear map of which shot has a close look-reference to hand and
+which has none at all.
+
+| # | Shot | Status | Reference |
+| --- | --- | --- | --- |
+| 01 | boots at the door | close | `media/film/stills/studio/T01-01-approach.png` — same shopfront, boots on cobbles, warm interior. Door area needs to read fully open/glowing, not frosted. |
+| 02 | hold | close | same as 01 |
+| 03 | glowing rectangle on cobbles | none | no existing frame shows an object on the ground in front of the door |
+| 04 | frosted glass, two papers | close | `media/film/stills/studio/T01-02-forms-on-glass.png` — near-exact composition |
+| 05 | close on the ripple | close | same source as 04, but only the wide framing exists — no close crop |
+| 06 | dark shop, lit neighbour | none | no frame shows the shopfront dark/dead beside a lit neighbour |
+| 07 | empty envelope, sea window | close | `media/film/clips/studio/X18-empty-envelope.png` — same prop and window, but photographic, not clay/miniature style |
+| 08 | bell, clapper out | close | `media/film/stills/studio/T05-01-bell.png` — same bell, same detached striker |
+| 09 | row of many shopfronts | none | studio set only ever shows one or two shopfronts, never a full curving row |
+| 10 | street through glass pane | none | no frame shoots the street through foreground glass |
+| 11 | rain on glass, shopfront blurred behind | close | `media/film/stills/studio/T04-01-dark-window.png` — rain-streaked glass, shopfront behind, though on T04's building not T01's |
+| 12 | overhead trays of brass objects | none | no overhead flat-lay of this kind exists anywhere in the studio set |
+| 13 | immaculate shopfront, empty street | weak | `media/film/stills/studio/T01-01-approach.png` / `T01-03-empty-street.png` give the building and empty street, not the "best-looking, freshly painted" distinction |
+| 14 | hold | weak | same as 13 |
+| 15 | nameplate lifting off left shopfront | close | `media/film/stills/studio/T10-01-plate-left.png` — near-exact, two shopfronts, blank nameplate above the left one |
+| 16 | nameplate seated on right shopfront | close | `media/film/stills/studio/T10-02-plate-seated-right.png` — near-exact, same pair, nameplate now on the right |
+| 17 | shot 01 again, lit, clock in window | close | `media/film/stills/studio/T04-02-clock-lights.png` gives the lit-clock detail, but from T04's building, not T01's — the framing match to shot 01 still needs the correct door |
+| 18 | envelope now glowing from within | none | `media/film/clips/studio/X18-empty-envelope.png` is the unlit version this shot needs to depart from; nothing shows it lit |
+
+**Count: 8 close, 2 weak, 5 none, plus 2 holds that inherit their
+paired shot's status.** The clearest gaps for a first generation pass are
+09, 10, 12 (wide street, glass-pane street, overhead brass trays) — none
+of the existing studio material touches these compositions at all, so
+budget the most re-rolls there alongside shot 12's stated signature-shot
+allowance.
