@@ -117,14 +117,14 @@ surface, but must not control the project queue. The classification is:
 
 - **Route:** central Gemini web Video mode, 10 seconds.
 - **Upload source:**
-  `research/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
+  `media/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
   Absolute path:
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
   Verified 10 August 2026: PNG, 1280 × 720, 801,481 bytes, SHA-256
   `93c8ea60ac8acb0d000aaceb36bfecd0214346ba309a99b9d3bb6c2865e4d216`.
   This is a uniquely named research-only copy of
-  `research/media-sprint/masters/studio-film/T01-existing-final.png`; use the original
-  `research/film/clips/studio/T01-login-at-the-door.mp4` only as motion review
+  `media/media-sprint/masters/studio-film/T01-existing-final.png`; use the original
+  `media/film/clips/studio/T01-login-at-the-door.mp4` only as motion review
   reference, not as factual source.
 - **Use:** `/where-it-fails/` T01 film chapter; final still remains the
   reduced-motion fallback.
@@ -144,7 +144,7 @@ surface, but must not control the project queue. The classification is:
 #### `CENTRAL-GV-T04` — opening-hours temporal repair
 
 - **Route:** central Gemini web Video mode, 10 seconds.
-- **Source:** `masters/studio-film/T04-corrected-poster-v1.png`.
+- **Source:** `../../media/media-sprint/masters/studio-film/T04-corrected-poster-v1.png`.
 - **Use:** `/where-it-fails/` T04 film chapter and possible 9:16 derivative;
   supplied still is the reduced-motion fallback.
 - **Prompt:** `10-second image-to-video, locked miniature clay shopfront in
@@ -161,8 +161,8 @@ surface, but must not control the project queue. The classification is:
 #### `CENTRAL-GV-X18` — envelope opening handoff
 
 - **Route:** central Gemini web Video mode, 10 seconds.
-- **Sources:** `masters/studio-film/X18-reworked-before-v1.png` as start;
-  `masters/studio-film/X18-reworked-after-v1.png` as required end-state
+- **Sources:** `../../media/media-sprint/masters/studio-film/X18-reworked-before-v1.png` as start;
+  `../../media/media-sprint/masters/studio-film/X18-reworked-after-v1.png` as required end-state
   reference.
 - **Use:** studio offer sequence under live DOM copy: `send the link` → `see
   the change` → `no obligation`; plate pair remains the settled fallback.
@@ -179,7 +179,7 @@ surface, but must not control the project queue. The classification is:
 #### `CENTRAL-EL-OP-FOLEY` — operating transition stems
 
 - **Route:** central ElevenLabs sound-effects workflow; normalize centrally.
-- **Source:** `masters/transition-components/paper-to-steel-reveal-source-v1.png`
+- **Source:** `../../media/media-sprint/masters/transition-components/paper-to-steel-reveal-source-v1.png`
   and `brass-rail-reversal-source-v1.png` as material references.
 - **Use:** optional, user-triggered draft/live and undo evaluation; never a
   voice and never required for meaning.
@@ -192,7 +192,7 @@ surface, but must not control the project queue. The classification is:
 #### `CENTRAL-EL-IW-FOLEY` — aperture transition stems
 
 - **Route:** central ElevenLabs sound-effects workflow; normalize centrally.
-- **Source:** `masters/transition-components/inspection-aperture-source-v1.png`.
+- **Source:** `../../media/media-sprint/masters/transition-components/inspection-aperture-source-v1.png`.
 - **Use:** optional impossible-site scale handoff after explicit sound opt-in;
   the static line and DOM chapter retain all meaning.
 - **Prompt:** `Two separate restrained material stems, no music or voice: (A)

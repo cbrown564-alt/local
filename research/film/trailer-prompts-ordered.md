@@ -1,7 +1,7 @@
 # Trailer — the eighteen prompts, in order
 
 *10 August 2026. Copy-paste, in play order, against
-`../narration/trailer/trailer-trim.mp3` (1:35.6). Every prompt is
+`../../media/narration/trailer/trailer-trim.mp3` (1:35.6). Every prompt is
 self-contained: the style block and the canonical descriptions are repeated
 verbatim in each one on purpose. **Do not reword them between shots** — that
 repetition is the only thing keeping the eighteen frames in the same world.*
@@ -368,7 +368,7 @@ paper stay blank. Calm and dry, not corporate explainer energy. 16:9.
 
 ## Where to save them
 
-`research/film/stills/trailer/01-boots-at-the-door.png` … `18-envelope-lit.png`,
+`media/film/stills/trailer/01-boots-at-the-door.png` … `18-envelope-lit.png`,
 numbered as above so the sequence sorts into play order. Then contact-sheet all
 sixteen before anything is cut.
 

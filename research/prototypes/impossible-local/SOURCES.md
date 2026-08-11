@@ -41,7 +41,7 @@ range input and previous/next controls move directly between settled frames.
 
 No generated image, video, speech or sound ships on the prototype. The two
 generated visual studies held under
-`research/media-sprint/masters/impossible-local-website/` informed the material
+`media/media-sprint/masters/impossible-local-website/` informed the material
 exploration only. They are not loaded by the route and do not supply terrain
 evidence.
 

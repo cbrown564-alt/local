@@ -13,11 +13,11 @@ Script: [`script.md`](script.md) — 452 characters of real Long A copy. Model
 
 | File | Voice | Origin |
 | --- | --- | --- |
-| `A1-mm-slate-narrator.mp3` | MM Slate Narrator | incumbent, cast 7 Aug for proverbs |
-| `A2-mm-harbour-brass.mp3` | MM Harbour Brass | incumbent, cast 7 Aug for the warm ask |
-| `A3-down-designed-1.mp3` | unsaved preview | designed 10 Aug, County Down brief |
-| `A4-down-designed-2.mp3` | unsaved preview | designed 10 Aug, County Down brief |
-| `A5-down-designed-3.mp3` | unsaved preview | designed 10 Aug, County Down brief |
+| `../../../media/narration/audition/A1-mm-slate-narrator.mp3` | MM Slate Narrator | incumbent, cast 7 Aug for proverbs |
+| `../../../media/narration/audition/A2-mm-harbour-brass.mp3` | MM Harbour Brass | incumbent, cast 7 Aug for the warm ask |
+| `../../../media/narration/audition/A3-down-designed-1.mp3` | unsaved preview | designed 10 Aug, County Down brief |
+| `../../../media/narration/audition/A4-down-designed-2.mp3` | unsaved preview | designed 10 Aug, County Down brief |
+| `../../../media/narration/audition/A5-down-designed-3.mp3` | unsaved preview | designed 10 Aug, County Down brief |
 
 A3–A5 are voice-design previews and **are not saved voices**. Only the chosen
 one gets kept; the other two expire. Generated voice IDs are in the provenance

@@ -2,7 +2,7 @@
 
 - Date: 7 August 2026
 - Status: internal research prototype; not production media
-- File: `studio-reel-v0.mp4`
+- File: `../../../../media/film/clips/studio/studio-reel-v0.mp4`
 - Duration: 26 seconds
 - Frame: 1280 × 720, 24 fps
 - Audio: none
@@ -10,9 +10,9 @@
 
 ## Sequence
 
-1. `T01-login-at-the-door.mp4` — the route is blocked.
-2. `T04-are-you-open.mp4` — the immediate question is unanswered.
-3. `X18-empty-envelope.mp4` — provisional offer turn.
+1. `../../../../media/film/clips/studio/T01-login-at-the-door.mp4` — the route is blocked.
+2. `../../../../media/film/clips/studio/T04-are-you-open.mp4` — the immediate question is unanswered.
+3. `../../../../media/film/clips/studio/X18-empty-envelope.mp4` — provisional offer turn.
 
 This is the Phase 2 pacing proof named in `research/studio-storytelling.md`.
 It deliberately uses the current exports so the sequence can be judged before

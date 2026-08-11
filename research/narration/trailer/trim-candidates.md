@@ -63,5 +63,5 @@ than having to carry it silently; C9's rewrite kept "what the person outside
 came to ask", so shot 17 — the only fix in the film — still rhymes with shot 1.
 Nothing in Tier 1 touched picture. **Protect that clause in any further edit.**
 
-Generated as `trailer-trim.mp3`: 1,134 characters, **1:35.6**, −17.2 LUFS /
+Generated as `../../../media/narration/trailer/trailer-trim.mp3`: 1,134 characters, **1:35.6**, −17.2 LUFS /
 −1.8 dBTP. The spine in the visuals brief has been re-measured against it.

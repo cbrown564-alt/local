@@ -5,9 +5,9 @@
 **Severity summary:** Critical 2 / High 1 / Medium 3 / Low 2
 
 ## Screenshots
-- Desktop hero: `screenshots/castle-farm-desktop-hero.png`
-- Desktop full: `screenshots/castle-farm-desktop-full.png`
-- Mobile hero: `screenshots/castle-farm-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/castle-farm-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/castle-farm-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/castle-farm-mobile-hero.png`
 
 ## Issues
 

@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 1 / Medium 4 / Low 3
 
 ## Screenshots
-- Desktop hero: `screenshots/hotel-enniskeen-desktop-hero.png`
-- Desktop full: `screenshots/hotel-enniskeen-desktop-full.png`
-- Mobile hero: `screenshots/hotel-enniskeen-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/hotel-enniskeen-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/hotel-enniskeen-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/hotel-enniskeen-mobile-hero.png`
 
 ## Issues
 

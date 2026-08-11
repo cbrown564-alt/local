@@ -1,7 +1,7 @@
 # Trailer visuals — brief and shot list
 
 *Written 10 August 2026. Imagery for
-[`../narration/trailer/trailer.mp3`](../narration/trailer/) (2:04, Village
+[`../../media/narration/trailer/trailer.mp3`](../narration/trailer/) (2:04, Village
 Elder). Companion to [`studio-recurring-themes.md`](studio-recurring-themes.md)
 (the T1–T10 scenes) and [`studio-media-experiments.md`](studio-media-experiments.md)
 (house rules, curation).*

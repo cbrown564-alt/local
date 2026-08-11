@@ -14,7 +14,7 @@ the 7 August contact-sheet, frame-sequence and mastering review.
 
 ## Phase 2 sequence proof
 
-`studio-reel-v0.mp4` is a 26-second silent internal assembly of T01 → T04 →
+`../../../../media/film/clips/studio/studio-reel-v0.mp4` is a 26-second silent internal assembly of T01 → T04 →
 provisional X18. It tests sequence only; the known source faults remain. See
 [`studio-reel-v0.md`](studio-reel-v0.md). Do not copy it to `public/`.
 
@@ -33,44 +33,44 @@ proof remains internal.
 
 | File | Source download | Notes |
 | --- | --- | --- |
-| `T01-login-at-the-door.mp4` | `Clay_boots_walk_to_shop_202608071709.mp4` | Frosted pane + blank forms; boots |
-| `T04-are-you-open.mp4` | `Umbrella_approaches_illuminated_…_202608071709.mp4` | Rain, umbrella, dark window |
-| `T05-bell-no-clapper.mp4` | `Clay_boots_ringing_counter_bell_202608100847.mp4` | Brass counter bell, boots, blank reply card and back-room lamp |
-| `T07-best-thing-hidden.mp4` | `Clay_object_moves_to_window_202608071711.mp4` | Brass key in cellar drawer |
-| `T10-swap-test.mp4` | `Clay_shopfront_nameplate_moves_202608071808.mp4` | Blank brass plate moves between twins |
+| `../../../../media/film/clips/studio/T01-login-at-the-door.mp4` | `Clay_boots_walk_to_shop_202608071709.mp4` | Frosted pane + blank forms; boots |
+| `../../../../media/film/clips/studio/T04-are-you-open.mp4` | `Umbrella_approaches_illuminated_…_202608071709.mp4` | Rain, umbrella, dark window |
+| `../../../../media/film/clips/studio/T05-bell-no-clapper.mp4` | `Clay_boots_ringing_counter_bell_202608100847.mp4` | Brass counter bell, boots, blank reply card and back-room lamp |
+| `../../../../media/film/clips/studio/T07-best-thing-hidden.mp4` | `Clay_object_moves_to_window_202608071711.mp4` | Brass key in cellar drawer |
+| `../../../../media/film/clips/studio/T10-swap-test.mp4` | `Clay_shopfront_nameplate_moves_202608071808.mp4` | Blank brass plate moves between twins |
 
 ## Experiment stills (GPT-Image / Codex)
 
 | File | Source download | Experiment |
 | --- | --- | --- |
-| `X01-wet-plate-shopfront.png` | `Codex Image 7 Aug 2026, 17_37_28.png` | X1 |
-| `X02-cut-paper-shadow-theatre.png` | `Codex Image 7 Aug 2026, 17_37_40.png` | X2 |
-| `X05-rain-on-glass.png` | `Codex Image 7 Aug 2026, 17_37_54.png` | X5 |
-| `X06-radio-play-poster.png` | `Codex Image 7 Aug 2026, 17_38_08.png` | X6 poster |
-| `X07-asmr-counter.png` | `Codex Image 7 Aug 2026, 17_45_46.png` | X7 / also X17 plate |
-| `X10-ui-as-weather.png` | `Codex Image 7 Aug 2026, 17_38_18.png` | X10 wireframe |
-| `X14-continuous-town-street.png` | `Codex Image 7 Aug 2026, 17_40_36.png` | X14 master street |
-| `X18-empty-envelope.png` | `Codex Image 7 Aug 2026, 17_46_19.png` | X18 |
-| `X19-three-doors.png` | `Codex Image 7 Aug 2026, 17_48_05.png` | X19 |
-| `X20-stamp-vs-tile.png` | `Codex Image 7 Aug 2026, 17_49_41.png` | X20 |
-| `X21-assembly-joinery.png` | `Codex Image 7 Aug 2026, 17_51_23.png` | X21 empty chassis |
-| `X26-choir-of-clocks.png` | `Codex Image 7 Aug 2026, 18_09_38.png` | X26 |
+| `../../../../media/film/clips/studio/X01-wet-plate-shopfront.png` | `Codex Image 7 Aug 2026, 17_37_28.png` | X1 |
+| `../../../../media/film/clips/studio/X02-cut-paper-shadow-theatre.png` | `Codex Image 7 Aug 2026, 17_37_40.png` | X2 |
+| `../../../../media/film/clips/studio/X05-rain-on-glass.png` | `Codex Image 7 Aug 2026, 17_37_54.png` | X5 |
+| `../../../../media/film/clips/studio/X06-radio-play-poster.png` | `Codex Image 7 Aug 2026, 17_38_08.png` | X6 poster |
+| `../../../../media/film/clips/studio/X07-asmr-counter.png` | `Codex Image 7 Aug 2026, 17_45_46.png` | X7 / also X17 plate |
+| `../../../../media/film/clips/studio/X10-ui-as-weather.png` | `Codex Image 7 Aug 2026, 17_38_18.png` | X10 wireframe |
+| `../../../../media/film/clips/studio/X14-continuous-town-street.png` | `Codex Image 7 Aug 2026, 17_40_36.png` | X14 master street |
+| `../../../../media/film/clips/studio/X18-empty-envelope.png` | `Codex Image 7 Aug 2026, 17_46_19.png` | X18 |
+| `../../../../media/film/clips/studio/X19-three-doors.png` | `Codex Image 7 Aug 2026, 17_48_05.png` | X19 |
+| `../../../../media/film/clips/studio/X20-stamp-vs-tile.png` | `Codex Image 7 Aug 2026, 17_49_41.png` | X20 |
+| `../../../../media/film/clips/studio/X21-assembly-joinery.png` | `Codex Image 7 Aug 2026, 17_51_23.png` | X21 empty chassis |
+| `../../../../media/film/clips/studio/X26-choir-of-clocks.png` | `Codex Image 7 Aug 2026, 18_09_38.png` | X26 |
 
 ## Experiment videos (Gemini Omni)
 
 | File | Source download | Experiment |
 | --- | --- | --- |
-| `X02-cut-paper-shadow-theatre.mp4` | `Image_to_video_from_the_attach-2.mp4` | X2 |
-| `X05-rain-on-glass.mp4` | `Text_to_video_or_image_to_vid.mp4` | X5 |
-| `X10-ui-as-weather.mp4` | `Image_to_video_from_the_attach.mp4` | X10 |
-| `X16-silent-loop-desk.mp4` | `Text_to_video_seconds_seam.mp4` | X16 |
-| `X18-empty-envelope.mp4` | `seconds_Miniature_clay_desk.mp4` | X18 |
-| `X19-three-doors.mp4` | `Image_to_video_from_the_attach-3.mp4` | X19 |
-| `X20-stamp-vs-tile.mp4` | `seconds_Top_down_stop_motio.mp4` | X20 |
-| `X21-assembly-joinery.mp4` | `seconds_Stop_motion_assembl.mp4` | X21 |
-| `X22-shape-swap.mp4` | `example.com` (MP4 misnamed on download) | X22 |
-| `X26-choir-of-clocks.mp4` | `seconds_Nine_dusty_clay_clo.mp4` | X26 |
-| `X27-nicer-dissolve.mp4` | `seconds_Abstract_miniature.mp4` | X27 |
+| `../../../../media/film/clips/studio/X02-cut-paper-shadow-theatre.mp4` | `Image_to_video_from_the_attach-2.mp4` | X2 |
+| `../../../../media/film/clips/studio/X05-rain-on-glass.mp4` | `Text_to_video_or_image_to_vid.mp4` | X5 |
+| `../../../../media/film/clips/studio/X10-ui-as-weather.mp4` | `Image_to_video_from_the_attach.mp4` | X10 |
+| `../../../../media/film/clips/studio/X16-silent-loop-desk.mp4` | `Text_to_video_seconds_seam.mp4` | X16 |
+| `../../../../media/film/clips/studio/X18-empty-envelope.mp4` | `seconds_Miniature_clay_desk.mp4` | X18 |
+| `../../../../media/film/clips/studio/X19-three-doors.mp4` | `Image_to_video_from_the_attach-3.mp4` | X19 |
+| `../../../../media/film/clips/studio/X20-stamp-vs-tile.mp4` | `seconds_Top_down_stop_motio.mp4` | X20 |
+| `../../../../media/film/clips/studio/X21-assembly-joinery.mp4` | `seconds_Stop_motion_assembl.mp4` | X21 |
+| `../../../../media/film/clips/studio/X22-shape-swap.mp4` | `example.com` (MP4 misnamed on download) | X22 |
+| `../../../../media/film/clips/studio/X26-choir-of-clocks.mp4` | `seconds_Nine_dusty_clay_clo.mp4` | X26 |
+| `../../../../media/film/clips/studio/X27-nicer-dissolve.mp4` | `seconds_Abstract_miniature.mp4` | X27 |
 
 ## X23 — coastal mosaic (retired)
 
@@ -186,7 +186,7 @@ Stems under `audio/stems/X0N/`. Sidecars beside mixed files.
 ## Reference plates — 10 August 2026
 
 Nine stills extracted from the T-clips into
-[`../../stills/studio/`](../../stills/studio/), for the trailer shot list in
+[`../../../../media/film/stills/studio/`](../../../../media/film/stills/studio/), for the trailer shot list in
 [`../../trailer-shot-prompts.md`](../../trailer-shot-prompts.md). No still had
 ever been pulled from a studio clip; `stills/` held only the two town films.
 These are the conditioning inputs an image-to-video pass needs.

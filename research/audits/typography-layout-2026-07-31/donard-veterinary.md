@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 2 / Medium 4 / Low 2
 
 ## Screenshots
-- Desktop hero: `screenshots/donard-veterinary-desktop-hero.png`
-- Desktop full: `screenshots/donard-veterinary-desktop-full.png`
-- Mobile hero: `screenshots/donard-veterinary-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-veterinary-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-veterinary-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-veterinary-mobile-hero.png`
 
 ## Issues
 

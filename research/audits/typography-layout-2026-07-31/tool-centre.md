@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 2 / Medium 4 / Low 2
 
 ## Screenshots
-- Desktop hero: `screenshots/tool-centre-desktop-hero.png`
-- Desktop full: `screenshots/tool-centre-desktop-full.png`
-- Mobile hero: `screenshots/tool-centre-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/tool-centre-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/tool-centre-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/tool-centre-mobile-hero.png`
 
 ## Issues
 

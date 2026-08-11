@@ -9,4 +9,4 @@
 
 | File | Script |
 | --- | --- |
-| `X18-send-the-link.mp3` | Send the link. That's the whole ask. |
+| `../../../../../media/film/clips/studio/audio/X18-send-the-link.mp3` | Send the link. That's the whole ask. |

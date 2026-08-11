@@ -10,7 +10,7 @@ bakeoff on purpose.*
 **Tools.** GPT-Image 2 (stills / plates / boards), Gemini Omni (≈6–10s video),
 ElevenLabs (VO + Foley beds). Most clips will fail. That is the point.
 
-**Outputs.** Save under `research/film/clips/studio/` as `X<id>-<slug>.{png,mp4,webm,mp3}`
+**Outputs.** Save under `media/film/clips/studio/` as `X<id>-<slug>.{png,mp4,webm,mp3}`
 with a filled sidecar copy of the relevant section below (date, model, pass/fail).
 Contact-sheet before promoting anything to `/prototypes/`.
 
@@ -64,7 +64,7 @@ X20–X21, X23–X24 and X26–X27 are retired. X25 whispers are retired; no
 synthetic studio voice is production-approved by this bakeoff.
 
 The first sequence test is the 26-second
-[`studio-reel-v0.mp4`](clips/studio/studio-reel-v0.mp4): T01 → T04 → a
+[`studio-reel-v0.mp4`](../../media/film/clips/studio/studio-reel-v0.mp4): T01 → T04 → a
 provisional X18, followed by a DOM request close when it is put on a page. It
 is silent. X19 belongs later, after the visitor understands the offer. The
 detailed asset decisions live in

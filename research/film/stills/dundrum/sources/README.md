@@ -4,7 +4,7 @@ These photographs are retained as internal geographic references for the six
 generated Dundrum film stills. The generated stills transform atmosphere and
 activity, but must preserve the source views' real spatial relationships.
 
-## `real-bay-view.jpg`
+## `../../../../../media/film/stills/dundrum/sources/real-bay-view.jpg`
 
 "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum"
 by Colin Park, downloaded 5 August 2026 from Wikimedia Commons / Geograph
@@ -16,7 +16,7 @@ image 7677782. Creative Commons Attribution-ShareAlike 2.0.
 - Role: primary camera position, bay topology, village placement, wooded
   framing, hill proportions and the castle's small distant position.
 
-## `real-castle-detail.jpg`
+## `../../../../../media/film/stills/dundrum/sources/real-castle-detail.jpg`
 
 "Dundrum Castle from outside" by Eschadew, photographed 4 June 2021 and
 downloaded 5 August 2026 from Wikimedia Commons. Creative Commons
@@ -27,7 +27,7 @@ Attribution-ShareAlike 4.0.
 - Role: supporting identity reference for the round keep and fragmented
   curtain walls. It does not supply the bay camera position.
 
-## `real-main-street.jpg`
+## `../../../../../media/film/stills/dundrum/sources/real-main-street.jpg`
 
 "Main Street, Dundrum" by Albert Bridge, photographed 12 May 2008 and
 downloaded 5 August 2026 from Wikimedia Commons / Geograph image 798432.
@@ -40,7 +40,7 @@ Creative Commons Attribution-ShareAlike 2.0.
   as the final street master; the rejected first pass based on it invented a
   continuous shop row and changed recognisable façades.
 
-## `main-street-perspective-traffic.jpg`
+## `../../../../../media/film/stills/dundrum/sources/main-street-perspective-traffic.jpg`
 
 "Crawling Sunday afternoon traffic in Main Street, Dundrum" by Eric Jones,
 photographed 21 July 2013 and downloaded 5 August 2026 from Wikimedia Commons /
@@ -62,24 +62,24 @@ CC BY-SA 2.0. They were used to identify why the first generated street pair
 was locally inaccurate and to check current street character. They were not
 composited into the final 03/06 camera view.
 
-- `main-street-current-overview.jpg` — bus stop and pedestrian crossing,
+- `../../../../../media/film/stills/dundrum/sources/main-street-current-overview.jpg` — bus stop and pedestrian crossing,
   Geograph 8018928.
-- `main-street-current-colourful.jpg` — the blue barbers/beauty frontage,
+- `../../../../../media/film/stills/dundrum/sources/main-street-current-colourful.jpg` — the blue barbers/beauty frontage,
   purple Scopers frontage and yellow-and-black Dundrum Inn, Geograph 8019307.
-- `main-street-current-bernies.jpg` — Bernie's Nearby and adjoining houses,
+- `../../../../../media/film/stills/dundrum/sources/main-street-current-bernies.jpg` — Bernie's Nearby and adjoining houses,
   Geograph 8018939.
-- `main-street-current-groves.jpg` — Groves Chemist and neighbouring frontage,
+- `../../../../../media/film/stills/dundrum/sources/main-street-current-groves.jpg` — Groves Chemist and neighbouring frontage,
   Geograph 8019515.
 
-The two additional files `main-street-perspective-autumn.jpg` (Geograph
-2166286) and `main-street-perspective-manse.jpg` (Geograph 3544321) were
+The two additional files `../../../../../media/film/stills/dundrum/sources/main-street-perspective-autumn.jpg` (Geograph
+2166286) and `../../../../../media/film/stills/dundrum/sources/main-street-perspective-manse.jpg` (Geograph 3544321) were
 viewpoint comparisons only and were not used as generation inputs.
 
 ## Generated derivatives
 
 The six sibling PNGs one directory above were created with the built-in OpenAI
 image generation tool. Stills 03 and 06 use only
-`main-street-perspective-traffic.jpg` as their geographic input; 06 is an
+`../../../../../media/film/stills/dundrum/sources/main-street-perspective-traffic.jpg` as their geographic input; 06 is an
 atmosphere edit of 03. The tool followed the source's 4:3 frame, so both were
 centre-cropped identically to 1440×810 after generation; no content was added
 during that crop. They are generated visualisations grounded in these

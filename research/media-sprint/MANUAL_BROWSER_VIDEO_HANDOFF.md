@@ -12,7 +12,7 @@ paths relative to this document.
 3. Temporary service errors may be retried once manually. Do not create a
    matrix of near-duplicate runs.
 4. Download the original completed MP4 into the absolute return directory:
-   `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/results/`.
+   `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/results/`.
 5. Preserve Gemini's original output outside `public/`. Strip generated audio
    by default during a later normalization pass; do not edit or promote it as
    part of this handoff.
@@ -27,7 +27,7 @@ paths relative to this document.
   and was still analysing when automation stopped. Check that chat or Gemini
   Library first; do not duplicate the job if it completed successfully.
 - **Source image:**
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/CENTRAL-GV-T01-start-20260810.png`
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/CENTRAL-GV-T01-start-20260810.png`
 - **Verified:** PNG · 1280 × 720 · 801,481 bytes · SHA-256
   `93c8ea60ac8acb0d000aaceb36bfecd0214346ba309a99b9d3bb6c2865e4d216`
 - **Target:** 10 seconds · landscape 16:9
@@ -48,7 +48,7 @@ paths relative to this document.
 
 - **Current status:** not submitted.
 - **Source image:**
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/CENTRAL-GV-T04-end-20260810.png`
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/CENTRAL-GV-T04-end-20260810.png`
 - **Verified:** PNG · 1672 × 941 · 1,759,498 bytes · SHA-256
   `02e2802c83d89566b8d32663005f496ad1e9e66753b227af2466f9f0c7e34a25`
 - **Target:** 10 seconds · landscape 16:9
@@ -69,11 +69,11 @@ paths relative to this document.
 
 - **Current status:** not submitted.
 - **Start source image:**
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/CENTRAL-GV-X18-start-20260810.png`
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/CENTRAL-GV-X18-start-20260810.png`
 - **Start verified:** PNG · 1672 × 941 · 1,629,479 bytes · SHA-256
   `b306d708020bef8cc2975cde7839b11129d066bfa101b909a41025837409e8d9`
 - **End-state reference image:**
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/CENTRAL-GV-X18-end-reference-20260810.png`
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/CENTRAL-GV-X18-end-reference-20260810.png`
 - **End reference verified:** PNG · 1672 × 941 · 1,680,863 bytes · SHA-256
   `0b6e3a677e2be8e93a25801c113d56dc12be760759f69a1f1629b828eb57f1be`
 - **Upload note:** if Gemini accepts only one image, upload the start image and

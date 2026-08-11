@@ -368,7 +368,7 @@ Audio: soft rural road hush, very quiet. No music, no voiceover.
 
 **Attach.** Optional: a muted capture still as texture reference, or pure text-to-video. Do **not** overwrite `*-before/after` capture media.
 
-**Destination.** `public/media/prototypes/` or `research/film/clips/studio/` — never concept guest heroes.  
+**Destination.** `public/media/prototypes/` or `media/film/clips/studio/` — never concept guest heroes.  
 **Hook.** Optional prototype beside `RebuildStage`; canvas rebuild stays the product mechanism.
 
 **Constraints.** Studio/meta voice only. Must not imply client results. Must not replace capture honesty. Label generated.
@@ -398,8 +398,8 @@ Audio: soft digital dissolve, then quiet air. No voiceover, no music bed that se
 
 **Attach.** Prefer CC place photo with credit chain:  
 `public/media/place/boats-moored-at-newcastle-harbour.jpg`  
-Or film still: `research/film/stills/newcastle/05-golden-harbour.png`  
-(Reuse clip `research/film/clips/newcastle/05-harbour-boats.mp4` as grade reference — don’t claim it as chamber footage.)
+Or film still: `media/film/stills/newcastle/05-golden-harbour.png`  
+(Reuse clip `media/film/clips/newcastle/05-harbour-boats.mp4` as grade reference — don’t claim it as chamber footage.)
 
 **Destination.** `public/media/concepts/newcastle-chamber/newcastle-chamber-harbour-loop.*`  
 **Hook.** Soften `nc-hero` or future map plate — never the directory search job.
@@ -582,7 +582,7 @@ Audio: soft brush on canvas, quiet room. No voiceover.
 
 **Attach.** Optional backdrop: `kent-amusements-promenade-dusk.png` or lights loop (no new fascia lettering).
 
-**Destination.** Research/prototype first: `research/film/clips/kent/kent-thesis-kinetic.mp4`  
+**Destination.** Research/prototype first: `media/film/clips/kent/kent-thesis-kinetic.mp4`  
 **Hook.** Inspiration for `.ka-thesis` / `#summers` — production path may be non-Omni type motion.
 
 **Constraints.** Guest voice as the arcade. No process language. Paradox line is essence, not a slogan sticker pile. Prefer not to burn text into a guest hero if HTML type can do the job.
@@ -647,7 +647,7 @@ Audio: quiet pub room, soft glass. No voiceover.
 
 **Attach.** None required (text-to-video). Optional paper props photographed as reference.
 
-**Destination.** `research/film/clips/studio/elevation-method-claymation.mp4` or `/prototypes/showcase/`  
+**Destination.** `media/film/clips/studio/elevation-method-claymation.mp4` or `/prototypes/showcase/`  
 **Hook.** None on concepts.
 
 **Constraints.** Meta voice only outside guest UI. No client claims. Disclose generated.
@@ -753,7 +753,7 @@ Audio: soft knife-through-butter. No music, no voiceover.
 **Intent.** Ask whether native/synced audio sells civic place harder than picture. Pair a restrained harbour loop (A11) with a sparse brass/gull/tide bed — not a marching-band tourist cue.
 
 **Attach.** Harbour still from A11.  
-**Audio path.** Prefer ElevenLabs stems via `pnpm generate:ambience` patterns, or Omni native audio kept very quiet. Existing Newcastle film stems in `research/film/audio/newcastle/` are seafront, not chamber brass — don’t misuse as “committee audio.”
+**Audio path.** Prefer ElevenLabs stems via `pnpm generate:ambience` patterns, or Omni native audio kept very quiet. Existing Newcastle film stems in `media/film/audio/newcastle/` are seafront, not chamber brass — don’t misuse as “committee audio.”
 
 **Destination.** Prototype bed `public/media/prototypes/chamber-harbour-ambience.mp3` + optional loop.  
 **Hook.** Opt-in only on a prototype; consent before any committee-facing voice.
@@ -785,11 +785,11 @@ and the shutter rattles when the hand pulls it. Synchronisation is the thing a
 mixed bed structurally cannot do. If native wins, a whole subsystem and its
 mixing table leave the pipeline.
 
-**Attach.** Dundrum shot 03 street master: `research/film/stills/dundrum/03-morning-main-street.png`
+**Attach.** Dundrum shot 03 street master: `media/film/stills/dundrum/03-morning-main-street.png`
 — chosen because it is the one town shot with a discrete Foley event (the shutter)
 rather than a continuous bed, which is where the two approaches actually differ.
 
-**Destination.** `research/film/clips/craft/a23-native-audio-{a,b}.mp4` — never
+**Destination.** `media/film/clips/craft/a23-native-audio-{a,b}.mp4` — never
 overwrite the assembled town films.
 **Hook.** None. Output is a decision recorded in `one-day-made-here.md`.
 
@@ -831,10 +831,10 @@ measure what actually varies between identical runs — grade, camera speed,
 whether locked geography stays locked. Deliberately wasteful, and only affordable
 because the day is free.
 
-**Attach.** `research/film/stills/dundrum/05-golden-hour-castle.png` — the shot
+**Attach.** `media/film/stills/dundrum/05-golden-hour-castle.png` — the shot
 whose take-1 failure (four different castles) created the whole stills approach.
 
-**Destination.** `research/film/clips/craft/a24-drift-01…10.mp4` + a contact
+**Destination.** `media/film/clips/craft/a24-drift-01…10.mp4` + a contact
 sheet.
 **Hook.** None. Output is a section in this file.
 
@@ -864,8 +864,8 @@ vertical town loops are simultaneously the studio's own GBP and social post
 and it costs minutes. Everything else in this file points inward at the site;
 this points at where local discovery actually happens.
 
-**Attach.** Newcastle: `research/film/stills/newcastle/06-dusk-amusements.png`.
-Dundrum: `research/film/stills/dundrum/06-blue-hour-street.png`. Dusk shots
+**Attach.** Newcastle: `media/film/stills/newcastle/06-dusk-amusements.png`.
+Dundrum: `media/film/stills/dundrum/06-blue-hour-street.png`. Dusk shots
 because vertical is watched small, on a phone, usually muted — light doing
 something is legible at that size; landscape atmosphere is not.
 
@@ -907,10 +907,10 @@ argues place-awareness is the studio's unfair advantage over a firm pitching fro
 London — and a hero matching the weather outside the reader's window is the
 strongest available version of that argument.
 
-**Attach.** `research/film/stills/newcastle/04-midday-beach.png` — one still,
+**Attach.** `media/film/stills/newcastle/04-midday-beach.png` — one still,
 four skies, so the variants are provably the same place.
 
-**Destination.** `research/film/clips/craft/a26-weather-{bright,haar,rain,winter}.mp4`.
+**Destination.** `media/film/clips/craft/a26-weather-{bright,haar,rain,winter}.mp4`.
 **Hook.** None yet. This is an argument for a decision, not a wire-up. If it
 persuades, the decision belongs in `docs/sensory-system-plan.md` as a revision to
 the 08 Weather hold, with `ADR 0004`'s identity/evidence rule applied: **weather
@@ -960,12 +960,12 @@ different bird, which is charming; the same technique applied to a building
 produces a different building, which is a lie. So this is the safe place to learn
 where the lock breaks.
 
-**Attach.** Master: `research/film/stills/dundrum/01-pre-dawn-bay.png`, plus a
+**Attach.** Master: `media/film/stills/dundrum/01-pre-dawn-bay.png`, plus a
 crop of the curlew alone as the subject reference. Then the shot 02 and 05 stills
 as first frames.
 
-**Destination.** `research/film/clips/craft/a27-curlew-{01,02,05}.mp4`. Only
-promote into `research/film/clips/dundrum/` if all three hold — a bird appearing
+**Destination.** `media/film/clips/craft/a27-curlew-{01,02,05}.mp4`. Only
+promote into `media/film/clips/dundrum/` if all three hold — a bird appearing
 in two shots of six reads as an accident, not a signature.
 
 **Constraints.** Never on the Newcastle film; a shared mascot would flatten the
@@ -1003,9 +1003,9 @@ between two videos — but it can take shot 01's still as first frame and be
 prompted *backwards* toward dusk light, producing a purpose-built bridge that
 meets shot 06 in the middle. One gen per town replaces a compromise.
 
-**Attach.** `research/film/stills/<town>/01-pre-dawn-*.png` as first frame.
+**Attach.** `media/film/stills/<town>/01-pre-dawn-*.png` as first frame.
 
-**Destination.** `research/film/clips/<town>/07-bridge.mp4`. The assembly matches
+**Destination.** `media/film/clips/<town>/07-bridge.mp4`. The assembly matches
 `/^\d{2}.*\.(mp4|mov|webm|mkv)$/i` and plain-sorts, so `07-` places the bridge
 last — a `00-` prefix would put it first and invert the day.
 **Hook.** `tools/pipeline/assemble-hero-film.mjs` — shortens the final crossfade
@@ -1075,7 +1075,7 @@ most annoyed.
 **Blocked, mildly.** There is no `src/pages/404.astro`. The page is the work;
 the clip is an afternoon.
 
-**Attach.** `research/film/stills/dundrum/02-first-light-mudflats.png`.
+**Attach.** `media/film/stills/dundrum/02-first-light-mudflats.png`.
 **Destination.** `public/media/site/404-tide.{mp4,webm}` + poster.
 **Hook.** A new `src/pages/404.astro`, Scopers pattern — still is the default,
 video only if both codecs exist.
@@ -1147,7 +1147,7 @@ remains fine — it says only what we already say in text.
 
 | File | Idea | Wired? |
 | --- | --- | --- |
-| `research/film/clips/<town>/01–06-*.mp4` | #1 town films | Prototype film hero |
+| `media/film/clips/<town>/01–06-*.mp4` | #1 town films | Prototype film hero |
 | `public/media/home/<town>-film.*` | #1 assembled | Prototype |
 | `kent-amusements-promenade-lights.mp4` | #2 | Held |
 | `kent-amusements-afternoon-comic-01-03.mp4` | A3 | Held (worked) |

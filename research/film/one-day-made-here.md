@@ -23,14 +23,14 @@ the video aria-labels say the same. Record provenance in
 Take 1 (4 August 2026, text-only prompts) proved the multi-shot failure mode:
 the castle appeared as four different buildings in four different places, the
 street changed between shots, and the grade drifted. The fix is a canonical
-reference still per shot in `research/film/stills/<town>/`, built so the
+reference still per shot in `media/film/stills/<town>/`, built so the
 geography recurs: one round-towered Norman keep on one grassy drumlin for
 Dundrum; one granite ridge profile over one whitewashed seafront for
 Newcastle.
 
 **The still prompts live in `research/film/reference-still-prompts.md`** and
 the stills are generated externally (high-quality image pipeline, not
-in-repo). Until they land, `research/film/stills/` does not exist — that is
+in-repo). Until they land, `media/film/stills/` does not exist — that is
 the current state. Once the stills are in place, **generate every video clip
 conditioned on its matching still** (image-to-video / start frame in Gemini
 Omni), with the shot prompt and style block from the tables below. The still
@@ -144,10 +144,10 @@ Try it; drop it if it sentimentalises.
 
 ## Assembly
 
-Drop Gemini Omni exports into `research/film/clips/dundrum/01-…mp4` …
+Drop Gemini Omni exports into `media/film/clips/dundrum/01-…mp4` …
 `06-…mp4` (any filename with the right two-digit prefix; any codec — the
 pipeline normalises). Drop ElevenLabs stems into
-`research/film/audio/<town>/` using the stem names above. Then:
+`media/film/audio/<town>/` using the stem names above. Then:
 
 ```bash
 node tools/pipeline/assemble-hero-film.mjs            # assemble towns whose clips exist

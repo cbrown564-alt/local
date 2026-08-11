@@ -5,9 +5,9 @@
 **Severity summary:** Critical 1 / High 2 / Medium 4 / Low 2
 
 ## Screenshots
-- Desktop hero: `screenshots/newcastle-dental-desktop-hero.png`
-- Desktop full: `screenshots/newcastle-dental-desktop-full.png`
-- Mobile hero: `screenshots/newcastle-dental-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/newcastle-dental-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/newcastle-dental-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/newcastle-dental-mobile-hero.png`
 
 ## Issues
 

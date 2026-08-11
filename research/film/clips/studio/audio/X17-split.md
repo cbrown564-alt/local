@@ -11,5 +11,5 @@
 
 | File | Track | Script |
 | --- | --- | --- |
-| `X17-meant.mp3` | Meant (owner) | We put the important notes up front so nobody's disappointed. The loaf is there. We worked hard on the rules. |
-| `X17-heard.mp3` | Heard (visitor) | I only wanted today's loaf. I left. |
+| `../../../../../media/film/clips/studio/audio/X17-meant.mp3` | Meant (owner) | We put the important notes up front so nobody's disappointed. The loaf is there. We worked hard on the rules. |
+| `../../../../../media/film/clips/studio/audio/X17-heard.mp3` | Heard (visitor) | I only wanted today's loaf. I left. |

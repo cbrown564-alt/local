@@ -182,7 +182,7 @@ ship a homepage.
 | 9 | S7 | Abstract before-world dissolves into after-light (no real brands). |
 | 10 | Edit pass | Conversational edits on the strongest of 1–9 (signage, sentimentality, text drift). |
 
-Save outputs under `research/film/clips/studio/` with sidecars
+Save outputs under `media/film/clips/studio/` with sidecars
 (`S1-recognition-theatre.md` containing the exact prompt + notes). Contact
 sheet the day. Narrow formats that earned a second day.
 
@@ -235,7 +235,7 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
 
 | Phase | Outcome | Gate |
 | --- | --- | --- |
-| **0 — Complete, 7 Aug** | This doc; folder `research/film/clips/studio/`; day-one slate | Contact sheets and intake manifest exist. |
+| **0 — Complete, 7 Aug** | This doc; folder `media/film/clips/studio/`; day-one slate | Contact sheets and intake manifest exist. |
 | **1 — Complete, 7 Aug** | 8–12 clips across ≥4 formats; kill list written | Clay fault film (T01/T04) and selective printed object theatre (X25) carry PRODUCT beliefs. |
 | **2 — Active** | One 24–28s silent sequence test: T01 → T04 → provisional X18 → DOM request close | Internal review: does the sequence make the offer clearer without making the work look expensive? |
 | **3 — Active, expanded 10 Aug** | T01, T04, T05, T07 and T10 beside their matching `/where-it-fails/` sections | Silent delivery files, disclosure and reduced-motion posters are in place; T10 remains subordinate to the interaction and direct request-weight review remains |
@@ -268,7 +268,7 @@ Promote to `docs/studio-storytelling-plan.md` when gates need CI ownership.
    [`film/clips/studio/MANIFEST.md`](film/clips/studio/MANIFEST.md). Do not
    finish the unmade prompts by default.
 3. **Implemented 7 August — sequence proof:**
-   [`studio-reel-v0.mp4`](film/clips/studio/studio-reel-v0.mp4) is the silent
+   [`studio-reel-v0.mp4`](../media/film/clips/studio/studio-reel-v0.mp4) is the silent
    T01 → T04 → provisional X18 cut at 26 seconds. Direct frame inspection and
    media probing verified the order, 1280 × 720 frame, 24 fps, duration and
    absence of audio. It remains an internal pacing proof: the page supplies

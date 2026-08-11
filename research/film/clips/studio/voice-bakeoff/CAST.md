@@ -35,7 +35,7 @@ Supporting antagonist (not a “winner”, assigned for UI lines): `consent-bot`
 
 ## Listen UI
 
-[`listen.html`](listen.html) — or play `samples/` / `design-previews/` directly.
+[`listen.html`](listen.html) — or play `../../../../../media/film/clips/studio/voice-bakeoff/samples/` / `../../../../../media/film/clips/studio/voice-bakeoff/design-previews/` directly.
 
 ## Designed cast
 

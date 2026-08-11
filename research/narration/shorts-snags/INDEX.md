@@ -10,15 +10,15 @@ Voice **Old Irish Village Elder** (`eEzkfaTvgdaH5to7Cn0M`) — a 7 August bakeof
 control, not one of the designed MM cast. Model `eleven_v3`, `stability` 0.5,
 one `[pause]` each. Scripts and sourcing: [`script.md`](script.md).
 
-Mastered files in this folder; `raw/` holds the generator output.
+Mastered files in this folder; `../../../media/narration/shorts-snags/raw/` holds the generator output.
 
 | File | Snag | Length |
 | --- | --- | --- |
-| `S1-login-at-the-door.mp3` | The login at the door | 57.5s |
-| `S2-are-you-open.mp3` | Nobody answers "are you open?" | 60.8s |
-| `S3-bell-with-no-clapper.mp3` | The bell with no clapper | 57.2s |
-| `S4-best-thing-in-the-footer.mp3` | The best thing about you is in the footer | 62.1s |
-| `S5-swap-test.mp3` | The swap test | 59.5s |
+| `../../../media/narration/shorts-snags/S1-login-at-the-door.mp3` | The login at the door | 57.5s |
+| `../../../media/narration/shorts-snags/S2-are-you-open.mp3` | Nobody answers "are you open?" | 60.8s |
+| `../../../media/narration/shorts-snags/S3-bell-with-no-clapper.mp3` | The bell with no clapper | 57.2s |
+| `../../../media/narration/shorts-snags/S4-best-thing-in-the-footer.mp3` | The best thing about you is in the footer | 62.1s |
+| `../../../media/narration/shorts-snags/S5-swap-test.mp3` | The swap test | 59.5s |
 
 All five sourced from `src/site/data/fault-walks.ts` — the same entries
 `/where-it-fails/` walks. Each uses the entry's `errand`, `decision` and

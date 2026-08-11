@@ -9,8 +9,8 @@ centrepiece.*
 
 | File | What |
 | --- | --- |
-| `long-a-elevation-method.mp3` | **8:31, mastered — listen to this one** |
-| `raw/S1.mp3` … `raw/S8.mp3` | the eight sections as generated |
+| `../../../media/narration/long-a-elevation/long-a-elevation-method.mp3` | **8:31, mastered — listen to this one** |
+| `../../../media/narration/long-a-elevation/raw/S1.mp3` … `../../../media/narration/long-a-elevation/raw/S8.mp3` | the eight sections as generated |
 | [`script.md`](script.md) | script, sourcing, and the choices behind it |
 
 Voice **Irish Cultural Guide** (`NPWroowF4phQhaPWjXPj`), model `eleven_v3`,

@@ -19,23 +19,23 @@ product need reopens the relevant experiment.
 
 ## Listen order
 
-1. `X06-radio-play.mp3` — first 15s with the poster
-2. `X08-T01.mp3`, `X08-T04.mp3`, `X08-T09.mp3` — proverb register
-3. `X17-meant.mp3` / `X17-heard.mp3` — toggle insight
-4. `X09-binaural-walk.mp3` — headphones
-5. `X07-asmr-counter-foley.mp3`, `X26-choir-of-clocks-bed.mp3`, `X18-send-the-link.mp3`
+1. `../../../../../media/film/clips/studio/audio/X06-radio-play.mp3` — first 15s with the poster
+2. `../../../../../media/film/clips/studio/audio/X08-T01.mp3`, `../../../../../media/film/clips/studio/audio/X08-T04.mp3`, `../../../../../media/film/clips/studio/audio/X08-T09.mp3` — proverb register
+3. `../../../../../media/film/clips/studio/audio/X17-meant.mp3` / `../../../../../media/film/clips/studio/audio/X17-heard.mp3` — toggle insight
+4. `../../../../../media/film/clips/studio/audio/X09-binaural-walk.mp3` — headphones
+5. `../../../../../media/film/clips/studio/audio/X07-asmr-counter-foley.mp3`, `../../../../../media/film/clips/studio/audio/X26-choir-of-clocks-bed.mp3`, `../../../../../media/film/clips/studio/audio/X18-send-the-link.mp3`
 
 ## Files
 
 | File | Experiment | Kind |
 | --- | --- | --- |
-| `X06-radio-play.mp3` | X6 | mixed radio play |
-| `X07-asmr-counter-foley.mp3` | X7 | Foley bed |
-| `X08-T01.mp3` … `X08-T10.mp3` | X8 | proverb + room tone |
-| `X09-binaural-walk.mp3` | X9 | binaural mix |
-| `X17-meant.mp3` / `X17-heard.mp3` | X17 | split VO |
-| `X18-send-the-link.mp3` | X18 | ask line |
-| `X26-choir-of-clocks-bed.mp3` | X26 | clock bed |
+| `../../../../../media/film/clips/studio/audio/X06-radio-play.mp3` | X6 | mixed radio play |
+| `../../../../../media/film/clips/studio/audio/X07-asmr-counter-foley.mp3` | X7 | Foley bed |
+| `../../../../../media/film/clips/studio/audio/X08-T01.mp3` … `../../../../../media/film/clips/studio/audio/X08-T10.mp3` | X8 | proverb + room tone |
+| `../../../../../media/film/clips/studio/audio/X09-binaural-walk.mp3` | X9 | binaural mix |
+| `../../../../../media/film/clips/studio/audio/X17-meant.mp3` / `../../../../../media/film/clips/studio/audio/X17-heard.mp3` | X17 | split VO |
+| `../../../../../media/film/clips/studio/audio/X18-send-the-link.mp3` | X18 | ask line |
+| `../../../../../media/film/clips/studio/audio/X26-choir-of-clocks-bed.mp3` | X26 | clock bed |
 
 Stems live under `stems/X0N/`.
 

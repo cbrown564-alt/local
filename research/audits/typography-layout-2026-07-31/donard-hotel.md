@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 2 / Medium 3 / Low 1
 
 ## Screenshots
-- Desktop hero: `screenshots/donard-hotel-desktop-hero.png`
-- Desktop full: `screenshots/donard-hotel-desktop-full.png`
-- Mobile hero: `screenshots/donard-hotel-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-hotel-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-hotel-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/donard-hotel-mobile-hero.png`
 
 ## Issues
 

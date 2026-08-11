@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 4 / Medium 2 / Low 1
 
 ## Screenshots
-- Desktop hero: `screenshots/bettys-butters-desktop-hero.png`
-- Desktop full: `screenshots/bettys-butters-desktop-full.png`
-- Mobile hero: `screenshots/bettys-butters-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/bettys-butters-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/bettys-butters-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/bettys-butters-mobile-hero.png`
 
 ## Issues
 

@@ -125,7 +125,7 @@ reject it. The move works because the house looks *lived in*, not marketed.
 ## Where the reference photographs live now
 
 The hotel's own photographs were moved out of `public/` on 31 July 2026 and
-are held at `research/concepts/hotel-enniskeen/evidence/` — nineteen
+are held at `media/concepts/hotel-enniskeen/evidence/` — nineteen
 frames including `enniskeen-house.jpg`, the original reference behind the day
 plate. They were being served at guessable production URLs while referenced
 nowhere in `src/`, against the privacy decision that the public site carries

@@ -5,9 +5,9 @@
 **Severity summary:** Critical 1 / High 2 / Medium 3 / Low 1
 
 ## Screenshots
-- Desktop hero: `screenshots/cupla-desktop-hero.png`
-- Desktop full: `screenshots/cupla-desktop-full.png`
-- Mobile hero: `screenshots/cupla-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/cupla-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/cupla-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/cupla-mobile-hero.png`
 
 ## Issues
 

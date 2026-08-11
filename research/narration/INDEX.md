@@ -19,12 +19,12 @@ Elder** (`eEzkfaTvgdaH5to7Cn0M`).
 
 | Order | File | Length |
 | --- | --- | --- |
-| 1 | [`trailer/trailer.mp3`](trailer/) | 2:04 |
-| 2 | [`shorts-snags/S1-login-at-the-door.mp3`](shorts-snags/) | 57.5s |
-| 3 | `shorts-snags/S2-are-you-open.mp3` | 60.8s |
-| 4 | `shorts-snags/S3-bell-with-no-clapper.mp3` | 57.2s |
-| 5 | `shorts-snags/S4-best-thing-in-the-footer.mp3` | 62.1s |
-| 6 | `shorts-snags/S5-swap-test.mp3` | 59.5s |
+| 1 | [`../../media/narration/trailer/trailer.mp3`](trailer/) | 2:04 |
+| 2 | [`../../media/narration/shorts-snags/S1-login-at-the-door.mp3`](shorts-snags/) | 57.5s |
+| 3 | `../../media/narration/shorts-snags/S2-are-you-open.mp3` | 60.8s |
+| 4 | `../../media/narration/shorts-snags/S3-bell-with-no-clapper.mp3` | 57.2s |
+| 5 | `../../media/narration/shorts-snags/S4-best-thing-in-the-footer.mp3` | 62.1s |
+| 6 | `../../media/narration/shorts-snags/S5-swap-test.mp3` | 59.5s |
 
 **7 minutes 1 second in total.** The trailer previews the set and ends on the
 swap test; S5 is the swap test in full.
@@ -38,7 +38,7 @@ Without that turn it is five accusations in a row.
 
 | File | Length | Audience |
 | --- | --- | --- |
-| [`long-a-elevation/long-a-elevation-method.mp3`](long-a-elevation/) | 8:31 | a peer studio, or the studio itself |
+| [`../../media/narration/long-a-elevation/long-a-elevation-method.mp3`](long-a-elevation/) | 8:31 | a peer studio, or the studio itself |
 
 The elevation method read in full, from
 [`docs/the-elevation-method.md`](../../docs/the-elevation-method.md). Voice

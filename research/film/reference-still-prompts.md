@@ -19,7 +19,7 @@ resolution as the pipeline allows.
 3. Do not "improve" the canonical descriptors between shots. The whole
    point is that the castle, the hill, the ridge and the streets never
    change.
-4. Save outputs as `research/film/stills/<town>/<NN>-<slug>.png` using the
+4. Save outputs as `media/film/stills/<town>/<NN>-<slug>.png` using the
    filenames given per shot — `research/film/one-day-made-here.md` maps them
    to clips, and the assembly pipeline expects that naming if a still is
    ever used as a poster.
@@ -231,7 +231,7 @@ the source. This is intentionally a different real camera position from 03.
 - Review all twelve side by side at small size: if one keep, ridge or
   street reads differently from its siblings, regenerate that still with
   the master as reference — not a new master.
-- Drop the twelve files into `research/film/stills/<town>/` with the
+- Drop the twelve files into `media/film/stills/<town>/` with the
   filenames above, then generate each Gemini Omni clip conditioned on its
   still plus the shot prompt and film style block from
   `research/film/one-day-made-here.md`.

@@ -8,10 +8,10 @@
 
 | File | What |
 | --- | --- |
-| `trailer-trim.mp3` | 1:35.6, Village Elder, six cuts — **listen to this one** |
-| `trailer.mp3` | 2:04, Village Elder, the full script |
-| `trailer-down-narrator-superseded.mp3` | the first cut, 1:20, kept for the pacing comparison |
-| `raw/` | all three generator outputs |
+| `../../../media/narration/trailer/trailer-trim.mp3` | 1:35.6, Village Elder, six cuts — **listen to this one** |
+| `../../../media/narration/trailer/trailer.mp3` | 2:04, Village Elder, the full script |
+| `../../../media/narration/trailer/trailer-down-narrator-superseded.mp3` | the first cut, 1:20, kept for the pacing comparison |
+| `../../../media/narration/trailer/raw/` | all three generator outputs |
 | [`script.md`](script.md) | both scripts, sources and the honesty check |
 | [`trim-candidates.md`](trim-candidates.md) | the nine cuts offered, and the four lines ruled out |
 
@@ -19,7 +19,7 @@ Voice **Old Irish Village Elder** (`eEzkfaTvgdaH5to7Cn0M`), model `eleven_v3`,
 `stability` 0.5, five audio tags. 1,380 characters.
 
 **Recast 10 August.** The first cut used MM Down Narrator and is kept as
-`trailer-down-narrator-superseded.mp3`. Once §2 settled the set on one
+`../../../media/narration/trailer/trailer-down-narrator-superseded.mp3`. Once §2 settled the set on one
 audience, the trailer had to share the snags' voice — a marketing set in two
 voices is two sets.
 

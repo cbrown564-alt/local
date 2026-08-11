@@ -2,7 +2,7 @@
 
 *10 August 2026. Generation-ready prompts for the eighteen frames in
 [`trailer-visuals-brief.md`](trailer-visuals-brief.md), cut against
-`../narration/trailer/trailer-trim.mp3` (1:35.6). House pattern follows
+`../../media/narration/trailer/trailer-trim.mp3` (1:35.6). House pattern follows
 [`studio-recurring-themes.md`](studio-recurring-themes.md) Stage 4; house rules
 and the A20 edit protocol from
 [`studio-media-experiments.md`](studio-media-experiments.md) apply throughout.*
@@ -16,9 +16,9 @@ and the A20 edit protocol from
 The brief said seven of eighteen shots already exist. That was true of the
 *scenes*, but it understated the still-image archive. Most of the recent
 Codex-generated stills were created in Codex threads and are now also archived
-in [`../media-sprint/codex-generated/2026-08-03--2026-08-10/`](../media-sprint/codex-generated/2026-08-03--2026-08-10/), with source thread IDs in its manifest.
+in [`../../media/media-sprint/codex-generated/2026-08-03--2026-08-10/`](../../media/media-sprint/codex-generated/2026-08-03--2026-08-10/), with source thread IDs in its manifest.
 
-The studio clip frames were also extracted to [`stills/studio/`](stills/studio/)
+The studio clip frames were also extracted to [`../../media/film/stills/studio/`](../../media/film/stills/studio/)
 as nine reference plates. Those plates are separate from the original Codex
 still generations: they are conditioning inputs pulled from the 8-second
 MP4s, not newly generated images.

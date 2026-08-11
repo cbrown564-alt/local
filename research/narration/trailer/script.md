@@ -25,7 +25,7 @@ being unarguable.
 **No place names**, per §3. "Round here" does the work that a town name would.
 
 **Trimmed 10 August** to 1,134 characters / 1:35.6, generated as
-`trailer-trim.mp3`. Six cuts, all of them words already said elsewhere in the
+`../../../media/narration/trailer/trailer-trim.mp3`. Six cuts, all of them words already said elsewhere in the
 piece; the candidate list and the reasoning are in
 [`trim-candidates.md`](trim-candidates.md). The trimmed text is §Script below;
 the original 1,382-character version is kept under §Script as first read. **No

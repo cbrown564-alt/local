@@ -88,11 +88,11 @@ business, owner, testimonial, product claim or customer has been invented.
 ## Central handoff repair — T01 source path
 
 - **Defect:** the first remediation entry used
-  `masters/studio-film/T01-existing-final.png`, which was ambiguous outside the
+  `../../media/media-sprint/masters/studio-film/T01-existing-final.png`, which was ambiguous outside the
   manifest directory and caused the browser upload to stick as an empty
   same-named attachment.
 - **Correction:** staged the uniquely named non-shipping upload source at
-  `/Users/cobro/code/local/research/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
+  `/Users/cobro/code/local/media/media-sprint/central-handoffs/CENTRAL-GV-T01-source-20260810.png`.
 - **Verification:** PNG 1280 × 720 · 801,481 bytes · SHA-256
   `93c8ea60ac8acb0d000aaceb36bfecd0214346ba309a99b9d3bb6c2865e4d216`.
 - **Queue status:** `CENTRAL-GV-T01` remains queued for central Gemini. Confirm
@@ -109,7 +109,7 @@ business, owner, testimonial, product claim or customer has been invented.
 - T01 may still have an in-flight result at Gemini chat
   `937dcb22a3ba3dac`; check it before manually resubmitting.
 - Required return directory:
-  `research/media-sprint/central-handoffs/manual-video/results/`.
+  `media/media-sprint/central-handoffs/manual-video/results/`.
 - **State:** waiting for manually generated result files. No media generated or
   promoted by this documentation handoff.
 

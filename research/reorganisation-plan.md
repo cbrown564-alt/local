@@ -29,7 +29,7 @@ Weight by area:
 | 175 MB | `film/clips` |
 | 64 MB | `film/stills` |
 | 57 MB | `audits/.../screenshots` |
-| 43 MB | `media-sprint/masters` |
+| 43 MB | `../media/media-sprint/masters` |
 
 ## 2. Three separate problems, currently tangled
 
@@ -47,8 +47,8 @@ already named properly. Across all of `research/` there are 68 duplicate groups
 wasting 129 MB.
 
 **(c) The git policy already exists and was applied to two directories.**
-`.gitignore` excludes `research/concepts/*/evidence/` and
-`research/audits/**/screenshots/` — media deliberately kept out of history. That
+`.gitignore` excludes `media/concepts/*/evidence/` and
+`media/audits/**/screenshots/` — media deliberately kept out of history. That
 rule was right, and it was never extended to `film/clips`, `film/stills` or
 `media-sprint/`, which is why 420 MB is in the repo and `.git` is 1.4 GB. **This
 is not a new policy to invent. It is an existing one to finish applying.**

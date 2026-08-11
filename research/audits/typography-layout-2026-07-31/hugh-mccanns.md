@@ -5,9 +5,9 @@
 **Severity summary:** Critical 1 / High 3 / Medium 4 / Low 1
 
 ## Screenshots
-- Desktop hero: `screenshots/hugh-mccanns-desktop-hero.png`
-- Desktop full: `screenshots/hugh-mccanns-desktop-full.png`
-- Mobile hero: `screenshots/hugh-mccanns-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/hugh-mccanns-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/hugh-mccanns-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/hugh-mccanns-mobile-hero.png`
 
 ## Issues
 

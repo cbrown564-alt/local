@@ -10,4 +10,4 @@
 - Disclosure: synthetic
 - Score:
 
-Stems in `stems/X06/`. Mixed file: `X06-radio-play.mp3`.
+Stems in `../../../../../media/film/clips/studio/audio/stems/X06/`. Mixed file: `../../../../../media/film/clips/studio/audio/X06-radio-play.mp3`.

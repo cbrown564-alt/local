@@ -37,34 +37,34 @@ This is the creative-media count. It includes Gemini/other generated scenes, aut
 | `/Users/cobro/code/local/public/media/home/dundrum-film.mp4` | 2026-08-05 · 51.20s · 1920×1080 · 18.92 MiB | assembled generated town film | integrated | yes |
 | `/Users/cobro/code/local/public/media/home/newcastle-film-mobile.mp4` | 2026-08-05 · 22.40s · 1280×720 · 2.33 MiB | assembled generated town film | integrated | yes |
 | `/Users/cobro/code/local/public/media/home/newcastle-film.mp4` | 2026-08-05 · 51.20s · 1920×1080 · 16.63 MiB | assembled generated town film | integrated | yes |
-| `/Users/cobro/code/local/research/film/clips/dundrum/01-curlew-tidal-flats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.47 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/dundrum/02-birds-mudflats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.34 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/dundrum/03-shop-shutter.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.55 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/dundrum/04-cafe-coffee.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.45 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/dundrum/05-dog-walker-bay.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.41 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/dundrum/06-blue-hour-street.mp4` | 2026-08-05 · 8.00s · 1280×720 · 2.01 MiB | generated Dundrum assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/01-surf-beach.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.63 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/02-sunlight-ridge.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.43 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/03-promenade-morning.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.36 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/04-midday-beach.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.49 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/05-harbour-boats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.40 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/newcastle/06-dusk-amusements.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.40 MiB | generated Newcastle assembly source | raw | indirect |
-| `/Users/cobro/code/local/research/film/clips/studio/T01-login-at-the-door.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.84 MiB | login-at-door; pass after edit | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/T04-are-you-open.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.92 MiB | opening hours; pass after edit | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/T07-best-thing-hidden.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.67 MiB | hidden value; soft-fail | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/T10-swap-test.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.83 MiB | swap test; interactive preferred | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X02-cut-paper-shadow-theatre.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.49 MiB | shadow theatre; soft-fail | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X05-rain-on-glass.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.62 MiB | rain glass; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X10-ui-as-weather.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.29 MiB | UI weather; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X16-silent-loop-desk.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | desk loop; retired | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X18-empty-envelope.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | empty envelope; rework | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X19-three-doors.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.31 MiB | three doors; page-only approved | approved | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X20-stamp-vs-tile.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.35 MiB | stamp/tile; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X21-assembly-joinery.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.22 MiB | joinery; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X22-shape-swap.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.67 MiB | shape swap; soft-fail | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X26-choir-of-clocks.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | clocks; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/X27-nicer-dissolve.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.85 MiB | dissolve; killed | reserve | no |
-| `/Users/cobro/code/local/research/film/clips/studio/studio-reel-v0.mp4` | 2026-08-07 · 26.00s · 1280×720 · 4.58 MiB | internal sequence proof | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/dundrum/01-curlew-tidal-flats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.47 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/dundrum/02-birds-mudflats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.34 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/dundrum/03-shop-shutter.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.55 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/dundrum/04-cafe-coffee.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.45 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/dundrum/05-dog-walker-bay.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.41 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/dundrum/06-blue-hour-street.mp4` | 2026-08-05 · 8.00s · 1280×720 · 2.01 MiB | generated Dundrum assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/01-surf-beach.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.63 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/02-sunlight-ridge.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.43 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/03-promenade-morning.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.36 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/04-midday-beach.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.49 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/05-harbour-boats.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.40 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/newcastle/06-dusk-amusements.mp4` | 2026-08-05 · 6.02s · 1280×720 · 1.40 MiB | generated Newcastle assembly source | raw | indirect |
+| `/Users/cobro/code/local/media/film/clips/studio/T01-login-at-the-door.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.84 MiB | login-at-door; pass after edit | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/T04-are-you-open.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.92 MiB | opening hours; pass after edit | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/T07-best-thing-hidden.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.67 MiB | hidden value; soft-fail | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/T10-swap-test.mp4` | 2026-08-07 · 8.00s · 1280×720 · 1.83 MiB | swap test; interactive preferred | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X02-cut-paper-shadow-theatre.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.49 MiB | shadow theatre; soft-fail | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X05-rain-on-glass.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.62 MiB | rain glass; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X10-ui-as-weather.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.29 MiB | UI weather; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X16-silent-loop-desk.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | desk loop; retired | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X18-empty-envelope.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | empty envelope; rework | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X19-three-doors.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.31 MiB | three doors; page-only approved | approved | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X20-stamp-vs-tile.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.35 MiB | stamp/tile; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X21-assembly-joinery.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.22 MiB | joinery; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X22-shape-swap.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.67 MiB | shape swap; soft-fail | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X26-choir-of-clocks.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.40 MiB | clocks; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/X27-nicer-dissolve.mp4` | 2026-08-07 · 10.01s · 1280×720 · 2.85 MiB | dissolve; killed | reserve | no |
+| `/Users/cobro/code/local/media/film/clips/studio/studio-reel-v0.mp4` | 2026-08-07 · 26.00s · 1280×720 · 4.58 MiB | internal sequence proof | reserve | no |
 
 ## 2. Native filmed/source clips — 0
 
@@ -118,8 +118,8 @@ No file in scope is documented as native camera footage. The Dundrum/Newcastle s
 
 ## Raw and return locations
 
-- `/Users/cobro/code/local/research/media-sprint/central-handoffs/manual-video/results/`: empty. No new Local browser video was expected.
-- `/Users/cobro/Downloads/`: 117 recent videos across multiple projects. Local’s canonical studio manifest names 15 originals; ingested copies exist under `/Users/cobro/code/local/research/film/clips/studio/`.
+- `/Users/cobro/code/local/media/media-sprint/central-handoffs/manual-video/results/`: empty. No new Local browser video was expected.
+- `/Users/cobro/Downloads/`: 117 recent videos across multiple projects. Local’s canonical studio manifest names 15 originals; ingested copies exist under `/Users/cobro/code/local/media/film/clips/studio/`.
 - `/Users/cobro/Documents/Codex/2026-08-09/realtime-voice-chat-4/outputs/`: no recent video found.
 
 ### Known Local raw originals still outside the project

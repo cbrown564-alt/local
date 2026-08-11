@@ -18,7 +18,7 @@ that no longer appear anywhere in `src/`.
 
 ## Codex image recovery archive (10 August 2026)
 
-- `research/media-sprint/codex-generated/2026-08-03--2026-08-10/` — **research
+- `media/media-sprint/codex-generated/2026-08-03--2026-08-10/` — **research
   masters only**, recovered from the local Codex generated-image cache. It
   contains 131 PNG outputs from ten Mourne Made Codex threads covering the
   coastal sequence, X25, studio references, concept move images, the owner
@@ -35,18 +35,18 @@ that no longer appear anywhere in `src/`.
   (5 August 2026). Town hero films, one per town (Dundrum, Newcastle), shown in
   prototype E at `/prototypes/home/film/`. Assembled by
   `tools/pipeline/assemble-hero-film.mjs` from twelve Gemini Omni exports
-  (~6s each, padded to 8s) dropped into `research/film/clips/<town>/01–06-*.mp4`
+  (~6s each, padded to 8s) dropped into `media/film/clips/<town>/01–06-*.mp4`
   (treatment and prompts: `research/film/one-day-made-here.md`). Demo
   tone-gradient stand-ins and `.demo` markers removed. The films are
   **generated, not footage**: the hero carries an on-page disclosure
   ("An imagined day … not footage") and the video aria-labels say the same.
   Ambience stems generated 5 August 2026 with ElevenLabs Sound Effects
   (`eleven_text_to_sound_v2`, 10s, `loop: true`) via
-  `pnpm generate:ambience` into `research/film/audio/<town>/`, then mixed to
+  `pnpm generate:ambience` into `media/film/audio/<town>/`, then mixed to
   ~60s `<town>-ambience.mp3` beds by `pnpm assemble:film`. Review notes
   before any promotion off the prototype: (1) Newcastle 03 reads as a
   bike-shop promenade rather than the gardens still in
-  `research/film/stills/newcastle/03-morning-promenade.png`; (2) Dundrum 06
+  `media/film/stills/newcastle/03-morning-promenade.png`; (2) Dundrum 06
   and Newcastle 06 were replaced 5 August 2026 evening with still-locked Omni
   re-renders (`Quiet_village_street_at_blue_…`,
   `Arcade_frontage_during_blue_hour_…`).
@@ -167,7 +167,7 @@ that no longer appear anywhere in `src/`.
 
 - **No generated media is in use.** The selected `IW-MATERIALS` and
   `IW-CHAPTERS` studies remain under
-  `research/media-sprint/masters/impossible-local-website/` and are not loaded
+  `media/media-sprint/masters/impossible-local-website/` and are not loaded
   by `/prototypes/impossible-local/`. They informed the reflective material
   direction only. The shipped visual is Canvas/SVG geometry derived from the
   attributed terrain samples recorded in
@@ -175,7 +175,7 @@ that no longer appear anywhere in `src/`.
 
 ## Studio storytelling bakeoff (7 August 2026)
 
-- `research/film/clips/studio/T*.mp4`, `X*.{png,mp4}` — **held / research only**
+- `media/film/clips/studio/T*.mp4`, `X*.{png,mp4}` — **held / research only**
   (7 August 2026). Format-bakeoff stills and Gemini Omni clips for
   [`research/film/studio-media-experiments.md`](film/studio-media-experiments.md)
   and theme controls from
@@ -188,17 +188,17 @@ that no longer appear anywhere in `src/`.
   ("imagined, not footage") and a reduced-motion poster. Includes X26
   (`X26-choir-of-clocks.{png,mp4}`) and X27 (`X27-nicer-dissolve.mp4`) from
   the same bakeoff evening.
-- `research/film/clips/studio/studio-reel-v0.mp4` — **internal sequence proof**
+- `media/film/clips/studio/studio-reel-v0.mp4` — **internal sequence proof**
   (7 August 2026). A silent FFmpeg concatenation of the existing T01, T04 and
   X18 research exports; no generated frames were added. It tests pacing while
   the source corrections remain open and must not be copied to `public/`.
   Sidecar: `research/film/clips/studio/studio-reel-v0.md`.
-- `research/film/clips/studio/X23-coastal-sequence/X23-*.png` — **retired /
+- `media/film/clips/studio/X23-coastal-sequence/X23-*.png` — **retired /
   research only** (7 August 2026). Twelve GPT-Image stills for X23's proposed
   day-in-the-town mosaic. The fictional generic coastal street weakened the
   studio's local-trust claim, so the set was moved out of `public/` and the
   assembled film was cancelled. Do not promote or regenerate it.
-- `research/film/clips/studio/X25-postcard-fronts/X25-T*.png` — **held /
+- `media/film/clips/studio/X25-postcard-fronts/X25-T*.png` — **held /
   research only** (7 August 2026). Ten GPT-Image 2 departure-beat postcard
   fronts for experiment X25 (one per theme T1–T10), plus contact sheets and
   an unselected T6 v1. Sidecar:
@@ -206,7 +206,7 @@ that no longer appear anywhere in `src/`.
   Object theatre only; no real businesses. Curation advances T04 and T07 to
   A6 print proof and T10 to a hand-delivered leave-behind; T01 is held for a
   face-to-face tone check. The remaining fronts stay research-only.
-- `research/film/clips/studio/X25-postcard-fronts/X25-T*.mp3` — **retired /
+- `media/film/clips/studio/X25-postcard-fronts/X25-T*.mp3` — **retired /
   research only** (7 August 2026). Ten synthetic whispers (theme messages)
   for the matching postcard QR tap-to-hear. ElevenLabs
   `eleven_multilingual_v2`; cast from voice bake-off —
@@ -215,7 +215,7 @@ that no longer appear anywhere in `src/`.
   `tools/pipeline/generate-x25-whispers.mjs`. Disclose as synthetic wherever
   guest-facing. The 7 August curation cut the audio companion; postcard QR
   destinations must not use these files.
-- `research/film/clips/studio/audio/` — **held / research only** (7 August
+- `media/film/clips/studio/audio/` — **held / research only** (7 August
   2026). Studio bakeoff VO + Foley for X6–X9, X17, X18, X26. ElevenLabs
   `eleven_multilingual_v2` (speech) and `eleven_text_to_sound_v2` (beds).
   Voices: MM Harbour Whisper, MM Rain Glass, MM Slate Narrator, MM Harbour
@@ -429,25 +429,25 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
 - `public/media/concepts/castle-farm/castle-farm-delivery-round-plate.png` — **in use** (generated and revised 5 August 2026). AI-generated hand-drawn ink-and-gouache route plate made with the built-in OpenAI image generation tool for Castle Farm move 5. It uses only towns named in the farm's published schedule and arranges Tuesday, Wednesday, Thursday and Friday clockwise; it is an indicative drawing, not a survey, navigational map or exact route record.
 - `public/media/concepts/newcastle-dental/newcastle-dental-calm-room-plate.png` — **concept asset** (generated 5 August 2026). AI-generated hand-drawn periwinkle room illustration made with the built-in OpenAI image generation tool for Newcastle Family Dental Care move 4. It imagines a calm treatment room with a chair by a window and plants; it is not a photograph or evidence of the practice's actual interior, facilities or furnishings.
 
-- `research/film/stills/dundrum/01-pre-dawn-bay.png`, `02-first-light-mudflats.png`, `04-cafe-window-bay.png` and `05-golden-hour-castle.png` — **internal film reference stills** (regenerated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real view "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum" (Geograph 7677782, CC BY-SA 2.0) and Eschadew's supporting castle detail "Dundrum Castle from outside" (CC BY-SA 4.0). The frames preserve the real camera direction, tidal-channel pattern, village placement, wooded hill and the castle's small distant relationship to the bay while changing light, mist, birds, a tiny walker and, for 04, adding a generic café interior. Shots 02 and 05 were edited from the new 01 master for continuity. They remain generated visualisations, not documentary photographs or evidence of exact weather, activity or a real café view.
-- `research/film/stills/dundrum/03-morning-main-street.png` and `06-blue-hour-street.png` — **internal film reference stills** (regenerated twice 5 August 2026 after local-accuracy review). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's real photograph "Crawling Sunday afternoon traffic in Main Street, Dundrum" (Geograph 4140783, CC BY-SA 2.0). They preserve one documented camera position: the bus-stop and road markings, exact stepped building row, grey three-storey quoined house, roofs, chimneys, doors, windows, church tower, lamps and overhead wires. Shot 03 changes traffic, rain and early-morning light; 06 is a blue-hour edit of 03. The tool followed the source's 4:3 frame, so both were centre-cropped identically to 1440×810 after generation; the crop added no content. Four Eric Jones photographs from 11 April 2025 were also checked to identify the rejected first pair's errors: it had conflated separate stretches of Main Street, invented a continuous shop row, and changed locally recognisable façades. Those 2025 images were not composited into the replacement pair. The fictional castle-at-the-end-of-the-street geography remains explicitly removed because the castle is not visible from this viewpoint. These are generated visualisations, not documentary photographs or evidence of exact businesses or activity. Source files and attribution: `research/film/stills/dundrum/sources/README.md`.
-- `research/film/stills/newcastle/01-pre-dawn-beach.png`, `02-first-light-ridge.png` and `04-midday-beach.png` — **internal film reference stills** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real photograph "Beach and old groynes with view towards Newcastle, Co Down" (Geograph 7677784, CC BY-SA 2.0). The frames preserve one southwest beach camera position: old groyne posts, low-tide pools and sand, Murlough dune edge and rock armour, distant town skyline and the true Mourne profile. Shots 02 and 04 are atmosphere edits of 01. The old prompt's fictional open surf and enlarged Victorian town are explicitly removed. These remain generated visualisations, not documentary photographs or evidence of exact weather or activity.
-- `research/film/stills/newcastle/03-morning-promenade.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's March 2025 photograph "Public gardens on the Central Promenade at Newcastle" (Geograph 8011492, CC BY-SA 2.0). It preserves the real gardens, railings, path, mature trees, modern lamp columns, breakwater, road, houses and mountain relationship while changing rain, traffic and early-morning light. It does not invent the old prompt's Victorian shop row, bike shop or ornate lamps.
-- `research/film/stills/newcastle/05-golden-harbour.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, using Eric Jones's 2019 Newcastle Harbour photographs (Geograph 6138550 as the primary camera position and 6138558 as a boat-and-wall reference, CC BY-SA 2.0). It preserves the strongly tidal low-water basin, grounded boats, harbour walls, houses and steep wooded mountain instead of replacing them with boats floating on generic calm water.
-- `research/film/stills/newcastle/06-dusk-amusements.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's October 2025 photograph "Kent Amusements overlooking the Central Promenade, Newcastle" (Geograph 8170874, CC BY-SA 2.0). It preserves the current red-and-grey façade, fascia, glass frontage, yellow accessibility ramp, signs, road and perspective while changing only traffic, rain and blue-hour light. It intentionally uses a separate real camera position from 03 rather than inserting a fictional arcade into the promenade gardens. All six Newcastle outputs were cropped without content addition and normalised to 1600×900. Full source roles and attribution: `research/film/stills/newcastle/sources/README.md`.
+- `media/film/stills/dundrum/01-pre-dawn-bay.png`, `02-first-light-mudflats.png`, `04-cafe-window-bay.png` and `05-golden-hour-castle.png` — **internal film reference stills** (regenerated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real view "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum" (Geograph 7677782, CC BY-SA 2.0) and Eschadew's supporting castle detail "Dundrum Castle from outside" (CC BY-SA 4.0). The frames preserve the real camera direction, tidal-channel pattern, village placement, wooded hill and the castle's small distant relationship to the bay while changing light, mist, birds, a tiny walker and, for 04, adding a generic café interior. Shots 02 and 05 were edited from the new 01 master for continuity. They remain generated visualisations, not documentary photographs or evidence of exact weather, activity or a real café view.
+- `media/film/stills/dundrum/03-morning-main-street.png` and `06-blue-hour-street.png` — **internal film reference stills** (regenerated twice 5 August 2026 after local-accuracy review). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's real photograph "Crawling Sunday afternoon traffic in Main Street, Dundrum" (Geograph 4140783, CC BY-SA 2.0). They preserve one documented camera position: the bus-stop and road markings, exact stepped building row, grey three-storey quoined house, roofs, chimneys, doors, windows, church tower, lamps and overhead wires. Shot 03 changes traffic, rain and early-morning light; 06 is a blue-hour edit of 03. The tool followed the source's 4:3 frame, so both were centre-cropped identically to 1440×810 after generation; the crop added no content. Four Eric Jones photographs from 11 April 2025 were also checked to identify the rejected first pair's errors: it had conflated separate stretches of Main Street, invented a continuous shop row, and changed locally recognisable façades. Those 2025 images were not composited into the replacement pair. The fictional castle-at-the-end-of-the-street geography remains explicitly removed because the castle is not visible from this viewpoint. These are generated visualisations, not documentary photographs or evidence of exact businesses or activity. Source files and attribution: `research/film/stills/dundrum/sources/README.md`.
+- `media/film/stills/newcastle/01-pre-dawn-beach.png`, `02-first-light-ridge.png` and `04-midday-beach.png` — **internal film reference stills** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real photograph "Beach and old groynes with view towards Newcastle, Co Down" (Geograph 7677784, CC BY-SA 2.0). The frames preserve one southwest beach camera position: old groyne posts, low-tide pools and sand, Murlough dune edge and rock armour, distant town skyline and the true Mourne profile. Shots 02 and 04 are atmosphere edits of 01. The old prompt's fictional open surf and enlarged Victorian town are explicitly removed. These remain generated visualisations, not documentary photographs or evidence of exact weather or activity.
+- `media/film/stills/newcastle/03-morning-promenade.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's March 2025 photograph "Public gardens on the Central Promenade at Newcastle" (Geograph 8011492, CC BY-SA 2.0). It preserves the real gardens, railings, path, mature trees, modern lamp columns, breakwater, road, houses and mountain relationship while changing rain, traffic and early-morning light. It does not invent the old prompt's Victorian shop row, bike shop or ornate lamps.
+- `media/film/stills/newcastle/05-golden-harbour.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, using Eric Jones's 2019 Newcastle Harbour photographs (Geograph 6138550 as the primary camera position and 6138558 as a boat-and-wall reference, CC BY-SA 2.0). It preserves the strongly tidal low-water basin, grounded boats, harbour walls, houses and steep wooded mountain instead of replacing them with boats floating on generic calm water.
+- `media/film/stills/newcastle/06-dusk-amusements.png` — **internal film reference still** (generated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Eric Jones's October 2025 photograph "Kent Amusements overlooking the Central Promenade, Newcastle" (Geograph 8170874, CC BY-SA 2.0). It preserves the current red-and-grey façade, fascia, glass frontage, yellow accessibility ramp, signs, road and perspective while changing only traffic, rain and blue-hour light. It intentionally uses a separate real camera position from 03 rather than inserting a fictional arcade into the promenade gardens. All six Newcastle outputs were cropped without content addition and normalised to 1600×900. Full source roles and attribution: `research/film/stills/newcastle/sources/README.md`.
 
 Every page carrying one of these labels it as generated on the page itself.
 
 - `donard-hotel-exterior-visualisation.jpg` — **in use.** AI-generated faithful
   visualisation based on Eric Jones's 24 March 2023 photograph of The Donard's
   Main Street facade, licensed CC BY-SA 2.0 and retained at
-  `research/concepts/donard-hotel/evidence/source-eric-jones-2023.jpg`.
+  `media/concepts/donard-hotel/evidence/source-eric-jones-2023.jpg`.
   The prompt preserved the brick facade, corner turret, roofline, window rhythm,
   perspective and neighbouring edges; it raised the winter shutters, removed
   parked cars and changed the light to a clear late-summer afternoon. The first
   viewport labels it a faithful visualisation and links both the source and
   licence.
-- `castle-farm-weekly-box-faithful.webp` — **not in use since 5 August 2026.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `research/concepts/castle-farm/evidence/castle-farm-box.jpg`. Replaced on the concept by `castle-farm-weekly-table-illustration.png` when move 4 made the week's table the theatre; still held as the earlier box-still reference.
+- `castle-farm-weekly-box-faithful.webp` — **not in use since 5 August 2026.** AI-generated faithful visualisation based on Castle Farm's published mixed-box photograph retained at `media/concepts/castle-farm/evidence/castle-farm-box.jpg`. Replaced on the concept by `castle-farm-weekly-table-illustration.png` when move 4 made the week's table the theatre; still held as the earlier box-still reference.
 - `dundrum-inn-faithful-exterior.jpg` — **in use.** AI-generated faithful visualisation based on the Inn's own exterior hero photograph, downloaded from its GuestDiary CDN on 26 July 2026 and held privately at `.tmp/concept-subject-references/dundrum-inn-exterior-reference.jpg`. The prompt preserved the yellow-and-black terraced façade, shopfront, roof and window rhythm, blue-edged awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring blue/purple fronts. It changed only lighting, minor street clutter and framing; it expressly forbade an invented bay view, mountains, garden, hotel extension or new architecture. The concept labels the image as generated in the first viewport and its alt text repeats the reference boundary. The rejected first attempt (`dundrum-inn-hero-generated-v1.png`) invented a cream country inn and false bay setting and was removed.
 - `dundrum-inn-faithful-exterior-blue-hour.jpg` — **in use** (1 August 2026).
   AI-generated blue-hour sibling of the faithful exterior visualisation above,
@@ -629,7 +629,7 @@ Credited publicly in `public/media/place/ATTRIBUTION.md`. Status here.
   Jones, “The Main Street facade of the Donard Hotel,” 24 March 2023, CC BY-SA
   2.0. The public concept credits the photographer and licence beside the hero;
   the source file is held under
-  `research/concepts/donard-hotel/evidence/`, not shipped as concept
+  `media/concepts/donard-hotel/evidence/`, not shipped as concept
   photography.
 
 ## Withdrawn from the deploy boundary, still held
@@ -659,15 +659,15 @@ or caches from the public period.
   is the reference behind `enniskeen-faithful-house.png`; the room and
   interior frames are the references behind the faithful Room 6 and Room 9
   visualisations. Held at
-  `research/concepts/hotel-enniskeen/evidence/`.
+  `media/concepts/hotel-enniskeen/evidence/`.
 - `bucks-head-hearth.jpg` — the pub's own hearth photograph, copied from its
   public site, and the reference behind `bucks-head-faithful-hearth.png`. The
   v1.1 evidence note already recorded that public-use permission was never
   documented, which made its presence in `public/` the weaker position. Held
-  at `research/concepts/bucks-head/evidence/`.
+  at `media/concepts/bucks-head/evidence/`.
 - `castle-farm-box.jpg` — Castle Farm's published mixed-box photograph, the
   reference behind `castle-farm-weekly-box-faithful.webp`. Held at
-  `research/concepts/castle-farm/evidence/`. The sourcing sentence in
+  `media/concepts/castle-farm/evidence/`. The sourcing sentence in
   the Generated imagery entry above was updated to the new path in the same
   commit.
 
@@ -697,7 +697,7 @@ by nothing, still answers at a guessable production URL. The Buck's Head
 captures document a site the business is in the middle of replacing, and the
 Murdock Brothers pair belongs to a concept with no public transformation page
 at all. The evidence they were made from is unaffected —
-it lives under `research/concepts/<slug>/evidence/` per ADR-0003, and the walk
+it lives under `media/concepts/<slug>/evidence/` per ADR-0003, and the walk
 counts they support are quoted from `research/pipeline/verifications.json` and
 `.scratch/renders/`, not from these files.
 
@@ -728,7 +728,7 @@ outside git records them.
 ## Concept essence production seeds — approved for publication
 
 Generated 10 August 2026 with the built-in OpenAI image tool and held under
-`research/concepts/*/essence-media/`. The set contains ten 16:9 film source
+`media/concepts/*/essence-media/`. The set contains ten 16:9 film source
 stills and nine complete composition-matched sequences totalling thirty-four
 frames. The Cúpla seed is a research copy of the already recorded
 `public/media/concepts/cupla/cupla-twin-cups.png`; the other forty-three images
@@ -776,7 +776,7 @@ disclosure, and provide an explicit play/pause control.
 ## Two-day media sprint research masters — held outside public
 
 Generated 9–10 August 2026 with the built-in OpenAI image tool and held under
-`research/media-sprint/masters/`. These are synthetic prototype or general
+`media/media-sprint/masters/`. These are synthetic prototype or general
 studio research ingredients, not evidence about a real business, customer,
 stock level, route, current condition or commercial result. The job prompts,
 reference roles, dimensions and advance/reserve decisions live beside them in
@@ -824,9 +824,9 @@ Four approved studio object-theatre still derivatives are in use on
 `/where-it-fails/`:
 
 - `public/media/studio/login-at-the-door-settled.png`, copied from
-  `research/media-sprint/masters/studio-film/T01-existing-final.png`;
+  `media/media-sprint/masters/studio-film/T01-existing-final.png`;
 - `public/media/studio/are-you-open-settled.png`, copied from
-  `research/media-sprint/masters/studio-film/T04-corrected-poster-v1.png`;
+  `media/media-sprint/masters/studio-film/T04-corrected-poster-v1.png`;
 - `public/media/studio/show-the-change-closed.png` and
   `show-the-change-open.png`, copied from the matching
   `X18-reworked-{before,after}-v1.png` masters.
@@ -834,20 +834,20 @@ Four approved studio object-theatre still derivatives are in use on
 Five silent public page trials were prepared on 10 August 2026:
 
 - `public/media/studio/login-at-the-door.{mp4,webm}`, derived from
-  `research/film/clips/studio/T01-login-at-the-door.mp4`;
+  `media/film/clips/studio/T01-login-at-the-door.mp4`;
 - `public/media/studio/are-you-open.{mp4,webm}`, the corrected T04 edit that
   resolves onto the numeral-free settled frame;
 - `public/media/studio/bell-no-clapper.{mp4,webm}`, derived from
-  `research/film/clips/studio/T05-bell-no-clapper.mp4`, with
+  `media/film/clips/studio/T05-bell-no-clapper.mp4`, with
   `bell-no-clapper-settled.png` extracted from its final half-second. The
   research master was generated from `T05-bell-no-clapper-reference-v2.png`;
   its generated audio is retained only in research and removed from public
   delivery;
 - `public/media/studio/best-thing-hidden.{mp4,webm}`, derived from
-  `research/film/clips/studio/T07-best-thing-hidden.mp4`, with
+  `media/film/clips/studio/T07-best-thing-hidden.mp4`, with
   `best-thing-hidden-settled.png` extracted from its final half-second;
 - `public/media/studio/swap-test.{mp4,webm}`, derived from
-  `research/film/clips/studio/T10-swap-test.mp4`, with
+  `media/film/clips/studio/T10-swap-test.mp4`, with
   `swap-test-settled.png` extracted from frame 120 at 5.00 seconds. The public
   edit ends on that seated nameplate and excludes the incorrect movement in
   the source's final three seconds.
@@ -867,7 +867,7 @@ media-sprint records.
 ### Reusable tactile transition components
 
 Also generated 9 August 2026 with the built-in OpenAI image tool and held under
-`research/media-sprint/masters/transition-components/`:
+`media/media-sprint/masters/transition-components/`:
 
 - `paper-to-steel-reveal-source-v1.png` — blank fibrous paper curling away
   from a cool steel plane, intended as a draft/live wipe or compositing mask;

@@ -9,7 +9,7 @@ Attribution-ShareAlike 2.0 and were downloaded 5 August 2026.
 
 ## Generation inputs
 
-### `real-beach-town-view.jpg`
+### `../../../../../media/film/stills/newcastle/sources/real-beach-town-view.jpg`
 
 "Beach and old groynes with view towards Newcastle, Co Down" by Colin Park,
 photographed 8 September 2023, Geograph 7677784.
@@ -20,7 +20,7 @@ photographed 8 September 2023, Geograph 7677784.
   and 04: southwest camera direction, groyne posts, low-tide channels and sand,
   dune edge, rock armour, town skyline and mountain profile.
 
-### `real-central-promenade-2025.jpg`
+### `../../../../../media/film/stills/newcastle/sources/real-central-promenade-2025.jpg`
 
 "Public gardens on the Central Promenade at Newcastle" by Eric Jones,
 photographed 24 March 2025, Geograph 8011492.
@@ -31,7 +31,7 @@ photographed 24 March 2025, Geograph 8011492.
   railings, curved path, lawn, trees, modern lamp columns, road, houses and
   mountain relationship.
 
-### `real-harbour-evening.jpg` and `real-harbour-boats.jpg`
+### `../../../../../media/film/stills/newcastle/sources/real-harbour-evening.jpg` and `../../../../../media/film/stills/newcastle/sources/real-harbour-boats.jpg`
 
 Eric Jones photographs of Newcastle Harbour from April 2019, Geograph 6138550
 and 6138558.
@@ -39,12 +39,12 @@ and 6138558.
 - Primary record: https://www.geograph.org.uk/photo/6138550
 - Supporting record: https://www.geograph.org.uk/photo/6138558
 - Licence: https://creativecommons.org/licenses/by-sa/2.0/
-- Role: `real-harbour-evening.jpg` supplies the camera position and geography
-  for 05; `real-harbour-boats.jpg` supports the real boat, wall and tidal
+- Role: `../../../../../media/film/stills/newcastle/sources/real-harbour-evening.jpg` supplies the camera position and geography
+  for 05; `../../../../../media/film/stills/newcastle/sources/real-harbour-boats.jpg` supports the real boat, wall and tidal
   detail. The generated still keeps the basin at low water and the boats
   grounded.
 
-### `real-kent-amusements-2025.jpg`
+### `../../../../../media/film/stills/newcastle/sources/real-kent-amusements-2025.jpg`
 
 "Kent Amusements overlooking the Central Promenade, Newcastle" by Eric Jones,
 photographed 14 October 2025, Geograph 8170874.
@@ -59,12 +59,12 @@ photographed 14 October 2025, Geograph 8170874.
 The following photographs were checked to catch local errors but were not used
 as generation inputs for the final stills:
 
-- `real-beach-mournes.jpg` — beach, promenade furniture, town and Mourne
+- `../../../../../media/film/stills/newcastle/sources/real-beach-mournes.jpg` — beach, promenade furniture, town and Mourne
   relationship; Geograph 3682054.
-- `real-beach-2020.jpg` — northern beach and seafront; Geograph 5160224.
-- `real-central-promenade.jpg` — a wider Central Promenade street comparison;
+- `../../../../../media/film/stills/newcastle/sources/real-beach-2020.jpg` — northern beach and seafront; Geograph 5160224.
+- `../../../../../media/film/stills/newcastle/sources/real-central-promenade.jpg` — a wider Central Promenade street comparison;
   Geograph 5656315.
-- `real-kent-amusements.jpg` — older configuration of the same arcade;
+- `../../../../../media/film/stills/newcastle/sources/real-kent-amusements.jpg` — older configuration of the same arcade;
   retained only to distinguish lasting structure from later frontage changes.
 
 ## Generated derivatives

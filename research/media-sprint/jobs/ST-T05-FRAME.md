@@ -11,7 +11,7 @@ tray ready for the later card action.
 
 - **Date:** 10 August 2026
 - **Tool:** built-in OpenAI image generation
-- **Output:** `../masters/studio-film/T05-bell-no-clapper-reference-v2.png`
+- **Output:** `../../../media/media-sprint/masters/studio-film/T05-bell-no-clapper-reference-v2.png`
 - **Status:** candidate video-reference frame; not public
 
 ## Prompt summary

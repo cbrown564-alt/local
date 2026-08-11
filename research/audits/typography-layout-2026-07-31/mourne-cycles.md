@@ -5,9 +5,9 @@
 **Severity summary:** Critical 0 / High 3 / Medium 3 / Low 2
 
 ## Screenshots
-- Desktop hero: `screenshots/mourne-cycles-desktop-hero.png`
-- Desktop full: `screenshots/mourne-cycles-desktop-full.png`
-- Mobile hero: `screenshots/mourne-cycles-mobile-hero.png`
+- Desktop hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/mourne-cycles-desktop-hero.png`
+- Desktop full: `../../../media/audits/typography-layout-2026-07-31/screenshots/mourne-cycles-desktop-full.png`
+- Mobile hero: `../../../media/audits/typography-layout-2026-07-31/screenshots/mourne-cycles-mobile-hero.png`
 
 ## Issues
 
