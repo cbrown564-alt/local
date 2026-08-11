@@ -28,6 +28,173 @@ that no longer appear anywhere in `src/`.
   screenshots were excluded. These copies are not product approval and are
   not wired to guest routes.
 
+## Shorts snags — S1 still pass (11 August 2026)
+
+- `media/film/stills/shorts-snags/S1/s1-03-double-frost-v0.png` and
+  `s1-04-boots-turn-away-v0.png`, `s1-05-owner-counter-v0.png`,
+  `s1-06-neighbour-open-v0.png`, `s1-07-stripped-away-v0.png` and
+  `s1-08-clear-pane-v1.png` — **research masters only**, generated with the
+  built-in Codex image tool on 11 August 2026 as the first still pass for S1 —
+  “The login at the door” — from
+  [`research/film/shorts-snags-visuals-brief.md`](film/shorts-snags-visuals-brief.md).
+  The prompts were anchored to the existing trailer stills
+  `media/film/stills/trailer/03-reimagined.png` and
+  `04-frosted-login-wall.png`. They depict an imagined miniature clay and
+  paper-craft shopfront, not a real business, place, person, website or
+  customer interaction. Shot 08 is a reroll of a frame with a stray corner
+  mark; the selected v1 frame has no visible mark, text, logo or identifiable
+  signage.
+  These frames are not deployed, approved for motion, or approved for
+  guest-facing use.
+
+- `media/film/clips/shorts-snags/S1/S1-stills-v0.mp4` — **research-only
+  slideshow edit**, assembled 11 August 2026 with FFmpeg from the eight S1
+  stills and `media/narration/shorts-snags/S1-login-at-the-door.mp3`, timed to
+  the brief's 57.4-second spine. This is a still-under-voice proof, not motion
+  footage and not approved for guest-facing use.
+
+## Shorts snags — S2 first still pass (11 August 2026)
+
+- `media/film/stills/shorts-snags/S2/s2-01-closed-umbrella-v0.png` and
+  `s2-02-translate-strip-poster-v0.png`, plus the six remaining S2 stills —
+  **research masters only**, generated
+  with the built-in Codex image tool on 11 August 2026 as the first continuity
+  pass for S2 — “Nobody answers ‘are you open?’” — from
+  [`research/film/shorts-snags-visuals-brief.md`](film/shorts-snags-visuals-brief.md)
+  and the working prompts in
+  [`research/film/shorts-snags-s2-prompts.md`](film/shorts-snags-s2-prompts.md).
+  The new object is a generic hours-board / clock-world shopfront, kept
+  consistent with the existing T04 controls. The frames depict an imagined
+  miniature clay set, not a real business, place, person or customer
+  interaction. No text, logos or identifiable signage are present. Shots 07
+  and 08 use targeted v1 replacements to remove the old strip from the fixed
+  fascia. These frames are not deployed, approved for motion, or approved for
+  guest-facing use.
+
+- `media/film/clips/shorts-snags/S2/S2-stills-v0.mp4` — **research-only
+  slideshow edit**, assembled 11 August 2026 with FFmpeg from the eight S2
+  stills and `media/narration/shorts-snags/S2-are-you-open.mp3`, timed to the
+  brief's 60.8-second spine. This is a still-under-voice proof, not motion
+  footage and not approved for guest-facing use.
+
+## Shorts snags — S3 first continuity test (11 August 2026)
+
+- `media/film/stills/shorts-snags/S3/s3-02-bell-tap-v0.png` and
+  `s3-02-bell-tap-v1.png` — **research masters only**, generated with the
+  built-in Codex image tool on 11 August
+  2026 as the first continuity test for S3 — “The bell with no clapper” — from
+  [`research/film/shorts-snags-s3-prompts.md`](film/shorts-snags-s3-prompts.md).
+  Both frames use `media/film/stills/trailer/08-silent-bell.png` as a visual
+  reference for the recurring brass bell, slate ledge and clay object-theatre
+  palette. It depicts an imagined miniature shopfront, not a real business,
+  place, person, website or customer interaction. No text, logos or readable
+  signage are present. This frame is not deployed, approved for motion, or
+  approved for guest-facing use.
+
+## Shorts snags — S3 first still pass (11 August 2026)
+
+- `media/film/stills/shorts-snags/S3/s3-01-note-at-door-v0.png` and
+  `s3-03-disconnected-clapper-v0.png` through
+  `s3-08-clapper-returned-v0.png` — **research masters only**, generated with
+  the built-in Codex image tool on 11 August 2026 for the first full S3 still
+  pass. The frames use the trailer bell still and S3 shot 02 v1 as continuity
+  references. They depict an imagined miniature clay and paper-craft
+  shopfront, not a real business, place, person, website or customer
+  interaction. No text, logos or readable signage are present. These frames
+  are not deployed, approved for motion, or approved for guest-facing use.
+  Shots 03 and 05 are held as composition tests and may need a cleanup pass if
+  the cord motif reads too literally.
+
+- `media/film/clips/shorts-snags/S3/S3-stills-v0.mp4` — **research-only
+  slideshow edit**, assembled 11 August 2026 with FFmpeg from the eight S3
+  stills and `media/narration/shorts-snags/S3-bell-with-no-clapper.mp3`, timed
+  to the brief's 57.2-second spine. This is a still-under-voice proof, not
+  motion footage and not approved for guest-facing use.
+
+- `media/film/clips/shorts-snags/S3/S3-stills-v1.mp4` — **research-only
+  slideshow edit**, rebuilt 11 August 2026 with the two cord-motif cleanup
+  frames and the same narration/timing. This remains a still-under-voice
+  proof, not motion footage and not approved for guest-facing use.
+
+## Shorts snags — S3 cord-motif cleanup (11 August 2026)
+
+- `media/film/stills/shorts-snags/S3/s3-03-disconnected-clapper-v1.png` and
+  `s3-05-cord-plate-v1.png` — **research masters only**, generated with the
+  built-in Codex image tool as a cleanup pass on the first S3 still sequence.
+  The literal cord/telephone suggestion was replaced with a simple abstract
+  brass loop. These frames remain imagined miniature clay object theatre, not
+  a real business, place, person, website or customer interaction. They are
+  not deployed, approved for motion, or approved for guest-facing use.
+
+## Shorts snags — S3 literal-phone revision (11 August 2026)
+
+- `media/film/stills/shorts-snags/S3/s3-03-disconnected-clapper-v2.png` and
+  `s3-05-phone-v1.png` — **research masters only**, generated with the built-in
+  Codex image tool as a direction change after review. The abstract brass-loop
+  motif was replaced with a recognisable vintage telephone, while dial details
+  remain unreadable and contain no visible lettering. These frames remain
+  imagined miniature clay object theatre, not a real business, place, person,
+  website or customer interaction. They are not deployed, approved for motion,
+  or approved for guest-facing use.
+
+## Shorts snags — S4 first continuity test (11 August 2026)
+
+- `media/film/stills/shorts-snags/S4/s4-01-three-shopfronts-v0.png`,
+  `s4-02-paper-card-v0.png`, `s4-03-scroll-past-v0.png`,
+  `s4-04-low-plaque-v0.png`, `s4-05-plaque-dark-v0.png`,
+  `s4-06-medal-shelf-v0.png`, `s4-07-note-between-v0.png` and
+  `s4-08-plaque-window-v0.png` — **research masters only**, generated with the
+  built-in Codex image tool on 11 August 2026 as the first continuity test for
+  S4 — “The best thing about you is in the footer” — from
+  [`research/film/shorts-snags-visuals-brief.md`](film/shorts-snags-visuals-brief.md)
+  and the working prompts in
+  [`research/film/shorts-snags-s4-prompts.md`](film/shorts-snags-s4-prompts.md).
+  The frames depict an imagined miniature clay set, not a real business,
+  place, person, website or customer interaction. No text, logos or readable
+  signage are present. These frames are not deployed, approved for motion, or
+  approved for guest-facing use.
+
+- `media/film/clips/shorts-snags/S4/S4-stills-v0.mp4` — **research-only
+  slideshow edit**, assembled 11 August 2026 with FFmpeg from the eight S4
+  stills and `media/narration/shorts-snags/S4-best-thing-in-the-footer.mp3`,
+  timed to the brief's 62.1-second spine. This is a still-under-voice proof,
+  not motion footage and not approved for guest-facing use.
+
+## Shorts snags — S5 first continuity test (11 August 2026)
+
+- `media/film/stills/shorts-snags/S5/s5-01-bare-fascia-v1.png` and
+  `s5-03-nameplate-lifting-v1.png` — **research masters only**, generated with
+  the built-in Codex image tool on 11 August 2026 as the selected reroll of the
+  first continuity test for S5 — “The swap test” — from
+  [`research/film/shorts-snags-visuals-brief.md`](film/shorts-snags-visuals-brief.md)
+  and the working prompts in
+  [`research/film/shorts-snags-s5-prompts.md`](film/shorts-snags-s5-prompts.md).
+  The frames use the trailer’s blank-nameplate stills and T10 studio stills as
+  visual references for the recurring clay shopfront world. They depict an
+  imagined miniature clay set, not a real business, place, person, website or
+  customer interaction. No text, logos or identifiable signage are present.
+  These frames are not deployed, approved for motion, or approved for
+  guest-facing use. The v0 attempts are retained beside them as failed
+  continuity tests: shot 01 retained the brass plate and shot 03 omitted it.
+
+- `media/film/stills/shorts-snags/S5/s5-02-paper-card-v0.png`,
+  `s5-04-paper-card-unchanged-v0.png`, `s5-05-nameplate-marginal-v0.png`,
+  `s5-06-finished-shopfront-v0.png`, `s5-07-three-shopfronts-v0.png`,
+  `s5-08-distinctive-fold-v0.png` and `s5-09-fold-and-nameplate-v0.png` —
+  **research masters only**, generated with the built-in Codex image tool on
+  11 August 2026 for the remaining S5 still pass. They use the selected S5
+  continuity pair as references and depict an imagined miniature clay set,
+  not a real business, place, person, website or customer interaction. No
+  text, logos or identifiable signage are present. These frames are not
+  deployed, approved for motion, or approved for guest-facing use.
+
+- `media/film/clips/shorts-snags/S5/S5-stills-v0.mp4` — **research-only
+  slideshow edit**, assembled 11 August 2026 with FFmpeg from the nine S5
+  stills and `media/narration/shorts-snags/S5-swap-test.mp3`, timed to the
+  brief’s 59.4-second spine. The source stills are held for roughly 0:00,
+  0:04, 0:10, 0:15, 0:18, 0:24, 0:32, 0:38 and 0:52. This is a still-under-
+  voice proof, not motion footage and not approved for guest-facing use.
+
 ## Site films ("One Day, Made Here")
 
 - `media/home/<town>-film.{mp4,webm}`, `<town>-film-mobile.{mp4,webm}`,
