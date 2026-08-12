@@ -148,7 +148,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Dundrum",
     "headline": "Show the food.",
     "date": "24 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what shoppers find today. Right: a first screen that shows the butter and the story.",
     "conceptHref": "/concepts/bettys-butters/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -164,22 +164,22 @@ export const transformationDetails = {
     "notesHeading": "Three changes to put the product on the page.",
     "notes": [
       {
-        "title": "Make the business name clear",
-        "body": "The live site is two pages whose navigation still reads Home Page and Our Store, and whose document title is lowercased and generic — the first thing a search result shows.",
-        "change": "A real name and structure, and a first screen that says plainly what the business makes."
+        "title": "Put the butter on the first screen",
+        "body": "Today the site shows almost no product — navigation still reads Home Page and Our Store, and search results get a generic title.",
+        "change": "A clear name, a butter-led opening, and a first screen that says what Betty makes."
       },
       {
-        "title": "Make the offer concrete",
-        "body": "For a business that sells flavoured butter, the site shows no named product with a flavour, size or price. It does include a butter photograph in the hero, but there is no product detail beside it.",
-        "change": "The maker's own butter photograph leads into an illustrative range, ready for real flavours, sizes and prices when supplied."
+        "title": "Show how the shelf could work",
+        "body": "No flavours, sizes or prices are published yet, so shoppers cannot picture the range.",
+        "change": "The maker's own butter photograph leads into an example range, ready for real names and prices when Betty supplies them."
       },
       {
-        "title": "Use the story that is already written",
-        "body": "Restaurant-quality flavours from recipes collected over ten years in professional kitchens are already part of the maker's story, but the message is easy to miss among the site's default navigation.",
-        "change": "Give that founder story room above the range, then make the collection, local delivery and Royal Mail options easy to find."
+        "title": "Lead with the story already written",
+        "body": "Restaurant-quality flavours from ten years in professional kitchens are already Betty's words — easy to miss in the current layout.",
+        "change": "Give that founder story room above the range, with collection, local delivery and Royal Mail easy to find."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Betty's Better Butters website on 24 July 2026, across both of its pages. The concept directly reuses the business's mountain-ring mark and the butter photograph from its homepage, downloaded on 27 July 2026. The founder story — restaurant-quality flavours, over ten years in professional kitchens — the Main Street address and the collection, local delivery and Royal Mail options are the maker's own words. No product names, sizes or prices are published, so the flavours shown in the concept are labelled illustrative — the real range must come from the maker and is never invented. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.bettysbetterbutters.com/\" rel=\"external\">Betty's Better Butters public website</a></li>\n          <li><a href=\"https://www.bettysbetterbutters.com/our-store\" rel=\"external\">Its store page, used to confirm the delivery options</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the maker's plans for the site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Betty's Better Butters website on 24 July 2026. The mountain-ring mark and butter photograph are reused from that site; the founder story, Main Street address and delivery options are the maker's own words.</p>\n        <p>No product names, sizes or prices are published, so the flavours shown are examples of how a range could read — not Betty's real list. Serving plates and cubes are disclosed AI imagery.</p>\n        <p>This was not commissioned or approved by Betty's Better Butters. It is a free website idea: put the food on the page.</p>\n        <ul>\n          <li><a href=\"https://www.bettysbetterbutters.com/\" rel=\"external\">Betty's Better Butters public website</a></li>\n          <li><a href=\"https://www.bettysbetterbutters.com/our-store\" rel=\"external\">Store page, used to confirm delivery options</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "douglas-cromie": {
     "title": "Douglas & Cromie concept transformation — Mourne Made",
