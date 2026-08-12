@@ -109,7 +109,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Dundrum",
     "headline": "Make fifty-three years of work visible.",
     "date": "24 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what tender buyers find today. Right: a first screen that shows fifty-three years of work as one record.",
     "conceptHref": "/concepts/kelly-mcevoy-brown/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -119,28 +119,28 @@ export const transformationDetails = {
       "beforePoster": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-before.jpg",
       "afterPoster": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-after.jpg",
       "beforeAlt": "Ten-second visit to Kelly, McEvoy & Brown's current website — the small hand-built homepage carousel, then the portfolio page's six sector tiles, each opening its own project pages",
-      "afterAlt": "Ten-second visit to the concept — the Build on experience opening with its fifty-three-year arc, the drawn patch map of the firm's published places, and the project register with sector filters, photography and named projects"
+      "afterAlt": "Ten-second visit to the concept — the Build on experience opening with its fifty-three-year arc, the drawn patch map of completed places, and the project register with sector filters, photography and named projects"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes to let the record do the selling.",
     "notes": [
       {
-        "title": "Show the whole record at once",
-        "body": "The work is all there and photographed, but it opens one sector at a time: homepage, portfolio, a sector tile, then a project page. Four clicks to reach one building, and no screen anywhere shows fifty-three years as a single body of work.",
-        "change": "One project register, filterable by sector, holds all thirteen published projects in a single view with their names, locations and the firm's own photography."
+        "title": "Show fifty-three years in one register",
+        "body": "Procurement teams checking a contractor should not click four pages to reach one building. The work is named and photographed — it just never appears as one body of work.",
+        "change": "One register, filterable by sector, holds all thirteen projects with names, places and the firm's own photography — ready to scan before a tender."
       },
       {
-        "title": "Lead with the record, not the template",
-        "body": "Established 1973, with named projects from St Patrick's in Magheralin to Knockevin Special School in Dundrum — but the opening screen does not put that record first.",
-        "change": "Build on experience, the firm's own line, over the fifty-three-year figure and the six sectors the practice works across."
+        "title": "Lead with Build on experience",
+        "body": "Established 1973, with named work from Magheralin to Dundrum — the opening screen should put that record first.",
+        "change": "Build on experience — the firm's own line — over the fifty-three-year figure and the six sectors they work across."
       },
       {
-        "title": "Show the accreditations as procurement evidence",
-        "body": "ISO 14001, Constructionline, SafeTCert, the CEF and NHBC sit as small logos in the footer, away from the project record and contact route a prospective client is likely to use.",
-        "change": "The accreditation marks brought up as what they are — the evidence a main contractor needs before inviting a tender — beside a clear enquiry route."
+        "title": "Put the evidence pack beside the phone",
+        "body": "ISO 14001, Constructionline, SafeTCert, CEF and NHBC sit as footer logos, away from the project record and the number a buyer would dial.",
+        "change": "Bring the marks up as the evidence a main contractor needs before inviting a tender, beside a clear enquiry route."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Kelly, McEvoy & Brown website on 24 July 2026. The establishment date of 1973, the Build on experience line, the six sectors, the named projects and the accreditation marks all come from that site. The mark and photography in the concept come only from the firm's own public site and project pages: Saint Patrick's & Saint Ronan's in Magheralin and Rowallane Credit Union & Community Hub in Saintfield. No building the firm did not construct is shown, and no stock imagery is introduced. The project register is illustrative in its ordering; the projects themselves are the firm's own. The patch map is a hand-drawn plate — indicative, not a survey. Its eleven pins use only places the firm's site publishes in its own text or in project names, and the two completed projects without a published place stand beside the plate rather than on it. Each accreditation weight names the mark's plain-English procurement role and claims nothing further about what any mark certifies. Established 1973 remains the only date on the page. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.kmbni.com/\" rel=\"external\">Kelly, McEvoy & Brown public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, procurement outcomes or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Kelly, McEvoy & Brown website on 24 July 2026. The 1973 establishment date, Build on experience line, six sectors, named projects and accreditation marks all come from that site.</p>\n        <p>The mark and project photography — Saint Patrick's & Saint Ronan's in Magheralin and Rowallane Credit Union in Saintfield — are the firm's own. The patch map is a hand-drawn sketch of places named on their site; two completed projects without a named town stay on the register, not on the map. Accreditation weights name each mark's plain procurement role and claim nothing further.</p>\n        <p>This was not commissioned or approved by Kelly, McEvoy & Brown. It is a free website idea: make fifty-three years of work visible for tender buyers.</p>\n        <ul>\n          <li><a href=\"https://www.kmbni.com/\" rel=\"external\">Kelly, McEvoy & Brown public website</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "bettys-butters": {
     "title": "Betty's Better Butters concept transformation — Mourne Made",

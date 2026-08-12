@@ -136,12 +136,31 @@ for (const name of ["St Luke's Hospital Rosewood & Pinewood Villas", "Roslyn Pla
   check(`${name} is not listed beside the plate`, unplacedRegion.includes(name));
   check(`${name} has been invented onto the plate`, !mapSvg.includes(name));
 }
-check("the unplaced note does not say why they stand beside the plate", /without a published place/.test(text));
-
-// The plate carries its indicative disclosure.
 check(
-  "the plate's indicative disclosure is missing",
-  /indicative, not a survey/i.test(text),
+  "the unplaced note does not say why they stand beside the plate",
+  /their towns aren't named here, so they stay off the map/.test(text),
+);
+check(
+  "unplaced aside still uses research published-place language",
+  !/without a published place|on the register, not on the map/i.test(text),
+);
+
+// The plate carries a calm guest boundary, not research hedge language.
+check(
+  "the plate's sketch boundary is missing",
+  text.includes("The patch · a sketch of where we've built"),
+);
+check(
+  "map plate still uses research hedge language",
+  !/indicative, not a survey/i.test(text),
+);
+check(
+  "index filter still uses third-person published-portfolio language",
+  !/Filter the firm's published portfolio|published portfolio/i.test(text),
+);
+check(
+  "guest filter line is missing",
+  text.includes("Browse our completed work by sector"),
 );
 
 // Move 3 — the tender ritual: five marks, each with its plain-English
