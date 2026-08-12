@@ -304,7 +304,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Newcastle, Co. Down",
     "headline": "Let couples check the date.",
     "date": "24 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what couples find today. Right: a calmer first screen with a date enquiry beside their dining-room view.",
     "conceptHref": "/concepts/hugh-mccanns/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -320,22 +320,22 @@ export const transformationDetails = {
     "notesHeading": "Three changes to capture the enquiry.",
     "notes": [
       {
-        "title": "Add the enquiry the venue lacks",
-        "body": "The site is well written and maintained — but for a wedding venue there is no enquiry form, no availability and no way to capture a date. Every enquiry has to become a phone call first.",
-        "change": "An Is our day free enquiry that captures the two facts every venue conversation starts with — the date and the guest count."
+        "title": "Let couples ask about a date online",
+        "body": "The site is well written and looked after, but there is no form and no way to leave a preferred date. Every wedding enquiry starts as a phone call.",
+        "change": "An Is our day free enquiry that captures the two facts every venue conversation starts with — the date and the guest count — then opens a draft in their email."
       },
       {
-        "title": "Keep the voice, add the function",
-        "body": "From today until your day, we do, and three generations in a two-hundred-year-old building — the copy and photography are genuinely good and should not be replaced.",
-        "change": "The venue's whole sentence leads the page, its Loft Suite, Coast Suite, Secret Garden, Little Haven and the Avoca are named with their published capacities, and the day runs in the venue's own order from the first viewing to Day 2 — each step arriving at the same date enquiry."
+        "title": "Keep their voice, name every room",
+        "body": "From today until your day, we do, and three generations in a two-hundred-year-old building — the copy and photography are genuinely good and should stay.",
+        "change": "Their sentence leads the page. The Loft Suite, Coast Suite, Secret Garden, Little Haven and the Avoca sit with published capacities, each linking to the same date enquiry."
       },
       {
-        "title": "Bring older information up to date",
-        "body": "The copyright reads 2018, the testimonials run 2017 to 2019 and the brochure is dated 2021.22 — even though the menu was uploaded this month, so the maintained and the stale sit side by side.",
-        "change": "Refresh the testimonials and brochure so they match the venue that is clearly still being run."
+        "title": "Show the day from first viewing to Day 2",
+        "body": "Couples need to see how the house, garden and guest houses fit together before they ring.",
+        "change": "The day runs in the venue's own order — viewing, planning, ceremony, meal, reception, evening, night and Day 2 — and every step arrives at the date enquiry."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Hugh McCann's website on 24 July 2026. The venue's own words — From today until your day, we do; three generations; the two-hundred-year-old building; forty to two-hundred-and-fifty guests — its Central Promenade address, phone number and info@ email address all come from that site. The site is actively maintained (its menu PDF was uploaded in July 2026), so this is a feature upgrade, not a rescue: the © 2018 footer is not used as the argument. The concept uses a disclosed AI-generated faithful visualisation based on the venue's dining-room photograph; it preserves the broad window bays, room scale, garden and Mourne view without republishing the original photograph. The named suites, the Secret Garden, Little Haven and the Avoca, their seated capacities and every quoted sentence were re-read from the venue's home, weddings and accommodation pages on 4 August 2026; nothing beyond what it publishes is described. The concept shows no availability of any kind — the venue publishes none, and a wrong month could cost it an enquiry — so the date field opens a conversation rather than answering one. The guest review is quoted verbatim and carries its own date, 12.10.17; the venue's published reviews run 2017 to 2019 and none is presented as more recent. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.hughmccanns.com/\" rel=\"external\">Hugh McCann's public website</a></li>\n          <li><a href=\"https://www.hughmccanns.com/weddings/\" rel=\"external\">Its weddings page, the source of the suites, the garden and their capacities</a></li>\n          <li><a href=\"https://www.hughmccanns.com/accommodation/\" rel=\"external\">Its accommodation page, used to confirm the Little Haven offering</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Hugh McCann's website on 24 July 2026. Address, phone, email and the venue's own wording come from that site.</p>\n        <p>Dining-room imagery is a disclosed AI visualisation based on their published room photograph. Suite names, capacities and the quoted guest review come from their home, weddings and accommodation pages (re-read 4 August 2026). No availability is claimed — the venue publishes none.</p>\n        <p>This was not commissioned or approved by Hugh McCann's. It is a free website idea: a clearer way for couples to start a date conversation.</p>\n        <ul>\n          <li><a href=\"https://www.hughmccanns.com/\" rel=\"external\">Hugh McCann's public website</a></li>\n          <li><a href=\"https://www.hughmccanns.com/weddings/\" rel=\"external\">Weddings page</a></li>\n          <li><a href=\"https://www.hughmccanns.com/accommodation/\" rel=\"external\">Accommodation page</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "bucks-head": {
     "title": "The Bucks Head concept transformation — Mourne Made",

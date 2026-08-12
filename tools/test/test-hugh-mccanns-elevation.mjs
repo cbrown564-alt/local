@@ -124,6 +124,10 @@ for (const pattern of availability) {
 
 // The enquiry still does its one job, and nothing else sends.
 check("the enquiry no longer captures a date", /id="hm-date"/.test(html));
+check(
+  "the date field still looks pre-booked with a fake default",
+  !/id="hm-date"[^>]*value=/.test(html),
+);
 check("the enquiry no longer captures a guest count", /id="hm-guests"/.test(html));
 check(
   "the guest-count scale is no longer the venue's published 40–250 range",
@@ -151,13 +155,32 @@ check("dusk hero asset is missing", existsSync(duskImage));
 check("dusk asset is not rendered in the page", html.includes("hugh-mccanns-faithful-room-dusk.jpg"));
 check("day-part swap does not use the local hour", source.includes("new Date().getHours()"));
 check("reduced-motion does not settle on daytime", source.includes('prefers-reduced-motion: reduce'));
-check("the faithful visualisation disclosure is missing", text.includes("Faithful visualisation"));
+// AI honesty stays on the concept banner / essence — guest captions are calm room lines.
+check(
+  "the AI dining-room disclosure is missing from the banner",
+  text.includes("Dining-room imagery is AI-generated."),
+);
+check(
+  "guest hero captions still use research plate language",
+  !/Faithful visualisation|daytime plate|dusk plate/i.test(text),
+);
+check(
+  "calm day/dusk captions are missing",
+  text.includes("Looking through to the Mournes") && text.includes("The dining room at dusk"),
+);
 
 // Move 6 — the keepable geography plate is present with its boundary note.
 const plateImage = path.join(mediaDir, "hugh-mccanns-where-your-day-happens.jpg");
 check("where-your-day-happens plate is missing", existsSync(plateImage));
 check("where-your-day-happens plate is not rendered", html.includes("hugh-mccanns-where-your-day-happens.jpg"));
-check("the plate does not carry its indicative boundary", text.includes("Indicative · not a survey"));
+check(
+  "the plate does not carry its sketch boundary",
+  text.includes("A sketch of the places — not a map"),
+);
+check(
+  "map plate still uses research hedge language",
+  !/Indicative · not a survey|An indicative sketch/i.test(text),
+);
 check("the plate section is missing its geography heading", text.includes("The house, the garden, the mountains, the bay."));
 
 // The swap test, as far as a file can carry it: the page has to be anchored to
