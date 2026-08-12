@@ -372,6 +372,8 @@ const mimeByExt = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
   ".jpg": "image/jpeg",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
   ".jpeg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json",
@@ -389,8 +391,15 @@ const serveDist = () =>
       const url = new URL(req.url ?? "/", "http://127.0.0.1");
       let rel = decodeURIComponent(url.pathname);
       if (rel.endsWith("/")) rel += "index.html";
-      const filePath = path.normalize(path.join(distRoot, rel));
-      if (!filePath.startsWith(distRoot) || !existsSync(filePath) || statSync(filePath).isDirectory()) {
+      // Strip the leading slash so resolve/join cannot treat the URL path as
+      // absolute and walk away from distRoot (classic POSIX path trap).
+      rel = rel.replace(/^\/+/, "");
+      const filePath = path.resolve(distRoot, rel);
+      if (
+        (filePath !== distRoot && !filePath.startsWith(distRoot + path.sep))
+        || !existsSync(filePath)
+        || statSync(filePath).isDirectory()
+      ) {
         res.writeHead(404).end("Not found");
         return;
       }
@@ -474,6 +483,16 @@ try {
 if (chromePath) {
   const { server, base } = await serveDist();
   const homeUrl = new URL("/concepts/cupla/", base).href;
+  {
+    const probe = await fetch(homeUrl);
+    if (!probe.ok) {
+      await new Promise((resolve) => server.close(resolve));
+      throw new Error(
+        `Cúpla geometry probe server returned HTTP ${probe.status} for ${homeUrl} — dist static serve is broken`,
+      );
+    }
+    await probe.arrayBuffer();
+  }
   const launchArgs = [
     "--hide-scrollbars",
     "--force-color-profile=srgb",
@@ -500,41 +519,52 @@ if (chromePath) {
       args: launchArgs,
     });
 
-  const openHome = async (activeBrowser) => {
-    const page = await activeBrowser.newPage();
-    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-    try {
-      // domcontentloaded is enough for geometry pins and avoids a flaky
-      // full-load race that detaches the frame on CI Chrome.
-      await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-      await page.waitForSelector("body", { timeout: 15000 });
-    } catch (error) {
-      await page.close().catch(() => {});
-      throw error;
-    }
+  const settleHome = async (page) => {
+    // Prefer commit over domcontentloaded/networkidle: LifecycleWatcher races on
+    // CI Chrome often detach the frame before those later lifecycle events fire.
+    await page.goto(homeUrl, { waitUntil: "commit", timeout: 60000 });
+    await page.waitForSelector(".cp-hero h1, .cp-essence-hero", { timeout: 15000 });
     try {
       await page.evaluate(() => document.fonts.ready);
     } catch {
       // fonts.ready can reject if the document navigates mid-wait; ignore.
     }
-    return page;
+  };
+
+  /** Open a fresh page and navigate; retry goto with a new page before giving up. */
+  const openHome = async (activeBrowser, viewport) => {
+    let lastError;
+    for (let navAttempt = 1; navAttempt <= 3; navAttempt++) {
+      const page = await activeBrowser.newPage();
+      await page.setViewport(viewport);
+      try {
+        await settleHome(page);
+        return page;
+      } catch (error) {
+        lastError = error;
+        await page.close().catch(() => {});
+        console.error(
+          `Cúpla geometry: goto failed (page attempt ${navAttempt}/3): ${
+            error instanceof Error ? error.message : error
+          }`,
+        );
+        if (!isTransientBrowserError(error) || navAttempt === 3) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 150 * navAttempt));
+      }
+    }
+    throw lastError;
   };
 
   /** Phone + desktop probes. Throws only on transport/lifecycle failures. */
   const probeGeometry = async (activeBrowser) => {
-    const page = await openHome(activeBrowser);
+    const page = await openHome(activeBrowser, { width: 390, height: 844, deviceScaleFactor: 1 });
     try {
       await page.evaluate(() => window.scrollTo(0, 0));
       const phone = await measureHome(page);
       const phoneFrontage = await measureFrontageCaption(page);
 
       await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 1 });
-      await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-      try {
-        await page.evaluate(() => document.fonts.ready);
-      } catch {
-        // same as openHome — ignore mid-navigation fonts.ready races
-      }
+      await settleHome(page);
       await page.evaluate(() => window.scrollTo(0, 0));
       const desktop = await measureHome(page);
       const desktopFrontage = await measureFrontageCaption(page);
@@ -548,7 +578,7 @@ if (chromePath) {
   try {
     let geometry;
     let lastError;
-    for (let attempt = 1; attempt <= 3; attempt++) {
+    for (let attempt = 1; attempt <= 5; attempt++) {
       try {
         // Fresh browser each attempt: ConnectionClosedError means the CDP pipe
         // is dead, so retrying newPage() on the same handle cannot recover.
@@ -562,12 +592,17 @@ if (chromePath) {
         break;
       } catch (error) {
         lastError = error;
+        console.error(
+          `Cúpla geometry: browser attempt ${attempt}/5 failed: ${
+            error instanceof Error ? error.message : error
+          }`,
+        );
         if (browser) {
           await browser.close().catch(() => {});
           browser = null;
         }
-        if (!isTransientBrowserError(error) || attempt === 3) throw error;
-        await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
+        if (!isTransientBrowserError(error) || attempt === 5) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 400 * attempt));
       }
     }
     if (!geometry) throw lastError;
