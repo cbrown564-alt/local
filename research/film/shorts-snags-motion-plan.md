@@ -1,8 +1,8 @@
-# Shorts-snags motion plan
+# Shorts-snags motion review
 
-*Written 11 August 2026. Follows
-[`shorts-snags-visuals-brief.md`](shorts-snags-visuals-brief.md) (shot lists)
-and the stills/proof-cut stage it gated on — all five now exist and are
+*Originally written 11 August 2026; reviewed and closed 12 August 2026.* It
+follows [`shorts-snags-visuals-brief.md`](shorts-snags-visuals-brief.md) (shot
+lists) and the stills/proof-cut stage it gated on. All five now exist and are
 confirmed sample-accurate against their narration:
 
 | Short | Proof cut | Duration |
@@ -18,8 +18,10 @@ already a complete, shippable artefact. Everything below is optional polish
 on top of something that already works — not a step motion is required to
 complete.
 
-**Status: research only.** No clip has been generated yet. Nothing here is
-approved to ship.
+**Status: reviewed 12 August 2026; the five-generation slate is closed.** No
+new clip is needed to complete these shorts. Nothing here is approved to ship.
+The purpose-level catalogue and source trace are in
+[`video-purpose-dedup-audit-2026-08-12.md`](video-purpose-dedup-audit-2026-08-12.md).
 
 ---
 
@@ -32,86 +34,64 @@ frames with a slow push, which is prototype **02 Depth**
 
 02 Depth is shipped infrastructure, not a proposal: a depth map per still
 drives a parallax/push via `DepthStill.astro`, falling back to a plain
-`ResponsiveImage` when the depth map, WebGL or motion budget is missing. That
-covers every shot below that isn't in the table in §2 — apply it uniformly
-across all five shorts' remaining ~35 shots rather than leaving them
-perfectly static. No Omni cost, no generation, no provenance entry beyond
-what the still already has.
+`ResponsiveImage` when the depth map, WebGL or motion budget is missing. It is
+available for a later representative-slice test, but this review does not
+infer that every held frame needs it. The still remains the preferred default.
 
-## 2. What gets promoted
+## 2. Editorial reuse review
 
-One shot per short — the shot that **is** the mechanism of that short's
-theme, not just a moment in it. Five clips total across ~40 shots (~12%),
-leaner than the trailer's ~25%: these are voiced essays holding 8–13s a
-shot, not a rapid-fire beat sheet, so held frames carry their weight longer
-before a push reads as static.
+The proposed turns were compared with the five existing silent studio films
+on `/where-it-fails/`, their research masters and the selected short stills.
+The question was not whether the film shares a theme; it was whether the same
+film can enter the narrated short without changing its visual world, object
+identity, timing or meaning.
 
-| Short | Shot(s) | Still(s) to reference-lock | The turn |
+| Short | Existing scene reviewed | Decision | Evidence |
 | --- | --- | --- | --- |
-| S1 | 07→08 | `s1-07-stripped-away-v0.png` → `s1-08-clear-pane-v1.png` | Second frosted sheet lifts away; clear pane revealed, interior light steps up one stop. |
-| S2 | 04→07 | `s2-04-low-hours-plate-v0.png` → `s2-07-hours-plate-top-v1.png` | Hours-plate rises from the stall-riser to the top of the fascia. |
-| S3 | 03→08 | `s3-03-disconnected-clapper-v2.png` → `s3-08-clapper-returned-v0.png` | Disconnected clapper swings into contact with the bell wall. |
-| S4 | 04→08 | `s4-04-low-plaque-v0.png` → `s4-08-plaque-window-v0.png` | Low plaque rises from the stall-riser to window height. |
-| S5 | 03 | `s5-03-nameplate-lifting-v1.png` | Blank nameplate lifts away from its fascia mounting marks — already framed as a lift in the still itself; may read as motion-ready with only a short hold-to-hold interpolation. |
+| S1 — login at the door | `public/media/studio/login-at-the-door.mp4` | **Retain still proof.** Do not reuse and do not generate. | The existing scene tells the complete boots/barrier/entry arc in a different frontage. The short's selected 07→08 pair changes from two removed paper sheets to a fully revealed pottery shop. An excerpt would neither preserve that identity nor explain the larger change. |
+| S2 — are you open? | `public/media/studio/are-you-open.mp4` | **Retain still proof.** Do not reuse and do not generate. | The published scene already answers the theme with umbrella departure, light and clock. The short's low-plate→fascia hierarchy is a different composition across different camera angles. It is optional emphasis, not a missing causal beat. |
+| S3 — bell with no clapper | `public/media/studio/bell-no-clapper.mp4` | **Retain still proof.** Do not reuse and do not generate. | The published film uses a counter bell, boots, reply card and back-room light. The short uses a disconnected counter-bell mechanism, telephone and a different wall-mounted bell as its closing image. Mixing them would change object identity instead of clarifying it. |
+| S4 — best thing hidden | `public/media/studio/best-thing-hidden.mp4` | **Retain still proof.** Do not reuse and do not generate. | The existing hidden-key film is already the theme's physical metaphor, but the short's selected object is a low plaque brought to a lit shop window. A key excerpt would replace the narrated evidence rather than animate it. |
+| S5 — swap test | `public/media/studio/swap-test.mp4` | **Retain still proof.** Do not reuse and do not generate. | A temporary full-length comparison replaced 0:10–0:15 with the published 5.04s clip. It cut visibly from the short's blue-dusk coastal shop into T10's flatter grey-green frontage, changed architecture and lighting, and introduced the wider move/add-details arc when the line asks only for the imagined name swap. The still is cleaner and more continuous. |
 
-Each is chosen because it's the one gesture in its short that a depth-map
-push cannot fake — an object relocating, not the camera moving past a static
-scene. Everything else in each shot list is camera-relative (a push, a
-pull-down, a wide-to-close) and belongs in 02 Depth, not Omni.
+**Verdict: acceptable as still-first films.** The five proof cuts remain the
+preferred edits. Motion is not missing merely because the selected stills
+depict physical turns.
 
-## 3. Generation notes, per the Omni non-negotiables
+## 3. Proof-cut location check
 
-Carried from `omni-clip-backlog.md` §"Non-negotiables (every clip)" —
-unchanged for this batch:
+All five documented proof cuts exist. S2, S3 and S5 are present in this
+worktree. S1 and S4 are private media omitted from this worktree but were
+located read-only in the main checkout:
 
-1. **Still is the real experience** under `prefers-reduced-motion` / no-JS —
-   each clip needs its source still shipped as the fallback poster, not just
-   as a generation input.
-2. **Provenance entry** in `../image-provenance.md` before commit, one row
-   per clip.
-3. **Image-to-video with reference lock** on the *pair* of stills named
-   above, not a single image + text prompt — the end-state still already
-   exists for all five, so this is interpolation between two approved
-   frames, the strongest-constrained case Omni supports, not open
-   generation.
-4. **6–10s length.** Long enough to read the object relocating, short enough
-   to loop or hold without asking for a second beat.
-5. **No native audio.** Silent — confirmed against this trailer's own music
-   test, which was rejected as "horrible"; these clips inherit that call.
-   Foley, if it's ever tried, is a separate decision, not a default.
-6. **SynthID stays on** — no processing step should strip it.
-7. **No invented lettering** — every still in the pair is already
-   letterless by the shared grammar; watch the interpolated frames
-   specifically for Omni inventing signage mid-motion, which is the exact
-   failure `omni-clip-backlog.md` flags from the Kent promenade clip.
-8. **Shipping pattern**: `<video autoplay muted loop playsinline>` only when
-   both `.webm` and `.mp4` exist beside the still; poster + alt stay on the
-   still; pause off-screen / under reduced motion. Same pattern as every
-   existing concept loop (`ScHero.astro`).
+- `/Users/cobro/code/local/media/film/clips/shorts-snags/S1/S1-stills-v0.mp4`
+  — 57.40s, 1280×720, H.264/AAC;
+- `/Users/cobro/code/local/media/film/clips/shorts-snags/S4/S4-stills-v0.mp4`
+  — 62.08s, 1280×720, H.264/AAC.
 
-## 4. What this session can't do
+They are not missing work and were not copied or rebuilt.
 
-No Omni/video-generation tool is available in this environment — the
-T-scene clips in `omni-clip-backlog.md` were made through interactive
-Gemini Omni sessions, not a script (`tools/pipeline/` has no
-clip-generation entry, only `generate-studio-audio.mjs` and
-`generate-hero-ambience.mjs` for audio, and `assemble-hero-film.mjs` for
-cutting already-generated footage together). This document is the
-handoff: five reference-locked pairs, ready to run through that tool when a
-session with it picks this up.
+## 4. Closed generation slate
 
-## 5. Order of operations
+The earlier five-reference Omni handoff is superseded by the review above.
+Do not submit S1–S5 as a batch, and do not create a replacement motion brief
+for any of them. A later generation request must first name all four of these:
 
-1. Run the five clips above through Omni, one short at a time — cheapest
-   validation is S5 shot 03, since it's a single still already framed as a
-   lift rather than a two-still interpolation.
-2. Provenance entry per clip immediately on generation, before any cut.
-3. Cut each returned clip into its short's existing proof cut in place of
-   the still pair it replaces — duration and narration timing don't change,
-   only that one window becomes video.
-4. Judge each on the same acceptance line the trailer used: does the clip
-   read as *one physical turn*, or does it invite a second look for its own
-   sake? Kill and hold the still if the latter.
-5. 02 Depth pass across the remaining ~35 shots is independent of 1–4 and
-   can happen in either order — it's a build-time step, not a generation
-   spend.
+1. the exact final edit and time window it serves;
+2. the missing causal beat that a held still and existing scene cannot carry;
+3. the required continuity lock or aspect ratio;
+4. the acceptance test that distinguishes the new result from the existing
+   published scene.
+
+Without those facts, retain the still. If a future accepted clip exists, the
+original non-negotiables still apply: silent delivery, no invented lettering,
+source still as the complete reduced-motion fallback, preserved SynthID and a
+provenance entry before commit.
+
+## 5. Remaining optional polish
+
+The earlier suggestion to apply 02 Depth across roughly 35 held frames is not
+part of this decision and should not be spread automatically. Judge any depth
+pass on one representative short first. The settled still must remain the
+complete experience, and a slow push should be kept only when it improves
+attention or continuity without making a narrated held image restless.
