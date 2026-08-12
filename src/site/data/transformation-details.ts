@@ -66,7 +66,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Dundrum",
     "headline": "Answer today on the first screen.",
     "date": "26 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what visitors find today. Right: a first screen that answers whether the door is open.",
     "conceptHref": "/concepts/dundrum-inn/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -87,21 +87,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Say whether the door is open",
-        "body": "The inn publishes opening hours for all seven days, but only a limited restaurant last-orders note rather than a full food-service schedule. On the captured homepage even those useful details sit far below a translation bar and a video, where someone checking before a visit will not find them quickly.",
-        "change": "A status line at the top of the page that works out open or closed from the inn's own published hours, in local time, next to the event the inn currently lists and the bay across the road."
+        "body": "The inn publishes opening hours for all seven days, but they sit far below a translation bar and a video — hard to find before a visit.",
+        "change": "A status line at the top that works out open or closed from the inn's own published hours, next to the event currently listed and the bay across the road."
       },
       {
         "title": "Retire the machine translation, keep the Irish",
-        "body": "A translation widget offers the site in twenty-eight-plus machine-rendered languages and is among the most prominent controls on the page. Irish is already in that list — buried among the rest rather than offered as the one alternative this street would actually use.",
-        "change": "Replace the prominent translation bar with Irish beside English, freeing the space it occupied for a booking action instead."
+        "body": "A translation widget for twenty-eight-plus languages is among the most prominent controls. Irish is already in that list — buried among the rest.",
+        "change": "Irish beside English instead of the translation bar, freeing the space for a booking action."
       },
       {
         "title": "Keep the booking that works",
-        "body": "The inn already runs a real booking engine — GuestDiary — with availability, room types and the self-catering cottage. The gap is not the engine; it is how far you travel down the page before you reach it.",
-        "change": "The same four fields the inn's own search takes — dates, adults, children — moved to the first screen and handing to GuestDiary, which keeps the live availability. The working booking kept, the route to it shortened."
+        "body": "The inn already runs GuestDiary with availability, room types and the cottage. The gap is how far you scroll before you reach it.",
+        "change": "The same date, adults and children fields on the first screen, handing to GuestDiary so live availability stays."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Dundrum Inn website on 24 July 2026, and the inn's published detail was re-checked on 26 July 2026. The inn's own words — Come for the views, stay for the craic, the 190 years, the best Sunday roast award — its 2026 content, its winter opening hours, the four named rooms, Murlough Cottage, the 2 August Fleadh Cheoil listing and the GuestDiary booking engine all come from that site and are kept. The concept corrects one listing error rather than inventing anything: the phone number was listed as 028 4375 1211, while the inn's own site publishes 028 4372 9933. This is a maintained, working site with a real booking engine, so the proposal keeps the existing GuestDiary booking route.</p>\n        <p>Two limits are worth stating plainly. The hero is an AI-generated faithful visualisation based on the inn's own exterior photograph, not documentary photography. The concept page labels it over the image, and the alt text repeats the reference boundary. The generation preserved the yellow-and-black terraced frontage, shopfront, roof and window rhythm, awning, hanging sign, benches, barrels, baskets, toucan feature and neighbouring façades; it changed only lighting, framing and minor street clutter. The open-or-closed line is worked out from the inn's published <em>bar</em> hours: the site has one limited restaurant last-orders note but no full food-service schedule, which is the gap the concept is addressing rather than filling. No kitchen closing time or nightly price appears in the concept because the site does not publish a full food-service schedule or room prices in the material used here. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://dundruminn.com/\" rel=\"external\">The Dundrum Inn public website</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Dundrum Inn website on 24 July 2026, with published detail re-checked on 26 July. Come for the views, stay for the craic, the 190 years, winter hours, named rooms, Murlough Cottage, the Fleadh Cheoil listing and GuestDiary all come from that site.</p>\n        <p>The hero is a disclosed AI visualisation based on the inn's own exterior photograph — not a documentary shot. Open or closed is worked out from published bar hours; the site has no full food-service schedule, so none is invented. The concept corrects one listing error: the phone shown is the inn's own 028 4372 9933.</p>\n        <p>This was not commissioned or approved by The Dundrum Inn. It is a free website idea: answer today on the first screen.</p>\n        <ul>\n          <li><a href=\"https://dundruminn.com/\" rel=\"external\">The Dundrum Inn public website</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "kelly-mcevoy-brown": {
     "title": "Kelly, McEvoy & Brown concept transformation — Mourne Made",
@@ -226,7 +226,7 @@ export const transformationDetails = {
     "eyebrow": "Website feature · Newcastle, Co. Down",
     "headline": "Put the hotel before the destination.",
     "date": "27 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows The Donard's new official homepage, captured during the build-day re-check; the right shows a property-first feature proposal that keeps its identity and booking route.",
+    "comparisonIntro": "Drag the handle. Left: The Donard's current official homepage. Right: a property-first feature that keeps its identity and booking route.",
     "conceptHref": "/concepts/donard-hotel/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -243,21 +243,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Show the hotel, not only the destination",
-        "body": "The new official homepage opens on a wide Mournes landscape. It establishes the place beautifully, but the first screen does not show the red-brick Main Street building a guest will arrive at.",
-        "change": "A property-first opening built from a clearly disclosed visualisation of the real frontage, so the first frame belongs to this hotel rather than to accommodation in the Mournes generally."
+        "body": "The official homepage opens on a wide Mournes landscape. It sets the place beautifully, but the first screen does not show the red-brick Main Street building a guest will arrive at.",
+        "change": "A property-first opening from a disclosed visualisation of the real frontage, so the first frame belongs to this hotel."
       },
       {
         "title": "Keep the identity the hotel chose",
-        "body": "The official site establishes a specific identity: deep navy, soft gold, a line drawing of the corner turret and the ESTD 1946 date.",
-        "change": "The proposal carries that navy, gold, wide-spaced name and founding date. It does not reuse the unlicensed logo artwork or replace the hotel with a studio-made crest."
+        "body": "Deep navy, soft gold, a line drawing of the corner turret and ESTD 1946 — the official site already has a clear look.",
+        "change": "Carry that navy, gold, wide-spaced name and founding date. Do not reuse the unlicensed logo artwork or invent a studio crest."
       },
       {
         "title": "Keep direct booking, add room context",
         "body": "The current site already puts its booking search on the first screen. Replacing that working route would solve nothing.",
-        "change": "The proposal keeps the official engine as the handoff and places the hotel's published starting rates beside it, so a guest has useful room context before continuing."
+        "change": "Keep the official engine as the handoff and place the hotel's published starting rates beside it."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what changed.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 donardhotel.com returned a 404 over HTTP and refused a secure connection, which originally made this a first-website and commission case. The 27 July build-day re-check found a new official site at thedonard.co.uk with the hotel's navy-and-gold identity, property pages and a working booking search. That new evidence changes the proposal: the dead-domain and commission diagnosis is retained only as dated case-study history and does not appear inside the guest page. The concept uses the official Rooms page for the 19-room count, room types and starting rates.</p>\n        <p>The exterior hero is a disclosed generated visualisation based on Eric Jones's 24 March 2023 photograph of the real Main Street facade, licensed CC BY-SA 2.0. The shutters are shown open and parked cars removed; it is not presented as a documentary photograph. The hotel logo informed the palette, ESTD 1946 date and wide-spaced name, but the unlicensed logo artwork itself is not reused.</p>\n        <ul>\n          <li><a href=\"https://www.thedonard.co.uk/\" rel=\"external\">The Donard's current official homepage and booking search</a></li>\n          <li><a href=\"https://www.thedonard.co.uk/bedrooms\" rel=\"external\">Official Rooms page used for room types and starting rates</a></li>\n          <li><a href=\"https://www.geograph.org.uk/photo/7440264\" rel=\"external\">Eric Jones's source photograph, CC BY-SA 2.0</a></li>\n          <li><a href=\"https://creativecommons.org/licenses/by-sa/2.0/\" rel=\"external\">Creative Commons Attribution-ShareAlike 2.0 licence</a></li>\n        </ul>\n        <p>No claim is made about booking conversion, commission saved, customer approval or the hotel's plans for its new site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 27 July 2026 The Donard had a new official site at thedonard.co.uk — navy-and-gold identity, property pages and a working booking search. Room count, types and starting rates come from that Rooms page. An earlier dead-domain capture is kept only as dated case-study history.</p>\n        <p>The exterior hero is a disclosed generated visualisation based on Eric Jones's 2023 Main Street photograph (CC BY-SA 2.0). Shutters are shown open and parked cars removed; it is not a documentary photograph. The hotel logo informed the palette and ESTD 1946 date; the unlicensed artwork itself is not reused.</p>\n        <p>This was not commissioned or approved by The Donard. It is a free website idea: put the hotel before the destination.</p>\n        <ul>\n          <li><a href=\"https://www.thedonard.co.uk/\" rel=\"external\">The Donard's current official homepage and booking search</a></li>\n          <li><a href=\"https://www.thedonard.co.uk/bedrooms\" rel=\"external\">Official Rooms page used for room types and starting rates</a></li>\n          <li><a href=\"https://www.geograph.org.uk/photo/7440264\" rel=\"external\">Eric Jones's source photograph, CC BY-SA 2.0</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "newcastle-dental": {
     "title": "Newcastle Family Dental Care concept transformation — Mourne Made",
@@ -343,7 +343,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Dundrum",
     "headline": "Make booking as warm as the welcome.",
     "date": "21 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what diners find today. Right: a first screen with booking beside the welcome.",
     "conceptHref": "/concepts/bucks-head/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -402,21 +402,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Say the welcome out loud",
-        "body": "On the captured first screen, a photograph of the owners above Dundrum Bay does all the work. No headline, opening hours, address or booking action appears before a visitor scrolls.",
-        "change": "The same welcome, said in the pub's own words — old charm meets modern flare, Bronagh and Alex named in the opening lines — with the hours and phone number in a strip along the top."
+        "body": "Today a photograph of the owners above Dundrum Bay does all the work. No headline, hours, address or booking action appears before a visitor scrolls.",
+        "change": "The same welcome in the pub's own words — old charm meets modern flare, Bronagh and Alex named — with hours and phone along the top."
       },
       {
         "title": "Start booking on the first screen",
-        "body": "Book A Table leads to a page that opens with Important Booking Notes — the eight-seat maximum and cancellation warnings — before the ResDiary widget appears below them.",
-        "change": "A booking card on the first screen — date and party — passing straight into the same ResDiary booking system the pub already runs, with the party-size limit reduced to one calm line beneath the button."
+        "body": "Book A Table opens on Important Booking Notes before the ResDiary widget appears below them.",
+        "change": "A booking card on the first screen — date and party — passing into the same ResDiary system the pub already runs, with the party-size limit as one calm line."
       },
       {
         "title": "Put the menus on the page",
-        "body": "Five menus — À La Carte, Bar, Dessert, Sunday and Drinks — are PDF downloads on the menus page, so no dish can be read without opening a file.",
-        "change": "A menus list across the bottom of the page, one tap from each menu, set to be read on the page rather than downloaded."
+        "body": "Five menus are PDF downloads, so no dish can be read without opening a file.",
+        "change": "A menus list across the bottom of the page, set to be read on the page rather than downloaded."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still was captured from the public Bucks Head website on 21 July 2026, and a ten-second demo clip on 23 July 2026. The concept's identity is taken from the pub's own building — the spruce-green frontage, the blush-pink signage lettering and the antler mark. Its opening image is a disclosed AI-generated faithful visualisation of the pub's real photographed hearth, preserving the rounded arch, brick chimney, stove, antlers and surrounding room rather than publishing the source photograph. The old charm meets modern flare line, the owners' names, the party-size policy, the menu names, hours, address and phone number all come from the pub's published pages. Menu dishes are adapted from public menus and every direct menu panel repeats the illustrative-price warning. The booking card points at the ResDiary booking system the pub already runs — added to its site since our 20 July verification pass, and worth keeping. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://thebucksheaddundrum.co.uk/\" rel=\"external\">The Bucks Head public website</a></li>\n          <li><a href=\"https://www.tripadvisor.ie/Restaurant_Review-g1477857-d1185069\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Bucks Head website on 21 July 2026. Identity comes from the pub's own building — spruce-green frontage, blush-pink lettering and the antler mark. Opening line, owners' names, party-size policy, menu names, hours, address and phone all come from their published pages.</p>\n        <p>The hearth image is a disclosed AI visualisation of the pub's real photographed hearth. Menu dishes are adapted from public menus and labelled as illustrative. Booking hands to the ResDiary system the pub already runs.</p>\n        <p>This was not commissioned or approved by The Bucks Head. It is a free website idea: make booking as warm as the welcome.</p>\n        <ul>\n          <li><a href=\"https://thebucksheaddundrum.co.uk/\" rel=\"external\">The Bucks Head public website</a></li>\n          <li><a href=\"https://www.tripadvisor.ie/Restaurant_Review-g1477857-d1185069\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "castle-farm": {
     "title": "Castle Farm concept transformation — Mourne Made",
@@ -424,7 +424,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Dundrum",
     "headline": "Show the week the farm actually runs.",
     "date": "17 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what shoppers find today. Right: a first screen that shows the week the farm runs.",
     "conceptHref": "/concepts/castle-farm/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -441,21 +441,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Give the business the opening moment",
-        "body": "The captured page places a newsletter request above the farm, before a visitor has had time to understand what is on offer.",
-        "change": "Open on the farm's own sentence — Let us worry about digging it up. — beside the two dates no box scheme can copy: generations of the same family beside Dundrum Castle, and online ordering and home delivery since 2008."
+        "body": "A newsletter request currently sits above the farm, before a visitor has had time to understand what is on offer.",
+        "change": "Open on the farm's own sentence — Let us worry about digging it up. — beside the family story and online ordering since 2008."
       },
       {
         "title": "Make every control do something",
         "body": "Several layers compete at once on arrival, so the route into the working shop is harder to see than it needs to be.",
-        "change": "One primary action — shop this week's produce — pointing at the farm's own store, with no basket and no category rail that leads nowhere."
+        "change": "One primary action — shop this week's produce — pointing at the farm's own store, with no basket that leads nowhere."
       },
       {
         "title": "Put the weekly round on the page",
-        "body": "The delivery schedule is published in full but as dense paragraphs of town names, so a customer has to read the lot to find out which day their own town goes out.",
-        "change": "The round set out day by day with the towns the farm names, the two 3pm cutoffs, the published minimums and delivery fee, and a lookup that answers one question — is your town on it, and when?"
+        "body": "The delivery schedule is published in full but as dense paragraphs of town names — hard to scan for your own day.",
+        "change": "The round day by day with the towns the farm names, the two 3pm cutoffs, published minimums and a lookup: is your town on it, and when?"
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Castle Farm website on 23 July 2026; arrival pop-ups (a newsletter sign-up and cookie prompt) were closed first so the comparison shows the page itself. The concept's first screen was rebuilt on 5 August 2026 from the farm's own About and Delivery pages, re-read on 4 August 2026. The week's-table theatre plate replaced the earlier mixed-box still the same day, and the comparison after still and demo clip were recaptured with it.</p><p>Everything the concept says as the farm is the farm's own published wording, quoted verbatim: &ldquo;Let us worry about digging it up.&rdquo;, &ldquo;Simply browse our fresh produce, add to cart and checkout&rdquo;, the castle-grounds and same-family provenance, &ldquo;established as a web based order and home delivery service in 2008&rdquo;, and the aim of keeping money circulating in the local economy, providing jobs for local people and cutting down on food miles. The delivery days, the towns named against each of them, the two 3pm order cutoffs, the &pound;40 local minimum, the &pound;76 outlying minimum and the &pound;4 delivery fee are the farm's published schedule and terms as read on 4 August 2026. They are live business facts and they move — the October 2025 archive already shows the local minimum going from &pound;36 to &pound;40 — so the page carries the read date and links to the farm's own delivery-schedule page as the source of truth. No town appears that the farm does not list, and a town that is not on the published round is told so rather than given a day. The Aberdeen Angus herd, the 300-ewe flock behind the Mourne lamb, the Gloucestershire Old Spot pork, the free-range eggs and the seasonal vegetables are the farm's own published stock; the local producers who travel the round with it are described, as the farm describes them, without naming suppliers the farm does not name. Beef bourguignon, shepherd's cottage pie and goulash are dishes named on the farm's recipe blog as read on 4 August 2026; the shop sitemap on 5 August 2026 listed only the blog index and one news post, so those dishes hand off to the live blog rather than to invented per-post URLs. The Medium Mixed Box price is deliberately not quoted here — prices are the most perishable thing the farm publishes, so the page links to the live meal-deal box listings instead.</p><p>The opening image is a disclosed AI-generated painted plate of a possible week's table laid from the farm's published food categories — an Angus joint, eggs, potatoes, seasonal vegetables and plain yoghurt — not a photograph of Castle Farm, its kitchen or an exact current box. Below the round, a disclosed AI-generated delivery-round plate draws the farm beside Dundrum Castle at the centre with four day-loops of published towns; it is indicative, not a survey. The concept previously cropped a generated produce photograph into a wordmark window; that was withdrawn on 5 August 2026 because it was not the farm's mark, and the name is now set in type. Castle Farm runs a working online shop with live checkout, so nothing here sells: every commerce control on the concept hands off to castlefarmni.com, and there is no basket. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.castlefarmni.com/pages/delivery-schedule\" rel=\"external\">Delivery schedule and terms</a></li>\n          <li><a href=\"https://www.castlefarmni.com/collections/meal-deal-boxes\" rel=\"external\">Meal-deal box listings</a></li>\n          <li><a href=\"https://www.google.com/maps/place/Castle+Farm+Fresh+Produce/data=!4m7!3m6!1s0x48613d0b384805c5:0x9ac0e5068d4ff3ab!8m2!3d54.264296!4d-5.851389\" rel=\"external\">Public Google Maps listing used in discovery</a></li>\n        </ul>\n        <p>No claim is made about exact box contents or availability, sales performance, customer approval or the business&#39;s plans for its current site. The figures above were true on 4 August 2026 and are re-verified before any contact.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">&rarr;</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Castle Farm website on 23 July 2026. Wording, delivery days, towns, 3pm cutoffs, minimums and the £4 delivery fee come from the farm's About and Delivery pages as read on 4 August 2026 — live facts that move, so the page links to their schedule as the source of truth.</p>\n        <p>The opening image is a disclosed AI plate of a possible week's table from the farm's published food categories — not a photograph of Castle Farm or an exact current box. Every commerce control hands off to castlefarmni.com; there is no basket here. Box prices are not quoted — they link to the live listings instead.</p>\n        <p>This was not commissioned or approved by Castle Farm. It is a free website idea: show the week the farm actually runs.</p>\n        <ul>\n          <li><a href=\"https://www.castlefarmni.com/\" rel=\"external\">Castle Farm public website</a></li>\n          <li><a href=\"https://www.castlefarmni.com/pages/delivery-schedule\" rel=\"external\">Delivery schedule and terms</a></li>\n          <li><a href=\"https://www.castlefarmni.com/collections/meal-deal-boxes\" rel=\"external\">Meal-deal box listings</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "painted-earth": {
     "title": "Painted Earth concept transformation — Mourne Made",
@@ -463,7 +463,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Newcastle",
     "headline": "Know what happens before checkout.",
     "date": "3 August 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what shoppers find today. Right: a first screen that says what happens before checkout.",
     "conceptHref": "/concepts/painted-earth/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -480,21 +480,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Say how an original gets home",
-        "body": "An £850 oil on canvas carries COLLECTION ONLY and a request to contact the shop before shipping — stated twice, in capitals, inside the description body — under an Add to Cart button identical to the one on a £3 greeting card.",
+        "body": "An expensive oil can carry COLLECTION ONLY and a shipping warning inside the description — under an Add to Cart button that looks the same as a greeting card.",
         "change": "Collection, shipping-quote and no-returns terms sit against each original before the buying action, not underneath it."
       },
       {
         "title": "Give sold work somewhere to go",
-        "body": "232 originals are listed and 124 of them have already sold. A visitor who arrives on one — from a search, a share or a saved link — reaches a full stop.",
-        "change": "A sold piece offers available work by the same artist and the gallery's current collection, so the visit continues instead of ending."
+        "body": "Hundreds of originals are listed and many have already sold. Landing on one from a search or share reaches a full stop.",
+        "change": "A sold piece offers available work by the same artist and the gallery's current collection, so the visit continues."
       },
       {
         "title": "Start from the piece, not the maker",
-        "body": "The shop's own filters for price, artist, product type and stock already work. What the menu asks first is which of 92 makers you want, which only helps if you already know them.",
+        "body": "The shop already has working filters for price, artist, product type and stock. The menu asks first which of many makers you want — useful only if you already know them.",
         "change": "Product, occasion and price lead the way in; place stays as an optional local route; the shop's existing filters are named on the page rather than replaced."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured from the public Painted Earth shop on 3 August 2026; a cookie prompt and a sign-up dialog were declined and closed first so the comparison shows the page itself. The address, opening hours, phone number, contact addresses, shipping and returns terms, artwork titles, artists, prices and sold status all come from the shop's own public pages and product data, sampled on 26 July 2026 and re-checked on 27 July and 3 August.</p>\n        <p><strong>No artwork is shown.</strong> Every tile on the concept is a drawn placeholder, labelled as one on the image itself. Painted Earth sells work by 92 named makers and the shop does not hold publishable rights to all of that photography, so none of it is reproduced here. A placeholder attributes the product record — title, artist, price, availability — to the artist named beside it, and the drawing to nobody. The real work is on the shop's own pages, which every tile links to.</p>\n        <p>The makers' roll, the workshop records and the waiting-list sentence come from the dated 26 July 2026 snapshot of the shop's own public product data, and the page presents them as of that catalogue date. Each maker's name links to that maker's live collection on the shop's own site. The gallery's sentence and the visitor review are quoted verbatim from the shop's public Art &amp; Craft Gallery page, read on 6 August 2026; that page publishes no review dates, so none are shown. The waiting list you can join from the page is a labelled proposal — the shop runs its list by hand today, and nothing here claims otherwise.</p>\n        <p>This is not a repair case. The shop runs a polished, working store with catalogue filters it added before this concept was built, and the concept says so on the page. Its proposal is limited to what happens around original art: fulfilment terms before checkout, and a route on from sold work.</p>\n        <ul>\n          <li><a href=\"https://www.paintedearthgifts.com/\" rel=\"external\">Painted Earth public shop</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval, click-and-collect (which the shop does not offer and the concept only proposes), or the internal decisions behind the current site. The business has not been contacted and has not approved this work.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the public Painted Earth shop on 3 August 2026. Address, hours, phone, shipping and returns terms, artwork titles, artists, prices and sold status come from the shop's own pages. The gallery sentence and visitor review are quoted from the Art &amp; Craft Gallery page, read on 6 August 2026 — that page publishes no review dates, so none are shown.</p>\n        <p>No artwork is shown. Every tile is a drawn placeholder: Painted Earth sells work by many makers and the shop does not hold publishable rights to all of that photography. Each tile links to the real product on their site.</p>\n        <p>This was not commissioned or approved by Painted Earth. It is a free website idea: make fulfilment clear before checkout on original art.</p>\n        <ul>\n          <li><a href=\"https://www.paintedearthgifts.com/\" rel=\"external\">Painted Earth public shop</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "cupla": {
     "title": "Cúpla concept transformation — Mourne Made",
@@ -502,7 +502,7 @@ export const transformationDetails = {
     "eyebrow": "First website · Dundrum",
     "headline": "Open the door in both languages.",
     "date": "21 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the café's Facebook page as it loads without an account; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what a first-time visitor finds today — the café's Facebook page without an account. Right: a bilingual first screen.",
     "conceptHref": "/concepts/cupla/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -520,21 +520,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Open the door, not a login form",
-        "body": "Cúpla has no website. Its Facebook page greets a first-time visitor with Meta's cookie dialog and a login form — the café's name and its Brews, Bakes & Bowls line sit greyed out behind them.",
-        "change": "A first screen that opens the door instead — Fáilte isteach — with the café's own three-word tagline doing the work of structuring the whole page."
+        "body": "Cúpla has no website. Its Facebook page greets a first-time visitor with Meta's cookie dialog and a login form — the café's name and Brews, Bakes & Bowls sit greyed out behind them.",
+        "change": "A first screen that opens the door instead — Fáilte isteach — with the café's own three-word tagline structuring the page."
       },
       {
         "title": "Let the name explain the café",
-        "body": "The café's name is the Irish word for twins, reflecting the twin owners who founded it in 2024. On the current public page, that connection is not explained and the café's Irish identity is easy to miss.",
-        "change": "Build the identity around the pair: twin rings in the mark, Irish first and English beside it, and a short story block that stages the pair from the three things the record holds — the name, the twin owners, and Est. 2024 on the door."
+        "body": "Cúpla is the Irish word for twins, reflecting the twin owners who founded it in 2024. On the current public page that connection is easy to miss.",
+        "change": "Build the identity around the pair: twin rings in the mark, Irish first and English beside it, and a short story from the name, the twin owners and Est. 2024."
       },
       {
         "title": "Answer the passer-by's three questions",
-        "body": "What's on the counter, when it opens and where it is live only as feed posts, so someone deciding on a whim has to scroll to find out.",
-        "change": "The counter's day in two beats — Maidin and Lón, morning bakes into brunch bowls — with today's counter and today's hours pointing at the Instagram the café already runs. The feed keeps doing the updating, behind a page that never goes stale."
+        "body": "What's on the counter, when it opens and where it is live only as feed posts, so someone deciding on a whim has to scroll.",
+        "change": "The counter's day in two beats — morning bakes into brunch bowls — with today's counter and hours pointing at the Instagram the café already runs."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before image was captured from the café's public Facebook page on 21 July 2026, with Meta's cookie dialog and login prompt left in place — that is what a first-time visitor without an account meets. The café's name, its Brews, Bakes &amp; Bowls tagline, the twin founders, the 2024 founding and the Main Street address come from its public pages, Companies House and the food-hygiene register; active trading was confirmed by local first-hand knowledge on 21 July 2026. The shopfront on the proposed page is an AI-generated visualisation, faithful to a photograph of the premises taken in August 2024 and captioned as generated where it appears; that reference photograph is held privately and is not published, and no photograph of the café is reproduced here. The twin-ring mark and the Irish-language phrasing are concept work — the café's own bilingual voice would replace them, and the bilingual menu card is a sample, awaiting review by a fluent Irish speaker before it could be used. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/p/C%C3%BApla-61565293502528/\" rel=\"external\">Cúpla public Facebook page</a></li>\n          <li><a href=\"https://find-and-update.company-information.service.gov.uk/company/NI711705\" rel=\"external\">Companies House record used to verify the business</a></li>\n          <li><a href=\"https://ratings.food.gov.uk/business/1783241/cpla-bais-newcastle\" rel=\"external\">Food hygiene listing used to verify the premises</a></li>\n        </ul>\n        <p>The café's own three words — Brews, Bakes &amp; Bowls — are quoted from its public pages, read 21 July 2026; no other sentence is put in the café's mouth. The proposed page states no opening hour, no schedule and no day's special: what is on the counter today, and today's hours, stay with the Instagram account the café already runs. No claim is made about sales performance, customer approval or the owners' plans for a website.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the café's public Facebook page on 21 July 2026, with Meta's cookie dialog and login prompt left in place. Name, Brews, Bakes &amp; Bowls, the twin founders, 2024 founding and Main Street address come from public pages, Companies House and the food-hygiene register.</p>\n        <p>The shopfront is an AI-generated visualisation, faithful to a photograph of the premises taken in August 2024 and captioned as generated where it appears. The twin-ring mark and Irish phrasing are concept work — the café's own bilingual voice would replace them. The café's three words are quoted from its public pages, read 21 July 2026; no opening hour or day's special is stated here.</p>\n        <p>This was not commissioned or approved by Cúpla. It is a free website idea: open the door in both languages.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/p/C%C3%BApla-61565293502528/\" rel=\"external\">Cúpla public Facebook page</a></li>\n          <li><a href=\"https://find-and-update.company-information.service.gov.uk/company/NI711705\" rel=\"external\">Companies House record used to verify the business</a></li>\n          <li><a href=\"https://ratings.food.gov.uk/business/1783241/cpla-bais-newcastle\" rel=\"external\">Food hygiene listing used to verify the premises</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "donard-veterinary": {
     "title": "Donard Veterinary Clinic concept transformation — Mourne Made",
@@ -542,7 +542,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Newcastle",
     "headline": "Make it easy to ask for help.",
     "date": "21 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what pet owners find today. Right: a calmer first screen with booking and emergencies clear.",
     "conceptHref": "/concepts/donard-veterinary/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -561,21 +561,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Let the badge set the tone",
-        "body": "The captured screen greets visitors with a wall-to-wall collage of stock puppies and kittens, and a page title that repeats the header logo's name. The one thing that is genuinely theirs — the badge with its Mourne silhouette, blue and teal — sits small in the corner.",
-        "change": "The whole screen is drawn from the practice's own badge: its colours, its mountain profile as the backdrop, and its own words — Professional, Caring, Compassionate; Taking care of your pets — as the welcome."
+        "body": "Today a collage of stock puppies and kittens greets visitors. The one thing that is genuinely theirs — the badge with its Mourne silhouette — sits small in the corner.",
+        "change": "The whole screen is drawn from the practice's own badge: its colours, mountain profile and words — Professional, Caring, Compassionate."
       },
       {
         "title": "Turn booking into a real request",
-        "body": "Book Appointments leads to a page that lists only the phone number and email address. The site separately promotes VidiVet for free 24/7 digital vet advice.",
-        "change": "An appointment-request card on the first screen — name, pet, preferred day, phone — passing straight to the phone line and inbox the practice already answers, with repeat prescriptions one line away."
+        "body": "Book Appointments leads to a page that lists only the phone number and email. The site separately promotes VidiVet for free 24/7 digital advice.",
+        "change": "An appointment-request card on the first screen — name, pet, preferred day, phone — passing to the phone line and inbox the practice already answers."
       },
       {
         "title": "Separate emergencies from everyday care",
-        "body": "Emergency treatment is one item in a nine-entry services dropdown, while the opening hours are competing with the photographs in a chat popup.",
-        "change": "Emergencies get the top strip with a call action beside the published hours, and six everyday services line the foot of the screen — visible without opening a menu."
+        "body": "Emergency treatment is one item in a nine-entry services dropdown, while opening hours compete with photographs in a chat popup.",
+        "change": "Emergencies get the top strip with a call action beside the published hours, and six everyday services line the foot of the screen."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The existing-site still and demo clip were captured on 23 July 2026, when a PetsApp panel appeared over the hero. By 25 July the public site promoted VidiVet for free 24/7 digital advice instead. The practice's name, fascia strapline, address, phone number, email, opening hours, catchment villages, bereavement page and service list come from the current site and the July 2026 recruitment listing. The pet cast, the safety-net flow, the life arc and the catchment map are studio drawings, disclosed as such — not photographs of patients, and the map is indicative rather than a boundary survey. The bereavement line quoted on the page is the practice's own sentence, with its page named and linked. The layout, copy hierarchy and proposed appointment experience are part of an independent concept.</p>\n        <ul>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/\" rel=\"external\">Donard Veterinary Clinic public website</a></li>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/vidivet/\" rel=\"external\">Current VidiVet information</a></li>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/when-the-time-comes-to-say-goodbye/\" rel=\"external\">Bereavement page quoted on the concept</a></li>\n          <li><a href=\"https://vetni.co.uk/2026/07/08/pt-ft-experienced-sa-vet-donard-vet-clinic-newcastle/\" rel=\"external\">July 2026 recruitment listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the business's plans for its current site.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured on 23 July 2026; by 25 July the public site promoted VidiVet for free 24/7 digital advice. Name, address, phone, email, hours, catchment villages, bereavement page and service list come from the current site and a July 2026 recruitment listing.</p>\n        <p>The pet cast, safety-net flow, life arc and catchment map are studio drawings, disclosed as such — not photographs of patients, and the map is indicative rather than a boundary survey. The bereavement line is the practice's own sentence, with its page named and linked.</p>\n        <p>This was not commissioned or approved by Donard Veterinary Clinic. It is a free website idea: make it easy to ask for help.</p>\n        <ul>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/\" rel=\"external\">Donard Veterinary Clinic public website</a></li>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/vidivet/\" rel=\"external\">Current VidiVet information</a></li>\n          <li><a href=\"https://donardveterinaryclinic.co.uk/when-the-time-comes-to-say-goodbye/\" rel=\"external\">Bereavement page quoted on the concept</a></li>\n          <li><a href=\"https://vetni.co.uk/2026/07/08/pt-ft-experienced-sa-vet-donard-vet-clinic-newcastle/\" rel=\"external\">July 2026 recruitment listing used to verify current trading</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "hotel-enniskeen": {
     "title": "Hotel Enniskeen concept transformation — Mourne Made",
@@ -583,7 +583,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Newcastle",
     "headline": "Let the valley make the welcome.",
     "date": "23 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what guests find today. Right: a first screen that leads with the valley and checking dates.",
     "conceptHref": "/concepts/hotel-enniskeen/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -611,21 +611,21 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Open with the valley, not the archive",
-        "body": "The captured page leads with an oval archive photograph, a blue serif title and seven uppercase menu items — while the hotel's own phrase, a mountainside hideaway, appears nowhere on the first screen.",
+        "body": "Today an oval archive photograph and seven uppercase menu items lead the page, while the hotel's own phrase — a mountainside hideaway — is missing from the first screen.",
         "change": "One composed scene — the valley framed from a balcony room, the hideaway line as the headline, and five linked pages for the complete visit."
       },
       {
         "title": "Make checking dates effortless",
         "body": "Book Now is one menu item among seven, and checking availability means leaving for the booking system with no dates in hand.",
-        "change": "Availability bars for arrival and nights — exactly the fields the hotel’s Bookin1 search accepts — pass straight into its results route."
+        "change": "Availability bars for arrival and nights — exactly the fields the hotel's Bookin1 search accepts — pass straight into its results route."
       },
       {
         "title": "Let the estate do the selling",
-        "body": "Twelve wooded acres, the river trail, Mourne Honey afternoon tea and the Brandy Pad Lounge are real, published draws — but they all live behind dropdown menus.",
-        "change": "The opening carries the estate’s story in one breath, with dedicated Dine, Estate and Things to do pages one step away."
+        "body": "Twelve wooded acres, the river trail, Mourne Honey afternoon tea and the Brandy Pad Lounge are real draws — but they all live behind dropdown menus.",
+        "change": "The opening carries the estate's story in one breath, with dedicated Dine, Estate and Things to do pages one step away."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The public Enniskeen site was re-read page by page on 23 July 2026 before the flagship build; its hand-built template and Bookin1 hotel code were unchanged. The existing-site still, ten-second demo and before-side film footage were captured that day, with the arrival cookie prompt closed first so the comparison shows the page itself. The hotel’s name, mountainside-hideaway and Shimna Valley wording, room names, dining and estate details, contact information, menu and voucher links come from its published site. The current five-page concept uses original AI-generated imagery instead of publishing the hotel's photographs. The façade and named Room 6 bathroom are faithful visualisations grounded in reference photographs of those real features; every route identifies them as generated. Other scenic and interior images are atmospheric concept visuals, not documentary views of the hotel. The pages reorganise sourced material rather than inventing services or prices. Their availability bars pass arrival date and length of stay into the same Bookin1 results route used by the hotel’s own search box. Historical prototype captures made on 23 July 2026 predate the generated-image replacement. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.enniskeenhotel.co.uk/\" rel=\"external\">Enniskeen public website</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the business's plans for its current site. The concept, generated visualisations and film were not commissioned by the hotel.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The public Enniskeen site was re-read on 23 July 2026. Name, mountainside-hideaway and Shimna Valley wording, room names, dining and estate details, contact information, menus and vouchers come from that site. Availability bars pass into the same Bookin1 results route the hotel's own search uses.</p>\n        <p>The concept uses disclosed AI-generated imagery rather than publishing the hotel's photographs. Façade and named Room 6 bathroom are faithful visualisations grounded in reference photographs; other scenic images are atmospheric concept visuals, not documentary views.</p>\n        <p>This was not commissioned or approved by Enniskeen Country House Hotel. It is a free website idea: let the valley make the welcome.</p>\n        <ul>\n          <li><a href=\"https://www.enniskeenhotel.co.uk/\" rel=\"external\">Enniskeen public website</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "kent-amusements": {
     "title": "Kent Amusements concept transformation — Mourne Made",
@@ -633,7 +633,7 @@ export const transformationDetails = {
     "eyebrow": "First website · Newcastle",
     "headline": "The machines change. The summer doesn't.",
     "date": "22 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the arcade's Facebook page as it loads without an account; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what a first-time visitor finds today — the arcade's Facebook page without an account. Right: a first screen for this promenade arcade.",
     "conceptHref": "/concepts/kent-amusements/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -649,33 +649,33 @@ export const transformationDetails = {
     ],
     "notesHeading": "Five changes to put this arcade, and no other, out front.",
     "notes": [
-          {
-                "title": "Let the town remember it out loud",
-                "body": "The arcade has no first-party sentence anywhere on the open web: its Facebook page and Instagram account are its only channels, and both meet a first-time visitor with Meta's login. The one voice in the record belongs to other people — the BBC's Your Place and Mine archive holds two Newcastle memories of this arcade, including a summer worker in the late sixties dishing out the change.",
-                "change": "That memory quoted verbatim as a supporting band just below the opening, carrying who is speaking, the era it is speaking about, the archive it is preserved in and a link to the rest of it. The Avoca Hotel's present-tense description sits beside it, attributed to the Avoca, whose words \"premier\" and \"one of NI's only homes to indoor Dodgem Cars\" stay theirs."
-          },
-          {
-                "title": "Put fifty summers on the page, dated at both ends",
-                "body": "The strongest fact in the record was compressed into a thesis line — \"Fifty summers of seaside fun\" — and the arc behind it was nowhere: the Kent name on the promenade in the late sixties, the same site ever since, and a VR zone new this year.",
-                "change": "A two-stop timeline from c. 1968 — the mid-point of the late-1960s BBC archive date — to the 2026 VR launch. The jukebox memory, the change-booth memory and the Avoca Hotel's description sit as loose ticks on the line for colour. No Companies House filler, no undated milestone."
-          },
-          {
-                "title": "Stage the afternoon instead of listing the attractions",
-                "body": "Dodgems, VR and arcade machines are the three verified attractions — and they are the three every seaside arcade in Ireland would list, so nothing on the old page belonged to this promenade in particular.",
-                "change": "A comic storyboard split into two three-panel strips shows one indicative afternoon, with each beat's description under the art: the promenade, the change, the floor, the dodgems, the VR, back out to the sea. The change is the hinge, where the sixties memory and this afternoon are the same afternoon. Nothing is added to the record to fill it out — no tokens, tickets, prices or packages."
-          },
-          {
-                "title": "Replace the empty hours board with the honest season panel",
-                "body": "The attractions board carried three rows reading \"Seasonal — check Facebook\", which the 27 July 2026 publication review asked to be replaced. No confirmed seasonal hours exist in any source, and an earlier draft's invented ones were the concept's one claims-gate failure.",
-                "change": "One confident panel that states the arcade's real operating ritual — hours move with the season and are posted on Facebook as they change, with family offers posted there when they run — explains why that page is the freshest source there is, and hands today's answer to it. If the arcade ever publishes confirmed hours, the panel already has the designed home, with a source line, for them to land in."
-          },
-          {
-                "title": "Put the promenade back into the picture",
-                "body": "The concept had no photograph or illustration after the 2023 exterior was withdrawn, so the page could describe the Central Promenade without showing the place that makes the arcade itself recognisable.",
-                "change": "Two generated illustrative plates now fill the first viewport beside the brand: the light plate is the no-JavaScript and reduced-motion default, and the visitor's local clock can select the lit sibling. They are labelled as generated artwork and not a survey. The late-1960s memory sits just below as supporting voice rather than competing with the geography."
-          }
+      {
+        "title": "Let the town remember it out loud",
+        "body": "The arcade has no first-party sentence on the open web — only Facebook and Instagram behind Meta's login. The BBC's Your Place and Mine archive holds Newcastle memories of this arcade, including a late-sixties summer worker.",
+        "change": "That memory quoted as a supporting band below the opening, with who is speaking, the era, the archive and a link. The Avoca Hotel's present-tense description sits beside it, attributed to the Avoca."
+      },
+      {
+        "title": "Put fifty summers on the page, dated at both ends",
+        "body": "The strongest fact — over fifty years on the same site — was easy to miss as a slogan, with no dated arc from the late sixties to a VR zone new in 2026.",
+        "change": "A two-stop timeline from c. 1968 to the 2026 VR launch. No invented milestones."
+      },
+      {
+        "title": "Stage the afternoon instead of listing the attractions",
+        "body": "Dodgems, VR and arcade machines are the three verified attractions — and the three every seaside arcade would list.",
+        "change": "A comic storyboard of one indicative afternoon on this promenade. Nothing is added to the record — no tokens, tickets, prices or packages."
+      },
+      {
+        "title": "Replace the empty hours board with the honest season panel",
+        "body": "No confirmed seasonal hours exist in any source. Earlier invented hours were withdrawn.",
+        "change": "One panel that states the real ritual — hours move with the season and are posted on Facebook as they change — and hands today's answer to that page."
+      },
+      {
+        "title": "Put the promenade back into the picture",
+        "body": "Without a frontage image, the page could describe Central Promenade without showing the place that makes the arcade recognisable.",
+        "change": "Two generated illustrative promenade plates beside the brand, labelled as generated artwork and indicative, not a survey."
+      }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before image was captured from the arcade's public Facebook page on 22 July 2026, with Meta's cookie dialog and login prompt left in place — that is what a first-time visitor without an account meets. The Central Promenade address and the company are confirmed by Companies House (NI688147), whose confirmation statement was filed 2 November 2025. A March 2026 TripAdvisor review names the new VR games. Longevity on the promenade — over fifty years on the same site — was verified on 22 July 2026.</p>\n        <p>The arcade has no first-party voice on the open web: its Facebook page and Instagram account are its only channels, so the two quotations on the concept belong to other people. The late-1960s change-booth memory and the juke-box memory are quoted verbatim from the BBC's Your Place and Mine Newcastle memory archive, re-read 4 August 2026, and both carry their era, their archive and a link to it on the page. The change-booth memory is quoted with its shift hours elided, and the page says so: the memory records a 1960s summer job, and on an arcade page those figures would read as opening hours. The Kent Cafe is named only inside the memory that mentions it; its relationship to the arcade is not established anywhere in the record. The description beginning “Newcastle County Down's premier family entertainment centre” is the Avoca Hotel's, read 5 August 2026, quoted and attributed on both screens; “premier” and the indoor-dodgems scarcity are the Avoca's claim and the concept never adopts either in its own voice.</p>\n        <p>No opening time appears anywhere on either screen, and a standing test fails the build if one does: an earlier draft published invented seasonal hours on 25 July 2026, and no source records any hours for this arcade. The season panel states the arcade's operating ritual and hands today's answer to the Facebook page it updates itself; the three empty “Seasonal — check Facebook” rows the 27 July 2026 review asked to be replaced are gone, and the panel holds a designed, sourced home for confirmed hours if the arcade ever publishes them. Dodgems, VR games and arcade machines are the verified attractions and the list is closed: no tokens, tickets, 2p machines, party packages, loyalty cards, prices or family-offer specifics appear, because none are in the record.</p>\n        <p>The home screen puts a pair of generated illustrative promenade plates in the first viewport beside the brand — a light plate and a lit sibling showing an indicative Central Promenade frontage with the sea and the Mournes — and the attractions screen carries the same plates below its opening. Below the fifty-summers band, a generated comic storyboard — two three-panel strips with the step descriptions under each strip — stages the verified afternoon (promenade, change, floor, dodgems, VR, back out to the sea). The plates and storyboard are labelled as AI-generated artwork and indicative, not a survey; the light promenade plate is the no-JavaScript and reduced-motion default, and the visitor's local clock may select the lit sibling. The late-1960s BBC memory sits just below the home opening as supporting voice rather than as the first-viewport visual. The 2023 CC BY-SA exterior photograph was withdrawn from use on 26 July 2026 and stays withdrawn; it was not used as a reference for the plates. The K-and-A mark in the header is concept work, not the business's own artwork. Content is limited to the Newcastle, Co. Down site and does not refer to any same-named arcade elsewhere. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/kentamusementsnewcastle/\" rel=\"external\">Kent Amusements public Facebook page</a></li>\n          <li><a href=\"https://www.instagram.com/kentamusementsnewcastle/\" rel=\"external\">Kent Amusements Instagram</a></li>\n          <li><a href=\"https://www.tripadvisor.com/Attraction_Review-g186478-d14073725\" rel=\"external\">TripAdvisor listing used to verify current trading and VR</a></li>\n          <li><a href=\"https://find-and-update.company-information.service.gov.uk/company/NI688147\" rel=\"external\">Companies House record used to verify the business, the address and the November 2025 filing</a></li>\n          <li><a href=\"https://avocahotel.com/activities/uncategorized/kent-amusements/\" rel=\"external\">Avoca Hotel activities listing used for the quoted description, indoor dodgems and phone</a></li>\n          <li><a href=\"https://www.bbc.co.uk/northernireland/yourplaceandmine/down/A781698.shtml\" rel=\"external\">BBC Your Place and Mine memory archive used for the two quoted Newcastle memories</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval, current family offers, opening hours or the owner's plans for a website.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the arcade's public Facebook page on 22 July 2026, with Meta's cookie dialog and login prompt left in place. Address and company are confirmed by Companies House (NI688147). Longevity on the promenade and the March 2026 VR mention come from public listings.</p>\n        <p>The late-1960s change-booth and juke-box memories are quoted from the BBC Your Place and Mine Newcastle archive, re-read 4 August 2026. The change-booth memory is quoted with its shift hours elided, and the page says so — those figures would read as opening hours. The Avoca Hotel description is quoted and attributed; premier and indoor-dodgems scarcity stay the Avoca's claims. No opening time appears on either screen.</p>\n        <p>Home and attractions carry generated illustrative promenade plates — labelled as AI-generated artwork and indicative, not a survey. Dodgems, VR and arcade machines are the closed attractions list. The K-and-A mark is concept work. This was not commissioned or approved by Kent Amusements. It is a free website idea: put this arcade, and no other, out front.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/kentamusementsnewcastle/\" rel=\"external\">Kent Amusements public Facebook page</a></li>\n          <li><a href=\"https://www.instagram.com/kentamusementsnewcastle/\" rel=\"external\">Kent Amusements Instagram</a></li>\n          <li><a href=\"https://www.tripadvisor.com/Attraction_Review-g186478-d14073725\" rel=\"external\">TripAdvisor listing used to verify current trading and VR</a></li>\n          <li><a href=\"https://find-and-update.company-information.service.gov.uk/company/NI688147\" rel=\"external\">Companies House record used to verify the business, the address and the November 2025 filing</a></li>\n          <li><a href=\"https://avocahotel.com/activities/uncategorized/kent-amusements/\" rel=\"external\">Avoca Hotel activities listing used for the quoted description, indoor dodgems and phone</a></li>\n          <li><a href=\"https://www.bbc.co.uk/northernireland/yourplaceandmine/down/A781698.shtml\" rel=\"external\">BBC Your Place and Mine memory archive used for the two quoted Newcastle memories</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "mourne-cycles": {
     "title": "Mourne Cycles concept transformation — Mourne Made",
@@ -777,7 +777,7 @@ export const transformationDetails = {
     "eyebrow": "First website · Dundrum",
     "headline": "A first page for a Northern Ireland first.",
     "date": "21 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the bar's Facebook page as it loads without an account; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what a first-time visitor finds today — the bar's Facebook page without an account. Right: a first screen for Northern Ireland's first zero-waste hot food bar.",
     "conceptHref": "/concepts/scopers/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -795,13 +795,13 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Take the story out from behind the login",
-        "body": "Scopers has no website. Searching for it lands on a Facebook page that greets a first-time visitor with Meta's cookie dialog and a login form — the bar's own introduction, Hot Food Bar by Paul Cunningham, sits greyed out behind them.",
+        "body": "Scopers has no website. Searching lands on a Facebook page that greets a first-time visitor with Meta's cookie dialog and a login form — Hot Food Bar by Paul Cunningham sits greyed out behind them.",
         "change": "A first screen with nothing in front of it, opening on the one remarkable fact: Northern Ireland's first zero-waste hot food bar, on Dundrum's main street."
       },
       {
         "title": "Say the remarkable thing once, plainly",
-        "body": "A Great British Menu chef, a zero-waste first, the Mourne Larder and a grandfather's foraging exist only as fragments scattered across feed posts and third-party write-ups.",
-        "change": "The story told in three opening lines — chef, provenance, philosophy — with the signature dishes named along the foot of the screen."
+        "body": "A Great British Menu chef, a zero-waste first, the Mourne Larder and a grandfather's foraging exist only as fragments across feed posts and third-party write-ups.",
+        "change": "The story in three opening lines — chef, provenance, philosophy — with the signature dishes named along the foot of the screen."
       },
       {
         "title": "Keep the supper club visible",
@@ -809,7 +809,7 @@ export const transformationDetails = {
         "change": "A supper-club card that always holds the next date, with a booking action opening the same Instagram inbox the kitchen already answers."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before image was captured from the bar's public Facebook page on 21 July 2026, with Meta's cookie dialog and login prompt left in place — that is what a first-time visitor without an account meets. The zero-waste-first claim, Paul Cunningham's Great British Menu appearance, the grandfather's foraging, the Mourne Larder, the supper-club format and the signature dishes all come from the bar's public presence and dated third-party features. Every image in the concept is an AI-generated illustration. The dish names and descriptions are quoted from the bar's own public Instagram captions, read on 31 July 2026 \u2014 the pictures are not photographs of their food, their premises or a supper-club night — each generated plate is captioned on the page as a riff on the bar's own posts, and the concept banner and this block say so too. The bar's own round badge is used as the concept's mark, downloaded from its public Instagram profile on 31 July 2026, in place of the redrawn stamp the concept previously carried. The supper-club date of Wednesday 26 August 2026 was read from the same public Instagram on 31 July 2026 and is re-checked before any outreach. Trading pattern — now open most of the week — was confirmed by local first-hand knowledge on 21 July 2026. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/\" rel=\"external\">Scopers public Facebook page</a></li>\n          <li><a href=\"https://goodfoodireland.ie/scopers-dundrum/\" rel=\"external\">Good Food Ireland feature used for the chef's story</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Restaurant_Review-g1477857-d26533474\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the owner's plans for a website.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the bar's public Facebook page on 21 July 2026, with Meta's cookie dialog and login prompt left in place. The zero-waste-first claim, Paul Cunningham's Great British Menu appearance, the Mourne Larder, supper-club format and signature dishes come from the bar's public presence and dated third-party features.</p>\n        <p>Every food image is an AI-generated illustration — a riff on the bar's own Instagram captions (read 31 July 2026), not a photograph of their food or premises. The round badge is the bar's own, from its public Instagram profile. The Wednesday 26 August 2026 supper-club date was read from Instagram on 31 July 2026.</p>\n        <p>This was not commissioned or approved by Scopers. It is a free website idea: a first page for a Northern Ireland first.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/p/Scopers-Dundrum-Co-Down-100083029315116/\" rel=\"external\">Scopers public Facebook page</a></li>\n          <li><a href=\"https://goodfoodireland.ie/scopers-dundrum/\" rel=\"external\">Good Food Ireland feature used for the chef's story</a></li>\n          <li><a href=\"https://www.tripadvisor.co.uk/Restaurant_Review-g1477857-d26533474\" rel=\"external\">TripAdvisor listing used to verify current trading</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "tool-centre": {
     "title": "The Tool Centre concept transformation — Mourne Made",
@@ -817,7 +817,7 @@ export const transformationDetails = {
     "eyebrow": "First website · Newcastle, Co. Down",
     "headline": "A trade counter that does not need a login.",
     "date": "22 July 2026",
-    "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the shop's Facebook page as it loads without an account; the right shows the proposed first screen.",
+    "comparisonIntro": "Drag the handle. Left: what a first-time visitor finds today — the shop's Facebook page without an account. Right: a trade-counter first screen that does not need a login.",
     "conceptHref": "/concepts/tool-centre/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -835,20 +835,20 @@ export const transformationDetails = {
     "notes": [
       {
         "title": "Put the counter in front of the login",
-        "body": "No working website was found in the review. Searching for the shop lands on a Facebook page that greets a first-time visitor with Meta's cookie dialog and a login form, while results also include same-named shops in Newcastle-upon-Tyne.",
-        "change": "A first screen that opens on the Co. Down address, with hire rates and stock categories reachable without an account — Newcastle, Co. Down named plainly so the Mourne shop is never mistaken for the Tyne ones."
+        "body": "No working website was found. Searching lands on a Facebook page behind Meta's cookie dialog and login form, while results also include same-named shops in Newcastle-upon-Tyne.",
+        "change": "A first screen that opens on the Co. Down address, with hire and stock reachable without an account — Newcastle, Co. Down named plainly so the Mourne shop is never mistaken for the Tyne ones."
       },
       {
         "title": "Lead with the two offers",
-        "body": "Directories list the shop as The Tool Centre; its Facebook page trades as Tool Centre Plant Hire. Online, the two service lines — hardware retail and plant/tool hire — can look like two businesses.",
-        "change": "Both screens end on a shelf-and-yard band: hardware & DIY beside plant & tool hire, with one call button underneath. The Facebook trading name appears once as a quiet link; Co. Down is repeated wherever a stranger meets the shop."
+        "body": "Directories list The Tool Centre; Facebook trades as Tool Centre Plant Hire. Online, hardware retail and plant/tool hire can look like two businesses.",
+        "change": "Both screens end on a shelf-and-yard band: hardware & DIY beside plant & tool hire, with one call button. Co. Down is repeated wherever a stranger meets the shop."
       },
       {
         "title": "Make the hire desk the first action",
-        "body": "The shop's public pages and directory listings do not give a contractor one clear place to compare hire categories, rates and opening hours.",
-        "change": "A hire-desk board with the four categories and a call action opening the number the yard already answers — the page explains the service while Facebook carries day-to-day updates."
+        "body": "Public pages and directories do not give a contractor one clear place to compare hire categories, rates and opening hours.",
+        "change": "A hire-desk board with the four categories and a call action opening the number the yard already answers — Facebook still carries day-to-day updates."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before image was captured from the shop's public Facebook page on 22 July 2026, with Meta's cookie dialog and login prompt left in place — that is what a first-time visitor without an account meets. The concept does not mock or invent content from behind that wall. The Main Street address, phone number, seven-day opening hours, Calor gas retail and the dual hardware/plant-hire offering come from public directories and the Calor dealer listing; the Facebook trading name Tool Centre Plant Hire appears once as a quiet link rather than being overwritten. The hire-desk board on the opening screen shows no figure at all; the hire list carries suggested day rates so the shop has something concrete to correct, every card is labelled Suggested, and both screens carry one sentence in the same words: &quot;No rate here is the shop's own — call the counter for today's rate and terms.&quot; None of those figures came from the shop, and weekend and week terms are asked about rather than stated because the record holds none. What a hirer must bring on collection is asked for the same reason. Two Google reviews read on 6 August 2026 supply the customer sentences: Tony&#39;s Reviews (shown as &quot;10 months ago&quot;, October 2025 on the page) on the landing route, and chris keag (shown as &quot;2 years ago&quot;, August 2024 on the page) on the hire list — each quoted verbatim and attributed as a Google review with month and year; no star rating is stated. The shop review also praises prices and staff; the hire review names Tony and Gerard inside the quotation only. The concept introduces no photography; the circular yellow-and-black mark is concept work suggested by the shop's own Facebook badge, not the badge itself. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/Toolcentreplanthire/\" rel=\"external\">Tool Centre Plant Hire public Facebook page</a></li>\n          <li><a href=\"https://www.bigreddirectory.com/tool-centre-newcastle\" rel=\"external\">Big Red Directory listing used for address and hours</a></li>\n          <li><a href=\"https://www.calorgas.ie/cylinder-dealers/Newcastle-BT33-0AE-Tool-Centre-8001144\" rel=\"external\">Calor dealer listing used to confirm gas retail</a></li>\n        </ul>\n        <p>No claim is made about sales performance, customer approval or the owner's plans for a website.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the shop's public Facebook page on 22 July 2026, with Meta's cookie dialog and login prompt left in place. Main Street address, phone, seven-day hours, Calor gas retail and the dual hardware/plant-hire offering come from public directories and the Calor dealer listing.</p>\n        <p>The hire desk shows no figure; the hire list carries suggested day rates labelled Suggested. Both screens carry the same sentence: &quot;No rate here is the shop's own — call the counter for today's rate and terms.&quot; None of those figures came from the shop. Two Google reviews (read 6 August 2026) supply the customer sentences, quoted and attributed with month and year — no star rating is stated. The yellow-and-black mark is concept work suggested by the shop's Facebook badge.</p>\n        <p>This was not commissioned or approved by The Tool Centre. It is a free website idea: a trade counter that does not need a login.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/Toolcentreplanthire/\" rel=\"external\">Tool Centre Plant Hire public Facebook page</a></li>\n          <li><a href=\"https://www.bigreddirectory.com/tool-centre-newcastle\" rel=\"external\">Big Red Directory listing used for address and hours</a></li>\n          <li><a href=\"https://www.calorgas.ie/cylinder-dealers/Newcastle-BT33-0AE-Tool-Centre-8001144\" rel=\"external\">Calor dealer listing used to confirm gas retail</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   }
 } satisfies Record<string, TransformationDetail>;
