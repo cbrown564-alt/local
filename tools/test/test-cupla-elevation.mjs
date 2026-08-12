@@ -16,6 +16,7 @@ import http from "node:http";
 import path from "node:path";
 import puppeteer from "puppeteer-core";
 import { findChrome } from "../lib/chrome.mjs";
+import { blockMediaRequests } from "../lib/block-media-requests.mjs";
 import { projectRoot } from "../lib/public-slugs.mjs";
 
 const homePath = path.join(projectRoot, "dist", "concepts", "cupla", "index.html");
@@ -499,6 +500,13 @@ if (chromePath) {
     // CI runners often have tiny /dev/shm; without this Chrome dies mid-session
     // and surfaces it as ConnectionClosedError on newPage/goto.
     "--disable-dev-shm-usage",
+    // Hero film decode/autoplay has crashed GHA Chrome mid-goto ("Navigating
+    // frame was detached" → Connection closed). Geometry pins only need the
+    // video element's CSS box; media requests are aborted separately.
+    "--disable-gpu",
+    "--disable-extensions",
+    "--mute-audio",
+    "--autoplay-policy=user-gesture-required",
     ...(process.env.CI || process.env.CHROME_NO_SANDBOX === "1"
       ? ["--no-sandbox", "--disable-setuid-sandbox"]
       : []),
@@ -537,6 +545,7 @@ if (chromePath) {
       const page = await activeBrowser.newPage();
       await page.setViewport(viewport);
       try {
+        await blockMediaRequests(page);
         await settleHome(page);
         return page;
       } catch (error) {
