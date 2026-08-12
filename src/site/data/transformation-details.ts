@@ -196,29 +196,46 @@ export const transformationDetails = {
       "beforePoster": "/media/concepts/douglas-cromie/douglas-cromie-before.jpg",
       "afterPoster": "/media/concepts/douglas-cromie/douglas-cromie-after.jpg",
       "beforeAlt": "A muted card standing in for douglasandcromie.co.uk, which does not resolve — the domain returns no page at all",
-      "afterAlt": "Ten-second view of the concept — Douglas & Cromie's own wordmark and vehicle photography beside a Drive away with confidence opening",
+      "afterAlt": "Ten-second view of the website idea — Douglas & Cromie's own wordmark and vehicle photography beside a Drive away with confidence opening",
       "beforeNote": "Douglas & Cromie's domain does not resolve at all — typing douglasandcromie.co.uk returns no page. Search engines still show a cached title, so the dealer appears to have a website and has none. There is no live site to demo; the panel on the left is a muted stand-in for a domain that answers nothing."
     },
     "secondSurfacesHtml": [],
-    "notesHeading": "Three changes to restore the garage's front door.",
+    "notesHeading": "Three changes that put the garage back on the map.",
     "notes": [
       {
-        "title": "Reconnect the address customers already know",
-        "body": "The dealer's domain no longer resolves. A customer who follows a cached search result reaches a dead end.",
-        "change": "A working page at an address the dealer controls, with the phone number, opening hours and directions available immediately."
+        "title": "Search still promises a website that is not there",
+        "body": "Their old address still appears in search with a cached title. Follow it and nothing loads — apex or www.",
+        "change": "A working page at an address they control, so people already looking for them land somewhere useful."
       },
       {
-        "title": "Restore the identity the garage chose",
-        "body": "The archived homepage preserves Douglas & Cromie's slate-and-coral palette, wordmark, vehicle photography and drive away with confidence wording.",
-        "change": "Those recognisable materials lead the concept instead of a new number-plate identity invented by the studio."
+        "title": "The garage already had a look people would recognise",
+        "body": "Their January 2024 homepage had a clear wordmark, colours, photography and a straightforward offer.",
+        "change": "Bring that identity back as the front door, instead of leaving it stranded in an archive."
       },
       {
-        "title": "Make the next step easy",
-        "body": "The dealer's own homepage put fifty years in the trade, MOT preparation, servicing and parts sales at the centre of its offer.",
-        "change": "A direct call, current-vehicle link, directions, hours and workshop services now sit together without inventing live inventory."
+        "title": "Phone, hours and the workshop should be obvious",
+        "body": "Someone ready to call or visit should not have to dig. The next step belongs on the first screen.",
+        "change": "Put call, hours, directions and workshop services where they can be acted on immediately."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>On 24 July 2026 the domain douglasandcromie.co.uk did not resolve on either its apex or www address — a DNS failure, so no page could be captured. The before panel is therefore a muted stand-in, not a screenshot of a live site. The concept restores the wordmark, slate-and-coral palette, Hind type, vehicle photograph, drive away with confidence wording, fifty-year history, services, address, phone number and opening hours from Douglas & Cromie's archived January 2024 public homepage. The dealer's current Used Cars NI profile still confirms its identity, address and phone numbers, but showed no vehicles on 27 July 2026, so the concept does not invent or imply live inventory. The proposed page is an independent concept, not a commissioned redesign.</p>\n        <ul>\n          <li><a href=\"https://web.archive.org/web/20240117041804/http://www.douglasandcromie.co.uk/\" rel=\"external\">Archived Douglas &amp; Cromie public homepage</a></li>\n          <li><a href=\"https://www.usedcarsni.com/search_results.php?dealer=26586938&amp;search_type=1\" rel=\"external\">Current Used Cars NI dealer profile</a></li>\n          <li><a href=\"https://www.thomsonlocal.com/search/car-dealers/northern-ireland/douglas-cromie/742052/02843722382\" rel=\"external\">Directory listing used to cross-check the address and phone</a></li>\n        </ul>\n        <p>No claim is made about current vehicle availability, sales performance or the business's plans for the lapsed domain.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">
+    <div class=\"shell source-grid\">
+      <div>
+        <p class=\"eyebrow\">Sources &amp; limits</p>
+        <h2>Clear about what is real.</h2>
+      </div>
+      <div>
+        <p>In July 2026 their domain did not resolve, so the before panel is a stand-in — there was no live page to capture.</p>
+        <p>The website idea uses identity and wording from their January 2024 public homepage (via the Internet Archive). Used Cars NI still lists the garage at Bryansford, which is how we know they are trading.</p>
+        <p>This was not commissioned or approved by Douglas &amp; Cromie.</p>
+        <ul>
+          <li><a href=\"https://web.archive.org/web/20240117041804/http://www.douglasandcromie.co.uk/\" rel=\"external\">Archived Douglas &amp; Cromie homepage</a></li>
+          <li><a href=\"https://www.usedcarsni.com/search_results.php?dealer=26586938&amp;search_type=1\" rel=\"external\">Used Cars NI dealer profile</a></li>
+        </ul>
+        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>
+      </div>
+    </div>
+  </section>"
   },
   "donard-hotel": {
     "title": "The Donard Hotel concept transformation — Mourne Made",
