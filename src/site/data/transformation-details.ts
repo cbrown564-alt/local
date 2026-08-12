@@ -218,24 +218,7 @@ export const transformationDetails = {
         "change": "Put call, hours, directions and workshop services where they can be acted on immediately."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">
-    <div class=\"shell source-grid\">
-      <div>
-        <p class=\"eyebrow\">Sources &amp; limits</p>
-        <h2>Clear about what is real.</h2>
-      </div>
-      <div>
-        <p>In July 2026 their domain did not resolve, so the before panel is a stand-in — there was no live page to capture.</p>
-        <p>The website idea uses identity and wording from their January 2024 public homepage (via the Internet Archive). Used Cars NI still lists the garage at Bryansford, which is how we know they are trading.</p>
-        <p>This was not commissioned or approved by Douglas &amp; Cromie.</p>
-        <ul>
-          <li><a href=\"https://web.archive.org/web/20240117041804/http://www.douglasandcromie.co.uk/\" rel=\"external\">Archived Douglas &amp; Cromie homepage</a></li>
-          <li><a href=\"https://www.usedcarsni.com/search_results.php?dealer=26586938&amp;search_type=1\" rel=\"external\">Used Cars NI dealer profile</a></li>
-        </ul>
-        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>
-      </div>
-    </div>
-  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>In July 2026 their domain did not resolve, so the before panel is a stand-in — there was no live page to capture.</p>\n        <p>The website idea uses identity and wording from their January 2024 public homepage (via the Internet Archive). Used Cars NI still lists the garage at Bryansford, which is how we know they are trading.</p>\n        <p>This was not commissioned or approved by Douglas &amp; Cromie.</p>\n        <ul>\n          <li><a href=\"https://web.archive.org/web/20240117041804/http://www.douglasandcromie.co.uk/\" rel=\"external\">Archived Douglas &amp; Cromie homepage</a></li>\n          <li><a href=\"https://www.usedcarsni.com/search_results.php?dealer=26586938&amp;search_type=1\" rel=\"external\">Used Cars NI dealer profile</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "donard-hotel": {
     "title": "The Donard Hotel concept transformation — Mourne Made",
