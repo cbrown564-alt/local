@@ -35,7 +35,10 @@ const cta = {
       {cta.label}
     </a>
   </nav>
-  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">Menu</button>
+  <a class="mobile-primary-link" href="/transformations/">Website examples</a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+    <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+  </button>
   <div id="mobile-menu" class="mobile-menu" hidden>
     {navLinks.map((item) => (
       <a href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</a>
@@ -58,8 +61,8 @@ const cta = {
   if (button && menu) {
     const setOpen = (open: boolean) => {
       button.setAttribute("aria-expanded", String(open));
-      button.textContent = open ? "Close" : "Menu";
       button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      button.classList.toggle("is-open", open);
       menu.hidden = !open;
       if (open) menu.querySelector<HTMLAnchorElement>("a")?.focus();
     };
