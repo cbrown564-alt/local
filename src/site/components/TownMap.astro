@@ -16,17 +16,40 @@ if (invalidPins.length > 0) {
   throw new Error(`Town map: pins must stay inside the ${MAP_WIDTH}×${MAP_HEIGHT} source grid. Invalid: ${invalidPins.map((item) => item.slug).join(", ")}`);
 }
 
-const pins = transformations.map((item) => {
-  const source = item.pin!;
-  const isDundrum = item.town === "Dundrum";
-  const x = isDundrum
-    ? 39 + ((source.x - 848) / (1115 - 848)) * 10
-    : 39 + ((source.x - 120) / (515 - 120)) * 18;
-  const y = isDundrum
-    ? 21 + ((source.y - 178) / (312 - 178)) * 13
-    : 58 + ((source.y - 280) / (550 - 280)) * 14;
-  return { ...item, source, display: { x, y } };
-});
+/* The source pins describe real-world relative positions. This illustration is
+   deliberately not geographic, so project each one by hand onto the visible
+   road instead of compressing the source grid into a straight line. */
+const illustratedPinPositions: Record<string, { x: number; y: number }> = {
+  "castle-farm": { x: 38.4, y: 24.8 },
+  "kelly-mcevoy-brown": { x: 40.6, y: 26.4 },
+  "bettys-butters": { x: 42.7, y: 28.5 },
+  "bucks-head": { x: 44.5, y: 31.0 },
+  cupla: { x: 43.6, y: 34.2 },
+  "dundrum-inn": { x: 41.7, y: 36.4 },
+  scopers: { x: 39.4, y: 38.5 },
+  "hotel-enniskeen": { x: 43.1, y: 54.3 },
+  "douglas-cromie": { x: 40.9, y: 57.0 },
+  "newcastle-chamber": { x: 49.0, y: 58.8 },
+  "donard-veterinary": { x: 46.5, y: 61.0 },
+  "donard-hotel": { x: 40.2, y: 60.5 },
+  "newcastle-dental": { x: 42.1, y: 62.5 },
+  "mourne-cycles": { x: 44.1, y: 64.5 },
+  "painted-earth": { x: 42.9, y: 68.0 },
+  "tool-centre": { x: 40.8, y: 69.9 },
+  "kent-amusements": { x: 38.7, y: 72.0 },
+  "hugh-mccanns": { x: 36.5, y: 74.0 },
+};
+
+const missingIllustratedPins = transformations.filter((item) => !illustratedPinPositions[item.slug]);
+if (missingIllustratedPins.length > 0) {
+  throw new Error(`Town map: every public transformation needs an illustrated pin position. Missing: ${missingIllustratedPins.map((item) => item.slug).join(", ")}`);
+}
+
+const pins = transformations.map((item) => ({
+  ...item,
+  source: item.pin!,
+  display: illustratedPinPositions[item.slug],
+}));
 
 const previewSlugsByTown = {
   Dundrum: ["scopers", "bucks-head", "dundrum-inn"],
