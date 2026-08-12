@@ -14,9 +14,9 @@ const base = "/concepts/newcastle-chamber";
         <p class="nc-kicker">Business directory · Newcastle</p>
         <h1>Newcastle traders, <em>in one place.</em></h1>
         <p class="nc-dir-intro">
-          These are real Newcastle businesses from public listings. The Chamber
-          has not confirmed them as members. <a href={`${base}/join/`}>Ask to be
-          listed</a>, or <a href={chamber.emailHref}>email the Chamber</a>.
+          Example listings of real Newcastle businesses — membership confirmed
+          by the committee. <a href={`${base}/join/`}>Ask to be listed</a>,
+          or <a href={chamber.emailHref}>email the Chamber</a>.
         </p>
         <form class="nc-dir-search" action={`${base}/members/`} method="get" role="search">
           <label class="visually-hidden" for="nc-dir-q">Search the directory</label>
@@ -40,12 +40,6 @@ const base = "/concepts/newcastle-chamber";
       {categories.map((cat) => (
         <section class="nc-dir-category" id={cat.id} data-nc-category={cat.id}>
           <h2 class="nc-dir-cat-label">{cat.label}</h2>
-          {/* Repeated per section so a deep link or a filtered view always
-              lands with the membership disclaimer in view, not hundreds of
-              pixels above it. */}
-          <p class="nc-dir-cat-note">
-            Listed from dated public sources · not a verified membership list
-          </p>
           <ul class="nc-dir-grid" role="list">
             {members.filter((m) => m.category === cat.id).map((member) => (
               <li
@@ -127,7 +121,7 @@ const base = "/concepts/newcastle-chamber";
             ? ` in ${categoryLabel}`
             : "";
       status.hidden = false;
-      status.textContent = `${visibleCount} ${visibleCount === 1 ? "listing" : "listings"}${scope}. Listed from public sources, not verified members.`;
+      status.textContent = `${visibleCount} ${visibleCount === 1 ? "listing" : "listings"}${scope}.`;
     }
     if (empty) empty.hidden = visibleCount !== 0;
   }

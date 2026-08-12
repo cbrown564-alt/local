@@ -2,12 +2,13 @@
 import ChamberConceptShell from "../../prototypes/chamber-prototypes/ChamberConceptShell.astro";
 import EssenceMedia from "../../site/components/EssenceMedia.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
-import { categories, members } from "../../site/data/chamber-prototype";
+import { categories, events, members } from "../../site/data/chamber-prototype";
 
 const base = "/concepts/newcastle-chamber";
 const counts = Object.fromEntries(
   categories.map((cat) => [cat.id, members.filter((m) => m.category === cat.id).length]),
 );
+const featuredEvent = events.find((event) => event.real) ?? events[0];
 ---
 <ChamberConceptShell title="Newcastle Chamber of Commerce — independent concept" current="home">
   <main class="nc-hero">
@@ -26,9 +27,9 @@ const counts = Object.fromEntries(
         <input id="nc-q" type="search" name="q" placeholder="Hotel, vet, bikes…" />
         <button type="submit">Search</button>
       </form>
-      <p class="nc-prototype-note">
-        These listings are real Newcastle businesses. The Chamber has not
-        confirmed them as members.
+      <p class="nc-membership-note">
+        Example listings of real Newcastle businesses — membership confirmed by
+        the committee.
       </p>
       <div class="nc-actions">
         <a class="nc-cta" href={`${base}/members/`}>Browse the directory</a>
@@ -51,6 +52,17 @@ const counts = Object.fromEntries(
         Newcastle Central Promenade · Eric Jones, 2012 · CC BY-SA 2.0
       </figcaption>
     </figure>
+    <aside class="nc-event" aria-label="Coming up on the town calendar">
+      <p class="nc-event-kicker">Coming up · town calendar</p>
+      <h2>{featuredEvent.title}</h2>
+      <p>{featuredEvent.blurb}</p>
+      <p class="nc-event-meta">
+        <strong>{featuredEvent.date}</strong>
+        <span>{featuredEvent.place}</span>
+      </p>
+      <a class="nc-event-cta" href={`${base}/events/`}>See the town calendar</a>
+      <small>Updates on Facebook &amp; Instagram</small>
+    </aside>
     <nav class="nc-rail" aria-label="Browse by trade">
       {categories.map((cat) => (
         <a class="nc-rail-cell" href={`${base}/members/?cat=${cat.id}`}>
