@@ -68,7 +68,7 @@ export const transformationDetails = {
     "date": "26 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/dundrum-inn/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "dundrum-inn",
       "beforeVideo": "/media/concepts/dundrum-inn/dundrum-inn-before.mp4",
@@ -111,7 +111,7 @@ export const transformationDetails = {
     "date": "24 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/kelly-mcevoy-brown/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "kelly-mcevoy-brown",
       "beforeVideo": "/media/concepts/kelly-mcevoy-brown/kelly-mcevoy-brown-before.mp4",
@@ -150,7 +150,7 @@ export const transformationDetails = {
     "date": "24 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/bettys-butters/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "bettys-butters",
       "beforeVideo": "/media/concepts/bettys-butters/bettys-butters-before.mp4",
@@ -189,7 +189,7 @@ export const transformationDetails = {
     "date": "24 July 2026",
     "comparisonIntro": "Drag the handle. The left stands in for what a customer currently finds — douglasandcromie.co.uk does not resolve, so there is no page to capture; the right shows the proposed first screen.",
     "conceptHref": "/concepts/douglas-cromie/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "douglas-cromie",
       "afterVideo": "/media/concepts/douglas-cromie/douglas-cromie-after.mp4",
@@ -228,7 +228,7 @@ export const transformationDetails = {
     "date": "27 July 2026",
     "comparisonIntro": "Drag the handle. The left shows The Donard's new official homepage, captured during the build-day re-check; the right shows a property-first feature proposal that keeps its identity and booking route.",
     "conceptHref": "/concepts/donard-hotel/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "donard-hotel",
       "afterVideo": "/media/concepts/donard-hotel/donard-hotel-after.mp4",
@@ -267,7 +267,7 @@ export const transformationDetails = {
     "date": "24 July 2026",
         "comparisonIntro": "Drag the handle. The left shows what a patient currently finds — the practice's own address redirecting, over insecure HTTP, to a DJ Maguire Dentists location page branded Newcastle Family Dental Care, captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/newcastle-dental/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "newcastle-dental",
       "afterVideo": "/media/concepts/newcastle-dental/newcastle-dental-after.mp4",
@@ -306,7 +306,7 @@ export const transformationDetails = {
     "date": "24 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/hugh-mccanns/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "hugh-mccanns",
       "beforeVideo": "/media/concepts/hugh-mccanns/hugh-mccanns-before.mp4",
@@ -345,7 +345,7 @@ export const transformationDetails = {
     "date": "21 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/bucks-head/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "bucks-head",
       "beforeVideo": "/media/concepts/bucks-head/bucks-head-before.mp4",
@@ -426,7 +426,7 @@ export const transformationDetails = {
     "date": "17 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/castle-farm/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "castle-farm",
       "beforeVideo": "/media/concepts/castle-farm/castle-farm-before.mp4",
@@ -465,7 +465,7 @@ export const transformationDetails = {
     "date": "3 August 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/painted-earth/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "painted-earth",
       "beforeVideo": "/media/concepts/painted-earth/painted-earth-before.mp4",
@@ -504,7 +504,7 @@ export const transformationDetails = {
     "date": "21 July 2026",
     "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the café's Facebook page as it loads without an account; the right shows the proposed first screen.",
     "conceptHref": "/concepts/cupla/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "cupla",
       "afterVideo": "/media/concepts/cupla/cupla-after.mp4",
@@ -544,7 +544,7 @@ export const transformationDetails = {
     "date": "21 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/donard-veterinary/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "donard-veterinary",
       "beforeVideo": "/media/concepts/donard-veterinary/donard-veterinary-before.mp4",
@@ -585,7 +585,7 @@ export const transformationDetails = {
     "date": "23 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/hotel-enniskeen/",
-    "conceptLabel": "View the full five-page concept site",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "hotel-enniskeen",
       "beforeVideo": "/media/concepts/hotel-enniskeen/hotel-enniskeen-before.mp4",
@@ -635,7 +635,7 @@ export const transformationDetails = {
     "date": "22 July 2026",
     "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the arcade's Facebook page as it loads without an account; the right shows the proposed first screen.",
     "conceptHref": "/concepts/kent-amusements/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "kent-amusements",
       "afterVideo": "/media/concepts/kent-amusements/kent-amusements-after.mp4",
@@ -685,7 +685,7 @@ export const transformationDetails = {
     "date": "21 July 2026",
     "comparisonIntro": "Drag the handle. The left shows the public opening screen captured during research; the right shows the proposed first screen.",
     "conceptHref": "/concepts/mourne-cycles/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "mourne-cycles",
       "beforeVideo": "/media/concepts/mourne-cycles/mourne-cycles-before.mp4",
@@ -738,7 +738,7 @@ export const transformationDetails = {
     "date": "22 July 2026",
     "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the Chamber's Facebook page as it loads without an account; the right shows the proposed finder opening.",
     "conceptHref": "/concepts/newcastle-chamber/",
-    "conceptLabel": "View the full concept site",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "newcastle-chamber",
       "afterVideo": "/media/concepts/newcastle-chamber/newcastle-chamber-after.mp4",
@@ -779,7 +779,7 @@ export const transformationDetails = {
     "date": "21 July 2026",
     "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the bar's Facebook page as it loads without an account; the right shows the proposed first screen.",
     "conceptHref": "/concepts/scopers/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "scopers",
       "afterVideo": "/media/concepts/scopers/scopers-after.mp4",
@@ -819,7 +819,7 @@ export const transformationDetails = {
     "date": "22 July 2026",
     "comparisonIntro": "Drag the handle. The left shows what a first-time visitor currently finds — the shop's Facebook page as it loads without an account; the right shows the proposed first screen.",
     "conceptHref": "/concepts/tool-centre/",
-    "conceptLabel": "View the full concept screen",
+    "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "tool-centre",
       "afterVideo": "/media/concepts/tool-centre/tool-centre-after.mp4",
