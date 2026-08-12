@@ -40,6 +40,11 @@ jobs:
       - name: Install Chrome
         id: chrome
         uses: browser-actions/setup-chrome@v2
+        with:
+          # Chrome for Testing 151.0.7922.71 crashes on the Cúpla geometry
+          # route in GitHub's Ubuntu runner before DOMContentLoaded. Keep this
+          # focused browser pin deterministic until that regression clears.
+          chrome-version: 150.0.7871.124
 
       - name: Build site and run every verification suite
         run: pnpm test
