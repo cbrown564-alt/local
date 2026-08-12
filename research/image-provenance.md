@@ -1,5 +1,16 @@
 # Concept image provenance
 
+## Homepage clay phone film — 12 August 2026
+
+- `public/media/home/clay-phone-homepage.mp4` — supplied by the user on 12
+  August 2026 as a 10-second, 1280×720 generated clay object-theatre film for
+  the homepage. It shows an abstract shop page on a clay phone over wet slate;
+  it contains no real business, readable UI, lettering or identifiable person.
+  The film is shown muted and looping below the homepage map. It remains an
+  illustrative concept, not a client result.
+- `public/media/home/clay-phone-homepage-poster.jpg` — first-frame poster
+  extracted from the supplied MP4 for reduced-motion and no-script fallback.
+
 Internal record of how each concept image was made and whether a concept still
 uses it. Not deployed — the public credits for third-party photographs live in
 `public/media/place/ATTRIBUTION.md`, which is served with the site to honour

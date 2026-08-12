@@ -1,0 +1,49 @@
+---
+const video = "/media/home/clay-phone-homepage.mp4";
+const poster = "/media/home/clay-phone-homepage-poster.jpg";
+---
+
+<section class="home-clay-film" aria-labelledby="home-clay-film-heading">
+  <div class="shell home-clay-film-inner">
+    <div class="home-clay-film-copy">
+      <p class="home-kicker">One clear route</p>
+      <h2 id="home-clay-film-heading">Make the next useful thing easy to find.</h2>
+      <p class="home-clay-film-note">AI-generated film. An illustrative concept, not a client result.</p>
+    </div>
+    <div class="home-clay-film-frame">
+      <video
+        class="home-clay-film-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster={poster}
+        aria-label="A clay phone on a wet slate counter changes from a muddled shop page to a clearer route to useful information."
+      >
+        <source src={video} type="video/mp4" />
+      </video>
+      <noscript>
+        <img src={poster} alt="A clay phone showing an abstract shop page on a wet slate counter." />
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<script>
+  const film = document.querySelector<HTMLVideoElement>(".home-clay-film-video");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const syncMotionPreference = () => {
+    if (!film) return;
+    if (reducedMotion.matches) {
+      film.pause();
+      film.currentTime = 0;
+    } else if (film.paused) {
+      void film.play().catch(() => undefined);
+    }
+  };
+
+  syncMotionPreference();
+  reducedMotion.addEventListener("change", syncMotionPreference);
+</script>
