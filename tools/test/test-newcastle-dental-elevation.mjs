@@ -231,22 +231,17 @@ check(
   !/<form[^>]*\baction=/.test(html) && !/fetch\(|XMLHttpRequest/.test(source),
 );
 check(
-  "the page still claims details stay put while sending from itself",
-  text.includes("No details shared off-site") &&
-    text.includes("Nothing is sent from this page"),
+  "the request foot still describes the email handoff",
+  text.includes("Opens as a draft in your email app") &&
+    text.includes("Or ring"),
 );
 check("placeholder controls survive", !/<a[^>]*data-concept-placeholder/.test(html));
 
-// The padlock is concept chrome, and the banner note that says so must travel
-// with it in the same first viewport.
-check("the padlocked address bar is gone", /class="nd-urlbar"/.test(html));
+// Padlock URL chrome was stripped in the Care-register redesign; keep it gone.
+check("the padlocked address bar returned", !/class="nd-urlbar"/.test(html));
 check(
-  "the banner note no longer explains the padlock",
-  /not a live certificate/i.test(text),
-);
-check(
-  "the banner note no longer precedes the padlock in the first viewport",
-  flat.indexOf("not a live certificate") < flat.indexOf('class="nd-urlbar"'),
+  "the banner note no longer explains a padlock",
+  !/not a live certificate/i.test(text),
 );
 
 // The swap test, as far as a file can carry it.
