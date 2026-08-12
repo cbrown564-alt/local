@@ -102,7 +102,9 @@ const CONCEPTS = {
     afterHover: AFTER_HOVER,
   },
   "newcastle-dental": {
-    beforeStill: "http://newcastlefamilydentalcare.com/",
+    before: "https://djmaguiredentists.co.uk/location-newcastle.html",
+    settleMs: 4500,
+    beforeHover: ["text=Book", "text=Contact", "nav a", "header a", "a"],
     afterHover: AFTER_HOVER,
   },
   "hugh-mccanns": {

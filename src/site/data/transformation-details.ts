@@ -270,12 +270,12 @@ export const transformationDetails = {
     "conceptLabel": "See the full website idea",
     "motion": {
       "slug": "newcastle-dental",
+      "beforeVideo": "/media/concepts/newcastle-dental/newcastle-dental-before.mp4",
       "afterVideo": "/media/concepts/newcastle-dental/newcastle-dental-after.mp4",
       "beforePoster": "/media/concepts/newcastle-dental/newcastle-dental-before.jpg",
       "afterPoster": "/media/concepts/newcastle-dental/newcastle-dental-after.jpg",
-      "beforeAlt": "The practice's own domain redirecting, over insecure HTTP, to a DJ Maguire Dentists location page branded Newcastle Family Dental Care",
-      "afterAlt": "Ten-second visit to the concept — We love to make you smile! over a padlocked secure address bar, the three named dentists, the practice band carrying 2014, the 2017 award, 2023 and today, the two-step what-happens-when-you-ring panel and a working appointment request",
-      "beforeNote": "Newcastle Family Dental Care trades under its own name, but its own web address redirects — over plain HTTP — to a DJ Maguire Dentists location page branded Newcastle Family Dental Care, and the .co.uk it prints on its stationery has no working secure version. There is no site at the practice's own address to demo; this is where the address leads."
+      "beforeAlt": "Ten-second view of what patients find today — the Maguire Newcastle location page under the Newcastle Family Dental Care name",
+      "afterAlt": "Ten-second visit to the website idea — We love to make you smile! over a padlocked secure address bar, the three named dentists, the practice band, what happens when you ring, and a private appointment request"
     },
     "secondSurfacesHtml": [],
     "notesHeading": "Three changes that make their front door feel like theirs.",
