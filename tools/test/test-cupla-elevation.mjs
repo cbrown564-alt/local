@@ -520,9 +520,8 @@ if (chromePath) {
     });
 
   const settleHome = async (page) => {
-    // Prefer commit over domcontentloaded/networkidle: LifecycleWatcher races on
-    // CI Chrome often detach the frame before those later lifecycle events fire.
-    await page.goto(homeUrl, { waitUntil: "commit", timeout: 60000 });
+    // puppeteer-core supports load/domcontentloaded/networkidle0/2 — not Playwright's "commit".
+    await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.waitForSelector(".cp-hero h1, .cp-essence-hero", { timeout: 15000 });
     try {
       await page.evaluate(() => document.fonts.ready);
