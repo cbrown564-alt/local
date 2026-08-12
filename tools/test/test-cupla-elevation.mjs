@@ -483,12 +483,32 @@ if (chromePath) {
     ],
   });
   try {
-    const page = await browser.newPage();
     const homeUrl = new URL("/concepts/cupla/", base).href;
 
-    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-    await page.goto(homeUrl, { waitUntil: "load", timeout: 60000 });
-    await page.evaluate(() => document.fonts.ready);
+    async function openHome() {
+      const page = await browser.newPage();
+      await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+      try {
+        await page.goto(homeUrl, { waitUntil: "load", timeout: 60000 });
+      } catch (error) {
+        await page.close().catch(() => {});
+        throw error;
+      }
+      await page.evaluate(() => document.fonts.ready);
+      return page;
+    }
+
+    let page;
+    try {
+      page = await openHome();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (!/Navigating frame was detached|LifecycleWatcher/i.test(message)) {
+        throw error;
+      }
+      // One retry for the intermittent CI detach.
+      page = await openHome();
+    }
     await page.evaluate(() => window.scrollTo(0, 0));
     const phone = await measureHome(page);
     check(`phone geometry could not measure the home route: ${phone.reason ?? "unknown"}`, phone.ok);

@@ -265,7 +265,7 @@ export const transformationDetails = {
     "eyebrow": "Website transformation · Newcastle, Co. Down",
     "headline": "The practice's own door, served securely.",
     "date": "24 July 2026",
-        "comparisonIntro": "Drag the handle. Left: what a patient found in research — the practice address redirecting over insecure HTTP to a group location page. Right: the proposed first screen.",
+        "comparisonIntro": "Drag the handle. Left: what patients find today when they follow the practice online — the Maguire Newcastle location page under the practice's name. Right: a calmer first screen of their own.",
     "conceptHref": "/concepts/newcastle-dental/",
     "conceptLabel": "See the full website idea",
     "motion": {
@@ -278,12 +278,12 @@ export const transformationDetails = {
       "beforeNote": "Newcastle Family Dental Care trades under its own name, but its own web address redirects — over plain HTTP — to a DJ Maguire Dentists location page branded Newcastle Family Dental Care, and the .co.uk it prints on its stationery has no working secure version. There is no site at the practice's own address to demo; this is where the address leads."
     },
     "secondSurfacesHtml": [],
-    "notesHeading": "Three changes that give patients their own front door.",
+    "notesHeading": "Three changes that make their front door feel like theirs.",
     "notes": [
       {
-        "title": "Patients who type their address should land with them",
-        "body": "The practice's domain redirected over plain HTTP to a DJ Maguire Dentists location page branded Newcastle Family Dental Care. Someone who typed the address — or used the one on the practice's own stationery — left the practice's own door.",
-        "change": "A secure front door at an address the practice controls, with its own sentence and its own hours on the first screen."
+        "title": "Make their own address feel like their practice",
+        "body": "Patients who follow Newcastle Family Dental Care online already land on a page under that name — today it is the Maguire group's Newcastle location page. It works as a listing; it does not feel like the practice's own front door.",
+        "change": "A calmer first screen at an address they control: their sentence, their hours, and a secure connection that completes."
       },
       {
         "title": "Ask for a visit without handing details to a form farm",
@@ -292,11 +292,11 @@ export const transformationDetails = {
       },
       {
         "title": "See the people and the plan before you call",
-        "body": "A family practice is people, hours and a clear next step — not only a redirect to a group booking link.",
+        "body": "A family practice is people, hours and a clear next step — not only a group booking link.",
         "change": "Three named dentists, the award the practice is proud of, weekday hours, and a plain answer to what happens when you ring — including if it is urgent — on one calm page."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>In July 2026 the practice domain redirected over plain HTTP to DJ Maguire Dentists' Newcastle location page — that redirect target is the before panel.</p>\n        <p>Dentists' names and credentials, Railway Street address, weekday hours, phone and email come from that branded page. The smile line and practice sentences are quoted from their 2018 archived homepage; the two layers are not blended. The calm-room plate is illustrative.</p>\n        <p>This was not commissioned or approved by Newcastle Family Dental Care.</p>\n        <ul>\n          <li><a href=\"https://www.djmaguiredentists.com/\" rel=\"external\">DJ Maguire Dentists (redirect target at time of research)</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Patients already find the practice online under its own name. In July 2026 that meant the published practice address sent visitors to the DJ Maguire Dentists Newcastle location page — that page is the before. HTTPS on the practice's own host did not complete.</p>\n        <p>Dentists' names and credentials, Railway Street address, weekday hours, phone and email come from that branded location page. The smile line and practice sentences are quoted from their 2018 archived homepage; the two layers are not blended. The calm-room plate is a disclosed AI-generated illustration, not a photograph or record of the practice's actual interior.</p>\n        <p>This was not commissioned or approved by Newcastle Family Dental Care. It is a free before-and-after website idea — a clearer front door for a practice that already has a web presence.</p>\n        <ul>\n          <li><a href=\"https://djmaguiredentists.co.uk/location-newcastle.html\" rel=\"external\">DJ Maguire Dentists — Newcastle location</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "hugh-mccanns": {
     "title": "Hugh McCann's concept transformation — Mourne Made",
@@ -728,7 +728,7 @@ export const transformationDetails = {
         "change": "A trails page with the Mourne skyline above Newcastle and an indicative map of the riding country around Castlewellan, Tollymore, Donard and the coast road."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before panel is a capture of the public Mourne Cycles site from July 2026.</p>\n        <p>Name, logo, tagline, address, phone, email, brand list, bike categories, trails wording and Cyclescheme listing come from that site. Hire prices, workshop tiers and Cycle to Work figures are illustrative. Bike scenes are generated — not showroom stock or the shop's premises.</p>\n        <p>This was not commissioned or approved by Mourne Cycles.</p>\n        <ul>\n          <li><a href=\"https://www.mourne-cycles.co.uk/\" rel=\"external\">Mourne Cycles website</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>The before panel is a capture of the public Mourne Cycles site from July 2026.</p>\n        <p>Name, logo, tagline, address, phone, email, brand list, bike categories, trails wording and Cyclescheme listing come from that site. Hire prices, workshop tiers and Cycle to Work figures are illustrative. Bike scenes are generated — not showroom stock or the shop's premises. The trails skyline is SRTM-derived elevation, drawn as an indicative ridgeline, not a survey.</p>\n        <p>This was not commissioned or approved by Mourne Cycles.</p>\n        <ul>\n          <li><a href=\"https://www.mourne-cycles.co.uk/\" rel=\"external\">Mourne Cycles website</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
   "newcastle-chamber": {
     "title": "Newcastle Chamber of Commerce concept transformation — Mourne Made",
