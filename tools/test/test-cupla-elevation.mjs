@@ -473,56 +473,106 @@ try {
 
 if (chromePath) {
   const { server, base } = await serveDist();
-  const browser = await puppeteer.launch({
-    executablePath: chromePath,
-    headless: "new",
-    args: [
-      "--hide-scrollbars",
-      "--force-color-profile=srgb",
-      ...(process.env.CI || process.env.CHROME_NO_SANDBOX === "1" ? ["--no-sandbox"] : []),
-    ],
-  });
-  try {
-    const homeUrl = new URL("/concepts/cupla/", base).href;
+  const homeUrl = new URL("/concepts/cupla/", base).href;
+  const launchArgs = [
+    "--hide-scrollbars",
+    "--force-color-profile=srgb",
+    // CI runners often have tiny /dev/shm; without this Chrome dies mid-session
+    // and surfaces it as ConnectionClosedError on newPage/goto.
+    "--disable-dev-shm-usage",
+    ...(process.env.CI || process.env.CHROME_NO_SANDBOX === "1"
+      ? ["--no-sandbox", "--disable-setuid-sandbox"]
+      : []),
+  ];
 
-    async function openHome() {
-      const page = await browser.newPage();
-      await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-      try {
-        // domcontentloaded is enough for geometry pins and avoids a flaky
-        // full-load race that detaches the frame on CI Chrome.
-        await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-        await page.waitForSelector("body", { timeout: 15000 });
-      } catch (error) {
-        await page.close().catch(() => {});
-        throw error;
-      }
+  const isTransientBrowserError = (error) => {
+    const message = error instanceof Error ? error.message : String(error);
+    const name = error instanceof Error ? (error.name ?? "") : "";
+    return /Connection closed|Target closed|Navigating frame was detached|LifecycleWatcher|ProtocolError|Protocol error|net::ERR|Timeout|Session closed|Browser disconnected|ConnectionClosed/i.test(
+      `${name} ${message}`,
+    );
+  };
+
+  const launchBrowser = () =>
+    puppeteer.launch({
+      executablePath: chromePath,
+      headless: "new",
+      args: launchArgs,
+    });
+
+  const openHome = async (activeBrowser) => {
+    const page = await activeBrowser.newPage();
+    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    try {
+      // domcontentloaded is enough for geometry pins and avoids a flaky
+      // full-load race that detaches the frame on CI Chrome.
+      await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
+      await page.waitForSelector("body", { timeout: 15000 });
+    } catch (error) {
+      await page.close().catch(() => {});
+      throw error;
+    }
+    try {
+      await page.evaluate(() => document.fonts.ready);
+    } catch {
+      // fonts.ready can reject if the document navigates mid-wait; ignore.
+    }
+    return page;
+  };
+
+  /** Phone + desktop probes. Throws only on transport/lifecycle failures. */
+  const probeGeometry = async (activeBrowser) => {
+    const page = await openHome(activeBrowser);
+    try {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      const phone = await measureHome(page);
+      const phoneFrontage = await measureFrontageCaption(page);
+
+      await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 1 });
+      await page.goto(homeUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
       try {
         await page.evaluate(() => document.fonts.ready);
       } catch {
-        // fonts.ready can reject if the document navigates mid-wait; ignore.
+        // same as openHome — ignore mid-navigation fonts.ready races
       }
-      return page;
+      await page.evaluate(() => window.scrollTo(0, 0));
+      const desktop = await measureHome(page);
+      const desktopFrontage = await measureFrontageCaption(page);
+      return { phone, phoneFrontage, desktop, desktopFrontage };
+    } finally {
+      await page.close().catch(() => {});
     }
+  };
 
-    let page;
+  let browser;
+  try {
+    let geometry;
     let lastError;
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
-        page = await openHome();
+        // Fresh browser each attempt: ConnectionClosedError means the CDP pipe
+        // is dead, so retrying newPage() on the same handle cannot recover.
+        if (browser) {
+          await browser.close().catch(() => {});
+          browser = null;
+        }
+        browser = await launchBrowser();
+        geometry = await probeGeometry(browser);
         lastError = null;
         break;
       } catch (error) {
         lastError = error;
-        const message = error instanceof Error ? error.message : String(error);
-        if (!/Navigating frame was detached|LifecycleWatcher|net::ERR|Timeout/i.test(message)) {
-          throw error;
+        if (browser) {
+          await browser.close().catch(() => {});
+          browser = null;
         }
+        if (!isTransientBrowserError(error) || attempt === 3) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
       }
     }
-    if (!page) throw lastError;
-    await page.evaluate(() => window.scrollTo(0, 0));
-    const phone = await measureHome(page);
+    if (!geometry) throw lastError;
+
+    const { phone, phoneFrontage, desktop, desktopFrontage } = geometry;
     check(`phone geometry could not measure the home route: ${phone.reason ?? "unknown"}`, phone.ok);
     if (phone.ok) {
       check(
@@ -540,7 +590,6 @@ if (chromePath) {
       check("at 390×844 elementFromPoint at the caption centre does not return the caption", phone.hitCaption);
     }
 
-    const phoneFrontage = await measureFrontageCaption(page);
     check(`phone geometry could not measure the frontage: ${phoneFrontage.reason ?? "unknown"}`, phoneFrontage.ok);
     if (phoneFrontage.ok) {
       check(
@@ -554,11 +603,6 @@ if (chromePath) {
       );
     }
 
-    await page.setViewport({ width: 1265, height: 710, deviceScaleFactor: 1 });
-    await page.goto(homeUrl, { waitUntil: "load", timeout: 60000 });
-    await page.evaluate(() => document.fonts.ready);
-    await page.evaluate(() => window.scrollTo(0, 0));
-    const desktop = await measureHome(page);
     check(`desktop geometry could not measure the home route: ${desktop.reason ?? "unknown"}`, desktop.ok);
     if (desktop.ok) {
       check(
@@ -571,7 +615,6 @@ if (chromePath) {
       );
     }
 
-    const desktopFrontage = await measureFrontageCaption(page);
     check(`desktop geometry could not measure the frontage: ${desktopFrontage.reason ?? "unknown"}`, desktopFrontage.ok);
     if (desktopFrontage.ok) {
       check(
@@ -585,7 +628,7 @@ if (chromePath) {
       );
     }
   } finally {
-    await browser.close();
+    if (browser) await browser.close().catch(() => {});
     await new Promise((resolve) => server.close(resolve));
   }
 }
