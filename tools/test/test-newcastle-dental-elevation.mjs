@@ -9,11 +9,9 @@
  * fact about the delivered HTML. Requires `pnpm build` first — `pnpm test`
  * runs the build ahead of it.
  *
- * The sharpest checks here are the ones about the two layers. The practice's
- * own website is only in the Internet Archive, so its facts — the smile line,
- * the 2017 award, the two surgeries — must never appear as current, and the
- * archived-era claims the brief rules out (NHS availability, the recorded
- * out-of-hours message) must not appear at all.
+ * Guest UI stays patient-facing: no archive stamps, no fake padlock chrome.
+ * Archive-era absences still apply (NHS, recorded-message protocol, Maguire).
+ * Calm-room disclosure stays in the banner and case study.
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -64,61 +62,48 @@ const block = (startMarker, endMarker) => {
 };
 const visible = (markup) => markup.replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/\s+/g, " ");
 
-// Move 1 — the practice's own sentence leads, and it is dated so nobody reads
-// a 2018 capture as copy written this year.
-const say = block('class="nd-say"', "</figure>");
-check("the practice's own sentence is missing", say.length > 0);
-check('"We love to make you smile!" is not on the page', visible(say).includes("We love to make you smile!"));
+// Move 1 — calm hero: studio headline, quiet smile line, private-appointments
+// offer. Archive stamps stay off the guest UI (case study / banner instead).
 check(
-  "the smile line is not attributed to the practice's own address",
-  visible(say).includes("newcastlefamilydentalcare.co.uk"),
-);
-check("the smile line does not carry its capture year", visible(say).includes("archived 2018"));
-check(
-  "their words no longer lead ours",
-  flat.indexOf('class="nd-say"') < flat.indexOf("<h1"),
-);
-check(
-  "the studio headline is gone from beside theirs",
+  "the studio headline is missing",
   text.includes("Your family dentist,") && text.includes("close to home."),
+);
+check('"We love to make you smile!" is not on the page', text.includes("We love to make you smile!"));
+check(
+  "guest UI still shows archive capture stamps",
+  !/archived 2018/i.test(text),
+);
+check(
+  "fake padlock URL chrome returned to the guest hero",
+  !flat.includes('class="nd-urlbar"') && !text.includes("Secure connection"),
 );
 check(
   "the current private-appointments line is missing",
   text.includes("make a private appointment to help you with your dental care needs"),
 );
 
-// Move 2 — the arc, every entry dated, and the award carrying its year and
-// its source. No undated glory.
+// Move 2 — the arc still carries years and the award, without guest-facing
+// research source stamps.
 const practice = block('class="nd-practice"', 'class="nd-urgent"');
 const practiceText = visible(practice);
 check("the practice band is missing", practice.length > 0);
 for (const year of ["2014", "2017", "2023", "Today"]) {
   check(`arc entry missing: ${year}`, new RegExp(`class="nd-arc-year">${year}<`).test(practice));
 }
-const arcSources = practice.match(/class="nd-arc-source">([^<]+)</g) ?? [];
 check(
-  `every arc entry must carry a light source (found ${arcSources.length} of 4)`,
-  arcSources.length === 4 &&
-    arcSources.every((entry) => /published with the practice|archived 2018|Railway Street/.test(entry)) &&
-    !arcSources.some((entry) => /read \d/i.test(entry)),
+  "research source stamps returned on the practice arc",
+  !practice.includes('class="nd-arc-source"'),
 );
 check("the award is missing", practiceText.includes("Dental Practice of the Year"));
 check("the award is not attributed to Randox Healthcare", practiceText.includes("Randox Healthcare"));
 check("the BDA Good Practice Scheme is missing", practiceText.includes("BDA Good Practice Scheme"));
-const award = practice.slice(practice.indexOf("2017"));
-check(
-  "the award is presented without its year or its source",
-  /archived 2018/.test(visible(award.slice(0, award.indexOf("</li>") + 5))),
-);
 check(
   "the two-surgeries claim is presented as current",
-  !practiceText.includes("two surgeries") ||
-    /two surgeries[\s\S]{0,220}archived 2018/.test(practiceText),
+  !practiceText.includes("two surgeries"),
 );
 check(
-  "the ethical-dentistry sentence is quoted without its capture year",
-  !text.includes("high quality, ethical dentistry") ||
-    visible(block('class="nd-creed"', "</figure>")).includes("archived 2018"),
+  "the archived ethical-dentistry sentence returned as undated guest copy",
+  !text.includes("high quality, ethical dentistry"),
 );
 
 // The layer rules, stated as absences. Each of these was true of the archived
