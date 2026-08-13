@@ -158,6 +158,7 @@ because three documents each kept their own copy.
 | `research/studio-storytelling.md` | Studio product showcases & explainers workstream (claymation, kinetic type, humour, belief-sequence film/audio) |
 | `research/concept-essence-media-brief.md` | The signature image or short-film idea that expresses the essence of each concept site |
 | `docs/DESIGN.md` | Brand, visual language and concept identities |
+| `docs/TRANSFERABLE-WEB-DESIGN-PLAYBOOK.md` | Reusable, evidence-backed web design guidance for work outside Mourne Made |
 | `docs/CONTEXT.md` | Project vocabulary |
 | `docs/MEDIA_CAPTURE.md` | Capture, optimisation and print procedures |
 | `docs/RESEARCH_METHOD.md` | Source and geographic methodology |
