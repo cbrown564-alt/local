@@ -7,9 +7,9 @@
    the walk-again vignettes, the exploded plate, and the stop on ink with its
    one drawn beat. The build and the plate draw the chassis twice — phone
    below the wide breakpoint, browser window at and above it — one build
-   driven on both, the matching one shown. Beats 1–5 carry no register
-   styling: the only colour on the page is the brass plate at the stop, and
-   it is the page's one drawn beat. */
+   driven on both, the matching one shown. Beats 1–5 may carry line art in
+   place of a hatch; they still carry no register colour. The brass plate at
+   the stop remains the page's one register beat. */
 
 .hasg {
   --wwlf-paper: #eef1f3;
@@ -22,11 +22,79 @@
   --wwlf-brass-dark: #8f6f38;
 }
 
-/* --- the hero: copy only — the build itself is the illustration ------------
-   No fan, no diagram: the page's verb is done, not drawn, one scroll below. */
+/* --- the hero: copy plus a fan of the five-layer build --------------------- */
+
+.hasg-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.hasg-hero-copy,
+.hah {
+  min-width: 0;
+}
 
 .hasg-hero-copy {
   max-width: 46rem;
+}
+
+.hah {
+  margin: 0;
+}
+
+.hah-fan {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hah-plate {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-left: -8%;
+}
+
+.hah-plate:first-child {
+  margin-left: 0;
+}
+
+.hah-plate:nth-child(odd) {
+  transform: translateY(6%) rotate(-2deg);
+}
+
+.hah-plate:nth-child(even) {
+  transform: rotate(1.4deg);
+}
+
+.hah-plate:nth-child(3) {
+  transform: translateY(3%) rotate(-0.6deg);
+}
+
+.hah-frame.fw-frame--plate {
+  width: 100%;
+  max-width: none;
+  box-shadow: 5px 5px 0 rgba(19, 32, 41, 0.14);
+}
+
+.hah .fwb-label {
+  display: none;
+}
+
+.hah-key {
+  margin: 0.85rem 0 0;
+  color: var(--wwlf-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+@media (min-width: 960px) {
+  .hasg-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
 }
 
 /* --- the assembly section: exploded plate first, the build mounted over it - */
@@ -645,6 +713,48 @@
 
 .hasg-chassis--desktop .fwb-status::before {
   margin-left: 1.8cqw;
+}
+
+.hasg-chassis .fwb-field,
+.hasg-chassis .fwb-button {
+  box-sizing: border-box;
+}
+
+.hasg-chassis .fwb-field .fwb-label,
+.hasg-chassis .fwb-button .fwb-label,
+.hasg-chassis .fwb-row .fwb-label {
+  font-size: inherit;
+  letter-spacing: 0.01em;
+}
+
+.hasg-chassis .fwb-button {
+  justify-content: center;
+}
+
+.hasg-chassis .fwb-button .fwb-label {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.hgstop-ask {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+  padding: 0.85rem 0 0.15rem;
+  color: var(--foam);
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.hgstop-ask:hover {
+  color: var(--wwlf-brass);
+}
+
+.hgstop-ask svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* --- the exploded plate: the settled frame, and what prints ----------------

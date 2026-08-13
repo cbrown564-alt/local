@@ -1,0 +1,25 @@
+---
+/**
+ * The /how-its-made/ hero — the thesis drawn, not said. Five phone chassis
+ * of the same build, each holding one more layer than the last, so the
+ * arrival-to-handoff order is visible in one glance. Decorative: the h1
+ * and lede already carry the words.
+ */
+import { assemblyBeats } from "../../data/assembly";
+import AssemblyChassis from "./AssemblyChassis.astro";
+---
+
+<figure class="hah" aria-hidden="true">
+  <div class="hah-fan">
+    {
+      assemblyBeats.map((beat) => (
+        <div class="hah-plate">
+          <AssemblyChassis upto={beat.beat} frameClass="hah-frame" />
+        </div>
+      ))
+    }
+  </div>
+  <figcaption class="hah-key">
+    {assemblyBeats.map((beat) => beat.key).join(" · ")}
+  </figcaption>
+</figure>

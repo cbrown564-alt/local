@@ -22,8 +22,10 @@
  *
  * Completeness fails the build here rather than shipping a quiet gap — every
  * beat complete, theme ids valid against the shared taxonomy, the ten themes
- * answered exactly once, no colour or drawn scene inside beats 1–5, and
- * exactly one drawn beat, at the stop.
+ * answered exactly once, no register colour (goal) inside beats 1–5, and
+ * exactly one register beat — the brass nameplate — at the stop. Line art on
+ * a media block is allowed: it replaces the hatched X, it does not colour
+ * the layer.
  */
 
 import type { FaultBlock } from "./fault-walks";
@@ -73,8 +75,7 @@ export interface AssemblyBeat {
   /** The marker's seat on the desktop plate. */
   desktopMarker: { x: number; y: number };
   /** The layer itself, in the fault walk's grey grammar. Mechanism words
-   *  only; no goal, no art — beats 1–5 carry no register styling, asserted
-   *  below. */
+   *  only; no goal. Line art may replace a hatched media block. */
   blocks: FaultBlock[];
   /** The same layer re-laid for the browser-window chassis: header, hero,
    *  main column with a rail, footer — the wide screen's composition of the
@@ -129,16 +130,16 @@ export const assemblyBeats: AssemblyBeat[] = [
       { label: "“are you open?” left unanswered", walkId: "t4" },
     ],
     marker: { x: 90, y: 8 },
-    desktopMarker: { x: 95, y: 12 },
+    desktopMarker: { x: 96, y: 17 },
     blocks: [
-      { kind: "status", x: 10, y: 6, w: 70, h: 5, label: "open now · until 4 today" },
-      { kind: "media", x: 10, y: 13.5, w: 80, h: 16.5 },
-      band(10, 32.5, 56, 3.5, { label: "the address" }),
+      { kind: "status", x: 10, y: 6, w: 80, h: 5, label: "open now · until 4 today" },
+      { kind: "media", x: 10, y: 13, w: 80, h: 15, art: "arrival" },
+      band(10, 30, 56, 3.5, { label: "the address" }),
     ],
     desktopBlocks: [
       { kind: "status", x: 64, y: 15, w: 32, h: 5, label: "open now · until 4 today" },
-      { kind: "media", x: 4, y: 27, w: 92, h: 23 },
-      band(4, 52.5, 26, 4, { label: "the address" }),
+      { kind: "media", x: 4, y: 27, w: 92, h: 22, art: "arrival" },
+      band(4, 51, 26, 4, { label: "the address" }),
     ],
   },
   {
@@ -153,10 +154,16 @@ export const assemblyBeats: AssemblyBeat[] = [
     gesture: "seat",
     check: "Is your own name the biggest one on the page?",
     prevents: [{ label: "the supplier's name in the biggest type" }],
-    marker: { x: 90, y: 41 },
-    desktopMarker: { x: 51, y: 17.5 },
-    blocks: [band(10, 38.5, 80, 6.5), band(10, 47.5, 52, 3.5)],
-    desktopBlocks: [band(4, 13.5, 44, 8), band(4, 23, 30, 3)],
+    marker: { x: 90, y: 37 },
+    desktopMarker: { x: 26, y: 17.5 },
+    blocks: [
+      { kind: "media", x: 10, y: 35.5, w: 80, h: 7, art: "fascia" },
+      band(10, 44.5, 50, 3),
+    ],
+    desktopBlocks: [
+      { kind: "media", x: 4, y: 13.5, w: 44, h: 8, art: "fascia" },
+      band(4, 23, 30, 3),
+    ],
   },
   {
     kind: "layer",
@@ -170,17 +177,17 @@ export const assemblyBeats: AssemblyBeat[] = [
     gesture: "unfold",
     check: "Can someone read what you sell on a phone, without opening a file?",
     prevents: [{ label: "the menu locked in a file" }],
-    marker: { x: 90, y: 66 },
-    desktopMarker: { x: 63, y: 57.5 },
+    marker: { x: 90, y: 61 },
+    desktopMarker: { x: 33, y: 66 },
     blocks: [
-      { kind: "row", x: 10, y: 60.5, w: 80, h: 4 },
-      { kind: "row", x: 10, y: 66.5, w: 80, h: 4 },
-      { kind: "row", x: 10, y: 72.5, w: 80, h: 4 },
+      { kind: "row", x: 10, y: 54, w: 80, h: 4.5, label: "today's list" },
+      { kind: "row", x: 10, y: 60, w: 80, h: 4.5, label: "the dish" },
+      { kind: "row", x: 10, y: 66, w: 80, h: 4.5, label: "the price" },
     ],
     desktopBlocks: [
-      { kind: "row", x: 4, y: 60, w: 58, h: 4.5 },
-      { kind: "row", x: 4, y: 67, w: 58, h: 4.5 },
-      { kind: "row", x: 4, y: 74, w: 58, h: 4.5 },
+      { kind: "row", x: 4, y: 59, w: 56, h: 4.5, label: "today's list" },
+      { kind: "row", x: 4, y: 66.5, w: 56, h: 4.5, label: "the dish" },
+      { kind: "row", x: 4, y: 74, w: 56, h: 4.5, label: "the price" },
     ],
   },
   {
@@ -201,19 +208,19 @@ export const assemblyBeats: AssemblyBeat[] = [
       { label: "your worries in front of their question" },
       { label: "the best thing about you in the footer", walkId: "t7" },
     ],
-    marker: { x: 90, y: 80 },
-    desktopMarker: { x: 95, y: 63 },
+    marker: { x: 90, y: 82 },
+    desktopMarker: { x: 96, y: 67 },
     blocks: [
-      { kind: "status", x: 10, y: 54, w: 88, h: 4.5, label: "the years · the record" },
-      { kind: "field", x: 10, y: 79.5, w: 38, h: 5, label: "the date" },
-      { kind: "field", x: 52, y: 79.5, w: 38, h: 5, label: "the party" },
-      { kind: "button", x: 10, y: 86.5, w: 80, h: 5.5, label: "ask" },
+      { kind: "status", x: 10, y: 49, w: 80, h: 4, label: "the years · the record" },
+      { kind: "field", x: 10, y: 72.5, w: 80, h: 5, label: "the date" },
+      { kind: "field", x: 10, y: 79, w: 80, h: 5, label: "the party" },
+      { kind: "button", x: 10, y: 85.5, w: 80, h: 5.5, label: "ask" },
     ],
     desktopBlocks: [
-      { kind: "status", x: 64, y: 60, w: 32, h: 4.5, label: "the years · the record" },
-      { kind: "field", x: 64, y: 67.5, w: 32, h: 5, label: "the date" },
-      { kind: "field", x: 64, y: 74.5, w: 32, h: 5, label: "the party" },
-      { kind: "button", x: 64, y: 82, w: 32, h: 6, label: "ask" },
+      { kind: "status", x: 64, y: 51, w: 32, h: 4.5, label: "the years · the record" },
+      { kind: "field", x: 64, y: 57.5, w: 32, h: 5, label: "the date" },
+      { kind: "field", x: 64, y: 64.5, w: 32, h: 5, label: "the party" },
+      { kind: "button", x: 64, y: 72, w: 32, h: 6, label: "ask" },
     ],
   },
   {
@@ -229,9 +236,9 @@ export const assemblyBeats: AssemblyBeat[] = [
     gesture: "light",
     check: "Does your site say what is current today — and where the always-fresh version lives?",
     prevents: [{ label: "the stopped clock" }],
-    marker: { x: 86, y: 94 },
-    desktopMarker: { x: 95, y: 90 },
-    blocks: [band(10, 93.5, 72, 3.5, { label: "today, at the source" })],
+    marker: { x: 90, y: 94 },
+    desktopMarker: { x: 96, y: 93 },
+    blocks: [band(10, 93, 80, 3.5, { label: "today, at the source" })],
     desktopBlocks: [band(4, 92, 92, 4, { label: "today, at the source" })],
   },
 ];
@@ -292,10 +299,10 @@ for (const [index, beat] of assemblyBeats.entries()) {
       );
     }
   }
-  /* Rule 3: beats 1–5 carry no register styling and no drawn scene. */
+  /* Rule 3: beats 1–5 carry no register colour. Line art may replace a hatch. */
   for (const block of [...beat.blocks, ...beat.desktopBlocks]) {
-    if (block.goal || block.art) {
-      throw new Error(`assembly: ${beat.id} smuggles in a colour beat or a drawn scene.`);
+    if (block.goal) {
+      throw new Error(`assembly: ${beat.id} smuggles in a colour beat.`);
     }
   }
 }

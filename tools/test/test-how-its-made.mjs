@@ -10,8 +10,9 @@
  *  - the scroll-driven build losing its stage — the pinned live region must
  *    ship hidden beside the plate, with one annotation note per part, the
  *    build-order ticks, and a replay ask per vignette;
- *  - a second expressive beat slipping in — beats 1–5 carry no register
- *    styling, and the page carries exactly one drawn beat, at the stop;
+ *  - a second register beat slipping in — beats 1–5 may carry line art
+ *    but no goal colour, and the page carries exactly one brass nameplate
+ *    at the stop;
  *  - the no-JS document quietly rotting — the exploded plate must contain
  *    the full argument (five narration lines as text, the stop as the final
  *    entry, the part markers on the drawing);
@@ -134,10 +135,13 @@ for (const gesture of ["seat", "slide", "unfold", "light"]) {
   check(`the "${gesture}" gesture left the page`, gestures.has(gesture));
 }
 
-/* --- rule 3: no register styling anywhere in the grey — no blue goal beat,
-   no theatre art — and exactly one drawn beat, at the stop. */
+/* --- rule 3: no register colour in the grey — line art may replace a hatch —
+   and exactly one brass nameplate, at the stop. */
 check("a colour beat (is-goal) slipped into the grey", !/is-goal/.test(html));
-check("a drawn scene (has-art) slipped into the grey", !/has-art/.test(html));
+check(
+  "the arrival drawing left the chassis",
+  (html.match(/has-art/g) ?? []).length >= 4,
+);
 const drawn = [...html.matchAll(/data-drawn-beat/g)];
 check(
   `the page must carry exactly one drawn beat (found ${drawn.length})`,
