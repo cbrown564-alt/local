@@ -180,12 +180,12 @@ export const assemblyBeats: AssemblyBeat[] = [
     desktopMarker: { x: D.rightX + D.right, y: D.headY },
     blocks: [
       { kind: "status", x: P.in, y: P.hoursY, w: P.w, h: P.hoursH, label: "open now · until 4 today" },
-      { kind: "media", x: P.in, y: P.mediaY, w: P.w, h: P.mediaH, art: "arrival" },
+      { kind: "media", x: P.in, y: P.mediaY, w: P.w, h: P.mediaH, art: "dusk" },
       band(P.in, P.addrY, P.w, P.metaH, { label: "the address" }),
     ],
     desktopBlocks: [
       { kind: "status", x: D.rightX, y: D.headY, w: D.right, h: D.headH, label: "open now · until 4 today" },
-      { kind: "media", x: D.in, y: D.mediaY, w: D.full, h: D.mediaH, art: "arrival" },
+      { kind: "media", x: D.in, y: D.mediaY, w: D.full, h: D.mediaH, art: "dusk-wide" },
       band(D.in, D.metaY, 34, D.metaH, { label: "the address" }),
     ],
   },

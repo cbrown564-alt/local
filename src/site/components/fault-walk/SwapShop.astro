@@ -1,9 +1,11 @@
 ---
+import TheatreArt from "../five-shapes/TheatreArt.astro";
+
 interface Props {
   /** The plate lives in the fascia slot: as the draggable button (live), as
       a seated brass div (static), or absent leaving a dashed slot. */
   plate?: "button" | "seated" | "none";
-  /** The three true details: hill silhouette, worn step, brass door number. */
+  /** The three true details: the dusk house in the glass, worn step, brass number. */
   details?: boolean;
   /** Wireframe caption for the shop, used as its accessible name. */
   label: string;
@@ -40,19 +42,9 @@ const { plate = "none", details = false, label } = Astro.props;
   <div class="swap-window" aria-hidden="true">
     {
       details && (
-        <svg
-          class="swap-detail swap-detail-hill"
-          data-swap-detail
-          viewBox="0 0 100 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 34 L20 14 L34 26 L52 8 L68 24 L82 16 L100 32"
-            fill="none"
-            stroke-linejoin="round"
-            stroke-linecap="round"
-          />
-        </svg>
+        <div class="swap-detail swap-detail-scene" data-swap-detail>
+          <TheatreArt name="dusk" />
+        </div>
       )
     }
   </div>

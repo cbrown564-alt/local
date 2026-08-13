@@ -280,7 +280,7 @@ function mountSwap(root: HTMLElement): void {
     live.setAttribute("data-swap-details", "shown");
     detailsButton.hidden = true;
     movePlateTo(left);
-    say("The hill in the glass, the worn step, the door number. Now try the plate again.");
+    say("The house in the glass, the worn step, the door number. Now try the plate again.");
   });
 
   let dragStart: { x: number; y: number } | null = null;
