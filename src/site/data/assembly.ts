@@ -204,7 +204,7 @@ export const assemblyBeats: AssemblyBeat[] = [
     marker: { x: 92, y: P.nameY + P.nameH / 2 },
     desktopMarker: { x: D.in + D.left, y: D.headY },
     blocks: [{ kind: "media", x: P.in, y: P.nameY, w: P.w, h: P.nameH, art: "fascia" }],
-    desktopBlocks: [{ kind: "media", x: D.in, y: D.headY, w: D.left, h: D.headH, art: "fascia" }],
+    desktopBlocks: [{ kind: "media", x: D.in, y: D.headY, w: D.left, h: D.headH, art: "fascia-wide" }],
   },
   {
     kind: "layer",
