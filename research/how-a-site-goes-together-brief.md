@@ -76,7 +76,7 @@ one beat per five-shapes plate — a tidy sibling symmetry.
 | Beat | Layer | The narration line (customer moment) | Answers |
 | --- | --- | --- | --- |
 | 1 | A door that opens, and a first screen that answers | Before it is anything, a site is somewhere a stranger can arrive — and most arrive with one question. Open now? Where? Is this the right place? | T1, T2, T4 |
-| 2 | The name on the fascia | The biggest name on the site is yours. Suppliers get one confident line. | T3 |
+| 2 | The name over the door | The biggest name on the site is yours. Suppliers get one confident line. | T3 |
 | 3 | The stock, readable | What you sell, in the shape it is read on a phone — a page, not a file. | T8 |
 | 4 | An action with a mechanism, and the reason to use it | Two fields — the date and the number of people — placed in front of your worries, with the thing you'd say in ten seconds at the counter on the first screen instead of in the footer. | T5, T6, T7 |
 | 5 | The honest handoff | The page keeps what doesn't go stale, and hands today to the source that is always fresh. | T9 |

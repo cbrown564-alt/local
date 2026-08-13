@@ -77,6 +77,12 @@ export interface ShapePlate {
    *  block carries goal — the theatre moment, the plate's one colour beat. */
   screen: FaultPanel;
   examples: ShapeExample[];
+  /** How this kind of site adapts the foundation parts from /how-its-made/. */
+  buildFocus?: {
+    beatId: string;
+    part: number;
+    text: string;
+  };
 }
 
 /** Desktop plate layout — written onto the stage as CSS variables. */
@@ -100,6 +106,11 @@ export const fiveShapes: ShapePlate[] = [
     shape: "a place",
     essence: "The essence lives in the grounds and the building.",
     ownerQuestion: "Is this where I want to wake up?",
+    buildFocus: {
+      beatId: "beat-1",
+      part: 1,
+      text: "expands the arrival into the full first screen",
+    },
     answers: {
       buys: {
         answer: "A stay. Every other line on this plate follows from that one.",
@@ -149,6 +160,11 @@ export const fiveShapes: ShapePlate[] = [
     shape: "a counter business",
     essence: "The essence lives in appetite and the week's rhythm.",
     ownerQuestion: "What's on today, and until when?",
+    buildFocus: {
+      beatId: "beat-2",
+      part: 2,
+      text: "places today’s board and the week’s rhythm on the street",
+    },
     answers: {
       buys: {
         answer: "A meal — often decided from the street, often today.",
@@ -197,6 +213,11 @@ export const fiveShapes: ShapePlate[] = [
     shape: "a product",
     essence: "The essence lives in the moment the product is for.",
     ownerQuestion: "When would I open this?",
+    buildFocus: {
+      beatId: "beat-3",
+      part: 3,
+      text: "makes the stock readable before the price",
+    },
     answers: {
       buys: {
         answer: "A jar — something opened at a table, not an account to manage.",
@@ -244,6 +265,11 @@ export const fiveShapes: ShapePlate[] = [
     shape: "a care practice",
     essence: "The essence lives in emotion under management.",
     ownerQuestion: "Can they see us, and soon?",
+    buildFocus: {
+      beatId: "beat-4",
+      part: 4,
+      text: "puts the action in front of the worries",
+    },
     answers: {
       buys: {
         answer: "Relief. Somebody arrives worried; the page's job is to worry less than they do.",
@@ -292,6 +318,11 @@ export const fiveShapes: ShapePlate[] = [
     shape: "a trade",
     essence: "The essence lives in access and expertise.",
     ownerQuestion: "Do they know their stuff, and can they fix mine?",
+    buildFocus: {
+      beatId: "beat-4",
+      part: 4,
+      text: "brings the track record out of the footer",
+    },
     answers: {
       buys: {
         answer: "A ride — the fixed bike, the right tool, the job done.",

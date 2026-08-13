@@ -193,7 +193,7 @@ export const assemblyBeats: AssemblyBeat[] = [
     kind: "layer",
     beat: 2,
     id: "beat-2",
-    name: "The name on the fascia",
+    name: "The name over the door",
     key: "the name",
     themeIds: ["t3"],
     question: "Whose shop is this?",

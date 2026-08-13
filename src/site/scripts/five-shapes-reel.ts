@@ -88,7 +88,33 @@ export function mountFiveShapesReel(root: HTMLElement = document.body): void {
     { root: scroller, threshold: [0.35, 0.55, 0.75, 0.9] },
   );
 
-  for (const slide of slides) observer.observe(slide);
+  for (const slide of slides) {
+    observer.observe(slide);
+
+    const notes = slide.querySelectorAll<HTMLElement>("[data-fsp-note]");
+    const markers = slide.querySelectorAll<HTMLElement>("[data-fsp-marker]");
+
+    const setActive = (n: string | null) => {
+      notes.forEach((note) => {
+        note.classList.toggle("is-active", note.dataset.fspNote === n);
+      });
+      markers.forEach((marker) => {
+        marker.classList.toggle("is-active", marker.dataset.fspMarker === n);
+      });
+    };
+
+    notes.forEach((note) => {
+      note.addEventListener("mouseenter", () => setActive(note.dataset.fspNote ?? null));
+      note.addEventListener("mouseleave", () => setActive(null));
+      note.addEventListener("focusin", () => setActive(note.dataset.fspNote ?? null));
+      note.addEventListener("focusout", () => setActive(null));
+    });
+
+    markers.forEach((marker) => {
+      marker.addEventListener("mouseenter", () => setActive(marker.dataset.fspMarker ?? null));
+      marker.addEventListener("mouseleave", () => setActive(null));
+    });
+  }
 
   const hashId = window.location.hash.replace(/^#/, "");
   const hashIndex = slides.findIndex((slide) => slide.dataset.plate === hashId);
@@ -101,3 +127,4 @@ export function mountFiveShapesReel(root: HTMLElement = document.body): void {
   }
   syncUi();
 }
+

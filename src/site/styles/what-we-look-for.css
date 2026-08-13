@@ -151,12 +151,14 @@
   max-width: 62ch;
   margin-top: 2.25rem;
   padding: 1.1rem 1.4rem;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 6px;
   background: var(--white);
-  box-shadow: 5px 5px 0 var(--ink);
+  box-shadow: 4px 4px 0 rgba(19, 32, 41, 0.12);
   font-size: 1.05rem;
   text-wrap: pretty;
 }
+
 
 .wwlf-howto-lead {
   display: block;
@@ -450,6 +452,26 @@
   font-style: italic;
 }
 
+.wwlf-theme-part {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--wwlf-deep);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.wwlf-theme-part a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wwlf-theme-part a:hover {
+  color: var(--blue-deep);
+}
+
+
 .wwlf-studio-plate {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.55fr);
@@ -554,18 +576,25 @@
 
 .fw-errand,
 .swap-errand {
-  display: inline-block;
-  margin: 0 0 1.5rem;
-  padding: 0.55rem 1.1rem;
-  border: 2px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.85rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--wwlf-ink);
+  border-radius: 6px;
   background: var(--white);
-  box-shadow: 4px 4px 0 var(--ink);
-  font-size: 1rem;
+  box-shadow: 4px 4px 0 rgba(19, 32, 41, 0.12);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--wwlf-ink);
 }
 
 .fw-errand strong,
 .swap-errand strong {
-  color: var(--blue-deep);
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 /* --- the phone frame and its blocks -------------------------------------- */
@@ -705,6 +734,7 @@ button.fwb:hover {
   text-overflow: ellipsis;
   text-transform: none;
   white-space: nowrap;
+  user-select: none;
 }
 
 .fw-frame {
@@ -723,7 +753,8 @@ button.fwb:hover {
 }
 
 .fwb-band {
-  background: var(--wwlf-line);
+  background: var(--wwlf-block);
+  border-radius: 2px;
 }
 
 .fwb-band .fwb-label,
@@ -738,7 +769,7 @@ button.fwb:hover {
 }
 
 .fwb-micro {
-  background: var(--wwlf-line);
+  background: var(--wwlf-mid);
   border-radius: 1px;
 }
 
@@ -751,6 +782,7 @@ button.fwb:hover {
 
 .fwb-block {
   background: var(--wwlf-block);
+  border-radius: 3px;
 }
 
 .fwb-media {
@@ -1033,13 +1065,15 @@ button.fwb-scroll:hover {
 .fw-row {
   display: grid;
   grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
-  gap: 3rem;
+  gap: clamp(2rem, 5vw, 3.5rem);
   align-items: start;
 }
 
 .fw-rail {
+  display: flex;
+  flex-direction: column;
   max-width: 36ch;
-  padding-top: 0.5rem;
+  padding-top: 0.25rem;
 }
 
 .fw-counts {
@@ -1056,7 +1090,7 @@ button.fwb-scroll:hover {
 
 .fw-counts dt {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1065,7 +1099,7 @@ button.fwb-scroll:hover {
 .fw-counts dd {
   margin: 0;
   font-family: var(--display);
-  font-size: 3.4rem;
+  font-size: clamp(2.6rem, 3.6vw, 3.1rem);
   font-weight: 700;
   line-height: 0.9;
   font-variant-numeric: tabular-nums;
@@ -1073,59 +1107,78 @@ button.fwb-scroll:hover {
 }
 
 .fw-note {
-  min-height: 2.6em;
   margin: 0 0 0.75rem;
   color: var(--wwlf-deep);
   font-size: 0.95rem;
   font-style: italic;
+  line-height: 1.45;
+}
+
+.fw-note:empty {
+  display: none;
 }
 
 .fw-outcome {
-  min-height: 3.2em;
-  margin: 0 0 0.4rem;
-  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.4;
 }
 
+.fw-outcome:empty {
+  display: none;
+}
+
 .fw-actuals {
-  min-height: 1.4em;
   margin: 0 0 1.25rem;
   color: var(--wwlf-deep);
   font-size: 0.9rem;
 }
 
+.fw-actuals:empty {
+  display: none;
+}
+
 .fw-fix {
-  min-height: 56px;
-  min-width: 210px;
-  padding: 0.7rem 1.6rem;
+  align-self: flex-start;
+  min-height: 52px;
+  min-width: 190px;
+  padding: 0.75rem 1.6rem;
   border: 2px solid var(--ink);
-  border-radius: 4px;
-  background: transparent;
+  border-radius: 6px;
+  background: var(--white);
   color: var(--ink);
   font: inherit;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 800;
   cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(19, 32, 41, 0.12);
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
-    color 160ms ease;
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .fw-fix:hover {
-  background: rgba(19, 32, 41, 0.07);
+  background: rgba(19, 32, 41, 0.05);
+  box-shadow: 4px 4px 0 rgba(19, 32, 41, 0.16);
+  transform: translateY(-1px);
 }
 
 .fw-fix.is-ready {
   background: var(--ink);
   color: var(--foam);
-  box-shadow: 5px 5px 0 rgba(35, 72, 90, 0.35);
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 rgba(35, 72, 90, 0.35);
 }
 
 .fw-fix.is-ready:hover {
   background: var(--blue);
   border-color: var(--blue);
+  box-shadow: 5px 5px 0 rgba(35, 72, 90, 0.45);
+  transform: translateY(-1px);
 }
 
 .fw-sr,

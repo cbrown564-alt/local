@@ -21,6 +21,45 @@ const answers = SHAPE_ANSWER_ORDER.map((key, i) => ({
   question: SHAPE_QUESTIONS[key],
   ...plate.answers[key],
 }));
+
+function formatAnswer(text: string): { lead: string; body: string } {
+  const qMatch = text.match(/^([^?]+\?)\s*(.*)$/);
+  if (qMatch) return { lead: qMatch[1], body: qMatch[2] };
+
+  const dashIndex = text.indexOf(" — ");
+  if (dashIndex > 0 && dashIndex <= 35) {
+    return {
+      lead: text.slice(0, dashIndex),
+      body: "— " + text.slice(dashIndex + 3),
+    };
+  }
+
+  const dotIndex = text.indexOf(". ");
+  if (dotIndex > 0 && dotIndex <= 35) {
+    return {
+      lead: text.slice(0, dotIndex + 1),
+      body: text.slice(dotIndex + 2),
+    };
+  }
+
+  const handoffPhrases = [
+    "The season's occasions",
+    "Today's board and hours",
+    "Live stock and market days",
+    "Today's availability",
+    "The queue",
+  ];
+  for (const phrase of handoffPhrases) {
+    if (text.startsWith(phrase)) {
+      return {
+        lead: phrase,
+        body: text.slice(phrase.length),
+      };
+    }
+  }
+
+  return { lead: "", body: text };
+}
 ---
 
 <section class="fsp" id={plate.id}>
@@ -32,6 +71,11 @@ const answers = SHAPE_ANSWER_ORDER.map((key, i) => ({
         <span class="fsp-kind">{plate.shape}</span>
         {plate.essence}
       </p>
+      {plate.buildFocus && (
+        <p class="fsp-build-focus">
+          <span class="fsp-focus-lead">In the build:</span> {plate.buildFocus.text} · <a href={`/how-its-made/#${plate.buildFocus.beatId}`}>see Part {plate.buildFocus.part} on How it’s made</a>
+        </p>
+      )}
     </div>
   </header>
 
@@ -49,6 +93,8 @@ const answers = SHAPE_ANSWER_ORDER.map((key, i) => ({
             <span
               class="fsp-marker"
               style={`left:${answer.marker.x}%;top:${answer.marker.y}%;`}
+              data-fsp-marker={answer.n}
+              data-theatre={answer.key === "theatre" ? "true" : undefined}
               aria-hidden="true"
             >
               {answer.n}
@@ -62,15 +108,24 @@ const answers = SHAPE_ANSWER_ORDER.map((key, i) => ({
         plate at desktop width; a numbered key beneath it on the phone. */}
     <dl class="fsp-notes">
       {
-        answers.map((note) => (
-          <div class="fsp-note">
-            <dt>
-              <span class="fsp-note-n" aria-hidden="true">{note.n}</span>
-              {note.question}
-            </dt>
-            <dd>{note.answer}</dd>
-          </div>
-        ))
+        answers.map((note) => {
+          const { lead, body } = formatAnswer(note.answer);
+          return (
+            <div
+              class="fsp-note"
+              data-fsp-note={note.n}
+              data-theatre={note.key === "theatre" ? "true" : undefined}
+            >
+              <dt>
+                <span class="fsp-note-n" aria-hidden="true">{note.n}</span>
+                <span class="fsp-note-q">{note.question}</span>
+              </dt>
+              <dd>
+                {lead ? <strong>{lead}</strong> : null} {body}
+              </dd>
+            </div>
+          );
+        })
       }
     </dl>
   </div>

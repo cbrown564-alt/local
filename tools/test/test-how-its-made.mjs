@@ -212,7 +212,7 @@ for (const id of EXPECTED_ORDER) {
 /* --- guest-facing beats get names, not T-ids. */
 const NAMES = [
   "A door that opens, and a first screen that answers",
-  "The name on the fascia",
+  "The name over the door",
   "The stock, readable",
   "An action with a mechanism, and the reason to use it",
   "The honest handoff",

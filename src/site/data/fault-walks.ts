@@ -132,6 +132,8 @@ export interface FaultWalk {
   afterTaps: number;
   /** True when the fault is that the goal is the smallest target on screen. */
   goalIsHidden?: boolean;
+  /** Cross-reference to the corresponding layer on /how-its-made/. */
+  partLink?: { beatId: string; part: number; name: string };
 }
 
 export interface SwapTestTheme {
@@ -174,18 +176,18 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         id: "gate",
         caption: "A consent dialog covers the greyed-out page.",
         blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22, dim: true },
+          { kind: "media", x: 10, y: 8, w: 80, h: 22, dim: true, art: "board" },
           band(10, 34, 64, 4, { dim: true }),
           band(10, 40, 80, 4, { dim: true }),
           band(10, 46, 52, 4, { dim: true }),
-          { kind: "card", x: 14, y: 28, w: 72, h: 42 },
-          band(22, 36, 56, 4),
-          band(22, 43, 44, 4),
-          { kind: "button", x: 22, y: 54, w: 40, h: 7, label: "Accept", tap: "wall" },
+          { kind: "card", x: 14, y: 28, w: 72, h: 44 },
+          band(22, 34, 56, 4),
+          band(22, 40, 44, 4),
+          { kind: "button", x: 22, y: 49, w: 40, h: 7, label: "Accept", tap: "wall" },
           {
             kind: "button",
             x: 22,
-            y: 62,
+            y: 58,
             w: 48,
             h: 7,
             label: "Manage choices",
@@ -197,18 +199,18 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         id: "wall",
         caption: "A login panel. No account, no way past.",
         blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22, dim: true },
+          { kind: "media", x: 10, y: 8, w: 80, h: 22, dim: true, art: "board" },
           band(10, 34, 64, 4, { dim: true }),
           band(10, 40, 80, 4, { dim: true }),
           band(10, 46, 52, 4, { dim: true }),
-          { kind: "card", x: 14, y: 24, w: 72, h: 54 },
-          band(22, 31, 40, 4),
-          { kind: "field", x: 22, y: 39, w: 56, h: 7, label: "email" },
-          { kind: "field", x: 22, y: 48, w: 56, h: 7, label: "password" },
+          { kind: "card", x: 14, y: 24, w: 72, h: 56 },
+          band(22, 30, 40, 4),
+          { kind: "field", x: 22, y: 37, w: 56, h: 7, label: "email" },
+          { kind: "field", x: 22, y: 46, w: 56, h: 7, label: "password" },
           {
             kind: "button",
             x: 22,
-            y: 59,
+            y: 56,
             w: 56,
             h: 8,
             label: "Log in",
@@ -217,7 +219,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
           {
             kind: "band",
             x: 22,
-            y: 70,
+            y: 67,
             w: 56,
             h: 5,
             label: "Create account",
@@ -258,6 +260,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: null,
     afterTaps: 1,
+    partLink: { beatId: "beat-1", part: 1, name: "A door that opens" },
   },
   {
     kind: "walk",
@@ -291,6 +294,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
             h: 24,
             label: "video",
             note: "A silent video of the bay. No hours.",
+            art: "video-stall",
           },
           band(10, 44, 64, 4),
           band(10, 50, 80, 4),
@@ -302,8 +306,8 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         caption: "Second screen: photographs and a map. No hours.",
         note: "Still looking?",
         blocks: [
-          { kind: "media", x: 10, y: 8, w: 38, h: 20 },
-          { kind: "media", x: 52, y: 8, w: 38, h: 20 },
+          { kind: "media", x: 10, y: 8, w: 38, h: 20, art: "dusk" },
+          { kind: "media", x: 52, y: 8, w: 38, h: 20, art: "steam" },
           band(10, 32, 80, 4),
           band(10, 38, 58, 4),
           {
@@ -314,6 +318,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
             h: 18,
             label: "map",
             note: "A map of where they are. Not whether they're open.",
+            art: "map-grid",
           },
           { kind: "scroll", x: 10, y: 86, w: 80, h: 8, label: "scroll", tap: "deep" },
         ],
@@ -361,6 +366,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: 3,
     afterTaps: 1,
+    partLink: { beatId: "beat-1", part: 1, name: "A door that opens" },
   },
   {
     kind: "walk",
@@ -377,7 +383,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         id: "page",
         caption: "A Book button, exactly where it should be.",
         blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 24 },
+          { kind: "media", x: 10, y: 8, w: 80, h: 24, art: "dusk" },
           band(10, 36, 60, 5),
           band(10, 43, 80, 4),
           { kind: "button", x: 10, y: 56, w: 40, h: 8, label: "Book", tap: "number" },
@@ -436,6 +442,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: null,
     afterTaps: 1,
+    partLink: { beatId: "beat-4", part: 4, name: "An action with a mechanism" },
   },
   {
     kind: "walk",
@@ -453,7 +460,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         id: "top",
         caption: "A competent first screen. It could be anyone's.",
         blocks: [
-          { kind: "media", x: 10, y: 8, w: 80, h: 22 },
+          { kind: "media", x: 10, y: 8, w: 80, h: 22, art: "fascia" },
           band(10, 34, 56, 5),
           band(10, 41, 80, 4),
           band(10, 47, 68, 4),
@@ -469,7 +476,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
           band(10, 16, 64, 4),
           band(10, 22, 80, 4),
           band(10, 28, 58, 4),
-          { kind: "media", x: 10, y: 38, w: 80, h: 20 },
+          { kind: "media", x: 10, y: 38, w: 80, h: 20, art: "dusk" },
           band(10, 62, 70, 4),
           { kind: "scroll", x: 10, y: 86, w: 80, h: 8, label: "scroll", tap: "foot" },
         ],
@@ -495,6 +502,7 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
         ],
       },
     ],
+
     after: [
       {
         id: "record",
@@ -527,6 +535,11 @@ export const whatWeLookFor: WhatWeLookForEntry[] = [
     afterCost: "1 tap",
     minBeforeTaps: 3,
     afterTaps: 1,
+    partLink: {
+      beatId: "beat-4",
+      part: 4,
+      name: "An action with a mechanism, and the reason to use it",
+    },
   },
   {
     kind: "swap",
