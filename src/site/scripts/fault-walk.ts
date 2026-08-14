@@ -106,22 +106,58 @@ function mountWalk(root: HTMLElement): void {
     if (screens > 0) pop(screensEl);
   };
 
-  const showPanel = (id: string, byVisitor = false) => {
+  /* Advancing to the next screen slides the panel in. Toggling between
+     the snag and the fix cross-fades the previous panel out while the new
+     one reveals in place, reading like an architectural plan overlay. */
+  const showPanel = (id: string, byVisitor = false, crossFade = false) => {
     let shown: HTMLElement | null = null;
+    let oldPanel: HTMLElement | null = null;
+
+    if (crossFade) {
+      oldPanel = panels.find((p) => !p.hidden && p.dataset.panel === currentPanel) ?? null;
+    }
+
     for (const panel of panels) {
       const visible = panel.dataset.mode === mode && panel.dataset.panel === id;
-      panel.hidden = !visible;
-      if (visible) shown = panel;
+      if (visible) {
+        shown = panel;
+        panel.hidden = false;
+      } else if (!crossFade || panel !== oldPanel) {
+        panel.hidden = true;
+      }
     }
-    if (!shown || currentPanel === id) return;
+    if (!shown || (currentPanel === id && !crossFade)) return;
     currentPanel = id;
-    shown.animate(
-      [
-        { opacity: 0, transform: "translateY(8px)" },
-        { opacity: 1, transform: "none" },
-      ],
-      { duration: 200, easing: "cubic-bezier(.2,.7,.2,1)" },
-    );
+
+    if (crossFade && oldPanel && oldPanel !== shown) {
+      oldPanel.hidden = false;
+      const animOut = oldPanel.animate(
+        [{ opacity: 1 }, { opacity: 0 }],
+        { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+      );
+      animOut.onfinish = () => {
+        if (oldPanel && (oldPanel.dataset.mode !== mode || oldPanel.dataset.panel !== currentPanel)) {
+          oldPanel.hidden = true;
+        }
+      };
+
+      shown.animate(
+        [
+          { opacity: 0 },
+          { opacity: 1 },
+        ],
+        { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+      );
+    } else {
+      shown.animate(
+        [
+          { opacity: 0, transform: "translateY(8px)" },
+          { opacity: 1, transform: "none" },
+        ],
+        { duration: 200, easing: "cubic-bezier(.2,.7,.2,1)" },
+      );
+    }
+
     const data = panelsData().find((panel) => panel.id === id);
     setNote(data?.note ?? "");
     if (byVisitor) {
@@ -188,7 +224,6 @@ function mountWalk(root: HTMLElement): void {
     taps = 0;
     screens = 0;
     ended = false;
-    currentPanel = null;
     live.dataset.fwMode = mode;
     if (badgeEl) badgeEl.textContent = mode === "after" ? "the fix" : "the snag";
     updateCounts();
@@ -197,7 +232,7 @@ function mountWalk(root: HTMLElement): void {
     fixButton.classList.remove("is-ready");
     fixButton.textContent = mode === "after" ? "Show the snag again" : "Fix it";
     const first = panelsData()[0];
-    showPanel(first.id);
+    showPanel(first.id, false, true);
     setNote(mode === "after" ? "Same job. Try it again." : (first.note ?? ""));
     sr.textContent =
       mode === "after" ? "The fixed version. Same job." : "The fault, again.";

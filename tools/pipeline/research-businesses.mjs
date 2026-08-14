@@ -300,6 +300,7 @@ const consolidated = new Map(rows.map((row) => [recordKey(row.town, row.name), r
 for (const [town, entries] of Object.entries(googleMapsSeed)) {
   for (const [name, website, mapsUrl] of entries) {
     const key = recordKey(town, name);
+    const coordsMatch = mapsUrl?.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
     const incoming = {
       id: `${slug(town)}-${slug(name)}`,
       name, town,
@@ -309,7 +310,9 @@ for (const [town, entries] of Object.entries(googleMapsSeed)) {
       address: "", postcode: "", phone: "", email: "", website,
       facebook: socialHosts.some((host) => website.includes(host)) ? website : "", instagram: "",
       googleMapsUrl: mapsUrl, googleMapsVerified: true, googleRating: null, googleReviewCount: null,
-      directoryRating: null, directoryReviewCount: null, lat: null, lon: null,
+      directoryRating: null, directoryReviewCount: null,
+      lat: coordsMatch ? parseFloat(coordsMatch[1]) : null,
+      lon: coordsMatch ? parseFloat(coordsMatch[2]) : null,
       websiteStatus: websiteState(website),
       discoverySources: ["Google Maps broad business search"], sourceUrls: [mapsUrl], sourceAsOf: AS_OF,
       dataConfidence: "Direct Google Maps result; metrics require periodic refresh",

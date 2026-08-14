@@ -160,13 +160,41 @@ export function mountAssemblyBuild(): void {
 
   /* --- the vignettes: replay a layer's arrival on ask, and once on first
      sight. The replay class is left in place after the gesture — fill mode
-     holds the seated state, and the next ask removes, reflows and re-adds. */
-  const replayVignette = (vignette: HTMLElement) => {
+     holds the seated state, and the next ask removes, reflows and re-adds.
+     Replaying on click adds a crisp micro-settling pulse to the frame and
+     spins the replay icon to reinforce the physical seating metaphor. */
+  const replayVignette = (vignette: HTMLElement, isManualClick = false) => {
     const fresh = vignette.querySelector<HTMLElement>(".hasg-layer--fresh");
-    if (!fresh) return;
-    fresh.classList.remove("hasg-play");
-    void fresh.offsetWidth;
-    fresh.classList.add("hasg-play");
+    const frame = vignette.querySelector<HTMLElement>(".hgv-frame");
+    const icon = vignette.querySelector<HTMLElement>(".hgv-replay-icon");
+
+    if (fresh) {
+      fresh.classList.remove("hasg-play");
+      void fresh.offsetWidth;
+      fresh.classList.add("hasg-play");
+    }
+
+    if (frame) {
+      frame.animate(
+        [
+          { transform: "translateY(0)" },
+          { transform: "translateY(1.5px)", offset: 0.65 },
+          { transform: "translateY(-0.4px)", offset: 0.85 },
+          { transform: "translateY(0)" },
+        ],
+        { duration: 280, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+      );
+    }
+
+    if (isManualClick && icon) {
+      icon.animate(
+        [
+          { transform: "rotate(0deg)" },
+          { transform: "rotate(360deg)" },
+        ],
+        { duration: 420, easing: "cubic-bezier(0.22, 0.9, 0.32, 1)" },
+      );
+    }
   };
 
   const vignettes = [...document.querySelectorAll<HTMLElement>(".hgv")];
@@ -174,7 +202,7 @@ export function mountAssemblyBuild(): void {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        replayVignette(entry.target as HTMLElement);
+        replayVignette(entry.target as HTMLElement, false);
         seen.unobserve(entry.target);
       }
     },
@@ -182,7 +210,7 @@ export function mountAssemblyBuild(): void {
   );
   for (const vignette of vignettes) {
     vignette.querySelector(".hgv-replay")?.addEventListener("click", () => {
-      replayVignette(vignette);
+      replayVignette(vignette, true);
     });
     seen.observe(vignette);
   }

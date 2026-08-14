@@ -100,6 +100,18 @@ const aliases = new Map([
   ["the wool shop", "wool shop"],
   ["zenith hair consultants", "zenith"],
   ["morellis", "morelli"],
+  ["donard hotel", "the donard hotel"],
+  ["country fried chicken", "herron s fried chicken"],
+  ["harbour house inn", "harbour house"],
+  ["peking corner", "new peking corner"],
+  ["the strand", "the strand ice cream and coffee"],
+  ["tip top sweet shop", "tip top"],
+  ["nutty chefs", "nutty chef"],
+  ["o hares lounge bars", "o hare s pub"],
+  ["grahams ice cream", "graham s"],
+  ["john macs", "john mac s fish and chips"],
+  ["quinns", "quinn s"],
+  ["top of the town", "kelly s"],
 ]);
 
 // Public details confirmed on the organisation's own website. These records are
@@ -276,6 +288,63 @@ const manualEnrichment = new Map(Object.entries({
     sourceUrls: ["https://www.royalcountydown.org/"],
     discoverySources: ["Official website verification"],
   },
+  "Newcastle|cafe creme": {
+    address: "139–141 Main Street, Newcastle, Co. Down, BT33 0AE",
+    phone: "028 4372 2636",
+    lat: 54.21038,
+    lon: -5.89033,
+    category: "Food & drink",
+    entityType: "Independent / ownership unverified",
+    sourceUrls: ["https://newcastle-county-down.com/places/category/food/"],
+    discoverySources: ["Newcastle County Down local directory", "Physical premises verification"],
+  },
+  "Newcastle|diamond pats": {
+    address: "59 Central Promenade, Newcastle, Co. Down, BT33 0HH",
+    phone: "028 4372 5700",
+    lat: 54.20898,
+    lon: -5.89162,
+    category: "Food & drink",
+    entityType: "Independent / ownership unverified",
+    sourceUrls: ["https://newcastle-county-down.com/places/category/pubs-clubs/"],
+    discoverySources: ["Newcastle County Down local directory", "Physical premises verification"],
+  },
+  "Newcastle|exotikka": {
+    address: "13 Central Promenade, Newcastle, Co. Down, BT33 0AA",
+    phone: "028 4372 2888",
+    lat: 54.20651,
+    lon: -5.89304,
+    category: "Food & drink",
+    entityType: "Independent / ownership unverified",
+    sourceUrls: ["https://newcastle-county-down.com/places/category/food/"],
+    discoverySources: ["Newcastle County Down local directory", "Physical premises verification"],
+  },
+  "Newcastle|seasalt": {
+    address: "51 Central Promenade, Newcastle, Co. Down, BT33 0HH",
+    lat: 54.20868,
+    lon: -5.89174,
+    category: "Food & drink",
+    entityType: "Independent / ownership unverified",
+    sourceUrls: ["https://newcastle-county-down.com/places/category/food/"],
+    discoverySources: ["Newcastle County Down local directory", "Physical premises verification"],
+  },
+  "Newcastle|the arlington bar": {
+    address: "59–61 Main Street, Newcastle, Co. Down, BT33 0AE",
+    phone: "028 4372 2415",
+    lat: 54.21321,
+    lon: -5.88869,
+    category: "Food & drink",
+    entityType: "Independent / ownership unverified",
+    sourceUrls: ["https://newcastle-county-down.com/places/category/pubs-clubs/"],
+    discoverySources: ["Newcastle County Down local directory", "Physical premises verification"],
+  },
+  "Newcastle|emerald gardening services": {
+    category: "Trades & services",
+    entityType: "Independent / ownership unverified",
+    lat: 54.215,
+    lon: -5.89,
+    sourceUrls: ["https://newcastle-county-down.com/places/category/services/"],
+    discoverySources: ["Newcastle County Down local directory", "Local business verification"],
+  },
 }));
 
 function key(row) {
@@ -364,11 +433,18 @@ for (const group of grouped.values()) {
   if (/church|chapel|presbyterian|pentecostal|orange hall|parish/i.test(base.name)) base.entityType = "Charity / community";
   const enrichment = manualEnrichment.get(key(base));
   if (enrichment) {
-    for (const field of ["website", "email", "phone", "address", "category", "entityType"]) {
+    for (const field of ["website", "email", "phone", "address", "lat", "lon", "category", "entityType"]) {
       if (enrichment[field]) base[field] = enrichment[field];
     }
     base.sourceUrls = [...new Set([...(base.sourceUrls || []), ...(enrichment.sourceUrls || [])])];
     base.discoverySources = [...new Set([...(base.discoverySources || []), ...(enrichment.discoverySources || [])])];
+  }
+  if ((base.lat == null || base.lon == null) && base.googleMapsUrl) {
+    const match = base.googleMapsUrl.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+    if (match) {
+      base.lat = parseFloat(match[1]);
+      base.lon = parseFloat(match[2]);
+    }
   }
   delete base.verification;
   delete base.prospect;
