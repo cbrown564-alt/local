@@ -87,13 +87,29 @@ trading businesses may be counted in anything we publish.
 **Lit / dark**:
 Whether a trading business has a website of its own. Publishable only in
 aggregate, and only over trading businesses — never over raw census rows. A
-dark business is never named, labelled, linked or made hoverable. Saying a
+dark business is never named, labelled, linked, made hoverable, or placed
+precisely enough to be looked up — a published coordinate at premises accuracy
+identifies a business as surely as its name does. Saying a
 place is dark is an assertion about a real business that can be wrong, so it
 requires the same evidence as any other public claim. The publish bar for a
 dated count and anonymous map is the website-status decision in
 `research/pipeline/census-confidence-decision-2026-08-05.md`: Trading ∩ mapped
-rows whose website status was verified. Current honest shape is about half
-dark, not “most”.
+rows whose website status was verified. Current honest shape is 81 lit and 85
+dark of 166 mapped traders — a near-even split, never “most” in either
+direction.
+
+**Review date**:
+The day the whole set was last swept by the same method — the date a published
+count carries, in the same sentence as the count. Distinct from the day a
+single record last changed. A count without one is a claim about now.
+_Avoid_: Updated, current, as of (all blur the two dates below)
+
+**Last corrected**:
+The day any individual record last changed because someone told us it was
+wrong. Corrections apply immediately and do move a published count, so a page
+showing a count carries both dates: the sweep it came from, and the last
+change since. If the two differ, the count is no longer the one that sweep
+produced, and saying so is the point.
 
 **Gap class**:
 The pitch shape that selects a prospect — dead site, first website,
