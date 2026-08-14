@@ -62,10 +62,37 @@ step, so true coordinates never enter `src/site/data/lights.json` or the
 bundle. Lit and dark are displaced identically. The page states the
 displacement in one line near the map.
 
-**No lookup.** The correction path is a single nameless field posting to
-`api/request.ts` with a distinct `source`, acknowledged identically for
-everyone. Correction submissions are not leads and are never answered with a
-pitch.
+**The picture is inline SVG, generated at build time, and this route ships no
+JavaScript.** The horizon is a `<polyline>` of the baked profile; the lights
+are `<circle>` elements at displaced coordinates; the arrival is a CSS fade
+with a per-circle `animation-delay` written at build time, running once and
+holding. `prefers-reduced-motion` disables it in one rule. Canvas was inherited
+from `demoLights`, whose sequence restarts on `t % 12` — a loop production had
+to cut anyway, leaving rAF redrawing one unchanging frame. Making the picture
+markup collapses the no-JS fallback and the real thing into one artefact, so
+the degraded path cannot rot from never being exercised, and the page survives
+reader mode, a printout and a screenshot. The 25KB sensory budget is untouched
+by this route. `band` is a static polyline on the same reasoning: ADR 0004
+already found it has nothing left to animate.
+
+**No lookup.** The correction path is an answer-free form posting to
+`api/request.ts` with a distinct `source`. The submitter names their own
+business — that is the point of the form — but the page returns the same
+acknowledgement to everyone and never reveals what is held about anyone.
+Correction submissions are not leads and are never answered with a pitch:
+`lights-correction` joins the `normaliseSource` allow-list as an explicit
+non-claim source, its mail arrives subject-prefixed `CORRECTION`, and the email
+field is optional — requiring contact details would turn a civic form into lead
+capture.
+
+**A correction is evidence, not an instruction.** It triggers a re-run of the
+four-step hunt on that row; the record changes because the evidence changed,
+not because someone asked. Otherwise any stranger can flip any point, including
+a competitor flipping a lit trader dark, and the dataset that survived the
+audit becomes writable from a form. The page therefore promises to go and look
+again, not to change the record on request. Removal is the exception and is
+honoured on its face: nobody asks to be taken off a map they are not on, and
+honouring a false removal costs nothing.
 
 **No clickable points.** Generosity toward the lit traders takes the form of a
 prose list of their sites below the map, in no order that implies ranking.
@@ -104,6 +131,18 @@ and are identifiable, or they are anonymous and approximate. The trade is
 unavoidable, and an imprecise map is worth more than a precise one we would
 have to take down.
 
+**The lights as a component inside the Chamber prototype.** That prototype
+lists named real businesses. A named member directory beside a coverage map is
+joinable by anyone with both pages open, and every rule above falls to
+adjacency without one of them being broken explicitly. The pitch is also only
+valuable in its forbidden form: a Chamber that can see *who* is dark has a
+recruitment list, and a Chamber that can see "85 of 166" learns nothing a
+public page would not tell it. `/the-lights/` is a link from that prototype.
+A coverage view for a membership body is a separate product with its own
+consent basis — their member list, their infrastructure, behind a login,
+covering only businesses that consented by joining. The census gives us consent
+from nobody; membership gives it from members.
+
 **Displacing only the dark points.** The displacement would itself be the tell:
 a point matching a known premises exactly is lit, an offset one is dark.
 
@@ -111,16 +150,20 @@ a point matching a known premises exactly is lit, an offset one is dark.
 failing on any business `name` appearing in the lights payload. `/concepts/`
 pages name real local businesses throughout `dist/`, so the scan fires
 constantly and would be disabled within a week. The enforceable form is
-shape-based: `check-lights-payload.mjs` parses the emitted payload and asserts
-every value is a number or boolean. With no strings in the array, no name can
-be in it, and the check cannot false-positive.
+shape-based: `check-lights-payload.mjs` parses the emitted picture and asserts
+every point carries nothing but numbers — `cx`, `cy` and a lit/dark class. With
+no names anywhere in the emitted markup's point set, none can leak, and the
+check cannot false-positive.
 
 ## Consequences
 
 - One build step, `tools/pipeline/bake-lights.mjs`, derives the count and the
   point array from the same filtered array and asserts the arithmetic before
   writing: `points.length === mapped`, `lit + dark === mapped`, and every point
-  carrying exactly the keys `lat`, `lon`, `lit`.
+  carrying exactly the keys `lat`, `lon`, `lit`. It emits four numbers, not
+  two — the mapped pair for the caption beside the picture, and the
+  whole-universe pair (96 lit, 105 dark of 201) for section 3, so the map's
+  denominator does not quietly become the town's statistic.
 - `pnpm build` gains a post-build stage; it currently has none.
 - The map is knowingly wrong about where every business is, by up to ~50m. It
   is an impression of the town, and the page says so.
@@ -130,5 +173,15 @@ be in it, and the check cannot false-positive.
   render as they were designed. Repointing those studies at `Shore` was
   rejected: a dated study should not show a component that did not exist when
   it was made.
+- `/privacy/` gains a census section before this route ships, and the page
+  links to it. Today that page describes only people who chose to contact the
+  studio, while `businesses.json` holds names, addresses, phones and scored
+  assessments for 373 places that opted into nothing — personal data, for the
+  sole traders among them. Publishing an aggregate from that file, and inviting
+  the town to write in about it, makes its existence public and someone will
+  reasonably ask what else is held. The section states what is held, that the
+  basis is legitimate interests in researching the trade, that only aggregates
+  and displaced anonymous points are published, and that removal is honoured on
+  request and then kept unpublished so a future update cannot undo it.
 - Three commits, in this order: `Shore` + `band` with the motif retired; the
   bake step and its checks; the `/the-lights/` route.
