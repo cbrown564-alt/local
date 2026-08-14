@@ -17,10 +17,10 @@ const { plate = "none", details = false, label } = Astro.props;
 <div
   class:list={["swap-shop", { "swap-shop--detailed": details }]}
   data-swap-shop
-  role="img"
-  aria-label={label}
+  role={plate === "button" ? undefined : "img"}
+  aria-label={plate === "button" ? undefined : label}
 >
-  <div class="swap-fascia" aria-hidden="true">
+  <div class="swap-fascia" aria-hidden={plate === "button" ? undefined : "true"}>
     <div class="swap-slot" data-swap-slot>
       {plate === "button" && (
         <button

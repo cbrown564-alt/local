@@ -43,16 +43,22 @@ ADR already set: the horizon is identity, the lights are evidence.
 The headline obeys the same logic the name does — presence is the subject, the
 gap is the remainder:
 
-> **Eighty-one of the hundred and sixty-six independent traders we could map
-> here have a website of their own.**
-> The other eighty-five have none that we could find. Reviewed 5 August 2026.
+> **Ninety-six of the hundred and eighty-eight independent traders here have a
+> website of their own.**
+> The other ninety-two have none that we could find. Reviewed 5 August 2026.
 > Nobody here is named.
 
 The first draft's headline — *"Half the independent traders here have no
 website of their own"* — is retired twice over. It made the absence the
-grammatical subject of eighty-five real businesses, which is exactly what the
-page's name refuses to do. And it dropped the word *mapped*, quietly counting a
-denominator the confidence decision never authorised.
+grammatical subject of ninety-two real businesses, which is exactly what the
+page's name refuses to do. And it counted a denominator the confidence decision
+never authorised.
+
+The word *mapped* has since stopped doing any work and is dropped from the
+sentence: the 14 August census pass recovered coordinates for every trading
+business, so the mapped set and the trading universe are now the same 188 rows.
+Keep the qualifier out while that holds, and put it back the day it stops
+holding — a denominator that silently excludes anyone must say so.
 
 ## What is already decided, and what this brief may not touch
 
@@ -64,22 +70,33 @@ from memory.
 |---|---|
 | Universe | `censusClass === "Trading business"` only |
 | Count | Dated fraction of **mapped** trading businesses with no owned site |
-| Current figures | **81 lit / 85 dark of 166 mapped** — never "most", in either direction |
+| Current figures | **96 lit / 92 dark of 188 trading** — never "most", in either direction |
 | Map | Anonymous lights at dark ∩ mapped coordinates, **displaced ~50m** |
 | Dark identity | Never named, labelled, linked, hoverable, or precisely placed |
 | Evidence | Joined `verification` object after the four-step website hunt |
 | Trading strength | `Open — unconfirmed` accepted for this **aggregate** claim only |
 
-Reproduce with `node tools/pipeline/report-census-class.mjs`. Confirmed
-reproducing on 14 August 2026: 201 trading, 96 lit, 105 dark, 166 mapped, 85
-dark-and-mapped, **0 unconfirmed**.
+Reproduce with `node tools/pipeline/report-census-class.mjs`, and bake with
+`pnpm bake:lights`. Confirmed on 14 August 2026, after the coordinate and
+deduplication pass: **188 trading, 96 lit, 92 dark, all 188 mapped, 0
+unconfirmed dark**.
 
-**The publishable pair is 81 and 85, not 96 and 85.** The first draft put "96 of
-166" beside the canvas; 96 is lit across all 201 trading businesses, not
-lit-and-mapped. Inside the mapped 166 it is 81 lit and 85 dark — so the dark
-half is the larger one, at 51.2%, and "most have one" is as forbidden as "most
-have none". That the brief's own picture-sentence had drifted from its own
-subhead is the tidiest possible proof of the constraint below.
+**The publishable pair is 96 and 92.** It has been wrong twice, in two
+different ways, and both are worth keeping on the record because the page's
+whole claim is that its numbers can be trusted. The first draft put "96 of 166"
+beside the canvas — 96 was lit across all trading businesses, not
+lit-and-mapped, so the sentence and the subhead disagreed inside one document.
+The corrected pair, 81 and 85 of 166, then lasted about an hour: the census
+pass on 14 August recovered coordinates for 16 businesses whose position had
+been dropped by an ingestion bug, folded 12 duplicate scrape rows into their
+canonical records, and closed one business, leaving 188 trading rows with 100%
+coordinate coverage.
+
+The split is near-even — 96 to 92, 51.1% against 48.9% — so "most have one" is
+as forbidden as "most have none". Note that the dark half was the larger one
+before the fix and is the smaller one after; a page built on either phrasing
+would now be wrong. This is the argument for the constraint below, made twice
+in one day at our own expense.
 
 Forbidden wordings, verbatim from the decision: *"most local businesses have no
 website"*; any count over raw census rows; naming, labelling or making
@@ -150,15 +167,15 @@ Three depths, in this order down the page:
 │                                 every trader, dark         │
 │                                                            │
 │  STAND                                                     │
-│    eighty-one lights come up, one at a time, over          │
-│    about four seconds. eighty-five points stay grey.       │
+│    ninety-six lights come up, one at a time, over          │
+│    about four seconds. ninety-two points stay grey.        │
 │    the sentence sits beside the picture, from the          │
 │    same array.                                             │
 │                                                            │
 │   ·✦· ✦  ·   ✦ ·✦   ·  ✦  ·                                │
-│   "81 of 166 mapped independent traders in Dundrum and     │
-│    Newcastle have a website of their own. The other 85     │
-│    have none we could find. Reviewed 5 August 2026."       │
+│   "96 of 188 independent traders in Dundrum and Newcastle  │
+│    have a website of their own. The other 92 have none     │
+│    we could find. Reviewed 5 August 2026."                 │
 │                                                            │
 │  ASK                                                       │
 │    one field. not who you are — what we hold, and how      │
@@ -279,7 +296,7 @@ the handler, not just in the brief.
 1  The horizon        Real Mourne skyline, town unlit, one line of type.
                       Nothing moves until the reader is at it.
 
-2  The lights         81 arrive. 85 stay grey. The dated sentence sits
+2  The lights         96 arrive. 92 stay grey. The dated sentence sits
                       beside the picture, derived from the same array.
                       One line: points are placed to within about fifty
                       metres, on purpose.
@@ -289,16 +306,17 @@ the handler, not just in the brief.
                       walking trails, chain branches and the fire station
                       are not in this picture, and saying so is the
                       credibility of the whole page. Social-only counts
-                      as none. The 35 traders we could not place are
-                      excluded from the picture but not from the truth:
-                      counting them too it is 96 of 201, and the shape
-                      does not change. Anyone who asked to be left out
-                      is not counted at all.
+                      as none. Every trading business we hold is on the
+                      picture — coordinate coverage is complete as of
+                      14 August 2026, so nothing is counted that is not
+                      drawn and nothing is drawn that is not counted.
+                      Anyone who asked to be left out is not counted
+                      at all.
 
 4  How we got it      The four-step hunt, and the finding that our own
    wrong first        dark flag was wrong two times in three before it ran.
-                      Also: the census was collected 17 July 2026, and 18
-                      of the 81 lit points rest on that listing alone.
+                      Also: the census was collected 17 July 2026, and 28
+                      of the 96 lit points rest on that listing alone.
                       Links /what-we-got-wrong/. This paragraph is why the
                       number is believable.
 
