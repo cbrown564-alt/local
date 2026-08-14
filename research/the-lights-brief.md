@@ -11,7 +11,7 @@ has been built.*
 
 *The grilling pass found that three of the first draft's proposals — the
 lookup, the exact coordinates, and clickable lit points — would each on their
-own have identified the eighty-five businesses this page promises never to
+own have identified the ninety-two businesses this page promises never to
 name, and that its headline figure was a category error. Those are settled in
 [`docs/adr/0005-the-lights-route-and-anonymity.md`](../docs/adr/0005-the-lights-route-and-anonymity.md),
 which is now the live document; this brief is the argument for the page and has
@@ -213,7 +213,7 @@ The first draft tried to save it by making every branch an admission about our
 own record rather than a claim about the business. That is a real improvement
 and it is still not enough: three answers that differ by lit and dark are a
 two-valued oracle over the dark set, and the census names are themselves public
-listings, so a hundred and sixty-six requests reconstruct the map. Client-side
+listings, so a hundred and eighty-eight requests reconstruct the map. Client-side
 it would ship the name index the payload rule forbids; server-side it would be
 a second serverless function whose only job is answering questions about
 businesses that never asked to be asked about.
@@ -323,7 +323,7 @@ the handler, not just in the brief.
 5  Tell us we're      The correction form. One answer, for everyone.
    wrong
 
-6  The lit ones       Eighty-one local traders' own sites, in prose, in no
+6  The lit ones       Ninety-six local traders' own sites, in prose, in no
                       order that implies ranking. The generous thing this
                       page can do without compromising the map.
 
@@ -402,9 +402,9 @@ expensive, it was audited hard, and today it is visible nowhere.
   treat a change to it as a change to every page.
 - Derive the counts and the point array in one build step,
   `tools/pipeline/bake-lights.mjs`, from `census-class.mjs` output. Two code
-  paths reading the same JSON is not the same guarantee. It emits four numbers,
-  not two: the mapped pair for the caption, the whole-universe pair for section
-  3, so the picture's denominator does not quietly become the town's statistic.
+  paths reading the same JSON is not the same guarantee. It emits the verified
+  counts (96 lit, 92 dark of 188) for the caption beside the picture and
+  supporting copy, with 100% coordinate coverage across the trading universe.
 - Pin the arithmetic: assert `points.length === mapped`, `lit + dark ===
   mapped`, and every point carrying exactly `lat`, `lon`, `lit` — before
   writing, not eyeballed after.

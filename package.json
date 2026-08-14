@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "node tools/check/check-research-prose.mjs && node tools/check/check-prose-counts.mjs && node tools/check/check-lights-data.mjs && node tools/check/check-concept-publication.mjs && node tools/check/check-public-assets.mjs && node tools/check/check-og-assets.mjs && node tools/check/check-concept-guest-voice.mjs && node tools/check/check-image-provenance.mjs && astro check && astro build",
+    "build": "node tools/check/check-research-prose.mjs && node tools/check/check-prose-counts.mjs && node tools/check/check-lights-data.mjs && node tools/check/check-concept-publication.mjs && node tools/check/check-public-assets.mjs && node tools/check/check-og-assets.mjs && node tools/check/check-concept-guest-voice.mjs && node tools/check/check-image-provenance.mjs && astro check && astro build && node tools/check/check-map-payload.mjs",
     "preview": "astro preview",
     "test": "node tools/test/run-verification.mjs",
     "test:rebuild": "node tools/check/check-rebuild-stage.mjs",
@@ -25,6 +25,7 @@
     "test:source-attribution": "node --experimental-strip-types tools/test/test-source-attribution.ts",
     "test:prose-counts": "node tools/check/check-prose-counts.mjs",
     "test:lights": "node tools/check/check-lights-data.mjs",
+    "test:map-payload": "node tools/check/check-map-payload.mjs",
     "bake:lights": "node tools/pipeline/bake-lights.mjs",
     "bake:shore": "node tools/pipeline/bake-shore-profile.mjs",
     "test:hugh-mccanns": "node tools/test/test-hugh-mccanns-elevation.mjs",
@@ -49,11 +50,15 @@
     "@fontsource/yeseva-one": "5.3.0",
     "@vercel/analytics": "2.0.1",
     "astro": "7.1.4",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
     "nodemailer": "9.0.3",
     "three": "^0.185.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@types/leaflet": "^1.9.22",
+    "@types/leaflet.markercluster": "^1.5.6",
     "@types/nodemailer": "8.0.1",
     "@types/three": "^0.185.4",
     "@vercel/node": "5.8.26",

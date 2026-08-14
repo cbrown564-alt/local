@@ -25,7 +25,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const publicSlugs = new Set<string>(publicTransformationSlugs);
 const normaliseSource = (value: string) => {
   if (!value) return "direct";
-  if (value === "direct" || value === "transformation") return value;
+  if (value === "direct" || value === "transformation" || value === "lights-correction" || value === "map-correction") return value;
   const onesheet = /^onesheet-([a-z][a-z\d-]*)$/.exec(value);
   if (onesheet && publicSlugs.has(onesheet[1])) return value;
   return "unrecognised";
@@ -45,6 +45,7 @@ const titleCaseSlug = (slug: string) =>
 const describeSource = (source: string) => {
   if (source === "direct") return "Direct";
   if (source === "transformation") return "Case study";
+  if (source === "map-correction" || source === "lights-correction") return "Directory update (/the-map/)";
   if (source === "unrecognised") return "Unrecognised";
   const onesheet = /^onesheet-(.+)$/.exec(source);
   if (onesheet) return `Printed one-sheet (${titleCaseSlug(onesheet[1])})`;
@@ -293,6 +294,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   };
 
   const claim = isClaimSource(fields.source);
+  const isCorrection = fields.source === "map-correction" || fields.source === "lights-correction";
   // Only the business name is required. Everything else is optional — local
   // owners can leave a name and go, and the studio can find them from that.
   if (!fields.business || (fields.email && !emailPattern.test(fields.email))) {
@@ -319,7 +321,19 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   const contactLine = fields.name || "Not supplied";
   const emailLine = fields.email || "Not supplied";
   const noteLine = fields.idea || "No note";
-  const message = claim
+  const message = isCorrection
+    ? [
+        "New Mourne Made census correction",
+        "",
+        `Business or organisation: ${fields.business}`,
+        `Contact: ${contactLine}`,
+        `Email: ${emailLine}`,
+        `Came from: ${sourceLabel}`,
+        "",
+        "Correction note",
+        noteLine,
+      ].join("\n")
+    : claim
     ? [
         "New Mourne Made concept claim",
         "",
@@ -347,7 +361,11 @@ async function handler(request: VercelRequest, response: VercelResponse) {
   const mail: SendMailOptions = {
       from: { name: "Mourne Made website", address: gmailUser },
       to: recipient,
-      subject: claim ? `Claim: ${safeBusiness}` : `Before-and-after request: ${safeBusiness}`,
+      subject: isCorrection
+        ? `CORRECTION: ${safeBusiness}`
+        : claim
+        ? `Claim: ${safeBusiness}`
+        : `Before-and-after request: ${safeBusiness}`,
       text: message,
   };
   if (fields.email) {

@@ -1,0 +1,707 @@
+---
+import BaseLayout from "../site/layouts/BaseLayout.astro";
+import ArrowIcon from "../site/components/ArrowIcon.astro";
+import { ogImages } from "../site/data/og-images";
+import businesses from "../site/data/businesses.json";
+import { censusClass, TRADING } from "../../tools/pipeline/census-class.mjs";
+import "../site/styles/the-map.css";
+
+/* Extract active trading businesses with their real public coordinates and metadata. */
+const isLit = (row: typeof businesses[0]) =>
+  row.websiteStatus === "HTTPS website" || row.websiteStatus === "HTTP website";
+
+const cleanDomain = (rawUrl: string) => {
+  if (!rawUrl) return "";
+  try {
+    const parsed = new URL(rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`);
+    return parsed.hostname.replace(/^www\./, "");
+  } catch {
+    return rawUrl.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
+  }
+};
+
+/* Consolidate 24+ raw categories into 7 intuitive, high-utility directory groups */
+const normalizeCategory = (cat: string) => {
+  const c = (cat || "").toLowerCase();
+  if (c.includes("food") || c.includes("drink") || c.includes("cafe") || c.includes("restaurant") || c.includes("bakery") || c.includes("butcher") || c.includes("deli")) {
+    return "Food & Drink";
+  }
+  if (c.includes("retail") || c.includes("shop") || c.includes("curtain") || c.includes("gift") || c.includes("homeware") || c.includes("nursery") || c.includes("gallery") || c.includes("art")) {
+    return "Retail & Shops";
+  }
+  if (c.includes("accommodation") || c.includes("hotel") || c.includes("stay") || c.includes("guest house") || c.includes("self-catering")) {
+    return "Stay & Lodging";
+  }
+  if (c.includes("beauty") || c.includes("personal care") || c.includes("health") || c.includes("wellbeing") || c.includes("dental") || c.includes("optic")) {
+    return "Health & Beauty";
+  }
+  if (c.includes("amuse") || c.includes("sport") || c.includes("leisure") || c.includes("tourism") || c.includes("attraction") || c.includes("event") || c.includes("venue") || c.includes("gambl")) {
+    return "Leisure & Fun";
+  }
+  if (c.includes("trade") || c.includes("service") || c.includes("garage") || c.includes("vehicle") || c.includes("construct") || c.includes("funeral") || c.includes("professional")) {
+    return "Services & Trades";
+  }
+  return "Community & Other";
+};
+
+const allTradingBusinesses = businesses
+  .filter((row) => censusClass(row) === TRADING)
+  .map((row) => {
+    const groupCategory = normalizeCategory(row.category);
+    return {
+      id: row.id,
+      name: row.name,
+      town: row.town,
+      category: groupCategory,
+      rawCategory: row.category,
+      subcategory: row.subcategory || "",
+      address: row.address || "",
+      postcode: row.postcode || "",
+      phone: row.phone || "",
+      website: row.website || "",
+      domain: cleanDomain(row.website || ""),
+      facebook: row.facebook || "",
+      instagram: row.instagram || "",
+      googleMapsUrl: row.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${row.name}, ${row.town}, County Down`)}`,
+      lat: row.lat,
+      lon: row.lon,
+      hasWebsite: isLit(row),
+    };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+
+const newcastleBusinesses = allTradingBusinesses.filter((b) => b.town === "Newcastle");
+const dundrumBusinesses = allTradingBusinesses.filter((b) => b.town === "Dundrum");
+
+const categories = [
+  "Food & Drink",
+  "Retail & Shops",
+  "Stay & Lodging",
+  "Health & Beauty",
+  "Leisure & Fun",
+  "Services & Trades",
+  "Community & Other",
+];
+---
+
+<BaseLayout
+  title="Local Directory & Town Map — Mourne Made"
+  description="Explore independent businesses across Newcastle and Dundrum on an interactive town map with live directory profiles."
+  ogImage={ogImages.studio}
+  ogImageAlt="Local Directory & Town Map — Mourne Made"
+>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+
+  <div class="lights-page">
+    <!-- Hero Header -->
+    <section class="lights-hero">
+      <div class="shell">
+        <header class="lights-hero-header">
+          <p class="eyebrow">Local Directory</p>
+          <h1>The town map.</h1>
+          <p class="lede">
+            Explore independent businesses across Newcastle and Dundrum. Browse by town, filter by category, or click any pin to view details.
+          </p>
+        </header>
+
+        <!-- Interactive Explorer Shell -->
+        <div class="explorer-wrapper">
+          <!-- Explorer Top Bar / Town Switcher -->
+          <div class="explorer-controls">
+            <div class="town-toggle-group" role="tablist" aria-label="Town selection">
+              <button
+                type="button"
+                role="tab"
+                aria-selected="true"
+                class="town-btn is-active"
+                data-town-btn="Newcastle"
+              >
+                <span>Newcastle</span>
+                <span class="town-badge">{newcastleBusinesses.length}</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected="false"
+                class="town-btn"
+                data-town-btn="Dundrum"
+              >
+                <span>Dundrum</span>
+                <span class="town-badge">{dundrumBusinesses.length}</span>
+              </button>
+            </div>
+
+            <div class="explorer-stats" data-explorer-stats>
+              Showing <strong>{newcastleBusinesses.length}</strong> businesses in Newcastle
+            </div>
+          </div>
+
+          <!-- Explorer Split: Map Pane + Directory Sidebar -->
+          <div class="explorer-split">
+            <!-- Map Container -->
+            <div class="explorer-map-pane">
+              <div id="leaflet-map" aria-label="Interactive map of local businesses"></div>
+            </div>
+
+            <!-- Sidebar Container -->
+            <aside class="explorer-sidebar-pane" aria-label="Business Directory Sidebar">
+              <!-- Search & Filter Header -->
+              <div class="sidebar-header">
+                <div class="sidebar-search-box">
+                  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input
+                    type="search"
+                    class="sidebar-search-input"
+                    placeholder="Search businesses..."
+                    aria-label="Search businesses"
+                    data-search-input
+                  />
+                </div>
+
+                <div class="category-filter-bar" role="toolbar" aria-label="Category filters">
+                  <button type="button" class="category-chip is-selected" data-category="all">All</button>
+                  {categories.map((cat) => (
+                    <button type="button" class="category-chip" data-category={cat}>{cat}</button>
+                  ))}
+                </div>
+              </div>
+
+              <!-- List View (Default) -->
+              <div class="business-list-view" data-business-list>
+                <!-- Dynamically populated via client script -->
+              </div>
+
+              <!-- Mini-Profile Detail View (Selected state) -->
+              <div class="business-profile-view" data-business-profile hidden>
+                <button type="button" class="profile-back-btn" data-profile-back>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  <span>Back to directory list</span>
+                </button>
+
+                <div class="profile-badge-row">
+                  <span class="profile-category-badge" data-profile-category>Category</span>
+                  <span class="profile-town-badge" data-profile-town>Newcastle</span>
+                </div>
+
+                <h2 class="profile-title" data-profile-name>Business Name</h2>
+
+                <div class="profile-details-group">
+                  <div class="profile-detail-row" data-profile-address-row>
+                    <svg class="profile-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div class="profile-detail-text" data-profile-address>123 Main Street</div>
+                  </div>
+
+                  <div class="profile-detail-row" data-profile-phone-row hidden>
+                    <svg class="profile-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <div class="profile-detail-text" data-profile-phone>Phone number</div>
+                  </div>
+                </div>
+
+                <div class="profile-actions">
+                  <a href="#" class="profile-primary-link" data-profile-website-link target="_blank" rel="noopener noreferrer">
+                    <span>Visit website</span>
+                    <ArrowIcon />
+                  </a>
+
+                  <a href="#" class="profile-secondary-link" data-profile-maps-link target="_blank" rel="noopener noreferrer">
+                    <span>Open in Google Maps</span>
+                    <ArrowIcon />
+                  </a>
+
+                  <div class="profile-concept-cta">
+                    <p><strong>Run this business?</strong></p>
+                    <p>We build tailored before-and-after redesign concepts for local independent businesses with no upfront cost.</p>
+                    <a href="/request/">Request a concept &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context & Civic Info -->
+    <div class="lights-body shell">
+      <div class="lights-split-grid">
+        <article class="lights-plate" aria-labelledby="heading-directory-scope">
+          <div>
+            <p class="eyebrow">Coverage</p>
+            <h2 id="heading-directory-scope">Independent trade, mapped.</h2>
+          </div>
+          <div class="lights-plate-body">
+            <p>
+              This directory covers independent businesses, hospitality venues, shops, and trades active in Newcastle and Dundrum.
+            </p>
+            <p>
+              Chain branches, unoccupied premises, and non-commercial public services are excluded so the directory stays focused on local independent enterprise.
+            </p>
+          </div>
+        </article>
+
+        <article class="lights-plate" aria-labelledby="heading-updates">
+          <div>
+            <p class="eyebrow">Accuracy</p>
+            <h2 id="heading-updates">Public and transparent data.</h2>
+          </div>
+          <div class="lights-plate-body">
+            <p>
+              All locations and details are compiled from publicly accessible records including OpenStreetMap, company registries, and business listings.
+            </p>
+            <p>
+              If your business details have changed, or you have launched a new website, let us know below and we will update the listing immediately.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Civic Correction Form -->
+      <section class="lights-correction-plate" aria-labelledby="heading-correction">
+        <div class="lights-correction-layout">
+          <div class="lights-correction-intro">
+            <p class="eyebrow">Updates</p>
+            <h2 id="heading-correction">Update a listing.</h2>
+            <p>
+              Spot something out of date, or want to add your new website link? Let us know and we’ll review and update the directory.
+            </p>
+          </div>
+
+          <form class="lights-form" novalidate data-correction-form>
+            <input type="hidden" name="source" value="map-correction" />
+            <div class="form-honeypot" aria-hidden="true">
+              <label for="mm-check">Leave this empty</label>
+              <input id="mm-check" name="mm_check_field" tabindex="-1" autocomplete="new-password" />
+            </div>
+
+            <div class="lights-form-field">
+              <label for="correction-business">Business or organisation</label>
+              <input id="correction-business" name="business" type="text" required placeholder="e.g. Mourne View Bakery" />
+            </div>
+
+            <div class="lights-form-field">
+              <label for="correction-idea">What should be updated?</label>
+              <textarea id="correction-idea" name="idea" placeholder="e.g. Our new website is active at example.co.uk and our opening hours have updated."></textarea>
+            </div>
+
+            <div class="lights-form-field">
+              <label for="correction-email">Email (optional)</label>
+              <input id="correction-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+            </div>
+
+            <div class="lights-form-action">
+              <button class="button button-blue" type="submit">
+                <span data-submit-label>Send update</span> <ArrowIcon />
+              </button>
+              <div class="lights-status-box" role="status" aria-live="polite" data-correction-status></div>
+              <p class="lights-form-note">
+                Updates are reviewed and verified before publishing. Read our <a href="/privacy/#privacy-census">privacy notice</a>.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Studio Closer -->
+    <section class="lights-close" aria-labelledby="heading-close">
+      <div class="shell lights-close-content">
+        <p class="eyebrow">Studio</p>
+        <h2 id="heading-close">See what your website could become.</h2>
+        <p>
+          If you run an independent business in Dundrum or Newcastle and want a clearer online presence, we make free before-and-after concepts before any paid commitment.
+        </p>
+        <a class="button button-blue" href="/request/">
+          Request a free before-and-after <ArrowIcon />
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script is:inline src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<script define:vars={{ allTradingBusinesses }}>
+  // Initialize directory & map client logic
+  window.addEventListener("DOMContentLoaded", () => {
+    const rawData = allTradingBusinesses;
+    const L = window.L;
+    if (!L) return;
+
+    // Town settings
+    const TOWNS = {
+      Newcastle: {
+        center: [54.214, -5.898],
+        zoom: 14,
+      },
+      Dundrum: {
+        center: [54.259, -5.845],
+        zoom: 15,
+      },
+    };
+
+    let activeTown = "Newcastle";
+    let activeCategory = "all";
+    let searchQuery = "";
+    let selectedBusinessId = null;
+
+    // DOM Elements
+    const mapEl = document.getElementById("leaflet-map");
+    const sidebarHeader = document.querySelector(".sidebar-header");
+    const listView = document.querySelector("[data-business-list]");
+    const profileView = document.querySelector("[data-business-profile]");
+    const backBtn = document.querySelector("[data-profile-back]");
+    const searchInput = document.querySelector("[data-search-input]");
+    const statsEl = document.querySelector("[data-explorer-stats]");
+    const townBtns = document.querySelectorAll("[data-town-btn]");
+    const categoryChips = document.querySelectorAll("[data-category]");
+
+    // Mini profile elements
+    const profileCategory = document.querySelector("[data-profile-category]");
+    const profileTown = document.querySelector("[data-profile-town]");
+    const profileName = document.querySelector("[data-profile-name]");
+    const profileAddressRow = document.querySelector("[data-profile-address-row]");
+    const profileAddress = document.querySelector("[data-profile-address]");
+    const profilePhoneRow = document.querySelector("[data-profile-phone-row]");
+    const profilePhone = document.querySelector("[data-profile-phone]");
+    const profileWebsiteLink = document.querySelector("[data-profile-website-link]");
+    const profileMapsLink = document.querySelector("[data-profile-maps-link]");
+
+    // Setup Leaflet map
+    const map = L.map(mapEl, {
+      center: TOWNS[activeTown].center,
+      zoom: TOWNS[activeTown].zoom,
+      zoomControl: true,
+      scrollWheelZoom: false,
+    });
+
+    // Muted, high quality tile layer (CartoDB Positron / OSM style)
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Marker Cluster Group with custom styling
+    const clusterGroup = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 35,
+      spiderfyOnMaxZoom: true,
+      zoomToBoundsOnClick: true,
+      iconCreateFunction: (cluster) => {
+        const count = cluster.getChildCount();
+        let sizeClass = "cluster-sm";
+        if (count > 25) sizeClass = "cluster-lg";
+        else if (count > 10) sizeClass = "cluster-md";
+
+        return L.divIcon({
+          html: `<div class="mourne-cluster ${sizeClass}"><span>${count}</span></div>`,
+          className: "mourne-cluster-wrapper",
+          iconSize: L.point(34, 34),
+        });
+      },
+    });
+    map.addLayer(clusterGroup);
+
+    const markersById = new Map();
+
+    // Custom marker icon factory
+    const createCustomIcon = (biz) => {
+      const isSelected = biz.id === selectedBusinessId;
+      const hasWeb = biz.hasWebsite;
+      const classNames = ["mourne-pin"];
+      if (isSelected) classNames.push("is-active");
+      if (hasWeb) classNames.push("has-website");
+
+      return L.divIcon({
+        className: "mourne-pin-wrapper",
+        html: `<div class="${classNames.join(" ")}" data-id="${biz.id}"></div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 26],
+      });
+    };
+
+    // Filter businesses based on state
+    const getFilteredBusinesses = () => {
+      return rawData.filter((b) => {
+        if (b.town !== activeTown) return false;
+        if (activeCategory !== "all" && b.category !== activeCategory) return false;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const matchName = b.name.toLowerCase().includes(q);
+          const matchCat = b.category.toLowerCase().includes(q);
+          const matchAddr = b.address.toLowerCase().includes(q);
+          if (!matchName && !matchCat && !matchAddr) return false;
+        }
+        return true;
+      });
+    };
+
+    // Update map markers
+    const updateMarkers = () => {
+      clusterGroup.clearLayers();
+      markersById.clear();
+
+      const filtered = getFilteredBusinesses();
+      filtered.forEach((biz) => {
+        if (typeof biz.lat !== "number" || typeof biz.lon !== "number") return;
+
+        const marker = L.marker([biz.lat, biz.lon], {
+          icon: createCustomIcon(biz),
+        });
+
+        marker.on("click", () => {
+          selectBusiness(biz.id, false);
+        });
+
+        clusterGroup.addLayer(marker);
+        markersById.set(biz.id, marker);
+      });
+    };
+
+    // Render sidebar business list
+    const renderList = () => {
+      const filtered = getFilteredBusinesses();
+      if (!listView) return;
+
+      if (statsEl) {
+        statsEl.innerHTML = `Showing <strong>${filtered.length}</strong> ${filtered.length === 1 ? "business" : "businesses"} in ${activeTown}`;
+      }
+
+      if (filtered.length === 0) {
+        listView.innerHTML = `<div class="empty-state">No businesses found matching your filter in ${activeTown}.</div>`;
+        return;
+      }
+
+      listView.innerHTML = filtered
+        .map((biz) => {
+          const isActive = biz.id === selectedBusinessId;
+          const displayAddress = biz.address || `${biz.town}, County Down`;
+          return `
+            <button type="button" class="business-item-card ${isActive ? "is-active" : ""}" data-biz-card="${biz.id}">
+              <div class="business-card-header">
+                <span class="business-card-title">${biz.name}</span>
+                <span class="business-card-category">${biz.category}</span>
+              </div>
+              <div class="business-card-address">${displayAddress}</div>
+              <div class="business-card-meta">
+                ${biz.hasWebsite ? `<span class="business-status-tag">Website available</span>` : ""}
+                ${biz.phone ? `<span>${biz.phone}</span>` : ""}
+              </div>
+            </button>
+          `;
+        })
+        .join("");
+
+      // Bind card click events
+      listView.querySelectorAll("[data-biz-card]").forEach((card) => {
+        card.addEventListener("click", () => {
+          const id = card.getAttribute("data-biz-card");
+          if (id) selectBusiness(id, true);
+        });
+      });
+    };
+
+    // Open Mini-Profile
+    const selectBusiness = (id, panToMap = false) => {
+      const biz = rawData.find((b) => b.id === id);
+      if (!biz) return;
+
+      selectedBusinessId = id;
+
+      // Update UI views: hide header and list, show full-height profile
+      if (sidebarHeader) sidebarHeader.hidden = true;
+      if (listView) listView.hidden = true;
+      if (profileView) {
+        profileView.hidden = false;
+        profileView.classList.add("is-visible");
+        profileView.scrollTop = 0;
+      }
+
+      // Populate profile data
+      if (profileCategory) profileCategory.textContent = biz.category;
+      if (profileTown) profileTown.textContent = biz.town;
+      if (profileName) profileName.textContent = biz.name;
+
+      if (profileAddress) {
+        profileAddress.textContent = biz.address || `${biz.town}, County Down`;
+      }
+
+      if (profilePhoneRow && profilePhone) {
+        if (biz.phone) {
+          profilePhone.textContent = biz.phone;
+          profilePhoneRow.hidden = false;
+        } else {
+          profilePhoneRow.hidden = true;
+        }
+      }
+
+      if (profileWebsiteLink) {
+        if (biz.website) {
+          profileWebsiteLink.href = biz.website;
+          profileWebsiteLink.hidden = false;
+          profileWebsiteLink.querySelector("span").textContent = `Visit website (${biz.domain || "online"})`;
+        } else {
+          profileWebsiteLink.hidden = true;
+        }
+      }
+
+      if (profileMapsLink) {
+        profileMapsLink.href = biz.googleMapsUrl;
+      }
+
+      // Refresh marker icons & pan
+      updateMarkers();
+
+      if (panToMap && typeof biz.lat === "number" && typeof biz.lon === "number") {
+        map.setView([biz.lat, biz.lon], 16, { animate: true });
+      }
+    };
+
+    // Close Mini-Profile & Return to List
+    const closeProfile = () => {
+      selectedBusinessId = null;
+      if (profileView) {
+        profileView.hidden = true;
+        profileView.classList.remove("is-visible");
+      }
+      if (sidebarHeader) sidebarHeader.hidden = false;
+      if (listView) listView.hidden = false;
+      updateMarkers();
+      renderList();
+    };
+
+    if (backBtn) {
+      backBtn.addEventListener("click", closeProfile);
+    }
+
+    // Town Switcher Handlers
+    townBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const town = btn.getAttribute("data-town-btn");
+        if (!town || town === activeTown) return;
+
+        activeTown = town;
+        townBtns.forEach((b) => {
+          const isActive = b === btn;
+          b.classList.toggle("is-active", isActive);
+          b.setAttribute("aria-selected", String(isActive));
+        });
+
+        // Animate map to town center
+        map.setView(TOWNS[activeTown].center, TOWNS[activeTown].zoom, { animate: true });
+
+        closeProfile();
+        updateMarkers();
+        renderList();
+      });
+    });
+
+    // Category Filter Handlers
+    categoryChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const cat = chip.getAttribute("data-category");
+        if (!cat) return;
+
+        activeCategory = cat;
+        categoryChips.forEach((c) => c.classList.toggle("is-selected", c === chip));
+
+        closeProfile();
+        updateMarkers();
+        renderList();
+      });
+    });
+
+    // Search input handler
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = (e.target.value || "").trim();
+        if (selectedBusinessId) {
+          closeProfile();
+        } else {
+          updateMarkers();
+          renderList();
+        }
+      });
+    }
+
+    // Initial render
+    updateMarkers();
+    renderList();
+  });
+
+  // Correction Form Script
+  const form = document.querySelector("[data-correction-form]");
+  const statusEl = document.querySelector("[data-correction-status]");
+  const submitBtn = form?.querySelector('button[type="submit"]');
+  const submitLabel = form?.querySelector("[data-submit-label]");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !statusEl) return;
+
+    statusEl.className = "lights-status-box";
+    statusEl.textContent = "";
+
+    const businessInput = form.elements.namedItem("business");
+    const business = businessInput?.value?.trim() || "";
+
+    if (!business) {
+      statusEl.className = "lights-status-box is-error";
+      statusEl.textContent = "Please enter your business or organisation name.";
+      businessInput?.focus();
+      return;
+    }
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = "Sending…";
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const response = await fetch("/api/request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Could not send update.");
+      }
+
+      form.reset();
+      statusEl.className = "lights-status-box is-success";
+      statusEl.textContent = "Thank you. We’ll review your note and update the directory listing promptly.";
+    } catch {
+      statusEl.className = "lights-status-box is-error";
+      statusEl.textContent = "The update could not be sent right now. Please email cbrown564@gmail.com directly.";
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = "Send update";
+    }
+  });
+</script>

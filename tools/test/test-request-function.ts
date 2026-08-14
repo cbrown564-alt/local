@@ -84,6 +84,8 @@ const deliveredSource = async (source?: string) => {
 assert.equal(await deliveredSource(), "Direct");
 assert.equal(await deliveredSource(""), "Direct");
 assert.equal(await deliveredSource("transformation"), "Case study");
+assert.equal(await deliveredSource("map-correction"), "Directory update (/the-map/)");
+assert.equal(await deliveredSource("lights-correction"), "Directory update (/the-map/)");
 assert.equal(await deliveredSource("onesheet-scopers"), "Printed one-sheet (Scopers)");
 assert.equal(await deliveredSource("onesheet-hotel-enniskeen"), "Printed one-sheet (Hotel Enniskeen)");
 // Not a public transformation, so no sheet can legitimately carry it.
@@ -110,6 +112,29 @@ assert.equal(
   }, createRequestHandler(async () => ({ messageId: "test-message" })))).statusCode,
   200,
 );
+
+let correctionMail: { subject?: string; text?: string } = {};
+const correctionDelivery = await invoke(
+  {
+    body: {
+      business: "Oakland Antiques",
+      idea: "We have had an active online shop since March 2024.",
+      source: "map-correction",
+    },
+  },
+  createRequestHandler(async (mail) => {
+    correctionMail = { subject: String(mail.subject ?? ""), text: String(mail.text ?? "") };
+    return { messageId: "test-message" };
+  }),
+);
+assert.equal(correctionDelivery.statusCode, 200);
+assert.equal(correctionMail.subject, "CORRECTION: Oakland Antiques");
+assert.ok(correctionMail.text?.startsWith("New Mourne Made census correction\n"));
+assert.ok(correctionMail.text?.includes("Business or organisation: Oakland Antiques\n"));
+assert.ok(correctionMail.text?.includes("Contact: Not supplied\nEmail: Not supplied\n"));
+assert.ok(correctionMail.text?.includes("Came from: Directory update (/the-map/)"));
+assert.ok(correctionMail.text?.includes("Correction note\nWe have had an active online shop since March 2024."));
+assert.ok(!correctionMail.text?.includes("What should be clearer?"));
 
 assert.equal((await invoke({ body: { business: "", source: "direct" } })).statusCode, 400);
 
