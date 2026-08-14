@@ -15,23 +15,32 @@ only how that count and those points may be drawn.
 
 ## The publishable pair, corrected
 
-The brief's canvas sentence read "96 of 166 mapped independent traders … have a
-website of their own." **96 is lit across all 201 trading businesses, not
-lit-and-mapped.** Reproduced 14 August 2026:
+Investigation on 14 August 2026 closed the coordinate and deduplication gaps in
+the census. The original 35 "unmapped" trading rows broke down into:
+- 16 businesses (15 lit, 1 dark) whose coordinates were embedded in their
+  `googleMapsUrl` place parameter (`!3d...!4d...`) but dropped by an ingestion
+  bug in `research-businesses.mjs`;
+- 12 duplicate dark listings created by minor spelling variants in the directory
+  scrape, now canonicalised into their OpenStreetMap/verified rows via aliases;
+- 1 closed business (`Vanilla`, dissolved and succeeded by Cafe 67);
+- 6 independent Newcastle businesses (5 physical premises on Main Street /
+  Central Promenade and 1 mobile trade), now verified and accurately geocoded.
+
+With deduplication and coordinate recovery applied, the trading universe is 188
+businesses (96 lit, 92 dark), and 100% of the trading universe is mapped:
 
 | Set | Total | Lit | Dark |
 |---|---|---|---|
-| Trading | 201 | 96 | 105 |
-| Trading ∩ mapped — **the publishable universe** | **166** | **81** | **85** |
-| Trading, unmapped | 35 | 15 | 20 |
+| Trading (and mapped) — **the publishable universe** | **188** | **96** | **92** |
+| Trading, unmapped | 0 | 0 | 0 |
 
-The dark half is the larger one (85 of 166, 51.2%), so "most have one" is as
-forbidden as "most have none". Published copy states the lit half as its
-subject and the gap as the remainder, keeps the word *mapped*, and carries the
-review date in the same sentence.
+The split is near-even (96 lit to 92 dark, 51.1% vs 48.9%), so "most have one"
+is as forbidden as "most have none". Published copy states the lit count as its
+subject and the gap as the remainder, and carries the review date in the same
+sentence.
 
-Evidence is not evenly spread and the page says so: all 85 dark-and-mapped rows
-carry a verification object from the four-step hunt; **18 of the 81 lit rows do
+Evidence is not evenly spread and the page says so: all 92 dark-and-mapped rows
+carry a verification object from the four-step hunt; **28 of the 96 lit rows do
 not**, and rest on the census scrape of 17 July 2026 alone. The asymmetry is
 acceptable because the risky half is the evidenced half — a wrongly-lit point
 credits a business with a website it does not have, which is correctable and
@@ -44,7 +53,7 @@ not a judgement.
 Two surfaces carrying one claim doubles the pinning surface and guarantees
 drift the first time a correction lands. It also changes what the claim means:
 on its own route the page is about the town, and is therefore linkable by the
-Chamber, a paper or a councillor; on `/about/` the same 85 points become a
+Chamber, a paper or a councillor; on `/about/` the same 92 points become a
 supporting argument for hiring the studio. `/about/` still gains the horizon,
 because `band` is in every footer.
 
@@ -57,9 +66,13 @@ band above (identity); the lights are a map below (evidence); no copy claims
 the lights sit on the skyline.
 
 **Published coordinates are displaced.** Every point is offset by a seeded
-pseudorandom vector of up to ~50m and rounded to 4 decimal places, in the build
+pseudorandom vector of **25–50m** and rounded to 4 decimal places, in the build
 step, so true coordinates never enter `src/site/data/lights.json` or the
-bundle. Lit and dark are displaced identically. The page states the
+bundle. The floor is the part that matters: sampling uniformly over a disc,
+as first specified, leaves about one point in a hundred within 5m of its own
+premises — one or two businesses published at their front door, chosen by a
+seed. The offset is drawn from an annulus instead, so nothing lands where it
+started. Lit and dark are displaced identically. The page states the
 displacement in one line near the map.
 
 **The picture is inline SVG, generated at build time, and this route ships no
@@ -114,7 +127,7 @@ There is no refresh cadence, and the page says there isn't one.
 **The three-branch lookup.** The brief proposed a name field answering
 "we hold a site for you" / "we hold none" / "no match". Every branch is phrased
 as an admission about the dataset, which is genuinely better than a tooltip —
-but it is still a two-valued oracle over the dark set, and 166 requests
+but it is still a two-valued oracle over the dark set, and 188 requests
 reconstruct the map. It fails the brief's own test: *a lookup that answers
 differently for lit and dark businesses is a hoverable dark point with extra
 steps.* Client-side it would ship the name index the payload rule forbids;
@@ -160,10 +173,9 @@ check cannot false-positive.
 - One build step, `tools/pipeline/bake-lights.mjs`, derives the count and the
   point array from the same filtered array and asserts the arithmetic before
   writing: `points.length === mapped`, `lit + dark === mapped`, and every point
-  carrying exactly the keys `lat`, `lon`, `lit`. It emits four numbers, not
-  two — the mapped pair for the caption beside the picture, and the
-  whole-universe pair (96 lit, 105 dark of 201) for section 3, so the map's
-  denominator does not quietly become the town's statistic.
+  carrying exactly the keys `lat`, `lon`, `lit`. It emits the verified counts
+  (96 lit, 92 dark of 188) for the caption beside the picture and supporting
+  copy, with 100% coordinate coverage across the trading universe.
 - `pnpm build` gains a post-build stage; it currently has none.
 - The map is knowingly wrong about where every business is, by up to ~50m. It
   is an impression of the town, and the page says so.
