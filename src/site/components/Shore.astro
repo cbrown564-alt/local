@@ -1,0 +1,73 @@
+---
+/**
+ * The real Mourne skyline, drawn from baked elevation (docs/adr/0004).
+ *
+ * `band` is the footer scale — horizon only, on every page. The horizon is
+ * identity, so it can go anywhere; the lights are evidence and only appear
+ * where prose can stand beside them, which is `/the-lights/` alone
+ * (docs/adr/0005). The `stage` scale lands with that route.
+ *
+ * Static markup, no client script: the silhouette is the same on every load,
+ * so a renderer would only redraw one unchanging frame. `preserveAspectRatio`
+ * is `none` because this is a texture stretched to the page, not a map anyone
+ * measures.
+ */
+import shore from "../data/shore-profile.json";
+
+interface Props {
+  class?: string;
+  scale?: "band";
+}
+
+const { class: className = "", scale = "band" } = Astro.props;
+
+const VIEW_W = 1200;
+const VIEW_H = 120;
+/** Leaves the peaks clear of the top edge so the ridge never reads as clipped. */
+const CREST = 18;
+
+const points = shore.profile
+  .map((value, index) => {
+    const x = (index / (shore.profile.length - 1)) * VIEW_W;
+    const y = CREST + (1 - value) * (VIEW_H - CREST);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  })
+  .join(" ");
+---
+
+<div class:list={["shore", `shore--${scale}`, className]} aria-hidden="true">
+  <svg
+    class="shore-svg"
+    viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon fill="currentColor" points={`0,${VIEW_H} ${points} ${VIEW_W},${VIEW_H}`} />
+  </svg>
+</div>
+
+<style>
+  .shore {
+    width: 100%;
+    line-height: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .shore-svg {
+    display: block;
+    width: 100%;
+  }
+
+  .shore--band .shore-svg {
+    height: clamp(64px, 8vw, 120px);
+  }
+
+  /* The band sits directly above the footer and shares its blue, so the ridge
+     rises out of the page and the footer becomes the ground beneath it. Any
+     gap or tint here breaks the join and turns the horizon into a graphic. */
+  .shore--band {
+    color: var(--blue);
+    margin-bottom: -1px;
+  }
+</style>

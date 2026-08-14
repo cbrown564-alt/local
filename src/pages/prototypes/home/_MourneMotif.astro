@@ -1,0 +1,58 @@
+---
+/**
+ * The invented skyline, kept for the prototype record only.
+ *
+ * `MourneMotif` was a hand-drawn zigzag that stood in for the Mournes before
+ * `Shore` drew the real one from elevation. ADR 0004 retires it from the
+ * shipping site — a site showing a true horizon and a made-up one has no truth
+ * claim left — and ADR 0005 moves it here rather than deleting it, so the
+ * `bay`, `window` and `product` home studies still render as they were
+ * designed. Repointing dated studies at a component that did not exist when
+ * they were made would falsify the record.
+ *
+ * Not a shipping component. Do not import this from `src/site/`.
+ */
+interface Props {
+  class?: string;
+  tone?: "ink" | "blue";
+}
+
+const { class: className = "", tone = "ink" } = Astro.props;
+---
+
+<div class:list={["mourne-motif", `mourne-motif--${tone}`, className]} aria-hidden="true">
+  <svg class="mourne-motif-svg" viewBox="0 0 1200 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="currentColor"
+      d="M0 52 L80 52 140 28 210 44 290 18 360 38 430 22 500 40 560 14 640 34 720 20 800 36 880 24 960 42 1040 26 1120 38 1200 48 L1200 72 L0 72 Z"
+    />
+    <path
+      fill="currentColor"
+      fill-opacity="0.45"
+      d="M0 58 C200 54 400 62 600 56 C800 50 1000 60 1200 54 L1200 72 L0 72 Z"
+    />
+  </svg>
+</div>
+
+<style>
+  .mourne-motif {
+    width: 100%;
+    line-height: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .mourne-motif-svg {
+    display: block;
+    width: 100%;
+    height: clamp(28px, 4vw, 48px);
+  }
+
+  .mourne-motif--ink {
+    color: color-mix(in srgb, var(--ink) 14%, transparent);
+  }
+
+  .mourne-motif--blue {
+    color: color-mix(in srgb, var(--blue) 18%, transparent);
+  }
+</style>
