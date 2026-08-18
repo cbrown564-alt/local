@@ -1,10 +1,11 @@
 # Software factory proposals for Mourne Made
 
 Research note and proposal series. Written 18 August 2026; expanded the same
-day with the local AI-first agency scope ladder, then with a launch horizon
-and an accessibility doctrine.
+day with the local AI-first agency scope ladder, a launch horizon, an
+accessibility doctrine, and a decision-discipline system after a history
+audit of contradictions and concept divergence.
 
-This document does five jobs:
+This document does six jobs:
 
 1. Summarise what a **software factory** is in 2026 practice, with emerging
    best practices, use cases, do's / don'ts and pitfalls.
@@ -21,6 +22,11 @@ This document does five jobs:
 5. Take one step further: use the same plant to **help launch new local
    businesses**, and insist the factory stay **ordinary to use** — familiar
    objects, not futuristic software the owner must learn.
+6. Face the **decision problem**: early work could try things and leave
+   contradictions; a factory stacks those mistakes. Record what already
+   diverged, and install a system for surfacing questions and changing our
+   minds without silent drift. The living register is
+   [`docs/decision-register.md`](decision-register.md).
 
 It is a planning artifact. It does not change product positioning, publication
 standards or the current outreach gate in `PLAN.md`. Public guest surfaces
@@ -1133,8 +1139,233 @@ An agent-native software factory is the right industrialisation **if** it:
 8. Keeps the owner experience familiar, finite and stoppable as scope grows.
 9. Opens a launch arm only with intent packets, labelled previews and a
    first-week kit — never a fake before or a startup OS.
+10. Treats decisions as living: standing bars stay pinned; current choices
+    can be superseded with a rework queue; experiments stay labelled; open
+    questions stay visible. History of reversals lives in
+    [`docs/decision-register.md`](decision-register.md).
 
 That is how to do more things faster, more reliably, **and** wider in scope —
 including new businesses that could not have started on software cost alone —
 without turning a recognition-led local studio into generic automation theatre,
 and without asking distrustful owners to buy a story they cannot see.
+
+---
+
+## 12. Contradictions, reversals, and divergence (history audit)
+
+A factory cannot treat the current tree as a single coherent spec. This
+repository learned in public: publication reset, imagery withdrawal, suite
+retirement, elevation method, Shore/Lights, then `/the-map/`. That was the
+right way to start. It is the wrong way to scale — unless each change of mind
+is named, the old rule is superseded, and the rework is queued.
+
+The living list is [`docs/decision-register.md`](decision-register.md). This
+section is the audit that filled it (18 August 2026).
+
+### Why this matters for a factory
+
+Humans remember "we don't do door-drops any more" and "Enniskeen's test died."
+Agents do not. They read the nearest ADR, the nearest brief, and the nearest
+concept pack, and they **copy the variant**. Unlabelled divergence becomes
+eighteen slightly different products. Each later station then inherits the
+wrong assumption. That is how mistakes stack.
+
+Changing your mind is not the failure. **Silent supersession** is.
+
+### Reversals and contradictions found
+
+Severity is about factory risk (wrong next task, false green, privacy miss),
+not moral score.
+
+| Sev | What was decided | What later happened | Type |
+|---|---|---|---|
+| P0 | ADR-0005 (14 Aug): `/the-lights/`, anonymous displaced lights, no named dark businesses, no JS map | Same day: `d31e0e8` ships `/the-map/` — named directory, exact pins, Leaflet | **Reversal**; ADR and privacy copy not superseded |
+| P0 | Privacy: no individual dark identities; displaced anonymous coordinates | `/the-map/` lists traders by name with exact lat/lon and website status | **Unresolved contradiction** |
+| P1 | `PLAN.md` §1b: homepage claim door restored (3 Aug); shell brief ships quiet hero claim | `index.astro` has only a comment; `test:shell-home` retired 4 Aug | **Reversal** + unpaid debt |
+| P1 | `CONCEPT_DESIGN_REVIEW.md`: Dundrum Inn "passed and lost to the live site" — reason for check 5 | `publication.json`: `dundrum-inn` Publish, `ownerWouldRecognise: true` | **Contradiction** in the teaching example |
+| P1 | `PLAN.md` §1c: runner reports 12 / 13 of 13 | `run-verification.mjs` is 17 suites | **Doc drift** |
+| P2 | Elevation method: "AI-imagery-only on the public site" | Kelly / Douglas ship firm photos; Chamber / Donard Hotel ship CC BY-SA; ADR-0003 allows CC | **Blunt rule vs exceptions** |
+| P2 | `PRODUCT.md`: "independently reviewed" transformations | Five-check self-record; independent reviewer optional after v1.1 reset | **Copy vs process** |
+| P2 | ADR-0001: no untargeted door-drop | `research/outreach-postcards.md` still discusses door-dropped volume | **Unresolved** |
+| P2 | `lights.json` + anonymity checks | Public UI is `/the-map/`; lights pipeline still builds | **Orphan plant** |
+| P3 | Shell brief: `MourneMotif` stays | ADR-0004 + later commit: real `Shore` band; motif retired | **Superseded** (aligned with ADR, stale brief) |
+| P3 | `PLAN.md` §7: Shore at **three** scales | ADR-0004: **two** scales; `rule` cut | **Stale plan** |
+| P3 | v1.1: scores ≥7.0, independent reviewer, one repair then retire | 25–27 Jul: five binary checks; Buck's Head republished after v1.1 retire | **Explicit replacement** (archive is history) |
+
+Healthy reversals (named, then closed): door-drop → one-sheets; M3/M4 print
+order → inbox-first QR; hotel-moves-on-food-bar → elevation shapes; browser
+suites → static pins with a **written gaps table**. Those are the model: decide,
+record, list what is no longer true.
+
+### Divergence across concepts (same job, many answers)
+
+A factory reading the packs cannot tell which pattern is current.
+
+| Job | Variants in tree | Later-looking canon (hypothesis, not yet decided) |
+|---|---|---|
+| Data layer | `content.ts` / `record.ts` / `round.ts` / inline / `chamber-prototype` | `record.ts` with standing rules for claims-gated work |
+| Multi-route chrome | Full `*Shell` / partial `DvChrome` / prototype Chamber shell / copy-paste headers | Per-concept shell wrapping `ConceptLayout` |
+| Elevation brief | 14 have briefs; Buck's Head, Donard Hotel, Douglas, Enniskeen (intentional), Murdock missing | Brief required except documented exceptions |
+| Elevation pin | 9 of 19 slugs; flagship Enniskeen has none after 4 Aug | Pin every landed magic move |
+| Disclosure | Banner only / figcaption / alt-only / placeholder caption / missing | Visible guest-layer line + banner + provenance |
+| Imagery | AI / CC / firm photos / CSS placeholders / withdrawn fallback | Rights-driven exceptions list, not "AI-only" slogan |
+| Booking handoff | Bookin1 verified hash / ResDiary / decorative form / Instagram / phone / official engine | Verified parameters or labelled illustrative |
+| Marks | Real PNG / studio SVG / text wordmark; favicon only on two packs | Real mark when we have it; studio mark labelled |
+| Docs | `DESIGN.md` still cites `src/styles/concept-*.css` and hotel-owned Enniskeen photos | Pack paths in `REPO_MAP.md` |
+
+None of these need a freeze tomorrow. They need a **canon vs labelled
+exception** so the next pack does not roll a nineteenth variant.
+
+### Open questions already sitting in briefs
+
+Not contradictions — unfinished choices. If the factory starts work without
+parking them, it will invent answers.
+
+Examples: homepage headline candidates (`docs/shell-elevation-brief.md`);
+print stock/bleed (`PLAN.md` §9); `/the-lights/` findability and correction
+SLA (`research/the-lights-brief.md`, stale vs `/the-map/`); postcard vs
+one-sheet (`research/outreach-postcards.md`); narration casting; held
+prospects; GBP owner account.
+
+---
+
+## 13. A system for deciding, changing our minds, and reworking
+
+Preferences will move. Ambition will move. That is expected. The factory
+needs a way to **see the question, make a concrete choice, and spend rework
+on purpose** — not a fantasy that everything is already decided.
+
+### Decision classes
+
+| Class | Meaning | Change rule |
+|---|---|---|
+| **Standing** | Honesty bars we do not casually violate (no invented facts; guest voice; three homes; owner-owned accounts; look-and-decide; ordinary counter) | New ADR + pin/check the same week |
+| **Current** | Today's product choice (publication standard, outreach format, map route, imagery exceptions) | New decision **supersedes** the old; rework queue required |
+| **Experiment** | One pack, prototype, or spike allowed to diverge | Must say `experiment` and what question it answers |
+| **Open** | Unresolved on purpose | Owner + "decides when" + default if someone must ship first |
+
+Early-stage work was all experiment. Factory-stage work is **current, with
+experiments labelled**. Standing is a short list.
+
+### The supersession loop (how we change our minds)
+
+1. **Name the question** — one sentence. If two docs disagree, the question
+   already exists; write it down instead of picking a side in a PR description.
+2. **Options and cost** — including "leave divergent" as an option (sometimes
+   right for a held concept).
+3. **Decide** — status `current` or `standing`. Record date, what is now false,
+   and the **rework queue** (files, packs, checks).
+4. **Supersede** — old ADR/brief/PLAN paragraph marked superseded with a link.
+   Do not delete history; archive is how we avoid repeating v1.1.
+5. **Pin if standing or high-risk current** — a check that fails when the
+   tree contradicts the decision (publication.json already does this for the
+   five checks; guest-voice already does this for denylist phrases).
+6. **Rework in slices** — factory missions consume the queue by risk, not a
+   big-bang rewrite of eighteen concepts.
+
+A change of mind without steps 3–5 is how `/the-lights/` and `/the-map/`
+coexist.
+
+### Surfacing over time (the factory's memory)
+
+Do not rely on rereading PLAN. Three ongoing surfaces:
+
+1. **Decision register** — [`docs/decision-register.md`](decision-register.md)
+   is the index: open questions, current decisions, superseded history,
+   pattern canon, rework queue. One owner document (same discipline as
+   PRODUCT / PLAN / PROSPECTS).
+2. **Drift station** — a check (Proposal W) that fails when a `current`
+   decision's "must hold" assertion is false in the tree (e.g. ADR says
+   route `/the-lights/` and that page does not exist; `DESIGN.md` cites
+   deleted CSS paths). Human still writes the assertion; the factory
+   notices breakage.
+3. **Variant report** — when a Build station creates a *new* way to do a
+   job that already has a canon (fourth data-layer name, fifth disclosure
+   pattern), the run is `flawed` unless the packet marked `experiment`.
+
+Every factory run should be allowed to **open** a question. That is learning.
+It must not close one by implication.
+
+### What we do not do
+
+- Freeze the product so nothing can be reworked.
+- Treat ADRs as holy if the tree has moved — that is how privacy copy lies.
+- Normalise all eighteen packs in one pass "for consistency."
+- Let PLAN narrative replace the register (PLAN owns the next actions;
+  the register owns what is decided).
+- Hide experiments in production patterns.
+
+---
+
+## 14. Decision-discipline proposals
+
+### Proposal W — Decision register + drift check
+
+**Intent.** One place that answers "what is decided, what is open, what did
+we change."
+
+**Work:**
+
+- Keep [`docs/decision-register.md`](decision-register.md) current; link it
+  from README ownership like PLAN/PRODUCT.
+- Add machine-readable `research/decisions.json` (or frontmatter) with
+  `id`, `class`, `status`, `mustHold` assertions, `supersededBy`.
+- `tools/check/check-decisions.mjs` on `pnpm build`: fail if a `current`
+  `mustHold` is false (route exists, file exists, phrase absent, suite count
+  matches). Start with three assertions, grow when a drift hurts.
+
+**Why.** The register without a check becomes another stale PLAN.
+
+### Proposal X — Pattern canon (labelled variants)
+
+**Intent.** Next concept does not invent a twentieth pack shape.
+
+**Work:**
+
+- Short canon in the register: data layer, shell, disclosure, pin, booking
+  handoff — each with **one** default and a list of allowed exceptions.
+- Scaffold (Proposal F) emits the canon only.
+- Existing packs stay until a rework-queue item names them; they are
+  `legacy`, not wrong.
+
+**Why.** Divergence is expensive only when it is invisible.
+
+### Proposal Y — Rework queue as factory work, not guilt
+
+**Intent.** Changing a current decision produces tickets, not a vibe that
+"we should tidy."
+
+**Work:**
+
+- Every supersession lists packs/docs/checks to update, risk-ordered.
+- Factory missions may pick rework items when PLAN blocks new concepts
+  (same as Proposal J).
+- First queue (from this audit): (1) Lights vs Map vs privacy — **must
+  decide**, not silently tidy; (2) claim door or delete the comment;
+  (3) Dundrum Inn teaching example vs publication record; (4) PLAN suite
+  counts; (5) DESIGN.md path/imagery stale lines; (6) elevation pins for
+  Enniskeen / Scopers / Betty's / Donard Vet.
+
+**Why.** Thoughtful rework is scheduled work.
+
+### Proposal Z — Question protocol in every station
+
+**Intent.** Learning stays visible.
+
+**Work:**
+
+- Work packet and publication pack gain `openQuestions[]` and
+  `newVariants[]`.
+- Station prompts: if you discover a contradiction, **open a register
+  row** (`status: open`) rather than picking a side.
+- Weekly (or per milestone) human pass: close or defer opens; never let
+  them age into unofficial current.
+
+**Why.** The alternative is agents deciding the map product in a refactor
+commit.
+
+### Adoption note
+
+Add to Phase 0: stand up the register (already started) and one drift
+assertion. Phase 1: W check with 3–5 `mustHold`s. Do **not** wait to
+"finish deciding everything." The system is how we keep deciding.

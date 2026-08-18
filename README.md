@@ -148,7 +148,8 @@ because three documents each kept their own copy.
 | `PRODUCT.md` | Company positioning, audience, offer, product principles and evidence boundaries |
 | `PROSPECTS.md` | Pipeline state: every business's stage, the public list and the held list |
 | `PLAN.md` | Current milestone and the next actions |
-| `docs/software-factory-proposals.md` | Software-factory research, agency scope ladder, launch horizon, and ordinary-counter accessibility doctrine |
+| `docs/software-factory-proposals.md` | Software-factory research, agency scope ladder, launch horizon, ordinary-counter doctrine, and decision-discipline proposals |
+| `docs/decision-register.md` | What is standing, current, superseded, experiment, or open — plus the rework queue |
 | `docs/REVIEW.md` | The dated 23 July 2026 site review and its P0–P4 backlog |
 | `docs/CONCEPT_DESIGN_REVIEW.md` | The publication standard (the five checks) |
 | `docs/shell-elevation-brief.md` | The studio shell elevation brief (1 August 2026 decisions and build order) |
