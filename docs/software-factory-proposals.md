@@ -1,8 +1,9 @@
 # Software factory proposals for Mourne Made
 
-Research note and proposal series. Written 18 August 2026.
+Research note and proposal series. Written 18 August 2026; expanded the same
+day with the local AI-first agency scope ladder.
 
-This document does three jobs:
+This document does four jobs:
 
 1. Summarise what a **software factory** is in 2026 practice, with emerging
    best practices, use cases, do's / don'ts and pitfalls.
@@ -12,9 +13,15 @@ This document does three jobs:
 3. Propose a **Mourne Made factory**: stations, agents, quality controls and
    an adoption sequence that scale throughput *and* reliability without
    diluting the honesty and recognition bars the studio already holds.
+4. Expand the **long-term scope**: websites as the tangible trust wedge for a
+   local AI-first agency, what AI can actually bring to owner-operated
+   businesses, and how the factory makes multi-arm delivery real without
+   becoming generic automation theatre.
 
 It is a planning artifact. It does not change product positioning, publication
-standards or the current outreach gate in `PLAN.md`.
+standards or the current outreach gate in `PLAN.md`. Public guest surfaces
+still follow `PRODUCT.md` anti-references: no SaaS landing cadence, no abstract
+automation imagery, no inflated AI claims.
 
 ---
 
@@ -521,58 +528,388 @@ Keep these **manual** until evidence says otherwise:
 7. Generating guest copy that narrates the studio method.
 8. Expanding the public portfolio while PLAN's conversation gate holds — use
    capacity on A–E, G, I, J instead.
+9. Pitching AI automations or mini-apps to businesses before a tangible
+   before-and-after (or equivalent look-and-decide artifact) exists for them.
+10. Putting "AI agency" chrome on guest-facing marketing in place of local,
+    concrete outcomes.
 
 ---
 
-## 5. Suggested adoption sequence
+## 5. Expanding the scope: local AI-first agency
 
-Aligned with common agent-native adoption (scoped → review → missions) and
-this repo's risk profile:
+### The strategic bet
+
+**Long-term company:** a local, AI-first agency for owner-operated businesses
+around Dundrum and Newcastle — proving that AI can work *for them*, in their
+place, on work they recognise.
+
+**Short-term route:** websites (and website-shaped transformations). Not
+because websites are the ceiling of AI value, but because they are the best
+**trust wedge**:
+
+| Property | Why it matters for distrustful owners |
+|---|---|
+| Tangible | They already know what a website is |
+| Evaluable | They look at before and after and decide — no unusual vocabulary |
+| Comparable | Difference from their current surface is visible without abstraction |
+| Low theory load | No need to explain models, agents, or "digital transformation" |
+| Reversible conversation | A free before-and-after starts talk without requiring belief in AI |
+
+Many owners are wary of AI (job fear, hallucination stories, opaque vendors).
+Leading with "we will automate your business with AI" asks for trust the market
+has not earned. Leading with "here is your business, improved, on a screen you
+already understand" earns the right to go further.
+
+Websites are **arm one**. The factory exists so arm one can be delivered
+reliably at volume — and so arms two and three can reuse the same plant when
+the conversation is ready.
+
+### What AI can actually bring to local businesses
+
+Evidence from SMB AI adoption research (JPMorgan Chase Institute transaction
+data; 2026 SMB ROI benchmarks; local-agency practice) converges on a blunt
+point: **ROI comes from embedding AI into handoffs and systems of record, not
+from giving someone a chatbot tab.** Deep gains are operationally selective.
+Shallow gains (better emails, draft posts) are real but easy to oversell.
+
+For *this* catchment — independent hospitality, trade, care, retail, events —
+the useful AI contributions cluster into five families. Each family must still
+pass the studio's look-and-decide test before it becomes an offer.
+
+#### 1. Own the route from interest to action (extends current offer)
+
+Already in `PRODUCT.md` as presence repair and direct action: accurate pages,
+Google Business Profile, booking/order/enquiry handoffs. AI accelerates
+*building and maintaining* that route; the owner still judges the route by
+looking at it.
+
+Factory role: concept → pilot site → operating page upkeep (see
+`docs/owners-operating-page-spec.md`).
+
+#### 2. Keep the public answer true without a CMS career
+
+The operating-page prototype is the bridge product: public truth and the act of
+keeping it true as one designed object. AI assists drafting tonight's board,
+seasonal hours, sold-out states — with the owner approving on the same surface
+visitors see.
+
+Factory role: content-assist stations with mandatory owner publish; pins for
+"finite editable set" and rollback.
+
+#### 3. Capture and complete inbound demand (the after-hours gap)
+
+Highest commercial signal for local services: missed calls, Instagram DMs,
+web forms, "are you open / can I book Thursday" messages that die after 18:00.
+Practical patterns in 2026 local AI agencies:
+
+- Instant reply that qualifies and offers real next steps
+- Booking agent wired to a real calendar API (not a fake availability)
+- Missed-call text-back within seconds
+- Reminder / no-show recovery
+- Review request after a completed visit
+
+These are **measurable** (response time, booked appointments, recovered leads)
+and still **demonstrable** with a recorded conversation or a side-by-side of
+"what happens when someone messages at 9pm."
+
+Factory role: workflow packet (channels, tools, approval gates, escalation) →
+sandbox build → eval conversations → human go-live.
+
+#### 4. Compress internal admin that never reaches the customer
+
+Invoice/receipt capture, enquiry logging, CRM hygiene, weekly summary from
+scattered inboxes, staff rota drafts from known constraints. SMB research
+puts document extraction and reporting among the strongest demand areas —
+but only when wired into the tools the business already uses.
+
+Look-and-decide artifact: "here are last week's enquiries, filed; here is the
+draft you approve before anything sends."
+
+Factory role: integration inventory → one workflow → eval set of real (redacted)
+examples → owner approval gate on every external side-effect.
+
+#### 5. Mini-apps for one job the business cannot do today
+
+Not a platform. One thin tool: wedding date+guest enquiry with structured
+handoff (Hugh McCann's shape); hire-list availability; supper-club waitlist;
+trade quote pack; bilingual menu editor; "tonight's specials" publisher that
+also updates GBP. Prefer specialist platforms when they win (`PRODUCT.md`);
+build only when the gap is real and ownership stays with the business.
+
+Factory role: same as concept packs — brief → scaffold → pin → disclose →
+pilot measure — but the unit is an app/workflow, not a marketing page.
+
+### What AI should *not* be sold as (here)
+
+| Temptation | Why it fails the wedge |
+|---|---|
+| "AI transformation" retainers | Abstract; fuels distrust |
+| Generic chatbot on a brochure site | Looks like AI theatre; often blocks the human path |
+| Replacing the owner's judgement on money, medical, legal, safety | Wrong risk tier; destroys trust if it errs |
+| Autopilot social that invents offers/prices | Hallucination risk on the owner's reputation |
+| Dashboards that prove we are clever | Violates anti-references; owners did not ask |
+| Automating a broken route | Fix the owned action first (arm one) |
+
+### Product ladder (arms of the agency)
+
+```text
+Arm 0  Trust surface     Studio site + transformations (show, don't claim)
+Arm 1  Presence          Website / operating page / GBP — look and decide
+Arm 2  Action            Booking, enquiry, order handoffs that complete
+Arm 3  Continuity        AI-assisted upkeep of the public answer
+Arm 4  Capture           Inbound agents & automations on real channels
+Arm 5  Ops               Internal admin workflows with approval gates
+Arm 6  Capability        Mini-apps for one new job the business lacked
+```
+
+`PRODUCT.md` scopes map roughly as: presence repair → arms 1–2; direct action
+→ arms 2–4; ongoing growth → arms 3–6 after economics and maintenance capacity
+are known.
+
+**Rule of advancement:** do not open arm *n+1* for a business until arm *n*
+has a look-and-decide artifact and, for paid work, a named measure. The factory
+enforces that as a triage gate, not a slogan.
+
+### How the software factory enables scope expansion
+
+A multi-arm agency without a factory becomes a clever person with too many
+tools. The factory is what makes "AI-first" mean **repeatable delivery**, not
+**more demos**.
+
+| Factory capability | Enables across arms |
+|---|---|
+| Shared research/verify stations | Know the business once; reuse for site, automation, mini-app |
+| Work packets + risk tiers | Same intake shape whether the output is a page or a workflow |
+| One-agent-per-station | Add an "automation build" station without rewriting the plant |
+| Independent verification | Eval suites for conversations / workflows parallel elevation pins |
+| Disclose / honesty plant | Label AI assistance the same way generated imagery is labelled |
+| Outcome taxonomy | Flawed automation runs improve prompts the way flawed concepts improve rules |
+| Demand-coupled capacity | Arms 4–6 idle until arm 1 conversations prove willingness |
+| Prototype track (Proposal J) | Operating page + impossible local rehearse arms 2–3 before sale |
+
+The factory also flips the trust problem: **the agency uses AI in plain sight
+on its own plant** (concepts, pins, probes) while **the client offer stays
+outcome-shaped**. Owners need not believe in AI to benefit from a faster
+honest delivery system — and when they are ready, the same plant ships the
+next arm.
+
+### Trust design for AI offers (carry forward the five-check spirit)
+
+For any AI-assisted arm, publish/pilot only when:
+
+1. **Truthful** — what is automated, what needs owner approval, what can be wrong.
+2. **Clear** — one job named in the owner's words ("missed calls get a text
+   back"), not "agentic orchestration."
+3. **Works as presented** — demo with their real channel or a labelled rehearsal.
+4. **Safe** — credentials in their accounts; escalation to a human; no silent
+   sends on money/medical/legal/safety paths.
+5. **Owner would recognise themselves** — uses their hours, services, voice,
+   and platforms; does not replace deliberate choices with generic bot copy.
+
+### Local-shaped opportunity map (illustrative, not a shortlist)
+
+Tied to shapes already in the elevation method and portfolio:
+
+| Shape | Arm 1 wedge | Natural next arm |
+|---|---|---|
+| Place (hotel/estate) | Property-first site + honest booking handoff | Enquiry qualification; rate/availability sync assist |
+| Counter (food bar/café) | Tonight board / operating page | Specials publish → social/GBP; supper-club waitlist |
+| Product (maker) | Product-led range page | Order/enquiry triage; "when it's gone" state automation |
+| Care (vet/dental) | Emergency + appointment clarity | After-hours FAQ with hard escalation; reminder flows |
+| Trade (bike/hire) | Hire-list / workshop route | Quote-pack mini-app; stock/handoff notifications |
+| Events/venue | Date + guest enquiry | Follow-up sequences; vendor pack generator |
+
+These are hypothesis shapes for factory product lines — not permission to pitch
+before conversation evidence.
+
+---
+
+## 6. Scope-expansion proposals
+
+These extend A–L. They assume Phases 0–1 of the website factory are underway;
+they do not replace the outreach gate.
+
+### Proposal M — Codify the wedge doctrine
+
+**Intent.** Make "website first, AI outcomes later" an enforceable product rule.
+
+**Work:**
+
+- Short doctrine note (or section in `PRODUCT.md` when positioning is ready to
+  move): look-and-decide test; arm ladder; anti-abstraction copy rules.
+- Triage refuses automation/mini-app work packets that lack an arm-1 artifact
+  or an explicit exception (e.g. business already has a strong site and asks
+  only for missed-call capture).
+- Studio marketing continues to lead with transformations, not "AI agency."
+
+**Why.** Stops the factory from optimising for impressive arms the market
+cannot yet evaluate.
+
+### Proposal N — Capability catalogue (internal only)
+
+**Intent.** Know what the plant can build before selling it.
+
+**Work:**
+
+- Internal catalogue of repeatable recipes: operating-page upkeep assist;
+  missed-call SMS; form → qualified email; booking API handoff; review ask;
+  invoice OCR to folder; bilingual menu sync; etc.
+- Each recipe lists: inputs, integrations, approval gates, eval fixtures,
+  look-and-decide demo format, estimated risk tier.
+- Lives under `research/` or `docs/` — not on the public site.
+
+**Why.** Factories need standard products; agencies without catalogues reinvent
+every time and over-promise.
+
+### Proposal O — Workflow / automation line in the factory
+
+**Intent.** Second product line with the same station discipline as concepts.
+
+**Stations (sketch):**
+
+```text
+Discover pain (from verification faults + owner conversation)
+  → Packet (channel, system of record, side-effects, measure)
+  → Design conversation/flow (human lock on voice + escalation)
+  → Build in sandbox (n8n/Make/custom; credentials scoped)
+  → Eval set (20–50 labelled examples; mutation of bad sends)
+  → Owner rehearsal (look-and-decide on their phone)
+  → Go-live with monitoring + kill switch
+  → Learn (flawed runs → recipe + eval updates)
+```
+
+**Why.** SMB ROI evidence says handoffs beat chat tabs; this industrialises
+handoffs without skipping trust.
+
+### Proposal P — Mini-app line (capability apps)
+
+**Intent.** Thin owned tools when platforms do not fit.
+
+**Work:**
+
+- Reuse concept-pack scaffolding patterns (three homes → app module +
+  research brief + pins).
+- Prefer business-owned accounts and exportable data (`PRODUCT.md`).
+- Factory pins: the one job completes; failure modes labelled; no dashboard
+  theatre on the owner surface.
+
+**Why.** Arm 6 without a factory becomes bespoke debt; with a factory it becomes
+a catalogued recipe family.
+
+### Proposal Q — Demonstration ladder on the studio site
+
+**Intent.** Extend the belief sequence without AI-SaaS chrome.
+
+**Work (when PLAN allows product storytelling):**
+
+- Keep transformations as the hero proof.
+- Add *representative* demonstrations later: operating page (arm 3), a labelled
+  rehearsal of after-hours capture (arm 4), a mini-app for a synthetic subject
+  (arm 6) — same honesty as concepts (independent, uncommissioned, no implied
+  client results).
+- Each demo must be look-and-decide in under ten seconds; no architecture
+  diagrams as the pitch.
+
+**Why.** The wedge strategy needs a path for "what else can you do?" that still
+respects distrust.
+
+### Proposal R — Measure AI value the way pilots already require
+
+**Intent.** Do not let AI arms invent vanity metrics.
+
+**Work:**
+
+- Reuse `PRODUCT.md` pilot discipline: baseline + one primary measure before
+  build (bookings completed, response time, recovered leads, hours saved on a
+  named admin task, platform costs avoided).
+- Factory packet requires the measure field; go-live blocked without it.
+- Public claims about AI results forbidden until a pilot has dated evidence —
+  same rule as concept work today.
+
+**Why.** The long-term vision is *showing* AI value; showing requires
+measurement, not mythology.
+
+### Proposal S — Shared context graph across arms
+
+**Intent.** One business memory for the factory.
+
+**Work:**
+
+- Extend verification + elevation inventory into a durable business context
+  object: voice quotes, services, platforms, hours sources, fault IDs, live
+  integrations, approval contacts.
+- Every arm's agents read the same object; none invent hours or prices.
+- Privacy: client credentials never enter the public repo; context for
+  prospects stays source-bounded as today.
+
+**Why.** Multi-arm delivery fails when each project rediscovers the business
+and drifts from truth — the exact failure elevation method prevents for sites.
+
+---
+
+## 7. Suggested adoption sequence
+
+Aligned with common agent-native adoption (scoped → review → missions), this
+repo's risk profile, and the wedge doctrine:
 
 | Phase | Focus | Exit criteria |
 |---|---|---|
-| **0 — Name the plant** | Proposal A + L | Station map agreed; non-goals written |
-| **1 — QC utilities** | D + E (partial) + K skeleton | Provenance/guest-voice/pack checks in one "disclose" path; 2–3 new pins; run outcomes logged |
-| **2 — Research mechanics** | C + B | Drift probes on public domains; work packets for held/next prospects |
-| **3 — Scaffold & media** | F + G | New pack scaffold used once end-to-end on a held or synthetic subject |
-| **4 — Reviewer assist** | H + I | Publication worksheet + one-sheet checklist used on next real publish/print |
-| **5 — Missions** | J then careful concept missions | Multi-station runs on prototypes; concept missions only after outreach learning unlocks capacity |
+| **0 — Name the plant** | A + L + M | Station map, non-goals, wedge doctrine agreed |
+| **1 — QC utilities** | D + E (partial) + K skeleton | Disclose path; new pins; run outcomes logged |
+| **2 — Research mechanics** | C + B + S (light) | Drift probes; work packets; shared context stub |
+| **3 — Scaffold & media** | F + G | Pack scaffold used once end-to-end |
+| **4 — Reviewer assist** | H + I | Publication + one-sheet checklists in real use |
+| **5 — Website missions** | J then careful concept missions | Prototypes (esp. operating page) rehearse arms 2–3 |
+| **6 — Catalogue arms 3–4** | N + O (sandbox) + Q (internal demos) | 2–3 recipes with evals; no public AI pitch yet |
+| **7 — First non-site pilot** | O/P + R | One paying or formal pilot with baseline measure after arm-1 trust |
 
-Do not skip Phase 1. Scaling Build before Disclose/Pin recreates the
-verification gap at portfolio scale.
+Do not skip Phase 1. Do not open Phase 6 selling before Phase 5 has something
+an owner can look at for continuity/capture. Scaling Build before Disclose/Pin
+recreates the verification gap; scaling automations before the wedge recreates
+the trust gap.
 
 ---
 
-## 6. Mapping software-factory literature → this repo
+## 8. Mapping software-factory literature → this repo
 
 | Factory property | Mourne Made analogue today | Gap |
 |---|---|---|
-| Standardised inputs | Elevation briefs, verifications, publication reviews | No single work-packet schema |
-| Standardised tooling | `pnpm build` / `pnpm test`, capture, print | Agent tasks not registered; browser QC thinned |
-| Measurable output | Suite counts, publication.json | No station cycle-time or flawed-run metrics |
+| Standardised inputs | Elevation briefs, verifications, publication reviews | No single work-packet schema; no workflow packets yet |
+| Standardised tooling | `pnpm build` / `pnpm test`, capture, print | Agent tasks not registered; browser QC thinned; no automation eval harness |
+| Measurable output | Suite counts, publication.json | No station cycle-time or flawed-run metrics; no pilot AI measures yet |
 | Replayability | Git history, provenance, ADRs, PLAN narrative | Prompt/model versions for agent runs not systematically stored |
-| Human control | Five checks, outreach gate, anonymity ADRs | Strong — preserve |
+| Human control | Five checks, outreach gate, anonymity ADRs | Strong — preserve; extend to automation approval gates |
 | Utilities | Checks, rate limit, provenance | Spend metering / agent registry thin |
+| Multi-product lines | Website arm only in production | Operating-page prototype is the bridge; arms 4–6 not industrialised |
 
 ---
 
-## 7. Bottom line
+## 9. Bottom line
 
 Mourne Made is already a **proto-factory**: a repeatable path from census to
 published transformation with unusually sharp honesty gates, written methods
 and machine checks paid for in real failures (scored review theatre,
 tautological disclosure, abort-on-fail, premise drift, hotel-moves-on-food-bar).
 
-An agent-native software factory is the right next industrialisation **if** it
-amplifies those gates rather than bypassing them. The highest-leverage moves
-are not "generate more concepts." They are:
+The deeper company bet is a **local AI-first agency** that uses websites as the
+trust wedge — because owners can look and decide — and then grows into
+continuity, capture, ops automations and mini-apps once belief is earned.
+Industry evidence says AI value for SMBs lives in **handoffs and systems of
+record**, not in abstract assistants; this catchment needs those handoffs to
+stay local, owned, measurable and recognisable.
 
-1. Formalise stations and work packets.
-2. Automate verify/disclose/pin/media/print checklists.
-3. Assist publication and outreach with evidence chains.
-4. Spend mission capacity on prototypes and plant until conversation evidence
-   justifies portfolio growth.
-5. Treat flawed factory runs as the backlog that improves the plant.
+An agent-native software factory is the right industrialisation **if** it:
 
-That is how to do more things faster **and** more reliably — without turning a
-local, recognition-led studio into generic automation theatre.
+1. Formalises stations and work packets for the website arm first.
+2. Automates verify/disclose/pin/media/print checklists.
+3. Assists publication and outreach with evidence chains.
+4. Spends mission capacity on prototypes (especially the operating page) that
+   rehearse later arms without claiming demand.
+5. Adds workflow and mini-app lines with the same honesty bars and look-and-decide
+   demos — never leading the market conversation with "AI" as the product.
+6. Treats flawed factory runs as the backlog that improves the plant.
+7. Couples capacity to conversation evidence so the agency does not outrun trust.
+
+That is how to do more things faster, more reliably, **and** wider in scope —
+without turning a recognition-led local studio into generic automation theatre,
+and without asking distrustful owners to buy a story they cannot see.
