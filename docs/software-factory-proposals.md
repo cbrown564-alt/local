@@ -546,6 +546,8 @@ Keep these **manual** until evidence says otherwise:
     to receive the value.
 12. Public "start your business with AI" framing, or launch concepts that
     imply a trade already exists.
+13. Shipping a product change that contradicts a current ADR without
+    superseding it and listing rework (silent `/the-map/`-style drift).
 
 ---
 
