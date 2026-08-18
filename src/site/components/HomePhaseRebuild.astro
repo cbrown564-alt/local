@@ -4,7 +4,10 @@
  *
  * Direct 1:1 match of the Donard Veterinary concept screen (1265x710),
  * with a luminous, modern editorial shimmer sweep (wash animation)
- * that sweeps across the frame to cleanly transition from Current Site -> Move 01.
+ * that sweeps across the frame to cleanly transition from Current Site -> Step 1.
+ *
+ * Autoplays by default with intersection observer; reduced-motion users
+ * open settled on Step 1 with no autoplay.
  */
 import ArrowIcon from "./ArrowIcon.astro";
 import Disclosure from "./Disclosure.astro";
@@ -23,7 +26,7 @@ interface Props {
 
 const { before, after, beforeAlt, afterAlt, name, town, href } = Astro.props;
 
-const moves = [
+const steps = [
   {
     step: 0,
     tag: "Current Site",
@@ -32,19 +35,19 @@ const moves = [
   },
   {
     step: 1,
-    tag: "Move 01",
+    tag: "Step 01",
     title: "Put the primary paths first",
     desc: "Make the main reasons people visit immediately clear: routine appointments, urgent triage, and 24/7 digital vet advice."
   },
   {
     step: 2,
-    tag: "Move 02",
+    tag: "Step 02",
     title: "Celebrate local identity",
     desc: "Frame the page around Donard’s own badge, signature colours, Newcastle address, and a low Mourne mountain silhouette."
   },
   {
     step: 3,
-    tag: "Move 03",
+    tag: "Step 03",
     title: "Connect every action directly",
     desc: "Add direct one-tap booking, verified emergency phone lines, and clear opening hours right where patients need them."
   }
@@ -102,11 +105,14 @@ const moves = [
         <!-- Header (Step 2 brand -> Step 3 actions) -->
         <header class="dv-header" data-build-node="header">
           <a class="dv-brand" href="/concepts/donard-veterinary/">
-            <svg class="dv-badge" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
-              <circle cx="23" cy="23" r="21.5" stroke="#2a6b8f" stroke-width="2.6" />
-              <path d="M7 30 L16 17 L21 23 L28 13 L39 30" stroke="#2a6b8f" stroke-width="2.6" stroke-linejoin="round" fill="none" />
-              <path d="M25.5 16.5 L28 13 L30.5 16.5" stroke="#2f9d82" stroke-width="2.6" stroke-linejoin="round" />
-            </svg>
+            <img
+              class="dv-badge"
+              src="/media/concepts/donard-veterinary/donard-veterinary-emblem.png"
+              alt="Donard Veterinary Clinic emblem"
+              width="48"
+              height="48"
+              loading="eager"
+            />
             <span class="dv-brand-text">
               <span class="dv-brand-name">Donard Veterinary Clinic</span>
               <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
@@ -197,8 +203,8 @@ const moves = [
 
   <!-- Assembly Step Navigation & Playback Controls -->
   <div class="assembly-controls-bar">
-    <div class="assembly-stepper" role="tablist" aria-label="Reconstruction moves">
-      {moves.map((m) => (
+    <div class="assembly-stepper" role="tablist" aria-label="Reconstruction steps">
+      {steps.map((m) => (
         <button
           type="button"
           class:list={["assembly-step-tab", { "is-active": m.step === 0 }]}
@@ -223,10 +229,10 @@ const moves = [
   <!-- Dynamic Active Narration Card -->
   <div class="assembly-narration-card" data-assembly-narration>
     <div class="assembly-narration-head">
-      <span class="assembly-narration-step-tag" data-narration-tag>{moves[0].tag}</span>
-      <h3 class="assembly-narration-title" data-narration-title>{moves[0].title}</h3>
+      <span class="assembly-narration-step-tag" data-narration-tag>{steps[0].tag}</span>
+      <h3 class="assembly-narration-title" data-narration-title>{steps[0].title}</h3>
     </div>
-    <p class="assembly-narration-desc" data-narration-desc>{moves[0].desc}</p>
+    <p class="assembly-narration-desc" data-narration-desc>{steps[0].desc}</p>
   </div>
 
   <!-- Meta footer -->
@@ -242,7 +248,7 @@ const moves = [
 </div>
 
 <script>
-  const movesData = [
+  const stepsData = [
     {
       step: 0,
       tag: "Current Site",
@@ -252,24 +258,24 @@ const moves = [
     },
     {
       step: 1,
-      tag: "Move 01",
+      tag: "Step 01",
       title: "Put the primary paths first",
       desc: "Make the main reasons people visit immediately clear: routine appointments, urgent triage, and 24/7 digital vet advice.",
-      ticker: "Move 01: Core triage pathways established"
+      ticker: "Step 01: Core triage pathways established"
     },
     {
       step: 2,
-      tag: "Move 02",
+      tag: "Step 02",
       title: "Celebrate local identity",
       desc: "Frame the page around Donard’s own badge, signature colours, Newcastle address, and a low Mourne mountain silhouette.",
-      ticker: "Move 02: Practice branding & typography applied"
+      ticker: "Step 02: Practice branding & typography applied"
     },
     {
       step: 3,
-      tag: "Move 03",
+      tag: "Step 03",
       title: "Connect every action directly",
       desc: "Add direct one-tap booking, verified emergency phone lines, and clear opening hours right where patients need them.",
-      ticker: "Move 03: Direct booking & emergency lines active"
+      ticker: "Step 03: Direct booking & emergency lines active"
     }
   ];
 
@@ -300,6 +306,9 @@ const moves = [
     let isPlaying = false;
     let playTimer: number | null = null;
     let washTimeout: number | null = null;
+    let hasAutoplayed = false;
+
+    const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const applyStepState = (step: number) => {
       currentStep = step;
@@ -311,18 +320,19 @@ const moves = [
         tab.setAttribute("aria-selected", String(isTarget));
       });
 
-      const move = movesData[step];
-      if (move) {
-        if (tickerText) tickerText.textContent = move.ticker;
-        if (narrationTag) narrationTag.textContent = move.tag;
-        if (narrationTitle) narrationTitle.textContent = move.title;
-        if (narrationDesc) narrationDesc.textContent = move.desc;
+      const st = stepsData[step];
+      if (st) {
+        if (tickerText) tickerText.textContent = st.ticker;
+        if (narrationTag) narrationTag.textContent = st.tag;
+        if (narrationTitle) narrationTitle.textContent = st.title;
+        if (narrationDesc) narrationDesc.textContent = st.desc;
       }
     };
 
-    // Modern luminous wash transition between Current Site (0) -> Move 01 (1)
+    // Modern luminous wash transition between Current Site (0) -> Step 01 (1)
     const playWashTransition = (onComplete: () => void) => {
-      if (!washOverlay) {
+      if (!washOverlay || prefersReducedMotion()) {
+        container.setAttribute("data-current-step", "1");
         onComplete();
         return;
       }
@@ -331,7 +341,7 @@ const moves = [
       void washOverlay.offsetWidth; // trigger reflow
       washOverlay.classList.add("is-washing");
 
-      // Mid-point of the wash (380ms): switch the underlying DOM while fully obscured
+      // Mid-point of the wash (350ms): switch the underlying DOM while fully obscured
       window.setTimeout(() => {
         container.setAttribute("data-current-step", "1");
       }, 350);
@@ -364,6 +374,7 @@ const moves = [
     };
 
     const startPlayback = () => {
+      if (prefersReducedMotion()) return;
       isPlaying = true;
       if (playLabel) playLabel.textContent = "Pause rebuild";
       if (playIcon) playIcon.textContent = "⏸";
@@ -395,5 +406,26 @@ const moves = [
         setStep(Number(tab.dataset.stepTarget ?? 0));
       });
     });
+
+    // Default Behavior:
+    // If reduced-motion is requested, open directly on Step 01 with no wash or animation.
+    // Otherwise, autoplay once when scrolled into view.
+    if (prefersReducedMotion()) {
+      applyStepState(1);
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAutoplayed && !isPlaying) {
+            hasAutoplayed = true;
+            // Short 600ms hold on Current Site before starting autoplay build
+            window.setTimeout(() => {
+              startPlayback();
+            }, 600);
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observer.observe(container);
+    }
   });
 </script>

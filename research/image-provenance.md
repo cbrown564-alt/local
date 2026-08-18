@@ -440,6 +440,12 @@ of these businesses supplied one.
   as illustrations and an indicative map, not photographs of patients or a
   boundary survey.
 
+- `public/media/concepts/donard-veterinary/donard-veterinary-emblem.png` — **in use**
+  (18 August 2026). Generated concept emblem asset exploring a refined brand
+  emblem combining Slieve Donard with a nestled dog and cat companion silhouette,
+  transparent cutout for the header lockup. Disclosed as an independent concept
+  exercise.
+
 ## Business-owned site assets
 
 - `douglas-cromie-logo.png` and `douglas-cromie-forecourt.jpg` — **in use.**
