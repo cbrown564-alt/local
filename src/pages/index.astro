@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../site/components/ArrowIcon.astro";
-import RebuildStage from "../site/components/RebuildStage.astro";
-import Disclosure from "../site/components/Disclosure.astro";
+import HomePhaseRebuild from "../site/components/HomePhaseRebuild.astro";
 import TownMap from "../site/components/TownMap.astro";
 import HomeClayFilm from "../site/components/HomeClayFilm.astro";
 import { featuredTransformation, transformations } from "../site/data/transformations";
@@ -19,6 +18,19 @@ const hasPublicTransformations =
   ogImage={ogImages.home}
   ogImageAlt="Mourne Made — free before-and-after website concepts for local businesses"
 >
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -44,27 +56,15 @@ const hasPublicTransformations =
       </div>
 
       {hasPublicTransformations ? (
-        <div class="home-hero-stage">
-          <div class="home-hero-comparison">
-            <RebuildStage
-              before={featuredTransformation.before}
-              after={featuredTransformation.after}
-              beforeAlt={featuredTransformation.beforeAlt}
-              afterAlt={featuredTransformation.afterAlt}
-              showNotes={false}
-              compact
-            />
-          </div>
-          <footer class="home-hero-stage-footer">
-            <Disclosure reminder quiet />
-            <div class="home-hero-stage-meta">
-              <p class="home-hero-stage-caption">
-                {featuredTransformation.name}, {featuredTransformation.town}
-              </p>
-              <a class="text-link home-hero-stage-compare" href={featuredTransformation.href}>Open full comparison <ArrowIcon /></a>
-            </div>
-          </footer>
-        </div>
+        <HomePhaseRebuild
+          before={featuredTransformation.before}
+          after={featuredTransformation.after}
+          beforeAlt={featuredTransformation.beforeAlt}
+          afterAlt={featuredTransformation.afterAlt}
+          name={featuredTransformation.name}
+          town={featuredTransformation.town}
+          href={featuredTransformation.href}
+        />
       ) : (
         <section class="home-review-state" aria-labelledby="home-review-heading">
           <div class="home-review-copy">

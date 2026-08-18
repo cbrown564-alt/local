@@ -1,0 +1,399 @@
+---
+/**
+ * HomePhaseRebuild - Pixel-Accurate Real-Time Concept Assembly
+ *
+ * Direct 1:1 match of the Donard Veterinary concept screen (1265x710),
+ * with a luminous, modern editorial shimmer sweep (wash animation)
+ * that sweeps across the frame to cleanly transition from Current Site -> Move 01.
+ */
+import ArrowIcon from "./ArrowIcon.astro";
+import Disclosure from "./Disclosure.astro";
+import ResponsiveImage from "./ResponsiveImage.astro";
+import "../styles/home-phase-rebuild.css";
+
+interface Props {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
+  name: string;
+  town: string;
+  href: string;
+}
+
+const { before, after, beforeAlt, afterAlt, name, town, href } = Astro.props;
+
+const moves = [
+  {
+    step: 0,
+    tag: "Current Site",
+    title: "The starting point",
+    desc: "The clinic’s published homepage — welcoming and full of warmth, with opportunities to bring key patient services forward."
+  },
+  {
+    step: 1,
+    tag: "Move 01",
+    title: "Put the primary paths first",
+    desc: "Make the main reasons people visit immediately clear: routine appointments, urgent triage, and 24/7 digital vet advice."
+  },
+  {
+    step: 2,
+    tag: "Move 02",
+    title: "Celebrate local identity",
+    desc: "Frame the page around Donard’s own badge, signature colours, Newcastle address, and a low Mourne mountain silhouette."
+  },
+  {
+    step: 3,
+    tag: "Move 03",
+    title: "Connect every action directly",
+    desc: "Add direct one-tap booking, verified emergency phone lines, and clear opening hours right where patients need them."
+  }
+];
+---
+
+<div class="home-assembly-rebuild" data-assembly-rebuild data-current-step="0">
+  <div class="assembly-viewport" data-assembly-viewport>
+    
+    <div class="assembly-scaler" data-assembly-scaler>
+      <!-- Layer 0: Current Before Image -->
+      <div class="assembly-layer assembly-layer-before" data-layer="0">
+        <ResponsiveImage
+          pictureClass="assembly-picture"
+          class="assembly-img"
+          src={before}
+          alt={beforeAlt}
+          width="1265"
+          height="710"
+          loading="eager"
+          sizes="(max-width: 720px) 100vw, (max-width: 1100px) 58vw, 650px"
+          draggable={false}
+        />
+        <div class="assembly-layer-badge">Current website</div>
+      </div>
+
+      <!-- Luminous Editorial Wash Overlay (Active during 0 -> 1 transition) -->
+      <div class="assembly-wash-overlay" data-wash-overlay aria-hidden="true">
+        <div class="wash-backdrop"></div>
+        <div class="wash-beam"></div>
+        <div class="wash-lens">
+          <div class="wash-spinner"></div>
+          <span class="wash-label">Rebuilding structure...</span>
+        </div>
+      </div>
+
+      <!-- Live Concept DOM Stage (Exact Donard Veterinary layout) -->
+      <div class="assembly-concept-stage concept-donard-veterinary" data-layer-concept aria-hidden="true">
+        
+        <!-- Top Studio Notice Banner -->
+        <div class="concept-studio-banner" data-build-node="studio-banner">
+          <p><strong>Independent concept by Mourne Made.</strong> Not the live Donard Veterinary Clinic website.</p>
+          <nav>
+            <a href="/transformations/donard-veterinary/">See the case study</a>
+            <a class="concept-studio-claim" href="/request/">Is this your business? Claim this concept →</a>
+          </nav>
+        </div>
+
+        <!-- Emergency Strip (Step 3) -->
+        <div class="dv-strip" data-build-node="strip">
+          <span>Pet emergency? Call <a href="tel:02843729414">028 4372 9414</a></span>
+          <span class="dv-strip-hours">Mon–Fri 8:30am–6:30pm · Wed until 7pm · Sat 9am–1pm</span>
+        </div>
+
+        <!-- Header (Step 2 brand -> Step 3 actions) -->
+        <header class="dv-header" data-build-node="header">
+          <a class="dv-brand" href="/concepts/donard-veterinary/">
+            <svg class="dv-badge" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+              <circle cx="23" cy="23" r="21.5" stroke="#2a6b8f" stroke-width="2.6" />
+              <path d="M7 30 L16 17 L21 23 L28 13 L39 30" stroke="#2a6b8f" stroke-width="2.6" stroke-linejoin="round" fill="none" />
+              <path d="M25.5 16.5 L28 13 L30.5 16.5" stroke="#2f9d82" stroke-width="2.6" stroke-linejoin="round" />
+            </svg>
+            <span class="dv-brand-text">
+              <span class="dv-brand-name">Donard Veterinary Clinic</span>
+              <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
+            </span>
+          </a>
+          <nav class="dv-nav" aria-label="Primary">
+            <a href="/concepts/donard-veterinary/emergency/">Emergency</a>
+            <a href="/concepts/donard-veterinary/vidivet/">VidiVet</a>
+            <a href="/concepts/donard-veterinary/appointments/">Appointments</a>
+            <a class="dv-nav-wide" href="#life">Pet services</a>
+            <a class="dv-nav-wide" href="#catchment">Near you</a>
+          </nav>
+          <div class="dv-header-actions" data-build-node="header-actions">
+            <a class="dv-phone" href="tel:02843729414">028 4372 9414</a>
+            <a class="dv-book" href="/concepts/donard-veterinary/appointments/">Book appointment</a>
+          </div>
+        </header>
+
+        <!-- Hero Main -->
+        <div class="dv-hero">
+          <!-- Mourne Hills (Step 2) -->
+          <svg class="dv-hero-hills" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true" data-build-node="hills">
+            <path class="dv-hero-ridge" d="M-20 196 C60 152 112 122 162 96 C192 130 212 140 242 124 C292 88 332 60 382 44 C422 90 452 110 492 96 C542 66 582 52 632 48 C682 92 722 116 782 110 C832 104 872 118 912 136 C952 152 992 164 1030 168" />
+            <path class="dv-hero-ridge-tick" d="M382 58 L382 78 M387 66 L394 77" />
+            <path class="dv-hero-ridge-tick" d="M162 108 L162 128 M167 116 L173 126" />
+            <path class="dv-hero-ridge-tick" d="M632 62 L632 82 M637 70 L643 80" />
+            <path class="dv-hero-foot" d="M-20 210 C200 180 420 172 640 182 C760 188 860 194 960 200" />
+          </svg>
+
+          <!-- Left: Story Column (Step 2) -->
+          <section class="dv-story" data-build-node="story">
+            <p class="dv-kicker" data-build-node="kicker">8 Railway Street · Newcastle</p>
+            <h1 data-build-node="h1">Donard <em>Veterinary</em> Clinic</h1>
+            <p class="dv-thesis" data-build-node="thesis">We're here when you need us.</p>
+            <p class="dv-lede" data-build-node="lede">
+              We're an independent small-animal clinic providing routine care, diagnostics,
+              surgery and dental treatment — with a phone line that always finds a vet.
+            </p>
+            <div class="dv-actions" data-build-node="story-actions">
+              <a class="dv-cta" href="/concepts/donard-veterinary/appointments/">Request an appointment</a>
+              <a class="dv-link" href="/concepts/donard-veterinary/emergency/">Emergency information →</a>
+            </div>
+          </section>
+
+          <!-- Right: Exact Care Desk (Step 1) -->
+          <section class="dv-care-desk" aria-labelledby="dv-care-heading-rebuild" data-build-node="care-desk">
+            <div class="dv-care-head">
+              <p>How can we help?</p>
+              <span>Small-animal clinic · Newcastle</span>
+            </div>
+            <div class="dv-care-body">
+              <h2 id="dv-care-heading-rebuild">What do you need today?</h2>
+              <div class="dv-care-options">
+                <a href="/concepts/donard-veterinary/appointments/">
+                  <span class="dv-care-icon" aria-hidden="true">+</span>
+                  <span><strong>Routine appointment</strong><small>Health checks, diagnostics, surgery, dental care and more.</small></span>
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a href="/concepts/donard-veterinary/emergency/">
+                  <span class="dv-care-icon dv-care-icon--urgent" aria-hidden="true">!</span>
+                  <span><strong>Urgent help</strong><small>Call the clinic directly if you are worried about your pet.</small></span>
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a href="/concepts/donard-veterinary/vidivet/">
+                  <span class="dv-care-icon dv-care-icon--online" aria-hidden="true">V</span>
+                  <span><strong>VidiVet support</strong><small>Free 24/7 digital vet advice for our clients.</small></span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+            <div class="dv-care-hours" data-build-node="care-hours">
+              <span><strong>Clinic hours</strong> Mon–Fri 8:30–6:30 · Wednesday until 7</span>
+              <a href="tel:02843729414">028 4372 9414</a>
+            </div>
+          </section>
+        </div>
+
+        <div class="assembly-layer-badge assembly-layer-badge--after">Concept in progress</div>
+      </div>
+    </div>
+
+    <!-- Live Step Ticker Indicator inside frame -->
+    <div class="assembly-ticker">
+      <span class="assembly-ticker-dot"></span>
+      <span class="assembly-ticker-text" data-ticker-text>Viewing current site</span>
+    </div>
+  </div>
+
+  <!-- Assembly Step Navigation & Playback Controls -->
+  <div class="assembly-controls-bar">
+    <div class="assembly-stepper" role="tablist" aria-label="Reconstruction moves">
+      {moves.map((m) => (
+        <button
+          type="button"
+          class:list={["assembly-step-tab", { "is-active": m.step === 0 }]}
+          role="tab"
+          aria-selected={m.step === 0 ? "true" : "false"}
+          data-step-target={m.step}
+        >
+          <span class="assembly-step-tag">{m.tag}</span>
+          <span class="assembly-step-title">{m.title}</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="assembly-playback-actions">
+      <button type="button" class="button button-secondary assembly-btn-play" data-assembly-play>
+        <span class="assembly-play-icon" aria-hidden="true">▶</span>
+        <span class="assembly-play-label">Play live rebuild</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dynamic Active Narration Card -->
+  <div class="assembly-narration-card" data-assembly-narration>
+    <div class="assembly-narration-head">
+      <span class="assembly-narration-step-tag" data-narration-tag>{moves[0].tag}</span>
+      <h3 class="assembly-narration-title" data-narration-title>{moves[0].title}</h3>
+    </div>
+    <p class="assembly-narration-desc" data-narration-desc>{moves[0].desc}</p>
+  </div>
+
+  <!-- Meta footer -->
+  <footer class="home-hero-stage-footer">
+    <Disclosure reminder quiet />
+    <div class="home-hero-stage-meta">
+      <p class="home-hero-stage-caption">
+        {name}, {town}
+      </p>
+      <a class="text-link home-hero-stage-compare" href={href}>Open full comparison <ArrowIcon /></a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const movesData = [
+    {
+      step: 0,
+      tag: "Current Site",
+      title: "The starting point",
+      desc: "The clinic’s published homepage — welcoming and full of warmth, with opportunities to bring key patient services forward.",
+      ticker: "Viewing current site"
+    },
+    {
+      step: 1,
+      tag: "Move 01",
+      title: "Put the primary paths first",
+      desc: "Make the main reasons people visit immediately clear: routine appointments, urgent triage, and 24/7 digital vet advice.",
+      ticker: "Move 01: Core triage pathways established"
+    },
+    {
+      step: 2,
+      tag: "Move 02",
+      title: "Celebrate local identity",
+      desc: "Frame the page around Donard’s own badge, signature colours, Newcastle address, and a low Mourne mountain silhouette.",
+      ticker: "Move 02: Practice branding & typography applied"
+    },
+    {
+      step: 3,
+      tag: "Move 03",
+      title: "Connect every action directly",
+      desc: "Add direct one-tap booking, verified emergency phone lines, and clear opening hours right where patients need them.",
+      ticker: "Move 03: Direct booking & emergency lines active"
+    }
+  ];
+
+  document.querySelectorAll<HTMLElement>("[data-assembly-rebuild]").forEach((container) => {
+    const viewport = container.querySelector<HTMLElement>("[data-assembly-viewport]");
+    const scaler = container.querySelector<HTMLElement>("[data-assembly-scaler]");
+    const washOverlay = container.querySelector<HTMLElement>("[data-wash-overlay]");
+    const tabs = container.querySelectorAll<HTMLButtonElement>("[data-step-target]");
+    const playBtn = container.querySelector<HTMLButtonElement>("[data-assembly-play]");
+    const playLabel = playBtn?.querySelector<HTMLElement>(".assembly-play-label");
+    const playIcon = playBtn?.querySelector<HTMLElement>(".assembly-play-icon");
+    const tickerText = container.querySelector<HTMLElement>("[data-ticker-text]");
+    const narrationTag = container.querySelector<HTMLElement>("[data-narration-tag]");
+    const narrationTitle = container.querySelector<HTMLElement>("[data-narration-title]");
+    const narrationDesc = container.querySelector<HTMLElement>("[data-narration-desc]");
+
+    // Exact proportional scaling
+    const updateScale = () => {
+      if (!viewport || !scaler) return;
+      const scale = viewport.clientWidth / 1265;
+      scaler.style.transform = `scale(${scale})`;
+    };
+
+    window.addEventListener("resize", updateScale);
+    updateScale();
+
+    let currentStep = 0;
+    let isPlaying = false;
+    let playTimer: number | null = null;
+    let washTimeout: number | null = null;
+
+    const applyStepState = (step: number) => {
+      currentStep = step;
+      container.setAttribute("data-current-step", String(step));
+
+      tabs.forEach((tab) => {
+        const isTarget = Number(tab.dataset.stepTarget) === step;
+        tab.classList.toggle("is-active", isTarget);
+        tab.setAttribute("aria-selected", String(isTarget));
+      });
+
+      const move = movesData[step];
+      if (move) {
+        if (tickerText) tickerText.textContent = move.ticker;
+        if (narrationTag) narrationTag.textContent = move.tag;
+        if (narrationTitle) narrationTitle.textContent = move.title;
+        if (narrationDesc) narrationDesc.textContent = move.desc;
+      }
+    };
+
+    // Modern luminous wash transition between Current Site (0) -> Move 01 (1)
+    const playWashTransition = (onComplete: () => void) => {
+      if (!washOverlay) {
+        onComplete();
+        return;
+      }
+
+      washOverlay.classList.remove("is-washing");
+      void washOverlay.offsetWidth; // trigger reflow
+      washOverlay.classList.add("is-washing");
+
+      // Mid-point of the wash (380ms): switch the underlying DOM while fully obscured
+      window.setTimeout(() => {
+        container.setAttribute("data-current-step", "1");
+      }, 350);
+
+      // End of wash (800ms)
+      washTimeout = window.setTimeout(() => {
+        washOverlay.classList.remove("is-washing");
+        onComplete();
+      }, 820);
+    };
+
+    const setStep = (step: number) => {
+      if (washTimeout) clearTimeout(washTimeout);
+
+      if (currentStep === 0 && step === 1) {
+        playWashTransition(() => {
+          applyStepState(1);
+        });
+      } else {
+        if (washOverlay) washOverlay.classList.remove("is-washing");
+        applyStepState(step);
+      }
+    };
+
+    const stopPlayback = () => {
+      if (playTimer) clearInterval(playTimer);
+      isPlaying = false;
+      if (playLabel) playLabel.textContent = "Play live rebuild";
+      if (playIcon) playIcon.textContent = "▶";
+    };
+
+    const startPlayback = () => {
+      isPlaying = true;
+      if (playLabel) playLabel.textContent = "Pause rebuild";
+      if (playIcon) playIcon.textContent = "⏸";
+
+      if (currentStep === 3) {
+        setStep(0);
+      }
+
+      playTimer = window.setInterval(() => {
+        if (currentStep < 3) {
+          setStep(currentStep + 1);
+        } else {
+          stopPlayback();
+        }
+      }, 2600);
+    };
+
+    playBtn?.addEventListener("click", () => {
+      if (isPlaying) {
+        stopPlayback();
+      } else {
+        startPlayback();
+      }
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        stopPlayback();
+        setStep(Number(tab.dataset.stepTarget ?? 0));
+      });
+    });
+  });
+</script>
