@@ -1,9 +1,10 @@
 # Software factory proposals for Mourne Made
 
 Research note and proposal series. Written 18 August 2026; expanded the same
-day with the local AI-first agency scope ladder.
+day with the local AI-first agency scope ladder, then with a launch horizon
+and an accessibility doctrine.
 
-This document does four jobs:
+This document does five jobs:
 
 1. Summarise what a **software factory** is in 2026 practice, with emerging
    best practices, use cases, do's / don'ts and pitfalls.
@@ -17,6 +18,9 @@ This document does four jobs:
    local AI-first agency, what AI can actually bring to owner-operated
    businesses, and how the factory makes multi-arm delivery real without
    becoming generic automation theatre.
+5. Take one step further: use the same plant to **help launch new local
+   businesses**, and insist the factory stay **ordinary to use** — familiar
+   objects, not futuristic software the owner must learn.
 
 It is a planning artifact. It does not change product positioning, publication
 standards or the current outreach gate in `PLAN.md`. Public guest surfaces
@@ -532,6 +536,10 @@ Keep these **manual** until evidence says otherwise:
    before-and-after (or equivalent look-and-decide artifact) exists for them.
 10. Putting "AI agency" chrome on guest-facing marketing in place of local,
     concrete outcomes.
+11. Requiring owners to learn prompts, agent consoles or new daily software
+    to receive the value.
+12. Public "start your business with AI" framing, or launch concepts that
+    imply a trade already exists.
 
 ---
 
@@ -660,11 +668,13 @@ Arm 3  Continuity        AI-assisted upkeep of the public answer
 Arm 4  Capture           Inbound agents & automations on real channels
 Arm 5  Ops               Internal admin workflows with approval gates
 Arm 6  Capability        Mini-apps for one new job the business lacked
+Arm 7  Launch            Idea → look-and-decide surface → first week of trading
 ```
 
 `PRODUCT.md` scopes map roughly as: presence repair → arms 1–2; direct action
 → arms 2–4; ongoing growth → arms 3–6 after economics and maintenance capacity
-are known.
+are known. Arm 7 is a later audience — founders and new offers — not a change
+to today's primary users.
 
 **Rule of advancement:** do not open arm *n+1* for a business until arm *n*
 has a look-and-decide artifact and, for paid work, a named measure. The factory
@@ -724,7 +734,160 @@ before conversation evidence.
 
 ---
 
-## 6. Scope-expansion proposals
+## 6. Launching new local businesses
+
+### The further horizon
+
+Arms 1–6 assume a trading business that already has a name, a door, a ritual
+and something to elevate. That is the right first market: they can look at a
+before and after.
+
+The longer vision is not only to repair and grow what exists. It is to help
+**new** local businesses start — a weekly food box from a home kitchen, a
+seasonal hire window, a walking workshop, a second offer from someone who
+already trades, a club that never had a public surface, a shop idea tested
+before anyone signs a lease.
+
+`PRODUCT.md` already funds community work from paid commercial work, and names
+charities and clubs as the next audiences after owner-operators. Launch is the
+same neighbourly move aimed at people who do not have a "before" yet. The
+wedge becomes **after-only and labelled**: here is what next Tuesday would look
+like if you started; decide whether you want that Tuesday.
+
+This is not a startup studio and not a venture fund. It is a local workshop
+that can stand up the familiar objects a new trade needs — a shop window, a
+way to take a request, a chalkboard that stays true, a phone that answers —
+fast enough that the idea can be tried in this town.
+
+### Why a software factory changes what is tryable
+
+Without a factory, launching locally still means: pay for a site you cannot
+keep current, duct-tape Instagram and a personal email, or delay until you can
+afford an agency week. Ideas that would work for a season, a Saturday market
+or a ten-customer list never leave the kitchen table.
+
+With a factory that already knows this catchment — gap classes, platforms
+people actually use (GuestDiary, Bookin1, Booksy, GBP), elevation shapes,
+operating-page upkeep — the cost of standing up a **honest first week** drops.
+The constraint becomes the founder's capacity to keep a promise, not the cost
+of software.
+
+What becomes newly reasonable:
+
+| Idea class | What the factory can stand up | Familiar object the founder judges |
+|---|---|---|
+| **Test before a lease** | Named storefront, hours, one action (enquire / join a list), no fake reviews | "Would I hand this card out on Main Street?" |
+| **Seasonal / pop-up** | Operating page with open / closed / sold-out; takedown when the season ends | Tonight's board, not a twelve-page brochure |
+| **Skill → first trade** | Maker, cook, guide, instructor: range + request + "when it's gone" | The table or the walk, shown clearly |
+| **Side offer of an existing trader** | Supper club, hire window, workshop night as its own surface | The extra night, not a redesign of the day job |
+| **Market stall → owned list** | Weekly availability, cutoff, route, request — the operating-page shape | The packing sheet customers already understand |
+| **Club / charity first surface** | Events, joining, one true contact route | The noticeboard, done properly |
+| **Succession / new owner** | Keep the recognised mark; replace the stale route | "This is still us, and you can book" |
+| **Complementary pair** | Two small surfaces that hand off (rooms ↔ experiences, hire ↔ café) | Two doors, one honest link |
+| **Shared visitor path** | Future partnership guide (`PRODUCT.md`) that points at owned actions | A town leaflet that does not steal the till |
+
+None of these require the founder to "adopt AI." They require a Tuesday that
+works.
+
+### Honesty when there is no before
+
+Launch work cannot borrow the existing verification fiction. There is no live
+site to sit beside, no FSA date, no "owner would recognise themselves" against
+a current page.
+
+Use a different packet:
+
+- **Intent, not trading evidence** — what they will sell, where, when, to whom.
+- **Labelled as not yet trading** on any public concept (same independence
+  rules as uncommissioned work).
+- **No invented atmosphere** — no fake reviews, no conjured regulars, no
+  "established 2026" theatre.
+- **One promise** — the first-week action, not a full brand universe.
+- **Upkeep named before launch** — who updates the board when it is real.
+
+Synthetic representative prototypes (operating page, impossible local) already
+rehearse this: new subjects, labelled, built to test a form. Launch for a real
+founder is that form with their name and their promise, plus a baseline measure
+(first enquiries, first paid orders, list sign-ups).
+
+### What we do not do in the launch arm
+
+- Imply a business is trading when it is not.
+- Build a "startup OS" or founder dashboard.
+- Push people toward premises, stock or debt they have not chosen.
+- Use the census to manufacture businesses that are not there.
+- Treat a successful concept as proof of demand (same rule as today).
+
+---
+
+## 7. The factory should feel ordinary
+
+The plant can be sophisticated. The **counter** must not be.
+
+The point of this factory is to make AI **accessible** to local businesses —
+to hide the machinery the way an accountant hides the software, a printer
+hides the RIP, a kitchen hides the prep list. It is not to march owners into
+cutting-edge tools, agent consoles, prompt literacy or another SaaS tab they
+will abandon.
+
+If an owner needs to understand models, orchestration or "being AI-native" to
+get value, the factory has failed the wedge.
+
+### Familiar concepts, not new categories
+
+Talk and ship in objects people already have:
+
+| Factory output | Familiar concept | Not this |
+|---|---|---|
+| Concept / transformation | Shop window, before and after | "Design system" / "MVP" |
+| Operating page | Chalkboard / tonight's board | CMS |
+| Request / booking handoff | Phone and appointment book | Conversational agent |
+| Missed-call text-back | The person who answers when you cannot | Voice AI platform |
+| One-sheet | A printed card with a picture of the shop | Growth asset |
+| Weekly summary to approve | The pile of notes on the counter | Ops copilot |
+| Mini-app for one job | A hire book / waitlist / order pad | Platform |
+
+The owner uses the shop window, the board, the phone, the card. The factory
+uses agents, pins, packets and evals. Those words stay in `research/`,
+`tools/` and this document.
+
+### Ease of use is a quality bar
+
+Accessibility here means:
+
+1. **One conversation** — they describe the Tuesday they want; they do not
+   fill a spec.
+2. **One artifact they can hold** — a page, a sheet, a text thread — judged in
+   minutes.
+3. **No new daily tool** unless it *is* the chalkboard or the appointment
+   book. Prefer their existing Instagram, GBP, Booksy, GuestDiary, Gmail.
+4. **Approval on the same surface visitors see** — never a second admin world
+   (operating-page doctrine).
+5. **Plain failure** — if the automatic reply is unsure, it says so and hands
+   to a person. No clever recovery theatre.
+6. **Their accounts** — they own the domain, the number, the inbox.
+7. **Stoppable** — a season can end; a workflow can be switched off; last good
+   version remains.
+
+Cutting-edge capability is a **back-of-house** advantage (speed, consistency,
+honesty checks). It is not a feature list for the town.
+
+### Do not force AI on the owner
+
+| Do | Don't |
+|---|---|
+| Use AI to stand up their window faster | Require them to chat with a bot to edit hours |
+| Offer a text-back they can read and correct | Train them on prompts |
+| Keep a human studio number for the relationship | Replace the neighbour with a portal |
+| Disclose generated pictures the usual way | Brand the offer as an AI product |
+| Let them stay on a specialist booker if it works | Rebuild everything custom to show the factory |
+
+Some owners will never want arms 4–6. That is success if arm 1 is useful. The
+factory's job is optionality at low cost, not conversion to "AI customers."
+
+---
+
+## 8. Scope-expansion proposals
 
 These extend A–L. They assume Phases 0–1 of the website factory are underway;
 they do not replace the outreach gate.
@@ -845,16 +1008,61 @@ measurement, not mythology.
 **Why.** Multi-arm delivery fails when each project rediscovers the business
 and drifts from truth — the exact failure elevation method prevents for sites.
 
+### Proposal T — Launch packet (intent, not census)
+
+**Intent.** Make new-business work first-class without faking a verification.
+
+**Work:**
+
+- Packet type `launch` beside prospect packets: promise, place, season,
+  first-week action, who keeps the board, labelled not-yet-trading.
+- Block publication that implies current trading; allow labelled representative
+  or founder-requested previews.
+- Reuse operating-page and concept scaffolds; do not invent reviews, regulars
+  or history.
+
+**Why.** Arm 7 needs a different honesty contract than arms 1–6.
+
+### Proposal U — First-week kit as a catalogue recipe
+
+**Intent.** Stand up the smallest honest Tuesday: window + one action +
+upkeep + optional list/text-back.
+
+**Work:**
+
+- One internal recipe: operating page (or after-only concept), request path,
+  GBP/social handoff if they have them, owner publish, stoppable season.
+- Look-and-decide test: "Would I hand this card out on Main Street?"
+- Measure for a real founder: first enquiries or first paid orders — never
+  page launches.
+
+**Why.** This is the launch analogue of presence repair: familiar, finite,
+judgable.
+
+### Proposal V — Ordinary-counter standard
+
+**Intent.** Encode accessibility as a gate, not a hope.
+
+**Work:**
+
+- Review checklist for any owner-facing surface: familiar name, no new daily
+  tool unless it *is* the board/book, approval on the visitor surface, stoppable,
+  their accounts, no prompt literacy required.
+- Factory docs and agent prompts may say "agent"; guest and owner copy may not.
+- Failed ordinary-counter review is a blocker (same weight as guest-voice).
+
+**Why.** Stops the plant from leaking futurism into the town.
+
 ---
 
-## 7. Suggested adoption sequence
+## 9. Suggested adoption sequence
 
 Aligned with common agent-native adoption (scoped → review → missions), this
-repo's risk profile, and the wedge doctrine:
+repo's risk profile, the wedge doctrine, and the ordinary-counter rule:
 
 | Phase | Focus | Exit criteria |
 |---|---|---|
-| **0 — Name the plant** | A + L + M | Station map, non-goals, wedge doctrine agreed |
+| **0 — Name the plant** | A + L + M + V (draft) | Station map, non-goals, wedge + ordinary-counter agreed |
 | **1 — QC utilities** | D + E (partial) + K skeleton | Disclose path; new pins; run outcomes logged |
 | **2 — Research mechanics** | C + B + S (light) | Drift probes; work packets; shared context stub |
 | **3 — Scaffold & media** | F + G | Pack scaffold used once end-to-end |
@@ -862,29 +1070,33 @@ repo's risk profile, and the wedge doctrine:
 | **5 — Website missions** | J then careful concept missions | Prototypes (esp. operating page) rehearse arms 2–3 |
 | **6 — Catalogue arms 3–4** | N + O (sandbox) + Q (internal demos) | 2–3 recipes with evals; no public AI pitch yet |
 | **7 — First non-site pilot** | O/P + R | One paying or formal pilot with baseline measure after arm-1 trust |
+| **8 — Launch rehearsal** | T + U on a synthetic or willing founder | First-week kit used once; labelled; ordinary-counter pass |
 
 Do not skip Phase 1. Do not open Phase 6 selling before Phase 5 has something
-an owner can look at for continuity/capture. Scaling Build before Disclose/Pin
-recreates the verification gap; scaling automations before the wedge recreates
-the trust gap.
+an owner can look at for continuity/capture. Do not offer Phase 8 as a public
+"start a business with AI" product before arms 1–3 are ordinary to use.
+Scaling Build before Disclose/Pin recreates the verification gap; scaling
+automations before the wedge recreates the trust gap; scaling launch before
+the counter is ordinary recreates the futurism gap.
 
 ---
 
-## 8. Mapping software-factory literature → this repo
+## 10. Mapping software-factory literature → this repo
 
 | Factory property | Mourne Made analogue today | Gap |
 |---|---|---|
-| Standardised inputs | Elevation briefs, verifications, publication reviews | No single work-packet schema; no workflow packets yet |
+| Standardised inputs | Elevation briefs, verifications, publication reviews | No single work-packet schema; no workflow or launch packets yet |
 | Standardised tooling | `pnpm build` / `pnpm test`, capture, print | Agent tasks not registered; browser QC thinned; no automation eval harness |
 | Measurable output | Suite counts, publication.json | No station cycle-time or flawed-run metrics; no pilot AI measures yet |
 | Replayability | Git history, provenance, ADRs, PLAN narrative | Prompt/model versions for agent runs not systematically stored |
-| Human control | Five checks, outreach gate, anonymity ADRs | Strong — preserve; extend to automation approval gates |
+| Human control | Five checks, outreach gate, anonymity ADRs | Strong — preserve; extend to automation approval and ordinary-counter |
 | Utilities | Checks, rate limit, provenance | Spend metering / agent registry thin |
-| Multi-product lines | Website arm only in production | Operating-page prototype is the bridge; arms 4–6 not industrialised |
+| Multi-product lines | Website arm only in production | Operating-page prototype is the bridge; arms 4–7 not industrialised |
+| Owner experience | Transformations + request form | Must stay shop-window simple as the plant grows |
 
 ---
 
-## 9. Bottom line
+## 11. Bottom line
 
 Mourne Made is already a **proto-factory**: a repeatable path from census to
 published transformation with unusually sharp honesty gates, written methods
@@ -894,9 +1106,18 @@ tautological disclosure, abort-on-fail, premise drift, hotel-moves-on-food-bar).
 The deeper company bet is a **local AI-first agency** that uses websites as the
 trust wedge — because owners can look and decide — and then grows into
 continuity, capture, ops automations and mini-apps once belief is earned.
-Industry evidence says AI value for SMBs lives in **handoffs and systems of
-record**, not in abstract assistants; this catchment needs those handoffs to
-stay local, owned, measurable and recognisable.
+Further out, the same plant can help **launch** new local trades: a first
+Tuesday that is tryable because standing up a shop window, a board and a
+request path no longer takes an agency month. Industry evidence says AI value
+for SMBs lives in **handoffs and systems of record**, not in abstract
+assistants; this catchment needs those handoffs to stay local, owned,
+measurable and recognisable.
+
+The factory itself should be **ordinary at the counter**. Sophistication stays
+back of house. Owners should meet a shop window, a chalkboard, an appointment
+book and a printed card — not agents, prompts or cutting-edge software. Making
+AI accessible means they need not believe in AI, operate AI, or become "AI
+businesses" to get a Tuesday that works.
 
 An agent-native software factory is the right industrialisation **if** it:
 
@@ -909,7 +1130,11 @@ An agent-native software factory is the right industrialisation **if** it:
    demos — never leading the market conversation with "AI" as the product.
 6. Treats flawed factory runs as the backlog that improves the plant.
 7. Couples capacity to conversation evidence so the agency does not outrun trust.
+8. Keeps the owner experience familiar, finite and stoppable as scope grows.
+9. Opens a launch arm only with intent packets, labelled previews and a
+   first-week kit — never a fake before or a startup OS.
 
 That is how to do more things faster, more reliably, **and** wider in scope —
+including new businesses that could not have started on software cost alone —
 without turning a recognition-led local studio into generic automation theatre,
 and without asking distrustful owners to buy a story they cannot see.
