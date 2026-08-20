@@ -28,7 +28,7 @@ Where things live after the A→D restructure (31 July 2026).
 | `research/pipeline/` | `verifications.json`, discovery summaries, landscape PDF. |
 | `research/concepts/<slug>/` | Briefs, triage, pitches; `evidence/` is gitignored. |
 | `research/audits/` | Internal design audits (screenshots gitignored). |
-| `docs/` | DESIGN, MEDIA_CAPTURE, CONCEPT_DESIGN_REVIEW, REVIEW, ADRs, archive. Software-factory research: `docs/software-factory-proposals.md`. Living decision index: `docs/decision-register.md`. |
+| `docs/` | DESIGN, MEDIA_CAPTURE, CONCEPT_DESIGN_REVIEW, REVIEW, ADRs (0006 is current civic-map decision), archive. Software-factory research: `docs/software-factory-proposals.md`. Living decision index: `docs/decision-register.md`. |
 | `tools/` | Capture, media, check, test, print, pipeline scripts. |
 | `.scratch/` | Probes, print PDFs, journey renders — not committed. |
 | `api/` | Vercel request function. |

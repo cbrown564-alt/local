@@ -28,10 +28,11 @@ This document does six jobs:
    minds without silent drift. The living register is
    [`docs/decision-register.md`](decision-register.md).
 
-It is a planning artifact. It does not change product positioning, publication
-standards or the current outreach gate in `PLAN.md`. Public guest surfaces
-still follow `PRODUCT.md` anti-references: no SaaS landing cadence, no abstract
-automation imagery, no inflated AI claims.
+It is a planning artifact. Product answers on 20 August 2026 are locked in
+[`docs/decision-register.md`](decision-register.md) and
+[`docs/adr/0006-the-map-named-directory.md`](adr/0006-the-map-named-directory.md).
+Public guest surfaces still follow `PRODUCT.md` anti-references: no SaaS
+landing cadence, no abstract automation imagery, no inflated AI claims.
 
 ---
 

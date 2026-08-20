@@ -119,8 +119,10 @@ not copy, because the actual sentence must come from that business's record.
 
 ## Format and production
 
-- **A6, 350gsm, double-sided, matte** for posted and door-dropped volume. The
-  front still is the whole front; the reverse takes six short blocks.
+- **A6, 350gsm, double-sided, matte** for a **named** business only — posted
+  or handed over, never an untargeted door-drop (ADR 0001; confirmed 20
+  August 2026). The front still is the whole front; the reverse takes six
+  short blocks.
 - **A5 variant for hand-delivery**, where the reverse has room for the **errand
   walk** — the same two-column before/after the transformation pages use
   (`TransformationErrand`: taps and screens, both sides). Only for businesses

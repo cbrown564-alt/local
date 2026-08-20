@@ -186,7 +186,9 @@ What did not survive the simplification, and is now repaired:
    wired in — section 1a found two checks that could not fail, and a green
    suite is worth nothing until its failure is demonstrated.
 
-`pnpm test` is 13/13 green.
+`pnpm test` was recorded as 13/13 here on 6 August 2026. The runner is now
+seventeen post-build suites (`tools/test/run-verification.mjs`). Treat the
+runner as truth; do not cite 13/13 as current.
 
 ### What the retired suites covered, and what does not replace it
 
@@ -198,7 +200,7 @@ it here rather than let a doc go on citing a green suite that cannot run.
 | --- | --- | --- |
 | `test:concepts` | Shared shell geometry and header-label wrapping across every concept route, in a browser | Nothing. The 1b header-wrap defect would not be caught today |
 | `test:reviewed-concepts` | Per-concept publication evidence: disclosure of generated imagery, responsive derivatives, first-viewport rules | Partly `test:reviews` (publication records) and `test:public-assets`, both static |
-| `test:shell-home` | The homepage claim-door link, and the load sweep's reduced-motion and takeover behaviour | Nothing. The claim door is the route from the homepage to a business's own concept, and it went missing once already |
+| `test:shell-home` | The homepage claim-door link, and the load sweep's reduced-motion and takeover behaviour | Decided 20 August 2026: `/transformations/` is the door. Homepage claim-door comment removed. Load-sweep behaviour still unpinned. |
 | `test:media` | No reel source requested before activation, WebM preferred, reduced-motion opt-in, keyboard play/pause | Nothing |
 | `test:enniskeen` | The flagship's day-part swap, grade, map labels and disclosure, timeline and pull-quote | Nothing. Enniskeen is the batch-two flagship |
 | `test:bucks-head`, `test:dundrum-inn`, `test:scopers` | Per-concept journey pins | `test:scopers` has no successor; the other two are unreplaced |

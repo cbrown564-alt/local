@@ -81,9 +81,11 @@ bespoke site.
   discovery to action can be clearer; the proposed change is concrete and easy
   to judge; its scope fits the business; requesting a before-and-after is worth
   doing now.
-- Proof on hand: independently reviewed concept transformations and an
-  outside-in market audit. No business has approved the work and no client
-  result has been measured. Concept work must never imply otherwise.
+- Proof on hand: concept transformations that passed the five publication
+  checks (`docs/CONCEPT_DESIGN_REVIEW.md`) and an outside-in market audit. No
+  business has approved the work and no client result has been measured.
+  Concept work must never imply otherwise. Do not call the portfolio
+  independently reviewed unless a named second reviewer actually signed.
 
 ## Evidence and measurement
 
@@ -132,6 +134,22 @@ The site must not resemble a generic AI or SaaS landing page. Avoid interchangea
   business's ability to keep the result current.
 - Make every next step feel small, clear, and reversible.
 - Separate concept work, researched facts, and future client results truthfully.
+
+## How the offer grows
+
+The free before-and-after remains the way a conversation starts. An owner
+looks at a page they already understand and decides. Later work — keeping a
+page current, catching missed enquiries, or a small tool for one job — is
+offered only after that look-and-decide step, or when they already have a
+strong site and ask for one named job. Do not lead with AI, automations, or
+software they would have to learn.
+
+What the owner meets stays ordinary: a website, a printed sheet, a text, an
+appointment book. They do not need prompts, agent consoles, or studio
+software. Accounts stay theirs. A season or a workflow can be stopped.
+
+Helping someone **start** a new local business is an internal horizon, not a
+current public offer. Public pages do not invite founders to launch with AI.
 
 ## Accessibility & Inclusion
 

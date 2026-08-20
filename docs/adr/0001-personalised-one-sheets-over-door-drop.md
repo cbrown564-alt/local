@@ -46,3 +46,9 @@ sent. Scopers and Cúpla remain the first-wave conversations. No replacement is
 added simply to restore the original batch size. The public Buck's Head concept
 remains dated portfolio work and must be re-reviewed against the replacement
 site before any later outreach.
+
+## Outcome update — 20 August 2026
+
+Named A6 postcards are a second outreach channel: posted or handed to one
+named business. Untargeted door-drop volume stays rejected. One-sheets remain
+the primary printed piece for a concept that already exists.

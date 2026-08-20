@@ -27,11 +27,13 @@ Added 27 July 2026, after three concepts passed the first four checks and were
 withdrawn anyway. The first four ask whether a concept is *honest*. None of them
 asks whether it is *good*, or whether the business would want it.
 
-The Dundrum Inn passed and lost to the Inn's own live website. Tonn Ruray Café
-passed and replaced a new owner's personal, deliberate site — their own
-photographs, their own chosen quote — with studio typography on cream. Groves
-Chemist passed while proposing to rebuild the centralised platform the pharmacy
-had come off.
+Tonn Ruray Café passed the first four checks and replaced a new owner's
+personal, deliberate site — their own photographs, their own chosen quote —
+with studio typography on cream. Groves Chemist passed while proposing to
+rebuild the centralised platform the pharmacy had come off. Both were
+withdrawn. The Dundrum Inn was an early live-site comparison that helped
+motivate this question; it later published under the five checks (27 July
+2026) as dated portfolio work. Do not cite it as a current failed fifth check.
 
 Four questions answer it:
 
