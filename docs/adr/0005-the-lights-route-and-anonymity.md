@@ -1,5 +1,10 @@
 # `/the-lights/` carries the census claim, and its map is deliberately imprecise
 
+**Superseded 20 August 2026** by [ADR 0006](0006-the-map-named-directory.md)
+for the civic product shape (route, anonymity, coordinates). Census counts
+in this file (188 trading, 96 lit / 92 dark; never “most”) still stand until
+a later count replaces them. Do not implement `/the-lights/` from this ADR.
+
 [ADR 0004](0004-shore-horizon-and-lights.md) adopted `Shore` at two scales and
 unblocked `stage` for a dated aggregate count over anonymous lights. It placed
 `stage` on `/about/` and left the surface unbuilt.
