@@ -129,7 +129,9 @@ day-part file on disk actually reaches the page.
 
 ## Constraints
 
-- The public site stays AI-imagery-only (privacy decision, 31 July 2026);
+- Public imagery follows `docs/the-elevation-method.md` (AI with disclosure,
+  credited CC, or the firm's already-public assets). Withdrawn masters stay
+  withdrawn.
   the hotel's own photographs are reserved for personal outreach material.
   Day-part variants must carry the same disclosure as the current hero.
 - History and review content must be sourced the same way as everything else

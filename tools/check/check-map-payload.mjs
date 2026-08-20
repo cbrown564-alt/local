@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Guard the emitted `/the-lights/` HTML in dist/.
+ * Guard the emitted `/the-map/` HTML in dist/.
  *
  * Ensures that the directory and map page delivers a complete, accessible experience:
  * 1. Contains the map container and sidebar explorer controls.
@@ -45,7 +45,7 @@ for (const pattern of forbiddenPhrases) {
 
 /* --- 2. Required layout elements --- */
 if (!html.includes('id="leaflet-map"')) {
-  errors.push("Missing #leaflet-map element in dist/the-lights/index.html");
+  errors.push("Missing #leaflet-map element in dist/the-map/index.html");
 }
 
 if (!html.includes('data-town-btn="Newcastle"') || !html.includes('data-town-btn="Dundrum"')) {

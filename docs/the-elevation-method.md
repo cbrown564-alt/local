@@ -154,9 +154,12 @@ Keep three layers apart:
 
 Also standing:
 
-- AI-imagery-only on the public site (privacy decision, 31 July 2026);
-  businesses' own photographs are for personal outreach material. Withdrawn
-  imagery stays withdrawn.
+- Public concept imagery (decided 20 August 2026, refining 31 July 2026):
+  AI-generated work with the triple disclosure below; third-party CC
+  photographs with on-page credit; and a firm's own **already-public**
+  assets when rights are clear (Kelly, Douglas). Private reference
+  photographs stay in gitignored evidence for outreach and are not
+  redeployed. Withdrawn imagery stays withdrawn.
 - Generated imagery keeps the triple disclosure: alt text, a visible line on
   the page, the case study's Sources & limits block — and a provenance entry
   in the same commit as the file. The visible line names the medium; it does

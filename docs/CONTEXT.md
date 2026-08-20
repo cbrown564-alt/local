@@ -85,18 +85,19 @@ a business, removing duplicates, and confirming the business trades. Only
 trading businesses may be counted in anything we publish.
 
 **Lit / dark**:
-Whether a trading business has a website of its own. Publishable only in
-aggregate, and only over trading businesses — never over raw census rows. A
-dark business is never named, labelled, linked, made hoverable, or placed
-precisely enough to be looked up — a published coordinate at premises accuracy
-identifies a business as surely as its name does. Saying a
-place is dark is an assertion about a real business that can be wrong, so it
-requires the same evidence as any other public claim. The publish bar for a
-dated count and anonymous map is the website-status decision in
-`research/pipeline/census-confidence-decision-2026-08-05.md`: Trading ∩ mapped
-rows whose website status was verified. Current honest shape is 81 lit and 85
-dark of 166 mapped traders — a near-even split, never “most” in either
-direction.
+Whether a trading business has a website of its own. The words stay research
+vocabulary. A published **count** is only over trading businesses, never over
+raw census rows, and never “most” in either direction. It carries a review
+date in the same sentence. Current honest pair (ADR 0005, 14 August 2026):
+**96 lit and 92 dark of 188** trading businesses.
+
+From 20 August 2026 the civic page is `/the-map/` ([ADR 0006](adr/0006-the-map-named-directory.md)):
+a named directory of trading businesses using public listing fields and the
+coordinates already on the census row. A row may show that a website was
+found. That **supersedes** the 5–14 August rule that a dark business must
+never be named or placed. Still unpublished: internal assessments, gap class,
+priority scores, pipeline stage, and outreach notes. Removal on request still
+stands.
 
 **Review date**:
 The day the whole set was last swept by the same method — the date a published

@@ -98,7 +98,8 @@ transformations as thumbnails with the business's name and town — never
 the studio's chrome (review bold idea 6, accepted). A visual product
 deserves a visual portfolio, and a skeptical stranger recognises businesses
 they know faster than they read sentences. The count stays honest and dated
-("independently reviewed" with the review date), driven by
+("reviewed" — five publication checks; do not say independently reviewed),
+driven by
 `publicTransformationSlugs` as today.
 
 ### 3. The town map, elevated from the photo band (theatre, the keepable artifact)
@@ -131,11 +132,10 @@ dividing the stranger's attention:
 
 - **Cold door (primary):** request a free before-and-after — hero CTA and
   closing CTA, unchanged in weight.
-- **Claim door (secondary):** a quiet line near the hero and on the
-  transformations index: "We've already made some of these. If one is
-  yours, it's yours." It leads to `/transformations/` and the pre-filled
-  claim action that `ConceptLayout` already provides. The claim door never
-  gets a button on the homepage hero.
+- **Claim door (secondary):** decided 20 August 2026 — `/transformations/`
+  is the door. There is no homepage hero claim link or leftover comment.
+  The transformations index still leads to the pre-filled claim action
+  that `ConceptLayout` already provides.
 
 To serve "find yours" instantly, `/transformations/` becomes browsable by
 town with the same thumbnails as the homepage strip.
