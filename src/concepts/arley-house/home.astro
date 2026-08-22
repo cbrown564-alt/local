@@ -37,7 +37,7 @@ const address = "14 Belfast Road, Dundrum, BT33 0NG";
       </p>
       <p class="ah-cta">
         <a class="ah-btn" href={phoneHref}>Call {phone}</a>
-        <a class="ah-btn ah-btn--ghost" href="#enquire">Enquire about dates</a>
+        <a class="ah-btn ah-btn--ghost" href="#enquire">Note your dates first</a>
       </p>
     </section>
 
@@ -51,8 +51,11 @@ const address = "14 Belfast Road, Dundrum, BT33 0NG";
     </section>
 
     <form class="ah-form" id="enquire" aria-labelledby="ah-enquire-title">
-      <h2 id="ah-enquire-title">Enquire about a stay</h2>
-      <p class="ah-form-sub">Opens a draft in your email or phone. We have not put rates on this page.</p>
+      <h2 id="ah-enquire-title">Have your dates ready</h2>
+      <p class="ah-form-sub">
+        We have not put rates or a booking diary on this page. Write what you
+        need, then ring the house.
+      </p>
       <div class="ah-field">
         <label for="ah-name">Your name</label>
         <input id="ah-name" name="name" type="text" autocomplete="name" required />
@@ -65,11 +68,11 @@ const address = "14 Belfast Road, Dundrum, BT33 0NG";
         <label for="ah-notes">Anything we should know</label>
         <textarea id="ah-notes" name="notes" rows="3"></textarea>
       </div>
-      <button class="ah-btn" type="submit">Prepare my enquiry</button>
+      <button class="ah-btn" type="submit">Show me what to say</button>
       <div class="ah-handoff" data-ah-handoff hidden>
-        <strong>Your enquiry is ready.</strong>
-        <a data-ah-mail href="mailto:info@arleyhousedundrum.co.uk">Open email draft</a>
-        <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+        <strong>Ring {phone} and say:</strong>
+        <pre data-ah-script></pre>
+        <a class="ah-btn" href={phoneHref}>Call now</a>
       </div>
     </form>
   </main>
@@ -79,28 +82,18 @@ const address = "14 Belfast Road, Dundrum, BT33 0NG";
       var form = document.getElementById("enquire");
       if (!form) return;
       var handoff = form.querySelector("[data-ah-handoff]");
-      var link = form.querySelector("[data-ah-mail]");
+      var script = form.querySelector("[data-ah-script]");
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!form.reportValidity()) return;
         var name = form.querySelector("#ah-name").value.trim();
         var when = form.querySelector("#ah-when").value.trim();
         var notes = form.querySelector("#ah-notes").value.trim();
-        var body = [
-          "Hello Arley House,",
-          "",
-          "I would like to enquire about a stay.",
-          "Name: " + name,
-          when ? "Nights: " + when : "",
-          notes ? "Notes: " + notes : "",
-          "",
-          "Please ring me back on the number I will add here.",
+        script.textContent = [
+          "Hello, my name is " + name + ".",
+          when ? "I am hoping to stay " + when + "." : "I would like to ask about a stay.",
+          notes ? notes : "",
         ].filter(Boolean).join("\n");
-        link.href =
-          "mailto:?subject=" +
-          encodeURIComponent("Stay enquiry — Arley House") +
-          "&body=" +
-          encodeURIComponent(body);
         handoff.hidden = false;
       });
     })();
