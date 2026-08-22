@@ -1,1 +1,288 @@
-PLACEHOLDER
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+/* Guest shop UI. Facts only: harbour door, vans, hours, family arc,
+   their published voice. No catalogue stock list, no prices, no mark. */
+
+const phone = "028 4372 4717";
+const phoneHref = "tel:+442843724717";
+const email = "sales@irelandsappliances.com";
+const catalogue = "https://www.irelandsappliances.com/catalogue/index.php";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Noto+Sans:wght@400;600;700&display=swap";
+
+const jobs = [
+  {
+    id: "repair",
+    title: "A repair",
+    line: "Large appliances repaired at home. Small ones and TVs of all sizes in the shop.",
+    href: "#job",
+    cta: "Ask for a call-back",
+  },
+  {
+    id: "machine",
+    title: "A machine",
+    line: "Hold a price on a small deposit and we will store it until delivery. Free local delivery on most larger purchases.",
+    href: catalogue,
+    cta: "Open the live catalogue",
+    external: true,
+  },
+  {
+    id: "match",
+    title: "A price match",
+    line: "If you have seen it cheaper, ask us to match it.",
+    href: phoneHref,
+    cta: `Call ${phone}`,
+  },
+];
+
+const arc = [
+  {
+    year: "1975",
+    line: "Tom skips catering college. Electrical engineering, then TV and refrigeration, then the Albion clothing machines.",
+  },
+  {
+    year: "1980",
+    line: "Albion closes. Appliances from a garage behind Central Promenade, then a larger garage on Valencia Place.",
+  },
+  {
+    year: "1984",
+    line: "The South Promenade shop — once a supermarket and butchery — becomes Ireland's Appliance Centre. Still the harbour shop.",
+  },
+  {
+    year: "2017",
+    line: "Thomas, trained by Tom then Whirlpool, Hoover and Hotpoint, becomes the main engineer.",
+  },
+  {
+    year: "2021–22",
+    line: "Oran takes the retail floor. Siobhan takes communications — and the coffee.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Ireland's Appliance Centre — independent concept"}
+  slug="irelands-appliance-centre"
+  bodyClass="concept-page concept-ireland"
+  businessName="Ireland's Appliance Centre"
+  town="Newcastle"
+  fontHref={fontHref}
+>
+  <div class="ia-strip">
+    <span>67–69 The Harbour, Newcastle, BT33 0EY · Mon–Sat 08:30–17:00</span>
+    <span class="ia-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="ia-header">
+    <a class="ia-brand" href="/concepts/irelands-appliance-centre/">
+      <span class="ia-brand-text">
+        <span class="ia-brand-name">Ireland's Appliance Centre</span>
+        <span class="ia-brand-sub">The Harbour · Newcastle · since 1984</span>
+      </span>
+    </a>
+    <nav class="ia-nav" aria-label="Concept navigation">
+      <a href="#jobs">The job</a>
+      <a href="#story">The family</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <a class="ia-book" href="#job">Start a job</a>
+  </header>
+
+  <main class="ia-main">
+    <div class="ia-top">
+      <section class="ia-lede">
+        <p class="ia-eyebrow">Harbour family shop · we live here</p>
+        <h1>The van is already in town when the cooker goes cold.</h1>
+        <p class="ia-say">We all live here.</p>
+        <p class="ia-body">
+          A family shop on the harbour — Tom, Thomas, Oran and Siobhan.
+          Two vans for delivery, repair and servicing. Large machines
+          fixed at the house; small ones and TVs of all sizes on the
+          bench in the shop.
+        </p>
+        <p class="ia-lede-cta">
+          <a class="ia-book ia-book--inline" href="#job">Start a job</a>
+          <a class="ia-phone-link" href={phoneHref}>Or call {phone}</a>
+        </p>
+      </section>
+
+      <form class="ia-request" id="job" data-ia-request aria-labelledby="ia-request-title">
+        <h2 id="ia-request-title">Start a job</h2>
+        <p class="ia-request-sub">We'll prepare a draft to the shop. You send it.</p>
+
+        <div class="ia-field">
+          <label for="ia-who">Your name</label>
+          <input id="ia-who" name="name" type="text" autocomplete="name" placeholder="First and last" required />
+        </div>
+        <div class="ia-field">
+          <label for="ia-tel">Best number</label>
+          <input id="ia-tel" name="tel" type="tel" autocomplete="tel" placeholder="Mobile or landline" required />
+        </div>
+        <fieldset class="ia-field ia-field--choice">
+          <legend>What do you need</legend>
+          <label><input type="radio" name="ia-kind" value="A repair" checked /> <span>Repair</span></label>
+          <label><input type="radio" name="ia-kind" value="A machine" /> <span>Machine</span></label>
+          <label><input type="radio" name="ia-kind" value="A price match" /> <span>Price match</span></label>
+        </fieldset>
+        <div class="ia-field">
+          <label for="ia-notes">What broke, or what you saw cheaper</label>
+          <textarea id="ia-notes" name="notes" rows="3"></textarea>
+        </div>
+
+        <button class="ia-submit" type="submit">Prepare my request</button>
+
+        <div class="ia-handoff" data-ia-handoff role="status" hidden tabindex="-1">
+          <strong>Your request is ready.</strong>
+          <span>Open the draft, check it, then press send in your email app.</span>
+          <a data-ia-email-link href={`mailto:${email}`}>Open email draft</a>
+        </div>
+        <p class="ia-stale" data-ia-stale role="status" hidden>
+          Your details changed. Press <strong>Prepare my request</strong> again so
+          the draft matches what you typed.
+        </p>
+
+        <p class="ia-request-foot">
+          Opens as a draft to <a href={`mailto:${email}`}>{email}</a>.
+          Or ring <a href={phoneHref}>{phone}</a>.
+        </p>
+      </form>
+    </div>
+
+    <section class="ia-jobs" id="jobs" aria-labelledby="ia-jobs-title">
+      <div class="ia-section-head">
+        <p class="ia-eyebrow">The job</p>
+        <h2 id="ia-jobs-title">Repair, a machine, or a price to match.</h2>
+      </div>
+      <div class="ia-job-grid">
+        {jobs.map((job) => (
+          <article class="ia-card" id={job.id}>
+            <h3>{job.title}</h3>
+            <p>{job.line}</p>
+            <a
+              class="ia-card-cta"
+              href={job.href}
+              {...(job.external ? { target: "_blank", rel: "noreferrer" } : {})}
+            >
+              {job.cta}
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <blockquote class="ia-voice" cite="https://www.irelandsappliances.com/">
+      <p>“We don't just operate in Newcastle, we all live here. We are locals.”</p>
+      <footer>Ireland's Appliance Centre · irelandsappliances.com</footer>
+    </blockquote>
+
+    <section class="ia-story" id="story" aria-labelledby="ia-story-title">
+      <div class="ia-section-head">
+        <p class="ia-eyebrow">The family · 1975–2022</p>
+        <h2 id="ia-story-title">From a garage behind the promenade to the harbour.</h2>
+        <p class="ia-story-intro">
+          Tom, Thomas, Oran and Siobhan. Same town. Same shop since 1984.
+        </p>
+      </div>
+      <ol class="ia-arc">
+        {arc.map((entry) => (
+          <li class="ia-arc-item">
+            <p class="ia-arc-year">{entry.year}</p>
+            <p class="ia-arc-line">{entry.line}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="ia-find" id="find" aria-labelledby="ia-find-title">
+      <div class="ia-section-head">
+        <p class="ia-eyebrow">Hours · find us</p>
+        <h2 id="ia-find-title">The harbour, Monday to Saturday.</h2>
+      </div>
+      <div class="ia-find-grid">
+        <article class="ia-find-card">
+          <p class="ia-find-kicker">The door</p>
+          <p>67–69 The Harbour, Newcastle, BT33 0EY</p>
+          <p>South Promenade — the same strip since 1984.</p>
+        </article>
+        <article class="ia-find-card">
+          <p class="ia-find-kicker">Hours</p>
+          <p>Monday–Saturday 08:30–17:00</p>
+          <p>Sunday closed.</p>
+        </article>
+        <article class="ia-find-card">
+          <p class="ia-find-kicker">The vans</p>
+          <p>Two vans for delivery, repair and servicing.</p>
+          <p>Free local delivery on most larger purchases.</p>
+        </article>
+      </div>
+      <ul class="ia-find-foot">
+        <li><a href={phoneHref}>{phone}</a></li>
+        <li><a href={`mailto:${email}`}>{email}</a></li>
+        <li><a href={catalogue} target="_blank" rel="noreferrer">Live catalogue</a></li>
+      </ul>
+    </section>
+
+    <section class="ia-close" aria-labelledby="ia-close-title">
+      <p class="ia-eyebrow">Close</p>
+      <h2 id="ia-close-title">When it goes cold, ring the harbour.</h2>
+      <p class="ia-close-body">
+        We don't just operate in Newcastle. We all live here.
+      </p>
+      <p class="ia-lede-cta">
+        <a class="ia-book ia-book--inline" href="#job">Start a job</a>
+        <a class="ia-phone-link" href={phoneHref}>{phone}</a>
+      </p>
+    </section>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var recipient = "sales@irelandsappliances.com";
+      var form = document.querySelector("[data-ia-request]");
+      if (!form) return;
+
+      var handoff = form.querySelector("[data-ia-handoff]");
+      var stale = form.querySelector("[data-ia-stale]");
+      var link = form.querySelector("[data-ia-email-link]");
+      if (!handoff || !link) return;
+
+      form.addEventListener("input", function () {
+        if (handoff.hidden) return;
+        handoff.hidden = true;
+        if (stale) stale.hidden = false;
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var name = form.querySelector("#ia-who").value.trim();
+        var tel = form.querySelector("#ia-tel").value.trim();
+        var notes = form.querySelector("#ia-notes").value.trim();
+        var chosen = form.querySelector('input[name="ia-kind"]:checked');
+        var kind = chosen ? chosen.value : "A repair";
+
+        var query = new URLSearchParams({
+          subject: "Job — " + kind,
+          body: [
+            "Hello Ireland's Appliance Centre,",
+            "",
+            "I need: " + kind + ".",
+            "Name: " + name,
+            "Best number: " + tel,
+            notes ? "Notes: " + notes : "",
+            "",
+            "Please ring me back.",
+          ].filter(Boolean).join("\n"),
+        });
+
+        link.href = "mailto:" + recipient + "?" + query;
+        handoff.hidden = false;
+        if (stale) stale.hidden = true;
+        handoff.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>
