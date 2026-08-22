@@ -1,0 +1,108 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4375 0949";
+const phoneHref = "tel:+442843750949";
+const address = "14 Belfast Road, Dundrum, BT33 0NG";
+---
+
+<ConceptLayout
+  title={"Arley House — independent concept"}
+  slug="arley-house"
+  bodyClass="concept-page concept-arley"
+  businessName="Arley House"
+  town="Dundrum"
+>
+  <header class="ah-header">
+    <a class="ah-brand" href="/concepts/arley-house/">
+      <span class="ah-mark" aria-hidden="true">A</span>
+      <span class="ah-brand-text">
+        <span class="ah-name">Arley House</span>
+        <span class="ah-sub">Bed and breakfast · Dundrum</span>
+      </span>
+    </a>
+    <a class="ah-phone" href={phoneHref}>{phone}</a>
+  </header>
+
+  <main class="ah-main">
+    <section class="ah-hero">
+      <p class="ah-eyebrow">On the Belfast to Newcastle road</p>
+      <h1>A family house in Dundrum, ready when you are.</h1>
+      <p class="ah-lead">
+        Arley House is a family-run bed and breakfast in picturesque Dundrum,
+        on the main Belfast to Newcastle road. Ring to ask about a stay — we
+        will tell you what we have.
+      </p>
+      <p class="ah-cta">
+        <a class="ah-btn" href={phoneHref}>Call {phone}</a>
+        <a class="ah-btn ah-btn--ghost" href="#enquire">Enquire about dates</a>
+      </p>
+    </section>
+
+    <section class="ah-place" id="place">
+      <h2>Where you are staying</h2>
+      <p>
+        The house sits on Belfast Road in the village, a short way from the
+        castle, the bay and the road into Newcastle.
+      </p>
+      <p class="ah-address">{address}</p>
+    </section>
+
+    <form class="ah-form" id="enquire" aria-labelledby="ah-enquire-title">
+      <h2 id="ah-enquire-title">Enquire about a stay</h2>
+      <p class="ah-form-sub">Opens a draft in your email or phone. We have not put rates on this page.</p>
+      <div class="ah-field">
+        <label for="ah-name">Your name</label>
+        <input id="ah-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="ah-field">
+        <label for="ah-when">Nights you have in mind</label>
+        <input id="ah-when" name="when" type="text" placeholder="For example 12–14 September" />
+      </div>
+      <div class="ah-field">
+        <label for="ah-notes">Anything we should know</label>
+        <textarea id="ah-notes" name="notes" rows="3"></textarea>
+      </div>
+      <button class="ah-btn" type="submit">Prepare my enquiry</button>
+      <div class="ah-handoff" data-ah-handoff hidden>
+        <strong>Your enquiry is ready.</strong>
+        <a data-ah-mail href="mailto:info@arleyhousedundrum.co.uk">Open email draft</a>
+        <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+      </div>
+    </form>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("enquire");
+      if (!form) return;
+      var handoff = form.querySelector("[data-ah-handoff]");
+      var link = form.querySelector("[data-ah-mail]");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = form.querySelector("#ah-name").value.trim();
+        var when = form.querySelector("#ah-when").value.trim();
+        var notes = form.querySelector("#ah-notes").value.trim();
+        var body = [
+          "Hello Arley House,",
+          "",
+          "I would like to enquire about a stay.",
+          "Name: " + name,
+          when ? "Nights: " + when : "",
+          notes ? "Notes: " + notes : "",
+          "",
+          "Please ring me back on the number I will add here.",
+        ].filter(Boolean).join("\n");
+        link.href =
+          "mailto:?subject=" +
+          encodeURIComponent("Stay enquiry — Arley House") +
+          "&body=" +
+          encodeURIComponent(body);
+        handoff.hidden = false;
+      });
+    })();
+  </script>
+</ConceptLayout>
