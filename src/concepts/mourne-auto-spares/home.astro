@@ -1,0 +1,56 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 4240";
+const phoneHref = "tel:+442843724240";
+---
+
+<ConceptLayout
+  title={"Mourne Auto Spares — independent concept"}
+  slug="mourne-auto-spares"
+  bodyClass="concept-page concept-auto"
+  businessName="Mourne Auto Spares"
+  town="Newcastle"
+>
+  <header class="ma-header">
+    <a class="ma-brand" href="/concepts/mourne-auto-spares/">Mourne Auto Spares</a>
+    <a class="ma-phone" href={phoneHref}>{phone}</a>
+  </header>
+  <main class="ma-main">
+    <p class="ma-eyebrow">Parts desk · Dundrum Road</p>
+    <h1>Have the part number. We will take the call.</h1>
+    <p class="ma-lead">
+      Mourne Auto Spares is the counter at 86 Dundrum Road, Newcastle.
+      This page does not list stock. Write the part you need, then ring the desk.
+    </p>
+    <form class="ma-form" id="part">
+      <h2>What are you looking for?</h2>
+      <label>Part number or description <input id="ma-part" required /></label>
+      <label>Make and model <input id="ma-car" /></label>
+      <button class="ma-btn" type="submit">Show me what to say</button>
+      <div class="ma-handoff" data-ma-handoff hidden>
+        <strong>Ring {phone} and say:</strong>
+        <pre data-ma-script></pre>
+        <a class="ma-btn" href={phoneHref}>Call the desk</a>
+      </div>
+    </form>
+    <p class="ma-address">86 Dundrum Road, Newcastle, BT33 0LN</p>
+  </main>
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("part");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var part = document.getElementById("ma-part").value.trim();
+        var car = document.getElementById("ma-car").value.trim();
+        form.querySelector("[data-ma-script]").textContent =
+          "I am looking for " + part + (car ? " for a " + car : "") + ".";
+        form.querySelector("[data-ma-handoff]").hidden = false;
+      });
+    })();
+  </script>
+</ConceptLayout>

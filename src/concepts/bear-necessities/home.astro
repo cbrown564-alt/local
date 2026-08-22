@@ -1,0 +1,70 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "07887 905 025";
+const phoneHref = "tel:+447887905025";
+const email = "bearnecessitieskids@gmail.com";
+---
+
+<ConceptLayout
+  title={"Bear Necessities — independent concept"}
+  slug="bear-necessities"
+  bodyClass="concept-page concept-bear"
+  businessName="Bear Necessities"
+  town="Newcastle"
+>
+  <header class="bn-header">
+    <a class="bn-brand" href="/concepts/bear-necessities/">Bear Necessities</a>
+    <a class="bn-phone" href={phoneHref}>{phone}</a>
+  </header>
+  <main class="bn-main">
+    <p class="bn-eyebrow">Teddy parties · Newcastle, County Down</p>
+    <h1>Pick a party. Send the date.</h1>
+    <p class="bn-lead">
+      Bear Necessities was founded by Siobhan Rice in 2016. A unique
+      interactive kids experience, with a special focus on teddy bears —
+      parties, groups, and bears you can make at home.
+    </p>
+    <p class="bn-cta">
+      <a class="bn-btn" href="#book">Ask about a date</a>
+      <a class="bn-link" href={phoneHref}>Or call {phone}</a>
+    </p>
+    <form class="bn-form" id="book">
+      <h2>Ask about a date</h2>
+      <p>Opens a draft to the address on the current site.</p>
+      <label>Your name <input id="bn-name" required autocomplete="name" /></label>
+      <label>What you need
+        <select id="bn-kind">
+          <option>A party</option>
+          <option>A group</option>
+          <option>A bear to make at home</option>
+        </select>
+      </label>
+      <label>Date you have in mind <input id="bn-date" type="text" /></label>
+      <button class="bn-btn" type="submit">Prepare my message</button>
+      <div class="bn-handoff" data-bn-handoff hidden>
+        <a data-bn-mail href={`mailto:${email}`}>Open email draft</a>
+      </div>
+    </form>
+  </main>
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("book");
+      if (!form) return;
+      var handoff = form.querySelector("[data-bn-handoff]");
+      var link = form.querySelector("[data-bn-mail]");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = document.getElementById("bn-name").value.trim();
+        var kind = document.getElementById("bn-kind").value;
+        var date = document.getElementById("bn-date").value.trim();
+        var body = ["Hello Siobhan,", "", "I would like to ask about " + kind.toLowerCase() + ".", "Name: " + name, date ? "Date: " + date : "", ""].filter(Boolean).join("\n");
+        link.href = "mailto:bearnecessitieskids@gmail.com?subject=" + encodeURIComponent("Bear Necessities — " + kind) + "&body=" + encodeURIComponent(body);
+        handoff.hidden = false;
+      });
+    })();
+  </script>
+</ConceptLayout>
