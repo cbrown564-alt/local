@@ -7,6 +7,21 @@ const phone = "028 4372 3080";
 const phoneHref = "tel:+442843723080";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Italiana&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap";
+
+const ritual = [
+  {
+    step: "The street",
+    line: "31 Main Street, Newcastle — a prime frontage, regulars and people who have come to the coast.",
+  },
+  {
+    step: "The promenade",
+    line: "A day at the seaside, or an evening stroll along the promenade. That walk is theirs, before the table.",
+  },
+  {
+    step: "Lunch, or dinner reserved",
+    line: "Pop in for lunch, or reserve a table for dinner after the stroll. You stop by, or you call.",
+  },
+];
 ---
 
 <ConceptLayout
@@ -16,119 +31,182 @@ const fontHref =
   businessName="Villa Vinci Restaurante"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The Main Street plate is a drawn illustration, not a photograph of the frontage."
+  bannerNote="Main Street plate is drawn, not a photograph."
 >
+  <div class="vv-strip">
+    <span>31 Main Street, Newcastle · BT33 0AD</span>
+    <span class="vv-strip-r">Great food by the sea…</span>
+  </div>
+
   <header class="vv-header">
     <a class="vv-brand" href="/concepts/villa-vinci/">
-      <span class="vv-name">Villa Vinci</span>
-      <span class="vv-sub">Restaurante · Newcastle</span>
+      <span class="vv-brand-name">Villa Vinci</span>
+      <span class="vv-brand-sub">Restaurante · Newcastle</span>
     </a>
-    <nav class="vv-nav">
-      <a href="#place">The street</a>
+    <nav class="vv-nav" aria-label="Concept navigation">
       <a href="#ritual">The walk</a>
-      <a href="#enquire">A table</a>
+      <a href="#place">The street</a>
+      <a href="#family">The family</a>
     </nav>
-    <a class="vv-phone" href={phoneHref}>{phone}</a>
+    <a class="vv-header-call" href="#enquire">Ask about a table</a>
   </header>
 
   <main class="vv-main">
-    <section class="vv-hero">
-      <p class="vv-eyebrow">31 Main Street · BT33 0AD</p>
-      <h1>Great food by the sea.</h1>
-      <p class="vv-lead">
-        A Mediterranean-origin table on Newcastle Main Street. Regulars and
-        people who have come to the coast. Food sourced locally. Staff who
-        have been here long enough to make you feel at home.
-      </p>
-      <p class="vv-cta">
-        <a class="vv-btn" href="#enquire">Ask about a table</a>
-        <a class="vv-quiet" href={phoneHref}>Call {phone}</a>
-      </p>
-    </section>
+    <div class="vv-first">
+      <section class="vv-hero" aria-labelledby="vv-headline">
+        <p class="vv-kicker">Main Street · the promenade is the next step</p>
+        <h1 id="vv-headline" class="vv-headline">
+          <span>Promenade first.</span>
+          <em>Then the table.</em>
+        </h1>
+        <p class="vv-lede">
+          A Mediterranean-origin restaurant on Newcastle’s Main Street for
+          regulars and tourists. They source locally. Long-serving staff make
+          you feel at home. One room in an inland family — this door is 31 Main
+          Street, not Portadown, not Newry.
+        </p>
+        <p class="vv-hero-foot">
+          Their site is live at
+          <a href="https://www.villavinci.co.uk/">villavinci.co.uk</a>.
+          Call <a href={phoneHref}>{phone}</a>.
+        </p>
+      </section>
 
-    <blockquote class="vv-voice">
-      <p>
-        “Why not pop in for lunch on a day at the seaside or reserve a table
-        for dinner after an evening stroll on along the promenade.”
-      </p>
-      <footer>Villa Vinci · villavinci.co.uk/about</footer>
-    </blockquote>
+      <form class="vv-enquire" id="enquire" data-vv-enquire aria-labelledby="vv-enquire-title">
+        <p class="vv-enquire-eyebrow">A table</p>
+        <h2 id="vv-enquire-title">Have the evening ready, then ring.</h2>
+        <p class="vv-enquire-intro">
+          There is no diary here and no inbox. Write what you need. We will
+          give you the words. Then you call {phone}.
+        </p>
+        <div class="vv-field">
+          <label for="vv-name">Your name</label>
+          <input id="vv-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="vv-field">
+          <label for="vv-when">When you have in mind</label>
+          <input id="vv-when" name="when" placeholder="Saturday dinner after a walk" />
+        </div>
+        <div class="vv-field">
+          <label for="vv-notes">Anything we should know</label>
+          <textarea id="vv-notes" name="notes" rows="3"></textarea>
+        </div>
+        <button class="vv-submit" type="submit">Show me what to say</button>
+        <div class="vv-handoff" data-vv-handoff role="status" hidden tabindex="-1">
+          <strong>Ring {phone} and say:</strong>
+          <pre data-vv-script></pre>
+          <a class="vv-call" href={phoneHref}>Call now</a>
+        </div>
+        <p class="vv-enquire-foot">
+          Nothing is sent from this page. The script stays with you.
+        </p>
+      </form>
+    </div>
 
-    <figure class="vv-plate">
-      <svg viewBox="0 0 720 260" role="img" aria-label="Drawn plate of Main Street frontage facing the promenade and sea">
-        <rect width="720" height="260" fill="#f3ebe0"/>
-        <rect x="0" y="0" width="720" height="118" fill="#c9d8e6"/>
-        <path d="M0 118 Q180 98 360 118 T720 108 L720 168 L0 168 Z" fill="#8eb4c8"/>
-        <path d="M0 150 Q200 138 400 154 T720 146 L720 168 L0 168 Z" fill="#6d9bb0"/>
-        <rect x="0" y="168" width="720" height="28" fill="#d8c9b0"/>
-        <rect x="0" y="196" width="720" height="64" fill="#c4b49a"/>
-        <rect x="86" y="86" width="132" height="110" fill="#8a4a3a"/>
-        <rect x="102" y="108" width="28" height="36" fill="#e8d8c4"/>
-        <rect x="174" y="108" width="28" height="36" fill="#e8d8c4"/>
-        <rect x="138" y="156" width="28" height="40" fill="#3d2a22"/>
-        <rect x="248" y="104" width="88" height="92" fill="#6e4a38"/>
-        <rect x="262" y="118" width="22" height="28" fill="#e8d8c4"/>
-        <rect x="300" y="118" width="22" height="28" fill="#e8d8c4"/>
-        <rect x="368" y="96" width="70" height="100" fill="#7a5340"/>
-        <polygon points="86,86 152,58 218,86" fill="#5a3228"/>
-        <text x="152" y="78" text-anchor="middle" font-size="11" fill="#f3ebe0">Main St</text>
-        <text x="520" y="88" text-anchor="middle" font-size="12" fill="#2c3d4a">promenade</text>
-        <text x="620" y="142" text-anchor="middle" font-size="12" fill="#f3ebe0">sea</text>
-      </svg>
-      <figcaption>Drawn plate: Main Street looking toward the promenade and the sea.</figcaption>
+    <figure class="vv-voice">
+      <blockquote cite="https://www.villavinci.co.uk/about/">
+        <p>
+          “Why not pop in for lunch on a day at the seaside or reserve a table
+          for dinner after an evening stroll on along the promenade.”
+        </p>
+      </blockquote>
+      <figcaption>Villa Vinci · villavinci.co.uk/about</figcaption>
     </figure>
 
-    <section class="vv-place" id="place">
-      <p class="vv-eyebrow">Where you are</p>
-      <h2>Main Street. The promenade is the next step.</h2>
-      <p>
-        31 Main Street, Newcastle, BT33 0AD. If a map ever sends you to
-        Portadown, stay on this street — that pin is a sister restaurant.
-      </p>
+    <section class="vv-ritual" id="ritual" aria-labelledby="vv-ritual-title">
+      <div class="vv-section-head">
+        <p class="vv-eyebrow">The day they describe</p>
+        <h2 id="vv-ritual-title">The walk, then the reserve.</h2>
+      </div>
+      <ol class="vv-steps">
+        {ritual.map((entry, index) => (
+          <li class="vv-step">
+            <span class="vv-step-n" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <h3 class="vv-step-name">{entry.step}</h3>
+            <p class="vv-step-line">{entry.line}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
-    <section class="vv-ritual" id="ritual">
-      <p class="vv-eyebrow">The day they describe</p>
-      <h2>Promenade first. Then lunch, or dinner after the stroll.</h2>
-      <p>
-        Pop in on a day at the seaside, or reserve after an evening walk.
-        There is no diary on the site. You stop by, or you call.
-      </p>
+    <section class="vv-place" id="place" aria-labelledby="vv-place-title">
+      <div class="vv-section-head">
+        <p class="vv-eyebrow">Where you are</p>
+        <h2 id="vv-place-title">Main Street facing the promenade and the sea.</h2>
+        <p>
+          Villa Vinci Restaurante, 31 Main Street, Newcastle, BT33 0AD. If a
+          map sends you to Portadown, stay on 31 Main Street — that pin is a
+          sister.
+        </p>
+      </div>
+      <figure class="vv-plate">
+        <svg viewBox="0 0 720 260" role="img" aria-label="Drawn plate of Main Street frontage facing the promenade and sea">
+          <rect width="720" height="260" fill="#f3ebe0"/>
+          <rect x="0" y="0" width="720" height="118" fill="#c9d8e6"/>
+          <path d="M0 118 Q180 98 360 118 T720 108 L720 168 L0 168 Z" fill="#8eb4c8"/>
+          <path d="M0 150 Q200 138 400 154 T720 146 L720 168 L0 168 Z" fill="#6d9bb0"/>
+          <rect x="0" y="168" width="720" height="28" fill="#d8c9b0"/>
+          <rect x="0" y="196" width="720" height="64" fill="#c4b49a"/>
+          <rect x="86" y="86" width="132" height="110" fill="#8a4a3a"/>
+          <rect x="102" y="108" width="28" height="36" fill="#e8d8c4"/>
+          <rect x="174" y="108" width="28" height="36" fill="#e8d8c4"/>
+          <rect x="138" y="156" width="28" height="40" fill="#3d2a22"/>
+          <rect x="248" y="104" width="88" height="92" fill="#6e4a38"/>
+          <rect x="262" y="118" width="22" height="28" fill="#e8d8c4"/>
+          <rect x="300" y="118" width="22" height="28" fill="#e8d8c4"/>
+          <rect x="368" y="96" width="70" height="100" fill="#7a5340"/>
+          <polygon points="86,86 152,58 218,86" fill="#5a3228"/>
+          <text x="152" y="78" text-anchor="middle" font-size="11" fill="#f3ebe0">Main St</text>
+          <text x="520" y="88" text-anchor="middle" font-size="12" fill="#2c3d4a">promenade</text>
+          <text x="620" y="142" text-anchor="middle" font-size="12" fill="#f3ebe0">sea</text>
+        </svg>
+        <figcaption>Drawn plate: Main Street, promenade, sea — an illustration, not a photograph.</figcaption>
+      </figure>
     </section>
 
-    <section class="vv-family">
-      <p class="vv-eyebrow">Sister tables — not this door</p>
-      <h2>The family cooks in more than one town.</h2>
-      <ul>
-        <li>
-          Zio · Millennium Court, William Street, Portadown · 028 3833 7696 ·
+    <section class="vv-family" id="family" aria-labelledby="vv-family-title">
+      <div class="vv-section-head">
+        <p class="vv-eyebrow">Sister tables — not this door</p>
+        <h2 id="vv-family-title">The family cooks in more than one town.</h2>
+        <p>
+          They name two other rooms. Those streets and numbers are not
+          Newcastle. This page is only 31 Main Street.
+        </p>
+      </div>
+      <ul class="vv-sisters">
+        <li class="vv-sister">
+          <p class="vv-sister-where">Portadown</p>
+          <h3>Zio</h3>
+          <p>Millennium Court, William Street · 028 3833 7696</p>
           <a href="https://ziorestaurant.com">ziorestaurant.com</a>
         </li>
-        <li>
-          Al Forno · 3 Francis Street, Newry · 028 3025 7687 ·
+        <li class="vv-sister">
+          <p class="vv-sister-where">Newry</p>
+          <h3>Al Forno</h3>
+          <p>3 Francis Street · 028 3025 7687</p>
           <a href="https://alfornonewry.com">alfornonewry.com</a>
         </li>
       </ul>
-      <p class="vv-note">Those streets belong to the sisters. This page is 31 Main Street.</p>
     </section>
 
-    <form class="vv-form" id="enquire">
-      <h2>Have the evening ready, then ring.</h2>
-      <p>No rates, no diary here. Write what you need, then call {phone}.</p>
-      <label>Your name <input id="vv-name" required autocomplete="name" /></label>
-      <label>When you have in mind <input id="vv-when" placeholder="Saturday dinner after a walk" /></label>
-      <label>Anything we should know <textarea id="vv-notes" rows="3"></textarea></label>
-      <button class="vv-btn" type="submit">Show me what to say</button>
-      <div class="vv-handoff" data-vv-handoff hidden>
-        <strong>Ring {phone} and say:</strong>
-        <pre data-vv-script></pre>
-        <a class="vv-btn" href={phoneHref}>Call now</a>
-      </div>
-    </form>
+    <section class="vv-close" aria-labelledby="vv-close-title">
+      <h2 id="vv-close-title">Great food by the sea.</h2>
+      <p>
+        Regulars and tourists. Mediterranean origins. Sourced locally.
+        Long-serving staff who make you feel at home. The walk first — then
+        lunch, or dinner reserved.
+      </p>
+      <p class="vv-close-actions">
+        <a class="vv-close-cta" href="#enquire">Ask about a table</a>
+        <span>or call <a href={phoneHref}>{phone}</a></span>
+      </p>
+      <p class="vv-close-address">Villa Vinci Restaurante · 31 Main Street, Newcastle, BT33 0AD</p>
+    </section>
   </main>
+
   <script is:inline>
     (function () {
-      var form = document.getElementById("enquire");
+      var form = document.querySelector("[data-vv-enquire]");
       if (!form) return;
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -141,7 +219,9 @@ const fontHref =
           when ? "I would like a table " + when + "." : "I would like to ask about a table.",
           notes || ""
         ].filter(Boolean).join("\n");
-        form.querySelector("[data-vv-handoff]").hidden = false;
+        var handoff = form.querySelector("[data-vv-handoff]");
+        handoff.hidden = false;
+        handoff.focus();
       });
     })();
   </script>
