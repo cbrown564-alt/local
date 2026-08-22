@@ -6,6 +6,21 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 const phone = "07887 905 025";
 const phoneHref = "tel:+447887905025";
 const email = "bearnecessitieskids@gmail.com";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap";
+
+const ritual = [
+  { n: "01", title: "Choose your bear", line: "Little Ted (10\"), Big Ted (16\"), or a licensed Care Bear." },
+  { n: "02", title: "The stuffing machine", line: "They are not hand stuffed. The machine is the experience." },
+  { n: "03", title: "A heart goes in", line: "Every bear gets a heart insert before it is closed." },
+  { n: "04", title: "Adoption certificate", line: "The bear leaves with a name and a paper that says it is yours." },
+];
+
+const parties = [
+  { name: "Little Ted", size: "10-inch", price: "£10.50", note: "per child — the budget party, sized for little hands." },
+  { name: "Big Ted", size: "16-inch", price: "£15.99", note: "per child — the larger bear for a bigger celebration." },
+  { name: "Care Bear", size: "licensed 16-inch", price: "£16.99", note: "per child — heart and certificate included." },
+];
 ---
 
 <ConceptLayout
@@ -14,41 +29,161 @@ const email = "bearnecessitieskids@gmail.com";
   bodyClass="concept-page concept-bear"
   businessName="Bear Necessities"
   town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The heart plate is a drawn illustration, not a photograph of Siobhan's machine."
 >
   <header class="bn-header">
-    <a class="bn-brand" href="/concepts/bear-necessities/">Bear Necessities</a>
+    <a class="bn-brand" href="/concepts/bear-necessities/">
+      <span class="bn-word">Bear Necessities</span>
+      <span class="bn-where">Newcastle, County Down · since 2016</span>
+    </a>
+    <nav class="bn-nav" aria-label="On this page">
+      <a href="#ritual">The ritual</a>
+      <a href="#travel">We travel</a>
+      <a href="#book">Ask for a date</a>
+    </nav>
     <a class="bn-phone" href={phoneHref}>{phone}</a>
   </header>
+
   <main class="bn-main">
-    <p class="bn-eyebrow">Teddy parties · Newcastle, County Down</p>
-    <h1>Pick a party. Send the date.</h1>
-    <p class="bn-lead">
-      Bear Necessities was founded by Siobhan Rice in 2016. A unique
-      interactive kids experience, with a special focus on teddy bears —
-      parties, groups, and bears you can make at home.
-    </p>
-    <p class="bn-cta">
-      <a class="bn-btn" href="#book">Ask about a date</a>
-      <a class="bn-link" href={phoneHref}>Or call {phone}</a>
-    </p>
-    <form class="bn-form" id="book">
-      <h2>Ask about a date</h2>
-      <p>Opens a draft to the address on the current site.</p>
-      <label>Your name <input id="bn-name" required autocomplete="name" /></label>
-      <label>What you need
-        <select id="bn-kind">
-          <option>A party</option>
-          <option>A group</option>
-          <option>A bear to make at home</option>
-        </select>
-      </label>
-      <label>Date you have in mind <input id="bn-date" type="text" /></label>
+    <section class="bn-hero">
+      <p class="bn-eyebrow">Siobhan Rice · teddy bear stuffing</p>
+      <h1>The machine comes to you.</h1>
+      <p class="bn-lead">
+        A birthday hall, a school, a living-room floor. We bring the stuffing
+        machine, the hearts, and the certificates. You pick the date.
+      </p>
+      <p class="bn-cta">
+        <a class="bn-btn" href="#book">Ask about a date</a>
+        <a class="bn-quiet" href={phoneHref}>Or call {phone}</a>
+      </p>
+    </section>
+
+    <figure class="bn-plate" aria-labelledby="bn-plate-title">
+      <svg viewBox="0 0 720 280" role="img" aria-label="Drawn plate: a heart being placed into an open teddy, beside a stuffing machine">
+        <rect width="720" height="280" fill="#fff4d8"/>
+        <ellipse cx="160" cy="170" rx="70" ry="86" fill="#c9842a" stroke="#5a3a16" stroke-width="3"/>
+        <circle cx="132" cy="118" r="28" fill="#c9842a" stroke="#5a3a16" stroke-width="3"/>
+        <circle cx="188" cy="118" r="28" fill="#c9842a" stroke="#5a3a16" stroke-width="3"/>
+        <path d="M160 148c-18 0-28 16-28 28 0 22 28 40 28 40s28-18 28-40c0-12-10-28-28-28z" fill="#b42318"/>
+        <rect x="340" y="70" width="140" height="150" rx="8" fill="#6b4f2a" stroke="#3a2812" stroke-width="3"/>
+        <circle cx="410" cy="130" r="28" fill="#f2d48a" stroke="#3a2812" stroke-width="3"/>
+        <path d="M396 130h28M410 116v28" stroke="#3a2812" stroke-width="3"/>
+        <rect x="520" y="90" width="120" height="90" rx="6" fill="#fffaf0" stroke="#5a3a16" stroke-width="2"/>
+        <text x="580" y="128" text-anchor="middle" font-size="13" fill="#5a3a16">ADOPTION</text>
+        <text x="580" y="150" text-anchor="middle" font-size="11" fill="#8a6230">certificate</text>
+      </svg>
+      <figcaption id="bn-plate-title">Drawn plate of the ritual: bear, machine, heart, certificate.</figcaption>
+    </figure>
+
+    <blockquote class="bn-voice">
+      <p>
+        “Bear Necessities was founded by Siobhan Rice in 2016. Siobhan's love
+        for creativity and making children happy led her to create a unique
+        interactive kid's experience, with a special focus on teddy bears.”
+      </p>
+      <footer>Siobhan Rice · bearnecessitieskids.co.uk</footer>
+    </blockquote>
+
+    <section class="bn-ritual" id="ritual">
+      <p class="bn-eyebrow">What actually happens</p>
+      <h2>Not a soft-play hour. A stuffing.</h2>
+      <p class="bn-body">
+        Are bears are all stuffed with the use of our teddy bear stuffing
+        machine. <strong>THEY ARE NOT HAND STUFFED.</strong> It is an
+        interactive experience which includes a heart insert and adoption
+        certificate for your bear.
+      </p>
+      <ol class="bn-steps">
+        {ritual.map((step) => (
+          <li>
+            <span class="bn-n">{step.n}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.line}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="bn-travel" id="travel">
+      <p class="bn-eyebrow">Parties</p>
+      <h2>Did you know we travel, to your choice of venue!</h2>
+      <p class="bn-body">
+        The party is not a shop you have to find. The machine arrives. Groups
+        need twelve guests or more. A local call-out starts at £35.
+      </p>
+      <ul class="bn-packs">
+        {parties.map((pack) => (
+          <li>
+            <h3>{pack.name}</h3>
+            <p class="bn-size">{pack.size}</p>
+            <p class="bn-price">{pack.price}</p>
+            <p>{pack.note}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="bn-prices-note">
+        Package prices as published on our own pages, August 2026.
+      </p>
+      <div class="bn-split">
+        <article>
+          <h3>Party at home</h3>
+          <p>
+            Bear, stuffing and supplies to the living room — the same ritual
+            without the call-out, if you would rather stay put.
+          </p>
+        </article>
+        <article>
+          <h3>Schools, church, community</h3>
+          <p>
+            Group bookings from twelve, no maximum. Sand art from £10 a
+            child for an A4, or £3.50 as a small oval extra — not as a
+            stand-alone add-on without the bear.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bn-online">
+      <h2>The cart is for rainy days. The date is for a party.</h2>
+      <p class="bn-body">
+        The online store holds make-your-own bears and outfits. Watch Facebook
+        for special offers and competitions — and post your teddy photos there.
+        Use this page when you need a Saturday held.
+      </p>
+      <p>
+        <a class="bn-quiet" href="https://www.facebook.com/Bearnecessitiespartyvenue">Today's offers on Facebook</a>
+      </p>
+    </section>
+
+    <form class="bn-form" id="book" aria-labelledby="bn-book-title">
+      <p class="bn-eyebrow">Book a date</p>
+      <h2 id="bn-book-title">Tell us the Saturday you have.</h2>
+      <p class="bn-body">Opens a draft to bearnecessitieskids@gmail.com. We confirm — there is no live diary.</p>
+      <div class="bn-grid">
+        <label>Your name <input id="bn-name" required autocomplete="name" /></label>
+        <label>What you need
+          <select id="bn-kind">
+            <option>A party we travel to</option>
+            <option>A school or church group</option>
+            <option>A party-at-home pack</option>
+            <option>Bears and outfits from the shop</option>
+          </select>
+        </label>
+        <label>Date you have in mind <input id="bn-date" type="text" placeholder="e.g. Saturday 12 September" /></label>
+        <label>About how many children <input id="bn-count" type="text" inputmode="numeric" /></label>
+      </div>
       <button class="bn-btn" type="submit">Prepare my message</button>
       <div class="bn-handoff" data-bn-handoff hidden>
+        <strong>Your message is ready.</strong>
         <a data-bn-mail href={`mailto:${email}`}>Open email draft</a>
+        <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
       </div>
     </form>
   </main>
+
   <script is:inline>
     (function () {
       var form = document.getElementById("book");
@@ -61,8 +196,22 @@ const email = "bearnecessitieskids@gmail.com";
         var name = document.getElementById("bn-name").value.trim();
         var kind = document.getElementById("bn-kind").value;
         var date = document.getElementById("bn-date").value.trim();
-        var body = ["Hello Siobhan,", "", "I would like to ask about " + kind.toLowerCase() + ".", "Name: " + name, date ? "Date: " + date : "", ""].filter(Boolean).join("\n");
-        link.href = "mailto:bearnecessitieskids@gmail.com?subject=" + encodeURIComponent("Bear Necessities — " + kind) + "&body=" + encodeURIComponent(body);
+        var count = document.getElementById("bn-count").value.trim();
+        var body = [
+          "Hello Siobhan,",
+          "",
+          "I would like to book: " + kind + ".",
+          "Name: " + name,
+          date ? "Date: " + date : "",
+          count ? "Children: " + count : "",
+          "",
+          "Please tell me if that Saturday is free.",
+        ].filter(Boolean).join("\n");
+        link.href =
+          "mailto:bearnecessitieskids@gmail.com?subject=" +
+          encodeURIComponent("Bear Necessities — " + kind) +
+          "&body=" +
+          encodeURIComponent(body);
         handoff.hidden = false;
       });
     })();
