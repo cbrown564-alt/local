@@ -1,5 +1,14 @@
 # Generated map implementation plan
 
+## Rule
+
+New concept maps must use `src/concepts/_shell/GeneratedMapPlate.astro` with
+an AI-generated raster under `public/media/maps/` or the relevant concept media
+directory. Do not add a new `MapPlate` import or inline SVG map. Labels, pins,
+descriptions and interaction remain HTML overlays. The build guard allows the
+three pre-existing SVG plates listed in `tools/check/check-generated-maps.mjs`
+until they are migrated; no new exceptions should be added.
+
 ## Current state
 
 The first generated map set is saved in `public/media/maps/`. The town map is
@@ -8,14 +17,14 @@ generated markers removed so the site can add them as HTML.
 
 ## Work sequence
 
-1. Review each saved image against its current SVG iteration for geography,
+1. Review each saved image against its prior vector iteration for geography,
    hierarchy, crop, contrast, and mobile legibility. Record corrections before
    integration.
 2. Polish accepted images with targeted generation passes. Keep labels, pins,
    legends, and interaction affordances out of the raster artwork.
 3. Add each generated asset to `research/image-provenance.md` and disclose
    generated artwork in the visible guest-facing layer where it is used.
-4. Replace the inline SVG in `TownMap.astro` with the raster image and rebuild
+4. Use the raster image in `TownMap.astro` and rebuild
    labels, pins, focus states, hover cards, and links as HTML. Preserve the
    existing keyboard, screen-reader, responsive, and reduced-motion behavior.
 5. Verify the town map at desktop and mobile sizes, then apply the proven
@@ -35,12 +44,12 @@ generated markers removed so the site can add them as HTML.
 
 ## Implementation record — 5 August 2026
 
-- Reviewed all six rasters against their SVG predecessors. The accepted town
+- Reviewed all six rasters against their prior vector predecessors. The accepted town
   artwork keeps the two-town, coast, forest and mountain hierarchy clear; the
   five concept plates retain their published place relationships. Baked-in
   trail lines and food/place vignettes are treated as illustrative background,
   never as navigation, surveyed positions or supplier evidence.
-- Replaced the town SVG with the generated raster and HTML town labels,
+- Replaced the town vector artwork with the generated raster and HTML town labels,
   business pins, focus rings, hover cards and links. The full business index is
   the small-screen interaction path; decorative overlays are hidden there.
 - Added a shared generated-map figure for the five concept plates. Raster

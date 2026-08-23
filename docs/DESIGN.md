@@ -19,7 +19,7 @@ Bay & Mournes — colour and atmosphere drawn from the Newcastle shore rather th
 - Cool mist `#E6EEF2` — quiet section backgrounds and disclosures
 - Foam `#F4F8FA` — main canvas
 
-The homepage opens on Product Stage: a two-column offer pairs one direct headline with a short supporting sentence and CTA, and the featured before/after comparison performs the offer — it arrives fully "before" and sweeps once to the settled split on load (`BeforeAfter`'s `sweep` prop, reduced-motion safe, cancelled by any user takeover). A quiet claim-door link ("if one is yours, it's yours") sits under the hero CTA. Place belonging arrives as the drawn town map: Dundrum and Newcastle with every public transformation pinned, elevated from the former photo band. Alternative directions remain at `/prototypes/home/`.
+The homepage opens on Product Stage: a two-column offer pairs one direct headline with a short supporting sentence and CTA, and the featured before/after comparison performs the offer — it arrives fully "before" and sweeps once to the settled split on load (`BeforeAfter`'s `sweep` prop, reduced-motion safe, cancelled by any user takeover). A quiet claim-door link ("if one is yours, it's yours") sits under the hero CTA. Place belonging arrives as the generated-raster town map: Dundrum and Newcastle with every public transformation pinned in HTML, elevated from the former photo band. Alternative directions remain at `/prototypes/home/`.
 
 Antonio is the display face. Its narrow proportions provide energy without adding more elements to the page. Atkinson Hyperlegible Next is the body face for open, readable text. The large type is part of the composition; supporting copy stays short.
 
@@ -33,7 +33,7 @@ appears only on the transformation page. Content uses a 1180px maximum
 width, long vertical spacing and a small set of strong alignments.
 
 The town map (`src/site/components/TownMap.astro`) is the studio's keepable
-artifact: an indicative drawn map of Dundrum and Newcastle — the castle
+artifact: an indicative AI-generated raster map of Dundrum and Newcastle — the castle
 keep, Murlough, the bay, the Mourne ridges — with a gorse pin per public
 transformation. Pins are proof, not a directory: each names and opens its
 transformation and nothing else is listed. Pin coordinates live on each

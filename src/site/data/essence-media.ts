@@ -51,6 +51,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "From Tuesday tea to the plate you look forward to",
     }],
   },
+  "binghams-menswear": {
+    heading: "Two measured days, through one door.",
+    lede: "From the P1 school blazer to the wedding morning, measured properly on Main Street.",
+    frames: [{
+      src: "/media/concepts/binghams-menswear/fitting-session.jpg",
+      alt: "AI-generated scene of a bespoke herringbone tweed jacket on a tailoring bust with tailor's tape, shears and chalk on Main Street",
+      label: "The fitting on Main Street",
+    }],
+  },
   "bucks-head": {
     heading: "The warmth travels from hearth to plate.",
     lede: "The old room and the modern kitchen belong to the same house.",

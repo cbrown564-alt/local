@@ -10,8 +10,8 @@ Decisions already made (brainstorm, 1 August 2026):
 
 - **Primary arrival: cold strangers.** The claim door (one-sheet recipients)
   is real but secondary — it never outranks the free before-and-after offer.
-- **The town coverage map is the theatre.** A drawn map of Dundrum and
-  Newcastle with every public transformation pinned is the shell's keepable
+- **The town coverage map is the theatre.** An AI-generated raster map of
+  Dundrum and Newcastle with every public transformation pinned in HTML is the shell's keepable
   artifact — the studio's equivalent of the Enniskeen estate map.
 - **Directions A and B only.** A: the shell is treated as the studio's own
   flagship concept. B: two doors — request for the cold stranger, claim for
@@ -105,15 +105,16 @@ driven by
 ### 3. The town map, elevated from the photo band (theatre, the keepable artifact)
 
 The "Rooted here / Made here, for here" photo band is the survivor that
-gets elevated: it becomes a drawn map of Dundrum and Newcastle with every
+gets elevated: it becomes an AI-generated raster map of Dundrum and Newcastle with every
 public transformation pinned at its street. The shore photograph may
 survive only as texture inside the map's sea — the band's job ("this
 studio is *of* this place") is now done by something only this studio
 could have made.
 
-- This is a drawing, not a diagram: budget it as its own session, per the
-  method's map test and the Enniskeen lesson (clipped labels are invisible
-  in code review — look at it).
+- The raster is illustrative, not a survey or diagram: budget generation and
+  visual review as its own session. Keep labels and pins in HTML; clipped or
+  misaligned overlays are invisible in code review, so inspect the rendered
+  page.
 - The map must not read as an unattended directory (PRODUCT.md's warning
   about shared discovery). Pins are proof of concept work, each linking to
   its transformation; the map lists nothing else — no hours, no contact

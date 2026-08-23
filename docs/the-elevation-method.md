@@ -82,9 +82,10 @@ Apply each to the business; the answers are the moves.
   words, art-directed, beat studio copy and prove attentiveness in one
   gesture.
 - **The map test.** Every business has a geography: estate, larder,
-  catchment, trails. A drawn map of it, indicative-disclosed and grounded
-  only in what they publish, is the keepable artifact — the piece an owner
-  holds onto. Budget it as its own session; it is a drawing, not a diagram.
+  catchment, trails. An AI-generated raster map of it, grounded only in what
+  they publish, can be the keepable artifact — the piece an owner holds onto.
+  Keep labels, pins and interaction in HTML; the raster is illustrative, not
+  a survey or navigation. Budget it as its own generation and review session.
 - **The ritual test.** What game or mechanism runs inside the business? The
   supper club's secrecy. The phone that always finds a vet. "When it's gone,
   it's gone." Stage the ritual; do not merely report it.
@@ -115,8 +116,8 @@ Recognition is cheaper than it looks; theatre is not. Ship in this order:
   creed into something you can see.
 3. **The theatre moment** — one hero, in the right register, with its
   mechanism built and tested before its assets arrive.
-4. **The map**, alone, as its own session — then the one-sheet, which takes
-  the map on its reverse.
+4. **The map**, alone, as its own generation and review session — then the
+  one-sheet, which takes the map on its reverse when the concept needs one.
 
 ### 5. Pin the magic
 

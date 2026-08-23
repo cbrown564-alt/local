@@ -158,9 +158,10 @@ line. No "not before 1 July."
 
 ### 4. The school roll — the keepable artifact *(this pass)*
 
-The school list set as the shop's roll — a drawn plate (MapPlate idiom, or a
-typeset honour-roll plate if a map would stretch the geography): the eight
-towns drawn true (Newcastle on the coast; Dundrum and Clough north along the
+The school list set as the shop's roll — a generated raster plate with HTML
+labels and a full key below (or a typeset honour-roll plate if a map would
+stretch the geography): the eight towns illustrated true (Newcastle on the
+coast; Dundrum and Clough north along the
 bay road; Kilkeel south; Ballynahinch, Downpatrick and Castlewellan inland),
 each school's name set under its town in the concept's hand. All fourteen
 names, only their fourteen names. Caption: *"The schools we stock uniform

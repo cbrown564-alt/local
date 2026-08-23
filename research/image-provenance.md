@@ -556,6 +556,12 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   Warrenpoint Town Square and the Mournes; the private hall remains unlocated.
   It is not a survey, route planner, exact road map or evidence of event
   operations. Labels, pins and the mobile key are HTML overlays.
+- `public/media/maps/binghams-school-roll-generated.png` — **in use** (23 August
+  2026). AI-generated indicative County Down school-roll artwork made with the
+  built-in OpenAI image generation tool. It shows the published town
+  relationships for the shop's fourteen-school uniform list; it is not a
+  survey, road map, school catchment map, or evidence of any school's current
+  relationship with the shop. Town labels and the full school roll are HTML.
 - `public/media/concepts/arley-house/arley-house-exterior-generated.jpg` and
   `arley-house-breakfast-generated.jpg` — **in use** (23 August 2026). AI-generated
   indicative visualisations made with the built-in OpenAI image generation tool
@@ -1122,6 +1128,9 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/conlyn-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/binghams-menswear/fitting-session.jpg` — generated concept plate of the fitting scene with herringbone tweed, tailor's tape, shears and chalk on Main Street; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/binghams-menswear/two-blazers.jpg` — generated concept plate showing the two measured days (junior school blazer and groom's three-piece suit side by side); disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/binghams-menswear/hire-rail.jpg` — generated concept plate of the hire rail and suiting cloths; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/binghams-menswear/jacket.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/cafe-mauds/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.

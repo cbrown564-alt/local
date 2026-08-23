@@ -176,7 +176,7 @@ review the bilingual menu before client use.
 Established 1973 with "Build On Experience" as its own words and thirteen
 named projects across six sectors — churches, hospitals, schools and
 community halls from Magheralin to Crossmaglen. The keepable artifact
-writes itself: a drawn map of built work across the counties, the
+writes itself: an AI-generated raster map of built work across the counties, the
 contractor's equivalent of the estate plate. Two things hold it at six. It
 was republished on 3 August 2026 after two repair cycles (an identity
 blocker, then a false case-study premise), so the next pass should be a
