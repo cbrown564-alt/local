@@ -42,7 +42,7 @@ const record = [
       </p>
       <p class="ia-stock">
         Today's machines:
-        <a href={catalogue}>irelandsappliances.com/catalogue</a>
+        <a class="ia-cat" href={catalogue}>irelandsappliances.com/catalogue</a>
       </p>
     </section>
 
@@ -58,51 +58,74 @@ const record = [
     <section class="ia-job" id="job" aria-labelledby="ia-job-title">
       <p class="ia-kicker">A repair, or a machine</p>
       <h2 id="ia-job-title">Write the job. Say the week you need it.</h2>
-      <p>
+      <p class="ia-job-lead">
         Write what you need and the week you need it. We'll open a note to
         {email} — you send it. Or ring the desk.
       </p>
       <form class="ia-docket" data-ia-request>
-        <label>
-          <span>Name</span>
-          <input id="ia-who" name="name" type="text" autocomplete="name" required />
-        </label>
-        <label>
-          <span>Best number</span>
-          <input id="ia-tel" name="tel" type="tel" autocomplete="tel" required />
-        </label>
-        <fieldset>
+        <header class="ia-docket-head">
+          <span class="ia-docket-no">Workshop docket</span>
+          <span>67–69 The Harbour</span>
+        </header>
+        <div class="ia-docket-grid">
+          <label class="ia-field">
+            <span>Name</span>
+            <input id="ia-who" name="name" type="text" autocomplete="name" required />
+          </label>
+          <label class="ia-field">
+            <span>Best number</span>
+            <input id="ia-tel" name="tel" type="tel" autocomplete="tel" required />
+          </label>
+        </div>
+        <fieldset class="ia-field ia-field--choice">
           <legend>The job</legend>
           <label><input type="radio" name="ia-kind" value="A repair at the house" checked /> Repair at the house</label>
           <label><input type="radio" name="ia-kind" value="A repair on the bench" /> Repair on the bench</label>
           <label><input type="radio" name="ia-kind" value="A machine" /> A machine</label>
           <label><input type="radio" name="ia-kind" value="A price match" /> Price match</label>
         </fieldset>
-        <label>
+        <label class="ia-field">
           <span>The week you need it</span>
           <input id="ia-week" name="week" type="text" placeholder="This week / next week" required />
         </label>
-        <label>
+        <label class="ia-field">
           <span>What broke, or the cheaper sighting</span>
           <textarea id="ia-notes" name="notes" rows="3"></textarea>
         </label>
-        <button type="submit">Prepare the docket</button>
+        <div class="ia-submit-bar">
+          <button type="submit">Prepare the docket</button>
+        </div>
         <div class="ia-handoff" data-ia-handoff role="status" hidden tabindex="-1">
           <strong>Docket ready.</strong>
+          <span>We'll open a note to {email} — you send it.</span>
           <a data-ia-email-link href={`mailto:${email}`}>Open email draft</a>
         </div>
       </form>
     </section>
 
-    <figure class="ia-stage">
-      <img
-        src="/media/concepts/irelands-appliance-centre/kitchen.jpg"
-        alt="A kitchen at evening, the machine working again"
-        width="1536"
-        height="1024"
-      />
-      <figcaption>The kitchen working again.</figcaption>
-    </figure>
+    <section class="ia-plates" aria-labelledby="ia-plates-title">
+      <p class="ia-kicker">Harbour and kitchen</p>
+      <h2 id="ia-plates-title">The door on the harbour. The kitchen working again.</h2>
+      <div class="ia-plate-pair">
+        <figure class="ia-stage">
+          <img
+            src="/media/concepts/irelands-appliance-centre/kitchen.jpg"
+            alt="A kitchen at evening, the machine working again"
+            width="1536"
+            height="1024"
+          />
+          <figcaption>The kitchen working again.</figcaption>
+        </figure>
+        <figure class="ia-stage ia-stage--note">
+          <div class="ia-harbour-card">
+            <p class="ia-harbour-mark">67–69</p>
+            <p>The Harbour, Newcastle, BT33 0EY.</p>
+            <p>Mon–Sat 08:30–17:00. Sunday closed.</p>
+          </div>
+          <figcaption>The harbour shop — still this door.</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <p class="ia-foot">
       67–69 The Harbour, Newcastle, BT33 0EY.
