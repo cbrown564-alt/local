@@ -4,6 +4,9 @@ body.concept-bear {
   --bn-ink: #3a1f0c;
   --bn-soft: #6b3f1a;
   --bn-heart: #b42318;
+  --bn-gold: #c9842a;
+  --bn-fill: #fffaf0;
+  --bn-rule: #e8c56a;
   --concept-accent: #c9842a;
   margin: 0;
   background: var(--bn-honey);
@@ -15,17 +18,10 @@ body.concept-bear {
 
 .bn-first {
   min-height: 72svh;
-  padding: clamp(36px, 7vh, 72px) clamp(16px, 5vw, 56px) 24px;
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px) 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.bn-when {
-  margin: 0 0 8px;
-  font-size: 14px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--bn-heart);
 }
 .bn-first h1 {
   margin: 0;
@@ -37,21 +33,28 @@ body.concept-bear {
 .bn-moment, .bn-price-after {
   max-width: 36rem;
   margin: 14px 0 0;
-  font-size: 1.15rem;
+  font-size: clamp(17px, 1.6vw, 20px);
   line-height: 1.5;
 }
 .bn-price-after { color: var(--bn-soft); }
 .bn-first a, .bn-find a, .bn-sealed a { color: var(--bn-heart); }
 
-.bn-stage { margin: 0; }
+.bn-stage {
+  margin: clamp(8px, 2vw, 20px) clamp(16px, 5vw, 56px) 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid var(--bn-gold);
+  box-shadow: 0 16px 36px rgba(58, 31, 12, .12);
+}
 .bn-stage img { display: block; width: 100%; height: auto; }
 .bn-stage figcaption {
-  padding: 8px clamp(16px, 5vw, 56px) 20px;
+  padding: 12px 16px;
   font-size: 13px;
 }
 
 .bn-how, .bn-packs, .bn-find, .bn-invite {
-  padding: clamp(32px, 6vw, 64px) clamp(16px, 5vw, 56px);
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px);
 }
 .bn-kicker {
   margin: 0 0 8px;
@@ -66,38 +69,122 @@ body.concept-bear {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 1.1;
 }
-.bn-packs ul { list-style: none; margin: 20px 0; padding: 0; }
-.bn-packs li {
+.bn-packs ul {
+  list-style: none;
+  margin: 24px 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 12px;
-  padding: 12px 0;
-  border-top: 2px dashed #c9842a;
-  font-size: 1.1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
-@media (max-width: 560px) {
-  .bn-packs li { grid-template-columns: 1fr; gap: 2px; }
+.bn-packs li {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 20px 18px 22px;
+  background: var(--bn-fill);
+  border: 2px dashed var(--bn-gold);
+  border-radius: 16px 16px 14px 14px;
 }
+.bn-packs li::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -7px;
+  height: 12px;
+  background:
+    radial-gradient(circle at 10px 0, transparent 7px, var(--bn-fill) 8px);
+  background-size: 20px 12px;
+}
+.bn-packs strong {
+  display: block;
+  font-family: "Baloo 2", cursive;
+  font-size: 1.35rem;
+}
+.bn-size { color: var(--bn-soft); font-size: 14px; }
+.bn-price {
+  font-family: "Baloo 2", cursive;
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1;
+  color: var(--bn-heart);
+}
+.bn-per { font-size: 13px; color: var(--bn-soft); }
 
 .bn-find { background: #f6c85c; }
 .bn-invite { background: #fffaf0; }
-.bn-rsvp { display: grid; gap: 12px; max-width: 28rem; margin-top: 20px; }
-.bn-rsvp label { display: grid; gap: 4px; font-size: .95rem; }
+.bn-rsvp {
+  display: grid;
+  gap: 14px;
+  max-width: 32rem;
+  margin-top: 24px;
+  padding: clamp(22px, 2.6vw, 28px);
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--bn-rule);
+  box-shadow: 0 16px 36px rgba(58, 31, 12, .08);
+}
+.bn-field { display: block; }
+.bn-field span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
 .bn-rsvp input {
-  border: 0;
-  border-bottom: 2px solid #c9842a;
-  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid var(--bn-rule);
+  border-radius: 10px;
+  background: var(--bn-honey);
+  color: var(--bn-ink);
   font: inherit;
-  padding: 8px 0;
+  font-size: 15px;
+}
+.bn-rsvp input:focus-visible {
+  outline: 2px solid var(--bn-heart);
+  outline-offset: 1px;
+  border-color: var(--bn-heart);
 }
 .bn-rsvp button {
-  margin-top: 8px;
-  padding: 12px 16px;
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px;
   border: 0;
+  border-radius: 999px;
   background: var(--bn-ink);
   color: var(--bn-honey);
   font-family: "Baloo 2", cursive;
   font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
 }
-.bn-sealed { margin-top: 16px; display: grid; gap: 6px; }
+.bn-rsvp button:hover, .bn-rsvp button:focus-visible { background: #5a2e12; }
+.bn-sealed {
+  max-width: 32rem;
+  margin-top: 16px;
+  display: grid;
+  gap: 6px;
+  padding: 14px 15px;
+  border: 1px solid rgba(180, 35, 24, .3);
+  border-radius: 12px;
+  background: rgba(180, 35, 24, .06);
+}
+.bn-sealed[hidden] { display: none; }
+.bn-sealed a[data-bn-mail] {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: var(--bn-heart);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .bn-packs ul { grid-template-columns: 1fr; }
+  .bn-stage { margin-left: 16px; margin-right: 16px; }
+}

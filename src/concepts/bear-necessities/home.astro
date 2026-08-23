@@ -64,9 +64,12 @@ const tickets = [
       <ul>
         {tickets.map((t) => (
           <li>
-            <strong>{t.pack}</strong>
-            <span>{t.size}</span>
-            <span>{t.price} {t.per}</span>
+            <div>
+              <strong>{t.pack}</strong>
+              <span class="bn-size">{t.size}</span>
+            </div>
+            <span class="bn-price">{t.price}</span>
+            <span class="bn-per">{t.per}</span>
           </li>
         ))}
       </ul>
@@ -91,22 +94,27 @@ const tickets = [
         {email} — you send it.
       </p>
       <form class="bn-rsvp" id="book">
-        <label>Your name
-          <input id="bn-name" required autocomplete="name" />
+        <label class="bn-field">
+          <span>Your name</span>
+          <input id="bn-who" required autocomplete="name" />
         </label>
-        <label>Saturday you have in mind
+        <label class="bn-field">
+          <span>Saturday you have in mind</span>
           <input id="bn-date" type="text" placeholder="Saturday 12 September" required />
         </label>
-        <label>How many children
+        <label class="bn-field">
+          <span>How many children</span>
           <input id="bn-count" type="text" inputmode="numeric" required />
         </label>
-        <label>Where she should come
+        <label class="bn-field">
+          <span>Where she should come</span>
           <input id="bn-where" type="text" placeholder="Hall, school, or home" />
         </label>
         <button type="submit">Write the invitation</button>
       </form>
       <div class="bn-sealed" data-bn-handoff hidden>
         <strong>Your invitation is ready.</strong>
+        <span>We'll open a note to {email} — you send it.</span>
         <a data-bn-mail href={`mailto:${email}`}>Open the draft to Siobhan</a>
         <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
       </div>
@@ -121,7 +129,7 @@ const tickets = [
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!form.reportValidity()) return;
-        var name = document.getElementById("bn-name").value.trim();
+        var name = document.getElementById("bn-who").value.trim();
         var date = document.getElementById("bn-date").value.trim();
         var count = document.getElementById("bn-count").value.trim();
         var where = document.getElementById("bn-where").value.trim();
