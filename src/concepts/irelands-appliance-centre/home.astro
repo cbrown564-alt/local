@@ -3,8 +3,6 @@ import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 
-/* Guest trade desk. Facts only. No catalogue stock, no prices, no mark. */
-
 const phone = "028 4372 4717";
 const phoneHref = "tel:+442843724717";
 const email = "sales@irelandsappliances.com";
@@ -12,213 +10,104 @@ const catalogue = "https://www.irelandsappliances.com/catalogue/index.php";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap";
 
-const tickets = [
-  {
-    no: "JOB 01",
-    kind: "Repair",
-    where: "House or bench",
-    line: "Large machines at the house. Small ones and TVs of all sizes on the bench in the shop.",
-    href: "#docket",
-    action: "Write a docket →",
-  },
-  {
-    no: "JOB 02",
-    kind: "Machine",
-    where: "Hold + store",
-    line: "A small deposit holds the price. We store it until delivery. Free local delivery on most larger purchases.",
-    href: catalogue,
-    action: "Live catalogue →",
-    external: true,
-  },
-  {
-    no: "JOB 03",
-    kind: "Price match",
-    where: "Ask the desk",
-    line: "If you have seen it cheaper, bring the sighting. We will try to match it.",
-    href: phoneHref,
-    action: `Call ${phone}`,
-  },
-];
-
-const bench = [
-  { stamp: "75", year: "1975", place: "Garage start", line: "Tom skips catering college. Electrical engineering, then TV and refrigeration, then the Albion clothing machines." },
-  { stamp: "80", year: "1980", place: "Two garages", line: "Albion closes. Appliances from a garage behind Central Promenade, then a larger garage on Valencia Place." },
-  { stamp: "84", year: "1984", place: "The Harbour", line: "The South Promenade shop — once a supermarket and butchery — becomes Ireland's Appliance Centre. Still this door." },
-  { stamp: "17", year: "2017", place: "Main engineer", line: "Thomas, trained by Tom then Whirlpool, Hoover and Hotpoint, takes the vans as main engineer." },
-  { stamp: "21", year: "2021", place: "Floor + comms", line: "Oran takes the retail floor. Siobhan takes communications — and the coffee." },
+const record = [
+  { year: "1975", line: "Tom starts from a garage — electrical engineering, then TV and refrigeration." },
+  { year: "1984", line: "The shop opens on the harbour. Still this door: 67–69 The Harbour." },
+  { year: "2017", line: "Thomas, trained by Tom then the makers, is the main engineer. Two vans." },
+  { year: "2021", line: "Oran on the floor. Siobhan on communications." },
 ];
 ---
 
 <ConceptLayout
-  title={"Ireland's Appliance Centre — independent concept"}
+  title={"Ireland's Appliance Centre — Newcastle"}
   slug="irelands-appliance-centre"
   bodyClass="concept-page concept-ireland"
   businessName="Ireland's Appliance Centre"
   town="Newcastle"
   fontHref={fontHref}
+  bannerNote="The kitchen plate is a generated image of a working kitchen, not a photograph of a customer's house or the harbour shop."
 >
-  <header class="ia-bar">
-    <a class="ia-sign" href="/concepts/irelands-appliance-centre/">
-      <span class="ia-sign-code">IAC · HARBOUR</span>
-      <span class="ia-sign-name">Ireland's Appliance Centre</span>
-    </a>
-    <nav class="ia-jump" aria-label="On this page">
-      <a href="#board">Desk</a>
-      <a href="#bench">Bench</a>
-      <a href="#door">Door</a>
-      <a href="#docket">Docket</a>
-    </nav>
-    <a class="ia-bar-phone" href={phoneHref}>{phone}</a>
-  </header>
-
-  <main>
-    <section class="ia-desk" id="board" aria-labelledby="ia-van-line">
-      <div class="ia-van-board">
-        <p class="ia-board-tag">Service desk · two vans out</p>
-        <h1 id="ia-van-line">The van is already in town when the cooker goes cold.</h1>
-        <p class="ia-board-say">We all live here.</p>
-        <p class="ia-board-copy">
-          Family shop on the harbour — Tom, Thomas, Oran and Siobhan.
-          Two vans for delivery, repair and servicing.
-        </p>
-      </div>
-
-      <p class="ia-tickets-label">Jobs already on the counter</p>
-      <div class="ia-tickets">
-        {tickets.map((t) => (
-          <article class="ia-ticket" id={t.kind.toLowerCase().replace(" ", "-")}>
-            <header class="ia-ticket-head">
-              <span class="ia-ticket-no">{t.no}</span>
-              <span class="ia-ticket-where">{t.where}</span>
-            </header>
-            <h2>{t.kind}</h2>
-            <p>{t.line}</p>
-            <a
-              class="ia-ticket-go"
-              href={t.href}
-              {...(t.external ? { target: "_blank", rel: "noreferrer" } : {})}
-            >
-              {t.action}
-            </a>
-          </article>
-        ))}
-        <a
-          class="ia-ticket ia-ticket--live"
-          href={catalogue}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <header class="ia-ticket-head">
-            <span class="ia-ticket-no">LIVE</span>
-            <span class="ia-ticket-where">irelandsappliances.com</span>
-          </header>
-          <h2>Catalogue</h2>
-          <p>Their current stock list. We do not copy it here.</p>
-          <span class="ia-ticket-go">Open the live catalogue →</span>
-        </a>
-      </div>
+  <main class="ia-page">
+    <section class="ia-first" aria-labelledby="ia-name">
+      <p class="ia-record-kicker">The record · since 1975 / harbour shop since 1984</p>
+      <h1 id="ia-name">Ireland's Appliance Centre</h1>
+      <p class="ia-fix">
+        Can they fix mine? Family on the harbour — Tom, Thomas, Oran, Siobhan.
+        Repair at the house or on the bench. Hold and store. Price match if you
+        have seen it cheaper. Two vans.
+      </p>
+      <p class="ia-hours">
+        Mon–Sat 08:30–17:00 · Sunday closed ·
+        <a href={phoneHref}>{phone}</a>
+      </p>
+      <p class="ia-stock">
+        Live stock is their catalogue, not this page:
+        <a href={catalogue}>irelandsappliances.com/catalogue</a>
+      </p>
     </section>
 
-    <blockquote class="ia-quote" cite="https://www.irelandsappliances.com/">
-      <p>We don't just operate in Newcastle, we all live here. We are locals.</p>
-      <footer>Guest quote · their site</footer>
-    </blockquote>
+    <ol class="ia-years">
+      {record.map((row) => (
+        <li>
+          <time>{row.year}</time>
+          <span>{row.line}</span>
+        </li>
+      ))}
+    </ol>
 
-    <section class="ia-bench" id="bench" aria-labelledby="ia-bench-title">
-      <div class="ia-bench-rail" aria-hidden="true"></div>
-      <header class="ia-bench-head">
-        <p class="ia-mono-kicker">Workshop timeline</p>
-        <h2 id="ia-bench-title">1975 garage → 1984 harbour.</h2>
-        <p>Same town. Same family. The shop door has not moved since 1984.</p>
-      </header>
-      <ol class="ia-stamps">
-        {bench.map((row) => (
-          <li class="ia-stamp">
-            <span class="ia-stamp-plate" aria-hidden="true">{row.stamp}</span>
-            <div>
-              <p class="ia-stamp-meta">
-                <time>{row.year}</time>
-                <span>{row.place}</span>
-              </p>
-              <p class="ia-stamp-line">{row.line}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </section>
-
-    <section class="ia-door" id="door" aria-labelledby="ia-door-title">
-      <article class="ia-door-card">
-        <p class="ia-door-glass">HOURS ON THE DOOR</p>
-        <h2 id="ia-door-title">Mon–Sat 08:30–17:00</h2>
-        <p class="ia-door-closed">Sunday closed</p>
-        <dl class="ia-door-dl">
-          <div>
-            <dt>The door</dt>
-            <dd>67–69 The Harbour<br />Newcastle, BT33 0EY</dd>
-          </div>
-          <div>
-            <dt>The vans</dt>
-            <dd>Two vans — delivery, repair, servicing.</dd>
-          </div>
-          <div>
-            <dt>Ring / write</dt>
-            <dd>
-              <a href={phoneHref}>{phone}</a><br />
-              <a href={`mailto:${email}`}>{email}</a>
-            </dd>
-          </div>
-        </dl>
-      </article>
-    </section>
-
-    <section class="ia-docket-wrap" id="docket" aria-labelledby="ia-docket-title">
+    <section class="ia-job" id="job" aria-labelledby="ia-job-title">
+      <p class="ia-kicker">The job and the week</p>
+      <h2 id="ia-job-title">Write the job. Say the week you need it.</h2>
+      <p>
+        Opens a draft to {email}. You check it and press send. Or ring the desk.
+        The queue lives at the counter.
+      </p>
       <form class="ia-docket" data-ia-request>
-        <div class="ia-docket-rule" aria-hidden="true"></div>
-        <p class="ia-mono-kicker">Job docket · desk copy</p>
-        <h2 id="ia-docket-title">Write the job. We open a draft.</h2>
-        <p class="ia-docket-sub">
-          Not a booking card. You check the mail and press send.
-        </p>
-
-        <div class="ia-docket-grid">
-          <label class="ia-cell">
-            <span>Name</span>
-            <input id="ia-who" name="name" type="text" autocomplete="name" required />
-          </label>
-          <label class="ia-cell">
-            <span>Best number</span>
-            <input id="ia-tel" name="tel" type="tel" autocomplete="tel" required />
-          </label>
-          <fieldset class="ia-cell ia-cell--span">
-            <legend>Job type</legend>
-            <div class="ia-kinds">
-              <label><input type="radio" name="ia-kind" value="A repair" checked /> Repair</label>
-              <label><input type="radio" name="ia-kind" value="A machine" /> Machine</label>
-              <label><input type="radio" name="ia-kind" value="A price match" /> Price match</label>
-            </div>
-          </fieldset>
-          <label class="ia-cell ia-cell--span">
-            <span>What broke, or the cheaper sighting</span>
-            <textarea id="ia-notes" name="notes" rows="3"></textarea>
-          </label>
-        </div>
-
-        <button class="ia-docket-submit" type="submit">Prepare the docket</button>
-
+        <label>
+          <span>Name</span>
+          <input id="ia-who" name="name" type="text" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Best number</span>
+          <input id="ia-tel" name="tel" type="tel" autocomplete="tel" required />
+        </label>
+        <fieldset>
+          <legend>The job</legend>
+          <label><input type="radio" name="ia-kind" value="A repair at the house" checked /> Repair at the house</label>
+          <label><input type="radio" name="ia-kind" value="A repair on the bench" /> Repair on the bench</label>
+          <label><input type="radio" name="ia-kind" value="A machine" /> A machine</label>
+          <label><input type="radio" name="ia-kind" value="A price match" /> Price match</label>
+        </fieldset>
+        <label>
+          <span>The week you need it</span>
+          <input id="ia-week" name="week" type="text" placeholder="This week / next week" required />
+        </label>
+        <label>
+          <span>What broke, or the cheaper sighting</span>
+          <textarea id="ia-notes" name="notes" rows="3"></textarea>
+        </label>
+        <button type="submit">Prepare the docket</button>
         <div class="ia-handoff" data-ia-handoff role="status" hidden tabindex="-1">
           <strong>Docket ready.</strong>
-          <span>Open the draft, check it, then send from your mail app.</span>
           <a data-ia-email-link href={`mailto:${email}`}>Open email draft</a>
         </div>
-        <p class="ia-stale" data-ia-stale role="status" hidden>
-          Lines changed. Press <strong>Prepare the docket</strong> again so the draft matches.
-        </p>
-        <p class="ia-docket-foot">
-          Goes to <a href={`mailto:${email}`}>{email}</a> · or ring <a href={phoneHref}>{phone}</a>
-        </p>
       </form>
     </section>
+
+    <figure class="ia-stage">
+      <img
+        src="/media/concepts/irelands-appliance-centre/kitchen.jpg"
+        alt="Generated image of a kitchen working again — not a photograph of a customer's house"
+        width="1536"
+        height="1024"
+      />
+      <figcaption>Generated image — the kitchen working again. Not a photograph of the shop or a customer's house.</figcaption>
+    </figure>
+
+    <p class="ia-foot">
+      67–69 The Harbour, Newcastle, BT33 0EY.
+      Hours from their live site: Mon–Sat 08:30–17:00, Sunday closed.
+    </p>
   </main>
 
   <script is:inline>
@@ -226,34 +115,26 @@ const bench = [
       var recipient = "sales@irelandsappliances.com";
       var form = document.querySelector("[data-ia-request]");
       if (!form) return;
-
       var handoff = form.querySelector("[data-ia-handoff]");
-      var stale = form.querySelector("[data-ia-stale]");
       var link = form.querySelector("[data-ia-email-link]");
       if (!handoff || !link) return;
-
-      form.addEventListener("input", function () {
-        if (handoff.hidden) return;
-        handoff.hidden = true;
-        if (stale) stale.hidden = false;
-      });
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!form.reportValidity()) return;
-
         var name = form.querySelector("#ia-who").value.trim();
         var tel = form.querySelector("#ia-tel").value.trim();
+        var week = form.querySelector("#ia-week").value.trim();
         var notes = form.querySelector("#ia-notes").value.trim();
         var chosen = form.querySelector('input[name="ia-kind"]:checked');
         var kind = chosen ? chosen.value : "A repair";
-
         var query = new URLSearchParams({
-          subject: "Job — " + kind,
+          subject: "Job — " + kind + " — " + week,
           body: [
             "Hello Ireland's Appliance Centre,",
             "",
             "I need: " + kind + ".",
+            "The week I need it: " + week + ".",
             "Name: " + name,
             "Best number: " + tel,
             notes ? "Notes: " + notes : "",
@@ -261,10 +142,8 @@ const bench = [
             "Please ring me back.",
           ].filter(Boolean).join("\n"),
         });
-
         link.href = "mailto:" + recipient + "?" + query;
         handoff.hidden = false;
-        if (stale) stale.hidden = true;
         handoff.focus();
       });
     })();
