@@ -1,0 +1,136 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const booksy =
+  "https://booksy.com/en-gb/120760_marine-wellness_massage_1529223_newcastle";
+const facebook = "https://www.facebook.com/marinebeauty.haven/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;1,500&family=Sora:wght@400;500;600;700&display=swap";
+
+const treatments = [
+  { name: "Tailored treatment with Patricia", line: "One hour, or two. Chosen on the day." },
+  { name: "Sports massage", line: "Focused 30 minutes, or a full hour." },
+  { name: "Wellbeing body massage", line: "An hour." },
+  { name: "Dermalogica skin focus 45", line: "Forty-five minutes." },
+  { name: "Kinetic Chain Release", line: "An hour." },
+];
+---
+
+<ConceptLayout
+  title={"Marine Wellness — Newcastle"}
+  slug="marine-wellness"
+  bodyClass="concept-page concept-marine"
+  businessName="Marine Wellness"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The calm plate is a generated image, not a photograph of the treatment room."
+>
+  <main class="mw-page">
+    <aside class="mw-emergency" id="urgent">
+      <p>
+        <strong>This is not A&amp;E.</strong>
+        Sudden illness or injury: call <a href="tel:999">999</a> or
+        <a href="tel:111">111</a>. Do not wait on a booking page.
+      </p>
+    </aside>
+
+    <section class="mw-first" aria-labelledby="mw-name">
+      <p class="mw-soon">Can they see us, and soon?</p>
+      <h1 id="mw-name">Marine Wellness</h1>
+      <p class="mw-reassure">
+        Unit 13, 63A Castlewellan Road, Newcastle, BT33 0JX. Patricia McGrady.
+        The diary lives on Booksy — not on this page. Hours are not listed here.
+      </p>
+      <ul class="mw-two">
+        <li>
+          <span>Book</span>
+          <strong>Their diary on Booksy</strong>
+          <a href={booksy}>Open Booksy</a>
+        </li>
+        <li>
+          <span>Follow</span>
+          <strong>Facebook</strong>
+          <a href={facebook}>marinebeauty.haven</a>
+        </li>
+      </ul>
+    </section>
+
+    <figure class="mw-calm">
+      <img
+        src="/media/concepts/marine-wellness/calm.jpg"
+        alt="An empty treatment room with folded towels and a plant in soft daylight"
+        width="940"
+          height="627"
+      />
+      <figcaption>A calm room.</figcaption>
+    </figure>
+
+    <section class="mw-desk" id="desk" aria-labelledby="mw-desk-title">
+      <p class="mw-kicker">Who needs seen, and when</p>
+      <h2 id="mw-desk-title">Write it. Then open their diary.</h2>
+      <p>
+        Prices and slots live on Booksy, updated there. A few treatments as
+        listed on 23 August 2026 sit below — they move. This page does not
+        book you in.
+      </p>
+      <ul class="mw-list">
+        {treatments.map((t) => (
+          <li>
+            <strong>{t.name}</strong>
+            <span>{t.line}</span>
+          </li>
+        ))}
+      </ul>
+      <form class="mw-script" data-mw-script>
+        <label>
+          <span>Who needs seen</span>
+          <input name="who" type="text" required />
+        </label>
+        <label>
+          <span>When you hope to come</span>
+          <input name="when" type="text" placeholder="This week if you can" required />
+        </label>
+        <label>
+          <span>What you came for</span>
+          <input name="what" type="text" placeholder="Massage, facial, or ask Patricia" />
+        </label>
+        <button type="submit">Keep the words for Booksy</button>
+      </form>
+      <div class="mw-ready" data-mw-ready hidden tabindex="-1">
+        <p data-mw-ready-script></p>
+        <a href={booksy}>Open Booksy</a>
+      </div>
+    </section>
+
+    <p class="mw-foot">
+      Marine Wellness, Unit 13, 63A Castlewellan Road, Newcastle, BT33 0JX.
+      The diary:
+      <a href={booksy}>Booksy</a>.
+    </p>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.querySelector("[data-mw-script]");
+      var ready = document.querySelector("[data-mw-ready]");
+      var scriptEl = document.querySelector("[data-mw-ready-script]");
+      if (!form || !ready || !scriptEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var who = form.elements.namedItem("who").value.trim();
+        var when = form.elements.namedItem("when").value.trim();
+        var what = form.elements.namedItem("what").value.trim();
+        scriptEl.textContent =
+          who + " hopes to be seen " + when +
+          (what ? " for " + what : "") +
+          ". Book that on their Booksy diary.";
+        ready.hidden = false;
+        ready.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>

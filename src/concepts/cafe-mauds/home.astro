@@ -1,0 +1,94 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 6184";
+const phoneHref = "tel:+442843726184";
+const facebook = "https://www.facebook.com/cafemaudsnewcastle/";
+const instagram = "https://www.instagram.com/cafemaudsnewcastle/";
+const hoursSrc =
+  "https://www.visitmournegullionstrangford.com/food-and-drink/cafe-mauds-p712141";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const week = [
+  { d: "Mon", note: "9.30am – 10.00pm" },
+  { d: "Tue", note: "9.30am – 10.00pm" },
+  { d: "Wed", note: "9.30am – 10.00pm" },
+  { d: "Thu", note: "9.30am – 10.00pm" },
+  { d: "Fri", note: "9.30am – 10.00pm" },
+  { d: "Sat", note: "9.00am – 10.00pm" },
+  { d: "Sun", note: "9.00am – 10.00pm" },
+];
+---
+
+<ConceptLayout
+  title={"Café Mauds — Newcastle"}
+  slug="cafe-mauds"
+  bodyClass="concept-page concept-mauds"
+  businessName="Café Mauds"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The cup is a generated image of one dish, not a photograph from the café."
+>
+  <main class="cm-page">
+    <section class="cm-first" aria-labelledby="cm-name">
+      <p class="cm-open">106 Waterfoot, Main Street, Newcastle, BT33 0AE</p>
+      <h1 id="cm-name">Café Mauds</h1>
+      <p class="cm-today">
+        What's on today lives on the counter and on
+        <a href={facebook}>Facebook</a>. Hours below are as listed on
+        <a href={hoursSrc}>Visit Mourne Gullion Strangford</a>. Walk in.
+      </p>
+      <p class="cm-actions">
+        <a href={phoneHref}>{phone}</a>
+        <a href={facebook}>Facebook</a>
+        <a href={instagram}>Instagram</a>
+      </p>
+    </section>
+
+    <section class="cm-week" id="week" aria-labelledby="cm-week-title">
+      <p class="cm-kicker">The week · walk in</p>
+      <h2 id="cm-week-title">There is no reserve form here.</h2>
+      <p>
+        Breakfast, lunch, coffee, tea, and Mauds specialist ice cream. Bronze
+        in the Green Tourism Awards, as the tourism listing records. This page
+        does not take a booking.
+      </p>
+      <ol class="cm-board">
+        {week.map((row) => (
+          <li>
+            <span>{row.d}</span>
+            <span>{row.note}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cm-dish" aria-labelledby="cm-dish-title">
+      <p class="cm-kicker">One dish</p>
+      <h2 id="cm-dish-title">Coffee, and the ice cream they are named for.</h2>
+      <figure>
+        <img
+          src="/media/concepts/cafe-mauds/dish.jpg"
+          alt="A white cup of coffee with a peak of cream on a wooden cafe table in window light"
+          width="940"
+          height="627"
+        />
+        <figcaption>Coffee and cream.</figcaption>
+      </figure>
+    </section>
+
+    <footer class="cm-foot">
+      <p>
+        Café Mauds, 106 Waterfoot, Main Street, Newcastle, BT33 0AE.
+        Ring <a href={phoneHref}>{phone}</a>.
+      </p>
+      <p>
+        Today's board:
+        <a href={facebook}>Facebook</a>
+      </p>
+    </footer>
+  </main>
+</ConceptLayout>

@@ -1,0 +1,142 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 3521";
+const phoneHref = "tel:+442843723521";
+const email = "info@binghamsmenswear.com";
+const site = "https://www.binghamsmenswear.com/";
+const hire = "https://www.binghamsmenswear.com/suit-hire/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const range = [
+  "Blue Elveley",
+  "Blue Hadley",
+  "Blue Tweed Run",
+  "Green Tweed Run",
+  "Grey Tweed Run",
+  "Brown Tweed Run",
+  "Navy Elveley",
+  "White Gene",
+  "Black Grissom",
+  "Navy herringbone tailcoat",
+];
+---
+
+<ConceptLayout
+  title={"Binghams Menswear — Newcastle"}
+  slug="binghams-menswear"
+  bodyClass="concept-page concept-binghams"
+  businessName="Binghams Menswear"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The jacket plate is a generated image, not a photograph of their hire stock."
+>
+  <main class="bm-page">
+    <section class="bm-first" aria-labelledby="bm-name">
+      <p class="bm-when">When would I open this?</p>
+      <h1 id="bm-name">Binghams Menswear</h1>
+      <p class="bm-moment">
+        The morning of the wedding, the dinner, the day you hired the suit for.
+        Suits, formalwear, highlandwear. By appointment on Main Street.
+      </p>
+      <p class="bm-price-after">
+        The full hire list lives on
+        <a href={hire}>binghamsmenswear.com/suit-hire</a>.
+        Hours are not listed there. Ring and ask.
+      </p>
+    </section>
+
+    <figure class="bm-stage">
+      <img
+        src="/media/concepts/binghams-menswear/jacket.jpg"
+        alt="A grey tweed three-piece suit on a featureless mannequin in a chair by a window"
+        width="940"
+          height="627"
+      />
+      <figcaption>The jacket, ready.</figcaption>
+    </figure>
+
+    <section class="bm-how" aria-labelledby="bm-how-title">
+      <p class="bm-kicker">Where to find it</p>
+      <h2 id="bm-how-title">82 Main Street. Come in, or write first.</h2>
+      <p>
+        A small selection of the hire sits below. They say visit the shop for
+        the rest. Nothing is booked from this page.
+      </p>
+      <ul class="bm-range">
+        {range.map((name) => (
+          <li>{name}</li>
+        ))}
+      </ul>
+      <p>
+        Live stock:
+        <a href={hire}>{hire.replace("https://", "")}</a>
+      </p>
+    </section>
+
+    <section class="bm-invite" id="book" aria-labelledby="bm-invite-title">
+      <p class="bm-kicker">The appointment</p>
+      <h2 id="bm-invite-title">Name the day. Say who it is for.</h2>
+      <p>
+        Opens a draft to {email}. You check it and press send. Or ring the
+        shop. Their own site also has a message form.
+      </p>
+      <form class="bm-rsvp" data-bm-request>
+        <label>Your name
+          <input id="bm-who" required autocomplete="name" />
+        </label>
+        <label>The occasion
+          <input id="bm-occasion" type="text" placeholder="Wedding, dinner, other" required />
+        </label>
+        <label>When you can come in
+          <input id="bm-when" type="text" placeholder="A Saturday this month" required />
+        </label>
+        <label>A number they can return
+          <input id="bm-tel" type="tel" autocomplete="tel" required />
+        </label>
+        <button type="submit">Write the appointment</button>
+      </form>
+      <div class="bm-sealed" data-bm-handoff hidden>
+        <strong>Your note is ready.</strong>
+        <a data-bm-mail href={`mailto:${email}`}>Open the draft</a>
+        <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+      </div>
+    </section>
+  </main>
+  <script is:inline>
+    (function () {
+      var recipient = "info@binghamsmenswear.com";
+      var form = document.querySelector("[data-bm-request]");
+      if (!form) return;
+      var handoff = document.querySelector("[data-bm-handoff]");
+      var link = document.querySelector("[data-bm-mail]");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = document.getElementById("bm-who").value.trim();
+        var occasion = document.getElementById("bm-occasion").value.trim();
+        var when = document.getElementById("bm-when").value.trim();
+        var tel = document.getElementById("bm-tel").value.trim();
+        var query = new URLSearchParams({
+          subject: "Appointment — " + occasion,
+          body: [
+            "Hello Binghams Menswear,",
+            "",
+            "I would like an appointment.",
+            "Name: " + name,
+            "Occasion: " + occasion,
+            "When I can come in: " + when,
+            "Best number: " + tel,
+            "",
+            "Please tell me if that time works.",
+          ].join("\n"),
+        });
+        link.href = "mailto:" + recipient + "?" + query;
+        handoff.hidden = false;
+      });
+    })();
+  </script>
+</ConceptLayout>

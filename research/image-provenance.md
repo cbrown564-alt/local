@@ -1080,3 +1080,26 @@ Also generated 9 August 2026 with the built-in OpenAI image tool and held under
 They depict no location, business, owner, customer, product, testimony or
 result. They are research-only material plates, not interface screenshots or
 evidence. Their job prompts and reviews live in `research/media-sprint/jobs/`.
+
+## Day 2 five — 23 August 2026
+
+Guest doors on `sprint-day2-five`. Each plate is a generated still, not a
+photograph of the premises, stock, or a named person. Converted to JPEG
+quality 72. Banner notes disclose generated imagery; alt and captions describe
+the scene only.
+
+- `public/media/concepts/conlyn-house/windows-dusk.jpg` — **in use.** Generated
+  23 August 2026. Bedroom windows at dusk looking out to a bay and a mountain.
+  Not a photograph of Conlyn House.
+- `public/media/concepts/cafe-mauds/dish.jpg` — **in use.** Generated 23 August
+  2026. A cup of coffee with cream on a wooden table. Not a photograph from
+  Café Mauds.
+- `public/media/concepts/binghams-menswear/jacket.jpg` — **in use.** Generated
+  23 August 2026. A grey tweed three-piece on a featureless mannequin by a
+  window. Not a photograph of Binghams hire stock.
+- `public/media/concepts/marine-wellness/calm.jpg` — **in use.** Generated
+  23 August 2026. An empty treatment room with folded towels and a plant. Not
+  a photograph of Marine Wellness.
+- `public/media/concepts/cocos-adventure-playground/play.jpg` — **in use.**
+  Generated 23 August 2026. An empty indoor play hall with coloured mats and
+  frames. Not a photograph of Coco's Adventure Playground.
