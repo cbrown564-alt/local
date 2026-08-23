@@ -320,6 +320,166 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/painted-earth/",
     pin: { x: 205, y: 455 },
   },
+  {
+    slug: "bear-necessities",
+    name: "Bear Necessities",
+    town: "Newcastle",
+    category: "Community & leisure",
+    summary:
+      "A travelling teddy-bear making party whose packs and call-out live on its own site while the diary lives on Facebook — given a first screen that holds the ritual and packs, and hands today's appearances to the feed.",
+    before: "/media/concepts/bear-necessities/bear-necessities-before.jpg",
+    after: "/media/concepts/bear-necessities/bear-necessities-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Bear Necessities's current public presence (bearnecessitieskids.co.uk and the public Facebook page) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Bear Necessities, captured from the local concept route",
+    href: "/transformations/bear-necessities/",
+    pin: { x: 240, y: 470 },
+  },
+  {
+    slug: "arley-house",
+    name: "Arley House",
+    town: "Dundrum",
+    category: "Hospitality",
+    summary:
+      "A Dundrum guest house whose public site no longer carries the stay — given a first screen that wakes on Belfast Road, puts Dundrum first, and keeps the enquiry path honest.",
+    before: "/media/concepts/arley-house/arley-house-before.jpg",
+    after: "/media/concepts/arley-house/arley-house-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Arley House's current public presence (the public Facebook page (own site thin / not carrying the stay)) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Arley House, captured from the local concept route",
+    href: "/transformations/arley-house/",
+    pin: { x: 1050, y: 210 },
+  },
+  {
+    slug: "armstrong-opticians",
+    name: "Armstrong Opticians",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A Railway Street practice since 1983 whose public splash and Facebook already trade — given a calm first screen that puts the door and the phone diary first.",
+    before: "/media/concepts/armstrong-opticians/armstrong-opticians-before.jpg",
+    after: "/media/concepts/armstrong-opticians/armstrong-opticians-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Armstrong Opticians's current public presence (the practice splash site and public Facebook page) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Armstrong Opticians, captured from the local concept route",
+    href: "/transformations/armstrong-opticians/",
+    pin: { x: 310, y: 420 },
+  },
+  {
+    slug: "irelands-appliance-centre",
+    name: "Ireland's Appliance Centre",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A harbour appliance shop whose catalogue and Facebook already work hard — given a first screen that leads with living here, the cooker lede, and an honest docket back to the counter.",
+    before: "/media/concepts/irelands-appliance-centre/irelands-appliance-centre-before.jpg",
+    after: "/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Ireland's Appliance Centre's current public presence (irelandsappliances.com and the public Facebook page) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Ireland's Appliance Centre, captured from the local concept route",
+    href: "/transformations/irelands-appliance-centre/",
+    pin: { x: 145, y: 530 },
+  },
+  {
+    slug: "villa-vinci",
+    name: "Villa Vinci",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "A Main Street Italian whose own site and Facebook already carry the room — given a promenade-first screen with the table note up front and the phone as the book path.",
+    before: "/media/concepts/villa-vinci/villa-vinci-before.jpg",
+    after: "/media/concepts/villa-vinci/villa-vinci-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Villa Vinci's current public presence (villavinci.co.uk and the public Facebook page) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Villa Vinci, captured from the local concept route",
+    href: "/transformations/villa-vinci/",
+    pin: { x: 270, y: 460 },
+  },
+  {
+    slug: "conlyn-house",
+    name: "Conlyn House",
+    town: "Newcastle",
+    category: "Hospitality",
+    summary:
+      "A Central Promenade guest house whose site still holds named rooms and rates while 'Book Now' is only a form — given a first screen that wakes on the promenade and keeps the enquiry honest.",
+    before: "/media/concepts/conlyn-house/conlyn-house-before.jpg",
+    after: "/media/concepts/conlyn-house/conlyn-house-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Conlyn House's current public presence (conlynhouse.com) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Conlyn House, captured from the local concept route",
+    href: "/transformations/conlyn-house/",
+    pin: { x: 195, y: 485 },
+  },
+  {
+    slug: "binghams-menswear",
+    name: "Binghams Menswear",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A Main Street menswear and hire counter whose catalogue already names the garments — given a first screen that puts the appointment and hire permanence first without inventing prices.",
+    before: "/media/concepts/binghams-menswear/binghams-menswear-before.jpg",
+    after: "/media/concepts/binghams-menswear/binghams-menswear-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Binghams Menswear's current public presence (binghamsmenswear.com) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Binghams Menswear, captured from the local concept route",
+    href: "/transformations/binghams-menswear/",
+    pin: { x: 255, y: 450 },
+  },
+  {
+    slug: "cafe-mauds",
+    name: "Café Mauds",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "A Main Street café whose appetite already lives on Facebook and the tourism listing — given a first screen that leads with the dish and the view, and keeps walk-in or ring as the door.",
+    before: "/media/concepts/cafe-mauds/cafe-mauds-before.jpg",
+    after: "/media/concepts/cafe-mauds/cafe-mauds-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Café Mauds's current public presence (the public Facebook page and the council tourism listing) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Café Mauds, captured from the local concept route",
+    href: "/transformations/cafe-mauds/",
+    pin: { x: 280, y: 440 },
+  },
+  {
+    slug: "cocos-adventure-playground",
+    name: "Coco's Adventure Playground",
+    town: "Newcastle",
+    category: "Community & leisure",
+    summary:
+      "A soft-play and party hall whose own site already carries sessions — given a first screen that puts play and the party booking path first, and hands today's hours to the sources it can keep honest.",
+    before: "/media/concepts/cocos-adventure-playground/cocos-adventure-playground-before.jpg",
+    after: "/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Coco's Adventure Playground's current public presence (cocosplayground.co.uk) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Coco's Adventure Playground, captured from the local concept route",
+    href: "/transformations/cocos-adventure-playground/",
+    pin: { x: 175, y: 515 },
+  },
+  {
+    slug: "marine-wellness",
+    name: "Marine Wellness",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A Castlewellan Road treatment room whose bookings already run on Booksy — given a calm first screen that quotes the clinical offer and hands the diary to the booker they already use.",
+    before: "/media/concepts/marine-wellness/marine-wellness-before.jpg",
+    after: "/media/concepts/marine-wellness/marine-wellness-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Marine Wellness's current public presence (Booksy and the public Facebook page) — not a live-site screenshot; a matched capture was not filed for the 23 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Marine Wellness, captured from the local concept route",
+    href: "/transformations/marine-wellness/",
+    pin: { x: 350, y: 390 },
+  },
 ];
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

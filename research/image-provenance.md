@@ -1080,3 +1080,64 @@ Also generated 9 August 2026 with the built-in OpenAI image tool and held under
 They depict no location, business, owner, customer, product, testimony or
 result. They are research-only material plates, not interface screenshots or
 evidence. Their job prompts and reviews live in `research/media-sprint/jobs/`.
+
+
+## First-50 ten publish — 23 August 2026
+
+Ten built concept grafts published to the public transformations index.
+
+### Generated concept plates (guest-disclosed)
+
+- `public/media/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/conlyn-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/binghams-menswear/jacket.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/cafe-mauds/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/marine-wellness/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+
+### Comparison and share media
+
+- `public/media/concepts/bear-necessities/bear-necessities-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/bear-necessities/bear-necessities-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/bear-necessities/bear-necessities-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/bear-necessities.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/arley-house/arley-house-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/arley-house/arley-house-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/arley-house/arley-house-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/arley-house.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/armstrong-opticians/armstrong-opticians-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/armstrong-opticians/armstrong-opticians-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/armstrong-opticians/armstrong-opticians-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/armstrong-opticians.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/irelands-appliance-centre.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/villa-vinci/villa-vinci-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/villa-vinci/villa-vinci-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/villa-vinci/villa-vinci-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/villa-vinci.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/conlyn-house/conlyn-house-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/conlyn-house/conlyn-house-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/conlyn-house/conlyn-house-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/conlyn-house.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/binghams-menswear/binghams-menswear-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/binghams-menswear/binghams-menswear-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/binghams-menswear/binghams-menswear-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/binghams-menswear.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/cafe-mauds/cafe-mauds-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/cafe-mauds/cafe-mauds-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/cafe-mauds/cafe-mauds-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/cafe-mauds.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/cocos-adventure-playground.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/marine-wellness/marine-wellness-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/marine-wellness/marine-wellness-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `public/media/concepts/marine-wellness/marine-wellness-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/marine-wellness.jpg` — Open Graph share card generated from the workbench route.

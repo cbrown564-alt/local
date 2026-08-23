@@ -7,7 +7,7 @@ with `node tools/pipeline/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 3 August 2026 · eighteen public transformations · none withdrawn ·
+Snapshot: 23 August 2026 · 28 public transformations · none withdrawn ·
 two concepts retired · no active next prospect · two prospects held on trading
 or suitability evidence · **one business contacted and replied**
 

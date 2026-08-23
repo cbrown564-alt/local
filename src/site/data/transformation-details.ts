@@ -851,4 +851,394 @@ export const transformationDetails = {
     ],
     "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Captured from the shop's public Facebook page on 22 July 2026, with Meta's cookie dialog and login prompt left in place. Main Street address, phone, seven-day hours, Calor gas retail and the dual hardware/plant-hire offering come from public directories and the Calor dealer listing.</p>\n        <p>The hire desk shows no figure; the hire list carries suggested day rates labelled Suggested. Both screens carry the same sentence: &quot;No rate here is the shop's own — call the counter for today's rate and terms.&quot; None of those figures came from the shop. Two Google reviews (read 6 August 2026) supply the customer sentences, quoted and attributed with month and year — no star rating is stated. The yellow-and-black mark is concept work suggested by the shop's own Facebook badge, not the badge itself.</p>\n        <p>This was not commissioned or approved by The Tool Centre. It is a free website idea: a trade counter that does not need a login.</p>\n        <ul>\n          <li><a href=\"https://www.facebook.com/Toolcentreplanthire/\" rel=\"external\">Tool Centre Plant Hire public Facebook page</a></li>\n          <li><a href=\"https://www.bigreddirectory.com/tool-centre-newcastle\" rel=\"external\">Big Red Directory listing used for address and hours</a></li>\n          <li><a href=\"https://www.calorgas.ie/cylinder-dealers/Newcastle-BT33-0AE-Tool-Centre-8001144\" rel=\"external\">Calor dealer listing used to confirm gas retail</a></li>\n        </ul>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   }
+  "bear-necessities": {
+    "title": "Bear Necessities concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Bear Necessities in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "We come to you — packs held, diary on Facebook.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/bear-necessities/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "bear-necessities",
+      "afterVideo": "/media/concepts/bear-necessities/bear-necessities-after.mp4",
+      "beforePoster": "/media/concepts/bear-necessities/bear-necessities-before.jpg",
+      "afterPoster": "/media/concepts/bear-necessities/bear-necessities-after.jpg",
+      "beforeAlt": "Labelled placeholder for Bear Necessities's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Bear Necessities concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "This business already has a website and a busy Facebook diary. A matched live-site capture was not filed for this publish, so the before panel is a labelled placeholder — not a screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "We come to you — packs held, diary on Facebook."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of bearnecessitieskids.co.uk and the public Facebook page.</p>\n        <p>Facebook already wins at the live diary; the concept must not rebuild a calendar the studio cannot keep current. Generated making plate disclosed on the concept banner. Concept not independently Phase-Q validated — published as a working first-50 graft with elevation-brief honesty limits retained.</p>\n        <p>This was not commissioned or approved by Bear Necessities.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "arley-house": {
+    "title": "Arley House concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Arley House in Dundrum.",
+    "eyebrow": "Website transformation · Dundrum",
+    "headline": "Wake in Dundrum. Newcastle when you want it.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/arley-house/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "arley-house",
+      "afterVideo": "/media/concepts/arley-house/arley-house-after.mp4",
+      "beforePoster": "/media/concepts/arley-house/arley-house-before.jpg",
+      "afterPoster": "/media/concepts/arley-house/arley-house-after.jpg",
+      "beforeAlt": "Labelled placeholder for Arley House's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Arley House concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "Arley's own brochure site is not a reliable before capture for this publish. The before panel is a labelled placeholder naming the public Facebook presence — not a fabricated live-site screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Wake in Dundrum. Newcastle when you want it."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of the public Facebook page (own site thin / not carrying the stay).</p>\n        <p>Generated dusk-windows plate disclosed on the concept banner — not a photograph of the house. Do not print unverified hotel-spec or 'dogs inside and out' as house policy. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Arley House.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "armstrong-opticians": {
+    "title": "Armstrong Opticians concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Armstrong Opticians in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "One door since 1983. The diary is the phone.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/armstrong-opticians/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "armstrong-opticians",
+      "afterVideo": "/media/concepts/armstrong-opticians/armstrong-opticians-after.mp4",
+      "beforePoster": "/media/concepts/armstrong-opticians/armstrong-opticians-before.jpg",
+      "afterPoster": "/media/concepts/armstrong-opticians/armstrong-opticians-after.jpg",
+      "beforeAlt": "Labelled placeholder for Armstrong Opticians's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Armstrong Opticians concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for the practice's public splash and Facebook presence — not a screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "One door since 1983. The diary is the phone."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of the practice splash site and public Facebook page.</p>\n        <p>Generated calm-room plate disclosed — not a photograph of the shop. Do not freeze Facebook sale posts or Bing hours as standing practice facts. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Armstrong Opticians.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "irelands-appliance-centre": {
+    "title": "Ireland's Appliance Centre concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Ireland's Appliance Centre in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Live here. The cooker comes with a harbour counter.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/irelands-appliance-centre/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "irelands-appliance-centre",
+      "afterVideo": "/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.mp4",
+      "beforePoster": "/media/concepts/irelands-appliance-centre/irelands-appliance-centre-before.jpg",
+      "afterPoster": "/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.jpg",
+      "beforeAlt": "Labelled placeholder for Ireland's Appliance Centre's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Ireland's Appliance Centre concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for the shop's catalogue site and Facebook presence — not a screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Live here. The cooker comes with a harbour counter."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of irelandsappliances.com and the public Facebook page.</p>\n        <p>Generated kitchen plate disclosed — not a customer's house or a photograph of 67–69 The Harbour. Do not typeset one-off charity totals as standing badges. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Ireland's Appliance Centre.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "villa-vinci": {
+    "title": "Villa Vinci concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Villa Vinci in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Promenade first. The table note on the first screen.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/villa-vinci/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "villa-vinci",
+      "afterVideo": "/media/concepts/villa-vinci/villa-vinci-after.mp4",
+      "beforePoster": "/media/concepts/villa-vinci/villa-vinci-before.jpg",
+      "afterPoster": "/media/concepts/villa-vinci/villa-vinci-after.jpg",
+      "beforeAlt": "Labelled placeholder for Villa Vinci's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Villa Vinci concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for Villa Vinci's own site and Facebook presence — not a screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Promenade first. The table note on the first screen."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of villavinci.co.uk and the public Facebook page.</p>\n        <p>Generated dish plate disclosed — not a photograph from the pass. Do not print Bing hours or invent a farm list. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Villa Vinci.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "conlyn-house": {
+    "title": "Conlyn House concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Conlyn House in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Wake on Central Promenade. Book is still an enquiry.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/conlyn-house/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "conlyn-house",
+      "afterVideo": "/media/concepts/conlyn-house/conlyn-house-after.mp4",
+      "beforePoster": "/media/concepts/conlyn-house/conlyn-house-before.jpg",
+      "afterPoster": "/media/concepts/conlyn-house/conlyn-house-after.jpg",
+      "beforeAlt": "Labelled placeholder for Conlyn House's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Conlyn House concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for conlynhouse.com — not a screenshot of the 2019 gallery or the Elementor form."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Wake on Central Promenade. Book is still an enquiry."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of conlynhouse.com.</p>\n        <p>Generated dusk-windows plate disclosed. Gallery on the live site is largely a 2019 shoot; do not present it as this morning. 'Book Now' is not a live calendar. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Conlyn House.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "binghams-menswear": {
+    "title": "Binghams Menswear concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Binghams Menswear in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Hire and the appointment, without invented prices.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/binghams-menswear/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "binghams-menswear",
+      "afterVideo": "/media/concepts/binghams-menswear/binghams-menswear-after.mp4",
+      "beforePoster": "/media/concepts/binghams-menswear/binghams-menswear-before.jpg",
+      "afterPoster": "/media/concepts/binghams-menswear/binghams-menswear-after.jpg",
+      "beforeAlt": "Labelled placeholder for Binghams Menswear's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Binghams Menswear concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for binghamsmenswear.com — not a screenshot, and not a reconstruction of dead shop URLs."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Hire and the appointment, without invented prices."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of binghamsmenswear.com.</p>\n        <p>Generated jacket plate disclosed — not hire-stock photography. Do not invent hire prices or reproduce dead Highland-wear URLs. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Binghams Menswear.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "cafe-mauds": {
+    "title": "Café Mauds concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Café Mauds in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Appetite first. Walk in or ring.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/cafe-mauds/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "cafe-mauds",
+      "afterVideo": "/media/concepts/cafe-mauds/cafe-mauds-after.mp4",
+      "beforePoster": "/media/concepts/cafe-mauds/cafe-mauds-before.jpg",
+      "afterPoster": "/media/concepts/cafe-mauds/cafe-mauds-after.jpg",
+      "beforeAlt": "Labelled placeholder for Café Mauds's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Café Mauds concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "Café Mauds has no separate brochure site filed for this publish. The before panel is a labelled placeholder for its public Facebook and tourism listing — not a fabricated website screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Appetite first. Walk in or ring."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of the public Facebook page and the council tourism listing.</p>\n        <p>Generated cup/dish plate disclosed. Group menu prices not confirmed as Newcastle's — do not freeze them. Do not cherry-pick reviews. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Café Mauds.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "cocos-adventure-playground": {
+    "title": "Coco's Adventure Playground concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Coco's Adventure Playground in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Play first. Today's hours stay on sources we can keep.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/cocos-adventure-playground/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "cocos-adventure-playground",
+      "afterVideo": "/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.mp4",
+      "beforePoster": "/media/concepts/cocos-adventure-playground/cocos-adventure-playground-before.jpg",
+      "afterPoster": "/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.jpg",
+      "beforeAlt": "Labelled placeholder for Coco's Adventure Playground's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Coco's Adventure Playground concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "A matched live-site capture was not filed for this publish. The before panel is a labelled placeholder for cocosplayground.co.uk — not a screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Play first. Today's hours stay on sources we can keep."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of cocosplayground.co.uk.</p>\n        <p>Generated play-hall plate disclosed — not a photograph of the premises. Do not resurrect retired disco framing or invent parent quotes. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Coco's Adventure Playground.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "marine-wellness": {
+    "title": "Marine Wellness concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Marine Wellness in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Calm room. The diary is already Booksy.",
+    "date": "23 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
+    "conceptHref": "/concepts/marine-wellness/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "marine-wellness",
+      "afterVideo": "/media/concepts/marine-wellness/marine-wellness-after.mp4",
+      "beforePoster": "/media/concepts/marine-wellness/marine-wellness-before.jpg",
+      "afterPoster": "/media/concepts/marine-wellness/marine-wellness-after.jpg",
+      "beforeAlt": "Labelled placeholder for Marine Wellness's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Marine Wellness concept, held as a short clip from the captured still — a full interactive visit demo was not filed for this publish",
+      "beforeNote": "Marine Wellness books on Booksy rather than a brochure site. The before panel is a labelled placeholder for that public booking presence — not a fabricated clinic homepage screenshot."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
+        "change": "Calm room. The diary is already Booksy."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs for these first-50 grafts name what the feed already wins and what the studio must not invent.",
+        "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of Booksy and the public Facebook page.</p>\n        <p>Generated calm plate disclosed — not a treatment-room photograph. Quote clinical lines; do not paraphrase or invent a founding year. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Marine Wellness.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
 } satisfies Record<string, TransformationDetail>;
