@@ -5,16 +5,27 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 
 const phone = "028 4375 0949";
 const phoneHref = "tel:+442843750949";
+const email = "info@arleyhousedundrum.co.uk";
+const mailto = `mailto:${email}`;
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 
-const holds = [
-  { name: "Dogs", line: "Welcome inside and outside." },
-  { name: "TV and games room", line: "A room in the house for an evening in." },
-  { name: "Ground-floor bedrooms", line: "If the stairs are not for you." },
-  { name: "Cot", line: "For a stay with a very small guest." },
-  { name: "Parking, wifi, laundry", line: "On site, as listed." },
-  { name: "Tea and coffee", line: "In the rooms." },
+const furniture =
+  "Arley House.. a family run B&B , is perfect to explore this Area of Outstanding Natural Beauty";
+
+const places = [
+  {
+    title: "The village",
+    note: "Wake on Belfast Road. Dundrum first — the bay, the street, then the walk to the castle.",
+  },
+  {
+    title: "Dundrum Castle",
+    note: "A short walk. From the walls, how the land lies all the way to where the Mournes meet the sea.",
+  },
+  {
+    title: "Beaches either side",
+    note: "Two award-winning beaches on either side of the village — the coast when you want it.",
+  },
 ];
 ---
 
@@ -28,32 +39,67 @@ const holds = [
   bannerNote="The windows at dusk are a generated image, not a photograph of the house."
 >
   <main class="ah-page">
-    <section class="ah-first" aria-labelledby="ah-name">
-      <figure class="ah-grounds">
+    <section class="ah-hero" aria-labelledby="ah-name">
+      <figure class="ah-plate">
         <img
           src="/media/concepts/arley-house/windows-dusk.jpg"
           alt="Windows of a small house lit at dusk, looking out to a coastal village"
           width="1536"
           height="1024"
         />
-        <figcaption>Windows lit at dusk.</figcaption>
+        <figcaption>Windows lit at dusk, looking toward a coastal village.</figcaption>
       </figure>
-      <div class="ah-first-copy">
-        <p class="ah-open-now">14 Belfast Road, Dundrum, BT33 0NG</p>
-        <h1 id="ah-name">Arley House</h1>
-        <p class="ah-say">
-          Family bed and breakfast on the A24/A2. Dogs welcome. Ground-floor rooms,
-          a cot, parking, wifi, laundry, tea in the rooms, a TV and games room.
-        </p>
-        <p class="ah-place">
-          Two beaches either side of the village. Dundrum Castle a short walk.
-          Newcastle when you want it — not before.
-        </p>
-        <p class="ah-hours">Ring the house for nights.</p>
-        <nav class="ah-first-nav" aria-label="On this stay">
-          <a href="#nights">Ask about nights</a>
-          <a href="#house">What the house holds</a>
-        </nav>
+
+      <div class="ah-hero-veil" aria-hidden="true"></div>
+
+      <div class="ah-hero-stage">
+        <div class="ah-identity">
+          <p class="ah-kicker">Dundrum · County Down</p>
+          <h1 id="ah-name">Arley House</h1>
+          <p class="ah-furniture">{furniture}</p>
+          <p class="ah-lede">Wake in Dundrum. Newcastle when you want it.</p>
+          <p class="ah-where">14 Belfast Road, Dundrum, BT33 0NG</p>
+        </div>
+
+        <div class="ah-bar" id="nights">
+          <div class="ah-bar-head">
+            <p class="ah-bar-kicker">A stay</p>
+            <a class="ah-bar-phone" href={phoneHref}>{phone}</a>
+          </div>
+          <p class="ah-bar-lead">Write the nights. Ring the house. These words are for the call — nothing is sent.</p>
+
+          <form class="ah-form" data-ah-request>
+            <label class="ah-box" for="ah-who">
+              <span>Your name</span>
+              <input id="ah-who" name="name" type="text" autocomplete="name" required />
+            </label>
+            <label class="ah-box" for="ah-when">
+              <span>Nights you have in mind</span>
+              <input id="ah-when" name="when" type="text" placeholder="12–14 September" required />
+            </label>
+            <fieldset class="ah-chips">
+              <legend>Who is coming</legend>
+              <label class="ah-chip"><input type="radio" name="ah-who-with" value="just us" checked /> Just us</label>
+              <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog" /> Ask about a dog</label>
+              <label class="ah-chip"><input type="radio" name="ah-who-with" value="with a child" /> With a child</label>
+              <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog, and a child" /> Ask about a dog, and a child</label>
+            </fieldset>
+            <label class="ah-box ah-box--notes" for="ah-notes">
+              <span>Anything we should know</span>
+              <textarea id="ah-notes" name="notes" rows="2"></textarea>
+            </label>
+            <button class="ah-write" type="submit">Write the words for the call</button>
+
+            <div class="ah-handoff" data-ah-handoff role="status" hidden tabindex="-1">
+              <strong>Say this when they answer:</strong>
+              <pre data-ah-script></pre>
+              <div class="ah-handoff-acts">
+                <a class="ah-call" href={phoneHref}>Call {phone}</a>
+                <a class="ah-mail" data-ah-mail href={mailto}>Or send the same words by email</a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -69,68 +115,46 @@ const holds = [
       <figcaption>Visit Mourne Gullion Strangford · Arley House</figcaption>
     </figure>
 
-    <section class="ah-holds" id="house" aria-labelledby="ah-holds-title">
-      <p class="ah-kicker">In the house</p>
-      <h2 id="ah-holds-title">What the house holds</h2>
-      <ul class="ah-inventory">
-        {holds.map((item) => (
-          <li>
-            <strong>{item.name}</strong>
-            <span>{item.line}</span>
+    <section class="ah-welcome" aria-labelledby="ah-welcome-title">
+      <p class="ah-kicker ah-kicker--ink">The house</p>
+      <h2 id="ah-welcome-title">Family-run, in the village.</h2>
+      <p class="ah-welcome-copy">
+        A family run B&amp;B on Belfast Road. The nights live in the diary —
+        ring {phone}. Tea, parking, wifi, and laundry: ask the house when you call.
+      </p>
+    </section>
+
+    <section class="ah-explore" aria-labelledby="ah-explore-title">
+      <p class="ah-kicker ah-kicker--ink">From the door</p>
+      <h2 id="ah-explore-title">Find your way around</h2>
+      <ul class="ah-cards" role="list">
+        {places.map((item) => (
+          <li class="ah-card">
+            <h3>{item.title}</h3>
+            <p>{item.note}</p>
           </li>
         ))}
       </ul>
-      <p class="ah-current">
-        For this week in the village, ring {phone}.
-      </p>
     </section>
 
-    <section class="ah-pad" id="nights" aria-labelledby="ah-pad-title">
-      <p class="ah-kicker">A stay</p>
-      <h2 id="ah-pad-title">Nights, and who is coming.</h2>
-      <p class="ah-pad-lead">
-        14 Belfast Road, Dundrum, BT33 0NG. Write the nights and who is coming
-        — a dog or a child if they are. Then ring.
-      </p>
-
-      <div class="ah-request">
-        <a class="ah-dial" href={phoneHref}>{phone}</a>
-        <p class="ah-dial-hint">Family-run bed and breakfast</p>
-
-        <form class="ah-script-form" data-ah-request>
-          <label class="ah-field" for="ah-who">
-            <span>Your name</span>
-            <input id="ah-who" name="name" type="text" autocomplete="name" required />
-          </label>
-
-          <label class="ah-field" for="ah-when">
-            <span>Nights you have in mind</span>
-            <input id="ah-when" name="when" type="text" placeholder="12–14 September" required />
-          </label>
-
-          <fieldset class="ah-field ah-field--choice">
-            <legend>Who is coming</legend>
-            <label><input type="radio" name="ah-who-with" value="just us" checked /> Just us</label>
-            <label><input type="radio" name="ah-who-with" value="with a dog" /> With a dog</label>
-            <label><input type="radio" name="ah-who-with" value="with a child" /> With a child</label>
-            <label><input type="radio" name="ah-who-with" value="with a dog and a child" /> Dog and child</label>
-          </fieldset>
-
-          <label class="ah-field" for="ah-notes">
-            <span>Anything we should know</span>
-            <textarea id="ah-notes" name="notes" rows="3"></textarea>
-          </label>
-
-          <button class="ah-submit" type="submit">Write the words for the call</button>
-
-          <div class="ah-handoff" data-ah-handoff role="status" hidden tabindex="-1">
-            <strong>Say this when they answer:</strong>
-            <pre data-ah-script></pre>
-            <a href={phoneHref}>Call {phone}</a>
-          </div>
-        </form>
-      </div>
+    <section class="ah-proof" aria-labelledby="ah-proof-title">
+      <p class="ah-kicker">25 July 2026</p>
+      <h2 id="ah-proof-title" class="visually-hidden">From the house</h2>
+      <blockquote>
+        <p>What wonderful people we had last night 🙂 Off today to do ‘Pippen’s Coastal run 2026’</p>
+      </blockquote>
+      <p class="ah-proof-att">Arley House</p>
     </section>
+
+    <footer class="ah-end">
+      <p class="ah-end-name">Arley House</p>
+      <p>14 Belfast Road, Dundrum, BT33 0NG</p>
+      <p>
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={mailto}>{email}</a>
+      </p>
+    </footer>
   </main>
 
   <script is:inline>
@@ -139,6 +163,7 @@ const holds = [
       if (!form) return;
       var handoff = form.querySelector("[data-ah-handoff]");
       var scriptEl = form.querySelector("[data-ah-script]");
+      var mail = form.querySelector("[data-ah-mail]");
       if (!handoff || !scriptEl) return;
 
       form.addEventListener("submit", function (event) {
@@ -149,12 +174,18 @@ const holds = [
         var notes = form.querySelector("#ah-notes").value.trim();
         var chosen = form.querySelector('input[name="ah-who-with"]:checked');
         var who = chosen ? chosen.value : "just us";
-        scriptEl.textContent = [
+        var lines = [
           "Hello, my name is " + name + ".",
           "I am hoping to stay " + when + ".",
           "It would be " + who + ".",
           notes || ""
-        ].filter(Boolean).join("\n");
+        ].filter(Boolean);
+        scriptEl.textContent = lines.join("\n");
+        if (mail) {
+          var body = encodeURIComponent(lines.join("\n"));
+          var subject = encodeURIComponent("Nights at Arley House — " + when);
+          mail.setAttribute("href", "mailto:info@arleyhousedundrum.co.uk?subject=" + subject + "&body=" + body);
+        }
         handoff.hidden = false;
         handoff.focus();
       });
