@@ -21,7 +21,7 @@ const fontHref =
   businessName="Armstrong Opticians"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The choosing wall and practice scenes are generated visualisations. The quiet room is a generated image of a calm practice, not a photograph of the shop."
+  bannerNote="The choosing wall, dispensing tray and consultation suite are generated visualisations. The quiet room is a generated image of a calm practice, not a photograph of the shop."
 >
   <div class="ao-strip">
     <span>30 Railway Street, Newcastle · Established 1983</span>
@@ -34,19 +34,16 @@ const fontHref =
 
   <header class="ao-header">
     <a class="ao-brand" href="/concepts/armstrong-opticians/">
-      <AoMark size={36} class="ao-brand-mark" />
+      <AoMark size={34} class="ao-brand-mark" />
       <span class="ao-brand-text">
         <span class="ao-brand-name">Armstrong Opticians</span>
-        <span class="ao-brand-sub">30 Railway Street · Newcastle</span>
+        <span class="ao-brand-sub">Newcastle · Est. 1983</span>
       </span>
     </a>
     <nav class="ao-nav" aria-label="Concept navigation">
-      <a href="#refit">Refresh notice</a>
-      <a href="#desk">Call note</a>
-      <a href="#card">Appointment card</a>
       <a href="#history">The practice</a>
-      <a href="#eyewear">Eyewear</a>
-      <a href="#urgent">Urgent care</a>
+      <a href="#craft">Eyewear</a>
+      <a href="#suite">Consulting</a>
     </nav>
     <a class="ao-nav-cta" href="#desk">Write call note</a>
   </header>
@@ -88,6 +85,13 @@ const fontHref =
             <h2 id="ao-desk-title">A note for the call</h2>
             <p>Nothing is sent. These words are yours to say.</p>
           </header>
+
+          <div class="ao-desk-chips" role="group" aria-label="Preferred time suggestions">
+            <button type="button" class="ao-chip" data-time="Next available morning">Morning visit</button>
+            <button type="button" class="ao-chip" data-time="Next available afternoon">Afternoon visit</button>
+            <button type="button" class="ao-chip" data-time="Any day next week">Next week</button>
+          </div>
+
           <label class="ao-line" for="ao-who">
             <span>Who needs seen</span>
             <input id="ao-who" name="who" type="text" autocomplete="name" placeholder="e.g. John Smith" required />
@@ -103,7 +107,10 @@ const fontHref =
           <button type="submit">Write the words</button>
           <div class="ao-ready" data-ao-ready role="status" hidden tabindex="-1">
             <p data-ao-ready-script></p>
-            <a data-ao-ready-call href={phoneHref}>Call {phone}</a>
+            <div class="ao-ready-actions">
+              <a data-ao-ready-call href={phoneHref}>Call {phone}</a>
+              <button type="button" class="ao-copy-btn" data-ao-copy>Copy note</button>
+            </div>
           </div>
         </form>
       </div>
@@ -123,10 +130,85 @@ const fontHref =
       </figure>
     </section>
 
+    <!-- Eyewear Consultation & Craft Section -->
+    <section class="ao-craft" id="craft" aria-labelledby="ao-craft-title">
+      <div class="ao-craft-grid">
+        <div class="ao-craft-story">
+          <p class="ao-kicker">Unique Eyewear</p>
+          <h2 id="ao-craft-title">The tactile craft of finding your frame.</h2>
+          <p class="ao-craft-lead">
+            An independent collection chosen for character, balance, and all-day comfort.
+            From hand-finished Italian acetates to featherweight titanium, we take the time
+            to measure bridge fit, temple length, and focal alignment properly.
+          </p>
+          <ul class="ao-craft-points">
+            <li>
+              <strong>Individual fitting</strong> — Careful bridge and temple adjustments so your frames rest weightlessly without slipping.
+            </li>
+            <li>
+              <strong>Precision dispensing</strong> — Accurate pupillary and optical centration measured to your everyday visual habits.
+            </li>
+            <li>
+              <strong>Independent curation</strong> — Characterful shapes and thoughtful silhouettes not found on ordinary retail chains.
+            </li>
+          </ul>
+        </div>
+        <figure class="ao-craft-media">
+          <img
+            src="/media/concepts/armstrong-opticians/eyewear-tray.jpg"
+            alt="AI-generated photograph of curated spectacle frames on a timber consultation tray with dispensing tools"
+            width="1536"
+            height="1024"
+            loading="lazy"
+          />
+          <figcaption>Curated frames on the dispensing tray, Railway Street.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Consulting Room Section -->
+    <section class="ao-suite" id="suite" aria-labelledby="ao-suite-title">
+      <div class="ao-suite-grid">
+        <figure class="ao-suite-media">
+          <img
+            src="/media/concepts/armstrong-opticians/consulting-room.jpg"
+            alt="AI-generated photograph of a calm, well-appointed optometric consulting room in Newcastle"
+            width="1536"
+            height="1024"
+            loading="lazy"
+          />
+          <figcaption>The consulting room in calm ambient light.</figcaption>
+        </figure>
+        <div class="ao-suite-story">
+          <p class="ao-kicker">Enhanced Eye Care</p>
+          <h2 id="ao-suite-title">Unrushed time in a calm room.</h2>
+          <p class="ao-suite-lead">
+            Good optometry starts with listening. We believe a thorough examination requires
+            patience, attentive conversation, and state-of-the-art diagnostic clarity without
+            feeling rushed through a conveyor belt.
+          </p>
+          <div class="ao-suite-reassurance">
+            <div class="ao-reassurance-card">
+              <h3>Thorough & Unhurried</h3>
+              <p>Generous consultation time dedicated to understanding your vision, work screen demands, and eye health.</p>
+            </div>
+            <div class="ao-reassurance-card">
+              <h3>Community Roots</h3>
+              <p>Caring for generations of families across Newcastle, Dundrum, and the Mournes from Railway Street since 1983.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="ao-keepsake" id="card" aria-labelledby="ao-keepsake-title">
       <div class="ao-keepsake-lead">
         <p class="ao-kicker">For the diary</p>
         <h2 id="ao-keepsake-title">Everything you need fits on one card.</h2>
+        <p class="ao-keepsake-desc">
+          When the diary lives by the phone, a clean physical card holds the practice
+          details you return to year after year.
+        </p>
       </div>
       <div class="ao-card">
         <p class="ao-card-name">Armstrong Opticians</p>
@@ -173,12 +255,11 @@ const fontHref =
 
     <section class="ao-week" id="eyewear" aria-labelledby="ao-week-title">
       <div class="ao-week-inner">
-        <p class="ao-kicker">Facebook</p>
-        <h2 id="ao-week-title">This week’s frames live there.</h2>
+        <p class="ao-kicker">New arrivals</p>
+        <h2 id="ao-week-title">Current frames &amp; seasonal styles.</h2>
         <p class="ao-week-lead">
-          Sunglasses and this week’s offers sit on
-          <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a> —
-          they will change. We will not pin a price here.
+          Explore our latest eyewear arrivals, seasonal sunglasses, and practice updates directly on our
+          <a href={facebook} rel="noopener noreferrer" target="_blank"> Facebook page</a>.
         </p>
       </div>
     </section>
@@ -206,7 +287,7 @@ const fontHref =
     <EssenceMedia slug="armstrong-opticians" />
 
     <footer class="ao-end">
-      <AoMark size={40} class="ao-end-mark" />
+      <AoMark size={42} class="ao-end-mark" />
       <p class="ao-end-name">Armstrong Opticians</p>
       <p>Established 1983 · 30 Railway Street, Newcastle, BT33 0AL</p>
       <p><a href={phoneHref}>{phone}</a></p>
@@ -238,7 +319,19 @@ const fontHref =
       var ready = document.querySelector("[data-ao-ready]");
       var scriptEl = document.querySelector("[data-ao-ready-script]");
       var callEl = document.querySelector("[data-ao-ready-call]");
+      var copyBtn = document.querySelector("[data-ao-copy]");
       if (!form || !ready || !scriptEl || !callEl) return;
+
+      var chips = document.querySelectorAll("[data-time]");
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          var input = form.elements.namedItem("when");
+          if (input) {
+            input.value = chip.getAttribute("data-time");
+            input.focus();
+          }
+        });
+      });
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -246,16 +339,27 @@ const fontHref =
         var who = form.elements.namedItem("who").value.trim();
         var when = form.elements.namedItem("when").value.trim();
         var tel = form.elements.namedItem("tel").value.trim();
-        scriptEl.textContent =
+        var fullScript =
           "Ring " + practice + ". " +
           who + " would like to be seen " + when +
           ". You can return on " + tel + ".";
+        scriptEl.textContent = fullScript;
         callEl.href = practiceHref;
         callEl.textContent = "Call " + practice;
         ready.hidden = false;
         ready.focus();
+
+        if (copyBtn) {
+          copyBtn.onclick = function () {
+            navigator.clipboard.writeText(fullScript).then(function () {
+              copyBtn.textContent = "Copied!";
+              setTimeout(function () { copyBtn.textContent = "Copy note"; }, 2000);
+            });
+          };
+        }
       });
     })();
   </script>
 </ConceptLayout>
+
 

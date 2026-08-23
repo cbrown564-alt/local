@@ -1107,6 +1107,8 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/frame-wall.jpg` — generated concept plate of the optical choosing wall and consultation counter on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/armstrong-opticians/eyewear-tray.jpg` — generated concept plate of curated frames and optometry dispensing tools; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/armstrong-opticians/consulting-room.jpg` — generated concept plate of the quiet consulting suite on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
