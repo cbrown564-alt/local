@@ -15,6 +15,15 @@ export interface EssenceMedia {
 }
 
 export const essenceMedia: Record<string, EssenceMedia> = {
+  "arley-house": {
+    heading: "The door opens on Belfast Road.",
+    lede: "A welcoming morning in Dundrum: bikes at the door, the dog on the boards, and Newcastle when you want it.",
+    frames: [{
+      src: "/media/concepts/arley-house/morning-door.jpg",
+      alt: "AI-generated morning scene of a coastal guesthouse door on Belfast Road with touring bicycles and a dog on the floorboards",
+      label: "Morning on Belfast Road",
+    }],
+  },
   "bettys-butters": {
     heading: "A little butter changes the whole plate.",
     lede: "Professional-kitchen flavour, made useful on an ordinary night at home.",

@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import AhMark from "./components/AhMark.astro";
 import AhVillageMap from "./components/AhVillageMap.astro";
 
 const phone = "028 4375 0949";
@@ -10,7 +12,7 @@ const email = "info@arleyhousedundrum.co.uk";
 const mailto = `mailto:${email}`;
 const facebook = "https://www.facebook.com/ArleyHouseDundrum";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 
 const furniture =
   "Arley House.. a family run B&B , is perfect to explore this Area of Outstanding Natural Beauty";
@@ -23,18 +25,48 @@ const furniture =
   businessName="Arley House"
   town="Dundrum"
   fontHref={fontHref}
-  bannerNote="The windows at dusk are a generated image, not a photograph of the house."
+  bannerNote="Morning doorway, breakfast table and windows at dusk are generated imagery. The windows at dusk are a generated image, not a photograph of the house."
 >
+  <div class="ah-strip">
+    <span>14 Belfast Road, Dundrum · Area of Outstanding Natural Beauty</span>
+    <span class="ah-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener" target="_blank">Facebook</a>
+    </span>
+  </div>
+
+  <header class="ah-header">
+    <a class="ah-brand" href="/concepts/arley-house/">
+      <AhMark size={32} class="ah-brand-mark" />
+      <span class="ah-brand-text">
+        <span class="ah-brand-name">Arley House</span>
+        <span class="ah-brand-sub">14 Belfast Road · Dundrum</span>
+      </span>
+    </a>
+    <nav class="ah-nav" aria-label="Concept navigation">
+      <a href="#the-house">The house</a>
+      <a href="#morning">The morning</a>
+      <a href="#explore">From the door</a>
+      <a href="#nights">A stay</a>
+    </nav>
+    <a class="ah-nav-cta" href="#nights">Plan your stay</a>
+  </header>
+
   <main class="ah-page">
     <section class="ah-hero" aria-labelledby="ah-name">
       <figure class="ah-plate">
-        <img
-          src="/media/concepts/arley-house/windows-dusk.jpg"
-          alt="Windows of a small house lit at dusk, looking out to a coastal village"
-          width="1536"
-          height="1024"
-        />
-        <figcaption>Windows lit at dusk, looking toward a coastal village.</figcaption>
+        <picture>
+          <source srcset="/media/concepts/arley-house/morning-door.jpg" media="(min-width: 641px)" />
+          <img
+            src="/media/concepts/arley-house/morning-door.jpg"
+            alt="AI-generated morning scene of a coastal guesthouse door on Belfast Road with touring bicycles and a dog on the floorboards"
+            width="1536"
+            height="1024"
+            loading="eager"
+          />
+        </picture>
+        <figcaption>Morning light down Belfast Road, Dundrum.</figcaption>
       </figure>
 
       <div class="ah-hero-veil" aria-hidden="true"></div>
@@ -46,64 +78,85 @@ const furniture =
           <p class="ah-furniture">{furniture}</p>
           <p class="ah-lede">Wake in Dundrum. Newcastle when you want it.</p>
           <p class="ah-where">14 Belfast Road, Dundrum, BT33 0NG</p>
-        </div>
-
-        <div class="ah-bar" id="nights">
-          <div class="ah-bar-head">
-            <p class="ah-bar-kicker">A stay</p>
-            <a class="ah-bar-phone" href={phoneHref}>{phone}</a>
+          <div class="ah-hero-actions">
+            <a class="ah-cta" href="#nights">Plan your stay</a>
+            <a class="ah-link-ghost" href="#explore">Explore the bay ↓</a>
           </div>
-          <p class="ah-bar-lead">Write the nights. Ring the house — or send the same words by email. These words are for the call; nothing is sent from here.</p>
-
-          <form class="ah-form" data-ah-request>
-            <label class="ah-box" for="ah-who">
-              <span>Your name</span>
-              <input id="ah-who" name="name" type="text" autocomplete="name" required />
-            </label>
-            <label class="ah-box" for="ah-when">
-              <span>Nights you have in mind</span>
-              <input id="ah-when" name="when" type="text" placeholder="12–14 September" required />
-            </label>
-            <fieldset class="ah-chips">
-              <legend>Who is coming</legend>
-              <label class="ah-chip"><input type="radio" name="ah-who-with" value="just us" checked /> Just us</label>
-              <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog" /> Ask about a dog</label>
-              <label class="ah-chip"><input type="radio" name="ah-who-with" value="with a child" /> With a child</label>
-              <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog, and a child" /> Ask about a dog, and a child</label>
-            </fieldset>
-            <label class="ah-box ah-box--notes" for="ah-notes">
-              <span>Anything we should know</span>
-              <textarea id="ah-notes" name="notes" rows="2"></textarea>
-            </label>
-            <button class="ah-write" type="submit">Write the words for the call</button>
-
-            <div class="ah-handoff" data-ah-handoff role="status" hidden tabindex="-1">
-              <strong>Say this when they answer:</strong>
-              <pre data-ah-script></pre>
-              <div class="ah-handoff-acts">
-                <a class="ah-call" href={phoneHref}>Call {phone}</a>
-                <a class="ah-mail" data-ah-mail href={mailto}>Or send the same words by email</a>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </section>
 
     <!-- Move 2: the essence made visible. The house shows everything except
          the rooms; the rooms are a phone call. Names no inventory. -->
-    <section class="ah-essence" aria-labelledby="ah-essence-title">
-      <p class="ah-kicker ah-kicker--ink">The house</p>
-      <h2 id="ah-essence-title">Everything but the rooms.</h2>
-      <p class="ah-essence-copy">
-        The dog on the boards. Bikes at the door. The fry in the morning and the
-        village days as they come — that is all on our page, and always will be.
-        The one thing we have never put on it is a bedroom.
-      </p>
-      <p class="ah-essence-copy">
-        The rooms are kept the way they have always been kept: <a href={phoneHref}>ring the house</a>,
-        tell us the nights you have in mind, and we will tell you what we have.
-      </p>
+    <section class="ah-essence" id="the-house" aria-labelledby="ah-essence-title">
+      <div class="ah-essence-layout">
+        <div class="ah-essence-main">
+          <p class="ah-kicker ah-kicker--clay">The house</p>
+          <h2 id="ah-essence-title">Everything but the rooms.</h2>
+          <p class="ah-essence-copy ah-dropcap">
+            The dog on the boards. Bikes at the door. The fry in the morning and the
+            village days as they come — that is all on our page, and always will be.
+            The one thing we have never put on it is a bedroom.
+          </p>
+          <p class="ah-essence-copy">
+            The rooms are kept the way they have always been kept: <a href={phoneHref}>ring the house</a>,
+            tell us the nights you have in mind, and we will tell you what we have.
+          </p>
+        </div>
+        <aside class="ah-essence-badge" aria-label="House highlights">
+          <div class="ah-badge-card">
+            <span class="ah-badge-kicker">Hospitality</span>
+            <strong class="ah-badge-stat">100%</strong>
+            <span class="ah-badge-note">Guest recommendations on Facebook</span>
+          </div>
+          <div class="ah-badge-card">
+            <span class="ah-badge-kicker">Setting</span>
+            <strong class="ah-badge-title">Area of Outstanding Natural Beauty</strong>
+            <span class="ah-badge-note">Between bay and mountain</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Move 4 & Editorial Texture: A Morning on Belfast Road -->
+    <section class="ah-morning-band" id="morning" aria-labelledby="ah-morning-title">
+      <div class="ah-morning-inner">
+        <div class="ah-morning-copy">
+          <p class="ah-kicker ah-kicker--clay">A day in Dundrum</p>
+          <h2 id="ah-morning-title">From the first pot of tea to the coast road.</h2>
+          <p class="ah-morning-lead">
+            Hospitality at 14 Belfast Road is measured in early departures, coastal air, and the quiet rhythm of the village.
+          </p>
+          <ol class="ah-timeline-list" role="list">
+            <li class="ah-timeline-item">
+              <span class="ah-timeline-time">Morning</span>
+              <h3>The fry &amp; the boards</h3>
+              <p>Hot tea, breakfast at the table, and the house dog resting in the doorway as morning light clears the bay.</p>
+            </li>
+            <li class="ah-timeline-item">
+              <span class="ah-timeline-time">Midday</span>
+              <h3>Bikes on Belfast Road</h3>
+              <p>Touring bikes loaded for the day, heading south along Dundrum Bay or up to Dundrum Castle’s hilltop view.</p>
+            </li>
+            <li class="ah-timeline-item">
+              <span class="ah-timeline-time">Evening</span>
+              <h3>The village quiet</h3>
+              <p>Returning from Newcastle to a quiet hearth, the bay tide out, and the Mournes settling in blue light.</p>
+            </li>
+          </ol>
+        </div>
+
+        <figure class="ah-morning-figure">
+          <img
+            src="/media/concepts/arley-house/breakfast-table.jpg"
+            alt="AI-generated morning dining table in a guesthouse looking out to Dundrum Bay and the Mournes"
+            width="1536"
+            height="1024"
+            loading="lazy"
+          />
+          <figcaption>Breakfast overlooking Dundrum Bay towards the Mournes.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <figure class="ah-pull">
@@ -120,34 +173,90 @@ const furniture =
 
     <!-- Move 3: the map is the promise. The Intro sentence is a geography
          claim, so the cards give way to the drawn plate. -->
-    <section class="ah-explore" aria-labelledby="ah-explore-title">
-      <p class="ah-kicker ah-kicker--ink">From the door</p>
-      <h2 id="ah-explore-title">Perfect to explore.</h2>
-      <p class="ah-explore-lead">
-        Wake on Belfast Road. The castle on its hill, the bay below the village,
-        beaches either side — and Newcastle down the road when you want it.
-      </p>
+    <section class="ah-explore" id="explore" aria-labelledby="ah-explore-title">
+      <div class="ah-explore-header">
+        <p class="ah-kicker ah-kicker--clay">From the door</p>
+        <h2 id="ah-explore-title">Perfect to explore.</h2>
+        <p class="ah-explore-lead">
+          Wake on Belfast Road. The castle on its hill, the bay below the village,
+          beaches either side — and Newcastle down the road when you want it.
+        </p>
+      </div>
       <AhVillageMap headingId="ah-explore-title" />
+    </section>
+
+    <!-- Move 5: The Ritual Staged — The Reception Ledger & Phone Script -->
+    <section class="ah-ledger-section" id="nights" aria-labelledby="ah-ledger-title">
+      <div class="ah-ledger-frame">
+        <div class="ah-ledger-head">
+          <div>
+            <p class="ah-bar-kicker">A stay</p>
+            <h2 id="ah-ledger-title" class="ah-ledger-title">Ring the house</h2>
+          </div>
+          <a class="ah-bar-phone" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="ah-bar-lead">
+          Write the nights. Ring the house — or send the same words by email. These words are for the call; nothing is sent from here.
+        </p>
+
+        <form class="ah-form" data-ah-request>
+          <label class="ah-box" for="ah-who">
+            <span>Your name</span>
+            <input id="ah-who" name="name" type="text" autocomplete="name" placeholder="e.g. Claire &amp; Mark" required />
+          </label>
+          <label class="ah-box" for="ah-when">
+            <span>Nights you have in mind</span>
+            <input id="ah-when" name="when" type="text" placeholder="12–14 September" required />
+          </label>
+          <fieldset class="ah-chips">
+            <legend>Who is coming</legend>
+            <label class="ah-chip"><input type="radio" name="ah-who-with" value="just us" checked /> <span>Just us</span></label>
+            <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog" /> <span>Ask about a dog</span></label>
+            <label class="ah-chip"><input type="radio" name="ah-who-with" value="with a child" /> <span>With a child</span></label>
+            <label class="ah-chip"><input type="radio" name="ah-who-with" value="asking about a dog, and a child" /> <span>Ask about a dog, and a child</span></label>
+          </fieldset>
+          <label class="ah-box ah-box--notes" for="ah-notes">
+            <span>Anything we should know (optional)</span>
+            <textarea id="ah-notes" name="notes" rows="2" placeholder="e.g. arriving by bike, or need secure cycle storage"></textarea>
+          </label>
+          <button class="ah-write" type="submit">Write the words for the call</button>
+
+          <div class="ah-handoff" data-ah-handoff role="status" hidden tabindex="-1">
+            <strong>Say this when they answer:</strong>
+            <pre data-ah-script></pre>
+            <div class="ah-handoff-acts">
+              <a class="ah-call" href={phoneHref}>Call {phone}</a>
+              <a class="ah-mail" data-ah-mail href={mailto}>Or send the same words by email</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- Move 7: the guestbook band. One anchored line, dated lightly, then
          the honest handoff to the feed. -->
-    <section class="ah-proof" aria-labelledby="ah-proof-title">
-      <p class="ah-kicker">July 2026</p>
-      <h2 id="ah-proof-title" class="visually-hidden">From the house</h2>
-      <blockquote>
-        <p>What wonderful people we had last night 🙂 Off today to do ‘Pippen’s Coastal run 2026’</p>
-      </blockquote>
-      <p class="ah-proof-att">Arley House</p>
-      <p class="ah-proof-handoff">
-        The days as they happen — the dog, the runs, the shows — are on <a href={facebook} rel="noopener">our Facebook</a>.
-      </p>
+    <section class="ah-proof" id="guestbook" aria-labelledby="ah-proof-title">
+      <div class="ah-proof-inner">
+        <p class="ah-kicker ah-kicker--clay">July 2026</p>
+        <h2 id="ah-proof-title" class="visually-hidden">From the house</h2>
+        <blockquote>
+          <p>What wonderful people we had last night 🙂 Off today to do ‘Pippen’s Coastal run 2026’</p>
+        </blockquote>
+        <p class="ah-proof-att">Arley House</p>
+        <p class="ah-proof-handoff">
+          The days as they happen — the dog, the runs, the shows — are on <a href={facebook} rel="noopener">our Facebook</a>.
+        </p>
+      </div>
     </section>
 
+    <!-- Studio Transformation Essence Media -->
+    <EssenceMedia slug="arley-house" />
+
     <footer class="ah-end">
+      <AhMark size={36} class="ah-end-mark" />
       <p class="ah-end-name">Arley House</p>
       <p>14 Belfast Road, Dundrum, BT33 0NG</p>
-      <p>
+      <p class="ah-end-links">
         <a href={phoneHref}>{phone}</a>
         <span aria-hidden="true"> · </span>
         <a href={mailto}>{email}</a>
@@ -190,3 +299,4 @@ const furniture =
     })();
   </script>
 </ConceptLayout>
+

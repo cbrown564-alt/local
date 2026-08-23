@@ -541,6 +541,14 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   operations. Their readable labels and legends are HTML overlays, with a
   separate text key on small screens. Each figure visibly labels the artwork
   as AI-generated and states its concept-specific evidence boundary.
+- `public/media/maps/arley-house-village-generated.png` — **in use** (23 August
+  2026). AI-generated indicative map artwork for the Arley House village and
+  bay plate, made with the built-in OpenAI image generation tool. It keeps only
+  the sourced relationships between Arley House, Belfast Road, Dundrum,
+  Dundrum Castle, Dundrum Bay, Newcastle and the Mournes; it is not a survey,
+  navigational map, exact coastline, or evidence of buildings or roads. The
+  readable labels remain HTML overlays and the figure discloses the generated
+  artwork visibly.
 
 ### Castle Farm and Newcastle Family Dental concept plates
 
@@ -1089,6 +1097,8 @@ Ten built concept grafts published to the public transformations index.
 ### Generated concept plates (guest-disclosed)
 
 - `public/media/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/arley-house/morning-door.jpg` — generated concept plate of the morning doorway with bicycles and floorboards; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.

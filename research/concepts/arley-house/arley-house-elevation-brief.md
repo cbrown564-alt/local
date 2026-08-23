@@ -17,11 +17,11 @@ labelled pass of the Internet Archive captures of that domain (page bodies
 The general method is `docs/the-elevation-method.md`. The shape is **stay**;
 the register is **the morning after** — the house's own tense, as shown below.
 
-**Status: shipped 23 August 2026 (evening pass).** Moves 2, 3, 6 and 7 are
-live on `/concepts/arley-house/` with the copy sharpening in moves 1 and 5,
-pinned by `tools/test/test-arley-house-elevation.mjs` (in `pnpm test`).
-Move 4's morning plate awaits a generation session; the dusk plate and its
-disclosure stand until then. Do not call the concept validated.
+**Status: elevated 23 August 2026 (flagship pass).** Moves 1 through 7 are
+live on `/concepts/arley-house/`, including Move 4's morning doorway hero and
+breakfast table plates, bespoke house mark (`AhMark`), sticky navigation shell,
+and `EssenceMedia` integration. Pinned by `tools/test/test-arley-house-elevation.mjs`
+(20/20 suites passing in `pnpm test`). Do not call the concept validated.
 
 ## The insight the first pass missed
 
