@@ -55,6 +55,7 @@ const suites = [
   ["test:painted-earth"],
   ["test:bear-necessities"],
   ["test:binghams"],
+  ["test:irelands"],
   ["test:where-it-fails"],
   ["test:how-its-made"],
   ["test:why-its-yours"],

@@ -14,10 +14,10 @@ philosophy with a mechanism, a family arc with a paradox in it, a voice better
 than anything the studio will write, and a feed that already wins at something
 else.
 
-**Status: brief rewritten 23 August 2026 from the Facebook + site harvest. The
-guest page on `sprint-day1-five` is a working graft written *before* this brief.
-Move 1 (live-here sentence) is the one that has not shipped. Correct the year
-line the same day as that sentence. Do not call the concept validated.**
+**Status: elevated 23 August 2026. Moves 1 through 6 shipped (live-here furniture
+creed, cooker-goes-cold lede, verified 1975–2022 family arc, hold-and-store & price-match
+mechanisms, bespoke IaMark brand shell, and workshop docket with mailto generation).
+Pinned by test:irelands in tools/test/run-verification.mjs.**
 
 ## The organising principle
 

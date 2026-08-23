@@ -1,0 +1,371 @@
+---
+/**
+ * Ireland's Appliance Centre — Interactive Appliance Diagnostics & Service Router.
+ * Direct translation of: "When your cooker goes cold, your washing machine won't spin,
+ * your fridge has a meltdown, or your dishwasher does the dirty on you, don't despair!"
+ *
+ * Helps customers choose their symptom and routes directly to Van Callout (House)
+ * or Bench Drop-off (Harbour), pre-populating the workshop docket.
+ */
+
+const categories = [
+  {
+    id: "cooker",
+    name: "Cooker / Oven",
+    icon: "M12 4v16m-8-8h16M6 6h12v12H6z",
+    tagline: "Cooker goes cold",
+    route: "House Callout (Van)",
+    kindValue: "A repair at the house",
+    symptoms: [
+      "Oven elements cold / no heat",
+      "Fan running but oven stays lukewarm",
+      "Grill element not glowing",
+      "Door glass loose or seal perished",
+    ],
+  },
+  {
+    id: "washer",
+    name: "Washing Machine",
+    icon: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a5 5 0 1 1 5-5 5 5 0 0 1-5 5z",
+    tagline: "Won't spin",
+    route: "House Callout (Van)",
+    kindValue: "A repair at the house",
+    symptoms: [
+      "Drum won't spin / cycle hangs",
+      "Not draining / standing water in drum",
+      "Door lock jammed / won't open",
+      "Loud knocking / drum bearings worn",
+    ],
+  },
+  {
+    id: "fridge",
+    name: "Fridge / Freezer",
+    icon: "M5 2h14v20H5zm0 8h14M8 5v2m0 8v3",
+    tagline: "Has a meltdown",
+    route: "House Callout (Van)",
+    kindValue: "A repair at the house",
+    symptoms: [
+      "Fridge interior warm / ice melting",
+      "Compressor clicking or buzzing constantly",
+      "Heavy frost buildup at the back",
+      "Door seal split / not closing flush",
+    ],
+  },
+  {
+    id: "dishwasher",
+    name: "Dishwasher",
+    icon: "M4 4h16v16H4zm0 4h16M7 6h2m6 0h2",
+    tagline: "Does the dirty on you",
+    route: "House Callout (Van)",
+    kindValue: "A repair at the house",
+    symptoms: [
+      "Dishes dirty, cold or greasy after cycle",
+      "Not pumping out / drain error indicator",
+      "Tablet dispenser not opening",
+      "Water leak beneath the door",
+    ],
+  },
+  {
+    id: "bench",
+    name: "Small / Bench Drop-off",
+    icon: "M4 6h16v12H4zm4 4h8m-8 4h4",
+    tagline: "Drop-off to 67–69 The Harbour",
+    route: "Bench Repair (In-Store)",
+    kindValue: "A repair on the bench",
+    symptoms: [
+      "Microwave runs but does not heat",
+      "Vacuum cleaner motor cutting out",
+      "Television power / display fault",
+      "Small domestic appliance testing",
+    ],
+  },
+];
+---
+
+<div class="ia-diag" data-ia-diagnostics>
+  <div class="ia-diag-head">
+    <span class="ia-diag-kicker">Diagnostics &amp; Routing</span>
+    <h3 class="ia-diag-title">What has happened to the machine?</h3>
+    <p class="ia-diag-lead">
+      Select your appliance and the symptom below. It routes the job directly to the
+      service van or harbour bench and prefills your docket.
+    </p>
+  </div>
+
+  <div class="ia-diag-tabs" role="tablist" aria-label="Appliance types">
+    {categories.map((cat, idx) => (
+      <button
+        class:list={["ia-diag-tab", { "ia-diag-tab--active": idx === 0 }]}
+        role="tab"
+        aria-selected={idx === 0 ? "true" : "false"}
+        aria-controls={`diag-panel-${cat.id}`}
+        id={`diag-tab-${cat.id}`}
+        data-target={cat.id}
+        type="button"
+      >
+        <span class="ia-tab-name">{cat.name}</span>
+        <span class="ia-tab-tagline">{cat.tagline}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="ia-diag-panels">
+    {categories.map((cat, idx) => (
+      <div
+        class:list={["ia-diag-panel", { "ia-diag-panel--active": idx === 0 }]}
+        id={`diag-panel-${cat.id}`}
+        role="tabpanel"
+        aria-labelledby={`diag-tab-${cat.id}`}
+        hidden={idx !== 0}
+      >
+        <div class="ia-panel-header">
+          <div>
+            <h4 class="ia-panel-title">{cat.name}</h4>
+            <p class="ia-panel-route">
+              <strong>Recommended path:</strong> {cat.route}
+            </p>
+          </div>
+          <span class="ia-route-badge">{cat.route}</span>
+        </div>
+
+        <div class="ia-symptom-list" role="list">
+          {cat.symptoms.map((sym) => (
+            <button
+              class="ia-symptom-btn"
+              type="button"
+              data-kind={cat.kindValue}
+              data-symptom={`${cat.name}: ${sym}`}
+            >
+              <span class="ia-sym-check" aria-hidden="true">→</span>
+              <span class="ia-sym-text">{sym}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ia-diag {
+    background-color: #ffffff;
+    border: 1px solid var(--ia-border);
+    border-radius: var(--ia-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--ia-shadow-md);
+    margin: 2.5rem 0;
+  }
+
+  .ia-diag-kicker {
+    font-family: var(--ia-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ia-copper);
+  }
+
+  .ia-diag-title {
+    font-family: var(--ia-font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ia-ink);
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .ia-diag-lead {
+    font-size: 0.9375rem;
+    color: var(--ia-ink-light);
+    margin: 0 0 1.5rem;
+  }
+
+  .ia-diag-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ia-diag-tab {
+    background-color: var(--ia-paper);
+    border: 1px solid var(--ia-border);
+    border-radius: var(--ia-radius);
+    padding: 0.75rem 0.875rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: all 0.15s ease;
+  }
+
+  .ia-diag-tab:hover {
+    border-color: var(--ia-copper);
+    background-color: #ffffff;
+  }
+
+  .ia-diag-tab--active {
+    background-color: var(--ia-copper-light);
+    border-color: var(--ia-copper);
+    box-shadow: 0 0 0 1px var(--ia-copper);
+  }
+
+  .ia-tab-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--ia-ink);
+  }
+
+  .ia-diag-tab--active .ia-tab-name {
+    color: var(--ia-copper-dark);
+  }
+
+  .ia-tab-tagline {
+    font-family: var(--ia-font-mono);
+    font-size: 0.75rem;
+    color: var(--ia-ink-muted);
+  }
+
+  .ia-diag-panel {
+    background-color: var(--ia-paper);
+    border: 1px solid var(--ia-border-subtle);
+    border-radius: var(--ia-radius);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .ia-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--ia-border);
+  }
+
+  .ia-panel-title {
+    font-family: var(--ia-font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ia-ink);
+    margin: 0 0 0.25rem;
+  }
+
+  .ia-panel-route {
+    font-size: 0.8125rem;
+    color: var(--ia-ink-light);
+    margin: 0;
+  }
+
+  .ia-panel-route strong {
+    color: var(--ia-ink);
+  }
+
+  .ia-route-badge {
+    font-family: var(--ia-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--ia-slate);
+    padding: 0.3125rem 0.625rem;
+    border-radius: 4px;
+  }
+
+  .ia-symptom-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.625rem;
+  }
+
+  .ia-symptom-btn {
+    background-color: #ffffff;
+    border: 1px solid var(--ia-border);
+    border-radius: 6px;
+    padding: 0.625rem 0.875rem;
+    text-align: left;
+    font-size: 0.875rem;
+    color: var(--ia-ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.15s ease;
+  }
+
+  .ia-symptom-btn:hover {
+    border-color: var(--ia-copper);
+    background-color: var(--ia-copper-light);
+    color: var(--ia-copper-dark);
+    transform: translateX(2px);
+  }
+
+  .ia-sym-check {
+    font-family: var(--ia-font-mono);
+    color: var(--ia-copper);
+    font-weight: 700;
+  }
+
+  .ia-sym-text {
+    flex-grow: 1;
+    line-height: 1.35;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector("[data-ia-diagnostics]");
+    if (!root) return;
+
+    var tabs = root.querySelectorAll(".ia-diag-tab");
+    var panels = root.querySelectorAll(".ia-diag-panel");
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var targetId = tab.getAttribute("data-target");
+
+        tabs.forEach(function (t) {
+          t.classList.remove("ia-diag-tab--active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("ia-diag-tab--active");
+        tab.setAttribute("aria-selected", "true");
+
+        panels.forEach(function (p) {
+          if (p.id === "diag-panel-" + targetId) {
+            p.hidden = false;
+            p.classList.add("ia-diag-panel--active");
+          } else {
+            p.hidden = true;
+            p.classList.remove("ia-diag-panel--active");
+          }
+        });
+      });
+    });
+
+    var symptomBtns = root.querySelectorAll(".ia-symptom-btn");
+    symptomBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var kind = btn.getAttribute("data-kind");
+        var symptom = btn.getAttribute("data-symptom");
+
+        var form = document.querySelector("[data-ia-request]");
+        if (form) {
+          var radio = form.querySelector('input[name="ia-kind"][value="' + kind + '"]');
+          if (radio) radio.checked = true;
+
+          var notesField = form.querySelector("#ia-notes");
+          if (notesField) {
+            notesField.value = symptom;
+            notesField.focus();
+          }
+
+          var docket = document.getElementById("docket");
+          if (docket) {
+            docket.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    });
+  })();
+</script>

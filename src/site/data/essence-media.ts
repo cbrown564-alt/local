@@ -138,6 +138,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "Until your day",
     }],
   },
+  "irelands-appliance-centre": {
+    heading: "The kitchen working again.",
+    lede: "Two vans already in town when the cooker goes cold, and bench repairs on the harbour.",
+    frames: [{
+      src: "/media/concepts/irelands-appliance-centre/kitchen.jpg",
+      alt: "AI-generated scene of a restored kitchen at evening with warm appliance light and working machines",
+      label: "The kitchen restored",
+    }],
+  },
   "kelly-mcevoy-brown": {
     heading: "A small register with a substantial record.",
     lede: "More than fifty years of schools, hospitals, churches and community halls, made visible.",
