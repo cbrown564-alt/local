@@ -1,0 +1,256 @@
+---
+/** Binghams Menswear — the school roll, drawn. Move 4 of the elevation
+ *  brief: fourteen schools across the shop's patch is the recognition object,
+ *  so it gets the drawn treatment rather than a column of text.
+ *
+ *  Towns sit true to County Down, north up: Newcastle on the east coast at
+ *  the foot of the Mournes (ridge chevrons south-west of it), Dundrum and
+ *  Clough north up the bay road, Kilkeel far south on the shore,
+ *  Ballynahinch furthest north inland, Downpatrick north-east inland,
+ *  Castlewellan north-west of Newcastle. The school names are only the
+ *  fourteen on the shop's own school-uniform list — where the full names
+ *  would collide at plate scale the towns carry short subs and the roll
+ *  below the plate sets every name in full. */
+import MapPlate from "../../_shell/MapPlate.astro";
+import MapPin from "../../_shell/MapPin.astro";
+import MapCompass from "../../_shell/MapCompass.astro";
+
+interface Props {
+  /** Id of the section's heading, so the map is labelled by it. */
+  headingId?: string;
+}
+
+const { headingId } = Astro.props;
+
+// The shop's own school-uniform list, grouped by town. Only these fourteen.
+const roll = [
+  {
+    town: "Newcastle",
+    schools: [
+      "Newcastle Primary & Nursery",
+      "All Childrens Newcastle",
+      "St Mary's",
+      "St Josephs Carnacaville",
+      "Newcastle Preschool",
+      "Shimna College",
+    ],
+  },
+  { town: "Dundrum", schools: ["Sacred Heart Dundrum"] },
+  { town: "Clough", schools: ["Cumran Clough"] },
+  { town: "Kilkeel", schools: ["Kilkeel High", "St Louis Kilkeel"] },
+  { town: "Ballynahinch", schools: ["Assumption Ballynahinch"] },
+  { town: "Downpatrick", schools: ["St Patricks Downpatrick", "Down High"] },
+  { town: "Castlewellan", schools: ["St Malachys Castlewellan"] },
+];
+
+// The Mournes between Newcastle and Kilkeel, running down to the sea — two
+// offset rows so the range reads as depth, not a fence.
+const ridgeFront = [140, 175, 210, 245, 280];
+const ridgeBack = [158, 193, 228, 263, 296];
+const chevron = (x: number, y: number) => `M${x} ${y}l13-16 13 16`;
+---
+
+<div class="bm-roll-plate">
+  <MapPlate
+    id="bm-roll-map"
+    viewBox="0 0 760 600"
+    title="The school roll, sketched"
+    desc="A hand-drawn sketch map of the school-run towns of County Down, north up: Newcastle on the east coast at the foot of the Mourne mountains, Dundrum and Clough north up the bay road, Kilkeel far south on the shore, Ballynahinch furthest north inland, Downpatrick inland to the north-east, and Castlewellan north-west of Newcastle. The fourteen schools the shop stocks uniform for are set town by town in the roll below the plate."
+    headingId={headingId}
+    clip
+  >
+    <!-- Water: the Irish Sea down the right edge and along the bottom, with
+         the shoreline bending into Dundrum Bay and back out at Newcastle,
+         then sweeping south-west past the Mournes to Kilkeel. The same path
+         carries the firm shoreline stroke. -->
+    <path
+      class="bm-roll-map-water-fill"
+      d="M739 92 C712 132, 684 162, 652 182 C612 208, 556 228, 506 246 C478 256, 446 264, 418 272 C398 282, 380 298, 368 314 C356 322, 348 328, 342 336 C318 382, 278 426, 238 456 C204 480, 168 490, 138 496 C100 502, 58 506, 21 510 L21 579 L739 579 Z"
+    />
+    <path
+      class="bm-roll-map-shore"
+      d="M739 92 C712 132, 684 162, 652 182 C612 208, 556 228, 506 246 C478 256, 446 264, 418 272 C398 282, 380 298, 368 314 C356 322, 348 328, 342 336 C318 382, 278 426, 238 456 C204 480, 168 490, 138 496 C100 502, 58 506, 21 510"
+    />
+    <!-- Faint echo of the shoreline inside the water (paired-stroke idiom). -->
+    <path
+      class="bm-roll-map-shore bm-roll-map-shore--faint"
+      d="M729 102 C704 140, 678 168, 648 188 C610 212, 558 232, 512 250 C486 260, 458 268, 434 276 C416 286, 400 300, 388 316 C374 326, 362 333, 354 341 C330 385, 290 429, 250 459 C216 483, 180 493, 150 500"
+    />
+
+    <!-- Stippled shore along the Newcastle to Kilkeel strand (round-capped
+         dashes). -->
+    <path
+      class="bm-roll-map-stipple"
+      d="M352 348 C330 390, 292 432, 252 462 C220 484, 186 494, 156 500"
+    />
+
+    <g class="bm-roll-map-ripples" aria-hidden="true">
+      <path d="M566 300h24" />
+      <path d="M648 244h20" />
+      <path d="M700 430h26" />
+      <path d="M420 545h26" />
+      <path d="M220 548h22" />
+    </g>
+
+    <text class="bm-roll-map-water-label" x="620" y="400" text-anchor="middle" transform="rotate(-4 620 400)">IRISH SEA</text>
+
+    <!-- The Mournes, south of Newcastle, running down to the sea. -->
+    <g class="bm-roll-map-ridge bm-roll-map-ridge--back" aria-hidden="true">
+      {ridgeBack.map((x) => <path d={chevron(x, 372)} />)}
+    </g>
+    <g class="bm-roll-map-ridge" aria-hidden="true">
+      {ridgeFront.map((x) => <path d={chevron(x, 395)} />)}
+    </g>
+    <text class="bm-roll-map-ridge-label" x="222" y="348" text-anchor="middle">the Mournes</text>
+
+    <!-- Roads: a firm penned line with a fainter twin alongside. The bay road
+         is the school run north — Newcastle, Dundrum, Clough, Downpatrick. -->
+    <g class="bm-roll-map-roads" aria-hidden="true">
+      <path
+        class="bm-roll-map-road bm-roll-map-road--faint"
+        transform="translate(2.5 1.5)"
+        d="M342 320 C372 300, 392 284, 404 272 C414 258, 420 244, 425 234 C448 216, 520 200, 614 190"
+      />
+      <path
+        class="bm-roll-map-road"
+        d="M342 320 C372 300, 392 284, 404 272 C414 258, 420 244, 425 234 C448 216, 520 200, 614 190"
+      />
+      <path
+        class="bm-roll-map-road bm-roll-map-road--faint"
+        transform="translate(2.5 1.5)"
+        d="M330 316 C302 302, 274 288, 252 274 M248 258 C268 218, 292 158, 316 110"
+      />
+      <path
+        class="bm-roll-map-road"
+        d="M330 316 C302 302, 274 288, 252 274 M248 258 C268 218, 292 158, 316 110"
+      />
+      <path
+        class="bm-roll-map-road bm-roll-map-road--faint"
+        transform="translate(2.5 1.5)"
+        d="M348 342 C322 386, 282 428, 242 458 C208 480, 172 489, 142 493"
+      />
+      <path
+        class="bm-roll-map-road"
+        d="M348 342 C322 386, 282 428, 242 458 C208 480, 172 489, 142 493"
+      />
+    </g>
+
+    <g class="bm-roll-map-cartouche">
+      <text class="bm-roll-map-cartouche-title" x="44" y="62">The school roll</text>
+      <text class="bm-roll-map-cartouche-sub" x="44" y="80">the towns we stock for</text>
+      <path class="bm-roll-map-cartouche-rule" d="M44 90H212" />
+    </g>
+
+    <MapCompass x={676} y={330} variant="dart" textClass="bm-roll-map-compass-n" />
+
+    <MapPin
+      x={335}
+      y={323}
+      label="Newcastle"
+      sub="82 Main Street"
+      anchor="end"
+      labelDx={-12}
+      labelDy={-8}
+      subDy={6}
+      haloR={10}
+      labelHalo={{ x: 216, y: 296, width: 118, height: 42 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={408}
+      y={269}
+      label="Dundrum"
+      sub="Sacred Heart"
+      anchor="start"
+      labelDx={14}
+      labelDy={-2}
+      subDy={12}
+      labelHalo={{ x: 416, y: 250, width: 96, height: 36 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={428}
+      y={230}
+      label="Clough"
+      sub="Cumran"
+      anchor="end"
+      labelDx={-14}
+      labelDy={-4}
+      subDy={10}
+      labelHalo={{ x: 340, y: 210, width: 76, height: 36 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={629}
+      y={188}
+      label="Downpatrick"
+      sub="St Patricks · Down High"
+      anchor="end"
+      labelDx={-14}
+      labelDy={-6}
+      subDy={14}
+      labelHalo={{ x: 452, y: 164, width: 164, height: 44 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={245}
+      y={268}
+      label="Castlewellan"
+      sub="St Malachys"
+      anchor="end"
+      labelDx={-12}
+      labelDy={-6}
+      subDy={8}
+      labelHalo={{ x: 128, y: 244, width: 106, height: 40 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={325}
+      y={103}
+      label="Ballynahinch"
+      sub="Assumption"
+      labelDy={-18}
+      subDy={16}
+      labelHalo={{ x: 272, y: 66, width: 106, height: 56 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+    <MapPin
+      x={134}
+      y={491}
+      label="Kilkeel"
+      sub="Kilkeel High · St Louis"
+      anchor="start"
+      labelDx={14}
+      labelDy={-2}
+      subDy={12}
+      labelHalo={{ x: 142, y: 472, width: 158, height: 40 }}
+      labelClass="bm-roll-map-pin-label"
+      subClass="bm-roll-map-pin-sub"
+    />
+
+    <Fragment slot="caption">
+      The schools we stock uniform for — as listed in the shop. The sketch is indicative, not a road map.
+    </Fragment>
+  </MapPlate>
+
+  <dl class="bm-roll-key">
+    {roll.map(({ town, schools }) => (
+      <div class="bm-roll-town">
+        <dt>{town}</dt>
+        <dd>
+          <ul>
+            {schools.map((school) => (
+              <li>{school}</li>
+            ))}
+          </ul>
+        </dd>
+      </div>
+    ))}
+  </dl>
+</div>

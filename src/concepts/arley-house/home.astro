@@ -2,31 +2,18 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import AhVillageMap from "./components/AhVillageMap.astro";
 
 const phone = "028 4375 0949";
 const phoneHref = "tel:+442843750949";
 const email = "info@arleyhousedundrum.co.uk";
 const mailto = `mailto:${email}`;
+const facebook = "https://www.facebook.com/ArleyHouseDundrum";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 
 const furniture =
   "Arley House.. a family run B&B , is perfect to explore this Area of Outstanding Natural Beauty";
-
-const places = [
-  {
-    title: "The village",
-    note: "Wake on Belfast Road. Dundrum first — the bay, the street, then the walk to the castle.",
-  },
-  {
-    title: "Dundrum Castle",
-    note: "A short walk. From the walls, how the land lies all the way to where the Mournes meet the sea.",
-  },
-  {
-    title: "Beaches either side",
-    note: "Two award-winning beaches on either side of the village — the coast when you want it.",
-  },
-];
 ---
 
 <ConceptLayout
@@ -66,7 +53,7 @@ const places = [
             <p class="ah-bar-kicker">A stay</p>
             <a class="ah-bar-phone" href={phoneHref}>{phone}</a>
           </div>
-          <p class="ah-bar-lead">Write the nights. Ring the house. These words are for the call — nothing is sent.</p>
+          <p class="ah-bar-lead">Write the nights. Ring the house — or send the same words by email. These words are for the call; nothing is sent from here.</p>
 
           <form class="ah-form" data-ah-request>
             <label class="ah-box" for="ah-who">
@@ -103,6 +90,22 @@ const places = [
       </div>
     </section>
 
+    <!-- Move 2: the essence made visible. The house shows everything except
+         the rooms; the rooms are a phone call. Names no inventory. -->
+    <section class="ah-essence" aria-labelledby="ah-essence-title">
+      <p class="ah-kicker ah-kicker--ink">The house</p>
+      <h2 id="ah-essence-title">Everything but the rooms.</h2>
+      <p class="ah-essence-copy">
+        The dog on the boards. Bikes at the door. The fry in the morning and the
+        village days as they come — that is all on our page, and always will be.
+        The one thing we have never put on it is a bedroom.
+      </p>
+      <p class="ah-essence-copy">
+        The rooms are kept the way they have always been kept: <a href={phoneHref}>ring the house</a>,
+        tell us the nights you have in mind, and we will tell you what we have.
+      </p>
+    </section>
+
     <figure class="ah-pull">
       <blockquote>
         <p>
@@ -115,35 +118,30 @@ const places = [
       <figcaption>Visit Mourne Gullion Strangford · Arley House</figcaption>
     </figure>
 
-    <section class="ah-welcome" aria-labelledby="ah-welcome-title">
-      <p class="ah-kicker ah-kicker--ink">The house</p>
-      <h2 id="ah-welcome-title">Family-run, in the village.</h2>
-      <p class="ah-welcome-copy">
-        A family run B&amp;B on Belfast Road. The nights live in the diary —
-        ring {phone}. Tea, parking, wifi, and laundry: ask the house when you call.
-      </p>
-    </section>
-
+    <!-- Move 3: the map is the promise. The Intro sentence is a geography
+         claim, so the cards give way to the drawn plate. -->
     <section class="ah-explore" aria-labelledby="ah-explore-title">
       <p class="ah-kicker ah-kicker--ink">From the door</p>
-      <h2 id="ah-explore-title">Find your way around</h2>
-      <ul class="ah-cards" role="list">
-        {places.map((item) => (
-          <li class="ah-card">
-            <h3>{item.title}</h3>
-            <p>{item.note}</p>
-          </li>
-        ))}
-      </ul>
+      <h2 id="ah-explore-title">Perfect to explore.</h2>
+      <p class="ah-explore-lead">
+        Wake on Belfast Road. The castle on its hill, the bay below the village,
+        beaches either side — and Newcastle down the road when you want it.
+      </p>
+      <AhVillageMap headingId="ah-explore-title" />
     </section>
 
+    <!-- Move 7: the guestbook band. One anchored line, dated lightly, then
+         the honest handoff to the feed. -->
     <section class="ah-proof" aria-labelledby="ah-proof-title">
-      <p class="ah-kicker">25 July 2026</p>
+      <p class="ah-kicker">July 2026</p>
       <h2 id="ah-proof-title" class="visually-hidden">From the house</h2>
       <blockquote>
         <p>What wonderful people we had last night 🙂 Off today to do ‘Pippen’s Coastal run 2026’</p>
       </blockquote>
       <p class="ah-proof-att">Arley House</p>
+      <p class="ah-proof-handoff">
+        The days as they happen — the dog, the runs, the shows — are on <a href={facebook} rel="noopener">our Facebook</a>.
+      </p>
     </section>
 
     <footer class="ah-end">

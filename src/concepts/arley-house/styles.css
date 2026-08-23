@@ -10,6 +10,9 @@ body.concept-arley {
   --ah-fill: #fffaf2;
   --ah-serif: "Cormorant", "Times New Roman", serif;
   --ah-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  /* Move 6: one photographic voice. The house grade chains, so future
+     plates compose with it rather than overriding it. */
+  --ah-grade: saturate(0.92) sepia(0.12) brightness(1.05) contrast(0.96);
   --concept-accent: var(--ah-moss);
   --concept-nav-gap: clamp(16px, 2.2vw, 30px);
   --concept-nav-line: 2px;
@@ -50,6 +53,7 @@ body.concept-arley {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: var(--ah-grade);
 }
 .ah-plate figcaption {
   position: absolute;
@@ -287,13 +291,13 @@ body.concept-arley {
   color: #b8c4b8;
 }
 
-.ah-welcome,
+.ah-essence,
 .ah-explore {
   max-width: 58rem;
   margin: 0 auto;
   padding: clamp(48px, 6vw, 80px) 24px 0;
 }
-.ah-welcome h2,
+.ah-essence h2,
 .ah-explore h2,
 .ah-proof h2 {
   margin: 0 0 18px;
@@ -302,42 +306,143 @@ body.concept-arley {
   font-size: clamp(32px, 4.4vw, 48px);
   line-height: 1.08;
 }
-.ah-welcome-copy {
+.ah-essence-copy,
+.ah-explore-lead {
   max-width: 36rem;
   margin: 0;
   font-size: clamp(17px, 1.6vw, 19px);
   line-height: 1.55;
   color: var(--ah-ink-soft);
 }
+.ah-essence-copy + .ah-essence-copy { margin-top: 16px; }
+.ah-essence-copy a { color: var(--ah-moss-deep); font-weight: 700; }
 
 .ah-explore { padding-bottom: clamp(48px, 6vw, 80px); }
-.ah-cards {
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+.ah-explore .ah-map { margin-top: 28px; }
+
+/* Move 3: the hand-drawn plate, themed from the house palette. */
+.ah-map {
+  --map-paper: var(--ah-fill);
+  --map-rule: var(--ah-ink-soft);
+  --map-accent: var(--ah-moss-deep);
 }
-.ah-card {
-  display: grid;
-  gap: 10px;
-  min-height: 11rem;
-  padding: 22px 22px 26px;
-  border-radius: 16px;
-  background: #fffaf2;
-  border: 1px solid var(--ah-rule);
-}
-.ah-card h3 {
-  margin: 0;
-  font-family: var(--ah-serif);
-  font-size: clamp(24px, 2.4vw, 30px);
-  font-weight: 600;
-}
-.ah-card p {
-  margin: 0;
+.ah-map figcaption {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
   color: var(--ah-ink-soft);
-  line-height: 1.5;
+}
+.ah-map-water-fill { fill: var(--ah-moss); fill-opacity: 0.12; }
+.ah-map-shore {
+  fill: none;
+  stroke: var(--ah-moss-deep);
+  stroke-opacity: 0.5;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.ah-map-shore--faint { stroke-opacity: 0.22; stroke-width: 1; }
+.ah-map-stipple {
+  fill: none;
+  stroke: var(--ah-clay);
+  stroke-opacity: 0.55;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-dasharray: 0.5 8;
+}
+.ah-map-ripples path {
+  fill: none;
+  stroke: var(--ah-moss-deep);
+  stroke-opacity: 0.3;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.ah-map-water-label {
+  font-family: var(--ah-serif);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  fill: var(--ah-moss-deep);
+  fill-opacity: 0.8;
+}
+.ah-map-note {
+  font-family: var(--ah-serif);
+  font-style: italic;
+  font-size: 12.5px;
+  fill: var(--ah-ink-soft);
+}
+.ah-map-ridge path {
+  fill: none;
+  stroke: var(--ah-moss-deep);
+  stroke-opacity: 0.5;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ah-map-ridge--back path { stroke-opacity: 0.26; }
+.ah-map-ridge-label {
+  font-family: var(--ah-serif);
+  font-style: italic;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  fill: var(--ah-moss);
+}
+.ah-map-road {
+  fill: none;
+  stroke: var(--ah-ink);
+  stroke-opacity: 0.55;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.ah-map-road--faint { stroke-opacity: 0.24; stroke-width: 1.1; }
+.ah-map-road-label {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ah-ink-soft);
+}
+.ah-map-path {
+  fill: none;
+  stroke: var(--ah-ink-soft);
+  stroke-opacity: 0.4;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 3.5 4.5;
+}
+.ah-map-hill path {
+  fill: none;
+  stroke: var(--ah-moss-deep);
+  stroke-opacity: 0.4;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.ah-map-cartouche-title {
+  font-family: var(--ah-serif);
+  font-size: 20px;
+  font-weight: 600;
+  fill: var(--ah-ink);
+}
+.ah-map-cartouche-sub {
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  fill: var(--ah-ink-soft);
+}
+.ah-map-cartouche-rule {
+  stroke: var(--ah-ink-soft);
+  stroke-opacity: 0.5;
+  stroke-width: 1;
+}
+.ah-map-compass-n { font-size: 10px; }
+.ah-map-pin-label {
+  font-family: var(--ah-serif);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--ah-ink);
+}
+.ah-map-pin-sub {
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  fill: var(--ah-ink-soft);
 }
 
 .ah-proof {
@@ -359,6 +464,18 @@ body.concept-arley {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ah-ink-soft);
+}
+.ah-proof-handoff {
+  margin: 22px 0 0;
+  max-width: 30rem;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ah-ink-soft);
+}
+.ah-proof-handoff a {
+  color: var(--ah-moss-deep);
+  font-weight: 700;
+  text-underline-offset: 3px;
 }
 
 .ah-end {
@@ -397,7 +514,10 @@ body.concept-arley {
   .ah-lede { color: var(--ah-ink); }
   .ah-where { color: var(--ah-ink-soft); }
   .ah-form { grid-template-columns: 1fr; }
-  .ah-cards { grid-template-columns: 1fr; }
+  /* The plate is a 760-wide drawing; let it keep its scale and scroll
+     sideways rather than shrinking the labels to whispers. */
+  .ah-map { overflow-x: auto; }
+  .ah-map .ah-map-plate { width: 600px; max-width: none; }
 }
 
 @media (max-width: 390px) {

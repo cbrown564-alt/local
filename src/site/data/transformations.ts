@@ -326,7 +326,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Community & leisure",
     summary:
-      "A travelling teddy-bear making party whose packs and call-out live on its own site while the diary lives on Facebook — given a first screen that holds the ritual and packs, and hands today's appearances to the feed.",
+      "A travelling teddy-bear making party with no venue of its own — given a page that owns the inversion ('The venue is yours'), a hand-drawn circuit of the summer's public days, the adoption certificate as the keepable object, and an invitation that drafts to the address the business already answers.",
     before: "/media/concepts/bear-necessities/bear-necessities-before.jpg",
     after: "/media/concepts/bear-necessities/bear-necessities-after.jpg",
     beforeAlt:
@@ -342,7 +342,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Dundrum",
     category: "Hospitality",
     summary:
-      "A Dundrum guest house whose public site no longer carries the stay — given a first screen that wakes on Belfast Road, puts Dundrum first, and keeps the enquiry path honest.",
+      "A Dundrum guest house whose public record shows everything but the rooms — given a front door that wakes on Belfast Road, a hand-drawn map of the village and the bay, and an enquiry path that is the phone call it has always been.",
     before: "/media/concepts/arley-house/arley-house-before.jpg",
     after: "/media/concepts/arley-house/arley-house-after.jpg",
     beforeAlt:
@@ -358,7 +358,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Shops & services",
     summary:
-      "A Railway Street practice since 1983 whose public splash and Facebook already trade — given a calm first screen that puts the door and the phone diary first.",
+      "A Railway Street practice since 1983, under the builders and still answering the phone — given a first screen that puts the door and the phone diary first, an honest arc from 1983 to the refit, and a drawn appointment card carrying only sourced facts.",
     before: "/media/concepts/armstrong-opticians/armstrong-opticians-before.jpg",
     after: "/media/concepts/armstrong-opticians/armstrong-opticians-after.jpg",
     beforeAlt:

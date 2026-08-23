@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import BnCircuitMap from "./components/BnCircuitMap.astro";
 
 const phone = "07887 905 025";
 const phoneHref = "tel:+447887905025";
@@ -37,15 +38,6 @@ const packs = [
     min: "Minimum 10",
   },
 ];
-
-const circuit = [
-  { id: "newcastle", name: "Newcastle", note: "Home pin. We travel from here.", kind: "home" },
-  { id: "downpatrick", name: "Downpatrick Racecourse", note: "Family Fun Raceday — as printed.", kind: "fair" },
-  { id: "giant", name: "Wake the Giant", note: "The Giant's Trail. Live offer lives on Facebook.", kind: "fair" },
-  { id: "rathfriland", name: "Rathfriland", note: "Young Farmers craft fair — as printed.", kind: "fair" },
-  { id: "warrenpoint", name: "Warrenpoint Town Square", note: "Loughside Fayre Day — as printed.", kind: "fair" },
-  { id: "your-hall", name: "Your hall", note: "School, home, or the room you already have.", kind: "party" },
-];
 ---
 
 <ConceptLayout
@@ -66,7 +58,7 @@ const circuit = [
         <p class="bn-door">We come to you!</p>
         <p class="bn-intro">{intro}</p>
         <p class="bn-fb-line">
-          Today's diary, Wake the Giant, and live offers sit on
+          Today's diary, Wake the Giant, and live offers sit on{" "}
           <a href={facebook}>Facebook</a> — we do not keep a second calendar here.
         </p>
       </div>
@@ -99,12 +91,14 @@ const circuit = [
             <label class="bn-chip"><input type="radio" name="bn-pack" value="Little Ted" checked /> Little Ted</label>
             <label class="bn-chip"><input type="radio" name="bn-pack" value="Big Ted" /> Big Ted</label>
             <label class="bn-chip"><input type="radio" name="bn-pack" value="Colour Your Bear" /> Colour Your Bear</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="not sure yet" /> Not sure yet</label>
           </fieldset>
           <fieldset class="bn-chips">
-            <legend>Where she should come</legend>
-            <label class="bn-chip"><input type="radio" name="bn-where" value="hall" checked /> Hall</label>
-            <label class="bn-chip"><input type="radio" name="bn-where" value="school" /> School</label>
-            <label class="bn-chip"><input type="radio" name="bn-where" value="home" /> Home</label>
+            <legend>Where should we come</legend>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your hall" checked /> Your hall</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your home" /> Your home</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your school" /> Your school</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="the next public day" /> The next public day</label>
           </fieldset>
           <button class="bn-write" type="submit">Write the invitation</button>
 
@@ -117,37 +111,92 @@ const circuit = [
       </div>
     </section>
 
+    <!-- Move 2: the essence made visible — a party venue with no venue,
+         owned in the business's voice. -->
+    <section class="bn-venue" aria-labelledby="bn-venue-title">
+      <p class="bn-kicker">The party</p>
+      <h2 id="bn-venue-title">The venue is yours.</h2>
+      <div class="bn-venue-copy">
+        <p>
+          There is no shop to find and no hall of ours to book. The party
+          happens where the children already are — your living room, your
+          hired hall, your classroom.
+        </p>
+        <p>
+          We arrive with the bears, the stuffing and the certificates, and
+          for one Saturday your place is the party venue.
+        </p>
+      </div>
+    </section>
+
     <section class="bn-how" aria-labelledby="bn-how-title">
       <p class="bn-kicker">The making</p>
       <h2 id="bn-how-title">They are not hand stuffed.</h2>
       <p class="bn-how-lead">
         A machine arrives. A heart goes in. A certificate leaves with the bear.
-        That ritual is written on the
+        That ritual is written on the{" "}
         <a href={site}>packages page</a> — not claimed as a Facebook photograph.
       </p>
-      <ol class="bn-steps">
-        <li>
-          <strong>The machine</strong>
-          <span>The stuffing is the experience — not sewing at a bench.</span>
-        </li>
-        <li>
-          <strong>The heart</strong>
-          <span>It goes in before the bear is closed.</span>
-        </li>
-        <li>
-          <strong>The certificate</strong>
-          <span>An adoption name goes home with them.</span>
-        </li>
-      </ol>
-      <figure class="bn-stage">
-        <img
-          src="/media/concepts/bear-necessities/machine.jpg"
-          alt="A stuffing machine and an open teddy on a work table, a small felt heart waiting"
-          width="1536"
-          height="1024"
-        />
-        <figcaption>Machine, heart waiting — the making the packages describe.</figcaption>
-      </figure>
+      <div class="bn-how-grid">
+        <div class="bn-how-main">
+          <ol class="bn-steps">
+            <li>
+              <strong>The machine</strong>
+              <span>The stuffing is the experience — not sewing at a bench.</span>
+            </li>
+            <li>
+              <strong>The heart</strong>
+              <span>Every bear gets a heart put inside before it is closed. That is the moment.</span>
+            </li>
+            <li>
+              <strong>The certificate</strong>
+              <span>Every bear leaves with its adoption certificate.</span>
+            </li>
+          </ol>
+          <figure class="bn-stage">
+            <img
+              src="/media/concepts/bear-necessities/machine.jpg"
+              alt="A stuffing machine and an open teddy on a work table, a small felt heart waiting"
+              width="1536"
+              height="1024"
+            />
+            <figcaption>Machine, heart waiting — the making the packages describe.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Move 6: the keepable object, drawn — the one physical thing the
+             business hands you. Title and three blanks only, no invented
+             wording, no logo forgery. -->
+        <aside class="bn-keepsake" aria-label="The adoption certificate">
+          <p class="bn-keepsake-lead">
+            Every bear leaves with a heart and an adoption certificate.
+          </p>
+          <div
+            class="bn-cert"
+            role="img"
+            aria-label="A drawn blank Certificate of Adoption with empty ruled lines for the bear's name, the maker's name and the date"
+          >
+            <div class="bn-cert-inner">
+              <svg class="bn-cert-heart" viewBox="0 0 24 22" aria-hidden="true">
+                <path d="M12 20 C6 15 2 11.5 2 7.5 C2 4.4 4.4 2 7.5 2 C9.4 2 11.1 3 12 4.4 C12.9 3 14.6 2 16.5 2 C19.6 2 22 4.4 22 7.5 C22 11.5 18 15 12 20 Z" />
+              </svg>
+              <p class="bn-cert-title">Certificate of Adoption</p>
+              <div class="bn-cert-line">
+                <span class="bn-cert-rule" aria-hidden="true"></span>
+                <span class="bn-cert-label">The bear's name</span>
+              </div>
+              <div class="bn-cert-line">
+                <span class="bn-cert-rule" aria-hidden="true"></span>
+                <span class="bn-cert-label">The maker's name</span>
+              </div>
+              <div class="bn-cert-line">
+                <span class="bn-cert-rule" aria-hidden="true"></span>
+                <span class="bn-cert-label">The date</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <section class="bn-packs" id="packs" aria-labelledby="bn-packs-title">
@@ -167,7 +216,7 @@ const circuit = [
       <p class="bn-pack-note">
         Call-out from £35 depending on location. Sand art £3.50 a child if you
         want the extra table — mess kept to a minimum. Both from the site, not
-        the feed. One-day bundles such as Wake the Giant live on
+        the feed. One-day bundles such as Wake the Giant live on{" "}
         <a href={facebook}>Facebook</a>.
       </p>
     </section>
@@ -195,22 +244,15 @@ const circuit = [
       </div>
     </section>
 
+    <!-- Move 5: the circuit is the map — County Down as the route, not the
+         shop floor. Wake the Giant rides as a cartouche streamer only. -->
     <section class="bn-circuit" aria-labelledby="bn-circuit-title">
       <p class="bn-kicker">The circuit</p>
-      <h2 id="bn-circuit-title">Printed days, then your hall.</h2>
+      <h2 id="bn-circuit-title">Four public days. Every other Saturday is yours.</h2>
       <p class="bn-circuit-lead">
-        Drawn from flyers already published — Downpatrick, Rathfriland,
-        Warrenpoint, Wake the Giant — plus the room you name. No invented
-        schools.
+        No shop, no door to find — the summer's public days, and then your hall.
       </p>
-      <ol class="bn-pins">
-        {circuit.map((pin) => (
-          <li class={`bn-pin bn-pin--${pin.kind}`} data-pin={pin.id}>
-            <strong>{pin.name}</strong>
-            <span>{pin.note}</span>
-          </li>
-        ))}
-      </ol>
+      <BnCircuitMap headingId="bn-circuit-title" />
     </section>
 
     <footer class="bn-end">
@@ -243,7 +285,7 @@ const circuit = [
         var packEl = form.querySelector('input[name="bn-pack"]:checked');
         var whereEl = form.querySelector('input[name="bn-where"]:checked');
         var pack = packEl ? packEl.value : "Little Ted";
-        var where = whereEl ? whereEl.value : "hall";
+        var where = whereEl ? whereEl.value : "your hall";
         var body = [
           "Hello Siobhan,",
           "",

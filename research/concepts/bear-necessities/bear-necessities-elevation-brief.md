@@ -1,69 +1,73 @@
-# Bear Necessities — elevation brief: the birthday is the machine, and the diary is already Facebook
+# Bear Necessities — elevation brief: the party venue with no venue
 
-Written 23 August 2026, after a first-hand logged-out re-read of
+Rewritten 23 August 2026 (second pass, evening). The morning pass found the
+right sentence — "the birthday is the machine" — and then played it safe:
+the theatre was left as an open fork, the artifact was deferred, and the one
+genuinely strange thing in the record went unremarked. This pass keeps the
+harvest and every honesty constraint, names the strangeness, and makes the
+moves at the standard of the scopers / newcastle-dental briefs. It supersedes
+the morning brief in full.
+
+Sources, both read 23 August 2026: logged-out re-read of
 `https://www.facebook.com/Bearnecessitiespartyvenue` (About, photo grid, two
 reachable posts, then the login wall) and a corroborating pass of
-`https://www.bearnecessitieskids.co.uk/` for packs the feed does not publish.
-This supersedes the 23 August receipt that documented the already-shipped page.
+`https://www.bearnecessitieskids.co.uk/` for the packs the feed does not
+publish.
 
-The general method is in `docs/the-elevation-method.md`. The shape is **jar**
-that travels: the product is the moment the party is *for*, and the party comes
-to the hall. Scopers' organising principle applies here almost one-for-one: the
-concept competes with a feed that is genuinely good at something, and greatness
-lives on the side of the line the feed cannot hold.
+The general method is `docs/the-elevation-method.md`. The shape is **jar that
+travels**: the product is the moment the party is *for*, and the party comes
+to the hall. The theatre register of a children's party business is
+**ceremony** — the small solemnity a six-year-old takes entirely seriously.
 
-**Status: brief rewritten 23 August 2026 from the Facebook harvest. The guest
-page on `sprint-day1-five` is a working graft written *before* this brief.
-Moves 1–2 below are already on the page in outline. Moves 3–7 are the ambition
-this harvest can now justify. Do not call the concept validated.**
+**Status: this pass shipped 23 August 2026 — the insight (the venue
+paradox), the essence section (move 2), the circuit map (move 5), the
+adoption-certificate artifact (move 6), the invitation deepening (move 4),
+the grade (move 8) and the ceremony deepen in move 3. Moves 1 and 9 stand
+as grafted. Move 7 (the hero plate swap to the bear come to life) awaits a
+generation session; the machine plate and its banner disclosure stay
+verbatim until then. Do not call the concept validated.**
 
-## The organising principle
+## The insight the first pass missed
 
-Facebook already wins at the live diary. In one public photo grid, without
-login, a parent can see four dated 2026 appearances: Downpatrick Racecourse
-Family Fun Raceday (Tuesday 14 July), Wake the Giant (Saturday 1 August),
-Rathfriland Young Farmers / Blood Cancer UK craft fair (Saturday 8 August,
-1BB Downpatrick Street, BT34 5DG), and Warrenpoint Loughside Fayre Day
-(Saturday 15 August, Town Square, 11am–5pm). Two 15 August captions exist
-above the wall: *"Date for the diary! We are so excited to be part of this
-fantastic event!"* and a share from ZaraTweed, *"We are so excited about this"*.
-The page has 5.4K followers, 89 reviews at 100% recommend, and reels in the
-hundreds-to-thousands of views. The owner's own site even tells parents to
-"keep an eye on our Facebook page for special offers and competitions."
+The Facebook handle is **Bearnecessitiespartyvenue**. The category is Party
+Entertainment Service. And nowhere on either surface — not Facebook, not the
+website — is there an address, a door, an opening hour or a hall of their
+own. The Intro says why: *"We come to you! 🧸"*.
 
-So:
+So the record describes a **party venue with no venue** — and it has never
+been empty: 89 reviews at 100% recommend, 5.4K followers, four named public
+days in five summer weeks. The venue exists; it is simply wherever the
+children already are. Your living room, your hired hall, your classroom. For
+one Saturday, your address becomes the party venue — and on Monday it becomes
+a racecourse tent or a town square again.
 
-- **Anything the feed already does well — today's event, this week's flyer,
-  the next competition — hand off honestly.** Do not rebuild a calendar the
-  studio cannot keep current. Link out. Lose to the feed gracefully.
-- **Anything a feed cannot hold — the stuffing ritual, the invitation a
-  cold parent can complete, the packs as permanence, the travelling circuit
-  as geography rather than a shop — is where greatness lives.**
+That is the paradox, documented rather than invented, and it flips the
+concept's centre of gravity: the page should not apologise for the missing
+shopfront (a thin record) but *celebrate* the inversion — every other party
+venue in the county asks you to come to it; this one packs the whole venue
+into a van and brings it to you.
 
-The raw assets, in the order this business actually has them: a travelling
-creed (*"We come to you!"*); a cover strapline (*"Where Bears Come To Life!"*);
-a public circuit of named County Down places (Newcastle, Downpatrick,
-Rathfriland, Warrenpoint, the Giant's Trail); a ritual that Facebook does
-*not* show (heart insert and adoption certificate live only on the website
-packages); packs and a call-out fee that a logged-out Facebook visitor cannot
-see at all; and social proof at scale that the concept must not fake as
-review copy it cannot read.
+The second thing the morning pass underused: the ritual's emotional core is
+not the machine, it is the **heart and the certificate**. The website
+packages all carry the same two objects — heart insert, adoption
+certificate. The child does not receive a toy; they make one, put a heart in
+it, and adopt it. Their own cover line says it: *"Where Bears Come To
+Life!"*. The business sells the ten-minute ceremony that turns plush into a
+named family member, and the adoption certificate is the artifact of that
+ceremony — the thing that is still on the bedroom wall when the party is
+forgotten. That is why the certificate, not the machine, is the concept's
+keepable object.
 
 ## The essence
 
-**The birthday is the machine, and the diary is already Facebook.**
+**The party venue with no venue. Yours is the venue — the bears arrive with
+a heart and leave with a name.**
 
-The paradox is documented on two surfaces. Facebook presents a festival van:
-events, schools, group bookings, *we come to you*, flyers, no street door.
-The website presents a priced ritual: Little Ted / Big Ted / Colour Your Bear,
-heart insert, adoption certificate, minimum twelve for a mobile party, call-out
-from £35. A page that romanticises a shop or hand-sewing fails both records.
-A page that only lists prices is a flyer any party company could wear. A page
-that clones the event diary will be stale the week after it ships.
-
-The recognition move is the same shape as Scopers' kitchen: *we understood
-how the party actually works.* Not a teddy shop. Not a venue. A machine that
-arrives, a heart, a certificate, and a Saturday that belongs to *their* hall.
+A page that romanticises a shop or hand-sewing fails both records (nothing
+says hand stuffed). A page that only lists prices is a flyer any party
+company could wear. A page that clones the event diary is stale in a week.
+The elevated page owns the inversion: no address because every address is
+theirs for a day.
 
 ## What recognition can draw on
 
@@ -78,16 +82,14 @@ From Facebook, verbatim, usable as furniture:
 - *"Bear necessities is an unique Teddy bear making & crafts experience where
   children can create a new & make magical memories. We cater for birthdays,
   events, schools and group bookings."* — Intro. Keep the grammar; do not
-  "correct" it into studio English.
+  "correct" it.
 - *"Date for the diary!"* / *"We are so excited to be part of this fantastic
-  event!"* — 15 August 2026 caption. Event voice, not creed. Use only if an
-  event band needs their register; do not make it the H1.
+  event!"* — 15 August 2026 caption. Event voice, not creed.
 
-Cover signboard words, also theirs: CUDDLES / MEMORIES / MAGIC. Use sparingly;
-they are poster words, not an argument.
+Cover signboard words, also theirs: CUDDLES / MEMORIES / MAGIC — poster words,
+use sparingly.
 
-From the website, *not* Facebook — attribute as site copy if used, never as a
-Facebook caption:
+From the website, *not* Facebook — attribute as site copy if used:
 
 - "Bear Necessities was founded by Siobhan Rice in 2016."
 - "Siobhan brings her teddy bears to events, schools, parties, fairs, and more!"
@@ -95,249 +97,241 @@ Facebook caption:
   competitions and feel free to post your teddy bear photos on our FB page!"
 
 **Siobhan Rice and 2016 do not appear on the Facebook page a logged-out
-visitor can read.** They are site facts. The guest page may use them if the
-banner / Sources name the site as the source. Do not imply they were on the
-feed.
-
-No long published creed. No review text was readable (89 reviews counted,
-none opened). Do not invent a parent quote.
+visitor can read.** Site facts; Sources & limits names the site. No review
+text was readable (89 counted, none opened) — **do not invent a parent
+quote.**
 
 ### Their geography
 
-Not a shop. Page location: Newcastle, United Kingdom. No street address, no
-hours, no catchment radius on Facebook.
-
-Named places on the 23 August 2026 public grid (flyers, not party venues):
-
-- Downpatrick Racecourse — Family Fun Raceday, Tuesday 14 July 2026
-- Wake the Giant / The Giant's Trail — Saturday 1 August; flyer also names
-  **GIANT OFFER! BIG BEAR & WAKE THE GIANT T-SHIRT £22.99**
-- Rathfriland Young Farmers, 1BB Downpatrick Street, Rathfriland, Co. Down
-  BT34 5DG — Charity Craft Fair and Country Night, Blood Cancer UK,
-  Saturday 8 August
-- Warrenpoint Town Square — Loughside Festival Fayre Day 2026, Saturday 15
-  August, 11am–5pm
-
-A purple "CALLING ALL SOFT PLAY CENTRES!" flyer is on the grid; full body
-text was not machine-readable. Do not invent its offer.
-
-**Do not draw a venue map of halls she has not named.** The honest geography
-move is a *circuit* of public appearances she has already printed, plus "we
-come to you" for the private party. That is the estate-map analog: the ten
-miles around Newcastle are the route, not a larder and not a shop floor.
+No shop, no street address, no hours, no catchment radius. Named places on
+the 23 August 2026 public grid (flyers): **Downpatrick Racecourse** (Family
+Fun Raceday, Tuesday 14 July), **Wake the Giant** (Saturday 1 August; flyer
+also carries "GIANT OFFER! BIG BEAR & WAKE THE GIANT T-SHIRT £22.99" — its
+*place* is not named in the harvest, so it never gets a located pin),
+**Rathfriland** (Young Farmers / Blood Cancer UK craft fair, 1BB Downpatrick
+Street, Saturday 8 August), **Warrenpoint Town Square** (Loughside Fayre Day,
+Saturday 15 August, 11am–5pm). A "CALLING ALL SOFT PLAY CENTRES!" flyer is on
+the grid; body unread — do not invent its offer.
 
 ### Their ritual
 
-Facebook documents almost none of it. Visible: "Teddy bear making & crafts
-experience"; cover "Where Bears Come To Life!"; photos of children holding
-finished bears, one adult woman with a child and a bear, one hall/marquee
-group. **No stuffing-machine photo, no heart ceremony, no certificate
-close-up was identifiable in the public grid.**
-
-Website packages (read 23 August 2026, not Facebook) document: 10" or 16"
-bear, heart insert, adoption certificate; sand-art tables brought to the
-venue ("the mess is kept to a minimum"); mobile parties at your location.
-That is the ritual. Stage it from the site, disclose the source, do not
-pretend the feed showed the machine.
-
-They are not hand stuffed. Nothing in either surface says they are. Do not
-elevate into craft sewing.
+Facebook shows children holding finished bears; **no stuffing-machine photo,
+no heart ceremony, no certificate close-up was identifiable.** The website
+packages document: 10" or 16" bear, **heart insert**, **adoption
+certificate**; sand-art tables brought to the venue ("the mess is kept to a
+minimum"); mobile parties at your location. Stage the ritual from the site,
+disclose the source, never imply the feed showed the machine. They are not
+hand stuffed; do not elevate into craft sewing.
 
 ### Their arc
 
-Facebook: a 2026 summer of public days, 5.4K followers, 89 reviews. Founding
-year and founder: website only, 2016, Siobhan Rice. That is the whole dated
-arc. Do not write a four-year timeline you cannot source.
+2016 founding, Siobhan Rice (site only); a 2026 summer of public days
+(Facebook). That is the whole dated arc. One line, not a saga.
 
-### Their mark
+### Their mark and contact
 
-Name: Bear Necessities (Intro lowercases "necessities"). Facebook handle:
-Bearnecessitiespartyvenue. Cover: "BEAR necessities — Where Bears Come To
-Life!". Category: Party Entertainment Service. Website:
-https://www.bearnecessitieskids.co.uk/. No cleared logo file is held in this
-brief.
-
-**Contact (Facebook About, 23 August 2026):** mobile +44 7887 905025; email
-bearnecessitieskids@gmail.com; no hours; no street address.
+Bear Necessities; handle Bearnecessitiespartyvenue; cover "BEAR necessities —
+Where Bears Come To Life!". **Contact (Facebook About):** mobile
++44 7887 905025; email bearnecessitieskids@gmail.com. No hours, no street
+address.
 
 ### Packs and prices — two layers
 
-**On Facebook, dated:** only the Wake the Giant flyer, Saturday 1 August —
-Big Bear & Wake the Giant T-shirt £22.99. Nothing else.
-
-**On the website, 23 August 2026, not Facebook:**
+**On Facebook, dated:** only the Wake the Giant £22.99 bundle (1 August).
+**On the website, 23 August 2026:**
 
 | Pack | What they publish | Price | Minimum |
 |---|---|---|---|
 | LITTLE TED | 10" bear, heart insert, adoption certificate | £10.50 / child | 12 for mobile parties |
 | BIG TED | 16" bear, heart insert, adoption certificate | £15.99 / child | 12, same call-out |
 | COLOUR YOUR BEAR | 16" bear + bear shirt for guests; extra 16" for birthday child; free "Aromabeary" scent for birthday child | £16.50 / child | 10 |
-| FAIRY DOOR | page exists | not harvested here | — |
 
-Add-ons on the site: Design a T-Shirt £3.50/child; **Sand Art £3.50/child**;
-Printed Teddy Bear T-Shirts £6.00 each (3 weeks' notice); Colour Your Own
-Backpack £3.50/child. Call-out: "from £35 + depending on location."
-
-The earlier concept treated Care Bear licensed 16-inch at £16.99 as a third
-pack. **That figure is not on the Facebook page and was not on the website
-package list in this re-read.** Care Bears appear as a listed product family,
-not as that priced pack. Do not keep £16.99 unless a later dated read puts
-it back. Colour Your Bear at £16.50 is the published third package.
+Add-ons: Design a T-Shirt £3.50/child; Sand Art £3.50/child; Printed Teddy
+Bear T-Shirts £6.00 each (3 weeks' notice); Colour Your Own Backpack
+£3.50/child. Call-out: "from £35 + depending on location." **The £16.99 Care
+Bear pack line is not on either surface in this re-read — it stays off.**
+Fairy Door pack exists on the site but was not harvested; omit until read.
 
 ## The diagnosis
 
 Against this harvest and the shipped `src/concepts/bear-necessities/home.astro`:
 
-1. **The page already has the honesty line and the three-step ritual.** Keep
-   them. They are the Scopers "nothing wasted" equivalent — the distinctive
-   thing, currently carried too quietly if the name and "we come to you" do
-   not outrank it.
-2. **The page still behaves a little like a shop.** Packs as tickets is right.
-   Inventing a Care Bear £16.99 line that this re-read cannot see is wrong.
-   Swap to the site list, dated in the banner, Facebook for today's offer.
-3. **Geography is thinner than the record.** Newcastle + "she comes to you"
-   is true and not enough. The circuit of July–August 2026 public days is
-   sitting in the flyer grid unused. That is unmined magic. A drawn circuit
-   (Downpatrick, Rathfriland, Warrenpoint, the Giant, and *your hall*) is the
-   keepable artifact — indicative, from published flyers only, no invented
-   schools.
-4. **Theatre is one AI machine plate the feed does not corroborate.** The
-   feed shows finished bears in children's arms. The more honest hero, until
-   Siobhan supplies a machine photograph, may be *that* moment: the bear
-   come to life, not a workshop we have not seen. Photoreal of a machine we
-   have not photographed is the Scopers honesty tension again.
-5. **The invitation is an honest mailto.** Good. It should now ask for the
-   Saturday, the count, the pack, and *where* — hall, school, home, or "see
-   you at the next fair" — because that is how the business actually splits.
-6. **Sand art now has a published extra (£3.50).** The old brief forbade a
-   figure. The site published one on this read. Date it. Do not put it in
-   guest chrome as if Facebook said it.
+1. **The venue paradox is unsaid.** The page treats "no address" as an
+   absence to route around, when it is the business's defining inversion —
+   the thing that makes it unlike every party venue and every teddy shop.
+2. **The certificate is a line item, not the object.** Heart insert and
+   adoption certificate appear as pack contents — bullet points — when the
+   certificate is the keepable artifact of the whole business and the page's
+   best recognition object.
+3. **The circuit is unmined.** Four named 2026 public days sit in the flyer
+   grid while the page's geography is "Newcastle + she comes to you". The
+   drawn circuit is the estate-map analog for a business with no estate.
+4. **Theatre is an unresolved fork.** The hero decision (machine vs the bear
+   come to life) needs to be *made*, with the honest caption written, not
+   left open.
+5. **The invitation does not ask the question the business actually splits
+   on**: hall, school, home, or the next public day.
 
 ## The moves
 
-Ordered by build sequence, not by number. Cheap recognition first, then the
-invitation, then the artifact.
+Ordered by build sequence: voice, essence, invitation, artifact, theatre.
 
-### 1. Their voice, not ours — *We come to you*
+### 1. Their voice, not ours — *We come to you* *(shipped; keep)*
 
-Set the Intro sentence as section furniture, large, with Facebook named so
-Siobhan can find her own words. *"Where Bears Come To Life!"* is the cover
-line; it can sit under the name, not instead of it. Do not tidy "an unique"
-or "create a new". Cheapest move, possibly the most persuasive — Scopers'
-carrot caption equivalent.
+The Intro sentence stays as furniture with its grammar intact, Facebook
+findable; *"Where Bears Come To Life!"* under the name. Scopers' carrot
+caption equivalent — already the cheapest persuasive move on the page.
 
-### 2. Publish the site packs as permanence; hand the diary to Facebook
+### 2. The essence made visible: "The venue is yours" *(this pass)*
 
-Little Ted / Big Ted / Colour Your Bear with size, per-child price, and the
-true minima (12 / 12 / 10). Call-out from £35 depending on location. Banner
-note: packs as published on bearnecessitieskids.co.uk, 23 August 2026.
-Guest copy names the packs and points Facebook for today's event and the
-£22.99-class one-day offers. Drop the unverified Care Bear £16.99 line.
+New section in the business's voice, owning the inversion. Kicker "The
+party". Verbatim guest copy:
 
-### 3. Stage the ritual the feed will not hold — **partially shipped; deepen**
+> **The venue is yours.**
+>
+> There is no shop to find and no hall of ours to book. The party happens
+> where the children already are — your living room, your hired hall, your
+> classroom.
+>
+> We arrive with the bears, the stuffing and the certificates, and for one
+> Saturday your place is the party venue.
 
-Machine → heart → certificate, from the website packages, never implied as a
-Facebook photograph. Scarcity line if we keep one must be theirs or silent:
-the site's "min 12" *is* the scarcity. "Baked this morning" is Scopers'; do
-not steal it. Sand art may ride as the published £3.50 extra, sourced to the
-site, mess-kept-to-a-minimum in *their* words if used.
+(Note: "the stuffing", not "the machine" — the machine is not on the public
+record visually; the site's package language supports the materials. If a
+later read shows the machine named on the site, upgrade the word.)
 
-### 4. The invitation a cold parent can finish
+### 3. Stage the ritual the feed will not hold *(shipped in outline; deepen)*
 
-Name, Saturday, count, pack, where (hall / school / home / next public day).
-Mailto `bearnecessitieskids@gmail.com`; guest sends. Phone 07887 905 025 as
-fallback. No fake booking engine. The site already admits Facebook is the
-live channel; the concept should say the same without sounding like a
-research note.
+Machine → heart → certificate stands, sourced to the site packages. Deepen
+the *ceremony* register: the heart is the moment — name the beat in the
+section copy: every bear gets a heart put inside before it is closed, and
+every bear leaves with its adoption certificate. Do not invent a wishing
+ritual or a naming ceremony beyond what the packages publish.
 
-### 5. Appetite as theatre — the bear in the child's arms, not a workshop we have not seen
+### 4. The invitation a cold parent can finish *(this pass — deepen)*
 
-**Creative fork, open:** (a) keep the AI stuffing-machine plate, disclosed,
-as a riff on a ritual the site describes and the feed does not show; or (b)
-re-hero on the thing the public grid actually contains — children holding
-finished bears — as a generated riff, same triple disclosure, closer to the
-visible record. Recommendation: (b) for the first screen, (a) only beside
-the ritual section, captioned as a generated picture of the published
-heart-and-certificate making, not as a photograph of Siobhan's machine.
-If she later supplies a real machine photograph, that replaces (a).
+The mailto form gains the field the business actually splits on: **where** —
+your hall / your home / your school / the next public day. Fields in full:
+your name, the Saturday you have in mind, how many children, which pack
+(Little Ted / Big Ted / Colour Your Bear / not sure yet), where. Drafts mail
+to `bearnecessitieskids@gmail.com`; guest sends; phone 07887 905 025 as the
+spoken fallback. No fake booking engine.
 
-### 6. The circuit is the map — **unshipped; the session-sized artifact**
+### 5. The circuit is the map — the session-sized artifact *(this pass)*
 
-A drawn County Down circuit in the concept palette: Newcastle as home pin,
-then only the places the 23 August 2026 grid already names (Downpatrick
-Racecourse, Rathfriland, Warrenpoint Town Square, Wake the Giant). A fifth
-pin that is *your hall* — not a named school. Indicative disclosure, same
-rule as Scopers' larder map: **drawn only from what they publicly printed;
-no invented suppliers, no invented schools.** This is the keepable artifact
-and the one-sheet reverse. Budget it alone.
+A hand-drawn SVG plate (MapPlate, the kelly-mcevoy-brown / arley-house
+pattern — no generation session needed): County Down as the route, not the
+shop floor. Pins, each matching a flyer on the 23 August 2026 grid:
+**Newcastle** (home pin, halo — no street address, so the pin is the town);
+**Downpatrick Racecourse** · July; **Rathfriland** · August; **Warrenpoint
+Town Square** · August; and a fifth, open dotted pin: **your hall** — the
+private Saturday, deliberately unlocated, because that is the offer. **Wake
+the Giant never gets a located pin** (the harvest does not name its place);
+it may ride as a dated streamer in the cartouche ("Wake the Giant · 1
+August"). Months only — no full dates needed on a plate that will age.
+Real geography, north up: Newcastle on the east coast, Warrenpoint south on
+Carlingford Lough, Downpatrick inland to the north, Rathfriland north-west,
+the Mournes as ridge marks between Newcastle and Warrenpoint. Caption, in
+the business's voice: *"The public days from this summer's flyers —
+indicative, not a route planner. The private Saturdays come to you."*
 
-### 7. From the fair to the living-room floor
+### 6. The adoption certificate — the keepable object *(this pass)*
 
-A short, quiet split — not a fake timeline. One column: the public days
-(the feed's job, linked). Other column: the private Saturday (the concept's
-job). The paradox as a headline they would recognise: the same machine that
-stands in a racecourse tent stands in a house in Newcastle. Dates only where
-documented. Do not write "since 2016" as a saga; one line, sourced to the
-site, is enough.
+A drawn, blank adoption certificate (CSS/SVG, clearly illustrated) beside the
+ritual section: **"Certificate of Adoption"** with blank ruled lines for the
+bear's name, the maker's name and the date. No logo forgery, no invented
+wording beyond the three blanks and the title the packs themselves name.
+Lead line: **"Every bear leaves with a heart and an adoption certificate."**
+This is Armstrong's appointment card applied to a party business: the one
+physical object the business hands you, drawn honestly.
+
+### 7. Theatre: the bear come to life — **decided** *(mechanism now, asset on generation)*
+
+The fork closes. The first screen should show what the public grid actually
+celebrates — **a finished bear in a child's arms** (generated riff, triple
+disclosure, never captioned as a photograph of a real party or a real child
+at one). The machine plate, if kept, belongs beside the ritual section,
+captioned as a generated picture of the published heart-and-certificate
+making — never as Siobhan's machine. If she supplies real photographs, they
+replace both. Composition, veil, grade hook and disclosures ship now; the
+asset swap is one file.
+
+### 8. One photographic voice — the party grade *(this pass)*
+
+A composable `--bn-grade` custom property over every plate (chain, don't
+override — the Enniskeen lesson), warm and bright: this is the one concept
+whose plates should read like a party, not a brochure.
+
+### 9. From the fair to the living-room floor *(shipped in outline; keep)*
+
+The public days / private Saturday split stands: the feed owns the fairs
+(linked), the concept owns the Saturday. No invented timeline, no "since
+2016" saga — the founding line stays one sourced sentence.
 
 ## Recommended bundles
 
-- **Cheap bundle (hours):** moves 1, 2, and the invitation fields in 4. All
-  recognition. Correct the pack list the same day.
-- **Theatre bundle:** 3 and 5 (the fork).
-- **Artifact session:** 6, alone, then the one-sheet as a party ticket with
-  the circuit on the reverse — Scopers' menu-card / Enniskeen estate-map
-  lesson, applied to a travelling jar.
+- **This pass (ships together):** moves 2, 4, 5, 6, 8, and the deepen in 3.
+  The insight, both artifacts and the invitation in one session; no new
+  pixels.
+- **Generation session:** move 7's hero; recapture before/after stills per
+  `docs/MEDIA_CAPTURE.md` once the first screen settles.
+- **Later:** the one-sheet as a party ticket, circuit on the reverse.
 
 ## Honesty constraints
 
 - Logged-out Facebook on 23 August 2026 showed two posts and a flyer grid,
-  then a wall. Do not claim a deeper feed read. Deeper harvest needs a
-  logged-in session Conor does himself, or a later pass.
-- Siobhan Rice and 2016 are **site** facts. Review count is Facebook; review
-  *text* was not readable — do not quote a parent.
-- No street address, hours, or catchment. Do not invent them.
+  then a wall. Do not claim a deeper feed read.
+- Siobhan Rice and 2016 are **site** facts; review *text* was never readable
+  — no parent quotes.
+- No street address, hours, or catchment — and now the page says *why*,
+  in their register, rather than papering over it.
 - No named party halls or schools. Public event venues only, as printed.
-- Packs and extras from the 23 August 2026 site list. Facebook contributes
-  one dated offer: £22.99 Wake the Giant bundle.
-- They are not hand stuffed. Do not elevate into craft sewing.
+- Packs and extras from the 23 August 2026 site list; Facebook contributes
+  the one dated £22.99 offer.
+- Not hand stuffed; no craft-sewing elevation.
+- No wishing/naming ceremony beyond heart + certificate as published.
+- The certificate artifact carries no invented wording: its title and three
+  blanks only.
+- Wake the Giant gets no located pin.
 - Guest page must not print plate questions ("When would I open this?").
-- Facebook stays the live channel. The concept must not pretend to hold
-  today's competition.
-- AI imagery: triple disclosure (alt, visible line, Sources & limits). Not a
-  photograph of a real party or of her machine unless she supplies one.
-- Guest-facing attribution stays light. Read dates and "Facebook-audit"
-  language stay in `research/` and case-study Sources & limits.
+- Facebook stays the live channel; the concept never pretends to hold today's
+  competition.
+- AI imagery: triple disclosure. Not a photograph of a real party or her
+  machine.
+- Guest-facing attribution stays light. Read dates stay in `research/` and
+  Sources & limits.
 
 ## Tests that pin the elevation
 
-- Assert Little Ted £10.50 (10", min 12), Big Ted £15.99 (16", min 12),
-  Colour Your Bear £16.50 (min 10). Assert **no** £16.99 Care Bear pack line
-  unless a later dated read restores it.
-- Assert call-out from £35 depending on location, sourced to the site.
-- Assert sand art only at £3.50 if shown, sourced to the site, 23 August 2026.
-- Assert "We come to you" (or the shipped Intro sentence) reaches the page
-  as their words, not paraphrased into studio English.
-- Assert the form drafts mail to `bearnecessitieskids@gmail.com` and does not
-  send; phone 07887 905 025 remains reachable.
-- Assert Facebook is the live-event / offers link.
-- Assert guest copy does not contain plate questions.
-- Assert no invented school or hall name.
-- If move 6 ships: every pin except "your hall" matches a flyer on the 23
-  August 2026 grid (or a later dated replacement).
-- Run the guest-voice guard. Swap test: remove Bear Necessities, Siobhan, the
-  three pack names, and the named circuit; if any teddy party could wear the
-  page, the elevation has not gone far enough.
+New suite `tools/test/test-bear-necessities-elevation.mjs`, wired into
+`run-verification.mjs`, against the built page:
+
+- Little Ted £10.50 (10", min 12), Big Ted £15.99 (16", min 12), Colour Your
+  Bear £16.50 (min 10); call-out from £35 depending on location; sand art
+  only at £3.50 if shown. **No £16.99 Care Bear line.**
+- "We come to you" reaches the page as their words.
+- The "The venue is yours" section present; no street address or hours
+  invented anywhere on the page.
+- The invitation form carries the **where** field (hall / home / school /
+  public day) and drafts mail to `bearnecessitieskids@gmail.com`; nothing
+  else sends; 07887 905 025 reachable.
+- The circuit map: pins ∈ {Newcastle, Downpatrick, Rathfriland, Warrenpoint,
+  your hall}; no located Wake the Giant pin; indicative caption present.
+- The adoption certificate artifact present with blank lines and no invented
+  body text.
+- Facebook is the live-event / offers link; no plate questions in guest copy.
+- The grade custom property defined and applied to the plate(s).
+- Generated-image disclosure intact on any plate (banner note).
+- Swap test, manual on review: remove Bear Necessities, the pack names, the
+  circuit and the certificate; if any teddy party company could wear what
+  remains, keep going.
 
 ## Open decisions
 
-- Move 5 fork: machine plate beside the ritual, or first-screen on the
-  finished bear in a child's arms.
 - Whether Conor (logged in) re-reads the walled feed for one more furniture
   sentence and any pack/price Facebook actually posted. Do not guess it.
-- Whether Siobhan supplies a real machine photograph.
-- Fairy Door pack: exists on the site; not yet harvested in full. Omit until
-  read.
+- Whether Siobhan supplies real photographs (machine, parties).
+- Fairy Door pack: on the site, not yet harvested. Omit until read.
 - Soft-play flyer: on the grid, body unread. Omit until read.
 
 ## When a move ships

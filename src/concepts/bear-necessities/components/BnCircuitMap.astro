@@ -1,0 +1,192 @@
+---
+/** Bear Necessities — the summer circuit, drawn. Move 5 of the elevation
+ *  brief: a party venue with no venue gets the estate-map analog — County
+ *  Down as the route, not the shop floor. Pins only what the 23 August 2026
+ *  flyer grid names: Newcastle (home, no street address, so the pin is the
+ *  town), Downpatrick Racecourse, Rathfriland, Warrenpoint Town Square, and
+ *  one open dotted pin — "your hall", deliberately unlocated, because that
+ *  is the offer. Wake the Giant never gets a located pin (the harvest does
+ *  not name its place); it rides as a dated streamer in the cartouche.
+ *  Months only, so the plate ages well. */
+import MapPlate from "../../_shell/MapPlate.astro";
+import MapPin from "../../_shell/MapPin.astro";
+import MapCompass from "../../_shell/MapCompass.astro";
+
+interface Props {
+  /** Id of the section's heading, so the map is labelled by it. */
+  headingId?: string;
+}
+
+const { headingId } = Astro.props;
+
+// The Mournes between Newcastle and Warrenpoint — two offset rows so the
+// range reads as depth, not a fence.
+const ridgeFront = [468, 504, 540, 576, 612, 648];
+const ridgeBack = [486, 522, 558, 594, 630];
+const chevron = (x: number, y: number) => `M${x} ${y}l13-16 13 16`;
+---
+
+<MapPlate
+  id="bn-map"
+  viewBox="0 0 760 600"
+  title="The summer circuit, sketched"
+  desc="A hand-drawn sketch map of County Down, north up: Newcastle on the east coast marked as home, Downpatrick Racecourse inland to the north, Rathfriland to the north-west, Warrenpoint Town Square south on the shore of Carlingford Lough, the Mourne mountains as ridge marks between Newcastle and Warrenpoint, and one open dashed pin in open country labelled your hall for the private Saturday parties."
+  headingId={headingId}
+  clip
+>
+  <!-- Water: the Irish Sea down the right edge, opening into Carlingford
+       Lough along the bottom. The same path carries the firm shoreline
+       stroke; plate-edge water edges stay undrawn. -->
+  <path
+    class="bn-map-water-fill"
+    d="M739 96 C706 160, 680 230, 668 300 C672 356, 688 408, 706 446 C600 470, 520 492, 452 506 C400 516, 356 524, 328 532 L328 579 L739 579 Z"
+  />
+  <path
+    class="bn-map-shore"
+    d="M739 96 C706 160, 680 230, 668 300 C672 356, 688 408, 706 446 C600 470, 520 492, 452 506 C400 516, 356 524, 328 532"
+  />
+  <!-- Faint echo of the shoreline inside the water (paired-stroke idiom). -->
+  <path
+    class="bn-map-shore bn-map-shore--faint"
+    d="M731 108 C700 168, 674 234, 662 298 C666 354, 680 404, 696 440 C594 462, 518 484, 454 498 C406 508, 366 516, 338 524"
+  />
+
+  <!-- Stippled shore inside the lough's north edge (round-capped dashes). -->
+  <path
+    class="bn-map-stipple"
+    d="M694 428 C590 452, 512 474, 444 488 C400 498, 360 506, 336 514"
+  />
+
+  <g class="bn-map-ripples" aria-hidden="true">
+    <path d="M700 176h24" />
+    <path d="M712 268h20" />
+    <path d="M524 544h26" />
+    <path d="M606 524h22" />
+    <path d="M668 552h24" />
+  </g>
+
+  <text class="bn-map-water-label" x="556" y="556" text-anchor="middle" transform="rotate(-5 556 556)">CARLINGFORD LOUGH</text>
+
+  <!-- The Mournes, between Newcastle and Warrenpoint. -->
+  <g class="bn-map-ridge bn-map-ridge--back" aria-hidden="true">
+    {ridgeBack.map((x) => <path d={chevron(x, 438)} />)}
+  </g>
+  <g class="bn-map-ridge" aria-hidden="true">
+    {ridgeFront.map((x) => <path d={chevron(x, 420)} />)}
+  </g>
+  <text class="bn-map-ridge-label" x="548" y="398" text-anchor="middle">the Mournes</text>
+
+  <!-- Roads: a firm penned line with a fainter twin alongside. Every road
+       runs out of Newcastle — the van starts at home. -->
+  <g class="bn-map-roads" aria-hidden="true">
+    <path
+      class="bn-map-road bn-map-road--faint"
+      transform="translate(2.5 1.5)"
+      d="M640 280 C590 240, 540 200, 500 172 C470 150, 430 132, 400 124"
+    />
+    <path
+      class="bn-map-road"
+      d="M640 280 C590 240, 540 200, 500 172 C470 150, 430 132, 400 124"
+    />
+    <path
+      class="bn-map-road bn-map-road--faint"
+      transform="translate(2.5 1.5)"
+      d="M632 288 C560 260, 480 240, 420 232 C340 220, 250 214, 196 210"
+    />
+    <path
+      class="bn-map-road"
+      d="M632 288 C560 260, 480 240, 420 232 C340 220, 250 214, 196 210"
+    />
+    <path
+      class="bn-map-road bn-map-road--faint"
+      transform="translate(2.5 1.5)"
+      d="M646 316 C640 360, 650 400, 664 428 C620 448, 560 462, 512 474 C494 480, 472 486, 458 492"
+    />
+    <path
+      class="bn-map-road"
+      d="M646 316 C640 360, 650 400, 664 428 C620 448, 560 462, 512 474 C494 480, 472 486, 458 492"
+    />
+  </g>
+
+  <!-- The private Saturday: a dashed path to a hall only the guest can name. -->
+  <path
+    class="bn-map-path"
+    d="M636 296 C560 310, 470 326, 396 338 C360 344, 330 348, 316 350"
+  />
+
+  <g class="bn-map-cartouche">
+    <text class="bn-map-cartouche-title" x="44" y="62">The summer circuit</text>
+    <text class="bn-map-cartouche-sub" x="44" y="80">the public days, then your hall</text>
+    <path class="bn-map-cartouche-rule" d="M44 90H212" />
+    <text class="bn-map-cartouche-streamer" x="44" y="108">Wake the Giant · 1 August</text>
+  </g>
+
+  <MapCompass x={84} y={522} variant="dart" textClass="bn-map-compass-n" />
+
+  <MapPin
+    x={380}
+    y={116}
+    label="Downpatrick Racecourse"
+    sub="July"
+    anchor="start"
+    labelDx={18}
+    labelDy={-2}
+    subDy={12}
+    labelHalo={{ x: 392, y: 98, width: 182, height: 34 }}
+    labelClass="bn-map-pin-label"
+    subClass="bn-map-pin-sub"
+  />
+  <MapPin
+    x={176}
+    y={208}
+    label="Rathfriland"
+    sub="August"
+    anchor="start"
+    labelDx={16}
+    labelDy={-4}
+    subDy={10}
+    labelHalo={{ x: 186, y: 184, width: 120, height: 34 }}
+    labelClass="bn-map-pin-label"
+    subClass="bn-map-pin-sub"
+  />
+  <MapPin
+    x={452}
+    y={494}
+    label="Warrenpoint Town Square"
+    sub="August"
+    anchor="end"
+    labelDx={-16}
+    labelDy={0}
+    subDy={14}
+    labelHalo={{ x: 258, y: 476, width: 182, height: 34 }}
+    labelClass="bn-map-pin-label"
+    subClass="bn-map-pin-sub"
+  />
+  <MapPin
+    x={648}
+    y={296}
+    label="Newcastle"
+    sub="home"
+    labelDy={-22}
+    subDy={-8}
+    haloR={14}
+    labelHalo={{ x: 596, y: 256, width: 104, height: 38 }}
+    labelClass="bn-map-pin-label"
+    subClass="bn-map-pin-sub"
+  />
+
+  <!-- The fifth pin is open: dashed halo, hollow dot, no fill — the private
+       Saturday is deliberately unlocated. -->
+  <g class="mm-map-pin bn-map-pin-open" transform="translate(300 350)">
+    <rect class="mm-map-halo" x="-42" y="-40" width="84" height="24" />
+    <circle class="bn-map-open-halo" r="12" />
+    <circle class="bn-map-open-dot" r="4.5" />
+    <text class="mm-map-pin-label bn-map-pin-label bn-map-open-label" x="0" y="-24" text-anchor="middle">
+      your hall
+    </text>
+  </g>
+
+  <Fragment slot="caption">
+    The public days from this summer's flyers — indicative, not a route planner. The private Saturdays come to you.
+  </Fragment>
+</MapPlate>

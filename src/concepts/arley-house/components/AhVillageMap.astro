@@ -1,0 +1,167 @@
+---
+/** Arley House — the village and the bay, drawn. Move 3 of the elevation
+ *  brief: the Intro sentence is a geography claim ("perfect to explore this
+ *  Area of Outstanding Natural Beauty"), so geography gets the drawn
+ *  artifact. Pins only what the logged-out Facebook read or the attributed
+ *  Visit Mourne sentence carries: the house, the village, the castle, the
+ *  bay with beaches either side, Newcastle, the Mournes as backdrop. No
+ *  archival place names (Murlough, Tollymore, Castle Ward, Silent Valley,
+ *  Royal County Down) and no road numbers — the plate names the street,
+ *  not the A-road. */
+import MapPlate from "../../_shell/MapPlate.astro";
+import MapPin from "../../_shell/MapPin.astro";
+import MapCompass from "../../_shell/MapCompass.astro";
+
+interface Props {
+  /** Id of the section's heading, so the map is labelled by it. */
+  headingId?: string;
+}
+
+const { headingId } = Astro.props;
+
+// Layered ridge chevrons for the Mournes along the south edge — two offset
+// rows so the range reads as depth, not a fence.
+const ridgeFront = [150, 186, 224, 262, 302, 344, 386, 428, 470, 512, 554, 596];
+const ridgeBack = [168, 206, 246, 288, 330, 372, 414, 456, 498, 540, 580];
+const chevron = (x: number, y: number) => `M${x} ${y}l13-16 13 16`;
+---
+
+<MapPlate
+  id="ah-map"
+  viewBox="0 0 760 600"
+  title="Dundrum and the bay, sketched"
+  desc="A hand-drawn sketch map of Dundrum and its bay, north up: the village at the head of the bay, Arley House pinned on the Belfast Road north of the village, Dundrum Castle on its hill to the north-west, the bay and its beaches to the east, Newcastle down the coast road to the south, and the Mournes as ridge marks along the southern edge."
+  headingId={headingId}
+  clip
+>
+  <!-- The bay and the open sea: water east of the village, opening east.
+       The same path carries the firm shoreline stroke. -->
+  <path
+    class="ah-map-water-fill"
+    d="M262 302 C330 288, 430 272, 520 258 C570 250, 608 244, 632 238 L739 226 L739 579 L716 579 C712 540, 706 490, 692 440 C680 396, 662 352, 640 322 C600 330, 552 340, 505 346 C430 356, 340 358, 262 348 Z"
+  />
+  <!-- The shoreline itself: north shore, then the coast south from the bay
+       mouth, then the south shore. Plate-edge water edges stay undrawn. -->
+  <path
+    class="ah-map-shore"
+    d="M262 302 C330 288, 430 272, 520 258 C570 250, 608 244, 632 238 M716 579 C712 540, 706 490, 692 440 C680 396, 662 352, 640 322 C600 330, 552 340, 505 346 C430 356, 340 358, 262 348"
+  />
+  <!-- Faint echo of the shoreline inside the water (paired-stroke idiom). -->
+  <path
+    class="ah-map-shore ah-map-shore--faint"
+    d="M268 310 C336 296, 434 280, 522 267 C570 259, 606 253, 628 248 M636 330 C598 338, 552 348, 506 354 C432 364, 344 366, 270 356"
+  />
+
+  <!-- Stippled dune shore along the bay's north edge (round-capped dashes). -->
+  <path
+    class="ah-map-stipple"
+    d="M272 290 C344 274, 444 259, 532 247 C578 241, 612 235, 640 228"
+  />
+
+  <g class="ah-map-ripples" aria-hidden="true">
+    <path d="M380 322h26" />
+    <path d="M452 306h30" />
+    <path d="M548 292h24" />
+    <path d="M668 396h26" />
+    <path d="M676 470h22" />
+  </g>
+
+  <text class="ah-map-water-label" x="452" y="314" text-anchor="middle" transform="rotate(-4 452 314)">DUNDRUM BAY</text>
+  <text class="ah-map-note" x="306" y="333" transform="rotate(-4 306 333)">beaches either side</text>
+
+  <!-- The Mournes, sweeping down to the sea along the south edge. -->
+  <g class="ah-map-ridge ah-map-ridge--back" aria-hidden="true">
+    {ridgeBack.map((x) => <path d={chevron(x, 566)} />)}
+  </g>
+  <g class="ah-map-ridge" aria-hidden="true">
+    {ridgeFront.map((x) => <path d={chevron(x, 546)} />)}
+  </g>
+  <text class="ah-map-ridge-label" x="382" y="518" text-anchor="middle">the Mournes</text>
+
+  <!-- Roads: a firm penned line with a fainter twin alongside. Belfast Road
+       is the spine — the road the house is addressed on, drawn north. -->
+  <g class="ah-map-roads" aria-hidden="true">
+    <path
+      class="ah-map-road ah-map-road--faint"
+      transform="translate(2.5 1.5)"
+      d="M218 296 C232 258, 252 224, 282 198 C300 172, 318 130, 336 84 C344 62, 350 44, 356 28"
+    />
+    <path
+      class="ah-map-road"
+      d="M218 296 C232 258, 252 224, 282 198 C300 172, 318 130, 336 84 C344 62, 350 44, 356 28"
+    />
+    <path
+      class="ah-map-road ah-map-road--faint"
+      transform="translate(2.5 1.5)"
+      d="M228 318 C300 344, 400 356, 500 356 C560 356, 610 380, 640 424 C656 452, 660 478, 658 502"
+    />
+    <path
+      class="ah-map-road"
+      d="M228 318 C300 344, 400 356, 500 356 C560 356, 610 380, 640 424 C656 452, 660 478, 658 502"
+    />
+  </g>
+  <text class="ah-map-road-label" x="348" y="132" transform="rotate(-72 348 132)">Belfast Road</text>
+
+  <!-- The short walk to the castle, as a faint footpath. -->
+  <path class="ah-map-path" d="M208 288 C190 258, 172 224, 156 198" />
+
+  <!-- The castle's hill, north-west of the village. -->
+  <g class="ah-map-hill" aria-hidden="true">
+    <path d="M122 210 C136 197, 164 197, 178 210" />
+    <path d="M134 216 C144 208, 158 208, 168 216" />
+  </g>
+
+  <g class="ah-map-cartouche">
+    <text class="ah-map-cartouche-title" x="44" y="62">Wake in Dundrum</text>
+    <text class="ah-map-cartouche-sub" x="44" y="80">the village and the bay</text>
+    <path class="ah-map-cartouche-rule" d="M44 90H212" />
+  </g>
+
+  <MapCompass x={700} y={66} variant="dart" textClass="ah-map-compass-n" />
+
+  <MapPin
+    x={282}
+    y={198}
+    label="Arley House"
+    sub="14 Belfast Road"
+    anchor="start"
+    labelDx={18}
+    labelDy={-2}
+    subDy={12}
+    haloR={14}
+    labelHalo={{ x: 296, y: 181, width: 114, height: 34 }}
+    labelClass="ah-map-pin-label"
+    subClass="ah-map-pin-sub"
+  />
+  <MapPin
+    x={215}
+    y={300}
+    label="Dundrum"
+    anchor="end"
+    labelDx={-12}
+    labelDy={-8}
+    labelClass="ah-map-pin-label"
+  />
+  <MapPin
+    x={150}
+    y={185}
+    label="Dundrum Castle"
+    sub="a short walk"
+    labelDy={-16}
+    subDy={-3}
+    labelClass="ah-map-pin-label"
+    subClass="ah-map-pin-sub"
+  />
+  <MapPin
+    x={658}
+    y={502}
+    label="Newcastle"
+    labelDy={-16}
+    labelHalo={{ x: 618, y: 470, width: 80, height: 20 }}
+    labelClass="ah-map-pin-label"
+  />
+
+  <Fragment slot="caption">
+    A sketch of the village and the bay as we describe them to guests — indicative, not a survey.
+  </Fragment>
+</MapPlate>
