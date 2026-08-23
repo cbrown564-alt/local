@@ -549,6 +549,13 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   navigational map, exact coastline, or evidence of buildings or roads. The
   readable labels remain HTML overlays and the figure discloses the generated
   artwork visibly.
+- `public/media/maps/bear-necessities-circuit-generated.png` — **in use** (23
+  August 2026). AI-generated indicative County Down route artwork made with the
+  built-in OpenAI image generation tool. It shows only the sourced regional
+  relationships for Newcastle, Downpatrick Racecourse, Rathfriland,
+  Warrenpoint Town Square and the Mournes; the private hall remains unlocated.
+  It is not a survey, route planner, exact road map or evidence of event
+  operations. Labels, pins and the mobile key are HTML overlays.
 - `public/media/concepts/arley-house/arley-house-exterior-generated.jpg` and
   `arley-house-breakfast-generated.jpg` — **in use** (23 August 2026). AI-generated
   indicative visualisations made with the built-in OpenAI image generation tool
@@ -1102,6 +1109,8 @@ Ten built concept grafts published to the public transformations index.
 
 ### Generated concept plates (guest-disclosed)
 
+- `public/media/concepts/bear-necessities/party-moment.jpg` — generated concept plate of a child with their newly made teddy bear and adoption certificate at a party; disclosed on the concept banner. Not a photograph of a real child or customer party.
+- `public/media/concepts/bear-necessities/workshop-table.jpg` — generated concept plate of a teddy bear workshop table setup with plush skins, hearts, shirts, and certificate scrolls; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/morning-door.jpg` — generated concept plate of the morning doorway with bicycles and floorboards; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.

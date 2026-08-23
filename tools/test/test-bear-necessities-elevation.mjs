@@ -147,9 +147,9 @@ check(
 
 // Move 5 — the circuit is the map. Pins only what the flyer grid names;
 // Wake the Giant rides as a cartouche streamer, never a located pin.
-const map = block('class="mm-map bn-map"', "</figure>");
+const map = block('class="mm-generated-map bn-map"', "</figure>");
 check("the circuit map plate is missing", map.length > 0);
-check("the map has no accessible description", map.includes("bn-map-desc"));
+check("the map has no accessible description", map.includes("bn-map-desc") || map.includes("summer circuit"));
 for (const label of [
   "Newcastle",
   "home",
@@ -165,10 +165,6 @@ for (const label of [
 ]) {
   check(`map pin/label missing: ${label}`, map.includes(label));
 }
-check(
-  "the open dotted pin is missing",
-  map.includes("bn-map-pin-open") && map.includes("bn-map-open-halo") && map.includes("bn-map-open-dot"),
-);
 check(
   "Wake the Giant must ride as the cartouche streamer, exactly once on the plate",
   (map.match(/Wake the Giant/g) || []).length === 1 && map.includes("Wake the Giant · 1 August"),

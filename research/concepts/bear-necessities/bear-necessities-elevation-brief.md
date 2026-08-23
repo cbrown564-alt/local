@@ -219,8 +219,7 @@ spoken fallback. No fake booking engine.
 
 ### 5. The circuit is the map — the session-sized artifact *(this pass)*
 
-A hand-drawn SVG plate (MapPlate, the kelly-mcevoy-brown / arley-house
-pattern — no generation session needed): County Down as the route, not the
+A generated raster plate (GeneratedMapPlate, with HTML labels and pins): County Down as the route, not the
 shop floor. Pins, each matching a flyer on the 23 August 2026 grid:
 **Newcastle** (home pin, halo — no street address, so the pin is the town);
 **Downpatrick Racecourse** · July; **Rathfriland** · August; **Warrenpoint

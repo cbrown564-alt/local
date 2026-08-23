@@ -33,6 +33,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "The choosing wall on Railway Street",
     }],
   },
+  "bear-necessities": {
+    heading: "The party venue that travels to your door.",
+    lede: "Custom teddy bear making workshops, heartfelt adoption ceremonies and magical memories across County Down.",
+    frames: [{
+      src: "/media/concepts/bear-necessities/party-moment.jpg",
+      alt: "AI-generated scene of a child with their newly made teddy bear and adoption certificate at a party",
+      label: "A completed bear and adoption certificate",
+    }],
+  },
   "bettys-butters": {
     heading: "A little butter changes the whole plate.",
     lede: "Professional-kitchen flavour, made useful on an ordinary night at home.",
