@@ -4,6 +4,8 @@ body.concept-ireland {
   --ia-ink: #1a1c18;
   --ia-soft: #4a4e46;
   --ia-stamp: #c45c12;
+  --ia-rule: #d2cdc2;
+  --ia-fill: #f6f2ea;
   --concept-accent: var(--ia-stamp);
   margin: 0;
   background: var(--ia-paper);
@@ -14,8 +16,8 @@ body.concept-ireland {
 .ia-page { display: block; }
 
 .ia-first {
-  min-height: 80svh;
-  padding: clamp(36px, 7vh, 72px) clamp(16px, 5vw, 56px);
+  min-height: 88svh;
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +25,7 @@ body.concept-ireland {
   color: #ece8df;
 }
 .ia-record-kicker {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   letter-spacing: .12em;
@@ -32,40 +34,70 @@ body.concept-ireland {
 }
 .ia-first h1 {
   margin: 0;
-  font-size: clamp(40px, 8vw, 84px);
-  line-height: .95;
+  font-size: clamp(48px, 10vw, 96px);
+  line-height: .92;
   font-weight: 700;
+  letter-spacing: -.03em;
+  max-width: 14ch;
 }
-.ia-fix, .ia-hours, .ia-stock {
+.ia-fix {
   max-width: 38rem;
-  margin: 16px 0 0;
+  margin: 22px 0 0;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: #ece8df;
+}
+.ia-hours, .ia-stock {
+  max-width: 38rem;
+  margin: 14px 0 0;
+  font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.5;
   color: #c8c4b8;
 }
 .ia-first a, .ia-job a, .ia-foot a { color: #f0a060; }
+.ia-cat {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--ia-stamp);
+  color: #1a1c18 !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ia-cat:hover, .ia-cat:focus-visible { filter: brightness(1.08); }
 
 .ia-years {
   list-style: none;
   margin: 0;
-  padding: clamp(28px, 5vw, 48px) clamp(16px, 5vw, 56px);
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px);
   background: #2a2c26;
   color: #ece8df;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 28px;
 }
 .ia-years li {
   display: grid;
-  grid-template-columns: 5rem 1fr;
-  gap: 16px;
-  padding: 12px 0;
-  border-top: 1px solid #4a4e46;
-  font-size: 1.05rem;
+  gap: 10px;
+  padding: 18px 0 0;
+  border-top: 3px solid var(--ia-stamp);
 }
 .ia-years time {
   font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  line-height: 1;
   color: var(--ia-stamp);
+}
+.ia-years span {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.5;
+  color: #ece8df;
 }
 
 .ia-job {
-  padding: clamp(36px, 6vw, 72px) clamp(16px, 5vw, 56px);
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px);
 }
 .ia-kicker {
   margin: 0 0 8px;
@@ -75,46 +107,179 @@ body.concept-ireland {
   text-transform: uppercase;
   color: var(--ia-stamp);
 }
-.ia-job h2 {
+.ia-job h2, .ia-plates h2 {
   margin: 0 0 12px;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
 }
+.ia-job-lead { max-width: 40rem; line-height: 1.55; color: var(--ia-soft); }
+
 .ia-docket {
+  max-width: 40rem;
+  margin-top: 28px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #c8b89a;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      rgba(196, 92, 18, .06) 28px
+    ),
+    #f4efe4;
+  box-shadow: 0 18px 40px rgba(26, 28, 24, .08);
+}
+.ia-docket-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #c45c12;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ia-stamp);
+}
+.ia-docket-grid {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
-  max-width: 30rem;
-  margin-top: 20px;
 }
-.ia-docket label { display: grid; gap: 4px; }
-.ia-docket fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; }
-.ia-docket input[type="text"],
-.ia-docket input[type="tel"],
-.ia-docket textarea {
-  border: 0;
-  border-bottom: 1px solid #b8b4a8;
-  background: transparent;
+.ia-field { display: block; margin-bottom: 14px; border: 0; padding: 0; }
+.ia-field span,
+.ia-field legend {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.ia-field input[type="text"],
+.ia-field input[type="tel"],
+.ia-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid var(--ia-rule);
+  border-radius: 10px;
+  background: var(--ia-fill);
+  color: var(--ia-ink);
   font: inherit;
-  padding: 8px 0;
+  font-size: 15px;
 }
-.ia-docket button {
-  justify-self: start;
-  padding: 12px 18px;
+.ia-field input:focus-visible,
+.ia-field textarea:focus-visible {
+  outline: 2px solid var(--ia-stamp);
+  outline-offset: 1px;
+  border-color: var(--ia-stamp);
+}
+.ia-field--choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.ia-field--choice legend { grid-column: 1 / -1; }
+.ia-field--choice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--ia-rule);
+  border-radius: 10px;
+  background: var(--ia-fill);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ia-field--choice input { accent-color: var(--ia-stamp); }
+.ia-field--choice label:has(input:checked) {
+  border-color: var(--ia-stamp);
+  background: rgba(196, 92, 18, .1);
+}
+.ia-submit-bar { margin-top: 8px; }
+.ia-submit-bar button {
+  display: block;
+  width: 100%;
+  padding: 14px;
   border: 0;
+  border-radius: 999px;
   background: #1a1c18;
   color: #ece8df;
   font: inherit;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
 }
-.ia-handoff { margin-top: 8px; }
+.ia-submit-bar button:hover,
+.ia-submit-bar button:focus-visible { background: #2a2c26; }
+.ia-handoff {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 14px 15px;
+  border: 1px solid rgba(196, 92, 18, .4);
+  border-radius: 12px;
+  background: rgba(196, 92, 18, .08);
+}
+.ia-handoff[hidden] { display: none; }
+.ia-handoff a {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: #1a1c18;
+  color: #ece8df !important;
+  font-weight: 700;
+  text-decoration: none;
+}
 
-.ia-stage { margin: 0; }
+.ia-plates {
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 5vw, 56px);
+}
+.ia-plate-pair {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 22px;
+  margin-top: 24px;
+}
+.ia-stage {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--ia-rule);
+}
 .ia-stage img { display: block; width: 100%; height: auto; }
 .ia-stage figcaption {
-  padding: 8px clamp(16px, 5vw, 56px) 20px;
+  padding: 12px 16px;
   font-size: 13px;
   color: var(--ia-soft);
+}
+.ia-harbour-card {
+  min-height: 220px;
+  padding: 28px 24px;
+  background: #1a1c18;
+  color: #ece8df;
+}
+.ia-harbour-mark {
+  margin: 0 0 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 600;
+  color: var(--ia-stamp);
+  line-height: 1;
 }
 .ia-foot {
   padding: 0 clamp(16px, 5vw, 56px) 48px;
   color: var(--ia-soft);
+}
+
+@media (max-width: 900px) {
+  .ia-years { grid-template-columns: 1fr 1fr; }
+  .ia-plate-pair { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .ia-years { grid-template-columns: 1fr; }
+  .ia-docket-grid, .ia-field--choice { grid-template-columns: 1fr; }
 }
