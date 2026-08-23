@@ -1,6 +1,4 @@
-/* Arley House — the village is the page.
-   Cormorant + Source Sans 3. Guest UI. Map first, walk, then the number. */
-
+/* Arley House — stay. Windows first. Name biggest. */
 body.concept-arley {
   --ah-paper: #efe6d4;
   --ah-ink: #221e18;
@@ -8,13 +6,11 @@ body.concept-arley {
   --ah-moss: #3a4a3c;
   --ah-moss-deep: #243028;
   --ah-clay: #7a3e2c;
-  --ah-bay: #5d7a74;
   --ah-serif: "Cormorant", "Times New Roman", serif;
   --ah-sans: "Source Sans 3", "Segoe UI", sans-serif;
   --concept-accent: var(--ah-moss);
   --concept-nav-gap: clamp(16px, 2.2vw, 30px);
   --concept-nav-line: 2px;
-
   margin: 0;
   background: var(--ah-paper);
   color: var(--ah-ink);
@@ -22,103 +18,97 @@ body.concept-arley {
   -webkit-font-smoothing: antialiased;
 }
 
-.ah-page {
-  display: block;
-}
+.ah-page { display: block; }
 
-/* First viewport: the drawn plate. Headline sits on the geography. */
-.ah-plate {
-  position: relative;
+.ah-first {
   min-height: 100svh;
-  background: #c9d6cf;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(52svh, 1fr) auto;
+  background: #1a1612;
 }
 
-.ah-plate-draw {
+.ah-grounds { margin: 0; position: relative; }
+.ah-grounds img {
   display: block;
   width: 100%;
-  height: 100svh;
+  height: min(78svh, 820px);
   object-fit: cover;
 }
-
-.ah-plate-copy {
+.ah-grounds figcaption {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 18%;
-  padding: 0 clamp(20px, 6vw, 80px);
-  pointer-events: none;
-  text-align: center;
+  left: 16px;
+  bottom: 12px;
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: #efe6d4;
+  background: rgba(26, 22, 18, .55);
 }
 
-.ah-plate-name {
-  margin: 0 0 12px;
-  font-family: var(--ah-serif);
-  font-size: 15px;
-  letter-spacing: .28em;
+.ah-first-copy {
+  padding: clamp(28px, 5vw, 56px) clamp(20px, 6vw, 80px) 48px;
+  background: var(--ah-paper);
+}
+
+.ah-open-now {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--ah-moss-deep);
+  color: var(--ah-clay);
 }
 
-.ah-plate-copy h1 {
+.ah-first-copy h1 {
   margin: 0;
   font-family: var(--ah-serif);
   font-weight: 600;
-  font-size: clamp(40px, 7vw, 84px);
-  line-height: .95;
-  letter-spacing: -.02em;
+  font-size: clamp(56px, 12vw, 120px);
+  line-height: .88;
+  letter-spacing: -.03em;
   color: var(--ah-moss-deep);
-  text-shadow: 0 1px 0 rgba(239, 230, 212, .55);
 }
 
-.ah-plate-say {
-  margin: 18px auto 0;
-  max-width: 28em;
+.ah-ask {
+  margin: 16px 0 0;
+  font-family: var(--ah-serif);
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-style: italic;
+}
+
+.ah-say, .ah-place, .ah-hours {
+  max-width: 36em;
+  margin: 12px 0 0;
   font-size: 17px;
-  line-height: 1.45;
-  color: var(--ah-ink);
+  line-height: 1.5;
+  color: var(--ah-ink-soft);
 }
 
-.ah-plate-nav {
-  pointer-events: auto;
+.ah-first-nav {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 8px 28px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
-
-.ah-plate-nav a {
+.ah-first-nav a {
   color: var(--ah-moss-deep);
-  font-size: 14px;
-  letter-spacing: .06em;
-  text-transform: lowercase;
   text-underline-offset: 4px;
 }
 
-/* Wide landscape pull — not a clinic blockquote card */
 .ah-pull {
   margin: 0;
   padding: clamp(56px, 10vw, 110px) clamp(20px, 10vw, 140px);
   background: var(--ah-moss-deep);
   color: #e8efe6;
 }
-
-.ah-pull blockquote {
-  margin: 0;
-  border: 0;
-  padding: 0;
-}
-
+.ah-pull blockquote { margin: 0; border: 0; padding: 0; }
 .ah-pull p {
   margin: 0;
   font-family: var(--ah-serif);
   font-style: italic;
   font-size: clamp(22px, 3.4vw, 38px);
   line-height: 1.28;
-  font-weight: 500;
 }
-
 .ah-pull figcaption {
   margin-top: 28px;
   font-size: 13px;
@@ -127,13 +117,11 @@ body.concept-arley {
   color: #b8c4b8;
 }
 
-/* Vertical path — a walk, not a card grid */
-.ah-walk {
+.ah-holds {
   max-width: 42rem;
   margin: 0 auto;
   padding: clamp(56px, 9vw, 100px) 24px;
 }
-
 .ah-kicker {
   margin: 0 0 8px;
   font-size: 12px;
@@ -141,109 +129,37 @@ body.concept-arley {
   text-transform: uppercase;
   color: var(--ah-clay);
 }
-
-.ah-walk h2,
-.ah-holds h2,
-.ah-pad h2 {
+.ah-holds h2, .ah-pad h2 {
   margin: 0 0 36px;
   font-family: var(--ah-serif);
   font-weight: 600;
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.1;
 }
-
-.ah-path {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-left: 2px solid #c4b48c;
-}
-
-.ah-stop {
-  position: relative;
-  display: block;
-  padding: 0 0 48px 36px;
-}
-
-.ah-stop:last-child {
-  padding-bottom: 0;
-}
-
-.ah-stop-mark {
-  position: absolute;
-  left: -14px;
-  top: 2px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--ah-paper);
-  border: 2px solid var(--ah-moss);
-  font-family: var(--ah-serif);
-  font-size: 11px;
-  line-height: 22px;
-  text-align: center;
-  color: var(--ah-moss);
-}
-
-.ah-stop h3 {
-  margin: 0 0 8px;
-  font-family: var(--ah-serif);
-  font-size: 26px;
-  font-weight: 600;
-}
-
-.ah-stop p {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--ah-ink-soft);
-}
-
-/* Quiet inventory — a ledger, not tiles */
-.ah-holds {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 0 24px clamp(56px, 9vw, 100px);
-}
-
 .ah-inventory {
   list-style: none;
   margin: 0;
   padding: 0;
   border-top: 1px solid #c8bba4;
 }
-
 .ah-inventory li {
   display: grid;
   grid-template-columns: minmax(8rem, 12rem) 1fr;
   gap: 16px;
   padding: 14px 0;
   border-bottom: 1px solid #c8bba4;
-  font-size: 16px;
 }
-
-.ah-inventory li span:first-child {
-  font-family: var(--ah-serif);
-  font-size: 18px;
-}
-
-.ah-inventory li span:last-child {
-  color: var(--ah-ink-soft);
-}
-
+.ah-inventory li span:first-child { font-family: var(--ah-serif); font-size: 18px; }
+.ah-inventory li span:last-child { color: var(--ah-ink-soft); }
+.ah-current { margin-top: 28px; color: var(--ah-ink-soft); line-height: 1.5; }
 @media (max-width: 520px) {
-  .ah-inventory li {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+  .ah-inventory li { grid-template-columns: 1fr; gap: 4px; }
 }
 
-/* Telephone pad — last thing on the page */
 .ah-pad {
   padding: clamp(48px, 8vw, 88px) 24px 96px;
   background: #e4d8c0;
 }
-
 .ah-pad-lead {
   max-width: 36rem;
   margin: -20px auto 36px;
@@ -251,12 +167,7 @@ body.concept-arley {
   color: var(--ah-ink-soft);
   line-height: 1.5;
 }
-
-.ah-pad .ah-kicker,
-.ah-pad h2 {
-  text-align: center;
-}
-
+.ah-pad .ah-kicker, .ah-pad h2 { text-align: center; }
 .ah-phone-face {
   max-width: 22rem;
   margin: 0 auto;
@@ -264,25 +175,17 @@ body.concept-arley {
   background: #2a2824;
   color: #efe6d4;
   border-radius: 28px 28px 36px 36px;
-  box-shadow: 0 18px 40px rgba(34, 30, 24, .28);
 }
-
 .ah-dial {
   display: block;
   text-align: center;
   font-family: var(--ah-serif);
   font-size: 32px;
   font-weight: 600;
-  letter-spacing: .04em;
   color: #efe6d4;
   text-decoration: none;
   padding: 12px 0 4px;
 }
-
-.ah-dial:hover {
-  color: #fff;
-}
-
 .ah-dial-hint {
   margin: 0 0 22px;
   text-align: center;
@@ -291,9 +194,7 @@ body.concept-arley {
   text-transform: uppercase;
   color: #b4aa96;
 }
-
-.ah-script-form label,
-.ah-script-form legend {
+.ah-script-form label, .ah-script-form legend {
   display: block;
   margin: 12px 0 4px;
   font-size: 12px;
@@ -301,66 +202,21 @@ body.concept-arley {
   text-transform: uppercase;
   color: #c8beaa;
 }
-
-.ah-script-form fieldset {
-  border: 0;
-  margin: 10px 0 0;
-  padding: 0;
-}
-
+.ah-script-form fieldset { border: 0; margin: 10px 0 0; padding: 0; }
 .ah-script-form fieldset label {
-  display: block;
-  margin: 6px 0;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 15px;
-  color: #efe6d4;
+  display: block; margin: 6px 0; text-transform: none; letter-spacing: 0;
+  font-size: 15px; color: #efe6d4;
 }
-
-.ah-script-form input[type="text"],
-.ah-script-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  border: 0;
-  border-bottom: 1px solid #5a5448;
-  background: transparent;
-  color: #efe6d4;
-  font: inherit;
-  padding: 6px 0;
+.ah-script-form input[type="text"], .ah-script-form textarea {
+  width: 100%; box-sizing: border-box; border: 0; border-bottom: 1px solid #5a5448;
+  background: transparent; color: #efe6d4; font: inherit; padding: 6px 0;
 }
-
 .ah-script-form button {
-  display: block;
-  width: 100%;
-  margin-top: 22px;
-  padding: 12px 16px;
-  border: 1px solid #efe6d4;
-  background: transparent;
-  color: #efe6d4;
-  font-family: var(--ah-sans);
-  font-size: 14px;
-  letter-spacing: .04em;
-  cursor: pointer;
+  display: block; width: 100%; margin-top: 22px; padding: 12px 16px;
+  border: 1px solid #efe6d4; background: transparent; color: #efe6d4;
+  font-family: var(--ah-sans); cursor: pointer;
 }
-
-.ah-script-form button:hover {
-  background: #efe6d4;
-  color: #2a2824;
-}
-
-.ah-handoff {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #5a5448;
-}
-
-.ah-handoff pre {
-  white-space: pre-wrap;
-  font-family: var(--ah-serif);
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-.ah-handoff a {
-  color: #efe6d4;
-}
+.ah-script-form button:hover { background: #efe6d4; color: #2a2824; }
+.ah-handoff { margin-top: 20px; padding-top: 16px; border-top: 1px solid #5a5448; }
+.ah-handoff pre { white-space: pre-wrap; font-family: var(--ah-serif); font-size: 18px; }
+.ah-handoff a { color: #efe6d4; }
