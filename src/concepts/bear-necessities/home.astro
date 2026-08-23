@@ -24,18 +24,23 @@ const tickets = [
   businessName="Bear Necessities"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The stuffing machine plate is a generated image, not a photograph of Siobhan's machine. Pack prices as published August 2026."
+  bannerNote="Pack prices as published August 2026."
 >
   <main class="bn-page">
     <section class="bn-first" aria-labelledby="bn-name">
+      <p class="bn-when">Since 2016 · Siobhan Rice</p>
       <h1 id="bn-name">Bear Necessities</h1>
       <p class="bn-moment">
         A Saturday, a hall, a count of children — then the machine, the heart,
-        the certificate. Siobhan Rice, since 2016. She comes to you.
+        the certificate. She comes to you.
       </p>
       <p class="bn-price-after">
         Little Ted, Big Ted, Care Bear. Today's offers are on
         <a href={facebook}>Facebook</a>.
+      </p>
+      <p class="bn-first-nav">
+        <a href="#packs">The packs</a>
+        <a href="#invite">Ask for a Saturday</a>
       </p>
     </section>
 
@@ -52,28 +57,26 @@ const tickets = [
     <section class="bn-how" aria-labelledby="bn-how-title">
       <p class="bn-kicker">Machine · heart · certificate</p>
       <h2 id="bn-how-title">They are not hand stuffed.</h2>
-      <p>
-        The stuffing machine is the experience. A heart goes in before the bear
-        is closed. An adoption certificate leaves with the name.
-      </p>
+      <ol class="bn-steps">
+        <li><strong>The machine</strong><span>The stuffing is the experience.</span></li>
+        <li><strong>The heart</strong><span>It goes in before the bear is closed.</span></li>
+        <li><strong>The certificate</strong><span>An adoption name leaves with them.</span></li>
+      </ol>
     </section>
 
     <section class="bn-packs" id="packs" aria-labelledby="bn-packs-title">
       <p class="bn-kicker">The packs</p>
       <h2 id="bn-packs-title">Little Ted, Big Ted, Care Bear.</h2>
-      <ul>
+      <ul class="bn-tickets">
         {tickets.map((t) => (
           <li>
-            <div>
-              <strong>{t.pack}</strong>
-              <span class="bn-size">{t.size}</span>
-            </div>
-            <span class="bn-price">{t.price}</span>
-            <span class="bn-per">{t.per}</span>
+            <strong>{t.pack}</strong>
+            <span>{t.size}</span>
+            <em>{t.price} {t.per}</em>
           </li>
         ))}
       </ul>
-      <p>Sand art can ride with the bear. Groups need twelve or more.</p>
+      <p class="bn-pack-note">Sand art can ride with the bear. Groups need twelve or more.</p>
     </section>
 
     <section class="bn-find" aria-labelledby="bn-find-title">
@@ -83,20 +86,23 @@ const tickets = [
         A local call-out starts at £35. A birthday hall, a school, a living-room
         floor. Offers and competitions live on the Facebook feed.
       </p>
-      <p><a href={facebook}>Today's offers on Facebook</a></p>
+      <p><a class="bn-fb" href={facebook}>Today's offers on Facebook</a></p>
     </section>
 
     <section class="bn-invite" id="invite" aria-labelledby="bn-invite-title">
       <p class="bn-kicker">Saturday and a count</p>
       <h2 id="bn-invite-title">Ask for a Saturday.</h2>
-      <p>
-        Write the day and how many children. We'll make a note to Siobhan at
-        {email} — you send it.
+      <p class="bn-invite-lead">
+        Write the day and how many children. We'll make a note to{' '}{email} — you send it.
       </p>
-      <form class="bn-rsvp" id="book">
+      <form class="bn-rsvp" id="book" data-bn-request>
+        <header class="bn-rsvp-head">
+          <span>Invitation</span>
+          <span>To Siobhan</span>
+        </header>
         <label class="bn-field">
           <span>Your name</span>
-          <input id="bn-who" required autocomplete="name" />
+          <input id="bn-guest" name="name" autocomplete="name" required />
         </label>
         <label class="bn-field">
           <span>Saturday you have in mind</span>
@@ -106,18 +112,24 @@ const tickets = [
           <span>How many children</span>
           <input id="bn-count" type="text" inputmode="numeric" required />
         </label>
+        <fieldset class="bn-field bn-field--choice">
+          <legend>Which pack</legend>
+          <label><input type="radio" name="bn-pack" value="Little Ted" checked /> Little Ted</label>
+          <label><input type="radio" name="bn-pack" value="Big Ted" /> Big Ted</label>
+          <label><input type="radio" name="bn-pack" value="Care Bear" /> Care Bear</label>
+        </fieldset>
         <label class="bn-field">
           <span>Where she should come</span>
           <input id="bn-where" type="text" placeholder="Hall, school, or home" />
         </label>
         <button type="submit">Write the invitation</button>
+        <div class="bn-sealed" data-bn-handoff hidden tabindex="-1">
+          <strong>Your invitation is ready.</strong>
+          <span>We'll make a note to{' '}{email} — you send it.</span>
+          <a data-bn-mail href={`mailto:${email}`}>Open the draft to Siobhan</a>
+          <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+        </div>
       </form>
-      <div class="bn-sealed" data-bn-handoff hidden>
-        <strong>Your invitation is ready.</strong>
-        <span>We'll open a note to {email} — you send it.</span>
-        <a data-bn-mail href={`mailto:${email}`}>Open the draft to Siobhan</a>
-        <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
-      </div>
     </section>
   </main>
   <script is:inline>
@@ -129,10 +141,12 @@ const tickets = [
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!form.reportValidity()) return;
-        var name = document.getElementById("bn-who").value.trim();
+        var name = document.getElementById("bn-guest").value.trim();
         var date = document.getElementById("bn-date").value.trim();
         var count = document.getElementById("bn-count").value.trim();
         var where = document.getElementById("bn-where").value.trim();
+        var chosen = form.querySelector('input[name="bn-pack"]:checked');
+        var pack = chosen ? chosen.value : "Little Ted";
         var body = [
           "Hello Siobhan,",
           "",
@@ -140,6 +154,7 @@ const tickets = [
           "Name: " + name,
           "Saturday: " + date,
           "Children: " + count,
+          "Pack: " + pack,
           where ? "Venue: " + where : "",
           "",
           "Please tell me if that Saturday is free.",
@@ -150,6 +165,7 @@ const tickets = [
           "&body=" +
           encodeURIComponent(body);
         handoff.hidden = false;
+        handoff.focus();
       });
     })();
   </script>
