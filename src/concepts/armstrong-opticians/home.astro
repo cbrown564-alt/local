@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import AoMark from "./components/AoMark.astro";
 
 const phone = "028 4372 2991";
 const phoneHref = "tel:+442843722991";
@@ -9,7 +11,7 @@ const facebook = "https://www.facebook.com/Armstrongopticians";
 const furniture =
   "Independent Optometrists in Newcastle, County Down specialising in enhanced eye care and unique eyewear.";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap";
 ---
 
 <ConceptLayout
@@ -19,13 +21,44 @@ const fontHref =
   businessName="Armstrong Opticians"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The quiet room is a generated image of a calm practice, not a photograph of the shop."
+  bannerNote="The choosing wall and practice scenes are generated visualisations. The quiet room is a generated image of a calm practice, not a photograph of the shop."
 >
+  <div class="ao-strip">
+    <span>30 Railway Street, Newcastle · Established 1983</span>
+    <span class="ao-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a>
+    </span>
+  </div>
+
+  <header class="ao-header">
+    <a class="ao-brand" href="/concepts/armstrong-opticians/">
+      <AoMark size={36} class="ao-brand-mark" />
+      <span class="ao-brand-text">
+        <span class="ao-brand-name">Armstrong Opticians</span>
+        <span class="ao-brand-sub">30 Railway Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="ao-nav" aria-label="Concept navigation">
+      <a href="#refit">Refresh notice</a>
+      <a href="#desk">Call note</a>
+      <a href="#card">Appointment card</a>
+      <a href="#history">The practice</a>
+      <a href="#eyewear">Eyewear</a>
+      <a href="#urgent">Urgent care</a>
+    </nav>
+    <a class="ao-nav-cta" href="#desk">Write call note</a>
+  </header>
+
   <main class="ao-page">
-    <aside class="ao-refit" data-ao-refit>
+    <aside class="ao-refit" id="refit" data-ao-refit aria-label="Practice update notice">
       <div class="ao-refit-inner">
-        <p class="ao-refit-date">Around 20 August 2026</p>
-        <p>
+        <div class="ao-refit-header">
+          <span class="ao-refit-badge">Practice update</span>
+          <p class="ao-refit-date">Around 20 August 2026</p>
+        </div>
+        <p class="ao-refit-body">
           We are getting a refresh. The big practice refit has started, so we
           will be operating by appointment only while the builders are in.
           Please call us on <a href={phoneHref}>{phone}</a> for any emergencies,
@@ -57,15 +90,15 @@ const fontHref =
           </header>
           <label class="ao-line" for="ao-who">
             <span>Who needs seen</span>
-            <input id="ao-who" name="who" type="text" autocomplete="name" required />
+            <input id="ao-who" name="who" type="text" autocomplete="name" placeholder="e.g. John Smith" required />
           </label>
           <label class="ao-line" for="ao-when">
             <span>When you hope to come</span>
-            <input id="ao-when" name="when" type="text" required />
+            <input id="ao-when" name="when" type="text" placeholder="e.g. Thursday morning" required />
           </label>
           <label class="ao-line" for="ao-tel">
             <span>A number they can return</span>
-            <input id="ao-tel" name="tel" type="tel" autocomplete="tel" required />
+            <input id="ao-tel" name="tel" type="tel" autocomplete="tel" placeholder="e.g. 07700 900123" required />
           </label>
           <button type="submit">Write the words</button>
           <div class="ao-ready" data-ao-ready role="status" hidden tabindex="-1">
@@ -76,17 +109,21 @@ const fontHref =
       </div>
 
       <figure class="ao-plate">
-        <img
-          src="/media/concepts/armstrong-opticians/calm.jpg"
-          alt="A quiet practice room in cool light, a chair set beside a slit of window"
-          width="1536"
-          height="1024"
-        />
-        <figcaption>A quiet practice room in cool light.</figcaption>
+        <picture>
+          <source srcset="/media/concepts/armstrong-opticians/frame-wall.jpg" media="(min-width: 641px)" />
+          <img
+            src="/media/concepts/armstrong-opticians/frame-wall.jpg"
+            alt="AI-generated scene of a timber frame-display wall and consultation counter on Railway Street"
+            width="1536"
+            height="1024"
+            loading="eager"
+          />
+        </picture>
+        <figcaption>The choosing wall on Railway Street.</figcaption>
       </figure>
     </section>
 
-    <section class="ao-keepsake" aria-labelledby="ao-keepsake-title">
+    <section class="ao-keepsake" id="card" aria-labelledby="ao-keepsake-title">
       <div class="ao-keepsake-lead">
         <p class="ao-kicker">For the diary</p>
         <h2 id="ao-keepsake-title">Everything you need fits on one card.</h2>
@@ -103,50 +140,59 @@ const fontHref =
       </div>
     </section>
 
-    <section class="ao-history" aria-labelledby="ao-history-title">
-      <p class="ao-kicker">The practice</p>
-      <h2 id="ao-history-title">Same door since 1983.</h2>
-      <p class="ao-history-lead">
-        Independent optometrists on Railway Street since 1983. This autumn the
-        rooms are being remade — the same door, the same number, and a new
-        practice at the end of it.
-      </p>
-      <ol class="ao-timeline">
-        <li>
-          <p class="ao-timeline-when">1983</p>
-          <p>The practice opens on Railway Street.</p>
-        </li>
-        <li>
-          <p class="ao-timeline-when">August 2026</p>
-          <p>The builders come in. Appointment only while the work is done.</p>
-        </li>
-        <li>
-          <p class="ao-timeline-when">Soon</p>
-          <blockquote class="ao-timeline-quote">
-            <p>“We look forward to showing you the new and updated practice soon.”</p>
-          </blockquote>
-        </li>
-      </ol>
+    <section class="ao-history" id="history" aria-labelledby="ao-history-title">
+      <div class="ao-history-inner">
+        <p class="ao-kicker">The practice</p>
+        <h2 id="ao-history-title">Same door since 1983.</h2>
+        <p class="ao-history-lead">
+          Independent optometrists on Railway Street since 1983. This autumn the
+          rooms are being remade — the same door, the same number, and a new
+          practice at the end of it.
+        </p>
+        <ol class="ao-timeline" role="list">
+          <li class="ao-timeline-item">
+            <span class="ao-timeline-when">1983</span>
+            <h3>Practice opens</h3>
+            <p>The practice opens on Railway Street.</p>
+          </li>
+          <li class="ao-timeline-item">
+            <span class="ao-timeline-when">August 2026</span>
+            <h3>The refit</h3>
+            <p>The builders come in. Appointment only while the work is done.</p>
+          </li>
+          <li class="ao-timeline-item">
+            <span class="ao-timeline-when">Soon</span>
+            <h3>Looking ahead</h3>
+            <blockquote class="ao-timeline-quote">
+              <p>“We look forward to showing you the new and updated practice soon.”</p>
+            </blockquote>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <section class="ao-week" aria-labelledby="ao-week-title">
-      <p class="ao-kicker">Facebook</p>
-      <h2 id="ao-week-title">This week’s frames live there.</h2>
-      <p>
-        Sunglasses and this week’s offers sit on
-        <a href={facebook} rel="noopener noreferrer">Facebook</a> —
-        they will change. We will not pin a price here.
-      </p>
+    <section class="ao-week" id="eyewear" aria-labelledby="ao-week-title">
+      <div class="ao-week-inner">
+        <p class="ao-kicker">Facebook</p>
+        <h2 id="ao-week-title">This week’s frames live there.</h2>
+        <p class="ao-week-lead">
+          Sunglasses and this week’s offers sit on
+          <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a> —
+          they will change. We will not pin a price here.
+        </p>
+      </div>
     </section>
 
-    <aside class="ao-public" aria-labelledby="ao-public-title">
-      <p class="ao-kicker">Public guidance</p>
-      <h2 id="ao-public-title">Sudden loss of vision</h2>
-      <p>
-        NHS public advice: go to A&amp;E, or call <a href="tel:111">111</a>.
-        That is not a line from Armstrong Opticians. Practice emergencies,
-        repairs and collections: <a href={phoneHref}>{phone}</a>.
-      </p>
+    <aside class="ao-public" id="urgent" aria-labelledby="ao-public-title">
+      <div class="ao-public-inner">
+        <p class="ao-kicker">Public guidance</p>
+        <h2 id="ao-public-title">Sudden loss of vision</h2>
+        <p class="ao-public-copy">
+          NHS public advice: go to A&amp;E, or call <a href="tel:111">111</a>.
+          That is not a line from Armstrong Opticians. Practice emergencies,
+          repairs and collections: <a href={phoneHref}>{phone}</a>.
+        </p>
+      </div>
     </aside>
 
     <figure class="ao-pull">
@@ -156,7 +202,11 @@ const fontHref =
       <figcaption>Dearbhail Brogan · 30 September 2024 · Facebook</figcaption>
     </figure>
 
+    <!-- Studio Transformation Essence Media Block -->
+    <EssenceMedia slug="armstrong-opticians" />
+
     <footer class="ao-end">
+      <AoMark size={40} class="ao-end-mark" />
       <p class="ao-end-name">Armstrong Opticians</p>
       <p>Established 1983 · 30 Railway Street, Newcastle, BT33 0AL</p>
       <p><a href={phoneHref}>{phone}</a></p>
@@ -208,3 +258,4 @@ const fontHref =
     })();
   </script>
 </ConceptLayout>
+

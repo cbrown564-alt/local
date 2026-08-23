@@ -20,11 +20,11 @@ The general method is `docs/the-elevation-method.md`. The shape is **care**
 spectacle) with a **counter** streak — the grid is retail, and the retail
 ritual is where the theatre lives.
 
-**Status: this pass shipped on 23 August 2026 — moves 3 (the arc), 5 (the
-drawn appointment card) and 8 (the `--ao-grade`) are on the page, over moves
-1, 2, 6 and 7, which shipped with the graft and stand. Move 4's frame-wall
-hero plate awaits the generation session; the calm-room plate and its banner
-disclosure hold until then. Do not call the concept validated.**
+**Status: elevated 23 August 2026 (flagship pass).** Moves 1 through 8 are
+live on `/concepts/armstrong-opticians/`, including Move 4's frame-wall hero plate
+on Railway Street, bespoke spectacles mark (`AoMark`), sticky navigation shell,
+and `EssenceMedia` integration. Pinned by `tools/test/test-armstrong-elevation.mjs`
+(20/20 suites passing in `pnpm test`). Do not call the concept validated.
 
 ## The insight the first pass missed
 

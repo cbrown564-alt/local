@@ -549,6 +549,12 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   navigational map, exact coastline, or evidence of buildings or roads. The
   readable labels remain HTML overlays and the figure discloses the generated
   artwork visibly.
+- `public/media/concepts/arley-house/arley-house-exterior-generated.jpg` and
+  `arley-house-breakfast-generated.jpg` — **in use** (23 August 2026). AI-generated
+  indicative visualisations made with the built-in OpenAI image generation tool
+  after reviewing public accommodation listings for the property's modest
+  rendered house, slate roof, driveway, grounds, breakfast and loaner-bike
+  cues. They are not documentary photographs of the property or its interior.
 
 ### Castle Farm and Newcastle Family Dental concept plates
 
@@ -1100,6 +1106,7 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/arley-house/morning-door.jpg` — generated concept plate of the morning doorway with bicycles and floorboards; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/armstrong-opticians/frame-wall.jpg` — generated concept plate of the optical choosing wall and consultation counter on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.

@@ -1,16 +1,20 @@
 /* Armstrong Opticians — care chassis. Relief: one door, the diary is the phone. */
 body.concept-armstrong {
-  --ao-paper: #f3efe6;
-  --ao-ink: #1a2224;
-  --ao-mute: #4d575a;
-  --ao-teal: #243f43;
-  --ao-line: #c9c1b2;
-  --ao-card: #fbf7ef;
-  --ao-band: #3a2f22;
+  --ao-paper: #f4efe6;
+  --ao-ink: #142022;
+  --ao-mute: #485458;
+  --ao-teal: #1d3d42;
+  --ao-teal-deep: #12282c;
+  --ao-gold: #9d6824;
+  --ao-line: #c8bfb0;
+  --ao-card: #faf6ee;
+  --ao-band: #2d2419;
   /* Move 8: one photographic voice. The practice grade chains, so future
      plates compose with it rather than overriding it. */
-  --ao-grade: saturate(0.9) sepia(0.12) brightness(1.04) contrast(0.96);
+  --ao-grade: saturate(0.92) sepia(0.1) brightness(1.03) contrast(0.98);
   --concept-accent: var(--ao-teal);
+  --concept-nav-gap: clamp(16px, 2.2vw, 30px);
+  --concept-nav-line: 2px;
   margin: 0;
   background: var(--ao-paper);
   color: var(--ao-ink);
@@ -20,72 +24,205 @@ body.concept-armstrong {
 
 .ao-page { display: block; }
 
+/* Top utility strip */
+.ao-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px clamp(16px, 4vw, 40px);
+  background: var(--ao-teal-deep);
+  color: #efe8dc;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.ao-strip a {
+  color: #efe8dc;
+  text-decoration: none;
+  font-weight: 600;
+}
+.ao-strip a:hover {
+  text-decoration: underline;
+}
+
+/* Concept header & brand */
+.ao-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: rgba(244, 239, 230, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ao-line);
+}
+.ao-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ao-teal-deep);
+}
+.ao-brand-mark {
+  color: var(--ao-gold);
+  transition: transform 0.2s ease;
+}
+.ao-brand:hover .ao-brand-mark {
+  transform: translateY(-1px);
+}
+.ao-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.ao-brand-name {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ao-teal-deep);
+}
+.ao-brand-sub {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ao-mute);
+}
+.ao-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 24px);
+}
+.ao-nav a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ao-ink);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.ao-nav a:hover {
+  color: var(--ao-gold);
+}
+.ao-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--ao-teal);
+  color: #efe8dc;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.ao-nav-cta:hover {
+  background: var(--ao-gold);
+}
+
+/* Practice Refit Notice Banner */
 .ao-refit {
   background: var(--ao-band);
   color: #f6efe4;
+  border-bottom: 1px solid rgba(246, 239, 228, 0.15);
 }
 .ao-refit[hidden] { display: none; }
 .ao-refit-inner {
-  max-width: 44rem;
-  padding: 18px clamp(16px, 4vw, 48px) 20px;
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 20px clamp(16px, 4vw, 48px);
 }
-.ao-refit-date {
-  margin: 0 0 6px;
-  font-size: 12px;
+.ao-refit-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.ao-refit-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(216, 170, 100, 0.2);
+  border: 1px solid rgba(216, 170, 100, 0.4);
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #d8c8a8;
+  font-weight: 700;
 }
-.ao-refit p { margin: 0; line-height: 1.5; }
-.ao-refit a { color: #fff; font-weight: 700; }
+.ao-refit-date {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d8c8a8;
+}
+.ao-refit-body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #f1e9dd;
+}
+.ao-refit a { color: #fff; font-weight: 700; text-underline-offset: 3px; }
 .ao-refit-off {
-  margin-top: 12px;
+  margin-top: 14px;
   padding: 0;
   border: 0;
   border-bottom: 1px solid rgba(246, 239, 228, 0.45);
   background: none;
-  color: inherit;
+  color: #d8c8a8;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
+.ao-refit-off:hover { color: #ffffff; }
 .ao-refit-off:focus-visible {
   outline: 2px solid #f6efe4;
   outline-offset: 3px;
 }
 
+/* First screen: Identity + Desk Note + Choosing Wall */
 .ao-first {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  min-height: calc(100svh - 7rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  min-height: calc(100svh - 8rem);
   background: var(--ao-paper);
 }
 .ao-identity {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 48px);
+  padding: clamp(36px, 5vw, 64px) clamp(16px, 4vw, 48px);
 }
 .ao-arc {
   margin: 0 0 10px;
-  font-size: 13px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ao-teal);
+  color: var(--ao-gold);
 }
 .ao-identity h1 {
   margin: 0;
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
-  font-size: clamp(2.6rem, 7vw, 5.6rem);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--ao-teal-deep);
 }
 .ao-furniture {
-  max-width: 34rem;
+  max-width: 36rem;
   margin: 18px 0 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.45;
   color: var(--ao-ink);
 }
@@ -94,29 +231,35 @@ body.concept-armstrong {
   color: var(--ao-mute);
   font-size: 0.98rem;
 }
-.ao-where a { color: var(--ao-ink); font-weight: 700; }
+.ao-where a { color: var(--ao-teal); font-weight: 700; }
 .ao-diary {
   margin: 10px 0 0;
+  font-size: 0.95rem;
   color: var(--ao-mute);
+  font-style: italic;
 }
 
+/* Desk Note form */
 .ao-desk {
   margin-top: 28px;
-  max-width: 26rem;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  max-width: 28rem;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background: var(--ao-card);
+  border: 1px solid var(--ao-line);
+  box-shadow: 0 4px 18px rgba(20, 32, 34, 0.04);
 }
 .ao-desk-head h2 {
   margin: 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ao-teal-deep);
 }
 .ao-desk-head p {
-  margin: 6px 0 16px;
+  margin: 4px 0 16px;
   color: var(--ao-mute);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 .ao-line {
   display: block;
@@ -126,58 +269,84 @@ body.concept-armstrong {
   display: block;
   margin-bottom: 5px;
   font-size: 0.82rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--ao-teal);
 }
 .ao-line input {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px 0 9px;
-  border: 0;
-  border-bottom: 1px solid var(--ao-line);
-  border-radius: 0;
-  background: transparent;
+  padding: 10px 12px;
+  border: 1px solid var(--ao-line);
+  border-radius: 8px;
+  background: #ffffff;
   color: var(--ao-ink);
   font: inherit;
-  font-size: 1.02rem;
+  font-size: 0.98rem;
 }
 .ao-line input:focus-visible {
-  outline: none;
-  border-bottom-color: var(--ao-teal);
+  outline: 2px solid var(--ao-teal);
+  outline-offset: 1px;
+  border-color: var(--ao-teal);
 }
 .ao-desk button[type="submit"] {
-  margin-top: 6px;
-  padding: 10px 0;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 18px;
   border: 0;
-  border-bottom: 1px solid var(--ao-teal);
-  background: none;
-  color: var(--ao-teal);
+  border-radius: 999px;
+  background: var(--ao-teal);
+  color: #efe8dc;
   font: inherit;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s ease;
 }
+.ao-desk button[type="submit"]:hover,
 .ao-desk button[type="submit"]:focus-visible {
-  outline: 2px solid var(--ao-teal);
-  outline-offset: 3px;
+  background: var(--ao-gold);
 }
 .ao-ready {
   margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--ao-line);
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(29, 61, 66, 0.3);
+  background: rgba(29, 61, 66, 0.06);
 }
 .ao-ready[hidden] { display: none; }
-.ao-ready p { margin: 0 0 10px; line-height: 1.5; }
+.ao-ready p {
+  margin: 0 0 10px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--ao-teal-deep);
+}
 .ao-ready a {
-  color: var(--ao-teal);
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--ao-teal);
+  color: #efe8dc;
   font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.ao-ready a:hover {
+  background: var(--ao-gold);
 }
 
+/* Choosing Wall / Plate */
 .ao-plate {
   margin: 0;
   position: relative;
   background: #d7d5cc;
   min-height: 48svh;
 }
+.ao-plate picture,
 .ao-plate img {
   display: block;
   width: 100%;
@@ -190,29 +359,34 @@ body.concept-armstrong {
   left: 16px;
   bottom: 16px;
   margin: 0;
+  padding: 4px 10px;
+  background: rgba(18, 24, 26, 0.7);
+  border-radius: 6px;
   color: #f4f1ea;
-  font-size: 13px;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(4px);
 }
 
+/* Sections shared */
 .ao-keepsake,
 .ao-history,
 .ao-week,
 .ao-public,
 .ao-pull,
 .ao-end {
-  padding: clamp(36px, 6vw, 64px) clamp(16px, 5vw, 56px);
+  padding: clamp(48px, 6vw, 80px) clamp(16px, 5vw, 56px);
 }
 .ao-kicker {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ao-teal);
+  color: var(--ao-gold);
+  font-weight: 700;
 }
 
-/* Move 5: the keepable artifact — a drawn appointment card, not a
-   photograph. It carries only sourced facts and one blank ruled line. */
+/* Move 5: The keepable artifact — drawn appointment card */
 .ao-keepsake {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -221,153 +395,251 @@ body.concept-armstrong {
   background: var(--ao-card);
   border-top: 1px solid var(--ao-line);
 }
+.ao-keepsake-lead h2 {
+  margin: 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ao-teal-deep);
+}
 .ao-card {
   justify-self: center;
-  width: min(100%, 19rem);
-  padding: 20px 24px 22px;
-  border: 1px solid #ddd4c0;
-  border-radius: 4px;
-  background: #fdfaf3;
+  width: min(100%, 22rem);
+  padding: 26px 30px 28px;
+  border: 1px solid #dcd3bf;
+  border-radius: 6px;
+  background: #fffdf8;
   box-shadow:
-    0 1px 2px rgba(26, 34, 36, 0.07),
-    0 12px 28px rgba(26, 34, 36, 0.12);
-  transform: rotate(-1.3deg);
+    0 2px 4px rgba(26, 34, 36, 0.05),
+    0 16px 36px rgba(26, 34, 36, 0.1);
+  transform: rotate(-1.2deg);
+  transition: transform 0.2s ease;
+}
+.ao-card:hover {
+  transform: rotate(0deg);
 }
 .ao-card p { margin: 0; }
 .ao-card-name {
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--ao-teal-deep);
 }
 .ao-card-detail {
   margin-top: 4px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--ao-mute);
 }
 .ao-card-est {
-  margin-top: 10px;
-  font-size: 0.7rem;
+  margin-top: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ao-teal);
+  color: var(--ao-gold);
+  font-weight: 700;
 }
-.ao-card-appt { margin-top: 18px; }
+.ao-card-appt { margin-top: 22px; }
 .ao-card-rule {
   display: block;
-  height: 1.4rem;
-  border-bottom: 1px solid var(--ao-line);
+  height: 1.6rem;
+  border-bottom: 1.5px solid var(--ao-line);
 }
 .ao-card-appt-label {
   display: block;
-  margin-top: 5px;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ao-mute);
+  font-weight: 600;
 }
 
-/* Move 3: the two-and-a-half-pin arc. Dates only where documented; the
-   third pin is the practice's own promise, quoted. */
+/* Move 3: Two-and-a-half-pin history arc */
 .ao-history {
   background: var(--ao-paper);
   border-top: 1px solid var(--ao-line);
 }
-.ao-history-lead {
-  max-width: 34rem;
-  margin: 14px 0 0;
+.ao-history-inner {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+.ao-history h2 {
+  margin: 0 0 14px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
-  line-height: 1.5;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: var(--ao-teal-deep);
+}
+.ao-history-lead {
+  max-width: 38rem;
+  margin: 0 0 32px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--ao-ink);
 }
 .ao-timeline {
   list-style: none;
-  margin: 30px 0 0;
+  margin: 0;
   padding: 0;
-  max-width: 40rem;
+  max-width: 44rem;
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
-.ao-timeline li {
-  border-left: 2px solid var(--ao-line);
-  padding-left: 18px;
+.ao-timeline-item {
+  border-left: 2.5px solid var(--ao-gold);
+  padding-left: 20px;
 }
-.ao-timeline li > p:not(.ao-timeline-when) { margin: 0; line-height: 1.55; }
 .ao-timeline-when {
   margin: 0 0 4px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ao-teal);
+  color: var(--ao-gold);
 }
-.ao-timeline-quote { margin: 0; }
-.ao-timeline-quote p {
-  margin: 0;
+.ao-timeline-item h3 {
+  margin: 0 0 4px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-style: italic;
-  line-height: 1.5;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ao-teal-deep);
 }
-
-.ao-week {
-  background: var(--ao-card);
-  border-top: 1px solid var(--ao-line);
-}
-.ao-keepsake h2,
-.ao-history h2,
-.ao-week h2,
-.ao-public h2 {
-  margin: 0 0 12px;
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
-}
-.ao-week p,
-.ao-public p {
-  max-width: 36rem;
+.ao-timeline-item p {
   margin: 0;
   line-height: 1.55;
   color: var(--ao-mute);
 }
-.ao-week a,
-.ao-public a { color: var(--ao-ink); font-weight: 700; }
-
-.ao-public {
-  background: var(--ao-paper);
+.ao-timeline-quote {
+  margin: 4px 0 0;
 }
-
-.ao-pull {
+.ao-timeline-quote p {
   margin: 0;
-  background: #e8e2d4;
-}
-.ao-pull blockquote { margin: 0; }
-.ao-pull p {
-  max-width: 28rem;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 1.35rem;
-  line-height: 1.4;
-}
-.ao-pull figcaption {
-  margin-top: 12px;
-  color: var(--ao-mute);
-  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ao-teal);
 }
 
-.ao-end {
+/* Eyewear / Facebook */
+.ao-week {
+  background: var(--ao-card);
   border-top: 1px solid var(--ao-line);
 }
-.ao-end-name {
+.ao-week-inner {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+.ao-week h2 {
+  margin: 0 0 12px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: var(--ao-teal-deep);
+}
+.ao-week-lead {
+  max-width: 38rem;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ao-mute);
+}
+.ao-week a {
+  color: var(--ao-teal);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+/* Public Emergency Guidance */
+.ao-public {
+  background: var(--ao-paper);
+  border-top: 1px solid var(--ao-line);
+}
+.ao-public-inner {
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 24px 28px;
+  border-radius: 14px;
+  background: #ede6d8;
+  border: 1px solid var(--ao-line);
+}
+.ao-public h2 {
   margin: 0 0 8px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ao-teal-deep);
 }
-.ao-end p { margin: 0 0 6px; color: var(--ao-mute); }
-.ao-end a { color: var(--ao-ink); font-weight: 700; }
+.ao-public-copy {
+  max-width: 44rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ao-ink);
+}
+.ao-public a {
+  color: var(--ao-teal);
+  font-weight: 700;
+}
+
+/* Pullquote */
+.ao-pull {
+  margin: 0;
+  background: var(--ao-teal-deep);
+  color: #efe8dc;
+  border-top: 1px solid var(--ao-line);
+}
+.ao-pull blockquote { margin: 0; }
+.ao-pull p {
+  max-width: 32rem;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1.35;
+  color: #ffffff;
+}
+.ao-pull figcaption {
+  margin-top: 16px;
+  color: #d8c8a8;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.ao-end {
+  border-top: 1px solid var(--ao-line);
+  text-align: center;
+  background: var(--ao-paper);
+}
+.ao-end-mark {
+  color: var(--ao-gold);
+  margin-bottom: 12px;
+}
+.ao-end-name {
+  margin: 0 0 6px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ao-teal-deep);
+}
+.ao-end p {
+  margin: 0 0 6px;
+  color: var(--ao-mute);
+  font-size: 0.95rem;
+}
+.ao-end a {
+  color: var(--ao-teal);
+  font-weight: 700;
+}
 
 @media (max-width: 860px) {
+  .ao-nav { display: none; }
   .ao-first { grid-template-columns: 1fr; min-height: unset; }
-  .ao-plate { min-height: 40svh; }
-  .ao-plate img { min-height: 40svh; }
+  .ao-plate { min-height: 42svh; }
+  .ao-plate picture,
+  .ao-plate img { min-height: 42svh; }
   .ao-keepsake { grid-template-columns: 1fr; }
   .ao-card { justify-self: start; }
 }

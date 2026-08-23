@@ -24,6 +24,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "Morning on Belfast Road",
     }],
   },
+  "armstrong-opticians": {
+    heading: "Forty-three years of clear sight on Railway Street.",
+    lede: "Independent optometry, unique eyewear and the familiar care of a practice getting ready for its next chapter.",
+    frames: [{
+      src: "/media/concepts/armstrong-opticians/frame-wall.jpg",
+      alt: "AI-generated scene of a timber frame-display wall and consultation counter on Railway Street",
+      label: "The choosing wall on Railway Street",
+    }],
+  },
   "bettys-butters": {
     heading: "A little butter changes the whole plate.",
     lede: "Professional-kitchen flavour, made useful on an ordinary night at home.",
