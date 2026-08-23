@@ -5,10 +5,11 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 
 const phone = "028 4372 2991";
 const phoneHref = "tel:+442843722991";
-const hearing = "028 4064 8306";
-const hearingHref = "tel:+442840648306";
+const facebook = "https://www.facebook.com/Armstrongopticians";
+const furniture =
+  "Independent Optometrists in Newcastle, County Down specialising in enhanced eye care and unique eyewear.";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;700;800&display=swap";
+  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap";
 ---
 
 <ConceptLayout
@@ -21,93 +22,125 @@ const fontHref =
   bannerNote="The quiet room is a generated image of a calm practice, not a photograph of the shop."
 >
   <main class="ao-page">
-    <aside class="ao-emergency" id="urgent">
-      <p>
-        <strong>Sudden loss of vision:</strong>
-        go to A&amp;E, or call <a href="tel:111">111</a>.
-        Go now.
-      </p>
+    <aside class="ao-refit" data-ao-refit>
+      <div class="ao-refit-inner">
+        <p class="ao-refit-date">Around 20 August 2026</p>
+        <p>
+          We are getting a refresh. The big practice refit has started, so we
+          will be operating by appointment only while the builders are in.
+          Please call us on <a href={phoneHref}>{phone}</a> for any emergencies,
+          repairs or collections. Thank you for your understanding. We look
+          forward to showing you the new and updated practice soon.
+        </p>
+        <button type="button" class="ao-refit-off" data-ao-refit-off>
+          Hide this notice
+        </button>
+      </div>
     </aside>
 
-    <section class="ao-split" aria-labelledby="ao-name">
-      <div class="ao-first">
-        <p class="ao-soon">30 Railway Street, Newcastle, BT33 0AL</p>
+    <section class="ao-first" aria-labelledby="ao-name">
+      <div class="ao-identity">
+        <p class="ao-arc">Established 1983</p>
         <h1 id="ao-name">Armstrong Opticians</h1>
-        <p class="ao-reassure">
-          Eyes and hearing share the building. Ring for the next appointment.
+        <p class="ao-furniture">{furniture}</p>
+        <p class="ao-where">
+          30 Railway Street, Newcastle, BT33 0AL
+          <span aria-hidden="true"> · </span>
+          <a href={phoneHref}>{phone}</a>
         </p>
-        <ul class="ao-two">
-          <li>
-            <span>Eyes</span>
-            <strong>Armstrong Opticians</strong>
-            <a href={phoneHref}>{phone}</a>
-          </li>
-          <li>
-            <span>Hearing</span>
-            <strong>The Hearing Care Partnership</strong>
-            <a href={hearingHref}>{hearing}</a>
-          </li>
-        </ul>
+        <p class="ao-diary">The diary is the phone. Write a note, then ring.</p>
+
+        <form class="ao-desk" data-ao-script id="desk" aria-labelledby="ao-desk-title">
+          <header class="ao-desk-head">
+            <h2 id="ao-desk-title">A note for the call</h2>
+            <p>Nothing is sent. These words are yours to say.</p>
+          </header>
+          <label class="ao-line" for="ao-who">
+            <span>Who needs seen</span>
+            <input id="ao-who" name="who" type="text" autocomplete="name" required />
+          </label>
+          <label class="ao-line" for="ao-when">
+            <span>When you hope to come</span>
+            <input id="ao-when" name="when" type="text" required />
+          </label>
+          <label class="ao-line" for="ao-tel">
+            <span>A number they can return</span>
+            <input id="ao-tel" name="tel" type="tel" autocomplete="tel" required />
+          </label>
+          <button type="submit">Write the words</button>
+          <div class="ao-ready" data-ao-ready role="status" hidden tabindex="-1">
+            <p data-ao-ready-script></p>
+            <a data-ao-ready-call href={phoneHref}>Call {phone}</a>
+          </div>
+        </form>
       </div>
-      <figure class="ao-calm">
+
+      <figure class="ao-plate">
         <img
           src="/media/concepts/armstrong-opticians/calm.jpg"
-          alt="A quiet practice room in cool light"
+          alt="A quiet practice room in cool light, a chair set beside a slit of window"
           width="1536"
           height="1024"
         />
-        <figcaption>A calm room.</figcaption>
+        <figcaption>A quiet practice room in cool light.</figcaption>
       </figure>
     </section>
 
-    <section class="ao-desk" id="desk" aria-labelledby="ao-desk-title">
-      <p class="ao-kicker">An appointment</p>
-      <h2 id="ao-desk-title">Ring us.</h2>
-      <p class="ao-desk-lead">
-        Write who needs seen and when. Then ring.
-        If vision goes suddenly, go to A&amp;E or 111 first.
+    <section class="ao-week" aria-labelledby="ao-week-title">
+      <p class="ao-kicker">Facebook</p>
+      <h2 id="ao-week-title">This week’s frames live there.</h2>
+      <p>
+        Sunglasses and this week’s 20% sit on
+        <a href={facebook} rel="noopener noreferrer">Facebook</a> —
+        they will change. We will not pin a price here.
       </p>
-      <form class="ao-script" data-ao-script>
-        <header class="ao-script-head">
-          <span>Desk note</span>
-          <span>Railway Street</span>
-        </header>
-        <fieldset class="ao-field ao-field--choice">
-          <legend>Which door</legend>
-          <label><input type="radio" name="ao-door" value="eyes" checked /> Eyes — Armstrong Opticians</label>
-          <label><input type="radio" name="ao-door" value="hearing" /> Hearing — The Hearing Care Partnership</label>
-        </fieldset>
-        <label class="ao-field">
-          <span>Who needs seen</span>
-          <input name="who" type="text" required />
-        </label>
-        <label class="ao-field">
-          <span>When you hope to come</span>
-          <input name="when" type="text" placeholder="This week if you can" required />
-        </label>
-        <label class="ao-field">
-          <span>A number they can return</span>
-          <input name="tel" type="tel" autocomplete="tel" required />
-        </label>
-        <button type="submit">Get the words</button>
-        <div class="ao-ready" data-ao-ready hidden tabindex="-1">
-          <p data-ao-ready-script></p>
-          <a data-ao-ready-call href={phoneHref}>Call</a>
-        </div>
-      </form>
     </section>
 
-    <p class="ao-foot">
-      Ring {phone} for eyes, or {hearing} for hearing.
-    </p>
+    <aside class="ao-public" aria-labelledby="ao-public-title">
+      <p class="ao-kicker">Public guidance</p>
+      <h2 id="ao-public-title">Sudden loss of vision</h2>
+      <p>
+        NHS public advice: go to A&amp;E, or call <a href="tel:111">111</a>.
+        That is not a line from Armstrong Opticians. Practice emergencies,
+        repairs and collections: <a href={phoneHref}>{phone}</a>.
+      </p>
+    </aside>
+
+    <figure class="ao-pull">
+      <blockquote>
+        <p>11/10 service, would highly recommend!</p>
+      </blockquote>
+      <figcaption>Dearbhail Brogan · 30 September 2024 · Facebook</figcaption>
+    </figure>
+
+    <footer class="ao-end">
+      <p class="ao-end-name">Armstrong Opticians</p>
+      <p>Established 1983 · 30 Railway Street, Newcastle, BT33 0AL</p>
+      <p><a href={phoneHref}>{phone}</a></p>
+    </footer>
   </main>
 
   <script is:inline>
     (function () {
+      var KEY = "ao-refit-20aug2026";
+      var band = document.querySelector("[data-ao-refit]");
+      var off = document.querySelector("[data-ao-refit-off]");
+      if (band && off) {
+        try {
+          if (window.localStorage.getItem(KEY) === "off") {
+            band.hidden = true;
+          }
+        } catch (e) {}
+        off.addEventListener("click", function () {
+          band.hidden = true;
+          try {
+            window.localStorage.setItem(KEY, "off");
+          } catch (e) {}
+        });
+      }
+
       var practiceHref = "tel:+442843722991";
-      var hearingHref = "tel:+442840648306";
       var practice = "028 4372 2991";
-      var hearing = "028 4064 8306";
       var form = document.querySelector("[data-ao-script]");
       var ready = document.querySelector("[data-ao-ready]");
       var scriptEl = document.querySelector("[data-ao-ready-script]");
@@ -117,23 +150,15 @@ const fontHref =
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!form.reportValidity()) return;
-        var door = form.querySelector('input[name="ao-door"]:checked').value;
         var who = form.elements.namedItem("who").value.trim();
         var when = form.elements.namedItem("when").value.trim();
         var tel = form.elements.namedItem("tel").value.trim();
-        if (door === "hearing") {
-          scriptEl.textContent =
-            "Ring " + hearing + ". Ask for The Hearing Care Partnership. " +
-            who + " needs seen " + when + ". You can return on " + tel + ".";
-          callEl.href = hearingHref;
-          callEl.textContent = "Call " + hearing;
-        } else {
-          scriptEl.textContent =
-            "Ring " + practice + ". Ask for Armstrong Opticians. " +
-            who + " needs seen " + when + ". You can return on " + tel + ".";
-          callEl.href = practiceHref;
-          callEl.textContent = "Call " + practice;
-        }
+        scriptEl.textContent =
+          "Ring " + practice + ". " +
+          who + " would like to be seen " + when +
+          ". You can return on " + tel + ".";
+        callEl.href = practiceHref;
+        callEl.textContent = "Call " + practice;
         ready.hidden = false;
         ready.focus();
       });
