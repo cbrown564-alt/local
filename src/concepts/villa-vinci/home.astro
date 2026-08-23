@@ -1,0 +1,194 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 3080";
+const phoneHref = "tel:+442843723080";
+const site = "https://www.villavinci.co.uk/";
+const email = "villavincinewcastlecodown@gmail.com";
+const mailto = `mailto:${email}`;
+const facebook = "https://www.facebook.com/villavincinewcastle";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const furniture =
+  "Since 2008, where the warmth of the Mediterranean meets the charm of the Mourne Mountains.";
+
+const promenade =
+  "Why not pop in for lunch on a day at the seaside or reserve a table for dinner after an evening stroll on along the promenade.";
+---
+
+<ConceptLayout
+  title={"Villa Vinci — Newcastle"}
+  slug="villa-vinci"
+  bodyClass="concept-page concept-villa"
+  businessName="Villa Vinci"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The dish is a generated image from the kitchen's voice, not a photograph from the pass."
+>
+  <main class="vv-page">
+    <section class="vv-first" aria-labelledby="vv-name">
+      <figure class="vv-plate">
+        <img
+          src="/media/concepts/villa-vinci/dish.jpg"
+          alt="A wide bowl of seafood pasta in a tomato sauce, steam still on the surface"
+          width="1536"
+          height="1024"
+        />
+        <figcaption>Seafood pasta in a tomato sauce, still steaming.</figcaption>
+      </figure>
+
+      <div class="vv-sheet">
+        <p class="vv-kicker">Main Street · Newcastle</p>
+        <h1 id="vv-name">Villa Vinci</h1>
+        <p class="vv-furniture">{furniture}</p>
+        <p class="vv-lede">
+          Promenade first, then the table. Walk in, or ring
+          <a href={phoneHref}>{phone}</a>.
+        </p>
+        <p class="vv-where">31 Main Street, Newcastle, BT33 0AD</p>
+        <p class="vv-menu-line">
+          For the live board, ask in the room, ring, or open
+          <a href={site}>villavinci.co.uk</a>.
+        </p>
+
+        <div class="vv-bar" id="table">
+          <div class="vv-bar-head">
+            <p class="vv-bar-kicker">A table</p>
+            <a class="vv-bar-phone" href={phoneHref}>{phone}</a>
+          </div>
+          <p class="vv-bar-lead">
+            Write lunch or dinner, the day, and how many. Then ring the room —
+            nothing is sent. Walk-in is welcome when there is a chair.
+          </p>
+
+          <form class="vv-form" data-vv-request>
+            <label class="vv-box" for="vv-who">
+              <span>Your name</span>
+              <input id="vv-who" name="name" type="text" autocomplete="name" required />
+            </label>
+            <label class="vv-box" for="vv-covers">
+              <span>How many</span>
+              <input
+                id="vv-covers"
+                name="covers"
+                type="text"
+                inputmode="numeric"
+                placeholder="2"
+                required
+              />
+            </label>
+            <fieldset class="vv-chips">
+              <legend>When</legend>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="lunch" checked /> Lunch
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="dinner" /> Dinner
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="walk in" /> Walk in
+              </label>
+            </fieldset>
+            <label class="vv-box vv-box--wide" for="vv-day">
+              <span>The day you have in mind</span>
+              <input id="vv-day" name="day" type="text" placeholder="Saturday" required />
+            </label>
+            <button class="vv-write" type="submit">Write the words for the call</button>
+
+            <div class="vv-handoff" data-vv-handoff role="status" hidden tabindex="-1">
+              <strong>Say this when they answer:</strong>
+              <pre data-vv-script></pre>
+              <div class="vv-handoff-acts">
+                <a class="vv-call" href={phoneHref}>Call {phone}</a>
+                <a class="vv-mail" data-vv-mail href={mailto}>Or send the same words by email</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <figure class="vv-pull">
+      <blockquote cite="https://www.villavinci.co.uk/about/">
+        <p>{promenade}</p>
+      </blockquote>
+      <figcaption>Villa Vinci · about the room</figcaption>
+    </figure>
+
+    <section class="vv-room" aria-labelledby="vv-room-title">
+      <p class="vv-kicker vv-kicker--ink">The room</p>
+      <h2 id="vv-room-title">Great food by the sea.</h2>
+      <p>
+        A coastal restaurant on Main Street — a stop for beach-strolling couples
+        or families on a day out. Mediterranean origins; ingredients sourced
+        locally. Feel free to stop by or give us a call to make a reservation.
+      </p>
+      <p class="vv-room-acts">
+        <a class="vv-text" href={site}>villavinci.co.uk</a>
+        <a class="vv-text" href={phoneHref}>{phone}</a>
+        <a class="vv-text" href={facebook}>Facebook</a>
+      </p>
+    </section>
+
+    <section class="vv-family" aria-labelledby="vv-family-title">
+      <p class="vv-kicker vv-kicker--ink">The family</p>
+      <h2 id="vv-family-title">Zio, in Portadown.</h2>
+      <p>
+        Another living room in the family: Zio, Millennium Court, William Street,
+        Portadown — 028 3833 7696, ziorestaurant.com. This door is Newcastle.
+      </p>
+    </section>
+
+    <footer class="vv-end">
+      <p class="vv-end-name">Villa Vinci</p>
+      <p>31 Main Street, Newcastle, BT33 0AD</p>
+      <p>
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={site}>villavinci.co.uk</a>
+        <span aria-hidden="true"> · </span>
+        <a href={facebook}>facebook.com/villavincinewcastle</a>
+      </p>
+    </footer>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.querySelector("[data-vv-request]");
+      if (!form) return;
+      var handoff = form.querySelector("[data-vv-handoff]");
+      var scriptEl = form.querySelector("[data-vv-script]");
+      var mail = form.querySelector("[data-vv-mail]");
+      if (!handoff || !scriptEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = form.querySelector("#vv-who").value.trim();
+        var covers = form.querySelector("#vv-covers").value.trim();
+        var day = form.querySelector("#vv-day").value.trim();
+        var chosen = form.querySelector('input[name="vv-when"]:checked');
+        var when = chosen ? chosen.value : "lunch";
+        var lines = [
+          "Hello, my name is " + name + ".",
+          "I am hoping for a table for " + covers + ", " + when + ", " + day + ".",
+          "Is that free?"
+        ];
+        scriptEl.textContent = lines.join("\n");
+        if (mail) {
+          var body = encodeURIComponent(lines.join("\n"));
+          var subject = encodeURIComponent("Table at Villa Vinci — " + day);
+          mail.setAttribute(
+            "href",
+            "mailto:villavincinewcastlecodown@gmail.com?subject=" + subject + "&body=" + body
+          );
+        }
+        handoff.hidden = false;
+        handoff.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>
