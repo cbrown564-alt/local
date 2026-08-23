@@ -6,6 +6,8 @@ body.concept-arley {
   --ah-moss: #3a4a3c;
   --ah-moss-deep: #243028;
   --ah-clay: #7a3e2c;
+  --ah-rule: #d4c6ae;
+  --ah-fill: #f7f1e4;
   --ah-serif: "Cormorant", "Times New Roman", serif;
   --ah-sans: "Source Sans 3", "Segoe UI", sans-serif;
   --concept-accent: var(--ah-moss);
@@ -21,36 +23,40 @@ body.concept-arley {
 .ah-page { display: block; }
 
 .ah-first {
+  position: relative;
   min-height: 100svh;
-  display: grid;
-  grid-template-rows: minmax(52svh, 1fr) auto;
-  background: #1a1612;
 }
-
-.ah-grounds { margin: 0; position: relative; }
+.ah-grounds { margin: 0; }
 .ah-grounds img {
   display: block;
   width: 100%;
-  height: min(78svh, 820px);
+  height: 100svh;
+  max-height: 920px;
   object-fit: cover;
 }
 .ah-grounds figcaption {
   position: absolute;
   left: 16px;
-  bottom: 12px;
+  top: 16px;
   margin: 0;
-  padding: 4px 8px;
+  padding: 4px 10px;
   font-size: 12px;
   letter-spacing: .04em;
   color: #efe6d4;
   background: rgba(26, 22, 18, .55);
+  border-radius: 6px;
 }
-
 .ah-first-copy {
-  padding: clamp(28px, 5vw, 56px) clamp(20px, 6vw, 80px) 48px;
-  background: var(--ah-paper);
+  position: absolute;
+  left: clamp(16px, 4vw, 48px);
+  right: clamp(16px, 4vw, 48px);
+  bottom: clamp(20px, 4vw, 40px);
+  max-width: 38rem;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 18px;
+  background: rgba(239, 230, 212, .94);
+  border: 1px solid rgba(34, 30, 24, .12);
 }
-
 .ah-open-now {
   margin: 0 0 10px;
   font-size: 13px;
@@ -58,46 +64,37 @@ body.concept-arley {
   text-transform: uppercase;
   color: var(--ah-clay);
 }
-
 .ah-first-copy h1 {
   margin: 0;
   font-family: var(--ah-serif);
   font-weight: 600;
-  font-size: clamp(56px, 12vw, 120px);
+  font-size: clamp(48px, 9vw, 92px);
   line-height: .88;
   letter-spacing: -.03em;
   color: var(--ah-moss-deep);
 }
-
-.ah-ask {
-  margin: 16px 0 0;
-  font-family: var(--ah-serif);
-  font-size: clamp(22px, 3.2vw, 34px);
-  font-style: italic;
-}
-
 .ah-say, .ah-place, .ah-hours {
   max-width: 36em;
   margin: 12px 0 0;
-  font-size: 17px;
+  font-size: clamp(16px, 1.4vw, 18px);
   line-height: 1.5;
   color: var(--ah-ink-soft);
 }
-
 .ah-first-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 28px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 .ah-first-nav a {
   color: var(--ah-moss-deep);
+  font-weight: 700;
   text-underline-offset: 4px;
 }
 
 .ah-pull {
   margin: 0;
-  padding: clamp(56px, 10vw, 110px) clamp(20px, 10vw, 140px);
+  padding: clamp(40px, 5vw, 72px) clamp(20px, 10vw, 140px);
   background: var(--ah-moss-deep);
   color: #e8efe6;
 }
@@ -118,9 +115,9 @@ body.concept-arley {
 }
 
 .ah-holds {
-  max-width: 42rem;
+  max-width: 52rem;
   margin: 0 auto;
-  padding: clamp(56px, 9vw, 100px) 24px;
+  padding: clamp(40px, 5vw, 72px) 24px;
 }
 .ah-kicker {
   margin: 0 0 8px;
@@ -130,7 +127,7 @@ body.concept-arley {
   color: var(--ah-clay);
 }
 .ah-holds h2, .ah-pad h2 {
-  margin: 0 0 36px;
+  margin: 0 0 28px;
   font-family: var(--ah-serif);
   font-weight: 600;
   font-size: clamp(28px, 4vw, 44px);
@@ -140,41 +137,46 @@ body.concept-arley {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid #c8bba4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 .ah-inventory li {
   display: grid;
-  grid-template-columns: minmax(8rem, 12rem) 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #c8bba4;
+  gap: 6px;
+  padding: 18px 18px 20px;
+  border-radius: 14px;
+  background: #fffaf2;
+  border: 1px solid var(--ah-rule);
 }
-.ah-inventory li span:first-child { font-family: var(--ah-serif); font-size: 18px; }
-.ah-inventory li span:last-child { color: var(--ah-ink-soft); }
+.ah-inventory strong {
+  font-family: var(--ah-serif);
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 600;
+}
+.ah-inventory span { color: var(--ah-ink-soft); line-height: 1.45; }
 .ah-current { margin-top: 28px; color: var(--ah-ink-soft); line-height: 1.5; }
-@media (max-width: 520px) {
-  .ah-inventory li { grid-template-columns: 1fr; gap: 4px; }
-}
 
 .ah-pad {
-  padding: clamp(48px, 8vw, 88px) 24px 96px;
+  padding: clamp(40px, 5vw, 72px) 24px 96px;
   background: #e4d8c0;
 }
 .ah-pad-lead {
   max-width: 36rem;
-  margin: -20px auto 36px;
+  margin: -12px auto 36px;
   text-align: center;
   color: var(--ah-ink-soft);
   line-height: 1.5;
 }
 .ah-pad .ah-kicker, .ah-pad h2 { text-align: center; }
-.ah-phone-face {
-  max-width: 22rem;
+.ah-request {
+  max-width: 28rem;
   margin: 0 auto;
-  padding: 28px 24px 32px;
-  background: #2a2824;
-  color: #efe6d4;
-  border-radius: 28px 28px 36px 36px;
+  padding: clamp(22px, 2.6vw, 28px);
+  border-radius: 18px;
+  background: #fffaf2;
+  border: 1px solid var(--ah-rule);
+  box-shadow: 0 16px 40px rgba(34, 30, 24, .08);
 }
 .ah-dial {
   display: block;
@@ -182,9 +184,9 @@ body.concept-arley {
   font-family: var(--ah-serif);
   font-size: 32px;
   font-weight: 600;
-  color: #efe6d4;
+  color: var(--ah-moss-deep);
   text-decoration: none;
-  padding: 12px 0 4px;
+  padding: 4px 0;
 }
 .ah-dial-hint {
   margin: 0 0 22px;
@@ -192,31 +194,89 @@ body.concept-arley {
   font-size: 12px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #b4aa96;
+  color: var(--ah-ink-soft);
 }
-.ah-script-form label, .ah-script-form legend {
+.ah-field { display: block; margin-bottom: 14px; border: 0; padding: 0; }
+.ah-field span, .ah-field legend {
   display: block;
-  margin: 12px 0 4px;
-  font-size: 12px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: #c8beaa;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
 }
-.ah-script-form fieldset { border: 0; margin: 10px 0 0; padding: 0; }
-.ah-script-form fieldset label {
-  display: block; margin: 6px 0; text-transform: none; letter-spacing: 0;
-  font-size: 15px; color: #efe6d4;
+.ah-field input[type="text"],
+.ah-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid var(--ah-rule);
+  border-radius: 10px;
+  background: var(--ah-fill);
+  color: var(--ah-ink);
+  font: inherit;
+  font-size: 15px;
 }
-.ah-script-form input[type="text"], .ah-script-form textarea {
-  width: 100%; box-sizing: border-box; border: 0; border-bottom: 1px solid #5a5448;
-  background: transparent; color: #efe6d4; font: inherit; padding: 6px 0;
+.ah-field input:focus-visible,
+.ah-field textarea:focus-visible {
+  outline: 2px solid var(--ah-moss);
+  outline-offset: 1px;
+  border-color: var(--ah-moss);
 }
-.ah-script-form button {
-  display: block; width: 100%; margin-top: 22px; padding: 12px 16px;
-  border: 1px solid #efe6d4; background: transparent; color: #efe6d4;
-  font-family: var(--ah-sans); cursor: pointer;
+.ah-field--choice { display: grid; gap: 8px; }
+.ah-field--choice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--ah-rule);
+  border-radius: 10px;
+  background: var(--ah-fill);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
 }
-.ah-script-form button:hover { background: #efe6d4; color: #2a2824; }
-.ah-handoff { margin-top: 20px; padding-top: 16px; border-top: 1px solid #5a5448; }
-.ah-handoff pre { white-space: pre-wrap; font-family: var(--ah-serif); font-size: 18px; }
-.ah-handoff a { color: #efe6d4; }
+.ah-field--choice input { accent-color: var(--ah-moss); }
+.ah-field--choice label:has(input:checked) {
+  border-color: var(--ah-moss);
+  background: rgba(58, 74, 60, .1);
+}
+.ah-submit {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ah-moss-deep);
+  color: #efe6d4;
+  font-family: var(--ah-sans);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ah-submit:hover, .ah-submit:focus-visible { background: var(--ah-moss); }
+.ah-handoff {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 14px 15px;
+  border: 1px solid rgba(58, 74, 60, .35);
+  border-radius: 12px;
+  background: rgba(58, 74, 60, .08);
+}
+.ah-handoff[hidden] { display: none; }
+.ah-handoff pre { white-space: pre-wrap; font-family: var(--ah-serif); font-size: 18px; margin: 0; }
+.ah-handoff a {
+  justify-self: start;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: var(--ah-moss-deep);
+  color: #efe6d4;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .ah-grounds img { height: 72svh; }
+  .ah-first-copy { position: static; max-width: none; margin: 0; border-radius: 0; }
+  .ah-inventory { grid-template-columns: 1fr; }
+}
