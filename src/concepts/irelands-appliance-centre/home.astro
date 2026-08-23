@@ -7,14 +7,20 @@ const phone = "028 4372 4717";
 const phoneHref = "tel:+442843724717";
 const email = "sales@irelandsappliances.com";
 const catalogue = "https://www.irelandsappliances.com/catalogue/index.php";
+const facebook = "https://www.facebook.com/IrelandsApplianceCentre";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500;1,6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 
-const record = [
-  { year: "1975", line: "Tom starts from a garage — electrical engineering, then TV and refrigeration." },
-  { year: "1984", line: "The shop opens on the harbour. Still this door: 67–69 The Harbour." },
-  { year: "2017", line: "Thomas, trained by Tom then the makers, is the main engineer. Two vans." },
-  { year: "2021", line: "Oran on the floor. Siobhan on communications." },
+const furniture =
+  "We don't just operate in Newcastle, we all live here. We are locals.";
+
+const years = [
+  { year: "1975", title: "Tom Doesn't Go To Catering School!", line: "Electrical engineering. TV and refrigeration. Then the factory floor — clothing machines." },
+  { year: "1980", title: "Albion closes.", line: "Work from a garage behind Central Promenade, then Valencia Place. Backstory — not this door." },
+  { year: "1984", title: "Ireland's Appliance Centre Is Born.", line: "This door: a supermarket and butchery on South Promenade. Still 67–69 The Harbour." },
+  { year: "2017", title: "Thomas Junior Joins The Team.", line: "Trained by Tom, then Whirlpool, Hoover, Hotpoint. Main engineer from this year." },
+  { year: "2021", title: "Oran Joins The Ever Growing Team.", line: "Oran on the retail floor." },
+  { year: "2022", title: "Enter Siobhan.", line: "Social and communications — and a coffee and a sweet treat for the boys." },
 ];
 ---
 
@@ -29,82 +35,133 @@ const record = [
 >
   <main class="ia-page">
     <section class="ia-first" aria-labelledby="ia-name">
-      <p class="ia-record-kicker">On the harbour since 1984</p>
-      <h1 id="ia-name">Ireland's Appliance Centre</h1>
-      <p class="ia-fix">
-        Family on the harbour — Tom, Thomas, Oran, Siobhan.
-        Repair at the house or on the bench. Hold and store. Price match if you
-        have seen it cheaper. Two vans.
-      </p>
-      <p class="ia-hours">
-        Mon–Sat 08:30–17:00 · Sunday closed ·
-        <a href={phoneHref}>{phone}</a>
-      </p>
-      <p class="ia-stock">
-        Today's machines:
-        <a class="ia-cat" href={catalogue}>irelandsappliances.com/catalogue</a>
-      </p>
-    </section>
+      <div class="ia-identity">
+        <p class="ia-kicker">67–69 The Harbour · South Promenade · Newcastle</p>
+        <h1 id="ia-name">Ireland's Appliance Centre</h1>
+        <p class="ia-furniture">{furniture}</p>
+        <p class="ia-door">
+          Open Monday to Saturday, 8:30–5:00. Sunday closed.
+          This is the door — one shop, two wordings they both print.
+        </p>
+        <p class="ia-where">
+          67–69 The Harbour, Newcastle, BT33 0EY
+          <span aria-hidden="true"> · </span>
+          <a href={phoneHref}>{phone}</a>
+        </p>
+      </div>
 
-    <ol class="ia-years">
-      {record.map((row) => (
-        <li>
-          <time>{row.year}</time>
-          <span>{row.line}</span>
-        </li>
-      ))}
-    </ol>
+      <div class="ia-bar" id="job">
+        <div class="ia-bar-head">
+          <p class="ia-bar-kicker">A job for the desk</p>
+          <a class="ia-bar-phone" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="ia-bar-lead">
+          Write the job. We open a note to {email} — you send it. Or ring the desk.
+        </p>
 
-    <section class="ia-job" id="job" aria-labelledby="ia-job-title">
-      <p class="ia-kicker">A repair, or a machine</p>
-      <h2 id="ia-job-title">Write the job. Say the week you need it.</h2>
-      <p class="ia-job-lead">
-        Write what you need and the week you need it. We'll open a note to{' '}{email} — you send it. Or ring the desk.
-      </p>
-      <form class="ia-docket" data-ia-request>
-        <header class="ia-docket-head">
-          <span class="ia-docket-no">Workshop docket</span>
-          <span>67–69 The Harbour</span>
-        </header>
-        <div class="ia-docket-grid">
-          <label class="ia-field">
+        <form class="ia-docket" data-ia-request>
+          <label class="ia-box" for="ia-who">
             <span>Name</span>
             <input id="ia-who" name="name" type="text" autocomplete="name" required />
           </label>
-          <label class="ia-field">
+          <label class="ia-box" for="ia-tel">
             <span>Best number</span>
             <input id="ia-tel" name="tel" type="tel" autocomplete="tel" required />
           </label>
-        </div>
-        <fieldset class="ia-field ia-field--choice">
-          <legend>The job</legend>
-          <label><input type="radio" name="ia-kind" value="A repair at the house" checked /> Repair at the house</label>
-          <label><input type="radio" name="ia-kind" value="A repair on the bench" /> Repair on the bench</label>
-          <label><input type="radio" name="ia-kind" value="A machine" /> A machine</label>
-          <label><input type="radio" name="ia-kind" value="A price match" /> Price match</label>
-        </fieldset>
-        <label class="ia-field">
-          <span>The week you need it</span>
-          <input id="ia-week" name="week" type="text" placeholder="This week / next week" required />
-        </label>
-        <label class="ia-field">
-          <span>What broke, or the cheaper sighting</span>
-          <textarea id="ia-notes" name="notes" rows="3"></textarea>
-        </label>
-        <div class="ia-submit-bar">
-          <button type="submit">Prepare the docket</button>
-        </div>
-        <div class="ia-handoff" data-ia-handoff role="status" hidden tabindex="-1">
-          <strong>Docket ready.</strong>
-          <span>We'll open a note to{' '}{email} — you send it.</span>
-          <a data-ia-email-link href={`mailto:${email}`}>Open email draft</a>
-        </div>
-      </form>
+          <fieldset class="ia-chips">
+            <legend>The job</legend>
+            <label class="ia-chip"><input type="radio" name="ia-kind" value="A repair at the house" checked /> Repair at the house</label>
+            <label class="ia-chip"><input type="radio" name="ia-kind" value="A repair on the bench" /> Repair on the bench</label>
+            <label class="ia-chip"><input type="radio" name="ia-kind" value="A machine" /> A machine</label>
+            <label class="ia-chip"><input type="radio" name="ia-kind" value="A price match" /> Price match</label>
+            <label class="ia-chip"><input type="radio" name="ia-kind" value="Hold and store" /> Hold and store</label>
+          </fieldset>
+          <label class="ia-box" for="ia-week">
+            <span>The week you need it</span>
+            <input id="ia-week" name="week" type="text" placeholder="This week / next week" required />
+          </label>
+          <label class="ia-box ia-box--notes" for="ia-notes">
+            <span>What broke, or the cheaper sighting</span>
+            <textarea id="ia-notes" name="notes" rows="2"></textarea>
+          </label>
+          <button class="ia-write" type="submit">Prepare the docket</button>
+
+          <div class="ia-handoff" data-ia-handoff role="status" hidden tabindex="-1">
+            <strong>Docket ready.</strong>
+            <span>We'll open a note to {email} — you send it.</span>
+            <a data-ia-email-link href={`mailto:${email}`}>Open email draft</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <figure class="ia-pull">
+      <blockquote>
+        <p>
+          When your cooker goes cold, your washing machine won't spin, your fridge
+          has a meltdown, or your dishwasher does the dirty on you, don't despair!
+        </p>
+      </blockquote>
+      <figcaption>Ireland's Appliance Centre · Repairs</figcaption>
+    </figure>
+
+    <section class="ia-years" aria-labelledby="ia-years-title">
+      <p class="ia-kicker ia-kicker--ink">Family on this door</p>
+      <h2 id="ia-years-title">Tom. Then Thomas. Then the floor.</h2>
+      <p class="ia-years-lead">
+        Tom, the founder, is a local man. He runs the business with his son,
+        Thomas, Oran and a small dedicated team. Forty-plus years, and still
+        two vans for deliveries, repairs and servicing.
+      </p>
+      <ol>
+        {years.map((row) => (
+          <li>
+            <time>{row.year}</time>
+            <div>
+              <strong>{row.title}</strong>
+              <span>{row.line}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="ia-work" aria-labelledby="ia-work-title">
+      <p class="ia-kicker ia-kicker--ink">House or bench</p>
+      <h2 id="ia-work-title">Large at the house. Small on the bench.</h2>
+      <p>
+        Ireland's Appliance Centre offers a professional repair service in
+        Newcastle and surrounding areas, both at home for large appliances, and
+        in-store for smaller items. We'll be open with you about what's involved
+        and what it is going to cost.
+      </p>
+      <ul class="ia-cards" role="list">
+        <li class="ia-card">
+          <h3>Two vans</h3>
+          <p>Deliveries, repairs and servicing. Already in town when the cooker goes cold.</p>
+        </li>
+        <li class="ia-card">
+          <h3>Hold and store</h3>
+          <p>
+            We're happy to secure your order with a small deposit to guarantee the
+            price. This protects you against any price increases before you take
+            delivery, and we can store your goods for you until you're ready for
+            them to be delivered.
+          </p>
+        </li>
+        <li class="ia-card">
+          <h3>Price match</h3>
+          <p>
+            Seen it cheaper? Ring {phone} or email {email}.
+            Let us work our magic to find you the best deal!
+          </p>
+        </li>
+      </ul>
     </section>
 
     <section class="ia-plates" aria-labelledby="ia-plates-title">
-      <p class="ia-kicker">Harbour and kitchen</p>
-      <h2 id="ia-plates-title">The door on the harbour. The kitchen working again.</h2>
+      <p class="ia-kicker ia-kicker--ink">Harbour and kitchen</p>
+      <h2 id="ia-plates-title">The kitchen working again. This door.</h2>
       <div class="ia-plate-pair">
         <figure class="ia-stage">
           <img
@@ -118,18 +175,41 @@ const record = [
         <figure class="ia-stage ia-stage--note">
           <div class="ia-harbour-card">
             <p class="ia-harbour-mark">67–69</p>
-            <p>The Harbour, Newcastle, BT33 0EY.</p>
-            <p>Mon–Sat 08:30–17:00. Sunday closed.</p>
+            <p>The Harbour / South Promenade</p>
+            <p>Newcastle, BT33 0EY</p>
+            <p>Mon–Sat 8:30–5:00. Sunday closed.</p>
           </div>
-          <figcaption>The harbour shop — still this door.</figcaption>
+          <figcaption>One door. Two wordings they both print.</figcaption>
         </figure>
       </div>
     </section>
 
-    <p class="ia-foot">
-      67–69 The Harbour, Newcastle, BT33 0EY.
-      Mon–Sat 08:30–17:00. Sunday closed.
-    </p>
+    <section class="ia-feed" aria-labelledby="ia-feed-title">
+      <p class="ia-kicker ia-kicker--ink">This week's town</p>
+      <h2 id="ia-feed-title">The counter tin and this week's sale live on Facebook.</h2>
+      <p>
+        Keep-the-change for Newcastle RNLI, hiring, Clearpay, the warranty tiles —
+        that warmth is already theirs. We do not reprint a week's tin as if it
+        were the identity.
+      </p>
+      <p>
+        <a class="ia-out" href={facebook}>Irelands Appliance Centre on Facebook</a>
+        <span aria-hidden="true"> · </span>
+        Today's machines:
+        <a class="ia-out" href={catalogue}>irelandsappliances.com/catalogue</a>
+      </p>
+    </section>
+
+    <footer class="ia-end">
+      <p class="ia-end-name">Ireland's Appliance Centre</p>
+      <p>67–69 The Harbour / South Promenade, Newcastle, BT33 0EY</p>
+      <p>Monday to Saturday 8:30–5:00. Sunday closed.</p>
+      <p>
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
+    </footer>
   </main>
 
   <script is:inline>
