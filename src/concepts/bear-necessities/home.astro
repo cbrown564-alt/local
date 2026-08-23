@@ -1,0 +1,269 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "07887 905 025";
+const phoneHref = "tel:+447887905025";
+const email = "bearnecessitieskids@gmail.com";
+const facebook = "https://www.facebook.com/Bearnecessitiespartyvenue";
+const site = "https://www.bearnecessitieskids.co.uk/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const intro =
+  "Bear necessities is an unique Teddy bear making & crafts experience where children can create a new & make magical memories. We cater for birthdays, events, schools and group bookings.";
+
+const packs = [
+  {
+    name: "Little Ted",
+    size: "10-inch bear",
+    extras: "Heart insert · adoption certificate",
+    price: "£10.50",
+    min: "Minimum 12 for a mobile party",
+  },
+  {
+    name: "Big Ted",
+    size: "16-inch bear",
+    extras: "Heart insert · adoption certificate",
+    price: "£15.99",
+    min: "Minimum 12 for a mobile party",
+  },
+  {
+    name: "Colour Your Bear",
+    size: "16-inch bear + shirt",
+    extras: "Extra 16-inch for the birthday child · Aromabeary scent for them",
+    price: "£16.50",
+    min: "Minimum 10",
+  },
+];
+
+const circuit = [
+  { id: "newcastle", name: "Newcastle", note: "Home pin. We travel from here.", kind: "home" },
+  { id: "downpatrick", name: "Downpatrick Racecourse", note: "Family Fun Raceday — as printed.", kind: "fair" },
+  { id: "giant", name: "Wake the Giant", note: "The Giant's Trail. Live offer lives on Facebook.", kind: "fair" },
+  { id: "rathfriland", name: "Rathfriland", note: "Young Farmers craft fair — as printed.", kind: "fair" },
+  { id: "warrenpoint", name: "Warrenpoint Town Square", note: "Loughside Fayre Day — as printed.", kind: "fair" },
+  { id: "your-hall", name: "Your hall", note: "School, home, or the room you already have.", kind: "party" },
+];
+---
+
+<ConceptLayout
+  title={"Bear Necessities — Newcastle"}
+  slug="bear-necessities"
+  bodyClass="concept-page concept-bear"
+  businessName="Bear Necessities"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="Packs, call-out and extras as published on bearnecessitieskids.co.uk, 23 August 2026. The making picture is generated."
+>
+  <main class="bn-page">
+    <section class="bn-first" aria-labelledby="bn-name">
+      <div class="bn-identity">
+        <p class="bn-place">Newcastle · travelling</p>
+        <h1 id="bn-name">Bear Necessities</h1>
+        <p class="bn-cover">Where Bears Come To Life!</p>
+        <p class="bn-door">We come to you!</p>
+        <p class="bn-intro">{intro}</p>
+        <p class="bn-fb-line">
+          Today's diary, Wake the Giant, and live offers sit on
+          <a href={facebook}>Facebook</a> — we do not keep a second calendar here.
+        </p>
+      </div>
+
+      <div class="bn-jar" id="invite">
+        <div class="bn-jar-head">
+          <p class="bn-jar-kicker">A Saturday at your place</p>
+          <a class="bn-jar-phone" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="bn-jar-lead">
+          Write the invitation. You send it to {email}. Nothing leaves this page
+          until you do.
+        </p>
+
+        <form class="bn-form" id="book" data-bn-request>
+          <label class="bn-box" for="bn-guest">
+            <span>Your name</span>
+            <input id="bn-guest" name="name" type="text" autocomplete="name" required />
+          </label>
+          <label class="bn-box" for="bn-date">
+            <span>Saturday you have in mind</span>
+            <input id="bn-date" name="saturday" type="text" placeholder="Saturday 12 September" required />
+          </label>
+          <label class="bn-box" for="bn-count">
+            <span>How many children</span>
+            <input id="bn-count" name="count" type="text" inputmode="numeric" required />
+          </label>
+          <fieldset class="bn-chips">
+            <legend>Which pack</legend>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Little Ted" checked /> Little Ted</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Big Ted" /> Big Ted</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Colour Your Bear" /> Colour Your Bear</label>
+          </fieldset>
+          <fieldset class="bn-chips">
+            <legend>Where she should come</legend>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="hall" checked /> Hall</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="school" /> School</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="home" /> Home</label>
+          </fieldset>
+          <button class="bn-write" type="submit">Write the invitation</button>
+
+          <div class="bn-handoff" data-bn-handoff role="status" hidden tabindex="-1">
+            <strong>Your invitation is ready — you send it.</strong>
+            <a class="bn-mail" data-bn-mail href={`mailto:${email}`}>Open the draft to {email}</a>
+            <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="bn-how" aria-labelledby="bn-how-title">
+      <p class="bn-kicker">The making</p>
+      <h2 id="bn-how-title">They are not hand stuffed.</h2>
+      <p class="bn-how-lead">
+        A machine arrives. A heart goes in. A certificate leaves with the bear.
+        That ritual is written on the
+        <a href={site}>packages page</a> — not claimed as a Facebook photograph.
+      </p>
+      <ol class="bn-steps">
+        <li>
+          <strong>The machine</strong>
+          <span>The stuffing is the experience — not sewing at a bench.</span>
+        </li>
+        <li>
+          <strong>The heart</strong>
+          <span>It goes in before the bear is closed.</span>
+        </li>
+        <li>
+          <strong>The certificate</strong>
+          <span>An adoption name goes home with them.</span>
+        </li>
+      </ol>
+      <figure class="bn-stage">
+        <img
+          src="/media/concepts/bear-necessities/machine.jpg"
+          alt="A stuffing machine and an open teddy on a work table, a small felt heart waiting"
+          width="1536"
+          height="1024"
+        />
+        <figcaption>Machine, heart waiting — the making the packages describe.</figcaption>
+      </figure>
+    </section>
+
+    <section class="bn-packs" id="packs" aria-labelledby="bn-packs-title">
+      <p class="bn-kicker">The packs</p>
+      <h2 id="bn-packs-title">Little Ted, Big Ted, Colour Your Bear.</h2>
+      <ul class="bn-tickets">
+        {packs.map((t) => (
+          <li>
+            <strong>{t.name}</strong>
+            <span>{t.size}</span>
+            <span>{t.extras}</span>
+            <em>{t.price} per child</em>
+            <small>{t.min}</small>
+          </li>
+        ))}
+      </ul>
+      <p class="bn-pack-note">
+        Call-out from £35 depending on location. Sand art £3.50 a child if you
+        want the extra table — mess kept to a minimum. Both from the site, not
+        the feed. One-day bundles such as Wake the Giant live on
+        <a href={facebook}>Facebook</a>.
+      </p>
+    </section>
+
+    <section class="bn-split" aria-labelledby="bn-split-title">
+      <p class="bn-kicker">Fair day · living-room floor</p>
+      <h2 id="bn-split-title">The same machine. Two kinds of Saturday.</h2>
+      <div class="bn-columns">
+        <article>
+          <h3>Public days</h3>
+          <p>
+            Racecourse tents, town squares, the Giant's Trail. The feed already
+            holds those dates. We point there and stay quiet.
+          </p>
+          <p><a class="bn-fb" href={facebook}>Open the Facebook diary</a></p>
+        </article>
+        <article>
+          <h3>Your Saturday</h3>
+          <p>
+            A hall, a school, a home. The machine that stands in a racecourse
+            tent stands in a house in Newcastle.
+          </p>
+          <p><a class="bn-jump" href="#invite">Write that invitation</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bn-circuit" aria-labelledby="bn-circuit-title">
+      <p class="bn-kicker">The circuit</p>
+      <h2 id="bn-circuit-title">Printed days, then your hall.</h2>
+      <p class="bn-circuit-lead">
+        Drawn from flyers already published — Downpatrick, Rathfriland,
+        Warrenpoint, Wake the Giant — plus the room you name. No invented
+        schools.
+      </p>
+      <ol class="bn-pins">
+        {circuit.map((pin) => (
+          <li class={`bn-pin bn-pin--${pin.kind}`} data-pin={pin.id}>
+            <strong>{pin.name}</strong>
+            <span>{pin.note}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <footer class="bn-end">
+      <p class="bn-end-name">Bear Necessities</p>
+      <p>Newcastle, travelling. Founded by Siobhan Rice in 2016.</p>
+      <p>
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={`mailto:${email}`}>{email}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={facebook}>Facebook</a>
+      </p>
+    </footer>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("book");
+      if (!form) return;
+      var handoff = form.querySelector("[data-bn-handoff]");
+      var link = form.querySelector("[data-bn-mail]");
+      if (!handoff || !link) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = document.getElementById("bn-guest").value.trim();
+        var date = document.getElementById("bn-date").value.trim();
+        var count = document.getElementById("bn-count").value.trim();
+        var packEl = form.querySelector('input[name="bn-pack"]:checked');
+        var whereEl = form.querySelector('input[name="bn-where"]:checked');
+        var pack = packEl ? packEl.value : "Little Ted";
+        var where = whereEl ? whereEl.value : "hall";
+        var body = [
+          "Hello Siobhan,",
+          "",
+          "I would like you to come to us.",
+          "Name: " + name,
+          "Saturday: " + date,
+          "Children: " + count,
+          "Pack: " + pack,
+          "Where: " + where,
+          "",
+          "Please tell me if that Saturday is free.",
+        ].join("\n");
+        link.href =
+          "mailto:bearnecessitieskids@gmail.com?subject=" +
+          encodeURIComponent("Bear Necessities — Saturday " + date) +
+          "&body=" +
+          encodeURIComponent(body);
+        handoff.hidden = false;
+        handoff.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>

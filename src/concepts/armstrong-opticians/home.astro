@@ -1,0 +1,167 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 2991";
+const phoneHref = "tel:+442843722991";
+const facebook = "https://www.facebook.com/Armstrongopticians";
+const furniture =
+  "Independent Optometrists in Newcastle, County Down specialising in enhanced eye care and unique eyewear.";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap";
+---
+
+<ConceptLayout
+  title={"Armstrong Opticians — Newcastle"}
+  slug="armstrong-opticians"
+  bodyClass="concept-page concept-armstrong"
+  businessName="Armstrong Opticians"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The quiet room is a generated image of a calm practice, not a photograph of the shop."
+>
+  <main class="ao-page">
+    <aside class="ao-refit" data-ao-refit>
+      <div class="ao-refit-inner">
+        <p class="ao-refit-date">Around 20 August 2026</p>
+        <p>
+          We are getting a refresh. The big practice refit has started, so we
+          will be operating by appointment only while the builders are in.
+          Please call us on <a href={phoneHref}>{phone}</a> for any emergencies,
+          repairs or collections. Thank you for your understanding. We look
+          forward to showing you the new and updated practice soon.
+        </p>
+        <button type="button" class="ao-refit-off" data-ao-refit-off>
+          Hide this notice
+        </button>
+      </div>
+    </aside>
+
+    <section class="ao-first" aria-labelledby="ao-name">
+      <div class="ao-identity">
+        <p class="ao-arc">Established 1983</p>
+        <h1 id="ao-name">Armstrong Opticians</h1>
+        <p class="ao-furniture">{furniture}</p>
+        <p class="ao-where">
+          30 Railway Street, Newcastle, BT33 0AL
+          <span aria-hidden="true"> · </span>
+          <a href={phoneHref}>{phone}</a>
+        </p>
+        <p class="ao-diary">The diary is the phone. Write a note, then ring.</p>
+
+        <form class="ao-desk" data-ao-script id="desk" aria-labelledby="ao-desk-title">
+          <header class="ao-desk-head">
+            <h2 id="ao-desk-title">A note for the call</h2>
+            <p>Nothing is sent. These words are yours to say.</p>
+          </header>
+          <label class="ao-line" for="ao-who">
+            <span>Who needs seen</span>
+            <input id="ao-who" name="who" type="text" autocomplete="name" required />
+          </label>
+          <label class="ao-line" for="ao-when">
+            <span>When you hope to come</span>
+            <input id="ao-when" name="when" type="text" required />
+          </label>
+          <label class="ao-line" for="ao-tel">
+            <span>A number they can return</span>
+            <input id="ao-tel" name="tel" type="tel" autocomplete="tel" required />
+          </label>
+          <button type="submit">Write the words</button>
+          <div class="ao-ready" data-ao-ready role="status" hidden tabindex="-1">
+            <p data-ao-ready-script></p>
+            <a data-ao-ready-call href={phoneHref}>Call {phone}</a>
+          </div>
+        </form>
+      </div>
+
+      <figure class="ao-plate">
+        <img
+          src="/media/concepts/armstrong-opticians/calm.jpg"
+          alt="A quiet practice room in cool light, a chair set beside a slit of window"
+          width="1536"
+          height="1024"
+        />
+        <figcaption>A quiet practice room in cool light.</figcaption>
+      </figure>
+    </section>
+
+    <section class="ao-week" aria-labelledby="ao-week-title">
+      <p class="ao-kicker">Facebook</p>
+      <h2 id="ao-week-title">This week’s frames live there.</h2>
+      <p>
+        Sunglasses and this week’s 20% sit on
+        <a href={facebook} rel="noopener noreferrer">Facebook</a> —
+        they will change. We will not pin a price here.
+      </p>
+    </section>
+
+    <aside class="ao-public" aria-labelledby="ao-public-title">
+      <p class="ao-kicker">Public guidance</p>
+      <h2 id="ao-public-title">Sudden loss of vision</h2>
+      <p>
+        NHS public advice: go to A&amp;E, or call <a href="tel:111">111</a>.
+        That is not a line from Armstrong Opticians. Practice emergencies,
+        repairs and collections: <a href={phoneHref}>{phone}</a>.
+      </p>
+    </aside>
+
+    <figure class="ao-pull">
+      <blockquote>
+        <p>11/10 service, would highly recommend!</p>
+      </blockquote>
+      <figcaption>Dearbhail Brogan · 30 September 2024 · Facebook</figcaption>
+    </figure>
+
+    <footer class="ao-end">
+      <p class="ao-end-name">Armstrong Opticians</p>
+      <p>Established 1983 · 30 Railway Street, Newcastle, BT33 0AL</p>
+      <p><a href={phoneHref}>{phone}</a></p>
+    </footer>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var KEY = "ao-refit-20aug2026";
+      var band = document.querySelector("[data-ao-refit]");
+      var off = document.querySelector("[data-ao-refit-off]");
+      if (band && off) {
+        try {
+          if (window.localStorage.getItem(KEY) === "off") {
+            band.hidden = true;
+          }
+        } catch (e) {}
+        off.addEventListener("click", function () {
+          band.hidden = true;
+          try {
+            window.localStorage.setItem(KEY, "off");
+          } catch (e) {}
+        });
+      }
+
+      var practiceHref = "tel:+442843722991";
+      var practice = "028 4372 2991";
+      var form = document.querySelector("[data-ao-script]");
+      var ready = document.querySelector("[data-ao-ready]");
+      var scriptEl = document.querySelector("[data-ao-ready-script]");
+      var callEl = document.querySelector("[data-ao-ready-call]");
+      if (!form || !ready || !scriptEl || !callEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var who = form.elements.namedItem("who").value.trim();
+        var when = form.elements.namedItem("when").value.trim();
+        var tel = form.elements.namedItem("tel").value.trim();
+        scriptEl.textContent =
+          "Ring " + practice + ". " +
+          who + " would like to be seen " + when +
+          ". You can return on " + tel + ".";
+        callEl.href = practiceHref;
+        callEl.textContent = "Call " + practice;
+        ready.hidden = false;
+        ready.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>

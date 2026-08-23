@@ -1,0 +1,159 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+const phone = "028 4372 6226";
+const phoneHref = "tel:+442843726226";
+const email = "cocosadventureplayground@gmail.com";
+const site = "https://www.cocosplayground.co.uk/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Fredoka:wght@500;600;700&display=swap";
+
+const hours = [
+  { d: "Mon–Fri", note: "12–6pm" },
+  { d: "Sat & Sun", note: "10–6pm" },
+  { d: "School holidays", note: "10–6pm daily" },
+  { d: "Winter", note: "Closed Wednesdays" },
+];
+---
+
+<ConceptLayout
+  title={"Coco's Adventure Playground — Newcastle"}
+  slug="cocos-adventure-playground"
+  bodyClass="concept-page concept-cocos"
+  businessName="Coco's Adventure Playground"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The play hall is a generated image, not a photograph of the premises."
+>
+  <main class="co-page">
+    <section class="co-first" aria-labelledby="co-name">
+      <p class="co-open-now">27A Central Promenade, opposite the Newcastle Centre</p>
+      <h1 id="co-name">Coco's Adventure Playground</h1>
+      <p class="co-say">
+        Indoor play. Babies to fourteen. Slides, ball pools, two hours of
+        playtime, a party room, a café over the floor.
+      </p>
+      <p class="co-hours-lead">
+        Hours as published on <a href={site}>cocosplayground.co.uk</a>.
+        Out of season, check Facebook or ring.
+      </p>
+      <ol class="co-hours">
+        {hours.map((row) => (
+          <li>
+            <span>{row.d}</span>
+            <span>{row.note}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="co-actions">
+        <a href={phoneHref}>{phone}</a>
+        <a href="#party">Ask for a party</a>
+      </p>
+    </section>
+
+    <figure class="co-stage">
+      <img
+        src="/media/concepts/cocos-adventure-playground/play.jpg"
+        alt="A bright indoor play hall with coloured floor mats, play frames and scattered balls under skylights"
+        width="940"
+        height="627"
+      />
+      <figcaption>The hall, empty.</figcaption>
+    </figure>
+
+    <section class="co-how" aria-labelledby="co-how-title">
+      <p class="co-kicker">Play, or a party</p>
+      <h2 id="co-how-title">Walk in for play. Ring for a party.</h2>
+      <p>
+        Normal admission, as published on the prices page: a 1½ hour session,
+        £6.50 for three and under, £7.50 for four and over. A family ticket of
+        ten admissions is £55. Groups and schools by arrangement — booking is
+        essential for group rates.
+      </p>
+      <ul class="co-packs">
+        <li>
+          <strong>Coco Party</strong>
+          <span>£12.50 per head, minimum £100</span>
+          <span>2 hours of play, 30 minutes in the party room, burger or sausages or chicken or fish fingers with chips and a drink.</span>
+        </li>
+        <li>
+          <strong>Bumper Party</strong>
+          <span>£13.50 per head, minimum £100</span>
+          <span>The same, plus ice cream and flake, a party bag, and two readmission tickets for the birthday child.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="co-invite" id="party" aria-labelledby="co-invite-title">
+      <p class="co-kicker">The party</p>
+      <h2 id="co-invite-title">Child, count, and a date.</h2>
+      <p>
+        Call {phone} for a birthday. We book parties on the phone.
+      </p>
+      <form class="co-rsvp" data-co-request>
+        <label>Your name
+          <input id="co-who" required autocomplete="name" />
+        </label>
+        <label>Child's name
+          <input id="co-child" required />
+        </label>
+        <label>Age
+          <input id="co-age" type="text" inputmode="numeric" required />
+        </label>
+        <label>About how many
+          <input id="co-count" type="text" inputmode="numeric" required />
+        </label>
+        <fieldset>
+          <legend>Which party</legend>
+          <label><input type="radio" name="co-kind" value="Coco Party" checked /> Coco Party</label>
+          <label><input type="radio" name="co-kind" value="Bumper Party" /> Bumper Party</label>
+        </fieldset>
+        <label>Date you have in mind
+          <input id="co-when" type="text" placeholder="Saturday 12 September" required />
+        </label>
+        <button type="submit">Write the call</button>
+      </form>
+      <div class="co-sealed" data-co-handoff hidden>
+        <strong>Say this when they answer:</strong>
+        <pre data-co-script></pre>
+        <a href={phoneHref}>Call {phone}</a>
+        <span>Or write <a data-co-mail href={`mailto:${email}`}>a draft to {email}</a>.</span>
+      </div>
+    </section>
+  </main>
+  <script is:inline>
+    (function () {
+      var recipient = "cocosadventureplayground@gmail.com";
+      var form = document.querySelector("[data-co-request]");
+      if (!form) return;
+      var handoff = document.querySelector("[data-co-handoff]");
+      var scriptEl = document.querySelector("[data-co-script]");
+      var link = document.querySelector("[data-co-mail]");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = document.getElementById("co-who").value.trim();
+        var child = document.getElementById("co-child").value.trim();
+        var age = document.getElementById("co-age").value.trim();
+        var count = document.getElementById("co-count").value.trim();
+        var when = document.getElementById("co-when").value.trim();
+        var chosen = form.querySelector('input[name="co-kind"]:checked');
+        var kind = chosen ? chosen.value : "Coco Party";
+        var lines = [
+          "Hello, my name is " + name + ".",
+          "I would like a " + kind + " for " + child + ", age " + age + ".",
+          "About " + count + " children, on " + when + ".",
+        ];
+        scriptEl.textContent = lines.join("\\n");
+        var query = new URLSearchParams({
+          subject: kind + " — " + when,
+          body: ["Hello Coco's,", ""].concat(lines).concat(["", "Please tell me if that date is free."]).join("\\n"),
+        });
+        link.href = "mailto:" + recipient + "?" + query;
+        handoff.hidden = false;
+      });
+    })();
+  </script>
+</ConceptLayout>
