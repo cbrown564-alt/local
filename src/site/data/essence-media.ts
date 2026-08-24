@@ -51,6 +51,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "From Tuesday tea to the plate you look forward to",
     }],
   },
+  "conlyn-house": {
+    heading: "Wake to the ocean metres from your room.",
+    lede: "Central Promenade at the purple door: a 9-iron from Royal County Down, with panoramic Dundrum Bay and Slieve Donard sloping to the sea.",
+    frames: [{
+      src: "/media/concepts/conlyn-house/windows-dusk.jpg",
+      alt: "AI-generated indicative scene of a Victorian seaside guesthouse with a purple door on Central Promenade overlooking Dundrum Bay and the Mournes",
+      label: "Central Promenade and the purple front door",
+    }],
+  },
   "binghams-menswear": {
     heading: "Two measured days, through one door.",
     lede: "From the P1 school blazer to the wedding morning, measured properly on Main Street.",
@@ -237,4 +246,14 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "Shop and hire, together at the counter",
     }],
   },
+  "villa-vinci": {
+    heading: "The promenade first, then the table.",
+    lede: "Since 2008, where the warmth of the Mediterranean meets the charm of the Mourne Mountains.",
+    frames: [{
+      src: "/media/concepts/villa-vinci/dish.jpg",
+      alt: "AI-generated scene of steaming seafood pasta in a rich tomato sauce at a Mediterranean coastal trattoria table",
+      label: "From the kitchen pass to the promenade table",
+    }],
+  },
 };
+

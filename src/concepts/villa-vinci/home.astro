@@ -2,6 +2,10 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import VvMark from "./components/VvMark.astro";
+import VvPromenadePlate from "./components/VvPromenadePlate.astro";
 
 const phone = "028 4372 3080";
 const phoneHref = "tel:+442843723080";
@@ -10,13 +14,54 @@ const email = "villavincinewcastlecodown@gmail.com";
 const mailto = `mailto:${email}`;
 const facebook = "https://www.facebook.com/villavincinewcastle";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
 
 const furniture =
   "Since 2008, where the warmth of the Mediterranean meets the charm of the Mourne Mountains.";
 
 const promenade =
   "Why not pop in for lunch on a day at the seaside or reserve a table for dinner after an evening stroll on along the promenade.";
+
+const pillars = [
+  {
+    title: "Pizza dal Forno a Legna",
+    badge: "Stone-Baked",
+    desc: "Hand-stretched dough, stone-baked with a crisp, airy crust, San Marzano tomato sauce, fior di latte, and fresh herbs.",
+  },
+  {
+    title: "Pasta Fresca & Tradizione",
+    badge: "Handmade & Slow-Simmered",
+    desc: "Classic rich ragùs, silky seafood tagliatelle, homemade lasagne, and creamy carbonara prepared to authentic family recipes.",
+  },
+  {
+    title: "Frutti di Mare & Carni Locali",
+    badge: "Coastal & Local",
+    desc: "Fresh coastal catches and prime cuts paired with crisp Mediterranean salads, chargrilled vegetables, and local Mourne produce.",
+  },
+];
+
+const timeline = [
+  {
+    year: "2008",
+    title: "The Mediterranean meets the Mournes",
+    line: "Villa Vinci opens its doors at 31 Main Street, bringing authentic Italian and Mediterranean flavours to the Newcastle coast.",
+  },
+  {
+    year: "2016",
+    title: "Seaside dining & the terrace",
+    line: "The dining room and outdoor seating become a cherished stop for beach-strolling couples and visiting families.",
+  },
+  {
+    year: "2021",
+    title: "The Villa Vinci Family",
+    line: "“Once part of the Villa Vinci family, always part of the Villa Vinci family.” Nurturing young local talent from school to university.",
+  },
+  {
+    year: "Today",
+    title: "Eighteen years on Main Street",
+    line: "Warm Mediterranean hospitality, locally sourced ingredients, and the aroma of stone-baked dough just steps from the sea.",
+  },
+];
 ---
 
 <ConceptLayout
@@ -28,130 +73,261 @@ const promenade =
   fontHref={fontHref}
   bannerNote="The dish is a generated image from the kitchen's voice, not a photograph from the pass."
 >
-  <main class="vv-page">
-    <section class="vv-first" aria-labelledby="vv-name">
-      <figure class="vv-plate">
-        <img
-          src="/media/concepts/villa-vinci/dish.jpg"
-          alt="A wide bowl of seafood pasta in a tomato sauce, steam still on the surface"
-          width="1536"
-          height="1024"
-        />
-        <figcaption>Seafood pasta in a tomato sauce, still steaming.</figcaption>
-      </figure>
+  <!-- Announcement & Contact Strip -->
+  <div class="vv-strip">
+    <span>31 Main Street, Newcastle, BT33 0AD · Dine-in · Outdoor Seating · In-store Pickup</span>
+    <span class="vv-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a>
+    </span>
+  </div>
 
+  <!-- Branded Header & Navigation -->
+  <header class="vv-header">
+    <a class="vv-brand" href="/concepts/villa-vinci/">
+      <VvMark size={38} class="vv-brand-mark" />
+      <span class="vv-brand-text">
+        <span class="vv-brand-name">Villa Vinci</span>
+        <span class="vv-brand-sub">Ristorante · Newcastle</span>
+      </span>
+    </a>
+    <nav class="vv-nav" aria-label="Concept navigation">
+      <a href="#promenade">The promenade</a>
+      <a href="#cucina">La cucina</a>
+      <a href="#stroll">The seaside walk</a>
+      <a href="#heritage">Since 2008</a>
+      <a href="#table">Reserve a table</a>
+    </nav>
+    <a class="vv-nav-cta" href="#table">Book a table</a>
+  </header>
+
+  <main class="vv-page">
+    <!-- Hero: Sensory Opening & Prompt Action -->
+    <section class="vv-first" id="promenade" aria-labelledby="vv-name">
       <div class="vv-sheet">
-        <p class="vv-kicker">Main Street · Newcastle</p>
+        <p class="vv-kicker">31 Main Street · Newcastle</p>
         <h1 id="vv-name">Villa Vinci</h1>
         <p class="vv-furniture">{furniture}</p>
         <p class="vv-lede">
-          Promenade first, then the table. Walk in, or ring
-          <a href={phoneHref}>{phone}</a>.
+          Promenade first, then the table. Pop in for lunch on a day at the seaside,
+          or reserve a table for dinner after an evening stroll on along the promenade.
         </p>
-        <p class="vv-where">31 Main Street, Newcastle, BT33 0AD</p>
-        <p class="vv-menu-line">
-          For the live board, ask in the room, ring, or open
-          <a href={site}>villavinci.co.uk</a>.
-        </p>
-
-        <div class="vv-bar" id="table">
-          <div class="vv-bar-head">
-            <p class="vv-bar-kicker">A table</p>
-            <a class="vv-bar-phone" href={phoneHref}>{phone}</a>
-          </div>
-          <p class="vv-bar-lead">
-            Write lunch or dinner, the day, and how many. Then ring the room —
-            nothing is sent. Walk-in is welcome when there is a chair.
-          </p>
-
-          <form class="vv-form" data-vv-request>
-            <label class="vv-box" for="vv-who">
-              <span>Your name</span>
-              <input id="vv-who" name="name" type="text" autocomplete="name" required />
-            </label>
-            <label class="vv-box" for="vv-covers">
-              <span>How many</span>
-              <input
-                id="vv-covers"
-                name="covers"
-                type="text"
-                inputmode="numeric"
-                placeholder="2"
-                required
-              />
-            </label>
-            <fieldset class="vv-chips">
-              <legend>When</legend>
-              <label class="vv-chip">
-                <input type="radio" name="vv-when" value="lunch" checked /> Lunch
-              </label>
-              <label class="vv-chip">
-                <input type="radio" name="vv-when" value="dinner" /> Dinner
-              </label>
-              <label class="vv-chip">
-                <input type="radio" name="vv-when" value="walk in" /> Walk in
-              </label>
-            </fieldset>
-            <label class="vv-box vv-box--wide" for="vv-day">
-              <span>The day you have in mind</span>
-              <input id="vv-day" name="day" type="text" placeholder="Saturday" required />
-            </label>
-            <button class="vv-write" type="submit">Write the words for the call</button>
-
-            <div class="vv-handoff" data-vv-handoff role="status" hidden tabindex="-1">
-              <strong>Say this when they answer:</strong>
-              <pre data-vv-script></pre>
-              <div class="vv-handoff-acts">
-                <a class="vv-call" href={phoneHref}>Call {phone}</a>
-                <a class="vv-mail" data-vv-mail href={mailto}>Or send the same words by email</a>
-              </div>
-            </div>
-          </form>
+        <div class="vv-hero-actions">
+          <a class="vv-btn-primary" href="#table">Reserve a table</a>
+          <a class="vv-btn-tel" href={phoneHref}>{phone}</a>
         </div>
+        <p class="vv-where">31 Main Street, Newcastle, BT33 0AD · Dine-in &amp; Seaside Terrace</p>
+        <p class="vv-menu-line">
+          For today's live menu and specials, ask in the room, ring{" "}
+          <a href={phoneHref}>{phone}</a>, or open{" "}
+          <a href={site} rel="noopener noreferrer" target="_blank">villavinci.co.uk</a>.
+        </p>
+      </div>
+
+      <figure class="vv-stage">
+        <div class="vv-stage-frame">
+          <ResponsiveImage
+            src="/media/concepts/villa-vinci/dish.jpg"
+            alt="A wide bowl of seafood pasta in a tomato sauce, steam still on the surface"
+            width="1536"
+            height="1024"
+            loading="eager"
+          />
+          <div class="vv-stage-badge">
+            <span class="vv-badge-dot"></span>
+            <span>Seafood pasta in rich tomato sauce, still steaming</span>
+          </div>
+        </div>
+        <figcaption>Seafood pasta in a rich tomato sauce, fresh from the kitchen pass.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Verbatim Quote from Website -->
+    <figure class="vv-pull">
+      <blockquote cite="https://www.villavinci.co.uk/about/">
+        <p>“{promenade}”</p>
+      </blockquote>
+      <figcaption>Villa Vinci · About the room</figcaption>
+    </figure>
+
+    <!-- Move 5: La Cucina — Three Culinary Pillars -->
+    <section class="vv-cucina" id="cucina" aria-labelledby="vv-cucina-title">
+      <div class="vv-section-head">
+        <p class="vv-kicker vv-kicker--ink">La Cucina</p>
+        <h2 id="vv-cucina-title">Great food by the sea.</h2>
+        <p class="vv-section-lead">
+          Our menu is inspired by our Mediterranean origins and offers something for everyone.
+          As with our other restaurants, the source and freshness of our ingredients is important to us.
+          That's why we source locally.
+        </p>
+      </div>
+
+      <div class="vv-pillars-grid" role="list">
+        {pillars.map((pillar) => (
+          <article class="vv-pillar-card" role="listitem">
+            <div class="vv-pillar-badge">{pillar.badge}</div>
+            <h3 class="vv-pillar-title">{pillar.title}</h3>
+            <p class="vv-pillar-desc">{pillar.desc}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="vv-board-notice">
+        <p>
+          <strong>Today's specials and live board:</strong> Our dishes change with fresh seasonal catches and market arrivals.
+          To hear what is on today, feel free to stop by, ring{" "}
+          <a href={phoneHref}>{phone}</a>, or check{" "}
+          <a href={site} rel="noopener noreferrer" target="_blank">villavinci.co.uk</a>.
+        </p>
       </div>
     </section>
 
-    <figure class="vv-pull">
-      <blockquote cite="https://www.villavinci.co.uk/about/">
-        <p>{promenade}</p>
-      </blockquote>
-      <figcaption>Villa Vinci · about the room</figcaption>
-    </figure>
-
-    <section class="vv-room" aria-labelledby="vv-room-title">
-      <p class="vv-kicker vv-kicker--ink">The room</p>
-      <h2 id="vv-room-title">Great food by the sea.</h2>
-      <p>
-        A coastal restaurant on Main Street — a stop for beach-strolling couples
-        or families on a day out. Mediterranean origins; ingredients sourced
-        locally. Feel free to stop by or give us a call to make a reservation.
-      </p>
-      <p class="vv-room-acts">
-        <a class="vv-text" href={site}>villavinci.co.uk</a>
-        <a class="vv-text" href={phoneHref}>{phone}</a>
-        <a class="vv-text" href={facebook}>Facebook</a>
-      </p>
+    <!-- Move 7: The Promenade is the Map -->
+    <section class="vv-stroll-section" id="stroll" aria-labelledby="vv-stroll-title">
+      <VvPromenadePlate />
     </section>
 
-    <section class="vv-family" aria-labelledby="vv-family-title">
-      <p class="vv-kicker vv-kicker--ink">The family</p>
-      <h2 id="vv-family-title">Zio, in Portadown.</h2>
-      <p>
-        Another living room in the family: Zio, Millennium Court, William Street,
-        Portadown — 028 3833 7696, ziorestaurant.com. This door is Newcastle.
-      </p>
+    <!-- Move 1 & 4: Heritage & Family Timeline (Since 2008, Zio Portadown) -->
+    <section class="vv-heritage" id="heritage" aria-labelledby="vv-heritage-title">
+      <div class="vv-section-head">
+        <p class="vv-kicker vv-kicker--ink">The Story</p>
+        <h2 id="vv-heritage-title">Eighteen years under the Mournes.</h2>
+        <p class="vv-section-lead">
+          From the Mediterranean coast to 31 Main Street. Serving families, seaside walkers,
+          and Newcastle locals since 2008.
+        </p>
+      </div>
+
+      <div class="vv-timeline" role="list">
+        {timeline.map((item) => (
+          <article class="vv-time-card" role="listitem">
+            <div class="vv-time-year">{item.year}</div>
+            <div class="vv-time-content">
+              <h3 class="vv-time-title">{item.title}</h3>
+              <p class="vv-time-line">{item.line}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Sister Room: Zio Portadown -->
+      <div class="vv-sister-card">
+        <div class="vv-sister-head">
+          <span class="vv-sister-kicker">The Family</span>
+          <h3 class="vv-sister-title">Zio, in Portadown.</h3>
+        </div>
+        <p class="vv-sister-desc">
+          Another living room in the family: <strong>Zio</strong>, Millennium Court, William Street,
+          Portadown (028 3833 7696 · <a href="https://www.ziorestaurant.com/" rel="noopener noreferrer" target="_blank">ziorestaurant.com</a>).
+          This door is Newcastle on Main Street.
+        </p>
+      </div>
     </section>
 
+    <!-- Move 2: Interactive Table Reservation Ledger & Call Script -->
+    <section class="vv-reserve" id="table" aria-labelledby="vv-reserve-title">
+      <div class="vv-reserve-card">
+        <div class="vv-reserve-head">
+          <div>
+            <p class="vv-kicker">Reserve a Table</p>
+            <h2 id="vv-reserve-title">Walk in, or ring ahead.</h2>
+          </div>
+          <a class="vv-reserve-phone" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="vv-reserve-lead">
+          Write your details below to prepare the exact words for your call, or send them directly by email.
+          Walk-ins are always warmly welcomed whenever there is a free chair.
+        </p>
+
+        <form class="vv-form" data-vv-request>
+          <div class="vv-form-grid">
+            <label class="vv-box" for="vv-who">
+              <span>Your name</span>
+              <input id="vv-who" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah O'Neill" required />
+            </label>
+
+            <label class="vv-box" for="vv-covers">
+              <span>Party size</span>
+              <select id="vv-covers" name="covers" required>
+                <option value="2 guests">2 guests</option>
+                <option value="1 guest">1 guest</option>
+                <option value="3 guests">3 guests</option>
+                <option value="4 guests">4 guests</option>
+                <option value="5 guests">5 guests</option>
+                <option value="6 guests">6 guests</option>
+                <option value="7–8 guests">7–8 guests</option>
+                <option value="Large party (9+)">Large party (9+)</option>
+              </select>
+            </label>
+
+            <fieldset class="vv-chips">
+              <legend>Occasion / Time of Day</legend>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="lunch" checked /> Seaside Lunch
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="dinner" /> Evening Dinner
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-when" value="walk in" /> Promenade Walk-in
+              </label>
+            </fieldset>
+
+            <fieldset class="vv-chips">
+              <legend>Preferred Seating</legend>
+              <label class="vv-chip">
+                <input type="radio" name="vv-zone" value="Main Dining Room" checked /> Main Dining Room
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-zone" value="Seaside Terrace" /> Seaside Terrace
+              </label>
+              <label class="vv-chip">
+                <input type="radio" name="vv-zone" value="First Available Table" /> First Available Table
+              </label>
+            </fieldset>
+
+            <label class="vv-box vv-box--wide" for="vv-day">
+              <span>The day and time you have in mind</span>
+              <input id="vv-day" name="day" type="text" placeholder="e.g. Saturday around 7:30pm" required />
+            </label>
+          </div>
+
+          <button class="vv-write" type="submit">Prepare the words for your call</button>
+
+          <div class="vv-handoff" data-vv-handoff role="status" hidden tabindex="-1">
+            <div class="vv-handoff-header">
+              <span class="vv-handoff-badge">Ready for the room</span>
+              <strong>Say this when they answer:</strong>
+            </div>
+            <pre data-vv-script></pre>
+            <div class="vv-handoff-acts">
+              <a class="vv-call-btn" href={phoneHref}>Call {phone}</a>
+              <a class="vv-mail-btn" data-vv-mail href={mailto}>Send by email</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Essence Media Showcase -->
+    <EssenceMedia slug="villa-vinci" />
+
+    <!-- Civic Footer -->
     <footer class="vv-end">
-      <p class="vv-end-name">Villa Vinci</p>
-      <p>31 Main Street, Newcastle, BT33 0AD</p>
-      <p>
-        <a href={phoneHref}>{phone}</a>
-        <span aria-hidden="true"> · </span>
-        <a href={site}>villavinci.co.uk</a>
-        <span aria-hidden="true"> · </span>
-        <a href={facebook}>facebook.com/villavincinewcastle</a>
-      </p>
+      <div class="vv-end-content">
+        <VvMark size={48} class="vv-end-mark" />
+        <p class="vv-end-name">Villa Vinci</p>
+        <p class="vv-end-furniture">{furniture}</p>
+        <p class="vv-end-addr">31 Main Street, Newcastle, County Down, BT33 0AD</p>
+        <p class="vv-end-links">
+          <a href={phoneHref}>{phone}</a>
+          <span aria-hidden="true"> · </span>
+          <a href={site} rel="noopener noreferrer" target="_blank">villavinci.co.uk</a>
+          <span aria-hidden="true"> · </span>
+          <a href={facebook} rel="noopener noreferrer" target="_blank">facebook.com/villavincinewcastle</a>
+        </p>
+      </div>
     </footer>
   </main>
 
@@ -170,17 +346,21 @@ const promenade =
         var name = form.querySelector("#vv-who").value.trim();
         var covers = form.querySelector("#vv-covers").value.trim();
         var day = form.querySelector("#vv-day").value.trim();
-        var chosen = form.querySelector('input[name="vv-when"]:checked');
-        var when = chosen ? chosen.value : "lunch";
+        var chosenWhen = form.querySelector('input[name="vv-when"]:checked');
+        var when = chosenWhen ? chosenWhen.value : "lunch";
+        var chosenZone = form.querySelector('input[name="vv-zone"]:checked');
+        var zone = chosenZone ? chosenZone.value : "Main Dining Room";
+
         var lines = [
           "Hello, my name is " + name + ".",
-          "I am hoping for a table for " + covers + ", " + when + ", " + day + ".",
-          "Is that free?"
+          "I am hoping to reserve a table for " + covers + " for " + when + " (" + day + ").",
+          "Preferred seating: " + zone + ".",
+          "Do you have availability?"
         ];
         scriptEl.textContent = lines.join("\n");
         if (mail) {
           var body = encodeURIComponent(lines.join("\n"));
-          var subject = encodeURIComponent("Table at Villa Vinci — " + day);
+          var subject = encodeURIComponent("Table Reservation at Villa Vinci — " + day);
           mail.setAttribute(
             "href",
             "mailto:villavincinewcastlecodown@gmail.com?subject=" + subject + "&body=" + body

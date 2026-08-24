@@ -56,6 +56,8 @@ const suites = [
   ["test:bear-necessities"],
   ["test:binghams"],
   ["test:irelands"],
+  ["test:villa-vinci"],
+  ["test:conlyn-house"],
   ["test:where-it-fails"],
   ["test:how-its-made"],
   ["test:why-its-yours"],

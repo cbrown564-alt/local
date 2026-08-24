@@ -2,147 +2,447 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import ChMark from "./components/ChMark.astro";
+import ChPromenadeWalk from "./components/ChPromenadeWalk.astro";
 
 const phone = "077 6229 6999";
 const phoneHref = "tel:+447762296999";
+const whatsappHref = "https://wa.me/447762296999";
 const email = "conlynhouse@gmail.com";
-const site = "https://conlynhouse.com/";
-const book = "https://www.conlynhouse.com/booking/";
+const facebook = "https://www.facebook.com/conlynhousenewcastle";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Commissioner:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Commissioner:wght@400;500;600;700&display=swap";
 
 const rooms = [
-  "The New Yorker",
-  "The Regency",
-  "Little Havana",
-  "Key West",
-  "La Parisienne",
-  "Walsh's Retreat",
-  "The Olive",
-  "Hollywood",
-  "Sorrento",
+  { num: "01", name: "The New Yorker", note: "Ensuite · coastal aspect" },
+  { num: "02", name: "The Regency", note: "Ensuite · classic styling" },
+  { num: "03", name: "Little Havana", note: "Ensuite · bay air" },
+  { num: "04", name: "Key West", note: "Ensuite · morning light" },
+  { num: "05", name: "La Parisienne", note: "Ensuite · double retreat" },
+  { num: "06", name: "Walsh's Retreat", note: "Ensuite · ground-floor access" },
+  { num: "07", name: "The Olive", note: "Ensuite · mountain vista" },
+  { num: "08", name: "Hollywood", note: "Ensuite · family layout" },
+  { num: "09", name: "Sorrento", note: "Ensuite · deluxe beach balcony" },
 ];
 
-const holds = [
-  { name: "The door", line: "Purple. Downs Road, metres from the water." },
-  { name: "The rooms", line: "Single, double, twin, family. Deluxe with a balcony over the beach." },
-  { name: "Ground floor", line: "Disabled access to ground-floor bedrooms, and an extra bathroom on that floor." },
-  { name: "Breakfast", line: "Served 8 until 10. Ulster fry, omelette, pancakes, French toast, porridge, fruit." },
-  { name: "Tray", line: "Coffee, tea, water and snacks in the room. Wifi." },
+const rates = [
+  { tier: "Single", price: "£80", desc: "Private ensuite room for solo travellers, walkers and golfers." },
+  { tier: "Double", price: "£100", desc: "Comfortable double ensuite with coastal air and town views." },
+  { tier: "Deluxe Double", price: "£120", desc: "More spacious double ensuite with private balcony directly over the beach." },
+  { tier: "Twin", price: "£120", desc: "Two single beds with ensuite, ideal for walking pairs and golf companions." },
+  { tier: "Family", price: "£120", desc: "Spacious ensuite room configured for families visiting the Mourne coast." },
+];
+
+const breakfastDishes = [
+  { name: "Full Ulster Fry", note: "Bacon, pork sausages, eggs, potato bread, soda bread, tomato" },
+  { name: "Fluffy Pancakes", note: "Freshly made, served warm with maple syrup and butter" },
+  { name: "French Toast", note: "Golden brioche bread with seasonal berries and syrup" },
+  { name: "Farmhouse Omelette", note: "Cooked to order with your choice of cheese, ham, or mushrooms" },
+  { name: "Warm Porridge", note: "Mourne oats served with honey, cream or brown sugar" },
+  { name: "Fruit & Cereals", note: "Chilled fruit selection, yoghurt, fruit juices, fresh tea and ground coffee" },
+];
+
+const accessFeatures = [
+  { title: "Ramp Entrance", desc: "Step-free ramped access directly into the ground floor entrance." },
+  { title: "Ground Floor Rooms", desc: "Accessible ground-floor bedrooms with private ensuite facilities." },
+  { title: "Accessible Bathroom", desc: "Dedicated extra accessible bathroom located on the ground floor." },
+  { title: "Parking Beside House", desc: "Private parking spaces directly beside the house, plus free public parking 30m away." },
 ];
 ---
 
 <ConceptLayout
-  title={"Conlyn House — Newcastle"}
+  title={"Conlyn House — Newcastle, Co. Down"}
   slug="conlyn-house"
   bodyClass="concept-page concept-conlyn"
   businessName="Conlyn House"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The windows at dusk are a generated image, not a photograph of the house."
+  bannerNote="The windows at dusk and promenade plate are AI-generated visualisations, not photographs of the house."
 >
+  <div class="ch-strip">
+    <span class="ch-strip-addr">11 Downs Road, Central Promenade, Newcastle · BT33 0AG</span>
+    <span class="ch-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+    </span>
+  </div>
+
+  <header class="ch-header">
+    <a class="ch-brand" href="/concepts/conlyn-house/">
+      <ChMark size={32} class="ch-brand-mark" />
+      <span class="ch-brand-text">
+        <span class="ch-brand-name">Conlyn House</span>
+        <span class="ch-brand-sub">11 Downs Road · Newcastle</span>
+      </span>
+    </a>
+    <nav class="ch-nav" aria-label="Concept navigation">
+      <a href="#promenade">Promenade</a>
+      <a href="#rooms">Rooms &amp; rates</a>
+      <a href="#breakfast">Breakfast</a>
+      <a href="#access">Access</a>
+      <a href="#stay">Plan a stay</a>
+    </nav>
+    <a class="ch-nav-cta" href="#stay">Ask about nights</a>
+  </header>
+
   <main class="ch-page">
-    <section class="ch-first" aria-labelledby="ch-name">
-      <figure class="ch-grounds">
-        <img
-          src="/media/concepts/conlyn-house/windows-dusk.jpg"
-          alt="Bedroom windows at dusk looking out to a bay and a mountain sloping to the sea"
-          width="940"
-          height="627"
-        />
-        <figcaption>Windows lit at dusk.</figcaption>
-      </figure>
-      <div class="ch-first-copy">
-        <p class="ch-open-now">11 Downs Road, Newcastle, BT33 0AG</p>
-        <h1 id="ch-name">Conlyn House</h1>
-        <p class="ch-say">
-          Beachfront bed and breakfast. A mere 9-iron from Royal County Down.
-          Wake to Dundrum Bay and Slieve Donard sloping to the Irish Sea.
-        </p>
-        <p class="ch-place">
-          Breakfast 8 until 10. Ensuite in every room. Deluxe rooms have a
-          balcony over the beach. WhatsApp or ring {phone}.
-        </p>
-        <nav class="ch-first-nav" aria-label="On this page">
-          <a href="#nights">Ask about nights</a>
-          <a href="#house">What the house holds</a>
-        </nav>
+    <section class="ch-hero" aria-labelledby="ch-name">
+      <div class="ch-hero-stage">
+        <div class="ch-hero-copy">
+          <p class="ch-kicker">Central Promenade · Newcastle, Co. Down</p>
+          <h1 id="ch-name">Wake to the ocean metres from your room.</h1>
+          <p class="ch-furniture">
+            From the moment you enter the purple front door of Conlyn House,
+            you are embraced with a warmth and hospitality which is second to none.
+          </p>
+          <p class="ch-lede">
+            A beachfront bed and breakfast a mere 9-iron from Royal County Down.
+            Panoramic views of Dundrum Bay with Slieve Donard sloping to the Irish Sea.
+          </p>
+          <div class="ch-hero-actions">
+            <a class="ch-btn-primary" href="#stay">Ask about nights</a>
+            <a class="ch-btn-ghost" href="#rooms">See rooms &amp; rates ↓</a>
+          </div>
+          <p class="ch-hero-note">
+            Breakfast 8–10 · Ensuite throughout · Balcony rooms over the beach · WhatsApp or ring <a href={phoneHref}>{phone}</a>
+          </p>
+        </div>
+
+        <figure class="ch-hero-figure">
+          <div class="ch-figure-frame">
+            <ResponsiveImage
+              src="/media/concepts/conlyn-house/windows-dusk.jpg"
+              alt="AI-generated scene of a Victorian seaside guesthouse with a purple door on Central Promenade overlooking Dundrum Bay and the Mournes"
+              width="1536"
+              height="1024"
+              loading="eager"
+            />
+            <div class="ch-figure-badge">
+              <span class="ch-badge-dot"></span>
+              <span>Beachfront on Downs Road</span>
+            </div>
+          </div>
+          <figcaption>Central Promenade at dusk — overlooking Dundrum Bay. AI-generated visualisation.</figcaption>
+        </figure>
       </div>
     </section>
 
+    <!-- Move 1: Their voice verbatim as furniture -->
     <figure class="ch-pull">
       <blockquote>
         <p>
-          Wake up to the soothing sounds of the ocean caressing the County Down
+          “Wake up to the soothing sounds of the ocean caressing the County Down
           coastline just metres from your luxuriously-decorated bedroom and
           enjoy a delicious cooked breakfast as you savour the panoramic views
           of Dundrum Bay and the majestic Slieve Donard sloping to kiss the
-          Irish Sea.
+          Irish Sea.”
         </p>
       </blockquote>
-      <figcaption>conlynhouse.com</figcaption>
+      <figcaption>conlynhouse.com · Central Promenade, Newcastle</figcaption>
     </figure>
 
-    <section class="ch-holds" id="house" aria-labelledby="ch-holds-title">
-      <p class="ch-kicker">Nine rooms on Downs Road</p>
-      <h2 id="ch-holds-title">What the house holds</h2>
-      <ul class="ch-inventory">
-        {holds.map((item) => (
-          <li>
-            <span>{item.name}</span>
-            <span>{item.line}</span>
-          </li>
-        ))}
-      </ul>
-      <p class="ch-rooms-label">Each bedroom has a name</p>
-      <ul class="ch-rooms">
-        {rooms.map((name) => (
-          <li>{name}</li>
-        ))}
-      </ul>
-      <p class="ch-current">
-        Sea and mountain from most rooms. Special diets if you tell us.
-        What is free this week — ring, or write.
-      </p>
+    <!-- Move 2 & 4: Setting and Promenade Walk Plate -->
+    <section class="ch-promenade-section" id="promenade" aria-labelledby="promenade-heading">
+      <div class="ch-section-head">
+        <p class="ch-kicker ch-kicker--gold">The beachfront</p>
+        <h2 id="promenade-heading">11 Downs Road on Central Promenade</h2>
+        <p class="ch-section-lead">
+          Stepping through the purple door puts you directly on the seaside walkway.
+          World-class championship golf, the Slieve Donard resort, and the foot of the Mournes
+          are all within an easy stroll.
+        </p>
+      </div>
+
+      <ChPromenadeWalk headingId="promenade-plate-title" />
     </section>
 
-    <section class="ch-pad" id="nights" aria-labelledby="ch-pad-title">
-      <p class="ch-kicker">Your nights</p>
-      <h2 id="ch-pad-title">Nights, and who is coming.</h2>
-      <p class="ch-pad-lead">
-        Name, nights, and who is coming. We answer by email or WhatsApp.
-        We do not keep a live calendar — if the nights are free, we will say so.
-      </p>
+    <!-- Move 3: Nine Named Themes & Published Rates Ledger -->
+    <section class="ch-rooms-section" id="rooms" aria-labelledby="rooms-heading">
+      <div class="ch-section-head">
+        <p class="ch-kicker ch-kicker--gold">Accommodation</p>
+        <h2 id="rooms-heading">Nine themed rooms. Five published rates.</h2>
+        <p class="ch-section-lead">
+          Every bedroom is individually styled with its own theme name and private ensuite bathroom.
+          Deluxe double rooms feature private balconies overlooking the beach.
+        </p>
+      </div>
 
-      <div class="ch-phone-face">
-        <a class="ch-dial" href={phoneHref}>{phone}</a>
-        <p class="ch-dial-hint">WhatsApp the same number</p>
+      <div class="ch-rates-card">
+        <div class="ch-rates-header">
+          <h3>Published Room Rates</h3>
+          <span class="ch-rates-date">As published 23 August 2026</span>
+        </div>
 
-        <form class="ch-script-form" data-ch-request>
-          <label for="ch-who">Your name</label>
-          <input id="ch-who" name="name" type="text" autocomplete="name" required />
+        <ul class="ch-rates-list" role="list">
+          {rates.map((item) => (
+            <li class="ch-rate-row">
+              <div class="ch-rate-info">
+                <strong class="ch-rate-tier">{item.tier}</strong>
+                <p class="ch-rate-desc">{item.desc}</p>
+              </div>
+              <span class="ch-rate-price">{item.price} <small>/ night</small></span>
+            </li>
+          ))}
+        </ul>
+        <p class="ch-rates-caveat">Prices may vary during peak periods. Breakfast and ensuite included.</p>
+      </div>
 
-          <label for="ch-when">Nights you have in mind</label>
-          <input id="ch-when" name="when" type="text" placeholder="12–14 September" required />
-
-          <fieldset>
-            <legend>Who is coming</legend>
-            <label><input type="radio" name="ch-who-with" value="just us" checked /> Just us</label>
-            <label><input type="radio" name="ch-who-with" value="a family" /> A family</label>
-            <label><input type="radio" name="ch-who-with" value="one person" /> One person</label>
-          </fieldset>
-
-          <label for="ch-notes">Anything we should know</label>
-          <textarea id="ch-notes" name="notes" rows="3"></textarea>
-
-          <button type="submit">Write the enquiry</button>
-
-          <div class="ch-handoff" data-ch-handoff role="status" hidden tabindex="-1">
-            <strong>Your enquiry is ready.</strong>
-            <a data-ch-mail href={`mailto:${email}`}>Open the draft</a>
-            <span>Or ring <a href={phoneHref}>{phone}</a>. You can also write through <a href={book}>conlynhouse.com/booking</a>.</span>
+      <div class="ch-directory-card">
+        <div class="ch-directory-header">
+          <div>
+            <span class="ch-directory-kicker">The House Roster</span>
+            <h3>Nine Named Bedrooms</h3>
           </div>
-        </form>
+          <p class="ch-directory-lead">
+            Every bedroom at Conlyn House carries its own theme name and styling,
+            with private ensuite facilities and tea tray in all nine rooms.
+          </p>
+        </div>
+
+        <ol class="ch-directory-grid" role="list">
+          {rooms.map((room) => (
+            <li class="ch-directory-item">
+              <span class="ch-directory-num">{room.num}</span>
+              <div class="ch-directory-body">
+                <strong class="ch-directory-name">{room.name}</strong>
+                <span class="ch-directory-note">{room.note}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="ch-amenities-bar">
+        <div class="ch-amenity">
+          <span class="ch-amenity-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h16c0 4.4-3.6 8-8 8s-8-3.6-8-8Z"/>
+              <path d="M6 12V5a2 2 0 0 1 2-2h1"/>
+              <path d="M4 21l2-2m14 2l-2-2"/>
+            </svg>
+          </span>
+          <div class="ch-amenity-text">
+            <h4>Ensuite in every room</h4>
+            <p>Private shower and bathroom in all nine bedrooms.</p>
+          </div>
+        </div>
+        <div class="ch-amenity">
+          <span class="ch-amenity-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a3 3 0 0 1 0 6h-1"/>
+              <path d="M4 8h14v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z"/>
+              <path d="M6 1v3m4-3v3m4-3v3"/>
+            </svg>
+          </span>
+          <div class="ch-amenity-text">
+            <h4>Hospitality service tray</h4>
+            <p>Tea, coffee, bottled water and snacks replenished daily.</p>
+          </div>
+        </div>
+        <div class="ch-amenity">
+          <span class="ch-amenity-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <circle cx="12" cy="20" r="1" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="ch-amenity-text">
+            <h4>High-speed Wi-Fi</h4>
+            <p>Complimentary wireless internet throughout the house.</p>
+          </div>
+        </div>
+        <div class="ch-amenity">
+          <span class="ch-amenity-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 16 5.5-6.5a2 2 0 0 1 3 0L14 13"/>
+              <path d="m13 12 2.5-3a2 2 0 0 1 3 0L22 13"/>
+              <path d="M2 19c3-1.5 6-1.5 9 0s6 1.5 9 0 2-1 2-1"/>
+            </svg>
+          </span>
+          <div class="ch-amenity-text">
+            <h4>Sea &amp; mountain views</h4>
+            <p>Panoramic vistas across Dundrum Bay to Slieve Donard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Move 4: Breakfast & Accessibility Rituals -->
+    <section class="ch-rituals-section" id="breakfast" aria-labelledby="rituals-heading">
+      <div class="ch-rituals-grid">
+        <div class="ch-breakfast-col">
+          <p class="ch-kicker ch-kicker--gold">Served 8:00 until 10:00</p>
+          <h2 id="rituals-heading">Cooked breakfast with a sea view.</h2>
+          <p class="ch-rituals-copy">
+            Breakfast is freshly prepared each morning in the dining room.
+            Timings are flexible with advance notice for early golfers and mountain walkers.
+            Special dietary requirements are warmly catered for upon request.
+          </p>
+
+          <ul class="ch-dish-list" role="list">
+            {breakfastDishes.map((dish) => (
+              <li class="ch-dish-item">
+                <strong class="ch-dish-name">{dish.name}</strong>
+                <span class="ch-dish-note">{dish.note}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="ch-cuppa-quote">
+            “…returning to Conlyn House at the foot of The Mourne Mountains for a hot shower and a wee cuppa tea.”
+          </p>
+        </div>
+
+        <div class="ch-access-col" id="access">
+          <p class="ch-kicker ch-kicker--gold">Step-free &amp; practical</p>
+          <h2>Access, parking &amp; departures</h2>
+          <p class="ch-rituals-copy">
+            Built to be welcoming to every guest. Ground-floor accommodation provides step-free ease
+            from the promenade.
+          </p>
+
+          <div class="ch-access-cards">
+            {accessFeatures.map((f) => (
+              <article class="ch-access-card">
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="ch-hours-card">
+            <div class="ch-hour-row">
+              <span>Breakfast</span>
+              <strong>8:00 AM – 10:00 AM</strong>
+            </div>
+            <div class="ch-hour-row">
+              <span>Checkout</span>
+              <strong>11:00 AM</strong>
+            </div>
+            <div class="ch-hour-row">
+              <span>Check-in</span>
+              <strong>Arranged with host on booking</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essence Media Showcase -->
+    <EssenceMedia slug="conlyn-house" />
+
+    <!-- Move 6: Proof of Life & Facebook Handoff -->
+    <section class="ch-proof-section" aria-labelledby="proof-heading">
+      <div class="ch-proof-card">
+        <div class="ch-proof-stat">
+          <span class="ch-proof-number">100%</span>
+          <span class="ch-proof-sub">Guest recommend score</span>
+        </div>
+        <div class="ch-proof-body">
+          <h2 id="proof-heading">Family-run hospitality on the promenade.</h2>
+          <p>
+            For photos of this season, views from the balcony, and updates from the house,
+            join our community on Facebook.
+          </p>
+          <a class="ch-btn-facebook" href={facebook} target="_blank" rel="noopener noreferrer">
+            Visit Conlyn House on Facebook →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Move 5: Stay Enquiry & Direct Ledger -->
+    <section class="ch-stay-section" id="stay" aria-labelledby="stay-heading">
+      <div class="ch-stay-wrap">
+        <div class="ch-stay-head">
+          <p class="ch-kicker">Plan your stay</p>
+          <h2 id="stay-heading">Ask about your nights.</h2>
+          <p class="ch-stay-lead">
+            Tell us when you are looking to visit and who is coming.
+            We answer directly by WhatsApp, phone, or email. We do not keep an artificial booking engine —
+            if the room is free, we will let you know right away.
+          </p>
+        </div>
+
+        <div class="ch-stay-columns">
+          <div class="ch-direct-card">
+            <h3>Direct Contact</h3>
+            <p>Speak with the house directly or message on WhatsApp:</p>
+
+            <a class="ch-phone-button" href={phoneHref}>
+              <span class="ch-phone-label">Ring the house</span>
+              <strong class="ch-phone-val">{phone}</strong>
+            </a>
+
+            <a class="ch-wa-button" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+              <span class="ch-phone-label">Message on WhatsApp</span>
+              <strong class="ch-phone-val">{phone}</strong>
+            </a>
+
+            <div class="ch-direct-meta">
+              <span>Email: <a href={`mailto:${email}`}>{email}</a></span>
+              <span>Location: 11 Downs Road, Newcastle, BT33 0AG</span>
+            </div>
+          </div>
+
+          <div class="ch-form-card">
+            <h3>Draft Your Stay Enquiry</h3>
+            <form class="ch-script-form" data-ch-request>
+              <div class="ch-field">
+                <label for="ch-who">Your name</label>
+                <input id="ch-who" name="name" type="text" autocomplete="name" placeholder="First and last name" required />
+              </div>
+
+              <div class="ch-field">
+                <label for="ch-when">Nights you have in mind</label>
+                <input id="ch-when" name="when" type="text" placeholder="e.g. 12–15 September (2 nights)" required />
+              </div>
+
+              <div class="ch-field">
+                <label for="ch-tier">Preferred room tier</label>
+                <select id="ch-tier" name="tier">
+                  <option value="Deluxe Double (£120)">Deluxe Double — balcony over beach (£120)</option>
+                  <option value="Double (£100)">Double room (£100)</option>
+                  <option value="Single (£80)">Single room (£80)</option>
+                  <option value="Twin (£120)">Twin room (£120)</option>
+                  <option value="Family (£120)">Family room (£120)</option>
+                </select>
+              </div>
+
+              <fieldset class="ch-fieldset">
+                <legend>Party configuration</legend>
+                <div class="ch-radio-group">
+                  <label><input type="radio" name="ch-who-with" value="Couple / Two guests" checked /> <span>Couple / Two guests</span></label>
+                  <label><input type="radio" name="ch-who-with" value="Solo traveller" /> <span>Solo traveller</span></label>
+                  <label><input type="radio" name="ch-who-with" value="Family with children" /> <span>Family with children</span></label>
+                  <label><input type="radio" name="ch-who-with" value="Golf / Walking pair" /> <span>Golf / Walking pair</span></label>
+                </div>
+              </fieldset>
+
+              <div class="ch-field">
+                <label for="ch-notes">Special requests or accessibility needs</label>
+                <textarea id="ch-notes" name="notes" rows="3" placeholder="Dietary requirements, ground-floor room, approximate arrival time..."></textarea>
+              </div>
+
+              <button class="ch-submit-btn" type="submit">Prepare stay email</button>
+
+              <div class="ch-handoff" data-ch-handoff role="status" hidden tabindex="-1">
+                <strong>Your stay enquiry is ready to send:</strong>
+                <a class="ch-btn-mail" data-ch-mail href={`mailto:${email}`}>Open formatted email draft</a>
+                <p class="ch-handoff-note">
+                  Or message directly via WhatsApp on <a href={whatsappHref} target="_blank" rel="noopener noreferrer">{phone}</a>.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -161,22 +461,31 @@ const holds = [
         if (!form.reportValidity()) return;
         var name = form.querySelector("#ch-who").value.trim();
         var when = form.querySelector("#ch-when").value.trim();
+        var tier = form.querySelector("#ch-tier").value;
         var notes = form.querySelector("#ch-notes").value.trim();
         var chosen = form.querySelector('input[name="ch-who-with"]:checked');
-        var who = chosen ? chosen.value : "just us";
+        var who = chosen ? chosen.value : "Two guests";
+
         var query = new URLSearchParams({
-          subject: "Stay — " + when,
+          subject: "Stay Enquiry — Conlyn House (" + when + ")",
           body: [
             "Hello Conlyn House,",
             "",
-            "I am hoping to stay " + when + ".",
-            "It would be " + who + ".",
-            "Name: " + name,
-            notes ? "Notes: " + notes : "",
+            "I would like to enquire about staying at Conlyn House.",
             "",
-            "Please tell me if those nights are free.",
+            "Dates / Nights: " + when,
+            "Room type: " + tier,
+            "Party: " + who,
+            "Guest Name: " + name,
+            notes ? "Special requests / notes: " + notes : "",
+            "",
+            "Please let me know if you have availability for these nights and how to confirm.",
+            "",
+            "Thank you,",
+            name
           ].filter(Boolean).join("\n"),
         });
+
         link.href = "mailto:" + recipient + "?" + query;
         handoff.hidden = false;
         handoff.focus();

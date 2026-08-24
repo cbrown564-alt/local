@@ -1,0 +1,253 @@
+---
+/**
+ * Conlyn House — The Promenade Walk & Setting Plate.
+ * Sourced to the physical distances and geography stated by the house:
+ * 11 Downs Road / Central Promenade, 9-iron to Royal County Down,
+ * 100m to Slieve Donard, 30m to Main Street, and the 1.5km beachfront promenade.
+ */
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "promenade-title" } = Astro.props;
+
+const landmarks = [
+  {
+    step: "01",
+    distance: "At the door",
+    title: "11 Downs Road & Central Promenade",
+    note: "The purple front door sits right on the seafront, metres from the water of Dundrum Bay.",
+    tag: "Beachfront B&B",
+  },
+  {
+    step: "02",
+    distance: "A mere 9-iron",
+    title: "Royal County Down Golf Club",
+    note: "World-famous championship links course directly accessible from the north end of the promenade.",
+    tag: "Links golf",
+  },
+  {
+    step: "03",
+    distance: "100 metres",
+    title: "The Slieve Donard Hotel & Grounds",
+    note: "Historic Victorian resort grounds and spa just a short walk along the coastal front.",
+    tag: "Landmark estate",
+  },
+  {
+    step: "04",
+    distance: "30 metres",
+    title: "Main Street, Newcastle",
+    note: "Cafés, independent shops, bakeries and dinner spots directly around the corner.",
+    tag: "Town life",
+  },
+  {
+    step: "05",
+    distance: "1.5 kilometres",
+    title: "Central Promenade Walkway",
+    note: "Paved coastal stroll along Dundrum Bay with panoramic views of Slieve Donard sloping to the sea.",
+    tag: "Bay walk",
+  },
+];
+---
+
+<div class="ch-walk-plate" aria-labelledby={headingId}>
+  <div class="ch-walk-head">
+    <span class="ch-walk-badge">Seaside setting · Newcastle</span>
+    <h3 id={headingId}>Metres from the water. A 9-iron from the links.</h3>
+    <p class="ch-walk-desc">
+      11 Downs Road sits right where Central Promenade meets the beach.
+      Every distance is measured from the purple front door.
+    </p>
+  </div>
+
+  <div class="ch-walk-diagram" aria-hidden="true">
+    <svg class="ch-walk-svg" viewBox="0 0 800 160" fill="none">
+      <!-- Coastline wave pattern -->
+      <path
+        d="M0 130 C120 110, 220 145, 340 125 C460 105, 580 140, 700 120 C740 115, 780 125, 800 122"
+        stroke="var(--ch-brass)"
+        stroke-width="1.8"
+        stroke-dasharray="4 4"
+        opacity="0.55"
+      />
+      <path
+        d="M0 140 C140 120, 260 155, 380 135 C500 115, 620 150, 740 130 L800 135"
+        stroke="var(--ch-brass)"
+        stroke-width="2.2"
+        opacity="0.85"
+      />
+      <!-- Connection line connecting milestones -->
+      <line x1="80" y1="60" x2="720" y2="60" stroke="#cbd6e2" stroke-width="2" />
+      <!-- Station nodes -->
+      <circle cx="80" cy="60" r="10" fill="var(--ch-purple-door)" stroke="var(--ch-brass-bright)" stroke-width="2.5" />
+      <circle cx="240" cy="60" r="7" fill="#ffffff" stroke="var(--ch-dusk-deep)" stroke-width="2" />
+      <circle cx="400" cy="60" r="7" fill="#ffffff" stroke="var(--ch-dusk-deep)" stroke-width="2" />
+      <circle cx="560" cy="60" r="7" fill="#ffffff" stroke="var(--ch-dusk-deep)" stroke-width="2" />
+      <circle cx="720" cy="60" r="7" fill="#ffffff" stroke="var(--ch-dusk-deep)" stroke-width="2" />
+    </svg>
+  </div>
+
+  <ol class="ch-walk-grid" role="list">
+    {landmarks.map((item) => (
+      <li class="ch-walk-node">
+        <div class="ch-walk-meta">
+          <span class="ch-walk-step">{item.step}</span>
+          <span class="ch-walk-dist">{item.distance}</span>
+        </div>
+        <h4 class="ch-walk-title">{item.title}</h4>
+        <p class="ch-walk-copy">{item.note}</p>
+        <span class="ch-walk-tag">{item.tag}</span>
+      </li>
+    ))}
+  </ol>
+
+  <p class="ch-walk-foot">
+    <span>Newcastle, County Down · BT33 0AG</span>
+    <span class="ch-walk-foot-note">Indicative distances as published by the house</span>
+  </p>
+</div>
+
+<style>
+  .ch-walk-plate {
+    box-sizing: border-box;
+    margin: clamp(40px, 7vw, 72px) auto;
+    padding: clamp(28px, 4vw, 48px);
+    background: #e5edf4;
+    border: 1px solid #ccd8e4;
+    border-radius: 12px;
+  }
+
+  .ch-walk-head {
+    max-width: 36rem;
+    margin-bottom: 28px;
+  }
+
+  .ch-walk-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ch-brass);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .ch-walk-head h3 {
+    margin: 0 0 10px;
+    font-family: var(--ch-serif);
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ch-dusk-deep);
+  }
+
+  .ch-walk-desc {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ch-ink-soft);
+  }
+
+  .ch-walk-diagram {
+    display: block;
+    margin: 20px 0 12px;
+  }
+
+  .ch-walk-svg {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    overflow: visible;
+  }
+
+  .ch-walk-grid {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+  }
+
+  .ch-walk-node {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #d4e0ec;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(20, 30, 45, 0.04);
+  }
+
+  .ch-walk-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .ch-walk-step {
+    font-family: var(--ch-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ch-purple-door);
+  }
+
+  .ch-walk-dist {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ch-brass);
+  }
+
+  .ch-walk-title {
+    margin: 0 0 6px;
+    font-family: var(--ch-serif);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ch-dusk-deep);
+  }
+
+  .ch-walk-copy {
+    margin: 0 0 12px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ch-ink-soft);
+    flex-grow: 1;
+  }
+
+  .ch-walk-tag {
+    align-self: flex-start;
+    padding: 3px 8px;
+    background: #eef3f8;
+    border-radius: 4px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ch-purple-door);
+    font-weight: 600;
+  }
+
+  .ch-walk-foot {
+    margin: 24px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid #ccd8e4;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ch-ink-soft);
+  }
+
+  .ch-walk-foot-note {
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .ch-walk-diagram {
+      display: none;
+    }
+  }
+</style>
