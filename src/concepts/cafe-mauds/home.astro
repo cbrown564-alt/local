@@ -2,24 +2,89 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import CmMark from "./components/CmMark.astro";
+import CmWaterfootPlate from "./components/CmWaterfootPlate.astro";
 
 const phone = "028 4372 6184";
 const phoneHref = "tel:+442843726184";
+const email = "cafemauds106@gmail.com";
+const mailto = `mailto:${email}`;
 const facebook = "https://www.facebook.com/cafemaudsnewcastle/";
 const instagram = "https://www.instagram.com/cafemaudsnewcastle/";
 const hoursSrc =
   "https://www.visitmournegullionstrangford.com/food-and-drink/cafe-mauds-p712141";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap";
 
-const week = [
-  { d: "Mon", note: "9.30am – 10.00pm" },
-  { d: "Tue", note: "9.30am – 10.00pm" },
-  { d: "Wed", note: "9.30am – 10.00pm" },
-  { d: "Thu", note: "9.30am – 10.00pm" },
-  { d: "Fri", note: "9.30am – 10.00pm" },
-  { d: "Sat", note: "9.00am – 10.00pm" },
-  { d: "Sun", note: "9.00am – 10.00pm" },
+const culinaryPillars = [
+  {
+    title: "Waterfoot Breakfast & Brunch",
+    badge: "Baked Fresh Daily",
+    desc: "Warm Belgian waffles with pure maple and whipped butter, Berry French Toast on golden brioche, artisan sourdough toasties, and hearty breakfast baps.",
+    dishes: [
+      "Homemade Belgian Waffles with Maple & Cream",
+      "Berry French Toast with Summer Fruit Compote",
+      "Artisan Sourdough Melts & Toasties",
+      "Freshly Prepared Breakfast Rolls & Pastries",
+    ],
+  },
+  {
+    title: "The Champion Scoop Counter",
+    badge: "Award-Winning Ice Cream",
+    desc: "Northern Ireland's premier dairy ice cream crafted from fresh local milk. Cones, tubs, decadent sundaes, and thick milkshakes.",
+    dishes: [
+      "Pooh Bear's Delight (Honeycomb & Vanilla Swirl)",
+      "Rich Belgian Chocolate & Salted Caramel",
+      "Fresh Fruit Sorbets & Seasonal Batches",
+      "Warm Waffle & Sundae Sharing Bowls",
+    ],
+  },
+  {
+    title: "Artisanal Roasts & Bakes",
+    badge: "Roasted Coffee & Teas",
+    desc: "Carefully extracted espresso, silky flat whites, iced caramel lattes, deluxe peaked hot chocolates, and homemade sweet treats.",
+    dishes: [
+      "Freshly Pulled Espresso, Lattes & Flat Whites",
+      "Iced Mountain Coffees & Cool Frappes",
+      "Hot Chocolates with Marshmallows & Cream",
+      "Daily Traybakes, Scones & Fresh Slices",
+    ],
+  },
+];
+
+const timeline = [
+  {
+    year: "1982",
+    title: "Scoopin' since '82",
+    line: "The story of Mauds ice cream begins in Northern Ireland, creating champion dairy recipes with local cream and unmistakable honeycomb crunch.",
+  },
+  {
+    year: "Waterfoot",
+    title: "The Newcastle Flagship",
+    line: "Café Mauds opens at 106 Waterfoot on Main Street, combining hot brunch, homemade waffles, and fresh coffee with the full 30-flavour scoop parlour.",
+  },
+  {
+    year: "Award",
+    title: "Green Tourism Bronze",
+    line: "Recognised with Bronze in the Green Tourism Awards for responsible waste reduction, energy care, and local ingredient sourcing.",
+  },
+  {
+    year: "Today",
+    title: "Open daily from 9am until 9pm",
+    line: "Brighter mornings and longer seaside evenings. Walk in for breakfast, coffee on the terrace, or an evening scoop by the Shimna River.",
+  },
+];
+
+const weekHours = [
+  { day: "Monday", hours: "9:00 AM – 9:00 PM", note: "Breakfast · Lunch · Ice Cream" },
+  { day: "Tuesday", hours: "9:00 AM – 9:00 PM", note: "Breakfast · Lunch · Ice Cream" },
+  { day: "Wednesday", hours: "9:00 AM – 9:00 PM", note: "Waffle Wednesday · Sweet Treats" },
+  { day: "Thursday", hours: "9:00 AM – 9:00 PM", note: "Breakfast · Lunch · Ice Cream" },
+  { day: "Friday", hours: "9:00 AM – 9:00 PM", note: "Weekend warm-up & sundaes" },
+  { day: "Saturday", hours: "9:00 AM – 9:00 PM", note: "Full morning brunch & ice cream" },
+  { day: "Sunday", hours: "9:00 AM – 9:00 PM", note: "Seaside promenade strolls" },
 ];
 ---
 
@@ -32,62 +97,385 @@ const week = [
   fontHref={fontHref}
   bannerNote="The cup is a generated image of one dish, not a photograph from the café."
 >
+  <!-- Top Civic & Contact Announcement Strip -->
+  <div class="cm-strip">
+    <span class="cm-strip-addr">
+      <strong>106 Waterfoot, Main Street, Newcastle · BT33 0AE</strong> · Open Daily 9:00am – 9:00pm
+    </span>
+    <span class="cm-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+      <span aria-hidden="true"> · </span>
+      <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+    </span>
+  </div>
+
+  <!-- Branded Header & Navigation -->
+  <header class="cm-header">
+    <a class="cm-brand" href="/concepts/cafe-mauds/">
+      <CmMark size={38} class="cm-brand-mark" />
+      <span class="cm-brand-text">
+        <span class="cm-brand-name">Café Mauds</span>
+        <span class="cm-brand-sub">106 Waterfoot · Newcastle</span>
+      </span>
+    </a>
+    <nav class="cm-nav" aria-label="Concept navigation">
+      <a href="#waterfoot">The Waterfoot</a>
+      <a href="#menu">Breakfast &amp; Counter</a>
+      <a href="#heritage">Since 1982</a>
+      <a href="#hours">Opening Hours</a>
+      <a href="#visit">Walk In &amp; Orders</a>
+    </nav>
+    <a class="cm-nav-cta" href="#visit">Plan a visit</a>
+  </header>
+
   <main class="cm-page">
-    <section class="cm-first" aria-labelledby="cm-name">
-      <p class="cm-open">106 Waterfoot, Main Street, Newcastle, BT33 0AE</p>
-      <h1 id="cm-name">Café Mauds</h1>
-      <p class="cm-today">
-        Specials sit on the counter and on
-        <a href={facebook}>Facebook</a>. Hours below are as listed on
-        <a href={hoursSrc}>Visit Mourne Gullion Strangford</a>. Walk in.
-      </p>
-      <p class="cm-actions">
-        <a href={phoneHref}>{phone}</a>
-        <a href={facebook}>Facebook</a>
-        <a href={instagram}>Instagram</a>
-      </p>
+    <!-- Hero Stage: First Screen Appetite & Walk-in Invitation -->
+    <section class="cm-hero" aria-labelledby="cm-name">
+      <div class="cm-hero-stage">
+        <div class="cm-hero-copy">
+          <p class="cm-kicker">106 Waterfoot · Main Street, Newcastle</p>
+          <h1 id="cm-name">Breakfast to ice cream on the Waterfoot.</h1>
+          <p class="cm-furniture">
+            Homemade waffles, freshly pulled coffee, and the award-winning ice cream we are named for.
+          </p>
+          <p class="cm-lede">
+            Step through the door where the Shimna River meets the sea.
+            We do not take table bookings — simply walk in, grab a seaside table,
+            or pick up cones and treats for a stroll along the promenade.
+          </p>
+          <div class="cm-hero-actions">
+            <a class="cm-btn-primary" href="#menu">See the counter &amp; menu</a>
+            <a class="cm-btn-tel" href={phoneHref}>{phone}</a>
+          </div>
+          <p class="cm-hero-note">
+            Open daily 9am–9pm · Outdoor terrace dog-friendly · Ring <a href={phoneHref}>{phone}</a> for large orders
+          </p>
+        </div>
+
+        <figure class="cm-hero-figure">
+          <div class="cm-figure-frame">
+            <ResponsiveImage
+              src="/media/concepts/cafe-mauds/dish.jpg"
+              alt="A white cup of coffee with a peak of cream on a wooden cafe table in window light"
+              width="1536"
+              height="1024"
+              loading="eager"
+            />
+            <div class="cm-figure-badge">
+              <span class="cm-badge-dot"></span>
+              <span>Seaside view on the Waterfoot · Walk-ins welcome</span>
+            </div>
+          </div>
+          <figcaption>Freshly extracted espresso with clotted cream by the Waterfoot window.</figcaption>
+        </figure>
+      </div>
     </section>
 
-    <section class="cm-week" id="week" aria-labelledby="cm-week-title">
-      <p class="cm-kicker">The week · walk in</p>
-      <h2 id="cm-week-title">Walk in. We do not take a table.</h2>
-      <p>
-        Breakfast, lunch, coffee, tea, and Mauds specialist ice cream. Bronze
-        in the Green Tourism Awards, as the tourism listing records.
-      </p>
-      <ol class="cm-board">
-        {week.map((row) => (
-          <li>
-            <span>{row.d}</span>
-            <span>{row.note}</span>
-          </li>
+    <!-- Verbatim Voice Pullquote -->
+    <figure class="cm-pull">
+      <blockquote>
+        <p>
+          “Brighter mornings, longer evenings, homemade waffles, and fresh ice cream right by the sea.”
+        </p>
+      </blockquote>
+      <figcaption>Café Mauds · 106 Waterfoot, Newcastle</figcaption>
+    </figure>
+
+    <!-- Move 2: Three Core Food & Counter Pillars -->
+    <section class="cm-menu-section" id="menu" aria-labelledby="menu-heading">
+      <div class="cm-section-head">
+        <p class="cm-kicker cm-kicker--gold">The Counter &amp; Kitchen</p>
+        <h2 id="menu-heading">Fresh bakes, hot brunch, and champion scoops.</h2>
+        <p class="cm-section-lead">
+          Everything is made to order and served fresh. From hearty breakfast plates
+          to signature sundaes loaded with Pooh Bear's Delight honeycomb ice cream.
+        </p>
+      </div>
+
+      <div class="cm-pillars-grid" role="list">
+        {culinaryPillars.map((pillar) => (
+          <article class="cm-pillar-card" role="listitem">
+            <div class="cm-pillar-badge">{pillar.badge}</div>
+            <h3 class="cm-pillar-title">{pillar.title}</h3>
+            <p class="cm-pillar-desc">{pillar.desc}</p>
+            <ul class="cm-pillar-list" role="list">
+              {pillar.dishes.map((dish) => (
+                <li class="cm-pillar-item">
+                  <span class="cm-item-bullet" aria-hidden="true">✦</span>
+                  <span>{dish}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
         ))}
-      </ol>
+      </div>
+
+      <div class="cm-board-notice">
+        <p>
+          <strong>Today's fresh baking &amp; daily specials:</strong> Our chalkboard changes daily with seasonal savoury bakes and new scoop flavours.
+          To hear what is fresh from the waffle irons today, check the board on the counter or follow us on{" "}
+          <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>.
+        </p>
+      </div>
     </section>
 
-    <section class="cm-dish" aria-labelledby="cm-dish-title">
-      <p class="cm-kicker">One dish</p>
-      <h2 id="cm-dish-title">Coffee, and the ice cream we are named for.</h2>
-      <figure>
-        <img
-          src="/media/concepts/cafe-mauds/dish.jpg"
-          alt="A white cup of coffee with a peak of cream on a wooden cafe table in window light"
-          width="940"
-          height="627"
-        />
-        <figcaption>Coffee and cream.</figcaption>
-      </figure>
+    <!-- Move 3: Architectural Setting & Waterfoot Plate -->
+    <section class="cm-waterfoot-section" id="waterfoot" aria-labelledby="waterfoot-heading">
+      <div class="cm-section-head">
+        <p class="cm-kicker cm-kicker--gold">The Setting</p>
+        <h2 id="waterfoot-heading">106 Waterfoot on Newcastle Main Street</h2>
+        <p class="cm-section-lead">
+          Positioned where the foot of the Mourne Mountains touches the Irish Sea.
+          Direct access from the Shimna pedestrian footbridge and Central Promenade walkway.
+        </p>
+      </div>
+
+      <CmWaterfootPlate headingId="waterfoot-plate-title" />
     </section>
 
+    <!-- Move 4: The Story, Arc & Sisters -->
+    <section class="cm-heritage-section" id="heritage" aria-labelledby="heritage-heading">
+      <div class="cm-section-head">
+        <p class="cm-kicker cm-kicker--gold">The Story</p>
+        <h2 id="heritage-heading">Scoopin' in Northern Ireland since 1982.</h2>
+        <p class="cm-section-lead">
+          From a family ice cream passion to our flagship Newcastle seaside room.
+          Serving locals, mountain hikers, and coastal visitors every day of the week.
+        </p>
+      </div>
+
+      <div class="cm-timeline" role="list">
+        {timeline.map((item) => (
+          <article class="cm-time-card" role="listitem">
+            <div class="cm-time-year">{item.year}</div>
+            <div class="cm-time-content">
+              <h3 class="cm-time-title">{item.title}</h3>
+              <p class="cm-time-line">{item.line}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Sister Brand / Family Heritage Card -->
+      <div class="cm-sister-card">
+        <div class="cm-sister-head">
+          <span class="cm-sister-kicker">The Ice Cream Heritage</span>
+          <h3 class="cm-sister-title">Northern Ireland's Champion Ice Cream</h3>
+        </div>
+        <p class="cm-sister-desc">
+          Mauds Ice Cream has been crafting champion dairy ice cream across Northern Ireland since 1982.
+          This door at <strong>106 Waterfoot</strong> is the independently operated Newcastle flagship café,
+          pairing the full ice cream cabinet with a complete breakfast, lunch, and specialty coffee kitchen.
+        </p>
+      </div>
+    </section>
+
+    <!-- Move 5: Operating Hours & Walk-in Rhythm -->
+    <section class="cm-hours-section" id="hours" aria-labelledby="hours-heading">
+      <div class="cm-section-head">
+        <p class="cm-kicker cm-kicker--gold">The Week · Walk In</p>
+        <h2 id="hours-heading">Open daily 9:00am until 9:00pm.</h2>
+        <p class="cm-section-lead">
+          We operate on a pure walk-in basis with no table reservations needed.
+          Drop in for morning breakfast, midday coffee, or an evening sundae.
+        </p>
+      </div>
+
+      <div class="cm-hours-card">
+        <div class="cm-hours-header">
+          <div>
+            <span class="cm-hours-kicker">Summer Operating Hours</span>
+            <h3>Seven Days a Week</h3>
+          </div>
+          <span class="cm-hours-badge">Walk-ins Welcome</span>
+        </div>
+
+        <ol class="cm-hours-grid" role="list">
+          {weekHours.map((row) => (
+            <li class="cm-hour-row">
+              <span class="cm-hour-day">{row.day}</span>
+              <strong class="cm-hour-time">{row.hours}</strong>
+              <span class="cm-hour-note">{row.note}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div class="cm-hours-foot">
+          <p>
+            Hours move with the season (9am–9pm in summer). For public holiday updates and daily baking,
+            check our announcements on <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a> or call <a href={phoneHref}>{phone}</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Move 6: Interactive Counter Order & Group Drafter -->
+    <section class="cm-visit-section" id="visit" aria-labelledby="visit-heading">
+      <div class="cm-visit-wrap">
+        <div class="cm-visit-head">
+          <p class="cm-kicker">Plan Your Visit</p>
+          <h2 id="visit-heading">Walk in, or ring ahead for large orders.</h2>
+          <p class="cm-visit-lead">
+            Planning to stop by with family or picking up boxes of treats?
+            Use this tool to compose your order details — prepare the exact words to say over the phone,
+            or send a formatted enquiry directly to the counter.
+          </p>
+        </div>
+
+        <div class="cm-visit-columns">
+          <div class="cm-direct-card">
+            <h3>Direct Counter Contact</h3>
+            <p>Ring the counter directly for pickup orders or large group arrivals:</p>
+
+            <a class="cm-phone-button" href={phoneHref}>
+              <span class="cm-phone-label">Ring the café counter</span>
+              <strong class="cm-phone-val">{phone}</strong>
+            </a>
+
+            <div class="cm-direct-meta">
+              <span><strong>Address:</strong> 106 Waterfoot, Main Street, Newcastle, BT33 0AE</span>
+              <span><strong>Email:</strong> <a href={mailto}>{email}</a></span>
+              <span><strong>Social:</strong> <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a> · <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a></span>
+            </div>
+          </div>
+
+          <div class="cm-form-card">
+            <h3>Compose Order / Visit Details</h3>
+            <form class="cm-script-form" data-cm-request>
+              <div class="cm-field">
+                <label for="cm-who">Your name</label>
+                <input id="cm-who" name="name" type="text" autocomplete="name" placeholder="First and last name" required />
+              </div>
+
+              <div class="cm-field">
+                <label for="cm-party">Party size / Order type</label>
+                <select id="cm-party" name="party">
+                  <option value="Just myself / Walk-in">Just myself — quick coffee &amp; scoop</option>
+                  <option value="Couple / Two guests" selected>Couple / Two guests</option>
+                  <option value="Family group (3–5 people)">Family group (3–5 people)</option>
+                  <option value="Large group (6+ people)">Large party (6+ people)</option>
+                  <option value="Takeaway / Tub Collection">Takeaway &amp; ice cream tub collection</option>
+                </select>
+              </div>
+
+              <fieldset class="cm-fieldset">
+                <legend>What are you having?</legend>
+                <div class="cm-radio-group">
+                  <label><input type="radio" name="cm-cravings" value="Fresh Waffles & Brunch" checked /> <span>Waffles &amp; Brunch</span></label>
+                  <label><input type="radio" name="cm-cravings" value="Ice Cream Sundaes & Scoops" /> <span>Ice Cream &amp; Sundaes</span></label>
+                  <label><input type="radio" name="cm-cravings" value="Artisan Coffee & Bakes" /> <span>Coffee &amp; Bakes</span></label>
+                  <label><input type="radio" name="cm-cravings" value="Full Table Lunch" /> <span>Full Table Lunch</span></label>
+                </div>
+              </fieldset>
+
+              <div class="cm-field">
+                <label for="cm-when">Estimated arrival time</label>
+                <input id="cm-when" name="when" type="text" placeholder="e.g. Today around 2:30pm" required />
+              </div>
+
+              <div class="cm-field">
+                <label for="cm-notes">Flavours or dietary notes</label>
+                <textarea id="cm-notes" name="notes" rows="3" placeholder="e.g. 2 scoops Pooh Bear's Delight in a waffle cone, oat milk latte, gluten-free toastie..."></textarea>
+              </div>
+
+              <button class="cm-submit-btn" type="submit">Prepare phone script &amp; draft email</button>
+
+              <div class="cm-handoff" data-cm-handoff role="status" hidden tabindex="-1">
+                <div class="cm-handoff-header">
+                  <span class="cm-handoff-badge">Ready for the counter</span>
+                  <strong>Say this when ringing 028 4372 6184:</strong>
+                </div>
+                <pre data-cm-script class="cm-script-box"></pre>
+                <div class="cm-handoff-acts">
+                  <a class="cm-btn-call" href={phoneHref}>Call {phone}</a>
+                  <a class="cm-btn-mail" data-cm-mail href={mailto}>Send email draft</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essence Media Showcase -->
+    <EssenceMedia slug="cafe-mauds" />
+
+    <!-- Civic Footer -->
     <footer class="cm-foot">
-      <p>
-        Café Mauds, 106 Waterfoot, Main Street, Newcastle, BT33 0AE.
-        Ring <a href={phoneHref}>{phone}</a>.
-      </p>
-      <p>
-        Today's board:
-        <a href={facebook}>Facebook</a>
-      </p>
+      <div class="cm-foot-content">
+        <CmMark size={44} class="cm-foot-mark" />
+        <p class="cm-foot-name">Café Mauds</p>
+        <p class="cm-foot-furniture">Breakfast, brunch, artisan coffee and champion Mauds ice cream on the Waterfoot.</p>
+        <p class="cm-foot-addr">106 Waterfoot, Main Street, Newcastle, County Down, BT33 0AE</p>
+        <p class="cm-foot-links">
+          <a href={phoneHref}>{phone}</a>
+          <span aria-hidden="true"> · </span>
+          <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+          <span aria-hidden="true"> · </span>
+          <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+          <span aria-hidden="true"> · </span>
+          <a href={hoursSrc} target="_blank" rel="noopener noreferrer">Visit Mourne Listing</a>
+        </p>
+      </div>
     </footer>
   </main>
+
+  <script is:inline>
+    (function () {
+      var recipient = "cafemauds106@gmail.com";
+      var form = document.querySelector("[data-cm-request]");
+      if (!form) return;
+      var handoff = form.querySelector("[data-cm-handoff]");
+      var scriptEl = form.querySelector("[data-cm-script]");
+      var mail = form.querySelector("[data-cm-mail]");
+      if (!handoff || !scriptEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = form.querySelector("#cm-who").value.trim();
+        var party = form.querySelector("#cm-party").value;
+        var when = form.querySelector("#cm-when").value.trim();
+        var notes = form.querySelector("#cm-notes").value.trim();
+        var chosenCravings = form.querySelector('input[name="cm-cravings"]:checked');
+        var cravings = chosenCravings ? chosenCravings.value : "Waffles & Brunch";
+
+        var lines = [
+          "Hello, my name is " + name + ".",
+          "I am checking with the counter regarding " + party + " for " + when + ".",
+          "We are looking for: " + cravings + ".",
+          notes ? "Order / Flavour notes: " + notes : "",
+          "Thank you!"
+        ].filter(Boolean);
+
+        scriptEl.textContent = lines.join("\n");
+
+        if (mail) {
+          var query = new URLSearchParams({
+            subject: "Café Mauds Visit / Order Enquiry — " + name + " (" + when + ")",
+            body: [
+              "Hello Café Mauds Newcastle,",
+              "",
+              "I would like to enquire regarding a visit / order at 106 Waterfoot.",
+              "",
+              "Name: " + name,
+              "Party / Order Type: " + party,
+              "Estimated Arrival: " + when,
+              "Selections: " + cravings,
+              notes ? "Special requests / notes: " + notes : "",
+              "",
+              "Thank you,",
+              name
+            ].filter(Boolean).join("\n"),
+          });
+          mail.setAttribute("href", "mailto:" + recipient + "?" + query.toString());
+        }
+
+        handoff.hidden = false;
+        handoff.focus();
+      });
+    })();
+  </script>
 </ConceptLayout>

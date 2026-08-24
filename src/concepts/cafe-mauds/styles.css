@@ -1,109 +1,1181 @@
-/* Café Mauds — meal. Board first. Name biggest. No reserve form. */
+/* Café Mauds — Flagship on the Waterfoot, Newcastle */
 body.concept-mauds {
-  --cm-paper: #fff6ea;
+  --cm-paper: #fff9f2;
+  --cm-cream: #fffdf9;
+  --cm-cream-deep: #f7ede2;
   --cm-ink: #2a1810;
-  --cm-ink-soft: #6a4a38;
-  --cm-berry: #a33a3a;
-  --cm-berry-deep: #6a2424;
-  --cm-cream: #fffdf8;
+  --cm-ink-soft: #634335;
+  --cm-ink-muted: #8c6858;
+  --cm-berry: #9c2e2e;
+  --cm-berry-deep: #681c1c;
+  --cm-berry-glow: rgba(156, 46, 46, 0.12);
+  --cm-gold: #b37322;
+  --cm-gold-soft: #fbf0e0;
+  --cm-border: rgba(99, 67, 53, 0.15);
+  --cm-border-strong: rgba(104, 28, 28, 0.28);
+  --cm-shadow: 0 12px 32px rgba(42, 24, 16, 0.08);
+  --cm-radius: 10px;
   --concept-accent: var(--cm-berry);
   margin: 0;
   background: var(--cm-paper);
   color: var(--cm-ink);
-  font-family: Nunito, "Segoe UI", sans-serif;
+  font-family: Nunito, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.cm-page { display: block; }
+/* Base resets & typography */
+.cm-page {
+  display: block;
+  overflow-x: hidden;
+}
 
-.cm-first {
-  min-height: 100svh;
-  padding: clamp(40px, 8vh, 88px) clamp(16px, 5vw, 64px) 48px;
-  background: var(--cm-cream);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+a {
+  color: inherit;
+  transition: color 0.15s ease;
 }
-.cm-open {
-  margin: 0 0 12px;
-  font-size: 13px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--cm-berry);
-}
-.cm-first h1 {
-  margin: 0;
-  font-family: "Abril Fatface", Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(56px, 13vw, 128px);
-  line-height: .86;
-}
-.cm-today {
-  max-width: 36rem;
-  margin: 22px 0 0;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: var(--cm-ink-soft);
-}
-.cm-today a, .cm-actions a, .cm-foot a { color: var(--cm-berry-deep); }
-.cm-actions {
+
+/* Announcement & Contact Strip */
+.cm-strip {
+  background: var(--cm-berry-deep);
+  color: #fff9f2;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  padding: 8px clamp(16px, 4vw, 48px);
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 28px;
-  margin-top: 28px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
 }
 
-.cm-week {
-  padding: clamp(40px, 7vw, 80px) clamp(16px, 5vw, 64px);
-  background: #3a1814;
-  color: #fff6ea;
+.cm-strip-addr strong {
+  color: #fffdf9;
+  font-weight: 700;
 }
+
+.cm-strip-links a {
+  color: #f7ede2;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cm-strip-links a:hover,
+.cm-strip-links a:focus-visible {
+  color: #ffffff;
+}
+
+/* Branded Header */
+.cm-header {
+  background: var(--cm-cream);
+  border-bottom: 1px solid var(--cm-border);
+  padding: 16px clamp(16px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+}
+
+.cm-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--cm-ink);
+}
+
+.cm-brand-mark {
+  color: var(--cm-berry);
+  flex-shrink: 0;
+}
+
+.cm-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-brand-name {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--cm-berry-deep);
+  letter-spacing: 0.02em;
+}
+
+.cm-brand-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cm-ink-muted);
+}
+
+.cm-nav {
+  display: none;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .cm-nav {
+    display: flex;
+  }
+}
+
+.cm-nav a {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--cm-ink-soft);
+  padding: 6px 2px;
+  position: relative;
+}
+
+.cm-nav a:hover,
+.cm-nav a:focus-visible {
+  color: var(--cm-berry);
+}
+
+.cm-nav-cta {
+  background: var(--cm-berry);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.cm-nav-cta:hover,
+.cm-nav-cta:focus-visible {
+  background: var(--cm-berry-deep);
+  transform: translateY(-1px);
+}
+
+/* Hero Section */
+.cm-hero {
+  padding: clamp(36px, 6vw, 72px) clamp(16px, 4vw, 48px);
+  background: linear-gradient(180deg, var(--cm-cream) 0%, var(--cm-paper) 100%);
+  border-bottom: 1px solid var(--cm-border);
+}
+
+.cm-hero-stage {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .cm-hero-stage {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
 .cm-kicker {
-  margin: 0 0 8px;
-  font-size: 11px;
-  letter-spacing: .2em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cm-berry);
+  margin: 0 0 12px;
+}
+
+.cm-kicker--gold {
+  color: var(--cm-gold);
+}
+
+.cm-hero-copy h1 {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1.05;
+  color: var(--cm-ink);
+  margin: 0 0 20px;
+  font-weight: 400;
+}
+
+.cm-furniture {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cm-berry-deep);
+  margin: 0 0 16px;
+}
+
+.cm-lede {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cm-ink-soft);
+  max-width: 36rem;
+  margin: 0 0 28px;
+}
+
+.cm-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.cm-btn-primary {
+  background: var(--cm-berry);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.cm-btn-primary:hover,
+.cm-btn-primary:focus-visible {
+  background: var(--cm-berry-deep);
+  transform: translateY(-1px);
+}
+
+.cm-btn-tel {
+  background: var(--cm-gold-soft);
+  color: var(--cm-ink);
+  border: 1px solid var(--cm-border-strong);
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.cm-btn-tel:hover,
+.cm-btn-tel:focus-visible {
+  background: #f5dfbe;
+}
+
+.cm-hero-note {
+  font-size: 0.88rem;
+  color: var(--cm-ink-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.cm-hero-note a {
+  color: var(--cm-berry-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cm-hero-figure {
+  margin: 0;
+}
+
+.cm-figure-frame {
+  position: relative;
+  border-radius: var(--cm-radius);
+  overflow: hidden;
+  box-shadow: var(--cm-shadow);
+  border: 1px solid var(--cm-border);
+  background: var(--cm-cream-deep);
+}
+
+.cm-figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cm-figure-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(42, 24, 16, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff9f2;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cm-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  flex-shrink: 0;
+}
+
+.cm-hero-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--cm-ink-muted);
+  text-align: right;
+}
+
+/* Verbatim Voice Pullquote */
+.cm-pull {
+  max-width: 980px;
+  margin: clamp(40px, 6vw, 64px) auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+  text-align: center;
+}
+
+.cm-pull blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.cm-pull blockquote p {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: clamp(1.4rem, 3.2vw, 2.3rem);
+  line-height: 1.25;
+  color: var(--cm-berry-deep);
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.cm-pull figcaption {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cm-ink-muted);
+}
+
+/* Section Headings */
+.cm-section-head {
+  max-width: 780px;
+  margin: 0 auto clamp(32px, 5vw, 48px);
+  text-align: center;
+}
+
+.cm-section-head h2 {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--cm-ink);
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.cm-section-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+/* Food & Counter Pillars */
+.cm-menu-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cm-cream);
+  border-top: 1px solid var(--cm-border);
+  border-bottom: 1px solid var(--cm-border);
+}
+
+.cm-pillars-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.cm-pillar-card {
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(42, 24, 16, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cm-pillar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cm-shadow);
+}
+
+.cm-pillar-badge {
+  align-self: flex-start;
+  background: var(--cm-berry-glow);
+  color: var(--cm-berry-deep);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.cm-pillar-title {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--cm-ink);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+
+.cm-pillar-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--cm-ink-soft);
+  margin: 0 0 20px;
+}
+
+.cm-pillar-list {
+  list-style: none;
+  margin: auto 0 0;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--cm-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cm-pillar-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--cm-ink);
+  font-weight: 600;
+}
+
+.cm-item-bullet {
+  color: var(--cm-gold);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cm-board-notice {
+  max-width: 860px;
+  margin: 36px auto 0;
+  background: var(--cm-gold-soft);
+  border: 1px solid var(--cm-border-strong);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.cm-board-notice p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--cm-ink);
+}
+
+.cm-board-notice a {
+  color: var(--cm-berry-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Waterfoot Architectural Plate */
+.cm-waterfoot-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cm-paper);
+}
+
+.cm-plate {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--cm-cream);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: var(--cm-shadow);
+}
+
+.cm-plate-head {
+  margin-bottom: 24px;
+}
+
+.cm-plate-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cm-berry);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cm-plate-title {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.2;
+  color: var(--cm-ink);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.cm-plate-intro {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--cm-ink-soft);
+  margin: 0;
+  max-width: 44rem;
+}
+
+.cm-plate-stage {
+  margin: 24px 0 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--cm-border);
+  background: #f7ede2;
+}
+
+.cm-plate-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cm-waterfoot-map .mm-generated-map-frame {
+  border: 0;
+  border-radius: 0;
+}
+
+.cm-generated-map-label {
+  position: absolute;
+  z-index: 1;
+  padding: 0.28em 0.48em;
+  color: var(--cm-ink);
+  background: color-mix(in srgb, var(--cm-cream) 88%, transparent);
+  border-radius: 3px;
+  box-shadow: 0 1px 6px rgb(77 36 27 / 10%);
+  font-size: clamp(0.65rem, 1.25vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.cm-generated-map-label small {
+  display: block;
+  margin-top: 0.28em;
+  color: var(--cm-ink-soft);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.cm-generated-map-label--mountains { left: 56%; top: 15%; background: transparent; color: var(--cm-ink-soft); box-shadow: none; }
+.cm-generated-map-label--cafe { left: 31%; top: 45%; color: var(--cm-paper); background: var(--cm-berry); }
+.cm-generated-map-label--bridge { left: 70%; top: 62%; }
+.cm-generated-map-label--flagship { left: 31%; top: 43%; }
+.cm-generated-map-label--terrace { left: 17%; top: 57%; }
+.cm-generated-map-label--promenade { left: 67%; top: 67%; }
+.cm-generated-map-label--bay { left: 8%; top: 69%; color: #3f687c; background: rgb(238 248 250 / 72%); box-shadow: none; }
+.cm-generated-map-label--river { left: 69%; top: 75%; color: #3f687c; background: rgb(238 248 250 / 72%); box-shadow: none; }
+.cm-generated-map-label--walkway { left: 80%; top: 83%; color: var(--cm-ink-soft); background: transparent; box-shadow: none; font-size: 0.68rem; }
+
+.cm-plate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cm-plate-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-border);
+  border-radius: 8px;
+}
+
+.cm-plate-num {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--cm-berry);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cm-plate-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-plate-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cm-ink);
+  margin: 0 0 6px;
+}
+
+.cm-plate-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+/* The Story, Arc & Sisters */
+.cm-heritage-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cm-cream);
+  border-top: 1px solid var(--cm-border);
+  border-bottom: 1px solid var(--cm-border);
+}
+
+.cm-timeline {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cm-time-card {
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+@media (min-width: 640px) {
+  .cm-time-card {
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+  }
+}
+
+.cm-time-year {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--cm-berry);
+}
+
+.cm-time-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cm-ink);
+  margin: 0 0 6px;
+}
+
+.cm-time-line {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+.cm-sister-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #301610;
+  color: #fff9f2;
+  border-radius: var(--cm-radius);
+  padding: 28px 32px;
+}
+
+.cm-sister-head {
+  margin-bottom: 10px;
+}
+
+.cm-sister-kicker {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #e8c8b8;
+  display: block;
+  margin-bottom: 4px;
 }
-.cm-week h2, .cm-dish h2 {
-  margin: 0 0 16px;
+
+.cm-sister-title {
   font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: #ffffff;
   font-weight: 400;
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
 }
-.cm-week p { max-width: 38rem; line-height: 1.55; color: #f0d8c8; }
-.cm-board {
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-  max-width: 36rem;
+
+.cm-sister-desc {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: #f0ded6;
+  margin: 0;
 }
-.cm-board li {
-  display: grid;
-  grid-template-columns: 3.5rem 1fr;
+
+.cm-sister-desc strong {
+  color: #ffffff;
+}
+
+/* Operating Hours & Rhythm */
+.cm-hours-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cm-paper);
+}
+
+.cm-hours-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #2a1810;
+  color: #fff9f2;
+  border-radius: var(--cm-radius);
+  padding: clamp(24px, 4vw, 44px);
+  box-shadow: var(--cm-shadow);
+}
+
+.cm-hours-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 16px;
-  padding: 10px 0;
-  border-top: 1px solid #6a3228;
-  font-size: 1.05rem;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 249, 242, 0.15);
 }
-.cm-board li span:first-child {
+
+.cm-hours-kicker {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8c8b8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cm-hours-header h3 {
   font-family: "Abril Fatface", Georgia, serif;
-  letter-spacing: .08em;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 400;
 }
 
-.cm-dish {
-  padding: clamp(40px, 7vw, 80px) clamp(16px, 5vw, 64px);
+.cm-hours-badge {
+  background: var(--cm-berry);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
 }
-.cm-dish figure { margin: 24px 0; }
-.cm-dish img { display: block; width: 100%; height: auto; }
-.cm-dish figcaption {
+
+.cm-hours-grid {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cm-hour-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 249, 242, 0.08);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 600px) {
+  .cm-hour-row {
+    grid-template-columns: 140px 180px 1fr;
+  }
+}
+
+.cm-hour-day {
+  font-weight: 700;
+  color: #f7ede2;
+}
+
+.cm-hour-time {
+  color: #ffd899;
+  font-weight: 700;
+}
+
+.cm-hour-note {
+  color: #d6b8a8;
+  font-size: 0.88rem;
+}
+
+.cm-hours-foot {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #e8c8b8;
+}
+
+.cm-hours-foot a {
+  color: #ffd899;
+  text-decoration: underline;
+}
+
+/* Interactive Counter Order & Visit Section */
+.cm-visit-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cm-cream);
+  border-top: 1px solid var(--cm-border);
+}
+
+.cm-visit-wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.cm-visit-head {
+  max-width: 780px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.cm-visit-head h2 {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  color: var(--cm-ink);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+
+.cm-visit-lead {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+.cm-visit-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 880px) {
+  .cm-visit-columns {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.cm-direct-card {
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-direct-card h3 {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.45rem;
+  color: var(--cm-ink);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.cm-direct-card p {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: var(--cm-ink-soft);
+  margin: 0 0 24px;
+}
+
+.cm-phone-button {
+  background: var(--cm-berry);
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+  transition: background 0.15s ease;
+}
+
+.cm-phone-button:hover,
+.cm-phone-button:focus-visible {
+  background: var(--cm-berry-deep);
+}
+
+.cm-phone-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.cm-phone-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.cm-direct-meta {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--cm-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--cm-ink-soft);
+}
+
+.cm-direct-meta a {
+  color: var(--cm-berry-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cm-form-card {
+  background: var(--cm-cream-deep);
+  border: 1px solid var(--cm-border-strong);
+  border-radius: var(--cm-radius);
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: var(--cm-shadow);
+}
+
+.cm-form-card h3 {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.45rem;
+  color: var(--cm-ink);
+  margin: 0 0 20px;
+  font-weight: 400;
+}
+
+.cm-script-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cm-field label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cm-ink);
+}
+
+.cm-field input,
+.cm-field select,
+.cm-field textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border: 1px solid var(--cm-border-strong);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--cm-ink);
+}
+
+.cm-field input:focus-visible,
+.cm-field select:focus-visible,
+.cm-field textarea:focus-visible {
+  outline: 2px solid var(--cm-berry);
+  outline-offset: 1px;
+}
+
+.cm-fieldset {
+  border: 1px solid var(--cm-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 0;
+  background: var(--cm-paper);
+}
+
+.cm-fieldset legend {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cm-ink);
+  padding: 0 6px;
+}
+
+.cm-radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.cm-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--cm-ink-soft);
+  cursor: pointer;
+}
+
+.cm-submit-btn {
+  background: var(--cm-berry);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   margin-top: 8px;
-  font-size: 13px;
-  letter-spacing: .04em;
-  color: var(--cm-ink-soft);
+  transition: background 0.15s ease;
 }
 
+.cm-submit-btn:hover,
+.cm-submit-btn:focus-visible {
+  background: var(--cm-berry-deep);
+}
+
+.cm-handoff {
+  background: #ffffff;
+  border: 2px solid var(--cm-berry);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.cm-handoff-header {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cm-handoff-badge {
+  align-self: flex-start;
+  background: var(--cm-gold-soft);
+  color: var(--cm-gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.cm-script-box {
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  background: var(--cm-paper);
+  border: 1px solid var(--cm-border);
+  border-radius: 6px;
+  padding: 14px;
+  white-space: pre-wrap;
+  color: var(--cm-ink);
+  margin: 0 0 16px;
+}
+
+.cm-handoff-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cm-btn-call {
+  background: var(--cm-berry);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cm-btn-mail {
+  background: var(--cm-paper);
+  color: var(--cm-ink);
+  border: 1px solid var(--cm-border-strong);
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Civic Footer */
 .cm-foot {
-  padding: 20px clamp(16px, 5vw, 64px) 40px;
-  font-size: .95rem;
+  background: var(--cm-paper);
+  border-top: 1px solid var(--cm-border);
+  padding: clamp(36px, 6vw, 64px) clamp(16px, 4vw, 48px);
+  text-align: center;
+}
+
+.cm-foot-content {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cm-foot-mark {
+  color: var(--cm-berry);
+  margin-bottom: 12px;
+}
+
+.cm-foot-name {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--cm-berry-deep);
+  margin: 0 0 6px;
+  font-weight: 400;
+}
+
+.cm-foot-furniture {
+  font-size: 0.94rem;
+  line-height: 1.45;
   color: var(--cm-ink-soft);
+  margin: 0 0 10px;
+}
+
+.cm-foot-addr {
+  font-size: 0.88rem;
+  color: var(--cm-ink-muted);
+  margin: 0 0 16px;
+}
+
+.cm-foot-links {
+  font-size: 0.9rem;
+  color: var(--cm-ink-soft);
+  margin: 0;
+}
+
+.cm-foot-links a {
+  color: var(--cm-berry-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

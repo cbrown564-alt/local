@@ -51,6 +51,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "From Tuesday tea to the plate you look forward to",
     }],
   },
+  "cafe-mauds": {
+    heading: "Breakfast to ice cream on the Waterfoot.",
+    lede: "Homemade waffles, fresh coffee, and award-winning ice cream beside the Shimna and the sea.",
+    frames: [{
+      src: "/media/concepts/cafe-mauds/dish.jpg",
+      alt: "A white cup of coffee with a peak of cream on a wooden cafe table in window light",
+      label: "Fresh coffee and cream by the Waterfoot window",
+    }],
+  },
   "conlyn-house": {
     heading: "Wake to the ocean metres from your room.",
     lede: "Central Promenade at the purple door: a 9-iron from Royal County Down, with panoramic Dundrum Bay and Slieve Donard sloping to the sea.",

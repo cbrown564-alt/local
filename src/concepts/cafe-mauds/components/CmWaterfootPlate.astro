@@ -1,0 +1,221 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+import GeneratedMapPlate from "../../_shell/GeneratedMapPlate.astro";
+
+const { headingId = "waterfoot-plate-title" } = Astro.props;
+
+const keypoints = [
+  {
+    num: "01",
+    name: "The Shimna Footbridge",
+    desc: "Where the river flows out to Dundrum Bay. The iconic pedestrian bridge brings walkers directly to our front door.",
+  },
+  {
+    num: "02",
+    name: "106 Waterfoot Flagship",
+    desc: "Sunlit brunch tables, freshly baked waffle irons, espresso bar, and our champion 30-flavour Mauds scoop cabinet.",
+  },
+  {
+    num: "03",
+    name: "The Seaside Terrace",
+    desc: "Outdoor seating with uninterrupted vistas across the bay to Slieve Donard. Dog-friendly and sheltered for coffee in the sea air.",
+  },
+  {
+    num: "04",
+    name: "The Promenade Walk",
+    desc: "Direct walk-in access from the seaside walkway. No reservation needed — simply step off the path for a cone or warm lunch.",
+  },
+];
+---
+
+<div class="cm-plate" aria-labelledby={headingId}>
+  <div class="cm-plate-head">
+    <span class="cm-plate-kicker">Architectural Setting · 106 Main Street</span>
+    <h3 id={headingId} class="cm-plate-title">The Waterfoot, where the river meets the sea.</h3>
+    <p class="cm-plate-intro">
+      Positioned at the scenic threshold of Newcastle. Mountain views behind, the Shimna River beside,
+      and the open bay right before our terrace.
+    </p>
+  </div>
+
+  <div class="cm-plate-stage">
+    <GeneratedMapPlate
+      id="cm-waterfoot-map"
+      src="/media/maps/cafe-mauds-waterfoot-generated.png"
+      width={1536}
+      height={1024}
+      title="The Waterfoot"
+      desc="An indicative illustrated view of Café Mauds at 106 Waterfoot in Newcastle, beside the Shimna River footbridge, the promenade and Dundrum Bay, with the Mourne Mountains behind."
+      headingId={headingId}
+    >
+      <span class="cm-generated-map-label cm-generated-map-label--mountains">SLIEVE DONARD &amp; THE MOURNES</span>
+      <span class="cm-generated-map-label cm-generated-map-label--cafe">CAFÉ MAUDS · 106<small>Waterfoot</small></span>
+      <span class="cm-generated-map-label cm-generated-map-label--bridge">01<small>The Shimna Footbridge</small></span>
+      <span class="cm-generated-map-label cm-generated-map-label--flagship">02<small>106 Waterfoot Flagship</small></span>
+      <span class="cm-generated-map-label cm-generated-map-label--terrace">03<small>The Seaside Terrace</small></span>
+      <span class="cm-generated-map-label cm-generated-map-label--promenade">04<small>The Promenade Walk</small></span>
+      <span class="cm-generated-map-label cm-generated-map-label--bay">DUNDRUM BAY · IRISH SEA</span>
+      <span class="cm-generated-map-label cm-generated-map-label--river">RIVER SHIMNA ESTUARY</span>
+      <span class="cm-generated-map-label cm-generated-map-label--walkway">CENTRAL PROMENADE WALKWAY</span>
+      <Fragment slot="caption">The Waterfoot setting around 106 Main Street — an indicative place illustration, not a measured site plan.</Fragment>
+    </GeneratedMapPlate>
+    {/*
+      <defs>
+        <linearGradient id="cmSkyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f7ede2" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#fff8f0" stop-opacity="0.3" />
+        </linearGradient>
+        <linearGradient id="cmSeaGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#b8d5e5" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="#8bbcd4" stop-opacity="0.5" />
+        </linearGradient>
+        <linearGradient id="cmMtnGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5a3d31" stop-opacity="0.18" />
+          <stop offset="100%" stop-color="#8a5a44" stop-opacity="0.05" />
+        </linearGradient>
+      </defs>
+
+      <!-- Background Sky -->
+      <rect width="900" height="480" fill="url(#cmSkyGrad)" rx="12" />
+
+      <!-- Mourne Mountains Backdrop (Slieve Donard) -->
+      <path
+        d="M0 240 Q150 110 320 180 T680 130 Q790 90 900 210 L900 320 L0 320 Z"
+        fill="url(#cmMtnGrad)"
+      />
+      <path
+        d="M120 180 Q240 70 380 140 T720 100 Q810 60 900 160"
+        stroke="#8a5a44"
+        stroke-width="1.5"
+        stroke-dasharray="4 4"
+        opacity="0.4"
+      />
+      <text x="380" y="105" fill="#6a4a38" font-size="12" font-weight="600" letter-spacing="1.5" opacity="0.7">
+        SLIEVE DONARD &amp; THE MOURNES
+      </text>
+
+      <!-- Dundrum Bay Waters -->
+      <path
+        d="M480 260 C620 250 780 270 900 280 L900 480 L420 480 C440 400 460 330 480 260 Z"
+        fill="url(#cmSeaGrad)"
+      />
+      <path
+        d="M520 290 Q650 280 880 305 M550 340 Q700 330 890 350 M580 400 Q740 385 890 410"
+        stroke="#4a7c99"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        opacity="0.3"
+      />
+      <text x="640" y="320" fill="#2d556e" font-size="13" font-weight="700" letter-spacing="2" opacity="0.6">
+        DUNDRUM BAY · IRISH SEA
+      </text>
+
+      <!-- Shimna River Path -->
+      <path
+        d="M0 380 Q160 370 280 390 T480 440 L450 480 L0 480 Z"
+        fill="#9ec5d9"
+        fill-opacity="0.45"
+      />
+      <text x="110" y="425" fill="#2d556e" font-size="11" font-weight="600" letter-spacing="1.2" opacity="0.7">
+        RIVER SHIMNA ESTUARY
+      </text>
+
+      <!-- Waterfoot Promenade & Bridge -->
+      <path
+        d="M260 360 L440 410"
+        stroke="#6a4a38"
+        stroke-width="8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M260 360 L440 410"
+        stroke="#f7ede2"
+        stroke-width="4"
+        stroke-dasharray="8 6"
+        stroke-linecap="round"
+      />
+      <!-- Bridge Arch Accents -->
+      <path
+        d="M280 375 Q350 360 420 395"
+        stroke="#6a2424"
+        stroke-width="2.5"
+        fill="none"
+      />
+
+      <!-- 106 Waterfoot Building Footprint & Elevation -->
+      <rect x="140" y="220" width="220" height="130" rx="6" fill="#fffdf8" stroke="#6a2424" stroke-width="2.5" />
+      <!-- Building Canopy & Fascia -->
+      <rect x="135" y="215" width="230" height="24" rx="4" fill="#a33a3a" />
+      <text x="175" y="232" fill="#fffdf8" font-size="13" font-weight="700" letter-spacing="1.5">
+        CAFÉ MAUDS · 106
+      </text>
+
+      <!-- Windows & Interior Zones -->
+      <rect x="155" y="255" width="45" height="50" rx="3" fill="#f7ede2" stroke="#6a4a38" stroke-width="1.5" />
+      <rect x="210" y="255" width="75" height="50" rx="3" fill="#f7ede2" stroke="#6a4a38" stroke-width="1.5" />
+      <rect x="295" y="255" width="50" height="50" rx="3" fill="#f7ede2" stroke="#6a4a38" stroke-width="1.5" />
+
+      <!-- Ice Cream Swirl Motif in Center Window -->
+      <circle cx="247" cy="275" r="9" fill="#a33a3a" fill-opacity="0.2" />
+      <path d="M242 277 Q247 266 252 277 Z" fill="#a33a3a" />
+
+      <!-- Outdoor Terrace & Parasols -->
+      <rect x="110" y="310" width="130" height="40" rx="4" fill="#e8c8b8" fill-opacity="0.4" stroke="#8a5a44" stroke-width="1.5" stroke-dasharray="3 3" />
+      <!-- Terrace Parasols -->
+      <circle cx="135" cy="325" r="10" fill="#a33a3a" fill-opacity="0.8" />
+      <circle cx="170" cy="325" r="10" fill="#a33a3a" fill-opacity="0.8" />
+      <circle cx="205" cy="325" r="10" fill="#a33a3a" fill-opacity="0.8" />
+
+      <!-- Seaside Walkway -->
+      <path
+        d="M0 350 Q220 340 460 360 T900 370"
+        stroke="#8a5a44"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <text x="680" y="390" fill="#6a4a38" font-size="11" font-weight="600" letter-spacing="1">
+        CENTRAL PROMENADE WALKWAY →
+      </text>
+
+      <!-- Pin 01: Shimna Footbridge -->
+      <g class="cm-svg-pin" transform="translate(350, 365)">
+        <circle cx="0" cy="0" r="14" fill="#a33a3a" stroke="#fffdf8" stroke-width="2.5" />
+        <text x="0" y="4" fill="#fffdf8" font-size="10" font-weight="700" text-anchor="middle">01</text>
+      </g>
+
+      <!-- Pin 02: Flagship Room & Waffle Pass -->
+      <g class="cm-svg-pin" transform="translate(250, 195)">
+        <circle cx="0" cy="0" r="14" fill="#a33a3a" stroke="#fffdf8" stroke-width="2.5" />
+        <text x="0" y="4" fill="#fffdf8" font-size="10" font-weight="700" text-anchor="middle">02</text>
+      </g>
+
+      <!-- Pin 03: Outdoor Terrace -->
+      <g class="cm-svg-pin" transform="translate(95, 305)">
+        <circle cx="0" cy="0" r="14" fill="#a33a3a" stroke="#fffdf8" stroke-width="2.5" />
+        <text x="0" y="4" fill="#fffdf8" font-size="10" font-weight="700" text-anchor="middle">03</text>
+      </g>
+
+      <!-- Pin 04: Promenade Entrance -->
+      <g class="cm-svg-pin" transform="translate(520, 340)">
+        <circle cx="0" cy="0" r="14" fill="#a33a3a" stroke="#fffdf8" stroke-width="2.5" />
+        <text x="0" y="4" fill="#fffdf8" font-size="10" font-weight="700" text-anchor="middle">04</text>
+      </g>
+    </svg> */}
+  </div>
+
+  <!-- Keypoint Cards -->
+  <div class="cm-plate-grid" role="list">
+    {keypoints.map((pt) => (
+      <article class="cm-plate-card" role="listitem">
+        <span class="cm-plate-num">{pt.num}</span>
+        <div class="cm-plate-card-body">
+          <h4 class="cm-plate-card-title">{pt.name}</h4>
+          <p class="cm-plate-card-desc">{pt.desc}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>

@@ -58,6 +58,7 @@ const suites = [
   ["test:irelands"],
   ["test:villa-vinci"],
   ["test:conlyn-house"],
+  ["test:cafe-mauds"],
   ["test:where-it-fails"],
   ["test:how-its-made"],
   ["test:why-its-yours"],
