@@ -118,6 +118,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       webm: "/media/concepts/donard-hotel/essence-open-newcastle.webm",
     },
   },
+  "marine-wellness": {
+    heading: "The hands stay the same.",
+    lede: "Twenty years of therapeutic massage, reflexology and restorative care in Newcastle.",
+    frames: [{
+      src: "/media/concepts/marine-wellness/calm.jpg",
+      alt: "AI-generated scene of a calm, sunlit treatment room with soft linen and plants",
+      label: "A calm treatment room",
+    }],
+  },
   "donard-veterinary": {
     heading: "A calm line through every age.",
     lede: "Routine care, help when worry arrives, and kindness across a pet’s whole life.",

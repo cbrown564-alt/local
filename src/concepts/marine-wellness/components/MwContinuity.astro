@@ -1,0 +1,58 @@
+---
+import ResponsiveImage from "../../../site/components/ResponsiveImage.astro";
+import { people, phone, phoneHref } from "../content";
+---
+
+<section class="mw-continuity" id="continuity" aria-labelledby="mw-continuity-title">
+  <div class="mw-continuity-banner">
+    <div class="mw-continuity-head">
+      <p class="mw-kicker">Relocation &amp; continuity</p>
+      <h2 id="mw-continuity-title">
+        If you knew us as Marine Beauty Haven on the Promenade — same hands,
+        same number, new room.
+      </h2>
+      <p class="mw-continuity-body">
+        The clinic is now at Unit 13, 63A Castlewellan Road. The phone has not
+        changed: <a class="mw-link-inline" href={phoneHref}>{phone}</a>. Neither has the diary.
+      </p>
+    </div>
+  </div>
+
+  <div class="mw-people-band" id="practice" aria-labelledby="mw-people-title">
+    <div class="mw-people-head">
+      <p class="mw-kicker">The practice</p>
+      <h2 id="mw-people-title">The hands stay the same.</h2>
+      <p class="mw-people-lead">
+        Decades of continuous client care in Newcastle. The tenures carry the practice.
+      </p>
+    </div>
+
+    <div class="mw-practice-layout">
+      <ul class="mw-people-grid" role="list">
+        {people.map((person, idx) => (
+          <li class="mw-person-card">
+            <div class="mw-person-num" aria-hidden="true">0{idx + 1}</div>
+            <div class="mw-person-main">
+              <h3 class="mw-person-name">{person.name}</h3>
+              <span class="mw-person-tenure">{person.tenure}</span>
+              <p class="mw-person-note">{person.note}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <figure class="mw-hands-visual">
+        <div class="mw-hands-frame">
+          <ResponsiveImage
+            src="/media/concepts/marine-wellness/hands.jpg"
+            alt="Therapist hands resting gently beside warm massage stones and botanical oils on natural linen"
+            width="1536"
+            height="1024"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>Continuous care — therapeutic massage and restorative sessions in Newcastle.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+---
+import { booksy, rules, treatments } from "../content";
+---
+
+<section class="mw-booking-section" id="booking" aria-labelledby="mw-rules-title">
+  <div class="mw-rules-band">
+    <div class="mw-rules-head">
+      <p class="mw-kicker">Before you book</p>
+      <h2 id="mw-rules-title">Four house rules</h2>
+      <p class="mw-rules-lead">
+        Transparent booking conditions to respect your appointment and ensure unhurried care.
+      </p>
+    </div>
+
+    <ul class="mw-rules-list" role="list">
+      {rules.map((rule, idx) => (
+        <li class="mw-rule-item">
+          <span class="mw-rule-num" aria-hidden="true">0{idx + 1}</span>
+          <span class="mw-rule-text">{rule}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mw-rules-diary">
+      Prices and slots live in the diary: <a class="mw-link-diary" href={booksy}>Open Booksy</a>.
+    </p>
+  </div>
+
+  <div class="mw-desk-band" id="desk" aria-labelledby="mw-desk-title">
+    <div class="mw-desk-head">
+      <p class="mw-kicker">Who needs seen, and when</p>
+      <h2 id="mw-desk-title">Write it. Then open the diary.</h2>
+      <p class="mw-desk-lead">
+        Prices and slots live on Booksy, updated there. A few treatments as
+        listed on 23 August 2026 sit below — they move. Take the slot on Booksy.
+      </p>
+    </div>
+
+    <div class="mw-desk-grid">
+      <div class="mw-treatments-col">
+        <h3 class="mw-subheading">Restorative treatments</h3>
+        <ul class="mw-treatment-cards" role="list">
+          {treatments.map((t) => (
+            <li class="mw-treatment-card">
+              <span class="mw-treatment-focus">{t.focus}</span>
+              <strong class="mw-treatment-name">{t.name}</strong>
+              <span class="mw-treatment-duration">{t.line}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="mw-form-col">
+        <div class="mw-script-card">
+          <h3 class="mw-subheading">Prepare your booking notes</h3>
+          <p class="mw-form-note">
+            Note what you are looking for so your details are ready when you open Booksy.
+          </p>
+
+          <form class="mw-script" data-mw-script>
+            <label class="mw-field">
+              <span>Who needs seen</span>
+              <input name="who" type="text" placeholder="Your name" required />
+            </label>
+            <label class="mw-field">
+              <span>When you hope to come</span>
+              <input name="when" type="text" placeholder="This week if you can" required />
+            </label>
+            <label class="mw-field">
+              <span>What you came for</span>
+              <input name="what" type="text" placeholder="Massage, facial, or ask Patricia" />
+            </label>
+            <button class="mw-submit-btn" type="submit">Keep the words for Booksy</button>
+          </form>
+
+          <div class="mw-ready" data-mw-ready hidden tabindex="-1">
+            <p class="mw-ready-text" data-mw-ready-script></p>
+            <a class="mw-ready-cta" href={booksy}>Open Booksy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
