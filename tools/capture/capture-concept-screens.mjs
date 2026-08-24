@@ -45,6 +45,16 @@ const CONCEPTS = {
   "tool-centre": { before: "https://www.facebook.com/Toolcentreplanthire/", beforeBudgetMs: 8000 },
   "kent-amusements": { before: "https://www.facebook.com/kentamusementsnewcastle/", beforeBudgetMs: 8000 },
   "newcastle-chamber": { before: "https://www.facebook.com/newcastlechamberofcommerce/", beforeBudgetMs: 8000 },
+  "bear-necessities": { before: "https://www.facebook.com/Bearnecessitiespartyvenue", beforeBudgetMs: 8000 },
+  "arley-house": { before: "http://www.arleyhousedundrum.co.uk/", beforeBudgetMs: 6000 },
+  "armstrong-opticians": { before: "https://www.facebook.com/Armstrongopticians", beforeBudgetMs: 8000 },
+  "irelands-appliance-centre": { before: "https://www.irelandsappliances.com/", beforeBudgetMs: 6000 },
+  "villa-vinci": { before: "https://www.villavinci.co.uk/", beforeBudgetMs: 6000 },
+  "conlyn-house": { before: "http://conlynhouse.com/", beforeBudgetMs: 6000 },
+  "binghams-menswear": { before: "http://www.binghamsmenswear.co.uk/", beforeBudgetMs: 6000 },
+  "cafe-mauds": { before: "https://www.facebook.com/cafemaudsnewcastle/", beforeBudgetMs: 8000 },
+  "cocos-adventure-playground": { before: "https://www.cocosplayground.co.uk/", beforeBudgetMs: 6000 },
+  "marine-wellness": { before: "https://www.facebook.com/marinebeauty.haven", beforeBudgetMs: 8000 },
 };
 
 // Milestone 2 second surfaces. Key is "<slug>/<asset>". conceptPath is the local

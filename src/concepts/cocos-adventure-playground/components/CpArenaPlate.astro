@@ -8,34 +8,49 @@ const { headingId = "arena-plate-title" } = Astro.props;
 const keypoints = [
   {
     num: "01",
+    icon: "🛝",
     name: "Multi-Level Adventure Kingdom",
-    desc: "Giant spiral slides, padded climbing towers, ball pools, rope bridges, and tunnels for ages up to 14.",
+    desc: "Giant dual spiral tube slides, padded climbing towers, turquoise ball pools, rope bridges, and tunnels for ages 4 to 14.",
+    color: "#ff5a1f",
+    bg: "#fff2ec",
   },
   {
     num: "02",
+    icon: "🧸",
     name: "Soft Sensory Toddler Zone",
-    desc: "Enclosed, gentle play space with foam shapes, mini-slides, and sensory mats designed specially for babies and toddlers under 3.",
+    desc: "Enclosed, gentle padded soft play with foam rainbow blocks, mini-slides, and sensory mats designed specially for under 3s.",
+    color: "#f43f5e",
+    bg: "#fff1f4",
   },
   {
     num: "03",
+    icon: "☕",
     name: "Mezzanine Viewing Café",
-    desc: "Comfortable seating with barista-brewed coffee, hot food, and snacks with an unobstructed view across the whole play frame.",
+    desc: "Elevated gallery seating serving fresh barista coffee, artisan cakes, and hot food with full line-of-sight across the arena.",
+    color: "#0ea5e9",
+    bg: "#f0f9ff",
   },
   {
     num: "04",
-    name: "Dedicated Party Rooms",
-    desc: "Private celebration spaces hosting the Coco and Bumper birthday parties with hot food, drinks, and party bags.",
+    icon: "🎂",
+    name: "Dedicated Party Suites",
+    desc: "Private celebration rooms hosting the Coco & Bumper birthday parties with hot kids meals, drinks, ice cream, and party bags.",
+    color: "#8b5cf6",
+    bg: "#f5f3ff",
   },
 ];
 ---
 
 <div class="cp-plate" aria-labelledby={headingId}>
   <div class="cp-plate-head">
-    <span class="cp-plate-kicker">Play Arena &amp; Location Schematic · 27A Central Promenade</span>
-    <h3 id={headingId} class="cp-plate-title">Inside Coco's: Two floors of family adventure.</h3>
+    <div class="cp-plate-badge">
+      <span class="cp-badge-icon" aria-hidden="true">🗺️</span>
+      <span>27A Central Promenade · Arena Map</span>
+    </div>
+    <h3 id={headingId} class="cp-plate-title">Inside the Play Kingdom</h3>
     <p class="cp-plate-intro">
       Located directly opposite the Newcastle Centre on Central Promenade.
-      Designed with clear sightlines so parents can relax in the café while kids explore the frame.
+      Explore our two-level adventure layout designed for maximum fun and complete peace of mind for parents.
     </p>
   </div>
 
@@ -45,133 +60,174 @@ const keypoints = [
       viewBox="0 0 900 480"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Schematic floorplan and arena layout of Coco's Adventure Playground Newcastle"
+      aria-label="Playful illustrated schematic floorplan of Coco's Adventure Playground Newcastle"
     >
       <defs>
-        <linearGradient id="cpFloorGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fff8e8" />
-          <stop offset="100%" stop-color="#faeed4" />
+        <linearGradient id="cpPlateSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f0f9ff" />
+          <stop offset="100%" stop-color="#ffffff" />
         </linearGradient>
-        <linearGradient id="cpPlayGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#e2f5ec" />
-          <stop offset="100%" stop-color="#c5edd7" />
+        <linearGradient id="cpPlayZoneGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e0f2fe" />
+          <stop offset="100%" stop-color="#bae6fd" />
+        </linearGradient>
+        <linearGradient id="cpBallPitGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffedd5" />
+          <stop offset="100%" stop-color="#fed7aa" />
         </linearGradient>
         <linearGradient id="cpCafeGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#fdf0dd" />
-          <stop offset="100%" stop-color="#fae2be" />
+          <stop offset="0%" stop-color="#fef3c7" />
+          <stop offset="100%" stop-color="#fde68a" />
         </linearGradient>
+        <linearGradient id="cpPartyGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f3e8ff" />
+          <stop offset="100%" stop-color="#e9d5ff" />
+        </linearGradient>
+        <filter id="cpSoftShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#132a4a" flood-opacity="0.08" />
+        </filter>
       </defs>
 
-      <!-- Outer Building Boundary -->
-      <rect width="900" height="480" fill="url(#cpFloorGrad)" rx="12" />
-      <rect x="20" y="20" width="860" height="440" rx="8" fill="#ffffff" stroke="#142c4b" stroke-width="2" />
+      <!-- Outer Floor Base -->
+      <rect width="900" height="480" fill="url(#cpPlateSky)" rx="20" />
+      <rect x="20" y="20" width="860" height="440" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#cpSoftShadow)" />
 
-      <!-- Promenade Frontage Banner -->
-      <rect x="20" y="20" width="860" height="36" rx="6" fill="#142c4b" />
-      <text x="40" y="44" fill="#ffd13b" font-size="14" font-weight="700" letter-spacing="1">
+      <!-- Top Header Strip: 27A Promenade -->
+      <path d="M20 36 C20 27 27 20 36 20 H864 C873 20 880 27 880 36 V62 H20 Z" fill="#132a4a" />
+      <circle cx="45" cy="41" r="8" fill="#ffd13b" />
+      <text x="62" y="46" fill="#ffd13b" font-size="14" font-weight="700" font-family="Fredoka, sans-serif" letter-spacing="1">
         27A CENTRAL PROMENADE (OPPOSITE NEWCASTLE CENTRE)
       </text>
-      <text x="730" y="44" fill="#ffffff" font-size="12" font-weight="600" opacity="0.9">
+      <rect x="690" y="30" width="170" height="22" rx="11" fill="#ff5a1f" />
+      <text x="775" y="45" fill="#ffffff" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">
         WALK-IN PLAY · 0–14 YRS
       </text>
 
-      <!-- Zone 1: Main Multi-Level Play Frame -->
-      <rect x="50" y="80" width="480" height="260" rx="8" fill="url(#cpPlayGrad)" stroke="#2ebb77" stroke-width="2" />
-      <text x="70" y="110" fill="#0f5933" font-size="15" font-weight="700">
-        MAIN ADVENTURE PLAY FRAME (AGES 4–14)
+      <!-- Main Adventure Kingdom Frame (Zone 1) -->
+      <rect x="45" y="80" width="490" height="260" rx="14" fill="url(#cpPlayZoneGrad)" stroke="#38bdf8" stroke-width="2" />
+      <rect x="60" y="95" width="230" height="26" rx="13" fill="#0284c7" />
+      <text x="175" y="112" fill="#ffffff" font-size="12" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">
+        3-TIER ADVENTURE KINGDOM (4–14 YRS)
       </text>
 
-      <!-- Multi-tier Frame Graphics -->
-      <rect x="70" y="130" width="130" height="180" rx="6" fill="#ffffff" stroke="#142c4b" stroke-width="1.5" stroke-dasharray="4 4" />
-      <text x="95" y="225" fill="#142c4b" font-size="12" font-weight="600">3-TIER CLIMB</text>
+      <!-- Frame Climbing Blocks & Tunnels -->
+      <rect x="65" y="135" width="130" height="185" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5" />
+      <rect x="75" y="145" width="110" height="45" rx="6" fill="#fef08a" />
+      <text x="130" y="172" fill="#854d0e" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">TOWER 1</text>
+      <rect x="75" y="200" width="110" height="45" rx="6" fill="#bbf7d0" />
+      <text x="130" y="227" fill="#166534" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">CLIMB WALL</text>
+      <rect x="75" y="255" width="110" height="55" rx="6" fill="#fed7aa" />
+      <text x="130" y="287" fill="#9a3412" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">CRAWL TUNNEL</text>
 
-      <rect x="220" y="130" width="140" height="180" rx="6" fill="#ffffff" stroke="#142c4b" stroke-width="1.5" stroke-dasharray="4 4" />
-      <text x="250" y="225" fill="#142c4b" font-size="12" font-weight="600">ROPE BRIDGES</text>
+      <!-- Suspension Rope Bridge -->
+      <path d="M195 180 Q255 195 315 180" stroke="#ff5a1f" stroke-width="5" fill="none" stroke-linecap="round" />
+      <path d="M195 170 Q255 185 315 170" stroke="#f59e0b" stroke-width="3" fill="none" stroke-dasharray="6 4" />
+      <text x="255" y="162" fill="#ea580c" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">ROPE BRIDGE</text>
 
-      <!-- Ball Pit Graphic -->
-      <circle cx="430" cy="180" r="45" fill="#ffd13b" fill-opacity="0.3" stroke="#e85a12" stroke-width="2" />
-      <circle cx="420" cy="175" r="7" fill="#e85a12" />
-      <circle cx="440" cy="170" r="7" fill="#3b82f6" />
-      <circle cx="435" cy="190" r="7" fill="#2ebb77" />
-      <text x="395" y="240" fill="#e85a12" font-size="11" font-weight="700">BALL POOL</text>
+      <!-- Second Climbing Tower -->
+      <rect x="315" y="135" width="95" height="185" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="1.5" />
+      <rect x="325" y="145" width="75" height="80" rx="6" fill="#fed7aa" />
+      <text x="362" y="190" fill="#c2410c" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">TOWER 2</text>
+      <rect x="325" y="235" width="75" height="75" rx="6" fill="#fbcfe8" />
+      <text x="362" y="278" fill="#be185d" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">SLIDE TOP</text>
 
-      <!-- Spiral Slide Curve -->
-      <path
-        d="M135 150 C180 150 210 200 170 260 C145 295 190 310 260 300"
-        stroke="#e85a12"
-        stroke-width="8"
-        stroke-linecap="round"
-        fill="none"
-      />
-      <text x="145" y="285" fill="#e85a12" font-size="11" font-weight="700">SPIRAL SLIDE</text>
+      <!-- Giant Spiral Tube Slides -->
+      <!-- Red Slide -->
+      <path d="M370 240 C430 240 450 180 390 150 C340 120 400 300 480 290" stroke="#ef4444" stroke-width="14" fill="none" stroke-linecap="round" />
+      <!-- Yellow Slide -->
+      <path d="M380 250 C440 260 480 220 440 170 C400 130 460 310 510 300" stroke="#f59e0b" stroke-width="12" fill="none" stroke-linecap="round" />
 
-      <!-- Zone 2: Toddler Soft Sensory Zone -->
-      <rect x="50" y="360" width="300" height="80" rx="6" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.8" />
-      <text x="70" y="390" fill="#be123c" font-size="13" font-weight="700">
-        TODDLER &amp; BABY SENSORY ZONE
+      <!-- Giant Ball Pit -->
+      <rect x="420" y="160" width="105" height="110" rx="12" fill="url(#cpBallPitGrad)" stroke="#f97316" stroke-width="2" />
+      <circle cx="445" cy="190" r="8" fill="#38bdf8" />
+      <circle cx="470" cy="185" r="9" fill="#ff5a1f" />
+      <circle cx="495" cy="200" r="8" fill="#10b981" />
+      <circle cx="450" cy="225" r="9" fill="#fbbf24" />
+      <circle cx="480" cy="235" r="9" fill="#ec4899" />
+      <circle cx="465" cy="210" r="7" fill="#6366f1" />
+      <circle cx="495" cy="245" r="8" fill="#06b6d4" />
+      <text x="472" y="262" fill="#c2410c" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">BALL PIT</text>
+
+      <!-- Toddler Sensory Zone (Zone 2) -->
+      <rect x="45" y="360" width="490" height="85" rx="14" fill="#fff1f2" stroke="#fb7185" stroke-width="2" />
+      <rect x="60" y="375" width="210" height="24" rx="12" fill="#f43f5e" />
+      <text x="165" y="391" fill="#ffffff" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">
+        TODDLER &amp; BABY ZONE (UNDER 3S)
       </text>
-      <text x="70" y="415" fill="#881337" font-size="11" font-weight="500">
-        Padded shapes, mini-slides &amp; sensory mats (Under 3s)
-      </text>
+      <!-- Foam Shapes & Sensory Blocks -->
+      <rect x="290" y="375" width="45" height="35" rx="6" fill="#fde047" stroke="#eab308" stroke-width="1.5" />
+      <text x="312" y="397" fill="#854d0e" font-size="10" font-weight="700" text-anchor="middle">FOAM</text>
+      <circle cx="365" cy="392" r="18" fill="#6ee7b7" stroke="#10b981" stroke-width="1.5" />
+      <text x="365" y="396" fill="#065f46" font-size="10" font-weight="700" text-anchor="middle">SOFT</text>
+      <rect x="400" y="375" width="55" height="35" rx="6" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="1.5" />
+      <text x="427" y="397" fill="#5b21b6" font-size="10" font-weight="700" text-anchor="middle">MATS</text>
+      <rect x="470" y="375" width="50" height="35" rx="6" fill="#fed7aa" stroke="#f97316" stroke-width="1.5" />
+      <text x="495" y="397" fill="#9a3412" font-size="10" font-weight="700" text-anchor="middle">MINI-SLIDE</text>
 
-      <!-- Zone 3: Mezzanine Family Viewing Café -->
-      <rect x="560" y="80" width="290" height="200" rx="8" fill="url(#cpCafeGrad)" stroke="#c48b3c" stroke-width="2" />
-      <text x="580" y="110" fill="#78350f" font-size="14" font-weight="700">
+      <!-- Mezzanine Viewing Café (Zone 3) -->
+      <rect x="560" y="80" width="295" height="195" rx="14" fill="url(#cpCafeGrad)" stroke="#f59e0b" stroke-width="2" />
+      <rect x="575" y="95" width="200" height="24" rx="12" fill="#d97706" />
+      <text x="675" y="111" fill="#ffffff" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">
         MEZZANINE VIEWING CAFÉ
       </text>
-      <text x="580" y="132" fill="#92400e" font-size="11" font-weight="600">
-        Barista Coffee · Hot Food · Full Sightline
+      <text x="707" y="136" fill="#92400e" font-size="11" font-weight="600">
+        Barista Coffee · Fresh Hot Food · Full Sightline
       </text>
 
-      <!-- Café Tables -->
-      <circle cx="610" cy="180" r="20" fill="#ffffff" stroke="#c48b3c" stroke-width="1.5" />
-      <circle cx="610" cy="180" r="4" fill="#c48b3c" />
-      <circle cx="680" cy="180" r="20" fill="#ffffff" stroke="#c48b3c" stroke-width="1.5" />
-      <circle cx="680" cy="180" r="4" fill="#c48b3c" />
-      <circle cx="750" cy="180" r="20" fill="#ffffff" stroke="#c48b3c" stroke-width="1.5" />
-      <circle cx="750" cy="180" r="4" fill="#c48b3c" />
+      <!-- Café Tables & Coffee Cups -->
+      <circle cx="615" cy="175" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="615" cy="175" r="6" fill="#d97706" />
+      <circle cx="685" cy="175" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="685" cy="175" r="6" fill="#d97706" />
+      <circle cx="755" cy="175" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="755" cy="175" r="6" fill="#d97706" />
 
-      <circle cx="645" cy="235" r="20" fill="#ffffff" stroke="#c48b3c" stroke-width="1.5" />
-      <circle cx="645" cy="235" r="4" fill="#c48b3c" />
-      <circle cx="715" cy="235" r="20" fill="#ffffff" stroke="#c48b3c" stroke-width="1.5" />
-      <circle cx="715" cy="235" r="4" fill="#c48b3c" />
+      <circle cx="650" cy="230" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="650" cy="230" r="6" fill="#d97706" />
+      <circle cx="720" cy="230" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="720" cy="230" r="6" fill="#d97706" />
+      <circle cx="790" cy="230" r="20" fill="#ffffff" stroke="#f59e0b" stroke-width="2" />
+      <circle cx="790" cy="230" r="6" fill="#d97706" />
 
-      <!-- Zone 4: Dedicated Birthday Party Suites -->
-      <rect x="560" y="300" width="290" height="140" rx="8" fill="#eef2ff" stroke="#4338ca" stroke-width="2" />
-      <text x="580" y="330" fill="#312e81" font-size="14" font-weight="700">
-        PARTY ROOMS &amp; CELEBRATION SUITE
+      <!-- Dedicated Birthday Party Suites (Zone 4) -->
+      <rect x="560" y="290" width="295" height="155" rx="14" fill="url(#cpPartyGrad)" stroke="#8b5cf6" stroke-width="2" />
+      <rect x="575" y="305" width="210" height="24" rx="12" fill="#7c3aed" />
+      <text x="680" y="321" fill="#ffffff" font-size="11" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">
+        PRIVATE PARTY CELEBRATION SUITES
       </text>
-      <rect x="580" y="350" width="120" height="70" rx="4" fill="#ffffff" stroke="#4338ca" stroke-width="1.2" />
-      <text x="590" y="380" fill="#3730a3" font-size="11" font-weight="700">COCO ROOM</text>
-      <text x="590" y="400" fill="#4f46e5" font-size="10">Hot meals &amp; cake</text>
 
-      <rect x="715" y="350" width="120" height="70" rx="4" fill="#ffffff" stroke="#4338ca" stroke-width="1.2" />
-      <text x="725" y="380" fill="#3730a3" font-size="11" font-weight="700">BUMPER ROOM</text>
-      <text x="725" y="400" fill="#4f46e5" font-size="10">Bags &amp; Ice cream</text>
+      <!-- Coco Room & Bumper Room -->
+      <rect x="575" y="340" width="125" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5" />
+      <text x="637" y="365" fill="#6b21a8" font-size="12" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">COCO SUITE</text>
+      <text x="637" y="385" fill="#7e22ce" font-size="10" text-anchor="middle">🎂 Hot Party Meal</text>
+      <text x="637" y="405" fill="#7e22ce" font-size="10" text-anchor="middle">🥤 Juices &amp; Balloons</text>
+      <text x="637" y="422" fill="#a855f7" font-size="9" font-weight="700" text-anchor="middle">£12.50 / child</text>
 
-      <!-- Pins -->
-      <!-- Pin 01: Adventure Frame -->
-      <g class="cp-svg-pin" transform="translate(190, 95)">
-        <circle cx="0" cy="0" r="14" fill="#142c4b" stroke="#ffd13b" stroke-width="2" />
-        <text x="0" y="4" fill="#ffd13b" font-size="10" font-weight="700" text-anchor="middle">01</text>
+      <rect x="715" y="340" width="125" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5" />
+      <text x="777" y="365" fill="#6b21a8" font-size="12" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">BUMPER SUITE</text>
+      <text x="777" y="385" fill="#7e22ce" font-size="10" text-anchor="middle">🍦 Flake Ice Cream</text>
+      <text x="777" y="405" fill="#7e22ce" font-size="10" text-anchor="middle">🎁 Bags &amp; Return Pass</text>
+      <text x="777" y="422" fill="#a855f7" font-size="9" font-weight="700" text-anchor="middle">£13.50 / child</text>
+
+      <!-- Playful Number Pins -->
+      <g class="cp-svg-pin" transform="translate(195, 95)">
+        <circle cx="0" cy="0" r="14" fill="#ff5a1f" stroke="#ffffff" stroke-width="2.5" />
+        <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">01</text>
       </g>
 
-      <!-- Pin 02: Toddler Zone -->
-      <g class="cp-svg-pin" transform="translate(370, 395)">
-        <circle cx="0" cy="0" r="14" fill="#142c4b" stroke="#ffd13b" stroke-width="2" />
-        <text x="0" y="4" fill="#ffd13b" font-size="10" font-weight="700" text-anchor="middle">02</text>
+      <g class="cp-svg-pin" transform="translate(480, 365)">
+        <circle cx="0" cy="0" r="14" fill="#f43f5e" stroke="#ffffff" stroke-width="2.5" />
+        <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">02</text>
       </g>
 
-      <!-- Pin 03: Mezzanine Café -->
-      <g class="cp-svg-pin" transform="translate(820, 95)">
-        <circle cx="0" cy="0" r="14" fill="#142c4b" stroke="#ffd13b" stroke-width="2" />
-        <text x="0" y="4" fill="#ffd13b" font-size="10" font-weight="700" text-anchor="middle">03</text>
+      <g class="cp-svg-pin" transform="translate(830, 95)">
+        <circle cx="0" cy="0" r="14" fill="#0ea5e9" stroke="#ffffff" stroke-width="2.5" />
+        <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">03</text>
       </g>
 
-      <!-- Pin 04: Party Rooms -->
-      <g class="cp-svg-pin" transform="translate(820, 315)">
-        <circle cx="0" cy="0" r="14" fill="#142c4b" stroke="#ffd13b" stroke-width="2" />
-        <text x="0" y="4" fill="#ffd13b" font-size="10" font-weight="700" text-anchor="middle">04</text>
+      <g class="cp-svg-pin" transform="translate(830, 305)">
+        <circle cx="0" cy="0" r="14" fill="#8b5cf6" stroke="#ffffff" stroke-width="2.5" />
+        <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="700" font-family="Fredoka, sans-serif" text-anchor="middle">04</text>
       </g>
     </svg>
   </div>
@@ -179,8 +235,11 @@ const keypoints = [
   <!-- Keypoint Cards -->
   <div class="cp-plate-grid" role="list">
     {keypoints.map((pt) => (
-      <article class="cp-plate-card" role="listitem">
-        <span class="cp-plate-num">{pt.num}</span>
+      <article class="cp-plate-card" role="listitem" style={`--pt-accent: ${pt.color}; --pt-bg: ${pt.bg};`}>
+        <div class="cp-plate-card-top">
+          <span class="cp-plate-card-icon">{pt.icon}</span>
+          <span class="cp-plate-num">{pt.num}</span>
+        </div>
         <div class="cp-plate-card-body">
           <h4 class="cp-plate-card-title">{pt.name}</h4>
           <p class="cp-plate-card-desc">{pt.desc}</p>

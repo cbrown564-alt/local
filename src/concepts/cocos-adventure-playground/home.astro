@@ -14,37 +14,47 @@ const mailto = `mailto:${email}`;
 const site = "https://www.cocosplayground.co.uk/";
 const facebook = "https://www.facebook.com/CocosAdventurePlayground";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fredoka:wght@500;600;700;800&display=swap";
+  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fredoka:wght@400;500;600;700;800&display=swap";
 
 const admissions = [
   {
+    icon: "🧸",
     tier: "Babies & Toddlers (Age 3 & under)",
     price: "£6.50",
     desc: "1½ hours of adventure play in the soft sensory toddler zone and lower frame levels.",
+    theme: "pink",
   },
   {
+    icon: "🛝",
     tier: "Children (Age 4 to 14)",
     price: "£7.50",
     desc: "1½ hours of exploration across the full 3-tier adventure kingdom, spiral slides and ball pools.",
+    theme: "orange",
   },
   {
+    icon: "⭐",
     tier: "Family Multi-Play Pass (10 Admissions)",
     price: "£55.00",
     desc: "Ten flexible admission passes for families and regular visitors. Valid anytime.",
+    theme: "green",
   },
   {
+    icon: "☕",
     tier: "Spectating Adults & Non-Walkers",
     price: "Free",
     desc: "Parents and babies in arms enter free with any playing child.",
+    theme: "blue",
   },
 ];
 
 const partyPillars = [
   {
+    icon: "🎈",
     title: "The Coco Party",
     price: "£12.50",
     sub: "per child · minimum £100",
-    badge: "Popular Classic",
+    badge: "Most Popular",
+    highlight: false,
     features: [
       "2 full hours of adventure play",
       "30 minutes in private celebration room",
@@ -54,23 +64,27 @@ const partyPillars = [
     ],
   },
   {
+    icon: "👑",
     title: "The Bumper Party",
     price: "£13.50",
     sub: "per child · minimum £100",
-    badge: "The Ultimate Celebration",
+    badge: "The Ultimate VIP Party",
+    highlight: true,
     features: [
       "Everything included in the Coco Party",
-      "Dairy ice cream with a chocolate Flake for each guest",
-      "Coco's fun party bag for every child",
+      "Dairy ice cream with a Cadbury Flake for every guest",
+      "Coco's fun party bag for each child",
       "Two free return readmission passes for the birthday child",
       "Complimentary hot drink for birthday parents",
     ],
   },
   {
+    icon: "🚀",
     title: "Schools & Youth Groups",
     price: "Special Rate",
     sub: "advance booking essential",
     badge: "Clubs & Groups",
+    highlight: false,
     features: [
       "Exclusive or reserved play sessions",
       "Discounted group admission rates",
@@ -119,22 +133,25 @@ const hoursSchedule = [
 >
   <!-- Civic & Operational Strip -->
   <div class="cp-strip">
-    <span class="cp-strip-addr">
-      <strong>27A Central Promenade, Newcastle · BT33 0AA</strong> (Opposite Newcastle Centre) · No booking necessary for general play
-    </span>
-    <span class="cp-strip-links">
-      <a href={phoneHref}>{phone}</a>
-      <span aria-hidden="true"> · </span>
-      <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-      <span aria-hidden="true"> · </span>
-      <a href={site} target="_blank" rel="noopener noreferrer">cocosplayground.co.uk</a>
-    </span>
+    <div class="cp-strip-inner">
+      <span class="cp-strip-addr">
+        <span class="cp-strip-pin" aria-hidden="true">📍</span>
+        <strong>27A Central Promenade, Newcastle · BT33 0AA</strong> (Opposite Newcastle Centre) · <em>No booking necessary for general play</em>
+      </span>
+      <span class="cp-strip-links">
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+        <span aria-hidden="true"> · </span>
+        <a href={site} target="_blank" rel="noopener noreferrer">cocosplayground.co.uk</a>
+      </span>
+    </div>
   </div>
 
-  <!-- Branded Header & Navigation -->
+  <!-- Playful Header & Navigation -->
   <header class="cp-header">
     <a class="cp-brand" href="/concepts/cocos-adventure-playground/">
-      <CpMark size={40} class="cp-brand-mark" />
+      <CpMark size={44} class="cp-brand-mark" />
       <span class="cp-brand-text">
         <span class="cp-brand-name">Coco's</span>
         <span class="cp-brand-sub">Adventure Playground · Newcastle</span>
@@ -148,109 +165,139 @@ const hoursSchedule = [
       <a href="#hours">Opening Times</a>
       <a href="#party">Book a Party</a>
     </nav>
-    <a class="cp-nav-cta" href="#party">Plan a party</a>
+    <a class="cp-nav-cta" href="#party">Plan a Party 🎈</a>
   </header>
 
   <main class="cp-page">
-    <!-- Hero Stage: First Screen Celebration & Clear Walk-in Rule -->
+    <!-- Playful Hero Section -->
     <section class="cp-hero" aria-labelledby="cp-name">
       <div class="cp-hero-stage">
         <div class="cp-hero-copy">
-          <p class="cp-kicker">27A Central Promenade · Newcastle, Co. Down</p>
-          <h1 id="cp-name">Walk in for play. Ring for a party.</h1>
+          <div class="cp-kicker-pill">
+            <span class="cp-kicker-emoji" aria-hidden="true">🎉</span>
+            <span>27A Central Promenade · Newcastle, Co. Down</span>
+          </div>
+          <h1 id="cp-name">Walk in for play. <span class="cp-title-accent">Ring for a party.</span></h1>
           <p class="cp-furniture">
-            No trip to Newcastle would be complete without visiting Coco's.
+            “No trip to Newcastle would be complete without visiting Coco's.”
           </p>
           <p class="cp-lede">
-            Indoor adventure play for babies up to fourteen. Three-tier climbing frames,
-            giant spiral slides, ball pools, a dedicated soft sensory toddler zone,
+            Indoor adventure play for babies up to fourteen! Three-tier climbing kingdom,
+            giant spiral tube slides, turquoise ball pools, a dedicated soft toddler sensory zone,
             and a sunlit viewing café with fresh barista coffee overlooking the floor.
           </p>
           <div class="cp-hero-actions">
-            <a class="cp-btn-primary" href="#play">Admission &amp; play rates</a>
-            <a class="cp-btn-party" href="#party">Ask about birthday parties</a>
+            <a class="cp-btn-primary" href="#play">Admission &amp; Play Rates 🛝</a>
+            <a class="cp-btn-party" href="#party">Book a Birthday Party 🎂</a>
           </div>
-          <p class="cp-hero-note">
-            No booking required for general play · Ring <a href={phoneHref}>{phone}</a> for party reservations &amp; group bookings
-          </p>
+          <div class="cp-hero-perks">
+            <span class="cp-perk">✨ No booking required for play</span>
+            <span class="cp-perk">☕ Fresh coffee for parents</span>
+            <span class="cp-perk">🚗 Free nearby parking</span>
+          </div>
         </div>
 
-        <figure class="cp-hero-figure">
-          <div class="cp-figure-frame">
-            <ResponsiveImage
-              src="/media/concepts/cocos-adventure-playground/play.jpg"
-              alt="A vibrant indoor children's adventure playground with colorful multi-level slides, ball pits, and an elevated mezzanine viewing cafe overlooking the arena"
-              width="1536"
-              height="1024"
-              loading="eager"
-            />
-            <div class="cp-figure-badge">
-              <span class="cp-badge-dot"></span>
-              <span>Central Promenade · General play is walk-in anytime</span>
+        <div class="cp-hero-visual-wrap">
+          <figure class="cp-hero-figure">
+            <div class="cp-figure-frame">
+              <ResponsiveImage
+                src="/media/concepts/cocos-adventure-playground/play.jpg"
+                alt="A vibrant indoor children's adventure playground with colorful multi-level slides, ball pits, and an elevated mezzanine viewing cafe overlooking the arena"
+                width="1536"
+                height="1024"
+                loading="eager"
+              />
+              <div class="cp-figure-badge">
+                <span class="cp-badge-dot"></span>
+                <span>Central Promenade · Walk in anytime 10am–6pm</span>
+              </div>
             </div>
+            <figcaption>Inside Coco's multi-level play arena and mezzanine viewing café.</figcaption>
+          </figure>
+
+          <!-- Playful Floating Badges -->
+          <div class="cp-float-badge cp-float-badge--1">
+            <span class="cp-float-icon">🛝</span>
+            <strong>3-Tier Adventure Frame</strong>
           </div>
-          <figcaption>The play kingdom and viewing café at 27A Central Promenade.</figcaption>
-        </figure>
+          <div class="cp-float-badge cp-float-badge--2">
+            <span class="cp-float-icon">☕</span>
+            <strong>Mezzanine Coffee Café</strong>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Verbatim Voice Pullquote -->
-    <figure class="cp-pull">
-      <blockquote>
-        <p>
-          “No trip to Newcastle would be complete without visiting Coco's. Two hours of fun for the kids and hot coffee for the adults.”
-        </p>
-      </blockquote>
-      <figcaption>Coco's Adventure Playground · Central Promenade, Newcastle</figcaption>
-    </figure>
+    <!-- Verbatim Voice Pullquote Banner -->
+    <section class="cp-pull-section">
+      <figure class="cp-pull">
+        <blockquote>
+          <p>
+            “No trip to Newcastle would be complete without visiting Coco's. Two hours of fun for the kids and hot coffee for the adults.”
+          </p>
+        </blockquote>
+        <figcaption>Coco's Adventure Playground · Central Promenade, Newcastle</figcaption>
+      </figure>
+    </section>
 
     <!-- Move 2: General Play & Admission Rates -->
     <section class="cp-play-section" id="play" aria-labelledby="play-heading">
       <div class="cp-section-head">
-        <p class="cp-kicker cp-kicker--navy">Admission &amp; Sessions</p>
-        <h2 id="play-heading">Simple walk-in play, seven days a week.</h2>
+        <span class="cp-kicker cp-kicker--blue">Daily Admission</span>
+        <h2 id="play-heading">Simple walk-in play, seven days a week!</h2>
         <p class="cp-section-lead">
-          We operate a straightforward walk-in policy for all regular play sessions.
-          No online booking slots or prepayment required — simply arrive and play.
+          No complicated online time slots or booking fees. Just show up, grab your socks,
+          and dive into 1½ hours of adventure play.
         </p>
       </div>
 
       <div class="cp-admissions-grid" role="list">
         {admissions.map((adm) => (
-          <article class="cp-admission-card" role="listitem">
-            <div class="cp-admission-head">
-              <h3 class="cp-admission-tier">{adm.tier}</h3>
-              <span class="cp-admission-price">{adm.price}</span>
+          <article class={`cp-admission-card cp-admission-card--${adm.theme}`} role="listitem">
+            <div class="cp-card-decor" aria-hidden="true"></div>
+            <div class="cp-admission-top">
+              <span class="cp-admission-icon">{adm.icon}</span>
+              <span class="cp-admission-tag">1½ Hour Session</span>
             </div>
+            <h3 class="cp-admission-tier">{adm.tier}</h3>
             <p class="cp-admission-desc">{adm.desc}</p>
-            <span class="cp-admission-tag">1½ Hour Play Session</span>
+            <div class="cp-admission-price-box">
+              <strong class="cp-admission-price">{adm.price}</strong>
+            </div>
           </article>
         ))}
       </div>
 
       <div class="cp-summer-saver">
-        <div class="cp-saver-badge">Seasonal Discount</div>
-        <p>
-          <strong>Summer Saver Announcement:</strong> Check our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> for seasonal admission offers including 15% summer discounts on weekday family visits and early-bird sessions.
-        </p>
+        <div class="cp-saver-icon" aria-hidden="true">🎁</div>
+        <div class="cp-saver-body">
+          <div class="cp-saver-badge">Seasonal Summer Saver</div>
+          <p>
+            <strong>15% Off Family Admissions:</strong> Check our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> for seasonal summer discounts, special early-bird admission deals, and holiday event schedules!
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Move 3: Birthday Party Packages -->
     <section class="cp-parties-section" id="parties" aria-labelledby="parties-heading">
       <div class="cp-section-head">
-        <p class="cp-kicker cp-kicker--orange">Celebrations &amp; Birthdays</p>
+        <span class="cp-kicker cp-kicker--orange">Unforgettable Birthdays</span>
         <h2 id="parties-heading">Two hours of adventure, zero party stress.</h2>
         <p class="cp-section-lead">
-          We provide everything: 2 full hours of play, private celebration rooms,
-          fresh hot meals, party bags, and cleanup.
+          Let our team handle everything: 2 full hours of play, private celebration suites,
+          piping hot kids meals, delicious drinks, party bags, and all the cleanup!
         </p>
       </div>
 
       <div class="cp-packages-grid" role="list">
         {partyPillars.map((pkg) => (
-          <article class="cp-package-card" role="listitem">
-            <div class="cp-package-badge">{pkg.badge}</div>
+          <article class={`cp-package-card ${pkg.highlight ? "cp-package-card--highlight" : ""}`} role="listitem">
+            {pkg.highlight && <div class="cp-popular-ribbon">⭐ Most Popular</div>}
+            <div class="cp-package-header">
+              <span class="cp-package-icon">{pkg.icon}</span>
+              <div class="cp-package-badge">{pkg.badge}</div>
+            </div>
             <h3 class="cp-package-title">{pkg.title}</h3>
             <div class="cp-package-pricing">
               <strong class="cp-package-price">{pkg.price}</strong>
@@ -264,52 +311,66 @@ const hoursSchedule = [
                 </li>
               ))}
             </ul>
-            <a class="cp-package-btn" href="#party">Check date availability →</a>
+            <a class="cp-package-btn" href="#party">Check Date Availability →</a>
           </article>
         ))}
       </div>
     </section>
 
-    <!-- Move 4: Architectural Arena & Floorplan Plate -->
+    <!-- Move 4: Interactive Arena Floorplan Plate -->
     <section class="cp-arena-section" id="arena" aria-labelledby="arena-heading">
       <div class="cp-section-head">
-        <p class="cp-kicker cp-kicker--navy">The Layout</p>
-        <h2 id="arena-heading">Two floors of safe, supervised play.</h2>
+        <span class="cp-kicker cp-kicker--purple">The Play Arena</span>
+        <h2 id="arena-heading">Two floors of safe, supervised fun.</h2>
         <p class="cp-section-lead">
-          Designed specifically for family comfort. Safe padded zones for all age groups
-          with easy sightlines from the upper viewing gallery.
+          Designed with open sightlines so parents can sit back and relax in the mezzanine café
+          while kids explore the adventure kingdom below.
         </p>
       </div>
 
       <CpArenaPlate headingId="arena-plate-title" />
     </section>
 
-    <!-- Move 5: The Mezzanine Viewing Café & Food -->
+    <!-- Move 5: The Mezzanine Viewing Café -->
     <section class="cp-cafe-section" id="cafe" aria-labelledby="cafe-heading">
       <div class="cp-cafe-card">
         <div class="cp-cafe-content">
-          <p class="cp-kicker cp-kicker--orange">The Mezzanine Café</p>
-          <h2 id="cafe-heading">Relax with fresh coffee while they play.</h2>
+          <div class="cp-cafe-header">
+            <span class="cp-cafe-badge">☕ Family Mezzanine</span>
+            <h2 id="cafe-heading">Relax with fresh coffee while they play.</h2>
+          </div>
           <p class="cp-cafe-lead">
-            Our elevated café sits directly above the main play frame, providing complete visual oversight
-            while you enjoy freshly ground espresso, specialty teas, hot toasties, chips, and homemade bakes.
+            Our upper-level viewing gallery overlooks the entire play arena. Sip freshly ground barista espresso,
+            enjoy hot toasties, paninis, and sweet treats, with complete visual peace of mind.
           </p>
           <div class="cp-cafe-grid">
             <div class="cp-cafe-pill">
-              <strong>Fresh Barista Coffee</strong>
-              <span>Lattes, cappuccinos, flat whites &amp; hot chocolates</span>
+              <span class="cp-pill-icon">☕</span>
+              <div>
+                <strong>Fresh Barista Coffee</strong>
+                <p>Cappuccinos, lattes, flat whites &amp; creamy hot chocolates</p>
+              </div>
             </div>
             <div class="cp-cafe-pill">
-              <strong>Hot Kitchen Menu</strong>
-              <span>Goujons, burgers, sausages, fresh chips &amp; paninis</span>
+              <span class="cp-pill-icon">🥪</span>
+              <div>
+                <strong>Hot Kitchen Menu</strong>
+                <p>Chicken goujons, burgers, sausages, fresh chips &amp; toasties</p>
+              </div>
             </div>
             <div class="cp-cafe-pill">
-              <strong>Kids Snacks &amp; Juices</strong>
-              <span>Fruit pouches, yoghurts, water &amp; juices</span>
+              <span class="cp-pill-icon">🧃</span>
+              <div>
+                <strong>Kids Snacks &amp; Drinks</strong>
+                <p>Fruit juice cartons, chilled bottled water &amp; fresh fruit pots</p>
+              </div>
             </div>
             <div class="cp-cafe-pill">
-              <strong>Free Family Wi-Fi</strong>
-              <span>Fast wireless internet and comfortable seating</span>
+              <span class="cp-pill-icon">📶</span>
+              <div>
+                <strong>Free Family Wi-Fi</strong>
+                <p>Fast wireless internet throughout the seating gallery</p>
+              </div>
             </div>
           </div>
         </div>
@@ -319,18 +380,21 @@ const hoursSchedule = [
     <!-- Move 6: Opening Hours & Newcastle Parking Guide -->
     <section class="cp-hours-section" id="hours" aria-labelledby="hours-heading">
       <div class="cp-section-head">
-        <p class="cp-kicker cp-kicker--navy">Times &amp; Parking</p>
-        <h2 id="hours-heading">Opening hours and where to park.</h2>
+        <span class="cp-kicker cp-kicker--blue">Times &amp; Parking</span>
+        <h2 id="hours-heading">Opening schedule and where to park.</h2>
         <p class="cp-section-lead">
-          Located opposite the Newcastle Centre on Central Promenade. Easy parking options right outside.
+          Located right on Central Promenade opposite the Newcastle Centre. Five parking options within easy walking distance.
         </p>
       </div>
 
       <div class="cp-logistics-grid">
         <div class="cp-hours-card">
           <div class="cp-hours-header">
-            <h3>Opening Schedule</h3>
-            <span class="cp-hours-chip">Open 7 Days in Summer</span>
+            <span class="cp-card-icon">⏰</span>
+            <div>
+              <h3>Weekly Opening Schedule</h3>
+              <span class="cp-hours-sub">Open 7 Days Throughout Summer</span>
+            </div>
           </div>
 
           <ul class="cp-schedule-list" role="list">
@@ -343,14 +407,17 @@ const hoursSchedule = [
             ))}
           </ul>
           <p class="cp-hours-note">
-            Out of season, check our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook updates</a> for maintenance closures or winter Wednesday hours.
+            Out of season, check our <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook page</a> for winter Wednesday hours, private hire sessions, or holiday updates.
           </p>
         </div>
 
         <div class="cp-parking-card">
           <div class="cp-parking-header">
-            <h3>Nearby Parking</h3>
-            <span class="cp-parking-chip">5 Locations</span>
+            <span class="cp-card-icon">🚗</span>
+            <div>
+              <h3>Nearby Parking Locations</h3>
+              <span class="cp-hours-sub">5 Convenient Newcastle Hubs</span>
+            </div>
           </div>
 
           <ul class="cp-parking-list" role="list">
@@ -365,22 +432,25 @@ const hoursSchedule = [
       </div>
     </section>
 
-    <!-- Move 7: Interactive Party Enquiry & Call Script Drafter -->
+    <!-- Move 7: Interactive Party Planner & Call Script Drafter -->
     <section class="cp-invite-section" id="party" aria-labelledby="party-heading">
       <div class="cp-invite-wrap">
         <div class="cp-invite-head">
-          <p class="cp-kicker cp-kicker--orange">Party Reservations</p>
-          <h2 id="party-heading">Plan your child's birthday at Coco's.</h2>
+          <span class="cp-kicker cp-kicker--orange">Plan a Birthday</span>
+          <h2 id="party-heading">Book your child's birthday celebration!</h2>
           <p class="cp-invite-lead">
-            We book all parties by telephone to confirm room availability instantly.
-            Use this planner to compose your party details and prepare the exact script for your call.
+            We confirm all party room slots by telephone to give you instant date confirmation.
+            Fill out the details below to generate your ready-to-read phone script or send an email draft!
           </p>
         </div>
 
         <div class="cp-invite-columns">
           <div class="cp-direct-card">
-            <h3>Direct Party Line</h3>
-            <p>Ring our team to confirm your party slot or ask questions:</p>
+            <div class="cp-direct-header">
+              <span class="cp-direct-badge">📞 Direct Party Line</span>
+              <h3>Speak with our team</h3>
+            </div>
+            <p>Give us a quick ring to lock in your preferred date and party suite:</p>
 
             <a class="cp-phone-button" href={phoneHref}>
               <span class="cp-phone-label">Ring the party desk</span>
@@ -388,14 +458,14 @@ const hoursSchedule = [
             </a>
 
             <div class="cp-direct-meta">
-              <span><strong>Address:</strong> 27A Central Promenade, Newcastle, BT33 0AA</span>
+              <span><strong>Location:</strong> 27A Central Promenade, Newcastle, BT33 0AA</span>
               <span><strong>Email:</strong> <a href={mailto}>{email}</a></span>
-              <span><strong>Party Times:</strong> 2-hour play sessions arranged daily</span>
+              <span><strong>Party Times:</strong> 2-hour celebration slots arranged daily</span>
             </div>
           </div>
 
           <div class="cp-form-card">
-            <h3>Draft Your Party Details</h3>
+            <h3>Draft Your Party Details 🎈</h3>
             <form class="cp-script-form" data-cp-request>
               <div class="cp-form-row">
                 <div class="cp-field">
@@ -403,7 +473,7 @@ const hoursSchedule = [
                   <input id="cp-who" name="name" type="text" autocomplete="name" placeholder="Parent / Guardian name" required />
                 </div>
                 <div class="cp-field">
-                  <label for="cp-tel">Contact number</label>
+                  <label for="cp-tel">Contact phone number</label>
                   <input id="cp-tel" name="tel" type="tel" autocomplete="tel" placeholder="Mobile or landline" required />
                 </div>
               </div>
@@ -411,11 +481,11 @@ const hoursSchedule = [
               <div class="cp-form-row">
                 <div class="cp-field">
                   <label for="cp-child">Birthday child's name</label>
-                  <input id="cp-child" name="child" type="text" placeholder="e.g. Jack" required />
+                  <input id="cp-child" name="child" type="text" placeholder="e.g. Maya" required />
                 </div>
                 <div class="cp-field">
                   <label for="cp-age">Age turning</label>
-                  <input id="cp-age" name="age" type="text" inputmode="numeric" placeholder="e.g. 6" required />
+                  <input id="cp-age" name="age" type="text" inputmode="numeric" placeholder="e.g. 7" required />
                 </div>
               </div>
 
@@ -426,25 +496,34 @@ const hoursSchedule = [
                 </div>
                 <div class="cp-field">
                   <label for="cp-when">Preferred date &amp; time</label>
-                  <input id="cp-when" name="when" type="text" placeholder="e.g. Saturday 18 October around 2pm" required />
+                  <input id="cp-when" name="when" type="text" placeholder="e.g. Saturday 18 October at 2pm" required />
                 </div>
               </div>
 
               <fieldset class="cp-fieldset">
-                <legend>Select party package</legend>
+                <legend>Choose party package</legend>
                 <div class="cp-radio-group">
-                  <label><input type="radio" name="cp-pkg" value="The Coco Party (£12.50 / child)" checked /> <span>The Coco Party (£12.50)</span></label>
-                  <label><input type="radio" name="cp-pkg" value="The Bumper Party (£13.50 / child)" /> <span>The Bumper Party (£13.50)</span></label>
-                  <label><input type="radio" name="cp-pkg" value="Youth / School Group Rate" /> <span>School / Youth Group</span></label>
+                  <label class="cp-radio-label">
+                    <input type="radio" name="cp-pkg" value="The Coco Party (£12.50 / child)" checked />
+                    <span>🎈 The Coco Party (£12.50)</span>
+                  </label>
+                  <label class="cp-radio-label">
+                    <input type="radio" name="cp-pkg" value="The Bumper Party (£13.50 / child)" />
+                    <span>👑 The Bumper Party (£13.50)</span>
+                  </label>
+                  <label class="cp-radio-label">
+                    <input type="radio" name="cp-pkg" value="Youth / School Group Rate" />
+                    <span>🚀 Youth / Group Rate</span>
+                  </label>
                 </div>
               </fieldset>
 
               <div class="cp-field">
-                <label for="cp-notes">Dietary notes or special requests</label>
-                <textarea id="cp-notes" name="notes" rows="2" placeholder="e.g. 2 vegetarian meals, gluten-free option, bringing own birthday cake..."></textarea>
+                <label for="cp-notes">Special requests or dietary needs</label>
+                <textarea id="cp-notes" name="notes" rows="2" placeholder="e.g. 2 vegetarian options, nut-free birthday cake, bringing own balloons..."></textarea>
               </div>
 
-              <button class="cp-submit-btn" type="submit">Prepare phone script &amp; draft email</button>
+              <button class="cp-submit-btn" type="submit">Prepare Call Script &amp; Email Draft 🚀</button>
 
               <div class="cp-handoff" data-cp-handoff role="status" hidden tabindex="-1">
                 <div class="cp-handoff-header">
@@ -453,8 +532,8 @@ const hoursSchedule = [
                 </div>
                 <pre data-cp-script class="cp-script-box"></pre>
                 <div class="cp-handoff-acts">
-                  <a class="cp-btn-call" href={phoneHref}>Call {phone}</a>
-                  <a class="cp-btn-mail" data-cp-mail href={mailto}>Send email draft</a>
+                  <a class="cp-btn-call" href={phoneHref}>Call {phone} Now 📞</a>
+                  <a class="cp-btn-mail" data-cp-mail href={mailto}>Send Email Draft ✉️</a>
                 </div>
               </div>
             </form>
@@ -466,10 +545,10 @@ const hoursSchedule = [
     <!-- Essence Media Showcase -->
     <EssenceMedia slug="cocos-adventure-playground" />
 
-    <!-- Civic Footer -->
+    <!-- Playful Civic Footer -->
     <footer class="cp-foot">
       <div class="cp-foot-content">
-        <CpMark size={48} class="cp-foot-mark" />
+        <CpMark size={52} class="cp-foot-mark" />
         <p class="cp-foot-name">Coco's Adventure Playground</p>
         <p class="cp-foot-furniture">Two hours of adventure play, birthday party suites, and a viewing café on Central Promenade.</p>
         <p class="cp-foot-addr">27A Central Promenade, Newcastle, County Down, BT33 0AA (Opposite Newcastle Centre)</p>

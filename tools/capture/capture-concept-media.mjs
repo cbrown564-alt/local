@@ -168,6 +168,41 @@ const CONCEPTS = {
   "tool-centre": { before: null, afterHover: AFTER_HOVER },
   "kent-amusements": { before: null, afterHover: AFTER_HOVER },
   "newcastle-chamber": { before: null, afterHover: AFTER_HOVER },
+  "bear-necessities": { before: null, afterHover: AFTER_HOVER },
+  "arley-house": {
+    before: "http://www.arleyhousedundrum.co.uk/",
+    settleMs: 5000,
+    beforeHover: ["nav a", "header a", "a"],
+    afterHover: AFTER_HOVER,
+  },
+  "armstrong-opticians": { before: null, afterHover: AFTER_HOVER },
+  "irelands-appliance-centre": {
+    before: "https://www.irelandsappliances.com/",
+    settleMs: 5000,
+    beforeHover: ["text=Appliances", "nav a", "header a", "a"],
+    afterHover: AFTER_HOVER,
+  },
+  "villa-vinci": {
+    before: "https://www.villavinci.co.uk/",
+    settleMs: 5000,
+    beforeHover: ["text=Menu", "nav a", "header a", "a"],
+    afterHover: AFTER_HOVER,
+  },
+  "conlyn-house": {
+    before: "http://conlynhouse.com/",
+    settleMs: 5000,
+    beforeHover: ["text=Rooms", "text=Gallery", "nav a", "header a", "a"],
+    afterHover: AFTER_HOVER,
+  },
+  "binghams-menswear": { before: null, afterHover: AFTER_HOVER },
+  "cafe-mauds": { before: null, afterHover: AFTER_HOVER },
+  "cocos-adventure-playground": {
+    before: "https://www.cocosplayground.co.uk/",
+    settleMs: 5000,
+    beforeHover: ["text=Prices", "text=Parties", "nav a", "header a", "a"],
+    afterHover: AFTER_HOVER,
+  },
+  "marine-wellness": { before: null, afterHover: AFTER_HOVER },
 };
 
 // A reel is a sequence of independently recorded segments. Browser segments
