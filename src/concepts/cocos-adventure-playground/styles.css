@@ -1,132 +1,1266 @@
-/* Coco's — none of the five. Open now, where, the hall. */
+/* Coco's Adventure Playground — 27A Central Promenade, Newcastle */
 body.concept-cocos {
-  --co-paper: #fff8e8;
-  --co-ink: #2a1c10;
-  --co-soft: #6a4a28;
-  --co-orange: #e85a12;
-  --co-navy: #1c3a5a;
-  --concept-accent: var(--co-orange);
+  --cp-paper: #fff9ea;
+  --cp-cream: #fffef9;
+  --cp-cream-deep: #faeed4;
+  --cp-ink: #142c4b;
+  --cp-ink-soft: #314f77;
+  --cp-ink-muted: #5e7b9e;
+  --cp-yellow: #ffd13b;
+  --cp-orange: #e85a12;
+  --cp-orange-deep: #b84005;
+  --cp-orange-glow: rgba(232, 90, 18, 0.12);
+  --cp-green: #2ebb77;
+  --cp-border: rgba(20, 44, 75, 0.14);
+  --cp-border-strong: rgba(232, 90, 18, 0.35);
+  --cp-shadow: 0 12px 32px rgba(20, 44, 75, 0.08);
+  --cp-radius: 12px;
+  --concept-accent: var(--cp-orange);
   margin: 0;
-  background: var(--co-paper);
-  color: var(--co-ink);
-  font-family: "DM Sans", "Segoe UI", sans-serif;
+  background: var(--cp-paper);
+  color: var(--cp-ink);
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.co-page { display: block; }
+.cp-page {
+  display: block;
+  overflow-x: hidden;
+}
 
-.co-first {
-  min-height: 100svh;
-  padding: clamp(36px, 7vh, 72px) clamp(16px, 5vw, 56px) 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #ffe14a;
+a {
+  color: inherit;
+  transition: color 0.15s ease;
 }
-.co-open-now {
-  margin: 0 0 10px;
-  font-size: 13px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--co-navy);
-}
-.co-first h1 {
-  margin: 0;
-  font-family: Fredoka, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: clamp(40px, 9vw, 84px);
-  line-height: .95;
-  color: var(--co-navy);
-}
-.co-say, .co-hours-lead {
-  max-width: 36rem;
-  margin: 14px 0 0;
-  font-size: 1.15rem;
-  line-height: 1.5;
-}
-.co-hours-lead a, .co-actions a, .co-how a, .co-sealed a { color: var(--co-orange); }
-.co-hours {
-  list-style: none;
-  margin: 24px 0 0;
-  padding: 0;
-  max-width: 28rem;
-}
-.co-hours li {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 12px;
-  padding: 8px 0;
-  border-top: 2px dashed var(--co-navy);
-  font-weight: 600;
-}
-.co-actions {
+
+/* Civic & Announcement Strip */
+.cp-strip {
+  background: var(--cp-ink);
+  color: #fff9ea;
+  font-size: 0.85rem;
+  padding: 8px clamp(16px, 4vw, 48px);
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 28px;
-  margin-top: 24px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+.cp-strip-addr strong {
+  color: var(--cp-yellow);
+}
+
+.cp-strip-links a {
+  color: #fff8e8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cp-strip-links a:hover,
+.cp-strip-links a:focus-visible {
+  color: var(--cp-yellow);
+}
+
+/* Branded Header */
+.cp-header {
+  background: var(--cp-cream);
+  border-bottom: 1px solid var(--cp-border);
+  padding: 16px clamp(16px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+}
+
+.cp-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--cp-ink);
+}
+
+.cp-brand-mark {
+  color: var(--cp-ink);
+  flex-shrink: 0;
+}
+
+.cp-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-brand-name {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--cp-ink);
   font-weight: 700;
 }
 
-.co-stage { margin: 0; }
-.co-stage img { display: block; width: 100%; height: auto; }
-.co-stage figcaption {
-  padding: 8px clamp(16px, 5vw, 56px) 20px;
-  font-size: 13px;
+.cp-brand-sub {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cp-orange);
 }
 
-.co-how, .co-invite {
-  padding: clamp(32px, 6vw, 64px) clamp(16px, 5vw, 56px);
+.cp-nav {
+  display: none;
+  gap: 22px;
+  align-items: center;
 }
-.co-kicker {
-  margin: 0 0 8px;
-  font-family: Fredoka, "Segoe UI", sans-serif;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--co-orange);
+
+@media (min-width: 900px) {
+  .cp-nav {
+    display: flex;
+  }
 }
-.co-how h2, .co-invite h2 {
-  margin: 0 0 12px;
-  font-family: Fredoka, "Segoe UI", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.1;
+
+.cp-nav a {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--cp-ink-soft);
+  padding: 6px 2px;
 }
-.co-packs {
-  list-style: none;
-  margin: 24px 0 0;
-  padding: 0;
+
+.cp-nav a:hover,
+.cp-nav a:focus-visible {
+  color: var(--cp-orange);
+}
+
+.cp-nav-cta {
+  background: var(--cp-orange);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.cp-nav-cta:hover,
+.cp-nav-cta:focus-visible {
+  background: var(--cp-orange-deep);
+  transform: translateY(-1px);
+}
+
+/* Hero Section */
+.cp-hero {
+  padding: clamp(36px, 6vw, 72px) clamp(16px, 4vw, 48px);
+  background: linear-gradient(180deg, #ffe978 0%, var(--cp-paper) 100%);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-hero-stage {
+  max-width: 1240px;
+  margin: 0 auto;
   display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .cp-hero-stage {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.cp-kicker {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cp-orange);
+  margin: 0 0 10px;
+}
+
+.cp-kicker--navy {
+  color: var(--cp-ink);
+}
+
+.cp-kicker--orange {
+  color: var(--cp-orange);
+}
+
+.cp-hero-copy h1 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--cp-ink);
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+
+.cp-furniture {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--cp-orange-deep);
+  margin: 0 0 16px;
+}
+
+.cp-lede {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cp-ink-soft);
+  max-width: 36rem;
+  margin: 0 0 28px;
+}
+
+.cp-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.cp-btn-primary {
+  background: var(--cp-ink);
+  color: #ffffff;
+  font-family: Fredoka, system-ui, sans-serif;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.cp-btn-primary:hover,
+.cp-btn-primary:focus-visible {
+  background: #0d1e33;
+  transform: translateY(-1px);
+}
+
+.cp-btn-party {
+  background: var(--cp-orange);
+  color: #ffffff;
+  font-family: Fredoka, system-ui, sans-serif;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.cp-btn-party:hover,
+.cp-btn-party:focus-visible {
+  background: var(--cp-orange-deep);
+}
+
+.cp-hero-note {
+  font-size: 0.88rem;
+  color: var(--cp-ink-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.cp-hero-note a {
+  color: var(--cp-ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cp-hero-figure {
+  margin: 0;
+}
+
+.cp-figure-frame {
+  position: relative;
+  border-radius: var(--cp-radius);
+  overflow: hidden;
+  box-shadow: var(--cp-shadow);
+  border: 2px solid var(--cp-border);
+  background: var(--cp-cream-deep);
+}
+
+.cp-figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cp-figure-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(20, 44, 75, 0.88);
+  backdrop-filter: blur(8px);
+  color: #fff9ea;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cp-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  flex-shrink: 0;
+}
+
+.cp-hero-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--cp-ink-muted);
+  text-align: right;
+}
+
+/* Verbatim Pullquote */
+.cp-pull {
+  max-width: 960px;
+  margin: clamp(40px, 6vw, 64px) auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+  text-align: center;
+}
+
+.cp-pull blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.cp-pull blockquote p {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 2.1rem);
+  line-height: 1.3;
+  color: var(--cp-ink);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+.cp-pull figcaption {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cp-orange);
+}
+
+/* Section Headings */
+.cp-section-head {
+  max-width: 780px;
+  margin: 0 auto clamp(32px, 5vw, 48px);
+  text-align: center;
+}
+
+.cp-section-head h2 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  line-height: 1.1;
+  color: var(--cp-ink);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.cp-section-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cp-ink-soft);
+  margin: 0;
+}
+
+/* General Play & Admissions Grid */
+.cp-play-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-cream);
+  border-top: 1px solid var(--cp-border);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-admissions-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.cp-admission-card {
+  background: var(--cp-paper);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(20, 44, 75, 0.04);
+}
+
+.cp-admission-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cp-admission-tier {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.15rem;
+  color: var(--cp-ink);
+  margin: 0;
+  font-weight: 600;
+}
+
+.cp-admission-price {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cp-orange);
+}
+
+.cp-admission-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--cp-ink-soft);
+  margin: 0 0 18px;
+}
+
+.cp-admission-tag {
+  margin-top: auto;
+  align-self: flex-start;
+  background: #e2f5ec;
+  color: #0f5933;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.cp-summer-saver {
+  max-width: 860px;
+  margin: 32px auto 0;
+  background: #fff3c4;
+  border: 1px solid #f0c020;
+  border-radius: 10px;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-saver-badge {
+  align-self: flex-start;
+  background: var(--cp-orange);
+  color: #ffffff;
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.cp-summer-saver p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: var(--cp-ink);
+}
+
+.cp-summer-saver a {
+  color: var(--cp-orange-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Birthday Party Packages */
+.cp-parties-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-paper);
+}
+
+.cp-packages-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.cp-package-card {
+  background: var(--cp-cream);
+  border: 2px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--cp-shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.cp-package-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cp-orange);
+}
+
+.cp-package-badge {
+  align-self: flex-start;
+  background: var(--cp-orange-glow);
+  color: var(--cp-orange-deep);
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.cp-package-title {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.55rem;
+  color: var(--cp-ink);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.cp-package-pricing {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-package-price {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 2rem;
+  color: var(--cp-orange);
+  line-height: 1;
+}
+
+.cp-package-sub {
+  font-size: 0.85rem;
+  color: var(--cp-ink-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.cp-package-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--cp-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cp-package-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--cp-ink-soft);
+  line-height: 1.45;
+}
+
+.cp-item-check {
+  color: var(--cp-green);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.cp-package-btn {
+  margin-top: auto;
+  background: var(--cp-ink);
+  color: #ffffff;
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+
+.cp-package-btn:hover,
+.cp-package-btn:focus-visible {
+  background: var(--cp-orange);
+}
+
+/* Arena Floorplan Plate */
+.cp-arena-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-cream);
+  border-top: 1px solid var(--cp-border);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-plate {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--cp-paper);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: var(--cp-shadow);
+}
+
+.cp-plate-head {
+  margin-bottom: 24px;
+}
+
+.cp-plate-kicker {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cp-orange);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cp-plate-title {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  color: var(--cp-ink);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.cp-plate-intro {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--cp-ink-soft);
+  margin: 0;
+  max-width: 44rem;
+}
+
+.cp-plate-stage {
+  margin: 24px 0 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--cp-border);
+  background: #ffffff;
+}
+
+.cp-plate-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cp-plate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cp-plate-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: var(--cp-cream);
+  border: 1px solid var(--cp-border);
+  border-radius: 8px;
+}
+
+.cp-plate-num {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.3rem;
+  color: var(--cp-orange);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cp-plate-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-plate-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cp-ink);
+  margin: 0 0 6px;
+}
+
+.cp-plate-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--cp-ink-soft);
+  margin: 0;
+}
+
+/* Viewing Café Section */
+.cp-cafe-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-paper);
+}
+
+.cp-cafe-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: #142c4b;
+  color: #fff9ea;
+  border-radius: var(--cp-radius);
+  padding: clamp(32px, 5vw, 56px);
+  box-shadow: var(--cp-shadow);
+}
+
+.cp-cafe-content h2 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: #ffffff;
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+
+.cp-cafe-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #e2ebf5;
+  max-width: 44rem;
+  margin: 0 0 32px;
+}
+
+.cp-cafe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cp-cafe-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cp-cafe-pill strong {
+  font-family: Fredoka, system-ui, sans-serif;
+  color: var(--cp-yellow);
+  font-size: 1.05rem;
+}
+
+.cp-cafe-pill span {
+  font-size: 0.88rem;
+  color: #cad8e8;
+  line-height: 1.4;
+}
+
+/* Times & Parking Guide */
+.cp-hours-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-cream);
+  border-top: 1px solid var(--cp-border);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-logistics-grid {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 860px) {
+  .cp-logistics-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.cp-hours-card,
+.cp-parking-card {
+  background: var(--cp-paper);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-hours-header,
+.cp-parking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-hours-header h3,
+.cp-parking-header h3 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.35rem;
+  color: var(--cp-ink);
+  margin: 0;
+  font-weight: 700;
+}
+
+.cp-hours-chip,
+.cp-parking-chip {
+  background: var(--cp-yellow);
+  color: var(--cp-ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.cp-schedule-list,
+.cp-parking-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cp-schedule-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+@media (min-width: 540px) {
+  .cp-schedule-row {
+    grid-template-columns: 180px 140px 1fr;
+    align-items: baseline;
+  }
+}
+
+.cp-schedule-days {
+  font-weight: 700;
+  color: var(--cp-ink);
+  font-size: 0.92rem;
+}
+
+.cp-schedule-time {
+  color: var(--cp-orange-deep);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cp-schedule-note {
+  font-size: 0.84rem;
+  color: var(--cp-ink-muted);
+}
+
+.cp-hours-note {
+  margin: 18px 0 0;
+  font-size: 0.88rem;
+  color: var(--cp-ink-soft);
+  line-height: 1.45;
+}
+
+.cp-hours-note a {
+  color: var(--cp-orange-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cp-parking-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-parking-name {
+  font-size: 0.95rem;
+  color: var(--cp-ink);
+  font-weight: 700;
+}
+
+.cp-parking-desc {
+  font-size: 0.85rem;
+  color: var(--cp-ink-soft);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Party Enquiry Section */
+.cp-invite-section {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  background: var(--cp-paper);
+}
+
+.cp-invite-wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.cp-invite-head {
+  max-width: 780px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.cp-invite-head h2 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  color: var(--cp-ink);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.cp-invite-lead {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--cp-ink-soft);
+  margin: 0;
+}
+
+.cp-invite-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 880px) {
+  .cp-invite-columns {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.cp-direct-card {
+  background: var(--cp-cream);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-direct-card h3 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.45rem;
+  color: var(--cp-ink);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.cp-direct-card p {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: var(--cp-ink-soft);
+  margin: 0 0 24px;
+}
+
+.cp-phone-button {
+  background: var(--cp-orange);
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+  transition: background 0.15s ease;
+}
+
+.cp-phone-button:hover,
+.cp-phone-button:focus-visible {
+  background: var(--cp-orange-deep);
+}
+
+.cp-phone-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.cp-phone-val {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.cp-direct-meta {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--cp-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--cp-ink-soft);
+}
+
+.cp-direct-meta a {
+  color: var(--cp-orange-deep);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cp-form-card {
+  background: #ffffff;
+  border: 2px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: var(--cp-shadow);
+}
+
+.cp-form-card h3 {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.45rem;
+  color: var(--cp-ink);
+  margin: 0 0 20px;
+  font-weight: 700;
+}
+
+.cp-script-form {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
-.co-packs li {
+
+.cp-form-row {
   display: grid;
-  gap: 4px;
-  padding: 16px 0;
-  border-top: 2px solid #f0c020;
-}
-.co-packs strong {
-  font-family: Fredoka, "Segoe UI", sans-serif;
-  font-size: 1.3rem;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
-.co-invite { background: #fff; }
-.co-rsvp { display: grid; gap: 12px; max-width: 28rem; margin-top: 20px; }
-.co-rsvp label, .co-rsvp legend { display: grid; gap: 4px; font-size: .95rem; }
-.co-rsvp fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; }
-.co-rsvp input[type="text"] {
-  border: 0;
-  border-bottom: 2px solid var(--co-navy);
-  background: transparent;
-  font: inherit;
-  padding: 8px 0;
+@media (min-width: 500px) {
+  .cp-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-.co-rsvp button {
-  margin-top: 8px;
-  padding: 12px 16px;
-  border: 0;
-  background: var(--co-navy);
-  color: #ffe14a;
-  font-family: Fredoka, "Segoe UI", sans-serif;
-  font-size: 1.1rem;
+
+.cp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cp-field label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--cp-ink);
+}
+
+.cp-field input,
+.cp-field select,
+.cp-field textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border: 1px solid var(--cp-border);
+  border-radius: 6px;
+  background: var(--cp-paper);
+  color: var(--cp-ink);
+}
+
+.cp-field input:focus-visible,
+.cp-field select:focus-visible,
+.cp-field textarea:focus-visible {
+  outline: 2px solid var(--cp-orange);
+  outline-offset: 1px;
+}
+
+.cp-fieldset {
+  border: 1px solid var(--cp-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 0;
+  background: var(--cp-paper);
+}
+
+.cp-fieldset legend {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--cp-ink);
+  padding: 0 6px;
+}
+
+.cp-radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cp-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--cp-ink-soft);
   cursor: pointer;
 }
-.co-sealed { margin-top: 16px; display: grid; gap: 6px; }
-.co-sealed pre { white-space: pre-wrap; font-family: inherit; font-size: 1.05rem; }
+
+.cp-submit-btn {
+  background: var(--cp-ink);
+  color: var(--cp-yellow);
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s ease;
+}
+
+.cp-submit-btn:hover,
+.cp-submit-btn:focus-visible {
+  background: var(--cp-orange);
+  color: #ffffff;
+}
+
+.cp-handoff {
+  background: var(--cp-paper);
+  border: 2px solid var(--cp-orange);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.cp-handoff-header {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cp-handoff-badge {
+  align-self: flex-start;
+  background: var(--cp-yellow);
+  color: var(--cp-ink);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.cp-script-box {
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  background: #ffffff;
+  border: 1px solid var(--cp-border);
+  border-radius: 6px;
+  padding: 14px;
+  white-space: pre-wrap;
+  color: var(--cp-ink);
+  margin: 0 0 16px;
+}
+
+.cp-handoff-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cp-btn-call {
+  background: var(--cp-orange);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cp-btn-mail {
+  background: #ffffff;
+  color: var(--cp-ink);
+  border: 1px solid var(--cp-border);
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Civic Footer */
+.cp-foot {
+  background: var(--cp-paper);
+  border-top: 1px solid var(--cp-border);
+  padding: clamp(36px, 6vw, 64px) clamp(16px, 4vw, 48px);
+  text-align: center;
+}
+
+.cp-foot-content {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cp-foot-mark {
+  color: var(--cp-ink);
+  margin-bottom: 12px;
+}
+
+.cp-foot-name {
+  font-family: Fredoka, system-ui, sans-serif;
+  font-size: 1.5rem;
+  color: var(--cp-ink);
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.cp-foot-furniture {
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: var(--cp-ink-soft);
+  margin: 0 0 10px;
+}
+
+.cp-foot-addr {
+  font-size: 0.88rem;
+  color: var(--cp-ink-muted);
+  margin: 0 0 16px;
+}
+
+.cp-foot-links {
+  font-size: 0.9rem;
+  color: var(--cp-ink-soft);
+  margin: 0;
+}
+
+.cp-foot-links a {
+  color: var(--cp-orange-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

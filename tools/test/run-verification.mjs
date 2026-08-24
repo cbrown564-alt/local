@@ -59,6 +59,7 @@ const suites = [
   ["test:villa-vinci"],
   ["test:conlyn-house"],
   ["test:cafe-mauds"],
+  ["test:cocos"],
   ["test:where-it-fails"],
   ["test:how-its-made"],
   ["test:why-its-yours"],

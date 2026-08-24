@@ -60,6 +60,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       label: "Fresh coffee and cream by the Waterfoot window",
     }],
   },
+  "cocos-adventure-playground": {
+    heading: "Walk in for play. Ring for a party.",
+    lede: "Two hours of adventure play, dedicated party rooms, and a viewing café overlooking the frame on Central Promenade.",
+    frames: [{
+      src: "/media/concepts/cocos-adventure-playground/play.jpg",
+      alt: "A vibrant indoor children's adventure playground with colorful multi-level slides, ball pits, and an elevated mezzanine viewing cafe overlooking the arena",
+      label: "The play kingdom and mezzanine viewing café",
+    }],
+  },
   "conlyn-house": {
     heading: "Wake to the ocean metres from your room.",
     lede: "Central Promenade at the purple door: a 9-iron from Royal County Down, with panoramic Dundrum Bay and Slieve Donard sloping to the sea.",

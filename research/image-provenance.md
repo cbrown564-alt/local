@@ -1139,7 +1139,7 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/binghams-menswear/hire-rail.jpg` — generated concept plate of the hire rail and suiting cloths; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/binghams-menswear/jacket.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/cafe-mauds/dish.jpg` — generated concept plate of fresh Belgian waffles, artisan espresso, and Mauds honeycomb and chocolate ice cream by the Waterfoot promenade window; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate of the multi-level adventure play kingdom, spiral slides, ball pits, and elevated mezzanine viewing café on Central Promenade; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/marine-wellness/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 
 ### Comparison and share media
