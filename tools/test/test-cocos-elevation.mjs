@@ -63,7 +63,7 @@ check("arena plate missing", flat.includes("cp-plate"));
 check("Adventure Kingdom/Frame missing", text.includes("Adventure Kingdom") || text.includes("Play Frame"));
 check("Toddler Zone missing", text.includes("Toddler Zone") || text.includes("Toddler"));
 check("Viewing Café missing", text.includes("Viewing Café") || text.includes("Viewing Cafe"));
-check("Party Rooms missing", text.includes("Party Rooms") || text.includes("Party Room"));
+check("Party Suites missing", text.includes("Dedicated Party Suites") || text.includes("Party Rooms"));
 
 // 5. Parking Hubs
 check("Donard Park car park missing", text.includes("Donard Park"));

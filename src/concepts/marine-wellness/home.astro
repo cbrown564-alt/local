@@ -6,6 +6,11 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 const booksy =
   "https://booksy.com/en-gb/120760_marine-wellness_massage_1529223_newcastle";
 const facebook = "https://www.facebook.com/marinebeauty.haven/";
+const phone = "028 4372 6207";
+const phoneHref = "tel:+442843726207";
+// Move 2: the clinic's Facebook Intro, verbatim. Do not trim inside the quote.
+const creed =
+  "Marine Wellness is a professional holistic wellness clinic specialising in therapeutic massage, reflexology and restorative treatments designed to support relaxation, recovery and overall wellbeing in a calm, welcoming environment.";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;1,500&family=Sora:wght@400;500;600;700&display=swap";
 
@@ -15,6 +20,33 @@ const treatments = [
   { name: "Wellbeing body massage", line: "An hour." },
   { name: "Dermalogica skin focus 45", line: "Forty-five minutes." },
   { name: "Kinetic Chain Release", line: "An hour." },
+];
+
+// Move 4: the weekly hours as the clinic's own site publishes them
+// (read 23 August 2026; dated in research and the case study's Sources & limits).
+const hours = [
+  { day: "Monday", time: "Closed" },
+  { day: "Tuesday", time: "10–5" },
+  { day: "Wednesday", time: "10–6" },
+  { day: "Thursday", time: "10–7" },
+  { day: "Friday", time: "10–6" },
+  { day: "Saturday", time: "9–3" },
+  { day: "Sunday", time: "Closed" },
+];
+
+// Move 3: the tenure ladder is the timeline. No biographies beyond this.
+const people = [
+  { name: "Patricia", tenure: "Over twenty years" },
+  { name: "Nicola", tenure: "Over ten" },
+  { name: "Emma", tenure: "Three and counting" },
+];
+
+// Move 5: the clinic's own Booksy booking terms, set as house rules.
+const rules = [
+  "A 50% deposit is taken when you book.",
+  "The deposit is non-refundable inside 24 hours of the appointment, or for a no-show.",
+  "A late arrival means a shorter treatment.",
+  "New clients have a consultation before advanced work.",
 ];
 ---
 
@@ -41,7 +73,8 @@ const treatments = [
       <h1 id="mw-name">Marine Wellness</h1>
       <p class="mw-reassure">
         Unit 13, 63A Castlewellan Road, Newcastle, BT33 0JX.
-        Book a slot on Booksy. We do not publish hours.
+        Book on <a href={booksy}>Booksy</a>, or call{" "}
+        <a href={phoneHref}>{phone}</a>.
       </p>
       <ul class="mw-two">
         <li>
@@ -57,15 +90,74 @@ const treatments = [
       </ul>
     </section>
 
+    <section class="mw-continuity" aria-labelledby="mw-continuity-title">
+      <h2 id="mw-continuity-title">
+        If you knew us as Marine Beauty Haven on the Promenade — same hands,
+        same number, new room.
+      </h2>
+      <p>
+        The clinic is now at Unit 13, 63A Castlewellan Road. The phone has not
+        changed: <a href={phoneHref}>{phone}</a>. Neither has the diary.
+      </p>
+    </section>
+
     <figure class="mw-calm">
       <img
         src="/media/concepts/marine-wellness/calm.jpg"
         alt="An empty treatment room with folded towels and a plant in soft daylight"
         width="940"
-          height="627"
+        height="627"
       />
       <figcaption>A calm room.</figcaption>
     </figure>
+
+    <figure class="mw-creed">
+      <blockquote>
+        <p>{creed}</p>
+      </blockquote>
+      <figcaption>Marine Wellness · Facebook</figcaption>
+    </figure>
+
+    <section class="mw-people" aria-labelledby="mw-people-title">
+      <p class="mw-kicker">The practice</p>
+      <h2 id="mw-people-title">The hands stay the same.</h2>
+      <ul class="mw-people-list">
+        {people.map((person) => (
+          <li>
+            <strong>{person.name}</strong>
+            <span>{person.tenure}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mw-hours" id="hours" aria-labelledby="mw-hours-title">
+      <p class="mw-kicker">Opening hours</p>
+      <h2 id="mw-hours-title">When the door is open</h2>
+      <table class="mw-hours-table">
+        <tbody>
+          {hours.map((row) => (
+            <tr>
+              <th scope="row">{row.day}</th>
+              <td>{row.time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="mw-rules" aria-labelledby="mw-rules-title">
+      <p class="mw-kicker">Before you book</p>
+      <h2 id="mw-rules-title">Four house rules</h2>
+      <ul class="mw-rules-list">
+        {rules.map((rule) => (
+          <li>{rule}</li>
+        ))}
+      </ul>
+      <p class="mw-rules-diary">
+        Prices and slots live in the diary: <a href={booksy}>Open Booksy</a>.
+      </p>
+    </section>
 
     <section class="mw-desk" id="desk" aria-labelledby="mw-desk-title">
       <p class="mw-kicker">Who needs seen, and when</p>

@@ -17,8 +17,7 @@ relief**. The register is reassurance, never spectacle (Donard Veterinary);
 what reassures here is not a calm room but **continuity** — the proof that
 the clinic a returning client remembers is the clinic on this page.
 
-**Status: rewritten 24 August 2026. The graft on the branch predates this
-brief and contradicts the record on hours. Do not call the concept
+**Status: moves 1–6 shipped 24 August 2026. Do not call the concept
 validated. Clinical claims: quote, do not paraphrase.**
 
 ## The insight the first pass missed

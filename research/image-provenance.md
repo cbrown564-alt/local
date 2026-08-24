@@ -562,12 +562,6 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   relationships for the shop's fourteen-school uniform list; it is not a
   survey, road map, school catchment map, or evidence of any school's current
   relationship with the shop. Town labels and the full school roll are HTML.
-- `public/media/maps/cafe-mauds-waterfoot-generated.png` — **in use** (24
-  August 2026). AI-generated editorial place illustration made with the
-  built-in OpenAI image generation tool. It depicts the Waterfoot café beside
-  the Shimna River footbridge, promenade and Dundrum Bay with the Mournes
-  behind; it is indicative artwork, not a measured site plan or documentary
-  photograph. The numbered points and readable labels are HTML overlays.
 - `public/media/concepts/arley-house/arley-house-exterior-generated.jpg` and
   `arley-house-breakfast-generated.jpg` — **in use** (23 August 2026). AI-generated
   indicative visualisations made with the built-in OpenAI image generation tool

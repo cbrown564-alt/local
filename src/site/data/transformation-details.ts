@@ -1206,8 +1206,8 @@ export const transformationDetails = {
     "title": "Marine Wellness concept transformation — Mourne Made",
     "description": "A respectful, source-backed before-and-after website concept for Marine Wellness in Newcastle.",
     "eyebrow": "Website transformation · Newcastle",
-    "headline": "Calm room. The diary is already Booksy.",
-    "date": "23 August 2026",
+    "headline": "Same hands, same number, new room.",
+    "date": "24 August 2026",
     "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (a matched live capture was not filed). Right: the concept opening screen.",
     "conceptHref": "/concepts/marine-wellness/",
     "conceptLabel": "See the full website idea",
@@ -1226,7 +1226,7 @@ export const transformationDetails = {
       {
         "title": "Put the business's own first job on the first screen",
         "body": "The public presence today splits the story across a site, a feed, or a booker — so a cold visitor has to already know where to look.",
-        "change": "Calm room. The diary is already Booksy."
+        "change": "Same hands, same number, new room. The diary stays on Booksy."
       },
       {
         "title": "Keep honesty limits visible",
@@ -1239,6 +1239,6 @@ export const transformationDetails = {
         "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
       }
     ],
-    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of Booksy and the public Facebook page.</p>\n        <p>Generated calm plate disclosed — not a treatment-room photograph. Quote clinical lines; do not paraphrase or invent a founding year. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Marine Wellness.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft; elevated 24 August 2026. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of Booksy and the public Facebook page.</p>\n        <p>Hours from the clinic's own site table (read 23 August 2026 — Booksy's hours widget was unreliable on that read). The rename chain: Marine Beauty Haven on the Promenade is a directory-era name; the current door is Unit 13, 63A Castlewellan Road (first-party). People tenures — Patricia over twenty years, Nicola over ten, Emma three — from the clinic's site. Booking rules from the clinic's Booksy listing (read 23 August 2026).</p>\n        <p>Generated calm plate disclosed — not a treatment-room photograph. Quote clinical lines; do not paraphrase or invent a founding year. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Marine Wellness.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
 } satisfies Record<string, TransformationDetail>;

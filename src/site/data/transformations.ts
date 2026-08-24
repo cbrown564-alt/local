@@ -470,7 +470,7 @@ export const transformationCandidates: Transformation[] = [
     town: "Newcastle",
     category: "Shops & services",
     summary:
-      "A Castlewellan Road treatment room whose bookings already run on Booksy — given a calm first screen that quotes the clinical offer and hands the diary to the booker they already use.",
+      "A Newcastle clinic that changed its name twice while keeping the same hands, the same number and the same Booksy diary — given the continuity line a returning client needs, its own published hours table, and the booking house rules beside the diary.",
     before: "/media/concepts/marine-wellness/marine-wellness-before.jpg",
     after: "/media/concepts/marine-wellness/marine-wellness-after.jpg",
     beforeAlt:
