@@ -1,0 +1,167 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import TableCard from "./TableCard.astro";
+
+/* Speaks as the café. Sit-down after the walk on Central Promenade.
+   Walk-in meal — no reserve form. Today's specials live on Facebook.
+   Address and number as briefed for this page (84 Central Promenade /
+   028 4372 3472). An older box harvest used 2 Main Street / 028 4372 3010
+   — that pair stays off the guest chrome. */
+
+const phone = "028 4372 3472";
+const phoneHref = "tel:02843723472";
+const facebook = "https://www.facebook.com/shimnacafe/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Figtree:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const ritual = [
+  {
+    id: "fry",
+    name: "The fry",
+    line: "An Ulster fry whenever you sit down. Breakfast stays on after the walk — all day, until we close.",
+  },
+  {
+    id: "soup",
+    name: "The soup",
+    line: "Homemade soup after the wind. A bowl, a window, the promenade still moving outside.",
+  },
+  {
+    id: "scone",
+    name: "The scone",
+    line: "Scones and traybakes from the kitchen. Tea when the legs are done.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Shimna Café — independent concept"}
+  slug="shimna-cafe"
+  bodyClass="concept-page concept-shimna"
+  lang="en-GB"
+  businessName="Shimna Café"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The table card is a drawn plate, not a photograph from the café."
+>
+  <div class="sh-strip">
+    <span>84 Central Promenade, Newcastle · family-run, thirty years on</span>
+    <span class="sh-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer">Facebook</a>
+    </span>
+  </div>
+
+  <header class="sh-header">
+    <a class="sh-brand" href="/concepts/shimna-cafe/">
+      <span class="sh-brand-mark" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16.2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 20c3-6 7-9 10-9s7 3 10 9" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M11 20h14" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="18" cy="13" r="1.6" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">Shimna Café</span>
+        <span class="sh-brand-sub">84 Central Promenade · Newcastle</span>
+      </span>
+    </a>
+    <nav class="sh-nav" aria-label="Concept navigation">
+      <a href="#window">The window</a>
+      <a href="#after">After the walk</a>
+      <a href="#table">A table</a>
+    </nav>
+    <a class="sh-walk" href="#table">Walk in</a>
+  </header>
+
+  <main class="sh-main">
+    <section class="sh-window" id="window" aria-labelledby="sh-name">
+      <div class="sh-window-copy">
+        <p class="sh-eyebrow">Family-run café · Central Promenade</p>
+        <h1 id="sh-name">Sit down after the walk.</h1>
+        <p class="sh-say">We have been here more than thirty years. Come in when the legs are done.</p>
+        <p class="sh-lede">
+          A table by the window on Central Promenade. Breakfast all day — the
+          Ulster fry, homemade soup, a scone, a traybake. Kids’ menu if you
+          brought the small ones. Takeaway if you are still walking.
+        </p>
+        <p class="sh-window-note">
+          We do not take a booking. Walk in, or ring. What is on today lives on
+          <a href={facebook} rel="noopener noreferrer">Facebook</a>.
+        </p>
+      </div>
+      <div class="sh-window-light" aria-hidden="true">
+        <span class="sh-sash"></span>
+        <span class="sh-sash sh-sash--mid"></span>
+      </div>
+    </section>
+
+    <section class="sh-spread" id="after" aria-labelledby="sh-after-title">
+      <div class="sh-spread-head">
+        <p class="sh-eyebrow">The ritual</p>
+        <h2 id="sh-after-title">Fry. Soup. Scone.</h2>
+        <p class="sh-spread-lede">
+          Three ways to come off the path. The same kitchen. The same window.
+        </p>
+      </div>
+      <ol class="sh-columns">
+        {ritual.map((item, i) => (
+          <li class={`sh-col sh-col--${item.id}`}>
+            <p class="sh-col-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</p>
+            <h3>{item.name}</h3>
+            <p>{item.line}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="sh-stage" id="table" aria-labelledby="sh-table-title">
+      <div class="sh-stage-copy">
+        <p class="sh-eyebrow">A table</p>
+        <h2 id="sh-table-title">Walk in. We set the card on the table.</h2>
+        <p class="sh-stage-lede">
+          84 Central Promenade. Parking at the rear. Cash and card. We close
+          in the afternoon — come while the walk is still in you.
+        </p>
+        <p class="sh-actions">
+          <a class="sh-walk sh-walk--solid" href="#find">Walk in</a>
+          <a class="sh-ring" href={phoneHref}>tel 028 4372 3472</a>
+        </p>
+      </div>
+      <figure class="sh-artefact">
+        <TableCard phone={phone} phoneHref={phoneHref} />
+        <figcaption>The table card — walk in, or ring the café.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sh-find" id="find" aria-labelledby="sh-find-title">
+      <div class="sh-find-copy">
+        <p class="sh-eyebrow">The door</p>
+        <h2 id="sh-find-title">Central Promenade. Come off the path.</h2>
+        <dl class="sh-hours">
+          <div>
+            <dt>Monday to Saturday</dt>
+            <dd>8:30–4</dd>
+          </div>
+          <div>
+            <dt>Sunday</dt>
+            <dd>9–4</dd>
+          </div>
+        </dl>
+        <p class="sh-find-meta">
+          Cash and card. Parking at the rear. Takeaway from the same counter.
+        </p>
+      </div>
+      <address class="sh-address">
+        <strong>Shimna Café</strong>
+        <span>84 Central Promenade</span>
+        <span>Newcastle</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={facebook} rel="noopener noreferrer">Facebook · Shimna Cafe</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
