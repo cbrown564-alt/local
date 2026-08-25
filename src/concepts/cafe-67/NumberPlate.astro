@@ -1,0 +1,214 @@
+---
+/* 67 as the door: a yellow NI plate on a perforated brunch ticket.
+   Compact mark is the plate alone. Honesty lives in bannerNote. */
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const ids = compact ? "c67m" : "c67t";
+---
+
+{compact ? (
+  <svg
+    class="c67-mark"
+    width="44"
+    height="30"
+    viewBox="0 0 44 30"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect x="0.75" y="0.75" width="42.5" height="28.5" rx="3.5" fill="#f5d000" stroke="#1a1510" stroke-width="1.5"/>
+    <rect x="1.9" y="1.9" width="40.2" height="26.2" rx="2.4" fill="none" stroke="#1a1510" stroke-width="0.7"/>
+    <rect x="2.4" y="2.4" width="8.2" height="25.2" fill="#1c3f8a"/>
+    <text
+      x="6.5"
+      y="12"
+      text-anchor="middle"
+      fill="#fff"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="5.2"
+      font-weight="800"
+      letter-spacing="0.4"
+    >NI</text>
+    <text
+      x="6.5"
+      y="20.5"
+      text-anchor="middle"
+      fill="#f5d000"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="4.4"
+      font-weight="800"
+    >67</text>
+    <text
+      x="29"
+      y="22"
+      text-anchor="middle"
+      fill="#1a1510"
+      font-family="Ibarra Real Nova, Times New Roman, serif"
+      font-size="18"
+      font-weight="700"
+    >67</text>
+  </svg>
+) : (
+  <svg
+    class="c67-ticket"
+    viewBox="0 0 640 400"
+    role="img"
+    aria-label="Brunch ticket for Café 67: a yellow Northern Ireland number plate reading 67, for 67 Main Street, Newcastle"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id={`${ids}-paper`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff8ee"/>
+        <stop offset="1" stop-color="#f3e6d2"/>
+      </linearGradient>
+      <linearGradient id={`${ids}-plate`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffe44a"/>
+        <stop offset="1" stop-color="#f0c800"/>
+      </linearGradient>
+      <pattern id={`${ids}-perf`} width="12" height="12" patternUnits="userSpaceOnUse">
+        <circle cx="6" cy="6" r="2.1" fill="#e8d7c0"/>
+      </pattern>
+    </defs>
+
+    <rect x="18" y="22" width="604" height="356" rx="18" fill="#d9c4a8" opacity=".35"/>
+    <rect x="12" y="14" width="604" height="356" rx="18" fill={`url(#${ids}-paper)`} stroke="#c4ad90" stroke-width="1.4"/>
+
+    <!-- perforated stub -->
+    <rect x="12" y="14" width="108" height="356" rx="18" fill="#f7ead8"/>
+    <rect x="96" y="14" width="24" height="356" fill="#f7ead8"/>
+    <rect x="112" y="28" width="12" height="328" fill={`url(#${ids}-perf)`}/>
+    <line x1="118" y1="28" x2="118" y2="356" stroke="#c4ad90" stroke-width="1.2" stroke-dasharray="3 7"/>
+
+    <text
+      transform="translate(58 192) rotate(-90)"
+      text-anchor="middle"
+      fill="#6a4e38"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="13"
+      font-weight="800"
+      letter-spacing="6"
+    >DOOR</text>
+    <text
+      x="66"
+      y="328"
+      text-anchor="middle"
+      fill="#1a1510"
+      font-family="Ibarra Real Nova, Times New Roman, serif"
+      font-size="42"
+      font-weight="700"
+    >67</text>
+    <text
+      x="66"
+      y="348"
+      text-anchor="middle"
+      fill="#8a6a50"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="9"
+      font-weight="700"
+      letter-spacing="1.6"
+    >KEEP</text>
+
+    <!-- folio -->
+    <text
+      x="370"
+      y="52"
+      text-anchor="middle"
+      fill="#8a6a50"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="11"
+      font-weight="700"
+      letter-spacing="4.2"
+    >BRUNCH TICKET</text>
+    <text
+      x="370"
+      y="74"
+      text-anchor="middle"
+      fill="#1a1510"
+      font-family="Ibarra Real Nova, Times New Roman, serif"
+      font-size="22"
+      font-weight="600"
+    >Café 67</text>
+
+    <!-- UK / NI plate -->
+    <rect x="168" y="96" width="404" height="148" rx="10" fill="#1a1510"/>
+    <rect x="174" y="102" width="392" height="136" rx="7" fill={`url(#${ids}-plate)`}/>
+    <rect x="180" y="108" width="36" height="124" fill="#1c3f8a"/>
+    <text
+      x="198"
+      y="158"
+      text-anchor="middle"
+      fill="#fff"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="14"
+      font-weight="800"
+      letter-spacing="0.6"
+    >NI</text>
+    <text
+      x="198"
+      y="186"
+      text-anchor="middle"
+      fill="#ffe44a"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="13"
+      font-weight="800"
+    >67</text>
+    <text
+      x="392"
+      y="204"
+      text-anchor="middle"
+      fill="#1a1510"
+      font-family="Ibarra Real Nova, Times New Roman, serif"
+      font-size="108"
+      font-weight="700"
+    >67</text>
+
+    <text
+      x="370"
+      y="278"
+      text-anchor="middle"
+      fill="#1a1510"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="13"
+      font-weight="800"
+      letter-spacing="3.4"
+    >67 MAIN STREET · NEWCASTLE</text>
+    <text
+      x="370"
+      y="300"
+      text-anchor="middle"
+      fill="#6a4e38"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="12"
+      font-weight="600"
+      letter-spacing="2.2"
+    >BT33 0AE · CO. DOWN</text>
+
+    <!-- walk-in stamp -->
+    <g transform="translate(528 328) rotate(-14)">
+      <ellipse cx="0" cy="0" rx="58" ry="22" fill="none" stroke="#c45c26" stroke-width="2.2"/>
+      <text
+        x="0"
+        y="5"
+        text-anchor="middle"
+        fill="#c45c26"
+        font-family="Nunito Sans, Segoe UI, sans-serif"
+        font-size="12"
+        font-weight="800"
+        letter-spacing="2.4"
+      >WALK IN</text>
+    </g>
+
+    <text
+      x="160"
+      y="348"
+      fill="#b08968"
+      font-family="Nunito Sans, Segoe UI, sans-serif"
+      font-size="10"
+      font-weight="600"
+      letter-spacing="1.4"
+    >COFFEE · BRUNCH · NO RESERVE</text>
+  </svg>
+)}
