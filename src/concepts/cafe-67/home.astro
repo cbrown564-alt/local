@@ -1,0 +1,156 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import NumberPlate from "./NumberPlate.astro";
+
+/* Speaks as the café. Number is the door. Website is still new — Instagram
+   is today; do not deep-link cafe67.co.uk as a menu. Owner unnamed. Opening
+   year omitted (not first-party). Hours: Instagram coffee 8–4, kitchen 9–3,
+   seven days vs Google 5pm close — both dated below. No booking widget.
+   Google dish names are a listing, not a signed tariff. 3fe is theirs.
+   Staff names in reviews stay off this door. */
+
+const phone = "028 4379 8485";
+const phoneHref = "tel:02843798485";
+const email = "info@cafe67.co.uk";
+const instagram = "https://www.instagram.com/cafe67newcastle/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap";
+
+const listing = [
+  "Eggs Florentine",
+  "Soufflé pancakes",
+  "Nashville chicken waffles",
+  "Loaded chicken waffles",
+  "Turkish eggs",
+  "Beef hash",
+];
+---
+
+<ConceptLayout
+  title={"Café 67 — independent concept"}
+  slug="cafe-67"
+  bodyClass="concept-page concept-cafe-67"
+  lang="en-GB"
+  businessName="Café 67"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The 67 plate is a drawn brunch ticket."
+>
+  <div class="c67-strip">
+    <span>67 Main Street, Newcastle · BT33 0AE</span>
+    <span class="c67-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="c67-header">
+    <a class="c67-brand" href="/concepts/cafe-67/">
+      <span class="c67-brand-mark">
+        <NumberPlate compact />
+      </span>
+      <span class="c67-brand-text">
+        <span class="c67-brand-name">Café 67</span>
+        <span class="c67-brand-sub">67 Main Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="c67-nav" aria-label="Concept navigation">
+      <a href="#door">The door</a>
+      <a href="#coffee">Coffee</a>
+      <a href="#brunch">Brunch</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <a class="c67-walk" href="#find">Walk in</a>
+  </header>
+
+  <main class="c67-main">
+    <div class="c67-hero" id="door">
+      <section class="c67-lede" aria-labelledby="c67-name">
+        <p class="c67-eyebrow">Coffee and brunch · 67 Main Street</p>
+        <h1 id="c67-name">Café 67</h1>
+        <p class="c67-street">67 Main Street, Newcastle</p>
+        <p class="c67-say">Coffee and brunch at 67.</p>
+        <p class="c67-body">
+          Our website is still new. Today lives on Instagram. Walk in, ring,
+          or write — there is no table to reserve.
+        </p>
+        <p class="c67-cta">
+          <a class="c67-walk c67-walk--inline" href="#find">Walk in</a>
+          <a class="c67-ring" href={phoneHref}>Ring {phone}</a>
+          <a class="c67-mail" href={`mailto:${email}`}>Write to us</a>
+        </p>
+      </section>
+
+      <figure class="c67-artefact">
+        <NumberPlate />
+        <figcaption>67 — the door, and the brunch ticket.</figcaption>
+      </figure>
+    </div>
+
+    <section class="c67-spread" aria-label="Coffee and brunch">
+      <p class="c67-folio">Café 67 · 67 Main Street · Newcastle · Co. Down</p>
+
+      <article class="c67-col" id="coffee">
+        <p class="c67-eyebrow">The cup</p>
+        <h2>3fe in the cup.</h2>
+        <p>
+          We pour 3fe. That is the coffee at 67 — in a Main Street cup. Come
+          in from eight; the last of it is four, on Instagram.
+        </p>
+      </article>
+
+      <article class="c67-col" id="brunch">
+        <p class="c67-eyebrow">The sitting</p>
+        <h2>Walk in for brunch.</h2>
+        <p>
+          The kitchen is a sitting you choose, not a booker. Nine until three
+          on Instagram, seven days. Google still has us until five. Walk in;
+          we will be here.
+        </p>
+      </article>
+
+      <blockquote class="c67-pull">
+        <p>Coffee and brunch at 67. Instagram is today.</p>
+      </blockquote>
+    </section>
+
+    <section class="c67-listing" aria-labelledby="c67-listing-title">
+      <div class="c67-listing-head">
+        <p class="c67-eyebrow">Google listing</p>
+        <h2 id="c67-listing-title">Names Google already wrote against the door.</h2>
+        <p class="c67-listing-lead">
+          Listing items, not a tariff we signed here. Today’s plates live on
+          Instagram.
+        </p>
+      </div>
+      <ul class="c67-listing-grid">
+        {listing.map((name) => (
+          <li>{name}</li>
+        ))}
+      </ul>
+      <p class="c67-listing-foot">
+        <a href={instagram} rel="noopener noreferrer">@cafe67newcastle</a>
+      </p>
+    </section>
+
+    <section class="c67-find" id="find" aria-labelledby="c67-find-title">
+      <p class="c67-eyebrow">The door</p>
+      <h2 id="c67-find-title">67 Main Street.</h2>
+      <p class="c67-find-lede">
+        Walk in. Ring. Write. Instagram has the board for today.
+      </p>
+      <address class="c67-address">
+        <strong>Café 67</strong>
+        <span>67 Main Street</span>
+        <span>Newcastle, Co. Down</span>
+        <span>BT33 0AE</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={instagram} rel="noopener noreferrer">Instagram · @cafe67newcastle</a>
+      </address>
+      <p class="c67-hours">
+        Instagram: coffee 8am–4pm, kitchen 9–3pm, open seven days. Google:
+        closes 5pm. Walk in.
+      </p>
+    </section>
+  </main>
+</ConceptLayout>
