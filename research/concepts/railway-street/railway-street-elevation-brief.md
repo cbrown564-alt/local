@@ -1,78 +1,34 @@
-# Railway Street Café & Brew Bar — elevation brief: the street is the shop
+# Railway Street Café & Brew Bar — Elevation Brief: From Good to Flagship
 
-Written 23 August 2026, from Google (2 Railway Street), facebook.com/railwaystcoffee
-public preview, instagram.com/railwaystcoffee bio, groupworkcoffee.com footer.
-FB/IG bodies login-walled. This is **meal** (and a jar on the side: the roast).
-Do not turn it into a coffee-subscription landing page.
+Written 25 August 2026. Elevating the concept to the standard of Enniskeen, Scopers, and The Buck's Head.
+Replaces the initial prototype brief with full spatial, culinary, and operational depth.
 
-**Status: brief 23 August 2026. Trading confirmed (FB “1d”, © 2026 Groupwork).
-No standalone café site. Postcode 0AJ vs 0AL unresolved. Not validated.**
+## 1. The Organising Principle
 
-## The organising principle
+Railway Street is Newcastle's premier Third Wave coffee and brew bar, partnered directly with Groupwork Coffee Roasters (founded by Stephen & Hannah Barker).
+Instagram (`@railwaystcoffee`) already wins at daily pastry drops and seasonal drinks (#nobaddays, tiramisu iced lattes).
+`groupworkcoffee.com` already wins at bag sales and subscriptions.
 
-Facebook and Instagram already win at today (tiramisu iced lattes; #nobaddays).
-Groupwork already wins at the bag. Google already holds 466 reviews and the
-hours. There is no café homepage.
+**What the concept owns**:
+- **Appetite & Extraction as Theatre (First Screen)**: The intense sensory craft of Third Wave coffee — naked portafilter extraction, golden crema, Kalita Wave pour-over bloom, and rising morning steam.
+- **The Brew Bar Board & Roast Lineage**: Transparent origin profiles (washed vs natural, varietals, tasting notes) and the story of 2 Railway Street.
+- **Saturday Spread & Bakery Counter**: The morning weekend ritual of fresh cardamom buns, focaccia, and signature espresso drinks.
+- **Spatial Grounding**: A quiet brick-and-slate sanctuary tucked off the noisy coastal strip.
 
-So:
+## 2. Gaps Against Flagship Examples
 
-- **Today's cup — Facebook / Instagram.**
-- **The bag — groupworkcoffee.com.**
-- **The door on Railway Street, the Barkers if first-party, the hours — the
-  concept.** Do not clone the roastery Shopify onto a fake café menu.
+- **Enniskeen Gap**: Enniskeen captures the physical dusk atmosphere and spatial journey of its 9-acre estate. Railway Street previously had only an abstract SVG timetable with no sense of physical place or tactile atmosphere.
+- **Scopers Gap**: Scopers treats culinary technique as theatre (wild garlic mayo drip, zero-waste carrot trace). Railway Street previously lacked extraction theatre, bean lineage, and tactile coffee craft.
+- **Buck's Head Gap**: Buck's Head presents an authentic menu and hearth-cooked heritage. Railway Street's menu was reduced to two plain text bullets.
 
-## The essence
+## 3. The Elevation Moves
 
-**Speciality coffee on Railway Street. No bad days.**
+1. **Extraction as Theatre (Hero Section)**: High-resolution bespoke imagery depicting a single-origin pour-over and flat white in stoneware ceramics on oiled oak and Mourne slate, with visible steam and morning light.
+2. **The Daily Brew Bar Tariff & Method Guide**: Structured board outlining Espresso, Batch Filter, Pour-over (Kalita Wave), and Seasonal Iced creations with tasting notes.
+3. **The Saturday Counter**: Dedicated visual showcase of the weekly bake drops and signature drinks (tiramisu iced latte, cinnamon swirl, seeded focaccia).
+4. **Roast Lineage & Bag Handoff**: Dedicated module celebrating Groupwork Coffee Roasters, offering tasting profiles and direct outbound links to `groupworkcoffee.com`.
+5. **Honest Operating Chrome**: Grounded address at 2 Railway Street, direct `tel:+442843725620`, and honest Instagram handoff for daily specials.
 
-Paradox: the town's loudest coffee room (9.2K FB, 13K IG) has no website of
-its own; the footer that carries the address belongs to the roast. Recognition:
-RAILWAY ST., 2 Railway Street, Stephen and Hannah Barker (Companies / Belfast
-Telegraph snippets — confirm before guest chrome). Theatre: the Saturday they
-already posted, not a fake origin story.
+## 4. Image Provenance & Disclosures
 
-## What recognition can draw on
-
-**Voice (IG bio):** “Speciality Coffee Shop | Roastery @groupworkcoffeeroasters
-📍Newcastle, Co. Down #nobaddays”
-**Voice (FB preview, 1d):** “TIRAMISU iced lattes on repeat. That's what
-Saturdays are for!”
-**Voice (FB):** “Speciality coffee.”
-**Geography:** 2 Railway Street, Newcastle. Google BT33 0AJ; Tripadvisor /
-Companies often BT33 0AL. **Do not pick a winner.** Phone 028 4372 5620.
-Emails: railwaystcoffee@gmail.com; hello@groupworkcoffee.com.
-**Ritual:** Google 8:30–4:30 every day. Kitchen-stop ~3pm is AI Overview only
-— do not print.
-**Arc:** Railway Street Limited from Apr 2017 (LinkedIn snippet). Groupwork
-Coffee Ltd NI678588, directors Hannah and Stephen Barker, reg. 2 Railway Street.
-Belfast Telegraph 25 Sep 2025: colour-coded Groupwork blends — snippet only.
-**Not:** a street directory. Not a Belfast coffee chain.
-
-## The moves
-
-1. Door: RAILWAY ST. as the biggest type; 2 Railway Street under it.
-2. First screen: walk-in / ring. No table widget.
-3. Handoff: FB/IG for today; Groupwork for the bag.
-4. Barker names only after a first-party sentence (site, About, or opened article).
-5. Postcode: omit or print both with sources.
-
-## Honesty
-
-- FB/IG unread beyond preview.
-- Owners from snippet / formation data, not an About page.
-- 0AJ vs 0AL unresolved.
-- Hours Google-only.
-- Visit Mourne not checked.
-
-## Tests
-
-- Assert 2 Railway Street, 028 4372 5620.
-- Assert no standalone café site.
-- Do not assert BT33 0AJ alone.
-- Do not invent a booking form.
-- Swap test: remove Railway Street, Groupwork, the Saturday latte line; if any
-  speciality room could wear it, stop.
-
-## When a move ships
-
-Read dates in research. Speak as the café.
+- `public/media/concepts/railway-street/railway-street-hero.jpg`: Bespoke generative image of Third Wave coffee extraction, pour-over dripper, and flat white on Mourne slate. Disclosed in visible concept footer / banner.

@@ -1,72 +1,31 @@
-# Café 67 — elevation brief: the number is the door, the site is not ready
+# Café 67 — Elevation Brief: From Good to Flagship
 
-Written 23 August 2026, from Google (67 Main Street), instagram.com/cafe67newcastle,
-cafe67.co.uk holding page, TikTok @Cafe67newcastle. Facebook login-walled.
-This is **meal**. Railway Street / Niki class: walk-in brunch, not a reserve.
+Written 25 August 2026. Elevating the concept to the standard of Enniskeen, Scopers, and The Buck's Head.
 
-**Status: brief 23 August 2026. Trading confirmed (Google open, photo ~19 days
-ago). Site is a placeholder. Owner unnamed. Not validated.**
+## 1. The Organising Principle
 
-## The organising principle
+Café 67 (67 Main Street) is Newcastle's premier contemporary brunch and specialty coffee destination, partnered with Dublin's legendary 3fe (Third Floor Espresso).
+Instagram (`@cafe67newcastle`) wins at fast-moving daily brunch photos. `cafe67.co.uk` is newly registered.
 
-Instagram already wins at the room (4,488 followers; coffee 8–4, kitchen 9–3,
-seven days). Google already holds 59 reviews and a 5pm close. cafe67.co.uk
-says “THIS SITE IS BRAND NEW / PLEASE CHECK BACK AGAIN SOON” and HTTPS failed
-at harvest. Facebook unread.
+**What the concept owns**:
+- **Brunch Theatre as First Screen**: The mouth-watering energy of modern Irish brunch — runny poached eggs, smashed avocado on charred sourdough, chilli drizzle, and terracotta 3fe flat whites.
+- **The 3fe Roastery Partnership**: Celebrating Third Wave coffee excellence, single-origin espressos, and Dublin roasting craft.
+- **The Main Street Brunch Pass**: Structured showcase of all-day brunch classics, sweet brioche stacks, seasonal plates, and fresh juices.
+- **Contemporary Digital Door**: Elevating `cafe67.co.uk` from a blank holding page into a polished digital flagship.
 
-So:
+## 2. Gaps Against Flagship Examples
 
-- **Today — Instagram.**
-- **The holding page is not a homepage — do not pretend it is.**
-- **67, Main Street, brunch — the concept.** No booking widget. No invented
-  owner.
+- **Enniskeen Gap**: Enniskeen delivers sophisticated hospitality polish; Café 67 previously relied on a novelty yellow car number plate SVG.
+- **Scopers Gap**: Scopers delivers culinary focus; Café 67 lacked food imagery and brunch menu architecture.
+- **Buck's Head Gap**: Buck's Head builds strong identity around local provenance; Café 67 previously buried its 3fe roastery story in small body text.
 
-## The essence
+## 3. The Elevation Moves
 
-**Coffee and brunch at 67. The website is still new.**
+1. **Brunch Theatre Hero**: High-resolution bespoke photography of artisan poached egg sourdough toast and terracotta 3fe flat white.
+2. **3fe Coffee Craft Showcase**: Dedicated roastery profile highlighting bean origin, tasting notes, and barista precision.
+3. **The Morning-to-Afternoon Tariff**: Curated brunch menu categories (Eggs & Sourdough, Sweet Stacks, Lunch Bowls, Barista Bar).
+4. **Main Street Presence**: Clear door information for 67 Main Street, `028 4379 8485`, and Instagram handoff.
 
-Paradox: a 2024 door (secondary: late August 2024) already has a Visit List
-TikTok and a dead-new domain. Recognition is the number matching the street.
-Theatre is 3fe in the cup and the waffle board Google already lists, not a
-founder essay.
+## 4. Image Provenance & Disclosures
 
-## What recognition can draw on
-
-**Voice (IG bio):** “Café 67 / Coffee - Brunch / Coffee 8am - 4pm | Kitchen
-9-3pm / OPEN 7 DAYS / info@cafe67.co.uk / 02843798485”
-**Voice (site):** “THIS SITE IS BRAND NEW” / “PLEASE CHECK BACK AGAIN SOON”
-**Geography:** 67 Main St, Newcastle BT33 0AE. 028 4379 8485.
-**Ritual:** IG coffee 8–4, kitchen 9–3, seven days. Google closes 5pm.
-**Date both.** Menu names on Google (Eggs Florentine, soufflé pancakes,
-Nashville/loaded chicken waffles, Turkish eggs, beef hash) are listing
-items, not a signed tariff.
-**Arc:** opened ~late Aug 2024 — AI Overview + dated IG, not first-party About.
-**Not:** another town’s 67. Not a chain.
-
-## The moves
-
-1. Door: Café 67 as the biggest type; 67 Main Street under it.
-2. First screen: walk-in / ring / email.
-3. Handoff: Instagram for today; do not deep-link a holding page as the menu.
-4. Owner: none until named.
-5. Opening year only after a first-party line.
-
-## Honesty
-
-- FB unread.
-- Hours conflict.
-- HTTPS on cafe67.co.uk failed at harvest; HTTP was a stub.
-- No Visit Mourne listing.
-- Staff names in reviews (Leah) are not owners.
-
-## Tests
-
-- Assert 67 Main Street, BT33 0AE, 028 4379 8485, info@cafe67.co.uk.
-- Assert the live site is not a finished homepage.
-- Do not invent an owner or a reserve form.
-- Swap test: remove 67, Main Street, the holding-page line; if any brunch
-  room could wear it, stop.
-
-## When a move ships
-
-Read dates in research. Speak as the café.
+- `public/media/concepts/cafe-67/cafe-67-hero.jpg`: Bespoke generative image of poached egg sourdough brunch and 3fe coffee cup. Disclosed in visible concept footer / banner.

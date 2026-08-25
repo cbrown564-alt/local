@@ -1136,6 +1136,11 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate of the multi-level adventure play kingdom, spiral slides, ball pits, and elevated mezzanine viewing café on Central Promenade; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/marine-wellness/calm.jpg` — generated concept plate of a calm, sunlit holistic treatment room with a massage bed, folded linen and coastal light; disclosed on the concept banner. Not a photograph of the premises.
 - `public/media/concepts/marine-wellness/hands.jpg` — generated concept plate of therapist hands beside warm massage stones and botanical oils on natural linen; disclosed on the concept banner. Not a photograph of the therapists or premises.
+- `public/media/concepts/railway-street/railway-street-hero.jpg` — generated concept plate of Third Wave coffee extraction, Kalita pour-over dripper, and flat white on Mourne slate; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-hero.jpg` — generated concept plate of traditional skillet fry with soda farl and tea by the promenade window; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `public/media/concepts/cafe-67/cafe-67-hero.jpg` — generated concept plate of poached egg sourdough toast and terracotta 3fe coffee cup; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `public/media/concepts/birch/birch-hero.jpg` — generated concept plate of oat flat white in seafoam ceramic with cardamom pastry overlooking the misty Mourne coastline; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `public/media/concepts/tip-top/tip-top-hero.jpg` — generated concept plate of traditional sweet shop interior with glowing glass jars and brass balance scale; disclosed on the concept banner. Not a photograph of the premises or stock.
 
 ### Comparison and share media
 

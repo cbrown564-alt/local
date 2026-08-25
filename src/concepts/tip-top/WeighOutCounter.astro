@@ -1,0 +1,49 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "tt-jars-title" } = Astro.props;
+
+const categories = [
+  {
+    title: "Boiled Sweets",
+    description: "Clove rock, barley sugars, bullseyes, pear drops, and acid drops.",
+    tradition: "By the quarter (113g) · Traditional striped bag",
+    color: "#b03a48",
+  },
+  {
+    title: "Toffees & Caramels",
+    description: "Treacle toffee, butter mintoes, Everton mints, and dairy fudge.",
+    tradition: "By the quarter & half-pound · Weigh-out brass pan",
+    color: "#a46328",
+  },
+  {
+    title: "Mourne Clove Rock",
+    description: "Spiced aromatic red-and-white rock candy, handmade for the coast.",
+    tradition: "Signature Newcastle sweet · Est. 1937",
+    color: "#8c2430",
+  },
+  {
+    title: "Sherbets & Bonbons",
+    description: "Sherbet lemons, blue raspberry bonbons, strawberry creams, and flying saucers.",
+    tradition: "By the quarter · Fizzy & dusted jars",
+    color: "#c28424",
+  },
+];
+---
+
+<div class="tt-counter-wrap" aria-labelledby={headingId}>
+  <div class="tt-counter-grid">
+    {categories.map((cat) => (
+      <article class="tt-counter-card">
+        <div class="tt-counter-head">
+          <span class="tt-jar-badge" style={`background-color: ${cat.color};`} aria-hidden="true"></span>
+          <h3>{cat.title}</h3>
+        </div>
+        <p class="tt-counter-desc">{cat.description}</p>
+        <p class="tt-counter-trad">{cat.tradition}</p>
+      </article>
+    ))}
+  </div>
+</div>

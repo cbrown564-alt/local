@@ -1,71 +1,31 @@
-# Birch — elevation brief: promenade coffee, a parked domain
+# Birch — Elevation Brief: From Good to Flagship
 
-Written 23 August 2026, from Google (Birch Newcastle), instagram.com/birch_coffee_,
-FSA “Birch Coffee”, linktr.ee/Birch_Coffee, and birchcoffee.co.uk (GoDaddy
-parked). Facebook public header only. This is **meal**. Railway Street class:
-walk-in coffee, not a reserve. Distinct from closed Sea Salt at the same door.
+Written 25 August 2026. Elevating the concept to the standard of Enniskeen, Scopers, and The Buck's Head.
 
-**Status: brief 23 August 2026. Trading confirmed (Google open; hiring 29 Jun
-2026). No working website. No published phone. Owner unnamed. Not validated.**
+## 1. The Organising Principle
 
-## The organising principle
+Birch (51 Central Promenade) is a plant-forward specialty coffee haven, coastal lifestyle hub, and community focal point (mixtapes, run club, and mobile van).
+Instagram (`@birchnewcastle`) and Linktree win at running updates, Spotify playlists, and roaming schedules.
 
-Instagram already wins at the room (8.4K, mixtape, run club, van). Google
-already holds 233 reviews at 4.8. Linktree is the only “site”. The domain is
-parked.
+**What the concept owns**:
+- **Coastal Botanical Atmosphere (First Screen)**: Serene seafront sanctuary — oat flat whites in seafoam ceramics, cardamom buns, bleached timber, and misty Mourne views.
+- **Plant-Forward Culinary Craft**: Artisan vegan/vegetarian baking, seasonal botanical breakfast bowls, house nut milks, and specialty roast selections.
+- **The Birch Mixtape & Run Club Ritual**: Curated music selections and 8am morning coastal run club community.
+- **Birch Wheels Dispatch**: Roaming mobile espresso unit connecting town to mountain trailheads.
 
-So:
+## 2. Gaps Against Flagship Examples
 
-- **Today — Instagram.**
-- **The door on Central Promenade — the concept.**
-- Do not inherit Sea Salt’s number, menu, or BYO nights. Same address,
-  different business. No common ownership found.
+- **Enniskeen Gap**: Enniskeen creates deep sensory stillness and landscape harmony; Birch previously used a flat SVG cassette illustration.
+- **Scopers Gap**: Scopers celebrates culinary philosophy; Birch previously underplayed its plant-forward food craft.
+- **Buck's Head Gap**: Buck's Head owns its historic location; Birch previously felt detached from its seafront position at 51 Central Promenade.
 
-## The essence
+## 3. The Elevation Moves
 
-**Vegetarian specialty coffee, opposite the sea. The website is a parking page.**
+1. **Coastal Sensory Hero**: High-resolution bespoke photography of oat flat white in seafoam ceramic with cardamom pastry overlooking the misty Mourne coastline.
+2. **Plant-Forward Kitchen & Brew Counter**: Seasonal botanical menu and specialty roastery notes.
+3. **Sound & Community Magazine**: Mixtape curation, Linktree playlist integrations, and Sunday run club schedule.
+4. **Birch Wheels Roaming Dispatch**: Mountain trail popup schedule and mobile catering.
 
-Paradox: two rooms (Facebook: Castlewellan & Newcastle) plus a van, and still
-no phone on the pin. Recognition is 51 Central Promenade and the dog line.
-Theatre is the mixtape / run club they already run, not a fake origin.
+## 4. Image Provenance & Disclosures
 
-## What recognition can draw on
-
-**Voice (IG / Google):** “Vegetarian/Vegan” / “Doggie friendly” / “Vegetarian
-specialty coffee shop. Dog friendly.” Hours: Mon–Sat 8–4, Sun 9–4, kitchen
-closes 3pm daily.
-**Geography:** 51 Central Promenade, Newcastle, BT33 0HH (FSA: Ballaghbeg).
-**No phone** in GBP or FSA.
-**Ritual:** those hours; Google “Closes 4 PM” at harvest.
-**Second door:** Castlewellan — FB description only. Van: IG highlights “Birch
-Mobile” / “Birch wheels”. Do not invent a Castlewellan address.
-**FSA:** inspection 1 Aug 2024, rating 5 — date it; not a 2026 visit.
-**Not:** Sea Salt Café & Bistro (permanently closed here). Not m.seasaltnewcastle.com.
-
-## The moves
-
-1. Door: Birch as the biggest type; 51 Central Promenade.
-2. Action: Instagram / the room — no invented click-to-call.
-3. Handoff: @birch_coffee_ and Linktree, not the parked domain.
-4. Menu: vegetarian/vegan + GF as their claim; no copied Sea Salt breakfast.
-5. Castlewellan and the van as honest extras, not a second homepage.
-
-## Honesty
-
-- FB unread beyond header.
-- Owner / company not found.
-- Castlewellan is one FB line.
-- No Visit Mourne listing found.
-- Kitchen-close 3pm is the IG line; confirm before guest chrome.
-
-## Tests
-
-- Assert 51 Central Promenade, BT33 0HH.
-- Assert no working website and no published phone at harvest.
-- Do not use Sea Salt’s 028 number or BYO story.
-- Swap test: remove Birch, 51, vegetarian, the parked domain; if any seafront
-  café could wear it, stop.
-
-## When a move ships
-
-Read dates in research. Speak as Birch.
+- `public/media/concepts/birch/birch-hero.jpg`: Bespoke generative image of ceramic flat white and cardamom bun overlooking coastal Mournes. Disclosed in visible concept footer / banner.

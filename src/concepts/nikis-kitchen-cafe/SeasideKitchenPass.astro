@@ -1,0 +1,47 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "nk-kitchen-pass-title" } = Astro.props;
+
+const specials = [
+  {
+    category: "Morning Skillet",
+    name: "The Promenade Fry",
+    desc: "Toasted soda farl, potato bread, pork sausage, dry cured bacon, fried free range egg & grilled tomato.",
+    timing: "From 8:00 AM",
+  },
+  {
+    category: "Seaside Chowder",
+    name: "Mourne Coast Chowder",
+    desc: "Smoked haddock, salmon, and local seafood in creamy herb broth with warm homemade wheaten bread.",
+    timing: "Lunch from 11:30 AM",
+  },
+  {
+    category: "Weekday Wonders",
+    name: "Hearty Comfort Mains",
+    desc: "Homemade beef lasagne, battered haddock & peas, crispy halloumi wrap, or chicken tikka masala.",
+    timing: "All £12.50 · Monday to Friday",
+  },
+  {
+    category: "Home Baking",
+    name: "Fresh Scones & Bakes",
+    desc: "Fruit and cheese scones baked daily at dawn with clotted cream, preserves, and hot tea mugs.",
+    timing: "All Day Counter",
+  },
+];
+---
+
+<div class="nk-kitchen-pass-wrap" aria-labelledby={headingId}>
+  <div class="nk-kitchen-pass-grid">
+    {specials.map((item) => (
+      <article class="nk-pass-card">
+        <span class="nk-pass-category">{item.category}</span>
+        <h3>{item.name}</h3>
+        <p class="nk-pass-desc">{item.desc}</p>
+        <span class="nk-pass-timing">{item.timing}</span>
+      </article>
+    ))}
+  </div>
+</div>

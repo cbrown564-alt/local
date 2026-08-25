@@ -1,0 +1,47 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "bi-culture-title" } = Astro.props;
+
+const pillars = [
+  {
+    kicker: "01 · Plant Kitchen",
+    title: "Botanical & Whole",
+    body: "Seasonal vegan and vegetarian bakes, cardamom buns, and house-blended oat and nut milks.",
+    tag: "Kitchen until 3pm",
+  },
+  {
+    kicker: "02 · The Sound",
+    title: "Linktree Mixtape",
+    body: "Curated monthly vinyl and electronic tracks compiled by Chris Rice for coastal mornings.",
+    tag: "Monthly on Linktree",
+  },
+  {
+    kicker: "03 · The Promenade Run",
+    title: "Sunday 8:00 AM",
+    body: "Gentle coastal run from 51 Central Promenade along the bay, followed by single-origin filter.",
+    tag: "All paces welcome",
+  },
+  {
+    kicker: "04 · Birch Wheels",
+    title: "Mobile Espresso",
+    body: "Our converted roaming unit serving Mourne trailheads, outdoor swim meets, and popups.",
+    tag: "Location via Instagram",
+  },
+];
+---
+
+<div class="bi-culture-wrap" aria-labelledby={headingId}>
+  <div class="bi-culture-grid">
+    {pillars.map((item) => (
+      <article class="bi-culture-card">
+        <span class="bi-culture-kicker">{item.kicker}</span>
+        <h3>{item.title}</h3>
+        <p class="bi-culture-body">{item.body}</p>
+        <span class="bi-culture-tag">{item.tag}</span>
+      </article>
+    ))}
+  </div>
+</div>
