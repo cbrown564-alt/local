@@ -1,0 +1,161 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import JarPlate from "./JarPlate.astro";
+
+/* Tip Top — jar on Main Street. Speak as the shop. No website. No form.
+   Phone 028 4372 3130 is Yelp/directory, not on Google: omit.
+   131 Main Street (Google) — do not print 133 or Central Promenade.
+   Hours are Google owner-updated; dated on the door if printed.
+   1937 is fascia + labelled quote (IG bio / Yelp), not a founding essay.
+   Not Crystal Clean. Not Cookie Jar (121, bakery). Handoff is Instagram. */
+
+const instagram = "https://www.instagram.com/tiptopthesweetshop/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=131+Main+Street+Newcastle+BT33+0AE";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Gloock&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap";
+
+const jars = [
+  {
+    kicker: "The glass",
+    title: "Point at a jar.",
+    body: "Lids in a row. Ask for what you can see. We take the scoop from there.",
+  },
+  {
+    kicker: "The pound",
+    title: "We weigh it here.",
+    body: "Classic jarred sweets, by the pound. Ordinary sweets on the counter; the big selection is in the glass.",
+  },
+  {
+    kicker: "The bag",
+    title: "You take it with you.",
+    body: "The visit ends in a bag on Main Street. That is the shop.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Tip Top — independent concept"}
+  slug="tip-top"
+  bodyClass="concept-page concept-tip-top"
+  lang="en-GB"
+  businessName="Tip Top"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The jar plate is a drawing, not a photograph of the shop."
+>
+  <div class="tt-strip">
+    <span>131 Main Street, Newcastle · BT33 0AE</span>
+    <span class="tt-strip-r">
+      <a href={instagram} rel="external">Instagram · @tiptopthesweetshop</a>
+    </span>
+  </div>
+
+  <header class="tt-header">
+    <a class="tt-brand" href="/concepts/tip-top/">
+      <span class="tt-brand-mark" aria-hidden="true">
+        <svg width="36" height="42" viewBox="0 0 36 42" fill="none">
+          <rect x="4" y="12" width="28" height="26" rx="10" stroke="currentColor" stroke-width="1.8"/>
+          <rect x="10" y="6" width="16" height="8" rx="2" fill="currentColor"/>
+          <path d="M8 22c4 8 16 8 20 0" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        </svg>
+      </span>
+      <span class="tt-brand-text">
+        <span class="tt-brand-name">Tip Top</span>
+        <span class="tt-brand-sub">The Sweet Shop · 131 Main Street</span>
+      </span>
+    </a>
+    <nav class="tt-nav" aria-label="Concept navigation">
+      <a href="#jars">The jars</a>
+      <a href="#fascia">Est. 1937</a>
+      <a href="#door">Find us</a>
+    </nav>
+    <a class="tt-walk" href="#door">Walk in</a>
+  </header>
+
+  <main class="tt-main">
+    <div class="tt-hero">
+      <section class="tt-lede" aria-labelledby="tt-name">
+        <p class="tt-eyebrow">Traditional sweet shop · 131 Main Street</p>
+        <h1 id="tt-name">Tip Top</h1>
+        <p class="tt-fascia">Est 1937 · The Sweet Shop</p>
+        <p class="tt-say">We sweeten life.</p>
+        <p class="tt-body">
+          The jars are on Main Street. Point at one — we weigh it by the pound.
+          Come in. That is the shop.
+        </p>
+        <p class="tt-cta">
+          <a class="tt-walk tt-walk--inline" href="#door">Walk in</a>
+          <a class="tt-ig" href={instagram} rel="external">@tiptopthesweetshop</a>
+        </p>
+      </section>
+
+      <figure class="tt-artefact">
+        <JarPlate />
+        <figcaption>The fascia, the jars, the bag on the counter.</figcaption>
+      </figure>
+    </div>
+
+    <section class="tt-magazine" id="jars" aria-labelledby="tt-jars-title">
+      <div class="tt-mag-head">
+        <p class="tt-eyebrow">The jars</p>
+        <h2 id="tt-jars-title">Classic jarred sweets, by the pound.</h2>
+        <p class="tt-mag-lead">
+          You can buy ordinary sweets. You can also buy from the jars. The
+          shelf is the selection — we weigh what you point at.
+        </p>
+      </div>
+      <div class="tt-mag-grid">
+        {jars.map((item) => (
+          <article class="tt-mag-cell">
+            <p class="tt-mag-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="tt-quote" id="fascia" aria-labelledby="tt-quote-title">
+      <p class="tt-eyebrow">On the fascia</p>
+      <h2 id="tt-quote-title" class="tt-visually-hidden">Est. 1937</h2>
+      <blockquote>
+        <p>Family business since 1937 that passed to the next generations.</p>
+        <footer>Yelp About · Tip Top</footer>
+      </blockquote>
+      <p class="tt-quote-aside">
+        The fascia reads Est 1937. On Instagram we put it the same way:
+        <a href={instagram} rel="external">Traditional Sweet Shop · Est. 1937</a>
+      </p>
+    </section>
+
+    <section class="tt-door" id="door" aria-labelledby="tt-door-title">
+      <div class="tt-section-head">
+        <p class="tt-eyebrow">The door</p>
+        <h2 id="tt-door-title">Walk in. The jars are on Main Street.</h2>
+      </div>
+      <div class="tt-door-grid">
+        <address class="tt-address">
+          <strong>Tip Top</strong>
+          <span>The Sweet Shop</span>
+          <span>131 Main Street</span>
+          <span>Newcastle, Co. Down</span>
+          <span>BT33 0AE</span>
+          <a href={maps} rel="external">Map</a>
+          <a href={instagram} rel="external">Instagram · @tiptopthesweetshop</a>
+        </address>
+        <div class="tt-hours">
+          <p class="tt-hours-title">Hours</p>
+          <dl>
+            <div><dt>Sunday</dt><dd>10–20</dd></div>
+            <div><dt>Monday–Friday</dt><dd>10–19</dd></div>
+            <div><dt>Saturday</dt><dd>10–20</dd></div>
+          </dl>
+          <p class="tt-hours-src">As Google, 23 August 2026.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
