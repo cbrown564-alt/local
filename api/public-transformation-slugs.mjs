@@ -34,4 +34,9 @@ export const publicTransformationSlugs = Object.freeze([
   "cafe-mauds",
   "cocos-adventure-playground",
   "marine-wellness",
+  "birch",
+  "cafe-67",
+  "nikis-kitchen-cafe",
+  "railway-street",
+  "tip-top",
 ]);

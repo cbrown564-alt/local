@@ -1234,11 +1234,206 @@ export const transformationDetails = {
         "change": "Generated plates stay disclosed on the concept banner; live diary and booking paths hand off to the surfaces the business already runs."
       },
       {
-        "title": "Leave a clear claim path",
+"title": "Leave a clear claim path",
         "body": "These pages were not commissioned by the businesses shown.",
         "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
       }
     ],
     "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 23 August 2026 as a first-50 concept graft; elevated 24 August 2026. The before panel is a labelled placeholder because a matched live-site capture was not filed — it is not a screenshot of Booksy and the public Facebook page.</p>\n        <p>Hours from the clinic's own site table (read 23 August 2026 — Booksy's hours widget was unreliable on that read). The rename chain: Marine Beauty Haven on the Promenade is a directory-era name; the current door is Unit 13, 63A Castlewellan Road (first-party). People tenures — Patricia over twenty years, Nicola over ten, Emma three — from the clinic's site. Booking rules from the clinic's Booksy listing (read 23 August 2026).</p>\n        <p>Generated calm plate disclosed — not a treatment-room photograph. Quote clinical lines; do not paraphrase or invent a founding year. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Marine Wellness.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   },
+  "birch": {
+    "title": "Birch concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Birch in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Vegetarian specialty coffee. Opposite the sea.",
+    "date": "25 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (parked domain and social). Right: the concept opening screen.",
+    "conceptHref": "/concepts/birch/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "birch",
+      "afterVideo": "/media/concepts/birch/birch-after.mp4",
+      "beforePoster": "/media/concepts/birch/birch-before.jpg",
+      "afterPoster": "/media/concepts/birch/birch-after.jpg",
+      "beforeAlt": "Labelled placeholder for Birch's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Birch concept showing oat flat white, cardamom bun, and coastal promenade navigation",
+      "beforeNote": "Birch's registered domain birchcoffee.co.uk is currently parked with minimal content. The before panel records that public baseline rather than a fully designed brochure site."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today splits the story across a parked domain, Instagram, Linktree, and Spotify playlists — so a visitor looking for coffee or food has to hunt.",
+        "change": "Coastal botanical atmosphere, kitchen hours, and walk-in details up front."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs name what the feed already wins and what the studio must not invent.",
+        "change": "Generated coastal coffee plate disclosed on the concept banner; live daily bakes hand off to Instagram."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the registered parked domain and public social baseline.</p>\n        <p>Hours and address (51 Central Promenade, Newcastle, BT33 0HH) verified from Food Hygiene record (rating 5, inspected 1 August 2024) and first-party channels. Kitchen until 3 from Instagram (@birch_coffee_). Mixtape playlists curated by Chris Rice via Linktree. Generated coastal ceramic coffee hero plate disclosed — not premises photography. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Birch.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "cafe-67": {
+    "title": "Café 67 concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Café 67 in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Brunch theatre first. 3fe coffee craft on Main Street.",
+    "date": "25 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (Instagram feed and holding domain). Right: the concept opening screen.",
+    "conceptHref": "/concepts/cafe-67/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "cafe-67",
+      "afterVideo": "/media/concepts/cafe-67/cafe-67-after.mp4",
+      "beforePoster": "/media/concepts/cafe-67/cafe-67-before.jpg",
+      "afterPoster": "/media/concepts/cafe-67/cafe-67-after.jpg",
+      "beforeAlt": "Labelled placeholder for Café 67's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Café 67 concept showing poached egg sourdough brunch, 3fe flat white, and brunch pass",
+      "beforeNote": "Café 67 trades primarily on Instagram (@cafe67newcastle) and has a registered holding domain. The before panel records that social baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "The public presence today lives on Instagram stories and posts that disappear after 24 hours.",
+        "change": "Brunch theatre, 3fe roast credentials, and 67 Main Street door details on one screen."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs name what the feed already wins and what the studio must not invent.",
+        "change": "Generated brunch plate disclosed on the concept banner; daily specials hand off to Instagram."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public social and holding domain baseline.</p>\n        <p>Address (67 Main Street, Newcastle) and food hygiene rating 5 (inspected 12 November 2024) verified via FSA. CAFE 67 OF COUNTY DOWN LIMITED active (NI729528). Phone (028 4379 8485) and 3fe coffee roastery partnership sourced from first-party channels. Daily brunch specials live on Instagram (@cafe67newcastle). Generated brunch plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Café 67.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "nikis-kitchen-cafe": {
+    "title": "Niki's Kitchen Café concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Niki's Kitchen Café in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Seaside appetite first. The £12.50 daily pass on the promenade.",
+    "date": "25 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (Facebook and local directories). Right: the concept opening screen.",
+    "conceptHref": "/concepts/nikis-kitchen-cafe/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "nikis-kitchen-cafe",
+      "afterVideo": "/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.mp4",
+      "beforePoster": "/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-before.jpg",
+      "afterPoster": "/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.jpg",
+      "beforeAlt": "Labelled placeholder for Niki's Kitchen Café's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Niki's Kitchen Café concept showing skillet fry breakfast, seaside window, and Weekday Wonders pass",
+      "beforeNote": "Niki's Kitchen Café has no independent website. The before panel records its public presence on social media and local directories."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "Daily specials and seaside cooking are currently announced on spontaneous social posts.",
+        "change": "Seaside comfort food theatre, the £12.50 kitchen pass, and 107 Central Promenade directions."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs name what the feed already wins and what the studio must not invent.",
+        "change": "Generated skillet breakfast plate disclosed on the concept banner; spontaneous daily bakes stay on Facebook."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public social and tourism directory baseline.</p>\n        <p>Address (107 Central Promenade, Newcastle, BT33 0EU) and food hygiene rating 5 (inspected 26 November 2024) verified via FSA. Phone (028 4372 6777) from local directory records. Daily blackboard specials (£12.50 Weekday Wonders) and fresh baking sourced from first-party social announcements. Generated skillet breakfast plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Niki's Kitchen Café.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "railway-street": {
+    "title": "Railway Street concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Railway Street in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Extraction as theatre. Groupwork roast craft on Railway Street.",
+    "date": "25 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (social media and roastery). Right: the concept opening screen.",
+    "conceptHref": "/concepts/railway-street/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "railway-street",
+      "afterVideo": "/media/concepts/railway-street/railway-street-after.mp4",
+      "beforePoster": "/media/concepts/railway-street/railway-street-before.jpg",
+      "afterPoster": "/media/concepts/railway-street/railway-street-after.jpg",
+      "beforeAlt": "Labelled placeholder for Railway Street's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Railway Street concept showing Third Wave pour-over, flat white on slate, and brew bar tariff",
+      "beforeNote": "Railway Street publishes daily bakes and hours to Instagram (@railwaystcoffee). The before panel records that public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "Extraction craft and bean origins are currently separated from the café's physical address.",
+        "change": "Extraction theatre, the daily brew bar tariff, and Saturday counter showcase."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs name what the feed already wins and what the studio must not invent.",
+        "change": "Generated brew plate disclosed on the concept banner; bag orders hand off to groupworkcoffee.com."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public Instagram and roastery baseline.</p>\n        <p>Address (2 Railway Street, Ballaghbeg, Newcastle, BT33 0SP) and food hygiene rating 5 (inspected 15 March 2026) verified via FSA. Phone (028 4372 5620). Roastery partnership with Groupwork Coffee Roasters (groupworkcoffee.com). Daily bake drops and seasonal drink specials sourced from Instagram (@railwaystcoffee). Generated pour-over extraction plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Railway Street.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "tip-top": {
+    "title": "Tip Top concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Tip Top in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "89 years of seaside sweets. Weigh-out nostalgia since 1937.",
+    "date": "25 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (directory and food hygiene listings). Right: the concept opening screen.",
+    "conceptHref": "/concepts/tip-top/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "tip-top",
+      "afterVideo": "/media/concepts/tip-top/tip-top-after.mp4",
+      "beforePoster": "/media/concepts/tip-top/tip-top-before.jpg",
+      "afterPoster": "/media/concepts/tip-top/tip-top-after.jpg",
+      "beforeAlt": "Labelled placeholder for Tip Top's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Tip Top concept showing vintage glass jars, brass balance scales, and the 1937 weigh-out counter",
+      "beforeNote": "Tip Top has traded at 131 Main Street since 1937 without an official website. The before panel records its public directory record."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the business's own first job on the first screen",
+        "body": "89 years of confectionery heritage is currently invisible online beyond directory listings.",
+        "change": "Sensory sweet shop interior, interactive weigh-out counter, and confectionery archive."
+      },
+      {
+        "title": "Keep honesty limits visible",
+        "body": "Elevation briefs name what the feed already wins and what the studio must not invent.",
+        "change": "Generated vintage interior plate disclosed on the concept banner; walk-in trade honored."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public directory and food hygiene baseline.</p>\n        <p>Trading since 1937 at 131 Main Street, Ballaghbeg, Newcastle, BT33 0AE. Food hygiene rating 5 (inspected 28 August 2024) verified via FSA. Traditional weigh-out ritual and confectionery categories documented from local history and retail observation. Generated sweet shop interior plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Tip Top.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  }
 } satisfies Record<string, TransformationDetail>;

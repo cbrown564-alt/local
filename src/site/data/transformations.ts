@@ -480,6 +480,86 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/marine-wellness/",
     pin: { x: 350, y: 390 },
   },
+  {
+    slug: "birch",
+    name: "Birch",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "A plant-forward specialty coffee shop and coastal haven facing Newcastle bay — given an opening screen with oat flat whites and cardamom bakes, its community run club and mixtapes, and clear promenade walk-in details.",
+    before: "/media/concepts/birch/birch-before.jpg",
+    after: "/media/concepts/birch/birch-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Birch's current public presence (birchcoffee.co.uk and Instagram) — not a live-site screenshot; a matched capture was not filed for the 25 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Birch, captured from the local concept route",
+    href: "/transformations/birch/",
+    pin: { x: 185, y: 498 },
+  },
+  {
+    slug: "cafe-67",
+    name: "Café 67",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Newcastle's contemporary brunch and 3fe specialty coffee spot at 67 Main Street — given a mouth-watering brunch pass first screen, dedicated Dublin roastery showcase, and clear high street walk-in information.",
+    before: "/media/concepts/cafe-67/cafe-67-before.jpg",
+    after: "/media/concepts/cafe-67/cafe-67-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Café 67's current public presence (Instagram @cafe67newcastle and holding domain) — not a live-site screenshot; a matched capture was not filed for the 25 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Café 67, captured from the local concept route",
+    href: "/transformations/cafe-67/",
+    pin: { x: 265, y: 448 },
+  },
+  {
+    slug: "nikis-kitchen-cafe",
+    name: "Niki's Kitchen Café",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "A family-run seaside kitchen directly opposite Dundrum Bay — given a first screen leading with cast-iron skillet breakfasts and soda farls, the £12.50 daily special kitchen pass, and clear walk-in directions.",
+    before: "/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-before.jpg",
+    after: "/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Niki's Kitchen Café's current public presence (Facebook and local directories) — not a live-site screenshot; a matched capture was not filed for the 25 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Niki's Kitchen Café, captured from the local concept route",
+    href: "/transformations/nikis-kitchen-cafe/",
+    pin: { x: 155, y: 520 },
+  },
+  {
+    slug: "railway-street",
+    name: "Railway Street",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Newcastle's Third Wave coffee destination partnered with Groupwork Coffee Roasters — given an extraction-theatre first screen, structured brew bar method guide, Saturday bake counter, and roast lineage.",
+    before: "/media/concepts/railway-street/railway-street-before.jpg",
+    after: "/media/concepts/railway-street/railway-street-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Railway Street's current public presence (Instagram @railwaystcoffee and roastery site) — not a live-site screenshot; a matched capture was not filed for the 25 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Railway Street, captured from the local concept route",
+    href: "/transformations/railway-street/",
+    pin: { x: 330, y: 430 },
+  },
+  {
+    slug: "tip-top",
+    name: "Tip Top",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Newcastle's iconic heritage confectionery and sweet shop established in 1937 — given a sensory sweet shop opening screen with vintage glass jars, the 1937 weigh-out ritual, and walk-in nostalgia.",
+    before: "/media/concepts/tip-top/tip-top-before.jpg",
+    after: "/media/concepts/tip-top/tip-top-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Tip Top's current public presence (local directory and food hygiene listings) — not a live-site screenshot; a matched capture was not filed for the 25 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Tip Top, captured from the local concept route",
+    href: "/transformations/tip-top/",
+    pin: { x: 245, y: 465 },
+  },
 ];
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

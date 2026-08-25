@@ -1184,3 +1184,23 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/marine-wellness/marine-wellness-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
 - `public/media/concepts/marine-wellness/marine-wellness-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
 - `public/media/og/marine-wellness.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/birch/birch-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/birch/birch-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `public/media/concepts/birch/birch-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/birch.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/cafe-67/cafe-67-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/cafe-67/cafe-67-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `public/media/concepts/cafe-67/cafe-67-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/cafe-67.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/nikis-kitchen-cafe.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/railway-street/railway-street-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/railway-street/railway-street-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `public/media/concepts/railway-street/railway-street-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/railway-street.jpg` — Open Graph share card generated from the workbench route.
+- `public/media/concepts/tip-top/tip-top-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `public/media/concepts/tip-top/tip-top-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `public/media/concepts/tip-top/tip-top-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `public/media/og/tip-top.jpg` — Open Graph share card generated from the workbench route.

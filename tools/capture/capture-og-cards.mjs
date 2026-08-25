@@ -16,7 +16,7 @@ import { removeDevToolbar } from "../lib/dev-chrome.mjs";
 import { projectRoot, readPublicTransformationSlugs } from "../lib/public-slugs.mjs";
 
 const root = projectRoot;
-const base = process.env.OG_CAPTURE_BASE ?? "http://127.0.0.1:4321";
+const base = process.env.OG_CAPTURE_BASE ?? "http://localhost:4321";
 const outDir = path.join(root, "public", "media", "og");
 const slugArg = process.argv[2];
 

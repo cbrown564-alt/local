@@ -203,6 +203,61 @@ const CONCEPTS = {
     afterHover: AFTER_HOVER,
   },
   "marine-wellness": { before: null, afterHover: AFTER_HOVER },
+  "birch": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#eef1ef;color:#202b28;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #4a685e;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#5a6e67;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#18221f">Birch · 51 Central Promenade</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#45544e">Registered domain birchcoffee.co.uk is currently parked. Daily bakes, mixtapes and run club updates live on Instagram (@birch_coffee_) and Linktree rather than a dedicated website.</p>
+        </div>
+      </main>`,
+    afterHover: [".bi-walk", ".bi-ig-text", ...AFTER_HOVER],
+  },
+  "cafe-67": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f5eee7;color:#2c221e;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #c2613d;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#855444;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241916">Café 67 · 67 Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#57433c">Brunch menus, daily bakes and 3fe coffee updates are published to Instagram (@cafe67newcastle). The registered domain cafe67.co.uk is a holding page without menu or door details.</p>
+        </div>
+      </main>`,
+    afterHover: [".c67-walk", ".c67-ig-text", ...AFTER_HOVER],
+  },
+  "nikis-kitchen-cafe": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#edf3f7;color:#1c262e;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #2d6b8f;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#4c6a7d;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#131c23">Niki's Kitchen Café · 107 Central Promenade</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#435766">Daily blackboard specials, home baking and seaside cooking are shared via Facebook and regional tourism listings, with no standalone website.</p>
+        </div>
+      </main>`,
+    afterHover: [".nk-walk", ".nk-fb-text", ...AFTER_HOVER],
+  },
+  "railway-street": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f3f1ec;color:#262422;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #7c6853;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#736a60;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#1c1a18">Railway Street · 2 Railway Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#524c45">Third Wave roast drops, weekend bake schedules and seasonal espresso specials are published on Instagram (@railwaystcoffee). Bean subscriptions and roastery lineage live separately on groupworkcoffee.com.</p>
+        </div>
+      </main>`,
+    afterHover: [".rs-walk", ".rs-ig-text", ...AFTER_HOVER],
+  },
+  "tip-top": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f7f0e6;color:#2d2119;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #c78832;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#7d5e38;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241710">Tip Top · 131 Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#5c4735">Trading traditional sweets since 1937. Public record is held across local directory and food hygiene listings, with no active official website or digital catalogue.</p>
+        </div>
+      </main>`,
+    afterHover: [".tt-walk", ...AFTER_HOVER],
+  },
 };
 
 // A reel is a sequence of independently recorded segments. Browser segments

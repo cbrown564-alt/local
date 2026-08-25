@@ -53,8 +53,12 @@ const CONCEPTS = {
   "conlyn-house": { before: "http://conlynhouse.com/", beforeBudgetMs: 6000 },
   "binghams-menswear": { before: "http://www.binghamsmenswear.co.uk/", beforeBudgetMs: 6000 },
   "cafe-mauds": { before: "https://www.facebook.com/cafemaudsnewcastle/", beforeBudgetMs: 8000 },
-  "cocos-adventure-playground": { before: "https://www.cocosplayground.co.uk/", beforeBudgetMs: 6000 },
   "marine-wellness": { before: "https://www.facebook.com/marinebeauty.haven", beforeBudgetMs: 8000 },
+  "birch": { before: "https://birchcoffee.co.uk/", beforeBudgetMs: 6000 },
+  "cafe-67": { before: "https://www.instagram.com/cafe67newcastle/", beforeBudgetMs: 8000 },
+  "nikis-kitchen-cafe": { before: "https://www.facebook.com/p/Nikis-Kitchen-100063625477218/", beforeBudgetMs: 8000 },
+  "railway-street": { before: "https://www.instagram.com/railwaystcoffee/", beforeBudgetMs: 8000 },
+  "tip-top": { before: "https://ratings.food.gov.uk/", beforeBudgetMs: 6000 },
 };
 
 // Milestone 2 second surfaces. Key is "<slug>/<asset>". conceptPath is the local
