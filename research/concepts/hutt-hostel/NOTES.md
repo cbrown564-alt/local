@@ -61,7 +61,7 @@ component 404s without one. No raster under `/media`.
 - Booking / site **http://hutthostel.com**. HTTPS failed 23 Aug 2026
   (`ERR_CONNECTION_CLOSED`). Do not deep-link https as if it works.
 - Phone **028 4372 2133** / `tel:+442843722133`.
-- Email **info@hutthostel.com`.
+- Email **info@hutthostel.com**.
 - Address **30 Downs Road, Newcastle, BT33 0AG**. Corner of Donard Place.
   Just beside the Slieve Donard Hotel and Percy French Bar.
 - Reception hours first-party: **Mon–Sun 5.00pm–9.00pm**. Google
