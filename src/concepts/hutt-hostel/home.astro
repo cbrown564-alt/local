@@ -1,0 +1,199 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import PaddPlate from "./PaddPlate.astro";
+
+/* The Hutt Hostel — stay. Speak as the hostel.
+   First-party site is http://hutthostel.com (https failed 23 Aug 2026 —
+   do not deep-link https as if it works). Reception hours first-party:
+   Mon–Sun 5.00pm–9.00pm. Google check-in from 5 / out by 12 — omit
+   checkout rather than date it on the door. Do not name an owner.
+   Steph is a Facebook manager snippet — omit. No rates, no room names
+   beyond The Padd, no invented booking engine, no EssenceMedia. */
+const phone = "028 4372 2133";
+const phoneHref = "tel:+442843722133";
+const email = "info@hutthostel.com";
+const mailto = `mailto:${email}`;
+const book = "http://hutthostel.com";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=Outfit:wght@400;500;600;700&display=swap";
+
+const hosts = ["Educational", "Sports", "Religious", "Backpackers"];
+---
+
+<ConceptLayout
+  title={"The Hutt Hostel — independent concept"}
+  slug="hutt-hostel"
+  bodyClass="concept-page concept-hutt"
+  lang="en-GB"
+  businessName="The Hutt Hostel"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The Padd plate is a drawing of the corner at 30 Downs Road — a concept visualisation."
+>
+  <div class="hh-strip">
+    <span>30 Downs Road, Newcastle · BT33 0AG</span>
+    <span class="hh-strip-r">
+      <span>Corner of Donard Place</span>
+      <a href={phoneHref}>{phone}</a>
+    </span>
+  </div>
+
+  <header class="hh-header">
+    <a class="hh-brand" href="/concepts/hutt-hostel/">
+      <span class="hh-brand-mark" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <rect width="46" height="46" fill="#1b2f44"/>
+          <path d="M0 0h16v4H4v12H0V0Z" fill="#9c5646"/>
+          <text
+            x="23"
+            y="29"
+            text-anchor="middle"
+            fill="#f6f3ee"
+            font-size="15"
+            font-family="Literata, Georgia, serif"
+            font-weight="700"
+          >30</text>
+        </svg>
+      </span>
+      <span class="hh-brand-text">
+        <span class="hh-brand-name">The Hutt</span>
+        <span class="hh-brand-sub">Hostel · Newcastle</span>
+      </span>
+    </a>
+    <nav class="hh-nav" aria-label="Concept navigation">
+      <a href="#padd">The Padd</a>
+      <a href="#beds">72 beds</a>
+      <a href="#reception">Reception</a>
+      <a href="#door">The door</a>
+    </nav>
+    <a class="hh-from-five" href="#reception">Reception from five</a>
+  </header>
+
+  <main class="hh-main">
+    <section class="hh-mast" aria-labelledby="hh-name">
+      <p class="hh-kicker">Hostel · Newcastle</p>
+      <h1 id="hh-name">THE HUTT</h1>
+      <p class="hh-number">30 Downs Road</p>
+      <p class="hh-say">Wake beside the sea.</p>
+      <p class="hh-lede">
+        A few hundred yards from the seafront. Only a 5-minute walk to the
+        foot of the Mournes. Reception from five.
+      </p>
+      <p class="hh-cta">
+        <a class="hh-from-five hh-from-five--inline" href="#reception">Reception from five</a>
+        <a class="hh-ring" href={phoneHref}>{phone}</a>
+      </p>
+    </section>
+
+    <section class="hh-register" id="beds" aria-labelledby="hh-register-title">
+      <div class="hh-register-head">
+        <p class="hh-kicker">The register</p>
+        <h2 id="hh-register-title">72 beds on Downs Road.</h2>
+        <p class="hh-register-lede">
+          72 beds including ‘The Padd’ — a self-contained apartment with its
+          own kitchen, shower room, toilet and lounge.
+        </p>
+      </div>
+
+      <article class="hh-padd-card" id="padd">
+        <p class="hh-padd-kicker">The Padd</p>
+        <h3>A self-contained apartment.</h3>
+        <ul class="hh-padd-rooms">
+          <li>Kitchen</li>
+          <li>Shower room</li>
+          <li>Toilet</li>
+          <li>Lounge</li>
+        </ul>
+        <p class="hh-padd-cta">
+          <a class="hh-book" href={book} rel="noopener noreferrer">hutthostel.com</a>
+        </p>
+      </article>
+
+      <aside class="hh-hosts" aria-labelledby="hh-hosts-title">
+        <p class="hh-hosts-kicker" id="hh-hosts-title">Who we already host</p>
+        <ol class="hh-hosts-list">
+          {hosts.map((who) => (
+            <li>
+              <span class="hh-hosts-rule" aria-hidden="true"></span>
+              <span>{who}</span>
+            </li>
+          ))}
+        </ol>
+      </aside>
+
+      <blockquote class="hh-pull">
+        <p>
+          Friendly atmosphere and affordable accommodation situated a few
+          hundred yards from the seafront and the sort of golden sandy
+          beaches in 'sunny' Newcastle County Down and only a 5-minute walk
+          to the foot of the glorious Mourne Mountains.
+        </p>
+      </blockquote>
+    </section>
+
+    <section class="hh-desk" id="reception" aria-labelledby="hh-desk-title">
+      <div class="hh-blotter">
+        <div class="hh-blotter-head">
+          <p class="hh-kicker">Reception</p>
+          <h2 id="hh-desk-title">The book at the desk.</h2>
+          <p class="hh-hours">Mon–Sun 5.00pm–9.00pm</p>
+        </div>
+
+        <p class="hh-blotter-lede">
+          Tonight, a group, or The Padd. Ring, write, or book on our site.
+          Reception from five.
+        </p>
+
+        <ul class="hh-chips">
+          <li>
+            <a class="hh-chip" href={phoneHref}>Tonight</a>
+          </li>
+          <li>
+            <a class="hh-chip" href={mailto}>A group</a>
+          </li>
+          <li>
+            <a class="hh-chip" href={book} rel="noopener noreferrer">The Padd</a>
+          </li>
+        </ul>
+
+        <p class="hh-actions">
+          <a class="hh-from-five hh-from-five--inline" href={phoneHref}>{phone}</a>
+          <a class="hh-write" href={mailto}>{email}</a>
+          <a class="hh-book" href={book} rel="noopener noreferrer">hutthostel.com</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="hh-street" id="door" aria-labelledby="hh-door-title">
+      <div class="hh-street-copy">
+        <p class="hh-kicker">The door</p>
+        <h2 id="hh-door-title">30 Downs Road.</h2>
+        <p class="hh-street-lede">
+          We're in the heart of the town so easy enough to find. Just beside
+          the Slieve Donard Hotel and Percy French Bar.
+        </p>
+        <p class="hh-street-more">
+          Corner of Donard Place. A few hundred yards from the seafront.
+          5-minute walk to the foot of the Mournes.
+        </p>
+      </div>
+
+      <figure class="hh-artefact">
+        <PaddPlate />
+        <figcaption>The Padd on Downs Road.</figcaption>
+      </figure>
+
+      <address class="hh-address">
+        <strong>The Hutt Hostel</strong>
+        <span>30 Downs Road</span>
+        <span>Newcastle, BT33 0AG</span>
+        <span>Corner of Donard Place</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={book} rel="noopener noreferrer">hutthostel.com</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
