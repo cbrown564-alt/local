@@ -27,3 +27,30 @@ So:
 Paradox: a bookable 2026 pin and a site that only answers on http. Recognition
 is The Hutt / Hutt Hostel and the corner by Donard. Theatre is The Padd and
 Steph’s tips if we can open the post, not stock bunks.
+
+## What recognition can draw on
+
+**Voice (About):** “Friendly atmosphere and affordable accommodation situated a
+few hundred yards from the seafront and the sort of golden sandy beaches in
+'sunny' Newcastle County Down and only a 5 minute walk to the foot of the
+glorious Mourne Mountains.” “We have 72 beds available including 'The Padd' –
+a self-contained apartment with its own kitchen, shower room, toilet and
+lounge.”
+**Voice (Contact):** “We're in the heart of the town so easy enough to find.
+Just beside the Slieve Donard Hotel and Percy French Bar.”
+**Geography:** 30 Downs Road, Newcastle BT33 0AG. 028 4372 2133.
+info@hutthostel.com. Corner of Donard Place.
+**Ritual:** Mon–Sun 5.00pm–9.00pm (site).
+**Not:** HuttStCentre IG. Not Dundrum.
+
+## Honesty
+
+- FB/IG unread beyond snippets.
+- No owner / company check.
+- Footer © 2025 vs 2026 booking — date both.
+
+## Tests
+
+- Assert 30 Downs Road, BT33 0AG, 028 4372 2133.
+- Do not treat https as live (failed 23 Aug 2026).
+- Swap test: remove The Hutt, Downs Road, Donard next door, 72 beds.
