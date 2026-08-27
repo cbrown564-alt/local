@@ -1,0 +1,203 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CjMark from "./components/CjMark.astro";
+import CjWheatenPlate from "./components/CjWheatenPlate.astro";
+
+/* Speaks as the bakery. Counter is the shop; mixes are the parcel.
+   1965 / Herron omitted from guest chrome (brief: Google-card until a clean
+   first-party About sentence; prefer omit founding year). Hours omitted
+   (Google closed Sunday / 8:30 Monday — no dated first-party table).
+   Pun sentence stays off this page (Google card, not their About).
+   IG is @cookiejardude80, not the Chilean bakery.
+   Phone is 028 4372 2427 as given — not 6108. */
+
+const phone = "028 4372 2427";
+const phoneHref = "tel:+442843722427";
+const email = "James@mourneandbread.co.uk";
+const mixesShop = "https://mourneandbread.co.uk/";
+const instagram = "https://www.instagram.com/cookiejardude80/";
+const facebook = "https://www.facebook.com/CookiejarBakeryNewcastle";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const mixes = [
+  {
+    name: "Wheaten Bread Mix",
+    note: "The loaf we are known for.",
+  },
+  {
+    name: "Soda Bread Mix",
+    note: "For the tin at home.",
+  },
+  {
+    name: "Scone Mix",
+    note: "The third mix on the shop.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Cookie Jar — independent concept"}
+  slug="cookie-jar"
+  bodyClass="concept-page concept-cookie-jar"
+  businessName="Cookie Jar"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The wheaten loaf is a drawn plate, not a photograph from the bakery."
+>
+  <div class="cj-strip">
+    <span>121 Main Street, Newcastle · BT33 0AE</span>
+    <span class="cj-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer">Facebook</a>
+    </span>
+  </div>
+
+  <header class="cj-header">
+    <a class="cj-brand" href="/concepts/cookie-jar/">
+      <span class="cj-brand-mark">
+        <CjMark size={34} />
+      </span>
+      <span class="cj-brand-text">
+        <span class="cj-brand-name">Cookie Jar</span>
+        <span class="cj-brand-sub">121 Main Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="cj-nav" aria-label="Concept navigation">
+      <a href="#door">The door</a>
+      <a href="#wheaten">Wheaten</a>
+      <a href="#mixes">Mixes</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <a class="cj-mix-btn" href={mixesShop} rel="noopener noreferrer">Get a mix</a>
+  </header>
+
+  <main class="cj-main">
+    <section class="cj-door" id="door" aria-labelledby="cj-name">
+      <p class="cj-kicker">Home bakery · 121 Main Street</p>
+      <h1 id="cj-name">Cookie Jar</h1>
+      <p class="cj-say">On Main Street, at the foot of the Mournes.</p>
+      <p class="cj-lede">
+        Walk in for what is on the counter. Mixes leave as parcels from
+        Mourne and Bread — that is the mix shop, not a second door.
+      </p>
+      <p class="cj-actions">
+        <a class="cj-walk" href="#find">Walk in</a>
+        <a class="cj-ring" href={phoneHref}>Ring {phone}</a>
+        <a class="cj-mix-link" href={mixesShop} rel="noopener noreferrer">Get a mix →</a>
+      </p>
+      <p class="cj-door-note">
+        Celebration cakes for collection at the shop. Today's tarts live on
+        <a href={facebook} rel="noopener noreferrer">Facebook</a>.
+      </p>
+    </section>
+
+    <section class="cj-wheaten" id="wheaten" aria-labelledby="cj-wheaten-title">
+      <div class="cj-wheaten-copy">
+        <p class="cj-kicker">The loaf</p>
+        <h2 id="cj-wheaten-title">Wheaten.</h2>
+        <p class="cj-wheaten-lede">
+          The mix, the loaf, the mark. Irish breads and pastries at the
+          counter; the wheaten mix for the kitchen that is not on this street.
+        </p>
+        <p class="cj-wheaten-body">
+          The loaf you bake at home comes from the mix shop. Come to the
+          counter for what is out this morning.
+        </p>
+        <a class="cj-text-cta" href={mixesShop} rel="noopener noreferrer">
+          Wheaten mix on mourneandbread.co.uk →
+        </a>
+      </div>
+      <CjWheatenPlate headingId="cj-wheaten-title" />
+    </section>
+
+    <section class="cj-counter" id="counter" aria-labelledby="cj-counter-title">
+      <p class="cj-kicker">The counter</p>
+      <h2 id="cj-counter-title">The counter is the shop.</h2>
+      <p class="cj-section-lede">
+        121 Main Street. Walk in. Ring if you need us. The loaf lives on
+        the counter, not in a form.
+      </p>
+      <ul class="cj-counter-list">
+        <li>
+          <span class="cj-counter-label">Walk in</span>
+          <span>The door on Main Street — breads and pastries on the counter.</span>
+        </li>
+        <li>
+          <span class="cj-counter-label">Ring</span>
+          <span><a href={phoneHref}>{phone}</a> — cakes for collection, anything for the shop.</span>
+        </li>
+        <li>
+          <span class="cj-counter-label">Today</span>
+          <span>What is out this morning lives on <a href={facebook} rel="noopener noreferrer">Facebook</a>.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="cj-mixes" id="mixes" aria-labelledby="cj-mixes-title">
+      <div class="cj-mixes-head">
+        <p class="cj-kicker">The parcel</p>
+        <h2 id="cj-mixes-title">Mixes leave as Mourne and Bread.</h2>
+        <p class="cj-section-lede">
+          Award-winning bread mixes, free UK delivery, from the mix shop.
+          Names here match the shelf. Packs, prices and the cart live on
+          mourneandbread.co.uk.
+        </p>
+      </div>
+      <ul class="cj-mix-row">
+        {mixes.map((mix) => (
+          <li>
+            <a class="cj-mix-card" href={mixesShop} rel="noopener noreferrer">
+              <h3>{mix.name}</h3>
+              <p>{mix.note}</p>
+              <span>On the mix shop →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="cj-mixes-foot">
+        A bumper pack sits on the same shop. Recipes for the kits live there too.
+      </p>
+    </section>
+
+    <section class="cj-find" id="find" aria-labelledby="cj-find-title">
+      <p class="cj-kicker">Find us</p>
+      <h2 id="cj-find-title">121 Main Street, Newcastle.</h2>
+      <div class="cj-find-grid">
+        <div>
+          <h3>The door</h3>
+          <p>
+            Cookie Jar<br />
+            121 Main Street<br />
+            Newcastle, Co. Down<br />
+            BT33 0AE
+          </p>
+        </div>
+        <div>
+          <h3>Talk to us</h3>
+          <p>
+            <a href={phoneHref}>{phone}</a><br />
+            <a href={`mailto:${email}`}>{email}</a>
+          </p>
+        </div>
+        <div>
+          <h3>Out of the shop</h3>
+          <p>
+            Instagram <a href={instagram} rel="noopener noreferrer">@cookiejardude80</a><br />
+            <a href={facebook} rel="noopener noreferrer">Facebook</a> for the counter<br />
+            Mixes: <a href={mixesShop} rel="noopener noreferrer">mourneandbread.co.uk</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cj-footer">
+    <CjMark size={48} class="cj-footer-mark" />
+    <p class="cj-footer-name">Cookie Jar</p>
+    <p class="cj-footer-line">121 Main Street, Newcastle · Mixes as Mourne and Bread</p>
+  </footer>
+</ConceptLayout>

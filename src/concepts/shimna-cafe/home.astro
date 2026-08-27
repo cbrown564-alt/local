@@ -1,0 +1,175 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import TableCard from "./TableCard.astro";
+
+/* Speaks as the café. Confirmed door: 2 Main Street, Newcastle, BT33 0AD.
+   Walk-in meal — no reserve form. No invented clock hours.
+   Phone 028 4372 3010 / tel:+442843723010. Menu lives on their Yumm.
+   84 Central Promenade / 028 4372 3472 stay off the guest chrome. */
+
+const phone = "028 4372 3010";
+const phoneHref = "tel:+442843723010";
+const facebook = "https://www.facebook.com/shimnacafe/";
+const instagram = "https://www.instagram.com/shimnacafe/";
+const yumm = "https://m.yumm.menu/shimnacafe";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Figtree:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const ritual = [
+  {
+    id: "fry",
+    name: "Breakfast",
+    line: "All day, every day. Breakfast whenever you walk in.",
+  },
+  {
+    id: "soup",
+    name: "Brunch. Lunch.",
+    line: "You choose. Smashed avocado on sourdough, bacon, poached eggs.",
+  },
+  {
+    id: "scone",
+    name: "The platters",
+    line: "Sandwich platters out to the council. Orders by Facebook message, or ring us.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Shimna Café — independent concept"}
+  slug="shimna-cafe"
+  bodyClass="concept-page concept-shimna"
+  lang="en-GB"
+  businessName="Shimna Café"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The table card is a drawn plate, not a photograph from the café."
+>
+  <div class="sh-strip">
+    <span>2 Main Street, Newcastle · breakfast all day</span>
+    <span class="sh-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer">Facebook</a>
+    </span>
+  </div>
+
+  <header class="sh-header">
+    <a class="sh-brand" href="/concepts/shimna-cafe/">
+      <span class="sh-brand-mark" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16.2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 20c3-6 7-9 10-9s7 3 10 9" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M11 20h14" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="18" cy="13" r="1.6" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">Shimna Café</span>
+        <span class="sh-brand-sub">2 Main Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="sh-nav" aria-label="Concept navigation">
+      <a href="#window">The window</a>
+      <a href="#after">All day</a>
+      <a href="#table">A table</a>
+    </nav>
+    <a class="sh-walk" href="#table">Walk in</a>
+  </header>
+
+  <main class="sh-main">
+    <section class="sh-window" id="window" aria-labelledby="sh-name">
+      <div class="sh-window-copy">
+        <p class="sh-eyebrow">Café · 2 Main Street</p>
+        <h1 id="sh-name">Breakfast whenever you walk in.</h1>
+        <p class="sh-say">Delicious food all day, every day. Breakfast. Brunch. Lunch. You choose.</p>
+        <p class="sh-lede">
+          2 Main Street, Newcastle. Walk in for a table. Outdoor seating when
+          we have it on. The priced menu is on
+          <a href={yumm} rel="noopener noreferrer">Yumm</a>.
+        </p>
+        <p class="sh-window-note">
+          We do not take a booking. Walk in, or ring. Today’s plate is on
+          <a href={instagram} rel="noopener noreferrer">Instagram</a> and
+          <a href={facebook} rel="noopener noreferrer">Facebook</a>.
+        </p>
+      </div>
+      <div class="sh-window-light" aria-hidden="true">
+        <span class="sh-sash"></span>
+        <span class="sh-sash sh-sash--mid"></span>
+      </div>
+    </section>
+
+    <section class="sh-spread" id="after" aria-labelledby="sh-after-title">
+      <div class="sh-spread-head">
+        <p class="sh-eyebrow">The ritual</p>
+        <h2 id="sh-after-title">Breakfast. Brunch. Lunch.</h2>
+        <p class="sh-spread-lede">
+          All day. The same kitchen. This door on Main Street.
+        </p>
+      </div>
+      <ol class="sh-columns">
+        {ritual.map((item, i) => (
+          <li class={`sh-col sh-col--${item.id}`}>
+            <p class="sh-col-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</p>
+            <h3>{item.name}</h3>
+            <p>{item.line}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="sh-stage" id="table" aria-labelledby="sh-table-title">
+      <div class="sh-stage-copy">
+        <p class="sh-eyebrow">A table</p>
+        <h2 id="sh-table-title">Walk in. We set the card on the table.</h2>
+        <p class="sh-stage-lede">
+          2 Main Street, Newcastle, BT33 0AD. Walk in. Ring if you want the
+          platters — we take those by phone or a Facebook message.
+        </p>
+        <p class="sh-actions">
+          <a class="sh-walk sh-walk--solid" href="#find">Walk in</a>
+          <a class="sh-ring" href={phoneHref}>tel 028 4372 3010</a>
+        </p>
+      </div>
+      <figure class="sh-artefact">
+        <TableCard phone={phone} phoneHref={phoneHref} />
+        <figcaption>The table card — walk in, or ring the café.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sh-find" id="find" aria-labelledby="sh-find-title">
+      <div class="sh-find-copy">
+        <p class="sh-eyebrow">The door</p>
+        <h2 id="sh-find-title">2 Main Street. Come off the path.</h2>
+        <dl class="sh-hours">
+          <div>
+            <dt>How we serve</dt>
+            <dd>Walk-in. All-day breakfast.</dd>
+          </div>
+          <div>
+            <dt>Today</dt>
+            <dd>
+              Facebook for open now. Outdoor seating when we have it on.
+              <a href={yumm} rel="noopener noreferrer">Yumm</a> for the menu.
+            </dd>
+          </div>
+        </dl>
+        <p class="sh-find-meta">
+          Dine-in, and outdoor seating when we have it on.
+        </p>
+      </div>
+      <address class="sh-address">
+        <strong>Shimna Café</strong>
+        <span>2 Main Street</span>
+        <span>Newcastle</span>
+        <span>BT33 0AD</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={facebook} rel="noopener noreferrer">Facebook</a>
+        <a href={instagram} rel="noopener noreferrer">Instagram</a>
+        <a href={yumm} rel="noopener noreferrer">Menu on Yumm</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>

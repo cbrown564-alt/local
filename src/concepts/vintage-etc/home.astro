@@ -1,0 +1,157 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import TrovePlate from "./TrovePlate.astro";
+
+/* Speaks as Vintage etc. on 4 Main Street. Stock is the feed (Facebook +
+   Instagram). No cart, no prices, no fake catalogue. Mags is in the Facebook
+   URL only — do not print her as owner. Hours omitted / as posted today.
+   One sourced Facebook caption: "Music Vibes this morning too!!" (22 Aug 2026). */
+
+const phone = "07584 034590";
+const phoneHref = "tel:+447584034590";
+const facebook = "https://www.facebook.com/magsvintageetc/";
+const instagram = "https://www.instagram.com/_vintage_etc/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap";
+
+const kinds = [
+  "vintage",
+  "mid century",
+  "retro",
+  "antiques",
+  "collectables",
+  "and more",
+];
+---
+
+<ConceptLayout
+  title={"Vintage etc. — independent concept"}
+  slug="vintage-etc"
+  bodyClass="concept-page concept-vintage-etc"
+  lang="en-GB"
+  businessName="Vintage etc."
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The Main Street window is a drawing, not a photograph of the shop."
+>
+  <div class="ve-strip">
+    <span>4 Main Street, Newcastle · BT33 0AD</span>
+    <span class="ve-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="ve-header">
+    <a class="ve-brand" href="/concepts/vintage-etc/">
+      <span class="ve-brand-mark" aria-hidden="true">
+        <svg width="40" height="36" viewBox="0 0 40 36" fill="none">
+          <path d="M6 14h28v12H6Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6 14h28v3.2H6Z" fill="currentColor" opacity=".18"/>
+          <path d="M15.2 14v12M24.8 14v12" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="10.6" cy="22.4" r="1.05" fill="currentColor"/>
+          <circle cx="20" cy="22.4" r="1.05" fill="currentColor"/>
+          <circle cx="29.4" cy="22.4" r="1.05" fill="currentColor"/>
+          <path d="M8.2 26L6.4 33.2M31.8 26l1.8 7.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 33.2h32" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </span>
+      <span class="ve-brand-text">
+        <span class="ve-brand-name">Vintage etc.</span>
+        <span class="ve-brand-sub">4 Main Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="ve-nav" aria-label="Concept navigation">
+      <a href="#door">The door</a>
+      <a href="#morning">This morning</a>
+      <a href="#kinds">The kind</a>
+    </nav>
+    <a class="ve-walk" href="#door">Walk in</a>
+  </header>
+
+  <main class="ve-main">
+    <div class="ve-hero" id="door">
+      <section class="ve-lede" aria-labelledby="ve-name">
+        <p class="ve-eyebrow">Main Street · Newcastle</p>
+        <h1 id="ve-name">Vintage etc.</h1>
+        <p class="ve-say">Treasure trove of all things vintage, mid century and more.</p>
+        <p class="ve-body">
+          Come in. Do not wait for a grid. What is on the rail this morning
+          lives on Facebook and Instagram. The door is on Main Street — walk
+          in, or ring and we will hold the piece.
+        </p>
+        <p class="ve-cta">
+          <a class="ve-walk ve-walk--inline" href="#door">Walk in</a>
+          <a class="ve-ring" href={phoneHref}>Ring {phone}</a>
+        </p>
+      </section>
+
+      <figure class="ve-artefact">
+        <TrovePlate />
+        <figcaption>The window on Main Street — teak, brass, mid-century.</figcaption>
+      </figure>
+    </div>
+
+    <section class="ve-morning" id="morning" aria-labelledby="ve-morning-title">
+      <div class="ve-morning-copy">
+        <p class="ve-eyebrow">This morning</p>
+        <h2 id="ve-morning-title">The stock is the feed.</h2>
+        <p class="ve-morning-lead">
+          Yesterday’s pieces will be gone by tea-time. We already post what
+          came in. Come for the kind of shop, and the door.
+        </p>
+      </div>
+      <blockquote class="ve-caption" cite={facebook}>
+        <p>Music Vibes this morning too!!</p>
+        <footer>Facebook · August 2026</footer>
+      </blockquote>
+      <p class="ve-feed">
+        Today’s pieces:
+        <a href={facebook} rel="external">Facebook</a>
+        ·
+        <a href={instagram} rel="external">Instagram</a>
+      </p>
+    </section>
+
+    <section class="ve-kinds" id="kinds" aria-labelledby="ve-kinds-title">
+      <div class="ve-kinds-head">
+        <p class="ve-eyebrow">The kind of trove</p>
+        <h2 id="ve-kinds-title">Mid-century. Retro. Antiques. Collectables. And more.</h2>
+        <p>
+          These are the stock <em>kinds</em> — not a catalogue. Nothing here
+          is priced. If you want the piece on the rail this morning, come in,
+          or ring.
+        </p>
+      </div>
+      <ol class="ve-rail" aria-label="Stock kinds">
+        {kinds.map((kind) => (
+          <li>{kind}</li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="ve-find" aria-labelledby="ve-find-title">
+      <p class="ve-eyebrow">The door</p>
+      <h2 id="ve-find-title">4 Main Street. Come in, or ring.</h2>
+      <div class="ve-find-grid">
+        <address>
+          <strong>Vintage etc.</strong>
+          <span>4 Main Street</span>
+          <span>Newcastle, Co. Down</span>
+          <span>BT33 0AD</span>
+          <a href={phoneHref}>{phone}</a>
+        </address>
+        <div class="ve-find-notes">
+          <p>
+            Hours as posted today — on
+            <a href={facebook} rel="external">Facebook</a>.
+          </p>
+          <p>
+            Instagram:
+            <a href={instagram} rel="external">@_vintage_etc</a>
+          </p>
+          <p>Walk in. If you want the piece, come to the door, or ring.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
