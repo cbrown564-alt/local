@@ -1204,3 +1204,36 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/tip-top/tip-top-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
 - `public/media/concepts/tip-top/tip-top-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
 - `public/media/og/tip-top.jpg` — Open Graph share card generated from the workbench route.
+
+## The Clay Project concept plates (27 August 2026)
+
+- `public/media/concepts/clay-project/clay-project-hero-studio.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a sun-drenched pottery studio on Newcastle Central Promenade with sash windows overlooking the Irish Sea, delicate handcrafted porcelain on timber shelves, natural brushes and glaze jars. It is an illustrative visual representation, not a documentary photograph of 85 Central Promenade's interior.
+- `public/media/concepts/clay-project/clay-project-porcelain-wheel.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative craft close-up showing artisan hands shaping raw porcelain clay on a potter's wheel. It illustrates the studio's in-house porcelain production; not a documentary photograph of the founders.
+- `public/media/concepts/clay-project/clay-project-evening-session.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative twilight workshop photograph depicting guests painting ceramic charcuterie boards over coffee and wine. Illustrative visualisation of evening BYOB sessions.
+
+## The Hutt Hostel concept plates (27 August 2026)
+
+- `public/media/concepts/hutt-hostel/hutt-hostel-hero-mountain.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of hikers outside 30 Downs Road in Newcastle at dawn with mist swirling around the granite peak of Slieve Donard. Illustrative visualisation of the hostel's mountain trailhead setting.
+- `public/media/concepts/hutt-hostel/hutt-hostel-lounge-interior.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative interior of a cozy mountain hostel common room with topo maps, timber tables, and boots by the hearth. Not a documentary photograph of the interior.
+- `public/media/concepts/hutt-hostel/hutt-hostel-padd-apartment.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative visualisation of a self-contained holiday flat ("The Padd") with mountain views, fitted kitchenette, and lounge.
+
+## Terry King & Sons concept plates (27 August 2026)
+
+- `public/media/concepts/terry-king/terry-king-hero-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an active commercial garage bay on Dundrum Road with a trade van on a 2-post hydraulic ramp, diagnostic equipment, and mechanics at work. Illustrative visualisation of 84 Dundrum Road workshop operations.
+- `public/media/concepts/terry-king/terry-king-diagnostic-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a digital diagnostic scanner console connected to an engine bay. Illustrative representation of electronic vehicle diagnostics.
+- `public/media/concepts/terry-king/terry-king-mot-inspection.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative vehicle underbody ramp inspection with mechanic checking suspension and brakes under inspection lamp.
+
+## Dominic McInerney Solicitors concept plates (27 August 2026)
+
+- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-hero-chamber.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a quiet, dignified private legal consultation office on Newcastle Main Street with solid oak desk, traditional green banker's lamp, leather-bound statutes, and window view towards the Mournes. Illustrative representation of 123A Main Street chamber.
+- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-desk-detail.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a solicitor consultation desk with parchment document, fountain pen, and embossed legal seal.
+
+## Stile Glass concept plates (27 August 2026)
+
+- `public/media/concepts/stile-glass/stile-glass-hero-terrace.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a modern coastal architectural terrace in Newcastle with frameless structural glass balustrades overlooking the Irish Sea and the Mourne Mountains. Illustrative representation of bespoke architectural glazing.
+- `public/media/concepts/stile-glass/stile-glass-balustrade-spigot.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative macro architectural detail of an AISI 316 marine-grade stainless steel clamp fixing on granite coping holding laminated toughened structural glass.
+
+
+
+
+

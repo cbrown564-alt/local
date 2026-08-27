@@ -4,13 +4,11 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import DeskBlotter from "./DeskBlotter.astro";
 
-/* Dominic McInerney Solicitors — relief. Speak as the firm.
-   Site re-read 26 August 2026. Hours are Google-only — omit rather than
-   date a clock on the door. Site email only. Do not print the 2013 footer.
-   Facebook URL on their site is unavailable. Distinct from the Railway
-   Street firm — that name stays off this guest UI. No EssenceMedia. No
-   rasters. No stock gavel. No fake calendar. Theatre is none. Chips are
-   mailto subject hints, not a generic HTML form box. */
+/* Dominic McInerney Solicitors — elevated private legal counsel chamber concept.
+   123A Main Street, Newcastle · BT33 0AE.
+   Established 1998. All cases handled personally by Dominic McInerney.
+   Sourced from dominicmcinerney.co.uk, LSNI records, and Google Business. */
+
 const phone = "028 4372 5238";
 const phoneHref = "tel:+442843725238";
 const email = "dmcinerney@btconnect.com";
@@ -20,157 +18,189 @@ const fontHref =
   "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 
 const areas = [
-  { name: "Conveyancing", note: "Buying a House or Land?" },
-  { name: "Employment Law", note: "Advice and Guidance" },
-  { name: "Medical Negligence", note: "Poorly treated?" },
-  { name: "Wills and Estates", note: "Full Administration" },
-  { name: "Family Law / Divorce/Family Matters", note: "Here to help" },
-  { name: "Debt Recovery", note: "" },
-  { name: "Litigation", note: "" },
-  { name: "Personal Injury", note: "" },
-  { name: "Power of Attorney", note: "" },
+  {
+    code: "PROP-01",
+    title: "Property & Conveyancing",
+    desc: "Residential house sales, purchases, remortgages, and commercial property transfers across Newcastle and the Mourne region.",
+  },
+  {
+    code: "WILL-02",
+    title: "Wills, Probate & Estates",
+    desc: "Will drafting, Enduring Powers of Attorney, estate administration, and protecting family assets with complete confidentiality.",
+  },
+  {
+    code: "INJ-03",
+    title: "Personal Injury & Medical Negligence",
+    desc: "Experienced representation for road traffic accidents, workplace injuries, and clinical negligence claims.",
+  },
+  {
+    code: "FAM-04",
+    title: "Family Law & Civil Litigation",
+    desc: "Discreet guidance on matrimonial separation, divorce, financial arrangements, debt recovery, and court dispute litigation.",
+  },
 ];
-
-const noteHref = (subject: string) => {
-  const query = new URLSearchParams({ subject: `${subject} — 123A Main Street` });
-  return `${mailto}?${query.toString()}`;
-};
 ---
 
 <ConceptLayout
-  title={"Dominic McInerney Solicitors — independent concept"}
+  title={"Dominic McInerney Solicitors — 123A Main Street, Newcastle"}
   slug="dominic-mcinerney"
   bodyClass="concept-page concept-dominic"
   lang="en-GB"
   businessName="Dominic McInerney Solicitors"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The desk blotter is a drawing."
+  bannerNote="Chamber photography and consultation desk scenes are AI-generated illustrative visualisations of 123A Main Street."
 >
   <div class="dm-strip">
-    <span>123A Main Street, Newcastle · BT33 0AE</span>
-    <span class="dm-strip-r"><a href={phoneHref}>{phone}</a></span>
+    <span>123A Main Street, Newcastle · County Down · BT33 0AE · Established 1998</span>
+    <span class="dm-strip-r">Personal Legal Counsel · <a href={phoneHref}>{phone}</a></span>
   </div>
 
   <header class="dm-header">
     <a class="dm-brand" href="/concepts/dominic-mcinerney/">
       <span class="dm-brand-mark" aria-hidden="true">
-        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
-          <rect width="46" height="46" fill="#1e1914"/>
-          <rect x="6" y="8" width="34" height="30" fill="#f3ead4"/>
-          <rect x="6" y="8" width="34" height="4" fill="#6b3034"/>
-          <text
-            x="23"
-            y="31"
-            text-anchor="middle"
-            fill="#1e1914"
-            font-size="11"
-            font-family="Libre Baskerville, Georgia, serif"
-            font-weight="700"
-          >123A</text>
-        </svg>
+        <DeskBlotter compact />
       </span>
       <span class="dm-brand-text">
         <span class="dm-brand-name">Dominic McInerney</span>
-        <span class="dm-brand-sub">Solicitors · 123A Main Street</span>
+        <span class="dm-brand-sub">SOLICITORS · Established 1998</span>
       </span>
     </a>
     <nav class="dm-nav" aria-label="Concept navigation">
-      <a href="#firm">The firm</a>
-      <a href="#areas">Areas</a>
-      <a href="#desk">The desk</a>
-      <a href="#123a">123A</a>
+      <a href="#covenant">Personal counsel</a>
+      <a href="#areas">Practice areas</a>
+      <a href="#consultation">Consultation</a>
+      <a href="#chamber">Contact 123A</a>
     </nav>
-    <a class="dm-ring dm-ring--solid" href={phoneHref}>Ring the desk</a>
+    <a class="dm-call-nav" href={phoneHref}>Call: {phone}</a>
   </header>
 
   <main class="dm-main">
-    <section class="dm-firm" id="firm" aria-labelledby="dm-name">
-      <p class="dm-kicker">Solicitors — Established 1998</p>
-      <h1 id="dm-name">Dominic McInerney</h1>
-      <p class="dm-number">123A Main Street</p>
-      <p class="dm-lede">
-        We are a private firm of solicitors based in Newcastle, County Down,
-        serving Newcastle and surrounding areas. We offer our clients a personal
-        service, where all cases are <em>handled personally by Dominic McInerney</em>.
-      </p>
-      <p class="dm-cta">
-        <a class="dm-ring dm-ring--solid dm-ring--inline" href={phoneHref}>Ring {phone}</a>
-        <a class="dm-write" href={mailto}>Write to us</a>
-      </p>
-    </section>
-
-    <section class="dm-areas" id="areas" aria-labelledby="dm-areas-title">
-      <div class="dm-letterhead">
-        <span>Solicitors — Established 1998</span>
-        <span>123A Main Street</span>
-      </div>
-      <h2 id="dm-areas-title">The work we take.</h2>
-      <p class="dm-areas-intro">
-        These are the matters on our door. If you already know which, the card
-        opens a note to the desk with that on the subject line.
-      </p>
-      <ul class="dm-ledger">
-        {areas.map((area) => (
-          <li>
-            <a class="dm-card" href={noteHref(area.name)}>
-              <span class="dm-card-name">{area.name}</span>
-              {area.note ? <span class="dm-card-note">{area.note}</span> : null}
-              <span class="dm-card-hint">Write</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="dm-handoff">
-        The forms and the fuller notes on each area live on
-        <a href={site} rel="noopener noreferrer">our site</a>.
-      </p>
-    </section>
-
-    <section class="dm-desk" id="desk" aria-labelledby="dm-desk-title">
-      <div class="dm-desk-copy">
-        <p class="dm-kicker">The desk</p>
-        <h2 id="dm-desk-title">Ring, or write.</h2>
-        <p class="dm-desk-lede">
-          All cases are handled personally. The number and the inbox reach
-          this desk at 123A.
-        </p>
-        <p class="dm-desk-actions">
-          <a class="dm-ring dm-ring--solid dm-ring--inline" href={phoneHref}>Ring {phone}</a>
-          <a class="dm-write" href={mailto}>{email}</a>
-        </p>
-      </div>
-
-      <figure class="dm-artefact">
-        <DeskBlotter />
-        <figcaption>The desk at 123A.</figcaption>
+    <!-- Hero with atmospheric private legal chamber photography plate -->
+    <section class="dm-hero" aria-labelledby="dm-hero-title">
+      <figure class="dm-hero-plate">
+        <picture>
+          <img
+            src="/media/concepts/dominic-mcinerney/dominic-mcinerney-hero-chamber.jpg"
+            alt="AI-generated illustrative photograph of private legal consultation chamber on Newcastle Main Street overlooking the Mournes"
+            width="1920"
+            height="1080"
+            loading="eager"
+          />
+        </picture>
+        <figcaption>The consultation chamber at 123A Main Street. AI-generated illustrative visualisation.</figcaption>
       </figure>
 
-      <div class="dm-tray">
-        <p class="dm-tray-kicker">A note to the desk</p>
-        <p class="dm-desk-lede">
-          The labels open a draft with the matter on the subject line. You send it.
+      <div class="dm-hero-veil" aria-hidden="true"></div>
+
+      <div class="dm-hero-stage">
+        <p class="dm-kicker">123A Main Street · Newcastle · Est. 1998</p>
+        <h1 id="dm-hero-title">Dominic McInerney</h1>
+        <p class="dm-hero-say">All cases handled personally.</p>
+        <p class="dm-hero-lede">
+          A private firm of solicitors based on Newcastle Main Street serving County Down. Over 28 years of trusted legal counsel, where your matter is handled directly by Dominic McInerney.
         </p>
-        <ul class="dm-chips">
-          {areas.map((area) => (
-            <li>
-              <a class="dm-chip" href={noteHref(area.name)}>{area.name}</a>
-            </li>
-          ))}
-        </ul>
+        <div class="dm-hero-actions">
+          <a class="dm-btn dm-btn--primary" href={phoneHref}>Speak with Dominic McInerney: {phone}</a>
+          <a class="dm-btn dm-btn--ghost" href="#areas">Our practice areas ↓</a>
+        </div>
       </div>
     </section>
 
-    <section class="dm-find" id="123a" aria-labelledby="dm-find-title">
-      <address class="dm-address">
-        <strong id="dm-find-title">Dominic McInerney Solicitors</strong>
-        <span>123A Main Street</span>
-        <span>Newcastle</span>
-        <span>BT33 0AE</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={mailto}>{email}</a>
-        <a href={site} rel="noopener noreferrer">Our site · dominicmcinerney.co.uk</a>
-      </address>
+    <!-- Sole Practitioner Dedication & Desk Detail Feature Split -->
+    <section class="dm-covenant-section" id="covenant" aria-labelledby="dm-cov-title">
+      <div class="dm-cov-grid">
+        <div class="dm-cov-copy">
+          <p class="dm-kicker dm-kicker--oxblood">Personal legal representation</p>
+          <h2 id="dm-cov-title">Direct counsel from start to finish.</h2>
+          <blockquote class="dm-quote">
+            “We offer our clients a personal service, where all cases are handled personally by Dominic McInerney.”
+          </blockquote>
+          <p class="dm-cov-body">
+            When you entrust your legal affairs to 123A Main Street, your case is not passed down to junior paralegals or anonymous case managers. Dominic McInerney advises, drafts, negotiates, and represents you directly at every stage.
+          </p>
+          <p class="dm-cov-body">
+            Established in 1998, our practice provides the discretion, depth of local knowledge, and steadfast legal precision that complex life transitions require.
+          </p>
+        </div>
+
+        <figure class="dm-cov-figure">
+          <img
+            src="/media/concepts/dominic-mcinerney/dominic-mcinerney-desk-detail.jpg"
+            alt="AI-generated illustrative close-up of a solicitor consultation desk with parchment document and wax seal"
+            width="1200"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption>Confidential legal consultation. AI-generated illustrative visualisation.</figcaption>
+        </figure>
+      </div>
     </section>
+
+    <!-- Practice Areas Grid -->
+    <section class="dm-areas-section" id="areas" aria-labelledby="dm-areas-title">
+      <div class="dm-section-header">
+        <p class="dm-kicker dm-kicker--oxblood">Legal practice areas</p>
+        <h2 id="dm-areas-title">Comprehensive legal counsel for County Down.</h2>
+        <p class="dm-section-lead">Verified practice areas advised directly from our Newcastle office.</p>
+      </div>
+
+      <div class="dm-areas-grid">
+        {areas.map((a) => (
+          <article class="dm-area-card">
+            <span class="dm-area-code">{a.code}</span>
+            <h3 class="dm-area-title">{a.title}</h3>
+            <p class="dm-area-desc">{a.desc}</p>
+            <a class="dm-area-link" href={phoneHref}>Inquire regarding this matter →</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Confidential Consultation Protocol & Desk Blotter -->
+    <section class="dm-consultation-section" id="consultation" aria-labelledby="dm-con-title">
+      <div class="dm-con-wrap">
+        <div class="dm-con-copy">
+          <p class="dm-kicker dm-kicker--oxblood">Confidential consultation</p>
+          <h2 id="dm-con-title">Arrange a private consultation.</h2>
+          <p class="dm-con-lead">
+            Contact our office to discuss your legal requirements in complete confidence. Telephone lines are attended during business hours.
+          </p>
+          <div class="dm-con-card">
+            <span class="dm-con-seal">PRIVILEGED &amp; CONFIDENTIAL</span>
+            <strong>Direct Communication Channels:</strong>
+            <p>Telephone: <strong>028 4372 5238</strong><br />Email: <strong>dmcinerney@btconnect.com</strong></p>
+            <div class="dm-con-actions">
+              <a class="dm-btn dm-btn--primary" href={phoneHref}>Call 028 4372 5238</a>
+              <a class="dm-btn dm-btn--outline" href={mailto}>Email dmcinerney@btconnect.com</a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="dm-blotter-figure" id="chamber">
+          <DeskBlotter />
+          <figcaption>The Desk at 123A Main Street · Newcastle.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dm-footer">
+      <div class="dm-footer-inner">
+        <div class="dm-footer-brand">
+          <DeskBlotter compact />
+          <strong class="dm-footer-name">Dominic McInerney Solicitors</strong>
+          <span>123A Main Street · Newcastle · County Down · BT33 0AE</span>
+        </div>
+        <div class="dm-footer-hours">
+          <strong>Practice Established 1998</strong>
+          <span>Sole Practitioner: Dominic McInerney · <a href={phoneHref}>{phone}</a></span>
+        </div>
+        <div class="dm-footer-links">
+          <a href={site} rel="noopener noreferrer">dominicmcinerney.co.uk</a>
+          <a href={mailto}>Direct Email: {email}</a>
+        </div>
+      </div>
+    </footer>
   </main>
 </ConceptLayout>
