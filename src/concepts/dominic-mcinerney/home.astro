@@ -1,0 +1,176 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import DeskBlotter from "./DeskBlotter.astro";
+
+/* Dominic McInerney Solicitors — relief. Speak as the firm.
+   Site re-read 26 August 2026. Hours are Google-only — omit rather than
+   date a clock on the door. Site email only. Do not print the 2013 footer.
+   Facebook URL on their site is unavailable. Distinct from the Railway
+   Street firm — that name stays off this guest UI. No EssenceMedia. No
+   rasters. No stock gavel. No fake calendar. Theatre is none. Chips are
+   mailto subject hints, not a generic HTML form box. */
+const phone = "028 4372 5238";
+const phoneHref = "tel:+442843725238";
+const email = "dmcinerney@btconnect.com";
+const mailto = `mailto:${email}`;
+const site = "https://www.dominicmcinerney.co.uk";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const areas = [
+  { name: "Conveyancing", note: "Buying a House or Land?" },
+  { name: "Employment Law", note: "Advice and Guidance" },
+  { name: "Medical Negligence", note: "Poorly treated?" },
+  { name: "Wills and Estates", note: "Full Administration" },
+  { name: "Family Law / Divorce/Family Matters", note: "Here to help" },
+  { name: "Debt Recovery", note: "" },
+  { name: "Litigation", note: "" },
+  { name: "Personal Injury", note: "" },
+  { name: "Power of Attorney", note: "" },
+];
+
+const noteHref = (subject: string) => {
+  const query = new URLSearchParams({ subject: `${subject} — 123A Main Street` });
+  return `${mailto}?${query.toString()}`;
+};
+---
+
+<ConceptLayout
+  title={"Dominic McInerney Solicitors — independent concept"}
+  slug="dominic-mcinerney"
+  bodyClass="concept-page concept-dominic"
+  lang="en-GB"
+  businessName="Dominic McInerney Solicitors"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The desk blotter is a drawing."
+>
+  <div class="dm-strip">
+    <span>123A Main Street, Newcastle · BT33 0AE</span>
+    <span class="dm-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="dm-header">
+    <a class="dm-brand" href="/concepts/dominic-mcinerney/">
+      <span class="dm-brand-mark" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <rect width="46" height="46" fill="#1e1914"/>
+          <rect x="6" y="8" width="34" height="30" fill="#f3ead4"/>
+          <rect x="6" y="8" width="34" height="4" fill="#6b3034"/>
+          <text
+            x="23"
+            y="31"
+            text-anchor="middle"
+            fill="#1e1914"
+            font-size="11"
+            font-family="Libre Baskerville, Georgia, serif"
+            font-weight="700"
+          >123A</text>
+        </svg>
+      </span>
+      <span class="dm-brand-text">
+        <span class="dm-brand-name">Dominic McInerney</span>
+        <span class="dm-brand-sub">Solicitors · 123A Main Street</span>
+      </span>
+    </a>
+    <nav class="dm-nav" aria-label="Concept navigation">
+      <a href="#firm">The firm</a>
+      <a href="#areas">Areas</a>
+      <a href="#desk">The desk</a>
+      <a href="#123a">123A</a>
+    </nav>
+    <a class="dm-ring dm-ring--solid" href={phoneHref}>Ring the desk</a>
+  </header>
+
+  <main class="dm-main">
+    <section class="dm-firm" id="firm" aria-labelledby="dm-name">
+      <p class="dm-kicker">Solicitors — Established 1998</p>
+      <h1 id="dm-name">Dominic McInerney</h1>
+      <p class="dm-number">123A Main Street</p>
+      <p class="dm-lede">
+        We are a private firm of solicitors based in Newcastle, County Down,
+        serving Newcastle and surrounding areas. We offer our clients a personal
+        service, where all cases are <em>handled personally by Dominic McInerney</em>.
+      </p>
+      <p class="dm-cta">
+        <a class="dm-ring dm-ring--solid dm-ring--inline" href={phoneHref}>Ring {phone}</a>
+        <a class="dm-write" href={mailto}>Write to us</a>
+      </p>
+    </section>
+
+    <section class="dm-areas" id="areas" aria-labelledby="dm-areas-title">
+      <div class="dm-letterhead">
+        <span>Solicitors — Established 1998</span>
+        <span>123A Main Street</span>
+      </div>
+      <h2 id="dm-areas-title">The work we take.</h2>
+      <p class="dm-areas-intro">
+        These are the matters on our door. If you already know which, the card
+        opens a note to the desk with that on the subject line.
+      </p>
+      <ul class="dm-ledger">
+        {areas.map((area) => (
+          <li>
+            <a class="dm-card" href={noteHref(area.name)}>
+              <span class="dm-card-name">{area.name}</span>
+              {area.note ? <span class="dm-card-note">{area.note}</span> : null}
+              <span class="dm-card-hint">Write</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="dm-handoff">
+        The forms and the fuller notes on each area live on
+        <a href={site} rel="noopener noreferrer">our site</a>.
+      </p>
+    </section>
+
+    <section class="dm-desk" id="desk" aria-labelledby="dm-desk-title">
+      <div class="dm-desk-copy">
+        <p class="dm-kicker">The desk</p>
+        <h2 id="dm-desk-title">Ring, or write.</h2>
+        <p class="dm-desk-lede">
+          All cases are handled personally. The number and the inbox reach
+          this desk at 123A.
+        </p>
+        <p class="dm-desk-actions">
+          <a class="dm-ring dm-ring--solid dm-ring--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="dm-write" href={mailto}>{email}</a>
+        </p>
+      </div>
+
+      <figure class="dm-artefact">
+        <DeskBlotter />
+        <figcaption>The desk at 123A.</figcaption>
+      </figure>
+
+      <div class="dm-tray">
+        <p class="dm-tray-kicker">A note to the desk</p>
+        <p class="dm-desk-lede">
+          The labels open a draft with the matter on the subject line. You send it.
+        </p>
+        <ul class="dm-chips">
+          {areas.map((area) => (
+            <li>
+              <a class="dm-chip" href={noteHref(area.name)}>{area.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="dm-find" id="123a" aria-labelledby="dm-find-title">
+      <address class="dm-address">
+        <strong id="dm-find-title">Dominic McInerney Solicitors</strong>
+        <span>123A Main Street</span>
+        <span>Newcastle</span>
+        <span>BT33 0AE</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={site} rel="noopener noreferrer">Our site · dominicmcinerney.co.uk</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
