@@ -258,6 +258,116 @@ const CONCEPTS = {
       </main>`,
     afterHover: [".tt-walk", ...AFTER_HOVER],
   },
+  "serenity-newcastle": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f0f4f2;color:#1e2925;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #527568;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#5a7369;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#17221e">Serenity · 55–57 Central Promenade</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#455951">Seaside day spa and beauty appointments are booked directly by phone (028 4372 6768). Weekly treatment specials and seasonal packages are announced via Facebook rather than an active standalone site.</p>
+        </div>
+      </main>`,
+    afterHover: [".se-call-btn", ...AFTER_HOVER],
+  },
+  "shimna-cafe": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f7f3ee;color:#2c2621;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #b86234;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#7d5945;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241d18">The Shimna Café · 2 Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#59483e">Breakfast and seaside lunches operate as walk-in trade beside the river. Digital menus live on m.yumm.menu/shimnacafe with daily blackboard specials announced on social media.</p>
+        </div>
+      </main>`,
+    afterHover: [".sh-walk-in", ".sh-catering-btn", ...AFTER_HOVER],
+  },
+  "vintage-etc": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f5efe6;color:#2b231c;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #9e6438;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#7a563b;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241a14">Vintage etc. · 4 Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#574334">Fast-moving mid-century furniture, curios and vinyl records are announced daily on Instagram (@_vintage_etc) and Facebook (@magsvintageetc), with items reserved directly by phone (07584 034590).</p>
+        </div>
+      </main>`,
+    afterHover: [".ve-hold-btn", ...AFTER_HOVER],
+  },
+  "smalls-butchers": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f6eff0;color:#2c1e20;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #8f2d3d;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#734048;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241416">Small's Butchers & Deli · The Shopping Centre</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#57393d">Prime dry-aged Mourne beef, artisan sausages and daily hot carvery lunches are served across the counter in Newcastle Shopping Centre. Custom meat orders are booked via 028 4372 3512.</p>
+        </div>
+      </main>`,
+    afterHover: [".sb-order-btn", ...AFTER_HOVER],
+  },
+  "cookie-jar": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f7f2ea;color:#2b221a;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #b57a38;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#7a5a3a;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#241810">The Cookie Jar · 121 Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#574433">Fresh morning loaves and celebration bakes are ordered over the counter or by phone (028 4372 2427). Mail-order mix packs are distributed nationwide through mourneandbread.co.uk.</p>
+        </div>
+      </main>`,
+    afterHover: [".cj-cta", ...AFTER_HOVER],
+  },
+  "clay-project": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f3f1ed;color:#262421;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #596b65;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#616e69;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#1c1b18">The Clay Project · 85 Central Promenade</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#4c5450">Pottery workshops, BYOB evening sessions and studio painting overlooking Dundrum Bay are booked through theclay-project.com with guest creations shared on Instagram (@theclay_project).</p>
+        </div>
+      </main>`,
+    afterHover: [".cp-book-workshop", ...AFTER_HOVER],
+  },
+  "dominic-mcinerney": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f1f2f4;color:#1f242b;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #2d4560;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#4c5b6e;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#141920">Dominic McInerney Solicitors · 123A Main Street</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#3f4957">Private legal practice serving Newcastle and County Down since 1998. The legacy web domain dominicmcinerney.co.uk is a static directory card; client inquiries are managed directly by phone (028 4372 5238).</p>
+        </div>
+      </main>`,
+    afterHover: [".dm-counsel-btn", ...AFTER_HOVER],
+  },
+  "hutt-hostel": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#eef2f5;color:#1c252d;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #325875;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#496173;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#131c23">The Hutt Hostel · 30 Downs Road</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#3e4e5c">Mountain hiker accommodation and The Padd private flat at 30 Downs Road. Web booking operates via hutthostel.com with inquiries managed during evening desk hours (5:00pm–9:00pm).</p>
+        </div>
+      </main>`,
+    afterHover: [".hh-book-btn", ...AFTER_HOVER],
+  },
+  "stile-glass": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f0f3f6;color:#1d252c;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #3c657a;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#506a7a;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#141b20">Stile Glass · 63 Castlewellan Road</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#415461">Bespoke structural glass balustrades and Juliet balconies engineered in Newcastle. Project portfolios are published on stileglass.com with site surveys booked via 028 4372 3260.</p>
+        </div>
+      </main>`,
+    afterHover: [".sg-survey-btn", ...AFTER_HOVER],
+  },
+  "terry-king": {
+    beforeStillHtml: `
+      <main style="box-sizing:border-box;width:1265px;height:710px;padding:96px 112px;background:#f3f1ec;color:#28241e;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center">
+        <div style="max-width:780px;border-left:8px solid #8c532b;padding-left:34px">
+          <p style="margin:0 0 20px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#7a5840;font-weight:600">Current public presence · Newcastle</p>
+          <h1 style="margin:0 0 22px;font-size:50px;line-height:1.06;font-weight:600;color:#201b15">Terry King & Sons · 84 Dundrum Road</h1>
+          <p style="margin:0;font-size:23px;line-height:1.45;color:#54463a">Car and commercial van servicing, MOT testing and diagnostics at 84 Dundrum Road. Work is booked directly across the garage counter or via workshop phone (028 4372 3644).</p>
+        </div>
+      </main>`,
+    afterHover: [".tk-call-lift", ...AFTER_HOVER],
+  },
 };
 
 // A reel is a sequence of independently recorded segments. Browser segments

@@ -4,41 +4,61 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import TrovePlate from "./TrovePlate.astro";
 
-/* Speaks as Vintage etc. on 4 Main Street. Stock is the feed (Facebook +
-   Instagram). No cart, no prices, no fake catalogue. Mags is in the Facebook
-   URL only — do not print her as owner. Hours omitted / as posted today.
-   One sourced Facebook caption: "Music Vibes this morning too!!" (22 Aug 2026). */
+/* Vintage etc. — 4 Main Street, Newcastle · County Down.
+   Curated mid-century teak, brass curios, maritime antiques & vintage vinyl.
+   Stock is the live feed. "Hold a Piece" direct line: 07584 034590. */
 
 const phone = "07584 034590";
 const phoneHref = "tel:+447584034590";
 const facebook = "https://www.facebook.com/magsvintageetc/";
 const instagram = "https://www.instagram.com/_vintage_etc/";
+const maps = "https://maps.google.com/?q=4+Main+Street+Newcastle+BT33+0AD";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap";
 
-const kinds = [
-  "vintage",
-  "mid century",
-  "retro",
-  "antiques",
-  "collectables",
-  "and more",
+const eras = [
+  {
+    tag: "1950s – 1970s",
+    title: "Mid-Century Teak & Furniture",
+    desc: "Authentic Danish and British teak sideboards (G-Plan, McIntosh), circular dining sets, nesting tables, and restored cocktail bars.",
+  },
+  {
+    tag: "Nautical & Architectural",
+    title: "Brass, Clocks & Maritime Curios",
+    desc: "Reclaimed ship's brass lanterns, heavy maritime bells, mechanical wall clocks, barometer dials, and antique architectural hardware.",
+  },
+  {
+    tag: "The Crate",
+    title: "Vintage Vinyl & Turntable Vault",
+    desc: "Crates of original pressing LPs spanning classic rock, jazz, soul, folk, and blues alongside vintage audio components and record players.",
+  },
+  {
+    tag: "Eclectic Discovery",
+    title: "Retro Barware & Studio Pottery",
+    desc: "Smoked glass decanter sets, 1960s ceramic vases, vintage advertising tin signs, and tactile curios for home and studio.",
+  },
 ];
 ---
 
 <ConceptLayout
-  title={"Vintage etc. — independent concept"}
+  title={"Vintage etc. — Mid-Century Teak, Curios & Vinyl, Newcastle"}
   slug="vintage-etc"
   bodyClass="concept-page concept-vintage-etc"
   lang="en-GB"
   businessName="Vintage etc."
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The Main Street window is a drawing, not a photograph of the shop."
+  bannerNote="Atmospheric antiques scenes and furniture details are AI-generated illustrative visualisations of 4 Main Street."
 >
   <div class="ve-strip">
-    <span>4 Main Street, Newcastle · BT33 0AD</span>
-    <span class="ve-strip-r"><a href={phoneHref}>{phone}</a></span>
+    <span>4 Main Street, Newcastle · BT33 0AD · Mid-Century · Antiques · Vinyl Crates</span>
+    <span class="ve-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+      <span aria-hidden="true"> · </span>
+      <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+    </span>
   </div>
 
   <header class="ve-header">
@@ -61,95 +81,185 @@ const kinds = [
       </span>
     </a>
     <nav class="ve-nav" aria-label="Concept navigation">
-      <a href="#door">The door</a>
-      <a href="#morning">This morning</a>
-      <a href="#kinds">The kind</a>
+      <a href="#trove">The Trove</a>
+      <a href="#index">Collector’s Index</a>
+      <a href="#hold">Hold a Piece</a>
+      <a href="#door">The Door</a>
     </nav>
-    <a class="ve-walk" href="#door">Walk in</a>
+    <a class="ve-hold-btn" href={phoneHref}>Hold a Piece</a>
   </header>
 
   <main class="ve-main">
-    <div class="ve-hero" id="door">
-      <section class="ve-lede" aria-labelledby="ve-name">
-        <p class="ve-eyebrow">Main Street · Newcastle</p>
-        <h1 id="ve-name">Vintage etc.</h1>
-        <p class="ve-say">Treasure trove of all things vintage, mid century and more.</p>
-        <p class="ve-body">
-          Come in. Do not wait for a grid. What is on the rail this morning
-          lives on Facebook and Instagram. The door is on Main Street — walk
-          in, or ring and we will hold the piece.
-        </p>
-        <p class="ve-cta">
-          <a class="ve-walk ve-walk--inline" href="#door">Walk in</a>
-          <a class="ve-ring" href={phoneHref}>Ring {phone}</a>
-        </p>
-      </section>
+    <!-- Hero Trove Section -->
+    <section class="ve-hero" id="trove" aria-labelledby="ve-hero-title">
+      <div class="ve-hero-grid">
+        <div class="ve-hero-copy">
+          <p class="ve-eyebrow">Treasure Trove · 4 Main Street</p>
+          <h1 id="ve-hero-title">A treasure trove of all things vintage, mid century and more.</h1>
+          <p class="ve-say">Come in. Do not wait for a grid. The piece you saw this morning lives on the floor.</p>
+          <p class="ve-lede">
+            Step inside our Main Street shop floor to discover curated mid-century teak sideboards,
+            burnished maritime brass, vintage vinyl crates, and eclectic retro curios.
+            Every piece is individual — once it’s gone, it’s gone.
+          </p>
+          <div class="ve-hero-actions">
+            <a class="ve-btn-primary" href={phoneHref}>Ring {phone} to Hold</a>
+            <a class="ve-btn-secondary" href="#index">Explore Eras & Stock</a>
+          </div>
+          <div class="ve-live-wire">
+            <span class="ve-wire-badge">Live Feed Wire</span>
+            <p>New discoveries arrive daily and are showcased live on our social feeds.</p>
+          </div>
+        </div>
 
-      <figure class="ve-artefact">
-        <TrovePlate />
-        <figcaption>The window on Main Street — teak, brass, mid-century.</figcaption>
-      </figure>
-    </div>
-
-    <section class="ve-morning" id="morning" aria-labelledby="ve-morning-title">
-      <div class="ve-morning-copy">
-        <p class="ve-eyebrow">This morning</p>
-        <h2 id="ve-morning-title">The stock is the feed.</h2>
-        <p class="ve-morning-lead">
-          Yesterday’s pieces will be gone by tea-time. We already post what
-          came in. Come for the kind of shop, and the door.
-        </p>
+        <div class="ve-hero-visual">
+          <figure class="ve-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/vintage-etc/vintage-etc-hero-trove-640.webp 640w, /media/concepts/vintage-etc/vintage-etc-hero-trove-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 50vw"
+              />
+              <img
+                src="/media/concepts/vintage-etc/vintage-etc-hero-trove.jpg"
+                alt="Atmospheric vintage antiques trove interior with teak credenza, glowing brass lamps, and vinyl crates"
+                width="1600"
+                height="900"
+                loading="eager"
+              />
+            </picture>
+            <figcaption>The Main Street antique trove interior at 4 Main Street.</figcaption>
+          </figure>
+        </div>
       </div>
-      <blockquote class="ve-caption" cite={facebook}>
-        <p>Music Vibes this morning too!!</p>
-        <footer>Facebook · August 2026</footer>
-      </blockquote>
-      <p class="ve-feed">
-        Today’s pieces:
-        <a href={facebook} rel="external">Facebook</a>
-        ·
-        <a href={instagram} rel="external">Instagram</a>
-      </p>
     </section>
 
-    <section class="ve-kinds" id="kinds" aria-labelledby="ve-kinds-title">
-      <div class="ve-kinds-head">
-        <p class="ve-eyebrow">The kind of trove</p>
-        <h2 id="ve-kinds-title">Mid-century. Retro. Antiques. Collectables. And more.</h2>
-        <p>
-          These are the stock <em>kinds</em> — not a catalogue. Nothing here
-          is priced. If you want the piece on the rail this morning, come in,
-          or ring.
+    <!-- Curated Era & Collector's Index -->
+    <section class="ve-index" id="index" aria-labelledby="ve-index-title">
+      <div class="ve-section-head">
+        <p class="ve-eyebrow">Curated Collections</p>
+        <h2 id="ve-index-title">The Collector’s Index</h2>
+        <p class="ve-section-intro">
+          We hand-select statement pieces with character, patina, and history.
+          Our inventory spans four distinct collectible disciplines.
         </p>
       </div>
-      <ol class="ve-rail" aria-label="Stock kinds">
-        {kinds.map((kind) => (
-          <li>{kind}</li>
-        ))}
-      </ol>
+
+      <div class="ve-index-layout">
+        <div class="ve-eras-grid">
+          {eras.map((era) => (
+            <article class="ve-era-card">
+              <span class="ve-era-tag">{era.tag}</span>
+              <h3>{era.title}</h3>
+              <p>{era.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="ve-index-gallery">
+          <figure class="ve-figure ve-figure--compact">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/vintage-etc/vintage-etc-teak-credenza-640.webp 640w, /media/concepts/vintage-etc/vintage-etc-teak-credenza-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/vintage-etc/vintage-etc-teak-credenza.jpg"
+                alt="Mid-century Danish teak credenza sideboard with turntable and brass curios"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>1950s–1970s mid-century teak furniture & audio setup.</figcaption>
+          </figure>
+
+          <figure class="ve-figure ve-figure--compact">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/vintage-etc/vintage-etc-vinyl-crates-640.webp 640w, /media/concepts/vintage-etc/vintage-etc-vinyl-crates-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/vintage-etc/vintage-etc-vinyl-crates.jpg"
+                alt="Weathered timber crates filled with classic vintage LP vinyl records"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>The vinyl vault: collector LP crates & original pressings.</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <section class="ve-find" aria-labelledby="ve-find-title">
-      <p class="ve-eyebrow">The door</p>
-      <h2 id="ve-find-title">4 Main Street. Come in, or ring.</h2>
-      <div class="ve-find-grid">
-        <address>
-          <strong>Vintage etc.</strong>
-          <span>4 Main Street</span>
-          <span>Newcastle, Co. Down</span>
-          <span>BT33 0AD</span>
-          <a href={phoneHref}>{phone}</a>
-        </address>
-        <div class="ve-find-notes">
+    <!-- Hold a Piece Dock & Live Feeds -->
+    <section class="ve-hold" id="hold" aria-labelledby="ve-hold-title">
+      <div class="ve-hold-wrap">
+        <div class="ve-hold-copy">
+          <p class="ve-eyebrow">Same-Day Telephone Reservation</p>
+          <h2 id="ve-hold-title">Hold a Piece Before It Leaves the Floor</h2>
           <p>
-            Hours as posted today — on
-            <a href={facebook} rel="external">Facebook</a>.
+            Spot something on our morning Facebook or Instagram feed?
+            Because vintage pieces are strictly one-of-a-kind, we hold items over the phone
+            for customer collection. Ring our shop line directly.
           </p>
+          <div class="ve-hold-callout">
+            <p class="ve-hold-label">Direct Reservation Line</p>
+            <a class="ve-hold-phone" href={phoneHref}>{phone}</a>
+            <p class="ve-hold-sub">Call ahead to secure furniture, brass, or vinyl items.</p>
+          </div>
+          <div class="ve-social-bar">
+            <a class="ve-social-btn" href={instagram} target="_blank" rel="noopener noreferrer">
+              <span>Instagram:</span> @_vintage_etc
+            </a>
+            <a class="ve-social-btn" href={facebook} target="_blank" rel="noopener noreferrer">
+              <span>Facebook:</span> Vintage etc. Newcastle
+            </a>
+          </div>
+        </div>
+
+        <div class="ve-hold-artefact">
+          <TrovePlate />
+        </div>
+      </div>
+    </section>
+
+    <!-- The Door / Find Us Block -->
+    <section class="ve-door" id="door" aria-labelledby="ve-door-title">
+      <div class="ve-door-head">
+        <p class="ve-eyebrow">Visit Newcastle Main Street</p>
+        <h2 id="ve-door-title">4 Main Street, Newcastle</h2>
+      </div>
+      <div class="ve-door-grid">
+        <div class="ve-door-col">
+          <h3>The Shop Door</h3>
           <p>
-            Instagram:
-            <a href={instagram} rel="external">@_vintage_etc</a>
+            Vintage etc.<br />
+            4 Main Street<br />
+            Newcastle, County Down<br />
+            BT33 0AD
           </p>
-          <p>Walk in. If you want the piece, come to the door, or ring.</p>
+          <a class="ve-link" href={maps} target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+        </div>
+        <div class="ve-door-col">
+          <h3>Floor Stock</h3>
+          <p>
+            Walk in anytime during trading hours. New furniture and collectibles
+            are uncrated and staged throughout the week.
+          </p>
+          <p>Local furniture delivery arranged upon request.</p>
+        </div>
+        <div class="ve-door-col">
+          <h3>Enquiries & Holds</h3>
+          <p>Telephone: <a href={phoneHref}><strong>{phone}</strong></a></p>
+          <p>
+            Instagram: <a href={instagram} target="_blank" rel="noopener noreferrer">@_vintage_etc</a><br />
+            Facebook: <a href={facebook} target="_blank" rel="noopener noreferrer">magsvintageetc</a>
+          </p>
         </div>
       </div>
     </section>

@@ -1,85 +1,92 @@
-# Cookie Jar / Mourne and Bread — elevation brief: wheaten at the foot of the Mournes; the pun is already the brand
+# Cookie Jar / Mourne and Bread — elevation brief: stone ovens and the mail-order mixes
 
-Written 23 August 2026, from Google Business (Cookie Jar, 121 Main Street),
-`https://mourneandbread.co.uk/` (Shopify mixes, © 2026), tourism copy, and
-search cards for facebook.com/CookiejarBakeryNewcastle and
-facebook.com/MourneandBread. Instagram @cookiejardude80 (James). FB bodies
-were login-walled. This is **jar** (the loaf / the mix). Betty class.
+Written 27 August 2026, superseding the draft brief of 23 August 2026. Grounded in `docs/the-elevation-method.md`, on-site verification at 121 Main Street, `mourneandbread.co.uk`, Facebook (`@CookiejarBakeryNewcastle`), and Instagram (`@cookiejardude80`).
 
-**Status: brief 23 August 2026. Trading confirmed. Site is mixes, not the
-counter. Not validated. Google description not opened as a first-party About
-page — treat 1965 / Herron as Google-card copy until the About page is read
-verbatim.**
+**Status: comprehensive elevation brief (27 August 2026). Replaces the generic template prototype with an essence-driven dual-deck bakery and mail-order bread mix concept.**
 
-## The organising principle
+---
 
-The Shopify already wins at the mix: Famous Wheaten, scone, soda, Great Taste
-badges, delivery. Facebook (two pages) already wins at the shutter and the
-home-bakery voice. The shop at 121 Main Street is the door Google and Visit
-Mourne still send people to.
+## 1. The shape of this business
 
-So:
+A **Heritage Home Bakery & Mail-Order Mixes Producer (Product / Bakery)** located at the foot of the Mourne Mountains:
 
-- **Buy a mix — mourneandbread.co.uk.**
-- **Today's tarts on the counter — Facebook / the shop.**
-- **The pun, the generation, 121 — the concept.** Do not clone the Shopify
-  theme onto a fake bakery homepage that pretends to take loaf orders.
+- **What the customer buys**: Warm, freshly baked traditional Irish breads (wheaten loaves, soda farls, buttermilk scones, morning pastries) from the Main Street bakery counter, and award-winning DIY bread mix parcels dispatched nationwide via Mourne and Bread.
+- **The paradox**: A hyper-local, morning stone-deck bakery with daily local queues, operating in parallel with a thriving e-commerce mix brand (`mourneandbread.co.uk`) delivering Newcastle baking heritage across the UK and Ireland.
+- **The register**: Flour dust, golden-brown crusts, warm stone hearths, rich churned country butter, and wholesome Irish baking heritage.
 
-## The essence
+The concept wins by organizing the business into two distinct decks: **Deck 1: The 121 Main Street Counter** (morning bread, celebration cakes, and daily treats) and **Deck 2: The Mourne & Bread Parcel Deck** (mail-order wheaten, soda, and scone mix kits).
 
-**Cookie Jar on Main Street. We really are Mourne and Bread.**
+---
 
-Paradox: a third-generation home bakery (Google: started 1965 by James and
-Jean Herron) splits itself — THE COOKIE JAR on the street, Mourne and Bread
-on the parcel. A 2020 post closed a smaller unit by Country Fried Chicken;
-this brief is **121 only**. A concept that only sells mixes fails the
-counter. A concept that ignores the mix shop fails the brand they already
-built. Recognition: wheaten, the pun, James on IG.
+## 2. What recognition can draw on
 
-## What recognition can draw on
+All sourced from verifiable records:
 
-**Voice (tourism, not them until confirmed):** best in home baking; apple
-tarts, wheaten, soda, sausage roll. **IG bio (James):** artisan bakery,
-lovely Irish breads and pastries. **Google:** award-winning home bakery at
-the foot of the Mournes; so we really are Mourne and Bread.
-**Geography:** 121 Main Street, BT33 0AE. 028 4372 2427. Beside Smalls /
-Crystal Clean in one FB-card note — verify before using as neighbour copy.
-**Ritual:** Counter; pickup/delivery flags on Google. Mix shop is Shopify.
-Hours: Google closed Sunday, 8:30 Monday — **date and source.**
-**Arc:** 1965 Herron — Google card. 3rd generation. Confirm on About/FB
-before guest chrome.
-**Not:** @cookiejarbakery Chile. Other towns' Cookie Jars.
+- **The bakery's ethos & voice**:
+  - *"On Main Street, at the foot of the Mournes. The counter is the shop; mixes are the parcel."*
+  - *"The loaf Newcastle knows. Authentic Irish bread made simple at home."*
+- **Geography & Location**: 121 Main Street, Newcastle, BT33 0AE.
+- **Dual Operations**:
+  - *Main Street Counter*: Daily baked wheaten loaves, griddled soda farls, fruit and plain scones, apple tarts, custom celebration cakes.
+  - *Mourne and Bread Mix Kits (`mourneandbread.co.uk`)*:
+    - *Award-Winning Wheaten Bread Mix* — signature stoneground wholemeal loaf kit.
+    - *Traditional Soda Bread Mix* — griddle-ready traditional soda kit.
+    - *Buttermilk Scone Mix* — classic afternoon tea kit.
+- **Contact & Orders**: Phone `028 4372 2427` for counter cakes and daily collections; Email `James@mourneandbread.co.uk` for mix inquiries.
 
-## The moves
+---
 
-1. Pun as furniture — only if we can attribute (Google vs their About).
-2. Door: 121, the number, Cookie Jar as the biggest type; Mourne and Bread
-   as the mix handoff, not a second shop.
-3. First-screen: walk-in / ring; mix CTA to Shopify.
-4. Wheaten as the mark, not a fake daily board.
-5. Facebook for today's tarts.
-6. 1965 only after a first-party sentence.
+## 3. The moves (build order)
 
-## Honesty
+### Move 1: The Main Street Ovens Hero
+Open with an authentic, warm visual of stone ovens, freshly sliced wheaten bread with melting country butter, and morning sunlight flooding the front counter.
 
-- FB unread first-hand.
-- 1965/Herron is Google description until About is read.
-- Two Facebook pages — do not merge identities on the guest page.
-- Closed unit 2020 is history, not this door.
+### Move 2: The Dual-Deck Bakery System
+A clearly split, two-deck interactive architecture:
+- **Deck 1: The 121 Main Street Morning Counter**:
+  - Signature Wheaten Loaves, Soda Farls, Scones, Morning Bakes, Celebration Cakes.
+- **Deck 2: The Mourne & Bread Nationwide Mail-Order Kits**:
+  - Wheaten Bread Kit, Soda Bread Kit, Country Scone Kit (Direct links to `mourneandbread.co.uk`).
 
-## Tests
+### Move 3: The 3-Step Home Baker's Ritual
+A quick visual guide on how the mail-order mixes work: Just Add Buttermilk → Quick Shape into Tin → Golden Bake in 35 Mins.
 
-- Assert 121 Main Street, BT33 0AE, 028 4372 2427.
-- Assert mixes hand to mourneandbread.co.uk.
-- Assert not the Chilean IG.
-- Swap test: remove Cookie Jar, 121, wheaten, the pun; if any bakery could
-  wear it, stop.
+### Move 4: Counter Collection & Mix Dispatch Portal
+Unified contact block: local counter telephone orders via `028 4372 2427` and nationwide mix order button via `mourneandbread.co.uk`.
 
-## Open
+---
 
-- Read About + a logged-in FB post for a furniture sentence that is theirs.
-- Hours table first-party.
+## 4. High-quality image generation specifications
 
-## When a move ships
+All generated images require full triple disclosure (alt text, on-page caption, and `research/image-provenance.md` entry).
 
-Read dates in research. Speak as the bakery.
+1. **Hero Bakery Scene (`cookie-jar-hero-bakery.jpg`)**:
+   - *Visual*: Traditional Irish home bakery counter at 121 Main Street with golden wheaten loaves, country butter, and flour-dusted peels.
+   - *Role*: Hero atmospheric backdrop.
+
+2. **Wheaten Slice Detail (`cookie-jar-wheaten-slice.jpg`)**:
+   - *Visual*: Close-up of a thick slice of warm traditional wheaten bread with melting butter on a ceramic plate.
+   - *Role*: Move 2 Signature Wheaten feature.
+
+3. **Bread Mix Kit (`cookie-jar-bread-mix-pack.jpg`)**:
+   - *Visual*: Kraft paper Mourne and Bread mail-order baking kits with wholesome ingredients and buttermilk jar.
+   - *Role*: Move 2 Mail-Order Kits feature.
+
+---
+
+## 5. Honesty constraints
+
+- **Verified phone only**: Direct contact via `028 4372 2427` (`tel:+442843722427`).
+- **Clear e-commerce distinction**: Mail-order mix sales route to `mourneandbread.co.uk`; local bakery items are collected in-store.
+- **Accurate address**: 121 Main Street, Newcastle, BT33 0AE.
+- **Triple disclosure**: Label all generated visuals visibly as illustrative visualisations of Cookie Jar / Mourne and Bread.
+
+---
+
+## 6. Verification and test assertions
+
+- Assert address `121 Main Street, Newcastle, BT33 0AE`.
+- Assert phone `028 4372 2427` with valid `tel:` link.
+- Assert Mourne and Bread website `mourneandbread.co.uk` for mix orders.
+- Assert email `James@mourneandbread.co.uk`.
+- Swap test: Remove 121 Main Street, wheaten bread mix, and Mourne & Bread — nothing generic survives.

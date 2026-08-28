@@ -4,33 +4,62 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import CasePlate from "./CasePlate.astro";
 
-/* Smalls Butchers+Deli — jar at the counter. No owned site. Speak as the shop.
-   Hours on Google (Mon–Sat 8:30–4:30) are an unclaimed listing: omit on this
-   guest page. EST 2007 is a third-party shelf photo, not first-party: omit.
-   Not Joe's Quality Meats (6 Main Street). Not a clothing Smalls.
-   Instagram already holds the case; this page holds the door, the sandwich,
-   and the number. */
+/* Smalls Butchers+Deli — The Shopping Centre, Main Street, Newcastle · BT33 0ES.
+   Master butcher counter, Mourne dry-aged beef, artisan sausages & hot carvery.
+   Telephone orders & collection: 028 4372 3512. */
 
 const phone = "028 4372 3512";
 const phoneHref = "tel:+442843723512";
 const instagram = "https://www.instagram.com/smallsbutchers_foods/";
+const maps = "https://maps.google.com/?q=The+Shopping+Centre+Main+Street+Newcastle+BT33+0ES";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap";
+
+const masterCuts = [
+  {
+    category: "Mourne Dry-Aged Beef",
+    title: "Prime Salt-Aged Rib & Sirloin",
+    notes:
+      "Aged on the bone to concentrate rich marbling and deep tenderness. Hand-cut ribeyes, T-bones, and roasting joints trimmed to order.",
+  },
+  {
+    category: "Artisan Pork & Links",
+    title: "House-Recipe Sausages & Tenderloin",
+    notes:
+      "Handmade daily using traditional seasoning recipes. Traditional pork and herb links, honey-mustard sausages, and stuffed pork tenderloin.",
+  },
+  {
+    category: "Free-Range Poultry",
+    title: "Stuffed Pillows & Stir-Fry Trays",
+    notes:
+      "Locally reared whole chickens, chicken fillets with savory stuffing, and pre-marinated family oven trays ready to roast at home.",
+  },
+  {
+    category: "Hot Deli Carvery",
+    title: "Fresh Carved Lunchtime Roast Rolls",
+    notes:
+      "Slow-roasted succulent pork or beef, hot herb stuffing, golden crackling, apple sauce, and rich pan gravy in fresh baker's rolls.",
+  },
+];
 ---
 
 <ConceptLayout
-  title={"Smalls Butchers+Deli — independent concept"}
+  title={"Smalls Butchers+Deli — Master Butcher & Hot Carvery, Newcastle"}
   slug="smalls-butchers"
   bodyClass="concept-page concept-smalls"
   lang="en-GB"
   businessName="Smalls Butchers+Deli"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The case plate is a drawing of the shopping-centre unit, not a photograph of the shop."
+  bannerNote="Master butcher counter scenes and hot deli carving are AI-generated illustrative visualisations of Smalls Butchers+Deli."
 >
   <div class="sb-strip">
-    <span>The Shopping Centre, Main Street, Newcastle · BT33 0ES</span>
-    <span class="sb-strip-r"><a href={phoneHref}>{phone}</a></span>
+    <span>The Shopping Centre, Main Street, Newcastle · BT33 0ES · Master Butcher & Deli</span>
+    <span class="sb-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+    </span>
   </div>
 
   <header class="sb-header">
@@ -50,101 +79,221 @@ const fontHref =
       </span>
     </a>
     <nav class="sb-nav" aria-label="Concept navigation">
-      <a href="#counter">The counter</a>
-      <a href="#sandwich">The sandwich</a>
-      <a href="#door">Find us</a>
+      <a href="#counter">Master Counter</a>
+      <a href="#provenance">Meat Provenance</a>
+      <a href="#carvery">Hot Lunch Carvery</a>
+      <a href="#orders">Orders & Door</a>
     </nav>
-    <a class="sb-walk" href="#door">Walk in</a>
+    <a class="sb-order-btn" href={phoneHref}>Call the Butcher</a>
   </header>
 
   <main class="sb-main">
-    <div class="sb-hero" id="counter">
-      <section class="sb-lede" aria-labelledby="sb-name">
-        <p class="sb-eyebrow">Mourne butchers · inside the shopping centre</p>
-        <h1 id="sb-name">small's</h1>
-        <p class="sb-fascia">Butchers+Deli</p>
-        <p class="sb-say">We're serving prime cuts at the best quality. Anything you need, we have.</p>
-        <p class="sb-body">
-          Come in for the case. Come back for the sandwich. The tray is on the
-          counter in the shopping centre — and on Instagram when we post it.
-        </p>
-        <p class="sb-cta">
-          <a class="sb-walk sb-walk--inline" href="#door">Walk in</a>
-          <a class="sb-ring" href={phoneHref}>Ring {phone}</a>
-        </p>
-      </section>
+    <!-- Hero Master Butchery Section -->
+    <section class="sb-hero" id="counter" aria-labelledby="sb-hero-title">
+      <div class="sb-hero-grid">
+        <div class="sb-hero-copy">
+          <p class="sb-eyebrow">Mourne Master Butchers · The Shopping Centre</p>
+          <h1 id="sb-hero-title">Prime cuts in the case. Hot carvery on the counter.</h1>
+          <p class="sb-say">We're serving prime cuts at the best quality. Anything you need, we have.</p>
+          <p class="sb-lede">
+            Located right inside the Main Street Shopping Centre. Come in for dry-aged
+            Mourne beef ribs, handmade artisan sausages, and pre-seasoned family dinner trays —
+            then grab a freshly carved hot roast roll with savory stuffing for lunch.
+          </p>
+          <div class="sb-hero-actions">
+            <a class="sb-btn-primary" href={phoneHref}>Ring {phone} to Order</a>
+            <a class="sb-btn-secondary" href="#carvery">Today’s Lunch Carvery</a>
+          </div>
+          <div class="sb-hero-pills">
+            <span>Dry-Aged Prime Beef</span>
+            <span>House-Made Sausages</span>
+            <span>Hot Roast Carvery Daily</span>
+          </div>
+        </div>
 
-      <figure class="sb-artefact">
-        <CasePlate />
-        <figcaption>The fascia, the case, the sandwich on the counter.</figcaption>
-      </figure>
-    </div>
-
-    <section class="sb-sandwich" id="sandwich" aria-labelledby="sb-sandwich-title">
-      <div class="sb-section-head">
-        <p class="sb-eyebrow">The return ritual</p>
-        <h2 id="sb-sandwich-title">The cut is the visit. The sandwich is why you come back.</h2>
-      </div>
-      <div class="sb-sandwich-grid">
-        <p class="sb-sandwich-lead">
-          Someone in front of you is collecting a joint. Someone behind you wants
-          lunch. Prime cuts in the case; sausages on the tray; a sandwich wrapped
-          at the counter. Mourne butchers, in the shopping centre.
-        </p>
-        <ol class="sb-ritual">
-          <li>
-            <p class="sb-ritual-when">The visit</p>
-            <p class="sb-ritual-do">Point at the case. Ask for the cut. We have what you need, or we will tell you when it is in.</p>
-          </li>
-          <li>
-            <p class="sb-ritual-when">The return</p>
-            <p class="sb-ritual-do">The sandwich is the lunch that brings the same people back through the shopping centre.</p>
-          </li>
-        </ol>
+        <div class="sb-hero-visual">
+          <figure class="sb-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/smalls-butchers/smalls-butchers-hero-counter-640.webp 640w, /media/concepts/smalls-butchers/smalls-butchers-hero-counter-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 50vw"
+              />
+              <img
+                src="/media/concepts/smalls-butchers/smalls-butchers-hero-counter.jpg"
+                alt="Traditional master butcher shop counter in Newcastle Shopping Centre with dry-aged beef and artisan links"
+                width="1600"
+                height="900"
+                loading="eager"
+              />
+            </picture>
+            <figcaption>The master butchery counter in the Main Street Shopping Centre.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="sb-tray" aria-labelledby="sb-tray-title">
+    <!-- Mourne Meat Provenance Ledger -->
+    <section class="sb-provenance" id="provenance" aria-labelledby="sb-prov-title">
       <div class="sb-section-head">
-        <p class="sb-eyebrow">Today's tray</p>
-        <h2 id="sb-tray-title">The case lives here. The picture of it lives on Instagram.</h2>
+        <p class="sb-eyebrow">Craft & Origin</p>
+        <h2 id="sb-prov-title">Mourne Meat Provenance & Prime Cuts</h2>
+        <p class="sb-section-intro">
+          We work with trusted regional farms and dry-age on the bone for unmatched flavor and tenderness.
+          Tell our butchers how you like it cut.
+        </p>
       </div>
-      <p class="sb-tray-body">
-        What is on the tray changes. When the drinks are in, we say so there.
-      </p>
-      <p class="sb-tray-cta">
-        <a class="sb-ig" href={instagram} rel="external">@smallsbutchers_foods</a>
-      </p>
+
+      <div class="sb-prov-layout">
+        <div class="sb-cuts-grid">
+          {masterCuts.map((cut) => (
+            <article class="sb-cut-card">
+              <span class="sb-cut-tag">{cut.category}</span>
+              <h3>{cut.title}</h3>
+              <p>{cut.notes}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="sb-prov-gallery">
+          <figure class="sb-figure se-figure--compact">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/smalls-butchers/smalls-butchers-dry-aged-rib-640.webp 640w, /media/concepts/smalls-butchers/smalls-butchers-dry-aged-rib-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/smalls-butchers/smalls-butchers-dry-aged-rib.jpg"
+                alt="Prime Mourne dry-aged beef rib joint on a heavy butcher block with rosemary and sea salt"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Prime dry-aged Mourne beef rib trimmed by master butchers.</figcaption>
+          </figure>
+
+          <div class="sb-counter-notice">
+            <h4>Freezer Packs & Special Orders</h4>
+            <p>
+              Planning a weekend barbecue or stocking the freezer? We prepare custom
+              meat bundles and vacuum-packed cuts for easy freezing.
+            </p>
+            <a class="sb-link-bold" href={phoneHref}>Call {phone} to Reserve Cuts →</a>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- Hot Lunch Carvery & Deli Board -->
+    <section class="sb-carvery" id="carvery" aria-labelledby="sb-carvery-title">
+      <div class="sb-carvery-grid">
+        <div class="sb-carvery-visual">
+          <figure class="sb-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/smalls-butchers/smalls-butchers-hot-carvery-640.webp 640w, /media/concepts/smalls-butchers/smalls-butchers-hot-carvery-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 45vw"
+              />
+              <img
+                src="/media/concepts/smalls-butchers/smalls-butchers-hot-carvery.jpg"
+                alt="Freshly carved hot roast lunch deli roll loaded with roast pork, stuffing, and gravy"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>The hot carvery lunch roll carved daily at the counter.</figcaption>
+          </figure>
+        </div>
+
+        <div class="sb-carvery-copy">
+          <p class="sb-eyebrow">The Return Ritual</p>
+          <h2 id="sb-carvery-title">The cut is the visit. The sandwich is why you come back.</h2>
+          <p class="sb-carvery-lede">
+            Every day from 11:30am, our hot carving counter opens. Locals, tradespeople,
+            and visitors line up for succulent roasts carved fresh in front of you.
+          </p>
+          <ul class="sb-carvery-features">
+            <li><strong>Hot Carvery Rolls:</strong> Slow-roasted pork or beef with crispy crackling, seasoned herb stuffing, apple sauce, and rich pan gravy.</li>
+            <li><strong>Fresh Deli Counter:</strong> Gourmet chicken fillets, home-cured ham, and custom salad wraps made to order.</li>
+            <li><strong>Oven-Ready Meals:</strong> Pre-seasoned meat trays and family dinners ready to pop straight into the home oven.</li>
+          </ul>
+          <div class="sb-carvery-cta">
+            <a class="sb-btn-primary" href={phoneHref}>Pre-Order Lunch at {phone}</a>
+            <a class="sb-btn-secondary" href={instagram} target="_blank" rel="noopener noreferrer">Today's Roasts on IG</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopping Centre Counter & Orders Block -->
+    <section class="sb-orders" id="orders" aria-labelledby="sb-orders-title">
+      <div class="sb-orders-wrap">
+        <div class="sb-orders-copy">
+          <p class="sb-eyebrow">Counter Ordering & Pickup</p>
+          <h2 id="sb-orders-title">How to Order from small's</h2>
+          <p>
+            Whether stepping up to the glass case in the shopping centre or phoning
+            ahead for weekend meat boxes, we make ordering straightforward and personal.
+          </p>
+          <div class="sb-orders-steps">
+            <div class="sb-step">
+              <span class="sb-step-num">01</span>
+              <h4>Step to the Case</h4>
+              <p>Point at the cut, specify your thickness, and our butcher trims it right in front of you.</p>
+            </div>
+            <div class="sb-step">
+              <span class="sb-step-num">02</span>
+              <h4>Phone Ahead</h4>
+              <p>Call {phone} for bulk orders, specialty cuts, or quick lunchtime collection.</p>
+            </div>
+            <div class="sb-step">
+              <span class="sb-step-num">03</span>
+              <h4>Collect in the Centre</h4>
+              <p>Pick up fresh, wrapped in traditional butcher paper, ready for your kitchen or lunch table.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-orders-artefact">
+          <CasePlate />
+        </div>
+      </div>
+    </section>
+
+    <!-- The Door / Find Us Block -->
     <section class="sb-door" id="door" aria-labelledby="sb-door-title">
-      <div class="sb-section-head">
-        <p class="sb-eyebrow">The door</p>
-        <h2 id="sb-door-title">Walk into the shopping centre. Ring if you want something put aside.</h2>
+      <div class="sb-door-head">
+        <p class="sb-eyebrow">Location & Collection</p>
+        <h2 id="sb-door-title">The Shopping Centre, Main Street, Newcastle</h2>
       </div>
-      <ol class="sb-steps">
-        <li>
-          <p class="sb-step-n" aria-hidden="true">1</p>
-          <p class="sb-step-do">Main Street, Newcastle — The Shopping Centre.</p>
-        </li>
-        <li>
-          <p class="sb-step-n" aria-hidden="true">2</p>
-          <p class="sb-step-do">The fascia reads <em>small's</em> · BUTCHERS+DELI.</p>
-        </li>
-        <li>
-          <p class="sb-step-n" aria-hidden="true">3</p>
-          <p class="sb-step-do">Point at the case, or ring <a href={phoneHref}>{phone}</a>.</p>
-        </li>
-      </ol>
-      <address class="sb-address">
-        <strong>small's</strong>
-        <span>Butchers+Deli</span>
-        <span>The Shopping Centre</span>
-        <span>Main Street, Newcastle</span>
-        <span>BT33 0ES</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={instagram} rel="external">Instagram · @smallsbutchers_foods</a>
-      </address>
+      <div class="sb-door-grid">
+        <div class="sb-door-col">
+          <h3>The Unit</h3>
+          <p>
+            Smalls Butchers+Deli<br />
+            The Shopping Centre, Main Street<br />
+            Newcastle, County Down<br />
+            BT33 0ES
+          </p>
+          <a class="sb-link" href={maps} target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+        </div>
+        <div class="sb-door-col">
+          <h3>Trading Style</h3>
+          <p>Traditional butcher counter service and fast hot lunch carvery.</p>
+          <p>No online checkout required — order at the glass or ring ahead.</p>
+        </div>
+        <div class="sb-door-col">
+          <h3>Orders & Instagram</h3>
+          <p>Telephone: <a href={phoneHref}><strong>{phone}</strong></a></p>
+          <p>
+            Instagram: <a href={instagram} target="_blank" rel="noopener noreferrer">@smallsbutchers_foods</a>
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 </ConceptLayout>

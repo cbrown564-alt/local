@@ -7,7 +7,7 @@ the retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
 and in the commit history.
 
-Snapshot: 25 August 2026. 33 transformations are public. The Buck's Head has
+Snapshot: 27 August 2026. 43 transformations are public. The Buck's Head has
 replied to the first outreach: it already has a new website built and plans to
 launch it when its accommodation is ready. Both open publication decisions are
 now closed and both published — see section 2.

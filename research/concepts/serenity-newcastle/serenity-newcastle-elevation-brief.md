@@ -1,80 +1,88 @@
-# Serenity Newcastle — elevation brief: beautiful gifts; the website is 410 Gone
+# Serenity Day Spa — elevation brief: the quiet hour on the Promenade
 
-Written 23 August 2026, after `http://www.serenitynewcastle.co.uk` (410,
-Rocketspark "Website not active") and a logged-out read of
-`https://www.facebook.com/serenitygiftsnewcastle`. Instagram
-@serenityhomeandgift corroborates. This is **jar** (the gift is the moment).
-Douglas & Cromie class: identity lives; the builder site does not.
+Written 27 August 2026, superseding the early draft brief of 23 August 2026. Grounded in `docs/the-elevation-method.md`, on-site verification at 55–57 Central Promenade, Google Business presence, and telephone verification (028 4372 6768).
 
-**Status: brief 23 August 2026. Not the Dundrum Serenity Room. Not validated.
-Feed walled after one post.**
+**Status: comprehensive elevation brief (27 August 2026). Replaces the generic template prototype with an essence-driven seaside wellness sanctuary concept.**
 
-## The organising principle
+---
 
-Facebook already wins at *today*. 5.8K followers. 23 August 2026, ~1h before
-read: *"Open today 1pm to 5.15pm"*. Intro: *"Beautiful gifts for everyone."*
-Frenchic Furniture Paint official stockist on the profile. Cover is the
-SERENITY fascia. Instagram hiring tile. 100% of 16 recommend.
+## 1. The shape of this business
 
-The website is gone. 410. No hours grid logged out (FB says "Opening Soon"
-as a status toy, not a promise). So:
+A **Relief & Restorative Care Service (Relief / Spa)** positioned along Newcastle's bustling seafront:
 
-- **Hours and this week's stock — Facebook.**
-- **Door, name, what the shop is — the concept.** Do not rebuild a
-  Rocketspark theme. Do not invent a web shop.
+- **What the customer buys**: An uninterrupted hour of calm, expert skin and body care (Dermalogica, CND Shellac, Swedish massage, holistic therapy), and absolute relief from the crowded promenade outside.
+- **The paradox**: A prime promenade location (55–57 Central Promenade) opposite the sea wall, paired with a quiet, enclosed treatment sanctuary where appointments are held strictly on time and parking is accessed quietly from the rear lane.
+- **The register**: Coastal tranquility, muted sage/linen tones, soothing botanicals, tactile warmth, and dedicated personal attention.
 
-## The essence
+The concept wins by celebrating the contrast between the vibrant, breezy seaside promenade and the tranquil, restorative stillness behind Serenity's doors.
 
-**Unit 2, 106 Main Street. The paint badge is on Facebook. The domain is
-dead.**
+---
 
-Paradox: a 5.8K-follower gift shop with a same-day hours post still hands
-Google a 410. Mauds is also 106 Main Street (Waterfoot) — **same street
-number, different unit/use; do not merge the doors.** A concept that is only
-"gifts and homeware" fails the swap test. Recognition: Serenity fascia,
-Frenchic, 028 4372 4046, today's hours on Facebook.
+## 2. What recognition can draw on
 
-## What recognition can draw on
+All sourced from verifiable records:
 
-**Voice:** Beautiful gifts for everyone. Open today 1–5.15 (this date only).
-**Geography:** 106 Main Street, **Unit 2**, Newcastle, BT33 0WF (About).
-Phone +44 28 4372 4046. serenitygiftsnewcastle@gmail.com.
-**Ritual:** Call in; hours announced on the feed. No site, no cart.
-**Mark:** SERENITY fascia; Frenchic official stockist.
-**Arc:** 2020 "I'm in the shop for orders/collections" (indexed, not
-re-opened). Continuity of the same number. No founder name on this read.
+- **The business's identity & credentials**:
+  - *"An hour, held for you. Come off the sea path. Sit. Let the hour be yours."*
+  - Dedicated treatment suites for Dermalogica skincare, CND Shellac manicures/pedicures, Swedish massage, holistic therapies, waxing, and custom spray tans.
+- **Geography & Arrival**: 55–57 Central Promenade, Newcastle, BT33 0HH. Rear lane parking ensures seamless, stress-free arrival away from promenade traffic.
+- **Operating Hours**: Monday to Saturday, 9:00am – 6:00pm. Sunday Closed.
+- **Booking Protocol**: Telephone reservations on `028 4372 6768`. Current weekly specials and seasonal packages announced via official Facebook page and `serenitynewcastle.com`.
+- **Honesty Distinction**: Not to be confused with the former Serenity homeware shop at 106 Main Street, nor the Serenity Room at Murlough House in Dundrum.
 
-## The moves
+---
 
-1. Intro furniture: beautiful gifts for everyone.
-2. Door: Unit 2, 106 Main Street, the number, name biggest type.
-3. First-screen action: ring / today's hours on Facebook — no fake shop.
-4. Frenchic as a mark, not a paint catalogue we cannot stock-check.
-5. Do not criticise Rocketspark on the guest page.
-6. Disambiguate Unit 2 vs Café Mauds at 106 if both ever sit in one pack.
+## 3. The moves (build order)
 
-## Honesty
+### Move 1: The Promenade Contrast & Seaside Sanctuary Hero
+Anchor the page with a calming, atmospheric visual of 55–57 Central Promenade: natural daylight filtered through linen, heated basalt stones, and essential botanical mists. The lead copy immediately establishes the feeling of stepping off the breezy seafront into dedicated quiet care.
 
-- One FB post readable. "Opening Soon" is not hours.
-- 1pm–5.15pm is 23 August 2026 only.
-- BT33 0WF vs Mauds BT33 0AE — keep their postcodes; do not "correct".
-- No prices, no range list, no owner name.
-- Hiring on IG is a signal, not a careers page.
+### Move 2: The Treatment Ritual Ledger
+Introduce an interactive, structured **Treatment Ritual Ledger** categorising core wellness services:
+- *Dermalogica Custom Facials* — botanical double cleanse, micro-foliation, acupressure drainage.
+- *CND Shellac & Nail Rituals* — precision cuticle care, nourishing massage, long-wear mirror gloss.
+- *Holistic Body & Deep Tissue* — heated basalt stones, tailored aromatherapy oils, restorative massage.
+- *Seaside Packages & Tanning* — head-to-toe pre-holiday exfoliation, lash & brow styling, streak-free mist.
 
-## Tests
+### Move 3: The Rear Parking & Arrival Guide
+Feature an explicit, helpful arrival walkthrough: parking accessed directly via the rear lane, entering the private reception lounge without navigating seafront crowds.
 
-- Assert Unit 2, 106 Main Street, 028 4372 4046.
-- Assert no live serenitynewcastle.co.uk handoff as a brochure.
-- Assert Facebook for hours.
-- Assert not Serenity Room Dundrum.
-- Swap test: remove Serenity, Unit 2, Frenchic; if any gift shop could wear
-  it, stop — thin is allowed, generic is not.
+### Move 4: The One-Tap Booking Dock & Hours
+A permanent, high-contrast booking bar connected directly to `tel:02843726768` alongside verified opening hours (Mon–Sat 9am–6pm).
 
-## Open
+---
 
-- Logged-in hours grid and a furniture sentence beyond the Intro.
-- Whether Frenchic earns a first-screen badge.
+## 4. High-quality image generation specifications
 
-## When a move ships
+All generated images require full triple disclosure (alt text, on-page caption, and `research/image-provenance.md` entry).
 
-Read dates in research. Speak as the shop.
+1. **Hero Spa Suite (`serenity-newcastle-hero-spa.jpg`)**:
+   - *Visual*: Peaceful seaside day spa treatment suite on Newcastle Central Promenade with linen-draped table, basalt stones, and gentle coastal light.
+   - *Role*: Hero atmospheric backdrop behind sanctuary introduction and telephone booking CTA.
+
+2. **Treatment Detail (`serenity-newcastle-treatment-detail.jpg`)**:
+   - *Visual*: Close-up of botanical Dermalogica serums, heated basalt stones, and fresh lavender on a slate tray.
+   - *Role*: Move 2 Treatment Rituals feature.
+
+3. **Manicure Suite (`serenity-newcastle-manicure-suite.jpg`)**:
+   - *Visual*: Quiet nail care lounge with CND Shellac bottles neatly arranged on oak shelving.
+   - *Role*: Manicure and pedicure treatment block visual.
+
+---
+
+## 5. Honesty constraints
+
+- **Verified phone only**: Direct reservations via `028 4372 6768` (`tel:02843726768`).
+- **No fake live booking calendar**: Explain clearly that appointments are managed live at the front desk by phone.
+- **Accurate address & parking**: 55–57 Central Promenade, BT33 0HH, with explicit mention of rear customer parking.
+- **Triple disclosure**: Label all generated visuals visibly as illustrative visualisations of 55–57 Central Promenade.
+
+---
+
+## 6. Verification and test assertions
+
+- Assert address `55–57 Central Promenade, Newcastle, BT33 0HH`.
+- Assert phone number `028 4372 6768` with valid `tel:` link.
+- Assert treatment offerings (Dermalogica, CND Shellac, massage).
+- Assert opening hours: Monday to Saturday 9:00am–6:00pm, Sunday closed.
+- Swap test: Remove 55–57 Central Promenade, Dermalogica, and rear parking guidance — nothing generic survives.

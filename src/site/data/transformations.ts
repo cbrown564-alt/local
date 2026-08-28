@@ -560,6 +560,166 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/tip-top/",
     pin: { x: 245, y: 465 },
   },
+  {
+    slug: "serenity-newcastle",
+    name: "Serenity",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A seaside wellness sanctuary on Newcastle Central Promenade — given an opening screen celebrating the quiet hour off the sea path, structured Dermalogica and holistic treatment ledger, and dedicated rear-lane arrival guide.",
+    before: "/media/concepts/serenity-newcastle/serenity-newcastle-before.jpg",
+    after: "/media/concepts/serenity-newcastle/serenity-newcastle-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Serenity's current public presence (telephone reservations and Facebook) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Serenity, captured from the local concept route",
+    href: "/transformations/serenity-newcastle/",
+    pin: { x: 190, y: 492 },
+  },
+  {
+    slug: "shimna-cafe",
+    name: "The Shimna Café",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "A bustling morning diner and river terrace café at 2 Main Street — given an all-day Mourne fry kitchen pass, Shimna River terrace walk-in guide, and corporate platter catering intake.",
+    before: "/media/concepts/shimna-cafe/shimna-cafe-before.jpg",
+    after: "/media/concepts/shimna-cafe/shimna-cafe-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for The Shimna Café's current public presence (m.yumm.menu and social media) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for The Shimna Café, captured from the local concept route",
+    href: "/transformations/shimna-cafe/",
+    pin: { x: 345, y: 415 },
+  },
+  {
+    slug: "vintage-etc",
+    name: "Vintage etc.",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "A curated mid-century furniture, maritime brass, and vintage vinyl treasure trove on Main Street — given an opening screen with tactile era index, 'Hold a Piece' social reservation dock, and shop floor discovery.",
+    before: "/media/concepts/vintage-etc/vintage-etc-before.jpg",
+    after: "/media/concepts/vintage-etc/vintage-etc-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Vintage etc.'s current public presence (daily social announcements and phone reservation) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Vintage etc., captured from the local concept route",
+    href: "/transformations/vintage-etc/",
+    pin: { x: 340, y: 420 },
+  },
+  {
+    slug: "smalls-butchers",
+    name: "Small's Butchers & Deli",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Master butcher craft and daily hot carvery deli in Newcastle Shopping Centre — given a first screen showcasing dry-aged Mourne beef, house sausage links, hot lunch carvery counter, and direct phone reservation.",
+    before: "/media/concepts/smalls-butchers/smalls-butchers-before.jpg",
+    after: "/media/concepts/smalls-butchers/smalls-butchers-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Small's Butchers & Deli's current public presence (counter service and social media) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Small's Butchers & Deli, captured from the local concept route",
+    href: "/transformations/smalls-butchers/",
+    pin: { x: 275, y: 455 },
+  },
+  {
+    slug: "cookie-jar",
+    name: "The Cookie Jar",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Newcastle's heritage home bakery and nationwide mail-order mixes producer at 121 Main Street — given a dual-deck morning counter and mail-order mix parcel first screen, with home baking ritual and direct phone collection.",
+    before: "/media/concepts/cookie-jar/cookie-jar-before.jpg",
+    after: "/media/concepts/cookie-jar/cookie-jar-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for The Cookie Jar's current public presence (Main Street counter and mourneandbread.co.uk) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for The Cookie Jar, captured from the local concept route",
+    href: "/transformations/cookie-jar/",
+    pin: { x: 252, y: 462 },
+  },
+  {
+    slug: "clay-project",
+    name: "The Clay Project",
+    town: "Newcastle",
+    category: "Community & leisure",
+    summary:
+      "Seaside ceramic studio and pottery painting café overlooking Dundrum Bay — given an artisan porcelain first screen, interactive 'Bisque to Kiln' firing spectrum, and live workshop reservation cards.",
+    before: "/media/concepts/clay-project/clay-project-before.jpg",
+    after: "/media/concepts/clay-project/clay-project-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for The Clay Project's current public presence (theclay-project.com and Instagram) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for The Clay Project, captured from the local concept route",
+    href: "/transformations/clay-project/",
+    pin: { x: 165, y: 510 },
+  },
+  {
+    slug: "dominic-mcinerney",
+    name: "Dominic McInerney & Co",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Private legal counsel chamber on Newcastle Main Street established in 1998 — given a dignified personal-counsel first screen, four core practice modules, and a direct confidential briefing protocol.",
+    before: "/media/concepts/dominic-mcinerney/dominic-mcinerney-before.jpg",
+    after: "/media/concepts/dominic-mcinerney/dominic-mcinerney-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Dominic McInerney Solicitors' current public presence (static directory card and phone desk) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Dominic McInerney & Co, captured from the local concept route",
+    href: "/transformations/dominic-mcinerney/",
+    pin: { x: 250, y: 464 },
+  },
+  {
+    slug: "hutt-hostel",
+    name: "The Hutt Hostel",
+    town: "Newcastle",
+    category: "Hospitality",
+    summary:
+      "The 72-bed mountain and coastal expedition basecamp on Downs Road — given a Slieve Donard dawn first screen, clear Dorm vs 'The Padd' private apartment tiering, and trailhead adventure compass.",
+    before: "/media/concepts/hutt-hostel/hutt-hostel-before.jpg",
+    after: "/media/concepts/hutt-hostel/hutt-hostel-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for The Hutt Hostel's current public presence (hutthostel.com and booking listings) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for The Hutt Hostel, captured from the local concept route",
+    href: "/transformations/hutt-hostel/",
+    pin: { x: 200, y: 480 },
+  },
+  {
+    slug: "stile-glass",
+    name: "Stile Glass",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Bespoke architectural glass and structural balustrades engineered in Newcastle — given an optical clarity panoramic terrace first screen, BS 6180:2011 structural systems selector, and direct survey request dock.",
+    before: "/media/concepts/stile-glass/stile-glass-before.jpg",
+    after: "/media/concepts/stile-glass/stile-glass-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Stile Glass's current public presence (stileglass.com and project portfolios) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Stile Glass, captured from the local concept route",
+    href: "/transformations/stile-glass/",
+    pin: { x: 395, y: 375 },
+  },
+  {
+    slug: "terry-king",
+    name: "Terry King & Sons",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Heavy-duty automotive workshop and MOT preparation bay on Dundrum Road — given an industrial mechanical authority first screen, computerized diagnostics triage, and direct telephone line to the lift.",
+    before: "/media/concepts/terry-king/terry-king-before.jpg",
+    after: "/media/concepts/terry-king/terry-king-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Terry King & Sons' current public presence (workshop counter and local listings) — not a live-site screenshot; a matched capture was not filed for the 27 August 2026 publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Terry King & Sons, captured from the local concept route",
+    href: "/transformations/terry-king/",
+    pin: { x: 360, y: 395 },
+  },
 ];
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

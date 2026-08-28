@@ -4,61 +4,82 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import TableCard from "./TableCard.astro";
 
-/* Speaks as the café. Confirmed door: 2 Main Street, Newcastle, BT33 0AD.
-   Walk-in meal — no reserve form. No invented clock hours.
-   Phone 028 4372 3010 / tel:+442843723010. Menu lives on their Yumm.
-   84 Central Promenade / 028 4372 3472 stay off the guest chrome. */
+/* Shimna Café — 2 Main Street, Newcastle · County Down.
+   Bustling morning breakfast diner & river terrace by the Shimna footbridge.
+   All-day breakfast, brunch, sourdough bakes & external catering platters.
+   Walk-ins always welcome. Telephone: 028 4372 3010. */
 
 const phone = "028 4372 3010";
 const phoneHref = "tel:+442843723010";
 const facebook = "https://www.facebook.com/shimnacafe/";
 const instagram = "https://www.instagram.com/shimnacafe/";
 const yumm = "https://m.yumm.menu/shimnacafe";
+const maps = "https://maps.google.com/?q=2+Main+Street+Newcastle+BT33+0AD";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Figtree:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
 
-const ritual = [
+const kitchenPass = [
   {
-    id: "fry",
-    name: "Breakfast",
-    line: "All day, every day. Breakfast whenever you walk in.",
+    kicker: "Signature Mourne Breakfast",
+    title: "The All-Day Ulster Fry",
+    note: "All day, every day. Breakfast whenever you walk in.",
+    items: [
+      "Dry-cured back bacon & master butcher pork sausages",
+      "Fresh griddled potato farl & traditional soda farl",
+      "Free-range fried or poached farm eggs & roasted tomato",
+      "Served with hot buttered toast and freshly brewed tea or coffee",
+    ],
   },
   {
-    id: "soup",
-    name: "Brunch. Lunch.",
-    line: "You choose. Smashed avocado on sourdough, bacon, poached eggs.",
+    kicker: "Brunch & Sourdough",
+    title: "Smashed Avocado & Poached Eggs",
+    note: "Light, fresh, and freshly toasted.",
+    items: [
+      "Zesty lime and chilli seasoned avocado on thick country sourdough",
+      "Twin soft poached eggs with sea salt & micro herbs",
+      "Optional grilled halloumi or smoked dry-cured bacon",
+      "Golden brioche French toast with maple glaze & bacon",
+    ],
   },
   {
-    id: "scone",
-    name: "The platters",
-    line: "Sandwich platters out to the council. Orders by Facebook message, or ring us.",
+    kicker: "Midday Kitchen Deck",
+    title: "Artisan Toasties & Daily Broth",
+    note: "Comfort food cooked fresh for the lunch rush.",
+    items: [
+      "Homemade hearty vegetable & barley broth with fresh wheaten bread",
+      "Triple-cheese sourdough melt with sweet onion relish",
+      "Slow-roasted chicken, bacon & herb mayonnaise sandwich",
+      "Freshly baked buttermilk fruit scones with clotted cream & jam",
+    ],
   },
 ];
 ---
 
 <ConceptLayout
-  title={"Shimna Café — independent concept"}
+  title={"Shimna Café — All-Day Breakfast & River Terrace, Newcastle"}
   slug="shimna-cafe"
   bodyClass="concept-page concept-shimna"
   lang="en-GB"
   businessName="Shimna Café"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The table card is a drawn plate, not a photograph from the café."
+  bannerNote="Morning dining scenes and catering platters are AI-generated illustrative visualisations of 2 Main Street."
 >
   <div class="sh-strip">
-    <span>2 Main Street, Newcastle · breakfast all day</span>
+    <span>2 Main Street, Newcastle · BT33 0AD · All-Day Breakfast & River Terrace</span>
     <span class="sh-strip-r">
       <a href={phoneHref}>{phone}</a>
       <span aria-hidden="true"> · </span>
-      <a href={facebook} rel="noopener noreferrer">Facebook</a>
+      <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+      <span aria-hidden="true"> · </span>
+      <a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
     </span>
   </div>
 
   <header class="sh-header">
     <a class="sh-brand" href="/concepts/shimna-cafe/">
       <span class="sh-brand-mark" aria-hidden="true">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <svg width="38" height="38" viewBox="0 0 36 36" fill="none">
           <circle cx="18" cy="18" r="16.2" stroke="currentColor" stroke-width="1.5"/>
           <path d="M8 20c3-6 7-9 10-9s7 3 10 9" stroke="currentColor" stroke-width="1.4" fill="none"/>
           <path d="M11 20h14" stroke="currentColor" stroke-width="1.3"/>
@@ -67,109 +88,241 @@ const ritual = [
       </span>
       <span class="sh-brand-text">
         <span class="sh-brand-name">Shimna Café</span>
-        <span class="sh-brand-sub">2 Main Street · Newcastle</span>
+        <span class="sh-brand-sub">2 Main Street · Foot of the Mournes</span>
       </span>
     </a>
     <nav class="sh-nav" aria-label="Concept navigation">
-      <a href="#window">The window</a>
-      <a href="#after">All day</a>
-      <a href="#table">A table</a>
+      <a href="#kitchen">Kitchen Pass</a>
+      <a href="#terrace">River Terrace</a>
+      <a href="#catering">Catering Platters</a>
+      <a href="#menu">Menu & Location</a>
     </nav>
-    <a class="sh-walk" href="#table">Walk in</a>
+    <a class="sh-menu-btn" href={yumm} target="_blank" rel="noopener noreferrer">Priced Menu (Yumm)</a>
   </header>
 
   <main class="sh-main">
-    <section class="sh-window" id="window" aria-labelledby="sh-name">
-      <div class="sh-window-copy">
-        <p class="sh-eyebrow">Café · 2 Main Street</p>
-        <h1 id="sh-name">Breakfast whenever you walk in.</h1>
-        <p class="sh-say">Delicious food all day, every day. Breakfast. Brunch. Lunch. You choose.</p>
-        <p class="sh-lede">
-          2 Main Street, Newcastle. Walk in for a table. Outdoor seating when
-          we have it on. The priced menu is on
-          <a href={yumm} rel="noopener noreferrer">Yumm</a>.
-        </p>
-        <p class="sh-window-note">
-          We do not take a booking. Walk in, or ring. Today’s plate is on
-          <a href={instagram} rel="noopener noreferrer">Instagram</a> and
-          <a href={facebook} rel="noopener noreferrer">Facebook</a>.
-        </p>
-      </div>
-      <div class="sh-window-light" aria-hidden="true">
-        <span class="sh-sash"></span>
-        <span class="sh-sash sh-sash--mid"></span>
-      </div>
-    </section>
-
-    <section class="sh-spread" id="after" aria-labelledby="sh-after-title">
-      <div class="sh-spread-head">
-        <p class="sh-eyebrow">The ritual</p>
-        <h2 id="sh-after-title">Breakfast. Brunch. Lunch.</h2>
-        <p class="sh-spread-lede">
-          All day. The same kitchen. This door on Main Street.
-        </p>
-      </div>
-      <ol class="sh-columns">
-        {ritual.map((item, i) => (
-          <li class={`sh-col sh-col--${item.id}`}>
-            <p class="sh-col-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</p>
-            <h3>{item.name}</h3>
-            <p>{item.line}</p>
-          </li>
-        ))}
-      </ol>
-    </section>
-
-    <section class="sh-stage" id="table" aria-labelledby="sh-table-title">
-      <div class="sh-stage-copy">
-        <p class="sh-eyebrow">A table</p>
-        <h2 id="sh-table-title">Walk in. We set the card on the table.</h2>
-        <p class="sh-stage-lede">
-          2 Main Street, Newcastle, BT33 0AD. Walk in. Ring if you want the
-          platters — we take those by phone or a Facebook message.
-        </p>
-        <p class="sh-actions">
-          <a class="sh-walk sh-walk--solid" href="#find">Walk in</a>
-          <a class="sh-ring" href={phoneHref}>tel 028 4372 3010</a>
-        </p>
-      </div>
-      <figure class="sh-artefact">
-        <TableCard phone={phone} phoneHref={phoneHref} />
-        <figcaption>The table card — walk in, or ring the café.</figcaption>
-      </figure>
-    </section>
-
-    <section class="sh-find" id="find" aria-labelledby="sh-find-title">
-      <div class="sh-find-copy">
-        <p class="sh-eyebrow">The door</p>
-        <h2 id="sh-find-title">2 Main Street. Come off the path.</h2>
-        <dl class="sh-hours">
-          <div>
-            <dt>How we serve</dt>
-            <dd>Walk-in. All-day breakfast.</dd>
+    <!-- Hero Terrace Section -->
+    <section class="sh-hero" id="hero" aria-labelledby="sh-hero-title">
+      <div class="sh-hero-grid">
+        <div class="sh-hero-copy">
+          <p class="sh-eyebrow">Gateway Diner · Shimna Footbridge</p>
+          <h1 id="sh-hero-title">Breakfast whenever you walk in.</h1>
+          <p class="sh-say">Delicious food all day, every day. Breakfast. Brunch. Lunch. You choose.</p>
+          <p class="sh-lede">
+            Right at 2 Main Street where the Shimna River passes on its way to the sea.
+            We don't take table bookings — simply walk through the door or take a seat
+            on the riverside terrace. Freshly griddled farls, specialty coffees, and
+            generous plates from early morning onward.
+          </p>
+          <div class="sh-hero-actions">
+            <a class="sh-btn-primary" href="#kitchen">The All-Day Pass</a>
+            <a class="sh-btn-secondary" href={yumm} target="_blank" rel="noopener noreferrer">View Menu on Yumm →</a>
           </div>
-          <div>
-            <dt>Today</dt>
-            <dd>
-              Facebook for open now. Outdoor seating when we have it on.
-              <a href={yumm} rel="noopener noreferrer">Yumm</a> for the menu.
-            </dd>
-          </div>
-        </dl>
-        <p class="sh-find-meta">
-          Dine-in, and outdoor seating when we have it on.
+          <p class="sh-walk-note">
+            ★ No booking required for tables · Walk-ins always welcome · Outdoor seating weather permitting
+          </p>
+        </div>
+
+        <div class="sh-hero-visual">
+          <figure class="sh-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/shimna-cafe/shimna-cafe-hero-terrace-640.webp 640w, /media/concepts/shimna-cafe/shimna-cafe-hero-terrace-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 50vw"
+              />
+              <img
+                src="/media/concepts/shimna-cafe/shimna-cafe-hero-terrace.jpg"
+                alt="Sun-drenched morning breakfast café terrace by the Shimna River footbridge"
+                width="1600"
+                height="900"
+                loading="eager"
+              />
+            </picture>
+            <figcaption>The river terrace dining atmosphere at 2 Main Street.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- All-Day Kitchen Pass -->
+    <section class="sh-kitchen" id="kitchen" aria-labelledby="sh-kitchen-title">
+      <div class="sh-section-head">
+        <p class="sh-eyebrow">The Morning & Lunch Deck</p>
+        <h2 id="sh-kitchen-title">The All-Day Kitchen Pass</h2>
+        <p class="sh-section-intro">
+          Whether you're starting early before climbing Slieve Donard or stopping for a slow midday brunch,
+          our griddle runs all day without cut-off times.
         </p>
       </div>
-      <address class="sh-address">
-        <strong>Shimna Café</strong>
-        <span>2 Main Street</span>
-        <span>Newcastle</span>
-        <span>BT33 0AD</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={facebook} rel="noopener noreferrer">Facebook</a>
-        <a href={instagram} rel="noopener noreferrer">Instagram</a>
-        <a href={yumm} rel="noopener noreferrer">Menu on Yumm</a>
-      </address>
+
+      <div class="sh-kitchen-layout">
+        <div class="sh-pass-cards">
+          {kitchenPass.map((deck) => (
+            <article class="sh-deck-card">
+              <span class="sh-deck-kicker">{deck.kicker}</span>
+              <h3>{deck.title}</h3>
+              <p class="sh-deck-note">{deck.note}</p>
+              <ul class="sh-deck-list">
+                {deck.items.map((it) => (
+                  <li>{it}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="sh-kitchen-media">
+          <figure class="sh-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/shimna-cafe/shimna-cafe-breakfast-fry-640.webp 640w, /media/concepts/shimna-cafe/shimna-cafe-breakfast-fry-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/shimna-cafe/shimna-cafe-breakfast-fry.jpg"
+                alt="Traditional Mourne breakfast fry with griddled potato and soda farls, bacon, and eggs"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>The signature all-day Ulster breakfast pass.</figcaption>
+          </figure>
+
+          <div class="sh-live-notice">
+            <h4>Live Specials on Social</h4>
+            <p>
+              Today’s soup, weekend baking specials, and dessert counters are posted
+              daily to our social feeds.
+            </p>
+            <div class="sh-social-links">
+              <a href={instagram} target="_blank" rel="noopener noreferrer">@shimnacafe on Instagram</a>
+              <a href={facebook} target="_blank" rel="noopener noreferrer">Shimna Café on Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- River Terrace & Walk-In Guide -->
+    <section class="sh-terrace" id="terrace" aria-labelledby="sh-terrace-title">
+      <div class="sh-terrace-wrap">
+        <div class="sh-terrace-copy">
+          <p class="sh-eyebrow">By the Footbridge</p>
+          <h2 id="sh-terrace-title">Outdoor River Terrace Dining</h2>
+          <p>
+            Perched beside the historic Shimna River where fresh mountain water flows toward Dundrum Bay.
+            Enjoy your morning roast coffee or full breakfast outside with open mountain views.
+          </p>
+          <div class="sh-terrace-features">
+            <div class="sh-feat">
+              <span class="sh-feat-icon">🌊</span>
+              <div>
+                <h4>Riverside Seating</h4>
+                <p>Relaxed outdoor tables directly overlooking the Shimna waters.</p>
+              </div>
+            </div>
+            <div class="sh-feat">
+              <span class="sh-feat-icon">🐾</span>
+              <div>
+                <h4>Dog Friendly Outdoors</h4>
+                <p>Four-legged companions are always welcome on our outdoor terrace.</p>
+              </div>
+            </div>
+            <div class="sh-feat">
+              <span class="sh-feat-icon">🚶</span>
+              <div>
+                <h4>Walk-In Seating</h4>
+                <p>No table reservations required. Pop in and pick an open table.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sh-terrace-badge">
+          <TableCard phone={phone} phoneHref={phoneHref} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Catering Platter Board -->
+    <section class="sh-catering" id="catering" aria-labelledby="sh-catering-title">
+      <div class="sh-catering-grid">
+        <div class="sh-catering-visual">
+          <figure class="sh-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/shimna-cafe/shimna-cafe-catering-platter-640.webp 640w, /media/concepts/shimna-cafe/shimna-cafe-catering-platter-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 45vw"
+              />
+              <img
+                src="/media/concepts/shimna-cafe/shimna-cafe-catering-platter.jpg"
+                alt="Artisan sandwich and scone catering platter on dark slate board"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Artisan gourmet sandwich & scone catering platters.</figcaption>
+          </figure>
+        </div>
+
+        <div class="sh-catering-copy">
+          <p class="sh-eyebrow">Local Office & Event Platters</p>
+          <h2 id="sh-catering-title">Council & Corporate Catering</h2>
+          <p class="sh-catering-lede">
+            Freshly prepared gourmet sandwich platters, wrap trays, and warm homemade scone boxes
+            delivered across Newcastle, Newry, Mourne and Down district offices and local gatherings.
+          </p>
+          <ul class="sh-catering-list">
+            <li><strong>Assorted Sourdough & Wrap Platters:</strong> Roasted meats, vegetarian cheeses, artisanal relishes.</li>
+            <li><strong>Morning Tea & Coffee Boxes:</strong> Freshly baked fruit and plain scones with butter & preserves.</li>
+            <li><strong>Flexible Order Channels:</strong> Order easily via phone or direct Facebook message.</li>
+          </ul>
+          <div class="sh-catering-cta">
+            <a class="sh-btn-primary" href={phoneHref}>Call {phone} for Platters</a>
+            <a class="sh-btn-secondary" href={facebook} target="_blank" rel="noopener noreferrer">Message on Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu & Location Block -->
+    <section class="sh-find" id="menu" aria-labelledby="sh-find-title">
+      <div class="sh-find-head">
+        <p class="sh-eyebrow">Visit & Contact</p>
+        <h2 id="sh-find-title">2 Main Street, Newcastle</h2>
+      </div>
+      <div class="sh-find-grid">
+        <div class="sh-find-col">
+          <h3>The Door</h3>
+          <p>
+            Shimna Café<br />
+            2 Main Street<br />
+            Newcastle, County Down<br />
+            BT33 0AD
+          </p>
+          <a class="sh-link" href={maps} target="_blank" rel="noopener noreferrer">View on Google Maps →</a>
+        </div>
+        <div class="sh-find-col">
+          <h3>Dining Policy</h3>
+          <p><strong>Walk-in only.</strong> No table reservations required.</p>
+          <p>Breakfast, brunch, and lunch served all day every day.</p>
+          <p>Outdoor terrace seating open weather permitting.</p>
+        </div>
+        <div class="sh-find-col">
+          <h3>Menu & Catering</h3>
+          <p>Full priced menu on <a href={yumm} target="_blank" rel="noopener noreferrer"><strong>Yumm Menu</strong></a></p>
+          <p>Catering desk: <a href={phoneHref}><strong>{phone}</strong></a></p>
+          <p>
+            Instagram: <a href={instagram} target="_blank" rel="noopener noreferrer">@shimnacafe</a><br />
+            Facebook: <a href={facebook} target="_blank" rel="noopener noreferrer">Shimna Café Newcastle</a>
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 </ConceptLayout>

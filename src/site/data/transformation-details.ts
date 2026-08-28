@@ -1435,5 +1435,395 @@ export const transformationDetails = {
       }
     ],
     "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 25 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public directory and food hygiene baseline.</p>\n        <p>Trading since 1937 at 131 Main Street, Ballaghbeg, Newcastle, BT33 0AE. Food hygiene rating 5 (inspected 28 August 2024) verified via FSA. Traditional weigh-out ritual and confectionery categories documented from local history and retail observation. Generated sweet shop interior plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Tip Top.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "serenity-newcastle": {
+    "title": "Serenity concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Serenity in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "An hour held for you. Seaside wellness on Central Promenade.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (phone desk and Facebook). Right: the concept opening screen.",
+    "conceptHref": "/concepts/serenity-newcastle/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "serenity-newcastle",
+      "afterVideo": "/media/concepts/serenity-newcastle/serenity-newcastle-after.mp4",
+      "beforePoster": "/media/concepts/serenity-newcastle/serenity-newcastle-before.jpg",
+      "afterPoster": "/media/concepts/serenity-newcastle/serenity-newcastle-after.jpg",
+      "beforeAlt": "Labelled placeholder for Serenity's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Serenity concept showing linen-draped treatment suite, basalt stones, and Dermalogica ritual ledger",
+      "beforeNote": "Serenity operates at 55–57 Central Promenade with telephone bookings (028 4372 6768). The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Put the quiet hour on the first screen",
+        "body": "Step off the breezy seafront promenade into an hour of restorative calm.",
+        "change": "Seaside sanctuary hero with natural light, heated basalt stones, and botanical mist."
+      },
+      {
+        "title": "Structured treatment rituals and arrival guide",
+        "body": "Dermalogica skincare, CND Shellac nails, and massage organized with rear-lane parking instructions.",
+        "change": "Treatment Ritual Ledger paired with rear parking directions away from promenade crowds."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public phone desk and social baseline.</p>\n        <p>Address (55–57 Central Promenade, Newcastle, BT33 0HH) and telephone (028 4372 6768) verified. Opening hours: Monday to Saturday 9:00am–6:00pm, Sunday closed. Treatment offerings (Dermalogica facials, CND Shellac manicures, Swedish massage, holistic therapies) and rear-lane parking verified via first-party announcements. Generated treatment suite plates disclosed. Not to be confused with the former homeware shop at 106 Main Street or Murlough House. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Serenity.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "shimna-cafe": {
+    "title": "The Shimna Café concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Shimna Café in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Breakfast all day by the Shimna. River terrace dining and corporate platters.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (m.yumm.menu and social media). Right: the concept opening screen.",
+    "conceptHref": "/concepts/shimna-cafe/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "shimna-cafe",
+      "afterVideo": "/media/concepts/shimna-cafe/shimna-cafe-after.mp4",
+      "beforePoster": "/media/concepts/shimna-cafe/shimna-cafe-before.jpg",
+      "afterPoster": "/media/concepts/shimna-cafe/shimna-cafe-after.jpg",
+      "beforeAlt": "Labelled placeholder for The Shimna Café's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of The Shimna Café concept showing riverside morning terrace, Mourne breakfast fry, and all-day pass",
+      "beforeNote": "The Shimna Café operates at 2 Main Street with menus on m.yumm.menu/shimnacafe. The before panel records that public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "All-day kitchen pass without booking hurdles",
+        "body": "Breakfast all day, every day with straight walk-in seating by the river.",
+        "change": "Morning fry, sourdough brunch, and daily soup specials showcased up front."
+      },
+      {
+        "title": "Corporate and event platter intake",
+        "body": "External catering platters for council offices and local businesses given a clear intake path.",
+        "change": "Dedicated sandwich and scone catering ledger wired to direct phone and Facebook channels."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public Yumm menu and social baseline.</p>\n        <p>Address (2 Main Street, Newcastle, BT33 0AD) and telephone (028 4372 3010) verified. Digital menu handoff to m.yumm.menu/shimnacafe. Walk-in table policy and external office catering platters sourced from first-party announcements. Generated terrace breakfast plate disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by The Shimna Café.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "vintage-etc": {
+    "title": "Vintage etc. concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Vintage etc. in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Treasure trove on Main Street. Mid-century teak, brass curios, and vinyl crates.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (social feeds and direct phone). Right: the concept opening screen.",
+    "conceptHref": "/concepts/vintage-etc/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "vintage-etc",
+      "afterVideo": "/media/concepts/vintage-etc/vintage-etc-after.mp4",
+      "beforePoster": "/media/concepts/vintage-etc/vintage-etc-before.jpg",
+      "afterPoster": "/media/concepts/vintage-etc/vintage-etc-after.jpg",
+      "beforeAlt": "Labelled placeholder for Vintage etc.'s current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Vintage etc. concept showing Danish teak credenza, maritime brass lamps, and 'Hold a Piece' reservation dock",
+      "beforeNote": "Vintage etc. announces one-of-a-kind inventory daily on Instagram (@_vintage_etc) and Facebook. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Celebrate physical shop discovery",
+        "body": "Fast-moving unique vintage stock thrives on physical browsing without a slow shopping cart.",
+        "change": "Tactile era index across 1950s–1970s Danish teak, maritime brass, retro barware, and vinyl crates."
+      },
+      {
+        "title": "Fast 'Hold a Piece' telephone reservation",
+        "body": "Items announced in the morning are often collected by the evening.",
+        "change": "Direct mobile reservation dock wired to 07584 034590 for immediate same-day holds."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public social inventory baseline.</p>\n        <p>Address (4 Main Street, Newcastle, BT33 0AD) and direct telephone (07584 034590) verified. First-party social handoffs to Facebook (@magsvintageetc) and Instagram (@_vintage_etc). Curated categories (G-Plan teak sideboards, maritime brass, vintage vinyl LPs) documented from shop floor observation. Generated antique interior plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Vintage etc.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "smalls-butchers": {
+    "title": "Small's Butchers & Deli concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Small's Butchers & Deli in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Prime Mourne cuts and the hot roast carvery. Master butchery in Newcastle Shopping Centre.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (counter service and social media). Right: the concept opening screen.",
+    "conceptHref": "/concepts/smalls-butchers/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "smalls-butchers",
+      "afterVideo": "/media/concepts/smalls-butchers/smalls-butchers-after.mp4",
+      "beforePoster": "/media/concepts/smalls-butchers/smalls-butchers-before.jpg",
+      "afterPoster": "/media/concepts/smalls-butchers/smalls-butchers-after.jpg",
+      "beforeAlt": "Labelled placeholder for Small's Butchers & Deli's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Small's Butchers & Deli concept showing marble counter, dry-aged Mourne beef rib, and daily hot carvery roll",
+      "beforeNote": "Small's Butchers & Deli operates in Newcastle Shopping Centre with phone orders via 028 4372 3512. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Unite master butchery with the hot lunch rush",
+        "body": "Artisanal dry-aging craft operates alongside a fast-paced hot carvery deli.",
+        "change": "Dry-aged Mourne beef cuts showcased beside freshly carved hot pork rolls and stuffing."
+      },
+      {
+        "title": "Custom cuts and freezer packs one tap away",
+        "body": "Telephone reservations for bespoke joints, barbecue packs, and holiday meats.",
+        "change": "Direct counter ordering dock connected to 028 4372 3512 with clear shopping centre pickup."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public counter and social baseline.</p>\n        <p>Address (The Shopping Centre, Main Street, Newcastle, BT33 0ES) and phone (028 4372 3512) verified. Core offerings (dry-aged prime beef, house sausages, daily hot lunch carvery rolls) sourced from first-party announcements (@smallsbutchers_foods). Generated butcher counter plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Small's Butchers & Deli.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "cookie-jar": {
+    "title": "The Cookie Jar concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Cookie Jar in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Stone ovens on Main Street and mail-order mixes nationwide.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (Main Street counter and mourneandbread.co.uk). Right: the concept opening screen.",
+    "conceptHref": "/concepts/cookie-jar/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "cookie-jar",
+      "afterVideo": "/media/concepts/cookie-jar/cookie-jar-after.mp4",
+      "beforePoster": "/media/concepts/cookie-jar/cookie-jar-before.jpg",
+      "afterPoster": "/media/concepts/cookie-jar/cookie-jar-after.jpg",
+      "beforeAlt": "Labelled placeholder for The Cookie Jar's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of The Cookie Jar concept showing stone-deck oven bakery, freshly sliced wheaten loaf, and Mourne & Bread mix parcel portal",
+      "beforeNote": "The Cookie Jar bakes daily at 121 Main Street and distributes mixes via mourneandbread.co.uk. The before panel records that public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Dual-deck bakery architecture",
+        "body": "A morning stone-deck bakery operating alongside a thriving nationwide mix brand.",
+        "change": "Clear split between Deck 1 (121 Main Street counter) and Deck 2 (Mourne and Bread mail-order kits)."
+      },
+      {
+        "title": "Step-by-step home baker's ritual",
+        "body": "Demystify traditional Irish bread baking with the 3-step home mix guide.",
+        "change": "Add Buttermilk → Quick Shape → Bake in 35 Mins visual workflow with direct e-commerce handoff."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public counter and e-commerce baseline.</p>\n        <p>Address (121 Main Street, Newcastle, BT33 0AE) and counter telephone (028 4372 2427) verified. Mail-order mixes (Award-Winning Wheaten, Traditional Soda, Buttermilk Scones) hand off to mourneandbread.co.uk (email James@mourneandbread.co.uk). Generated bakery and wheaten slice plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by The Cookie Jar.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "clay-project": {
+    "title": "The Clay Project concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Clay Project in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Porcelain over the sea. Handcrafted ceramics and seaside studio workshops.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (theclay-project.com and Instagram). Right: the concept opening screen.",
+    "conceptHref": "/concepts/clay-project/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "clay-project",
+      "afterVideo": "/media/concepts/clay-project/clay-project-after.mp4",
+      "beforePoster": "/media/concepts/clay-project/clay-project-before.jpg",
+      "afterPoster": "/media/concepts/clay-project/clay-project-after.jpg",
+      "beforeAlt": "Labelled placeholder for The Clay Project's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of The Clay Project concept showing sunlit pottery studio overlooking Dundrum Bay, in-house porcelain ware, and workshop ledger",
+      "beforeNote": "The Clay Project operates at 85 Central Promenade with workshop booking on theclay-project.com. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Artisan porcelain pedigree up front",
+        "body": "Founders Rebecca Killen & Laureanne Kootstra make all porcelain in-house with potter Adrian McColgan.",
+        "change": "Promenade studio atmosphere with raw clay, glazes, and Dundrum Bay views replacing generic templates."
+      },
+      {
+        "title": "Bisque-to-kiln firing spectrum and workshop ledger",
+        "body": "Explain the 3-week firing ritual and showcase Make a Mug and Charcuterie Night sessions.",
+        "change": "Interactive firing timeline and rich workshop cards with clean handoff to theclay-project.com/workshops."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public Squarespace and Instagram baseline.</p>\n        <p>Address (85 Central Promenade, Newcastle, BT33 0HH) and email (hello@theclay-project.com; no published telephone). Founders Rebecca Killen (Belfast School of Art) and Laureanne Kootstra (Berlin University of the Arts) with bisc ware by Adrian McColgan sourced from theclay-project.com. Workshop schedule hands off to live booking. Generated pottery studio plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by The Clay Project.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "dominic-mcinerney": {
+    "title": "Dominic McInerney & Co concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Dominic McInerney & Co Solicitors in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "All cases handled personally. Trusted legal counsel on Main Street since 1998.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (static directory site). Right: the concept opening screen.",
+    "conceptHref": "/concepts/dominic-mcinerney/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "dominic-mcinerney",
+      "afterVideo": "/media/concepts/dominic-mcinerney/dominic-mcinerney-after.mp4",
+      "beforePoster": "/media/concepts/dominic-mcinerney/dominic-mcinerney-before.jpg",
+      "afterPoster": "/media/concepts/dominic-mcinerney/dominic-mcinerney-after.jpg",
+      "beforeAlt": "Labelled placeholder for Dominic McInerney Solicitors' current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Dominic McInerney & Co concept showing dignified consultation desk, 1998 founding seal, and confidential legal practice modules",
+      "beforeNote": "Dominic McInerney Solicitors has practiced at 123A Main Street since 1998. The before panel records its legacy web directory baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Personal handling covenant as the core promise",
+        "body": "Over 28 years on Newcastle Main Street with every case handled personally by Dominic McInerney.",
+        "change": "Distinguished chamber atmosphere with solid oak desk, law reports, and 1998 practice seal."
+      },
+      {
+        "title": "Structured confidential counsel modules",
+        "body": "Clear pathways for conveyancing, probate/wills, medical injury, and family civil litigation.",
+        "change": "Confidential Briefing Protocol wired directly to phone (028 4372 5238) and private email dispatch."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public directory baseline.</p>\n        <p>Address (123A Main Street, Newcastle, BT33 0AE), telephone (028 4372 5238), and email (dmcinerney@btconnect.com) verified via Law Society of Northern Ireland (LSNI) records. Sole practitioner practice established in 1998. Practice areas (conveyancing, wills/probate, personal injury, litigation) sourced from dominicmcinerney.co.uk. Generated chamber plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Dominic McInerney & Co.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "hutt-hostel": {
+    "title": "The Hutt Hostel concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for The Hutt Hostel in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Wake up beside the sea. The mountain basecamp at the foot of Slieve Donard.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (hutthostel.com and directory listings). Right: the concept opening screen.",
+    "conceptHref": "/concepts/hutt-hostel/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "hutt-hostel",
+      "afterVideo": "/media/concepts/hutt-hostel/hutt-hostel-after.mp4",
+      "beforePoster": "/media/concepts/hutt-hostel/hutt-hostel-before.jpg",
+      "afterPoster": "/media/concepts/hutt-hostel/hutt-hostel-after.jpg",
+      "beforeAlt": "Labelled placeholder for The Hutt Hostel's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of The Hutt Hostel concept showing dawn over Slieve Donard, 30 Downs Road basecamp facade, and 'The Padd' apartment selector",
+      "beforeNote": "The Hutt Hostel operates at 30 Downs Road with booking on hutthostel.com. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Authentic mountain basecamp identity",
+        "body": "Slieve Donard trailhead and Percy French at the doorstep with sea views across Downs Road.",
+        "change": "Early morning mountain atmosphere, boots on the porch, and gear drying facilities highlighted."
+      },
+      {
+        "title": "Clear accommodation split: Dorms vs 'The Padd'",
+        "body": "72 mountain bunks for hiking clubs alongside the self-contained private apartment.",
+        "change": "Tactile room selector distinguishing communal bunks from The Padd flat with kitchen and lounge."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public WordPress baseline.</p>\n        <p>Address (30 Downs Road, Newcastle, BT33 0AG), telephone (028 4372 2133), and email (info@hutthostel.com) verified. 72 beds capacity, The Padd self-contained flat, and 5:00pm–9:00pm reception desk hours sourced from hutthostel.com. Web booking routes via http://hutthostel.com. Generated basecamp and lounge plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by The Hutt Hostel.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "stile-glass": {
+    "title": "Stile Glass concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Stile Glass in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Pure uninterrupted horizons. Bespoke architectural glass engineered in Newcastle.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (stileglass.com and project portfolios). Right: the concept opening screen.",
+    "conceptHref": "/concepts/stile-glass/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "stile-glass",
+      "afterVideo": "/media/concepts/stile-glass/stile-glass-after.mp4",
+      "beforePoster": "/media/concepts/stile-glass/stile-glass-before.jpg",
+      "afterPoster": "/media/concepts/stile-glass/stile-glass-after.jpg",
+      "beforeAlt": "Labelled placeholder for Stile Glass's current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Stile Glass concept showing frameless panoramic coastal terrace balustrade, BS 6180:2011 structural systems, and survey dock",
+      "beforeNote": "Stile Glass fabricates at 63 Castlewellan Road with project portfolios on stileglass.com. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Optical clarity and panoramic views as first-screen theatre",
+        "body": "Unobstructed coastal and mountain horizons replacing bulky timber and metal barriers.",
+        "change": "Panoramic coastal terrace hero with frameless toughened laminated structural glass."
+      },
+      {
+        "title": "Architectural systems selector and survey dock",
+        "body": "BS 6180:2011 and Technical Booklet H compliance across balustrades, spigots, and Juliet balconies.",
+        "change": "Detailed glazing matrix paired with Newcastle survey docket wired to 028 4372 4944."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p>\n        <p>Address (108 Dundrum Road, Newcastle, BT33 0LN), telephone (028 4372 4944), and email (info@stileglass.co.uk) verified. BS 6180:2011 compliance, and 316 marine-grade spigots sourced from first-party announcements. Bespoke site survey workflow preserved without rigid linear-meter estimates. Generated balustrade terrace plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Stile Glass.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
+  },
+  "terry-king": {
+    "title": "Terry King & Sons concept transformation — Mourne Made",
+    "description": "A respectful, source-backed before-and-after website concept for Terry King & Sons in Newcastle.",
+    "eyebrow": "Website transformation · Newcastle",
+    "headline": "Straight mechanical honesty. Car and van servicing, MOT, and diagnostics on Dundrum Road.",
+    "date": "27 August 2026",
+    "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence (workshop counter and local listings). Right: the concept opening screen.",
+    "conceptHref": "/concepts/terry-king/",
+    "conceptLabel": "See the full website idea",
+    "motion": {
+      "slug": "terry-king",
+      "afterVideo": "/media/concepts/terry-king/terry-king-after.mp4",
+      "beforePoster": "/media/concepts/terry-king/terry-king-before.jpg",
+      "afterPoster": "/media/concepts/terry-king/terry-king-after.jpg",
+      "beforeAlt": "Labelled placeholder for Terry King & Sons' current public presence — not a live-site screenshot",
+      "afterAlt": "Opening frame of the Terry King & Sons concept showing active 2-post lift garage bay, diagnostic console, and direct phone line to the lift",
+      "beforeNote": "Terry King & Sons operates at 84 Dundrum Road with direct workshop booking. The before panel records its public baseline."
+    },
+    "secondSurfacesHtml": [],
+    "notesHeading": "What this concept changes.",
+    "notes": [
+      {
+        "title": "Straightforward industrial garage authority",
+        "body": "Fully trained technicians handling MOT prep, commercial van fleets, and engine diagnostics.",
+        "change": "Active 2-post hydraulic lift bay hero with inspection lighting and telemetry console."
+      },
+      {
+        "title": "Rapid MOT triage and direct line to the lift",
+        "body": "Pre-MOT checks preventing re-test delays and commercial van downtime prioritized.",
+        "change": "Workshop job docket wired directly to 028 4372 3644 without fake booking engines."
+      },
+      {
+        "title": "Leave a clear claim path",
+        "body": "These pages were not commissioned by the businesses shown.",
+        "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+      }
+    ],
+    "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public workshop and directory baseline.</p>\n        <p>Address (84 Dundrum Road, Newcastle, BT33 0LN) and telephone (028 4372 3644) verified. Working hours: Monday to Friday 9:00am–5:30pm (Saturday by arrangement). Core services (MOT preparation, commercial van servicing, electronic diagnostics, brake/suspension repairs) verified via first-party announcements. Generated garage bay plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Terry King & Sons.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   }
 } satisfies Record<string, TransformationDetail>;

@@ -4,9 +4,10 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import HourPlate from "./HourPlate.astro";
 
-/* Serenity Day Spa — book the hour on the Promenade.
-   Brochure site; no invented calendar. Offers live on Facebook / their site.
-   Not the gift shop on Main Street. Not Serenity Room Dundrum. Not Tyne. */
+/* Serenity Day Spa — 55–57 Central Promenade, Newcastle · County Down.
+   Quiet seaside wellness sanctuary opposite the sea wall.
+   Dermalogica skincare, CND Shellac, Swedish & basalt stone massage.
+   Telephone reservations: 028 4372 6768. */
 
 const phone = "028 4372 6768";
 const phoneHref = "tel:02843726768";
@@ -14,21 +15,52 @@ const site = "https://serenitynewcastle.com";
 const facebook = "https://www.facebook.com/search/top/?q=Serenity%20Day%20Spa%20Newcastle";
 const maps = "https://maps.google.com/?q=55-57+Central+Promenade+Newcastle+BT33+0HH";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+  "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const rituals = [
+  {
+    category: "Skin Health & Facials",
+    title: "Dermalogica Custom Treatment",
+    time: "60 mins",
+    detail:
+      "Deep botanical double cleanse, customised exfoliation, acupressure lymphatic drainage, and targeted nutrient masks tailored to coastal weather skin recovery.",
+  },
+  {
+    category: "Holistic & Body Therapy",
+    title: "Heated Basalt Stone Massage",
+    time: "60 / 90 mins",
+    detail:
+      "Warm volcanic basalt stones and infused lavender and eucalyptus essential oils to release deep muscle tension and restore quiet equilibrium.",
+  },
+  {
+    category: "Hands & Feet",
+    title: "CND Shellac Luxury Suite",
+    time: "45 mins",
+    detail:
+      "Precision cuticle care, conditioning hand scrub, tension-melting massage, and high-gloss 14-day zero-chip Shellac polish.",
+  },
+  {
+    category: "Seaside Packages",
+    title: "The Coastal Reset Package",
+    time: "120 mins",
+    detail:
+      "Full body sea salt polish, Swedish back massage, customized Dermalogica express facial, and scalp tension release.",
+  },
+];
 ---
 
 <ConceptLayout
-  title={"Serenity — independent concept"}
+  title={"Serenity Day Spa — 55–57 Central Promenade, Newcastle"}
   slug="serenity-newcastle"
   bodyClass="concept-page concept-serenity"
   lang="en-GB"
-  businessName="Serenity"
+  businessName="Serenity Day Spa"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The hour plate is a drawn appointment slip."
+  bannerNote="Atmospheric spa suites and treatment scenes are AI-generated illustrative visualisations of 55–57 Central Promenade."
 >
   <div class="se-strip">
-    <span>55–57 Central Promenade, Newcastle · BT33 0HH · Mon–Sat 9–6</span>
+    <span>55–57 Central Promenade, Newcastle · BT33 0HH · Mon–Sat 9am–6pm</span>
     <span class="se-strip-r"><a href={phoneHref}>{phone}</a></span>
   </div>
 
@@ -43,109 +75,213 @@ const fontHref =
       </span>
       <span class="se-brand-text">
         <span class="se-brand-name">Serenity</span>
-        <span class="se-brand-sub">Day spa · the Promenade</span>
+        <span class="se-brand-sub">Day Spa · 55–57 Central Promenade</span>
       </span>
     </a>
     <nav class="se-nav" aria-label="Concept navigation">
-      <a href="#hour">The hour</a>
-      <a href="#ritual">The ritual</a>
-      <a href="#door">Find us</a>
+      <a href="#sanctuary">The Sanctuary</a>
+      <a href="#rituals">Treatment Rituals</a>
+      <a href="#arrival">Rear Parking</a>
+      <a href="#door">Find Us</a>
     </nav>
-    <a class="se-book" href={phoneHref}>Book the hour</a>
+    <a class="se-book-btn" href={phoneHref}>Book the Hour</a>
   </header>
 
   <main class="se-main">
-    <div class="se-hero" id="hour">
-      <section class="se-lede" aria-labelledby="se-name">
-        <p class="se-eyebrow">On the Promenade · Newcastle</p>
-        <h1 id="se-name">An hour, held for you.</h1>
-        <p class="se-say">Come off the sea path. Sit. Let the hour be yours.</p>
-        <p class="se-body">
-          We are Serenity, the day spa at 55–57 Central Promenade. Ring us and
-          we will find you a time — manicure, pedicure, Dermalogica, CND Shellac,
-          waxing, massage, spray tan. Parking is at the rear.
-        </p>
-        <p class="se-cta">
-          <a class="se-book se-book--inline" href={phoneHref}>Ring {phone}</a>
-          <a class="se-quiet" href="#door">Find the door</a>
-        </p>
-      </section>
-    </div>
+    <!-- Hero Sanctuary Section -->
+    <section class="se-hero" id="sanctuary" aria-labelledby="se-hero-title">
+      <div class="se-hero-grid">
+        <div class="se-hero-copy">
+          <p class="se-eyebrow">Seaside Sanctuary · Newcastle</p>
+          <h1 id="se-hero-title">An hour, held for you over the sea wall.</h1>
+          <p class="se-say">Come off the sea path. Sit. Let the hour be quiet.</p>
+          <p class="se-lede">
+            Step off the bustling promenade and into tranquil restorative care.
+            At 55–57 Central Promenade, we hold your appointment strictly on time —
+            Dermalogica custom facials, heated basalt massage, CND Shellac manicures,
+            waxing, and natural spray tanning.
+          </p>
+          <div class="se-hero-actions">
+            <a class="se-btn-primary" href={phoneHref}>Ring {phone} to Book</a>
+            <a class="se-btn-secondary" href="#rituals">View Treatment Ledger</a>
+          </div>
+          <div class="se-hero-badges">
+            <span>Dermalogica Skincare</span>
+            <span>CND Shellac Authorised</span>
+            <span>Private Rear Parking</span>
+          </div>
+        </div>
 
-    <section class="se-magazine" id="ritual" aria-labelledby="se-ritual-title">
-      <div class="se-mag-copy">
-        <p class="se-eyebrow">The ritual of the hour</p>
-        <h2 id="se-ritual-title">You book the hour. We keep it quiet.</h2>
-        <p class="se-column">
-          The Promenade is busy. The room is not. You come in from the sea wall,
-          leave the hour on the slip, and we work — nails, skin, wax, massage,
-          tan — until the time is yours again.
+        <div class="se-hero-visual">
+          <figure class="se-figure">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/serenity-newcastle/serenity-newcastle-hero-spa-640.webp 640w, /media/concepts/serenity-newcastle/serenity-newcastle-hero-spa-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 50vw"
+              />
+              <img
+                src="/media/concepts/serenity-newcastle/serenity-newcastle-hero-spa.jpg"
+                alt="Tranquil seaside treatment suite with heated basalt stones and natural coastal light"
+                width="1600"
+                height="900"
+                loading="eager"
+              />
+            </picture>
+            <figcaption>The seaside treatment suite at 55–57 Central Promenade.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Treatment Ritual Ledger -->
+    <section class="se-rituals" id="rituals" aria-labelledby="se-rituals-title">
+      <div class="se-section-head">
+        <p class="se-eyebrow">The Care Spectrum</p>
+        <h2 id="se-rituals-title">Dedicated Treatment Rituals</h2>
+        <p class="se-section-intro">
+          Every session is held in a private, quiet room. No crowded waiting halls,
+          no rushed changeovers. Just unhurried botanical care.
         </p>
-        <p class="se-column">
-          There is no diary on this page. The live list of times is the one we
-          keep at the desk. Ring, tell us what you would like, and we will hold
-          the hour.
-        </p>
-        <ol class="se-steps">
-          <li>
-            <p class="se-when">Ring</p>
-            <p class="se-do">Call <a href={phoneHref}>{phone}</a> and ask for the treatment you want.</p>
-          </li>
-          <li>
-            <p class="se-when">Arrive</p>
-            <p class="se-do">55–57 Central Promenade. Park at the rear. We are open Monday to Saturday, nine until six.</p>
-          </li>
-          <li>
-            <p class="se-when">The hour</p>
-            <p class="se-do">Sit. The Promenade stays outside.</p>
-          </li>
-        </ol>
       </div>
 
-      <figure class="se-artefact">
-        <HourPlate />
-        <figcaption>The hour, written on the slip.</figcaption>
-      </figure>
+      <div class="se-rituals-layout">
+        <div class="se-rituals-grid">
+          {rituals.map((r) => (
+            <article class="se-ritual-card">
+              <div class="se-card-header">
+                <span class="se-card-cat">{r.category}</span>
+                <span class="se-card-time">{r.time}</span>
+              </div>
+              <h3>{r.title}</h3>
+              <p>{r.detail}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="se-rituals-gallery">
+          <figure class="se-figure se-figure--compact">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/serenity-newcastle/serenity-newcastle-treatment-detail-640.webp 640w, /media/concepts/serenity-newcastle/serenity-newcastle-treatment-detail-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/serenity-newcastle/serenity-newcastle-treatment-detail.jpg"
+                alt="Botanical Dermalogica serums, lavender, and heated basalt stones on a slate tray"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Dermalogica botanical skincare and heated basalt stones.</figcaption>
+          </figure>
+
+          <figure class="se-figure se-figure--compact">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/media/concepts/serenity-newcastle/serenity-newcastle-manicure-suite-640.webp 640w, /media/concepts/serenity-newcastle/serenity-newcastle-manicure-suite-1265.webp 1265w"
+                sizes="(max-width: 800px) 100vw, 40vw"
+              />
+              <img
+                src="/media/concepts/serenity-newcastle/serenity-newcastle-manicure-suite.jpg"
+                alt="CND Shellac manicure suite overlooking the quiet rear courtyard"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>CND Shellac manicure suite overlooking the rear courtyard.</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <section class="se-offers" aria-labelledby="se-offers-title">
-      <p class="se-eyebrow">This week</p>
-      <h2 id="se-offers-title">Current offers live with us, not on this page.</h2>
-      <p class="se-offers-body">
-        What is on this week is on Facebook — Serenity Day Spa Newcastle — and
-        on our site. Come back there for the latest, then ring to book the hour.
-      </p>
-      <p class="se-offers-cta">
-        <a class="se-quiet" href={facebook} rel="external">Facebook</a>
-        <a class="se-quiet" href={site} rel="external">serenitynewcastle.com</a>
-      </p>
-    </section>
-
-    <section class="se-door" id="door" aria-labelledby="se-door-title">
-      <p class="se-eyebrow">The door</p>
-      <h2 id="se-door-title">55–57 Central Promenade.</h2>
-      <div class="se-door-grid">
-        <div>
-          <h3>Where</h3>
+    <!-- The Hour Plate & Booking Protocol -->
+    <section class="se-slip-section" id="booking" aria-labelledby="se-slip-title">
+      <div class="se-slip-wrap">
+        <div class="se-slip-copy">
+          <p class="se-eyebrow">The Front Desk Protocol</p>
+          <h2 id="se-slip-title">We hold your time when you call.</h2>
           <p>
-            Serenity<br />
+            The live diary is kept by hand at our reception desk. Ring us directly,
+            select your treatments, and we will hold the hour for you.
+          </p>
+          <div class="se-contact-box">
+            <p class="se-contact-label">Telephone Reservations</p>
+            <a class="se-contact-phone" href={phoneHref}>{phone}</a>
+            <p class="se-contact-sub">Monday to Saturday · 9:00am to 6:00pm</p>
+          </div>
+        </div>
+        <div class="se-slip-artefact">
+          <HourPlate />
+        </div>
+      </div>
+    </section>
+
+    <!-- Arrival & Rear Parking -->
+    <section class="se-arrival" id="arrival" aria-labelledby="se-arrival-title">
+      <div class="se-arrival-content">
+        <p class="se-eyebrow">Easy Seafront Access</p>
+        <h2 id="se-arrival-title">Dedicated Rear Parking</h2>
+        <p class="se-arrival-lede">
+          Finding parking on the Central Promenade during busy weekends shouldn't
+          disturb your calm. We maintain dedicated private customer parking directly
+          behind our building.
+        </p>
+        <div class="se-arrival-steps">
+          <div class="se-step">
+            <span class="se-step-num">01</span>
+            <h4>Turn off the Promenade</h4>
+            <p>Access the rear service lane adjacent to 55–57 Central Promenade.</p>
+          </div>
+          <div class="se-step">
+            <span class="se-step-num">02</span>
+            <h4>Park in Serenity Spaces</h4>
+            <p>Designated reserved spaces right by the peaceful garden entrance.</p>
+          </div>
+          <div class="se-step">
+            <span class="se-step-num">03</span>
+            <h4>Step Directly into Sanctuary</h4>
+            <p>Enter our reception lounge immediately without crossing coastal traffic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Find Us / Door Block -->
+    <section class="se-door" id="door" aria-labelledby="se-door-title">
+      <div class="se-door-head">
+        <p class="se-eyebrow">Location & Hours</p>
+        <h2 id="se-door-title">55–57 Central Promenade, Newcastle</h2>
+      </div>
+      <div class="se-door-grid">
+        <div class="se-door-col">
+          <h3>The Door</h3>
+          <p>
+            Serenity Day Spa<br />
             55–57 Central Promenade<br />
-            Newcastle<br />
+            Newcastle, County Down<br />
             BT33 0HH
           </p>
-          <p>Parking at the rear.</p>
-          <a class="se-quiet" href={maps} rel="external">Map</a>
+          <a class="se-link" href={maps} target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
         </div>
-        <div>
-          <h3>When</h3>
-          <p>Monday to Saturday, 9 until 6.<br />Sunday closed.</p>
+        <div class="se-door-col">
+          <h3>Opening Times</h3>
+          <ul class="se-hours-list">
+            <li><span>Monday – Saturday</span> <strong>9:00am – 6:00pm</strong></li>
+            <li><span>Sunday</span> <strong>Closed</strong></li>
+          </ul>
+          <p class="se-hours-note">Evening appointments available by prior telephone arrangement.</p>
         </div>
-        <div>
-          <h3>Book the hour</h3>
-          <p><a href={phoneHref}>{phone}</a></p>
+        <div class="se-door-col">
+          <h3>Reservations & Updates</h3>
+          <p>Call the desk: <a href={phoneHref}><strong>{phone}</strong></a></p>
           <p>
-            <a href={site} rel="external">serenitynewcastle.com</a>
-            · Facebook: Serenity Day Spa Newcastle
+            Official Website: <a href={site} target="_blank" rel="noopener noreferrer">serenitynewcastle.com</a><br />
+            Facebook: <a href={facebook} target="_blank" rel="noopener noreferrer">Serenity Day Spa Newcastle</a>
           </p>
         </div>
       </div>
