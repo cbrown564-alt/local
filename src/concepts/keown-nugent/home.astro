@@ -1,0 +1,166 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import DoorBlotter from "./DoorBlotter.astro";
+
+/* Keown Nugent Solicitors — relief. Speak as the firm.
+   Live re-read 29 August 2026. LSNI firm page holds the door; knsolicitors.com
+   still does not open (TLS unexpected eof). Do not hand off to that domain.
+   Do not invent a practice-area grid (LSNI areas of expertise are empty).
+   No “book a consult” theatre. Hours are Google-only — omit rather than
+   date a clock on the door. Distinct from Dominic McInerney (123A Main Street)
+   — that blotter stays off this guest UI. Not Belfast Keown (Cregagh Road).
+   Not Newry. Do not print Anna Mallett. No EssenceMedia. No rasters.
+   Action is phone and email; LSNI still prints the inbox. */
+const phone = "028 4333 0055";
+const phoneHref = "tel:+442843330055";
+const email = "info@knsolicitors.com";
+const mailto = `mailto:${email}`;
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const names = [
+  { name: "Anna Marie Nugent", mark: "PPP" },
+  { name: "John Keown", mark: "PPP" },
+];
+---
+
+<ConceptLayout
+  title={"Keown Nugent Solicitors — independent concept"}
+  slug="keown-nugent"
+  bodyClass="concept-page concept-keown-nugent"
+  lang="en-GB"
+  businessName="Keown Nugent Solicitors"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The door blotter is a drawing."
+>
+  <div class="kn-strip">
+    <span>26 Railway Street, Newcastle · BT33 0AL</span>
+    <span class="kn-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="kn-header">
+    <a class="kn-brand" href="/concepts/keown-nugent/">
+      <span class="kn-brand-mark" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <rect width="46" height="46" fill="#1f4a3c"/>
+          <rect x="10" y="6" width="26" height="10" fill="#dfe6e8"/>
+          <rect x="10" y="18" width="26" height="22" fill="#16382e"/>
+          <rect x="13" y="21" width="9" height="8" fill="#1a3d32"/>
+          <rect x="24" y="21" width="9" height="8" fill="#1a3d32"/>
+          <rect x="13" y="31" width="9" height="6" fill="#1a3d32"/>
+          <rect x="24" y="31" width="9" height="6" fill="#1a3d32"/>
+          <text
+            x="23"
+            y="30"
+            text-anchor="middle"
+            fill="#d4b06a"
+            font-size="11"
+            font-family="EB Garamond, Georgia, serif"
+            font-weight="700"
+          >26</text>
+        </svg>
+      </span>
+      <span class="kn-brand-text">
+        <span class="kn-brand-name">Keown Nugent</span>
+        <span class="kn-brand-sub">Solicitors · 26 Railway Street</span>
+      </span>
+    </a>
+    <nav class="kn-nav" aria-label="Concept navigation">
+      <a href="#door">The door</a>
+      <a href="#names">The names</a>
+      <a href="#ring">Ring</a>
+    </nav>
+    <a class="kn-ring kn-ring--solid" href={phoneHref}>Ring the door</a>
+  </header>
+
+  <main class="kn-main">
+    <section class="kn-mast" id="door" aria-labelledby="kn-name">
+      <p class="kn-num" aria-hidden="true">26</p>
+      <div class="kn-mast-copy">
+        <p class="kn-kicker">Solicitors · Newcastle</p>
+        <h1 id="kn-name">Keown Nugent</h1>
+        <p class="kn-street">26 Railway Street</p>
+        <p class="kn-lede">
+          Two solicitors at this door. Anna Marie Nugent and John Keown.
+          Ring, or write.
+        </p>
+        <p class="kn-cta">
+          <a class="kn-ring kn-ring--solid kn-ring--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="kn-write" href={mailto}>Write to us</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="kn-roll" id="names" aria-labelledby="kn-roll-title">
+      <div class="kn-roll-rule">
+        <span>Solicitors at this firm</span>
+        <span>26 Railway Street</span>
+      </div>
+      <h2 id="kn-roll-title">The names on the door.</h2>
+      <p class="kn-roll-lede">
+        Anna Marie Nugent and John Keown practise from this door in Newcastle.
+        That is the firm.
+      </p>
+      <ul class="kn-names">
+        {names.map((person) => (
+          <li>
+            <p class="kn-names-mark">{person.mark}</p>
+            <p class="kn-names-name">{person.name}</p>
+            <p class="kn-names-door">26 Railway Street</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="kn-ritual" id="ring" aria-labelledby="kn-ritual-title">
+      <div class="kn-ritual-copy">
+        <p class="kn-kicker">The door</p>
+        <h2 id="kn-ritual-title">Ring, or write.</h2>
+        <p class="kn-ritual-lede">
+          The number and the inbox reach 26 Railway Street. There is no form
+          to fill. You ring, or you write.
+        </p>
+        <p class="kn-cta">
+          <a class="kn-ring kn-ring--solid kn-ring--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="kn-write" href={mailto}>{email}</a>
+        </p>
+      </div>
+
+      <figure class="kn-artefact">
+        <DoorBlotter />
+        <figcaption>The door at 26 Railway Street.</figcaption>
+      </figure>
+
+      <div class="kn-slot">
+        <p class="kn-slot-kicker">The letterbox</p>
+        <p class="kn-ritual-lede">
+          Post a call, or post a note. Both land at this door.
+        </p>
+        <p class="kn-slot-actions">
+          <a class="kn-flap" href={phoneHref}>
+            <span class="kn-flap-label">Ring</span>
+            <span class="kn-flap-value">{phone}</span>
+          </a>
+          <a class="kn-flap" href={mailto}>
+            <span class="kn-flap-label">Write</span>
+            <span class="kn-flap-value">{email}</span>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="kn-find" aria-labelledby="kn-find-title">
+      <address class="kn-address">
+        <strong id="kn-find-title">Keown Nugent Solicitors</strong>
+        <span>26 Railway Street</span>
+        <span>Newcastle</span>
+        <span>BT33 0AL</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
