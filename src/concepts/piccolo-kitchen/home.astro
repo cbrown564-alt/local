@@ -1,0 +1,176 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import OvenPeel from "./OvenPeel.astro";
+
+/* Piccolo Kitchen Newcastle — meal. Speak as the Newcastle door only.
+   Wood-fired pizza since 2016 at 127 Main Street. Not Villa Vinci.
+   Belfast Lisburn Road is one quiet sister handoff max — never dual CTA.
+   Hours first-party 13 Sep 2026: Mon–Tue Closed (print it).
+   No fake order form. Action = ring / walk-in / site. */
+const phone = "028 4372 2999";
+const phoneHref = "tel:+442843722999";
+const site = "https://piccolokitchen.co.uk/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=127+Main+Street+Newcastle+BT33+0AQ";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=Sora:wght@400;500;600;700&display=swap";
+
+const week = [
+  { day: "Monday", hours: "Closed" },
+  { day: "Tuesday", hours: "Closed" },
+  { day: "Wednesday", hours: "5:00pm – 9:00pm" },
+  { day: "Thursday", hours: "5:00pm – 9:00pm" },
+  { day: "Friday", hours: "12:00pm – 10:00pm" },
+  { day: "Saturday", hours: "12:00pm – 10:00pm" },
+  { day: "Sunday", hours: "12:00pm – 9:00pm" },
+];
+---
+
+<ConceptLayout
+  title={"Piccolo Kitchen Newcastle — independent concept"}
+  slug="piccolo-kitchen"
+  bodyClass="concept-page concept-piccolo"
+  lang="en-GB"
+  businessName="Piccolo Kitchen"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The oven peel is a drawing."
+>
+  <div class="pk-strip">
+    <span>127 Main Street, Newcastle · BT33 0AQ · Wood-fired since 2016</span>
+    <span class="pk-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="pk-header">
+    <a class="pk-brand" href="/concepts/piccolo-kitchen/">
+      <span class="pk-brand-mark">
+        <OvenPeel compact />
+      </span>
+      <span class="pk-brand-text">
+        <span class="pk-brand-name">Piccolo Kitchen</span>
+        <span class="pk-brand-sub">127 Main Street · Newcastle</span>
+      </span>
+    </a>
+    <nav class="pk-nav" aria-label="Concept navigation">
+      <a href="#oven">The oven</a>
+      <a href="#hours">Hours</a>
+      <a href="#door">The door</a>
+      <a href="#site">Site</a>
+    </nav>
+    <a class="pk-ring-cta" href={phoneHref}>Ring</a>
+  </header>
+
+  <main class="pk-main">
+    <section class="pk-hero" aria-labelledby="pk-name">
+      <div class="pk-mast">
+        <p class="pk-kicker">Wood-fired pizza · Newcastle</p>
+        <h1 id="pk-name">Piccolo Kitchen</h1>
+        <p class="pk-number">127 Main Street · Co. Down · BT33 0AQ</p>
+        <p class="pk-say">Handmade wood-fired pizza on Main Street since 2016.</p>
+        <p class="pk-lede">
+          Nestled between the Mournes and the Irish Sea. Walk in when the
+          oven is lit. Ring if you want us first. Closed Monday and Tuesday.
+        </p>
+        <p class="pk-cta">
+          <a class="pk-ring-cta pk-ring-cta--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="pk-walk" href="#door">Walk in</a>
+          <a class="pk-site-link" href={site} rel="noopener noreferrer">piccolokitchen.co.uk</a>
+        </p>
+      </div>
+
+      <figure class="pk-theatre">
+        <OvenPeel />
+        <figcaption>The peel for 127 — wood-fired since 2016.</figcaption>
+      </figure>
+    </section>
+
+    <section class="pk-editorial" id="oven" aria-labelledby="pk-oven-title">
+      <p class="pk-folio">Piccolo Kitchen · 127 Main Street · Newcastle · Co. Down</p>
+      <div class="pk-editorial-grid">
+        <article class="pk-col">
+          <p class="pk-kicker">Since 2016</p>
+          <h2 id="pk-oven-title">Wood-fired, handmade, Newcastle.</h2>
+          <p>
+            Piccolo Kitchen began in 2016 with a simple idea: to bring
+            authentic, handmade wood-fired pizza to the heart of Newcastle.
+          </p>
+          <p>
+            Still the Newcastle door — 127 Main Street — between the
+            dramatic Mournes and the Irish Sea.
+          </p>
+        </article>
+        <article class="pk-col pk-col--ember">
+          <p class="pk-kicker">The plate</p>
+          <h2>Appetite first.</h2>
+          <p>
+            Fresh flavours for families, friends, and food lovers in a
+            coastal setting. The oven is the theatre. There is no order
+            form here — ring, walk in, or use the site.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pk-hours" id="hours" aria-labelledby="pk-hours-title">
+      <div class="pk-hours-copy">
+        <p class="pk-kicker">The week</p>
+        <h2 id="pk-hours-title">When the oven is lit.</h2>
+        <p class="pk-hours-lede">
+          Evening midweek. All-day at the end of the week. Monday and
+          Tuesday we are closed — that is part of the door.
+        </p>
+        <p class="pk-hours-stamp">Newcastle hours · first-party · 13 Sep 2026</p>
+      </div>
+      <ol class="pk-week" aria-label="Newcastle opening hours">
+        {week.map((row) => (
+          <li class:list={["pk-week-row", { "pk-week-row--closed": row.hours === "Closed" }]}>
+            <span class="pk-week-day">{row.day}</span>
+            <span class="pk-week-hours">{row.hours}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="pk-door" id="door" aria-labelledby="pk-door-title">
+      <div class="pk-door-copy">
+        <p class="pk-kicker">The door</p>
+        <h2 id="pk-door-title">127 Main Street.</h2>
+        <p class="pk-door-lede">
+          Walk in when we are open. Ring <a href={phoneHref}>{phone}</a> if
+          you like. No booking strip invented for this page.
+        </p>
+        <p class="pk-chips" aria-label="How to reach us">
+          <a class="pk-chip" href={phoneHref}>
+            <span class="pk-chip-k">Ring</span>
+            <span class="pk-chip-v">{phone}</span>
+          </a>
+          <a class="pk-chip" href="#hours">
+            <span class="pk-chip-k">Hours</span>
+            <span class="pk-chip-v">Mon–Tue closed</span>
+          </a>
+          <a class="pk-chip" href={site} rel="noopener noreferrer">
+            <span class="pk-chip-k">Site</span>
+            <span class="pk-chip-v">piccolokitchen.co.uk</span>
+          </a>
+        </p>
+      </div>
+
+      <address class="pk-address">
+        <strong>Piccolo Kitchen</strong>
+        <span>127 Main Street</span>
+        <span>Newcastle, Co. Down</span>
+        <span>BT33 0AQ</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={maps} rel="noopener noreferrer">Directions on Google Maps</a>
+        <a href={site} rel="noopener noreferrer" id="site">piccolokitchen.co.uk</a>
+      </address>
+
+      <p class="pk-sister">
+        Sister door: Belfast Lisburn Road — named here once. This page is
+        the Newcastle room.
+      </p>
+    </section>
+  </main>
+</ConceptLayout>
