@@ -1,0 +1,215 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import BayCottage from "./BayCottage.astro";
+
+/* Bonny's Caravan Park — stay. Speak as the park.
+   Kind: airy place-to-sleep (Hutt / Conlyn class), not brunch.
+   Address conflict 82/87 Tullybrannigan vs 138 Dundrum — guest lock-up
+   prints Tullybrannigan · Newcastle only. Visit Mourne cottage may name
+   82 for the cottage listing alone. Phones: cottage 07734 540500 via
+   Visit Mourne; do not print Sunnyholme 2739; omit bare 028 4372 2351
+   as a winning park line. bonnys.net broken — do not link as shopfront.
+   1948 / first-in-Ireland only as labelled secondary quote. No Sunnyholme
+   in the nameplate. No invented café. No fake booking calendar. Action:
+   cottage phone / Visit Mourne / directory email — staged ritual, not form. */
+const cottagePhone = "07734 540500";
+const cottagePhoneHref = "tel:+447734540500";
+const cottageVisit =
+  "https://www.visitmournegullionstrangford.com/accommodation/bonnys-cottage-p699161";
+const email = "info@bonnys.net";
+const mailto = `mailto:${email}`;
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500;1,8..60,600&family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const stock = [
+  {
+    name: "Static pitches",
+    line: "Holiday homes on the park body — ask for what is free this season.",
+  },
+  {
+    name: "The cottage",
+    line: "Self-catering on the park. Visit Mourne lists 82 Tullybrannigan for the cottage.",
+  },
+  {
+    name: "The log pod",
+    line: "Alternative sleep on site. Ask for dates; directories say no pets in the pod.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Bonny's Caravan Park — independent concept"}
+  slug="bonnys"
+  bodyClass="concept-page concept-bonnys"
+  lang="en-GB"
+  businessName="Bonny's Caravan Park"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The bay cottage plate is a drawing."
+>
+  <div class="bn-strip">
+    <span>Tullybrannigan · Newcastle · foot of the Mournes</span>
+    <span class="bn-strip-r">
+      <span>Cottage enquiry</span>
+      <a href={cottagePhoneHref}>{cottagePhone}</a>
+    </span>
+  </div>
+
+  <header class="bn-header">
+    <a class="bn-brand" href="/concepts/bonnys/">
+      <span class="bn-brand-mark" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <rect width="46" height="46" fill="#1e2a24"/>
+          <path d="M4 34 L23 10 L42 34 Z" fill="#5a8a84"/>
+          <path d="M14 34 L23 20 L32 34 Z" fill="#c5d9d6"/>
+          <rect x="20" y="28" width="6" height="6" fill="#f5f1e8"/>
+        </svg>
+      </span>
+      <span class="bn-brand-text">
+        <span class="bn-brand-name">Bonny's</span>
+        <span class="bn-brand-sub">Caravan Park · Newcastle</span>
+      </span>
+    </a>
+    <nav class="bn-nav" aria-label="Concept navigation">
+      <a href="#park">The park</a>
+      <a href="#sleep">Cottage &amp; pod</a>
+      <a href="#ask">Ask for dates</a>
+      <a href="#door">The bay</a>
+    </nav>
+    <a class="bn-ask-nav" href="#ask">Ask for dates</a>
+  </header>
+
+  <main class="bn-main">
+    <section class="bn-mast" aria-labelledby="bn-name">
+      <p class="bn-kicker">Caravan park · Newcastle</p>
+      <h1 id="bn-name">Bonny's</h1>
+      <p class="bn-number">Tullybrannigan · Newcastle</p>
+      <p class="bn-say">Sleep under the Mournes.</p>
+      <p class="bn-lede">
+        A holiday home park at the foot of the mountains, with Dundrum Bay
+        in the view. Static pitches, a cottage, and a log pod. Ask for dates.
+      </p>
+      <p class="bn-cta">
+        <a class="bn-ask-nav bn-ask-nav--inline" href="#ask">Ask for dates</a>
+        <a class="bn-ring" href={cottagePhoneHref}>{cottagePhone}</a>
+      </p>
+    </section>
+
+    <section class="bn-folio" id="park" aria-labelledby="bn-park-title">
+      <p class="bn-folio-mark">Bonny's · Tullybrannigan · Dundrum Bay</p>
+      <div class="bn-folio-grid">
+        <div class="bn-folio-copy">
+          <p class="bn-kicker">The park</p>
+          <h2 id="bn-park-title">A place to sleep, not a high street.</h2>
+          <p>
+            Holiday homes on static pitches. Mountain paths from the gate.
+            Dundrum Bay below the ridge. We open with the season —
+            directories usually say March into autumn.
+          </p>
+          <p>
+            Shop and play areas run in holiday periods for guests on the park.
+          </p>
+        </div>
+        <blockquote class="bn-pull" cite="https://www.campingni.com/">
+          <p>
+            I have been to many countries… but to me there is no place like
+            the Mountains of Mourne.
+          </p>
+          <footer>Geraldine Bonny · 1988 · campingni.com</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="bn-stock" id="sleep" aria-labelledby="bn-stock-title">
+      <div class="bn-stock-head">
+        <p class="bn-kicker">What we hold</p>
+        <h2 id="bn-stock-title">Cottage, pod, and the park body.</h2>
+        <p class="bn-stock-lede">
+          Named stock for nights away. Sleep counts and dates — ask. We
+          answer by phone or through the cottage listing.
+        </p>
+      </div>
+      <ul class="bn-inventory">
+        {stock.map((item) => (
+          <li>
+            <span>{item.name}</span>
+            <span>{item.line}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="bn-stock-note">
+        Visit Mourne lists Bonny's Cottage at 82 Tullybrannigan Road — the
+        cottage listing.
+      </p>
+    </section>
+
+    <section class="bn-desk" id="ask" aria-labelledby="bn-ask-title">
+      <div class="bn-blotter">
+        <div class="bn-blotter-head">
+          <p class="bn-kicker">Ask for dates</p>
+          <h2 id="bn-ask-title">Nights on Tullybrannigan.</h2>
+        </div>
+        <p class="bn-blotter-lede">
+          Cottage nights, the pod, or a pitch. Ring the cottage line, write,
+          or open the Visit Mourne cottage listing.
+        </p>
+
+        <div class="bn-ritual" role="group" aria-label="How to ask">
+          <a class="bn-ritual-face" href={cottagePhoneHref}>
+            <span class="bn-ritual-label">Cottage enquiry · Visit Mourne</span>
+            <span class="bn-ritual-value">{cottagePhone}</span>
+          </a>
+          <a class="bn-ritual-face" href={mailto}>
+            <span class="bn-ritual-label">Email · directory listing</span>
+            <span class="bn-ritual-value">{email}</span>
+          </a>
+          <a
+            class="bn-ritual-face"
+            href={cottageVisit}
+            rel="noopener noreferrer"
+          >
+            <span class="bn-ritual-label">Cottage listing</span>
+            <span class="bn-ritual-value">Visit Mourne · Bonny's Cottage</span>
+          </a>
+        </div>
+
+        <p class="bn-actions">
+          <a class="bn-ask-nav bn-ask-nav--inline" href={cottagePhoneHref}>{cottagePhone}</a>
+          <a class="bn-write" href={mailto}>{email}</a>
+          <a class="bn-visit" href={cottageVisit} rel="noopener noreferrer">Visit Mourne cottage</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="bn-street" id="door" aria-labelledby="bn-door-title">
+      <div class="bn-street-copy">
+        <p class="bn-kicker">The bay</p>
+        <h2 id="bn-door-title">Tullybrannigan · Newcastle.</h2>
+        <p class="bn-street-lede">
+          Foot of the Mourne Mountains. Dundrum Bay in the view. Ask for
+          the cottage, the pod, or a night on the park.
+        </p>
+        <p class="bn-artefact-cta">
+          <a class="bn-ask-nav bn-ask-nav--inline" href="#ask">Ask for dates</a>
+          <a class="bn-ring" href={cottagePhoneHref}>{cottagePhone}</a>
+        </p>
+      </div>
+
+      <figure class="bn-artefact">
+        <BayCottage />
+        <figcaption>Cottage and bay on Tullybrannigan.</figcaption>
+      </figure>
+
+      <address class="bn-address">
+        <strong>Bonny's Caravan Park</strong>
+        <span>Tullybrannigan · Newcastle</span>
+        <span>Foot of the Mournes · Dundrum Bay</span>
+        <a href={cottagePhoneHref}>Cottage · {cottagePhone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={cottageVisit} rel="noopener noreferrer">Visit Mourne · Bonny's Cottage</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
