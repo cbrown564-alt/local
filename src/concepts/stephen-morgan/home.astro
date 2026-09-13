@@ -1,0 +1,165 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import NightDoorPlate from "./NightDoorPlate.astro";
+
+/* Stephen Morgan Funeral Directors — relief. Speak as the firm.
+   Live facts re-read 29 August 2026: Funeral Times listing + Google
+   (Open 24 hours). No owned website. Phone and email are the mechanism.
+   No contact-form theatre. No recent-funeral list (privacy). Handoff is
+   Funeral Times for current notices. Do not invent chapel hours. Do not
+   invent “established”. Do not claim NAFD/SAIF. Do not confuse with
+   McKeague Morgan or Stephen Magee Electrical. Distinct from Dominic
+   McInerney at 123A — this is 14 Main Street, funerals. No EssenceMedia.
+   No rasters. No stock hearse. No named deceased. Theatre is none. */
+const phone = "028 4375 8323";
+const phoneHref = "tel:+442843758323";
+const email = "smorganfunerals@gmail.com";
+const mailto = `mailto:${email}`;
+const notices = "https://www.funeraltimes.com/stephen-morgan-funeral-directors";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap";
+
+const held = [
+  "Pre arranged funerals",
+  "Coffin ranges",
+  "Floral tributes",
+  "Order of service",
+  "Newspaper notices",
+  "Modern fleet of vehicles",
+  "Highly qualified staff",
+];
+---
+
+<ConceptLayout
+  title={"Stephen Morgan Funeral Directors — independent concept"}
+  slug="stephen-morgan"
+  bodyClass="concept-page concept-stephen-morgan"
+  lang="en-GB"
+  businessName="Stephen Morgan Funeral Directors"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The night door plate is a drawing."
+>
+  <div class="sm-strip">
+    <span>14 Main Street, Newcastle · BT33 0AD · Open 24 hours</span>
+    <span class="sm-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="sm-header">
+    <a class="sm-brand" href="/concepts/stephen-morgan/">
+      <span class="sm-brand-mark" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <rect width="46" height="46" fill="#1a1814"/>
+          <rect x="8" y="7" width="30" height="32" fill="#2c2620"/>
+          <rect x="10" y="9" width="26" height="6" fill="#1a1814"/>
+          <rect x="12" y="17" width="10" height="9" fill="#1a1814"/>
+          <rect x="24" y="17" width="10" height="9" fill="#1a1814"/>
+          <rect x="12" y="28" width="10" height="9" fill="#1a1814"/>
+          <rect x="24" y="28" width="10" height="9" fill="#1a1814"/>
+          <rect x="13" y="3" width="20" height="5" rx="0.5" fill="#9a7a42"/>
+          <text
+            x="23"
+            y="26"
+            text-anchor="middle"
+            fill="#c4a056"
+            font-size="13"
+            font-family="Spectral, Georgia, serif"
+            font-weight="700"
+          >14</text>
+        </svg>
+      </span>
+      <span class="sm-brand-text">
+        <span class="sm-brand-name">Stephen Morgan</span>
+        <span class="sm-brand-sub">Funeral Directors · 14 Main Street</span>
+      </span>
+    </a>
+    <nav class="sm-nav" aria-label="Concept navigation">
+      <a href="#door">The door</a>
+      <a href="#register">The register</a>
+      <a href="#night">Tonight</a>
+      <a href="#14">14</a>
+    </nav>
+    <a class="sm-ring sm-ring--solid" href={phoneHref}>Ring the door</a>
+  </header>
+
+  <main class="sm-main">
+    <section class="sm-mast" id="door" aria-labelledby="sm-name">
+      <p class="sm-kicker">24 hour personal service</p>
+      <div class="sm-lockup">
+        <span class="sm-house" aria-hidden="true">14</span>
+        <div class="sm-lockup-type">
+          <h1 id="sm-name">Stephen Morgan</h1>
+          <p class="sm-trade">Funeral Directors</p>
+          <p class="sm-street">14 Main Street, Newcastle</p>
+        </div>
+      </div>
+      <p class="sm-lede">
+        We provide a <em>dignified, professional and caring service</em>.
+        If you need the door tonight, ring.
+      </p>
+      <p class="sm-cta">
+        <a class="sm-ring sm-ring--solid sm-ring--inline" href={phoneHref}>Ring {phone}</a>
+        <a class="sm-write" href={mailto}>Write to us</a>
+      </p>
+    </section>
+
+    <section class="sm-register" id="register" aria-labelledby="sm-register-title">
+      <div class="sm-letterhead">
+        <span>Stephen Morgan Funeral Directors</span>
+        <span>14 Main Street · Any hour</span>
+      </div>
+      <h2 id="sm-register-title">Held at 14.</h2>
+      <p class="sm-register-intro">
+        We offer a 24 hour personal service, guiding families through the
+        practical and legal requirements of a funeral.
+      </p>
+      <ol class="sm-folio">
+        {held.map((line, i) => (
+          <li>
+            <span class="sm-folio-n">{String(i + 1).padStart(2, "0")}</span>
+            <span class="sm-folio-line">{line}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="sm-handoff">
+        Current notices live on
+        <a href={notices} rel="noopener noreferrer">Funeral Times</a>.
+      </p>
+    </section>
+
+    <section class="sm-night" id="night" aria-labelledby="sm-night-title">
+      <div class="sm-night-copy">
+        <p class="sm-kicker sm-kicker--lamp">Tonight</p>
+        <h2 id="sm-night-title">The door is attended.</h2>
+        <p class="sm-night-lede">
+          Open 24 hours. Ring {phone}. Write to {email}. That is how to
+          reach 14 Main Street, any hour.
+        </p>
+        <p class="sm-desk-actions">
+          <a class="sm-ring sm-ring--lamp sm-ring--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="sm-write sm-write--lamp" href={mailto}>{email}</a>
+        </p>
+      </div>
+
+      <figure class="sm-artefact">
+        <NightDoorPlate />
+        <figcaption>The door at 14 Main Street.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sm-find" id="14" aria-labelledby="sm-find-title">
+      <address class="sm-address">
+        <strong id="sm-find-title">Stephen Morgan Funeral Directors</strong>
+        <span>14 Main Street</span>
+        <span>Newcastle</span>
+        <span>BT33 0AD</span>
+        <span>Open 24 hours</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={notices} rel="noopener noreferrer">Current notices · Funeral Times</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
