@@ -720,6 +720,262 @@ export const transformationCandidates: Transformation[] = [
     href: "/transformations/terry-king/",
     pin: { x: 360, y: 395 },
   },
+  {
+    slug: "chatterbox",
+    name: "Chatterbox Day Nursery",
+    town: "Newcastle",
+    category: "Community & leisure",
+    summary:
+      "A trusted community day nursery on Bryansford Road since 2004 — given an early years curiosity hero, five room pathways, and phone-first visit booking.",
+    before: "/media/concepts/chatterbox/chatterbox-before.jpg",
+    after: "/media/concepts/chatterbox/chatterbox-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Chatterbox Day Nursery's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Chatterbox Day Nursery, captured from the local concept route",
+    href: "/transformations/chatterbox/",
+    pin: { x: 310, y: 360 },
+  },
+  {
+    slug: "first-4-floors",
+    name: "First 4 Floors",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Showroom trade supply and fitting for carpets, vinyl, laminate, and bespoke caravan reflooring at Unit 2 Castlewellan Road — given an architectural timber hero, sample swatch guide, and direct estimation desk.",
+    before: "/media/concepts/first-4-floors/first-4-floors-before.jpg",
+    after: "/media/concepts/first-4-floors/first-4-floors-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for First 4 Floors' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for First 4 Floors, captured from the local concept route",
+    href: "/transformations/first-4-floors/",
+    pin: { x: 380, y: 320 },
+  },
+  {
+    slug: "joes-quality-meats",
+    name: "Joe's Quality Meats",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "High street master butchery and rear hot counter deli at 6 Main Street — given a dry-aged counter hero, deli pasties showcase, and telephone order line.",
+    before: "/media/concepts/joes-quality-meats/joes-quality-meats-before.jpg",
+    after: "/media/concepts/joes-quality-meats/joes-quality-meats-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Joe's Quality Meats' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Joe's Quality Meats, captured from the local concept route",
+    href: "/transformations/joes-quality-meats/",
+    pin: { x: 290, y: 440 },
+  },
+  {
+    slug: "stephen-morgan",
+    name: "Stephen Morgan Funeral Directors",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Dignified independent family bereavement care on Newcastle Main Street — given a tranquil evening bay hero, quiet consultation room focus, and immediate 24-hour telephone line.",
+    before: "/media/concepts/stephen-morgan/stephen-morgan-before.jpg",
+    after: "/media/concepts/stephen-morgan/stephen-morgan-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Stephen Morgan Funeral Directors' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Stephen Morgan Funeral Directors, captured from the local concept route",
+    href: "/transformations/stephen-morgan/",
+    pin: { x: 285, y: 445 },
+  },
+  {
+    slug: "keown-nugent",
+    name: "Keown Nugent Solicitors",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Trusted personal legal counsel and conveyancing on Railway Street — given a dignified professional chamber hero, practice areas ledger, and direct confidential contact.",
+    before: "/media/concepts/keown-nugent/keown-nugent-before.jpg",
+    after: "/media/concepts/keown-nugent/keown-nugent-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Keown Nugent Solicitors' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Keown Nugent Solicitors, captured from the local concept route",
+    href: "/transformations/keown-nugent/",
+    pin: { x: 335, y: 425 },
+  },
+  {
+    slug: "thumbelina",
+    name: "Thumbelina",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Independent family toys, gifts, and dancewear boutique at 10A Railway Street — given a magical shopfront hero, wooden toys & dancewear showcase, and walk-in discovery.",
+    before: "/media/concepts/thumbelina/thumbelina-before.jpg",
+    after: "/media/concepts/thumbelina/thumbelina-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Thumbelina's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Thumbelina, captured from the local concept route",
+    href: "/transformations/thumbelina/",
+    pin: { x: 340, y: 430 },
+  },
+  {
+    slug: "bonnys",
+    name: "Bonny's Caravan Park",
+    town: "Newcastle",
+    category: "Hospitality",
+    summary:
+      "A peaceful Mourne mountain basecamp on Tullybrannigan Road since 1974 — given an authentic meadow landscape hero, bay view timber lodges, and direct season booking enquiry.",
+    before: "/media/concepts/bonnys/bonnys-before.jpg",
+    after: "/media/concepts/bonnys/bonnys-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Bonny's Caravan Park's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Bonny's Caravan Park, captured from the local concept route",
+    href: "/transformations/bonnys/",
+    pin: { x: 210, y: 490 },
+  },
+  {
+    slug: "morellis",
+    name: "Morelli's @ Newcastle",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Award-winning Italian artisan gelato parlour at 73 Central Promenade — given an ocean-fresh seafront awning hero, counter scoop tubs showcase, and seaside promenade ritual.",
+    before: "/media/concepts/morellis/morellis-before.jpg",
+    after: "/media/concepts/morellis/morellis-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Morelli's @ Newcastle's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Morelli's @ Newcastle, captured from the local concept route",
+    href: "/transformations/morellis/",
+    pin: { x: 320, y: 470 },
+  },
+  {
+    slug: "harbour-house",
+    name: "Harbour House Newcastle",
+    town: "Newcastle",
+    category: "Hospitality",
+    summary:
+      "Historic seaside inn, bistro, and ocean-view rooms perched on South Promenade sea wall — given a blue-hour sea wall hero, local seafood platters showcase, and table reservation.",
+    before: "/media/concepts/harbour-house/harbour-house-before.jpg",
+    after: "/media/concepts/harbour-house/harbour-house-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Harbour House Newcastle's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Harbour House Newcastle, captured from the local concept route",
+    href: "/transformations/harbour-house/",
+    pin: { x: 420, y: 550 },
+  },
+  {
+    slug: "piccolo-kitchen",
+    name: "Piccolo Kitchen",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Intimate wood-fired artisan pizzeria and wine bar at 127 Main Street — given a warm dusk restaurant hero, roaring wood oven showcase, and evening table booking.",
+    before: "/media/concepts/piccolo-kitchen/piccolo-kitchen-before.jpg",
+    after: "/media/concepts/piccolo-kitchen/piccolo-kitchen-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Piccolo Kitchen's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Piccolo Kitchen, captured from the local concept route",
+    href: "/transformations/piccolo-kitchen/",
+    pin: { x: 270, y: 450 },
+  },
+  {
+    slug: "savoy-cafe",
+    name: "Savoy Cafe",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Historic high street cafe and comfort food kitchen at 22–24 Main Street — given a heritage claret fascia hero, freshly baked scones counter, and hearty hot lunch menu.",
+    before: "/media/concepts/savoy-cafe/savoy-cafe-before.jpg",
+    after: "/media/concepts/savoy-cafe/savoy-cafe-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Savoy Cafe's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Savoy Cafe, captured from the local concept route",
+    href: "/transformations/savoy-cafe/",
+    pin: { x: 280, y: 445 },
+  },
+  {
+    slug: "sucos",
+    name: "Sucos",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Fresh juices, smoothies, and milkshakes at 21 Central Promenade — given a sunny promenade juice bar hero, fresh fruit blender counter, and seaside cup ritual.",
+    before: "/media/concepts/sucos/sucos-before.jpg",
+    after: "/media/concepts/sucos/sucos-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Sucos' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Sucos, captured from the local concept route",
+    href: "/transformations/sucos/",
+    pin: { x: 300, y: 460 },
+  },
+  {
+    slug: "shimna-taxis",
+    name: "Shimna Taxis",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Local 24/365 taxi dispatch office at 18 Railway Street — given an evening dispatch office hero, radio desk showcase, coastal runs fleet, and direct phone booking.",
+    before: "/media/concepts/shimna-taxis/shimna-taxis-before.jpg",
+    after: "/media/concepts/shimna-taxis/shimna-taxis-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Shimna Taxis' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Shimna Taxis, captured from the local concept route",
+    href: "/transformations/shimna-taxis/",
+    pin: { x: 338, y: 422 },
+  },
+  {
+    slug: "fish-and-farm",
+    name: "Fish & Farm",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Chef-prepared take-home kitchen and sit-in deli at 18 Main Street, sister to the Buck's Head — given a culinary storefront hero, fresh chowder & pies counter, and deli table seating.",
+    before: "/media/concepts/fish-and-farm/fish-and-farm-before.jpg",
+    after: "/media/concepts/fish-and-farm/fish-and-farm-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Fish & Farm's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Fish & Farm, captured from the local concept route",
+    href: "/transformations/fish-and-farm/",
+    pin: { x: 282, y: 442 },
+  },
+  {
+    slug: "john-macs",
+    name: "John Mac's",
+    town: "Newcastle",
+    category: "Food & drink",
+    summary:
+      "Traditional seaside fish and chip takeaway at 9 Central Promenade — given an evening chippy frontage hero, steaming haddock fryers, and paper-wrapped sea wall supper ritual.",
+    before: "/media/concepts/john-macs/john-macs-before.jpg",
+    after: "/media/concepts/john-macs/john-macs-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for John Mac's' current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for John Mac's, captured from the local concept route",
+    href: "/transformations/john-macs/",
+    pin: { x: 295, y: 458 },
+  },
+  {
+    slug: "deja-vu",
+    name: "Deja Vu",
+    town: "Newcastle",
+    category: "Shops & services",
+    summary:
+      "Boutique L’Oréal Professionnel hair salon at 33 Central Promenade — given an airy promenade salon hero, Cut/Colour/Care portfolio, and phone-first chair booking.",
+    before: "/media/concepts/deja-vu/deja-vu-before.jpg",
+    after: "/media/concepts/deja-vu/deja-vu-after.jpg",
+    beforeAlt:
+      "Labelled placeholder for Deja Vu's current public presence — not a live-site screenshot; a matched capture was not filed for this publish",
+    afterAlt:
+      "Mourne Made concept opening screen for Deja Vu, captured from the local concept route",
+    href: "/transformations/deja-vu/",
+    pin: { x: 305, y: 465 },
+  },
 ];
 
 const publicSlugSet = new Set<string>(publicTransformationSlugs);

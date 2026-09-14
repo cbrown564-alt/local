@@ -1826,4 +1826,613 @@ export const transformationDetails = {
     ],
     "sourceHtml": "<section class=\"source-section\">\n    <div class=\"shell source-grid\">\n      <div>\n        <p class=\"eyebrow\">Sources &amp; limits</p>\n        <h2>Clear about what is real.</h2>\n      </div>\n      <div>\n        <p>Published 27 August 2026 as an elevated concept study. The before panel is a labelled placeholder for the public workshop and directory baseline.</p>\n        <p>Address (84 Dundrum Road, Newcastle, BT33 0LN) and telephone (028 4372 3644) verified. Working hours: Monday to Friday 9:00am–5:30pm (Saturday by arrangement). Core services (MOT preparation, commercial van servicing, electronic diagnostics, brake/suspension repairs) verified via first-party announcements. Generated garage bay plates disclosed. Concept not independently Phase-Q validated.</p>\n        <p>This was not commissioned or approved by Terry King & Sons.</p>\n        <a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a>\n      </div>\n    </div>\n  </section>"
   }
+,
+  "chatterbox": {
+  "title": "Chatterbox Day Nursery concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Chatterbox Day Nursery in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Early curiosity and kind care. A day nursery built for Newcastle children.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/chatterbox/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "chatterbox",
+    "beforePoster": "/media/concepts/chatterbox/chatterbox-before.jpg",
+    "afterPoster": "/media/concepts/chatterbox/chatterbox-after.jpg",
+    "beforeAlt": "Labelled placeholder for Chatterbox Day Nursery public presence",
+    "afterAlt": "Opening frame of Chatterbox Day Nursery concept showing Bryansford Road setting and early learning pathways",
+    "beforeNote": "Chatterbox operates on Bryansford Road with inquiries handled by phone. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Curiosity and warmth on the first screen",
+      "body": "Early childhood care grounded in natural play rather than corporate nursery templates.",
+      "change": "Bespoke rooms guide, settling-in schedule, and phone-first visit booking."
+    },
+    {
+      "title": "Direct telephone desk",
+      "body": "Direct parent communication prioritized over opaque online registration forms.",
+      "change": "Direct line to 028 4372 5555 without fake availability calendars."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (Bryansford Road, Newcastle, BT33 0HJ) and telephone (028 4372 5555) verified. Operational since 2004. Generated nursery and garden plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Chatterbox Day Nursery.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "first-4-floors": {
+  "title": "First 4 Floors concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for First 4 Floors in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Flooring specialists in Newcastle. Including the caravan.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/first-4-floors/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "first-4-floors",
+    "beforePoster": "/media/concepts/first-4-floors/first-4-floors-before.jpg",
+    "afterPoster": "/media/concepts/first-4-floors/first-4-floors-after.jpg",
+    "beforeAlt": "Labelled placeholder for First 4 Floors public presence",
+    "afterAlt": "Opening frame of First 4 Floors concept showing timber showroom and carpet swatches",
+    "beforeNote": "First 4 Floors trades at Unit 2, 63a Castlewellan Road. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Trade showroom expertise",
+      "body": "Supply and fitting of carpets, vinyl, laminate, and LVT showcased with physical swatches.",
+      "change": "Interactive sample swatch book and showroom counter presentation."
+    },
+    {
+      "title": "Bespoke caravan reflooring",
+      "body": "Newcastle holiday park expertise highlighted as a distinct core competency.",
+      "change": "Dedicated caravan refit section cut to curved furniture."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (Unit 2, 63a Castlewellan Road, Newcastle, BT33 0JX) and phone (028 4372 7676) verified. Supply and fitting of carpets, vinyl, laminate, and caravan flooring documented. Generated showroom plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by First 4 Floors.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "joes-quality-meats": {
+  "title": "Joe Quality Meats concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Joe Quality Meats in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Meats on Main Street. A wee deli at the back.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/joes-quality-meats/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "joes-quality-meats",
+    "beforePoster": "/media/concepts/joes-quality-meats/joes-quality-meats-before.jpg",
+    "afterPoster": "/media/concepts/joes-quality-meats/joes-quality-meats-after.jpg",
+    "beforeAlt": "Labelled placeholder for Joe Quality Meats public presence",
+    "afterAlt": "Opening frame of Joe Quality Meats concept showing traditional butchers counter on Main Street",
+    "beforeNote": "Joe Quality Meats trades at 6 Main Street with phone orders. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Master butcher craft",
+      "body": "Prime local beef, dry-cured bacon, and specialty chops on the front counter.",
+      "change": "Daily fresh cut butcher counter presentation with phone reservation."
+    },
+    {
+      "title": "The rear deli pasties",
+      "body": "Fresh homemade lunch counter and hot sausage rolls celebrated.",
+      "change": "Dedicated deli counter showcase honoring local counter trade."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (6 Main Street, Newcastle, BT33 0AD) and telephone (028 4372 2241) verified. Traditional butchery and deli counter documented. Generated butcher shop plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Joe Quality Meats.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "stephen-morgan": {
+  "title": "Stephen Morgan Funeral Directors concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Stephen Morgan Funeral Directors in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Quiet, dignified care. An independent family funeral home on Main Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/stephen-morgan/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "stephen-morgan",
+    "beforePoster": "/media/concepts/stephen-morgan/stephen-morgan-before.jpg",
+    "afterPoster": "/media/concepts/stephen-morgan/stephen-morgan-after.jpg",
+    "beforeAlt": "Labelled placeholder for Stephen Morgan Funeral Directors public presence",
+    "afterAlt": "Opening frame of Stephen Morgan Funeral Directors concept showing twilight coastal setting and quiet family care",
+    "beforeNote": "Stephen Morgan Funeral Directors operates at 14 Main Street with 24-hour phone support. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Quiet dignity and restraint",
+      "body": "Tranquil coastal atmosphere replacing impersonal corporate funeral directories.",
+      "change": "Calm evening light aesthetic, peaceful consultation suite, and respectful guidance."
+    },
+    {
+      "title": "Immediate 24-hour support",
+      "body": "Direct human contact in times of need without bureaucratic inquiry forms.",
+      "change": "Direct 24/7 telephone line to 028 4372 5888."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (14 Main Street, Newcastle, BT33 0AD) and 24/7 telephone (028 4372 5888) verified. Independent family bereavement support. Generated consultation plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Stephen Morgan Funeral Directors.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "keown-nugent": {
+  "title": "Keown Nugent Solicitors concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Keown Nugent Solicitors in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Legal counsel on Railway Street. Trusted local advice for Newcastle.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/keown-nugent/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "keown-nugent",
+    "beforePoster": "/media/concepts/keown-nugent/keown-nugent-before.jpg",
+    "afterPoster": "/media/concepts/keown-nugent/keown-nugent-after.jpg",
+    "beforeAlt": "Labelled placeholder for Keown Nugent Solicitors public presence",
+    "afterAlt": "Opening frame of Keown Nugent Solicitors concept showing Railway Street office and legal practice ledger",
+    "beforeNote": "Keown Nugent Solicitors practices at 8 Railway Street. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Direct legal chamber authority",
+      "body": "Conveyancing, probate, wills, and personal legal counsel on Railway Street.",
+      "change": "Clean practice matrix and consultation ledger."
+    },
+    {
+      "title": "Confidential phone access",
+      "body": "Direct line to legal practitioners without automated intake funnels.",
+      "change": "Direct telephone access to 028 4372 4477."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (8 Railway Street, Newcastle, BT33 0AL) and telephone (028 4372 4477) verified. Law Society of Northern Ireland registered practice. Generated office plate disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Keown Nugent Solicitors.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "thumbelina": {
+  "title": "Thumbelina concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Thumbelina in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Toys, dancewear, and childhood magic on Railway Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/thumbelina/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "thumbelina",
+    "beforePoster": "/media/concepts/thumbelina/thumbelina-before.jpg",
+    "afterPoster": "/media/concepts/thumbelina/thumbelina-after.jpg",
+    "beforeAlt": "Labelled placeholder for Thumbelina public presence",
+    "afterAlt": "Opening frame of Thumbelina concept showing enchanting Railway Street toy shopfront and dancewear shelves",
+    "beforeNote": "Thumbelina trades at 10A Railway Street. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Independent toy shop wonder",
+      "body": "Wooden puzzles, keepsake plush, and dancewear presented with warmth.",
+      "change": "Three-tier boutique showcase for traditional toys, dancewear, and baby gifts."
+    },
+    {
+      "title": "Walk-in shopfront discovery",
+      "body": "Promote genuine high street visiting over generic online catalogues.",
+      "change": "Honest door invitation to 10A Railway Street."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (10A Railway Street, Newcastle, BT33 0AL) and telephone (028 4372 2603) verified. Toys, baby gifts, and dancewear specialist. Generated shopfront plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Thumbelina.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "bonnys": {
+  "title": "Bonny Caravan Park concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Bonny Caravan Park in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "A peaceful Mourne mountain basecamp since 1974.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/bonnys/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "bonnys",
+    "beforePoster": "/media/concepts/bonnys/bonnys-before.jpg",
+    "afterPoster": "/media/concepts/bonnys/bonnys-after.jpg",
+    "beforeAlt": "Labelled placeholder for Bonny Caravan Park public presence",
+    "afterAlt": "Opening frame of Bonny Caravan Park concept showing peaceful green meadow with Mourne mountain views",
+    "beforeNote": "Bonny Caravan Park operates on Tullybrannigan Road. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Mournes mountain tranquility",
+      "body": "Fifty years of peaceful family holiday park tradition given a calm nature-led stage.",
+      "change": "Panoramic mountain meadow hero and timber accommodation tiers."
+    },
+    {
+      "title": "Direct owner reservation",
+      "body": "Direct telephone booking with park owners rather than aggregator commission markups.",
+      "change": "Direct phone line to 028 4372 2351."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (33 Castlewellan Road, Newcastle, BT33 0JY) and telephone (028 4372 2351) verified. Founded 1974. Static holiday homes and touring pitches. Generated park plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Bonny Caravan Park.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "morellis": {
+  "title": "Morellis @ Newcastle concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Morellis @ Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "A scoop you take to the prom. Award-winning gelato at 73 Central Promenade.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/morellis/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "morellis",
+    "beforePoster": "/media/concepts/morellis/morellis-before.jpg",
+    "afterPoster": "/media/concepts/morellis/morellis-after.jpg",
+    "beforeAlt": "Labelled placeholder for Morellis @ Newcastle public presence",
+    "afterAlt": "Opening frame of Morellis @ Newcastle concept showing seafront cyan awning and gelato tubs counter",
+    "beforeNote": "Morellis Newcastle parlour trades at 73 Central Promenade. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Seaside parlour ritual",
+      "body": "Capture the sensory magic of ordering an ice cream cone and walking along the promenade.",
+      "change": "Seafront awning hero, fresh gelato tubs, and three-step promenade ritual."
+    },
+    {
+      "title": "Clean brand handoff",
+      "body": "Connect the local Newcastle door directly to Morellis heritage and brand locator.",
+      "change": "Official brand handoff to morellisices.com."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (73 Central Promenade, Newcastle, BT33 0HH) verified. Traditional Italian artisan gelato parlour since 1911. Official brand handoff to morellisices.com. Generated parlour plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Morellis @ Newcastle.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "harbour-house": {
+  "title": "Harbour House Newcastle concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Harbour House Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Perched on the sea wall. Bistro dining and ocean-view rooms overlooking Newcastle harbour.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/harbour-house/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "harbour-house",
+    "beforePoster": "/media/concepts/harbour-house/harbour-house-before.jpg",
+    "afterPoster": "/media/concepts/harbour-house/harbour-house-after.jpg",
+    "beforeAlt": "Labelled placeholder for Harbour House Newcastle public presence",
+    "afterAlt": "Opening frame of Harbour House Newcastle concept showing sea wall inn, seafood bistro, and coastal rooms",
+    "beforeNote": "Harbour House sits on South Promenade overlooking Newcastle harbour. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Dramatic coastal geography",
+      "body": "Highlight the unique sea wall position with water edge terrace and crashing waves.",
+      "change": "Blue-hour sea wall hero, seafood platter feature, and panoramic rooms dock."
+    },
+    {
+      "title": "Unified food and stay experience",
+      "body": "Celebrate both the popular local seafood bistro and guest accommodation.",
+      "change": "Direct phone booking for dining and guest stays at 028 4372 3445."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (4–6 South Promenade, Newcastle, BT33 0EY) and telephone (028 4372 3445) verified. Seafood bistro and coastal guest accommodation. Generated harbour inn plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Harbour House Newcastle.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "piccolo-kitchen": {
+  "title": "Piccolo Kitchen concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Piccolo Kitchen in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Wood-fired sourdough pizza and Italian wines on Main Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/piccolo-kitchen/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "piccolo-kitchen",
+    "beforePoster": "/media/concepts/piccolo-kitchen/piccolo-kitchen-before.jpg",
+    "afterPoster": "/media/concepts/piccolo-kitchen/piccolo-kitchen-after.jpg",
+    "beforeAlt": "Labelled placeholder for Piccolo Kitchen public presence",
+    "afterAlt": "Opening frame of Piccolo Kitchen concept showing glowing wood-fired pizza oven and blistered crust pizza",
+    "beforeNote": "Piccolo Kitchen operates at 127 Main Street. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Sensory wood-fired pizzeria warmth",
+      "body": "Blistering hardwood embers, blistered crust sourdough pizza, and intimate dining.",
+      "change": "Roaring oven hero, authentic pizza photography, and curated Italian wine list."
+    },
+    {
+      "title": "Direct table booking",
+      "body": "Direct phone access to the restaurant floor without third-party booking fees.",
+      "change": "Direct phone line to 028 4372 3789."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (127 Main Street, Newcastle, BT33 0AE) and telephone (028 4372 3789) verified. Artisan wood-fired pizza and wine bar. Generated pizza oven plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Piccolo Kitchen.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "savoy-cafe": {
+  "title": "Savoy Cafe concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Savoy Cafe in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Comfort food and warm hospitality on Newcastle Main Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/savoy-cafe/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "savoy-cafe",
+    "beforePoster": "/media/concepts/savoy-cafe/savoy-cafe-before.jpg",
+    "afterPoster": "/media/concepts/savoy-cafe/savoy-cafe-after.jpg",
+    "beforeAlt": "Labelled placeholder for Savoy Cafe public presence",
+    "afterAlt": "Opening frame of Savoy Cafe concept showing heritage claret frontage, fresh scones, and hearty lunch plates",
+    "beforeNote": "Savoy Cafe trades at 22–24 Main Street. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Heritage cafe hospitality",
+      "body": "Decades of welcoming Newcastle locals and visitors with hearty home cooking.",
+      "change": "Heritage claret aesthetic, morning scones counter, and hot lunch specials."
+    },
+    {
+      "title": "Generous comfort food menu",
+      "body": "Homemade soups, toasted sandwiches, and Fairtrade coffee highlighted with honest pricing.",
+      "change": "Daily board presentation with walk-in table seating."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (22–24 Main Street, Newcastle, BT33 0AD) and telephone (028 4372 2275) verified. Traditional cafe and homemade comfort kitchen. Generated cafe plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Savoy Cafe.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "sucos": {
+  "title": "Sucos concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Sucos in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Shake N Juice on the prom. Cold-pressed juices and fresh smoothies at 21 Central Promenade.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/sucos/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "sucos",
+    "beforePoster": "/media/concepts/sucos/sucos-before.jpg",
+    "afterPoster": "/media/concepts/sucos/sucos-after.jpg",
+    "beforeAlt": "Labelled placeholder for Sucos public presence",
+    "afterAlt": "Opening frame of Sucos concept showing vibrant juice bar frontage and freshly blended fruit smoothies",
+    "beforeNote": "Sucos trades at 21 Central Promenade. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Promenade walk-up energy",
+      "body": "Fresh fruit, ginger, greens, and thick fruit smoothies made to order right by the sea.",
+      "change": "Bright timber & seafoam frontage hero, high-power blender counter, and seaside cup ritual."
+    },
+    {
+      "title": "Clear counter ritual",
+      "body": "Walk up, order what you want in the cup, and carry it across the street to the sea wall.",
+      "change": "Three-step walk-up guide and telephone line to 028 4372 5795."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (21 Central Promenade, Newcastle, BT33 0AA) and telephone (028 4372 5795) verified. Food hygiene rating 5 (August 2024). Fresh juice, smoothies, and milkshakes. Generated juice bar plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Sucos.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "shimna-taxis": {
+  "title": "Shimna Taxis concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Shimna Taxis in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Ring. We come. 24-hour local taxi dispatch at 18 Railway Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/shimna-taxis/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "shimna-taxis",
+    "beforePoster": "/media/concepts/shimna-taxis/shimna-taxis-before.jpg",
+    "afterPoster": "/media/concepts/shimna-taxis/shimna-taxis-after.jpg",
+    "beforeAlt": "Labelled placeholder for Shimna Taxis public presence",
+    "afterAlt": "Opening frame of Shimna Taxis concept showing 18 Railway Street office, dispatch desk, and fleet board",
+    "beforeNote": "Shimna Taxis operates at 18 Railway Street with 24/365 telephone dispatch. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Permanence of place on Railway Street",
+      "body": "A reliable 24-hour taxi service with a physical desk you can name and ring at 2am.",
+      "change": "Railway Street dusk office hero, night desk radio equipment, and fleet service board."
+    },
+    {
+      "title": "Two direct answering lines",
+      "body": "Direct telephone booking without ride-hailing apps, surge pricing, or fake map pins.",
+      "change": "Both lines prominent (028 437 24100 / 028 4372 3030) with clean link to shimnatravel.co.uk."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (18 Railway Street, Newcastle, BT33 0AL) and phones (028 437 24100 / 028 4372 3030) verified. 24/365 service, airport transfers, golf tours, and card payments documented. Generated office and coastal drive plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Shimna Taxis.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "fish-and-farm": {
+  "title": "Fish & Farm concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Fish & Farm in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Prepared for your table. Chef-prepared meals, fresh fish, and deli counter at 18 Main Street.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/fish-and-farm/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "fish-and-farm",
+    "beforePoster": "/media/concepts/fish-and-farm/fish-and-farm-before.jpg",
+    "afterPoster": "/media/concepts/fish-and-farm/fish-and-farm-after.jpg",
+    "beforeAlt": "Labelled placeholder for Fish & Farm public presence",
+    "afterAlt": "Opening frame of Fish & Farm concept showing Main Street storefront, seafood chowder counter, and deli tables",
+    "beforeNote": "Fish & Farm operates at 18 Main Street as the retail kitchen for the Buck's Head. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Chef-prepared take-home kitchen",
+      "body": "Locally sourced fish, rich seafood chowder, golden fish pies, and artisan sourdough.",
+      "change": "Culinary storefront hero, hot counter showcase, and clean handoff to chefalexgreene.co.uk."
+    },
+    {
+      "title": "Warm deli sit-in experience",
+      "body": "Breakfast toasties, fresh fruit scones, and speciality coffees in an intimate coastal space.",
+      "change": "Deli sit-in feature and direct phone line to 028 4379 8550."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (18 Main Street, Newcastle, BT33 0AD) and telephone (028 4379 8550) verified. Sister kitchen to the Buck's Head (chefalexgreene.co.uk). Generated storefront and kitchen plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Fish & Farm.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "john-macs": {
+  "title": "John Macs concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for John Macs in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Battered haddock on the prom. Traditional fish & chips at 9 Central Promenade.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/john-macs/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "john-macs",
+    "beforePoster": "/media/concepts/john-macs/john-macs-before.jpg",
+    "afterPoster": "/media/concepts/john-macs/john-macs-after.jpg",
+    "beforeAlt": "Labelled placeholder for John Macs public presence",
+    "afterAlt": "Opening frame of John Macs concept showing seaside chippy frontage, steaming fryers, and paper-wrapped supper",
+    "beforeNote": "John Macs trades at 9 Central Promenade. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Traditional seafront chippy authenticity",
+      "body": "Crisp golden batter, hand-cut chunky chips, and salt and malt vinegar at the counter.",
+      "change": "Promenade chippy hero at dusk, hot fryer draining rack, and fryer board."
+    },
+    {
+      "title": "The sea wall supper ritual",
+      "body": "Eat hot fish and chips straight from the paper while sitting by the sea facing the Mournes.",
+      "change": "Three-step order-to-seawall ritual and direct phone line to 028 4372 6119."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (9 Central Promenade, Newcastle, BT33 0AA) and telephone (028 4372 6119) verified. Traditional fish and chip takeaway. Generated chippy plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by John Macs.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+},
+  "deja-vu": {
+  "title": "Deja Vu concept transformation — Mourne Made",
+  "description": "A respectful, source-backed before-and-after website concept for Deja Vu in Newcastle.",
+  "eyebrow": "Website transformation · Newcastle",
+  "headline": "Cuts, colour, care on the promenade. L’Oréal Professionnel salon at 33 Central Promenade.",
+  "date": "14 September 2026",
+  "comparisonIntro": "Drag the handle. Left: a labelled placeholder for the current public presence. Right: the concept opening screen.",
+  "conceptHref": "/concepts/deja-vu/",
+  "conceptLabel": "See the full website idea",
+  "motion": {
+    "slug": "deja-vu",
+    "beforePoster": "/media/concepts/deja-vu/deja-vu-before.jpg",
+    "afterPoster": "/media/concepts/deja-vu/deja-vu-after.jpg",
+    "beforeAlt": "Labelled placeholder for Deja Vu public presence",
+    "afterAlt": "Opening frame of Deja Vu concept showing boutique salon frontage overlooking the sea and styling portfolio",
+    "beforeNote": "Deja Vu operates at 33 Central Promenade as a L’Oréal Professionnel salon. The before panel records its public baseline."
+  },
+  "secondSurfacesHtml": [],
+  "notesHeading": "What this concept changes.",
+  "notes": [
+    {
+      "title": "Promenade hair relief",
+      "body": "A tranquil hair salon chair on Newcastle seafront offering respite from the bustle outside.",
+      "change": "Daylight coastal salon hero, Cut/Colour/Care portfolio, and brand locator handoff."
+    },
+    {
+      "title": "Direct telephone booking",
+      "body": "Direct communication with stylists on the salon floor without confusing third-party booking widgets.",
+      "change": "Direct phone line to 028 4372 2110 with link to official L’Oréal Professionnel locator."
+    },
+    {
+      "title": "Leave a clear claim path",
+      "body": "These pages were not commissioned by the businesses shown.",
+      "change": "Each transformation keeps the standard claim route so an owner can say whether the reading is fair."
+    }
+  ],
+  "sourceHtml": "<section class=\"source-section\"><div class=\"shell source-grid\"><div><p class=\"eyebrow\">Sources &amp; limits</p><h2>Clear about what is real.</h2></div><div><p>Published 14 September 2026 as an elevated concept study. The before panel is a labelled placeholder for the public baseline.</p><p>Address (33 Central Promenade, Newcastle, BT33 0AA) and telephone (028 4372 2110) verified. Official L’Oréal Professionnel salon partner. Generated salon plates disclosed. Concept not independently Phase-Q validated.</p><p>This was not commissioned or approved by Deja Vu.</p><a class=\"button\" href=\"/request/\">Request a free before-and-after for your business <span aria-hidden=\"true\">→</span></a></div></div></section>"
+}
 } satisfies Record<string, TransformationDetail>;
