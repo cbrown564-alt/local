@@ -2,7 +2,6 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import DispatchCard from "./DispatchCard.astro";
 
 /* Shimna Taxis — ride: ring to book from 18 Railway Street.
    Site brand: Shimna Travel Taxis. Distinct from Shimna Café (2 Main Street).
@@ -15,6 +14,8 @@ const phoneBHref = "tel:+442843723030";
 const email = "info@shimnatravel.co.uk";
 const mailto = `mailto:${email}`;
 const site = "https://shimnatravel.co.uk/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=18+Railway+Street+Newcastle+BT33+0AL";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500;1,8..60,600&display=swap";
 
@@ -60,7 +61,7 @@ const board = [
   businessName="Shimna Taxis"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The dispatch card is a drawing of the 18 Railway Street desk — not live booking chrome."
+  bannerNote="AI-generated illustrations imagine the setting, spaces and fleet; they are not photographs of the business."
 >
   <div class="st-strip">
     <span>18 Railway Street, Newcastle · BT33 0AL · 24 hrs / 365</span>
@@ -72,31 +73,23 @@ const board = [
   </div>
 
   <header class="st-header">
-    <a class="st-brand" href="/concepts/shimna-taxis/">
-      <span class="st-brand-mark" aria-hidden="true">
-        <DispatchCard compact />
-      </span>
-      <span class="st-brand-text">
+    <div class="st-header-inner">
+      <a class="st-brand" href="/concepts/shimna-taxis/">
         <span class="st-brand-name">Shimna Taxis</span>
         <span class="st-brand-sub">18 Railway Street · Newcastle</span>
-      </span>
-    </a>
-    <nav class="st-nav" aria-label="Concept navigation">
-      <a href="#board">The board</a>
-      <a href="#desk">The desk</a>
-      <a href="#dispatch">Dispatch</a>
-    </nav>
-    <a class="st-ring-nav" href={phoneAHref}>Ring: {phoneA}</a>
+      </a>
+      <nav class="st-nav" aria-label="Concept navigation">
+        <a href="#board">The board</a>
+        <a href="#desk">The desk</a>
+        <a href="#ride">The ride</a>
+        <a href="#dispatch">Dispatch</a>
+      </nav>
+      <a class="st-ring-nav" href={phoneAHref}>Ring: {phoneA}</a>
+    </div>
   </header>
 
   <main class="st-main">
     <section class="st-hero" aria-labelledby="st-hero-title">
-      <div class="st-hero-rail" aria-hidden="true">
-        <span class="st-hero-rail-chip">24 / 365</span>
-        <span class="st-hero-rail-line"></span>
-        <span class="st-hero-rail-chip">RING</span>
-      </div>
-
       <div class="st-hero-copy">
         <p class="st-kicker">Taxi · Railway Street · Newcastle</p>
         <h1 id="st-hero-title">Shimna Taxis</h1>
@@ -107,17 +100,21 @@ const board = [
           executive cars, golf, and a female driver if you prefer. Cards welcome.
         </p>
         <div class="st-hero-actions">
-          <a class="st-btn st-btn--primary" href={phoneAHref}>Ring {phoneA}</a>
-          <a class="st-btn st-btn--ghost" href={phoneBHref}>{phoneB}</a>
+          <a class="st-btn-primary" href={phoneAHref}>Ring {phoneA}</a>
+          <a class="st-btn-secondary" href={phoneBHref}>Ring {phoneB}</a>
         </div>
       </div>
 
-      <aside class="st-hero-meter" aria-hidden="true">
-        <p class="st-meter-label">On the desk</p>
-        <p class="st-meter-big">18</p>
-        <p class="st-meter-sub">Railway Street</p>
-        <p class="st-meter-note">BT33 0AL</p>
-      </aside>
+      <figure class="st-theatre">
+        <img
+          src="/media/concepts/shimna-taxis/shimna-taxis-hero-railway-street.jpg"
+          alt="Shimna Taxis local dispatch office at 18 Railway Street Newcastle at evening dusk"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption>18 Railway Street · Local 24-hour dispatch in Newcastle</figcaption>
+      </figure>
     </section>
 
     <section class="st-board" id="board" aria-labelledby="st-board-title">
@@ -125,7 +122,7 @@ const board = [
         <p class="st-kicker st-kicker--amber">The board</p>
         <h2 id="st-board-title">What we run.</h2>
         <p class="st-section-lead">
-          Saloons, people carriers and estates. Ring either line and say where.
+          Modern saloons, people carriers and estates. Ring either line and say where.
         </p>
       </div>
 
@@ -141,73 +138,85 @@ const board = [
       </div>
     </section>
 
-    <section class="st-desk" id="desk" aria-labelledby="st-desk-title">
-      <p class="st-folio">Shimna Taxis · 18 Railway Street · Newcastle</p>
-      <div class="st-desk-grid">
-        <div class="st-desk-copy">
-          <p class="st-kicker st-kicker--amber">The desk</p>
-          <h2 id="st-desk-title">On the desk every hour.</h2>
-          <p>
-            We take locals and visitors from A to B — business or leisure —
-            with modern saloons, people carriers and estates.
-          </p>
-          <p>
-            Hospital runs, ferry terminals, school runs, theatre nights,
-            sporting events — ring and say where.
-          </p>
-        </div>
+    <section class="st-section" id="desk" aria-labelledby="st-desk-title">
+      <div class="st-section-copy">
+        <p class="st-kicker st-kicker--amber">The desk</p>
+        <h2 id="st-desk-title">On the desk every hour.</h2>
+        <p class="st-lead">
+          We take locals and visitors from A to B — business or leisure. Hospital runs, ferry terminals, school runs, theatre nights, sporting events — ring and say where.
+        </p>
         <blockquote class="st-pull">
           <p>24 hours a day, 365 days a year.</p>
-          <footer>Shimna Travel Taxis · Railway Street</footer>
+          <cite>18 Railway Street dispatch</cite>
         </blockquote>
       </div>
-    </section>
 
-    <section class="st-dispatch" id="dispatch" aria-labelledby="st-dispatch-title">
-      <div class="st-dispatch-copy">
-        <p class="st-kicker">Dispatch</p>
-        <h2 id="st-dispatch-title">18 Railway Street.</h2>
-        <p class="st-dispatch-lede">
-          The dispatch card for the Railway Street desk. Ring either line.
-          Live detail stays on our site.
-        </p>
-        <div class="st-dispatch-actions">
-          <a class="st-btn st-btn--primary" href={phoneAHref}>Ring {phoneA}</a>
-          <a class="st-btn st-btn--ghost st-btn--on-ink" href={phoneBHref}>{phoneB}</a>
-          <a class="st-btn st-btn--ghost st-btn--on-ink" href={mailto}>{email}</a>
-        </div>
-        <p class="st-handoff">
-          <a href={site} rel="noopener noreferrer">shimnatravel.co.uk</a>
-        </p>
-      </div>
-
-      <figure class="st-artefact">
-        <DispatchCard />
-        <figcaption>The dispatch card for 18.</figcaption>
+      <figure class="st-photo-card">
+        <img
+          src="/media/concepts/shimna-taxis/shimna-taxis-dispatch-desk.jpg"
+          alt="Local taxi dispatch desk with landline receiver, booking logs, and radio equipment at 18 Railway Street"
+          width="1200"
+          height="800"
+          loading="lazy"
+        />
+        <figcaption>The Dispatch Desk · 18 Railway Street, Newcastle</figcaption>
       </figure>
     </section>
 
-    <footer class="st-footer">
-      <div class="st-footer-inner">
-        <div class="st-footer-brand">
-          <DispatchCard compact />
-          <strong class="st-footer-name">Shimna Taxis</strong>
-          <span>18 Railway Street · Newcastle · BT33 0AL</span>
-        </div>
-        <div class="st-footer-lines">
-          <strong>Ring to book · 24 hrs / 365</strong>
-          <span>
-            <a href={phoneAHref}>{phoneA}</a>
-            <span aria-hidden="true"> · </span>
-            <a href={phoneBHref}>{phoneB}</a>
-          </span>
-          <a href={mailto}>{email}</a>
-        </div>
-        <div class="st-footer-links">
-          <a href={site} rel="noopener noreferrer">shimnatravel.co.uk</a>
-          <a href={phoneAHref}>Ring {phoneA}</a>
+    <section class="st-section st-section--alt" id="ride" aria-labelledby="st-ride-title">
+      <figure class="st-photo-card">
+        <img
+          src="/media/concepts/shimna-taxis/shimna-taxis-coastal-run.jpg"
+          alt="Shimna Taxis silver estate car on a scenic Mourne coastal drive"
+          width="1200"
+          height="800"
+          loading="lazy"
+        />
+        <figcaption>Coastal &amp; Golf Trips · Airport runs, day trips and tours</figcaption>
+      </figure>
+
+      <div class="st-section-copy">
+        <p class="st-kicker st-kicker--amber">The ride</p>
+        <h2 id="st-ride-title">Coastal runs &amp; airport transfers.</h2>
+        <p class="st-lead">
+          Whether it is Belfast International, Dublin Airport, a scenic tour around the Mourne mountains, or a local run back from the harbour — we have the boot space and comfortable cars ready.
+        </p>
+        <div class="st-inline-action">
+          <a class="st-btn-primary" href={phoneAHref}>Book your run: {phoneA}</a>
         </div>
       </div>
-    </footer>
+    </section>
+
+    <section class="st-door-section" id="dispatch" aria-labelledby="st-dispatch-title">
+      <div class="st-door-card">
+        <p class="st-kicker st-kicker--amber">Dispatch</p>
+        <h2 id="st-dispatch-title">18 Railway Street.</h2>
+        <p class="st-door-desc">
+          Two direct telephone lines that answer 24 hours a day. No complex apps, no surge pricing — ring directly to our office on Railway Street.
+        </p>
+
+        <div class="st-door-actions">
+          <a class="st-door-btn st-door-btn--tel" href={phoneAHref}>
+            <span class="st-door-label">Primary Line</span>
+            <span class="st-door-val">{phoneA}</span>
+          </a>
+          <a class="st-door-btn st-door-btn--tel" href={phoneBHref}>
+            <span class="st-door-label">Secondary Line</span>
+            <span class="st-door-val">{phoneB}</span>
+          </a>
+          <a class="st-door-btn" href={site} rel="noopener noreferrer">
+            <span class="st-door-label">Official Website</span>
+            <span class="st-door-val">shimnatravel.co.uk →</span>
+          </a>
+        </div>
+
+        <address class="st-address">
+          <strong>Shimna Taxis</strong>
+          <span>18 Railway Street</span>
+          <span>Newcastle, Co. Down · BT33 0AL</span>
+          <span>24 Hours · 365 Days</span>
+        </address>
+      </div>
+    </section>
   </main>
 </ConceptLayout>

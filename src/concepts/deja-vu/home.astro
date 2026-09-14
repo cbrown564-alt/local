@@ -2,7 +2,6 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import ColourCard from "./ColourCard.astro";
 
 /* Deja Vu / Deja Vu Hair Co. — relief: a L’Oréal Professionnel chair
    at 33 Central Promenade. Speak as the salon.
@@ -14,6 +13,8 @@ const phone = "028 4372 2110";
 const phoneHref = "tel:+442843722110";
 const loreal =
   "https://hair-salon-en.lorealprofessionnel.com/220655-deja-vu";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=33+Central+Promenade+Newcastle+BT33+0AA";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700;800&display=swap";
 
@@ -44,7 +45,7 @@ const stock = [
   businessName="Deja Vu"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The colour card for 33 is a drawing."
+  bannerNote="AI-generated illustrations imagine the salon and setting; they are not photographs of the business."
 >
   <div class="dv-strip">
     <span>33 Central Promenade, Newcastle · BT33 0AA · L’Oréal Professionnel</span>
@@ -52,27 +53,24 @@ const stock = [
   </div>
 
   <header class="dv-header">
-    <a class="dv-brand" href="/concepts/deja-vu/">
-      <span class="dv-brand-mark" aria-hidden="true">
-        <ColourCard compact />
-      </span>
-      <span class="dv-brand-text">
+    <div class="dv-header-inner">
+      <a class="dv-brand" href="/concepts/deja-vu/">
         <span class="dv-brand-name">Deja Vu</span>
         <span class="dv-brand-sub">33 Central Promenade · Newcastle</span>
-      </span>
-    </a>
-    <nav class="dv-nav" aria-label="Concept navigation">
-      <a href="#chair">The chair</a>
-      <a href="#colour">Colour</a>
-      <a href="#card">The card</a>
-    </nav>
-    <a class="dv-ring-nav" href={phoneHref}>Ring {phone}</a>
+      </a>
+      <nav class="dv-nav" aria-label="Concept navigation">
+        <a href="#chair">The chair</a>
+        <a href="#colour">Colour</a>
+        <a href="#door">Find 33</a>
+      </nav>
+      <a class="dv-ring-nav" href={phoneHref}>Ring {phone}</a>
+    </div>
   </header>
 
   <main class="dv-main">
-    <section class="dv-mast" aria-labelledby="dv-name">
+    <section class="dv-hero" aria-labelledby="dv-name">
       <div class="dv-mast-copy">
-        <p class="dv-kicker">Hair · Central Promenade</p>
+        <p class="dv-kicker">Hair salon · Central Promenade</p>
         <h1 id="dv-name">Deja Vu</h1>
         <p class="dv-number">33 Central Promenade · Newcastle</p>
         <p class="dv-say">Cuts, colour, care on the promenade.</p>
@@ -80,41 +78,37 @@ const stock = [
           A L’Oréal Professionnel chair at 33. Come off the seafront, take
           a seat, leave sorted. Ring to book.
         </p>
-        <p class="dv-cta">
-          <a class="dv-ring dv-ring--solid" href={phoneHref}>Ring {phone}</a>
-          <a class="dv-ghost" href="#card">The colour card ↓</a>
-        </p>
+        <div class="dv-hero-actions">
+          <a class="dv-btn-primary" href={phoneHref}>Ring to book: {phone}</a>
+          <a class="dv-btn-secondary" href="#door">Find 33 Promenade</a>
+        </div>
       </div>
-      <p class="dv-mast-num" aria-hidden="true">33</p>
+
+      <figure class="dv-theatre">
+        <img
+          src="/media/concepts/deja-vu/deja-vu-hero-promenade.jpg"
+          alt="Deja Vu boutique hair salon shopfront at 33 Central Promenade overlooking the sea"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption>33 Central Promenade · L’Oréal Professionnel salon on Newcastle promenade</figcaption>
+      </figure>
     </section>
 
     <section class="dv-folio" id="chair" aria-labelledby="dv-chair-title">
-      <p class="dv-folio-mark">Deja Vu · 33 Central Promenade · L’Oréal Professionnel</p>
-      <div class="dv-folio-grid">
-        <div class="dv-folio-copy">
-          <p class="dv-kicker">The chair</p>
-          <h2 id="dv-chair-title">Come off the prom. Take the chair.</h2>
-          <p>
-            We cut, colour, and care for hair at 33 Central Promenade — a
-            L’Oréal Professionnel salon on Newcastle’s seafront.
-          </p>
-          <p>
-            What is free today lives on the phone. Ring us, tell us what
-            you want from the chair, and we will sort a time.
-          </p>
-          <p class="dv-hand">
-            <a href={phoneHref}>Ring {phone}</a>
-            <span aria-hidden="true">·</span>
-            <a href={loreal} rel="noopener noreferrer">L’Oréal Professionnel locator</a>
-          </p>
-        </div>
-        <aside class="dv-aside" aria-label="Salon door">
-          <p class="dv-aside-label">The door</p>
-          <p class="dv-aside-big">33</p>
-          <p class="dv-aside-line">Central Promenade</p>
-          <p class="dv-aside-line">Newcastle · BT33 0AA</p>
-          <a class="dv-aside-tel" href={phoneHref}>{phone}</a>
-        </aside>
+      <div class="dv-folio-head">
+        <p class="dv-kicker">The chair</p>
+        <h2 id="dv-chair-title">Come off the prom. Take the chair.</h2>
+        <p class="dv-lead">
+          We cut, colour, and care for hair at 33 Central Promenade — a
+          L’Oréal Professionnel salon on Newcastle’s seafront. What is free today lives on the phone. Ring us, tell us what you want from the chair, and we will sort a time.
+        </p>
+        <p class="dv-hand">
+          <a href={phoneHref}>Ring {phone}</a>
+          <span aria-hidden="true">·</span>
+          <a href={loreal} rel="noopener noreferrer">L’Oréal Professionnel locator →</a>
+        </p>
       </div>
     </section>
 
@@ -139,51 +133,36 @@ const stock = [
       </div>
     </section>
 
-    <section class="dv-ritual" id="card" aria-labelledby="dv-card-title">
-      <div class="dv-ritual-copy">
-        <p class="dv-kicker dv-kicker--on-ink">The colour card</p>
-        <h2 id="dv-card-title">Tell us what you want from the chair.</h2>
-        <p>
-          We take appointments on the
-          phone. Ring, sit at 33, leave with the cut, colour, or care you
-          asked for.
+    <section class="dv-door-section" id="door" aria-labelledby="dv-door-title">
+      <div class="dv-door-card">
+        <p class="dv-kicker">The door</p>
+        <h2 id="dv-door-title">33 Central Promenade.</h2>
+        <p class="dv-door-desc">
+          On Newcastle's Central Promenade. Ring directly to speak to the salon and book your appointment.
         </p>
-        <ol class="dv-beats">
-          <li>
-            <span class="dv-beat-n">01</span>
-            <span class="dv-beat-t">You ring</span>
-          </li>
-          <li>
-            <span class="dv-beat-n">02</span>
-            <span class="dv-beat-t">You sit at 33</span>
-          </li>
-          <li>
-            <span class="dv-beat-n">03</span>
-            <span class="dv-beat-t">We cut, colour, or care</span>
-          </li>
-        </ol>
-        <p class="dv-cta dv-cta--on-ink">
-          <a class="dv-ring dv-ring--on-ink" href={phoneHref}>Ring {phone}</a>
-          <a class="dv-ghost dv-ghost--on-ink" href={loreal} rel="noopener noreferrer"
-            >L’Oréal locator</a
-          >
-        </p>
+
+        <div class="dv-door-actions">
+          <a class="dv-door-btn dv-door-btn--tel" href={phoneHref}>
+            <span class="dv-door-label">Telephone</span>
+            <span class="dv-door-val">Ring {phone} →</span>
+          </a>
+          <a class="dv-door-btn" href={maps} rel="noopener noreferrer">
+            <span class="dv-door-label">Directions</span>
+            <span class="dv-door-val">Open in Google Maps →</span>
+          </a>
+          <a class="dv-door-btn" href={loreal} rel="noopener noreferrer">
+            <span class="dv-door-label">Salon Locator</span>
+            <span class="dv-door-val">L'Oréal Professionnel →</span>
+          </a>
+        </div>
+
+        <address class="dv-address">
+          <strong>Deja Vu</strong>
+          <span>33 Central Promenade</span>
+          <span>Newcastle, Co. Down · BT33 0AA</span>
+          <a href={phoneHref}>{phone}</a>
+        </address>
       </div>
-
-      <figure class="dv-artefact">
-        <ColourCard />
-        <figcaption>The colour card for 33.</figcaption>
-      </figure>
-
-      <address class="dv-address">
-        <strong>Deja Vu</strong>
-        <span>Deja Vu Hair Co.</span>
-        <span>33 Central Promenade</span>
-        <span>Newcastle</span>
-        <span>BT33 0AA</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={loreal} rel="noopener noreferrer">L’Oréal Professionnel · locator</a>
-      </address>
     </section>
   </main>
 </ConceptLayout>

@@ -1491,3 +1491,99 @@ Ten built concept grafts published to the public transformations index.
 
   - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Hearty homemade vegetable soup in a cream ceramic bowl with a toasted sandwich on a cafe table, claret napkin, brass accents softly blurred, generous realistic lunch, natural window light. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
   - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+### Sucos
+- `/media/concepts/sucos/sucos-hero-promenade.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 21 Central Promenade juice and smoothie bar frontage
+  - Usage: Concept hero visual
+  - Prompt: Contemporary independent fresh juice and smoothie bar on a Northern Irish seaside promenade at 21 Central Promenade Newcastle County Down, clean modern frontage with natural timber, crisp white and sea-green accents, large glass window with chalkboard menu, bright coastal daylight.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/sucos/sucos-counter-blender.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh fruit, high-power blender pitcher and ginger on counter
+  - Usage: Concept blender section
+  - Prompt: Close-up of modern juice and smoothie bar counter, stainless steel commercial high-power blender pitcher filled with vibrant green and orange fresh fruits, sliced ginger, limes, oranges and berries on light timber cutting board.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/sucos/sucos-promenade-cup.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Smoothie cup held at Newcastle promenade railings facing Slieve Donard
+  - Usage: Concept cup feature
+  - Prompt: Close up of one hand holding a clear takeaway smoothie cup with rich berry and mango smoothie and a paper straw, held up against Newcastle County Down promenade railings, gentle Irish Sea waves and the foot of Slieve Donard mountain.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+### Shimna Taxis
+- `/media/concepts/shimna-taxis/shimna-taxis-hero-railway-street.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 18 Railway Street local taxi dispatch office at evening dusk
+  - Usage: Concept hero visual
+  - Prompt: Exterior of independent local taxi office at 18 Railway Street Newcastle County Down, evening dusk light, modest black and gold painted fascia reading 'Shimna Taxis', amber glow through office window showing dispatch radio desk and telephone, clean silver saloon car parked discreetly outside.
+  - Limits: Imagined scene without reference photographs; premises, views and vehicles are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/shimna-taxis/shimna-taxis-dispatch-desk.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Local taxi dispatch desk with receiver, logbook and radios
+  - Usage: Concept desk feature
+  - Prompt: Close-up inside local taxi dispatch office on Railway Street: wooden dispatch desk with landline receiver telephone, two-way radio base station microphone, notebook log with ballpoint pen, clipboards with printed booking sheets hanging on wall.
+  - Limits: Imagined scene without reference photographs; premises, views and vehicles are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/shimna-taxis/shimna-taxis-coastal-run.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Silver estate taxi on scenic Mourne coastal drive
+  - Usage: Concept ride feature
+  - Prompt: A modern silver estate taxi car driving smoothly along scenic winding Mourne coastal road, Irish sea surf in background on one side and green mountain slopes on the other, soft late afternoon Northern Irish coastal light.
+  - Limits: Imagined scene without reference photographs; premises, views and vehicles are not verified depictions. Visible disclosure in the concept banner.
+
+### Fish & Farm
+- `/media/concepts/fish-and-farm/fish-and-farm-hero-main-street.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 18 Main Street fishmonger and farm kitchen shopfront
+  - Usage: Concept hero visual
+  - Prompt: Exterior of independent quality fishmonger and farm kitchen shop at 18 Main Street Newcastle County Down, deep slate blue and warm timber facade with neat signage 'Fish & Farm', warm window display showing artisan sourdough breads, smoked seafood and gourmet deli treats.
+  - Limits: Imagined scene without reference photographs; premises, views and dishes are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/fish-and-farm/fish-and-farm-take-home-counter.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh seafood chowder, fish pies and crusty bread on counter
+  - Usage: Concept counter section
+  - Prompt: Close-up inside high-end coastal farm kitchen counter: freshly baked seafood chowder in enamel pot, golden puff pastry fish pies, homemade sausage rolls, crusty artisan wheaten bread loaves, sprigs of fresh parsley.
+  - Limits: Imagined scene without reference photographs; premises, views and dishes are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/fish-and-farm/fish-and-farm-deli-table.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Deli sit-in table with toasties, flat white coffee and fresh scones
+  - Usage: Concept deli feature
+  - Prompt: Coastal deli cafe table setting: warm golden toasted breakfast sandwich cut in halves, ceramic cup of flat white coffee, freshly baked fruit scone with clotted cream and jam on a side saucer, gentle morning light from shop window.
+  - Limits: Imagined scene without reference photographs; premises, views and dishes are not verified depictions. Visible disclosure in the concept banner.
+
+### John Mac's
+- `/media/concepts/john-macs/john-macs-hero-promenade.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 9 Central Promenade traditional fish & chip shop frontage
+  - Usage: Concept hero visual
+  - Prompt: Exterior of authentic traditional seaside fish and chip shop at 9 Central Promenade Newcastle County Down, deep navy blue and crisp white frontage with classic serif signage 'John Mac's', warm glowing window showing stainless steel fryers and patrons, damp coastal evening dusk pavement.
+  - Limits: Imagined scene without reference photographs; premises, views and suppers are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/john-macs/john-macs-fryer-counter.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Golden haddock and chunky chips hot from the fryers
+  - Usage: Concept fryer section
+  - Prompt: Inside traditional fish and chip shop behind stainless steel counter: golden crispy battered haddock fillets draining above hot fryer, baskets of fresh chunky hand-cut chips, steam rising, salt shaker and vinegar bottle.
+  - Limits: Imagined scene without reference photographs; premises, views and suppers are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/john-macs/john-macs-paper-supper.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Traditional paper wrap fish and chips on promenade sea wall bench
+  - Usage: Concept supper feature
+  - Prompt: Classic takeaway supper wrapped in traditional white chip paper: steaming crisp golden battered haddock fillet and chunky chips with salt and malt vinegar, paper open on rustic timber sea wall bench, dark blue sea and distant misty mountains.
+  - Limits: Imagined scene without reference photographs; premises, views and suppers are not verified depictions. Visible disclosure in the concept banner.
+
+### Deja Vu
+- `/media/concepts/deja-vu/deja-vu-hero-promenade.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 33 Central Promenade boutique hair salon frontage
+  - Usage: Concept hero visual
+  - Prompt: Exterior of independent hair salon at 33 Central Promenade Newcastle County Down, elegant minimalist charcoal and warm ivory facade with restrained discreet typography 'Deja Vu', clean coastal bay window revealing stylish salon mirrors, styling chairs and soft warm daylight.
+  - Limits: Imagined scene without reference photographs; premises and salon setting are not verified depictions. Visible disclosure in the concept banner.
