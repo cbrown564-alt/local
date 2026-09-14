@@ -1,0 +1,195 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import SupperTicket from "./SupperTicket.astro";
+
+/* John Mac's — meal. Speak as the chippy.
+   Locked Day 8 facts 14 Sep 2026 (Europe/London). Prefer 9 Central Promenade
+   over conflicting 7. No own website — handoff tel only. Do not invent
+   Facebook. Hours conflict across directories — omit. No delivery claim.
+   Action: walk up / ring. Artefact: SupperTicket names 9 Central Promenade. */
+const phone = "028 4372 6119";
+const phoneHref = "tel:+442843726119";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=9+Central+Promenade+Newcastle+BT33+0AA";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap";
+
+const board = [
+  {
+    kicker: "The fry",
+    title: "Battered haddock",
+    body: "The classic on the Central Promenade — crisp batter, hot from the fryer, wrapped for the walk.",
+  },
+  {
+    kicker: "The chips",
+    title: "Hand-cut chips",
+    body: "Cut here, fried here. Salt and vinegar at the counter — take them to the sea wall.",
+  },
+  {
+    kicker: "The board",
+    title: "Sausage, fish cakes, scampi",
+    body: "The rest of the board sits beside the haddock. Ask at the counter for today's run.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"John Mac's — independent concept"}
+  slug="john-macs"
+  bodyClass="concept-page concept-john-macs"
+  lang="en-GB"
+  businessName="John Mac's"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The supper ticket is a drawing."
+>
+  <div class="jm-strip">
+    <span>9 Central Promenade, Newcastle · BT33 0AA</span>
+    <span class="jm-strip-r">
+      <a href={phoneHref}>{phone}</a>
+    </span>
+  </div>
+
+  <header class="jm-header">
+    <a class="jm-brand" href="/concepts/john-macs/">
+      <span class="jm-brand-mark" aria-hidden="true">
+        <SupperTicket compact />
+      </span>
+      <span class="jm-brand-text">
+        <span class="jm-brand-name">John Mac's</span>
+        <span class="jm-brand-sub">Traditional Fish &amp; Chips · Newcastle</span>
+      </span>
+    </a>
+    <nav class="jm-nav" aria-label="Concept navigation">
+      <a href="#board">The board</a>
+      <a href="#pager">The pager</a>
+      <a href="#ticket">The ticket</a>
+      <a href="#door">The door</a>
+    </nav>
+    <a class="jm-walk" href="#door">Walk up</a>
+  </header>
+
+  <main class="jm-main">
+    <section class="jm-hero" aria-labelledby="jm-name">
+      <div class="jm-mast">
+        <p class="jm-kicker">Traditional fish &amp; chips · Central Promenade</p>
+        <h1 id="jm-name">John Mac's</h1>
+        <p class="jm-number">9 Central Promenade · Newcastle</p>
+        <p class="jm-say">Battered haddock on the prom.</p>
+        <p class="jm-lede">
+          Hand-cut chips, sausage, fish cakes, scampi. Take a pager, wait with
+          the sea, collect when it calls. Walk up, or ring.
+        </p>
+        <p class="jm-cta">
+          <a class="jm-walk jm-walk--inline" href="#door">Walk up</a>
+          <a class="jm-ring" href={phoneHref}>Ring {phone}</a>
+        </p>
+      </div>
+
+      <aside class="jm-appetite" aria-label="Tonight's board">
+        <p class="jm-appetite-kicker">On the board</p>
+        <ul class="jm-appetite-list">
+          <li>
+            <span class="jm-appetite-name">Battered haddock</span>
+            <span class="jm-appetite-note">The classic wrap</span>
+          </li>
+          <li>
+            <span class="jm-appetite-name">Hand-cut chips</span>
+            <span class="jm-appetite-note">Salt &amp; vinegar at the counter</span>
+          </li>
+          <li>
+            <span class="jm-appetite-name">Sausage · fish cakes · scampi</span>
+            <span class="jm-appetite-note">Ask for today's run</span>
+          </li>
+        </ul>
+        <p class="jm-appetite-foot">
+          Queues run on a pager — keep the prom until it buzzes.
+        </p>
+      </aside>
+    </section>
+
+    <section class="jm-board" id="board" aria-labelledby="jm-board-title">
+      <div class="jm-section-head">
+        <p class="jm-kicker">The board</p>
+        <h2 id="jm-board-title">Classic takeaway on the Central Promenade.</h2>
+        <p class="jm-section-intro">
+          What we fry is on the board. What you wait with is the sea.
+        </p>
+      </div>
+
+      <div class="jm-cards" role="list">
+        {board.map((item) => (
+          <article class="jm-card" role="listitem">
+            <p class="jm-card-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="jm-pager" id="pager" aria-labelledby="jm-pager-title">
+      <div class="jm-pager-copy">
+        <p class="jm-kicker jm-kicker--on-dark">The wait</p>
+        <h2 id="jm-pager-title">Take a disc. Keep the prom.</h2>
+        <p>
+          We page when your supper is ready. Walk the front, watch the Mournes,
+          come back when it buzzes.
+        </p>
+      </div>
+      <ol class="jm-steps">
+        <li><span class="jm-step-n">01</span><span>Walk up</span></li>
+        <li><span class="jm-step-n">02</span><span>Take a pager</span></li>
+        <li><span class="jm-step-n">03</span><span>Collect when it calls</span></li>
+      </ol>
+    </section>
+
+    <section class="jm-ticket-band" id="ticket" aria-labelledby="jm-ticket-title">
+      <div class="jm-ticket-copy">
+        <p class="jm-kicker">The ticket</p>
+        <h2 id="jm-ticket-title">9 Central Promenade.</h2>
+        <p class="jm-ticket-lede">
+          Paper wrap, vinegar, a pager that names this door. Walk up. Ring if
+          you like.
+        </p>
+        <p class="jm-artefact-cta">
+          <a class="jm-walk jm-walk--inline" href="#door">Walk up</a>
+          <a class="jm-ring" href={phoneHref}>{phone}</a>
+        </p>
+      </div>
+
+      <figure class="jm-artefact">
+        <SupperTicket />
+        <figcaption>The supper ticket for 9 Central Promenade.</figcaption>
+      </figure>
+    </section>
+
+    <section class="jm-door" id="door" aria-labelledby="jm-door-title">
+      <div class="jm-door-copy">
+        <p class="jm-kicker">The door</p>
+        <h2 id="jm-door-title">Walk up. Supper is on the prom.</h2>
+        <p class="jm-door-lede">
+          Come to the counter, or ring and we will
+          tell you how the queue looks.
+        </p>
+        <p class="jm-artefact-cta">
+          <span class="jm-walk jm-walk--inline">Walk up</span>
+          <a class="jm-ring" href={phoneHref}>{phone}</a>
+        </p>
+      </div>
+
+      <address class="jm-address">
+        <strong>John Mac's</strong>
+        <span>Traditional Fish &amp; Chips</span>
+        <span>9 Central Promenade</span>
+        <span>Newcastle</span>
+        <span>County Down</span>
+        <span>BT33 0AA</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={maps} rel="noopener noreferrer">Map</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
