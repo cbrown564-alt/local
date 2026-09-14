@@ -4,16 +4,17 @@
    Not the Belfast room. Guest UI stays Newcastle-facing. */
 
 body.concept-piccolo {
-  --pk-paper: #f7f1e8;
-  --pk-flour: #fffaf4;
-  --pk-ink: #1a1410;
-  --pk-ink-soft: #5c534c;
-  --pk-ash: #241c18;
-  --pk-ash-deep: #120e0c;
-  --pk-ember: #e86a2a;
-  --pk-ember-deep: #c43a12;
+  --pk-paper: #f8f3eb;
+  --pk-flour: #fffbf6;
+  --pk-ink: #1c140e;
+  --pk-ink-soft: #5e5248;
+  --pk-ash: #261d18;
+  --pk-ash-deep: #140e0b;
+  --pk-ember: #c9441a;
+  --pk-ember-deep: #962c0b;
+  --pk-terracotta: #d95b28;
   --pk-sea: #3d5c66;
-  --pk-rule: rgba(26, 20, 16, 0.12);
+  --pk-rule: rgba(28, 20, 14, 0.12);
   --pk-display: "Literata", Georgia, serif;
   --pk-sans: "Sora", "Segoe UI", sans-serif;
   --concept-accent: var(--pk-ember);
@@ -22,10 +23,7 @@ body.concept-piccolo {
   --concept-nav-line: 2px;
 
   margin: 0;
-  background:
-    radial-gradient(80% 45% at 100% -8%, rgba(232, 106, 42, 0.14), transparent 48%),
-    radial-gradient(60% 40% at 0% 0%, rgba(61, 92, 102, 0.08), transparent 52%),
-    var(--pk-paper);
+  background: var(--pk-paper);
   color: var(--pk-ink);
   font-family: var(--pk-sans);
   -webkit-font-smoothing: antialiased;
@@ -42,6 +40,7 @@ body.concept-piccolo {
   color: #f4ebe0;
   font-size: 12.5px;
   letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--pk-ember);
 }
 
 .pk-strip a {
@@ -51,66 +50,67 @@ body.concept-piccolo {
 }
 
 .pk-header {
+  border-bottom: 1px solid var(--pk-rule);
+  background: rgba(255, 251, 246, 0.96);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+
+.pk-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 22px;
   flex-wrap: wrap;
   padding: 16px clamp(16px, 4vw, 56px);
-  border-bottom: 1px solid var(--pk-rule);
-  background: rgba(247, 241, 232, 0.94);
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .pk-brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
+  flex-direction: column;
   color: inherit;
   text-decoration: none;
-}
-
-.pk-brand-mark {
-  flex: none;
-  line-height: 0;
 }
 
 .pk-brand-name {
   display: block;
   font-family: var(--pk-display);
-  font-size: clamp(18px, 1.8vw, 22px);
+  font-size: clamp(22px, 2.2vw, 28px);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.1;
+  color: var(--pk-ink);
 }
 
 .pk-brand-sub {
   display: block;
   margin-top: 3px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--pk-ink-soft);
+  color: var(--pk-ember);
+  font-weight: 700;
 }
 
 .pk-nav {
   display: flex;
-  gap: clamp(14px, 2vw, 22px);
-  flex-wrap: wrap;
-  font-size: 14px;
+  gap: clamp(14px, 2vw, 24px);
+  font-size: 14.5px;
   font-weight: 600;
 }
 
 .pk-nav a {
   color: var(--pk-ink);
   text-decoration: none;
-  border-bottom: var(--concept-nav-line) solid transparent;
-  padding-bottom: 2px;
 }
 
 .pk-nav a:hover,
 .pk-nav a:focus-visible {
-  border-bottom-color: var(--pk-ember);
+  color: var(--pk-ember);
 }
 
 .pk-ring-cta {
@@ -118,13 +118,13 @@ body.concept-piccolo {
   align-items: center;
   justify-content: center;
   padding: 10px 18px;
-  border-radius: 999px;
   background: var(--pk-ember);
-  color: #fffaf4;
+  color: #fff;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13.5px;
   text-decoration: none;
-  letter-spacing: 0.02em;
+  border-radius: 2px;
+  transition: background 0.15s ease;
 }
 
 .pk-ring-cta:hover,
@@ -132,72 +132,63 @@ body.concept-piccolo {
   background: var(--pk-ember-deep);
 }
 
-.pk-ring-cta--inline {
-  padding: 12px 20px;
-}
-
-.pk-walk,
-.pk-site-link {
-  display: inline-flex;
-  align-items: center;
-  font-weight: 700;
-  color: var(--pk-ink);
-  text-underline-offset: 3px;
-}
-
 .pk-main {
-  display: block;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 56px) 72px;
 }
 
-/* —— Airy hero —— */
 .pk-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
-  padding: clamp(36px, 6vw, 88px) clamp(16px, 4vw, 56px) clamp(48px, 7vw, 96px);
+  padding: clamp(36px, 6vw, 72px) 0 clamp(36px, 5vw, 56px);
+  border-bottom: 1px solid var(--pk-rule);
 }
 
 .pk-kicker {
   margin: 0 0 10px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--pk-ember-deep);
+  color: var(--pk-ember);
 }
 
 .pk-mast h1 {
   margin: 0;
   font-family: var(--pk-display);
   font-weight: 700;
-  font-size: clamp(42px, 7.2vw, 76px);
-  line-height: 0.98;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .pk-number {
   margin: 14px 0 0;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--pk-sea);
+  color: var(--pk-ink-soft);
 }
 
 .pk-say {
-  margin: 22px 0 0;
-  max-width: 28rem;
+  margin: 18px 0 0;
+  max-width: 32rem;
   font-family: var(--pk-display);
-  font-size: clamp(20px, 2.2vw, 26px);
+  font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 600;
-  line-height: 1.35;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--pk-ember-deep);
 }
 
 .pk-lede {
   margin: 16px 0 0;
   max-width: 34rem;
   font-size: 16.5px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--pk-ink-soft);
 }
 
@@ -205,86 +196,136 @@ body.concept-piccolo {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 20px;
+  gap: 14px;
   margin: 28px 0 0;
 }
 
-.pk-theatre {
-  margin: 0;
-  padding: clamp(12px, 2vw, 24px);
-  background: var(--pk-flour);
-  border: 1px solid var(--pk-rule);
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(18, 14, 12, 0.08);
+.pk-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  background: var(--pk-ember);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 2px;
 }
 
-.pk-theatre .pk-peel {
+.pk-btn-primary:hover,
+.pk-btn-primary:focus-visible {
+  background: var(--pk-ember-deep);
+}
+
+.pk-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 20px;
+  background: transparent;
+  color: var(--pk-ink);
+  border: 1.5px solid var(--pk-ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.pk-btn-secondary:hover,
+.pk-btn-secondary:focus-visible {
+  background: var(--pk-ink);
+  color: #fff;
+}
+
+.pk-site-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pk-ember-deep);
+  text-decoration: none;
+}
+
+.pk-site-link:hover {
+  text-decoration: underline;
+}
+
+.pk-theatre,
+.pk-photo-card {
+  margin: 0;
+  border: 1px solid var(--pk-rule);
+  background: var(--pk-flour);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(24, 18, 14, 0.08);
+}
+
+.pk-theatre img,
+.pk-photo-card img {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
-.pk-theatre figcaption {
-  margin-top: 12px;
-  font-size: 13px;
+.pk-theatre figcaption,
+.pk-photo-card figcaption {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--pk-ink-soft);
-  text-align: center;
-}
-
-/* —— Editorial —— */
-.pk-editorial {
-  padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 56px);
-  border-top: 1px solid var(--pk-rule);
   background: var(--pk-flour);
+  border-top: 1px solid var(--pk-rule);
 }
 
-.pk-folio {
-  margin: 0 0 28px;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pk-ink-soft);
-}
-
-.pk-editorial-grid {
+/* Feature sections */
+.pk-feature {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-bottom: 1px solid var(--pk-rule);
 }
 
-.pk-col h2 {
+.pk-feature--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+
+.pk-feature-copy h2 {
   margin: 0 0 14px;
   font-family: var(--pk-display);
-  font-size: clamp(26px, 3vw, 36px);
+  font-size: clamp(28px, 4vw, 42px);
   line-height: 1.15;
   font-weight: 700;
+  color: var(--pk-ink);
 }
 
-.pk-col p {
-  margin: 0 0 12px;
-  font-size: 16.5px;
+.pk-lead {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pk-ink);
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.pk-feature-copy p {
+  margin: 0 0 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--pk-ink-soft);
 }
 
-.pk-col--ember {
-  padding: clamp(20px, 3vw, 28px);
-  border-radius: 16px;
-  background:
-    linear-gradient(160deg, rgba(232, 106, 42, 0.1), transparent 55%),
-    var(--pk-paper);
-  border: 1px solid rgba(232, 106, 42, 0.22);
-}
-
-/* —— Hours ritual —— */
+/* Hours */
 .pk-hours {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(28px, 5vw, 64px);
   align-items: start;
-  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 56px);
+  padding: clamp(40px, 6vw, 64px);
+  margin: clamp(40px, 6vw, 72px) 0;
   background: var(--pk-ash);
   color: #f4ebe0;
+  border-radius: 2px;
 }
 
 .pk-hours .pk-kicker {
@@ -294,14 +335,15 @@ body.concept-piccolo {
 .pk-hours h2 {
   margin: 0;
   font-family: var(--pk-display);
-  font-size: clamp(30px, 4vw, 46px);
+  font-size: clamp(28px, 4vw, 44px);
   line-height: 1.1;
+  color: #fff;
 }
 
 .pk-hours-lede {
   margin: 16px 0 0;
   max-width: 28rem;
-  font-size: 16.5px;
+  font-size: 16px;
   line-height: 1.55;
   color: rgba(244, 235, 224, 0.82);
 }
@@ -317,17 +359,16 @@ body.concept-piccolo {
 .pk-week {
   list-style: none;
   margin: 0;
-  padding: 8px 0;
-  border-top: 1px solid rgba(244, 235, 224, 0.16);
+  padding: 0;
 }
 
 .pk-week-row {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(244, 235, 224, 0.12);
-  font-size: 15.5px;
+  font-size: 15px;
 }
 
 .pk-week-day {
@@ -336,7 +377,7 @@ body.concept-piccolo {
 
 .pk-week-hours {
   font-variant-numeric: tabular-nums;
-  color: rgba(244, 235, 224, 0.88);
+  color: rgba(244, 235, 224, 0.9);
 }
 
 .pk-week-row--closed .pk-week-hours {
@@ -347,25 +388,25 @@ body.concept-piccolo {
   font-size: 13px;
 }
 
-/* —— Door —— */
+/* Door section */
 .pk-door {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: clamp(24px, 4vw, 48px);
-  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);
+  padding: clamp(20px, 4vw, 40px) 0 0;
 }
 
 .pk-door h2 {
   margin: 0;
   font-family: var(--pk-display);
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(28px, 4vw, 40px);
   line-height: 1.1;
 }
 
 .pk-door-lede {
   margin: 14px 0 0;
   max-width: 32rem;
-  font-size: 16.5px;
+  font-size: 16px;
   line-height: 1.55;
   color: var(--pk-ink-soft);
 }
@@ -378,7 +419,7 @@ body.concept-piccolo {
 .pk-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin: 24px 0 0;
 }
 
@@ -386,31 +427,32 @@ body.concept-piccolo {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  min-width: 140px;
-  padding: 12px 14px;
-  border-radius: 12px;
+  min-width: 130px;
+  padding: 12px 16px;
   background: var(--pk-flour);
   border: 1px solid var(--pk-rule);
   color: inherit;
   text-decoration: none;
+  border-radius: 2px;
+  transition: border-color 0.15s ease;
 }
 
 .pk-chip:hover,
 .pk-chip:focus-visible {
-  border-color: rgba(232, 106, 42, 0.45);
+  border-color: var(--pk-ember);
 }
 
 .pk-chip-k {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--pk-ink-soft);
+  color: var(--pk-ember);
 }
 
 .pk-chip-v {
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 14px;
 }
 
 .pk-address {
@@ -419,12 +461,13 @@ body.concept-piccolo {
   gap: 6px;
   margin: 0;
   padding: clamp(20px, 3vw, 28px);
-  border-radius: 16px;
-  background: var(--pk-ash);
-  color: #f4ebe0;
+  background: var(--pk-flour);
+  border: 1px solid var(--pk-rule);
+  color: var(--pk-ink);
   font-style: normal;
   font-size: 15px;
   line-height: 1.45;
+  border-left: 3px solid var(--pk-ember);
 }
 
 .pk-address strong {
@@ -434,40 +477,28 @@ body.concept-piccolo {
 }
 
 .pk-address a {
-  color: #ff8a3d;
+  color: var(--pk-ember-deep);
   font-weight: 600;
   width: fit-content;
 }
 
 .pk-sister {
   grid-column: 1 / -1;
-  margin: 8px 0 0;
-  max-width: 40rem;
-  font-size: 14px;
-  line-height: 1.5;
+  margin: 20px 0 0;
+  font-size: 13.5px;
   color: var(--pk-ink-soft);
 }
 
 @media (max-width: 900px) {
   .pk-hero,
-  .pk-editorial-grid,
+  .pk-feature,
+  .pk-feature--reverse,
   .pk-hours,
   .pk-door {
     grid-template-columns: 1fr;
   }
 
   .pk-nav {
-    width: 100%;
-    order: 3;
-  }
-}
-
-@media (max-width: 560px) {
-  .pk-strip {
-    font-size: 11.5px;
-  }
-
-  .pk-mast h1 {
-    font-size: clamp(36px, 12vw, 48px);
+    display: none;
   }
 }

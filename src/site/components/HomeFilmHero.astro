@@ -25,8 +25,10 @@ const first = towns.find((town) => town.id === "newcastle") ?? towns[0];
         <video
           class:list={["film-hero-video", { "is-active": town.id === first.id }]}
           data-town={town.id}
+          data-film-base={`/media/home/${town.filmBase}`}
+          data-mobile-base={`/media/home/${town.mobileBase}`}
           data-mobile-ready={town.mobileReady ? "true" : "false"}
-          data-sound-src={town.soundReady ? `/media/home/${town.id}-ambience.mp3` : undefined}
+          data-sound-src={town.soundReady ? `/media/home/${town.soundFile}` : undefined}
           muted
           loop
           playsinline
@@ -144,9 +146,8 @@ const first = towns.find((town) => town.id === "newcastle") ?? towns[0];
 
     const load = (video: HTMLVideoElement) => {
       if (video.dataset.loaded) return;
-      const town = video.dataset.town ?? "";
       const mobile = smallScreen.matches && video.dataset.mobileReady === "true";
-      const base = `/media/home/${town}-film${mobile ? "-mobile" : ""}`;
+      const base = mobile ? video.dataset.mobileBase : video.dataset.filmBase;
       video.querySelectorAll<HTMLSourceElement>("source[data-kind]").forEach((source) => {
         source.src = `${base}.${source.dataset.kind}`;
       });

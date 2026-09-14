@@ -24,8 +24,28 @@ Mourne Cycles, Donard Veterinary and Castle Farm — because commit `b9e28aa`
 replaced concept hero imagery with drawn service panels and nothing re-read the
 sourcing copy afterwards.
 
-`node tools/check/check-public-assets.mjs` reports images held under `public/`
-that no longer appear anywhere in `src/`.
+`node tools/check/check-public-assets.mjs` rejects unreferenced media under
+`public/`. Archive retired assets outside the deployment and record their
+location here.
+
+## Deployment media cleanup — 10 September 2026
+
+Unused public media now lives under `media/held/`, outside the deployment.
+The [archive manifest](../media/held/MANIFEST.md) records every moved file, its
+previous path, size and SHA-256. These are local, gitignored research copies;
+the original committed files also remain recoverable from Git history. Earlier
+“in use” labels below describe their status at the time of those entries; the
+manifest records their current archived status. Town film mobile encodes and
+ambience remain deployed because the film prototype uses them dynamically.
+
+The two desktop town MP4s were re-encoded with H.264 CRF 24, slow preset,
+no audio and fast-start metadata. This reduced their combined size from
+37,274,389 to 31,441,722 bytes, with unchanged 1920×1080 resolution and
+duration. Full-film SSIM against the previous encodes was 0.9922 (Dundrum)
+and 0.9919 (Newcastle); side-by-side frame inspection found no visible issue.
+Original encodes are preserved in `media/held/home/originals/`, with checksums
+in the archive manifest. This is compression of existing generated media,
+not newly generated content.
 
 ## Codex image recovery archive (10 August 2026)
 
@@ -475,7 +495,7 @@ of these businesses supplied one.
   **in use (mark) / held (source butter).** Downloaded from the Betty's Better
   Butters public homepage on 27 July 2026. The mark remains the concept
   favicon, header seal and ornaments. The butter-on-a-board photograph stays
-  in `public/` as provenance for the maker's own visual language; the live
+  in `media/held/` as provenance for the maker's own visual language; the live
   melt hero now uses the generated plate below rather than this file.
 - `bettys-butters-generated-melt.jpg`, `bettys-butters-generated-treat.jpg`
   and `bettys-butters-generated-staple.jpg` — **in use** (1 August 2026).
@@ -541,7 +561,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   operations. Their readable labels and legends are HTML overlays, with a
   separate text key on small screens. Each figure visibly labels the artwork
   as AI-generated and states its concept-specific evidence boundary.
-- `public/media/maps/arley-house-village-generated.png` — **in use** (23 August
+- `media/held/maps/arley-house-village-generated.png` — **in use** (23 August
   2026). AI-generated indicative map artwork for the Arley House village and
   bay plate, made with the built-in OpenAI image generation tool. It keeps only
   the sourced relationships between Arley House, Belfast Road, Dundrum,
@@ -574,9 +594,9 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
 ### Kent Amusements concept plates
 
 - `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard.png` — **concept asset** (generated 5 August 2026). AI-generated single wide six-panel ink-and-gouache storyboard made with the built-in OpenAI image generation tool for Kent Amusements move 3 / the staged afternoon. It follows the promenade, change, arcade floor, dodgems, VR and return to the sea in one continuous indicative scene. It is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, attractions beyond the published list, opening hours, prices, or premises detail; the panel numbers are the only text in the artwork.
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3.png` — **concept asset / alternate composition** (generated 5 August 2026). AI-generated 2-row × 3-column version of the six-panel ink-and-gouache storyboard above, made with the built-in OpenAI image generation tool from that plate as a composition reference. It keeps the same scene order, numbering, palette and indicative geography; it is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, opening hours, prices, or premises detail.
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png` — **concept asset / researched revision** (generated 5 August 2026). AI-generated revision of the 2-row × 3-column storyboard, made with the built-in OpenAI image generation tool after reviewing the current seafront frontage references, the public business-page mirror's recent posts, and public visitor-photo descriptions. It carries researched cues — long glazed red-grey terrace, promenade railings, front cash desk, broad machine floor, distinct windowed dodgem room and compact VR island — without copying signage or claiming an exact interior survey. It remains indicative comic-book artwork, not a photograph, map, floorplan, or evidence of current premises detail.
-- `public/media/concepts/kent-amusements/kent-amusements-promenade-day.png` and
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3.png` — **concept asset / alternate composition** (generated 5 August 2026). AI-generated 2-row × 3-column version of the six-panel ink-and-gouache storyboard above, made with the built-in OpenAI image generation tool from that plate as a composition reference. It keeps the same scene order, numbering, palette and indicative geography; it is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, opening hours, prices, or premises detail.
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png` — **concept asset / researched revision** (generated 5 August 2026). AI-generated revision of the 2-row × 3-column storyboard, made with the built-in OpenAI image generation tool after reviewing the current seafront frontage references, the public business-page mirror's recent posts, and public visitor-photo descriptions. It carries researched cues — long glazed red-grey terrace, promenade railings, front cash desk, broad machine floor, distinct windowed dodgem room and compact VR island — without copying signage or claiming an exact interior survey. It remains indicative comic-book artwork, not a photograph, map, floorplan, or evidence of current premises detail.
+- `media/held/concepts/kent-amusements/kent-amusements-promenade-day.png` and
   `kent-amusements-promenade-dusk.png` — **concept assets** (generated 5 August
   2026). AI-generated hand-drawn ink-and-gouache promenade plates made with the
   built-in OpenAI image generation tool for Kent Amusements move 5. The day
@@ -589,7 +609,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   the withdrawn 2023 exterior photograph; any guest-facing use must disclose
   the generated illustrative boundary and keep the day plate as the reduced-
   motion/no-JavaScript default.
-- `public/media/concepts/kent-amusements/kent-amusements-promenade-lights.mp4`
+- `media/held/concepts/kent-amusements/kent-amusements-promenade-lights.mp4`
   — **held / not wired** (Gemini Omni, 5 August 2026; lettering edit same day).
   Image-to-video day→dusk transition from the day promenade plate. First pass
   invented a "VARIETY" fascia; conversational edit removed fascia lettering and
@@ -617,7 +637,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   Omni, 5 August 2026). Image-to-video of the researched storyboard strips
   (backlog A3). Indicative comic motion only; still strips remain the
   reduced-motion default.
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png`
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png`
   — **source master** (generated 5 August 2026). AI-generated six-panel 2×3
   comic storyboard made with GPT image generation for Kent Amusements move 3.
   Panels follow the verified afternoon in order: promenade, change, machine
@@ -629,13 +649,13 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   5 August 2026 from the researched 2×3 master). Top and bottom three-panel
   strips served on the concept with captions under each strip; same honesty
   boundary as the master, disclosed on the page.
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-journey.png`,
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-journey.png`,
   `kent-amusements-afternoon-storyboard.png` and
   `kent-amusements-afternoon-storyboard-2x3.png` — **held** (generated 5 August
   2026). Earlier afternoon-journey and storyboard attempts kept for reference;
   not linked from the concept.
 
-- `public/media/concepts/castle-farm/castle-farm-weekly-table-illustration.png` — **in use** (generated 5 August 2026). AI-generated hand-painted editorial still-life made with the built-in OpenAI image generation tool for Castle Farm move 4, showing a possible week's table from the published food categories. It is an illustrative visualisation, not a photograph of Castle Farm, its kitchen or an exact current box, and carries no brand, packaging or availability claim.
+- `media/held/concepts/castle-farm/castle-farm-weekly-table-illustration.png` — **in use** (generated 5 August 2026). AI-generated hand-painted editorial still-life made with the built-in OpenAI image generation tool for Castle Farm move 4, showing a possible week's table from the published food categories. It is an illustrative visualisation, not a photograph of Castle Farm, its kitchen or an exact current box, and carries no brand, packaging or availability claim.
 - `public/media/concepts/castle-farm/castle-farm-hero-video-source.png` —
   **in use.** AI-generated edit created 9 August 2026 for a
   hand-and-object interaction capability test. The in-use weekly-table
@@ -1119,7 +1139,7 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/bear-necessities/workshop-table.jpg` — generated concept plate of a teddy bear workshop table setup with plush skins, hearts, shirts, and certificate scrolls; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/morning-door.jpg` — generated concept plate of the morning doorway with bicycles and floorboards; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/frame-wall.jpg` — generated concept plate of the optical choosing wall and consultation counter on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/armstrong-opticians/eyewear-tray.jpg` — generated concept plate of curated frames and optometry dispensing tools; disclosed on the concept banner. Not a photograph of the premises or stock.
@@ -1303,3 +1323,171 @@ Ten built concept grafts published to the public transformations index.
 - `public/media/concepts/cookie-jar/cookie-jar-hero-bakery.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a traditional Irish home bakery counter at 121 Main Street in Newcastle with warm golden wheaten bread loaves, country butter slab, and flour-dusted wooden peel. Illustrative visualisation of Cookie Jar bakery.
 - `public/media/concepts/cookie-jar/cookie-jar-wheaten-slice.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a thick slice of freshly baked Irish wheaten loaf with melting country butter on a ceramic plate.
 - `public/media/concepts/cookie-jar/cookie-jar-bread-mix-pack.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of Mourne and Bread kraft paper mail-order bread mix kits with wholesome ingredients and buttermilk jar.
+
+## Chatterbox Day Nursery concept plates (14 September 2026)
+
+- `public/media/concepts/chatterbox/chatterbox-hero-bryansford-road.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of 75 Bryansford Road in Newcastle County Down with welcoming painted entrance door and garden path. It is an illustrative visual representation, not a documentary photograph of the premises.
+- `public/media/concepts/chatterbox/chatterbox-garden-play.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of an outdoor nature play garden behind a coastal nursery with timber balance beams and dry-stone boundary wall. Illustrative representation, no real children depicted.
+- `public/media/concepts/chatterbox/chatterbox-hall-entry.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative interior photograph of a calm nursery entrance hallway with coat pegs and timber flooring. Illustrative representation of the interior atmosphere.
+
+## First 4 Floors concept plates (14 September 2026)
+
+- `public/media/concepts/first-4-floors/first-4-floors-hero-showroom.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a trade flooring showroom interior with carpet rolls and timber plank displays. It is an illustrative visual representation, not a documentary photograph of Unit 2.
+- `public/media/concepts/first-4-floors/first-4-floors-counter-samples.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative close-up of flooring swatches and measuring tools on a showroom counter. Illustrative representation of physical sample selection.
+- `public/media/concepts/first-4-floors/first-4-floors-caravan-refloor.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of caravan interior flooring installation with tools and cut-to-fit carpet. Illustrative representation of bespoke mobile fitting work.
+
+## Joe's Quality Meats concept plates (14 September 2026)
+
+- `public/media/concepts/joes-quality-meats/joes-quality-meats-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a traditional Irish butcher shopfront on Main Street in Newcastle County Down with deep oxblood fascia and awning. It is an illustrative visual representation, not a documentary photograph of 6 Main Street.
+- `public/media/concepts/joes-quality-meats/joes-quality-meats-counter-case.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a butcher display case with fresh cuts laid on enamel trays against white metro tiles. Illustrative representation of the butchery counter.
+- `public/media/concepts/joes-quality-meats/joes-quality-meats-deli-pasties.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative food photograph of freshly baked golden Cornish pasties and savoury pies on greaseproof paper on a timber deli counter. Illustrative representation of the rear deli pass.
+
+## Stephen Morgan Funeral Directors concept plates (14 September 2026)
+
+- `public/media/concepts/stephen-morgan/stephen-morgan-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a dignified independent funeral directors exterior at 14 Main Street in Newcastle County Down during blue hour twilight with a warm interior lamp glowing behind frosted windows. Illustrative representation, not a documentary photograph.
+- `public/media/concepts/stephen-morgan/stephen-morgan-consultation-room.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a quiet, private family consultation room with muted linen armchairs and warm reading lamp. Illustrative representation of the consultation setting.
+- `public/media/concepts/stephen-morgan/stephen-morgan-coastal-twilight.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative landscape photograph of the quiet Newcastle coastline and Mourne mountains at peaceful twilight. Illustrative visual representation.
+
+### Keown Nugent Solicitors
+- `/media/concepts/keown-nugent/keown-nugent-hero-railway-street.jpg`
+  - Mode: Illustrative visualization (Antigravity `generate_image`)
+  - Subject: 26 Railway Street legal firm stone entrance with deep Brunswick green door and brass nameplate in calm Newcastle daylight
+  - Usage: Concept hero visual
+
+### Thumbelina
+- `/media/concepts/thumbelina/thumbelina-hero-shopfront.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Traditional independent toy shopfront at 10A Railway Street, Newcastle
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website concept hero. Create an editorial photograph-style illustration of a small traditional Northern Irish toy shop exterior, warm walnut window framing, muted ballet rose painted fascia, inviting window full of wooden toys and teddies, tasteful small ballet dancer plaque beside the doorway with flowers beneath. Overcast coastal daylight, lovingly kept modest shop, tactile realism, eye-level architectural composition. Fascia text only 'Thumbelina'. No people, watermarks or extra text. This is an imagined concept scene, not a reconstruction of an actual premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/thumbelina/thumbelina-counter-shelves.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Wooden toys, dolls and puzzle shelves inside Thumbelina
+  - Usage: Concept counter/shop section
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Close editorial view inside a traditional toy shop: walnut shelves of wooden trains, puzzles without lettering, soft teddies, dolls, rose-painted wall, warm window light. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/thumbelina/thumbelina-window-display.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Ballet dancer plaque and floral entrance on Railway Street
+  - Usage: Concept entrance visual
+
+### Bonny's Caravan Park
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Close-up of an oval vintage ballet dancer plaque on a dusty rose toy shop door, flowers below, walnut-framed toy display softly blurred beside it. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/bonnys/bonnys-hero-tullybrannigan.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Bonny's Caravan Park on Tullybrannigan with Dundrum Bay in the view
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Small static caravan holiday park in rolling green County Down foothills, looking toward a misty coastal bay, pine trees, modest cream caravans, quiet morning. Mountain pine green and bay mist palette. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/bonnys/bonnys-cottage-exterior.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Self-catering cottage on the park grounds
+  - Usage: Concept accommodation section
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Modest whitewashed self-catering cottage in green Northern Irish foothills, slate pitched roof, pine green door, small gravel path and garden, misty morning. No luxury additions. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/bonnys/bonnys-log-pod-meadow.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Timber log pod in mountain meadow setting
+  - Usage: Concept pod feature
+
+### Morelli's @ Newcastle
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Small cosy curved timber holiday sleeping pod in a peaceful green meadow, pine woods behind, simple doorway and small timber step, soft coastal mist. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/morellis/morellis-hero-promenade.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 73 Central Promenade seafront awning and shop entrance
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Inviting modest ice cream parlour on a Northern Irish seaside high street, cyan awning, cream facade with restrained coral details, fascia text 'Morelli’s', soft sunny daylight, framed close to avoid invented landmarks. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/morellis/morellis-counter-gelato.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Artisan gelato counter and scoop tubs
+  - Usage: Concept scoop section
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Close-up of gelato in stainless steel display pans, creamy vanilla, pale strawberry and pistachio, cyan counter details, soft coral and cream palette, realistic modest scooping texture. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/morellis/morellis-promenade-cone.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh cone held against the Newcastle promenade, sea and Mournes
+  - Usage: Concept promenade feature
+
+### Harbour House Newcastle
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. One adult hand holding a crisp waffle cone with vanilla and strawberry ice cream by seaside promenade railings, blue-green sea and soft rounded distant mountains, sunny breezy Northern Irish summer. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/harbour-house/harbour-house-hero-sea-wall.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Harbour House exterior on the sea wall overlooking Newcastle harbour
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Modest coastal inn beside a weathered stone sea wall and small working harbour, white plaster and navy trim, warm windows in blue-hour light, discreet fascia 'Harbour House', rope and stone textures. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/harbour-house/harbour-house-seafood-platter.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh seasonal seafood and shellfish specials
+  - Usage: Concept food feature
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Appetising seafood platter of mussels, prawns and lemon on ceramic plate on a dark timber table, linen napkin, navy accents, coastal window bokeh, natural food photography. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/harbour-house/harbour-house-bay-terrace.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Water Edge Terrace overlooking Dundrum Bay
+  - Usage: Concept house section
+
+### Piccolo Kitchen
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Intimate coastal terrace above a stone harbour wall, two glasses on weathered timber table, navy chairs and restrained nautical rope detail, bay in background, soft evening light. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/piccolo-kitchen/piccolo-hero-main-street.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 127 Main Street shopfront with warm ambient pizzeria glow
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Small wood-fired pizzeria exterior on a Northern Irish town high street at dusk, warm dining light, terracotta and charcoal facade, discreet fascia 'Piccolo Kitchen', inviting modest scale, close architectural framing. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/piccolo-kitchen/piccolo-woodfired-oven.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Flaming wood-fired oven with pizza peel
+  - Usage: Concept oven feature
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Close view of a working wood-fired pizza oven with glowing hardwood embers on one side, soot-darkened terracotta brick arch, metal pizza peel in foreground, convincing fire and warm texture. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/piccolo-kitchen/piccolo-fresh-pizza.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh blistered crust pizza on coastal table
+  - Usage: Concept plate feature
+
+### Savoy Cafe
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Fresh wood-fired margherita pizza with irregular blistered crust, melted mozzarella, tomato and basil on a ceramic plate, charcoal table, terracotta napkin, side-lit appetising editorial food photograph. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/savoy-cafe/savoy-cafe-hero-main-street.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: 22–24 Main Street cafe exterior with heritage signage
+  - Usage: Concept hero visual
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Modest welcoming Northern Irish high street cafe exterior, heritage claret painted fascia with text 'Savoy Cafe', subtle aged brass details, cream plaster, warm morning window light, close architectural framing. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/savoy-cafe/savoy-cafe-counter-bakes.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Homemade scones, traybakes and Fairtrade coffee at the counter
+  - Usage: Concept counter section
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Fresh fruit scones and simple homemade traybakes on ceramic platters at a welcoming cafe counter, coffee cup, claret wall and pastry brass accents, warm natural morning light. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.
+
+- `/media/concepts/savoy-cafe/savoy-cafe-hot-lunch.jpg`
+  - Mode: AI-generated concept illustration; built-in image_gen; generated 14 September 2026
+  - Subject: Fresh seasonal lunch and hot comfort food made to order
+  - Usage: Concept food feature
+
+  - Prompt: Use case: photorealistic-natural. Asset: landscape 3:2 website image, single scene. Hearty homemade vegetable soup in a cream ceramic bowl with a toasted sandwich on a cafe table, claret napkin, brass accents softly blurred, generous realistic lunch, natural window light. Tactile editorial photographic realism. No watermark, no collages, no people unless specified, no text except specified fascia. Imagined concept illustration, not a verified depiction of an actual business or premises.
+  - Limits: Imagined scene without reference photographs; premises, views and products are not verified depictions. Visible disclosure in the concept banner.

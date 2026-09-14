@@ -1,29 +1,26 @@
 /* Savoy Cafe — Main Street enamel, counter appetite, cream paper.
-   Playfair Display + Sora. Guest UI stays café-facing;
-   research honesty lives in the studio banner and the copy brief. */
+   Playfair Display + Sora. Rich heritage claret and pastry cream. */
 
 body.concept-savoy {
-  --sv-paper: #f6efe4;
-  --sv-paper-deep: #ebe1d0;
-  --sv-foam: #fbf6ee;
-  --sv-ink: #1c1210;
-  --sv-ink-soft: #5c4a40;
-  --sv-enamel: #3a1420;
-  --sv-enamel-deep: #2a0e18;
-  --sv-brass: #d4b06a;
-  --sv-brass-deep: #b8924a;
-  --sv-rule: #d8c8b4;
+  --sv-paper: #f8f4ec;
+  --sv-paper-deep: #eee5d5;
+  --sv-foam: #fdfaf4;
+  --sv-ink: #221511;
+  --sv-ink-soft: #634f46;
+  --sv-claret: #4a1525;
+  --sv-claret-deep: #320d18;
+  --sv-brass: #c99e46;
+  --sv-brass-deep: #9e782b;
+  --sv-rule: #dfd3c3;
   --sv-display: "Playfair Display", Georgia, serif;
   --sv-sans: "Sora", system-ui, sans-serif;
-  --concept-accent: var(--sv-enamel);
+  --concept-accent: var(--sv-claret);
   --concept-focus: var(--sv-brass-deep);
   --concept-nav-gap: clamp(16px, 2.2vw, 30px);
   --concept-nav-line: 2px;
 
   margin: 0;
-  background:
-    radial-gradient(ellipse at 12% 0%, rgba(212, 176, 106, 0.12), transparent 42%),
-    var(--sv-paper);
+  background: var(--sv-paper);
   color: var(--sv-ink);
   font-family: var(--sv-sans);
   -webkit-font-smoothing: antialiased;
@@ -36,11 +33,11 @@ body.concept-savoy {
   gap: 12px;
   flex-wrap: wrap;
   padding: 10px clamp(16px, 4vw, 56px);
-  background: var(--sv-enamel-deep);
+  background: var(--sv-claret-deep);
   color: var(--sv-paper);
   font-size: 12.5px;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(212, 176, 106, 0.55);
+  border-bottom: 2px solid var(--sv-brass);
 }
 
 .sv-strip a {
@@ -50,48 +47,55 @@ body.concept-savoy {
 }
 
 .sv-header {
+  border-bottom: 1px solid var(--sv-rule);
+  background: rgba(253, 250, 244, 0.96);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+
+.sv-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 22px;
   flex-wrap: wrap;
   padding: 16px clamp(16px, 4vw, 56px);
-  border-bottom: 1px solid var(--sv-rule);
-  background: rgba(246, 239, 228, 0.96);
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .sv-brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
 }
 
-.sv-brand-mark { flex: none; }
-
 .sv-brand-name {
   display: block;
   font-family: var(--sv-display);
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(22px, 2.2vw, 28px);
   font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: var(--sv-enamel);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--sv-claret);
 }
 
 .sv-brand-sub {
   display: block;
-  margin-top: 4px;
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
+  margin-top: 3px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--sv-ink-soft);
+  color: var(--sv-brass-deep);
+  font-weight: 700;
 }
 
 .sv-nav {
   display: flex;
-  gap: clamp(14px, 2vw, 22px);
+  gap: clamp(14px, 2vw, 24px);
   flex-wrap: wrap;
 }
 
@@ -102,47 +106,51 @@ body.concept-savoy {
   text-decoration: none;
 }
 
-.sv-nav a:hover { color: var(--sv-enamel); }
+.sv-nav a:hover,
+.sv-nav a:focus-visible {
+  color: var(--sv-claret);
+}
 
 .sv-walk {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 18px;
-  background: var(--sv-enamel);
-  color: var(--sv-paper);
+  padding: 10px 18px;
+  background: var(--sv-claret);
+  color: #fff;
   font-family: var(--sv-sans);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
-  border: none;
-  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s ease;
 }
 
-.sv-walk:hover { background: var(--sv-enamel-deep); }
-
-.sv-walk--inline {
-  padding: 12px 20px;
+.sv-walk:hover,
+.sv-walk:focus-visible {
+  background: var(--sv-claret-deep);
 }
 
 .sv-main {
-  padding-bottom: 72px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 56px) 72px;
 }
 
 .sv-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(28px, 4vw, 56px);
-  align-items: start;
-  padding: clamp(36px, 6vw, 72px) clamp(16px, 4vw, 56px) clamp(28px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(36px, 6vw, 72px) 0 clamp(36px, 5vw, 56px);
   border-bottom: 1px solid var(--sv-rule);
 }
 
 .sv-kicker {
   margin: 0 0 10px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--sv-brass-deep);
@@ -157,196 +165,206 @@ body.concept-savoy {
   font-family: var(--sv-display);
   font-size: clamp(44px, 7vw, 78px);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: var(--sv-enamel);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--sv-claret);
 }
 
 .sv-number {
   margin: 14px 0 0;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--sv-ink-soft);
 }
 
 .sv-say {
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   font-family: var(--sv-display);
   font-size: clamp(22px, 3vw, 32px);
   font-style: italic;
   font-weight: 600;
-  color: var(--sv-enamel);
+  color: var(--sv-claret);
   line-height: 1.25;
 }
 
 .sv-lede {
   margin: 16px 0 0;
-  max-width: 38rem;
-  font-size: 17px;
-  line-height: 1.55;
+  max-width: 36rem;
+  font-size: 16.5px;
+  line-height: 1.6;
   color: var(--sv-ink-soft);
 }
 
 .sv-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
   margin: 28px 0 0;
 }
 
-.sv-ring,
-.sv-site {
+.sv-btn-primary {
   display: inline-flex;
   align-items: center;
-  padding: 11px 16px;
-  border: 1.5px solid var(--sv-enamel);
-  color: var(--sv-enamel);
+  padding: 12px 22px;
+  background: var(--sv-claret);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.sv-btn-primary:hover,
+.sv-btn-primary:focus-visible {
+  background: var(--sv-claret-deep);
+}
+
+.sv-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 20px;
+  background: transparent;
+  color: var(--sv-claret);
+  border: 1.5px solid var(--sv-claret);
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  letter-spacing: 0.02em;
+  border-radius: 2px;
 }
 
-.sv-ring:hover,
-.sv-site:hover {
-  background: var(--sv-enamel);
-  color: var(--sv-paper);
+.sv-btn-secondary:hover,
+.sv-btn-secondary:focus-visible {
+  background: var(--sv-claret);
+  color: #fff;
 }
 
-.sv-appetite {
-  background: var(--sv-foam);
-  border: 1px solid var(--sv-rule);
-  padding: clamp(20px, 3vw, 28px);
-  box-shadow: 0 18px 40px rgba(58, 20, 32, 0.06);
-}
-
-.sv-appetite-kicker {
-  margin: 0 0 14px;
-  font-size: 11.5px;
+.sv-site-link {
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--sv-brass-deep);
+  color: var(--sv-claret);
+  text-decoration: none;
 }
 
-.sv-appetite-list {
-  list-style: none;
+.sv-site-link:hover {
+  text-decoration: underline;
+}
+
+.sv-theatre,
+.sv-photo-card {
   margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 14px;
+  border: 1px solid var(--sv-rule);
+  background: var(--sv-foam);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(50, 13, 24, 0.08);
 }
 
-.sv-appetite-list li {
-  display: grid;
-  gap: 4px;
-  padding-bottom: 14px;
-  border-bottom: 1px dashed var(--sv-rule);
+.sv-theatre img,
+.sv-photo-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
-.sv-appetite-list li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.sv-appetite-name {
-  font-family: var(--sv-display);
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--sv-enamel);
-}
-
-.sv-appetite-note {
-  font-size: 14.5px;
-  line-height: 1.45;
+.sv-theatre figcaption,
+.sv-photo-card figcaption {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--sv-ink-soft);
+  background: var(--sv-foam);
+  border-top: 1px solid var(--sv-rule);
 }
 
-.sv-appetite-foot {
-  margin: 18px 0 0;
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: var(--sv-ink-soft);
+/* Feature sections */
+.sv-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-bottom: 1px solid var(--sv-rule);
 }
 
-.sv-counter {
-  padding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 56px);
+.sv-feature--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
 }
 
-.sv-section-head {
-  max-width: 40rem;
-  margin-bottom: clamp(24px, 4vw, 36px);
-}
-
-.sv-section-head h2,
-.sv-name-arc h2,
-.sv-door-copy h2 {
-  margin: 0;
+.sv-feature-copy h2 {
+  margin: 0 0 14px;
   font-family: var(--sv-display);
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 700;
-  line-height: 1.1;
-  color: var(--sv-enamel);
+  line-height: 1.15;
+  color: var(--sv-claret);
 }
 
-.sv-section-intro {
-  margin: 14px 0 0;
-  font-size: 16.5px;
-  line-height: 1.55;
+.sv-lead {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--sv-ink);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.sv-feature-copy p {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--sv-ink-soft);
 }
 
-.sv-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+.sv-feature-copy a {
+  color: var(--sv-claret);
+  font-weight: 700;
 }
 
-.sv-card {
+.sv-counter-highlights {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.sv-highlight {
+  padding: 16px 18px;
   background: var(--sv-foam);
   border: 1px solid var(--sv-rule);
-  padding: 22px 20px 24px;
+  border-left: 3px solid var(--sv-brass);
 }
 
-.sv-card-kicker {
-  margin: 0 0 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--sv-brass-deep);
-}
-
-.sv-card h3 {
-  margin: 0;
+.sv-highlight h3 {
+  margin: 0 0 6px;
   font-family: var(--sv-display);
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 600;
-  color: var(--sv-enamel);
+  color: var(--sv-claret);
 }
 
-.sv-card p {
-  margin: 12px 0 0;
-  font-size: 15px;
-  line-height: 1.55;
+.sv-highlight p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--sv-ink-soft);
 }
 
 .sv-ethos {
-  margin: 0 clamp(16px, 4vw, 56px);
-  padding: clamp(40px, 6vw, 64px) clamp(24px, 4vw, 48px);
-  background: var(--sv-enamel);
+  margin: clamp(36px, 5vw, 64px) 0;
+  padding: clamp(36px, 5vw, 56px) clamp(24px, 4vw, 48px);
+  background: var(--sv-claret);
   color: var(--sv-paper);
   text-align: center;
+  border-radius: 2px;
 }
 
 .sv-ethos h2 {
   margin: 0;
   font-family: var(--sv-display);
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(32px, 5vw, 50px);
   font-weight: 700;
   font-style: italic;
   line-height: 1.1;
@@ -354,65 +372,89 @@ body.concept-savoy {
 }
 
 .sv-ethos p {
-  margin: 18px auto 0;
+  margin: 16px auto 0;
   max-width: 36rem;
   font-size: 16.5px;
   line-height: 1.55;
-  color: rgba(246, 239, 228, 0.88);
+  color: rgba(248, 244, 236, 0.9);
 }
 
 .sv-name-arc {
-  padding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 56px);
+  padding: 0 0 clamp(40px, 6vw, 72px);
+  border-bottom: 1px solid var(--sv-rule);
 }
 
 .sv-paper {
-  max-width: 42rem;
+  max-width: 44rem;
   padding: clamp(24px, 3vw, 36px);
   background: var(--sv-foam);
   border: 1px solid var(--sv-rule);
   border-left: 4px solid var(--sv-brass);
 }
 
+.sv-paper h2 {
+  margin: 0 0 12px;
+  font-family: var(--sv-display);
+  font-size: clamp(26px, 3.6vw, 36px);
+  color: var(--sv-claret);
+}
+
 .sv-paper p {
-  margin: 14px 0 0;
-  font-size: 16.5px;
+  margin: 0;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--sv-ink-soft);
 }
 
-.sv-source {
-  font-size: 13px !important;
-  letter-spacing: 0.02em;
-  color: var(--sv-ink-soft);
-  opacity: 0.85;
-}
-
 .sv-door {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
-  gap: clamp(24px, 4vw, 40px);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 4vw, 48px);
   align-items: start;
-  padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 56px) 0;
-  border-top: 1px solid var(--sv-rule);
+  padding-top: clamp(40px, 6vw, 64px);
+}
+
+.sv-door-copy h2 {
+  margin: 0 0 12px;
+  font-family: var(--sv-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--sv-claret);
 }
 
 .sv-door-lede {
-  margin: 14px 0 0;
-  font-size: 17px;
-  line-height: 1.5;
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--sv-ink-soft);
 }
 
 .sv-hours {
   display: grid;
   gap: 4px;
-  margin: 22px 0 0;
-  font-size: 15px;
+  padding: 16px 20px;
+  background: var(--sv-foam);
+  border: 1px solid var(--sv-rule);
+  margin-bottom: 24px;
+}
+
+.sv-hours strong {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sv-brass-deep);
+}
+
+.sv-hours span {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sv-ink);
 }
 
 .sv-hours-stamp {
-  font-size: 12.5px;
-  color: var(--sv-ink-soft);
+  font-size: 12.5px !important;
+  font-weight: normal !important;
+  color: var(--sv-ink-soft) !important;
 }
 
 .sv-artefact-cta {
@@ -420,73 +462,45 @@ body.concept-savoy {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  margin: 24px 0 0;
-}
-
-.sv-artefact {
-  margin: 0;
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-
-.sv-artefact .sv-fascia {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--sv-rule);
-  background: var(--sv-paper-deep);
-}
-
-.sv-artefact figcaption {
-  margin-top: 10px;
-  font-size: 13.5px;
-  color: var(--sv-ink-soft);
 }
 
 .sv-address {
-  display: grid;
-  gap: 4px;
-  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: clamp(20px, 3vw, 28px);
+  background: var(--sv-foam);
+  border: 1px solid var(--sv-rule);
+  border-left: 3px solid var(--sv-claret);
   font-style: normal;
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.45;
   color: var(--sv-ink-soft);
 }
 
 .sv-address strong {
   font-family: var(--sv-display);
-  font-size: 18px;
-  color: var(--sv-enamel);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sv-claret);
 }
 
 .sv-address a {
-  color: var(--sv-enamel);
+  color: var(--sv-claret);
   font-weight: 600;
   width: fit-content;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 900px) {
   .sv-hero,
+  .sv-feature,
+  .sv-feature--reverse,
   .sv-door {
     grid-template-columns: 1fr;
   }
 
-  .sv-artefact {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .sv-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
   .sv-nav {
-    width: 100%;
-  }
-
-  .sv-header .sv-walk {
-    width: 100%;
+    display: none;
   }
 }

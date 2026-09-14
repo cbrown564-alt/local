@@ -1800,7 +1800,9 @@ async function captureReel(browser, reelSlug, site) {
       if (outreachSegments.some((segment) => !segment)) {
         throw new Error("outreach reel references an incomplete segment");
       }
-      const outreachOut = path.join(videoDir, `${reelSlug}-outreach-reel.mp4`);
+      const outreachDir = path.resolve("media", "held", "concepts", reelSlug);
+      fs.mkdirSync(outreachDir, { recursive: true });
+      const outreachOut = path.join(outreachDir, `${reelSlug}-outreach-reel.mp4`);
       const outreachSeconds = assembleReel(outreachSegments, outreachOut);
       const outreachMb = fs.statSync(outreachOut).size / (1024 * 1024);
       console.log(`  ${path.basename(outreachOut)} — ${outreachSeconds.toFixed(1)}s, ${outreachMb.toFixed(2)} MB`);

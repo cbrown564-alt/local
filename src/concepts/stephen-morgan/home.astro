@@ -2,7 +2,6 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import NightDoorPlate from "./NightDoorPlate.astro";
 
 /* Stephen Morgan Funeral Directors — relief. Speak as the firm.
    Live facts re-read 29 August 2026: Funeral Times listing + Google
@@ -40,126 +39,161 @@ const held = [
   businessName="Stephen Morgan Funeral Directors"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="The night door plate is a drawing."
+  bannerNote="Photography comprises illustrative visualisations of 14 Main Street and Newcastle at twilight."
 >
-  <div class="sm-strip">
-    <span>14 Main Street, Newcastle · BT33 0AD · Open 24 hours</span>
-    <span class="sm-strip-r"><a href={phoneHref}>{phone}</a></span>
+  <div class="sm-topbar">
+    <div class="sm-topbar-inner">
+      <span>14 Main Street, Newcastle · BT33 0AD · Open 24 hours</span>
+      <a class="sm-topbar-tel" href={phoneHref}>{phone}</a>
+    </div>
   </div>
 
   <header class="sm-header">
-    <a class="sm-brand" href="/concepts/stephen-morgan/">
-      <span class="sm-brand-mark" aria-hidden="true">
-        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
-          <rect width="46" height="46" fill="#1a1814"/>
-          <rect x="8" y="7" width="30" height="32" fill="#2c2620"/>
-          <rect x="10" y="9" width="26" height="6" fill="#1a1814"/>
-          <rect x="12" y="17" width="10" height="9" fill="#1a1814"/>
-          <rect x="24" y="17" width="10" height="9" fill="#1a1814"/>
-          <rect x="12" y="28" width="10" height="9" fill="#1a1814"/>
-          <rect x="24" y="28" width="10" height="9" fill="#1a1814"/>
-          <rect x="13" y="3" width="20" height="5" rx="0.5" fill="#9a7a42"/>
-          <text
-            x="23"
-            y="26"
-            text-anchor="middle"
-            fill="#c4a056"
-            font-size="13"
-            font-family="Spectral, Georgia, serif"
-            font-weight="700"
-          >14</text>
-        </svg>
-      </span>
-      <span class="sm-brand-text">
+    <div class="sm-header-inner">
+      <a class="sm-brand" href="/concepts/stephen-morgan/">
         <span class="sm-brand-name">Stephen Morgan</span>
         <span class="sm-brand-sub">Funeral Directors · 14 Main Street</span>
-      </span>
-    </a>
-    <nav class="sm-nav" aria-label="Concept navigation">
-      <a href="#door">The door</a>
-      <a href="#register">The register</a>
-      <a href="#night">Tonight</a>
-      <a href="#14">14</a>
-    </nav>
-    <a class="sm-ring sm-ring--solid" href={phoneHref}>Ring the door</a>
+      </a>
+      <nav class="sm-nav" aria-label="Concept navigation">
+        <a href="#about">The Service</a>
+        <a href="#consultation">Consultation</a>
+        <a href="#services">Arrangements</a>
+        <a href="#door">Contact</a>
+      </nav>
+      <a class="sm-call-btn" href={phoneHref}>24h: {phone}</a>
+    </div>
   </header>
 
   <main class="sm-main">
-    <section class="sm-mast" id="door" aria-labelledby="sm-name">
-      <p class="sm-kicker">24 hour personal service</p>
-      <div class="sm-lockup">
-        <span class="sm-house" aria-hidden="true">14</span>
-        <div class="sm-lockup-type">
-          <h1 id="sm-name">Stephen Morgan</h1>
-          <p class="sm-trade">Funeral Directors</p>
-          <p class="sm-street">14 Main Street, Newcastle</p>
+    <section class="sm-hero" aria-labelledby="sm-name">
+      <div class="sm-hero-content">
+        <p class="sm-kicker">24 hour personal service</p>
+        <h1 id="sm-name">Stephen Morgan</h1>
+        <p class="sm-fascia">Funeral Directors</p>
+        <p class="sm-number">14 Main Street · Newcastle · BT33 0AD</p>
+        <p class="sm-lede">
+          We provide a dignified, professional and caring service.
+          If you need the door tonight, ring.
+        </p>
+        <div class="sm-hero-actions">
+          <a class="sm-btn-primary" href={phoneHref}>Ring {phone}</a>
+          <a class="sm-btn-secondary" href={mailto}>Write to us</a>
         </div>
       </div>
-      <p class="sm-lede">
-        We provide a <em>dignified, professional and caring service</em>.
-        If you need the door tonight, ring.
-      </p>
-      <p class="sm-cta">
-        <a class="sm-ring sm-ring--solid sm-ring--inline" href={phoneHref}>Ring {phone}</a>
-        <a class="sm-write" href={mailto}>Write to us</a>
-      </p>
-    </section>
 
-    <section class="sm-register" id="register" aria-labelledby="sm-register-title">
-      <div class="sm-letterhead">
-        <span>Stephen Morgan Funeral Directors</span>
-        <span>14 Main Street · Any hour</span>
-      </div>
-      <h2 id="sm-register-title">Held at 14.</h2>
-      <p class="sm-register-intro">
-        We offer a 24 hour personal service, guiding families through the
-        practical and legal requirements of a funeral.
-      </p>
-      <ol class="sm-folio">
-        {held.map((line, i) => (
-          <li>
-            <span class="sm-folio-n">{String(i + 1).padStart(2, "0")}</span>
-            <span class="sm-folio-line">{line}</span>
-          </li>
-        ))}
-      </ol>
-      <p class="sm-handoff">
-        Current notices live on
-        <a href={notices} rel="noopener noreferrer">Funeral Times</a>.
-      </p>
-    </section>
-
-    <section class="sm-night" id="night" aria-labelledby="sm-night-title">
-      <div class="sm-night-copy">
-        <p class="sm-kicker sm-kicker--lamp">Tonight</p>
-        <h2 id="sm-night-title">The door is attended.</h2>
-        <p class="sm-night-lede">
-          Open 24 hours. Ring {phone}. Write to {email}. That is how to
-          reach 14 Main Street, any hour.
-        </p>
-        <p class="sm-desk-actions">
-          <a class="sm-ring sm-ring--lamp sm-ring--inline" href={phoneHref}>Ring {phone}</a>
-          <a class="sm-write sm-write--lamp" href={mailto}>{email}</a>
-        </p>
-      </div>
-
-      <figure class="sm-artefact">
-        <NightDoorPlate />
-        <figcaption>The door at 14 Main Street.</figcaption>
+      <figure class="sm-hero-theatre">
+        <img
+          src="/media/concepts/stephen-morgan/stephen-morgan-hero-main-street.jpg"
+          alt="Dignified independent funeral home exterior on Main Street in Newcastle during quiet blue hour twilight with a warm glowing lamp behind frosted windows"
+          width="1536"
+          height="1024"
+          loading="eager"
+        />
+        <figcaption>14 Main Street · Attended any hour of the day or night</figcaption>
       </figure>
     </section>
 
-    <section class="sm-find" id="14" aria-labelledby="sm-find-title">
-      <address class="sm-address">
-        <strong id="sm-find-title">Stephen Morgan Funeral Directors</strong>
-        <span>14 Main Street</span>
-        <span>Newcastle</span>
-        <span>BT33 0AD</span>
-        <span>Open 24 hours</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={mailto}>{email}</a>
-        <a href={notices} rel="noopener noreferrer">Current notices · Funeral Times</a>
-      </address>
+    <section class="sm-section sm-section--intro" id="about" aria-labelledby="sm-service-title">
+      <div class="sm-section-copy">
+        <p class="sm-kicker">Care &amp; Guidance</p>
+        <h2 id="sm-service-title">A dignified, personal service when you need it most.</h2>
+        <p class="sm-body-lead">
+          Held at 14. We offer a 24 hour personal service, guiding families through the practical
+          and legal requirements of a funeral.
+        </p>
+        <p>
+          Available every hour of the day or night to provide quiet, supportive advice and take care of
+          every detail with dignity and discretion.
+        </p>
+        <div class="sm-notice-handoff">
+          <p>Current funeral arrangements and family notices live on Funeral Times.</p>
+          <a href={notices} rel="noopener noreferrer">View notices on Funeral Times →</a>
+        </div>
+      </div>
+
+      <figure class="sm-photo-card">
+        <img
+          src="/media/concepts/stephen-morgan/stephen-morgan-coastal-twilight.jpg"
+          alt="Quiet Newcastle shoreline and silhouette of Slieve Donard at peaceful twilight"
+          width="1200"
+          height="900"
+          loading="lazy"
+        />
+        <figcaption>Newcastle coastline · Peaceful evening under the Mournes</figcaption>
+      </figure>
+    </section>
+
+    <section class="sm-section sm-section--consult" id="consultation" aria-labelledby="sm-consult-title">
+      <figure class="sm-photo-card">
+        <img
+          src="/media/concepts/stephen-morgan/stephen-morgan-consultation-room.jpg"
+          alt="Quiet private family consultation room with muted linen armchairs and warm reading lamp"
+          width="1200"
+          height="900"
+          loading="lazy"
+        />
+        <figcaption>Private consultation room · Calm, comfortable surroundings for arrangement discussions</figcaption>
+      </figure>
+
+      <div class="sm-section-copy">
+        <p class="sm-kicker">Private Arrangements</p>
+        <h2 id="sm-consult-title">A calm space to discuss arrangements.</h2>
+        <p class="sm-body-lead">
+          We welcome families into our quiet consultation rooms on Main Street, or we can visit you in the comfort of your own home.
+        </p>
+        <p>
+          Every arrangement is handled personally, with all the time and care needed to honour your family's wishes.
+        </p>
+      </div>
+    </section>
+
+    <section class="sm-services-section" id="services" aria-labelledby="sm-held-title">
+      <div class="sm-services-head">
+        <p class="sm-kicker">Arrangements</p>
+        <h2 id="sm-held-title">Held at 14.</h2>
+        <p class="sm-services-sub">
+          We offer a 24 hour personal service, guiding families through the practical and legal requirements of a funeral.
+        </p>
+      </div>
+
+      <ul class="sm-services-grid" aria-label="Services provided">
+        {held.map((item) => (
+          <li class="sm-service-item">
+            <span class="sm-service-mark" aria-hidden="true">—</span>
+            <span class="sm-service-text">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="sm-door-section" id="door" aria-labelledby="sm-door-title">
+      <div class="sm-door-card">
+        <p class="sm-kicker">Tonight · Any Hour</p>
+        <h2 id="sm-door-title">The door is attended.</h2>
+        <p class="sm-door-desc">
+          If you need our assistance immediately, day or night, please do not hesitate to phone us.
+        </p>
+
+        <div class="sm-door-actions">
+          <a class="sm-door-btn sm-door-btn--tel" href={phoneHref}>
+            <span class="sm-door-label">Telephone (24 Hours)</span>
+            <span class="sm-door-val">{phone}</span>
+          </a>
+          <a class="sm-door-btn" href={mailto}>
+            <span class="sm-door-label">Email</span>
+            <span class="sm-door-val">{email}</span>
+          </a>
+        </div>
+
+        <address class="sm-address">
+          <strong>Stephen Morgan Funeral Directors</strong>
+          <span>14 Main Street · Newcastle · BT33 0AD</span>
+          <span class="sm-hours-pill">Open 24 hours · 24 hour personal service</span>
+          <a class="sm-notices-link" href={notices} rel="noopener noreferrer">
+            Current notices live on Funeral Times
+          </a>
+        </address>
+      </div>
     </section>
   </main>
 </ConceptLayout>

@@ -204,9 +204,9 @@ Enniskeen delivery files:
   1920×1080, 5.89 MB.
 - `public/media/concepts/hotel-enniskeen/hotel-enniskeen-reel.webm` — VP9 preferred source, 76.90 s,
   1920×1080, 5.64 MB.
-- `public/media/concepts/hotel-enniskeen/hotel-enniskeen-outreach-reel.mp4` — 50.67 s H.264
+- `media/held/concepts/hotel-enniskeen/hotel-enniskeen-outreach-reel.mp4` — 50.67 s H.264
   first-contact edit, 1920×1080, 3.09 MB.
-- `public/media/concepts/hotel-enniskeen/hotel-enniskeen-outreach-reel.webm` — 50.67 s VP9
+- `media/held/concepts/hotel-enniskeen/hotel-enniskeen-outreach-reel.webm` — 50.67 s VP9
   first-contact edit, 1920×1080, 2.97 MB. Both outreach files retain the
   opening, booking sequence and full-frame before-to-after wipe and are
   generated alongside the complete reel.

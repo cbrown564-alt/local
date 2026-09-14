@@ -54,7 +54,8 @@ export function readSourceText(dir = "src") {
  * Matched on the stem rather than the full path, because a reference is not
  * always written out in full: derivatives are picked by `srcset`, and video
  * paths are assembled at runtime (`${base}.mp4`), so the extension may appear
- * nowhere. The stem always does.
+ * nowhere. Keep concrete stems in the data selecting dynamic assets, as home-films.ts
+ * does for desktop, mobile and audio variants.
  */
 export function isReferenced(sourceText, file) {
   return sourceText.includes(path.basename(logicalName(file)));

@@ -15,6 +15,9 @@ export interface TownFilm {
   name: string;
   soundLabel: string;
   ariaLabel: string;
+  filmBase: string;
+  mobileBase: string;
+  soundFile: string;
   soundReady: boolean;
   mobileReady: boolean;
 }
@@ -28,6 +31,9 @@ const TOWNS: ReadonlyArray<
 > = [
   {
     id: "dundrum",
+    filmBase: "dundrum-film",
+    mobileBase: "dundrum-film-mobile",
+    soundFile: "dundrum-ambience.mp3",
     name: "Dundrum",
     soundLabel: "Hear the bay",
     ariaLabel:
@@ -35,6 +41,9 @@ const TOWNS: ReadonlyArray<
   },
   {
     id: "newcastle",
+    filmBase: "newcastle-film",
+    mobileBase: "newcastle-film-mobile",
+    soundFile: "newcastle-ambience.mp3",
     name: "Newcastle",
     soundLabel: "Hear the sea",
     ariaLabel:
@@ -45,9 +54,9 @@ const TOWNS: ReadonlyArray<
 export const getTownFilms = (): TownFilm[] =>
   TOWNS.filter(
     (town) =>
-      exists(`${town.id}-film.mp4`) && exists(`${town.id}-film-poster-1265.webp`),
+      exists(`${town.filmBase}.mp4`) && exists(`${town.id}-film-poster-1265.webp`),
   ).map((town) => ({
     ...town,
-    soundReady: exists(`${town.id}-ambience.mp3`),
-    mobileReady: exists(`${town.id}-film-mobile.mp4`),
+    soundReady: exists(town.soundFile),
+    mobileReady: exists(`${town.mobileBase}.mp4`),
   }));

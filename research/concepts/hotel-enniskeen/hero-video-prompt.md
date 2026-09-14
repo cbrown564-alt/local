@@ -2,7 +2,7 @@
 
 ## Source frame
 
-`public/media/concepts/hotel-enniskeen/enniskeen-hero-video-source.png`
+`media/held/concepts/hotel-enniskeen/enniskeen-hero-video-source.png`
 
 This is a weather-only edit of the faithful dawn visualisation. It does not
 record real weather or activity at the hotel.

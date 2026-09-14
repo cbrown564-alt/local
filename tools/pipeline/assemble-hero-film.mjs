@@ -370,7 +370,7 @@ const assembleTown = async (town) => {
   const duskAt = buildLoop(normalised, master, {
     width: MASTER_WIDTH,
     height: MASTER_HEIGHT,
-    crf: 23,
+    crf: 24,
   });
   console.log(`wrote ${path.relative(root, master)}`);
 

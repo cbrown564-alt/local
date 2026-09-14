@@ -2,7 +2,7 @@
 
 ## Source frame
 
-`public/media/concepts/scopers/scopers-hero-video-source.png`
+`media/held/concepts/scopers/scopers-hero-video-source.png`
 
 This is a provisional AI-generated alternative to the in-use risograph hero
 loop. It does not depict Scopers' real food, premises, chef or service.
