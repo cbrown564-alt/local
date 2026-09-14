@@ -1,0 +1,194 @@
+---
+/* Drawn supper ticket + pager disc for 9 Central Promenade.
+   Honesty that it is a drawing lives in bannerNote, not the caption. */
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{compact ? (
+  <svg
+    class="jm-mark"
+    width="44"
+    height="44"
+    viewBox="0 0 44 44"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect x="1.5" y="1.5" width="41" height="41" rx="3" fill="#0e2a3a"/>
+    <rect x="1.5" y="1.5" width="41" height="41" rx="3" stroke="#c4782a" stroke-width="1.6"/>
+    <circle cx="22" cy="16" r="7" fill="none" stroke="#e8b84a" stroke-width="1.5"/>
+    <circle cx="22" cy="16" r="2.2" fill="#e8b84a"/>
+    <text
+      x="22"
+      y="33"
+      text-anchor="middle"
+      fill="#f4ead8"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="7"
+      font-weight="700"
+      letter-spacing="0.8"
+    >JM</text>
+  </svg>
+) : (
+  <svg
+    class="jm-ticket"
+    viewBox="0 0 720 900"
+    role="img"
+    aria-label="John Mac's supper ticket and pager disc naming 9 Central Promenade, Newcastle — battered haddock, hand-cut chips"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="jm-paper" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f7f0e4"/>
+        <stop offset="1" stop-color="#ebe1d0"/>
+      </linearGradient>
+      <linearGradient id="jm-sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#163848"/>
+        <stop offset="1" stop-color="#0e2a3a"/>
+      </linearGradient>
+      <linearGradient id="jm-disc" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f0d078"/>
+        <stop offset="1" stop-color="#c4782a"/>
+      </linearGradient>
+      <filter id="jm-soft" x="-8%" y="-8%" width="116%" height="116%">
+        <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0e2a3a" flood-opacity="0.18"/>
+      </filter>
+    </defs>
+
+    <!-- Promenade wash behind the ticket -->
+    <rect width="720" height="900" fill="#d9e4ea"/>
+    <rect x="0" y="720" width="720" height="180" fill="#b8c9d4"/>
+    <path d="M0 740 Q180 700 360 730 T720 720 L720 900 L0 900 Z" fill="#9bb0be" opacity="0.55"/>
+
+    <!-- Paper ticket -->
+    <g filter="url(#jm-soft)">
+      <rect x="78" y="56" width="564" height="760" rx="10" fill="url(#jm-paper)" stroke="#c4b39a" stroke-width="2"/>
+      <!-- perforated stub -->
+      <path
+        d="M78 210 H642"
+        stroke="#c4b39a"
+        stroke-width="2"
+        stroke-dasharray="6 8"
+      />
+    </g>
+
+    <!-- Header band -->
+    <rect x="78" y="56" width="564" height="154" rx="10" fill="url(#jm-sea)"/>
+    <rect x="78" y="196" width="564" height="14" fill="#0e2a3a"/>
+
+    <text
+      x="360"
+      y="112"
+      text-anchor="middle"
+      fill="#f4ead8"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="42"
+      font-weight="700"
+      letter-spacing="3"
+    >JOHN MAC'S</text>
+    <text
+      x="360"
+      y="148"
+      text-anchor="middle"
+      fill="#e8b84a"
+      font-family="Source Serif 4, Georgia, serif"
+      font-size="15"
+      font-style="italic"
+    >Traditional Fish &amp; Chips</text>
+    <text
+      x="360"
+      y="178"
+      text-anchor="middle"
+      fill="#f4ead8"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="13"
+      font-weight="600"
+      letter-spacing="2.4"
+    >9 CENTRAL PROMENADE · NEWCASTLE</text>
+
+    <!-- Pager disc -->
+    <circle cx="360" cy="320" r="72" fill="url(#jm-disc)" stroke="#8a5520" stroke-width="3"/>
+    <circle cx="360" cy="320" r="54" fill="none" stroke="#f7f0e4" stroke-width="2" stroke-dasharray="4 5"/>
+    <circle cx="360" cy="320" r="10" fill="#0e2a3a"/>
+    <text
+      x="360"
+      y="292"
+      text-anchor="middle"
+      fill="#0e2a3a"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="11"
+      font-weight="700"
+      letter-spacing="1.6"
+    >PAGER</text>
+    <text
+      x="360"
+      y="348"
+      text-anchor="middle"
+      fill="#0e2a3a"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="36"
+      font-weight="700"
+    >09</text>
+
+    <!-- Board lines -->
+    <text
+      x="130"
+      y="440"
+      fill="#0e2a3a"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="14"
+      font-weight="600"
+      letter-spacing="2"
+    >YOUR SUPPER</text>
+
+    <g font-family="Source Serif 4, Georgia, serif" fill="#1a1612" font-size="20">
+      <text x="130" y="490">Battered haddock</text>
+      <text x="130" y="530">Hand-cut chips</text>
+      <text x="130" y="570">Sausage · fish cakes · scampi</text>
+    </g>
+
+    <path d="M130 600 H590" stroke="#c4b39a" stroke-width="1.5"/>
+
+    <text
+      x="130"
+      y="650"
+      fill="#5a5148"
+      font-family="Source Serif 4, Georgia, serif"
+      font-size="16"
+      font-style="italic"
+    >Take a disc. Wait with the sea.</text>
+    <text
+      x="130"
+      y="682"
+      fill="#5a5148"
+      font-family="Source Serif 4, Georgia, serif"
+      font-size="16"
+      font-style="italic"
+    >Collect when it calls.</text>
+
+    <text
+      x="360"
+      y="750"
+      text-anchor="middle"
+      fill="#0e2a3a"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="18"
+      font-weight="700"
+      letter-spacing="1.5"
+    >9 CENTRAL PROMENADE · BT33 0AA</text>
+    <text
+      x="360"
+      y="782"
+      text-anchor="middle"
+      fill="#c4782a"
+      font-family="Oswald, Arial Narrow, sans-serif"
+      font-size="16"
+      font-weight="600"
+      letter-spacing="1"
+    >028 4372 6119</text>
+  </svg>
+)}
