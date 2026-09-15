@@ -1,0 +1,186 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import HousePlan from "./HousePlan.astro";
+
+/* Bardan Cottage Newcastle — none of the five (elderly day care).
+   Speak as the Newcastle house. Five rooms + garden. Ring/write —
+   not fake booking theatre, not clinic, not B&B. No client photos. */
+
+const phone = "028 4372 3853";
+const phoneHref = "tel:+442843723853";
+const email = "newcastle@bardancottage.com";
+const mailto = `mailto:${email}`;
+const site = "https://www.bardancottage.com/newcastle/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=12+Bryansford+Avenue+Newcastle+BT33+0AX";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap";
+
+const rooms = [
+  { name: "Wet Activity", line: "Hands-on activity space." },
+  { name: "Dry Activity", line: "Movies and quieter making." },
+  { name: "Main Lounge", line: "Company at the heart of the house." },
+  { name: "Library", line: "A quiet corner when the day needs stillness." },
+  { name: "Dining Room", line: "Home-cooked food at the table." },
+  { name: "Garden", line: "Raised beds and outdoor air." },
+];
+---
+
+<ConceptLayout
+  title={"Bardan Cottage Newcastle — independent concept"}
+  slug="bardan-cottage"
+  bodyClass="concept-page concept-bardan-cottage"
+  lang="en-GB"
+  businessName="Bardan Cottage"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The house plan is a drawing."
+>
+  <div class="bc-strip">
+    <span>12 Bryansford Avenue, Newcastle · BT33 0AX</span>
+    <span class="bc-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="bc-header">
+    <a class="bc-brand" href="/concepts/bardan-cottage/">
+      <span class="bc-brand-mark" aria-hidden="true">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" fill="#f3ebe1"/>
+          <path d="M6 28 L22 12 L38 28" fill="none" stroke="#5a4638" stroke-width="1.8"/>
+          <rect x="11" y="28" width="22" height="10" fill="#7a9a78" stroke="#5a4638" stroke-width="1.2"/>
+          <rect x="19" y="31" width="6" height="7" fill="#f3ebe1"/>
+          <circle cx="33" cy="18" r="3" fill="#c4a574" opacity="0.8"/>
+        </svg>
+      </span>
+      <span class="bc-brand-text">
+        <span class="bc-brand-name">Bardan Cottage</span>
+        <span class="bc-brand-sub">Newcastle · Day care</span>
+      </span>
+    </a>
+    <nav class="bc-nav" aria-label="Concept navigation">
+      <a href="#plan">The plan</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#invite">Invitation</a>
+      <a href="#door">The door</a>
+    </nav>
+    <a class="bc-call" href={phoneHref}>Ring us</a>
+  </header>
+
+  <main class="bc-main">
+    <section class="bc-hero" aria-labelledby="bc-name">
+      <div class="bc-hero-copy">
+        <p class="bc-kicker">Day care · Bryansford Avenue</p>
+        <h1 id="bc-name">Bardan Cottage</h1>
+        <p class="bc-place">12 Bryansford Avenue · Newcastle · BT33 0AX</p>
+        <p class="bc-say">A day that holds.</p>
+        <p class="bc-lede">
+          Five rooms and a garden — wet and dry activity, lounge, library,
+          dining with home-cooked food, and raised beds outside. Independence
+          and company in a house planned with lighting and orientation in mind.
+        </p>
+        <p class="bc-cta">
+          <a class="bc-call bc-call--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="bc-mail" href={mailto}>{email}</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="bc-plan" id="plan" aria-labelledby="bc-plan-title">
+      <div class="bc-plan-copy">
+        <p class="bc-kicker">The house</p>
+        <h2 id="bc-plan-title">Five rooms and a garden.</h2>
+        <p>
+          Not a clinic corridor and not a hotel brochure — a day-care house on
+          Bryansford Avenue. The plan is the signature: activity, quiet, dining,
+          and outdoor air.
+        </p>
+      </div>
+      <HousePlan headingId="bc-plan-title" />
+      <p class="bc-plan-cap">The house plan on Bryansford Avenue.</p>
+    </section>
+
+    <section class="bc-rooms" id="rooms" aria-labelledby="bc-rooms-title">
+      <div class="bc-rooms-head">
+        <p class="bc-kicker">Inside</p>
+        <h2 id="bc-rooms-title">How the day is held.</h2>
+      </div>
+      <ul class="bc-room-grid">
+        {rooms.map((r) => (
+          <li>
+            <h3>{r.name}</h3>
+            <p>{r.line}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="bc-garden-band">
+        Garden with raised beds — air and growing things beyond the dining room.
+      </p>
+    </section>
+
+    <section class="bc-ritual" id="invite" aria-labelledby="bc-invite-title">
+      <div class="bc-ritual-inner">
+        <p class="bc-kicker">Invitation</p>
+        <h2 id="bc-invite-title">Ring or write. Visit the plan with us.</h2>
+        <p class="bc-ritual-lede">
+          No online booking theatre — a conversation about who the day is for,
+          then the house on Bryansford Avenue.
+        </p>
+        <ol class="bc-beats">
+          <li>
+            <span class="bc-beat-n">01</span>
+            <span class="bc-beat-t">Ring or write to Newcastle</span>
+          </li>
+          <li>
+            <span class="bc-beat-n">02</span>
+            <span class="bc-beat-t">Tell us who the day is for</span>
+          </li>
+          <li>
+            <span class="bc-beat-n">03</span>
+            <span class="bc-beat-t">Walk the house plan together</span>
+          </li>
+        </ol>
+        <p class="bc-cta">
+          <a class="bc-call bc-call--inline" href={phoneHref}>{phone}</a>
+          <a class="bc-mail" href={mailto}>{email}</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="bc-door" id="door" aria-labelledby="bc-door-title">
+      <div class="bc-door-head">
+        <p class="bc-kicker">The door</p>
+        <h2 id="bc-door-title">12 Bryansford Avenue.</h2>
+        <p class="bc-door-lede">
+          Bardan Cottage Newcastle. Sister centres also in Dunmurry and Newry —
+          this page is the Newcastle house only.
+        </p>
+      </div>
+      <div class="bc-door-grid">
+        <address class="bc-address">
+          <strong>Bardan Cottage</strong>
+          <span>12 Bryansford Avenue</span>
+          <span>Newcastle, Co. Down</span>
+          <span>BT33 0AX</span>
+          <a href={phoneHref}>{phone}</a>
+          <a href={mailto}>{email}</a>
+          <a href={maps} rel="noopener noreferrer">Map</a>
+        </address>
+        <div class="bc-handoff">
+          <h3>Centre page</h3>
+          <p>
+            Facilities and the Newcastle story live on the Bardan Cottage
+            Newcastle page. Start there, then ring or write.
+          </p>
+          <a href={site} rel="noopener noreferrer">bardancottage.com/newcastle</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bc-footer">
+    <p class="bc-footer-name">Bardan Cottage</p>
+    <p>12 Bryansford Avenue, Newcastle · Day care · Five rooms and a garden</p>
+  </footer>
+</ConceptLayout>
