@@ -2,35 +2,37 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CupSleeve from "./CupSleeve.astro";
 
 /* Sucos Shake N Juice — meal: consume-now juice bar on the prom.
    Speak as the bar. 21 Central Promenade, Newcastle, BT33 0AA.
    Not John Mac's (chippy at 9). Not Morelli's (scoop at 73).
    No verified own domain — handoff tel only. Hours conflict — omit.
    FSA 5 Very Good Aug 2024 stays in research, not guest chrome.
-   No form. No invented flavours or social handles. */
+   No form. No invented flavours or social handles.
+   Menu board leads the page; photos support, never headline. */
 const phone = "028 4372 5795";
 const phoneHref = "tel:+442843725795";
 const maps =
   "https://www.google.com/maps/search/?api=1&query=21+Central+Promenade+Newcastle+BT33+0AA";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&display=swap";
+  "https://fonts.googleapis.com/css2?family=Shrikhand&family=Quicksand:wght@400;500;600;700&display=swap";
 
-const ritual = [
+const rounds = [
   {
-    step: "01",
+    num: "01",
     title: "Walk up to 21",
-    desc: "Central Promenade, right facing the bay. Step up to the counter window.",
+    text: "Central Promenade, right facing the bay. Step up to the counter window.",
   },
   {
-    step: "02",
-    title: "Choose the blend",
-    desc: "Juices pressed fresh to order, thick fruit smoothies, shakes and sweet treats.",
+    num: "02",
+    title: "We blend it",
+    text: "Juices pressed fresh to order, thick fruit smoothies, shakes and sweet treats.",
   },
   {
-    step: "03",
+    num: "03",
     title: "Take it to the sea",
-    desc: "Straw in the cup, sea wall across the promenade, Mournes rising behind.",
+    text: "Straw in the cup, sea wall across the promenade, Mournes rising behind.",
   },
 ];
 ---
@@ -43,168 +45,180 @@ const ritual = [
   businessName="Sucos"
   town="Newcastle"
   fontHref={fontHref}
-  bannerNote="AI-generated illustrations imagine the setting, spaces and products; they are not photographs of the business."
+  bannerNote="AI-generated illustrations imagine the setting, spaces and products; they are not photographs of the business. The cup sleeve is a drawing."
 >
-  <div class="su-strip">
-    <span>21 Central Promenade, Newcastle · BT33 0AA</span>
-    <span class="su-strip-r"><a href={phoneHref}>{phone}</a></span>
+  <div class="su-topline">
+    <span class="su-topline-where">21 Central Promenade, Newcastle · BT33 0AA</span>
+    <a class="su-topline-tel" href={phoneHref}>{phone}</a>
   </div>
 
-  <header class="su-header">
-    <div class="su-header-inner">
-      <a class="su-brand" href="/concepts/sucos/">
-        <span class="su-brand-name">Sucos</span>
-        <span class="su-brand-sub">Shake N Juice · 21 Central Promenade</span>
-      </a>
-      <nav class="su-nav" aria-label="Concept navigation">
-        <a href="#board">The board</a>
-        <a href="#blender">The blender</a>
-        <a href="#cup">The cup</a>
-        <a href="#door">Find 21</a>
-      </nav>
-      <a class="su-walk" href="#door">Walk up</a>
-    </div>
+  <header class="su-sign">
+    <a class="su-wordmark" href="/concepts/sucos/">
+      <span class="su-wordmark-name">Sucos</span>
+      <span class="su-wordmark-tag">Shake N Juice</span>
+    </a>
+    <nav class="su-jumpnav" aria-label="Concept navigation">
+      <a href="#board">The board</a>
+      <a href="#counter">The counter</a>
+      <a href="#find-us">Find 21</a>
+    </nav>
+    <a class="su-ringlink" href={phoneHref}>Ring the counter</a>
   </header>
 
-  <main class="su-main">
-    <section class="su-hero" aria-labelledby="su-name">
-      <div class="su-mast">
-        <p class="su-kicker">Juice bar · Central Promenade</p>
-        <h1 id="su-name">Sucos</h1>
-        <p class="su-number">21 Central Promenade · Newcastle</p>
-        <p class="su-say">Shake N Juice on the prom.</p>
-        <p class="su-lede">
-          Fresh juices, smoothies, milkshakes and desserts. Walk up to 21,
-          or ring. Take the cup straight out to the sea.
+  <main class="su-page">
+    <section class="su-menuwall" id="board" aria-labelledby="su-menuwall-title">
+      <div class="su-menuwall-head">
+        <p class="su-menuwall-eyebrow">Juice bar · Central Promenade · Newcastle</p>
+        <h1 id="su-menuwall-title">
+          Sucos
+          <span class="su-menuwall-sub">Shake N Juice</span>
+        </h1>
+        <p class="su-menuwall-intro">
+          Fresh juices, thick smoothies, milkshakes and desserts — pressed and
+          blended to order at the counter. Walk up to 21, or ring ahead.
         </p>
-        <div class="su-hero-actions">
-          <a class="su-btn-primary" href="#door">Walk up to 21</a>
-          <a class="su-btn-secondary" href={phoneHref}>Ring {phone}</a>
-        </div>
       </div>
 
-      <figure class="su-theatre">
+      <div class="su-panels" role="list">
+        <article class="su-panel su-panel--press" role="listitem">
+          <h2 class="su-panel-name">Juices</h2>
+          <p class="su-panel-note">Pressed fresh</p>
+          <ul class="su-panel-lines">
+            <li>Pressed when you order</li>
+            <li>Poured straight into the glass</li>
+            <li>Ask what is in the press today</li>
+          </ul>
+        </article>
+        <article class="su-panel su-panel--blend" role="listitem">
+          <h2 class="su-panel-name">Smoothies</h2>
+          <p class="su-panel-note">Blended thick</p>
+          <ul class="su-panel-lines">
+            <li>Fruit thick enough for a straw</li>
+            <li>Blended to order at the counter</li>
+            <li>Made for the walk to the sea</li>
+          </ul>
+        </article>
+        <article class="su-panel su-panel--sweet" role="listitem">
+          <h2 class="su-panel-name">Shakes &amp; desserts</h2>
+          <p class="su-panel-note">The sweet finish</p>
+          <ul class="su-panel-lines">
+            <li>Milkshakes blended cold</li>
+            <li>Desserts from the counter</li>
+            <li>When the prom wants something richer</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="su-menuwall-foot">What is in the blender today is written up at the counter.</p>
+    </section>
+
+    <section class="su-seafront" aria-labelledby="su-seafront-title">
+      <div class="su-seafront-copy">
+        <h2 id="su-seafront-title">The juice bar on the prom.</h2>
+        <p>
+          Step off the seafront and up to our window at 21. The counter faces
+          the bay — you can watch the water while the blender runs.
+        </p>
+      </div>
+      <figure class="su-seafront-frame">
         <img
           src="/media/concepts/sucos/sucos-hero-promenade.jpg"
           alt="Sucos juice and smoothie bar frontage at 21 Central Promenade on the Newcastle seafront"
-          width="1200"
-          height="675"
+          width="1376"
+          height="768"
           loading="eager"
         />
-        <figcaption>21 Central Promenade · Fresh juices &amp; smoothies on the seafront</figcaption>
+        <figcaption>21 Central Promenade · fresh juice on the seafront</figcaption>
       </figure>
     </section>
 
-    <section class="su-folio" id="board" aria-labelledby="su-board-title">
-      <div class="su-folio-head">
-        <p class="su-kicker">The board</p>
-        <h2 id="su-board-title">Order at the counter.</h2>
-        <p class="su-folio-lede">
-          Juices pressed for the glass. Smoothies thick enough for a straw.
-          Milkshakes and desserts when you want the sweet finish. What is in
-          the blender today is at the counter.
-        </p>
-      </div>
-      <div class="su-board" role="list">
-        <article class="su-col" role="listitem">
-          <p class="su-col-kicker">Cold</p>
-          <h3>Juice</h3>
-          <p>Fresh juice in the glass — made when you ask for it.</p>
-        </article>
-        <article class="su-col" role="listitem">
-          <p class="su-col-kicker">Blended</p>
-          <h3>Smoothie</h3>
-          <p>Fruit thick enough for a straw. Walk it to the sea.</p>
-        </article>
-        <article class="su-col" role="listitem">
-          <p class="su-col-kicker">Sweet</p>
-          <h3>Shake &amp; dessert</h3>
-          <p>Milkshakes and desserts when the prom asks for something richer.</p>
-        </article>
-      </div>
+    <section class="su-rounds" aria-labelledby="su-rounds-title">
+      <h2 id="su-rounds-title">Walk up. Blend. Sea.</h2>
+      <ol class="su-rounds-list">
+        {rounds.map((r) => (
+          <li class="su-round">
+            <span class="su-round-num">{r.num}</span>
+            <h3 class="su-round-title">{r.title}</h3>
+            <p class="su-round-text">{r.text}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
-    <section class="su-section" id="blender" aria-labelledby="su-blender-title">
-      <div class="su-section-copy">
-        <p class="su-kicker">The blender</p>
-        <h2 id="su-blender-title">Blended fresh for the glass.</h2>
-        <p class="su-lead">
-          Real fruit, fresh ginger, greens, berries, and milkshakes blended to order right before you. No long queues or complicated mobile apps — just good produce made when you ask.
+    <section class="su-counter" id="counter" aria-labelledby="su-counter-title">
+      <div class="su-counter-copy">
+        <p class="su-counter-eyebrow">At the counter</p>
+        <h2 id="su-counter-title">Blended in front of you.</h2>
+        <p>
+          Real fruit, fresh ginger, greens and berries — blended to order right
+          before you. No long queues or complicated apps. Tell us what you
+          want in the cup and we make it while you watch.
         </p>
-        <div class="su-inline-action">
-          <a class="su-btn-primary" href={phoneHref}>Ring the counter: {phone}</a>
-        </div>
+        <p class="su-counter-ring">
+          <a href={phoneHref}>Ring the counter: {phone}</a>
+        </p>
       </div>
-
-      <figure class="su-photo-card">
+      <figure class="su-counter-photo">
         <img
           src="/media/concepts/sucos/sucos-counter-blender.jpg"
           alt="Fresh fruit, high-power blender pitcher and ginger on the preparation counter at Sucos"
-          width="1200"
-          height="800"
+          width="1264"
+          height="848"
           loading="lazy"
         />
-        <figcaption>Freshly blended at 21 · Real fruit and cold press prep</figcaption>
+        <figcaption>Freshly blended at 21 · real fruit on the counter</figcaption>
       </figure>
     </section>
 
-    <section class="su-section su-section--alt" id="cup" aria-labelledby="su-cup-title">
-      <figure class="su-photo-card">
+    <section class="su-promwalk" id="cup" aria-labelledby="su-promwalk-title">
+      <figure class="su-promwalk-photo">
         <img
           src="/media/concepts/sucos/sucos-promenade-cup.jpg"
-          alt="A delicious fruit smoothie cup held at the Newcastle promenade railings with Slieve Donard mountain"
-          width="1200"
-          height="800"
+          alt="A fresh fruit smoothie cup held at the Newcastle promenade railings with Slieve Donard behind"
+          width="1264"
+          height="848"
           loading="lazy"
         />
-        <figcaption>The Seafront Ritual · Take your fresh cup along the promenade</figcaption>
+        <figcaption>The seafront ritual · a fresh cup on the promenade</figcaption>
       </figure>
-
-      <div class="su-section-copy">
-        <p class="su-kicker">The cup</p>
-        <h2 id="su-cup-title">Walk up. Blend. Seafront.</h2>
-        <p class="su-lead">
-          That is the visit. Tell us what you want in the cup, take it straight to the sea wall, and watch the waves against the Mournes.
+      <div class="su-promwalk-copy">
+        <h2 id="su-promwalk-title">Best drunk by the sea.</h2>
+        <p>
+          That is the whole visit. Tell us what you want in the cup, take it
+          straight across to the sea wall, and watch the waves come in against
+          the Mournes.
         </p>
-
-        <div class="su-ritual-grid">
-          {ritual.map((r) => (
-            <div class="su-ritual-cell">
-              <span class="su-ritual-step">{r.step}</span>
-              <h3>{r.title}</h3>
-              <p>{r.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
 
-    <section class="su-door-section" id="door" aria-labelledby="su-door-title">
-      <div class="su-door-card">
-        <p class="su-kicker">The door</p>
-        <h2 id="su-door-title">21 Central Promenade.</h2>
-        <p class="su-door-desc">
-          Right on the seafront in Newcastle. Walk up to 21, or ring if you want to check what is in the blender today.
+    <section class="su-findus" id="find-us" aria-labelledby="su-findus-title">
+      <div class="su-findus-visit">
+        <h2 id="su-findus-title">Find the counter at 21.</h2>
+        <p class="su-findus-text">
+          Right on the seafront in Newcastle. Walk up to 21, or ring to check
+          what is in the blender today.
         </p>
-
-        <div class="su-door-actions">
-          <a class="su-door-btn su-door-btn--tel" href={phoneHref}>
-            <span class="su-door-label">Telephone</span>
-            <span class="su-door-val">Ring {phone} →</span>
-          </a>
-          <a class="su-door-btn" href={maps} rel="noopener noreferrer">
-            <span class="su-door-label">Directions</span>
-            <span class="su-door-val">Open in Google Maps →</span>
-          </a>
-        </div>
-
-        <address class="su-address">
+        <address class="su-where">
           <strong>Sucos Shake N Juice</strong>
           <span>21 Central Promenade</span>
           <span>Newcastle, Co. Down · BT33 0AA</span>
-          <a href={phoneHref}>{phone}</a>
         </address>
+        <p class="su-findus-links">
+          <a class="su-telbig" href={phoneHref}>{phone}</a>
+          <a class="su-maplink" href={maps} rel="noopener noreferrer">Open in Google Maps →</a>
+        </p>
       </div>
+      <figure class="su-sleevewrap">
+        <CupSleeve />
+        <figcaption>The cup sleeve at 21.</figcaption>
+      </figure>
     </section>
   </main>
+
+  <footer class="su-footnote">
+    <p>
+      Sucos Shake N Juice · 21 Central Promenade, Newcastle, BT33 0AA ·
+      <a href={phoneHref}>{phone}</a>
+    </p>
+  </footer>
 </ConceptLayout>

@@ -4,91 +4,245 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import ChairCard from "./ChairCard.astro";
 
-/* KD Hair — relief at 16 Mourne Rise. Speak as the salon.
-   Distinct from Deja Vu (33 Promenade). Ring to book — no Timely.
-   Hours omitted. Free parking for appointments (first-party). */
-
+/* KD Hair Design — intimate neighbourhood salon at 16 Mourne Rise.
+   Stylist: Kerry-Dawn.
+   Phone: 07549 958 060 · Web: https://www.kdhair16.co.uk/
+   Private one-on-one appointments, custom colouring, styling.
+   No form elements. Ring or message to book. */
 const phone = "07549 958 060";
 const phoneHref = "tel:+447549958060";
 const handoff = "https://www.kdhair16.co.uk/";
 const maps = "https://www.google.com/maps/search/?api=1&query=16+Mourne+Rise+Newcastle+BT33+0HE";
-const fontHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700;800&display=swap";
-const stock = [
-  { kicker: "Cut", title: "Shape for the rise.", body: "Cuts that hold — tell us how you wear it, we cut to that." },
-  { kicker: "Colour", title: "L’Oréal in the chair.", body: "Colour mixed for the chair at 16 — roots through to a full change." },
-  { kicker: "Styling", title: "Weddings & finish.", body: "Wedding hair, styling, GHD and L’Oréal products. Free parking for appointments." },
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const salonServices = [
+  {
+    tag: "Cut & Finish",
+    title: "Precision cuts & styling",
+    body: "Tailored restyles, trims, texture work, and effortless finishes designed around your hair's natural movement and everyday routine.",
+  },
+  {
+    tag: "Colour Artistry",
+    title: "Bespoke balayage & gloss",
+    body: "Custom lived-in blonde, multi-dimensional balayage, grey blending, and rich gloss treatments using gentle, nourishing salon formulas.",
+  },
+  {
+    tag: "Highlights & Foils",
+    title: "Full & half head illumination",
+    body: "Fine baby-lights, face-framing brightness, and root melts blended seamlessly for a luminous, soft grow-out.",
+  },
+  {
+    tag: "Care & Treatments",
+    title: "Deep conditioning & blow dry",
+    body: "Intensive restorative moisture masks, bond-building treatments, and bouncy styling for special occasions or weekend evenings.",
+  },
 ];
 ---
-<ConceptLayout title={"KD Hair — independent concept"} slug="kd-hair" bodyClass="concept-page concept-kd-hair" lang="en-GB" businessName="KD Hair" town="Newcastle" fontHref={fontHref} bannerNote="AI-generated illustrations imagine the salon and setting; they are not photographs of the business.">
-  <div class="kd-strip"><span>16 Mourne Rise, Newcastle · BT33 0HE · L’Oréal accredited</span><span class="kd-strip-r"><a href={phoneHref}>{phone}</a></span></div>
-  <header class="kd-header"><div class="kd-header-inner">
-    <a class="kd-brand" href="/concepts/kd-hair/"><span class="kd-brand-name">KD Hair</span><span class="kd-brand-sub">16 Mourne Rise · Newcastle</span></a>
-    <nav class="kd-nav" aria-label="Concept navigation"><a href="#stock">The chair</a><a href="#book">Book</a><a href="#door">Find 16</a></nav>
-    <a class="kd-walk" href={phoneHref}>Ring to book</a>
-  </div></header>
-  <main class="kd-main">
-    <section class="kd-hero" aria-labelledby="kd-name">
-      <div class="kd-mast-copy">
-        <p class="kd-kicker">Hair salon · Mourne Rise</p>
-        <h1 id="kd-name">KD Hair</h1>
-        <p class="kd-number">16 Mourne Rise · Newcastle</p>
-        <p class="kd-say">The chair on Mourne Rise.</p>
-        <p class="kd-lede">L’Oréal accredited cuts, colour, styling and wedding hair. Quiet residential door — ring to book, or pop in. Free parking for appointments.</p>
+
+<ConceptLayout
+  title={"KD Hair Design — 16 Mourne Rise, Newcastle"}
+  slug="kd-hair"
+  bodyClass="concept-page concept-kd-hair"
+  lang="en-GB"
+  businessName="KD Hair Design"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="AI-generated illustrations imagine the salon and setting; they are not photographs of the business."
+>
+  <!-- Notice ribbon -->
+  <div class="kd-notice-ribbon">
+    <span class="kd-notice-geo">16 Mourne Rise, Newcastle · BT33 0HE</span>
+    <a class="kd-notice-tel" href={phoneHref}>Appointments: {phone}</a>
+  </div>
+
+  <!-- Salon Header -->
+  <header class="kd-salon-header">
+    <div class="kd-header-inner">
+      <a class="kd-brand" href="/concepts/kd-hair/">
+        <span class="kd-brand-name">KD Hair Design</span>
+        <span class="kd-brand-sub">16 Mourne Rise · Private Salon</span>
+      </a>
+      <nav class="kd-salon-nav" aria-label="Salon navigation">
+        <a href="#services">Services</a>
+        <a href="#consultation">The Chair</a>
+        <a href="#studio">Studio Space</a>
+        <a href="#book">Appointments</a>
+      </nav>
+      <a class="kd-header-call" href={phoneHref}>Ring {phone}</a>
+    </div>
+  </header>
+
+  <main class="kd-studio-page">
+    <!-- One-on-one Salon Hero -->
+    <section class="kd-chair-hero" aria-labelledby="kd-salon-title">
+      <div class="kd-hero-text">
+        <p class="kd-kicker">Private Hair Studio · Mourne Rise</p>
+        <h1 id="kd-salon-title" class="kd-hero-heading">Calm, personal hair styling in a quiet neighbourhood setting.</h1>
+        <p class="kd-hero-lede">
+          One-on-one appointments with Kerry-Dawn at 16 Mourne Rise. No noisy salon rush—just dedicated time,
+          custom colour, and personal styling crafted around you.
+        </p>
         <div class="kd-hero-actions">
-          <a class="kd-btn-primary" href={phoneHref}>Ring to book: {phone}</a>
-          <a class="kd-btn-secondary" href="#door">Find 16 Mourne Rise</a>
+          <a class="kd-btn-rose" href={phoneHref}>Ring or message: {phone}</a>
+          <a class="kd-btn-soft" href="#book">Find 16 Mourne Rise</a>
         </div>
       </div>
-      <figure class="kd-theatre">
-        <img src="/media/concepts/kd-hair/kd-hair-hero-mourne-rise.jpg" alt="Quiet residential salon frontage on Mourne Rise Newcastle" width="1200" height="675" loading="eager" />
-        <figcaption>16 Mourne Rise · L’Oréal accredited salon</figcaption>
+      <figure class="kd-hero-frame">
+        <img
+          src="/media/concepts/kd-hair/kd-hair-hero-mourne-rise.jpg"
+          alt="Quiet residential setting on Mourne Rise, Newcastle"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption class="kd-frame-caption">16 Mourne Rise · Quiet residential salon in Newcastle</figcaption>
       </figure>
     </section>
-    <section class="kd-folio" id="stock" aria-labelledby="kd-stock-title">
-      <div class="kd-folio-head"><p class="kd-kicker">The chair</p><h2 id="kd-stock-title">Cut, colour, care.</h2>
-        <p class="kd-folio-lede">Soft rose and ink — a residential rise salon, not promenade chrome.</p></div>
-      <div class="kd-mag-grid">{stock.map((item) => (<article class="kd-mag-cell"><p class="kd-mag-kicker">{item.kicker}</p><h3>{item.title}</h3><p>{item.body}</p></article>))}</div>
-    </section>
-    <section class="kd-ritual" id="book" aria-labelledby="kd-ticket-title">
-      <div>
-        <p class="kd-kicker">Book</p>
-        <h2 id="kd-ticket-title">Ring for the chair.</h2>
-        <p class="kd-ritual-lede">No app invent — ring 07549 958 060, or pop in at 16. Free parking when you come.</p>
-        <ol class="kd-beats">
-          <li><span class="kd-beat-n">01</span><span class="kd-beat-t">Ring or pop in</span></li>
-          <li><span class="kd-beat-n">02</span><span class="kd-beat-t">Take the chair</span></li>
-          <li><span class="kd-beat-n">03</span><span class="kd-beat-t">Leave sorted</span></li>
-        </ol>
-        <div class="kd-cta"><a class="kd-walk kd-walk--inline" href={phoneHref}>Ring to book</a></div>
+
+    <!-- Services Grid -->
+    <section class="kd-services-section" id="services" aria-labelledby="kd-services-heading">
+      <div class="kd-services-header">
+        <p class="kd-kicker">Salon Craft</p>
+        <h2 id="kd-services-heading" class="kd-section-heading">Cuts, colour &amp; finishes.</h2>
+        <p class="kd-services-lead">
+          Individual consultations before every service to understand your hair type, lifestyle, and colour history.
+        </p>
       </div>
-      <ChairCard headingId="kd-ticket-title" />
-    </section>
-    <section class="kd-section" id="colour" aria-labelledby="kd-colour-title">
-      <div class="kd-section-copy">
-        <p class="kd-kicker">Colour</p><h2 id="kd-colour-title">Swatches for the rise.</h2>
-        <p class="kd-lead">L’Oréal colour mixed in the chair — ask when you ring.</p>
-        <div class="kd-inline-action"><a class="kd-btn-primary" href={handoff} rel="noopener noreferrer">kdhair16.co.uk →</a></div>
-      </div>
-      <figure class="kd-photo-card"><img src="/media/concepts/kd-hair/kd-hair-colour-swatches.jpg" alt="Soft rose and ink colour swatches on a salon desk" width="1200" height="800" loading="lazy" /><figcaption>Colour swatches · Mixed for the chair</figcaption></figure>
-    </section>
-    <section class="kd-section kd-section--alt" id="seat" aria-labelledby="kd-seat-title">
-      <figure class="kd-photo-card"><img src="/media/concepts/kd-hair/kd-hair-salon-chair.jpg" alt="Salon chair and mirror in soft rose light" width="1200" height="800" loading="lazy" /><figcaption>The chair · Quiet light on Mourne Rise</figcaption></figure>
-      <div class="kd-section-copy">
-        <p class="kd-kicker">Mourne Rise</p><h2 id="kd-seat-title">A residential door.</h2>
-        <p class="kd-lead">Not the promenade salon — this is 16 Mourne Rise. Ring 07549 958 060.</p>
-        <div class="kd-inline-action"><a class="kd-btn-secondary" href={phoneHref}>Ring: {phone}</a></div>
+
+      <div class="kd-services-grid">
+        {salonServices.map((service) => (
+          <article class="kd-service-card">
+            <span class="kd-service-badge">{service.tag}</span>
+            <h3 class="kd-service-title">{service.title}</h3>
+            <p class="kd-service-desc">{service.body}</p>
+          </article>
+        ))}
       </div>
     </section>
-    <section class="kd-door-section" id="door" aria-labelledby="kd-door-title">
-      <div class="kd-door-card">
-        <p class="kd-kicker">The door</p><h2 id="kd-door-title">16 Mourne Rise.</h2>
-        <p class="kd-door-desc">Ring to book or pop in. Free parking for appointments. What is current lives on kdhair16.co.uk.</p>
-        <div class="kd-door-actions">
-          <a class="kd-door-btn kd-door-btn--tel" href={phoneHref}><span class="kd-door-label">Telephone</span><span class="kd-door-val">Ring {phone} →</span></a>
-          <a class="kd-door-btn" href={maps} rel="noopener noreferrer"><span class="kd-door-label">Directions</span><span class="kd-door-val">Open in Google Maps →</span></a>
-          <a class="kd-door-btn" href={handoff} rel="noopener noreferrer"><span class="kd-door-label">Salon site</span><span class="kd-door-val">kdhair16.co.uk →</span></a>
+
+    <!-- Consultation & ChairCard -->
+    <section class="kd-consultation-section" id="consultation" aria-labelledby="kd-chair-title">
+      <div class="kd-consultation-details">
+        <p class="kd-kicker">The One-on-One Chair</p>
+        <h2 id="kd-chair-title" class="kd-section-heading">Dedicated time for your hair.</h2>
+        <p class="kd-consultation-lead">
+          Without multiple clients competing for attention, every appointment gets full, uninterrupted care.
+          From thorough root work to the final blow dry and home maintenance tips.
+        </p>
+        <div class="kd-perks-list">
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">01</span>
+            <div>
+              <strong>In-Depth Colour Consultation</strong>
+              <p>Tailored tone balancing and realistic maintenance advice.</p>
+            </div>
+          </div>
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">02</span>
+            <div>
+              <strong>Calm Residential Setting</strong>
+              <p>Peaceful surroundings at Mourne Rise with easy doorstep parking.</p>
+            </div>
+          </div>
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">03</span>
+            <div>
+              <strong>Flexible Booking</strong>
+              <p>Direct communication with Kerry-Dawn for morning and evening appointments.</p>
+            </div>
+          </div>
         </div>
-        <address class="kd-address"><strong>KD Hair</strong><span>16 Mourne Rise</span><span>Newcastle, Co. Down · BT33 0HE</span><a href={phoneHref}>{phone}</a></address>
+        <div class="kd-consult-action">
+          <a class="kd-btn-rose" href={phoneHref}>Ring to schedule: {phone}</a>
+        </div>
+      </div>
+      <div class="kd-card-slot">
+        <ChairCard headingId="kd-chair-title" />
+      </div>
+    </section>
+
+    <!-- Studio Photography Showcase -->
+    <section class="kd-studio-showcase" id="studio" aria-labelledby="kd-studio-heading">
+      <div class="kd-studio-row">
+        <figure class="kd-studio-photo">
+          <img
+            src="/media/concepts/kd-hair/kd-hair-salon-chair.jpg"
+            alt="Private salon chair with styling mirror and gentle natural light"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="kd-frame-caption">The styling chair · Private, relaxed appointment space</figcaption>
+        </figure>
+        <div class="kd-studio-words">
+          <p class="kd-kicker">Private Space</p>
+          <h2 id="kd-studio-heading" class="kd-section-heading">Relaxed, unhurried styling.</h2>
+          <p class="kd-studio-text">
+            Designed to feel welcoming and serene. Enjoy a cup of tea while your colour develops in comfort,
+            with good conversation and complete privacy.
+          </p>
+          <a class="kd-text-link" href={phoneHref}>Enquire about availability: {phone}</a>
+        </div>
+      </div>
+
+      <div class="kd-studio-row kd-studio-row--reverse">
+        <figure class="kd-studio-photo">
+          <img
+            src="/media/concepts/kd-hair/kd-hair-colour-swatches.jpg"
+            alt="Salon colour charts and mixing bowls"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="kd-frame-caption">Colour palette · Rich tones and custom shades</figcaption>
+        </figure>
+        <div class="kd-studio-words">
+          <p class="kd-kicker">Colour Range</p>
+          <h3 class="kd-section-heading">Rich, lasting colour formulas.</h3>
+          <p class="kd-studio-text">
+            We use premium conditioning colours designed to protect hair texture while delivering brilliant shine
+            and seamless grey coverage.
+          </p>
+          <a class="kd-text-link" href={handoff} rel="noopener noreferrer">
+            Visit official site (kdhair16.co.uk) &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking & Contact Box -->
+    <section class="kd-booking-section" id="book" aria-labelledby="kd-booking-heading">
+      <div class="kd-booking-card">
+        <div class="kd-booking-left">
+          <p class="kd-kicker">Appointments</p>
+          <h2 id="kd-booking-heading" class="kd-booking-title">Book your appointment.</h2>
+          <p class="kd-booking-lead">
+            Contact Kerry-Dawn directly by phone or text to check availability and arrange your visit.
+          </p>
+          <div class="kd-contact-buttons">
+            <a class="kd-contact-button kd-contact-button--call" href={phoneHref}>
+              <span class="kd-button-tag">Direct Line</span>
+              <span class="kd-button-val">07549 958 060</span>
+            </a>
+            <a class="kd-contact-button" href={handoff} rel="noopener noreferrer">
+              <span class="kd-button-tag">Salon Web</span>
+              <span class="kd-button-val">kdhair16.co.uk &rarr;</span>
+            </a>
+            <a class="kd-contact-button" href={maps} rel="noopener noreferrer">
+              <span class="kd-button-tag">Location</span>
+              <span class="kd-button-val">Find on Google Maps &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <address class="kd-salon-address">
+          <span class="kd-addr-name">KD Hair Design</span>
+          <span class="kd-addr-line">16 Mourne Rise</span>
+          <span class="kd-addr-line">Newcastle, Co. Down</span>
+          <span class="kd-addr-line">BT33 0HE</span>
+          <span class="kd-addr-phone"><a href={phoneHref}>07549 958 060</a></span>
+        </address>
       </div>
     </section>
   </main>
