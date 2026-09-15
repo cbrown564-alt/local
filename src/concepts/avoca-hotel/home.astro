@@ -1,0 +1,204 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import PromWindow from "./PromWindow.astro";
+
+/* Avoca Hotel — stay on Central Promenade. Speak as the hotel.
+   First-party avocahotel.com 15 Sep 2026. Atmosphere register (sea light),
+   not café appetite, not spa relief, not Enniskeen clone.
+   Wild Hare = stock/handoff hours rhythm, not packed booking form.
+   Parking 2022 note stays dated or handed off. */
+const phone = "028 4372 2253";
+const phoneHref = "tel:+442843722253";
+const email = "info@avocahotel.com";
+const mailto = `mailto:${email}`;
+const site = "https://avocahotel.com/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap";
+
+const rooms = [
+  {
+    kicker: "King scenic",
+    title: "Garden, mountain, or sea.",
+    body: "King scenic rooms look to garden, mountain, or sea — ask which aspect is free for your dates.",
+  },
+  {
+    kicker: "Family",
+    title: "King plus bunks.",
+    body: "Family rooms with a king and bunks — quiet proof of the house stock, not a booking grid.",
+  },
+];
+
+const house = [
+  {
+    kicker: "Wild Hare",
+    title: "House bar & restaurant.",
+    body: "Thu–Sun 3pm–1am; closed Mon–Wed. Live music Saturday and Sunday — rhythm of the house, not a ticket form.",
+  },
+  {
+    kicker: "Golf Play & Stay",
+    title: "Fairways with the sea.",
+    body: "Two or three nights B&B with three rounds for two — package detail lives on our site.",
+  },
+  {
+    kicker: "Beer garden",
+    title: "Open air on the prom.",
+    body: "When the weather holds, the garden is part of the Avoca welcome.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Avoca Hotel — independent concept"}
+  slug="avoca-hotel"
+  bodyClass="concept-page concept-avoca-hotel"
+  lang="en-GB"
+  businessName="Avoca Hotel"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The promenade window is a drawing."
+>
+  <div class="av-strip">
+    <span>93–97 Central Promenade, Newcastle · BT33 0HH</span>
+    <span class="av-strip-r">
+      <a href={phoneHref}>{phone}</a>
+    </span>
+  </div>
+
+  <header class="av-header">
+    <a class="av-brand" href="/concepts/avoca-hotel/">
+      <span class="av-brand-mark" aria-hidden="true">
+        <PromWindow compact />
+      </span>
+      <span class="av-brand-text">
+        <span class="av-brand-name">Avoca Hotel</span>
+        <span class="av-brand-sub">Central Promenade · Newcastle</span>
+      </span>
+    </a>
+    <nav class="av-nav" aria-label="Concept navigation">
+      <a href="#stay">Stay</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#hare">Wild Hare</a>
+      <a href="#door">Book / ring</a>
+    </nav>
+    <a class="av-book" href={site} rel="noopener noreferrer">Check dates</a>
+  </header>
+
+  <main class="av-main">
+    <section class="av-hero" id="stay" aria-labelledby="av-name">
+      <div class="av-mast">
+        <p class="av-kicker">Promenade · Mournes · Irish Sea</p>
+        <h1 id="av-name">Avoca Hotel</h1>
+        <p class="av-number">93–97 Central Promenade · Newcastle · BT33 0HH</p>
+        <p class="av-say">Elegant &amp; cosy — mountains behind, sea in front.</p>
+        <p class="av-lede">
+          An elegant &amp; cosy hotel at the foot of the Mournes, a stone’s throw
+          from the Irish Sea. Wake to seaview light, walk the Central Promenade,
+          and keep the evening for Wild Hare when the house bar is open.
+        </p>
+        <p class="av-cta">
+          <a class="av-book av-book--inline" href={site} rel="noopener noreferrer">Check dates on our site</a>
+          <a class="av-ring" href={phoneHref}>Ring {phone}</a>
+          <a class="av-write" href={mailto}>info@avocahotel.com</a>
+        </p>
+      </div>
+
+      <aside class="av-pull" aria-label="Stay creed">
+        <p class="av-pull-kicker">Why wake here</p>
+        <p class="av-pull-quote">
+          “Perfect stay beside the sea.”
+        </p>
+        <p class="av-pull-source">From avocahotel.com</p>
+        <p class="av-pull-note">
+          Hotel hours Mon–Sun 11am–1am. Wild Hare keeps its own week — see below.
+        </p>
+      </aside>
+    </section>
+
+    <section class="av-rooms" id="rooms" aria-labelledby="av-rooms-title">
+      <div class="av-section-head">
+        <p class="av-kicker">Rooms</p>
+        <h2 id="av-rooms-title">Sea light as quiet proof.</h2>
+        <p class="av-section-intro">
+          Room types from our home page — not a Booking.com grid, and not rates
+          invented for a concept screen.
+        </p>
+      </div>
+      <div class="av-room-grid" role="list">
+        {rooms.map((item) => (
+          <article class="av-room" role="listitem">
+            <p class="av-room-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="av-hare" id="hare" aria-labelledby="av-hare-title">
+      <div class="av-section-head">
+        <p class="av-kicker">The house</p>
+        <h2 id="av-hare-title">Wild Hare, golf, garden.</h2>
+      </div>
+      <div class="av-cards" role="list">
+        {house.map((item) => (
+          <article class="av-card" role="listitem">
+            <p class="av-card-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="av-hand">
+        Live music, package nights, and vacancy live on
+        <a href={site} rel="noopener noreferrer">avocahotel.com</a>
+        — we hand them off rather than rebuild the engine.
+      </p>
+    </section>
+
+    <section class="av-geo" aria-labelledby="av-geo-title">
+      <p class="av-kicker av-kicker--on-dark">Promenade geography</p>
+      <h2 id="av-geo-title">Central Promenade between Mournes and sea.</h2>
+      <p>
+        Limited on-street parking; we recommend Donard Park car park nearby.
+        Our site still carries a 2022 note on capacity — treat it as their dated
+        guidance, not a 2026 survey.
+      </p>
+    </section>
+
+    <section class="av-door" id="door" aria-labelledby="av-door-title">
+      <div class="av-door-copy">
+        <p class="av-kicker">Book / ring</p>
+        <h2 id="av-door-title">93–97 Central Promenade.</h2>
+        <p class="av-door-lede">
+          Check dates on our site, ring the hotel, or write to info@. The
+          promenade window is the permanence; vacancy is theirs to confirm.
+        </p>
+        <p class="av-artefact-cta">
+          <a class="av-book av-book--inline" href={site} rel="noopener noreferrer">avocahotel.com</a>
+          <a class="av-ring" href={phoneHref}>{phone}</a>
+          <a class="av-write" href={mailto}>{email}</a>
+        </p>
+      </div>
+
+      <figure class="av-artefact">
+        <PromWindow />
+        <figcaption>The promenade window at Avoca.</figcaption>
+      </figure>
+
+      <address class="av-address">
+        <strong>Avoca Hotel</strong>
+        <span>93–97 Central Promenade</span>
+        <span>Newcastle</span>
+        <span>County Down</span>
+        <span>BT33 0HH</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={site} rel="noopener noreferrer">avocahotel.com</a>
+        <span>Hotel · Mon–Sun 11am–1am</span>
+        <span>Wild Hare · Thu–Sun 3pm–1am</span>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
