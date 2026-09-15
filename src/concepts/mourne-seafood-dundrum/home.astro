@@ -1,0 +1,200 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CatchBoard from "./CatchBoard.astro";
+
+/* Mourne Seafood Bar Dundrum — meal at the bay head. Speak as Dundrum.
+   First-party mourneseafood.com/restaurants/dundrum/ 15 Sep 2026.
+   Distinct from Harbour House Newcastle and from Belfast Bank Street.
+   Daily menu handoff — no invented dishes. Catch board is theatre, not scrape. */
+const phone = "028 4375 1377";
+const phoneHref = "tel:+442843751377";
+const email = "dundrum@mourneseafood.com";
+const mailto = `mailto:${email}`;
+const site = "https://www.mourneseafood.com/restaurants/dundrum/";
+const menus = "https://www.mourneseafood.com/restaurants/dundrum/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const week = [
+  {
+    kicker: "Early week",
+    title: "Monday–Wednesday closed.",
+    body: "Except Wednesday Night Lobster Night, June–September — when the season is on, ask us.",
+  },
+  {
+    kicker: "Thursday–Saturday",
+    title: "Lunch and evening.",
+    body: "Thursday carries a seasonal caveat on our site — check Dundrum hours before you travel.",
+  },
+  {
+    kicker: "Sunday",
+    title: "12.30–6.",
+    body: "A shorter sitting at the head of the bay. Ring if you want the day’s catch picture.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Mourne Seafood Dundrum — independent concept"}
+  slug="mourne-seafood-dundrum"
+  bodyClass="concept-page concept-mourne-seafood-dundrum"
+  lang="en-GB"
+  businessName="Mourne Seafood Bar Dundrum"
+  town="Dundrum"
+  fontHref={fontHref}
+  bannerNote="The catch board is a drawing."
+>
+  <div class="ms-strip">
+    <span>10 Main Street, Dundrum · BT33 0LU · Head of the bay</span>
+    <span class="ms-strip-r">
+      <a href={phoneHref}>{phone}</a>
+    </span>
+  </div>
+
+  <header class="ms-header">
+    <a class="ms-brand" href="/concepts/mourne-seafood-dundrum/">
+      <span class="ms-brand-mark" aria-hidden="true">
+        <CatchBoard compact />
+      </span>
+      <span class="ms-brand-text">
+        <span class="ms-brand-name">Mourne Seafood</span>
+        <span class="ms-brand-sub">Dundrum · Main Street</span>
+      </span>
+    </a>
+    <nav class="ms-nav" aria-label="Concept navigation">
+      <a href="#catch">The catch</a>
+      <a href="#week">The week</a>
+      <a href="#bay">The bay</a>
+      <a href="#door">Ring us</a>
+    </nav>
+    <a class="ms-ring-nav" href={phoneHref}>Ring Dundrum</a>
+  </header>
+
+  <main class="ms-main">
+    <section class="ms-hero" aria-labelledby="ms-name">
+      <div class="ms-mast">
+        <p class="ms-kicker">Village door · Dundrum Bay</p>
+        <h1 id="ms-name">Mourne Seafood Bar</h1>
+        <p class="ms-number">10 Main Street · Dundrum · BT33 0LU</p>
+        <p class="ms-say">The catch decides the menu.</p>
+        <p class="ms-lede">
+          Please note our menu changes daily dependant on the catch of the day.
+          This is the village door on Main Street at the head of Dundrum Bay —
+          ring Dundrum, not Belfast, for what’s landed.
+        </p>
+        <p class="ms-cta">
+          <a class="ms-ring" href={phoneHref}>Ring {phone}</a>
+          <a class="ms-write" href={mailto}>dundrum@mourneseafood.com</a>
+          <a class="ms-site" href={site} rel="noopener noreferrer">Menus on our site</a>
+        </p>
+      </div>
+
+      <aside class="ms-board-aside" aria-label="Catch creed">
+        <p class="ms-board-kicker">Today’s creed</p>
+        <p class="ms-board-quote">
+          “Our menu changes daily dependant on the catch of the day.”
+        </p>
+        <p class="ms-board-source">From our Dundrum page · mourneseafood.com</p>
+        <p class="ms-board-note">
+          We do not invent dish names here. The live board is ours — ask at the
+          counter or read the menus on the Dundrum page.
+        </p>
+      </aside>
+    </section>
+
+    <section class="ms-catch" id="catch" aria-labelledby="ms-catch-title">
+      <div class="ms-section-head">
+        <p class="ms-kicker">The catch</p>
+        <h2 id="ms-catch-title">Shellfish geography, village counter.</h2>
+        <p class="ms-section-intro">
+          Belfast is the sister on Bank Street. Dundrum is the coastal village
+          restaurant — Murlough and the Mournes in the wider picture, Main Street
+          under your feet.
+        </p>
+      </div>
+      <div class="ms-editorial">
+        <article class="ms-ed-col">
+          <h3>What landed.</h3>
+          <p>
+            Appetite starts with the catch, not a static tariff. Come for
+            shellfish identity and a kitchen that rewrites the card when the
+            boats and suppliers say so.
+          </p>
+        </article>
+        <article class="ms-ed-col">
+          <h3>Lobster night season.</h3>
+          <p>
+            Wednesday Night Lobster Night runs June–September on our Dundrum
+            hours note. Outside that window, the early week stays closed —
+            confirm on the site before you set out.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ms-week" id="week" aria-labelledby="ms-week-title">
+      <div class="ms-section-head">
+        <p class="ms-kicker">The week</p>
+        <h2 id="ms-week-title">When the Dundrum door is open.</h2>
+      </div>
+      <div class="ms-cards" role="list">
+        {week.map((item) => (
+          <article class="ms-card" role="listitem">
+            <p class="ms-card-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="ms-hand">
+        Hours dated from our Dundrum page · 15 Sep 2026 — seasonal notes can
+        move; start at
+        <a href={site} rel="noopener noreferrer">mourneseafood.com/restaurants/dundrum</a>.
+      </p>
+    </section>
+
+    <section class="ms-bay" id="bay" aria-labelledby="ms-bay-title">
+      <p class="ms-kicker ms-kicker--on-dark">The bay</p>
+      <h2 id="ms-bay-title">Main Street at the head of Dundrum Bay.</h2>
+      <p>
+        Walk the village door. Accommodation sits on the same Dundrum pages when
+        we offer it — Book Now stays on our site; we do not invent room counts
+        here. For the plate, ring or write Dundrum.
+      </p>
+    </section>
+
+    <section class="ms-door" id="door" aria-labelledby="ms-door-title">
+      <div class="ms-door-copy">
+        <p class="ms-kicker">Ring us</p>
+        <h2 id="ms-door-title">10 Main Street, Dundrum.</h2>
+        <p class="ms-door-lede">
+          Call the village number, write to dundrum@, or open the Dundrum menus
+          on our site. Belfast Bank Street is a quiet sister handoff — not this door.
+        </p>
+        <p class="ms-artefact-cta">
+          <a class="ms-ring ms-ring--btn" href={phoneHref}>{phone}</a>
+          <a class="ms-write" href={mailto}>{email}</a>
+          <a class="ms-site" href={menus} rel="noopener noreferrer">Dundrum menus</a>
+        </p>
+      </div>
+
+      <figure class="ms-artefact">
+        <CatchBoard />
+        <figcaption>The catch board on Main Street.</figcaption>
+      </figure>
+
+      <address class="ms-address">
+        <strong>Mourne Seafood Bar Dundrum</strong>
+        <span>10 Main Street</span>
+        <span>Dundrum</span>
+        <span>County Down</span>
+        <span>BT33 0LU</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mailto}>{email}</a>
+        <a href={site} rel="noopener noreferrer">mourneseafood.com/restaurants/dundrum</a>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
