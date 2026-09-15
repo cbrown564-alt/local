@@ -1,0 +1,171 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import JokeTag from "./JokeTag.astro";
+
+/* The Joke and Toy Shop — jar on Central Promenade. Speak as the shop.
+   Jokes, gags, fancy dress, toys since 1996. Walk in / ring.
+   Hours omitted. No form. */
+
+const phone = "028 4372 4147";
+const phoneHref = "tel:+442843724147";
+const handoff = "https://www.thejokeandtoyshop.com/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=43+Central+Promenade+Newcastle+BT33+0DJ";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap";
+
+const stock = [
+  { kicker: "Jokes & gags", title: "The laugh in the bag.", body: "Classic gags and novelty laughs for the promenade — family-run fun since 1996." },
+  { kicker: "Fancy dress", title: "Costume on the rack.", body: "Fancy dress, masks and makeup for the night out — pick it up at 43." },
+  { kicker: "Toys", title: "Take it to the sea.", body: "Toys and seaside treats you walk out with — not a screen, a bag." },
+];
+---
+
+<ConceptLayout
+  title={"The Joke and Toy Shop — independent concept"}
+  slug="joke-and-toy-shop"
+  bodyClass="concept-page concept-joke-and-toy-shop"
+  lang="en-GB"
+  businessName="The Joke and Toy Shop"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="AI-generated illustrations imagine the setting, spaces and products; they are not photographs of the business."
+>
+  <div class="jts-strip">
+    <span>43 Central Promenade, Newcastle · BT33 0DJ</span>
+    <span class="jts-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="jts-header">
+    <div class="jts-header-inner">
+      <a class="jts-brand" href="/concepts/joke-and-toy-shop/">
+        <span class="jts-brand-name">The Joke and Toy Shop</span>
+        <span class="jts-brand-sub">43 Central Promenade · Since 1996</span>
+      </a>
+      <nav class="jts-nav" aria-label="Concept navigation">
+        <a href="#stock">The racks</a>
+        <a href="#tag">The tag</a>
+        <a href="#door">Find 43</a>
+      </nav>
+      <a class="jts-walk" href="#door">Walk in</a>
+    </div>
+  </header>
+
+  <main class="jts-main">
+    <section class="jts-hero" aria-labelledby="jts-name">
+      <div class="jts-mast-copy">
+        <p class="jts-kicker">Jokes, toys &amp; fancy dress · Promenade</p>
+        <h1 id="jts-name">The Joke and Toy Shop</h1>
+        <p class="jts-number">43 Central Promenade · Newcastle</p>
+        <p class="jts-say">Promenade fun in a bag.</p>
+        <p class="jts-lede">
+          Jokes, gags, fancy dress, toys, masks and makeup. Family-run since 1996.
+          Walk in at 43 — or ring.
+        </p>
+        <div class="jts-hero-actions">
+          <a class="jts-btn-primary" href="#door">Walk in to 43</a>
+          <a class="jts-btn-secondary" href={phoneHref}>Ring {phone}</a>
+        </div>
+      </div>
+      <figure class="jts-theatre">
+        <img src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-hero-promenade.jpg" alt="Joke and Toy Shop frontage on Central Promenade Newcastle" width="1200" height="675" loading="eager" />
+        <figcaption>43 Central Promenade · Family-run since 1996</figcaption>
+      </figure>
+    </section>
+
+    <section class="jts-folio" id="stock" aria-labelledby="jts-stock-title">
+      <div class="jts-folio-head">
+        <p class="jts-kicker">The racks</p>
+        <h2 id="jts-stock-title">What goes home with you.</h2>
+        <p class="jts-folio-lede">Carnival warmth on the promenade — adult-friendly seaside fun, not a kids-app paste.</p>
+      </div>
+      <div class="jts-mag-grid">
+        {stock.map((item) => (
+          <article class="jts-mag-cell">
+            <p class="jts-mag-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="jts-ritual" id="tag" aria-labelledby="jts-ticket-title">
+      <div>
+        <p class="jts-kicker">The tag</p>
+        <h2 id="jts-ticket-title">Pick it. Bag it.</h2>
+        <p class="jts-ritual-lede">Point at the gag, the costume, the toy. We tag it for the promenade.</p>
+        <ol class="jts-beats">
+          <li><span class="jts-beat-n">01</span><span class="jts-beat-t">Walk in at 43</span></li>
+          <li><span class="jts-beat-n">02</span><span class="jts-beat-t">Choose the fun</span></li>
+          <li><span class="jts-beat-n">03</span><span class="jts-beat-t">Take it to the sea</span></li>
+        </ol>
+        <div class="jts-cta">
+          <a class="jts-walk jts-walk--inline" href="#door">Walk in</a>
+          <a class="jts-ring" href={phoneHref}>{phone}</a>
+        </div>
+      </div>
+      <JokeTag headingId="jts-ticket-title" />
+    </section>
+
+    <section class="jts-section" id="masks" aria-labelledby="jts-masks-title">
+      <div class="jts-section-copy">
+        <p class="jts-kicker">Masks &amp; makeup</p>
+        <h2 id="jts-masks-title">Fancy dress on the prom.</h2>
+        <p class="jts-lead">Masks, makeup and costumes for the night — walk out of 43 ready.</p>
+        <div class="jts-inline-action">
+          <a class="jts-btn-primary" href={handoff} rel="noopener noreferrer">thejokeandtoyshop.com →</a>
+        </div>
+      </div>
+      <figure class="jts-photo-card">
+        <img src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-jokes-masks.jpg" alt="Colourful novelty masks on a warm cream counter" width="1200" height="800" loading="lazy" />
+        <figcaption>Jokes, masks, the laugh in the bag</figcaption>
+      </figure>
+    </section>
+
+    <section class="jts-section jts-section--alt" id="dress" aria-labelledby="jts-dress-title">
+      <figure class="jts-photo-card">
+        <img src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-fancy-dress.jpg" alt="Fancy dress costumes hanging on a rack" width="1200" height="800" loading="lazy" />
+        <figcaption>Fancy dress · Costume on the rack at 43</figcaption>
+      </figure>
+      <div class="jts-section-copy">
+        <p class="jts-kicker">Since 1996</p>
+        <h2 id="jts-dress-title">Family-run on the promenade.</h2>
+        <p class="jts-lead">Walk in for stock checks, or ring 028 4372 4147. What is current lives with us online.</p>
+        <div class="jts-inline-action">
+          <a class="jts-btn-secondary" href={phoneHref}>Ring the shop: {phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="jts-door-section" id="door" aria-labelledby="jts-door-title">
+      <div class="jts-door-card">
+        <p class="jts-kicker">The door</p>
+        <h2 id="jts-door-title">43 Central Promenade.</h2>
+        <p class="jts-door-desc">Facing the bay. Walk in for jokes, toys and fancy dress — or ring ahead.</p>
+        <div class="jts-door-actions">
+          <a class="jts-door-btn jts-door-btn--tel" href={phoneHref}>
+            <span class="jts-door-label">Telephone</span>
+            <span class="jts-door-val">Ring {phone} →</span>
+          </a>
+          <a class="jts-door-btn" href={maps} rel="noopener noreferrer">
+            <span class="jts-door-label">Directions</span>
+            <span class="jts-door-val">Open in Google Maps →</span>
+          </a>
+          <a class="jts-door-btn" href={handoff} rel="noopener noreferrer">
+            <span class="jts-door-label">Shop site</span>
+            <span class="jts-door-val">thejokeandtoyshop.com →</span>
+          </a>
+        </div>
+        <address class="jts-address">
+          <strong>The Joke and Toy Shop</strong>
+          <span>43 Central Promenade</span>
+          <span>Newcastle, Co. Down · BT33 0DJ</span>
+          <a href={phoneHref}>{phone}</a>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
