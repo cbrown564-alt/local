@@ -1,0 +1,179 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import KeysBack from "./KeysBack.astro";
+
+/* BSW Autohouse — ride/trade on Castlewellan Road. Speak as the garage.
+   First-party bswtyres.co.uk 15 Sep 2026. Female-led welcome, same-day aim.
+   Postcode 0JX vs 0LX conflict — print Unit 4 + road only; omit contested postcode.
+   Distinct Unit 4 from Black Box Unit 18. Ring / book service ritual — no form. */
+const phone = "028 4372 7112";
+const phoneHref = "tel:+442843727112";
+const mobile = "07850 089 802";
+const mobileHref = "tel:+447850089802";
+const site = "https://www.bswtyres.co.uk/";
+const contact = "https://www.bswtyres.co.uk/contact/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const toolkit = [
+  {
+    kicker: "Service",
+    title: "Kept on the half hour.",
+    body: "We charge by the half hour — clear time, clear job. Same-day where we can.",
+  },
+  {
+    kicker: "Tyres",
+    title: "Blackcircles fitting partner.",
+    body: "Order through Blackcircles or ask us on the unit — we fit what the road needs.",
+  },
+  {
+    kicker: "MOT prep",
+    title: "Ready for the test.",
+    body: "MOT preparation, brakes, exhausts, alignment (£40 as we publish), bulbs from £5.",
+  },
+  {
+    kicker: "Diagnostics",
+    title: "Snap-On on the bench.",
+    body: "Snap-On diagnostics when the light comes on — ring with the week you need.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"BSW Autohouse — independent concept"}
+  slug="bsw-autohouse"
+  bodyClass="concept-page concept-bsw-autohouse"
+  lang="en-GB"
+  businessName="BSW Autohouse"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The keys-back ticket is a drawing."
+>
+  <div class="bw-strip">
+    <span>Unit 4, 63a Castlewellan Road, Newcastle · Female-led garage</span>
+    <span class="bw-strip-r">
+      <a href={phoneHref}>{phone}</a>
+      <span class="bw-strip-sep" aria-hidden="true">·</span>
+      <a href={mobileHref}>{mobile}</a>
+    </span>
+  </div>
+
+  <header class="bw-header">
+    <a class="bw-brand" href="/concepts/bsw-autohouse/">
+      <span class="bw-brand-mark" aria-hidden="true">
+        <KeysBack compact />
+      </span>
+      <span class="bw-brand-text">
+        <span class="bw-brand-name">BSW Autohouse</span>
+        <span class="bw-brand-sub">Unit 4 · Castlewellan Road</span>
+      </span>
+    </a>
+    <nav class="bw-nav" aria-label="Concept navigation">
+      <a href="#ready">Road-ready</a>
+      <a href="#team">The team</a>
+      <a href="#jobs">The jobs</a>
+      <a href="#door">Ring / book</a>
+    </nav>
+    <a class="bw-ring-nav" href={phoneHref}>Ring the garage</a>
+  </header>
+
+  <main class="bw-main">
+    <section class="bw-hero" id="ready" aria-labelledby="bw-name">
+      <div class="bw-mast">
+        <p class="bw-kicker">Newcastle · Castlewellan · Dundrum</p>
+        <h1 id="bw-name">BSW Autohouse</h1>
+        <p class="bw-number">Unit 4 · 63a Castlewellan Road · Newcastle</p>
+        <p class="bw-say">Road-ready from Unit 4 — honest garage, same-day where we can.</p>
+        <p class="bw-lede">
+          A female-led garage locals say is the first they’ve actually felt
+          welcome in. Ring the landline or mobile with the job and the week you
+          need — we aim for same-day when the diary allows.
+        </p>
+        <p class="bw-cta">
+          <a class="bw-ring" href={phoneHref}>Ring {phone}</a>
+          <a class="bw-mobile" href={mobileHref}>{mobile}</a>
+          <a class="bw-site" href={contact} rel="noopener noreferrer">Contact form on our site</a>
+        </p>
+      </div>
+
+      <aside class="bw-hours" aria-label="Hours and creed">
+        <p class="bw-hours-kicker">The week</p>
+        <p class="bw-hours-line"><strong>Mon–Fri</strong> 08:30–17:30</p>
+        <p class="bw-hours-line"><strong>Saturday</strong> Closed</p>
+        <p class="bw-hours-stamp">From our Contact page · 15 Sep 2026</p>
+        <p class="bw-hours-note">
+          Free on-site parking. Catchment: Newcastle, Castlewellan, Dundrum.
+        </p>
+      </aside>
+    </section>
+
+    <section class="bw-team" id="team" aria-labelledby="bw-team-title">
+      <div class="bw-section-head">
+        <p class="bw-kicker">The team</p>
+        <h2 id="bw-team-title">Adelle, Berny, and the bay.</h2>
+        <p class="bw-section-intro">
+          Opened as BSW with Ben &amp; Sean Willoughby. Adelle joined in 2011;
+          when Ben left for Australia, Adelle and Sean kept the partnership with
+          Berny in the office. Robbie, Darren, and Martin are on the tools —
+          names from our About page as of 15 Sep 2026.
+        </p>
+      </div>
+      <blockquote class="bw-quote">
+        <p>“The first garage they’ve actually felt welcome in.”</p>
+        <footer>From the welcome story on bswtyres.co.uk</footer>
+      </blockquote>
+    </section>
+
+    <section class="bw-jobs" id="jobs" aria-labelledby="bw-jobs-title">
+      <div class="bw-section-head">
+        <p class="bw-kicker">The jobs</p>
+        <h2 id="bw-jobs-title">Honest toolkit.</h2>
+      </div>
+      <div class="bw-cards" role="list">
+        {toolkit.map((item) => (
+          <article class="bw-card" role="listitem">
+            <p class="bw-card-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bw-door" id="door" aria-labelledby="bw-door-title">
+      <div class="bw-door-copy">
+        <p class="bw-kicker">Ring / book</p>
+        <h2 id="bw-door-title">Unit 4, Castlewellan Road.</h2>
+        <p class="bw-door-lede">
+          Call the garage, use the mobile, or send the job through our contact
+          form. We print Unit 4 and the road — postcode listings disagree online,
+          so we leave the contested code off this plate until it is locked.
+        </p>
+        <p class="bw-artefact-cta">
+          <a class="bw-ring bw-ring--btn" href={phoneHref}>{phone}</a>
+          <a class="bw-mobile" href={mobileHref}>{mobile}</a>
+          <a class="bw-site" href={contact} rel="noopener noreferrer">bswtyres.co.uk/contact</a>
+        </p>
+      </div>
+
+      <figure class="bw-artefact">
+        <KeysBack />
+        <figcaption>The keys-back ticket for Unit 4.</figcaption>
+      </figure>
+
+      <address class="bw-address">
+        <strong>BSW Autohouse</strong>
+        <span>Unit 4, 63a Castlewellan Road</span>
+        <span>Newcastle</span>
+        <span>County Down</span>
+        <span>Postcode · confirm on contact</span>
+        <a href={phoneHref}>{phone}</a>
+        <a href={mobileHref}>{mobile}</a>
+        <a href={site} rel="noopener noreferrer">bswtyres.co.uk</a>
+        <span>Mon–Fri 08:30–17:30 · closed Sat</span>
+      </address>
+    </section>
+  </main>
+</ConceptLayout>
