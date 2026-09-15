@@ -1,0 +1,192 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CollectionSlip from "./CollectionSlip.astro";
+
+/* MediCare Thorntons — relief on Central Promenade. Speak as the pharmacy door.
+   Scripts, collection & delivery by phone. Hours omitted (unlocked).
+   Not Groves. Not spa. No Rx upload form. */
+
+const phone = "028 4372 3248";
+const phoneHref = "tel:+442843723248";
+const group = "https://medicare-group.com/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=49+Central+Promenade+Newcastle+BT33+0HH";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&family=Public+Sans:wght@400;500;600;700&display=swap";
+
+const relief = [
+  {
+    kicker: "Scripts",
+    title: "Bring the prescription here.",
+    body: "A community pharmacy door on the promenade — ring Thorntons when the script needs a calm hand.",
+  },
+  {
+    kicker: "Collection",
+    title: "Ready when you are.",
+    body: "Collection from this branch — phone first so we know what is coming and when you will call.",
+  },
+  {
+    kicker: "Delivery",
+    title: "Signup by telephone.",
+    body: "Collection and delivery signup is by telephoning this local branch — not an upload form.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"MediCare Thorntons — independent concept"}
+  slug="medicare-thorntons"
+  bodyClass="concept-page concept-medicare-thorntons"
+  lang="en-GB"
+  businessName="MediCare Thorntons"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The collection slip is a drawing."
+>
+  <div class="mt-strip">
+    <span>49 Central Promenade, Newcastle · BT33 0HH</span>
+    <span class="mt-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="mt-header">
+    <a class="mt-brand" href="/concepts/medicare-thorntons/">
+      <span class="mt-brand-mark" aria-hidden="true">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" fill="#eef2f0"/>
+          <rect x="1.5" y="1.5" width="41" height="41" stroke="#2f4a52" stroke-width="1.4"/>
+          <path d="M22 10v24M10 22h24" stroke="#2f6a62" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="14" fill="none" stroke="#9ab0a8" stroke-width="1"/>
+        </svg>
+      </span>
+      <span class="mt-brand-text">
+        <span class="mt-brand-name">MediCare Thorntons</span>
+        <span class="mt-brand-sub">49 Central Promenade · Pharmacy</span>
+      </span>
+    </a>
+    <nav class="mt-nav" aria-label="Concept navigation">
+      <a href="#relief">Relief</a>
+      <a href="#ring">Ring</a>
+      <a href="#slip">The slip</a>
+      <a href="#door">The door</a>
+    </nav>
+    <a class="mt-ring" href={phoneHref}>Ring {phone}</a>
+  </header>
+
+  <main class="mt-main">
+    <section class="mt-hero" aria-labelledby="mt-name">
+      <div class="mt-hero-rail" aria-hidden="true">
+        <p class="mt-hero-phone-label">Ring</p>
+        <a class="mt-hero-phone" href={phoneHref}>{phone}</a>
+        <p class="mt-hero-phone-note">Promenade door · Scripts without theatre</p>
+      </div>
+      <div class="mt-hero-copy">
+        <p class="mt-kicker">Community pharmacy · Central Promenade</p>
+        <h1 id="mt-name">MediCare Thorntons</h1>
+        <p class="mt-place">49 Central Promenade · Newcastle · BT33 0HH</p>
+        <p class="mt-say">Relief at the promenade door.</p>
+        <p class="mt-lede">
+          Scripts, collection and delivery — ring this branch to join.
+          A MediCare pharmacy on the Central Promenade.
+        </p>
+        <p class="mt-cta">
+          <a class="mt-ring mt-ring--inline" href={phoneHref}>Ring {phone}</a>
+          <a class="mt-group" href={group} rel="noopener noreferrer">MediCare group</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-folio" id="relief" aria-labelledby="mt-relief-title">
+      <p class="mt-folio-mark">MediCare Thorntons · 49 Central Promenade</p>
+      <div class="mt-folio-head">
+        <p class="mt-kicker">Relief</p>
+        <h2 id="mt-relief-title">The script, without spa dusk.</h2>
+        <p>
+          Calm clinic linen: door, phone, and a clear path for collection and
+          delivery. Enhanced services live with the group — we keep this page
+          to what this branch can answer on the phone.
+        </p>
+      </div>
+      <div class="mt-stack">
+        {relief.map((item, i) => (
+          <article class="mt-stack-row">
+            <span class="mt-stack-n">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <p class="mt-mag-kicker">{item.kicker}</p>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-ritual" id="ring" aria-labelledby="mt-ring-title">
+      <div class="mt-ritual-copy">
+        <p class="mt-kicker">The call</p>
+        <h2 id="mt-ring-title">Telephone this branch.</h2>
+        <p class="mt-ritual-lede">
+          Collection and delivery signup starts with a conversation — not an
+          online form for controlled medicines.
+        </p>
+        <ol class="mt-beats">
+          <li>
+            <span class="mt-beat-n">01</span>
+            <span class="mt-beat-t">Ring Thorntons on the promenade</span>
+          </li>
+          <li>
+            <span class="mt-beat-n">02</span>
+            <span class="mt-beat-t">Tell us about the script</span>
+          </li>
+          <li>
+            <span class="mt-beat-n">03</span>
+            <span class="mt-beat-t">Collect — or ask about delivery</span>
+          </li>
+        </ol>
+        <p class="mt-cta">
+          <a class="mt-ring mt-ring--inline" href={phoneHref}>{phone}</a>
+        </p>
+      </div>
+      <div id="slip">
+        <CollectionSlip headingId="mt-ring-title" />
+        <p class="mt-slip-cap">The collection slip for 49.</p>
+      </div>
+    </section>
+
+    <section class="mt-door" id="door" aria-labelledby="mt-door-title">
+      <div class="mt-door-head">
+        <p class="mt-kicker">The door</p>
+        <h2 id="mt-door-title">49 Central Promenade.</h2>
+        <p class="mt-door-lede">
+          MediCare Thorntons on the promenade. Ring the branch. Group policy
+          and wider MediCare services live on the group site.
+        </p>
+      </div>
+      <div class="mt-door-grid">
+        <address class="mt-address">
+          <strong>MediCare Thorntons</strong>
+          <span>49 Central Promenade</span>
+          <span>Newcastle, Co. Down</span>
+          <span>BT33 0HH</span>
+          <a href={phoneHref}>{phone}</a>
+          <a href={maps} rel="noopener noreferrer">Map</a>
+        </address>
+        <div class="mt-handoff">
+          <h3>Group handoff</h3>
+          <p>
+            MediCare is an indigenous NI pharmacy group. For group-wide
+            service descriptions, start on medicare-group.com — then confirm
+            with this branch on the phone.
+          </p>
+          <a href={group} rel="noopener noreferrer">medicare-group.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-footer">
+    <p class="mt-footer-name">MediCare Thorntons</p>
+    <p>49 Central Promenade, Newcastle · Community pharmacy</p>
+  </footer>
+</ConceptLayout>
