@@ -1,0 +1,99 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import TableTicket from "./TableTicket.astro";
+
+/* Great Jones Craft & Kitchen — meal at 73 Main Street.
+   Sean Paul & Lorena; since May 2015; named for NYC Great Jones Street.
+   Walk in / ring. No ResDiary. Hours omit (directories conflict).
+   Not Buck's Head. No form. */
+
+const phone = "028 4379 8275";
+const phoneHref = "tel:+442843798275";
+const handoff = "https://greatjones.co.uk/";
+const maps = "https://www.google.com/maps/search/?api=1&query=73+Main+Street+Newcastle+BT33+0AE";
+const fontHref = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap";
+const stock = [
+  { kicker: "Plates", title: "Modern Irish on Main Street.", body: "Salt & chilli squid, wings, fish & chips, chicken curry, sticky toffee — vegan and veg options too." },
+  { kicker: "Bar", title: "Craft beer & cocktails.", body: "A drink that matches the kitchen — timber, copper, and a glass worth staying for." },
+  { kicker: "Since 2015", title: "Named for Great Jones Street.", body: "Sean Paul and Lorena brought hospitality honed in NYC to 73 Main Street — craft kitchen, local door." },
+];
+---
+<ConceptLayout title={"Great Jones — independent concept"} slug="great-jones" bodyClass="concept-page concept-great-jones" lang="en-GB" businessName="Great Jones" town="Newcastle" fontHref={fontHref} bannerNote="AI-generated illustrations imagine the setting, spaces and dishes; they are not photographs of the business.">
+  <div class="gj-strip"><span>73 Main Street, Newcastle · BT33 0AE</span><span class="gj-strip-r"><a href={phoneHref}>{phone}</a></span></div>
+  <header class="gj-header"><div class="gj-header-inner">
+    <a class="gj-brand" href="/concepts/great-jones/"><span class="gj-brand-name">Great Jones</span><span class="gj-brand-sub">Craft &amp; Kitchen · 73 Main Street</span></a>
+    <nav class="gj-nav" aria-label="Concept navigation"><a href="#stock">The kitchen</a><a href="#table">The table</a><a href="#door">Find 73</a></nav>
+    <a class="gj-walk" href="#door">Walk in</a>
+  </div></header>
+  <main class="gj-main">
+    <section class="gj-hero" aria-labelledby="gj-name">
+      <div class="gj-mast-copy">
+        <p class="gj-kicker">Craft &amp; kitchen · Main Street</p>
+        <h1 id="gj-name">Great Jones</h1>
+        <p class="gj-number">73 Main Street · Newcastle</p>
+        <p class="gj-say">Craft kitchen on Main Street.</p>
+        <p class="gj-lede">Modern Irish plates, craft beer and cocktails. Walk in for a table, or ring 028 4379 8275. Sean Paul and Lorena’s door since 2015.</p>
+        <div class="gj-hero-actions">
+          <a class="gj-btn-primary" href="#door">Walk in to 73</a>
+          <a class="gj-btn-secondary" href={phoneHref}>Ring {phone}</a>
+        </div>
+      </div>
+      <figure class="gj-theatre">
+        <img src="/media/concepts/great-jones/great-jones-hero-main-street.jpg" alt="Warm timber craft kitchen frontage at 73 Main Street Newcastle" width="1200" height="675" loading="eager" />
+        <figcaption>73 Main Street · Craft &amp; Kitchen since 2015</figcaption>
+      </figure>
+    </section>
+    <section class="gj-folio" id="stock" aria-labelledby="gj-stock-title">
+      <div class="gj-folio-head"><p class="gj-kicker">The kitchen</p><h2 id="gj-stock-title">Plates worth the walk.</h2>
+        <p class="gj-folio-lede">Timber and copper — a craft kitchen, not a hotel reserve and not a packed dusk form.</p></div>
+      <div class="gj-mag-grid">{stock.map((item) => (<article class="gj-mag-cell"><p class="gj-mag-kicker">{item.kicker}</p><h3>{item.title}</h3><p>{item.body}</p></article>))}</div>
+    </section>
+    <section class="gj-ritual" id="table" aria-labelledby="gj-ticket-title">
+      <div>
+        <p class="gj-kicker">The table</p>
+        <h2 id="gj-ticket-title">Walk in. Ring for a table.</h2>
+        <p class="gj-ritual-lede">No invented booking widget — the mechanism is the door and the phone.</p>
+        <ol class="gj-beats">
+          <li><span class="gj-beat-n">01</span><span class="gj-beat-t">Walk in at 73</span></li>
+          <li><span class="gj-beat-n">02</span><span class="gj-beat-t">Take a table</span></li>
+          <li><span class="gj-beat-n">03</span><span class="gj-beat-t">Eat &amp; drink</span></li>
+        </ol>
+        <div class="gj-cta">
+          <a class="gj-walk gj-walk--inline" href="#door">Walk in</a>
+          <a class="gj-ring" href={phoneHref}>{phone}</a>
+        </div>
+      </div>
+      <TableTicket headingId="gj-ticket-title" />
+    </section>
+    <section class="gj-section" id="plates" aria-labelledby="gj-plates-title">
+      <div class="gj-section-copy">
+        <p class="gj-kicker">Plates</p><h2 id="gj-plates-title">Squid, wings, sticky toffee.</h2>
+        <p class="gj-lead">Salt &amp; chilli squid, wings, fish &amp; chips, curry, sticky toffee — vegan and veg options on the board.</p>
+        <div class="gj-inline-action"><a class="gj-btn-primary" href={handoff} rel="noopener noreferrer">greatjones.co.uk →</a></div>
+      </div>
+      <figure class="gj-photo-card"><img src="/media/concepts/great-jones/great-jones-craft-plates.jpg" alt="Craft kitchen plates on warm timber with a copper coaster" width="1200" height="800" loading="lazy" /><figcaption>Plates · Modern Irish on Main Street</figcaption></figure>
+    </section>
+    <section class="gj-section gj-section--alt" id="bar" aria-labelledby="gj-bar-title">
+      <figure class="gj-photo-card"><img src="/media/concepts/great-jones/great-jones-bar-copper.jpg" alt="Timber bar with copper taps and a cocktail glass" width="1200" height="800" loading="lazy" /><figcaption>Bar · Craft beer and cocktails</figcaption></figure>
+      <div class="gj-section-copy">
+        <p class="gj-kicker">Bar</p><h2 id="gj-bar-title">Copper and timber.</h2>
+        <p class="gj-lead">Craft beer and cocktails beside the kitchen. Ring 028 4379 8275 for a table.</p>
+        <div class="gj-inline-action"><a class="gj-btn-secondary" href={phoneHref}>Ring: {phone}</a></div>
+      </div>
+    </section>
+    <section class="gj-door-section" id="door" aria-labelledby="gj-door-title">
+      <div class="gj-door-card">
+        <p class="gj-kicker">The door</p><h2 id="gj-door-title">73 Main Street.</h2>
+        <p class="gj-door-desc">Walk in or ring to book a table. What is current lives on greatjones.co.uk.</p>
+        <div class="gj-door-actions">
+          <a class="gj-door-btn gj-door-btn--tel" href={phoneHref}><span class="gj-door-label">Telephone</span><span class="gj-door-val">Ring {phone} →</span></a>
+          <a class="gj-door-btn" href={maps} rel="noopener noreferrer"><span class="gj-door-label">Directions</span><span class="gj-door-val">Open in Google Maps →</span></a>
+          <a class="gj-door-btn" href={handoff} rel="noopener noreferrer"><span class="gj-door-label">Kitchen site</span><span class="gj-door-val">greatjones.co.uk →</span></a>
+        </div>
+        <address class="gj-address"><strong>Great Jones Craft &amp; Kitchen</strong><span>73 Main Street</span><span>Newcastle, Co. Down · BT33 0AE</span><a href={phoneHref}>{phone}</a></address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
