@@ -1,0 +1,216 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ShoeTicket from "./ShoeTicket.astro";
+
+/* McCready's Footwear — jar on Main Street. Speak as the shop.
+   Quality mens/womens fit at 85. Since 1936. Walk in / ring.
+   Hours omitted (site thin). No form. No cart. */
+
+const phone = "028 4372 3491";
+const phoneHref = "tel:+442843723491";
+const handoff = "https://www.mccreadysfootwear.com/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=85+Main+Street+Newcastle+BT33+0AE";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap";
+
+const stock = [
+  {
+    kicker: "Mens",
+    title: "Lasting pairs.",
+    body: "Quality mens footwear fitted for Main Street pavement — try them at 85, take them home.",
+  },
+  {
+    kicker: "Womens",
+    title: "The day you wear them.",
+    body: "Womens shoes chosen and fitted for how you actually walk Newcastle — not a catalogue guess.",
+  },
+  {
+    kicker: "The fit",
+    title: "Since 1936.",
+    body: "Size, style, polish. Independent fit on Main Street for ninety years — Edna and Joanne’s door.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"McCready's Footwear — independent concept"}
+  slug="mccreadys-footwear"
+  bodyClass="concept-page concept-mccreadys-footwear"
+  lang="en-GB"
+  businessName="McCready's Footwear"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="AI-generated illustrations imagine the setting, spaces and products; they are not photographs of the business."
+>
+  <div class="mcf-strip">
+    <span>85 Main Street, Newcastle · BT33 0AE</span>
+    <span class="mcf-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="mcf-header">
+    <div class="mcf-header-inner">
+      <a class="mcf-brand" href="/concepts/mccreadys-footwear/">
+        <span class="mcf-brand-name">McCready's Footwear</span>
+        <span class="mcf-brand-sub">85 Main Street · Newcastle · Since 1936</span>
+      </a>
+      <nav class="mcf-nav" aria-label="Concept navigation">
+        <a href="#stock">The pairs</a>
+        <a href="#fit">The fit</a>
+        <a href="#door">Find 85</a>
+      </nav>
+      <a class="mcf-walk" href="#door">Walk in</a>
+    </div>
+  </header>
+
+  <main class="mcf-main">
+    <section class="mcf-hero" aria-labelledby="mcf-name">
+      <div class="mcf-mast-copy">
+        <p class="mcf-kicker">Independent footwear · Main Street</p>
+        <h1 id="mcf-name">McCready's Footwear</h1>
+        <p class="mcf-number">85 Main Street · Newcastle</p>
+        <p class="mcf-say">The fit on Main Street.</p>
+        <p class="mcf-lede">
+          Quality mens and womens shoes, fitted at 85. Walk in, try the pair,
+          take them home — or ring ahead.
+        </p>
+        <div class="mcf-hero-actions">
+          <a class="mcf-btn-primary" href="#door">Walk in to 85</a>
+          <a class="mcf-btn-secondary" href={phoneHref}>Ring {phone}</a>
+        </div>
+      </div>
+
+      <figure class="mcf-theatre">
+        <img
+          src="/media/concepts/mccreadys-footwear/mccreadys-footwear-hero-main-street.jpg"
+          alt="McCready's Footwear shopfront illustration at 85 Main Street Newcastle"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption>85 Main Street · Independent footwear since 1936</figcaption>
+      </figure>
+    </section>
+
+    <section class="mcf-folio" id="stock" aria-labelledby="mcf-stock-title">
+      <div class="mcf-folio-head">
+        <p class="mcf-kicker">The pairs</p>
+        <h2 id="mcf-stock-title">What goes home with you.</h2>
+        <p class="mcf-folio-lede">
+          Mens and womens footwear, fitted on the street — not a cart, a bench.
+        </p>
+      </div>
+      <div class="mcf-mag-grid">
+        {stock.map((item) => (
+          <article class="mcf-mag-cell">
+            <p class="mcf-mag-kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mcf-ritual" id="fit" aria-labelledby="mcf-ticket-title">
+      <div>
+        <p class="mcf-kicker">The fit</p>
+        <h2 id="mcf-ticket-title">Point at the pair.</h2>
+        <p class="mcf-ritual-lede">
+          You try them. We write the ticket. Walk out in the pair — or ring
+          if you want us ready.
+        </p>
+        <ol class="mcf-beats">
+          <li><span class="mcf-beat-n">01</span><span class="mcf-beat-t">Walk in at 85</span></li>
+          <li><span class="mcf-beat-n">02</span><span class="mcf-beat-t">Try the fit</span></li>
+          <li><span class="mcf-beat-n">03</span><span class="mcf-beat-t">Take them home</span></li>
+        </ol>
+        <div class="mcf-cta">
+          <a class="mcf-walk mcf-walk--inline" href="#door">Walk in</a>
+          <a class="mcf-ring" href={phoneHref}>{phone}</a>
+        </div>
+      </div>
+      <ShoeTicket headingId="mcf-ticket-title" />
+    </section>
+
+    <section class="mcf-section" id="leather" aria-labelledby="mcf-leather-title">
+      <div class="mcf-section-copy">
+        <p class="mcf-kicker">Leather &amp; polish</p>
+        <h2 id="mcf-leather-title">Lasted for the street.</h2>
+        <p class="mcf-lead">
+          Warm leather, a polish tin on the bench, pairs chosen for how
+          Newcastle walks — Main Street mahogany, not a fashion shoot.
+        </p>
+        <div class="mcf-inline-action">
+          <a class="mcf-btn-primary" href={handoff} rel="noopener noreferrer">mccreadysfootwear.com →</a>
+        </div>
+      </div>
+      <figure class="mcf-photo-card">
+        <img
+          src="/media/concepts/mccreadys-footwear/mccreadys-footwear-leather-fit.jpg"
+          alt="Leather shoes and polish tin on a fitting bench"
+          width="1200"
+          height="800"
+          loading="lazy"
+        />
+        <figcaption>Leather, polish, the bench at 85</figcaption>
+      </figure>
+    </section>
+
+    <section class="mcf-section mcf-section--alt" id="bench" aria-labelledby="mcf-bench-title">
+      <figure class="mcf-photo-card">
+        <img
+          src="/media/concepts/mccreadys-footwear/mccreadys-footwear-fit-bench.jpg"
+          alt="Shoe box and measuring tape on a warm cream fitting bench"
+          width="1200"
+          height="800"
+          loading="lazy"
+        />
+        <figcaption>The fit bench · Size and style written down</figcaption>
+      </figure>
+      <div class="mcf-section-copy">
+        <p class="mcf-kicker">Since 1936</p>
+        <h2 id="mcf-bench-title">Independent on Main Street.</h2>
+        <p class="mcf-lead">
+          Edna and Joanne’s door. Walk in for the pair you can wear today —
+          or ring 028 4372 3491.
+        </p>
+        <div class="mcf-inline-action">
+          <a class="mcf-btn-secondary" href={phoneHref}>Ring the shop: {phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mcf-door-section" id="door" aria-labelledby="mcf-door-title">
+      <div class="mcf-door-card">
+        <p class="mcf-kicker">The door</p>
+        <h2 id="mcf-door-title">85 Main Street.</h2>
+        <p class="mcf-door-desc">
+          On Newcastle's Main Street. Walk in to try today's pairs, or ring
+          ahead. What is current lives with us on mccreadysfootwear.com.
+        </p>
+        <div class="mcf-door-actions">
+          <a class="mcf-door-btn mcf-door-btn--tel" href={phoneHref}>
+            <span class="mcf-door-label">Telephone</span>
+            <span class="mcf-door-val">Ring {phone} →</span>
+          </a>
+          <a class="mcf-door-btn" href={maps} rel="noopener noreferrer">
+            <span class="mcf-door-label">Directions</span>
+            <span class="mcf-door-val">Open in Google Maps →</span>
+          </a>
+          <a class="mcf-door-btn" href={handoff} rel="noopener noreferrer">
+            <span class="mcf-door-label">Shop site</span>
+            <span class="mcf-door-val">mccreadysfootwear.com →</span>
+          </a>
+        </div>
+        <address class="mcf-address">
+          <strong>McCready's Footwear</strong>
+          <span>85 Main Street</span>
+          <span>Newcastle, Co. Down · BT33 0AE</span>
+          <a href={phoneHref}>{phone}</a>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
