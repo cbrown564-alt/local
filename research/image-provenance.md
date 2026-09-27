@@ -569,14 +569,14 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   navigational map, exact coastline, or evidence of buildings or roads. The
   readable labels remain HTML overlays and the figure discloses the generated
   artwork visibly.
-- `public/media/maps/bear-necessities-circuit-generated.png` — **in use** (23
+- `media/held/maps/bear-necessities-circuit-generated.png` — **in use** (23
   August 2026). AI-generated indicative County Down route artwork made with the
   built-in OpenAI image generation tool. It shows only the sourced regional
   relationships for Newcastle, Downpatrick Racecourse, Rathfriland,
   Warrenpoint Town Square and the Mournes; the private hall remains unlocated.
   It is not a survey, route planner, exact road map or evidence of event
   operations. Labels, pins and the mobile key are HTML overlays.
-- `public/media/maps/binghams-school-roll-generated.png` — **in use** (23 August
+- `media/held/maps/binghams-school-roll-generated.png` — **in use** (23 August
   2026). AI-generated indicative County Down school-roll artwork made with the
   built-in OpenAI image generation tool. It shows the published town
   relationships for the shop's fourteen-school uniform list; it is not a
@@ -593,7 +593,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
 
 ### Kent Amusements concept plates
 
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard.png` — **concept asset** (generated 5 August 2026). AI-generated single wide six-panel ink-and-gouache storyboard made with the built-in OpenAI image generation tool for Kent Amusements move 3 / the staged afternoon. It follows the promenade, change, arcade floor, dodgems, VR and return to the sea in one continuous indicative scene. It is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, attractions beyond the published list, opening hours, prices, or premises detail; the panel numbers are the only text in the artwork.
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard.png` — **concept asset** (generated 5 August 2026). AI-generated single wide six-panel ink-and-gouache storyboard made with the built-in OpenAI image generation tool for Kent Amusements move 3 / the staged afternoon. It follows the promenade, change, arcade floor, dodgems, VR and return to the sea in one continuous indicative scene. It is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, attractions beyond the published list, opening hours, prices, or premises detail; the panel numbers are the only text in the artwork.
 - `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3.png` — **concept asset / alternate composition** (generated 5 August 2026). AI-generated 2-row × 3-column version of the six-panel ink-and-gouache storyboard above, made with the built-in OpenAI image generation tool from that plate as a composition reference. It keeps the same scene order, numbering, palette and indicative geography; it is not a photograph, map, floorplan, exact interior survey, or evidence of current signage, opening hours, prices, or premises detail.
 - `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-2x3-researched.png` — **concept asset / researched revision** (generated 5 August 2026). AI-generated revision of the 2-row × 3-column storyboard, made with the built-in OpenAI image generation tool after reviewing the current seafront frontage references, the public business-page mirror's recent posts, and public visitor-photo descriptions. It carries researched cues — long glazed red-grey terrace, promenade railings, front cash desk, broad machine floor, distinct windowed dodgem room and compact VR island — without copying signage or claiming an exact interior survey. It remains indicative comic-book artwork, not a photograph, map, floorplan, or evidence of current premises detail.
 - `media/held/concepts/kent-amusements/kent-amusements-promenade-day.png` and
@@ -615,7 +615,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   invented a "VARIETY" fascia; conversational edit removed fascia lettering and
   kept the yellow panels blank. Day plate remains the reduced-motion default if
   this ever wires in.
-- `public/media/concepts/kent-amusements/kent-amusements-hero-video-source.png`
+- `media/held/concepts/kent-amusements/kent-amusements-hero-video-source.png`
   — **in use.** AI-generated edit created 9 August 2026 for a
   stylised human-motion capability test. The in-use day promenade plate was
   the edit target; one anonymous adult, one child and a plain red balloon were
@@ -644,7 +644,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   floor, indoor dodgems, VR, back out to the sea. It is not a photograph,
   floorplan, survey, or evidence of the arcade's real interior layout,
   equipment, signage or hours.
-- `public/media/concepts/kent-amusements/kent-amusements-afternoon-storyboard-01-03.png`
+- `media/held/concepts/kent-amusements/kent-amusements-afternoon-storyboard-01-03.png`
   and `kent-amusements-afternoon-storyboard-04-06.png` — **in use** (cropped
   5 August 2026 from the researched 2×3 master). Top and bottom three-panel
   strips served on the concept with captions under each strip; same honesty
@@ -656,7 +656,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   not linked from the concept.
 
 - `media/held/concepts/castle-farm/castle-farm-weekly-table-illustration.png` — **in use** (generated 5 August 2026). AI-generated hand-painted editorial still-life made with the built-in OpenAI image generation tool for Castle Farm move 4, showing a possible week's table from the published food categories. It is an illustrative visualisation, not a photograph of Castle Farm, its kitchen or an exact current box, and carries no brand, packaging or availability claim.
-- `public/media/concepts/castle-farm/castle-farm-hero-video-source.png` —
+- `media/held/concepts/castle-farm/castle-farm-hero-video-source.png` —
   **in use.** AI-generated edit created 9 August 2026 for a
   hand-and-object interaction capability test. The in-use weekly-table
   illustration was the edit target; one anonymous partial arm and hand holding
@@ -673,7 +673,7 @@ remain reduced-motion defaults. Prompts in `research/film/omni-clip-backlog.md`.
   a stable table and a clean final arrangement. It plays once and holds; both
   web files are stripped of audio. The visible in-frame generated-scene label
   covers the generator mark while preserving explicit disclosure.
-- `public/media/concepts/castle-farm/castle-farm-delivery-round-plate.png` — **in use** (generated and revised 5 August 2026). AI-generated hand-drawn ink-and-gouache route plate made with the built-in OpenAI image generation tool for Castle Farm move 5. It uses only towns named in the farm's published schedule and arranges Tuesday, Wednesday, Thursday and Friday clockwise; it is an indicative drawing, not a survey, navigational map or exact route record.
+- `media/held/concepts/castle-farm/castle-farm-delivery-round-plate.png` — **in use** (generated and revised 5 August 2026). AI-generated hand-drawn ink-and-gouache route plate made with the built-in OpenAI image generation tool for Castle Farm move 5. It uses only towns named in the farm's published schedule and arranges Tuesday, Wednesday, Thursday and Friday clockwise; it is an indicative drawing, not a survey, navigational map or exact route record.
 - `public/media/concepts/newcastle-dental/newcastle-dental-calm-room-plate.png` — **concept asset** (generated 5 August 2026). AI-generated hand-drawn periwinkle room illustration made with the built-in OpenAI image generation tool for Newcastle Family Dental Care move 4. It imagines a calm treatment room with a chair by a window and plants; it is not a photograph or evidence of the practice's actual interior, facilities or furnishings.
 
 - `media/film/stills/dundrum/01-pre-dawn-bay.png`, `02-first-light-mudflats.png`, `04-cafe-window-bay.png` and `05-golden-hour-castle.png` — **internal film reference stills** (regenerated 5 August 2026). AI-generated with the built-in OpenAI image generation tool, grounded in Colin Park's real view "Dundrum Inner Bay from east of Downshire Bridge with view towards Dundrum" (Geograph 7677782, CC BY-SA 2.0) and Eschadew's supporting castle detail "Dundrum Castle from outside" (CC BY-SA 4.0). The frames preserve the real camera direction, tidal-channel pattern, village placement, wooded hill and the castle's small distant relationship to the bay while changing light, mist, birds, a tiny walker and, for 04, adding a generic café interior. Shots 02 and 05 were edited from the new 01 master for continuity. They remain generated visualisations, not documentary photographs or evidence of exact weather, activity or a real café view.
@@ -978,7 +978,7 @@ Generated 10 August 2026 with the built-in OpenAI image tool and held under
 `media/concepts/*/essence-media/`. The set contains ten 16:9 film source
 stills and nine complete composition-matched sequences totalling thirty-four
 frames. The Cúpla seed is a research copy of the already recorded
-`public/media/concepts/cupla/cupla-twin-cups.png`; the other forty-three images
+`media/held/concepts/cupla/cupla-twin-cups.png`; the other forty-three images
 were generated for this brief. The prompts and direct asset links are owned by
 `research/concept-essence-media-brief.md`.
 
@@ -1010,13 +1010,13 @@ by the normal media optimiser. All three use the approved still as their
 poster and reduced-motion frame, carry an adjacent visible AI-generated-film
 disclosure, and provide an explicit play/pause control.
 
-- `public/media/concepts/cupla/essence-twin-pour.mp4` — six seconds, 1920 ×
+- `media/held/concepts/cupla/essence-twin-pour.mp4` — six seconds, 1920 ×
   1080; supplied as
   `/Users/cobro/Downloads/Steel_jugs_pouring_steamed_milk_202608100849.mp4`.
 - `public/media/concepts/scopers/essence-whole-carrot.mp4` — eight seconds,
   1280 × 720; supplied as
   `/Users/cobro/Downloads/Stop-motion_carrot_food_film_202608100959.mp4`.
-- `public/media/concepts/donard-hotel/essence-open-newcastle.mp4` — eight
+- `media/held/concepts/donard-hotel/essence-open-newcastle.mp4` — eight
   seconds, 1280 × 720; supplied as
   `/Users/cobro/Downloads/Curtains_opening_to_reveal_Newca…_202608100958.mp4`.
 
@@ -1135,218 +1135,218 @@ Ten built concept grafts published to the public transformations index.
 
 ### Generated concept plates (guest-disclosed)
 
-- `public/media/concepts/bear-necessities/party-moment.jpg` — generated concept plate of a child with their newly made teddy bear and adoption certificate at a party; disclosed on the concept banner. Not a photograph of a real child or customer party.
-- `public/media/concepts/bear-necessities/workshop-table.jpg` — generated concept plate of a teddy bear workshop table setup with plush skins, hearts, shirts, and certificate scrolls; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/bear-necessities/party-moment.jpg` — generated concept plate of a child with their newly made teddy bear and adoption certificate at a party; disclosed on the concept banner. Not a photograph of a real child or customer party.
+- `media/held/concepts/bear-necessities/workshop-table.jpg` — generated concept plate of a teddy bear workshop table setup with plush skins, hearts, shirts, and certificate scrolls; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/bear-necessities/machine.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/morning-door.jpg` — generated concept plate of the morning doorway with bicycles and floorboards; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `media/held/concepts/arley-house/breakfast-table.jpg` — generated concept plate of the breakfast table overlooking the bay; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/arley-house/windows-dusk.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/armstrong-opticians/frame-wall.jpg` — generated concept plate of the optical choosing wall and consultation counter on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/armstrong-opticians/eyewear-tray.jpg` — generated concept plate of curated frames and optometry dispensing tools; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/armstrong-opticians/consulting-room.jpg` — generated concept plate of the quiet consulting suite on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/armstrong-opticians/frame-wall.jpg` — generated concept plate of the optical choosing wall and consultation counter on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/armstrong-opticians/eyewear-tray.jpg` — generated concept plate of curated frames and optometry dispensing tools; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/armstrong-opticians/consulting-room.jpg` — generated concept plate of the quiet consulting suite on Railway Street; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/armstrong-opticians/calm.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/irelands-appliance-centre/kitchen.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/villa-vinci/dish.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/conlyn-house/windows-dusk.jpg` — generated concept plate of the Victorian seaside guesthouse with purple door on Central Promenade overlooking Dundrum Bay and the Mournes; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/binghams-menswear/fitting-session.jpg` — generated concept plate of the fitting scene with herringbone tweed, tailor's tape, shears and chalk on Main Street; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/binghams-menswear/two-blazers.jpg` — generated concept plate showing the two measured days (junior school blazer and groom's three-piece suit side by side); disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/binghams-menswear/hire-rail.jpg` — generated concept plate of the hire rail and suiting cloths; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/binghams-menswear/jacket.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/cafe-mauds/dish.jpg` — generated concept plate of fresh Belgian waffles, artisan espresso, and Mauds honeycomb and chocolate ice cream by the Waterfoot promenade window; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/binghams-menswear/fitting-session.jpg` — generated concept plate of the fitting scene with herringbone tweed, tailor's tape, shears and chalk on Main Street; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/binghams-menswear/two-blazers.jpg` — generated concept plate showing the two measured days (junior school blazer and groom's three-piece suit side by side); disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/binghams-menswear/hire-rail.jpg` — generated concept plate of the hire rail and suiting cloths; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/binghams-menswear/jacket.jpg` — generated concept plate shipped with the Day 1/Day 2 graft; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/cafe-mauds/dish.jpg` — generated concept plate of fresh Belgian waffles, artisan espresso, and Mauds honeycomb and chocolate ice cream by the Waterfoot promenade window; disclosed on the concept banner. Not a photograph of the premises or stock.
 - `public/media/concepts/cocos-adventure-playground/play.jpg` — generated concept plate of the multi-level adventure play kingdom, spiral slides, ball pits, and elevated mezzanine viewing café on Central Promenade; disclosed on the concept banner. Not a photograph of the premises or stock.
-- `public/media/concepts/marine-wellness/calm.jpg` — generated concept plate of a calm, sunlit holistic treatment room with a massage bed, folded linen and coastal light; disclosed on the concept banner. Not a photograph of the premises.
-- `public/media/concepts/marine-wellness/hands.jpg` — generated concept plate of therapist hands beside warm massage stones and botanical oils on natural linen; disclosed on the concept banner. Not a photograph of the therapists or premises.
-- `public/media/concepts/railway-street/railway-street-hero.jpg` — generated concept plate of Third Wave coffee extraction, Kalita pour-over dripper, and flat white on Mourne slate; disclosed on the concept banner. Not a photograph of the premises or menu.
-- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-hero.jpg` — generated concept plate of traditional skillet fry with soda farl and tea by the promenade window; disclosed on the concept banner. Not a photograph of the premises or menu.
-- `public/media/concepts/cafe-67/cafe-67-hero.jpg` — generated concept plate of poached egg sourdough toast and terracotta 3fe coffee cup; disclosed on the concept banner. Not a photograph of the premises or menu.
-- `public/media/concepts/birch/birch-hero.jpg` — generated concept plate of oat flat white in seafoam ceramic with cardamom pastry overlooking the misty Mourne coastline; disclosed on the concept banner. Not a photograph of the premises or menu.
-- `public/media/concepts/tip-top/tip-top-hero.jpg` — generated concept plate of traditional sweet shop interior with glowing glass jars and brass balance scale; disclosed on the concept banner. Not a photograph of the premises or stock.
+- `media/held/concepts/marine-wellness/calm.jpg` — generated concept plate of a calm, sunlit holistic treatment room with a massage bed, folded linen and coastal light; disclosed on the concept banner. Not a photograph of the premises.
+- `media/held/concepts/marine-wellness/hands.jpg` — generated concept plate of therapist hands beside warm massage stones and botanical oils on natural linen; disclosed on the concept banner. Not a photograph of the therapists or premises.
+- `media/held/concepts/railway-street/railway-street-hero.jpg` — generated concept plate of Third Wave coffee extraction, Kalita pour-over dripper, and flat white on Mourne slate; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `media/held/concepts/nikis-kitchen-cafe/nikis-kitchen-hero.jpg` — generated concept plate of traditional skillet fry with soda farl and tea by the promenade window; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `media/held/concepts/cafe-67/cafe-67-hero.jpg` — generated concept plate of poached egg sourdough toast and terracotta 3fe coffee cup; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `media/held/concepts/birch/birch-hero.jpg` — generated concept plate of oat flat white in seafoam ceramic with cardamom pastry overlooking the misty Mourne coastline; disclosed on the concept banner. Not a photograph of the premises or menu.
+- `media/held/concepts/tip-top/tip-top-hero.jpg` — generated concept plate of traditional sweet shop interior with glowing glass jars and brass balance scale; disclosed on the concept banner. Not a photograph of the premises or stock.
 
 ### Comparison and share media
 
-- `public/media/concepts/bear-necessities/bear-necessities-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/bear-necessities/bear-necessities-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/bear-necessities/bear-necessities-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/bear-necessities.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/bear-necessities/bear-necessities-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/bear-necessities/bear-necessities-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/bear-necessities/bear-necessities-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/bear-necessities.jpg` — Open Graph share card generated from the workbench route.
 - `public/media/concepts/arley-house/arley-house-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
 - `public/media/concepts/arley-house/arley-house-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
 - `public/media/concepts/arley-house/arley-house-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
 - `public/media/og/arley-house.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/armstrong-opticians/armstrong-opticians-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/armstrong-opticians/armstrong-opticians-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/armstrong-opticians/armstrong-opticians-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/armstrong-opticians.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/irelands-appliance-centre/irelands-appliance-centre-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/irelands-appliance-centre.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/villa-vinci/villa-vinci-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/villa-vinci/villa-vinci-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/villa-vinci/villa-vinci-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/villa-vinci.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/armstrong-opticians/armstrong-opticians-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/armstrong-opticians/armstrong-opticians-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/armstrong-opticians/armstrong-opticians-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/armstrong-opticians.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/irelands-appliance-centre/irelands-appliance-centre-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/irelands-appliance-centre/irelands-appliance-centre-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/irelands-appliance-centre/irelands-appliance-centre-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/irelands-appliance-centre.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/villa-vinci/villa-vinci-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/villa-vinci/villa-vinci-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/villa-vinci/villa-vinci-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/villa-vinci.jpg` — Open Graph share card generated from the workbench route.
 - `public/media/concepts/conlyn-house/conlyn-house-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
 - `public/media/concepts/conlyn-house/conlyn-house-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
 - `public/media/concepts/conlyn-house/conlyn-house-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
 - `public/media/og/conlyn-house.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/binghams-menswear/binghams-menswear-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/binghams-menswear/binghams-menswear-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/binghams-menswear/binghams-menswear-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/binghams-menswear.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/cafe-mauds/cafe-mauds-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/cafe-mauds/cafe-mauds-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/cafe-mauds/cafe-mauds-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/cafe-mauds.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/binghams-menswear/binghams-menswear-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/binghams-menswear/binghams-menswear-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/binghams-menswear/binghams-menswear-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/binghams-menswear.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/cafe-mauds/cafe-mauds-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/cafe-mauds/cafe-mauds-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/cafe-mauds/cafe-mauds-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/cafe-mauds.jpg` — Open Graph share card generated from the workbench route.
 - `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
 - `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
 - `public/media/concepts/cocos-adventure-playground/cocos-adventure-playground-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
 - `public/media/og/cocos-adventure-playground.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/marine-wellness/marine-wellness-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/marine-wellness/marine-wellness-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
-- `public/media/concepts/marine-wellness/marine-wellness-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/marine-wellness.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/birch/birch-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/birch/birch-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
-- `public/media/concepts/birch/birch-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/birch.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/cafe-67/cafe-67-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/cafe-67/cafe-67-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
-- `public/media/concepts/cafe-67/cafe-67-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/cafe-67.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
-- `public/media/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/nikis-kitchen-cafe.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/railway-street/railway-street-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/railway-street/railway-street-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
-- `public/media/concepts/railway-street/railway-street-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/railway-street.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/tip-top/tip-top-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/tip-top/tip-top-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
-- `public/media/concepts/tip-top/tip-top-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/tip-top.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/serenity-newcastle.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/shimna-cafe/shimna-cafe-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/shimna-cafe/shimna-cafe-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/shimna-cafe/shimna-cafe-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/shimna-cafe.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/vintage-etc/vintage-etc-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/vintage-etc/vintage-etc-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/vintage-etc/vintage-etc-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/vintage-etc.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/smalls-butchers/smalls-butchers-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/smalls-butchers/smalls-butchers-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/smalls-butchers/smalls-butchers-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/smalls-butchers.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/cookie-jar/cookie-jar-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/cookie-jar/cookie-jar-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/cookie-jar/cookie-jar-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/cookie-jar.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/clay-project/clay-project-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/clay-project/clay-project-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/clay-project/clay-project-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/clay-project.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/dominic-mcinerney.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/hutt-hostel/hutt-hostel-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/hutt-hostel/hutt-hostel-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/hutt-hostel/hutt-hostel-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/hutt-hostel.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/stile-glass/stile-glass-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/stile-glass/stile-glass-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/stile-glass/stile-glass-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/stile-glass.jpg` — Open Graph share card generated from the workbench route.
-- `public/media/concepts/terry-king/terry-king-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
-- `public/media/concepts/terry-king/terry-king-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
-- `public/media/concepts/terry-king/terry-king-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
-- `public/media/og/terry-king.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/marine-wellness/marine-wellness-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/marine-wellness/marine-wellness-after.jpg` — capture of the local concept opening screen for the 23 August 2026 publish.
+- `media/held/concepts/marine-wellness/marine-wellness-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/marine-wellness.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/birch/birch-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/birch/birch-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `media/held/concepts/birch/birch-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/birch.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/cafe-67/cafe-67-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/cafe-67/cafe-67-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `media/held/concepts/cafe-67/cafe-67-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/cafe-67.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `media/held/concepts/nikis-kitchen-cafe/nikis-kitchen-cafe-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/nikis-kitchen-cafe.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/railway-street/railway-street-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/railway-street/railway-street-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `media/held/concepts/railway-street/railway-street-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/railway-street.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/tip-top/tip-top-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/tip-top/tip-top-after.jpg` — capture of the local concept opening screen for the 25 August 2026 publish.
+- `media/held/concepts/tip-top/tip-top-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/tip-top.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/serenity-newcastle.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/shimna-cafe/shimna-cafe-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/shimna-cafe/shimna-cafe-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/shimna-cafe/shimna-cafe-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/shimna-cafe.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/vintage-etc/vintage-etc-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/vintage-etc/vintage-etc-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/vintage-etc/vintage-etc-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/vintage-etc.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/smalls-butchers/smalls-butchers-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/smalls-butchers/smalls-butchers-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/smalls-butchers/smalls-butchers-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/smalls-butchers.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/cookie-jar/cookie-jar-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/cookie-jar/cookie-jar-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/cookie-jar/cookie-jar-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/cookie-jar.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/clay-project/clay-project-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/clay-project/clay-project-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/clay-project/clay-project-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/clay-project.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/dominic-mcinerney/dominic-mcinerney-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/dominic-mcinerney/dominic-mcinerney-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/dominic-mcinerney/dominic-mcinerney-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/dominic-mcinerney.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/hutt-hostel/hutt-hostel-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/hutt-hostel/hutt-hostel-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/hutt-hostel/hutt-hostel-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/hutt-hostel.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/stile-glass/stile-glass-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/stile-glass/stile-glass-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/stile-glass/stile-glass-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/stile-glass.jpg` — Open Graph share card generated from the workbench route.
+- `media/held/concepts/terry-king/terry-king-before.jpg` — labelled placeholder for the current public presence; not a live-site screenshot.
+- `media/held/concepts/terry-king/terry-king-after.jpg` — capture of the local concept opening screen for the 27 August 2026 publish.
+- `media/held/concepts/terry-king/terry-king-after.mp4` / `.webm` — short hold of that after still (full interactive visit demo not filed).
+- `media/held/og/terry-king.jpg` — Open Graph share card generated from the workbench route.
 
 
 ## The Clay Project concept plates (27 August 2026)
 
-- `public/media/concepts/clay-project/clay-project-hero-studio.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a sun-drenched pottery studio on Newcastle Central Promenade with sash windows overlooking the Irish Sea, delicate handcrafted porcelain on timber shelves, natural brushes and glaze jars. It is an illustrative visual representation, not a documentary photograph of 85 Central Promenade's interior.
-- `public/media/concepts/clay-project/clay-project-porcelain-wheel.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative craft close-up showing artisan hands shaping raw porcelain clay on a potter's wheel. It illustrates the studio's in-house porcelain production; not a documentary photograph of the founders.
-- `public/media/concepts/clay-project/clay-project-evening-session.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative twilight workshop photograph depicting guests painting ceramic charcuterie boards over coffee and wine. Illustrative visualisation of evening BYOB sessions.
+- `media/held/concepts/clay-project/clay-project-hero-studio.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a sun-drenched pottery studio on Newcastle Central Promenade with sash windows overlooking the Irish Sea, delicate handcrafted porcelain on timber shelves, natural brushes and glaze jars. It is an illustrative visual representation, not a documentary photograph of 85 Central Promenade's interior.
+- `media/held/concepts/clay-project/clay-project-porcelain-wheel.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative craft close-up showing artisan hands shaping raw porcelain clay on a potter's wheel. It illustrates the studio's in-house porcelain production; not a documentary photograph of the founders.
+- `media/held/concepts/clay-project/clay-project-evening-session.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative twilight workshop photograph depicting guests painting ceramic charcuterie boards over coffee and wine. Illustrative visualisation of evening BYOB sessions.
 
 ## The Hutt Hostel concept plates (27 August 2026)
 
-- `public/media/concepts/hutt-hostel/hutt-hostel-hero-mountain.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of hikers outside 30 Downs Road in Newcastle at dawn with mist swirling around the granite peak of Slieve Donard. Illustrative visualisation of the hostel's mountain trailhead setting.
-- `public/media/concepts/hutt-hostel/hutt-hostel-lounge-interior.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative interior of a cozy mountain hostel common room with topo maps, timber tables, and boots by the hearth. Not a documentary photograph of the interior.
-- `public/media/concepts/hutt-hostel/hutt-hostel-padd-apartment.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative visualisation of a self-contained holiday flat ("The Padd") with mountain views, fitted kitchenette, and lounge.
+- `media/held/concepts/hutt-hostel/hutt-hostel-hero-mountain.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of hikers outside 30 Downs Road in Newcastle at dawn with mist swirling around the granite peak of Slieve Donard. Illustrative visualisation of the hostel's mountain trailhead setting.
+- `media/held/concepts/hutt-hostel/hutt-hostel-lounge-interior.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative interior of a cozy mountain hostel common room with topo maps, timber tables, and boots by the hearth. Not a documentary photograph of the interior.
+- `media/held/concepts/hutt-hostel/hutt-hostel-padd-apartment.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative visualisation of a self-contained holiday flat ("The Padd") with mountain views, fitted kitchenette, and lounge.
 
 ## Terry King & Sons concept plates (27 August 2026)
 
-- `public/media/concepts/terry-king/terry-king-hero-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an active commercial garage bay on Dundrum Road with a trade van on a 2-post hydraulic ramp, diagnostic equipment, and mechanics at work. Illustrative visualisation of 84 Dundrum Road workshop operations.
-- `public/media/concepts/terry-king/terry-king-diagnostic-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a digital diagnostic scanner console connected to an engine bay. Illustrative representation of electronic vehicle diagnostics.
-- `public/media/concepts/terry-king/terry-king-mot-inspection.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative vehicle underbody ramp inspection with mechanic checking suspension and brakes under inspection lamp.
+- `media/held/concepts/terry-king/terry-king-hero-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an active commercial garage bay on Dundrum Road with a trade van on a 2-post hydraulic ramp, diagnostic equipment, and mechanics at work. Illustrative visualisation of 84 Dundrum Road workshop operations.
+- `media/held/concepts/terry-king/terry-king-diagnostic-bay.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a digital diagnostic scanner console connected to an engine bay. Illustrative representation of electronic vehicle diagnostics.
+- `media/held/concepts/terry-king/terry-king-mot-inspection.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative vehicle underbody ramp inspection with mechanic checking suspension and brakes under inspection lamp.
 
 ## Dominic McInerney Solicitors concept plates (27 August 2026)
 
-- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-hero-chamber.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a quiet, dignified private legal consultation office on Newcastle Main Street with solid oak desk, traditional green banker's lamp, leather-bound statutes, and window view towards the Mournes. Illustrative representation of 123A Main Street chamber.
-- `public/media/concepts/dominic-mcinerney/dominic-mcinerney-desk-detail.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a solicitor consultation desk with parchment document, fountain pen, and embossed legal seal.
+- `media/held/concepts/dominic-mcinerney/dominic-mcinerney-hero-chamber.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a quiet, dignified private legal consultation office on Newcastle Main Street with solid oak desk, traditional green banker's lamp, leather-bound statutes, and window view towards the Mournes. Illustrative representation of 123A Main Street chamber.
+- `media/held/concepts/dominic-mcinerney/dominic-mcinerney-desk-detail.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a solicitor consultation desk with parchment document, fountain pen, and embossed legal seal.
 
 ## Stile Glass concept plates (27 August 2026)
 
-- `public/media/concepts/stile-glass/stile-glass-hero-terrace.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a modern coastal architectural terrace in Newcastle with frameless structural glass balustrades overlooking the Irish Sea and the Mourne Mountains. Illustrative representation of bespoke architectural glazing.
-- `public/media/concepts/stile-glass/stile-glass-balustrade-spigot.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative macro architectural detail of an AISI 316 marine-grade stainless steel clamp fixing on granite coping holding laminated toughened structural glass.
+- `media/held/concepts/stile-glass/stile-glass-hero-terrace.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a modern coastal architectural terrace in Newcastle with frameless structural glass balustrades overlooking the Irish Sea and the Mourne Mountains. Illustrative representation of bespoke architectural glazing.
+- `media/held/concepts/stile-glass/stile-glass-balustrade-spigot.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative macro architectural detail of an AISI 316 marine-grade stainless steel clamp fixing on granite coping holding laminated toughened structural glass.
 
 ## Serenity Day Spa concept plates (27 August 2026)
 
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-hero-spa.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a tranquil coastal day spa treatment suite on Newcastle Central Promenade with soft natural seaside morning light, crisp linen-draped massage table with warm basalt stones, and eucalyptus aromatherapy diffuser mist. Illustrative visualisation of 55–57 Central Promenade treatment rooms.
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-treatment-detail.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of professional spa treatment ritual featuring Dermalogica skincare botanical serums, heated basalt stones, and fresh coastal lavender.
-- `public/media/concepts/serenity-newcastle/serenity-newcastle-manicure-suite.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a quiet nail care and manicure suite with CND Shellac bottles, linen armchairs, and rear courtyard views.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-hero-spa.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a tranquil coastal day spa treatment suite on Newcastle Central Promenade with soft natural seaside morning light, crisp linen-draped massage table with warm basalt stones, and eucalyptus aromatherapy diffuser mist. Illustrative visualisation of 55–57 Central Promenade treatment rooms.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-treatment-detail.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of professional spa treatment ritual featuring Dermalogica skincare botanical serums, heated basalt stones, and fresh coastal lavender.
+- `media/held/concepts/serenity-newcastle/serenity-newcastle-manicure-suite.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a quiet nail care and manicure suite with CND Shellac bottles, linen armchairs, and rear courtyard views.
 
 ## Shimna Café concept plates (27 August 2026)
 
-- `public/media/concepts/shimna-cafe/shimna-cafe-hero-terrace.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of sun-drenched morning breakfast café terrace on Newcastle Main Street by the Shimna River footbridge, with artisan sourdough breakfast and freshly poured flat white coffee. Illustrative visualisation of 2 Main Street dining atmosphere.
-- `public/media/concepts/shimna-cafe/shimna-cafe-breakfast-fry.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative food photograph of a traditional Mourne breakfast pass with griddled potato farls, soda bread, dry-cured bacon, and farm eggs.
-- `public/media/concepts/shimna-cafe/shimna-cafe-catering-platter.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an artisan gourmet sandwich and scone catering platter on slate board for external council and event delivery.
+- `media/held/concepts/shimna-cafe/shimna-cafe-hero-terrace.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of sun-drenched morning breakfast café terrace on Newcastle Main Street by the Shimna River footbridge, with artisan sourdough breakfast and freshly poured flat white coffee. Illustrative visualisation of 2 Main Street dining atmosphere.
+- `media/held/concepts/shimna-cafe/shimna-cafe-breakfast-fry.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative food photograph of a traditional Mourne breakfast pass with griddled potato farls, soda bread, dry-cured bacon, and farm eggs.
+- `media/held/concepts/shimna-cafe/shimna-cafe-catering-platter.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an artisan gourmet sandwich and scone catering platter on slate board for external council and event delivery.
 
 ## Vintage etc. concept plates (27 August 2026)
 
-- `public/media/concepts/vintage-etc/vintage-etc-hero-trove.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an atmospheric antique and mid-century treasure trove interior on Newcastle Main Street with warm Danish teak credenza, 1960s glowing brass lamps, and vintage LP record crates. Illustrative visualisation of 4 Main Street trove.
-- `public/media/concepts/vintage-etc/vintage-etc-teak-credenza.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a 1960s mid-century teak sideboard, vintage turntable, and retro brass curios.
-- `public/media/concepts/vintage-etc/vintage-etc-vinyl-crates.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of wooden crates packed with vintage vinyl records and collector LP pressings under warm antique shop lighting.
+- `media/held/concepts/vintage-etc/vintage-etc-hero-trove.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of an atmospheric antique and mid-century treasure trove interior on Newcastle Main Street with warm Danish teak credenza, 1960s glowing brass lamps, and vintage LP record crates. Illustrative visualisation of 4 Main Street trove.
+- `media/held/concepts/vintage-etc/vintage-etc-teak-credenza.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a 1960s mid-century teak sideboard, vintage turntable, and retro brass curios.
+- `media/held/concepts/vintage-etc/vintage-etc-vinyl-crates.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of wooden crates packed with vintage vinyl records and collector LP pressings under warm antique shop lighting.
 
 ## Smalls Butchers+Deli concept plates (27 August 2026)
 
-- `public/media/concepts/smalls-butchers/smalls-butchers-hero-counter.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a traditional master butchery counter in Newcastle Shopping Centre with marble counter, heavy butcher block, dry-aged prime beef rib roast, and artisan links. Illustrative visualisation of Smalls counter.
-- `public/media/concepts/smalls-butchers/smalls-butchers-dry-aged-rib.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a prime dry-aged Mourne beef rib joint on a butcher's block with fresh rosemary and sea salt.
-- `public/media/concepts/smalls-butchers/smalls-butchers-hot-carvery.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a freshly carved hot roast lunch deli roll with savory herb stuffing and gravy on butcher deli paper.
+- `media/held/concepts/smalls-butchers/smalls-butchers-hero-counter.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a traditional master butchery counter in Newcastle Shopping Centre with marble counter, heavy butcher block, dry-aged prime beef rib roast, and artisan links. Illustrative visualisation of Smalls counter.
+- `media/held/concepts/smalls-butchers/smalls-butchers-dry-aged-rib.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a prime dry-aged Mourne beef rib joint on a butcher's block with fresh rosemary and sea salt.
+- `media/held/concepts/smalls-butchers/smalls-butchers-hot-carvery.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a freshly carved hot roast lunch deli roll with savory herb stuffing and gravy on butcher deli paper.
 
 ## Cookie Jar / Mourne and Bread concept plates (27 August 2026)
 
-- `public/media/concepts/cookie-jar/cookie-jar-hero-bakery.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a traditional Irish home bakery counter at 121 Main Street in Newcastle with warm golden wheaten bread loaves, country butter slab, and flour-dusted wooden peel. Illustrative visualisation of Cookie Jar bakery.
-- `public/media/concepts/cookie-jar/cookie-jar-wheaten-slice.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a thick slice of freshly baked Irish wheaten loaf with melting country butter on a ceramic plate.
-- `public/media/concepts/cookie-jar/cookie-jar-bread-mix-pack.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of Mourne and Bread kraft paper mail-order bread mix kits with wholesome ingredients and buttermilk jar.
+- `media/held/concepts/cookie-jar/cookie-jar-hero-bakery.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of a traditional Irish home bakery counter at 121 Main Street in Newcastle with warm golden wheaten bread loaves, country butter slab, and flour-dusted wooden peel. Illustrative visualisation of Cookie Jar bakery.
+- `media/held/concepts/cookie-jar/cookie-jar-wheaten-slice.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative close-up of a thick slice of freshly baked Irish wheaten loaf with melting country butter on a ceramic plate.
+- `media/held/concepts/cookie-jar/cookie-jar-bread-mix-pack.jpg` — **in use** (generated 27 August 2026). AI-generated illustrative photograph of Mourne and Bread kraft paper mail-order bread mix kits with wholesome ingredients and buttermilk jar.
 
 ## Chatterbox Day Nursery concept plates (14 September 2026)
 
-- `public/media/concepts/chatterbox/chatterbox-hero-bryansford-road.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of 75 Bryansford Road in Newcastle County Down with welcoming painted entrance door and garden path. It is an illustrative visual representation, not a documentary photograph of the premises.
-- `public/media/concepts/chatterbox/chatterbox-garden-play.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of an outdoor nature play garden behind a coastal nursery with timber balance beams and dry-stone boundary wall. Illustrative representation, no real children depicted.
-- `public/media/concepts/chatterbox/chatterbox-hall-entry.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative interior photograph of a calm nursery entrance hallway with coat pegs and timber flooring. Illustrative representation of the interior atmosphere.
+- `media/held/concepts/chatterbox/chatterbox-hero-bryansford-road.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of 75 Bryansford Road in Newcastle County Down with welcoming painted entrance door and garden path. It is an illustrative visual representation, not a documentary photograph of the premises.
+- `media/held/concepts/chatterbox/chatterbox-garden-play.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of an outdoor nature play garden behind a coastal nursery with timber balance beams and dry-stone boundary wall. Illustrative representation, no real children depicted.
+- `media/held/concepts/chatterbox/chatterbox-hall-entry.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative interior photograph of a calm nursery entrance hallway with coat pegs and timber flooring. Illustrative representation of the interior atmosphere.
 
 ## First 4 Floors concept plates (14 September 2026)
 
-- `public/media/concepts/first-4-floors/first-4-floors-hero-showroom.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a trade flooring showroom interior with carpet rolls and timber plank displays. It is an illustrative visual representation, not a documentary photograph of Unit 2.
-- `public/media/concepts/first-4-floors/first-4-floors-counter-samples.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative close-up of flooring swatches and measuring tools on a showroom counter. Illustrative representation of physical sample selection.
-- `public/media/concepts/first-4-floors/first-4-floors-caravan-refloor.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of caravan interior flooring installation with tools and cut-to-fit carpet. Illustrative representation of bespoke mobile fitting work.
+- `media/held/concepts/first-4-floors/first-4-floors-hero-showroom.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a trade flooring showroom interior with carpet rolls and timber plank displays. It is an illustrative visual representation, not a documentary photograph of Unit 2.
+- `media/held/concepts/first-4-floors/first-4-floors-counter-samples.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative close-up of flooring swatches and measuring tools on a showroom counter. Illustrative representation of physical sample selection.
+- `media/held/concepts/first-4-floors/first-4-floors-caravan-refloor.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of caravan interior flooring installation with tools and cut-to-fit carpet. Illustrative representation of bespoke mobile fitting work.
 
 ## Joe's Quality Meats concept plates (14 September 2026)
 
-- `public/media/concepts/joes-quality-meats/joes-quality-meats-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a traditional Irish butcher shopfront on Main Street in Newcastle County Down with deep oxblood fascia and awning. It is an illustrative visual representation, not a documentary photograph of 6 Main Street.
-- `public/media/concepts/joes-quality-meats/joes-quality-meats-counter-case.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a butcher display case with fresh cuts laid on enamel trays against white metro tiles. Illustrative representation of the butchery counter.
-- `public/media/concepts/joes-quality-meats/joes-quality-meats-deli-pasties.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative food photograph of freshly baked golden Cornish pasties and savoury pies on greaseproof paper on a timber deli counter. Illustrative representation of the rear deli pass.
+- `media/held/concepts/joes-quality-meats/joes-quality-meats-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a traditional Irish butcher shopfront on Main Street in Newcastle County Down with deep oxblood fascia and awning. It is an illustrative visual representation, not a documentary photograph of 6 Main Street.
+- `media/held/concepts/joes-quality-meats/joes-quality-meats-counter-case.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a butcher display case with fresh cuts laid on enamel trays against white metro tiles. Illustrative representation of the butchery counter.
+- `media/held/concepts/joes-quality-meats/joes-quality-meats-deli-pasties.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative food photograph of freshly baked golden Cornish pasties and savoury pies on greaseproof paper on a timber deli counter. Illustrative representation of the rear deli pass.
 
 ## Stephen Morgan Funeral Directors concept plates (14 September 2026)
 
-- `public/media/concepts/stephen-morgan/stephen-morgan-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a dignified independent funeral directors exterior at 14 Main Street in Newcastle County Down during blue hour twilight with a warm interior lamp glowing behind frosted windows. Illustrative representation, not a documentary photograph.
-- `public/media/concepts/stephen-morgan/stephen-morgan-consultation-room.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a quiet, private family consultation room with muted linen armchairs and warm reading lamp. Illustrative representation of the consultation setting.
-- `public/media/concepts/stephen-morgan/stephen-morgan-coastal-twilight.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative landscape photograph of the quiet Newcastle coastline and Mourne mountains at peaceful twilight. Illustrative visual representation.
+- `media/held/concepts/stephen-morgan/stephen-morgan-hero-main-street.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a dignified independent funeral directors exterior at 14 Main Street in Newcastle County Down during blue hour twilight with a warm interior lamp glowing behind frosted windows. Illustrative representation, not a documentary photograph.
+- `media/held/concepts/stephen-morgan/stephen-morgan-consultation-room.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative photograph of a quiet, private family consultation room with muted linen armchairs and warm reading lamp. Illustrative representation of the consultation setting.
+- `media/held/concepts/stephen-morgan/stephen-morgan-coastal-twilight.jpg` — **in use** (generated 14 September 2026). AI-generated illustrative landscape photograph of the quiet Newcastle coastline and Mourne mountains at peaceful twilight. Illustrative visual representation.
 
 ### Keown Nugent Solicitors
 - `/media/concepts/keown-nugent/keown-nugent-hero-railway-street.jpg`

@@ -151,8 +151,8 @@ export const fiveShapes: ShapePlate[] = [
     },
     examples: [
       { slug: "hotel-enniskeen", name: "Enniskeen Country House Hotel" },
-      { slug: "dundrum-inn", name: "The Dundrum Inn" },
-      { slug: "donard-hotel", name: "The Donard Hotel" },
+      { slug: "arley-house", name: "Arley House" },
+      { slug: "conlyn-house", name: "Conlyn House" },
     ],
   },
   {
@@ -204,7 +204,6 @@ export const fiveShapes: ShapePlate[] = [
     },
     examples: [
       { slug: "scopers", name: "Scopers" },
-      { slug: "cupla", name: "Cúpla" },
       { slug: "hugh-mccanns", name: "Hugh McCann's" },
     ],
   },
@@ -255,10 +254,9 @@ export const fiveShapes: ShapePlate[] = [
         band(10, 84, 74, 4, { label: "market days, at the source" }),
       ],
     },
-    examples: [
-      { slug: "bettys-butters", name: "Betty's Better Butters" },
-      { slug: "painted-earth", name: "Painted Earth" },
-    ],
+    /* Betty's Better Butters and Painted Earth were archived on
+       27 September 2026; no kept concept is product-shaped. */
+    examples: [],
   },
   {
     id: "care",
@@ -361,7 +359,6 @@ export const fiveShapes: ShapePlate[] = [
     },
     examples: [
       { slug: "mourne-cycles", name: "Mourne Cycles" },
-      { slug: "tool-centre", name: "The Tool Centre" },
     ],
   },
 ];

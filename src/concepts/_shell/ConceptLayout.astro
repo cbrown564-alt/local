@@ -25,23 +25,12 @@ interface Props {
 }
 
 const conceptFonts: Record<string, string> = {
-  "bucks-head": "https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;1,400;1,500&display=swap",
-  "castle-farm": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap",
-  "cupla": "https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;700&display=swap",
   "donard-veterinary": "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;700&display=swap",
   "hotel-enniskeen": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap",
-  "kent-amusements": "https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap",
   "mourne-cycles": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;1,600;1,700&family=Barlow:wght@400;600;700&display=swap",
   "newcastle-chamber": "https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
   "scopers": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap",
-  "tool-centre": "https://fonts.googleapis.com/css2?family=Chivo:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
   // Batch two. No face is reused from batch one, so no two concepts share a voice.
-  "dundrum-inn": "https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap",
-  "murdock-brothers": "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500;75..125,700;75..125,900&family=DM+Mono:wght@400;500&display=swap",
-  "kelly-mcevoy-brown": "https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Martian+Mono:wght@400;600&display=swap",
-  "bettys-butters": "https://fonts.googleapis.com/css2?family=Rozha+One&family=Epilogue:ital,wght@0,400;0,600;0,700;1,400&display=swap",
-  "douglas-cromie": "https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap",
-  "donard-hotel": "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap",
   "newcastle-dental": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap",
   "hugh-mccanns": "https://fonts.googleapis.com/css2?family=Italiana&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap",
 };
@@ -83,16 +72,14 @@ const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${
  */
 /**
  * Concepts whose own surface publishes no raster imagery cannot advertise a
- * raster share card either. Painted Earth's pages are drawn throughout because
- * the maker's photography is not licensed, and the before panel of a share card
- * is a screenshot of their live shop — a grid of their own product photographs.
- * Publishing that as the preview image for a page that carries none would route
- * around the licensing rule rather than honour it, so these concepts get a
- * text-only preview. Kept as a set here rather than a per-page prop so a new
- * route cannot quietly omit it; `tools/test/test-painted-earth-elevation.mjs`
- * fails the build if a raster reference reaches any of those pages.
+ * raster share card either: the before panel of a share card is a screenshot
+ * of the business's live site, and publishing that as the preview for a page
+ * that carries none would route around a licensing rule rather than honour it.
+ * Painted Earth was the one member; it was archived on 27 September 2026 and
+ * its pin went with it (archive/concepts/painted-earth/). Kept as a set so a
+ * future concept with unlicensed imagery has somewhere to go.
  */
-const noRasterConcepts = new Set(["painted-earth"]);
+const noRasterConcepts = new Set<string>();
 const hasOwnCard =
   !noRasterConcepts.has(slug) && new Set<string>(publicTransformationSlugs).has(slug);
 const ogImage = noRasterConcepts.has(slug)

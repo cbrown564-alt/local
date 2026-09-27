@@ -30,26 +30,13 @@ export const oneSheets = {
     qr: "public/media/concepts/hotel-enniskeen/hotel-enniskeen-onesheet-qr.svg",
     output: ".scratch/print/pdf/hotel-enniskeen-flagship-onesheet.pdf",
   },
-  /* The Buck's Head replied on 3 August 2026: a replacement website is already
-     built and waiting on accommodation readiness. Its sheet stays renderable
-     for the record but must not be printed or handed over (PLAN.md section 3). */
-  "bucks-head": {
-    slug: "bucks-head",
-    route: "/workbench/print/bucks-head-onesheet/",
-    qr: "public/media/concepts/bucks-head/bucks-head-onesheet-qr.svg",
-    output: ".scratch/print/pdf/bucks-head-journey-onesheet.pdf",
-  },
+  /* The Buck's Head and Cúpla sheets were archived with their concepts on
+     27 September 2026 (archive/concepts/<slug>/workbench/). */
   "scopers": {
     slug: "scopers",
     route: "/workbench/print/scopers-onesheet/",
     qr: "public/media/concepts/scopers/scopers-onesheet-qr.svg",
     output: ".scratch/print/pdf/scopers-onesheet.pdf",
-  },
-  "cupla": {
-    slug: "cupla",
-    route: "/workbench/print/cupla-onesheet/",
-    qr: "public/media/concepts/cupla/cupla-onesheet-qr.svg",
-    output: ".scratch/print/pdf/cupla-onesheet.pdf",
   },
 } as const satisfies Record<string, OneSheet>;
 

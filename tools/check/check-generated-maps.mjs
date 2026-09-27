@@ -10,7 +10,6 @@ for await (const file of glob("src/concepts/**/*.astro", { cwd: root })) {
 }
 const legacy = new Set([
   "src/concepts/arley-house/components/AhVillageMap.astro",
-  "src/concepts/kelly-mcevoy-brown/home.astro",
 ]);
 const failures = [];
 
