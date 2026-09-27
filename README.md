@@ -17,7 +17,7 @@ pnpm build
 
 CI and local verification (build, then every suite — the request handler, the
 printed-QR attribution chain, the orphan-media scan, the rebuild-canvas guard
-and the twenty-two per-page pins). A failing suite does not stop the rest, so one run
+and the nine per-page pins). A failing suite does not stop the rest, so one run
 reports the whole picture:
 
 ```powershell
@@ -38,8 +38,8 @@ canonical business evidence, publication review, transformation records,
 provenance and media checks; it does not add the concept to the public list:
 
 ```powershell
-pnpm publication:pack painted-earth
-pnpm publication:pack painted-earth --check
+pnpm publication:pack hugh-mccanns
+pnpm publication:pack hugh-mccanns --check
 ```
 
 Packets are written to `research/concepts/<slug>/publication-packet.md`.

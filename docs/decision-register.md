@@ -62,6 +62,8 @@ to say `experiment` and name the question; otherwise the run is flawed.
 | C12 | Do not say “independently reviewed” unless a named second reviewer signed | PRODUCT.md; homepage / transformations copy | 20 Aug 2026 |
 | C13 | Launch (help start a new business) is an internal horizon, not a public offer | PRODUCT.md | 20 Aug 2026 |
 | C14 | New pack defaults: see Pattern canon. Old packs are `legacy` until queued. | This register | 20 Aug 2026 |
+| C15 | Public portfolio is ten businesses (eleven packs); 64 packs archived to `archive/concepts/` | [Portfolio review](../research/portfolio-review/portfolio-review-2026-09-27.md); `pnpm test` | 27 Sep 2026 |
+| C16 | Demand workstream outranks all build work except the request path; checkpoints 30 Oct, 27 Nov, 18 Dec 2026 | [`research/demand/README.md`](../research/demand/README.md); PLAN.md §0 | 27 Sep 2026 |
 
 ---
 
@@ -83,6 +85,7 @@ to say `experiment` and name the question; otherwise the run is flawed.
 | X12 | Homepage hero claim door | C10 `/transformations/` | 20 Aug 2026 |
 | X13 | Dundrum Inn as current failed fifth-check example | Teaching examples are Tonn Ruray and Groves; Inn published 27 Jul | 20 Aug 2026 |
 | X14 | CONTEXT anonymity: dark never named or placed | C9 named directory | 20 Aug 2026 |
+| X15 | 59-concept public portfolio, grown by batch "grafts" with placeholder befores | C15 ten businesses; C16 demand first | 27 Sep 2026 |
 
 Archive paths stay historical. Do not treat them as gates.
 

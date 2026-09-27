@@ -10,7 +10,7 @@
  *
  * The build is the exception. Every suite below reads `dist/`, so a failed
  * build leaves nothing to check and the run stops there rather than reporting
- * twenty-seven identical "missing dist" failures.
+ * fourteen identical "missing dist" failures.
  *
  * SKIP_BUILD=1 reuses the existing `dist/`. It is a fast inner-loop switch,
  * not a full verification: it also skips the prose-count, publication,

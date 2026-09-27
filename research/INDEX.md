@@ -8,7 +8,12 @@ Prose and manifests only. All binary media moved out to `media/` on 11 August
   and studio film work, including the trailer.
 - **`narration/`** — scripts, trim decisions and listening notes for the
   ElevenLabs narration passes.
+- **`demand/`** — the demand workstream: which of the ten kept businesses want
+  a website, for what problem, and when. Start here.
+- **`portfolio-review/`** — the 27 September 2026 review that kept ten
+  businesses and archived 64 concept packs.
 - **`concepts/`** — per-business elevation briefs and image/video prompts.
+  Research for archived packs stays here too.
 - **`audits/`** — typography and layout review notes per concept.
 - **`media-sprint/`** — job briefs, checkpoints and handoff notes for the
   bounded two-day generation wave opened 9 August 2026.
