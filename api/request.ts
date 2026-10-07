@@ -1,4 +1,24 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+export interface RequestInput {
+  method?: string;
+  headers: Record<string, string | string[] | undefined>;
+  body?: unknown;
+  socket?: { remoteAddress?: string };
+}
+export interface RequestOutput {
+  setHeader(name: string, value: string): unknown;
+  status(code: number): RequestOutput;
+  json(body: unknown): unknown;
+}
+export type RequestEnvironment = Partial<Record<
+  "GMAIL_USER" | "GMAIL_APP_PASSWORD" | "REQUEST_TO_EMAIL" |
+  "REQUEST_ALERT_WEBHOOK" | "REQUEST_RATE_SALT" |
+  "KV_REST_API_URL" | "KV_REST_API_TOKEN" |
+  "UPSTASH_REDIS_REST_URL" | "UPSTASH_REDIS_REST_TOKEN", string>>;
+export interface RateLimitResult { allowed: boolean; remaining: number; resetAt: number }
+export interface RequestRuntime {
+  env?: RequestEnvironment;
+  takeRateLimitSlot?: (address: string) => Promise<RateLimitResult>;
+}
 import nodemailer, { type SendMailOptions } from "nodemailer";
 import { publicTransformationSlugs } from "./public-transformation-slugs.mjs";
 
@@ -87,9 +107,9 @@ const reportDeliveryFailure = async (detail: {
   command: string;
   responseCode?: number;
   source: string;
-}) => {
+}, env: RequestEnvironment) => {
   console.error("Request email delivery failed", detail);
-  const webhook = process.env.REQUEST_ALERT_WEBHOOK;
+  const webhook = env.REQUEST_ALERT_WEBHOOK;
   if (!webhook) return;
   try {
     await fetch(webhook, {
@@ -119,7 +139,7 @@ const header = (value: string | string[] | undefined) =>
 const firstForwardedValue = (value: string | undefined) =>
   value?.split(",")[0]?.trim();
 
-const clientAddress = (request: VercelRequest) =>
+const clientAddress = (request: RequestInput) =>
   firstForwardedValue(header(request.headers["x-forwarded-for"])) ||
   header(request.headers["x-real-ip"]) ||
   request.socket?.remoteAddress ||
@@ -155,9 +175,9 @@ const takeLocalRateLimitSlot = (key: string, now = Date.now()) => {
  * itself expose, over plain `fetch` — no client dependency in a function whose
  * only other job is sending one email.
  */
-const restStore = () => {
-  const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
+const restStore = (env: RequestEnvironment) => {
+  const url = env.KV_REST_API_URL ?? env.UPSTASH_REDIS_REST_URL;
+  const token = env.KV_REST_API_TOKEN ?? env.UPSTASH_REDIS_REST_TOKEN;
   return url && token ? { url, token } : null;
 };
 
@@ -168,17 +188,18 @@ const restStore = () => {
  * Without a configured salt the digest is still per-deployment stable, which
  * is all the counting needs.
  */
-const rateLimitKey = async (address: string) => {
+const rateLimitKey = async (address: string, env: RequestEnvironment) => {
   const { createHash } = await import("node:crypto");
-  const salt = process.env.REQUEST_RATE_SALT ?? "mourne-made";
+  const salt = env.REQUEST_RATE_SALT ?? "mourne-made";
   return `mm:request-rate:${createHash("sha256").update(`${salt}:${address}`).digest("hex").slice(0, 32)}`;
 };
 
 const takeSharedRateLimitSlot = async (
   store: { url: string; token: string },
   address: string,
+  env: RequestEnvironment,
 ) => {
-  const key = await rateLimitKey(address);
+  const key = await rateLimitKey(address, env);
   const seconds = Math.floor(RATE_LIMIT_WINDOW_MS / 1_000);
   const response = await fetch(`${store.url}/pipeline`, {
     method: "POST",
@@ -213,11 +234,11 @@ const takeSharedRateLimitSlot = async (
   };
 };
 
-const takeRateLimitSlot = async (address: string) => {
-  const store = restStore();
+const takeRateLimitSlot = async (address: string, env: RequestEnvironment) => {
+  const store = restStore(env);
   if (!store) return takeLocalRateLimitSlot(address);
   try {
-    return await takeSharedRateLimitSlot(store, address);
+    return await takeSharedRateLimitSlot(store, address, env);
   } catch (error) {
     /* Fails open, deliberately. This endpoint exists to deliver a handful of
        leads a week from printed sheets; a store outage silently dropping a
@@ -242,8 +263,9 @@ const normaliseLink = (value: string) => {
   return link.href;
 };
 
-export const createRequestHandler = (sendMailOverride?: SendMail) =>
-async function handler(request: VercelRequest, response: VercelResponse) {
+export const createRequestHandler = (sendMailOverride?: SendMail, runtime: RequestRuntime = {}) =>
+async function handler(request: RequestInput, response: RequestOutput) {
+  const env = runtime.env ?? process.env;
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
     return response.status(405).json({ error: "Method not allowed." });
@@ -265,7 +287,9 @@ async function handler(request: VercelRequest, response: VercelResponse) {
 
   let body: Record<string, unknown> = {};
   try {
-    body = typeof request.body === "string" ? JSON.parse(request.body) : (request.body ?? {});
+    const parsed: unknown = typeof request.body === "string" ? JSON.parse(request.body) : (request.body ?? {});
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Invalid object");
+    body = parsed as Record<string, unknown>;
   } catch {
     return response.status(400).json({ error: "The submitted request was not valid." });
   }
@@ -273,7 +297,9 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     return response.status(200).json({ ok: true });
   }
 
-  const rateLimit = await takeRateLimitSlot(clientAddress(request));
+  const rateLimit = await (runtime.takeRateLimitSlot
+    ? runtime.takeRateLimitSlot(clientAddress(request))
+    : takeRateLimitSlot(clientAddress(request), env));
   response.setHeader("RateLimit-Limit", String(RATE_LIMIT_MAX));
   response.setHeader("RateLimit-Remaining", String(rateLimit.remaining));
   response.setHeader("RateLimit-Reset", String(Math.ceil(rateLimit.resetAt / 1_000)));
@@ -308,9 +334,9 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     return response.status(400).json({ error: "Please provide a valid website or public listing URL." });
   }
 
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailPassword = process.env.GMAIL_APP_PASSWORD;
-  const recipient = process.env.REQUEST_TO_EMAIL || gmailUser;
+  const gmailUser = env.GMAIL_USER;
+  const gmailPassword = env.GMAIL_APP_PASSWORD;
+  const recipient = env.REQUEST_TO_EMAIL || gmailUser;
 
   if (!gmailUser || !gmailPassword || !recipient) {
     return response.status(503).json({ error: "The request service is not configured yet. Please try again later." });
@@ -379,7 +405,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
       // Reported like the real path rather than swallowed: this branch is what
       // the tests exercise, so a silent catch here meant the failure handling
       // was never actually covered.
-      await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source });
+      await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source }, env);
       return response.status(503).json({
         error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
       });
@@ -399,7 +425,7 @@ async function handler(request: VercelRequest, response: VercelResponse) {
     await transporter.sendMail(mail);
     return response.status(200).json({ ok: true });
   } catch (deliveryError) {
-    await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source });
+    await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source }, env);
     return response.status(503).json({
       error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
     });

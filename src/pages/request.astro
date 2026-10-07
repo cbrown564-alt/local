@@ -113,7 +113,6 @@ if (!requestExample) {
 </BaseLayout>
 
 <script>
-  import { track } from "@vercel/analytics";
 
   const layout = document.querySelector<HTMLElement>("[data-request-mode]");
   const form = document.querySelector<HTMLFormElement>(".request-form");
@@ -227,7 +226,6 @@ if (!requestExample) {
     }
   }
 
-  form?.addEventListener("input", () => track("request_form_started", { source }), { once: true });
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     form.classList.add("request-form--submitted");
@@ -267,7 +265,6 @@ if (!requestExample) {
             : "The request could not be sent."),
         );
       }
-      track("request_form_submitted", { source });
 
       if (claimMode && confirmation && layout) {
         form.hidden = true;

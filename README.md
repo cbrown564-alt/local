@@ -83,53 +83,43 @@ visual identity. Shared concept chrome lives in `src/styles/concept-shell.css`;
 identity sheets provide navigation tokens and the genuinely distinct page
 rules.
 
-The request form posts to the Vercel Function at `/api/request`, which sends the
-submission to the configured inbox. Concept work is labelled as independent
+The request form posts to `/api/request`. The Cloudflare Worker serves this endpoint alongside the static Astro export; the Vercel-compatible handler remains available during the migration. Production promotion is pending a deployed delivery check and domain cutover. Concept work is labelled as independent
 and uncommissioned. Concept and prototype routes are intentionally omitted from
 the public sitemap; concept routes are `noindex`, and prototype routes are
 disallowed in `robots.txt`.
 
-## Vercel request email
+## Cloudflare hosting and request email
 
 The request route sends mail through Gmail with an app password. Never add a Gmail password or app password to this repository.
 
-1. Turn on 2-Step Verification for the sending Google account, then create a Google app password for Mourne Made.
-2. In the Vercel project, add these environment variables:
-   - `GMAIL_USER` — the Gmail address used to send the notification
-   - `GMAIL_APP_PASSWORD` — the Google app password
-   - `REQUEST_TO_EMAIL` — the inbox that receives requests (defaults to `GMAIL_USER`)
-3. Redeploy after adding or changing the variables.
+Build and verify the migration without delivering email:
 
-Three optional variables harden the same route. Without them it still works,
-but with the weaker behaviour noted:
-
-- `KV_REST_API_URL` and `KV_REST_API_TOKEN` (or the `UPSTASH_REDIS_REST_*`
-  pair) hold the five-per-hour rate limit across serverless instances. Unset,
-  the limit falls back to a module-level map, which means five attempts *per
-  warm instance* — so a caller who lands on a fresh instance each time is
-  never limited. A store outage fails open and logs, rather than dropping a
-  real lead.
-- `REQUEST_RATE_SALT` salts the digest used as the rate-limit key, so the
-  caller's IP is never written to the store in clear.
-- `REQUEST_ALERT_WEBHOOK` receives a JSON POST when a delivery fails, because
-  a failed delivery is a lead that was typed and lost and the function log is
-  not somewhere anyone is watching. The payload carries the SMTP failure code
-  and the `source` attribution only — never the business, idea, name or email
-  the visitor typed.
-
-Validate the endpoint's input handling locally without sending an email:
-
-```powershell
-pnpm test:request
+```sh
+pnpm test
+pnpm test:cloudflare
+pnpm build:cloudflare
+pnpm exec cf deploy --prebuilt --mode migration-preview --dry-run
+pnpm exec cf deploy --prebuilt --mode migration-preview
 ```
 
-To exercise actual delivery in a local Vercel runtime, copy `.env.example` to `.env` and supply local values first.
+`build:cloudflare` runs generated Worker types, strict Worker types and the existing full Astro build guards, then packages `dist/`. `cf deploy` does not run those package scripts, so always build first. The default mode is `migration-preview`: no production domains, no Gmail secrets, delivery disabled and `X-Robots-Tag: noindex, nofollow`. A valid preview submission returns 503 and retains the visitor's fields for retry; it never claims an email was delivered.
 
-The public endpoint accepts requests without a current website, normalises
-scheme-free public links, rejects missing or cross-site origins, and limits
-each source address to five attempts per hour. Vercel Web Analytics records
-page views plus non-identifying events for comparison interaction, form start,
-and successful submission.
+Production preparation uses `pnpm build:cloudflare production`, followed by a matching `cf deploy --prebuilt --mode production`. Attach the existing domains only after a deployed delivery check succeeds. Preserve DNS mail and verification records, the apex/www policy, and the old deployment for rollback. Connect `master` through Workers Builds using `pnpm build:cloudflare production` and `pnpm exec cf deploy --prebuilt --mode production`; disconnect Vercel Git only after the native deployment and live site are verified.
+
+Production Worker secrets:
+
+- `GMAIL_USER` — Gmail sending address, with 2-Step Verification enabled.
+- `GMAIL_APP_PASSWORD` — a dedicated Google app password; never commit it.
+- `REQUEST_TO_EMAIL` — the existing receiving inbox.
+- `REQUEST_RATE_SALT` — a random secret used to derive the counter identity.
+
+The existing Gmail/Nodemailer SMTP transport and message formatting are preserved. No actual Cloudflare delivery has been verified yet. A test email requires the user's approval of its recipient and synthetic contents before sending.
+
+`REQUEST_RATE` is a SQLite-backed Durable Object with a separate counter per salted address digest. It allows five attempts in an hour, persists across Worker restarts and removes expired counters by alarm. Neither raw addresses nor form contents are written to the counter. A store outage preserves the existing fail-open delivery policy and logs an operational event without submitted contents. Origin checks use the actual URL and Cloudflare's caller address rather than untrusted forwarding headers; only JSON objects up to 16 KiB are accepted.
+
+The shared handler still supports the Vercel fallback's optional Upstash-compatible rate store and `REQUEST_ALERT_WEBHOOK`. No such variables were configured in the source deployment inventory. Future alert configuration must continue to exclude submitted names, email addresses, business names and messages.
+
+Website analytics are disabled after removing Vercel's integration; the privacy notice describes the Cloudflare host and abuse counter. The input, mail-formatting and failure-alert tests stub delivery and send nothing. The Workers-runtime tests cover concurrent attempts, persistence after restart, separate addresses, expiry/cleanup, bounded bodies, origin checks, forwarding-header spoofing and disabled preview delivery.
 
 ## Where things live
 
