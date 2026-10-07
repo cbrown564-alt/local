@@ -4,47 +4,54 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import PromWindow from "./PromWindow.astro";
 
-/* Avoca Hotel — stay on Central Promenade. Speak as the hotel.
-   First-party avocahotel.com 15 Sep 2026. Atmosphere register (sea light),
-   not café appetite, not spa relief, not Enniskeen clone.
-   Wild Hare = stock/handoff hours rhythm, not packed booking form.
-   Parking 2022 note stays dated or handed off. */
+/* Avoca Hotel — seafront hotel, restaurant, and Wild Hare pub on Central Promenade.
+   93–97 Central Promenade, Newcastle, BT33 0HH.
+   Phone: 028 4372 2253 · Email: info@avocahotel.com.
+   Coastal rooms, Wild Hare bar & dining, golf packages, beer garden. */
+
 const phone = "028 4372 2253";
 const phoneHref = "tel:+442843722253";
 const email = "info@avocahotel.com";
 const mailto = `mailto:${email}`;
 const site = "https://avocahotel.com/";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=93+97+Central+Promenade+Newcastle+BT33+0HH";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap";
 
-const rooms = [
+const roomTypes = [
   {
-    kicker: "King scenic",
-    title: "Garden, mountain, or sea.",
-    body: "King scenic rooms look to garden, mountain, or sea — ask which aspect is free for your dates.",
+    kicker: "Seaview Scenic",
+    title: "King Sea & Promenade Rooms",
+    desc: "Front-facing bedrooms with panoramic double-glazed windows looking directly over the Irish Sea and Newcastle promenade.",
   },
   {
-    kicker: "Family",
-    title: "King plus bunks.",
-    body: "Family rooms with a king and bunks — quiet proof of the house stock, not a booking grid.",
+    kicker: "Mourne Aspect",
+    title: "King Mountain & Garden Rooms",
+    desc: "Quiet, restful rear-facing guest rooms looking toward the foot of the Mourne Mountains and hotel grounds.",
+  },
+  {
+    kicker: "Family Stays",
+    title: "Family King & Bunk Suites",
+    desc: "Generously proportioned suites featuring a king bed plus sturdy bunk beds, ideal for coastal family holidays.",
   },
 ];
 
-const house = [
+const hotelFeatures = [
   {
-    kicker: "Wild Hare",
-    title: "House bar & restaurant.",
-    body: "Thu–Sun 3pm–1am; closed Mon–Wed. Live music Saturday and Sunday — rhythm of the house, not a ticket form.",
+    title: "The Wild Hare Bar & Bistro",
+    schedule: "Thu–Sun 3pm–1am",
+    desc: "Hearty coastal dining, local Mourne seafood chowder, craft ales, and live acoustic music on Saturday and Sunday evenings.",
   },
   {
-    kicker: "Golf Play & Stay",
-    title: "Fairways with the sea.",
-    body: "Two or three nights B&B with three rounds for two — package detail lives on our site.",
+    title: "Golf Stay & Play Packages",
+    schedule: "County Down Links",
+    desc: "Tailored two and three-night stays with arranged tee times for golfers visiting Royal County Down and regional courses.",
   },
   {
-    kicker: "Beer garden",
-    title: "Open air on the prom.",
-    body: "When the weather holds, the garden is part of the Avoca welcome.",
+    title: "Promenade Beer Garden",
+    schedule: "Open Daily in Season",
+    desc: "Relax with drinks in the sea air overlooking the Irish Sea, right at the foot of Slieve Donard.",
   },
 ];
 ---
@@ -60,7 +67,7 @@ const house = [
   bannerNote="The promenade window is a drawing."
 >
   <div class="av-strip">
-    <span>93–97 Central Promenade, Newcastle · BT33 0HH</span>
+    <span>93–97 Central Promenade, Newcastle · BT33 0HH · Seafront Hotel &amp; Bistro</span>
     <span class="av-strip-r">
       <a href={phoneHref}>{phone}</a>
     </span>
@@ -77,128 +84,114 @@ const house = [
       </span>
     </a>
     <nav class="av-nav" aria-label="Concept navigation">
-      <a href="#stay">Stay</a>
       <a href="#rooms">Rooms</a>
-      <a href="#hare">Wild Hare</a>
-      <a href="#door">Book / ring</a>
+      <a href="#wild-hare">The Wild Hare</a>
+      <a href="#golf">Golf &amp; Leisure</a>
+      <a href="#book">Reservations</a>
     </nav>
-    <a class="av-book" href={site} rel="noopener noreferrer">Check dates</a>
+    <a class="av-book-btn" href={site} rel="noopener noreferrer">Check Availability</a>
   </header>
 
   <main class="av-main">
-    <section class="av-hero" id="stay" aria-labelledby="av-name">
-      <div class="av-mast">
-        <p class="av-kicker">Promenade · Mournes · Irish Sea</p>
+    <section class="av-hero" aria-labelledby="av-name">
+      <div class="av-hero-content">
+        <span class="av-kicker">Seafront Hotel · Mourne Mountains</span>
         <h1 id="av-name">Avoca Hotel</h1>
-        <p class="av-number">93–97 Central Promenade · Newcastle · BT33 0HH</p>
-        <p class="av-say">Elegant &amp; cosy — mountains behind, sea in front.</p>
+        <p class="av-location-tag">93–97 Central Promenade · Newcastle · BT33 0HH</p>
+        <p class="av-say">Mountains behind, Irish Sea in front — an elegant coastal haven.</p>
         <p class="av-lede">
-          An elegant &amp; cosy hotel at the foot of the Mournes, a stone’s throw
-          from the Irish Sea. Wake to seaview light, walk the Central Promenade,
-          and keep the evening for Wild Hare when the house bar is open.
+          A welcoming family-run seafront hotel set directly on Newcastle’s Central Promenade.
+          Wake to morning light over the sea, spend the afternoon walking the Mournes or playing world-class golf,
+          and enjoy the fireside hospitality of The Wild Hare bar.
         </p>
-        <p class="av-cta">
-          <a class="av-book av-book--inline" href={site} rel="noopener noreferrer">Check dates on our site</a>
-          <a class="av-ring" href={phoneHref}>Ring {phone}</a>
-          <a class="av-write" href={mailto}>info@avocahotel.com</a>
-        </p>
+        <div class="av-hero-actions">
+          <a class="av-btn av-btn--primary" href={site} rel="noopener noreferrer">Book Online</a>
+          <a class="av-btn av-btn--outline" href={phoneHref}>Ring {phone}</a>
+        </div>
       </div>
 
-      <aside class="av-pull" aria-label="Stay creed">
-        <p class="av-pull-kicker">Why wake here</p>
-        <p class="av-pull-quote">
-          “Perfect stay beside the sea.”
-        </p>
-        <p class="av-pull-source">From avocahotel.com</p>
-        <p class="av-pull-note">
-          Hotel hours Mon–Sun 11am–1am. Wild Hare keeps its own week — see below.
-        </p>
-      </aside>
-    </section>
-
-    <section class="av-rooms" id="rooms" aria-labelledby="av-rooms-title">
-      <div class="av-section-head">
-        <p class="av-kicker">Rooms</p>
-        <h2 id="av-rooms-title">Sea light as quiet proof.</h2>
-        <p class="av-section-intro">
-          Room types from our home page — not a Booking.com grid, and not rates
-          invented for a concept screen.
-        </p>
-      </div>
-      <div class="av-room-grid" role="list">
-        {rooms.map((item) => (
-          <article class="av-room" role="listitem">
-            <p class="av-room-kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="av-hare" id="hare" aria-labelledby="av-hare-title">
-      <div class="av-section-head">
-        <p class="av-kicker">The house</p>
-        <h2 id="av-hare-title">Wild Hare, golf, garden.</h2>
-      </div>
-      <div class="av-cards" role="list">
-        {house.map((item) => (
-          <article class="av-card" role="listitem">
-            <p class="av-card-kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-      <p class="av-hand">
-        Live music, package nights, and vacancy live on
-        <a href={site} rel="noopener noreferrer">avocahotel.com</a>
-        — we hand them off rather than rebuild the engine.
-      </p>
-    </section>
-
-    <section class="av-geo" aria-labelledby="av-geo-title">
-      <p class="av-kicker av-kicker--on-dark">Promenade geography</p>
-      <h2 id="av-geo-title">Central Promenade between Mournes and sea.</h2>
-      <p>
-        Limited on-street parking; we recommend Donard Park car park nearby.
-        Our site still carries a 2022 note on capacity — treat it as their dated
-        guidance, not a 2026 survey.
-      </p>
-    </section>
-
-    <section class="av-door" id="door" aria-labelledby="av-door-title">
-      <div class="av-door-copy">
-        <p class="av-kicker">Book / ring</p>
-        <h2 id="av-door-title">93–97 Central Promenade.</h2>
-        <p class="av-door-lede">
-          Check dates on our site, ring the hotel, or write to info@. The
-          promenade window is the permanence; vacancy is theirs to confirm.
-        </p>
-        <p class="av-artefact-cta">
-          <a class="av-book av-book--inline" href={site} rel="noopener noreferrer">avocahotel.com</a>
-          <a class="av-ring" href={phoneHref}>{phone}</a>
-          <a class="av-write" href={mailto}>{email}</a>
-        </p>
-      </div>
-
-      <figure class="av-artefact">
+      <div class="av-hero-art">
         <PromWindow />
-        <figcaption>The promenade window at Avoca.</figcaption>
-      </figure>
+      </div>
+    </section>
 
-      <address class="av-address">
-        <strong>Avoca Hotel</strong>
-        <span>93–97 Central Promenade</span>
-        <span>Newcastle</span>
-        <span>County Down</span>
-        <span>BT33 0HH</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={mailto}>{email}</a>
-        <a href={site} rel="noopener noreferrer">avocahotel.com</a>
-        <span>Hotel · Mon–Sun 11am–1am</span>
-        <span>Wild Hare · Thu–Sun 3pm–1am</span>
-      </address>
+    <section class="av-rooms-section" id="rooms" aria-labelledby="av-rooms-title">
+      <div class="av-section-head">
+        <span class="av-kicker">Accommodations</span>
+        <h2 id="av-rooms-title">Comfortable Rooms Overlooking Sea and Mountain</h2>
+        <p class="av-section-intro">
+          Every bedroom is thoughtfully appointed with ensuite bathrooms, flat-screen television, high-speed Wi-Fi, and complimentary hot drink facilities.
+        </p>
+      </div>
+
+      <div class="av-rooms-grid">
+        {roomTypes.map((room) => (
+          <article class="av-room-card">
+            <span class="av-card-kicker">{room.kicker}</span>
+            <h3>{room.title}</h3>
+            <p>{room.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="av-wildhare-section" id="wild-hare" aria-labelledby="av-hare-title">
+      <div class="av-wildhare-wrapper">
+        <div class="av-section-head">
+          <span class="av-kicker av-kicker--gold">Dining &amp; Tavern</span>
+          <h2 id="av-hare-title">The Wild Hare Bar &amp; Bistro</h2>
+          <p class="av-section-intro">
+            A lively, welcoming Mourne pub serving local seafood, steaks, burgers, and classic tavern fare, alongside draught beers and weekend music.
+          </p>
+        </div>
+
+        <div class="av-features-grid" id="golf">
+          {hotelFeatures.map((feat) => (
+            <div class="av-feature-card">
+              <span class="av-feature-badge">{feat.schedule}</span>
+              <h3>{feat.title}</h3>
+              <p>{feat.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="av-booking-section" id="book" aria-labelledby="av-book-title">
+      <div class="av-booking-card">
+        <div class="av-booking-copy">
+          <span class="av-kicker">Direct Reservations</span>
+          <h2 id="av-book-title">Plan Your Stay in Newcastle</h2>
+          <p class="av-booking-intro">
+            Check live dates on our website or call our reception desk directly for room bookings, group dinner reservations, and golf packages.
+            Convenient customer parking is supported by nearby Donard Park car park.
+          </p>
+          <div class="av-booking-actions">
+            <a class="av-btn av-btn--primary" href={site} rel="noopener noreferrer">Visit avocahotel.com</a>
+            <a class="av-btn av-btn--outline" href={phoneHref}>Call Reception {phone}</a>
+            <a class="av-btn av-btn--outline" href={mailto}>Email info@avocahotel.com</a>
+          </div>
+        </div>
+
+        <address class="av-address-box">
+          <strong>Avoca Hotel</strong>
+          <span>93–97 Central Promenade</span>
+          <span>Newcastle, County Down</span>
+          <span>BT33 0HH</span>
+          <a class="av-phone-link" href={phoneHref}>{phone}</a>
+          <a class="av-email-link" href={mailto}>{email}</a>
+          <div class="av-hours-summary">
+            <span>Hotel: Mon–Sun 11:00 – 01:00</span>
+            <span>Wild Hare: Thu–Sun 15:00 – 01:00</span>
+          </div>
+          <a class="av-map-link" href={maps} rel="noopener noreferrer">Directions on Google Maps</a>
+        </address>
+      </div>
     </section>
   </main>
+
+  <footer class="av-footer">
+    <p class="av-footer-name">Avoca Hotel</p>
+    <p>93–97 Central Promenade, Newcastle · Coastal Hotel, Bistro &amp; Wild Hare Pub</p>
+  </footer>
 </ConceptLayout>

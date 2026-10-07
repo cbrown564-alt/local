@@ -4,9 +4,10 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import HousePlan from "./HousePlan.astro";
 
-/* Bardan Cottage Newcastle — none of the five (elderly day care).
-   Speak as the Newcastle house. Five rooms + garden. Ring/write —
-   not fake booking theatre, not clinic, not B&B. No client photos. */
+/* Bardan Cottage Newcastle — specialist day care and dementia support on Bryansford Avenue.
+   12 Bryansford Avenue, Newcastle, BT33 0AX.
+   Phone: 028 4372 3853 · Email: newcastle@bardancottage.com.
+   Five activity rooms, home-cooked dining, and secure sensory garden. */
 
 const phone = "028 4372 3853";
 const phoneHref = "tel:+442843723853";
@@ -19,12 +20,51 @@ const fontHref =
   "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap";
 
 const rooms = [
-  { name: "Wet Activity", line: "Hands-on activity space." },
-  { name: "Dry Activity", line: "Movies and quieter making." },
-  { name: "Main Lounge", line: "Company at the heart of the house." },
-  { name: "Library", line: "A quiet corner when the day needs stillness." },
-  { name: "Dining Room", line: "Home-cooked food at the table." },
-  { name: "Garden", line: "Raised beds and outdoor air." },
+  {
+    name: "Main Lounge",
+    focus: "Companionship & Comfort",
+    desc: "The warm social heart of the house, featuring comfortable armchairs, fireside conversation, and gentle morning catch-ups.",
+  },
+  {
+    name: "Dining Room",
+    focus: "Home-Cooked Meals",
+    desc: "Wholesome, freshly prepared two-course hot lunches and afternoon teas enjoyed together around welcoming family-style tables.",
+  },
+  {
+    name: "Quiet Library",
+    focus: "Peace & Reflection",
+    desc: "A calm, restful sanctuary for reading, listening to gentle music, or unwinding when the day calls for quiet stillness.",
+  },
+  {
+    name: "Wet Activity Room",
+    focus: "Hands-On Creativity",
+    desc: "Space for arts, crafts, baking, flower arranging, and tactile sensory pursuits that stimulate memory and pride of making.",
+  },
+  {
+    name: "Dry Activity & Media",
+    focus: "Music & Reminiscence",
+    desc: "Film afternoons, gentle physical movement, music therapy, and reminiscence games designed to spark shared memories.",
+  },
+  {
+    name: "Sensory Garden",
+    focus: "Outdoor Air & Raised Beds",
+    desc: "A secure, tranquil walled garden with accessible level paving, fragrant planting, and raised beds for light gardening.",
+  },
+];
+
+const carePillars = [
+  {
+    title: "Dementia-Friendly Domestic Design",
+    desc: "Thoughtfully planned with natural circadian lighting, contrast navigation, and distinct domestic zones so attendees always feel relaxed and oriented.",
+  },
+  {
+    title: "Support & Respite for Family Carers",
+    desc: "Providing family members with peace of mind and dependable daytime respite, knowing their loved one is in compassionate, experienced hands.",
+  },
+  {
+    title: "Personal Choice & Independence",
+    desc: "Every guest chooses their own rhythm each day — whether joining in group games, tending tomatoes in the garden, or reading quietly.",
+  },
 ];
 ---
 
@@ -39,148 +79,156 @@ const rooms = [
   bannerNote="The house plan is a drawing."
 >
   <div class="bc-strip">
-    <span>12 Bryansford Avenue, Newcastle · BT33 0AX</span>
+    <span>12 Bryansford Avenue, Newcastle · BT33 0AX · Specialist Day Care &amp; Support</span>
     <span class="bc-strip-r"><a href={phoneHref}>{phone}</a></span>
   </div>
 
   <header class="bc-header">
     <a class="bc-brand" href="/concepts/bardan-cottage/">
       <span class="bc-brand-mark" aria-hidden="true">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect width="44" height="44" fill="#f3ebe1"/>
+        <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="4" fill="#f3ebe1"/>
           <path d="M6 28 L22 12 L38 28" fill="none" stroke="#5a4638" stroke-width="1.8"/>
-          <rect x="11" y="28" width="22" height="10" fill="#7a9a78" stroke="#5a4638" stroke-width="1.2"/>
+          <rect x="11" y="28" width="22" height="10" rx="1" fill="#7a9a78" stroke="#5a4638" stroke-width="1.2"/>
           <rect x="19" y="31" width="6" height="7" fill="#f3ebe1"/>
           <circle cx="33" cy="18" r="3" fill="#c4a574" opacity="0.8"/>
         </svg>
       </span>
       <span class="bc-brand-text">
         <span class="bc-brand-name">Bardan Cottage</span>
-        <span class="bc-brand-sub">Newcastle · Day care</span>
+        <span class="bc-brand-sub">Newcastle · Day Care Haven</span>
       </span>
     </a>
     <nav class="bc-nav" aria-label="Concept navigation">
-      <a href="#plan">The plan</a>
-      <a href="#rooms">Rooms</a>
-      <a href="#invite">Invitation</a>
-      <a href="#door">The door</a>
+      <a href="#plan">House Plan</a>
+      <a href="#rooms">Rooms &amp; Garden</a>
+      <a href="#care">Our Approach</a>
+      <a href="#visit">Visit Us</a>
     </nav>
-    <a class="bc-call" href={phoneHref}>Ring us</a>
+    <a class="bc-call-btn" href={phoneHref}>Call the Cottage</a>
   </header>
 
   <main class="bc-main">
     <section class="bc-hero" aria-labelledby="bc-name">
       <div class="bc-hero-copy">
-        <p class="bc-kicker">Day care · Bryansford Avenue</p>
+        <span class="bc-kicker">Day Care &amp; Respite · Bryansford Avenue</span>
         <h1 id="bc-name">Bardan Cottage</h1>
         <p class="bc-place">12 Bryansford Avenue · Newcastle · BT33 0AX</p>
-        <p class="bc-say">A day that holds.</p>
+        <p class="bc-say">A warm, dignified day that feels like home.</p>
         <p class="bc-lede">
-          Five rooms and a garden — wet and dry activity, lounge, library,
-          dining with home-cooked food, and raised beds outside. Independence
-          and company in a house planned with lighting and orientation in mind.
+          A dedicated daytime haven offering companionship, engaging activities, home-cooked meals, and a sensory garden
+          for older adults, including those living with dementia. We give families peace of mind and attendees a day filled with purpose and care.
         </p>
-        <p class="bc-cta">
-          <a class="bc-call bc-call--inline" href={phoneHref}>Ring {phone}</a>
-          <a class="bc-mail" href={mailto}>{email}</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="bc-plan" id="plan" aria-labelledby="bc-plan-title">
-      <div class="bc-plan-copy">
-        <p class="bc-kicker">The house</p>
-        <h2 id="bc-plan-title">Five rooms and a garden.</h2>
-        <p>
-          Not a clinic corridor and not a hotel brochure — a day-care house on
-          Bryansford Avenue. The plan is the signature: activity, quiet, dining,
-          and outdoor air.
-        </p>
-      </div>
-      <HousePlan headingId="bc-plan-title" />
-      <p class="bc-plan-cap">The house plan on Bryansford Avenue.</p>
-    </section>
-
-    <section class="bc-rooms" id="rooms" aria-labelledby="bc-rooms-title">
-      <div class="bc-rooms-head">
-        <p class="bc-kicker">Inside</p>
-        <h2 id="bc-rooms-title">How the day is held.</h2>
-      </div>
-      <ul class="bc-room-grid">
-        {rooms.map((r) => (
-          <li>
-            <h3>{r.name}</h3>
-            <p>{r.line}</p>
-          </li>
-        ))}
-      </ul>
-      <p class="bc-garden-band">
-        Garden with raised beds — air and growing things beyond the dining room.
-      </p>
-    </section>
-
-    <section class="bc-ritual" id="invite" aria-labelledby="bc-invite-title">
-      <div class="bc-ritual-inner">
-        <p class="bc-kicker">Invitation</p>
-        <h2 id="bc-invite-title">Ring or write. Visit the plan with us.</h2>
-        <p class="bc-ritual-lede">
-          No online booking theatre — a conversation about who the day is for,
-          then the house on Bryansford Avenue.
-        </p>
-        <ol class="bc-beats">
-          <li>
-            <span class="bc-beat-n">01</span>
-            <span class="bc-beat-t">Ring or write to Newcastle</span>
-          </li>
-          <li>
-            <span class="bc-beat-n">02</span>
-            <span class="bc-beat-t">Tell us who the day is for</span>
-          </li>
-          <li>
-            <span class="bc-beat-n">03</span>
-            <span class="bc-beat-t">Walk the house plan together</span>
-          </li>
-        </ol>
-        <p class="bc-cta">
-          <a class="bc-call bc-call--inline" href={phoneHref}>{phone}</a>
-          <a class="bc-mail" href={mailto}>{email}</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="bc-door" id="door" aria-labelledby="bc-door-title">
-      <div class="bc-door-head">
-        <p class="bc-kicker">The door</p>
-        <h2 id="bc-door-title">12 Bryansford Avenue.</h2>
-        <p class="bc-door-lede">
-          Bardan Cottage Newcastle. Sister centres also in Dunmurry and Newry —
-          this page is the Newcastle house only.
-        </p>
-      </div>
-      <div class="bc-door-grid">
-        <address class="bc-address">
-          <strong>Bardan Cottage</strong>
-          <span>12 Bryansford Avenue</span>
-          <span>Newcastle, Co. Down</span>
-          <span>BT33 0AX</span>
-          <a href={phoneHref}>{phone}</a>
-          <a href={mailto}>{email}</a>
-          <a href={maps} rel="noopener noreferrer">Map</a>
-        </address>
-        <div class="bc-handoff">
-          <h3>Centre page</h3>
-          <p>
-            Facilities and the Newcastle story live on the Bardan Cottage
-            Newcastle page. Start there, then ring or write.
-          </p>
-          <a href={site} rel="noopener noreferrer">bardancottage.com/newcastle</a>
+        <div class="bc-hero-actions">
+          <a class="bc-btn bc-btn--primary" href={phoneHref}>Telephone {phone}</a>
+          <a class="bc-btn bc-btn--outline" href={mailto}>Email Newcastle Team</a>
         </div>
+      </div>
+
+      <div class="bc-hero-plan">
+        <HousePlan headingId="bc-name" />
+      </div>
+    </section>
+
+    <section class="bc-plan-section" id="plan" aria-labelledby="bc-plan-title">
+      <div class="bc-section-head">
+        <span class="bc-kicker">The Layout</span>
+        <h2 id="bc-plan-title">Five Domestic Rooms and a Garden</h2>
+        <p class="bc-section-intro">
+          Our house on Bryansford Avenue is deliberately designed around domestic scale and intimacy, avoiding institutional corridors
+          and ensuring every room has a distinct character and clear purpose.
+        </p>
+      </div>
+
+      <div class="bc-rooms-grid" id="rooms">
+        {rooms.map((room) => (
+          <article class="bc-room-card">
+            <span class="bc-room-focus">{room.focus}</span>
+            <h3>{room.name}</h3>
+            <p>{room.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bc-care-section" id="care" aria-labelledby="bc-care-title">
+      <div class="bc-care-wrapper">
+        <div class="bc-section-head">
+          <span class="bc-kicker bc-kicker--gold">Quality Care</span>
+          <h2 id="bc-care-title">Dignified, Compassionate Day Support</h2>
+          <p class="bc-section-intro">
+            Every aspect of our service is shaped to support individual wellbeing, social connection, and physical comfort.
+          </p>
+        </div>
+
+        <div class="bc-care-grid">
+          {carePillars.map((pillar) => (
+            <div class="bc-care-card">
+              <h3>{pillar.title}</h3>
+              <p>{pillar.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bc-visit-section" id="visit" aria-labelledby="bc-visit-title">
+      <div class="bc-visit-card">
+        <div class="bc-visit-info">
+          <span class="bc-kicker">Arranging Care</span>
+          <h2 id="bc-visit-title">Visiting Bardan Cottage</h2>
+          <p class="bc-visit-intro">
+            Arranging day care for a loved one is an important step. We make the introduction gentle, transparent, and supportive at every stage:
+          </p>
+
+          <div class="bc-visit-steps">
+            <div class="bc-visit-step">
+              <span class="bc-step-num">01</span>
+              <div>
+                <h4>Informal Telephone Chat</h4>
+                <p>Call our care team to discuss your loved one’s routine, dietary preferences, and personal needs.</p>
+              </div>
+            </div>
+            <div class="bc-visit-step">
+              <span class="bc-step-num">02</span>
+              <div>
+                <h4>Visit Over Tea</h4>
+                <p>Join us for an unhurried visit to walk through the house, experience the atmosphere, and meet the staff.</p>
+              </div>
+            </div>
+            <div class="bc-visit-step">
+              <span class="bc-step-num">03</span>
+              <div>
+                <h4>Complimentary Taster Morning</h4>
+                <p>A gentle introductory morning session so your loved one can settle in comfortably before regular days begin.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bc-visit-actions">
+            <a class="bc-btn bc-btn--primary" href={phoneHref}>Call {phone}</a>
+            <a class="bc-btn bc-btn--outline" href={mailto}>{email}</a>
+          </div>
+        </div>
+
+        <address class="bc-address-card">
+          <strong>Bardan Cottage Newcastle</strong>
+          <span>12 Bryansford Avenue</span>
+          <span>Newcastle, County Down</span>
+          <span>BT33 0AX</span>
+          <a class="bc-phone-link" href={phoneHref}>{phone}</a>
+          <a class="bc-email-link" href={mailto}>{email}</a>
+          <p class="bc-sister-note">
+            Sister day care locations also open in Dunmurry and Newry.
+          </p>
+          <a class="bc-site-link" href={site} rel="noopener noreferrer">bardancottage.com/newcastle</a>
+        </address>
       </div>
     </section>
   </main>
 
   <footer class="bc-footer">
-    <p class="bc-footer-name">Bardan Cottage</p>
-    <p>12 Bryansford Avenue, Newcastle · Day care · Five rooms and a garden</p>
+    <p class="bc-footer-name">Bardan Cottage Newcastle</p>
+    <p>12 Bryansford Avenue, Newcastle · Dementia-Aware Day Care Haven</p>
   </footer>
 </ConceptLayout>

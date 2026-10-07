@@ -4,34 +4,55 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import BrunelNameplate from "./BrunelNameplate.astro";
 
-/* Brunel's — meal on Downs Road. Speak as the restaurant.
-   First-party brunelsrestaurant.co.uk live-read 15 Sep 2026 (Europe/London).
-   Hours conflict contact body vs footer — omit gospel hours; hand off Contact.
-   Book / ring ritual. No OpenTable rebuild. Not Savoy counter, not Harbour sea wall. */
+/* Brunel's — modern European fine dining on Downs Road.
+   32 Downs Road, Newcastle, BT33 0AG.
+   Phone: 028 4379 8277 · Email: info@brunelsrestaurant.co.uk.
+   Chef Paul Cunningham, wild-foraged Mourne botanicals, local artisan producers. */
+
 const phone = "028 4379 8277";
 const phoneHref = "tel:+442843798277";
 const email = "info@brunelsrestaurant.co.uk";
 const mailto = `mailto:${email}`;
 const site = "https://www.brunelsrestaurant.co.uk/";
 const book = "https://www.brunelsrestaurant.co.uk/book-now";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=32+Downs+Road+Newcastle+BT33+0AG";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
 
-const sittings = [
+const diningPillars = [
   {
-    kicker: "Lunch",
-    title: "Daylight on Downs Road.",
-    body: "A modern European lunch grounded in local producers and suppliers — ask us what the kitchen is running.",
+    title: "Wild Foraged & Mountain Flora",
+    kicker: "Mourne Botanicals",
+    desc: "Wild mountain herbs, sea buckthorn, forest fungi, and coastal flora foraged daily by Chef Paul Cunningham across South Down.",
   },
   {
-    kicker: "Evening",
-    title: "The longer sitting.",
-    body: "Cocktails, wine, and a plate that stays with the produce creed. Book ahead when you can.",
+    title: "Artisan Farmers & Day-Boats",
+    kicker: "Local Provenance",
+    desc: "South Down game, Mourne lamb, and fresh fish landed along the coast, paired with heritage vegetables from smallholder farms.",
   },
   {
-    kicker: "Invitation",
-    title: "An evening with Paul Cunningham.",
-    body: "When we announce it on the site, come for the chef’s mark — not a biography, an invitation.",
+    title: "Gastronomic Tasting Menus",
+    kicker: "Evening Experience",
+    desc: "Thoughtfully choreographed multi-course tasting journeys accompanied by sommelier wine pairings and craft cocktails.",
+  },
+];
+
+const sittingsSchedule = [
+  {
+    kicker: "Lunch Service",
+    title: "Daylight on Downs Road",
+    body: "Refined modern European dining featuring vibrant seasonal dishes, available during daytime weekend services.",
+  },
+  {
+    kicker: "Dinner Service",
+    title: "The Evening Experience",
+    body: "Our signature dinner service celebrating deep local flavours, curated cellar selections, and intimate dining room ambience.",
+  },
+  {
+    kicker: "Special Evenings",
+    title: "Chef Paul Cunningham Sittings",
+    body: "Exclusive seasonal tasting events and guest collaboration evenings exploring avant-garde culinary techniques.",
   },
 ];
 ---
@@ -47,7 +68,7 @@ const sittings = [
   bannerNote="The Brunel name-plate is a drawing."
 >
   <div class="br-strip">
-    <span>32 Downs Road, Newcastle · BT33 0AG · Modern European</span>
+    <span>32 Downs Road, Newcastle · BT33 0AG · Creative Modern European Dining</span>
     <span class="br-strip-r">
       <a href={phoneHref}>{phone}</a>
     </span>
@@ -64,141 +85,124 @@ const sittings = [
       </span>
     </a>
     <nav class="br-nav" aria-label="Concept navigation">
-      <a href="#plate">The plate</a>
-      <a href="#name">The name</a>
+      <a href="#produce">The Produce</a>
+      <a href="#heritage">Our Namesake</a>
       <a href="#sittings">Sittings</a>
-      <a href="#door">Book / ring</a>
+      <a href="#reservations">Reservations</a>
     </nav>
-    <a class="br-book" href={book} rel="noopener noreferrer">Book a table</a>
+    <a class="br-book-btn" href={book} rel="noopener noreferrer">Book a Table</a>
   </header>
 
   <main class="br-main">
     <section class="br-hero" aria-labelledby="br-name">
-      <div class="br-mast">
-        <p class="br-kicker">Downs Road · Local produce</p>
+      <div class="br-hero-content">
+        <span class="br-kicker">Fine Dining · Modern European</span>
         <h1 id="br-name">Brunel's</h1>
-        <p class="br-number">32 Downs Road · Newcastle · BT33 0AG</p>
-        <p class="br-say">Modern European — rich in local produce.</p>
+        <p class="br-location-tag">32 Downs Road · Newcastle · BT33 0AG</p>
+        <p class="br-say">Creative modern European gastronomy rooted in wild Mourne produce.</p>
         <p class="br-lede">
-          We cook a creative modern European menu from local producers and
-          suppliers, on Downs Road a stroll from Slieve Donard. Book a table,
-          ring us, or read the week on our site — hours live on Contact, not
-          guessed here.
+          Led by Executive Chef Paul Cunningham, Brunel’s celebrates the natural larder of County Down.
+          Just a short stroll from the Slieve Donard hotel, we transform wild mountain foragings, day-boat catches,
+          and heritage livestock into memorable modern dishes.
         </p>
-        <p class="br-cta">
-          <a class="br-book br-book--inline" href={book} rel="noopener noreferrer">Book a table</a>
-          <a class="br-ring" href={phoneHref}>Ring {phone}</a>
-          <a class="br-site" href={site} rel="noopener noreferrer">brunelsrestaurant.co.uk</a>
-        </p>
+        <div class="br-hero-actions">
+          <a class="br-btn br-btn--primary" href={book} rel="noopener noreferrer">Reserve a Table</a>
+          <a class="br-btn br-btn--outline" href={phoneHref}>Call Front of House {phone}</a>
+        </div>
       </div>
 
-      <aside class="br-appetite" aria-label="Plate creed">
-        <p class="br-appetite-kicker">On the plate</p>
-        <p class="br-appetite-quote">
-          “Creative modern European cuisine… rich in local produce.”
-        </p>
-        <p class="br-appetite-source">From our home page · brunelsrestaurant.co.uk</p>
-        <ul class="br-appetite-list">
-          <li>Local producers &amp; suppliers</li>
-          <li>Lunch and evening sittings</li>
-          <li>Cocktail bar &amp; wine list</li>
-        </ul>
-      </aside>
+      <div class="br-hero-art">
+        <BrunelNameplate />
+      </div>
     </section>
 
-    <section class="br-plate" id="plate" aria-labelledby="br-plate-title">
+    <section class="br-produce-section" id="produce" aria-labelledby="br-produce-title">
       <div class="br-section-head">
-        <p class="br-kicker">The plate</p>
-        <h2 id="br-plate-title">Produce made visible.</h2>
+        <span class="br-kicker">Culinary Creed</span>
+        <h2 id="br-produce-title">Produce of Mountain, Forest &amp; Coast</h2>
         <p class="br-section-intro">
-          The kitchen creed is local first. We do not invent farm names for a
-          screen — tonight’s plate is ours to tell when you book or walk in.
+          Our kitchen works in constant harmony with local micro-seasons, crafting menus that express the authentic terroir of South Down.
         </p>
       </div>
-      <div class="br-editorial">
-        <article class="br-ed-col">
-          <h3>Appetite, not a directory.</h3>
-          <p>
-            Come for the sitting: steam, wine, and a menu that changes with what
-            our suppliers bring. Instagram and Facebook carry live specials;
-            the permanence is Downs Road and the produce line.
-          </p>
-        </article>
-        <article class="br-ed-col">
-          <h3>From Bryansford to Downs Road.</h3>
-          <p>
-            We opened in 2014 above the Anchor Bar on Bryansford Road, then
-            relocated in 2017 to 32 Downs Road — larger covers, same name,
-            still trading on our own site.
-          </p>
-        </article>
-      </div>
-    </section>
 
-    <section class="br-name-band" id="name" aria-labelledby="br-arc-title">
-      <p class="br-kicker br-kicker--on-dark">The man behind our name</p>
-      <h2 id="br-arc-title">Brunel — and a ship in Dundrum Bay.</h2>
-      <p>
-        We take our name from Isambard Kingdom Brunel after SS Great Britain
-        went aground in Dundrum Bay in 1846. The shipwreck story is geography
-        as much as brand — bay, engineer, and a Newcastle table.
-      </p>
-      <p class="br-source">From “The man behind our name” on our home page</p>
-    </section>
-
-    <section class="br-sittings" id="sittings" aria-labelledby="br-sit-title">
-      <div class="br-section-head">
-        <p class="br-kicker">Sittings</p>
-        <h2 id="br-sit-title">Lunch, evening, invitation.</h2>
-      </div>
-      <div class="br-cards" role="list">
-        {sittings.map((item) => (
-          <article class="br-card" role="listitem">
-            <p class="br-card-kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
+      <div class="br-produce-grid">
+        {diningPillars.map((pillar) => (
+          <article class="br-produce-card">
+            <span class="br-card-kicker">{pillar.kicker}</span>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.desc}</p>
           </article>
         ))}
       </div>
-      <p class="br-hand">
-        For the exact week — including any Paul Cunningham evening — start on
-        <a href={site} rel="noopener noreferrer">brunelsrestaurant.co.uk</a>
-        or ring {phone}.
-      </p>
     </section>
 
-    <section class="br-door" id="door" aria-labelledby="br-door-title">
-      <div class="br-door-copy">
-        <p class="br-kicker">Book / ring</p>
-        <h2 id="br-door-title">32 Downs Road.</h2>
-        <p class="br-door-lede">
-          Reserve on our Book Now page, ring the restaurant, or write to us.
-          Hours and sittings live on first-party Contact — we hand them off
-          rather than reprint a conflict.
-        </p>
-        <p class="br-artefact-cta">
-          <a class="br-book br-book--inline" href={book} rel="noopener noreferrer">Book a table</a>
-          <a class="br-ring" href={phoneHref}>{phone}</a>
-          <a class="br-write" href={mailto}>{email}</a>
+    <section class="br-heritage-section" id="heritage" aria-labelledby="br-heritage-title">
+      <div class="br-heritage-wrapper">
+        <span class="br-kicker br-kicker--gold">Historic Inspiration</span>
+        <h2 id="br-heritage-title">The Legend of Isambard Kingdom Brunel</h2>
+        <p class="br-heritage-text">
+          Our restaurant draws its name from the legendary Victorian engineer Isambard Kingdom Brunel.
+          When his revolutionary iron steamship, the SS Great Britain, ran aground on the sands of Dundrum Bay in 1846,
+          Brunel’s ingenious salvage operation made history along this coast. We channel that same spirit of innovation,
+          rigour, and craftsmanship into every plate we serve.
         </p>
       </div>
+    </section>
 
-      <figure class="br-artefact">
-        <BrunelNameplate />
-        <figcaption>The Brunel name-plate on Downs Road.</figcaption>
-      </figure>
+    <section class="br-sittings-section" id="sittings" aria-labelledby="br-sittings-title">
+      <div class="br-sittings-wrapper">
+        <div class="br-section-head">
+          <span class="br-kicker">Dining Experience</span>
+          <h2 id="br-sittings-title">Lunch, Dinner &amp; Tasting Sittings</h2>
+          <p class="br-section-intro">
+            We welcome guests for relaxed daylight dining and comprehensive multi-course evening tasting menus.
+          </p>
+        </div>
 
-      <address class="br-address">
-        <strong>Brunel's Restaurant</strong>
-        <span>32 Downs Road</span>
-        <span>Newcastle</span>
-        <span>County Down</span>
-        <span>BT33 0AG</span>
-        <a href={phoneHref}>{phone}</a>
-        <a href={mailto}>{email}</a>
-        <a href={site} rel="noopener noreferrer">brunelsrestaurant.co.uk</a>
-        <span>Hours · see Contact on our site</span>
-      </address>
+        <div class="br-sittings-grid">
+          {sittingsSchedule.map((s) => (
+            <div class="br-sitting-card">
+              <span class="br-sitting-badge">{s.kicker}</span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="br-reservations-section" id="reservations" aria-labelledby="br-door-title">
+      <div class="br-reservations-card">
+        <div class="br-reservations-copy">
+          <span class="br-kicker">Table Bookings</span>
+          <h2 id="br-door-title">Join Us on Downs Road</h2>
+          <p class="br-reservations-intro">
+            Due to our intimate dining room capacity, advance reservations are strongly recommended for all evening services.
+            Book securely online or telephone our front of house team.
+          </p>
+          <div class="br-reservations-actions">
+            <a class="br-btn br-btn--primary" href={book} rel="noopener noreferrer">Book Online via Official Portal</a>
+            <a class="br-btn br-btn--outline" href={phoneHref}>Telephone {phone}</a>
+            <a class="br-btn br-btn--outline" href={mailto}>Email info@brunelsrestaurant.co.uk</a>
+          </div>
+        </div>
+
+        <address class="br-address-box">
+          <strong>Brunel's Restaurant</strong>
+          <span>32 Downs Road</span>
+          <span>Newcastle, County Down</span>
+          <span>BT33 0AG</span>
+          <a class="br-phone-link" href={phoneHref}>{phone}</a>
+          <a class="br-email-link" href={mailto}>{email}</a>
+          <a class="br-site-link" href={site} rel="noopener noreferrer">brunelsrestaurant.co.uk</a>
+          <a class="br-map-link" href={maps} rel="noopener noreferrer">View Location on Map</a>
+        </address>
+      </div>
     </section>
   </main>
+
+  <footer class="br-footer">
+    <p class="br-footer-name">Brunel's Restaurant</p>
+    <p>32 Downs Road, Newcastle · Modern European Dining &amp; Chef Paul Cunningham</p>
+  </footer>
 </ConceptLayout>

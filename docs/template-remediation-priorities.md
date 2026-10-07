@@ -149,3 +149,107 @@ All 5 newly pulled concepts (`mccreadys-footwear`, `joke-and-toy-shop`, `dundrum
      tickets, craft plates, and copper counter dining. Decouple section rhythm from
      `fish-and-farm` so it doesn't read as a duplicate reskin.
 
+---
+
+## 2026-09-15 Batch (10 newly pulled concepts) — Audit & Remediation
+
+The 10 newly pulled concepts (`brunels`, `mourne-seafood-dundrum`, `avoca-hotel`,
+`black-box-donuts`, `bsw-autohouse`, `newcastle-tennis-club`, `medicare-thorntons`,
+`bardan-cottage`, `dacara`, `charlottes-web`) fell into two distinct internal template
+clusters and exhibited studio/meta voice leaks:
+
+- **Cluster 1 (Family D — 4-band Mini-Folio & 3-Step Ritual)**:
+  `medicare-thorntons`, `charlottes-web`, `dacara`, `newcastle-tennis-club`, and `bardan-cottage`.
+  All shared an identical 4-section cadence: top strip, header, hero with aside, `*-folio`
+  (1 article / 3 card stack), `*-ritual` (mechanical `01/02/03` numbered beats), and `*-door`.
+  Skeleton similarity reached up to **0.72** (`medicare-thorntons ~ charlottes-web`).
+
+- **Cluster 2 (Family E — 5-band Restaurant Chassis)**:
+  `brunels`, `mourne-seafood-dundrum`, `avoca-hotel`, `black-box-donuts`, and `bsw-autohouse`.
+  All stamped out from the same 5-band stack (`hero`, `editorial/creed`, `heritage/claim on dark`,
+  `sittings/jobs/cards`, `door`).
+
+- **Studio/Meta Voice Leaks**:
+  Scaffolding and research rationales leaked into guest copy across multiple concepts:
+  `bsw-autohouse` included research citation footers (`<footer>From the welcome story on bswtyres.co.uk</footer>`,
+  `names from our About page as of 15 Sep 2026`); `black-box-donuts` featured elevation jargon
+  (*"Product theatre, not a café menu"*, *"4.9 / 5 from 764 reviews — as printed on our home"*,
+  *"we do not invent a second till on this page"*); `medicare-thorntons` contained design-system
+  chatter (*"The script, without spa dusk"*, *"Calm clinic linen"*, *"Scripts without theatre"*);
+  and `charlottes-web` referenced methodology notes (*"Jar register — when would you open this"*).
+
+### Tier 1 — Jarring business/style mismatch (full rebuild required)
+
+1. **bsw-autohouse** (automotive garage, Unit 4 Castlewellan Road)
+   - *Mismatch*: An independent mechanical repair workshop and tyre centre trapped on a
+     fine-dining photo-theatre chassis with leaked research citation footers.
+   - *Remediation*: Rebuilt as an honest, high-utility garage and tyre workshop. Dedicated
+     service bays (laser alignment £40, Blackcircles tyre fitting, pre-MOT testing, Snap-On
+     diagnostics, transparent half-hour labour); direct telephone and mobile callouts for
+     Adelle & Berny; purged all research citation chrome.
+
+2. **black-box-donuts** (artisan handcrafted donut bakery, Unit 18 Castlewellan Road)
+   - *Mismatch*: A modern artisan bakery forced onto a 5-band restaurant chassis and littered
+     with meta narration (*"Product theatre"*, *"Their claim"*, *"not an independent audit"*).
+   - *Remediation*: Rebuilt with a bold, contemporary bakery storefront aesthetic (Syne + Inter,
+     matte black, warm cream, bakery gold). Showcases 4, 6, and 12-box packaging formats, 24-hour
+     slow-fermented brioche dough, 4.9/5 customer rating proof, and direct online shop drops.
+
+3. **newcastle-tennis-club** (historic lawn tennis club, Bryansford Grove)
+   - *Mismatch*: An active community sporting club forced into a 3-step numbered ritual list
+     and boutique card grid.
+   - *Remediation*: Rebuilt with an athletic, court-line aesthetic (Instrument Serif + Sora,
+     forest green, chalk line white, court lime). Highlights 4 floodlit all-weather polytop
+     courts, social mix-in club nights, Sam Clegg coaching academy, and transparent 2026–27
+     annual membership subscriptions.
+
+4. **medicare-thorntons** (promenade community pharmacy, 49 Central Promenade)
+   - *Mismatch*: An essential healthcare dispensary forced onto an editorial boutique chassis
+     with design-notes meta chatter (*"without spa dusk"*, *"clinic linen"*).
+   - *Remediation*: Rebuilt as a clean, accessible dispensary and healthcare practice (Literata
+     + Public Sans, dispensary sage, clinical linen). Clear NHS prescription dispensing,
+     repeat prescription collection and free home delivery flow, and health advice services.
+
+5. **bardan-cottage** (dementia-aware day care haven, 12 Bryansford Avenue)
+   - *Mismatch*: A sensitive older adult care home forced into a mechanical 3-step ritual chassis
+     with meta narration (*"Not a clinic corridor and not a hotel brochure"*).
+   - *Remediation*: Rebuilt with deep caregiver warmth, domestic dignity, and reassurance
+     (Source Serif 4 + Nunito Sans, warm linen, oak, sage). Focused around the 5 domestic rooms
+     and sensory garden, caregiver respite, and a gentle three-step family introduction.
+
+6. **charlottes-web** (independent florist & giftware, 3 Savoy Lane)
+   - *Mismatch*: A fragrant, sensory flower shop trapped inside an identical mechanical ritual
+     clone as the pharmacy, complete with methodology jargon (*"Jar register"*).
+   - *Remediation*: Rebuilt with a sensory botanical boutique layout (Cormorant Infant + Red Hat
+     Text, plum, blush petal, foliage green). Showcases seasonal hand-tied bouquets, wedding
+     and sympathy floristry, and Diane’s curated shelf of Kelticandles and Irish wool scarves.
+
+### Tier 2 — Layout clones, trade fits chassis (re-dress, decouple skeleton & vary rhythm)
+
+7. **dacara** (Victorian seaside guesthouse, 47 South Promenade)
+   - *Diagnosis*: Trade fits hospitality, but the concept was a structural twin to the
+     pharmacy and florist, with meta voice (*"Small B&B honesty"*, *"old tariff"*).
+   - *Remediation*: Rebuilt with an authentic Victorian seaside B&B register (Playfair Display
+     + Raleway, navy, sea stone, sand). Features the dual bay seaview rooms, ground-floor
+     accessibility, home-cooked Irish breakfasts, and direct enquiry channels.
+
+8. **avoca-hotel** (seafront hotel & Wild Hare pub, 93–97 Central Promenade)
+   - *Diagnosis*: Stiff duplicate of the restaurant chassis with meta commentary on booking
+     engines and capacity notes.
+   - *Remediation*: Rebuilt with a maritime coastal hotel and tavern layout (STIX Two Text +
+     Assistant). Balances sea-view king rooms, the fireside Wild Hare pub and live music,
+     and Royal County Down golf packages.
+
+9. **mourne-seafood-dundrum** (village seafood counter, 10 Main Street, Dundrum)
+   - *Diagnosis*: Direct 1:1 markup clone of `brunels`, with meta notes on dish names.
+   - *Remediation*: Rebuilt with an authentic village seafood counter register (Literata +
+     Red Hat Text, tidal slate, oyster grey, sea spray). Highlights Dundrum Bay mussels and
+     oysters, Kilkeel day-boat landings, and seasonal Wednesday Lobster Nights.
+
+10. **brunels** (signature modern European dining, 32 Downs Road)
+    - *Diagnosis*: Reference fine dining table in Newcastle; needed decoupling from shared
+      band markup and removal of research comments (*"hours live on Contact, not guessed here"*).
+    - *Remediation*: Refined luxury editorial restaurant presentation (Libre Baskerville +
+      Plus Jakarta Sans, midnight slate, burnished brass). Spotlights Chef Paul Cunningham’s
+      wild Mourne foraged botanicals, local producers, tasting menus, and the 1846 SS Great
+      Britain namesake heritage.

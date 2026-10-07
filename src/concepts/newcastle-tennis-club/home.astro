@@ -4,10 +4,9 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import CourtPlate from "./CourtPlate.astro";
 
-/* Newcastle Tennis Club — none of the five (club). Speak as the club.
-   Four floodlit polytop courts at Bryansford Grove since the 1950s.
-   Membership / coaching / Newcastle Centre handoffs. Not a spa.
-   No public booking widget. No form. Fees dated 2026–27. */
+/* Newcastle Tennis Club — established community sports club at Bryansford Grove since the 1950s.
+   Bryansford Grove, Newcastle, BT33 0DP.
+   Four all-weather floodlit polytop courts under the Mournes. */
 
 const email = "info@newcastletennisclubni.com";
 const mailto = `mailto:${email}`;
@@ -23,27 +22,32 @@ const maps =
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap";
 
-const fees = [
-  { band: "Senior", price: "£80" },
-  { band: "Junior / Student", price: "£40" },
-  { band: "Family", price: "£170" },
+const membershipBands = [
+  { band: "Senior Member", price: "£80 / year", note: "Full court access, social club nights, league eligibility" },
+  { band: "Junior & Student", price: "£40 / year", note: "Ages under 18 or full-time students, junior coaching access" },
+  { band: "Family Package", price: "£170 / year", note: "Two adults and all children under 18 in one household" },
 ];
 
-const courts = [
+const clubSessions = [
   {
-    kicker: "Surface",
-    title: "Four polytop courts.",
-    body: "All-weather courts with floodlights — play on when the light goes, with the Mournes behind the pavilion.",
+    day: "Wed & Fri Evenings",
+    title: "Club Social Mix-Ins",
+    desc: "Open to all senior members. Turn up, draw partners, and play doubles under the evening floodlights.",
   },
   {
-    kicker: "Voice",
-    title: "Mountains to the sea.",
-    body: "Where the mountains sweep down to the sea — that is the setting we play in at Bryansford Grove.",
+    day: "Saturday Mornings",
+    title: "Junior Academy & Coaching",
+    desc: "Structured coaching sessions led by Sam Clegg for beginners, improvers, and junior league squads.",
   },
   {
-    kicker: "Arc",
-    title: "Since the 1950s.",
-    body: "A club established in the 1950s, still on Bryansford Grove — membership year, league play, and a trial session for new members.",
+    day: "Weekends & Evenings",
+    title: "Belfast & District Leagues",
+    desc: "Competitive men's, ladies', and mixed league tennis against visiting clubs across Ulster.",
+  },
+  {
+    day: "Public Court Access",
+    title: "Non-Member Bookings",
+    desc: "Non-members can book daytime courts directly via Newcastle Centre reception on Central Promenade.",
   },
 ];
 ---
@@ -59,16 +63,16 @@ const courts = [
   bannerNote="The court plate is a drawing."
 >
   <div class="ntc-strip">
-    <span>Bryansford Grove, Newcastle · BT33 0DP · Since the 1950s</span>
+    <span>Bryansford Grove, Newcastle · BT33 0DP · Established in the 1950s</span>
     <span class="ntc-strip-r"><a href={mailto}>{email}</a></span>
   </div>
 
   <header class="ntc-header">
     <a class="ntc-brand" href="/concepts/newcastle-tennis-club/">
       <span class="ntc-brand-mark" aria-hidden="true">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect width="44" height="44" fill="#163528"/>
-          <rect x="6" y="8" width="32" height="28" fill="none" stroke="#c8e07a" stroke-width="1.4"/>
+        <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="4" fill="#163528"/>
+          <rect x="6" y="8" width="32" height="28" rx="2" fill="none" stroke="#c8e07a" stroke-width="1.4"/>
           <path d="M6 22h32M22 8v28" stroke="#c8e07a" stroke-width="1.2" opacity="0.85"/>
           <circle cx="22" cy="22" r="3.2" fill="none" stroke="#f3f6e8" stroke-width="1.3"/>
           <path d="M10 12h6M28 32h6" stroke="#8bbf5a" stroke-width="1.5"/>
@@ -76,147 +80,135 @@ const courts = [
       </span>
       <span class="ntc-brand-text">
         <span class="ntc-brand-name">Newcastle Tennis Club</span>
-        <span class="ntc-brand-sub">Bryansford Grove · Four courts</span>
+        <span class="ntc-brand-sub">Bryansford Grove · 4 Floodlit Courts</span>
       </span>
     </a>
     <nav class="ntc-nav" aria-label="Concept navigation">
-      <a href="#courts">The courts</a>
-      <a href="#join">Join</a>
-      <a href="#plate">The plate</a>
-      <a href="#find">Find us</a>
+      <a href="#courts">The Courts</a>
+      <a href="#sessions">Club Sessions</a>
+      <a href="#membership">Membership</a>
+      <a href="#location">Find Us</a>
     </nav>
-    <a class="ntc-join" href="#join">Join the club</a>
+    <a class="ntc-join-nav" href="#membership">Join the Club</a>
   </header>
 
   <main class="ntc-main">
     <section class="ntc-hero" aria-labelledby="ntc-name">
-      <div class="ntc-hero-copy">
-        <p class="ntc-kicker">Four floodlit courts · Bryansford Grove</p>
+      <div class="ntc-hero-content">
+        <span class="ntc-kicker">Lawn Tennis · Bryansford Grove</span>
         <h1 id="ntc-name">Newcastle Tennis Club</h1>
-        <p class="ntc-place">Bryansford Grove · Newcastle · BT33 0DP</p>
-        <p class="ntc-say">Play under the Mournes.</p>
-        <p class="ntc-lede">
-          Four polytop all-weather courts with floodlights, a pavilion against
-          the mountains, and a trial session before you join.
+        <p class="ntc-hero-location">Bryansford Grove · Newcastle · BT33 0DP</p>
+        <p class="ntc-hero-say">Play tennis under the dramatic skyline of the Mourne Mountains.</p>
+        <p class="ntc-hero-lede">
+          Four tournament-standard all-weather polytop courts with full floodlighting, an active social calendar,
+          competitive league play, and junior coaching at the base of the mountains.
         </p>
-        <p class="ntc-cta">
-          <a class="ntc-join ntc-join--inline" href="#join">Join the club</a>
-          <a class="ntc-mail" href={mailto}>{email}</a>
+        <div class="ntc-hero-actions">
+          <a class="ntc-btn ntc-btn--primary" href="#membership">View 2026–27 Membership</a>
+          <a class="ntc-btn ntc-btn--outline" href={mailto}>Email Club Secretary</a>
+        </div>
+      </div>
+
+      <div class="ntc-hero-visual">
+        <CourtPlate headingId="ntc-name" />
+      </div>
+    </section>
+
+    <section class="ntc-facilities-section" id="courts" aria-labelledby="ntc-courts-title">
+      <div class="ntc-section-header">
+        <span class="ntc-kicker">Our Facilities</span>
+        <h2 id="ntc-courts-title">Four Floodlit Polytop Courts</h2>
+        <p class="ntc-section-lede">
+          Maintained year-round for all-weather play, with modern floodlights ensuring uninterrupted evening games.
         </p>
       </div>
-      <div class="ntc-hero-aside" aria-hidden="true">
-        <div class="ntc-flood">
-          <span class="ntc-flood-beam"></span>
-          <span class="ntc-flood-beam ntc-flood-beam--2"></span>
-          <span class="ntc-flood-label">Floodlit · Polytop</span>
+
+      <div class="ntc-facilities-grid">
+        <div class="ntc-facility-card">
+          <h3>All-Weather Polytop Surface</h3>
+          <p>High-traction synthetic surface offering consistent bounce and quick drainage even through autumn and winter conditions.</p>
+        </div>
+        <div class="ntc-facility-card">
+          <h3>Full Court Floodlighting</h3>
+          <p>Powerful directional floodlights allow matches and coaching to continue comfortably after dusk throughout the season.</p>
+        </div>
+        <div class="ntc-facility-card">
+          <h3>Clubhouse Pavilion</h3>
+          <p>Traditional pavilion overlooking the courts with changing rooms, seating, social kitchen, and member noticeboards.</p>
         </div>
       </div>
     </section>
 
-    <section class="ntc-folio" id="courts" aria-labelledby="ntc-courts-title">
-      <p class="ntc-folio-mark">Newcastle Tennis Club · Bryansford Grove</p>
-      <div class="ntc-folio-head">
-        <p class="ntc-kicker">The courts</p>
-        <h2 id="ntc-courts-title">Four courts. Late light.</h2>
-        <p>
-          Not a leisure-centre brochure — the club at Bryansford Grove, with
-          the Mournes behind the pavilion and floodlights for evening play.
+    <section class="ntc-sessions-section" id="sessions" aria-labelledby="ntc-sessions-title">
+      <div class="ntc-section-header">
+        <span class="ntc-kicker">Weekly Timetable</span>
+        <h2 id="ntc-sessions-title">Club Nights, Match Play &amp; Coaching</h2>
+        <p class="ntc-section-lede">
+          A welcoming mix of friendly social play, structured skills coaching, and inter-club competition.
         </p>
       </div>
-      <div class="ntc-mag">
-        {courts.map((item) => (
-          <article class="ntc-mag-cell">
-            <p class="ntc-mag-kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
+
+      <div class="ntc-sessions-grid" role="list">
+        {clubSessions.map((s) => (
+          <article class="ntc-session-card" role="listitem">
+            <span class="ntc-session-day">{s.day}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
           </article>
         ))}
       </div>
+
+      <div class="ntc-coaching-callout">
+        <p>
+          Individual and group coaching is managed by <strong>Sam Clegg</strong>. Call <a href={coachHref}>{coachTel}</a> for lesson availability.
+          Non-members can hire courts through Newcastle Centre on <a href={centreHref}>{centreTel}</a>.
+        </p>
+      </div>
     </section>
 
-    <section class="ntc-ritual" id="join" aria-labelledby="ntc-join-title">
-      <div class="ntc-ritual-copy">
-        <p class="ntc-kicker">Membership</p>
-        <h2 id="ntc-join-title">Trial first. Then the year.</h2>
-        <p class="ntc-ritual-lede">
-          Membership runs 1 April to 31 March and is not pro-rated. Come to a
-          trial club session, then join for the year.
-        </p>
-        <ol class="ntc-beats">
-          <li>
-            <span class="ntc-beat-n">01</span>
-            <span class="ntc-beat-t">Come to a trial club session</span>
-          </li>
-          <li>
-            <span class="ntc-beat-n">02</span>
-            <span class="ntc-beat-t">Join for the membership year</span>
-          </li>
-          <li>
-            <span class="ntc-beat-n">03</span>
-            <span class="ntc-beat-t">Play — members’ court keys (£20 deposit)</span>
-          </li>
-        </ol>
-        <div class="ntc-fees" aria-labelledby="ntc-fees-title">
-          <p id="ntc-fees-title" class="ntc-fees-label">2026–27 membership</p>
-          <ul>
-            {fees.map((f) => (
-              <li>
-                <span>{f.band}</span>
-                <strong>{f.price}</strong>
-              </li>
+    <section class="ntc-membership-section" id="membership" aria-labelledby="ntc-membership-title">
+      <div class="ntc-membership-card">
+        <div class="ntc-membership-info">
+          <span class="ntc-kicker">Membership Tiers</span>
+          <h2 id="ntc-membership-title">2026–27 Annual Subscription</h2>
+          <p>
+            The club membership season runs from 1 April to 31 March. New members are warmly invited to come along
+            for a complimentary trial club night before joining. Member court keys are available for a £20 deposit.
+          </p>
+
+          <div class="ntc-pricing-table">
+            {membershipBands.map((band) => (
+              <div class="ntc-pricing-row">
+                <div class="ntc-pricing-name">
+                  <strong>{band.band}</strong>
+                  <span>{band.note}</span>
+                </div>
+                <div class="ntc-pricing-amount">{band.price}</div>
+              </div>
             ))}
-          </ul>
-          <p class="ntc-fees-note">Renewals via Clubforce on the club site.</p>
-        </div>
-        <p class="ntc-cta">
-          <a class="ntc-join ntc-join--inline" href={site} rel="noopener noreferrer">Club site</a>
-          <a class="ntc-mail" href={mailto}>{email}</a>
-        </p>
-        <p class="ntc-coach">
-          Coaching — Sam Clegg <a href={coachHref}>{coachTel}</a>.
-          Non-members book courts through Newcastle Centre
-          <a href={centreHref}>{centreTel}</a>.
-        </p>
-      </div>
-      <CourtPlate headingId="ntc-join-title" />
-    </section>
+          </div>
 
-    <section class="ntc-door" id="find" aria-labelledby="ntc-door-title">
-      <div class="ntc-door-head">
-        <p class="ntc-kicker">Find us</p>
-        <h2 id="ntc-door-title">Bryansford Grove.</h2>
-        <p class="ntc-door-lede">
-          Pavilion on Bryansford Road — four floodlit courts at Bryansford Grove.
-          Write to us, or start on the club site for membership and renewals.
-        </p>
-      </div>
-      <div class="ntc-door-grid">
-        <address class="ntc-address">
+          <div class="ntc-membership-actions">
+            <a class="ntc-btn ntc-btn--primary" href={site} rel="noopener noreferrer">Register via Clubforce</a>
+            <a class="ntc-btn ntc-btn--outline" href={mailto}>Email info@newcastletennisclubni.com</a>
+          </div>
+        </div>
+
+        <address class="ntc-location-box" id="location">
           <strong>Newcastle Tennis Club</strong>
           <span>Bryansford Grove</span>
-          <span>Newcastle, Co. Down</span>
+          <span>Newcastle, County Down</span>
           <span>BT33 0DP</span>
-          <a href={mailto}>{email}</a>
-          <a href={mailtoAlt}>{emailAlt}</a>
-          <a href={maps} rel="noopener noreferrer">Map</a>
+          <a class="ntc-address-link" href={mailto}>{email}</a>
+          <a class="ntc-address-link" href={mailtoAlt}>{emailAlt}</a>
+          <a class="ntc-map-btn" href={maps} rel="noopener noreferrer">View on Google Maps</a>
         </address>
-        <div class="ntc-handoff" id="plate">
-          <h3>Club handoff</h3>
-          <p>
-            Membership packs, court bookings for members, and Clubforce
-            renewals live on the club site. Facebook carries club updates.
-          </p>
-          <a href={site} rel="noopener noreferrer">newcastletennisclubni.com</a>
-        </div>
       </div>
-      <figure class="ntc-plate-cap">
-        <figcaption>The four courts at Bryansford Grove.</figcaption>
-      </figure>
     </section>
   </main>
 
   <footer class="ntc-footer">
     <p class="ntc-footer-name">Newcastle Tennis Club</p>
-    <p>Bryansford Grove, Newcastle · Four floodlit courts · Est. 1950s</p>
+    <p>Bryansford Grove, Newcastle · Lawn Tennis &amp; Floodlit Courts · Est. 1950s</p>
   </footer>
 </ConceptLayout>

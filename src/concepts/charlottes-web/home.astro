@@ -4,9 +4,10 @@ import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
 import Handtied from "./Handtied.astro";
 
-/* Charlotte's Web Floristry — jar on Savoy Lane. Speak as the shop.
-   Seasons, weddings, Diane's gift mix. Own site HTTP 500 — do NOT link
-   dead shopfront as live. Directory/tel handoff. Hours omitted. */
+/* Charlotte's Web Floristry — independent florist and giftware boutique on Savoy Lane.
+   3 Savoy Lane, Newcastle, BT33 0SJ.
+   Phone: 028 4372 5770.
+   Owner: Diane. Seasonal hand-tieds, bespoke weddings, local gift mix. */
 
 const phone = "028 4372 5770";
 const phoneHref = "tel:+442843725770";
@@ -15,21 +16,41 @@ const maps =
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
 
-const mix = [
+const floralServices = [
   {
-    kicker: "Seasons",
-    title: "What the week wants.",
-    body: "Passionate about flowers and the changing seasons — each design cared for, not rushed past.",
+    title: "Seasonal Hand-Tied Bouquets",
+    tag: "Daily Bakes of Blooms",
+    desc: "Carefully composed with the best seasonal flowers, wrapped in textured paper and raffia for birthdays, anniversaries, and everyday giving.",
   },
   {
-    kicker: "Occasions",
-    title: "Handtieds, weddings, plants.",
-    body: "Arrangements and handtied bouquets, wedding flowers, and plants for the table or the sill.",
+    title: "Weddings & Celebrations",
+    tag: "Bespoke Bridal Design",
+    desc: "From bridal bouquets and buttonholes to romantic venue installations, tailored with personal care for your special day.",
   },
   {
-    kicker: "Diane’s mix",
-    title: "Giftware beside the bucket.",
-    body: "Diane selects the gift mix — Kelticandles, scarves, and more to sit beside the flowers.",
+    title: "Sympathy & Farewell Tributes",
+    tag: "Dignified Memorials",
+    desc: "Handcrafted wreaths, casket sprays, and natural sheaf arrangements created with gentle sensitivity and fresh garden foliage.",
+  },
+  {
+    title: "Indoor Plants & Ceramics",
+    tag: "Living Greenery",
+    desc: "Thriving houseplants, potted orchids, and decorative planters to bring lasting natural warmth into the home.",
+  },
+];
+
+const giftItems = [
+  {
+    name: "Kelticandles Fragrances",
+    note: "Hand-poured artisan candles and diffusers with uplifting, nature-inspired scents.",
+  },
+  {
+    name: "Soft Wool Scarves",
+    note: "Cosy, tactile scarves and wraps in rich seasonal colours, ideal for coastal walks.",
+  },
+  {
+    name: "Handmade Cards & Tags",
+    note: "Locally illustrated cards to accompany bouquets with your personal handwritten message.",
   },
 ];
 ---
@@ -45,15 +66,15 @@ const mix = [
   bannerNote="The handtied is a drawing."
 >
   <div class="cw-strip">
-    <span>3 Savoy Lane, Newcastle · BT33 0SJ</span>
+    <span>3 Savoy Lane, Newcastle · BT33 0SJ · Florist &amp; Giftware</span>
     <span class="cw-strip-r"><a href={phoneHref}>{phone}</a></span>
   </div>
 
   <header class="cw-header">
     <a class="cw-brand" href="/concepts/charlottes-web/">
       <span class="cw-brand-mark" aria-hidden="true">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <rect width="44" height="44" fill="#3a1f2e"/>
+        <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="4" fill="#3a1f2e"/>
           <path d="M22 8c-2 8-8 12-8 18a8 8 0 0 0 16 0c0-6-6-10-8-18Z" fill="#d4a0b8" opacity="0.9"/>
           <path d="M22 14c1 5 5 8 5 12a5 5 0 0 1-10 0c0-4 4-7 5-12Z" fill="#7a9a6a"/>
           <path d="M18 34h8" stroke="#e8d4c0" stroke-width="2" stroke-linecap="round"/>
@@ -63,129 +84,138 @@ const mix = [
       </span>
       <span class="cw-brand-text">
         <span class="cw-brand-name">Charlotte’s Web</span>
-        <span class="cw-brand-sub">Savoy Lane · Florist &amp; giftware</span>
+        <span class="cw-brand-sub">Savoy Lane · Newcastle</span>
       </span>
     </a>
     <nav class="cw-nav" aria-label="Concept navigation">
-      <a href="#seasons">Seasons</a>
-      <a href="#handtied">The handtied</a>
-      <a href="#ring">Ring</a>
-      <a href="#door">The lane</a>
+      <a href="#flowers">Floristry</a>
+      <a href="#gifts">Diane’s Gifts</a>
+      <a href="#ordering">Order Flowers</a>
+      <a href="#lane">Find Savoy Lane</a>
     </nav>
-    <a class="cw-ring" href={phoneHref}>Ring the lane</a>
+    <a class="cw-ring-btn" href={phoneHref}>Ring the Shop</a>
   </header>
 
   <main class="cw-main">
     <section class="cw-hero" aria-labelledby="cw-name">
       <div class="cw-hero-copy">
-        <p class="cw-kicker">Florist &amp; giftware · Savoy Lane</p>
+        <span class="cw-kicker">Artisan Florist &amp; Gifts · Savoy Lane</span>
         <h1 id="cw-name">Charlotte’s Web</h1>
         <p class="cw-place">3 Savoy Lane · Newcastle · BT33 0SJ</p>
-        <p class="cw-say">Seasons on Savoy Lane.</p>
+        <p class="cw-say">Seasonal blooms and curated artisan gifts tucked in Savoy Lane.</p>
         <p class="cw-lede">
-          Flowers chosen with the season in mind, weddings and handtieds,
-          plants and arrangements — and a gift mix Diane picks, from candles
-          to scarves.
+          From lush hand-tied bouquets wrapped in natural paper to bespoke bridal arrangements, Diane handcrafts every design
+          with seasonal freshness. Beside the flower buckets you will find a curated shelf of local candles, scarves, and gifts.
         </p>
-        <p class="cw-cta">
-          <a class="cw-ring cw-ring--inline" href={phoneHref}>Ring {phone}</a>
-        </p>
+        <div class="cw-hero-actions">
+          <a class="cw-btn cw-btn--primary" href={phoneHref}>Call Diane {phone}</a>
+          <a class="cw-btn cw-btn--outline" href="#lane">Visit Our Shop</a>
+        </div>
       </div>
-      <aside class="cw-season-rail" aria-label="Seasonal creed">
-        <p class="cw-rail-label">This week’s creed</p>
-        <p class="cw-rail-line">Follow the season.</p>
-        <p class="cw-rail-line">Care for each design.</p>
-        <p class="cw-rail-line">Wrap it for the lane.</p>
-        <p class="cw-rail-note">Diane · Florist &amp; giftware</p>
-      </aside>
+
+      <div class="cw-hero-art">
+        <Handtied headingId="cw-name" />
+      </div>
     </section>
 
-    <section class="cw-folio" id="seasons" aria-labelledby="cw-seasons-title">
-      <p class="cw-folio-mark">Charlotte’s Web · 3 Savoy Lane</p>
-      <div class="cw-folio-head">
-        <p class="cw-kicker">The mix</p>
-        <h2 id="cw-seasons-title">Flowers, then what Diane chose.</h2>
-        <p>
-          Jar register — when would you open this, give this, carry this down
-          Savoy Lane? Not a generic Newcastle florist stock rose.
+    <section class="cw-flowers-section" id="flowers" aria-labelledby="cw-flowers-title">
+      <div class="cw-section-head">
+        <span class="cw-kicker">Our Flowers</span>
+        <h2 id="cw-flowers-title">Handcrafted Floristry for Every Moment</h2>
+        <p class="cw-section-intro">
+          We work with the rhythms of the seasons to create expressive, long-lasting arrangements for personal gifts, family celebrations, and weddings.
         </p>
       </div>
-      <div class="cw-chips">
-        {mix.map((item) => (
-          <article class="cw-chip">
-            <p class="cw-mag-kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
+
+      <div class="cw-flowers-grid">
+        {floralServices.map((service) => (
+          <article class="cw-flower-card">
+            <span class="cw-card-tag">{service.tag}</span>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="cw-ritual" id="handtied" aria-labelledby="cw-handtied-title">
-      <div class="cw-ritual-copy">
-        <p class="cw-kicker">The handtied</p>
-        <h2 id="cw-handtied-title">Point at the bucket. We wrap it.</h2>
-        <p class="cw-ritual-lede">
-          Occasions live on the phone — weddings, handtieds, plants,
-          arrangements. Ring the lane; collect from Savoy Lane.
-        </p>
-        <ol class="cw-beats" id="ring">
-          <li>
-            <span class="cw-beat-n">01</span>
-            <span class="cw-beat-t">Ring the lane</span>
-          </li>
-          <li>
-            <span class="cw-beat-n">02</span>
-            <span class="cw-beat-t">Tell us the occasion</span>
-          </li>
-          <li>
-            <span class="cw-beat-n">03</span>
-            <span class="cw-beat-t">Collect from Savoy Lane</span>
-          </li>
-        </ol>
-        <p class="cw-cta">
-          <a class="cw-ring cw-ring--inline" href={phoneHref}>{phone}</a>
-        </p>
-      </div>
-      <div>
-        <Handtied headingId="cw-handtied-title" />
-        <p class="cw-hand-cap">The handtied for Savoy Lane.</p>
+    <section class="cw-gifts-section" id="gifts" aria-labelledby="cw-gifts-title">
+      <div class="cw-gifts-wrapper">
+        <div class="cw-section-head">
+          <span class="cw-kicker cw-kicker--rose">Beside the Flowers</span>
+          <h2 id="cw-gifts-title">Diane’s Curated Gift Shelf</h2>
+          <p class="cw-section-intro">
+            Thoughtfully chosen accessories, fragrance, and paper goods to accompany your floral bouquet or stand alone as delightful gifts.
+          </p>
+        </div>
+
+        <div class="cw-gifts-grid">
+          {giftItems.map((gift) => (
+            <div class="cw-gift-card">
+              <h3>{gift.name}</h3>
+              <p>{gift.note}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
-    <section class="cw-door" id="door" aria-labelledby="cw-door-title">
-      <div class="cw-door-head">
-        <p class="cw-kicker">The lane</p>
-        <h2 id="cw-door-title">3 Savoy Lane.</h2>
-        <p class="cw-door-lede">
-          Charlotte’s Web Floristry — flowers and Diane’s gift mix. Ring the
-          shop. When a first-party shopfront is healthy again, we will point
-          there; for now the telephone is the door.
-        </p>
-      </div>
-      <div class="cw-door-grid">
-        <address class="cw-address">
-          <strong>Charlotte’s Web</strong>
-          <span>3 Savoy Lane</span>
-          <span>Newcastle, Co. Down</span>
-          <span>BT33 0SJ</span>
-          <a href={phoneHref}>{phone}</a>
-          <a href={maps} rel="noopener noreferrer">Map</a>
-        </address>
-        <div class="cw-handoff">
-          <h3>Handoff</h3>
-          <p>
-            Directory listings carry the door and phone. Prefer a call to
-            Savoy Lane over any shopfront that is not answering.
+    <section class="cw-order-section" id="ordering" aria-labelledby="cw-order-title">
+      <div class="cw-order-card">
+        <div class="cw-order-info">
+          <span class="cw-kicker">How to Order</span>
+          <h2 id="cw-order-title">Order Flowers from Savoy Lane</h2>
+          <p class="cw-order-lede">
+            Because flowers are fresh and perishable, calling the shop directly guarantees Diane can advise you on the freshest seasonal stems
+            in today’s water buckets and prepare a bespoke bouquet ready for collection.
           </p>
-          <a href={phoneHref}>Ring 028 4372 5770</a>
+
+          <div class="cw-order-steps">
+            <div class="cw-step">
+              <span class="cw-step-icon">01</span>
+              <div>
+                <h4>Call or Pop In</h4>
+                <p>Telephone 028 4372 5770 or drop into 3 Savoy Lane, just off the Central Promenade.</p>
+              </div>
+            </div>
+            <div class="cw-step">
+              <span class="cw-step-icon">02</span>
+              <div>
+                <h4>Share the Occasion</h4>
+                <p>Tell us your preferred colours, budget, and whether you'd like a gift or card added.</p>
+              </div>
+            </div>
+            <div class="cw-step">
+              <span class="cw-step-icon">03</span>
+              <div>
+                <h4>Freshly Hand-Tied</h4>
+                <p>Diane will condition the blooms, tie the stems with raffia, and wrap them beautifully.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cw-order-actions">
+            <a class="cw-btn cw-btn--primary" href={phoneHref}>Call Shop {phone}</a>
+            <a class="cw-btn cw-btn--outline" href={maps} rel="noopener noreferrer">Directions on Map</a>
+          </div>
         </div>
+
+        <address class="cw-address-card" id="lane">
+          <strong>Charlotte’s Web Floristry</strong>
+          <span>3 Savoy Lane</span>
+          <span>Newcastle, County Down</span>
+          <span>BT33 0SJ</span>
+          <a class="cw-phone-link" href={phoneHref}>{phone}</a>
+          <p class="cw-lane-note">
+            Located just behind Central Promenade in Savoy Lane. Pop in to see today's fresh floral stems.
+          </p>
+          <a class="cw-map-link" href={maps} rel="noopener noreferrer">Find 3 Savoy Lane</a>
+        </address>
       </div>
     </section>
   </main>
 
   <footer class="cw-footer">
-    <p class="cw-footer-name">Charlotte’s Web</p>
-    <p>3 Savoy Lane, Newcastle · Florist &amp; giftware · Diane</p>
+    <p class="cw-footer-name">Charlotte’s Web Floristry</p>
+    <p>3 Savoy Lane, Newcastle · Fresh Flowers, Weddings &amp; Giftware</p>
   </footer>
 </ConceptLayout>
