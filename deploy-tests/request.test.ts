@@ -94,3 +94,9 @@ test("native email rejection returns the retry path instead of acknowledging del
   expect(response.status).toBe(503);
   expect(await response.json()).toEqual({ error: "The request service is temporarily unavailable. Please email hello@mournemade.co.uk instead." });
 });
+
+test("www redirects to the apex while preserving path, query and POST method", async () => {
+  const response = await invoke(new Request("https://www.mournemade.co.uk/request/?source=printed", { method: "POST" }));
+  expect(response.status).toBe(307);
+  expect(response.headers.get("Location")).toBe("https://mournemade.co.uk/request/?source=printed");
+});

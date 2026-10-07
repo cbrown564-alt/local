@@ -83,7 +83,7 @@ visual identity. Shared concept chrome lives in `src/styles/concept-shell.css`;
 identity sheets provide navigation tokens and the genuinely distinct page
 rules.
 
-The request form posts to `/api/request`. The Cloudflare Worker serves this endpoint alongside the static Astro export; the Vercel-compatible handler remains available during the migration. The native Cloudflare email binding has accepted the approved synthetic request; production domain cutover follows the full checks. Concept work is labelled as independent
+The request form posts to `/api/request`. The Cloudflare Worker serves this endpoint alongside the static Astro export; the Vercel-compatible handler remains available during the migration. Production runs at `mournemade.co.uk`; `www` redirects to the apex with the path and query preserved. Native Email Service accepted the approved synthetic enquiry. Concept work is labelled as independent
 and uncommissioned. Concept and prototype routes are intentionally omitted from
 the public sitemap; concept routes are `noindex`, and prototype routes are
 disallowed in `robots.txt`.

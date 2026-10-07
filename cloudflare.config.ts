@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
         } : {}),
       },
       exports: { RequestRate: exports.durableObject({ storage: "sqlite" }) },
-      assets: { runWorkerFirst: ["/api/*"], notFoundHandling: "none", htmlHandling: "force-trailing-slash" },
+      assets: { runWorkerFirst: production ? true : ["/api/*"], notFoundHandling: "none", htmlHandling: "force-trailing-slash" },
       observability: { enabled: true, traces: { enabled: true, headSamplingRate: 0.01 } },
     },
   };
