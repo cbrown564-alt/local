@@ -58,7 +58,7 @@ export default {
     const url = new URL(request.url);
     if (url.hostname === "www.mournemade.co.uk") {
       url.hostname = "mournemade.co.uk";
-      return Response.redirect(url, 307);
+      return Response.redirect(url.toString(), 307);
     }
     if (url.pathname !== "/api/request" && url.pathname !== "/api/request/") {
       if (url.pathname.startsWith("/api/")) return new Response("Not found", { status: 404 });
