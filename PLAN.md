@@ -7,20 +7,59 @@ the retired v1.1 review process are preserved in
 [`docs/archive/plan-before-publication-reset-2026-07-25.md`](docs/archive/plan-before-publication-reset-2026-07-25.md)
 and in the commit history.
 
-Snapshot: 14 September 2026. 59 transformations are public. The Buck's Head has
-replied to the first outreach: it already has a new website built and plans to
-launch it when its accommodation is ready. Both open publication decisions are
-now closed and both published — see section 2.
+Snapshot: 27 September 2026. 10 transformations are public, after the
+portfolio review archived 64 concept packs. The Buck's Head has replied to
+the first outreach: it already has a new website built and plans to launch it
+when its accommodation is ready. No other business has been contacted.
 
-The verification baseline is green again. `pnpm test` was 7/7 on 28 July, fell
-to 6 of 9 under the 31 July – 2 August design wave, and was repaired on
-3 August — see section 1b. Remaining `@vercel/node` advisories are recorded in
+`pnpm test` is 14/14 on 27 September 2026, after the archive retired the pins
+for archived packs. Remaining `@vercel/node` advisories are recorded in
 `docs/dependency-advisories.md`.
 
 No business has approved the concept work and no client result has been
-measured. The ordered plan is therefore: protect the request path, finish the
-two remaining outreach sheets and learn from real conversations before expanding
-the portfolio or offer.
+measured. **The work now is finding out who wants it** — section 0.
+
+## 0. Portfolio reset and the demand workstream — opened 27 September 2026
+
+The build phase showed a decent local website can be made in days: 75 packs in
+about nine weeks. It showed nothing about demand: one business contacted, one
+"no current opportunity". The
+[portfolio review](research/portfolio-review/portfolio-review-2026-09-27.md)
+kept the ten businesses with a checkable problem a website can fix, in a lane
+where the fix can pay back, and archived the rest
+([`archive/README.md`](archive/README.md)).
+
+The [demand workstream](research/demand/README.md) now outranks everything
+below except the request path. For each of the ten: desk re-check, a
+discovery conversation ([guide](research/demand/interview-guide.md)), and only
+then the concept. Progress is measured on an evidence ladder, rungs 0–5.
+
+**Fixed checkpoints:**
+
+| Date | Pass if | Otherwise |
+|---|---|---|
+| Fri 30 October 2026 | 5 of the 10 at rung 1 (a real conversation with the person who decides) | Fix the approach before judging the offer |
+| Fri 27 November 2026 | 3 at rung 2 (problem in their words) and 1 at rung 3 (cost stated) | Stop building; re-read the objections |
+| Fri 18 December 2026 | 1 at rung 4–5 (asked for a price, or committed) | Decide: a smaller offer, the Chamber as channel, or stop |
+
+**Order of approach** is by timing pressure: Hugh McCann's (engagement
+season), Scopers (Christmas supper clubs), Coco's (half-term and Christmas
+parties), Mourne Cycles (workshop season), the Chamber, then the accommodation
+cases in November, and the vet and dental practices when their gating
+questions are answered. Enniskeen still waits until at least two other
+conversations are written up (ADR-0001).
+
+**What this changes below:**
+
+- **Section 3:** the first wave is now Scopers alone; the Cúpla sheet is
+  archived with its concept. The Scopers sheet's gates stand.
+- **Sections 7 and 8 and the representative-prototype sequence are paused**
+  until the 18 December checkpoint. They present work to owners we have not
+  yet spoken to.
+- **Section 9:** only items 1–2 (stock and bleed) proceed, and only when a
+  sheet is about to be printed.
+- **No new concepts and no restyles** of the ten until a conversation asks for
+  one (decision register C6).
 
 ## New representative-prototype sequence — decided 9 August 2026
 

@@ -7,9 +7,17 @@ with `node tools/pipeline/normalize-businesses.mjs` after changing it.
 This document owns pipeline state. `PLAN.md` and `README.md` link here rather
 than repeating a count.
 
-Snapshot: 14 September 2026 · 59 public transformations · none withdrawn ·
-two concepts retired · no active next prospect · two prospects held on trading
-or suitability evidence · **one business contacted and replied**
+Snapshot: 27 September 2026 · 10 public transformations · 64 concepts archived
+in the portfolio review · none withdrawn · two concepts retired · one prospect
+held on trading evidence · **one business contacted and replied**
+
+**The pipeline changed shape on 27 September 2026.** The
+[portfolio review](research/portfolio-review/portfolio-review-2026-09-27.md)
+kept ten businesses (eleven packs) and archived the other 64 packs to
+`archive/concepts/`. The ten now move through the
+[demand workstream](research/demand/README.md), which records each one's rung
+on an evidence ladder. That table, not this file's stage column, is where
+progress is tracked until a business reaches **Contacted**.
 
 ## Stages
 
@@ -102,26 +110,43 @@ using it in any later outreach.
 
 ## Public concepts
 
-| Business | Town | Main concept work |
-|---|---|---|
-| Hotel Enniskeen | Newcastle | Five-page hotel concept, rooms, dining and Bookin1 handoff |
-| The Buck's Head | Dundrum | Table booking and HTML menus |
-| Mourne Cycles | Newcastle | Storefront, workshop and Cycle to Work |
-| Newcastle Chamber of Commerce | Newcastle | Directory, events and joining route |
-| Kent Amusements | Newcastle | Attractions and seasonal-hours structure |
-| Donard Veterinary Clinic | Newcastle | Appointment request and emergency information |
-| Cúpla | Dundrum | Bilingual café opening and sample menu |
-| The Tool Centre | Newcastle | Hardware and plant-hire desk with hire-list |
-| Scopers | Dundrum | Zero-waste bar and supper-club night |
-| The Dundrum Inn | Dundrum | Tonight board and GuestDiary journey |
-| The Donard Hotel | Newcastle | Property-first arrival, published room rates and official booking handoff |
-| Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel |
-| Hugh McCann's | Newcastle | Venue-led date and guest-count wedding enquiry |
-| Betty's Better Butters | Dundrum | Product-led range using the maker's real mark and butter photography |
-| Douglas & Cromie | Newcastle | Restored garage identity, direct contact details and current-vehicle check |
-| Castle Farm Fresh Produce | Dundrum | Produce-led weekly-box journey with the farm's navy-and-gold identity |
-| Kelly, McEvoy & Brown | Dundrum | Thirteen completed projects in one sector-filterable register, with the firm's own mark and photography |
-| Painted Earth | Newcastle | Original-art shelf showing collection and shipping terms before checkout, and recovery from sold work |
+The ten kept in the 27 September review, in demand-workstream order. The
+Avoca Hotel concept (unpublished) rides with Hugh McCann's: one family, both
+properties.
+
+| Business | Town | Main concept work | Dossier |
+|---|---|---|---|
+| Hugh McCann's | Newcastle | Venue-led date and guest-count wedding enquiry | [dossier](research/demand/dossiers/hugh-mccanns.md) |
+| Scopers | Dundrum | Zero-waste bar and supper-club night | [dossier](research/demand/dossiers/scopers.md) |
+| Coco's Adventure Playground | Newcastle | Walk-in play, party booking path and honest hours | [dossier](research/demand/dossiers/cocos-adventure-playground.md) |
+| Mourne Cycles | Newcastle | Storefront, workshop and Cycle to Work | [dossier](research/demand/dossiers/mourne-cycles.md) |
+| Newcastle Chamber of Commerce | Newcastle | Directory, events and joining route | [dossier](research/demand/dossiers/newcastle-chamber.md) |
+| Hotel Enniskeen | Newcastle | Five-page hotel concept, rooms, dining and Bookin1 handoff | [dossier](research/demand/dossiers/hotel-enniskeen.md) |
+| Conlyn House | Newcastle | Named rooms and rates with an honest enquiry path | [dossier](research/demand/dossiers/conlyn-house.md) |
+| Arley House | Dundrum | Guest-house front door, village map and phone enquiry | [dossier](research/demand/dossiers/arley-house.md) |
+| Donard Veterinary Clinic | Newcastle | Appointment request and emergency information | [dossier](research/demand/dossiers/donard-veterinary.md) |
+| Newcastle Family Dental Care | Newcastle | Secure practice front door and appointment panel | [dossier](research/demand/dossiers/newcastle-dental.md) |
+
+Arley House, Conlyn House and Coco's were published on 23 August 2026 with a
+labelled placeholder in place of a before capture. Each dossier's first step
+is to capture a real one.
+
+## Archived — 27 September 2026
+
+64 packs, including 49 that were public, were taken out of the build. The
+reason for each is in
+[`research/portfolio-review/verdicts-2026-09-27.json`](research/portfolio-review/verdicts-2026-09-27.json)
+and on its card in the
+[contact sheet](archive/contact-sheet-2026-09-27.html). In short: 22 solved a
+problem the business doesn't have, 26 are walk-in or low-ticket trades where a
+bespoke site doesn't pay back, 4 are decided by a group or brand, 7 win work
+by referral or habit, 4 aren't confirmed trading, and 1 overlapped the kept
+list. Seven carry a named reopen trigger (review, "Worth reopening").
+
+Archiving is not retirement. The research, verification records and
+publication reviews are kept, and `archive/README.md` says how to restore a
+pack. The July-era case histories above (Kelly, McEvoy & Brown; Painted
+Earth; The Buck's Head) are kept as the record of those decisions.
 
 ## Withdrawn
 
@@ -181,8 +206,11 @@ Nothing about its trading status is in doubt.
 
 | Business | Stage | Reason | Unblock condition |
 |---|---|---|---|
-| Murdock Brothers | Concept in progress | Trading status is not confirmed strongly enough for public use | Confirm trading from a current authoritative or first-hand source |
 | South Down Signs | Shortlisted | Online evidence is stale; no concept work started | Confirm trading in person or from current business evidence |
+
+Murdock Brothers, held since July on trading evidence, was archived on
+27 September 2026. The unblock condition travels with it as its reopen
+trigger: confirm trading first-hand, then heating-oil season makes it timely.
 
 South Down Signs carries no explicit `stage` in `research/pipeline/verifications.json`;
 `tools/pipeline/normalize-businesses.mjs` defaults an unset stage to **Shortlisted**.

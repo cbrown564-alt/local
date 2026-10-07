@@ -9,7 +9,7 @@ Mourne Made is a single static [Astro](https://astro.build/) site (no backend, n
 There is one service: the Astro site. Standard commands live in `package.json`:
 - Dev server: `pnpm dev` (serves `http://localhost:4321/`; pass `--host` to expose on the network). This is the command to use for development.
 - Lint/typecheck + build: `pnpm build` runs prose-count, publication, public-asset and concept guest-voice guards, `astro check`, then `astro build`.
-- CI and local check: `pnpm test` runs `pnpm build`, then twenty-seven suites via `tools/test/run-verification.mjs` — the request handler, the printed-QR attribution chain, the orphan-media scan, the lights-payload anonymity guard, the rebuild-canvas guard and the twenty-two per-page pins. Every suite runs even when an earlier one fails, so the report is the whole picture rather than the first casualty. `SKIP_BUILD=1 pnpm test` reuses the existing `dist/` for the inner loop, and is not a full verification.
+- CI and local check: `pnpm test` runs `pnpm build`, then fourteen suites via `tools/test/run-verification.mjs` — the request handler, the printed-QR attribution chain, the orphan-media scan, the lights-payload anonymity guard, the rebuild-canvas guard and nine per-page pins. Every suite runs even when an earlier one fails, so the report is the whole picture rather than the first casualty. `SKIP_BUILD=1 pnpm test` reuses the existing `dist/` for the inner loop, and is not a full verification.
 - Preview the production build: `pnpm preview` (needed by the capture scripts).
 
 Key routes are documented in `README.md`. The core user flow is the request form at `/request/`. It posts to the Vercel Function at `api/request.ts`, which validates the submission, rate-limits by source address and sends the lead by email. Without `GMAIL_USER` and `GMAIL_APP_PASSWORD` in the environment — as in a bare local checkout — the endpoint validates but cannot deliver; `pnpm test:request` exercises the input handling without sending anything.
@@ -30,7 +30,8 @@ Studio / meta voice belongs only in:
 
 ### Non-obvious notes
 
-- Directory layout: see [`docs/REPO_MAP.md`](docs/REPO_MAP.md). Edit `public/`, never `dist/`. Concept work lives under `src/concepts/<slug>/`, `public/media/concepts/<slug>/`, and `research/concepts/<slug>/`.
+- Directory layout: see [`docs/REPO_MAP.md`](docs/REPO_MAP.md). Edit `public/`, never `dist/`. Concept work lives under `src/concepts/<slug>/`, `public/media/concepts/<slug>/`, and `research/concepts/<slug>/`. Archived packs live in `archive/concepts/<slug>/`, outside the build; see `archive/README.md` before restoring one.
+- Current priority is the demand workstream in [`research/demand/`](research/demand/README.md), not new concepts. The portfolio was cut to ten businesses on 27 September 2026 ([`research/portfolio-review/`](research/portfolio-review/portfolio-review-2026-09-27.md)).
 - Capture tools live in `tools/capture/` and need `puppeteer-core` + system Chrome/Chromium plus a running `pnpm preview` server. `ffmpeg-static` is bundled for media capture.
 - `tools/pipeline/normalize-businesses.mjs` regenerates `src/site/data/businesses.json` from `research/pipeline/verifications.json`; re-run it after editing verification data.
 - Generated media — video, imagery **and synthetic speech** — needs an entry in `research/image-provenance.md` before it is committed, whether it ships or serves an internal prototype only. Guest-facing generated media also needs a disclosure in the visible layer, not only in an `alt` or `aria-label`.

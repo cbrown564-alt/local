@@ -16,6 +16,7 @@ Where things live after the A→D restructure (31 July 2026).
 | `src/site/` | Mourne Made product UI: shared components, layouts, styles, data. |
 | `src/concepts/` | Concept packs (`_shell/` + one folder per slug). |
 | `src/prototypes/` | Internal explorations (chamber shells, etc.). |
+| `archive/concepts/<slug>/` | Archived concept packs (code, routes, pin, cut records). Outside the build and `astro check`. See `archive/README.md`. |
 | `src/workbench/` | Dev-only routes injected by `astro.config.mjs`. |
 | `media/held/` | Local, gitignored copies of retired deployment assets; tracked `MANIFEST.md` records paths and checksums. |
 | `public/` | **Deploy boundary** — only static assets that may ship. |
@@ -28,6 +29,8 @@ Where things live after the A→D restructure (31 July 2026).
 | `research/image-provenance.md` | How each concept image was made / whether it ships. |
 | `research/pipeline/` | `verifications.json`, discovery summaries, landscape PDF. |
 | `research/concepts/<slug>/` | Briefs, triage, pitches; `evidence/` is gitignored. |
+| `research/portfolio-review/` | Whole-portfolio reviews: the 27 September 2026 review and its per-concept verdicts. |
+| `research/demand/` | The demand workstream: control doc, interview guide, one dossier per kept business. |
 | `research/audits/` | Internal design audits (screenshots gitignored). |
 | `docs/` | DESIGN, MEDIA_CAPTURE, CONCEPT_DESIGN_REVIEW, REVIEW, ADRs (0006 is current civic-map decision), archive. Software-factory research: `docs/software-factory-proposals.md`. Living decision index: `docs/decision-register.md`. |
 | `tools/` | Capture, media, check, test, print, pipeline scripts. |

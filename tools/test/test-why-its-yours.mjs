@@ -140,22 +140,25 @@ const publicSlugs = new Set(readPublicTransformationSlugs());
 const linkedSlugs = [...html.matchAll(/href="\/transformations\/([^/"]+)\/"/g)].map(
   (match) => match[1],
 );
+// Eight since the 27 September 2026 portfolio review archived 64 concepts:
+// place 3, counter 2, care 2, trade 1. The product plate has no kept example,
+// so it carries no "we drew one of these" footer at all rather than an empty one.
 check(
-  `expected 12 worked-example links (found ${linkedSlugs.length})`,
-  linkedSlugs.length === 12,
+  `expected 8 worked-example links (found ${linkedSlugs.length})`,
+  linkedSlugs.length === 8,
 );
 for (const slug of linkedSlugs) {
   check(`a worked-example link points at non-public transformation "${slug}"`, publicSlugs.has(slug));
 }
 const drewLeads = text.match(/We drew one of these/g) ?? [];
 check(
-  `the "we drew one of these" lead should travel with every plate (found ${drewLeads.length} of 5)`,
-  drewLeads.length === 5,
+  `the "we drew one of these" lead should travel with every plate that has an example (found ${drewLeads.length} of 4)`,
+  drewLeads.length === 4,
 );
 const conceptLabels = text.match(/independent concepts/gi) ?? [];
 check(
-  `the independent-concept label should travel with every plate (found ${conceptLabels.length} of 5)`,
-  conceptLabels.length === 5,
+  `the independent-concept label should travel with every plate that has an example (found ${conceptLabels.length} of 4)`,
+  conceptLabels.length === 4,
 );
 
 if (failures.length > 0) {
