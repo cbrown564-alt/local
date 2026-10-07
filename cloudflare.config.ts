@@ -10,16 +10,19 @@ export default defineConfig(({ mode }) => {
       entrypoint: "./deploy/cloudflare-worker.ts",
       compatibilityDate: "2026-10-07",
       workersDev: true,
-      // Domain cutover follows delivery verification; never attach in preview.
-      domains: [],
+      // The public domain is attached only after delivery verification.
+      domains: production ? ["mournemade.co.uk", "www.mournemade.co.uk"] : [],
       env: {
         ASSETS: bindings.assets(),
         REQUEST_RATE: bindings.durableObject({ worker: name, exportName: "RequestRate" }),
         DELIVERY_ENABLED: bindings.text(production ? "true" : "false"),
         ...(production ? {
-          GMAIL_USER: bindings.secret(),
-          GMAIL_APP_PASSWORD: bindings.secret(),
-          REQUEST_TO_EMAIL: bindings.secret(),
+          MAIL_FROM: bindings.text("hello@mournemade.co.uk"),
+          REQUEST_TO_EMAIL: bindings.text("cbrown564@gmail.com"),
+          EMAIL: bindings.sendEmail({
+            destinationAddress: "cbrown564@gmail.com",
+            allowedSenderAddresses: ["hello@mournemade.co.uk"],
+          }),
           REQUEST_RATE_SALT: bindings.secret(),
         } : {}),
       },

@@ -83,14 +83,14 @@ visual identity. Shared concept chrome lives in `src/styles/concept-shell.css`;
 identity sheets provide navigation tokens and the genuinely distinct page
 rules.
 
-The request form posts to `/api/request`. The Cloudflare Worker serves this endpoint alongside the static Astro export; the Vercel-compatible handler remains available during the migration. Production promotion is pending a deployed delivery check and domain cutover. Concept work is labelled as independent
+The request form posts to `/api/request`. The Cloudflare Worker serves this endpoint alongside the static Astro export; the Vercel-compatible handler remains available during the migration. The native Cloudflare email binding has accepted the approved synthetic request; production domain cutover follows the full checks. Concept work is labelled as independent
 and uncommissioned. Concept and prototype routes are intentionally omitted from
 the public sitemap; concept routes are `noindex`, and prototype routes are
 disallowed in `robots.txt`.
 
 ## Cloudflare hosting and request email
 
-The request route sends mail through Gmail with an app password. Never add a Gmail password or app password to this repository.
+The Cloudflare request route sends through the native Email Service binding from `hello@mournemade.co.uk` to the verified `cbrown564@gmail.com` inbox. The binding restricts both addresses. The same domain address forwards incoming mail to that inbox through Email Routing. No Gmail password is needed on Cloudflare; the preserved Vercel fallback retains its existing SMTP transport.
 
 Build and verify the migration without delivering email:
 
@@ -102,18 +102,20 @@ pnpm exec cf deploy --prebuilt --mode migration-preview --dry-run
 pnpm exec cf deploy --prebuilt --mode migration-preview
 ```
 
-`build:cloudflare` runs generated Worker types, strict Worker types and the existing full Astro build guards, then packages `dist/`. `cf deploy` does not run those package scripts, so always build first. The default mode is `migration-preview`: no production domains, no Gmail secrets, delivery disabled and `X-Robots-Tag: noindex, nofollow`. A valid preview submission returns 503 and retains the visitor's fields for retry; it never claims an email was delivered.
+`build:cloudflare` runs generated Worker types, strict Worker types and the existing full Astro build guards, then packages `dist/`. `cf deploy` does not run those package scripts, so always build first. The default mode is `migration-preview`: no production domains, no email binding, delivery disabled and `X-Robots-Tag: noindex, nofollow`. A valid preview submission returns 503 and retains the visitor's fields for retry; it never claims an email was delivered.
 
 Production preparation uses `pnpm build:cloudflare production`, followed by a matching `cf deploy --prebuilt --mode production`. Attach the existing domains only after a deployed delivery check succeeds. Preserve DNS mail and verification records, the apex/www policy, and the old deployment for rollback. Connect `master` through Workers Builds using `pnpm build:cloudflare production` and `pnpm exec cf deploy --prebuilt --mode production`; disconnect Vercel Git only after the native deployment and live site are verified.
 
-Production Worker secrets:
+Production needs only the `REQUEST_RATE_SALT` secret. Sender and recipient are
+explicit text bindings; `EMAIL` is a native send binding restricted to those
+addresses. Incoming mail to `hello@mournemade.co.uk` forwards to the same verified
+inbox. Verified-destination sending is free on the current Workers plan.
 
-- `GMAIL_USER` — Gmail sending address, with 2-Step Verification enabled.
-- `GMAIL_APP_PASSWORD` — a dedicated Google app password; never commit it.
-- `REQUEST_TO_EMAIL` — the existing receiving inbox.
-- `REQUEST_RATE_SALT` — a random secret used to derive the counter identity.
-
-The existing Gmail/Nodemailer SMTP transport and message formatting are preserved. No actual Cloudflare delivery has been verified yet. A test email requires the user's approval of its recipient and synthetic contents before sending.
+The shared request validation, subject, plain-text message and visitor Reply-To
+are preserved. The Cloudflare adapter also supplies escaped HTML. It awaits
+provider acceptance before returning success and logs only the message ID. A
+synthetic delivery test still requires explicit authorization. Gmail credentials
+remain relevant only to the existing Vercel fallback and must never be committed.
 
 `REQUEST_RATE` is a SQLite-backed Durable Object with a separate counter per salted address digest. It allows five attempts in an hour, persists across Worker restarts and removes expired counters by alarm. Neither raw addresses nor form contents are written to the counter. A store outage preserves the existing fail-open delivery policy and logs an operational event without submitted contents. Origin checks use the actual URL and Cloudflare's caller address rather than untrusted forwarding headers; only JSON objects up to 16 KiB are accepted.
 

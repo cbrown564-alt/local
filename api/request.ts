@@ -10,7 +10,7 @@ export interface RequestOutput {
   json(body: unknown): unknown;
 }
 export type RequestEnvironment = Partial<Record<
-  "GMAIL_USER" | "GMAIL_APP_PASSWORD" | "REQUEST_TO_EMAIL" |
+  "GMAIL_USER" | "GMAIL_APP_PASSWORD" | "REQUEST_TO_EMAIL" | "MAIL_FROM" |
   "REQUEST_ALERT_WEBHOOK" | "REQUEST_RATE_SALT" |
   "KV_REST_API_URL" | "KV_REST_API_TOKEN" |
   "UPSTASH_REDIS_REST_URL" | "UPSTASH_REDIS_REST_TOKEN", string>>;
@@ -334,11 +334,11 @@ async function handler(request: RequestInput, response: RequestOutput) {
     return response.status(400).json({ error: "Please provide a valid website or public listing URL." });
   }
 
-  const gmailUser = env.GMAIL_USER;
+  const gmailUser = env.MAIL_FROM ?? env.GMAIL_USER;
   const gmailPassword = env.GMAIL_APP_PASSWORD;
   const recipient = env.REQUEST_TO_EMAIL || gmailUser;
 
-  if (!gmailUser || !gmailPassword || !recipient) {
+  if (!gmailUser || !recipient || (!sendMailOverride && !gmailPassword)) {
     return response.status(503).json({ error: "The request service is not configured yet. Please try again later." });
   }
 
@@ -407,7 +407,7 @@ async function handler(request: RequestInput, response: RequestOutput) {
       // was never actually covered.
       await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source }, env);
       return response.status(503).json({
-        error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
+        error: "The request service is temporarily unavailable. Please email hello@mournemade.co.uk instead.",
       });
     }
     return response.status(200).json({ ok: true });
@@ -427,7 +427,7 @@ async function handler(request: RequestInput, response: RequestOutput) {
   } catch (deliveryError) {
     await reportDeliveryFailure({ ...failureDetail(deliveryError), source: fields.source }, env);
     return response.status(503).json({
-      error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
+      error: "The request service is temporarily unavailable. Please email hello@mournemade.co.uk instead.",
     });
   } finally {
     transporter.close();

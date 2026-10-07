@@ -85,7 +85,22 @@ export default {
     };
     // Preview has no Gmail secrets and never acknowledges a real delivery.
     const mailEnv = env.DELIVERY_ENABLED === "true" ? env : {};
-    const handler = createRequestHandler(undefined, {
+    const handler = createRequestHandler(env.DELIVERY_ENABLED === "true" ? async (mail) => {
+      const reply = mail.replyTo;
+      const replyTo = reply && typeof reply === "object" && !Array.isArray(reply) && "address" in reply
+        ? { email: reply.address, name: reply.name ?? "Mourne Made enquiry" } : undefined;
+      const text = String(mail.text ?? "");
+      const escaped = text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+      const result = await env.EMAIL.send({
+        from: { email: env.MAIL_FROM, name: "Mourne Made website" },
+        to: env.REQUEST_TO_EMAIL,
+        subject: String(mail.subject ?? ""), text,
+        html: `<html><body><pre>${escaped}</pre></body></html>`,
+        ...(replyTo ? { replyTo } : {}),
+      });
+      console.log(JSON.stringify({ event: "request_email_accepted", messageId: result?.messageId }));
+      return result;
+    } : undefined, {
       env: mailEnv,
       async takeRateLimitSlot(address) {
         const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${env.REQUEST_RATE_SALT ?? "preview-only"}:${address}`));
@@ -110,7 +125,7 @@ export default {
       return response;
     } catch {
       console.error(JSON.stringify({ event: "request_handler_failed" }));
-      return json({ error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead." }, 503);
+      return json({ error: "The request service is temporarily unavailable. Please email hello@mournemade.co.uk instead." }, 503);
     }
   },
 } satisfies ExportedHandler<Cloudflare.Env>;
