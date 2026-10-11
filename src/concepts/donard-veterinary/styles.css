@@ -507,6 +507,8 @@
 .dv-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: start; }
 .dv-row > .dv-input { flex: 1 1 220px; }
 .dv-row > .dv-input--narrow { flex: 0 1 220px; }
+/* Once the row wraps on a phone, match the full-width fields below it. */
+@media (max-width: 520px) { .dv-row > .dv-input--narrow { flex-grow: 1; } }
 
 .dv-input { display: grid; gap: 6px; font-weight: 600; font-size: 0.95rem; }
 .dv-input small { font-weight: 400; color: var(--dv-muted); }
@@ -731,6 +733,9 @@
     animation: dv-pulse 3.2s ease-out infinite;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .dv-dock, .dv-dock[data-hidden] { transition: none; }
+}
 @keyframes dv-pulse {
   0% { transform: scale(0.6); opacity: 0.35; }
   100% { transform: scale(1.9); opacity: 0; }
@@ -780,31 +785,46 @@
   /* the dock carries Call on phones, so the header keeps the name whole */
   .dv-top-call { display: none; }
 
+  /* Anchored bar, not a floating card: flush to the bottom edge with a
+     hairline, one solid action and one quiet one. */
   .dv-dock {
     position: fixed;
-    inset: auto 12px 12px;
+    inset: auto 0 0;
     z-index: 30;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 14px;
-    background: color-mix(in srgb, #fff 94%, transparent);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px -12px rgba(12, 67, 82, 0.45);
+    gap: 10px;
+    padding: 10px var(--dv-gutter) calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--dv-mist-2);
+    background: color-mix(in srgb, var(--dv-paper) 94%, transparent);
+    backdrop-filter: blur(12px);
+    transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+  }
+  .dv-dock[data-hidden] {
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 200ms ease-in, visibility 0s 200ms;
   }
   .dv-dock a {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    border-radius: 9px;
+    gap: 8px;
+    min-height: 46px;
+    border: 1px solid var(--dv-teal-d);
+    border-radius: 8px;
     font-weight: 600;
+    font-size: 0.98rem;
     text-decoration: none;
     color: #fff;
-    background: var(--dv-teal);
+    background: var(--dv-teal-d);
   }
-  .dv-dock a:first-child { background: var(--dv-urgent); }
+  .dv-dock a.dv-dock-call {
+    border-color: color-mix(in srgb, var(--dv-urgent) 55%, #fff);
+    background: #fff;
+    color: var(--dv-urgent);
+  }
+  .dv-dock svg { width: 18px; height: 18px; flex: none; }
   .concept-donard-veterinary .private-note { padding-bottom: 88px; }
 }
 

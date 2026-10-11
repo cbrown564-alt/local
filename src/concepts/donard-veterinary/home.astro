@@ -220,9 +220,15 @@ const tasks = [
     <p><strong>Donard Veterinary Clinic</strong> · Independent, 100% small-animal, since 2017</p>
   </footer>
 
-  <nav class="dv-dock" aria-label="Quick actions">
-    <a href={clinicPhoneHref}>Call us</a>
-    <a href="#book" data-dv-open="book">Book</a>
+  <nav class="dv-dock" aria-label="Quick actions" data-hidden>
+    <a class="dv-dock-call" href={clinicPhoneHref}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.2 3.5h3.1l1.6 4.1-2.1 1.4a11.5 11.5 0 0 0 5.2 5.2l1.4-2.1 4.1 1.6v3.1a2 2 0 0 1-2 2A15.3 15.3 0 0 1 3.2 5.5a2 2 0 0 1 2-2z" /></svg>
+      Call us
+    </a>
+    <a href="#book" data-dv-open="book">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" /></svg>
+      Book a visit
+    </a>
   </nav>
 </ConceptLayout>
 
@@ -284,6 +290,25 @@ const tasks = [
       history.replaceState(null, "", `#${id}`);
     });
   });
+
+  // The phone dock: hidden while the hero's own buttons are on screen, and
+  // while someone is typing in a form (the keyboard is up and the dock
+  // would only cover fields).
+  const dock = document.querySelector<HTMLElement>(".dv-dock");
+  const heroActions = document.querySelector(".dv-hero-actions");
+  if (dock && heroActions) {
+    let heroVisible = true;
+    let typing = false;
+    const sync = () => dock.toggleAttribute("data-hidden", heroVisible || typing);
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      sync();
+    }).observe(heroActions);
+    const isField = (el: EventTarget | null) =>
+      el instanceof HTMLElement && el.matches("input:not([type=radio]), textarea, select");
+    document.addEventListener("focusin", (e) => { typing = isField(e.target); sync(); });
+    document.addEventListener("focusout", () => { typing = false; requestAnimationFrame(sync); });
+  }
 
   const openFromHash = () => {
     const fromHash = location.hash.slice(1);
