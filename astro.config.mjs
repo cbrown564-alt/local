@@ -59,6 +59,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes("/concepts/") &&
+        !page.includes("/for/") &&
         !page.includes("/prototypes/") &&
         !page.includes("/opportunities/"),
     }),

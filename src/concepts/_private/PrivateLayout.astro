@@ -1,0 +1,60 @@
+---
+/**
+ * Bare shell for a page shared privately with one business. No banner, no
+ * links to or from the rest of the site, and no share card of the business's
+ * live site. Unlisted by route (an unguessable slug), `noindex`, and absent
+ * from the sitemap.
+ */
+import "../_shell/concept-shell.css";
+
+interface Props {
+  title: string;
+  bodyClass: string;
+  businessName: string;
+  lang?: string;
+  fontHref?: string;
+}
+
+const { title, bodyClass, businessName, lang = "en-GB", fontHref } = Astro.props;
+const description = `A website idea for ${businessName}.`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {fontHref && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href={fontHref} rel="stylesheet" />
+      </>
+    )}
+    <title>{title}</title>
+  </head>
+  <body class={`${bodyClass} private-page`}>
+    <slot />
+    <p class="private-note">An unrequested website idea for {businessName}, not the live site.</p>
+  </body>
+</html>
+
+<style is:global>
+  body.concept-page.private-page {
+    --mm-banner-space: 0px;
+  }
+  .private-note {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    text-align: center;
+    font: 0.8125rem/1.4 system-ui, sans-serif;
+    opacity: 0.65;
+  }
+</style>
