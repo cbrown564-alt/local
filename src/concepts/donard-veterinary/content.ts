@@ -17,7 +17,8 @@ export type GlyphName =
   | "surgery"
   | "dental"
   | "weight"
-  | "passport";
+  | "passport"
+  | "goodbye";
 
 export const clinicPhone = "028 4372 9414";
 export const clinicPhoneHref = "tel:+442843729414";
@@ -28,12 +29,6 @@ export const bereavementUrl =
 export const directionsUrl =
   "https://www.google.com/maps/search/?api=1&query=Donard+Veterinary+Clinic+8+Railway+Street+Newcastle+BT33+0AL";
 
-/** The practice's own sentence, quoted verbatim from its goodbye page. */
-export const bereavementQuote = {
-  text: "As pet owners ourselves we fully understand",
-  source: bereavementUrl,
-} as const;
-
 /** Published opening hours. No Sunday line is published, so none is shown. */
 export const openingHours = [
   { days: "Monday, Tuesday", hours: "8:30am – 6:30pm" },
@@ -42,16 +37,20 @@ export const openingHours = [
   { days: "Saturday", hours: "9:00am – 1:00pm" },
 ] as const;
 
-/** Villages the practice names on its emergency page. */
+/** Villages the practice names on its emergency page, with approximate
+ *  village-centre coordinates (WGS84, to about 100 m) for the area map. */
 export const catchmentVillages = [
-  "Castlewellan",
-  "Dundrum",
-  "Bryansford",
-  "Clough",
-  "Annalong",
-  "Kilcoo",
-  "Hilltown",
+  { name: "Castlewellan", lat: 54.2569, lon: -5.9447 },
+  { name: "Dundrum", lat: 54.2583, lon: -5.8456 },
+  { name: "Bryansford", lat: 54.229, lon: -5.928 },
+  { name: "Clough", lat: 54.2889, lon: -5.8361 },
+  { name: "Annalong", lat: 54.1069, lon: -5.8994 },
+  { name: "Kilcoo", lat: 54.236, lon: -6.034 },
+  { name: "Hilltown", lat: 54.1997, lon: -6.1414 },
 ] as const;
+
+/** 8 Railway Street, Newcastle (approximate). */
+export const practiceLocation = { lat: 54.2147, lon: -5.8889 } as const;
 
 /** The published service list. `reason` matches a value in the booking
  *  form's "What's it for?" choices so "Book for this" can preselect it. */

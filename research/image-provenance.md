@@ -469,6 +469,13 @@ of these businesses supplied one.
   the booking form's pet choices. Replaces the 31 July line cast as the
   concept's pet imagery.
 
+- Donard Veterinary area map — **in use** (11 October 2026). Hand-authored
+  inline SVG in `src/concepts/donard-veterinary/components/DvAreaMap.astro`.
+  Village and practice positions are projected from approximate WGS84
+  coordinates held in `content.ts`; the coast and Mourne massif are simplified
+  outlines drawn by hand, not traced from any map product or tile set. Captioned
+  on the page as approximate and simplified. Not generated.
+
 - `public/media/concepts/donard-veterinary/donard-veterinary-emblem.png` — **in use**
   (18 August 2026). Generated concept emblem asset exploring a refined brand
   emblem combining Slieve Donard with a nestled dog and cat companion silhouette,

@@ -7,13 +7,13 @@ import DvGlyph from "./components/DvGlyph.astro";
 import DvHeroScene from "./components/DvHeroScene.astro";
 import DvBookForm from "./components/DvBookForm.astro";
 import DvPrescriptionForm from "./components/DvPrescriptionForm.astro";
+import DvAreaMap from "./components/DvAreaMap.astro";
 import {
   clinicPhone,
   clinicPhoneHref,
   clinicEmail,
   vidivetUrl,
   bereavementUrl,
-  bereavementQuote,
   services,
   openingHours,
   catchmentVillages,
@@ -50,7 +50,7 @@ import {
     <section class="dv-hero" aria-labelledby="dv-hero-title">
       <div class="dv-hero-copy">
         <p class="dv-kicker">8 Railway Street · Newcastle, Co. Down</p>
-        <h1 id="dv-hero-title">Your local vets, for every paw in South Down.</h1>
+        <h1 id="dv-hero-title">Your local vets, for every paw in the Mournes.</h1>
         <p class="dv-hero-lede">
           An independent, small-animal clinic for the dogs, cats and small pets
           of Newcastle and the villages around the Mournes. One number reaches a
@@ -152,11 +152,9 @@ import {
     </section>
 
     <section class="dv-goodbye" aria-labelledby="dv-goodbye-title">
+      <DvGlyph name="goodbye" class="dv-goodbye-glyph" />
       <div>
         <h2 class="dv-goodbye-title" id="dv-goodbye-title">When the time comes</h2>
-        <blockquote cite={bereavementQuote.source}>
-          <p>“{bereavementQuote.text}.”</p>
-        </blockquote>
         <p>
           Saying goodbye is the hardest day of caring for a pet. We're here for
           it too, whenever you need us.
@@ -166,36 +164,40 @@ import {
     </section>
 
     <section class="dv-visit" id="visit" aria-labelledby="dv-visit-title">
-      <div class="dv-visit-card">
+      <div class="dv-visit-info">
         <p class="dv-kicker">Visit us</p>
         <h2 class="dv-h2" id="dv-visit-title">8 Railway Street, Newcastle</h2>
-        <address>
-          Donard Veterinary Clinic<br />
-          8 Railway Street<br />
-          Newcastle, Co Down BT33 0AL
-        </address>
-        <p class="dv-visit-contact">
-          <a href={clinicPhoneHref}>{clinicPhone}</a>
-          <a href={`mailto:${clinicEmail}`}>{clinicEmail}</a>
+        <p class="dv-visit-lede">
+          We look after pets from Newcastle and the villages around the Mournes, including
+          {" "}{catchmentVillages.map((v) => v.name).join(", ")}.
         </p>
-        <a class="dv-btn dv-btn--ghost" href={directionsUrl} rel="external">Get directions</a>
+        <div class="dv-visit-cols">
+          <div>
+            <h3>Find us</h3>
+            <address>
+              Donard Veterinary Clinic<br />
+              8 Railway Street<br />
+              Newcastle, Co Down<br />
+              BT33 0AL
+            </address>
+            <p class="dv-visit-contact">
+              <a href={clinicPhoneHref}>{clinicPhone}</a>
+              <a href={`mailto:${clinicEmail}`}>{clinicEmail}</a>
+            </p>
+            <a class="dv-btn dv-btn--ghost" href={directionsUrl} rel="external">Get directions</a>
+          </div>
+          <div>
+            <h3>Opening hours</h3>
+            <dl>
+              {openingHours.map((row) => (
+                <div><dt>{row.days}</dt><dd>{row.hours}</dd></div>
+              ))}
+            </dl>
+            <p class="dv-small">Consultations throughout the day, by appointment.</p>
+          </div>
+        </div>
       </div>
-      <div class="dv-visit-hours">
-        <h3>Opening hours</h3>
-        <dl>
-          {openingHours.map((row) => (
-            <div><dt>{row.days}</dt><dd>{row.hours}</dd></div>
-          ))}
-        </dl>
-        <p class="dv-small">Consultations throughout the day, by appointment.</p>
-      </div>
-      <div class="dv-visit-area">
-        <h3>Close to home</h3>
-        <p>
-          We look after pets from Newcastle and across South Down, including
-          {" "}{catchmentVillages.join(", ")}.
-        </p>
-      </div>
+      <DvAreaMap />
     </section>
   </main>
 

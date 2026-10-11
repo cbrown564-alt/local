@@ -495,6 +495,9 @@
 
 .dv-goodbye {
   display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+  align-items: start;
   max-width: calc(var(--dv-max) - 2 * var(--dv-gutter));
   margin: clamp(16px, 3vw, 32px) auto;
   padding: clamp(28px, 4vw, 48px);
@@ -505,55 +508,106 @@
 @media (max-width: 1228px) {
   .dv-goodbye { margin-inline: var(--dv-gutter); }
 }
+.dv-goodbye .dv-goodbye-glyph {
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #a9cbd4;
+}
 .dv-goodbye-title {
-  margin: 0 0 14px;
-  font-family: var(--dv-sans) !important;
-  font-size: 0.74rem;
-  font-weight: 600 !important;
-  letter-spacing: 0.16em !important;
-  text-transform: uppercase;
-  color: #9cc4cf !important;
+  margin: 0 0 10px;
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  line-height: 1.15;
+  color: #fff !important;
 }
-.dv-goodbye blockquote { margin: 0 0 12px; }
-.dv-goodbye blockquote p {
-  margin: 0;
-  font-family: var(--dv-serif);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1.22;
-  color: #fff;
-}
-.dv-goodbye > div > p { max-width: 40rem; margin: 0 0 14px; }
+.dv-goodbye p { max-width: 40rem; margin: 0 0 16px; font-size: 1.06rem; }
 .dv-goodbye .dv-link { color: #fff !important; text-decoration-color: rgba(255, 255, 255, 0.45); }
 
-/* ---------- visit ---------- */
+/* ---------- visit + area map ---------- */
 
 .dv-visit {
   display: grid;
-  grid-template-columns: 1fr 1.25fr 1fr;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
   max-width: var(--dv-max);
   margin: 0 auto;
   padding: clamp(32px, 5vw, 64px) var(--dv-gutter);
   scroll-margin-top: 72px;
 }
-.dv-visit > div {
-  padding: 24px;
-  border-radius: var(--dv-radius);
-  background: #fff;
-  border: 1px solid var(--dv-mist-2);
+.dv-visit .dv-h2 { margin-bottom: 12px; }
+.dv-visit-lede { margin: 0 0 28px; max-width: 34rem; color: var(--dv-muted); }
+.dv-visit-cols { display: grid; gap: 0; max-width: 34rem; }
+.dv-visit-cols > div { padding: 22px 0; border-top: 1px solid var(--dv-mist-2); }
+.dv-visit-cols > div:first-child {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  gap: 4px 24px;
 }
-.dv-visit-card { background: var(--dv-mist) !important; border: 0 !important; }
-.dv-visit-card .dv-h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 14px; }
+.dv-visit-cols > div:first-child h3 { grid-column: 1 / -1; }
+.dv-visit-cols > div:first-child .dv-btn { grid-column: 1 / -1; justify-self: start; }
+.dv-visit h3 { margin: 0 0 12px; font-size: 1.2rem; }
 .dv-visit address { font-style: normal; margin-bottom: 14px; }
 .dv-visit-contact { display: grid; gap: 4px; margin: 0 0 18px; font-weight: 600; }
-.dv-visit h3 { margin: 0 0 12px; font-size: 1.2rem; }
 .dv-visit dl { margin: 0 0 12px; display: grid; gap: 6px; }
 .dv-visit dl > div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--dv-mist-2); }
 .dv-visit dt { font-weight: 600; }
 .dv-visit dd { margin: 0; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.dv-visit-area p { margin: 0; color: var(--dv-muted); }
+
+.dv-map { margin: 0; }
+.dv-map svg { display: block; width: 100%; height: auto; }
+.dv-map figcaption { margin-top: 8px; font-size: 0.82rem; color: var(--dv-muted); }
+.dv-map-land { fill: #f3f7f6; }
+.dv-map-sea { fill: var(--dv-mist-2); }
+.dv-map-coast { fill: none; stroke: #fff; stroke-width: 3; }
+.dv-map-mournes { fill: #e2ecec; }
+.dv-map-peak { fill: var(--dv-slate); opacity: 0.55; }
+.dv-map-border { fill: none; stroke: var(--dv-mist-2); }
+.dv-map text { font-family: var(--dv-sans); }
+.dv-map-area {
+  font-family: var(--dv-serif) !important;
+  font-style: italic;
+  font-size: 22px;
+  fill: var(--dv-slate-d);
+}
+.dv-map-peak-label { font-size: 14px; fill: var(--dv-slate-d); }
+.dv-map-water {
+  font-family: var(--dv-serif) !important;
+  font-style: italic;
+  font-size: 18px;
+  fill: var(--dv-teal-d);
+  text-anchor: middle;
+  opacity: 0.8;
+}
+.dv-map-rings circle { fill: none; stroke: var(--dv-teal); stroke-opacity: 0.22; stroke-dasharray: 3 5; }
+.dv-map-village circle { fill: #fff; stroke: var(--dv-slate-d); stroke-width: 2; }
+.dv-map-village text {
+  font-size: 17px;
+  font-weight: 600;
+  fill: var(--dv-ink);
+  paint-order: stroke;
+  stroke: #f3f7f6;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.dv-map-practice > circle { fill: var(--dv-teal); }
+.dv-map-practice .dv-map-pulse { fill: var(--dv-teal); opacity: 0.18; }
+.dv-map-practice rect { fill: var(--dv-teal-ink); }
+.dv-map-practice-name { font-family: var(--dv-serif) !important; font-size: 20px; font-weight: 600; fill: #fff; }
+.dv-map-practice-street { font-size: 14.5px; fill: #b9d6de; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dv-map-pulse {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: dv-pulse 3.2s ease-out infinite;
+  }
+}
+@keyframes dv-pulse {
+  0% { transform: scale(0.6); opacity: 0.35; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
 
 /* ---------- footer + dock ---------- */
 
@@ -577,8 +631,8 @@
 @media (max-width: 1040px) {
   .dv-help-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dv-service-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .dv-visit { grid-template-columns: 1fr 1fr; }
-  .dv-visit-card { grid-column: 1 / -1; }
+  .dv-visit { grid-template-columns: 1fr; }
+  .dv-map { max-width: 640px; }
   .concept-donard-veterinary .dv-nav { display: none; }
 }
 
@@ -589,8 +643,9 @@
   .dv-hero h1 { font-size: clamp(2.1rem, 9vw, 2.8rem); }
   .dv-hero-lede { font-size: 1.05rem; }
   .dv-panel { grid-template-columns: 1fr; }
-  .dv-visit { grid-template-columns: 1fr; }
-    .dv-brand-sub { display: none; }
+  .dv-goodbye { grid-template-columns: 1fr; }
+  .dv-goodbye .dv-goodbye-glyph { width: 56px; height: 56px; }
+  .dv-brand-sub { display: none; }
   .dv-brand-mark { width: 52px; height: 39px; }
   /* the dock carries Call on phones, so the header keeps the name whole */
   .dv-top-call { display: none; }
@@ -627,7 +682,7 @@
   .dv-help-options { grid-template-columns: 1fr; }
   .dv-option { min-height: 84px; }
   .dv-service-list { grid-template-columns: 1fr; }
-  .dv-visit { grid-template-columns: 1fr; }
+  .dv-visit-cols > div:first-child { grid-template-columns: 1fr; }
   .dv-chip--pet { width: calc(50% - 5px); }
   .dv-brand-name { font-size: 0.98rem; }
 }

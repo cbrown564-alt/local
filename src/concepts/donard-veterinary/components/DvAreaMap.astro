@@ -1,0 +1,161 @@
+---
+/** Area map: the practice on Railway Street, the villages it names, the
+ *  Mournes and Dundrum Bay. Hand-drawn, not traced from any map product:
+ *  every point is projected from approximate WGS84 coordinates with a simple
+ *  equirectangular projection (longitude scaled by cos 54.2°), so relative
+ *  positions are real while the coast and massif outlines are simplified.
+ *  The village names are also in the text beside it, so this is aria-hidden
+ *  apart from a short label on the figure. */
+import { catchmentVillages, practiceLocation } from "../content";
+
+const W = 680;
+const H = 540;
+const LON0 = -6.2;
+const LAT0 = 54.31;
+const K = 2440; // px per degree of latitude
+const KX = K * Math.cos((54.2 * Math.PI) / 180);
+
+const px = (lon: number, lat: number) => [
+  +((lon - LON0) * KX).toFixed(1),
+  +((LAT0 - lat) * K).toFixed(1),
+] as const;
+
+/** Closed Catmull-Rom spline through [lon, lat] points, as an SVG path. */
+function smooth(points: ReadonlyArray<readonly [number, number]>, closed = true) {
+  const p = points.map(([lon, lat]) => px(lon, lat));
+  const n = p.length;
+  const at = (i: number) => (closed ? p[(i + n) % n] : p[Math.max(0, Math.min(n - 1, i))]);
+  let d = `M${p[0][0]} ${p[0][1]}`;
+  const last = closed ? n : n - 1;
+  for (let i = 0; i < last; i++) {
+    const [p0, p1, p2, p3] = [at(i - 1), at(i), at(i + 1), at(i + 2)];
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  return closed ? `${d} Z` : d;
+}
+
+// Coast from Tyrella round Dundrum Bay, past Newcastle, south to
+// Annalong and on towards Kilkeel. Simplified.
+const coast: ReadonlyArray<readonly [number, number]> = [
+  [-5.69, 54.23],
+  [-5.73, 54.238],
+  [-5.77, 54.249],
+  [-5.81, 54.25],
+  [-5.838, 54.256],
+  [-5.852, 54.248],
+  [-5.872, 54.229],
+  [-5.887, 54.211],
+  [-5.886, 54.192],
+  [-5.876, 54.166],
+  [-5.872, 54.138],
+  [-5.893, 54.104],
+  [-5.925, 54.083],
+  [-5.95, 54.075],
+];
+const coastLine = smooth(coast, false);
+const [endX, endY] = px(...coast[coast.length - 1]);
+const [startX, startY] = px(...coast[0]);
+const sea = `${coastLine} L${endX} ${H + 20} L${W + 20} ${H + 20} L${W + 20} ${startY} L${startX} ${startY} Z`;
+
+// The Mourne massif, roughly.
+const mournes = smooth([
+  [-6.09, 54.196],
+  [-6.02, 54.214],
+  [-5.95, 54.21],
+  [-5.905, 54.193],
+  [-5.892, 54.165],
+  [-5.9, 54.128],
+  [-5.94, 54.104],
+  [-6.02, 54.108],
+  [-6.1, 54.135],
+  [-6.13, 54.17],
+]);
+
+const peaks = [
+  [-5.9208, 54.1803], // Slieve Donard
+  [-5.9372, 54.1886], // Slieve Commedagh
+  [-5.9906, 54.183], // Slieve Bearnagh
+  [-5.9592, 54.1428], // Slieve Binnian
+  [-6.03, 54.15], // Slieve Muck, approx.
+].map(([lon, lat]) => px(lon, lat));
+const [donardX, donardY] = peaks[0];
+const [areaX, areaY] = px(-6.005, 54.162);
+const [bayX, bayY] = px(-5.772, 54.196);
+const [seaX, seaY] = px(-5.77, 54.13);
+
+// Label side per village so names clear each other and the practice.
+const side: Record<string, "r" | "l" | "t"> = {
+  Castlewellan: "l",
+  Dundrum: "r",
+  Bryansford: "l",
+  Clough: "r",
+  Annalong: "l",
+  Kilcoo: "t",
+  Hilltown: "t",
+};
+const villages = catchmentVillages.map((v) => {
+  const [x, y] = px(v.lon, v.lat);
+  return { name: v.name, x, y, side: side[v.name] ?? "r" };
+});
+
+const [cx, cy] = px(practiceLocation.lon, practiceLocation.lat);
+---
+
+<figure class="dv-map">
+  <svg viewBox={`0 0 ${W} ${H}`} aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="dv-map-frame"><rect width={W} height={H} rx="12" /></clipPath>
+      <pattern id="dv-map-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+        <path d="M0 0v7" stroke="var(--dv-hill-near)" stroke-width="1.2" />
+      </pattern>
+    </defs>
+    <g clip-path="url(#dv-map-frame)">
+      <rect class="dv-map-land" width={W} height={H} />
+
+      <path class="dv-map-mournes" d={mournes} />
+      <path d={mournes} fill="url(#dv-map-hatch)" opacity=".55" />
+      {peaks.map(([x, y]) => (
+        <path class="dv-map-peak" d={`M${x - 8} ${y + 6} L${x} ${y - 7} L${x + 8} ${y + 6} Z`} />
+      ))}
+      <text class="dv-map-area" x={areaX} y={areaY} text-anchor="middle">Mourne Mountains</text>
+      <text class="dv-map-peak-label" x={donardX - 10} y={donardY + 26} text-anchor="end">Slieve Donard</text>
+
+      <path class="dv-map-sea" d={sea} />
+      <path class="dv-map-coast" d={coastLine} />
+      <text class="dv-map-water" x={bayX} y={bayY}>Dundrum Bay</text>
+      <text class="dv-map-water" x={seaX} y={seaY}>Irish Sea</text>
+
+      <g class="dv-map-rings">
+        <circle cx={cx} cy={cy} r="70" />
+        <circle cx={cx} cy={cy} r="150" />
+        <circle cx={cx} cy={cy} r="240" />
+      </g>
+
+      {villages.map((v) => (
+        <g class="dv-map-village">
+          <circle cx={v.x} cy={v.y} r="5.5" />
+          <text
+            x={v.side === "r" ? v.x + 12 : v.side === "l" ? v.x - 12 : v.x}
+            y={v.side === "t" ? v.y - 13 : v.y + 6}
+            text-anchor={v.side === "r" ? "start" : v.side === "l" ? "end" : "middle"}
+          >{v.name}</text>
+        </g>
+      ))}
+
+      <g class="dv-map-practice">
+        <circle class="dv-map-pulse" cx={cx} cy={cy} r="16" />
+        <circle cx={cx} cy={cy} r="9" />
+        <circle cx={cx} cy={cy} r="3.2" fill="#fff" />
+        <g transform={`translate(${cx + 20} ${cy - 28})`}>
+          <rect width="172" height="56" rx="8" />
+          <text x="14" y="24" class="dv-map-practice-name">Newcastle</text>
+          <text x="14" y="44" class="dv-map-practice-street">8 Railway Street</text>
+        </g>
+      </g>
+    </g>
+    <rect class="dv-map-border" x=".5" y=".5" width={W - 1} height={H - 1} rx="12" />
+  </svg>
+  <figcaption>Positions approximate; coast and mountains simplified.</figcaption>
+</figure>

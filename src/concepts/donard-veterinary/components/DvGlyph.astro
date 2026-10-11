@@ -88,4 +88,24 @@ const { name, class: className } = Astro.props;
       <path d="M8.4 10.5h7.2M12 6.9c-1.5 1.9-1.5 5.3 0 7.2M12 6.9c1.5 1.9 1.5 5.3 0 7.2M9 17.5h6" />
     </>
   )}
+  {name === "goodbye" && (
+    // A trail of prints walking away, fading. Filled rather than stroked:
+    // outlined toes at this size read as bubbles.
+    <g fill="currentColor" stroke="none">
+      {[
+        { x: 2.5, y: 19.5, r: 32, o: 1 },
+        { x: 8.5, y: 9.5, r: 40, o: 0.72 },
+        { x: 15.5, y: 15.5, r: 32, o: 0.5 },
+        { x: 21.5, y: 5, r: 40, o: 0.3 },
+      ].map((p) => (
+        <g transform={`translate(${p.x} ${p.y}) rotate(${p.r}) scale(.42)`} opacity={p.o}>
+          <ellipse cx="0" cy="5" rx="6.2" ry="5.2" />
+          <ellipse cx="-6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(-20 -6.6 -2.6)" />
+          <ellipse cx="-2.4" cy="-7" rx="2.4" ry="3.2" />
+          <ellipse cx="2.4" cy="-7" rx="2.4" ry="3.2" />
+          <ellipse cx="6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(20 6.6 -2.6)" />
+        </g>
+      ))}
+    </g>
+  )}
 </svg>
