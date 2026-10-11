@@ -183,7 +183,7 @@ const failedDelivery = await invoke(
 );
 assert.equal(failedDelivery.statusCode, 503);
 assert.deepEqual(failedDelivery.payload, {
-  error: "The request service is temporarily unavailable. Please email cbrown564@gmail.com instead.",
+  error: "The request service is temporarily unavailable. Please email hello@mournemade.co.uk instead.",
 });
 
 /* A failed delivery is a lead that was typed and lost, so it has to reach

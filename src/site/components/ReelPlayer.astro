@@ -72,7 +72,6 @@ const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
 </section>
 
 <script>
-  import { track } from "@vercel/analytics";
 
   document.querySelectorAll<HTMLElement>("[data-reel-player]").forEach((player) => {
     const video = player.querySelector<HTMLVideoElement>("[data-reel-video]");
@@ -80,8 +79,6 @@ const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
     if (!video || !button) return;
 
     let loaded = false;
-    let tracked = false;
-    const slug = player.dataset.reelPlayer ?? "unknown";
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const loadSources = () => {
@@ -95,10 +92,6 @@ const webpPoster = poster.replace(/\.[^/.]+$/, "-1265.webp");
 
     const play = async () => {
       loadSources();
-      if (!tracked) {
-        track("reel_play", { slug });
-        tracked = true;
-      }
       try {
         await video.play();
         video.controls = true;

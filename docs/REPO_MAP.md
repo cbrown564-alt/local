@@ -35,7 +35,9 @@ Where things live after the A→D restructure (31 July 2026).
 | `docs/` | DESIGN, MEDIA_CAPTURE, CONCEPT_DESIGN_REVIEW, REVIEW, ADRs (0006 is current civic-map decision), archive. Software-factory research: `docs/software-factory-proposals.md`. Living decision index: `docs/decision-register.md`. |
 | `tools/` | Capture, media, check, test, print, pipeline scripts. |
 | `.scratch/` | Probes, print PDFs, journey renders — not committed. |
-| `api/` | Vercel request function. |
+| `api/` | Shared request validation/email handler and Vercel fallback. |
+| `deploy/` | Cloudflare Worker and persistent request counter. |
+| `deploy-tests/` | Workers-runtime verification. |
 
 ## Root control-plane docs (stay at root)
 

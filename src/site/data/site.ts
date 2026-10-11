@@ -2,7 +2,7 @@ export const siteDetails = {
   name: "Mourne Made",
   founder: "Conor Brown",
   founderFirstName: "Conor",
-  email: "cbrown564@gmail.com",
-  emailHref: "mailto:cbrown564@gmail.com",
+  email: "hello@mournemade.co.uk",
+  emailHref: "mailto:hello@mournemade.co.uk",
   location: "Dundrum, County Down",
 } as const;
