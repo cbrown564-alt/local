@@ -19,6 +19,12 @@ import {
   catchmentVillages,
   directionsUrl,
 } from "./content";
+
+const tasks = [
+  { id: "book", glyph: "book", title: "Book an appointment", sub: "We'll ring to agree a time" },
+  { id: "prescription", glyph: "prescription", title: "Repeat prescription", sub: "Order your pet's usual medicine" },
+  { id: "advice", glyph: "advice", title: "Ask a vet online", sub: "Free, any hour, with VidiVet" },
+] as const;
 ---
 
 <ConceptLayout
@@ -68,66 +74,74 @@ import {
 
     <section class="dv-help" id="help" aria-labelledby="dv-help-title">
       <h2 class="dv-h2" id="dv-help-title">How can we help?</h2>
-      <div class="dv-help-options">
-        <button class="dv-option dv-option--urgent" type="button" aria-expanded="false" aria-controls="urgent" data-dv-option="urgent">
-          <DvGlyph name="call" />
-          <span><strong>My pet needs help now</strong><small>Call us straight away</small></span>
-        </button>
-        <button class="dv-option" type="button" aria-expanded="false" aria-controls="book" data-dv-option="book">
-          <DvGlyph name="book" />
-          <span><strong>Book an appointment</strong><small>We'll ring to confirm a time</small></span>
-        </button>
-        <button class="dv-option" type="button" aria-expanded="false" aria-controls="prescription" data-dv-option="prescription">
-          <DvGlyph name="prescription" />
-          <span><strong>Repeat prescription</strong><small>Order your pet's usual medicine</small></span>
-        </button>
-        <button class="dv-option" type="button" aria-expanded="false" aria-controls="advice" data-dv-option="advice">
-          <DvGlyph name="advice" />
-          <span><strong>Not sure? Ask a vet online</strong><small>Free 24/7 with VidiVet</small></span>
-        </button>
+
+      <div class="dv-urgent" id="urgent">
+        <DvGlyph name="call" />
+        <div class="dv-urgent-copy">
+          <h3>Unwell or injured right now?</h3>
+          <p>
+            Call us straight away and we'll advise you until you can get here.
+            Out of hours, the same number puts you through to the on-call vet.
+          </p>
+        </div>
+        <a class="dv-btn dv-btn--urgent dv-btn--big" href={clinicPhoneHref}>Call {clinicPhone}</a>
       </div>
 
-      <div class="dv-panel dv-panel--urgent" id="urgent" role="region" aria-label="My pet needs help now" hidden>
-        <div class="dv-panel-main">
-          <h3>Call us now on <a href={clinicPhoneHref}>{clinicPhone}</a></h3>
-          <p>
-            Phone the clinic straight away and we'll give you advice over the
-            phone until you can get here with your pet.
-          </p>
-          <p>
-            <strong>Outside opening hours, ring the same number.</strong> You'll be
-            diverted to the on-call vet, so there's no other number to find.
-          </p>
-          <a class="dv-btn dv-btn--urgent dv-btn--big" href={clinicPhoneHref}>Call {clinicPhone}</a>
-        </div>
-        <aside class="dv-panel-side">
-          <p><strong>Not sure it's an emergency?</strong></p>
-          <p>Send a photo or a message through VidiVet and a vet will reply within minutes.</p>
-          <button class="dv-link" type="button" data-dv-open="advice">Ask a vet online →</button>
+      <div class="dv-tasks">
+        {tasks.map((task) => (
+          <button class="dv-task" type="button" aria-expanded="false" aria-controls={task.id} data-dv-option={task.id}>
+            <DvGlyph name={task.glyph} />
+            <span><strong>{task.title}</strong><small>{task.sub}</small></span>
+            <svg class="dv-task-chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        ))}
+      </div>
+
+      <div class="dv-panel" id="book" role="region" aria-labelledby="dv-book-title" hidden>
+        <DvBookForm />
+        <aside class="dv-panel-aside" aria-label="What happens next">
+          <h4>What happens next</h4>
+          <ol class="dv-next">
+            <li>Send us your request.</li>
+            <li>We ring you back to agree a time.</li>
+            <li>Come and see us at 8 Railway Street.</li>
+          </ol>
+          <p class="dv-aside-note">Unwell right now? Please <a href={clinicPhoneHref}>call {clinicPhone}</a> instead.</p>
         </aside>
       </div>
 
-      <div class="dv-panel" id="book" role="region" aria-label="Book an appointment" hidden>
-        <DvBookForm />
-      </div>
-
-      <div class="dv-panel" id="prescription" role="region" aria-label="Repeat prescription" hidden>
+      <div class="dv-panel" id="prescription" role="region" aria-labelledby="dv-rx-title" hidden>
         <DvPrescriptionForm />
+        <aside class="dv-panel-aside" aria-label="What happens next">
+          <h4>What happens next</h4>
+          <ol class="dv-next">
+            <li>Tell us the pet and the medicine.</li>
+            <li>We get it ready and give you a ring.</li>
+            <li>Collect it from 8 Railway Street.</li>
+          </ol>
+          <p class="dv-aside-note">Have the packaging to hand: the name and strength on the label help us get it right.</p>
+        </aside>
       </div>
 
-      <div class="dv-panel" id="advice" role="region" aria-label="Ask a vet online" hidden>
-        <div class="dv-panel-main">
-          <h3>Free vet advice, any hour</h3>
+      <div class="dv-panel" id="advice" role="region" aria-labelledby="dv-advice-title" hidden>
+        <div class="dv-advice">
+          <h3 id="dv-advice-title">Free advice from a vet, any hour</h3>
           <p>
             Our clients get free 24/7 access to qualified vets through the
-            VidiVet app. Send photos, videos or a message about what's worrying
-            you, and a vet will reply within minutes to help you decide what to
-            do next — including whether your pet needs to come in.
+            VidiVet app. If you're not sure whether something needs a visit,
+            ask there first.
           </p>
-          <a class="dv-btn dv-btn--primary" href={vidivetUrl} rel="external">Register for VidiVet</a>
+          <ul class="dv-checks">
+            <li>Send photos, video or a message about what's worrying you</li>
+            <li>A vet replies within minutes</li>
+            <li>They'll help you decide what to do next, including whether to come in</li>
+          </ul>
+          <a class="dv-btn dv-btn--primary dv-btn--big" href={vidivetUrl} rel="external">Register for VidiVet</a>
         </div>
-        <aside class="dv-panel-side">
-          <p><strong>If it can't wait,</strong> don't message — call us on <a href={clinicPhoneHref}>{clinicPhone}</a>.</p>
+        <aside class="dv-panel-aside" aria-label="If it can't wait">
+          <h4>If it can't wait</h4>
+          <p class="dv-aside-lead">Don't message, call us.</p>
+          <a class="dv-btn dv-btn--urgent" href={clinicPhoneHref}>Call {clinicPhone}</a>
         </aside>
       </div>
     </section>

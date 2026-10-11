@@ -1,136 +1,127 @@
 ---
 /** Appointment request. The live site's Book Appointments page is empty, so
  *  this asks only what the team needs to ring back: which pet, what it's for,
- *  when suits, and who to call. Preview only — it validates and confirms but
- *  sends nothing (see the script). */
+ *  roughly when, and who to call. The call back settles the exact time, so
+ *  there's no date picker to fight with. Preview only — it validates and
+ *  confirms but sends nothing (see form-kit.ts). */
 import DvTrioParts from "./DvTrioParts.astro";
-import { bookingReasons, clinicPhone, clinicPhoneHref } from "../content";
+import DvFormDone from "./DvFormDone.astro";
+import { bookingReasons } from "../content";
 
 const pets = [
   { value: "Dog", view: "8 12 100 88", part: "dog" as const },
   { value: "Cat", view: "90 34 54 54", part: "cat" as const },
   { value: "Rabbit", view: "72 80 76 76", part: "rabbit" as const },
 ];
-const days = ["First available", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const times = ["Any time", "Mornings", "Afternoons"];
 ---
 
-<form class="dv-form" data-dv-form="book" novalidate>
+<form class="dv-form" data-dv-form="book" novalidate aria-labelledby="dv-book-title">
   <div class="dv-form-head">
-    <h3>Book an appointment</h3>
-    <p>Tell us a little and we'll ring you back to confirm a time. If your pet is unwell right now, please <a href={clinicPhoneHref}>call {clinicPhone}</a> instead.</p>
+    <h3 id="dv-book-title">Book an appointment</h3>
+    <p>Four quick questions, then we'll ring you to agree a time.</p>
   </div>
 
-  <fieldset class="dv-field">
-    <legend>Who's it for?</legend>
-    <div class="dv-chips dv-chips--pets">
-      {pets.map((pet, i) => (
+  <div class="dv-form-body" data-dv-body>
+    <fieldset class="dv-field" aria-describedby="dv-book-err-pet">
+      <legend><span class="dv-step" aria-hidden="true">1</span>Who's it for?</legend>
+      <p class="dv-field-error" id="dv-book-err-pet" data-dv-error hidden>Choose the kind of pet.</p>
+      <div class="dv-chips dv-chips--pets">
+        {pets.map((pet, i) => (
+          <label class="dv-chip dv-chip--pet">
+            <input type="radio" name="pet" value={pet.value} required={i === 0} />
+            <svg viewBox={pet.view} aria-hidden="true"><DvTrioParts part={pet.part} /></svg>
+            <span>{pet.value}</span>
+          </label>
+        ))}
         <label class="dv-chip dv-chip--pet">
-          <input type="radio" name="pet" value={pet.value} required={i === 0} />
-          <svg viewBox={pet.view} aria-hidden="true"><DvTrioParts part={pet.part} /></svg>
-          <span>{pet.value}</span>
+          <input type="radio" name="pet" value="Other small pet" />
+          <svg viewBox="-12 -13 24 26" aria-hidden="true" class="dv-chip-paw">
+            <ellipse cx="0" cy="5" rx="6.2" ry="5.2" />
+            <ellipse cx="-6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(-20 -6.6 -2.6)" />
+            <ellipse cx="-2.4" cy="-7" rx="2.4" ry="3.2" />
+            <ellipse cx="2.4" cy="-7" rx="2.4" ry="3.2" />
+            <ellipse cx="6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(20 6.6 -2.6)" />
+          </svg>
+          <span>Other</span>
         </label>
-      ))}
-      <label class="dv-chip dv-chip--pet">
-        <input type="radio" name="pet" value="Other small pet" />
-        <svg viewBox="-12 -13 24 26" aria-hidden="true" class="dv-chip-paw">
-          <ellipse cx="0" cy="5" rx="6.2" ry="5.2" />
-          <ellipse cx="-6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(-20 -6.6 -2.6)" />
-          <ellipse cx="-2.4" cy="-7" rx="2.4" ry="3.2" />
-          <ellipse cx="2.4" cy="-7" rx="2.4" ry="3.2" />
-          <ellipse cx="6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(20 6.6 -2.6)" />
-        </svg>
-        <span>Other small pet</span>
+      </div>
+      <label class="dv-input dv-input--short">
+        <span>Their name <small>(optional)</small></span>
+        <input type="text" name="petName" autocomplete="off" />
       </label>
-    </div>
-    <label class="dv-input dv-input--inline">
-      <span>Their name <small>(optional)</small></span>
-      <input type="text" name="petName" autocomplete="off" />
-    </label>
-  </fieldset>
+    </fieldset>
 
-  <fieldset class="dv-field">
-    <legend>What's it for?</legend>
-    <div class="dv-chips">
-      {bookingReasons.map((reason, i) => (
-        <label class="dv-chip">
-          <input type="radio" name="reason" value={reason} required={i === 0} />
-          <span>{reason}</span>
+    <fieldset class="dv-field" aria-describedby="dv-book-err-reason">
+      <legend><span class="dv-step" aria-hidden="true">2</span>What's it for?</legend>
+      <p class="dv-field-error" id="dv-book-err-reason" data-dv-error hidden>Choose what the visit is for.</p>
+      <div class="dv-chips">
+        {bookingReasons.map((reason, i) => (
+          <label class="dv-chip">
+            <input type="radio" name="reason" value={reason} required={i === 0} />
+            <span>{reason}</span>
+          </label>
+        ))}
+      </div>
+      <details class="dv-note">
+        <summary>Add a note <small>(optional)</small></summary>
+        <label class="dv-input">
+          <span class="dv-visually-hidden">Anything we should know?</span>
+          <textarea name="notes" rows="3" placeholder="Anything we should know before we call?"></textarea>
         </label>
-      ))}
-    </div>
-    <label class="dv-input">
-      <span>Anything we should know? <small>(optional)</small></span>
-      <textarea name="notes" rows="2"></textarea>
-    </label>
-  </fieldset>
+      </details>
+    </fieldset>
 
-  <fieldset class="dv-field">
-    <legend>When suits you?</legend>
-    <div class="dv-row">
-      <label class="dv-input">
-        <span>Day</span>
-        <select name="day">
-          {days.map((day) => <option>{day}</option>)}
-        </select>
-      </label>
-      <div class="dv-chips dv-chips--tight" role="radiogroup" aria-label="Time of day">
-        {["Morning", "Afternoon", "Any time"].map((time) => (
+    <fieldset class="dv-field">
+      <legend><span class="dv-step" aria-hidden="true">3</span>When suits you?</legend>
+      <div class="dv-chips">
+        {times.map((time) => (
           <label class="dv-chip">
             <input type="radio" name="time" value={time} checked={time === "Any time"} />
             <span>{time}</span>
           </label>
         ))}
       </div>
+    </fieldset>
+
+    <fieldset class="dv-field" aria-describedby="dv-book-err-you">
+      <legend><span class="dv-step" aria-hidden="true">4</span>Who should we call?</legend>
+      <p class="dv-field-error" id="dv-book-err-you" data-dv-error hidden>Please give us your name and a phone number.</p>
+      <div class="dv-row">
+        <label class="dv-input">
+          <span>Your name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="dv-input">
+          <span>Phone number</span>
+          {/* HTML `pattern` compiles with the regex `v` flag, where a bare `-`,
+              `(` or `)` in a class is a syntax error and the pattern is then
+              silently ignored — hence the escapes. */}
+          <input type="tel" name="phone" inputmode="tel" autocomplete="tel" pattern="[0-9\s+\-\(\)]{7,}" required />
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="dv-form-foot">
+      <button class="dv-btn dv-btn--primary dv-btn--big" type="submit">Request a call back</button>
     </div>
-  </fieldset>
-
-  <fieldset class="dv-field">
-    <legend>Who should we call?</legend>
-    <div class="dv-row">
-      <label class="dv-input">
-        <span>Your name</span>
-        <input type="text" name="name" autocomplete="name" required />
-      </label>
-      <label class="dv-input">
-        <span>Phone number</span>
-        {/* HTML `pattern` compiles with the regex `v` flag, where a bare `-`,
-            `(` or `)` in a class is a syntax error and the pattern is then
-            silently ignored — hence the escapes. */}
-        <input type="tel" name="phone" inputmode="tel" autocomplete="tel" pattern="[0-9\s+\-\(\)]{7,}" required />
-      </label>
-    </div>
-  </fieldset>
-
-  <p class="dv-form-error" data-dv-error role="alert" hidden>Please choose your pet and what the visit is for, and give us a name and phone number.</p>
-  <button class="dv-btn dv-btn--primary dv-btn--big" type="submit">Request appointment</button>
-
-  <div class="dv-done" data-dv-done role="status" tabindex="-1" hidden>
-    <strong data-dv-done-title>Thanks, we'll ring you soon.</strong>
-    <span data-dv-done-copy></span>
-    <small>Preview only: nothing has been sent.</small>
   </div>
+
+  <DvFormDone />
 </form>
 
 <script>
+  import { wireForm, firstName } from "../form-kit";
+
   document.querySelectorAll<HTMLFormElement>('[data-dv-form="book"]').forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const error = form.querySelector<HTMLElement>("[data-dv-error]")!;
-      if (!form.checkValidity()) {
-        error.hidden = false;
-        form.querySelector<HTMLElement>(":invalid")?.focus();
-        return;
-      }
-      error.hidden = true;
-      const data = new FormData(form);
+    wireForm(form, (data) => {
       const pet = String(data.get("petName") || "").trim() || `your ${String(data.get("pet")).toLowerCase()}`;
-      const name = String(data.get("name")).trim().split(/\s+/)[0];
-      const done = form.querySelector<HTMLElement>("[data-dv-done]")!;
-      done.querySelector("[data-dv-done-title]")!.textContent = `Thanks, ${name}. We'll ring you soon.`;
-      done.querySelector("[data-dv-done-copy]")!.textContent =
-        `We'll call ${data.get("phone")} to find a time for ${pet} (${String(data.get("reason")).toLowerCase()}), ${String(data.get("day")).toLowerCase()}, ${String(data.get("time")).toLowerCase()}.`;
-      done.hidden = false;
-      done.focus();
+      const time = String(data.get("time"));
+      const when = time === "Any time" ? "" : `, ideally in the ${time.toLowerCase().replace(/s$/, "")}`;
+      return {
+        title: `Thanks, ${firstName(data.get("name"))}. We'll ring you soon.`,
+        copy: `We'll call ${data.get("phone")} to find a time for ${pet} (${String(data.get("reason")).toLowerCase()})${when}.`,
+      };
     });
   });
 </script>
