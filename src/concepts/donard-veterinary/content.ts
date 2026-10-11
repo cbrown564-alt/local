@@ -17,8 +17,7 @@ export type GlyphName =
   | "surgery"
   | "dental"
   | "weight"
-  | "passport"
-  | "goodbye";
+  | "passport";
 
 export const clinicPhone = "028 4372 9414";
 export const clinicPhoneHref = "tel:+442843729414";
