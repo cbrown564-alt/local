@@ -17,6 +17,17 @@ south-west — double rules, three type registers, halos, cartouche), the life
 arc ends in a deliberately quiet goodbye card, the timeline keeps only
 documented beats, and the hero regains its Mourne backdrop.
 
+**11 October 2026: rebuilt as one page for the pitch.** The four routes
+(home, appointments, emergency, VidiVet) collapse into a single page at the
+private route, organised around four actions that open in place: call now,
+book, repeat prescription, ask a vet online. The line cast, safety net, life
+arc and catchment map are retired. The pets return as a flat-silhouette trio
+drawn after the practice's own window decal (all facing left, dog, cat and
+rabbit in the decal's postures), reused across the one motion hero, the
+action glyphs and the booking form. The palette follows the shopfront fascia:
+teal, slate and white. Both forms are previews and send nothing. PetsApp is not
+linked because no public URL for it is known.
+
 ## The shape of this business
 
 A **care** business: its product is emotion under management — the phone call

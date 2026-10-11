@@ -1,0 +1,76 @@
+---
+/** Repeat prescription request. The live form asks only for name, email and
+ *  phone — not which pet or which medicine — so the team has to call back
+ *  just to find out what's wanted. This asks for both up front. Preview only:
+ *  it validates and confirms but sends nothing. */
+---
+
+<form class="dv-form" data-dv-form="prescription" novalidate>
+  <div class="dv-form-head">
+    <h3>Repeat prescription</h3>
+    <p>For medicine your pet already takes. We'll be in touch when it's ready.</p>
+  </div>
+
+  <fieldset class="dv-field">
+    <legend>Which pet, which medicine?</legend>
+    <div class="dv-row">
+      <label class="dv-input">
+        <span>Your pet's name</span>
+        <input type="text" name="petName" autocomplete="off" required />
+      </label>
+      <label class="dv-input">
+        <span>Medicine</span>
+        <input type="text" name="medicine" autocomplete="off" required aria-describedby="dv-rx-hint" />
+        <small id="dv-rx-hint">As written on the label, with the strength if you have it.</small>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset class="dv-field">
+    <legend>How can we reach you?</legend>
+    <div class="dv-row">
+      <label class="dv-input">
+        <span>Your name</span>
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="dv-input">
+        <span>Phone number</span>
+        <input type="tel" name="phone" inputmode="tel" autocomplete="tel" pattern="[0-9\s+\-\(\)]{7,}" required />
+      </label>
+      <label class="dv-input">
+        <span>Email <small>(optional)</small></span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+    </div>
+  </fieldset>
+
+  <p class="dv-form-error" data-dv-error role="alert" hidden>Please tell us your pet's name, the medicine, and a name and phone number.</p>
+  <button class="dv-btn dv-btn--primary dv-btn--big" type="submit">Request prescription</button>
+
+  <div class="dv-done" data-dv-done role="status" tabindex="-1" hidden>
+    <strong data-dv-done-title>Thanks, that's with us.</strong>
+    <span data-dv-done-copy></span>
+    <small>Preview only: nothing has been sent.</small>
+  </div>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-dv-form="prescription"]').forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const error = form.querySelector<HTMLElement>("[data-dv-error]")!;
+      if (!form.checkValidity()) {
+        error.hidden = false;
+        form.querySelector<HTMLElement>(":invalid")?.focus();
+        return;
+      }
+      error.hidden = true;
+      const data = new FormData(form);
+      const done = form.querySelector<HTMLElement>("[data-dv-done]")!;
+      done.querySelector("[data-dv-done-copy]")!.textContent =
+        `We'll get ${String(data.get("medicine")).trim()} ready for ${String(data.get("petName")).trim()} and call ${data.get("phone")} when it's ready to collect from Railway Street.`;
+      done.hidden = false;
+      done.focus();
+    });
+  });
+</script>

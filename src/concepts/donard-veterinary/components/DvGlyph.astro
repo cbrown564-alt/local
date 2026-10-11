@@ -1,0 +1,139 @@
+---
+/** Glyph set for the Donard page, drawn to sit with the trio mark.
+ *
+ *  Action glyphs crop one animal's head out of the trio (DvTrioParts) and
+ *  pair it with an object: the dog with a ringing phone, the cat with a
+ *  calendar, the rabbit with a medicine bottle, the dog again on a phone
+ *  screen for online advice. Service glyphs are object marks in the same
+ *  teal/slate/white, each with a paw somewhere in it. All are decorative:
+ *  the label beside them carries the meaning. */
+import DvTrioParts from "./DvTrioParts.astro";
+
+import type { GlyphName } from "../content";
+
+interface Props {
+  name: GlyphName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+// Clip ids must be unique per instance on a page.
+const uid = `dvg-${name}-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg class:list={["dv-glyph", `dv-glyph--${name}`, className]} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id={uid}><circle cx="32" cy="32" r="30" /></clipPath>
+    <symbol id={`${uid}-paw`} viewBox="-10 -12 20 24" overflow="visible">
+      <ellipse cx="0" cy="5" rx="6.2" ry="5.2" />
+      <ellipse cx="-6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(-20 -6.6 -2.6)" />
+      <ellipse cx="-2.4" cy="-7" rx="2.4" ry="3.2" />
+      <ellipse cx="2.4" cy="-7" rx="2.4" ry="3.2" />
+      <ellipse cx="6.6" cy="-2.6" rx="2.4" ry="3.2" transform="rotate(20 6.6 -2.6)" />
+    </symbol>
+  </defs>
+  <circle class="dv-glyph-disc" cx="32" cy="32" r="30" />
+  <g clip-path={`url(#${uid})`}>
+    {name === "call" && (
+      <>
+        <g transform="translate(19 13) scale(.44)"><DvTrioParts part="dog" /></g>
+        <g fill="var(--dv-teal)" transform="translate(4 7) scale(.78)">
+          <path d="M6 4 h4 l2 5.4 -2.8 2 a14 14 0 0 0 6.6 6.6 l2 -2.8 5.4 2 v4 a2.6 2.6 0 0 1 -2.6 2.6 A20.6 20.6 0 0 1 3.4 6.6 A2.6 2.6 0 0 1 6 4 Z" />
+        </g>
+        <g fill="none" stroke="var(--dv-teal)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M17 6.5 a8 8 0 0 1 6 6" />
+          <path d="M17.5 1.5 a13 13 0 0 1 10 10" />
+        </g>
+      </>
+    )}
+    {name === "book" && (
+      <>
+        <g transform="translate(-30 -5) scale(.62)"><DvTrioParts part="cat" /></g>
+        <rect x="7" y="21" width="24" height="23" rx="4" fill="#fff" stroke="var(--dv-slate)" stroke-width="2" />
+        <path d="M7 25 a4 4 0 0 1 4 -4 h16 a4 4 0 0 1 4 4 v3 h-24 z" fill="var(--dv-teal)" />
+        <rect x="12" y="17.5" width="2.6" height="6" rx="1.3" fill="var(--dv-slate-d)" />
+        <rect x="23.4" y="17.5" width="2.6" height="6" rx="1.3" fill="var(--dv-slate-d)" />
+        <g fill="var(--dv-teal)" opacity=".3"><circle cx="12.5" cy="33" r="1.7" /><circle cx="19" cy="33" r="1.7" /><circle cx="25.5" cy="33" r="1.7" /><circle cx="12.5" cy="39" r="1.7" /></g>
+        <use href={`#${uid}-paw`} x="21" y="35" width="8" height="9.6" fill="var(--dv-teal)" />
+      </>
+    )}
+    {name === "prescription" && (
+      <>
+        <g transform="translate(-12 -21) scale(.5)"><DvTrioParts part="rabbit" /></g>
+        <rect x="7.5" y="16" width="17" height="6" rx="2" fill="var(--dv-teal)" />
+        <path d="M6.5 25 a3 3 0 0 1 3 -3 h13 a3 3 0 0 1 3 3 v22 a3 3 0 0 1 -3 3 h-13 a3 3 0 0 1 -3 -3 z" fill="var(--dv-mist-2)" stroke="var(--dv-slate)" stroke-width="2" />
+        <rect x="9.5" y="30" width="13" height="11" rx="1.5" fill="#fff" />
+        <use href={`#${uid}-paw`} x="12.4" y="31" width="7.2" height="8.6" fill="var(--dv-teal)" />
+      </>
+    )}
+    {name === "advice" && (
+      <>
+        <rect x="14" y="10" width="24" height="44" rx="5" fill="var(--dv-slate-d)" />
+        <rect x="16.5" y="15" width="19" height="34" rx="2" fill="var(--dv-mist-2)" />
+        <clipPath id={`${uid}-screen`}><rect x="16.5" y="15" width="19" height="34" rx="2" /></clipPath>
+        <g clip-path={`url(#${uid}-screen)`}>
+          <g transform="translate(14.5 27) scale(.2)"><DvTrioParts part="dog" /></g>
+        </g>
+        <path d="M34 13 h18 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-9 l-5 4 v-4 h-4 a4 4 0 0 1 -4 -4 v-8 a4 4 0 0 1 4 -4 z" fill="var(--dv-teal)" />
+        <g fill="#fff"><circle cx="38.5" cy="21" r="1.6" /><circle cx="43" cy="21" r="1.6" /><circle cx="47.5" cy="21" r="1.6" /></g>
+      </>
+    )}
+    {name === "routine" && (
+      <g transform="rotate(-40 32 32)">
+        <rect x="18" y="27" width="24" height="10" rx="2" fill="#fff" stroke="var(--dv-slate)" stroke-width="2" />
+        <rect x="20" y="29" width="12" height="6" rx="1" fill="var(--dv-teal)" opacity=".75" />
+        <path d="M42 32 h6 M48 28.5 v7" stroke="var(--dv-slate)" stroke-width="2.4" stroke-linecap="round" />
+        <path d="M18 32 h-9" stroke="var(--dv-slate-d)" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M28 27 v-3 M34 27 v-3" stroke="var(--dv-slate)" stroke-width="1.6" stroke-linecap="round" />
+      </g>
+    )}
+    {name === "diagnostics" && (
+      <>
+        <circle cx="28" cy="28" r="13" fill="#fff" stroke="var(--dv-slate-d)" stroke-width="3" />
+        <path d="M37.5 37.5 L48 48" stroke="var(--dv-slate-d)" stroke-width="5" stroke-linecap="round" />
+        <use href={`#${uid}-paw`} x="22" y="21" width="12" height="14.4" fill="var(--dv-teal)" />
+      </>
+    )}
+    {name === "surgery" && (
+      <g transform="rotate(-35 32 32)">
+        <rect x="12" y="24" width="40" height="16" rx="8" fill="var(--dv-mist-2)" stroke="var(--dv-slate)" stroke-width="2" />
+        <rect x="25" y="24" width="14" height="16" fill="#fff" stroke="var(--dv-slate)" stroke-width="2" />
+        <g fill="var(--dv-teal)"><circle cx="29" cy="29" r="1.2" /><circle cx="35" cy="29" r="1.2" /><circle cx="29" cy="35" r="1.2" /><circle cx="35" cy="35" r="1.2" /><circle cx="32" cy="32" r="1.2" /></g>
+      </g>
+    )}
+    {name === "dental" && (
+      <>
+        <path d="M22 14 C17 14 13 18 13 25 C13 31 16 34 17 40 C18 47 20 52 23.5 52 C27 52 27 42 32 42 C37 42 37 52 40.5 52 C44 52 46 47 47 40 C48 34 51 31 51 25 C51 18 47 14 42 14 C38 14 36 16.5 32 16.5 C28 16.5 26 14 22 14 Z" fill="#fff" stroke="var(--dv-slate)" stroke-width="2" stroke-linejoin="round" />
+        <path d="M20 22 C21 19.5 23 18.5 25 18.5" fill="none" stroke="var(--dv-teal)" stroke-width="2.4" stroke-linecap="round" />
+        <path d="M46 10 l1.4 3.2 3.2 1.4 -3.2 1.4 -1.4 3.2 -1.4 -3.2 -3.2 -1.4 3.2 -1.4 z" fill="var(--dv-teal)" />
+      </>
+    )}
+    {name === "weight" && (
+      <>
+        <rect x="12" y="20" width="40" height="30" rx="7" fill="#fff" stroke="var(--dv-slate)" stroke-width="2" />
+        <path d="M21 36 a11 11 0 0 1 22 0" fill="none" stroke="var(--dv-mist-2)" stroke-width="5" />
+        <path d="M21 36 a11 11 0 0 1 14.5 -10.4" fill="none" stroke="var(--dv-teal)" stroke-width="5" />
+        <path d="M32 36 L38 28" stroke="var(--dv-slate-d)" stroke-width="2" stroke-linecap="round" />
+        <circle cx="32" cy="36" r="2.2" fill="var(--dv-slate-d)" />
+        <use href={`#${uid}-paw`} x="27" y="8" width="10" height="12" fill="var(--dv-teal)" />
+      </>
+    )}
+    {name === "passport" && (
+      <>
+        <rect x="16" y="11" width="30" height="42" rx="3.5" fill="var(--dv-teal)" />
+        <rect x="16" y="11" width="5" height="42" rx="2" fill="#000" opacity=".15" />
+        <circle cx="33.5" cy="27" r="8" fill="none" stroke="#fff" stroke-width="1.6" />
+        <path d="M25.5 27 h16 M33.5 19 c-4 4 -4 12 0 16 M33.5 19 c4 4 4 12 0 16" fill="none" stroke="#fff" stroke-width="1.2" />
+        <use href={`#${uid}-paw`} x="29.5" y="39" width="8" height="9.6" fill="#fff" />
+      </>
+    )}
+    {name === "goodbye" && (
+      <g fill="var(--dv-slate)">
+        <use href={`#${uid}-paw`} x="9" y="38" width="12" height="14.4" transform="rotate(28 15 45)" />
+        <use href={`#${uid}-paw`} x="22" y="26" width="12" height="14.4" transform="rotate(34 28 33)" opacity=".75" />
+        <use href={`#${uid}-paw`} x="33" y="33" width="12" height="14.4" transform="rotate(28 39 40)" opacity=".55" />
+        <use href={`#${uid}-paw`} x="44" y="18" width="12" height="14.4" transform="rotate(34 50 25)" opacity=".3" />
+      </g>
+    )}
+  </g>
+</svg>

@@ -1,1402 +1,629 @@
-/* Donard Veterinary Clinic — independent concept design system.
-   Clinical blue and caring teal — drawn from the practice's fascia and logo
-   (Professional · Caring · Compassionate). The mountain motif in the concept
-   badge is studio work, not the practice's oval animal mark. */
+/* Donard Veterinary Clinic — one page, in the shopfront's own colours.
+   Teal and slate are sampled from the fascia and window film on 8 Railway
+   Street (the blue-teal sign, grey dog, white rabbit), not from the older
+   purple-and-sage web logo. */
 
 .concept-donard-veterinary {
-  --blue: #2a6b8f;
-  --blue-deep: #1e5270;
-  --sky: #a8d4e6;
-  --sky-soft: #e8f4f8;
-  --teal: #2f9d82;
-  --teal-deep: #22755f;
-  --ink: #1a3340;
-  --warm-white: #fcfaf7;
-  --hairline: rgba(42, 107, 143, 0.16);
-  --serif: "Fraunces", Georgia, serif;
-  --sans: "Karla", "Segoe UI", sans-serif;
-  --concept-accent: var(--teal);
-  --concept-focus: #164d6a;
-  --concept-nav-gap: clamp(16px, 2.2vw, 28px);
-  background: var(--warm-white);
-  color: var(--ink);
-  font-family: var(--sans);
+  --dv-teal: #1b7f99;
+  --dv-teal-2: #2a9bb3;
+  --dv-teal-d: #11586b;
+  --dv-teal-ink: #0c4352;
+  --dv-slate: #6f7c86;
+  --dv-slate-d: #4f5a63;
+  --dv-mist: #e8f2f4;
+  --dv-mist-2: #d3e7ec;
+  --dv-paper: #f7fafa;
+  --dv-ink: #1d2a30;
+  --dv-muted: #4c5c64;
+  --dv-blush: #f0b7ae;
+  --dv-urgent: #b4442f;
+  --dv-urgent-bg: #fbeeea;
+
+  /* trio colours */
+  --dv-dog: var(--dv-slate);
+  --dv-dog-ear: #57636c;
+  --dv-cat: var(--dv-teal);
+  --dv-cat-eye: #d7ecae;
+  --dv-rabbit: #ffffff;
+  /* the decal's white rabbit disappears on white, so marks on light
+     surfaces give it a pale slate instead */
+  --dv-rabbit-on-light: #a7bbc3;
+
+  /* hero scene */
+  --dv-sky-top: #dcedf1;
+  --dv-sky-low: #f4f9fa;
+  --dv-sun: #f6e3a6;
+  --dv-hill-far: #c4dde3;
+  --dv-hill-near: #a9cdd6;
+
+  --concept-accent: var(--dv-teal);
+  --concept-focus: var(--dv-teal-d);
+  --dv-radius: 22px;
+  --dv-gutter: clamp(16px, 4vw, 48px);
+  --dv-max: 1180px;
+
+  margin: 0;
+  background: var(--dv-paper);
+  color: var(--dv-ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
-/* Emergency strip */
-.dv-strip {
+.concept-donard-veterinary h1,
+.concept-donard-veterinary h2,
+.concept-donard-veterinary h3 {
+  font-family: "Figtree", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--dv-teal-ink);
+}
+
+.concept-donard-veterinary a { color: var(--dv-teal-d); }
+
+/* ---------- top bar ---------- */
+
+.concept-donard-veterinary > .dv-top {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   gap: 20px;
-  padding: 9px clamp(20px, 3.5vw, 44px);
-  background: var(--blue-deep);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  padding: 12px var(--dv-gutter);
+  background: color-mix(in srgb, var(--dv-paper) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--dv-mist-2);
 }
-.dv-strip a { color: #ffffff; text-decoration-color: var(--teal); text-underline-offset: 4px; }
-.dv-strip :focus-visible,
-.dv-appt-urgent :focus-visible {
-  outline-color: #ffffff;
-}
-.dv-strip-hours { font-weight: 400; letter-spacing: 0.02em; }
 
-/* Header
-   Shell defaults to space-between, which parks free space in *two* gutters
-   and lets the nav shrink until labels wrap. Pack brand + nav, put the only
-   flexible spacer before the actions, and never wrap chrome labels. */
-.dv-header {
-  height: 80px;
-  padding: 0 clamp(20px, 3.5vw, 44px);
-  gap: clamp(14px, 1.6vw, 22px);
-  background: var(--warm-white);
-  border-bottom: 1px solid var(--hairline);
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  --concept-nav-gap: clamp(14px, 1.5vw, 22px);
-}
 .dv-brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex: 0 0 auto;
-  max-width: 100%;
   text-decoration: none;
-  color: var(--ink);
+  color: inherit;
 }
-.dv-badge {
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  display: block;
-}
-.dv-brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.dv-brand-name {
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-}
+.dv-brand-mark,
+.dv-foot-mark,
+.dv-glyph,
+.dv-chip--pet svg { --dv-rabbit: var(--dv-rabbit-on-light); }
+.dv-brand-mark { width: 64px; height: 48px; flex: none; }
+.dv-brand-text { display: grid; line-height: 1.15; }
+.dv-brand-name { font-weight: 800; font-size: 1.08rem; color: var(--dv-teal-ink); }
 .dv-brand-sub {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-  white-space: nowrap;
-}
-.dv-nav {
-  flex: 0 0 auto;
-}
-.dv-nav a {
-  font-size: 15px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.dv-nav a:hover::after { right: 0; }
-.dv-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex: 0 0 auto;
-  margin-left: auto;
-}
-.dv-phone { font-size: 15px; font-weight: 700; text-decoration: none; color: var(--blue); white-space: nowrap; }
-.dv-book {
-  padding: 12px 18px;
-  border-radius: 999px;
-  /* teal-deep, not teal: white 15px text needs AA contrast (4.5:1) */
-  background: var(--teal-deep);
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 150ms ease, transform 150ms ease;
-}
-.dv-book:hover { background: var(--blue); transform: translateY(-1px); }
-
-/* Hero */
-.dv-hero {
-  position: relative;
-  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
-  display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: minmax(0, 1fr) auto;
-  overflow: hidden;
-}
-/* The Mournes drawn low behind the story panel. Clip to the left column
-   so the ridge stops at the care desk instead of vanishing under the
-   hours bar and reappearing in the rail. */
-.dv-hero-hills {
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: clamp(140px, 26%, 240px);
-  pointer-events: none;
-  clip-path: inset(0 45% 0 0);
-}
-.dv-hero-ridge {
-  fill: none;
-  stroke: var(--blue);
-  stroke-opacity: 0.28;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.dv-hero-ridge-tick {
-  fill: none;
-  stroke: var(--blue);
-  stroke-opacity: 0.2;
-  stroke-width: 1.4;
-  stroke-linecap: round;
-}
-.dv-hero-foot {
-  fill: none;
-  stroke: var(--blue);
-  stroke-opacity: 0.16;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-}
-.dv-care-desk { position: relative; z-index: 1; }
-.dv-story {
-  position: relative;
-  z-index: 1;
-  padding: clamp(38px, 5.5vh, 66px) clamp(26px, 3.6vw, 56px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.dv-kicker {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 20px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-}
-.dv-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--teal); }
-.dv-story h1 {
-  margin: 0 0 10px;
-  font-family: var(--serif);
-  font-size: clamp(50px, 5.4vw, 76px);
-  font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  color: var(--blue);
-  max-width: 12em;
-  text-wrap: balance;
-}
-.dv-story h1 em { font-style: italic; color: var(--teal-deep); }
-.dv-thesis {
-  margin: 0 0 16px;
-  max-width: 17em;
-  font-family: var(--serif);
-  font-size: clamp(24px, 2.5vw, 34px);
-  font-weight: 600;
-  line-height: 1.08;
-  color: var(--teal-deep);
-}
-.dv-lede {
-  margin: 0 0 30px;
-  max-width: 30em;
-  color: #4a6270;
-  font-size: 17px;
-  line-height: 1.6;
-}
-.dv-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.dv-cta {
-  padding: 15px 26px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 150ms ease, transform 150ms ease;
-}
-.dv-cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
-.dv-link {
-  color: var(--blue);
-  font-size: 15px;
-  font-weight: 700;
-  text-underline-offset: 6px;
-  text-decoration-color: var(--teal);
-}
-
-/* Care desk — the useful first decision in place of a cluttered street photo */
-.dv-care-desk {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--sky-soft);
-  color: var(--ink);
-}
-.dv-care-head {
-  min-height: 54px;
-  padding: 0 clamp(24px, 3vw, 40px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  border-bottom: 1px solid var(--hairline);
-}
-.dv-care-head p {
-  margin: 0;
-  color: var(--teal-deep);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.dv-care-head span { color: #5a7280; font-size: 12px; }
-.dv-care-body {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(28px, 4vh, 44px) clamp(24px, 3vw, 40px) 26px;
-}
-.dv-care-body h2 {
-  max-width: 8em;
-  margin: 0 0 clamp(18px, 2.5vh, 28px);
-  color: var(--blue);
-  font-family: var(--serif);
-  font-size: clamp(36px, 3.5vw, 52px);
-  font-weight: 600;
-  letter-spacing: -.02em;
-  line-height: .98;
-}
-.dv-care-options {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba(42, 107, 143, 0.38);
-}
-.dv-care-options a {
-  /* Grow to share spare height, but never shrink below the label copy —
-     min-height:0 + flex-basis:0 was stacking wrapped lines on the next row. */
-  flex: 1 1 auto;
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 16px;
-  padding: clamp(16px, 2.4vh, 30px) 0;
-  border-bottom: 1px solid var(--hairline);
-  color: var(--ink);
-  text-decoration: none;
-}
-.dv-care-options a:hover strong { color: var(--teal-deep); }
-.dv-care-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--teal-deep);
-  color: #fff;
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 600;
-}
-.dv-care-icon--urgent { background: var(--blue); }
-.dv-care-icon--online { background: #fff; color: var(--blue); font-family: var(--sans); font-size: 15px; }
-.dv-care-options strong { display: block; color: var(--blue); font-size: clamp(16px, 1.35vw, 19px); }
-.dv-care-options small {
-  display: block;
-  margin-top: 4px;
-  max-width: 28em;
-  color: #5a7280;
-  font-size: clamp(12px, 1.05vw, 14px);
-  line-height: 1.4;
-}
-.dv-care-options a > span:last-child {
-  font-size: 18px;
-  color: var(--blue);
-  line-height: 42px; /* keep the arrow optically centred with the icon */
-}
-.dv-care-hours {
-  padding: 14px clamp(24px, 3vw, 40px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: var(--blue);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 12px;
-}
-.dv-care-hours strong { color: #fff; }
-.dv-care-hours a { color: #fff; font-size: 15px; font-weight: 700; white-space: nowrap; }
-
-/* Appointment request form */
-.dv-request {
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-.dv-request h2 {
-  margin: 0 0 6px;
-  font-family: var(--serif);
-  font-size: clamp(26px, 2.4vw, 32px);
-  font-weight: 600;
-  color: var(--blue);
-}
-.dv-request > p { margin: 0 0 22px; color: #4a6270; font-size: 15px; line-height: 1.5; }
-.dv-request label {
-  display: block;
-  margin-bottom: 14px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--blue);
-}
-.dv-request input,
-.dv-request select {
-  width: 100%;
-  margin-top: 6px;
-  padding: 12px 14px;
-  border: 1px solid var(--hairline);
-  border-radius: 10px;
-  background: #ffffff;
-  color: var(--ink);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: normal;
-  text-transform: none;
-}
-.dv-request input:focus, .dv-request select:focus { outline: 3px solid var(--teal); outline-offset: 1px; }
-.dv-request-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.dv-request button {
-  width: 100%;
-  margin-top: 8px;
-  padding: 14px 18px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--teal-deep);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 150ms ease;
-}
-.dv-request button:hover { background: var(--blue); }
-.dv-request > small { display: block; margin-top: 14px; color: #7a6d85; font-size: 13px; text-align: left; }
-.dv-request > small a { color: var(--blue); }
-.dv-request-handoff {
-  display: grid;
-  gap: 6px;
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-left: 4px solid var(--teal);
-  border-radius: 10px;
-  background: var(--sky-soft);
-  color: #4a6270;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.dv-request-handoff[hidden] { display: none; }
-.dv-request-handoff strong { color: var(--blue); }
-.dv-request-handoff a {
-  justify-self: start;
-  margin-top: 4px;
-  color: var(--teal-deep);
-  font-weight: 700;
-  text-underline-offset: 3px;
-}
-
-/* Services rail */
-.dv-rail {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border-top: 1px solid var(--hairline);
-  background: var(--warm-white);
-}
-.dv-service {
-  padding: 16px 6px 18px;
-  text-align: center;
-  text-decoration: none;
-  color: var(--blue);
-  font-size: 13.5px;
-  font-weight: 700;
-  transition: color 150ms ease;
-}
-.dv-service:hover { color: var(--teal-deep); }
-.dv-service span { display: block; margin: 0 auto 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
-
-/* Entrance */
-@keyframes dv-rise { from { opacity: 0; transform: translateY(14px); } }
-/* Progressive collapse — shed density before labels wrap.
-   Phone is duplicated in the emergency strip, so it goes first. */
-@media (max-width: 1180px) {
-  .dv-nav-wide { display: none; }
-}
-
-@media (max-width: 1100px) {
-  .dv-phone { display: none; }
-  .dv-brand-sub { display: none; }
-  .dv-brand-name { font-size: 20px; }
-  .dv-header { --concept-nav-gap: 18px; gap: 16px; }
-}
-
-@media (max-width: 940px) {
-  .dv-strip { flex-direction: column; gap: 2px; text-align: center; }
-  .dv-header {
-    height: auto;
-    min-height: 64px;
-    padding-block: 12px;
-    flex-wrap: wrap;
-    row-gap: 10px;
-  }
-  .dv-brand-name { font-size: 18px; }
-  .dv-header-actions {
-    margin-left: 0;
-    flex: 1 0 100%;
-    justify-content: stretch;
-  }
-  .dv-book {
-    flex: 1;
-    text-align: center;
-  }
-  .dv-hero { grid-template-columns: 1fr; min-height: 0; }
-  .dv-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 32px; }
-  .dv-story h1 { max-width: none; font-size: clamp(36px, 9vw, 52px); }
-  .dv-lede { font-size: 16px; }
-  .dv-care-desk { grid-column: 1; grid-row: auto; order: 1; }
-  .dv-care-head { padding-inline: 22px; }
-  .dv-care-body { padding: 28px 22px 22px; }
-  .dv-care-body h2 { max-width: 10em; }
-  .dv-care-hours { padding-inline: 22px; align-items: flex-start; flex-direction: column; gap: 8px; }
-  .dv-rail { grid-column: 1; grid-row: auto; order: 2; grid-template-columns: repeat(2, 1fr); }
-  .dv-hero-hills { display: none; }
-}
-
-@media (max-width: 720px) {
-  .dv-nav { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dv-kicker, .dv-story h1, .dv-lede, .dv-actions, .dv-request { animation: none; }
-}
-
-/* ─── Appointments page ──────────────────────────────────────────────────── */
-.dv-appt-page {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3vw, 36px);
-  padding: 28px clamp(26px, 3.6vw, 56px) 56px;
-  max-width: 1180px;
-  margin-inline: auto;
-  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
-}
-.dv-appt-intro { max-width: 36em; }
-.dv-appt-intro .dv-kicker { margin-bottom: 14px; animation-delay: 0ms; }
-.dv-appt-intro h1 {
-  margin: 0 0 16px;
-  font-family: var(--serif);
-  font-size: clamp(40px, 3.8vw, 56px);
-  font-weight: 600;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: var(--blue);
-}
-.dv-appt-intro h1 em { font-style: italic; color: var(--teal-deep); }
-.dv-appt-lede {
-  margin: 0;
-  color: #4a6270;
-  font-size: 17px;
-  line-height: 1.55;
-  max-width: 38em;
-}
-
-.dv-appt-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: clamp(24px, 3.5vw, 40px);
-  align-items: start;
-}
-
-.dv-appt-form-col {
-  padding: 28px 28px 26px;
-  background: #ffffff;
-  border: 1px solid var(--hairline);
-  border-top: 5px solid var(--teal);
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(30, 82, 112, 0.1);
-}
-
-.dv-appt-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding-top: 4px;
-}
-.dv-appt-aside-title {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--blue);
-}
-.dv-appt-steps {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.dv-appt-steps li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: start;
-}
-.dv-appt-step-num {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  margin-top: 1px;
-  border-radius: 50%;
-  background: var(--sky-soft);
-  color: var(--teal-deep);
-  font-size: 13px;
-  font-weight: 800;
-}
-.dv-appt-steps strong {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--blue);
-  font-size: 15px;
-}
-.dv-appt-steps p {
-  margin: 0;
-  color: #4a6270;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.dv-appt-hours {
-  padding: 16px 18px;
-  background: var(--sky-soft);
-  border-radius: 12px;
-}
-.dv-appt-hours-title {
-  margin: 0 0 10px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--blue);
-}
-.dv-appt-hours ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.dv-appt-hours li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 13.5px;
-  color: #4a6270;
-}
-.dv-appt-hours li span:last-child {
-  font-weight: 700;
-  color: var(--blue);
-  white-space: nowrap;
-}
-
-.dv-appt-phone-pref {
-  margin: 0;
-  color: #4a6270;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.dv-appt-phone-pref a {
-  display: inline-block;
-  margin-left: 4px;
-  color: var(--teal-deep);
-  font-weight: 700;
-  text-decoration: none;
-}
-.dv-appt-phone-pref a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-/* Secondary urgent band — keeps #emergency-heading for deep links */
-.dv-appt-urgent {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) auto;
-  gap: 22px 32px;
-  align-items: center;
-  margin-top: 8px;
-  padding: 22px 24px;
-  background: var(--blue-deep);
-  border-radius: 14px;
-  color: #ffffff;
-}
-.dv-appt-urgent-label {
-  margin: 0 0 6px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #b8f0de;
-}
-.dv-appt-urgent-title {
-  margin: 0 0 8px;
-  font-family: var(--serif);
-  font-size: clamp(22px, 2.2vw, 28px);
-  font-weight: 600;
-  line-height: 1.15;
-  color: #ffffff;
-}
-.dv-appt-urgent-copy p:last-child {
-  margin: 0;
-  max-width: 42em;
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.9);
-}
-.dv-appt-urgent-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-.dv-appt-urgent .dv-link {
-  color: #b8f0de;
-}
-.dv-appt-urgent .dv-link:hover { color: #ffffff; }
-
-.dv-appt-intro { animation: dv-rise 440ms ease backwards; }
-.dv-appt-layout { animation: dv-rise 440ms 80ms ease backwards; }
-.dv-appt-urgent { animation: dv-rise 440ms 140ms ease backwards; }
-
-@media (max-width: 900px) {
-  .dv-appt-layout { grid-template-columns: 1fr; }
-  .dv-appt-urgent { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 560px) {
-  .dv-request-row { grid-template-columns: 1fr; }
-  .dv-appt-form-col { padding: 22px 18px 20px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dv-appt-intro,
-  .dv-appt-layout,
-  .dv-appt-urgent { animation: none; }
-}
-
-/* ─── Companion routes: emergency + VidiVet ──────────────────────────────── */
-.dv-route-page {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3vw, 36px);
-  padding: 28px clamp(26px, 3.6vw, 56px) 56px;
-  max-width: 920px;
-  margin-inline: auto;
-}
-.dv-route-page--branch {
-  max-width: 1040px;
-}
-.dv-route-page--branch .dv-net-branch {
-  margin-inline: auto;
-}
-.dv-route-intro { max-width: 34em; }
-.dv-route-intro .dv-kicker { margin-bottom: 14px; }
-.dv-route-intro h1 {
-  margin: 0 0 16px;
-  font-family: var(--serif);
-  font-size: clamp(40px, 3.8vw, 56px);
-  font-weight: 600;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: var(--blue);
-}
-.dv-route-intro h1 em { font-style: italic; color: var(--teal-deep); }
-.dv-route-lede {
-  margin: 0;
-  color: #4a6270;
-  font-size: 17px;
-  line-height: 1.55;
-}
-
-.dv-vidivet-panel {
-  padding: 28px 28px 26px;
-  background: #ffffff;
-  border: 1px solid var(--hairline);
-  border-top: 5px solid var(--teal);
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(30, 82, 112, 0.1);
-}
-.dv-vidivet-badge {
-  display: inline-block;
-  margin: 0 0 14px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--sky-soft);
-  color: var(--teal-deep);
-  font-size: 11px;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-.dv-vidivet-panel h2 {
-  margin: 0 0 14px;
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--blue);
-}
-.dv-vidivet-panel ul {
-  margin: 0 0 22px;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.dv-vidivet-panel li {
-  position: relative;
-  padding-left: 18px;
-  color: #4a6270;
-  font-size: 15px;
-  line-height: 1.5;
-}
-.dv-vidivet-panel li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--teal);
-}
-.dv-vidivet-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 22px;
+  color: var(--dv-teal);
 }
 
-.dv-vidivet-note {
-  padding: 22px 24px;
-  background: var(--blue-deep);
-  border-radius: 14px;
-  color: #ffffff;
-}
-.dv-vidivet-note h2 {
-  margin: 0 0 8px;
-  font-family: var(--serif);
-  font-size: 22px;
+.concept-donard-veterinary .dv-nav a {
   font-weight: 600;
-  color: #ffffff;
-}
-.dv-vidivet-note p {
-  margin: 0 0 16px;
-  max-width: 40em;
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  color: var(--dv-ink);
 }
 
-.dv-route-next {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.dv-route-next p {
-  margin: 0;
-  color: #4a6270;
-  font-size: 14.5px;
-}
-.dv-route-next a {
-  color: var(--teal-deep);
+.dv-top-call {
+  flex: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--dv-teal);
+  color: #fff !important;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
 }
-.dv-route-next a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dv-top-call:hover { background: var(--dv-teal-d); }
+.dv-top-call-label { opacity: 0.8; font-weight: 600; }
 
-.dv-route-intro { animation: dv-rise 440ms ease backwards; }
-.dv-route-page--branch .dv-net-branch,
-.dv-vidivet-panel { animation: dv-rise 440ms 60ms ease backwards; }
-.dv-vidivet-note { animation: dv-rise 440ms 120ms ease backwards; }
+/* ---------- shared bits ---------- */
 
-@media (max-width: 700px) {
-  .dv-vidivet-panel { padding: 22px 18px 20px; }
+.dv-kicker {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dv-teal);
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .dv-route-intro,
-  .dv-route-page--branch .dv-net-branch,
-  .dv-vidivet-panel,
-  .dv-vidivet-note { animation: none; }
-}
-
-/* Phone-format hint and the stale-draft warning (added 25 July 2026 with the
-   invalid-value state and the draft-invalidation fix). */
-.dv-request-hint {
-  display: block;
-  margin-top: 4px;
-  color: #5b4a68;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: normal;
-  text-transform: none;
-}
-.dv-request-stale {
-  margin: 12px 0 0;
-  padding: 11px 13px;
-  border-left: 3px solid var(--blue);
-  background: var(--sky-soft);
-  color: #164d6a;
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-.dv-request-stale strong { font-weight: 700; }
-
-/* ─── Elevation sections ─────────────────────────────────────────────────── */
 
 .dv-h2 {
-  margin: 0 0 12px;
-  font-family: var(--serif);
-  font-size: clamp(34px, 3.2vw, 48px);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: var(--blue);
-  max-width: 16em;
-}
-.dv-section-lede {
-  margin: 0;
-  max-width: 44em;
-  color: #4a6270;
-  font-size: 16px;
-  line-height: 1.6;
+  margin: 0 0 24px;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.08;
 }
 
-/* ─── The drawing kit ──────────────────────────────────────────────────────
-   Shared stroke vocabulary for every hand-authored drawing in the concept
-   (the cast, the catchment map, the safety-net mechanism). Two weights,
-   round caps, palette-native fills — one drawn language, no raster assets. */
-.dv-draw-stroke { fill: none; stroke: var(--blue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.dv-draw-fine { fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.dv-draw-fill { fill: var(--blue-deep); }
-.dv-draw-wash { fill: var(--sky); opacity: 0.35; }
-.dv-draw-accent { fill: none; stroke: var(--teal); stroke-width: 3.5; stroke-linecap: round; }
-.dv-draw-accent-fill { fill: var(--teal); }
-.dv-draw-ground { fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-linecap: round; opacity: 0.35; }
-
-.dv-cast-art { display: block; width: 100%; height: auto; }
-
-/* Alive, but in the reassurance register: a slow wag, an occasional twitch.
-   Small rotations on long periods; never spectacle. */
-@media (prefers-reduced-motion: no-preference) {
-  .dv-dog-tail {
-    transform-box: fill-box;
-    transform-origin: 0% 100%;
-    animation: dv-wag 2.8s ease-in-out infinite;
-  }
-  .dv-cat-tail {
-    transform-box: fill-box;
-    transform-origin: 0% 100%;
-    animation: dv-flick 5.2s ease-in-out infinite;
-  }
-  .dv-rabbit-ear {
-    transform-box: fill-box;
-    transform-origin: 50% 100%;
-    animation: dv-twitch 4.6s ease-in-out infinite;
-  }
-}
-@keyframes dv-wag { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-8deg); } }
-@keyframes dv-flick { 0%, 88%, 100% { transform: rotate(0deg); } 94% { transform: rotate(-6deg); } }
-@keyframes dv-twitch { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(5deg); } }
-
-/* Move 1: the drawn cast (lives with the life section) */
-.dv-pets {
-  margin: 22px 0 0;
-  padding: 0;
-}
-.dv-pets-row {
-  display: flex;
-  gap: clamp(12px, 2vw, 22px);
-  flex-wrap: wrap;
-  align-items: flex-end;
-}
-.dv-pet {
-  flex: 0 1 110px;
-  max-width: 128px;
-  text-align: center;
-}
-.dv-pet-label {
-  display: block;
-  margin-top: 2px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-/* Move 2: the safety net — one number, two routes, companion cover */
-.dv-safety-net {
-  padding: clamp(44px, 6vh, 72px) clamp(26px, 3.6vw, 56px);
-  background: var(--warm-white);
-  border-top: 1px solid var(--hairline);
-}
-.dv-safety-head { max-width: 52ch; margin-bottom: clamp(28px, 4vh, 40px); }
-.dv-net-branch {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 4px;
-}
-.dv-net-start {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-.dv-net-art { width: clamp(68px, 6.5vw, 96px); height: auto; }
-.dv-net-art--sm { width: clamp(56px, 5vw, 72px); }
-.dv-net-fill { fill: var(--warm-white); }
-.dv-net-number {
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: #ffffff;
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 150ms ease;
-}
-.dv-net-number:hover { background: var(--teal-deep); }
-.dv-net-start-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-}
-/* Fork sits under the phone and opens into the two route columns. */
-.dv-net-split {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  height: 64px;
-}
-.dv-net-split-art {
-  display: block;
-  width: 100%;
-  height: 64px;
-}
-.dv-net-split-art path {
-  fill: none;
-  stroke: var(--teal);
-  stroke-opacity: 0.7;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1 6;
-}
-.dv-net-split-art path:nth-child(n+6) { stroke-dasharray: none; }
-.dv-net-routes {
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.5vw, 28px);
-  width: 100%;
-  max-width: 720px;
-}
-.dv-net-route {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  padding: 18px 14px 16px;
-  background: var(--sky-soft);
-  border-radius: 12px;
-}
-.dv-net-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-  text-align: center;
-  max-width: 16em;
-}
-.dv-net-card { max-width: 28ch; }
-.dv-net-card h3 {
-  margin: 0 0 8px;
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--blue);
-}
-.dv-net-card p {
-  margin: 0 0 8px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: #4a6270;
-}
-.dv-safety-detail {
-  font-size: 13px !important;
-  color: #5a7280 !important;
-}
-.dv-net-companion {
-  display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr);
-  align-items: center;
-  gap: 16px 20px;
-  margin-top: clamp(22px, 3vh, 32px);
-  padding: 18px 22px;
-  background: var(--sky-soft);
-  border-radius: 12px;
-  border-left: 4px solid var(--teal);
-}
-.dv-net-companion .dv-net-tag { justify-self: start; }
-.dv-net-companion .dv-net-card { max-width: none; text-align: left; }
-.dv-safety-foot {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  margin: 28px 0 0;
-}
-.dv-cta--compact {
-  padding: 12px 22px;
-  font-size: 15px;
-}
-
-/* Pull quote */
-.dv-caption-quote {
-  margin: 0;
-  padding: clamp(36px, 5vh, 56px) clamp(26px, 3.6vw, 56px);
-  background: var(--blue-deep);
-  color: var(--sky);
-}
-.dv-caption-quote blockquote {
-  margin: 0 0 22px;
-  max-width: 24em;
-  font-family: var(--serif);
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  text-wrap: balance;
-}
-.dv-caption-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 28px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-}
-.dv-caption-by {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sky);
-}
-.dv-caption-cta {
+.dv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 2px solid transparent;
   border-radius: 999px;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
+  font: 700 1rem/1.2 "Figtree", system-ui, sans-serif;
   text-decoration: none;
-  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
-.dv-caption-cta:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #7fd9bf;
-  transform: translateY(-1px);
+.dv-btn:active { transform: translateY(1px); }
+.dv-btn--primary { background: var(--dv-teal); color: #fff !important; }
+.dv-btn--primary:hover { background: var(--dv-teal-d); }
+.dv-btn--ghost { border-color: var(--dv-teal); color: var(--dv-teal-d) !important; background: #fff; }
+.dv-btn--ghost:hover { background: var(--dv-mist); }
+.dv-btn--urgent { background: var(--dv-urgent); color: #fff !important; }
+.dv-btn--urgent:hover { background: #963624; }
+.dv-btn--big { min-height: 56px; padding: 14px 30px; font-size: 1.08rem; }
+
+.dv-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 700 0.98rem/1.3 "Figtree", system-ui, sans-serif;
+  color: var(--dv-teal-d);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--dv-teal) 40%, transparent);
+  cursor: pointer;
 }
-.dv-caption-cta span {
-  color: #7fd9bf;
+.dv-link:hover { text-decoration-color: var(--dv-teal); }
+
+.dv-small { font-size: 0.9rem; color: var(--dv-muted); }
+
+/* ---------- hero ---------- */
+
+.dv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: var(--dv-max);
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 64px) var(--dv-gutter) clamp(32px, 5vw, 56px);
 }
 
-/* Move 3: life stages, drawn as an arc */
-.dv-life {
-  padding: clamp(44px, 6vh, 72px) clamp(26px, 3.6vw, 56px);
-  background: var(--sky-soft);
+.dv-hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.4rem, 5vw, 3.9rem);
+  font-weight: 800;
+  line-height: 1.02;
+  max-width: 14ch;
 }
-.dv-life-head { max-width: 52ch; margin-bottom: clamp(20px, 3vh, 28px); }
-.dv-life-arc {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 8px;
+
+.dv-hero-lede {
+  margin: 0 0 28px;
+  max-width: 34rem;
+  font-size: 1.15rem;
+  color: var(--dv-muted);
 }
-.dv-life-path {
-  fill: none;
-  stroke: var(--blue);
-  stroke-opacity: 0.5;
-  stroke-width: 2;
-  stroke-linecap: round;
+
+.dv-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.dv-hero-art { min-width: 0; }
+.dv-scene { display: block; width: 100%; height: auto; }
+
+/* ---------- hero motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .dv-scene-pet {
+    animation: dv-settle 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .dv-scene-pet--dog { animation-delay: 80ms; }
+  .dv-scene-pet--cat { animation-delay: 260ms; }
+  .dv-scene-pet--rabbit { animation-delay: 440ms; }
+
+  .dv-scene .dv-cat-tail {
+    transform-box: fill-box;
+    transform-origin: 0% 100%;
+    animation: dv-tail 4.8s ease-in-out 1.2s infinite alternate;
+  }
+
+  .dv-scene .dv-dog-ear {
+    transform-box: fill-box;
+    transform-origin: 40% 4%;
+    animation: dv-ear 7s ease-in-out 2s infinite;
+  }
+
+  .dv-scene .dv-blink {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: dv-blink 6s ease-in-out infinite;
+  }
+  .dv-scene .dv-blink--dog { animation-delay: 1.6s; }
+  .dv-scene .dv-blink--cat { animation-delay: 3.1s; animation-duration: 7s; }
+  .dv-scene .dv-blink--rabbit { animation-delay: 4.4s; animation-duration: 5.4s; }
+
+  .dv-scene .dv-rabbit-nose {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: dv-nose 3.6s ease-in-out 2.4s infinite;
+  }
+
+  .dv-cloud--a { animation: dv-drift 26s ease-in-out infinite alternate; }
+  .dv-cloud--b { animation: dv-drift 34s ease-in-out infinite alternate-reverse; }
+  .dv-gulls { animation: dv-glide 18s ease-in-out infinite alternate; }
 }
-/* the path goes finer and fainter approaching the goodbye */
-.dv-life-path--quiet {
-  stroke-opacity: 0.3;
-  stroke-width: 1.2;
+
+@keyframes dv-settle {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
 }
-.dv-life-paw { fill: var(--blue); opacity: 0.3; }
-.dv-life-cast { width: auto; height: auto; }
-.dv-life-stop { fill: var(--teal); }
-.dv-life-stop--open { fill: var(--sky-soft); stroke: var(--teal-deep); stroke-width: 1.8; }
-.dv-life-stages {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+@keyframes dv-tail {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(4deg); }
+}
+@keyframes dv-ear {
+  0%, 82%, 100% { transform: rotate(0); }
+  88% { transform: rotate(-6deg); }
+  94% { transform: rotate(2deg); }
+}
+@keyframes dv-blink {
+  0%, 93%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.12); }
+}
+@keyframes dv-nose {
+  0%, 70%, 100% { transform: scale(1); }
+  75% { transform: scale(1.35, 1.15); }
+  80% { transform: scale(1); }
+  85% { transform: scale(1.35, 1.15); }
+}
+@keyframes dv-drift {
+  from { transform: translateX(-14px); }
+  to { transform: translateX(22px); }
+}
+@keyframes dv-glide {
+  from { transform: translate(0, 0); }
+  to { transform: translate(30px, -8px); }
+}
+
+/* ---------- glyphs ---------- */
+
+.dv-glyph { display: block; width: 64px; height: 64px; flex: none; }
+.dv-glyph-disc { fill: var(--dv-mist); }
+
+/* ---------- how can we help ---------- */
+
+.dv-help {
+  max-width: var(--dv-max);
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 56px) var(--dv-gutter);
+  scroll-margin-top: 72px;
+}
+.dv-panel { scroll-margin-top: 84px; }
+
+.dv-help-options {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
-.dv-life-stages > li {
+
+.dv-option {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 14px;
+  min-height: 96px;
+  padding: 14px 16px;
+  border: 2px solid var(--dv-mist-2);
+  border-radius: var(--dv-radius);
+  background: #fff;
+  color: var(--dv-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
-.dv-life-marker {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
+.dv-option:hover { border-color: var(--dv-teal-2); transform: translateY(-2px); box-shadow: 0 10px 24px -16px rgba(17, 88, 107, 0.5); }
+.dv-option strong { display: block; font-size: 1.05rem; line-height: 1.2; color: var(--dv-teal-ink); }
+.dv-option small { display: block; margin-top: 3px; font-size: 0.88rem; color: var(--dv-muted); }
+.dv-option[aria-expanded="true"] {
+  border-color: var(--dv-teal);
+  background: var(--dv-mist);
+  box-shadow: inset 0 0 0 1px var(--dv-teal);
 }
-.dv-life-card {
-  flex: 1 1 auto;
-  padding: 16px 14px 14px;
-  background: #ffffff;
-  border: 1px solid var(--hairline);
-  border-top: 4px solid var(--teal);
-  border-radius: 10px;
+.dv-option--urgent { border-color: color-mix(in srgb, var(--dv-urgent) 30%, var(--dv-mist-2)); }
+.dv-option--urgent strong { color: var(--dv-urgent); }
+.dv-option--urgent[aria-expanded="true"] { border-color: var(--dv-urgent); background: var(--dv-urgent-bg); box-shadow: inset 0 0 0 1px var(--dv-urgent); }
+
+.dv-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: 16px;
+  padding: clamp(22px, 3.4vw, 40px);
+  border-radius: var(--dv-radius);
+  background: #fff;
+  border: 2px solid var(--dv-teal);
 }
-.dv-life-card h3 {
-  margin: 0 0 8px;
-  font-family: var(--serif);
-  font-size: 17px;
+.dv-panel[hidden] { display: none; }
+.dv-panel:has(.dv-form) { grid-template-columns: minmax(0, 1fr); }
+.dv-panel--urgent { border-color: var(--dv-urgent); background: var(--dv-urgent-bg); }
+.dv-panel h3 { margin: 0 0 12px; font-size: 1.6rem; font-weight: 800; line-height: 1.15; }
+.dv-panel--urgent h3, .dv-panel--urgent h3 a { color: var(--dv-urgent); }
+.dv-panel p { margin: 0 0 14px; max-width: 40rem; }
+.dv-panel-side {
+  align-self: start;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: var(--dv-mist);
+}
+.dv-panel--urgent .dv-panel-side { background: #fff; }
+.dv-panel-side p { margin: 0 0 8px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dv-panel:not([hidden]) { animation: dv-open 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+}
+@keyframes dv-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- forms ---------- */
+
+.dv-form { display: grid; gap: 22px; max-width: 760px; }
+.dv-form-head h3 { margin-bottom: 6px; }
+.dv-form-head p { margin: 0; color: var(--dv-muted); }
+
+.dv-field { margin: 0; padding: 0; border: 0; display: grid; gap: 12px; min-width: 0; }
+.dv-field legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--dv-teal-ink);
+}
+
+.dv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.dv-chip { position: relative; display: inline-flex; cursor: pointer; }
+.dv-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.dv-chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 2px solid var(--dv-mist-2);
+  border-radius: 999px;
+  background: #fff;
   font-weight: 600;
-  color: var(--blue);
-  line-height: 1.15;
+  font-size: 0.95rem;
+  transition: border-color 140ms ease, background-color 140ms ease;
 }
-.dv-life-card p {
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #4a6270;
+.dv-chip:hover span { border-color: var(--dv-teal-2); }
+.dv-chip input:checked + span,
+.dv-chip input:checked ~ span { border-color: var(--dv-teal); background: var(--dv-teal); color: #fff; }
+.dv-chip input:focus-visible ~ span { outline: 3px solid var(--dv-teal-d); outline-offset: 2px; }
+
+.dv-chips--pets { gap: 10px; }
+.dv-chip--pet {
+  flex-direction: column;
+  align-items: center;
+  width: 104px;
+  padding: 10px 6px 0;
+  border: 2px solid var(--dv-mist-2);
+  border-radius: 18px;
+  background: #fff;
+  transition: border-color 140ms ease, background-color 140ms ease;
 }
-.dv-life-service {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-  text-decoration: none;
+.dv-chip--pet svg { width: 64px; height: 56px; }
+.dv-chip-paw { fill: var(--dv-slate); }
+.dv-chip--pet span { border: 0; background: none; min-height: 36px; padding: 4px 6px; text-align: center; line-height: 1.15; }
+.dv-chip--pet:hover { border-color: var(--dv-teal-2); }
+.dv-chip--pet:has(input:checked) { border-color: var(--dv-teal); background: var(--dv-mist); }
+.dv-chip--pet input:checked ~ span { background: none; color: var(--dv-teal-ink); }
+
+.dv-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; }
+.dv-row > .dv-input { flex: 1 1 200px; }
+
+.dv-input { display: grid; gap: 6px; font-weight: 600; font-size: 0.95rem; }
+.dv-input small { font-weight: 500; color: var(--dv-muted); }
+.dv-input input,
+.dv-input select,
+.dv-input textarea {
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 2px solid var(--dv-mist-2);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--dv-ink);
+  font: 500 1rem/1.4 "Figtree", system-ui, sans-serif;
 }
-/* Goodbye changes register after the base card rules so ink colours win. */
-.dv-life-card.dv-life-card--quiet {
-  background: var(--blue-deep);
-  border: 1px solid transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: #ffffff;
+.dv-input textarea { min-height: 72px; resize: vertical; }
+.dv-input input:focus,
+.dv-input select:focus,
+.dv-input textarea:focus { border-color: var(--dv-teal); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--dv-teal) 25%, transparent); }
+.dv-input--inline { max-width: 320px; }
+
+.dv-form > .dv-btn { justify-self: start; }
+
+.dv-form-error {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--dv-urgent-bg);
+  color: var(--dv-urgent);
+  font-weight: 600;
 }
-.dv-life-card.dv-life-card--quiet h3 {
-  font-style: italic;
-  color: #ffffff;
+.dv-form-error[hidden] { display: none; }
+
+.dv-done {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: var(--dv-mist);
+  border-left: 5px solid var(--dv-teal);
 }
-.dv-life-card.dv-life-card--quiet p {
-  color: #ffffff;
-}
-.dv-life-card.dv-life-card--quiet .dv-life-service {
-  color: #b8f0de;
-}
-.dv-life-card.dv-life-card--quiet .dv-link {
-  color: #b8f0de;
-  text-decoration-color: var(--teal);
+.dv-done[hidden] { display: none; }
+.dv-done strong { font-size: 1.15rem; color: var(--dv-teal-ink); }
+.dv-done small { color: var(--dv-muted); }
+
+/* ---------- services ---------- */
+
+.dv-services {
+  max-width: var(--dv-max);
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 64px) var(--dv-gutter);
+  scroll-margin-top: 72px;
 }
 
-/* Move 4: catchment map */
-.dv-map-section {
-  padding: clamp(44px, 6vh, 72px) clamp(26px, 3.6vw, 56px);
-  background: var(--warm-white);
-  border-top: 1px solid var(--hairline);
-}
-.dv-map-head { max-width: 52ch; margin-bottom: clamp(24px, 3vh, 36px); }
-/* Theme for the shared map plate (src/concepts/_shell/map-plate.css). */
-.dv-map {
-  --map-paper: var(--sky-soft);
-  --map-rule: var(--blue);
-  --map-accent: var(--blue);
-  --map-rule-opacity: 0.5;
-  --map-rule-width: 1.6;
-  --map-rule-inner-opacity: 0.28;
-  --map-rule-inner-width: 0.9;
-  --map-pin-halo: var(--sky-soft);
-  --map-pin-halo-opacity: 1;
-  --map-pin-dot-stroke: 0;
-  --map-compass-accent: var(--blue-deep);
-}
-.dv-map-plate {
-  border-radius: 8px;
-}
-.dv-map figcaption {
-  margin-top: 10px;
-  font-size: 12px;
-  line-height: 1.45;
-  color: #5a7280;
-}
-/* sea: wave strokes, no fills */
-.dv-map-sea-line { fill: none; stroke: var(--blue); stroke-opacity: 0.55; stroke-width: 2.4; stroke-linecap: round; }
-.dv-map-sea-wave { fill: none; stroke: var(--blue); stroke-opacity: 0.4; stroke-width: 1.4; stroke-linecap: round; }
-/* hills: line-drawing arcs + ridge ticks */
-.dv-map-hill { fill: none; stroke: var(--blue-deep); stroke-opacity: 0.6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.dv-map-hill-tick { fill: none; stroke: var(--blue-deep); stroke-opacity: 0.4; stroke-width: 1.1; stroke-linecap: round; }
-/* roads: paired pen strokes */
-.dv-map-road { fill: none; stroke: var(--blue); stroke-opacity: 0.45; stroke-width: 1.8; stroke-linecap: round; }
-.dv-map-road-twin { fill: none; stroke: var(--blue); stroke-opacity: 0.2; stroke-width: 1; stroke-linecap: round; }
-/* the patch: stippled, claiming no boundary */
-.dv-map-patch { fill: none; stroke: var(--teal); stroke-opacity: 0.55; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1 7; }
-/* three type registers: town roman, villages italic, regions letterspaced */
-.dv-map-t-town { font-family: var(--serif); font-size: 17px; font-weight: 600; letter-spacing: 0.04em; fill: var(--blue-deep); }
-.dv-map-t-village { font-family: var(--serif); font-size: 13.5px; font-style: italic; fill: var(--blue); }
-.dv-map-t-feature { font-size: 11px; }
-.dv-map-t-street { font-size: 11.5px; }
-.dv-map-t-region { font-family: var(--serif); font-size: 11px; letter-spacing: 0.22em; fill: var(--blue); fill-opacity: 0.75; }
-.dv-map-t-cartouche { font-family: var(--serif); font-size: 11px; font-style: italic; fill: var(--blue); fill-opacity: 0.8; }
-/* the clinic vignette — the only filled mark on the plate */
-.dv-map-clinic { fill: none; stroke: var(--blue-deep); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.dv-map-clinic-fill { fill: var(--warm-white); stroke: var(--blue-deep); stroke-width: 2; stroke-linejoin: round; }
-.dv-map-clinic-accent { fill: none; stroke: var(--teal); stroke-width: 2.2; stroke-linecap: round; }
-@media (max-width: 640px) {
-  .dv-map-t-town { font-size: 20px; }
-  .dv-map-t-village { font-size: 15px; }
-  .dv-map-t-feature { font-size: 12px; }
-  .dv-map-t-region, .dv-map-t-cartouche { font-size: 12px; }
-}
-
-/* Move 5: independence timeline */
-.dv-timeline-band {
-  padding: clamp(44px, 6vh, 72px) clamp(26px, 3.6vw, 56px);
-  background: var(--blue-deep);
-  color: var(--sky);
-}
-.dv-timeline-band .dv-kicker { color: #7fd9bf; }
-.dv-timeline-band .dv-kicker::before { background: var(--teal); }
-.dv-timeline-band .dv-h2 { color: #ffffff; max-width: 20em; }
-.dv-timeline-head { max-width: 56ch; margin-bottom: 40px; }
-.dv-timeline {
+.dv-service-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.dv-service {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 8px;
+  padding: 22px;
+  border-radius: var(--dv-radius);
+  background: #fff;
+  border: 1px solid var(--dv-mist-2);
 }
-.dv-timeline > li {
-  position: relative;
-  padding-top: 28px;
+.dv-service .dv-glyph { width: 56px; height: 56px; margin-bottom: 4px; }
+.dv-service h3 { margin: 0; font-size: 1.2rem; font-weight: 800; line-height: 1.2; }
+.dv-service p { margin: 0; color: var(--dv-muted); font-size: 0.98rem; }
+.dv-service .dv-link { justify-self: start; margin-top: 6px; }
+
+/* ---------- goodbye ---------- */
+
+.dv-goodbye {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+  max-width: calc(var(--dv-max) - 2 * var(--dv-gutter));
+  margin: clamp(16px, 3vw, 32px) auto;
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--dv-radius);
+  background: var(--dv-teal-ink);
+  color: #e3eef1;
 }
-.dv-timeline-marker {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 600;
-  color: #ffffff;
+@media (max-width: 1228px) {
+  .dv-goodbye { margin-inline: var(--dv-gutter); }
 }
-.dv-timeline h3 {
-  margin: 0 0 8px;
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.15;
-}
-.dv-timeline p {
+.dv-goodbye-glyph { width: 88px; height: 88px; }
+.dv-goodbye-glyph .dv-glyph-disc { fill: rgba(255, 255, 255, 0.08); }
+.dv-goodbye-glyph g { fill: #b9d3da; }
+.dv-goodbye-title { margin: 0 0 10px; font-size: 1.5rem; font-weight: 800; color: #fff !important; }
+.dv-goodbye blockquote { margin: 0 0 12px; }
+.dv-goodbye blockquote p {
   margin: 0;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--sky);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
 }
-.dv-timeline-link {
-  display: inline-block;
-  margin-top: 8px;
-  color: #7fd9bf;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration-color: var(--teal);
+.dv-goodbye > div > p { max-width: 40rem; margin: 0 0 14px; }
+.dv-goodbye .dv-link { color: #fff; text-decoration-color: rgba(255, 255, 255, 0.45); }
+
+/* ---------- visit ---------- */
+
+.dv-visit {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  max-width: var(--dv-max);
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 64px) var(--dv-gutter);
+  scroll-margin-top: 72px;
+}
+.dv-visit > div {
+  padding: 24px;
+  border-radius: var(--dv-radius);
+  background: #fff;
+  border: 1px solid var(--dv-mist-2);
+}
+.dv-visit-card { background: var(--dv-mist) !important; border: 0 !important; }
+.dv-visit-card .dv-h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 14px; }
+.dv-visit address { font-style: normal; margin-bottom: 14px; }
+.dv-visit-contact { display: grid; gap: 4px; margin: 0 0 18px; font-weight: 700; }
+.dv-visit h3 { margin: 0 0 12px; font-size: 1.15rem; font-weight: 800; }
+.dv-visit dl { margin: 0 0 12px; display: grid; gap: 6px; }
+.dv-visit dl > div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 6px; border-bottom: 1px dashed var(--dv-mist-2); }
+.dv-visit dt { font-weight: 600; }
+.dv-visit dd { margin: 0; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dv-visit-area p { margin: 0; color: var(--dv-muted); }
+
+/* ---------- footer + dock ---------- */
+
+.dv-foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px var(--dv-gutter) 12px;
+  color: var(--dv-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+.dv-foot-mark { width: 72px; height: 54px; flex: none; }
+.dv-foot p { margin: 0; }
+
+.dv-dock { display: none; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1040px) {
+  .dv-help-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dv-service-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dv-visit { grid-template-columns: 1fr 1fr; }
+  .dv-visit-card { grid-column: 1 / -1; }
+  .concept-donard-veterinary .dv-nav { display: none; }
 }
 
-.dv-emergency-outofhours {
-  margin: 12px 0 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #ffffff;
-}
+@media (max-width: 760px) {
+  .concept-donard-veterinary { font-size: 16px; }
+  .dv-hero { grid-template-columns: 1fr; padding-top: 20px; }
+  .dv-hero-art { order: -1; margin-inline: -4px; }
+  .dv-hero h1 { font-size: clamp(2.1rem, 9vw, 2.8rem); }
+  .dv-hero-lede { font-size: 1.05rem; }
+  .dv-panel { grid-template-columns: 1fr; }
+  .dv-visit { grid-template-columns: 1fr; }
+  .dv-goodbye { grid-template-columns: 1fr; }
+  .dv-goodbye-glyph { width: 64px; height: 64px; }
+  .dv-brand-sub { display: none; }
+  .dv-brand-mark { width: 52px; height: 39px; }
+  .dv-top-call-label { display: none; }
 
-@media (max-width: 960px) {
-  .dv-net-split { display: none; }
-  .dv-net-routes {
-    width: 100%;
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .dv-dock {
+    position: fixed;
+    inset: auto 12px 12px;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 999px;
+    background: color-mix(in srgb, #fff 94%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -12px rgba(12, 67, 82, 0.45);
   }
-  .dv-net-companion {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
+  .dv-dock a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    color: #fff;
+    background: var(--dv-teal);
   }
-  .dv-net-companion .dv-net-art { grid-row: 1 / span 2; }
-  .dv-net-companion .dv-net-tag { grid-column: 2; }
-  .dv-net-companion .dv-net-card { grid-column: 2; }
-  .dv-life-stages { grid-template-columns: repeat(2, 1fr); }
-  .dv-timeline { grid-template-columns: repeat(2, 1fr); }
+  .dv-dock a:first-child { background: var(--dv-urgent); }
+  .concept-donard-veterinary .private-note { padding-bottom: 88px; }
 }
 
-@media (max-width: 640px) {
-  .dv-life-stages { grid-template-columns: 1fr; }
-  .dv-timeline { grid-template-columns: 1fr; }
-  .dv-pets-row { justify-content: center; }
+@media (max-width: 520px) {
+  .dv-help-options { grid-template-columns: 1fr; }
+  .dv-option { min-height: 84px; }
+  .dv-service-list { grid-template-columns: 1fr; }
+  .dv-visit { grid-template-columns: 1fr; }
+  .dv-chip--pet { width: calc(50% - 5px); }
+  .dv-brand-name { font-size: 0.98rem; }
+  .dv-top-call { padding: 9px 14px; font-size: 0.92rem; }
 }

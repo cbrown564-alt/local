@@ -2,169 +2,278 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_private/PrivateLayout.astro";
-import EssenceMedia from "../../site/components/EssenceMedia.astro";
-import DvSafetyNet from "./components/DvSafetyNet.astro";
-import DvCatchmentMap from "./components/DvCatchmentMap.astro";
-import DvLifeArc from "./components/DvLifeArc.astro";
+import DvTrioParts from "./components/DvTrioParts.astro";
+import DvGlyph from "./components/DvGlyph.astro";
+import DvHeroScene from "./components/DvHeroScene.astro";
+import DvBookForm from "./components/DvBookForm.astro";
+import DvPrescriptionForm from "./components/DvPrescriptionForm.astro";
 import {
-  bereavementQuote,
-  independenceTimeline,
   clinicPhone,
   clinicPhoneHref,
+  clinicEmail,
+  vidivetUrl,
+  bereavementUrl,
+  bereavementQuote,
+  services,
+  openingHours,
+  catchmentVillages,
+  directionsUrl,
 } from "./content";
 ---
 
 <ConceptLayout
-  title={"Donard Veterinary Clinic"}
+  title="Donard Veterinary Clinic · Vets in Newcastle, Co. Down"
   businessName="Donard Veterinary Clinic"
-  fontHref="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;700&display=swap"
+  fontHref="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap"
   bodyClass="concept-page concept-donard-veterinary"
   lang="en-GB"
 >
-<div class="dv-strip">
-      <span>Pet emergency? Call <a href={clinicPhoneHref}>{clinicPhone}</a></span>
-      <span class="dv-strip-hours">Mon–Fri 8:30am–6:30pm · Wed until 7pm · Sat 9am–1pm</span>
-    </div>
-    <header class="dv-header">
-      <a class="dv-brand" href="/for/donard-vet-k4x9/">
-        <img
-          class="dv-badge"
-          src="/media/concepts/donard-veterinary/donard-veterinary-emblem.png"
-          alt="Donard Veterinary Clinic emblem"
-          width="48"
-          height="48"
-          loading="eager"
-        />
-        <span class="dv-brand-text">
-          <span class="dv-brand-name">Donard Veterinary Clinic</span>
-          <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
-        </span>
-      </a>
-      <nav class="dv-nav" aria-label="Primary">
-        <a href="/for/donard-vet-k4x9/emergency/">Emergency</a>
-        <a href="/for/donard-vet-k4x9/vidivet/">VidiVet</a>
-        <a href="/for/donard-vet-k4x9/appointments/">Appointments</a>
-        <a class="dv-nav-wide" href="#life">Pet services</a>
-        <a class="dv-nav-wide" href="#catchment">Near you</a>
-      </nav>
-      <div class="dv-header-actions">
-        <a class="dv-phone" href={clinicPhoneHref}>{clinicPhone}</a>
-        <a class="dv-book" href="/for/donard-vet-k4x9/appointments/">Book appointment</a>
-      </div>
-    </header>
-    <main>
-    <div class="dv-hero">
-      <!-- the Mournes, drawn low behind the story panel — the same
-           range as the catchment map, here as backdrop, not information -->
-      <svg class="dv-hero-hills" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <path class="dv-hero-ridge" d="M-20 196 C60 152 112 122 162 96 C192 130 212 140 242 124 C292 88 332 60 382 44 C422 90 452 110 492 96 C542 66 582 52 632 48 C682 92 722 116 782 110 C832 104 872 118 912 136 C952 152 992 164 1030 168" />
-        <path class="dv-hero-ridge-tick" d="M382 58 L382 78 M387 66 L394 77" />
-        <path class="dv-hero-ridge-tick" d="M162 108 L162 128 M167 116 L173 126" />
-        <path class="dv-hero-ridge-tick" d="M632 62 L632 82 M637 70 L643 80" />
-        <path class="dv-hero-foot" d="M-20 210 C200 180 420 172 640 182 C760 188 860 194 960 200" />
-      </svg>
-      <section class="dv-story">
-        <p class="dv-kicker">8 Railway Street · Newcastle</p>
-        <h1>Donard <em>Veterinary</em> Clinic</h1>
-        <p class="dv-thesis">We're here when you need us.</p>
-        <p class="dv-lede">
-          We're an independent small-animal clinic providing routine care, diagnostics,
-          surgery and dental treatment — with a phone line that always finds a vet.
+  <header class="dv-top">
+    <a class="dv-brand" href="#top" aria-label="Donard Veterinary Clinic, home">
+      <svg class="dv-brand-mark" viewBox="0 0 240 180" aria-hidden="true"><DvTrioParts /></svg>
+      <span class="dv-brand-text">
+        <span class="dv-brand-name">Donard Veterinary Clinic</span>
+        <span class="dv-brand-sub">Professional · Caring · Compassionate</span>
+      </span>
+    </a>
+    <nav class="dv-nav" aria-label="Sections">
+      <a href="#help">How can we help?</a>
+      <a href="#services">Pet services</a>
+      <a href="#visit">Visit us</a>
+    </nav>
+    <a class="dv-top-call" href={clinicPhoneHref}>
+      <span class="dv-top-call-label">Call</span> {clinicPhone}
+    </a>
+  </header>
+
+  <main id="top">
+    <section class="dv-hero" aria-labelledby="dv-hero-title">
+      <div class="dv-hero-copy">
+        <p class="dv-kicker">8 Railway Street · Newcastle, Co. Down</p>
+        <h1 id="dv-hero-title">Your local vets, for every paw in South Down.</h1>
+        <p class="dv-hero-lede">
+          An independent, small-animal clinic for the dogs, cats and small pets
+          of Newcastle and the villages around the Mournes. One number reaches a
+          vet, day or night.
         </p>
-        <div class="dv-actions">
-          <a class="dv-cta" href="/for/donard-vet-k4x9/appointments/">Request an appointment</a>
-          <a class="dv-link" href="/for/donard-vet-k4x9/emergency/">Emergency information →</a>
+        <div class="dv-hero-actions">
+          <a class="dv-btn dv-btn--primary" href="#book" data-dv-open="book">Book an appointment</a>
+          <a class="dv-btn dv-btn--ghost" href={clinicPhoneHref}>Call {clinicPhone}</a>
         </div>
-      </section>
-      <section class="dv-care-desk" aria-labelledby="dv-care-heading">
-        <div class="dv-care-head">
-          <p>How can we help?</p>
-          <span>Small-animal clinic · Newcastle</span>
-        </div>
-        <div class="dv-care-body">
-          <h2 id="dv-care-heading">What do you need today?</h2>
-          <div class="dv-care-options">
-            <a href="/for/donard-vet-k4x9/appointments/">
-              <span class="dv-care-icon" aria-hidden="true">+</span>
-              <span><strong>Routine appointment</strong><small>Health checks, diagnostics, surgery, dental care and more.</small></span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="/for/donard-vet-k4x9/emergency/">
-              <span class="dv-care-icon dv-care-icon--urgent" aria-hidden="true">!</span>
-              <span><strong>Urgent help</strong><small>Call the clinic directly if you are worried about your pet.</small></span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="/for/donard-vet-k4x9/vidivet/">
-              <span class="dv-care-icon dv-care-icon--online" aria-hidden="true">V</span>
-              <span><strong>VidiVet support</strong><small>Free 24/7 digital vet advice for our clients.</small></span>
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-        <div class="dv-care-hours">
-          <span><strong>Clinic hours</strong> Mon–Fri 8:30–6:30 · Wednesday until 7</span>
-          <a href={clinicPhoneHref}>{clinicPhone}</a>
-        </div>
-      </section>
-      <nav class="dv-rail" aria-label="Pet services">
-        <a class="dv-service" href="#life"><span></span>Routine health care</a>
-        <a class="dv-service" href="#life"><span></span>Weight clinic</a>
-        <a class="dv-service" href="#life"><span></span>Dental clinic</a>
-        <a class="dv-service" href="/for/donard-vet-k4x9/emergency/"><span></span>Emergency</a>
-        <a class="dv-service" href="#catchment"><span></span>Near you</a>
-        <a class="dv-service" href="/for/donard-vet-k4x9/appointments/"><span></span>Book</a>
-      </nav>
-    </div>
-
-    <DvSafetyNet />
-
-    <figure class="dv-caption-quote">
-      <blockquote cite={bereavementQuote.source}>
-        “{bereavementQuote.text}”
-      </blockquote>
-      <figcaption class="dv-caption-meta">
-        <span class="dv-caption-by">Donard Veterinary Clinic</span>
-        <a class="dv-caption-cta" href={bereavementQuote.source} rel="external">
-          {bereavementQuote.context}
-          <span aria-hidden="true">→</span>
-        </a>
-      </figcaption>
-    </figure>
-
-    <DvLifeArc />
-
-    <section class="dv-map-section" id="catchment" aria-labelledby="dv-map-heading">
-      <div class="dv-map-head">
-        <p class="dv-kicker">Your local practice</p>
-        <h2 class="dv-h2" id="dv-map-heading">Close to home across the Mournes.</h2>
-        <p class="dv-section-lede">
-          Newcastle plus Castlewellan, Dundrum, Bryansford, Clough, Annalong,
-          Kilcoo and Hilltown.
-        </p>
       </div>
-      <DvCatchmentMap headingId="dv-map-heading" />
+      <div class="dv-hero-art">
+        <DvHeroScene />
+      </div>
     </section>
 
-    <section class="dv-timeline-band" id="story" aria-labelledby="dv-timeline-heading">
-      <div class="dv-timeline-head">
-        <p class="dv-kicker">Still independent</p>
-        <h2 class="dv-h2" id="dv-timeline-heading">Opened 2017. Nine years on, still ours.</h2>
+    <section class="dv-help" id="help" aria-labelledby="dv-help-title">
+      <h2 class="dv-h2" id="dv-help-title">How can we help?</h2>
+      <div class="dv-help-options">
+        <button class="dv-option dv-option--urgent" type="button" aria-expanded="false" aria-controls="urgent" data-dv-option="urgent">
+          <DvGlyph name="call" />
+          <span><strong>My pet needs help now</strong><small>Call us straight away</small></span>
+        </button>
+        <button class="dv-option" type="button" aria-expanded="false" aria-controls="book" data-dv-option="book">
+          <DvGlyph name="book" />
+          <span><strong>Book an appointment</strong><small>We'll ring to confirm a time</small></span>
+        </button>
+        <button class="dv-option" type="button" aria-expanded="false" aria-controls="prescription" data-dv-option="prescription">
+          <DvGlyph name="prescription" />
+          <span><strong>Repeat prescription</strong><small>Order your pet's usual medicine</small></span>
+        </button>
+        <button class="dv-option" type="button" aria-expanded="false" aria-controls="advice" data-dv-option="advice">
+          <DvGlyph name="advice" />
+          <span><strong>Not sure? Ask a vet online</strong><small>Free 24/7 with VidiVet</small></span>
+        </button>
       </div>
-      <ol class="dv-timeline" role="list">
-        {independenceTimeline.map((entry) => (
-          <li>
-            <span class="dv-timeline-marker">{entry.marker}</span>
-            <h3>{entry.title}</h3>
-            <p>{entry.copy}</p>
-            {"href" in entry && entry.href && (
-              <a class="dv-timeline-link" href={entry.href} rel="external">
-                July 2026 recruitment listing →
-              </a>
-            )}
+
+      <div class="dv-panel dv-panel--urgent" id="urgent" role="region" aria-label="My pet needs help now" hidden>
+        <div class="dv-panel-main">
+          <h3>Call us now on <a href={clinicPhoneHref}>{clinicPhone}</a></h3>
+          <p>
+            Phone the clinic straight away and we'll give you advice over the
+            phone until you can get here with your pet.
+          </p>
+          <p>
+            <strong>Outside opening hours, ring the same number.</strong> You'll be
+            diverted to the on-call vet, so there's no other number to find.
+          </p>
+          <a class="dv-btn dv-btn--urgent dv-btn--big" href={clinicPhoneHref}>Call {clinicPhone}</a>
+        </div>
+        <aside class="dv-panel-side">
+          <p><strong>Not sure it's an emergency?</strong></p>
+          <p>Send a photo or a message through VidiVet and a vet will reply within minutes.</p>
+          <button class="dv-link" type="button" data-dv-open="advice">Ask a vet online →</button>
+        </aside>
+      </div>
+
+      <div class="dv-panel" id="book" role="region" aria-label="Book an appointment" hidden>
+        <DvBookForm />
+      </div>
+
+      <div class="dv-panel" id="prescription" role="region" aria-label="Repeat prescription" hidden>
+        <DvPrescriptionForm />
+      </div>
+
+      <div class="dv-panel" id="advice" role="region" aria-label="Ask a vet online" hidden>
+        <div class="dv-panel-main">
+          <h3>Free vet advice, any hour</h3>
+          <p>
+            Our clients get free 24/7 access to qualified vets through the
+            VidiVet app. Send photos, videos or a message about what's worrying
+            you, and a vet will reply within minutes to help you decide what to
+            do next — including whether your pet needs to come in.
+          </p>
+          <a class="dv-btn dv-btn--primary" href={vidivetUrl} rel="external">Register for VidiVet</a>
+        </div>
+        <aside class="dv-panel-side">
+          <p><strong>If it can't wait,</strong> don't message — call us on <a href={clinicPhoneHref}>{clinicPhone}</a>.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="dv-services" id="services" aria-labelledby="dv-services-title">
+      <div class="dv-section-head">
+        <p class="dv-kicker">Pet services</p>
+        <h2 class="dv-h2" id="dv-services-title">Care for the whole of their life.</h2>
+      </div>
+      <ul class="dv-service-list" role="list">
+        {services.map((service) => (
+          <li class="dv-service">
+            <DvGlyph name={service.glyph} />
+            <h3>{service.title}</h3>
+            <p>{service.copy}</p>
+            <button class="dv-link" type="button" data-dv-open="book" data-dv-reason={service.reason}>
+              Book for this →
+            </button>
           </li>
         ))}
-      </ol>
+      </ul>
     </section>
-      <EssenceMedia slug="donard-veterinary" />
-    </main>
+
+    <section class="dv-goodbye" aria-labelledby="dv-goodbye-title">
+      <DvGlyph name="goodbye" class="dv-goodbye-glyph" />
+      <div>
+        <h2 class="dv-goodbye-title" id="dv-goodbye-title">When the time comes</h2>
+        <blockquote cite={bereavementQuote.source}>
+          <p>“{bereavementQuote.text}.”</p>
+        </blockquote>
+        <p>
+          Saying goodbye is the hardest day of caring for a pet. We're here for
+          it too, whenever you need us.
+        </p>
+        <a class="dv-link" href={bereavementUrl} rel="external">When the time comes to say goodbye →</a>
+      </div>
+    </section>
+
+    <section class="dv-visit" id="visit" aria-labelledby="dv-visit-title">
+      <div class="dv-visit-card">
+        <p class="dv-kicker">Visit us</p>
+        <h2 class="dv-h2" id="dv-visit-title">8 Railway Street, Newcastle</h2>
+        <address>
+          Donard Veterinary Clinic<br />
+          8 Railway Street<br />
+          Newcastle, Co Down BT33 0AL
+        </address>
+        <p class="dv-visit-contact">
+          <a href={clinicPhoneHref}>{clinicPhone}</a>
+          <a href={`mailto:${clinicEmail}`}>{clinicEmail}</a>
+        </p>
+        <a class="dv-btn dv-btn--ghost" href={directionsUrl} rel="external">Get directions</a>
+      </div>
+      <div class="dv-visit-hours">
+        <h3>Opening hours</h3>
+        <dl>
+          {openingHours.map((row) => (
+            <div><dt>{row.days}</dt><dd>{row.hours}</dd></div>
+          ))}
+        </dl>
+        <p class="dv-small">Consultations throughout the day, by appointment.</p>
+      </div>
+      <div class="dv-visit-area">
+        <h3>Close to home</h3>
+        <p>
+          We look after pets from Newcastle and across South Down, including
+          {" "}{catchmentVillages.join(", ")}.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="dv-foot">
+    <svg class="dv-foot-mark" viewBox="0 0 240 180" aria-hidden="true"><DvTrioParts /></svg>
+    <p><strong>Donard Veterinary Clinic</strong> · Independent, 100% small-animal, since 2017</p>
+  </footer>
+
+  <nav class="dv-dock" aria-label="Quick actions">
+    <a href={clinicPhoneHref}>Call us</a>
+    <a href="#book" data-dv-open="book">Book</a>
+  </nav>
 </ConceptLayout>
+
+<script>
+  const options = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-dv-option]"));
+  const panelFor = (id: string) => document.getElementById(id);
+
+  function openPanel(id: string, { scroll = true, focus = false } = {}) {
+    const panel = panelFor(id);
+    if (!panel) return;
+    for (const option of options) {
+      const key = option.dataset.dvOption!;
+      const isOpen = key === id;
+      option.setAttribute("aria-expanded", String(isOpen));
+      const p = panelFor(key);
+      if (p) p.hidden = !isOpen;
+    }
+    if (scroll) {
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // Land on the options when the panel sits close beneath them; on a phone
+      // the stacked options fill the screen, so go straight to the panel.
+      const help = document.getElementById("help")!;
+      const gap = panel.getBoundingClientRect().top - help.getBoundingClientRect().top;
+      const target = gap < innerHeight * 0.5 ? help : panel;
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    }
+    if (focus) {
+      const target =
+        panel.querySelector<HTMLElement>("input, select, textarea") ??
+        panel.querySelector<HTMLElement>("a, button");
+      target?.focus({ preventScroll: true });
+    }
+  }
+
+  for (const option of options) {
+    option.addEventListener("click", () => {
+      const key = option.dataset.dvOption!;
+      const open = option.getAttribute("aria-expanded") === "true";
+      if (open) {
+        option.setAttribute("aria-expanded", "false");
+        const p = panelFor(key);
+        if (p) p.hidden = true;
+      } else {
+        openPanel(key, { scroll: false });
+      }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-dv-open]").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const id = trigger.dataset.dvOpen!;
+      const reason = trigger.dataset.dvReason;
+      if (reason) {
+        const input = document.querySelector<HTMLInputElement>(`#book input[name="reason"][value="${reason}"]`);
+        if (input) input.checked = true;
+      }
+      openPanel(id, { focus: true });
+      history.replaceState(null, "", `#${id}`);
+    });
+  });
+
+  const openFromHash = () => {
+    const fromHash = location.hash.slice(1);
+    if (options.some((o) => o.dataset.dvOption === fromHash)) openPanel(fromHash, { scroll: true });
+  };
+  openFromHash();
+  addEventListener("hashchange", openFromHash);
+</script>

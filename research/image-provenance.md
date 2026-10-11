@@ -454,19 +454,20 @@ of these businesses supplied one.
   keeps the text wordmark beside it. Withdraw it if the hotel ever supplies a
   real mark.
 
-- Donard Veterinary pet illustrations and catchment map — **in use** (31 July
-  2026). Inline SVG line drawings in `DvPetIllustrations.astro` and
-  `DvCatchmentMap.astro` — warm, obviously commissioned, disclosed on the page
-  as illustrations and an indicative map, not photographs of patients or a
-  boundary survey.
+- Donard Veterinary pet illustrations and catchment map — **retired** (31 July
+  2026; removed 11 October 2026). Inline SVG line drawings in
+  `DvPetIllustrations.astro` and `DvCatchmentMap.astro`, deleted when the
+  prototype became a single page. Superseded by the trio mark below.
 
 - Donard Veterinary trio mark — **in use** (11 October 2026). Hand-authored
   inline SVG in `src/concepts/donard-veterinary/components/DvTrioParts.astro`:
   a dog, cat and rabbit drawn after the practice's own window decal and
-  fascia mark on 8 Railway Street (photographed by the client-side owner of
-  this repo, not shipped), in the shopfront teal, slate and white. Not
-  generated; no third-party artwork traced. Replaces the 31 July line cast as
-  the concept's pet imagery.
+  fascia mark on 8 Railway Street (reference photographs supplied by the
+  studio, not shipped), in the shopfront teal, slate and white. Not
+  generated; no third-party artwork traced. The same paths are reused in the
+  hero scene (`DvHeroScene.astro`), the action glyphs (`DvGlyph.astro`) and
+  the booking form's pet choices. Replaces the 31 July line cast as the
+  concept's pet imagery.
 
 - `public/media/concepts/donard-veterinary/donard-veterinary-emblem.png` — **in use**
   (18 August 2026). Generated concept emblem asset exploring a refined brand
