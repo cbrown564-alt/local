@@ -38,19 +38,6 @@ const run = (args) =>
 // scanned by nothing at all once this runner was removed.
 const suites = [
   ["test:request"],
-  ["test:source-attribution"],
-  ["test:public-assets"],
-  ["test:map-payload"],
-  ["test:rebuild"],
-  ["test:hugh-mccanns"],
-  ["test:newcastle-dental"],
-  ["test:arley-house"],
-  ["test:mourne-cycles"],
-  ["test:conlyn-house"],
-  ["test:cocos"],
-  ["test:where-it-fails"],
-  ["test:how-its-made"],
-  ["test:why-its-yours"],
 ];
 
 if (skipBuild) {

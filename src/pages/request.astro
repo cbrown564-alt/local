@@ -2,19 +2,8 @@
 import BaseLayout from "../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../site/components/ArrowIcon.astro";
 import { ogImages } from "../site/data/og-images";
-import { transformations } from "../site/data/transformations";
 import "../site/styles/request.css";
 
-const claimConcepts = Object.fromEntries(
-  transformations.map((item) => [
-    item.slug,
-    { after: item.after, afterAlt: item.afterAlt },
-  ]),
-);
-const requestExample = transformations.find((item) => item.slug === "hotel-enniskeen");
-if (!requestExample) {
-  throw new Error("Request page example needs the hotel-enniskeen transformation.");
-}
 ---
 
 <BaseLayout
@@ -26,33 +15,12 @@ if (!requestExample) {
   <section
     class="shell request-layout"
     data-request-mode="request"
-    data-claim-concepts={JSON.stringify(claimConcepts).replaceAll("<", "\\u003c")}
   >
     <div class="request-copy" data-request-copy>
       <div class="request-side" data-request-intro>
         <p class="eyebrow">Free before-and-after</p>
         <h1>See your own before and after.</h1>
         <p class="request-side-lede">Tell us the business. We’ll make one clearer screen — free, no obligation.</p>
-        <figure class="claim-postcard request-example">
-          <div class="claim-postcard-mat">
-            <div class="request-example-split" aria-hidden="true">
-              <div class="request-example-panel">
-                <span>Before</span>
-                <img src={requestExample.before} alt="" width="640" height="360" />
-              </div>
-              <div class="request-example-panel">
-                <span>After</span>
-                <img src={requestExample.after} alt="" width="640" height="360" />
-              </div>
-            </div>
-            <p class="request-visually-hidden">
-              Before: {requestExample.beforeAlt}. After: {requestExample.afterAlt}.
-            </p>
-          </div>
-          <figcaption class="claim-postcard-caption">
-            <a class="text-link" href={requestExample.href}>Example — {requestExample.name}, {requestExample.town}</a>
-          </figcaption>
-        </figure>
       </div>
       <div class="claim-side" data-claim-side hidden>
         <p class="eyebrow">Let's talk about your website</p>
@@ -107,7 +75,7 @@ if (!requestExample) {
       <h2 data-confirmation-title></h2>
       <p data-confirmation-body></p>
       <p data-confirmation-next><strong>What happens next.</strong> We will be in touch, usually within a couple of working days.</p>
-      <a class="button" data-confirmation-back href="/transformations/"><span data-confirmation-back-label>Back to the concepts</span> <ArrowIcon /></a>
+      <a class="button" data-confirmation-back href="/"><span data-confirmation-back-label>Back to the homepage</span> <ArrowIcon /></a>
     </div>
   </section>
 </BaseLayout>
@@ -214,15 +182,6 @@ if (!requestExample) {
       privacy.href = "/privacy/";
       privacy.textContent = "Read the privacy notice.";
       formNote.append(privacy);
-    }
-
-    if (confirmationBack && backSlug) {
-      confirmationBack.href = `/transformations/${backSlug}/`;
-      if (confirmationBackLabel) {
-        confirmationBackLabel.textContent = requestedBusiness
-          ? `Back to the ${requestedBusiness} case study`
-          : "Back to the case study";
-      }
     }
   }
 
