@@ -460,6 +460,14 @@ of these businesses supplied one.
   as illustrations and an indicative map, not photographs of patients or a
   boundary survey.
 
+- Donard Veterinary trio mark — **in use** (11 October 2026). Hand-authored
+  inline SVG in `src/concepts/donard-veterinary/components/DvTrioParts.astro`:
+  a dog, cat and rabbit drawn after the practice's own window decal and
+  fascia mark on 8 Railway Street (photographed by the client-side owner of
+  this repo, not shipped), in the shopfront teal, slate and white. Not
+  generated; no third-party artwork traced. Replaces the 31 July line cast as
+  the concept's pet imagery.
+
 - `public/media/concepts/donard-veterinary/donard-veterinary-emblem.png` — **in use**
   (18 August 2026). Generated concept emblem asset exploring a refined brand
   emblem combining Slieve Donard with a nestled dog and cat companion silhouette,
