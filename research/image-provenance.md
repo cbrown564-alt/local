@@ -482,6 +482,17 @@ of these businesses supplied one.
   transparent cutout for the header lockup. Disclosed as an independent concept
   exercise.
 
+- Donard Veterinary hero transformation sequence — **research prototype only**
+  (12 October 2026). 9-frame progression and 30fps ambient dissolve animation
+  exploring a gradual transformation from the practice's 2D flat silhouette
+  emblem into living animals settled inside the clinic reception. Masters
+  preserved in `media/held/concepts/donard-veterinary/hero-transformation/`:
+  `frame_01.jpg` through `frame_09.jpg`, `donard_hero_transformation.gif`,
+  `donard_hero_transformation.mp4`, `donard_ambient_dissolve.gif` and
+  `donard_ambient_dissolve.mp4`. Generated using image diffusion references
+  anchored to the physical shopfront and window vinyl. Not wired to public
+  routes; documented in `research/concepts/donard-veterinary/hero-transformation.md`.
+
 ## Business-owned site assets
 
 - `douglas-cromie-logo.png` and `douglas-cromie-forecourt.jpg` — **in use.**
