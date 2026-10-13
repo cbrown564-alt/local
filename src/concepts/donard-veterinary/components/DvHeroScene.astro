@@ -24,9 +24,7 @@
   </picture>
   <video
     class="dv-hero-video"
-    autoplay
     muted
-    loop
     playsinline
     preload="metadata"
     poster="/media/concepts/donard-veterinary/donard-veterinary-hero.jpg"
@@ -35,5 +33,36 @@
     <source src="/media/concepts/donard-veterinary/donard-veterinary-hero.webm" type="video/webm" />
     <source src="/media/concepts/donard-veterinary/donard-veterinary-hero.mp4" type="video/mp4" />
   </video>
-  <span class="dv-video-note">AI-generated scene</span>
 </div>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>(".dv-hero-video");
+  if (video) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let completedPlays = 0;
+    const settle = () => {
+      video.pause();
+      video.hidden = true;
+    };
+    const play = () => {
+      void video.play().catch(settle);
+    };
+
+    video.addEventListener("ended", () => {
+      completedPlays += 1;
+      if (completedPlays >= 2) {
+        settle();
+      } else {
+        video.currentTime = 0;
+        play();
+      }
+    });
+    video.addEventListener("error", settle);
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches) settle();
+    });
+
+    if (reducedMotion.matches) settle();
+    else play();
+  }
+</script>

@@ -476,6 +476,16 @@ of these businesses supplied one.
   outlines drawn by hand, not traced from any map product or tile set. Captioned
   on the page as approximate and simplified. Not generated.
 
+- `public/media/concepts/donard-veterinary/donard-veterinary-logo.png` — **in use**
+  (13 October 2026). User-supplied `frame_01.jpg` from the held hero-transformation
+  masters, edited with the built-in image generation tool for the top-left
+  header logo at the user's request. The blue background and white oval are
+  replaced with transparency; the dog, cat and white rabbit silhouettes remain.
+  Final prompt: remove the entire white oval backdrop; retain only the grey
+  dog, teal cat and white rabbit with their arrangement, shapes and proportions;
+  make all empty areas transparent, including the tail loop and ear cutout;
+  output a transparent PNG without text, shadows or redesign.
+
 - `public/media/concepts/donard-veterinary/donard-veterinary-emblem.png` — **in use**
   (18 August 2026). Generated concept emblem asset exploring a refined brand
   emblem combining Slieve Donard with a nestled dog and cat companion silhouette,
@@ -491,8 +501,9 @@ of these businesses supplied one.
   ambient 30fps transition dissolving from the practice's 2D silhouette emblem
   into the living trio settled inside Donard Veterinary Clinic reception.
   Derived from diffusion reference generations matching the 8 Railway Street
-  shopfront identity. Disclosed in visible layer via `.dv-video-note` and in
-  `ConceptLayout` `bannerNote`. Under `prefers-reduced-motion: reduce`, the video
+  shopfront identity. The hero overlay disclosure was removed at the user's
+  request on 13 October 2026. The video plays twice, then reveals the final
+  photograph. Under `prefers-reduced-motion: reduce`, the video
   layer is hidden and settles on the photograph. Research masters preserved in
   `media/held/concepts/donard-veterinary/hero-transformation/`.
 
