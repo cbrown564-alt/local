@@ -13,3 +13,5 @@ What to bring across:
 - Strong visual hierarchy, so the reader does less work to find the offer, the price and the next step.
 
 Keep the copy's voice. This is a visual pass, not a rewrite.
+
+Note: the page now ends with a "Why I do this" closer about AI, added 13 October 2026. The visual pass should give it a quiet, deliberate ending rather than another card.
