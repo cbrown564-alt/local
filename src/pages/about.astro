@@ -1,9 +1,74 @@
 ---
 import BaseLayout from "../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../site/components/ArrowIcon.astro";
+import ResponsiveImage from "../site/components/ResponsiveImage.astro";
 import { siteDetails } from "../site/data/site";
 import { ogImages } from "../site/data/og-images";
 import "../site/styles/about.css";
+
+const postcards = [
+  {
+    slot: "tollymore",
+    src: "/media/studio/conor-tollymore.jpg",
+    width: 1125,
+    height: 1500,
+    alt: "Conor smiling on a gravel path through tall trees and ferns in Tollymore Forest.",
+    caption: "Tollymore Forest",
+  },
+  {
+    slot: "murlough",
+    src: "/media/studio/conor-murlough.jpg",
+    width: 1265,
+    height: 949,
+    alt: "Conor in sunglasses on the dunes at Murlough, with the beach and a bright sea behind.",
+    caption: "Murlough Bay",
+  },
+  {
+    slot: "donard",
+    src: "/media/studio/conor-donard.jpg",
+    width: 1265,
+    height: 949,
+    alt: "Conor in a fur-lined hat on a snowy stone path on Slieve Donard, with the sea far below.",
+    caption: "Slieve Donard, in the snow",
+  },
+];
+
+const principles = [
+  {
+    glyph: "compare",
+    title: "See the change first",
+    body: "You get a free before-and-after of your own homepage before you decide anything. It makes the difference concrete and keeps the next step low-risk.",
+  },
+  {
+    glyph: "shopfront",
+    title: "Show the place people already know",
+    body: "Locals know the welcome, the produce, the craft. Your website should carry the same impression, and where it falls short, a before-and-after makes the gap easy to see.",
+  },
+  {
+    glyph: "sprout",
+    title: "Benefit stays nearby",
+    body: "Paid projects keep the studio running. A share of that time goes back into free or reduced-cost help for clubs, charities and community groups with a clear need.",
+  },
+];
+
+const answers = [
+  {
+    q: "Is the before-and-after really free?",
+    a: "Yes, and there’s no obligation to continue. It’s useful on its own, not a redesign held back for a sales call.",
+  },
+  {
+    q: "What would paid work cost?",
+    a: "You get a fixed written quote before paid work begins. The job can stay small, one useful page or improvement first, and nothing starts until you accept the scope and price.",
+  },
+  {
+    q: "Are hosting and domain costs hidden?",
+    a: "No. A quote separates the build, the domain and the hosting. You can keep a provider you already use, and there’s no long-term subscription.",
+  },
+  {
+    q: "How long does it take?",
+    a: "I confirm a date for your before-and-after when I reply. If you go ahead, the schedule and its checkpoints are agreed before work starts.",
+  },
+];
 ---
 
 <BaseLayout
@@ -12,85 +77,131 @@ import "../site/styles/about.css";
   ogImage={ogImages.studio}
   ogImageAlt="Mourne Made — local websites for Dundrum and Newcastle"
 >
-  <section class="page-hero page-hero--list about-hero">
-    <div class="shell">
-      <p class="eyebrow">Why local</p>
-      <h1>The street should look as good online as it feels in person.</h1>
-      <p class="lede">Mourne Made starts close to home: independent owners first, then the clubs, charities and public services that hold local life together.</p>
-    </div>
-  </section>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
 
-  <section class="founder-note" aria-labelledby="founder-heading">
-    <div class="shell founder-note-grid">
-      <div>
-        <p class="eyebrow">Who you are dealing with</p>
-        <h2 id="founder-heading">I’m {siteDetails.founderFirstName}, from Dundrum.</h2>
+  <div class="about">
+    <section class="about-hero" aria-labelledby="about-hero-title">
+      <div class="shell about-hero-grid">
+        <div class="about-postcards">
+          {postcards.map((card) => (
+            <figure class={`about-postcard about-postcard--${card.slot}`}>
+              <div class="about-postcard-photo">
+                <ResponsiveImage
+                  src={card.src}
+                  alt={card.alt}
+                  width={card.width}
+                  height={card.height}
+                  loading="eager"
+                  sizes="(max-width: 860px) 60vw, 340px"
+                />
+              </div>
+              <figcaption>{card.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div class="about-hero-copy">
+          <p class="about-kicker">Why local</p>
+          <h1 id="about-hero-title">I’m {siteDetails.founderFirstName}, and this is my <em>patch.</em></h1>
+          <p class="about-lede">I live in Dundrum. Weekends are Tollymore, Murlough and, when the weather allows, the top of Donard. The businesses I build websites for are the ones I pass on the way.</p>
+        </div>
       </div>
-      <div class="founder-note-copy">
-        <p>Mourne Made is run by me, {siteDetails.founder}. I make each concept and keep the first conversation direct, so you will not be passed into a sales team.</p>
-        <p><a class="text-link" href={siteDetails.emailHref}>Email {siteDetails.email}</a></p>
+    </section>
+
+    <section class="about-letter" aria-labelledby="about-letter-title">
+      <div class="shell about-letter-grid">
+        <h2 id="about-letter-title">The street should look as good online as it feels in person.</h2>
+        <div class="about-letter-copy">
+          <p>Round here, a good business is known by word of mouth: the welcome, the work, the people behind the counter. That reputation is earned in person, over years, and the website doesn’t always show it.</p>
+          <p>So Mourne Made starts close to home: independent owners first, then the clubs, charities and public services that hold local life together.</p>
+          <p>You’ll deal with me the whole way. There’s no sales team, and the person who answers your email is the person who builds your site.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="principles">
-    <div class="shell">
-      <div class="principle-row"><span class="principle-number">01</span><h3>See the change first</h3><p>You get a free before-and-after concept before any decision. It makes the difference concrete and keeps the next step low-risk.</p></div>
-      <div class="principle-row"><span class="principle-number">02</span><h3>Show the place people already know</h3><p>Locals know the welcome, the produce, the craft. Online should carry the same impression — and where it falls short, a concept makes the gap easy to see.</p></div>
-      <div class="principle-row"><span class="principle-number">03</span><h3>Benefit stays nearby</h3><p>Paid projects keep the studio running. A share of that capacity goes back into free or reduced-cost help for clubs, charities and organisations with a clear need.</p></div>
-    </div>
-  </section>
-
-  <section class="studio-faq" aria-labelledby="studio-faq-heading">
-    <div class="shell studio-faq-grid">
-      <div>
-        <p class="eyebrow">Straight answers</p>
-        <h2 id="studio-faq-heading">Before you ask.</h2>
+    <section class="about-principles" aria-labelledby="about-principles-title">
+      <div class="shell">
+        <p class="about-kicker">What I hold to</p>
+        <h2 id="about-principles-title">Three things you can count on.</h2>
+        <ol class="about-principles-list">
+          {principles.map((item) => (
+            <li>
+              <svg class="about-glyph" viewBox="0 0 56 56" width="56" height="56" aria-hidden="true" focusable="false">
+                {item.glyph === "compare" && (
+                  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="12" width="44" height="32" rx="3" />
+                    <path d="M28 8 V48" />
+                    <circle cx="28" cy="28" r="5" fill="var(--about-glyph-fill)" />
+                    <path d="M12 20 H20 M12 25 H22 M12 30 H18" opacity=".45" />
+                    <path d="M34 20 H44 M34 26 H40" />
+                    <rect x="34" y="32" width="8" height="5" rx="1" />
+                  </g>
+                )}
+                {item.glyph === "shopfront" && (
+                  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 22 L11 12 H45 L48 22" />
+                    <path d="M8 22 Q12 27 16 22 Q20 27 24 22 Q28 27 32 22 Q36 27 40 22 Q44 27 48 22" />
+                    <path d="M11 25 V46 H45 V25" />
+                    <path d="M17 46 V33 H25 V46" />
+                    <rect x="30" y="31" width="10" height="8" rx="1" />
+                    <path d="M6 46 H50" />
+                  </g>
+                )}
+                {item.glyph === "sprout" && (
+                  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M28 46 V26" />
+                    <path d="M28 32 C 18 32, 13 25, 13 17 C 22 17, 28 22, 28 32Z" fill="var(--about-glyph-fill)" />
+                    <path d="M28 27 C 36 27, 42 21, 42 13 C 34 13, 28 18, 28 27Z" />
+                    <path d="M14 46 C 20 42, 36 42, 42 46" />
+                  </g>
+                )}
+              </svg>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ol>
       </div>
-      <dl class="studio-faq-list">
-        <div>
-          <dt>Is the concept really free?</dt>
-          <dd>Yes. The focused before-and-after is free and there is no obligation to continue. It is useful on its own, not a redesign held back for a sales call.</dd>
-        </div>
-        <div>
-          <dt>What would paid work cost?</dt>
-          <dd>You receive a fixed written quote before paid work begins. The job can stay small — one useful page or improvement first — and nothing starts until you accept the scope and price.</dd>
-        </div>
-        <div>
-          <dt>Are hosting and domain costs hidden?</dt>
-          <dd>No. A quote separates the build, domain and hosting. You can keep a suitable provider you already use; there is no forced long-term subscription.</dd>
-        </div>
-        <div>
-          <dt>How long does it take?</dt>
-          <dd>I confirm the concept delivery date when I reply. If you choose to continue, the paid schedule and its checkpoints are agreed before work starts.</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
+    </section>
 
-  <section class="community">
-    <div class="shell community-grid">
-      <article class="community-card">
-        <p class="eyebrow">For businesses</p>
-        <h2>Ready to grow online</h2>
-        <p>Focused websites, richer menus and recipes, better galleries, clearer booking paths and stronger local discovery.</p>
-      </article>
-      <article class="community-card community-card-community">
-        <p class="eyebrow">For the community</p>
-        <h2>Useful work when the budget is tight</h2>
-        <p>Selected clubs, charities and community projects can receive reduced-cost or contributed work as capacity allows.</p>
-      </article>
-    </div>
-    <div class="shell button-row">
-      <a class="button button-blue" href="/request/">Request a free before-and-after <ArrowIcon /></a>
-      <a class="text-link" href={siteDetails.emailHref}>Or email {siteDetails.founderFirstName} directly</a>
-    </div>
-  </section>
+    <section class="about-answers" aria-labelledby="about-answers-title">
+      <div class="shell about-answers-grid">
+        <div>
+          <p class="about-kicker">Straight answers</p>
+          <h2 id="about-answers-title">Before you ask.</h2>
+        </div>
+        <dl class="about-answers-list">
+          {answers.map((item) => (
+            <div>
+              <dt>{item.q}</dt>
+              <dd>{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
 
-  <section class="about-closer" aria-labelledby="about-closer-heading">
-    <div class="about-closer-frame">
-      <h2 id="about-closer-heading">Why I do this</h2>
-      <p>The main reason I do this is to bring the good side of AI to local businesses. People are right to worry about AI taking jobs and making things up. But used carefully, it lets one person do good work quickly and cheaply, the kind of website work small businesses never had the time or money for. Nobody was being paid to do that work before, so it isn’t taken from anyone. Owners get a better shopfront online, and their customers find what they need more easily.</p>
-    </div>
-  </section>
+    <section class="about-ask" aria-labelledby="about-ask-title">
+      <div class="shell about-ask-inner">
+        <h2 id="about-ask-title">Want to see yours?</h2>
+        <div class="about-ask-action">
+          <a class="button" href="/request/">Get a free before-and-after <ArrowIcon /></a>
+          <p>Or email me at <a class="text-link" href={siteDetails.emailHref}>{siteDetails.email}</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-closer" aria-labelledby="about-closer-title">
+      <div class="shell about-closer-inner">
+        <h2 id="about-closer-title">Why I do this</h2>
+        <p>The main reason I do this is to bring the good side of AI to local businesses. People are right to worry about AI taking jobs and making things up. But used carefully, it lets one person do good work quickly and cheaply, the kind of website work small businesses never had the time or money for. Nobody was being paid to do that work before, so it isn’t taken from anyone. Owners get a better shopfront online, and their customers find what they need more easily.</p>
+        <p class="about-sign">{siteDetails.founderFirstName}</p>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
