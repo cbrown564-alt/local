@@ -210,7 +210,7 @@ export const review = {
   text:
     "This country house is beautiful, the grounds are beautiful, and our room was absolutely lovely.",
   attribution: "Carolyn K · Asheville, North Carolina",
-  context: "Reviewed on TripAdvisor, 22 July 2026 · stayed July 2026",
+  context: "July 2026",
   source: "https://www.tripadvisor.co.uk/Hotel_Review-g186478-d1462012",
 };
 
