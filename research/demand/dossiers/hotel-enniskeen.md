@@ -2,7 +2,9 @@
 
 **Rung 0** · no contact yet · private concept to show the hotel at
 `https://mournemade.co.uk/for/enniskeen-dysn/` (five pages, unlisted, noindex;
-source in `src/concepts/hotel-enniskeen/`) · the public concept and case-study
+source in `src/concepts/hotel-enniskeen/`) · the same pages in the hotel's
+current colours (royal blue #0000CC as the accent on white) at
+`https://mournemade.co.uk/for/enniskeen-dysn-blue/`, to show as an alternative · the public concept and case-study
 routes were taken down with the gallery and are not live · one-sheet (parked, outdated) and
 written pitch in `research/concepts/hotel-enniskeen/enniskeen-pitch.md`
 
@@ -85,7 +87,8 @@ The owning family. Find out which member handles marketing and bookings.
 
 ## Step 0 before the first visit
 
-- Confirm `/for/enniskeen-dysn/` is deployed and opens on a phone.
+- Confirm `/for/enniskeen-dysn/` and `/for/enniskeen-dysn-blue/` are deployed
+  and open on a phone.
 - **Leave the one-sheet at home.** It is parked, not for this visit: its
   screenshot, film reference and framing predate the October refresh. Copies
   printed before 15 October 2026 also scan to a 404. On that day only its QR

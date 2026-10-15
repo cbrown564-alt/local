@@ -44,6 +44,14 @@ export const bookin1 = {
  *  arrangement as Donard Veterinary); there is no public concept route. */
 export const base = "/for/enniskeen-dysn";
 
+/** The same five pages in the colours of the hotel's current website — its
+ *  royal blue, white and near-black — so the owners can compare the design
+ *  with and without a change of palette. Pages read their base from the URL,
+ *  so links stay inside whichever version is open. */
+export const blueBase = "/for/enniskeen-dysn-blue";
+export const baseFor = (pathname: string) =>
+  pathname.startsWith(`${blueBase}/`) ? blueBase : base;
+
 /** Disclosed AI-generated imagery for the independent concept.
  *
  * The house and named Room 6 bathroom visual are faithful visualisations made
@@ -176,13 +184,15 @@ export type DayPart = (typeof dayPartSources)[number];
  *  component's client script, so it must stay free of Node built-ins. */
 export const dayParts: readonly DayPart[] = dayPartSources;
 
-export const nav = [
-  { id: "home", href: `${base}/`, label: "Home" },
-  { id: "rooms", href: `${base}/rooms/`, label: "Stay" },
-  { id: "dine", href: `${base}/dine/`, label: "Dine" },
-  { id: "estate", href: `${base}/estate/`, label: "The estate" },
-  { id: "things-to-do", href: `${base}/things-to-do/`, label: "Things to do" },
+export const navFor = (root: string) => [
+  { id: "home", href: `${root}/`, label: "Home" },
+  { id: "rooms", href: `${root}/rooms/`, label: "Stay" },
+  { id: "dine", href: `${root}/dine/`, label: "Dine" },
+  { id: "estate", href: `${root}/estate/`, label: "The estate" },
+  { id: "things-to-do", href: `${root}/things-to-do/`, label: "Things to do" },
 ] as const;
+
+export const nav = navFor(base);
 
 export type NavId = (typeof nav)[number]["id"];
 

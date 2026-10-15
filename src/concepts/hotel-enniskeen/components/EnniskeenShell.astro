@@ -1,5 +1,5 @@
 ---
-import { enniskeen, bookin1, base, nav, type NavId } from "../content";
+import { enniskeen, bookin1, baseFor, blueBase, navFor, type NavId } from "../content";
 import PrivateLayout from "../../_private/PrivateLayout.astro";
 import EnkMark from "./EnkMark.astro";
 import "../../../site/styles/global.css";
@@ -11,13 +11,16 @@ interface Props {
 }
 
 const { title, current } = Astro.props;
+const base = baseFor(Astro.url.pathname);
+const nav = navFor(base);
+const theme = base === blueBase ? " enk-theme-blue" : "";
 ---
 
 <PrivateLayout
   title={title}
   businessName={enniskeen.name}
   fontHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap"
-  bodyClass="concept-page concept-enniskeen"
+  bodyClass={`concept-page concept-enniskeen${theme}`}
   lang="en-GB"
   note="Imagery is AI-generated."
   favicon="/brand/enniskeen-mark.svg"
