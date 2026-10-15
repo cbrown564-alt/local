@@ -40,7 +40,9 @@ export const bookin1 = {
   vouchers: "https://shop.bookin1.com/property/ecs/vouchers/list",
 };
 
-export const base = "/concepts/hotel-enniskeen";
+/** Shared privately with the hotel at an unlisted, noindex route (the same
+ *  arrangement as Donard Veterinary); there is no public concept route. */
+export const base = "/for/enniskeen-dysn";
 
 /** Disclosed AI-generated imagery for the independent concept.
  *

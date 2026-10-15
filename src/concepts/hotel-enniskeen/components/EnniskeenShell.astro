@@ -1,6 +1,6 @@
 ---
 import { enniskeen, bookin1, base, nav, type NavId } from "../content";
-import ConceptLayout from "../../_shell/ConceptLayout.astro";
+import PrivateLayout from "../../_private/PrivateLayout.astro";
 import EnkMark from "./EnkMark.astro";
 import "../../../site/styles/global.css";
 import "../styles.css";
@@ -13,12 +13,13 @@ interface Props {
 const { title, current } = Astro.props;
 ---
 
-<ConceptLayout
+<PrivateLayout
   title={title}
-  slug="hotel-enniskeen"
+  businessName={enniskeen.name}
+  fontHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap"
   bodyClass="concept-page concept-enniskeen"
   lang="en-GB"
-  bannerNote="Imagery is AI-generated."
+  note="Imagery is AI-generated."
   favicon="/brand/enniskeen-mark.svg"
 >
     <!-- One photographic voice.
@@ -54,7 +55,7 @@ const { title, current } = Astro.props;
           </span>
         </a>
       </div>
-      <nav class="enk-nav" aria-label="Concept navigation">
+      <nav class="enk-nav" aria-label="Main">
         {nav.filter((item) => item.id !== "home").map((item) => (
           <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
         ))}
@@ -135,4 +136,4 @@ const { title, current } = Astro.props;
         ))}
       </nav>
     </footer>
-</ConceptLayout>
+</PrivateLayout>

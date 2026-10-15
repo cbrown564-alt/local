@@ -13,9 +13,22 @@ interface Props {
   businessName: string;
   lang?: string;
   fontHref?: string;
+  /** The business's own mark, when the concept has one. */
+  favicon?: string;
+  /** A sentence added to the closing note — e.g. a generated-imagery
+   *  disclosure, which must stay in the visible layer. */
+  note?: string;
 }
 
-const { title, bodyClass, businessName, lang = "en-GB", fontHref } = Astro.props;
+const {
+  title,
+  bodyClass,
+  businessName,
+  lang = "en-GB",
+  fontHref,
+  favicon = "/favicon.svg",
+  note,
+} = Astro.props;
 const description = `A website idea for ${businessName}.`;
 ---
 
@@ -30,7 +43,7 @@ const description = `A website idea for ${businessName}.`;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
     {fontHref && (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,7 +55,7 @@ const description = `A website idea for ${businessName}.`;
   </head>
   <body class={`${bodyClass} private-page`}>
     <slot />
-    <p class="private-note">An unrequested website idea for {businessName}, not the live site.</p>
+    <p class="private-note">An unrequested website idea for {businessName}, not the live site.{note && ` ${note}`}</p>
   </body>
 </html>
 
