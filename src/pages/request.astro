@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../site/layouts/BaseLayout.astro";
 import ArrowIcon from "../site/components/ArrowIcon.astro";
+import ResponsiveImage from "../site/components/ResponsiveImage.astro";
+import SerifFont from "../site/components/SerifFont.astro";
+import { siteDetails } from "../site/data/site";
 import { ogImages } from "../site/data/og-images";
 import "../site/styles/request.css";
 
@@ -12,15 +15,30 @@ import "../site/styles/request.css";
   ogImage={ogImages.request}
   ogImageAlt="Request a free before-and-after website concept from Mourne Made"
 >
+  <SerifFont />
+
   <section
-    class="shell request-layout"
+    class="shell request-layout req"
     data-request-mode="request"
   >
     <div class="request-copy" data-request-copy>
       <div class="request-side" data-request-intro>
         <p class="eyebrow">Free before-and-after</p>
-        <h1>See your own before and after.</h1>
-        <p class="request-side-lede">Tell us the business. We’ll make one clearer screen — free, no obligation.</p>
+        <h1>See your own <em>before and after.</em></h1>
+        <p class="request-side-lede">Tell me the business and I’ll send back one clearer screen for it. It’s free, and there’s no obligation.</p>
+        <div class="req-note">
+          <div class="req-note-photo">
+            <ResponsiveImage
+              src="/media/studio/conor-tollymore.jpg"
+              alt=""
+              width="1125"
+              height="1500"
+              loading="eager"
+              sizes="72px"
+            />
+          </div>
+          <p>You’ll hear back from me, usually within a couple of working days.<span class="req-note-sign">{siteDetails.founderFirstName}</span></p>
+        </div>
       </div>
       <div class="claim-side" data-claim-side hidden>
         <p class="eyebrow">Let's talk about your website</p>
@@ -74,7 +92,7 @@ import "../site/styles/request.css";
       <p class="eyebrow">Sent</p>
       <h2 data-confirmation-title></h2>
       <p data-confirmation-body></p>
-      <p data-confirmation-next><strong>What happens next.</strong> We will be in touch, usually within a couple of working days.</p>
+      <p data-confirmation-next><strong>What happens next.</strong> I’ll be in touch, usually within a couple of working days.</p>
       <a class="button" data-confirmation-back href="/"><span data-confirmation-back-label>Back to the homepage</span> <ArrowIcon /></a>
     </div>
   </section>
@@ -173,7 +191,7 @@ import "../site/styles/request.css";
     if (ideaField) {
       ideaField.placeholder = "A correction, a better time to talk, or anything else.";
     }
-    if (ideaLabel) ideaLabel.textContent = "Anything we should know?";
+    if (ideaLabel) ideaLabel.textContent = "Anything I should know?";
     if (submitLabel) submitLabel.textContent = defaultSubmitLabel;
     if (formNote) {
       formNote.replaceChildren();
@@ -231,13 +249,13 @@ import "../site/styles/request.css";
         confirmation.hidden = false;
         if (confirmationTitle) {
           confirmationTitle.textContent = business
-            ? `Thanks — we have your note about ${business}.`
-            : "Thanks — that is with us.";
+            ? `Thanks, I have your note about ${business}.`
+            : "Thanks, that’s with me.";
         }
         if (confirmationBody) {
           confirmationBody.textContent = email
-            ? "We’ll reply to the email address you provided."
-            : "We’ll be in touch — no email needed.";
+            ? "I’ll reply to the email address you provided."
+            : "I’ll be in touch, no email needed.";
         }
         if (confirmationNext) {
           confirmationNext.replaceChildren();
@@ -246,8 +264,8 @@ import "../site/styles/request.css";
           confirmationNext.append(
             strong,
             email
-              ? " We will reply to the email address you provided, usually within a couple of working days."
-              : " We will be in touch, usually within a couple of working days.",
+              ? " I’ll reply to the email address you provided, usually within a couple of working days."
+              : " I’ll be in touch, usually within a couple of working days.",
           );
         }
         confirmation.focus();
@@ -257,8 +275,8 @@ import "../site/styles/request.css";
         form.classList.remove("request-form--submitted");
         if (success) {
           success.textContent = email
-            ? `Thanks — your request for ${business} has been sent. We’ll reply to the email address you provided.`
-            : `Thanks — your request for ${business} has been sent. We’ll be in touch.`;
+            ? `Thanks, your request for ${business} has been sent. I’ll reply to the email address you provided.`
+            : `Thanks, your request for ${business} has been sent. I’ll be in touch.`;
         }
         success?.scrollIntoView({ behavior: "smooth", block: "center" });
       }
