@@ -21,6 +21,11 @@ export interface OneSheet {
   qr: string;
   /** Rendered PDF, outside the published site. */
   output: string;
+  /** A private, unlisted page shown to the business instead of the public
+      case study (e.g. `/for/<slug>-<code>/`). Such a page has no request form
+      for a `?source=` to reach, so the printed URL is the bare path — short
+      enough to type from the paper. */
+  privatePath?: `/for/${string}/`;
 }
 
 export const oneSheets = {
@@ -29,6 +34,9 @@ export const oneSheets = {
     route: "/workbench/print/enniskeen-onesheet/",
     qr: "public/media/concepts/hotel-enniskeen/hotel-enniskeen-onesheet-qr.svg",
     output: ".scratch/print/pdf/hotel-enniskeen-flagship-onesheet.pdf",
+    /* The public case study was taken down with the gallery; on 15 October
+       2026 this sheet's QR still scanned to its 404. */
+    privatePath: "/for/enniskeen-dysn/",
   },
   /* The Buck's Head and Cúpla sheets were archived with their concepts on
      27 September 2026 (archive/concepts/<slug>/workbench/). */
@@ -47,17 +55,20 @@ const publicSlugs = new Set<string>(publicTransformationSlugs);
 /** The `source` value a sheet's QR must carry, per docs/adr/0002. */
 export const oneSheetSource = (slug: string) => `onesheet-${slug}`;
 
+const sheetFor = (slug: string): OneSheet | undefined =>
+  (oneSheets as Record<string, OneSheet>)[slug];
+
 /** The path a sheet's QR encodes. Absolute URL and printed text derive from
     this one string so they cannot drift apart. */
 export const oneSheetPath = (slug: string) =>
-  `/transformations/${slug}/?source=${oneSheetSource(slug)}`;
+  sheetFor(slug)?.privatePath ?? `/transformations/${slug}/?source=${oneSheetSource(slug)}`;
 
 /**
  * A printed URL cannot be revised after the run, so an unknown or unpublished
  * slug is a build-time failure rather than a sheet that scans to a 404.
  */
 export const oneSheetUrl = (slug: string) => {
-  if (!publicSlugs.has(slug)) {
+  if (!sheetFor(slug)?.privatePath && !publicSlugs.has(slug)) {
     throw new Error(
       `One-sheet slug "${slug}" is not a public transformation. A printed QR would scan to a 404.`,
     );

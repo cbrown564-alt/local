@@ -32,8 +32,24 @@ import { publicTransformationSlugs } from "../../src/site/data/transformations.t
 
 const root = path.resolve(import.meta.dirname, "..", "..");
 const read = (rel: string) => fs.readFileSync(path.join(root, rel), "utf8");
-const slugs = Object.keys(oneSheets) as (keyof typeof oneSheets)[];
-assert.ok(slugs.length > 0, "no one-sheets are defined");
+const allSlugs = Object.keys(oneSheets) as (keyof typeof oneSheets)[];
+assert.ok(allSlugs.length > 0, "no one-sheets are defined");
+
+// A sheet with a privatePath scans to an unlisted page shown to that one
+// business. There is no claim hop or request form behind it, so only checks
+// 2 and 3 (artwork and derivation) and the route's existence apply to it; the
+// attribution chain below covers the case-study sheets.
+const privatePathOf = (slug: string) =>
+  (oneSheets[slug as keyof typeof oneSheets] as { privatePath?: string }).privatePath;
+const slugs = allSlugs.filter((slug) => !privatePathOf(slug));
+const privateSlugs = allSlugs.filter((slug) => privatePathOf(slug));
+for (const slug of privateSlugs) {
+  const route = privatePathOf(slug)!.replace(/^\/|\/$/g, "");
+  assert.ok(
+    fs.existsSync(path.join(root, "src/pages", route, "index.astro")),
+    `${slug}'s sheet scans to /${route}/, but src/pages/${route}/index.astro does not exist`,
+  );
+}
 
 const publicSlugs = new Set<string>(publicTransformationSlugs);
 
@@ -48,7 +64,7 @@ for (const slug of slugs) {
 // 2. The committed artwork must encode the destination the code builds today.
 //    toFile writes an XML prolog that toString omits, so the SVG body is what
 //    is compared; the encoder is otherwise deterministic for fixed options.
-for (const slug of slugs) {
+for (const slug of allSlugs) {
   const { qr } = oneSheets[slug];
   assert.ok(fs.existsSync(path.join(root, qr)), `${qr} is missing, so the sheet has no QR to print`);
   const committed = read(qr);
@@ -67,7 +83,7 @@ for (const slug of slugs) {
 
 // 3. ADR-0002's first break was artwork printing ?src=onesheet while the form
 //    read ?source=, possible because the URL was written out by hand twice.
-for (const slug of slugs) {
+for (const slug of allSlugs) {
   const route = oneSheets[slug].route.replace(/^\/|\/$/g, "");
   const page = `src/${route}.astro`;
   assert.ok(fs.existsSync(path.join(root, page)), `${page} does not exist, but ${slug}'s sheet names it`);
@@ -189,7 +205,9 @@ for (const slug of slugs) {
   );
 }
 
-console.log(`Source attribution: the printed-QR chain holds for ${slugs.length} one-sheets.`);
+console.log(
+  `Source attribution: the printed-QR chain holds for ${slugs.length} case-study one-sheets; ${privateSlugs.length} private-page sheet(s) checked for artwork and route.`,
+);
 console.log(
   "The live scan-to-inbox hop is not checked here: it needs a deployment and an inbox. Verified once on 6 August 2026 through the Hotel Enniskeen sheet (docs/adr/0002).",
 );

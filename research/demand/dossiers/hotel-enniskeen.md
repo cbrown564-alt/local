@@ -1,8 +1,10 @@
 # Hotel Enniskeen: demand dossier
 
-**Rung 0** · no contact yet · concept `/concepts/hotel-enniskeen/` (the most
-developed pack) · case study `/transformations/hotel-enniskeen/` · one-sheet
-and written pitch in `research/concepts/hotel-enniskeen/enniskeen-pitch.md`
+**Rung 0** · no contact yet · private concept to show the hotel at
+`https://mournemade.co.uk/for/enniskeen-dysn/` (five pages, unlisted, noindex;
+source in `src/concepts/hotel-enniskeen/`) · the public concept and case-study
+routes were taken down with the gallery and are not live · one-sheet (parked, outdated) and
+written pitch in `research/concepts/hotel-enniskeen/enniskeen-pitch.md`
 
 ## What we know
 
@@ -70,8 +72,27 @@ conversations have been held and written up.
 
 The owning family. Find out which member handles marketing and bookings.
 
+## What the private concept shows (refreshed 15 October 2026)
+
+- A phone header with a call button and a menu; on a phone the date search
+  sits under the headline, in the first screen, and hands straight to Bookin1.
+- Stay, Dine, The estate and Things to do each on their own page, each
+  picture shown once, the hotel's own copy said once.
+- Every image is AI-generated and the page says so at the foot. The house
+  front and Room 6 are visualisations from reference photographs of the real
+  hotel; the rest are atmospheric. Expect the question, and offer to swap in
+  their own photographs.
+
 ## Step 0 before the first visit
 
+- Confirm `/for/enniskeen-dysn/` is deployed and opens on a phone.
+- **Leave the one-sheet at home.** It is parked, not for this visit: its
+  screenshot, film reference and framing predate the October refresh. Copies
+  printed before 15 October 2026 also scan to a 404. On that day only its QR
+  was repointed to `https://mournemade.co.uk/for/enniskeen-dysn/` and the
+  "own photographs" claim corrected
+  (`src/workbench/print/enniskeen-onesheet.astro`). Redesign it before any
+  later use.
 - Re-check the live site: still the 2012 template? Still Bookin1?
 - Re-test the Bookin1 deep link the concept uses.
 - Check the OTA listings: which ones, and what they show.
