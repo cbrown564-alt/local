@@ -1,7 +1,7 @@
 # Hotel Enniskeen: demand dossier
 
 **Rung 0** · no contact yet · private concept to show the hotel at
-`https://mournemade.co.uk/for/enniskeen-dysn/` (five pages, unlisted, noindex;
+`https://mournemade.co.uk/for/enniskeen-dysn/` (four pages, unlisted, noindex;
 source in `src/concepts/hotel-enniskeen/`) · the same pages in the hotel's
 current colours (royal blue #0000CC as the accent on white) at
 `https://mournemade.co.uk/for/enniskeen-dysn-blue/`, to show as an alternative · the public concept and case-study
@@ -55,7 +55,7 @@ phone** is the sentence that lands. Lead with the one they raise.
 ## Smallest paid scope and the one measure
 
 **Direct action:** a phone-first front page with a date search passing
-straight into Bookin1, then Rooms and Dine. The full five-page concept only
+straight into Bookin1, then Rooms and Dine. The full concept only
 if the first step proves itself. Measure: direct bookings through Bookin1
 per month against the same months last year. Voucher sales are a second
 measure before Christmas.
@@ -78,8 +78,13 @@ The owning family. Find out which member handles marketing and bookings.
 
 - A phone header with a call button and a menu; on a phone the date search
   sits under the headline, in the first screen, and hands straight to Bookin1.
-- Stay, Dine, The estate and Things to do each on their own page, each
-  picture shown once, the hotel's own copy said once.
+- Stay, Dine, and The estate & the Mournes, each picture shown once, the
+  hotel's own copy said once.
+- Deliberately lean for the pitch (about 1,000 words across four pages): one
+  menu shown in full with the rest as PDFs, the outdoors as three short
+  cards, the history as four headlines. The full menus, walking routes, golf
+  logistics and the cycle-tour package stay in `content.ts` for the finished
+  site. Say so if they ask where it all went.
 - Every image is AI-generated and the page says so at the foot. The house
   front and Room 6 are visualisations from reference photographs of the real
   hotel; the rest are atmospheric. Expect the question, and offer to swap in

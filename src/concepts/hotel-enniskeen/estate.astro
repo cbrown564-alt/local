@@ -2,21 +2,29 @@
 import EnniskeenShell from "./components/EnniskeenShell.astro";
 import EnkEstateMap from "./components/EnkEstateMap.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
-import { estate, baseFor, generatedVisuals } from "./content";
+import { estate, generatedVisuals, outdoors, thingsToDo } from "./content";
 
-const base = baseFor(Astro.url.pathname);
+/* The estate and the Mournes on one page. The pitch keeps one idea per
+   section: the grounds, drawn; three reasons to come; where the house came
+   from. The routes, packages and practical detail stay in content.ts for
+   the finished site. */
+const activities = [
+  { title: "Walking", copy: outdoors.walking, image: generatedVisuals.walker },
+  { title: "Golf", copy: outdoors.golf, image: generatedVisuals.royalCountyDown },
+  { title: "Bikes", copy: outdoors.cycling, image: generatedVisuals.cycling },
+];
+const nearby = thingsToDo.nearby.filter((place) => place.label !== "Royal County Down");
 ---
 
-<EnniskeenShell title={"The estate — Enniskeen Country House Hotel"} current="estate">
+<EnniskeenShell title={"The estate & the Mournes — Enniskeen Country House Hotel"} current="estate">
     <main>
-      <!-- Hero: the estate from the air -->
       <section class="enk-int-hero enk-int-hero--flip">
         <div class="enk-int-hero-copy">
-          <p class="enk-kicker">The estate · Twelve acres</p>
+          <p class="enk-kicker">The estate &amp; the Mournes</p>
           <h1>Twelve wooded acres above the Shimna.</h1>
-          <p class="enk-lede">{estate.wildlife}</p>
+          <p class="enk-lede">{outdoors.lede}</p>
           <div class="enk-actions">
-            <a class="enk-cta" href={`${base}/things-to-do/`}>Walks from the door</a>
+            <a class="enk-cta" href="#mournes">From the door</a>
           </div>
         </div>
         <figure class="enk-int-hero-image">
@@ -29,40 +37,44 @@ const base = baseFor(Astro.url.pathname);
         </figure>
       </section>
 
-      <!-- The woodland trail -->
-      <section class="enk-trail" aria-labelledby="trail-heading">
-        <div class="enk-trail-copy">
-          <p class="enk-kicker" style="animation:none">The woodland trail</p>
-          <h2 id="trail-heading">Past the Wishing Well, down to the river.</h2>
-          <p>{estate.intro}</p>
-        </div>
-        <figure class="enk-trail-visual">
-          <ResponsiveImage
-            pictureClass="concept-responsive-picture"
-            {...generatedVisuals.woodland}
-          />
-          <figcaption>On the trail</figcaption>
-        </figure>
-      </section>
-
-      <!-- The estate, drawn -->
       <section class="enk-map-section" aria-labelledby="map-heading">
         <div class="enk-map-head">
           <p class="enk-kicker" style="animation:none">The grounds</p>
           <h2 id="map-heading">The twelve acres, drawn.</h2>
-          <p>
-            The drive in off the Bryansford Road, the house and its turret, the
-            lawns below the terrace, and the trail that leaves the gardens for
-            the woods, passes the Wishing Well and comes out on the Shimna.
-          </p>
+          <p>{outdoors.map}</p>
         </div>
         <EnkEstateMap headingId="map-heading" />
       </section>
 
-      <!-- The history as a dated band. The hotel already owns a better story
-           than anything a competitor could buy. The two paragraphs and the
-           third showing of the house front that used to sit above it told
-           the same story twice; the timeline carries all of it. -->
+      <section class="enk-mournes" id="mournes" aria-labelledby="mournes-heading">
+        <div class="enk-room-types-head">
+          <p class="enk-kicker" style="animation:none">From the door</p>
+          <h2 id="mournes-heading">The Mournes start at the garden gate.</h2>
+        </div>
+        <ul class="enk-mournes-grid" role="list">
+          {activities.map((item) => (
+            <li class="enk-mournes-card">
+              <figure>
+                <ResponsiveImage pictureClass="concept-responsive-picture" {...item.image} />
+              </figure>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="enk-mournes-nearby">
+          <span class="enk-mournes-nearby-label">Nearby</span>
+          {nearby.map((place, index) => (
+            <Fragment>
+              {index > 0 && <span aria-hidden="true">·</span>}
+              <a href={place.href} rel="external">{place.label}</a>
+            </Fragment>
+          ))}
+        </p>
+      </section>
+
+      <!-- The history as four headlines. The paragraphs behind each stay in
+           content.ts; on the pitch the titles carry the story. -->
       <section class="enk-timeline-band" aria-labelledby="timeline-heading">
         <div class="enk-timeline-head">
           <p class="enk-kicker" style="animation:none">A hundred and thirty years</p>
@@ -73,7 +85,6 @@ const base = baseFor(Astro.url.pathname);
             <li>
               <span class="enk-timeline-marker">{entry.marker}</span>
               <h3>{entry.title}</h3>
-              <p>{entry.copy}</p>
             </li>
           ))}
         </ol>

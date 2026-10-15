@@ -44,7 +44,7 @@ export const bookin1 = {
  *  arrangement as Donard Veterinary); there is no public concept route. */
 export const base = "/for/enniskeen-dysn";
 
-/** The same five pages in the colours of the hotel's current website — its
+/** The same four pages in the colours of the hotel's current website — its
  *  royal blue, white and near-black — so the owners can compare the design
  *  with and without a change of palette. Pages read their base from the URL,
  *  so links stay inside whichever version is open. */
@@ -188,8 +188,7 @@ export const navFor = (root: string) => [
   { id: "home", href: `${root}/`, label: "Home" },
   { id: "rooms", href: `${root}/rooms/`, label: "Stay" },
   { id: "dine", href: `${root}/dine/`, label: "Dine" },
-  { id: "estate", href: `${root}/estate/`, label: "The estate" },
-  { id: "things-to-do", href: `${root}/things-to-do/`, label: "Things to do" },
+  { id: "estate", href: `${root}/estate/`, label: "Estate & Mournes" },
 ] as const;
 
 export const nav = navFor(base);
@@ -284,16 +283,22 @@ export const dine = {
     copy:
       "The afternoon tea menu is inspired by local Mourne Honey, sourced from a bee guru who keeps a small apiary close by on the slopes of Slieve Donard. On a good year the bees gather from the Mourne bell and ling heathers — and from fuchsia, sycamore, dandelion, bramble, clover and blackberry — and the honey is harvested by hand, spun from the wax frames.",
     booking: "Advance booking is required.",
+    /** The pitch keeps the honey and the bees; the flower list above is for
+     *  the finished site. */
+    short:
+      "Built around Mourne Honey from a small apiary on the slopes of Slieve Donard, where the bees work the bell and ling heathers. The honey is harvested by hand.",
   },
   brandyPad: {
     name: "The Brandy Pad Lounge",
     copy:
       "After a delicious dessert, retire to the 'Brandy Pad' lounge — named for the old smugglers' route through the Mournes — where you can sit back, relax in the peace and quiet, and let the world go by.",
+    short: "After dinner, named for the old smugglers' route through the Mournes.",
   },
   occasions: {
     name: "Special occasions",
     copy:
       "For a small wedding, anniversary, christening, birthday or family gathering, the Bay Room seats up to 30 guests, and the house takes intimate parties of 10 through to banquets of up to 75 — guaranteed to be the only function in the house on the day.",
+    short: "Parties of 10 to 75, and only one function in the house on the day.",
   },
   /**
    * Menus transcribed from the hotel's own published PDFs
@@ -747,6 +752,23 @@ export const dine = {
 };
 
 /** ${site}/WoodlandRiverTrail.html, History.html, index.html */
+/** The pitch shows less than the hotel publishes. The fuller copy in
+ *  `estate` and `thingsToDo` stays here for the finished site; the
+ *  estate-and-Mournes page reads only these lines, the timeline titles and
+ *  the nearby links. */
+export const outdoors = {
+  lede:
+    "The gardens look over Slieve Donard and out to the Irish Sea, the woodland trail runs down to the Shimna River, and the mountains begin at the garden gate.",
+  map:
+    "From the house and its turret, down the lawns and along the woodland trail past the Wishing Well to the Shimna. Bring a picnic.",
+  walking:
+    "Tollymore Forest, the Brandy Pad and Slieve Donard itself, all from the front door. The house keeps a drying room, maps and packed lunches.",
+  golf:
+    "Royal County Down is next door; Tom Watson, a many-time guest, called its outward half “as fine a nine holes as I have ever played”. The hotel arranges tee times.",
+  cycling:
+    "Bike hire from £15, with a shuttle up to Spelga Dam — then it's all downhill back to the house for afternoon tea.",
+};
+
 export const estate = {
   intro:
     "Enniskeen House has a beautiful twelve-acre estate to explore — take a stroll along the woodland trail past the picturesque Wishing Well, then find a quiet spot by the Shimna River, bring a picnic, and let the world go by.",

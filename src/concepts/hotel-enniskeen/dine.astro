@@ -2,6 +2,8 @@
 import EnniskeenShell from "./components/EnniskeenShell.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import { dine, enniskeen, generatedVisuals } from "./content";
+
+const [dinner, ...otherMenus] = dine.menus;
 ---
 
 <EnniskeenShell title={"Dine — Enniskeen Country House Hotel"} current="dine">
@@ -14,7 +16,7 @@ import { dine, enniskeen, generatedVisuals } from "./content";
           <p class="enk-lede">{dine.restaurant.copy}</p>
           <div class="enk-actions">
             <a class="enk-cta" href={enniskeen.phoneHref}>Call {enniskeen.phone} to book</a>
-            <a class="enk-link" href="#menus">See the menus →</a>
+            <a class="enk-link" href="#menus">The dinner menu →</a>
           </div>
         </div>
         <figure class="enk-int-hero-image">
@@ -39,93 +41,73 @@ import { dine, enniskeen, generatedVisuals } from "./content";
         <div class="enk-tea-copy">
           <p class="enk-kicker" style="animation:none">{dine.afternoonTea.name}</p>
           <h2 id="tea-heading">Honey from the slopes of Slieve Donard.</h2>
-          <p>{dine.afternoonTea.copy}</p>
+          <p>{dine.afternoonTea.short}</p>
           <p class="enk-tea-booking">{dine.afternoonTea.booking}</p>
           <div class="enk-actions">
             <a class="enk-cta" href={enniskeen.phoneHref}>Reserve a table</a>
-            <a class="enk-link" href="#panel-tea">The afternoon tea menu →</a>
           </div>
         </div>
       </section>
 
+      <!-- One menu shown in full, as the example of what the finished site
+           would carry for all of them; the others are a download away. -->
       <section class="enk-menus" id="menus" aria-labelledby="menus-heading">
         <div class="enk-menus-hero">
           <div class="enk-menus-hero-inner">
             <p class="enk-menus-eyebrow">From the kitchen</p>
-            <h2 id="menus-heading">The menus</h2>
-          </div>
-          <div class="enk-tabs" role="tablist" aria-label="Menus">
-            {dine.menus.map((menu, index) => (
-              <button
-                class="enk-tab"
-                type="button"
-                role="tab"
-                id={`tab-${menu.id}`}
-                aria-controls={`panel-${menu.id}`}
-                aria-selected={index === 0 ? "true" : "false"}
-                tabindex={index === 0 ? 0 : -1}
-              >
-                {menu.label} <span>{menu.subtitle}</span>
-              </button>
-            ))}
+            <h2 id="menus-heading">The dinner menu</h2>
           </div>
         </div>
 
         <div class="enk-menus-layout">
           <div class="enk-menus-content">
-            {dine.menus.map((menu, index) => (
-              <div
-                id={`panel-${menu.id}`}
-                class="enk-menu-panel"
-                role="tabpanel"
-                aria-labelledby={`tab-${menu.id}`}
-                data-active={index === 0 ? "true" : undefined}
-                hidden={index !== 0}
-              >
-                <div class="enk-panel-meta">
-                  <p class="enk-panel-price">{menu.priceNote}</p>
-                  {menu.hours && <p class="enk-panel-hours">{menu.hours}</p>}
-                </div>
-                <div class="enk-menu-cols">
-                  {menu.columns.map((column) => (
-                    <div>
-                      {column.sections.map((section) => (
-                        <div class="enk-menu-section">
-                          <h3 class="enk-menu-section-head">{section.head}</h3>
-                          <ul class="enk-dishes">
-                            {section.dishes.map((dish) => (
-                              <li class="enk-dish">
-                                <div class="enk-dish-info">
-                                  <p class="enk-dish-name">{dish.name}</p>
-                                  {"desc" in dish && dish.desc && (
-                                    <p class="enk-dish-desc">{dish.desc}</p>
-                                  )}
-                                </div>
-                                {"price" in dish && dish.price && (
-                                  <p class="enk-dish-price">{dish.price}</p>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                          {"note" in section && section.note && (
-                            <p class="enk-dish-note">{section.note}</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-                <p class="enk-panel-pdf">
-                  <a href={menu.href} rel="external">Download menu (PDF) →</a>
-                </p>
+            <div class="enk-menu-panel" data-active="true">
+              <div class="enk-panel-meta">
+                <p class="enk-panel-price">{dinner.priceNote}</p>
+                {dinner.hours && <p class="enk-panel-hours">{dinner.hours}</p>}
               </div>
-            ))}
+              <div class="enk-menu-cols">
+                {dinner.columns.map((column) => (
+                  <div>
+                    {column.sections.map((section) => (
+                      <div class="enk-menu-section">
+                        <h3 class="enk-menu-section-head">{section.head}</h3>
+                        <ul class="enk-dishes">
+                          {section.dishes.map((dish) => (
+                            <li class="enk-dish">
+                              <div class="enk-dish-info">
+                                <p class="enk-dish-name">{dish.name}</p>
+                                {"desc" in dish && dish.desc && (
+                                  <p class="enk-dish-desc">{dish.desc}</p>
+                                )}
+                              </div>
+                              {"price" in dish && dish.price && (
+                                <p class="enk-dish-price">{dish.price}</p>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                        {"note" in section && section.note && (
+                          <p class="enk-dish-note">{section.note}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <p class="enk-panel-pdf enk-menu-others">
+                <span>Menus change with the season. The rest, as PDFs:</span>
+                {otherMenus.map((menu) => (
+                  <a href={menu.href} rel="external">{menu.label}</a>
+                ))}
+              </p>
+            </div>
           </div>
 
           <aside class="enk-menus-sidebar">
             <div class="enk-sidebar-book">
               <h3>Book a table</h3>
-              <p>Oak Restaurant and afternoon tea are reserved by phone — the house keeps it personal.</p>
+              <p>The Oak Restaurant and afternoon tea are booked by phone.</p>
               <a class="enk-cta enk-cta-full" href={enniskeen.phoneHref}>Call {enniskeen.phone}</a>
             </div>
             <hr class="enk-sidebar-divider" />
@@ -138,122 +120,20 @@ import { dine, enniskeen, generatedVisuals } from "./content";
                 <dt>Dinner</dt><dd>5.00 – 7.30</dd>
               </dl>
             </div>
-            <div class="enk-sidebar-info">
-              <h3>Allergens</h3>
-              <p>Please tell a member of staff about any food allergy or special dietary requirement before ordering.</p>
-            </div>
-            <div class="enk-sidebar-info">
-              <h3>About the menus</h3>
-              <p>Dishes and prices can change — please check with the restaurant when you book.</p>
-            </div>
           </aside>
         </div>
       </section>
 
-      <script>
-        const menusSection = document.getElementById("menus");
-        const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>(".enk-tab"));
-        const panels = Array.from(document.querySelectorAll<HTMLElement>(".enk-menu-panel"));
-
-        const tabForHash = () => {
-          const panelId = window.location.hash.slice(1);
-          return tabs.find((tab) => tab.getAttribute("aria-controls") === panelId) ?? tabs[0];
-        };
-
-        const activateTab = (
-          tab: HTMLButtonElement,
-          options: { updateHash?: boolean; focus?: boolean; scroll?: boolean } = {},
-        ) => {
-          const panelId = tab.getAttribute("aria-controls");
-          if (!panelId) return;
-
-          tabs.forEach((candidate) => {
-            const selected = candidate === tab;
-            candidate.setAttribute("aria-selected", String(selected));
-            candidate.tabIndex = selected ? 0 : -1;
-          });
-
-          panels.forEach((panel) => {
-            const selected = panel.id === panelId;
-            panel.hidden = !selected;
-            if (selected) panel.dataset.active = "true";
-            else delete panel.dataset.active;
-          });
-
-          if (options.updateHash && window.location.hash !== `#${panelId}`) {
-            window.history.pushState(null, "", `#${panelId}`);
-          }
-          if (options.focus) tab.focus();
-          if (options.scroll && menusSection) {
-            // Instant: native hash scroll targets the panel id; we then lift
-            // back to the section so the tab rail stays in view.
-            menusSection.scrollIntoView({ behavior: "auto", block: "start" });
-          }
-        };
-
-        tabs.forEach((tab, index) => {
-          tab.addEventListener("click", () => activateTab(tab, { updateHash: true }));
-          tab.addEventListener("keydown", (event) => {
-            let nextIndex: number | undefined;
-            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-            if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-            if (event.key === "Home") nextIndex = 0;
-            if (event.key === "End") nextIndex = tabs.length - 1;
-            if (nextIndex === undefined) return;
-
-            event.preventDefault();
-            activateTab(tabs[nextIndex], { updateHash: true, focus: true });
-          });
-        });
-
-        const activateFromHistory = (options: { scroll?: boolean } = {}) => {
-          const hash = window.location.hash.slice(1);
-          if (hash === "menus") {
-            activateTab(tabs[0], { focus: false });
-            return;
-          }
-          const tab = tabForHash();
-          const isPanelHash = Boolean(
-            tabs.find((candidate) => candidate.getAttribute("aria-controls") === hash),
-          );
-          activateTab(tab, {
-            focus: false,
-            scroll: options.scroll && isPanelHash,
-          });
-        };
-
-        window.addEventListener("hashchange", () => {
-          // After the browser's own hash scroll, lift to the menus band.
-          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
-        });
-        window.addEventListener("popstate", () => {
-          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
-        });
-        if (window.location.hash.startsWith("#panel-")) {
-          requestAnimationFrame(() => activateFromHistory({ scroll: true }));
-        } else {
-          activateFromHistory();
-        }
-      </script>
-
-      <!-- Brandy Pad Lounge + special occasions -->
-      <section class="enk-lounge" aria-labelledby="lounge-heading">
+      <!-- The lounge and private parties, a line each. -->
+      <section class="enk-lounge" aria-label="Also at the house">
         <div class="enk-lounge-grid">
-          <article class="enk-lounge-card">
-            <figure class="enk-lounge-visual">
-              <ResponsiveImage
-                pictureClass="concept-responsive-picture"
-                {...generatedVisuals.lounge}
-              />
-            </figure>
-            <h2 id="lounge-heading">{dine.brandyPad.name}</h2>
-            <p>{dine.brandyPad.copy}</p>
+          <article class="enk-lounge-card enk-lounge-card--text">
+            <h2>{dine.brandyPad.name}</h2>
+            <p>{dine.brandyPad.short}</p>
           </article>
-          <!-- No picture: the only room shot is the Oak Restaurant, already
-               the page hero. -->
           <article class="enk-lounge-card enk-lounge-card--text">
             <h2>{dine.occasions.name}</h2>
-            <p>{dine.occasions.copy}</p>
+            <p>{dine.occasions.short}</p>
           </article>
         </div>
       </section>
