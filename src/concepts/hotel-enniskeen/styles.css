@@ -625,10 +625,10 @@
   .enk-header-actions { gap: 8px; }
 }
 
-/* The smallest phones cannot hold the mark, the name and three controls;
+/* The smallest phones cannot hold the logo, the name and three controls;
    the name alone carries the brand there. */
 @media (max-width: 359px) {
-  .enk-brand-mark { display: none; }
+  .enk-brand-logo { display: none; }
   .enk-brand-name { font-size: 21px; }
 }
 
@@ -641,7 +641,7 @@
   color: inherit;
 }
 .enk-brand-text { display: flex; flex-direction: column; gap: 3px; }
-.enk-brand-mark { color: var(--honey-deep); flex-shrink: 0; }
+.enk-brand-logo { display: block; width: auto; height: 50px; flex-shrink: 0; }
 
 /* ─── Rooms page — /concepts/hotel-enniskeen/rooms/ ──────────────────────── */
 
@@ -1553,24 +1553,60 @@
   overflow: hidden;
 }
 
-/* ── Day-part hero ──
-   Frames are stacked in the grid cell so the swap cannot reflow the hero or
-   shift the booking bar stitched across its seam. */
-.enk-visual[data-enk-daypart] { display: grid; }
-.enk-visual-frame {
-  grid-area: 1 / 1;
-  min-width: 0;
-  min-height: 0;
-}
-.enk-visual-frame[hidden] { display: none; }
-.enk-visual-frame img {
+/* ── Hero film ──
+   The film sits exactly over the present-day still it ends on, so stopping,
+   failing or never starting all leave the same picture. */
+.enk-film img,
+.enk-film-video { object-position: 42% 40%; }
+.enk-film-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 40% 46%;
+}
+.enk-film-video[hidden] { display: none; }
+.enk-film-video:not([data-playing]) { opacity: 0; }
+/* Bottom right on wide screens: the booking bar is stitched across the
+   bottom-left of the picture. On a phone the caption runs along the
+   bottom, so the control moves to the top. */
+.enk-film-toggle {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(251, 247, 238, 0.5);
+  border-radius: 50%;
+  background: rgba(21, 41, 31, 0.55);
+  color: var(--cream-bright);
+  cursor: pointer;
+}
+.enk-film-toggle[hidden] { display: none; }
+/* Two bars while playing, a triangle once paused. */
+.enk-film-toggle span {
+  width: 10px;
+  height: 12px;
+  border-inline: 3px solid currentColor;
+}
+.enk-film-toggle[data-state="paused"] span {
+  width: 0;
+  height: 0;
+  border-block: 6px solid transparent;
+  border-inline: 0;
+  border-left: 10px solid currentColor;
+  margin-left: 3px;
+}
+.enk-theme-blue .enk-film-toggle { background: rgba(22, 22, 22, 0.55); color: #ffffff; }
+@media (max-width: 900px) {
+  .enk-film-toggle { top: 14px; right: 14px; bottom: auto; }
 }
 
-.enk-footer-mark { color: var(--honey); margin-bottom: 10px; }
+.enk-footer-logo { display: block; width: auto; height: 64px; margin-bottom: 14px; }
 
 /* ── Editorial: pull-quote ──
    Set large enough to stop the eye, and always carrying its attribution — a
@@ -1839,7 +1875,7 @@
 }
 
 @media (max-width: 900px) {
-  .enk-brand-mark { width: 28px; height: auto; }
+  .enk-brand-logo { height: 40px; }
   .enk-map-section { padding-block: 60px 64px; }
   .enk-timeline-band { padding-block: 60px 64px; }
   .enk-pullquote blockquote { max-width: none; }

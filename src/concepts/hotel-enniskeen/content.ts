@@ -129,61 +129,6 @@ export const generatedVisuals = {
   },
 } as const;
 
-/** Day-part hero.
- *
- *  The same faithful visualisation of the house at three times of day, swapped
- *  on the visitor's local clock so an owner opening the concept in the evening
- *  meets their own building with the windows lit.
- *
- *  Each variant is a separate generation from the same reference photograph and
- *  the same composition as `generatedVisuals.house` — see
- *  `research/concepts/hotel-enniskeen/enniskeen-day-part-hero-brief.md` for the prompts and the standing
- *  reference boundary. A variant appears only once its file is actually present
- *  in `public/`, so the page is never wrong about what it is showing: drop the
- *  generation in, rebuild, and it joins the rotation. With one variant present
- *  the hero is a plain static image and no swap script is emitted.
- */
-const dayPartSources = [
-  {
-    id: "dawn",
-    /** Local hours, inclusive of `from`, exclusive of `to`. */
-    from: 4,
-    to: 10,
-    src: "/media/concepts/hotel-enniskeen/enniskeen-faithful-house-dawn.jpg",
-    width: 1820,
-    height: 864,
-    alt: "Enniskeen Country House Hotel at dawn, mist across the valley behind its gabled façade, turret and ivy",
-    caption: "The house at dawn",
-  },
-  {
-    id: "day",
-    from: 10,
-    to: 18,
-    src: generatedVisuals.house.src,
-    width: generatedVisuals.house.width,
-    height: generatedVisuals.house.height,
-    alt: generatedVisuals.house.alt,
-    caption: "The house · built 1890s",
-  },
-  {
-    id: "dusk",
-    from: 18,
-    to: 4,
-    src: "/media/concepts/hotel-enniskeen/enniskeen-faithful-house-dusk.jpg",
-    width: 1818,
-    height: 865,
-    alt: "Enniskeen Country House Hotel at dusk, its windows lit against the darkening Shimna Valley",
-    caption: "The house at dusk",
-  },
-] as const;
-
-export type DayPart = (typeof dayPartSources)[number];
-
-/** The declared set. Which of these actually ship is resolved against
- *  `public/` in `EnkHero.astro` — this module is imported by the booking
- *  component's client script, so it must stay free of Node built-ins. */
-export const dayParts: readonly DayPart[] = dayPartSources;
-
 export const navFor = (root: string) => [
   { id: "home", href: `${root}/`, label: "Home" },
   { id: "rooms", href: `${root}/rooms/`, label: "Stay" },

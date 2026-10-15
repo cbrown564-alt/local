@@ -938,3 +938,22 @@ Concept packs moved to `archive/concepts/`; see
 | `media/held/concepts/donard-veterinary/hero-transformation/frame_07.jpg` | `media/held/concepts/donard-veterinary/hero-transformation/frame_07.jpg` | 711344 | `22259761a441ba63ee42f1f60bac2345ab8ae608db7a540ebcb99db4711e4069` |
 | `media/held/concepts/donard-veterinary/hero-transformation/frame_08.jpg` | `media/held/concepts/donard-veterinary/hero-transformation/frame_08.jpg` | 828276 | `44b2afb5dd60971783d8ceb5104b944ec2bf70029fc012522cf04684d8a68a74` |
 | `media/held/concepts/donard-veterinary/hero-transformation/frame_09.jpg` | `media/held/concepts/donard-veterinary/hero-transformation/frame_09.jpg` | 850894 | `7b3576d5a8e477e53a57f8bd09196404e913acba6659fee7c48fd5f3ea39474b` |
+
+## Enniskeen photographic time sequence — 15 October 2026
+
+Generated-media sources; web derivatives deployed in `public/media/concepts/hotel-enniskeen/` (private concept hero). Source and limits: `research/image-provenance.md`.
+
+| Local path | Bytes | SHA-256 |
+|---|---:|---|
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/enniskeen-through-time-preview.gif` | 11718210 | `35c535b3775c1b77509651d1a9d3b9ecae145c0667fdec3a92edceec2f8b209c` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/enniskeen-through-time.mp4` | 4727518 | `dcc1fa866db6faf6601daed28c689b349d3a24e3ce0d943a06db2026d96a8f43` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_01.png` | 3863995 | `313e974b005ce6ea993acb9fb89b90bcb147f0f87aa50d45987ed5bf6b71483a` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_02.png` | 3371285 | `93a5643bfee05b0d1d03cf3ec9565e170cbd6a648ac776165cd8768e08285f0f` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_03.png` | 3885253 | `869ee1fd674a67d80d43efafbd4658955b21183555b09bbeeeece79ed1f39125` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_04.png` | 4009945 | `e4c30a06983f4e6009ee04befbba4784eb0eae6e23b51f6f36e660747322ad2c` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_05.png` | 3817664 | `a249b5bd9dd7a9b86edbee4cdc7a158feddb75cdb8d566761f1a0907cde96e09` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/frame_06.png` | 3323960 | `1196852188de75f14b1766ac5063dfef6771c65200f6741d99c40d847bc48072` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/master.png` | 2956131 | `25a3bb32a089c4b2df9164e6c577db1c4baeecbaea6bc5302a2066ae2ee52723` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/render.mjs` | 2550 | `09bc8df5dc8232d4f080be86392f38c9ccdc10e96da1b572e86b733156510733` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/source-logo.png` | 94419 | `6eeb751be9cd8f79feddeda3c49704a4593653403ce24a44eba9c764e43a0854` |
+| `media/held/concepts/hotel-enniskeen/time-travel-v1/treatments.json` | 985 | `7124b752cc271b5dcb16f3c4a0304aa28a5233b3c86fa4fc7ef6442e982bc690` |

@@ -1,98 +1,90 @@
 ---
-/** The house at the visitor's own time of day.
+/** The house through the years.
  *
- *  Every available variant is rendered; the default one is visible and the
- *  rest are inert until a tiny inline script picks the band matching the
- *  visitor's local hour. That ordering means no-JS visits, crawlers and the
- *  print/capture pipeline all see the same daytime image the concept has
- *  always shown, and the swap is a progressive enhancement on top.
+ *  A 17-second film of the same view of the house in six photographic
+ *  treatments, from archival monochrome to present-day colour (see
+ *  research/image-provenance.md, time-travel-v1). It plays once and stops
+ *  on the present day.
  *
- *  With fewer than two generations present the swap is not emitted at all.
- */
-import fs from "node:fs";
-import path from "node:path";
+ *  The settled frame is the present-day still, and it is what a no-JS visit,
+ *  a reduced-motion visit, a crawler or the capture pipeline sees. The film
+ *  is decorative on top of it: the still carries the alt text. The page
+ *  foot says the imagery is AI-generated; the caption does not repeat it,
+ *  since the passage from monochrome to colour shows itself as a
+ *  treatment of one picture rather than a set of archive photographs. */
 import ResponsiveImage from "../../../site/components/ResponsiveImage.astro";
-import { dayParts } from "../content";
-
-/** Resolved against `public/` at build time — a declared variant whose
- *  generation has not landed yet is skipped rather than shipped as a broken
- *  image. The check lives here, not in the shared data module, because that
- *  module is also imported by the booking component's client script. */
-const parts = dayParts.filter((part) =>
-  fs.existsSync(path.join(process.cwd(), "public", part.src.replace(/^\//, ""))),
-);
-
-/** The variant rendered before any script runs, and the only one a no-JS
- *  visit, a crawler or the capture pipeline ever sees. */
-const fallback = parts.find((part) => part.id === "day") ?? parts[0];
-const swaps = parts
-  .filter((part) => part.id !== fallback.id)
-  .map(({ id, from, to }) => ({ id, from, to }));
 ---
 
-<figure class="enk-visual" data-enk-daypart>
-  {parts.map((part) => (
-    <div
-      class="enk-visual-frame"
-      data-daypart={part.id}
-      hidden={part.id !== fallback.id ? true : undefined}
-    >
-      <ResponsiveImage
-        pictureClass="concept-responsive-picture"
-        src={part.src}
-        alt={part.alt}
-        width={part.width}
-        height={part.height}
-        loading={part.id === fallback.id ? "eager" : "lazy"}
-      />
-    </div>
-  ))}
-  <figcaption data-enk-daypart-caption>{fallback.caption}</figcaption>
+<figure class="enk-visual enk-film" data-enk-film>
+  <ResponsiveImage
+    pictureClass="concept-responsive-picture"
+    src="/media/concepts/hotel-enniskeen/enniskeen-through-time-end.jpg"
+    alt="Enniskeen Country House Hotel above its lawn: the turret, the chimneys and the ivy across the front"
+    width={1536}
+    height={1024}
+    loading="eager"
+  />
+  <video
+    class="enk-film-video"
+    muted
+    playsinline
+    preload="none"
+    poster="/media/concepts/hotel-enniskeen/enniskeen-through-time-start.jpg"
+    aria-hidden="true"
+    tabindex="-1"
+    hidden
+  >
+    <source src="/media/concepts/hotel-enniskeen/enniskeen-through-time.webm" type="video/webm" />
+    <source src="/media/concepts/hotel-enniskeen/enniskeen-through-time.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Through the years</figcaption>
+  <button class="enk-film-toggle" type="button" aria-label="Pause the film" hidden>
+    <span aria-hidden="true"></span>
+  </button>
 </figure>
 
-{swaps.length > 0 && (
-  <Fragment>
-  <script
-    is:inline
-    type="application/json"
-    data-enk-daypart-bands
-    set:html={JSON.stringify(
-      parts.map(({ id, from, to, caption }) => ({ id, from, to, caption })),
-    )}
-  />
-  <script is:inline>
-    (() => {
-      const figure = document.querySelector("[data-enk-daypart]");
-      const config = document.querySelector("[data-enk-daypart-bands]");
-      if (!figure || !config) return;
+<script is:inline>
+  (() => {
+    const figure = document.querySelector("[data-enk-film]");
+    const video = figure && figure.querySelector("video");
+    const toggle = figure && figure.querySelector(".enk-film-toggle");
+    if (!video || !toggle) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      let bands;
-      try {
-        bands = JSON.parse(config.textContent || "[]");
-      } catch {
-        return;
-      }
+    let heldByVisitor = false;
+    const label = () => {
+      const paused = video.paused;
+      toggle.setAttribute("aria-label", paused ? "Play the film" : "Pause the film");
+      toggle.dataset.state = paused ? "paused" : "playing";
+    };
+    // A browser may refuse or interrupt playback (a background tab, a data
+    // saver). Nothing shows until frames are actually moving, so a refusal
+    // simply leaves the still.
+    const start = () => {
+      if (heldByVisitor || video.ended || document.visibilityState !== "visible") return;
+      const playing = video.play();
+      if (playing && playing.catch) playing.catch(() => {});
+    };
 
-      const hour = new Date().getHours();
-      // Bands may wrap past midnight (dusk runs 18:00 to 04:00).
-      const band = bands.find(({ from, to }) =>
-        from < to ? hour >= from && hour < to : hour >= from || hour < to,
-      );
-      if (!band) return;
-
-      const target = figure.querySelector(`[data-daypart="${band.id}"]`);
-      if (!target || !target.hidden) return;
-
-      figure
-        .querySelectorAll("[data-daypart]")
-        .forEach((frame) => (frame.hidden = frame !== target));
-
-      const image = target.querySelector("img");
-      if (image) image.loading = "eager";
-
-      const caption = figure.querySelector("[data-enk-daypart-caption]");
-      if (caption) caption.textContent = band.caption;
-    })();
-  </script>
-  </Fragment>
-)}
+    video.hidden = false;
+    video.preload = "auto";
+    video.addEventListener("playing", () => {
+      video.dataset.playing = "";
+      toggle.hidden = false;
+      label();
+    });
+    video.addEventListener("pause", label);
+    // The last frame is the present-day still underneath; once the film has
+    // said its piece the control goes, and the page is a still again.
+    video.addEventListener("ended", () => {
+      toggle.hidden = true;
+    });
+    toggle.addEventListener("click", () => {
+      heldByVisitor = !video.paused;
+      if (video.paused) video.play();
+      else video.pause();
+    });
+    document.addEventListener("visibilitychange", start);
+    start();
+  })();
+</script>
