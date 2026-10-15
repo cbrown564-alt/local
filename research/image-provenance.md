@@ -443,7 +443,12 @@ Neither photographed nor generated: vector artwork drawn by hand for a concept.
 The distinction matters because a mark reads as a business's identity, and none
 of these businesses supplied one.
 
-- `brand/enniskeen-mark.svg` — **in use** (31 July 2026). A line monogram drawn
+- `brand/enniskeen-favicon.png` — **in use** from 15 October 2026 as the
+  favicon of the private Enniskeen concept. Not generated: the hotel's own
+  oval logo (`public/media/concepts/hotel-enniskeen/enniskeen-logo.png`, from
+  its current site) trimmed and centred on a transparent 96px square.
+- `brand/enniskeen-mark.svg` — **retired and deleted on 15 October 2026**, when
+  the hotel's own logo replaced it in the header, footer and favicon. Made 31 July 2026. A line monogram drawn
   for the Enniskeen concept: an "E" beneath the conical turret roofline and
   weathervane finial taken from the building's own silhouette. Used as the
   concept's favicon, header lockup, section ornament and footer seal; the
@@ -758,7 +763,7 @@ Every page carrying one of these labels it as generated on the page itself.
 - `enniskeen-faithful-house.png` — **in use.** AI-generated faithful visualisation based on a reference photograph of the real Enniskeen Country House Hotel. The prompt preserved the painted-render gabled façade, turret, chimney placement, window rhythm and ivy while removing parked cars and a streetlamp.
 - `enniskeen-faithful-house-dawn.jpg` and `enniskeen-faithful-house-dusk.jpg` —
   **retired from the hero on 15 October 2026**, when the time-travel film
-  replaced the day-part swap; still in `public/`, unreferenced. Made 31 July 2026. AI-generated faithful visualisations of the same
+  replaced the day-part swap; deleted from `public/` the same day with their WebP derivatives. Made 31 July 2026. AI-generated faithful visualisations of the same
   view as `enniskeen-faithful-house.png`, at first light and at dusk, made for
   the concept's day-part hero. The reference was the existing
   `enniskeen-faithful-house.png` plate rather than the original photograph, so
