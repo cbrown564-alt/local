@@ -61,8 +61,47 @@ const { title, current } = Astro.props;
       </nav>
       <div class="enk-header-actions">
         <a class="enk-phone" href={enniskeen.phoneHref}>{enniskeen.phone}</a>
-        <a class="enk-book" href={bookin1.engine} rel="external">Book a room</a>
+        <a class="enk-call" href={enniskeen.phoneHref} aria-label={`Call ${enniskeen.phone}`}>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="enk-book" href={bookin1.engine} rel="external">
+          <span class="enk-book-long">Book a room</span><span class="enk-book-short">Book</span>
+        </a>
+        <!-- Below 1120px the nav and phone number no longer fit on one line.
+             A native disclosure keeps every page one tap away without
+             depending on script; the script only adds Escape and
+             click-outside to close. -->
+        <details class="enk-sitemenu">
+          <summary>
+            <span class="enk-sitemenu-icon" aria-hidden="true"></span>
+            <span class="enk-sr">Menu</span>
+          </summary>
+          <nav class="enk-sitemenu-panel" aria-label="Menu">
+            {nav.map((item) => (
+              <a href={item.href} aria-current={current === item.id ? "page" : undefined}>{item.label}</a>
+            ))}
+            <p class="enk-sitemenu-contact">
+              <a href={enniskeen.phoneHref}>{enniskeen.phone}</a>
+              <a href={enniskeen.emailHref}>{enniskeen.email}</a>
+            </p>
+          </nav>
+        </details>
       </div>
+      <script is:inline>
+        (() => {
+          const menu = document.querySelector(".enk-sitemenu");
+          if (!menu) return;
+          const close = () => { menu.open = false; };
+          document.addEventListener("keydown", (event) => {
+            if (event.key !== "Escape" || !menu.open) return;
+            close();
+            menu.querySelector("summary")?.focus();
+          });
+          document.addEventListener("click", (event) => {
+            if (menu.open && !menu.contains(event.target)) close();
+          });
+        })();
+      </script>
     </header>
     <slot />
     <footer class="enk-footer">

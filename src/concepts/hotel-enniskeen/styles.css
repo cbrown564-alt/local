@@ -87,6 +87,87 @@
     box-shadow 200ms var(--enk-ease),
     transform 140ms var(--enk-ease-out);
 }
+.enk-book-short { display: none; }
+
+/* Compact header controls — shown only once the nav no longer fits. */
+.enk-call,
+.enk-sitemenu { display: none; }
+.enk-call,
+.enk-sitemenu summary {
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--pine);
+  border: 1px solid var(--hairline);
+  background: transparent;
+}
+.enk-sitemenu summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+}
+.enk-sitemenu summary::-webkit-details-marker { display: none; }
+.enk-sitemenu-icon,
+.enk-sitemenu-icon::before,
+.enk-sitemenu-icon::after {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 180ms var(--enk-ease), opacity 180ms var(--enk-ease);
+}
+.enk-sitemenu-icon { position: relative; }
+.enk-sitemenu-icon::before,
+.enk-sitemenu-icon::after { content: ""; position: absolute; left: 0; }
+.enk-sitemenu-icon::before { top: -6px; }
+.enk-sitemenu-icon::after { top: 6px; }
+.enk-sitemenu[open] .enk-sitemenu-icon { background: transparent; }
+.enk-sitemenu[open] .enk-sitemenu-icon::before { transform: translateY(6px) rotate(45deg); }
+.enk-sitemenu[open] .enk-sitemenu-icon::after { transform: translateY(-6px) rotate(-45deg); }
+.enk-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.enk-sitemenu-panel {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px clamp(16px, 3.5vw, 48px) 24px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: 0 24px 40px rgba(21, 41, 31, 0.16);
+}
+.enk-sitemenu-panel > a {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink-green);
+}
+.enk-sitemenu-panel > a::after { display: none; }
+.enk-sitemenu-panel > a[aria-current="page"] { color: var(--honey-deep); }
+.enk-sitemenu-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.enk-sitemenu-contact a { color: var(--pine); text-underline-offset: 4px; }
+.enk-header { position: relative; }
 
 /* Hero */
 .enk-hero {
@@ -98,8 +179,13 @@
   display: grid;
   grid-template-columns: 48% 52%;
 }
+/* The story is deliberately not positioned: the availability bar lives in
+   its markup (so it follows the headline in reading order) but is placed
+   against .enk-hero, across the story/image seam. The inner frame is an
+   inset outline for the same reason — it needs no containing block. */
 .enk-story {
-  position: relative;
+  outline: 1px solid rgba(245, 239, 226, 0.14);
+  outline-offset: -14px;
   padding: clamp(44px, 6.5vh, 84px) clamp(28px, 4vw, 62px) 150px;
   background:
     radial-gradient(120% 90% at 0% 100%, rgba(0, 0, 0, 0.28), transparent 60%),
@@ -108,13 +194,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.enk-story::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(245, 239, 226, 0.14);
-  pointer-events: none;
 }
 .enk-kicker {
   display: flex;
@@ -482,7 +561,6 @@
 }
 
 @media (max-width: 900px) {
-  .enk-nav, .enk-phone { display: none; }
   .enk-header {
     height: auto;
     padding: 14px 16px;
@@ -494,37 +572,59 @@
   }
   .enk-brand { flex: 1 1 auto; }
   .enk-brand-name { font-size: 24px; }
-  .enk-brand-sub { font-size: 9px; letter-spacing: 0.12em; }
-  .enk-header-actions { flex: 0 0 auto; gap: 0; }
+  /* At 9px the subline was unreadable (typography audit, 31 July); the
+     name and the mark carry the brand on a phone. */
+  .enk-brand-sub { display: none; }
+  .enk-header-actions { flex: 0 0 auto; }
   .enk-book {
     min-height: 44px;
     flex-shrink: 0;
-    padding: 10px 14px;
-    font-size: 11px;
+    padding: 10px 16px;
+    font-size: 12px;
     letter-spacing: 0.14em;
   }
+  .enk-book-long { display: none; }
+  .enk-book-short { display: inline; }
   .enk-hero { grid-template-columns: 1fr; min-height: 0; }
-  .enk-visual { order: -1; min-height: 300px; }
+  .enk-visual { order: -1; min-height: 260px; }
   .enk-visual figcaption { top: auto; bottom: 16px; right: 16px; font-size: 11px; }
-  .enk-story { padding: 46px 24px 40px; }
-  .enk-story::before { inset: 10px; }
+  .enk-story { padding: 36px 20px 40px; outline: none; }
+  .enk-story h1 { margin-bottom: 22px; }
   /* 12em of the 42px floor overflows a phone viewport — cap by width instead. */
   .enk-story h1 { max-width: none; font-size: clamp(33px, 8.4vw, 46px); }
   .enk-lede { font-size: 16px; }
   .enk-booking {
     position: static;
     max-width: none;
+    margin: 0 0 30px;
     grid-template-columns: 1fr 1fr;
     box-shadow: none;
-    border-left: 0;
-    border-right: 0;
+  }
+  /* One clear action on a phone: dates first, then rooms. The bar sits on
+     pine here, so its button takes the honey and rooms steps back. */
+  .enk-hero .enk-link { display: none; }
+  .enk-hero .enk-booking > button[type="submit"] { background: var(--honey); color: var(--ink-green); }
+  .enk-hero .enk-cta {
+    background: transparent;
+    color: var(--cream);
+    box-shadow: inset 0 0 0 1px var(--honey);
   }
   .enk-booking > .enk-nights { border-right: 0; }
   .enk-booking > button[type="submit"] { grid-column: 1 / -1; padding: 17px; }
 }
 
-@media (min-width: 901px) and (max-width: 1120px) {
+@media (max-width: 1120px) {
   .enk-nav, .enk-phone { display: none; }
+  .enk-call { display: inline-flex; }
+  .enk-sitemenu { display: block; }
+  .enk-header-actions { gap: 8px; }
+}
+
+/* The smallest phones cannot hold the mark, the name and three controls;
+   the name alone carries the brand there. */
+@media (max-width: 359px) {
+  .enk-brand-mark { display: none; }
+  .enk-brand-name { font-size: 21px; }
 }
 
 /* ─── Brand link (rooms page — header wraps in an anchor) ─────────────────── */
@@ -706,22 +806,6 @@
   width: 6px;
   height: 1px;
   background: var(--honey);
-}
-.enk-room-book {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 12px 20px;
-  background: var(--pine);
-  color: var(--cream);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 160ms var(--enk-ease), gap 160ms var(--enk-ease-out), transform 140ms var(--enk-ease-out);
 }
 
 /* Amenities strip */
@@ -927,13 +1011,10 @@
 
 /* Shared serif section heading */
 .enk-explore h2,
-.enk-welcome-copy h2,
 .enk-tea-copy h2,
 .enk-trail-copy h2,
-.enk-history-copy h2,
 .enk-todo-copy h2,
 .enk-golf-inner h2,
-.enk-phone-band h2,
 .enk-lounge-card h2 {
   margin: 12px 0 16px;
   font-family: var(--serif);
@@ -942,10 +1023,8 @@
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
-.enk-welcome-copy p,
 .enk-tea-copy > p,
 .enk-trail-copy p,
-.enk-history-copy p,
 .enk-todo-copy > p,
 .enk-golf-inner p {
   max-width: 58ch;
@@ -993,19 +1072,15 @@
   color: var(--honey-deep);
 }
 
-/* ── Home: welcome band ── */
+/* ── Home: a guest's words ── */
 .enk-welcome {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(28px, 4vw, 64px);
-  align-items: center;
-  padding: 72px clamp(20px, 4vw, 64px) 88px;
+  display: flex;
+  justify-content: center;
+  padding: clamp(64px, 9vw, 112px) clamp(20px, 4vw, 64px);
   background: var(--cream);
   border-top: 1px solid var(--hairline);
+  text-align: center;
 }
-.enk-welcome-directions { font-weight: 700; color: var(--honey-deep) !important; }
-.enk-welcome-visual { margin: 0; overflow: hidden; border: 1px solid var(--hairline); }
-.enk-welcome-visual img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; object-position: 70% 50%; display: block; }
 
 /* ── Rooms: character cards ── */
 .enk-character { padding: 88px clamp(20px, 4vw, 64px); background: var(--cream-bright); }
@@ -1028,9 +1103,14 @@
 .enk-character-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
 /* The hotel's bathroom photograph is a small portrait — matted on
    pine at their natural scale rather than stretched to fill. */
-.enk-character-image--plate { display: flex; align-items: center; justify-content: center; padding: 18px 0; }
-.enk-character-image--plate img { width: auto; height: 100%; object-fit: contain; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35); }
-.enk-character-image--turret img { object-position: 30% 12%; }
+/* Room 6 carries the only picture and spans both rows; the turret and the
+   balcony rooms are set as type beside it rather than borrowing the house
+   front and the page hero a second time. */
+.enk-character-card:not(.enk-character-card--text) { grid-row: span 2; }
+.enk-character-card:not(.enk-character-card--text) .enk-character-image { flex: 1 1 0; height: auto; min-height: 300px; }
+.enk-character-card:not(.enk-character-card--text) .enk-character-image img { position: absolute; inset: 0; }
+.enk-character-card--text { justify-content: center; }
+.enk-character-card--text .enk-character-body { flex: 0 0 auto; padding: 30px 32px; }
 .enk-character-body { display: flex; flex-direction: column; gap: 10px; padding: 22px 24px 24px; flex: 1; }
 .enk-character-body h3 {
   margin: 0;
@@ -1055,8 +1135,7 @@
 .enk-tea-visual figcaption,
 .enk-trail-visual figcaption,
 .enk-todo-visual figcaption,
-.enk-golf-visual figcaption,
-.enk-history-visual figcaption {
+.enk-golf-visual figcaption {
   position: absolute;
   bottom: 14px;
   right: 14px;
@@ -1117,16 +1196,6 @@
   font-weight: 400;
   color: var(--honey);
 }
-.enk-menu-notice {
-  max-width: 68ch;
-  margin: 16px 0 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--honey);
-  color: var(--copy-soft);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.enk-menu-notice strong { color: var(--cream); }
 
 .enk-tabs {
   display: flex;
@@ -1376,17 +1445,14 @@
 .enk-lounge-card > p { padding: 0 26px; margin: 0; max-width: 52ch; font-size: 15.5px; line-height: 1.6; color: #3a4e3d; }
 .enk-lounge-visual { position: relative; margin: 0 0 22px; aspect-ratio: 16 / 10; overflow: hidden; }
 .enk-lounge-visual img { width: 100%; height: 100%; object-fit: cover; }
-
-.enk-phone-band { padding: 72px clamp(20px, 4vw, 64px); background: var(--pine); color: var(--cream); }
-.enk-phone-band-inner {
+.enk-lounge-card--text {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px 0 34px;
+  background: var(--cream);
 }
-.enk-phone-band h2 { margin: 0 0 10px; }
-.enk-phone-band p { margin: 0; max-width: 52ch; color: var(--copy-soft); font-size: 16px; line-height: 1.6; }
+
 
 /* ── Estate ── */
 .enk-trail {
@@ -1400,34 +1466,6 @@
 .enk-trail-visual { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--hairline); max-width: 520px; justify-self: center; }
 .enk-trail-visual img { width: 100%; height: auto; display: block; }
 
-.enk-gardens-band { margin: 0; background: var(--pine-deep); }
-.enk-gardens-band figure { position: relative; margin: 0; }
-.enk-gardens-band img { width: 100%; height: clamp(260px, 44vh, 420px); object-fit: cover; display: block; }
-.enk-gardens-band figcaption {
-  position: absolute;
-  bottom: 16px;
-  right: 18px;
-  padding: 7px 11px;
-  background: rgba(21, 41, 31, 0.82);
-  color: var(--cream);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.enk-history {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(28px, 4vw, 64px);
-  align-items: center;
-  padding: 84px clamp(20px, 4vw, 64px);
-  background: var(--pine);
-  color: var(--cream);
-}
-.enk-history-visual { position: relative; margin: 0; overflow: hidden; border: 1px solid rgba(245, 239, 226, 0.2); }
-.enk-history-visual img { width: 100%; height: auto; display: block; filter: var(--enk-grade); }
-.enk-history-copy p { color: var(--copy-soft); }
 
 /* ── Things to do ── */
 .enk-todo {
@@ -1442,29 +1480,26 @@
 .enk-todo-visual { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--hairline); }
 .enk-todo-visual img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block; }
 .enk-todo-routes {
-  margin: 4px 0 18px;
+  margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  border-top: 1px solid var(--hairline);
 }
 .enk-todo-routes li {
-  padding-left: 18px;
-  position: relative;
-  font-size: 15.5px;
-  line-height: 1.5;
-  color: #3a4e3d;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hairline);
 }
-.enk-todo-routes li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 8px;
-  height: 1px;
-  background: var(--honey);
+.enk-todo-route-name {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 27px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink-green);
 }
+.enk-todo-route-note { font-size: 15px; line-height: 1.5; color: #3a4e3d; }
 .enk-todo-booking a { color: var(--honey-deep); font-weight: 700; }
 
 .enk-golf {
@@ -1580,7 +1615,6 @@
   }
   .enk-room-card:hover .enk-room-card-image img,
   .enk-explore-card a:hover .enk-explore-image img { transform: scale(1.025); }
-  .enk-room-book:hover { background: var(--honey-deep); gap: 12px; }
   .enk-tab:hover { color: var(--cream); background: rgba(255, 255, 255, 0.04); }
   .enk-nearby-grid a:hover { background: var(--cream-bright); transform: translateY(-2px); }
   .enk-footer-nav a:hover { color: var(--cream); }
@@ -1590,7 +1624,6 @@
 .enk-cta:active,
 .enk-booking > button[type="submit"]:active,
 .enk-nights-step:active:not(:disabled),
-.enk-room-book:active,
 .enk-page-booking > button[type="submit"]:active { transform: scale(0.97); }
 
 .enk-explore-card a:active { transform: scale(0.99); }
@@ -1609,13 +1642,11 @@
   .enk-int-hero-copy { padding: 42px 24px; }
   .enk-int-hero-copy::before { inset: 10px; }
   .enk-int-hero-copy h1 { font-size: clamp(31px, 7.6vw, 42px); }
-  .enk-welcome { grid-template-columns: 1fr; padding-block: 56px 64px; }
   .enk-character-grid { grid-template-columns: 1fr; }
   .enk-tea { grid-template-columns: 1fr; padding-block: 60px; }
   .enk-tea-visual { order: -1; }
   .enk-lounge-grid { grid-template-columns: 1fr; }
   .enk-trail { grid-template-columns: 1fr; padding-block: 60px; }
-  .enk-history { grid-template-columns: 1fr; padding-block: 60px; }
   .enk-todo { grid-template-columns: 1fr; padding-block: 60px; }
   .enk-todo-visual { order: -1; }
   .enk-golf { grid-template-columns: 1fr; padding-block: 60px; }
@@ -1638,10 +1669,8 @@
   .enk-explore-grid { grid-template-columns: 1fr; }
   .enk-nearby-grid { grid-template-columns: 1fr; }
   .enk-character-image { height: 220px; }
-  .enk-phone-band-inner { flex-direction: column; align-items: flex-start; }
   .enk-menus-hero { padding: 36px 20px 0; }
   .enk-menus-hero-inner { margin-bottom: 20px; }
-  .enk-menu-notice { font-size: 13px; }
   .enk-dish-name { font-size: 17.5px; }
   /* Six tabs need more than a phone rail; segment them so none hide. */
   .enk-tabs {
@@ -1722,57 +1751,22 @@
   object-position: 40% 46%;
 }
 
-/* ── House mark as a section ornament ──
-   A brass seal on the hairline between bands: the mark centred on a rule that
-   runs out to both margins. */
-.enk-ornament {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 0;
-  padding: 0 clamp(20px, 4vw, 64px);
-  background: var(--cream-bright);
-  color: var(--honey);
-}
-.enk-ornament::before,
-.enk-ornament::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--hairline);
-}
-.enk-ornament--pine { background: var(--pine); }
 .enk-footer-mark { color: var(--honey); margin-bottom: 10px; }
-
-/* ── Editorial: drop cap ──
-   One cap, on the welcome note only. A page of drop caps is a ransom note. */
-.enk-dropcap::first-letter {
-  float: left;
-  margin: 2px 10px -4px 0;
-  font-family: var(--serif);
-  font-size: 92px;
-  font-weight: 500;
-  line-height: 0.68;
-  color: var(--honey-deep);
-}
 
 /* ── Editorial: pull-quote ──
    Set large enough to stop the eye, and always carrying its attribution — a
    quotation without a source is the kind of atmosphere this studio does not
    trade in. */
-.enk-pullquote {
-  margin: 44px 0 30px;
-  padding-left: clamp(20px, 3vw, 34px);
-  border-left: 2px solid var(--honey);
-}
+.enk-pullquote { margin: 0; }
 .enk-pullquote blockquote {
   /* Measured on the quote's own large serif, not on the figure's body font —
      a ch limit set on the figure resolves against 16px and strangles it. */
-  max-width: 17em;
-  margin: 0;
+  max-width: 20em;
+  margin: 0 auto;
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(27px, 3.1vw, 40px);
+  font-size: clamp(28px, 3.6vw, 48px);
+  text-wrap: balance;
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.01em;

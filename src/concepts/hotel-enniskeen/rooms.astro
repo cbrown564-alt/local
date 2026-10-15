@@ -35,25 +35,17 @@ import { bookin1, enniskeen, generatedVisuals, rooms } from "./content";
           <p class="enk-rooms-sub">{rooms.character} {rooms.closing}</p>
         </div>
         <ul class="enk-character-grid" role="list">
-          {rooms.featured.map((room, index) => (
-            <li class="enk-character-card">
-              <figure class={`enk-character-image${room.imageWidth < 640 ? " enk-character-image--plate" : ""}${index === 2 ? " enk-character-image--turret" : ""}`}>
-                <ResponsiveImage
-                  pictureClass="concept-responsive-picture"
-                  src={room.image}
-                  alt={room.alt}
-                  width={room.imageWidth}
-                  height={room.imageHeight}
-                />
-              </figure>
+          {rooms.featured.map((room) => (
+            <li class={`enk-character-card${room.picture ? "" : " enk-character-card--text"}`}>
+              {room.picture && (
+                <figure class="enk-character-image">
+                  <ResponsiveImage pictureClass="concept-responsive-picture" {...room.picture} />
+                </figure>
+              )}
               <div class="enk-character-body">
                 <h3>{room.name}</h3>
                 <p class="enk-room-view">{room.detail}</p>
                 <p class="enk-character-note">{room.note}</p>
-                <a class="enk-room-book" href={bookin1.engine} rel="external">
-                  Check availability
-                  <svg viewBox="0 0 20 20" aria-hidden="true" width="16" height="16"><path d="M4 10h11M11 6l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
               </div>
             </li>
           ))}

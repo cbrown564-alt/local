@@ -186,10 +186,12 @@ export type NavId = (typeof nav)[number]["id"];
 
 /** ${site}/index.html */
 export const home = {
+  /** The hero lede carries what the explore cards below do not: the family,
+   *  the view and how far it is. Folded together from the welcome paragraph
+   *  and the directions line on ${site}/index.html, which used to be shown
+   *  again in their own section. */
   lede:
-    "Family-run, in twelve wooded acres beneath the Mournes — the river trail from the door, Mourne Honey afternoon tea on the terrace, and a quiet nightcap in the Brandy Pad Lounge.",
-  welcome:
-    "Enniskeen Country House Hotel is a mountainside hideaway resting in the lush Shimna Valley just outside Newcastle, Co. Down — explore the twelve-acre estate and the winding woodland trail down to the Shimna River, enjoy the views over Slieve Donard and the Irish Sea, or spot wildlife roaming the gardens.",
+    "Family-run, in twelve wooded acres beneath the Mournes, with views over Slieve Donard and the Irish Sea. Forty-five minutes from Belfast, an hour and a half from Dublin.",
 };
 
 /** A real guest's own words, quoted verbatim from the hotel's public
@@ -212,12 +214,18 @@ export const review = {
 
 /** ${site}/Rooms.html */
 export const rooms = {
+  /** First sentence of Rooms.html only: the en-suite kit, breakfast, parking
+   *  and Wi-Fi it went on to list are the "Included with every booking"
+   *  band on the same page. */
   intro:
-    "Accommodation at Enniskeen comprises 12 traditionally furnished rooms, many with striking mountain and sea views. Rooms are all en suite and include a flat-screen TV, tea and coffee making facilities and a hair dryer. Every booking includes breakfast, parking and Wi-Fi.",
+    "Accommodation at Enniskeen comprises 12 traditionally furnished rooms, many with striking mountain and sea views.",
   character:
     "Each room is individually styled and many reflect the house's history.",
   closing:
     "Savour the peace and quiet of this unique country estate and drift off to sleep knowing the only sound likely to awaken you is that of morning birdsong.",
+  /** Only Room 6 has a picture of its own. The turret room and the balcony
+   *  rooms have none that is not already on the site (the house front, the
+   *  page hero), so they are set as type rather than shown a third time. */
   featured: [
     {
       name: "Room 6",
@@ -225,28 +233,22 @@ export const rooms = {
       note: "One of the house's period survivors — individually styled, like every room at Enniskeen.",
       // The landscape visual is art-directed for the room-card crop. The
       // faithful portrait remains available for the full story treatment.
-      image: "/media/concepts/hotel-enniskeen/enniskeen-generated-bath-pink.jpg",
-      imageWidth: 1536,
-      imageHeight: 1024,
-      alt: "Room 6's pink art-deco bath and matching basin with chrome taps",
+      picture: {
+        src: "/media/concepts/hotel-enniskeen/enniskeen-generated-bath-pink.jpg",
+        width: 1536,
+        height: 1024,
+        alt: "Room 6's pink art-deco bath and matching basin with chrome taps",
+      },
     },
     {
       name: "Room 15",
       detail: "In the turret · panoramic mountain, forest and sea views",
       note: "Perched in the turret at the top of the house.",
-      image: generatedVisuals.house.src,
-      imageWidth: generatedVisuals.house.width,
-      imageHeight: generatedVisuals.house.height,
-      alt: generatedVisuals.house.alt,
     },
     {
       name: "Balcony rooms",
       detail: "French doors onto the Shimna Valley",
       note: "Many rooms carry striking mountain and sea views; the balcony rooms open straight onto them.",
-      image: generatedVisuals.balcony.src,
-      imageWidth: generatedVisuals.balcony.width,
-      imageHeight: generatedVisuals.balcony.height,
-      alt: generatedVisuals.balcony.alt,
     },
   ],
   /** Included with every booking (Rooms.html; facilities from OurFacilities.html). */
@@ -269,7 +271,7 @@ export const dine = {
     name: "Mourne Honey Afternoon Tea",
     copy:
       "The afternoon tea menu is inspired by local Mourne Honey, sourced from a bee guru who keeps a small apiary close by on the slopes of Slieve Donard. On a good year the bees gather from the Mourne bell and ling heathers — and from fuchsia, sycamore, dandelion, bramble, clover and blackberry — and the honey is harvested by hand, spun from the wax frames.",
-    booking: "Advance booking is required — call 028 4372 2392 to reserve a table.",
+    booking: "Advance booking is required.",
   },
   brandyPad: {
     name: "The Brandy Pad Lounge",
@@ -738,13 +740,7 @@ export const estate = {
     "Enniskeen House has a beautiful twelve-acre estate to explore — take a stroll along the woodland trail past the picturesque Wishing Well, then find a quiet spot by the Shimna River, bring a picnic, and let the world go by.",
   wildlife:
     "The gardens look over Slieve Donard — Northern Ireland's highest mountain — and out to the Irish Sea, with wildlife roaming the grounds.",
-  history: {
-    built:
-      "Enniskeen House was built in the late 1890s by R.W. Murray, principal of the Murray Sons & Co. tobacco house ('Erinmore', 'Murray's Mellow Mixture') and a director of Belfast Ropeworks — then the biggest rope maker in the world.",
-    titanic:
-      "The house later passed to linen manufacturer H. Liddell, whose table linens dressed the finest dining rooms aboard RMS Titanic — including the Captain's table. In the 1960s the house became a hotel.",
-  },
-  /** The same History.html facts as a dated band. Only the two dates the
+  /** History.html as a dated band. Only the two dates the
    *  hotel actually publishes are given as dates; the Liddell era is
    *  undated there, so it stays undated here. */
   timeline: [
