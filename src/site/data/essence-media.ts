@@ -34,6 +34,15 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       ["/media/concepts/kelly-mcevoy-brown/essence-sequence-04.jpg", "the small register at the centre of a substantial paper-built landscape", "The weight of the record"],
     ].map(([src, alt, label]) => ({ src, alt: `AI-generated paper-model scene of ${alt}`, label })),
   },
+  "douglas-cromie": {
+    heading: "The key comes back ready for the road.",
+    lede: "Sales, servicing and after-sales care are one continuing promise.",
+    frames: [
+      ["/media/concepts/douglas-cromie/essence-sequence-01.jpg", "a plain car key arriving at a garage service counter", "Arrival"],
+      ["/media/concepts/douglas-cromie/essence-sequence-02.jpg", "the same key held at the counter while the car is cared for in the workshop", "Workshop"],
+      ["/media/concepts/douglas-cromie/essence-sequence-03.jpg", "a hand closing around the same key, ready to return to the road", "Ready to go"],
+    ].map(([src, alt, label]) => ({ src, alt: `AI-generated scene of ${alt}`, label })),
+  },
   "arley-house": {
     heading: "The door opens on Belfast Road.",
     lede: "A welcoming morning in Dundrum: bikes at the door, the dog on the boards, and Newcastle when you want it.",

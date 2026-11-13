@@ -1,0 +1,136 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+
+/* Keown Nugent Solicitors — relief. Speak as the firm.
+   Live re-read 29 August 2026. LSNI firm page holds the door; knsolicitors.com
+   still does not open (TLS unexpected eof). Do not hand off to that domain.
+   Do not invent a practice-area grid (LSNI areas of expertise are empty).
+   No “book a consult” theatre. Hours are Google-only — omit rather than
+   date a clock on the door. Distinct from Dominic McInerney (123A Main Street).
+   Not Belfast Keown (Cregagh Road). Not Newry. Do not print Anna Mallett.
+   Action is phone and email; LSNI still prints the inbox. */
+const phone = "028 4333 0055";
+const phoneHref = "tel:+442843330055";
+const email = "info@knsolicitors.com";
+const mailto = `mailto:${email}`;
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const names = [
+  { name: "Anna Marie Nugent", mark: "Solicitor · Partner" },
+  { name: "John Keown", mark: "Solicitor · Partner" },
+];
+---
+
+<ConceptLayout
+  title={"Keown Nugent Solicitors — independent concept"}
+  slug="keown-nugent"
+  bodyClass="concept-page concept-keown-nugent"
+  lang="en-GB"
+  businessName="Keown Nugent Solicitors"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="Hero photography is an illustrative visualisation of 26 Railway Street."
+>
+  <div class="kn-strip">
+    <span>26 Railway Street, Newcastle · BT33 0AL</span>
+    <span class="kn-strip-r"><a href={phoneHref}>{phone}</a></span>
+  </div>
+
+  <header class="kn-header">
+    <div class="kn-header-inner">
+      <a class="kn-brand" href="/concepts/keown-nugent/">
+        <span class="kn-brand-text">
+          <span class="kn-brand-name">Keown Nugent</span>
+          <span class="kn-brand-sub">Solicitors · 26 Railway Street</span>
+        </span>
+      </a>
+      <nav class="kn-nav" aria-label="Concept navigation">
+        <a href="#firm">The Firm</a>
+        <a href="#solicitors">Solicitors</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="kn-ring kn-ring--solid" href={phoneHref}>Ring {phone}</a>
+    </div>
+  </header>
+
+  <main class="kn-main">
+    <section class="kn-hero" id="firm" aria-labelledby="kn-name">
+      <div class="kn-hero-copy">
+        <p class="kn-kicker">Solicitors · Newcastle</p>
+        <h1 id="kn-name">Keown Nugent</h1>
+        <p class="kn-street">26 Railway Street · Newcastle</p>
+        <p class="kn-lede">
+          Two solicitors at this door. Anna Marie Nugent and John Keown.
+          Clear, independent legal counsel on Railway Street. Ring or write.
+        </p>
+        <div class="kn-hero-actions">
+          <a class="kn-btn-primary" href={phoneHref}>Ring {phone}</a>
+          <a class="kn-btn-secondary" href={mailto}>Email the firm</a>
+        </div>
+      </div>
+
+      <figure class="kn-hero-theatre">
+        <img
+          src="/media/concepts/keown-nugent/keown-nugent-hero-railway-street.jpg"
+          alt="Traditional stone entrance at 26 Railway Street in Newcastle with dark Brunswick green door and polished brass nameplate"
+          width="1536"
+          height="1024"
+          loading="eager"
+        />
+        <figcaption>26 Railway Street · Attended in Newcastle, County Down</figcaption>
+      </figure>
+    </section>
+
+    <section class="kn-section kn-section--roll" id="solicitors" aria-labelledby="kn-roll-title">
+      <div class="kn-roll-head">
+        <p class="kn-kicker">The Practice</p>
+        <h2 id="kn-roll-title">The names on the door.</h2>
+        <p class="kn-roll-lede">
+          Anna Marie Nugent and John Keown practise from this door in Newcastle.
+          That is the firm.
+        </p>
+      </div>
+
+      <ul class="kn-names">
+        {names.map((person) => (
+          <li class="kn-name-card">
+            <p class="kn-name-mark">{person.mark}</p>
+            <h3 class="kn-name-person">{person.name}</h3>
+            <p class="kn-name-door">26 Railway Street · Newcastle</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="kn-section kn-section--contact" id="contact" aria-labelledby="kn-contact-title">
+      <div class="kn-contact-box">
+        <p class="kn-kicker">Direct Contact</p>
+        <h2 id="kn-contact-title">Ring, or write.</h2>
+        <p class="kn-contact-desc">
+          The number and the inbox reach 26 Railway Street. There is no contact form to fill; you speak directly with the firm.
+        </p>
+
+        <div class="kn-contact-channels">
+          <a class="kn-channel" href={phoneHref}>
+            <span class="kn-channel-label">Telephone</span>
+            <span class="kn-channel-val">{phone}</span>
+          </a>
+          <a class="kn-channel" href={mailto}>
+            <span class="kn-channel-label">Direct Inbox</span>
+            <span class="kn-channel-val">{email}</span>
+          </a>
+        </div>
+
+        <address class="kn-address">
+          <strong>Keown Nugent Solicitors</strong>
+          <span>26 Railway Street</span>
+          <span>Newcastle, Co. Down · BT33 0AL</span>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>
+
