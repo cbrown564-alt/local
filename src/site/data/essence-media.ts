@@ -15,6 +15,25 @@ export interface EssenceMedia {
 }
 
 export const essenceMedia: Record<string, EssenceMedia> = {
+  "bettys-butters": {
+    heading: "A little butter changes the whole plate.",
+    lede: "Professional-kitchen flavour, made useful on an ordinary night at home.",
+    frames: [{
+      src: "/media/concepts/bettys-butters/essence-video-seed.jpg",
+      alt: "AI-generated serving idea showing herb butter melting over chicken, potatoes and greens",
+      label: "From Tuesday tea to the plate you look forward to",
+    }],
+  },
+  "kelly-mcevoy-brown": {
+    heading: "A small register with a substantial record.",
+    lede: "More than fifty years of schools, hospitals, churches and community halls, made visible.",
+    frames: [
+      ["/media/concepts/kelly-mcevoy-brown/essence-sequence-01.jpg", "a small closed project register on a large survey table", "The register"],
+      ["/media/concepts/kelly-mcevoy-brown/essence-sequence-02.jpg", "the register open as fine routes spread across a folded county map", "The record opens"],
+      ["/media/concepts/kelly-mcevoy-brown/essence-sequence-03.jpg", "paper models of civic buildings rising from the mapped locations", "The work takes shape"],
+      ["/media/concepts/kelly-mcevoy-brown/essence-sequence-04.jpg", "the small register at the centre of a substantial paper-built landscape", "The weight of the record"],
+    ].map(([src, alt, label]) => ({ src, alt: `AI-generated paper-model scene of ${alt}`, label })),
+  },
   "arley-house": {
     heading: "The door opens on Belfast Road.",
     lede: "A welcoming morning in Dundrum: bikes at the door, the dog on the boards, and Newcastle when you want it.",

@@ -1,0 +1,90 @@
+---
+/** The melt — appetite in the table register.
+ *
+ *  Illustrative butter-on-board plate; day-part swaps change the serving
+ *  moment described in the caption, never stock or availability. */
+import ResponsiveImage from "../../../site/components/ResponsiveImage.astro";
+import { butterPhoto, meltMoments } from "../content";
+
+const fallback = meltMoments[0];
+const swaps = meltMoments.filter((part) => part.id !== fallback.id);
+---
+
+<figure class="bb-melt" data-bb-daypart>
+  {meltMoments.map((part) => (
+    <div
+      class="bb-melt-frame"
+      data-daypart={part.id}
+      hidden={part.id !== fallback.id ? true : undefined}
+    >
+      <ResponsiveImage
+        pictureClass="bb-melt-picture"
+        src={butterPhoto.src}
+        alt={butterPhoto.alt}
+        width={butterPhoto.width}
+        height={butterPhoto.height}
+        loading={part.id === fallback.id ? "eager" : "lazy"}
+        sizes="100vw"
+      />
+    </div>
+  ))}
+  <figcaption>
+    <span class="bb-melt-caption" data-bb-daypart-caption>{fallback.caption}</span>
+    <span class="bb-melt-context" data-bb-daypart-context>{fallback.context}</span>
+  </figcaption>
+</figure>
+
+{swaps.length > 0 && (
+  <Fragment>
+    <script
+      is:inline
+      type="application/json"
+      data-bb-daypart-bands
+      set:html={JSON.stringify(
+        meltMoments.map(({ id, from, to, caption, context }) => ({
+          id,
+          from,
+          to,
+          caption,
+          context,
+        })),
+      )}
+    />
+    <script is:inline>
+      (() => {
+        const figure = document.querySelector("[data-bb-daypart]");
+        const config = document.querySelector("[data-bb-daypart-bands]");
+        if (!figure || !config) return;
+
+        let bands;
+        try {
+          bands = JSON.parse(config.textContent || "[]");
+        } catch {
+          return;
+        }
+
+        const hour = new Date().getHours();
+        const band = bands.find(({ from, to }) =>
+          from < to ? hour >= from && hour < to : hour >= from || hour < to,
+        );
+        if (!band) return;
+
+        const target = figure.querySelector(`[data-daypart="${band.id}"]`);
+        if (!target || !target.hidden) return;
+
+        figure
+          .querySelectorAll("[data-daypart]")
+          .forEach((frame) => (frame.hidden = frame !== target));
+
+        const image = target.querySelector("img");
+        if (image) image.loading = "eager";
+
+        const caption = figure.querySelector("[data-bb-daypart-caption]");
+        if (caption) caption.textContent = band.caption;
+
+        const context = figure.querySelector("[data-bb-daypart-context]");
+        if (context) context.textContent = band.context;
+      })();
+    </script>
+  </Fragment>
+)}
