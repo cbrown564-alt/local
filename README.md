@@ -121,7 +121,7 @@ remain relevant only to the existing Vercel fallback and must never be committed
 
 The shared handler still supports the Vercel fallback's optional Upstash-compatible rate store and `REQUEST_ALERT_WEBHOOK`. No such variables were configured in the source deployment inventory. Future alert configuration must continue to exclude submitted names, email addresses, business names and messages.
 
-Website analytics are disabled after removing Vercel's integration; the privacy notice describes the Cloudflare host and abuse counter. The input, mail-formatting and failure-alert tests stub delivery and send nothing. The Workers-runtime tests cover concurrent attempts, persistence after restart, separate addresses, expiry/cleanup, bounded bodies, origin checks, forwarding-header spoofing and disabled preview delivery.
+The site keeps an aggregate, cookieless page counter (day, path and campaign or referrer source) in the production `mournemade-visits` D1 database. It stores no cookies, IP addresses or device identifiers; the privacy notice describes this, the Cloudflare host and the abuse counter. To read outreach prototype visits, run `pnpm visits` (or `pnpm exec cf d1 query c57334ef-1675-4063-b825-9f1680797eaf --sql="$(cat scripts/visits.sql)"`). The input, mail-formatting and failure-alert tests stub delivery and send nothing. The Workers-runtime tests cover concurrent attempts, persistence after restart, separate addresses, expiry/cleanup, bounded bodies, origin checks, forwarding-header spoofing, disabled preview delivery and visit counting.
 
 ## Where things live
 

@@ -16,7 +16,9 @@ export default defineConfig(({ mode }) => {
         ASSETS: bindings.assets(),
         REQUEST_RATE: bindings.durableObject({ worker: name, exportName: "RequestRate" }),
         DELIVERY_ENABLED: bindings.text(production ? "true" : "false"),
+        // Visit counts (deploy/site-visits.ts) sit in the production D1 database.
         ...(production ? {
+          VISITS: bindings.d1({ name: "mournemade-visits", id: "c57334ef-1675-4063-b825-9f1680797eaf" }),
           MAIL_FROM: bindings.text("hello@mournemade.co.uk"),
           REQUEST_TO_EMAIL: bindings.text("cbrown564@gmail.com"),
           EMAIL: bindings.sendEmail({

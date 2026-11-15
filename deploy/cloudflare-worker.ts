@@ -1,5 +1,6 @@
 import { DurableObject } from "cloudflare:workers";
 import { createRequestHandler, type RateLimitResult, type RequestOutput } from "../api/request";
+import { countVisit, visitOf } from "./site-visits";
 
 const WINDOW_MS = 60 * 60 * 1_000;
 const LIMIT = 5;
@@ -53,8 +54,19 @@ async function readBody(request: Request): Promise<string | null> {
   return new TextDecoder().decode(body);
 }
 
+function recordVisit(request: Request, response: Response, env: Cloudflare.Env, ctx: ExecutionContext) {
+  try {
+    const visits = (env as Cloudflare.Env & { VISITS?: D1Database }).VISITS;
+    if (!visits) return;
+    const visit = visitOf(request, response, Date.now());
+    if (visit) ctx.waitUntil(countVisit(visits, visit).catch(() => undefined));
+  } catch {
+    // Counting must never affect the page.
+  }
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.hostname === "www.mournemade.co.uk") {
       url.hostname = "mournemade.co.uk";
@@ -62,7 +74,9 @@ export default {
     }
     if (url.pathname !== "/api/request" && url.pathname !== "/api/request/") {
       if (url.pathname.startsWith("/api/")) return new Response("Not found", { status: 404 });
-      return env.ASSETS.fetch(request);
+      const response = await env.ASSETS.fetch(request);
+      recordVisit(request, response, env, ctx);
+      return response;
     }
     const headers = new Headers({ "Cache-Control": "no-store" });
     if (env.DELIVERY_ENABLED !== "true") headers.set("X-Robots-Tag", "noindex, nofollow");
