@@ -43,6 +43,53 @@ export const essenceMedia: Record<string, EssenceMedia> = {
       ["/media/concepts/douglas-cromie/essence-sequence-03.jpg", "a hand closing around the same key, ready to return to the road", "Ready to go"],
     ].map(([src, alt, label]) => ({ src, alt: `AI-generated scene of ${alt}`, label })),
   },
+  "painted-earth": {
+    heading: "Many hands make one place.",
+    lede: "Different materials and makers come together, then one handmade piece travels home.",
+    frames: [
+      ["/media/concepts/painted-earth/essence-sequence-01.jpg", "paper, thread, clay, wood and paint sitting separately on a worktable", "The materials"],
+      ["/media/concepts/painted-earth/essence-sequence-02.jpg", "more individually different handmade pieces moving together", "Many makers"],
+      ["/media/concepts/painted-earth/essence-sequence-03.jpg", "the materials beginning to form a tactile Mourne and County Down landscape", "A place takes shape"],
+      ["/media/concepts/painted-earth/essence-sequence-04.jpg", "the complete handmade landscape of mountain, fields and blue coast", "Held together"],
+      ["/media/concepts/painted-earth/essence-sequence-05.jpg", "a hand lifting one small finished piece while the larger landscape remains", "A piece to take home"],
+    ].map(([src, alt, label]) => ({ src, alt: `AI-generated original craft scene of ${alt}`, label })),
+  },
+  "villa-vinci": {
+    heading: "The promenade first, then the table.",
+    lede: "Since 2008, where the warmth of the Mediterranean meets the charm of the Mourne Mountains.",
+    frames: [{
+      src: "/media/concepts/villa-vinci/dish.jpg",
+      alt: "AI-generated scene of steaming seafood pasta in a rich tomato sauce at a Mediterranean coastal trattoria table",
+      label: "From the kitchen pass to the promenade table",
+    }],
+  },
+  "binghams-menswear": {
+    heading: "Two measured days, through one door.",
+    lede: "From the P1 school blazer to the wedding morning, measured properly on Main Street.",
+    frames: [{
+      src: "/media/concepts/binghams-menswear/fitting-session.jpg",
+      alt: "AI-generated scene of a bespoke herringbone tweed jacket on a tailoring bust with tailor's tape, shears and chalk on Main Street",
+      label: "The fitting on Main Street",
+    }],
+  },
+  "bear-necessities": {
+    heading: "The party venue that travels to your door.",
+    lede: "Custom teddy bear making workshops, heartfelt adoption ceremonies and magical memories across County Down.",
+    frames: [{
+      src: "/media/concepts/bear-necessities/party-moment.jpg",
+      alt: "AI-generated scene of a child with their newly made teddy bear and adoption certificate at a party",
+      label: "A completed bear and adoption certificate",
+    }],
+  },
+  "irelands-appliance-centre": {
+    heading: "The kitchen working again.",
+    lede: "Two vans already in town when the cooker goes cold, and bench repairs on the harbour.",
+    frames: [{
+      src: "/media/concepts/irelands-appliance-centre/kitchen.jpg",
+      alt: "AI-generated scene of a restored kitchen at evening with warm appliance light and working machines",
+      label: "The kitchen restored",
+    }],
+  },
   "arley-house": {
     heading: "The door opens on Belfast Road.",
     lede: "A welcoming morning in Dundrum: bikes at the door, the dog on the boards, and Newcastle when you want it.",

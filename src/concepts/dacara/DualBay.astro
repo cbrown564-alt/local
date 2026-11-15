@@ -1,0 +1,73 @@
+---
+/* Drawn dual bay windows over Dundrum Bay at 47 South Promenade.
+   Honesty that it is a drawing lives in bannerNote, not the caption. */
+interface Props {
+  headingId?: string;
+}
+const { headingId = "dc-bay-title" } = Astro.props;
+---
+
+<figure class="dc-bay" aria-labelledby={headingId}>
+  <svg
+    class="dc-bay-svg"
+    viewBox="0 0 480 560"
+    role="img"
+    aria-label="Drawn Victorian dual bay windows of Dacara Guesthouse on South Promenade looking over Dundrum Bay"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="dc-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b8cfe0"/>
+        <stop offset="0.5" stop-color="#9ebad0"/>
+        <stop offset="1" stop-color="#7aa0b4"/>
+      </linearGradient>
+      <linearGradient id="dc-baywater" x1="0" y1="0" x2="0.1" y2="1">
+        <stop offset="0" stop-color="#4a7a90"/>
+        <stop offset="1" stop-color="#1c2e3a"/>
+      </linearGradient>
+      <linearGradient id="dc-stone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e8dcc8"/>
+        <stop offset="1" stop-color="#c9b8a0"/>
+      </linearGradient>
+      <filter id="dc-soft" x="-6%" y="-6%" width="112%" height="112%">
+        <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1c2e3a" flood-opacity="0.22"/>
+      </filter>
+    </defs>
+
+    <rect width="480" height="560" fill="#1c2e3a"/>
+    <rect x="20" y="20" width="440" height="520" fill="url(#dc-sky)" rx="2"/>
+
+    <!-- Mournes inland -->
+    <path d="M20 200 L80 160 L140 178 L200 140 L280 170 L340 130 L400 165 L460 150 L460 230 L20 230 Z" fill="#5a7080" opacity="0.45"/>
+
+    <!-- Bay -->
+    <rect x="20" y="220" width="440" height="140" fill="url(#dc-baywater)"/>
+    <path d="M20 250 Q100 240 180 255 T340 248 T460 258" fill="none" stroke="#9ec8d8" stroke-width="1.5" opacity="0.35"/>
+
+    <!-- Facade -->
+    <g filter="url(#dc-soft)">
+      <rect x="70" y="300" width="340" height="220" fill="url(#dc-stone)"/>
+      <!-- Dual bays -->
+      <g fill="#f0e6d6" stroke="#1c2e3a" stroke-width="1.5">
+        <path d="M95 340 L130 310 L195 310 L230 340 L230 470 L95 470 Z"/>
+        <path d="M250 340 L285 310 L350 310 L385 340 L385 470 L250 470 Z"/>
+      </g>
+      <!-- Glazing bars -->
+      <g stroke="#1c2e3a" stroke-width="1.1" opacity="0.7">
+        <line x1="162" y1="310" x2="162" y2="470"/>
+        <line x1="95" y1="390" x2="230" y2="390"/>
+        <line x1="317" y1="310" x2="317" y2="470"/>
+        <line x1="250" y1="390" x2="385" y2="390"/>
+      </g>
+      <!-- Sea reflection in glass -->
+      <rect x="105" y="325" width="50" height="55" fill="#4a7a90" opacity="0.25"/>
+      <rect x="168" y="325" width="50" height="55" fill="#4a7a90" opacity="0.2"/>
+      <rect x="260" y="325" width="50" height="55" fill="#4a7a90" opacity="0.25"/>
+      <rect x="323" y="325" width="50" height="55" fill="#4a7a90" opacity="0.2"/>
+    </g>
+
+    <text x="240" y="70" text-anchor="middle" fill="#1c2e3a" font-family="Playfair Display, Georgia, serif" font-size="28" font-weight="600">Dual bays</text>
+    <text x="240" y="94" text-anchor="middle" fill="#3d5a6a" font-family="Raleway, Segoe UI, sans-serif" font-size="10" font-weight="700" letter-spacing="2.4">DUNDRUM BAY · SOUTH PROMENADE</text>
+    <text x="240" y="520" text-anchor="middle" fill="#e8dcc8" font-family="Raleway, Segoe UI, sans-serif" font-size="12" font-weight="600">47 · BT33 0EY</text>
+  </svg>
+</figure>

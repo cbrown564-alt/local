@@ -1,0 +1,402 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import BnMark from "./components/BnMark.astro";
+import BnCircuitMap from "./components/BnCircuitMap.astro";
+
+const phone = "07887 905 025";
+const phoneHref = "tel:+447887905025";
+const email = "bearnecessitieskids@gmail.com";
+const facebook = "https://www.facebook.com/Bearnecessitiespartyvenue";
+const site = "https://www.bearnecessitieskids.co.uk/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+const intro =
+  "Bear necessities is an unique Teddy bear making & crafts experience where children can create a new & make magical memories. We cater for birthdays, events, schools and group bookings.";
+
+const packs = [
+  {
+    name: "Little Ted",
+    size: "10-inch bear",
+    extras: "Heart insert · adoption certificate",
+    price: "£10.50",
+    min: "Minimum 12 for a mobile party",
+  },
+  {
+    name: "Big Ted",
+    size: "16-inch bear",
+    extras: "Heart insert · adoption certificate",
+    price: "£15.99",
+    min: "Minimum 12 for a mobile party",
+  },
+  {
+    name: "Colour Your Bear",
+    size: "16-inch bear + shirt",
+    extras: "Extra 16-inch for the birthday child · Aromabeary scent for them",
+    price: "£16.50",
+    min: "Minimum 10",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Bear Necessities — Newcastle"}
+  slug="bear-necessities"
+  bodyClass="concept-page concept-bear"
+  businessName="Bear Necessities"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="Packs, call-out and extras as published on bearnecessitieskids.co.uk, 23 August 2026. The making picture is generated. Photographs of party celebrations are generated visualisations."
+>
+  <div class="bn-strip">
+    <span>Mobile Teddy Bear Making &amp; Crafts · Newcastle &amp; Across County Down</span>
+    <span class="bn-strip-links">
+      <a href={phoneHref}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a>
+    </span>
+  </div>
+
+  <header class="bn-header">
+    <a class="bn-brand" href="/concepts/bear-necessities/">
+      <BnMark size={38} class="bn-brand-mark" />
+      <span class="bn-brand-text">
+        <span class="bn-brand-name">Bear Necessities</span>
+        <span class="bn-brand-sub">Where Bears Come To Life!</span>
+      </span>
+    </a>
+    <nav class="bn-nav" aria-label="Concept navigation">
+      <a href="#venue">The venue</a>
+      <a href="#how">The making</a>
+      <a href="#packs">Packs</a>
+      <a href="#circuit">The circuit</a>
+    </nav>
+    <a class="bn-nav-cta" href="#invite">Plan your party</a>
+  </header>
+
+  <main class="bn-page">
+    <section class="bn-first" aria-labelledby="bn-name">
+      <div class="bn-identity">
+        <p class="bn-place">Newcastle · travelling</p>
+        <h1 id="bn-name">Bear Necessities</h1>
+        <p class="bn-cover">Where Bears Come To Life!</p>
+        <p class="bn-door">We come to you!</p>
+        <p class="bn-intro">{intro}</p>
+        <div class="bn-hero-actions">
+          <a class="bn-btn-primary" href="#invite">Plan a Saturday party</a>
+          <a class="bn-btn-tel" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="bn-fb-line">
+          Today's diary, Wake the Giant, and live offers sit on{" "}
+          <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a> — we do not keep a second calendar here.
+        </p>
+      </div>
+
+      <figure class="bn-hero-visual">
+        <div class="bn-hero-frame">
+          <img
+            src="/media/concepts/bear-necessities/party-moment.jpg"
+            alt="AI-generated scene of a child with their newly made teddy bear and adoption certificate at a party"
+            width="1536"
+            height="1024"
+            loading="eager"
+          />
+          <div class="bn-hero-badge">
+            <span class="bn-badge-dot"></span>
+            <span>Where bears come to life</span>
+          </div>
+        </div>
+        <figcaption>A completed bear, red heart and adoption certificate at a party.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Interactive Party Invitation Desk -->
+    <section class="bn-invite-section" id="invite" aria-labelledby="bn-invite-title">
+      <div class="bn-jar">
+        <div class="bn-jar-head">
+          <div>
+            <p class="bn-jar-kicker">Party Invitation Desk</p>
+            <h2 id="bn-invite-title" class="bn-jar-title">A Saturday at your place</h2>
+          </div>
+          <a class="bn-jar-phone" href={phoneHref}>{phone}</a>
+        </div>
+        <p class="bn-jar-lead">
+          Write the invitation. You send it to {email}. Nothing leaves this page
+          until you do.
+        </p>
+
+        <form class="bn-form" id="book" data-bn-request>
+          <label class="bn-box" for="bn-guest">
+            <span>Your name</span>
+            <input id="bn-guest" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah Kelly" required />
+          </label>
+          <label class="bn-box" for="bn-date">
+            <span>Saturday you have in mind</span>
+            <input id="bn-date" name="saturday" type="text" placeholder="e.g. Saturday 12 September" required />
+          </label>
+          <label class="bn-box" for="bn-count">
+            <span>How many children</span>
+            <input id="bn-count" name="count" type="text" inputmode="numeric" placeholder="e.g. 12" required />
+          </label>
+          <fieldset class="bn-chips">
+            <legend>Which pack</legend>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Little Ted" checked /> Little Ted</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Big Ted" /> Big Ted</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="Colour Your Bear" /> Colour Your Bear</label>
+            <label class="bn-chip"><input type="radio" name="bn-pack" value="not sure yet" /> Not sure yet</label>
+          </fieldset>
+          <fieldset class="bn-chips">
+            <legend>Where should we come</legend>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your hall" checked /> Your hall</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your home" /> Your home</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="your school" /> Your school</label>
+            <label class="bn-chip"><input type="radio" name="bn-where" value="the next public day" /> The next public day</label>
+          </fieldset>
+          <button class="bn-write" type="submit">Write the invitation</button>
+
+          <div class="bn-handoff" data-bn-handoff role="status" hidden tabindex="-1">
+            <strong>Your invitation is ready — you send it.</strong>
+            <a class="bn-mail" data-bn-mail href={`mailto:${email}`}>Open the draft to {email}</a>
+            <span>Or ring <a href={phoneHref}>{phone}</a>.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Move 2: the essence made visible — a party venue with no venue,
+         owned in the business's voice. -->
+    <section class="bn-venue" id="venue" aria-labelledby="bn-venue-title">
+      <p class="bn-kicker">The party</p>
+      <h2 id="bn-venue-title">The venue is yours.</h2>
+      <div class="bn-venue-copy">
+        <p>
+          There is no shop to find and no hall of ours to book. The party
+          happens where the children already are — your living room, your
+          hired hall, your classroom.
+        </p>
+        <p>
+          We arrive with the bears, the stuffing and the certificates, and
+          for one Saturday your place is the party venue.
+        </p>
+      </div>
+    </section>
+
+    <section class="bn-how" id="how" aria-labelledby="bn-how-title">
+      <p class="bn-kicker">The making</p>
+      <h2 id="bn-how-title">They are not hand stuffed.</h2>
+      <p class="bn-how-lead">
+        A machine arrives. A heart goes in. A certificate leaves with the bear.
+        That ritual is written on the{" "}
+        <a href={site} rel="noopener noreferrer" target="_blank">packages page</a> — not claimed as a Facebook photograph.
+      </p>
+      <div class="bn-how-grid">
+        <div class="bn-how-main">
+          <ol class="bn-steps">
+            <li class="bn-step-card">
+              <div class="bn-step-head">
+                <span class="bn-step-badge">01</span>
+                <svg class="bn-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13" stroke-linecap="round" />
+                </svg>
+              </div>
+              <strong>The machine</strong>
+              <p>The machine arrives at your room. The stuffing is the experience — not sewing at a bench. Children watch their chosen bear fill out with cloud-soft fluff.</p>
+            </li>
+            <li class="bn-step-card">
+              <div class="bn-step-head">
+                <span class="bn-step-badge">02</span>
+                <svg class="bn-step-icon bn-step-heart-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </div>
+              <strong>The heart</strong>
+              <p>The red satin heart. Every bear gets a heart put inside before it is closed. That is the moment where every child makes a wish.</p>
+            </li>
+            <li class="bn-step-card">
+              <div class="bn-step-head">
+                <span class="bn-step-badge">03</span>
+                <svg class="bn-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+              </div>
+              <strong>The certificate</strong>
+              <p>The official adoption. Every bear leaves with its adoption certificate. Filled in by hand with their new name and ready to take home.</p>
+            </li>
+          </ol>
+          <figure class="bn-stage">
+            <img
+              src="/media/concepts/bear-necessities/workshop-table.jpg"
+              alt="AI-generated scene of a teddy bear workshop table setup with plush skins, hearts, shirts and certificate scrolls"
+              width="1536"
+              height="1024"
+              loading="lazy"
+            />
+            <figcaption>The making table ready for the ceremony.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Move 6: the keepable object, drawn — the one physical thing the
+             business hands you. Title and three blanks only, no invented
+             wording, no logo forgery. -->
+        <aside class="bn-keepsake" aria-label="The adoption certificate">
+          <p class="bn-keepsake-lead">
+            Every bear leaves with a heart and an adoption certificate.
+          </p>
+          <div
+            class="bn-cert"
+            role="img"
+            aria-label="A drawn blank Certificate of Adoption with empty ruled lines for the bear's name, the maker's name and the date"
+          >
+            <div class="bn-cert-inner">
+              <div class="bn-cert-seal">
+                <svg class="bn-cert-heart" viewBox="0 0 24 22" aria-hidden="true">
+                  <path d="M12 20 C6 15 2 11.5 2 7.5 C2 4.4 4.4 2 7.5 2 C9.4 2 11.1 3 12 4.4 C12.9 3 14.6 2 16.5 2 C19.6 2 22 4.4 22 7.5 C22 11.5 18 15 12 20 Z" />
+                </svg>
+                <span class="bn-cert-stamp">Official Keepsake</span>
+              </div>
+              <p class="bn-cert-title">Certificate of Adoption</p>
+              <div class="bn-cert-fields">
+                <div class="bn-cert-line">
+                  <span class="bn-cert-rule" aria-hidden="true"></span>
+                  <span class="bn-cert-label">The bear's name</span>
+                </div>
+                <div class="bn-cert-line">
+                  <span class="bn-cert-rule" aria-hidden="true"></span>
+                  <span class="bn-cert-label">The maker's name</span>
+                </div>
+                <div class="bn-cert-line">
+                  <span class="bn-cert-rule" aria-hidden="true"></span>
+                  <span class="bn-cert-label">The date</span>
+                </div>
+              </div>
+              <div class="bn-cert-foot">
+                <span>🧸 Bear Necessities</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="bn-packs" id="packs" aria-labelledby="bn-packs-title">
+      <div class="bn-packs-inner">
+        <p class="bn-kicker">The packs</p>
+        <h2 id="bn-packs-title">Little Ted, Big Ted, Colour Your Bear.</h2>
+        <ul class="bn-tickets">
+          {packs.map((t) => (
+            <li>
+              <strong>{t.name}</strong>
+              <span>{t.size}</span>
+              <span>{t.extras}</span>
+              <em>{t.price} per child</em>
+              <small>{t.min}</small>
+            </li>
+          ))}
+        </ul>
+
+        <p class="bn-pack-note">
+          Call-out from £35 depending on location. Sand art £3.50 a child if you
+          want the extra table — mess kept to a minimum. Both from the site, not
+          the feed. One-day bundles such as Wake the Giant live on{" "}
+          <a href={facebook} rel="noopener noreferrer" target="_blank">Facebook</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="bn-split" aria-labelledby="bn-split-title">
+      <div class="bn-split-inner">
+        <p class="bn-kicker">Fair day · living-room floor</p>
+        <h2 id="bn-split-title">The same machine. Two kinds of Saturday.</h2>
+        <div class="bn-columns">
+          <article>
+            <h3>Public days</h3>
+            <p>
+              Racecourse tents, town squares, the Giant's Trail. The feed already
+              holds those dates. We point there and stay quiet.
+            </p>
+            <p><a class="bn-fb" href={facebook} rel="noopener noreferrer" target="_blank">Open the Facebook diary</a></p>
+          </article>
+          <article>
+            <h3>Your Saturday</h3>
+            <p>
+              A hall, a school, a home. The machine that stands in a racecourse
+              tent stands in a house in Newcastle.
+            </p>
+            <p><a class="bn-jump" href="#invite">Write that invitation</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Move 5: the circuit is the map — County Down as the route, not the
+         shop floor. Wake the Giant rides as a cartouche streamer only. -->
+    <section class="bn-circuit" id="circuit" aria-labelledby="bn-circuit-title">
+      <div class="bn-circuit-inner">
+        <p class="bn-kicker">The circuit</p>
+        <h2 id="bn-circuit-title">County Down is the venue.</h2>
+        <p class="bn-circuit-lead">
+          Newcastle is home. The route runs through every parish between the bay,
+          the racecourse and the lough — wherever you gather the children.
+        </p>
+        <BnCircuitMap headingId="bn-circuit-title" />
+      </div>
+    </section>
+
+    <!-- Studio Transformation Essence Media Block -->
+    <EssenceMedia slug="bear-necessities" />
+
+    <footer class="bn-end">
+      <BnMark size={44} class="bn-end-mark" />
+      <p class="bn-end-name">Bear Necessities</p>
+      <p>Mobile teddy bear making parties across Newcastle &amp; County Down</p>
+      <p><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a></p>
+    </footer>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("book");
+      if (!form) return;
+      var handoff = form.querySelector("[data-bn-handoff]");
+      var link = form.querySelector("[data-bn-mail]");
+      if (!handoff || !link) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var name = document.getElementById("bn-guest").value.trim();
+        var date = document.getElementById("bn-date").value.trim();
+        var count = document.getElementById("bn-count").value.trim();
+        var packEl = form.querySelector('input[name="bn-pack"]:checked');
+        var whereEl = form.querySelector('input[name="bn-where"]:checked');
+        var pack = packEl ? packEl.value : "Little Ted";
+        var where = whereEl ? whereEl.value : "your hall";
+        var body = [
+          "Hello Siobhan,",
+          "",
+          "I would like you to come to us.",
+          "Name: " + name,
+          "Saturday: " + date,
+          "Children: " + count,
+          "Pack: " + pack,
+          "Where: " + where,
+          "",
+          "Please tell me if that Saturday is free.",
+        ].join("\n");
+        link.href =
+          "mailto:bearnecessitieskids@gmail.com?subject=" +
+          encodeURIComponent("Bear Necessities — Saturday " + date) +
+          "&body=" +
+          encodeURIComponent(body);
+        handoff.hidden = false;
+        handoff.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>

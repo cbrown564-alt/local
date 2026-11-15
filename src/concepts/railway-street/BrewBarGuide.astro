@@ -1,0 +1,61 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "rs-brewbar-title" } = Astro.props;
+
+const methods = [
+  {
+    tag: "Batch Filter",
+    name: "Daily Origin",
+    notes: "Clean, sweet, and rotating weekly across washed and natural lots.",
+    detail: "Brewed fresh on the hour",
+    temp: "93°C",
+    ratio: "1:16",
+  },
+  {
+    tag: "Hand Pour",
+    name: "Kalita Wave 185",
+    notes: "Slow extraction highlighting delicate floral and stone fruit notes.",
+    detail: "Single origin feature",
+    temp: "94°C",
+    ratio: "1:15",
+  },
+  {
+    tag: "Espresso",
+    name: "House & Seasonal",
+    notes: "Balanced double shots with silky textured whole or oat milk.",
+    detail: "Flat whites · Long blacks · Cortados",
+    temp: "92°C",
+    ratio: "1:2",
+  },
+  {
+    tag: "Weekend Feature",
+    name: "Tiramisu Iced Latte",
+    notes: "Layered single-origin espresso, mascarpone crema, and dark cocoa dusting.",
+    detail: "Saturday counter special",
+    temp: "Iced",
+    ratio: "Signature",
+  },
+];
+---
+
+<div class="rs-brew-guide" aria-labelledby={headingId}>
+  <div class="rs-brew-grid">
+    {methods.map((method) => (
+      <article class="rs-brew-card">
+        <div class="rs-card-header">
+          <span class="rs-card-tag">{method.tag}</span>
+          <span class="rs-card-ratio">{method.ratio}</span>
+        </div>
+        <h3>{method.name}</h3>
+        <p class="rs-brew-notes">{method.notes}</p>
+        <div class="rs-card-footer">
+          <span class="rs-brew-detail">{method.detail}</span>
+          <span class="rs-brew-temp">{method.temp}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>

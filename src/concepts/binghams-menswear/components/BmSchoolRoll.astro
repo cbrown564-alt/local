@@ -1,0 +1,46 @@
+---
+/** Binghams Menswear — the school roll, with generated map artwork as scenery. */
+import GeneratedMapPlate from "../../_shell/GeneratedMapPlate.astro";
+
+interface Props { headingId?: string; }
+const { headingId } = Astro.props;
+const roll = [
+  { town: "Newcastle", schools: ["Newcastle Primary & Nursery", "All Childrens Newcastle", "St Mary's", "St Josephs Carnacaville", "Newcastle Preschool", "Shimna College"] },
+  { town: "Dundrum", schools: ["Sacred Heart Dundrum"] },
+  { town: "Clough", schools: ["Cumran Clough"] },
+  { town: "Kilkeel", schools: ["Kilkeel High", "St Louis Kilkeel"] },
+  { town: "Ballynahinch", schools: ["Assumption Ballynahinch"] },
+  { town: "Downpatrick", schools: ["St Patricks Downpatrick", "Down High"] },
+  { town: "Castlewellan", schools: ["St Malachys Castlewellan"] },
+];
+---
+
+<div class="bm-roll-plate">
+  <GeneratedMapPlate
+    id="bm-roll-map"
+    src="/media/maps/binghams-school-roll-generated.png"
+    width={1536}
+    height={1024}
+    title="The school roll"
+    desc="An indicative map of the school-run towns Binghams stocks uniform for: Newcastle, Dundrum, Clough, Kilkeel, Ballynahinch, Downpatrick and Castlewellan. The fourteen schools are listed in full below the map."
+    headingId={headingId}
+  >
+    <span class="bm-generated-map-label bm-generated-map-label--title">The school roll<small>the towns we stock for</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--newcastle">Newcastle<small>82 Main Street</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--dundrum">Dundrum<small>Sacred Heart</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--clough">Clough<small>Cumran</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--downpatrick">Downpatrick<small>St Patricks · Down High</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--castlewellan">Castlewellan<small>St Malachys</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--ballynahinch">Ballynahinch<small>Assumption</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--kilkeel">Kilkeel<small>Kilkeel High · St Louis</small></span>
+    <span class="bm-generated-map-label bm-generated-map-label--mournes">the Mournes</span>
+    <span class="bm-generated-map-label bm-generated-map-label--sea">IRISH SEA</span>
+
+    <Fragment slot="caption">The schools we stock uniform for — as listed in the shop. The artwork is indicative, not a road map.</Fragment>
+    <div slot="key" class="bm-roll-key">
+      {roll.map(({ town, schools }) => (
+        <div class="bm-roll-town"><dt>{town}</dt><dd><ul>{schools.map((school) => <li>{school}</li>)}</ul></dd></div>
+      ))}
+    </div>
+  </GeneratedMapPlate>
+</div>

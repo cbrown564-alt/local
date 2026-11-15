@@ -1,0 +1,247 @@
+---
+/**
+ * Ireland's Appliance Centre — The Two Vans & Mourne Service Radius Plate (Move 7).
+ * "We all live here. The van is already in town when the cooker goes cold."
+ * Sourced strictly from their published "Newcastle and surrounding areas" coverage.
+ */
+
+const towns = [
+  { name: "Newcastle", type: "Home Base & Shop", note: "67–69 The Harbour / South Promenade" },
+  { name: "Dundrum", type: "Service Route", note: "Domestic callouts & delivery" },
+  { name: "Castlewellan", type: "Service Route", note: "Kitchen repairs & installation" },
+  { name: "Annalong", type: "Service Route", note: "Coastal domestic rounds" },
+  { name: "Bryansford", type: "Service Route", note: "Foothills & valley callouts" },
+  { name: "Kilkeel", type: "Service Route", note: "South Down servicing" },
+  { name: "Clough", type: "Service Route", note: "Appliance delivery & disposal" },
+];
+---
+
+<div class="ia-ride-plate">
+  <div class="ia-ride-head">
+    <span class="ia-ride-kicker">Two Vans · Two Pins</span>
+    <h3 class="ia-ride-title">The Harbour door and your kitchen.</h3>
+    <p class="ia-ride-lead">
+      Two vans covering Newcastle and surrounding Mourne towns every working week.
+      Drop small appliances to the harbour bench, or we come to your door.
+    </p>
+  </div>
+
+  <div class="ia-ride-grid">
+    <div class="ia-ride-map-visual">
+      <div class="ia-map-schematic" aria-hidden="true">
+        <div class="ia-map-hub">
+          <span class="ia-hub-dot"></span>
+          <span class="ia-hub-label">The Harbour Base (67–69)</span>
+        </div>
+        <div class="ia-map-ring ia-map-ring--1"></div>
+        <div class="ia-map-ring ia-map-ring--2"></div>
+        <div class="ia-map-van-indicator">
+          <span class="ia-van-tag">Van 1: Domestic Repairs</span>
+          <span class="ia-van-tag">Van 2: Deliveries &amp; Fitting</span>
+        </div>
+      </div>
+      <p class="ia-map-caption">
+        Indicative coverage: Newcastle and surrounding areas across County Down.
+      </p>
+    </div>
+
+    <div class="ia-towns-list" role="list">
+      {towns.map((town) => (
+        <div class="ia-town-row" role="listitem">
+          <div class="ia-town-info">
+            <span class="ia-town-name">{town.name}</span>
+            <span class="ia-town-note">{town.note}</span>
+          </div>
+          <span class="ia-town-badge">{town.type}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .ia-ride-plate {
+    background-color: var(--ia-slate-dark);
+    color: #ffffff;
+    border-radius: var(--ia-radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--ia-shadow-lg);
+    margin: 3.5rem 0;
+  }
+
+  .ia-ride-kicker {
+    font-family: var(--ia-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ia-copper-light);
+  }
+
+  .ia-ride-title {
+    font-family: var(--ia-font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .ia-ride-lead {
+    font-size: 1rem;
+    color: #c9d6df;
+    margin: 0 0 2rem;
+    max-width: 680px;
+    line-height: 1.5;
+  }
+
+  .ia-ride-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .ia-ride-map-visual {
+    background-color: #1a2834;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--ia-radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ia-map-schematic {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ia-map-hub {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--ia-copper);
+    color: #ffffff;
+    padding: 0.375rem 0.75rem;
+    border-radius: 999px;
+    font-family: var(--ia-font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    z-index: 3;
+    box-shadow: 0 0 15px rgba(192, 99, 40, 0.5);
+  }
+
+  .ia-hub-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+
+  .ia-map-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+  }
+
+  .ia-map-ring--1 {
+    width: 110px;
+    height: 110px;
+  }
+
+  .ia-map-ring--2 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .ia-map-van-indicator {
+    position: absolute;
+    bottom: 0.25rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .ia-van-tag {
+    font-family: var(--ia-font-mono);
+    font-size: 0.6875rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    color: #cbd5e1;
+  }
+
+  .ia-map-caption {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0.75rem 0 0;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .ia-towns-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ia-town-row {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 0.625rem 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .ia-town-row:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .ia-town-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ia-town-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .ia-town-note {
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+
+  .ia-town-badge {
+    font-family: var(--ia-font-mono);
+    font-size: 0.6875rem;
+    color: var(--ia-copper-light);
+    background-color: rgba(192, 99, 40, 0.2);
+    border: 1px solid rgba(192, 99, 40, 0.4);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 800px) {
+    .ia-ride-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

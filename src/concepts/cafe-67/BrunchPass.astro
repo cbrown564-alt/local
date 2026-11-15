@@ -1,0 +1,62 @@
+---
+interface Props {
+  headingId?: string;
+}
+
+const { headingId = "c67-pass-title" } = Astro.props;
+
+const categories = [
+  {
+    kicker: "Sourdough & Eggs",
+    title: "Poached & Folded",
+    items: [
+      "Eggs Florentine · Wilted spinach & hollandaise",
+      "Turkish Eggs · Whipped garlic labneh & spiced chilli butter",
+      "Avocado Toast · Smashed Hass avocado, feta & microgreens",
+    ],
+  },
+  {
+    kicker: "Kitchen Signatures",
+    title: "Waffles & Hashes",
+    items: [
+      "Nashville Hot Chicken Waffles · Pickled slaw & hot honey",
+      "Slow Beef Hash · Crispy potatoes, braised beef & fried egg",
+      "Loaded Chicken Waffles · Smoked bacon & maple syrup",
+    ],
+  },
+  {
+    kicker: "Sweet Stacks",
+    title: "Pancakes & Brioche",
+    items: [
+      "Fluffy Soufflé Pancakes · Seasonal berry compote & cream",
+      "Brioche French Toast · Caramelised banana & pecans",
+      "Counter Pastries · Croissants & morning bakes",
+    ],
+  },
+  {
+    kicker: "3fe Coffee Bar",
+    title: "Dublin Roastery",
+    items: [
+      "Double Espresso · Seasonal single-origin release",
+      "Flat White · Silky steamed whole or oat milk",
+      "Long Black & Batch · Clean, origin-led filter",
+    ],
+  },
+];
+---
+
+<div class="c67-pass-wrap" aria-labelledby={headingId}>
+  <div class="c67-pass-grid">
+    {categories.map((cat) => (
+      <article class="c67-pass-card">
+        <span class="c67-pass-kicker">{cat.kicker}</span>
+        <h3>{cat.title}</h3>
+        <ul class="c67-pass-list">
+          {cat.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</div>
