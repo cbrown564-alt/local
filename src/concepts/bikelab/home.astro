@@ -1,0 +1,217 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import BlMark from "./BlMark.astro";
+
+/* BikeLab — bike shop, workshop and suspension service, Castlewellan.
+   Bikelab Retail Ltd (NI741720), 54–56 Main Street, Castlewellan BT31 9DJ.
+   Facts from therealbikelab.com (rendered 16 Nov 2026): phone, email,
+   "Fully accredited workshop", collection option on the booking form,
+   suspension page (Motorex; "From World Cups to Grass Roots events"),
+   Cycle to Work "save up to 47%", Winter Academy 2026–27 terms, Nukeproof
+   Tracker prices. No people are named: none are named on the site.
+   Brief: research/concepts/bikelab/bikelab-elevation-brief.md */
+
+const phone = "07597 027963";
+const phoneHref = "tel:+447597027963";
+const email = "enquiries@therealbikelab.com";
+const site = "https://www.therealbikelab.com";
+const instagram = "https://www.instagram.com/therealbikelab";
+const mapHref = "https://www.google.com/maps/search/?api=1&query=54-56+Main+Street+Castlewellan+BT31+9DJ";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Anton&family=Rubik:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap";
+
+const tracker = [
+  { name: "Tracker 20 Kids", price: "£399", wheel: "20″" },
+  { name: "Tracker 24 Kids", price: "£425", wheel: "24″" },
+  { name: "Tracker 26 Kids", price: "£449", wheel: "26″" },
+  { name: "Tracker Sport", price: "£539", wheel: "Adult" },
+  { name: "Tracker Race", price: "£629", wheel: "Adult" },
+  { name: "Tracker Comp", price: "£849", wheel: "Adult" },
+  { name: "Tracker Pro", price: "£999", wheel: "Adult" },
+];
+
+const months = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
+---
+
+<ConceptLayout
+  title="BikeLab — Bikes, Workshop & Suspension, Main Street, Castlewellan"
+  slug="bikelab"
+  bodyClass="concept-page concept-bikelab"
+  lang="en-GB"
+  businessName="BikeLab"
+  town="Castlewellan"
+  fontHref={fontHref}
+  bannerNote="The mark, the workshop tag and the academy ruler are drawings made for this page. Prices and stock change on BikeLab's own shop."
+>
+  <div class="bl-strip">
+    <span>54–56 Main Street, Castlewellan</span>
+    <span>Workshop · Suspension · Bikes · Academy</span>
+    <a href={phoneHref}>{phone}</a>
+  </div>
+
+  <header class="bl-header">
+    <a class="bl-brand" href="#top"><BlMark /><span>BikeLab</span></a>
+    <nav class="bl-nav" aria-label="BikeLab">
+      <a href="#workshop"><b>01</b> Workshop</a>
+      <a href="#suspension"><b>02</b> Suspension</a>
+      <a href="#bikes"><b>03</b> Bikes</a>
+      <a href="#academy"><b>04</b> Academy</a>
+    </nav>
+    <a class="bl-shop" href={`${site}/s/shop`} rel="noopener noreferrer">Shop online ↗</a>
+  </header>
+
+  <main id="top">
+    <section class="bl-hero" aria-labelledby="bl-title">
+      <div class="bl-hero-copy">
+        <p class="bl-eyebrow">Castlewellan, Co Down</p>
+        <h1 id="bl-title">BikeLab</h1>
+        <p class="bl-say">Bikes in, fixed right, back on the trail.</p>
+        <p class="bl-lede">
+          A fully accredited workshop, suspension servicing done with Motorex
+          oils, Nukeproof, Merida and Banshee bikes, and a winter academy for
+          young riders. On Main Street.
+        </p>
+        <div class="bl-door">
+          <a class="bl-btn" href="#tag">Book the bike in</a>
+          <a class="bl-btn bl-btn--line" href={phoneHref}>Ring {phone}</a>
+        </div>
+        <p class="bl-door-note">Ring before you call in, and tell us what the bike's doing.</p>
+      </div>
+      <svg class="bl-hero-spring" viewBox="0 0 220 520" aria-hidden="true">
+        <rect x="88" y="0" width="44" height="70" rx="8" fill="#151515" />
+        <rect x="100" y="70" width="20" height="380" fill="#c9c6bd" />
+        <path d="M60 110 L160 140 L60 170 L160 200 L60 230 L160 260 L60 290 L160 320 L60 350 L160 380 L60 410" stroke="#ff5b14" stroke-width="16" fill="none" stroke-linejoin="round" stroke-linecap="round" />
+        <rect x="80" y="440" width="60" height="80" rx="10" fill="#151515" />
+        <circle cx="110" cy="490" r="12" fill="#f1efe9" />
+      </svg>
+    </section>
+
+    <section class="bl-section bl-workshop" id="workshop" aria-labelledby="bl-ws-title">
+      <p class="bl-num">01</p>
+      <div>
+        <h2 id="bl-ws-title">Workshop.</h2>
+        <p class="bl-big">Fully accredited workshop. Book a service and tell us if you need the bike collected.</p>
+      </div>
+    </section>
+
+    <section class="bl-tag-wrap" id="tag" aria-labelledby="bl-tag-title">
+      <div class="bl-tag-copy">
+        <h2 id="bl-tag-title">Fill the tag.</h2>
+        <p>Tell us the job the way you'd write it on a workshop tag. Fill it in and it opens as an email to {email} with the job, the bike and whether you need collection, ready to send.</p>
+        <p>Prefer our own booking form? <a href={`${site}/workshop-services`} rel="noopener noreferrer">Book a service on therealbikelab.com ↗</a></p>
+      </div>
+      <form class="bl-tag" id="bl-tag" data-email={email} action={`mailto:${email}`} method="post" enctype="text/plain">
+        <span class="bl-tag-hole" aria-hidden="true"></span>
+        <p class="bl-tag-head">BikeLab · Job tag</p>
+        <fieldset>
+          <legend>Job</legend>
+          <label><input type="radio" name="job" value="Workshop service" checked /> <span>Workshop service</span></label>
+          <label><input type="radio" name="job" value="Suspension service" /> <span>Suspension service</span></label>
+          <label><input type="radio" name="job" value="Something's not right" /> <span>Something's not right</span></label>
+        </fieldset>
+        <fieldset>
+          <legend>Collection</legend>
+          <label><input type="radio" name="collect" value="Yes" /> <span>Yes, collect it</span></label>
+          <label><input type="radio" name="collect" value="No" checked /> <span>No, I'll drop it in</span></label>
+        </fieldset>
+        <label class="bl-line">Bike <input name="bike" placeholder="Make, model, year" /></label>
+        <label class="bl-line">What's it doing? <textarea name="issue" rows="2"></textarea></label>
+        <label class="bl-line">Name and number <input name="who" autocomplete="name" /></label>
+        <button class="bl-btn" type="submit">Hang the tag</button>
+      </form>
+    </section>
+
+    <section class="bl-section bl-suspension" id="suspension" aria-labelledby="bl-sus-title">
+      <p class="bl-num">02</p>
+      <div>
+        <h2 id="bl-sus-title">Suspension.</h2>
+        <blockquote>
+          <p>“From World Cups to Grass Roots events, we have been there supporting our riders through thick and thin.”</p>
+        </blockquote>
+        <ul class="bl-spec">
+          <li><b>Tools</b> State-of-the-art equipment, the best and latest we can get.</li>
+          <li><b>Oils</b> Motorex, the best oils from the most reputable companies.</li>
+          <li><b>Training</b> Factory and manufacturer training on top of race experience.</li>
+        </ul>
+        <a class="bl-btn" href={`${site}/suspension-servicing`} rel="noopener noreferrer">Book suspension ↗</a>
+      </div>
+    </section>
+
+    <section class="bl-section bl-bikes" id="bikes" aria-labelledby="bl-bikes-title">
+      <p class="bl-num">03</p>
+      <div>
+        <h2 id="bl-bikes-title">Bikes.</h2>
+        <p class="bl-big">Nukeproof, Merida and Banshee, new and used. Save up to 47% on bikes and accessories through Cycle to Work.</p>
+        <h3 class="bl-ladder-title">The Nukeproof Tracker, from first trail bike up</h3>
+        <ol class="bl-ladder">
+          {tracker.map((t, i) => (
+            <li style={`--step:${i}`}>
+              <span class="bl-ladder-wheel">{t.wheel}</span>
+              <span class="bl-ladder-name">{t.name}</span>
+              <span class="bl-ladder-price">{t.price}</span>
+            </li>
+          ))}
+        </ol>
+        <p class="bl-handoff">Sizes and stock change week to week. <a href={`${site}/s/shop`} rel="noopener noreferrer">See what's in on the shop ↗</a> · <a href={`${site}/cycle-to-work`} rel="noopener noreferrer">Cycle to Work ↗</a></p>
+      </div>
+    </section>
+
+    <section class="bl-section bl-academy" id="academy" aria-labelledby="bl-ac-title">
+      <p class="bl-num">04</p>
+      <div>
+        <h2 id="bl-ac-title">Winter Academy.</h2>
+        <p class="bl-big">1 October 2026 to 31 March 2027. For riders 14 and up with a keen interest in mountain biking. £55 a month, paid in advance.</p>
+        <figure class="bl-ruler" aria-label="The Winter Academy, October to March">
+          <div class="bl-ruler-months">{months.map((m) => <span>{m}</span>)}</div>
+          <div class="bl-ruler-row"><b>Workshop classes</b><span class="bl-ticks bl-ticks--fortnight"></span><i>Fortnightly</i></div>
+          <div class="bl-ruler-row"><b>Social ride</b><span class="bl-ticks bl-ticks--month"></span><i>Monthly</i></div>
+          <div class="bl-ruler-row"><b>Coaching, CI approved</b><span class="bl-ticks bl-ticks--month bl-ticks--alt"></span><i>Monthly</i></div>
+          <figcaption>Plus an internal race league with prizes, extra social events, work-experience days at BikeLab, and discounts on bikes, kit and servicing.</figcaption>
+        </figure>
+        <div class="bl-kit">
+          <p><b>Bring</b> A mountain bike in good repair, helmet, knee pads, gloves, backpack.</p>
+          <p><b>House rules</b> No foul language, no bullying, no fighting, no sectarian language.</p>
+        </div>
+        <p class="bl-handoff">This winter's places closed on 4 September. <a href={`${site}/academyapplication`} rel="noopener noreferrer">Academy details ↗</a></p>
+      </div>
+    </section>
+
+    <section class="bl-find" aria-labelledby="bl-find-title">
+      <h2 id="bl-find-title">54–56<br />Main Street.</h2>
+      <div>
+        <p>Castlewellan, BT31 9DJ.</p>
+        <p><a href={phoneHref}>{phone}</a><br /><a href={`mailto:${email}`}>{email}</a></p>
+        <p class="bl-find-links"><a href={mapHref} rel="noopener noreferrer">Map ↗</a> <a href={instagram} rel="noopener noreferrer">Instagram @therealbikelab ↗</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bl-footer">
+    <div class="bl-footer-brand"><BlMark size={30} tone="paper" /><strong>BikeLab</strong></div>
+    <p>Bikelab Retail Ltd, registered in Northern Ireland, NI741720. 54–56 Main Street, Castlewellan BT31 9DJ.</p>
+    <div class="bl-sources">
+      <strong>Sources</strong>
+      <a href={site} rel="noopener noreferrer">therealbikelab.com: workshop, suspension, Cycle to Work, academy and shop pages</a>
+      <a href="https://find-and-update.company-information.service.gov.uk/company/NI741720" rel="noopener noreferrer">Companies House: Bikelab Retail Ltd, NI741720</a>
+    </div>
+  </footer>
+
+  <script>
+    const tag = document.getElementById("bl-tag") as HTMLFormElement | null;
+    tag?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const d = new FormData(tag);
+      const job = String(d.get("job") ?? "");
+      const body = [
+        `Job: ${job}`,
+        `Collection needed: ${d.get("collect") ?? ""}`,
+        `Bike: ${d.get("bike") ?? ""}`,
+        `What it's doing: ${d.get("issue") ?? ""}`,
+        `Name and number: ${d.get("who") ?? ""}`,
+      ].join("\n");
+      window.location.href = `mailto:${tag.dataset.email}?subject=${encodeURIComponent(`Booking: ${job}`)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</ConceptLayout>

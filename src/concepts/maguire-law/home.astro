@@ -1,0 +1,197 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import MlMark from "./MlMark.astro";
+import Envelope from "./Envelope.astro";
+
+/* Maguire Law — FJ Maguire Law Ltd t/a Maguire Law (NI742661), solicitors,
+   21E Dundrum Road, Newcastle BT33 0BG. Solicitor: Fergal James Maguire
+   (Law Society NI Find a Solicitor; Companies House sole director).
+   Every area of work below is one of the 28 the firm lists with the Law
+   Society, regrouped into plain words. No hours, fees, reviews or staff are
+   published anywhere, so none are written here. Brief:
+   research/concepts/maguire-law/maguire-law-elevation-brief.md */
+
+const phone = "028 4344 9777";
+const phoneHref = "tel:+442843449777";
+const email = "FMaguire@MaguireLaw.co.uk";
+const lawSoc = "https://lawsoc-ni.org/using-a-solicitor/finding-a-solicitor/maguire-law";
+const companies = "https://find-and-update.company-information.service.gov.uk/company/NI742661";
+const mapHref = "https://www.google.com/maps/search/?api=1&query=21E+Dundrum+Road+Newcastle+BT33+0BG";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const matters = [
+  { id: "home", no: "01", plain: "Buying or selling a home", listed: ["Conveyancing – residential"] },
+  { id: "business", no: "02", plain: "Business and commercial property", listed: ["Conveyancing – commercial", "Business advice / corporate law"] },
+  { id: "land", no: "03", plain: "Farms, land and boundaries", listed: ["Agriculture and farming", "Land & property disputes"] },
+  { id: "wills", no: "04", plain: "Wills, probate and estates", listed: ["Wills, probates & intestacy", "Trusts, tax and financial planning"] },
+  { id: "family", no: "05", plain: "Family and children", listed: ["Family law – general", "Family law – children"] },
+  { id: "injury", no: "06", plain: "Accidents and injury", listed: ["Accident (including personal injuries)", "Personal injuries", "Criminal injuries and criminal damage compensation", "Professional negligence", "Insurance"] },
+  { id: "work", no: "07", plain: "Work and employment", listed: ["Employment law & tribunals", "Equality & discrimination"] },
+  { id: "criminal", no: "08", plain: "Criminal matters and inquests", listed: ["Criminal law", "Inquests & inquiries"] },
+  { id: "disputes", no: "09", plain: "Disputes, debt and money", listed: ["Commercial litigation", "Consumer law", "Debt & money problems", "Bankruptcy & insolvency", "Enforcement of judgments", "Alternative dispute resolution", "Libel & slander", "Judicial review", "Housing"] },
+  { id: "licensing", no: "10", plain: "Licensing", listed: ["Licensing"] },
+];
+
+const mailFor = (plain: string) =>
+  `mailto:${email}?subject=${encodeURIComponent(`Enquiry: ${plain}`)}&body=${encodeURIComponent("Name:\nBest number to ring:\n\nIn a line or two:\n")}`;
+---
+
+<ConceptLayout
+  title="Maguire Law — Solicitors, 21E Dundrum Road, Newcastle"
+  slug="maguire-law"
+  bodyClass="concept-page concept-maguire"
+  lang="en-GB"
+  businessName="Maguire Law"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The mark, the envelope and the tape are drawings made for this page. Areas of work are as listed with the Law Society of Northern Ireland."
+>
+  <div class="ml-strip">
+    <span>Solicitors · 21E Dundrum Road, Newcastle BT33 0BG</span>
+    <span class="ml-strip-r"><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a></span>
+  </div>
+
+  <header class="ml-header">
+    <a class="ml-brand" href="#top">
+      <MlMark />
+      <span class="ml-brand-name">Maguire Law</span>
+    </a>
+    <nav class="ml-nav" aria-label="Maguire Law">
+      <a href="#matters">What we do</a>
+      <a href="#note">Write to us</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <a class="ml-nav-call" href={phoneHref}>Ring {phone}</a>
+  </header>
+
+  <main class="ml-main" id="top">
+    <section class="ml-hero" aria-labelledby="ml-title">
+      <p class="ml-kicker">Solicitors · Newcastle, County Down</p>
+      <h1 id="ml-title">Maguire<br /><span>Law</span></h1>
+      <p class="ml-lede">
+        The practice of Fergal Maguire, solicitor. Homes, farms, families,
+        wills, work and the harder days, handled from Dundrum Road.
+      </p>
+      <dl class="ml-door">
+        <div><dt>Where</dt><dd><a href={mapHref} rel="noopener noreferrer">21E Dundrum Road, Newcastle BT33 0BG</a></dd></div>
+        <div><dt>When</dt><dd>Ring to arrange a time: <a href={phoneHref}>{phone}</a></dd></div>
+        <div><dt>Who</dt><dd>Fergal Maguire, on the Law Society of Northern Ireland's roll</dd></div>
+      </dl>
+      <svg class="ml-hero-tape" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 52 C 300 20, 700 70, 1200 28" stroke="#c4506a" stroke-width="14" fill="none" stroke-linecap="round" />
+      </svg>
+    </section>
+
+    <section class="ml-matters" id="matters" aria-labelledby="ml-matters-title">
+      <div class="ml-col-head">
+        <p class="ml-kicker">What we do</p>
+        <h2 id="ml-matters-title">Ten kinds of matter, in plain words.</h2>
+        <p>
+          Each line opens to the areas of work we list with the Law Society.
+          If yours is not on it, ring and ask; we will tell you straight.
+        </p>
+      </div>
+      <ol class="ml-index">
+        {matters.map((m) => (
+          <li>
+            <details>
+              <summary>
+                <span class="ml-no">{m.no}</span>
+                <span class="ml-plain">{m.plain}</span>
+                <span class="ml-leader" aria-hidden="true"></span>
+                <span class="ml-count">{m.listed.length}</span>
+              </summary>
+              <ul class="ml-listed">
+                {m.listed.map((l) => <li>{l}</li>)}
+              </ul>
+              <a class="ml-write" href={mailFor(m.plain)}>Write to us about this →</a>
+            </details>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="ml-note-wrap" id="note" aria-labelledby="ml-note-title">
+      <div class="ml-col-head">
+        <p class="ml-kicker">Write to us</p>
+        <h2 id="ml-note-title">Start with a file note.</h2>
+        <p>
+          A first note only needs three things: what it is about, a name and
+          a number. Fill the card and it opens as an email to {email}, ready
+          to send from your own account. Nothing is sent until you press send.
+        </p>
+      </div>
+      <form class="ml-note" id="ml-note" action={`mailto:${email}`} method="post" enctype="text/plain" data-email={email}>
+        <div class="ml-note-tab" aria-hidden="true">File note</div>
+        <fieldset>
+          <legend>About</legend>
+          <div class="ml-chips">
+            {matters.map((m, i) => (
+              <label class="ml-chip">
+                <input type="radio" name="matter" value={m.plain} checked={i === 0} />
+                <span>{m.plain}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <div class="ml-note-lines">
+          <label>Name <input name="name" autocomplete="name" /></label>
+          <label>Best number <input name="phone" type="tel" autocomplete="tel" /></label>
+          <label class="ml-wide">In a line or two <textarea name="line" rows="3"></textarea></label>
+        </div>
+        <div class="ml-note-foot">
+          <button type="submit" class="ml-btn">Open as an email</button>
+          <span>or ring <a href={phoneHref}>{phone}</a></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="ml-find" id="find" aria-labelledby="ml-find-title">
+      <figure class="ml-envelope-fig">
+        <Envelope />
+        <figcaption>Post and callers: 21E Dundrum Road, Newcastle, Co Down BT33 0BG.</figcaption>
+      </figure>
+      <div class="ml-find-copy">
+        <p class="ml-kicker">Find us</p>
+        <h2 id="ml-find-title">21E Dundrum Road.</h2>
+        <p>On the Dundrum Road side of Newcastle. Ring before you call in, so the right file is on the desk when you arrive.</p>
+        <p class="ml-find-actions">
+          <a class="ml-btn" href={phoneHref}>Ring {phone}</a>
+          <a class="ml-btn ml-btn--ghost" href={mapHref} rel="noopener noreferrer">Open the map</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ml-footer">
+    <div class="ml-footer-brand"><MlMark size={36} /><strong>Maguire Law</strong></div>
+    <p>FJ Maguire Law Limited, trading as Maguire Law. Registered in Northern Ireland, NI742661. Solicitor: Fergal James Maguire.</p>
+    <p>21E Dundrum Road, Newcastle BT33 0BG · <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a></p>
+    <div class="ml-sources">
+      <strong>Sources</strong>
+      <a href={lawSoc} rel="noopener noreferrer">Law Society of Northern Ireland, Find a Solicitor: Maguire Law</a>
+      <a href={companies} rel="noopener noreferrer">Companies House: FJ Maguire Law Ltd, NI742661</a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("ml-note") as HTMLFormElement | null;
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const matter = String(data.get("matter") ?? "");
+      const body = [
+        `About: ${matter}`,
+        `Name: ${data.get("name") ?? ""}`,
+        `Best number: ${data.get("phone") ?? ""}`,
+        "",
+        String(data.get("line") ?? ""),
+      ].join("\n");
+      const to = form.dataset.email ?? "";
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(`Enquiry: ${matter}`)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</ConceptLayout>
