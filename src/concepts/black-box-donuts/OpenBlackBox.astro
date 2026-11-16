@@ -1,0 +1,70 @@
+---
+/* Drawn signature black box, lid ajar — product theatre.
+   Honesty that it is a drawing lives in bannerNote, not the caption. */
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{compact ? (
+  <svg
+    class="bb-mark"
+    width="44"
+    height="44"
+    viewBox="0 0 44 44"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect width="44" height="44" fill="#f5f0e8"/>
+    <rect x="8" y="16" width="28" height="20" fill="#141414" stroke="#c4a574" stroke-width="1.2"/>
+    <path d="M8 16 L22 8 L36 16" fill="#1e1e1e" stroke="#c4a574" stroke-width="1.2"/>
+    <circle cx="22" cy="26" r="5" fill="#f5f0e8" opacity="0.9"/>
+  </svg>
+) : (
+  <svg
+    class="bb-openbox"
+    viewBox="0 0 960 560"
+    role="img"
+    aria-label="Drawn open black box of donuts from Black Box Bakery under the Mournes"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="bb-paper" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f7f2ea"/>
+        <stop offset="1" stop-color="#e8dfd0"/>
+      </linearGradient>
+      <linearGradient id="bb-mourn" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a7a88"/>
+        <stop offset="1" stop-color="#3a4854"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="960" height="560" fill="url(#bb-paper)"/>
+    <!-- Mournes silhouette -->
+    <path d="M0 180 L80 120 L160 160 L260 90 L360 150 L460 70 L560 140 L680 100 L800 155 L960 110 L960 220 L0 220 Z" fill="url(#bb-mourn)" opacity="0.55"/>
+    <text x="480" y="50" text-anchor="middle" fill="#3a4854" font-family="Syne, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="4">FROM THE BOTTOM OF THE MOURNES</text>
+
+    <!-- Box base -->
+    <g transform="translate(280 240)">
+      <path d="M0 80 L200 40 L400 80 L400 220 L200 260 L0 220 Z" fill="#141414"/>
+      <path d="M0 80 L200 120 L400 80 L200 40 Z" fill="#1e1e1e"/>
+      <!-- Lid ajar -->
+      <path d="M40 -20 L240 -60 L440 -10 L240 40 Z" fill="#0a0a0a" stroke="#c4a574" stroke-width="2"/>
+      <path d="M40 -20 L40 40 L240 80 L240 40 Z" fill="#181818" opacity="0.9"/>
+      <!-- Donuts peeping -->
+      <circle cx="140" cy="150" r="36" fill="#e8b4c8"/>
+      <circle cx="140" cy="150" r="14" fill="#f7f2ea"/>
+      <circle cx="220" cy="165" r="34" fill="#c4a574"/>
+      <circle cx="220" cy="165" r="12" fill="#f7f2ea"/>
+      <circle cx="290" cy="148" r="32" fill="#8b5a3c"/>
+      <circle cx="290" cy="148" r="12" fill="#f7f2ea"/>
+    </g>
+
+    <rect x="300" y="480" width="360" height="44" fill="#141414"/>
+    <text x="480" y="508" text-anchor="middle" fill="#f7f2ea" font-family="Syne, system-ui, sans-serif" font-size="16" font-weight="700" letter-spacing="3">BLACK BOX DONUTS</text>
+    <text x="480" y="545" text-anchor="middle" fill="#3a4854" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5">UNIT 18 · 63A CASTLEWELLAN ROAD</text>
+  </svg>
+)}

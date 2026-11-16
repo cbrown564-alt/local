@@ -1,0 +1,86 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import MwMark from "./components/MwMark.astro";
+import MwHero from "./components/MwHero.astro";
+import MwContinuity from "./components/MwContinuity.astro";
+import MwCreed from "./components/MwCreed.astro";
+import MwHoursDesk from "./components/MwHoursDesk.astro";
+import MwBookingDesk from "./components/MwBookingDesk.astro";
+import {
+  booksy,
+  facebook,
+  fontHref,
+  phone,
+  phoneHref,
+} from "./content";
+---
+
+<ConceptLayout
+  title={"Marine Wellness — Newcastle"}
+  slug="marine-wellness"
+  bodyClass="concept-page concept-marine"
+  businessName="Marine Wellness"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The calm plate is a generated image, not a photograph of the treatment room."
+>
+  <main class="mw-page">
+    <MwHero />
+
+    <MwContinuity />
+
+    <MwCreed />
+
+    <MwHoursDesk />
+
+    <MwBookingDesk />
+
+    <EssenceMedia slug="marine-wellness" />
+
+    <footer class="mw-foot">
+      <div class="mw-foot-top">
+        <MwMark size={40} class="mw-foot-mark" />
+        <div>
+          <p class="mw-foot-name">Marine Wellness</p>
+          <p class="mw-foot-sub">Holistic wellness clinic specialising in therapeutic massage and restorative care</p>
+        </div>
+      </div>
+      <p class="mw-foot-addr">
+        Unit 13, 63A Castlewellan Road, Newcastle, BT33 0JX.
+      </p>
+      <p class="mw-foot-links">
+        <a href={phoneHref}>{phone}</a>
+        <span aria-hidden="true"> · </span>
+        The diary: <a href={booksy}>Booksy</a>
+        <span aria-hidden="true"> · </span>
+        <a href={facebook}>Facebook</a>
+      </p>
+    </footer>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.querySelector("[data-mw-script]");
+      var ready = document.querySelector("[data-mw-ready]");
+      var scriptEl = document.querySelector("[data-mw-ready-script]");
+      if (!form || !ready || !scriptEl) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        var who = form.elements.namedItem("who").value.trim();
+        var when = form.elements.namedItem("when").value.trim();
+        var what = form.elements.namedItem("what").value.trim();
+        scriptEl.textContent =
+          who + " hopes to be seen " + when +
+          (what ? " for " + what : "") +
+          ". Book that on Booksy.";
+        ready.hidden = false;
+        ready.focus();
+      });
+    })();
+  </script>
+</ConceptLayout>

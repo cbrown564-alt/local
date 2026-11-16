@@ -1,0 +1,205 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceFilm from "../../site/components/EssenceFilm.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+
+const instagram = "https://www.instagram.com/cuplabrewbar/";
+const facebook = "https://www.facebook.com/p/C%C3%BApla-61565293502528/";
+
+/* Move 3 of research/concepts/cupla/cupla-elevation-brief.md — the day in two
+   beats. Phases of the counter's day, never times: the record holds no hours,
+   and the feed keeps them. The Irish here is the same vocabulary the concept
+   already carries (Maidin, Lón, Caife, Bácús, Babhlaí); no new Irish is coined
+   ahead of the fluent-speaker review named in research/publication.json. */
+const beats = [
+  {
+    id: "cp-maidin",
+    ga: "Maidin",
+    en: "Morning",
+    line: "Coffee, and the bakes that come out with it.",
+    offer: [
+      { ga: "Caife", en: "Coffee" },
+      { ga: "Bácús", en: "Morning bakes" },
+    ],
+  },
+  {
+    id: "cp-lon",
+    ga: "Lón",
+    en: "Lunch",
+    line: "The counter turns to bowls.",
+    offer: [{ ga: "Babhlaí", en: "Brunch bowls" }],
+  },
+];
+
+/* Move 2 — the pair, staged from the three facts the record holds and nothing
+   else. No owner names, no photograph, no anecdote: everything past this is
+   the twins' to tell. */
+const pairs = [
+  { term: "Cúpla", gloss: "the Irish for twins", termLang: "ga" },
+  { term: "Twin owners", gloss: "opened the café in 2024" },
+  { term: "Est. 2024", gloss: "on the door at 105 Main Street" },
+];
+---
+
+<ConceptLayout
+  title={"Cúpla — independent concept"}
+  slug="cupla"
+  bodyClass="concept-page concept-cupla"
+  lang="en-GB"
+  bannerNote="The shopfront image is an AI-generated visualisation. The twin-cup image is AI-generated and illustrative."
+>
+  <div class="cp-strip">
+    <span>105 Main Street, Dundrum, Co. Down · <em lang="ga">ar an bpríomhshráid</em></span>
+    <span>Today's hours on <a href={instagram}>Instagram</a></span>
+  </div>
+
+  <header class="cp-header">
+    <a class="cp-brand" href="/concepts/cupla/">
+      <svg class="cp-rings" width="46" height="34" viewBox="0 0 46 34" fill="none" aria-hidden="true">
+        <circle cx="16" cy="17" r="13.5" stroke="#1d4e54" stroke-width="2.4" />
+        <circle cx="30" cy="17" r="13.5" stroke="#c98a3b" stroke-width="2.4" />
+      </svg>
+      <span class="cp-brand-text">
+        <span class="cp-brand-name">Cúpla</span>
+        <span class="cp-brand-sub">Brews · Bakes · Bowls</span>
+      </span>
+    </a>
+    <nav class="cp-nav" aria-label="Concept navigation">
+      <a href="#cp-day"><span lang="ga">An biachlár</span> <span aria-hidden="true">·</span> Menu</a><a href="#cp-day"><span lang="ga">Ag an gcuntar</span> <span aria-hidden="true">·</span> At the counter</a><a href="#cp-pair"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</a>
+    </nav>
+    <a class="cp-follow" href={instagram}>Follow @cuplabrewbar</a>
+  </header>
+
+  <main id="main">
+    <section class="cp-hero">
+      <div class="cp-story-head">
+        <p class="cp-kicker" lang="ga">Caife · Bácús · Babhlaí</p>
+        <h1>Cúpla</h1>
+        <p class="cp-thesis"><span lang="ga">Fáilte isteach.</span> <em>Come on in.</em></p>
+      </div>
+
+      <!-- The essence film leads. A café named for twins is better opened by the
+           act than by the building: two jugs, two cups, one counter, finishing
+           together. The frontage still proves the premises, but it proves it in
+           Our story, where the reader has a reason to want the address. The
+           disclosure runs alt/aria-label → caption → case study. -->
+      <figure class="cp-essence-hero">
+        {/* The film sizes to this stage, not to the figure. EssenceFilm's own
+            scoped rule sets height:100%, and an Astro scoped selector outranks
+            a plain class here — so the figure would never grow to include its
+            caption, and the story body would overlap the disclosure. */}
+        <div class="cp-essence-stage">
+          <EssenceFilm
+            mp4="/media/concepts/cupla/essence-twin-pour.mp4"
+            webm="/media/concepts/cupla/essence-twin-pour.webm"
+            poster="/media/concepts/cupla/cupla-twin-cups.png"
+            label="Two matching steel jugs pour steamed milk into two identical petrol-blue cups, finishing two flat whites together"
+          />
+        </div>
+        <figcaption>
+          Two flat whites, poured together
+        </figcaption>
+      </figure>
+
+      <div class="cp-story-body">
+        <p class="cp-lede">
+          <strong>Cúpla — the Irish for twins</strong> — is the café twin owners opened on
+          the main street of Dundrum, Co. Down in 2024. Brews, bakes and bowls, over one
+          counter.
+        </p>
+        <div class="cp-actions">
+          <a class="cp-cta" href="#cp-day">
+            <span lang="ga">Féach ar an mbiachlár</span> · See the menu
+          </a>
+          <a class="cp-link" href={instagram}>Today's counter on Instagram →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cp-day" id="cp-day" aria-labelledby="cp-day-heading">
+      <div class="cp-day-head">
+        <p class="cp-day-kicker"><span lang="ga">Ag an gcuntar</span> <span aria-hidden="true">·</span> At the counter</p>
+        <h2 id="cp-day-heading">Brews, bakes and bowls — the counter changes as the day does.</h2>
+      </div>
+      <div class="cp-beats">
+        {beats.map((beat) => (
+          <article class="cp-beat" id={beat.id}>
+            <h3 class="cp-beat-name">
+              <span class="cp-beat-ga" lang="ga">{beat.ga}</span>
+              <span class="cp-beat-en">{beat.en}</span>
+            </h3>
+            <p class="cp-beat-line">{beat.line}</p>
+            <ul class="cp-beat-offer">
+              {beat.offer.map((item) => (
+                <li>
+                  <span class="cp-beat-offer-ga" lang="ga">{item.ga}</span>
+                  <span class="cp-beat-offer-en">{item.en}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="cp-day-handoff">
+        <p>
+          What's on the counter today — and today's hours — go up on{" "}
+          <a href={instagram}>@cuplabrewbar</a>.
+          <a class="cp-day-facebook" href={facebook}>Find us on Facebook →</a>
+        </p>
+        <p class="cp-day-sample">
+          The menu is a taste of what the counter holds. Today's list is on Instagram.
+        </p>
+      </div>
+    </section>
+
+    <section class="cp-pair" id="cp-pair" aria-labelledby="cp-pair-heading">
+      <div class="cp-pair-content">
+        <div class="cp-pair-copy">
+          <p class="cp-kicker"><span lang="ga">Ár scéal</span> <span aria-hidden="true">·</span> Our story</p>
+          <h2 id="cp-pair-heading">Everything here comes in twos.</h2>
+          <p class="cp-pair-line">
+            Irish and English sit side by side here, as they do in the café's own name and
+            branding.
+          </p>
+        </div>
+        {/* The pairing is structural, not sequential: fact and meaning are two
+            halves mirrored across a single axis, and the twin rings sit on that
+            axis once per row. A café named for twins should read as a pair
+            before it reads as text. The rings and the spine they thread are
+            decoration drawn in CSS — the meaning is the dt/dd pairing beneath. */}
+        <dl class="cp-pair-list">
+          {pairs.map((pair) => (
+            <div class="cp-pair-row">
+              <dt lang={pair.termLang}>{pair.term}</dt>
+              <dd>{pair.gloss}</dd>
+            </div>
+          ))}
+        </dl>
+        <div class="cp-pair-image-note">
+          <p>Two owners. One counter.</p>
+        </div>
+      </div>
+      {/* The frontage — the concept's subject proof, faithful to the privately
+          held August 2024 reference. It sits here rather than in the hero
+          because this is where the section names the place; the rights position
+          is recorded in research/image-provenance.md. */}
+      <figure class="cp-frontage">
+        <ResponsiveImage
+          pictureClass="concept-responsive-picture cp-frontage-picture"
+          src="/media/concepts/cupla/cupla-faithful-visualisation.jpg"
+          alt="Faithful AI-generated visualisation of Cúpla's three-bay shopfront at 105 Main Street: white render with navy joinery, the painted CÚPLA fascia board, two hanging baskets, two window boxes and the Est. 2024 decal on the open navy door"
+          width="1536"
+          height="1024"
+          loading="lazy"
+          sizes="(max-width: 940px) 100vw, 50vw"
+        />
+        <figcaption>
+          AI-generated visualisation · the shopfront at 105 Main Street, drawn from
+          a photograph of the premises taken in August 2024
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+</ConceptLayout>

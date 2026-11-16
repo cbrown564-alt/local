@@ -1,0 +1,688 @@
+/* Cúpla — independent concept design system.
+   Petrol, oat and caramel with Vollkorn: a bilingual café identity built on
+   the pair — twin rings, twinned Irish/English labels. Distinct from the
+   Mourne Made brand and from the Castle Farm, Enniskeen, Mourne Cycles,
+   Donard, Bucks Head and Scopers concepts. */
+
+.concept-cupla {
+  --petrol: #1d4e54;
+  --petrol-deep: #14393e;
+  --oat: #f7f8f6;
+  /* Sampled from the twin-cup still's outer matte so its right-hand field
+     reads as one continuous oat plane rather than a framed photograph. */
+  --twin-oat: #eaddcf;
+  --caramel: #c98a3b;
+  --caramel-deep: #a56a24;
+  /* Text-safe variants added 25 July 2026. The caramel pair and the muted
+     greens are card colours: --caramel-deep measured 4.21:1 on oat and the
+     English gloss beside each Irish item name 3.42:1, so the bilingual
+     translation — the concept's whole point — failed 4.5:1 throughout. */
+  --caramel-ink: #8a5716;
+  --sage-ink: #4f6157;
+  --ink-petrol: #1d2b29;
+  --hairline: rgba(29, 78, 84, 0.16);
+  --display: "Vollkorn", Georgia, serif;
+  --body: "Mulish", "Segoe UI", sans-serif;
+  --concept-accent: var(--caramel);
+  --concept-focus: #ffffff;
+  --focus-ink: #10262a;
+  --concept-nav-gap: clamp(16px, 2.2vw, 28px);
+  background: #fff;
+  color: var(--ink-petrol);
+  font-family: var(--body);
+}
+
+/* Two-tone focus ring (4 August 2026). The single dark ring measured 1.14:1 on
+   the petrol-deep strip — tab stop 1 of both routes — and 1.54:1 behind the
+   primary action, because `outline-offset` paints it onto the parent surface.
+   The page has both oat/caramel and petrol grounds, so the ring carries one of
+   each: a dark band filling the offset gap, then a white outline outside it.
+   Whichever ground the ring lands on, one of the two reads well past 3:1.
+   Specificity (0-3-1) clears `body.concept-page :focus-visible` (0-2-1) in the
+   shared shell regardless of stylesheet order. */
+body.concept-page.concept-cupla :focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--focus-ink);
+}
+/* The studio banner is not the concept's surface; it keeps its own white ring
+   on navy without the concept's dark inner band. */
+body.concept-page.concept-cupla .mm-concept-banner :focus-visible {
+  box-shadow: none;
+}
+
+/* Greeting strip */
+.cp-strip {
+  gap: 20px;
+  padding: 9px clamp(20px, 3.5vw, 44px);
+  background: var(--petrol-deep);
+  color: var(--oat);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.cp-strip em { font-style: italic; color: #e8c58f; }
+.cp-strip a { color: #ffffff; font-weight: 700; text-decoration-color: var(--caramel); text-underline-offset: 4px; }
+
+/* Header */
+.cp-header {
+  height: 80px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  gap: 26px;
+  background: var(--oat);
+  border-bottom: 1px solid var(--hairline);
+}
+.cp-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-petrol); }
+.cp-rings { flex: 0 0 auto; }
+.cp-brand-text { display: flex; flex-direction: column; gap: 2px; }
+.cp-brand-name {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--petrol);
+}
+.cp-brand-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--caramel-ink);
+}
+.cp-nav a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-petrol);
+}
+.cp-nav a:hover::after { right: 0; }
+.cp-follow {
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--petrol);
+  color: var(--oat);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.cp-follow:hover { background: var(--caramel-deep); color: #ffffff; transform: translateY(-1px); }
+
+/* Hero — the name and the frontage together.
+   The petrol story column is split in two so the frontage can slide between
+   its halves at ≤940px: both halves share one background and read as a single
+   panel at desktop width. The phone order is load-bearing — the elevation
+   brief pins the wordmark inside the first viewport with the image beginning
+   above y 520, which the old type-first stack could not do. */
+.cp-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 54% 46%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "head figure"
+    "body figure";
+  /* 96px less than the full screen, so the day's first beat is visible at the
+     desktop fold rather than hidden behind it — and capped, because a tall
+     window would otherwise stretch the 16:9 film into a crop tight enough to
+     lose one of the two cups, which is the whole point of the shot. */
+  min-height: min(calc(100vh - 80px - 37px - 96px - var(--mm-banner-space, 0px)), 560px);
+  background: var(--petrol);
+}
+.cp-story-head,
+.cp-story-body {
+  padding-inline: clamp(26px, 3.6vw, 56px);
+  background: var(--petrol);
+  color: #fff;
+}
+.cp-story-head { grid-area: head; padding-top: clamp(24px, 3.4vh, 44px); }
+.cp-story-body { grid-area: body; padding-bottom: clamp(24px, 3.4vh, 40px); }
+.cp-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #f0cfad;
+}
+.cp-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--caramel); flex: 0 0 auto; }
+.cp-kicker [lang="ga"] { font-family: var(--display); font-size: 15px; font-style: italic; letter-spacing: 0.06em; text-transform: none; }
+.cp-story-head h1 {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: clamp(58px, 7vw, 92px);
+  font-weight: 600;
+  line-height: 1.02;
+  color: #fff;
+  max-width: 8em;
+}
+.cp-thesis {
+  max-width: 27em;
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.08;
+  color: #f0cfad;
+}
+.cp-thesis span[lang="ga"] { color: #fff; }
+.cp-lede {
+  margin: 18px 0 22px;
+  max-width: 31em;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: #e6ece8;
+}
+.cp-lede strong { color: #fff; font-weight: 700; }
+.cp-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cp-cta {
+  padding: 15px 26px;
+  border-radius: 4px;
+  background: var(--caramel);
+  color: #132f27;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.cp-cta [lang="ga"] { font-family: var(--display); font-style: italic; font-size: 17px; }
+.cp-cta:hover { background: var(--caramel-deep); color: #ffffff; transform: translateY(-1px); }
+.cp-link {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--caramel);
+}
+
+/* The essence film — the hero's subject. The disclosure sits directly beneath
+   it in the page flow, so nothing can paint over it: the caption is the visible
+   half of the chain that runs aria-label → caption → case-study sources. */
+.cp-essence-hero {
+  grid-area: figure;
+  margin: 0;
+  /* Both axes: a grid item defaults to min-width/min-height auto, and the
+     video's intrinsic 1920px would otherwise set the item's minimum and push
+     the hero wider than the phone viewport. */
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--petrol-deep);
+}
+.cp-essence-stage {
+  /* `height: 0` with flex-grow, not the film's own 16:9: the figure takes its
+     height from the grid area, and an intrinsically sized child in a column
+     flex container would drag the whole hero down to suit the video instead. */
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 0;
+}
+.cp-essence-hero figcaption {
+  flex: 0 0 auto;
+  padding: 10px clamp(18px, 2vw, 26px);
+  background: #0b231d;
+  color: #c5d4cb;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+/* The day in two beats — the counter's own rhythm, in phases and never in
+   times. Hours and today's counter stay with the feed the café runs. */
+.cp-day {
+  padding: clamp(26px, 4vh, 44px) clamp(26px, 3.6vw, 56px) clamp(22px, 3vh, 36px);
+  background: var(--oat);
+  border-top: 1px solid var(--hairline);
+}
+.cp-day-head { display: flex; flex-direction: column; gap: 10px; }
+.cp-day-kicker {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--caramel-ink);
+}
+.cp-day-kicker [lang="ga"] { font-family: var(--display); font-size: 15px; font-style: italic; letter-spacing: 0.06em; text-transform: none; }
+.cp-day h2 {
+  margin: 0;
+  max-width: 18em;
+  font-family: var(--display);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.06;
+  color: var(--petrol);
+}
+.cp-beats {
+  margin-top: clamp(20px, 3vh, 32px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
+}
+.cp-beat { padding-top: 14px; border-top: 3px solid var(--caramel); }
+.cp-beat-name { margin: 0 0 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.cp-beat-ga {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--petrol);
+}
+.cp-beat-en { font-size: 11.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--caramel-ink); }
+.cp-beat-line { margin: 0 0 14px; max-width: 26em; font-size: 15.5px; line-height: 1.5; color: var(--ink-petrol); }
+.cp-beat-offer { margin: 0; padding: 0; list-style: none; }
+.cp-beat-offer li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  border-top: 1px solid var(--hairline);
+}
+.cp-beat-offer-ga { font-family: var(--display); font-size: 18px; font-style: italic; font-weight: 600; color: var(--petrol); }
+.cp-beat-offer-en { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage-ink); }
+.cp-day-handoff {
+  margin-top: clamp(18px, 2.6vh, 28px);
+  padding-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  border-top: 1px solid var(--hairline);
+}
+.cp-day-handoff p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-petrol); }
+.cp-day-handoff a { color: var(--petrol); font-weight: 700; text-underline-offset: 4px; text-decoration-color: var(--caramel); }
+.cp-day-facebook { margin-left: 12px; white-space: nowrap; }
+.cp-day-sample { font-size: 13px; color: var(--sage-ink); }
+
+/* Our story — the pair, staged from the three facts the record holds. The
+   twin-ring device does the telling; the section is deliberately short, and
+   deliberately open for whatever the owners one day want told. */
+.cp-pair {
+  display: grid;
+  /* An even split, which is the section's own argument and also what the
+     mirrored list needs: at 44% the longest gloss broke the address across
+     lines ("105 Main / Street"). The cups still read at half the width. */
+  grid-template-columns: 50% 50%;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+  color: #fff;
+}
+.cp-pair-content {
+  min-width: 0;
+  padding: clamp(30px, 4.5vh, 52px) clamp(26px, 3.6vw, 56px);
+  background: var(--petrol);
+}
+.cp-pair h2 {
+  margin: 0 0 14px;
+  max-width: 10em;
+  font-family: var(--display);
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 600;
+  line-height: 1.04;
+  color: #fff;
+}
+.cp-pair-line { margin: 0; max-width: 30em; font-size: 16px; line-height: 1.6; color: #e6ece8; }
+/* The pair, mirrored. Fact and meaning are equal halves either side of one
+   axis; the twin rings sit on that axis once per row, threaded on a spine that
+   runs the height of the list. The two sides share the display family and
+   differ only in italic versus roman — same voice, two forms, which is the
+   name's own idea rendered typographically. Sequential Irish-then-English
+   reads as a translation; this reads as a pair. */
+.cp-pair-list { margin: clamp(20px, 3vh, 30px) 0 0; padding: 0; }
+.cp-pair-row {
+  display: grid;
+  /* Equal outer tracks: a mirror whose halves are unequal is not a mirror. The
+     spine and the rings are placed into the middle track rather than at a
+     hard-coded 50%, so the axis stays true whatever the tracks resolve to. */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(12px, 1.4vw, 17px);
+}
+/* The spine, drawn full-height in the axis track so consecutive rows join into
+   one continuous thread. Decoration: both pseudo-elements are, which is why
+   the rings left the pairing markup. */
+.cp-pair-row::before {
+  content: "";
+  grid-area: 1 / 2;
+  align-self: stretch;
+  justify-self: center;
+  width: 1px;
+  background: rgba(245, 238, 225, 0.28);
+}
+/* The thread runs between the rings it joins — first pair to last — rather
+   than trailing off past either end of the list. */
+.cp-pair-row:first-child::before { align-self: end; height: 50%; }
+.cp-pair-row:last-child::before { align-self: start; height: 50%; }
+/* The rings, centred on their row and carrying their own petrol ground, so the
+   thread passes behind the twins rather than across them. */
+.cp-pair-row::after {
+  content: "";
+  grid-area: 1 / 2;
+  align-self: center;
+  justify-self: center;
+  width: 46px;
+  height: 34px;
+  background: var(--petrol) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='34' viewBox='0 0 46 34' fill='none'%3E%3Ccircle cx='16' cy='17' r='13.5' stroke='%23f5eee1' stroke-width='2.4'/%3E%3Ccircle cx='30' cy='17' r='13.5' stroke='%23e8c58f' stroke-width='2.4'/%3E%3C/svg%3E") center / 46px 34px no-repeat;
+}
+/* Each half carries its own rule, so the row divider breaks at the axis
+   instead of crossing it — the mirror again, at the horizontal. */
+.cp-pair-row dt,
+.cp-pair-row dd {
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid rgba(245, 238, 225, 0.28);
+  font-family: var(--display);
+  line-height: 1.25;
+}
+.cp-pair-row:first-child dt,
+.cp-pair-row:first-child dd { border-top: 0; padding-top: 0; }
+.cp-pair-row dt {
+  grid-column: 1;
+  text-align: right;
+  font-size: clamp(20px, 2vw, 27px);
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+}
+.cp-pair-row dd {
+  grid-column: 3;
+  text-align: left;
+  font-size: clamp(15px, 1.3vw, 17px);
+  font-weight: 400;
+  color: #dfe8e3;
+}
+.cp-pair-image-note {
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  color: #f0cfad;
+}
+.cp-pair-image-note p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 600;
+}
+/* The frontage, in its second home. Here the figure is a column in a stretched
+   grid rather than a fixed hero area, so the image sizes to its own aspect
+   ratio and the caption sits under it; the oat ground carries over from the
+   twin-cups plate it replaces. */
+.cp-frontage {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(30px, 4.5vh, 52px);
+  padding-inline: 0;
+  background: var(--twin-oat);
+}
+.cp-frontage picture { display: block; width: 100%; }
+/* No crop at any width now that the figure is no longer bound to a hero area:
+   the CÚPLA fascia is the single most identifying feature in the frame, and
+   here the whole frontage fits. */
+.cp-frontage img { display: block; width: 100%; height: auto; }
+.cp-frontage figcaption {
+  flex: 0 0 auto;
+  padding: 10px clamp(18px, 2vw, 26px) 0;
+  color: #4a5a51;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+@media (max-width: 940px) {
+  .cp-strip { flex-direction: column; gap: 2px; text-align: center; }
+  /* Was `display: none`, which hid the only link to the menu — the companion
+     route this concept exists to show — from every phone visitor (25 July 2026
+     re-review). It becomes a wrapped strip under the brand instead. */
+  .cp-nav {
+    order: 3;
+    width: 100%;
+    flex: 1 0 100%;
+    /* Wrapped, not scrolled: a horizontally scrollable strip pushes links
+       past the layout width, which is hidden essential content under the
+       responsive gate and a clipped-header failure in the 72-case audit. */
+    flex-wrap: wrap;
+    gap: 4px 9px;
+    padding-bottom: 2px;
+  }
+  .cp-nav a { flex: 0 0 auto; white-space: nowrap; font-size: 11.5px; }
+  .cp-header { height: auto; gap: 10px; padding: 12px 16px; flex-wrap: wrap; }
+  /* Brand and follow share one row at 390px; the pill was 4px too wide and
+     wrapped onto its own, costing another 43px of the first viewport. */
+  .cp-brand { flex: 0 1 auto; min-width: 0; }
+  .cp-follow { flex: 0 0 auto; padding: 9px 11px; font-size: 12px; }
+  /* Wordmark, then the film, then the offer: the figure slides between the two
+     halves of the story column so it begins high in the phone viewport. */
+  .cp-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "head"
+      "figure"
+      "body";
+    min-height: 0;
+  }
+  .cp-story-head { padding: 16px 22px 14px; }
+  .cp-story-body { padding: 18px 22px 20px; }
+  .cp-story-head h1 { max-width: none; font-size: clamp(40px, 10.5vw, 50px); }
+  .cp-thesis { font-size: 20px; }
+  .cp-lede { margin-top: 0; font-size: 15px; line-height: 1.5; margin-bottom: 14px; }
+  .cp-kicker { margin-bottom: 8px; }
+  /* The hero row is auto-height on phones, so the film sizes to its own 16:9
+     rather than to a grid area that no longer constrains it. */
+  .cp-essence-stage { flex: 0 0 auto; height: auto; aspect-ratio: 16 / 9; }
+  .cp-beats { grid-template-columns: 1fr; }
+  .cp-pair { grid-template-columns: 1fr; }
+  .cp-frontage { padding: 26px; }
+  .cp-pair-image-note { align-items: flex-start; flex-direction: column; }
+}
+
+/* The mirror survives to the phone — it is the section's whole argument — but
+   the axis and both halves tighten so three facts still read in two columns at
+   390px rather than collapsing into a stack that loses the pairing. */
+@media (max-width: 560px) {
+  .cp-pair-row { column-gap: 9px; }
+  .cp-pair-row::after { width: 34px; height: 25px; background-size: 34px 25px; }
+  .cp-pair-row dt { font-size: clamp(17px, 4.8vw, 21px); }
+  .cp-pair-row dd { font-size: 14px; }
+  .cp-pair-row dt,
+  .cp-pair-row dd { padding: 11px 0; }
+}
+
+/* Active nav state — marks the current page in sub-page nav */
+.cp-nav a[aria-current="page"]::after { right: 0; }
+
+/* ── Menu page (src/pages/concepts/cupla/menu.astro) ───────────────────────
+   A print-faithful bilingual menu card that also works as a 1265×710 screen
+   capture. Three columns — Caife, Bácús, Babhlaí — divided by hairlines, with
+   a petrol title bar above and a caramel specials strip below. */
+
+.cp-menu {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background: var(--oat);
+  min-height: calc(100vh - 80px - 38px - var(--mm-banner-space, 0px));
+}
+
+.cp-menu-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 14px clamp(26px, 3.6vw, 56px) 13px;
+  background: var(--petrol);
+  color: var(--oat);
+}
+.cp-menu-head-copy { flex: 1; min-width: 0; }
+.cp-menu-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--oat);
+}
+.cp-menu-title em { font-style: italic; color: #e8b874; }
+.cp-menu-address {
+  margin: 6px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 238, 225, 0.86);
+}
+.cp-menu-address em { font-style: italic; text-transform: none; letter-spacing: 0.02em; }
+/* The sample label travels with the prices. It is its own sticky row rather
+   than a line in the head bar, because a hand-built column hash used to scroll
+   the head bar — and the label with it — clean off a phone screen. */
+.cp-menu-provisional {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 7px clamp(26px, 3.6vw, 56px);
+  background: var(--caramel);
+  color: #2a1d0a;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.cp-menu-today {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding-top: 2px;
+  font-size: 13px;
+  color: #e8c58f;
+  flex-shrink: 0;
+}
+.cp-menu-today a { color: #fff; font-weight: 700; text-underline-offset: 3px; text-decoration-color: var(--caramel); }
+.cp-menu-today-sep { opacity: 1; }
+
+/* Three-column menu body */
+.cp-menu-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: start;
+}
+.cp-menu-col {
+  padding: 18px clamp(18px, 2vw, 30px);
+  border-left: 1px solid var(--hairline);
+}
+.cp-menu-col:first-child { border-left: 0; }
+
+/* Section heading: large italic Irish name + small-caps English */
+.cp-menu-col-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--caramel);
+}
+.cp-menu-col-ga {
+  font-family: var(--display);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--petrol);
+}
+.cp-menu-col-en {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--caramel-ink);
+}
+
+/* Menu item row: name (Irish italic) + descriptor + price */
+.cp-menu-list { margin: 0; padding: 0; list-style: none; }
+.cp-menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.cp-menu-item:last-child { border-bottom: 0; }
+.cp-menu-item-ga {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--petrol);
+  line-height: 1.2;
+}
+.cp-menu-item-ga em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sage-ink);
+  margin-left: 4px;
+}
+.cp-menu-item-en {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--sage-ink);
+  margin-top: 2px;
+}
+.cp-menu-item-price {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--caramel-ink);
+  white-space: nowrap;
+}
+
+/* Specials strip — caramel bar anchoring the bottom of the menu */
+.cp-menu-specials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px clamp(26px, 3.6vw, 56px);
+  background: var(--caramel);
+  color: #2a1d0a;
+  font-size: 14px;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+.cp-menu-specials-ga {
+  font-family: var(--display);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 600;
+}
+.cp-menu-specials-sep { opacity: 1; flex-shrink: 0; }
+.cp-menu-specials-en { flex: 1; min-width: 0; }
+.cp-menu-specials-link {
+  color: inherit;
+  text-decoration-color: rgba(42, 29, 10, 0.45);
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.cp-menu-specials-link:hover { text-decoration: underline; }
+
+@media (max-width: 940px) {
+  .cp-menu-cols { grid-template-columns: 1fr; }
+  .cp-menu-col { border-left: 0; }
+  .cp-menu-col:not(:first-child) { border-top: 1px solid var(--hairline); }
+  .cp-menu-head { flex-direction: column; gap: 8px; }
+}

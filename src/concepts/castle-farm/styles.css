@@ -1,0 +1,558 @@
+/* Castle Farm Fresh Produce — independent concept identity.
+   The farm's own navy and gold, kept from the first pass. What changed on
+   5 August 2026 is what the palette is carrying: the page now opens on the
+   farm's own sentence and turns on the weekly round rather than on a generic
+   shop hero. The cropped-produce wordmark is retired — it was nobody's mark —
+   so the name is set in type, and there is no basket, because the page
+   introduces the farm and hands every transaction to castlefarmni.com.
+
+   Georgia carries the display voice (a farm beside a Norman castle earns a
+   serif); Atkinson Hyperlegible Next carries everything read at speed —
+   town lists, cutoffs and figures. */
+
+body.concept-castle-farm {
+  --cf-navy: #0b1735;
+  --cf-navy-lift: #15213c;
+  --cf-gold: #cfae68;
+  --cf-gold-bright: #f1d58f;
+  --cf-paper: #f4f3ef;
+  --cf-paper-edge: #dfddd4;
+  --cf-cream: #f7f3e8;
+  --cf-ink-soft: #46516a;
+  --cf-display: Georgia, "Times New Roman", serif;
+  --concept-accent: var(--cf-gold);
+  --concept-nav-gap: clamp(14px, 2vw, 28px);
+  --concept-nav-line: 2px;
+
+  margin: 0;
+  background: var(--cf-paper);
+  color: var(--cf-navy);
+  font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.concept-castle-farm :focus-visible { --concept-focus: var(--cf-gold-bright); }
+
+/* Chrome ----------------------------------------------------------------- */
+
+.cf-strip {
+  padding: 9px clamp(16px, 4vw, 46px);
+  background: var(--cf-navy);
+  color: var(--cf-cream);
+  font-size: 11.5px;
+  letter-spacing: .015em;
+}
+
+.cf-strip a { color: var(--cf-gold-bright); font-weight: 700; text-underline-offset: 3px; }
+
+.cf-header {
+  padding: 16px clamp(16px, 4vw, 46px);
+  gap: 22px;
+  row-gap: 12px;
+  flex-wrap: wrap;
+  background: var(--cf-navy);
+  border-bottom: 1px solid var(--cf-gold);
+}
+
+.cf-brand { text-decoration: none; }
+
+.cf-brand-name {
+  display: block;
+  font-family: var(--cf-display);
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1;
+  letter-spacing: .01em;
+  color: var(--cf-cream);
+}
+
+.cf-brand-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--cf-gold-bright);
+}
+
+.cf-nav a { font-size: 14px; font-weight: 700; color: var(--cf-cream); }
+.cf-nav a:hover::after,
+.cf-nav a:focus-visible::after { right: 0; }
+
+.cf-shop {
+  flex: none;
+  padding: 11px 15px;
+  border: 1px solid var(--cf-gold);
+  color: var(--cf-cream);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.cf-shop:hover,
+.cf-shop:focus-visible { background: var(--cf-gold); color: var(--cf-navy); }
+
+/* Hero ------------------------------------------------------------------- */
+
+.cf-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  background: var(--cf-navy);
+  color: var(--cf-cream);
+}
+
+.cf-hero-copy {
+  align-self: center;
+  padding: clamp(34px, 4.6vw, 68px) clamp(22px, 4.4vw, 62px);
+}
+
+.cf-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cf-gold-bright);
+}
+
+.cf-kicker::before { content: ""; width: 30px; height: 1px; background: var(--cf-gold); }
+
+.cf-say { margin: 18px 0 0; }
+.cf-say blockquote { margin: 0; }
+
+.cf-say h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--cf-display);
+  font-size: clamp(42px, 5.4vw, 76px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+.cf-say h1::before { content: "\201C"; }
+.cf-say h1::after { content: "\201D"; }
+
+.cf-say figcaption {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #c3cbdd;
+}
+
+.cf-say figcaption a { color: var(--cf-gold-bright); text-underline-offset: 3px; }
+
+.cf-lede {
+  max-width: 34ch;
+  margin: 22px 0 0;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: #e1e3e8;
+}
+
+.cf-button {
+  display: inline-flex;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  background: var(--cf-gold);
+  color: var(--cf-navy);
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.cf-button:hover,
+.cf-button:focus-visible { background: var(--cf-gold-bright); }
+
+/* The two dates. The whole argument for the farm is that both are true. */
+.cf-dates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0;
+  margin: clamp(30px, 4.4vh, 52px) 0 0;
+  border-top: 1px solid rgba(207, 174, 104, .55);
+}
+
+.cf-dates > div { padding: 15px 18px 0 0; }
+.cf-dates > div + div { padding-left: 18px; border-left: 1px solid rgba(207, 174, 104, .28); }
+
+.cf-dates dt {
+  font-family: var(--cf-display);
+  font-size: 19px;
+  color: var(--cf-gold-bright);
+}
+
+.cf-dates dd { margin: 5px 0 0; font-size: 13px; line-height: 1.45; color: #d5d9e2; }
+
+.cf-produce { position: relative; min-width: 0; margin: 0; overflow: hidden; background: var(--cf-navy-lift); }
+
+.cf-produce img,
+.cf-produce-video {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  display: block;
+  object-fit: cover;
+  object-position: 48% 50%;
+}
+
+.cf-produce-video { position: absolute; inset: 0; }
+
+.cf-video-note {
+  position: absolute;
+  z-index: 1;
+  right: 2%;
+  bottom: 8%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  background: var(--cf-navy);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cf-produce figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  padding: 9px 12px;
+  background: rgba(11, 23, 53, .9);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf-produce-video,
+  .cf-video-note { display: none; }
+}
+
+/* Sections --------------------------------------------------------------- */
+
+.cf-section-head { max-width: 62ch; margin-bottom: clamp(22px, 3vw, 34px); }
+
+.cf-eyebrow {
+  margin: 0 0 9px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #8a6f2d;
+}
+
+.cf-section-head h2 {
+  margin: 0;
+  font-family: var(--cf-display);
+  font-size: clamp(27px, 3.3vw, 42px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.cf-section-intro { margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: var(--cf-ink-soft); }
+
+.cf-round,
+.cf-stock,
+.cf-kitchen,
+.cf-close { padding: clamp(38px, 5vw, 72px) clamp(16px, 4vw, 46px); }
+
+.cf-round { border-bottom: 1px solid var(--cf-paper-edge); }
+
+/* The round -------------------------------------------------------------- */
+
+.cf-cutoffs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  margin: 0 0 clamp(22px, 3vw, 32px);
+  padding: 0;
+  list-style: none;
+}
+
+.cf-cutoff {
+  position: relative;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--cf-paper-edge);
+}
+
+.cf-cutoff.is-next { border-color: var(--cf-navy); box-shadow: inset 4px 0 0 var(--cf-gold); }
+
+.cf-cutoff-next {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  padding: 3px 8px;
+  background: var(--cf-navy);
+  color: var(--cf-gold-bright);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.cf-cutoff-label { margin: 0; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--cf-ink-soft); }
+.cf-cutoff-when { margin: 5px 0 0; font-family: var(--cf-display); font-size: clamp(24px, 2.6vw, 31px); }
+.cf-cutoff-covers { margin: 5px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--cf-ink-soft); }
+
+.cf-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--cf-paper-edge);
+  border: 1px solid var(--cf-paper-edge);
+}
+
+.cf-day { padding: 18px 20px 20px; background: var(--cf-paper); }
+
+.cf-day-name {
+  margin: 0;
+  font-family: var(--cf-display);
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.cf-day-heading {
+  margin: 3px 0 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #8a6f2d;
+}
+
+.cf-towns { margin: 0; padding: 0; list-style: none; }
+.cf-towns li { font-size: 14px; line-height: 1.65; color: var(--cf-navy); }
+
+.cf-day-more,
+.cf-day-note { margin: 9px 0 0; font-size: 13px; font-style: italic; color: var(--cf-ink-soft); }
+
+.cf-terms {
+  margin-top: clamp(22px, 3vw, 32px);
+  padding: 20px clamp(18px, 2.4vw, 26px);
+  background: var(--cf-navy);
+  color: var(--cf-cream);
+}
+
+.cf-terms dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.cf-terms dt { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: #c3cbdd; }
+.cf-terms dd { margin: 4px 0 0; font-family: var(--cf-display); font-size: 27px; color: var(--cf-gold-bright); }
+
+.cf-terms-foot {
+  max-width: 70ch;
+  margin: 18px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(207, 174, 104, .3);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d5d9e2;
+}
+
+.cf-terms-source { display: flex; flex-wrap: wrap; gap: 8px; margin: 9px 0 0; font-size: 13px; color: #b9c2d4; }
+.cf-terms-source a { color: var(--cf-gold-bright); font-weight: 700; text-underline-offset: 3px; }
+
+/* The town lookup -------------------------------------------------------- */
+
+.cf-lookup {
+  margin-top: clamp(22px, 3vw, 32px);
+  padding: clamp(20px, 2.6vw, 30px);
+  background: #fff;
+  border: 1px solid var(--cf-paper-edge);
+  scroll-margin-top: 20px;
+}
+
+.cf-lookup-label {
+  display: block;
+  font-family: var(--cf-display);
+  font-size: clamp(22px, 2.4vw, 29px);
+  line-height: 1.15;
+}
+
+.cf-lookup-help { margin: 8px 0 16px; font-size: 14px; color: var(--cf-ink-soft); }
+
+.cf-lookup-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.cf-lookup input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #b9b6ab;
+  background: var(--cf-paper);
+  color: var(--cf-navy);
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.cf-lookup input:focus-visible { border-color: var(--cf-navy); }
+
+.cf-lookup button {
+  flex: 0 0 auto;
+  padding: 13px 20px;
+  border: 0;
+  background: var(--cf-navy);
+  color: var(--cf-cream);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.cf-lookup button:hover,
+.cf-lookup button:focus-visible { background: var(--cf-navy-lift); }
+
+.cf-lookup-answer { margin: 14px 0 0; font-size: 15.5px; line-height: 1.55; }
+.cf-lookup-answer:empty { margin: 0; }
+.cf-lookup-answer[data-cf-answer-state="on"] { font-weight: 700; }
+.cf-lookup-answer[data-cf-answer-state="off"] { color: var(--cf-ink-soft); }
+
+.cf-round-plate {
+  max-width: 880px;
+  margin: clamp(28px, 4vw, 48px) auto 0;
+  background: var(--cf-paper);
+  border: 1px solid var(--cf-paper-edge);
+}
+
+.cf-round-plate img { width: 100%; height: auto; display: block; }
+
+.cf-round-plate figcaption {
+  padding: 11px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cf-ink-soft);
+}
+
+/* What travels the round ------------------------------------------------- */
+
+.cf-stock { background: #fff; border-bottom: 1px solid var(--cf-paper-edge); }
+
+.cf-stock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 3.4vw, 48px);
+}
+
+.cf-stock h3 {
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cf-paper-edge);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #8a6f2d;
+}
+
+.cf-stock-ours dl { margin: 0; }
+.cf-stock-ours dl > div + div { margin-top: 14px; }
+.cf-stock-ours dt { font-family: var(--cf-display); font-size: 20px; line-height: 1.2; }
+.cf-stock-ours dd { margin: 3px 0 0; font-size: 14px; line-height: 1.5; color: var(--cf-ink-soft); }
+
+.cf-neighbours-lead { margin: 0; font-family: var(--cf-display); font-size: 20px; line-height: 1.25; }
+.cf-stock-theirs p + p { margin-top: 12px; font-size: 15px; line-height: 1.65; color: var(--cf-ink-soft); }
+
+.cf-neighbours-aim { border-left: 2px solid var(--cf-gold); padding-left: 14px; }
+
+/* In the kitchen --------------------------------------------------------- */
+
+.cf-kitchen { background: var(--cf-paper); border-bottom: 1px solid var(--cf-paper-edge); }
+
+.cf-recipes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cf-recipes li {
+  padding: 11px 17px;
+  background: #fff;
+  border: 1px solid var(--cf-paper-edge);
+  font-family: var(--cf-display);
+  font-size: 18px;
+}
+
+.cf-recipes a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.cf-recipes a:hover,
+.cf-recipes a:focus-visible { text-decoration: underline; }
+
+.cf-recipes-foot { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; font-size: 13px; color: var(--cf-ink-soft); }
+.cf-recipes-foot a { color: var(--cf-navy); font-weight: 700; text-underline-offset: 3px; }
+
+/* Close ------------------------------------------------------------------ */
+
+.cf-close { background: var(--cf-navy); color: var(--cf-cream); }
+
+.cf-close h2 {
+  max-width: 20ch;
+  margin: 0;
+  font-family: var(--cf-display);
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.cf-close > p { max-width: 46ch; margin: 16px 0 0; font-size: 16px; line-height: 1.6; color: #d5d9e2; }
+
+.cf-close-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 26px; }
+.cf-close-actions .cf-button { margin-top: 0; }
+.cf-close-actions a[href^="tel"] { color: var(--cf-gold-bright); font-weight: 700; }
+
+.cf-close-address {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(207, 174, 104, .3);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #b9c2d4;
+}
+
+/* Narrow ----------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .cf-nav { display: none; }
+  .cf-hero { grid-template-columns: 1fr; }
+  /* Their sentence still leads on a phone; the box follows it rather than
+     pushing it under the fold. */
+  .cf-produce img,
+  .cf-produce-video { min-height: 260px; max-height: 46vh; }
+}
+
+@media (max-width: 560px) {
+  .cf-strip { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .cf-header { gap: 14px; }
+  .cf-shop { width: 100%; text-align: center; }
+  .cf-dates > div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(207, 174, 104, .28); }
+  .cf-lookup button { width: 100%; }
+}

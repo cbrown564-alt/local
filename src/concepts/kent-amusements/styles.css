@@ -1,0 +1,940 @@
+/* Kent Amusements — independent concept design system.
+   Pier navy, spray mist, ticket amber and candy coral with Teko: a seaside
+   arcade identity for the Central Promenade. Distinct from the Mourne Made
+   brand and from the Castle Farm, Enniskeen, Mourne Cycles, Donard, Bucks Head,
+   Scopers and Cúpla concepts. */
+
+.concept-kent {
+  --pier: #13253f;
+  --pier-deep: #0b1726;
+  --spray: #dceef2;
+  --foam: #f7fbfc;
+  --ticket: #e8a317;
+  --ticket-deep: #c4860c;
+  --coral: #e85a4f;
+  --coral-deep: #c9443a;
+  /* Text-safe variants added 25 July 2026: the display corals and ticket amber
+     are pier-poster colours that read well as fills but failed 4.5:1 as text
+     and as a control label (.ka-call was 3.50:1 white on --coral). */
+  --coral-ink: #a3352c;
+  --ticket-ink: #7c5405;
+  --sea: #3db8a8;
+  --ink-pier: #152536;
+  --hairline: rgba(19, 37, 63, 0.14);
+  --display: "Teko", "Arial Narrow", sans-serif;
+  --body: "Outfit", "Segoe UI", sans-serif;
+  --concept-accent: var(--coral);
+  --concept-focus: #0b1726;
+  --concept-nav-gap: clamp(16px, 2.2vw, 28px);
+  background: var(--spray);
+  color: var(--ink-pier);
+  font-family: var(--body);
+}
+
+/* Season strip */
+.ka-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px clamp(20px, 3.5vw, 44px);
+  background: var(--pier-deep);
+  color: var(--foam);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.ka-strip strong { color: #ffffff; font-weight: 600; }
+.ka-strip a { color: var(--ticket); font-weight: 700; text-underline-offset: 4px; }
+.ka-strip :focus-visible,
+.ka-rail :focus-visible,
+.ka-atx-panel :focus-visible {
+  outline-color: #ffffff;
+}
+
+/* Header */
+.ka-header {
+  height: 80px;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  gap: 26px;
+  background: var(--foam);
+  border-bottom: 1px solid var(--hairline);
+}
+.ka-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink-pier); }
+.ka-mark { flex: 0 0 auto; color: var(--coral); }
+.ka-brand-text { display: flex; flex-direction: column; gap: 0; }
+.ka-brand-name {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-brand-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ticket-ink);
+}
+.ka-nav a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-pier);
+}
+.ka-nav a:hover::after { right: 0; }
+.ka-call {
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: var(--coral-ink);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.ka-call:hover { background: var(--pier); transform: translateY(-1px); }
+
+/* Hero — story | promenade plate | section rail */
+.ka-hero {
+  position: relative;
+  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
+  display: grid;
+  grid-template-columns: 46% 54%;
+  grid-template-rows: 1fr auto;
+}
+.ka-story {
+  grid-column: 1;
+  grid-row: 1;
+  padding: clamp(20px, 3vh, 40px) clamp(26px, 3.6vw, 56px) 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ka-hero-plate {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Fill the hero column the way Cúpla's frontage does: the figure takes its
+   height from the grid area, not from the PNG's intrinsic size. */
+.ka-hero-plate .ka-promenade-plate {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+.ka-hero-plate .ka-promenade-frames {
+  flex: 1 1 auto;
+  aspect-ratio: auto;
+  height: 0;
+  min-height: 0;
+}
+.ka-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--coral-ink);
+}
+.ka-kicker::before { content: ""; width: 34px; height: 3px; border-radius: 3px; background: var(--ticket); }
+.ka-story h1 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: clamp(52px, 5.6vw, 76px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--pier);
+  max-width: 8em;
+  text-transform: uppercase;
+}
+.ka-story h1 em {
+  font-style: normal;
+  color: var(--coral-ink);
+}
+.ka-thesis {
+  margin: 0 0 12px;
+  max-width: 16em;
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--coral-ink);
+}
+.ka-lede {
+  margin: 0 0 16px;
+  max-width: 32em;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+.ka-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.ka-cta {
+  padding: 14px 24px;
+  border-radius: 6px;
+  background: var(--pier);
+  color: var(--foam);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.ka-cta:hover { background: var(--coral); color: #ffffff; transform: translateY(-1px); }
+.ka-link {
+  color: var(--pier);
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--ticket);
+}
+
+/* Era tag on BBC memory ticks (and anywhere else it appears). */
+.ka-era-tag {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--ticket);
+  color: var(--pier-deep);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+
+/* Attractions rail — content right-aligned so the fixed concept-disclosure badge
+   in the bottom-left corner never covers a cell */
+.ka-rail {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  background: var(--pier-deep);
+  padding: 0 clamp(20px, 3.5vw, 44px);
+}
+.ka-rail-cell {
+  padding: 11px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  border-left: 1px solid rgba(247, 251, 252, 0.14);
+}
+.ka-rail-cell:first-child { border-left: 0; }
+.ka-ride {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-ride-note { font-size: 12px; color: #9eb4c4; }
+
+@media (max-width: 940px) {
+  .ka-strip { flex-direction: column; gap: 2px; text-align: center; }
+  .ka-nav { display: none; }
+  .ka-header { height: auto; padding-block: 12px; }
+  .ka-hero { grid-template-columns: 1fr; min-height: 0; }
+  .ka-story { grid-column: 1; grid-row: auto; order: 0; padding: 40px 22px 24px; }
+  .ka-story h1 { max-width: none; }
+  .ka-hero-plate {
+    grid-column: 1;
+    grid-row: auto;
+    order: 1;
+    min-height: 220px;
+  }
+  .ka-hero-plate .ka-promenade-frames {
+    height: auto;
+    aspect-ratio: 1672 / 941;
+  }
+  .ka-rail { grid-column: 1; grid-row: auto; order: 2; }
+  .ka-rail { flex-wrap: wrap; justify-content: flex-start; padding: 8px 22px 14px; }
+  .ka-rail-cell { border-left: 0; flex: 1 1 45%; }
+  .ka-promenade-plate figcaption { flex-direction: column; gap: 4px; }
+}
+
+@media (max-width: 520px) {
+  .ka-header {
+    gap: 10px;
+    padding-inline: 16px;
+  }
+  .ka-brand { gap: 8px; min-width: 0; }
+  .ka-mark { width: 36px; height: 36px; }
+  .ka-brand-sub { display: none; }
+  .ka-brand-name { font-size: 25px; letter-spacing: .04em; }
+  .ka-call { padding: 10px 12px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-visit-step, .ka-arc-entry { transition: none; }
+}
+
+/* =====================================================================
+   Move 1+2 — two-stop timeline (c. 1968 → 2026) with quote ticks loosely
+   on the spine. Dots sit on a dedicated track so they cannot drift.
+   ===================================================================== */
+.ka-summers {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vh, 48px);
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--foam);
+  border-top: 3px solid var(--ticket);
+}
+.ka-summers-intro { max-width: 36em; }
+.ka-summers h2,
+.ka-afternoon h2 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-weight: 700;
+  line-height: .94;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-summers h2 em,
+.ka-afternoon h2 em { font-style: normal; color: var(--coral-ink); }
+.ka-summers-lede,
+.ka-afternoon-lede {
+  margin: 0;
+  max-width: 34em;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+
+.ka-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ka-timeline-band {
+  position: relative;
+  min-height: 7.5rem;
+}
+.ka-timeline-band--above { margin-bottom: 10px; }
+/* Pull the below-band memory tick up into the empty middle of the arc,
+   closer to the spine, without covering the end-year labels. */
+.ka-timeline-band--below {
+  margin-top: -4.25rem;
+  min-height: 10rem;
+  z-index: 1;
+}
+
+.ka-timeline-rail {
+  position: relative;
+  padding-top: 16px;
+}
+.ka-timeline-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 16px;
+  pointer-events: none;
+}
+.ka-timeline-spine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.5px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ticket), var(--coral), var(--ticket));
+}
+.ka-timeline-dot {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ticket);
+  border: 3px solid var(--pier);
+  box-sizing: border-box;
+}
+.ka-timeline-dot--start { left: 0; }
+.ka-timeline-dot--end { right: 0; }
+
+.ka-arc {
+  margin: 0;
+  padding: 22px 0 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
+}
+.ka-arc-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(22em, 42%);
+}
+.ka-arc-entry--sixties { align-items: flex-start; text-align: left; }
+.ka-arc-entry--twenty-six { align-items: flex-end; text-align: right; margin-left: auto; }
+.ka-arc-when {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-arc-line {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-pier);
+}
+.ka-arc-source {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ticket-ink);
+}
+
+.ka-timeline-tick {
+  position: absolute;
+  left: var(--tick);
+  width: min(16.5rem, 36vw);
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--pier-deep);
+  color: var(--foam);
+  border: 2px solid var(--pier-deep);
+  box-shadow: 3px 3px 0 var(--ticket);
+  transform: translateX(-50%);
+}
+.ka-timeline-band--above .ka-timeline-tick { bottom: 0; }
+.ka-timeline-band--below .ka-timeline-tick {
+  top: 0;
+  width: min(20rem, 44vw);
+}
+.ka-timeline-tick .ka-era-tag { align-self: flex-start; }
+.ka-timeline-tick blockquote { margin: 0; }
+.ka-timeline-tick blockquote p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-wrap: balance;
+}
+.ka-timeline-tick.ka-memory blockquote p::before,
+.ka-timeline-tick.ka-memory blockquote p::after,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::before,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::after {
+  content: '\201C';
+  color: var(--ticket);
+}
+.ka-timeline-tick.ka-memory blockquote p::after,
+.ka-timeline-band--above .ka-timeline-tick:not(.ka-avoca) blockquote p::after {
+  content: '\201D';
+}
+.ka-timeline-tick.ka-avoca blockquote p {
+  font-family: var(--body);
+  font-size: 12.5px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.ka-timeline-tick figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #c3d3de;
+}
+.ka-timeline-tick figcaption strong { color: #ffffff; font-weight: 700; }
+.ka-timeline-tick figcaption a {
+  color: var(--ticket);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+.ka-timeline-tick.ka-avoca {
+  background: #14363a;
+  border-color: var(--sea);
+  box-shadow: 3px 3px 0 var(--sea);
+}
+.ka-timeline-tick.ka-avoca figcaption strong { color: var(--sea); }
+
+/* =====================================================================
+   Move 3 — comic storyboard: two three-panel strips with captions under
+   each strip. Verified material only; step 02 is the hinge.
+   ===================================================================== */
+.ka-afternoon {
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--pier);
+  color: var(--foam);
+}
+.ka-afternoon h2 { color: #ffffff; }
+.ka-afternoon h2 em { color: var(--ticket); }
+.ka-afternoon .ka-kicker { color: var(--ticket); }
+.ka-afternoon-lede { color: #c3d3de; }
+.ka-afternoon-intro { margin: 0 0 clamp(24px, 3.5vh, 40px); }
+
+.ka-comic {
+  background: #f2e6d4;
+  color: var(--ink-pier);
+  border: 4px solid var(--pier-deep);
+  box-shadow: 7px 7px 0 var(--ticket);
+  padding: 14px;
+}
+.ka-comic-strip {
+  margin: 0 0 18px;
+  padding: 0;
+  background: #fffaf1;
+  border: 3px solid var(--pier-deep);
+}
+.ka-comic-strip:last-of-type { margin-bottom: 12px; }
+.ka-comic-picture,
+.ka-comic-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 3px solid var(--pier-deep);
+}
+.ka-visit {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  background: var(--pier-deep);
+}
+.ka-visit-step {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px 12px 16px;
+  background: #fffaf1;
+}
+.ka-visit-step--hinge {
+  background: #fff3d6;
+  box-shadow: inset 0 -4px 0 var(--ticket);
+}
+.ka-visit-num {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: var(--coral-ink);
+}
+.ka-visit-name {
+  font-family: var(--display);
+  font-size: clamp(18px, 1.7vw, 26px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+.ka-visit-line {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #3d5260;
+}
+.ka-comic-disclosure {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 2px 4px 0;
+  font-size: 11px;
+  letter-spacing: .08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #5a4630;
+}
+.ka-comic-disclosure span:last-child { color: var(--ticket-ink); font-weight: 700; }
+
+/* Move 5 — the frontage is a generated illustration, never a claim that the
+   drawing is a photograph or an exact survey. The light plate stays in the
+   document for no-JavaScript and reduced-motion users; the local-clock script
+   only changes which already-rendered frame is visible. */
+.ka-promenade-plate {
+  margin: 0;
+  background: var(--pier-deep);
+  color: var(--foam);
+}
+.ka-promenade-frames {
+  position: relative;
+  aspect-ratio: 1672 / 941;
+  overflow: hidden;
+}
+.ka-promenade-frame,
+.ka-promenade-picture,
+.ka-promenade-image,
+.ka-promenade-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ka-promenade-frame { position: absolute; inset: 0; }
+.ka-promenade-image,
+.ka-promenade-video { object-fit: cover; }
+.ka-promenade-video { position: absolute; inset: 0; }
+.ka-video-note {
+  position: absolute;
+  z-index: 1;
+  right: 2%;
+  bottom: 7%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  background: var(--pier-deep);
+  color: var(--foam);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.ka-promenade-plate figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(22px, 3.6vw, 56px) 14px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #c3d3de;
+}
+.ka-promenade-plate figcaption span:last-child { color: var(--ticket); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-promenade-video,
+  .ka-video-note { display: none; }
+}
+
+/* =====================================================================
+   Move 4 — the season panel. A ticket, not a placeholder.
+   ===================================================================== */
+.ka-season-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 26em);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(48px, 7vh, 88px) clamp(26px, 3.6vw, 56px);
+  background: var(--spray);
+}
+.ka-season-lede {
+  margin: 0 0 14px;
+  max-width: 26em;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.35;
+  color: var(--pier);
+}
+.ka-season {
+  padding: 20px clamp(18px, 2vw, 26px) 18px;
+  background: var(--pier);
+  color: var(--foam);
+  border-radius: 8px;
+  border-top: 3px solid var(--ticket);
+  /* The notch pair reads the panel as a torn ticket rather than an empty board
+     waiting to be filled in. */
+  box-shadow: 0 14px 36px rgba(11, 23, 38, .22);
+}
+.ka-season-kicker {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ticket);
+}
+.ka-season-heading {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-season-ritual {
+  margin: 0 0 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(247, 251, 252, .28);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #f2f7fa;
+}
+/* Empty by design until the arcade publishes hours with a source; the rows
+   below are the home those hours will land in. */
+.ka-season-rows { margin: 0 0 14px; padding: 0; list-style: none; }
+.ka-season-rows li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 7px 0;
+  border-top: 1px dashed rgba(247, 251, 252, .18);
+}
+.ka-season-row-label {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ka-season-row-val { font-size: 13.5px; color: #f2f7fa; }
+.ka-season-row-source { flex: 1 0 100%; font-size: 11px; color: #9eb4c4; }
+.ka-season-cta {
+  display: block;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--ticket);
+  color: var(--pier-deep);
+  font-size: 14.5px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+.ka-season-cta:hover { background: var(--coral); color: #ffffff; }
+.ka-season-why {
+  margin: 9px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  text-align: center;
+  color: #9eb4c4;
+}
+
+/* Responsive — the three bands. This block has to sit after the band rules it
+   narrows: an earlier media query loses to a later base rule at equal
+   specificity, which is how the summers band first overflowed 390px by 82px. */
+@media (max-width: 940px) {
+  .ka-summers,
+  .ka-season-band { gap: 24px; }
+  .ka-summers,
+  .ka-afternoon,
+  .ka-season-band { padding-inline: 22px; }
+  .ka-timeline-band { min-height: 0; }
+  .ka-timeline-band--above,
+  .ka-timeline-band--below {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0;
+  }
+  .ka-timeline-tick {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+  .ka-arc-entry { max-width: min(20em, 48%); }
+  .ka-comic { box-shadow: 4px 4px 0 var(--ticket); padding: 10px; }
+  .ka-comic-disclosure { flex-direction: column; gap: 4px; }
+}
+
+@media (max-width: 620px) {
+  .ka-arc {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ka-arc-entry,
+  .ka-arc-entry--twenty-six {
+    max-width: none;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+  .ka-visit { grid-template-columns: 1fr; gap: 2px; }
+  .ka-visit-step { padding: 12px 14px; }
+}
+
+/* =====================================================================
+   Attractions page — second surface (ka-atx-*)
+   ===================================================================== */
+
+.ka-atx-main {
+  position: relative;
+  min-height: calc(100vh - 80px - 37px - var(--mm-banner-space, 0px));
+  display: grid;
+  grid-template-columns: 54% 46%;
+  grid-template-rows: 1fr auto;
+}
+
+.ka-atx-story {
+  grid-column: 1;
+  grid-row: 1;
+  /* Tightened 25 July 2026 so the page's two actions clear the reserved
+     disclosure strip at 1265x710. */
+  padding: clamp(16px, 2vh, 26px) clamp(26px, 3.6vw, 56px) 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ka-atx-heading {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  color: var(--pier);
+  max-width: 10em;
+  text-transform: uppercase;
+}
+
+.ka-atx-heading em {
+  font-style: normal;
+  color: var(--coral-deep);
+}
+
+.ka-atx-lede {
+  margin: 0 0 18px;
+  max-width: 34em;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #3d5260;
+}
+
+/* Three across rather than stacked: the list is short, and the column has to
+   clear the first viewport at 1265x710 with its actions and rail intact. */
+.ka-atx-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 22px;
+}
+
+.ka-atx-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 15px 15px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--hairline);
+  border-radius: 7px;
+  text-decoration: none;
+  color: var(--ink-pier);
+  transition: border-left-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.ka-atx-card:hover {
+  border-left-color: var(--coral);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.ka-atx-mark {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--pier);
+  display: grid;
+  place-items: center;
+}
+
+.ka-atx-mark--vr { background: var(--sea); }
+.ka-atx-mark--arcade { background: var(--coral); }
+
+.ka-atx-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ka-atx-name {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--pier);
+}
+
+.ka-atx-desc {
+  font-size: 13px;
+  color: #3d5260;
+}
+
+/* Right column: hours board + family offers */
+.ka-atx-panel {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px clamp(16px, 2.4vw, 28px) 10px 8px;
+}
+
+/* The attractions panel now holds one thing: the season ticket. The three
+   apologetic "Seasonal — check Facebook" rows it used to hold were the
+   improvement the 27 July 2026 publication record named. */
+.ka-atx-panel .ka-season { flex: 0 0 auto; }
+
+.ka-atx-source {
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ticket-ink);
+}
+
+/* On the second surface the Avoca quotation sits on spray rather than pier, so
+   it needs the light-ground treatment of the same two voices. */
+.ka-avoca--atx {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border-radius: 7px;
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--sea);
+  background: rgba(61, 184, 168, .1);
+}
+.ka-avoca--atx blockquote p { color: var(--pier); }
+.ka-avoca--atx figcaption { color: #4c6274; }
+.ka-avoca--atx figcaption strong { color: #1f6f65; }
+.ka-avoca--atx figcaption a { color: var(--coral-ink); }
+
+/* Responsive — attractions page */
+@media (max-width: 940px) {
+  .ka-atx-main { grid-template-columns: 1fr; min-height: 0; }
+  /* `grid-row: 1` survived from the desktop rule, so story and panel were
+     placed in the SAME cell: at 390x844 both measured [0,135,390,545] — a 100%
+     overlap that painted the heading, lede and all three attraction cards
+     underneath the hours and offers panels (25 July 2026 re-review). */
+  .ka-atx-story { grid-column: 1; grid-row: auto; padding: 36px 22px 20px; }
+  .ka-atx-cards { grid-template-columns: 1fr; gap: 8px; }
+  .ka-atx-card { flex-direction: row; align-items: center; gap: 16px; }
+  .ka-atx-panel { grid-column: 1; grid-row: auto; padding: 10px 22px 20px; }
+  .ka-atx-heading { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-atx-card { transition: none; }
+}

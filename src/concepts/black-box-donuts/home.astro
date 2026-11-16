@@ -1,0 +1,191 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import OpenBlackBox from "./OpenBlackBox.astro";
+
+/* Black Box Donuts — artisan handcrafted donut bakery under the Mournes.
+   Unit 18, 63A Castlewellan Road, Newcastle, BT33 0JX.
+   Handcrafted small-batch bakes, signature presentation boxes. */
+const email = "customercare@blackboxdonuts.co.uk";
+const mailto = `mailto:${email}`;
+const site = "https://blackboxdonuts.co.uk/";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap";
+
+const boxOptions = [
+  {
+    kicker: "This Christmas",
+    title: "Donnollis",
+    body: "Soft donut meets crisp cannoli. Cream-filled, chocolate-dipped and topped with your favourite treats. Six Donnollis, three flavours, £18.95 a box.",
+  },
+  {
+    kicker: "The range",
+    title: "Donuts & Little Dohs",
+    body: "Bundles, the Stuffed Range and Little Dohs, baked daily and posted across the UK in our Signature Black Box.",
+  },
+  {
+    kicker: "Celebrations",
+    title: "Event Bundles",
+    body: "Boxes built for parties and occasions. Choose your delivery date at checkout.",
+  },
+  {
+    kicker: "Business & wholesale",
+    title: "Corporate & Wholesale",
+    body: "Corporate orders and wholesale donuts for cafés and counters. Email us and we'll come back to you.",
+  },
+];
+
+const craftPrinciples = [
+  {
+    title: "Baked daily",
+    description: "Freshly baked in Northern Ireland, at our bakery on Castlewellan Road in Newcastle.",
+  },
+  {
+    title: "You choose the day",
+    description: "Pick your delivery date when you order, and book Christmas dates early: slots are limited.",
+  },
+  {
+    title: "Posted across the UK",
+    description: "Every box travels in our Signature Black Box. Free UK delivery on orders over £50.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Black Box Donuts — independent concept"}
+  slug="black-box-donuts"
+  bodyClass="concept-page concept-black-box-donuts"
+  lang="en-GB"
+  businessName="Black Box Donuts"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="The open black box is a drawing."
+>
+  <div class="bb-strip">
+    <span>Unit 18, 63A Castlewellan Road, Newcastle · BT33 0JX</span>
+    <span class="bb-strip-r">
+      <a href={mailto}>{email}</a>
+    </span>
+  </div>
+
+  <header class="bb-header">
+    <a class="bb-brand" href="/concepts/black-box-donuts/">
+      <span class="bb-brand-mark" aria-hidden="true">
+        <OpenBlackBox compact />
+      </span>
+      <span class="bb-brand-text">
+        <span class="bb-brand-name">Black Box Donuts</span>
+        <span class="bb-brand-sub">Bakery · Newcastle</span>
+      </span>
+    </a>
+    <nav class="bb-nav" aria-label="Concept navigation">
+      <a href="#boxes">The Boxes</a>
+      <a href="#craft">Delivery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#bakery">Bakery Unit</a>
+    </nav>
+    <a class="bb-shop-btn" href={site} rel="noopener noreferrer">Order Online</a>
+  </header>
+
+  <main class="bb-main">
+    <section class="bb-hero" aria-labelledby="bb-name">
+      <div class="bb-hero-content">
+        <span class="bb-tag">Bakery · Newcastle, Co. Down</span>
+        <h1 id="bb-name">Black Box Donuts</h1>
+        <p class="bb-hero-subtitle">Fresh donuts, baked daily in Newcastle and posted across the UK in our Signature Black Box.</p>
+        <p class="bb-hero-lede">
+          Choose your box, choose your delivery date, and we'll bake it fresh. For events, corporate orders
+          and wholesale, email the bakery.
+        </p>
+        <div class="bb-hero-actions">
+          <a class="bb-btn bb-btn--primary" href={site} rel="noopener noreferrer">Shop the boxes</a>
+          <a class="bb-btn bb-btn--secondary" href={mailto}>Email the bakery</a>
+        </div>
+      </div>
+
+      <div class="bb-hero-visual">
+        <OpenBlackBox />
+      </div>
+    </section>
+
+    <section class="bb-boxes-section" id="boxes" aria-labelledby="bb-boxes-title">
+      <div class="bb-section-head">
+        <span class="bb-kicker">The Signature Black Box</span>
+        <h2 id="bb-boxes-title">What goes in the box</h2>
+        <p class="bb-section-desc">
+          Everything we bake travels the same way: in the black box, on the date you choose.
+        </p>
+      </div>
+
+      <div class="bb-boxes-grid" role="list">
+        {boxOptions.map((box) => (
+          <article class="bb-box-card" role="listitem">
+            <span class="bb-card-kicker">{box.kicker}</span>
+            <h3>{box.title}</h3>
+            <p>{box.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bb-craft-section" id="craft" aria-labelledby="bb-craft-title">
+      <div class="bb-craft-wrapper">
+        <div class="bb-craft-intro">
+          <span class="bb-kicker bb-kicker--light">How it reaches you</span>
+          <h2 id="bb-craft-title">Baked, boxed, posted</h2>
+          <p>
+            From Unit 18 on Castlewellan Road to a doorstep anywhere in the UK.
+          </p>
+        </div>
+
+        <div class="bb-craft-grid">
+          {craftPrinciples.map((item, index) => (
+            <div class="bb-craft-card">
+              <span class="bb-craft-number">0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bb-reviews-section" id="reviews" aria-labelledby="bb-reviews-title">
+      <div class="bb-reviews-container">
+        <div class="bb-rating-pill">4.8 / 5</div>
+        <h2 id="bb-reviews-title">Rated by 912 customers</h2>
+        <p class="bb-reviews-lede">
+          Customers rate us 4.8 out of 5 across 912 reviews. Read them, box by box, on our shop.
+        </p>
+      </div>
+    </section>
+
+    <section class="bb-bakery-section" id="bakery" aria-labelledby="bb-bakery-title">
+      <div class="bb-bakery-card">
+        <div class="bb-bakery-info">
+          <span class="bb-kicker">Bakery Location</span>
+          <h2 id="bb-bakery-title">Unit 18, Castlewellan Road</h2>
+          <p>
+            Orders and delivery dates are booked on our shop. For wholesale, corporate and event enquiries,
+            email the bakery.
+          </p>
+          <div class="bb-bakery-buttons">
+            <a class="bb-btn bb-btn--primary" href={site} rel="noopener noreferrer">Order via Official Shop</a>
+            <a class="bb-btn bb-btn--secondary" href={mailto}>customercare@blackboxdonuts.co.uk</a>
+          </div>
+        </div>
+
+        <address class="bb-address-block">
+          <strong>Black Box Donuts</strong>
+          <span>Black Box Bakery Ltd</span>
+          <span>Unit 18, 63A Castlewellan Road</span>
+          <span>Newcastle, County Down</span>
+          <span>BT33 0JX</span>
+          <a class="bb-mail-link" href={mailto}>{email}</a>
+          <a class="bb-site-link" href={site} rel="noopener noreferrer">blackboxdonuts.co.uk</a>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>

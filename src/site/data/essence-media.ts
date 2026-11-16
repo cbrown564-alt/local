@@ -15,6 +15,43 @@ export interface EssenceMedia {
 }
 
 export const essenceMedia: Record<string, EssenceMedia> = {
+  "kent-amusements": {
+    heading: "The games change. The summer stays.",
+    lede: "One promenade, one coin and more than fifty Newcastle summers.",
+    frames: [
+      ["/media/concepts/kent-amusements/essence-sequence-01.jpg", "a promenade arcade threshold with a jukebox and one coin in the foreground", "Late 1960s"],
+      ["/media/concepts/kent-amusements/essence-sequence-02.jpg", "the same threshold and coin beside a later change booth", "Change-booth years"],
+      ["/media/concepts/kent-amusements/essence-sequence-03.jpg", "the same threshold lit by 1990s-style arcade cabinets", "The arcade glow"],
+      ["/media/concepts/kent-amusements/essence-sequence-04.jpg", "the same modern threshold with a compact virtual-reality area and the coin upright", "Today"],
+    ].map(([src, alt, label]) => ({ src, alt: `AI-generated illustrated scene of ${alt}`, label })),
+  },
+  "dundrum-inn": {
+    heading: "One table, from bay light to blue hour.",
+    lede: "A local inn through the day and a place to stay through the night.",
+    frames: [
+      ["/media/concepts/dundrum-inn/essence-sequence-01.jpg", "a room key on a table beside Dundrum Bay in daylight", "Day by the bay"],
+      ["/media/concepts/dundrum-inn/essence-sequence-02.jpg", "the same key and an empty pub glass in late-afternoon light", "Late afternoon"],
+      ["/media/concepts/dundrum-inn/essence-sequence-03.jpg", "the same table at blue hour with a warm amber drink and room key", "Evening at the Inn"],
+    ].map(([src, alt, label]) => ({ src, alt: `AI-generated indicative scene of ${alt}`, label })),
+  },
+  "castle-farm": {
+    heading: "Old ground. This week’s round.",
+    lede: "Produce from a family farm beside the castle, packed for the road today.",
+    frames: [{
+      src: "/media/concepts/castle-farm/essence-video-seed.jpg",
+      alt: "AI-generated overhead scene of fresh vegetables in a delivery box under a castle-shaped shadow",
+      label: "From the field to this week’s delivery",
+    }],
+  },
+  "marine-wellness": {
+    heading: "The hands stay the same.",
+    lede: "Twenty years of therapeutic massage, reflexology and restorative care in Newcastle.",
+    frames: [{
+      src: "/media/concepts/marine-wellness/calm.jpg",
+      alt: "AI-generated scene of a calm, sunlit treatment room with soft linen and plants",
+      label: "A calm treatment room",
+    }],
+  },
   "bettys-butters": {
     heading: "A little butter changes the whole plate.",
     lede: "Professional-kitchen flavour, made useful on an ordinary night at home.",

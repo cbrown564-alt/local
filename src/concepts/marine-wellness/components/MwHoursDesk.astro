@@ -1,0 +1,46 @@
+---
+import { hours, address, phone, phoneHref, booksy } from "../content";
+---
+
+<section class="mw-sanctuary" id="hours" aria-labelledby="mw-hours-title">
+  <div class="mw-sanctuary-grid">
+    <div class="mw-hours-col">
+      <p class="mw-kicker">Opening hours</p>
+      <h2 id="mw-hours-title">When the door is open</h2>
+      <p class="mw-hours-lede">
+        Appointments throughout the week at our quiet Castlewellan Road sanctuary.
+      </p>
+
+      <table class="mw-hours-table">
+        <tbody>
+          {hours.map((row) => (
+            <tr>
+              <th scope="row">{row.day}</th>
+              <td>{row.time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mw-location-col" id="location" aria-labelledby="mw-location-title">
+      <p class="mw-kicker">Location &amp; arrival</p>
+      <h2 id="mw-location-title">Unit 13, 63A Castlewellan Road</h2>
+      <div class="mw-location-card">
+        <p class="mw-location-addr">
+          <strong>Marine Wellness</strong><br />
+          {address.line1}<br />
+          {address.town}, {address.county}<br />
+          {address.postcode}
+        </p>
+        <p class="mw-location-notes">
+          Easy access and calm parking just off Castlewellan Road, away from town centre traffic.
+        </p>
+        <div class="mw-location-actions">
+          <a class="mw-btn-book" href={booksy}>Book on Booksy</a>
+          <a class="mw-btn-call" href={phoneHref}>{phone}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

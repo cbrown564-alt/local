@@ -1,0 +1,213 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import EssenceMedia from "../../site/components/EssenceMedia.astro";
+import SeasonPanel from "./SeasonPanel.astro";
+import PromenadePlate from "./PromenadePlate.astro";
+import JourneyPlate from "./JourneyPlate.astro";
+import {
+  ADDRESS,
+  FACEBOOK,
+  INSTAGRAM,
+  PHONE,
+  PHONE_HREF,
+  arc,
+  timelineTicks,
+} from "./record";
+
+/* The elevation of this page follows
+   research/concepts/kent-amusements/kent-amusements-elevation-brief.md.
+
+   The essence: the same summer for over fifty years — the machines change,
+   the summer doesn't. The paradox is two dates on one frontage, the newest
+   attraction on the seafront inside the oldest thing on it.
+
+   The arcade has no first-party voice on the open web, so the voice here is
+   the town's: two BBC memories, quoted with their era and their archive. Every
+   fact and every borrowed sentence lives in ./record.ts with its source. The
+   one rule that overrides everything else on this page: no time of day, ever
+   — see rule 1 in record.ts.
+
+   First viewport: brand and thesis beside the generated promenade plate (move
+   5). The late-1960s memory (move 1) sits just below as a supporting voice —
+   still dated, sourced and era-framed, but no longer the right-hand half of
+   the opening. The light plate is the no-JavaScript and reduced-motion
+   default; the lit sibling is a progressive enhancement on the visitor's
+   local clock. */
+---
+
+<ConceptLayout
+  title={"Kent Amusements — independent concept"}
+  slug="kent-amusements"
+  bodyClass="concept-page concept-kent"
+  lang="en-GB"
+  bannerNote="The promenade plates and afternoon storyboard are AI-generated illustrations; the quoted memories and the Avoca listing are other people's words; the arcade's own hours live on its Facebook page."
+>
+  <div class="ka-strip">
+    <span><strong>{ADDRESS}</strong> · Newcastle, Co. Down</span>
+    <span>Seasonal hours on <a href={FACEBOOK}>Facebook</a></span>
+  </div>
+
+  <header class="ka-header">
+    <a class="ka-brand" href="/concepts/kent-amusements/">
+      <svg class="ka-mark" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="39" height="39" rx="4" stroke="currentColor" stroke-width="2.2" />
+        <path d="M8 28 V14 H14.5 C17.8 14 20 16 20 18.8 C20 21.6 17.8 23.6 14.5 23.6 H11.2 V28 Z M11.2 20.6 H14.2 C15.7 20.6 16.7 19.7 16.7 18.8 C16.7 17.9 15.7 17 14.2 17 H11.2 Z" fill="currentColor" />
+        <circle cx="29.5" cy="18" r="5.2" stroke="currentColor" stroke-width="2.2" />
+        <path d="M26.2 28 L29.5 21.2 L32.8 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="29.5" cy="18" r="1.6" fill="currentColor" />
+      </svg>
+      <span class="ka-brand-text">
+        <span class="ka-brand-name">Kent Amusements</span>
+        <span class="ka-brand-sub">Central Promenade · Newcastle</span>
+      </span>
+    </a>
+    <nav class="ka-nav" aria-label="Concept navigation">
+      <a href="#summers">Fifty summers</a><a href="#afternoon">An afternoon</a><a href="#season">Hours &amp; offers</a><a href="/concepts/kent-amusements/attractions/">Attractions</a>
+    </nav>
+    <a class="ka-call" href={PHONE_HREF}>Call {PHONE}</a>
+  </header>
+
+  <main>
+    <div class="ka-hero">
+      <section class="ka-story">
+        <p class="ka-kicker">{ADDRESS} · Newcastle</p>
+        <h1>Kent <em>Amusements</em></h1>
+        <p class="ka-thesis">The machines change.<br />The summer doesn't.</p>
+        <p class="ka-lede">
+          Over fifty summers on the same stretch of the Central Promenade. The
+          jukebox has become a VR zone and the seafront around us has changed
+          out of recognition — and every summer the doors open on the same
+          afternoon.
+        </p>
+        <div class="ka-actions">
+          <a class="ka-cta" href="#season">Hours &amp; family offers</a>
+          <a class="ka-link" href={INSTAGRAM}>Follow @kentamusementsnewcastle →</a>
+        </div>
+      </section>
+
+      <!-- Move 5. The promenade is the first-viewport visual: same geography
+           plate the brief asked for, filling the column the quote used to own. -->
+      <div class="ka-hero-plate">
+        <PromenadePlate sizes="(max-width: 940px) 100vw, 50vw" />
+      </div>
+
+      <nav class="ka-rail" aria-label="Sections and contact">
+        <a class="ka-rail-cell" href="#summers"><span class="ka-ride">Fifty summers</span><span class="ka-ride-note">1968 to 2026</span></a>
+        <a class="ka-rail-cell" href="#afternoon"><span class="ka-ride">An afternoon</span><span class="ka-ride-note">Six steps, in order</span></a>
+        <a class="ka-rail-cell" href="#season"><span class="ka-ride">Hours</span><span class="ka-ride-note">They move with the season</span></a>
+        <a class="ka-rail-cell" href={PHONE_HREF}><span class="ka-ride">Call us</span><span class="ka-ride-note">{PHONE} →</span></a>
+      </nav>
+    </div>
+
+    <!-- Move 1 + 2. A two-stop timeline from c. 1968 to the VR launch, with the
+         town's memories and the Avoca line as loose ticks on the spine. -->
+    <section class="ka-summers" id="summers" aria-labelledby="ka-summers-heading">
+      <div class="ka-summers-intro">
+        <p class="ka-kicker">Fifty summers</p>
+        <h2 id="ka-summers-heading">Same promenade. <em>Different machines.</em></h2>
+        <p class="ka-summers-lede">
+          From about 1968 on the Central Promenade to the VR zone — and the
+          summers, and the voices, between them.
+        </p>
+      </div>
+
+      <div class="ka-timeline">
+        <div class="ka-timeline-band ka-timeline-band--above">
+          {timelineTicks.filter((tick) => tick.band === "above").map((tick) => (
+            <figure
+              class:list={[
+                tick.kind === "avoca" && "ka-avoca",
+                "ka-timeline-tick",
+              ]}
+              style={`--tick: ${tick.at}%;`}
+            >
+              {tick.era && <span class="ka-era-tag">{tick.era}</span>}
+              <blockquote><p>{tick.quote}</p></blockquote>
+              <figcaption>
+                <strong>{tick.who}{tick.kind === "memory" ? "." : ""}</strong>
+                <span>{tick.source}</span>
+                {tick.href && (
+                  <a href={tick.href} rel="external">
+                    {tick.kind === "avoca" ? "See their listing" : "Read the archive"}
+                    <span aria-hidden="true"> →</span>
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div class="ka-timeline-rail">
+          <div class="ka-timeline-track" aria-hidden="true">
+            <span class="ka-timeline-spine"></span>
+            <span class="ka-timeline-dot ka-timeline-dot--start"></span>
+            <span class="ka-timeline-dot ka-timeline-dot--end"></span>
+          </div>
+          <ol class="ka-arc" aria-label="Kent Amusements on the promenade, 1968 to 2026">
+            {arc.map((entry) => (
+              <li class:list={["ka-arc-entry", `ka-arc-entry--${entry.id}`]} id={`summer-${entry.id}`}>
+                <span class="ka-arc-when">{entry.when}</span>
+                <p class="ka-arc-line">{entry.line}</p>
+                <span class="ka-arc-source">{entry.source}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="ka-timeline-band ka-timeline-band--below">
+          {timelineTicks.filter((tick) => tick.band === "below").map((tick) => (
+            <figure
+              class:list={["ka-memory", "ka-timeline-tick"]}
+              style={`--tick: ${tick.at}%;`}
+            >
+              {tick.era && <span class="ka-era-tag">{tick.era}</span>}
+              <blockquote><p>{tick.quote}</p></blockquote>
+              <figcaption>
+                <strong>{tick.who}.</strong>
+                <span>{tick.source}</span>
+                {tick.href && (
+                  <a href={tick.href} rel="external">
+                    Read the archive <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Move 3. The researched storyboard split into two three-panel strips,
+         with each beat's description under the art. Step 02 is the hinge. -->
+    <section class="ka-afternoon" id="afternoon" aria-labelledby="ka-afternoon-heading">
+      <div class="ka-afternoon-intro">
+        <p class="ka-kicker">An afternoon here</p>
+        <h2 id="ka-afternoon-heading">How it goes.</h2>
+        <p class="ka-afternoon-lede">
+          Six steps, the same six for fifty summers — in, through, and back out
+          to the sea.
+        </p>
+      </div>
+      <JourneyPlate />
+    </section>
+
+    <!-- Move 4. The ritual is the information; today's answer belongs to the
+         page the arcade actually updates. -->
+    <section class="ka-season-band" id="season" aria-labelledby="ka-season-heading">
+      <div class="ka-season-intro">
+        <p class="ka-kicker">Before you come</p>
+        <p class="ka-season-lede">
+          A seaside arcade opens to the season, not to a timetable. We post
+          ours on Facebook as it changes.
+        </p>
+        <a class="ka-link" href="/concepts/kent-amusements/attractions/">
+          What's inside, attraction by attraction →
+        </a>
+      </div>
+      <SeasonPanel variant="compact" />
+    </section>
+    <EssenceMedia slug="kent-amusements" />
+  </main>
+</ConceptLayout>
