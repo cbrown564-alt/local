@@ -1,0 +1,75 @@
+---
+/* Drawn catch board for Dundrum Main Street.
+   Honesty that it is a drawing lives in bannerNote, not the caption.
+   No scraped live dishes — theatre of the day's board only. */
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{compact ? (
+  <svg
+    class="ms-mark"
+    width="44"
+    height="44"
+    viewBox="0 0 44 44"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect width="44" height="44" fill="#0f2a32"/>
+    <rect x="6" y="8" width="32" height="28" fill="#f2ebe0" stroke="#c4a060" stroke-width="1.4"/>
+    <path d="M12 18 H32 M12 24 H28 M12 30 H30" stroke="#0f2a32" stroke-width="1.6"/>
+    <circle cx="22" cy="12" r="2" fill="#c4a060"/>
+  </svg>
+) : (
+  <svg
+    class="ms-catchboard"
+    viewBox="0 0 960 560"
+    role="img"
+    aria-label="Drawn catch-of-the-day board for Mourne Seafood Bar Dundrum on Main Street"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="ms-wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d8cfc2"/>
+        <stop offset="1" stop-color="#c4b8a8"/>
+      </linearGradient>
+      <linearGradient id="ms-bay" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a9aab"/>
+        <stop offset="1" stop-color="#3d6a78"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="960" height="560" fill="url(#ms-wall)"/>
+    <!-- Bay hint through window -->
+    <rect x="620" y="40" width="280" height="200" fill="url(#ms-bay)"/>
+    <path d="M620 180 Q760 150 900 190 L900 240 L620 240 Z" fill="#2a4a52" opacity="0.35"/>
+    <text x="760" y="90" text-anchor="middle" fill="#e8f2f6" font-family="Literata, Georgia, serif" font-size="14" font-weight="600" letter-spacing="2">DUNDRUM BAY</text>
+
+    <!-- Board -->
+    <rect x="80" y="70" width="500" height="420" rx="6" fill="#1a333c"/>
+    <rect x="96" y="86" width="468" height="388" fill="#f2ebe0"/>
+    <rect x="96" y="86" width="468" height="64" fill="#0f2a32"/>
+    <text x="330" y="126" text-anchor="middle" fill="#f2ebe0" font-family="Literata, Georgia, serif" font-size="28" font-weight="700" letter-spacing="3">CATCH OF THE DAY</text>
+
+    <text x="120" y="190" fill="#0f2a32" font-family="Red Hat Text, system-ui, sans-serif" font-size="16" font-weight="700" letter-spacing="1.5">TODAY'S BOARD</text>
+    <text x="120" y="230" fill="#3a4a42" font-family="Literata, Georgia, serif" font-size="22" font-style="italic">Depends on what lands.</text>
+    <text x="120" y="280" fill="#0f2a32" font-family="Red Hat Text, system-ui, sans-serif" font-size="15">Shellfish · White fish · Specials</text>
+    <text x="120" y="310" fill="#5a6a62" font-family="Red Hat Text, system-ui, sans-serif" font-size="14">Ask the counter — we change daily.</text>
+
+    <line x1="120" y1="340" x2="520" y2="340" stroke="#c4a060" stroke-width="1.5"/>
+    <text x="120" y="375" fill="#0f2a32" font-family="Red Hat Text, system-ui, sans-serif" font-size="14" font-weight="700">10 MAIN STREET · DUNDRUM</text>
+    <text x="120" y="405" fill="#3a4a42" font-family="Red Hat Text, system-ui, sans-serif" font-size="13">BT33 0LU · Head of the bay</text>
+    <text x="120" y="440" fill="#0f2a32" font-family="Red Hat Text, system-ui, sans-serif" font-size="15" font-weight="700">028 4375 1377</text>
+
+    <!-- Shellfish mark -->
+    <g transform="translate(780 360)">
+      <ellipse cx="0" cy="0" rx="70" ry="48" fill="none" stroke="#0f2a32" stroke-width="3"/>
+      <path d="M-50 0 Q-20 -30 0 -8 Q20 -30 50 0 Q20 28 0 12 Q-20 28 -50 0" fill="#c4a060" opacity="0.85"/>
+      <text y="80" text-anchor="middle" fill="#0f2a32" font-family="Red Hat Text, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="2">MOURNE SEAFOOD</text>
+    </g>
+  </svg>
+)}

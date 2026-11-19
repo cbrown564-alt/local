@@ -1,0 +1,251 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ChairCard from "./ChairCard.astro";
+
+/* KD Hair — L'Oréal salon at 16 Mourne Rise, Newcastle, BT33 0HE.
+   Phone: 07549 958 060 · Email: info@kdhair16.co.uk · Web: https://www.kdhair16.co.uk/
+   Services as published on the salon site. Owner name not independently verified this pass, so it is not used. */
+const phone = "07549 958 060";
+const phoneHref = "tel:+447549958060";
+const email = "info@kdhair16.co.uk";
+const mailto = `mailto:${email}`;
+const handoff = "https://www.kdhair16.co.uk/";
+const maps = "https://www.google.com/maps/search/?api=1&query=16+Mourne+Rise+Newcastle+BT33+0HE";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const salonServices = [
+  {
+    tag: "Cutting and styling",
+    title: "Hair cutting, styling and colouring",
+    body: "On-trend hair cutting, styling and colouring, with a dedicated service and attention to detail.",
+  },
+  {
+    tag: "L'Oréal colour",
+    title: "L'Oréal colour specialist",
+    body: "Colouring by a L'Oréal Colour Specialist, including a colour consultation and a skin test before the appointment.",
+  },
+  {
+    tag: "Treatments",
+    title: "Conditioning treatments",
+    body: "Nourishing hair treatments, including conditioning to combat frizz, using exclusive products from L'Oréal and GHD.",
+  },
+  {
+    tag: "Occasions",
+    title: "Wedding and event styling",
+    body: "A chance to talk through possible styles for a wedding, as well as regular hairdressing and styling.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"KD Hair — 16 Mourne Rise, Newcastle"}
+  slug="kd-hair"
+  bodyClass="concept-page concept-kd-hair"
+  lang="en-GB"
+  businessName="KD Hair"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="AI-generated illustrations imagine the salon and setting; they are not photographs of the business."
+>
+  <!-- Notice ribbon -->
+  <div class="kd-notice-ribbon">
+    <span class="kd-notice-geo">16 Mourne Rise, Newcastle · BT33 0HE</span>
+    <a class="kd-notice-tel" href={phoneHref}>{phone}</a> · <a class="kd-notice-tel" href={mailto}>{email}</a>
+  </div>
+
+  <!-- Salon Header -->
+  <header class="kd-salon-header">
+    <div class="kd-header-inner">
+      <a class="kd-brand" href="/concepts/kd-hair/">
+        <span class="kd-brand-name">KD Hair</span>
+        <span class="kd-brand-sub">16 Mourne Rise · Newcastle</span>
+      </a>
+      <nav class="kd-salon-nav" aria-label="Salon navigation">
+        <a href="#services">Services</a>
+        <a href="#consultation">The Chair</a>
+        <a href="#studio">Studio Space</a>
+        <a href="#book">Appointments</a>
+      </nav>
+      <a class="kd-header-call" href={phoneHref}>Ring {phone}</a>
+    </div>
+  </header>
+
+  <main class="kd-studio-page">
+    <!-- One-on-one Salon Hero -->
+    <section class="kd-chair-hero" aria-labelledby="kd-salon-title">
+      <div class="kd-hero-text">
+        <p class="kd-kicker">L'Oréal hairdresser · Mourne Rise</p>
+        <h1 id="kd-salon-title" class="kd-hero-heading">A L'Oréal salon in Newcastle, on Mourne Rise.</h1>
+        <p class="kd-hero-lede">
+          KD Hair is a L'Oréal salon at 16 Mourne Rise, offering hair cutting, styling and colouring,
+          plus conditioning treatments and wedding styling. Men, women and children are welcome. Ring or email to book.
+        </p>
+        <div class="kd-hero-actions">
+          <a class="kd-btn-rose" href={phoneHref}>Ring or message: {phone}</a>
+          <a class="kd-btn-soft" href="#book">Find 16 Mourne Rise</a>
+        </div>
+      </div>
+      <figure class="kd-hero-frame">
+        <img
+          src="/media/concepts/kd-hair/kd-hair-hero-mourne-rise.jpg"
+          alt="Quiet residential setting on Mourne Rise, Newcastle"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption class="kd-frame-caption">16 Mourne Rise · Quiet residential salon in Newcastle</figcaption>
+      </figure>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="kd-services-section" id="services" aria-labelledby="kd-services-heading">
+      <div class="kd-services-header">
+        <p class="kd-kicker">Salon Craft</p>
+        <h2 id="kd-services-heading" class="kd-section-heading">Cutting, styling and colouring.</h2>
+        <p class="kd-services-lead">
+          Treatments as the salon describes them: cutting, styling, colouring, L'Oréal and GHD products, and wedding styles.
+        </p>
+      </div>
+
+      <div class="kd-services-grid">
+        {salonServices.map((service) => (
+          <article class="kd-service-card">
+            <span class="kd-service-badge">{service.tag}</span>
+            <h3 class="kd-service-title">{service.title}</h3>
+            <p class="kd-service-desc">{service.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Consultation & ChairCard -->
+    <section class="kd-consultation-section" id="consultation" aria-labelledby="kd-chair-title">
+      <div class="kd-consultation-details">
+        <p class="kd-kicker">Before the appointment</p>
+        <h2 id="kd-chair-title" class="kd-section-heading">A consultation and a skin test.</h2>
+        <p class="kd-consultation-lead">
+          To book a colour consultation, a skin test and a hair appointment, ring or email the salon.
+        </p>
+        <div class="kd-perks-list">
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">01</span>
+            <div>
+              <strong>Colour consultation</strong>
+              <p>A colour consultation and a skin test before colouring work.</p>
+            </div>
+          </div>
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">02</span>
+            <div>
+              <strong>16 Mourne Rise</strong>
+              <p>A L'Oréal salon in Newcastle, with free parking.</p>
+            </div>
+          </div>
+          <div class="kd-perk-item">
+            <span class="kd-perk-num">03</span>
+            <div>
+              <strong>Book by phone or email</strong>
+              <p>Ring 07549 958 060 or write to info@kdhair16.co.uk.</p>
+            </div>
+          </div>
+        </div>
+        <div class="kd-consult-action">
+          <a class="kd-btn-rose" href={phoneHref}>Ring to schedule: {phone}</a>
+        </div>
+      </div>
+      <div class="kd-card-slot">
+        <ChairCard headingId="kd-chair-title" />
+      </div>
+    </section>
+
+    <!-- Studio Photography Showcase -->
+    <section class="kd-studio-showcase" id="studio" aria-labelledby="kd-studio-heading">
+      <div class="kd-studio-row">
+        <figure class="kd-studio-photo">
+          <img
+            src="/media/concepts/kd-hair/kd-hair-salon-chair.jpg"
+            alt="Private salon chair with styling mirror and gentle natural light"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="kd-frame-caption">The styling chair · Private, relaxed appointment space</figcaption>
+        </figure>
+        <div class="kd-studio-words">
+          <p class="kd-kicker">On Mourne Rise</p>
+          <h2 id="kd-studio-heading" class="kd-section-heading">A neighbourhood L'Oréal salon.</h2>
+          <p class="kd-studio-text">
+            Hair cutting, styling and colouring at 16 Mourne Rise, for men, women and children from Newcastle and County Down.
+          </p>
+          <a class="kd-text-link" href={phoneHref}>Enquire about availability: {phone}</a>
+        </div>
+      </div>
+
+      <div class="kd-studio-row kd-studio-row--reverse">
+        <figure class="kd-studio-photo">
+          <img
+            src="/media/concepts/kd-hair/kd-hair-colour-swatches.jpg"
+            alt="Salon colour charts and mixing bowls"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="kd-frame-caption">Colour palette · Rich tones and custom shades</figcaption>
+        </figure>
+        <div class="kd-studio-words">
+          <p class="kd-kicker">L'Oréal colour</p>
+          <h3 class="kd-section-heading">Colour by a L'Oréal specialist.</h3>
+          <p class="kd-studio-text">
+            Colouring at KD Hair is done as a L'Oréal Colour Specialist, with a consultation and a skin test first.
+          </p>
+          <a class="kd-text-link" href={handoff} rel="noopener noreferrer">
+            Visit official site (kdhair16.co.uk) &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking & Contact Box -->
+    <section class="kd-booking-section" id="book" aria-labelledby="kd-booking-heading">
+      <div class="kd-booking-card">
+        <div class="kd-booking-left">
+          <p class="kd-kicker">Appointments</p>
+          <h2 id="kd-booking-heading" class="kd-booking-title">Book an appointment.</h2>
+          <p class="kd-booking-lead">
+            Ring 07549 958 060 or email info@kdhair16.co.uk to book a consultation, a skin test, or an appointment.
+          </p>
+          <div class="kd-contact-buttons">
+            <a class="kd-contact-button kd-contact-button--call" href={phoneHref}>
+              <span class="kd-button-tag">Direct Line</span>
+              <span class="kd-button-val">07549 958 060</span>
+            </a>
+            <a class="kd-contact-button" href={mailto}>
+              <span class="kd-button-tag">Email</span>
+              <span class="kd-button-val">{email}</span>
+            </a>
+            <a class="kd-contact-button" href={handoff} rel="noopener noreferrer">
+              <span class="kd-button-tag">Website</span>
+              <span class="kd-button-val">kdhair16.co.uk &rarr;</span>
+            </a>
+            <a class="kd-contact-button" href={maps} rel="noopener noreferrer">
+              <span class="kd-button-tag">Location</span>
+              <span class="kd-button-val">Find on Google Maps &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <address class="kd-salon-address">
+          <span class="kd-addr-name">KD Hair</span>
+          <span class="kd-addr-line">16 Mourne Rise</span>
+          <span class="kd-addr-line">Newcastle, Co. Down</span>
+          <span class="kd-addr-line">BT33 0HE</span>
+          <span class="kd-addr-phone"><a href={phoneHref}>07549 958 060</a></span>
+          <span class="kd-addr-phone"><a href={mailto}>{email}</a></span>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>

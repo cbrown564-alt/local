@@ -1,0 +1,263 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import JokeTag from "./JokeTag.astro";
+
+/* The Joke & Toy Shop — seaside promenade fun at Newcastle beach.
+   43 Central Promenade, Newcastle, BT33 0DJ.
+   Phone: 028 4372 4147 · Online: https://www.thejokeandtoyshop.com/
+   Walk-ins welcome, seafront novelty, jokes, fancy dress and seaside toys.
+   No form elements. */
+const phone = "028 4372 4147";
+const phoneHref = "tel:+442843724147";
+const email = "thejokeandtoyshop@gmail.com";
+const mailto = `mailto:${email}`;
+const whatsapp = "07864 831007";
+const whatsappHref = "https://wa.me/447864831007";
+const handoff = "https://www.thejokeandtoyshop.com/";
+const maps = "https://www.google.com/maps/search/?api=1&query=43+Central+Promenade+Newcastle+BT33+0DJ";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap";
+
+const shopAisles = [
+  {
+    kicker: "Jokes and gags",
+    title: "Jokes, gags, pranks and fun snaps",
+    body: "The jokes, gags, pranks and fun snaps the shop is known for, along with smoke flares when you need them.",
+  },
+  {
+    kicker: "Fancy dress",
+    title: "Outfits for babies, children, men and women",
+    body: "Incredible fancy dress outfits, plus latex and masquerade masks and fancy dress accessories.",
+  },
+  {
+    kicker: "Toys",
+    title: "Toys from the promenade shop",
+    body: "Toys from the family-run shop on the main promenade — selling fun since 1996.",
+  },
+  {
+    kicker: "Make up and lenses",
+    title: "Professional make up and contact lenses",
+    body: "Professional make up and contact lenses, alongside the jokes and the outfits.",
+  },
+];
+---
+
+<ConceptLayout
+  title={"The Joke & Toy Shop — 43 Central Promenade, Newcastle"}
+  slug="joke-and-toy-shop"
+  bodyClass="concept-page concept-joke-and-toy-shop"
+  lang="en-GB"
+  businessName="The Joke & Toy Shop"
+  town="Newcastle"
+  fontHref={fontHref}
+  bannerNote="AI-generated illustrations imagine the shop interior and promenade setting; they are not photographs of the business."
+>
+  <!-- Seaside promenade banner -->
+  <div class="jts-bunting-strip">
+    <span class="jts-bunting-loc">43 Central Promenade, Newcastle · BT33 0DJ</span>
+    <span class="jts-bunting-tel"><a href={phoneHref}>{phone}</a> · <a href={mailto}>{email}</a></span>
+  </div>
+
+  <!-- Storefront Header -->
+  <header class="jts-front-header">
+    <div class="jts-header-wrap">
+      <a class="jts-brand-link" href="/concepts/joke-and-toy-shop/">
+        <span class="jts-brand-title">The Joke &amp; Toy Shop</span>
+        <span class="jts-brand-sub">43 Central Promenade · Newcastle</span>
+      </a>
+      <nav class="jts-front-nav" aria-label="Store navigation">
+        <a href="#shelves">On the Shelves</a>
+        <a href="#souvenir">Joke Tag</a>
+        <a href="#costumes">Fancy Dress</a>
+        <a href="#promenade">Find the Shop</a>
+      </nav>
+      <a class="jts-ring-pill" href={phoneHref}>Ring the shop</a>
+    </div>
+  </header>
+
+  <main class="jts-playhouse">
+    <!-- Seaside Storefront Hero -->
+    <section class="jts-seaside-hero" aria-labelledby="jts-shop-title">
+      <div class="jts-hero-welcome">
+        <p class="jts-kicker-fun">Seaside Gags &amp; Toys · Central Promenade</p>
+        <h1 id="jts-shop-title" class="jts-hero-heading">Laughter, jokes, and pocket-money toys by the sea.</h1>
+        <p class="jts-hero-lead">
+          A family-owned shop on the main promenade, selling fun since 1996 — jokes, gags, pranks, fancy dress outfits, toys, masks, professional make up and contact lenses. Walk straight in, or ring or email if you need a stock check.
+        </p>
+        <div class="jts-hero-actions">
+          <a class="jts-btn-sunny" href="#promenade">Walk In · 43 Central Promenade</a>
+          <a class="jts-btn-hollow" href={phoneHref}>Call: {phone}</a>
+        </div>
+      </div>
+      <figure class="jts-hero-photo">
+        <img
+          src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-hero-promenade.jpg"
+          alt="The Joke and Toy Shop exterior along Central Promenade Newcastle"
+          width="1200"
+          height="675"
+          loading="eager"
+        />
+        <figcaption class="jts-photo-caption">43 Central Promenade · Right by the beach</figcaption>
+      </figure>
+    </section>
+
+    <!-- Shelves Grid -->
+    <section class="jts-shelves-section" id="shelves" aria-labelledby="jts-shelves-heading">
+      <div class="jts-shelves-head">
+        <p class="jts-kicker-fun">Packed to the Rafters</p>
+        <h2 id="jts-shelves-heading" class="jts-section-title">What’s inside the shop.</h2>
+        <p class="jts-shelves-lead">
+          Generations of holidaymakers and locals have ducked in off the promenade for pocket-money jokes,
+          costumes, and beach day surprises.
+        </p>
+      </div>
+
+      <div class="jts-shelves-grid">
+        {shopAisles.map((aisle) => (
+          <article class="jts-shelf-crate">
+            <span class="jts-crate-tag">{aisle.kicker}</span>
+            <h3 class="jts-crate-title">{aisle.title}</h3>
+            <p class="jts-crate-desc">{aisle.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tag & Artefact Section -->
+    <section class="jts-tag-feature" id="souvenir" aria-labelledby="jts-souvenir-heading">
+      <div class="jts-tag-pitch">
+        <p class="jts-kicker-fun">Promenade Souvenir</p>
+        <h2 id="jts-souvenir-heading" class="jts-section-title">The novelty ticket at 43.</h2>
+        <p class="jts-tag-lead">
+          Selling fun since 1996, from the family-run shop on the main promenade.
+        </p>
+        <div class="jts-tag-bullets">
+          <div class="jts-bullet-point">
+            <span class="jts-bullet-icon">🎭</span>
+            <div>
+              <strong>Novelties for every age</strong>
+              <p>Tricks, pranks, jokes, and funny gifts for young and old.</p>
+            </div>
+          </div>
+          <div class="jts-bullet-point">
+            <span class="jts-bullet-icon">☀️</span>
+            <div>
+              <strong>Toys and fancy dress</strong>
+              <p>Toys, fancy dress for all ages, masks, make up and contact lenses.</p>
+            </div>
+          </div>
+          <div class="jts-bullet-point">
+            <span class="jts-bullet-icon">🎪</span>
+            <div>
+              <strong>Fancy dress for all ages</strong>
+              <p>Outfits for babies, children, men and women, plus masks and accessories.</p>
+            </div>
+          </div>
+        </div>
+        <div class="jts-tag-action">
+          <a class="jts-btn-sunny" href={handoff} rel="noopener noreferrer">
+            thejokeandtoyshop.com &rarr;
+          </a>
+        </div>
+      </div>
+      <div class="jts-tag-card">
+        <JokeTag headingId="jts-souvenir-heading" />
+      </div>
+    </section>
+
+    <!-- Costumes & Masks Visual Focus -->
+    <section class="jts-costumes-showcase" id="costumes" aria-labelledby="jts-costumes-title">
+      <div class="jts-showcase-split">
+        <figure class="jts-showcase-fig">
+          <img
+            src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-jokes-masks.jpg"
+            alt="Shelves filled with prank jokes, disguise glasses and party masks"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="jts-photo-caption">Pranks, trick boxes, and classic party masks</figcaption>
+        </figure>
+        <div class="jts-showcase-copy">
+          <p class="jts-kicker-fun">Disguise &amp; Fun</p>
+          <h2 id="jts-costumes-title" class="jts-section-title">Tricks, masks, and laughter.</h2>
+          <p class="jts-showcase-text">
+            Jokes, gags, pranks, fun snaps, smoke flares, toys, and latex and masquerade masks —
+            ring or email if you want a stock check before you come in.
+          </p>
+          <a class="jts-shop-link" href={phoneHref}>Ring for costume stock: {phone}</a>
+        </div>
+      </div>
+
+      <div class="jts-showcase-split jts-showcase-split--reverse">
+        <figure class="jts-showcase-fig">
+          <img
+            src="/media/concepts/joke-and-toy-shop/joke-and-toy-shop-fancy-dress.jpg"
+            alt="Colourful rails of fancy dress costumes and hats"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <figcaption class="jts-photo-caption">Fancy dress rails · Costumes for children and adults</figcaption>
+        </figure>
+        <div class="jts-showcase-copy">
+          <p class="jts-kicker-fun">Party Rails</p>
+          <h3 class="jts-section-title">Fancy dress on the promenade.</h3>
+          <p class="jts-showcase-text">
+            Fancy dress outfits for babies, children, men and women, plus accessories, professional make up and contact lenses.
+            If you need to check stock, ring, email or WhatsApp the shop.
+          </p>
+          <a class="jts-shop-link" href={handoff} rel="noopener noreferrer">
+            thejokeandtoyshop.com &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit & Door Section -->
+    <section class="jts-visit-promenade" id="promenade" aria-labelledby="jts-visit-title">
+      <div class="jts-promenade-card">
+        <div class="jts-promenade-info">
+          <p class="jts-kicker-fun">Visit the Shop</p>
+          <h2 id="jts-visit-title" class="jts-section-title">Walk straight in off the front.</h2>
+          <p class="jts-promenade-lead">
+            43 Central Promenade, Newcastle, BT33 0DJ. Phone, email or WhatsApp if you need help finding us or a stock check.
+          </p>
+          <div class="jts-visit-buttons">
+            <a class="jts-visit-pill jts-visit-pill--call" href={phoneHref}>
+              <span class="jts-pill-tag">Phone</span>
+              <span class="jts-pill-val">Ring {phone}</span>
+            </a>
+            <a class="jts-visit-pill" href={handoff} rel="noopener noreferrer">
+              <span class="jts-pill-tag">Website</span>
+              <span class="jts-pill-val">thejokeandtoyshop.com &rarr;</span>
+            </a>
+            <a class="jts-visit-pill" href={mailto}>
+              <span class="jts-pill-tag">Email</span>
+              <span class="jts-pill-val">{email}</span>
+            </a>
+            <a class="jts-visit-pill" href={whatsappHref} rel="noopener noreferrer">
+              <span class="jts-pill-tag">WhatsApp</span>
+              <span class="jts-pill-val">{whatsapp}</span>
+            </a>
+            <a class="jts-visit-pill" href={maps} rel="noopener noreferrer">
+              <span class="jts-pill-tag">Directions</span>
+              <span class="jts-pill-val">Open Google Maps &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <address class="jts-store-address">
+          <span class="jts-addr-name">The Joke &amp; Toy Shop</span>
+          <span class="jts-addr-street">43 Central Promenade</span>
+          <span class="jts-addr-town">Newcastle, Co. Down</span>
+          <span class="jts-addr-postcode">BT33 0DJ</span>
+          <span class="jts-addr-phone"><a href={phoneHref}>{phone}</a></span>
+          <span class="jts-addr-phone"><a href={mailto}>{email}</a></span>
+        </address>
+      </div>
+    </section>
+  </main>
+</ConceptLayout>

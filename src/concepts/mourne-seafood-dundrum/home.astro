@@ -1,0 +1,200 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import CatchBoard from "./CatchBoard.astro";
+
+/* Mourne Seafood Bar Dundrum — 10 Main Street, Dundrum, BT33 0LU.
+   Phone: 028 4375 1377 · Email: dundrum@mourneseafood.com.
+   Hours, lobster night and catch-of-the-day note from mourneseafood.com/dundrum. */
+
+const phone = "028 4375 1377";
+const phoneHref = "tel:+442843751377";
+const email = "dundrum@mourneseafood.com";
+const mailto = `mailto:${email}`;
+const site = "https://www.mourneseafood.com/dundrum";
+const menus = "https://www.mourneseafood.com/dundrum";
+const maps =
+  "https://www.google.com/maps/search/?api=1&query=10+Main+Street+Dundrum+BT33+0LU";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap";
+
+const catchSpecialties = [
+  {
+    title: "The catch of the day",
+    origin: "The menu changes daily",
+    desc: "The Dundrum menu changes daily, dependant on the catch of the day. Today's board is the one to ask for.",
+  },
+  {
+    title: "Wednesday night lobster night",
+    origin: "June – September",
+    desc: "Through the summer, Wednesday evenings are lobster night. The rest of the early week the kitchen stays closed.",
+  },
+  {
+    title: "A table in the village",
+    origin: "10 Main Street, Dundrum",
+    desc: "The Dundrum restaurant sits on Main Street, with accommodation next door if you want to stay. Booking and rooms stay on mourneseafood.com.",
+  },
+];
+
+const weeklySittings = [
+  {
+    period: "Monday – Wednesday",
+    hours: "Closed",
+    note: "Wednesday night lobster night runs June to September.",
+  },
+  {
+    period: "Thursday",
+    hours: "12.30pm – 3pm / 5pm – 9pm",
+    note: "Seasonal changes may apply to Thursday trading times.",
+  },
+  {
+    period: "Friday",
+    hours: "12.30pm – 3pm / 5pm – 9.30pm",
+    note: "Lunch and evening.",
+  },
+  {
+    period: "Saturday",
+    hours: "12.30pm – 9.30pm",
+    note: "Open through the afternoon.",
+  },
+  {
+    period: "Sunday",
+    hours: "12.30pm – 6pm",
+    note: "",
+  },
+];
+---
+
+<ConceptLayout
+  title={"Mourne Seafood Dundrum — independent concept"}
+  slug="mourne-seafood-dundrum"
+  bodyClass="concept-page concept-mourne-seafood-dundrum"
+  lang="en-GB"
+  businessName="Mourne Seafood Bar Dundrum"
+  town="Dundrum"
+  fontHref={fontHref}
+  bannerNote="The catch board is a drawing."
+>
+  <div class="ms-strip">
+    <span>10 Main Street, Dundrum · BT33 0LU · Head of Dundrum Bay</span>
+    <span class="ms-strip-r">
+      <a href={phoneHref}>{phone}</a>
+    </span>
+  </div>
+
+  <header class="ms-header">
+    <a class="ms-brand" href="/concepts/mourne-seafood-dundrum/">
+      <span class="ms-brand-mark" aria-hidden="true">
+        <CatchBoard compact />
+      </span>
+      <span class="ms-brand-text">
+        <span class="ms-brand-name">Mourne Seafood</span>
+        <span class="ms-brand-sub">Dundrum · Village Bar</span>
+      </span>
+    </a>
+    <nav class="ms-nav" aria-label="Mourne Seafood Dundrum">
+      <a href="#catch">The Catch</a>
+      <a href="#sittings">Opening Hours</a>
+      <a href="#bay">The Bay</a>
+      <a href="#booking">Reserve Table</a>
+    </nav>
+    <a class="ms-reserve-btn" href={phoneHref}>Call Dundrum</a>
+  </header>
+
+  <main class="ms-main">
+    <section class="ms-hero" aria-labelledby="ms-name">
+      <div class="ms-hero-copy">
+        <span class="ms-kicker">Village Coastal Dining · Dundrum Bay</span>
+        <h1 id="ms-name">Mourne Seafood Bar</h1>
+        <p class="ms-place-tag">10 Main Street · Dundrum · BT33 0LU</p>
+        <p class="ms-say">The menu changes daily, dependant on the catch of the day.</p>
+        <p class="ms-lede">
+          Mourne Seafood on Main Street, Dundrum. The menu changes daily, dependant on the catch of the day —
+          and from June to September, Wednesday night is lobster night.
+        </p>
+        <div class="ms-hero-actions">
+          <a class="ms-btn ms-btn--primary" href={phoneHref}>Call to Reserve {phone}</a>
+          <a class="ms-btn ms-btn--outline" href={menus} rel="noopener noreferrer">See menus and hours</a>
+        </div>
+      </div>
+
+      <div class="ms-hero-art">
+        <CatchBoard />
+      </div>
+    </section>
+
+    <section class="ms-catch-section" id="catch" aria-labelledby="ms-catch-title">
+      <div class="ms-section-head">
+        <span class="ms-kicker">On the menu</span>
+        <h2 id="ms-catch-title">Catch of the day</h2>
+        <p class="ms-section-intro">
+          The menu changes daily, dependant on the catch of the day. Wednesday night lobster night is June to September.
+        </p>
+      </div>
+
+      <div class="ms-catch-grid">
+        {catchSpecialties.map((item) => (
+          <article class="ms-catch-card">
+            <span class="ms-origin-tag">{item.origin}</span>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ms-hours-section" id="sittings" aria-labelledby="ms-hours-title">
+      <div class="ms-hours-wrapper">
+        <div class="ms-section-head">
+          <span class="ms-kicker ms-kicker--gold">Dining Times</span>
+          <h2 id="ms-hours-title">Opening times</h2>
+          <p class="ms-section-intro">
+            Hours as published for Dundrum. Thursday times may change with the season.
+          </p>
+        </div>
+
+        <div class="ms-hours-grid">
+          {weeklySittings.map((s) => (
+            <div class="ms-hour-card">
+              <span class="ms-hour-period">{s.period}</span>
+              <h3>{s.hours}</h3>
+              <p>{s.note}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ms-bay-section" id="bay" aria-labelledby="ms-bay-title">
+      <div class="ms-bay-card">
+        <div class="ms-bay-info">
+          <span class="ms-kicker">Dundrum</span>
+          <h2 id="ms-bay-title">10 Main Street, Dundrum</h2>
+          <p>
+            The restaurant is on Main Street in Dundrum. If you want to stay as well as eat, the Dundrum page also points to their accommodation — rooms and booking stay on their own site.
+          </p>
+          <div class="ms-bay-actions" id="booking">
+            <a class="ms-btn ms-btn--primary" href={phoneHref}>Call Dundrum {phone}</a>
+            <a class="ms-btn ms-btn--outline" href={site} rel="noopener noreferrer">mourneseafood.com/dundrum</a>
+          </div>
+        </div>
+
+        <address class="ms-address-box">
+          <strong>Mourne Seafood Bar Dundrum</strong>
+          <span>10 Main Street</span>
+          <span>Dundrum, County Down</span>
+          <span>BT33 0LU</span>
+          <a class="ms-phone-link" href={phoneHref}>{phone}</a>
+          <a class="ms-email-link" href={mailto}>{email}</a>
+          <a class="ms-map-link" href={maps} rel="noopener noreferrer">View Location on Map</a>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ms-footer">
+    <p class="ms-footer-name">Mourne Seafood Bar Dundrum</p>
+    <p>10 Main Street, Dundrum · BT33 0LU</p>
+  </footer>
+</ConceptLayout>
