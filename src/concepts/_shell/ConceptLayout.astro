@@ -7,6 +7,7 @@ import {
 import { OG_IMAGE_SIZE, ogImages, transformationOgImage } from "../../site/data/og-images";
 import { siteDetails } from "../../site/data/site";
 import "./concept-shell.css";
+import "./concept-pickers.css";
 
 interface Props {
   title: string;
@@ -180,6 +181,14 @@ const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
 </html>
 
 <script>
+  import { initConceptPickers } from "./concept-pickers";
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initConceptPickers());
+  } else {
+    initConceptPickers();
+  }
+
   document.querySelectorAll<HTMLAnchorElement>('a[data-concept-placeholder]').forEach((link) => {
     link.removeAttribute("href");
     link.setAttribute("aria-disabled", "true");
