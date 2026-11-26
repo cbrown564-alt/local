@@ -1,0 +1,320 @@
+/* LocalAreaMap — Bespoke brand-themed projected SVG cartography */
+
+.mm-map-card {
+  --map-land: color-mix(in srgb, var(--cp-panel) 94%, var(--cp-ink) 6%);
+  --map-water: color-mix(in srgb, var(--cp-accent) 13%, var(--cp-panel));
+  --map-coast: color-mix(in srgb, var(--cp-accent) 44%, var(--cp-ink));
+  --map-upland: color-mix(in srgb, var(--cp-ink) 8%, transparent);
+  --map-road: color-mix(in srgb, var(--cp-ink) 24%, transparent);
+  --map-ink: var(--cp-ink);
+  --map-muted: var(--cp-muted);
+  --map-bg: var(--cp-panel);
+  --map-border: var(--cp-panel-border);
+
+  background: var(--map-bg);
+  color: var(--map-ink);
+  border: 1px solid var(--map-border);
+  border-radius: calc(var(--cp-radius) + 2px);
+  padding: 20px;
+  font-family: var(--cp-font);
+  box-shadow: 0 14px 36px rgba(10, 15, 22, 0.08);
+}
+
+.mm-map-card--dark {
+  --map-bg: #11181f;
+  --map-land: #17212a;
+  --map-water: #0c141b;
+  --map-coast: color-mix(in srgb, var(--cp-accent) 68%, #ffffff);
+  --map-upland: rgba(255, 255, 255, 0.06);
+  --map-road: rgba(255, 255, 255, 0.22);
+  --map-ink: #f3f5f7;
+  --map-muted: rgba(243, 245, 247, 0.7);
+  --map-border: rgba(255, 255, 255, 0.14);
+}
+
+.mm-map-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.mm-map-kicker {
+  margin: 0 0 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--map-muted);
+}
+
+.mm-map-title {
+  margin: 0;
+  font-family: var(--cp-display);
+  font-size: 1.24rem;
+  font-weight: 600;
+  color: var(--map-ink);
+  line-height: 1.2;
+}
+
+.mm-map-addr {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  color: var(--map-muted);
+}
+
+.mm-map-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: var(--cp-radius);
+  border: 1px solid var(--map-border);
+  background: transparent;
+  color: var(--map-ink);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.mm-map-ext:hover {
+  background: color-mix(in srgb, var(--map-ink) 8%, transparent);
+  border-color: var(--cp-accent);
+}
+
+.mm-map-stage {
+  border-radius: var(--cp-radius);
+  overflow: hidden;
+  border: 1px solid var(--map-border);
+}
+
+.mm-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 480;
+}
+
+.mm-map-land {
+  fill: var(--map-land);
+}
+
+.mm-map-grid line {
+  stroke: var(--map-ink);
+  stroke-opacity: 0.06;
+  stroke-width: 1;
+}
+
+.mm-map-water {
+  fill: var(--map-water);
+}
+
+.mm-map-coast {
+  stroke: var(--map-coast);
+  stroke-width: 1.4;
+}
+
+.mm-map-upland {
+  fill: var(--map-upland);
+}
+
+.mm-map-hatch-line {
+  stroke: var(--map-ink);
+  stroke-opacity: 0.16;
+  stroke-width: 1;
+}
+
+.mm-map-road {
+  stroke: var(--map-road);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+
+.mm-map-road--major {
+  stroke-width: 1.8;
+  stroke-dasharray: none;
+}
+
+.mm-map-ferry {
+  stroke: var(--cp-accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+
+.mm-map-water-label {
+  fill: var(--map-coast);
+  font-family: var(--cp-display);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  opacity: 0.78;
+}
+
+.mm-map-peak path {
+  fill: var(--map-muted);
+  opacity: 0.65;
+}
+
+.mm-map-peak-label {
+  fill: var(--map-muted);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.mm-map-radius {
+  fill: color-mix(in srgb, var(--cp-accent) 9%, transparent);
+  stroke: var(--cp-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 6 4;
+}
+
+.mm-map-radius-label {
+  fill: var(--cp-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mm-map-ray {
+  stroke: var(--cp-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 3;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.mm-map-pin-dot {
+  fill: var(--map-bg);
+  stroke: var(--map-ink);
+  stroke-width: 1.8;
+  transition: fill 150ms ease, stroke 150ms ease, r 150ms ease;
+}
+
+.mm-map-pin-label {
+  fill: var(--map-ink);
+  font-size: 11px;
+  font-weight: 600;
+  transition: fill 150ms ease;
+}
+
+.mm-map-pin.is-active .mm-map-ray {
+  opacity: 0.8;
+}
+
+.mm-map-pin.is-active .mm-map-pin-dot {
+  fill: var(--cp-accent);
+  stroke: var(--cp-accent-ink);
+}
+
+.mm-map-pin.is-active .mm-map-pin-label {
+  fill: var(--cp-accent);
+  font-weight: 700;
+}
+
+.mm-map-home-halo {
+  fill: color-mix(in srgb, var(--cp-accent) 24%, transparent);
+}
+
+.mm-map-home-dot {
+  fill: var(--cp-accent);
+  stroke: var(--cp-accent-ink);
+  stroke-width: 2.2;
+}
+
+.mm-map-home-tag-bg {
+  fill: var(--cp-accent);
+}
+
+.mm-map-home-tag {
+  fill: var(--cp-accent-ink);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mm-map-scale,
+.mm-map-compass {
+  color: var(--map-muted);
+  fill: var(--map-muted);
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.mm-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.mm-map-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 6px 11px;
+  border-radius: var(--cp-radius);
+  border: 1px solid var(--map-border);
+  background: transparent;
+  color: var(--map-ink);
+  font-family: var(--cp-font);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.mm-map-chip strong {
+  font-weight: 700;
+}
+
+.mm-map-chip span {
+  color: var(--map-muted);
+  font-size: 0.76rem;
+}
+
+.mm-map-chip:hover,
+.mm-map-chip.is-active {
+  background: var(--cp-accent);
+  border-color: var(--cp-accent);
+  color: var(--cp-accent-ink);
+}
+
+.mm-map-chip:hover span,
+.mm-map-chip.is-active span {
+  color: color-mix(in srgb, var(--cp-accent-ink) 85%, transparent);
+}
+
+.mm-map-cap {
+  margin: 12px 0 0;
+  font-size: 0.78rem;
+  color: var(--map-muted);
+  line-height: 1.45;
+}
+
+/* Full-width band wrapper when a concept mounts a standalone map band */
+.mm-map-band {
+  padding: 56px 0;
+}
+
+.mm-map-band-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 600px) {
+  .mm-map-card {
+    padding: 14px;
+  }
+  .mm-map-band {
+    padding: 40px 0;
+  }
+  .mm-map-band-wrap {
+    padding: 0 16px;
+  }
+}

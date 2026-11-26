@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 /* The Oaks Restaurant & Bar — 5 Darragh Cross, Saintfield, Co. Down, BT24 7EQ.
@@ -159,7 +161,31 @@ const driveTimes = [
 
           <div class="ok-clip-foot">
             <a class="ok-btn ok-btn--sage" href={resdiaryUrl} rel="noopener noreferrer">Reserve your table ↗</a>
-            <a class="ok-text-link" href={fullMenuUrl} rel="noopener noreferrer">View full menu ↗</a>
+            <SpecimenSheet
+              id="oaks-menu-sheet"
+              triggerLabel="Open full menu sheet"
+              kicker="The Oaks Kitchen · Darragh Cross"
+              title="Full Kitchen Menu & Pricing"
+              subtitle="Served Thursday 12:30–8pm, Friday & Saturday 12:30–8:30pm, and Sunday 12:30–7:30pm."
+              groups={[
+                {
+                  id: "starters",
+                  label: "Starters",
+                  items: starters.map((d) => ({ name: d.name, note: d.note, meta: d.price })),
+                },
+                {
+                  id: "mains",
+                  label: "Mains & Clip Board Specials",
+                  items: mains.map((d) => ({ name: d.name, note: d.note, meta: d.price })),
+                },
+              ]}
+              ctaLabel="Reserve a table via ResDiary ↗"
+              ctaHref={resdiaryUrl}
+              ctaExternal={true}
+              secondaryLabel={`Call ${phone}`}
+              secondaryHref={phoneHref}
+            />
+            <a class="ok-text-link" href={fullMenuUrl} rel="noopener noreferrer">External menu PDF ↗</a>
           </div>
         </div>
 
@@ -213,6 +239,26 @@ const driveTimes = [
             <a class="ok-btn ok-btn--ghost" href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
           </div>
         </div>
+      </div>
+
+      <div class="ok-wrap" style="margin-top: 40px;">
+        <LocalAreaMap
+          id="oaks-map"
+          businessName="The Oaks"
+          address="5 Darragh Cross, Saintfield, BT24 7EQ"
+          lon={-5.802}
+          lat={54.442}
+          spanKm={20}
+          mapHref={mapHref}
+          kicker="County Down Crossroads"
+          markers={[
+            { name: "Saintfield", lon: -5.833, lat: 54.457, note: "4 mins", side: "l" },
+            { name: "Crossgar", lon: -5.764, lat: 54.402, note: "7 mins", side: "r" },
+            { name: "Ballynahinch", lon: -5.899, lat: 54.402, note: "15 mins", side: "l" },
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "15 mins", side: "r" },
+            { name: "Belfast Edge", lon: -5.915, lat: 54.535, note: "20 mins", side: "l" },
+          ]}
+        />
       </div>
     </section>
   </main>

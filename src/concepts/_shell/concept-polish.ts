@@ -742,6 +742,65 @@ function initEditorialLightbox() {
   });
 }
 
+function initLocalMaps() {
+  document.querySelectorAll<HTMLElement>("[data-local-map]").forEach((card) => {
+    const chips = Array.from(card.querySelectorAll<HTMLButtonElement>("[data-map-chip]"));
+    const pins = Array.from(card.querySelectorAll<SVGElement>("[data-map-pin]"));
+    if (!chips.length) return;
+
+    let pinnedIdx: string | null = null;
+    const setActive = (idx: string | null) => {
+      chips.forEach((c) => c.classList.toggle("is-active", idx !== null && c.dataset.mapChip === idx));
+      pins.forEach((p) => p.classList.toggle("is-active", idx !== null && p.dataset.mapPin === idx));
+    };
+
+    chips.forEach((chip) => {
+      const idx = chip.dataset.mapChip ?? null;
+      chip.addEventListener("mouseenter", () => setActive(idx));
+      chip.addEventListener("mouseleave", () => setActive(pinnedIdx));
+      chip.addEventListener("focus", () => setActive(idx));
+      chip.addEventListener("blur", () => setActive(pinnedIdx));
+      chip.addEventListener("click", () => {
+        pinnedIdx = pinnedIdx === idx ? null : idx;
+        setActive(pinnedIdx);
+      });
+    });
+  });
+}
+
+function initSpecimenSheets() {
+  document.querySelectorAll<HTMLDialogElement>("[data-specimen-dialog]").forEach((dialog) => {
+    attachLightDismissFallback(dialog);
+
+    const pills = Array.from(dialog.querySelectorAll<HTMLButtonElement>("[data-spec-filter]"));
+    const groups = Array.from(dialog.querySelectorAll<HTMLElement>("[data-spec-group]"));
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        const key = pill.dataset.specFilter || "all";
+        pills.forEach((p) => p.classList.toggle("is-active", p === pill));
+        groups.forEach((g) => {
+          g.hidden = key !== "all" && g.dataset.specGroup !== key;
+        });
+      });
+    });
+
+    dialog.querySelectorAll<HTMLAnchorElement>(".mm-spec-foot a[href^='#']").forEach((a) => {
+      a.addEventListener("click", () => {
+        if (dialog.open) dialog.close();
+      });
+    });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-specimen-open]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.specimenOpen;
+      if (!id) return;
+      const dialog = document.getElementById(id) as HTMLDialogElement | null;
+      if (dialog && !dialog.open) dialog.showModal();
+    });
+  });
+}
+
 /* ==========================================================================
    Init
    ========================================================================== */
@@ -755,4 +814,6 @@ export function initConceptPolish() {
   initTablistPolish();
   initScrollReveals();
   initEditorialLightbox();
+  initLocalMaps();
+  initSpecimenSheets();
 }

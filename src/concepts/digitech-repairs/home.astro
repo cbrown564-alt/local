@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import DtFaultTriage from "./DtFaultTriage.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 /* DigiTech Repairs — 8 Carrickinab Road, Ballykinlar, Downpatrick, BT30 8DD.
@@ -114,6 +116,8 @@ const towns = [
         </figure>
       </div>
     </section>
+
+    <DtFaultTriage />
 
     <section class="dt-ticket-section" id="ticket" aria-labelledby="dt-ticket-title">
       <div class="dt-wrap dt-ticket-grid">
@@ -239,6 +243,29 @@ const towns = [
           <a class="dt-btn dt-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
           <a class="dt-btn dt-btn--outline" href={phoneHref}>Call {phone}</a>
         </div>
+      </div>
+
+      <div class="dt-wrap" style="margin-top: 34px;">
+        <LocalAreaMap
+          id="digitech-map"
+          businessName="DigiTech Repairs"
+          address="8 Carrickinab Road, Ballykinlar, Downpatrick, BT30 8DD"
+          lon={-5.774}
+          lat={54.262}
+          spanKm={19}
+          radiusKm={14}
+          radiusLabel="BT30 · BT33 · BT31 · BT24 Collection"
+          tone="dark"
+          mapHref={mapHref}
+          kicker="Workshop & Collection Zone"
+          markers={[
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "BT30", side: "r" },
+            { name: "Newcastle", lon: -5.891, lat: 54.212, note: "BT33", side: "l" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "BT31", side: "l" },
+            { name: "Ballynahinch", lon: -5.899, lat: 54.402, note: "BT24", side: "l" },
+            { name: "Dundrum", lon: -5.844, lat: 54.259, note: "5 mins", side: "t" },
+          ]}
+        />
       </div>
     </section>
   </main>

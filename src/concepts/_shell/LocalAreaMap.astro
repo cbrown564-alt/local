@@ -1,0 +1,418 @@
+---
+/**
+ * LocalAreaMap — Bespoke WGS84-projected SVG cartographic plate for Newry, Mourne & Down.
+ * Renders real simplified coastline (Strangford Lough, Dundrum Bay, Irish Sea, Carlingford Lough),
+ * upland topography (Mourne Mountains, Slieve Gullion, Slieve Croob), major corridors (A1, A2, A7/A24/A25),
+ * optional catchment ring, and interactive landmark/drive-time pins — all styled via each concept's --cp-* tokens.
+ */
+import "./local-area-map.css";
+
+export interface MapMarker {
+  name: string;
+  lon: number;
+  lat: number;
+  note?: string;
+  side?: "l" | "r" | "t" | "b";
+}
+
+interface Props {
+  id?: string;
+  businessName: string;
+  address: string;
+  lon: number;
+  lat: number;
+  /** Viewport half-span in km (e.g. 14 = 28km wide window; 24 = wider district view) */
+  spanKm?: number;
+  /** Optional catchment / service radius in km drawn as a dashed circle */
+  radiusKm?: number;
+  radiusLabel?: string;
+  /** Optional ferry crossing line for Strangford Narrows */
+  showFerry?: boolean;
+  markers?: MapMarker[];
+  mapHref?: string;
+  kicker?: string;
+  caption?: string;
+  tone?: "light" | "dark";
+}
+
+const {
+  id = "local-map",
+  businessName,
+  address,
+  lon,
+  lat,
+  spanKm = 18,
+  radiusKm,
+  radiusLabel,
+  showFerry = false,
+  markers = [],
+  mapHref,
+  kicker = "Local Geography",
+  caption,
+  tone = "light",
+} = Astro.props;
+
+// Equirectangular projection centred on (lon, lat) in an 800 x 480 viewBox
+const W = 800;
+const H = 480;
+const COS_LAT = Math.cos((54.22 * Math.PI) / 180);
+const KM_PER_DEG_LAT = 111.32;
+const pxPerKm = W / (spanKm * 2);
+const K_LAT = KM_PER_DEG_LAT * pxPerKm;
+const K_LON = KM_PER_DEG_LAT * COS_LAT * pxPerKm;
+
+const project = (pLon: number, pLat: number): [number, number] => [
+  +(W / 2 + (pLon - lon) * K_LON).toFixed(1),
+  +(H / 2 - (pLat - lat) * K_LAT).toFixed(1),
+];
+
+function smoothPath(coords: ReadonlyArray<readonly [number, number]>, closed = false): string {
+  const pts = coords.map(([lo, la]) => project(lo, la));
+  const n = pts.length;
+  if (n < 2) return "";
+  const at = (i: number) => (closed ? pts[(i + n) % n] : pts[Math.max(0, Math.min(n - 1, i))]);
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  const last = closed ? n : n - 1;
+  for (let i = 0; i < last; i++) {
+    const [p0, p1, p2, p3] = [at(i - 1), at(i), at(i + 1), at(i + 2)];
+    const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+    const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+    const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+    const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+    d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  return closed ? `${d} Z` : d;
+}
+
+// Simplified County Down & South Armagh eastern coastline (Belfast Lough / Ards -> Strangford Narrows -> Dundrum Bay -> Kilkeel -> Carlingford Lough)
+const eastCoast: ReadonlyArray<readonly [number, number]> = [
+  [-5.44, 54.48],
+  [-5.47, 54.42],
+  [-5.52, 54.37],
+  [-5.55, 54.365], // Portaferry / Strangford Narrows mouth
+  [-5.565, 54.372],
+  [-5.59, 54.355], // Killard / Kilclief
+  [-5.61, 54.31], // Ardglass
+  [-5.65, 54.27], // Killough / St John's Point
+  [-5.71, 54.238], // Tyrella
+  [-5.78, 54.245], // Dundrum Inner Bay
+  [-5.84, 54.248], // Murlough
+  [-5.885, 54.212], // Newcastle
+  [-5.882, 54.165], // Bloody Bridge
+  [-5.895, 54.112], // Annalong
+  [-5.955, 54.062], // Kilkeel Harbour
+  [-6.045, 54.022], // Cranfield Point
+  [-6.105, 54.045], // Greencastle
+  [-6.195, 54.095], // Rostrevor shore
+  [-6.255, 54.102], // Warrenpoint
+  [-6.33, 54.145], // Newry Canal estuary
+];
+
+// Opposite (Cooley Peninsula) shore of Carlingford Lough for realistic water enclosure
+const cooleyShore: ReadonlyArray<readonly [number, number]> = [
+  [-6.33, 54.145],
+  [-6.275, 54.105],
+  [-6.225, 54.075], // Omeath
+  [-6.185, 54.042], // Carlingford
+  [-6.115, 54.008], // Greenore
+  [-6.055, 53.98],
+  [-5.44, 53.98],
+];
+
+// Strangford Lough inland water polygon
+const strangfordLough: ReadonlyArray<readonly [number, number]> = [
+  [-5.565, 54.372], // Narrows
+  [-5.595, 54.382], // Strangford village
+  [-5.645, 54.395], // Castle Ward / Quoile mouth
+  [-5.68, 54.412], // Killyleagh
+  [-5.675, 54.465], // Whiterock / Mahee
+  [-5.69, 54.52], // Comber / Newtownards north
+  [-5.59, 54.515], // Greyabbey
+  [-5.535, 54.46], // Kircubbin
+  [-5.545, 54.405], // Portaferry inner
+  [-5.55, 54.368],
+];
+
+// Upland massifs
+const mourneMassif: ReadonlyArray<readonly [number, number]> = [
+  [-6.12, 54.185],
+  [-6.03, 54.212],
+  [-5.94, 54.208],
+  [-5.895, 54.185],
+  [-5.895, 54.14],
+  [-5.94, 54.102],
+  [-6.04, 54.095],
+  [-6.14, 54.122],
+  [-6.17, 54.155],
+];
+
+const slieveGullion: ReadonlyArray<readonly [number, number]> = [
+  [-6.47, 54.142],
+  [-6.425, 54.158],
+  [-6.385, 54.14],
+  [-6.395, 54.102],
+  [-6.445, 54.095],
+  [-6.48, 54.118],
+];
+
+const slieveCroob: ReadonlyArray<readonly [number, number]> = [
+  [-6.01, 54.348],
+  [-5.965, 54.355],
+  [-5.935, 54.335],
+  [-5.955, 54.312],
+  [-6.005, 54.316],
+];
+
+// Key road corridors (subtle dashed/hairline guides)
+const roadA1: ReadonlyArray<readonly [number, number]> = [
+  [-6.355, 54.04], // South to Dundalk / Dublin
+  [-6.342, 54.115], // Cloughoge / Flagstaff
+  [-6.34, 54.176], // Newry
+  [-6.295, 54.27], // Loughbrickland
+  [-6.268, 54.348], // Banbridge
+  [-6.175, 54.44], // Hillsborough -> Belfast
+];
+
+const roadA2: ReadonlyArray<readonly [number, number]> = [
+  [-6.34, 54.176], // Newry
+  [-6.25, 54.103], // Warrenpoint
+  [-6.198, 54.101], // Rostrevor
+  [-6.005, 54.061], // Kilkeel
+  [-5.903, 54.109], // Annalong
+  [-5.891, 54.212], // Newcastle
+  [-5.844, 54.259], // Dundrum
+  [-5.716, 54.328], // Downpatrick
+  [-5.558, 54.371], // Strangford
+];
+
+const roadA7: ReadonlyArray<readonly [number, number]> = [
+  [-5.915, 54.52], // Belfast edge
+  [-5.833, 54.457], // Saintfield
+  [-5.764, 54.402], // Crossgar
+  [-5.716, 54.328], // Downpatrick
+  [-5.838, 54.294], // Clough
+  [-5.939, 54.259], // Castlewellan
+  [-6.115, 54.198], // Hilltown
+  [-6.34, 54.176], // Newry
+];
+
+// Sea polygon extending east & south outside viewport
+const coastPath = smoothPath(eastCoast, false);
+const cooleyPath = smoothPath(cooleyShore, false);
+const [cEndX, cEndY] = project(-6.33, 54.145);
+const [cStartX, cStartY] = project(-5.44, 54.48);
+const seaPoly = `${coastPath} L${cEndX} ${cEndY} ${cooleyPath.replace(/^M[^ ]+ [^ ]+/, "")} L${W + 500} ${H + 500} L${W + 500} ${cStartY - 400} L${cStartX} ${cStartY - 400} Z`;
+const loughPoly = smoothPath(strangfordLough, true);
+const mournePath = smoothPath(mourneMassif, true);
+const gullionPath = smoothPath(slieveGullion, true);
+const croobPath = smoothPath(slieveCroob, true);
+const a1Path = smoothPath(roadA1, false);
+const a2Path = smoothPath(roadA2, false);
+const a7Path = smoothPath(roadA7, false);
+
+const peaks = [
+  { name: "Slieve Donard", lon: -5.9208, lat: 54.1803 },
+  { name: "Slieve Binnian", lon: -5.9665, lat: 54.1325 },
+  { name: "Slieve Gullion", lon: -6.4331, lat: 54.1228 },
+  { name: "Slieve Croob", lon: -5.973, lat: 54.334 },
+].map((pk) => {
+  const [x, y] = project(pk.lon, pk.lat);
+  return { ...pk, x, y };
+});
+
+const [bizX, bizY] = project(lon, lat);
+const radiusPx = radiusKm ? +(radiusKm * pxPerKm).toFixed(1) : 0;
+
+// Ferry line Strangford <-> Portaferry
+const [ferryA_x, ferryA_y] = project(-5.556, 54.371);
+const [ferryB_x, ferryB_y] = project(-5.546, 54.379);
+
+// Water labels
+const waterLabels = [
+  { name: "Irish Sea", lon: -5.73, lat: 54.13 },
+  { name: "Dundrum Bay", lon: -5.79, lat: 54.215 },
+  { name: "Strangford Lough", lon: -5.61, lat: 54.445 },
+  { name: "Carlingford Lough", lon: -6.16, lat: 54.058 },
+].map((wl) => {
+  const [x, y] = project(wl.lon, wl.lat);
+  return { ...wl, x, y };
+});
+
+const projectedMarkers = markers.map((m, idx) => {
+  const [x, y] = project(m.lon, m.lat);
+  const side = m.side || (x > W * 0.65 ? "l" : "r");
+  return { ...m, x, y, side, idx };
+});
+
+// Scale bar: pick a clean round km length (2, 5, or 10 km) around ~110px wide
+const scaleKm = spanKm <= 10 ? 2 : spanKm <= 20 ? 5 : 10;
+const scalePx = +(scaleKm * pxPerKm).toFixed(1);
+const scaleMiles = +(scaleKm * 0.6214).toFixed(1);
+
+const hatchId = `${id}-hatch`;
+const clipId = `${id}-clip`;
+---
+
+<div class={`mm-map-card mm-map-card--${tone}`} data-local-map id={id}>
+  <div class="mm-map-head">
+    <div>
+      <p class="mm-map-kicker">{kicker}</p>
+      <h3 class="mm-map-title">{businessName}</h3>
+      <p class="mm-map-addr">{address}</p>
+    </div>
+    {mapHref && (
+      <a class="mm-map-ext" href={mapHref} rel="noopener noreferrer">
+        Open Google Maps ↗
+      </a>
+    )}
+  </div>
+
+  <div class="mm-map-stage">
+    <svg
+      class="mm-map-svg"
+      viewBox={`0 0 ${W} ${H}`}
+      role="img"
+      aria-label={`Projected local map showing ${businessName} at ${address} with nearby towns and landmarks`}
+    >
+      <defs>
+        <clipPath id={clipId}><rect width={W} height={H} rx="3" /></clipPath>
+        <pattern id={hatchId} width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+          <path d="M0 0v8" class="mm-map-hatch-line" />
+        </pattern>
+      </defs>
+
+      <g clip-path={`url(#${clipId})`}>
+        {/* Land base */}
+        <rect class="mm-map-land" width={W} height={H} />
+
+        {/* Subtle cartographic graticule */}
+        <g class="mm-map-grid" aria-hidden="true">
+          {[160, 320, 480, 640].map((gx) => <line x1={gx} y1="0" x2={gx} y2={H} />)}
+          {[120, 240, 360].map((gy) => <line x1="0" y1={gy} x2={W} y2={gy} />)}
+        </g>
+
+        {/* Sea & Strangford Lough */}
+        <path class="mm-map-water" d={seaPoly} />
+        <path class="mm-map-water" d={loughPoly} />
+        <path class="mm-map-coast" d={coastPath} fill="none" />
+        <path class="mm-map-coast" d={cooleyPath} fill="none" />
+
+        {/* Upland massifs with subtle contour hatch */}
+        <path class="mm-map-upland" d={mournePath} />
+        <path d={mournePath} fill={`url(#${hatchId})`} opacity="0.55" />
+        <path class="mm-map-upland" d={gullionPath} />
+        <path d={gullionPath} fill={`url(#${hatchId})`} opacity="0.5" />
+        <path class="mm-map-upland" d={croobPath} />
+        <path d={croobPath} fill={`url(#${hatchId})`} opacity="0.45" />
+
+        {/* Major road corridors */}
+        <g class="mm-map-roads" fill="none" aria-hidden="true">
+          <path d={a1Path} class="mm-map-road mm-map-road--major" />
+          <path d={a2Path} class="mm-map-road" />
+          <path d={a7Path} class="mm-map-road" />
+        </g>
+
+        {/* Optional Strangford Ferry crossing */}
+        {showFerry && (
+          <line
+            x1={ferryA_x}
+            y1={ferryA_y}
+            x2={ferryB_x}
+            y2={ferryB_y}
+            class="mm-map-ferry"
+          />
+        )}
+
+        {/* Water body labels */}
+        {waterLabels.map((wl) =>
+          wl.x > 40 && wl.x < W - 40 && wl.y > 28 && wl.y < H - 28 ? (
+            <text x={wl.x} y={wl.y} text-anchor="middle" class="mm-map-water-label">
+              {wl.name}
+            </text>
+          ) : null,
+        )}
+
+        {/* Mountain peaks */}
+        {peaks.map((pk) =>
+          pk.x > 36 && pk.x < W - 36 && pk.y > 28 && pk.y < H - 28 ? (
+            <g class="mm-map-peak">
+              <path d={`M${pk.x - 6} ${pk.y + 5} L${pk.x} ${pk.y - 5} L${pk.x + 6} ${pk.y + 5} Z`} />
+              <text x={pk.x} y={pk.y + 16} text-anchor="middle" class="mm-map-peak-label">
+                {pk.name}
+              </text>
+            </g>
+          ) : null,
+        )}
+
+        {/* Optional catchment / radius circle */}
+        {radiusPx > 0 && (
+          <g class="mm-map-radius-group">
+            <circle cx={bizX} cy={bizY} r={radiusPx} class="mm-map-radius" />
+            {radiusLabel && (
+              <text x={bizX} y={Math.max(26, bizY - radiusPx - 8)} text-anchor="middle" class="mm-map-radius-label">
+                {radiusLabel}
+              </text>
+            )}
+          </g>
+        )}
+
+        {/* Nearby landmark / drive-time pins */}
+        {projectedMarkers.map((m) => {
+          const tx = m.side === "l" ? m.x - 10 : m.side === "r" ? m.x + 10 : m.x;
+          const ty = m.side === "t" ? m.y - 10 : m.side === "b" ? m.y + 18 : m.y + 4;
+          const anchor = m.side === "l" ? "end" : m.side === "r" ? "start" : "middle";
+          return (
+            <g class="mm-map-pin" data-map-pin={m.idx}>
+              <line x1={bizX} y1={bizY} x2={m.x} y2={m.y} class="mm-map-ray" />
+              <circle cx={m.x} cy={m.y} r="4.5" class="mm-map-pin-dot" />
+              <text x={tx} y={ty} text-anchor={anchor} class="mm-map-pin-label">
+                {m.name}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Primary Business Marker */}
+        <g class="mm-map-home">
+          <circle cx={bizX} cy={bizY} r="15" class="mm-map-home-halo" />
+          <circle cx={bizX} cy={bizY} r="6.5" class="mm-map-home-dot" />
+          <g transform={`translate(${bizX}, ${bizY - 22})`}>
+            <rect x="-82" y="-15" width="164" height="22" rx="2" class="mm-map-home-tag-bg" />
+            <text x="0" y="0" text-anchor="middle" class="mm-map-home-tag">
+              {businessName.length > 23 ? `${businessName.slice(0, 22)}…` : businessName}
+            </text>
+          </g>
+        </g>
+
+        {/* Scale bar & North compass */}
+        <g class="mm-map-scale" transform={`translate(22, ${H - 26})`}>
+          <line x1="0" y1="0" x2={scalePx} y2="0" stroke="currentColor" stroke-width="1.6" />
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="currentColor" stroke-width="1.6" />
+          <line x1={scalePx} y1="-4" x2={scalePx} y2="4" stroke="currentColor" stroke-width="1.6" />
+          <text x={scalePx / 2} y="-8" text-anchor="middle">
+            {scaleKm} km · {scaleMiles} mi
+          </text>
+        </g>
+
+        <g class="mm-map-compass" transform={`translate(${W - 34}, 34)`} aria-hidden="true">
+          <circle cx="0" cy="0" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity="0.45" />
+          <path d="M0 -10 L3.5 2 L0 -1 L-3.5 2 Z" fill="currentColor" />
+          <text x="0" y="10" text-anchor="middle" font-size="7.5" font-weight="700">N</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  {markers.length > 0 && (
+    <div class="mm-map-legend" role="list" aria-label="Nearby landmarks and distances">
+      {markers.map((m, idx) => (
+        <button type="button" class="mm-map-chip" data-map-chip={idx}>
+          <strong>{m.name}</strong>
+          {m.note && <span>{m.note}</span>}
+        </button>
+      ))}
+    </div>
+  )}
+
+  {caption && <p class="mm-map-cap">{caption}</p>}
+</div>

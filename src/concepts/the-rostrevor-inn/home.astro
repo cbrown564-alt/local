@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 /* The Rostrevor Inn — 33–35 Bridge Street, Rostrevor, Co. Down, BT34 3BG.
@@ -105,9 +106,13 @@ const hours = [
       <div class="ri-hero-scrim" aria-hidden="true"></div>
 
       <div class="ri-wrap ri-hero-inner">
+        <div class="ri-mood-bar" role="group" aria-label="Inn atmosphere preview">
+          <button type="button" class="ri-mood-pill is-active" data-ri-mood="night">Crawfords Trad Night</button>
+          <button type="button" class="ri-mood-pill" data-ri-mood="day">Stables Bistro Daylight</button>
+        </div>
         <p class="ri-kicker">18th-Century Village Inn · Yards From Fairy Glen &amp; Kilbroney Park</p>
         <h1 id="ri-hero-title">Fireside sessions, local spirits <em>and seven rooms above Crawfords Bar.</em></h1>
-        <p class="ri-lede">
+        <p class="ri-lede" data-ri-lede>
           Where the Crawford family first poured drinks in the mid-1800s — now
           home to four nights a week of live folk and trad music, our stone
           Stables bistro, Killowen and Mourne Dew pours, and seven en-suite
@@ -214,6 +219,25 @@ const hours = [
           </div>
         </div>
       </div>
+
+      <div class="ri-wrap" style="margin-top: 40px;">
+        <LocalAreaMap
+          id="rostrevor-inn-map"
+          businessName="The Rostrevor Inn"
+          address="33–35 Bridge Street, Rostrevor, BT34 3BG"
+          lon={-6.197}
+          lat={54.102}
+          spanKm={14}
+          mapHref={mapHref}
+          kicker="Carlingford Lough & Kilbroney Village"
+          markers={[
+            { name: "Kilbroney Forest", lon: -6.182, lat: 54.108, note: "3 mins", side: "r" },
+            { name: "Warrenpoint", lon: -6.250, lat: 54.103, note: "6 mins", side: "l" },
+            { name: "Newry", lon: -6.340, lat: 54.176, note: "15 mins", side: "l" },
+            { name: "Kilkeel", lon: -6.002, lat: 54.060, note: "18 mins", side: "r" },
+          ]}
+        />
+      </div>
     </section>
   </main>
 
@@ -223,4 +247,23 @@ const hours = [
       <span><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={bookRoomUrl} rel="noopener noreferrer">Book Direct ↗</a></span>
     </div>
   </footer>
+
+  <script>
+    const hero = document.querySelector<HTMLElement>(".ri-hero");
+    const lede = document.querySelector<HTMLElement>("[data-ri-lede]");
+    const moodCopy: Record<string, string> = {
+      night:
+        "Where the Crawford family first poured drinks in the mid-1800s — now home to four nights a week of live folk and trad music, our stone Stables bistro, Killowen and Mourne Dew pours, and seven en-suite rooms including our Narnia-themed family room.",
+      day:
+        "Start with seasonal breakfast from 9am, walk straight into Fairy Glen and Kilbroney Park, then settle into our stone Stables Bistro for Thursday–Saturday lunch (12:30–3pm) or Sunday all-day dining until 8pm.",
+    };
+    document.querySelectorAll<HTMLButtonElement>("[data-ri-mood]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const mode = btn.dataset.riMood || "night";
+        hero?.classList.toggle("is-daylight", mode === "day");
+        document.querySelectorAll("[data-ri-mood]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        if (lede && moodCopy[mode]) lede.textContent = moodCopy[mode];
+      });
+    });
+  </script>
 </ConceptLayout>

@@ -4,7 +4,7 @@ import {
   transformationCandidates,
   transformations,
 } from "../../site/data/transformations";
-import { OG_IMAGE_SIZE, ogImages, transformationOgImage } from "../../site/data/og-images";
+import { OG_IMAGE_SIZE, conceptOgCards, ogImages, transformationOgImage } from "../../site/data/og-images";
 import { siteDetails } from "../../site/data/site";
 import "./concept-shell.css";
 import "./concept-pickers.css";
@@ -112,17 +112,20 @@ const claimUrl = `/request/?business=${encodeURIComponent(businessName)}&town=${
 const noRasterConcepts = new Set<string>();
 const hasOwnCard =
   !noRasterConcepts.has(slug) && new Set<string>(publicTransformationSlugs).has(slug);
+const customConceptCard = !noRasterConcepts.has(slug) ? conceptOgCards[slug] : undefined;
 const ogImage = noRasterConcepts.has(slug)
   ? null
   : hasOwnCard
     ? transformationOgImage(slug)
-    : ogImages.studio;
+    : customConceptCard ?? ogImages.studio;
 const description = `Independent, uncommissioned website concept for ${businessName}, clearly labelled and linked to its source-backed case study.`;
 /* Phrased without a possessive: trading names ending in s ("Scopers") and in an
    accent ("Cúpla") both read badly with one bolted on. */
 const ogImageAlt = hasOwnCard
   ? `Before-and-after share card: the current website for ${businessName} beside the independent Mourne Made concept.`
-  : `Mourne Made — free before-and-after concepts for independent businesses across Newry, Mourne and Down.`;
+  : customConceptCard
+    ? `Independent website concept preview for ${businessName} by Mourne Made.`
+    : `Mourne Made — free before-and-after concepts for independent businesses across Newry, Mourne and Down.`;
 const publicOrigin = Astro.site ?? Astro.url;
 const ogUrl = new URL(Astro.url.pathname, publicOrigin).href;
 const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
@@ -170,7 +173,18 @@ const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
   </head>
   <body class={bodyClass}>
     <aside class="mm-concept-banner" aria-label="About this independent concept">
-      <span><strong>Independent concept by Mourne Made.</strong> Not the live {businessName} website. {bannerNote}</span>
+      <div class="mm-banner-copy">
+        <span><strong>Independent concept by Mourne Made.</strong> Not the live {businessName} website.</span>
+        {bannerNote && (
+          <>
+            <span class="mm-banner-note-inline"> {bannerNote}</span>
+            <details class="mm-banner-note-mobile">
+              <summary>Details</summary>
+              <p>{bannerNote}</p>
+            </details>
+          </>
+        )}
+      </div>
       <nav aria-label="Concept actions">
         {transformation && <a href={caseStudy}>See the case study</a>}
         <a class="mm-concept-claim" href={claimUrl}>Is this your business? Let's talk →</a>

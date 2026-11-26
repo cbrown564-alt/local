@@ -1,0 +1,423 @@
+---
+/* Mourne Windows & Doors — Interactive Architectural Finish & Opening Studio.
+   Lets homeowners preview profile style & finish colour, set opening count,
+   and load the exact specification directly into the free home survey form. */
+const finishes = [
+  { id: "anthracite", name: "Anthracite Grey", hex: "#2f363d", sash: "#3c454e", note: "RAL 7016 matt" },
+  { id: "cream", name: "Heritage Cream", hex: "#e7e0ce", sash: "#f1ecdf", note: "Traditional cottage tone" },
+  { id: "chartwell", name: "Chartwell Green", hex: "#7e9583", sash: "#92a997", note: "Period country finish" },
+  { id: "oak", name: "Irish Oak", hex: "#9b6b3e", sash: "#b07f4f", note: "Warm woodgrain foil" },
+  { id: "white", name: "Crisp White", hex: "#f5f6f7", sash: "#ffffff", note: "Classic low-maintenance" },
+];
+
+const profiles = [
+  { id: "sash", label: "Heritage Sliding Sash", productValue: "Windows & Heritage Sash", note: "Balanced vertical sash with deep bottom rail & tilt-in easy clean." },
+  { id: "door", label: "Composite Entrance Door", productValue: "Composite, Patio & uPVC Doors", note: "High-security multi-point locking core with thermally broken frame." },
+  { id: "bifold", label: "Aluminium Bi-Fold", productValue: "Aluminium, Bi-Folds & Lanterns", note: "Slimline thermally broken aluminium folding cleanly to the garden." },
+];
+---
+
+<section class="mw-studio" id="finish-studio" aria-labelledby="mw-studio-title">
+  <div class="mw-wrap">
+    <div class="mw-studio-head">
+      <div>
+        <p class="mw-eyebrow mw-eyebrow--dark">Interactive Specifier · Hilltown Showroom</p>
+        <h2 id="mw-studio-title">Preview frame styles &amp; finishes before your survey.</h2>
+      </div>
+      <p class="mw-studio-sub">
+        Pick a profile, compare popular architectural colours, and load your
+        approximate opening count straight into your free home survey note.
+      </p>
+    </div>
+
+    <div class="mw-studio-grid" data-mw-studio>
+      <div class="mw-studio-stage">
+        <svg class="mw-elev-svg" viewBox="0 0 520 340" role="img" aria-label="Architectural elevation preview of selected window or door profile and colour finish">
+          <defs>
+            <linearGradient id="mw-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c9dae6" />
+              <stop offset="62%" stop-color="#e5eef4" />
+              <stop offset="100%" stop-color="#d2ded6" />
+            </linearGradient>
+            <linearGradient id="mw-glaze" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34" />
+              <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
+              <stop offset="100%" stop-color="#182734" stop-opacity="0.16" />
+            </linearGradient>
+          </defs>
+
+          {/* Architectural limestone reveal wall */}
+          <rect width="520" height="340" fill="#e9e6de" />
+          <line x1="0" y1="296" x2="520" y2="296" stroke="#c8c2b4" stroke-width="1.5" />
+          <rect x="64" y="294" width="392" height="12" fill="#d8d3c6" stroke="#b9b2a2" stroke-width="1" />
+
+          {/* Profile 1: Heritage Vertical Sliding Sash */}
+          <g data-mw-elev="sash">
+            <rect x="130" y="34" width="260" height="260" fill="url(#mw-sky)" />
+            {/* Outer frame */}
+            <rect x="130" y="34" width="260" height="260" fill="none" stroke="var(--mw-frame, #2f363d)" stroke-width="18" />
+            {/* Upper sash */}
+            <rect x="144" y="48" width="232" height="114" fill="url(#mw-glaze)" stroke="var(--mw-sash, #3c454e)" stroke-width="8" />
+            <line x1="260" y1="48" x2="260" y2="162" stroke="var(--mw-sash, #3c454e)" stroke-width="4" />
+            {/* Meeting rail */}
+            <rect x="140" y="158" width="240" height="10" fill="var(--mw-frame, #2f363d)" />
+            {/* Lower sash */}
+            <rect x="144" y="168" width="232" height="112" fill="url(#mw-glaze)" stroke="var(--mw-sash, #3c454e)" stroke-width="8" />
+            <line x1="260" y1="168" x2="260" y2="280" stroke="var(--mw-sash, #3c454e)" stroke-width="4" />
+            {/* Brass sash lifts */}
+            <rect x="192" y="160" width="16" height="4" rx="1" fill="#c6a25c" />
+            <rect x="312" y="160" width="16" height="4" rx="1" fill="#c6a25c" />
+          </g>
+
+          {/* Profile 2: Composite Entrance Door */}
+          <g data-mw-elev="door" style="display: none">
+            <rect x="176" y="32" width="168" height="262" fill="#ffffff" />
+            {/* Outer frame */}
+            <rect x="176" y="32" width="168" height="262" fill="var(--mw-frame, #2f363d)" />
+            {/* Door slab */}
+            <rect x="188" y="44" width="144" height="246" fill="var(--mw-sash, #3c454e)" stroke="rgba(0,0,0,0.16)" stroke-width="1.5" />
+            {/* Top glazed fanlight */}
+            <rect x="210" y="66" width="100" height="72" fill="url(#mw-sky)" stroke="var(--mw-frame, #2f363d)" stroke-width="5" />
+            <rect x="210" y="66" width="100" height="72" fill="url(#mw-glaze)" />
+            <line x1="260" y1="66" x2="260" y2="138" stroke="var(--mw-frame, #2f363d)" stroke-width="3" />
+            {/* Lower moulded panels */}
+            <rect x="210" y="162" width="44" height="96" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2" />
+            <rect x="266" y="162" width="44" height="96" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="2" />
+            {/* Satin chrome handle & letterplate */}
+            <rect x="310" y="168" width="6" height="34" rx="2" fill="#d8dde2" />
+            <rect x="236" y="148" width="48" height="7" rx="1.5" fill="#d8dde2" />
+          </g>
+
+          {/* Profile 3: 3-Pane Aluminium Bi-Fold */}
+          <g data-mw-elev="bifold" style="display: none">
+            <rect x="74" y="46" width="372" height="248" fill="url(#mw-sky)" />
+            {/* Slimline outer frame */}
+            <rect x="74" y="46" width="372" height="248" fill="none" stroke="var(--mw-frame, #2f363d)" stroke-width="12" />
+            {/* 3 folding leaves */}
+            <rect x="84" y="56" width="114" height="228" fill="url(#mw-glaze)" stroke="var(--mw-sash, #3c454e)" stroke-width="6" />
+            <rect x="203" y="56" width="114" height="228" fill="url(#mw-glaze)" stroke="var(--mw-sash, #3c454e)" stroke-width="6" />
+            <rect x="322" y="56" width="114" height="228" fill="url(#mw-glaze)" stroke="var(--mw-sash, #3c454e)" stroke-width="6" />
+            {/* Folding direction arrows */}
+            <path d="M168 170l-16 0m6 -6l-6 6 6 6" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.7" />
+            <path d="M352 170l16 0m-6 -6l6 6 -6 6" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.7" />
+            {/* Handle */}
+            <rect x="316" y="160" width="4" height="26" rx="1" fill="#d8dde2" />
+          </g>
+
+          {/* Architectural dimension ticks */}
+          <g stroke="#7a848d" stroke-width="1" font-size="10" fill="#566069" font-family="Inter, sans-serif">
+            <line x1="74" y1="322" x2="446" y2="322" />
+            <line x1="74" y1="317" x2="74" y2="327" />
+            <line x1="446" y1="317" x2="446" y2="327" />
+            <text x="260" y="335" text-anchor="middle" data-mw-dim>Made-to-measure · Free Hilltown / Home Survey</text>
+          </g>
+        </svg>
+
+        <div class="mw-stage-bar">
+          <strong data-mw-active-label>Heritage Sliding Sash · Anthracite Grey</strong>
+          <span data-mw-active-note>Balanced vertical sash with deep bottom rail &amp; tilt-in easy clean.</span>
+        </div>
+      </div>
+
+      <div class="mw-studio-controls">
+        <div class="mw-ctrl-group">
+          <span class="mw-ctrl-label">1. Profile style</span>
+          <div class="mw-profile-pills" role="group" aria-label="Select glazing profile">
+            {profiles.map((p, i) => (
+              <button
+                type="button"
+                class:list={["mw-prof-btn", { "is-active": i === 0 }]}
+                data-mw-prof={p.id}
+                data-mw-prof-label={p.label}
+                data-mw-prof-product={p.productValue}
+                data-mw-prof-note={p.note}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="mw-ctrl-group">
+          <span class="mw-ctrl-label">2. Frame colour finish</span>
+          <div class="mw-swatch-row" role="group" aria-label="Select frame finish">
+            {finishes.map((f, i) => (
+              <button
+                type="button"
+                class:list={["mw-fin-btn", { "is-active": i === 0 }]}
+                data-mw-fin={f.name}
+                data-mw-hex={f.hex}
+                data-mw-sash={f.sash}
+              >
+                <span class="mw-fin-dot" style={`background:${f.hex}`} aria-hidden="true"></span>
+                <span>{f.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="mw-ctrl-group">
+          <span class="mw-ctrl-label">3. Approximate openings</span>
+          <div class="mw-openings-bar">
+            <button type="button" class="mw-count-btn" data-mw-step="-1" aria-label="Decrease openings">−</button>
+            <span class="mw-count-val" data-mw-count>6 openings</span>
+            <button type="button" class="mw-count-btn" data-mw-step="1" aria-label="Increase openings">+</button>
+          </div>
+        </div>
+
+        <button type="button" class="mw-btn mw-btn--steel mw-btn--full" data-mw-apply>
+          Load this spec into my free survey →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mw-studio {
+    padding: 72px 0;
+    background: var(--mw-concrete);
+    border-top: 1px solid var(--mw-line);
+    border-bottom: 1px solid var(--mw-line);
+  }
+
+  .mw-studio-head {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: end;
+    margin-bottom: 32px;
+  }
+
+  .mw-studio-head h2 {
+    margin: 0;
+    font-family: var(--mw-display);
+    font-size: clamp(1.75rem, 3vw, 2.45rem);
+    line-height: 1.1;
+    color: var(--mw-ink);
+  }
+
+  .mw-studio-sub {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--mw-muted);
+  }
+
+  .mw-studio-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .mw-studio-stage {
+    background: #ffffff;
+    border: 1px solid var(--mw-line);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mw-elev-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    flex: 1;
+  }
+
+  .mw-stage-bar {
+    padding: 14px 18px;
+    border-top: 1px solid var(--mw-line);
+    background: #fbfbf9;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .mw-stage-bar strong {
+    font-size: 0.92rem;
+    color: var(--mw-ink);
+  }
+
+  .mw-stage-bar span {
+    font-size: 0.82rem;
+    color: var(--mw-muted);
+  }
+
+  .mw-studio-controls {
+    background: #ffffff;
+    border: 1px solid var(--mw-line);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+  }
+
+  .mw-ctrl-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .mw-ctrl-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mw-muted);
+  }
+
+  .mw-profile-pills,
+  .mw-swatch-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mw-prof-btn,
+  .mw-fin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid rgba(24, 30, 36, 0.22);
+    background: #ffffff;
+    color: var(--mw-ink);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  }
+
+  .mw-prof-btn.is-active,
+  .mw-fin-btn.is-active {
+    background: var(--mw-anthracite);
+    border-color: var(--mw-anthracite);
+    color: #ffffff;
+  }
+
+  .mw-fin-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    flex: none;
+  }
+
+  .mw-openings-bar {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    border: 1px solid rgba(24, 30, 36, 0.24);
+    height: 44px;
+  }
+
+  .mw-count-btn {
+    border: 0;
+    background: transparent;
+    color: var(--mw-ink);
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .mw-count-btn:hover {
+    background: rgba(24, 30, 36, 0.06);
+  }
+
+  .mw-count-val {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.94rem;
+    font-variant-numeric: tabular-nums;
+    border-left: 1px solid var(--mw-line);
+    border-right: 1px solid var(--mw-line);
+  }
+
+  @media (max-width: 960px) {
+    .mw-studio-head,
+    .mw-studio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-mw-studio]");
+  if (root) {
+    const state = {
+      profile: "sash",
+      profileLabel: "Heritage Sliding Sash",
+      productValue: "Windows & Heritage Sash",
+      profileNote: "Balanced vertical sash with deep bottom rail & tilt-in easy clean.",
+      finish: "Anthracite Grey",
+      hex: "#2f363d",
+      sash: "#3c454e",
+      openings: 6,
+    };
+
+    const svg = root.querySelector<SVGElement>(".mw-elev-svg");
+    const activeLabel = root.querySelector<HTMLElement>("[data-mw-active-label]");
+    const activeNote = root.querySelector<HTMLElement>("[data-mw-active-note]");
+    const countEl = root.querySelector<HTMLElement>("[data-mw-count]");
+
+    const sync = () => {
+      if (svg) {
+        svg.style.setProperty("--mw-frame", state.hex);
+        svg.style.setProperty("--mw-sash", state.sash);
+        svg.querySelectorAll<SVGGElement>("[data-mw-elev]").forEach((g) => {
+          g.style.display = g.dataset.mwElev === state.profile ? "" : "none";
+        });
+      }
+      if (activeLabel) activeLabel.textContent = `${state.profileLabel} · ${state.finish}`;
+      if (activeNote) activeNote.textContent = state.profileNote;
+      if (countEl) countEl.textContent = `${state.openings} ${state.openings === 1 ? "opening" : "openings"}`;
+    };
+
+    root.querySelectorAll<HTMLButtonElement>("[data-mw-prof]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.profile = btn.dataset.mwProf || "sash";
+        state.profileLabel = btn.dataset.mwProfLabel || "";
+        state.productValue = btn.dataset.mwProfProduct || "Windows & Heritage Sash";
+        state.profileNote = btn.dataset.mwProfNote || "";
+        root.querySelectorAll("[data-mw-prof]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        sync();
+      });
+    });
+
+    root.querySelectorAll<HTMLButtonElement>("[data-mw-fin]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.finish = btn.dataset.mwFin || "Anthracite Grey";
+        state.hex = btn.dataset.mwHex || "#2f363d";
+        state.sash = btn.dataset.mwSash || "#3c454e";
+        root.querySelectorAll("[data-mw-fin]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        sync();
+      });
+    });
+
+    root.querySelectorAll<HTMLButtonElement>("[data-mw-step]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const delta = Number(btn.dataset.mwStep || 0);
+        state.openings = Math.max(1, Math.min(20, state.openings + delta));
+        sync();
+      });
+    });
+
+    root.querySelector<HTMLButtonElement>("[data-mw-apply]")?.addEventListener("click", () => {
+      const productSelect = document.getElementById("mw-product") as HTMLSelectElement | null;
+      const notesField = document.querySelector<HTMLTextAreaElement>('#mw-form textarea[name="notes"]');
+      if (productSelect) {
+        productSelect.value = state.productValue;
+        productSelect.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      if (notesField) {
+        notesField.value = `${state.openings} ${state.openings === 1 ? "opening" : "openings"} — ${state.profileLabel} in ${state.finish}.`;
+      }
+      document.getElementById("survey")?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    sync();
+  }
+</script>

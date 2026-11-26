@@ -978,3 +978,107 @@ body.concept-page main > section:not(:first-child) figure figcaption {
   color: rgba(244, 241, 234, 0.78);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* ==========================================================================
+   Phase 4: Brand Materiality, CSS Scroll-Driven Hero Depth & Reading Rule
+   ========================================================================== */
+
+/* Tactile rag-paper grain for heritage & editorial brands */
+body.concept-page:is(.concept-yewwood, .concept-mulberry, .concept-ballymote, .concept-millers, .concept-saintfieldnursery) main {
+  background-image: radial-gradient(rgba(30, 26, 20, 0.032) 1px, transparent 0);
+  background-size: 18px 18px;
+}
+
+/* Precision architectural / technical micro-grid on utility surfaces */
+body.concept-page:is(.concept-mournewindows, .concept-digitech) main > section:nth-of-type(even) {
+  background-image:
+    linear-gradient(rgba(20, 30, 40, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 30, 40, 0.032) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Progressive scroll-driven hero depth & top reading progress rule (compositor-only) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    body.concept-page main > section:first-child {
+      view-timeline: --mm-hero-view block;
+      overflow: clip;
+    }
+
+    body.concept-page main > section:first-child > figure img {
+      transform-origin: center center;
+      animation: mm-hero-depth linear both;
+      animation-timeline: --mm-hero-view;
+      animation-range: exit-crossing 0% exit 100%;
+    }
+
+    @keyframes mm-hero-depth {
+      from {
+        transform: translateY(0) scale(1);
+      }
+      to {
+        transform: translateY(6%) scale(1.06);
+      }
+    }
+
+    body.concept-page::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: var(--cp-accent);
+      transform-origin: left center;
+      z-index: 1200;
+      pointer-events: none;
+      animation: mm-read-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    @keyframes mm-read-progress {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Phase 3: Clean A4 Presentation Print / Leave-Behind Stylesheet
+   ========================================================================== */
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body.concept-page {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.concept-page::after,
+  .mm-concept-banner,
+  .mm-mobile-dock,
+  .mm-menu-trigger,
+  .mm-zoom-btn,
+  .mm-copy-wrap,
+  .mm-specimen-trigger,
+  dialog {
+    display: none !important;
+  }
+
+  body.concept-page main > section {
+    opacity: 1 !important;
+    transform: none !important;
+    break-inside: avoid-page;
+  }
+
+  body.concept-page main :where(article, figure, form, .mm-map-card) {
+    break-inside: avoid;
+  }
+}

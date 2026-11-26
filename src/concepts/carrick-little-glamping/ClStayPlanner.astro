@@ -1,0 +1,223 @@
+---
+/* Carrick Little Glamping — Interactive Doorstep Trail & Stay Planner.
+   Helps guests plan their pod stay or gift voucher around real verified
+   Carrick Little trailhead & Mourne coast stops, then pre-fills Julie's note. */
+const moods = [
+  {
+    id: "hike",
+    label: "Slieve Binnian Hike",
+    topic: "Stay Availability Enquiry",
+    headline: "Step straight onto the Carrick Little track from your pod door.",
+    stops: [
+      "Carrick Little Trailhead — right at the lane",
+      "Blue Lough & Annalong Valley ridge circuit",
+      "Heated timber pod & hot private shower waiting back at base",
+    ],
+    note: "Interested in a hiking stay for Slieve Binnian / Carrick Little.",
+  },
+  {
+    id: "coast",
+    label: "Harbour & Silent Valley",
+    topic: "Stay Availability Enquiry",
+    headline: "Easy mountain mornings paired with Annalong Harbour and Silent Valley.",
+    stops: [
+      "Annalong Cornmill & harbour wall (5 mins)",
+      "Silent Valley Reservoir mountain drive (10 mins)",
+      "Kilkeel & Cranfield shoreline (10–15 mins)",
+    ],
+    note: "Planning a coastal & Silent Valley pod break.",
+  },
+  {
+    id: "voucher",
+    label: "Gift Voucher Surprise",
+    topic: "Gift Voucher (Valid 1 Year)",
+    headline: "Any amount, valid a full 12 months — ready to gift year-round.",
+    stops: [
+      "Issued for any denomination you choose",
+      "Valid for a full year across all seasons",
+      "Direct with Julie — call, WhatsApp or email below",
+    ],
+    note: "Would like to arrange a 12-month gift voucher.",
+  },
+];
+---
+
+<section class="cl-planner-band" id="stay-planner" aria-labelledby="cl-planner-title">
+  <div class="cl-wrap">
+    <div class="cl-planner-card" data-cl-planner>
+      <div class="cl-planner-top">
+        <div>
+          <p class="cl-kicker cl-kicker--dark">Plan Your Break · 41 Oldtown Road</p>
+          <h2 id="cl-planner-title">Pick your pace beneath the Mournes.</h2>
+        </div>
+        <div class="cl-mood-pills" role="group" aria-label="Select stay pace">
+          {moods.map((m, i) => (
+            <button
+              type="button"
+              class:list={["cl-mood-btn", { "is-active": i === 0 }]}
+              data-cl-mood={m.id}
+              data-cl-topic={m.topic}
+              data-cl-note={m.note}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {moods.map((m, i) => (
+        <div class="cl-mood-panel" data-cl-panel={m.id} hidden={i !== 0}>
+          <p class="cl-mood-lead">{m.headline}</p>
+          <ul class="cl-mood-stops">
+            {m.stops.map((s) => <li>{s}</li>)}
+          </ul>
+        </div>
+      ))}
+
+      <div class="cl-planner-foot">
+        <span>Reminder: pods are heated year-round — just bring food, drinks &amp; bedding/towels.</span>
+        <button type="button" class="cl-btn cl-btn--dark" data-cl-prefill>
+          Pre-fill enquiry to Julie →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cl-planner-band {
+    padding: 0 0 72px;
+    background: var(--cl-mist);
+  }
+
+  .cl-planner-card {
+    background: var(--cl-paper);
+    border: 1px solid var(--cl-line);
+    border-left: 4px solid var(--cl-gorse);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .cl-planner-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cl-planner-top h2 {
+    margin: 0;
+    font-family: var(--cl-serif);
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    color: var(--cl-ink);
+  }
+
+  .cl-mood-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cl-mood-btn {
+    padding: 9px 14px;
+    border: 1px solid rgba(41, 36, 46, 0.24);
+    background: #ffffff;
+    color: var(--cl-ink);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  }
+
+  .cl-mood-btn.is-active {
+    background: var(--cl-heather);
+    border-color: var(--cl-heather);
+    color: #f5f3ee;
+  }
+
+  .cl-mood-lead {
+    margin: 0 0 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cl-ink);
+  }
+
+  .cl-mood-stops {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .cl-mood-stops li {
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid var(--cl-line);
+    font-size: 0.9rem;
+    color: var(--cl-muted);
+  }
+
+  .cl-planner-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--cl-line);
+    font-size: 0.86rem;
+    color: var(--cl-muted);
+  }
+
+  .cl-btn--dark {
+    background: var(--cl-heather);
+    color: #f5f3ee;
+  }
+
+  @media (max-width: 820px) {
+    .cl-mood-stops {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const card = document.querySelector<HTMLElement>("[data-cl-planner]");
+  if (card) {
+    let activeTopic = "Stay Availability Enquiry";
+    let activeNote = "Interested in a hiking stay for Slieve Binnian / Carrick Little.";
+
+    card.querySelectorAll<HTMLButtonElement>("[data-cl-mood]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.clMood || "hike";
+        activeTopic = btn.dataset.clTopic || "Stay Availability Enquiry";
+        activeNote = btn.dataset.clNote || "";
+        card.querySelectorAll("[data-cl-mood]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        card.querySelectorAll<HTMLElement>("[data-cl-panel]").forEach((p) => {
+          p.hidden = p.dataset.clPanel !== id;
+        });
+      });
+    });
+
+    card.querySelector<HTMLButtonElement>("[data-cl-prefill]")?.addEventListener("click", () => {
+      const topicSel = document.querySelector<HTMLSelectElement>('#cl-form select[name="topic"]');
+      const detailsInp = document.querySelector<HTMLInputElement>('#cl-form input[name="details"]');
+      if (topicSel) {
+        // Match first option containing keyword
+        const opt = Array.from(topicSel.options).find((o) => o.text.toLowerCase().includes(activeTopic.toLowerCase().split(" ")[0]));
+        if (opt) {
+          topicSel.value = opt.value;
+          topicSel.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      }
+      if (detailsInp) detailsInp.value = activeNote.slice(0, 60);
+      document.getElementById("vouchers")?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+</script>

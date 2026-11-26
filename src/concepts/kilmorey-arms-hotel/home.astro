@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 /* Kilmorey Arms Hotel — 41–43 Greencastle Street, Kilkeel, County Down, BT34 4BH.
@@ -150,6 +152,37 @@ const doors = [
           </p>
           <div class="ka-harbour-actions">
             <a class="ka-btn ka-btn--gold" href={phoneHref}>Book a dining table · {phone}</a>
+            <SpecimenSheet
+              id="kilmorey-dossier"
+              triggerLabel="Open Rooms & Offers Dossier"
+              kicker="Kilmorey Arms Hotel · 41–43 Greencastle Street, Kilkeel"
+              title="Rooms, Golden Years Breaks & Functions"
+              subtitle="24 recently refurbished en-suite bedrooms, Kilkeel harbour dining, and celebrations up to 300 guests."
+              groups={[
+                {
+                  id: "stays",
+                  label: "Bedrooms & Direct Breaks",
+                  items: [
+                    { name: "24 Refurbished En-Suite Bedrooms", note: "Single, Double, King, Family & Executive Suites with full Irish breakfast, pillow menu & free parking" },
+                    { name: "Golden Years Midweek Getaway", note: "Popular midweek coastal break with dining & full Irish breakfast", meta: "From £140pps" },
+                  ],
+                },
+                {
+                  id: "events",
+                  label: "Dining, Weddings & Conferences",
+                  items: [
+                    { name: "Kilkeel Harbour Restaurant & Bar", note: "2026 Restaurant Guru award — all fish & shellfish sourced less than a mile from our kitchen" },
+                    { name: "Conference & Meeting Suites", note: "Flexible setups for up to 300 delegates with catering & parking", meta: "From £35/hr" },
+                    { name: "Mourne Weddings & Banquets", note: "Dedicated family-run events team for coastal ceremonies & receptions" },
+                  ],
+                },
+              ]}
+              ctaLabel="Book direct for best rates ↗"
+              ctaHref={bookUrl}
+              ctaExternal={true}
+              secondaryLabel="Enquire below →"
+              secondaryHref="#enquire"
+            />
             <a class="ka-btn ka-btn--ghost" href={vouchersUrl} rel="noopener noreferrer">Dining &amp; Stay Vouchers ↗</a>
           </div>
         </div>
@@ -220,6 +253,27 @@ const doors = [
           </label>
           <button class="ka-btn ka-btn--navy ka-btn--full" type="submit">Open enquiry email →</button>
         </form>
+      </div>
+
+      <div class="ka-wrap" style="margin-top: 44px;">
+        <LocalAreaMap
+          id="kilmorey-map"
+          businessName="Kilmorey Arms Hotel"
+          address="41–43 Greencastle Street, Kilkeel, BT34 4BH"
+          lon={-6.002}
+          lat={54.060}
+          spanKm={16}
+          radiusKm={2.2}
+          radiusLabel="Kilkeel Harbour · < 1 mile"
+          mapHref={mapHref}
+          kicker="Kingdom of Mourne & Kilkeel Harbour"
+          markers={[
+            { name: "Kilkeel Harbour", lon: -5.993, lat: 54.055, note: "< 1 mile", side: "r" },
+            { name: "Cranfield Point", lon: -6.045, lat: 54.022, note: "7 mins", side: "l" },
+            { name: "Annalong", lon: -5.903, lat: 54.109, note: "10 mins", side: "r" },
+            { name: "Rostrevor", lon: -6.197, lat: 54.102, note: "18 mins", side: "l" },
+          ]}
+        />
       </div>
     </section>
   </main>
