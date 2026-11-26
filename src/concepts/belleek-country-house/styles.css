@@ -1,158 +1,542 @@
-/* Belleek Country House — deep claret burgundy, champagne ivory, antique gold.
-   EB Garamond (display) + Figtree (body). */
-body.concept-belleek {
-  --bc-claret: #4c1d28;
-  --bc-claret-deep: #35121a;
-  --bc-ivory: #f8f3ea;
-  --bc-ivory-2: #efe7da;
-  --bc-paper: #fdfaf5;
-  --bc-gold: #c79e54;
-  --bc-gold-deep: #8c6927;
-  --bc-ink: #211b1d;
-  --bc-ink-soft: #5c5054;
-  --bc-rule: rgba(33, 27, 29, .14);
-  --bc-display: "EB Garamond", Georgia, serif;
-  --bc-sans: "Figtree", "Segoe UI", Arial, sans-serif;
-  --concept-accent: var(--bc-gold);
-  --concept-focus: var(--bc-claret);
-  margin: 0;
+/* Belleek Country House — Formal Country-House Invitation & Friday Steak Supper Bill */
+
+.concept-belleek {
+  --bc-claret: #38121b;
+  --bc-claret-deep: #220a10;
+  --bc-gold: #c69a4b;
+  --bc-gold-light: #e4c17e;
+  --bc-ivory: #f6f0e3;
+  --bc-champagne: #ede4d2;
+  --bc-paper: #fdfaf3;
+  --bc-ink: #241719;
+  --bc-muted: #5d4b4e;
+  --bc-line: rgba(56, 18, 27, 0.18);
+  --bc-serif: "EB Garamond", Georgia, serif;
+  --bc-sans: "Figtree", -apple-system, BlinkMacSystemFont, sans-serif;
+
   background: var(--bc-ivory);
   color: var(--bc-ink);
   font-family: var(--bc-sans);
-  font-size: 16.5px;
-  line-height: 1.6;
+  line-height: 1.64;
 }
-.concept-belleek * { box-sizing: border-box; }
-.bc-strip a,
-.bc-header a:not(.bc-header-cta),
-.concept-belleek main a:not(.bc-btn),
-.bc-footer a { color: inherit; }
 
-.bc-wrap { width: min(1160px, calc(100% - clamp(28px, 6vw, 88px))); margin-inline: auto; }
-
-.bc-strip {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 18px;
-  padding: 8px clamp(16px, 4vw, 48px);
-  background: var(--bc-claret-deep); color: rgba(248, 243, 234, .82); font-size: 13px;
+.bc-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
-.bc-strip a { color: var(--bc-ivory); text-decoration: none; font-weight: 600; }
-.bc-strip a:hover { text-decoration: underline; }
 
 .bc-header {
-  position: sticky; top: var(--mm-banner-space, 0px); z-index: 20;
-  display: flex; align-items: center; gap: 20px;
-  padding: 14px clamp(16px, 4vw, 48px);
-  background: rgba(76, 29, 40, .97); color: var(--bc-ivory); border-bottom: 1px solid rgba(248, 243, 234, .14);
+  background: var(--bc-claret-deep);
+  border-bottom: 1px solid rgba(198, 154, 75, 0.28);
 }
-.bc-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-.bc-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.bc-brand-text strong { font-family: var(--bc-display); font-size: 24px; font-weight: 600; }
-.bc-brand-text small { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: rgba(248, 243, 234, .68); }
-.bc-nav { display: flex; gap: 22px; margin-left: auto; font-size: 14.5px; font-weight: 500; }
-.bc-nav a { text-decoration: none; padding-bottom: 2px; border-bottom: 1.5px solid transparent; }
-.bc-nav a:hover { border-bottom-color: var(--bc-gold); }
-.bc-header-cta {
-  padding: 9px 17px; border-radius: 3px; background: var(--bc-gold); color: var(--bc-claret-deep);
-  font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
+
+.bc-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-.bc-header-cta:hover { background: #d6ae65; }
 
-.bc-kicker { margin: 0 0 10px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: #e2be79; }
-.bc-kicker--dark { color: var(--bc-gold-deep); }
+.bc-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+}
 
+.bc-nav--right {
+  justify-content: flex-end;
+}
+
+.bc-nav a {
+  color: rgba(246, 240, 227, 0.86);
+  text-decoration: none;
+}
+
+.bc-nav a:hover {
+  color: var(--bc-gold-light);
+}
+
+.bc-crest {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--bc-ivory);
+}
+
+.bc-crest strong {
+  font-family: var(--bc-serif);
+  font-size: 1.38rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Centred Formal Invitation Hero over Full-Bleed Candlelit Banquet */
+.bc-invitation-hero {
+  position: relative;
+  min-height: min(86vh, 740px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bc-claret-deep);
+  overflow: hidden;
+}
+
+.bc-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.bc-hero-backdrop picture,
+.bc-hero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bc-hero-cap {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  z-index: 3;
+  font-size: 0.72rem;
+  color: rgba(246, 240, 227, 0.84);
+  background: rgba(34, 10, 16, 0.72);
+  padding: 4px 10px;
+}
+
+.bc-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at center, rgba(34, 10, 16, 0.52) 0%, rgba(24, 7, 11, 0.78) 100%);
+}
+
+.bc-invitation-stage {
+  position: relative;
+  z-index: 2;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.bc-invitation-card {
+  max-width: 720px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(34, 10, 16, 0.84);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(198, 154, 75, 0.45);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.48);
+  text-align: center;
+  color: var(--bc-ivory);
+}
+
+.bc-invitation-inner {
+  border: 1px solid rgba(198, 154, 75, 0.6);
+  padding: 46px 40px;
+}
+
+.bc-eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bc-gold-light);
+}
+
+.bc-eyebrow--claret {
+  color: #7c2437;
+}
+
+.bc-invitation-hero h1 {
+  margin: 0 0 18px;
+  font-family: var(--bc-serif);
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.04;
+  color: #fffdf8;
+}
+
+.bc-invitation-hero h1 em {
+  font-style: italic;
+  color: var(--bc-gold-light);
+}
+
+.bc-inv-lede {
+  margin: 0 auto 28px;
+  max-width: 54ch;
+  font-size: 0.99rem;
+  color: rgba(246, 240, 227, 0.88);
+}
+
+.bc-inv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.bc-inv-hours {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(198, 154, 75, 0.28);
+  font-size: 0.84rem;
+  color: rgba(246, 240, 227, 0.78);
+}
+
+.bc-inv-hours a {
+  color: var(--bc-gold-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Buttons */
 .bc-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 20px; border-radius: 3px; border: 1.5px solid transparent;
-  font-family: var(--bc-sans); font-size: 15px; font-weight: 700; text-decoration: none; cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.bc-btn--gold { background: var(--bc-gold); color: var(--bc-claret-deep); }
-.bc-btn--gold:hover { background: #d6ae65; }
-.bc-btn--claret { background: var(--bc-claret); color: var(--bc-ivory); }
-.bc-btn--claret:hover { background: var(--bc-claret-deep); }
-.bc-btn--ghost { border-color: rgba(248, 243, 234, .45); color: var(--bc-ivory); background: transparent; }
-.bc-btn--ghost:hover { background: rgba(248, 243, 234, .09); }
-.bc-btn--outline { border-color: var(--bc-claret); color: var(--bc-claret); background: transparent; }
-.bc-btn--outline:hover { background: var(--bc-claret); color: var(--bc-ivory); }
-.bc-btn--full { width: 100%; }
 
-.bc-hero { background: linear-gradient(150deg, #5d2431 0%, var(--bc-claret) 56%, var(--bc-claret-deep) 100%); color: var(--bc-ivory); padding: clamp(54px, 7.5vw, 96px) 0; }
-.bc-hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.9fr); gap: clamp(28px, 5vw, 60px); align-items: center; }
-.bc-hero h1 { margin: 0; font-family: var(--bc-display); font-weight: 600; font-size: clamp(44px, 5.6vw, 72px); line-height: 1.02; }
-.bc-hero h1 em { font-style: italic; font-weight: 500; color: #edd099; }
-.bc-lede { margin: 20px 0 0; max-width: 52ch; font-size: 17.5px; color: rgba(248, 243, 234, .88); }
-.bc-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-
-.bc-hours-panel {
-  background: var(--bc-paper); color: var(--bc-ink); padding: clamp(22px, 3vw, 28px);
-  border-radius: 5px; border-top: 4px solid var(--bc-gold); box-shadow: 0 22px 48px rgba(24, 6, 10, .34);
+.bc-btn--gold {
+  background: var(--bc-gold);
+  color: var(--bc-claret-deep);
 }
-.bc-hours-panel h2 { margin: 0 0 14px; font-family: var(--bc-display); font-size: 28px; color: var(--bc-claret-deep); }
-.bc-hours-panel dl { margin: 0 0 18px; }
-.bc-hour-row { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 11px 0; border-top: 1px solid var(--bc-rule); }
-.bc-hour-row dt { display: flex; flex-direction: column; gap: 2px; }
-.bc-hour-row dt strong { font-size: 15px; color: var(--bc-claret-deep); }
-.bc-hour-row dt span { font-size: 13px; color: var(--bc-ink-soft); }
-.bc-hour-row dd { margin: 0; font-weight: 700; font-size: 14.5px; color: var(--bc-claret); white-space: nowrap; }
 
-.bc-section { padding: clamp(54px, 7vw, 90px) 0; }
-.bc-section h2 { margin: 0 0 14px; font-family: var(--bc-display); font-weight: 600; font-size: clamp(32px, 4vw, 48px); line-height: 1.06; }
-
-.bc-dining-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 28px 56px; align-items: start; }
-.bc-dining-grid p { color: var(--bc-ink-soft); }
-.bc-steak {
-  margin: 22px 0 26px; padding: 18px 20px; background: var(--bc-paper); border-left: 4px solid var(--bc-claret);
-  border-radius: 4px; display: flex; flex-direction: column; gap: 4px;
+.bc-btn--claret {
+  background: var(--bc-claret);
+  color: var(--bc-ivory);
 }
-.bc-steak strong { color: var(--bc-claret-deep); font-size: 16px; }
-.bc-steak span { font-size: 14.5px; color: var(--bc-ink-soft); }
-.bc-dining-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.bc-pillars { display: flex; flex-direction: column; gap: 16px; }
-.bc-pillar { background: var(--bc-paper); border: 1px solid var(--bc-rule); border-radius: 5px; padding: 24px; }
-.bc-pillar h3 { margin: 0 0 8px; font-family: var(--bc-display); font-size: 25px; color: var(--bc-claret-deep); }
-.bc-pillar p { margin: 0; font-size: 15px; }
 
-.bc-weddings { background: var(--bc-claret); color: var(--bc-ivory); }
-.bc-weddings-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 28px 56px; align-items: center; }
-.bc-wed-intro { color: rgba(248, 243, 234, .88); margin-bottom: 24px; }
-.bc-cel-card { background: var(--bc-paper); color: var(--bc-ink); border-radius: 5px; padding: 26px; border-top: 4px solid var(--bc-gold); }
-.bc-cel-card h3 { margin: 0 0 14px; font-family: var(--bc-display); font-size: 26px; color: var(--bc-claret-deep); }
-.bc-cel-card ul { margin: 0; padding: 0; list-style: none; }
-.bc-cel-card li { padding: 9px 0; border-top: 1px solid var(--bc-rule); font-weight: 500; }
-.bc-cel-card li::before { content: "✓ "; color: var(--bc-gold-deep); font-weight: 700; }
-
-.bc-enquire { background: var(--bc-ivory-2); border-bottom: 1px solid var(--bc-rule); }
-.bc-enquire-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 28px 56px; align-items: start; }
-.bc-enquire-grid p { color: var(--bc-ink-soft); }
-.bc-form { background: var(--bc-paper); border: 1px solid var(--bc-rule); border-radius: 5px; padding: clamp(20px, 3vw, 28px); }
-.bc-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.bc-form label { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-.bc-form label span { font-size: 12.5px; font-weight: 700; color: var(--bc-ink-soft); }
-.bc-form input, .bc-form select {
-  width: 100%; padding: 10px 12px; border: 1.5px solid rgba(33, 27, 29, .2); border-radius: 3px; background: #fff; color: var(--bc-ink); font-family: var(--bc-sans); font-size: 15px;
+.bc-btn--ghost {
+  background: transparent;
+  color: var(--bc-ivory);
+  border-color: rgba(246, 240, 227, 0.45);
 }
-.bc-form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-.bc-status { margin: 12px 0 0; font-size: 13.5px; color: var(--bc-claret); font-weight: 600; min-height: 1.2em; }
 
-.bc-find-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px 40px; }
-.bc-find-inner p { color: var(--bc-ink-soft); }
-.bc-find-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.bc-btn--outline {
+  background: transparent;
+  color: var(--bc-claret);
+  border-color: rgba(56, 18, 27, 0.35);
+}
 
-.bc-footer { background: var(--bc-claret-deep); color: rgba(248, 243, 234, .82); padding: 30px 0; }
-.bc-footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; }
-.bc-footer-brand { display: flex; align-items: center; gap: 12px; }
-.bc-footer-brand strong { display: block; font-family: var(--bc-display); font-size: 22px; color: var(--bc-ivory); }
-.bc-footer-brand span { font-size: 13.5px; }
-.bc-footer-right { margin: 0; font-size: 14px; }
-.bc-footer-right a { color: var(--bc-ivory); text-decoration: none; }
-.bc-footer-right a:hover { text-decoration: underline; }
+/* Centred Vertical One-Wedding-a-Day Promise */
+.bc-promise {
+  padding: 94px 0;
+  text-align: center;
+}
+
+.bc-promise-inner {
+  max-width: 820px;
+}
+
+.bc-promise h2 {
+  margin: 0 auto 24px;
+  font-family: var(--bc-serif);
+  font-size: clamp(2.1rem, 4vw, 3.3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bc-claret);
+}
+
+.bc-rule-vert {
+  width: 1px;
+  height: 44px;
+  background: var(--bc-gold);
+  margin: 0 auto 26px;
+}
+
+.bc-promise-copy {
+  margin: 0 auto 36px;
+  max-width: 62ch;
+  font-size: 1.04rem;
+  color: var(--bc-muted);
+}
+
+.bc-occasions {
+  list-style: none;
+  margin: 0 auto 36px;
+  padding: 24px 0;
+  border-top: 1px solid var(--bc-line);
+  border-bottom: 1px solid var(--bc-line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 30px;
+  font-family: var(--bc-serif);
+  font-size: 1.18rem;
+  color: var(--bc-claret);
+}
+
+/* Brass-Ruled Friday Steak Night Supper Bill Split */
+.bc-supper {
+  background: var(--bc-claret);
+  color: var(--bc-ivory);
+}
+
+.bc-supper-grid {
+  display: grid;
+  grid-template-columns: 0.96fr 1.04fr;
+  min-height: 580px;
+}
+
+.bc-steak-plate {
+  position: relative;
+  margin: 0;
+  min-height: 380px;
+}
+
+.bc-steak-plate picture,
+.bc-steak-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bc-steak-plate figcaption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  font-size: 0.72rem;
+  color: rgba(246, 240, 227, 0.88);
+  background: rgba(34, 10, 16, 0.75);
+  padding: 4px 10px;
+}
+
+.bc-supper-bill {
+  padding: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.bc-bill-frame {
+  width: 100%;
+  border: 1px solid rgba(198, 154, 75, 0.55);
+  padding: 40px 38px;
+}
+
+.bc-bill-frame h2 {
+  margin: 0 0 14px;
+  font-family: var(--bc-serif);
+  font-size: clamp(1.9rem, 3vw, 2.65rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: #fffdf8;
+}
+
+.bc-bill-copy {
+  margin: 0 0 26px;
+  color: rgba(246, 240, 227, 0.82);
+  font-size: 0.96rem;
+}
+
+.bc-bill-hours {
+  margin: 0 0 28px;
+  border-top: 1px solid rgba(198, 154, 75, 0.35);
+}
+
+.bc-bill-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(246, 240, 227, 0.14);
+}
+
+.bc-bill-row dt {
+  display: flex;
+  flex-direction: column;
+}
+
+.bc-bill-row dt strong {
+  font-family: var(--bc-serif);
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: #fffdf8;
+}
+
+.bc-bill-row dt span {
+  font-size: 0.82rem;
+  color: rgba(246, 240, 227, 0.7);
+}
+
+.bc-bill-row dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--bc-gold-light);
+  white-space: nowrap;
+}
+
+.bc-bill-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Formal RSVP Card */
+.bc-rsvp {
+  padding: 88px 0;
+  background: var(--bc-champagne);
+}
+
+.bc-rsvp-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--bc-paper);
+  border: 1px solid var(--bc-line);
+  outline: 1px solid rgba(198, 154, 75, 0.45);
+  outline-offset: -10px;
+  padding: 50px 48px;
+}
+
+.bc-rsvp-head {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 32px;
+}
+
+.bc-rsvp-head h2 {
+  margin: 0 0 10px;
+  font-family: var(--bc-serif);
+  font-size: clamp(1.9rem, 3vw, 2.55rem);
+  font-weight: 400;
+  color: var(--bc-claret);
+}
+
+.bc-rsvp-head p {
+  margin: 0;
+  color: var(--bc-muted);
+}
+
+.bc-rsvp-head a {
+  color: var(--bc-claret);
+}
+
+.bc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.bc-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bc-form label span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bc-muted);
+}
+
+.bc-form input,
+.bc-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(56, 18, 27, 0.24);
+  background: #ffffff;
+  color: var(--bc-ink);
+  font: inherit;
+  font-size: 0.94rem;
+}
+
+.bc-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.bc-status {
+  margin: 0;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1f5c43;
+}
+
+.bc-footer {
+  background: var(--bc-claret-deep);
+  color: rgba(246, 240, 227, 0.76);
+  padding: 22px 0;
+  font-size: 0.85rem;
+}
+
+.bc-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bc-footer-inner strong {
+  font-family: var(--bc-serif);
+  color: var(--bc-ivory);
+}
+
+.bc-footer-inner a {
+  color: var(--bc-gold-light);
+  text-decoration: none;
+}
 
 @media (max-width: 960px) {
-  .bc-hero-grid, .bc-dining-grid, .bc-weddings-grid, .bc-enquire-grid { grid-template-columns: 1fr; }
+  .bc-header-inner {
+    grid-template-columns: 1fr auto;
+  }
+  .bc-nav:first-child {
+    display: none;
+  }
+  .bc-supper-grid {
+    grid-template-columns: 1fr;
+  }
+  .bc-supper-bill {
+    padding: 28px 20px;
+  }
 }
-@media (max-width: 640px) {
-  .bc-header { position: static; flex-wrap: nowrap; gap: 12px; }
-  .bc-brand-text small, .bc-nav { display: none; }
-  .bc-header-cta { margin-left: auto; }
-  .bc-row { grid-template-columns: 1fr; }
-  .bc-hour-row { flex-direction: column; gap: 3px; }
+
+@media (max-width: 600px) {
+  .bc-nav--right a:first-child {
+    display: none;
+  }
+  .bc-invitation-inner {
+    padding: 32px 20px;
+  }
+  .bc-bill-frame {
+    padding: 26px 20px;
+  }
+  .bc-rsvp-card {
+    padding: 34px 22px;
+  }
+  .bc-row {
+    grid-template-columns: 1fr;
+  }
 }

@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import FlMark from "./FlMark.astro";
 
 /* Flagstaff Lodge — 11 Forkhill Road, Cloughoge, Newry BT35 8LZ.
@@ -20,8 +21,9 @@ import FlMark from "./FlMark.astro";
    - Meetings: Boardroom for up to 25–30 delegates, Daily Delegate Rates.
    - Parking & access: 124 free spaces on site, wheelchair-friendly ramps at
      the restaurant entrance.
-   - Distances: 1.7 mi Newry Cathedral, 4.5 mi Slieve Gullion, 10.3 mi
-     Carlingford, 35.7 mi Belfast International, 50.2 mi Dublin Airport.
+   - Distances: 1.7 mi Newry Cathedral, 2.8 mi Ashfield Golf Club,
+     4.5 mi Slieve Gullion, 10.3 mi Carlingford, 35.7 mi Belfast International,
+     50.2 mi Dublin Airport.
    Brief: research/concepts/flagstaff-lodge/flagstaff-lodge-elevation-brief.md */
 
 const phone = "028 3026 3871";
@@ -32,7 +34,7 @@ const facebook = "https://www.facebook.com/flagstafflodgeNewry";
 const bookingBase = "https://www.flagstafflodgenewry.com/bookings.html";
 const mapHref = "https://www.google.com/maps/search/?api=1&query=54.150892,-6.350870";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap";
 
 const rooms = [
   {
@@ -68,31 +70,32 @@ const rooms = [
 ];
 
 const roomStandards = [
-  "En-suite bathroom with warming towel rails",
+  "En-suite with warming towel rails",
   "Complimentary high-speed Wi-Fi",
   "Flat-screen TV with Freeview",
   "Large desk area",
-  "Tea & coffee making facilities",
+  "Tea & coffee facilities",
   "Complimentary mineral water",
   "Individually controlled heating",
   "Hairdryer",
 ];
 
 const diningTimes = [
-  { label: "Breakfast (Residents)", time: "7:30am – 10:00am", note: "Advance booking welcome for non-resident parties." },
+  { label: "Residents' Breakfast", time: "7:30am – 10:00am", note: "Advance booking welcome for non-resident parties." },
   { label: "Monday – Thursday", time: "4:00pm – 8:30pm", note: "Bistro & bar dining." },
   { label: "Friday & Saturday", time: "12:00 noon – 8:30pm", note: "Booking recommended; Saturday live music in the Lounge Bar." },
-  { label: "Sunday Carvery", time: "11:30am – 3:30pm", note: "Dine in our bar and bistro or takeaway. No reservation necessary." },
+  { label: "Sunday Carvery", time: "11:30am – 3:30pm", note: "Dine in our bar and bistro or takeaway. No reservation needed." },
   { label: "Sunday Evening Bistro", time: "4:30pm – 7:45pm", note: "Evening bistro menu. Reservations recommended." },
 ];
 
-const milestones = [
-  { dist: "1.7 mi", place: "Newry Cathedral" },
-  { dist: "2.8 mi", place: "Ashfield Golf Club" },
-  { dist: "4.5 mi", place: "Slieve Gullion" },
-  { dist: "10.3 mi", place: "Carlingford" },
-  { dist: "35.7 mi", place: "Belfast Int'l Airport" },
-  { dist: "50.2 mi", place: "Dublin Airport" },
+const corridorStops = [
+  { dist: "50.2 mi S", place: "Dublin Airport", major: false },
+  { dist: "10.3 mi SE", place: "Carlingford", major: false },
+  { dist: "4.5 mi W", place: "Slieve Gullion", major: false },
+  { dist: "0 mi", place: "Flagstaff Lodge", major: true },
+  { dist: "1.7 mi N", place: "Newry Cathedral", major: false },
+  { dist: "2.8 mi N", place: "Ashfield Golf Club", major: false },
+  { dist: "35.7 mi N", place: "Belfast Int'l", major: false },
 ];
 ---
 
@@ -104,126 +107,125 @@ const milestones = [
   businessName="Flagstaff Lodge"
   town="Newry"
   fontHref={fontHref}
-  bannerNote="The emblem and ridgeline are drawings made for this page. Room searches hand straight to Flagstaff Lodge's own NetAffinity booking engine; voucher, table and wedding enquiries compose an email to info@flagstafflodgenewry.com."
+  bannerNote="The lodge dusk scene and Sunday carvery dining plate are AI-generated visualisations. Room searches hand straight to Flagstaff Lodge's own NetAffinity booking engine; voucher, table and wedding enquiries compose an email to info@flagstafflodgenewry.com."
 >
-  <div class="fl-topstrip">
-    <span>11 Forkhill Road, Cloughoge, Newry BT35 8LZ · Just off the A1/M1</span>
-    <span class="fl-topstrip-right">
-      <a href={phoneHref}>{phoneIntl}</a>
-      <span aria-hidden="true">·</span>
-      <a href={`mailto:${email}`}>{email}</a>
-    </span>
-  </div>
-
   <header class="fl-header">
-    <a class="fl-brand" href="#top">
-      <FlMark size={38} tone="gold" />
-      <span class="fl-brand-text">
-        <strong>Flagstaff Lodge</strong>
-        <small>Newry · Est. as The Newry Golf Inn</small>
-      </span>
-    </a>
-    <nav class="fl-nav" aria-label="Flagstaff Lodge">
-      <a href="#rooms">Rooms</a>
-      <a href="#dining">Dining &amp; Carvery</a>
-      <a href="#weddings">Weddings &amp; Events</a>
-      <a href="#enquire">Gift Vouchers</a>
-      <a href="#find">Location</a>
-    </nav>
-    <a class="fl-header-cta" href="#book-stay">Book a room</a>
+    <div class="fl-wrap fl-header-inner">
+      <a class="fl-brand" href="#top">
+        <FlMark size={36} tone="gold" />
+        <span class="fl-brand-text">
+          <strong>Flagstaff Lodge</strong>
+          <small>Cloughoge, Newry · Est. as The Newry Golf Inn</small>
+        </span>
+      </a>
+      <nav class="fl-nav" aria-label="Flagstaff Lodge">
+        <a href="#rooms">Rooms</a>
+        <a href="#dining">Carvery &amp; Lounge</a>
+        <a href="#weddings">Weddings &amp; Boardroom</a>
+        <a href="#enquire">Vouchers</a>
+        <a href="#find">Location</a>
+      </nav>
+      <a class="fl-header-tel" href={phoneHref}>{phone}</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="top" class="fl-main">
     <section class="fl-hero" aria-labelledby="fl-hero-title">
-      <svg class="fl-hero-ridge" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 190 C 180 140, 320 90, 520 120 C 720 150, 880 42, 1110 88 C 1260 118, 1360 152, 1440 138 L1440 220 L0 220 Z" fill="rgba(247,242,228,0.045)" />
-        <path d="M0 205 C 240 165, 420 132, 680 152 C 920 172, 1140 105, 1440 156" stroke="rgba(200,155,75,0.28)" stroke-width="1.5" fill="none" />
-      </svg>
+      <figure class="fl-hero-media">
+        <ResponsiveImage
+          src="/media/concepts/flagstaff-lodge/flagstaff-lodge-hero-dusk.jpg"
+          alt="Dusk view of a stone and cream-rendered country lodge with warm amber windows beneath a moody mountain ridge"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="100vw"
+          class="fl-hero-img"
+        />
+        <figcaption class="fl-hero-disclosure">Dusk lodge &amp; Ring of Gullion atmosphere. Visualisation (AI-generated).</figcaption>
+      </figure>
+      <div class="fl-hero-scrim" aria-hidden="true"></div>
 
-      <div class="fl-wrap fl-hero-inner">
+      <div class="fl-wrap fl-hero-content">
         <div class="fl-hero-copy">
-          <p class="fl-kicker">Cloughoge, Newry · Ring of Gullion</p>
+          <p class="fl-kicker">11 Forkhill Road · Just off the A1 / M1 · Newry</p>
           <h1 id="fl-hero-title">Rest, dine and gather <em>at the foot of Slieve Gullion.</em></h1>
           <p class="fl-lede">
             A landmark hostelry midway between Belfast and Dublin — eighteen
-            purpose-built en-suite bedrooms, a renowned Sunday carvery, a
-            traditional lounge bar, and a licensed venue for weddings and
-            conferences.
+            purpose-built en-suite rooms, Sunday carvery without needing to
+            book, Saturday live music in the Lounge Bar, and a licensed venue
+            for civil weddings and boardroom meetings.
           </p>
-          <div class="fl-hero-actions">
-            <a class="fl-btn fl-btn--gold" href="#enquire" data-open-tab="voucher">Order a gift voucher</a>
-            <a class="fl-btn fl-btn--ghost" href={phoneHref}>Call {phone}</a>
-          </div>
         </div>
 
-        <form class="fl-bookbox" id="book-stay" data-booking-base={bookingBase}>
-          <div class="fl-bookbox-head">
-            <p class="fl-kicker fl-kicker--dark">Direct room availability</p>
-            <h2>Check dates &amp; rates</h2>
+        <form class="fl-seam-bar" id="book-stay" data-booking-base={bookingBase} aria-label="Check live room availability">
+          <div class="fl-seam-intro">
+            <span class="fl-seam-eyebrow">Direct room search</span>
+            <strong>18 En-Suite Bedrooms</strong>
           </div>
-          <div class="fl-bookbox-grid">
-            <label>
-              <span>Check-in</span>
-              <input type="date" name="checkin" id="fl-checkin" required />
-            </label>
-            <label>
-              <span>Check-out</span>
-              <input type="date" name="checkout" id="fl-checkout" required />
-            </label>
-          </div>
-          <p class="fl-bookbox-note">Opens straight into our live room booking system for your chosen dates.</p>
-          <button class="fl-btn fl-btn--pine fl-bookbox-submit" type="submit">Search rooms ↗</button>
-          <p class="fl-bookbox-alt">
-            Need a family room with a free baby cot or group block?{" "}
-            <a href={phoneHref}>Ring {phone}</a>
-          </p>
+          <label class="fl-seam-field">
+            <span>Check-in</span>
+            <input type="date" name="checkin" id="fl-checkin" required />
+          </label>
+          <label class="fl-seam-field">
+            <span>Check-out</span>
+            <input type="date" name="checkout" id="fl-checkout" required />
+          </label>
+          <button class="fl-btn fl-btn--gold fl-seam-submit" type="submit">Check live rates ↗</button>
+          <a class="fl-seam-alt" href="#enquire" data-open-tab="voucher">Order a voucher →</a>
         </form>
       </div>
+    </section>
 
-      <div class="fl-corridor">
-        <div class="fl-wrap fl-corridor-list">
-          <span><strong>18</strong> en-suite rooms</span>
-          <span><strong>124</strong> free parking spaces</span>
-          <span><strong>Sunday Carvery</strong> 11:30am – 3:30pm</span>
-          <span><strong>Civil Wedding</strong> licensed venue</span>
-          <span><strong>A1 / M1</strong> Belfast – Dublin corridor</span>
+    <section class="fl-ruler" aria-label="A1 and M1 corridor distances from Flagstaff Lodge">
+      <div class="fl-wrap">
+        <div class="fl-ruler-head">
+          <span class="fl-ruler-label">A1 / M1 Belfast — Dublin Corridor</span>
+          <span class="fl-ruler-meta">124 free parking spaces · Step-free restaurant ramp · BT35 8LZ</span>
         </div>
+        <ol class="fl-ruler-track">
+          {corridorStops.map((stop) => (
+            <li class:list={["fl-stop", { "is-home": stop.major }]}>
+              <span class="fl-stop-dot" aria-hidden="true"></span>
+              <strong>{stop.place}</strong>
+              <small>{stop.dist}</small>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
 
     <section class="fl-section fl-rooms" id="rooms" aria-labelledby="fl-rooms-title">
       <div class="fl-wrap">
-        <div class="fl-section-head">
+        <div class="fl-editorial-head">
           <div>
-            <p class="fl-kicker fl-kicker--dark">Accommodation</p>
-            <h2 id="fl-rooms-title">Eighteen purpose-built bedrooms.</h2>
+            <p class="fl-kicker fl-kicker--pine">Accommodation · Opened February 2016</p>
+            <h2 id="fl-rooms-title">Eighteen quiet bedrooms off the carriageway.</h2>
           </div>
-          <p class="fl-section-intro">
-            Opened in February 2016 as a modern lodge beside our long-standing
-            bar and banqueting suite. Every room is en-suite, quietly appointed
-            and ready for leisure breaks, wedding guests and business stops off
-            the A1/M1.
-          </p>
+          <div class="fl-editorial-aside">
+            <p>
+              Purpose-built beside our long-standing bar and banqueting suite for
+              wedding guests, family breaks, golfers and Belfast–Dublin business
+              stops. Free baby cots available on request.
+            </p>
+            <a class="fl-text-link" href={bookingBase} rel="noopener noreferrer">Open NetAffinity room calendar ↗</a>
+          </div>
         </div>
 
-        <div class="fl-room-grid">
+        <ol class="fl-room-ledger">
           {rooms.map((room, i) => (
-            <article class="fl-room-card">
-              <div class="fl-room-card-top">
-                <span class="fl-room-no">0{i + 1}</span>
-                <span class="fl-room-beds">{room.beds}</span>
+            <li class="fl-ledger-row">
+              <span class="fl-ledger-no">0{i + 1}</span>
+              <div class="fl-ledger-main">
+                <h3>{room.name}</h3>
+                <p>{room.note}</p>
               </div>
-              <h3>{room.name}</h3>
-              <p>{room.note}</p>
-            </article>
+              <span class="fl-ledger-beds">{room.beds}</span>
+            </li>
           ))}
-        </div>
+        </ol>
 
-        <div class="fl-standards">
-          <div class="fl-standards-head">
-            <h3>Included in every room</h3>
-            <a class="fl-inline-link" href={bookingBase} rel="noopener noreferrer">Check live room availability ↗</a>
-          </div>
+        <div class="fl-standards-strip">
+          <span class="fl-standards-title">In every room</span>
           <ul>
             {roomStandards.map((item) => <li>{item}</li>)}
           </ul>
@@ -231,36 +233,34 @@ const milestones = [
       </div>
     </section>
 
-    <section class="fl-section fl-dining" id="dining" aria-labelledby="fl-dining-title">
-      <div class="fl-wrap fl-dining-grid">
-        <div class="fl-dining-copy">
-          <p class="fl-kicker">Dining, Carvery &amp; Lounge Bar</p>
-          <h2 id="fl-dining-title">Fresh local produce, Sunday carvery and Saturday live music.</h2>
-          <p>
-            Known for years as <em>The Newry Golf Inn</em>, Flagstaff Lodge built
-            its name on generous, freshly prepared food — modern Irish dishes
-            alongside traditional favourites, with gluten-free options available
-            and multiple TripAdvisor Certificates of Excellence.
-          </p>
-          <div class="fl-lounge-box">
-            <h3>The Lounge Bar</h3>
-            <p>
-              A traditional meeting point for locals and overnight guests alike —
-              fine wines, cocktails, draught and bottled beers, major sporting
-              events on our screens, and <strong>live music every Saturday evening</strong>.
-            </p>
-          </div>
-          <div class="fl-dining-cta">
-            <a class="fl-btn fl-btn--gold" href="#enquire" data-open-tab="table">Request a bistro table</a>
-            <a class="fl-btn fl-btn--ghost" href={phoneHref}>Ring {phone}</a>
-          </div>
-        </div>
+    <section class="fl-dining" id="dining" aria-labelledby="fl-dining-title">
+      <div class="fl-dining-split">
+        <figure class="fl-dining-plate">
+          <ResponsiveImage
+            src="/media/concepts/flagstaff-lodge/flagstaff-lodge-carvery-table.jpg"
+            alt="Sunday roast dining table set with stoneware plates, roast vegetables, brass candlesticks and warm fireside light"
+            width={1200}
+            height={896}
+            sizes="(max-width: 960px) 100vw, 50vw"
+            class="fl-dining-img"
+          />
+          <figcaption>Sunday carvery &amp; fireside dining atmosphere. Visualisation (AI-generated).</figcaption>
+        </figure>
 
-        <div class="fl-hours-card">
-          <h3>Serving times</h3>
-          <dl class="fl-hours-list">
+        <div class="fl-dining-body">
+          <p class="fl-kicker">Dining, Sunday Carvery &amp; Lounge Bar</p>
+          <h2 id="fl-dining-title">Sunday carvery — dine in or take home, no booking needed.</h2>
+          <p class="fl-dining-lede">
+            Known locally for years as <em>The Newry Golf Inn</em>, Flagstaff
+            Lodge built its reputation on generous modern Irish cooking,
+            gluten-free options, and multiple TripAdvisor Certificates of
+            Excellence — backed by a traditional Lounge Bar with major sport and
+            <strong>live music every Saturday night</strong>.
+          </p>
+
+          <dl class="fl-times">
             {diningTimes.map((row) => (
-              <div class="fl-hours-row">
+              <div class="fl-time-row">
                 <dt>
                   <strong>{row.label}</strong>
                   <span>{row.note}</span>
@@ -269,104 +269,119 @@ const milestones = [
               </div>
             ))}
           </dl>
+
+          <div class="fl-dining-actions">
+            <a class="fl-btn fl-btn--gold" href="#enquire" data-open-tab="table">Book an evening bistro table</a>
+            <a class="fl-btn fl-btn--ghost-light" href={phoneHref}>Call {phone}</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="fl-section fl-weddings" id="weddings" aria-labelledby="fl-weddings-title">
       <div class="fl-wrap">
-        <div class="fl-section-head">
+        <div class="fl-editorial-head">
           <div>
-            <p class="fl-kicker fl-kicker--dark">Weddings, Civil Ceremonies &amp; Conferences</p>
-            <h2 id="fl-weddings-title">One venue from ceremony to last dance — or boardroom to dinner.</h2>
+            <p class="fl-kicker fl-kicker--pine">Weddings, Civil Ceremonies &amp; Conferences</p>
+            <h2 id="fl-weddings-title">From vows to last dance — or boardroom to dinner.</h2>
           </div>
-          <p class="fl-section-intro">
-            Easy for guests travelling from Belfast, Dublin, Newry or Dundalk,
-            with 124 free car parking spaces on site and wheelchair-friendly
-            ramps at the restaurant entrance.
+          <p class="fl-editorial-aside">
+            Simple for guests arriving from Belfast, Dublin, Newry or Dundalk:
+            124 free on-site spaces, step-free restaurant ramps, Banqueting
+            Suite, Bridal Suite and 18 bedrooms under one roof.
           </p>
         </div>
 
-        <div class="fl-events-grid">
-          <article class="fl-event-card">
-            <p class="fl-event-tag">Licensed Civil Wedding Venue</p>
-            <h3>Weddings &amp; Civil Ceremonies</h3>
+        <div class="fl-dual-band">
+          <article class="fl-band-col">
+            <span class="fl-band-eyebrow">Licensed Civil Wedding Venue</span>
+            <h3>Weddings &amp; Inclusive Packages</h3>
             <p>
-              Hold your ceremony, wedding dinner and evening celebrations under
-              one roof with our turnkey Inclusive Packages, tailored to your
-              budget and supported by our experienced management team.
+              Host your civil ceremony, wedding banquet and evening reception in
+              one setting with turnkey Inclusive Packages tailored to your
+              numbers and supported by our experienced team.
             </p>
             <ul>
-              <li>Licensed for civil ceremonies and partnerships</li>
+              <li>Licensed for civil ceremonies &amp; partnerships</li>
               <li>Dedicated Banqueting Suite &amp; Bridal Suite</li>
-              <li>18 en-suite bedrooms on site for wedding guests</li>
-              <li>124 free spaces &amp; step-free restaurant entrance ramp</li>
+              <li>18 en-suite rooms on site for travelling guests</li>
             </ul>
             <a class="fl-btn fl-btn--pine" href="#enquire" data-open-tab="wedding">Enquire about a wedding date</a>
           </article>
 
-          <article class="fl-event-card">
-            <p class="fl-event-tag">A1 / M1 Halfway Point</p>
-            <h3>Conferences, Boardroom &amp; Private Functions</h3>
+          <article class="fl-band-col fl-band-col--tinted">
+            <span class="fl-band-eyebrow">Midway Between Belfast &amp; Dublin</span>
+            <h3>Boardroom &amp; Private Functions</h3>
             <p>
-              Whether you are hosting an executive breakfast, an all-day
-              meeting with lunch, a trade show, a family celebration or a
-              fundraiser, our rooms scale from intimate board meetings to full
-              banquets.
+              From executive breakfasts and all-day meetings to trade shows,
+              family dinners and fundraisers — with Daily Delegate Rates and
+              high-speed Wi-Fi throughout.
             </p>
             <ul>
               <li>Dedicated Boardroom for up to 25–30 delegates</li>
-              <li>Banqueting suite for larger conferences &amp; private dinners</li>
-              <li>Daily Delegate Rates with seasonal menus &amp; overnight rooms</li>
-              <li>Complimentary high-speed Wi-Fi throughout</li>
+              <li>Banqueting Suite for larger conferences &amp; dinners</li>
+              <li>Seasonal menus &amp; overnight accommodation</li>
             </ul>
-            <a class="fl-btn fl-btn--outline" href="#enquire" data-open-tab="conference">Request delegate rates</a>
+            <a class="fl-btn fl-btn--outline-dark" href="#enquire" data-open-tab="conference">Request delegate rates</a>
           </article>
         </div>
       </div>
     </section>
 
     <section class="fl-section fl-enquire" id="enquire" aria-labelledby="fl-enquire-title">
-      <div class="fl-wrap fl-enquire-grid">
-        <div class="fl-enquire-copy">
-          <p class="fl-kicker fl-kicker--dark">Direct desk</p>
-          <h2 id="fl-enquire-title">Gift vouchers, tables &amp; event dates — without waiting for opening hours.</h2>
-          <p>
-            Choose what you need below and fill in the details. Pressing the
-            button opens a pre-filled email straight to{" "}
-            <a href={`mailto:${email}`}>{email}</a> from your own inbox, so our
-            team has the date, numbers and contact phone straight away.
-          </p>
-          <div class="fl-direct-box">
-            <p><strong>Prefer to speak to reception?</strong></p>
-            <p>
-              Call <a href={phoneHref}>{phone}</a> ({phoneIntl})<br />
-              or email <a href={`mailto:${email}`}>{email}</a>
-            </p>
+      <div class="fl-wrap">
+        <div class="fl-enquire-top">
+          <div>
+            <p class="fl-kicker fl-kicker--pine">Direct Desk &amp; Gift Vouchers</p>
+            <h2 id="fl-enquire-title">Vouchers, bistro tables &amp; event dates.</h2>
           </div>
-        </div>
-
-        <div class="fl-desk">
           <div class="fl-tabs" role="tablist" aria-label="Enquiry type">
             <button type="button" role="tab" aria-selected="true" class="fl-tab is-active" data-tab="voucher">Gift Voucher</button>
             <button type="button" role="tab" aria-selected="false" class="fl-tab" data-tab="table">Bistro Table</button>
-            <button type="button" role="tab" aria-selected="false" class="fl-tab" data-tab="wedding">Wedding / Event</button>
+            <button type="button" role="tab" aria-selected="false" class="fl-tab" data-tab="wedding">Wedding</button>
             <button type="button" role="tab" aria-selected="false" class="fl-tab" data-tab="conference">Conference</button>
+          </div>
+        </div>
+
+        <div class="fl-desk-layout">
+          <div class="fl-voucher-stage" id="fl-voucher-stage">
+            <div class="fl-voucher-card" aria-live="polite">
+              <div class="fl-voucher-frame">
+                <div class="fl-voucher-top">
+                  <FlMark size={30} tone="gold" />
+                  <span>Gift Voucher · Newry</span>
+                </div>
+                <p class="fl-voucher-brand">Flagstaff Lodge</p>
+                <p class="fl-voucher-amount" id="fl-preview-amount">£100</p>
+                <p class="fl-voucher-for">
+                  <span>Prepared for</span>
+                  <strong id="fl-preview-for">Dining, Sunday Carvery or Overnight Stay</strong>
+                </p>
+                <div class="fl-voucher-foot">
+                  <span id="fl-preview-delivery">Collect at reception</span>
+                  <span>11 Forkhill Road, BT35 8LZ</span>
+                </div>
+              </div>
+            </div>
+            <p class="fl-stage-note">
+              Your details compose a ready-to-send email straight to{" "}
+              <a href={`mailto:${email}`}>{email}</a> — or call reception on{" "}
+              <a href={phoneHref}>{phone}</a>.
+            </p>
           </div>
 
           <form class="fl-form" id="fl-enquiry-form" data-email={email}>
             <input type="hidden" name="enquiryType" id="fl-enquiry-type" value="voucher" />
 
             <div class="fl-panel" data-panel="voucher">
-              <p class="fl-panel-note">Flagstaff Lodge vouchers can be put towards dining, Sunday carvery or an overnight stay. Tell us the amount and whether you'd like to collect at reception or arrange postage.</p>
               <div class="fl-form-row">
                 <label>
                   <span>Voucher value (£)</span>
-                  <input name="voucherAmount" placeholder="e.g. £50, £100, £150" />
+                  <input name="voucherAmount" id="fl-voucher-amount" value="£100" placeholder="e.g. £50, £100, £150" />
                 </label>
                 <label>
                   <span>Collection or post</span>
-                  <select name="voucherDelivery">
+                  <select name="voucherDelivery" id="fl-voucher-delivery">
                     <option value="Collect at reception">Collect at reception</option>
                     <option value="Post out">Post out (confirm address by reply)</option>
                   </select>
@@ -374,12 +389,12 @@ const milestones = [
               </div>
               <label>
                 <span>Recipient / occasion (optional)</span>
-                <input name="voucherFor" placeholder="e.g. Christmas gift, anniversary" />
+                <input name="voucherFor" id="fl-voucher-for" placeholder="e.g. For Mum & Dad — Anniversary" />
               </label>
             </div>
 
             <div class="fl-panel" data-panel="table" hidden>
-              <p class="fl-panel-note">Reservations are recommended for Friday, Saturday and Sunday evening bistro dining. Sunday Carvery (11:30am – 3:30pm) needs no booking.</p>
+              <p class="fl-panel-note">Recommended for Friday, Saturday and Sunday evening bistro dining. Sunday Carvery (11:30am – 3:30pm) needs no booking.</p>
               <div class="fl-form-row">
                 <label>
                   <span>Preferred date</span>
@@ -393,7 +408,7 @@ const milestones = [
             </div>
 
             <div class="fl-panel" data-panel="wedding" hidden>
-              <p class="fl-panel-note">Ask about our Inclusive Wedding Packages, Civil Ceremonies, Bridal Suite or private family occasions.</p>
+              <p class="fl-panel-note">Ask about Inclusive Wedding Packages, Civil Ceremonies, the Bridal Suite or private family occasions.</p>
               <div class="fl-form-row">
                 <label>
                   <span>Preferred date or month</span>
@@ -405,7 +420,7 @@ const milestones = [
                 </label>
               </div>
               <label>
-                <span>Civil ceremony on site?</span>
+                <span>Event format</span>
                 <select name="weddingCeremony">
                   <option value="Reception only">Reception only</option>
                   <option value="Civil ceremony + reception">Civil ceremony &amp; reception</option>
@@ -415,7 +430,7 @@ const milestones = [
             </div>
 
             <div class="fl-panel" data-panel="conference" hidden>
-              <p class="fl-panel-note">Boardroom seats up to 25–30 delegates; Banqueting Suite available for larger conferences and trade shows. Ask about Daily Delegate Rates and overnight rooms.</p>
+              <p class="fl-panel-note">Boardroom seats up to 25–30 delegates; Banqueting Suite available for larger events with Daily Delegate Rates.</p>
               <div class="fl-form-row">
                 <label>
                   <span>Company / organisation</span>
@@ -454,55 +469,33 @@ const milestones = [
 
             <div class="fl-form-foot">
               <button class="fl-btn fl-btn--pine" type="submit" id="fl-submit-btn">Open voucher email →</button>
-              <span>Nothing sends until you press send in your email app.</span>
+              <span>Opens in your email app; nothing sends until you confirm.</span>
             </div>
           </form>
         </div>
       </div>
     </section>
 
-    <section class="fl-section fl-find" id="find" aria-labelledby="fl-find-title">
-      <div class="fl-wrap fl-find-grid">
+    <section class="fl-find" id="find" aria-labelledby="fl-find-title">
+      <div class="fl-wrap fl-find-inner">
         <div>
-          <p class="fl-kicker fl-kicker--dark">Location &amp; History</p>
-          <h2 id="fl-find-title">11 Forkhill Road, Cloughoge, Newry.</h2>
+          <p class="fl-kicker">Location &amp; Heritage</p>
+          <h2 id="fl-find-title">11 Forkhill Road, Cloughoge, Newry BT35 8LZ.</h2>
           <p>
-            Just off the main A1/M1 Belfast–Dublin carriageway on the outskirts
-            of Newry, framed by the Ring of Gullion Area of Outstanding Natural
-            Beauty, the Mountains of Mourne and the Cooley Peninsula.
+            Started life as a par-3 golf course and clubhouse (<em>The Newry Golf Inn</em>),
+            now a full hostelry, banqueting suite and 18-room lodge framed by
+            the Ring of Gullion, the Mountains of Mourne and the Cooley
+            Peninsula — with easy access to Carlingford, Dundalk, The Boulevard
+            and the Game of Thrones Studio Tour.
           </p>
-          <p class="fl-history-note">
-            Flagstaff Lodge began as a par-3 golf course with a small clubhouse
-            (<em>The Newry Golf Inn</em>) before growing into the hostelry,
-            banqueting suite and 18-room lodge guests know today.
-          </p>
-          <dl class="fl-address-list">
-            <div><dt>Address</dt><dd>11 Forkhill Road, Cloughoge, Newry, BT35 8LZ</dd></div>
-            <div><dt>GPS</dt><dd>54.150892, -6.350870</dd></div>
-            <div><dt>Parking &amp; Access</dt><dd>124 free on-site spaces; wheelchair-friendly ramps at the restaurant entrance</dd></div>
-            <div><dt>Contact</dt><dd><a href={phoneHref}>{phoneIntl}</a> · <a href={`mailto:${email}`}>{email}</a></dd></div>
-          </dl>
-          <div class="fl-find-actions">
-            <a class="fl-btn fl-btn--pine" href={mapHref} rel="noopener noreferrer">Open in Google Maps ↗</a>
-            <a class="fl-btn fl-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-          </div>
         </div>
-
-        <div class="fl-milestones">
-          <h3>Distances from the front door</h3>
-          <ol>
-            {milestones.map((m) => (
-              <li>
-                <span class="fl-ms-place">{m.place}</span>
-                <span class="fl-ms-rule" aria-hidden="true"></span>
-                <strong class="fl-ms-dist">{m.dist}</strong>
-              </li>
-            ))}
-          </ol>
-          <p class="fl-milestones-foot">
-            Easy access to Newry and Dundalk shopping, Carlingford Lough, and
-            The Boulevard &amp; Game of Thrones Studio Tour near Banbridge.
-          </p>
+        <div class="fl-find-meta">
+          <p><strong>GPS:</strong> 54.150892, -6.350870 · 124 free spaces</p>
+          <p><strong>Reception:</strong> <a href={phoneHref}>{phoneIntl}</a> · <a href={`mailto:${email}`}>{email}</a></p>
+          <div class="fl-find-actions">
+            <a class="fl-btn fl-btn--gold" href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a>
+            <a class="fl-btn fl-btn--ghost-light" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+          </div>
         </div>
       </div>
     </section>
@@ -511,13 +504,10 @@ const milestones = [
   <footer class="fl-footer">
     <div class="fl-wrap fl-footer-inner">
       <div class="fl-footer-brand">
-        <FlMark size={34} tone="cream" />
-        <div>
-          <strong>Flagstaff Lodge</strong>
-          <span>11 Forkhill Road, Cloughoge, Newry, BT35 8LZ</span>
-        </div>
+        <FlMark size={30} tone="cream" />
+        <span><strong>Flagstaff Lodge</strong> · 11 Forkhill Road, Cloughoge, Newry, BT35 8LZ</span>
       </div>
-      <p class="fl-footer-contact">
+      <p class="fl-footer-links">
         <a href={phoneHref}>{phoneIntl}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a>
       </p>
     </div>
@@ -538,7 +528,6 @@ const milestones = [
       checkinEl.value = iso(start);
       checkoutEl.min = iso(start);
       checkoutEl.value = iso(end);
-
       checkinEl.addEventListener("change", () => {
         if (!checkinEl.value) return;
         const next = new Date(`${checkinEl.value}T00:00:00`);
@@ -550,20 +539,34 @@ const milestones = [
       });
     }
 
-    // Hand off directly to Flagstaff Lodge's own NetAffinity booking engine
     const bookForm = document.getElementById("book-stay") as HTMLFormElement | null;
     bookForm?.addEventListener("submit", (event) => {
       event.preventDefault();
       const base = bookForm.dataset.bookingBase ?? "https://www.flagstafflodgenewry.com/bookings.html";
       const start = checkinEl?.value;
       const end = checkoutEl?.value;
-      const target = start && end
-        ? `${base}#!/accommodation/rooms/date/${start}/${end}`
-        : base;
+      const target = start && end ? `${base}#!/accommodation/rooms/date/${start}/${end}` : base;
       window.open(target, "_blank", "noopener,noreferrer");
     });
 
-    // Tabbed enquiry desk (Gift Vouchers, Table, Wedding, Conference)
+    // Live-rendered Gift Voucher preview
+    const vAmount = document.getElementById("fl-voucher-amount") as HTMLInputElement | null;
+    const vFor = document.getElementById("fl-voucher-for") as HTMLInputElement | null;
+    const vDelivery = document.getElementById("fl-voucher-delivery") as HTMLSelectElement | null;
+    const pAmount = document.getElementById("fl-preview-amount");
+    const pFor = document.getElementById("fl-preview-for");
+    const pDelivery = document.getElementById("fl-preview-delivery");
+
+    const syncVoucher = () => {
+      if (pAmount && vAmount) pAmount.textContent = vAmount.value.trim() || "£100";
+      if (pFor && vFor) pFor.textContent = vFor.value.trim() || "Dining, Sunday Carvery or Overnight Stay";
+      if (pDelivery && vDelivery) pDelivery.textContent = vDelivery.value;
+    };
+    vAmount?.addEventListener("input", syncVoucher);
+    vFor?.addEventListener("input", syncVoucher);
+    vDelivery?.addEventListener("change", syncVoucher);
+
+    // Tabbed enquiry desk
     const tabs = document.querySelectorAll<HTMLButtonElement>("[data-tab]");
     const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
     const typeInput = document.getElementById("fl-enquiry-type") as HTMLInputElement | null;
@@ -588,17 +591,9 @@ const milestones = [
       if (submitBtn) submitBtn.textContent = buttonLabels[name] ?? "Open enquiry email →";
     };
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        if (tab.dataset.tab) activateTab(tab.dataset.tab);
-      });
-    });
-
-    document.querySelectorAll<HTMLElement>("[data-open-tab]").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        const target = trigger.dataset.openTab;
-        if (target) activateTab(target);
-      });
+    tabs.forEach((tab) => tab.addEventListener("click", () => tab.dataset.tab && activateTab(tab.dataset.tab)));
+    document.querySelectorAll<HTMLElement>("[data-open-tab]").forEach((el) => {
+      el.addEventListener("click", () => el.dataset.openTab && activateTab(el.dataset.openTab));
     });
 
     const enquiryForm = document.getElementById("fl-enquiry-form") as HTMLFormElement | null;
@@ -631,7 +626,6 @@ const milestones = [
       }
       lines.push("", `Name: ${d.get("name") || ""}`, `Phone: ${d.get("phone") || ""}`);
       if (d.get("notes")) lines.push("", `Notes: ${d.get("notes")}`);
-
       const to = enquiryForm.dataset.email ?? "info@flagstafflodgenewry.com";
       window.location.href = `mailto:${to}?subject=${encodeURIComponent(subjects[kind] ?? "Enquiry — Flagstaff Lodge")}&body=${encodeURIComponent(lines.join("\n"))}`;
     });

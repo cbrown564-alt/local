@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import LpMark from "./LpMark.astro";
 
 /* The Lobster Pot — 7–11 The Square, Strangford, Downpatrick, BT30 7ND.
@@ -29,41 +30,37 @@ const fontHref =
 
 const spaces = [
   {
-    no: "01",
+    no: "I",
     name: "The Front Bar",
-    summary: "Cosy traditional village bar overlooking Strangford Lough — soft green and cream tones, historical touches and a warm wood-burning stove.",
+    where: "Looking over Strangford Lough",
+    summary: "Cosy traditional village bar in soft green and cream tones — local history on the walls and a wood-burning stove warming you straight off the ferry.",
   },
   {
-    no: "02",
+    no: "II",
     name: "The Front Restaurant",
-    summary: "Relaxed dining room extending from the bar with soft furnishings, local historical pictures and warm lighting for lunch or evening dinner.",
+    where: "Extending from the bar",
+    summary: "Relaxed dining room with soft furnishings and warm evening lighting for local shellfish, steaks and unhurried family suppers.",
   },
   {
-    no: "03",
-    name: "Private Dining & Hidden Beer Garden",
-    summary: "Light, spacious function room at the rear with double doors opening straight onto our sheltered beer garden for family gatherings and celebrations.",
+    no: "III",
+    name: "Function Room & Hidden Beer Garden",
+    where: "Double doors to the rear courtyard",
+    summary: "Light, spacious private dining room opening straight onto our sheltered courtyard beer garden for gatherings and summer evenings.",
   },
 ];
 
-const kitchen = [
-  {
-    title: "From Strangford Lough & local boats",
-    items: [
-      "Local Strangford lobster",
-      "Fresh mussels",
-      "House seafood chowder",
-      "Battered cod & scampi",
-    ],
-  },
-  {
-    title: "From the grill & kitchen",
-    items: [
-      "Daily selection of steaks",
-      "Chicken & vegetarian mains",
-      "Homemade desserts including pecan pie",
-      "Gluten-free options accommodated",
-    ],
-  },
+const seaBoard = [
+  "Local Strangford lobster",
+  "Fresh local mussels",
+  "House seafood chowder",
+  "Battered cod & scampi",
+];
+
+const landBoard = [
+  "Daily selection of steaks",
+  "Chicken & vegetarian mains",
+  "Homemade desserts including pecan pie",
+  "Gluten-free dishes accommodated",
 ];
 ---
 
@@ -75,147 +72,172 @@ const kitchen = [
   businessName="The Lobster Pot"
   town="Strangford"
   fontHref={fontHref}
-  bannerNote="The creel mark and tidal line are drawings made for this page. Table bookings go by phone to 028 4488 1288 or Facebook, matching how The Lobster Pot takes reservations today."
+  bannerNote="The harbour supper and wood-burning stove scenes are AI-generated visualisations. Table bookings go by phone to 028 4488 1288 or Facebook, matching how The Lobster Pot takes reservations today."
 >
-  <div class="lp-strip">
-    <span>7–11 The Square, Strangford, BT30 7ND · Footsteps from the Strangford–Portaferry Ferry</span>
-    <a href={phoneHref}>{phoneIntl}</a>
-  </div>
-
   <header class="lp-header">
-    <a class="lp-brand" href="#top">
-      <LpMark size={38} tone="coral" />
-      <span class="lp-brand-text">
-        <strong>The Lobster Pot</strong>
-        <small>The Square · Strangford</small>
-      </span>
-    </a>
-    <nav class="lp-nav" aria-label="The Lobster Pot">
-      <a href="#spaces">Three Rooms</a>
-      <a href="#kitchen">The Kitchen</a>
-      <a href="#book">Book a Table</a>
-      <a href="#find">Find Us</a>
-    </nav>
-    <a class="lp-header-call" href={phoneHref}>Call {phone}</a>
+    <div class="lp-header-inner">
+      <a class="lp-brand" href="#top">
+        <LpMark size={34} tone="coral" />
+        <span>
+          <strong>The Lobster Pot</strong>
+          <small>7–11 The Square · Strangford</small>
+        </span>
+      </a>
+      <nav class="lp-nav" aria-label="The Lobster Pot">
+        <a href="#walk">Three Rooms</a>
+        <a href="#chalkboard">The Catch</a>
+        <a href="#book">Tables &amp; Garden</a>
+        <a href="#find">Slipway &amp; Map</a>
+      </nav>
+      <a class="lp-header-tel" href={phoneHref}>Call {phone}</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="top" class="lp-main">
     <section class="lp-hero" aria-labelledby="lp-hero-title">
-      <svg class="lp-tide" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 110 Q 180 65 360 100 T 720 96 T 1080 108 T 1440 82 L 1440 160 L 0 160 Z" fill="rgba(247,244,236,0.06)" />
-        <path d="M0 128 Q 220 95 440 122 T 880 114 T 1440 124" stroke="rgba(217,91,67,0.45)" stroke-width="1.5" fill="none" />
-      </svg>
+      <div class="lp-hero-col">
+        <p class="lp-kicker">Strangford Lough · Lecale Peninsula</p>
+        <h1 id="lp-hero-title">Local lobster, a warm stove, <em>and a pint right off the ferry.</em></h1>
+        <p class="lp-lede">
+          At 7–11 The Square in Strangford — footsteps from the Portaferry
+          slipway. Settle by the wood-burning stove in the front bar, sit down
+          for fresh shellfish in the restaurant, or push open the double doors
+          to our hidden beer garden.
+        </p>
 
-      <div class="lp-wrap lp-hero-grid">
-        <div class="lp-hero-copy">
-          <p class="lp-kicker">Strangford Lough · County Down</p>
-          <h1 id="lp-hero-title">Fresh local seafood, a warm stove, <em>and a pint on The Square.</em></h1>
-          <p class="lp-lede">
-            Right beside the Strangford–Portaferry ferry terminal — local
-            lobster, mussels and chowder in the restaurant, a wood-burning
-            stove in the front bar, and a private dining room opening onto our
-            hidden beer garden.
-          </p>
-          <div class="lp-hero-actions">
-            <a class="lp-btn lp-btn--coral" href={phoneHref}>Book a table: {phone}</a>
-            <a class="lp-btn lp-btn--ghost" href="#book">Plan a group or private table</a>
-          </div>
+        <div class="lp-hero-actions">
+          <a class="lp-btn lp-btn--coral" href={phoneHref}>Book a table · {phone}</a>
+          <a class="lp-btn lp-btn--ghost" href={facebook} rel="noopener noreferrer">Today's specials on Facebook ↗</a>
         </div>
 
-        <aside class="lp-board" aria-label="At a glance">
-          <p class="lp-kicker lp-kicker--dark">On The Square</p>
-          <h2>Before you cross the lough</h2>
-          <dl class="lp-board-list">
-            <div>
-              <dt>Where</dt>
-              <dd>7–11 The Square, Strangford, BT30 7ND</dd>
-            </div>
-            <div>
-              <dt>Ferry terminal</dt>
-              <dd>Footsteps from the Strangford–Portaferry slipway</dd>
-            </div>
-            <div>
-              <dt>Opening</dt>
-              <dd>Open daily from around 12 noon; call ahead for current kitchen times</dd>
-            </div>
-            <div>
-              <dt>Bookings</dt>
-              <dd><a href={phoneHref}>{phoneIntl}</a></dd>
-            </div>
-          </dl>
-          <a class="lp-btn lp-btn--navy lp-board-btn" href={facebook} rel="noopener noreferrer">Latest specials on Facebook ↗</a>
-        </aside>
-      </div>
-    </section>
-
-    <section class="lp-section lp-spaces" id="spaces" aria-labelledby="lp-spaces-title">
-      <div class="lp-wrap">
-        <div class="lp-head">
+        <dl class="lp-ferry-stamp">
           <div>
-            <p class="lp-kicker lp-kicker--dark">The House</p>
-            <h2 id="lp-spaces-title">Three distinct rooms under one roof.</h2>
+            <dt>Location</dt>
+            <dd>7–11 The Square, BT30 7ND</dd>
           </div>
-          <p class="lp-head-note">
-            Whether you are stepping off the ferry for a pint by the fire,
-            booking a family seafood supper or gathering a private party out
-            towards the garden.
-          </p>
-        </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Daily from around 12 noon</dd>
+          </div>
+        </dl>
+      </div>
 
-        <div class="lp-spaces-grid">
-          {spaces.map((s) => (
-            <article class="lp-space-card">
-              <span class="lp-space-no">{s.no}</span>
-              <h3>{s.name}</h3>
-              <p>{s.summary}</p>
-            </article>
-          ))}
+      <figure class="lp-hero-figure">
+        <ResponsiveImage
+          src="/media/concepts/the-lobster-pot/lobster-pot-harbour-supper.jpg"
+          alt="Candlelit harbour pub table with cooked red lobster, fresh mussels, sourdough bread and a pint overlooking twilight waters"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="(max-width: 960px) 100vw, 58vw"
+          class="lp-hero-img"
+        />
+        <figcaption>Harbour seafood supper by the lough. Visualisation (AI-generated).</figcaption>
+      </figure>
+    </section>
+
+    <div class="lp-tide-bar" role="region" aria-label="Ferry and village bearings">
+      <div class="lp-wrap lp-tide-inner">
+        <span>Strangford ↔ Portaferry Ferry Slipway · 1 min walk</span>
+        <span>Front Bar Stove · Restaurant · Hidden Courtyard Garden</span>
+        <span>Ring <a href={phoneHref}>{phoneIntl}</a> for current kitchen times</span>
+      </div>
+    </div>
+
+    <section class="lp-section lp-walk" id="walk" aria-labelledby="lp-walk-title">
+      <div class="lp-wrap">
+        <div class="lp-walk-grid">
+          <figure class="lp-stove-plate">
+            <ResponsiveImage
+              src="/media/concepts/the-lobster-pot/lobster-pot-stove-garden.jpg"
+              alt="Cosy coastal village bar corner with a glowing cast-iron stove and double timber doors opening to a courtyard garden"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 48vw"
+              class="lp-stove-img"
+            />
+            <figcaption>Front bar stove &amp; double doors toward the rear garden. Visualisation (AI-generated).</figcaption>
+          </figure>
+
+          <div class="lp-walk-copy">
+            <p class="lp-kicker lp-kicker--dark">Walk Through the House</p>
+            <h2 id="lp-walk-title">Three distinct rooms from the square to the garden.</h2>
+
+            <ol class="lp-room-steps">
+              {spaces.map((s) => (
+                <li class="lp-room-step">
+                  <span class="lp-roman">{s.no}</span>
+                  <div>
+                    <p class="lp-step-where">{s.where}</p>
+                    <h3>{s.name}</h3>
+                    <p>{s.summary}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="lp-section lp-kitchen" id="kitchen" aria-labelledby="lp-kitchen-title">
-      <div class="lp-wrap lp-kitchen-grid">
-        <div>
-          <p class="lp-kicker">The Kitchen</p>
-          <h2 id="lp-kitchen-title">Built around the lough, welcoming every table.</h2>
-          <p class="lp-kitchen-intro">
-            Fresh local fish and shellfish lead the board, backed up by steaks,
-            vegetarian dishes, homemade desserts and gluten-free choices. Menus
-            shift with the catch and the season — ring us or check our Facebook
-            page for today's specials.
-          </p>
-          <div class="lp-kitchen-actions">
-            <a class="lp-btn lp-btn--coral" href={phoneHref}>Ask about today's catch: {phone}</a>
-            <a class="lp-btn lp-btn--ghost" href={facebook} rel="noopener noreferrer">Facebook updates ↗</a>
+    <section class="lp-chalk-section" id="chalkboard" aria-labelledby="lp-chalk-title">
+      <div class="lp-wrap">
+        <div class="lp-chalkboard">
+          <div class="lp-chalk-head">
+            <div>
+              <p class="lp-kicker">The Kitchen Board</p>
+              <h2 id="lp-chalk-title">Built around Strangford Lough, welcoming every table.</h2>
+            </div>
+            <p class="lp-chalk-note">
+              Menus move with the local catch and season. Call{" "}
+              <a href={phoneHref}>{phone}</a> or check Facebook for what's on the
+              board today.
+            </p>
           </div>
-        </div>
 
-        <div class="lp-menu-cards">
-          {kitchen.map((col) => (
-            <div class="lp-menu-card">
-              <h3>{col.title}</h3>
+          <div class="lp-chalk-cols">
+            <div class="lp-chalk-col">
+              <h3>From the Lough &amp; Local Boats</h3>
               <ul>
-                {col.items.map((item) => <li>{item}</li>)}
+                {seaBoard.map((item) => <li>{item}</li>)}
               </ul>
             </div>
-          ))}
+            <div class="lp-chalk-col">
+              <h3>From the Grill &amp; Kitchen</h3>
+              <ul>
+                {landBoard.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <div class="lp-chalk-foot">
+            <a class="lp-btn lp-btn--coral" href={phoneHref}>Ask about today's catch · {phone}</a>
+            <a class="lp-btn lp-btn--ghost" href={facebook} rel="noopener noreferrer">Check Facebook specials ↗</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="lp-section lp-book" id="book" aria-labelledby="lp-book-title">
       <div class="lp-wrap lp-book-grid">
-        <div>
-          <p class="lp-kicker lp-kicker--dark">Tables &amp; Private Dining</p>
-          <h2 id="lp-book-title">Book a table or the garden function room.</h2>
+        <div class="lp-book-copy">
+          <p class="lp-kicker lp-kicker--dark">Tables &amp; Private Gatherings</p>
+          <h2 id="lp-book-title">Hold a table or the garden function room.</h2>
           <p>
-            We take table bookings directly by phone on{" "}
+            Table bookings go directly by phone on{" "}
             <a href={phoneHref}><strong>{phone}</strong></a>. Planning a larger
-            table, Sunday lunch or a private gathering in the rear function
-            room? Put the details together here so you can copy them straight
-            into a Facebook message or read them out on a quick call.
+            family lunch, ferry stopover or private evening in the rear function
+            room? Put your details together here to copy straight into Facebook
+            Messenger or read out on a quick call.
           </p>
+          <div class="lp-find-inline" id="find">
+            <p><strong>7–11 The Square, Strangford, Downpatrick, BT30 7ND</strong></p>
+            <p>Moments from the Strangford–Portaferry ferry and Castle Ward.</p>
+            <div class="lp-inline-links">
+              <a href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a>
+              <a href={facebook} rel="noopener noreferrer">Facebook Page ↗</a>
+            </div>
+          </div>
         </div>
 
         <form class="lp-note-form" id="lp-note-form">
@@ -224,8 +246,8 @@ const kitchen = [
               <span>Room preference</span>
               <select name="room">
                 <option value="Front Restaurant">Front Restaurant</option>
-                <option value="Front Bar">Front Bar</option>
-                <option value="Function Room &amp; Beer Garden">Function Room &amp; Beer Garden</option>
+                <option value="Front Bar">Front Bar (by the stove)</option>
+                <option value="Function Room &amp; Hidden Beer Garden">Function Room &amp; Beer Garden</option>
               </select>
             </label>
             <label>
@@ -250,32 +272,10 @@ const kitchen = [
           <div class="lp-note-actions">
             <button class="lp-btn lp-btn--navy" type="submit">Copy booking note</button>
             <a class="lp-btn lp-btn--coral" href={phoneHref}>Ring {phone}</a>
-            <a class="lp-btn lp-btn--outline" href={facebook} rel="noopener noreferrer">Message on Facebook ↗</a>
+            <a class="lp-btn lp-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
           </div>
           <p class="lp-copy-status" id="lp-copy-status" aria-live="polite"></p>
         </form>
-      </div>
-    </section>
-
-    <section class="lp-section lp-find" id="find" aria-labelledby="lp-find-title">
-      <div class="lp-wrap lp-find-grid">
-        <div>
-          <p class="lp-kicker lp-kicker--dark">Find Us</p>
-          <h2 id="lp-find-title">7–11 The Square, Strangford.</h2>
-          <p>
-            Right in the heart of Strangford village on the Lecale Peninsula —
-            moments from the Strangford–Portaferry ferry and Castle Ward, and a
-            short drive from Downpatrick.
-          </p>
-        </div>
-        <div class="lp-find-card">
-          <p><strong>The Lobster Pot</strong><br />7–11 The Square, Strangford, Downpatrick, BT30 7ND</p>
-          <p>Phone: <a href={phoneHref}>{phoneIntl}</a></p>
-          <div class="lp-find-links">
-            <a class="lp-btn lp-btn--navy" href={mapHref} rel="noopener noreferrer">Open in Google Maps ↗</a>
-            <a class="lp-btn lp-btn--outline" href={facebook} rel="noopener noreferrer">Facebook Page ↗</a>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -283,11 +283,8 @@ const kitchen = [
   <footer class="lp-footer">
     <div class="lp-wrap lp-footer-inner">
       <div class="lp-footer-brand">
-        <LpMark size={32} tone="cream" />
-        <div>
-          <strong>The Lobster Pot</strong>
-          <span>7–11 The Square, Strangford, BT30 7ND</span>
-        </div>
+        <LpMark size={30} tone="cream" />
+        <span><strong>The Lobster Pot</strong> · 7–11 The Square, Strangford, BT30 7ND</span>
       </div>
       <p class="lp-footer-right">
         <a href={phoneHref}>{phoneIntl}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a>

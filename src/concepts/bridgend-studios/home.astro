@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import BsMark from "./BsMark.astro";
 
 /* Bridgend Studios — Michael Sheppard Photography, 1 Kilmore Road, Crossgar, BT30 9HJ.
@@ -30,31 +31,31 @@ const naomiEmail = "naomi@bridgendstudios.com";
 const facebook = "https://www.facebook.com/pages/Michael-Sheppard-Photography/156297884937";
 const mapHref = "https://www.google.com/maps/search/?api=1&query=1+Kilmore+Road+Crossgar+BT30+9HJ";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Jost:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Jost:wght@400;500;600;700&display=swap";
 
-const services = [
+const frames = [
   {
-    no: "01",
+    code: "01A",
     name: "Wedding Photography",
-    meta: "Two photographers · Full day",
-    body: "Planned directly with the couple and both sets of parents. Two photographers cover your day unobtrusively from bridal preparation through speeches, cake cutting and beyond the first dance — with a password-protected online gallery usually ready within a week.",
-    cta: "Check a wedding date",
+    meta: "Two photographers · Full day · Gallery usually within 1 week",
+    body: "Planned directly with the couple and both sets of parents. Two photographers document your day unobtrusively from bridal preparation through speeches, cake cutting and beyond the first dance.",
+    cta: "Check a wedding date →",
     tab: "wedding",
   },
   {
-    no: "02",
-    name: "Studio Portraits & Framing",
-    meta: "£45 shoot (~1 hr) · Framing from £75",
-    body: "Relaxed, child-friendly studio sessions from bump to babies, First Communions, Confirmations, Smash the Cake and extended family groups up to 20 people. High-resolution digital images included, with in-house framing and custom collages available.",
-    cta: "Book a portrait session",
+    code: "02A",
+    name: "Studio Portraits",
+    meta: "£45 shoot (~1 hr) · Up to 20 family members",
+    body: "Relaxed, child-friendly studio sessions from bump to babies, First Communions, Confirmations, Smash the Cake and extended family groups — supplied with high-resolution digital images.",
+    cta: "Book a £45 studio shoot →",
     tab: "portrait",
   },
   {
-    no: "03",
-    name: "Commercial, Events & Studio Hire",
-    meta: "In-studio or on location",
-    body: "Product photography, staff portraits, fashion, PR campaigns and business events — shot in our equipped Crossgar studio or on location with our fully transportable lighting setup, supplied royalty-free in high resolution.",
-    cta: "Discuss a commercial brief",
+    code: "03A",
+    name: "Commercial & Studio Hire",
+    meta: "Crossgar studio or transportable on-site setup",
+    body: "Product shoots, staff portraits, fashion, PR campaigns and business events supplied royalty-free in high resolution — plus equipped studio hire on Kilmore Road.",
+    cta: "Discuss a commercial brief →",
     tab: "commercial",
   },
 ];
@@ -86,84 +87,146 @@ const quotes = [
   businessName="Bridgend Studios"
   town="Crossgar"
   fontHref={fontHref}
-  bannerNote="The camera emblem is drawn for this page. Portrait and framing enquiries open an email to naomi@bridgendstudios.com; wedding and commercial enquiries go to michael@bridgendstudios.com."
+  bannerNote="The monochrome wedding lane and darkroom framing workshop plates are AI-generated visualisations. Portrait and framing enquiries route to naomi@bridgendstudios.com; wedding and commercial enquiries route to michael@bridgendstudios.com."
 >
-  <div class="bs-strip">
-    <span>1 Kilmore Road, Crossgar, BT30 9HJ · Michael Sheppard Photography</span>
-    <span><a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a></span>
-  </div>
-
   <header class="bs-header">
-    <a class="bs-brand" href="#top">
-      <BsMark size={38} tone="amber" />
-      <span class="bs-brand-text">
-        <strong>Bridgend Studios</strong>
-        <small>Crossgar · County Down</small>
-      </span>
-    </a>
-    <nav class="bs-nav" aria-label="Bridgend Studios">
-      <a href="#services">Services</a>
-      <a href="#reviews">Client Words</a>
-      <a href="#enquire">Book a Shoot</a>
-      <a href="#find">Studio</a>
-    </nav>
-    <a class="bs-header-cta" href="#enquire">Check a date</a>
+    <div class="bs-wrap bs-header-inner">
+      <a class="bs-brand" href="#top">
+        <BsMark size={30} tone="amber" />
+        <span>Bridgend Studios</span>
+      </a>
+      <nav class="bs-nav" aria-label="Bridgend Studios">
+        <a href="#contact-sheet">Contact Sheet</a>
+        <a href="#framing">In-House Framing</a>
+        <a href="#reviews">Client Words</a>
+        <a href="#enquire">Book a Date</a>
+      </nav>
+      <a class="bs-header-tel" href={mobileHref}>{mobile}</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="top" class="bs-main">
     <section class="bs-hero" aria-labelledby="bs-hero-title">
-      <div class="bs-wrap bs-hero-grid">
-        <div>
-          <p class="bs-kicker">1 Kilmore Road · Crossgar</p>
-          <h1 id="bs-hero-title">Weddings, family portraits <em>and commercial photography.</em></h1>
-          <p class="bs-lede">
-            Relaxed photography by Michael Sheppard from our spacious studio in
-            Crossgar and on location across Northern Ireland — two photographers
-            at every wedding, £45 family studio sessions, and in-house framing.
-          </p>
-          <div class="bs-hero-actions">
-            <a class="bs-btn bs-btn--amber" href="#enquire">Check availability</a>
-            <a class="bs-btn bs-btn--ghost" href={mobileHref}>Call {mobile}</a>
-          </div>
-        </div>
+      <figure class="bs-hero-media">
+        <ResponsiveImage
+          src="/media/concepts/bridgend-studios/bridgend-studios-wedding-frame.jpg"
+          alt="Monochrome fine-art documentary photograph of a bride and groom seen from behind walking down a misty County Down stone lane at dusk"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="100vw"
+          class="bs-hero-img"
+        />
+        <figcaption class="bs-hero-cap">Fine-art monochrome wedding mood. Visualisation (AI-generated).</figcaption>
+      </figure>
+      <div class="bs-hero-scrim" aria-hidden="true"></div>
 
-        <aside class="bs-facts" aria-label="Studio details">
-          <p class="bs-kicker">At a glance</p>
-          <dl>
-            <div><dt>Weddings</dt><dd>Two photographers · Full day · Online gallery usually within a week</dd></div>
-            <div><dt>Family &amp; Portraits</dt><dd>£45 one-hour studio shoot · Up to 20 family members</dd></div>
-            <div><dt>In-house Framing</dt><dd>Framed images from £75 &amp; bespoke collages</dd></div>
-            <div><dt>Commercial &amp; Hire</dt><dd>Crossgar studio or transportable on-site setup</dd></div>
-          </dl>
-        </aside>
+      <div class="bs-wrap bs-hero-inner">
+        <p class="bs-kicker">Michael Sheppard Photography · 1 Kilmore Road, Crossgar</p>
+        <h1 id="bs-hero-title">Weddings, family portraits <em>&amp; in-house framing.</em></h1>
+        <p class="bs-lede">
+          Two photographers on every wedding day with online galleries usually
+          ready within a week, £45 one-hour studio portrait shoots for up to 20
+          family members, and bespoke framing made in Crossgar.
+        </p>
+        <div class="bs-hero-actions">
+          <a class="bs-btn bs-btn--amber" href="#enquire">Check a wedding or studio date</a>
+          <a class="bs-btn bs-btn--ghost" href={landlineHref}>Studio · {landline}</a>
+        </div>
       </div>
     </section>
 
-    <section class="bs-section bs-services" id="services" aria-labelledby="bs-services-title">
-      <div class="bs-wrap">
-        <p class="bs-kicker bs-kicker--dark">What We Shoot</p>
-        <h2 id="bs-services-title">Three clear ways to work with the studio.</h2>
-        <div class="bs-service-grid">
-          {services.map((s) => (
-            <article class="bs-service-card">
-              <div class="bs-service-top">
-                <span class="bs-no">{s.no}</span>
-                <span class="bs-meta">{s.meta}</span>
+    <section class="bs-filmstrip" id="contact-sheet" aria-labelledby="bs-sheet-title">
+      <div class="bs-sprockets" aria-hidden="true"></div>
+      <div class="bs-wrap bs-film-inner">
+        <div class="bs-sheet-head">
+          <p class="bs-kicker">35mm Contact Sheet · Crossgar &amp; Across Northern Ireland</p>
+          <h2 id="bs-sheet-title">Three ways to work with the studio.</h2>
+        </div>
+
+        <div class="bs-frames">
+          {frames.map((f) => (
+            <article class="bs-frame">
+              <div class="bs-frame-edge">
+                <span>FRAME {f.code}</span>
+                <span>BRIDGEND · BT30</span>
               </div>
-              <h3>{s.name}</h3>
-              <p>{s.body}</p>
-              <a class="bs-btn bs-btn--dark" href="#enquire" data-pick-shoot={s.tab}>{s.cta}</a>
+              <div class="bs-frame-body">
+                <p class="bs-frame-meta">{f.meta}</p>
+                <h3>{f.name}</h3>
+                <p>{f.body}</p>
+                <a class="bs-frame-cta" href="#enquire" data-pick-shoot={f.tab}>{f.cta}</a>
+              </div>
             </article>
           ))}
         </div>
       </div>
+      <div class="bs-sprockets" aria-hidden="true"></div>
     </section>
 
-    <section class="bs-section bs-reviews" id="reviews" aria-labelledby="bs-reviews-title">
+    <section class="bs-framing" id="framing" aria-labelledby="bs-framing-title">
+      <div class="bs-wrap bs-framing-grid">
+        <div class="bs-frame-preview-col">
+          <div class="bs-wall-mount is-black" id="bs-wall-mount">
+            <div class="bs-mat">
+              <figure class="bs-print">
+                <ResponsiveImage
+                  src="/media/concepts/bridgend-studios/bridgend-studios-darkroom-portrait.jpg"
+                  alt="Photography studio and framing workshop interior with black, oak and brass frames beside a medium-format camera"
+                  width={1200}
+                  height={896}
+                  sizes="(max-width: 960px) 100vw, 48vw"
+                  class="bs-print-img"
+                />
+              </figure>
+            </div>
+          </div>
+          <p class="bs-frame-disclosure">
+            Studio &amp; framing workshop mood. Visualisation (AI-generated). Preview finish:{" "}
+            <strong id="bs-frame-label">Matte Black Gallery Moulding</strong>
+          </p>
+        </div>
+
+        <div class="bs-framing-copy">
+          <p class="bs-kicker bs-kicker--dark">In-House Framing · Framed Images From £75</p>
+          <h2 id="bs-framing-title">Shoot in the studio, leave with art ready for the wall.</h2>
+          <p>
+            Our spacious Crossgar studio welcomes everything from newborns and
+            First Communions to three-generation family portraits (up to 20
+            people) for <strong>£45 for a one-hour session</strong> including
+            high-resolution digital images. When you want prints mounted properly,
+            Naomi handles our <strong>in-house framing from £75</strong> and
+            custom multi-image collages.
+          </p>
+
+          <div class="bs-swatches" role="group" aria-label="Preview frame finish">
+            <button type="button" class="bs-swatch is-active" data-frame="black" data-label="Matte Black Gallery Moulding">
+              <span class="bs-swatch-chip bs-chip--black" aria-hidden="true"></span>
+              Matte Black
+            </button>
+            <button type="button" class="bs-swatch" data-frame="oak" data-label="Warm Brushed Oak Moulding">
+              <span class="bs-swatch-chip bs-chip--oak" aria-hidden="true"></span>
+              Brushed Oak
+            </button>
+            <button type="button" class="bs-swatch" data-frame="brass" data-label="Aged Antique Brass Moulding">
+              <span class="bs-swatch-chip bs-chip--brass" aria-hidden="true"></span>
+              Antique Brass
+            </button>
+          </div>
+
+          <div class="bs-framing-actions">
+            <a class="bs-btn bs-btn--dark" href="#enquire" data-pick-shoot="portrait">Ask Naomi about portraits &amp; framing →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-reviews" id="reviews" aria-labelledby="bs-reviews-title">
       <div class="bs-wrap">
         <p class="bs-kicker">Client Recommendations</p>
         <h2 id="bs-reviews-title">In their own words.</h2>
-        <div class="bs-quote-grid">
+
+        <div class="bs-quote-list">
           {quotes.map((q) => (
             <blockquote class="bs-quote">
               <p>“{q.quote}”</p>
@@ -177,23 +240,27 @@ const quotes = [
       </div>
     </section>
 
-    <section class="bs-section bs-enquire" id="enquire" aria-labelledby="bs-enquire-title">
+    <section class="bs-enquire" id="enquire" aria-labelledby="bs-enquire-title">
       <div class="bs-wrap bs-enquire-grid">
-        <div>
-          <p class="bs-kicker bs-kicker--dark">Enquire Directly</p>
-          <h2 id="bs-enquire-title">Check a wedding date, portrait slot or framing quote.</h2>
+        <div class="bs-enquire-copy">
+          <p class="bs-kicker bs-kicker--dark">Direct Studio Desk</p>
+          <h2 id="bs-enquire-title">Check a date or framing quote.</h2>
           <p>
-            Choose the type of shoot and we will route your email straight to
-            the right person —{" "}
+            Select what you are booking and your email routes directly to the
+            right inbox —{" "}
             <a href={`mailto:${michaelEmail}`}>{michaelEmail}</a> for weddings,
-            commercial work and studio hire, or{" "}
-            <a href={`mailto:${naomiEmail}`}>{naomiEmail}</a> for portraits and
-            in-house framing.
+            commercial shoots &amp; studio hire, or{" "}
+            <a href={`mailto:${naomiEmail}`}>{naomiEmail}</a> for family
+            portraits and in-house framing.
           </p>
-          <p class="bs-tel-note">
-            Prefer to talk? Ring <a href={landlineHref}>{landline}</a> or{" "}
-            <a href={mobileHref}>{mobile}</a>.
-          </p>
+          <div class="bs-studio-card" id="find">
+            <p><strong>1 Kilmore Road, Crossgar, BT30 9HJ</strong></p>
+            <p>Studio: <a href={landlineHref}>{landline}</a> · Mobile: <a href={mobileHref}>{mobile}</a></p>
+            <p>
+              <a href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a> ·{" "}
+              <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+            </p>
+          </div>
         </div>
 
         <form class="bs-form" id="bs-form" data-michael={michaelEmail} data-naomi={naomiEmail}>
@@ -225,46 +292,51 @@ const quotes = [
             <span>Tell us about the day or shoot</span>
             <textarea name="details" rows="3" placeholder="Venue, group size, commercial brief or framing request"></textarea>
           </label>
-          <button class="bs-btn bs-btn--dark bs-btn--full" type="submit">Open enquiry email →</button>
+          <button class="bs-btn bs-btn--dark bs-btn--full" type="submit" id="bs-submit-btn">Open email to Michael →</button>
         </form>
-      </div>
-    </section>
-
-    <section class="bs-section bs-find" id="find" aria-labelledby="bs-find-title">
-      <div class="bs-wrap bs-find-inner">
-        <div>
-          <p class="bs-kicker bs-kicker--dark">The Studio</p>
-          <h2 id="bs-find-title">1 Kilmore Road, Crossgar, BT30 9HJ.</h2>
-          <p>Easy reach from Downpatrick, Saintfield, Ballynahinch and Belfast — and happy to travel across Northern Ireland for weddings and location shoots.</p>
-        </div>
-        <div class="bs-find-actions">
-          <a class="bs-btn bs-btn--dark" href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a>
-          <a class="bs-btn bs-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-        </div>
       </div>
     </section>
   </main>
 
   <footer class="bs-footer">
     <div class="bs-wrap bs-footer-inner">
-      <div class="bs-footer-brand">
-        <BsMark size={30} tone="paper" />
-        <div>
-          <strong>Bridgend Studios</strong>
-          <span>1 Kilmore Road, Crossgar, BT30 9HJ</span>
-        </div>
-      </div>
-      <p class="bs-footer-right">
-        <a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a> · <a href={`mailto:${michaelEmail}`}>{michaelEmail}</a>
-      </p>
+      <span><strong>Bridgend Studios</strong> · Michael Sheppard Photography · 1 Kilmore Road, Crossgar, BT30 9HJ</span>
+      <span><a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a> · <a href={`mailto:${michaelEmail}`}>{michaelEmail}</a></span>
     </div>
   </footer>
 
   <script>
+    const mount = document.getElementById("bs-wall-mount");
+    const frameLabel = document.getElementById("bs-frame-label");
+    const swatches = document.querySelectorAll<HTMLButtonElement>(".bs-swatch");
+    swatches.forEach((sw) => {
+      sw.addEventListener("click", () => {
+        const mode = sw.dataset.frame ?? "black";
+        if (mount) {
+          mount.classList.remove("is-black", "is-oak", "is-brass");
+          mount.classList.add(`is-${mode}`);
+        }
+        if (frameLabel && sw.dataset.label) frameLabel.textContent = sw.dataset.label;
+        swatches.forEach((btn) => btn.classList.toggle("is-active", btn === sw));
+      });
+    });
+
     const shootSelect = document.getElementById("bs-shoot") as HTMLSelectElement | null;
+    const submitBtn = document.getElementById("bs-submit-btn");
+    const updateRecipientLabel = () => {
+      if (!submitBtn || !shootSelect) return;
+      submitBtn.textContent = shootSelect.value === "portrait"
+        ? "Open email to Naomi →"
+        : "Open email to Michael →";
+    };
+    shootSelect?.addEventListener("change", updateRecipientLabel);
+
     document.querySelectorAll<HTMLElement>("[data-pick-shoot]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        if (shootSelect && btn.dataset.pickShoot) shootSelect.value = btn.dataset.pickShoot;
+        if (shootSelect && btn.dataset.pickShoot) {
+          shootSelect.value = btn.dataset.pickShoot;
+          updateRecipientLabel();
+        }
       });
     });
 

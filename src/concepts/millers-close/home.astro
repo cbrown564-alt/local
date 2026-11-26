@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import McMark from "./McMark.astro";
 
 /* Millers Close Holiday Accommodation — 167 Bryansford Road, Kilcoo, Co. Down, BT34 5LW.
@@ -28,34 +29,39 @@ const facebook = "https://www.facebook.com/Millers.Close/";
 const instagram = "https://www.instagram.com/millersclose/";
 const mapHref = "https://www.google.co.uk/maps/place/Millers+Close+Holiday+Cottages/@54.2189972,-5.9932053,17z";
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap";
 
 const stays = [
   {
+    no: "01",
     name: "Thrashing Mill",
     tag: "Heritage Conversion",
     note: "Characterful self-catering stay rooted in the working history of Millers Close.",
     href: "https://www.millersclose.com/thrashingmill",
   },
   {
+    no: "02",
     name: "The Haystacks",
-    tag: "Haystack E — Pet Friendly",
-    note: "Countryside retreat nestled in the Mourne foothills. Bringing a dog? Haystack E is our exclusive pet-friendly accommodation.",
+    tag: "Haystack E — Exclusive Pet-Friendly Stay",
+    note: "Countryside retreat nestled in the Mourne foothills. Bringing a dog? Book Haystack E.",
     href: "https://www.millersclose.com/haystacks",
   },
   {
+    no: "03",
     name: "The Paddy Wagon",
     tag: "Unique Stay",
-    note: "A memorable escape on the edge of Tollymore Forest Park for couples or outdoor breaks.",
+    note: "A memorable escape on the edge of Tollymore Forest Park for couples and outdoor breaks.",
     href: "https://www.millersclose.com/paddywagon",
   },
   {
+    no: "04",
     name: "Jimmy's Cottage",
     tag: "Holiday Cottage",
-    note: "Self-catering cottage with views of the surrounding hills and easy access to Tollymore trails.",
+    note: "Self-catering cottage looking out to the surrounding hills and minutes from Tollymore trails.",
     href: "https://www.millersclose.com/jimmyscottage",
   },
   {
+    no: "05",
     name: "Pat's Cottage",
     tag: "Holiday Cottage",
     note: "Cosy self-catering base for families and friends exploring the Mourne Mountains.",
@@ -72,116 +78,144 @@ const stays = [
   businessName="Millers Close Holiday Accommodation"
   town="Kilcoo / Castlewellan"
   fontHref={fontHref}
-  bannerNote="The millwheel emblem is drawn for this page. Live availability hands straight to Millers Close's own booking-directly.com engine; enquiries open an email to enquiries@millersclose.com or WhatsApp 07562 419693."
+  bannerNote="The granite cottages at dawn and Haystack retreat views are AI-generated visualisations. Live availability opens Millers Close's own booking-directly.com calendar; questions go via WhatsApp 07562 419693 or enquiries@millersclose.com."
 >
-  <div class="mc-strip">
-    <span>167 Bryansford Road, Kilcoo, Co. Down BT34 5LW · Certified Tourist Establishment</span>
-    <span class="mc-strip-r">
-      <a href={whatsappHref} rel="noopener noreferrer">WhatsApp {whatsappNum}</a> · <a href={`mailto:${email}`}>{email}</a>
-    </span>
-  </div>
-
   <header class="mc-header">
-    <a class="mc-brand" href="#top">
-      <McMark size={38} tone="copper" />
-      <span class="mc-brand-text">
-        <strong>Millers Close</strong>
-        <small>Mourne Foothills · Tollymore Edge</small>
-      </span>
-    </a>
-    <nav class="mc-nav" aria-label="Millers Close">
-      <a href="#stays">The Stays</a>
-      <a href="#pets">Pets &amp; Extras</a>
-      <a href="#enquire">Contact</a>
-    </nav>
-    <a class="mc-header-cta" href={bookingUrl} rel="noopener noreferrer">Book Direct ↗</a>
+    <div class="mc-header-inner">
+      <a class="mc-brand" href="#top">
+        <McMark size={34} tone="copper" />
+        <span>
+          <strong>Millers Close</strong>
+          <small>167 Bryansford Road, Kilcoo · Tollymore Edge</small>
+        </span>
+      </a>
+      <nav class="mc-nav" aria-label="Millers Close">
+        <a href="#stays">Five Stays</a>
+        <a href="#haystack-e">Haystack E (Pets)</a>
+        <a href="#extras">Gift Cards &amp; Beauty</a>
+        <a href="#enquire">WhatsApp &amp; Contact</a>
+      </nav>
+      <a class="mc-header-cta" href={bookingUrl} rel="noopener noreferrer">Live Calendar ↗</a>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="mc-hero" aria-labelledby="mc-hero-title">
-      <div class="mc-wrap mc-hero-grid">
-        <div>
-          <p class="mc-kicker">Kilcoo · Edge of Tollymore Forest Park</p>
-          <h1 id="mc-hero-title">Your countryside escape <em>in the heart of the Mourne Mountains.</em></h1>
-          <p class="mc-lede">
-            Certified self-catering cottages and unique stays tucked into the
-            Mourne foothills — built for quiet romantic getaways, breaks with
-            friends, and mornings straight onto the forest and mountain trails.
+  <main id="top" class="mc-main">
+    <section class="mc-split-hero" aria-labelledby="mc-hero-title">
+      <figure class="mc-hero-visual">
+        <ResponsiveImage
+          src="/media/concepts/millers-close/millers-close-forest-edge.jpg"
+          alt="Granite stone cottages with warm windows tucked beside pine trees beneath misty Mourne Mountain foothills at dawn"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="(max-width: 960px) 100vw, 50vw"
+          class="mc-hero-img"
+        />
+        <figcaption>Mourne foothills &amp; Tollymore forest edge atmosphere. Visualisation (AI-generated).</figcaption>
+      </figure>
+
+      <div class="mc-hero-canvas">
+        <p class="mc-seal">Certified Tourist Establishment · Kilcoo, BT34 5LW</p>
+        <h1 id="mc-hero-title">Tucked against Tollymore Forest, <em>under the Mourne foothills.</em></h1>
+        <p class="mc-lede">
+          Five character self-catering stays — from the heritage Thrashing Mill
+          and The Paddy Wagon to Jimmy's Cottage, Pat's Cottage and The
+          Haystacks — all booked directly with zero third-party commission.
+        </p>
+
+        <div class="mc-hero-actions">
+          <a class="mc-btn mc-btn--forest" href={bookingUrl} rel="noopener noreferrer">Check live availability ↗</a>
+          <a class="mc-btn mc-btn--outline" href={whatsappHref} rel="noopener noreferrer">WhatsApp {whatsappNum} ↗</a>
+        </div>
+
+        <p class="mc-hero-note">
+          WhatsApp Message Only ({whatsappNum}) ·{" "}
+          <a href={`mailto:${email}`}>{email}</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="mc-pet-plate" id="haystack-e" aria-labelledby="mc-pet-title">
+      <div class="mc-wrap mc-pet-grid">
+        <div class="mc-pet-copy">
+          <p class="mc-kicker">Bringing Your Dog?</p>
+          <h2 id="mc-pet-title">Haystack E is our exclusive pet-friendly retreat.</h2>
+          <p>
+            So that guests with allergies and guests bringing a four-legged
+            companion are both properly looked after,{" "}
+            <strong>Haystack E is the only pet-friendly accommodation at Millers Close</strong>.
+            Check Haystack E straight on our live calendar or drop us a quick
+            WhatsApp message before you book.
           </p>
-          <div class="mc-hero-actions">
-            <a class="mc-btn mc-btn--copper" href={bookingUrl} rel="noopener noreferrer">Check live availability &amp; book direct ↗</a>
-            <a class="mc-btn mc-btn--ghost" href={giftCardsUrl} rel="noopener noreferrer">Gift Cards ↗</a>
+          <div class="mc-pet-actions">
+            <a class="mc-btn mc-btn--copper" href={bookingUrl} rel="noopener noreferrer">Check Haystack E dates ↗</a>
+            <a class="mc-btn mc-btn--ghost-light" href={whatsappHref} rel="noopener noreferrer">Message on WhatsApp ↗</a>
           </div>
         </div>
 
-        <aside class="mc-quick" aria-label="Direct booking summary">
-          <p class="mc-kicker mc-kicker--dark">Why book direct</p>
-          <h2>Five character stays, one direct calendar.</h2>
-          <ul>
-            <li><strong>Instant live dates</strong> across Thrashing Mill, The Haystacks, The Paddy Wagon, Jimmy's Cottage &amp; Pat's Cottage.</li>
-            <li><strong>Bringing a pet?</strong> Haystack E is our exclusive pet-friendly accommodation — check it straight on the calendar.</li>
-            <li><strong>On the doorstep:</strong> Tollymore Forest Park, Castlewellan and the Mourne foothills.</li>
-          </ul>
-          <a class="mc-btn mc-btn--forest mc-btn--full" href={bookingUrl} rel="noopener noreferrer">Open live booking calendar ↗</a>
-        </aside>
+        <figure class="mc-pet-figure">
+          <ResponsiveImage
+            src="/media/concepts/millers-close/millers-close-haystack-retreat.jpg"
+            alt="Cosy timber retreat interior looking through glazed doors onto a private gravel firepit garden and Mourne foothills"
+            width={1376}
+            height={768}
+            sizes="(max-width: 960px) 100vw, 52vw"
+            class="mc-pet-img"
+          />
+          <figcaption>Foothills cabin &amp; private garden mood. Visualisation (AI-generated).</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="mc-section mc-stays" id="stays" aria-labelledby="mc-stays-title">
       <div class="mc-wrap">
-        <div class="mc-head">
+        <div class="mc-stays-head">
           <div>
-            <p class="mc-kicker mc-kicker--dark">Accommodation</p>
-            <h2 id="mc-stays-title">Choose your stay at Millers Close.</h2>
+            <p class="mc-kicker mc-kicker--dark">The Five Stays</p>
+            <h2 id="mc-stays-title">Choose your corner of Millers Close.</h2>
           </div>
-          <p>
-            Every stay has its own character and opens directly into our live
-            booking calendar — no third-party booking mark-up.
-          </p>
+          <a class="mc-btn mc-btn--forest" href={bookingUrl} rel="noopener noreferrer">Open full direct calendar ↗</a>
         </div>
 
-        <div class="mc-stay-grid">
+        <ol class="mc-ledger">
           {stays.map((s) => (
-            <article class="mc-stay-card">
-              <span class="mc-stay-tag">{s.tag}</span>
-              <h3>{s.name}</h3>
-              <p>{s.note}</p>
-              <div class="mc-stay-links">
-                <a href={bookingUrl} rel="noopener noreferrer">Check dates ↗</a>
-                <a href={s.href} rel="noopener noreferrer">Details ↗</a>
+            <li class="mc-ledger-item">
+              <span class="mc-ledger-no">{s.no}</span>
+              <div class="mc-ledger-body">
+                <span class="mc-ledger-tag">{s.tag}</span>
+                <h3>{s.name}</h3>
+                <p>{s.note}</p>
               </div>
-            </article>
+              <div class="mc-ledger-actions">
+                <a class="mc-link-primary" href={bookingUrl} rel="noopener noreferrer">Book direct ↗</a>
+                <a class="mc-link-sub" href={s.href} rel="noopener noreferrer">Stay details ↗</a>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
 
-    <section class="mc-section mc-extras" id="pets" aria-labelledby="mc-extras-title">
+    <section class="mc-extras" id="extras" aria-labelledby="mc-extras-title">
       <div class="mc-wrap mc-extras-grid">
-        <article class="mc-extra-box">
-          <p class="mc-kicker mc-kicker--dark">Pet Policy</p>
-          <h2 id="mc-extras-title">Bringing a dog? Book Haystack E.</h2>
+        <article class="mc-extra-panel">
+          <p class="mc-kicker mc-kicker--dark">Gifting a Mourne Break</p>
+          <h2 id="mc-extras-title">Millers Close Gift Cards</h2>
           <p>
-            So that guests with allergies and guests with dogs are both looked
-            after properly, <strong>Haystack E is our only exclusive pet-friendly accommodation</strong>.
-            Select Haystack E on the live booking calendar or message us on
-            WhatsApp to check dates.
+            Give someone a quiet weekend on the edge of Tollymore Forest Park —
+            gift cards are ready to order directly online.
           </p>
+          <a class="mc-btn mc-btn--forest" href={giftCardsUrl} rel="noopener noreferrer">Order a Gift Card ↗</a>
         </article>
 
-        <article class="mc-extra-box">
-          <p class="mc-kicker mc-kicker--dark">On Site &amp; Gifting</p>
-          <h2>Gift Cards &amp; Miella Makeup &amp; Beauty.</h2>
+        <article class="mc-extra-panel mc-extra-panel--tinted">
+          <p class="mc-kicker mc-kicker--dark">Right On Site</p>
+          <h2>Miella Makeup &amp; Beauty</h2>
           <p>
-            Treating someone to a Mourne escape or staying for a local wedding?
-            Order a Millers Close Gift Card online or explore{" "}
-            <a href={beautyUrl} rel="noopener noreferrer">Miella Makeup &amp; Beauty ↗</a>{" "}
-            right on site.
+            Staying for a wedding or family celebration in County Down? Explore
+            Miella Makeup &amp; Beauty right here at Millers Close.
           </p>
-          <div class="mc-extra-actions">
-            <a class="mc-btn mc-btn--forest" href={giftCardsUrl} rel="noopener noreferrer">Order a Gift Card ↗</a>
-            <a class="mc-btn mc-btn--outline" href={whatsappHref} rel="noopener noreferrer">WhatsApp {whatsappNum} ↗</a>
-          </div>
+          <a class="mc-btn mc-btn--outline" href={beautyUrl} rel="noopener noreferrer">Visit Miella Makeup &amp; Beauty ↗</a>
         </article>
       </div>
     </section>
@@ -189,18 +223,19 @@ const stays = [
     <section class="mc-section mc-contact" id="enquire" aria-labelledby="mc-contact-title">
       <div class="mc-wrap mc-contact-grid">
         <div>
-          <p class="mc-kicker mc-kicker--dark">Questions &amp; Group Stays</p>
-          <h2 id="mc-contact-title">Ask us about dates, Haystack E or multiple cottages.</h2>
+          <p class="mc-kicker mc-kicker--dark">Questions &amp; Multi-Cottage Stays</p>
+          <h2 id="mc-contact-title">Message on WhatsApp or write directly.</h2>
           <p>
-            For instant availability use our{" "}
+            For instant dates use our{" "}
             <a href={bookingUrl} rel="noopener noreferrer">live booking calendar ↗</a>.
-            For questions, message us on WhatsApp (<strong>{whatsappNum} — WhatsApp Message Only</strong>)
-            or compose an email below straight to{" "}
+            For questions about Haystack E, family group bookings or arrival
+            details, WhatsApp us on <strong>{whatsappNum} (Message Only)</strong>{" "}
+            or compose an email straight to{" "}
             <a href={`mailto:${email}`}>{email}</a>.
           </p>
           <p class="mc-addr">
-            <strong>Address:</strong> 167 Bryansford Road, Kilcoo, Co. Down, BT34 5LW ·{" "}
-            <a href={mapHref} rel="noopener noreferrer">Open Map ↗</a>
+            167 Bryansford Road, Kilcoo, Co. Down, BT34 5LW ·{" "}
+            <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
           </p>
         </div>
 
@@ -246,11 +281,8 @@ const stays = [
   <footer class="mc-footer">
     <div class="mc-wrap mc-footer-inner">
       <div class="mc-footer-brand">
-        <McMark size={32} tone="parchment" />
-        <div>
-          <strong>Millers Close Holiday Accommodation</strong>
-          <span>167 Bryansford Road, Kilcoo, Co. Down, BT34 5LW</span>
-        </div>
+        <McMark size={30} tone="parchment" />
+        <span><strong>Millers Close Holiday Accommodation</strong> · 167 Bryansford Road, Kilcoo, BT34 5LW</span>
       </div>
       <p class="mc-footer-right">
         <a href={whatsappHref} rel="noopener noreferrer">WhatsApp {whatsappNum}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a> · <a href={instagram} rel="noopener noreferrer">Instagram</a>

@@ -1636,3 +1636,116 @@ Ten built concept grafts published to the public transformations index.
   - Usage: Concept hero visual
   - Prompt: Exterior of independent hair salon at 33 Central Promenade Newcastle County Down, elegant minimalist charcoal and warm ivory facade with restrained discreet typography 'Deja Vu', clean coastal bay window revealing stylish salon mirrors, styling chairs and soft warm daylight.
   - Limits: Imagined scene without reference photographs; premises and salon setting are not verified depictions. Visible disclosure in the concept banner.
+
+
+## Newry, Mourne and Down Wave 1 elevated concepts (26 November 2026)
+
+Eighteen bespoke atmospheric visualisations (two per business) generated on 26 November 2026 with the Antigravity built-in image generator (`image-generator` subagents) to give each Wave 1 concept a distinct brand atmosphere, hero geometry, and editorial visual anchor. Every image was instructed and verified to contain **zero text, zero signage, zero logos, zero watermarks, and zero identifiable human faces**. Each image carries both an on-page visible disclosure (`<figcaption>` / caption text noting `Visualisation (AI-generated)`) and a disclosure in `ConceptLayout` `bannerNote`. Responsive `-640.webp` and `-1265.webp` derivatives are generated alongside each JPEG master.
+
+### Flagstaff Lodge
+- `public/media/concepts/flagstaff-lodge/flagstaff-lodge-hero-dusk.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Dusk country lodge with warm glowing windows beneath a brooding mountain ridge and valley mist
+  - Usage: Full-bleed hero backdrop on `/concepts/flagstaff-lodge/` & `/for/flagstaff-lodge-f7m2/`
+  - Limits: Atmospheric visualisation without reference photographs; premises and landscape are indicative, not verified depictions. Disclosed in visible hero caption and `ConceptLayout` bannerNote.
+- `public/media/concepts/flagstaff-lodge/flagstaff-lodge-carvery-table.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Traditional Sunday roast dining table in a wood-panelled lounge with stoneware plates, roast vegetables, gravy boat and fireside glow
+  - Usage: Edge-to-edge Sunday Carvery & Lounge split plate
+  - Limits: Indicative culinary/interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Lobster Pot
+- `public/media/concepts/the-lobster-pot/lobster-pot-harbour-supper.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit dark-wood coastal pub table with cooked red lobster, fresh mussels, sourdough, lemon and pint overlooking twilight lough waters
+  - Usage: Asymmetric maritime poster hero plate on `/concepts/the-lobster-pot/` & `/for/lobster-pot-s4t8/`
+  - Limits: Indicative harbour supper visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-lobster-pot/lobster-pot-stove-garden.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Cosy coastal pub corner with cast-iron wood-burning stove and open double timber doors looking onto a sheltered courtyard beer garden at twilight
+  - Usage: Three-Room Floorwalk editorial plate
+  - Limits: Indicative interior/courtyard visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Yew Wood Cottage
+- `public/media/concepts/yew-wood-cottage/yew-wood-morning-view.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit stone patio with two ceramic coffee mugs overlooking green South Armagh fields and heather-toned Slieve Gullion in morning mist
+  - Usage: Full-width panoramic hero plate on `/concepts/yew-wood-cottage/` & `/for/yew-wood-cottage-y6w3/`
+  - Limits: Indicative morning patio visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/yew-wood-cottage/yew-wood-hearth-interior.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Bright open-plan country cottage living room with pale stone floors, oatmeal linen sofa, wood-burning stove and broad windows onto green hills
+  - Usage: Single-level bungalow essay plate
+  - Limits: Indicative interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Old School House (Rostrevor)
+- `public/media/concepts/old-school-house-rostrevor/old-school-house-pizza-evening.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Blistered artisan sourdough pizza on dark slate over weathered oak beneath glowing amber bistro pendant lamps
+  - Usage: Evening mode backdrop of the interactive Morning/Evening hero switcher on `/concepts/old-school-house-rostrevor/` & `/for/old-school-house-r9k4/`
+  - Limits: Indicative culinary/evening service visualisation; disclosed in visible hero caption and `ConceptLayout` bannerNote.
+- `public/media/concepts/old-school-house-rostrevor/old-school-house-morning-coffee.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Speckled ceramic flat white beside golden pancakes and freshly baked scones on pale oak by an arched schoolhouse window
+  - Usage: Morning mode backdrop of the interactive Morning/Evening hero switcher
+  - Limits: Indicative morning café visualisation; disclosed in visible hero caption and `ConceptLayout` bannerNote.
+
+### Millers Close Holiday Accommodation
+- `public/media/concepts/millers-close/millers-close-forest-edge.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Restored granite stone cottages with warm glowing windows beside evergreen pines beneath misty Mourne mountain slopes at dawn
+  - Usage: 50/50 split architectural hero visual on `/concepts/millers-close/` & `/for/millers-close-m3c7/`
+  - Limits: Indicative foothills setting visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/millers-close/millers-close-haystack-retreat.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Cosy timber cabin interior looking through wide glazed doors onto a private gravel firepit garden, drystone wall and green foothills
+  - Usage: Featured Haystack E pet-friendly section plate
+  - Limits: Indicative cabin/garden visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Crossgar Dental Practice
+- `public/media/concepts/crossgar-dental/crossgar-dental-calm-suite.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit Scandinavian-minimalist reception lounge in porcelain white, pale eucalyptus green, warm oak joinery and travertine stone
+  - Usage: Full-bleed sunlit hero backdrop on `/concepts/crossgar-dental/` & `/for/crossgar-dental-c5d2/`
+  - Limits: Indicative calm reception visualisation; not a photograph of the clinic interior. Disclosed in visible hero caption and `ConceptLayout` bannerNote.
+- `public/media/concepts/crossgar-dental/crossgar-dental-botanical-detail.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Ceramic cup and fresh eucalyptus sprig on honed limestone beside a sunlit window
+  - Usage: Treatments section calm-sanctuary editorial plate
+  - Limits: Indicative still-life visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Bridgend Studios
+- `public/media/concepts/bridgend-studios/bridgend-studios-wedding-frame.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Warm silver-toned monochrome documentary wedding frame of bride and groom seen from behind walking down a misty County Down drystone lane at dusk
+  - Usage: Full-bleed exhibition hero on `/concepts/bridgend-studios/` & `/for/bridgend-studios-b8s4/`
+  - Limits: Indicative fine-art wedding visualisation; does not depict real clients or Michael Sheppard portfolio work. Disclosed in visible caption and `ConceptLayout` bannerNote.
+- `public/media/concepts/bridgend-studios/bridgend-studios-darkroom-portrait.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Photography studio and picture-framing workshop with black, brushed oak and antique brass frames beside an unbranded medium-format camera
+  - Usage: Interactive in-house framing preview plate
+  - Limits: Indicative studio/framing workshop visualisation; disclosed in visible caption and `ConceptLayout` bannerNote.
+
+### Belleek Country House
+- `public/media/concepts/belleek-country-house/belleek-country-house-wedding-table.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit country-house wedding banquet table dressed in ivory linen, claret flowers, antique brass candlesticks and crystal glassware at twilight
+  - Usage: Full-bleed formal wedding invitation hero backdrop on `/concepts/belleek-country-house/` & `/for/belleek-country-house-b2h9/`
+  - Limits: Indicative country-house wedding visualisation; disclosed in visible caption and `ConceptLayout` bannerNote.
+- `public/media/concepts/belleek-country-house/belleek-country-house-steak-night.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit walnut table with seared ribeye steak on dark stoneware, copper peppercorn sauce jug, charred greens and red wine
+  - Usage: Friday 5pm Steak Night supper bill split plate
+  - Limits: Indicative evening dining visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Mulberry Tree (Seaforde)
+- `public/media/concepts/mulberry-tree-seaforde/mulberry-tree-woodland-table.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit upstairs bistro table beside a tall window overlooking green broadleaf woodland with blank unlabelled wine bottle, crystal glasses and pan-seared fish
+  - Usage: Broadsheet front-page lead plate on `/concepts/mulberry-tree-seaforde/` & `/for/mulberry-tree-m7t5/`
+  - Limits: Indicative woodland dining & BYOB visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/mulberry-tree-seaforde/mulberry-tree-larder-plate.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Overhead food still life of rosy pan-roasted venison medallions, blackberry jus, glazed root vegetables and rustic pear tart on pale stoneware
+  - Usage: County Down Larder provenance trace plate
+  - Limits: Indicative culinary visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.

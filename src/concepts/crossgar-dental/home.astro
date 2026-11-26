@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import CdMark from "./CdMark.astro";
 
 /* Crossgar Dental Practice — 48 Killyleagh Street, Crossgar, BT30 9DQ.
@@ -20,6 +21,7 @@ import CdMark from "./CdMark.astro";
 const phone = "028 4483 2585";
 const phoneHref = "tel:+442844832585";
 const bookOnline = "https://uk.dentalhub.online/soe/new/Crossgar%20Dental%20Practice?pid=UKPOH01";
+const contactUrl = "https://www.crossgardentalpractice.co.uk/contact";
 const facebook = "https://www.facebook.com/crossgardental";
 const instagram = "https://www.instagram.com/crossgar_dental/";
 const mapHref = "https://www.google.com/maps/dir//48+Killyleagh+Rd,+Crossgar,+Downpatrick+BT30+9DQ/@54.3977088,-5.7582088,16z";
@@ -28,8 +30,8 @@ const fontHref =
 
 const treatments = [
   {
-    name: "Routine Care & Hygiene",
-    summary: "Check-ups, preventive dentistry, dental hygiene appointments and dentistry for children.",
+    name: "Routine Care, Hygiene & Children",
+    summary: "Unhurried check-ups, preventive dentistry, dental hygiene appointments and gentle care for children.",
     href: "https://www.crossgardentalpractice.co.uk/dental-treatments/routine-dental-care",
   },
   {
@@ -39,23 +41,23 @@ const treatments = [
   },
   {
     name: "Orthodontics & Clear Aligners",
-    summary: "Subtle teeth straightening with clear aligners, ceramic braces and custom retainers.",
+    summary: "Discreet teeth straightening with clear aligners, ceramic braces and custom retainers.",
     href: "https://www.crossgardentalpractice.co.uk/dental-treatments/orthodontics",
   },
   {
     name: "Cosmetic & Restorative Dentistry",
-    summary: "Restorative and cosmetic care tailored to your smile and long-term oral health.",
+    summary: "Tailored restorative and cosmetic treatments focused on long-term comfort and natural results.",
     href: "https://www.crossgardentalpractice.co.uk/dental-treatments/cosmetic-dentistry",
   },
   {
     name: "Nervous Patients & IV Sedation",
-    summary: "Calm, gentle dental care with sedation options designed to put anxious patients at ease.",
+    summary: "Calm, unhurried visits with IV sedation options so anxious patients feel supported and in control.",
     href: "https://www.crossgardentalpractice.co.uk/for-patients/nervous-patients",
   },
   {
-    name: "Fees & Membership Plans",
-    summary: "Clear treatment fees and ongoing membership plans to help spread the cost of care.",
-    href: "https://www.crossgardentalpractice.co.uk/contact",
+    name: "Membership Plans & Fees",
+    summary: "Clear treatment fees explained upfront and membership plans to spread the cost of routine care.",
+    href: contactUrl,
   },
 ];
 ---
@@ -68,144 +70,203 @@ const treatments = [
   businessName="Crossgar Dental Practice"
   town="Crossgar"
   fontHref={fontHref}
-  bannerNote="The practice mark is drawn for this page. Online booking hands straight to Crossgar Dental Practice's own DentalHub portal; emergency calls go to 028 4483 2585."
+  bannerNote="The sunlit reception lounge and botanical ceramic study are AI-generated visualisations. Online booking hands straight to Crossgar Dental Practice's own DentalHub portal; emergency calls go directly to 028 4483 2585."
 >
-  <div class="cd-strip">
-    <span>48 Killyleagh Street, Crossgar, BT30 9DQ · Accepting New Patients</span>
-    <span>Dental emergency? Call <a href={phoneHref}>{phone}</a> directly</span>
+  <div class="cd-topbar">
+    <div class="cd-wrap cd-topbar-inner">
+      <span>48 Killyleagh Street, Crossgar, BT30 9DQ · <strong>Accepting New Patients</strong></span>
+      <span>Dental emergency? Call <a href={phoneHref}>{phone}</a> directly</span>
+    </div>
   </div>
 
   <header class="cd-header">
-    <a class="cd-brand" href="#top">
-      <CdMark size={38} tone="teal" />
-      <span class="cd-brand-text">
-        <strong>Crossgar Dental Practice</strong>
-        <small>Crossgar · County Down</small>
-      </span>
-    </a>
-    <nav class="cd-nav" aria-label="Crossgar Dental Practice">
-      <a href="#treatments">Treatments</a>
-      <a href="#nervous">Nervous Patients</a>
-      <a href="#new-patients">New Patients</a>
-      <a href="#find">Find Us</a>
-    </nav>
-    <a class="cd-header-cta" href={bookOnline} rel="noopener noreferrer">Book Online ↗</a>
+    <div class="cd-wrap cd-header-inner">
+      <a class="cd-brand" href="#top">
+        <CdMark size={34} tone="teal" />
+        <span>
+          <strong>Crossgar Dental Practice</strong>
+          <small>Crossgar · County Down</small>
+        </span>
+      </a>
+      <nav class="cd-nav" aria-label="Crossgar Dental Practice">
+        <a href="#triage">How We Can Help</a>
+        <a href="#treatments">Treatments</a>
+        <a href="#find">Find the Practice</a>
+      </nav>
+      <a class="cd-header-cta" href={bookOnline} rel="noopener noreferrer">Book Online ↗</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="top" class="cd-main">
     <section class="cd-hero" aria-labelledby="cd-hero-title">
-      <div class="cd-wrap cd-hero-grid">
-        <div>
-          <p class="cd-kicker">48 Killyleagh Street · Crossgar</p>
-          <h1 id="cd-hero-title">Calm, modern dentistry <em>for Crossgar and Downpatrick.</em></h1>
+      <figure class="cd-hero-plate">
+        <ResponsiveImage
+          src="/media/concepts/crossgar-dental/crossgar-dental-calm-suite.jpg"
+          alt="Sunlit minimalist dental reception lounge in porcelain white, soft sage green and pale oak with indoor greenery"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="100vw"
+          class="cd-hero-img"
+        />
+        <figcaption class="cd-hero-cap">Calm sunlit reception feel. Visualisation (AI-generated).</figcaption>
+      </figure>
+
+      <div class="cd-wrap cd-hero-overlay">
+        <div class="cd-porcelain-card">
+          <p class="cd-badge">Accepting New Patients · Crossgar &amp; Downpatrick</p>
+          <h1 id="cd-hero-title">Gentle, unhurried dentistry <em>in calm hands.</em></h1>
           <p class="cd-lede">
-            From routine check-ups and family care to dental implants, clear
-            aligners and IV sedation for nervous patients — book online in a
-            couple of taps or speak directly with our reception team.
+            Routine family care, hygiene, dental implants, clear aligners and IV
+            sedation for nervous patients — book straight into our live online
+            diary or talk with reception on Killyleagh Street.
           </p>
           <div class="cd-hero-actions">
             <a class="cd-btn cd-btn--teal" href={bookOnline} rel="noopener noreferrer">Book an appointment online ↗</a>
-            <a class="cd-btn cd-btn--outline" href={phoneHref}>Call {phone}</a>
+            <a class="cd-btn cd-btn--soft" href={phoneHref}>Call {phone}</a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <aside class="cd-triage" aria-label="How can we help today">
-          <p class="cd-kicker">Patient Desk</p>
-          <h2>How can we help today?</h2>
-          <div class="cd-triage-list">
-            <a class="cd-triage-item" href={bookOnline} rel="noopener noreferrer">
-              <strong>Book online (New &amp; Existing Patients)</strong>
-              <span>Routine check-ups, hygiene, implants, clear aligners &amp; consultations via DentalHub ↗</span>
-            </a>
-            <a class="cd-triage-item cd-triage-item--urgent" href={phoneHref}>
-              <strong>Urgent or dental emergency</strong>
-              <span>Call reception directly on {phone} rather than using online booking.</span>
-            </a>
-            <a class="cd-triage-item" href="https://www.crossgardentalpractice.co.uk/contact" rel="noopener noreferrer">
-              <strong>Send a treatment enquiry</strong>
-              <span>Ask about fees, membership plans, or IV sedation on our contact page ↗</span>
-            </a>
+    <section class="cd-triage-section" id="triage" aria-labelledby="cd-triage-title">
+      <div class="cd-wrap">
+        <div class="cd-triage-head">
+          <p class="cd-kicker">Calm Patient Triage</p>
+          <h2 id="cd-triage-title">What brings you to Crossgar Dental today?</h2>
+        </div>
+
+        <div class="cd-triage-box">
+          <div class="cd-triage-tabs" role="tablist" aria-label="Patient visit reason">
+            <button type="button" role="tab" aria-selected="true" class="cd-triage-tab is-active" data-cd-tab="routine">
+              <strong>New or Routine Visit</strong>
+              <span>Check-ups, hygiene &amp; children</span>
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="cd-triage-tab" data-cd-tab="nervous">
+              <strong>Nervous? IV Sedation</strong>
+              <span>Calm, unhurried support</span>
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="cd-triage-tab cd-triage-tab--urgent" data-cd-tab="emergency">
+              <strong>Urgent Emergency</strong>
+              <span>Pain, swelling or broken tooth</span>
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="cd-triage-tab" data-cd-tab="implants">
+              <strong>Implants &amp; Aligners</strong>
+              <span>Restorative &amp; orthodontic care</span>
+            </button>
           </div>
-        </aside>
+
+          <div class="cd-triage-stage">
+            <div class="cd-triage-panel" data-cd-panel="routine">
+              <p class="cd-panel-eyebrow">New &amp; Existing Patients</p>
+              <h3>Book your check-up or hygiene visit online in minutes.</h3>
+              <p>
+                We are welcoming new adult and child patients from Crossgar,
+                Downpatrick, Saintfield, Killyleagh and Ballynahinch. Choose a
+                slot straight in our DentalHub diary — options and treatment fees
+                are always explained clearly before anything begins.
+              </p>
+              <div class="cd-panel-actions">
+                <a class="cd-btn cd-btn--teal" href={bookOnline} rel="noopener noreferrer">Open DentalHub online diary ↗</a>
+                <a class="cd-btn cd-btn--outline" href={contactUrl} rel="noopener noreferrer">Ask about membership plans ↗</a>
+              </div>
+            </div>
+
+            <div class="cd-triage-panel" data-cd-panel="nervous" hidden>
+              <p class="cd-panel-eyebrow">Nervous Patients &amp; IV Sedation</p>
+              <h3>Take your first visit at your own pace.</h3>
+              <p>
+                Feeling anxious about sitting in the dental chair is completely
+                understandable. We take extra time to listen first, never rush,
+                and offer <strong>IV sedation</strong> so you remain relaxed and
+                comfortable throughout treatment.
+              </p>
+              <div class="cd-panel-actions">
+                <a class="cd-btn cd-btn--teal" href={bookOnline} rel="noopener noreferrer">Book a calm first consultation ↗</a>
+                <a class="cd-btn cd-btn--outline" href={phoneHref}>Talk quietly with reception · {phone}</a>
+              </div>
+            </div>
+
+            <div class="cd-triage-panel cd-triage-panel--urgent" data-cd-panel="emergency" hidden>
+              <p class="cd-panel-eyebrow cd-panel-eyebrow--urgent">Dental Emergencies — Please Call Directly</p>
+              <h3>Ring reception on {phone} rather than booking online.</h3>
+              <p>
+                If you are in pain, have swelling or have damaged a tooth, please
+                telephone our Killyleagh Street desk directly so our team can
+                triage your symptoms and arrange the earliest urgent appointment.
+              </p>
+              <div class="cd-panel-actions">
+                <a class="cd-btn cd-btn--urgent" href={phoneHref}>Call reception now · {phone}</a>
+                <a class="cd-btn cd-btn--outline" href={mapHref} rel="noopener noreferrer">Directions to 48 Killyleagh St ↗</a>
+              </div>
+            </div>
+
+            <div class="cd-triage-panel" data-cd-panel="implants" hidden>
+              <p class="cd-panel-eyebrow">Dental Implants &amp; Orthodontics</p>
+              <h3>Long-term tooth replacement and subtle straightening.</h3>
+              <p>
+                From single and multiple dental implants, All-on-4 and
+                implant-supported dentures to clear aligners, ceramic braces and
+                retainers — start with a straightforward consultation to talk
+                through clinical options and fees.
+              </p>
+              <div class="cd-panel-actions">
+                <a class="cd-btn cd-btn--teal" href={bookOnline} rel="noopener noreferrer">Book a consultation online ↗</a>
+                <a class="cd-btn cd-btn--outline" href={contactUrl} rel="noopener noreferrer">Send a treatment enquiry ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="cd-section cd-treatments" id="treatments" aria-labelledby="cd-treatments-title">
-      <div class="cd-wrap">
-        <div class="cd-head">
-          <div>
-            <p class="cd-kicker">Dental Treatments</p>
-            <h2 id="cd-treatments-title">Routine care through to implants and orthodontics.</h2>
+      <div class="cd-wrap cd-treatments-layout">
+        <div class="cd-treatments-list">
+          <p class="cd-kicker">Under One Roof · 48 Killyleagh Street</p>
+          <h2 id="cd-treatments-title">Preventive, restorative and specialist care.</h2>
+
+          <ol class="cd-index">
+            {treatments.map((t, i) => (
+              <li class="cd-index-row">
+                <span class="cd-index-no">0{i + 1}</span>
+                <div class="cd-index-copy">
+                  <h3><a href={t.href} rel="noopener noreferrer">{t.name} ↗</a></h3>
+                  <p>{t.summary}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <aside class="cd-botanical-col">
+          <figure class="cd-botanical-plate">
+            <ResponsiveImage
+              src="/media/concepts/crossgar-dental/crossgar-dental-botanical-detail.jpg"
+              alt="Ceramic cup and fresh eucalyptus sprig on pale limestone beside a sunlit window"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 40vw"
+              class="cd-botanical-img"
+            />
+            <figcaption>Unhurried clinical sanctuary mood. Visualisation (AI-generated).</figcaption>
+          </figure>
+
+          <div class="cd-find-box" id="find">
+            <p class="cd-kicker">Find the Practice</p>
+            <h3>48 Killyleagh Street, Crossgar, BT30 9DQ</h3>
+            <p>
+              Serving patients across Crossgar, Downpatrick, Saintfield,
+              Killyleagh and Ballynahinch.
+            </p>
+            <dl class="cd-find-dl">
+              <div><dt>Phone &amp; Emergencies</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
+              <div><dt>Online Diary</dt><dd><a href={bookOnline} rel="noopener noreferrer">DentalHub Booking Portal ↗</a></dd></div>
+              <div><dt>Follow</dt><dd><a href={facebook} rel="noopener noreferrer">Facebook</a> · <a href={instagram} rel="noopener noreferrer">Instagram</a></dd></div>
+            </dl>
+            <a class="cd-btn cd-btn--outline cd-btn--full" href={mapHref} rel="noopener noreferrer">Directions on Google Maps ↗</a>
           </div>
-          <p>
-            Personalised care under one roof on Killyleagh Street — whether you
-            are due a routine check-up or exploring long-term restorative work.
-          </p>
-        </div>
-
-        <div class="cd-grid">
-          {treatments.map((t) => (
-            <article class="cd-card">
-              <h3>{t.name}</h3>
-              <p>{t.summary}</p>
-              <a href={t.href} rel="noopener noreferrer">Learn more ↗</a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="cd-section cd-reassure" id="nervous" aria-labelledby="cd-reassure-title">
-      <div class="cd-wrap cd-reassure-grid">
-        <article class="cd-panel cd-panel--dark">
-          <p class="cd-kicker cd-kicker--light">Nervous Patients &amp; Sedation</p>
-          <h2 id="cd-reassure-title">Feeling anxious about dental treatment?</h2>
-          <p>
-            You are not alone. We take a calm, unhurried approach and offer
-            <strong>IV sedation</strong> alongside gentle care so you stay
-            comfortable and in control from your first conversation.
-          </p>
-          <a class="cd-btn cd-btn--coral" href={bookOnline} rel="noopener noreferrer">Book a calm first visit ↗</a>
-        </article>
-
-        <article class="cd-panel" id="new-patients">
-          <p class="cd-kicker">Accepting New Patients</p>
-          <h2>Straightforward first visits for adults and children.</h2>
-          <p>
-            Whether you are joining us for routine care, bringing children for
-            check-ups, or asking about a specific concern, our team will walk
-            you through options and fees clearly before any treatment starts.
-          </p>
-          <div class="cd-panel-links">
-            <a class="cd-btn cd-btn--teal" href={bookOnline} rel="noopener noreferrer">Register &amp; book online ↗</a>
-            <a class="cd-btn cd-btn--outline" href={phoneHref}>Call {phone}</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="cd-section cd-find" id="find" aria-labelledby="cd-find-title">
-      <div class="cd-wrap cd-find-grid">
-        <div>
-          <p class="cd-kicker">Find the Practice</p>
-          <h2 id="cd-find-title">48 Killyleagh Street, Crossgar.</h2>
-          <p>
-            Centrally located in Crossgar village, serving patients across
-            Crossgar, Downpatrick, Saintfield, Killyleagh and Ballynahinch.
-          </p>
-          <div class="cd-find-actions">
-            <a class="cd-btn cd-btn--teal" href={mapHref} rel="noopener noreferrer">Directions on Google Maps ↗</a>
-            <a class="cd-btn cd-btn--outline" href={phoneHref}>Call {phone}</a>
-          </div>
-        </div>
-        <div class="cd-find-card">
-          <dl>
-            <div><dt>Address</dt><dd>48 Killyleagh Street, Crossgar, Downpatrick, BT30 9DQ</dd></div>
-            <div><dt>Reception &amp; Emergencies</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Online Booking</dt><dd><a href={bookOnline} rel="noopener noreferrer">DentalHub Online Portal ↗</a></dd></div>
-            <div><dt>Social</dt><dd><a href={facebook} rel="noopener noreferrer">Facebook</a> · <a href={instagram} rel="noopener noreferrer">Instagram</a></dd></div>
-          </dl>
-        </div>
+        </aside>
       </div>
     </section>
   </main>
@@ -213,15 +274,30 @@ const treatments = [
   <footer class="cd-footer">
     <div class="cd-wrap cd-footer-inner">
       <div class="cd-footer-brand">
-        <CdMark size={32} tone="white" />
-        <div>
-          <strong>Crossgar Dental Practice</strong>
-          <span>48 Killyleagh Street, Crossgar, BT30 9DQ</span>
-        </div>
+        <CdMark size={28} tone="teal" />
+        <span><strong>Crossgar Dental Practice</strong> · 48 Killyleagh Street, Crossgar, BT30 9DQ</span>
       </div>
       <p class="cd-footer-right">
         <a href={phoneHref}>{phone}</a> · <a href={bookOnline} rel="noopener noreferrer">Book Online ↗</a>
       </p>
     </div>
   </footer>
+
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-cd-tab]");
+    const panels = document.querySelectorAll<HTMLElement>("[data-cd-panel]");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.cdTab;
+        tabs.forEach((t) => {
+          const active = t.dataset.cdTab === target;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((p) => {
+          p.hidden = p.dataset.cdPanel !== target;
+        });
+      });
+    });
+  </script>
 </ConceptLayout>
