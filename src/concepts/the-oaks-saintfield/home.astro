@@ -1,0 +1,244 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+
+/* The Oaks Restaurant & Bar — 5 Darragh Cross, Saintfield, Co. Down, BT24 7EQ.
+   Sources (live-fetched 26 Nov 2026): theoaksbar.com (/, /about.html, /menu.html, /contact.html).
+   - Award-winning family-friendly country restaurant and pub in Darragh Cross
+     (3 miles south-east of Saintfield). Front of house led by Colleen and team.
+   - Live ResDiary online table booking:
+     https://booking.resdiary.com/widget/Standard/TheOaksBarRestaurant/41069
+   - Published menu dishes & prices from /menu.html:
+     Starters: Soup of the Day £6.00 · Cheesy Garlic Bread £6.50 ·
+     Goats Cheese Bruschetta £8.50 · Chicken Wings (6 £8.50 / 10 £12.00) ·
+     Buttermilk Chicken Strips £9.00 · Salmon Fishcake £9.00 ·
+     Homemade Seafood Chowder £9.90 · Tempura King Prawns £11.00.
+     Mains: Creamy Pasta Carbonara £17.00 · Seared Chicken Supreme £18.50 ·
+     Southern Fried Chicken Stack £18.90 · Clip Board Daily Specials.
+   - Published Opening Hours:
+     Mon–Wed Closed · Thu 12:30pm – 8:00pm · Fri & Sat 12:30pm – 8:30pm · Sun 12:30pm – 7:30pm.
+   - Drive times published: 4 mins Saintfield · 15 mins Downpatrick · 15 mins Ballynahinch · 20 mins Belfast.
+   - Phone: +44 28 9751 9167 · Email: info@theoaksbar.com.
+   Brief: research/concepts/the-oaks-saintfield/the-oaks-saintfield-elevation-brief.md */
+
+const phone = "028 9751 9167";
+const phoneIntl = "+44 28 9751 9167";
+const phoneHref = "tel:+442897519167";
+const email = "info@theoaksbar.com";
+const resdiaryUrl = "https://booking.resdiary.com/widget/Standard/TheOaksBarRestaurant/41069";
+const fullMenuUrl = "https://www.theoaksbar.com/menu.html";
+const facebook = "https://www.facebook.com/theoaksbarandrestaurant/";
+const instagram = "https://www.instagram.com/oaksbar/";
+const mapHref = "https://goo.gl/maps/5Czs9LX6KfYAaRkf6";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap";
+
+const starters = [
+  { name: "The Oaks Soup of the Day", note: "Ask your server for today's pot", price: "£6.00" },
+  { name: "Oven-Toasted Cheesy Garlic Bread", note: "Ciabatta, garlic butter garnish", price: "£6.50" },
+  { name: "Goats Cheese Bruschetta", note: "Sun-dried tomato tapenade, balsamic oil", price: "£8.50" },
+  { name: "Smokey BBQ Chicken Wings", note: "Stilton mayo — 6 wings £8.50 · 10 wings £12.00", price: "£8.50 / £12" },
+  { name: "Salmon Fishcake", note: "Roast garlic & lime dressing, dressed leaves", price: "£9.00" },
+  { name: "Homemade Seafood Chowder", note: "Crusty bread & Irish butter", price: "£9.90" },
+  { name: "Tempura King Prawns", note: "Seafood sauce", price: "£11.00" },
+];
+
+const mains = [
+  { name: "Creamy Pasta Carbonara", note: "Bacon, peas, parmesan white wine sauce & garlic bread", price: "£17.00" },
+  { name: "Seared Chicken Supreme", note: "Garlic mash, celeriac purée, crispy carrots, bourbon jus & charred asparagus", price: "£18.50" },
+  { name: "Southern Fried Chicken Stack", note: "Champ, grilled bacon & onion rings", price: "£18.90" },
+  { name: "Clip Board Daily Special", note: "Changes daily using fresh local Northern Irish produce", price: "On the board" },
+];
+
+const driveTimes = [
+  { mins: "4 mins", place: "Saintfield Village" },
+  { mins: "15 mins", place: "Downpatrick" },
+  { mins: "15 mins", place: "Ballynahinch" },
+  { mins: "20 mins", place: "Belfast" },
+];
+---
+
+<ConceptLayout
+  title="The Oaks Restaurant & Bar — 5 Darragh Cross, Saintfield"
+  slug="the-oaks-saintfield"
+  bodyClass="concept-page concept-theoaks"
+  lang="en-GB"
+  businessName="The Oaks Restaurant & Bar"
+  town="Darragh Cross / Saintfield"
+  fontHref={fontHref}
+  bannerNote="The oak dining room and chicken supreme & seafood chowder plates are AI-generated visualisations. Online table bookings open The Oaks' live ResDiary diary; enquiries go to info@theoaksbar.com or 028 9751 9167."
+>
+  <header class="ok-header">
+    <div class="ok-wrap ok-header-inner">
+      <a class="ok-brand" href="#top">
+        <strong>The Oaks</strong>
+        <small>Restaurant &amp; Bar · Darragh Cross, Saintfield</small>
+      </a>
+      <nav class="ok-nav" aria-label="The Oaks Restaurant and Bar">
+        <a href="#clipboard">Clip Board Menu</a>
+        <a href="#hours">Hours &amp; Distances</a>
+        <a href={phoneHref}>{phone}</a>
+      </nav>
+      <a class="ok-header-cta" href={resdiaryUrl} rel="noopener noreferrer">Reserve a Table ↗</a>
+    </div>
+  </header>
+
+  <main id="top" class="ok-main">
+    <section class="ok-hero" aria-labelledby="ok-hero-title">
+      <div class="ok-hero-grid">
+        <div class="ok-hero-copy">
+          <p class="ok-kicker">5 Darragh Cross, Saintfield · County Down</p>
+          <h1 id="ok-hero-title">Good friends, good times, <em>and a country table worth the drive.</em></h1>
+          <p class="ok-lede">
+            An award-winning family-friendly restaurant and pub in the heartland
+            of County Down — where Colleen and our front-of-house team look
+            after every table with fresh Northern Irish seasonal cooking.
+          </p>
+          <div class="ok-hero-actions">
+            <a class="ok-btn ok-btn--sage" href={resdiaryUrl} rel="noopener noreferrer">Book a table via ResDiary ↗</a>
+            <a class="ok-btn ok-btn--outline" href="#clipboard">See today's menu</a>
+          </div>
+          <p class="ok-hours-glance">
+            <strong>Open Thu – Sun</strong> · Thu 12:30–8pm · Fri &amp; Sat 12:30–8:30pm · Sun 12:30–7:30pm
+          </p>
+        </div>
+
+        <figure class="ok-hero-figure">
+          <ResponsiveImage
+            src="/media/concepts/the-oaks-saintfield/the-oaks-dining-room.jpg"
+            alt="Sunlit modern country gastropub dining room with warm oak timber, sage banquettes, brass pendant lights and laid linen tables"
+            width={1376}
+            height={768}
+            loading="eager"
+            sizes="(max-width: 960px) 100vw, 54vw"
+            class="ok-hero-img"
+          />
+          <figcaption>Darragh Cross country dining room mood. Visualisation (AI-generated).</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ok-menu-section" id="clipboard" aria-labelledby="ok-menu-title">
+      <div class="ok-wrap ok-menu-layout">
+        <div class="ok-clipboard">
+          <div class="ok-clip" aria-hidden="true"></div>
+          <div class="ok-clip-head">
+            <p class="ok-kicker">From Our Kitchen · Darragh Cross</p>
+            <h2 id="ok-menu-title">Starters, Mains &amp; the Clip Board Special.</h2>
+            <div class="ok-menu-tabs" role="tablist" aria-label="Menu course">
+              <button type="button" role="tab" aria-selected="true" class="ok-tab is-active" data-ok-tab="starters">Starters</button>
+              <button type="button" role="tab" aria-selected="false" class="ok-tab" data-ok-tab="mains">Mains &amp; Specials</button>
+            </div>
+          </div>
+
+          <ul class="ok-dish-list" data-ok-panel="starters">
+            {starters.map((d) => (
+              <li>
+                <div>
+                  <strong>{d.name}</strong>
+                  <span>{d.note}</span>
+                </div>
+                <em>{d.price}</em>
+              </li>
+            ))}
+          </ul>
+
+          <ul class="ok-dish-list" data-ok-panel="mains" hidden>
+            {mains.map((d) => (
+              <li>
+                <div>
+                  <strong>{d.name}</strong>
+                  <span>{d.note}</span>
+                </div>
+                <em>{d.price}</em>
+              </li>
+            ))}
+          </ul>
+
+          <div class="ok-clip-foot">
+            <a class="ok-btn ok-btn--sage" href={resdiaryUrl} rel="noopener noreferrer">Reserve your table ↗</a>
+            <a class="ok-text-link" href={fullMenuUrl} rel="noopener noreferrer">View full menu ↗</a>
+          </div>
+        </div>
+
+        <aside class="ok-plate-col">
+          <figure class="ok-dish-plate">
+            <ResponsiveImage
+              src="/media/concepts/the-oaks-saintfield/the-oaks-chicken-chowder.jpg"
+              alt="Seared chicken supreme with garlic mash and charred asparagus beside a bowl of creamy Irish seafood chowder and crusty bread"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 44vw"
+              class="ok-dish-img"
+            />
+            <figcaption>Seared chicken supreme &amp; house seafood chowder mood. Visualisation (AI-generated).</figcaption>
+          </figure>
+
+          <div class="ok-colleen-note">
+            <p>“Where no-one is a stranger — just friends we have yet to greet.”</p>
+            <span>Colleen &amp; The Oaks front-of-house team, Darragh Cross</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="ok-crossroads" id="hours" aria-labelledby="ok-hours-title">
+      <div class="ok-wrap ok-cross-grid">
+        <div>
+          <p class="ok-kicker ok-kicker--light">At the Crossroads of County Down</p>
+          <h2 id="ok-hours-title">Easy to reach from Saintfield, Downpatrick, Ballynahinch &amp; Belfast.</h2>
+          <div class="ok-drive-grid">
+            {driveTimes.map((t) => (
+              <div class="ok-drive-card">
+                <strong>{t.mins}</strong>
+                <span>{t.place}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ok-hours-box">
+          <h3>Opening Hours &amp; Desk</h3>
+          <dl>
+            <div><dt>Monday – Wednesday</dt><dd>Closed</dd></div>
+            <div><dt>Thursday</dt><dd>12:30pm – 8:00pm</dd></div>
+            <div><dt>Friday &amp; Saturday</dt><dd>12:30pm – 8:30pm</dd></div>
+            <div><dt>Sunday</dt><dd>12:30pm – 7:30pm</dd></div>
+          </dl>
+          <p class="ok-addr">5 Darragh Cross, Saintfield, BT24 7EQ · <a href={phoneHref}>{phoneIntl}</a></p>
+          <div class="ok-hours-actions">
+            <a class="ok-btn ok-btn--copper" href={resdiaryUrl} rel="noopener noreferrer">Book via ResDiary ↗</a>
+            <a class="ok-btn ok-btn--ghost" href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ok-footer">
+    <div class="ok-wrap ok-footer-inner">
+      <span><strong>The Oaks Restaurant &amp; Bar</strong> · 5 Darragh Cross, Saintfield, BT24 7EQ</span>
+      <span><a href={phoneHref}>{phoneIntl}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a> · <a href={instagram} rel="noopener noreferrer">Instagram</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-ok-tab]");
+    const panels = document.querySelectorAll<HTMLElement>("[data-ok-panel]");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.okTab;
+        tabs.forEach((t) => {
+          const active = t.dataset.okTab === target;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((p) => {
+          p.hidden = p.dataset.okPanel !== target;
+        });
+      });
+    });
+  </script>
+</ConceptLayout>

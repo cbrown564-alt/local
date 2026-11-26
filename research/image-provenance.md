@@ -1749,3 +1749,128 @@ Eighteen bespoke atmospheric visualisations (two per business) generated on 26 N
   - Subject: Overhead food still life of rosy pan-roasted venison medallions, blackberry jus, glazed root vegetables and rustic pear tart on pale stoneware
   - Usage: County Down Larder provenance trace plate
   - Limits: Indicative culinary visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+
+## Newry, Mourne and Down Wave 2 elevated concepts (26 November 2026)
+
+Twenty bespoke atmospheric visualisations (two per business) generated on 26 November 2026 with the Antigravity built-in image generator (`image-generator` subagents) across 10 independent Wave 2 businesses spanning Newry, Mourne and Down. Every image was instructed and verified to contain **zero text, zero signage, zero logos, zero watermarks, and zero identifiable human faces**, carries an on-page visible `<figcaption>` disclosure (`Visualisation (AI-generated)`), and is disclosed in `ConceptLayout` `bannerNote`. Responsive `-640.webp` and `-1265.webp` derivatives accompany each JPEG master.
+
+### Ballymote House
+- `public/media/concepts/ballymote-house/ballymote-house-georgian-facade.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: 18th-century Irish Georgian stone country house with sash windows, climbing roses and walled-garden lawns at golden hour
+  - Usage: Framed album hero on `/concepts/ballymote-house/` & `/for/ballymote-house-b4m7/`
+  - Limits: Indicative architectural visualisation without reference photographs; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/ballymote-house/ballymote-house-morning-table.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit Georgian breakfast table with linen cloth, vintage floral teapot, berries and Irish wheaten bread beside a tall window
+  - Usage: Curtis Room & Lecale section plate
+  - Limits: Indicative hospitality visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Slieve Croob Camping
+- `public/media/concepts/slieve-croob-camping/slieve-croob-ridge-camp.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Lantern-lit canvas bell tent on a high green Dromara hillside beside drystone walls overlooking blue Mourne silhouettes at dusk
+  - Usage: Full-bleed hero on `/concepts/slieve-croob-camping/` & `/for/slieve-croob-camping-s7c3/`
+  - Limits: Indicative hillside camping visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/slieve-croob-camping/slieve-croob-farm-logs.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Stacked seasoned split ash firewood logs beside a fieldstone wall and glowing camp firepit overlooking misty hills
+  - Usage: Farm facilities section plate
+  - Limits: Indicative camping visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Saintfield Nursery Centre
+- `public/media/concepts/saintfield-nursery/saintfield-nursery-glasshouse.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit timber-and-glass nursery conservatory lined with terracotta pots, flowering perennials and trailing evergreens
+  - Usage: Split conservatory hero on `/concepts/saintfield-nursery/` & `/for/saintfield-nursery-s9n2/`
+  - Limits: Indicative nursery visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/saintfield-nursery/saintfield-nursery-potting-bench.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Aged wooden potting bench with terracotta pots, jute twine, brass hand-trowel, secateurs and potted evergreens
+  - Usage: Departments & visit column plate
+  - Limits: Indicative botanical still-life visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Mourne Windows & Doors
+- `public/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Contemporary Irish country home extension with slim anthracite aluminium bi-fold doors opened onto a granite patio overlooking green Mourne hills
+  - Usage: Full-bleed architectural hero on `/concepts/mourne-windows/` & `/for/mourne-windows-m6w8/`
+  - Limits: Indicative glazing visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Crisp white heritage vertical sliding sash window set in a sunlit lime-plaster reveal over a honed limestone sill
+  - Usage: Craft & showroom section plate
+  - Limits: Indicative architectural detail visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### DigiTech Repairs
+- `public/media/concepts/digitech-repairs/digitech-repairs-workbench.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Organised electronics repair workbench with circuit board under task lamp, soldering iron, precision drivers and soft-focus oscilloscope waveform
+  - Usage: Asymmetric workshop hero on `/concepts/digitech-repairs/` & `/for/digitech-repairs-d3r5/`
+  - Limits: Indicative technical workshop visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/digitech-repairs/digitech-repairs-hifi-detail.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Unbranded brushed-aluminium stereo amplifier with knurled metal knobs and warm amber meter beside brass test probes
+  - Usage: Bench capabilities section plate
+  - Limits: Indicative audio repair visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Rostrevor Inn
+- `public/media/concepts/the-rostrevor-inn/rostrevor-inn-fireside-session.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit 18th-century Irish pub snug with open peat fire, acoustic guitar, wooden fiddle, whiskey tumbler and stout pint
+  - Usage: Full-bleed fireside hero on `/concepts/the-rostrevor-inn/` & `/for/rostrevor-inn-r4i8/`
+  - Limits: Indicative traditional bar & session visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-rostrevor-inn/rostrevor-inn-stables-dining.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit weathered oak bistro table inside historic rubble-stone stables with roasted dish, crusty sourdough and red wine
+  - Usage: Stables bistro & hours plate
+  - Limits: Indicative dining visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Oaks Restaurant & Bar
+- `public/media/concepts/the-oaks-saintfield/the-oaks-dining-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit modern country gastropub dining room with natural oak timber, sage-green banquettes, brass pendants and laid tables
+  - Usage: Split country dining hero on `/concepts/the-oaks-saintfield/` & `/for/the-oaks-saintfield-o5k9/`
+  - Limits: Indicative dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-oaks-saintfield/the-oaks-chicken-chowder.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Seared chicken supreme over mash with charred asparagus beside creamy Irish seafood chowder and crusty bread on natural oak
+  - Usage: Clip-board menu companion plate
+  - Limits: Indicative culinary visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Kilmorey Arms Hotel
+- `public/media/concepts/kilmorey-arms-hotel/kilmorey-arms-coastal-lounge.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Coastal Irish hotel dining room and lounge at blue hour with crisp white tablecloths and brass lamps overlooking Atlantic harbour waters and Mourne peaks
+  - Usage: Full-bleed twilight hero on `/concepts/kilmorey-arms-hotel/` & `/for/kilmorey-arms-k2h6/`
+  - Limits: Indicative coastal hotel visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/kilmorey-arms-hotel/kilmorey-arms-kilkeel-seafood.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Pan-roasted local white fish fillet and roasted langoustines with lemon herb butter and samphire on handmade pale porcelain
+  - Usage: Under-one-mile Kilkeel Harbour seafood section plate
+  - Limits: Indicative seafood plate visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Bridge Bar (Newry)
+- `public/media/concepts/the-bridge-bar-newry/bridge-bar-cocktail-counter.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Moody copper and walnut bar counter with two crystal coupe cocktails and a rosemary-and-citrus botanical gin goblet under amber back-bar glow
+  - Usage: Full-bleed cocktail hero on `/concepts/the-bridge-bar-newry/` & `/for/bridge-bar-newry-b9n4/`
+  - Limits: Indicative bar counter visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-bridge-bar-newry/bridge-bar-evening-garden.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Festoon-lit brick-and-timber courtyard beer garden at dusk with sheltered booths, potted evergreens and warm table lanterns
+  - Usage: Beer garden & 2026 celebration catering plate
+  - Limits: Indicative courtyard visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Carrick Little Glamping
+- `public/media/concepts/carrick-little-glamping/carrick-little-pods-twilight.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Three curved cedar glamping pods with warm amber doorway light beside Mourne granite drystone walls, purple heather, mountain peaks and distant sea
+  - Usage: Full-bleed trailhead hero on `/concepts/carrick-little-glamping/` & `/for/carrick-little-glamping-c8g2/`
+  - Limits: Indicative glamping pods visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/carrick-little-glamping/carrick-little-pod-interior.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Curved natural timber glamping pod interior at sunrise with wool throws and two ceramic mugs looking out the arched door to sunlit Mourne ridges
+  - Usage: Pods & packing section plate
+  - Limits: Indicative pod interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
