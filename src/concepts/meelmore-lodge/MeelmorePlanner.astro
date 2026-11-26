@@ -1,0 +1,204 @@
+---
+/* Meelmore Lodge — Interactive Mourne Trailhead Base & Pitch Planner.
+   Helps hillwalkers pick between Tent Camping, Hostel Beds, The Wee House cottage,
+   or Hare's Gap Bistro before booking on the live Freetobook portal. */
+interface Props {
+  bookingHref: string;
+  phone: string;
+  phoneHref: string;
+}
+const { bookingHref, phone, phoneHref } = Astro.props;
+
+const options = [
+  {
+    id: "camp",
+    label: "Tent Campsite",
+    title: "Stone-walled meadow pitching directly at the Trassey Track gate.",
+    note: "Tents only (no caravans, campervans or electric hook-ups) so the valley stays quiet under Slieve Meelmore.",
+    points: ["Hot showers & walker washroom", "Step straight onto the Trassey Track to Hare's Gap", "Seasonal pitching — book your tent slot online"],
+    cta: "Book Tent Pitch via Freetobook ↗",
+    href: bookingHref,
+    external: true,
+  },
+  {
+    id: "hostel",
+    label: "Walker Hostel",
+    title: "Warm, practical bunk & private rooms for Mourne walking groups.",
+    note: "Ideal for DofE teams, hillwalking clubs and early-start summit days across Bearnagh and Donard.",
+    points: ["Drying facilities & self-catering kitchen", "Breakfast next door at Hare's Gap Bistro", "On-site trailhead parking off Trassey Road"],
+    cta: "Check Hostel Beds via Freetobook ↗",
+    href: bookingHref,
+    external: true,
+  },
+  {
+    id: "cottage",
+    label: "The Wee House",
+    title: "Self-catering granite cottage tucked right below the High Mournes.",
+    note: "Private cottage stay for couples or small families wanting mountain silence without packing a tent.",
+    points: ["Full self-catering kitchen & warm living room", "Trailhead access without driving to a car park", "Direct booking with Meelmore Lodge"],
+    cta: "Check Cottage Dates via Freetobook ↗",
+    href: bookingHref,
+    external: true,
+  },
+  {
+    id: "bistro",
+    label: "Hare's Gap Bistro",
+    title: "Cooked breakfasts, homemade soup and traybakes off the hill.",
+    note: "Open weekends year-round and daily from April through September for walkers and passing visitors.",
+    points: ["Hearty Ulster fry & buttered soda farls", "Teas, coffees, scones & lunchtime specials", "No stay needed — park at Trassey Road"],
+    cta: `Ring the Lodge · ${phone}`,
+    href: phoneHref,
+    external: false,
+  },
+];
+---
+
+<section class="ml-planner-band" id="plan-stay" aria-labelledby="ml-planner-title">
+  <div class="ml-wrap">
+    <div class="ml-planner-card" data-ml-planner>
+      <div class="ml-planner-head">
+        <div>
+          <p class="ml-kicker">Basecamp Selector · 52 Trassey Road</p>
+          <h2 id="ml-planner-title">How are you tackling the Mournes?</h2>
+        </div>
+        <div class="ml-tabs" role="tablist" aria-label="Choose stay or visit type">
+          {options.map((o, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["ml-tab", idx === 0 && "is-active"]}
+              data-ml-tab={o.id}
+            >
+              {o.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {options.map((o, idx) => (
+        <div class="ml-panel" role="tabpanel" data-ml-panel={o.id} hidden={idx !== 0}>
+          <h3>{o.title}</h3>
+          <p class="ml-panel-note">{o.note}</p>
+          <ul class="ml-panel-points">
+            {o.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="ml-panel-foot">
+            <a
+              class="ml-btn ml-btn--primary"
+              href={o.href}
+              target={o.external ? "_blank" : undefined}
+              rel={o.external ? "noopener noreferrer" : undefined}
+            >
+              {o.cta}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ml-planner-band {
+    padding: clamp(44px, 6vw, 72px) 0;
+  }
+  .ml-planner-card {
+    background: #ffffff;
+    border: 1px solid rgba(27, 40, 32, 0.16);
+    border-top: 3px solid #2f573d;
+    border-radius: 4px;
+    padding: clamp(24px, 4vw, 38px);
+  }
+  .ml-planner-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(27, 40, 32, 0.12);
+  }
+  .ml-planner-head h2 {
+    margin: 0;
+    font-family: var(--ml-serif);
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+    font-weight: 500;
+  }
+  .ml-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ml-tab {
+    padding: 9px 15px;
+    border-radius: 3px;
+    border: 1px solid rgba(27, 40, 32, 0.22);
+    background: #f6f5f0;
+    color: #1b2820;
+    font-family: var(--ml-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .ml-tab.is-active {
+    background: #2f573d;
+    border-color: #2f573d;
+    color: #ffffff;
+  }
+  .ml-panel {
+    padding-top: 24px;
+  }
+  .ml-panel h3 {
+    margin: 0 0 8px;
+    font-family: var(--ml-serif);
+    font-size: 1.38rem;
+    font-weight: 500;
+  }
+  .ml-panel-note {
+    margin: 0 0 20px;
+    color: #4f5e53;
+    max-width: 64ch;
+  }
+  .ml-panel-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .ml-panel-points li {
+    background: #f6f5f0;
+    border: 1px solid rgba(27, 40, 32, 0.12);
+    padding: 14px 16px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    color: #1b2820;
+  }
+  @media (max-width: 780px) {
+    .ml-panel-points { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-ml-planner]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-ml-tab]")];
+    const panels = [...root.querySelectorAll("[data-ml-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-ml-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          p.hidden = p.getAttribute("data-ml-panel") !== id;
+        });
+      });
+    });
+  })();
+</script>

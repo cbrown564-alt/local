@@ -1,0 +1,174 @@
+---
+/* Millbrook Lodge Hotel — Interactive Wedding & Estate Space Matcher.
+   Lets couples and families compare Millbrook's one-wedding-per-day spaces,
+   16 Georgian rectory rooms, and Afternoon Tea before sending a date enquiry. */
+const spaces = [
+  {
+    id: "wedding",
+    label: "One-Wedding-Per-Day",
+    title: "Exclusive wedding day across our 1800s Georgian house and manicured gardens.",
+    capacity: "Up to 300 guests · Civil ceremony licensed",
+    highlights: ["The Orangerie for arrival drinks", "Chandelier-lit Courtyard & Garden Suites", "Outdoor Wedding Garden & Bridal Suite"],
+    cta: "Check Wedding Dates",
+    href: "#enquire",
+  },
+  {
+    id: "rooms",
+    label: "16 Rectory Bedrooms",
+    title: "Individually designed en-suite Master, Classic & Rectory rooms.",
+    capacity: "24-hour reception · Check-in 3pm · Check-out 11am",
+    highlights: ["Former 1800s Georgian rectory character", "Surrounded by mature County Down trees", "Direct hotel rates via our live booking desk"],
+    cta: "Book Rooms Direct ↗",
+    href: "https://book.millbrooklodge.co.uk/",
+    external: true,
+  },
+  {
+    id: "dining",
+    label: "The Gilmore & Afternoon Tea",
+    title: "Sunday carvery, evening dining and three-tier conservatory Afternoon Tea.",
+    capacity: "Breakfast, lunch, early bird & private dining",
+    highlights: ["Homemade buttermilk scones & traybakes", "Seasonal County Down evening menus", "Instant hotel gift vouchers online"],
+    cta: "Buy Gift Vouchers ↗",
+    href: "https://millbrook-lodge.host.netaffinity.io/ovs/MILLBROOOVS03#!/voucher/search",
+    external: true,
+  },
+];
+---
+
+<section class="mbl-planner-band" id="spaces" aria-labelledby="mbl-planner-title">
+  <div class="mbl-wrap">
+    <div class="mbl-planner-card" data-mbl-planner>
+      <div class="mbl-planner-head">
+        <div>
+          <p class="mbl-kicker">The Georgian Estate · 5 Drumaness Road</p>
+          <h2 id="mbl-planner-title">Plan your wedding, stay or afternoon at Millbrook.</h2>
+        </div>
+        <div class="mbl-tabs" role="tablist" aria-label="Choose estate experience">
+          {spaces.map((s, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["mbl-tab", idx === 0 && "is-active"]}
+              data-mbl-tab={s.id}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {spaces.map((s, idx) => (
+        <div class="mbl-panel" role="tabpanel" data-mbl-panel={s.id} hidden={idx !== 0}>
+          <div class="mbl-panel-meta">
+            <h3>{s.title}</h3>
+            <span class="mbl-cap-pill">{s.capacity}</span>
+          </div>
+          <ul class="mbl-points">
+            {s.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+          <a
+            class="mbl-btn mbl-btn--primary"
+            href={s.href}
+            target={s.external ? "_blank" : undefined}
+            rel={s.external ? "noopener noreferrer" : undefined}
+          >
+            {s.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mbl-planner-band { padding: clamp(44px, 6vw, 72px) 0; }
+  .mbl-planner-card {
+    background: #ffffff;
+    border: 1px solid rgba(30, 40, 33, 0.14);
+    border-top: 3px solid #2c4a3a;
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 3px;
+  }
+  .mbl-planner-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(30, 40, 33, 0.12);
+  }
+  .mbl-planner-head h2 {
+    margin: 0;
+    font-family: var(--mbl-serif);
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+    font-weight: 500;
+  }
+  .mbl-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mbl-tab {
+    padding: 9px 15px;
+    border: 1px solid rgba(30, 40, 33, 0.22);
+    background: #faf8f4;
+    color: #1e2821;
+    font-family: var(--mbl-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .mbl-tab.is-active { background: #2c4a3a; border-color: #2c4a3a; color: #faf8f4; }
+  .mbl-panel { padding-top: 24px; }
+  .mbl-panel-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .mbl-panel-meta h3 { margin: 0; font-family: var(--mbl-serif); font-size: 1.35rem; font-weight: 500; }
+  .mbl-cap-pill {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2c4a3a;
+    background: #eef3ef;
+    padding: 5px 11px;
+    border-radius: 2px;
+  }
+  .mbl-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .mbl-points li {
+    background: #faf8f4;
+    border: 1px solid rgba(30, 40, 33, 0.12);
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    color: #1e2821;
+  }
+  @media (max-width: 780px) {
+    .mbl-points { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-mbl-planner]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-mbl-tab]")];
+    const panels = [...root.querySelectorAll("[data-mbl-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-mbl-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          p.hidden = p.getAttribute("data-mbl-panel") !== id;
+        });
+      });
+    });
+  })();
+</script>

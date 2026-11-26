@@ -1,0 +1,188 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* The Barn Bar & Country Kitchen — 37A Mearne Road, Saul, Downpatrick BT30 6SY.
+   Verified live 26 Nov 2026: thebarnsaul.com has spam link injection ("Forbrukernet.com")
+   and outdated "Google Chrome Frame" warning on homepage, despite live /menu/, /takeaway-menu/, /vouchers/.
+   Founded 1911 by Thomas McNamara in Saul Parish, Lecale drumlins. Phone: 028 4461 5750. */
+const phone = "028 4461 5750";
+const phoneHref = "tel:+442844615750";
+const menuHref = "https://www.thebarnsaul.com/menu/";
+const takeawayHref = "https://www.thebarnsaul.com/takeaway-menu/";
+const voucherHref = "https://www.thebarnsaul.com/vouchers/";
+const fbHref = "https://www.facebook.com/thebarnsaul/";
+const igHref = "https://www.instagram.com/thebarnsaul/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Barn+Bar+and+Country+Kitchen+37A+Mearne+Road+Saul+BT30+6SY";
+
+const kitchenGroups = [
+  {
+    id: "kitchen",
+    label: "Country Kitchen & Roasts",
+    items: [
+      { name: "Locally Sourced Country Kitchen", note: "Freshly prepared Lecale meat, poultry, coastal fish and hearty classics cooked to order", meta: "Dine-in" },
+      { name: "Traditional Sunday Dinner", note: "Roast sirloin, seasonal vegetables, crisp roast potatoes and homemade gravy in the drumlins", meta: "Sundays" },
+      { name: "Takeaway Menu", note: "Barn kitchen favourites prepared to collect from Mearne Road", meta: "Collect at The Barn" },
+    ],
+  },
+  {
+    id: "tavern",
+    label: "Bar, Vouchers & Stays",
+    items: [
+      { name: "Saul Parish Tavern (Est. 1911)", note: "First opened by Thomas McNamara in 1911 — refurbished country bar in St Patrick's country", meta: "Since 1911" },
+      { name: "Gift Vouchers", note: "Dining and bar vouchers available directly through The Barn", meta: "Online & at desk" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="The Barn Bar & Country Kitchen — Est. 1911, Saul, Downpatrick"
+  slug="the-barn-saul"
+  bodyClass="concept-page concept-barnsaul"
+  businessName="The Barn Bar & Country Kitchen"
+  town="Saul"
+  bannerNote="Imagery comprises indicative rural stone tavern and Sunday roast visualisations."
+>
+  <header class="bs-header">
+    <div class="bs-header-inner">
+      <a class="bs-brand" href="#top">
+        <strong>The Barn</strong>
+        <span>Bar &amp; Country Kitchen · Saul · Est. 1911</span>
+      </a>
+      <nav class="bs-nav" aria-label="Primary">
+        <a href="#story">Since 1911</a>
+        <a href="#kitchen">Country Kitchen</a>
+        <a href="#book">Reservations</a>
+        <a href="#location">Mearne Road</a>
+      </nav>
+      <div class="bs-header-actions">
+        <a class="bs-header-tel" href={phoneHref}>{phone}</a>
+        <a class="bs-header-cta" href={phoneHref}>Book a Table</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="bs-hero" aria-labelledby="bs-hero-title">
+      <figure class="bs-hero-media">
+        <picture>
+          <source srcset="/media/concepts/the-barn-saul/barn-saul-stone-tavern-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-stone-tavern-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/the-barn-saul/barn-saul-stone-tavern.jpg" alt="Whitewashed stone country tavern nestled among County Down drumlin hills with glowing windows at golden hour" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="bs-hero-cap">Indicative Saul country tavern visualisation.</figcaption>
+      </figure>
+      <div class="bs-hero-scrim" aria-hidden="true"></div>
+      <div class="bs-hero-content">
+        <p class="bs-eyebrow">37A Mearne Road · Saul · Heart of St Patrick's Country</p>
+        <h1 id="bs-hero-title">A Saul Parish tavern since 1911, tucked in the Lecale drumlins.</h1>
+        <p class="bs-hero-lead">
+          Locally sourced country-kitchen cooking, Sunday roasts, takeaway favourites and a warm pint
+          five minutes outside Downpatrick.
+        </p>
+        <div class="bs-hero-actions">
+          <a class="bs-btn bs-btn--primary" href={phoneHref}>Ring for Reservations · {phone}</a>
+          <SpecimenSheet
+            id="bs-kitchen-sheet"
+            triggerLabel="Kitchen & Vouchers Guide"
+            kicker="The Barn · 37A Mearne Road, Saul"
+            title="Country Kitchen, Takeaway & Vouchers"
+            subtitle="First opened by Thomas McNamara in 1911 — call 028 4461 5750 to reserve your table."
+            groups={kitchenGroups}
+            ctaLabel="View Full Live Menu ↗"
+            ctaHref={menuHref}
+            ctaExternal={true}
+            secondaryLabel="Gift Vouchers ↗"
+            secondaryHref={voucherHref}
+            buttonClass="bs-btn bs-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-section bs-story" id="story" aria-labelledby="bs-story-title">
+      <div class="bs-wrap bs-three">
+        <article>
+          <span>Est. 1911</span>
+          <h2 id="bs-story-title">Thomas McNamara's Saul Parish Tavern</h2>
+          <p>More than a century after the first doors opened in Saul, the refurbished Barn still draws locals and weekend drivers from across County Down.</p>
+        </article>
+        <article>
+          <span>Menus</span>
+          <h3>Dine In or Collect Takeaway</h3>
+          <p>Browse our <a href={menuHref} target="_blank" rel="noopener noreferrer">full restaurant menu ↗</a> or order from our <a href={takeawayHref} target="_blank" rel="noopener noreferrer">takeaway kitchen ↗</a>.</p>
+        </article>
+        <article>
+          <span>Gifting</span>
+          <h3>Barn Bar &amp; Kitchen Vouchers</h3>
+          <p>Treat family or friends to Sunday dinner in Saul with <a href={voucherHref} target="_blank" rel="noopener noreferrer">direct Barn gift vouchers ↗</a>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bs-section bs-kitchen" id="kitchen" aria-labelledby="bs-kit-title">
+      <div class="bs-wrap bs-split">
+        <figure class="bs-plate">
+          <picture>
+            <source srcset="/media/concepts/the-barn-saul/barn-saul-sunday-roast-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-sunday-roast-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/the-barn-saul/barn-saul-sunday-roast.jpg" alt="Generous country kitchen Sunday roast of sliced sirloin beef, crisp roast potatoes, glazed carrots and Yorkshire pudding" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Sunday roast &amp; country kitchen plates in Saul. Indicative dish visualisation.</figcaption>
+        </figure>
+        <div id="book">
+          <p class="bs-kicker">Book Your Table</p>
+          <h2 id="bs-kit-title">Generous country cooking worth the drive out Mearne Road.</h2>
+          <p>
+            Whether you are stopping after Saul Church and Slieve Patrick or gathering the family for Sunday
+            roast, ring the bar directly to hold your table or place a takeaway collection.
+          </p>
+          <div class="bs-call-card">
+            <span class="bs-call-label">Direct Telephone Desk</span>
+            <a class="bs-call-num" href={phoneHref}>{phone}</a>
+            <div class="bs-quick-links">
+              <a href={menuHref} target="_blank" rel="noopener noreferrer">Full Menu ↗</a>
+              <a href={takeawayHref} target="_blank" rel="noopener noreferrer">Takeaway Menu ↗</a>
+              <a href={voucherHref} target="_blank" rel="noopener noreferrer">Vouchers ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-section bs-map-band" id="location" aria-label="Saul Mearne Road location map">
+      <div class="bs-wrap">
+        <LocalAreaMap
+          id="bs-map"
+          kicker="Saul Parish & Lecale Drumlins"
+          businessName="The Barn Bar & Country Kitchen"
+          address="37A Mearne Road, Saul, Downpatrick, BT30 6SY"
+          lon={-5.6758059}
+          lat={54.3437532}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "6 mins west", side: "l" },
+            { name: "Strangford Ferry", lon: -5.5546, lat: 54.3712, note: "12 mins east", side: "r" },
+            { name: "Killyleagh", lon: -5.6464, lat: 54.3983, note: "12 mins north", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="bs-footer">
+    <div class="bs-wrap bs-footer-inner">
+      <div>
+        <strong>The Barn Bar &amp; Country Kitchen</strong>
+        <p>37A Mearne Road, Saul, Downpatrick, Co. Down, BT30 6SY · Est. 1911</p>
+      </div>
+      <div class="bs-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={igHref} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

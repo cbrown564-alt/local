@@ -1,0 +1,191 @@
+---
+/* Mourne Mountains Brewery — Interactive Core & Seasonal Beer Ledger.
+   Filters verified live Warrenpoint brews by style and links directly to the live web shop. */
+const shopBase = "https://www.mournemountainsbrewery.com";
+
+const beers = [
+  {
+    name: "Rolling Thunder",
+    style: "NEIPA",
+    cat: "hoppy",
+    note: "Hazy, juicy New England IPA brewed with soft Mourne mountain water and bold late-addition hops.",
+    url: `${shopBase}/product-page/rolling-thunder-neipa`,
+  },
+  {
+    name: "Brewers Gloom",
+    style: "West Coast IPA",
+    cat: "hoppy",
+    note: "Piney, resinous, crisp West Coast bitterness balanced on Irish base malts.",
+    url: `${shopBase}/product-page/brewers-gloom-west-coast-ipa`,
+  },
+  {
+    name: "Mourneberger",
+    style: "Helles Lager",
+    cat: "crisp",
+    note: "Clean, cold-conditioned Bavarian-style helles lager poured fresh in cans and taproom kegs.",
+    url: `${shopBase}/product-page/mourneberger-helles-lager`,
+  },
+  {
+    name: "Wounded Knee",
+    style: "Strawberry Sour",
+    cat: "crisp",
+    note: "Bright fruited kettle sour with tart berry snap — a favourite pour in the Saturday Beer Hall.",
+    url: `${shopBase}/product-page/wounded-knee-strawberry-sour`,
+  },
+  {
+    name: "Travelling Tales",
+    style: "Hoppy Red Ale",
+    cat: "malt",
+    note: "Toasted caramel Irish malt backbone lifted by citrus aroma hops.",
+    url: `${shopBase}/product-page/travelling-tales-hoppy-red-ale`,
+  },
+  {
+    name: "Session IPA",
+    style: "Easy-Drinking Pale",
+    cat: "hoppy",
+    note: "Crisp, aromatic session-strength pale built for long afternoons after the Mournes.",
+    url: `${shopBase}/product-page/session-ipa`,
+  },
+];
+---
+
+<section class="mmb-ledger-band" id="beers" aria-labelledby="mmb-ledger-title">
+  <div class="mmb-wrap">
+    <div class="mmb-ledger-head">
+      <div>
+        <p class="mmb-kicker">Brewed with Altitude · Core &amp; Small Batch</p>
+        <h2 id="mmb-ledger-title">On tap in Warrenpoint &amp; in the web shop.</h2>
+      </div>
+      <div class="mmb-filters" role="group" aria-label="Filter beers by style" data-mmb-filters>
+        <button type="button" class="mmb-chip is-active" data-filter="all">All Brews</button>
+        <button type="button" class="mmb-chip" data-filter="hoppy">IPAs &amp; Pale</button>
+        <button type="button" class="mmb-chip" data-filter="crisp">Lager &amp; Sour</button>
+        <button type="button" class="mmb-chip" data-filter="malt">Red &amp; Malt</button>
+      </div>
+    </div>
+
+    <div class="mmb-beer-grid" data-mmb-grid>
+      {beers.map((b) => (
+        <article class="mmb-beer-card" data-cat={b.cat}>
+          <div class="mmb-beer-top">
+            <h3>{b.name}</h3>
+            <span>{b.style}</span>
+          </div>
+          <p>{b.note}</p>
+          <a href={b.url} target="_blank" rel="noopener noreferrer">Order cans in shop ↗</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mmb-ledger-band {
+    padding: clamp(52px, 6.5vw, 84px) 0;
+    background: #141614;
+    border-bottom: 1px solid rgba(217, 130, 43, 0.22);
+  }
+  .mmb-ledger-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .mmb-ledger-head h2 {
+    margin: 0;
+    font-family: var(--mmb-display);
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    line-height: 1.08;
+  }
+  .mmb-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mmb-chip {
+    padding: 8px 14px;
+    border-radius: 2px;
+    border: 1px solid rgba(243, 240, 230, 0.22);
+    background: transparent;
+    color: rgba(243, 240, 230, 0.8);
+    font-family: var(--mmb-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .mmb-chip.is-active {
+    background: #d9822b;
+    border-color: #d9822b;
+    color: #121412;
+  }
+  .mmb-beer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .mmb-beer-card {
+    background: #1c1f1c;
+    border: 1px solid rgba(243, 240, 230, 0.12);
+    border-top: 2px solid #d9822b;
+    padding: 22px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mmb-beer-card[hidden] { display: none; }
+  .mmb-beer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .mmb-beer-top h3 {
+    margin: 0;
+    font-family: var(--mmb-display);
+    font-size: 1.18rem;
+  }
+  .mmb-beer-top span {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e69d50;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .mmb-beer-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(243, 240, 230, 0.76);
+    flex: 1;
+  }
+  .mmb-beer-card a {
+    color: #f3f0e6;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(217, 130, 43, 0.55);
+    align-self: flex-start;
+    padding-bottom: 2px;
+  }
+  @media (max-width: 860px) {
+    .mmb-beer-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const bar = document.querySelector("[data-mmb-filters]");
+    const grid = document.querySelector("[data-mmb-grid]");
+    if (!bar || !grid) return;
+    const chips = [...bar.querySelectorAll("[data-filter]")];
+    const cards = [...grid.querySelectorAll("[data-cat]")];
+    chips.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = btn.getAttribute("data-filter");
+        chips.forEach((c) => c.classList.toggle("is-active", c === btn));
+        cards.forEach((card) => {
+          card.hidden = f !== "all" && card.getAttribute("data-cat") !== f;
+        });
+      });
+    });
+  })();
+</script>

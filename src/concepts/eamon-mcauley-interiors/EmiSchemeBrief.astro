@@ -1,0 +1,176 @@
+---
+/* Eamon McAuley Interior Design — Interactive Project Scope & Showroom Brief Selector.
+   Helps homeowners frame their project scope (Single Room, Full Home, Bespoke Drapery,
+   or High Street Showroom Visit) before ringing the Ballynahinch studio. */
+interface Props {
+  mobile: string;
+  mobileHref: string;
+  landline: string;
+  landlineHref: string;
+}
+const { mobile, mobileHref, landline, landlineHref } = Astro.props;
+
+const scopes = [
+  {
+    id: "room",
+    label: "Single Room Scheme",
+    title: "Re-imagining a living room, kitchen-dining space or master suite.",
+    deliverables: ["Layout, lighting & furniture scale plan", "Curated Irish linen, wool & paint palette", "Bespoke upholstery, rugs & window dressing"],
+    prep: "Bring rough room dimensions and a few daylight photographs on your phone.",
+  },
+  {
+    id: "home",
+    label: "Full Home / New Build",
+    title: "Cohesive architectural interiors from first-fix lighting through final styling.",
+    deliverables: ["Room-by-room material & joinery schedule", "Flooring, stone, hardware & lighting direction", "Sourcing, bespoke beds & installation styling"],
+    prep: "Bring your architect's floor plans so we can review sightlines and electrical layout early.",
+  },
+  {
+    id: "soft",
+    label: "Bespoke Drapery & Furniture",
+    title: "Hand-finished curtains, blinds, statement beds and made-to-order upholstery.",
+    deliverables: ["Fabric sampling from our High Street library", "Pole, track & heading specification", "Coordinated throws, cushions & artwork"],
+    prep: "Drop into 28 High Street to feel fabrics in natural daylight before measuring.",
+  },
+  {
+    id: "showroom",
+    label: "High Street Showroom",
+    title: "Curated tableware, artwork, diffusers, throws and home fragrance.",
+    deliverables: ["Seasonal tableware & sculptural lighting", "Luxury diffusers, candles & room sprays", "One-to-one styling advice in Ballynahinch"],
+    prep: "Ring ahead on the mobile or studio line to reserve uninterrupted consultation time.",
+  },
+];
+---
+
+<section class="em-brief-band" id="scope" aria-labelledby="em-brief-title">
+  <div class="em-wrap">
+    <div class="em-brief-card" data-em-brief>
+      <div class="em-brief-head">
+        <div>
+          <p class="em-kicker">Design Consultations · 28 High Street</p>
+          <h2 id="em-brief-title">Choose the scope that fits your project.</h2>
+        </div>
+        <div class="em-tabs" role="tablist" aria-label="Select interior design scope">
+          {scopes.map((s, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["em-tab", idx === 0 && "is-active"]}
+              data-em-tab={s.id}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {scopes.map((s, idx) => (
+        <div class="em-panel" role="tabpanel" data-em-panel={s.id} hidden={idx !== 0}>
+          <h3>{s.title}</h3>
+          <ul class="em-deliverables">
+            {s.deliverables.map((d) => <li>{d}</li>)}
+          </ul>
+          <div class="em-panel-foot">
+            <p class="em-prep"><strong>What to bring:</strong> {s.prep}</p>
+            <div class="em-panel-actions">
+              <a class="em-btn em-btn--primary" href={mobileHref}>Call Studio Mobile · {mobile}</a>
+              <a class="em-btn em-btn--outline" href={landlineHref}>Office · {landline}</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .em-brief-band { padding: clamp(48px, 6.5vw, 80px) 0; }
+  .em-brief-card {
+    background: #ffffff;
+    border: 1px solid rgba(29, 26, 23, 0.14);
+    border-top: 2px solid #7c5c3e;
+    padding: clamp(24px, 4vw, 42px);
+  }
+  .em-brief-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(29, 26, 23, 0.12);
+  }
+  .em-brief-head h2 {
+    margin: 0;
+    font-family: var(--em-serif);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-weight: 400;
+  }
+  .em-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .em-tab {
+    padding: 9px 15px;
+    border: 1px solid rgba(29, 26, 23, 0.22);
+    background: #f6f4f0;
+    color: #1d1a17;
+    font-family: var(--em-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .em-tab.is-active { background: #1d1a17; border-color: #1d1a17; color: #f6f4f0; }
+  .em-panel { padding-top: 26px; }
+  .em-panel h3 { margin: 0 0 18px; font-family: var(--em-serif); font-size: 1.45rem; font-weight: 400; }
+  .em-deliverables {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .em-deliverables li {
+    background: #f6f4f0;
+    border: 1px solid rgba(29, 26, 23, 0.1);
+    padding: 15px 16px;
+    font-size: 0.9rem;
+    color: #1d1a17;
+  }
+  .em-panel-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(29, 26, 23, 0.1);
+  }
+  .em-prep { margin: 0; font-size: 0.9rem; color: #5e564e; max-width: 52ch; }
+  .em-prep strong { color: #1d1a17; }
+  .em-panel-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  @media (max-width: 780px) {
+    .em-deliverables { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-em-brief]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-em-tab]")];
+    const panels = [...root.querySelectorAll("[data-em-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-em-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          p.hidden = p.getAttribute("data-em-panel") !== id;
+        });
+      });
+    });
+  })();
+</script>

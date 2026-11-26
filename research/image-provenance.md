@@ -1874,3 +1874,128 @@ Twenty bespoke atmospheric visualisations (two per business) generated on 26 Nov
   - Subject: Curved natural timber glamping pod interior at sunrise with wool throws and two ceramic mugs looking out the arched door to sunlit Mourne ridges
   - Usage: Pods & packing section plate
   - Limits: Indicative pod interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+
+---
+
+## Wave 3 NMDDC Concepts (26 November 2026)
+
+### The Yellow Heifer (Camlough)
+- `public/media/concepts/the-yellow-heifer/yellow-heifer-dining-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Warm evening rural Irish village bistro and steakhouse dining room with dark timber panelling, burnt-ochre banquettes, brass table lamps, and linen table settings
+  - Usage: Full-bleed dining hero on `/concepts/the-yellow-heifer/` & `/for/yellow-heifer-y3h7/`
+  - Limits: Indicative bistro dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-yellow-heifer/yellow-heifer-chargrilled-steak.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Seared dry-aged Irish ribeye steak with melting herb butter, roasted vine tomatoes, copper pot of peppercorn jus, and hand-cut chips
+  - Usage: Kitchen & chargrill section plate
+  - Limits: Indicative dish visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Burford Lodge Guest House (Ardglass)
+- `public/media/concepts/burford-lodge/burford-lodge-harbour-view.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Bright seafront guest-house window overlooking Ardglass-style stone marina walls, white sailboats, and Irish Sea morning light with crisp cotton linen
+  - Usage: Full-bleed seafront hero on `/concepts/burford-lodge/` & `/for/burford-lodge-b5g4/`
+  - Limits: Indicative coastal room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/burford-lodge/burford-lodge-morning-breakfast.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit coastal breakfast table with smoked salmon on dark wheaten bread, poached eggs, lemon wedges, and stoneware coffee pot
+  - Usage: Breakfast & coastal stay section plate
+  - Limits: Indicative breakfast visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Meelmore Lodge (Bryansford)
+- `public/media/concepts/meelmore-lodge/meelmore-lodge-trassey-trailhead.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Early morning stone-walled Mourne meadow campsite with pitched trekking tents looking up a granite track toward mist-wreathed peaks
+  - Usage: Full-bleed trailhead hero on `/concepts/meelmore-lodge/` & `/for/meelmore-lodge-m8t2/`
+  - Limits: Indicative Mourne trailhead visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/meelmore-lodge/meelmore-lodge-bistro-breakfast.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Timber-lined mountain bistro table with hearty Ulster fry, soda farls, steaming mug of tea, and folded hillwalking map
+  - Usage: Hare's Gap Bistro section plate
+  - Limits: Indicative bistro plate visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Raymie's Seafood Bar & Grill (Warrenpoint)
+- `public/media/concepts/raymies-warrenpoint/raymies-seafood-platter.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Freshly landed Kilkeel langoustines and sea bass fillets with green chimichurri herb oil and charred lemon on dark glazed stoneware
+  - Usage: Full-bleed seafood hero on `/concepts/raymies-warrenpoint/` & `/for/raymies-warrenpoint-r6s3/`
+  - Limits: Indicative seafood dish visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/raymies-warrenpoint/raymies-lough-dining-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Intimate seaside evening dining room with deep navy walls, warm candlelight, crystal glassware, oak tables, and brass pendants
+  - Usage: Evening dining room & Sunday lunch plate
+  - Limits: Indicative dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Mourne Mountains Brewery (Warrenpoint)
+- `public/media/concepts/mourne-mountains-brewery/mmb-taproom-pours.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Tasting flight of four craft beers (NEIPA, helles lager, red ale, dark stout) on reclaimed oak bar counter with warm amber taproom light
+  - Usage: Full-bleed taproom hero on `/concepts/mourne-mountains-brewery/` & `/for/mourne-brewery-m2b9/`
+  - Limits: Indicative craft beer tasting visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/mourne-mountains-brewery/mmb-brewhouse-tanks.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Independent craft brewhouse interior with stainless fermentation vessels, copper pipework, and sacks of Irish malted barley
+  - Usage: Brewhouse & ingredients section plate
+  - Limits: Indicative brewhouse visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Millbrook Lodge Hotel (Ballynahinch)
+- `public/media/concepts/millbrook-lodge/millbrook-georgian-gardens.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: 1800s Georgian country house hotel framed by emerald lawns, mature beech trees, white garden roses, and warm glowing sash windows at dusk
+  - Usage: Full-bleed estate hero on `/concepts/millbrook-lodge/` & `/for/millbrook-lodge-m7w4/`
+  - Limits: Indicative country estate visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/millbrook-lodge/millbrook-afternoon-tea.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Three-tier porcelain afternoon tea stand in a sunlit conservatory with finger sandwiches, buttermilk scones, pastries, and bone-china cups
+  - Usage: The Gilmore Restaurant & Afternoon Tea plate
+  - Limits: Indicative afternoon tea visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Denvir's Coaching Inn (Downpatrick)
+- `public/media/concepts/denvirs-downpatrick/denvirs-hearth-snug.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Historic 17th-century Irish coaching inn snug bar with roaring open fire in a whitewashed stone hearth, dark beams, and aged oak booths
+  - Usage: Full-bleed coaching inn hero on `/concepts/denvirs-downpatrick/` & `/for/denvirs-downpatrick-d4c8/`
+  - Limits: Indicative historic snug visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/denvirs-downpatrick/denvirs-coaching-bedroom.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Restored coaching-inn boutique bedroom with exposed timber beams, oatmeal linen bedding, deep oxblood throw, and deep sash window light
+  - Usage: Historic bedrooms section plate
+  - Limits: Indicative bedroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Smugglers Table (Killyleagh)
+- `public/media/concepts/the-smugglers-table/smugglers-strangford-chowder.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Rustic ceramic bowl of creamy Strangford seafood chowder with smoked haddock, prawns, and chives alongside homemade dark wheaten bread
+  - Usage: Full-bleed chowder hero on `/concepts/the-smugglers-table/` & `/for/smugglers-table-s3k6/`
+  - Limits: Indicative seafood chowder visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-smugglers-table/smugglers-waterside-tables.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Cosy coastal Irish dining room with sea-teal wainscoting, timber tables, and windows looking onto calm silvery Strangford Lough waters
+  - Usage: Shore Street dining room plate
+  - Limits: Indicative dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Eamon McAuley Interior Design (Ballynahinch)
+- `public/media/concepts/eamon-mcauley-interiors/eamon-mcauley-living-scheme.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Calm contemporary-classic County Down living room with bouclé upholstery, smoked walnut joinery, pleated silk drapery, and travertine table
+  - Usage: Full-bleed interior scheme hero on `/concepts/eamon-mcauley-interiors/` & `/for/eamon-mcauley-e5d9/`
+  - Limits: Indicative residential interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/eamon-mcauley-interiors/eamon-mcauley-fabric-atelier.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Interior design studio worktable with Irish linen, herringbone wool, brushed bronze hardware, limestone tiles, and hand-stitched pleats
+  - Usage: High Street showroom & fabric atelier plate
+  - Limits: Indicative design atelier visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Barn Bar & Country Kitchen (Saul, Downpatrick)
+- `public/media/concepts/the-barn-saul/barn-saul-stone-tavern.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Whitewashed and stone-dressed rural County Down country tavern tucked among green drumlin hills at golden hour with glowing windows
+  - Usage: Full-bleed tavern hero on `/concepts/the-barn-saul/` & `/for/the-barn-saul-b6s2/`
+  - Limits: Indicative country tavern visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-barn-saul/barn-saul-sunday-roast.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Country kitchen Sunday roast of sliced sirloin beef, crisp roast potatoes, honey carrots, Yorkshire pudding, and rich gravy on oak
+  - Usage: Country kitchen & Sunday roast plate
+  - Limits: Indicative Sunday roast visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.

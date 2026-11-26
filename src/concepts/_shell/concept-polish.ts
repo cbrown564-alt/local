@@ -544,6 +544,46 @@ const VERIFIED_SCHEDULES: ScheduleDef[] = [
       6: [8 * 60, 17 * 60],
     },
   },
+  // Wave 3 verified schedules
+  {
+    bodyClass: "concept-yellowheifer",
+    selector: ".yh-hours-list",
+    days: {
+      0: [11 * 60, 19 * 60 + 30],
+      1: null,
+      2: null,
+      3: null,
+      4: [11 * 60, 20 * 60],
+      5: [11 * 60, 20 * 60 + 30],
+      6: [11 * 60, 21 * 60],
+    },
+  },
+  {
+    bodyClass: "concept-raymies",
+    selector: ".rm-hours-list",
+    days: {
+      0: [12 * 60 + 30, 20 * 60],
+      1: null,
+      2: null,
+      3: [17 * 60, 21 * 60],
+      4: [17 * 60, 21 * 60],
+      5: [17 * 60, 21 * 60 + 30],
+      6: [17 * 60, 21 * 60 + 30],
+    },
+  },
+  {
+    bodyClass: "concept-mmb",
+    selector: ".mmb-hours-list",
+    days: {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+      5: null,
+      6: [16 * 60, 23 * 60],
+    },
+  },
 ];
 
 const WEEKDAY_MAP: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
