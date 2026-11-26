@@ -4,12 +4,13 @@ import businesses from "../site/data/businesses.json";
 import "../site/styles/opportunities.css";
 
 const categories = [...new Set(businesses.map((business) => business.category))].sort();
+const towns = [...new Set(businesses.map((business) => business.town).filter(Boolean))].sort();
 const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
 ---
 
 <BaseLayout
   title="Opportunities · Mourne Made"
-  description="Internal prospecting and research workspace for Dundrum and Newcastle business opportunities."
+  description="Internal prospecting and research workspace for Newry, Mourne and Down business opportunities."
   class="opportunities-body"
   hideHeader
   hideFooter
@@ -40,8 +41,7 @@ const dataJson = JSON.stringify(businesses).replaceAll("<", "\\u003c");
         <span>Town</span>
         <select data-filter="town">
           <option value="">All towns</option>
-          <option value="Dundrum">Dundrum</option>
-          <option value="Newcastle">Newcastle</option>
+          {towns.map((town) => <option value={town}>{town}</option>)}
         </select>
       </label>
       <label>

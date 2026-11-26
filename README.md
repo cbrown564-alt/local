@@ -1,6 +1,6 @@
 # Mourne Made
 
-A working Astro site for a local digital studio serving Dundrum and Newcastle, County Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation before-and-after request.
+A working Astro site for a Dundrum-based local digital studio serving Newry, Mourne and Down. The first complete loop lets a visitor browse a concept transformation, compare the before and after opening screens, reveal the design reasoning, and submit a no-obligation before-and-after request.
 
 ## Run locally
 

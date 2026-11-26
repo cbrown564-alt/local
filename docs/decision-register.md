@@ -64,6 +64,7 @@ to say `experiment` and name the question; otherwise the run is flawed.
 | C14 | New pack defaults: see Pattern canon. Old packs are `legacy` until queued. | This register | 20 Aug 2026 |
 | C15 | Public portfolio is ten businesses (eleven packs); 64 packs archived to `archive/concepts/` | [Portfolio review](../research/portfolio-review/portfolio-review-2026-09-27.md); `pnpm test` | 27 Sep 2026 |
 | C16 | Demand workstream outranks all build work except the request path; checkpoints 30 Oct, 27 Nov, 18 Dec 2026 | [`research/demand/README.md`](../research/demand/README.md); PLAN.md §0 | 27 Sep 2026 |
+| C17 | Service area expanded from Dundrum & Newcastle to the whole Newry, Mourne and Down council area; studio remains based in Dundrum. District-wide discovery filters high-ROI lanes before manual verification. | `PRODUCT.md`; `src/pages/privacy.astro`; `BaseLayout.astro`; `tools/pipeline/research-businesses.mjs` | 26 Nov 2026 |
 
 ---
 

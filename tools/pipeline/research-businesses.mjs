@@ -1,13 +1,58 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const AS_OF = "2026-07-17";
+const args = process.argv.slice(2);
+const hasFlag = (name) => args.includes(name);
+const arg = (name, fallback) => {
+  const index = args.indexOf(name);
+  return index === -1 ? fallback : args[index + 1];
+};
+
+const SCOPE = arg("--scope", "nmddc"); // "nmddc" | "legacy"
+const HIGH_ROI_ONLY = hasFlag("--high-roi");
+const AS_OF = new Date().toISOString().slice(0, 10);
 const ROOT = path.resolve(import.meta.dirname, "..", "..");
 
-const places = {
-  Dundrum: { lat: 54.259, lon: -5.844, radius: 2200 },
-  Newcastle: { lat: 54.215, lon: -5.89, radius: 3500 },
+// Legacy two-town radii (July 2026 baseline).
+const legacyPlaces = {
+  Dundrum: { lat: 54.259, lon: -5.844, radius: 2200, county: "County Down" },
+  Newcastle: { lat: 54.215, lon: -5.89, radius: 3500, county: "County Down" },
 };
+
+// Major settlements across all 7 District Electoral Areas of Newry, Mourne and
+// Down District Council (used to label OSM rows that omit addr:city/town and
+// to distinguish County Down from South Armagh in search queries).
+const nmddcSettlements = {
+  Newry: { lat: 54.1751, lon: -6.3402, county: "Northern Ireland" },
+  Downpatrick: { lat: 54.3282, lon: -5.7166, county: "County Down" },
+  Newcastle: { lat: 54.215, lon: -5.89, county: "County Down" },
+  Dundrum: { lat: 54.259, lon: -5.844, county: "County Down" },
+  Kilkeel: { lat: 54.0604, lon: -6.0002, county: "County Down" },
+  Warrenpoint: { lat: 54.1003, lon: -6.2504, county: "County Down" },
+  Rostrevor: { lat: 54.1014, lon: -6.1977, county: "County Down" },
+  Ballynahinch: { lat: 54.4018, lon: -5.8955, county: "County Down" },
+  Saintfield: { lat: 54.4609, lon: -5.8299, county: "County Down" },
+  Castlewellan: { lat: 54.2599, lon: -5.9403, county: "County Down" },
+  Crossmaglen: { lat: 54.0785, lon: -6.6095, county: "County Armagh" },
+  Bessbrook: { lat: 54.1975, lon: -6.3941, county: "County Armagh" },
+  Camlough: { lat: 54.1846, lon: -6.4126, county: "County Armagh" },
+  Forkhill: { lat: 54.0937, lon: -6.4472, county: "County Armagh" },
+  Newtownhamilton: { lat: 54.1892, lon: -6.5718, county: "County Armagh" },
+  Strangford: { lat: 54.3712, lon: -5.5542, county: "County Down" },
+  Ardglass: { lat: 54.2602, lon: -5.6081, county: "County Down" },
+  Killyleagh: { lat: 54.4009, lon: -5.6524, county: "County Down" },
+  Crossgar: { lat: 54.3999, lon: -5.7647, county: "County Down" },
+  Annalong: { lat: 54.1088, lon: -5.9016, county: "County Down" },
+  Hilltown: { lat: 54.1984, lon: -6.1145, county: "County Down" },
+  Rathfriland: { lat: 54.2367, lon: -6.1597, county: "County Down" },
+  Mayobridge: { lat: 54.182, lon: -6.2248, county: "County Down" },
+  Burren: { lat: 54.1228, lon: -6.245, county: "County Down" },
+  Killough: { lat: 54.2535, lon: -5.6435, county: "County Down" },
+  Clough: { lat: 54.2901, lon: -5.8339, county: "County Down" },
+  Drumaness: { lat: 54.3652, lon: -5.8691, county: "County Down" },
+};
+
+const places = SCOPE === "legacy" ? legacyPlaces : nmddcSettlements;
 
 const googleMapsSeed = {
   Dundrum: [
@@ -244,9 +289,59 @@ function mergeRows(base, incoming) {
   return base;
 }
 
+async function fetchOverpassByDistrict() {
+  const selectors = ["shop", "amenity", "office", "craft", "tourism", "leisure", "healthcare"]
+    .map((key) => `nwr(area.district)["name"]["${key}"];`).join("");
+  const query = `[out:json][timeout:180];area["name"="Newry, Mourne and Down"]["boundary"="administrative"]->.district;(${selectors});out center tags;`;
+  const body = new URLSearchParams({ data: query });
+  const response = await fetch("https://overpass.kumi.systems/api/interpreter", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded", "user-agent": "LocalBusinessResearch/1.0" },
+    body,
+  });
+  if (!response.ok) throw new Error(`Overpass Newry, Mourne and Down: ${response.status}`);
+  const json = await response.json();
+  return json.elements.map((element) => ({ ...element, discoveredFor: "Newry, Mourne and Down" }));
+}
+
+function resolveSettlement(tags, coords) {
+  const listed = tags["addr:city"] || tags["addr:town"] || tags["addr:village"] || tags["addr:suburb"] || "";
+  if (listed) {
+    const listedNorm = norm(listed);
+    const matched = Object.keys(places).find((name) => norm(name) === listedNorm);
+    if (matched) return matched;
+  }
+  return Object.entries(places)
+    .map(([name, p]) => [name, distanceMetres(coords, p)])
+    .sort((a, b) => a[1] - b[1])[0][0];
+}
+
+function isHighRoiLane(row) {
+  if (row.entityType !== "Independent / ownership unverified") return false;
+  if (row.category === "Accommodation") return true;
+  if (row.category === "Tourism & attraction") return true;
+  if (row.category === "Food & drink") {
+    return !["fast_food", "ice_cream", "cafe"].includes(row.subcategory);
+  }
+  if (row.category === "Health & wellbeing") {
+    return ["dentist", "veterinary", "clinic", "optician", "physiotherapist", "podiatrist", "chiropractor", "osteopath"].includes(row.subcategory);
+  }
+  if (row.category === "Professional services" || row.category === "Trades & services") {
+    return true;
+  }
+  if (row.category === "Retail") {
+    return ["bicycle", "furniture", "kitchen", "bathroom_furnishing", "car", "motorcycle", "garden_centre", "jewellery", "optician", "interior_decoration", "flooring", "carpet", "lighting", "farm", "art"].includes(row.subcategory);
+  }
+  return false;
+}
+
 const osmElements = [];
-for (const [name, place] of Object.entries(places)) {
-  osmElements.push(...await fetchOverpass(name, place));
+if (SCOPE === "legacy") {
+  for (const [name, place] of Object.entries(legacyPlaces)) {
+    osmElements.push(...await fetchOverpass(name, place));
+  }
+} else {
+  osmElements.push(...await fetchOverpassByDistrict());
 }
 const osmById = new Map();
 for (const element of osmElements) {
@@ -259,9 +354,12 @@ for (const element of osmById.values()) {
   const tags = element.tags || {};
   const coords = latLon(element);
   if (!tags.name || coords.lat == null || coords.lon == null) continue;
-  const town = Object.entries(places)
-    .map(([name, p]) => [name, distanceMetres(coords, p)])
-    .sort((a, b) => a[1] - b[1])[0][0];
+  const town = SCOPE === "legacy"
+    ? Object.entries(legacyPlaces)
+      .map(([name, p]) => [name, distanceMetres(coords, p)])
+      .sort((a, b) => a[1] - b[1])[0][0]
+    : resolveSettlement(tags, coords);
+  const region = places[town]?.county ?? "Northern Ireland";
   const { category, subtype, entityType } = classify(tags, tags.name);
   const website = contactValue(tags, "website") || tags.url || "";
   const osmUrl = `https://www.openstreetmap.org/${element.type}/${element.id}`;
@@ -279,7 +377,7 @@ for (const element of osmById.values()) {
     website,
     facebook: tags["contact:facebook"] || tags.facebook || "",
     instagram: tags["contact:instagram"] || tags.instagram || "",
-    googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${tags.name}, ${town}, County Down`)}`,
+    googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${tags.name}, ${town}, ${region}`)}`,
     googleMapsVerified: false,
     googleRating: null,
     googleReviewCount: null,
@@ -297,79 +395,102 @@ for (const element of osmById.values()) {
 
 const consolidated = new Map(rows.map((row) => [recordKey(row.town, row.name), row]));
 
-for (const [town, entries] of Object.entries(googleMapsSeed)) {
-  for (const [name, website, mapsUrl] of entries) {
-    const key = recordKey(town, name);
-    const coordsMatch = mapsUrl?.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+if (SCOPE === "legacy") {
+  for (const [town, entries] of Object.entries(googleMapsSeed)) {
+    for (const [name, website, mapsUrl] of entries) {
+      const key = recordKey(town, name);
+      const coordsMatch = mapsUrl?.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+      const incoming = {
+        id: `${slug(town)}-${slug(name)}`,
+        name, town,
+        category: "Other",
+        subcategory: "Google Maps result",
+        entityType: chainNames.has(norm(name)) ? "Larger chain / brand" : "Independent / ownership unverified",
+        address: "", postcode: "", phone: "", email: "", website,
+        facebook: socialHosts.some((host) => website.includes(host)) ? website : "", instagram: "",
+        googleMapsUrl: mapsUrl, googleMapsVerified: true, googleRating: null, googleReviewCount: null,
+        directoryRating: null, directoryReviewCount: null,
+        lat: coordsMatch ? parseFloat(coordsMatch[1]) : null,
+        lon: coordsMatch ? parseFloat(coordsMatch[2]) : null,
+        websiteStatus: websiteState(website),
+        discoverySources: ["Google Maps broad business search"], sourceUrls: [mapsUrl], sourceAsOf: AS_OF,
+        dataConfidence: "Direct Google Maps result; metrics require periodic refresh",
+      };
+      if (consolidated.has(key)) mergeRows(consolidated.get(key), incoming);
+      else consolidated.set(key, incoming);
+    }
+  }
+
+  for (const entry of directorySeed) {
+    const key = recordKey(entry.town, entry.name);
     const incoming = {
-      id: `${slug(town)}-${slug(name)}`,
-      name, town,
-      category: "Other",
-      subcategory: "Google Maps result",
-      entityType: chainNames.has(norm(name)) ? "Larger chain / brand" : "Independent / ownership unverified",
-      address: "", postcode: "", phone: "", email: "", website,
-      facebook: socialHosts.some((host) => website.includes(host)) ? website : "", instagram: "",
-      googleMapsUrl: mapsUrl, googleMapsVerified: true, googleRating: null, googleReviewCount: null,
-      directoryRating: null, directoryReviewCount: null,
-      lat: coordsMatch ? parseFloat(coordsMatch[1]) : null,
-      lon: coordsMatch ? parseFloat(coordsMatch[2]) : null,
-      websiteStatus: websiteState(website),
-      discoverySources: ["Google Maps broad business search"], sourceUrls: [mapsUrl], sourceAsOf: AS_OF,
-      dataConfidence: "Direct Google Maps result; metrics require periodic refresh",
+      id: `${slug(entry.town)}-${slug(entry.name)}`,
+      name: entry.name, town: entry.town, category: entry.category, subcategory: "Local directory listing",
+      entityType: chainNames.has(norm(entry.name)) ? "Larger chain / brand" : "Independent / ownership unverified",
+      address: "", postcode: "", phone: "", email: "", website: "", facebook: "", instagram: "",
+      googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entry.name}, Newcastle, County Down`)}`,
+      googleMapsVerified: false, googleRating: null, googleReviewCount: null,
+      directoryRating: entry.rating, directoryReviewCount: entry.reviews, lat: null, lon: null,
+      websiteStatus: "No website found", discoverySources: ["Newcastle County Down local directory"],
+      sourceUrls: [entry.sourceUrl], sourceAsOf: AS_OF,
+      dataConfidence: "Local directory listing; trading status and metrics not independently confirmed",
     };
     if (consolidated.has(key)) mergeRows(consolidated.get(key), incoming);
     else consolidated.set(key, incoming);
   }
 }
 
-for (const entry of directorySeed) {
-  const key = recordKey(entry.town, entry.name);
-  const incoming = {
-    id: `${slug(entry.town)}-${slug(entry.name)}`,
-    name: entry.name, town: entry.town, category: entry.category, subcategory: "Local directory listing",
-    entityType: chainNames.has(norm(entry.name)) ? "Larger chain / brand" : "Independent / ownership unverified",
-    address: "", postcode: "", phone: "", email: "", website: "", facebook: "", instagram: "",
-    googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entry.name}, Newcastle, County Down`)}`,
-    googleMapsVerified: false, googleRating: null, googleReviewCount: null,
-    directoryRating: entry.rating, directoryReviewCount: entry.reviews, lat: null, lon: null,
-    websiteStatus: "No website found", discoverySources: ["Newcastle County Down local directory"],
-    sourceUrls: [entry.sourceUrl], sourceAsOf: AS_OF,
-    dataConfidence: "Local directory listing; trading status and metrics not independently confirmed",
-  };
-  if (consolidated.has(key)) mergeRows(consolidated.get(key), incoming);
-  else consolidated.set(key, incoming);
-}
-
-const finalRows = [...consolidated.values()].map((row) => {
+const allScoredRows = [...consolidated.values()].map((row) => {
+  const region = places[row.town]?.county ?? "Northern Ireland";
   row.websiteStatus = websiteState(row.website);
-  row.googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(`${row.name} ${row.town} County Down`)}`;
+  row.googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(`${row.name} ${row.town} ${region}`)}`;
   row.sourceUrls = [...new Set(row.sourceUrls)];
   row.discoverySources = [...new Set(row.discoverySources)];
+  row.highRoiLane = isHighRoiLane(row);
   return applyScores(row);
 }).sort((a, b) => b.priorityScore - a.priorityScore || a.town.localeCompare(b.town) || a.name.localeCompare(b.name));
 
-const outputDir = path.join(ROOT, "src", "data");
-const researchDir = path.join(ROOT, "research");
-await fs.mkdir(outputDir, { recursive: true });
-await fs.mkdir(researchDir, { recursive: true });
-await fs.writeFile(path.join(outputDir, "businesses.json"), `${JSON.stringify(finalRows, null, 2)}\n`, "utf8");
+const finalRows = HIGH_ROI_ONLY ? allScoredRows.filter((row) => row.highRoiLane) : allScoredRows;
 
+const defaultOut = SCOPE === "legacy"
+  ? path.join(ROOT, "src", "site", "data", "businesses.json")
+  : path.join(ROOT, "research", "pipeline", HIGH_ROI_ONLY ? "nmddc-high-roi-discovery.json" : "nmddc-discovery.json");
+const defaultSummary = SCOPE === "legacy"
+  ? path.join(ROOT, "research", "pipeline", "discovery-summary.json")
+  : path.join(ROOT, "research", "pipeline", HIGH_ROI_ONLY ? "nmddc-high-roi-summary.json" : "nmddc-discovery-summary.json");
+
+const outPath = path.resolve(ROOT, arg("--out", defaultOut));
+const summaryPath = path.resolve(ROOT, arg("--summary", defaultSummary));
+await fs.mkdir(path.dirname(outPath), { recursive: true });
+await fs.mkdir(path.dirname(summaryPath), { recursive: true });
+await fs.writeFile(outPath, `${JSON.stringify(finalRows, null, 2)}\n`, "utf8");
+
+const towns = [...new Set(finalRows.map((row) => row.town))].sort();
 const summary = {
   asOf: AS_OF,
-  geographicMethod: "2.2 km radius around Dundrum and 3.5 km radius around Newcastle; overlap assigned to the nearer centre",
-  discoverySources: [
-    "OpenStreetMap Overpass named shop/amenity/office/craft/tourism/leisure/healthcare features",
-    "Google Maps broad business searches for each town",
-    "Newcastle County Down local directory category pages",
-  ],
+  scope: SCOPE,
+  highRoiOnly: HIGH_ROI_ONLY,
+  geographicMethod: SCOPE === "legacy"
+    ? "2.2 km radius around Dundrum and 3.5 km radius around Newcastle; overlap assigned to the nearer centre"
+    : "OpenStreetMap administrative boundary for Newry, Mourne and Down District Council; town assigned from addr:city/town/village or nearest settlement",
+  discoverySources: SCOPE === "legacy"
+    ? [
+        "OpenStreetMap Overpass named shop/amenity/office/craft/tourism/leisure/healthcare features",
+        "Google Maps broad business searches for each town",
+        "Newcastle County Down local directory category pages",
+      ]
+    : [
+        "OpenStreetMap Overpass named shop/amenity/office/craft/tourism/leisure/healthcare features inside Newry, Mourne and Down administrative boundary",
+      ],
   totalRecords: finalRows.length,
-  byTown: Object.fromEntries(Object.keys(places).map((town) => [town, finalRows.filter((row) => row.town === town).length])),
+  highRoiRecords: finalRows.filter((row) => row.highRoiLane).length,
+  byTown: Object.fromEntries(towns.map((town) => [town, finalRows.filter((row) => row.town === town).length])),
   directGoogleMapsRecords: finalRows.filter((row) => row.googleMapsVerified).length,
   recordsWithWebsite: finalRows.filter((row) => row.website).length,
   recordsWithPhone: finalRows.filter((row) => row.phone).length,
   recordsWithEmail: finalRows.filter((row) => row.email).length,
   caveat: "This is a source-bounded public-listing census, not proof that every trading business is registered online or currently active.",
 };
-await fs.writeFile(path.join(researchDir, "discovery-summary.json"), `${JSON.stringify(summary, null, 2)}\n`, "utf8");
+await fs.writeFile(summaryPath, `${JSON.stringify(summary, null, 2)}\n`, "utf8");
 
-console.log(JSON.stringify(summary, null, 2));
+console.log(JSON.stringify({ outPath: path.relative(ROOT, outPath), summaryPath: path.relative(ROOT, summaryPath), ...summary }, null, 2));

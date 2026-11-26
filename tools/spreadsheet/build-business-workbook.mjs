@@ -8,8 +8,8 @@ const renderDir = path.join(projectRoot, "research-renders");
 await fs.mkdir(outputDir, { recursive: true });
 await fs.mkdir(renderDir, { recursive: true });
 
-const businesses = JSON.parse(await fs.readFile(path.join(projectRoot, "src", "data", "businesses.json"), "utf8"));
-const summary = JSON.parse(await fs.readFile(path.join(projectRoot, "research", "discovery-summary.json"), "utf8"));
+const businesses = JSON.parse(await fs.readFile(path.join(projectRoot, "src", "site", "data", "businesses.json"), "utf8"));
+const summary = JSON.parse(await fs.readFile(path.join(projectRoot, "research", "pipeline", "discovery-summary.json"), "utf8"));
 const rowEnd = businesses.length + 1;
 
 const C = {
@@ -47,24 +47,27 @@ function styleHeader(range) {
 // Read Me
 readme.showGridLines = false;
 readme.getRange("A1:H2").merge();
-readme.getRange("A1").values = [["Dundrum + Newcastle business opportunity database"]];
+readme.getRange("A1").values = [["Newry, Mourne and Down business opportunity database"]];
 readme.getRange("A1:H2").format = { fill: C.ink, font: { color: C.white, bold: true, size: 25 }, verticalAlignment: "center" };
 readme.getRange("A4:H4").merge();
 readme.getRange("A4").values = [[`Public-source research snapshot · ${summary.asOf}`]];
 readme.getRange("A4:H4").format = { fill: C.yellow, font: { color: C.ink, bold: true } };
-readme.getRange("A6:B14").values = [
-  ["What this is", "A source-bounded census of public business and organisation listings around Dundrum and Newcastle, County Down, prepared to support local digital-agency outreach."],
+const townCountsText = Object.entries(summary.byTown || {})
+  .sort((a, b) => b[1] - a[1])
+  .map(([town, count]) => `${town}: ${count}`)
+  .join(" · ");
+readme.getRange("A6:B13").values = [
+  ["What this is", "A source-bounded census of public business and organisation listings across Newry, Mourne and Down, prepared to support local digital-agency outreach."],
   ["Geographic scope", summary.geographicMethod],
   ["Audience order", "Independent owner-operated businesses first; then charities, clubs, public services and larger chains."],
   ["Discovery sources", summary.discoverySources.join("; ")],
   ["Record count", summary.totalRecords],
-  ["Dundrum", summary.byTown.Dundrum],
-  ["Newcastle", summary.byTown.Newcastle],
+  ["Towns covered", townCountsText],
   ["Important limit", summary.caveat],
   ["How to use it", "Filter Businesses by town/category, review the linked sources, and qualify the record before any outreach. Use Enrichment Queue for the highest-value missing details."],
 ];
-readme.getRange("A6:A14").format = { fill: C.pale, font: { bold: true, color: C.blueDeep }, verticalAlignment: "top" };
-readme.getRange("A6:B14").format.wrapText = true;
+readme.getRange("A6:A13").format = { fill: C.pale, font: { bold: true, color: C.blueDeep }, verticalAlignment: "top" };
+readme.getRange("A6:B13").format.wrapText = true;
 readme.getRange("A16:H16").merge();
 readme.getRange("A16").values = [["Data rules"]];
 readme.getRange("A16:H16").format = { fill: C.blue, font: { color: C.white, bold: true, size: 16 } };
@@ -209,19 +212,19 @@ dashboard.getRange("A1:J2").format = { fill: C.ink, font: { color: C.white, bold
 dashboard.getRange("A3:J3").merge();
 dashboard.getRange("A3").values = [[`Research snapshot · ${summary.asOf} · blanks mean “not found in reviewed sources”, not “does not exist”`]];
 dashboard.getRange("A3:J3").format = { fill: C.yellow, font: { bold: true } };
+const distinctTowns = [...new Set(businesses.map((row) => row.town).filter(Boolean))].length;
 dashboard.getRange("A5:B10").values = [
   ["Coverage", "Value"],
   ["Total records", null],
-  ["Dundrum", null],
-  ["Newcastle", null],
+  ["Towns covered", distinctTowns],
+  ["Independent records", null],
   ["Owned website found", null],
   ["Direct Maps listing", null],
 ];
 styleHeader(dashboard.getRange("A5:B5"));
-dashboard.getRange("B6:B10").formulas = [
-  [`=COUNTA(Businesses!$B$2:$B$${rowEnd})`],
-  [`=COUNTIF(Businesses!$C$2:$C$${rowEnd},"Dundrum")`],
-  [`=COUNTIF(Businesses!$C$2:$C$${rowEnd},"Newcastle")`],
+dashboard.getRange("B6:B6").formulas = [[`=COUNTA(Businesses!$B$2:$B$${rowEnd})`]];
+dashboard.getRange("B8:B10").formulas = [
+  [`=COUNTIF(Businesses!$F$2:$F$${rowEnd},"Independent / ownership unverified")`],
   [`=COUNTIF(Businesses!$I$2:$I$${rowEnd},"<>No website found")`],
   [`=COUNTIF(Businesses!$K$2:$K$${rowEnd},"Direct listing found")`],
 ];
@@ -362,7 +365,7 @@ if (verification.dashboard.total !== verification.expected.total || verification
 }
 await fs.writeFile(path.join(outputDir, "workbook-verification.json"), JSON.stringify(verification, null, 2));
 
-const outputPath = path.join(outputDir, "dundrum-newcastle-business-opportunity-database.xlsx");
+const outputPath = path.join(outputDir, "newry-mourne-down-business-opportunity-database.xlsx");
 const xlsx = await SpreadsheetFile.exportXlsx(workbook);
 await xlsx.save(outputPath);
 

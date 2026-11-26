@@ -34,9 +34,10 @@ const arg = (name, fallback) => {
   const i = args.indexOf(name);
   return i === -1 ? fallback : args[i + 1];
 };
+const inFile = arg("--in");
 const outFile = arg("--out");
 if (!outFile) {
-  console.error("usage: fsa-register.mjs --out <fsa-matches.json>");
+  console.error("usage: fsa-register.mjs [--in <businesses.json>] --out <fsa-matches.json>");
   process.exit(1);
 }
 
@@ -80,9 +81,17 @@ const norm = (value = "") =>
     .replace(/[^a-zA-Z0-9]+/g, " ").trim().toLowerCase();
 
 /** Words that carry no identifying weight when comparing two business names. */
-const STOP = new Set(["the", "and", "ltd", "limited", "co", "company", "newcastle",
-  "dundrum", "down", "ni", "northern", "ireland", "restaurant", "cafe", "bar",
-  "shop", "store", "s"]);
+const STOP = new Set([
+  "the", "and", "ltd", "limited", "co", "company", "down", "armagh", "ni",
+  "northern", "ireland", "mourne", "mournes", "restaurant", "cafe", "bar",
+  "shop", "store", "s",
+  // Newry, Mourne and Down settlements
+  "newry", "newcastle", "dundrum", "downpatrick", "kilkeel", "warrenpoint",
+  "rostrevor", "ballynahinch", "saintfield", "castlewellan", "crossmaglen",
+  "bessbrook", "camlough", "strangford", "ardglass", "killyleagh", "annalong",
+  "hilltown", "rathfriland", "crossgar", "killough", "clough", "forkhill",
+  "newtownhamilton", "mayobridge", "burren", "drumaness",
+]);
 const tokens = (name) => new Set(norm(name).split(" ").filter((t) => t && !STOP.has(t)));
 
 /**
@@ -108,8 +117,9 @@ function similarity(a, b) {
   return shared / Math.max(A.size, B.size);
 }
 
+const inputPath = inFile || new URL("../../src/site/data/businesses.json", import.meta.url);
 const rows = JSON.parse(
-  readFileSync(new URL("../../src/site/data/businesses.json", import.meta.url), "utf8"),
+  readFileSync(inputPath, "utf8"),
 ).filter((row) => censusClass(row) === TRADING);
 
 /**

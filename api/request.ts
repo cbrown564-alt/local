@@ -24,6 +24,7 @@ import { publicTransformationSlugs } from "./public-transformation-slugs.mjs";
 
 const MAX = {
   business: 120,
+  town: 120,
   link: 500,
   idea: 2_000,
   name: 120,
@@ -312,6 +313,7 @@ async function handler(request: RequestInput, response: RequestOutput) {
 
   const fields = {
     business: clean(body?.business, MAX.business),
+    town: clean(body?.town, MAX.town),
     link: clean(body?.link, MAX.link),
     idea: clean(body?.idea, MAX.idea),
     name: clean(body?.name, MAX.name),
@@ -375,6 +377,7 @@ async function handler(request: RequestInput, response: RequestOutput) {
         "New Mourne Made before-and-after request",
         "",
         `Business or organisation: ${fields.business}`,
+        ...(fields.town ? [`Town: ${fields.town}`] : []),
         `Contact: ${contactLine}`,
         `Email: ${emailLine}`,
         `Current link: ${currentLink || "Not supplied"}`,

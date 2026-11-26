@@ -39,6 +39,7 @@ assert.equal((await invoke({ body: { mm_check_field: "bot-filled" } })).statusCo
 
 const validRequest = {
   business: "Test business",
+  town: "Warrenpoint",
   link: "https://example.com",
   idea: "Make booking clearer",
   name: "Test visitor",
@@ -56,12 +57,17 @@ process.env.GMAIL_USER = "sender@example.com";
 process.env.GMAIL_APP_PASSWORD = "test-password";
 process.env.REQUEST_TO_EMAIL = "recipient@example.com";
 
+let deliveredRequestText = "";
 const successfulDelivery = await invoke(
   { body: validRequest },
-  createRequestHandler(async () => ({ messageId: "test-message" })),
+  createRequestHandler(async (mail) => {
+    deliveredRequestText = String(mail.text ?? "");
+    return { messageId: "test-message" };
+  }),
 );
 assert.equal(successfulDelivery.statusCode, 200);
 assert.deepEqual(successfulDelivery.payload, { ok: true });
+assert.ok(deliveredRequestText.includes("Town: Warrenpoint\n"));
 
 // docs/adr/0002: a printed sheet's source has to survive as far as the email,
 // because the inbox is where the decision to keep printing it gets made. The
@@ -215,7 +221,7 @@ assert.equal(alerts[0].responseCode, 535);
 // URL rather than from the visitor.
 assert.equal(alerts[0].source, "onesheet-scopers");
 const alertBody = JSON.stringify(alerts[0]);
-for (const secret of [validRequest.name, validRequest.email, validRequest.business, validRequest.idea]) {
+for (const secret of [validRequest.name, validRequest.email, validRequest.business, validRequest.town, validRequest.idea]) {
   assert.ok(!alertBody.includes(secret), `the alert leaked submitted content: ${secret}`);
 }
 

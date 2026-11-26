@@ -10,11 +10,12 @@ web
 
 ## Users
 
-The primary audience is independent owner-operated businesses in Dundrum and
-Newcastle, County Down. The next audiences, in order, are charities, clubs,
-public services, and larger chains. Visitors are busy local decision-makers
-who need to understand a useful commercial change quickly and without
-technical language.
+The primary audience is independent owner-operated businesses across Newry,
+Mourne and Down (the Newry, Mourne and Down District Council area, spanning
+County Down and South Armagh). The next audiences, in order, are charities,
+clubs, public services, and larger chains. Visitors are busy local
+decision-makers who need to understand a useful commercial change quickly and
+without technical language.
 
 The offer must fit the business. Accommodation, destination food, events,
 specialist retail and high-value services can often justify a deeper route to
@@ -39,9 +40,9 @@ that cannot stretch to a full commercial project.
 
 ## Positioning
 
-A local digital studio that helps businesses around Dundrum and Newcastle own
-and maintain the route from local interest to direct business. It shows the
-change before asking the business to buy.
+A Dundrum-based local digital studio that helps businesses across Newry, Mourne
+and Down own and maintain the route from local interest to direct business. It
+shows the change before asking the business to buy.
 
 ## Offer
 

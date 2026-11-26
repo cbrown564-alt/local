@@ -2,7 +2,9 @@
 
 ## Scope
 
-The initial census covers named public listings within a 2.2 km radius of Dundrum village centre and a 3.5 km radius of Newcastle town centre. Where those circles overlap, an OpenStreetMap feature is assigned to the nearer centre.
+The initial July 2026 census covered named public listings within a 2.2 km radius of Dundrum village centre and a 3.5 km radius of Newcastle town centre (where those circles overlap, an OpenStreetMap feature is assigned to the nearer centre).
+
+From 26 November 2026, the target area expands to the entire **Newry, Mourne and Down District Council** area (all seven District Electoral Areas across County Down and South Armagh). District-wide discovery in `tools/pipeline/research-businesses.mjs` queries the OpenStreetMap administrative boundary for Newry, Mourne and Down, assigns each row from `addr:city`/`town`/`village` or the nearest settlement, and supports `--high-roi` filtering so high-return lanes (accommodation, destination dining/venues, private clinics/vets, specialist retail, trades and tourism) are probed and verified before broad manual sweeps.
 
 This is a source-bounded public-listing census. It cannot prove that every trading business has registered online, remains active, or publishes contact details. Missing fields are retained as missing; they are never inferred.
 
