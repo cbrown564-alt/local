@@ -1,0 +1,169 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* Guru Indian Cuisine — 3 Kildare Street, Newry BT34 1DQ.
+   Verified live 26 Nov 2026: gurunewry.co.uk duplicates nav twice & returns via plain http://.
+   Live Postree online ordering, live gurunewry.voucherhub.ie gift cards, 028 3005 3659.
+   Hours: Mon–Thu 17:00–22:30, Fri–Sat 16:00–23:00, Sun 12:30–21:00. */
+const phone = "028 3005 3659";
+const phoneHref = "tel:+442830053659";
+const orderHref = "https://www.postreelogin.com/ordering/restaurant/menu?restaurant_uid=338e0936-f210-475c-a2a7-ac9fd7324d94";
+const voucherHref = "https://gurunewry.voucherhub.ie";
+const fbHref = "https://www.facebook.com/gurunewry/";
+const igHref = "https://www.instagram.com/gurunewry/?hl=en";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Guru+Indian+Cuisine+3+Kildare+Street+Newry+BT34+1DQ";
+
+const menuGroups = [
+  {
+    id: "kitchen",
+    label: "Tandoor & House Curries",
+    items: [
+      { name: "Clay-Oven Tandoori Classics", note: "Charred lamb tikka, chicken shashlik and king prawns marinated in whole roasted spices", meta: "Dine-in & Takeaway" },
+      { name: "Regional Indian Mains", note: "Slow-simmered saffron butter chicken, bhuna, jalfrezi, biryani and vegetarian thali dishes", meta: "Cooked to order" },
+      { name: "Fresh Naan & Pilau Rice", note: "Garlic, peshwari and keema naan blistered fresh to order from the tandoor", meta: "Order online" },
+    ],
+  },
+  {
+    id: "dining",
+    label: "Dining, Sunday & Gift Cards",
+    items: [
+      { name: "Evening & Sunday Service", note: "Open seven days — including Sunday afternoon dining from 12:30pm", meta: "7 Days" },
+      { name: "Instant Gift Cards", note: "Digital and dining gift vouchers issued online via VoucherHub", meta: "Online vouchers" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="Guru Indian Cuisine — Kildare Street, Newry"
+  slug="guru-indian-newry"
+  bodyClass="concept-page concept-gurunewry"
+  businessName="Guru Indian Cuisine"
+  town="Newry"
+  bannerNote="Imagery comprises indicative Indian dining spread and evening room visualisations."
+>
+  <header class="gi-header">
+    <div class="gi-header-inner">
+      <a class="gi-brand" href="#top">
+        <strong>Guru Indian</strong>
+        <span>3 Kildare Street · Newry</span>
+      </a>
+      <nav class="gi-nav" aria-label="Primary">
+        <a href="#dining">The Dining Room</a>
+        <a href="#hours">Opening Hours</a>
+        <a href="#location">Kildare Street</a>
+      </nav>
+      <div class="gi-header-actions">
+        <a class="gi-header-tel" href={phoneHref}>{phone}</a>
+        <a class="gi-header-cta" href={orderHref} target="_blank" rel="noopener noreferrer">Order Online ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="gi-hero" aria-labelledby="gi-hero-title">
+      <figure class="gi-hero-media">
+        <picture>
+          <source srcset="/media/concepts/guru-indian-newry/guru-indian-feast-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-feast-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/guru-indian-newry/guru-indian-feast.jpg" alt="Evening spread of saffron butter chicken, tandoori lamb tikka, blistered garlic naan and pilau in copper bowls" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="gi-hero-cap">Indicative evening spice feast visualisation.</figcaption>
+      </figure>
+      <div class="gi-hero-scrim" aria-hidden="true"></div>
+      <div class="gi-hero-content">
+        <p class="gi-eyebrow">3 Kildare Street · Newry · Open 7 Days</p>
+        <h1 id="gi-hero-title">Vibrant spices, clay-oven heat and evening hospitality in Newry.</h1>
+        <p class="gi-hero-lead">
+          Fine regional Indian cooking in the heart of Kildare Street — dine beneath brass lanterns,
+          order takeaway direct from the kitchen, or send an instant Guru gift card.
+        </p>
+        <div class="gi-hero-actions">
+          <a class="gi-btn gi-btn--primary" href={orderHref} target="_blank" rel="noopener noreferrer">Order Takeaway Online ↗</a>
+          <a class="gi-btn gi-btn--ghost" href={voucherHref} target="_blank" rel="noopener noreferrer">Buy Gift Cards ↗</a>
+          <SpecimenSheet
+            id="gi-menu-sheet"
+            triggerLabel="Dining & Spice Guide"
+            kicker="Guru Indian Cuisine · 3 Kildare Street, Newry"
+            title="Tandoor, Curries & Gift Vouchers"
+            subtitle="Open 7 days on Kildare Street — order online or call 028 3005 3659 for tables."
+            groups={menuGroups}
+            ctaLabel="Order Online Now ↗"
+            ctaHref={orderHref}
+            ctaExternal={true}
+            secondaryLabel={`Call ${phone}`}
+            secondaryHref={phoneHref}
+            buttonClass="gi-btn gi-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="gi-section gi-dining" id="dining" aria-labelledby="gi-din-title">
+      <div class="gi-wrap gi-split">
+        <figure class="gi-plate">
+          <picture>
+            <source srcset="/media/concepts/guru-indian-newry/guru-indian-dining-room-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-dining-room-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/guru-indian-newry/guru-indian-dining-room.jpg" alt="Upscale indigo and brass-lantern Indian dining room ready for evening table service" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Evening dining room on Kildare Street. Indicative room visualisation.</figcaption>
+        </figure>
+        <div id="hours">
+          <p class="gi-kicker">Open Seven Days · Kildare Street</p>
+          <h2 id="gi-din-title">Dine in beneath the lanterns or collect hot from the tandoor.</h2>
+          <p>
+            Reserve a table for evening dinner or Sunday afternoon service by calling
+            <a href={phoneHref}>{phone}</a>, or place a direct takeaway order straight into our kitchen.
+          </p>
+          <dl class="gi-hours-list">
+            <div><dt>Monday – Thursday</dt><dd>17:00 – 22:30</dd></div>
+            <div><dt>Friday – Saturday</dt><dd>16:00 – 23:00</dd></div>
+            <div><dt>Sunday</dt><dd>12:30 – 21:00</dd></div>
+          </dl>
+          <div class="gi-inline-actions">
+            <a class="gi-btn gi-btn--primary" href={orderHref} target="_blank" rel="noopener noreferrer">Order Online ↗</a>
+            <a class="gi-btn gi-btn--outline" href={voucherHref} target="_blank" rel="noopener noreferrer">Gift Cards ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gi-section" id="location" aria-label="Newry Kildare Street map">
+      <div class="gi-wrap">
+        <LocalAreaMap
+          id="gi-map"
+          tone="dark"
+          kicker="3 Kildare Street · Newry City"
+          businessName="Guru Indian Cuisine"
+          address="3 Kildare Street, Newry, BT34 1DQ"
+          lon={-6.3367911}
+          lat={54.1772558}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Warrenpoint", lon: -6.2538, lat: 54.1014, note: "12 mins south-east", side: "r" },
+            { name: "Camlough", lon: -6.4096, lat: 54.1807, note: "7 mins west", side: "l" },
+            { name: "Bessbrook", lon: -6.3955, lat: 54.1977, note: "7 mins north-west", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="gi-footer">
+    <div class="gi-wrap gi-footer-inner">
+      <div>
+        <strong>Guru Indian Cuisine</strong>
+        <p>3 Kildare Street, Newry, Co. Down, BT34 1DQ</p>
+      </div>
+      <div class="gi-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={orderHref} target="_blank" rel="noopener noreferrer">Order Online ↗</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={igHref} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

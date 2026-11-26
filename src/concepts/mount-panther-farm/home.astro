@@ -1,0 +1,206 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import MpfVisitPlanner from "./MpfVisitPlanner.astro";
+import "./styles.css";
+
+/* Mount Panther Farm Park — 39 Dundrum Road, Clough, Downpatrick BT30 8SJ.
+   Verified live 26 Nov 2026: mountpanther.com duplicates its entire header/nav twice.
+   Live Digitickets portal (mountpanther.digitickets.co.uk/tickets), 028 4426 0011, info@mountpanther.com. */
+const phone = "028 4426 0011";
+const phoneHref = "tel:+442844260011";
+const email = "info@mountpanther.com";
+const ticketHref = "https://mountpanther.digitickets.co.uk/tickets";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Mount+Panther+Farm+Park+39+Dundrum+Road+Clough+BT30+8SJ";
+---
+
+<ConceptLayout
+  title="Mount Panther Farm Park — Clough, County Down"
+  slug="mount-panther-farm"
+  bodyClass="concept-page concept-mountpanther"
+  businessName="Mount Panther Farm Park"
+  town="Clough"
+  bannerNote="Imagery comprises indicative County Down farm park pasture and courtyard visualisations."
+>
+  <header class="mp-header">
+    <div class="mp-header-inner">
+      <a class="mp-brand" href="#top">
+        <strong>Mount Panther</strong>
+        <span>Farm Park · Clough, Co. Down</span>
+      </a>
+      <nav class="mp-nav" aria-label="Primary">
+        <a href="#visit">Visit &amp; Events</a>
+        <a href="#seasons">Through the Year</a>
+        <a href="#groups">Schools &amp; Parties</a>
+        <a href="#location">Find Us</a>
+      </nav>
+      <div class="mp-header-actions">
+        <a class="mp-header-tel" href={phoneHref}>{phone}</a>
+        <a class="mp-header-cta" href={ticketHref} target="_blank" rel="noopener noreferrer">Book Tickets ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="mp-hero" aria-labelledby="mp-hero-title">
+      <figure class="mp-hero-media">
+        <picture>
+          <source srcset="/media/concepts/mount-panther-farm/mount-panther-farm-hero-640.webp 640w, /media/concepts/mount-panther-farm/mount-panther-farm-hero-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/mount-panther-farm/mount-panther-farm-hero.jpg" alt="Sunlit County Down farm park pastures with Highland calves, alpacas and distant Mourne peaks" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="mp-hero-cap">Indicative Mount Panther pastures visualisation.</figcaption>
+      </figure>
+      <div class="mp-hero-scrim" aria-hidden="true"></div>
+      <div class="mp-hero-content">
+        <p class="mp-eyebrow">39 Dundrum Road · Clough · Minutes from Dundrum Bay</p>
+        <h1 id="mp-hero-title">Wide pastures, friendly animals and proper fresh-air days out.</h1>
+        <p class="mp-hero-lead">
+          Family farm visits, season passes, school trips, birthday parties, Pumpkin Patch and our
+          Christmas Experience — right on the road between Clough and Dundrum.
+        </p>
+        <div class="mp-hero-actions">
+          <a class="mp-btn mp-btn--primary" href={ticketHref} target="_blank" rel="noopener noreferrer">Book Tickets Online ↗</a>
+          <a class="mp-btn mp-btn--ghost" href="#groups">School Trips &amp; Parties</a>
+        </div>
+      </div>
+    </section>
+
+    <MpfVisitPlanner ticketHref={ticketHref} />
+
+    <section class="mp-section mp-seasons" id="seasons" aria-labelledby="mp-sea-title">
+      <div class="mp-wrap mp-split">
+        <figure class="mp-plate">
+          <picture>
+            <source srcset="/media/concepts/mount-panther-farm/mount-panther-orchard-play-640.webp 640w, /media/concepts/mount-panther-farm/mount-panther-orchard-play-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/mount-panther-farm/mount-panther-orchard-play.jpg" alt="Rustic farm park courtyard with timber picnic tables, flowering borders and seasonal harvest crates" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Seasonal harvest courtyard at Mount Panther. Indicative visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="mp-kicker">All Four Seasons</p>
+          <h2 id="mp-sea-title">Spring lambs, summer picnics, autumn pumpkins and winter magic.</h2>
+          <p>
+            From warm weekend farm walks and Season Passes to Halloween Fright Night, the Pumpkin Patch
+            and our Christmas Experience, every visit books quickly online through Digitickets so you
+            spend your day with the animals instead of at the gate.
+          </p>
+          <a class="mp-btn mp-btn--primary" href={ticketHref} target="_blank" rel="noopener noreferrer">Browse Live Ticket Calendar ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mp-section mp-groups" id="groups" aria-labelledby="mp-grp-title">
+      <div class="mp-wrap mp-split">
+        <div>
+          <p class="mp-kicker">Schools, Youth Groups &amp; Birthdays</p>
+          <h2 id="mp-grp-title">Organising a school trip or farm birthday party?</h2>
+          <p>
+            Send your preferred date, rough headcount and age range below — our Clough farm office will
+            reply directly with group rates, coach parking and picnic-area availability.
+          </p>
+          <p class="mp-contact-line">
+            Farm office: <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a>
+          </p>
+        </div>
+        <form class="mp-form" data-mp-form>
+          <div class="mp-row">
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+            </label>
+            <label>
+              <span>Telephone</span>
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
+            </label>
+          </div>
+          <div class="mp-row">
+            <label>
+              <span>Preferred date</span>
+              <input name="date" type="date" required />
+            </label>
+            <label>
+              <span>Group size</span>
+              <input name="size" type="number" min="8" max="200" value="25" required />
+            </label>
+          </div>
+          <label>
+            <span>Booking type</span>
+            <select name="kind">
+              <option value="Primary School / Nursery Trip">Primary School or Nursery Trip</option>
+              <option value="Farm Birthday Party">Farm Birthday Party</option>
+              <option value="Youth / Community Group">Youth or Community Group</option>
+              <option value="Season Pass / Accessibility Query">Season Pass or Accessibility Query</option>
+            </select>
+          </label>
+          <label>
+            <span>Notes</span>
+            <textarea name="notes" rows="3" placeholder="Age group, coach parking needed, or special requirements..."></textarea>
+          </label>
+          <button class="mp-btn mp-btn--primary" type="submit">Send Group Enquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="mp-section" id="location" aria-label="Clough location map">
+      <div class="mp-wrap">
+        <LocalAreaMap
+          id="mp-map"
+          kicker="39 Dundrum Road · Clough"
+          businessName="Mount Panther Farm Park"
+          address="39 Dundrum Road, Clough, Downpatrick, BT30 8SJ"
+          lon={-5.8451689}
+          lat={54.2770812}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Dundrum", lon: -5.8442, lat: 54.2591, note: "4 mins south", side: "b" },
+            { name: "Newcastle", lon: -5.8902, lat: 54.2121, note: "10 mins south-west", side: "l" },
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "10 mins north-east", side: "r" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="mp-footer">
+    <div class="mp-wrap mp-footer-inner">
+      <div>
+        <strong>Mount Panther Farm Park</strong>
+        <p>39 Dundrum Road, Clough, Downpatrick, Co. Down, BT30 8SJ</p>
+      </div>
+      <div class="mp-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={ticketHref} target="_blank" rel="noopener noreferrer">Online Tickets ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (() => {
+      const form = document.querySelector("[data-mp-form]");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const fd = new FormData(form);
+        const subject = `Mount Panther Group Enquiry — ${fd.get("kind")} (${fd.get("date")})`;
+        const body = [
+          `Name: ${fd.get("name")}`,
+          `Phone: ${fd.get("phone")}`,
+          `Date: ${fd.get("date")}`,
+          `Group size: ${fd.get("size")}`,
+          `Type: ${fd.get("kind")}`,
+          `Notes: ${fd.get("notes") || "None"}`,
+        ].join("\n");
+        const ev = new CustomEvent("mm:enquiry", {
+          cancelable: true,
+          detail: { to: "info@mountpanther.com", subject, body, phone: "028 4426 0011", phoneHref: "tel:+442844260011" },
+        });
+        if (document.dispatchEvent(ev)) {
+          window.location.href = `mailto:info@mountpanther.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+      });
+    })();
+  </script>
+</ConceptLayout>

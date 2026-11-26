@@ -584,6 +584,33 @@ const VERIFIED_SCHEDULES: ScheduleDef[] = [
       6: [16 * 60, 23 * 60],
     },
   },
+  // Wave 4 verified schedules
+  {
+    bodyClass: "concept-thecuan",
+    selector: ".tc-hours-list",
+    days: {
+      0: [8 * 60, 20 * 60],
+      1: [8 * 60, 20 * 60],
+      2: [8 * 60, 20 * 60],
+      3: [8 * 60, 20 * 60],
+      4: [8 * 60, 20 * 60],
+      5: [8 * 60, 21 * 60],
+      6: [8 * 60, 21 * 60],
+    },
+  },
+  {
+    bodyClass: "concept-gurunewry",
+    selector: ".gi-hours-list",
+    days: {
+      0: [12 * 60 + 30, 21 * 60],
+      1: [17 * 60, 22 * 60 + 30],
+      2: [17 * 60, 22 * 60 + 30],
+      3: [17 * 60, 22 * 60 + 30],
+      4: [17 * 60, 22 * 60 + 30],
+      5: [16 * 60, 23 * 60],
+      6: [16 * 60, 23 * 60],
+    },
+  },
 ];
 
 const WEEKDAY_MAP: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };

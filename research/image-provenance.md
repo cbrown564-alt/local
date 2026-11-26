@@ -1999,3 +1999,128 @@ Twenty bespoke atmospheric visualisations (two per business) generated on 26 Nov
   - Subject: Country kitchen Sunday roast of sliced sirloin beef, crisp roast potatoes, honey carrots, Yorkshire pudding, and rich gravy on oak
   - Usage: Country kitchen & Sunday roast plate
   - Limits: Indicative Sunday roast visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+
+---
+
+## Wave 4 NMDDC Concepts (26 November 2026)
+
+### Murlands Solicitors (Ballynahinch & Downpatrick)
+- `public/media/concepts/murlands-solicitors/murlands-chambers-hero.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Georgian County Down legal chambers with heritage-green panelling, mahogany bookshelves, walnut conference table and brass desk lamp
+  - Usage: Hero on `/concepts/murlands-solicitors/` & `/for/murlands-solicitors-m4l8/`
+  - Limits: Indicative legal chambers visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/murlands-solicitors/murlands-county-down-desk.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Solicitor's oak desk beside sunlit window with cream parchment deeds tied with green ribbon and brass paperweight
+  - Usage: Practice areas & County Down heritage section plate
+  - Limits: Indicative office detail visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### McVeigh Property Services (Newry)
+- `public/media/concepts/mcveigh-property/mcveigh-property-hero.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Contemporary County Down stone-and-render family home overlooking green hills near Newry at golden hour
+  - Usage: Hero on `/concepts/mcveigh-property/` & `/for/mcveigh-property-m5v2/`
+  - Limits: Indicative residential property visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/mcveigh-property/mcveigh-keys-interior.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Bright modern Northern Ireland open-plan kitchen and living space with brass house key resting on travertine tray
+  - Usage: Sales, lettings & valuation section plate
+  - Limits: Indicative interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Tory Bush Cottages (Kilcoo / Tollymore)
+- `public/media/concepts/tory-bush-cottages/tory-bush-cottages-hero.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Restored County Down stone holiday cottage with glowing windows and paddock fence overlooking forested Mourne foothills
+  - Usage: Hero on `/concepts/tory-bush-cottages/` & `/for/tory-bush-t7c4/`
+  - Limits: Indicative cottage exterior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/tory-bush-cottages/tory-bush-hearth-interior.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Stone cottage living room with vaulted oak beams, wood-burning stove, Donegal wool throws and wide Mourne hill views
+  - Usage: Cottages & Eco Loft section plate
+  - Limits: Indicative cottage interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Cuan (Strangford)
+- `public/media/concepts/the-cuan/the-cuan-harbour-dining.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Candlelit maritime-blue seafood dining room in Strangford village with fresh local oysters on ice and twilight harbour light
+  - Usage: Hero on `/concepts/the-cuan/` & `/for/the-cuan-c6s9/`
+  - Limits: Indicative harbour dining visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-cuan/the-cuan-luxury-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Coastal village boutique hotel bedroom with tailored oatmeal headboard, navy throw and Strangford Lough morning views
+  - Usage: Luxury rooms & Cuan House section plate
+  - Limits: Indicative bedroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Mount Panther Farm Park (Clough)
+- `public/media/concepts/mount-panther-farm/mount-panther-farm-hero.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit County Down family farm park pastures with Highland calves and alpacas grazing near a timber barn and distant Mourne peaks
+  - Usage: Hero on `/concepts/mount-panther-farm/` & `/for/mount-panther-m3p7/`
+  - Limits: Indicative farm park visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/mount-panther-farm/mount-panther-orchard-play.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Rustic farm park courtyard with timber picnic tables, flowering borders and seasonal harvest crates under mature beech trees
+  - Usage: Seasonal events & school trips section plate
+  - Limits: Indicative courtyard visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Chestnutt Holiday Parks (Cranfield, Kilkeel)
+- `public/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Golden afternoon Cranfield Beach panorama with pale sand, sea-grass dunes, modern holiday lodges and Mourne mountain backdrop
+  - Usage: Hero on `/concepts/chestnutt-holiday-parks/` & `/for/chestnutt-parks-c8k3/`
+  - Limits: Indicative coastal park visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit cedar-clad holiday lodge deck with outdoor armchairs and panoramic views over Carlingford Lough
+  - Usage: Holiday homes & Cranfield Sands Cottage section plate
+  - Limits: Indicative lodge deck visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Carrive Grove Garden Centre (Forkhill)
+- `public/media/concepts/carrive-grove-garden/carrive-grove-nursery.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Independent Ring of Gullion plant nursery with specimen hedging, flowering shrubs, terracotta pots and South Armagh hills
+  - Usage: Hero on `/concepts/carrive-grove-garden/` & `/for/carrive-grove-c2g5/`
+  - Limits: Indicative nursery visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/carrive-grove-garden/carrive-grove-hedging.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Sunlit close-up of pruned evergreen topiary, young fruit trees and earthenware planters along a gravel nursery walkway
+  - Usage: Bare-root hedging & seasonal stock plate
+  - Limits: Indicative plant stock visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Woodhill Kitchens (Drumaness)
+- `public/media/concepts/woodhill-kitchens/woodhill-fitted-kitchen.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Handmade shaker kitchen in deep sage-charcoal cabinetry with honed quartz island, brass handles and smoked-oak shelving
+  - Usage: Hero on `/concepts/woodhill-kitchens/` & `/for/woodhill-kitchens-w6k4/`
+  - Limits: Indicative kitchen joinery visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/woodhill-kitchens/woodhill-sliderobe-bedroom.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Contemporary fitted bedroom with bespoke floor-to-ceiling sliding wardrobes in muted putty-linen and smoked oak trim
+  - Usage: Sliderobes & fitted bedrooms plate
+  - Limits: Indicative fitted bedroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Ross Cycles (Castlewellan)
+- `public/media/concepts/ross-cycles/ross-cycles-workshop.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Independent bicycle workshop with electric mountain bike in repair stand, metric tool wall and racked trail tyres
+  - Usage: Hero on `/concepts/ross-cycles/` & `/for/ross-cycles-r9b6/`
+  - Limits: Indicative cycle workshop visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/ross-cycles/ross-cycles-castlewellan-trail.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Morning pine-forest singletrack trail in Castlewellan Forest Park with a full-suspension trail bike resting beside a stone wall
+  - Usage: Castlewellan trails & Volt e-bike section plate
+  - Limits: Indicative trail visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Guru Indian Cuisine (Newry)
+- `public/media/concepts/guru-indian-newry/guru-indian-feast.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Evening Indian dining spread in hammered copper bowls with saffron butter chicken, tandoori lamb tikka, blistered garlic naan and basmati pilau
+  - Usage: Hero on `/concepts/guru-indian-newry/` & `/for/guru-indian-g4n7/`
+  - Limits: Indicative Indian feast visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/guru-indian-newry/guru-indian-dining-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
+  - Subject: Upscale modern Indian restaurant dining room with deep indigo walls, warm brass lattice lanterns and dark timber tables
+  - Usage: Evening dining & gift cards section plate
+  - Limits: Indicative dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.

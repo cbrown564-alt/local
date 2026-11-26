@@ -1,0 +1,126 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import WhkProjectBrief from "./WhkProjectBrief.astro";
+import "./styles.css";
+
+/* Woodhill Kitchens — 6 Cumber Road, Drumaness, Ballynahinch BT24 8SG.
+   Verified live 26 Nov 2026: https://www.woodhillkitchens.co.uk/ fails TLS (ERR_TLS_CERT_ALTNAME_INVALID).
+   Fitted kitchens, sliderobes & bespoke bedrooms across Ballynahinch & County Down. Phone: 028 9756 2727. */
+const phone = "028 9756 2727";
+const phoneHref = "tel:+442897562727";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Woodhill+Kitchens+6+Cumber+Road+Drumaness+BT24+8SG";
+---
+
+<ConceptLayout
+  title="Woodhill Kitchens — Fitted Kitchens & Sliderobes, Drumaness"
+  slug="woodhill-kitchens"
+  bodyClass="concept-page concept-woodhill"
+  businessName="Woodhill Kitchens"
+  town="Drumaness"
+  bannerNote="Imagery comprises indicative bespoke shaker kitchen and fitted sliderobe visualisations."
+>
+  <header class="wh-header">
+    <div class="wh-header-inner">
+      <a class="wh-brand" href="#top">
+        <strong>Woodhill Kitchens</strong>
+        <span>Kitchens &amp; Sliderobes · Drumaness</span>
+      </a>
+      <nav class="wh-nav" aria-label="Primary">
+        <a href="#craft">Kitchens &amp; Bedrooms</a>
+        <a href="#sliderobes">Sliderobes</a>
+        <a href="#location">Cumber Road</a>
+      </nav>
+      <div class="wh-header-actions">
+        <a class="wh-header-tel" href={phoneHref}>{phone}</a>
+        <a class="wh-header-cta" href={phoneHref}>Arrange Measure</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wh-hero" aria-labelledby="wh-hero-title">
+      <figure class="wh-hero-media">
+        <picture>
+          <source srcset="/media/concepts/woodhill-kitchens/woodhill-fitted-kitchen-640.webp 640w, /media/concepts/woodhill-kitchens/woodhill-fitted-kitchen-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/woodhill-kitchens/woodhill-fitted-kitchen.jpg" alt="Handmade sage-charcoal shaker kitchen with honed quartz island, brass handles and smoked oak shelving" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="wh-hero-cap">Indicative fitted kitchen joinery visualisation.</figcaption>
+      </figure>
+      <div class="wh-hero-scrim" aria-hidden="true"></div>
+      <div class="wh-hero-content">
+        <p class="wh-eyebrow">6 Cumber Road · Drumaness · Ballynahinch, County Down</p>
+        <h1 id="wh-hero-title">Fitted kitchens, sliderobes and bedrooms built to last.</h1>
+        <p class="wh-hero-lead">
+          Personal local design, honest timber and painted finishes, and tidy County Down installation —
+          from new-build family kitchens to floor-to-ceiling sliding wardrobes.
+        </p>
+        <div class="wh-hero-actions">
+          <a class="wh-btn wh-btn--primary" href={phoneHref}>Ring for a Home Measure · {phone}</a>
+          <a class="wh-btn wh-btn--ghost" href="#craft">Explore Room Options</a>
+        </div>
+      </div>
+    </section>
+
+    <WhkProjectBrief phone={phone} phoneHref={phoneHref} />
+
+    <section class="wh-section wh-sliderobes" id="sliderobes" aria-labelledby="wh-sl-title">
+      <div class="wh-wrap wh-split">
+        <figure class="wh-plate">
+          <picture>
+            <source srcset="/media/concepts/woodhill-kitchens/woodhill-sliderobe-bedroom-640.webp 640w, /media/concepts/woodhill-kitchens/woodhill-sliderobe-bedroom-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/woodhill-kitchens/woodhill-sliderobe-bedroom.jpg" alt="Calm contemporary fitted bedroom with floor-to-ceiling sliding wardrobes in muted putty linen and oak trim" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Floor-to-ceiling fitted sliderobes. Indicative bedroom visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="wh-kicker">Sliderobes &amp; Fitted Bedrooms</p>
+          <h2 id="wh-sl-title">Clean wall-to-wall storage fitted to the millimetre.</h2>
+          <p>
+            Every bedroom has its own chimney breasts, sloping eaves or awkward alcoves. We measure on site
+            across Ballynahinch, Drumaness, Downpatrick and Saintfield so doors glide smoothly and every
+            inch of internal hanging and drawer space works properly.
+          </p>
+          <div class="wh-call-box">
+            <span>Direct Showroom &amp; Measure Desk</span>
+            <a href={phoneHref}>{phone}</a>
+            <p>6 Cumber Road, Drumaness, Ballynahinch, BT24 8SG</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wh-section" id="location" aria-label="Drumaness Ballynahinch map">
+      <div class="wh-wrap">
+        <LocalAreaMap
+          id="wh-map"
+          kicker="6 Cumber Road · Drumaness"
+          businessName="Woodhill Kitchens"
+          address="6 Cumber Road, Drumaness, Ballynahinch, BT24 8SG"
+          lon={-5.8555363}
+          lat={54.3722951}
+          spanKm={18}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Ballynahinch", lon: -5.8971, lat: 54.4011, note: "5 mins north-west", side: "l" },
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "12 mins south-east", side: "r" },
+            { name: "Crossgar", lon: -5.7644, lat: 54.4021, note: "10 mins north-east", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="wh-footer">
+    <div class="wh-wrap wh-footer-inner">
+      <div>
+        <strong>Woodhill Kitchens</strong>
+        <p>6 Cumber Road, Drumaness, Ballynahinch, Co. Down, BT24 8SG</p>
+      </div>
+      <div class="wh-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

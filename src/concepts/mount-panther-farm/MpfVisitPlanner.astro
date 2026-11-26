@@ -1,0 +1,163 @@
+---
+/* Mount Panther Farm Park — Interactive Family Visit, School Trip & Seasonal Events Selector.
+   Connects straight to live Digitickets online ticketing and group booking enquiries. */
+interface Props {
+  ticketHref: string;
+}
+const { ticketHref } = Astro.props;
+
+const visits = [
+  {
+    id: "family",
+    label: "Family Day Out",
+    title: "Meet Highland calves, alpacas, deer and farmyard favourites across open pastures.",
+    points: ["Indoor & outdoor adventure play areas", "Hands-on animal encounters & paddock walks", "Book day tickets & season passes online"],
+    cta: "Book Day Tickets Online ↗",
+    href: ticketHref,
+    external: true,
+  },
+  {
+    id: "events",
+    label: "Seasonal Events",
+    title: "Pumpkin Patch, Halloween Fright Night and our annual Christmas Experience.",
+    points: ["Timed entry slots so families never queue endlessly", "Themed farm trails, photo spots & seasonal treats", "Advance online tickets released per season"],
+    cta: "View Live Event Tickets ↗",
+    href: ticketHref,
+    external: true,
+  },
+  {
+    id: "schools",
+    label: "School Trips",
+    title: "Structured outdoor farm days for primary schools, nurseries and youth groups.",
+    points: ["Guided animal talks & safe coach drop-off", "Dedicated indoor & covered picnic space", "Teacher planning notes & risk info on request"],
+    cta: "Send School Trip Enquiry",
+    href: "#groups",
+    external: false,
+  },
+  {
+    id: "parties",
+    label: "Birthday Parties",
+    title: "Fresh-air farm birthday parties without clearing out your own living room.",
+    points: ["Reserved party space & farm trail access", "Flexible group sizes for weekend celebrations", "Simple direct booking with the Clough farm office"],
+    cta: "Enquire on Party Dates",
+    href: "#groups",
+    external: false,
+  },
+];
+---
+
+<section class="mp-planner-band" id="visit" aria-labelledby="mp-planner-title">
+  <div class="mp-wrap">
+    <div class="mp-planner-card" data-mp-planner>
+      <div class="mp-planner-head">
+        <div>
+          <p class="mp-kicker">Plan Your Visit · 39 Dundrum Road, Clough</p>
+          <h2 id="mp-planner-title">Pick your day at Mount Panther.</h2>
+        </div>
+        <div class="mp-tabs" role="tablist" aria-label="Choose visit type">
+          {visits.map((v, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["mp-tab", idx === 0 && "is-active"]}
+              data-mp-tab={v.id}
+            >
+              {v.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {visits.map((v, idx) => (
+        <div class="mp-panel" role="tabpanel" data-mp-panel={v.id} hidden={idx !== 0}>
+          <h3>{v.title}</h3>
+          <ul class="mp-points">
+            {v.points.map((p) => <li>{p}</li>)}
+          </ul>
+          <a
+            class="mp-btn mp-btn--primary"
+            href={v.href}
+            target={v.external ? "_blank" : undefined}
+            rel={v.external ? "noopener noreferrer" : undefined}
+          >
+            {v.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mp-planner-band { padding: clamp(46px, 6vw, 76px) 0; }
+  .mp-planner-card {
+    background: #ffffff;
+    border: 1px solid rgba(27, 46, 30, 0.14);
+    border-top: 4px solid #2e6b38;
+    border-radius: 8px;
+    padding: clamp(24px, 4vw, 40px);
+  }
+  .mp-planner-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(27, 46, 30, 0.12);
+  }
+  .mp-planner-head h2 { margin: 0; font-family: var(--mp-serif); font-size: clamp(1.7rem, 3.2vw, 2.35rem); font-weight: 600; }
+  .mp-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mp-tab {
+    padding: 9px 15px;
+    border: 1px solid rgba(27, 46, 30, 0.22);
+    background: #f8f9f3;
+    color: #1b2e1e;
+    font-family: var(--mp-sans);
+    font-size: 0.86rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .mp-tab.is-active { background: #2e6b38; border-color: #2e6b38; color: #ffffff; }
+  .mp-panel { padding-top: 24px; }
+  .mp-panel h3 { margin: 0 0 18px; font-family: var(--mp-serif); font-size: 1.35rem; font-weight: 500; }
+  .mp-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .mp-points li {
+    background: #f8f9f3;
+    border: 1px solid rgba(27, 46, 30, 0.1);
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    color: #1b2e1e;
+  }
+  @media (max-width: 780px) { .mp-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-mp-planner]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-mp-tab]")];
+    const panels = [...root.querySelectorAll("[data-mp-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-mp-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-mp-panel") !== id; });
+      });
+    });
+  })();
+</script>

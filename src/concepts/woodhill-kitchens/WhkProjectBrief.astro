@@ -1,0 +1,134 @@
+---
+/* Woodhill Kitchens — Interactive Room & Joinery Scope Selector.
+   Guides Ballynahinch & County Down homeowners across Fitted Kitchens, Sliderobes, and Fitted Bedrooms. */
+interface Props {
+  phone: string;
+  phoneHref: string;
+}
+const { phone, phoneHref } = Astro.props;
+
+const projects = [
+  {
+    id: "kitchen",
+    label: "Fitted Kitchens",
+    title: "Made-to-measure shaker, painted and contemporary kitchens built around real cooking.",
+    points: ["Home measure & practical layout design", "Quartz, solid wood & hard-wearing worktops", "Full County Down fitting from Cumber Road"],
+    prep: "Bring rough wall measurements or new-build plans when visiting our Drumaness showroom.",
+  },
+  {
+    id: "sliderobes",
+    label: "Sliderobes",
+    title: "Floor-to-ceiling sliding wardrobes engineered cleanly into awkward alcoves and eaves.",
+    points: ["Custom internal hanging, drawer & shoe layouts", "Soft-close tracks in mirrored, matte or timber panels", "Maximises floor space without hinged door swing"],
+    prep: "Note your alcove width and ceiling height — we measure accurately on site before manufacture.",
+  },
+  {
+    id: "bedrooms",
+    label: "Fitted Bedrooms",
+    title: "Coordinated bedside joinery, dressing tables and full-wall storage in calm finishes.",
+    points: ["Built-in storage matched to room proportions", "Soft-touch finishes & warm smoked-oak accents", "Tidy installation with minimal disruption"],
+    prep: "Ring 028 9756 2727 to arrange a showroom look at door finishes and internal carcass samples.",
+  },
+];
+---
+
+<section class="wh-brief-band" id="craft" aria-labelledby="wh-brief-title">
+  <div class="wh-wrap">
+    <div class="wh-brief-card" data-wh-brief>
+      <div class="wh-brief-head">
+        <div>
+          <p class="wh-kicker">6 Cumber Road · Drumaness, Ballynahinch</p>
+          <h2 id="wh-brief-title">What are we fitting in your home?</h2>
+        </div>
+        <div class="wh-tabs" role="tablist" aria-label="Choose room type">
+          {projects.map((p, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["wh-tab", idx === 0 && "is-active"]}
+              data-wh-tab={p.id}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {projects.map((p, idx) => (
+        <div class="wh-panel" role="tabpanel" data-wh-panel={p.id} hidden={idx !== 0}>
+          <h3>{p.title}</h3>
+          <ul class="wh-points">
+            {p.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="wh-panel-foot">
+            <p class="wh-prep"><strong>First step:</strong> {p.prep}</p>
+            <a class="wh-btn wh-btn--primary" href={phoneHref}>Book Showroom Visit · {phone}</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .wh-brief-band { padding: clamp(46px, 6vw, 76px) 0; }
+  .wh-brief-card {
+    background: #ffffff;
+    border: 1px solid rgba(34, 30, 26, 0.14);
+    border-top: 3px solid #825a34;
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 2px;
+  }
+  .wh-brief-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(34, 30, 26, 0.12);
+  }
+  .wh-brief-head h2 { margin: 0; font-family: var(--wh-serif); font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 400; }
+  .wh-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wh-tab {
+    padding: 9px 15px;
+    border: 1px solid rgba(34, 30, 26, 0.22);
+    background: #f6f4f0;
+    color: #221e1a;
+    font-family: var(--wh-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .wh-tab.is-active { background: #221e1a; border-color: #221e1a; color: #f6f4f0; }
+  .wh-panel { padding-top: 24px; }
+  .wh-panel h3 { margin: 0 0 18px; font-family: var(--wh-serif); font-size: 1.42rem; font-weight: 400; }
+  .wh-points { list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .wh-points li { background: #f6f4f0; border: 1px solid rgba(34, 30, 26, 0.1); padding: 14px 16px; font-size: 0.9rem; color: #221e1a; }
+  .wh-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .wh-prep { margin: 0; font-size: 0.9rem; color: #5c544b; max-width: 52ch; }
+  .wh-prep strong { color: #221e1a; }
+  @media (max-width: 780px) { .wh-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-wh-brief]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-wh-tab]")];
+    const panels = [...root.querySelectorAll("[data-wh-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-wh-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-wh-panel") !== id; });
+      });
+    });
+  })();
+</script>

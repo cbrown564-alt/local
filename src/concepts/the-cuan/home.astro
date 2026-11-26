@@ -1,0 +1,185 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* The Cuan — 6–12 The Square, Strangford Village BT30 7ND.
+   Verified live 26 Nov 2026: thecuan.com prints raw --> leak & duplicates accommodation nav twice.
+   Live ResDiary (22900), live room packages, live giveavoucher.com/thecuan. Phone: 028 4488 1222. */
+const phone = "028 4488 1222";
+const phoneHref = "tel:+442844881222";
+const tableHref = "https://booking.resdiary.com/widget/Standard/TheCuan/22900?";
+const roomHref = "https://thecuan.com/bookings/#!/accommodation/packages";
+const voucherHref = "https://www.giveavoucher.com/thecuan";
+const fbHref = "https://www.facebook.com/thecuan";
+const igHref = "https://www.instagram.com/thecuan_/?hl=en";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Cuan+6+The+Square+Strangford+BT30+7ND";
+
+const cuanGroups = [
+  {
+    id: "dining",
+    label: "Strangford Dining",
+    items: [
+      { name: "Strangford Lough Seafood", note: "Locally landed oysters, shellfish and daily coastal fish served steps from the slipway", meta: "Book via ResDiary" },
+      { name: "Breakfast (Fri – Mon)", note: "Morning service from 08:00 – 10:30 for residents and Strangford visitors", meta: "08:00 – 10:30" },
+      { name: "Evening & Sunday Tables", note: "Last kitchen orders Thu & Sun 19:45, Fri & Sat 20:45", meta: "Reserve online" },
+    ],
+  },
+  {
+    id: "stay",
+    label: "Luxury Rooms & Cuan House",
+    items: [
+      { name: "Luxury Village Bedrooms", note: "Boutique en-suite rooms on The Square overlooking Strangford Lough", meta: "Direct packages" },
+      { name: "Cuan House & Packages", note: "Dine-and-stay escapes, winter coastal breaks and instant gift vouchers", meta: "Book online" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="The Cuan — Harbourside Inn, Rooms & Dining, Strangford"
+  slug="the-cuan"
+  bodyClass="concept-page concept-thecuan"
+  businessName="The Cuan"
+  town="Strangford"
+  bannerNote="Imagery comprises indicative Strangford dining room and boutique bedroom visualisations."
+>
+  <header class="tc-header">
+    <div class="tc-header-inner">
+      <a class="tc-brand" href="#top">
+        <strong>The Cuan</strong>
+        <span>The Square · Strangford Lough</span>
+      </a>
+      <nav class="tc-nav" aria-label="Primary">
+        <a href="#rooms">Luxury Rooms</a>
+        <a href="#hours">Dining Hours</a>
+        <a href="#location">Strangford Ferry</a>
+      </nav>
+      <div class="tc-header-actions">
+        <a class="tc-header-tel" href={phoneHref}>{phone}</a>
+        <a class="tc-header-cta" href={tableHref} target="_blank" rel="noopener noreferrer">Book a Table ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="tc-hero" aria-labelledby="tc-hero-title">
+      <figure class="tc-hero-media">
+        <picture>
+          <source srcset="/media/concepts/the-cuan/the-cuan-harbour-dining-640.webp 640w, /media/concepts/the-cuan/the-cuan-harbour-dining-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/the-cuan/the-cuan-harbour-dining.jpg" alt="Candlelit coastal seafood dining room in Strangford village with fresh oysters and twilight harbour light" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="tc-hero-cap">Indicative harbourside dining room visualisation.</figcaption>
+      </figure>
+      <div class="tc-hero-scrim" aria-hidden="true"></div>
+      <div class="tc-hero-content">
+        <p class="tc-eyebrow">6–12 The Square · Strangford Village · Steps from the Ferry</p>
+        <h1 id="tc-hero-title">Strangford Lough seafood, boutique rooms and harbour twilight.</h1>
+        <p class="tc-hero-lead">
+          Gather on The Square for freshly landed Strangford shellfish, seasonal evening dining,
+          luxury bedrooms in Cuan House, and effortless coastal breaks.
+        </p>
+        <div class="tc-hero-actions">
+          <a class="tc-btn tc-btn--primary" href={tableHref} target="_blank" rel="noopener noreferrer">Book a Table via ResDiary ↗</a>
+          <a class="tc-btn tc-btn--ghost" href={roomHref} target="_blank" rel="noopener noreferrer">Book Rooms &amp; Packages ↗</a>
+          <SpecimenSheet
+            id="tc-inn-sheet"
+            triggerLabel="Menus & Rooms Guide"
+            kicker="The Cuan · 6–12 The Square, Strangford"
+            title="Dining, Luxury Rooms & Gift Vouchers"
+            subtitle="Live table booking via ResDiary, direct stay packages and instant vouchers."
+            groups={cuanGroups}
+            ctaLabel="Order Gift Vouchers ↗"
+            ctaHref={voucherHref}
+            ctaExternal={true}
+            secondaryLabel={`Call ${phone}`}
+            secondaryHref={phoneHref}
+            buttonClass="tc-btn tc-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="tc-section tc-rooms" id="rooms" aria-labelledby="tc-rooms-title">
+      <div class="tc-wrap tc-split">
+        <figure class="tc-plate">
+          <picture>
+            <source srcset="/media/concepts/the-cuan/the-cuan-luxury-room-640.webp 640w, /media/concepts/the-cuan/the-cuan-luxury-room-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/the-cuan/the-cuan-luxury-room.jpg" alt="Coastal village boutique hotel bedroom with oatmeal headboard, navy throw and Strangford Lough morning light" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Boutique stay on The Square. Indicative bedroom visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="tc-kicker">Stay on The Square</p>
+          <h2 id="tc-rooms-title">Luxury rooms, dine-and-stay packages and Cuan House.</h2>
+          <p>
+            Wake steps from the Strangford–Portaferry ferry slipway, five minutes from Castle Ward,
+            and ten minutes from Ardglass links — with breakfast served Friday through Monday mornings.
+          </p>
+          <div class="tc-inline-actions">
+            <a class="tc-btn tc-btn--primary" href={roomHref} target="_blank" rel="noopener noreferrer">Check Room Packages ↗</a>
+            <a class="tc-btn tc-btn--outline" href={voucherHref} target="_blank" rel="noopener noreferrer">Gift Vouchers ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tc-section tc-hours-band" id="hours" aria-labelledby="tc-hours-title">
+      <div class="tc-wrap tc-split">
+        <div>
+          <p class="tc-kicker">Service &amp; Kitchen Times</p>
+          <h2 id="tc-hours-title">Plan your crossing and table sitting.</h2>
+          <p>
+            Reserve ahead online for Thursday through Sunday dining, or call the desk directly on
+            <a href={phoneHref}>{phone}</a> for weddings, private groups and seasonal hours.
+          </p>
+        </div>
+        <div class="tc-hours-card">
+          <dl class="tc-hours-list">
+            <div><dt>Sunday – Thursday</dt><dd>08:00 – 20:00</dd></div>
+            <div><dt>Friday – Saturday</dt><dd>08:00 – 21:00</dd></div>
+            <div><dt>Breakfast (Fri – Mon)</dt><dd>08:00 – 10:30</dd></div>
+            <div><dt>Last Food Orders (Thu/Sun)</dt><dd>19:45 (Fri/Sat 20:45)</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="tc-section" id="location" aria-label="Strangford Village map">
+      <div class="tc-wrap">
+        <LocalAreaMap
+          id="tc-map"
+          kicker="6–12 The Square · Strangford Narrows"
+          businessName="The Cuan"
+          address="6–12 The Square, Strangford, Downpatrick, BT30 7ND"
+          lon={-5.5557431}
+          lat={54.3708398}
+          spanKm={16}
+          showFerry={true}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Castle Ward", lon: -5.5811, lat: 54.3735, note: "4 mins west", side: "l" },
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "15 mins west", side: "l" },
+            { name: "Ardglass", lon: -5.6085, lat: 54.2613, note: "14 mins south", side: "b" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="tc-footer">
+    <div class="tc-wrap tc-footer-inner">
+      <div>
+        <strong>The Cuan</strong>
+        <p>6–12 The Square, Strangford Village, Co. Down, BT30 7ND</p>
+      </div>
+      <div class="tc-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={voucherHref} target="_blank" rel="noopener noreferrer">Vouchers ↗</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={igHref} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

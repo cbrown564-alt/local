@@ -1,0 +1,181 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* Carrive Grove Garden Centre — 79 Carrive Road, Forkhill, Newry BT35 9TF.
+   Verified live 26 Nov 2026: carrivegrovegardencentre.co.uk misspells "Specimin Hedging" in main nav
+   and uses an ageing text-heavy WordPress layout. 8 miles from Newry, 5 miles from Dundalk.
+   Phone: 028 3088 9188 / Mobile: 07752 719 472. */
+const phone = "028 3088 9188";
+const phoneHref = "tel:+442830889188";
+const mobile = "07752 719 472";
+const mobileHref = "tel:+447752719472";
+const fbHref = "https://facebook.com/549435021871627";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Carrive+Grove+Garden+Centre+79+Carrive+Road+Forkhill+BT35+9TF";
+
+const stockGroups = [
+  {
+    id: "hedging",
+    label: "Hedging & Trees",
+    items: [
+      { name: "Bare-Root Hedging", note: "Seasonal bundles of native hawthorn, beech, laurel and hornbeam for rural boundaries", meta: "Seasonal stock" },
+      { name: "Specimen Hedging & Trees", note: "Established root-balled and container-grown hedging for instant screening", meta: "In stock" },
+      { name: "Fruit Trees & Bushes", note: "Apple, pear, plum and soft-fruit bushes selected for County Down & South Armagh soils", meta: "Orchard range" },
+    ],
+  },
+  {
+    id: "garden",
+    label: "Topiary, Pots & Furniture",
+    items: [
+      { name: "Evergreen Topiary & Shrubs", note: "Shaped bays, boxwood, ornamental shrubs and hardy perennials", meta: "Year-round" },
+      { name: "Pots, Window Boxes & Ornaments", note: "Frost-proof earthenware planters, stoneware urns and outdoor garden furniture", meta: "Nursery yard" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="Carrive Grove Garden Centre — Forkhill, Ring of Gullion"
+  slug="carrive-grove-garden"
+  bodyClass="concept-page concept-carrivegrove"
+  businessName="Carrive Grove Garden Centre"
+  town="Forkhill"
+  bannerNote="Imagery comprises indicative Ring of Gullion plant nursery and hedging visualisations."
+>
+  <header class="cg-header">
+    <div class="cg-header-inner">
+      <a class="cg-brand" href="#top">
+        <strong>Carrive Grove</strong>
+        <span>Garden Centre · Forkhill</span>
+      </a>
+      <nav class="cg-nav" aria-label="Primary">
+        <a href="#stock">Hedging &amp; Trees</a>
+        <a href="#yard">The Nursery Yard</a>
+        <a href="#location">Carrive Road</a>
+      </nav>
+      <div class="cg-header-actions">
+        <a class="cg-header-tel" href={phoneHref}>{phone}</a>
+        <a class="cg-header-cta" href={mobileHref}>Call Nursery</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="cg-hero" aria-labelledby="cg-hero-title">
+      <div class="cg-wrap cg-hero-grid">
+        <div>
+          <p class="cg-kicker">79 Carrive Road · Forkhill · 8 Miles from Newry, 5 from Dundalk</p>
+          <h1 id="cg-hero-title">Hardy hedging, fruit trees and honest South Armagh growing advice.</h1>
+          <p class="cg-lead">
+            Bare-root and specimen hedging, fruit bushes, topiary, stoneware pots and garden furniture —
+            grown and chosen to thrive across the Ring of Gullion and County Down.
+          </p>
+          <div class="cg-actions">
+            <a class="cg-btn cg-btn--primary" href={mobileHref}>Call the Yard · {mobile}</a>
+            <SpecimenSheet
+              id="cg-stock-sheet"
+              triggerLabel="Browse Stock Guide"
+              kicker="Carrive Grove · 79 Carrive Road, Forkhill"
+              title="Hedging, Fruit Trees, Topiary & Planters"
+              subtitle="Ring 028 3088 9188 or 07752 719 472 to check current bare-root & specimen stock."
+              groups={stockGroups}
+              ctaLabel={`Call Nursery · ${phone}`}
+              ctaHref={phoneHref}
+              secondaryLabel={`Mobile · ${mobile}`}
+              secondaryHref={mobileHref}
+              buttonClass="cg-btn cg-btn--outline"
+            />
+          </div>
+        </div>
+        <figure class="cg-hero-plate">
+          <picture>
+            <source srcset="/media/concepts/carrive-grove-garden/carrive-grove-nursery-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-nursery-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
+            <img src="/media/concepts/carrive-grove-garden/carrive-grove-nursery.jpg" alt="Independent plant nursery in the Ring of Gullion countryside with specimen hedging, terracotta pots and green hills" width="1408" height="768" loading="eager" />
+          </picture>
+          <figcaption>Forkhill nursery yard &amp; hedging beds. Indicative garden visualisation.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="cg-section cg-stock" id="stock" aria-labelledby="cg-st-title">
+      <div class="cg-wrap cg-three">
+        <article>
+          <span>Boundaries</span>
+          <h2 id="cg-st-title">Bare-Root &amp; Specimen Hedging</h2>
+          <p>From newly built rural lanes needing 200 bare-root beech plants to mature specimen hedging for immediate privacy.</p>
+        </article>
+        <article>
+          <span>Orchards</span>
+          <h3>Fruit Trees, Bushes &amp; Topiary</h3>
+          <p>Hardier eating and cooking fruit trees alongside crisp evergreen topiary and container-grown specimen trees.</p>
+        </article>
+        <article>
+          <span>Outdoor Living</span>
+          <h3>Pots, Window Boxes &amp; Furniture</h3>
+          <p>Heavyweight planters, window boxes, garden ornaments and timber furniture ready for the patio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cg-section cg-yard" id="yard" aria-labelledby="cg-yard-title">
+      <div class="cg-wrap cg-split">
+        <figure class="cg-plate">
+          <picture>
+            <source srcset="/media/concepts/carrive-grove-garden/carrive-grove-hedging-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-hedging-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/carrive-grove-garden/carrive-grove-hedging.jpg" alt="Pruned evergreen topiary, hessian-wrapped bare-root fruit trees and earthenware planters along a nursery path" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Evergreen topiary &amp; bare-root fruit stock. Indicative plant visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="cg-kicker">Direct Nursery Advice</p>
+          <h2 id="cg-yard-title">Not sure how many plants per metre or which rootstock suits heavy soil?</h2>
+          <p>
+            Give us a quick ring before you drive over with a trailer — we will check exact heights in stock
+            and set aside bare-root bundles or specimen hedging ready for collection.
+          </p>
+          <div class="cg-call-box">
+            <div><span>Garden Centre Desk</span><a href={phoneHref}>{phone}</a></div>
+            <div><span>Direct Mobile</span><a href={mobileHref}>{mobile}</a></div>
+            <div><span>Address</span><strong>79 Carrive Road, Forkhill, BT35 9TF</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cg-section" id="location" aria-label="Forkhill location map">
+      <div class="cg-wrap">
+        <LocalAreaMap
+          id="cg-map"
+          kicker="79 Carrive Road · Ring of Gullion"
+          businessName="Carrive Grove Garden Centre"
+          address="79 Carrive Road, Forkhill, Newry, BT35 9TF"
+          lon={-6.480479}
+          lat={54.077829}
+          spanKm={18}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Slieve Gullion", lon: -6.4336, lat: 54.1225, note: "8 mins north-east", side: "t" },
+            { name: "Newry City", lon: -6.3402, lat: 54.1751, note: "8 miles north-east", side: "r" },
+            { name: "Dundalk", lon: -6.4059, lat: 54.0037, note: "5 miles south", side: "b" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="cg-footer">
+    <div class="cg-wrap cg-footer-inner">
+      <div>
+        <strong>Carrive Grove Garden Centre</strong>
+        <p>79 Carrive Road, Forkhill, Newry, Co. Down, BT35 9TF</p>
+      </div>
+      <div class="cg-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={mobileHref}>{mobile}</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

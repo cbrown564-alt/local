@@ -17,6 +17,17 @@ export function transformationOgImage(slug: string): string {
     before-and-after transformation cards. Explicit string literals allow
     tools/check/check-public-assets.mjs to verify every asset. */
 export const conceptOgCards: Record<string, string> = {
+  // Wave 4 NMDDC concepts (10)
+  "murlands-solicitors": "/media/og/murlands-solicitors.jpg",
+  "mcveigh-property": "/media/og/mcveigh-property.jpg",
+  "tory-bush-cottages": "/media/og/tory-bush-cottages.jpg",
+  "the-cuan": "/media/og/the-cuan.jpg",
+  "mount-panther-farm": "/media/og/mount-panther-farm.jpg",
+  "chestnutt-holiday-parks": "/media/og/chestnutt-holiday-parks.jpg",
+  "carrive-grove-garden": "/media/og/carrive-grove-garden.jpg",
+  "woodhill-kitchens": "/media/og/woodhill-kitchens.jpg",
+  "ross-cycles": "/media/og/ross-cycles.jpg",
+  "guru-indian-newry": "/media/og/guru-indian-newry.jpg",
   // Wave 3 NMDDC concepts (10)
   "the-yellow-heifer": "/media/og/the-yellow-heifer.jpg",
   "burford-lodge": "/media/og/burford-lodge.jpg",

@@ -1,0 +1,143 @@
+---
+/* Chestnutt Holiday Parks — Interactive Four Mourne Coast Parks Finder.
+   Compares Chestnutt Cranfield, Annalong, Loughside and Sandilands by stay style (Hire, Tour, Camp, Own). */
+interface Props {
+  bookingHref: string;
+}
+const { bookingHref } = Astro.props;
+
+const parks = [
+  {
+    id: "chestnutt",
+    label: "Chestnutt · Cranfield",
+    modes: "Hire · Tour · Camp · Own",
+    title: "Steps from Blue Flag Cranfield Beach with the Mournes rising behind.",
+    points: ["Static caravan hire, touring pitches & tent camping", "Cranfield Sands Cottage & static ownership plots", "Direct footpath to Cranfield West shoreline"],
+  },
+  {
+    id: "annalong",
+    label: "Annalong Park",
+    modes: "Hire · Tour · Own",
+    title: "Coastal Mourne village park beside Annalong harbour and corn mill.",
+    points: ["Static holiday home hire & touring stances", "Quiet coastal ownership pitches overlooking the Irish Sea", "Minutes from Carrick Little & Silent Valley walks"],
+  },
+  {
+    id: "loughside",
+    label: "Loughside · Kilkeel",
+    modes: "Static Ownership",
+    title: "Peaceful owners-only retreat along Carlingford Lough near Kilkeel.",
+    points: ["Dedicated static holiday home ownership community", "Sheltered loughside aspect toward the Cooley Peninsula", "Close to Kilkeel Harbour & golf club"],
+  },
+  {
+    id: "sandilands",
+    label: "Sandilands",
+    modes: "Tour · Camp · Own",
+    title: "Open coastal skies for tourers, family tents and holiday home owners.",
+    points: ["Touring caravan & motorhome stances", "Family camping pitches along the Mourne coast", "Holiday home ownership pitches available"],
+  },
+];
+---
+
+<section class="chp-finder-band" id="parks" aria-labelledby="chp-finder-title">
+  <div class="chp-wrap">
+    <div class="chp-finder-card" data-chp-finder>
+      <div class="chp-finder-head">
+        <div>
+          <p class="chp-kicker">Four Parks Along the Mourne Coast</p>
+          <h2 id="chp-finder-title">Choose your shoreline &amp; way to stay.</h2>
+        </div>
+        <div class="chp-tabs" role="tablist" aria-label="Choose holiday park">
+          {parks.map((p, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["chp-tab", idx === 0 && "is-active"]}
+              data-chp-tab={p.id}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {parks.map((p, idx) => (
+        <div class="chp-panel" role="tabpanel" data-chp-panel={p.id} hidden={idx !== 0}>
+          <div class="chp-panel-top">
+            <h3>{p.title}</h3>
+            <span class="chp-mode-pill">{p.modes}</span>
+          </div>
+          <ul class="chp-points">
+            {p.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="chp-panel-actions">
+            <a class="chp-btn chp-btn--primary" href={bookingHref} target="_blank" rel="noopener noreferrer">Check Live Holiday Bookings ↗</a>
+            <a class="chp-btn chp-btn--outline" href="#ownership">Enquire About Ownership</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .chp-finder-band { padding: clamp(46px, 6vw, 76px) 0; }
+  .chp-finder-card {
+    background: #ffffff;
+    border: 1px solid rgba(20, 42, 59, 0.14);
+    border-top: 3px solid #1c5a78;
+    border-radius: 5px;
+    padding: clamp(24px, 4vw, 40px);
+  }
+  .chp-finder-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(20, 42, 59, 0.12);
+  }
+  .chp-finder-head h2 { margin: 0; font-family: var(--chp-serif); font-size: clamp(1.7rem, 3.2vw, 2.35rem); font-weight: 500; }
+  .chp-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chp-tab {
+    padding: 9px 15px;
+    border: 1px solid rgba(20, 42, 59, 0.22);
+    background: #f6f8fa;
+    color: #142a3b;
+    font-family: var(--chp-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .chp-tab.is-active { background: #1c5a78; border-color: #1c5a78; color: #ffffff; }
+  .chp-panel { padding-top: 24px; }
+  .chp-panel-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .chp-panel-top h3 { margin: 0; font-family: var(--chp-serif); font-size: 1.38rem; font-weight: 500; }
+  .chp-mode-pill { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1c5a78; background: #e8f1f6; padding: 5px 11px; border-radius: 3px; }
+  .chp-points { list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .chp-points li { background: #f6f8fa; border: 1px solid rgba(20, 42, 59, 0.1); padding: 14px 16px; border-radius: 4px; font-size: 0.9rem; color: #142a3b; }
+  .chp-panel-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 780px) { .chp-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-chp-finder]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-chp-tab]")];
+    const panels = [...root.querySelectorAll("[data-chp-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-chp-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-chp-panel") !== id; });
+      });
+    });
+  })();
+</script>
