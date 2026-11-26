@@ -43,6 +43,7 @@ Ordered by **verifiable commercial urgency**, grouped by geography so in-person 
 - **Step 0:** Confirm `thelobsterpotstrangford.com` is still NXDOMAIN and check recent Facebook posts for opening days/hours and any booking partner.
 
 ### 2. Flagstaff Lodge · Newry
+- **Private concept:** `https://mournemade.co.uk/for/flagstaff-lodge-f7m2/` (single page, unlisted, `noindex`; source in `src/concepts/flagstaff-lodge/`)
 - **One-sentence opener:** *"Your room booking works fine through NetAffinity, but clicking Gift Vouchers on the homepage hits a 404 right before Christmas."*
 - **Smallest paid scope:** Immediate fix of the voucher route and dining/wedding enquiry flow, without touching the working NetAffinity room engine.
 - **Timing:** **Urgent (now → mid-December)** for Christmas gift vouchers, then January engagement/wedding enquiry season.
