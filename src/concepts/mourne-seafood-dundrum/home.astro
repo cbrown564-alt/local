@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import CatchBoard from "./CatchBoard.astro";
 
 /* Mourne Seafood Bar Dundrum — 10 Main Street, Dundrum, BT33 0LU.
@@ -188,7 +190,60 @@ const weeklySittings = [
           <a class="ms-phone-link" href={phoneHref}>{phone}</a>
           <a class="ms-email-link" href={mailto}>{email}</a>
           <a class="ms-map-link" href={maps} rel="noopener noreferrer">View Location on Map</a>
+          <div style="margin-top: 14px;">
+            <SpecimenSheet
+              id="mourne-seafood-sheet"
+              triggerLabel="Open Dundrum Catch & Hours Dossier"
+              kicker="Mourne Seafood Bar · 10 Main Street, Dundrum"
+              title="Daily Catch, Shellfish & Lobster Night"
+              subtitle="Our Dundrum menu changes daily with the morning catch — ask the desk for today's board."
+              groups={[
+                {
+                  id: "catch",
+                  label: "From Local Waters",
+                  items: [
+                    { name: "Dundrum & Carlingford Shellfish", note: "Fresh mussels, oysters & shellfish landed locally and cooked to order" },
+                    { name: "Daily Catch Board", note: "Menu changes every service depending on the day's landings" },
+                    { name: "Wednesday Lobster Night (Summer)", note: "Seasonal Wednesday evening lobster night running June to September" },
+                  ],
+                },
+                {
+                  id: "visit",
+                  label: "Dundrum Dining Desk",
+                  items: [
+                    { name: "Telephone Reservations", note: "Call the Dundrum dining room directly for tables and today's catch", meta: phone },
+                    { name: "Address", note: "10 Main Street, Dundrum, County Down, BT33 0LU" },
+                  ],
+                },
+              ]}
+              ctaLabel={`Call ${phone}`}
+              ctaHref={phoneHref}
+              secondaryLabel="Google Maps ↗"
+              secondaryHref={maps}
+            />
+          </div>
         </address>
+      </div>
+    </section>
+
+    <section class="mm-map-band" aria-label="Dundrum village location map">
+      <div class="mm-map-band-wrap">
+        <LocalAreaMap
+          id="mourne-seafood-map"
+          businessName="Mourne Seafood Bar"
+          address="10 Main Street, Dundrum, BT33 0LU"
+          lon={-5.844}
+          lat={54.259}
+          spanKm={14}
+          mapHref={maps}
+          kicker="Dundrum Inner Bay & Murlough"
+          markers={[
+            { name: "Newcastle", lon: -5.891, lat: 54.212, note: "7 mins", side: "l" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "10 mins", side: "l" },
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "15 mins", side: "r" },
+            { name: "Clough", lon: -5.838, lat: 54.294, note: "4 mins", side: "r" },
+          ]}
+        />
       </div>
     </section>
   </main>

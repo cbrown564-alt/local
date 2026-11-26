@@ -1,0 +1,262 @@
+---
+/* First 4 Floors — Interactive Room Area & Flooring Spec Estimator.
+   Calculates live room area + 10% cutting wastage across Oak, LVT & Carpet
+   so homeowners arrive at Unit 2, 63a Castlewellan Road ready to price samples. */
+interface Props {
+  phone: string;
+  phoneHref: string;
+}
+const { phone, phoneHref } = Astro.props;
+
+const materials = [
+  { id: "oak", label: "Engineered Oak", note: "Brushed & lacquered boards suited to halls, lounges and open-plan living." },
+  { id: "lvt", label: "Herringbone LVT", note: "Water-resistant click or glue-down planks ideal for kitchens and busy hallways." },
+  { id: "carpet", label: "Wool Twist Carpet", note: "Warm, hard-wearing pile with underlay for stairs, landings and bedrooms." },
+];
+---
+
+<section class="f4-est-band" id="floor-estimator" aria-labelledby="f4-est-title">
+  <div class="f4-est-card" data-f4-estimator>
+    <div class="f4-est-head">
+      <div>
+        <p class="f4-est-kicker">Showroom Estimator · 63a Castlewellan Road</p>
+        <h2 id="f4-est-title">Measure your room before you visit the showroom.</h2>
+      </div>
+      <div class="f4-est-readout">
+        <span>WITH 10% CUTTING ALLOWANCE</span>
+        <strong data-f4-total>22.0 m²</strong>
+        <small data-f4-net>Net floor: 20.0 m²</small>
+      </div>
+    </div>
+
+    <div class="f4-est-controls">
+      <div class="f4-est-mat-row" role="group" aria-label="Flooring finish">
+        {materials.map((m, i) => (
+          <button
+            type="button"
+            class:list={["f4-mat-btn", { "is-active": i === 0 }]}
+            data-f4-mat={m.label}
+            data-f4-note={m.note}
+          >
+            {m.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="f4-sliders">
+        <label>
+          <span>Room length: <strong data-f4-len-val>5.0 m</strong></span>
+          <input type="range" min="1.5" max="12" step="0.5" value="5" data-f4-len />
+        </label>
+        <label>
+          <span>Room width: <strong data-f4-wid-val>4.0 m</strong></span>
+          <input type="range" min="1.5" max="10" step="0.5" value="4" data-f4-wid />
+        </label>
+      </div>
+    </div>
+
+    <div class="f4-est-foot">
+      <p data-f4-mat-note>{materials[0].note}</p>
+      <a class="f4-est-cta" href={phoneHref}>Call showroom with these measurements · {phone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .f4-est-band {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 16px;
+  }
+
+  .f4-est-card {
+    background: var(--f4-surface, #ffffff);
+    border: 1px solid var(--f4-border, rgba(20, 28, 36, 0.14));
+    border-top: 3px solid var(--f4-oak, #b87c38);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .f4-est-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .f4-est-kicker {
+    margin: 0 0 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--f4-oak-dark, #8f5d22);
+  }
+
+  .f4-est-head h2 {
+    margin: 0;
+    font-family: var(--f4-serif, Georgia, serif);
+    font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+    color: var(--f4-ink, #121820);
+    line-height: 1.15;
+  }
+
+  .f4-est-readout {
+    text-align: right;
+    padding: 10px 16px;
+    background: var(--f4-surface-alt, #edf1f5);
+    border: 1px solid var(--f4-border, rgba(20, 28, 36, 0.12));
+  }
+
+  .f4-est-readout span {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--f4-ink-muted, #566472);
+  }
+
+  .f4-est-readout strong {
+    display: block;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--f4-slate, #141c24);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .f4-est-readout small {
+    font-size: 0.76rem;
+    color: var(--f4-ink-muted, #566472);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .f4-est-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .f4-est-mat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .f4-mat-btn {
+    padding: 9px 15px;
+    border: 1px solid rgba(20, 28, 36, 0.24);
+    background: #ffffff;
+    color: var(--f4-ink, #121820);
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease;
+  }
+
+  .f4-mat-btn.is-active {
+    background: var(--f4-slate, #141c24);
+    border-color: var(--f4-slate, #141c24);
+    color: #ffffff;
+  }
+
+  .f4-sliders {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .f4-sliders label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.86rem;
+    color: var(--f4-ink-muted, #566472);
+  }
+
+  .f4-sliders strong {
+    color: var(--f4-ink, #121820);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .f4-sliders input[type="range"] {
+    width: 100%;
+    accent-color: var(--f4-oak-dark, #8f5d22);
+    cursor: pointer;
+  }
+
+  .f4-est-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--f4-border, rgba(20, 28, 36, 0.12));
+  }
+
+  .f4-est-foot p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--f4-ink-muted, #566472);
+    max-width: 56ch;
+  }
+
+  .f4-est-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 18px;
+    background: var(--f4-slate, #141c24);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 680px) {
+    .f4-sliders {
+      grid-template-columns: 1fr;
+    }
+    .f4-est-readout {
+      text-align: left;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-f4-estimator]");
+  if (root) {
+    const lenInp = root.querySelector<HTMLInputElement>("[data-f4-len]")!;
+    const widInp = root.querySelector<HTMLInputElement>("[data-f4-wid]")!;
+    const lenVal = root.querySelector<HTMLElement>("[data-f4-len-val]")!;
+    const widVal = root.querySelector<HTMLElement>("[data-f4-wid-val]")!;
+    const totalEl = root.querySelector<HTMLElement>("[data-f4-total]")!;
+    const netEl = root.querySelector<HTMLElement>("[data-f4-net]")!;
+    const noteEl = root.querySelector<HTMLElement>("[data-f4-mat-note]")!;
+
+    const update = () => {
+      const l = Number(lenInp.value || 5);
+      const w = Number(widInp.value || 4);
+      const net = l * w;
+      const withWaste = net * 1.1;
+      lenVal.textContent = `${l.toFixed(1)} m`;
+      widVal.textContent = `${w.toFixed(1)} m`;
+      netEl.textContent = `Net floor: ${net.toFixed(1)} m²`;
+      totalEl.textContent = `${withWaste.toFixed(1)} m²`;
+    };
+
+    root.querySelectorAll<HTMLButtonElement>("[data-f4-mat]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root.querySelectorAll("[data-f4-mat]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        if (btn.dataset.f4Note) noteEl.textContent = btn.dataset.f4Note;
+      });
+    });
+
+    lenInp.addEventListener("input", update);
+    widInp.addEventListener("input", update);
+    update();
+  }
+</script>

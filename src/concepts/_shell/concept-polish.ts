@@ -219,8 +219,9 @@ function initMobileNavAndDock() {
     document.querySelector<HTMLElement>("#enquire, #survey, #rates, #ticket, #book, #vouchers, #visit") ||
     document.querySelector<HTMLElement>("main form");
 
-  // 1. Mobile Navigation Drawer (shown only when desktop nav is hidden)
-  if (navEls.length > 0 && navLinks.length >= 2) {
+  // 1. Mobile Navigation Drawer (shown only when desktop nav is hidden and header has no native <details> menu)
+  const hasBuiltInMobileMenu = !!header.querySelector("details");
+  if (!hasBuiltInMobileMenu && navEls.length > 0 && navLinks.length >= 2) {
     const drawerId = "mm-mobile-drawer";
     const businessName =
       header.querySelector("[class*='brand'] strong, .yw-wordmark")?.textContent?.trim() ||
@@ -502,6 +503,45 @@ const VERIFIED_SCHEDULES: ScheduleDef[] = [
       4: [12 * 60 + 30, 20 * 60],
       5: [12 * 60 + 30, 20 * 60 + 30],
       6: [12 * 60 + 30, 20 * 60 + 30],
+    },
+  },
+  {
+    bodyClass: "concept-avoca-hotel",
+    selector: ".av-hours-summary",
+    days: {
+      0: [11 * 60, 25 * 60],
+      1: [11 * 60, 25 * 60],
+      2: [11 * 60, 25 * 60],
+      3: [11 * 60, 25 * 60],
+      4: [11 * 60, 25 * 60],
+      5: [11 * 60, 25 * 60],
+      6: [11 * 60, 25 * 60],
+    },
+  },
+  {
+    bodyClass: "concept-bsw-autohouse",
+    selector: "main address",
+    days: {
+      0: null,
+      1: [8 * 60 + 30, 17 * 60 + 30],
+      2: [8 * 60 + 30, 17 * 60 + 30],
+      3: [8 * 60 + 30, 17 * 60 + 30],
+      4: [8 * 60 + 30, 17 * 60 + 30],
+      5: [8 * 60 + 30, 17 * 60 + 30],
+      6: null,
+    },
+  },
+  {
+    bodyClass: "concept-savoy",
+    selector: "main address",
+    days: {
+      0: [8 * 60, 17 * 60],
+      1: [8 * 60, 17 * 60],
+      2: [8 * 60, 17 * 60],
+      3: [8 * 60, 17 * 60],
+      4: [8 * 60, 17 * 60],
+      5: [8 * 60, 17 * 60],
+      6: [8 * 60, 17 * 60],
     },
   },
 ];

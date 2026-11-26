@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import BswServiceRouter from "./BswServiceRouter.astro";
 import KeysBack from "./KeysBack.astro";
 
 /* BSW Autohouse — independent garage and tyre specialist on Castlewellan Road.
@@ -204,6 +206,29 @@ const workshopServices = [
           <a class="bw-address-phone" href={phoneHref}>{phone}</a>
           <a class="bw-address-link" href={site} rel="noopener noreferrer">bswtyres.co.uk</a>
         </address>
+      </div>
+    </section>
+
+    <BswServiceRouter phone={phone} phoneHref={phoneHref} />
+
+    <section class="mm-map-band" aria-label="BSW Autohouse garage map">
+      <div class="mm-map-band-wrap">
+        <LocalAreaMap
+          id="bsw-autohouse-map"
+          businessName="BSW Autohouse"
+          address="Unit 4, 63a Castlewellan Road, Newcastle, BT33 0JX"
+          lon={-5.899}
+          lat={54.222}
+          spanKm={16}
+          tone="dark"
+          kicker="Newcastle Garage & MOT Bay"
+          markers={[
+            { name: "Newcastle Town", lon: -5.890, lat: 54.212, note: "3 mins", side: "r" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "6 mins", side: "l" },
+            { name: "Dundrum", lon: -5.844, lat: 54.259, note: "8 mins", side: "r" },
+            { name: "Kilkeel", lon: -6.002, lat: 54.060, note: "20 mins", side: "l" },
+          ]}
+        />
       </div>
     </section>
   </main>

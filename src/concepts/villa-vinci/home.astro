@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import EssenceMedia from "../../site/components/EssenceMedia.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 import VvMark from "./components/VvMark.astro";
@@ -311,6 +313,57 @@ const timeline = [
     </section>
 
     <!-- Essence Media Showcase -->
+    <section class="mm-map-band" aria-label="Villa Vinci Newcastle map and dining guide">
+      <div class="mm-map-band-wrap">
+        <div style="margin-bottom: 18px;">
+          <SpecimenSheet
+            id="villa-vinci-sheet"
+            triggerLabel="Open Italian & Mediterranean Dining Guide"
+            kicker="Villa Vinci · 31 Main Street, Newcastle"
+            title="Italian & Mediterranean Kitchen Guide"
+            subtitle="Authentic wood-fired pizza, fresh pasta, local Mourne grill dishes and warm family dining on Main Street."
+            groups={[
+              {
+                id: "kitchen",
+                label: "From the Kitchen",
+                items: [
+                  { name: "Antipasti & Starters", note: "Garlic breads, bruschetta, calamari and sharing Italian starters" },
+                  { name: "Pasta, Risotto & Wood-Fired Pizza", note: "Classic Italian sauces, crisp hand-stretched bases and seasonal specials" },
+                  { name: "Grill & Coastal Mains", note: "Steaks, chicken and fresh County Down fish cooked to order" },
+                ],
+              },
+              {
+                id: "visit",
+                label: "Bookings & Location",
+                items: [
+                  { name: "Direct Desk", note: "Call ahead for weekend evening tables & family celebrations", meta: phone },
+                  { name: "Address", note: "31 Main Street, Newcastle, County Down, BT33 0AD" },
+                ],
+              },
+            ]}
+            ctaLabel={`Call ${phone}`}
+            ctaHref={phoneHref}
+            secondaryLabel="Visit villavinci.co.uk ↗"
+            secondaryHref={site}
+          />
+        </div>
+        <LocalAreaMap
+          id="villa-vinci-map"
+          businessName="Villa Vinci"
+          address="31 Main Street, Newcastle, BT33 0AD"
+          lon={-5.890}
+          lat={54.213}
+          spanKm={14}
+          kicker="Newcastle Main Street & Promenade"
+          markers={[
+            { name: "Slieve Donard", lon: -5.921, lat: 54.180, note: "Donard Park nearby", side: "l" },
+            { name: "Dundrum", lon: -5.844, lat: 54.259, note: "7 mins", side: "r" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "10 mins", side: "l" },
+          ]}
+        />
+      </div>
+    </section>
+
     <EssenceMedia slug="villa-vinci" />
 
     <!-- Civic Footer -->

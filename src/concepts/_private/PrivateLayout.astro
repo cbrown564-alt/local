@@ -6,6 +6,8 @@
  * from the sitemap.
  */
 import "../_shell/concept-shell.css";
+import "../_shell/concept-pickers.css";
+import "../_shell/concept-polish.css";
 
 interface Props {
   title: string;
@@ -58,6 +60,22 @@ const description = `A website idea for ${businessName}.`;
     <p class="private-note">An unrequested website idea for {businessName}, not the live site.{note && ` ${note}`}</p>
   </body>
 </html>
+
+<script>
+  import { initConceptPickers } from "../_shell/concept-pickers";
+  import { initConceptPolish } from "../_shell/concept-polish";
+
+  const bootPrivateShell = () => {
+    initConceptPickers();
+    initConceptPolish();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootPrivateShell);
+  } else {
+    bootPrivateShell();
+  }
+</script>
 
 <style is:global>
   body.concept-page.private-page {

@@ -1,0 +1,211 @@
+---
+/* Avoca Hotel — Interactive Promenade Stay & Dining Matcher.
+   Matches guests' Newcastle break style to rooms, Wild Hare Lounge & direct booking. */
+interface Props {
+  phone: string;
+  phoneHref: string;
+  bookHref: string;
+}
+const { phone, phoneHref, bookHref } = Astro.props;
+
+const breaks = [
+  {
+    id: "prom",
+    label: "Sea-View Promenade Stay",
+    summary: "Wake up on Newcastle's Central Promenade with Dundrum Bay out front and the Mournes rising behind.",
+    highlights: ["Sea & mountain-view bedrooms", "Steps from the beach & promenade", "Direct hotel desk 11:00–01:00 daily"],
+  },
+  {
+    id: "golf",
+    label: "Mourne Hike & Golf Break",
+    summary: "An easy base minutes from Royal County Down and Donard Park — hot shower, dinner and a pint after the hills.",
+    highlights: ["Minutes to Royal County Down & Donard Park", "Hearty hotel dining & bar lounge", "Direct telephone rates for groups"],
+  },
+  {
+    id: "hare",
+    label: "Wild Hare Lounge & Supper",
+    summary: "Drop in off the promenade Thursday to Sunday (15:00 – 01:00) for relaxed evening drinks, supper and live atmosphere.",
+    highlights: ["Wild Hare open Thu–Sun 15:00–01:00", "Hotel bar & dining open daily from 11:00", "Walk-ins and table calls welcome"],
+  },
+];
+---
+
+<section class="av-matcher-band" id="stay-matcher" aria-labelledby="av-matcher-title">
+  <div class="av-matcher-card" data-av-matcher>
+    <div class="av-matcher-head">
+      <div>
+        <p class="av-matcher-kicker">Newcastle Promenade · Plan Your Visit</p>
+        <h2 id="av-matcher-title">Rooms on the front, or an evening at the Wild Hare.</h2>
+      </div>
+      <div class="av-matcher-tabs" role="tablist" aria-label="Visit type">
+        {breaks.map((b, i) => (
+          <button
+            type="button"
+            role="tab"
+            class:list={["av-m-tab", { "is-active": i === 0 }]}
+            aria-selected={i === 0 ? "true" : "false"}
+            data-av-break={b.id}
+          >
+            {b.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {breaks.map((b, i) => (
+      <div class="av-m-panel" role="tabpanel" data-av-panel={b.id} hidden={i !== 0}>
+        <p class="av-m-lead">{b.summary}</p>
+        <ul class="av-m-list">
+          {b.highlights.map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    ))}
+
+    <div class="av-matcher-foot">
+      <a class="av-m-btn av-m-btn--navy" href={bookHref} rel="noopener noreferrer">Check availability &amp; rates ↗</a>
+      <a class="av-m-btn av-m-btn--ghost" href={phoneHref}>Call reception · {phone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .av-matcher-band {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 36px 24px 8px;
+  }
+
+  .av-matcher-card {
+    background: var(--av-card-bg, #ffffff);
+    border: 1px solid var(--av-rule, #dde4ea);
+    border-top: 3px solid var(--av-gold, #c9a374);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .av-matcher-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .av-matcher-kicker {
+    margin: 0 0 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--av-sea, #3a5c70);
+  }
+
+  .av-matcher-head h2 {
+    margin: 0;
+    font-family: var(--av-serif, Georgia, serif);
+    font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+    color: var(--av-ink, #1c222b);
+  }
+
+  .av-matcher-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .av-m-tab {
+    padding: 8px 13px;
+    border: 1px solid var(--av-rule, #dde4ea);
+    background: #ffffff;
+    color: var(--av-ink, #1c222b);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease;
+  }
+
+  .av-m-tab.is-active {
+    background: var(--av-navy, #192334);
+    border-color: var(--av-navy, #192334);
+    color: var(--av-sand, #ecdcc8);
+  }
+
+  .av-m-lead {
+    margin: 0 0 14px;
+    font-size: 0.98rem;
+    color: var(--av-ink, #1c222b);
+    font-weight: 500;
+  }
+
+  .av-m-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .av-m-list li {
+    padding: 13px 15px;
+    background: var(--av-paper, #f7f9fa);
+    border: 1px solid var(--av-rule, #dde4ea);
+    font-size: 0.88rem;
+    color: var(--av-ink-soft, #556272);
+  }
+
+  .av-matcher-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--av-rule, #dde4ea);
+  }
+
+  .av-m-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .av-m-btn--navy {
+    background: var(--av-navy, #192334);
+    color: var(--av-sand, #ecdcc8);
+  }
+
+  .av-m-btn--ghost {
+    border: 1px solid var(--av-rule, #dde4ea);
+    color: var(--av-ink, #1c222b);
+  }
+
+  @media (max-width: 780px) {
+    .av-m-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-av-matcher]");
+  if (root) {
+    root.querySelectorAll<HTMLButtonElement>("[data-av-break]").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const id = tab.dataset.avBreak || "prom";
+        root.querySelectorAll<HTMLButtonElement>("[data-av-break]").forEach((t) => {
+          const on = t === tab;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", String(on));
+        });
+        root.querySelectorAll<HTMLElement>("[data-av-panel]").forEach((p) => {
+          p.hidden = p.dataset.avPanel !== id;
+        });
+      });
+    });
+  }
+</script>

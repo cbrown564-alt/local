@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 /**
- * Generates bespoke 1200x630 Open Graph preview cards for the 19 Wave 1 & Wave 2
- * NMDDC concepts under public/media/og/<slug>.jpg.
+ * Generates bespoke 1200x630 Open Graph preview cards under public/media/og/<slug>.jpg
+ * for every concept registered in src/site/data/og-images.ts (conceptOgCards).
  *
- * Each card captures the concept's real rendered hero at 1200x630 (with the top
- * studio banner hidden during capture and replaced by a clean bottom attribution
- * footer bar so the independent-concept disclosure travels inside WhatsApp /
- * iMessage / social link previews).
+ * Pass `--all` to regenerate existing cards; by default captures only missing cards.
+ * Run after `pnpm exec astro build` so `pnpm preview` serves the compiled routes.
  */
 
 import { spawn } from "node:child_process";
@@ -19,27 +17,19 @@ const BASE = `http://127.0.0.1:${PORT}`;
 const OUT_DIR = path.resolve("public/media/og");
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
-const CONCEPTS = [
-  { slug: "flagstaff-lodge", name: "Flagstaff Lodge", town: "Newry" },
-  { slug: "the-lobster-pot", name: "The Lobster Pot", town: "Strangford" },
-  { slug: "yew-wood-cottage", name: "Yew Wood Cottage", town: "Jonesborough" },
-  { slug: "old-school-house-rostrevor", name: "The Old School House", town: "Rostrevor" },
-  { slug: "millers-close", name: "Millers Close", town: "Castlewellan" },
-  { slug: "crossgar-dental", name: "Crossgar Dental Practice", town: "Crossgar" },
-  { slug: "bridgend-studios", name: "Bridgend Studios", town: "Crossgar" },
-  { slug: "belleek-country-house", name: "Belleek Country House", town: "Belleeks" },
-  { slug: "mulberry-tree-seaforde", name: "The Mulberry Tree", town: "Seaforde" },
-  { slug: "ballymote-house", name: "Ballymote House", town: "Downpatrick" },
-  { slug: "slieve-croob-camping", name: "Slieve Croob Camping", town: "Dromara" },
-  { slug: "saintfield-nursery", name: "Saintfield Nursery Centre", town: "Saintfield" },
-  { slug: "mourne-windows", name: "Mourne Windows & Doors", town: "Hilltown" },
-  { slug: "digitech-repairs", name: "DigiTech Repairs", town: "Ballykinlar" },
-  { slug: "the-rostrevor-inn", name: "The Rostrevor Inn", town: "Rostrevor" },
-  { slug: "the-oaks-saintfield", name: "The Oaks", town: "Saintfield" },
-  { slug: "kilmorey-arms-hotel", name: "Kilmorey Arms Hotel", town: "Kilkeel" },
-  { slug: "the-bridge-bar-newry", name: "The Bridge Bar", town: "Newry" },
-  { slug: "carrick-little-glamping", name: "Carrick Little Glamping", town: "Annalong" },
-];
+const forceAll = process.argv.includes("--all");
+const ogSrc = fs.readFileSync("src/site/data/og-images.ts", "utf8");
+const cardSlugs = [...ogSrc.matchAll(/"([a-z0-9-]+)":\s*"\/media\/og\/[a-z0-9-]+\.jpg"/g)].map((m) => m[1]);
+const toCapture = forceAll
+  ? cardSlugs
+  : cardSlugs.filter((slug) => !fs.existsSync(path.join(OUT_DIR, `${slug}.jpg`)));
+
+if (toCapture.length === 0) {
+  console.log(`All ${cardSlugs.length} concept OG cards already exist (pass --all to regenerate).`);
+  process.exit(0);
+}
+
+console.log(`Capturing ${toCapture.length} concept OG cards...`);
 
 const srv = spawn("pnpm", ["preview", "--host", "127.0.0.1", "--port", String(PORT)], {
   stdio: ["ignore", "ignore", "pipe"],
@@ -49,7 +39,7 @@ srv.stderr.on("data", (d) => process.stderr.write(d));
 const waitUp = async () => {
   for (let i = 0; i < 60; i++) {
     try {
-      const r = await fetch(`${BASE}/concepts/mourne-windows/`);
+      const r = await fetch(`${BASE}/concepts/${toCapture[0]}/`);
       if (r.ok) return;
     } catch {}
     await new Promise((r) => setTimeout(r, 250));
@@ -68,11 +58,14 @@ try {
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
 
-  for (const c of CONCEPTS) {
-    await page.goto(`${BASE}/concepts/${c.slug}/`, { waitUntil: "networkidle0" });
-    await page.evaluate(({ name, town }) => {
+  for (const slug of toCapture) {
+    await page.goto(`${BASE}/concepts/${slug}/`, { waitUntil: "networkidle0" });
+    await page.evaluate(() => {
       const banner = document.querySelector(".mm-concept-banner");
       if (banner) banner.style.display = "none";
+
+      const rawTitle = document.title || "";
+      const cleanName = rawTitle.split(/[—–|]/)[0]?.trim() || "Concept preview";
 
       const strip = document.createElement("div");
       strip.style.cssText = [
@@ -92,13 +85,13 @@ try {
         "letter-spacing:0.01em",
         "border-top:1px solid rgba(255,255,255,0.22)",
       ].join(";");
-      strip.innerHTML = `<span><strong>${name}</strong> · ${town}</span><span style="opacity:0.86">Independent website concept by Mourne Made</span>`;
+      strip.innerHTML = `<span><strong>${cleanName}</strong></span><span style="opacity:0.86">Independent website concept by Mourne Made</span>`;
       document.body.appendChild(strip);
-    }, c);
-    await new Promise((r) => setTimeout(r, 140));
-    const dest = path.join(OUT_DIR, `${c.slug}.jpg`);
-    await page.screenshot({ path: dest, type: "jpeg", quality: 86 });
-    console.log(`OG card saved: public/media/og/${c.slug}.jpg`);
+    });
+    await new Promise((r) => setTimeout(r, 120));
+    const dest = path.join(OUT_DIR, `${slug}.jpg`);
+    await page.screenshot({ path: dest, type: "jpeg", quality: 84 });
+    console.log(`OG card saved: public/media/og/${slug}.jpg`);
   }
 } finally {
   if (browser) await browser.close();

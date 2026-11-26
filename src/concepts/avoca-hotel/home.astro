@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import AvStayMatcher from "./AvStayMatcher.astro";
 import PromWindow from "./PromWindow.astro";
 
 /* Avoca Hotel — seafront hotel, restaurant, and Wild Hare pub on Central Promenade.
@@ -186,6 +188,29 @@ const hotelFeatures = [
           </div>
           <a class="av-map-link" href={maps} rel="noopener noreferrer">Directions on Google Maps</a>
         </address>
+      </div>
+    </section>
+
+    <AvStayMatcher phone={phone} phoneHref={phoneHref} bookHref={site} />
+
+    <section class="mm-map-band" aria-label="Newcastle promenade location map">
+      <div class="mm-map-band-wrap">
+        <LocalAreaMap
+          id="avoca-hotel-map"
+          businessName="Avoca Hotel"
+          address="93–97 Central Promenade, Newcastle, BT33 0HH"
+          lon={-5.891}
+          lat={54.212}
+          spanKm={14}
+          mapHref={maps}
+          kicker="Newcastle Promenade & Dundrum Bay"
+          markers={[
+            { name: "Slieve Donard", lon: -5.921, lat: 54.180, note: "Donard Park nearby", side: "l" },
+            { name: "Dundrum", lon: -5.844, lat: 54.259, note: "7 mins", side: "r" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "10 mins", side: "l" },
+            { name: "Annalong", lon: -5.903, lat: 54.109, note: "12 mins", side: "r" },
+          ]}
+        />
       </div>
     </section>
   </main>

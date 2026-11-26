@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import MlMark from "./MlMark.astro";
 import Envelope from "./Envelope.astro";
 
@@ -164,6 +165,27 @@ const mailFor = (plain: string) =>
         </p>
       </div>
     </section>
+
+    <section class="mm-map-band" aria-label="Maguire Law Newcastle office map">
+      <div class="mm-map-band-wrap">
+        <LocalAreaMap
+          id="maguire-law-map"
+          businessName="Maguire Law"
+          address="21E Dundrum Road, Newcastle, BT33 0BG"
+          lon={-5.887}
+          lat={54.223}
+          spanKm={16}
+          mapHref={mapHref}
+          kicker="Dundrum Road · Newcastle Practice"
+          markers={[
+            { name: "Dundrum", lon: -5.844, lat: 54.259, note: "6 mins", side: "r" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "8 mins", side: "l" },
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "18 mins", side: "r" },
+            { name: "Kilkeel", lon: -6.002, lat: 54.060, note: "20 mins", side: "l" },
+          ]}
+        />
+      </div>
+    </section>
   </main>
 
   <footer class="ml-footer">
@@ -191,7 +213,11 @@ const mailFor = (plain: string) =>
         String(data.get("line") ?? ""),
       ].join("\n");
       const to = form.dataset.email ?? "";
-      window.location.href = `mailto:${to}?subject=${encodeURIComponent(`Enquiry: ${matter}`)}&body=${encodeURIComponent(body)}`;
+      const subject = `Enquiry: ${matter}`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

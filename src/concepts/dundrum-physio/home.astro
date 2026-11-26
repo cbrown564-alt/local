@@ -2,6 +2,8 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import SessionCard from "./SessionCard.astro";
 
 /* Dundrum Physiotherapy Clinic — relief practice.
@@ -243,7 +245,57 @@ const treatments = [
           <span class="dp-addr-line">Dundrum, Newcastle</span>
           <span class="dp-addr-line">BT33 0WJ</span>
           <span class="dp-addr-tel"><a href={phoneHref}>028 4375 0848</a></span>
+          <div style="margin-top: 14px;">
+            <SpecimenSheet
+              id="dundrum-physio-sheet"
+              triggerLabel="Open Treatment & Clinic Guide"
+              kicker="Dundrum Physiotherapy Clinic · 12 Parterre Crescent"
+              title="Assessment, Hands-On Care & Rehabilitation"
+              subtitle="Musculoskeletal assessment, injury recovery, and practical movement plans in Dundrum."
+              groups={[
+                {
+                  id: "care",
+                  label: "Clinical Focus",
+                  items: [
+                    { name: "Initial Clinical Assessment", note: "Thorough movement & joint examination with a clear plain-English recovery plan" },
+                    { name: "Hands-On Physiotherapy", note: "Manual therapy, mobilisation and targeted rehabilitation exercises" },
+                    { name: "Sports & Back / Neck Recovery", note: "Structured return-to-activity plans for runners, hikers and everyday mobility" },
+                  ],
+                },
+                {
+                  id: "clinic",
+                  label: "Appointments & Location",
+                  items: [
+                    { name: "Direct Reception", note: "Ring the clinic directly to arrange an assessment slot", meta: "028 4375 0848" },
+                    { name: "Clinic Address", note: "12 Parterre Crescent, Dundrum, Newcastle, BT33 0WJ" },
+                  ],
+                },
+              ]}
+              ctaLabel="Call 028 4375 0848"
+              ctaHref={phoneHref}
+            />
+          </div>
         </address>
+      </div>
+    </section>
+
+    <section class="mm-map-band" aria-label="Dundrum clinic location map">
+      <div class="mm-map-band-wrap">
+        <LocalAreaMap
+          id="dundrum-physio-map"
+          businessName="Dundrum Physiotherapy"
+          address="12 Parterre Crescent, Dundrum, BT33 0WJ"
+          lon={-5.845}
+          lat={54.258}
+          spanKm={14}
+          mapHref={maps}
+          kicker="Dundrum · County Down Clinic"
+          markers={[
+            { name: "Newcastle", lon: -5.891, lat: 54.212, note: "7 mins", side: "l" },
+            { name: "Castlewellan", lon: -5.939, lat: 54.259, note: "10 mins", side: "l" },
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "15 mins", side: "r" },
+          ]}
+        />
       </div>
     </section>
   </main>
