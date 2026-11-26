@@ -1,0 +1,264 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import OsMark from "./OsMark.astro";
+
+/* The Old School House — Church St, Rostrevor, Newry BT34 3BA.
+   Sources (live-fetched 26 Nov 2026): oldschoolhouserostrevor.com (/, /the-area/)
+   and FSA FHRS register (Authority 145, inspected 2025-11-24).
+   - Cosy coffee house & bistro in the heart of Rostrevor, County Down.
+   - Live TouchTakeaway pizza ordering: https://shackpizza.touchtakeaway.net/
+   - Eight 2026 PDF menus published March 2026 (Breakfast, Lunch, Bistro,
+     Bistro Specials, Pizza, Sweet Treats, Children's, Drinks).
+   - Stays offered alongside dining; local walks listed on /the-area/:
+     Rostrevor Forest Park, Hen Mountain, Slieve Doan, Craigmore Viaduct.
+   - Contact: 028 4173 8211 · theoldschoolhousebistro@gmail.com · Facebook.
+   Brief: research/concepts/old-school-house-rostrevor/old-school-house-rostrevor-elevation-brief.md */
+
+const phone = "028 4173 8211";
+const phoneHref = "tel:+442841738211";
+const email = "theoldschoolhousebistro@gmail.com";
+const facebook = "https://www.facebook.com/TheOldSchoolHouseCafe/";
+const pizzaOrder = "https://shackpizza.touchtakeaway.net/";
+const mapHref = "https://www.google.com/maps/search/?api=1&query=The+Old+School+House+Church+Street+Rostrevor+BT34+3BA";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap";
+
+const menus = [
+  { name: "Breakfast Menu", tag: "Morning", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/BreakfastMenu-2026.pdf" },
+  { name: "Lunch Menu", tag: "Midday", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/LunchMenu-2026.pdf" },
+  { name: "Bistro Menu", tag: "Evening", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/BistroMenu-2026.pdf" },
+  { name: "Bistro Specials", tag: "Seasonal", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/BistroSpecials-2026.pdf" },
+  { name: "Pizza Menu", tag: "The Shack", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/PizzaMenu-2026.pdf" },
+  { name: "Sweet Treats", tag: "Coffee & cake", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/SweetTreats-2026.pdf" },
+  { name: "Children's Menu", tag: "Families", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/ChildrensMenu-2026.pdf" },
+  { name: "Drinks Menu", tag: "Coffee, wine & more", href: "http://oldschoolhouserostrevor.com/wp-content/uploads/2026/03/DrinksMenu-2026.pdf" },
+];
+
+const walks = [
+  { name: "Rostrevor Forest Park", note: "Woodland trails and Carlingford Lough views just up the hill from Church Street." },
+  { name: "Hen Mountain", note: "Western Mournes outlier with steep slopes and dramatic granite tors." },
+  { name: "Slieve Doan", note: "Central Mourne peak (Maol Chobha's Fort) looking across Silent Valley and Lough Shannagh." },
+  { name: "Craigmore Viaduct", note: "Built 1849–1852 across the Camlough valley — 18 arches and the tallest viaduct in Ireland." },
+];
+---
+
+<ConceptLayout
+  title="The Old School House — Coffee House, Bistro, Pizza & Stays, Rostrevor"
+  slug="old-school-house-rostrevor"
+  bodyClass="concept-page concept-oldschool"
+  lang="en-GB"
+  businessName="The Old School House"
+  town="Rostrevor"
+  fontHref={fontHref}
+  bannerNote="The schoolhouse mark is drawn for this page. Pizza ordering hands straight to TouchTakeaway (shackpizza.touchtakeaway.net); menus link to the 2026 PDFs; table and stays enquiries open an email to theoldschoolhousebistro@gmail.com."
+>
+  <div class="os-strip">
+    <span>Church Street, Rostrevor, BT34 3BA · Coffee House, Bistro, Pizza &amp; Stays</span>
+    <span class="os-strip-r"><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a></span>
+  </div>
+
+  <header class="os-header">
+    <a class="os-brand" href="#top">
+      <OsMark size={38} tone="brick" />
+      <span class="os-brand-text">
+        <strong>The Old School House</strong>
+        <small>Church Street · Rostrevor</small>
+      </span>
+    </a>
+    <nav class="os-nav" aria-label="The Old School House">
+      <a href="#menus">Menus</a>
+      <a href="#pizza">Order Pizza</a>
+      <a href="#stays">Tables &amp; Stays</a>
+      <a href="#area">The Area</a>
+    </nav>
+    <a class="os-header-cta" href={pizzaOrder} rel="noopener noreferrer">Order Pizza ↗</a>
+  </header>
+
+  <main id="top">
+    <section class="os-hero" aria-labelledby="os-hero-title">
+      <div class="os-wrap os-hero-grid">
+        <div>
+          <p class="os-kicker">Rostrevor Village · County Down</p>
+          <h1 id="os-hero-title">Coffee by morning, bistro by night, <em>and stays on Church Street.</em></h1>
+          <p class="os-lede">
+            A cosy coffee house, bistro and pizzeria in the heart of Rostrevor —
+            serving breakfast, lunch, evening specials, sweet treats and
+            takeaway pizzas right beneath the Mournes.
+          </p>
+          <div class="os-hero-actions">
+            <a class="os-btn os-btn--brick" href="#menus">Browse the 2026 menus</a>
+            <a class="os-btn os-btn--ochre" href={pizzaOrder} rel="noopener noreferrer">Order Shack Pizza online ↗</a>
+            <a class="os-btn os-btn--ghost" href={phoneHref}>Call {phone}</a>
+          </div>
+        </div>
+
+        <aside class="os-chalk" aria-label="Quick doors">
+          <p class="os-chalk-kicker">On Church Street</p>
+          <h2>Four ways in</h2>
+          <ol class="os-doors">
+            <li>
+              <strong>Menus</strong>
+              <span>Breakfast, lunch, bistro, pizza, sweet treats &amp; children's menus ready to open.</span>
+            </li>
+            <li>
+              <strong>Takeaway Pizza</strong>
+              <span>Order online directly via <a href={pizzaOrder} rel="noopener noreferrer">The Shack TouchTakeaway ↗</a>.</span>
+            </li>
+            <li>
+              <strong>Bistro Tables &amp; Stays</strong>
+              <span>Book a table or ask about overnight stays on <a href={phoneHref}>{phone}</a> or below.</span>
+            </li>
+            <li>
+              <strong>Daily Specials</strong>
+              <span>Fresh updates posted on <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>.</span>
+            </li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="os-section os-menus" id="menus" aria-labelledby="os-menus-title">
+      <div class="os-wrap">
+        <div class="os-head">
+          <div>
+            <p class="os-kicker os-kicker--dark">2026 Menus</p>
+            <h2 id="os-menus-title">From morning coffee to bistro specials.</h2>
+          </div>
+          <p>
+            Open any menu directly on your phone — from breakfast and sweet
+            treats to evening bistro dishes, children's choices and drinks.
+          </p>
+        </div>
+
+        <div class="os-menu-grid">
+          {menus.map((m) => (
+            <a class="os-menu-tile" href={m.href} rel="noopener noreferrer">
+              <span class="os-menu-tag">{m.tag}</span>
+              <strong>{m.name}</strong>
+              <span class="os-menu-open">Open PDF ↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="os-pizza" id="pizza" aria-labelledby="os-pizza-title">
+      <div class="os-wrap os-pizza-inner">
+        <div>
+          <p class="os-kicker">Takeaway Ordering</p>
+          <h2 id="os-pizza-title">Artisan pizza ready to order online now.</h2>
+          <p>
+            Skip the phone queue and place your pizza order straight through our
+            live TouchTakeaway shop — ideal after a walk in Rostrevor Forest or
+            an evening by the lough.
+          </p>
+        </div>
+        <div class="os-pizza-cta">
+          <a class="os-btn os-btn--ochre" href={pizzaOrder} rel="noopener noreferrer">Order on TouchTakeaway ↗</a>
+          <a class="os-btn os-btn--ghost" href={phoneHref}>Or call {phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="os-section os-stays" id="stays" aria-labelledby="os-stays-title">
+      <div class="os-wrap os-stays-grid">
+        <div>
+          <p class="os-kicker os-kicker--dark">Tables &amp; Stays</p>
+          <h2 id="os-stays-title">Reserve a bistro table or ask about staying in Rostrevor.</h2>
+          <p>
+            Tell us whether you are booking dinner or asking about dates to stay
+            on Church Street. Submitting opens a ready-to-send email to{" "}
+            <a href={`mailto:${email}`}>{email}</a>, or ring us directly on{" "}
+            <a href={phoneHref}>{phone}</a>.
+          </p>
+        </div>
+
+        <form class="os-form" id="os-form" data-email={email}>
+          <div class="os-row">
+            <label>
+              <span>Enquiry type</span>
+              <select name="kind">
+                <option value="Bistro Table">Bistro table booking</option>
+                <option value="Overnight Stay">Overnight stay enquiry</option>
+                <option value="Group / Celebration">Group or family gathering</option>
+              </select>
+            </label>
+            <label>
+              <span>Preferred date</span>
+              <input type="date" name="date" required />
+            </label>
+          </div>
+          <div class="os-row">
+            <label>
+              <span>Time / nights &amp; guests</span>
+              <input name="details" placeholder="e.g. 7pm, 4 guests or 2 nights" />
+            </label>
+            <label>
+              <span>Phone number</span>
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+          </div>
+          <label>
+            <span>Your name &amp; notes</span>
+            <input name="name" placeholder="Name and any dietary or stay notes" required />
+          </label>
+          <button class="os-btn os-btn--slate os-btn--full" type="submit">Open enquiry email →</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="os-section os-area" id="area" aria-labelledby="os-area-title">
+      <div class="os-wrap">
+        <div class="os-head">
+          <div>
+            <p class="os-kicker os-kicker--dark">Surrounded by Natural Beauty</p>
+            <h2 id="os-area-title">Make a day — or a weekend — of the Mournes.</h2>
+          </div>
+          <p>Church Street puts forest trails, Mourne peaks and Carlingford Lough right on our doorstep.</p>
+        </div>
+        <div class="os-walk-grid">
+          {walks.map((w) => (
+            <article class="os-walk-card">
+              <h3>{w.name}</h3>
+              <p>{w.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="os-footer">
+    <div class="os-wrap os-footer-inner">
+      <div class="os-footer-brand">
+        <OsMark size={32} tone="cream" />
+        <div>
+          <strong>The Old School House</strong>
+          <span>Church Street, Rostrevor, Newry, BT34 3BA</span>
+        </div>
+      </div>
+      <p class="os-footer-right">
+        <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={mapHref} rel="noopener noreferrer">Map ↗</a> · <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("os-form") as HTMLFormElement | null;
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const d = new FormData(form);
+      const kind = String(d.get("kind") || "Enquiry");
+      const body = [
+        `Type: ${kind}`,
+        `Date: ${d.get("date") || ""}`,
+        `Details: ${d.get("details") || ""}`,
+        `Phone: ${d.get("phone") || ""}`,
+        `Name / notes: ${d.get("name") || ""}`,
+      ].join("\n");
+      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`${kind} — The Old School House, Rostrevor`)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</ConceptLayout>

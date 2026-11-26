@@ -1,0 +1,266 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import YwMark from "./YwMark.astro";
+
+/* Yew Wood Cottage — 25 Foughilletra Road, Jonesborough, Newry, County Armagh, BT35 8JE.
+   Sources (live-fetched 26 Nov 2026): yewwoodcottage.co.uk (/, /facilities,
+   /places-of-interest, /contact), Discover NI.
+   - Sleeps 6 across 3 en-suite bedrooms (main bedroom with bath, WC & basin;
+     two further bedrooms with en-suite shower, WC & basin) plus a separate WC.
+   - Open-plan lounge, dining & kitchen (dishwasher, fridge/freezer, microwave),
+     separate utility (washing machine, tumble dryer), heated floors throughout,
+     free Wi-Fi, telephone, parking, large BBQ & patio with views of South Armagh
+     and Slieve Gullion. Pets welcome.
+   - Phone: 028 3084 8936 / 07831 647729 · Email: stay@yewwoodcottage.com.
+   Brief: research/concepts/yew-wood-cottage/yew-wood-cottage-elevation-brief.md */
+
+const landline = "028 3084 8936";
+const landlineHref = "tel:+442830848936";
+const mobile = "07831 647729";
+const mobileHref = "tel:+447831647729";
+const email = "stay@yewwoodcottage.com";
+const mapHref = "https://www.google.com/maps/search/?api=1&query=25+Foughilletra+Road+Newry+BT35+8JE";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito+Sans:wght@400;500;600;700&display=swap";
+
+const rooms = [
+  { label: "Main Bedroom", detail: "En-suite with bath, washbasin and toilet." },
+  { label: "Second & Third Bedrooms", detail: "Each with its own en-suite shower, washbasin and toilet." },
+  { label: "Living, Dining & Kitchen", detail: "Modern open-plan layout with dishwasher, fridge/freezer and microwave." },
+  { label: "Utility & Heated Floors", detail: "Separate utility room with washing machine & tumble dryer, separate WC, and heated floors in every room." },
+];
+
+const nearby = [
+  { group: "Walks & Heritage", detail: "Views of Slieve Gullion from the bungalow, Slieve Gullion Forest Park trails, Kilsnasaggart Stone in Jonesborough, and Moyry Castle." },
+  { group: "Local Pubs & Dining", detail: "The Welcome Inn in Forkhill for traditional Irish music, and Murphy's Pub nearby." },
+  { group: "Everyday Essentials", detail: "Meigh village has a post office, supermarket, chemist, florist, laundry and hair & beauty salon." },
+  { group: "Towns & Day Trips", detail: "6 miles to Newry, 8 miles to Dundalk, Carlingford close by, fishing at Camlough Lake, plus golf and horse riding nearby." },
+];
+---
+
+<ConceptLayout
+  title="Yew Wood Cottage — Self-Catering Holiday Bungalow, Newry, County Armagh"
+  slug="yew-wood-cottage"
+  bodyClass="concept-page concept-yewwood"
+  lang="en-GB"
+  businessName="Yew Wood Cottage"
+  town="Forkhill / Jonesborough"
+  fontHref={fontHref}
+  bannerNote="The cottage mark and hill contours are drawings made for this page. Stay enquiries open a pre-filled email to stay@yewwoodcottage.com or call 07831 647729."
+>
+  <div class="yw-strip">
+    <span>25 Foughilletra Road, Jonesborough, Newry, Co. Armagh BT35 8JE</span>
+    <span class="yw-strip-r">
+      <a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a>
+    </span>
+  </div>
+
+  <header class="yw-header">
+    <a class="yw-brand" href="#top">
+      <YwMark size={38} tone="yew" />
+      <span class="yw-brand-text">
+        <strong>Yew Wood Cottage</strong>
+        <small>Self-Catering · Sleeps 6 · Pet Friendly</small>
+      </span>
+    </a>
+    <nav class="yw-nav" aria-label="Yew Wood Cottage">
+      <a href="#cottage">The Bungalow</a>
+      <a href="#area">South Armagh</a>
+      <a href="#enquire">Book Direct</a>
+      <a href="#find">Directions</a>
+    </nav>
+    <a class="yw-header-cta" href="#enquire">Check dates</a>
+  </header>
+
+  <main id="top">
+    <section class="yw-hero" aria-labelledby="yw-hero-title">
+      <div class="yw-wrap yw-hero-grid">
+        <div class="yw-hero-copy">
+          <p class="yw-kicker">South Armagh · Views of Slieve Gullion</p>
+          <h1 id="yw-hero-title">Three en-suite bedrooms, heated floors, <em>and the hills outside your door.</em></h1>
+          <p class="yw-lede">
+            A modern self-catering bungalow sleeping six on Foughilletra Road,
+            with panoramic countryside views, a patio and BBQ area, and a warm
+            welcome for dogs — six miles from Newry and eight from Dundalk.
+          </p>
+          <div class="yw-facts">
+            <span><strong>Sleeps 6</strong> · 3 en-suite bedrooms</span>
+            <span><strong>Pets welcome</strong></span>
+            <span><strong>Heated floors</strong> throughout</span>
+            <span><strong>Patio &amp; BBQ</strong> · Free parking &amp; Wi-Fi</span>
+          </div>
+        </div>
+
+        <form class="yw-card" id="enquire" data-email={email}>
+          <p class="yw-kicker">Book direct with the owners</p>
+          <h2>Ask about your dates</h2>
+          <p class="yw-card-intro">Send your preferred dates directly — no agency fees. Opens as an email to {email}, or call <a href={mobileHref}>{mobile}</a>.</p>
+          <div class="yw-row">
+            <label>
+              <span>Check-in</span>
+              <input type="date" name="checkin" required />
+            </label>
+            <label>
+              <span>Check-out</span>
+              <input type="date" name="checkout" required />
+            </label>
+          </div>
+          <div class="yw-row">
+            <label>
+              <span>Guests (up to 6)</span>
+              <select name="guests">
+                <option value="2 guests">2 guests</option>
+                <option value="3–4 guests" selected>3–4 guests</option>
+                <option value="5–6 guests">5–6 guests</option>
+              </select>
+            </label>
+            <label>
+              <span>Bringing a pet?</span>
+              <select name="pets">
+                <option value="No">No</option>
+                <option value="Yes">Yes — bringing a dog</option>
+              </select>
+            </label>
+          </div>
+          <div class="yw-row">
+            <label>
+              <span>Your name</span>
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Phone number</span>
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+          </div>
+          <button class="yw-btn yw-btn--yew yw-btn--full" type="submit">Send stay enquiry →</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="yw-section yw-cottage" id="cottage" aria-labelledby="yw-cottage-title">
+      <div class="yw-wrap">
+        <div class="yw-head">
+          <div>
+            <p class="yw-kicker">Inside the Bungalow</p>
+            <h2 id="yw-cottage-title">Everything laid out on one level for an easy break.</h2>
+          </div>
+          <p>
+            Every bedroom has its own en-suite, every room has underfloor
+            heating, and outside there is private parking plus a large patio
+            and barbecue looking out over South Armagh.
+          </p>
+        </div>
+
+        <div class="yw-room-grid">
+          {rooms.map((r, i) => (
+            <article class="yw-room-card">
+              <span class="yw-room-no">0{i + 1}</span>
+              <h3>{r.label}</h3>
+              <p>{r.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="yw-section yw-area" id="area" aria-labelledby="yw-area-title">
+      <div class="yw-wrap">
+        <div class="yw-head yw-head--dark">
+          <div>
+            <p class="yw-kicker yw-kicker--light">Around Jonesborough &amp; Forkhill</p>
+            <h2 id="yw-area-title">Slieve Gullion on the horizon, Belfast and Dublin within reach.</h2>
+          </div>
+          <p>
+            Quiet countryside on the lane, with Meigh village shops nearby and
+            the M1/A1 corridor putting Carlingford, Newcastle and Belfast an
+            easy drive away.
+          </p>
+        </div>
+
+        <div class="yw-area-grid">
+          {nearby.map((n) => (
+            <article class="yw-area-card">
+              <h3>{n.group}</h3>
+              <p>{n.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="yw-section yw-find" id="find" aria-labelledby="yw-find-title">
+      <div class="yw-wrap yw-find-grid">
+        <div>
+          <p class="yw-kicker">Location &amp; Contact</p>
+          <h2 id="yw-find-title">25 Foughilletra Road, BT35 8JE.</h2>
+          <p>
+            Situated in rural South Armagh near Jonesborough and Forkhill —
+            six miles from Newry and eight miles from Dundalk, with free
+            on-site parking right at the bungalow.
+          </p>
+          <div class="yw-find-actions">
+            <a class="yw-btn yw-btn--yew" href={mobileHref}>Call {mobile}</a>
+            <a class="yw-btn yw-btn--outline" href={landlineHref}>Landline {landline}</a>
+            <a class="yw-btn yw-btn--outline" href={mapHref} rel="noopener noreferrer">Open Map ↗</a>
+          </div>
+        </div>
+        <div class="yw-find-card">
+          <dl>
+            <div><dt>Address</dt><dd>25 Foughilletra Road, Newry, Co. Armagh, BT35 8JE</dd></div>
+            <div><dt>Phone</dt><dd><a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a></dd></div>
+            <div><dt>Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="yw-footer">
+    <div class="yw-wrap yw-footer-inner">
+      <div class="yw-footer-brand">
+        <YwMark size={32} tone="cream" />
+        <div>
+          <strong>Yew Wood Cottage</strong>
+          <span>25 Foughilletra Road, Newry, County Armagh, BT35 8JE</span>
+        </div>
+      </div>
+      <p class="yw-footer-right">
+        <a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a> · <a href={`mailto:${email}`}>{email}</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("enquire") as HTMLFormElement | null;
+    const ci = form?.querySelector<HTMLInputElement>('input[name="checkin"]');
+    const co = form?.querySelector<HTMLInputElement>('input[name="checkout"]');
+    const iso = (d: Date) => d.toISOString().slice(0, 10);
+    if (ci && co) {
+      const s = new Date();
+      s.setDate(s.getDate() + 14);
+      const e = new Date(s);
+      e.setDate(e.getDate() + 3);
+      ci.min = iso(new Date());
+      ci.value = iso(s);
+      co.min = iso(s);
+      co.value = iso(e);
+    }
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const d = new FormData(form);
+      const body = [
+        `Check-in: ${d.get("checkin") || ""}`,
+        `Check-out: ${d.get("checkout") || ""}`,
+        `Guests: ${d.get("guests") || ""}`,
+        `Bringing a pet: ${d.get("pets") || "No"}`,
+        "",
+        `Name: ${d.get("name") || ""}`,
+        `Phone: ${d.get("phone") || ""}`,
+      ].join("\n");
+      const to = form.dataset.email ?? "stay@yewwoodcottage.com";
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(`Stay enquiry: ${d.get("checkin") || "Yew Wood Cottage"}`)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</ConceptLayout>

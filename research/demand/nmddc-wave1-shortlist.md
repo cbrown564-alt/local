@@ -37,6 +37,7 @@ Ordered by **verifiable commercial urgency**, grouped by geography so in-person 
 ## Brief pitch hypotheses & Step 0 checks
 
 ### 1. The Lobster Pot · Strangford
+- **Private concept:** `https://mournemade.co.uk/for/lobster-pot-s4t8/` (single page, unlisted, `noindex`; source in `src/concepts/the-lobster-pot/`)
 - **One-sentence opener:** *"If someone searches for The Lobster Pot before getting off the ferry or planning a Sunday drive, the old website address doesn't load and everything sits behind Facebook."*
 - **Smallest paid scope:** Presence repair + direct table/voucher enquiry (hours, current menus, direct click-to-call or table-booking handoff, seasonal vouchers).
 - **Timing:** Immediate (Christmas dining & gift vouchers) or quiet winter months ahead of spring ferry/tourist season.
@@ -50,42 +51,49 @@ Ordered by **verifiable commercial urgency**, grouped by geography so in-person 
 - **Step 0:** Click `Gift Vouchers`, `Book Your Stay`, and `Wedding Enquiry` on a phone to confirm `/vouchers.html` is still 404 and whether NetAffinity already hosts a live voucher URL that just isn't linked.
 
 ### 3. Yew Wood Cottage · Forkhill / Jonesborough
+- **Private concept:** `https://mournemade.co.uk/for/yew-wood-cottage-y6w3/` (single page, unlisted, `noindex`; source in `src/concepts/yew-wood-cottage/`)
 - **One-sentence opener:** *"Your Booking.com listing sells stays at commission, and on your own site the booking page still has placeholder text ('Why should visitor fill out form?') and no way to check dates."*
 - **Smallest paid scope:** Clean one-page/small cottage site on an owned domain (`.co.uk` + fix `.com` email/domain alignment) with direct date enquiry or a lightweight booking engine.
 - **Timing:** Winter planning ahead of 2027 spring/summer stays.
 - **Step 0:** Open `https://www.yewwoodcottage.co.uk/contact` on a phone to verify the placeholder line is still visible, and check Booking.com availability/reviews for 2026 activity.
 
 ### 4. The Old School House · Rostrevor
+- **Private concept:** `https://mournemade.co.uk/for/old-school-house-r9k4/` (single page, unlisted, `noindex`; source in `src/concepts/old-school-house-rostrevor/`)
 - **One-sentence opener:** *"Your site is still on plain HTTP with 'Order Online Coming Soon!' on the front page — visitors on a phone get a security warning before they see your menus or Stays."*
 - **Smallest paid scope:** HTTPS + mobile-first menus, clear ordering/table booking route, and direct Stays route.
 - **Timing:** Winter / pre-spring tourist season (or immediate for festive bistro/vouchers).
 - **Step 0:** Open `http://oldschoolhouserostrevor.com/` and its `/stays` page in a real browser; check Facebook/Instagram to confirm current bistro/pizza trading.
 
 ### 5. Millers Close Holiday Cottages · Castlewellan
+- **Private concept:** `https://mournemade.co.uk/for/millers-close-m3c7/` (single page, unlisted, `noindex`; source in `src/concepts/millers-close/`)
 - **One-sentence opener:** *"Your direct booking engine works, but right at the top of the homepage your Wix site is printing raw `<script>` code as visible text."*
 - **Smallest paid scope:** Clean front door in front of the existing `booking-directly.com` engine (same non-rip-and-replace approach as Hotel Enniskeen).
 - **Timing:** Winter planning ahead of 2027 bookings.
 - **Step 0:** Open `https://www.millersclose.com/` in Chrome to screenshot the visible `<script>` text on mobile and desktop.
 
 ### 6. Crossgar Dental Practice · Crossgar
+- **Private concept:** `https://mournemade.co.uk/for/crossgar-dental-c5d2/` (single page, unlisted, `noindex`; source in `src/concepts/crossgar-dental/`)
 - **One-sentence opener:** *"New private patients looking up the practice on a phone can't send an appointment request online, and there's a typo right in the main menu."*
 - **Smallest paid scope:** Clean front door + private-patient appointment request panel (same shape as Donard Vet / Newcastle Dental).
 - **Timing:** Any time; no seasonal rush.
 - **Step 0:** Check whether the practice is independent (not corporate group), inspect `/contact` in a real browser to confirm whether any online booking widget loads via JS.
 
 ### 7. Bridgend Studios · Crossgar
+- **Private concept:** `https://mournemade.co.uk/for/bridgend-studios-b8s4/` (single page, unlisted, `noindex`; source in `src/concepts/bridgend-studios/`)
 - **One-sentence opener:** *"Your wedding and commercial portfolio runs over plain HTTP, so modern browsers flag it as 'Not Secure' and mobile visitors can't zoom in on galleries or send a date enquiry."*
 - **Smallest paid scope:** HTTPS portfolio + wedding/commercial date enquiry form.
 - **Timing:** Now → February (Christmas/New Year wedding engagement enquiries).
 - **Step 0:** Confirm recent 2025/2026 trading activity on Michael Sheppard's Facebook/Instagram before contacting.
 
 ### 8. Belleek Country House · Belleeks / Camlough
+- **Private concept:** `https://mournemade.co.uk/for/belleek-country-house-b2h9/` (single page, unlisted, `noindex`; source in `src/concepts/belleek-country-house/`)
 - **One-sentence opener:** *"Your site shows off weddings, family functions and dining well, but someone enquiring about a wedding or party date on a Sunday evening has no way to send their date and headcount."*
 - **Smallest paid scope:** Direct event/wedding date-and-guest-count enquiry + table booking route (same shape as Hugh McCann's).
 - **Timing:** Now → January (Christmas dining + New Year engagement/event bookings).
 - **Step 0:** Check `/contact-us/` and `/weddings/` in a real browser to confirm no hidden booking form exists.
 
 ### 9. The Mulberry Tree · Seaforde
+- **Private concept:** `https://mournemade.co.uk/for/mulberry-tree-m7t5/` (single page, unlisted, `noindex`; source in `src/concepts/mulberry-tree-seaforde/`)
 - **One-sentence opener:** *"You have both destination dining and outside catering on the site, but catering enquiries and table requests go through an ageing template that still shows a Google+ icon."*
 - **Smallest paid scope:** Refresh dining + structured outside-catering enquiry (date, headcount, menu style).
 - **Timing:** Winter / pre-spring communion, wedding & event catering season.

@@ -1,0 +1,276 @@
+---
+import "../../site/styles/global.css";
+import "./styles.css";
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import BcMark from "./BcMark.astro";
+
+/* Belleek Country House — 16 Main Street, Belleek, Newry, BT35 7PH (6 miles from Newry City).
+   Sources (live-fetched 26 Nov 2026): belleekcountryhouse.com (/, /about-us/,
+   /restaurant-bar/, /weddings/, /contact-us/) and FSA FHRS register (Authority
+   145, inspected 2026-09-24).
+   - Family-run bar, restaurant & events venue welcoming visitors for decades.
+   - Hours published on /contact-us/:
+     Monday–Thursday: Closed · Friday: 4:00pm – 1:00am (Steak Night from 5pm) ·
+     Saturday & Sunday: 12 noon – 1:00am.
+   - Live menu PDF: https://belleekcountryhouse.com/wp-content/uploads/2025/07/Belleek_Country_House_MAINMAINMenu_2025.pdf
+   - Weddings: One wedding a day, bespoke wedding packages, experienced staff.
+   - Events: Baby Showers, Birthdays & Anniversaries, Christenings & Baptisms,
+     Hen Parties, Funerals, Weddings & Other Celebrations; live music & live sports.
+   - Phone: 028 3087 8999 · Facebook & Instagram (@belleekcountryhouse).
+     No public email is published, so enquiries build a copy-ready note for
+     phone or Instagram/Facebook DM without inventing an address.
+   Brief: research/concepts/belleek-country-house/belleek-country-house-elevation-brief.md */
+
+const phone = "028 3087 8999";
+const phoneHref = "tel:+442830878999";
+const menuPdf = "https://belleekcountryhouse.com/wp-content/uploads/2025/07/Belleek_Country_House_MAINMAINMenu_2025.pdf";
+const facebook = "https://www.facebook.com/profile.php?id=100063707553686";
+const instagram = "https://www.instagram.com/belleekcountryhouse";
+const mapHref = "https://www.google.com/maps/search/?api=1&query=16+Main+Street+Belleek+Newry+BT35+7PH";
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Figtree:wght@400;500;600;700&display=swap";
+
+const celebrations = [
+  "Weddings (One wedding a day)",
+  "Christenings & Baptisms",
+  "Birthdays & Anniversaries",
+  "Baby Showers",
+  "Hen Parties",
+  "Funerals & Family Gatherings",
+];
+
+const hours = [
+  { days: "Monday – Thursday", time: "Closed", note: "Private event enquiries welcome by phone." },
+  { days: "Friday", time: "4:00pm – 1:00am", note: "Steak Night specials served every Friday from 5:00pm." },
+  { days: "Saturday & Sunday", time: "12:00 noon – 1:00am", note: "All-day dining, drinks, live music & live sports." },
+];
+---
+
+<ConceptLayout
+  title="Belleek Country House — Bar, Restaurant & Weddings, Belleeks, Newry"
+  slug="belleek-country-house"
+  bodyClass="concept-page concept-belleek"
+  lang="en-GB"
+  businessName="Belleek Country House"
+  town="Belleeks / Camlough"
+  fontHref={fontHref}
+  bannerNote="The house crest is drawn for this page. The main menu links to Belleek Country House's published PDF; bookings and wedding enquiries go by phone (028 3087 8999), Instagram or Facebook."
+>
+  <div class="bc-strip">
+    <span>16 Main Street, Belleek, Newry BT35 7PH · 6 miles from Newry City</span>
+    <span><a href={phoneHref}>{phone}</a> · Open Fri – Sun</span>
+  </div>
+
+  <header class="bc-header">
+    <a class="bc-brand" href="#top">
+      <BcMark size={38} tone="gold" />
+      <span class="bc-brand-text">
+        <strong>Belleek Country House</strong>
+        <small>Family-Run Bar, Restaurant &amp; Weddings</small>
+      </span>
+    </a>
+    <nav class="bc-nav" aria-label="Belleek Country House">
+      <a href="#dining">Restaurant &amp; Bar</a>
+      <a href="#weddings">Weddings &amp; Events</a>
+      <a href="#enquire">Book a Date</a>
+      <a href="#find">Hours &amp; Location</a>
+    </nav>
+    <a class="bc-header-cta" href={phoneHref}>Call {phone}</a>
+  </header>
+
+  <main id="top">
+    <section class="bc-hero" aria-labelledby="bc-hero-title">
+      <div class="bc-wrap bc-hero-grid">
+        <div>
+          <p class="bc-kicker">South Armagh · 6 Miles from Newry</p>
+          <h1 id="bc-hero-title">Come as guests, <em>leave as friends.</em></h1>
+          <p class="bc-lede">
+            A family-run country house bar, restaurant and events venue
+            welcoming visitors for decades — homemade dishes from fresh local
+            ingredients, Friday Steak Night, live music, and one dedicated
+            wedding a day.
+          </p>
+          <div class="bc-hero-actions">
+            <a class="bc-btn bc-btn--gold" href="#enquire">Check a wedding or party date</a>
+            <a class="bc-btn bc-btn--ghost" href={menuPdf} rel="noopener noreferrer">View Main Menu (PDF) ↗</a>
+          </div>
+        </div>
+
+        <aside class="bc-hours-panel" aria-label="Opening hours">
+          <p class="bc-kicker bc-kicker--dark">Opening Hours</p>
+          <h2>This weekend at Belleek</h2>
+          <dl>
+            {hours.map((h) => (
+              <div class="bc-hour-row">
+                <dt>
+                  <strong>{h.days}</strong>
+                  <span>{h.note}</span>
+                </dt>
+                <dd>{h.time}</dd>
+              </div>
+            ))}
+          </dl>
+          <a class="bc-btn bc-btn--claret bc-btn--full" href={phoneHref}>Call to book: {phone}</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="bc-section bc-dining" id="dining" aria-labelledby="bc-dining-title">
+      <div class="bc-wrap bc-dining-grid">
+        <div>
+          <p class="bc-kicker bc-kicker--dark">Restaurant &amp; Bar</p>
+          <h2 id="bc-dining-title">Homemade dishes, local produce and Friday Steak Night.</h2>
+          <p>
+            Our chefs cook homemade dishes from fresh local ingredients — from
+            starters through to indulgent desserts, paired with a well-stocked
+            bar, live music and live sports.
+          </p>
+          <div class="bc-steak">
+            <strong>Friday Steak Night · Every Friday from 5:00pm</strong>
+            <span>Ring <a href={phoneHref}>{phone}</a> ahead to hold a table for Friday evening or weekend dining.</span>
+          </div>
+          <div class="bc-dining-actions">
+            <a class="bc-btn bc-btn--claret" href={menuPdf} rel="noopener noreferrer">Open Main Menu PDF ↗</a>
+            <a class="bc-btn bc-btn--outline" href={phoneHref}>Call {phone}</a>
+          </div>
+        </div>
+
+        <div class="bc-pillars">
+          <article class="bc-pillar">
+            <h3>Family-run for decades</h3>
+            <p>Homely atmosphere, hearty food and experienced staff who know how to look after both quiet dinners and full-house celebrations.</p>
+          </article>
+          <article class="bc-pillar">
+            <h3>Bar, Live Music &amp; Sport</h3>
+            <p>Drop in Friday to Sunday for a drink in the bar, catch live sporting fixtures, or settle in for live weekend music.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bc-section bc-weddings" id="weddings" aria-labelledby="bc-weddings-title">
+      <div class="bc-wrap bc-weddings-grid">
+        <div>
+          <p class="bc-kicker">Weddings &amp; Celebrations</p>
+          <h2 id="bc-weddings-title">One wedding a day — and every family milestone covered.</h2>
+          <p class="bc-wed-intro">
+            Whether you are planning an intimate gathering or a full wedding
+            reception, Belleek Country House hosts only <strong>one wedding a day</strong>,
+            with bespoke wedding packages and experienced staff handling every
+            detail.
+          </p>
+          <a class="bc-btn bc-btn--gold" href="#enquire">Prepare a wedding or event enquiry</a>
+        </div>
+
+        <div class="bc-cel-card">
+          <h3>Occasions we host</h3>
+          <ul>
+            {celebrations.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="bc-section bc-enquire" id="enquire" aria-labelledby="bc-enquire-title">
+      <div class="bc-wrap bc-enquire-grid">
+        <div>
+          <p class="bc-kicker bc-kicker--dark">Enquire About a Date</p>
+          <h2 id="bc-enquire-title">Put your date and guest count together in one note.</h2>
+          <p>
+            Fill in the details below to copy a tidy enquiry note you can paste
+            straight into Instagram or Facebook — or read straight to our team
+            on <a href={phoneHref}><strong>{phone}</strong></a>.
+          </p>
+        </div>
+
+        <form class="bc-form" id="bc-form">
+          <div class="bc-row">
+            <label>
+              <span>Occasion</span>
+              <select name="occasion">
+                <option value="Wedding">Wedding (One wedding a day)</option>
+                <option value="Table Booking / Friday Steak Night">Table Booking / Friday Steak Night</option>
+                <option value="Birthday / Anniversary">Birthday or Anniversary</option>
+                <option value="Christening / Baby Shower">Christening or Baby Shower</option>
+                <option value="Hen Party / Other Celebration">Hen Party or Other Celebration</option>
+                <option value="Funeral Gathering">Funeral Gathering</option>
+              </select>
+            </label>
+            <label>
+              <span>Preferred date or month</span>
+              <input name="date" placeholder="e.g. Saturday 12 Sept 2026" />
+            </label>
+          </div>
+          <div class="bc-row">
+            <label>
+              <span>Estimated guests</span>
+              <input name="guests" placeholder="e.g. 6 guests or 120 wedding guests" />
+            </label>
+            <label>
+              <span>Your name &amp; phone</span>
+              <input name="who" placeholder="Name and callback number" />
+            </label>
+          </div>
+          <div class="bc-form-actions">
+            <button class="bc-btn bc-btn--claret" type="submit">Copy enquiry note</button>
+            <a class="bc-btn bc-btn--outline" href={phoneHref}>Call {phone}</a>
+            <a class="bc-btn bc-btn--outline" href={instagram} rel="noopener noreferrer">Instagram ↗</a>
+            <a class="bc-btn bc-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+          </div>
+          <p class="bc-status" id="bc-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="bc-section bc-find" id="find" aria-labelledby="bc-find-title">
+      <div class="bc-wrap bc-find-inner">
+        <div>
+          <p class="bc-kicker bc-kicker--dark">Find Us</p>
+          <h2 id="bc-find-title">16 Main Street, Belleek, Newry BT35 7PH.</h2>
+          <p>Six miles from Newry City in the South Armagh countryside.</p>
+        </div>
+        <div class="bc-find-actions">
+          <a class="bc-btn bc-btn--claret" href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a>
+          <a class="bc-btn bc-btn--outline" href={phoneHref}>Call {phone}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bc-footer">
+    <div class="bc-wrap bc-footer-inner">
+      <div class="bc-footer-brand">
+        <BcMark size={30} tone="ivory" />
+        <div>
+          <strong>Belleek Country House</strong>
+          <span>16 Main Street, Belleek, Newry, BT35 7PH</span>
+        </div>
+      </div>
+      <p class="bc-footer-right">
+        <a href={phoneHref}>{phone}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a> · <a href={instagram} rel="noopener noreferrer">Instagram</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("bc-form") as HTMLFormElement | null;
+    const status = document.getElementById("bc-status");
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const d = new FormData(form);
+      const text = [
+        "Enquiry — Belleek Country House",
+        `Occasion: ${d.get("occasion") || ""}`,
+        `Preferred date: ${d.get("date") || "To confirm"}`,
+        `Estimated guests: ${d.get("guests") || "To confirm"}`,
+        `Contact: ${d.get("who") || ""}`,
+      ].join("\n");
+      try {
+        await navigator.clipboard.writeText(text);
+        if (status) status.textContent = "Note copied — paste it into Instagram or Facebook, or call 028 3087 8999.";
+      } catch {
+        if (status) status.textContent = text;
+      }
+    });
+  </script>
+</ConceptLayout>
