@@ -316,7 +316,12 @@ const systems = [
         "",
         String(d.get("notes") || ""),
       ].join("\n");
-      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Free Home Survey Request — ${d.get("product")}`)}&body=${encodeURIComponent(body)}`;
+      const to = form.dataset.email ?? "";
+      const subject = `Free Home Survey Request — ${d.get("product")}`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

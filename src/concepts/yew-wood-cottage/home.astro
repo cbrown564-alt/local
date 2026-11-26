@@ -268,7 +268,11 @@ const nearby = [
         `Phone: ${d.get("phone") || ""}`,
       ].join("\n");
       const to = form.dataset.email ?? "stay@yewwoodcottage.com";
-      window.location.href = `mailto:${to}?subject=${encodeURIComponent(`Stay enquiry: ${d.get("checkin") || "Yew Wood Cottage"}`)}&body=${encodeURIComponent(body)}`;
+      const subject = `Stay enquiry: ${d.get("checkin") || "Yew Wood Cottage"}`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

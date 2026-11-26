@@ -1,0 +1,980 @@
+/* Brand-native cross-concept polish layer (Upgrades #1–#7)
+   Inherits every concept's --cp-* palette, radius, and typography tokens
+   so each business keeps its own distinct visual voice without browser-default chrome. */
+
+/* ==========================================================================
+   #3 Browser-default chrome, custom checkboxes & typographic micro-polish
+   ========================================================================== */
+
+body.concept-page ::selection {
+  background: var(--cp-accent);
+  color: var(--cp-accent-ink);
+}
+
+/* High-contrast keyboard focus rings (never shown on mouse click) */
+body.concept-page :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--cp-accent);
+  outline-offset: 3px;
+}
+
+/* On dark sections, ensure focus rings stay bright and ≥3:1 legible */
+body.concept-page :where(header, footer, .mm-drawer-sheet, .mm-lightbox) :where(a, button):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Typography micro-polish: balanced display headlines, pretty paragraphs, aligned figures */
+body.concept-page main :where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+body.concept-page main :where(p, blockquote) {
+  text-wrap: pretty;
+}
+
+body.concept-page main :where(dl, table, a[href^="tel:"], [class*="price"], [class*="rate"], [class*="total"], [class*="hours"], [class*="times"]) {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom brand-themed checkboxes (replaces OS-default checkbox chrome) */
+body.concept-page main form input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid var(--cp-border);
+  border-radius: max(2px, var(--cp-radius));
+  background: var(--cp-surface);
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 120ms ease-out;
+}
+
+body.concept-page main form input[type="checkbox"]::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: var(--cp-accent-ink);
+  clip-path: polygon(14% 48%, 0 62%, 41% 100%, 100% 24%, 86% 10%, 40% 71%);
+  transform: scale(0);
+  transition: transform 140ms ease-out;
+}
+
+body.concept-page main form input[type="checkbox"]:hover {
+  border-color: var(--cp-accent);
+}
+
+body.concept-page main form input[type="checkbox"]:checked {
+  background: var(--cp-accent);
+  border-color: var(--cp-accent);
+}
+
+body.concept-page main form input[type="checkbox"]:checked::after {
+  transform: scale(1);
+}
+
+body.concept-page main form input[type="checkbox"]:active {
+  transform: scale(0.92);
+}
+
+/* ==========================================================================
+   #4 Smooth anchor scrolling, scroll-margin & tactile hover/press feedback
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(body.concept-page) {
+    scroll-behavior: smooth;
+  }
+}
+
+body.concept-page main :where(section[id], div[id], article[id], form[id], dl[id]) {
+  scroll-margin-top: 28px;
+}
+
+body.concept-page main :where(button:not(.mm-cp-day):not(.mm-cp-cal-nav):not(.mm-cp-step-btn):not(.mm-cp-trigger), a[class*="-btn"], a[class*="-cta"]) {
+  transition:
+    transform 150ms ease-out,
+    box-shadow 150ms ease-out,
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    color 150ms ease-out,
+    opacity 150ms ease-out;
+}
+
+@media (hover: hover) {
+  body.concept-page main :where(a[class*="-btn"], button[class*="-btn"]):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(10, 15, 22, 0.14);
+  }
+}
+
+body.concept-page main :where(a[class*="-btn"], button[class*="-btn"]):active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* ==========================================================================
+   Shared Native Modal Dialog Baseline (Prevent background scroll chaining)
+   ========================================================================== */
+
+body.concept-page dialog:modal {
+  overscroll-behavior: contain;
+}
+
+body.concept-page dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* ==========================================================================
+   #1 Brand-Themed Enquiry Confirmation Sheet (<dialog>)
+   ========================================================================== */
+
+.mm-enquiry-dialog {
+  width: min(560px, calc(100vw - 28px));
+  max-height: min(88svh, 740px);
+  padding: 0;
+  border: 1px solid var(--cp-panel-border);
+  border-radius: calc(var(--cp-radius) + 4px);
+  background: var(--cp-panel);
+  color: var(--cp-ink);
+  box-shadow: 0 28px 72px rgba(8, 12, 18, 0.34), 0 6px 20px rgba(8, 12, 18, 0.16);
+  font-family: var(--cp-font);
+  overflow: hidden;
+}
+
+.mm-enquiry-dialog::backdrop {
+  background: rgba(10, 14, 18, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.mm-enquiry-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mm-enquiry-dialog[open] {
+    animation: mm-dialog-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes mm-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+.mm-enq-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--cp-panel-border);
+}
+
+.mm-enq-kicker {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cp-muted);
+}
+
+.mm-enq-title {
+  margin: 0;
+  font-family: var(--cp-display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--cp-ink);
+  text-wrap: balance;
+}
+
+.mm-enq-close {
+  flex: none;
+  min-inline-size: 36px;
+  min-block-size: 36px;
+  border: 1px solid var(--cp-panel-border);
+  border-radius: var(--cp-radius);
+  background: transparent;
+  color: var(--cp-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.mm-enq-close:hover {
+  background: var(--cp-hover);
+  border-color: var(--cp-border-hover);
+}
+
+.mm-enq-body {
+  padding: 18px 24px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mm-enq-meta {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--cp-ink) 4%, transparent);
+  border: 1px solid var(--cp-panel-border);
+  border-radius: var(--cp-radius);
+  font-size: 0.88rem;
+}
+
+.mm-enq-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mm-enq-meta-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cp-muted);
+  min-width: 62px;
+}
+
+.mm-enq-meta-val {
+  color: var(--cp-ink);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.mm-enq-preview {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-panel-border);
+  border-radius: var(--cp-radius);
+  font-family: var(--cp-font);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--cp-ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 210px;
+  overflow-y: auto;
+}
+
+.mm-enq-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--cp-panel-border);
+  align-items: center;
+}
+
+.mm-enq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 44px;
+  padding: 10px 18px;
+  border-radius: var(--cp-radius);
+  font-family: var(--cp-font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 140ms ease, opacity 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.mm-enq-btn--primary {
+  background: var(--cp-accent);
+  color: var(--cp-accent-ink);
+  flex: 1 1 auto;
+}
+
+.mm-enq-btn--primary:hover {
+  opacity: 0.92;
+}
+
+.mm-enq-btn--secondary {
+  background: transparent;
+  color: var(--cp-ink);
+  border-color: var(--cp-border);
+  flex: 1 1 auto;
+}
+
+.mm-enq-btn--secondary:hover {
+  background: var(--cp-hover);
+  border-color: var(--cp-border-hover);
+}
+
+.mm-enq-status {
+  width: 100%;
+  font-size: 0.82rem;
+  color: var(--cp-muted);
+  min-height: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mm-enq-status a {
+  color: var(--cp-ink);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   #2 Mobile Navigation Drawer (<dialog> + scroll-snap) & Quick-Action Dock
+   ========================================================================== */
+
+.mm-menu-trigger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-inline-size: 40px;
+  min-block-size: 38px;
+  padding: 6px 12px;
+  border-radius: var(--cp-radius);
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-family: var(--cp-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 140ms ease, background-color 140ms ease;
+}
+
+.mm-menu-trigger:hover {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.mm-menu-trigger.is-visible {
+  display: inline-flex;
+}
+
+@media (max-width: 600px) {
+  body.concept-page > header :where([class*="header-inner"], .yw-masthead-inner, .mt-masthead-inner) {
+    gap: 10px;
+    padding-inline: 16px;
+  }
+
+  body.concept-page > header :where([class*="-brand"], .yw-wordmark) {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  body.concept-page > header :where([class*="-brand"] strong, [class*="-brand"] span, .yw-wordmark) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.concept-page > header :where([class*="header-tel"], [class*="header-cta"]) {
+    font-size: 0.74rem;
+    padding: 7px 10px;
+    white-space: nowrap;
+  }
+
+  body.concept-page > header :where([class*="header-actions"]) :where([class*="header-tel"]) {
+    display: none;
+  }
+
+  .mm-menu-trigger {
+    width: 38px;
+    height: 38px;
+    min-inline-size: 38px;
+    min-block-size: 38px;
+    padding: 0;
+  }
+
+  .mm-menu-trigger span {
+    position: absolute;
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 440px) {
+  body.concept-page > header :where([class*="header-tel"], [class*="header-cta"], [class*="header-actions"]) {
+    display: none;
+  }
+}
+
+/* DigiTech uses a light form surface with a dark PCB panel surface */
+body.concept-page.concept-digitech :where(.mm-enquiry-dialog, .mm-drawer-sheet, .mm-mobile-dock) {
+  --cp-surface: #0d1218;
+  --cp-ink: #f3f5f7;
+  --cp-muted: rgba(243, 245, 247, 0.72);
+  --cp-border: rgba(79, 214, 200, 0.34);
+  color: #f3f5f7;
+}
+
+/* Native modal scroll-snap navigation drawer (per modern-web-guidance) */
+.mm-drawer {
+  --drawer-width: min(21rem, 82dvw, calc(100dvw - 24px));
+  --drawer-backdrop: 0;
+  inset: 0;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+
+.mm-drawer::backdrop {
+  background: #080c10;
+  opacity: calc(var(--drawer-backdrop) * 0.56);
+}
+
+.mm-drawer-scroller {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--drawer-width) 100%;
+  overflow-x: scroll;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.mm-drawer-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mm-drawer-scroller {
+    scroll-behavior: smooth;
+  }
+}
+
+.mm-drawer-scroller::after {
+  content: "";
+  scroll-snap-align: end;
+  scroll-initial-target: nearest;
+}
+
+.mm-drawer-sheet {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100svh;
+  background: var(--cp-panel);
+  color: var(--cp-ink);
+  font-family: var(--cp-font);
+  border-right: 1px solid var(--cp-panel-border);
+  box-shadow: 16px 0 48px rgba(0, 0, 0, 0.28);
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scrollbar-width: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @property --drawer-backdrop {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  .mm-drawer {
+    timeline-scope: --mm-drawer-fade;
+    animation: mm-fade-drawer-backdrop linear both;
+    animation-timeline: --mm-drawer-fade;
+  }
+
+  .mm-drawer-scroller {
+    scroll-timeline: --mm-drawer-fade x;
+  }
+
+  @keyframes mm-fade-drawer-backdrop {
+    0% { --drawer-backdrop: 1; }
+    100% { --drawer-backdrop: 0; }
+  }
+}
+
+.mm-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--cp-panel-border);
+}
+
+.mm-drawer-brand {
+  font-family: var(--cp-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--cp-ink);
+  line-height: 1.2;
+}
+
+.mm-drawer-close {
+  min-inline-size: 38px;
+  min-block-size: 38px;
+  border-radius: var(--cp-radius);
+  border: 1px solid var(--cp-panel-border);
+  background: transparent;
+  color: var(--cp-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mm-drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mm-drawer-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 12px;
+  border-radius: var(--cp-radius);
+  color: var(--cp-ink);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 140ms ease;
+}
+
+.mm-drawer-links a:hover {
+  background: var(--cp-hover);
+}
+
+.mm-drawer-foot {
+  padding: 16px 20px calc(18px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--cp-panel-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mm-drawer-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 44px;
+  padding: 10px 14px;
+  border-radius: var(--cp-radius);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.mm-drawer-cta--primary {
+  background: var(--cp-accent);
+  color: var(--cp-accent-ink);
+}
+
+.mm-drawer-cta--ghost {
+  border: 1px solid var(--cp-border);
+  color: var(--cp-ink);
+}
+
+/* Mobile sticky quick-action dock (appears below hero on ≤768px) */
+.mm-mobile-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mm-mobile-dock {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 900;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px;
+    background: var(--cp-panel);
+    color: var(--cp-ink);
+    border: 1px solid var(--cp-panel-border);
+    border-radius: calc(var(--cp-radius) + 6px);
+    box-shadow: 0 14px 36px rgba(8, 12, 18, 0.24), 0 2px 8px rgba(8, 12, 18, 0.12);
+    font-family: var(--cp-font);
+    opacity: 0;
+    transform: translateY(120%);
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mm-mobile-dock.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mm-dock-btn {
+    flex: 1 1 0;
+    min-block-size: 42px;
+    padding: 8px 10px;
+    border-radius: calc(var(--cp-radius) + 2px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--cp-ink);
+    border: 1px solid var(--cp-panel-border);
+    background: transparent;
+  }
+
+  .mm-dock-btn--primary {
+    background: var(--cp-accent);
+    color: var(--cp-accent-ink);
+    border-color: transparent;
+    flex: 1.25 1 0;
+  }
+
+  body.concept-page footer {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ==========================================================================
+   #5 Live UK Opening Hours Status + One-Click Copy Button & Accessible Bubble
+   ========================================================================== */
+
+.mm-hours-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
+  margin: 0 0 14px;
+  border-radius: 999px;
+  font-family: var(--cp-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  color: inherit;
+}
+
+.mm-hours-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: #9ca3af;
+}
+
+.mm-hours-pill[data-state="open"] .mm-hours-dot {
+  background: #22a06b;
+  box-shadow: 0 0 0 3px rgba(34, 160, 107, 0.22);
+}
+
+.mm-hours-pill[data-state="closed"] .mm-hours-dot {
+  background: #c77d3b;
+}
+
+/* Inline one-click copy control (per copy-button guide) */
+.mm-copy-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-inline-start: 6px;
+}
+
+.mm-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 26px;
+  min-block-size: 26px;
+  padding: 4px;
+  border-radius: max(3px, var(--cp-radius));
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.78;
+  transition: opacity 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.mm-copy-btn:hover,
+.mm-copy-btn:focus-visible,
+.mm-copy-btn[data-copied],
+.mm-copy-btn[data-failed] {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: color-mix(in srgb, currentColor 42%, transparent);
+}
+
+.mm-copy-btn svg {
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+}
+
+.mm-copy-btn .mm-ic-check {
+  display: none;
+}
+
+.mm-copy-btn[data-copied] .mm-ic-copy {
+  display: none;
+}
+
+.mm-copy-btn[data-copied] .mm-ic-check {
+  display: block;
+}
+
+/* Live-region status bubble: hide with opacity only (never display:none) */
+.mm-copy-tip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: var(--cp-accent);
+  color: var(--cp-accent-ink);
+  font-family: var(--cp-font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.mm-copy-btn[data-copied] + .mm-copy-tip,
+.mm-copy-btn[data-failed] + .mm-copy-tip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-copy-tip {
+    transform: translateX(-50%);
+    transition: opacity 120ms ease;
+  }
+}
+
+/* ==========================================================================
+   #6 Tablist transitions & Restrained Scroll-Reveal Rhythm
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  body.concept-page [role="tabpanel"]:not([hidden]) {
+    animation: mm-panel-in 220ms ease-out both;
+  }
+
+  @keyframes mm-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+  }
+
+  /* Opt-in reveal only when JS marks off-screen sections; hero stays untouched */
+  body.concept-page main > section.mm-reveal-ready {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body.concept-page main > section.mm-reveal-ready.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   #7 Editorial Photo Lightbox (<dialog>) & Cohesive Caption Refinement
+   ========================================================================== */
+
+.mm-zoomable-figure {
+  position: relative;
+}
+
+.mm-zoomable-figure img {
+  cursor: zoom-in;
+}
+
+.mm-zoom-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-inline-size: 36px;
+  min-block-size: 36px;
+  padding: 6px 11px;
+  border-radius: calc(var(--cp-radius) + 2px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(12, 16, 20, 0.72);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: var(--cp-font);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: opacity 160ms ease, background-color 140ms ease, transform 140ms ease;
+}
+
+@media (hover: hover) {
+  .mm-zoom-btn {
+    opacity: 0;
+  }
+
+  .mm-zoomable-figure:hover .mm-zoom-btn,
+  .mm-zoomable-figure:focus-within .mm-zoom-btn,
+  .mm-zoom-btn:focus-visible {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .mm-zoom-btn {
+    opacity: 0.88;
+  }
+}
+
+.mm-zoom-btn:hover {
+  background: rgba(12, 16, 20, 0.9);
+  transform: scale(1.03);
+}
+
+/* Cohesive subtle styling for secondary plate captions */
+body.concept-page main > section:not(:first-child) figure figcaption {
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+
+.mm-lightbox {
+  width: min(1100px, calc(100vw - 28px));
+  max-height: 92svh;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: calc(var(--cp-radius) + 4px);
+  background: #0d1115;
+  color: #f4f1ea;
+  box-shadow: 0 32px 84px rgba(0, 0, 0, 0.56);
+  font-family: var(--cp-font);
+  overflow: hidden;
+}
+
+.mm-lightbox::backdrop {
+  background: rgba(6, 9, 12, 0.84);
+  backdrop-filter: blur(6px);
+}
+
+.mm-lightbox[open] {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mm-lightbox[open] {
+    animation: mm-dialog-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+.mm-lb-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mm-lb-title {
+  margin: 0;
+  font-family: var(--cp-display);
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: rgba(244, 241, 234, 0.92);
+}
+
+.mm-lb-close {
+  min-inline-size: 36px;
+  min-block-size: 36px;
+  border-radius: var(--cp-radius);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mm-lb-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mm-lb-stage {
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background: #080b0e;
+}
+
+.mm-lb-stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 74svh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--cp-radius);
+}
+
+.mm-lb-cap {
+  margin: 0;
+  padding: 12px 18px 14px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(244, 241, 234, 0.78);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

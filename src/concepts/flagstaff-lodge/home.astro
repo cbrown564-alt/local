@@ -627,7 +627,12 @@ const corridorStops = [
       lines.push("", `Name: ${d.get("name") || ""}`, `Phone: ${d.get("phone") || ""}`);
       if (d.get("notes")) lines.push("", `Notes: ${d.get("notes")}`);
       const to = enquiryForm.dataset.email ?? "info@flagstafflodgenewry.com";
-      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subjects[kind] ?? "Enquiry — Flagstaff Lodge")}&body=${encodeURIComponent(lines.join("\n"))}`;
+      const subject = subjects[kind] ?? "Enquiry — Flagstaff Lodge";
+      const body = lines.join("\n");
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

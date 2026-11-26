@@ -8,6 +8,7 @@ import { OG_IMAGE_SIZE, ogImages, transformationOgImage } from "../../site/data/
 import { siteDetails } from "../../site/data/site";
 import "./concept-shell.css";
 import "./concept-pickers.css";
+import "./concept-polish.css";
 
 interface Props {
   title: string;
@@ -182,11 +183,17 @@ const ogImageUrl = ogImage ? new URL(ogImage, publicOrigin).href : null;
 
 <script>
   import { initConceptPickers } from "./concept-pickers";
+  import { initConceptPolish } from "./concept-polish";
+
+  const bootConceptShell = () => {
+    initConceptPickers();
+    initConceptPolish();
+  };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => initConceptPickers());
+    document.addEventListener("DOMContentLoaded", bootConceptShell);
   } else {
-    initConceptPickers();
+    bootConceptShell();
   }
 
   document.querySelectorAll<HTMLAnchorElement>('a[data-concept-placeholder]').forEach((link) => {

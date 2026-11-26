@@ -312,7 +312,12 @@ const walks = [
         `Phone: ${d.get("phone") || ""}`,
         `Name / notes: ${d.get("name") || ""}`,
       ].join("\n");
-      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`${kind} — The Old School House, Rostrevor`)}&body=${encodeURIComponent(body)}`;
+      const to = form.dataset.email ?? "";
+      const subject = `${kind} — The Old School House, Rostrevor`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

@@ -322,7 +322,12 @@ const hours = [
         "",
         String(d.get("notes") || ""),
       ].join("\n");
-      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`${kind} — The Mulberry Tree, Seaforde`)}&body=${encodeURIComponent(body)}`;
+      const to = form.dataset.email ?? "";
+      const subject = `${kind} — The Mulberry Tree, Seaforde`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

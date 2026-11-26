@@ -260,7 +260,12 @@ const pours = [
         `Estimated guests: ${d.get("guests") || ""}`,
         `Contact: ${d.get("who") || ""}`,
       ].join("\n");
-      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Group / Event Enquiry — The Bridge Bar Newry`)}&body=${encodeURIComponent(body)}`;
+      const to = form.dataset.email ?? "";
+      const subject = "Group / Event Enquiry — The Bridge Bar Newry";
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

@@ -252,7 +252,12 @@ const departments = [
         `Details: ${d.get("details") || "General advice"}`,
         `Contact: ${d.get("who") || ""}`,
       ].join("\n");
-      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Plant Finder Enquiry (${state.season} ${state.foliage})`)}&body=${encodeURIComponent(body)}`;
+      const to = form.dataset.email ?? "";
+      const subject = `Plant Finder Enquiry (${state.season} ${state.foliage})`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>
