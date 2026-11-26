@@ -164,18 +164,41 @@ function distanceMetres(a, b) {
   return 2 * r * Math.asin(Math.sqrt(x));
 }
 
+const OVERPASS_ENDPOINTS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+];
+
+async function postOverpass(label, query) {
+  const body = new URLSearchParams({ data: query });
+  let lastError;
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded", "user-agent": "LocalBusinessResearch/1.0" },
+        body,
+      });
+      if (!response.ok) {
+        lastError = new Error(`Overpass ${label} (${endpoint}): ${response.status}`);
+        continue;
+      }
+      const json = await response.json();
+      if (Array.isArray(json.elements)) return json;
+      lastError = new Error(`Overpass ${label} (${endpoint}): invalid response`);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError ?? new Error(`Overpass ${label}: all endpoints failed`);
+}
+
 async function fetchOverpass(placeName, place) {
   const selectors = ["shop", "amenity", "office", "craft", "tourism", "leisure", "healthcare"]
     .map((key) => `nwr(around:${place.radius},${place.lat},${place.lon})["name"]["${key}"];`).join("");
   const query = `[out:json][timeout:90];(${selectors});out center tags;`;
-  const body = new URLSearchParams({ data: query });
-  const response = await fetch("https://overpass.kumi.systems/api/interpreter", {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded", "user-agent": "LocalBusinessResearch/1.0" },
-    body,
-  });
-  if (!response.ok) throw new Error(`Overpass ${placeName}: ${response.status}`);
-  const json = await response.json();
+  const json = await postOverpass(placeName, query);
   return json.elements.map((element) => ({ ...element, discoveredFor: placeName }));
 }
 
@@ -292,15 +315,8 @@ function mergeRows(base, incoming) {
 async function fetchOverpassByDistrict() {
   const selectors = ["shop", "amenity", "office", "craft", "tourism", "leisure", "healthcare"]
     .map((key) => `nwr(area.district)["name"]["${key}"];`).join("");
-  const query = `[out:json][timeout:180];area["name"="Newry, Mourne and Down"]["boundary"="administrative"]->.district;(${selectors});out center tags;`;
-  const body = new URLSearchParams({ data: query });
-  const response = await fetch("https://overpass.kumi.systems/api/interpreter", {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded", "user-agent": "LocalBusinessResearch/1.0" },
-    body,
-  });
-  if (!response.ok) throw new Error(`Overpass Newry, Mourne and Down: ${response.status}`);
-  const json = await response.json();
+  const query = `[out:json][timeout:180];rel["name"="Newry, Mourne and Down District"]["boundary"="administrative"];map_to_area->.district;(${selectors});out center tags;`;
+  const json = await postOverpass("Newry, Mourne and Down", query);
   return json.elements.map((element) => ({ ...element, discoveredFor: "Newry, Mourne and Down" }));
 }
 
@@ -319,7 +335,9 @@ function resolveSettlement(tags, coords) {
 function isHighRoiLane(row) {
   if (row.entityType !== "Independent / ownership unverified") return false;
   if (row.category === "Accommodation") return true;
-  if (row.category === "Tourism & attraction") return true;
+  if (row.category === "Tourism & attraction") {
+    return ["attraction", "museum", "gallery", "theme_park", "zoo", "aquarium", "camp_site", "caravan_site"].includes(row.subcategory);
+  }
   if (row.category === "Food & drink") {
     return !["fast_food", "ice_cream", "cafe"].includes(row.subcategory);
   }
