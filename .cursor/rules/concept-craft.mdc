@@ -1,0 +1,18 @@
+---
+description: Visual craft, layout alignment, typography variety, and structural guards for concept sites
+globs: src/concepts/**/*
+alwaysApply: false
+---
+
+# Concept craft & visual standards
+
+When building or refining concept pages in `src/concepts/`, follow `docs/concept-craft-standards.md`:
+
+- **Principles, never one template:** Apply declutter, generous spacing, concise copy (avoid em-dash headline clutter), unified vertical rails, strong scale contrast, and honest imagery — while giving each business a distinct composition suited to its trade.
+- **Avoid serif-italic monotony:** Reserve serif + italic `<em>` emphasis for heritage, legal, estate, and classic broadsheet concepts. For modern trades, workshops, clinics, parks, breweries, and contemporary venues, use bold sans-serif display faces with a brand-native highlighted `<mark>` phrase (varied across sites: low-half marker sweep, solid ink block, translucent glass band, framed callout, or soft surface tint). Keep solid/bordered `<mark>` highlights on a clean unbroken line so wrapped boxes never collide.
+- **Selective preview dropdowns:** Add visual preview nav dropdowns only where the business genuinely has multiple distinct families or locations to preview.
+- **Defeat `concept-shell.css` header flex-shrink:** Any `<header>` wrapping a single inner container (`.xx-wrap` / `.xx-header-inner`) MUST set `display: block;` and a definite container width (`width: min(1240px, calc(100% - gutter * 2))`).
+- **Never clobber `.xx-wrap` rails:** Do not put `width: 100%` on a class paired with a `*-wrap` container (e.g. hero overlays).
+- **Explicit `<h1>` font-family:** Always declare `font-family` on the concept's hero `h1` and ensure the font is loaded in `ConceptLayout.astro` (`conceptFonts`) or `fontHref`.
+- **Enquiry event bus:** Always dispatch `mm:enquiry` on `window.dispatchEvent(...)`, never `document.dispatchEvent(...)`.
+- **Visual sign-off & OG cards:** After editing hero layout/typography, recapture changed `public/media/og/<slug>.jpg` cards via `node tools/capture/capture-concept-og-cards.mjs` and verify with `pnpm test:craft` and `pnpm audit:renders <slug>`.

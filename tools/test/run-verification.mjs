@@ -38,6 +38,8 @@ const run = (args) =>
 // scanned by nothing at all once this runner was removed.
 const suites = [
   ["test:request"],
+  ["test:guest-voice"],
+  ["test:craft"],
 ];
 
 if (skipBuild) {

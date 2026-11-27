@@ -28,6 +28,14 @@ Studio / meta voice belongs only in:
 
 `pnpm build` runs `tools/check/check-concept-guest-voice.mjs` against `src/concepts/` (excluding `_shell/`). Keep that denylist honest when new failure phrases appear.
 
+### Concept craft & visual standards
+
+Apply visual craft principles without reusing one template across concepts. See [`docs/concept-craft-standards.md`](docs/concept-craft-standards.md) and `.cursor/rules/concept-craft.mdc`:
+- Vary hero compositions and typography across each wave; avoid defaulting to serif italics everywhere — pair modern sans-serif display faces with brand-native highlighted `<mark>` phrases on modern trades, workshops, clinics, parks, breweries, and contemporary venues.
+- Add visual preview nav dropdowns selectively only where a business has multiple distinct families or locations to browse.
+- Defeat the `concept-shell.css` header flex-shrink trap (`display: block` on `<header>` wrappers), never override a `*-wrap` rail with `width: 100%`, declare `font-family` explicitly on hero `<h1>`, and dispatch `mm:enquiry` on `window`.
+- Run `pnpm test:craft` (wired into `pnpm test`) and `pnpm audit:renders <slug>` (headless Chromium overflow, rail skew, and `<mark>` collision audit) before pushing; recapture stale `public/media/og/<slug>.jpg` cards whenever hero layout or typography changes.
+
 ### Non-obvious notes
 
 - Directory layout: see [`docs/REPO_MAP.md`](docs/REPO_MAP.md). Edit `public/`, never `dist/`. Concept work lives under `src/concepts/<slug>/`, `public/media/concepts/<slug>/`, and `research/concepts/<slug>/`. Archived packs live in `archive/concepts/<slug>/`, outside the build; see `archive/README.md` before restoring one.
