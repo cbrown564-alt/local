@@ -13,6 +13,27 @@ const phoneHref = "tel:+442830050330";
 const email = "Enquiries@evvrclean.co.uk";
 const supportEmail = "customersupport@evvrclean.co.uk";
 const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit+11+ITEC+Business+Park+52A+Armagh+Road+Newry+BT35+6PS";
+
+const serviceDropdown = [
+  {
+    title: "Commercial Contracts",
+    desc: "Offices, retail units and clinics cleaned on reliable local schedules.",
+    img: "/media/concepts/evvrclean-newry/evvrclean-commercial-space-640.webp",
+    tag: "Newry & Down",
+  },
+  {
+    title: "Commercial Laundrette",
+    desc: "Pressed linens, towels, duvets and hospitality washes from Armagh Road.",
+    img: "/media/concepts/evvrclean-newry/evvrclean-laundrette-linens-640.webp",
+    tag: "Unit 11 ITEC Park",
+  },
+  {
+    title: "Domestic Housekeeping",
+    desc: "Regular weekly visits and thorough end-of-tenancy deep cleans.",
+    img: "/media/concepts/evvrclean-newry/evvrclean-commercial-space-640.webp",
+    tag: "Flexible visits",
+  },
+];
 ---
 
 <ConceptLayout
@@ -23,47 +44,91 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit
   town="Newry"
   bannerNote="Imagery comprises indicative spotless commercial workspace and laundrette linen care visualisations."
 >
-  <header class="evc-header">
+  <header class="evc-header" data-evc-header>
     <div class="evc-header-inner">
       <a class="evc-brand" href="#top">
-        <strong>Evvrclean</strong>
-        <span>Newry · Commercial, Domestic &amp; Laundrette</span>
+        <span class="evc-mark" aria-hidden="true"></span>
+        <span>Evvrclean</span>
       </a>
+
       <nav class="evc-nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#laundrette">Laundrette</a>
-        <a href="#quote">Free Quote</a>
-        <a href="#location">ITEC Business Park</a>
+        <div class="evc-dd-wrap" data-evc-dd>
+          <button type="button" class="evc-nav-link evc-dd-trigger" aria-expanded="false" aria-controls="evc-svc-menu" data-evc-dd-trigger>
+            <span>Services</span>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+          <div class="evc-dd-panel" id="evc-svc-menu" hidden data-evc-dd-panel>
+            <ul class="evc-dd-list">
+              {serviceDropdown.map((item, idx) => (
+                <li>
+                  <a href="#services" class:list={["evc-dd-item", idx === 0 && "is-active"]} data-evc-dd-item data-img={item.img} data-tag={item.tag}>
+                    <strong>{item.title}</strong>
+                    <span>{item.desc}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="evc-dd-preview" aria-hidden="true">
+              <img src={serviceDropdown[0].img} alt="" width="640" height="349" data-evc-dd-img />
+              <span class="evc-dd-tag" data-evc-dd-tag>{serviceDropdown[0].tag}</span>
+            </div>
+          </div>
+        </div>
+        <a class="evc-nav-link" href="#laundrette">Laundrette</a>
+        <a class="evc-nav-link" href="#quote">Quote</a>
+        <a class="evc-nav-link" href="#location">Newry</a>
       </nav>
+
       <div class="evc-header-actions">
         <a class="evc-header-tel" href={phoneHref}>{phone}</a>
-        <a class="evc-header-cta" href="#quote">Get a Quote</a>
+        <a class="evc-pill-cta" href="#quote">Get a quote</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="evc-hero" aria-labelledby="evc-hero-title">
-      <div class="evc-wrap evc-hero-grid">
-        <div>
-          <p class="evc-kicker">Unit 11, ITEC Business Park · 52A Armagh Road, Newry</p>
-          <h1 id="evc-hero-title">Spotless workspaces, cared-for homes and crisp commercial laundry.</h1>
-          <p class="evc-lead">
-            Newry's dependable team for contract commercial cleaning, regular domestic housekeeping
-            and fast-turnaround laundrette linen care — managed locally with clear scheduling.
-          </p>
-          <div class="evc-actions">
-            <a class="evc-btn evc-btn--primary" href="#quote">Request a Free Quote</a>
-            <a class="evc-btn evc-btn--outline" href={phoneHref}>Call {phone}</a>
+      <figure class="evc-hero-media">
+        <picture>
+          <source srcset="/media/concepts/evvrclean-newry/evvrclean-commercial-space-640.webp 640w, /media/concepts/evvrclean-newry/evvrclean-commercial-space-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/evvrclean-newry/evvrclean-commercial-space.jpg" alt="Sunlit modern office reception and glass-walled boardroom with gleaming oak floors and spotless surfaces" width="1408" height="768" loading="eager" />
+        </picture>
+        <div class="evc-hero-scrim" aria-hidden="true"></div>
+      </figure>
+
+      <div class="evc-wrap evc-hero-stage">
+        <div class="evc-hero-headline">
+          <h1 id="evc-hero-title" class="evc-reveal evc-reveal-1">
+            Spotless spaces,<br /><span>cared for locally.</span>
+          </h1>
+        </div>
+
+        <div class="evc-hero-foot">
+          <div class="evc-hero-copy evc-reveal evc-reveal-2">
+            <p>
+              Commercial contract cleaning, domestic housekeeping and crisp linen turnaround from
+              ITEC Business Park on Armagh Road, Newry.
+            </p>
+            <div class="evc-hero-actions">
+              <a class="evc-arrow-btn" href="#quote">
+                <span class="evc-arrow-label">Request a free quote</span>
+                <span class="evc-arrow-circle" aria-hidden="true">
+                  <svg class="evc-arrow evc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <svg class="evc-arrow evc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+              </a>
+              <a class="evc-ghost-link" href={phoneHref}>Call {phone}</a>
+            </div>
+          </div>
+
+          <div class="evc-hero-meta evc-reveal evc-reveal-3">
+            <a class="evc-scroll-cue" href="#services">
+              <span>Scroll down</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p class="evc-visual-note">Commercial finish · indicative visualisation</p>
           </div>
         </div>
-        <figure class="evc-hero-plate">
-          <picture>
-            <source srcset="/media/concepts/evvrclean-newry/evvrclean-commercial-space-640.webp 640w, /media/concepts/evvrclean-newry/evvrclean-commercial-space-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
-            <img src="/media/concepts/evvrclean-newry/evvrclean-commercial-space.jpg" alt="Sunlit modern office reception and glass-walled boardroom with gleaming oak floors and spotless surfaces" width="1408" height="768" loading="eager" />
-          </picture>
-          <figcaption>Commercial office &amp; reception finish. Indicative cleaning visualisation.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -76,21 +141,21 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit
             <source srcset="/media/concepts/evvrclean-newry/evvrclean-laundrette-linens-640.webp 640w, /media/concepts/evvrclean-newry/evvrclean-laundrette-linens-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
             <img src="/media/concepts/evvrclean-newry/evvrclean-laundrette-linens.jpg" alt="Crisp folded white hotel-grade cotton towels and pressed linens beside stainless steel commercial laundry drums" width="1408" height="768" loading="lazy" />
           </picture>
-          <figcaption>Laundrette &amp; pressed linen care. Indicative facility visualisation.</figcaption>
+          <figcaption>Laundrette &amp; pressed linen care · indicative facility visualisation.</figcaption>
         </figure>
         <div>
-          <p class="evc-kicker">Unit 11 · Armagh Road, Newry</p>
-          <h2 id="evc-laun-title">Drop-off laundrette &amp; commercial linen turnaround.</h2>
-          <p>
-            From hospitality bed linen, towels and salon wear to household duvets and weekly wash
-            loads, our ITEC Business Park unit handles heavy-duty washing, drying and crisp folding
-            with easy door-side parking.
+          <p class="evc-eyebrow">Unit 11 · Armagh Road, Newry</p>
+          <h2 id="evc-laun-title">Drop-off laundrette and commercial linen turnaround.</h2>
+          <p class="evc-body">
+            From hospitality bed linen, towels and salon wear to household duvets and weekly loads,
+            our ITEC Business Park unit handles heavy-duty washing, drying and crisp folding with
+            easy door-side parking.
           </p>
-          <div class="evc-contact-box">
-            <p><strong>Direct Desk:</strong> <a href={phoneHref}>{phone}</a></p>
-            <p><strong>New Quotes:</strong> <a href={`mailto:${email}`}>{email}</a></p>
-            <p><strong>Client Support:</strong> <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>
-          </div>
+          <dl class="evc-contact-list">
+            <div><dt>Direct Desk</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
+            <div><dt>New Quotes</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+            <div><dt>Client Support</dt><dd><a href={`mailto:${supportEmail}`}>{supportEmail}</a></dd></div>
+          </dl>
         </div>
       </div>
     </section>
@@ -98,9 +163,9 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit
     <section class="evc-section evc-quote" id="quote" aria-labelledby="evc-q-title">
       <div class="evc-wrap evc-split">
         <div>
-          <p class="evc-kicker">Tailored Local Quotes</p>
+          <p class="evc-eyebrow">Tailored local quotes</p>
           <h2 id="evc-q-title">Tell us your premises and schedule.</h2>
-          <p>
+          <p class="evc-body">
             Whether you need five-day office cleaning, a fortnightly home visit or commercial linen
             turnaround, send a brief note below and our Newry team will reply promptly.
           </p>
@@ -135,12 +200,18 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit
             <span>Cleaning frequency &amp; details</span>
             <textarea name="notes" rows="3" placeholder="Approximate size of premises, preferred days or laundry volume..."></textarea>
           </label>
-          <button class="evc-btn evc-btn--primary" type="submit">Send Quote Request</button>
+          <button class="evc-arrow-btn evc-arrow-btn--dark" type="submit">
+            <span class="evc-arrow-label">Send quote request</span>
+            <span class="evc-arrow-circle" aria-hidden="true">
+              <svg class="evc-arrow evc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <svg class="evc-arrow evc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </button>
         </form>
       </div>
     </section>
 
-    <section class="evc-section" id="location" aria-label="Newry ITEC Business Park map">
+    <section class="evc-section evc-map-band" id="location" aria-label="Newry ITEC Business Park map">
       <div class="evc-wrap">
         <LocalAreaMap
           id="evc-map"
@@ -178,6 +249,39 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Evvrclean+Unit
 
   <script is:inline>
     (() => {
+      const header = document.querySelector("[data-evc-header]");
+      if (header) {
+        const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
+      const ddWrap = document.querySelector("[data-evc-dd]");
+      const trigger = ddWrap?.querySelector("[data-evc-dd-trigger]");
+      const panel = ddWrap?.querySelector("[data-evc-dd-panel]");
+      const previewImg = ddWrap?.querySelector("[data-evc-dd-img]");
+      const previewTag = ddWrap?.querySelector("[data-evc-dd-tag]");
+      const items = ddWrap ? [...ddWrap.querySelectorAll("[data-evc-dd-item]")] : [];
+      if (ddWrap && trigger && panel) {
+        const setOpen = (open) => {
+          panel.hidden = !open;
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          ddWrap.classList.toggle("is-open", open);
+        };
+        trigger.addEventListener("click", (e) => { e.stopPropagation(); setOpen(panel.hidden); });
+        document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) setOpen(false); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+        items.forEach((item) => {
+          const activate = () => {
+            items.forEach((i) => i.classList.toggle("is-active", i === item));
+            if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
+            if (previewTag && item.dataset.tag) previewTag.textContent = item.dataset.tag;
+          };
+          item.addEventListener("mouseenter", activate);
+          item.addEventListener("focus", activate);
+          item.addEventListener("click", () => setOpen(false));
+        });
+      }
+
       const form = document.querySelector("[data-evc-form]");
       if (!form) return;
       form.addEventListener("submit", (e) => {

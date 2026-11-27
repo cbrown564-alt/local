@@ -12,6 +12,27 @@ const phone = "028 4482 8375";
 const phoneHref = "tel:+442844828375";
 const clubHref = "https://edyc.co.uk/";
 const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yacht+Club+62+Comber+Road+Moymore+Killyleagh+BT30+9QZ";
+
+const clubDropdown = [
+  {
+    title: "Sailing & Racing",
+    desc: "Sheltered dinghy, keelboat and cruiser series from Moymore slipway.",
+    img: "/media/concepts/east-down-yacht-club/east-down-sailing-640.webp",
+    tag: "Strangford Lough",
+  },
+  {
+    title: "Caravan & Camping",
+    desc: "Waterside touring caravan and tent pitches overlooking the drumlins.",
+    img: "/media/concepts/east-down-yacht-club/east-down-lough-shore-640.webp",
+    tag: "Shoreline meadow",
+  },
+  {
+    title: "RYA Training",
+    desc: "Junior sailing weeks, adult beginner courses and powerboat training.",
+    img: "/media/concepts/east-down-yacht-club/east-down-sailing-640.webp",
+    tag: "RYA Recognised",
+  },
+];
 ---
 
 <ConceptLayout
@@ -22,20 +43,43 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yach
   town="Killyleagh"
   bannerNote="Imagery comprises indicative Strangford Lough sailing and waterside shoreline caravan park visualisations."
 >
-  <header class="edyc-header">
+  <header class="edyc-header" data-edyc-header>
     <div class="edyc-header-inner">
       <a class="edyc-brand" href="#top">
-        <strong>East Down Yacht Club</strong>
-        <span>Strangford Lough · Killyleagh</span>
+        <span class="edyc-mark" aria-hidden="true"></span>
+        <span>East Down Yacht Club</span>
       </a>
+
       <nav class="edyc-nav" aria-label="Primary">
-        <a href="#club">Sailing &amp; Training</a>
-        <a href="#shoreline">Caravan &amp; Camping</a>
-        <a href="#location">Strangford Lough</a>
+        <div class="edyc-dd-wrap" data-edyc-dd>
+          <button type="button" class="edyc-nav-link edyc-dd-trigger" aria-expanded="false" aria-controls="edyc-club-menu" data-edyc-dd-trigger>
+            <span>Explore</span>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+          <div class="edyc-dd-panel" id="edyc-club-menu" hidden data-edyc-dd-panel>
+            <ul class="edyc-dd-list">
+              {clubDropdown.map((item, idx) => (
+                <li>
+                  <a href="#club" class:list={["edyc-dd-item", idx === 0 && "is-active"]} data-edyc-dd-item data-img={item.img} data-tag={item.tag}>
+                    <strong>{item.title}</strong>
+                    <span>{item.desc}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="edyc-dd-preview" aria-hidden="true">
+              <img src={clubDropdown[0].img} alt="" width="640" height="349" data-edyc-dd-img />
+              <span class="edyc-dd-tag" data-edyc-dd-tag>{clubDropdown[0].tag}</span>
+            </div>
+          </div>
+        </div>
+        <a class="edyc-nav-link" href="#shoreline">Caravan Park</a>
+        <a class="edyc-nav-link" href="#location">Killyleagh</a>
       </nav>
+
       <div class="edyc-header-actions">
         <a class="edyc-header-tel" href={phoneHref}>{phone}</a>
-        <a class="edyc-header-cta" href={clubHref} target="_blank" rel="noopener noreferrer">Member Portal ↗</a>
+        <a class="edyc-pill-cta" href={clubHref} target="_blank" rel="noopener noreferrer">Club portal</a>
       </div>
     </div>
   </header>
@@ -47,19 +91,41 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yach
           <source srcset="/media/concepts/east-down-yacht-club/east-down-sailing-640.webp 640w, /media/concepts/east-down-yacht-club/east-down-sailing-1265.webp 1265w" sizes="100vw" type="image/webp" />
           <img src="/media/concepts/east-down-yacht-club/east-down-sailing.jpg" alt="White-sailed dinghies and small keelboats tacking across sparkling Strangford Lough waters with green County Down drumlins behind" width="1408" height="768" loading="eager" />
         </picture>
-        <figcaption class="edyc-hero-cap">Indicative Strangford Lough sailing visualisation.</figcaption>
+        <div class="edyc-hero-scrim" aria-hidden="true"></div>
       </figure>
-      <div class="edyc-hero-scrim" aria-hidden="true"></div>
-      <div class="edyc-hero-content">
-        <p class="edyc-eyebrow">62 Comber Road · Moymore · Killyleagh · Strangford Lough</p>
-        <h1 id="edyc-hero-title">Sheltered Strangford Lough sailing, RYA training and waterside camping.</h1>
-        <p class="edyc-hero-lead">
-          On the western shore of Strangford Lough near Killyleagh — a welcoming community sailing
-          club with active dinghy and cruiser racing, RYA courses for all ages, and peaceful shoreline pitches.
-        </p>
-        <div class="edyc-hero-actions">
-          <a class="edyc-btn edyc-btn--primary" href="#club">Explore Sailing &amp; Park</a>
-          <a class="edyc-btn edyc-btn--ghost" href={phoneHref}>Call Clubhouse · {phone}</a>
+
+      <div class="edyc-wrap edyc-hero-stage">
+        <div class="edyc-hero-headline">
+          <h1 id="edyc-hero-title" class="edyc-reveal edyc-reveal-1">
+            Strangford sailing<br /><em>and waterside pitches.</em>
+          </h1>
+        </div>
+
+        <div class="edyc-hero-foot">
+          <div class="edyc-hero-copy edyc-reveal edyc-reveal-2">
+            <p>
+              Sheltered dinghy racing, RYA sailing courses and shoreline caravan pitches on the
+              western shore of Strangford Lough near Killyleagh.
+            </p>
+            <div class="edyc-hero-actions">
+              <a class="edyc-arrow-btn" href="#club">
+                <span class="edyc-arrow-label">Explore club &amp; park</span>
+                <span class="edyc-arrow-circle" aria-hidden="true">
+                  <svg class="edyc-arrow edyc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <svg class="edyc-arrow edyc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+              </a>
+              <a class="edyc-ghost-link" href={phoneHref}>Call {phone}</a>
+            </div>
+          </div>
+
+          <div class="edyc-hero-meta edyc-reveal edyc-reveal-3">
+            <a class="edyc-scroll-cue" href="#club">
+              <span>Scroll down</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p class="edyc-visual-note">Strangford Lough · indicative visualisation</p>
+          </div>
         </div>
       </div>
     </section>
@@ -73,26 +139,26 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yach
             <source srcset="/media/concepts/east-down-yacht-club/east-down-lough-shore-640.webp 640w, /media/concepts/east-down-yacht-club/east-down-lough-shore-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
             <img src="/media/concepts/east-down-yacht-club/east-down-lough-shore.jpg" alt="Peaceful golden-hour sailing club slipway and waterside touring caravan meadow overlooking calm waters of Strangford Lough" width="1408" height="768" loading="lazy" />
           </picture>
-          <figcaption>Moymore slipway &amp; loughside meadow. Indicative shoreline visualisation.</figcaption>
+          <figcaption>Moymore slipway &amp; loughside meadow · indicative shoreline visualisation.</figcaption>
         </figure>
         <div>
-          <p class="edyc-kicker">Waterside Base · 62 Comber Road, Moymore</p>
+          <p class="edyc-eyebrow">62 Comber Road · Moymore</p>
           <h2 id="edyc-sh-title">Launch from the slipway or wake right beside the tide.</h2>
-          <p>
+          <p class="edyc-body">
             Set off the Comber Road just north of Killyleagh, East Down Yacht Club combines clean
             sheltered sailing waters with grassy waterside touring caravan and camping pitches — an
             unrivalled base for County Down weekends on the lough.
           </p>
-          <div class="edyc-call-box">
-            <span>Clubhouse &amp; Visitor Enquiries</span>
-            <a href={phoneHref}>{phone}</a>
-            <p>62 Comber Road, Moymore, Killyleagh, Co. Down, BT30 9QZ</p>
-          </div>
+          <dl class="edyc-contact-list">
+            <div><dt>Clubhouse Desk</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
+            <div><dt>Address</dt><dd>62 Comber Road, Moymore, Killyleagh, BT30 9QZ</dd></div>
+            <div><dt>Official Portal</dt><dd><a href={clubHref} target="_blank" rel="noopener noreferrer">edyc.co.uk ↗</a></dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <section class="edyc-section" id="location" aria-label="Killyleagh Strangford Lough map">
+    <section class="edyc-section edyc-map-band" id="location" aria-label="Killyleagh Strangford Lough map">
       <div class="edyc-wrap">
         <LocalAreaMap
           id="edyc-map"
@@ -127,4 +193,41 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yach
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-edyc-header]");
+      if (header) {
+        const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
+      const ddWrap = document.querySelector("[data-edyc-dd]");
+      const trigger = ddWrap?.querySelector("[data-edyc-dd-trigger]");
+      const panel = ddWrap?.querySelector("[data-edyc-dd-panel]");
+      const previewImg = ddWrap?.querySelector("[data-edyc-dd-img]");
+      const previewTag = ddWrap?.querySelector("[data-edyc-dd-tag]");
+      const items = ddWrap ? [...ddWrap.querySelectorAll("[data-edyc-dd-item]")] : [];
+      if (ddWrap && trigger && panel) {
+        const setOpen = (open) => {
+          panel.hidden = !open;
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          ddWrap.classList.toggle("is-open", open);
+        };
+        trigger.addEventListener("click", (e) => { e.stopPropagation(); setOpen(panel.hidden); });
+        document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) setOpen(false); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+        items.forEach((item) => {
+          const activate = () => {
+            items.forEach((i) => i.classList.toggle("is-active", i === item));
+            if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
+            if (previewTag && item.dataset.tag) previewTag.textContent = item.dataset.tag;
+          };
+          item.addEventListener("mouseenter", activate);
+          item.addEventListener("focus", activate);
+          item.addEventListener("click", () => setOpen(false));
+        });
+      }
+    })();
+  </script>
 </ConceptLayout>

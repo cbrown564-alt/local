@@ -1,32 +1,31 @@
 ---
-/* Beer Hut Brewing — Interactive Taproom, Shop & Community Guide.
-   Unpacks Kilkeel's Saturday taproom & pizza, online cans, Sub Club, Running Club & Trade stockists. */
+/* Beer Hut Brewing — Editorial Taproom, Shop & Community Tabs (Unslopped). */
 const channels = [
   {
     id: "taproom",
-    label: "Saturday Taproom",
+    label: "Saturday taproom",
     title: "Fresh pours from the bright tanks alongside artisan pizza every Saturday.",
     points: [
       "Hazy IPAs, crisp pilsners, rich stouts and seasonal sours straight off the lines",
       "Wood-fired artisan pizza served beside the brewhouse tanks in Kilkeel",
       "Relaxed coastal atmosphere minutes from Kilkeel harbour and the Mournes",
     ],
-    note: "Bring friends straight off the Mourne trails — check our online shop or ring 07885 566599 for seasonal taproom times.",
+    note: "Bring friends straight off the Mourne trails — check our shop or call 07885 566599 for seasonal hours.",
   },
   {
     id: "shop",
-    label: "Online Shop",
+    label: "Online shop",
     title: "Small-batch cans, mixed packs and fresh brewery releases delivered to your door.",
     points: [
       "Direct-from-brewery cold-stored cans packed in Kilkeel",
       "Rotating small-batch hazy pale ales, IPAs and dark releases",
       "Gift packs and brewery merch ready to order at beerhutbrewing.co.uk",
     ],
-    note: "Fresh releases drop regularly through our online store alongside click-and-collect in Kilkeel.",
+    note: "Fresh releases drop regularly online alongside local click-and-collect in Kilkeel.",
   },
   {
     id: "clubs",
-    label: "Sub Club & Running Club",
+    label: "Sub Club & Running",
     title: "Monthly brewery subscriptions and social Mourne running meet-ups.",
     points: [
       "Beer Hut Sub Club: curated monthly boxes of our newest Kilkeel brews",
@@ -37,11 +36,11 @@ const channels = [
   },
   {
     id: "trade",
-    label: "Trade Stockists",
+    label: "Trade stockists",
     title: "Kegs and cans supplied to independent bars, restaurants and bottle shops.",
     points: [
       "Reliable independent Northern Ireland craft beer range",
-      "Fresh kegs and eye-catching 440ml cans brewed at Binnian Enterprise Park",
+      "Fresh kegs and 440ml cans brewed at Binnian Enterprise Park",
       "Direct trade support from our Kilkeel brewery team on 07885 566599",
     ],
     note: "Ring the brewery directly to discuss tap lines, mixed cases or seasonal pours.",
@@ -49,12 +48,12 @@ const channels = [
 ];
 ---
 
-<section class="bhb-tabs-band" id="taproom" aria-labelledby="bhb-tabs-title">
+<section class="bhb-section bhb-tabs-band" id="taproom" aria-labelledby="bhb-tabs-title">
   <div class="bhb-wrap">
-    <div class="bhb-tabs-card" data-bhb-tabs>
+    <div class="bhb-tabs-shell" data-bhb-tabs>
       <div class="bhb-tabs-head">
         <div>
-          <p class="bhb-kicker">Kilkeel Brewhouse · Taproom &amp; Community</p>
+          <p class="bhb-eyebrow">Kilkeel brewhouse · Taproom &amp; community</p>
           <h2 id="bhb-tabs-title">Four ways to experience Beer Hut.</h2>
         </div>
         <div class="bhb-tab-list" role="tablist" aria-label="Choose Beer Hut section">
@@ -76,11 +75,22 @@ const channels = [
         <div class="bhb-panel" role="tabpanel" data-bhb-panel={ch.id} hidden={idx !== 0}>
           <h3>{ch.title}</h3>
           <ul class="bhb-points">
-            {ch.points.map((pt) => <li>{pt}</li>)}
+            {ch.points.map((pt, pIdx) => (
+              <li>
+                <span class="bhb-pt-num">0{pIdx + 1}</span>
+                <span>{pt}</span>
+              </li>
+            ))}
           </ul>
           <div class="bhb-panel-foot">
             <p class="bhb-note"><strong>Brewhouse note:</strong> {ch.note}</p>
-            <a class="bhb-btn bhb-btn--primary" href="https://beerhutbrewing.co.uk/" target="_blank" rel="noopener noreferrer">Visit Online Shop ↗</a>
+            <a class="bhb-arrow-btn" href="https://beerhutbrewing.co.uk/" target="_blank" rel="noopener noreferrer">
+              <span class="bhb-arrow-label">Visit online shop</span>
+              <span class="bhb-arrow-circle" aria-hidden="true">
+                <svg class="bhb-arrow bhb-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg class="bhb-arrow bhb-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </a>
           </div>
         </div>
       ))}
@@ -89,39 +99,41 @@ const channels = [
 </section>
 
 <style>
-  .bhb-tabs-band { padding: clamp(46px, 6vw, 76px) 0; }
-  .bhb-tabs-card {
-    background: #1b2025;
-    border: 1px solid rgba(243, 244, 246, 0.14);
-    border-top: 3px solid #e39a2b;
-    padding: clamp(24px, 4vw, 40px);
-    border-radius: 2px;
-  }
+  .bhb-tabs-shell { border-top: 1px solid var(--bhb-line); padding-top: clamp(32px, 4.5vw, 52px); }
   .bhb-tabs-head {
-    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 18px;
-    padding-bottom: 22px; border-bottom: 1px solid rgba(243, 244, 246, 0.12);
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;
+    padding-bottom: 28px; border-bottom: 1px solid var(--bhb-line);
   }
-  .bhb-tabs-head h2 { margin: 0; font-family: var(--bhb-display); font-size: clamp(1.65rem, 3vw, 2.35rem); font-weight: 700; color: #f3f4f6; }
+  .bhb-tabs-head h2 {
+    margin: 0; font-family: var(--bhb-display); font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+    font-weight: 700; letter-spacing: -0.02em; line-height: 1.06; color: var(--bhb-ink);
+  }
   .bhb-tab-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .bhb-tab {
-    padding: 9px 14px; border: 1px solid rgba(243, 244, 246, 0.22); background: #14171a; color: #f3f4f6;
-    font-family: var(--bhb-sans); font-size: 0.86rem; font-weight: 600; border-radius: 2px; cursor: pointer;
+    padding: 9px 16px; border: 1px solid var(--bhb-line); background: transparent; color: var(--bhb-muted);
+    font-family: var(--bhb-sans); font-size: 0.86rem; font-weight: 500; border-radius: 999px; cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   }
-  .bhb-tab.is-active { background: #e39a2b; border-color: #e39a2b; color: #111417; }
-  .bhb-panel { padding-top: 24px; }
-  .bhb-panel h3 { margin: 0 0 18px; font-family: var(--bhb-display); font-size: 1.32rem; font-weight: 600; color: #f3f4f6; }
+  .bhb-tab:hover { color: var(--bhb-ink); border-color: rgba(243, 244, 246, 0.34); }
+  .bhb-tab.is-active { background: var(--bhb-accent); border-color: var(--bhb-accent); color: #101315; font-weight: 600; }
+  .bhb-panel { padding-top: 32px; }
+  .bhb-panel h3 {
+    margin: 0 0 26px; font-family: var(--bhb-display); font-size: clamp(1.28rem, 2vw, 1.6rem);
+    font-weight: 600; line-height: 1.25; color: var(--bhb-ink); max-width: 48ch;
+  }
   .bhb-points {
-    list-style: none; padding: 0; margin: 0 0 24px;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+    list-style: none; padding: 0; margin: 0 0 32px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px);
   }
   .bhb-points li {
-    background: #14171a; border: 1px solid rgba(243, 244, 246, 0.1);
-    padding: 14px 16px; font-size: 0.92rem; color: rgba(243, 244, 246, 0.88); border-radius: 2px;
+    padding-top: 16px; border-top: 1px solid var(--bhb-line); display: grid; gap: 8px;
+    font-size: 0.94rem; line-height: 1.6; color: var(--bhb-muted);
   }
-  .bhb-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-  .bhb-note { margin: 0; font-size: 0.9rem; color: rgba(243, 244, 246, 0.72); max-width: 54ch; }
-  .bhb-note strong { color: #f3f4f6; }
-  @media (max-width: 780px) { .bhb-points { grid-template-columns: minmax(0, 1fr); } }
+  .bhb-pt-num { font-size: 0.74rem; font-variant-numeric: tabular-nums; color: var(--bhb-accent); font-weight: 600; }
+  .bhb-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  .bhb-note { margin: 0; font-size: 0.9rem; color: var(--bhb-muted); max-width: 54ch; line-height: 1.55; }
+  .bhb-note strong { color: var(--bhb-ink); font-weight: 600; }
+  @media (max-width: 820px) { .bhb-points { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <script is:inline>

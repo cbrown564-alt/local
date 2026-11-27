@@ -1,14 +1,12 @@
 ---
-/* The Kilbroney Centre — Interactive Group & Stay Planner.
-   Helps youth leaders, churches, schools, and families pick the right residential format
-   before emailing booking@kilbroneycentre.com or ringing Rostrevor directly. */
+/* The Kilbroney Centre — Editorial Group & Stay Planner (Unslopped). */
 const stays = [
   {
     id: "youth",
     label: "Youth & Children's Groups",
-    title: "Safe woodland grounds and dedicated residential space for schools, churches and youth clubs.",
+    title: "Private woodland grounds and residential space for schools, churches and youth clubs.",
     points: [
-      "Private grounds set off Forestbrook Road beside Rostrevor forest trails",
+      "Enclosed grounds off Forestbrook Road beside Rostrevor forest trails",
       "Dining hall, meeting rooms and outdoor activity clearings on one site",
       "Flexible weekend or midweek residential dates across the year",
     ],
@@ -21,20 +19,20 @@ const stays = [
     points: [
       "Comfortable group accommodation with shared lounge and dining spaces",
       "Direct walking access into Kilbroney Forest Park and the Fairy Glen",
-      "Catering options or self-catering arrangements tailored to your gathering",
+      "Catered or self-catering arrangements tailored to your gathering",
     ],
     note: "Family groups often book Friday evening through Sunday afternoon — early enquiry recommended.",
   },
   {
     id: "camps",
     label: "Summer Camps",
-    title: "Memorable week-long summer camps packed with outdoor adventure and community.",
+    title: "Week-long summer camps built around outdoor adventure and community.",
     points: [
       "Structured daily programmes across woodland, lough and mountain trails",
       "Experienced pastoral and activity leadership for young people",
       "Open green space for team games, campfires and evening gatherings",
     ],
-    note: "Summer camp places fill quickly each spring; message us directly for the latest camp dates.",
+    note: "Summer camp places fill quickly each spring; message us directly for current dates.",
   },
   {
     id: "adult",
@@ -50,12 +48,12 @@ const stays = [
 ];
 ---
 
-<section class="kbc-planner" id="stays" aria-labelledby="kbc-planner-title">
+<section class="kbc-section kbc-planner" id="stays" aria-labelledby="kbc-planner-title">
   <div class="kbc-wrap">
-    <div class="kbc-planner-card" data-kbc-planner>
+    <div class="kbc-planner-shell" data-kbc-planner>
       <div class="kbc-planner-head">
         <div>
-          <p class="kbc-kicker">Residential Stays &amp; Programmes</p>
+          <p class="kbc-eyebrow">Residential stays &amp; programmes</p>
           <h2 id="kbc-planner-title">Plan your group stay in Rostrevor.</h2>
         </div>
         <div class="kbc-tabs" role="tablist" aria-label="Select group type">
@@ -77,11 +75,22 @@ const stays = [
         <div class="kbc-panel" role="tabpanel" data-kbc-panel={stay.id} hidden={idx !== 0}>
           <h3>{stay.title}</h3>
           <ul class="kbc-points">
-            {stay.points.map((pt) => <li>{pt}</li>)}
+            {stay.points.map((pt, pIdx) => (
+              <li>
+                <span class="kbc-pt-num">0{pIdx + 1}</span>
+                <span>{pt}</span>
+              </li>
+            ))}
           </ul>
           <div class="kbc-panel-foot">
-            <p class="kbc-note"><strong>Booking tip:</strong> {stay.note}</p>
-            <a class="kbc-btn kbc-btn--primary" href="#enquire">Check Group Availability</a>
+            <p class="kbc-note"><strong>Booking note:</strong> {stay.note}</p>
+            <a class="kbc-arrow-btn kbc-arrow-btn--dark" href="#enquire">
+              <span class="kbc-arrow-label">Check availability</span>
+              <span class="kbc-arrow-circle" aria-hidden="true">
+                <svg class="kbc-arrow kbc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg class="kbc-arrow kbc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </a>
           </div>
         </div>
       ))}
@@ -90,59 +99,84 @@ const stays = [
 </section>
 
 <style>
-  .kbc-planner { padding: clamp(48px, 6vw, 76px) 0; }
-  .kbc-planner-card {
-    background: #ffffff;
-    border: 1px solid rgba(24, 41, 31, 0.14);
-    border-top: 3px solid #26533c;
-    padding: clamp(24px, 4vw, 40px);
-    border-radius: 4px;
+  .kbc-planner-shell {
+    border-top: 1px solid var(--kbc-line);
+    padding-top: clamp(32px, 4.5vw, 52px);
   }
   .kbc-planner-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(24, 41, 31, 0.12);
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--kbc-line);
   }
-  .kbc-planner-head h2 { margin: 0; font-family: var(--kbc-display); font-size: clamp(1.7rem, 3vw, 2.35rem); font-weight: 500; }
+  .kbc-planner-head h2 {
+    margin: 0;
+    font-family: var(--kbc-display);
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
   .kbc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
   .kbc-tab {
-    padding: 9px 14px;
-    border: 1px solid rgba(24, 41, 31, 0.22);
-    background: #f5f7f3;
-    color: #18291f;
+    padding: 9px 16px;
+    border: 1px solid var(--kbc-line);
+    background: transparent;
+    color: var(--kbc-muted);
     font-family: var(--kbc-sans);
     font-size: 0.84rem;
-    font-weight: 600;
-    border-radius: 4px;
+    font-weight: 500;
+    border-radius: 999px;
     cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   }
-  .kbc-tab.is-active { background: #26533c; border-color: #26533c; color: #ffffff; }
-  .kbc-panel { padding-top: 24px; }
-  .kbc-panel h3 { margin: 0 0 18px; font-family: var(--kbc-display); font-size: 1.4rem; font-weight: 500; }
+  .kbc-tab:hover { color: var(--kbc-ink); border-color: rgba(24, 41, 31, 0.34); }
+  .kbc-tab.is-active { background: var(--kbc-accent); border-color: var(--kbc-accent); color: #ffffff; }
+  .kbc-panel { padding-top: 32px; }
+  .kbc-panel h3 {
+    margin: 0 0 26px;
+    font-family: var(--kbc-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 48ch;
+  }
   .kbc-points {
     list-style: none;
     padding: 0;
-    margin: 0 0 24px;
+    margin: 0 0 32px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    gap: clamp(20px, 3vw, 36px);
   }
   .kbc-points li {
-    background: #f5f7f3;
-    border: 1px solid rgba(24, 41, 31, 0.1);
-    padding: 14px 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--kbc-line);
+    display: grid;
+    gap: 8px;
     font-size: 0.92rem;
-    color: #18291f;
-    border-radius: 4px;
+    line-height: 1.6;
+    color: var(--kbc-muted);
   }
-  .kbc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-  .kbc-note { margin: 0; font-size: 0.9rem; color: #4b5f52; max-width: 54ch; }
-  .kbc-note strong { color: #18291f; }
-  @media (max-width: 780px) { .kbc-points { grid-template-columns: minmax(0, 1fr); } }
+  .kbc-pt-num {
+    font-size: 0.74rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--kbc-accent);
+    font-weight: 600;
+  }
+  .kbc-panel-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .kbc-note { margin: 0; font-size: 0.88rem; color: var(--kbc-muted); max-width: 54ch; line-height: 1.55; }
+  .kbc-note strong { color: var(--kbc-ink); font-weight: 600; }
+  @media (max-width: 820px) { .kbc-points { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <script is:inline>

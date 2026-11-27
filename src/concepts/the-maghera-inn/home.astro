@@ -45,20 +45,22 @@ const innGroups = [
   town="Maghera, Castlewellan"
   bannerNote="Imagery comprises indicative Mourne country inn hearth and traditional Sunday table visualisations."
 >
-  <header class="mi-header">
+  <header class="mi-header" data-mi-header>
     <div class="mi-header-inner">
       <a class="mi-brand" href="#top">
-        <strong>The Maghera Inn</strong>
-        <span>Ballyloughlin Road · Maghera</span>
+        <span class="mi-mark" aria-hidden="true"></span>
+        <span>The Maghera Inn</span>
       </a>
+
       <nav class="mi-nav" aria-label="Primary">
-        <a href="#dining">Dining &amp; Hours</a>
-        <a href="#receptions">Private Receptions</a>
-        <a href="#location">Mourne Foothills</a>
+        <a class="mi-nav-link" href="#dining">Dining &amp; Hours</a>
+        <a class="mi-nav-link" href="#receptions">Receptions</a>
+        <a class="mi-nav-link" href="#location">Maghera</a>
       </nav>
+
       <div class="mi-header-actions">
         <a class="mi-header-tel" href={phoneHref}>{phone}</a>
-        <a class="mi-header-cta" href={resDiaryHref} target="_blank" rel="noopener noreferrer">Book a Table ↗</a>
+        <a class="mi-pill-cta" href={resDiaryHref} target="_blank" rel="noopener noreferrer">Book table</a>
       </div>
     </div>
   </header>
@@ -70,32 +72,54 @@ const innGroups = [
           <source srcset="/media/concepts/the-maghera-inn/maghera-inn-hearth-640.webp 640w, /media/concepts/the-maghera-inn/maghera-inn-hearth-1265.webp 1265w" sizes="100vw" type="image/webp" />
           <img src="/media/concepts/the-maghera-inn/maghera-inn-hearth.jpg" alt="Warm traditional County Down country inn dining room with glowing hearth fire, exposed Mourne stone wall and brass lamps" width="1408" height="768" loading="eager" />
         </picture>
-        <figcaption class="mi-hero-cap">Indicative country inn dining room visualisation.</figcaption>
+        <div class="mi-hero-scrim" aria-hidden="true"></div>
       </figure>
-      <div class="mi-hero-scrim" aria-hidden="true"></div>
-      <div class="mi-hero-content">
-        <p class="mi-eyebrow">86–89 Ballyloughlin Road · Maghera · Between Newcastle &amp; Castlewellan</p>
-        <h1 id="mi-hero-title">Fireside hospitality, hearty Mourne cooking and proper pints.</h1>
-        <p class="mi-hero-lead">
-          A welcoming County Down landmark in the foothills of the Mournes — open seven days a week
-          for all-day dining, traditional Sunday roasts, private family receptions and a glowing hearth.
-        </p>
-        <div class="mi-hero-actions">
-          <a class="mi-btn mi-btn--primary" href={resDiaryHref} target="_blank" rel="noopener noreferrer">Book a Table via ResDiary ↗</a>
-          <SpecimenSheet
-            id="mi-menu-sheet"
-            triggerLabel="Menus, Sunday Roasts & Events"
-            kicker="The Maghera Inn · Ballyloughlin Road, Maghera"
-            title="Kitchen Menus, Service Times & Receptions"
-            subtitle="Reserve tables live through ResDiary or call 028 4372 2236 for private groups."
-            groups={innGroups}
-            ctaLabel="Book Table Online ↗"
-            ctaHref={resDiaryHref}
-            ctaExternal={true}
-            secondaryLabel={`Call ${phone}`}
-            secondaryHref={phoneHref}
-            buttonClass="mi-btn mi-btn--ghost"
-          />
+
+      <div class="mi-wrap mi-hero-stage">
+        <div class="mi-hero-headline">
+          <h1 id="mi-hero-title" class="mi-reveal mi-reveal-1">
+            Fireside cooking<br /><em>below the Mournes.</em>
+          </h1>
+        </div>
+
+        <div class="mi-hero-foot">
+          <div class="mi-hero-copy mi-reveal mi-reveal-2">
+            <p>
+              A County Down landmark on Ballyloughlin Road, open seven days for all-day dining,
+              Sunday roasts and family receptions.
+            </p>
+            <div class="mi-hero-actions">
+              <a class="mi-arrow-btn" href={resDiaryHref} target="_blank" rel="noopener noreferrer">
+                <span class="mi-arrow-label">Book a table</span>
+                <span class="mi-arrow-circle" aria-hidden="true">
+                  <svg class="mi-arrow mi-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <svg class="mi-arrow mi-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+              </a>
+              <SpecimenSheet
+                id="mi-menu-sheet"
+                triggerLabel="Menus, roasts & events"
+                kicker="The Maghera Inn · Ballyloughlin Road, Maghera"
+                title="Kitchen Menus, Service Times & Receptions"
+                subtitle="Reserve tables live through ResDiary or call 028 4372 2236 for private groups."
+                groups={innGroups}
+                ctaLabel="Book Table Online ↗"
+                ctaHref={resDiaryHref}
+                ctaExternal={true}
+                secondaryLabel={`Call ${phone}`}
+                secondaryHref={phoneHref}
+                buttonClass="mi-ghost-link"
+              />
+            </div>
+          </div>
+
+          <div class="mi-hero-meta mi-reveal mi-reveal-3">
+            <a class="mi-scroll-cue" href="#dining">
+              <span>Scroll down</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p class="mi-visual-note">Maghera dining room · indicative visualisation</p>
+          </div>
         </div>
       </div>
     </section>
@@ -107,17 +131,17 @@ const innGroups = [
             <source srcset="/media/concepts/the-maghera-inn/maghera-inn-sunday-table-640.webp 640w, /media/concepts/the-maghera-inn/maghera-inn-sunday-table-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
             <img src="/media/concepts/the-maghera-inn/maghera-inn-sunday-table.jpg" alt="Traditional Irish country pub roast beef supper with golden roast potatoes, seasonal vegetables and creamy dark stout" width="1408" height="768" loading="lazy" />
           </picture>
-          <figcaption>Sunday roast &amp; evening table. Indicative dining visualisation.</figcaption>
+          <figcaption>Sunday roast &amp; evening table · indicative dining visualisation.</figcaption>
         </figure>
         <div>
-          <p class="mi-kicker">Bar &amp; Kitchen Hours · Open 7 Days</p>
+          <p class="mi-eyebrow">Open seven days · Maghera</p>
           <h2 id="mi-din-title">Drop in after a Mourne walk or book ahead for Sunday.</h2>
-          <p>
+          <p class="mi-body">
             Minutes from Newcastle promenade, Dundrum Bay and Castlewellan Forest Park, our kitchen
-            serves generously from noon every day — with late-night bar service on Fridays and Saturdays.
+            serves generously from noon every day with late bar hours on Fridays and Saturdays.
           </p>
           <div class="mi-hours-card">
-            <h3>Bar &amp; Kitchen Times</h3>
+            <h3>Bar &amp; Kitchen Hours</h3>
             <dl class="mi-hours-list">
               <div><dt>Bar (Sun – Thu)</dt><dd>11:30 – 23:00</dd></div>
               <div><dt>Bar (Fri – Sat)</dt><dd>11:30 – 01:00</dd></div>
@@ -133,13 +157,13 @@ const innGroups = [
     <section class="mi-section mi-receptions" id="receptions" aria-labelledby="mi-rec-title">
       <div class="mi-wrap mi-split">
         <div>
-          <p class="mi-kicker">Events, Parties &amp; Family Receptions</p>
-          <h2 id="mi-rec-title">Host your celebration or family gathering with us.</h2>
-          <p>
-            From intimate anniversary dinners to christenings, family receptions and group set menus,
-            send us your rough date and party size below — or ring <a href={phoneHref}>{phone}</a>.
+          <p class="mi-eyebrow">Events &amp; family receptions</p>
+          <h2 id="mi-rec-title">Host your celebration or gathering beside the hearth.</h2>
+          <p class="mi-body">
+            From anniversary dinners and christenings to family receptions and group set menus,
+            share your rough date and party size below or call <a href={phoneHref}>{phone}</a>.
           </p>
-          <p class="mi-email-line">Events desk: <a href={`mailto:${email}`}>{email}</a></p>
+          <p class="mi-email-line">Events desk <a href={`mailto:${email}`}>{email}</a></p>
         </div>
         <form class="mi-form" data-mi-form>
           <div class="mi-row">
@@ -169,14 +193,20 @@ const innGroups = [
           </div>
           <label>
             <span>Menu or seating notes</span>
-            <textarea name="notes" rows="3" placeholder="Any dietary notes, preferred sitting time or set menu questions..."></textarea>
+            <textarea name="notes" rows="3" placeholder="Dietary notes, preferred sitting time or set menu questions..."></textarea>
           </label>
-          <button class="mi-btn mi-btn--primary" type="submit">Send Event Enquiry</button>
+          <button class="mi-arrow-btn" type="submit">
+            <span class="mi-arrow-label">Send event enquiry</span>
+            <span class="mi-arrow-circle" aria-hidden="true">
+              <svg class="mi-arrow mi-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <svg class="mi-arrow mi-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </button>
         </form>
       </div>
     </section>
 
-    <section class="mi-section" id="location" aria-label="Maghera Castlewellan map">
+    <section class="mi-section mi-map-band" id="location" aria-label="Maghera Castlewellan map">
       <div class="mi-wrap">
         <LocalAreaMap
           id="mi-map"
@@ -215,6 +245,12 @@ const innGroups = [
 
   <script is:inline>
     (() => {
+      const header = document.querySelector("[data-mi-header]");
+      if (header) {
+        const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
       const form = document.querySelector("[data-mi-form]");
       if (!form) return;
       form.addEventListener("submit", (e) => {

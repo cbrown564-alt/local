@@ -1,33 +1,31 @@
 ---
-/* Maurice Murphy Car Sales — Interactive Buyer & Part-Exchange Brief.
-   Lets County Down buyers frame a Test Drive, Part-Exchange Valuation, or Vehicle Sourcing request
-   before calling Belfast Road, Newry or sending a direct email. */
+/* Maurice Murphy Car Sales — Editorial Buyer Brief (Unslopped). */
 const options = [
   {
     id: "testdrive",
-    label: "Arrange a Test Drive",
+    label: "Test drive",
     title: "Inspect our prepared forecourt stock on Belfast Road with zero showroom pressure.",
     points: [
-      "Mon–Fri 09:00–17:00, Saturday 09:00–15:00 & Sunday by appointment",
+      "Mon–Fri 09:00–17:00, Saturday 09:00–15:00 and Sunday by appointment",
       "Every vehicle inspected, valeted and ready for an unhurried road test",
-      "Direct deal with Maurice Murphy — straightforward trade-in & handover",
+      "Direct deal with Maurice Murphy for straightforward trade-in and handover",
     ],
     note: "Call 07708 164585 ahead of travel so the car you want to view is fuelled and waiting.",
   },
   {
     id: "partex",
-    label: "Part-Exchange Valuation",
-    title: "Fair, straight-talking local trade-in appraisals on your current car or van.",
+    label: "Part-exchange",
+    title: "Straight-talking local trade-in appraisals on your current car or van.",
     points: [
       "Bring your registration, current mileage and service book",
-      "Honest local trade-in figures without automated online gimmicks",
+      "Honest local trade-in figures without automated online guesswork",
       "Seamless swap on the day you collect your next vehicle",
     ],
     note: "Include your registration and approximate mileage in the enquiry form below for a guide figure.",
   },
   {
     id: "sourcing",
-    label: "Vehicle Sourcing & Finance",
+    label: "Sourcing & finance",
     title: "Looking for a specific make, gearbox or budget across County Down?",
     points: [
       "Hand-picked low-mileage family SUVs, hatchbacks and executive saloons",
@@ -39,13 +37,13 @@ const options = [
 ];
 ---
 
-<section class="mmc-brief-band" id="buying" aria-labelledby="mmc-brief-title">
+<section class="mmc-section mmc-brief-band" id="buying" aria-labelledby="mmc-brief-title">
   <div class="mmc-wrap">
-    <div class="mmc-brief-card" data-mmc-brief>
+    <div class="mmc-brief-shell" data-mmc-brief>
       <div class="mmc-brief-head">
         <div>
-          <p class="mmc-kicker">Forecourt Services · Belfast Road, Newry</p>
-          <h2 id="mmc-brief-title">How can we help with your next car?</h2>
+          <p class="mmc-eyebrow">Forecourt services · Belfast Road</p>
+          <h2 id="mmc-brief-title">How we help with your next car.</h2>
         </div>
         <div class="mmc-tabs" role="tablist" aria-label="Choose service">
           {options.map((opt, idx) => (
@@ -66,11 +64,22 @@ const options = [
         <div class="mmc-panel" role="tabpanel" data-mmc-panel={opt.id} hidden={idx !== 0}>
           <h3>{opt.title}</h3>
           <ul class="mmc-points">
-            {opt.points.map((pt) => <li>{pt}</li>)}
+            {opt.points.map((pt, pIdx) => (
+              <li>
+                <span class="mmc-pt-num">0{pIdx + 1}</span>
+                <span>{pt}</span>
+              </li>
+            ))}
           </ul>
           <div class="mmc-panel-foot">
-            <p class="mmc-note"><strong>Forecourt tip:</strong> {opt.note}</p>
-            <a class="mmc-btn mmc-btn--primary" href="#enquire">Send Forecourt Enquiry</a>
+            <p class="mmc-note"><strong>Forecourt note:</strong> {opt.note}</p>
+            <a class="mmc-arrow-btn mmc-arrow-btn--dark" href="#enquire">
+              <span class="mmc-arrow-label">Send enquiry</span>
+              <span class="mmc-arrow-circle" aria-hidden="true">
+                <svg class="mmc-arrow mmc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg class="mmc-arrow mmc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </a>
           </div>
         </div>
       ))}
@@ -79,39 +88,41 @@ const options = [
 </section>
 
 <style>
-  .mmc-brief-band { padding: clamp(44px, 6vw, 72px) 0; }
-  .mmc-brief-card {
-    background: #ffffff;
-    border: 1px solid rgba(18, 30, 46, 0.14);
-    border-top: 3px solid #1b4478;
-    padding: clamp(24px, 4vw, 38px);
-    border-radius: 3px;
-  }
+  .mmc-brief-shell { border-top: 1px solid var(--mmc-line); padding-top: clamp(32px, 4.5vw, 52px); }
   .mmc-brief-head {
-    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;
-    padding-bottom: 20px; border-bottom: 1px solid rgba(18, 30, 46, 0.12);
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;
+    padding-bottom: 28px; border-bottom: 1px solid var(--mmc-line);
   }
-  .mmc-brief-head h2 { margin: 0; font-family: var(--mmc-display); font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 600; }
+  .mmc-brief-head h2 {
+    margin: 0; font-family: var(--mmc-display); font-size: clamp(1.9rem, 3.3vw, 2.75rem);
+    font-weight: 500; letter-spacing: -0.025em; line-height: 1.06;
+  }
   .mmc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
   .mmc-tab {
-    padding: 9px 14px; border: 1px solid rgba(18, 30, 46, 0.22); background: #f4f6f9; color: #121e2e;
-    font-family: var(--mmc-sans); font-size: 0.84rem; font-weight: 600; border-radius: 3px; cursor: pointer;
+    padding: 9px 16px; border: 1px solid var(--mmc-line); background: transparent; color: var(--mmc-muted);
+    font-family: var(--mmc-sans); font-size: 0.84rem; font-weight: 500; border-radius: 999px; cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
   }
-  .mmc-tab.is-active { background: #1b4478; border-color: #1b4478; color: #ffffff; }
-  .mmc-panel { padding-top: 22px; }
-  .mmc-panel h3 { margin: 0 0 16px; font-family: var(--mmc-display); font-size: 1.32rem; font-weight: 600; }
+  .mmc-tab:hover { color: var(--mmc-ink); border-color: rgba(18, 30, 46, 0.34); }
+  .mmc-tab.is-active { background: var(--mmc-accent); border-color: var(--mmc-accent); color: #ffffff; }
+  .mmc-panel { padding-top: 32px; }
+  .mmc-panel h3 {
+    margin: 0 0 26px; font-family: var(--mmc-display); font-size: clamp(1.3rem, 2.1vw, 1.65rem);
+    font-weight: 500; letter-spacing: -0.015em; line-height: 1.25; max-width: 48ch;
+  }
   .mmc-points {
-    list-style: none; padding: 0; margin: 0 0 22px;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+    list-style: none; padding: 0; margin: 0 0 32px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px);
   }
   .mmc-points li {
-    background: #f4f6f9; border: 1px solid rgba(18, 30, 46, 0.1);
-    padding: 14px 16px; font-size: 0.9rem; color: #121e2e; border-radius: 3px;
+    padding-top: 16px; border-top: 1px solid var(--mmc-line); display: grid; gap: 8px;
+    font-size: 0.92rem; line-height: 1.6; color: var(--mmc-muted);
   }
-  .mmc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-  .mmc-note { margin: 0; font-size: 0.88rem; color: #4b5a6e; max-width: 54ch; }
-  .mmc-note strong { color: #121e2e; }
-  @media (max-width: 780px) { .mmc-points { grid-template-columns: minmax(0, 1fr); } }
+  .mmc-pt-num { font-size: 0.74rem; font-variant-numeric: tabular-nums; color: var(--mmc-accent); font-weight: 600; }
+  .mmc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  .mmc-note { margin: 0; font-size: 0.88rem; color: var(--mmc-muted); max-width: 54ch; line-height: 1.55; }
+  .mmc-note strong { color: var(--mmc-ink); font-weight: 600; }
+  @media (max-width: 820px) { .mmc-points { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <script is:inline>
