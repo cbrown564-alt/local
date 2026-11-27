@@ -1,0 +1,130 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import EdycClubTabs from "./EdycClubTabs.astro";
+import "./styles.css";
+
+/* East Down Yacht Club — 62 Comber Road, Moymore, Killyleagh BT30 9QZ.
+   Verified live 27 Nov 2026: edyc.co.uk serves an empty JS shell ("EDYC" only — zero server-rendered HTML)
+   despite hosting RYA sailing, dinghy racing, and Strangford Lough caravan & camping.
+   Contacts: 028 4482 8375, https://edyc.co.uk/. */
+const phone = "028 4482 8375";
+const phoneHref = "tel:+442844828375";
+const clubHref = "https://edyc.co.uk/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=East+Down+Yacht+Club+62+Comber+Road+Moymore+Killyleagh+BT30+9QZ";
+---
+
+<ConceptLayout
+  title="East Down Yacht Club — Sailing, RYA Training & Caravan Park, Killyleagh"
+  slug="east-down-yacht-club"
+  bodyClass="concept-page concept-eastdownyc"
+  businessName="East Down Yacht Club"
+  town="Killyleagh"
+  bannerNote="Imagery comprises indicative Strangford Lough sailing and waterside shoreline caravan park visualisations."
+>
+  <header class="edyc-header">
+    <div class="edyc-header-inner">
+      <a class="edyc-brand" href="#top">
+        <strong>East Down Yacht Club</strong>
+        <span>Strangford Lough · Killyleagh</span>
+      </a>
+      <nav class="edyc-nav" aria-label="Primary">
+        <a href="#club">Sailing &amp; Training</a>
+        <a href="#shoreline">Caravan &amp; Camping</a>
+        <a href="#location">Strangford Lough</a>
+      </nav>
+      <div class="edyc-header-actions">
+        <a class="edyc-header-tel" href={phoneHref}>{phone}</a>
+        <a class="edyc-header-cta" href={clubHref} target="_blank" rel="noopener noreferrer">Member Portal ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="edyc-hero" aria-labelledby="edyc-hero-title">
+      <figure class="edyc-hero-media">
+        <picture>
+          <source srcset="/media/concepts/east-down-yacht-club/east-down-sailing-640.webp 640w, /media/concepts/east-down-yacht-club/east-down-sailing-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/east-down-yacht-club/east-down-sailing.jpg" alt="White-sailed dinghies and small keelboats tacking across sparkling Strangford Lough waters with green County Down drumlins behind" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="edyc-hero-cap">Indicative Strangford Lough sailing visualisation.</figcaption>
+      </figure>
+      <div class="edyc-hero-scrim" aria-hidden="true"></div>
+      <div class="edyc-hero-content">
+        <p class="edyc-eyebrow">62 Comber Road · Moymore · Killyleagh · Strangford Lough</p>
+        <h1 id="edyc-hero-title">Sheltered Strangford Lough sailing, RYA training and waterside camping.</h1>
+        <p class="edyc-hero-lead">
+          On the western shore of Strangford Lough near Killyleagh — a welcoming community sailing
+          club with active dinghy and cruiser racing, RYA courses for all ages, and peaceful shoreline pitches.
+        </p>
+        <div class="edyc-hero-actions">
+          <a class="edyc-btn edyc-btn--primary" href="#club">Explore Sailing &amp; Park</a>
+          <a class="edyc-btn edyc-btn--ghost" href={phoneHref}>Call Clubhouse · {phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <EdycClubTabs />
+
+    <section class="edyc-section edyc-shoreline" id="shoreline" aria-labelledby="edyc-sh-title">
+      <div class="edyc-wrap edyc-split">
+        <figure class="edyc-plate">
+          <picture>
+            <source srcset="/media/concepts/east-down-yacht-club/east-down-lough-shore-640.webp 640w, /media/concepts/east-down-yacht-club/east-down-lough-shore-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/east-down-yacht-club/east-down-lough-shore.jpg" alt="Peaceful golden-hour sailing club slipway and waterside touring caravan meadow overlooking calm waters of Strangford Lough" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Moymore slipway &amp; loughside meadow. Indicative shoreline visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="edyc-kicker">Waterside Base · 62 Comber Road, Moymore</p>
+          <h2 id="edyc-sh-title">Launch from the slipway or wake right beside the tide.</h2>
+          <p>
+            Set off the Comber Road just north of Killyleagh, East Down Yacht Club combines clean
+            sheltered sailing waters with grassy waterside touring caravan and camping pitches — an
+            unrivalled base for County Down weekends on the lough.
+          </p>
+          <div class="edyc-call-box">
+            <span>Clubhouse &amp; Visitor Enquiries</span>
+            <a href={phoneHref}>{phone}</a>
+            <p>62 Comber Road, Moymore, Killyleagh, Co. Down, BT30 9QZ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="edyc-section" id="location" aria-label="Killyleagh Strangford Lough map">
+      <div class="edyc-wrap">
+        <LocalAreaMap
+          id="edyc-map"
+          kicker="62 Comber Road · Moymore, Killyleagh"
+          businessName="East Down Yacht Club"
+          address="62 Comber Road, Moymore, Killyleagh, BT30 9QZ"
+          lon={-5.6463}
+          lat={54.4136}
+          spanKm={18}
+          showFerry={true}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Killyleagh", lon: -5.6524, lat: 54.4017, note: "3 mins south", side: "b" },
+            { name: "Delamont Park", lon: -5.6611, lat: 54.3847, note: "6 mins south", side: "l" },
+            { name: "Comber", lon: -5.7448, lat: 54.5476, note: "18 mins north", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="edyc-footer">
+    <div class="edyc-wrap edyc-footer-inner">
+      <div>
+        <strong>East Down Yacht Club</strong>
+        <p>62 Comber Road, Moymore, Killyleagh, Co. Down, BT30 9QZ</p>
+      </div>
+      <div class="edyc-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={clubHref} target="_blank" rel="noopener noreferrer">Official Site ↗</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

@@ -2124,3 +2124,129 @@ Twenty bespoke atmospheric visualisations (two per business) generated on 26 Nov
   - Subject: Upscale modern Indian restaurant dining room with deep indigo walls, warm brass lattice lanterns and dark timber tables
   - Usage: Evening dining & gift cards section plate
   - Limits: Indicative dining room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+---
+
+## Wave 5 NMDDC Concept Visualisations (27 November 2026)
+
+Twenty bespoke AI-generated editorial visualisations (2 per business, processed into `.jpg`, `-1265.webp`, and `-640.webp`) created for the 10 Wave 5 NMDDC concepts. Every image is explicitly disclosed in visible `<figcaption>` copy and the `ConceptLayout` `bannerNote`.
+
+### The Kilbroney Centre (Rostrevor)
+- `public/media/concepts/kilbroney-centre/kilbroney-woodland-retreat.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Stone-and-timber residential retreat building nestled in Rostrevor oak woodland with soft morning sunbeams and Mourne slopes behind
+  - Usage: Hero on `/concepts/kilbroney-centre/` & `/for/kilbroney-centre-k5r3/`
+  - Limits: Indicative woodland retreat visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/kilbroney-centre/kilbroney-outdoor-activity.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Woodland campfire clearing with timber benches beside a County Down forest trail and distant glimpse of Carlingford Lough
+  - Usage: Outdoor grounds & youth camps section plate
+  - Limits: Indicative grounds visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Maurice Murphy Car Sales (Newry)
+- `public/media/concepts/maurice-murphy-cars/maurice-murphy-forecourt.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Independent County Down car dealership forecourt with modern SUVs and saloons parked cleanly along a stone wall at golden hour
+  - Usage: Hero on `/concepts/maurice-murphy-cars/` & `/for/maurice-murphy-m8c4/`
+  - Limits: Indicative forecourt visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/maurice-murphy-cars/maurice-murphy-interior.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Spotless modern vehicle cabin interior with stitched dark leather steering wheel and brushed metal trim in soft daylight
+  - Usage: Prepared stock & hand-picked quality section plate
+  - Limits: Indicative vehicle interior visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Evvrclean (Newry)
+- `public/media/concepts/evvrclean-newry/evvrclean-commercial-space.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Sunlit modern office reception and glass-walled boardroom with gleaming oak floors and spotless surfaces
+  - Usage: Hero on `/concepts/evvrclean-newry/` & `/for/evvrclean-newry-e7c2/`
+  - Limits: Indicative commercial space visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/evvrclean-newry/evvrclean-laundrette-linens.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Crisp pressed stacks of white cotton towels and linens resting on a pale timber bench beside stainless commercial laundry drums
+  - Usage: Commercial laundrette & linen care section plate
+  - Limits: Indicative laundrette visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Whitewater Brewing Co. (Castlewellan)
+- `public/media/concepts/whitewater-brewery/whitewater-brewhouse-taps.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Rural Irish craft brewery taproom with copper and stainless vessels visible behind timber-framed glass and three poured craft beers on oak
+  - Usage: Hero on `/concepts/whitewater-brewery/` & `/for/whitewater-brewery-w4b8/`
+  - Limits: Indicative brewhouse & taproom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/whitewater-brewery/whitewater-beer-dough-pizza.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Wood-fired beer-dough sourdough pizza on a timber paddle beside a poured amber craft pint on a rustic oak table
+  - Usage: Beer Dough Pizzeria & Tours section plate
+  - Limits: Indicative pizzeria visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Beer Hut Brewing (Kilkeel)
+- `public/media/concepts/beer-hut-brewing/beer-hut-taproom-evening.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Intimate industrial-craft Saturday brewery taproom under warm festoon bulbs with fermenters and poured hazy IPA and stout
+  - Usage: Hero on `/concepts/beer-hut-brewing/` & `/for/beer-hut-brewing-b3h6/`
+  - Limits: Indicative Saturday taproom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Close-up pour of golden hazy IPA from a steel tap into a stemmed tasting glass against dark slate and stainless steel tanks
+  - Usage: Small-batch brewhouse & Sub Club section plate
+  - Limits: Indicative craft beer pour visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Ring of Gullion Cycles (Drumintee, Newry)
+- `public/media/concepts/ring-of-gullion-cycles/gullion-cycles-showroom.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Modern independent cycle showroom displaying road, gravel and electric mountain bikes against dark slate and warm timber racks
+  - Usage: Hero on `/concepts/ring-of-gullion-cycles/` & `/for/ring-gullion-cycles-r5g9/`
+  - Limits: Indicative bike showroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Gravel and mountain bike overlooking heather-clad Slieve Gullion hills and winding South Armagh country lanes at dawn
+  - Usage: Ring of Gullion trails & e-bike fitting section plate
+  - Limits: Indicative local riding visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Artisan Cookhouse (Strangford)
+- `public/media/concepts/artisan-cookhouse/artisan-cookhouse-dining.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Refined coastal village bistro table set with seasonal County Down seafood plate, artisan sourdough and candlelight
+  - Usage: Hero on `/concepts/artisan-cookhouse/` & `/for/artisan-cookhouse-a4c7/`
+  - Limits: Indicative bistro dining visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/artisan-cookhouse/artisan-cookhouse-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Tranquil Strangford village guest bedroom with crisp white linen, coastal-blue wool throw and bright morning sash window
+  - Usage: Stay on Kildare Street & culinary experiences section plate
+  - Limits: Indicative bedroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### Meadow Farm Shop (Crossgar / Downpatrick)
+- `public/media/concepts/meadow-farm-shop/meadow-farm-harvest.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Sunlit County Down farm shop wooden crates overflowing with brushed soil-grown potatoes, root vegetables, seasonal greens and artisan jars
+  - Usage: Hero on `/concepts/meadow-farm-shop/` & `/for/meadow-farm-shop-m9f4/`
+  - Limits: Indicative farm shop visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/meadow-farm-shop/meadow-farm-tearoom.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Cosy country farm tearoom table with freshly baked buttermilk scones, berry jam, teapot and morning light overlooking green fields
+  - Usage: Farm tearoom & local larder section plate
+  - Limits: Indicative tearoom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### The Maghera Inn (Maghera, Castlewellan)
+- `public/media/concepts/the-maghera-inn/maghera-inn-hearth.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Warm atmospheric Irish country inn dining room with glowing hearth fire, dark oak tables, brass lamps and Mourne stone walls
+  - Usage: Hero on `/concepts/the-maghera-inn/` & `/for/maghera-inn-m6i2/`
+  - Limits: Indicative country inn visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/the-maghera-inn/maghera-inn-sunday-table.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Traditional County Down Sunday roast and pub supper spread with carved beef, seasonal vegetables and dark stout on dark oak
+  - Usage: Kitchen menus & private receptions section plate
+  - Limits: Indicative dining spread visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+
+### East Down Yacht Club (Killyleagh)
+- `public/media/concepts/east-down-yacht-club/east-down-sailing.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Crisp white sailing dinghies and keelboats tacking across sparkling Strangford Lough waters with green County Down drumlins behind
+  - Usage: Hero on `/concepts/east-down-yacht-club/` & `/for/east-down-yc-e3y5/`
+  - Limits: Indicative Strangford Lough sailing visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/east-down-yacht-club/east-down-lough-shore.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 27 November 2026
+  - Subject: Quiet lakeside shoreline club slipway and grassy coastal caravan pitch overlooking calm golden-hour waters on Strangford Lough
+  - Usage: Caravan & camping park and RYA training section plate
+  - Limits: Indicative shoreline & park visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.

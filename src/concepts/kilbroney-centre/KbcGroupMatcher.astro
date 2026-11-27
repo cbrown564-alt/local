@@ -1,0 +1,166 @@
+---
+/* The Kilbroney Centre — Interactive Group & Stay Planner.
+   Helps youth leaders, churches, schools, and families pick the right residential format
+   before emailing booking@kilbroneycentre.com or ringing Rostrevor directly. */
+const stays = [
+  {
+    id: "youth",
+    label: "Youth & Children's Groups",
+    title: "Safe woodland grounds and dedicated residential space for schools, churches and youth clubs.",
+    points: [
+      "Private grounds set off Forestbrook Road beside Rostrevor forest trails",
+      "Dining hall, meeting rooms and outdoor activity clearings on one site",
+      "Flexible weekend or midweek residential dates across the year",
+    ],
+    note: "Share your expected headcount, age range and preferred dates so our team can confirm availability.",
+  },
+  {
+    id: "family",
+    label: "Family Weekends",
+    title: "Relaxed multi-generational retreats at the foot of the Mournes and Carlingford Lough.",
+    points: [
+      "Comfortable group accommodation with shared lounge and dining spaces",
+      "Direct walking access into Kilbroney Forest Park and the Fairy Glen",
+      "Catering options or self-catering arrangements tailored to your gathering",
+    ],
+    note: "Family groups often book Friday evening through Sunday afternoon — early enquiry recommended.",
+  },
+  {
+    id: "camps",
+    label: "Summer Camps",
+    title: "Memorable week-long summer camps packed with outdoor adventure and community.",
+    points: [
+      "Structured daily programmes across woodland, lough and mountain trails",
+      "Experienced pastoral and activity leadership for young people",
+      "Open green space for team games, campfires and evening gatherings",
+    ],
+    note: "Summer camp places fill quickly each spring; message us directly for the latest camp dates.",
+  },
+  {
+    id: "adult",
+    label: "Adult & Church Retreats",
+    title: "Quiet space away from the rush for leadership teams, choirs and parish retreats.",
+    points: [
+      "Peaceful oak woodland setting minutes from Rostrevor village",
+      "Warm meeting spaces for workshops, quiet days and shared meals",
+      "Easy road access from Newry, Belfast and Dublin along the A2 coast",
+    ],
+    note: "Midweek quiet days and single-night leadership stays can be arranged directly with our booking desk.",
+  },
+];
+---
+
+<section class="kbc-planner" id="stays" aria-labelledby="kbc-planner-title">
+  <div class="kbc-wrap">
+    <div class="kbc-planner-card" data-kbc-planner>
+      <div class="kbc-planner-head">
+        <div>
+          <p class="kbc-kicker">Residential Stays &amp; Programmes</p>
+          <h2 id="kbc-planner-title">Plan your group stay in Rostrevor.</h2>
+        </div>
+        <div class="kbc-tabs" role="tablist" aria-label="Select group type">
+          {stays.map((stay, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["kbc-tab", idx === 0 && "is-active"]}
+              data-kbc-tab={stay.id}
+            >
+              {stay.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {stays.map((stay, idx) => (
+        <div class="kbc-panel" role="tabpanel" data-kbc-panel={stay.id} hidden={idx !== 0}>
+          <h3>{stay.title}</h3>
+          <ul class="kbc-points">
+            {stay.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="kbc-panel-foot">
+            <p class="kbc-note"><strong>Booking tip:</strong> {stay.note}</p>
+            <a class="kbc-btn kbc-btn--primary" href="#enquire">Check Group Availability</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .kbc-planner { padding: clamp(48px, 6vw, 76px) 0; }
+  .kbc-planner-card {
+    background: #ffffff;
+    border: 1px solid rgba(24, 41, 31, 0.14);
+    border-top: 3px solid #26533c;
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 4px;
+  }
+  .kbc-planner-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(24, 41, 31, 0.12);
+  }
+  .kbc-planner-head h2 { margin: 0; font-family: var(--kbc-display); font-size: clamp(1.7rem, 3vw, 2.35rem); font-weight: 500; }
+  .kbc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kbc-tab {
+    padding: 9px 14px;
+    border: 1px solid rgba(24, 41, 31, 0.22);
+    background: #f5f7f3;
+    color: #18291f;
+    font-family: var(--kbc-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .kbc-tab.is-active { background: #26533c; border-color: #26533c; color: #ffffff; }
+  .kbc-panel { padding-top: 24px; }
+  .kbc-panel h3 { margin: 0 0 18px; font-family: var(--kbc-display); font-size: 1.4rem; font-weight: 500; }
+  .kbc-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .kbc-points li {
+    background: #f5f7f3;
+    border: 1px solid rgba(24, 41, 31, 0.1);
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    color: #18291f;
+    border-radius: 4px;
+  }
+  .kbc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .kbc-note { margin: 0; font-size: 0.9rem; color: #4b5f52; max-width: 54ch; }
+  .kbc-note strong { color: #18291f; }
+  @media (max-width: 780px) { .kbc-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-kbc-planner]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-kbc-tab]")];
+    const panels = [...root.querySelectorAll("[data-kbc-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-kbc-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-kbc-panel") !== id; });
+      });
+    });
+  })();
+</script>

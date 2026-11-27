@@ -1,0 +1,242 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* The Maghera Inn — 86–89 Ballyloughlin Road, Maghera, Castlewellan BT31 9HE.
+   Verified live 27 Nov 2026: themagherainn.com duplicates Gift Vouchers links in header and spreads
+   ResDiary booking (THEMAGHERAINN/21858), Events/Receptions, and Kids/Main menus across fragmented pages.
+   Contacts: 028 4372 2236, enquiries@themagherainn.com.
+   Pub: Sun–Thu 11:30–23:00, Fri–Sat 11:30–01:00. Food: Mon–Thu 12:00–21:00, Fri–Sat 12:00–21:30, Sun 12:00–20:00. */
+const phone = "028 4372 2236";
+const phoneHref = "tel:+442843722236";
+const email = "enquiries@themagherainn.com";
+const resDiaryHref = "https://booking.resdiary.com/widget/Standard/THEMAGHERAINN/21858";
+const siteHref = "https://themagherainn.com/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Maghera+Inn+86+Ballyloughlin+Road+Maghera+Castlewellan+BT31+9HE";
+
+const innGroups = [
+  {
+    id: "kitchen",
+    label: "Kitchen Menus & Sunday Dining",
+    items: [
+      { name: "All-Day & Evening Main Menu", note: "Prime Mourne steaks, coastal fish, hearty Irish classics and daily specials served in the bar & dining room", meta: "Mon–Sat from 12:00" },
+      { name: "Traditional Sunday Roasts", note: "Family Sunday sittings served 12:00 – 20:00 — advance booking advised via ResDiary", meta: "12:00 – 20:00" },
+      { name: "Children's Menu", note: "Proper home-cooked family plates for younger diners after a day in Newcastle or Castlewellan", meta: "Family friendly" },
+    ],
+  },
+  {
+    id: "events",
+    label: "Private Receptions & Gift Vouchers",
+    items: [
+      { name: "Private Functions & Family Receptions", note: "Tailored set menus and welcoming hospitality for birthdays, anniversaries and family gatherings", meta: "Enquire below" },
+      { name: "Maghera Inn Gift Vouchers", note: "Available direct from the inn or online for dining and celebrations", meta: "Official site ↗" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="The Maghera Inn — Country Pub, Dining & Receptions, Maghera, Castlewellan"
+  slug="the-maghera-inn"
+  bodyClass="concept-page concept-magherainn"
+  businessName="The Maghera Inn"
+  town="Maghera, Castlewellan"
+  bannerNote="Imagery comprises indicative Mourne country inn hearth and traditional Sunday table visualisations."
+>
+  <header class="mi-header">
+    <div class="mi-header-inner">
+      <a class="mi-brand" href="#top">
+        <strong>The Maghera Inn</strong>
+        <span>Ballyloughlin Road · Maghera</span>
+      </a>
+      <nav class="mi-nav" aria-label="Primary">
+        <a href="#dining">Dining &amp; Hours</a>
+        <a href="#receptions">Private Receptions</a>
+        <a href="#location">Mourne Foothills</a>
+      </nav>
+      <div class="mi-header-actions">
+        <a class="mi-header-tel" href={phoneHref}>{phone}</a>
+        <a class="mi-header-cta" href={resDiaryHref} target="_blank" rel="noopener noreferrer">Book a Table ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="mi-hero" aria-labelledby="mi-hero-title">
+      <figure class="mi-hero-media">
+        <picture>
+          <source srcset="/media/concepts/the-maghera-inn/maghera-inn-hearth-640.webp 640w, /media/concepts/the-maghera-inn/maghera-inn-hearth-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/the-maghera-inn/maghera-inn-hearth.jpg" alt="Warm traditional County Down country inn dining room with glowing hearth fire, exposed Mourne stone wall and brass lamps" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="mi-hero-cap">Indicative country inn dining room visualisation.</figcaption>
+      </figure>
+      <div class="mi-hero-scrim" aria-hidden="true"></div>
+      <div class="mi-hero-content">
+        <p class="mi-eyebrow">86–89 Ballyloughlin Road · Maghera · Between Newcastle &amp; Castlewellan</p>
+        <h1 id="mi-hero-title">Fireside hospitality, hearty Mourne cooking and proper pints.</h1>
+        <p class="mi-hero-lead">
+          A welcoming County Down landmark in the foothills of the Mournes — open seven days a week
+          for all-day dining, traditional Sunday roasts, private family receptions and a glowing hearth.
+        </p>
+        <div class="mi-hero-actions">
+          <a class="mi-btn mi-btn--primary" href={resDiaryHref} target="_blank" rel="noopener noreferrer">Book a Table via ResDiary ↗</a>
+          <SpecimenSheet
+            id="mi-menu-sheet"
+            triggerLabel="Menus, Sunday Roasts & Events"
+            kicker="The Maghera Inn · Ballyloughlin Road, Maghera"
+            title="Kitchen Menus, Service Times & Receptions"
+            subtitle="Reserve tables live through ResDiary or call 028 4372 2236 for private groups."
+            groups={innGroups}
+            ctaLabel="Book Table Online ↗"
+            ctaHref={resDiaryHref}
+            ctaExternal={true}
+            secondaryLabel={`Call ${phone}`}
+            secondaryHref={phoneHref}
+            buttonClass="mi-btn mi-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="mi-section mi-dining" id="dining" aria-labelledby="mi-din-title">
+      <div class="mi-wrap mi-split">
+        <figure class="mi-plate">
+          <picture>
+            <source srcset="/media/concepts/the-maghera-inn/maghera-inn-sunday-table-640.webp 640w, /media/concepts/the-maghera-inn/maghera-inn-sunday-table-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/the-maghera-inn/maghera-inn-sunday-table.jpg" alt="Traditional Irish country pub roast beef supper with golden roast potatoes, seasonal vegetables and creamy dark stout" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Sunday roast &amp; evening table. Indicative dining visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="mi-kicker">Bar &amp; Kitchen Hours · Open 7 Days</p>
+          <h2 id="mi-din-title">Drop in after a Mourne walk or book ahead for Sunday.</h2>
+          <p>
+            Minutes from Newcastle promenade, Dundrum Bay and Castlewellan Forest Park, our kitchen
+            serves generously from noon every day — with late-night bar service on Fridays and Saturdays.
+          </p>
+          <div class="mi-hours-card">
+            <h3>Bar &amp; Kitchen Times</h3>
+            <dl class="mi-hours-list">
+              <div><dt>Bar (Sun – Thu)</dt><dd>11:30 – 23:00</dd></div>
+              <div><dt>Bar (Fri – Sat)</dt><dd>11:30 – 01:00</dd></div>
+              <div><dt>Food (Mon – Thu)</dt><dd>12:00 – 21:00</dd></div>
+              <div><dt>Food (Fri – Sat)</dt><dd>12:00 – 21:30</dd></div>
+              <div><dt>Food (Sunday)</dt><dd>12:00 – 20:00</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mi-section mi-receptions" id="receptions" aria-labelledby="mi-rec-title">
+      <div class="mi-wrap mi-split">
+        <div>
+          <p class="mi-kicker">Events, Parties &amp; Family Receptions</p>
+          <h2 id="mi-rec-title">Host your celebration or family gathering with us.</h2>
+          <p>
+            From intimate anniversary dinners to christenings, family receptions and group set menus,
+            send us your rough date and party size below — or ring <a href={phoneHref}>{phone}</a>.
+          </p>
+          <p class="mi-email-line">Events desk: <a href={`mailto:${email}`}>{email}</a></p>
+        </div>
+        <form class="mi-form" data-mi-form>
+          <div class="mi-row">
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+            </label>
+            <label>
+              <span>Telephone</span>
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
+            </label>
+          </div>
+          <div class="mi-row">
+            <label>
+              <span>Occasion</span>
+              <select name="occasion">
+                <option value="Family Reception / Celebration">Family Reception / Celebration</option>
+                <option value="Large Group Dining (10+)">Large Group Dining (10+)</option>
+                <option value="Private Function / Buffet">Private Function / Buffet</option>
+                <option value="Gift Voucher Enquiry">Gift Voucher Enquiry</option>
+              </select>
+            </label>
+            <label>
+              <span>Target date &amp; guests</span>
+              <input name="guests" type="text" placeholder="e.g. 24 guests, Saturday" />
+            </label>
+          </div>
+          <label>
+            <span>Menu or seating notes</span>
+            <textarea name="notes" rows="3" placeholder="Any dietary notes, preferred sitting time or set menu questions..."></textarea>
+          </label>
+          <button class="mi-btn mi-btn--primary" type="submit">Send Event Enquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="mi-section" id="location" aria-label="Maghera Castlewellan map">
+      <div class="mi-wrap">
+        <LocalAreaMap
+          id="mi-map"
+          tone="dark"
+          kicker="86–89 Ballyloughlin Road · Maghera"
+          businessName="The Maghera Inn"
+          address="86–89 Ballyloughlin Road, Maghera, Castlewellan, BT31 9HE"
+          lon={-5.8992}
+          lat={54.2413}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Newcastle", lon: -5.8902, lat: 54.2121, note: "5 mins south", side: "b" },
+            { name: "Dundrum", lon: -5.8442, lat: 54.2591, note: "6 mins north-east", side: "r" },
+            { name: "Castlewellan", lon: -5.9442, lat: 54.2596, note: "6 mins north-west", side: "l" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="mi-footer">
+    <div class="mi-wrap mi-footer-inner">
+      <div>
+        <strong>The Maghera Inn</strong>
+        <p>86–89 Ballyloughlin Road, Maghera, Castlewellan, Co. Down, BT31 9HE</p>
+      </div>
+      <div class="mi-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={resDiaryHref} target="_blank" rel="noopener noreferrer">ResDiary ↗</a>
+        <a href={siteHref} target="_blank" rel="noopener noreferrer">Vouchers ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (() => {
+      const form = document.querySelector("[data-mi-form]");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const fd = new FormData(form);
+        const subject = `Event Enquiry — ${fd.get("occasion")} (${fd.get("name")})`;
+        const body = [
+          `Name: ${fd.get("name")}`,
+          `Phone: ${fd.get("phone")}`,
+          `Occasion: ${fd.get("occasion")}`,
+          `Date & Party Size: ${fd.get("guests") || "Flexible"}`,
+          `Notes: ${fd.get("notes") || "None"}`,
+        ].join("\n");
+        const ev = new CustomEvent("mm:enquiry", {
+          cancelable: true,
+          detail: { to: "enquiries@themagherainn.com", subject, body },
+        });
+        if (window.dispatchEvent(ev)) {
+          window.location.href = `mailto:enquiries@themagherainn.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+      });
+    })();
+  </script>
+</ConceptLayout>

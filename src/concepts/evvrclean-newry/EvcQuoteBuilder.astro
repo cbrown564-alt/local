@@ -1,0 +1,146 @@
+---
+/* Evvrclean Newry — Interactive Cleaning & Laundrette Scope Selector.
+   Guides Newry & County Down commercial managers and homeowners through Commercial,
+   Domestic, Laundrette, and Free Site Visit options before requesting a quote. */
+const services = [
+  {
+    id: "commercial",
+    label: "Commercial Cleaning",
+    title: "Dependable scheduled cleaning for offices, retail units, clinics and business parks.",
+    points: [
+      "Early-morning, evening or weekend schedules built around your staff",
+      "Consistent local operatives covering Newry, Armagh Road and County Down",
+      "Clear monthly scope covering washrooms, glazing, floors and touchpoints",
+    ],
+    note: "We arrange a free on-site walkaround before quoting so your schedule matches how your premises are actually used.",
+  },
+  {
+    id: "domestic",
+    label: "Domestic Housekeeping",
+    title: "Thorough weekly, fortnightly or deep-clean visits for busy households.",
+    points: [
+      "Kitchens, bathrooms, floors and living areas finished to a consistent standard",
+      "One-off deep cleans, end-of-tenancy handovers and seasonal refreshes",
+      "Direct communication with our Newry office on 028 3005 0330",
+    ],
+    note: "Let us know your number of bedrooms and preferred frequency for a straightforward guide price.",
+  },
+  {
+    id: "laundrette",
+    label: "Laundrette & Linen Care",
+    title: "Fast, crisp wash, dry and press turnaround from our ITEC Business Park unit.",
+    points: [
+      "Service washes, duvets, workwear and hospitality linen care",
+      "Convenient parking right outside Unit 11 on Armagh Road, Newry",
+      "Regular commercial collection and return schedules available",
+    ],
+    note: "Ideal for guesthouses, salons, sports clubs and busy households needing bulky items pressed cleanly.",
+  },
+  {
+    id: "visit",
+    label: "Free Site Visit",
+    title: "Book a no-obligation walkaround at your Newry or County Down premises.",
+    points: [
+      "Practical advice on cleaning frequency, consumables and access",
+      "Written quote delivered promptly with no hidden call-out extras",
+      "Dedicated customer support desk at customersupport@evvrclean.co.uk",
+    ],
+    note: "Most Newry and South Down site visits can be booked within 48 hours.",
+  },
+];
+---
+
+<section class="evc-scope-band" id="services" aria-labelledby="evc-scope-title">
+  <div class="evc-wrap">
+    <div class="evc-scope-card" data-evc-scope>
+      <div class="evc-scope-head">
+        <div>
+          <p class="evc-kicker">Commercial · Domestic · Laundrette</p>
+          <h2 id="evc-scope-title">Select the cleaning service you need.</h2>
+        </div>
+        <div class="evc-tabs" role="tablist" aria-label="Choose cleaning service">
+          {services.map((svc, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["evc-tab", idx === 0 && "is-active"]}
+              data-evc-tab={svc.id}
+            >
+              {svc.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {services.map((svc, idx) => (
+        <div class="evc-panel" role="tabpanel" data-evc-panel={svc.id} hidden={idx !== 0}>
+          <h3>{svc.title}</h3>
+          <ul class="evc-points">
+            {svc.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="evc-panel-foot">
+            <p class="evc-note"><strong>Good to know:</strong> {svc.note}</p>
+            <a class="evc-btn evc-btn--primary" href="#quote">Request a Free Quote</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .evc-scope-band { padding: clamp(44px, 6vw, 74px) 0; }
+  .evc-scope-card {
+    background: #ffffff;
+    border: 1px solid rgba(18, 41, 43, 0.14);
+    border-top: 3px solid #0f6b6e;
+    padding: clamp(24px, 4vw, 38px);
+    border-radius: 4px;
+  }
+  .evc-scope-head {
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;
+    padding-bottom: 20px; border-bottom: 1px solid rgba(18, 41, 43, 0.12);
+  }
+  .evc-scope-head h2 { margin: 0; font-family: var(--evc-display); font-size: clamp(1.65rem, 3vw, 2.25rem); font-weight: 600; }
+  .evc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .evc-tab {
+    padding: 9px 14px; border: 1px solid rgba(18, 41, 43, 0.22); background: #f2f8f8; color: #12292b;
+    font-family: var(--evc-sans); font-size: 0.84rem; font-weight: 600; border-radius: 4px; cursor: pointer;
+  }
+  .evc-tab.is-active { background: #0f6b6e; border-color: #0f6b6e; color: #ffffff; }
+  .evc-panel { padding-top: 22px; }
+  .evc-panel h3 { margin: 0 0 16px; font-family: var(--evc-display); font-size: 1.32rem; font-weight: 600; }
+  .evc-points {
+    list-style: none; padding: 0; margin: 0 0 22px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+  }
+  .evc-points li {
+    background: #f2f8f8; border: 1px solid rgba(18, 41, 43, 0.1);
+    padding: 14px 16px; font-size: 0.9rem; color: #12292b; border-radius: 4px;
+  }
+  .evc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .evc-note { margin: 0; font-size: 0.88rem; color: #486163; max-width: 54ch; }
+  .evc-note strong { color: #12292b; }
+  @media (max-width: 780px) { .evc-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-evc-scope]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-evc-tab]")];
+    const panels = [...root.querySelectorAll("[data-evc-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-evc-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-evc-panel") !== id; });
+      });
+    });
+  })();
+</script>

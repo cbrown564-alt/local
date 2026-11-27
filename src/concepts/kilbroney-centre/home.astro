@@ -1,0 +1,213 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import KbcGroupMatcher from "./KbcGroupMatcher.astro";
+import "./styles.css";
+
+/* The Kilbroney Centre — 1 Forestbrook Road, Rostrevor, Newry BT34 3BT.
+   Verified live 27 Nov 2026: http://kilbroneycentre.com/ runs HTTP-only (expired SSL), leaks broken HTML
+   attributes (`"> for all ages"> of grounds">`), and carries © 2019.
+   Contacts: 07342 883538, 028 4173 9104, booking@kilbroneycentre.com, FB KilbroneyCentre. */
+const mobilePhone = "07342 883538";
+const mobileHref = "tel:+447342883538";
+const deskPhone = "028 4173 9104";
+const deskHref = "tel:+442841739104";
+const email = "booking@kilbroneycentre.com";
+const fbHref = "https://www.facebook.com/KilbroneyCentre";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Kilbroney+Centre+1+Forestbrook+Road+Rostrevor+BT34+3BT";
+---
+
+<ConceptLayout
+  title="The Kilbroney Centre — Woodland Residential & Outdoor Retreat, Rostrevor"
+  slug="kilbroney-centre"
+  bodyClass="concept-page concept-kilbroney"
+  businessName="The Kilbroney Centre"
+  town="Rostrevor"
+  bannerNote="Imagery comprises indicative Rostrevor oak woodland retreat and outdoor grounds visualisations."
+>
+  <header class="kbc-header">
+    <div class="kbc-header-inner">
+      <a class="kbc-brand" href="#top">
+        <strong>The Kilbroney Centre</strong>
+        <span>Rostrevor · Forestbrook Road</span>
+      </a>
+      <nav class="kbc-nav" aria-label="Primary">
+        <a href="#stays">Group Stays</a>
+        <a href="#grounds">Woodland Grounds</a>
+        <a href="#enquire">Book a Stay</a>
+        <a href="#location">Rostrevor Map</a>
+      </nav>
+      <div class="kbc-header-actions">
+        <a class="kbc-header-tel" href={mobileHref}>{mobilePhone}</a>
+        <a class="kbc-header-cta" href="#enquire">Enquire Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="kbc-hero" aria-labelledby="kbc-hero-title">
+      <figure class="kbc-hero-media">
+        <picture>
+          <source srcset="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat-640.webp 640w, /media/concepts/kilbroney-centre/kilbroney-woodland-retreat-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat.jpg" alt="Stone-and-timber residential retreat building nestled among mossy oak trees in Rostrevor with Mourne slopes behind" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="kbc-hero-cap">Indicative Rostrevor woodland retreat visualisation.</figcaption>
+      </figure>
+      <div class="kbc-hero-scrim" aria-hidden="true"></div>
+      <div class="kbc-hero-content">
+        <p class="kbc-eyebrow">1 Forestbrook Road · Rostrevor · County Down</p>
+        <h1 id="kbc-hero-title">A woodland residential centre for youth groups, families and retreats.</h1>
+        <p class="kbc-hero-lead">
+          Tucked beneath the Mourne Mountains above Carlingford Lough, The Kilbroney Centre offers
+          private wooded grounds, welcoming group accommodation and outdoor adventure for all ages.
+        </p>
+        <div class="kbc-hero-actions">
+          <a class="kbc-btn kbc-btn--primary" href="#enquire">Check Dates &amp; Availability</a>
+          <a class="kbc-btn kbc-btn--ghost" href={mobileHref}>Call {mobilePhone}</a>
+        </div>
+      </div>
+    </section>
+
+    <KbcGroupMatcher />
+
+    <section class="kbc-section kbc-grounds" id="grounds" aria-labelledby="kbc-grounds-title">
+      <div class="kbc-wrap kbc-split">
+        <figure class="kbc-plate">
+          <picture>
+            <source srcset="/media/concepts/kilbroney-centre/kilbroney-outdoor-activity-640.webp 640w, /media/concepts/kilbroney-centre/kilbroney-outdoor-activity-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/kilbroney-centre/kilbroney-outdoor-activity.jpg" alt="Woodland campfire circle with timber benches beside a stone forest trail overlooking Carlingford Lough" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Woodland clearing &amp; campfire grounds. Indicative outdoor visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="kbc-kicker">Set in Rostrevor Forest Country</p>
+          <h2 id="kbc-grounds-title">Space to roam outdoors and gather warmly indoors.</h2>
+          <p>
+            Steps from Kilbroney Park, mountain trails and the shores of Carlingford Lough, our
+            grounds give youth leaders, schools and families room for team games, evening campfires
+            and unhurried reflection — all backed by practical residential hospitality.
+          </p>
+          <div class="kbc-contact-cards">
+            <article>
+              <span>Mobile &amp; Bookings</span>
+              <a href={mobileHref}>{mobilePhone}</a>
+            </article>
+            <article>
+              <span>Centre Office</span>
+              <a href={deskHref}>{deskPhone}</a>
+            </article>
+          </div>
+          <p class="kbc-email-line">Booking desk: <a href={`mailto:${email}`}>{email}</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="kbc-section kbc-enquire" id="enquire" aria-labelledby="kbc-enq-title">
+      <div class="kbc-wrap kbc-split">
+        <div>
+          <p class="kbc-kicker">Direct Booking Desk</p>
+          <h2 id="kbc-enq-title">Tell us about your group and preferred dates.</h2>
+          <p>
+            Send a quick outline of your group type, rough numbers and target weekend or week. We
+            will come back directly with current availability and catering options.
+          </p>
+        </div>
+        <form class="kbc-form" data-kbc-form>
+          <div class="kbc-row">
+            <label>
+              <span>Leader / contact name</span>
+              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+            </label>
+            <label>
+              <span>Telephone</span>
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="07 / 028..." />
+            </label>
+          </div>
+          <div class="kbc-row">
+            <label>
+              <span>Group type</span>
+              <select name="groupType">
+                <option value="Youth / Children's Group">Youth / Children's Group</option>
+                <option value="Family Weekend">Family Weekend</option>
+                <option value="Summer Camp">Summer Camp</option>
+                <option value="Adult / Church Retreat">Adult / Church Retreat</option>
+                <option value="School Residential">School Residential</option>
+              </select>
+            </label>
+            <label>
+              <span>Estimated group size &amp; dates</span>
+              <input name="dates" type="text" placeholder="e.g. 30 guests, May weekend" />
+            </label>
+          </div>
+          <label>
+            <span>Additional notes</span>
+            <textarea name="notes" rows="3" placeholder="Tell us about catering preferences, accessibility needs or activity plans..."></textarea>
+          </label>
+          <button class="kbc-btn kbc-btn--primary" type="submit">Send Booking Enquiry</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="kbc-section" id="location" aria-label="Rostrevor location map">
+      <div class="kbc-wrap">
+        <LocalAreaMap
+          id="kbc-map"
+          kicker="1 Forestbrook Road · Rostrevor"
+          businessName="The Kilbroney Centre"
+          address="1 Forestbrook Road, Rostrevor, Newry, BT34 3BT"
+          lon={-6.1969}
+          lat={54.1017}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Rostrevor Village", lon: -6.2016, lat: 54.0991, note: "2 mins south", side: "b" },
+            { name: "Warrenpoint", lon: -6.2504, lat: 54.1003, note: "6 mins west", side: "l" },
+            { name: "Newry", lon: -6.3402, lat: 54.1751, note: "18 mins north-west", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="kbc-footer">
+    <div class="kbc-wrap kbc-footer-inner">
+      <div>
+        <strong>The Kilbroney Centre</strong>
+        <p>1 Forestbrook Road, Rostrevor, Newry, Co. Down, BT34 3BT</p>
+      </div>
+      <div class="kbc-footer-links">
+        <a href={mobileHref}>{mobilePhone}</a>
+        <a href={deskHref}>{deskPhone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (() => {
+      const form = document.querySelector("[data-kbc-form]");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const fd = new FormData(form);
+        const subject = `Residential Enquiry — ${fd.get("groupType")} (${fd.get("name")})`;
+        const body = [
+          `Contact: ${fd.get("name")}`,
+          `Phone: ${fd.get("phone")}`,
+          `Group Type: ${fd.get("groupType")}`,
+          `Estimated Size & Dates: ${fd.get("dates") || "Flexible"}`,
+          `Notes: ${fd.get("notes") || "None"}`,
+        ].join("\n");
+        const ev = new CustomEvent("mm:enquiry", {
+          cancelable: true,
+          detail: { to: "booking@kilbroneycentre.com", subject, body },
+        });
+        if (window.dispatchEvent(ev)) {
+          window.location.href = `mailto:booking@kilbroneycentre.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+      });
+    })();
+  </script>
+</ConceptLayout>

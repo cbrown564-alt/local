@@ -611,6 +611,46 @@ const VERIFIED_SCHEDULES: ScheduleDef[] = [
       6: [16 * 60, 23 * 60],
     },
   },
+  // Wave 5 verified schedules
+  {
+    bodyClass: "concept-mauricemurphy",
+    selector: ".mmc-hours-list",
+    days: {
+      0: null,
+      1: [9 * 60, 17 * 60],
+      2: [9 * 60, 17 * 60],
+      3: [9 * 60, 17 * 60],
+      4: [9 * 60, 17 * 60],
+      5: [9 * 60, 17 * 60],
+      6: [9 * 60, 15 * 60],
+    },
+  },
+  {
+    bodyClass: "concept-gullioncycles",
+    selector: ".rgc-hours-list",
+    days: {
+      0: [12 * 60, 16 * 60],
+      1: [9 * 60 + 30, 17 * 60 + 30],
+      2: [9 * 60 + 30, 17 * 60 + 30],
+      3: [9 * 60 + 30, 17 * 60 + 30],
+      4: [9 * 60 + 30, 17 * 60 + 30],
+      5: [9 * 60 + 30, 17 * 60 + 30],
+      6: [10 * 60, 17 * 60],
+    },
+  },
+  {
+    bodyClass: "concept-magherainn",
+    selector: ".mi-hours-list",
+    days: {
+      0: [11 * 60 + 30, 23 * 60],
+      1: [11 * 60 + 30, 23 * 60],
+      2: [11 * 60 + 30, 23 * 60],
+      3: [11 * 60 + 30, 23 * 60],
+      4: [11 * 60 + 30, 23 * 60],
+      5: [11 * 60 + 30, 25 * 60],
+      6: [11 * 60 + 30, 25 * 60],
+    },
+  },
 ];
 
 const WEEKDAY_MAP: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };

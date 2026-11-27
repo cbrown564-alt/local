@@ -1,0 +1,131 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import BhbTaproomTabs from "./BhbTaproomTabs.astro";
+import "./styles.css";
+
+/* Beer Hut Brewing — 32A Greencastle Street / Unit 14 Binnian Enterprise Park, Kilkeel BT34 4BH.
+   Verified live 27 Nov 2026: beerhutbrewing.co.uk duplicates its 10-item Shopify nav bar twice, obscuring
+   its Saturday Kilkeel taproom (fresh IPAs, stouts, sours + artisan pizza), Sub Club, and Running Club.
+   Contacts: 07885 566599, https://beerhutbrewing.co.uk/. */
+const phone = "07885 566599";
+const phoneHref = "tel:+447885566599";
+const shopHref = "https://beerhutbrewing.co.uk/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewing+Unit+14+Binnian+Enterprise+Park+Kilkeel+BT34+4BH";
+---
+
+<ConceptLayout
+  title="Beer Hut Brewing — Small-Batch Craft Brewery & Taproom, Kilkeel"
+  slug="beer-hut-brewing"
+  bodyClass="concept-page concept-beerhut"
+  businessName="Beer Hut Brewing"
+  town="Kilkeel"
+  bannerNote="Imagery comprises indicative Kilkeel craft brewery taproom and small-batch hazy IPA pour visualisations."
+>
+  <header class="bhb-header">
+    <div class="bhb-header-inner">
+      <a class="bhb-brand" href="#top">
+        <strong>Beer Hut Brewing</strong>
+        <span>Kilkeel · Foot of the Mournes</span>
+      </a>
+      <nav class="bhb-nav" aria-label="Primary">
+        <a href="#taproom">Taproom &amp; Clubs</a>
+        <a href="#brews">Small-Batch Craft</a>
+        <a href="#location">Find Kilkeel</a>
+      </nav>
+      <div class="bhb-header-actions">
+        <a class="bhb-header-tel" href={phoneHref}>{phone}</a>
+        <a class="bhb-header-cta" href={shopHref} target="_blank" rel="noopener noreferrer">Shop Beers ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="bhb-hero" aria-labelledby="bhb-hero-title">
+      <div class="bhb-wrap bhb-hero-grid">
+        <div>
+          <p class="bhb-kicker">Kilkeel · Binnian Enterprise Park · BT34 4BH</p>
+          <h1 id="bhb-hero-title">Bold small-batch Mourne beer, poured fresh on Saturdays.</h1>
+          <p class="bhb-lead">
+            Independent Kilkeel microbrewery crafting hop-forward IPAs, crisp lagers, sours and rich
+            stouts — with a lively Saturday taproom, artisan pizza, monthly Sub Club and Running Club.
+          </p>
+          <div class="bhb-actions">
+            <a class="bhb-btn bhb-btn--primary" href={shopHref} target="_blank" rel="noopener noreferrer">Order Fresh Cans Online ↗</a>
+            <a class="bhb-btn bhb-btn--outline" href={phoneHref}>Call Brewery · {phone}</a>
+          </div>
+        </div>
+        <figure class="bhb-hero-plate">
+          <picture>
+            <source srcset="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-taproom-evening-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
+            <img src="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening.jpg" alt="Moody Saturday craft brewery taproom under warm festoon bulbs with stainless steel fermenters and poured hazy IPA and stout" width="1408" height="768" loading="eager" />
+          </picture>
+          <figcaption>Kilkeel Saturday taproom atmosphere. Indicative brewhouse visualisation.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <BhbTaproomTabs />
+
+    <section class="bhb-section bhb-brews" id="brews" aria-labelledby="bhb-br-title">
+      <div class="bhb-wrap bhb-split">
+        <figure class="bhb-plate">
+          <picture>
+            <source srcset="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour.jpg" alt="Golden hazy IPA pouring from a brushed steel tap into a stemmed tasting glass against dark slate and stainless steel tanks" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Small-batch tap pour. Indicative brewery visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="bhb-kicker">Brewed Below Slieve Binnian</p>
+          <h2 id="bhb-br-title">Unfiltered flavour, brewed in small runs on the Mourne coast.</h2>
+          <p>
+            Every batch leaves our Kilkeel tanks cold-conditioned and packed with aroma. Drop into
+            our Saturday taproom for pizza and pints beside the stainless fermenters, or sign up for
+            monthly Sub Club deliveries anywhere in the UK and Ireland.
+          </p>
+          <div class="bhb-call-box">
+            <span>Taproom &amp; Trade Desk</span>
+            <a href={phoneHref}>{phone}</a>
+            <p>32A Greencastle Street / Unit 14 Binnian Enterprise Park, Kilkeel, BT34 4BH</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bhb-section" id="location" aria-label="Kilkeel brewery location map">
+      <div class="bhb-wrap">
+        <LocalAreaMap
+          id="bhb-map"
+          tone="dark"
+          kicker="Binnian Enterprise Park · Kilkeel"
+          businessName="Beer Hut Brewing"
+          address="Unit 14 Binnian Enterprise Park, Kilkeel, BT34 4BH"
+          lon={-5.9941}
+          lat={54.0615}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Kilkeel Harbour", lon: -5.9904, lat: 54.0548, note: "3 mins south", side: "b" },
+            { name: "Cranfield Beach", lon: -6.0684, lat: 54.0218, note: "9 mins south-west", side: "l" },
+            { name: "Silent Valley", lon: -5.9926, lat: 54.1399, note: "12 mins north", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="bhb-footer">
+    <div class="bhb-wrap bhb-footer-inner">
+      <div>
+        <strong>Beer Hut Brewing</strong>
+        <p>Unit 14 Binnian Enterprise Park / 32A Greencastle St, Kilkeel, BT34 4BH</p>
+      </div>
+      <div class="bhb-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={shopHref} target="_blank" rel="noopener noreferrer">Online Shop ↗</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

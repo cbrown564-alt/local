@@ -1,0 +1,146 @@
+---
+/* East Down Yacht Club — Interactive Club & Lough Guide.
+   Surfaces Sailing & Dinghy Racing, Caravan & Camping Park, RYA Training, and Clubhouse
+   which are invisible to search engines on the current JS-shell edyc.co.uk site. */
+const sections = [
+  {
+    id: "sailing",
+    label: "Sailing & Racing",
+    title: "Active dinghy, keelboat and cruiser racing on sheltered Strangford Lough.",
+    points: [
+      "Club racing series across spring, summer and autumn tides from Moymore slipway",
+      "Welcoming mixed fleet for seasoned racers, cruising families and returning sailors",
+      "Direct sheltered launch access onto Strangford Lough minutes from Killyleagh",
+    ],
+    note: "Visiting boats and prospective sailing members are always welcome — ring 028 4482 8375 for fixture dates.",
+  },
+  {
+    id: "caravan",
+    label: "Caravan & Camping",
+    title: "Peaceful waterside touring caravan and camping pitches overlooking the lough.",
+    points: [
+      "Grassy shoreline pitches with wide views across Strangford Lough's drumlin islands",
+      "Quiet club-run setting on Comber Road with easy access to Killyleagh and Delamont",
+      "Ideal weekend base for sailing families, kayakers and coastal walkers",
+    ],
+    note: "Call the clubhouse on 028 4482 8375 or check edyc.co.uk ahead of seasonal weekend bookings.",
+  },
+  {
+    id: "training",
+    label: "RYA Training",
+    title: "RYA-recognised sailing and powerboat courses for juniors and adults.",
+    points: [
+      "Structured beginner and improver dinghy courses taught by qualified local instructors",
+      "Summer junior sailing weeks building real confidence on the water",
+      "Safety-boat and powerboat handling courses supporting club racing",
+    ],
+    note: "No boat ownership needed to start — club training dinghies are available for beginner sessions.",
+  },
+  {
+    id: "clubhouse",
+    label: "Clubhouse & Membership",
+    title: "Friendly shore-side clubhouse bringing sailors and families together year-round.",
+    points: [
+      "Post-race bar, lounge and lough-view deck at 62 Comber Road, Moymore",
+      "Family, adult, cadet and social membership categories open to newcomers",
+      "Regular seasonal suppers, regatta weekends and winter shore talks",
+    ],
+    note: "Drop by on a club weekend or call 028 4482 8375 to meet the committee and tour the slipway.",
+  },
+];
+---
+
+<section class="edyc-tabs-band" id="club" aria-labelledby="edyc-tabs-title">
+  <div class="edyc-wrap">
+    <div class="edyc-tabs-card" data-edyc-tabs>
+      <div class="edyc-tabs-head">
+        <div>
+          <p class="edyc-kicker">Strangford Lough · Moymore, Killyleagh</p>
+          <h2 id="edyc-tabs-title">Life on the water at East Down Yacht Club.</h2>
+        </div>
+        <div class="edyc-tab-list" role="tablist" aria-label="Explore club sections">
+          {sections.map((sec, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["edyc-tab", idx === 0 && "is-active"]}
+              data-edyc-tab={sec.id}
+            >
+              {sec.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {sections.map((sec, idx) => (
+        <div class="edyc-panel" role="tabpanel" data-edyc-panel={sec.id} hidden={idx !== 0}>
+          <h3>{sec.title}</h3>
+          <ul class="edyc-points">
+            {sec.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="edyc-panel-foot">
+            <p class="edyc-note"><strong>Club note:</strong> {sec.note}</p>
+            <a class="edyc-btn edyc-btn--primary" href="https://edyc.co.uk/" target="_blank" rel="noopener noreferrer">Club Portal ↗</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .edyc-tabs-band { padding: clamp(46px, 6vw, 76px) 0; }
+  .edyc-tabs-card {
+    background: #ffffff;
+    border: 1px solid rgba(19, 40, 64, 0.14);
+    border-top: 3px solid #173a63;
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 3px;
+  }
+  .edyc-tabs-head {
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 18px;
+    padding-bottom: 22px; border-bottom: 1px solid rgba(19, 40, 64, 0.12);
+  }
+  .edyc-tabs-head h2 { margin: 0; font-family: var(--edyc-display); font-size: clamp(1.75rem, 3.1vw, 2.4rem); font-weight: 500; }
+  .edyc-tab-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .edyc-tab {
+    padding: 9px 14px; border: 1px solid rgba(19, 40, 64, 0.22); background: #f5f8fb; color: #132840;
+    font-family: var(--edyc-sans); font-size: 0.86rem; font-weight: 600; border-radius: 3px; cursor: pointer;
+  }
+  .edyc-tab.is-active { background: #173a63; border-color: #173a63; color: #ffffff; }
+  .edyc-panel { padding-top: 24px; }
+  .edyc-panel h3 { margin: 0 0 18px; font-family: var(--edyc-display); font-size: 1.42rem; font-weight: 500; }
+  .edyc-points {
+    list-style: none; padding: 0; margin: 0 0 24px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+  }
+  .edyc-points li {
+    background: #f5f8fb; border: 1px solid rgba(19, 40, 64, 0.1);
+    padding: 14px 16px; font-size: 0.92rem; color: #132840; border-radius: 3px;
+  }
+  .edyc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .edyc-note { margin: 0; font-size: 0.9rem; color: #4b6178; max-width: 54ch; }
+  .edyc-note strong { color: #132840; }
+  @media (max-width: 780px) { .edyc-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-edyc-tabs]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-edyc-tab]")];
+    const panels = [...root.querySelectorAll("[data-edyc-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-edyc-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-edyc-panel") !== id; });
+      });
+    });
+  })();
+</script>

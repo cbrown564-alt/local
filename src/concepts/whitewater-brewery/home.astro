@@ -1,0 +1,183 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* Whitewater Brewing Co. — Lakeside Brae, Clarkhill Road, Castlewellan BT31 9RH.
+   Verified live 27 Nov 2026: whitewaterbrewery.com renders empty cart text ("0 was successfully added to your cart.")
+   at top of page and buries Beer Dough Pizzeria & guided tours under WooCommerce chrome.
+   Contacts: 028 4377 8900, whitewaterbrewery.com, /tours/, FB WhitewaterBeer, IG whitewaterbeer. */
+const phone = "028 4377 8900";
+const phoneHref = "tel:+442843778900";
+const siteHref = "https://www.whitewaterbrewery.com/";
+const toursHref = "https://www.whitewaterbrewery.com/tours/";
+const fbHref = "https://www.facebook.com/WhitewaterBeer";
+const igHref = "https://www.instagram.com/whitewaterbeer/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Whitewater+Brewing+Co+Lakeside+Brae+Clarkhill+Road+Castlewellan+BT31+9RH";
+
+const taproomGroups = [
+  {
+    id: "beers",
+    label: "Craft Beers Brewed in the Mournes",
+    items: [
+      { name: "Flagship Ales, Lagers & Stouts", note: "Independent small-batch beers brewed with pure Mourne water on Lakeside Brae", meta: "On tap & cans" },
+      { name: "Seasonal & Limited Releases", note: "Rotating hop-forward IPAs, crisp pilsners and dark malts poured fresh at the source", meta: "Taproom fresh" },
+      { name: "Brewhouse Takeaway Shop", note: "Pick up mixed cases, glassware and gifts direct from the Castlewellan brewery", meta: "Order online ↗" },
+    ],
+  },
+  {
+    id: "pizzeria",
+    label: "Beer Dough Pizzeria & Tours",
+    items: [
+      { name: "Beer Dough Sourdough Pizzeria", note: "Hand-stretched sourdough bases fermented with Whitewater beer, baked fresh to order", meta: "Lakeside Brae" },
+      { name: "Guided Brewhouse Tours", note: "Walk the brewhouse floor with our team and finish with a guided tasting flight", meta: "Book online ↗" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="Whitewater Brewing Co. — Brewhouse, Beer Dough Pizzeria & Tours, Castlewellan"
+  slug="whitewater-brewery"
+  bodyClass="concept-page concept-whitewater"
+  businessName="Whitewater Brewing Co."
+  town="Castlewellan"
+  bannerNote="Imagery comprises indicative Mourne craft brewhouse taproom and wood-fired beer dough pizza visualisations."
+>
+  <header class="ww-header">
+    <div class="ww-header-inner">
+      <a class="ww-brand" href="#top">
+        <strong>Whitewater Brewing Co.</strong>
+        <span>Lakeside Brae · Castlewellan</span>
+      </a>
+      <nav class="ww-nav" aria-label="Primary">
+        <a href="#brewhouse">The Brewhouse</a>
+        <a href="#pizzeria">Beer Dough Pizzeria</a>
+        <a href="#location">Castlewellan Map</a>
+      </nav>
+      <div class="ww-header-actions">
+        <a class="ww-header-tel" href={phoneHref}>{phone}</a>
+        <a class="ww-header-cta" href={toursHref} target="_blank" rel="noopener noreferrer">Book a Tour ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="ww-hero" aria-labelledby="ww-hero-title">
+      <figure class="ww-hero-media">
+        <picture>
+          <source srcset="/media/concepts/whitewater-brewery/whitewater-brewhouse-taps-640.webp 640w, /media/concepts/whitewater-brewery/whitewater-brewhouse-taps-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/whitewater-brewery/whitewater-brewhouse-taps.jpg" alt="Sunlit rural craft brewery taproom with poured amber ale, golden IPA and dark stout on an oak bar beside brewing vessels" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="ww-hero-cap">Indicative brewhouse &amp; taproom visualisation.</figcaption>
+      </figure>
+      <div class="ww-hero-scrim" aria-hidden="true"></div>
+      <div class="ww-hero-content">
+        <p class="ww-eyebrow">Lakeside Brae · Clarkhill Road · Castlewellan</p>
+        <h1 id="ww-hero-title">Independent Mourne craft beer, guided tours and beer-dough pizza.</h1>
+        <p class="ww-hero-lead">
+          Brewed in the foothills of the Mournes on Lakeside Brae — visit the taphouse for freshly
+          poured ales, wood-fired sourdough pizza made with our own beer, and behind-the-scenes brewery tours.
+        </p>
+        <div class="ww-hero-actions">
+          <a class="ww-btn ww-btn--primary" href={toursHref} target="_blank" rel="noopener noreferrer">Book a Brewhouse Tour ↗</a>
+          <a class="ww-btn ww-btn--ghost" href={siteHref} target="_blank" rel="noopener noreferrer">Shop Beers Online ↗</a>
+          <SpecimenSheet
+            id="ww-tap-sheet"
+            triggerLabel="Taphouse & Pizzeria Guide"
+            kicker="Whitewater Brewing Co. · Lakeside Brae, Castlewellan"
+            title="Craft Beers, Beer Dough Pizzeria & Tours"
+            subtitle="Visit Lakeside Brae on Clarkhill Road or call 028 4377 8900 for group tour bookings."
+            groups={taproomGroups}
+            ctaLabel="Book Brewhouse Tour ↗"
+            ctaHref={toursHref}
+            ctaExternal={true}
+            secondaryLabel={`Call ${phone}`}
+            secondaryHref={phoneHref}
+            buttonClass="ww-btn ww-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="ww-section ww-pillars" id="brewhouse" aria-labelledby="ww-p-title">
+      <div class="ww-wrap ww-three">
+        <article>
+          <span>Brewhouse</span>
+          <h2 id="ww-p-title">Brewed in the Mournes</h2>
+          <p>Independent Northern Ireland brewing heritage crafted on Lakeside Brae using clean local water and whole-grain malts.</p>
+        </article>
+        <article>
+          <span>Taphouse</span>
+          <h3>Fresh Pours at the Source</h3>
+          <p>Enjoy flagship ales, crisp lagers and seasonal small-batch pours straight from the brewery cellar overlooking County Down hills.</p>
+        </article>
+        <article>
+          <span>Tours</span>
+          <h3>Guided Tastings &amp; Groups</h3>
+          <p>Step inside the brewhouse with our makers, hear how each style comes together and sample flights together.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ww-section ww-pizzeria" id="pizzeria" aria-labelledby="ww-pz-title">
+      <div class="ww-wrap ww-split">
+        <figure class="ww-plate">
+          <picture>
+            <source srcset="/media/concepts/whitewater-brewery/whitewater-beer-dough-pizza-640.webp 640w, /media/concepts/whitewater-brewery/whitewater-beer-dough-pizza-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/whitewater-brewery/whitewater-beer-dough-pizza.jpg" alt="Blistered wood-fired beer-dough sourdough pizza with mozzarella and basil on a wooden paddle beside a pint of amber craft beer" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Beer Dough Pizzeria &amp; taproom pairing. Indicative food visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="ww-kicker">Wood-Fired Sourdough · Lakeside Brae</p>
+          <h2 id="ww-pz-title">The Beer Dough Pizzeria, paired straight with the taps.</h2>
+          <p>
+            Our slow-fermented sourdough pizza bases are enriched with Whitewater beer for a crisp,
+            malty crust — ideal after a walk through Castlewellan Forest Park or a day in the Mournes.
+          </p>
+          <div class="ww-inline-actions">
+            <a class="ww-btn ww-btn--primary" href={toursHref} target="_blank" rel="noopener noreferrer">Reserve a Tour ↗</a>
+            <a class="ww-btn ww-btn--outline" href={phoneHref}>Call {phone}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ww-section" id="location" aria-label="Castlewellan Lakeside Brae map">
+      <div class="ww-wrap">
+        <LocalAreaMap
+          id="ww-map"
+          kicker="Lakeside Brae · Clarkhill Road, Castlewellan"
+          businessName="Whitewater Brewing Co."
+          address="Lakeside Brae, Clarkhill Road, Castlewellan, BT31 9RH"
+          lon={-5.9447}
+          lat={54.2796}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Castlewellan Forest", lon: -5.9442, lat: 54.2596, note: "4 mins south", side: "b" },
+            { name: "Newcastle", lon: -5.8902, lat: 54.2121, note: "12 mins south-east", side: "r" },
+            { name: "Ballynahinch", lon: -5.8971, lat: 54.4011, note: "15 mins north", side: "t" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="ww-footer">
+    <div class="ww-wrap ww-footer-inner">
+      <div>
+        <strong>Whitewater Brewing Co.</strong>
+        <p>Lakeside Brae, Clarkhill Road, Castlewellan, Co. Down, BT31 9RH</p>
+      </div>
+      <div class="ww-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={toursHref} target="_blank" rel="noopener noreferrer">Tours ↗</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={igHref} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

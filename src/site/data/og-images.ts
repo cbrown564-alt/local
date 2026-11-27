@@ -17,6 +17,17 @@ export function transformationOgImage(slug: string): string {
     before-and-after transformation cards. Explicit string literals allow
     tools/check/check-public-assets.mjs to verify every asset. */
 export const conceptOgCards: Record<string, string> = {
+  // Wave 5 NMDDC concepts (10)
+  "kilbroney-centre": "/media/og/kilbroney-centre.jpg",
+  "maurice-murphy-cars": "/media/og/maurice-murphy-cars.jpg",
+  "evvrclean-newry": "/media/og/evvrclean-newry.jpg",
+  "whitewater-brewery": "/media/og/whitewater-brewery.jpg",
+  "beer-hut-brewing": "/media/og/beer-hut-brewing.jpg",
+  "ring-of-gullion-cycles": "/media/og/ring-of-gullion-cycles.jpg",
+  "artisan-cookhouse": "/media/og/artisan-cookhouse.jpg",
+  "meadow-farm-shop": "/media/og/meadow-farm-shop.jpg",
+  "the-maghera-inn": "/media/og/the-maghera-inn.jpg",
+  "east-down-yacht-club": "/media/og/east-down-yacht-club.jpg",
   // Wave 4 NMDDC concepts (10)
   "murlands-solicitors": "/media/og/murlands-solicitors.jpg",
   "mcveigh-property": "/media/og/mcveigh-property.jpg",

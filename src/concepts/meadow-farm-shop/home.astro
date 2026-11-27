@@ -1,0 +1,179 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* Meadow Farm Shop — 123 Downpatrick Road, Crossgar / Downpatrick BT30 9EH.
+   Verified live 27 Nov 2026: meadowfarmpotatoes.com/farm-shop blocks automated requests and link previews
+   behind a hard Cloudflare 403 challenge.
+   Contacts: 028 4483 1543, 123 Downpatrick Road, Crossgar / Downpatrick BT30 9EH. */
+const phone = "028 4483 1543";
+const phoneHref = "tel:+442844831543";
+const siteHref = "https://meadowfarmpotatoes.com/farm-shop";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meadow+Farm+Shop+123+Downpatrick+Road+Crossgar+BT30+9EH";
+
+const farmGroups = [
+  {
+    id: "produce",
+    label: "Home-Grown Potatoes & Local Produce",
+    items: [
+      { name: "Meadow Farm County Down Potatoes", note: "Freshly lifted seasonal varieties grown in County Down soil, bagged straight from the farm", meta: "Grown on site" },
+      { name: "Seasonal Vegetables & Fruit", note: "Crisp greens, root vegetables, orchard fruit and free-range local eggs stocked daily", meta: "Fresh daily" },
+      { name: "Artisan Northern Ireland Larder", note: "Local chutneys, preserves, honey, home-baked traybakes and farm-reared meats", meta: "Downpatrick Road" },
+    ],
+  },
+  {
+    id: "tearoom",
+    label: "Country Tearoom & Bakery",
+    items: [
+      { name: "Freshly Baked Scones & Home Baking", note: "Warm buttermilk scones, wheaten bread and cakes served with proper tea and coffee", meta: "Tearoom tables" },
+      { name: "Light Farm Lunches & Soup", note: "Hearty seasonal vegetable soups and sandwiches overlooking the County Down countryside", meta: "Easy roadside stop" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="Meadow Farm Shop — Home-Grown Potatoes, Local Produce & Tearoom, Crossgar"
+  slug="meadow-farm-shop"
+  bodyClass="concept-page concept-meadowfarm"
+  businessName="Meadow Farm Shop"
+  town="Crossgar"
+  bannerNote="Imagery comprises indicative County Down farm shop harvest and countryside tearoom visualisations."
+>
+  <header class="mf-header">
+    <div class="mf-header-inner">
+      <a class="mf-brand" href="#top">
+        <strong>Meadow Farm Shop</strong>
+        <span>123 Downpatrick Road · Crossgar</span>
+      </a>
+      <nav class="mf-nav" aria-label="Primary">
+        <a href="#produce">Farm Shop</a>
+        <a href="#tearoom">Country Tearoom</a>
+        <a href="#location">Find Us</a>
+      </nav>
+      <div class="mf-header-actions">
+        <a class="mf-header-tel" href={phoneHref}>{phone}</a>
+        <a class="mf-header-cta" href={phoneHref}>Call the Shop</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="mf-hero" aria-labelledby="mf-hero-title">
+      <div class="mf-wrap mf-hero-grid">
+        <div>
+          <p class="mf-kicker">123 Downpatrick Road · Between Crossgar &amp; Downpatrick</p>
+          <h1 id="mf-hero-title">Home-grown County Down potatoes, honest local produce and a warm farm tearoom.</h1>
+          <p class="mf-lead">
+            Pull in off the A7 Downpatrick Road for freshly bagged Meadow Farm potatoes, seasonal
+            vegetables, Northern Ireland artisan larder favourites, and freshly baked scones in our tearoom.
+          </p>
+          <div class="mf-actions">
+            <SpecimenSheet
+              id="mf-shop-sheet"
+              triggerLabel="What's in the Farm Shop"
+              kicker="Meadow Farm Shop · 123 Downpatrick Road, Crossgar"
+              title="Potatoes, Local Larder & Tearoom"
+              subtitle="Easy parking straight off the Downpatrick Road — ring 028 4483 1543 for seasonal potato varieties or hampers."
+              groups={farmGroups}
+              ctaLabel={`Call ${phone}`}
+              ctaHref={phoneHref}
+              secondaryLabel="Google Maps ↗"
+              secondaryHref={mapsHref}
+              buttonClass="mf-btn mf-btn--primary"
+            />
+            <a class="mf-btn mf-btn--outline" href={mapsHref} target="_blank" rel="noopener noreferrer">Get Directions ↗</a>
+          </div>
+        </div>
+        <figure class="mf-hero-plate">
+          <picture>
+            <source srcset="/media/concepts/meadow-farm-shop/meadow-farm-harvest-640.webp 640w, /media/concepts/meadow-farm-shop/meadow-farm-harvest-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
+            <img src="/media/concepts/meadow-farm-shop/meadow-farm-harvest.jpg" alt="Sunlit County Down farm shop wooden harvest crates overflowing with brushed potatoes, heirloom carrots, fresh greens and preserve jars" width="1408" height="768" loading="eager" />
+          </picture>
+          <figcaption>Seasonal harvest &amp; local produce counter. Indicative farm shop visualisation.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="mf-section mf-produce" id="produce" aria-labelledby="mf-p-title">
+      <div class="mf-wrap mf-three">
+        <article>
+          <span>From the Field</span>
+          <h2 id="mf-p-title">Meadow Farm Potatoes</h2>
+          <p>Grown right here in County Down and lifted in season — dry, floury spuds alongside crisp baby potatoes and root veg.</p>
+        </article>
+        <article>
+          <span>Local Larder</span>
+          <h3>County Down Growers &amp; Makers</h3>
+          <p>Free-range eggs, small-batch jams, chutneys, home-baked breads and gift hampers packed with regional produce.</p>
+        </article>
+        <article>
+          <span>Roadside Stop</span>
+          <h3>Easy Access on the A7</h3>
+          <p>Convenient off-road parking between Crossgar and Downpatrick — ideal for weekly shopping or a relaxed morning coffee.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mf-section mf-tearoom" id="tearoom" aria-labelledby="mf-tr-title">
+      <div class="mf-wrap mf-split">
+        <figure class="mf-plate">
+          <picture>
+            <source srcset="/media/concepts/meadow-farm-shop/meadow-farm-tearoom-640.webp 640w, /media/concepts/meadow-farm-shop/meadow-farm-tearoom-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/meadow-farm-shop/meadow-farm-tearoom.jpg" alt="Sunlit country farm tearoom table set with golden buttermilk scones, clotted cream, berry jam and stoneware teapot overlooking green County Down fields" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Farm tearoom baking &amp; countryside views. Indicative tearoom visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="mf-kicker">Country Tearoom · Downpatrick Road</p>
+          <h2 id="mf-tr-title">Pause for warm scones, homemade soup and proper tea.</h2>
+          <p>
+            Make your farm-shop run a pleasure — settle beside the window for fresh home baking,
+            seasonal lunches and unhurried countryside views across Mid-Down.
+          </p>
+          <div class="mf-call-box">
+            <span>Farm Shop &amp; Tearoom Enquiries</span>
+            <a href={phoneHref}>{phone}</a>
+            <p>123 Downpatrick Road, Crossgar, Downpatrick, BT30 9EH</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mf-section" id="location" aria-label="Crossgar Downpatrick Road map">
+      <div class="mf-wrap">
+        <LocalAreaMap
+          id="mf-map"
+          kicker="123 Downpatrick Road · A7 Corridor"
+          businessName="Meadow Farm Shop"
+          address="123 Downpatrick Road, Crossgar, Downpatrick, BT30 9EH"
+          lon={-5.7401}
+          lat={54.3708}
+          spanKm={16}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Crossgar", lon: -5.7662, lat: 54.4004, note: "4 mins north-west", side: "t" },
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "6 mins south-east", side: "b" },
+            { name: "Killyleagh", lon: -5.6524, lat: 54.4017, note: "10 mins east", side: "r" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="mf-footer">
+    <div class="mf-wrap mf-footer-inner">
+      <div>
+        <strong>Meadow Farm Shop</strong>
+        <p>123 Downpatrick Road, Crossgar, Downpatrick, Co. Down, BT30 9EH</p>
+      </div>
+      <div class="mf-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={siteHref} target="_blank" rel="noopener noreferrer">Official Website ↗</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

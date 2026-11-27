@@ -1,0 +1,178 @@
+---
+import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
+import SpecimenSheet from "../_shell/SpecimenSheet.astro";
+import "./styles.css";
+
+/* The Artisan Cookhouse — 4 Kildare Street, Strangford, Downpatrick BT30 7LJ.
+   Verified live 27 Nov 2026: artisancookhouse.com duplicates its entire header navigation
+   (Dine / Reserve a Table / Menus / Stay / Book A Room / Experiences / Gift Vouchers / Contact) twice.
+   Contacts: 028 4488 1654, https://www.artisancookhouse.com/. */
+const phone = "028 4488 1654";
+const phoneHref = "tel:+442844881654";
+const siteHref = "https://www.artisancookhouse.com/";
+const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Artisan+Cookhouse+4+Kildare+Street+Strangford+BT30+7LJ";
+
+const cookhouseGroups = [
+  {
+    id: "dine",
+    label: "Bistro Dining & Seasonal Menus",
+    items: [
+      { name: "Strangford Lough & County Down Produce", note: "Thoughtfully cooked evening plates showcasing coastal fish, local farms and seasonal menus", meta: "Reserve online ↗" },
+      { name: "Intimate Kildare Street Dining Room", note: "Relaxed candlelit village hospitality just steps from Strangford harbour", meta: "Call 028 4488 1654" },
+    ],
+  },
+  {
+    id: "stay",
+    label: "Stay, Experiences & Vouchers",
+    items: [
+      { name: "Boutique Overnight Rooms", note: "Calm, beautifully finished village bedrooms on Kildare Street for unhurried Strangford breaks", meta: "Book a room ↗" },
+      { name: "Culinary Experiences & Gift Vouchers", note: "Food-led coastal breaks and gift vouchers redeemable across dining and overnight stays", meta: "Order online ↗" },
+    ],
+  },
+];
+---
+
+<ConceptLayout
+  title="The Artisan Cookhouse — Bistro Dining, Rooms & Experiences, Strangford"
+  slug="artisan-cookhouse"
+  bodyClass="concept-page concept-artisancookhouse"
+  businessName="The Artisan Cookhouse"
+  town="Strangford"
+  bannerNote="Imagery comprises indicative Strangford village bistro dining and coastal bedroom visualisations."
+>
+  <header class="ac-header">
+    <div class="ac-header-inner">
+      <a class="ac-brand" href="#top">
+        <strong>The Artisan Cookhouse</strong>
+        <span>4 Kildare Street · Strangford</span>
+      </a>
+      <nav class="ac-nav" aria-label="Primary">
+        <a href="#dine">Dine &amp; Experiences</a>
+        <a href="#stay">Village Rooms</a>
+        <a href="#location">Strangford Ferry</a>
+      </nav>
+      <div class="ac-header-actions">
+        <a class="ac-header-tel" href={phoneHref}>{phone}</a>
+        <a class="ac-header-cta" href={siteHref} target="_blank" rel="noopener noreferrer">Reserve &amp; Stay ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="ac-hero" aria-labelledby="ac-hero-title">
+      <figure class="ac-hero-media">
+        <picture>
+          <source srcset="/media/concepts/artisan-cookhouse/artisan-cookhouse-dining-640.webp 640w, /media/concepts/artisan-cookhouse/artisan-cookhouse-dining-1265.webp 1265w" sizes="100vw" type="image/webp" />
+          <img src="/media/concepts/artisan-cookhouse/artisan-cookhouse-dining.jpg" alt="Candlelit Strangford village bistro table with pan-seared local sea bass, sourdough and crisp white wine" width="1408" height="768" loading="eager" />
+        </picture>
+        <figcaption class="ac-hero-cap">Indicative bistro dining visualisation.</figcaption>
+      </figure>
+      <div class="ac-hero-scrim" aria-hidden="true"></div>
+      <div class="ac-hero-content">
+        <p class="ac-eyebrow">4 Kildare Street · Strangford Village · County Down</p>
+        <h1 id="ac-hero-title">Coastal bistro dining, boutique village rooms and culinary escapes.</h1>
+        <p class="ac-hero-lead">
+          Set on Kildare Street moments from the Strangford ferry slipway — seasonal County Down
+          cooking, peaceful overnight stays, curated culinary experiences and gift vouchers.
+        </p>
+        <div class="ac-hero-actions">
+          <a class="ac-btn ac-btn--primary" href={siteHref} target="_blank" rel="noopener noreferrer">Reserve a Table or Room ↗</a>
+          <SpecimenSheet
+            id="ac-guide-sheet"
+            triggerLabel="Dining, Stay & Vouchers Guide"
+            kicker="The Artisan Cookhouse · 4 Kildare Street, Strangford"
+            title="Dine, Stay & Gift Vouchers"
+            subtitle="Reserve tables, rooms or gift vouchers online at artisancookhouse.com or call 028 4488 1654."
+            groups={cookhouseGroups}
+            ctaLabel="Visit Official Booking ↗"
+            ctaHref={siteHref}
+            ctaExternal={true}
+            secondaryLabel={`Call ${phone}`}
+            secondaryHref={phoneHref}
+            buttonClass="ac-btn ac-btn--ghost"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="ac-section ac-pillars" id="dine" aria-labelledby="ac-d-title">
+      <div class="ac-wrap ac-three">
+        <article>
+          <span>Dine</span>
+          <h2 id="ac-d-title">Seasonal Village Kitchen</h2>
+          <p>Freshly landed Strangford Lough seafood and County Down larder ingredients cooked with care and restraint.</p>
+        </article>
+        <article>
+          <span>Stay</span>
+          <h3>Rooms on Kildare Street</h3>
+          <p>Quiet boutique guest rooms steps from the harbour — wake rested for coastal walks around Castle Ward.</p>
+        </article>
+        <article>
+          <span>Give</span>
+          <h3>Experiences &amp; Vouchers</h3>
+          <p>Culinary weekends and gift vouchers designed for birthdays, anniversaries and food-loving escapes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ac-section ac-stay" id="stay" aria-labelledby="ac-st-title">
+      <div class="ac-wrap ac-split">
+        <figure class="ac-plate">
+          <picture>
+            <source srcset="/media/concepts/artisan-cookhouse/artisan-cookhouse-room-640.webp 640w, /media/concepts/artisan-cookhouse/artisan-cookhouse-room-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
+            <img src="/media/concepts/artisan-cookhouse/artisan-cookhouse-room.jpg" alt="Serene coastal village guest bedroom with crisp white cotton linens, slate-blue wool throw and bright morning sash window" width="1408" height="768" loading="lazy" />
+          </picture>
+          <figcaption>Kildare Street guest accommodation. Indicative bedroom visualisation.</figcaption>
+        </figure>
+        <div>
+          <p class="ac-kicker">Stay the Night in Strangford</p>
+          <h2 id="ac-st-title">Linger over dinner, then stroll upstairs to quiet coastal comfort.</h2>
+          <p>
+            Whether you are crossing from Portaferry on the lough ferry or escaping south from
+            Belfast for the weekend, book dining, rooms or gift vouchers directly with our team.
+          </p>
+          <div class="ac-inline-actions">
+            <a class="ac-btn ac-btn--primary" href={siteHref} target="_blank" rel="noopener noreferrer">Book Online ↗</a>
+            <a class="ac-btn ac-btn--outline" href={phoneHref}>Call {phone}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ac-section" id="location" aria-label="Strangford Kildare Street map">
+      <div class="ac-wrap">
+        <LocalAreaMap
+          id="ac-map"
+          kicker="4 Kildare Street · Strangford Narrows"
+          businessName="The Artisan Cookhouse"
+          address="4 Kildare Street, Strangford, Downpatrick, BT30 7LJ"
+          lon={-5.5570}
+          lat={54.3703}
+          spanKm={16}
+          showFerry={true}
+          mapHref={mapsHref}
+          markers={[
+            { name: "Castle Ward", lon: -5.5811, lat: 54.3735, note: "4 mins west", side: "l" },
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "15 mins west", side: "l" },
+            { name: "Ardglass", lon: -5.6085, lat: 54.2613, note: "14 mins south", side: "b" },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="ac-footer">
+    <div class="ac-wrap ac-footer-inner">
+      <div>
+        <strong>The Artisan Cookhouse</strong>
+        <p>4 Kildare Street, Strangford, Downpatrick, Co. Down, BT30 7LJ</p>
+      </div>
+      <div class="ac-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={siteHref} target="_blank" rel="noopener noreferrer">Reserve &amp; Vouchers ↗</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+      </div>
+    </div>
+  </footer>
+</ConceptLayout>

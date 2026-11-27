@@ -1,0 +1,135 @@
+---
+/* Maurice Murphy Car Sales — Interactive Buyer & Part-Exchange Brief.
+   Lets County Down buyers frame a Test Drive, Part-Exchange Valuation, or Vehicle Sourcing request
+   before calling Belfast Road, Newry or sending a direct email. */
+const options = [
+  {
+    id: "testdrive",
+    label: "Arrange a Test Drive",
+    title: "Inspect our prepared forecourt stock on Belfast Road with zero showroom pressure.",
+    points: [
+      "Mon–Fri 09:00–17:00, Saturday 09:00–15:00 & Sunday by appointment",
+      "Every vehicle inspected, valeted and ready for an unhurried road test",
+      "Direct deal with Maurice Murphy — straightforward trade-in & handover",
+    ],
+    note: "Call 07708 164585 ahead of travel so the car you want to view is fuelled and waiting.",
+  },
+  {
+    id: "partex",
+    label: "Part-Exchange Valuation",
+    title: "Fair, straight-talking local trade-in appraisals on your current car or van.",
+    points: [
+      "Bring your registration, current mileage and service book",
+      "Honest local trade-in figures without automated online gimmicks",
+      "Seamless swap on the day you collect your next vehicle",
+    ],
+    note: "Include your registration and approximate mileage in the enquiry form below for a guide figure.",
+  },
+  {
+    id: "sourcing",
+    label: "Vehicle Sourcing & Finance",
+    title: "Looking for a specific make, gearbox or budget across County Down?",
+    points: [
+      "Hand-picked low-mileage family SUVs, hatchbacks and executive saloons",
+      "Transparent vehicle history and service checks on every car we supply",
+      "Tailored monthly payment guidance available on qualifying stock",
+    ],
+    note: "Tell us your preferred make, fuel type and rough budget — fresh stock arrives weekly.",
+  },
+];
+---
+
+<section class="mmc-brief-band" id="buying" aria-labelledby="mmc-brief-title">
+  <div class="mmc-wrap">
+    <div class="mmc-brief-card" data-mmc-brief>
+      <div class="mmc-brief-head">
+        <div>
+          <p class="mmc-kicker">Forecourt Services · Belfast Road, Newry</p>
+          <h2 id="mmc-brief-title">How can we help with your next car?</h2>
+        </div>
+        <div class="mmc-tabs" role="tablist" aria-label="Choose service">
+          {options.map((opt, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+              class:list={["mmc-tab", idx === 0 && "is-active"]}
+              data-mmc-tab={opt.id}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {options.map((opt, idx) => (
+        <div class="mmc-panel" role="tabpanel" data-mmc-panel={opt.id} hidden={idx !== 0}>
+          <h3>{opt.title}</h3>
+          <ul class="mmc-points">
+            {opt.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="mmc-panel-foot">
+            <p class="mmc-note"><strong>Forecourt tip:</strong> {opt.note}</p>
+            <a class="mmc-btn mmc-btn--primary" href="#enquire">Send Forecourt Enquiry</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mmc-brief-band { padding: clamp(44px, 6vw, 72px) 0; }
+  .mmc-brief-card {
+    background: #ffffff;
+    border: 1px solid rgba(18, 30, 46, 0.14);
+    border-top: 3px solid #1b4478;
+    padding: clamp(24px, 4vw, 38px);
+    border-radius: 3px;
+  }
+  .mmc-brief-head {
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;
+    padding-bottom: 20px; border-bottom: 1px solid rgba(18, 30, 46, 0.12);
+  }
+  .mmc-brief-head h2 { margin: 0; font-family: var(--mmc-display); font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 600; }
+  .mmc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mmc-tab {
+    padding: 9px 14px; border: 1px solid rgba(18, 30, 46, 0.22); background: #f4f6f9; color: #121e2e;
+    font-family: var(--mmc-sans); font-size: 0.84rem; font-weight: 600; border-radius: 3px; cursor: pointer;
+  }
+  .mmc-tab.is-active { background: #1b4478; border-color: #1b4478; color: #ffffff; }
+  .mmc-panel { padding-top: 22px; }
+  .mmc-panel h3 { margin: 0 0 16px; font-family: var(--mmc-display); font-size: 1.32rem; font-weight: 600; }
+  .mmc-points {
+    list-style: none; padding: 0; margin: 0 0 22px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+  }
+  .mmc-points li {
+    background: #f4f6f9; border: 1px solid rgba(18, 30, 46, 0.1);
+    padding: 14px 16px; font-size: 0.9rem; color: #121e2e; border-radius: 3px;
+  }
+  .mmc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .mmc-note { margin: 0; font-size: 0.88rem; color: #4b5a6e; max-width: 54ch; }
+  .mmc-note strong { color: #121e2e; }
+  @media (max-width: 780px) { .mmc-points { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-mmc-brief]");
+    if (!root) return;
+    const tabs = [...root.querySelectorAll("[data-mmc-tab]")];
+    const panels = [...root.querySelectorAll("[data-mmc-panel]")];
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-mmc-tab");
+        tabs.forEach((t) => {
+          const active = t === btn;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => { p.hidden = p.getAttribute("data-mmc-panel") !== id; });
+      });
+    });
+  })();
+</script>
