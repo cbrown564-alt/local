@@ -13,6 +13,8 @@
   --bc-line: rgba(56, 18, 27, 0.18);
   --bc-serif: "EB Garamond", Georgia, serif;
   --bc-sans: "Figtree", -apple-system, BlinkMacSystemFont, sans-serif;
+  --bc-max: 1240px;
+  --bc-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--bc-ivory);
   color: var(--bc-ink);
@@ -21,12 +23,13 @@
 }
 
 .bc-wrap {
-  max-width: 1160px;
+  width: min(var(--bc-max), calc(100% - (var(--bc-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .bc-header {
+  display: block;
   background: var(--bc-claret-deep);
   border-bottom: 1px solid rgba(198, 154, 75, 0.28);
 }
@@ -102,7 +105,7 @@
 
 .bc-hero-cap {
   position: absolute;
-  right: 18px;
+  right: max(var(--bc-gutter), calc((100vw - var(--bc-max)) / 2));
   bottom: 14px;
   z-index: 3;
   font-size: 0.72rem;

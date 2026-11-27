@@ -24,27 +24,27 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meelmore+Lodge
   town="Bryansford"
   bannerNote="Imagery comprises indicative Mourne trailhead camping and Hare's Gap Bistro visualisations."
 >
-  <header class="ml-header">
-    <div class="ml-header-inner">
-      <a class="ml-brand" href="#top">
-        <strong>Meelmore Lodge</strong>
-        <span>Trassey Road · Mourne Trailhead</span>
-      </a>
-      <nav class="ml-nav" aria-label="Primary">
-        <a href="#plan-stay">Basecamp</a>
-        <a href="#bistro">Hare's Gap Bistro</a>
-        <a href="#group-enquiry">Group Enquiries</a>
-        <a href="#location">Trassey Track</a>
-      </nav>
-      <div class="ml-header-actions">
-        <a class="ml-header-tel" href={phoneHref}>{phone}</a>
-        <a class="ml-header-cta" href={bookingHref} target="_blank" rel="noopener noreferrer">Book Online</a>
-      </div>
-    </div>
-  </header>
-
   <main id="top">
     <section class="ml-hero" aria-labelledby="ml-hero-title">
+      <header class="ml-header">
+        <div class="ml-header-inner">
+          <a class="ml-brand" href="#top">
+            <strong>Meelmore Lodge</strong>
+            <span>Trassey Road · High Mournes</span>
+          </a>
+          <nav class="ml-nav" aria-label="Primary">
+            <a href="#plan-stay">Basecamp</a>
+            <a href="#bistro">Hare's Gap Bistro</a>
+            <a href="#group-enquiry">Group Enquiries</a>
+            <a href="#location">Trassey Track</a>
+          </nav>
+          <div class="ml-header-actions">
+            <a class="ml-header-tel" href={phoneHref}>{phone}</a>
+            <a class="ml-header-cta" href={bookingHref} target="_blank" rel="noopener noreferrer">Book Online ↗</a>
+          </div>
+        </div>
+      </header>
+
       <figure class="ml-hero-media">
         <picture>
           <source srcset="/media/concepts/meelmore-lodge/meelmore-lodge-trassey-trailhead-640.webp 640w, /media/concepts/meelmore-lodge/meelmore-lodge-trassey-trailhead-1265.webp 1265w" sizes="100vw" type="image/webp" />
@@ -53,16 +53,23 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meelmore+Lodge
         <figcaption class="ml-hero-cap">Indicative Trassey Road trailhead visualisation.</figcaption>
       </figure>
       <div class="ml-hero-scrim" aria-hidden="true"></div>
+
       <div class="ml-hero-content">
-        <p class="ml-eyebrow">52 Trassey Road · Bryansford · Foot of Slieve Meelmore</p>
-        <h1 id="ml-hero-title">Pitch at the gate of the High Mournes.</h1>
-        <p class="ml-hero-lead">
-          Tent camping, walker hostel rooms, The Wee House cottage and hot breakfasts at Hare's Gap Bistro —
-          right where the Trassey Track climbs toward Slieve Bearnagh and the Mourne Wall.
-        </p>
-        <div class="ml-hero-actions">
-          <a class="ml-btn ml-btn--primary" href={bookingHref} target="_blank" rel="noopener noreferrer">Check Live Availability ↗</a>
-          <a class="ml-btn ml-btn--ghost" href="#plan-stay">Choose Your Basecamp</a>
+        <div class="ml-hero-bottom">
+          <div>
+            <p class="ml-eyebrow">52 Trassey Road · Bryansford · Foot of Slieve Meelmore</p>
+            <h1 id="ml-hero-title">At the gate of the High Mournes.</h1>
+          </div>
+          <div class="ml-hero-right">
+            <p class="ml-hero-lead">
+              Tent pitches, walker hostel rooms, The Wee House cottage and hot breakfasts at Hare's Gap Bistro,
+              where the Trassey Track climbs toward Slieve Bearnagh.
+            </p>
+            <div class="ml-hero-actions">
+              <a class="ml-btn ml-btn--primary" href={bookingHref} target="_blank" rel="noopener noreferrer">Check Live Availability ↗</a>
+              <a class="ml-hero-link" href="#plan-stay">Choose Your Basecamp ↓</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -83,7 +90,7 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meelmore+Lodge
           <h2 id="ml-bistro-title">Fuel up before the climb, warm up coming off the ridge.</h2>
           <p>
             Whether you are setting out for Hare's Gap at dawn or stepping off Slieve Meelmore in sideways rain,
-            Hare's Gap Bistro serves cooked breakfasts, lunches, home baking, teas and coffees — open weekends
+            Hare's Gap Bistro serves cooked breakfasts, lunches, home baking, teas and coffees, open weekends
             year-round and daily from April through September.
           </p>
           <dl class="ml-bistro-meta">
@@ -203,7 +210,7 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meelmore+Lodge
           cancelable: true,
           detail: { to: "meelmorelodge52@gmail.com", subject, body, phone: "028 4372 5949", phoneHref: "tel:+442843725949" },
         });
-        if (document.dispatchEvent(ev)) {
+        if (window.dispatchEvent(ev)) {
           window.location.href = `mailto:meelmorelodge52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
       });

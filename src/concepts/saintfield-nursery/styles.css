@@ -12,6 +12,8 @@
   --sn-line: rgba(39, 71, 52, 0.16);
   --sn-serif: "Newsreader", Georgia, serif;
   --sn-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --sn-max: 1240px;
+  --sn-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--sn-ivory);
   color: var(--sn-ink);
@@ -20,31 +22,32 @@
 }
 
 .sn-wrap {
-  max-width: 1180px;
+  width: min(var(--sn-max), calc(100% - (var(--sn-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .sn-header {
+  display: block;
   background: var(--sn-cream);
   border-bottom: 1px solid var(--sn-line);
 }
 
 .sn-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px 0;
 }
 
 .sn-brand {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   text-decoration: none;
   color: var(--sn-sage);
   line-height: 1.12;
+  justify-self: start;
 }
 
 .sn-brand strong {
@@ -60,14 +63,16 @@
 
 .sn-nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   font-size: 0.88rem;
   font-weight: 600;
+  justify-self: center;
 }
 
 .sn-nav a {
   color: var(--sn-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .sn-nav a:hover {
@@ -79,6 +84,7 @@
   color: var(--sn-sage);
   text-decoration: none;
   white-space: nowrap;
+  justify-self: end;
 }
 
 /* Sunlit Conservatory Split Hero */
@@ -443,6 +449,9 @@
 }
 
 @media (max-width: 960px) {
+  .sn-header-inner {
+    grid-template-columns: 1fr auto;
+  }
   .sn-nav {
     display: none;
   }

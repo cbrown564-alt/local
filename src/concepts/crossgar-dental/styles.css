@@ -12,6 +12,8 @@
   --cd-line: rgba(21, 75, 69, 0.14);
   --cd-serif: "DM Serif Display", Georgia, serif;
   --cd-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --cd-max: 1240px;
+  --cd-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--cd-porcelain);
   color: var(--cd-ink);
@@ -20,12 +22,13 @@
 }
 
 .cd-wrap {
-  max-width: 1180px;
+  width: min(var(--cd-max), calc(100% - (var(--cd-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .cd-topbar {
+  display: block;
   background: var(--cd-sage-wash);
   border-bottom: 1px solid var(--cd-line);
   font-size: 0.8rem;
@@ -47,17 +50,23 @@
 }
 
 .cd-header {
+  display: block;
   background: var(--cd-porcelain);
   border-bottom: 1px solid var(--cd-line);
 }
 
 .cd-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px 0;
+}
+
+@media (max-width: 960px) {
+  .cd-header-inner {
+    grid-template-columns: 1fr auto;
+  }
 }
 
 .cd-brand {
@@ -66,6 +75,7 @@
   gap: 11px;
   text-decoration: none;
   color: var(--cd-teal-deep);
+  justify-self: start;
 }
 
 .cd-brand span {
@@ -90,11 +100,13 @@
   gap: 26px;
   font-size: 0.88rem;
   font-weight: 600;
+  justify-self: center;
 }
 
 .cd-nav a {
   color: var(--cd-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .cd-nav a:hover {
@@ -102,7 +114,7 @@
 }
 
 .cd-header-cta {
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 999px;
   background: var(--cd-teal);
   color: #ffffff;
@@ -110,6 +122,7 @@
   font-size: 0.85rem;
   font-weight: 700;
   white-space: nowrap;
+  justify-self: end;
 }
 
 /* Sunlit Full-Bleed Sanctuary Hero with Frosted Porcelain Card (ZERO dark overlay!) */
@@ -139,8 +152,8 @@
 
 .cd-hero-cap {
   position: absolute;
-  right: 18px;
-  top: 14px;
+  right: max(var(--cd-gutter), calc((100vw - var(--cd-max)) / 2));
+  bottom: 16px;
   z-index: 2;
   font-size: 0.72rem;
   color: var(--cd-teal-deep);

@@ -48,7 +48,7 @@ const menuGroups = [
     <div class="yh-header-inner">
       <a class="yh-brand" href="#top">
         <strong>The Yellow Heifer</strong>
-        <span>Bar &amp; Bistro · Camlough</span>
+        <span>Camlough · Bar &amp; Bistro</span>
       </a>
       <nav class="yh-nav" aria-label="Primary">
         <a href="#kitchen">The Kitchen</a>
@@ -65,38 +65,44 @@ const menuGroups = [
 
   <main id="top">
     <section class="yh-hero" aria-labelledby="yh-hero-title">
-      <figure class="yh-hero-media">
-        <picture>
-          <source srcset="/media/concepts/the-yellow-heifer/yellow-heifer-dining-room-640.webp 640w, /media/concepts/the-yellow-heifer/yellow-heifer-dining-room-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/the-yellow-heifer/yellow-heifer-dining-room.jpg" alt="Warm evening village bistro interior with timber panelling, ochre leather banquettes and brass lamps" width="1408" height="768" loading="eager" />
-        </picture>
-        <figcaption class="yh-hero-cap">Indicative bistro dining room visualisation.</figcaption>
-      </figure>
-      <div class="yh-hero-scrim" aria-hidden="true"></div>
-      <div class="yh-hero-content">
-        <p class="yh-eyebrow">16 Main Street · Camlough · County Down</p>
-        <h1 id="yh-hero-title">Cooked to order in the heart of Camlough.</h1>
-        <p class="yh-hero-lead">
-          Dry-aged steaks, fresh bistro plates, weekend brunch and cocktails — warm village hospitality
-          just minutes from Newry and the Ring of Gullion.
-        </p>
-        <div class="yh-hero-actions">
-          <a class="yh-btn yh-btn--primary" href={dojoHref} target="_blank" rel="noopener noreferrer">Reserve a Table Online ↗</a>
-          <SpecimenSheet
-            id="yh-menu-sheet"
-            triggerLabel="Browse Menu Guide"
-            kicker="The Yellow Heifer · 16 Main Street, Camlough"
-            title="Kitchen, Chargrill & Bar Guide"
-            subtitle="Everything is cooked to order — let our team know about any dietary or allergy needs."
-            groups={menuGroups}
-            ctaLabel="Book Online via Dojo ↗"
-            ctaHref={dojoHref}
-            ctaExternal={true}
-            secondaryLabel={`Call ${phone}`}
-            secondaryHref={phoneHref}
-            buttonClass="yh-btn yh-btn--ghost"
-          />
+      <div class="yh-hero-split">
+        <div class="yh-hero-copy">
+          <p class="yh-eyebrow">16 Main Street · Camlough · County Down</p>
+          <h1 id="yh-hero-title">Cooked to order in Camlough.</h1>
+          <p class="yh-hero-lead">
+            Dry-aged Irish steaks, fresh bistro plates, weekend brunch and house cocktails served Thursday through
+            Sunday, five minutes from Newry.
+          </p>
+          <div class="yh-hero-actions">
+            <a class="yh-btn yh-btn--primary" href={dojoHref} target="_blank" rel="noopener noreferrer">Reserve a Table ↗</a>
+            <SpecimenSheet
+              id="yh-menu-sheet"
+              triggerLabel="Browse Menu Guide"
+              kicker="The Yellow Heifer · 16 Main Street, Camlough"
+              title="Kitchen, Chargrill & Bar Guide"
+              subtitle="Everything is cooked to order so gluten-free and dietary requests are handled properly."
+              groups={menuGroups}
+              ctaLabel="Book Online via Dojo ↗"
+              ctaHref={dojoHref}
+              ctaExternal={true}
+              secondaryLabel={`Call ${phone}`}
+              secondaryHref={phoneHref}
+              buttonClass="yh-link-trigger"
+            />
+          </div>
+          <dl class="yh-hero-facts">
+            <div><dt>Open</dt><dd>Thu – Sun, from 11:00</dd></div>
+            <div><dt>Booking</dt><dd>Live Dojo diary</dd></div>
+            <div><dt>Direct Desk</dt><dd>{phone}</dd></div>
+          </dl>
         </div>
+        <figure class="yh-hero-media">
+          <picture>
+            <source srcset="/media/concepts/the-yellow-heifer/yellow-heifer-dining-room-640.webp 640w, /media/concepts/the-yellow-heifer/yellow-heifer-dining-room-1265.webp 1265w" sizes="(max-width: 960px) 100vw, 54vw" type="image/webp" />
+            <img src="/media/concepts/the-yellow-heifer/yellow-heifer-dining-room.jpg" alt="Warm evening village bistro interior with timber panelling, ochre leather banquettes and brass lamps" width="1408" height="768" loading="eager" />
+          </picture>
+          <figcaption class="yh-hero-cap">Indicative bistro dining room visualisation.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -257,7 +263,7 @@ const menuGroups = [
           cancelable: true,
           detail: { to: "theyellowheifer@hotmail.co.uk", subject, body, phone: "028 3083 0505", phoneHref: "tel:+442830830505" },
         });
-        if (document.dispatchEvent(ev)) {
+        if (window.dispatchEvent(ev)) {
           window.location.href = `mailto:theyellowheifer@hotmail.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
       });

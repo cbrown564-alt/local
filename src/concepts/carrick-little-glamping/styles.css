@@ -12,6 +12,8 @@
   --cl-line: rgba(41, 36, 46, 0.15);
   --cl-serif: "Bitter", Georgia, serif;
   --cl-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+  --cl-max: 1240px;
+  --cl-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--cl-mist);
   color: var(--cl-ink);
@@ -20,31 +22,32 @@
 }
 
 .cl-wrap {
-  max-width: 1180px;
+  width: min(var(--cl-max), calc(100% - (var(--cl-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .cl-header {
+  display: block;
   background: var(--cl-heather-deep);
   border-bottom: 1px solid rgba(212, 148, 46, 0.25);
 }
 
 .cl-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 15px 0;
 }
 
 .cl-brand {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   text-decoration: none;
   color: #ffffff;
   line-height: 1.15;
+  justify-self: start;
 }
 
 .cl-brand strong {
@@ -59,23 +62,26 @@
 
 .cl-nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   font-size: 0.92rem;
+  justify-self: center;
 }
 
 .cl-nav a {
   color: rgba(245, 243, 238, 0.86);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .cl-header-cta {
-  padding: 9px 17px;
+  padding: 9px 18px;
   background: var(--cl-gorse);
   color: var(--cl-heather-deep);
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 700;
   white-space: nowrap;
+  justify-self: end;
 }
 
 /* Twilight Pods Hero */
@@ -105,8 +111,8 @@
 
 .cl-hero-cap {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  bottom: 14px;
+  right: max(var(--cl-gutter), calc((100vw - var(--cl-max)) / 2));
   z-index: 3;
   font-size: 0.72rem;
   color: rgba(245, 243, 238, 0.86);
@@ -209,9 +215,8 @@
 }
 
 .cl-track-inner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px 24px;
 }
 
@@ -396,9 +401,13 @@
 }
 
 @media (max-width: 960px) {
+  .cl-header-inner {
+    grid-template-columns: 1fr auto;
+  }
   .cl-nav {
     display: none;
   }
+  .cl-track-inner,
   .cl-pods-grid,
   .cl-vouchers-grid {
     grid-template-columns: 1fr;

@@ -13,6 +13,8 @@
   --os-line: rgba(34, 28, 24, 0.14);
   --os-serif: "Merriweather", Georgia, serif;
   --os-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+  --os-max: 1240px;
+  --os-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--os-cream);
   color: var(--os-ink);
@@ -21,23 +23,29 @@
 }
 
 .os-wrap {
-  max-width: 1180px;
+  width: min(var(--os-max), calc(100% - (var(--os-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .os-header {
+  display: block;
   background: var(--os-paper);
   border-bottom: 1px solid var(--os-line);
 }
 
 .os-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 15px 0;
+}
+
+@media (max-width: 960px) {
+  .os-header-inner {
+    grid-template-columns: 1fr auto;
+  }
 }
 
 .os-brand {
@@ -46,6 +54,7 @@
   gap: 11px;
   text-decoration: none;
   color: var(--os-ink);
+  justify-self: start;
 }
 
 .os-brand span {
@@ -66,14 +75,16 @@
 
 .os-nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   font-size: 0.92rem;
   font-weight: 600;
+  justify-self: center;
 }
 
 .os-nav a {
   color: var(--os-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .os-nav a:hover {
@@ -83,7 +94,8 @@
 .os-header-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  justify-self: end;
 }
 
 .os-header-tel {
@@ -91,10 +103,11 @@
   font-size: 0.92rem;
   color: var(--os-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .os-header-cta {
-  padding: 9px 16px;
+  padding: 9px 18px;
   background: var(--os-brick);
   color: #ffffff;
   text-decoration: none;

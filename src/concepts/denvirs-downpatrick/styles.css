@@ -1,4 +1,4 @@
-/* Denvir's Coaching Inn — 1642 Oxblood, Weathered Oak & Parchment */
+/* Denvir's Coaching Inn — Est. 1642 Oxblood & Parchment Broadsheet */
 body.concept-denvirs {
   --dv-bg: #f9f5ee;
   --dv-surface: #ffffff;
@@ -7,9 +7,11 @@ body.concept-denvirs {
   --dv-dark: #211410;
   --dv-ink: #241712;
   --dv-muted: #624e45;
-  --dv-line: rgba(36, 23, 18, 0.14);
+  --dv-line: rgba(36, 23, 18, 0.15);
   --dv-serif: "EB Garamond", Georgia, serif;
   --dv-sans: "Source Sans 3", -apple-system, sans-serif;
+  --dv-max: 1240px;
+  --dv-gutter: clamp(20px, 4.5vw, 56px);
   margin: 0;
   background: var(--dv-bg);
   color: var(--dv-ink);
@@ -17,38 +19,40 @@ body.concept-denvirs {
   line-height: 1.62;
 }
 
-.dv-wrap { max-width: 1140px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 40px); }
+.dv-wrap {
+  width: min(var(--dv-max), calc(100% - (var(--dv-gutter) * 2)));
+  margin: 0 auto;
+}
 
 .dv-header {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(249, 245, 238, 0.95);
+  background: rgba(249, 245, 238, 0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--dv-line);
 }
 
 .dv-header-inner {
-  max-width: 1140px;
+  width: min(var(--dv-max), calc(100% - (var(--dv-gutter) * 2)));
   margin: 0 auto;
-  padding: 14px clamp(18px, 4vw, 40px);
-  display: flex;
+  padding: 15px 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-.dv-brand { text-decoration: none; color: var(--dv-ink); display: flex; flex-direction: column; }
-.dv-brand strong { font-family: var(--dv-serif); font-size: 1.55rem; font-weight: 600; line-height: 1; }
-.dv-brand span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dv-oxblood); font-weight: 600; margin-top: 2px; }
+.dv-brand { text-decoration: none; color: var(--dv-ink); display: inline-flex; flex-direction: column; justify-self: start; }
+.dv-brand strong { font-family: var(--dv-serif); font-size: 1.6rem; font-weight: 600; line-height: 1; }
+.dv-brand span { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dv-oxblood); font-weight: 600; margin-top: 2px; }
 
-.dv-nav { display: flex; gap: 24px; }
-.dv-nav a { text-decoration: none; color: var(--dv-muted); font-size: 0.92rem; }
+.dv-nav { display: flex; gap: 26px; justify-self: center; }
+.dv-nav a { text-decoration: none; color: var(--dv-muted); font-size: 0.92rem; white-space: nowrap; }
 .dv-nav a:hover { color: var(--dv-ink); }
 
-.dv-header-actions { display: flex; align-items: center; gap: 14px; }
+.dv-header-actions { display: flex; align-items: center; gap: 16px; justify-self: end; }
 .dv-header-tel { font-size: 0.88rem; font-weight: 600; color: var(--dv-ink); text-decoration: none; white-space: nowrap; }
 
 .dv-header-cta,
@@ -57,7 +61,7 @@ body.concept-denvirs {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
+  padding: 11px 22px;
   border-radius: 2px;
   font-family: var(--dv-sans);
   font-size: 0.9rem;
@@ -65,97 +69,124 @@ body.concept-denvirs {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .dv-header-cta,
 .dv-btn--primary { background: var(--dv-oxblood); color: #faf6ef; }
 .dv-header-cta:hover,
 .dv-btn--primary:hover { background: var(--dv-oxblood-deep); }
-.dv-btn--ghost { background: rgba(255, 255, 255, 0.14); color: #faf6ef; border-color: rgba(250, 246, 239, 0.45); }
 
+body.concept-denvirs button.dv-link-trigger {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+  color: var(--dv-ink);
+  font-family: var(--dv-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--dv-oxblood);
+  cursor: pointer;
+}
+
+body.concept-denvirs button.dv-link-trigger:hover { color: var(--dv-oxblood); }
+
+/* Historic coaching-inn broadsheet hero */
 .dv-hero {
-  position: relative;
-  min-height: clamp(500px, 75svh, 690px);
+  padding: clamp(24px, 3.5vw, 40px) 0 clamp(44px, 5vw, 68px);
+  border-bottom: 1px solid var(--dv-line);
+}
+
+.dv-folio-bar {
   display: flex;
-  align-items: flex-end;
-  color: #faf6ef;
-  background: var(--dv-dark);
-  overflow: hidden;
-}
-
-.dv-hero-media { position: absolute; inset: 0; margin: 0; }
-.dv-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.dv-hero-cap {
-  position: absolute;
-  right: 16px;
-  bottom: 12px;
-  z-index: 3;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 2px solid var(--dv-ink);
+  border-bottom: 1px solid var(--dv-line);
+  margin-bottom: clamp(28px, 4vw, 42px);
   font-size: 0.72rem;
-  color: rgba(250, 246, 239, 0.76);
-  background: rgba(26, 15, 11, 0.62);
-  padding: 3px 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dv-oxblood);
 }
 
-.dv-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(24, 14, 10, 0.24) 0%, rgba(24, 14, 10, 0.82) 100%);
-  z-index: 1;
+.dv-hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(24px, 4.5vw, 60px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 42px);
 }
 
-.dv-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1140px;
+.dv-hero h1 {
+  margin: 0;
+  font-family: var(--dv-serif);
+  font-size: clamp(2.8rem, 5.4vw, 4.5rem);
+  font-weight: 500;
+  line-height: 0.98;
+  max-width: 12ch;
+}
+
+.dv-hero-lead {
+  margin: 0 0 22px;
+  max-width: 44ch;
+  color: var(--dv-muted);
+  font-size: 1.04rem;
+}
+
+.dv-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+}
+
+.dv-hero-media { margin: 0; }
+.dv-hero-media img {
   width: 100%;
-  margin: 0 auto;
-  padding: clamp(56px, 8vw, 96px) clamp(18px, 4vw, 40px) clamp(44px, 6vw, 68px);
+  aspect-ratio: 21 / 9.2;
+  object-fit: cover;
+  display: block;
 }
 
-.dv-eyebrow,
+.dv-hero-cap {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--dv-muted);
+  text-align: right;
+}
+
 .dv-kicker {
-  margin: 0 0 10px;
-  font-size: 0.76rem;
+  margin: 0 0 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #e3b593;
+  color: var(--dv-oxblood);
 }
 
-.dv-kicker { color: var(--dv-oxblood); }
-
-.dv-hero h1 {
-  margin: 0 0 14px;
-  font-family: var(--dv-serif);
-  font-size: clamp(2.4rem, 5.4vw, 4rem);
-  font-weight: 500;
-  line-height: 1.05;
-  max-width: 18ch;
-}
-
-.dv-hero-lead { margin: 0 0 24px; max-width: 58ch; color: rgba(250, 246, 239, 0.9); font-size: 1.05rem; }
-.dv-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-
-.dv-section { padding: clamp(52px, 6.5vw, 84px) 0; }
+/* Sections */
+.dv-section { padding: clamp(58px, 6.5vw, 90px) 0; }
 .dv-section h2 {
   margin: 0 0 16px;
   font-family: var(--dv-serif);
-  font-size: clamp(1.95rem, 3.8vw, 2.8rem);
+  font-size: clamp(2rem, 3.8vw, 2.9rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
-.dv-three {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
+.dv-three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
 .dv-three article {
   background: var(--dv-surface);
   border: 1px solid var(--dv-line);
   border-top: 3px solid var(--dv-oxblood);
-  padding: 26px 24px;
+  padding: 28px 26px;
 }
 
 .dv-three span {
@@ -171,18 +202,18 @@ body.concept-denvirs {
 .dv-three h2, .dv-three h3 {
   margin: 0 0 10px;
   font-family: var(--dv-serif);
-  font-size: 1.48rem;
+  font-size: 1.52rem;
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 1.16;
 }
 
 .dv-three p { margin: 0; color: var(--dv-muted); font-size: 0.96rem; }
 
 .dv-rooms { background: var(--dv-surface); border-top: 1px solid var(--dv-line); border-bottom: 1px solid var(--dv-line); }
-.dv-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 56px); align-items: center; }
+.dv-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
 
 .dv-plate { margin: 0; }
-.dv-plate img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.dv-plate img { width: 100%; height: auto; display: block; }
 .dv-plate figcaption { margin-top: 10px; font-size: 0.82rem; color: var(--dv-muted); }
 
 .dv-contact-line { margin-top: 16px; font-size: 0.96rem; color: var(--dv-muted); }
@@ -191,8 +222,7 @@ body.concept-denvirs {
 .dv-form {
   background: var(--dv-surface);
   border: 1px solid var(--dv-line);
-  padding: clamp(22px, 3.5vw, 34px);
-  border-radius: 2px;
+  padding: clamp(24px, 3.5vw, 36px);
   display: grid;
   gap: 16px;
 }
@@ -202,6 +232,7 @@ body.concept-denvirs {
 .dv-form label > span { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dv-muted); }
 .dv-form input, .dv-form select, .dv-form textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px 12px;
   border: 1px solid rgba(36, 23, 18, 0.22);
   background: #ffffff;
@@ -210,14 +241,21 @@ body.concept-denvirs {
   font-size: 0.95rem;
 }
 
-.dv-footer { background: var(--dv-dark); color: #f6efe7; padding: 36px 0; }
+.dv-footer { background: var(--dv-dark); color: #f6efe7; padding: 38px 0; }
 .dv-footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.dv-footer strong { font-family: var(--dv-serif); font-size: 1.45rem; font-weight: 500; }
+.dv-footer strong { font-family: var(--dv-serif); font-size: 1.5rem; font-weight: 500; }
 .dv-footer p { margin: 4px 0 0; font-size: 0.88rem; color: rgba(246, 239, 231, 0.74); }
-.dv-footer-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.9rem; }
+.dv-footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; }
 .dv-footer-links a { color: #f6efe7; text-decoration: none; }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
+  .dv-header-inner { grid-template-columns: 1fr auto; }
   .dv-nav { display: none; }
+  .dv-hero-top { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+
+@media (max-width: 820px) {
+  .dv-header-tel { display: none; }
+  .dv-hero-media img { aspect-ratio: 16 / 10; }
   .dv-three, .dv-split, .dv-row { grid-template-columns: minmax(0, 1fr); }
 }

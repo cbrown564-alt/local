@@ -13,6 +13,8 @@
   --mc-line: rgba(27, 42, 34, 0.14);
   --mc-serif: "Spectral", Georgia, serif;
   --mc-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mc-max: 1240px;
+  --mc-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--mc-birch);
   color: var(--mc-ink);
@@ -21,24 +23,31 @@
 }
 
 .mc-wrap {
-  max-width: 1180px;
+  width: min(var(--mc-max), calc(100% - (var(--mc-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .mc-header {
+  display: block;
   background: var(--mc-white);
   border-bottom: 1px solid var(--mc-line);
 }
 
 .mc-header-inner {
-  max-width: 1380px;
+  width: min(var(--mc-max), calc(100% - (var(--mc-gutter) * 2)));
   margin: 0 auto;
-  padding: 14px 28px;
-  display: flex;
+  padding: 15px 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .mc-header-inner {
+    grid-template-columns: 1fr auto;
+  }
 }
 
 .mc-brand {
@@ -47,6 +56,7 @@
   gap: 11px;
   text-decoration: none;
   color: var(--mc-forest);
+  justify-self: start;
 }
 
 .mc-brand span {
@@ -68,14 +78,16 @@
 
 .mc-nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   font-size: 0.86rem;
   font-weight: 500;
+  justify-self: center;
 }
 
 .mc-nav a {
   color: var(--mc-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .mc-nav a:hover {
@@ -83,20 +95,21 @@
 }
 
 .mc-header-cta {
-  padding: 9px 17px;
+  padding: 9px 18px;
   background: var(--mc-forest);
   color: var(--mc-birch);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
+  justify-self: end;
 }
 
 /* True 50/50 edge-to-edge split hero — image left, birch canvas right */
 .mc-split-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: min(82vh, 710px);
+  min-height: min(80vh, 700px);
   background: var(--mc-white);
   border-bottom: 1px solid var(--mc-line);
 }
@@ -117,7 +130,7 @@
 
 .mc-hero-visual figcaption {
   position: absolute;
-  left: 16px;
+  left: max(var(--mc-gutter), calc((100vw - var(--mc-max)) / 2));
   bottom: 14px;
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.9);
@@ -126,7 +139,7 @@
 }
 
 .mc-hero-canvas {
-  padding: 64px max(28px, calc((100vw - 1260px) / 2 + 24px)) 64px 56px;
+  padding: 64px max(var(--mc-gutter), calc((100vw - var(--mc-max)) / 2)) 64px 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;

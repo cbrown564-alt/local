@@ -12,6 +12,8 @@
   --ri-line: rgba(37, 23, 17, 0.16);
   --ri-serif: "Playfair Display", Georgia, serif;
   --ri-sans: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ri-max: 1240px;
+  --ri-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--ri-cream);
   color: var(--ri-ink);
@@ -20,36 +22,43 @@
 }
 
 .ri-wrap {
-  max-width: 1180px;
+  width: min(var(--ri-max), calc(100% - (var(--ri-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .ri-header {
+  display: block;
   background: var(--ri-stout);
   border-bottom: 1px solid rgba(212, 148, 58, 0.25);
 }
 
 .ri-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 15px 0;
+}
+
+@media (max-width: 960px) {
+  .ri-header-inner {
+    grid-template-columns: 1fr auto;
+  }
 }
 
 .ri-brand {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   text-decoration: none;
   color: var(--ri-cream);
   line-height: 1.12;
+  justify-self: start;
 }
 
 .ri-brand strong {
   font-family: var(--ri-serif);
-  font-size: 1.3rem;
+  font-size: 1.32rem;
 }
 
 .ri-brand small {
@@ -59,19 +68,22 @@
 
 .ri-nav {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   font-size: 0.88rem;
+  justify-self: center;
 }
 
 .ri-nav a {
   color: rgba(245, 239, 227, 0.86);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .ri-header-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  justify-self: end;
 }
 
 .ri-tel {
@@ -79,10 +91,11 @@
   font-weight: 700;
   text-decoration: none;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .ri-book-btn {
-  padding: 9px 16px;
+  padding: 9px 18px;
   background: var(--ri-amber);
   color: var(--ri-stout);
   text-decoration: none;
@@ -118,8 +131,8 @@
 
 .ri-hero-cap {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  bottom: 14px;
+  right: max(var(--ri-gutter), calc((100vw - var(--ri-max)) / 2));
   z-index: 3;
   font-size: 0.72rem;
   color: rgba(245, 239, 227, 0.84);

@@ -45,25 +45,27 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Millbrook+Lodg
 
   <main id="top">
     <section class="mbl-hero" aria-labelledby="mbl-hero-title">
-      <figure class="mbl-hero-media">
-        <picture>
-          <source srcset="/media/concepts/millbrook-lodge/millbrook-georgian-gardens-640.webp 640w, /media/concepts/millbrook-lodge/millbrook-georgian-gardens-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/millbrook-lodge/millbrook-georgian-gardens.jpg" alt="1800s Georgian country house hotel surrounded by manicured gardens and mature beech trees at dusk" width="1408" height="768" loading="eager" />
-        </picture>
-        <figcaption class="mbl-hero-cap">Indicative Georgian house and gardens visualisation.</figcaption>
-      </figure>
-      <div class="mbl-hero-scrim" aria-hidden="true"></div>
-      <div class="mbl-hero-content">
-        <p class="mbl-eyebrow">5 Drumaness Road · Ballynahinch · County Down</p>
-        <h1 id="mbl-hero-title">An 1800s Georgian rectory set in private County Down gardens.</h1>
-        <p class="mbl-hero-lead">
-          Sixteen individually styled bedrooms, one-wedding-per-day exclusivity, conservatory Afternoon Tea
-          and seasonal dining in The Gilmore Restaurant — twenty-five minutes from Belfast and the Mournes.
-        </p>
-        <div class="mbl-hero-actions">
-          <a class="mbl-btn mbl-btn--primary" href={bookHref} target="_blank" rel="noopener noreferrer">Check Room Rates ↗</a>
-          <a class="mbl-btn mbl-btn--ghost" href={voucherHref} target="_blank" rel="noopener noreferrer">Gift Vouchers ↗</a>
+      <div class="mbl-wrap">
+        <div class="mbl-hero-head">
+          <p class="mbl-eyebrow">5 Drumaness Road · Ballynahinch · County Down</p>
+          <h1 id="mbl-hero-title">An 1800s Georgian rectory in private gardens.</h1>
+          <p class="mbl-hero-lead">
+            Sixteen individually styled bedrooms, one-wedding-per-day exclusivity, conservatory Afternoon Tea
+            and seasonal dining in The Gilmore Restaurant.
+          </p>
+          <div class="mbl-hero-actions">
+            <a class="mbl-btn mbl-btn--primary" href={bookHref} target="_blank" rel="noopener noreferrer">Check Room Rates ↗</a>
+            <a class="mbl-link-cta" href={voucherHref} target="_blank" rel="noopener noreferrer">Order Gift Vouchers ↗</a>
+          </div>
         </div>
+
+        <figure class="mbl-hero-media">
+          <picture>
+            <source srcset="/media/concepts/millbrook-lodge/millbrook-georgian-gardens-640.webp 640w, /media/concepts/millbrook-lodge/millbrook-georgian-gardens-1265.webp 1265w" sizes="(max-width: 960px) 100vw, 90vw" type="image/webp" />
+            <img src="/media/concepts/millbrook-lodge/millbrook-georgian-gardens.jpg" alt="1800s Georgian country house hotel surrounded by manicured gardens and mature beech trees at dusk" width="1408" height="768" loading="eager" />
+          </picture>
+          <figcaption class="mbl-hero-cap">Indicative Georgian house and gardens visualisation.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -82,11 +84,11 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Millbrook+Lodg
           <p class="mbl-kicker">The Gilmore Restaurant &amp; Conservatory</p>
           <h2 id="mbl-dining-title">Sunday carvery, evening suppers and signature Afternoon Tea.</h2>
           <p>
-            Dine beside the gardens for breakfast, lunch, Sunday carvery or evening dinner — or gather in the
+            Dine beside the gardens for breakfast, lunch, Sunday carvery or evening dinner, or gather in the
             conservatory for homemade buttermilk scones, finger sandwiches and County Down traybakes.
           </p>
           <div class="mbl-inline-ctas">
-            <a class="mbl-btn mbl-btn--primary" href={voucherHref} target="_blank" rel="noopener noreferrer">Order Dining &amp; Stay Vouchers ↗</a>
+            <a class="mbl-btn mbl-btn--primary" href={voucherHref} target="_blank" rel="noopener noreferrer">Dining &amp; Stay Vouchers ↗</a>
             <a class="mbl-btn mbl-btn--outline" href={phoneHref}>Call Reception · {phone}</a>
           </div>
         </div>
@@ -100,7 +102,7 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Millbrook+Lodg
           <h2 id="mbl-enq-title">Arrange a private viewing of the house and Wedding Garden.</h2>
           <p>
             Share your preferred season, approximate guest numbers and whether you are considering a civil
-            ceremony or reception — our wedding coordinator will come back directly from Ballynahinch.
+            ceremony or reception. Our wedding coordinator will reply directly from Ballynahinch.
           </p>
           <p class="mbl-contact-line">
             24-hour hotel desk: <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a>
@@ -202,7 +204,7 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Millbrook+Lodg
           cancelable: true,
           detail: { to: "enquiries@millbrooklodge.co.uk", subject, body, phone: "028 9756 2828", phoneHref: "tel:+442897562828" },
         });
-        if (document.dispatchEvent(ev)) {
+        if (window.dispatchEvent(ev)) {
           window.location.href = `mailto:enquiries@millbrooklodge.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
       });

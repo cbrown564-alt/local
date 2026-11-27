@@ -11,6 +11,8 @@
   --mw-line: rgba(24, 30, 36, 0.14);
   --mw-display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
   --mw-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mw-max: 1240px;
+  --mw-gutter: clamp(20px, 4.5vw, 56px);
 
   background: var(--mw-concrete);
   color: var(--mw-ink);
@@ -19,23 +21,25 @@
 }
 
 .mw-wrap {
-  max-width: 1200px;
+  width: min(var(--mw-max), calc(100% - (var(--mw-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .mw-header {
+  display: block;
+  position: relative;
+  z-index: 40;
   background: var(--mw-white);
   border-bottom: 1px solid var(--mw-line);
 }
 
 .mw-header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 15px 0;
 }
 
 .mw-brand {
@@ -44,6 +48,7 @@
   gap: 12px;
   text-decoration: none;
   color: var(--mw-anthracite);
+  justify-self: start;
 }
 
 .mw-brand-mark {
@@ -52,6 +57,7 @@
   border: 2.5px solid var(--mw-anthracite);
   position: relative;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .mw-brand-mark::after {
@@ -81,24 +87,140 @@
 
 .mw-nav {
   display: flex;
-  gap: 26px;
+  align-items: center;
+  gap: 28px;
   font-size: 0.87rem;
   font-weight: 500;
+  justify-self: center;
 }
 
 .mw-nav a {
   color: var(--mw-ink);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .mw-nav a:hover {
   color: var(--mw-steel);
 }
 
+.mw-nav-drop {
+  position: relative;
+}
+
+.mw-nav-drop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mw-ink);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mw-nav-drop-btn:hover,
+.mw-nav-drop-btn[aria-expanded="true"] {
+  color: var(--mw-steel);
+}
+
+.mw-drop-panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(680px, calc(100vw - 40px));
+  background: var(--mw-white);
+  border: 1px solid var(--mw-line);
+  box-shadow: 0 24px 56px rgba(16, 22, 27, 0.18);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 16px;
+  z-index: 60;
+}
+
+.mw-drop-panel[hidden] {
+  display: none;
+}
+
+.mw-drop-list {
+  display: grid;
+  gap: 4px;
+}
+
+.mw-drop-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: var(--mw-ink);
+  border-left: 2px solid transparent;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.mw-drop-item:hover,
+.mw-drop-item.is-active {
+  background: var(--mw-concrete);
+  border-left-color: var(--mw-steel);
+}
+
+.mw-drop-no {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--mw-oak);
+  padding-top: 2px;
+}
+
+.mw-drop-item strong {
+  display: block;
+  font-family: var(--mw-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--mw-anthracite);
+  line-height: 1.25;
+}
+
+.mw-drop-item small {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--mw-muted);
+  margin-top: 2px;
+  white-space: normal;
+}
+
+.mw-drop-preview {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--mw-concrete);
+  padding: 10px;
+}
+
+.mw-drop-preview img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.mw-drop-preview figcaption {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  line-height: 1.42;
+  color: var(--mw-ink);
+}
+
 .mw-header-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  justify-self: end;
 }
 
 .mw-tel {
@@ -106,10 +228,11 @@
   font-size: 0.88rem;
   color: var(--mw-anthracite);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .mw-cta {
-  padding: 9px 16px;
+  padding: 10px 18px;
   background: var(--mw-anthracite);
   color: #ffffff;
   text-decoration: none;
@@ -121,7 +244,7 @@
 /* Architectural Full-bleed Elevation Hero */
 .mw-hero-frame {
   position: relative;
-  min-height: min(80vh, 690px);
+  min-height: min(76vh, 660px);
   display: flex;
   align-items: center;
   background: var(--mw-anthracite);
@@ -144,7 +267,7 @@
 
 .mw-hero-media figcaption {
   position: absolute;
-  right: 18px;
+  right: max(var(--mw-gutter), calc((100vw - var(--mw-max)) / 2));
   bottom: 14px;
   z-index: 3;
   font-size: 0.72rem;
@@ -157,19 +280,18 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(95deg, rgba(16, 22, 27, 0.86) 0%, rgba(16, 22, 27, 0.56) 50%, rgba(16, 22, 27, 0.14) 100%);
+  background: linear-gradient(95deg, rgba(16, 22, 27, 0.84) 0%, rgba(16, 22, 27, 0.5) 48%, rgba(16, 22, 27, 0.12) 100%);
 }
 
 .mw-hero-inner {
   position: relative;
   z-index: 2;
-  width: 100%;
   padding-top: 64px;
   padding-bottom: 64px;
 }
 
 .mw-hero-panel {
-  max-width: 650px;
+  max-width: 580px;
   color: #ffffff;
 }
 
@@ -189,18 +311,19 @@
 .mw-hero h1 {
   margin: 0 0 16px;
   font-family: var(--mw-display);
-  font-size: clamp(2.2rem, 4.3vw, 3.6rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.85rem);
   font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.03;
+  letter-spacing: -0.025em;
   color: #ffffff;
+  max-width: 14ch;
 }
 
 .mw-lede {
   margin: 0 0 28px;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.86);
-  max-width: 54ch;
+  max-width: 46ch;
 }
 
 .mw-hero-actions {
@@ -218,10 +341,9 @@
 }
 
 .mw-spec-inner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 24px;
 }
 
 .mw-spec-inner strong {
@@ -566,9 +688,15 @@
 }
 
 @media (max-width: 960px) {
+  .mw-header-inner {
+    grid-template-columns: 1fr auto;
+  }
   .mw-nav,
   .mw-tel {
     display: none;
+  }
+  .mw-spec-inner {
+    grid-template-columns: 1fr 1fr;
   }
   .mw-systems-head,
   .mw-selector,
@@ -586,6 +714,7 @@
 }
 
 @media (max-width: 600px) {
+  .mw-spec-inner,
   .mw-row,
   .mw-spec-list {
     grid-template-columns: 1fr;

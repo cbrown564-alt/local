@@ -1,4 +1,4 @@
-/* The Yellow Heifer — Camlough Bar & Bistro */
+/* The Yellow Heifer — Warm Village Bistro Split-Bleed Editorial */
 body.concept-yellowheifer {
   --yh-bg: #faf6f0;
   --yh-dark: #1b1510;
@@ -6,10 +6,12 @@ body.concept-yellowheifer {
   --yh-ink: #1e1711;
   --yh-muted: #5c4e41;
   --yh-ochre: #b8681f;
-  --yh-ochre-deep: #965215;
-  --yh-line: rgba(30, 23, 17, 0.14);
+  --yh-ochre-deep: #944f12;
+  --yh-line: rgba(30, 23, 17, 0.13);
   --yh-serif: "Instrument Serif", Georgia, serif;
   --yh-sans: "Plus Jakarta Sans", -apple-system, sans-serif;
+  --yh-max: 1240px;
+  --yh-gutter: clamp(20px, 4.5vw, 56px);
   margin: 0;
   background: var(--yh-bg);
   color: var(--yh-ink);
@@ -18,64 +20,68 @@ body.concept-yellowheifer {
 }
 
 .yh-wrap {
-  max-width: 1140px;
+  width: min(var(--yh-max), calc(100% - (var(--yh-gutter) * 2)));
   margin: 0 auto;
-  padding: 0 clamp(18px, 4vw, 40px);
 }
 
+/* Header — optically centred 3-column rail */
 .yh-header {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(250, 246, 240, 0.94);
+  background: rgba(250, 246, 240, 0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--yh-line);
 }
 
 .yh-header-inner {
-  max-width: 1140px;
+  width: min(var(--yh-max), calc(100% - (var(--yh-gutter) * 2)));
   margin: 0 auto;
-  padding: 14px clamp(18px, 4vw, 40px);
-  display: flex;
+  padding: 15px 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .yh-brand {
   text-decoration: none;
   color: var(--yh-ink);
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
+  justify-self: start;
 }
 
 .yh-brand strong {
   font-family: var(--yh-serif);
-  font-size: 1.55rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.02;
 }
 
 .yh-brand span {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--yh-ochre);
   font-weight: 600;
+  margin-top: 2px;
 }
 
 .yh-nav {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 26px;
+  justify-self: center;
 }
 
 .yh-nav a {
   text-decoration: none;
   color: var(--yh-muted);
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .yh-nav a:hover { color: var(--yh-ink); }
@@ -83,11 +89,12 @@ body.concept-yellowheifer {
 .yh-header-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  justify-self: end;
 }
 
 .yh-header-tel {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--yh-ink);
   text-decoration: none;
@@ -100,7 +107,7 @@ body.concept-yellowheifer {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
+  padding: 11px 22px;
   border-radius: 3px;
   font-family: var(--yh-sans);
   font-size: 0.86rem;
@@ -108,7 +115,8 @@ body.concept-yellowheifer {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: background-color 150ms ease, transform 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease;
+  white-space: nowrap;
 }
 
 .yh-header-cta,
@@ -122,38 +130,114 @@ body.concept-yellowheifer {
   background: var(--yh-ochre-deep);
 }
 
-.yh-btn--ghost {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(6px);
-}
-
-.yh-btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
-
 .yh-btn--full {
   width: 100%;
   box-sizing: border-box;
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
-/* Hero */
+/* Underlined text trigger for SpecimenSheet */
+body.concept-yellowheifer button.yh-link-trigger {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+  color: var(--yh-ink);
+  font-family: var(--yh-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--yh-ochre);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+body.concept-yellowheifer button.yh-link-trigger:hover {
+  color: var(--yh-ochre-deep);
+}
+
+/* Split-bleed warm daylight hero */
 .yh-hero {
-  position: relative;
-  min-height: clamp(500px, 76svh, 690px);
+  border-bottom: 1px solid var(--yh-line);
+  background: var(--yh-bg);
+}
+
+.yh-hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+  min-height: clamp(500px, 68svh, 660px);
+}
+
+.yh-hero-copy {
+  padding: clamp(44px, 6vw, 76px) clamp(28px, 4.5vw, 60px) clamp(44px, 6vw, 76px) max(var(--yh-gutter), calc((100vw - var(--yh-max)) / 2));
   display: flex;
-  align-items: flex-end;
-  color: #faf6f0;
-  background: var(--yh-dark);
-  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.yh-eyebrow,
+.yh-kicker {
+  margin: 0 0 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--yh-ochre);
+}
+
+.yh-hero h1 {
+  margin: 0 0 18px;
+  font-family: var(--yh-serif);
+  font-size: clamp(2.8rem, 5.2vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  max-width: 14ch;
+  color: var(--yh-ink);
+}
+
+.yh-hero-lead {
+  margin: 0 0 28px;
+  max-width: 44ch;
+  font-size: 1.02rem;
+  color: var(--yh-muted);
+}
+
+.yh-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+}
+
+.yh-hero-facts {
+  margin: 34px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--yh-line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.yh-hero-facts dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--yh-muted);
+  font-weight: 600;
+}
+
+.yh-hero-facts dd {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--yh-ink);
 }
 
 .yh-hero-media {
-  position: absolute;
-  inset: 0;
+  position: relative;
   margin: 0;
+  min-height: 360px;
+  background: var(--yh-dark);
 }
 
 .yh-hero-media img {
@@ -167,90 +251,39 @@ body.concept-yellowheifer {
   position: absolute;
   right: 16px;
   bottom: 12px;
-  z-index: 3;
   font-size: 0.72rem;
-  color: rgba(250, 246, 240, 0.72);
-  background: rgba(20, 15, 11, 0.55);
-  padding: 3px 9px;
+  color: rgba(250, 246, 240, 0.8);
+  background: rgba(20, 15, 11, 0.62);
+  padding: 4px 10px;
   border-radius: 2px;
-}
-
-.yh-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(20, 14, 10, 0.24) 0%, rgba(20, 14, 10, 0.78) 100%);
-  z-index: 1;
-}
-
-.yh-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1140px;
-  width: 100%;
-  margin: 0 auto;
-  padding: clamp(56px, 8vw, 96px) clamp(18px, 4vw, 40px) clamp(44px, 6vw, 68px);
-}
-
-.yh-eyebrow,
-.yh-kicker {
-  margin: 0 0 10px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #e6a965;
-}
-
-.yh-kicker { color: var(--yh-ochre); }
-
-.yh-hero h1 {
-  margin: 0 0 14px;
-  font-family: var(--yh-serif);
-  font-size: clamp(2.6rem, 6.2vw, 4.6rem);
-  font-weight: 400;
-  line-height: 1.02;
-  max-width: 14ch;
-}
-
-.yh-hero-lead {
-  margin: 0 0 26px;
-  max-width: 54ch;
-  font-size: 1.04rem;
-  color: rgba(250, 246, 240, 0.9);
-}
-
-.yh-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
 /* Sections */
 .yh-section {
-  padding: clamp(56px, 7vw, 88px) 0;
+  padding: clamp(60px, 7vw, 96px) 0;
 }
 
 .yh-section h2 {
   margin: 0 0 16px;
   font-family: var(--yh-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.06;
 }
 
 .yh-split,
 .yh-hours-grid,
 .yh-enq-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: clamp(28px, 5vw, 60px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+  gap: clamp(32px, 5vw, 68px);
   align-items: center;
 }
 
 .yh-highlights {
   list-style: none;
   padding: 0;
-  margin: 22px 0 0;
+  margin: 24px 0 0;
   display: grid;
   gap: 12px;
 }
@@ -264,22 +297,9 @@ body.concept-yellowheifer {
 
 .yh-highlights strong { color: var(--yh-ink); }
 
-.yh-plate {
-  margin: 0;
-}
-
-.yh-plate img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 3px;
-}
-
-.yh-plate figcaption {
-  margin-top: 10px;
-  font-size: 0.8rem;
-  color: var(--yh-muted);
-}
+.yh-plate { margin: 0; }
+.yh-plate img { width: 100%; height: auto; display: block; border-radius: 3px; }
+.yh-plate figcaption { margin-top: 10px; font-size: 0.8rem; color: var(--yh-muted); }
 
 /* Hours */
 .yh-hours-band {
@@ -288,22 +308,17 @@ body.concept-yellowheifer {
 }
 
 .yh-hours-band .yh-kicker { color: #e6a965; }
-.yh-hours-band .yh-muted { color: rgba(250, 246, 240, 0.78); }
+.yh-hours-band .yh-muted { color: rgba(250, 246, 240, 0.78); max-width: 44ch; }
 .yh-hours-band a:not(.yh-btn) { color: #f1c082; }
 
 .yh-hours-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(250, 246, 240, 0.14);
-  padding: clamp(22px, 3vw, 32px);
-  border-radius: 4px;
+  padding: clamp(24px, 3vw, 34px);
+  border-radius: 3px;
 }
 
-.yh-hours-list {
-  margin: 0;
-  display: grid;
-  gap: 10px;
-}
-
+.yh-hours-list { margin: 0; display: grid; gap: 10px; }
 .yh-hours-list > div {
   display: flex;
   justify-content: space-between;
@@ -312,7 +327,6 @@ body.concept-yellowheifer {
   border-bottom: 1px solid rgba(250, 246, 240, 0.12);
   font-size: 0.95rem;
 }
-
 .yh-hours-list dt { color: rgba(250, 246, 240, 0.78); }
 .yh-hours-list dd { margin: 0; font-weight: 600; }
 
@@ -320,8 +334,8 @@ body.concept-yellowheifer {
 .yh-form {
   background: var(--yh-surface);
   border: 1px solid var(--yh-line);
-  padding: clamp(22px, 3.5vw, 34px);
-  border-radius: 4px;
+  padding: clamp(24px, 3.5vw, 36px);
+  border-radius: 3px;
   display: grid;
   gap: 16px;
 }
@@ -332,13 +346,9 @@ body.concept-yellowheifer {
   gap: 14px;
 }
 
-.yh-form label {
-  display: grid;
-  gap: 6px;
-}
-
+.yh-form label { display: grid; gap: 6px; }
 .yh-form label > span {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -349,6 +359,7 @@ body.concept-yellowheifer {
 .yh-form select,
 .yh-form textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px 12px;
   border: 1px solid rgba(30, 23, 17, 0.22);
   background: #ffffff;
@@ -357,22 +368,13 @@ body.concept-yellowheifer {
   font-size: 0.94rem;
 }
 
-.yh-contact-line {
-  margin-top: 18px;
-  font-size: 0.92rem;
-  color: var(--yh-muted);
-}
-
-.yh-contact-line a {
-  color: var(--yh-ochre-deep);
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
+.yh-contact-line { margin-top: 18px; font-size: 0.92rem; color: var(--yh-muted); }
+.yh-contact-line a { color: var(--yh-ochre-deep); font-weight: 600; overflow-wrap: anywhere; }
 
 /* Footer */
 .yh-footer {
   border-top: 1px solid var(--yh-line);
-  padding: 34px 0;
+  padding: 36px 0;
   background: #f2ebe0;
 }
 
@@ -384,25 +386,22 @@ body.concept-yellowheifer {
   gap: 16px;
 }
 
-.yh-footer strong {
-  font-family: var(--yh-serif);
-  font-size: 1.4rem;
-  font-weight: 400;
-}
-
+.yh-footer strong { font-family: var(--yh-serif); font-size: 1.45rem; font-weight: 400; }
 .yh-footer p { margin: 4px 0 0; font-size: 0.86rem; color: var(--yh-muted); }
-
-.yh-footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 0.88rem;
-}
-
+.yh-footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.88rem; }
 .yh-footer-links a { color: var(--yh-ink); text-decoration: none; font-weight: 500; }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
+  .yh-header-inner { grid-template-columns: 1fr auto; }
   .yh-nav { display: none; }
+  .yh-hero-split { grid-template-columns: minmax(0, 1fr); }
+  .yh-hero-copy { padding: 40px var(--yh-gutter); }
+  .yh-hero-media { aspect-ratio: 16 / 10; min-height: 0; }
+}
+
+@media (max-width: 820px) {
+  .yh-header-tel { display: none; }
+  .yh-hero-facts,
   .yh-split,
   .yh-hours-grid,
   .yh-enq-grid,

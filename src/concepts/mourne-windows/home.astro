@@ -78,11 +78,44 @@ const systems = [
         <span class="mw-brand-mark" aria-hidden="true"></span>
         <span>
           <strong>Mourne Windows &amp; Doors</strong>
-          <small>Hilltown, Newry · 40+ Years in the Trade</small>
+          <small>Hilltown · 40+ Years in the Trade</small>
         </span>
       </a>
       <nav class="mw-nav" aria-label="Mourne Windows and Doors">
-        <a href="#systems">Glazing Systems</a>
+        <div class="mw-nav-drop" data-mw-drop>
+          <button type="button" class="mw-nav-drop-btn" aria-expanded="false" aria-controls="mw-systems-menu">
+            Glazing Systems <span aria-hidden="true">▾</span>
+          </button>
+          <div class="mw-drop-panel" id="mw-systems-menu" hidden>
+            <div class="mw-drop-list">
+              {systems.map((sys, idx) => (
+                <a
+                  href="#systems"
+                  class:list={["mw-drop-item", { "is-active": idx === 0 }]}
+                  data-mw-drop-item={sys.id}
+                  data-mw-drop-img={idx === 0 ? "/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg" : "/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg"}
+                  data-mw-drop-cap={sys.heading}
+                >
+                  <span class="mw-drop-no">0{idx + 1}</span>
+                  <span>
+                    <strong>{sys.label}</strong>
+                    <small>{sys.items[0]} · {sys.items[1]}</small>
+                  </span>
+                </a>
+              ))}
+            </div>
+            <figure class="mw-drop-preview">
+              <img
+                src="/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg"
+                alt="Mourne Windows architectural glazing system preview"
+                data-mw-drop-preview-img
+                width="600"
+                height="420"
+              />
+              <figcaption data-mw-drop-preview-cap>{systems[0].heading}</figcaption>
+            </figure>
+          </div>
+        </div>
         <a href="#craft">40 Years of Craft</a>
         <a href="#survey">Free Home Survey</a>
       </nav>
@@ -112,12 +145,11 @@ const systems = [
 
         <div class="mw-wrap mw-hero-inner">
           <div class="mw-hero-panel">
-            <p class="mw-eyebrow">2 Newry Road, Hilltown · Serving Newry, Belfast, Dublin &amp; All Ireland</p>
-            <h1 id="mw-hero-title">Precision windows, doors &amp; architectural glazing — fitted for over 40 years.</h1>
+            <p class="mw-eyebrow">2 Newry Road, Hilltown · Newry, Belfast, Dublin &amp; All Ireland</p>
+            <h1 id="mw-hero-title">Architectural glazing, fitted for forty years.</h1>
             <p class="mw-lede">
-              uPVC, slimline aluminium, heritage sliding sash, composite doors,
-              roof lanterns and sunrooms — surveyed, supplied and installed by
-              our experienced Hilltown team.
+              uPVC, slimline aluminium bi-folds, heritage sliding sash, composite doors
+              and sunrooms, surveyed and installed by our Hilltown team.
             </p>
             <div class="mw-hero-actions">
               <a class="mw-btn mw-btn--steel" href="#survey">Request a free home survey</a>
@@ -310,18 +342,51 @@ const systems = [
   <script>
     const tabs = document.querySelectorAll<HTMLButtonElement>("[data-mw-tab]");
     const panels = document.querySelectorAll<HTMLElement>("[data-mw-panel]");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const id = tab.dataset.mwTab;
-        tabs.forEach((t) => {
-          const active = t.dataset.mwTab === id;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", String(active));
-        });
-        panels.forEach((p) => {
-          p.hidden = p.dataset.mwPanel !== id;
-        });
+    const selectSystem = (id: string | undefined) => {
+      if (!id) return;
+      tabs.forEach((t) => {
+        const active = t.dataset.mwTab === id;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", String(active));
       });
+      panels.forEach((p) => {
+        p.hidden = p.dataset.mwPanel !== id;
+      });
+    };
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectSystem(tab.dataset.mwTab));
+    });
+
+    const dropWrap = document.querySelector<HTMLElement>("[data-mw-drop]");
+    const dropBtn = dropWrap?.querySelector<HTMLButtonElement>(".mw-nav-drop-btn");
+    const dropMenu = document.getElementById("mw-systems-menu");
+    const dropImg = dropWrap?.querySelector<HTMLImageElement>("[data-mw-drop-preview-img]");
+    const dropCap = dropWrap?.querySelector<HTMLElement>("[data-mw-drop-preview-cap]");
+    const dropItems = dropWrap?.querySelectorAll<HTMLAnchorElement>("[data-mw-drop-item]");
+    const setDrop = (open: boolean) => {
+      if (!dropBtn || !dropMenu) return;
+      dropBtn.setAttribute("aria-expanded", String(open));
+      dropMenu.hidden = !open;
+    };
+    dropBtn?.addEventListener("click", () => setDrop(Boolean(dropMenu?.hidden)));
+    dropItems?.forEach((item) => {
+      const preview = () => {
+        dropItems.forEach((i) => i.classList.toggle("is-active", i === item));
+        if (dropImg && item.dataset.mwDropImg) dropImg.src = item.dataset.mwDropImg;
+        if (dropCap && item.dataset.mwDropCap) dropCap.textContent = item.dataset.mwDropCap;
+      };
+      item.addEventListener("mouseenter", preview);
+      item.addEventListener("focus", preview);
+      item.addEventListener("click", () => {
+        selectSystem(item.dataset.mwDropItem);
+        setDrop(false);
+      });
+    });
+    document.addEventListener("click", (e) => {
+      if (dropWrap && !dropWrap.contains(e.target as Node)) setDrop(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setDrop(false);
     });
 
     const prodSelect = document.getElementById("mw-product") as HTMLSelectElement | null;
