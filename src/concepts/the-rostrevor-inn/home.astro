@@ -5,11 +5,11 @@ import ConceptLayout from "../_shell/ConceptLayout.astro";
 import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
-/* The Rostrevor Inn — 33–35 Bridge Street, Rostrevor, Co. Down, BT34 3BG.
+/* The Rostrevor Inn: 33-35 Bridge Street, Rostrevor, Co. Down, BT34 3BG.
    Sources (live-fetched 26 Nov 2026): therostrevorinn.com (/, /accommodation/,
    /the-bar/, /live-music/, /contact-us/, /gift-vouchers/).
    - Refurbished 18th-century building where the Crawford family first served
-     drinks in the mid-1800s. Yards from Fairy Glen & Kilbroney Park.
+     drinks in the mid-1800s. Yards from Fairy Glen, Narnia Trail, & Kilbroney Park.
    - 7 en-suite bedrooms (singles, doubles & family/group rooms including the
      Narnia-themed family room) with hearty breakfasts cooked to order.
    - Live room booking engine:
@@ -23,13 +23,13 @@ import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
      Saturday: Live music every Saturday night.
      Sunday 5pm: Danny McGreevy's traditional session + monthly folk club.
    - Published Hours:
-     Breakfast 9:00am – 11:00am (7 days, seasonal) ·
-     Lunch 12:30pm – 3:00pm (Thu–Sat) ·
-     Dinner 5:30pm – 9:00pm (Wed–Sat) ·
-     Sunday 12:30pm – 8:00pm All Day ·
-     Crawfords Bar 3:00pm – Close.
+     Breakfast 9:00am to 11:00am (7 days, seasonal),
+     Lunch 12:30pm to 3:00pm (Thu to Sat),
+     Dinner 5:30pm to 9:00pm (Wed to Sat),
+     Sunday 12:30pm to 8:00pm All Day,
+     Crawfords Bar 3:00pm to Close.
    - Gift Vouchers: online (£25, £50+) or same-day first-class post by phone.
-   - Phone: 028 4173 9911 · Email: therostrevorinn@gmail.com.
+   - Phone: 028 4173 9911, Email: therostrevorinn@gmail.com.
    Brief: research/concepts/the-rostrevor-inn/the-rostrevor-inn-elevation-brief.md */
 
 const phone = "028 4173 9911";
@@ -45,131 +45,307 @@ const fontHref =
   "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap";
 
 const playbill = [
-  { day: "Wednesday", bill: "Matthew McGrath", detail: "Legendary songs & stories by the fireside in Crawfords Bar." },
-  { day: "Friday Night", bill: "Dermot McQuaid", detail: "Live acoustic sets from the acclaimed multi-instrumentalist." },
-  { day: "Saturday Night", bill: "Live Village Music", detail: "Full Saturday night session across Crawfords Bar & the Stables." },
-  { day: "Sunday · 5:00pm", bill: "Danny McGreevy Trad Session", detail: "Weekly traditional Irish session plus our monthly Folk Club." },
+  {
+    day: "Wednesday",
+    bill: "Matthew McGrath",
+    detail: "Songs and stories by the fireside in Crawfords Bar.",
+  },
+  {
+    day: "Friday night",
+    bill: "Dermot McQuaid",
+    detail: "Live acoustic sets from the acclaimed multi-instrumentalist.",
+  },
+  {
+    day: "Saturday night",
+    bill: "Live village music",
+    detail: "Full Saturday night session across Crawfords Bar and the Stables.",
+  },
+  {
+    day: "Sunday, 5:00pm",
+    bill: "Danny McGreevy trad session",
+    detail: "Weekly traditional Irish session plus our monthly Folk Club.",
+  },
+];
+
+const stablesPours = [
+  {
+    name: "Killowen and Mourne Dew",
+    detail: "Craft gins, poitíns, and whiskies from our two award-winning neighbouring distilleries.",
+  },
+  {
+    name: "Two Stacks and fine wines",
+    detail: "Irish whiskey pours, house cocktails, and a curated wine list for the dining room.",
+  },
+  {
+    name: "Maggie's Leap and Guinness",
+    detail: "Local craft IPA on tap alongside classic stout in Crawfords Bar and the Stables snugs.",
+  },
+  {
+    name: "Rubble-stone Stables bistro",
+    detail: "Thursday to Saturday lunch, Wednesday to Saturday dinner, and Sunday all-day dining.",
+  },
+];
+
+const roomDetails = [
+  {
+    name: "Seven en-suite bedrooms",
+    detail: "Singles, doubles, and family or group rooms above our 18th-century village bar.",
+  },
+  {
+    name: "Narnia-themed family room",
+    detail: "Built for families exploring the Narnia Trail right next door in Kilbroney Park.",
+  },
+  {
+    name: "Cooked-to-order breakfast",
+    detail: "Hearty seasonal breakfasts cooked fresh by our chefs from 9:00am to 11:00am.",
+  },
+  {
+    name: "Fairy Glen and forest trails",
+    detail: "Step off Bridge Street straight into Fairy Glen, Kilbroney Park, and mountain biking routes.",
+  },
 ];
 
 const hours = [
-  { service: "Breakfast (7 days, seasonal)", time: "9:00am – 11:00am" },
-  { service: "Lunch (Thu – Sat)", time: "12:30pm – 3:00pm" },
-  { service: "Dinner (Wed – Sat)", time: "5:30pm – 9:00pm" },
-  { service: "Sunday All-Day Dining", time: "12:30pm – 8:00pm" },
-  { service: "Crawfords Bar", time: "3:00pm – Close" },
+  { service: "Breakfast (7 days, seasonal)", time: "9:00am to 11:00am" },
+  { service: "Lunch (Thursday to Saturday)", time: "12:30pm to 3:00pm" },
+  { service: "Dinner (Wednesday to Saturday)", time: "5:30pm to 9:00pm" },
+  { service: "Sunday all-day dining", time: "12:30pm to 8:00pm" },
+  { service: "Crawfords Bar", time: "3:00pm to close" },
 ];
 ---
 
 <ConceptLayout
-  title="The Rostrevor Inn — Crawfords Bar, Stables Bistro, Live Music & Rooms"
+  title="The Rostrevor Inn: Crawfords Bar, Stables Bistro, Live Music and Rooms"
   slug="the-rostrevor-inn"
   bodyClass="concept-page concept-rostrevorinn"
   lang="en-GB"
   businessName="The Rostrevor Inn"
   town="Rostrevor"
   fontHref={fontHref}
-  bannerNote="The fireside trad session and Stables dining room scenes are AI-generated visualisations. Room availability opens The Rostrevor Inn's live booking portal; gift vouchers link to therostrevorinn.com/gift-vouchers/."
+  bannerNote="The fireside trad session and Stables dining room scenes are indicative visualisations. Room availability opens The Rostrevor Inn's live booking portal; gift vouchers link to therostrevorinn.com/gift-vouchers/."
 >
-  <header class="ri-header">
-    <div class="ri-wrap ri-header-inner">
-      <a class="ri-brand" href="#top">
-        <strong>The Rostrevor Inn</strong>
-        <small>33–35 Bridge Street · Crawfords Bar Since the Mid-1800s</small>
-      </a>
+  <header class="ri-header" data-ri-header>
+    <div class="ri-header-inner">
+      <a class="ri-brand" href="#top">The Rostrevor Inn</a>
       <nav class="ri-nav" aria-label="The Rostrevor Inn">
-        <a href="#playbill">Live Music</a>
-        <a href="#stables">Stables &amp; Bar</a>
-        <a href="#rooms">7 Rooms &amp; Narnia</a>
-        <a href="#enquire">Tables &amp; Hours</a>
+        <a href="#explore">Music and rooms</a>
+        <a href="#hours">Dining hours</a>
+        <a href="#location">Location</a>
       </nav>
-      <div class="ri-header-right">
+      <div class="ri-header-actions">
         <a class="ri-tel" href={phoneHref}>{phone}</a>
-        <a class="ri-book-btn" href={bookRoomUrl} rel="noopener noreferrer">Book a Room ↗</a>
+        <a class="ri-book-btn" href={bookRoomUrl} rel="noopener noreferrer">Book a room</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="ri-main">
     <section class="ri-hero" aria-labelledby="ri-hero-title">
-      <figure class="ri-hero-media">
-        <ResponsiveImage
-          src="/media/concepts/the-rostrevor-inn/rostrevor-inn-fireside-session.jpg"
-          alt="Candlelit 18th-century Irish village pub snug with peat fire, acoustic guitar, fiddle, whiskey tumbler and pint of stout"
-          width={1376}
-          height={768}
-          loading="eager"
-          sizes="100vw"
-          class="ri-hero-img"
-        />
-        <figcaption class="ri-hero-cap">18th-century fireside trad session mood. Visualisation (AI-generated).</figcaption>
-      </figure>
-      <div class="ri-hero-scrim" aria-hidden="true"></div>
+      <div class="ri-hero-sentinel" data-ri-sentinel aria-hidden="true"></div>
 
-      <div class="ri-wrap ri-hero-inner">
-        <div class="ri-mood-bar" role="group" aria-label="Inn atmosphere preview">
-          <button type="button" class="ri-mood-pill is-active" data-ri-mood="night">Crawfords Trad Night</button>
-          <button type="button" class="ri-mood-pill" data-ri-mood="day">Stables Bistro Daylight</button>
+      <div class="ri-hero-media">
+        <div class="ri-hero-layer ri-hero-layer--night">
+          <ResponsiveImage
+            src="/media/concepts/the-rostrevor-inn/rostrevor-inn-fireside-session.jpg"
+            alt="Candlelit 18th-century Irish village pub snug with peat fire, acoustic guitar, fiddle, whiskey tumbler, and pint of stout"
+            width={1376}
+            height={768}
+            loading="eager"
+            sizes="100vw"
+            class="ri-hero-img"
+          />
         </div>
-        <p class="ri-kicker">18th-Century Village Inn · Yards From Fairy Glen &amp; Kilbroney Park</p>
-        <h1 id="ri-hero-title">Fireside sessions <em>&amp; seven rooms above Crawfords.</em></h1>
-        <p class="ri-lede" data-ri-lede>
-          Four nights a week of live folk and trad music, our rubble-stone Stables bistro,
-          Killowen and Mourne Dew pours, and seven en-suite bedrooms.
-        </p>
-        <div class="ri-hero-actions">
-          <a class="ri-btn ri-btn--amber" href={bookRoomUrl} rel="noopener noreferrer">Check live room availability ↗</a>
-          <a class="ri-btn ri-btn--ghost" href="#playbill">Weekly music playbill ↓</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="ri-playbill" id="playbill" aria-labelledby="ri-playbill-title">
-      <div class="ri-wrap">
-        <div class="ri-bill-board">
-          <div class="ri-bill-head">
-            <p class="ri-kicker">Weekly Playbill · Crawfords Bar, Rostrevor</p>
-            <h2 id="ri-playbill-title">Four nights of live music every single week.</h2>
-          </div>
-
-          <ol class="ri-bill-rows">
-            {playbill.map((gig) => (
-              <li class="ri-bill-row">
-                <span class="ri-gig-day">{gig.day}</span>
-                <strong class="ri-gig-act">{gig.bill}</strong>
-                <span class="ri-gig-detail">{gig.detail}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="ri-stables" id="stables" aria-labelledby="ri-stables-title">
-      <div class="ri-wrap ri-stables-grid">
-        <figure class="ri-stables-plate">
+        <div class="ri-hero-layer ri-hero-layer--day" aria-hidden="true">
           <ResponsiveImage
             src="/media/concepts/the-rostrevor-inn/rostrevor-inn-stables-dining.jpg"
-            alt="Candlelit oak bistro table inside historic rubble-stone stables with hearty roasted dish, crusty sourdough and red wine"
+            alt="Oak bistro table inside historic rubble-stone stables with hearty roasted dish, crusty sourdough, and red wine"
             width={1200}
             height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="ri-stables-img"
+            loading="lazy"
+            sizes="100vw"
+            class="ri-hero-img"
           />
-          <figcaption>Historic Stables bistro &amp; evening dining mood. Visualisation (AI-generated).</figcaption>
-        </figure>
+        </div>
+      </div>
+      <div class="ri-hero-scrim" aria-hidden="true"></div>
 
-        <div class="ri-stables-copy">
-          <p class="ri-kicker ri-kicker--dark">The Stables Bistro &amp; Local Distilleries</p>
-          <h2 id="ri-stables-title">Mourne craft pours by the hearth, bistro dining in the Stables.</h2>
-          <p>
-            Settle into the atmospheric Stables snugs with a pint of Guinness or
-            local <strong>Maggie's Leap</strong> craft IPA, or explore gins,
-            poitíns and whiskies from two award-winning neighbouring
-            distilleries — <strong>Killowen</strong> and <strong>Mourne Dew</strong> —
-            alongside <strong>Two Stacks</strong> whiskey.
+      <div class="ri-wrap ri-hero-content">
+        <div class="ri-hero-copy">
+          <div class="ri-mood-switcher" role="group" aria-label="Inn atmosphere">
+            <button type="button" class="ri-mood-tab is-active" aria-pressed="true" data-ri-mood="night">
+              Crawfords trad night
+            </button>
+            <button type="button" class="ri-mood-tab" aria-pressed="false" data-ri-mood="day">
+              Stables bistro daylight
+            </button>
+          </div>
+
+          <h1 id="ri-hero-title">Fireside sessions and seven rooms above Crawfords.</h1>
+          <p class="ri-lede" data-ri-lede>
+            Four nights of live folk and trad music, our stone Stables bistro, local
+            distillery pours, and seven en-suite bedrooms.
+          </p>
+          <a class="ri-btn ri-btn--amber" href={bookRoomUrl} rel="noopener noreferrer">Check live room availability</a>
+        </div>
+
+        <div class="ri-hero-foot">
+          <p class="ri-hero-meta">33-35 Bridge Street, Rostrevor, BT34 3BG</p>
+          <p class="ri-hero-caption" data-ri-cap>18th-century fireside trad session mood. Indicative visualisation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ri-section ri-explore" id="explore" aria-labelledby="ri-explore-title">
+      <div class="ri-wrap">
+        <div class="ri-explore-head">
+          <h2 id="ri-explore-title">Music, Stables bistro, and seven village rooms.</h2>
+          <div class="ri-tabs" role="tablist" aria-label="Explore The Rostrevor Inn">
+            <button
+              type="button"
+              role="tab"
+              id="ri-tab-music"
+              aria-selected="true"
+              aria-controls="ri-panel-music"
+              tabindex="0"
+              class="ri-tab is-active"
+              data-ri-tab="music"
+            >
+              Live music
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="ri-tab-stables"
+              aria-selected="false"
+              aria-controls="ri-panel-stables"
+              tabindex="-1"
+              class="ri-tab"
+              data-ri-tab="stables"
+            >
+              Stables and bar
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="ri-tab-rooms"
+              aria-selected="false"
+              aria-controls="ri-panel-rooms"
+              tabindex="-1"
+              class="ri-tab"
+              data-ri-tab="rooms"
+            >
+              Seven rooms
+            </button>
+          </div>
+        </div>
+
+        <div class="ri-explore-grid">
+          <div class="ri-stage">
+            <div
+              class="ri-panel"
+              role="tabpanel"
+              id="ri-panel-music"
+              aria-labelledby="ri-tab-music"
+              data-ri-panel="music"
+            >
+              <h3>Four nights of live music every week in Crawfords Bar.</h3>
+              <p class="ri-panel-copy">
+                Where the Crawford family first poured drinks in the mid-1800s, acoustic
+                sets and traditional sessions still anchor the week by the turf fire.
+              </p>
+              <ol class="ri-ledger">
+                {playbill.map((gig) => (
+                  <li>
+                    <span class="ri-ledger-key">{gig.day}</span>
+                    <div>
+                      <strong>{gig.bill}</strong>
+                      <p>{gig.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div
+              class="ri-panel"
+              role="tabpanel"
+              id="ri-panel-stables"
+              aria-labelledby="ri-tab-stables"
+              data-ri-panel="stables"
+              hidden
+            >
+              <h3>Mourne craft pours by the hearth, bistro dining in the Stables.</h3>
+              <p class="ri-panel-copy">
+                Settle into the atmospheric rubble-stone Stables snugs for hearty evening
+                plates, local distillery gins and whiskies, and crisp pints.
+              </p>
+              <ul class="ri-ledger">
+                {stablesPours.map((item) => (
+                  <li>
+                    <span class="ri-ledger-key">{item.name}</span>
+                    <div>
+                      <p>{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              class="ri-panel"
+              role="tabpanel"
+              id="ri-panel-rooms"
+              aria-labelledby="ri-tab-rooms"
+              data-ri-panel="rooms"
+              hidden
+            >
+              <h3>Singles, doubles, and our Narnia-themed family room.</h3>
+              <p class="ri-panel-copy">
+                Seven comfortable en-suite rooms yards from Fairy Glen, the Narnia Trail,
+                and Kilbroney Park, with cooked-to-order breakfasts each morning.
+              </p>
+              <ul class="ri-ledger">
+                {roomDetails.map((item) => (
+                  <li>
+                    <span class="ri-ledger-key">{item.name}</span>
+                    <div>
+                      <p>{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div class="ri-panel-foot">
+                <a class="ri-btn ri-btn--hearth" href={bookRoomUrl} rel="noopener noreferrer">Check live room availability</a>
+                <a class="ri-inline-link" href={vouchersUrl} rel="noopener noreferrer">Order instant gift vouchers (from £25)</a>
+              </div>
+            </div>
+          </div>
+
+          <figure class="ri-stables-plate">
+            <ResponsiveImage
+              src="/media/concepts/the-rostrevor-inn/rostrevor-inn-stables-dining.jpg"
+              alt="Candlelit oak bistro table inside historic rubble-stone stables with hearty roasted dish, crusty sourdough, and red wine"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 44vw"
+              class="ri-stables-img"
+            />
+            <figcaption>Historic Stables bistro and evening dining mood. Indicative visualisation.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="ri-section ri-hours-band" id="hours" aria-labelledby="ri-hours-title">
+      <div class="ri-wrap ri-hours-grid">
+        <div class="ri-hours-col">
+          <h2 id="ri-hours-title">Dining hours, bar service, and gift vouchers.</h2>
+          <p class="ri-hours-intro">
+            Call <a href={phoneHref}>{phone}</a> for Stables bistro tables or same-day
+            first-class postal gift vouchers, or order instant digital vouchers online from £25.
           </p>
 
-          <dl class="ri-hours" id="enquire">
+          <dl class="ri-hours-ledger">
             {hours.map((h) => (
               <div>
                 <dt>{h.service}</dt>
@@ -178,60 +354,69 @@ const hours = [
             ))}
           </dl>
 
-          <div class="ri-stables-actions">
-            <a class="ri-btn ri-btn--mahogany" href={phoneHref}>Book a bistro table · {phone}</a>
-            <a class="ri-btn ri-btn--outline" href={`mailto:${email}?subject=${encodeURIComponent("Table or Stay Enquiry — The Rostrevor Inn")}`}>Email {email}</a>
+          <div class="ri-links-row">
+            <a href={vouchersUrl} rel="noopener noreferrer">Buy instant gift voucher</a>
+            <a href={facebook} rel="noopener noreferrer">Facebook</a>
+            <a href={instagram} rel="noopener noreferrer">Instagram</a>
           </div>
         </div>
+
+        <form class="ri-form" id="ri-form" data-email={email}>
+          <h3>Send a table or stay enquiry</h3>
+          <div class="ri-row">
+            <label class="ri-field">
+              <span>Enquiry type</span>
+              <select name="topic">
+                <option value="Stables bistro table">Stables bistro table</option>
+                <option value="Group or family stay">Group or family stay</option>
+                <option value="Gift voucher post request">Gift voucher post request</option>
+              </select>
+            </label>
+            <label class="ri-field">
+              <span>Preferred date</span>
+              <input type="date" name="date" required />
+            </label>
+          </div>
+          <div class="ri-row">
+            <label class="ri-field">
+              <span>Party size</span>
+              <input type="number" name="guests" min="1" max="30" value="4" required />
+            </label>
+            <label class="ri-field">
+              <span>Your name and phone</span>
+              <input name="who" placeholder="Name and callback number" required />
+            </label>
+          </div>
+          <button class="ri-btn ri-btn--hearth ri-btn--full" type="submit">Open enquiry email</button>
+        </form>
       </div>
     </section>
 
-    <section class="ri-rooms" id="rooms" aria-labelledby="ri-rooms-title">
-      <div class="ri-wrap ri-rooms-grid">
-        <div>
-          <p class="ri-kicker">Seven En-Suite Bedrooms · Cooked-to-Order Breakfast</p>
-          <h2 id="ri-rooms-title">Singles, doubles — and our Narnia-themed family room.</h2>
+    <section class="ri-section ri-location" id="location" aria-labelledby="ri-loc-title">
+      <div class="ri-wrap">
+        <div class="ri-loc-head">
+          <h2 id="ri-loc-title">On Bridge Street between Fairy Glen and Carlingford Lough.</h2>
           <p>
-            Step straight out of Bridge Street into Fairy Glen, Kilbroney Park
-            and world-class mountain biking trails, then come back to big beds
-            and hearty breakfasts cooked to order by our chefs.
+            Yards from Kilbroney Park and the Narnia Trail, six minutes from Warrenpoint,
+            and fifteen minutes from Newry along the shore road.
           </p>
-          <div class="ri-room-actions">
-            <a class="ri-btn ri-btn--amber" href={bookRoomUrl} rel="noopener noreferrer">Book rooms direct ↗</a>
-            <a class="ri-btn ri-btn--ghost" href={vouchersUrl} rel="noopener noreferrer">Buy instant Gift Voucher ↗</a>
-          </div>
         </div>
 
-        <div class="ri-voucher-box">
-          <h3>Gift Vouchers &amp; Directions</h3>
-          <p>
-            Order instant emailed vouchers online (from £25) or ring{" "}
-            <a href={phoneHref}>{phone}</a> for same-day first-class post.
-          </p>
-          <p><strong>33–35 Bridge Street, Rostrevor, BT34 3BG</strong></p>
-          <div class="ri-social-links">
-            <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
-            <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-            <a href={instagram} rel="noopener noreferrer">Instagram ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="ri-wrap" style="margin-top: 40px;">
         <LocalAreaMap
           id="rostrevor-inn-map"
           businessName="The Rostrevor Inn"
-          address="33–35 Bridge Street, Rostrevor, BT34 3BG"
+          address="33-35 Bridge Street, Rostrevor, BT34 3BG"
           lon={-6.197}
           lat={54.102}
           spanKm={14}
           mapHref={mapHref}
-          kicker="Carlingford Lough & Kilbroney Village"
+          kicker=""
+          tone="light"
           markers={[
             { name: "Kilbroney Forest", lon: -6.182, lat: 54.108, note: "3 mins", side: "r" },
-            { name: "Warrenpoint", lon: -6.250, lat: 54.103, note: "6 mins", side: "l" },
-            { name: "Newry", lon: -6.340, lat: 54.176, note: "15 mins", side: "l" },
-            { name: "Kilkeel", lon: -6.002, lat: 54.060, note: "18 mins", side: "r" },
+            { name: "Warrenpoint", lon: -6.25, lat: 54.103, note: "6 mins", side: "l" },
+            { name: "Newry", lon: -6.34, lat: 54.176, note: "15 mins", side: "l" },
+            { name: "Kilkeel", lon: -6.002, lat: 54.06, note: "18 mins", side: "r" },
           ]}
         />
       </div>
@@ -240,27 +425,105 @@ const hours = [
 
   <footer class="ri-footer">
     <div class="ri-wrap ri-footer-inner">
-      <span><strong>The Rostrevor Inn</strong> · 33–35 Bridge Street, Rostrevor, Co. Down, BT34 3BG</span>
-      <span><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={bookRoomUrl} rel="noopener noreferrer">Book Direct ↗</a></span>
+      <span><strong>The Rostrevor Inn</strong>, 33-35 Bridge Street, Rostrevor, Co. Down, BT34 3BG</span>
+      <span>
+        <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> ·{" "}
+        <a href={bookRoomUrl} rel="noopener noreferrer">Book direct</a>
+      </span>
     </div>
   </footer>
 
   <script>
+    const header = document.querySelector<HTMLElement>("[data-ri-header]");
+    const sentinel = document.querySelector<HTMLElement>("[data-ri-sentinel]");
+    if (header && sentinel) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      obs.observe(sentinel);
+    }
+
     const hero = document.querySelector<HTMLElement>(".ri-hero");
     const lede = document.querySelector<HTMLElement>("[data-ri-lede]");
-    const moodCopy: Record<string, string> = {
-      night:
-        "Where the Crawford family first poured drinks in the mid-1800s — now home to four nights a week of live folk and trad music, our stone Stables bistro, Killowen and Mourne Dew pours, and seven en-suite rooms including our Narnia-themed family room.",
-      day:
-        "Start with seasonal breakfast from 9am, walk straight into Fairy Glen and Kilbroney Park, then settle into our stone Stables Bistro for Thursday–Saturday lunch (12:30–3pm) or Sunday all-day dining until 8pm.",
+    const cap = document.querySelector<HTMLElement>("[data-ri-cap]");
+    const moodCopy: Record<string, { lede: string; cap: string }> = {
+      night: {
+        lede: "Four nights of live folk and trad music, our stone Stables bistro, local distillery pours, and seven en-suite bedrooms.",
+        cap: "18th-century fireside trad session mood. Indicative visualisation.",
+      },
+      day: {
+        lede: "Seasonal breakfast from 9am, Fairy Glen and Kilbroney Park steps away, and Stables bistro dining Thursday to Sunday.",
+        cap: "Historic Stables bistro and dining mood. Indicative visualisation.",
+      },
     };
+
     document.querySelectorAll<HTMLButtonElement>("[data-ri-mood]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const mode = btn.dataset.riMood || "night";
         hero?.classList.toggle("is-daylight", mode === "day");
-        document.querySelectorAll("[data-ri-mood]").forEach((b) => b.classList.toggle("is-active", b === btn));
-        if (lede && moodCopy[mode]) lede.textContent = moodCopy[mode];
+        document.querySelectorAll<HTMLButtonElement>("[data-ri-mood]").forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-pressed", String(active));
+        });
+        if (lede && moodCopy[mode]) lede.textContent = moodCopy[mode].lede;
+        if (cap && moodCopy[mode]) cap.textContent = moodCopy[mode].cap;
       });
+    });
+
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-ri-tab]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-ri-panel]"));
+
+    const activateTab = (target: string) => {
+      tabs.forEach((t) => {
+        const active = t.dataset.riTab === target;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", String(active));
+        t.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        p.hidden = p.dataset.riPanel !== target;
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", () => {
+        if (tab.dataset.riTab) activateTab(tab.dataset.riTab);
+      });
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const next = tabs[(idx + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+        if (next.dataset.riTab) {
+          activateTab(next.dataset.riTab);
+          next.focus();
+        }
+      });
+    });
+
+    const form = document.getElementById("ri-form") as HTMLFormElement | null;
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const d = new FormData(form);
+      const body = [
+        `Enquiry: ${d.get("topic") || ""}`,
+        `Preferred date: ${d.get("date") || ""}`,
+        `Party size: ${d.get("guests") || ""}`,
+        `Contact: ${d.get("who") || ""}`,
+      ].join("\n");
+      const to = form.dataset.email ?? "";
+      const subject = `Enquiry (${d.get("topic") || "Table or stay"}): The Rostrevor Inn`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (
+        window.dispatchEvent(
+          new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }),
+        )
+      ) {
+        window.location.href = url;
+      }
     });
   </script>
 </ConceptLayout>

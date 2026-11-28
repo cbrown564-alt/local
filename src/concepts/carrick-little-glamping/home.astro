@@ -6,7 +6,7 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import ClStayPlanner from "./ClStayPlanner.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
-/* Carrick Little Glamping — 208 Head Road, Annalong, Newry, BT34 4RQ.
+/* Carrick Little Glamping: 208 Head Road, Annalong, Newry, BT34 4RQ.
    Sources (live-fetched 26 Nov 2026): carricklittleglamping.com (/, /about,
    /contact, /gift-vouchers).
    - Family-run by Julie Mooney: 3 fully equipped glamping pods directly on the
@@ -16,12 +16,10 @@ import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
    - Included in all pods: sink, microwave, fridge, heater, kettle, toaster,
      crockery and cutlery. Guests only need to bring food, drinks and bedding/towels.
    - Check-in: anytime after 3:00pm · Check-out: by 11:00am.
-   - Gift Vouchers: any amount, valid 1 year from issue — call Julie on 07729 787342.
-   - Live Freetobook portal:
-     https://portal.freetobook.com/reservations?w_id=39587&w_tkn=TE0NKByzhI04xDsoU16WgwsHhkw4xOC7ePVcULHqywQvbRxXkFNpT04DBOBDR
-   - Fixed UK WhatsApp link: https://wa.me/447729787342 (live site omitted 44).
-   - Phone: 07729 787342 · Email: sales@carrickplant.co.uk · GPS: 54.133095, -5.942121.
-   Brief: research/concepts/carrick-little-glamping/carrick-little-glamping-elevation-brief.md */
+   - Gift Vouchers: any amount, valid 1 year from issue; call Julie on 07729 787342.
+   - Live Freetobook portal (w_id=39587).
+   - Fixed UK WhatsApp link: https://wa.me/447729787342.
+   - Phone: 07729 787342 · Email: sales@carrickplant.co.uk · GPS: 54.133095, -5.942121. */
 
 const phone = "07729 787342";
 const phoneHref = "tel:+447729787342";
@@ -36,44 +34,61 @@ const mapHref = "https://www.google.com/maps/search/?api=1&query=54.133095,-5.94
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap";
 
-const included = [
-  "Heater for cosy Mourne nights",
-  "Fridge & microwave",
-  "Kettle & toaster",
-  "Sink, crockery & cutlery",
-  "Pod One (6m deluxe): private shower, WC & basin",
-  "Check-in after 3pm · Check-out by 11am",
+const podOneSpecs = [
+  { label: "Size and layout", value: "6-metre deluxe timber pod" },
+  { label: "Capacity", value: "Sleeps up to 4 (2 adults and 2 children)" },
+  { label: "Private washroom", value: "Shower, toilet, and wash hand basin" },
+  { label: "Kitchenette", value: "Sink, microwave, fridge, kettle, toaster, crockery, and cutlery" },
+  { label: "Arrival and departure", value: "Check-in after 3:00pm, check-out by 11:00am" },
+];
+
+const allPodsIncluded = [
+  { label: "Heating", value: "Heated year-round for cosy Mourne nights" },
+  { label: "Food preparation", value: "Fridge, microwave, kettle, and toaster in every pod" },
+  { label: "Tableware", value: "Sink, crockery, and cutlery ready on arrival" },
+  { label: "Pod count", value: "Three glamping pods available individually or for small groups" },
+  { label: "Setting", value: "Directly on the Carrick Little Track with mountain and sea views" },
+];
+
+const packingChecklist = [
+  { label: "Bring with you", value: "Your own food, drinks, bedding, and towels" },
+  { label: "Already in the pod", value: "Heater, fridge, microwave, kettle, toaster, sink, crockery, and cutlery" },
+  { label: "Check-in", value: "Anytime after 3:00pm at 208 Head Road, Annalong" },
+  { label: "Check-out", value: "By 11:00am on departure morning" },
+  { label: "Direct GPS", value: "54.133095, -5.942121 (postcode BT34 4RQ)" },
 ];
 ---
 
 <ConceptLayout
-  title="Carrick Little Glamping — 3 Luxury Mourne Pods on Carrick Little Track, Annalong"
+  title="Carrick Little Glamping: Three Mourne Pods on Carrick Little Track, Annalong"
   slug="carrick-little-glamping"
   bodyClass="concept-page concept-carricklittle"
   lang="en-GB"
   businessName="Carrick Little Glamping"
   town="Annalong"
   fontHref={fontHref}
-  bannerNote="The twilight cedar pods and sunrise pod doorway views are AI-generated visualisations. Live dates open Carrick Little Glamping's Freetobook portal; WhatsApp links directly to +44 7729 787342 and voucher requests go to Julie Mooney."
+  bannerNote="The twilight cedar pods and sunrise pod doorway views are indicative visualisations. Live dates open Carrick Little Glamping's Freetobook portal; WhatsApp links directly to +44 7729 787342 and voucher enquiries go to Julie Mooney."
 >
-  <header class="cl-header">
-    <div class="cl-wrap cl-header-inner">
-      <a class="cl-brand" href="#top">
-        <strong>Carrick Little Glamping</strong>
-        <small>208 Head Road, Annalong · Directly on the Carrick Little Track</small>
-      </a>
-      <nav class="cl-nav" aria-label="Carrick Little Glamping">
-        <a href="#pods">The 3 Pods</a>
-        <a href="#packing">What to Bring</a>
-        <a href="#vouchers">Gift Vouchers</a>
+  <header class="cl-header" data-cl-header>
+    <div class="cl-header-inner">
+      <a class="cl-brand" href="#top">Carrick Little Glamping</a>
+      <nav class="cl-nav" aria-label="Primary">
+        <a href="#pods">The three pods</a>
+        <a href="#stay-planner">Stay planner</a>
+        <a href="#vouchers">Gift vouchers</a>
+        <a href="#location">Location</a>
       </nav>
-      <a class="cl-header-cta" href={freetobookUrl} rel="noopener noreferrer">Check Live Dates ↗</a>
+      <div class="cl-header-actions">
+        <a class="cl-header-cta" href={freetobookUrl} rel="noopener noreferrer">Check live dates</a>
+      </div>
     </div>
   </header>
 
   <main id="top" class="cl-main">
     <section class="cl-hero" aria-labelledby="cl-hero-title">
-      <figure class="cl-hero-media">
+      <div class="cl-hero-sentinel" data-cl-sentinel aria-hidden="true"></div>
+
+      <div class="cl-hero-media">
         <ResponsiveImage
           src="/media/concepts/carrick-little-glamping/carrick-little-pods-twilight.jpg"
           alt="Three curved cedar glamping pods glowing warmly beside Mourne granite drystone walls with mountain slopes behind and the sea in the distance"
@@ -83,107 +98,237 @@ const included = [
           sizes="100vw"
           class="cl-hero-img"
         />
-        <figcaption class="cl-hero-cap">Carrick Little Track twilight pods mood. Visualisation (AI-generated).</figcaption>
-      </figure>
+      </div>
+
       <div class="cl-hero-scrim" aria-hidden="true"></div>
 
-      <div class="cl-wrap cl-hero-inner">
-        <p class="cl-kicker">Annalong, BT34 4RQ · Mountain &amp; Sea Views · Family-Run by Julie Mooney</p>
-        <h1 id="cl-hero-title">Cedar pods on the <mark class="cl-hl">Carrick Little Track.</mark></h1>
-        <p class="cl-lede">
-          Three heated timber glamping pods at the foot of the Mourne Mountains,
-          with granite peaks behind you and the Irish Sea ahead.
-        </p>
-        <div class="cl-hero-actions">
-          <a class="cl-btn cl-btn--gorse" href={freetobookUrl} rel="noopener noreferrer">Book direct on Freetobook ↗</a>
-          <a class="cl-btn cl-btn--ghost" href={whatsappHref} rel="noopener noreferrer">WhatsApp Julie · {phone} ↗</a>
+      <div class="cl-wrap cl-hero-content">
+        <div class="cl-hero-copy">
+          <h1 id="cl-hero-title">Heated cedar pods on the Carrick Little Track.</h1>
+          <p class="cl-hero-sub">
+            Three family-run timber pods at the foot of the Mourne Mountains, with granite peaks behind and the Irish Sea ahead.
+          </p>
+          <a class="cl-btn cl-btn--amber" href={freetobookUrl} rel="noopener noreferrer">
+            Book direct on Freetobook
+          </a>
+        </div>
+
+        <div class="cl-hero-foot">
+          <p class="cl-hero-meta">208 Head Road, Annalong, BT34 4RQ · Family-run by Julie Mooney</p>
+          <p class="cl-hero-caption">Indicative twilight cedar pods visualisation.</p>
         </div>
       </div>
     </section>
 
-    <div class="cl-track-bar">
-      <div class="cl-wrap cl-track-inner">
-        <span><strong>3 Glamping Pods</strong> · Pod One 6m Deluxe sleeps 4</span>
-        <span><strong>Bring Only</strong> food, drinks &amp; bedding/towels</span>
-        <span><strong>GPS</strong> 54.133095, -5.942121 · 208 Head Rd</span>
-      </div>
-    </div>
-
-    <section class="cl-pods" id="pods" aria-labelledby="cl-pods-title">
-      <div class="cl-wrap cl-pods-grid">
-        <div class="cl-pods-copy">
-          <p class="cl-kicker cl-kicker--dark">Inside the Pods · Open Year-Round</p>
-          <h2 id="cl-pods-title">Warm timber shelter at the trailhead — no tent pegs required.</h2>
-          <p>
-            Our flagship <strong>Pod One</strong> is a spacious 6-metre deluxe
-            pod sleeping up to 4 guests (2 adults &amp; 2 children) with its own
-            private washroom (shower, toilet &amp; hand basin). Every pod is
-            heated and kitted out for simple mountain evenings after the hills.
+    <section class="cl-section cl-pods" id="pods" aria-labelledby="cl-pods-title">
+      <div class="cl-wrap">
+        <div class="cl-section-head">
+          <h2 id="cl-pods-title">Warm timber shelter right at the trailhead.</h2>
+          <p class="cl-section-copy">
+            Open year-round at 208 Head Road, Annalong, with three heated pods looking across granite slopes and the Irish Sea. Just bring food, drinks, bedding, and towels.
           </p>
-
-          <ul class="cl-included" id="packing">
-            {included.map((item) => <li>{item}</li>)}
-          </ul>
-
-          <div class="cl-bring-box">
-            <strong>Simple packing rule:</strong>
-            <span>All you need to bring is your own food, drinks, and bedding / towels — everything else is waiting in the pod.</span>
-          </div>
         </div>
 
-        <figure class="cl-interior-plate">
-          <ResponsiveImage
-            src="/media/concepts/carrick-little-glamping/carrick-little-pod-interior.jpg"
-            alt="Curved natural timber glamping pod interior with woollen throws and two steaming mugs looking out the arched glass door to sunlit Mourne ridges"
-            width={1200}
-            height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="cl-interior-img"
-          />
-          <figcaption>Sunrise doorway view onto the Mourne ridges. Visualisation (AI-generated).</figcaption>
-        </figure>
+        <div class="cl-pods-grid">
+          <div class="cl-pods-explore">
+            <div class="cl-tabs" role="tablist" aria-label="The three pods">
+              <button
+                type="button"
+                role="tab"
+                id="cl-tab-pod1"
+                aria-selected="true"
+                aria-controls="cl-panel-pod1"
+                tabindex="0"
+                class="cl-tab is-active"
+                data-cl-tab="pod1"
+              >
+                Pod One deluxe
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="cl-tab-all"
+                aria-selected="false"
+                aria-controls="cl-panel-all"
+                tabindex="-1"
+                class="cl-tab"
+                data-cl-tab="all"
+              >
+                All three pods
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="cl-tab-packing"
+                aria-selected="false"
+                aria-controls="cl-panel-packing"
+                tabindex="-1"
+                class="cl-tab"
+                data-cl-tab="packing"
+              >
+                Packing checklist
+              </button>
+            </div>
+
+            <article
+              id="cl-panel-pod1"
+              role="tabpanel"
+              aria-labelledby="cl-tab-pod1"
+              class="cl-panel is-active"
+              data-cl-panel="pod1"
+            >
+              <p class="cl-panel-lead">
+                Our flagship 6-metre deluxe pod sleeps up to four guests (two adults and two children) with its own private washroom, full heating, and simple cooking essentials.
+              </p>
+              <dl class="cl-ledger">
+                {podOneSpecs.map((row) => (
+                  <div class="cl-ledger-row">
+                    <dt>{row.label}</dt>
+                    <dd>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div class="cl-panel-links">
+                <a class="cl-text-link" href={freetobookUrl} rel="noopener noreferrer">
+                  Check Pod One availability on Freetobook
+                </a>
+              </div>
+            </article>
+
+            <article
+              id="cl-panel-all"
+              role="tabpanel"
+              aria-labelledby="cl-tab-all"
+              class="cl-panel"
+              data-cl-panel="all"
+              hidden
+            >
+              <p class="cl-panel-lead">
+                All three glamping pods sit directly along the Carrick Little Track, ready for solo walkers, couples, families, or friends booking multiple pods together.
+              </p>
+              <dl class="cl-ledger">
+                {allPodsIncluded.map((row) => (
+                  <div class="cl-ledger-row">
+                    <dt>{row.label}</dt>
+                    <dd>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div class="cl-panel-links">
+                <a class="cl-text-link" href="#vouchers">
+                  Ask Julie about booking multiple pods
+                </a>
+              </div>
+            </article>
+
+            <article
+              id="cl-panel-packing"
+              role="tabpanel"
+              aria-labelledby="cl-tab-packing"
+              class="cl-panel"
+              data-cl-panel="packing"
+              hidden
+            >
+              <p class="cl-panel-lead">
+                No tent pegs and no damp canvas. Pack light for the hills: everything for warm shelter and hot drinks is already inside your pod.
+              </p>
+              <dl class="cl-ledger">
+                {packingChecklist.map((row) => (
+                  <div class="cl-ledger-row">
+                    <dt>{row.label}</dt>
+                    <dd class="cl-num">{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div class="cl-panel-links">
+                <a class="cl-text-link" href={whatsappHref} rel="noopener noreferrer">
+                  Message Julie on WhatsApp ({phone})
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <figure class="cl-plate">
+            <ResponsiveImage
+              src="/media/concepts/carrick-little-glamping/carrick-little-pod-interior.jpg"
+              alt="Curved natural timber glamping pod interior with woollen throws and two steaming mugs looking out the arched glass door to sunlit Mourne ridges"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 46vw"
+              class="cl-plate-img"
+            />
+            <figcaption>Indicative sunrise pod doorway and Mourne ridge visualisation.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <ClStayPlanner />
 
-    <section class="cl-vouchers" id="vouchers" aria-labelledby="cl-vouchers-title">
+    <section class="cl-section cl-vouchers" id="vouchers" aria-labelledby="cl-vouchers-title">
       <div class="cl-wrap cl-vouchers-grid">
         <div class="cl-voucher-copy">
-          <p class="cl-kicker">Gift Vouchers · Valid 1 Year</p>
-          <h2 id="cl-vouchers-title">Give someone a night beneath the Mournes.</h2>
+          <h2 id="cl-vouchers-title">Gift vouchers and direct stays with Julie.</h2>
           <p>
-            Carrick Little Glamping vouchers can be issued for any amount and
-            are valid for a full year from purchase. Ring Julie directly on{" "}
-            <a href={phoneHref}><strong>{phone}</strong></a>, message on{" "}
-            <a href={whatsappHref} rel="noopener noreferrer">WhatsApp ↗</a>, or
-            send a quick voucher note below.
+            Carrick Little Glamping vouchers can be issued for any amount and stay valid for a full year from purchase. Ring or WhatsApp Julie directly, or prepare an enquiry note below.
           </p>
-          <p class="cl-links-row">
-            <a href={freetobookUrl} rel="noopener noreferrer">Live Availability ↗</a> ·{" "}
-            <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a> ·{" "}
-            <a href={tripadvisor} rel="noopener noreferrer">TripAdvisor ↗</a> ·{" "}
-            <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-          </p>
+
+          <dl class="cl-contact-ledger">
+            <div class="cl-contact-row">
+              <dt>WhatsApp Julie</dt>
+              <dd class="cl-num">
+                <a href={whatsappHref} rel="noopener noreferrer">Message {phone} on WhatsApp</a>
+              </dd>
+            </div>
+            <div class="cl-contact-row">
+              <dt>Telephone</dt>
+              <dd class="cl-num">
+                <a href={phoneHref}>{phone}</a>
+              </dd>
+            </div>
+            <div class="cl-contact-row">
+              <dt>Email</dt>
+              <dd>
+                <a href={`mailto:${email}`}>{email}</a>
+              </dd>
+            </div>
+            <div class="cl-contact-row">
+              <dt>Address</dt>
+              <dd>208 Head Road, Annalong, Newry, BT34 4RQ</dd>
+            </div>
+            <div class="cl-contact-row">
+              <dt>Links</dt>
+              <dd>
+                <a href={freetobookUrl} rel="noopener noreferrer">Freetobook</a>
+                {" · "}
+                <a href={mapHref} rel="noopener noreferrer">Google Maps</a>
+                {" · "}
+                <a href={tripadvisor} rel="noopener noreferrer">TripAdvisor</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook</a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form class="cl-form" id="cl-form" data-email={email}>
-          <div class="cl-row">
+          <div class="cl-form-row">
             <label>
-              <span>What are you asking about?</span>
+              <span>What are you asking about</span>
               <select name="topic">
-                <option value="Gift Voucher">Gift Voucher (any amount)</option>
-                <option value="Pod One (6m Deluxe, sleeps 4)">Pod One (6m Deluxe, sleeps 4)</option>
-                <option value="Group / Multiple Pods">Booking Multiple Pods</option>
-                <option value="General Stay Question">General Stay Question</option>
+                <option value="Gift Voucher">Gift voucher (any amount, valid 1 year)</option>
+                <option value="Pod One (6m Deluxe, sleeps 4)">Pod One (6m deluxe, sleeps 4)</option>
+                <option value="Booking Multiple Pods">Booking multiple pods</option>
+                <option value="General Stay Question">General stay question</option>
               </select>
             </label>
             <label>
-              <span>Amount or dates</span>
+              <span>Amount or preferred dates</span>
               <input name="details" placeholder="e.g. £100 or June weekend" />
             </label>
           </div>
-          <div class="cl-row">
+
+          <div class="cl-form-row">
             <label>
               <span>Your name</span>
               <input name="name" autocomplete="name" required />
@@ -193,25 +338,38 @@ const included = [
               <input name="phone" type="tel" autocomplete="tel" required />
             </label>
           </div>
-          <button class="cl-btn cl-btn--gorse cl-btn--full" type="submit">Open enquiry email to Julie →</button>
+
+          <div class="cl-form-foot">
+            <button class="cl-btn cl-btn--night" type="submit">Send enquiry to Julie</button>
+            <p>Prepares an email addressed to {email}.</p>
+          </div>
         </form>
       </div>
+    </section>
 
-      <div class="cl-wrap" style="margin-top: 44px;">
+    <section class="cl-section cl-location" id="location" aria-labelledby="cl-location-title">
+      <div class="cl-wrap">
+        <div class="cl-location-head">
+          <h2 id="cl-location-title">Directly on the Carrick Little Track, Annalong.</h2>
+          <p>
+            Find the pods at 208 Head Road, Annalong, BT34 4RQ (GPS 54.133095, -5.942121), right beneath Slieve Binnian and five minutes from Annalong Harbour.
+          </p>
+        </div>
+
         <LocalAreaMap
           id="carrick-little-map"
-          businessName="Carrick Little Glamping"
-          address="41 Oldtown Road, Annalong, BT34 4RW"
-          lon={-5.936}
-          lat={54.108}
+          kicker=""
+          businessName="Carrick Little Pods"
+          address="208 Head Road, Annalong, Newry, BT34 4RQ"
+          lon={-5.942121}
+          lat={54.133095}
           spanKm={14}
           tone="dark"
           mapHref={mapHref}
-          kicker="Slieve Binnian & Mourne Trailhead"
           markers={[
             { name: "Slieve Binnian", lon: -5.966, lat: 54.132, note: "Trailhead on doorstep", side: "l" },
             { name: "Annalong", lon: -5.903, lat: 54.109, note: "5 mins", side: "r" },
-            { name: "Kilkeel", lon: -6.002, lat: 54.060, note: "10 mins", side: "l" },
+            { name: "Kilkeel", lon: -6.002, lat: 54.06, note: "10 mins", side: "l" },
             { name: "Newcastle", lon: -5.891, lat: 54.212, note: "15 mins", side: "r" },
           ]}
         />
@@ -221,29 +379,89 @@ const included = [
 
   <footer class="cl-footer">
     <div class="cl-wrap cl-footer-inner">
-      <span><strong>Carrick Little Glamping</strong> · 208 Head Road, Annalong, Newry, BT34 4RQ</span>
-      <span><a href={phoneHref}>{phone}</a> · <a href={whatsappHref} rel="noopener noreferrer">WhatsApp</a> · <a href={`mailto:${email}`}>{email}</a></span>
+      <div class="cl-footer-brand">
+        <strong>Carrick Little Glamping</strong>
+        <p>208 Head Road, Annalong, Newry, BT34 4RQ</p>
+      </div>
+      <div class="cl-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={whatsappHref} rel="noopener noreferrer">WhatsApp Julie</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={freetobookUrl} rel="noopener noreferrer">Book direct</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById("cl-form") as HTMLFormElement | null;
-    form?.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const d = new FormData(form);
-      const topic = String(d.get("topic") || "Enquiry");
-      const body = [
-        `Topic: ${topic}`,
-        `Details: ${d.get("details") || ""}`,
-        `Name: ${d.get("name") || ""}`,
-        `Phone: ${d.get("phone") || ""}`,
-      ].join("\n");
-      const to = form.dataset.email ?? "";
-      const subject = `${topic} — Carrick Little Glamping`;
-      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
-        window.location.href = url;
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-cl-header]");
+      const sentinel = document.querySelector("[data-cl-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
       }
-    });
+
+      const tabs = Array.from(document.querySelectorAll("[data-cl-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-cl-panel]"));
+
+      const activateTab = (id, moveFocus = false) => {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute("data-cl-tab") === id;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.setAttribute("tabindex", active ? "0" : "-1");
+          if (active && moveFocus && tab instanceof HTMLElement) tab.focus();
+        });
+        panels.forEach((panel) => {
+          const active = panel.getAttribute("data-cl-panel") === id;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      };
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-cl-tab");
+          if (id) activateTab(id);
+        });
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+          e.preventDefault();
+          let next = idx;
+          if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+          if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+          if (e.key === "Home") next = 0;
+          if (e.key === "End") next = tabs.length - 1;
+          const nextId = tabs[next]?.getAttribute("data-cl-tab");
+          if (nextId) activateTab(nextId, true);
+        });
+      });
+
+      const form = document.getElementById("cl-form");
+      if (form instanceof HTMLFormElement) {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const d = new FormData(form);
+          const topic = String(d.get("topic") || "Enquiry");
+          const body = [
+            `Topic: ${topic}`,
+            `Details: ${d.get("details") || ""}`,
+            `Name: ${d.get("name") || ""}`,
+            `Phone: ${d.get("phone") || ""}`,
+          ].join("\n");
+          const to = form.dataset.email || "";
+          const subject = `${topic}: Carrick Little Glamping`;
+          const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+            window.location.href = url;
+          }
+        });
+      }
+    })();
   </script>
 </ConceptLayout>

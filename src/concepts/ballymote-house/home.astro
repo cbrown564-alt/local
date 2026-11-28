@@ -2,23 +2,26 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
-/* Ballymote House — 84 Killough Road, Downpatrick, Co. Down, BT30 8BJ.
+/* Ballymote House: 84 Killough Road, Downpatrick, Co. Down, BT30 8BJ.
    Sources (live-fetched 26 Nov 2026): ballymotehouse.com (/, /about-ballymote-country-house/,
    /how-to-find-us/, /sleep-2/).
    - Built around 1730; Georgian country-house B&B in County Down between Lecale,
      the Mountains of Mourne and Strangford Lough.
    - Described by well-travelled guests as "a mini Ballymaloe".
-   - Features named guest rooms including The Curtis Room (named after its
-     1830s botanical illustrations), open fires, informal country-house dining.
+   - Named guest rooms including The Curtis Room (named after its 1830s botanical
+     illustrations), open fires, informal country-house dining.
    - Live Freetobook direct booking engine (w_id=39831).
    - Contact: +44 (0) 28 4461 5500 · Mobile +44 (0) 7831 661429 · bandb@ballymotehouse.com.
-   Brief: research/concepts/ballymote-house/ballymote-house-elevation-brief.md */
+   - Coordinates (OpenStreetMap): 54.2997541, -5.6923699. */
 
 const landline = "028 4461 5500";
+const landlineIntl = "+44 (0) 28 4461 5500";
 const landlineHref = "tel:+442844615500";
 const mobile = "07831 661429";
+const mobileIntl = "+44 (0) 7831 661429";
 const mobileHref = "tel:+447831661429";
 const email = "bandb@ballymotehouse.com";
 const freetobookUrl =
@@ -26,190 +29,308 @@ const freetobookUrl =
 const facebook = "https://www.facebook.com/Ballymotehouse/";
 const tripadvisor =
   "http://www.tripadvisor.co.uk/Hotel_Review-g186477-d1576523-Reviews-Ballymote_Country_House-Downpatrick_County_Down_Northern_Ireland.html";
-const mapHref = "https://www.google.com/maps/search/?api=1&query=84+Killough+Road+Downpatrick+BT30+8BJ";
+const mapHref =
+  "https://www.google.com/maps/search/?api=1&query=84+Killough+Road+Downpatrick+BT30+8BJ";
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@400;700&display=swap";
 
-const pillars = [
+const roomHighlights = [
   {
-    roman: "I",
-    title: "Relax",
-    copy: "Built around 1730 and set quietly along the Killough Road — roaring fires after a day on the coast and unhurried conversation with fellow travellers.",
+    name: "The Curtis Room",
+    detail: "Named for the original 1830s botanical illustrations still lining its walls.",
   },
   {
-    roman: "II",
-    title: "Sleep",
-    copy: "Characterful Georgian bedrooms including The Curtis Room, named for the original 1830s botanical prints still lining its walls.",
+    name: "Georgian house character",
+    detail: "Built around 1730 and set quietly along the Killough Road outside Downpatrick.",
   },
   {
-    roman: "III",
-    title: "Eat",
-    copy: "Informal, effortless country-house hospitality — recently called “a mini Ballymaloe” by well-travelled guests.",
+    name: "Roaring fires and quiet evenings",
+    detail: "Return from the coast to warm drawing-room fires and unhurried conversation with fellow travellers.",
+  },
+];
+
+const tableHighlights = [
+  {
+    name: "Informal country-house hospitality",
+    detail: "Effortless morning and evening hosting in the rhythm of a family home.",
+  },
+  {
+    name: "Called a mini Ballymaloe",
+    detail: "Described by well-travelled guests as a mini Ballymaloe for its table and welcome.",
+  },
+  {
+    name: "Direct booking with your hosts",
+    detail: "Live room availability opens straight to Ballymote House's Freetobook calendar.",
   },
 ];
 
 const outings = [
   "Golf across County Down",
-  "Mourne & coastal walking",
-  "St Patrick's Country & heritage",
+  "Mourne and coastal walking",
+  "St Patrick's Country and heritage",
   "Historic gardens",
   "Strangford Lough sailing",
-  "Bird watching & wildlife",
+  "Bird watching and wildlife",
   "Horse riding",
-  "Local fishing & motorsport",
+  "Local fishing and motorsport",
 ];
 ---
 
 <ConceptLayout
-  title="Ballymote House — 1730 Georgian Country House B&B, Downpatrick"
+  title="Ballymote House: 1730 Georgian Country House B&B, Downpatrick"
   slug="ballymote-house"
   bodyClass="concept-page concept-ballymote"
   lang="en-GB"
   businessName="Ballymote House"
   town="Downpatrick"
   fontHref={fontHref}
-  bannerNote="The 1730 Georgian country-house exterior and morning breakfast table are AI-generated visualisations. Direct availability hands straight to Ballymote House's live Freetobook portal; enquiries compose an email to bandb@ballymotehouse.com."
+  bannerNote="The 1730 Georgian country-house facade and morning breakfast table are indicative visualisations. Direct availability hands straight to Ballymote House's live Freetobook portal; enquiries compose an email to bandb@ballymotehouse.com."
 >
-  <header class="bm-header">
-    <div class="bm-wrap bm-header-inner">
-      <div class="bm-header-side">
-        <span>84 Killough Road · Downpatrick · BT30 8BJ</span>
-      </div>
-      <a class="bm-monogram" href="#top">
-        <span class="bm-est">EST. c. 1730</span>
-        <strong>Ballymote House</strong>
-      </a>
-      <div class="bm-header-side bm-header-side--right">
-        <a href={landlineHref}>{landline}</a>
-        <a class="bm-header-book" href={freetobookUrl} rel="noopener noreferrer">Book Direct ↗</a>
+  <header class="bm-header" data-bm-header>
+    <div class="bm-header-inner">
+      <a class="bm-brand" href="#top">Ballymote House</a>
+      <nav class="bm-nav" aria-label="Primary">
+        <a href="#house">House and stay</a>
+        <a href="#enquire">Direct desk</a>
+        <a href="#location">Location</a>
+      </nav>
+      <div class="bm-header-actions">
+        <a class="bm-header-tel" href={landlineHref}>{landline}</a>
+        <a class="bm-header-cta" href={freetobookUrl} rel="noopener noreferrer">Book direct</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="bm-main">
-    <section class="bm-album-hero" aria-labelledby="bm-hero-title">
+    <section class="bm-hero" aria-labelledby="bm-hero-title">
+      <div class="bm-hero-sentinel" data-bm-sentinel aria-hidden="true"></div>
+
+      <div class="bm-hero-media">
+        <ResponsiveImage
+          src="/media/concepts/ballymote-house/ballymote-house-georgian-facade.jpg"
+          alt="Golden-hour view of an 18th-century Irish Georgian stone country house with tall sash windows and walled-garden lawn"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="100vw"
+          class="bm-hero-img"
+        />
+      </div>
+
+      <div class="bm-hero-scrim" aria-hidden="true"></div>
+
+      <div class="bm-wrap bm-hero-content">
+        <div class="bm-hero-copy">
+          <h1 id="bm-hero-title">Country-house hospitality built around 1730.</h1>
+          <p class="bm-hero-sub">
+            A Georgian house with open fires and botanical bedrooms along the Killough Road, minutes from Downpatrick and Strangford Lough.
+          </p>
+          <a class="bm-btn bm-btn--estate" href={freetobookUrl} rel="noopener noreferrer">
+            Book direct
+          </a>
+        </div>
+
+        <div class="bm-hero-foot">
+          <p class="bm-hero-meta">84 Killough Road, Downpatrick, Co. Down, BT30 8BJ</p>
+          <p class="bm-hero-caption">Indicative Georgian country-house exterior visualisation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bm-section bm-stage" id="house" aria-labelledby="bm-house-title">
       <div class="bm-wrap">
-        <div class="bm-hero-plate-wrap">
-          <figure class="bm-hero-plate">
+        <div class="bm-stage-head">
+          <h2 id="bm-house-title">Relax, sleep, and dine at an unhurried pace.</h2>
+          <p class="bm-stage-intro">
+            Set quietly between Lecale, the Mountains of Mourne, and Strangford Lough, Ballymote House has been described by well-travelled guests as "a mini Ballymaloe".
+          </p>
+        </div>
+
+        <div class="bm-stage-grid">
+          <div class="bm-stage-explore">
+            <div class="bm-tabs" role="tablist" aria-label="House and stay">
+              <button
+                type="button"
+                role="tab"
+                id="bm-tab-rooms"
+                aria-selected="true"
+                aria-controls="bm-panel-rooms"
+                tabindex="0"
+                class="bm-tab is-active"
+                data-bm-tab="rooms"
+              >
+                Georgian rooms
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="bm-tab-table"
+                aria-selected="false"
+                aria-controls="bm-panel-table"
+                tabindex="-1"
+                class="bm-tab"
+                data-bm-tab="table"
+              >
+                Morning table
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="bm-tab-lecale"
+                aria-selected="false"
+                aria-controls="bm-panel-lecale"
+                tabindex="-1"
+                class="bm-tab"
+                data-bm-tab="lecale"
+              >
+                Lecale and Strangford
+              </button>
+            </div>
+
+            <article
+              id="bm-panel-rooms"
+              role="tabpanel"
+              aria-labelledby="bm-tab-rooms"
+              class="bm-panel is-active"
+              data-bm-panel="rooms"
+            >
+              <p class="bm-panel-lead">
+                Every room carries quiet 18th-century proportion, from The Curtis Room's original 1830s botanical prints upstairs to open fires waiting downstairs after a day on the coast.
+              </p>
+              <dl class="bm-ledger">
+                {roomHighlights.map((item) => (
+                  <div class="bm-ledger-row">
+                    <dt>{item.name}</dt>
+                    <dd>{item.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div class="bm-panel-links">
+                <a class="bm-text-link bm-text-link--light" href={freetobookUrl} rel="noopener noreferrer">
+                  Check live room dates on Freetobook
+                </a>
+              </div>
+            </article>
+
+            <article
+              id="bm-panel-table"
+              role="tabpanel"
+              aria-labelledby="bm-tab-table"
+              class="bm-panel"
+              data-bm-panel="table"
+              hidden
+            >
+              <p class="bm-panel-lead">
+                Informal, effortless country-house hospitality sits at the heart of a stay here, earning the house a reputation among well-travelled guests as "a mini Ballymaloe".
+              </p>
+              <dl class="bm-ledger">
+                {tableHighlights.map((item) => (
+                  <div class="bm-ledger-row">
+                    <dt>{item.name}</dt>
+                    <dd>{item.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div class="bm-panel-links">
+                <a class="bm-text-link bm-text-link--light" href={tripadvisor} rel="noopener noreferrer">
+                  Read guest reviews on TripAdvisor
+                </a>
+              </div>
+            </article>
+
+            <article
+              id="bm-panel-lecale"
+              role="tabpanel"
+              aria-labelledby="bm-tab-lecale"
+              class="bm-panel"
+              data-bm-panel="lecale"
+              hidden
+            >
+              <p class="bm-panel-lead">
+                Step out the gate into St Patrick's Country, County Down golf courses, Mourne walking routes, and the sheltered waters of Strangford Lough.
+              </p>
+              <ul class="bm-outings">
+                {outings.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <div class="bm-panel-links">
+                <a class="bm-text-link bm-text-link--light" href="#location">
+                  View Lecale and Downpatrick map
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <figure class="bm-plate">
             <ResponsiveImage
-              src="/media/concepts/ballymote-house/ballymote-house-georgian-facade.jpg"
-              alt="Golden-hour view of an 18th-century Irish Georgian stone country house with tall sash windows and walled-garden lawn"
-              width={1376}
-              height={768}
-              loading="eager"
-              sizes="(max-width: 1200px) 100vw, 1140px"
-              class="bm-hero-img"
+              src="/media/concepts/ballymote-house/ballymote-house-morning-table.jpg"
+              alt="Sunlit Georgian breakfast table with ivory linen, floral china teapot, berries and Irish wheaten bread beside a sash window"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 46vw"
+              class="bm-plate-img"
             />
-            <figcaption>18th-century County Down country-house atmosphere. Visualisation (AI-generated).</figcaption>
+            <figcaption>Indicative Georgian morning table and garden light visualisation.</figcaption>
           </figure>
         </div>
-
-        <div class="bm-hero-editorial">
-          <div class="bm-hero-left">
-            <p class="bm-kicker">Lecale · Mountains of Mourne · Strangford Lough</p>
-            <h1 id="bm-hero-title">Timeless country-house hospitality, <em>built around 1730.</em></h1>
-          </div>
-          <div class="bm-hero-right">
-            <p class="bm-lede">
-              Called <em>“a mini Ballymaloe”</em> by well-travelled guests: a
-              gracious County Down Georgian house beside roaring fires, minutes
-              from Downpatrick and Strangford Lough.
-            </p>
-            <div class="bm-hero-actions">
-              <a class="bm-btn bm-btn--olive" href={freetobookUrl} rel="noopener noreferrer">Check live dates on Freetobook ↗</a>
-              <a class="bm-btn bm-btn--outline" href="#enquire">Write to your hosts</a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section class="bm-triptych" id="house" aria-labelledby="bm-house-title">
-      <div class="bm-wrap">
-        <p class="bm-kicker bm-kicker--center">The House Tradition</p>
-        <h2 class="bm-section-title" id="bm-house-title">Relax. Sleep. Eat.</h2>
-
-        <div class="bm-pillar-grid">
-          {pillars.map((p) => (
-            <article class="bm-pillar">
-              <span class="bm-roman">{p.roman}</span>
-              <h3>{p.title}</h3>
-              <p>{p.copy}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="bm-breakfast" id="curtis" aria-labelledby="bm-curtis-title">
-      <div class="bm-wrap bm-breakfast-grid">
-        <figure class="bm-table-plate">
-          <ResponsiveImage
-            src="/media/concepts/ballymote-house/ballymote-house-morning-table.jpg"
-            alt="Sunlit Georgian breakfast table with ivory linen, floral china teapot, berries and Irish wheaten bread beside a sash window"
-            width={1200}
-            height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="bm-table-img"
-          />
-          <figcaption>Georgian morning table &amp; garden light feel. Visualisation (AI-generated).</figcaption>
-        </figure>
-
-        <div class="bm-breakfast-copy">
-          <p class="bm-kicker">The Curtis Room &amp; Around Lecale</p>
-          <h2 id="bm-curtis-title">1830s botanical prints upstairs, St Patrick's Country out the gate.</h2>
-          <p>
-            Every detail at Ballymote carries quiet history — from The Curtis
-            Room's original 1830s botanical studies to evenings spent sharing
-            stories of Lecale, the Mourne peaks and Strangford Lough around the
-            fire.
-          </p>
-
-          <div class="bm-compass">
-            <h3>Things to do from the door</h3>
-            <ul>
-              {outings.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-
-          <div class="bm-inline-links">
-            <a href={freetobookUrl} rel="noopener noreferrer">Reserve directly online ↗</a>
-            <a href={tripadvisor} rel="noopener noreferrer">Guest reviews on TripAdvisor ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bm-enquire" id="enquire" aria-labelledby="bm-enquire-title">
+    <section class="bm-section bm-enquire" id="enquire" aria-labelledby="bm-enquire-title">
       <div class="bm-wrap bm-enquire-grid">
         <div class="bm-enquire-copy">
-          <p class="bm-kicker">Direct Booking &amp; Host Desk</p>
-          <h2 id="bm-enquire-title">Book directly with Ballymote House — or ask about your dates.</h2>
+          <h2 id="bm-enquire-title">Book directly or write to your hosts.</h2>
           <p>
             Check live room availability immediately through our{" "}
-            <a href={freetobookUrl} rel="noopener noreferrer">Freetobook direct portal ↗</a>,
+            <a href={freetobookUrl} rel="noopener noreferrer">Freetobook direct portal</a>,
             or send a personal note straight to{" "}
             <a href={`mailto:${email}`}>{email}</a>.
           </p>
-          <dl class="bm-contact-dl">
-            <div><dt>Address</dt><dd>84 Killough Road, Downpatrick, Co. Down, BT30 8BJ</dd></div>
-            <div><dt>Telephone</dt><dd><a href={landlineHref}>+44 (0) 28 4461 5500</a> · Mobile <a href={mobileHref}>+44 (0) 7831 661429</a></dd></div>
-            <div><dt>Directions</dt><dd><a href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a> · <a href={facebook} rel="noopener noreferrer">Facebook ↗</a></dd></div>
+
+          <dl class="bm-contact-ledger">
+            <div class="bm-contact-row">
+              <dt>Address</dt>
+              <dd>84 Killough Road, Downpatrick, Co. Down, BT30 8BJ</dd>
+            </div>
+            <div class="bm-contact-row">
+              <dt>Telephone</dt>
+              <dd class="bm-num">
+                <a href={landlineHref}>{landlineIntl}</a>
+              </dd>
+            </div>
+            <div class="bm-contact-row">
+              <dt>Mobile</dt>
+              <dd class="bm-num">
+                <a href={mobileHref}>{mobileIntl}</a>
+              </dd>
+            </div>
+            <div class="bm-contact-row">
+              <dt>Links</dt>
+              <dd>
+                <a href={mapHref} rel="noopener noreferrer">Google Maps</a>
+                {" · "}
+                <a href={tripadvisor} rel="noopener noreferrer">TripAdvisor</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook</a>
+              </dd>
+            </div>
           </dl>
         </div>
 
         <form class="bm-form" id="bm-form" data-email={email}>
-          <div class="bm-row">
+          <div class="bm-form-row">
             <label>
               <span>Preferred arrival</span>
               <input type="date" name="arrival" required />
             </label>
             <label>
-              <span>Nights &amp; guests</span>
+              <span>Nights and guests</span>
               <input name="stay" placeholder="e.g. 2 nights, 2 guests" />
             </label>
           </div>
-          <div class="bm-row">
+
+          <div class="bm-form-row">
             <label>
               <span>Your name</span>
               <input name="name" autocomplete="name" required />
@@ -219,42 +340,141 @@ const outings = [
               <input name="phone" type="tel" autocomplete="tel" />
             </label>
           </div>
+
           <label>
             <span>Room preference or notes (optional)</span>
-            <textarea name="notes" rows="2" placeholder="e.g. The Curtis Room, dietary requests, golf or walking trip"></textarea>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="e.g. The Curtis Room, dietary requests, golf or walking trip"
+            ></textarea>
           </label>
-          <button class="bm-btn bm-btn--olive bm-btn--full" type="submit">Compose enquiry email →</button>
+
+          <div class="bm-form-foot">
+            <button class="bm-btn bm-btn--olive" type="submit">Compose enquiry email</button>
+            <p>Prepares an email addressed to {email}.</p>
+          </div>
         </form>
+      </div>
+    </section>
+
+    <section class="bm-section bm-location" id="location" aria-labelledby="bm-location-title">
+      <div class="bm-wrap">
+        <div class="bm-location-head">
+          <h2 id="bm-location-title">Along the Killough Road in County Down.</h2>
+          <p>
+            Positioned quietly at 84 Killough Road just outside Downpatrick, within easy reach of Strangford Lough, Ardglass, Tyrella Beach, and the Mountains of Mourne.
+          </p>
+        </div>
+
+        <LocalAreaMap
+          id="ballymote-map"
+          kicker=""
+          businessName="Ballymote House"
+          address="84 Killough Road, Downpatrick, Co. Down, BT30 8BJ"
+          lon={-5.69237}
+          lat={54.29975}
+          spanKm={18}
+          showFerry={true}
+          tone="dark"
+          mapHref={mapHref}
+          markers={[
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "5 mins", side: "l" },
+            { name: "Strangford", lon: -5.558, lat: 54.371, note: "15 mins", side: "r" },
+            { name: "Ardglass", lon: -5.61, lat: 54.262, note: "10 mins", side: "r" },
+            { name: "Tyrella Beach", lon: -5.735, lat: 54.242, note: "10 mins", side: "l" },
+          ]}
+        />
       </div>
     </section>
   </main>
 
   <footer class="bm-footer">
     <div class="bm-wrap bm-footer-inner">
-      <span><strong>Ballymote House</strong> · 84 Killough Road, Downpatrick, Co. Down, BT30 8BJ</span>
-      <span><a href={landlineHref}>{landline}</a> · <a href={mobileHref}>{mobile}</a> · <a href={`mailto:${email}`}>{email}</a></span>
+      <div class="bm-footer-brand">
+        <strong>Ballymote House</strong>
+        <p>84 Killough Road, Downpatrick, Co. Down, BT30 8BJ</p>
+      </div>
+      <div class="bm-footer-links">
+        <a href={landlineHref}>{landline}</a>
+        <a href={mobileHref}>{mobile}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={freetobookUrl} rel="noopener noreferrer">Book direct</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById("bm-form") as HTMLFormElement | null;
-    form?.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const d = new FormData(form);
-      const body = [
-        `Arrival: ${d.get("arrival") || ""}`,
-        `Nights & guests: ${d.get("stay") || ""}`,
-        `Name: ${d.get("name") || ""}`,
-        `Phone: ${d.get("phone") || ""}`,
-        "",
-        String(d.get("notes") || ""),
-      ].join("\n");
-      const to = form.dataset.email ?? "";
-      const subject = "Stay Enquiry — Ballymote House, Downpatrick";
-      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
-        window.location.href = url;
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-bm-header]");
+      const sentinel = document.querySelector("[data-bm-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
       }
-    });
+
+      const tabs = Array.from(document.querySelectorAll("[data-bm-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-bm-panel]"));
+
+      const activateTab = (id, moveFocus = false) => {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute("data-bm-tab") === id;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.setAttribute("tabindex", active ? "0" : "-1");
+          if (active && moveFocus && tab instanceof HTMLElement) tab.focus();
+        });
+        panels.forEach((panel) => {
+          const active = panel.getAttribute("data-bm-panel") === id;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      };
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-bm-tab");
+          if (id) activateTab(id);
+        });
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+          e.preventDefault();
+          let next = idx;
+          if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+          if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+          if (e.key === "Home") next = 0;
+          if (e.key === "End") next = tabs.length - 1;
+          const nextId = tabs[next]?.getAttribute("data-bm-tab");
+          if (nextId) activateTab(nextId, true);
+        });
+      });
+
+      const form = document.getElementById("bm-form");
+      if (form instanceof HTMLFormElement) {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const d = new FormData(form);
+          const body = [
+            `Preferred arrival: ${d.get("arrival") || ""}`,
+            `Nights and guests: ${d.get("stay") || ""}`,
+            `Name: ${d.get("name") || ""}`,
+            `Phone: ${d.get("phone") || ""}`,
+            "",
+            String(d.get("notes") || ""),
+          ].join("\n");
+          const to = form.dataset.email || "";
+          const subject = "Stay enquiry: Ballymote House, Downpatrick";
+          const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+            window.location.href = url;
+          }
+        });
+      }
+    })();
   </script>
 </ConceptLayout>

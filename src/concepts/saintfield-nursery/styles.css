@@ -1,24 +1,37 @@
-/* Saintfield Nursery Centre — Botanical Almanac & Interactive Plant Stock Finder */
+/* Saintfield Nursery Centre: Sunlit Glasshouse Horizon */
 
 .concept-saintfieldnursery {
-  --sn-ivory: #f7f5ee;
-  --sn-cream: #fcfbf7;
-  --sn-sage: #274734;
-  --sn-sage-deep: #182e21;
-  --sn-clay: #b45735;
-  --sn-tint: #eae6da;
-  --sn-ink: #1a241d;
-  --sn-muted: #556158;
-  --sn-line: rgba(39, 71, 52, 0.16);
+  --sn-plaster: #f3f5f1;
+  --sn-white: #ffffff;
+  --sn-forest: #14261c;
+  --sn-forest-accent: #1d402d;
+  --sn-forest-hover: #26523a;
+  --sn-leaf-soft: #b8d3bf;
+  --sn-clay: #a85030;
+  --sn-ink: #16221b;
+  --sn-muted: #4b5a51;
+  --sn-line: rgba(20, 38, 28, 0.14);
+  --sn-line-dark: rgba(243, 245, 241, 0.18);
   --sn-serif: "Newsreader", Georgia, serif;
   --sn-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --sn-max: 1240px;
   --sn-gutter: clamp(20px, 4.5vw, 56px);
+  --sn-header-h: 72px;
+  --text-heading: clamp(1.95rem, 3.1vw, 2.7rem);
+  --text-body: 1.0625rem;
+  --text-sm: 0.875rem;
+  --concept-accent: #1d402d;
+  --concept-focus: #1d402d;
 
-  background: var(--sn-ivory);
+  background: var(--sn-plaster);
   color: var(--sn-ink);
   font-family: var(--sn-sans);
-  line-height: 1.62;
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+body.concept-saintfieldnursery .mm-map-kicker {
+  display: none;
 }
 
 .sn-wrap {
@@ -27,350 +40,398 @@
   padding: 0;
 }
 
+/* Borderless Single-Line Header on Cool-Botanical Plaster */
 .sn-header {
   display: block;
-  background: var(--sn-cream);
-  border-bottom: 1px solid var(--sn-line);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--sn-header-h);
+  background: var(--sn-plaster);
+  border-bottom: 1px solid transparent;
+  transition: background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sn-header.is-scrolled {
+  background: rgba(243, 245, 241, 0.94);
+  border-bottom-color: var(--sn-line);
+  backdrop-filter: blur(12px);
 }
 
 .sn-header-inner {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 20px;
-  padding: 16px 0;
 }
 
 .sn-brand {
-  display: inline-flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--sn-sage);
-  line-height: 1.12;
   justify-self: start;
-}
-
-.sn-brand strong {
   font-family: var(--sn-serif);
-  font-size: 1.45rem;
+  font-size: 1.52rem;
   font-weight: 500;
-}
-
-.sn-brand small {
-  font-size: 0.72rem;
-  color: var(--sn-muted);
+  letter-spacing: -0.015em;
+  color: var(--sn-forest);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .sn-nav {
   display: flex;
-  gap: 26px;
-  font-size: 0.88rem;
-  font-weight: 600;
+  align-items: center;
+  gap: 28px;
   justify-self: center;
 }
 
 .sn-nav a {
+  font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--sn-ink);
   text-decoration: none;
   white-space: nowrap;
+  padding-bottom: 4px;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sn-nav a:hover {
-  color: var(--sn-clay);
+  color: var(--sn-forest-accent);
 }
 
 .sn-header-tel {
+  justify-self: end;
+  font-size: var(--text-sm);
   font-weight: 700;
-  color: var(--sn-sage);
+  font-variant-numeric: tabular-nums;
+  color: var(--sn-forest-accent);
   text-decoration: none;
   white-space: nowrap;
-  justify-self: end;
 }
 
-/* Sunlit Conservatory Split Hero */
+/* Sunlit Glasshouse Horizon Hero (Centered Lockup + Wide Glasshouse Stage) */
 .sn-hero {
-  padding: 52px 0 72px;
+  position: relative;
+  background: var(--sn-plaster);
+  padding: 20px 0 56px;
 }
 
-.sn-hero-grid {
-  display: grid;
-  grid-template-columns: 0.88fr 1.12fr;
-  gap: 44px;
+.sn-hero-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.sn-hero-lockup {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-.sn-kicker {
-  margin: 0 0 12px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--sn-clay);
+  margin-bottom: 30px;
 }
 
 .sn-hero h1 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
+  max-width: 19ch;
   font-family: var(--sn-serif);
-  font-size: clamp(2.45rem, 4.4vw, 3.85rem);
+  font-size: clamp(2.55rem, 4.9vw, 4.1rem);
   font-weight: 400;
-  line-height: 1.05;
-  color: var(--sn-sage);
-}
-
-.sn-hero h1 em {
-  font-style: italic;
-  color: var(--sn-clay);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--sn-forest);
 }
 
 .sn-lede {
-  margin: 0 0 28px;
-  font-size: 1rem;
+  margin: 0 0 22px;
+  max-width: 54ch;
+  font-size: var(--text-body);
   color: var(--sn-muted);
 }
 
-.sn-hero-actions {
+.sn-hero-stage {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.sn-hero-plate {
-  margin: 0;
+.sn-hero-media {
+  overflow: hidden;
+  background: #dce3da;
 }
 
-.sn-hero-plate picture,
+.sn-hero-media picture,
 .sn-hero-img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  max-height: 465px;
   object-fit: cover;
-  border-radius: 18px 18px 0 0;
-  box-shadow: 0 24px 52px rgba(24, 46, 33, 0.14);
+  object-position: center 52%;
 }
 
-.sn-hero-plate figcaption {
-  padding: 10px 14px;
-  background: var(--sn-cream);
-  border: 1px solid var(--sn-line);
-  border-top: 0;
-  font-size: 0.76rem;
+.sn-hero-caption {
+  margin: 0;
+  font-size: var(--text-sm);
   color: var(--sn-muted);
 }
 
-/* Buttons */
+/* Primary Buttons */
 .sn-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 700;
+  padding: 13px 26px;
+  font-family: var(--sn-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
   text-decoration: none;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.sn-btn--sage {
-  background: var(--sn-sage);
+.sn-btn--forest {
+  background: var(--sn-forest-accent);
   color: #ffffff;
 }
 
-.sn-btn--clay {
-  background: var(--sn-clay);
-  color: #ffffff;
+.sn-btn--forest:hover {
+  background: var(--sn-forest-hover);
 }
 
-.sn-btn--outline {
-  background: transparent;
-  color: var(--sn-sage);
-  border-color: rgba(39, 71, 52, 0.36);
+.sn-btn--full {
+  width: 100%;
 }
 
-/* Interactive Plant Stock Finder */
+/* Interactive Plant Finder (Connected Non-Button Segmented Controls) */
 .sn-finder {
-  padding: 20px 0 82px;
-}
-
-.sn-finder-box {
-  background: var(--sn-cream);
-  border: 1px solid var(--sn-line);
-  border-top: 4px solid var(--sn-sage);
-  padding: 40px;
+  background: var(--sn-white);
+  border-top: 1px solid var(--sn-line);
+  padding: 88px 0;
 }
 
 .sn-finder-head {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 32px;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 24px 48px;
   align-items: end;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
 }
 
 .sn-finder-head h2 {
   margin: 0;
   font-family: var(--sn-serif);
-  font-size: clamp(1.85rem, 3vw, 2.55rem);
+  font-size: var(--text-heading);
   font-weight: 400;
-  color: var(--sn-sage);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--sn-forest);
 }
 
 .sn-finder-note {
   margin: 0;
-  font-size: 0.93rem;
+  font-size: var(--text-body);
   color: var(--sn-muted);
 }
 
 .sn-finder-note a {
-  color: var(--sn-clay);
-  font-weight: 700;
-}
-
-.sn-chip-groups {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 22px 0;
-  border-top: 1px solid var(--sn-line);
-  border-bottom: 1px solid var(--sn-line);
-  margin-bottom: 22px;
-}
-
-.sn-chip-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--sn-muted);
-}
-
-.sn-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.sn-chip {
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1px solid var(--sn-line);
-  background: var(--sn-ivory);
-  color: var(--sn-ink);
-  font: inherit;
-  font-size: 0.82rem;
+  color: var(--sn-forest-accent);
   font-weight: 600;
-  cursor: pointer;
+  text-underline-offset: 3px;
 }
 
-.sn-chip.is-active {
-  background: var(--sn-sage);
+.sn-finder-form {
+  border-top: 1px solid var(--sn-line);
+  padding-top: 32px;
+}
+
+.sn-filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+  margin-bottom: 28px;
+}
+
+.sn-filter-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.sn-filter-group--wide {
+  grid-column: 1 / -1;
+}
+
+.sn-filter-group legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-ink);
+}
+
+.sn-seg-track {
+  display: grid;
+  border: 1px solid rgba(20, 38, 28, 0.24);
+  background: var(--sn-plaster);
+}
+
+.sn-seg-track--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sn-seg-track--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sn-seg-item {
+  position: relative;
+  cursor: pointer;
+  border-right: 1px solid rgba(20, 38, 28, 0.16);
+}
+
+.sn-seg-item:last-child {
+  border-right: 0;
+}
+
+.sn-seg-item input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.sn-seg-item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-ink);
+  transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sn-seg-item input:checked + span {
+  background: var(--sn-forest);
   color: #ffffff;
-  border-color: var(--sn-sage);
+}
+
+.sn-seg-item input:focus-visible + span {
+  outline: 3px solid var(--sn-forest-accent);
+  outline-offset: -3px;
 }
 
 .sn-finder-inputs {
   display: grid;
   grid-template-columns: 1.35fr 1fr auto;
-  gap: 14px;
+  gap: 16px;
   align-items: end;
 }
 
 .sn-finder-inputs label {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .sn-finder-inputs label span {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sn-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-ink);
 }
 
 .sn-finder-inputs input {
   width: 100%;
-  padding: 11px 12px;
-  border: 1px solid rgba(39, 71, 52, 0.24);
+  padding: 10px 12px;
+  border: 1px solid rgba(20, 38, 28, 0.24);
   background: #ffffff;
   color: var(--sn-ink);
   font: inherit;
-  font-size: 0.92rem;
+  font-size: var(--text-body);
 }
 
 .sn-summary-line {
-  margin: 12px 0 0;
-  font-size: 0.82rem;
+  margin: 16px 0 0;
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--sn-sage);
+  color: var(--sn-forest-accent);
 }
 
-/* Departments & Potting Column */
+/* Deep Greenhouse-Forest Contrast Stage */
 .sn-depts {
-  background: var(--sn-tint);
-  padding: 84px 0;
-  border-top: 1px solid var(--sn-line);
+  background: var(--sn-forest);
+  color: #f3f5f1;
+  padding: 92px 0;
 }
 
 .sn-depts-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 54px;
+  grid-template-columns: 1.06fr 0.94fr;
+  gap: 56px;
   align-items: start;
 }
 
 .sn-depts-list h2 {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   font-family: var(--sn-serif);
-  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  font-size: var(--text-heading);
   font-weight: 400;
-  color: var(--sn-sage);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #ffffff;
 }
 
 .sn-ledger {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1.5px solid var(--sn-sage);
+  border-top: 1px solid var(--sn-line-dark);
 }
 
 .sn-ledger li {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 14px;
   padding: 20px 0;
-  border-bottom: 1px solid var(--sn-line);
-}
-
-.sn-no {
-  font-family: var(--sn-serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--sn-clay);
+  border-bottom: 1px solid var(--sn-line-dark);
 }
 
 .sn-ledger h3 {
-  margin: 0 0 5px;
+  margin: 0 0 6px;
   font-family: var(--sn-serif);
-  font-size: 1.35rem;
+  font-size: var(--text-body);
   font-weight: 500;
-  color: var(--sn-sage);
+  color: var(--sn-leaf-soft);
 }
 
 .sn-ledger p {
   margin: 0;
-  font-size: 0.94rem;
-  color: var(--sn-muted);
+  max-width: 56ch;
+  font-size: var(--text-body);
+  color: rgba(243, 245, 241, 0.86);
 }
 
-.sn-potting-col {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.sn-ledger-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-leaf-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sn-ledger-link:hover {
+  color: #ffffff;
 }
 
 .sn-potting-plate {
@@ -381,71 +442,150 @@
 .sn-potting-img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
-  border-radius: 14px;
 }
 
 .sn-potting-plate figcaption {
-  margin-top: 8px;
-  font-size: 0.76rem;
-  color: var(--sn-muted);
+  margin-top: 12px;
+  font-size: var(--text-sm);
+  color: rgba(243, 245, 241, 0.74);
 }
 
-.sn-visit-card {
-  background: var(--sn-cream);
-  border: 1px solid var(--sn-line);
-  padding: 26px;
+/* Visit, Direct Enquiry & Saintfield Map */
+.sn-visit {
+  background: var(--sn-plaster);
+  padding: 92px 0;
 }
 
-.sn-visit-card h3 {
-  margin: 0 0 10px;
+.sn-visit-grid {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.sn-visit-copy h2 {
+  margin: 0 0 18px;
   font-family: var(--sn-serif);
-  font-size: 1.5rem;
+  font-size: var(--text-heading);
   font-weight: 400;
-  color: var(--sn-sage);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--sn-forest);
 }
 
-.sn-visit-card p {
-  margin: 0 0 12px;
-  font-size: 0.93rem;
+.sn-visit-copy p {
+  margin: 0 0 28px;
+  max-width: 54ch;
+  font-size: var(--text-body);
   color: var(--sn-muted);
 }
 
-.sn-visit-card a:not(.sn-btn) {
-  color: var(--sn-sage);
-  font-weight: 700;
+.sn-visit-copy a {
+  color: var(--sn-forest-accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
 }
 
-.sn-visit-links {
+.sn-visit-ledger {
+  margin: 0;
+  border-top: 1px solid var(--sn-line);
+}
+
+.sn-visit-ledger > div {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--sn-line);
+}
+
+.sn-visit-ledger dt {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-muted);
+  margin-bottom: 3px;
+}
+
+.sn-visit-ledger dd {
+  margin: 0;
+  font-size: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--sn-ink);
+}
+
+.sn-visit-form {
+  background: var(--sn-white);
+  border: 1px solid var(--sn-line);
+  border-top: 3px solid var(--sn-forest-accent);
+  padding: 34px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sn-visit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sn-visit-form label span {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--sn-ink);
+}
+
+.sn-visit-form input,
+.sn-visit-form select,
+.sn-visit-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(20, 38, 28, 0.24);
+  background: #ffffff;
+  color: var(--sn-ink);
+  font: inherit;
+  font-size: var(--text-body);
+}
+
+.sn-map-wrap {
+  margin-top: 56px;
 }
 
 .sn-footer {
-  background: var(--sn-sage-deep);
-  color: rgba(247, 245, 238, 0.78);
-  padding: 22px 0;
-  font-size: 0.85rem;
+  background: var(--sn-forest);
+  color: rgba(243, 245, 241, 0.8);
+  padding: 26px 0;
+  font-size: var(--text-sm);
+  border-top: 1px solid var(--sn-line-dark);
 }
 
 .sn-footer-inner {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 12px 24px;
 }
 
 .sn-footer-inner strong {
   font-family: var(--sn-serif);
+  font-weight: 500;
   color: #ffffff;
 }
 
 .sn-footer-inner a {
-  color: #e6c69c;
+  color: var(--sn-leaf-soft);
   text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.sn-footer-inner a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 960px) {
@@ -455,14 +595,63 @@
   .sn-nav {
     display: none;
   }
-  .sn-hero-grid,
   .sn-finder-head,
-  .sn-chip-groups,
+  .sn-filter-grid,
   .sn-finder-inputs,
-  .sn-depts-grid {
+  .sn-depts-grid,
+  .sn-visit-grid {
     grid-template-columns: 1fr;
   }
-  .sn-finder-box {
-    padding: 26px 20px;
+  .sn-filter-group--wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .concept-saintfieldnursery {
+    --sn-header-h: 64px;
+  }
+  .sn-brand {
+    font-size: 1.3rem;
+  }
+  .sn-hero-media picture,
+  .sn-hero-img {
+    aspect-ratio: 16 / 10;
+  }
+  .sn-seg-track--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sn-seg-track--3 {
+    grid-template-columns: 1fr;
+  }
+  .sn-seg-track--4 .sn-seg-item:nth-child(2n) {
+    border-right: 0;
+  }
+  .sn-seg-track--4 .sn-seg-item:nth-child(1),
+  .sn-seg-track--4 .sn-seg-item:nth-child(2) {
+    border-bottom: 1px solid rgba(20, 38, 28, 0.16);
+  }
+  .sn-seg-track--3 .sn-seg-item {
+    border-right: 0;
+    border-bottom: 1px solid rgba(20, 38, 28, 0.16);
+  }
+  .sn-seg-track--3 .sn-seg-item:last-child {
+    border-bottom: 0;
+  }
+  .sn-row {
+    grid-template-columns: 1fr;
+  }
+  .sn-visit-form {
+    padding: 24px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sn-header,
+  .sn-nav a,
+  .sn-btn,
+  .sn-seg-item span,
+  .sn-ledger-link {
+    transition: none;
   }
 }

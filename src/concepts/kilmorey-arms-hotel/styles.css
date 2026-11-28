@@ -1,24 +1,37 @@
-/* Kilmorey Arms Hotel — Kingdom of Mourne Coastal Grand Hotel */
+/* Kilmorey Arms Hotel: Harbourside Hotel Takeover */
 
 .concept-kilmorey {
-  --ka-navy: #132537;
-  --ka-navy-deep: #0b1824;
-  --ka-gold: #bc8f47;
-  --ka-gold-soft: #e0bb7d;
-  --ka-chalk: #f7f5f0;
+  --ka-navy: #0f1f2e;
+  --ka-navy-deep: #09141f;
+  --ka-gold: #c8984c;
+  --ka-gold-hover: #d7aa60;
+  --ka-gold-soft: #e6c385;
+  --ka-stone: #f5f6f4;
   --ka-paper: #ffffff;
-  --ka-ink: #17232f;
-  --ka-muted: #52606e;
-  --ka-line: rgba(19, 37, 55, 0.14);
+  --ka-ink: #132230;
+  --ka-muted: #4b5a68;
+  --ka-line: rgba(15, 31, 46, 0.14);
+  --ka-line-dark: rgba(255, 255, 255, 0.16);
   --ka-serif: "Marcellus", Georgia, serif;
   --ka-sans: "Nunito Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --ka-max: 1240px;
   --ka-gutter: clamp(20px, 4.5vw, 56px);
+  --ka-header-h: 76px;
+  --text-heading: clamp(1.95rem, 3.1vw, 2.7rem);
+  --text-body: 1.0625rem;
+  --text-sm: 0.875rem;
+  --concept-accent: #c8984c;
+  --concept-focus: #c8984c;
 
-  background: var(--ka-chalk);
+  background: var(--ka-stone);
   color: var(--ka-ink);
   font-family: var(--ka-sans);
-  line-height: 1.62;
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+body.concept-kilmorey .mm-map-kicker {
+  display: none;
 }
 
 .ka-wrap {
@@ -27,99 +40,124 @@
   padding: 0;
 }
 
+/* Borderless Sticky Header Floating Over Hero */
 .ka-header {
   display: block;
-  background: var(--ka-navy-deep);
-  border-bottom: 1px solid rgba(188, 143, 71, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--ka-header-h);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ka-header.is-scrolled {
+  background: rgba(15, 31, 46, 0.94);
+  border-bottom-color: rgba(200, 152, 76, 0.28);
+  backdrop-filter: blur(12px);
 }
 
 .ka-header-inner {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 20px;
-  padding: 15px 0;
-}
-
-@media (max-width: 960px) {
-  .ka-header-inner {
-    grid-template-columns: 1fr auto;
-  }
 }
 
 .ka-brand {
-  display: inline-flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: #ffffff;
-  line-height: 1.15;
   justify-self: start;
-}
-
-.ka-brand strong {
   font-family: var(--ka-serif);
-  font-size: 1.32rem;
-  letter-spacing: 0.03em;
-}
-
-.ka-brand small {
-  font-size: 0.72rem;
-  color: rgba(247, 245, 240, 0.7);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .ka-nav {
   display: flex;
-  gap: 26px;
-  font-size: 0.88rem;
+  align-items: center;
+  gap: 28px;
   justify-self: center;
 }
 
 .ka-nav a {
-  color: rgba(247, 245, 240, 0.85);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   white-space: nowrap;
+  padding-bottom: 4px;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ka-nav a:hover {
+  color: var(--ka-gold-soft);
 }
 
 .ka-header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   justify-self: end;
 }
 
 .ka-tel {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--ka-gold-soft);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.88rem;
   white-space: nowrap;
 }
 
 .ka-book {
-  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
   background: var(--ka-gold);
   color: var(--ka-navy-deep);
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   font-weight: 700;
   white-space: nowrap;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Full-bleed Harbour Twilight Hero */
+.ka-book:hover {
+  background: var(--ka-gold-hover);
+}
+
+/* Full-Bleed Harbourside Hotel Takeover Hero */
 .ka-hero {
   position: relative;
-  min-height: min(82vh, 700px);
+  margin-top: calc(var(--ka-header-h) * -1);
+  min-height: min(94svh, 860px);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
   background: var(--ka-navy-deep);
   color: #ffffff;
   overflow: hidden;
 }
 
+.ka-hero-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 96px;
+  pointer-events: none;
+}
+
 .ka-hero-media {
   position: absolute;
   inset: 0;
-  margin: 0;
 }
 
 .ka-hero-media picture,
@@ -128,80 +166,82 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.ka-hero-cap {
-  position: absolute;
-  right: max(var(--ka-gutter), calc((100vw - var(--ka-max)) / 2));
-  bottom: 14px;
-  z-index: 3;
-  font-size: 0.72rem;
-  color: rgba(247, 245, 240, 0.86);
-  background: rgba(11, 24, 36, 0.72);
-  padding: 4px 10px;
+  object-position: center 42%;
 }
 
 .ka-hero-scrim {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(95deg, rgba(11, 24, 36, 0.88) 0%, rgba(11, 24, 36, 0.56) 54%, rgba(11, 24, 36, 0.2) 100%);
+  background: linear-gradient(
+      180deg,
+      rgba(9, 20, 31, 0.62) 0%,
+      rgba(9, 20, 31, 0.18) 38%,
+      rgba(9, 20, 31, 0.78) 100%
+    ),
+    linear-gradient(
+      95deg,
+      rgba(9, 20, 31, 0.72) 0%,
+      rgba(9, 20, 31, 0.32) 55%,
+      rgba(9, 20, 31, 0.08) 100%
+    );
 }
 
 .ka-hero-inner {
   position: relative;
   z-index: 2;
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: calc(var(--ka-header-h) + 72px);
+  padding-bottom: 44px;
 }
 
-.ka-kicker {
-  margin: 0 0 12px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ka-gold-soft);
-}
-
-.ka-kicker--dark {
-  color: #825e24;
+.ka-hero-copy {
+  max-width: 720px;
 }
 
 .ka-hero h1 {
-  margin: 0 0 18px;
-  max-width: 720px;
+  margin: 0 0 20px;
   font-family: var(--ka-serif);
-  font-size: clamp(2.35rem, 4.6vw, 3.85rem);
+  font-size: clamp(2.85rem, 6vw, 4.85rem);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
   color: #ffffff;
 }
 
 .ka-lede {
-  margin: 0 0 28px;
-  max-width: 56ch;
-  font-size: 1.02rem;
-  color: rgba(247, 245, 240, 0.88);
+  margin: 0 0 32px;
+  max-width: 52ch;
+  font-size: var(--text-body);
+  color: rgba(245, 246, 244, 0.92);
 }
 
-.ka-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.ka-hero-foot {
+  position: relative;
+  z-index: 2;
+  padding: 0 0 22px;
 }
 
+.ka-hero-caption {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: rgba(245, 246, 244, 0.76);
+}
+
+/* Primary Buttons */
 .ka-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 22px;
+  padding: 13px 24px;
   font: inherit;
-  font-size: 0.88rem;
+  font-size: var(--text-sm);
   font-weight: 700;
   text-decoration: none;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ka-btn--gold {
@@ -209,117 +249,170 @@
   color: var(--ka-navy-deep);
 }
 
+.ka-btn--gold:hover {
+  background: var(--ka-gold-hover);
+}
+
 .ka-btn--navy {
   background: var(--ka-navy);
   color: #ffffff;
 }
 
-.ka-btn--ghost {
-  background: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.44);
+.ka-btn--navy:hover {
+  background: #173047;
 }
 
 .ka-btn--full {
   width: 100%;
 }
 
-/* Three-Door Concierge Strip */
-.ka-doors {
-  padding: 84px 0;
-}
-
-.ka-section-h2 {
-  margin: 0 0 36px;
-  font-family: var(--ka-serif);
-  font-size: clamp(1.95rem, 3.2vw, 2.75rem);
-  font-weight: 400;
-  color: var(--ka-navy);
-}
-
-.ka-door-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--ka-line);
-  background: var(--ka-paper);
-}
-
-.ka-door {
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--ka-line);
-}
-
-.ka-door:last-child {
-  border-right: 0;
-}
-
-.ka-door-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #825e24;
-  margin-bottom: 10px;
-}
-
-.ka-door h3 {
-  margin: 0 0 12px;
-  font-family: var(--ka-serif);
-  font-size: 1.48rem;
-  font-weight: 400;
-  color: var(--ka-navy);
-}
-
-.ka-door p {
-  margin: 0 0 24px;
-  font-size: 0.94rem;
-  color: var(--ka-muted);
-  flex: 1;
-}
-
-.ka-door-link {
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--ka-navy);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--ka-gold);
-  align-self: flex-start;
-}
-
-/* Kilkeel Harbour Seafood Band */
-.ka-harbour {
+/* Deep Harbour-Navy Interactive Stage */
+.ka-stage {
   background: var(--ka-navy);
-  color: var(--ka-chalk);
-  padding: 82px 0;
+  color: #f5f6f4;
+  padding: 92px 0;
 }
 
-.ka-harbour-grid {
-  display: grid;
-  grid-template-columns: 0.96fr 1.04fr;
-  gap: 50px;
-  align-items: center;
+.ka-stage-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 36px;
 }
 
-.ka-harbour h2 {
-  margin: 0 0 16px;
+.ka-stage-head h2 {
+  margin: 0;
+  max-width: 24ch;
   font-family: var(--ka-serif);
-  font-size: clamp(1.95rem, 3.2vw, 2.75rem);
+  font-size: var(--text-heading);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: #ffffff;
 }
 
-.ka-harbour p {
-  margin: 0 0 26px;
-  color: rgba(247, 245, 240, 0.84);
+.ka-dossier-btn {
+  flex: none;
+  background: transparent;
+  color: var(--ka-gold-soft);
+  border: 1px solid rgba(230, 195, 133, 0.42);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: 10px 16px;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ka-harbour-actions {
+.ka-dossier-btn:hover {
+  background: rgba(200, 152, 76, 0.14);
+  border-color: var(--ka-gold-soft);
+}
+
+.ka-tablist {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px 32px;
+  border-bottom: 1px solid var(--ka-line-dark);
+  margin-bottom: 44px;
+}
+
+.ka-tab {
+  position: relative;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  color: rgba(245, 246, 244, 0.72);
+  font-family: var(--ka-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ka-tab:hover {
+  color: #ffffff;
+}
+
+.ka-tab.is-active {
+  color: #ffffff;
+  border-bottom-color: var(--ka-gold);
+}
+
+.ka-stage-grid {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.ka-panel[hidden] {
+  display: none;
+}
+
+.ka-panel h3 {
+  margin: 0 0 16px;
+  font-family: var(--ka-serif);
+  font-size: var(--text-body);
+  font-weight: 400;
+  color: var(--ka-gold-soft);
+}
+
+.ka-panel-copy {
+  margin: 0 0 28px;
+  max-width: 58ch;
+  font-size: var(--text-body);
+  color: rgba(245, 246, 244, 0.88);
+}
+
+.ka-ledger {
+  margin: 0 0 32px;
+  border-top: 1px solid var(--ka-line-dark);
+}
+
+.ka-ledger-row {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 12px 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--ka-line-dark);
+}
+
+.ka-ledger-row dt {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(245, 246, 244, 0.72);
+}
+
+.ka-ledger-row dd {
+  margin: 0;
+  font-size: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+
+.ka-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.ka-inline-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ka-gold-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ka-inline-link:hover {
+  color: #ffffff;
 }
 
 .ka-seafood-plate {
@@ -330,139 +423,202 @@
 .ka-seafood-img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
 .ka-seafood-plate figcaption {
-  margin-top: 8px;
-  font-size: 0.76rem;
-  color: rgba(247, 245, 240, 0.68);
+  margin-top: 12px;
+  font-size: var(--text-sm);
+  color: rgba(245, 246, 244, 0.74);
 }
 
-/* Enquiries */
+/* Direct Enquiry Desk & Kilkeel Map */
 .ka-enquire {
-  padding: 84px 0;
+  padding: 92px 0;
+  background: var(--ka-stone);
 }
 
 .ka-enquire-grid {
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 52px;
-  align-items: center;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 56px;
+  align-items: start;
 }
 
-.ka-enquire h2 {
-  margin: 0 0 14px;
+.ka-enquire-copy h2 {
+  margin: 0 0 18px;
   font-family: var(--ka-serif);
-  font-size: clamp(1.85rem, 3vw, 2.55rem);
+  font-size: var(--text-heading);
   font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--ka-navy);
 }
 
-.ka-enquire p {
-  margin: 0 0 16px;
+.ka-enquire-copy p {
+  margin: 0 0 28px;
+  max-width: 54ch;
+  font-size: var(--text-body);
   color: var(--ka-muted);
 }
 
-.ka-enquire a {
+.ka-enquire-copy a {
   color: var(--ka-navy);
   font-weight: 700;
+  text-underline-offset: 3px;
 }
 
-.ka-addr {
-  padding-top: 16px;
+.ka-contact-ledger {
+  margin: 0;
   border-top: 1px solid var(--ka-line);
-  font-size: 0.92rem;
+}
+
+.ka-contact-ledger > div {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ka-line);
+}
+
+.ka-contact-ledger dt {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ka-muted);
+  margin-bottom: 3px;
+}
+
+.ka-contact-ledger dd {
+  margin: 0;
+  font-size: var(--text-body);
+  color: var(--ka-ink);
 }
 
 .ka-form {
   background: var(--ka-paper);
-  border: 1px solid var(--ka-line);
   border-top: 3px solid var(--ka-gold);
-  padding: 30px;
+  border-right: 1px solid var(--ka-line);
+  border-bottom: 1px solid var(--ka-line);
+  border-left: 1px solid var(--ka-line);
+  padding: 34px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 }
 
 .ka-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 
 .ka-form label {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .ka-form label span {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ka-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ka-ink);
 }
 
 .ka-form input,
 .ka-form select,
 .ka-form textarea {
   width: 100%;
-  padding: 10px 11px;
-  border: 1px solid rgba(19, 37, 55, 0.22);
+  padding: 10px 12px;
+  border: 1px solid rgba(15, 31, 46, 0.24);
   background: #ffffff;
   color: var(--ka-ink);
   font: inherit;
-  font-size: 0.93rem;
+  font-size: var(--text-body);
+}
+
+.ka-map-wrap {
+  margin-top: 56px;
 }
 
 .ka-footer {
   background: var(--ka-navy-deep);
-  color: rgba(247, 245, 240, 0.74);
-  padding: 22px 0;
-  font-size: 0.85rem;
+  color: rgba(245, 246, 244, 0.78);
+  padding: 26px 0;
+  font-size: var(--text-sm);
 }
 
 .ka-footer-inner {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 12px 24px;
 }
 
 .ka-footer-inner strong {
   font-family: var(--ka-serif);
+  font-weight: 400;
   color: #ffffff;
 }
 
 .ka-footer-inner a {
   color: var(--ka-gold-soft);
   text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.ka-footer-inner a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 960px) {
+  .ka-header-inner {
+    grid-template-columns: 1fr auto;
+  }
   .ka-nav,
   .ka-tel {
     display: none;
   }
-  .ka-door-grid,
-  .ka-harbour-grid,
+  .ka-stage-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ka-stage-grid,
   .ka-enquire-grid {
     grid-template-columns: 1fr;
-  }
-  .ka-door {
-    border-right: 0;
-    border-bottom: 1px solid var(--ka-line);
-  }
-  .ka-door:last-child {
-    border-bottom: 0;
+    gap: 36px;
   }
 }
 
 @media (max-width: 600px) {
+  .concept-kilmorey {
+    --ka-header-h: 68px;
+  }
+  .ka-brand {
+    font-size: 1.2rem;
+  }
+  .ka-book {
+    padding: 8px 14px;
+  }
+  .ka-tablist {
+    gap: 4px 18px;
+  }
+  .ka-ledger-row,
   .ka-row {
     grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .ka-form {
+    padding: 24px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-header,
+  .ka-nav a,
+  .ka-book,
+  .ka-btn,
+  .ka-tab,
+  .ka-dossier-btn,
+  .ka-inline-link {
+    transition: none;
   }
 }

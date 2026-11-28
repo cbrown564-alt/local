@@ -23,6 +23,8 @@ import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 const phoneNi = "028 4063 8454";
 const phoneNiHref = "tel:+442840638454";
+const phoneRoi = "+353 1 617 7825";
+const phoneRoiHref = "tel:+35316177825";
 const email = "info@mournewindows.com";
 const facebook = "https://www.facebook.com/mournewindows";
 const instagram = "https://www.instagram.com/mourne_windows/?hl=en";
@@ -32,38 +34,58 @@ const fontHref =
 
 const systems = [
   {
-    id: "windows",
-    label: "Windows & Heritage Sash",
-    heading: "Energy-efficient casement, flush, tilt & turn, Dako and vertical sliding sash.",
-    summary: "Engineered for security, thermal performance and clean sightlines — from traditional vertical sliding sash to modern flush casement and Dako window systems.",
-    items: ["Casement & Flush Casement Windows", "Vertical Sliding Sash Windows", "Tilt & Turn Windows", "Dako Window Systems"],
+    id: "bifold",
+    label: "Bi-fold and sliding doors",
+    selectValue: "Bi-fold and sliding doors",
+    previewImg: "/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg",
+    previewCaption: "Slimline aluminium bi-folds, sliding doors, and roof lanterns opening the full elevation.",
+    heading: "Slimline aluminium glazing that opens the whole wall to natural light",
+    summary:
+      "Thermally broken aluminium bi-fold doors, sliding doors, roof lanterns, flat glass, heritage aluminium profiles, and internal aluminium screens surveyed and fitted across Ireland.",
+    items: [
+      "Aluminium bi-fold and sliding doors",
+      "Roof lanterns and architectural flat glass",
+      "Heritage aluminium windows and doors",
+      "Internal aluminium screens",
+    ],
   },
   {
-    id: "doors",
-    label: "Composite, Patio & uPVC Doors",
-    heading: "Made-to-measure entrance and garden doors in chamfered or sculpted profiles.",
-    summary: "Built to suit period stone cottages and contemporary new builds alike, with solid panel or glazing combinations tailored to your security and daylight needs.",
-    items: ["Composite Entrance Doors", "French & Patio Doors", "uPVC Entrance & Back Doors", "Dako Door Ranges"],
+    id: "sash",
+    label: "Heritage sliding sash",
+    selectValue: "Heritage sliding sash",
+    previewImg: "/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg",
+    previewCaption: "Vertical sliding sash, flush casement, tilt and turn, and Dako window systems.",
+    heading: "Period window character paired with modern warmth and security",
+    summary:
+      "Traditional vertical sliding sash, flush casement, tilt and turn, and Dako window systems built for County Down weather, crisp sightlines, and long-term thermal efficiency.",
+    items: [
+      "Vertical sliding sash windows",
+      "Casement and flush casement windows",
+      "Tilt and turn uPVC and aluminium windows",
+      "Dako window systems",
+    ],
   },
   {
-    id: "aluminium",
-    label: "Aluminium, Bi-Folds & Lanterns",
-    heading: "Slimline aluminium glazing that opens the whole elevation to the view.",
-    summary: "Architectural aluminium windows, bi-fold doors, sliding doors, roof lanterns, flat glass and internal aluminium screens.",
-    items: ["Aluminium Bi-Fold & Sliding Doors", "Roof Lanterns & Flat Glass", "Heritage Aluminium Products", "Internal Aluminium Screens"],
-  },
-  {
-    id: "sunrooms",
-    label: "Conservatories, Sunrooms & Aftercare",
-    heading: "Complete glazing extensions, fascias, soffits and long-term aftercare.",
-    summary: "End-to-end design, home survey, installation and aftercare backed by over 40 years in the trade, with finance and grant guidance available.",
-    items: ["Bespoke Conservatories & Sunrooms", "Fascias, Soffits & Replacement Glass", "Dedicated Aftercare Support", "Finance, Grants & Offers Advice"],
+    id: "doors-sunrooms",
+    label: "Composite doors and sunrooms",
+    selectValue: "Composite doors and sunrooms",
+    previewImg: "/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg",
+    previewCaption: "Made-to-measure composite doors, French and patio doors, sunrooms, and aftercare.",
+    heading: "Bespoke entrance doors, glazed extensions, and long-term aftercare",
+    summary:
+      "Composite entrance doors, French and patio doors, uPVC and Dako door ranges, sunrooms, conservatories, fascias, soffits, and replacement glass, backed by over 40 years in the trade and finance or grant guidance.",
+    items: [
+      "Composite, uPVC, and Dako entrance doors",
+      "French doors and garden patio doors",
+      "Bespoke conservatories and sunrooms",
+      "Fascias, soffits, glass, and aftercare",
+    ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Mourne Windows & Doors — 40+ Years Supplying & Fitting Glazing, Hilltown, Newry"
+  title="Mourne Windows and Doors, Hilltown, Newry"
   slug="mourne-windows"
   bodyClass="concept-page concept-mournewindows"
   lang="en-GB"
@@ -72,19 +94,22 @@ const systems = [
   fontHref={fontHref}
   bannerNote="The aluminium bi-fold extension and heritage sliding sash window studies are AI-generated visualisations. Free home survey requests compose an email directly to info@mournewindows.com or call 028 4063 8454."
 >
-  <header class="mw-header">
+  <header class="mw-header" id="mw-header">
     <div class="mw-wrap mw-header-inner">
       <a class="mw-brand" href="#top">
         <span class="mw-brand-mark" aria-hidden="true"></span>
-        <span>
-          <strong>Mourne Windows &amp; Doors</strong>
-          <small>Hilltown · 40+ Years in the Trade</small>
-        </span>
+        <span>Mourne Windows &amp; Doors</span>
       </a>
+
       <nav class="mw-nav" aria-label="Mourne Windows and Doors">
         <div class="mw-nav-drop" data-mw-drop>
-          <button type="button" class="mw-nav-drop-btn" aria-expanded="false" aria-controls="mw-systems-menu">
-            Glazing Systems <span aria-hidden="true">▾</span>
+          <button
+            type="button"
+            class="mw-nav-drop-btn"
+            aria-expanded="false"
+            aria-controls="mw-systems-menu"
+          >
+            Glazing systems <span aria-hidden="true">▾</span>
           </button>
           <div class="mw-drop-panel" id="mw-systems-menu" hidden>
             <div class="mw-drop-list">
@@ -93,78 +118,67 @@ const systems = [
                   href="#systems"
                   class:list={["mw-drop-item", { "is-active": idx === 0 }]}
                   data-mw-drop-item={sys.id}
-                  data-mw-drop-img={idx === 0 ? "/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg" : "/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg"}
-                  data-mw-drop-cap={sys.heading}
+                  data-mw-drop-img={sys.previewImg}
+                  data-mw-drop-cap={sys.previewCaption}
                 >
-                  <span class="mw-drop-no">0{idx + 1}</span>
-                  <span>
-                    <strong>{sys.label}</strong>
-                    <small>{sys.items[0]} · {sys.items[1]}</small>
-                  </span>
+                  <strong>{sys.label}</strong>
+                  <span>{sys.items[0]}, {sys.items[1]}</span>
                 </a>
               ))}
             </div>
             <figure class="mw-drop-preview">
               <img
-                src="/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg"
+                src={systems[0].previewImg}
                 alt="Mourne Windows architectural glazing system preview"
                 data-mw-drop-preview-img
                 width="600"
-                height="420"
+                height="375"
               />
-              <figcaption data-mw-drop-preview-cap>{systems[0].heading}</figcaption>
+              <figcaption data-mw-drop-preview-cap>{systems[0].previewCaption}</figcaption>
             </figure>
           </div>
         </div>
-        <a href="#craft">40 Years of Craft</a>
-        <a href="#survey">Free Home Survey</a>
+        <a href="#finish-studio">Finish studio</a>
+        <a href="#survey">Free home survey</a>
       </nav>
+
       <div class="mw-header-right">
         <a class="mw-tel" href={phoneNiHref}>{phoneNi}</a>
-        <a class="mw-cta" href="#survey">Book Free Survey</a>
+        <a class="mw-cta" href="#survey">Book free survey</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="mw-main">
     <section class="mw-hero" aria-labelledby="mw-hero-title">
-      <div class="mw-hero-frame">
-        <figure class="mw-hero-media">
-          <ResponsiveImage
-            src="/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg"
-            alt="Contemporary Irish country home extension with slim anthracite aluminium bi-fold doors opened onto a granite patio overlooking green Mourne hills"
-            width={1376}
-            height={768}
-            loading="eager"
-            sizes="100vw"
-            class="mw-hero-img"
-          />
-          <figcaption>Architectural bi-fold glazing &amp; daylight mood. Visualisation (AI-generated).</figcaption>
-        </figure>
-        <div class="mw-hero-scrim" aria-hidden="true"></div>
+      <div class="mw-hero-sentinel" id="mw-hero-sentinel" aria-hidden="true"></div>
+      <div class="mw-hero-media">
+        <ResponsiveImage
+          src="/media/concepts/mourne-windows/mourne-windows-bifold-view.jpg"
+          alt="Contemporary Irish country home extension with slim anthracite aluminium bi-fold doors opened onto a granite patio overlooking green Mourne hills"
+          width={1376}
+          height={768}
+          loading="eager"
+          sizes="100vw"
+          class="mw-hero-img"
+        />
+      </div>
+      <div class="mw-hero-scrim" aria-hidden="true"></div>
 
-        <div class="mw-wrap mw-hero-inner">
-          <div class="mw-hero-panel">
-            <p class="mw-eyebrow">2 Newry Road, Hilltown · Newry, Belfast, Dublin &amp; All Ireland</p>
-            <h1 id="mw-hero-title">Architectural glazing,<br /><mark class="mw-hl">fitted for forty years.</mark></h1>
-            <p class="mw-lede">
-              uPVC, slimline aluminium bi-folds, heritage sliding sash, composite doors
-              and sunrooms, surveyed and installed by our Hilltown team.
-            </p>
-            <div class="mw-hero-actions">
-              <a class="mw-btn mw-btn--steel" href="#survey">Request a free home survey</a>
-              <a class="mw-btn mw-btn--ghost" href={phoneNiHref}>Call {phoneNi}</a>
-            </div>
-          </div>
+      <div class="mw-wrap mw-hero-inner">
+        <div class="mw-hero-copy">
+          <h1 id="mw-hero-title">Architectural glazing, fitted for forty years.</h1>
+          <p class="mw-lede">
+            Aluminium bi-folds, heritage sliding sash, composite doors, and
+            sunrooms, surveyed and fitted from Hilltown across Ireland.
+          </p>
+          <a class="mw-btn mw-btn--steel" href="#survey">Request a free home survey</a>
         </div>
       </div>
 
-      <div class="mw-spec-bar">
-        <div class="mw-wrap mw-spec-inner">
-          <span><strong>40+ Years</strong> supplying &amp; installing</span>
-          <span><strong>uPVC &amp; Aluminium</strong> Dako &amp; heritage systems</span>
-          <span><strong>Free Home Survey</strong> &amp; no-obligation quote</span>
-          <span><strong>Showroom</strong> 2 Newry Rd, Hilltown BT34 5TG</span>
+      <div class="mw-hero-foot">
+        <div class="mw-wrap">
+          <p class="mw-hero-caption">Indicative architectural bi-fold glazing and daylight visualisation.</p>
         </div>
       </div>
     </section>
@@ -172,45 +186,84 @@ const systems = [
     <section class="mw-systems" id="systems" aria-labelledby="mw-systems-title">
       <div class="mw-wrap">
         <div class="mw-systems-head">
-          <div>
-            <p class="mw-eyebrow mw-eyebrow--dark">Glazing Specification Selector</p>
-            <h2 id="mw-systems-title">Four product families — pick what your home needs.</h2>
-          </div>
+          <h2 id="mw-systems-title">Glazing systems engineered for Irish weather and lasting sightlines.</h2>
           <p>
-            Explore our range below and carry your selection straight into a
-            free home survey request with our Hilltown consultants.
+            Over 40 years supplying and installing Dako, uPVC, and heritage
+            aluminium glazing across Newry, Belfast, Dublin, and all Ireland.
           </p>
         </div>
 
-        <div class="mw-selector">
-          <div class="mw-tabs" role="tablist" aria-label="Product families">
-            {systems.map((sys, idx) => (
-              <button
-                type="button"
-                role="tab"
-                aria-selected={idx === 0 ? "true" : "false"}
-                class:list={["mw-tab", { "is-active": idx === 0 }]}
-                data-mw-tab={sys.id}
-              >
-                <span class="mw-tab-no">0{idx + 1}</span>
-                <strong>{sys.label}</strong>
-              </button>
-            ))}
-          </div>
+        <div class="mw-tablist" role="tablist" aria-label="Glazing systems">
+          {systems.map((sys, idx) => (
+            <button
+              type="button"
+              role="tab"
+              id={`mw-tab-${sys.id}`}
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`mw-panel-${sys.id}`}
+              tabindex={idx === 0 ? "0" : "-1"}
+              class:list={["mw-tab", { "is-active": idx === 0 }]}
+              data-mw-tab={sys.id}
+            >
+              {sys.label}
+            </button>
+          ))}
+        </div>
 
+        <div class="mw-systems-grid">
           <div class="mw-stage">
             {systems.map((sys, idx) => (
-              <div class="mw-panel" data-mw-panel={sys.id} hidden={idx !== 0}>
+              <div
+                class="mw-panel"
+                role="tabpanel"
+                id={`mw-panel-${sys.id}`}
+                aria-labelledby={`mw-tab-${sys.id}`}
+                data-mw-panel={sys.id}
+                hidden={idx !== 0}
+              >
                 <h3>{sys.heading}</h3>
-                <p>{sys.summary}</p>
+                <p class="mw-panel-copy">{sys.summary}</p>
                 <ul class="mw-spec-list">
                   {sys.items.map((item) => <li>{item}</li>)}
                 </ul>
-                <a class="mw-btn mw-btn--dark" href="#survey" data-mw-pick={sys.label}>
-                  Request survey for {sys.label} →
+                <a class="mw-btn mw-btn--steel" href="#survey" data-mw-pick={sys.selectValue}>
+                  Request survey for {sys.label.toLowerCase()}
                 </a>
               </div>
             ))}
+          </div>
+
+          <div class="mw-craft-side">
+            <figure class="mw-sash-plate">
+              <ResponsiveImage
+                src="/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg"
+                alt="Crisp white heritage vertical sliding sash window with fine glazing bars set into a sunlit limestone reveal"
+                width={1200}
+                height={896}
+                sizes="(max-width: 960px) 100vw, 48vw"
+                class="mw-sash-img"
+              />
+              <figcaption>Indicative heritage vertical sliding sash finish visualisation.</figcaption>
+            </figure>
+
+            <dl class="mw-showroom">
+              <div>
+                <dt>Hilltown showroom</dt>
+                <dd>2 Newry Road, Hilltown, Newry, BT34 5TG</dd>
+              </div>
+              <div>
+                <dt>Fitting coverage</dt>
+                <dd>Newry, County Down, Belfast, Dublin, and all Ireland</dd>
+              </div>
+              <div>
+                <dt>Direct telephone</dt>
+                <dd>
+                  <a href={phoneNiHref}>{phoneNi}</a>
+                  {" · "}
+                  <a href={phoneRoiHref}>{phoneRoi}</a>
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
       </div>
@@ -218,58 +271,32 @@ const systems = [
 
     <MwFinishStudio />
 
-    <section class="mw-craft" id="craft" aria-labelledby="mw-craft-title">
-      <div class="mw-wrap mw-craft-grid">
-        <figure class="mw-sash-plate">
-          <ResponsiveImage
-            src="/media/concepts/mourne-windows/mourne-windows-sash-craft.jpg"
-            alt="Crisp white heritage vertical sliding sash window with fine glazing bars set into a sunlit limestone reveal"
-            width={1200}
-            height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="mw-sash-img"
-          />
-          <figcaption>Heritage vertical sliding sash finish mood. Visualisation (AI-generated).</figcaption>
-        </figure>
-
-        <div class="mw-craft-copy">
-          <p class="mw-eyebrow mw-eyebrow--dark">Design · Energy Efficiency · Security</p>
-          <h2 id="mw-craft-title">Traditional joinery character backed by modern thermal performance.</h2>
-          <p>
-            Whether you are replacing draughty frames in a County Down home,
-            specifying aluminium bi-folds for a new extension or planning a
-            sunroom, our trained consultants walk through energy efficiency,
-            security and profile options during your free home survey — with
-            dedicated aftercare long after fitting day.
-          </p>
-          <dl class="mw-showroom">
-            <div><dt>Showroom &amp; Base</dt><dd>2 Newry Road, Hilltown, Newry, BT34 5TG</dd></div>
-            <div><dt>Service Area</dt><dd>Newry, County Down, Belfast, Dublin &amp; across Ireland</dd></div>
-            <div><dt>Telephone</dt><dd><a href={phoneNiHref}>{phoneNi}</a> · <a href={`mailto:${email}`}>{email}</a></dd></div>
-          </dl>
-          <div class="mw-craft-cta">
-            <a class="mw-btn mw-btn--dark" href="#survey">Arrange a free home survey →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="mw-survey" id="survey" aria-labelledby="mw-survey-title">
       <div class="mw-wrap mw-survey-grid">
-        <div>
-          <p class="mw-eyebrow">Free Home Survey &amp; Quote</p>
-          <h2 id="mw-survey-title">Tell us about your project.</h2>
+        <div class="mw-survey-copy">
+          <h2 id="mw-survey-title">Arrange your free home survey and quote.</h2>
           <p>
-            Send your project details straight to{" "}
-            <a href={`mailto:${email}`}>{email}</a> to arrange a free,
-            no-obligation survey or showroom appointment in Hilltown, or ring us
-            directly on <a href={phoneNiHref}><strong>{phoneNi}</strong></a>.
+            Share your project details with our Hilltown consultants at{" "}
+            <a href={`mailto:${email}`}>{email}</a> for a free, no-obligation
+            home survey or showroom visit, or call{" "}
+            <a href={phoneNiHref}>{phoneNi}</a>.
           </p>
-          <div class="mw-survey-links">
-            <a href={mapHref} rel="noopener noreferrer">Showroom Directions ↗</a>
-            <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-            <a href={instagram} rel="noopener noreferrer">Instagram ↗</a>
-          </div>
+          <dl class="mw-survey-meta">
+            <div>
+              <dt>Showroom address</dt>
+              <dd>2 Newry Road, Hilltown, Newry, BT34 5TG</dd>
+            </div>
+            <div>
+              <dt>Links</dt>
+              <dd>
+                <a href={mapHref} rel="noopener noreferrer">Showroom directions ↗</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+                {" · "}
+                <a href={instagram} rel="noopener noreferrer">Instagram ↗</a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form class="mw-form" id="mw-form" data-email={email}>
@@ -277,11 +304,10 @@ const systems = [
             <label>
               <span>Project focus</span>
               <select name="product" id="mw-product">
-                <option value="Windows & Heritage Sash">Windows &amp; Heritage Sash</option>
-                <option value="Composite, Patio & uPVC Doors">Composite, Patio &amp; uPVC Doors</option>
-                <option value="Aluminium, Bi-Folds & Lanterns">Aluminium, Bi-Folds &amp; Lanterns</option>
-                <option value="Conservatories, Sunrooms & Aftercare">Conservatories, Sunrooms &amp; Aftercare</option>
-                <option value="Full House New Build / Upgrade">Full House New Build / Upgrade</option>
+                <option value="Bi-fold and sliding doors">Bi-fold and sliding doors</option>
+                <option value="Heritage sliding sash">Heritage sliding sash</option>
+                <option value="Composite doors and sunrooms">Composite doors and sunrooms</option>
+                <option value="Full house new build or upgrade">Full house new build or upgrade</option>
               </select>
             </label>
             <label>
@@ -301,25 +327,25 @@ const systems = [
           </div>
           <label>
             <span>Approximate openings or notes</span>
-            <textarea name="notes" rows="2" placeholder="e.g. 8 replacement windows + front composite door, or bi-fold extension"></textarea>
+            <textarea name="notes" rows="3" placeholder="e.g. 8 replacement windows and front composite door, or bi-fold extension"></textarea>
           </label>
-          <button class="mw-btn mw-btn--steel mw-btn--full" type="submit">Open survey request email →</button>
+          <button class="mw-btn mw-btn--steel mw-btn--full" type="submit">Open survey request email</button>
         </form>
       </div>
 
-      <div class="mw-wrap" style="margin-top: 44px;">
+      <div class="mw-wrap mw-map-wrap">
         <LocalAreaMap
           id="mourne-windows-map"
-          businessName="Mourne Windows & Doors"
+          businessName="Mourne Windows"
           address="2 Newry Road, Hilltown, Newry, BT34 5TG"
           lon={-6.115}
           lat={54.198}
           spanKm={24}
           radiusKm={22}
-          radiusLabel="Hilltown Showroom & Free Home Survey Area"
-          tone="dark"
+          radiusLabel="Hilltown showroom and survey catchment"
+          tone="light"
           mapHref={mapHref}
-          kicker="Hilltown Showroom & Catchment"
+          kicker=""
           markers={[
             { name: "Newry", lon: -6.340, lat: 54.176, note: "15 mins", side: "l" },
             { name: "Banbridge", lon: -6.268, lat: 54.348, note: "20 mins", side: "l" },
@@ -334,27 +360,66 @@ const systems = [
 
   <footer class="mw-footer">
     <div class="mw-wrap mw-footer-inner">
-      <span><strong>Mourne Windows &amp; Doors</strong> · 2 Newry Road, Hilltown, Newry, BT34 5TG</span>
-      <span><a href={phoneNiHref}>{phoneNi}</a> · <a href={`mailto:${email}`}>{email}</a></span>
+      <span><strong>Mourne Windows &amp; Doors</strong>, 2 Newry Road, Hilltown, Newry, BT34 5TG</span>
+      <span>
+        <a href={phoneNiHref}>{phoneNi}</a>
+        {" · "}
+        <a href={phoneRoiHref}>{phoneRoi}</a>
+        {" · "}
+        <a href={`mailto:${email}`}>{email}</a>
+      </span>
     </div>
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-mw-tab]");
-    const panels = document.querySelectorAll<HTMLElement>("[data-mw-panel]");
-    const selectSystem = (id: string | undefined) => {
+    const header = document.getElementById("mw-header");
+    const sentinel = document.getElementById("mw-hero-sentinel");
+    if (header && sentinel) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          header.classList.toggle("is-scrolled", !entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      observer.observe(sentinel);
+    }
+
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-mw-tab]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-mw-panel]"));
+
+    const selectSystem = (id: string | undefined, focusTab = false) => {
       if (!id) return;
       tabs.forEach((t) => {
         const active = t.dataset.mwTab === id;
         t.classList.toggle("is-active", active);
         t.setAttribute("aria-selected", String(active));
+        t.setAttribute("tabindex", active ? "0" : "-1");
+        if (active && focusTab) t.focus();
       });
       panels.forEach((p) => {
         p.hidden = p.dataset.mwPanel !== id;
       });
     };
-    tabs.forEach((tab) => {
+
+    tabs.forEach((tab, index) => {
       tab.addEventListener("click", () => selectSystem(tab.dataset.mwTab));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          selectSystem(tabs[(index + 1) % tabs.length]?.dataset.mwTab, true);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          selectSystem(tabs[(index - 1 + tabs.length) % tabs.length]?.dataset.mwTab, true);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          selectSystem(tabs[0]?.dataset.mwTab, true);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          selectSystem(tabs[tabs.length - 1]?.dataset.mwTab, true);
+        }
+      });
     });
 
     const dropWrap = document.querySelector<HTMLElement>("[data-mw-drop]");
@@ -392,7 +457,10 @@ const systems = [
     const prodSelect = document.getElementById("mw-product") as HTMLSelectElement | null;
     document.querySelectorAll<HTMLElement>("[data-mw-pick]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        if (prodSelect && btn.dataset.mwPick) prodSelect.value = btn.dataset.mwPick;
+        if (prodSelect && btn.dataset.mwPick) {
+          prodSelect.value = btn.dataset.mwPick;
+          prodSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       });
     });
 
@@ -409,7 +477,7 @@ const systems = [
         String(d.get("notes") || ""),
       ].join("\n");
       const to = form.dataset.email ?? "";
-      const subject = `Free Home Survey Request — ${d.get("product")}`;
+      const subject = `Free home survey request: ${d.get("product")}`;
       const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
         window.location.href = url;

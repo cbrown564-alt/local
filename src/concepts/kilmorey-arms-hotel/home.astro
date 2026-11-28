@@ -34,33 +34,67 @@ const mapHref = "https://www.google.com/maps/search/?api=1&query=41-43+Greencast
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;500;600;700&display=swap";
 
-const doors = [
+const pillars = [
   {
-    eyebrow: "24 En-Suite Bedrooms",
-    title: "Stay in the Kingdom of Mourne",
-    detail: "Single, Double, King, Family & Executive Suites — all including a full Irish breakfast, pillow menu and free car parking. Best rates direct.",
-    cta: "Check live room rates ↗",
-    href: bookUrl,
+    id: "bedrooms",
+    tabLabel: "24 en-suite bedrooms",
+    heading: "Refurbished rooms with full Irish breakfast and harbour calm",
+    summary:
+      "Every stay on Greencastle Street includes a freshly cooked full Irish breakfast, our pillow menu, dedicated workspace, luxury toiletries, Wi-Fi, and free car parking, with best rates booked direct.",
+    rows: [
+      { label: "Room types", value: "Single, Double, King, Family, and Executive Suites" },
+      { label: "Included every morning", value: "Full Irish breakfast cooked to order" },
+      { label: "Direct guest comforts", value: "Pillow menu, luxury toiletries, Wi-Fi, and free parking" },
+    ],
+    ctaLabel: "Check live room rates ↗",
+    ctaHref: bookUrl,
+    ctaExternal: true,
+    secondaryLabel: "Browse dining and stay gift vouchers ↗",
+    secondaryHref: vouchersUrl,
+    secondaryExternal: true,
   },
   {
-    eyebrow: "Over-60s Midweek Break",
-    title: "Golden Years Getaway from £140pps",
-    detail: "Two relaxed midweek nights on Greencastle Street with full Irish breakfasts and a two-course evening dinner.",
-    cta: "Ask about Golden Years dates →",
-    href: "#enquire",
+    id: "seafood",
+    tabLabel: "Under One Mile seafood",
+    heading: "Every fish and shellfish dish sourced less than a mile from our kitchen",
+    summary:
+      "Sitting beside Northern Ireland's largest fishing port gives our kitchen a daily coastal harvest. Our chefs pair Kilkeel landings with County Down farm produce across the restaurant and licensed bar lounge, recognised with a 2026 Restaurant Guru award.",
+    rows: [
+      { label: "Harbour provenance", value: "All fish and shellfish landed under one mile away in Kilkeel" },
+      { label: "Dining spaces", value: "Harbourside restaurant and relaxed licensed bar lounge" },
+      { label: "Recognition", value: "2026 Restaurant Guru award" },
+    ],
+    ctaLabel: `Call ${phone} to book a table`,
+    ctaHref: phoneHref,
+    ctaExternal: false,
+    secondaryLabel: "Give a Kilmorey Arms dining voucher ↗",
+    secondaryHref: vouchersUrl,
+    secondaryExternal: true,
   },
   {
-    eyebrow: "Weddings & Conferences",
-    title: "Up to 300 Delegates · From £35/hr",
-    detail: "Dedicated Wedding Planner for bespoke Mourne receptions, plus flexible meeting & conference suites from £35 per room per hour.",
-    cta: "Enquire with our events team →",
-    href: "#enquire",
+    id: "gatherings",
+    tabLabel: "Weddings and Golden Years",
+    heading: "Bespoke Mourne weddings, midweek breaks, and conferences up to 300",
+    summary:
+      "Plan a coastal reception with our dedicated Wedding Planner, book our over-60s Golden Years Getaway midweek, or host meetings and conferences with full catering and free parking.",
+    rows: [
+      { label: "Golden Years Getaway", value: "From £140pps: 2 midweek nights B&B plus 2-course evening dinner" },
+      { label: "Weddings", value: "Dedicated Wedding Planner and bespoke Mourne wedding brochure" },
+      { label: "Conferences and meetings", value: "Up to 300 delegates, from £35 per room per hour" },
+    ],
+    ctaLabel: "Enquire with our events desk",
+    ctaHref: "#enquire",
+    ctaExternal: false,
+    secondaryLabel: "Request Golden Years midweek dates",
+    secondaryHref: "#enquire",
+    secondaryExternal: false,
+    enquiryPreset: "Golden Years Getaway (£140pps)",
   },
 ];
 ---
 
 <ConceptLayout
-  title="Kilmorey Arms Hotel — Kingdom of Mourne, Kilkeel, County Down"
+  title="Kilmorey Arms Hotel, Kilkeel, County Down"
   slug="kilmorey-arms-hotel"
   bodyClass="concept-page concept-kilmorey"
   lang="en-GB"
@@ -69,27 +103,25 @@ const doors = [
   fontHref={fontHref}
   bannerNote="The coastal hotel dining lounge and Kilkeel seafood plate are AI-generated visualisations. Room bookings and gift vouchers hand straight to Kilmorey Arms Hotel's own portals; wedding and event enquiries compose an email to info@kilmoreyarmshotel.co.uk."
 >
-  <header class="ka-header">
+  <header class="ka-header" id="ka-header">
     <div class="ka-wrap ka-header-inner">
-      <a class="ka-brand" href="#top">
-        <strong>Kilmorey Arms Hotel</strong>
-        <small>41–43 Greencastle Street · Kilkeel · Kingdom of Mourne</small>
-      </a>
+      <a class="ka-brand" href="#top">Kilmorey Arms Hotel</a>
       <nav class="ka-nav" aria-label="Kilmorey Arms Hotel">
-        <a href="#doors">Rooms &amp; Offers</a>
-        <a href="#harbour">Under One Mile Seafood</a>
-        <a href="#enquire">Weddings &amp; Events</a>
+        <a href="#experience">Stay and dine</a>
+        <a href="#enquire">Weddings and events</a>
+        <a href={vouchersUrl} rel="noopener noreferrer">Gift vouchers</a>
       </nav>
       <div class="ka-header-right">
         <a class="ka-tel" href={phoneHref}>{phone}</a>
-        <a class="ka-book" href={bookUrl} rel="noopener noreferrer">Book Direct ↗</a>
+        <a class="ka-book" href={bookUrl} rel="noopener noreferrer">Book direct</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="ka-main">
     <section class="ka-hero" aria-labelledby="ka-hero-title">
-      <figure class="ka-hero-media">
+      <div class="ka-hero-sentinel" id="ka-hero-sentinel" aria-hidden="true"></div>
+      <div class="ka-hero-media">
         <ResponsiveImage
           src="/media/concepts/kilmorey-arms-hotel/kilmorey-arms-coastal-lounge.jpg"
           alt="Refined coastal Irish hotel dining room with white-linen tables and brass lamps overlooking blue Atlantic harbour waters and Mourne peaks"
@@ -99,134 +131,188 @@ const doors = [
           sizes="100vw"
           class="ka-hero-img"
         />
-        <figcaption class="ka-hero-cap">Kingdom of Mourne coastal hotel atmosphere. Visualisation (AI-generated).</figcaption>
-      </figure>
+      </div>
       <div class="ka-hero-scrim" aria-hidden="true"></div>
 
       <div class="ka-wrap ka-hero-inner">
-        <p class="ka-kicker">Kilkeel · Northern Ireland's Largest Fishing Port</p>
-        <h1 id="ka-hero-title">Where the Mournes meet Kilkeel harbour.</h1>
-        <p class="ka-lede">
-          Twenty-four refurbished en-suite bedrooms with full Irish breakfast,
-          shellfish landed less than a mile away, and midweek Golden Years breaks from £140pps.
-        </p>
-        <div class="ka-hero-actions">
-          <a class="ka-btn ka-btn--gold" href={bookUrl} rel="noopener noreferrer">Book direct for best rates ↗</a>
-          <a class="ka-btn ka-btn--ghost" href={vouchersUrl} rel="noopener noreferrer">Gift Vouchers ↗</a>
+        <div class="ka-hero-copy">
+          <h1 id="ka-hero-title">Where the Mournes meet Kilkeel harbour.</h1>
+          <p class="ka-lede">
+            Twenty-four refurbished en-suite bedrooms, seafood landed less than a
+            mile away, and relaxed Golden Years breaks on Greencastle Street.
+          </p>
+          <a class="ka-btn ka-btn--gold" href={bookUrl} rel="noopener noreferrer">
+            Book direct for best rates
+          </a>
+        </div>
+      </div>
+
+      <div class="ka-hero-foot">
+        <div class="ka-wrap">
+          <p class="ka-hero-caption">Indicative Kingdom of Mourne coastal hotel lounge visualisation.</p>
         </div>
       </div>
     </section>
 
-    <section class="ka-doors" id="doors" aria-labelledby="ka-doors-title">
+    <section class="ka-stage" id="experience" aria-labelledby="ka-stage-title">
       <div class="ka-wrap">
-        <p class="ka-kicker ka-kicker--dark">Concierge · 41–43 Greencastle Street</p>
-        <h2 class="ka-section-h2" id="ka-doors-title">Rooms, Golden Years breaks &amp; Mourne celebrations.</h2>
+        <div class="ka-stage-head">
+          <h2 id="ka-stage-title">Stay, dine, and gather beside Northern Ireland's largest fishing port.</h2>
+          <SpecimenSheet
+            id="kilmorey-dossier"
+            triggerLabel="Rooms and offers dossier"
+            kicker="41–43 Greencastle Street, Kilkeel"
+            title="Rooms, Golden Years breaks, and functions"
+            subtitle="24 refurbished en-suite bedrooms, Kilkeel harbour dining, and celebrations for up to 300 guests."
+            groups={[
+              {
+                id: "stays",
+                label: "Bedrooms and direct breaks",
+                items: [
+                  { name: "24 refurbished en-suite bedrooms", note: "Single, Double, King, Family, and Executive Suites with full Irish breakfast, pillow menu, and free parking" },
+                  { name: "Golden Years midweek getaway", note: "Over-60s two-night midweek coastal break with full Irish breakfasts and a two-course evening dinner", meta: "From £140pps" },
+                ],
+              },
+              {
+                id: "events",
+                label: "Dining, weddings, and conferences",
+                items: [
+                  { name: "Kilkeel harbour restaurant and bar", note: "2026 Restaurant Guru award, with all fish and shellfish sourced less than a mile from our kitchen" },
+                  { name: "Conference and meeting suites", note: "Flexible setups for up to 300 delegates with catering and free parking", meta: "From £35/hr" },
+                  { name: "Mourne weddings and banquets", note: "Dedicated Wedding Planner and brochure for bespoke coastal ceremonies and receptions" },
+                ],
+              },
+            ]}
+            ctaLabel="Book direct for best rates ↗"
+            ctaHref={bookUrl}
+            ctaExternal={true}
+            secondaryLabel="Enquire below"
+            secondaryHref="#enquire"
+            buttonClass="ka-dossier-btn"
+          />
+        </div>
 
-        <div class="ka-door-grid">
-          {doors.map((d) => (
-            <article class="ka-door">
-              <span class="ka-door-eyebrow">{d.eyebrow}</span>
-              <h3>{d.title}</h3>
-              <p>{d.detail}</p>
-              <a class="ka-door-link" href={d.href} rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}>{d.cta}</a>
-            </article>
+        <div class="ka-tablist" role="tablist" aria-label="Stay, dine, and gather at Kilmorey Arms Hotel">
+          {pillars.map((item, idx) => (
+            <button
+              type="button"
+              role="tab"
+              id={`ka-tab-${item.id}`}
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`ka-panel-${item.id}`}
+              tabindex={idx === 0 ? "0" : "-1"}
+              class:list={["ka-tab", { "is-active": idx === 0 }]}
+              data-ka-tab={item.id}
+            >
+              {item.tabLabel}
+            </button>
           ))}
         </div>
-      </div>
-    </section>
 
-    <section class="ka-harbour" id="harbour" aria-labelledby="ka-harbour-title">
-      <div class="ka-wrap ka-harbour-grid">
-        <div class="ka-harbour-copy">
-          <p class="ka-kicker">Kilkeel Harbour Provenance</p>
-          <h2 id="ka-harbour-title">All fish &amp; shellfish sourced from less than a mile away.</h2>
-          <p>
-            Sitting right beside Northern Ireland's largest fishing port gives
-            the Kilmorey Arms kitchen a genuine coastal edge. Our chefs pair
-            daily Kilkeel landings with County Down farm produce across both the
-            restaurant and our relaxed licensed bar lounge — recognised with a
-            <strong>2026 Restaurant Guru</strong> award.
-          </p>
-          <div class="ka-harbour-actions">
-            <a class="ka-btn ka-btn--gold" href={phoneHref}>Book a dining table · {phone}</a>
-            <SpecimenSheet
-              id="kilmorey-dossier"
-              triggerLabel="Open Rooms & Offers Dossier"
-              kicker="Kilmorey Arms Hotel · 41–43 Greencastle Street, Kilkeel"
-              title="Rooms, Golden Years Breaks & Functions"
-              subtitle="24 recently refurbished en-suite bedrooms, Kilkeel harbour dining, and celebrations up to 300 guests."
-              groups={[
-                {
-                  id: "stays",
-                  label: "Bedrooms & Direct Breaks",
-                  items: [
-                    { name: "24 Refurbished En-Suite Bedrooms", note: "Single, Double, King, Family & Executive Suites with full Irish breakfast, pillow menu & free parking" },
-                    { name: "Golden Years Midweek Getaway", note: "Popular midweek coastal break with dining & full Irish breakfast", meta: "From £140pps" },
-                  ],
-                },
-                {
-                  id: "events",
-                  label: "Dining, Weddings & Conferences",
-                  items: [
-                    { name: "Kilkeel Harbour Restaurant & Bar", note: "2026 Restaurant Guru award — all fish & shellfish sourced less than a mile from our kitchen" },
-                    { name: "Conference & Meeting Suites", note: "Flexible setups for up to 300 delegates with catering & parking", meta: "From £35/hr" },
-                    { name: "Mourne Weddings & Banquets", note: "Dedicated family-run events team for coastal ceremonies & receptions" },
-                  ],
-                },
-              ]}
-              ctaLabel="Book direct for best rates ↗"
-              ctaHref={bookUrl}
-              ctaExternal={true}
-              secondaryLabel="Enquire below →"
-              secondaryHref="#enquire"
-            />
-            <a class="ka-btn ka-btn--ghost" href={vouchersUrl} rel="noopener noreferrer">Dining &amp; Stay Vouchers ↗</a>
+        <div class="ka-stage-grid">
+          <div class="ka-panels">
+            {pillars.map((item, idx) => (
+              <div
+                class="ka-panel"
+                role="tabpanel"
+                id={`ka-panel-${item.id}`}
+                aria-labelledby={`ka-tab-${item.id}`}
+                data-ka-panel={item.id}
+                hidden={idx !== 0}
+              >
+                <h3>{item.heading}</h3>
+                <p class="ka-panel-copy">{item.summary}</p>
+                <dl class="ka-ledger">
+                  {item.rows.map((row) => (
+                    <div class="ka-ledger-row">
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <div class="ka-panel-actions">
+                  <a
+                    class="ka-btn ka-btn--gold"
+                    href={item.ctaHref}
+                    rel={item.ctaExternal ? "noopener noreferrer" : undefined}
+                    data-ka-preset={item.id === "gatherings" ? "Wedding Brochure and Date" : undefined}
+                  >
+                    {item.ctaLabel}
+                  </a>
+                  <a
+                    class="ka-inline-link"
+                    href={item.secondaryHref}
+                    rel={item.secondaryExternal ? "noopener noreferrer" : undefined}
+                    data-ka-preset={item.enquiryPreset}
+                  >
+                    {item.secondaryLabel}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
 
-        <figure class="ka-seafood-plate">
-          <ResponsiveImage
-            src="/media/concepts/kilmorey-arms-hotel/kilmorey-arms-kilkeel-seafood.jpg"
-            alt="Pan-roasted local white fish fillet and glossy roasted langoustines with lemon herb butter on pale porcelain"
-            width={1200}
-            height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="ka-seafood-img"
-          />
-          <figcaption>Kilkeel fishing-port seafood dining mood. Visualisation (AI-generated).</figcaption>
-        </figure>
+          <figure class="ka-seafood-plate">
+            <ResponsiveImage
+              src="/media/concepts/kilmorey-arms-hotel/kilmorey-arms-kilkeel-seafood.jpg"
+              alt="Pan-roasted local white fish fillet and glossy roasted langoustines with lemon herb butter on pale porcelain"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 48vw"
+              class="ka-seafood-img"
+            />
+            <figcaption>Indicative Kilkeel harbour seafood dining visualisation.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <section class="ka-enquire" id="enquire" aria-labelledby="ka-enquire-title">
       <div class="ka-wrap ka-enquire-grid">
-        <div>
-          <p class="ka-kicker ka-kicker--dark">Weddings, Conferences &amp; Breaks</p>
+        <div class="ka-enquire-copy">
           <h2 id="ka-enquire-title">Speak with our Wedding Planner or front desk.</h2>
           <p>
-            Whether you are requesting our Wedding Brochure, booking our
-            conference suite (up to 300 delegates, from £35/hr), or reserving a
-            £140pps Golden Years midweek getaway, send your note straight to{" "}
+            Request our Wedding Brochure, book a conference suite for up to 300
+            delegates from £35 per room per hour, or reserve a £140pps Golden
+            Years midweek getaway. Write straight to{" "}
             <a href={`mailto:${email}`}>{email}</a> or call{" "}
-            <a href={phoneHref}><strong>{phoneIntl}</strong></a>.
+            <a href={phoneHref}>{phoneIntl}</a>.
           </p>
-          <p class="ka-addr">
-            <strong>41–43 Greencastle Street, Kilkeel, County Down, BT34 4BH</strong><br />
-            <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a> ·{" "}
-            <a href={facebook} rel="noopener noreferrer">Facebook ↗</a> ·{" "}
-            <a href={instagram} rel="noopener noreferrer">Instagram ↗</a>
-          </p>
+          <dl class="ka-contact-ledger">
+            <div>
+              <dt>Address</dt>
+              <dd>41–43 Greencastle Street, Kilkeel, County Down, BT34 4BH</dd>
+            </div>
+            <div>
+              <dt>Direct bookings and vouchers</dt>
+              <dd>
+                <a href={bookUrl} rel="noopener noreferrer">Online room bookings ↗</a>
+                {" · "}
+                <a href={vouchersUrl} rel="noopener noreferrer">Gift vouchers ↗</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Find us</dt>
+              <dd>
+                <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+                {" · "}
+                <a href={instagram} rel="noopener noreferrer">Instagram ↗</a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form class="ka-form" id="ka-form" data-email={email}>
           <div class="ka-row">
             <label>
               <span>Enquiry type</span>
-              <select name="kind">
-                <option value="Wedding Brochure & Date">Wedding Brochure &amp; Date</option>
+              <select name="kind" id="ka-kind">
+                <option value="Wedding Brochure and Date">Wedding brochure and date</option>
                 <option value="Golden Years Getaway (£140pps)">Golden Years Getaway (£140pps)</option>
-                <option value="Conference / Meeting Suite">Conference / Meeting Suite (from £35/hr)</option>
-                <option value="Dining / Group Booking">Dining or Group Stay</option>
+                <option value="Conference or Meeting Suite">Conference or meeting suite (from £35/hr)</option>
+                <option value="Dining or Group Stay">Dining or group stay</option>
               </select>
             </label>
             <label>
@@ -246,13 +332,13 @@ const doors = [
           </div>
           <label>
             <span>Estimated guests or notes</span>
-            <textarea name="notes" rows="2"></textarea>
+            <textarea name="notes" rows="3"></textarea>
           </label>
-          <button class="ka-btn ka-btn--navy ka-btn--full" type="submit">Open enquiry email →</button>
+          <button class="ka-btn ka-btn--navy ka-btn--full" type="submit">Open enquiry email</button>
         </form>
       </div>
 
-      <div class="ka-wrap" style="margin-top: 44px;">
+      <div class="ka-wrap ka-map-wrap">
         <LocalAreaMap
           id="kilmorey-map"
           businessName="Kilmorey Arms Hotel"
@@ -261,9 +347,9 @@ const doors = [
           lat={54.060}
           spanKm={16}
           radiusKm={2.2}
-          radiusLabel="Kilkeel Harbour · < 1 mile"
+          radiusLabel="Kilkeel Harbour (< 1 mile)"
           mapHref={mapHref}
-          kicker="Kingdom of Mourne & Kilkeel Harbour"
+          kicker=""
           markers={[
             { name: "Kilkeel Harbour", lon: -5.993, lat: 54.055, note: "< 1 mile", side: "r" },
             { name: "Cranfield Point", lon: -6.045, lat: 54.022, note: "7 mins", side: "l" },
@@ -277,12 +363,78 @@ const doors = [
 
   <footer class="ka-footer">
     <div class="ka-wrap ka-footer-inner">
-      <span><strong>Kilmorey Arms Hotel</strong> · 41–43 Greencastle Street, Kilkeel, County Down, BT34 4BH</span>
-      <span><a href={phoneHref}>{phoneIntl}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={bookUrl} rel="noopener noreferrer">Book Direct ↗</a></span>
+      <span><strong>Kilmorey Arms Hotel</strong>, 41–43 Greencastle Street, Kilkeel, County Down, BT34 4BH</span>
+      <span>
+        <a href={phoneHref}>{phoneIntl}</a>
+        {" · "}
+        <a href={`mailto:${email}`}>{email}</a>
+        {" · "}
+        <a href={bookUrl} rel="noopener noreferrer">Book direct ↗</a>
+      </span>
     </div>
   </footer>
 
   <script>
+    const header = document.getElementById("ka-header");
+    const sentinel = document.getElementById("ka-hero-sentinel");
+    if (header && sentinel) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          header.classList.toggle("is-scrolled", !entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      observer.observe(sentinel);
+    }
+
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-ka-tab]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-ka-panel]"));
+
+    const activateTab = (id: string | undefined, focusTab = false) => {
+      if (!id) return;
+      tabs.forEach((tab) => {
+        const active = tab.dataset.kaTab === id;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+        if (active && focusTab) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.kaPanel !== id;
+      });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activateTab(tab.dataset.kaTab));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          activateTab(tabs[(index + 1) % tabs.length]?.dataset.kaTab, true);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          activateTab(tabs[(index - 1 + tabs.length) % tabs.length]?.dataset.kaTab, true);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          activateTab(tabs[0]?.dataset.kaTab, true);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          activateTab(tabs[tabs.length - 1]?.dataset.kaTab, true);
+        }
+      });
+    });
+
+    const kindSelect = document.getElementById("ka-kind") as HTMLSelectElement | null;
+    document.querySelectorAll<HTMLElement>("[data-ka-preset]").forEach((el) => {
+      el.addEventListener("click", () => {
+        if (kindSelect && el.dataset.kaPreset) {
+          kindSelect.value = el.dataset.kaPreset;
+          kindSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    });
+
     const form = document.getElementById("ka-form") as HTMLFormElement | null;
     form?.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -290,14 +442,14 @@ const doors = [
       const kind = String(d.get("kind") || "Enquiry");
       const body = [
         `Enquiry: ${kind}`,
-        `Date / month: ${d.get("date") || "To confirm"}`,
+        `Date or month: ${d.get("date") || "To confirm"}`,
         `Name: ${d.get("name") || ""}`,
         `Phone: ${d.get("phone") || ""}`,
         "",
         String(d.get("notes") || ""),
       ].join("\n");
       const to = form.dataset.email ?? "";
-      const subject = `${kind} — Kilmorey Arms Hotel, Kilkeel`;
+      const subject = `${kind}: Kilmorey Arms Hotel, Kilkeel`;
       const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
         window.location.href = url;

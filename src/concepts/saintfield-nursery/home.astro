@@ -2,6 +2,7 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
 /* Saintfield Nursery Centre — 88 Belfast Road, Saintfield, Co. Down, BT24 7HF.
@@ -23,32 +24,43 @@ const mapHref = "https://www.google.com/maps/search/?api=1&query=88+Belfast+Road
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap";
 
+const seasons = ["Spring", "Summer", "Autumn", "Winter"];
+const foliageTypes = ["Evergreen", "Semi-Evergreen", "Deciduous"];
+const colours = [
+  { value: "White and cream", label: "White and cream" },
+  { value: "Purple and blue", label: "Purple and blue" },
+  { value: "Pink and red", label: "Pink and red" },
+  { value: "Yellow and green", label: "Yellow and green" },
+];
+
 const departments = [
   {
-    no: "01",
-    name: "Hardy Plants & Perennials",
-    detail: "Seasonal colour for Spring, Summer, Autumn and Winter — evergreen, semi-evergreen and deciduous varieties suited to County Down gardens.",
+    name: "Hardy plants and perennials",
+    detail:
+      "Seasonal colour for Spring, Summer, Autumn, and Winter, with evergreen, semi-evergreen, and deciduous varieties suited to County Down gardens.",
   },
   {
-    no: "02",
-    name: "Garden Supplies & Compost",
-    detail: "Everyday tools, pots, compost and feeds for borders, containers and kitchen gardens.",
+    name: "Garden supplies and compost",
+    detail:
+      "Everyday tools, pots, compost, and plant feeds for borders, containers, and kitchen gardens.",
   },
   {
-    no: "03",
-    name: "Garden Furniture & Seasonal Shop",
-    detail: "Outdoor furniture for warmer months and a full Christmas shop of decorations and lights each winter.",
+    name: "Garden furniture and seasonal displays",
+    detail:
+      "Outdoor furniture for warmer months and a full Christmas shop of decorations and lights each winter.",
   },
   {
-    no: "04",
-    name: "Gift Vouchers",
-    detail: "An easy gift for County Down gardeners — pick up in Saintfield or enquire online.",
+    name: "Gift vouchers",
+    detail:
+      "A practical present for County Down gardeners, available to collect in Saintfield or order online.",
+    linkLabel: "Order Saintfield Nursery gift vouchers ↗",
+    linkHref: vouchersUrl,
   },
 ];
 ---
 
 <ConceptLayout
-  title="Saintfield Nursery Centre — Plants, Garden Supplies & Vouchers, 88 Belfast Road"
+  title="Saintfield Nursery Centre, 88 Belfast Road, Saintfield"
   slug="saintfield-nursery"
   bodyClass="concept-page concept-saintfieldnursery"
   lang="en-GB"
@@ -57,16 +69,13 @@ const departments = [
   fontHref={fontHref}
   bannerNote="The glasshouse and potting bench scenes are AI-generated visualisations. Plant stock checks compose an email to shop@saintfieldnurserycentre.co.uk or call 028 9081 4331; gift vouchers link to Saintfield Nursery Centre's shop."
 >
-  <header class="sn-header">
+  <header class="sn-header" id="sn-header">
     <div class="sn-wrap sn-header-inner">
-      <a class="sn-brand" href="#top">
-        <strong>Saintfield Nursery Centre</strong>
-        <small>88 Belfast Road · Saintfield · BT24 7HF</small>
-      </a>
+      <a class="sn-brand" href="#top">Saintfield Nursery</a>
       <nav class="sn-nav" aria-label="Saintfield Nursery Centre">
-        <a href="#finder">Plant Finder</a>
-        <a href="#departments">In the Nursery</a>
-        <a href="#visit">Visit &amp; Vouchers</a>
+        <a href="#finder">Plant finder</a>
+        <a href="#departments">In the nursery</a>
+        <a href="#visit">Visit and vouchers</a>
       </nav>
       <a class="sn-header-tel" href={phoneHref}>{phone}</a>
     </div>
@@ -74,185 +83,323 @@ const departments = [
 
   <main id="top" class="sn-main">
     <section class="sn-hero" aria-labelledby="sn-hero-title">
-      <div class="sn-wrap sn-hero-grid">
-        <div class="sn-hero-copy">
-          <p class="sn-kicker">County Down Plant Nursery &amp; Garden Centre</p>
-          <h1 id="sn-hero-title">Grown for real gardens <em>along the Belfast Road.</em></h1>
-          <p class="sn-lede">
-            Hardy perennials, evergreens, garden furniture, everyday supplies,
-            seasonal displays and gift vouchers at 88 Belfast Road, Saintfield.
-          </p>
-          <div class="sn-hero-actions">
-            <a class="sn-btn sn-btn--sage" href="#finder">Use the Plant Stock Finder</a>
-            <a class="sn-btn sn-btn--clay" href={vouchersUrl} rel="noopener noreferrer">Gift Vouchers ↗</a>
-          </div>
-        </div>
+      <div class="sn-hero-sentinel" id="sn-hero-sentinel" aria-hidden="true"></div>
+      <div class="sn-wrap sn-hero-lockup">
+        <h1 id="sn-hero-title">Grown for real gardens along the Belfast Road.</h1>
+        <p class="sn-lede">
+          Hardy perennials, evergreens, garden furniture, everyday supplies, and
+          seasonal displays at 88 Belfast Road, Saintfield.
+        </p>
+        <a class="sn-btn sn-btn--forest" href="#finder">Explore the plant finder</a>
+      </div>
 
-        <figure class="sn-hero-plate">
+      <div class="sn-wrap sn-hero-stage">
+        <div class="sn-hero-media">
           <ResponsiveImage
             src="/media/concepts/saintfield-nursery/saintfield-nursery-glasshouse.jpg"
             alt="Sunlit nursery conservatory glasshouse lined with terracotta pots, flowering perennials and trailing evergreens on timber benches"
             width={1376}
             height={768}
             loading="eager"
-            sizes="(max-width: 960px) 100vw, 54vw"
+            sizes="(max-width: 1360px) 92vw, 1240px"
             class="sn-hero-img"
           />
-          <figcaption>Sunlit nursery glasshouse atmosphere. Visualisation (AI-generated).</figcaption>
-        </figure>
+        </div>
+        <p class="sn-hero-caption">Indicative sunlit timber glasshouse visualisation.</p>
       </div>
     </section>
 
     <section class="sn-finder" id="finder" aria-labelledby="sn-finder-title">
       <div class="sn-wrap">
-        <div class="sn-finder-box">
-          <div class="sn-finder-head">
-            <div>
-              <p class="sn-kicker">Botanical Stock Check · 88 Belfast Road</p>
-              <h2 id="sn-finder-title">Tell us what you are planting — we'll check the benches.</h2>
-            </div>
-            <p class="sn-finder-note">
-              Pick the season, foliage type and border colour you have in mind.
-              We'll assemble a clear plant-stock note straight to{" "}
-              <a href={`mailto:${email}`}>{email}</a> or ring{" "}
-              <a href={phoneHref}>{phone}</a>.
-            </p>
+        <div class="sn-finder-head">
+          <h2 id="sn-finder-title">Tell us what you are planting and we will check the benches.</h2>
+          <p class="sn-finder-note">
+            Choose your peak season, foliage, and border colour to send a clear
+            stock note straight to <a href={`mailto:${email}`}>{email}</a> or
+            call <a href={phoneHref}>{phone}</a>.
+          </p>
+        </div>
+
+        <form class="sn-finder-form" id="sn-finder-form" data-email={email}>
+          <div class="sn-filter-grid">
+            <fieldset class="sn-filter-group">
+              <legend>Peak season</legend>
+              <div class="sn-seg-track sn-seg-track--4">
+                {seasons.map((season, i) => (
+                  <label class="sn-seg-item">
+                    <input
+                      type="radio"
+                      name="season"
+                      value={season}
+                      checked={i === 0}
+                      data-sn-filter="season"
+                    />
+                    <span>{season}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset class="sn-filter-group">
+              <legend>Foliage type</legend>
+              <div class="sn-seg-track sn-seg-track--3">
+                {foliageTypes.map((foliage, i) => (
+                  <label class="sn-seg-item">
+                    <input
+                      type="radio"
+                      name="foliage"
+                      value={foliage}
+                      checked={i === 0}
+                      data-sn-filter="foliage"
+                    />
+                    <span>{foliage}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset class="sn-filter-group sn-filter-group--wide">
+              <legend>Colour palette</legend>
+              <div class="sn-seg-track sn-seg-track--4">
+                {colours.map((colour, i) => (
+                  <label class="sn-seg-item">
+                    <input
+                      type="radio"
+                      name="colour"
+                      value={colour.value}
+                      checked={i === 0}
+                      data-sn-filter="colour"
+                    />
+                    <span>{colour.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
           </div>
 
-          <form class="sn-finder-form" id="sn-finder-form" data-email={email}>
-            <div class="sn-chip-groups">
-              <div class="sn-chip-group">
-                <span class="sn-chip-label">Peak Season</span>
-                <div class="sn-chips" data-group="season">
-                  <button type="button" class="sn-chip is-active" data-val="Spring">Spring</button>
-                  <button type="button" class="sn-chip" data-val="Summer">Summer</button>
-                  <button type="button" class="sn-chip" data-val="Autumn">Autumn</button>
-                  <button type="button" class="sn-chip" data-val="Winter">Winter</button>
-                </div>
-              </div>
+          <div class="sn-finder-inputs">
+            <label>
+              <span>Specific plant, height, or border notes</span>
+              <input name="details" placeholder="e.g. 1m evergreen hedging or shade perennials" />
+            </label>
+            <label>
+              <span>Your name and phone</span>
+              <input name="who" placeholder="Name and callback number" required />
+            </label>
+            <button class="sn-btn sn-btn--forest" type="submit">Ask the nursery</button>
+          </div>
 
-              <div class="sn-chip-group">
-                <span class="sn-chip-label">Foliage</span>
-                <div class="sn-chips" data-group="foliage">
-                  <button type="button" class="sn-chip is-active" data-val="Evergreen">Evergreen</button>
-                  <button type="button" class="sn-chip" data-val="Semi-Evergreen">Semi-Evergreen</button>
-                  <button type="button" class="sn-chip" data-val="Deciduous">Deciduous</button>
-                </div>
-              </div>
-
-              <div class="sn-chip-group">
-                <span class="sn-chip-label">Colour Note</span>
-                <div class="sn-chips" data-group="colour">
-                  <button type="button" class="sn-chip is-active" data-val="White / Cream">White &amp; Cream</button>
-                  <button type="button" class="sn-chip" data-val="Purple / Blue">Purple &amp; Blue</button>
-                  <button type="button" class="sn-chip" data-val="Pink / Red">Pink &amp; Red</button>
-                  <button type="button" class="sn-chip" data-val="Yellow / Green">Yellow &amp; Green</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="sn-finder-inputs">
-              <label>
-                <span>Specific plant, height or border notes</span>
-                <input name="details" placeholder="e.g. 1m evergreen hedging or shade perennials" />
-              </label>
-              <label>
-                <span>Your name &amp; phone</span>
-                <input name="who" placeholder="Name and callback number" required />
-              </label>
-              <button class="sn-btn sn-btn--sage" type="submit">Ask the nursery →</button>
-            </div>
-            <p class="sn-summary-line" id="sn-summary-line">Selected: Spring · Evergreen · White &amp; Cream</p>
-          </form>
-        </div>
+          <p class="sn-summary-line" id="sn-summary-line">
+            Selected: Spring, Evergreen, White and cream
+          </p>
+        </form>
       </div>
     </section>
 
     <section class="sn-depts" id="departments" aria-labelledby="sn-depts-title">
       <div class="sn-wrap sn-depts-grid">
         <div class="sn-depts-list">
-          <p class="sn-kicker">Through the Seasons</p>
           <h2 id="sn-depts-title">Four corners of Saintfield Nursery Centre.</h2>
-          <ol class="sn-ledger">
+          <ul class="sn-ledger">
             {departments.map((d) => (
               <li>
-                <span class="sn-no">{d.no}</span>
-                <div>
-                  <h3>{d.name}</h3>
-                  <p>{d.detail}</p>
-                </div>
+                <h3>{d.name}</h3>
+                <p>{d.detail}</p>
+                {d.linkHref && d.linkLabel && (
+                  <a class="sn-ledger-link" href={d.linkHref} rel="noopener noreferrer">
+                    {d.linkLabel}
+                  </a>
+                )}
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
 
-        <aside class="sn-potting-col" id="visit">
-          <figure class="sn-potting-plate">
-            <ResponsiveImage
-              src="/media/concepts/saintfield-nursery/saintfield-nursery-potting-bench.jpg"
-              alt="Terracotta pots, brass hand-trowel, garden twine and freshly potted shrubs on an aged wooden bench"
-              width={1200}
-              height={896}
-              sizes="(max-width: 960px) 100vw, 42vw"
-              class="sn-potting-img"
-            />
-            <figcaption>Potting bench &amp; nursery craft mood. Visualisation (AI-generated).</figcaption>
-          </figure>
+        <figure class="sn-potting-plate">
+          <ResponsiveImage
+            src="/media/concepts/saintfield-nursery/saintfield-nursery-potting-bench.jpg"
+            alt="Terracotta pots, brass hand-trowel, garden twine and freshly potted shrubs on an aged wooden bench"
+            width={1200}
+            height={896}
+            sizes="(max-width: 960px) 100vw, 46vw"
+            class="sn-potting-img"
+          />
+          <figcaption>Indicative potting bench and nursery craft visualisation.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-          <div class="sn-visit-card">
-            <h3>Visit us in Saintfield</h3>
-            <p><strong>88 Belfast Road, Saintfield, Co. Down, BT24 7HF</strong></p>
-            <p>Phone: <a href={phoneHref}>{phone}</a><br />Email: <a href={`mailto:${email}`}>{email}</a></p>
-            <div class="sn-visit-links">
-              <a class="sn-btn sn-btn--sage" href={mapHref} rel="noopener noreferrer">Directions ↗</a>
-              <a class="sn-btn sn-btn--outline" href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+    <section class="sn-visit" id="visit" aria-labelledby="sn-visit-title">
+      <div class="sn-wrap sn-visit-grid">
+        <div class="sn-visit-copy">
+          <h2 id="sn-visit-title">Visit us on the Belfast Road or send a question.</h2>
+          <p>
+            Call in to browse the benches, garden furniture, seasonal displays,
+            and Christmas shop, or order gift vouchers directly online. Ring{" "}
+            <a href={phoneHref}>{phone}</a> or write to{" "}
+            <a href={`mailto:${email}`}>{email}</a>.
+          </p>
+          <dl class="sn-visit-ledger">
+            <div>
+              <dt>Address</dt>
+              <dd>88 Belfast Road, Saintfield, Co. Down, BT24 7HF</dd>
             </div>
+            <div>
+              <dt>Telephone and email</dt>
+              <dd>
+                <a href={phoneHref}>{phone}</a>
+                {" · "}
+                <a href={`mailto:${email}`}>{email}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Helpful links</dt>
+              <dd>
+                <a href={vouchersUrl} rel="noopener noreferrer">Gift vouchers ↗</a>
+                {" · "}
+                <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <form class="sn-visit-form" id="sn-visit-form" data-email={email}>
+          <div class="sn-row">
+            <label>
+              <span>Enquiry topic</span>
+              <select name="topic">
+                <option value="Garden furniture and supplies">Garden furniture and supplies</option>
+                <option value="Seasonal displays and Christmas shop">Seasonal displays and Christmas shop</option>
+                <option value="Gift vouchers">Gift vouchers</option>
+                <option value="General nursery enquiry">General nursery enquiry</option>
+              </select>
+            </label>
+            <label>
+              <span>Your name</span>
+              <input name="name" autocomplete="name" required />
+            </label>
           </div>
-        </aside>
+          <label>
+            <span>Phone number</span>
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </label>
+          <label>
+            <span>How can we help</span>
+            <textarea name="message" rows="3" placeholder="Tell us what you are looking for in the nursery"></textarea>
+          </label>
+          <button class="sn-btn sn-btn--forest sn-btn--full" type="submit">Open enquiry email</button>
+        </form>
+      </div>
+
+      <div class="sn-wrap sn-map-wrap">
+        <LocalAreaMap
+          id="saintfield-nursery-map"
+          businessName="Saintfield Nursery"
+          address="88 Belfast Road, Saintfield, Co. Down, BT24 7HF"
+          lon={-5.833}
+          lat={54.457}
+          spanKm={16}
+          radiusKm={4}
+          radiusLabel="Saintfield and A7 Belfast Road"
+          mapHref={mapHref}
+          kicker=""
+          markers={[
+            { name: "Crossgar", lon: -5.764, lat: 54.402, note: "8 mins", side: "r" },
+            { name: "Ballynahinch", lon: -5.897, lat: 54.402, note: "10 mins", side: "l" },
+            { name: "Comber", lon: -5.747, lat: 54.550, note: "14 mins", side: "r" },
+            { name: "Downpatrick", lon: -5.716, lat: 54.328, note: "18 mins", side: "r" },
+          ]}
+        />
       </div>
     </section>
   </main>
 
   <footer class="sn-footer">
     <div class="sn-wrap sn-footer-inner">
-      <span><strong>Saintfield Nursery Centre</strong> · 88 Belfast Road, Saintfield, Co. Down, BT24 7HF</span>
-      <span><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={vouchersUrl} rel="noopener noreferrer">Gift Vouchers ↗</a></span>
+      <span><strong>Saintfield Nursery Centre</strong>, 88 Belfast Road, Saintfield, Co. Down, BT24 7HF</span>
+      <span>
+        <a href={phoneHref}>{phone}</a>
+        {" · "}
+        <a href={`mailto:${email}`}>{email}</a>
+        {" · "}
+        <a href={vouchersUrl} rel="noopener noreferrer">Gift vouchers ↗</a>
+      </span>
     </div>
   </footer>
 
   <script>
+    const header = document.getElementById("sn-header");
+    const sentinel = document.getElementById("sn-hero-sentinel");
+    if (header && sentinel) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          header.classList.toggle("is-scrolled", !entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      observer.observe(sentinel);
+    }
+
     const state: Record<string, string> = {
       season: "Spring",
       foliage: "Evergreen",
-      colour: "White / Cream",
+      colour: "White and cream",
     };
     const summaryEl = document.getElementById("sn-summary-line");
-    document.querySelectorAll<HTMLElement>(".sn-chips").forEach((group) => {
-      const key = group.dataset.group;
-      group.querySelectorAll<HTMLButtonElement>(".sn-chip").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          group.querySelectorAll(".sn-chip").forEach((b) => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
-          if (key && btn.dataset.val) state[key] = btn.dataset.val;
-          if (summaryEl) summaryEl.textContent = `Selected: ${state.season} · ${state.foliage} · ${state.colour}`;
-        });
+    const updateSummary = () => {
+      if (summaryEl) {
+        summaryEl.textContent = `Selected: ${state.season}, ${state.foliage}, ${state.colour}`;
+      }
+    };
+
+    document.querySelectorAll<HTMLInputElement>("[data-sn-filter]").forEach((input) => {
+      input.addEventListener("change", () => {
+        const key = input.dataset.snFilter;
+        if (input.checked && key) {
+          state[key] = input.value;
+          updateSummary();
+        }
       });
     });
 
-    const form = document.getElementById("sn-finder-form") as HTMLFormElement | null;
-    form?.addEventListener("submit", (event) => {
+    const finderForm = document.getElementById("sn-finder-form") as HTMLFormElement | null;
+    finderForm?.addEventListener("submit", (event) => {
       event.preventDefault();
-      const d = new FormData(form);
+      const d = new FormData(finderForm);
       const body = [
-        "Plant Stock Enquiry — Saintfield Nursery Centre",
+        "Plant Stock Enquiry: Saintfield Nursery Centre",
         `Season: ${state.season}`,
         `Foliage: ${state.foliage}`,
         `Colour palette: ${state.colour}`,
         `Details: ${d.get("details") || "General advice"}`,
         `Contact: ${d.get("who") || ""}`,
       ].join("\n");
-      const to = form.dataset.email ?? "";
-      const subject = `Plant Finder Enquiry (${state.season} ${state.foliage})`;
+      const to = finderForm.dataset.email ?? "";
+      const subject = `Plant finder enquiry: ${state.season}, ${state.foliage}`;
+      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+        window.location.href = url;
+      }
+    });
+
+    const visitForm = document.getElementById("sn-visit-form") as HTMLFormElement | null;
+    visitForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const d = new FormData(visitForm);
+      const topic = String(d.get("topic") || "Nursery enquiry");
+      const body = [
+        `Topic: ${topic}`,
+        `Name: ${d.get("name") || ""}`,
+        `Phone: ${d.get("phone") || ""}`,
+        "",
+        String(d.get("message") || ""),
+      ].join("\n");
+      const to = visitForm.dataset.email ?? "";
+      const subject = `${topic}: Saintfield Nursery Centre`;
       const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
         window.location.href = url;

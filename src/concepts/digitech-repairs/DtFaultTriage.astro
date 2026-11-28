@@ -1,320 +1,219 @@
 ---
-/* DigiTech Repairs — Component-Level Fault Triage & Route Picker.
-   Helps customers match an appliance & symptom to Collection vs Workshop Drop-off
-   and loads the clean technical brief directly into the repair ticket. */
+/* DigiTech Repairs: Component-Level Fault Triage and Route Picker.
+   Matches equipment and symptom to workshop drop-off or local van collection
+   and pre-fills the repair intake form cleanly. */
 const categories = [
   {
     id: "tv",
     name: "Television / OLED",
     equipment: "Television",
-    route: "Drop-off to Ballykinlar Workshop",
-    routeValue: "Drop-off to Ballykinlar workshop (BT30 8DD)",
+    route: "Drop off at Ballykinlar workshop (BT30 8DD)",
+    routeValue: "Drop off at Ballykinlar workshop",
     symptoms: [
-      "Sound plays fine but screen goes dark / dim",
-      "Standby LED flashes, TV will not power on",
+      "Sound plays fine but screen goes dark or dim",
+      "Standby light flashes and TV will not power on",
       "HDMI port loose or intermittent signal",
       "Vertical lines or power-board click",
     ],
   },
   {
     id: "washer",
-    name: "Washer / Tumble Dryer",
+    name: "Washer / tumble dryer",
     equipment: "Washing Machine / Tumble Dryer",
-    route: "Arrange Collection (BT30 / BT33 / BT31 / BT24)",
+    route: "Arrange collection across BT30, BT33, BT31, or BT24",
     routeValue: "Arrange collection (BT30/BT33/BT31/BT24)",
     symptoms: [
       "Drum will not spin or stops mid-cycle",
-      "Water not draining / filter error code",
+      "Water not draining or filter error code",
       "Dryer tumbles but produces no heat",
       "Door interlock jammed after wash",
     ],
   },
   {
     id: "cooker",
-    name: "Electric Cooker / Oven",
+    name: "Electric cooker / oven",
     equipment: "Electric Cooker / Oven / Hob",
-    route: "Arrange Collection (BT30 / BT33 / BT31 / BT24)",
+    route: "Arrange collection across BT30, BT33, BT31, or BT24",
     routeValue: "Arrange collection (BT30/BT33/BT31/BT24)",
     symptoms: [
       "Fan runs but main oven stays cold",
       "Trips main fuseboard when switched on",
-      "Ceramic / induction hob zone dead",
+      "Ceramic or induction hob zone dead",
       "Grill element not heating evenly",
     ],
   },
   {
     id: "audio",
-    name: "Audio Hi-Fi / DJ Gear",
+    name: "Audio hi-fi / DJ gear",
     equipment: "Audio Hi-Fi / DJ Equipment",
-    route: "Drop-off to Ballykinlar Workshop",
-    routeValue: "Drop-off to Ballykinlar workshop (BT30 8DD)",
+    route: "Drop off at Ballykinlar workshop (BT30 8DD)",
+    routeValue: "Drop off at Ballykinlar workshop",
     symptoms: [
-      "Amplifier one channel crackling or silent",
+      "Amplifier channel crackling or silent",
       "Turntable speed drift or motor fault",
-      "DJ mixer fader / jack board replacement",
-      "Vintage receiver recap & bench service",
+      "DJ mixer fader or jack board repair",
+      "Vintage receiver recap and bench service",
     ],
   },
 ];
 ---
 
-<section class="dt-triage" id="triage" aria-labelledby="dt-triage-title">
-  <div class="dt-wrap">
+<section class="dt-section dt-triage" id="triage" aria-labelledby="dt-triage-title">
+  <div class="dt-wrap" data-dt-triage>
     <div class="dt-triage-head">
       <div>
-        <p class="dt-mono-tag">QUICK DIAGNOSTICS // SYMPTOM ROUTER</p>
         <h2 id="dt-triage-title">Pinpoint the fault before you bring it in.</h2>
+        <p class="dt-triage-intro">
+          Select your equipment and closest symptom to see whether we recommend bench drop-off in Ballykinlar or local collection, then load it directly into the repair form.
+        </p>
       </div>
-      <p class="dt-triage-sub">
-        Pick your equipment and tap the closest symptom to see whether we
-        recommend workshop bench drop-off or local van collection — then load it
-        straight into your repair ticket.
-      </p>
+      <div class="dt-route-readout">
+        <span class="dt-route-label">Recommended route</span>
+        <strong data-dt-route-out>{categories[0].route}</strong>
+      </div>
     </div>
 
-    <div class="dt-triage-box" data-dt-triage>
-      <div class="dt-triage-tabs" role="tablist" aria-label="Equipment category">
-        {categories.map((cat, idx) => (
-          <button
-            type="button"
-            role="tab"
-            class:list={["dt-t-tab", { "is-active": idx === 0 }]}
-            aria-selected={idx === 0 ? "true" : "false"}
-            data-dt-cat={cat.id}
-            data-dt-eq={cat.equipment}
-            data-dt-route={cat.route}
-            data-dt-route-val={cat.routeValue}
-          >
-            {cat.name}
-          </button>
-        ))}
-      </div>
+    <div class="dt-seg" role="tablist" aria-label="Equipment category">
+      {categories.map((cat, idx) => (
+        <button
+          type="button"
+          role="tab"
+          id={`dt-triage-tab-${cat.id}`}
+          aria-selected={idx === 0 ? "true" : "false"}
+          aria-controls={`dt-triage-panel-${cat.id}`}
+          tabindex={idx === 0 ? "0" : "-1"}
+          class:list={["dt-seg-item", { "is-active": idx === 0 }]}
+          data-dt-cat={cat.id}
+          data-dt-eq={cat.equipment}
+          data-dt-route={cat.route}
+          data-dt-route-val={cat.routeValue}
+        >
+          {cat.name}
+        </button>
+      ))}
+    </div>
 
-      <div class="dt-triage-body">
-        {categories.map((cat, idx) => (
-          <div class="dt-t-panel" role="tabpanel" data-dt-panel={cat.id} hidden={idx !== 0}>
-            <div class="dt-symptom-grid">
-              {cat.symptoms.map((sym, sIdx) => (
-                <button
-                  type="button"
-                  class:list={["dt-sym-pill", { "is-selected": sIdx === 0 }]}
-                  data-dt-sym={sym}
-                >
-                  {sym}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        <div class="dt-triage-foot">
-          <div class="dt-route-readout">
-            <span>RECOMMENDED ROUTE</span>
-            <strong data-dt-route-out>{categories[0].route}</strong>
-          </div>
-          <button type="button" class="dt-btn dt-btn--teal" data-dt-load-ticket>
-            Load into repair ticket →
-          </button>
+    {categories.map((cat, idx) => (
+      <div
+        id={`dt-triage-panel-${cat.id}`}
+        role="tabpanel"
+        aria-labelledby={`dt-triage-tab-${cat.id}`}
+        class:list={["dt-triage-panel", { "is-active": idx === 0 }]}
+        data-dt-triage-panel={cat.id}
+        hidden={idx !== 0}
+      >
+        <div class="dt-symptom-list" role="radiogroup" aria-label={`${cat.name} symptoms`}>
+          {cat.symptoms.map((sym, sIdx) => (
+            <button
+              type="button"
+              role="radio"
+              aria-checked={sIdx === 0 ? "true" : "false"}
+              class:list={["dt-symptom-row", { "is-selected": sIdx === 0 }]}
+              data-dt-sym={sym}
+            >
+              <span class="dt-radio-mark" aria-hidden="true"></span>
+              <span>{sym}</span>
+            </button>
+          ))}
         </div>
       </div>
+    ))}
+
+    <div class="dt-triage-foot">
+      <p>Bench diagnostics open Monday to Friday until 8:00pm and Saturday until 3:00pm.</p>
+      <button type="button" class="dt-btn dt-btn--teal" data-dt-load-ticket>
+        Load into repair ticket
+      </button>
     </div>
   </div>
 </section>
 
-<style>
-  .dt-triage {
-    padding: 68px 0;
-    background: var(--dt-pcb);
-    color: #f3f5f7;
-    border-top: 1px solid rgba(79, 214, 200, 0.16);
-    border-bottom: 1px solid rgba(79, 214, 200, 0.16);
-  }
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-dt-triage]");
+    if (!root) return;
 
-  .dt-triage-head {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 28px;
-    align-items: end;
-    margin-bottom: 28px;
-  }
+    const tabs = Array.from(root.querySelectorAll("[data-dt-cat]"));
+    const panels = Array.from(root.querySelectorAll("[data-dt-triage-panel]"));
+    const routeOut = root.querySelector("[data-dt-route-out]");
 
-  .dt-triage-head h2 {
-    margin: 0;
-    font-size: clamp(1.7rem, 3vw, 2.35rem);
-    line-height: 1.12;
-    color: #ffffff;
-  }
+    let activeEq = tabs[0]?.getAttribute("data-dt-eq") || "Television";
+    let activeRouteVal = tabs[0]?.getAttribute("data-dt-route-val") || "Drop off at Ballykinlar workshop";
+    let activeSym =
+      root.querySelector(".dt-symptom-row.is-selected")?.getAttribute("data-dt-sym") ||
+      "Sound plays fine but screen goes dark or dim";
 
-  .dt-triage-sub {
-    margin: 0;
-    font-size: 0.94rem;
-    color: rgba(243, 245, 247, 0.74);
-  }
+    const activateCategory = (id, moveFocus = false) => {
+      tabs.forEach((tab) => {
+        const active = tab.getAttribute("data-dt-cat") === id;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+        if (active) {
+          activeEq = tab.getAttribute("data-dt-eq") || activeEq;
+          activeRouteVal = tab.getAttribute("data-dt-route-val") || activeRouteVal;
+          if (routeOut) routeOut.textContent = tab.getAttribute("data-dt-route") || "";
+          if (moveFocus && tab instanceof HTMLElement) tab.focus();
+        }
+      });
 
-  .dt-triage-box {
-    background: var(--dt-panel);
-    border: 1px solid rgba(79, 214, 200, 0.24);
-  }
+      panels.forEach((panel) => {
+        const active = panel.getAttribute("data-dt-triage-panel") === id;
+        panel.classList.toggle("is-active", active);
+        panel.hidden = !active;
+        if (active) {
+          const sel = panel.querySelector(".dt-symptom-row.is-selected") || panel.querySelector(".dt-symptom-row");
+          if (sel) activeSym = sel.getAttribute("data-dt-sym") || "";
+        }
+      });
+    };
 
-  .dt-triage-tabs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid rgba(79, 214, 200, 0.2);
-  }
-
-  .dt-t-tab {
-    padding: 14px 16px;
-    border: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    background: transparent;
-    color: rgba(243, 245, 247, 0.72);
-    font: inherit;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 140ms ease, color 140ms ease;
-  }
-
-  .dt-t-tab:last-child {
-    border-right: 0;
-  }
-
-  .dt-t-tab.is-active {
-    background: rgba(79, 214, 200, 0.14);
-    color: var(--dt-teal-bright);
-    box-shadow: inset 0 -2px 0 var(--dt-teal-bright);
-  }
-
-  .dt-triage-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-
-  .dt-symptom-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .dt-sym-pill {
-    text-align: left;
-    padding: 13px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.03);
-    color: rgba(243, 245, 247, 0.88);
-    font: inherit;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
-  }
-
-  .dt-sym-pill:hover {
-    border-color: rgba(79, 214, 200, 0.5);
-  }
-
-  .dt-sym-pill.is-selected {
-    border-color: var(--dt-teal-bright);
-    background: rgba(31, 163, 150, 0.2);
-    color: #ffffff;
-    font-weight: 600;
-  }
-
-  .dt-triage-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .dt-route-readout {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .dt-route-readout span {
-    font-family: var(--dt-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    color: var(--dt-teal-bright);
-  }
-
-  .dt-route-readout strong {
-    font-size: 0.98rem;
-    color: #ffffff;
-  }
-
-  @media (max-width: 820px) {
-    .dt-triage-head,
-    .dt-symptom-grid {
-      grid-template-columns: 1fr;
-    }
-    .dt-triage-tabs {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
-
-<script>
-  const box = document.querySelector<HTMLElement>("[data-dt-triage]");
-  if (box) {
-    let activeEq = "Television";
-    let activeRouteVal = "Drop-off to Ballykinlar workshop (BT30 8DD)";
-    let activeSym = "Sound plays fine but screen goes dark / dim";
-
-    const routeOut = box.querySelector<HTMLElement>("[data-dt-route-out]");
-
-    box.querySelectorAll<HTMLButtonElement>("[data-dt-cat]").forEach((tab) => {
+    tabs.forEach((tab, idx) => {
       tab.addEventListener("click", () => {
-        const id = tab.dataset.dtCat || "tv";
-        activeEq = tab.dataset.dtEq || "Television";
-        activeRouteVal = tab.dataset.dtRouteVal || "";
-        if (routeOut) routeOut.textContent = tab.dataset.dtRoute || "";
-
-        box.querySelectorAll<HTMLButtonElement>("[data-dt-cat]").forEach((t) => {
-          const on = t === tab;
-          t.classList.toggle("is-active", on);
-          t.setAttribute("aria-selected", String(on));
-        });
-
-        box.querySelectorAll<HTMLElement>("[data-dt-panel]").forEach((panel) => {
-          const on = panel.dataset.dtPanel === id;
-          panel.hidden = !on;
-          if (on) {
-            const sel = panel.querySelector<HTMLButtonElement>(".dt-sym-pill.is-selected") || panel.querySelector<HTMLButtonElement>(".dt-sym-pill");
-            if (sel) activeSym = sel.dataset.dtSym || "";
-          }
-        });
+        const id = tab.getAttribute("data-dt-cat");
+        if (id) activateCategory(id);
+      });
+      tab.addEventListener("keydown", (e) => {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+        e.preventDefault();
+        let next = idx;
+        if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+        if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+        if (e.key === "Home") next = 0;
+        if (e.key === "End") next = tabs.length - 1;
+        const nextId = tabs[next]?.getAttribute("data-dt-cat");
+        if (nextId) activateCategory(nextId, true);
       });
     });
 
-    box.querySelectorAll<HTMLButtonElement>("[data-dt-sym]").forEach((pill) => {
-      pill.addEventListener("click", () => {
-        const panel = pill.closest("[data-dt-panel]");
-        panel?.querySelectorAll(".dt-sym-pill").forEach((p) => p.classList.toggle("is-selected", p === pill));
-        activeSym = pill.dataset.dtSym || "";
+    root.querySelectorAll("[data-dt-sym]").forEach((row) => {
+      row.addEventListener("click", () => {
+        const panel = row.closest("[data-dt-triage-panel]");
+        panel?.querySelectorAll("[data-dt-sym]").forEach((item) => {
+          const on = item === row;
+          item.classList.toggle("is-selected", on);
+          item.setAttribute("aria-checked", on ? "true" : "false");
+        });
+        activeSym = row.getAttribute("data-dt-sym") || "";
       });
     });
 
-    box.querySelector<HTMLButtonElement>("[data-dt-load-ticket]")?.addEventListener("click", () => {
-      const eqSel = document.querySelector<HTMLSelectElement>('#dt-form select[name="equipment"]');
-      const svcSel = document.querySelector<HTMLSelectElement>('#dt-form select[name="service"]');
-      const faultField = document.querySelector<HTMLTextAreaElement>('#dt-form textarea[name="fault"]');
-      if (eqSel) {
+    root.querySelector("[data-dt-load-ticket]")?.addEventListener("click", () => {
+      const eqSel = document.querySelector('#dt-form select[name="equipment"]');
+      const svcSel = document.querySelector('#dt-form select[name="service"]');
+      const faultField = document.querySelector('#dt-form textarea[name="fault"]');
+      if (eqSel instanceof HTMLSelectElement) {
         eqSel.value = activeEq;
         eqSel.dispatchEvent(new Event("change", { bubbles: true }));
       }
-      if (svcSel && activeRouteVal) {
+      if (svcSel instanceof HTMLSelectElement && activeRouteVal) {
         svcSel.value = activeRouteVal;
         svcSel.dispatchEvent(new Event("change", { bubbles: true }));
       }
-      if (faultField) faultField.value = activeSym;
+      if (faultField instanceof HTMLTextAreaElement) {
+        faultField.value = activeSym;
+      }
       document.getElementById("ticket")?.scrollIntoView({ behavior: "smooth" });
     });
-  }
+  })();
 </script>

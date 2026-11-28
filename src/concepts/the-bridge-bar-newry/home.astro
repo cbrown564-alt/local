@@ -2,10 +2,11 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
 
-/* The Bridge Bar — 53–55 North Street, Newry, BT34 1DD.
+/* The Bridge Bar: 53-55 North Street, Newry, BT34 1DD.
    Sources (live-fetched 26 Nov 2026): bridgebarnewry.com (/).
    - Home of Craft Beers, Cocktails & Premium Spirits in Newry.
    - Cocktails menu includes classics: Mojito, Strawberry Daiquiri, Long Island Iced Tea.
@@ -15,7 +16,7 @@ import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
      https://bridgebarnewry.com/wp-content/uploads/2026/04/2026-Bridge-Bar-Celebration-Event-Catering-150426.pdf
    - Live Buffet Dining Options PDF:
      https://bridgebarnewry.com/wp-content/uploads/2023/07/2023-Bridge-Bar-Buffet-Dining-Options-Brochure-2023.pdf
-   - Phone: 028 3026 1777 · Email: info@bridgebarnewry.com · Facebook.
+   - Phone: 028 3026 1777, Email: info@bridgebarnewry.com, Facebook.
    Brief: research/concepts/the-bridge-bar-newry/the-bridge-bar-newry-elevation-brief.md */
 
 const phone = "028 3026 1777";
@@ -30,51 +31,63 @@ const mapHref = "https://www.google.com/maps/search/?api=1&query=53-55+North+Str
 const fontHref =
   "https://fonts.googleapis.com/css2?family=Yeseva+One&family=DM+Sans:wght@400;500;600;700&display=swap";
 
-const pours = [
+const panels = [
   {
-    id: "gin",
-    label: "Gin Ledger",
-    title: "County Down & craft gin pairings poured properly.",
-    copy: "Our back bar carries an extensive range of premium gins — including local Shortcross, Jawbox, Tanqueray and Hendrick's — paired to order. Ask our bartenders for their latest G&T combination.",
-    highlights: ["Shortcross Gin (County Down)", "Jawbox Small Batch Gin", "Tanqueray & Hendrick's", "Bartender's Bespoke G&T Serves"],
+    id: "drinks",
+    label: "Gin and cocktails",
+    title: "Shortcross and Jawbox G&Ts, shaken classics, and craft pours.",
+    copy: "Our back bar pairs County Down Shortcross, Jawbox, Tanqueray, and Hendrick's with chilled tonics and botanical garnishes alongside freshly shaken cocktails and cold craft taps.",
+    rows: [
+      { name: "Shortcross and Jawbox G&Ts", note: "Local County Down and Belfast gins paired to order" },
+      { name: "Tanqueray and Hendrick's", note: "Classic premium gin serves with fresh botanicals" },
+      { name: "Shaken cocktail classics", note: "Fresh Mint Mojito, Strawberry Daiquiri, and Long Island Iced Tea" },
+      { name: "Craft beers and spirits", note: "Cold craft draught, rotating bottles, and top-shelf pours" },
+    ],
   },
   {
-    id: "cocktails",
-    label: "Cocktail Counter",
-    title: "Shaken classics for a proper night in Newry.",
-    copy: "From crisp Mojitos and Strawberry Daiquiris to Long Island Iced Teas and fresh house creations — mixed to order whether you're starting the evening or gathering friends.",
-    highlights: ["Fresh Mint Mojito", "Strawberry Daiquiri", "Long Island Iced Tea", "House & Seasonal Serves"],
+    id: "garden",
+    label: "Courtyard beer garden",
+    title: "A sheltered evening courtyard right off North Street.",
+    copy: "Step straight out from the main bar to our newly developed beer garden with sheltered booths, warm lighting, and room for evening groups.",
+    rows: [
+      { name: "Newly developed courtyard", note: "Outdoor booths and tables tucked behind 53-55 North Street" },
+      { name: "Full bar service outside", note: "Craft beers, cocktails, and G&Ts poured from the main counter" },
+      { name: "Reserved group areas", note: "Space set aside for birthdays, reunions, and work nights out" },
+      { name: "All-evening atmosphere", note: "Easy transition from early drinks into a late night in Newry" },
+    ],
   },
   {
-    id: "craft",
-    label: "Craft Beers & Spirits",
-    title: "Craft draught, bottles & premium spirits on North Street.",
-    copy: "Cold craft taps, rotating pours and top-shelf spirits served inside the main bar or straight out to our newly developed beer garden.",
-    highlights: ["Craft Beer Selection", "Premium Spirits Shelf", "Newly Developed Beer Garden", "53–55 North Street, Newry"],
+    id: "catering",
+    label: "Celebration catering",
+    title: "Full hot and cold buffet catering for 2026 milestones.",
+    copy: "Hosting a birthday, family celebration, or corporate night in Newry? We handle reserved areas, arrival drinks, and full buffet catering under one roof.",
+    rows: [
+      { name: "2026 celebration packages", note: "Hot and cold buffet menus tailored for milestone parties" },
+      { name: "Corporate and work nights", note: "Reserved seating, drinks on arrival, and group platters" },
+      { name: "Private beer garden groups", note: "Combine courtyard space with full buffet dining" },
+      { name: "Direct event planning", note: "Call 028 3026 1777 or download our 2026 PDF brochures below" },
+    ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="The Bridge Bar — Craft Beers, Cocktails, Gin & Celebrations, Newry"
+  title="The Bridge Bar: Craft Beers, Cocktails, Gin and Celebrations, Newry"
   slug="the-bridge-bar-newry"
   bodyClass="concept-page concept-bridgebar"
   lang="en-GB"
   businessName="The Bridge Bar"
   town="Newry"
   fontHref={fontHref}
-  bannerNote="The backlit cocktail counter and festoon-lit beer garden scenes are AI-generated visualisations. Event brochures link to The Bridge Bar's live 2026 PDFs; group enquiries compose an email to info@bridgebarnewry.com."
+  bannerNote="The backlit cocktail counter and festoon-lit courtyard beer garden scenes are indicative visualisations. Event brochures link to The Bridge Bar's live 2026 PDFs; group enquiries compose an email to info@bridgebarnewry.com."
 >
-  <header class="bb-header">
-    <div class="bb-wrap bb-header-inner">
-      <a class="bb-brand" href="#top">
-        <strong>The Bridge Bar</strong>
-        <small>53–55 North Street · Newry</small>
-      </a>
+  <header class="bb-header" data-bb-header>
+    <div class="bb-header-inner">
+      <a class="bb-brand" href="#top">The Bridge Bar</a>
       <nav class="bb-nav" aria-label="The Bridge Bar">
-        <a href="#ledger">Gin &amp; Cocktails</a>
-        <a href="#events">Beer Garden &amp; Catering</a>
-        <a href="#book">Book a Party</a>
+        <a href="#explore">Drinks and garden</a>
+        <a href="#book">Celebrations</a>
+        <a href="#location">Location</a>
       </nav>
       <a class="bb-header-tel" href={phoneHref}>{phone}</a>
     </div>
@@ -82,7 +95,9 @@ const pours = [
 
   <main id="top" class="bb-main">
     <section class="bb-hero" aria-labelledby="bb-hero-title">
-      <figure class="bb-hero-media">
+      <div class="bb-hero-sentinel" data-bb-sentinel aria-hidden="true"></div>
+
+      <div class="bb-hero-media">
         <ResponsiveImage
           src="/media/concepts/the-bridge-bar-newry/bridge-bar-cocktail-counter.jpg"
           alt="Moody copper and walnut bar counter with two chilled crystal coupe cocktails and a botanical gin goblet under warm amber glow"
@@ -92,37 +107,39 @@ const pours = [
           sizes="100vw"
           class="bb-hero-img"
         />
-        <figcaption class="bb-hero-cap">Late-evening cocktail &amp; gin counter mood. Visualisation (AI-generated).</figcaption>
-      </figure>
+      </div>
       <div class="bb-hero-scrim" aria-hidden="true"></div>
 
-      <div class="bb-wrap bb-hero-inner">
-        <p class="bb-kicker">North Street, Newry · Craft Beer, Cocktail &amp; Gin Bar</p>
-        <h1 id="bb-hero-title">A great night in Newry starts at the bar.</h1>
-        <p class="bb-lede">
-          Shortcross and Jawbox G&amp;Ts, shaken cocktail classics, cold craft
-          beers, our courtyard beer garden and full celebration buffet catering.
-        </p>
-        <div class="bb-hero-actions">
+      <div class="bb-wrap bb-hero-content">
+        <div class="bb-hero-copy">
+          <h1 id="bb-hero-title">A great night in Newry starts at the bar.</h1>
+          <p class="bb-lede">
+            Shortcross and Jawbox G&amp;Ts, shaken cocktails, craft beers, a courtyard beer
+            garden, and celebration catering on North Street.
+          </p>
           <a class="bb-btn bb-btn--copper" href="#book">Book a celebration or group</a>
-          <a class="bb-btn bb-btn--ghost" href={catering2026Pdf} rel="noopener noreferrer">2026 Celebration Catering PDF ↗</a>
+        </div>
+
+        <div class="bb-hero-foot">
+          <p class="bb-hero-meta">53-55 North Street, Newry, BT34 1DD</p>
+          <p class="bb-hero-caption">Late-evening cocktail and gin counter mood. Indicative visualisation.</p>
         </div>
       </div>
     </section>
 
-    <section class="bb-ledger" id="ledger" aria-labelledby="bb-ledger-title">
+    <section class="bb-section bb-explore" id="explore" aria-labelledby="bb-explore-title">
       <div class="bb-wrap">
-        <div class="bb-ledger-head">
-          <div>
-            <p class="bb-kicker">Behind the Copper Bar</p>
-            <h2 id="bb-ledger-title">Explore the pouring ledger.</h2>
-          </div>
-          <div class="bb-tabs" role="tablist" aria-label="Bar menu focus">
-            {pours.map((p, idx) => (
+        <div class="bb-explore-head">
+          <h2 id="bb-explore-title">Drinks, garden, and celebration catering.</h2>
+          <div class="bb-tabs" role="tablist" aria-label="Drinks, garden, and catering">
+            {panels.map((p, idx) => (
               <button
                 type="button"
                 role="tab"
+                id={`bb-tab-${p.id}`}
                 aria-selected={idx === 0 ? "true" : "false"}
+                aria-controls={`bb-panel-${p.id}`}
+                tabindex={idx === 0 ? "0" : "-1"}
                 class:list={["bb-tab", { "is-active": idx === 0 }]}
                 data-bb-tab={p.id}
               >
@@ -132,152 +149,232 @@ const pours = [
           </div>
         </div>
 
-        <div class="bb-ledger-stage">
-          {pours.map((p, idx) => (
-            <div class="bb-panel" data-bb-panel={p.id} hidden={idx !== 0}>
-              <div class="bb-panel-copy">
+        <div class="bb-explore-grid">
+          <div class="bb-stage">
+            {panels.map((p, idx) => (
+              <div
+                class="bb-panel"
+                role="tabpanel"
+                id={`bb-panel-${p.id}`}
+                aria-labelledby={`bb-tab-${p.id}`}
+                data-bb-panel={p.id}
+                hidden={idx !== 0}
+              >
                 <h3>{p.title}</h3>
-                <p>{p.copy}</p>
+                <p class="bb-panel-copy">{p.copy}</p>
+
+                <ul class="bb-ledger-list">
+                  {p.rows.map((row) => (
+                    <li>
+                      <strong>{row.name}</strong>
+                      <span>{row.note}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul class="bb-pour-list">
-                {p.highlights.map((h) => <li>{h}</li>)}
-              </ul>
+            ))}
+
+            <div class="bb-dossier-bar">
+              <SpecimenSheet
+                id="bridge-bar-dossier"
+                triggerLabel="Open drinks and events dossier"
+                kicker="53-55 North Street, Newry"
+                title="Drinks Ledger and 2026 Celebration Catering"
+                subtitle="Locally poured gins, shaken cocktails, craft beers, and private beer garden or buffet catering."
+                groups={[
+                  {
+                    id: "drinks",
+                    label: "Signature pours",
+                    items: [
+                      { name: "Shortcross and Jawbox gin serves", note: "Paired with chilled tonics and fresh botanical garnishes" },
+                      { name: "Shaken cocktail classics", note: "Mojito, Strawberry Daiquiri, Long Island Iced Tea, and seasonal specials" },
+                      { name: "Craft beers and draught", note: "Cold craft taps, rotating bottles, and top-shelf spirits" },
+                    ],
+                  },
+                  {
+                    id: "catering",
+                    label: "2026 celebration and buffet options",
+                    items: [
+                      { name: "Private beer garden group areas", note: "Sheltered evening booths for birthdays and work nights out" },
+                      { name: "Full buffet catering service", note: "Hot and cold celebration buffets served under one roof" },
+                      { name: "Corporate and milestone bookings", note: "Tailored arrival drinks and reserved space on North Street" },
+                    ],
+                  },
+                ]}
+                ctaLabel="Reserve a date below"
+                ctaHref="#book"
+                secondaryLabel="2026 Catering PDF"
+                secondaryHref={catering2026Pdf}
+              />
+              <a class="bb-inline-link" href={catering2026Pdf} rel="noopener noreferrer">2026 Celebration Catering PDF</a>
+              <a class="bb-inline-link" href={buffetPdf} rel="noopener noreferrer">Buffet Dining Brochure PDF</a>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="bb-events" id="events" aria-labelledby="bb-events-title">
-      <div class="bb-wrap bb-events-grid">
-        <figure class="bb-garden-plate">
-          <ResponsiveImage
-            src="/media/concepts/the-bridge-bar-newry/bridge-bar-evening-garden.jpg"
-            alt="Festoon-lit brick and dark-timber Irish courtyard beer garden at twilight with sheltered booths and warm table lanterns"
-            width={1200}
-            height={896}
-            sizes="(max-width: 960px) 100vw, 48vw"
-            class="bb-garden-img"
-          />
-          <figcaption>Evening courtyard beer garden feel. Visualisation (AI-generated).</figcaption>
-        </figure>
-
-        <div class="bb-events-copy">
-          <p class="bb-kicker bb-kicker--dark">Beer Garden &amp; Full Buffet Catering</p>
-          <h2 id="bb-events-title">Birthdays, corporate nights &amp; 2026 celebration catering.</h2>
-          <p>
-            Hosting a family milestone, work night out or private get-together
-            in Newry? Our newly developed beer garden and full buffet catering
-            service take care of the drinks and food under one roof.
-          </p>
-          <div class="bb-brochures">
-            <SpecimenSheet
-              id="bridge-bar-dossier"
-              triggerLabel="Open Drinks & Events Dossier"
-              kicker="53–55 North Street · Newry"
-              title="Drinks Ledger & 2026 Celebration Catering"
-              subtitle="Locally poured gins, shaken cocktails, craft beers, and private beer garden or buffet catering."
-              groups={[
-                {
-                  id: "drinks",
-                  label: "Signature Pours",
-                  items: [
-                    { name: "Shortcross & Jawbox Gin Serves", note: "Paired with chilled tonics & fresh botanical garnishes" },
-                    { name: "Shaken Cocktail Classics", note: "Espresso Martinis, Pornstar Martinis, Bramble & seasonal specials" },
-                    { name: "Craft Beers & Draught", note: "Crisp lagers, stouts & rotating craft pours" },
-                  ],
-                },
-                {
-                  id: "catering",
-                  label: "2026 Celebration & Buffet Options",
-                  items: [
-                    { name: "Private Beer Garden Group Areas", note: "Sheltered evening booths for birthdays & work nights out" },
-                    { name: "Full Buffet Catering Service", note: "Hot & cold celebration buffets served under one roof" },
-                    { name: "Corporate & Milestone Bookings", note: "Tailored arrival drinks and reserved space on North Street" },
-                  ],
-                },
-              ]}
-              ctaLabel="Reserve a date below →"
-              ctaHref="#book"
-              secondaryLabel="2026 Catering PDF ↗"
-              secondaryHref={catering2026Pdf}
-            />
-            <a class="bb-btn bb-btn--emerald" href={catering2026Pdf} rel="noopener noreferrer">2026 Celebration Catering PDF ↗</a>
-            <a class="bb-btn bb-btn--outline" href={buffetPdf} rel="noopener noreferrer">Buffet Dining Brochure PDF ↗</a>
           </div>
+
+          <figure class="bb-garden-plate">
+            <ResponsiveImage
+              src="/media/concepts/the-bridge-bar-newry/bridge-bar-evening-garden.jpg"
+              alt="Festoon-lit brick and dark-timber Irish courtyard beer garden at twilight with sheltered booths and warm table lanterns"
+              width={1200}
+              height={896}
+              sizes="(max-width: 960px) 100vw, 46vw"
+              class="bb-garden-img"
+            />
+            <figcaption>Evening courtyard beer garden feel. Indicative visualisation.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="bb-book" id="book" aria-labelledby="bb-book-title">
+    <section class="bb-section bb-book" id="book" aria-labelledby="bb-book-title">
       <div class="bb-wrap bb-book-grid">
-        <div>
-          <p class="bb-kicker">Reserve a Space · 53–55 North Street</p>
-          <h2 id="bb-book-title">Plan your party, buffet or beer garden group.</h2>
+        <div class="bb-book-intro">
+          <h2 id="bb-book-title">Plan your party, buffet, or beer garden group.</h2>
           <p>
             Send your preferred date and guest numbers straight to{" "}
             <a href={`mailto:${email}`}>{email}</a>, or call the bar on{" "}
             <a href={phoneHref}><strong>{phone}</strong></a>.
           </p>
-          <p class="bb-find">
-            53–55 North Street, Newry, BT34 1DD ·{" "}
-            <a href={mapHref} rel="noopener noreferrer">Google Maps ↗</a> ·{" "}
-            <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-          </p>
+
+          <dl class="bb-contact-ledger">
+            <div>
+              <dt>Address</dt>
+              <dd>53-55 North Street, Newry, BT34 1DD</dd>
+            </div>
+            <div>
+              <dt>Telephone</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div>
+              <dt>2026 brochures</dt>
+              <dd>
+                <a href={catering2026Pdf} rel="noopener noreferrer">Celebration Catering PDF</a>,{" "}
+                <a href={buffetPdf} rel="noopener noreferrer">Buffet Brochure PDF</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Social and directions</dt>
+              <dd>
+                <a href={facebook} rel="noopener noreferrer">Facebook</a>,{" "}
+                <a href={mapHref} rel="noopener noreferrer">Google Maps</a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form class="bb-form" id="bb-form" data-email={email}>
           <div class="bb-row">
-            <label>
+            <label class="bb-field">
               <span>Occasion</span>
               <select name="occasion">
-                <option value="Celebration / Birthday + Buffet">Celebration / Birthday + Buffet</option>
-                <option value="Corporate / Work Night">Corporate / Work Night</option>
-                <option value="Cocktail / Beer Garden Group">Cocktail / Beer Garden Group</option>
+                <option value="Celebration or birthday with buffet">Celebration or birthday with buffet</option>
+                <option value="Corporate or work night">Corporate or work night</option>
+                <option value="Cocktail or beer garden group">Cocktail or beer garden group</option>
               </select>
             </label>
-            <label>
+            <label class="bb-field">
               <span>Preferred date</span>
               <input type="date" name="date" required />
             </label>
           </div>
+
           <div class="bb-row">
-            <label>
+            <label class="bb-field">
               <span>Approximate guests</span>
               <input name="guests" placeholder="e.g. 25 guests" required />
             </label>
-            <label>
-              <span>Your name &amp; phone</span>
+            <label class="bb-field">
+              <span>Your name and phone</span>
               <input name="who" placeholder="Name and callback number" required />
             </label>
           </div>
-          <button class="bb-btn bb-btn--copper bb-btn--full" type="submit">Open event enquiry email →</button>
+
+          <button class="bb-btn bb-btn--copper bb-btn--full" type="submit">Open event enquiry email</button>
         </form>
+      </div>
+    </section>
+
+    <section class="bb-section bb-location" id="location" aria-labelledby="bb-loc-title">
+      <div class="bb-wrap">
+        <div class="bb-loc-head">
+          <h2 id="bb-loc-title">Find us on North Street in Newry.</h2>
+          <p>
+            Central city location a short walk from Newry Cathedral and the canal, with
+            easy access from Warrenpoint, Rostrevor, Slieve Gullion, and the A1 corridor.
+          </p>
+        </div>
+
+        <LocalAreaMap
+          id="bridge-bar-map"
+          businessName="The Bridge Bar"
+          address="53-55 North Street, Newry, BT34 1DD"
+          lon={-6.34}
+          lat={54.178}
+          spanKm={14}
+          mapHref={mapHref}
+          kicker=""
+          tone="dark"
+          markers={[
+            { name: "Warrenpoint", lon: -6.25, lat: 54.103, note: "10 mins", side: "r" },
+            { name: "Rostrevor", lon: -6.198, lat: 54.101, note: "15 mins", side: "r" },
+            { name: "Slieve Gullion", lon: -6.433, lat: 54.123, note: "15 mins", side: "l" },
+            { name: "Hilltown", lon: -6.115, lat: 54.198, note: "16 mins", side: "r" },
+          ]}
+        />
       </div>
     </section>
   </main>
 
   <footer class="bb-footer">
     <div class="bb-wrap bb-footer-inner">
-      <span><strong>The Bridge Bar</strong> · 53–55 North Street, Newry, BT34 1DD</span>
-      <span><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a></span>
+      <span><strong>The Bridge Bar</strong>, 53-55 North Street, Newry, BT34 1DD</span>
+      <span>
+        <a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> ·{" "}
+        <a href={facebook} rel="noopener noreferrer">Facebook</a>
+      </span>
     </div>
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-bb-tab]");
-    const panels = document.querySelectorAll<HTMLElement>("[data-bb-panel]");
-    tabs.forEach((tab) => {
+    const header = document.querySelector<HTMLElement>("[data-bb-header]");
+    const sentinel = document.querySelector<HTMLElement>("[data-bb-sentinel]");
+    if (header && sentinel) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      obs.observe(sentinel);
+    }
+
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-bb-tab]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-bb-panel]"));
+
+    const activateTab = (target: string) => {
+      tabs.forEach((t) => {
+        const active = t.dataset.bbTab === target;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", String(active));
+        t.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        p.hidden = p.dataset.bbPanel !== target;
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
       tab.addEventListener("click", () => {
-        const target = tab.dataset.bbTab;
-        tabs.forEach((t) => {
-          const active = t.dataset.bbTab === target;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", String(active));
-        });
-        panels.forEach((p) => {
-          p.hidden = p.dataset.bbPanel !== target;
-        });
+        if (tab.dataset.bbTab) activateTab(tab.dataset.bbTab);
+      });
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const next = tabs[(idx + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+        if (next.dataset.bbTab) {
+          activateTab(next.dataset.bbTab);
+          next.focus();
+        }
       });
     });
 
@@ -292,9 +389,13 @@ const pours = [
         `Contact: ${d.get("who") || ""}`,
       ].join("\n");
       const to = form.dataset.email ?? "";
-      const subject = "Group / Event Enquiry — The Bridge Bar Newry";
+      const subject = "Group and event enquiry: The Bridge Bar Newry";
       const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
+      if (
+        window.dispatchEvent(
+          new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }),
+        )
+      ) {
         window.location.href = url;
       }
     });
