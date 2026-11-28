@@ -1,174 +1,134 @@
 ---
-/* Millbrook Lodge Hotel — Interactive Wedding & Estate Space Matcher.
-   Lets couples and families compare Millbrook's one-wedding-per-day spaces,
-   16 Georgian rectory rooms, and Afternoon Tea before sending a date enquiry. */
-const spaces = [
+/* Millbrook Lodge Hotel — Interactive Rectory, Dining, and Weddings Stage.
+   Preserves verified 16 bedrooms, The Gilmore Restaurant, conservatory Afternoon Tea,
+   and one-wedding-per-day exclusivity on a deep rectory-forest contrast stage. */
+const phone = "028 9756 2828";
+const phoneHref = "tel:+442897562828";
+const bookHref = "https://book.millbrooklodge.co.uk/";
+const voucherHref = "https://millbrook-lodge.host.netaffinity.io/ovs/MILLBROOOVS03#!/voucher/search";
+
+const experiences = [
   {
-    id: "wedding",
-    label: "One-Wedding-Per-Day",
-    title: "Exclusive wedding day across our 1800s Georgian house and manicured gardens.",
-    capacity: "Up to 300 guests · Civil ceremony licensed",
-    highlights: ["The Orangerie for arrival drinks", "Chandelier-lit Courtyard & Garden Suites", "Outdoor Wedding Garden & Bridal Suite"],
-    cta: "Check Wedding Dates",
-    href: "#enquire",
-  },
-  {
-    id: "rooms",
-    label: "16 Rectory Bedrooms",
-    title: "Individually designed en-suite Master, Classic & Rectory rooms.",
-    capacity: "24-hour reception · Check-in 3pm · Check-out 11am",
-    highlights: ["Former 1800s Georgian rectory character", "Surrounded by mature County Down trees", "Direct hotel rates via our live booking desk"],
-    cta: "Book Rooms Direct ↗",
-    href: "https://book.millbrooklodge.co.uk/",
+    id: "bedrooms",
+    label: "Sixteen bedrooms",
+    heading: "Individually styled Master, Classic, and Rectory rooms",
+    copy: "Sixteen en-suite bedrooms inside the former 1800s Georgian rectory, surrounded by mature County Down beech trees and quiet private lawns.",
+    details: [
+      { term: "Reception", value: "24-hour hotel desk in Ballynahinch" },
+      { term: "Arrival and departure", value: "Check-in from 15:00, check-out by 11:00" },
+      { term: "Direct bookings", value: "Live hotel room rates via the booking desk" },
+    ],
+    ctaLabel: "Check room rates",
+    ctaHref: bookHref,
     external: true,
   },
   {
     id: "dining",
-    label: "The Gilmore & Afternoon Tea",
-    title: "Sunday carvery, evening dining and three-tier conservatory Afternoon Tea.",
-    capacity: "Breakfast, lunch, early bird & private dining",
-    highlights: ["Homemade buttermilk scones & traybakes", "Seasonal County Down evening menus", "Instant hotel gift vouchers online"],
-    cta: "Buy Gift Vouchers ↗",
-    href: "https://millbrook-lodge.host.netaffinity.io/ovs/MILLBROOOVS03#!/voucher/search",
+    label: "The Gilmore restaurant",
+    heading: "Breakfast, Sunday carvery, and seasonal evening dining",
+    copy: "Dine beside the gardens for hearty breakfasts, weekday lunches, early bird suppers, Sunday carvery, and seasonal County Down evening menus.",
+    details: [
+      { term: "Dining rooms", value: "The Gilmore Restaurant and sunlit conservatory" },
+      { term: "Table sittings", value: "Breakfast, lunch, Sunday carvery, evening dinner" },
+      { term: "Gift vouchers", value: "Instant dining and overnight vouchers online" },
+    ],
+    ctaLabel: "Order gift vouchers",
+    ctaHref: voucherHref,
     external: true,
+  },
+  {
+    id: "weddings",
+    label: "Afternoon tea and weddings",
+    heading: "One wedding per day across the house, Orangerie, and gardens",
+    copy: "Exclusive single-wedding hospitality for up to 300 guests, alongside three-tier conservatory afternoon tea with homemade buttermilk scones, finger sandwiches, and County Down traybakes.",
+    details: [
+      { term: "Exclusivity", value: "One wedding per day, civil ceremony licensed" },
+      { term: "Reception suites", value: "The Orangerie, Courtyard and Garden Suites" },
+      { term: "Capacity and grounds", value: "Up to 300 guests, Wedding Garden, Bridal Suite" },
+    ],
+    ctaLabel: "Arrange a private viewing",
+    ctaHref: "#enquire",
+    external: false,
   },
 ];
 ---
 
-<section class="mbl-planner-band" id="spaces" aria-labelledby="mbl-planner-title">
-  <div class="mbl-wrap">
-    <div class="mbl-planner-card" data-mbl-planner>
-      <div class="mbl-planner-head">
-        <div>
-          <p class="mbl-kicker">The Georgian Estate · 5 Drumaness Road</p>
-          <h2 id="mbl-planner-title">Plan your wedding, stay or afternoon at Millbrook.</h2>
-        </div>
-        <div class="mbl-tabs" role="tablist" aria-label="Choose estate experience">
-          {spaces.map((s, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["mbl-tab", idx === 0 && "is-active"]}
-              data-mbl-tab={s.id}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
+<section class="mbl-section mbl-stage" id="estate" aria-labelledby="mbl-stage-title">
+  <div class="mbl-wrap mbl-stage-grid">
+    <div class="mbl-stage-copy" data-mbl-tabs>
+      <h2 id="mbl-stage-title">Rectory, dining, and weddings at Millbrook.</h2>
+
+      <div class="mbl-tabs" role="tablist" aria-label="Explore Millbrook Lodge">
+        {experiences.map((item, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`mbl-tab-${item.id}`}
+            aria-controls={`mbl-panel-${item.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? "0" : "-1"}
+            class:list={["mbl-tab", idx === 0 && "is-active"]}
+            data-mbl-tab={item.id}
+          >
+            {item.label}
+          </button>
+        ))}
       </div>
 
-      {spaces.map((s, idx) => (
-        <div class="mbl-panel" role="tabpanel" data-mbl-panel={s.id} hidden={idx !== 0}>
-          <div class="mbl-panel-meta">
-            <h3>{s.title}</h3>
-            <span class="mbl-cap-pill">{s.capacity}</span>
-          </div>
-          <ul class="mbl-points">
-            {s.highlights.map((h) => <li>{h}</li>)}
-          </ul>
+      {experiences.map((item, idx) => (
+        <div
+          class="mbl-panel"
+          role="tabpanel"
+          id={`mbl-panel-${item.id}`}
+          aria-labelledby={`mbl-tab-${item.id}`}
+          data-mbl-panel={item.id}
+          hidden={idx !== 0}
+        >
+          <h3>{item.heading}</h3>
+          <p>{item.copy}</p>
+          <dl class="mbl-ledger">
+            {item.details.map((row) => (
+              <div class="mbl-ledger-row">
+                <dt>{row.term}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
           <a
-            class="mbl-btn mbl-btn--primary"
-            href={s.href}
-            target={s.external ? "_blank" : undefined}
-            rel={s.external ? "noopener noreferrer" : undefined}
+            class="mbl-btn mbl-btn--light"
+            href={item.ctaHref}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
           >
-            {s.cta}
+            {item.ctaLabel}
           </a>
         </div>
       ))}
     </div>
+
+    <div class="mbl-stage-media">
+      <figure class="mbl-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/millbrook-lodge/millbrook-afternoon-tea-640.webp 640w, /media/concepts/millbrook-lodge/millbrook-afternoon-tea-1265.webp 1265w"
+            sizes="(max-width: 900px) 100vw, 46vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/millbrook-lodge/millbrook-afternoon-tea.jpg"
+            alt="Three-tier porcelain afternoon tea stand with finger sandwiches, homemade buttermilk scones, and pastries in a sunlit conservatory"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Conservatory afternoon tea at Millbrook Lodge. Indicative visualisation.</figcaption>
+      </figure>
+
+      <div class="mbl-stage-aside">
+        <a href={voucherHref} target="_blank" rel="noopener noreferrer">Order dining and stay gift vouchers</a>
+        <a href={phoneHref}>24-hour reception: {phone}</a>
+      </div>
+    </div>
   </div>
 </section>
-
-<style>
-  .mbl-planner-band { padding: clamp(44px, 6vw, 72px) 0; }
-  .mbl-planner-card {
-    background: #ffffff;
-    border: 1px solid rgba(30, 40, 33, 0.14);
-    border-top: 3px solid #2c4a3a;
-    padding: clamp(24px, 4vw, 40px);
-    border-radius: 3px;
-  }
-  .mbl-planner-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(30, 40, 33, 0.12);
-  }
-  .mbl-planner-head h2 {
-    margin: 0;
-    font-family: var(--mbl-serif);
-    font-size: clamp(1.65rem, 3vw, 2.3rem);
-    font-weight: 500;
-  }
-  .mbl-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mbl-tab {
-    padding: 9px 15px;
-    border: 1px solid rgba(30, 40, 33, 0.22);
-    background: #faf8f4;
-    color: #1e2821;
-    font-family: var(--mbl-sans);
-    font-size: 0.84rem;
-    font-weight: 600;
-    border-radius: 2px;
-    cursor: pointer;
-  }
-  .mbl-tab.is-active { background: #2c4a3a; border-color: #2c4a3a; color: #faf8f4; }
-  .mbl-panel { padding-top: 24px; }
-  .mbl-panel-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
-  .mbl-panel-meta h3 { margin: 0; font-family: var(--mbl-serif); font-size: 1.35rem; font-weight: 500; }
-  .mbl-cap-pill {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #2c4a3a;
-    background: #eef3ef;
-    padding: 5px 11px;
-    border-radius: 2px;
-  }
-  .mbl-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .mbl-points li {
-    background: #faf8f4;
-    border: 1px solid rgba(30, 40, 33, 0.12);
-    padding: 14px 16px;
-    font-size: 0.92rem;
-    color: #1e2821;
-  }
-  @media (max-width: 780px) {
-    .mbl-points { grid-template-columns: minmax(0, 1fr); }
-  }
-</style>
-
-<script is:inline>
-  (() => {
-    const root = document.querySelector("[data-mbl-planner]");
-    if (!root) return;
-    const tabs = [...root.querySelectorAll("[data-mbl-tab]")];
-    const panels = [...root.querySelectorAll("[data-mbl-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-mbl-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => {
-          p.hidden = p.getAttribute("data-mbl-panel") !== id;
-        });
-      });
-    });
-  })();
-</script>

@@ -1,7 +1,7 @@
 ---
-/* Meelmore Lodge — Interactive Mourne Trailhead Base & Pitch Planner.
-   Helps hillwalkers pick between Tent Camping, Hostel Beds, The Wee House cottage,
-   or Hare's Gap Bistro before booking on the live Freetobook portal. */
+/* Meelmore Lodge: Deep Mountain-Slate Basecamp Selector Stage
+   Pairs Tent pitches, Walker hostel rooms, The Wee House, and Hare's Gap Bistro
+   with the 16/10 bistro-breakfast plate and live Freetobook portal links. */
 interface Props {
   bookingHref: string;
   phone: string;
@@ -12,192 +12,200 @@ const { bookingHref, phone, phoneHref } = Astro.props;
 const options = [
   {
     id: "camp",
-    label: "Tent Campsite",
-    title: "Stone-walled meadow pitching directly at the Trassey Track gate.",
-    note: "Tents only (no caravans, campervans or electric hook-ups) so the valley stays quiet under Slieve Meelmore.",
-    points: ["Hot showers & walker washroom", "Step straight onto the Trassey Track to Hare's Gap", "Seasonal pitching — book your tent slot online"],
-    cta: "Book Tent Pitch via Freetobook ↗",
+    label: "Tent pitches",
+    heading: "Stone-walled meadow pitching right at the Trassey Track gate.",
+    note: "Tents only, with no caravans, campervans or electric hook-ups, so the valley stays quiet under Slieve Meelmore.",
+    rows: [
+      { term: "Facilities", value: "Hot showers and walker washroom on site" },
+      { term: "Trail access", value: "Step straight onto the Trassey Track to Hare's Gap" },
+      { term: "Pitch booking", value: "Seasonal tent pitching reserved online via Freetobook" },
+    ],
+    cta: "Book tent pitch via Freetobook ↗",
     href: bookingHref,
     external: true,
   },
   {
     id: "hostel",
-    label: "Walker Hostel",
-    title: "Warm, practical bunk & private rooms for Mourne walking groups.",
-    note: "Ideal for DofE teams, hillwalking clubs and early-start summit days across Bearnagh and Donard.",
-    points: ["Drying facilities & self-catering kitchen", "Breakfast next door at Hare's Gap Bistro", "On-site trailhead parking off Trassey Road"],
-    cta: "Check Hostel Beds via Freetobook ↗",
+    label: "Walker hostel rooms",
+    heading: "Warm, practical bunk and private rooms for Mourne walking groups.",
+    note: "Built for DofE teams, hillwalking clubs and early-start summit days across Slieve Bearnagh and Slieve Donard.",
+    rows: [
+      { term: "Kit and kitchen", value: "Drying facilities and full self-catering kitchen" },
+      { term: "Breakfast", value: "Cooked breakfasts next door at Hare's Gap Bistro" },
+      { term: "Parking", value: "On-site trailhead parking off Trassey Road" },
+    ],
+    cta: "Check hostel beds via Freetobook ↗",
     href: bookingHref,
     external: true,
   },
   {
     id: "cottage",
     label: "The Wee House",
-    title: "Self-catering granite cottage tucked right below the High Mournes.",
-    note: "Private cottage stay for couples or small families wanting mountain silence without packing a tent.",
-    points: ["Full self-catering kitchen & warm living room", "Trailhead access without driving to a car park", "Direct booking with Meelmore Lodge"],
-    cta: "Check Cottage Dates via Freetobook ↗",
+    heading: "Self-catering granite cottage tucked right below the High Mournes.",
+    note: "A private cottage stay for couples or small families wanting mountain silence without packing a tent.",
+    rows: [
+      { term: "Interiors", value: "Full self-catering kitchen and warm living room" },
+      { term: "Location", value: "Direct trailhead access without driving to a car park" },
+      { term: "Reservations", value: "Booked directly online with Meelmore Lodge" },
+    ],
+    cta: "Check cottage dates via Freetobook ↗",
     href: bookingHref,
     external: true,
   },
   {
     id: "bistro",
     label: "Hare's Gap Bistro",
-    title: "Cooked breakfasts, homemade soup and traybakes off the hill.",
-    note: "Open weekends year-round and daily from April through September for walkers and passing visitors.",
-    points: ["Hearty Ulster fry & buttered soda farls", "Teas, coffees, scones & lunchtime specials", "No stay needed — park at Trassey Road"],
-    cta: `Ring the Lodge · ${phone}`,
+    heading: "Fuel up before the climb, warm up coming off the ridge.",
+    note: "Cooked breakfasts, Ulster fry, buttered soda farls, homemade soup, lunches, home baking, teas and coffees for walkers and passing visitors.",
+    rows: [
+      { term: "April to September", value: "Open daily for breakfast, lunch and coffee" },
+      { term: "October to March", value: "Open weekends right through the winter season" },
+      { term: "Access", value: "No overnight stay needed, park at 52 Trassey Road" },
+    ],
+    cta: `Ring the lodge: ${phone}`,
     href: phoneHref,
     external: false,
   },
 ];
 ---
 
-<section class="ml-planner-band" id="plan-stay" aria-labelledby="ml-planner-title">
-  <div class="ml-wrap">
-    <div class="ml-planner-card" data-ml-planner>
-      <div class="ml-planner-head">
-        <div>
-          <p class="ml-kicker">Basecamp Selector · 52 Trassey Road</p>
-          <h2 id="ml-planner-title">How are you tackling the Mournes?</h2>
-        </div>
-        <div class="ml-tabs" role="tablist" aria-label="Choose stay or visit type">
-          {options.map((o, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["ml-tab", idx === 0 && "is-active"]}
-              data-ml-tab={o.id}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
+<section class="ml-section ml-basecamp" id="basecamp" aria-labelledby="ml-planner-title">
+  <div class="ml-wrap ml-basecamp-grid">
+    <div class="ml-basecamp-main" data-ml-planner>
+      <h2 id="ml-planner-title">Choose your basecamp on Trassey Road.</h2>
+
+      <div class="ml-tabs" role="tablist" aria-label="Choose stay or bistro option">
+        {options.map((opt, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`ml-tab-${opt.id}`}
+            aria-controls={`ml-panel-${opt.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? 0 : -1}
+            class:list={["ml-tab", idx === 0 && "is-active"]}
+            data-ml-tab={opt.id}
+          >
+            {opt.label}
+          </button>
+        ))}
       </div>
 
-      {options.map((o, idx) => (
-        <div class="ml-panel" role="tabpanel" data-ml-panel={o.id} hidden={idx !== 0}>
-          <h3>{o.title}</h3>
-          <p class="ml-panel-note">{o.note}</p>
-          <ul class="ml-panel-points">
-            {o.points.map((pt) => <li>{pt}</li>)}
-          </ul>
+      {options.map((opt, idx) => (
+        <div
+          class="ml-panel"
+          role="tabpanel"
+          id={`ml-panel-${opt.id}`}
+          aria-labelledby={`ml-tab-${opt.id}`}
+          data-ml-panel={opt.id}
+          hidden={idx !== 0}
+        >
+          <h3>{opt.heading}</h3>
+          <p>{opt.note}</p>
+          <dl class="ml-ledger">
+            {opt.rows.map((row) => (
+              <div class="ml-ledger-row">
+                <dt>{row.term}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
           <div class="ml-panel-foot">
             <a
-              class="ml-btn ml-btn--primary"
-              href={o.href}
-              target={o.external ? "_blank" : undefined}
-              rel={o.external ? "noopener noreferrer" : undefined}
+              class="ml-panel-link"
+              href={opt.href}
+              target={opt.external ? "_blank" : undefined}
+              rel={opt.external ? "noopener noreferrer" : undefined}
             >
-              {o.cta}
+              {opt.cta}
             </a>
           </div>
         </div>
       ))}
     </div>
+
+    <div class="ml-basecamp-media" id="bistro">
+      <figure class="ml-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/meelmore-lodge/meelmore-lodge-bistro-breakfast-640.webp 640w, /media/concepts/meelmore-lodge/meelmore-lodge-bistro-breakfast-1265.webp 1265w"
+            sizes="(max-width: 900px) 100vw, 46vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/meelmore-lodge/meelmore-lodge-bistro-breakfast.jpg"
+            alt="Mountain café table with Ulster fry, soda farls, steaming mug of tea and folded hillwalking map"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Hare's Gap Bistro off Trassey Road. Indicative breakfast plate visualisation.</figcaption>
+      </figure>
+
+      <dl class="ml-bistro-meta">
+        <div>
+          <dt>April to September</dt>
+          <dd>Bistro open daily</dd>
+        </div>
+        <div>
+          <dt>October to March</dt>
+          <dd>Bistro open weekends</dd>
+        </div>
+        <div>
+          <dt>Camping policy</dt>
+          <dd>Tents only, no campervans or EHU</dd>
+        </div>
+      </dl>
+    </div>
   </div>
 </section>
-
-<style>
-  .ml-planner-band {
-    padding: clamp(44px, 6vw, 72px) 0;
-  }
-  .ml-planner-card {
-    background: #ffffff;
-    border: 1px solid rgba(27, 40, 32, 0.16);
-    border-top: 3px solid #2f573d;
-    border-radius: 4px;
-    padding: clamp(24px, 4vw, 38px);
-  }
-  .ml-planner-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(27, 40, 32, 0.12);
-  }
-  .ml-planner-head h2 {
-    margin: 0;
-    font-family: var(--ml-serif);
-    font-size: clamp(1.65rem, 3vw, 2.3rem);
-    font-weight: 500;
-  }
-  .ml-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .ml-tab {
-    padding: 9px 15px;
-    border-radius: 3px;
-    border: 1px solid rgba(27, 40, 32, 0.22);
-    background: #f6f5f0;
-    color: #1b2820;
-    font-family: var(--ml-sans);
-    font-size: 0.84rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .ml-tab.is-active {
-    background: #2f573d;
-    border-color: #2f573d;
-    color: #ffffff;
-  }
-  .ml-panel {
-    padding-top: 24px;
-  }
-  .ml-panel h3 {
-    margin: 0 0 8px;
-    font-family: var(--ml-serif);
-    font-size: 1.38rem;
-    font-weight: 500;
-  }
-  .ml-panel-note {
-    margin: 0 0 20px;
-    color: #4f5e53;
-    max-width: 64ch;
-  }
-  .ml-panel-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .ml-panel-points li {
-    background: #f6f5f0;
-    border: 1px solid rgba(27, 40, 32, 0.12);
-    padding: 14px 16px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    color: #1b2820;
-  }
-  @media (max-width: 780px) {
-    .ml-panel-points { grid-template-columns: minmax(0, 1fr); }
-  }
-</style>
 
 <script is:inline>
   (() => {
     const root = document.querySelector("[data-ml-planner]");
     if (!root) return;
-    const tabs = [...root.querySelectorAll("[data-ml-tab]")];
-    const panels = [...root.querySelectorAll("[data-ml-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-ml-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => {
-          p.hidden = p.getAttribute("data-ml-panel") !== id;
-        });
+    const tabs = Array.from(root.querySelectorAll("[data-ml-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-ml-panel]"));
+
+    const selectTab = (id, moveFocus) => {
+      tabs.forEach((tab) => {
+        const active = tab.getAttribute("data-ml-tab") === id;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+        if (active && moveFocus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.getAttribute("data-ml-panel") !== id;
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", () => selectTab(tab.getAttribute("data-ml-tab"), false));
+      tab.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          const next = tabs[(idx + 1) % tabs.length];
+          selectTab(next.getAttribute("data-ml-tab"), true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+          selectTab(prev.getAttribute("data-ml-tab"), true);
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          selectTab(tabs[0].getAttribute("data-ml-tab"), true);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          selectTab(tabs[tabs.length - 1].getAttribute("data-ml-tab"), true);
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-ml-jump]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const targetTab = link.getAttribute("data-ml-jump");
+        if (targetTab) selectTab(targetTab, false);
       });
     });
   })();

@@ -1,191 +1,215 @@
 ---
-/* Mourne Mountains Brewery — Interactive Core & Seasonal Beer Ledger.
-   Filters verified live Warrenpoint brews by style and links directly to the live web shop. */
+/* Mourne Mountains Brewery — Interactive Beers, Beer Hall, and Trade Stage.
+   Alternates on crisp malt-stone (#f4f3ef) with verified Warrenpoint brews,
+   Saturday Beer Hall hours (16:00 to 23:00), and Mourne water provenance. */
 const shopBase = "https://www.mournemountainsbrewery.com";
+const taproomHref = `${shopBase}/taproom`;
+const phone = "028 4176 7391";
+const phoneHref = "tel:+442841767391";
 
 const beers = [
   {
     name: "Rolling Thunder",
     style: "NEIPA",
-    cat: "hoppy",
-    note: "Hazy, juicy New England IPA brewed with soft Mourne mountain water and bold late-addition hops.",
+    note: "Hazy, juicy New England IPA brewed with soft Mourne mountain water and late-addition hops.",
     url: `${shopBase}/product-page/rolling-thunder-neipa`,
   },
   {
     name: "Brewers Gloom",
     style: "West Coast IPA",
-    cat: "hoppy",
     note: "Piney, resinous, crisp West Coast bitterness balanced on Irish base malts.",
     url: `${shopBase}/product-page/brewers-gloom-west-coast-ipa`,
   },
   {
     name: "Mourneberger",
-    style: "Helles Lager",
-    cat: "crisp",
+    style: "Helles lager",
     note: "Clean, cold-conditioned Bavarian-style helles lager poured fresh in cans and taproom kegs.",
     url: `${shopBase}/product-page/mourneberger-helles-lager`,
   },
   {
     name: "Wounded Knee",
-    style: "Strawberry Sour",
-    cat: "crisp",
-    note: "Bright fruited kettle sour with tart berry snap — a favourite pour in the Saturday Beer Hall.",
+    style: "Strawberry sour",
+    note: "Bright fruited kettle sour with tart berry snap, poured fresh in the Saturday Beer Hall.",
     url: `${shopBase}/product-page/wounded-knee-strawberry-sour`,
   },
   {
     name: "Travelling Tales",
-    style: "Hoppy Red Ale",
-    cat: "malt",
+    style: "Hoppy red ale",
     note: "Toasted caramel Irish malt backbone lifted by citrus aroma hops.",
     url: `${shopBase}/product-page/travelling-tales-hoppy-red-ale`,
   },
   {
     name: "Session IPA",
-    style: "Easy-Drinking Pale",
-    cat: "hoppy",
+    style: "Easy-drinking pale",
     note: "Crisp, aromatic session-strength pale built for long afternoons after the Mournes.",
     url: `${shopBase}/product-page/session-ipa`,
   },
 ];
 ---
 
-<section class="mmb-ledger-band" id="beers" aria-labelledby="mmb-ledger-title">
-  <div class="mmb-wrap">
-    <div class="mmb-ledger-head">
-      <div>
-        <p class="mmb-kicker">Brewed with Altitude · Core &amp; Small Batch</p>
-        <h2 id="mmb-ledger-title">On tap in Warrenpoint &amp; in the web shop.</h2>
+<section class="mmb-section mmb-stage" id="brewhouse" aria-labelledby="mmb-stage-title">
+  <div class="mmb-wrap mmb-stage-grid">
+    <div class="mmb-stage-copy" data-mmb-tabs>
+      <h2 id="mmb-stage-title">Beers, beer hall, and trade in Warrenpoint.</h2>
+
+      <div class="mmb-tabs" role="tablist" aria-label="Explore Mourne Mountains Brewery">
+        <button
+          type="button"
+          role="tab"
+          id="mmb-tab-core"
+          aria-controls="mmb-panel-core"
+          aria-selected="true"
+          tabindex="0"
+          class="mmb-tab is-active"
+          data-mmb-tab="core"
+        >
+          Core range
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="mmb-tab-hall"
+          aria-controls="mmb-panel-hall"
+          aria-selected="false"
+          tabindex="-1"
+          class="mmb-tab"
+          data-mmb-tab="hall"
+        >
+          Saturday beer hall
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="mmb-tab-trade"
+          aria-controls="mmb-panel-trade"
+          aria-selected="false"
+          tabindex="-1"
+          class="mmb-tab"
+          data-mmb-tab="trade"
+        >
+          Trade and events
+        </button>
       </div>
-      <div class="mmb-filters" role="group" aria-label="Filter beers by style" data-mmb-filters>
-        <button type="button" class="mmb-chip is-active" data-filter="all">All Brews</button>
-        <button type="button" class="mmb-chip" data-filter="hoppy">IPAs &amp; Pale</button>
-        <button type="button" class="mmb-chip" data-filter="crisp">Lager &amp; Sour</button>
-        <button type="button" class="mmb-chip" data-filter="malt">Red &amp; Malt</button>
+
+      <div
+        class="mmb-panel"
+        role="tabpanel"
+        id="mmb-panel-core"
+        aria-labelledby="mmb-tab-core"
+        data-mmb-panel="core"
+      >
+        <ul class="mmb-beer-ledger">
+          {beers.map((beer) => (
+            <li class="mmb-beer-row">
+              <div class="mmb-beer-head">
+                <h3>{beer.name}</h3>
+                <span class="mmb-beer-style">{beer.style}</span>
+              </div>
+              <p>{beer.note}</p>
+              <a class="mmb-beer-link" href={beer.url} target="_blank" rel="noopener noreferrer">
+                Order cans in web shop
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div
+        class="mmb-panel"
+        role="tabpanel"
+        id="mmb-panel-hall"
+        aria-labelledby="mmb-tab-hall"
+        data-mmb-panel="hall"
+        hidden
+      >
+        <h3>Fresh keg and cask pours metres from where they were brewed</h3>
+        <p>
+          Every Saturday afternoon and evening the Beer Hall opens in Milltown East with rotating taps,
+          brewery-only small batches, mixed cases to carry home, and branded pint glassware.
+        </p>
+        <dl class="mmb-ledger">
+          <div class="mmb-ledger-row">
+            <dt>Saturday Beer Hall</dt>
+            <dd>16:00 to 23:00</dd>
+          </div>
+          <div class="mmb-ledger-row">
+            <dt>Sunday to Friday</dt>
+            <dd>Brewing and web dispatch</dd>
+          </div>
+          <div class="mmb-ledger-row">
+            <dt>Brewing water</dt>
+            <dd>Fresh Mourne mountain water, Irish base malts, house yeast</dd>
+          </div>
+          <div class="mmb-ledger-row">
+            <dt>Location</dt>
+            <dd>Unit 3, Milltown East, Upper Dromore Rd, BT34 3PN</dd>
+          </div>
+        </dl>
+        <a class="mmb-btn mmb-btn--dark" href={taproomHref} target="_blank" rel="noopener noreferrer">
+          Saturday beer hall guide
+        </a>
+      </div>
+
+      <div
+        class="mmb-panel"
+        role="tabpanel"
+        id="mmb-panel-trade"
+        aria-labelledby="mmb-tab-trade"
+        data-mmb-panel="trade"
+        hidden
+      >
+        <h3>Kegs, cans, and private event pours across Northern Ireland</h3>
+        <p>
+          Direct brewery supply for pubs, restaurants, and bottle shops alongside group tables in the
+          Saturday Beer Hall and keg hire for weddings or private celebrations.
+        </p>
+        <dl class="mmb-ledger">
+          <div class="mmb-ledger-row">
+            <dt>Trade supply</dt>
+            <dd>Kegs and cans dispatched straight from Warrenpoint</dd>
+          </div>
+          <div class="mmb-ledger-row">
+            <dt>Taproom groups</dt>
+            <dd>Saturday Beer Hall group tables arranged on request</dd>
+          </div>
+          <div class="mmb-ledger-row">
+            <dt>Brewhouse desk</dt>
+            <dd><a href={phoneHref}>{phone}</a></dd>
+          </div>
+        </dl>
+        <a class="mmb-btn mmb-btn--dark" href="#trade">Send a trade or event enquiry</a>
       </div>
     </div>
 
-    <div class="mmb-beer-grid" data-mmb-grid>
-      {beers.map((b) => (
-        <article class="mmb-beer-card" data-cat={b.cat}>
-          <div class="mmb-beer-top">
-            <h3>{b.name}</h3>
-            <span>{b.style}</span>
-          </div>
-          <p>{b.note}</p>
-          <a href={b.url} target="_blank" rel="noopener noreferrer">Order cans in shop ↗</a>
-        </article>
-      ))}
+    <div class="mmb-stage-media">
+      <figure class="mmb-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/mourne-mountains-brewery/mmb-brewhouse-tanks-640.webp 640w, /media/concepts/mourne-mountains-brewery/mmb-brewhouse-tanks-1265.webp 1265w"
+            sizes="(max-width: 900px) 100vw, 44vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/mourne-mountains-brewery/mmb-brewhouse-tanks.jpg"
+            alt="Stainless steel fermentation tanks, copper pipework, and sacks of Irish malted barley in the Warrenpoint brewhouse"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Warrenpoint brewhouse and fermentation hall. Indicative brewhouse visualisation.</figcaption>
+      </figure>
+
+      <dl class="mmb-provenance">
+        <div class="mmb-provenance-row">
+          <dt>Saturday Beer Hall</dt>
+          <dd>16:00 to 23:00</dd>
+        </div>
+        <div class="mmb-provenance-row">
+          <dt>Provenance</dt>
+          <dd>Mourne mountain water and Irish base malts</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
-
-<style>
-  .mmb-ledger-band {
-    padding: clamp(52px, 6.5vw, 84px) 0;
-    background: #141614;
-    border-bottom: 1px solid rgba(217, 130, 43, 0.22);
-  }
-  .mmb-ledger-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-bottom: 28px;
-  }
-  .mmb-ledger-head h2 {
-    margin: 0;
-    font-family: var(--mmb-display);
-    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-    line-height: 1.08;
-  }
-  .mmb-filters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mmb-chip {
-    padding: 8px 14px;
-    border-radius: 2px;
-    border: 1px solid rgba(243, 240, 230, 0.22);
-    background: transparent;
-    color: rgba(243, 240, 230, 0.8);
-    font-family: var(--mmb-sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .mmb-chip.is-active {
-    background: #d9822b;
-    border-color: #d9822b;
-    color: #121412;
-  }
-  .mmb-beer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-  }
-  .mmb-beer-card {
-    background: #1c1f1c;
-    border: 1px solid rgba(243, 240, 230, 0.12);
-    border-top: 2px solid #d9822b;
-    padding: 22px;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .mmb-beer-card[hidden] { display: none; }
-  .mmb-beer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .mmb-beer-top h3 {
-    margin: 0;
-    font-family: var(--mmb-display);
-    font-size: 1.18rem;
-  }
-  .mmb-beer-top span {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #e69d50;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .mmb-beer-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: rgba(243, 240, 230, 0.76);
-    flex: 1;
-  }
-  .mmb-beer-card a {
-    color: #f3f0e6;
-    font-size: 0.84rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(217, 130, 43, 0.55);
-    align-self: flex-start;
-    padding-bottom: 2px;
-  }
-  @media (max-width: 860px) {
-    .mmb-beer-grid { grid-template-columns: minmax(0, 1fr); }
-  }
-</style>
-
-<script is:inline>
-  (() => {
-    const bar = document.querySelector("[data-mmb-filters]");
-    const grid = document.querySelector("[data-mmb-grid]");
-    if (!bar || !grid) return;
-    const chips = [...bar.querySelectorAll("[data-filter]")];
-    const cards = [...grid.querySelectorAll("[data-cat]")];
-    chips.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const f = btn.getAttribute("data-filter");
-        chips.forEach((c) => c.classList.toggle("is-active", c === btn));
-        cards.forEach((card) => {
-          card.hidden = f !== "all" && card.getAttribute("data-cat") !== f;
-        });
-      });
-    });
-  })();
-</script>

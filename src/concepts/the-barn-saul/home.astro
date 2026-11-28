@@ -4,9 +4,8 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
-/* The Barn Bar & Country Kitchen — 37A Mearne Road, Saul, Downpatrick BT30 6SY.
-   Verified live 26 Nov 2026: thebarnsaul.com has spam link injection ("Forbrukernet.com")
-   and outdated "Google Chrome Frame" warning on homepage, despite live /menu/, /takeaway-menu/, /vouchers/.
+/* The Barn Bar & Country Kitchen, 37A Mearne Road, Saul, Downpatrick BT30 6SY.
+   Verified live 26 Nov 2026: live /menu/, /takeaway-menu/, /vouchers/ on thebarnsaul.com.
    Founded 1911 by Thomas McNamara in Saul Parish, Lecale drumlins. Phone: 028 4461 5750. */
 const phone = "028 4461 5750";
 const phoneHref = "tel:+442844615750";
@@ -20,134 +19,326 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Barn+Bar+a
 const kitchenGroups = [
   {
     id: "kitchen",
-    label: "Country Kitchen & Roasts",
+    label: "Country kitchen and roasts",
     items: [
-      { name: "Locally Sourced Country Kitchen", note: "Freshly prepared Lecale meat, poultry, coastal fish and hearty classics cooked to order", meta: "Dine-in" },
-      { name: "Traditional Sunday Dinner", note: "Roast sirloin, seasonal vegetables, crisp roast potatoes and homemade gravy in the drumlins", meta: "Sundays" },
-      { name: "Takeaway Menu", note: "Barn kitchen favourites prepared to collect from Mearne Road", meta: "Collect at The Barn" },
+      {
+        name: "Locally sourced country kitchen",
+        note: "Freshly prepared Lecale meat, poultry, coastal fish, and hearty classics cooked to order.",
+        meta: "Dine in",
+      },
+      {
+        name: "Traditional Sunday dinner",
+        note: "Roast sirloin, seasonal vegetables, crisp roast potatoes, and homemade gravy in the drumlins.",
+        meta: "Sundays",
+      },
+      {
+        name: "Takeaway menu",
+        note: "Barn kitchen favourites prepared to collect from Mearne Road.",
+        meta: "Collect at The Barn",
+      },
     ],
   },
   {
     id: "tavern",
-    label: "Bar, Vouchers & Stays",
+    label: "Bar and vouchers",
     items: [
-      { name: "Saul Parish Tavern (Est. 1911)", note: "First opened by Thomas McNamara in 1911, refurbished country bar in St Patrick's country", meta: "Since 1911" },
-      { name: "Gift Vouchers", note: "Dining and bar vouchers available directly through The Barn", meta: "Online & at desk" },
+      {
+        name: "Saul Parish tavern (Est. 1911)",
+        note: "First opened by Thomas McNamara in 1911, refurbished country bar in St Patrick's country.",
+        meta: "Since 1911",
+      },
+      {
+        name: "Gift vouchers",
+        note: "Dining and bar vouchers available directly through The Barn.",
+        meta: "Online and at desk",
+      },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="The Barn Bar & Country Kitchen — Est. 1911, Saul, Downpatrick"
+  title="The Barn Bar & Country Kitchen, Est. 1911, Saul, Downpatrick"
   slug="the-barn-saul"
   bodyClass="concept-page concept-barnsaul"
   businessName="The Barn Bar & Country Kitchen"
   town="Saul"
   bannerNote="Imagery comprises indicative rural stone tavern and Sunday roast visualisations."
 >
+  <header class="bs-header" data-bs-header>
+    <div class="bs-header-inner">
+      <a class="bs-brand" href="#top">The Barn</a>
+      <nav class="bs-nav" aria-label="Primary">
+        <a href="#kitchen">Country kitchen</a>
+        <a href="#tavern">Since 1911</a>
+        <a href="#book">Reservations</a>
+        <a href="#location">Mearne Road</a>
+      </nav>
+      <div class="bs-header-actions">
+        <a class="bs-header-tel" href={phoneHref}>{phone}</a>
+        <a class="bs-header-cta" href="#book">Book a table</a>
+      </div>
+    </div>
+  </header>
+
   <main id="top">
     <section class="bs-hero" aria-labelledby="bs-hero-title">
-      <header class="bs-header">
-        <div class="bs-header-inner">
-          <a class="bs-brand" href="#top">
-            <strong>The Barn</strong>
-            <span>Saul Parish · Est. 1911</span>
-          </a>
-          <nav class="bs-nav" aria-label="Primary">
-            <a href="#story">Since 1911</a>
-            <a href="#kitchen">Country Kitchen</a>
-            <a href="#book">Reservations</a>
-            <a href="#location">Mearne Road</a>
-          </nav>
-          <div class="bs-header-actions">
-            <a class="bs-header-tel" href={phoneHref}>{phone}</a>
-            <a class="bs-header-cta" href={phoneHref}>Book a Table</a>
-          </div>
-        </div>
-      </header>
-
-      <figure class="bs-hero-media">
+      <div class="bs-hero-sentinel" data-bs-sentinel aria-hidden="true"></div>
+      <div class="bs-hero-media">
         <picture>
-          <source srcset="/media/concepts/the-barn-saul/barn-saul-stone-tavern-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-stone-tavern-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/the-barn-saul/barn-saul-stone-tavern.jpg" alt="Whitewashed stone country tavern nestled among County Down drumlin hills with glowing windows at golden hour" width="1408" height="768" loading="eager" />
-        </picture>
-        <figcaption class="bs-hero-cap">Indicative Saul country tavern visualisation.</figcaption>
-      </figure>
-      <div class="bs-hero-scrim" aria-hidden="true"></div>
-
-      <div class="bs-hero-content">
-        <p class="bs-eyebrow">37A Mearne Road · Saul · Lecale Drumlins</p>
-        <h1 id="bs-hero-title">A Saul Parish tavern since 1911.</h1>
-        <p class="bs-hero-lead">
-          Locally sourced country-kitchen cooking, Sunday roasts, takeaway favourites and a warm pint
-          five minutes outside Downpatrick.
-        </p>
-        <div class="bs-hero-actions">
-          <a class="bs-btn bs-btn--primary" href={phoneHref}>Ring for Reservations · {phone}</a>
-          <SpecimenSheet
-            id="bs-kitchen-sheet"
-            triggerLabel="Kitchen & Vouchers Guide"
-            kicker="The Barn · 37A Mearne Road, Saul"
-            title="Country Kitchen, Takeaway & Vouchers"
-            subtitle="First opened by Thomas McNamara in 1911. Call 028 4461 5750 to reserve your table."
-            groups={kitchenGroups}
-            ctaLabel="View Full Live Menu ↗"
-            ctaHref={menuHref}
-            ctaExternal={true}
-            secondaryLabel="Gift Vouchers ↗"
-            secondaryHref={voucherHref}
-            buttonClass="bs-link-trigger"
+          <source
+            srcset="/media/concepts/the-barn-saul/barn-saul-stone-tavern-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-stone-tavern-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
           />
+          <img
+            src="/media/concepts/the-barn-saul/barn-saul-stone-tavern.jpg"
+            alt="Whitewashed stone country tavern nestled among County Down drumlin hills with glowing windows at golden hour"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+        <div class="bs-hero-scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="bs-wrap bs-hero-foot">
+        <div class="bs-hero-title-col">
+          <h1 id="bs-hero-title">A Saul Parish tavern since 1911.</h1>
+        </div>
+        <div class="bs-hero-copy-col">
+          <p class="bs-hero-lead">
+            Locally sourced country cooking, Sunday roasts, and takeaway favourites five minutes outside Downpatrick.
+          </p>
+          <a class="bs-btn bs-btn--primary" href={phoneHref}>Ring for reservations</a>
+          <p class="bs-hero-caption">Indicative Saul stone tavern visualisation.</p>
         </div>
       </div>
     </section>
 
-    <section class="bs-section bs-story" id="story" aria-labelledby="bs-story-title">
-      <div class="bs-wrap bs-three">
-        <article>
-          <span>Est. 1911</span>
-          <h2 id="bs-story-title">Thomas McNamara's Saul Parish Tavern</h2>
-          <p>More than a century after the first doors opened in Saul, the refurbished Barn still draws locals and weekend drivers from across County Down.</p>
-        </article>
-        <article>
-          <span>Menus</span>
-          <h3>Dine In or Collect Takeaway</h3>
-          <p>Browse our <a href={menuHref} target="_blank" rel="noopener noreferrer">full restaurant menu ↗</a> or order from our <a href={takeawayHref} target="_blank" rel="noopener noreferrer">takeaway kitchen ↗</a>.</p>
-        </article>
-        <article>
-          <span>Gifting</span>
-          <h3>Barn Bar &amp; Kitchen Vouchers</h3>
-          <p>Treat family or friends to Sunday dinner in Saul with <a href={voucherHref} target="_blank" rel="noopener noreferrer">direct Barn gift vouchers ↗</a>.</p>
-        </article>
+    <section class="bs-section bs-stage" id="kitchen" aria-labelledby="bs-kit-title">
+      <div class="bs-wrap bs-stage-grid">
+        <div class="bs-stage-copy">
+          <h2 id="bs-kit-title">Country kitchen cooking worth the drive out Mearne Road.</h2>
+
+          <div class="bs-tabs" role="tablist" aria-label="Country kitchen menus" data-bs-tabs>
+            <button
+              type="button"
+              class="bs-tab"
+              role="tab"
+              id="bs-tab-main"
+              aria-selected="true"
+              aria-controls="bs-panel-main"
+            >
+              Main kitchen
+            </button>
+            <button
+              type="button"
+              class="bs-tab"
+              role="tab"
+              id="bs-tab-sunday"
+              aria-selected="false"
+              aria-controls="bs-panel-sunday"
+              tabindex="-1"
+            >
+              Sunday roasts
+            </button>
+            <button
+              type="button"
+              class="bs-tab"
+              role="tab"
+              id="bs-tab-takeaway"
+              aria-selected="false"
+              aria-controls="bs-panel-takeaway"
+              tabindex="-1"
+            >
+              Takeaway and vouchers
+            </button>
+          </div>
+
+          <div class="bs-panel" role="tabpanel" id="bs-panel-main" aria-labelledby="bs-tab-main">
+            <p>
+              Freshly prepared Lecale meat, poultry, coastal fish, and hearty tavern classics served alongside a warm pint in Saul.
+            </p>
+            <dl class="bs-stage-ledger">
+              <div>
+                <dt>Dine-in kitchen</dt>
+                <dd>Cooked to order from locally sourced County Down produce</dd>
+              </div>
+              <div>
+                <dt>Full restaurant menu</dt>
+                <dd><a href={menuHref} target="_blank" rel="noopener noreferrer">Browse the live menu ↗</a></dd>
+              </div>
+              <div>
+                <dt>Table desk</dt>
+                <dd><a href={phoneHref}>{phone}</a></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="bs-panel" role="tabpanel" id="bs-panel-sunday" aria-labelledby="bs-tab-sunday" hidden>
+            <p>
+              Traditional family Sunday dinner in the Lecale drumlins, popular with locals and visitors coming back from Saul Church and Slieve Patrick.
+            </p>
+            <dl class="bs-stage-ledger">
+              <div>
+                <dt>Sunday plate</dt>
+                <dd>Roast sirloin, crisp roast potatoes, seasonal vegetables, and homemade gravy</dd>
+              </div>
+              <div>
+                <dt>Family sittings</dt>
+                <dd>Ring ahead to hold your Sunday table</dd>
+              </div>
+              <div>
+                <dt>Direct telephone</dt>
+                <dd><a href={phoneHref}>{phone}</a></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="bs-panel" role="tabpanel" id="bs-panel-takeaway" aria-labelledby="bs-tab-takeaway" hidden>
+            <p>
+              Bring Barn kitchen favourites home from Mearne Road, or treat family and friends to dining and bar gift vouchers.
+            </p>
+            <dl class="bs-stage-ledger">
+              <div>
+                <dt>Takeaway collection</dt>
+                <dd><a href={takeawayHref} target="_blank" rel="noopener noreferrer">View takeaway menu ↗</a></dd>
+              </div>
+              <div>
+                <dt>Gift vouchers</dt>
+                <dd><a href={voucherHref} target="_blank" rel="noopener noreferrer">Order Barn vouchers ↗</a></dd>
+              </div>
+              <div>
+                <dt>Order by phone</dt>
+                <dd><a href={phoneHref}>{phone}</a></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="bs-stage-sheet">
+            <SpecimenSheet
+              id="bs-kitchen-sheet"
+              triggerLabel="Open kitchen and vouchers guide"
+              kicker="The Barn, 37A Mearne Road, Saul"
+              title="Country kitchen, takeaway, and vouchers"
+              subtitle="First opened by Thomas McNamara in 1911. Call 028 4461 5750 to reserve your table."
+              groups={kitchenGroups}
+              ctaLabel="View full live menu ↗"
+              ctaHref={menuHref}
+              ctaExternal={true}
+              secondaryLabel="Gift vouchers ↗"
+              secondaryHref={voucherHref}
+              buttonClass="bs-link-trigger"
+            />
+          </div>
+        </div>
+
+        <div class="bs-stage-media">
+          <figure class="bs-plate">
+            <picture>
+              <source
+                srcset="/media/concepts/the-barn-saul/barn-saul-sunday-roast-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-sunday-roast-1265.webp 1265w"
+                sizes="(max-width: 860px) 100vw, 48vw"
+                type="image/webp"
+              />
+              <img
+                src="/media/concepts/the-barn-saul/barn-saul-sunday-roast.jpg"
+                alt="Generous country kitchen Sunday roast of sliced sirloin beef, crisp roast potatoes, glazed carrots, and Yorkshire pudding"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Sunday roast and country kitchen plates in Saul. Indicative dish visualisation.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="bs-section bs-kitchen" id="kitchen" aria-labelledby="bs-kit-title">
+    <section class="bs-section bs-heritage" id="tavern" aria-labelledby="bs-tavern-title">
       <div class="bs-wrap bs-split">
-        <figure class="bs-plate">
-          <picture>
-            <source srcset="/media/concepts/the-barn-saul/barn-saul-sunday-roast-640.webp 640w, /media/concepts/the-barn-saul/barn-saul-sunday-roast-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/the-barn-saul/barn-saul-sunday-roast.jpg" alt="Generous country kitchen Sunday roast of sliced sirloin beef, crisp roast potatoes, glazed carrots and Yorkshire pudding" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Sunday roast &amp; country kitchen plates in Saul. Indicative dish visualisation.</figcaption>
-        </figure>
-        <div id="book">
-          <p class="bs-kicker">Book Your Table</p>
-          <h2 id="bs-kit-title">Generous country cooking worth the drive out Mearne Road.</h2>
+        <div class="bs-copy-col">
+          <h2 id="bs-tavern-title">Thomas McNamara's Saul Parish tavern.</h2>
           <p>
-            Whether you are stopping after Saul Church and Slieve Patrick or gathering the family for Sunday
-            roast, ring the bar directly to hold your table or place a takeaway collection.
+            More than a century after its doors first opened in 1911, the refurbished Barn still draws neighbours, walkers from St Patrick's country, and weekend drivers from across County Down.
           </p>
-          <div class="bs-call-card">
-            <span class="bs-call-label">Direct Telephone Desk</span>
-            <a class="bs-call-num" href={phoneHref}>{phone}</a>
-            <div class="bs-quick-links">
-              <a href={menuHref} target="_blank" rel="noopener noreferrer">Full Menu ↗</a>
-              <a href={takeawayHref} target="_blank" rel="noopener noreferrer">Takeaway Menu ↗</a>
-              <a href={voucherHref} target="_blank" rel="noopener noreferrer">Vouchers ↗</a>
+          <p>
+            Stop in for a quiet pint by the bar, gather the family around a Sunday roast table, or ring ahead to collect supper on your way through Lecale.
+          </p>
+        </div>
+        <div class="bs-ledger-col">
+          <dl class="bs-ledger">
+            <div>
+              <dt>Founded</dt>
+              <dd>1911 by Thomas McNamara in Saul Parish</dd>
             </div>
-          </div>
+            <div>
+              <dt>Address</dt>
+              <dd>37A Mearne Road, Saul, Downpatrick, BT30 6SY</dd>
+            </div>
+            <div>
+              <dt>Telephone</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div>
+              <dt>Menus and vouchers</dt>
+              <dd class="bs-inline-links">
+                <a href={menuHref} target="_blank" rel="noopener noreferrer">Full menu ↗</a>
+                <a href={takeawayHref} target="_blank" rel="noopener noreferrer">Takeaway ↗</a>
+                <a href={voucherHref} target="_blank" rel="noopener noreferrer">Vouchers ↗</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-section bs-book" id="book" aria-labelledby="bs-book-title">
+      <div class="bs-wrap bs-split">
+        <div class="bs-copy-col">
+          <h2 id="bs-book-title">Hold a table or plan a Sunday gathering.</h2>
+          <p>
+            Ring the bar directly on <a href={phoneHref}>{phone}</a> for immediate reservations and takeaway collections, or put together your table details below so everything is ready for the desk.
+          </p>
+        </div>
+        <div class="bs-form-col">
+          <form class="bs-form" data-bs-form>
+            <div class="bs-row">
+              <label>
+                <span>Your name</span>
+                <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              </label>
+              <label>
+                <span>Telephone</span>
+                <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+              </label>
+            </div>
+            <div class="bs-row">
+              <label>
+                <span>Preferred date</span>
+                <input name="date" type="date" required />
+              </label>
+              <label>
+                <span>Party size</span>
+                <input name="guests" type="number" min="1" max="30" value="4" required />
+              </label>
+            </div>
+            <label>
+              <span>Request type</span>
+              <select name="request">
+                <option value="Sunday roast table">Sunday roast table</option>
+                <option value="Country kitchen dining">Country kitchen dining</option>
+                <option value="Takeaway collection">Takeaway collection</option>
+                <option value="Gift voucher enquiry">Gift voucher enquiry</option>
+              </select>
+            </label>
+            <label>
+              <span>Notes or dietary requests</span>
+              <textarea name="notes" rows="3" placeholder="Preferred sitting time, high chairs, or dietary notes"></textarea>
+            </label>
+            <button class="bs-btn bs-btn--primary" type="submit">Prepare booking note</button>
+          </form>
         </div>
       </div>
     </section>
@@ -156,8 +347,8 @@ const kitchenGroups = [
       <div class="bs-wrap">
         <LocalAreaMap
           id="bs-map"
-          kicker="Saul Parish & Lecale Drumlins"
-          businessName="The Barn Bar & Country Kitchen"
+          kicker=""
+          businessName="The Barn, Saul"
           address="37A Mearne Road, Saul, Downpatrick, BT30 6SY"
           lon={-5.6758059}
           lat={54.3437532}
@@ -177,7 +368,7 @@ const kitchenGroups = [
     <div class="bs-wrap bs-footer-inner">
       <div>
         <strong>The Barn Bar &amp; Country Kitchen</strong>
-        <p>37A Mearne Road, Saul, Downpatrick, Co. Down, BT30 6SY · Est. 1911</p>
+        <p>37A Mearne Road, Saul, Downpatrick, Co. Down, BT30 6SY, Est. 1911</p>
       </div>
       <div class="bs-footer-links">
         <a href={phoneHref}>{phone}</a>
@@ -186,4 +377,86 @@ const kitchenGroups = [
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-bs-header]");
+      const sentinel = document.querySelector("[data-bs-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            if (!entry) return;
+            header.classList.toggle("is-scrolled", !entry.isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tablist = document.querySelector("[data-bs-tabs]");
+      if (tablist) {
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        const activate = (tab, moveFocus) => {
+          tabs.forEach((t) => {
+            const selected = t === tab;
+            t.setAttribute("aria-selected", String(selected));
+            t.tabIndex = selected ? 0 : -1;
+            const panelId = t.getAttribute("aria-controls");
+            const panel = panelId ? document.getElementById(panelId) : null;
+            if (panel) panel.hidden = !selected;
+          });
+          if (moveFocus) tab.focus();
+        };
+        tabs.forEach((tab, idx) => {
+          tab.addEventListener("click", () => activate(tab, false));
+          tab.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              activate(tabs[(idx + 1) % tabs.length], true);
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              activate(tabs[(idx - 1 + tabs.length) % tabs.length], true);
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              activate(tabs[0], true);
+            } else if (e.key === "End") {
+              e.preventDefault();
+              activate(tabs[tabs.length - 1], true);
+            }
+          });
+        });
+      }
+
+      const form = document.querySelector("[data-bs-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Table request: ${fd.get("request")} for ${fd.get("guests")} (${fd.get("date")})`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Telephone: ${fd.get("phone")}`,
+            `Preferred date: ${fd.get("date")}`,
+            `Party size: ${fd.get("guests")}`,
+            `Request: ${fd.get("request")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "The Barn desk (028 4461 5750)",
+              subject,
+              body,
+              url: "tel:+442844615750",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = "tel:+442844615750";
+          }
+        });
+      }
+    })();
+  </script>
 </ConceptLayout>

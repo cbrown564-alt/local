@@ -1,175 +1,178 @@
 ---
-/* Eamon McAuley Interior Design — Interactive Project Scope & Showroom Brief Selector.
-   Helps homeowners frame their project scope (Single Room, Full Home, Bespoke Drapery,
-   or High Street Showroom Visit) before ringing the Ballynahinch studio. */
+/* Eamon McAuley Interior Design: Deep Charcoal-Taupe High Street Atelier Stage
+   Pairs the 16/10 fabric-atelier plate with an interactive segmented tablist for
+   Residential schemes, High Street showroom, and Bespoke beds and fabrics. */
 interface Props {
   mobile: string;
   mobileHref: string;
   landline: string;
   landlineHref: string;
+  siteHref: string;
 }
-const { mobile, mobileHref, landline, landlineHref } = Astro.props;
+const { mobile, mobileHref, landline, landlineHref, siteHref } = Astro.props;
 
-const scopes = [
+const tabs = [
   {
-    id: "room",
-    label: "Single Room Scheme",
-    title: "Re-imagining a living room, kitchen-dining space or master suite.",
-    deliverables: ["Layout, lighting & furniture scale plan", "Curated Irish linen, wool & paint palette", "Bespoke upholstery, rugs & window dressing"],
-    prep: "Bring rough room dimensions and a few daylight photographs on your phone.",
-  },
-  {
-    id: "home",
-    label: "Full Home / New Build",
-    title: "Cohesive architectural interiors from first-fix lighting through final styling.",
-    deliverables: ["Room-by-room material & joinery schedule", "Flooring, stone, hardware & lighting direction", "Sourcing, bespoke beds & installation styling"],
-    prep: "Bring your architect's floor plans so we can review sightlines and electrical layout early.",
-  },
-  {
-    id: "soft",
-    label: "Bespoke Drapery & Furniture",
-    title: "Hand-finished curtains, blinds, statement beds and made-to-order upholstery.",
-    deliverables: ["Fabric sampling from our High Street library", "Pole, track & heading specification", "Coordinated throws, cushions & artwork"],
-    prep: "Drop into 28 High Street to feel fabrics in natural daylight before measuring.",
+    id: "residential",
+    label: "Residential schemes",
+    heading: "Single rooms and full home builds shaped around light, scale and daily living.",
+    summary:
+      "From reworking a living room, kitchen-dining space or master suite to guiding a full new build from first-fix lighting through installation styling.",
+    rows: [
+      { term: "Space and lighting", value: "Layout, furniture scale plan and early electrical sightlines" },
+      { term: "Material schedule", value: "Curated Irish linen, wool, stone, hardware and paint direction" },
+      { term: "What to bring", value: "Rough room dimensions, daylight phone photos or architect plans" },
+    ],
   },
   {
     id: "showroom",
-    label: "High Street Showroom",
-    title: "Curated tableware, artwork, diffusers, throws and home fragrance.",
-    deliverables: ["Seasonal tableware & sculptural lighting", "Luxury diffusers, candles & room sprays", "One-to-one styling advice in Ballynahinch"],
-    prep: "Ring ahead on the mobile or studio line to reserve uninterrupted consultation time.",
+    label: "High Street showroom",
+    heading: "Compare weave, stone and undertone in natural daylight at 28 High Street.",
+    summary:
+      "Screens flatten texture and colour. Visit our Ballynahinch showroom to hold linens, wools, framed artwork, tableware, throws, candles and diffusers side by side.",
+    rows: [
+      { term: "Homeware edit", value: "Seasonal tableware, framed artwork, sculptural lighting and throws" },
+      { term: "Home fragrance", value: "Curated diffusers, candles and room sprays selected in studio" },
+      { term: "One-to-one visits", value: "Ring ahead on mobile or studio line for uninterrupted styling time" },
+    ],
+  },
+  {
+    id: "bespoke",
+    label: "Bespoke beds and fabrics",
+    heading: "Hand-finished drapery, statement beds and made-to-order upholstery.",
+    summary:
+      "Every bed, mattress, curtain heading and upholstered piece is specified from our High Street fabric library so proportions and finish hold together across the room.",
+    rows: [
+      { term: "Beds and sleep", value: "Bespoke beds and mattresses tailored to bedroom proportions" },
+      { term: "Window dressing", value: "Curtains, blinds, poles, tracks and hand-finished headings" },
+      { term: "Finishing layers", value: "Coordinated cushions, throws, rugs and made-to-order seating" },
+    ],
   },
 ];
 ---
 
-<section class="em-brief-band" id="scope" aria-labelledby="em-brief-title">
-  <div class="em-wrap">
-    <div class="em-brief-card" data-em-brief>
-      <div class="em-brief-head">
+<section class="em-section em-atelier" id="atelier" aria-labelledby="em-atelier-title">
+  <div class="em-wrap em-atelier-grid">
+    <div class="em-atelier-media">
+      <figure class="em-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/eamon-mcauley-interiors/eamon-mcauley-fabric-atelier-640.webp 640w, /media/concepts/eamon-mcauley-interiors/eamon-mcauley-fabric-atelier-1265.webp 1265w"
+            sizes="(max-width: 900px) 100vw, 46vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/eamon-mcauley-interiors/eamon-mcauley-fabric-atelier.jpg"
+            alt="Interior designer worktable with Irish linen swatches, herringbone wool, bronze hardware and limestone samples"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Material library and fabric sampling at 28 High Street. Indicative studio visualisation.</figcaption>
+      </figure>
+
+      <dl class="em-atelier-meta">
         <div>
-          <p class="em-kicker">Design Consultations · 28 High Street</p>
-          <h2 id="em-brief-title">Choose the scope that fits your project.</h2>
+          <dt>Direct mobile</dt>
+          <dd><a href={mobileHref}>{mobile}</a></dd>
         </div>
-        <div class="em-tabs" role="tablist" aria-label="Select interior design scope">
-          {scopes.map((s, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["em-tab", idx === 0 && "is-active"]}
-              data-em-tab={s.id}
-            >
-              {s.label}
-            </button>
-          ))}
+        <div>
+          <dt>Studio line</dt>
+          <dd><a href={landlineHref}>{landline}</a></dd>
         </div>
+        <div>
+          <dt>Online catalogue</dt>
+          <dd>
+            <a href={siteHref} target="_blank" rel="noopener noreferrer">eamonmcauleyinteriordesign.com ↗</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="em-atelier-main" data-em-brief>
+      <h2 id="em-atelier-title">High Street atelier and residential design studio.</h2>
+
+      <div class="em-tabs" role="tablist" aria-label="Explore design and showroom services">
+        {tabs.map((tab, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`em-tab-${tab.id}`}
+            aria-controls={`em-panel-${tab.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? 0 : -1}
+            class:list={["em-tab", idx === 0 && "is-active"]}
+            data-em-tab={tab.id}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      {scopes.map((s, idx) => (
-        <div class="em-panel" role="tabpanel" data-em-panel={s.id} hidden={idx !== 0}>
-          <h3>{s.title}</h3>
-          <ul class="em-deliverables">
-            {s.deliverables.map((d) => <li>{d}</li>)}
-          </ul>
-          <div class="em-panel-foot">
-            <p class="em-prep"><strong>What to bring:</strong> {s.prep}</p>
-            <div class="em-panel-actions">
-              <a class="em-btn em-btn--primary" href={mobileHref}>Call Studio Mobile · {mobile}</a>
-              <a class="em-btn em-btn--outline" href={landlineHref}>Office · {landline}</a>
-            </div>
-          </div>
+      {tabs.map((tab, idx) => (
+        <div
+          class="em-panel"
+          role="tabpanel"
+          id={`em-panel-${tab.id}`}
+          aria-labelledby={`em-tab-${tab.id}`}
+          data-em-panel={tab.id}
+          hidden={idx !== 0}
+        >
+          <h3>{tab.heading}</h3>
+          <p>{tab.summary}</p>
+          <dl class="em-ledger">
+            {tab.rows.map((row) => (
+              <div class="em-ledger-row">
+                <dt>{row.term}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<style>
-  .em-brief-band { padding: clamp(48px, 6.5vw, 80px) 0; }
-  .em-brief-card {
-    background: #ffffff;
-    border: 1px solid rgba(29, 26, 23, 0.14);
-    border-top: 2px solid #7c5c3e;
-    padding: clamp(24px, 4vw, 42px);
-  }
-  .em-brief-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(29, 26, 23, 0.12);
-  }
-  .em-brief-head h2 {
-    margin: 0;
-    font-family: var(--em-serif);
-    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
-    font-weight: 400;
-  }
-  .em-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .em-tab {
-    padding: 9px 15px;
-    border: 1px solid rgba(29, 26, 23, 0.22);
-    background: #f6f4f0;
-    color: #1d1a17;
-    font-family: var(--em-sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .em-tab.is-active { background: #1d1a17; border-color: #1d1a17; color: #f6f4f0; }
-  .em-panel { padding-top: 26px; }
-  .em-panel h3 { margin: 0 0 18px; font-family: var(--em-serif); font-size: 1.45rem; font-weight: 400; }
-  .em-deliverables {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .em-deliverables li {
-    background: #f6f4f0;
-    border: 1px solid rgba(29, 26, 23, 0.1);
-    padding: 15px 16px;
-    font-size: 0.9rem;
-    color: #1d1a17;
-  }
-  .em-panel-foot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(29, 26, 23, 0.1);
-  }
-  .em-prep { margin: 0; font-size: 0.9rem; color: #5e564e; max-width: 52ch; }
-  .em-prep strong { color: #1d1a17; }
-  .em-panel-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  @media (max-width: 780px) {
-    .em-deliverables { grid-template-columns: minmax(0, 1fr); }
-  }
-</style>
-
 <script is:inline>
   (() => {
     const root = document.querySelector("[data-em-brief]");
     if (!root) return;
-    const tabs = [...root.querySelectorAll("[data-em-tab]")];
-    const panels = [...root.querySelectorAll("[data-em-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-em-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => {
-          p.hidden = p.getAttribute("data-em-panel") !== id;
-        });
+    const tabs = Array.from(root.querySelectorAll("[data-em-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-em-panel]"));
+
+    const selectTab = (id, moveFocus) => {
+      tabs.forEach((tab) => {
+        const active = tab.getAttribute("data-em-tab") === id;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+        if (active && moveFocus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.getAttribute("data-em-panel") !== id;
+      });
+    };
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", () => selectTab(tab.getAttribute("data-em-tab"), false));
+      tab.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          const next = tabs[(idx + 1) % tabs.length];
+          selectTab(next.getAttribute("data-em-tab"), true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+          selectTab(prev.getAttribute("data-em-tab"), true);
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          selectTab(tabs[0].getAttribute("data-em-tab"), true);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          selectTab(tabs[tabs.length - 1].getAttribute("data-em-tab"), true);
+        }
       });
     });
   })();

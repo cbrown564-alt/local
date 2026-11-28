@@ -15,131 +15,236 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Raymies+Seafoo
 const menuGroups = [
   {
     id: "seafood",
-    label: "Kilkeel & Lough Seafood",
+    label: "Kilkeel and Lough seafood",
     items: [
-      { name: "Chimichurri-Dressed Kilkeel Langoustines", note: "Fresh local langoustines finished with bright herb chimichurri and charred lemon", meta: "House signature" },
-      { name: "Pan-Roasted Sea Bass & Market Catch", note: "Daily coastal white fish cooked on the grill with seasonal greens", meta: "Evening service" },
-      { name: "Prime Steaks & Grill", note: "Dry-aged Irish cuts cooked over high heat alongside house sauces", meta: "Dinner & Grill" },
+      { name: "Chimichurri-dressed Kilkeel langoustines", note: "Fresh local langoustines finished with bright herb chimichurri and charred lemon", meta: "House signature" },
+      { name: "Pan-roasted sea bass and market catch", note: "Daily coastal white fish cooked on the grill with seasonal greens", meta: "Evening service" },
+      { name: "Prime Irish steaks and grill", note: "Dry-aged Irish cuts cooked over high heat alongside house sauces", meta: "Dinner and grill" },
     ],
   },
   {
     id: "sunday",
-    label: "Sunday Lunch & Private Dining",
+    label: "Sunday lunch and private dining",
     items: [
-      { name: "Sunday Lunch on Duke Street", note: "Served 12:30 – 20:00 every Sunday with roasts, coastal starters & desserts", meta: "Sun 12:30 – 20:00" },
-      { name: "Private Dining & Events", note: "Dedicated group tables for family milestones, birthdays and coastal weekends", meta: "By arrangement" },
+      { name: "Sunday lunch on Duke Street", note: "Served 12:30 to 20:00 every Sunday with roasts, coastal starters, and desserts", meta: "Sunday 12:30 to 20:00" },
+      { name: "Private dining and events", note: "Dedicated group tables for family milestones, birthdays, and coastal weekends", meta: "By arrangement" },
+    ],
+  },
+];
+
+const diningTabs = [
+  {
+    id: "seafood",
+    label: "Kilkeel seafood",
+    heading: "Short-haul coastal landings finished to order",
+    copy: "Fresh Kilkeel langoustines and daily coastal white fish brought up the Carlingford coast road to Duke Street.",
+    rows: [
+      { term: "Kilkeel langoustines", value: "Finished with bright herb chimichurri and charred lemon" },
+      { term: "Pan-roasted sea bass", value: "Daily coastal white fish cooked on the grill with seasonal greens" },
+      { term: "Evening sittings", value: "Wednesday to Saturday from 17:00" },
+    ],
+  },
+  {
+    id: "grill",
+    label: "Irish steaks and grill",
+    heading: "Dry-aged Irish cuts seared over high heat",
+    copy: "Prime steaks cooked to order with house sauces in our candlelit dining room right in the heart of Warrenpoint.",
+    rows: [
+      { term: "Prime Irish steaks", value: "Dry-aged cuts cooked over high heat with house sauces" },
+      { term: "Weekend grill service", value: "Friday and Saturday evenings from 17:00 to 21:30" },
+      { term: "Private tables", value: "Group dining for milestones, birthdays, and coastal weekends" },
+    ],
+  },
+  {
+    id: "sunday",
+    label: "Sunday lunches",
+    heading: "Unhurried Sunday roasts and coastal starters",
+    copy: "A relaxed Sunday sitting from lunchtime through early evening for families and friends gathering on Duke Street.",
+    rows: [
+      { term: "Sunday service", value: "12:30 to 20:00 every Sunday" },
+      { term: "On the table", value: "Traditional Sunday roasts, coastal starters, and desserts" },
+      { term: "Same-day enquiries", value: "Call 028 4175 4292 directly after 16:00" },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Raymie's Seafood Bar & Grill — Duke Street, Warrenpoint"
+  title="Raymie's Seafood Bar and Grill, Duke Street in Warrenpoint"
   slug="raymies-warrenpoint"
   bodyClass="concept-page concept-raymies"
   businessName="Raymie's Seafood Bar & Grill"
   town="Warrenpoint"
   bannerNote="Imagery comprises indicative Kilkeel seafood and evening dining-room visualisations."
 >
-  <header class="rm-header">
+  <header class="rm-header" data-rm-header>
     <div class="rm-header-inner">
-      <a class="rm-brand" href="#top">
-        <strong>Raymie's</strong>
-        <span>Seafood Bar &amp; Grill · Warrenpoint</span>
-      </a>
+      <a class="rm-brand" href="#top">Raymie's</a>
       <nav class="rm-nav" aria-label="Primary">
-        <a href="#dining">Seafood &amp; Grill</a>
+        <a href="#menu" data-rm-jump="seafood">Seafood</a>
+        <a href="#menu" data-rm-jump="grill">Steaks and grill</a>
         <a href="#hours">Hours</a>
-        <a href="#reserve">Table Request</a>
         <a href="#location">Duke Street</a>
       </nav>
       <div class="rm-header-actions">
         <a class="rm-header-tel" href={phoneHref}>{phone}</a>
-        <a class="rm-header-cta" href="#reserve">Reserve a Table</a>
+        <a class="rm-header-cta" href="#reserve">Reserve a table</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="rm-hero" aria-labelledby="rm-hero-title">
-      <div class="rm-wrap rm-hero-grid">
-        <figure class="rm-hero-plate">
-          <picture>
-            <source srcset="/media/concepts/raymies-warrenpoint/raymies-seafood-platter-640.webp 640w, /media/concepts/raymies-warrenpoint/raymies-seafood-platter-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
-            <img src="/media/concepts/raymies-warrenpoint/raymies-seafood-platter.jpg" alt="Fresh Kilkeel langoustines and sea bass dressed with green chimichurri and charred lemon on dark stoneware" width="1408" height="768" loading="eager" />
-          </picture>
-          <figcaption>Kilkeel langoustines &amp; sea bass service. Indicative seafood visualisation.</figcaption>
-        </figure>
+      <div class="rm-hero-sentinel" data-rm-sentinel aria-hidden="true"></div>
+      <div class="rm-hero-media">
+        <picture>
+          <source
+            srcset="/media/concepts/raymies-warrenpoint/raymies-seafood-platter-640.webp 640w, /media/concepts/raymies-warrenpoint/raymies-seafood-platter-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/raymies-warrenpoint/raymies-seafood-platter.jpg"
+            alt="Fresh Kilkeel langoustines and pan-roasted sea bass dressed with herb chimichurri and charred lemon on dark stoneware"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+      </div>
+
+      <div class="rm-wrap rm-hero-inner">
         <div class="rm-hero-copy">
-          <p class="rm-kicker">4 Duke Street · Warrenpoint · Carlingford Lough</p>
           <h1 id="rm-hero-title">Kilkeel catch on Duke Street.</h1>
-          <p class="rm-lead">
-            Chimichurri-dressed langoustines, pan-roasted sea bass, prime Irish steaks and unhurried Sunday
-            lunches steps from Warrenpoint front.
+          <p class="rm-hero-lead">
+            Chimichurri-dressed langoustines, pan-roasted sea bass, dry-aged Irish steaks, and unhurried Sunday lunches steps from Warrenpoint front.
           </p>
-          <div class="rm-actions">
-            <a class="rm-btn rm-btn--primary" href="#reserve">Request a Table</a>
-            <SpecimenSheet
-              id="rm-menu-sheet"
-              triggerLabel="Evening & Sunday Guide"
-              kicker="Raymie's · 4 Duke Street, Warrenpoint"
-              title="Seafood, Grill & Sunday Dining"
-              subtitle="Fresh coastal landings and prime cuts cooked to order. Ring 028 4175 4292 for tonight's specials."
-              groups={menuGroups}
-              ctaLabel="Request a Table"
-              ctaHref="#reserve"
-              secondaryLabel={`Call ${phone}`}
-              secondaryHref={phoneHref}
-              buttonClass="rm-link-trigger"
-            />
-          </div>
-          <p class="rm-service-note">
-            Wed – Thu 17:00 – 21:00 · Fri – Sat 17:00 – 21:30 · Sun 12:30 – 20:00
-          </p>
+          <a class="rm-btn rm-btn--primary" href="#reserve">Reserve a table</a>
+        </div>
+
+        <div class="rm-hero-foot">
+          <p class="rm-hero-caption">Kilkeel langoustines and sea bass service. Indicative seafood visualisation.</p>
         </div>
       </div>
     </section>
 
-    <section class="rm-section rm-room" id="dining" aria-labelledby="rm-room-title">
-      <div class="rm-wrap rm-split">
-        <div>
-          <p class="rm-kicker">The Dining Room</p>
-          <h2 id="rm-room-title">Candlelit evenings, Sunday roasts and private tables.</h2>
-          <p>
-            From Wednesday evening suppers to packed Friday and Saturday grill sittings and relaxed Sunday
-            lunches, Raymie's pairs short-haul County Down seafood with warm, attentive service right in the
-            heart of Warrenpoint.
-          </p>
-          <div class="rm-hours-box" id="hours">
-            <h3>Kitchen &amp; Dining Hours</h3>
+    <section class="rm-section rm-stage" id="menu" aria-labelledby="rm-stage-title">
+      <div class="rm-wrap rm-stage-grid">
+        <div class="rm-stage-copy" data-rm-tabs>
+          <h2 id="rm-stage-title">Seafood, grill, and Sunday lunch on Duke Street.</h2>
+
+          <div class="rm-tabs" role="tablist" aria-label="Explore Raymie's dining">
+            {diningTabs.map((tab, idx) => (
+              <button
+                type="button"
+                role="tab"
+                id={`rm-tab-${tab.id}`}
+                aria-controls={`rm-panel-${tab.id}`}
+                aria-selected={idx === 0 ? "true" : "false"}
+                tabindex={idx === 0 ? "0" : "-1"}
+                class:list={["rm-tab", idx === 0 && "is-active"]}
+                data-rm-tab={tab.id}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {diningTabs.map((tab, idx) => (
+            <div
+              class="rm-panel"
+              role="tabpanel"
+              id={`rm-panel-${tab.id}`}
+              aria-labelledby={`rm-tab-${tab.id}`}
+              data-rm-panel={tab.id}
+              hidden={idx !== 0}
+            >
+              <h3>{tab.heading}</h3>
+              <p>{tab.copy}</p>
+              <dl class="rm-ledger">
+                {tab.rows.map((row) => (
+                  <div class="rm-ledger-row">
+                    <dt>{row.term}</dt>
+                    <dd>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+
+          <div class="rm-sheet-row">
+            <SpecimenSheet
+              id="rm-menu-sheet"
+              triggerLabel="Open evening and Sunday guide"
+              kicker="Raymie's, 4 Duke Street, Warrenpoint"
+              title="Seafood, grill, and Sunday dining"
+              subtitle="Fresh coastal landings and prime cuts cooked to order. Ring 028 4175 4292 for tonight's specials."
+              groups={menuGroups}
+              ctaLabel="Reserve a table"
+              ctaHref="#reserve"
+              secondaryLabel={`Call ${phone}`}
+              secondaryHref={phoneHref}
+              buttonClass="rm-sheet-trigger"
+            />
+          </div>
+        </div>
+
+        <div class="rm-stage-media">
+          <figure class="rm-plate">
+            <picture>
+              <source
+                srcset="/media/concepts/raymies-warrenpoint/raymies-lough-dining-room-640.webp 640w, /media/concepts/raymies-warrenpoint/raymies-lough-dining-room-1265.webp 1265w"
+                sizes="(max-width: 900px) 100vw, 46vw"
+                type="image/webp"
+              />
+              <img
+                src="/media/concepts/raymies-warrenpoint/raymies-lough-dining-room.jpg"
+                alt="Candlelit navy and brass coastal dining room in Warrenpoint ready for evening service"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Evening tables on Duke Street. Indicative dining room visualisation.</figcaption>
+          </figure>
+
+          <div class="rm-hours-block" id="hours">
+            <h3>Kitchen and dining hours</h3>
             <dl class="rm-hours-list">
-              <div><dt>Monday – Tuesday</dt><dd>Closed</dd></div>
-              <div><dt>Wednesday – Thursday</dt><dd>17:00 – 21:00</dd></div>
-              <div><dt>Friday – Saturday</dt><dd>17:00 – 21:30</dd></div>
-              <div><dt>Sunday Lunch &amp; Dinner</dt><dd>12:30 – 20:00</dd></div>
+              <div><dt>Monday and Tuesday</dt><dd>Closed</dd></div>
+              <div><dt>Wednesday and Thursday</dt><dd>17:00 to 21:00</dd></div>
+              <div><dt>Friday and Saturday</dt><dd>17:00 to 21:30</dd></div>
+              <div><dt>Sunday lunch and dinner</dt><dd>12:30 to 20:00</dd></div>
             </dl>
           </div>
         </div>
-        <figure class="rm-plate">
-          <picture>
-            <source srcset="/media/concepts/raymies-warrenpoint/raymies-lough-dining-room-640.webp 640w, /media/concepts/raymies-warrenpoint/raymies-lough-dining-room-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/raymies-warrenpoint/raymies-lough-dining-room.jpg" alt="Candlelit navy and brass coastal dining room in Warrenpoint ready for evening service" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Evening tables on Duke Street. Indicative dining room visualisation.</figcaption>
-        </figure>
       </div>
     </section>
 
     <section class="rm-section rm-reserve" id="reserve" aria-labelledby="rm-res-title">
       <div class="rm-wrap rm-split">
-        <div>
-          <p class="rm-kicker">Bookings &amp; Private Dining</p>
+        <div class="rm-reserve-intro">
           <h2 id="rm-res-title">Reserve your evening table or Sunday sitting.</h2>
           <p>
-            Send your preferred date, sitting time and guest count below for dinner, Sunday lunch or private
-            dining. For same-day tables after 4pm, call Duke Street directly on <a href={phoneHref}>{phone}</a>.
+            Send your preferred date, sitting time, and guest count for dinner, Sunday lunch, or private
+            dining. For same-day tables after 16:00, call Duke Street directly on <a href={phoneHref}>{phone}</a>.
           </p>
+          <dl class="rm-contact-ledger">
+            <div class="rm-contact-row">
+              <dt>Address</dt>
+              <dd>4 Duke Street, Warrenpoint, Newry, BT34 3JE</dd>
+            </div>
+            <div class="rm-contact-row">
+              <dt>Telephone</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div class="rm-contact-row">
+              <dt>Social updates</dt>
+              <dd><a href={fbHref} target="_blank" rel="noopener noreferrer">Raymie's on Facebook</a></dd>
+            </div>
+          </dl>
         </div>
+
         <form class="rm-form" data-rm-form>
           <div class="rm-row">
             <label>
@@ -148,7 +253,7 @@ const menuGroups = [
             </label>
             <label>
               <span>Telephone</span>
-              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07 number" />
             </label>
           </div>
           <div class="rm-row">
@@ -164,16 +269,16 @@ const menuGroups = [
           <label>
             <span>Service</span>
             <select name="service">
-              <option value="Evening Dinner (Wed–Sat)">Evening Dinner (Wed – Sat)</option>
-              <option value="Sunday Lunch (12:30–20:00)">Sunday Lunch (12:30 – 20:00)</option>
-              <option value="Private Dining / Celebration">Private Dining / Celebration</option>
+              <option value="Evening dinner (Wednesday to Saturday)">Evening dinner (Wednesday to Saturday)</option>
+              <option value="Sunday lunch (12:30 to 20:00)">Sunday lunch (12:30 to 20:00)</option>
+              <option value="Private dining or celebration">Private dining or celebration</option>
             </select>
           </label>
           <label>
-            <span>Preferred time &amp; dietary notes</span>
-            <textarea name="notes" rows="3" placeholder="e.g. 7:30pm, shellfish allergy for one guest..."></textarea>
+            <span>Preferred time and dietary notes</span>
+            <textarea name="notes" rows="3" placeholder="Preferred sitting time or dietary notes"></textarea>
           </label>
-          <button class="rm-btn rm-btn--primary" type="submit">Send Table Request</button>
+          <button class="rm-btn rm-btn--primary" type="submit">Send table request</button>
         </form>
       </div>
     </section>
@@ -183,8 +288,8 @@ const menuGroups = [
         <LocalAreaMap
           id="rm-map"
           tone="dark"
-          kicker="Carlingford Lough & Mourne Coast"
-          businessName="Raymie's Seafood Bar & Grill"
+          kicker=""
+          businessName="Raymie's Seafood"
           address="4 Duke Street, Warrenpoint, Newry, BT34 3JE"
           lon={-6.2537889}
           lat={54.1013531}
@@ -208,36 +313,97 @@ const menuGroups = [
       </div>
       <div class="rm-footer-links">
         <a href={phoneHref}>{phone}</a>
-        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook</a>
       </div>
     </div>
   </footer>
 
   <script is:inline>
     (() => {
-      const form = document.querySelector("[data-rm-form]");
-      if (!form) return;
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-        const fd = new FormData(form);
-        const subject = `Table Request — Raymie's (${fd.get("guests")} guests, ${fd.get("date")})`;
-        const body = [
-          `Name: ${fd.get("name")}`,
-          `Phone: ${fd.get("phone")}`,
-          `Date: ${fd.get("date")}`,
-          `Guests: ${fd.get("guests")}`,
-          `Service: ${fd.get("service")}`,
-          `Notes: ${fd.get("notes") || "None"}`,
-        ].join("\n");
-        const ev = new CustomEvent("mm:enquiry", {
-          cancelable: true,
-          detail: { to: "njbcorporatebarservices@hotmail.com", subject, body, phone: "028 4175 4292", phoneHref: "tel:+442841754292" },
+      const header = document.querySelector("[data-rm-header]");
+      const sentinel = document.querySelector("[data-rm-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tabRoot = document.querySelector("[data-rm-tabs]");
+      if (tabRoot) {
+        const tabs = [...tabRoot.querySelectorAll("[data-rm-tab]")];
+        const panels = [...tabRoot.querySelectorAll("[data-rm-panel]")];
+        const activate = (id, focusTab = false) => {
+          tabs.forEach((t) => {
+            const active = t.getAttribute("data-rm-tab") === id;
+            t.classList.toggle("is-active", active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+            t.setAttribute("tabindex", active ? "0" : "-1");
+            if (active && focusTab) t.focus();
+          });
+          panels.forEach((p) => {
+            p.hidden = p.getAttribute("data-rm-panel") !== id;
+          });
+        };
+
+        tabs.forEach((btn, idx) => {
+          btn.addEventListener("click", () => activate(btn.getAttribute("data-rm-tab")));
+          btn.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+              e.preventDefault();
+              const next = (idx + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+              activate(tabs[next].getAttribute("data-rm-tab"), true);
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              activate(tabs[0].getAttribute("data-rm-tab"), true);
+            } else if (e.key === "End") {
+              e.preventDefault();
+              activate(tabs[tabs.length - 1].getAttribute("data-rm-tab"), true);
+            }
+          });
         });
-        if (window.dispatchEvent(ev)) {
-          window.location.href = `mailto:njbcorporatebarservices@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-      });
+
+        document.querySelectorAll("[data-rm-jump]").forEach((link) => {
+          link.addEventListener("click", () => {
+            const targetId = link.getAttribute("data-rm-jump");
+            if (targetId) activate(targetId);
+          });
+        });
+      }
+
+      const form = document.querySelector("[data-rm-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Table request for Raymie's: ${fd.get("guests")} guests on ${fd.get("date")}`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Date: ${fd.get("date")}`,
+            `Guests: ${fd.get("guests")}`,
+            `Service: ${fd.get("service")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "njbcorporatebarservices@hotmail.com",
+              subject,
+              body,
+              phone: "028 4175 4292",
+              phoneHref: "tel:+442841754292",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = `mailto:njbcorporatebarservices@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          }
+        });
+      }
     })();
   </script>
 </ConceptLayout>
