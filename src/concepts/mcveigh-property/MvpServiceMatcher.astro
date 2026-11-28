@@ -1,125 +1,118 @@
 ---
-/* McVeigh Property Services — Interactive Valuation & Property Service Selector.
-   Guides Newry & South Down homeowners, landlords and commercial clients straight to the right desk. */
+/* McVeigh Property Services: Interactive Property Services Stage.
+   Guides Newry and South Down homeowners, landlords, and commercial clients to the right desk. */
 const services = [
   {
     id: "sales",
-    label: "Residential Sales",
-    title: "Accurate local pricing, strong photography and hands-on negotiation.",
-    points: ["Free, no-obligation home valuation across Newry & South Down", "Accompanied viewings & clear weekly seller updates", "Direct guidance from listing through completion"],
-    cta: "Book a Free Valuation",
+    label: "Residential sales",
+    title: "Accurate local pricing, clear marketing, and hands-on negotiation.",
+    summary: "From detached County Down family homes to town-centre terraces, every sale is guided from initial appraisal through to key handover.",
+    points: [
+      { term: "Appraisals", detail: "Free, no-obligation home valuations across Newry, Mourne, and South Armagh." },
+      { term: "Viewings", detail: "Accompanied appointments with straightforward weekly seller updates." },
+      { term: "Completion", detail: "Active coordination with buyers and solicitors from agreed offer to completion." },
+    ],
+    cta: "Book a free sales valuation",
+    selectValue: "Free sales valuation",
   },
   {
     id: "lettings",
-    label: "Lettings & Management",
-    title: "Tenant sourcing, referencing and full rental property management.",
-    points: ["Careful tenant vetting & deposit protection", "Routine inspections & maintenance coordination", "Clear monthly statements for landlords"],
-    cta: "Request a Rental Appraisal",
+    label: "Lettings and management",
+    title: "Tenant sourcing, full property management, and residential block oversight.",
+    summary: "Dedicated support for individual landlords and residential management companies seeking steady tenancy care and clear accounts.",
+    points: [
+      { term: "Tenancies", detail: "Careful tenant referencing, lease preparation, and compliant deposit protection." },
+      { term: "Upkeep", detail: "Routine property inspections, maintenance coordination, and monthly landlord statements." },
+      { term: "Block management", detail: "Service-charge budgeting, common-area upkeep, and contractor oversight from Kildare Street." },
+    ],
+    cta: "Request a rental appraisal",
+    selectValue: "Rental and lettings appraisal",
   },
   {
     id: "commercial",
-    label: "Commercial & Land",
-    title: "Retail units, offices, industrial space and development sites.",
-    points: ["Newry City & corridor commercial valuations", "Land & development site marketing", "Lease renewals & investment appraisals"],
-    cta: "Discuss Commercial Property",
-  },
-  {
-    id: "block",
-    label: "Block Management",
-    title: "Structured management for residential apartment blocks and estates.",
-    points: ["Service-charge budgeting & transparent accounts", "Common-area maintenance & contractor oversight", "Responsive day-to-day contact from Kildare Street"],
-    cta: "Enquire on Block Management",
+    label: "Commercial and land",
+    title: "Retail units, offices, industrial space, and development sites.",
+    summary: "Practical agency and valuation advice for business owners, investors, and landowners across the Newry City corridor.",
+    points: [
+      { term: "Commercial valuations", detail: "Market appraisals for town-centre retail premises, offices, and light industrial units." },
+      { term: "Land and sites", detail: "Discreet or open-market disposal for residential plots and agricultural holdings." },
+      { term: "Leases and investment", detail: "Lease renewals, rent reviews, and yield appraisals grounded in local demand." },
+    ],
+    cta: "Discuss commercial property",
+    selectValue: "Commercial or land enquiry",
   },
 ];
 ---
 
-<section class="mv-matcher-band" id="services" aria-labelledby="mv-matcher-title">
-  <div class="mv-wrap">
-    <div class="mv-matcher-card" data-mv-matcher>
-      <div class="mv-matcher-head">
-        <div>
-          <p class="mv-kicker">1 Kildare Street · Newry</p>
-          <h2 id="mv-matcher-title">Sales, lettings, commercial &amp; block management.</h2>
-        </div>
-        <div class="mv-tabs" role="tablist" aria-label="Choose property service">
-          {services.map((s, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["mv-tab", idx === 0 && "is-active"]}
-              data-mv-tab={s.id}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
+<section class="mv-stage" id="services" aria-labelledby="mv-services-title">
+  <div class="mv-wrap mv-stage-grid" data-mv-matcher>
+    <div class="mv-stage-copy">
+      <h2 id="mv-services-title">Property services built around Newry and South Down.</h2>
+
+      <div class="mv-tabs" role="tablist" aria-label="Property services">
+        {services.map((s, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`mv-tab-${s.id}`}
+            aria-controls={`mv-panel-${s.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? "0" : "-1"}
+            class:list={["mv-tab", idx === 0 && "is-active"]}
+            data-mv-tab={s.id}
+          >
+            {s.label}
+          </button>
+        ))}
       </div>
+
       {services.map((s, idx) => (
-        <div class="mv-panel" role="tabpanel" data-mv-panel={s.id} hidden={idx !== 0}>
-          <h3>{s.title}</h3>
-          <ul class="mv-points">
-            {s.points.map((p) => <li>{p}</li>)}
-          </ul>
-          <a class="mv-btn mv-btn--primary" href="#valuation">{s.cta}</a>
+        <div
+          class="mv-panel"
+          role="tabpanel"
+          id={`mv-panel-${s.id}`}
+          aria-labelledby={`mv-tab-${s.id}`}
+          data-mv-panel={s.id}
+          hidden={idx !== 0}
+        >
+          <h3 class="mv-panel-title">{s.title}</h3>
+          <p class="mv-panel-summary">{s.summary}</p>
+          <dl class="mv-ledger">
+            {s.points.map((p) => (
+              <div class="mv-ledger-row">
+                <dt>{p.term}</dt>
+                <dd>{p.detail}</dd>
+              </div>
+            ))}
+          </dl>
+          <a class="mv-btn mv-btn--light" href="#valuation" data-mv-select-service={s.selectValue}>
+            {s.cta}
+          </a>
         </div>
       ))}
     </div>
+
+    <div class="mv-stage-media">
+      <figure class="mv-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/mcveigh-property/mcveigh-keys-interior-640.webp 640w, /media/concepts/mcveigh-property/mcveigh-keys-interior-1265.webp 1265w"
+            sizes="(max-width: 960px) 100vw, 44vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/mcveigh-property/mcveigh-keys-interior.jpg"
+            alt="Bright modern Northern Ireland kitchen and living room with brass house key on a stone tray"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Indicative residential sales and handover interior visualisation.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
-
-<style>
-  .mv-matcher-band { padding: clamp(46px, 6vw, 76px) 0; }
-  .mv-matcher-card {
-    background: #ffffff;
-    border: 1px solid rgba(19, 32, 51, 0.14);
-    border-top: 3px solid #1e4b7a;
-    border-radius: 4px;
-    padding: clamp(24px, 4vw, 40px);
-  }
-  .mv-matcher-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(19, 32, 51, 0.12);
-  }
-  .mv-matcher-head h2 { margin: 0; font-family: var(--mv-display); font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 600; }
-  .mv-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mv-tab {
-    padding: 9px 15px;
-    border: 1px solid rgba(19, 32, 51, 0.2);
-    background: #f4f6f9;
-    color: #132033;
-    font-family: var(--mv-sans);
-    font-size: 0.84rem;
-    font-weight: 600;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  .mv-tab.is-active { background: #1e4b7a; border-color: #1e4b7a; color: #ffffff; }
-  .mv-panel { padding-top: 24px; }
-  .mv-panel h3 { margin: 0 0 18px; font-family: var(--mv-display); font-size: 1.32rem; font-weight: 600; }
-  .mv-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .mv-points li {
-    background: #f4f6f9;
-    border: 1px solid rgba(19, 32, 51, 0.1);
-    padding: 14px 16px;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    color: #132033;
-  }
-  @media (max-width: 780px) { .mv-points { grid-template-columns: minmax(0, 1fr); } }
-</style>
 
 <script is:inline>
   (() => {
@@ -127,15 +120,42 @@ const services = [
     if (!root) return;
     const tabs = [...root.querySelectorAll("[data-mv-tab]")];
     const panels = [...root.querySelectorAll("[data-mv-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-mv-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => { p.hidden = p.getAttribute("data-mv-panel") !== id; });
+
+    const activate = (btn, moveFocus) => {
+      const id = btn.getAttribute("data-mv-tab");
+      tabs.forEach((t) => {
+        const active = t === btn;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
+        t.setAttribute("tabindex", active ? "0" : "-1");
+      });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute("data-mv-panel") !== id;
+      });
+      if (moveFocus) btn.focus();
+    };
+
+    tabs.forEach((btn, idx) => {
+      btn.addEventListener("click", () => activate(btn, false));
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          activate(tabs[(idx + 1) % tabs.length], true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          activate(tabs[(idx - 1 + tabs.length) % tabs.length], true);
+        }
+      });
+    });
+
+    root.querySelectorAll("[data-mv-select-service]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const val = link.getAttribute("data-mv-select-service");
+        const select = document.querySelector("[data-mv-service-select]");
+        if (select && val) {
+          select.value = val;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       });
     });
   })();

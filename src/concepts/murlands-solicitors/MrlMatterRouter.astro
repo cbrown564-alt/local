@@ -1,132 +1,119 @@
 ---
-/* Murlands Solicitors — Interactive Legal Matter Router.
-   Helps County Down clients frame their matter (Property, Wills, Commercial, Family)
-   before ringing Ballynahinch or Downpatrick or sending a confidential enquiry. */
+/* Murlands Solicitors: Interactive Practice Areas Stage.
+   Helps County Down clients frame their matter before ringing Ballynahinch or Downpatrick
+   or sending a confidential enquiry. */
 const matters = [
   {
     id: "property",
-    label: "Property & Conveyancing",
-    title: "Residential sales, purchases, remortgages and agricultural land transfers.",
-    points: ["Clear fee estimate & timeline from day one", "Direct solicitor handling across County Down", "Dedicated Ballynahinch & Downpatrick offices"],
-    note: "Bring photo ID, mortgage agreement in principle (if buying) and estate agent details.",
+    label: "Property and conveyancing",
+    title: "Residential sales, purchases, remortgages, and agricultural land transfers.",
+    summary: "Direct solicitor handling from agreed offer to completion, backed by clear fee estimates and local knowledge of County Down title.",
+    points: [
+      { term: "Fees and timing", detail: "Clear written fee estimate and expected timeline set out from day one." },
+      { term: "Local handling", detail: "Direct solicitor contact across Ballynahinch, Downpatrick, and surrounding parishes." },
+      { term: "Preparing ahead", detail: "Bring photo ID, mortgage agreement in principle if buying, and estate agent details." },
+    ],
+    cta: "Request a property consultation",
+    selectValue: "Property and conveyancing",
   },
   {
     id: "wills",
-    label: "Wills, Probate & Estates",
-    title: "Carefully drafted Wills, Enduring Powers of Attorney and estate administration.",
-    points: ["Plain-spoken inheritance & succession planning", "Sensitive, thorough probate administration", "Home or hospital visits arranged where needed"],
-    note: "We send a short confidential checklist beforehand so your meeting is calm and productive.",
+    label: "Wills, estates, and family",
+    title: "Carefully drafted Wills, Enduring Powers of Attorney, probate, and family law.",
+    summary: "Plain-spoken guidance for inheritance planning, estate administration, and sensitive personal decisions.",
+    points: [
+      { term: "Wills and powers", detail: "Succession planning and Enduring Powers of Attorney explained without jargon." },
+      { term: "Probate and family", detail: "Thorough estate administration and discreet, measured family law counsel." },
+      { term: "Accessible visits", detail: "Home or hospital visits arranged where needed, with a short checklist sent ahead." },
+    ],
+    cta: "Request a private client call",
+    selectValue: "Wills, estates, and family",
   },
   {
-    id: "business",
-    label: "Law for Business",
-    title: "Commercial leases, company structuring, agri-business and dispute advice.",
-    points: ["Commercial property & lease negotiations", "Partnership & shareholder agreements", "Practical County Down & NI commercial counsel"],
-    note: "Share your draft heads of terms or lease ahead of our initial consultation.",
-  },
-  {
-    id: "personal",
-    label: "Law for You",
-    title: "Family law, personal litigation and trusted personal representation.",
-    points: ["Discreet, measured guidance through difficult decisions", "Experienced Northern Ireland court representation", "191 years of unbroken local practice"],
-    note: "All initial enquiries are treated in strict professional confidence.",
+    id: "commercial",
+    label: "Commercial and litigation",
+    title: "Commercial leases, business structuring, agri-business, and court representation.",
+    summary: "Practical Northern Ireland legal counsel for local companies, farming enterprises, and individuals facing disputes.",
+    points: [
+      { term: "Commercial property", detail: "Commercial lease negotiations, renewals, and property acquisitions." },
+      { term: "Business counsel", detail: "Partnership agreements, shareholder structuring, and agri-business advice." },
+      { term: "Representation", detail: "Experienced Northern Ireland court representation and dispute resolution." },
+    ],
+    cta: "Request a commercial consultation",
+    selectValue: "Commercial and litigation",
   },
 ];
 ---
 
-<section class="mr-router-band" id="practice" aria-labelledby="mr-router-title">
-  <div class="mr-wrap">
-    <div class="mr-router-card" data-mr-router>
-      <div class="mr-router-head">
-        <div>
-          <p class="mr-kicker">191 Years of Practice · Law for Business &amp; Law for You</p>
-          <h2 id="mr-router-title">How can our solicitors advise you?</h2>
-        </div>
-        <div class="mr-tabs" role="tablist" aria-label="Choose legal area">
-          {matters.map((m, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["mr-tab", idx === 0 && "is-active"]}
-              data-mr-tab={m.id}
-            >
-              {m.label}
-            </button>
-          ))}
-        </div>
+<section class="mr-stage" id="practice" aria-labelledby="mr-router-title">
+  <div class="mr-wrap mr-stage-grid" data-mr-router>
+    <div class="mr-stage-copy">
+      <h2 id="mr-router-title">Practice areas for County Down families and businesses.</h2>
+
+      <div class="mr-tabs" role="tablist" aria-label="Practice areas">
+        {matters.map((m, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`mr-tab-${m.id}`}
+            aria-controls={`mr-panel-${m.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? "0" : "-1"}
+            class:list={["mr-tab", idx === 0 && "is-active"]}
+            data-mr-tab={m.id}
+          >
+            {m.label}
+          </button>
+        ))}
       </div>
 
       {matters.map((m, idx) => (
-        <div class="mr-panel" role="tabpanel" data-mr-panel={m.id} hidden={idx !== 0}>
-          <h3>{m.title}</h3>
-          <ul class="mr-points">
-            {m.points.map((pt) => <li>{pt}</li>)}
-          </ul>
-          <div class="mr-panel-foot">
-            <p class="mr-note"><strong>Preparing for your call:</strong> {m.note}</p>
-            <a class="mr-btn mr-btn--primary" href="#contact">Request a Confidential Call</a>
-          </div>
+        <div
+          class="mr-panel"
+          role="tabpanel"
+          id={`mr-panel-${m.id}`}
+          aria-labelledby={`mr-tab-${m.id}`}
+          data-mr-panel={m.id}
+          hidden={idx !== 0}
+        >
+          <h3 class="mr-panel-title">{m.title}</h3>
+          <p class="mr-panel-summary">{m.summary}</p>
+          <dl class="mr-ledger">
+            {m.points.map((pt) => (
+              <div class="mr-ledger-row">
+                <dt>{pt.term}</dt>
+                <dd>{pt.detail}</dd>
+              </div>
+            ))}
+          </dl>
+          <a class="mr-btn mr-btn--light" href="#contact" data-mr-select-area={m.selectValue}>
+            {m.cta}
+          </a>
         </div>
       ))}
     </div>
+
+    <div class="mr-stage-media">
+      <figure class="mr-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/murlands-solicitors/murlands-county-down-desk-640.webp 640w, /media/concepts/murlands-solicitors/murlands-county-down-desk-1265.webp 1265w"
+            sizes="(max-width: 960px) 100vw, 44vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/murlands-solicitors/murlands-county-down-desk.jpg"
+            alt="Solicitor oak desk with parchment deeds tied in green ribbon beside a sunlit County Down sash window"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Indicative property deeds and private client office visualisation.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
-
-<style>
-  .mr-router-band { padding: clamp(48px, 6vw, 76px) 0; }
-  .mr-router-card {
-    background: #ffffff;
-    border: 1px solid rgba(22, 38, 31, 0.14);
-    border-top: 3px solid #1d4232;
-    padding: clamp(24px, 4vw, 40px);
-    border-radius: 2px;
-  }
-  .mr-router-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(22, 38, 31, 0.12);
-  }
-  .mr-router-head h2 { margin: 0; font-family: var(--mr-serif); font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 500; }
-  .mr-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mr-tab {
-    padding: 9px 15px;
-    border: 1px solid rgba(22, 38, 31, 0.22);
-    background: #f7f6f1;
-    color: #16261f;
-    font-family: var(--mr-sans);
-    font-size: 0.84rem;
-    font-weight: 600;
-    border-radius: 2px;
-    cursor: pointer;
-  }
-  .mr-tab.is-active { background: #1d4232; border-color: #1d4232; color: #f7f6f1; }
-  .mr-panel { padding-top: 24px; }
-  .mr-panel h3 { margin: 0 0 18px; font-family: var(--mr-serif); font-size: 1.45rem; font-weight: 500; }
-  .mr-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .mr-points li {
-    background: #f7f6f1;
-    border: 1px solid rgba(22, 38, 31, 0.1);
-    padding: 14px 16px;
-    font-size: 0.9rem;
-    color: #16261f;
-  }
-  .mr-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-  .mr-note { margin: 0; font-size: 0.9rem; color: #4b5d54; max-width: 54ch; }
-  .mr-note strong { color: #16261f; }
-  @media (max-width: 780px) { .mr-points { grid-template-columns: minmax(0, 1fr); } }
-</style>
 
 <script is:inline>
   (() => {
@@ -134,15 +121,42 @@ const matters = [
     if (!root) return;
     const tabs = [...root.querySelectorAll("[data-mr-tab]")];
     const panels = [...root.querySelectorAll("[data-mr-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-mr-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => { p.hidden = p.getAttribute("data-mr-panel") !== id; });
+
+    const activate = (btn, moveFocus) => {
+      const id = btn.getAttribute("data-mr-tab");
+      tabs.forEach((t) => {
+        const active = t === btn;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
+        t.setAttribute("tabindex", active ? "0" : "-1");
+      });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute("data-mr-panel") !== id;
+      });
+      if (moveFocus) btn.focus();
+    };
+
+    tabs.forEach((btn, idx) => {
+      btn.addEventListener("click", () => activate(btn, false));
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          activate(tabs[(idx + 1) % tabs.length], true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          activate(tabs[(idx - 1 + tabs.length) % tabs.length], true);
+        }
+      });
+    });
+
+    root.querySelectorAll("[data-mr-select-area]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const val = link.getAttribute("data-mr-select-area");
+        const select = document.querySelector("[data-mr-area-select]");
+        if (select && val) {
+          select.value = val;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       });
     });
   })();

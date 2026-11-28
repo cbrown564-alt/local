@@ -1,139 +1,659 @@
-/* Tory Bush Cottages — Quiet Centred Mountain Sanctuary (Warm Stone & Moss) */
+/* Tory Bush Cottages, Full-Bleed Mourne Stone Cottages & Riding Takeover */
 body.concept-torybush {
-  --tb-bg: #f6f4ee;
-  --tb-surface: #ffffff;
-  --tb-ink: #22261e;
-  --tb-muted: #5a6153;
-  --tb-line: rgba(34, 38, 30, 0.12);
-  --tb-accent: #4c623d;
+  --tb-bg: #f5f3ed;
+  --tb-surface: #ebe7dd;
+  --tb-card: #ffffff;
+  --tb-stage: #192218;
+  --tb-stage-ink: #f4f2eb;
+  --tb-stage-muted: #bec8ba;
+  --tb-stage-line: rgba(244, 242, 235, 0.16);
+  --tb-ink: #1c241b;
+  --tb-muted: #4f5b4c;
+  --tb-line: rgba(28, 36, 27, 0.15);
+  --tb-accent: #3f5834;
+  --tb-accent-deep: #2f4326;
+  --tb-moss-light: #cad9bd;
   --tb-serif: "Spectral", Georgia, serif;
-  --tb-sans: "Plus Jakarta Sans", sans-serif;
-  --tb-gutter: clamp(24px, 5.5vw, 76px);
+  --tb-sans: "Plus Jakarta Sans", -apple-system, sans-serif;
+  --tb-max: 1240px;
+  --tb-gutter: clamp(20px, 4.5vw, 56px);
+  --tb-header-h: 76px;
+  --tb-text-heading: clamp(1.9rem, 3.2vw, 2.65rem);
+  --tb-text-body: 1.0625rem;
+  --tb-text-sm: 0.875rem;
+  --concept-focus: #3f5834;
+  margin: 0;
   background: var(--tb-bg);
   color: var(--tb-ink);
   font-family: var(--tb-sans);
-  margin: 0;
+  font-size: var(--tb-text-body);
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
 }
 
-.tb-wrap { width: min(1220px, calc(100% - var(--tb-gutter) * 2)); margin: 0 auto; }
+body.concept-torybush .mm-map-kicker {
+  display: none;
+}
 
+.tb-wrap {
+  width: min(var(--tb-max), calc(100% - (var(--tb-gutter) * 2)));
+  margin: 0 auto;
+}
+
+/* Borderless single-line sticky header floating over full-bleed Mourne hero */
 .tb-header {
   display: block;
-  position: sticky; top: 0; z-index: 40;
-  background: rgba(246, 244, 238, 0.92); backdrop-filter: blur(12px);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--tb-header-h);
+  background: linear-gradient(180deg, rgba(25, 34, 24, 0.62) 0%, rgba(25, 34, 24, 0) 100%);
+  border-bottom: 1px solid transparent;
+  color: #f4f2eb;
+  transition: background-color 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-header.is-scrolled {
+  background: rgba(245, 243, 237, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--tb-line);
+  color: var(--tb-ink);
+}
+
+.tb-header-inner {
+  box-sizing: border-box;
+  width: min(var(--tb-max), calc(100% - (var(--tb-gutter) * 2)));
+  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.tb-brand {
+  justify-self: start;
+  text-decoration: none;
+  color: currentColor;
+  font-family: var(--tb-serif);
+  font-size: 1.44rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tb-nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.tb-nav a {
+  text-decoration: none;
+  color: rgba(244, 242, 235, 0.9);
+  font-size: var(--tb-text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-nav a:hover {
+  color: #ffffff;
+}
+
+.tb-header.is-scrolled .tb-nav a {
+  color: var(--tb-muted);
+}
+
+.tb-header.is-scrolled .tb-nav a:hover {
+  color: var(--tb-ink);
+}
+
+.tb-header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.tb-header-tel {
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #f4f2eb;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-header.is-scrolled .tb-header-tel {
+  color: var(--tb-ink);
+}
+
+.tb-header-cta,
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 3px;
+  font-family: var(--tb-sans);
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1), transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-header-cta {
+  padding: 9px 18px;
+  background: rgba(244, 242, 235, 0.94);
+  color: var(--tb-stage);
+}
+
+.tb-header-cta:hover {
+  background: #ffffff;
+}
+
+.tb-header.is-scrolled .tb-header-cta {
+  background: var(--tb-accent);
+  color: #f4f2eb;
+}
+
+.tb-header.is-scrolled .tb-header-cta:hover {
+  background: var(--tb-accent-deep);
+}
+
+.tb-btn--primary {
+  background: var(--tb-accent);
+  color: #f4f2eb;
+}
+
+.tb-btn--primary:hover {
+  background: var(--tb-accent-deep);
+}
+
+/* Full-bleed Mourne stone cottages takeover leaving peaks clear */
+.tb-hero {
+  position: relative;
+  margin-top: calc(var(--tb-header-h) * -1);
+  min-height: clamp(600px, 88svh, 820px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #f4f2eb;
+  background: var(--tb-stage);
+  overflow: hidden;
+}
+
+.tb-hero-sentinel {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+}
+
+.tb-hero-media {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.tb-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  display: block;
+}
+
+.tb-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 34, 24, 0.42) 0%,
+    rgba(25, 34, 24, 0.04) 26%,
+    rgba(25, 34, 24, 0.14) 55%,
+    rgba(25, 34, 24, 0.92) 100%
+  );
+  z-index: 1;
+}
+
+.tb-hero-foot {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--tb-header-h) + 120px);
+  padding-bottom: clamp(36px, 5vh, 60px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(24px, 5vw, 68px);
+  align-items: end;
+}
+
+.tb-hero-title-col,
+.tb-hero-copy-col {
+  min-width: 0;
+}
+
+.tb-hero h1 {
+  margin: 0;
+  font-family: var(--tb-serif);
+  font-size: clamp(2.65rem, 5.2vw, 4.45rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 13ch;
+  color: #f4f2eb;
+}
+
+.tb-hero-lead {
+  margin: 0 0 22px;
+  max-width: 42ch;
+  font-size: var(--tb-text-body);
+  line-height: 1.56;
+  color: rgba(244, 242, 235, 0.92);
+}
+
+.tb-hero-caption {
+  margin: 16px 0 0;
+  font-size: var(--tb-text-sm);
+  color: rgba(244, 242, 235, 0.74);
+}
+
+/* Shared section rhythm */
+.tb-section {
+  padding: clamp(64px, 7.5vw, 104px) 0;
+}
+
+.tb-section h2 {
+  margin: 0 0 20px;
+  font-family: var(--tb-serif);
+  font-size: var(--tb-text-heading);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+
+.tb-section p {
+  margin: 0 0 18px;
+  font-size: var(--tb-text-body);
+  max-width: 56ch;
+}
+
+.tb-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Deep Mourne-olive Cottages, Eco Loft & Horse Riding contrast stage */
+.tb-stage {
+  background: var(--tb-stage);
+  color: var(--tb-stage-ink);
+}
+
+.tb-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(32px, 5.5vw, 72px);
+  align-items: start;
+}
+
+.tb-stage-copy,
+.tb-stage-media {
+  min-width: 0;
+}
+
+.tb-stage h2 {
+  color: var(--tb-stage-ink);
+}
+
+.tb-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 26px 0 24px;
+  border-bottom: 1px solid var(--tb-stage-line);
+}
+
+.tb-tab {
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 10px 0 12px;
+  margin-bottom: -1px;
+  font-family: var(--tb-sans);
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  color: var(--tb-stage-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1), border-color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-tab:hover {
+  color: var(--tb-stage-ink);
+}
+
+.tb-tab[aria-selected="true"] {
+  color: var(--tb-stage-ink);
+  border-bottom-color: var(--tb-moss-light);
+}
+
+.tb-panel {
+  min-width: 0;
+}
+
+.tb-panel[hidden] {
+  display: none;
+}
+
+.tb-panel > p {
+  color: var(--tb-stage-muted);
+  margin: 0 0 22px;
+}
+
+.tb-stage-ledger {
+  margin: 0;
+  border-top: 1px solid var(--tb-stage-line);
+}
+
+.tb-stage-ledger > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: 8px 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--tb-stage-line);
+  align-items: baseline;
+}
+
+.tb-stage-ledger dt {
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  color: var(--tb-moss-light);
+}
+
+.tb-stage-ledger dd {
+  margin: 0;
+  font-size: var(--tb-text-body);
+  color: var(--tb-stage-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.tb-stage-ledger a {
+  color: var(--tb-moss-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tb-stage-sheet {
+  margin-top: 26px;
+}
+
+body.concept-torybush button.tb-link-trigger {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+  color: var(--tb-stage-ink);
+  font-family: var(--tb-sans);
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--tb-moss-light);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1), border-color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.concept-torybush button.tb-link-trigger:hover {
+  color: var(--tb-moss-light);
+}
+
+.tb-plate {
+  margin: 0;
+}
+
+.tb-plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+
+.tb-plate figcaption {
+  margin-top: 12px;
+  font-size: var(--tb-text-sm);
+  color: var(--tb-stage-muted);
+}
+
+/* Editorial splits */
+.tb-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: clamp(32px, 5.5vw, 72px);
+  align-items: start;
+}
+
+.tb-copy-col,
+.tb-ledger-col,
+.tb-form-col {
+  min-width: 0;
+}
+
+.tb-activities {
+  background: var(--tb-bg);
+}
+
+.tb-activities p,
+.tb-enquire p {
+  color: var(--tb-muted);
+}
+
+.tb-enquire p a {
+  color: var(--tb-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tb-ledger {
+  margin: 0;
+  border-top: 1px solid var(--tb-line);
+}
+
+.tb-ledger > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  gap: 8px 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--tb-line);
+  align-items: baseline;
+}
+
+.tb-ledger dt {
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  color: var(--tb-muted);
+}
+
+.tb-ledger dd {
+  margin: 0;
+  font-size: var(--tb-text-body);
+  color: var(--tb-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.tb-ledger a {
+  color: var(--tb-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tb-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+/* Direct stay & equestrian enquiry band */
+.tb-enquire {
+  background: var(--tb-surface);
+  border-top: 1px solid var(--tb-line);
   border-bottom: 1px solid var(--tb-line);
 }
-.tb-header-inner {
-  width: min(1220px, calc(100% - var(--tb-gutter) * 2));
-  margin: 0 auto; height: 72px;
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
-}
-.tb-brand {
-  justify-self: start; text-decoration: none; color: var(--tb-ink);
-  font-family: var(--tb-serif); font-size: 1.18rem; font-weight: 600;
-}
-.tb-nav { justify-self: center; display: flex; gap: 28px; }
-.tb-nav a { text-decoration: none; color: var(--tb-muted); font-size: 0.86rem; font-weight: 500; }
-.tb-nav a:hover { color: var(--tb-accent); }
-.tb-header-actions { justify-self: end; display: inline-flex; align-items: center; gap: 18px; }
-.tb-header-tel { text-decoration: none; color: var(--tb-muted); font-size: 0.84rem; font-variant-numeric: tabular-nums; }
-.tb-header-cta {
-  text-decoration: none; color: var(--tb-accent); font-size: 0.86rem; font-weight: 600;
-  padding-bottom: 2px; border-bottom: 1px solid var(--tb-accent);
+
+.tb-enquire .tb-copy-col p {
+  margin-bottom: 26px;
 }
 
-/* Centred Quiet Monograph Hero */
-.tb-hero { padding: clamp(56px, 8vw, 96px) 0 clamp(40px, 5vw, 64px); }
-.tb-hero-center {
-  text-align: center;
-  max-width: 680px;
-  margin: 0 auto clamp(40px, 5.5vw, 60px);
+.tb-form {
+  display: grid;
+  gap: 16px;
 }
-.tb-eyebrow {
-  margin: 0 0 14px; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--tb-accent); font-weight: 600;
+
+.tb-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
-.tb-hero-center h1 {
-  margin: 0 0 18px;
+
+.tb-form label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tb-form label > span {
+  font-size: var(--tb-text-sm);
+  font-weight: 600;
+  color: var(--tb-ink);
+}
+
+.tb-form input,
+.tb-form select,
+.tb-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid rgba(28, 36, 27, 0.24);
+  border-radius: 3px;
+  background: var(--tb-card);
+  color: var(--tb-ink);
+  font-family: var(--tb-sans);
+  font-size: var(--tb-text-body);
+}
+
+.tb-form button[type="submit"] {
+  justify-self: start;
+  margin-top: 4px;
+}
+
+/* Map band */
+.tb-map-band {
+  background: var(--tb-bg);
+}
+
+/* Footer */
+.tb-footer {
+  background: var(--tb-stage);
+  color: var(--tb-stage-ink);
+  padding: 40px 0;
+}
+
+.tb-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+.tb-footer strong {
   font-family: var(--tb-serif);
-  font-weight: 500;
-  font-size: clamp(2.6rem, 5.4vw, 4.4rem);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-}
-.tb-hero-center h1 em { font-style: italic; font-weight: 400; color: var(--tb-accent); }
-.tb-hero-lead {
-  margin: 0 auto 28px;
-  max-width: 48ch;
-  color: var(--tb-muted);
-  font-size: 1rem;
-  line-height: 1.66;
-}
-.tb-hero-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 22px; }
-
-.tb-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 0.88rem;
-  text-decoration: none; cursor: pointer; border: 0; font-family: var(--tb-sans);
-  transition: background-color 160ms ease;
-}
-.tb-btn--primary { background: var(--tb-accent); color: #ffffff; }
-.tb-btn--primary:hover { background: #3b4e2f; }
-
-body.concept-torybush button.tb-ghost-link {
-  background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 6px 0;
-  color: var(--tb-ink); font-family: var(--tb-sans); font-size: 0.88rem; font-weight: 500;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
-  border-bottom: 1px solid rgba(34, 38, 30, 0.34);
-}
-body.concept-torybush button.tb-ghost-link:hover { background: transparent; color: var(--tb-accent); border-color: var(--tb-accent); }
-.tb-link {
-  color: var(--tb-ink); text-decoration: none; font-size: 0.88rem; font-weight: 500;
-  padding-bottom: 3px; border-bottom: 1px solid rgba(34, 38, 30, 0.34);
+  font-size: var(--tb-text-body);
+  font-weight: 600;
+  display: block;
 }
 
-.tb-hero-plate { margin: 0; }
-.tb-hero-plate img {
-  width: 100%; height: auto; display: block; border-radius: 6px;
-  aspect-ratio: 21 / 9.5; object-fit: cover;
+.tb-footer p {
+  margin: 4px 0 0;
+  font-size: var(--tb-text-sm);
+  color: var(--tb-stage-muted);
 }
-.tb-hero-plate figcaption { margin-top: 10px; font-size: 0.78rem; color: var(--tb-muted); text-align: right; }
 
-.tb-section { padding: clamp(64px, 8vw, 110px) 0; }
-.tb-kicker { margin: 0 0 12px; font-size: 0.76rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tb-accent); font-weight: 600; }
-.tb-stays { background: var(--tb-surface); border-block: 1px solid var(--tb-line); }
-.tb-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 6vw, 80px); align-items: start; }
-.tb-split h2, .tb-section-head h2 {
-  margin: 0 0 16px; font-family: var(--tb-serif); font-weight: 500;
-  font-size: clamp(1.95rem, 3.4vw, 2.85rem); line-height: 1.08; letter-spacing: -0.015em;
+.tb-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 22px;
+  font-size: var(--tb-text-sm);
 }
-.tb-section-head { margin-bottom: clamp(32px, 4.5vw, 48px); }
-.tb-section-head h2 { margin-bottom: 0; }
-.tb-body { margin: 0 0 26px; color: var(--tb-muted); font-size: 0.96rem; line-height: 1.68; max-width: 46ch; }
-.tb-inline-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
 
-.tb-plate { margin: 0; }
-.tb-plate img { width: 100%; height: auto; display: block; border-radius: 6px; aspect-ratio: 16 / 10.5; object-fit: cover; }
-.tb-plate figcaption { margin-top: 10px; font-size: 0.78rem; color: var(--tb-muted); }
+.tb-footer-links a {
+  color: var(--tb-stage-ink);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
 
-.tb-four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); }
-.tb-four article { padding-top: 20px; border-top: 1px solid var(--tb-line); }
-.tb-four span { display: block; font-size: 0.74rem; color: var(--tb-accent); font-weight: 600; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
-.tb-four h3 { margin: 0 0 8px; font-family: var(--tb-serif); font-size: 1.3rem; font-weight: 500; }
-.tb-four p { margin: 0; color: var(--tb-muted); font-size: 0.9rem; line-height: 1.6; }
-.tb-map-band { padding-top: 0; }
-
-.tb-footer { background: #22261e; color: #f1efe7; padding: 44px 0; }
-.tb-footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
-.tb-footer strong { font-family: var(--tb-serif); font-size: 1.35rem; font-weight: 500; display: block; margin-bottom: 6px; }
-.tb-footer p { margin: 0; font-size: 0.88rem; color: rgba(241, 239, 231, 0.74); }
-.tb-footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-.tb-footer-links a { color: #d5e2cb; text-decoration: none; font-size: 0.88rem; }
+.tb-footer-links a:hover {
+  color: var(--tb-moss-light);
+}
 
 @media (max-width: 960px) {
-  .tb-header-inner { grid-template-columns: auto 1fr; }
-  .tb-nav, .tb-header-tel { display: none; }
-  .tb-split, .tb-four { grid-template-columns: minmax(0, 1fr); }
-  .tb-hero-plate img { aspect-ratio: 16 / 10; }
+  .tb-header-inner {
+    grid-template-columns: 1fr auto;
+  }
+  .tb-nav {
+    display: none;
+  }
+  .tb-hero-foot,
+  .tb-stage-grid,
+  .tb-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tb-hero-foot {
+    padding-top: calc(var(--tb-header-h) + 72px);
+  }
+}
+
+@media (max-width: 760px) {
+  .tb-header-tel {
+    display: none;
+  }
+  .tb-row,
+  .tb-stage-ledger > div,
+  .tb-ledger > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tb-tabs {
+    gap: 4px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tb-header,
+  .tb-nav a,
+  .tb-header-tel,
+  .tb-header-cta,
+  .tb-btn,
+  .tb-tab,
+  body.concept-torybush button.tb-link-trigger {
+    transition: none;
+  }
 }

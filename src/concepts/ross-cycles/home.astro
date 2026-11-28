@@ -4,9 +4,9 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
-/* Ross Cycles — 44 Clarkhill Road, Castlewellan BT31 9BL.
+/* Ross Cycles, 44 Clarkhill Road, Castlewellan BT31 9BL.
    Verified live 26 Nov 2026: No standalone owned website (rosscycles.co.uk is Caterham, Surrey).
-   Independent Castlewellan bike shop, Volt e-bike stockist, CycleScheme dealer, MTB & road servicing
+   Independent Castlewellan bike shop, Volt e-bike stockist, CycleScheme dealer, MTB and road servicing
    minutes from Castlewellan Forest Park trails. Phone: 028 4377 8029. */
 const phone = "028 4377 8029";
 const phoneHref = "tel:+442843778029";
@@ -16,135 +16,300 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Ross+Cycles+44
 const shopGroups = [
   {
     id: "bikes",
-    label: "Bikes, E-Bikes & CycleScheme",
+    label: "Bikes, e-bikes, and CycleScheme",
     items: [
-      { name: "Volt Electric Bikes", note: "Authorised Northern Ireland Volt e-bike dealer with local sizing, setup and aftercare", meta: "Official stockist" },
-      { name: "Cycle to Work (CycleScheme)", note: "Redeem CycleScheme certificates locally on commuter bikes, hybrids and e-bikes", meta: "Scheme accepted" },
-      { name: "MTB, Road & Family Bikes", note: "Properly assembled, tuned and sized on Clarkhill Road — never shipped flat-packed", meta: "Ready to ride" },
+      {
+        name: "Volt electric bikes",
+        note: "Authorised Northern Ireland Volt e-bike dealer with local sizing, setup, and aftercare.",
+        meta: "Official stockist",
+      },
+      {
+        name: "Cycle to Work (CycleScheme)",
+        note: "Redeem CycleScheme certificates locally on commuter bikes, hybrids, and e-bikes.",
+        meta: "Scheme accepted",
+      },
+      {
+        name: "MTB, road, and family bikes",
+        note: "Properly assembled, tuned, and sized on Clarkhill Road, never shipped flat-packed.",
+        meta: "Ready to ride",
+      },
     ],
   },
   {
     id: "workshop",
-    label: "Workshop & Trail Support",
+    label: "Workshop and trail support",
     items: [
-      { name: "Drivetrain, Brake & Gear Servicing", note: "Full tune-ups, hydraulic brake bleeds, bottom brackets and cassette swaps", meta: "Book by phone" },
-      { name: "Wheel Truing & Tyre Setup", note: "Spoke replacement, wheel truing and tubeless setups for Castlewellan singletrack", meta: "Trail ready" },
+      {
+        name: "Drivetrain, brake, and gear servicing",
+        note: "Full tune-ups, hydraulic brake bleeds, bottom brackets, and cassette swaps.",
+        meta: "Book by phone",
+      },
+      {
+        name: "Wheel truing and tyre setup",
+        note: "Spoke replacement, wheel truing, and tubeless setups for Castlewellan singletrack.",
+        meta: "Trail ready",
+      },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Ross Cycles — Bikes, E-Bikes & Workshop, Castlewellan"
+  title="Ross Cycles, Bikes, E-Bikes and Workshop, Castlewellan"
   slug="ross-cycles"
   bodyClass="concept-page concept-rosscycles"
   businessName="Ross Cycles"
   town="Castlewellan"
   bannerNote="Imagery comprises indicative cycle workshop and Castlewellan forest trail visualisations."
 >
-  <header class="rc-header">
-    <div class="rc-header-grid">
-      <a class="rc-brand" href="#top">
-        <strong>Ross Cycles</strong>
-        <span>44 Clarkhill Rd</span>
-      </a>
+  <header class="rc-header" data-rc-header>
+    <div class="rc-header-inner">
+      <a class="rc-brand" href="#top">Ross Cycles</a>
       <nav class="rc-nav" aria-label="Primary">
-        <a href="#bikes">E-Bikes &amp; CycleScheme</a>
-        <a href="#trails">Workshop &amp; Trails</a>
+        <a href="#workshop">E-bikes and workshop</a>
+        <a href="#book">Book stand</a>
         <a href="#location">Castlewellan</a>
       </nav>
-      <a class="rc-header-cta" href={phoneHref}>Workshop · {phone}</a>
+      <div class="rc-header-actions">
+        <a class="rc-header-tel" href={phoneHref}>{phone}</a>
+      </div>
     </div>
   </header>
 
   <main id="top">
     <section class="rc-hero" aria-labelledby="rc-hero-title">
-      <div class="rc-hero-grid">
-        <div class="rc-hero-spec">
-          <div class="rc-spec-top">
-            <span class="rc-tag">CASTLEWELLAN · BT31 9BL</span>
-            <h1 id="rc-hero-title"><mark class="rc-hl">Volt e-bikes</mark> &amp;<br />proper workshop spanners.</h1>
-            <p class="rc-lead">
-              Independent cycling specialists minutes from Castlewellan Forest Park. Authorised Volt
-              e-bike dealer, CycleScheme partner and hands-on servicing.
-            </p>
-            <div class="rc-actions">
-              <a class="rc-btn rc-btn--primary" href={phoneHref}>Call {phone}</a>
-              <SpecimenSheet
-                id="rc-workshop-sheet"
-                triggerLabel="Workshop & bike guide"
-                kicker="Ross Cycles · 44 Clarkhill Road, Castlewellan"
-                title="Volt E-Bikes, CycleScheme & Servicing"
-                subtitle="Ring 028 4377 8029 to check current e-bike stock or book your bike onto the stand."
-                groups={shopGroups}
-                ctaLabel={`Call ${phone}`}
-                ctaHref={phoneHref}
-                secondaryLabel="Google Maps ↗"
-                secondaryHref={mapsHref}
-                buttonClass="rc-ghost-link"
-              />
-            </div>
+      <div class="rc-hero-sentinel" data-rc-sentinel aria-hidden="true"></div>
+      <div class="rc-hero-media">
+        <picture>
+          <source
+            srcset="/media/concepts/ross-cycles/ross-cycles-workshop-640.webp 640w, /media/concepts/ross-cycles/ross-cycles-workshop-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/ross-cycles/ross-cycles-workshop.jpg"
+            alt="Independent sunlit brick bicycle workshop with matte-slate electric mountain bike clamped in a repair stand and organised tools"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+        <div class="rc-hero-scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="rc-wrap rc-hero-foot">
+        <div class="rc-hero-title-col">
+          <h1 id="rc-hero-title">Volt e-bikes and proper workshop spanners.</h1>
+        </div>
+        <div class="rc-hero-copy-col">
+          <p class="rc-hero-lead">
+            Independent Castlewellan cycling specialists minutes from Forest Park trails. Authorised Volt e-bike dealer, CycleScheme partner, and hands-on servicing.
+          </p>
+          <a class="rc-btn rc-btn--primary" href="#book">Call or book workshop</a>
+          <p class="rc-hero-caption">Indicative Castlewellan bike workshop and e-bike setup visualisation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rc-section rc-stage" id="workshop" aria-labelledby="rc-workshop-title">
+      <div class="rc-wrap rc-stage-grid">
+        <div class="rc-stage-copy">
+          <h2 id="rc-workshop-title">Built for County Down climbs and Castlewellan singletrack.</h2>
+
+          <div class="rc-tabs" role="tablist" aria-label="Bikes, workshop, and trails" data-rc-tabs>
+            <button
+              type="button"
+              class="rc-tab"
+              role="tab"
+              id="rc-tab-volt"
+              aria-selected="true"
+              aria-controls="rc-panel-volt"
+            >
+              Volt e-bikes
+            </button>
+            <button
+              type="button"
+              class="rc-tab"
+              role="tab"
+              id="rc-tab-servicing"
+              aria-selected="false"
+              aria-controls="rc-panel-servicing"
+              tabindex="-1"
+            >
+              Workshop servicing
+            </button>
+            <button
+              type="button"
+              class="rc-tab"
+              role="tab"
+              id="rc-tab-trails"
+              aria-selected="false"
+              aria-controls="rc-panel-trails"
+              tabindex="-1"
+            >
+              CycleScheme and trails
+            </button>
           </div>
 
-          <dl class="rc-spec-strip">
-            <div><dt>Electric</dt><dd>Authorised Volt Dealer</dd></div>
-            <div><dt>Commute</dt><dd>CycleScheme Accepted</dd></div>
-            <div><dt>Stand</dt><dd>Brakes · Gears · Wheels</dd></div>
-          </dl>
+          <div class="rc-panel" role="tabpanel" id="rc-panel-volt" aria-labelledby="rc-tab-volt">
+            <p>
+              Test fit and buy British-engineered Volt electric bikes on Clarkhill Road with genuine local diagnostics, battery support, and warranty backup.
+            </p>
+            <dl class="rc-ledger">
+              <div>
+                <dt>Authorised dealer</dt>
+                <dd>Northern Ireland Volt electric bike stockist with local aftercare</dd>
+              </div>
+              <div>
+                <dt>Setup and sizing</dt>
+                <dd>Every bike assembled, tuned, and fitted properly before you roll out</dd>
+              </div>
+              <div>
+                <dt>Check current stock</dt>
+                <dd><a href={phoneHref}>{phone}</a></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="rc-panel" role="tabpanel" id="rc-panel-servicing" aria-labelledby="rc-tab-servicing" hidden>
+            <p>
+              Drop your mountain, road, or commuter bike onto the stand for clean mechanical work before your next Castlewellan or Mourne spin.
+            </p>
+            <dl class="rc-ledger">
+              <div>
+                <dt>Drivetrain and brakes</dt>
+                <dd>Full tune-ups, hydraulic brake bleeds, gear indexing, bottom brackets, and cassette swaps</dd>
+              </div>
+              <div>
+                <dt>Wheels and tyres</dt>
+                <dd>Spoke replacement, wheel truing, and tubeless setups for rocky singletrack</dd>
+              </div>
+              <div>
+                <dt>Workshop stand</dt>
+                <dd>Call <a href={phoneHref}>{phone}</a> ahead to reserve your slot</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="rc-panel" role="tabpanel" id="rc-panel-trails" aria-labelledby="rc-tab-trails" hidden>
+            <p>
+              Four minutes north of Castlewellan Forest Park, we supply ready-to-ride MTB, road, hybrid, and family bikes with CycleScheme vouchers welcome.
+            </p>
+            <dl class="rc-ledger">
+              <div>
+                <dt>CycleScheme</dt>
+                <dd>Redeem employer Cycle to Work certificates on commuter bikes, hybrids, and Volt e-bikes</dd>
+              </div>
+              <div>
+                <dt>Ready to ride</dt>
+                <dd>Built and checked on Clarkhill Road, never shipped flat-packed in a box</dd>
+              </div>
+              <div>
+                <dt>Trailhead distance</dt>
+                <dd>4 minutes to Castlewellan Forest Park, 12 minutes to Newcastle</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="rc-stage-sheet">
+            <SpecimenSheet
+              id="rc-workshop-sheet"
+              triggerLabel="Open workshop and bike guide"
+              kicker="Ross Cycles, 44 Clarkhill Road, Castlewellan"
+              title="Volt e-bikes, CycleScheme, and servicing"
+              subtitle="Ring 028 4377 8029 to check current e-bike stock or book your bike onto the stand."
+              groups={shopGroups}
+              ctaLabel={`Call ${phone}`}
+              ctaHref={phoneHref}
+              secondaryLabel="Google Maps ↗"
+              secondaryHref={mapsHref}
+              buttonClass="rc-link-trigger"
+            />
+          </div>
         </div>
 
-        <figure class="rc-hero-plate">
-          <picture>
-            <source srcset="/media/concepts/ross-cycles/ross-cycles-workshop-640.webp 640w, /media/concepts/ross-cycles/ross-cycles-workshop-1265.webp 1265w" sizes="(max-width: 960px) 100vw, 50vw" type="image/webp" />
-            <img src="/media/concepts/ross-cycles/ross-cycles-workshop.jpg" alt="Independent bicycle workshop with matte-slate electric mountain bike clamped in a repair stand and organised tools" width="1408" height="768" loading="eager" />
-          </picture>
-          <figcaption>Workshop &amp; e-bike setup · indicative visualisation</figcaption>
-        </figure>
+        <div class="rc-stage-media">
+          <figure class="rc-plate">
+            <picture>
+              <source
+                srcset="/media/concepts/ross-cycles/ross-cycles-castlewellan-trail-640.webp 640w, /media/concepts/ross-cycles/ross-cycles-castlewellan-trail-1265.webp 1265w"
+                sizes="(max-width: 960px) 100vw, 48vw"
+                type="image/webp"
+              />
+              <img
+                src="/media/concepts/ross-cycles/ross-cycles-castlewellan-trail.jpg"
+                alt="Early morning forested singletrack trail in Castlewellan Forest Park with mountain bike beside a granite stone wall"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Castlewellan singletrack. Indicative trail visualisation.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="rc-section rc-bikes" id="bikes" aria-labelledby="rc-b-title">
-      <div class="rc-wrap">
-        <div class="rc-three">
-          <article>
-            <span>01 / Electric</span>
-            <h2 id="rc-b-title">Authorised Volt e-bike dealer</h2>
-            <p>Test fit and buy British-engineered Volt electric bikes with genuine local diagnostics, battery support and warranty backup.</p>
-          </article>
-          <article>
-            <span>02 / Commute</span>
-            <h3>CycleScheme welcome</h3>
-            <p>Bring your employer CycleScheme voucher to Clarkhill Road for honest sizing across commuter bikes, hybrids and e-bikes.</p>
-          </article>
-          <article>
-            <span>03 / Spanners</span>
-            <h3>Proper workshop servicing</h3>
-            <p>Gears, hydraulic brakes, wheel truing and bearings sorted cleanly before your next Castlewellan or Mourne spin.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="rc-section rc-trails" id="trails" aria-labelledby="rc-tr-title">
+    <section class="rc-section rc-book" id="book" aria-labelledby="rc-book-title">
       <div class="rc-wrap rc-split">
-        <figure class="rc-plate">
-          <picture>
-            <source srcset="/media/concepts/ross-cycles/ross-cycles-castlewellan-trail-640.webp 640w, /media/concepts/ross-cycles/ross-cycles-castlewellan-trail-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/ross-cycles/ross-cycles-castlewellan-trail.jpg" alt="Early morning forested singletrack trail in Castlewellan Forest Park with mountain bike beside a granite stone wall" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Castlewellan singletrack · indicative trail visualisation.</figcaption>
-        </figure>
-        <div>
-          <p class="rc-kicker">Minutes from Castlewellan Forest Park</p>
-          <h2 id="rc-tr-title">Drop your bike in on Clarkhill Road before the weekend trails.</h2>
-          <p class="rc-body">
-            Whether you are upgrading to an e-bike for the County Down hills or need a pre-ride brake
-            bleed and gear index, call ahead so we can get your bike straight onto the stand.
+        <div class="rc-copy-col">
+          <h2 id="rc-book-title">Drop your bike in on Clarkhill Road before the weekend trails.</h2>
+          <p>
+            Whether you are sizing up a Volt e-bike for County Down hills or need a pre-ride brake bleed and gear index, ring <a href={phoneHref}>{phone}</a> or prepare your workshop note below.
           </p>
-          <dl class="rc-contact-list">
-            <div><dt>Direct Workshop Line</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Address</dt><dd>44 Clarkhill Road, Castlewellan, BT31 9BL</dd></div>
+          <dl class="rc-ledger rc-ledger--dark">
+            <div>
+              <dt>Workshop line</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>44 Clarkhill Road, Castlewellan, BT31 9BL</dd>
+            </div>
+            <div>
+              <dt>Updates and map</dt>
+              <dd class="rc-inline-links">
+                <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+                <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+              </dd>
+            </div>
           </dl>
+        </div>
+
+        <div class="rc-form-col">
+          <form class="rc-form" data-rc-form>
+            <div class="rc-row">
+              <label>
+                <span>Your name</span>
+                <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              </label>
+              <label>
+                <span>Telephone</span>
+                <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+              </label>
+            </div>
+            <div class="rc-row">
+              <label>
+                <span>Workshop or bike interest</span>
+                <select name="service">
+                  <option value="Workshop service and tune-up">Workshop service and tune-up</option>
+                  <option value="Hydraulic brake bleed and gears">Hydraulic brake bleed and gears</option>
+                  <option value="Wheel truing or tubeless setup">Wheel truing or tubeless setup</option>
+                  <option value="Volt e-bike test fit and stock">Volt e-bike test fit and stock</option>
+                  <option value="CycleScheme bike quote">CycleScheme bike quote</option>
+                </select>
+              </label>
+              <label>
+                <span>Preferred drop-off date</span>
+                <input name="date" type="date" />
+              </label>
+            </div>
+            <label>
+              <span>Bike details or job notes</span>
+              <textarea name="notes" rows="3" placeholder="Bike model, issue, or Volt e-bike model you want to try"></textarea>
+            </label>
+            <button class="rc-btn rc-btn--primary" type="submit">Prepare workshop request</button>
+          </form>
         </div>
       </div>
     </section>
@@ -154,7 +319,7 @@ const shopGroups = [
         <LocalAreaMap
           id="rc-map"
           tone="dark"
-          kicker="44 Clarkhill Road · Castlewellan"
+          kicker=""
           businessName="Ross Cycles"
           address="44 Clarkhill Road, Castlewellan, BT31 9BL"
           lon={-5.9447377}
@@ -184,4 +349,87 @@ const shopGroups = [
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-rc-header]");
+      const sentinel = document.querySelector("[data-rc-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            if (!entry) return;
+            header.classList.toggle("is-scrolled", !entry.isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tablist = document.querySelector("[data-rc-tabs]");
+      if (tablist) {
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        const activate = (tab, moveFocus) => {
+          tabs.forEach((t) => {
+            const selected = t === tab;
+            t.setAttribute("aria-selected", String(selected));
+            t.tabIndex = selected ? 0 : -1;
+            const panelId = t.getAttribute("aria-controls");
+            const panel = panelId ? document.getElementById(panelId) : null;
+            if (panel) panel.hidden = !selected;
+          });
+          if (moveFocus) tab.focus();
+        };
+        tabs.forEach((tab, idx) => {
+          tab.addEventListener("click", () => activate(tab, false));
+          tab.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              activate(tabs[(idx + 1) % tabs.length], true);
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              activate(tabs[(idx - 1 + tabs.length) % tabs.length], true);
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              activate(tabs[0], true);
+            } else if (e.key === "End") {
+              e.preventDefault();
+              activate(tabs[tabs.length - 1], true);
+            }
+          });
+        });
+      }
+
+      const form = document.querySelector("[data-rc-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const service = String(fd.get("service") || "Workshop enquiry");
+          const dateVal = String(fd.get("date") || "Flexible");
+          const subject = `Workshop request: ${service} (${dateVal})`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Telephone: ${fd.get("phone")}`,
+            `Request: ${service}`,
+            `Preferred drop-off: ${dateVal}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "Ross Cycles workshop (028 4377 8029)",
+              subject,
+              body,
+              url: "tel:+442843778029",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = "tel:+442843778029";
+          }
+        });
+      }
+    })();
+  </script>
 </ConceptLayout>

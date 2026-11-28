@@ -1,5 +1,5 @@
 ---
-/* Mount Panther Farm Park — Interactive Family Visit, School Trip & Seasonal Events Selector.
+/* Mount Panther Farm Park: Interactive Seasons and Visits Stage.
    Connects straight to live Digitickets online ticketing and group booking enquiries. */
 interface Props {
   ticketHref: string;
@@ -8,139 +8,128 @@ const { ticketHref } = Astro.props;
 
 const visits = [
   {
-    id: "family",
-    label: "Family Day Out",
-    title: "Meet Highland calves, alpacas, deer and farmyard favourites across open pastures.",
-    points: ["Indoor & outdoor adventure play areas", "Hands-on animal encounters & paddock walks", "Book day tickets & season passes online"],
-    cta: "Book Day Tickets Online ↗",
+    id: "walks",
+    label: "Farm walks and passes",
+    title: "Meet Highland calves, alpacas, deer, and farmyard favourites across open pastures.",
+    summary: "Spend a relaxed morning or afternoon exploring paddock walks and play zones, with single-day entry and Season Passes booked directly online.",
+    points: [
+      { term: "Animal paddocks", detail: "Hands-on encounters with Highland calves, alpacas, deer, and farmyard regulars." },
+      { term: "Adventure play", detail: "Indoor and outdoor play areas suited to clear skies and County Down showers alike." },
+      { term: "Passes and entry", detail: "Day tickets and family Season Passes booked online through Digitickets." },
+    ],
+    cta: "Book day tickets online",
     href: ticketHref,
     external: true,
+    selectKind: "",
   },
   {
-    id: "events",
-    label: "Seasonal Events",
-    title: "Pumpkin Patch, Halloween Fright Night and our annual Christmas Experience.",
-    points: ["Timed entry slots so families never queue endlessly", "Themed farm trails, photo spots & seasonal treats", "Advance online tickets released per season"],
-    cta: "View Live Event Tickets ↗",
+    id: "groups",
+    label: "School trips and parties",
+    title: "Structured outdoor farm days for primary schools, nurseries, and birthday celebrations.",
+    summary: "Enjoy safe coach arrival, dedicated picnic tables, and direct coordination with the Clough farm office.",
+    points: [
+      { term: "School and nursery", detail: "Guided animal talks, safe coach drop-off, and teacher planning notes on request." },
+      { term: "Birthday parties", detail: "Reserved party area with full farm trail access for flexible weekend group sizes." },
+      { term: "Covered shelter", detail: "Dedicated indoor and covered picnic space ready whatever the weather brings." },
+    ],
+    cta: "Send a group enquiry",
+    href: "#groups",
+    external: false,
+    selectKind: "Primary school or nursery trip",
+  },
+  {
+    id: "seasonal",
+    label: "Pumpkin Patch and Christmas",
+    title: "Spring lambs, summer picnics, autumn pumpkins, and our annual Christmas Experience.",
+    summary: "Every seasonal event runs on timed entry slots so families explore themed trails without long queues.",
+    points: [
+      { term: "Autumn events", detail: "Pumpkin Patch harvest trails, photo spots, and Halloween Fright Night evenings." },
+      { term: "Winter visits", detail: "Annual Christmas Experience with festive farm trails and seasonal treats." },
+      { term: "Timed entry", detail: "Advance online tickets released per season on the Digitickets calendar." },
+    ],
+    cta: "Browse seasonal ticket calendar",
     href: ticketHref,
     external: true,
-  },
-  {
-    id: "schools",
-    label: "School Trips",
-    title: "Structured outdoor farm days for primary schools, nurseries and youth groups.",
-    points: ["Guided animal talks & safe coach drop-off", "Dedicated indoor & covered picnic space", "Teacher planning notes & risk info on request"],
-    cta: "Send School Trip Enquiry",
-    href: "#groups",
-    external: false,
-  },
-  {
-    id: "parties",
-    label: "Birthday Parties",
-    title: "Fresh-air farm birthday parties without clearing out your own living room.",
-    points: ["Reserved party space & farm trail access", "Flexible group sizes for weekend celebrations", "Simple direct booking with the Clough farm office"],
-    cta: "Enquire on Party Dates",
-    href: "#groups",
-    external: false,
+    selectKind: "",
   },
 ];
 ---
 
-<section class="mp-planner-band" id="visit" aria-labelledby="mp-planner-title">
-  <div class="mp-wrap">
-    <div class="mp-planner-card" data-mp-planner>
-      <div class="mp-planner-head">
-        <div>
-          <p class="mp-kicker">Plan Your Visit · 39 Dundrum Road, Clough</p>
-          <h2 id="mp-planner-title">Pick your day at Mount Panther.</h2>
-        </div>
-        <div class="mp-tabs" role="tablist" aria-label="Choose visit type">
-          {visits.map((v, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["mp-tab", idx === 0 && "is-active"]}
-              data-mp-tab={v.id}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
+<section class="mp-stage" id="seasons" aria-labelledby="mp-planner-title">
+  <div class="mp-wrap mp-stage-grid" data-mp-planner>
+    <div class="mp-stage-copy">
+      <h2 id="mp-planner-title">Seasons and visits across the farm park.</h2>
+
+      <div class="mp-tabs" role="tablist" aria-label="Seasons and visits">
+        {visits.map((v, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`mp-tab-${v.id}`}
+            aria-controls={`mp-panel-${v.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            tabindex={idx === 0 ? "0" : "-1"}
+            class:list={["mp-tab", idx === 0 && "is-active"]}
+            data-mp-tab={v.id}
+          >
+            {v.label}
+          </button>
+        ))}
       </div>
 
       {visits.map((v, idx) => (
-        <div class="mp-panel" role="tabpanel" data-mp-panel={v.id} hidden={idx !== 0}>
-          <h3>{v.title}</h3>
-          <ul class="mp-points">
-            {v.points.map((p) => <li>{p}</li>)}
-          </ul>
+        <div
+          class="mp-panel"
+          role="tabpanel"
+          id={`mp-panel-${v.id}`}
+          aria-labelledby={`mp-tab-${v.id}`}
+          data-mp-panel={v.id}
+          hidden={idx !== 0}
+        >
+          <h3 class="mp-panel-title">{v.title}</h3>
+          <p class="mp-panel-summary">{v.summary}</p>
+          <dl class="mp-ledger">
+            {v.points.map((p) => (
+              <div class="mp-ledger-row">
+                <dt>{p.term}</dt>
+                <dd>{p.detail}</dd>
+              </div>
+            ))}
+          </dl>
           <a
-            class="mp-btn mp-btn--primary"
+            class="mp-btn mp-btn--light"
             href={v.href}
             target={v.external ? "_blank" : undefined}
             rel={v.external ? "noopener noreferrer" : undefined}
+            data-mp-select-kind={v.selectKind || undefined}
           >
             {v.cta}
           </a>
         </div>
       ))}
     </div>
+
+    <div class="mp-stage-media">
+      <figure class="mp-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/mount-panther-farm/mount-panther-orchard-play-640.webp 640w, /media/concepts/mount-panther-farm/mount-panther-orchard-play-1265.webp 1265w"
+            sizes="(max-width: 960px) 100vw, 44vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/mount-panther-farm/mount-panther-orchard-play.jpg"
+            alt="Rustic farm park courtyard with timber picnic tables, flowering borders, and seasonal harvest crates"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Indicative seasonal orchard courtyard visualisation.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
-
-<style>
-  .mp-planner-band { padding: clamp(46px, 6vw, 76px) 0; }
-  .mp-planner-card {
-    background: #ffffff;
-    border: 1px solid rgba(27, 46, 30, 0.14);
-    border-top: 4px solid #2e6b38;
-    border-radius: 8px;
-    padding: clamp(24px, 4vw, 40px);
-  }
-  .mp-planner-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(27, 46, 30, 0.12);
-  }
-  .mp-planner-head h2 { margin: 0; font-family: var(--mp-serif); font-size: clamp(1.7rem, 3.2vw, 2.35rem); font-weight: 600; }
-  .mp-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mp-tab {
-    padding: 9px 15px;
-    border: 1px solid rgba(27, 46, 30, 0.22);
-    background: #f8f9f3;
-    color: #1b2e1e;
-    font-family: var(--mp-sans);
-    font-size: 0.86rem;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  .mp-tab.is-active { background: #2e6b38; border-color: #2e6b38; color: #ffffff; }
-  .mp-panel { padding-top: 24px; }
-  .mp-panel h3 { margin: 0 0 18px; font-family: var(--mp-serif); font-size: 1.35rem; font-weight: 500; }
-  .mp-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .mp-points li {
-    background: #f8f9f3;
-    border: 1px solid rgba(27, 46, 30, 0.1);
-    padding: 14px 16px;
-    border-radius: 6px;
-    font-size: 0.92rem;
-    color: #1b2e1e;
-  }
-  @media (max-width: 780px) { .mp-points { grid-template-columns: minmax(0, 1fr); } }
-</style>
 
 <script is:inline>
   (() => {
@@ -148,15 +137,42 @@ const visits = [
     if (!root) return;
     const tabs = [...root.querySelectorAll("[data-mp-tab]")];
     const panels = [...root.querySelectorAll("[data-mp-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-mp-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => { p.hidden = p.getAttribute("data-mp-panel") !== id; });
+
+    const activate = (btn, moveFocus) => {
+      const id = btn.getAttribute("data-mp-tab");
+      tabs.forEach((t) => {
+        const active = t === btn;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
+        t.setAttribute("tabindex", active ? "0" : "-1");
+      });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute("data-mp-panel") !== id;
+      });
+      if (moveFocus) btn.focus();
+    };
+
+    tabs.forEach((btn, idx) => {
+      btn.addEventListener("click", () => activate(btn, false));
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          activate(tabs[(idx + 1) % tabs.length], true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          activate(tabs[(idx - 1 + tabs.length) % tabs.length], true);
+        }
+      });
+    });
+
+    root.querySelectorAll("[data-mp-select-kind]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const val = link.getAttribute("data-mp-select-kind");
+        const select = document.querySelector("[data-mp-kind-select]");
+        if (select && val) {
+          select.value = val;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       });
     });
   })();

@@ -5,8 +5,7 @@ import ChpParkFinder from "./ChpParkFinder.astro";
 import "./styles.css";
 
 /* Chestnutt Holiday Parks — 3 Grange Road, Cranfield West, Kilkeel BT34 4LW.
-   Verified live 26 Nov 2026: chestnuttholidayparks.com leaks placeholder johnsmith@gmail.com
-   and misspells /accomodation/ URLs. 4 Mourne coast parks (Chestnutt Cranfield, Annalong, Loughside, Sandilands).
+   Verified live 26 Nov 2026: 4 Mourne coast parks (Chestnutt Cranfield, Annalong, Loughside, Sandilands).
    Phone: 028 4176 2653, info@chestnuttholidayparks.com, live chestnuttholidaybookings.com. */
 const phone = "028 4176 2653";
 const phoneHref = "tel:+442841762653";
@@ -18,64 +17,89 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Chestnutt+Holi
 
 const parksDropdown = [
   {
-    title: "Chestnutt · Cranfield Beach",
-    desc: "Direct Blue Flag beach access for holiday home hire, touring and camping.",
+    id: "cranfield",
+    title: "Cranfield Beach",
+    desc: "Direct Blue Flag beach access for holiday home hire, touring, and camping.",
     img: "/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-640.webp",
-    tag: "Blue Flag Beach",
+    caption: "Cranfield West shoreline, Blue Flag beach",
   },
   {
+    id: "annalong",
     title: "Annalong Holiday Park",
     desc: "Quiet Mourne coast base between Annalong harbour and Silent Valley.",
     img: "/media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck-640.webp",
-    tag: "Mourne Coast",
+    caption: "Annalong coastal views toward the Irish Sea",
   },
   {
+    id: "loughside",
     title: "Loughside Holiday Park",
     desc: "Owners-only coastal retreat overlooking Carlingford Lough.",
     img: "/media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck-640.webp",
-    tag: "Owners Only",
+    caption: "Loughside owners-only retreat near Kilkeel",
   },
   {
+    id: "sandilands",
     title: "Sandilands Holiday Park",
-    desc: "Touring pitches, family camping and static holiday homes near Cranfield.",
+    desc: "Touring pitches, family camping, and static holiday homes near Cranfield.",
     img: "/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-640.webp",
-    tag: "Touring & Hire",
+    caption: "Sandilands touring and camping along the coast",
   },
 ];
 ---
 
 <ConceptLayout
-  title="Chestnutt Holiday Parks — Cranfield Beach & Mourne Coast"
+  title="Chestnutt Holiday Parks, Cranfield Beach and Mourne Coast"
   slug="chestnutt-holiday-parks"
   bodyClass="concept-page concept-chestnutt"
   businessName="Chestnutt Holiday Parks"
   town="Kilkeel"
   bannerNote="Imagery comprises indicative Cranfield Beach panorama and coastal lodge deck visualisations."
 >
-  <header class="chp-header">
+  <header class="chp-header" data-chp-header>
     <div class="chp-header-inner">
       <a class="chp-brand" href="#top">Chestnutt Holiday Parks</a>
 
       <nav class="chp-nav" aria-label="Primary">
         <div class="chp-dd-wrap" data-chp-dd>
-          <button type="button" class="chp-nav-link chp-dd-trigger" aria-expanded="false" aria-controls="chp-parks-menu" data-chp-dd-trigger>
-            <span>Our 4 Parks</span>
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <button
+            type="button"
+            class="chp-nav-link chp-dd-trigger"
+            aria-expanded="false"
+            aria-controls="chp-parks-menu"
+            data-chp-dd-trigger
+          >
+            <span>Our 4 parks</span>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M2.5 4.5L6 8l3.5-3.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </button>
           <div class="chp-dd-panel" id="chp-parks-menu" hidden data-chp-dd-panel>
             <ul class="chp-dd-list">
               {parksDropdown.map((item, idx) => (
                 <li>
-                  <a href="#parks" class:list={["chp-dd-item", idx === 0 && "is-active"]} data-chp-dd-item data-img={item.img} data-tag={item.tag}>
+                  <button
+                    type="button"
+                    class:list={["chp-dd-item", idx === 0 && "is-active"]}
+                    data-chp-dd-item
+                    data-park={item.id}
+                    data-img={item.img}
+                    data-caption={item.caption}
+                  >
                     <strong>{item.title}</strong>
                     <span>{item.desc}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
             <div class="chp-dd-preview" aria-hidden="true">
               <img src={parksDropdown[0].img} alt="" width="640" height="349" data-chp-dd-img />
-              <span class="chp-dd-tag" data-chp-dd-tag>{parksDropdown[0].tag}</span>
+              <p class="chp-dd-caption" data-chp-dd-caption>{parksDropdown[0].caption}</p>
             </div>
           </div>
         </div>
@@ -93,26 +117,38 @@ const parksDropdown = [
 
   <main id="top">
     <section class="chp-hero" aria-labelledby="chp-hero-title">
-      <figure class="chp-hero-media">
+      <span class="chp-hero-sentinel" aria-hidden="true" data-chp-sentinel></span>
+      <div class="chp-hero-media">
         <picture>
-          <source srcset="/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-640.webp 640w, /media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach.jpg" alt="Golden afternoon panorama of Cranfield Beach with dunes, holiday lodges and the Mourne Mountains behind" width="1408" height="768" loading="eager" />
+          <source
+            srcset="/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-640.webp 640w, /media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/chestnutt-holiday-parks/chestnutt-cranfield-beach.jpg"
+            alt="Golden afternoon panorama of Cranfield Beach with dunes, holiday lodges, and the Mourne Mountains behind"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
         </picture>
         <div class="chp-hero-scrim" aria-hidden="true"></div>
-      </figure>
+      </div>
 
       <div class="chp-wrap chp-hero-center">
-        <p class="chp-eyebrow">Cranfield · Annalong · Loughside · Sandilands</p>
-        <h1 id="chp-hero-title">Where the Mournes meet <mark class="chp-hl">Blue Flag sands.</mark></h1>
-        <p class="chp-hero-lead">
-          Four family-run coastal parks for static holiday homes, touring caravans, camping and
-          Cranfield Sands Cottage.
-        </p>
-        <div class="chp-hero-actions">
-          <a class="chp-btn chp-btn--light" href={bookingHref} target="_blank" rel="noopener noreferrer">Book holiday dates online ↗</a>
-          <a class="chp-ghost-link" href="#parks">Compare our 4 parks</a>
+        <div class="chp-hero-copy">
+          <h1 id="chp-hero-title">Where the Mournes meet Blue Flag sands.</h1>
+          <p class="chp-hero-lead">
+            Four family-run coastal parks for static holiday homes, touring caravans, camping, and Cranfield Sands Cottage.
+          </p>
+          <a class="chp-btn chp-btn--light" href={bookingHref} target="_blank" rel="noopener noreferrer">
+            Book holiday dates online ↗
+          </a>
         </div>
-        <p class="chp-visual-note">Cranfield Beach panorama · indicative visualisation</p>
+        <div class="chp-hero-foot">
+          <p class="chp-hero-caption">Cranfield Beach panorama. Indicative visualisation.</p>
+        </div>
       </div>
     </section>
 
@@ -120,40 +156,65 @@ const parksDropdown = [
 
     <section class="chp-section chp-cottage" id="cottage" aria-labelledby="chp-cot-title">
       <div class="chp-wrap chp-split">
-        <figure class="chp-plate">
-          <picture>
-            <source srcset="/media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck-640.webp 640w, /media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/chestnutt-holiday-parks/chestnutt-lodge-deck.jpg" alt="Sunlit cedar coastal lodge timber deck with woven armchairs looking out across Carlingford Lough" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Coastal deck outlook over Carlingford Lough · indicative visualisation.</figcaption>
-        </figure>
-        <div>
-          <p class="chp-kicker">Hire, touring &amp; Cranfield Sands Cottage</p>
+        <div class="chp-split-col">
           <h2 id="chp-cot-title">Morning coffee on the deck, sandy feet back from the beach.</h2>
           <p class="chp-body">
             Whether you are booking a family static caravan for July, pitching a tourer at Sandilands,
             or escaping to Cranfield Sands Cottage out of season, live availability runs directly
             through our Kilkeel office.
           </p>
-          <a class="chp-btn chp-btn--primary" href={bookingHref} target="_blank" rel="noopener noreferrer">Open live booking portal ↗</a>
+          <a class="chp-btn chp-btn--primary" href={bookingHref} target="_blank" rel="noopener noreferrer">
+            Open live booking portal ↗
+          </a>
+        </div>
+
+        <div class="chp-split-col">
+          <dl class="chp-ledger chp-ledger--light">
+            <div class="chp-ledger-row">
+              <dt>Cranfield Sands Cottage</dt>
+              <dd>Self-catering coastal cottage stays beside Cranfield West beach</dd>
+            </div>
+            <div class="chp-ledger-row">
+              <dt>Holiday home hire</dt>
+              <dd>Static caravans for family weeks and short coastal breaks</dd>
+            </div>
+            <div class="chp-ledger-row">
+              <dt>Touring and camping</dt>
+              <dd>Caravan, motorhome, and family tent pitches across Cranfield, Annalong, and Sandilands</dd>
+            </div>
+            <div class="chp-ledger-row">
+              <dt>Direct park office</dt>
+              <dd>Live online dates backed by our team at 3 Grange Road, Kilkeel</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>
 
     <section class="chp-section chp-ownership" id="ownership" aria-labelledby="chp-own-title">
       <div class="chp-wrap chp-split">
-        <div>
-          <p class="chp-kicker">Static holiday home ownership</p>
+        <div class="chp-split-col">
           <h2 id="chp-own-title">Looking for your own coastal base in County Down?</h2>
           <p class="chp-body">
             Tell us which of our four parks interests you and whether you are looking for a new or
             pre-owned holiday home. Our Kilkeel park office will arrange a private viewing.
           </p>
-          <dl class="chp-contact-list">
-            <div><dt>Park Office</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+          <dl class="chp-ledger chp-ledger--light">
+            <div class="chp-ledger-row">
+              <dt>Park office</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div class="chp-ledger-row">
+              <dt>Email</dt>
+              <dd><a href={`mailto:${email}`}>{email}</a></dd>
+            </div>
+            <div class="chp-ledger-row">
+              <dt>Address</dt>
+              <dd>3 Grange Road, Cranfield West, Kilkeel, BT34 4LW</dd>
+            </div>
           </dl>
         </div>
+
         <form class="chp-form" data-chp-form>
           <div class="chp-row">
             <label>
@@ -162,31 +223,35 @@ const parksDropdown = [
             </label>
             <label>
               <span>Telephone</span>
-              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
             </label>
           </div>
           <div class="chp-row">
             <label>
               <span>Preferred park</span>
               <select name="park">
-                <option value="Chestnutt (Cranfield Beach)">Chestnutt · Cranfield Beach</option>
+                <option value="Chestnutt, Cranfield Beach">Chestnutt, Cranfield Beach</option>
                 <option value="Annalong Holiday Park">Annalong Holiday Park</option>
-                <option value="Loughside Holiday Park">Loughside (Owners Only)</option>
+                <option value="Loughside Holiday Park (Owners only)">Loughside (Owners only)</option>
                 <option value="Sandilands Holiday Park">Sandilands Holiday Park</option>
               </select>
             </label>
             <label>
               <span>Enquiry type</span>
               <select name="kind">
-                <option value="Static Caravan Ownership Viewing">Static Holiday Home Ownership</option>
-                <option value="Seasonal Touring Pitch">Seasonal Touring Pitch</option>
-                <option value="Cranfield Sands Cottage / Hire">Hire or Cranfield Sands Cottage</option>
+                <option value="Static holiday home ownership">Static holiday home ownership</option>
+                <option value="Seasonal touring pitch">Seasonal touring pitch</option>
+                <option value="Hire or Cranfield Sands Cottage">Hire or Cranfield Sands Cottage</option>
               </select>
             </label>
           </div>
           <label>
             <span>Notes</span>
-            <textarea name="notes" rows="3" placeholder="Preferred bedrooms, budget range, or dates you can visit Cranfield..."></textarea>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Preferred bedrooms, budget range, or dates you can visit Cranfield..."
+            ></textarea>
           </label>
           <button class="chp-btn chp-btn--primary" type="submit">Send park enquiry</button>
         </form>
@@ -197,8 +262,8 @@ const parksDropdown = [
       <div class="chp-wrap">
         <LocalAreaMap
           id="chp-map"
-          kicker="3 Grange Road · Cranfield Point & Kilkeel"
-          businessName="Chestnutt Holiday Parks"
+          kicker=""
+          businessName="Chestnutt Parks"
           address="3 Grange Road, Cranfield West, Kilkeel, BT34 4LW"
           lon={-6.066937}
           lat={54.031565}
@@ -231,55 +296,121 @@ const parksDropdown = [
 
   <script is:inline>
     (() => {
+      const header = document.querySelector("[data-chp-header]");
+      const sentinel = document.querySelector("[data-chp-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const finderRoot = document.querySelector("[data-chp-finder]");
+      const tabs = finderRoot ? [...finderRoot.querySelectorAll("[data-chp-tab]")] : [];
+      const panels = finderRoot ? [...finderRoot.querySelectorAll("[data-chp-panel]")] : [];
+
       const ddWrap = document.querySelector("[data-chp-dd]");
       const trigger = ddWrap?.querySelector("[data-chp-dd-trigger]");
       const panel = ddWrap?.querySelector("[data-chp-dd-panel]");
       const previewImg = ddWrap?.querySelector("[data-chp-dd-img]");
-      const previewTag = ddWrap?.querySelector("[data-chp-dd-tag]");
-      const items = ddWrap ? [...ddWrap.querySelectorAll("[data-chp-dd-item]")] : [];
+      const previewCaption = ddWrap?.querySelector("[data-chp-dd-caption]");
+      const ddItems = ddWrap ? [...ddWrap.querySelectorAll("[data-chp-dd-item]")] : [];
+
+      const syncDropdownPreview = (parkId) => {
+        const match = ddItems.find((item) => item.dataset.park === parkId);
+        if (!match) return;
+        ddItems.forEach((i) => i.classList.toggle("is-active", i === match));
+        if (previewImg && match.dataset.img) previewImg.src = match.dataset.img;
+        if (previewCaption && match.dataset.caption) previewCaption.textContent = match.dataset.caption;
+      };
+
+      const selectPark = (parkId, scrollToSection = false) => {
+        if (!parkId) return;
+        tabs.forEach((t) => {
+          const active = t.getAttribute("data-chp-tab") === parkId;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          p.hidden = p.getAttribute("data-chp-panel") !== parkId;
+        });
+        syncDropdownPreview(parkId);
+        if (scrollToSection) {
+          const section = document.getElementById("parks");
+          section?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        }
+      };
+
+      tabs.forEach((btn, idx) => {
+        btn.addEventListener("click", () => selectPark(btn.getAttribute("data-chp-tab"), false));
+        btn.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          e.preventDefault();
+          const next = e.key === "ArrowRight" ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+          tabs[next].focus();
+          selectPark(tabs[next].getAttribute("data-chp-tab"), false);
+        });
+      });
+
       if (ddWrap && trigger && panel) {
         const setOpen = (open) => {
           panel.hidden = !open;
           trigger.setAttribute("aria-expanded", open ? "true" : "false");
           ddWrap.classList.toggle("is-open", open);
         };
-        trigger.addEventListener("click", (e) => { e.stopPropagation(); setOpen(panel.hidden); });
-        document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) setOpen(false); });
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
-        items.forEach((item) => {
-          const activate = () => {
-            items.forEach((i) => i.classList.toggle("is-active", i === item));
-            if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
-            if (previewTag && item.dataset.tag) previewTag.textContent = item.dataset.tag;
-          };
-          item.addEventListener("mouseenter", activate);
-          item.addEventListener("focus", activate);
-          item.addEventListener("click", () => setOpen(false));
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setOpen(panel.hidden);
+        });
+        document.addEventListener("click", (e) => {
+          if (!ddWrap.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
+        ddItems.forEach((item) => {
+          const preview = () => syncDropdownPreview(item.dataset.park);
+          item.addEventListener("mouseenter", preview);
+          item.addEventListener("focus", preview);
+          item.addEventListener("click", () => {
+            setOpen(false);
+            selectPark(item.dataset.park, true);
+          });
         });
       }
 
       const form = document.querySelector("[data-chp-form]");
-      if (!form) return;
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-        const fd = new FormData(form);
-        const subject = `Chestnutt Parks Enquiry — ${fd.get("kind")} (${fd.get("park")})`;
-        const body = [
-          `Name: ${fd.get("name")}`,
-          `Phone: ${fd.get("phone")}`,
-          `Park: ${fd.get("park")}`,
-          `Type: ${fd.get("kind")}`,
-          `Notes: ${fd.get("notes") || "None"}`,
-        ].join("\n");
-        const ev = new CustomEvent("mm:enquiry", {
-          cancelable: true,
-          detail: { to: "info@chestnuttholidayparks.com", subject, body, phone: "028 4176 2653", phoneHref: "tel:+442841762653" },
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Chestnutt Parks enquiry: ${fd.get("kind")} (${fd.get("park")})`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Park: ${fd.get("park")}`,
+            `Type: ${fd.get("kind")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "info@chestnuttholidayparks.com",
+              subject,
+              body,
+              phone: "028 4176 2653",
+              phoneHref: "tel:+442841762653",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = `mailto:info@chestnuttholidayparks.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          }
         });
-        if (window.dispatchEvent(ev)) {
-          window.location.href = `mailto:info@chestnuttholidayparks.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-      });
+      }
     })();
   </script>
 </ConceptLayout>

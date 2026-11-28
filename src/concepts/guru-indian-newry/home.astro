@@ -5,9 +5,8 @@ import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
 /* Guru Indian Cuisine — 3 Kildare Street, Newry BT34 1DQ.
-   Verified live 26 Nov 2026: gurunewry.co.uk duplicates nav twice & returns via plain http://.
-   Live Postree online ordering, live gurunewry.voucherhub.ie gift cards, 028 3005 3659.
-   Hours: Mon–Thu 17:00–22:30, Fri–Sat 16:00–23:00, Sun 12:30–21:00. */
+   Verified live 26 Nov 2026: live Postree online ordering, live gurunewry.voucherhub.ie gift cards, 028 3005 3659.
+   Hours: Mon-Thu 17:00-22:30, Fri-Sat 16:00-23:00, Sun 12:30-21:00. */
 const phone = "028 3005 3659";
 const phoneHref = "tel:+442830053659";
 const orderHref = "https://www.postreelogin.com/ordering/restaurant/menu?restaurant_uid=338e0936-f210-475c-a2a7-ac9fd7324d94";
@@ -19,118 +18,300 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Guru+Indian+Cu
 const menuGroups = [
   {
     id: "kitchen",
-    label: "Tandoor & House Curries",
+    label: "Tandoor and house curries",
     items: [
-      { name: "Clay-Oven Tandoori Classics", note: "Charred lamb tikka, chicken shashlik and king prawns marinated in whole roasted spices", meta: "Dine-in & Takeaway" },
-      { name: "Regional Indian Mains", note: "Slow-simmered saffron butter chicken, bhuna, jalfrezi, biryani and vegetarian thali dishes", meta: "Cooked to order" },
-      { name: "Fresh Naan & Pilau Rice", note: "Garlic, peshwari and keema naan blistered fresh to order from the tandoor", meta: "Order online" },
+      {
+        name: "Clay-oven tandoori classics",
+        note: "Charred lamb tikka, chicken shashlik, and king prawns marinated in whole roasted spices",
+        meta: "Dine-in and takeaway",
+      },
+      {
+        name: "Regional Indian mains",
+        note: "Slow-simmered saffron butter chicken, bhuna, jalfrezi, biryani, and vegetarian thali dishes",
+        meta: "Cooked to order",
+      },
+      {
+        name: "Fresh naan and pilau rice",
+        note: "Garlic, peshwari, and keema naan blistered fresh to order from the tandoor",
+        meta: "Order online",
+      },
     ],
   },
   {
     id: "dining",
-    label: "Dining, Sunday & Gift Cards",
+    label: "Dining, Sunday, and gift cards",
     items: [
-      { name: "Evening & Sunday Service", note: "Open seven days — including Sunday afternoon dining from 12:30pm", meta: "7 Days" },
-      { name: "Instant Gift Cards", note: "Digital and dining gift vouchers issued online via VoucherHub", meta: "Online vouchers" },
+      {
+        name: "Evening and Sunday service",
+        note: "Open seven days, including Sunday afternoon dining from 12:30pm",
+        meta: "7 days",
+      },
+      {
+        name: "Instant gift cards",
+        note: "Digital and dining gift vouchers issued online via VoucherHub",
+        meta: "Online vouchers",
+      },
     ],
   },
+];
+
+const experienceTabs = [
+  {
+    id: "dining",
+    label: "Dining room",
+    summary: "Table service beneath warm brass lanterns on Kildare Street, open seven nights a week with Sunday afternoon dining from 12:30.",
+    rows: [
+      { label: "Evening tables", value: "Reserve by calling 028 3005 3659 or send a group dining enquiry below" },
+      { label: "Sunday afternoon", value: "Dining room and kitchen open from 12:30 to 21:00 every Sunday" },
+      { label: "Gift vouchers", value: "Instant digital and dining gift cards available online through VoucherHub" },
+    ],
+  },
+  {
+    id: "tandoor",
+    label: "Tandoor",
+    summary: "Marinated meats, king prawns, and blistered breads seared to order in the clay oven over live heat.",
+    rows: [
+      { label: "Tandoori grills", value: "Charred lamb tikka, chicken shashlik, and spiced king prawns" },
+      { label: "Fresh breads", value: "Garlic, peshwari, and keema naan baked to order" },
+      { label: "Whole spices", value: "Marinades prepared with freshly roasted whole spices" },
+    ],
+  },
+  {
+    id: "takeaway",
+    label: "Takeaway",
+    summary: "Direct online takeaway ordering straight into our Kildare Street kitchen for hot collection or home dining.",
+    rows: [
+      { label: "House curries", value: "Saffron butter chicken, bhuna, jalfrezi, biryani, and vegetarian thali dishes" },
+      { label: "Online ordering", value: "Place your order directly online with live menu availability" },
+      { label: "Telephone orders", value: "Call 028 3005 3659 during evening or Sunday service hours" },
+    ],
+  },
+];
+
+const weeklyHours = [
+  { day: "Monday", hours: "17:00 to 22:30" },
+  { day: "Tuesday", hours: "17:00 to 22:30" },
+  { day: "Wednesday", hours: "17:00 to 22:30" },
+  { day: "Thursday", hours: "17:00 to 22:30" },
+  { day: "Friday", hours: "16:00 to 23:00" },
+  { day: "Saturday", hours: "16:00 to 23:00" },
+  { day: "Sunday", hours: "12:30 to 21:00" },
 ];
 ---
 
 <ConceptLayout
-  title="Guru Indian Cuisine — Kildare Street, Newry"
+  title="Guru Indian Cuisine, Kildare Street, Newry"
   slug="guru-indian-newry"
   bodyClass="concept-page concept-gurunewry"
   businessName="Guru Indian Cuisine"
   town="Newry"
   bannerNote="Imagery comprises indicative Indian dining spread and evening room visualisations."
 >
-  <header class="gi-header">
+  <header class="gi-header" data-gi-header>
     <div class="gi-header-inner">
-      <nav class="gi-nav" aria-label="Primary">
-        <a href="#dining">Dining Room</a>
-        <a href="#hours">Hours</a>
-        <a href={voucherHref} target="_blank" rel="noopener noreferrer">Gift Cards</a>
-      </nav>
       <a class="gi-brand" href="#top">Guru Indian</a>
+      <nav class="gi-nav" aria-label="Primary">
+        <a href="#menu">Dining and menu</a>
+        <a href="#hours">Opening hours</a>
+        <a href={voucherHref} target="_blank" rel="noopener noreferrer">Gift cards</a>
+        <a href="#location">Newry</a>
+      </nav>
       <div class="gi-header-actions">
         <a class="gi-header-tel" href={phoneHref}>{phone}</a>
-        <a class="gi-header-cta" href={orderHref} target="_blank" rel="noopener noreferrer">Order online ↗</a>
+        <a class="gi-header-cta" href={orderHref} target="_blank" rel="noopener noreferrer">Order online</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="gi-hero" aria-labelledby="gi-hero-title">
-      <div class="gi-wrap gi-hero-frame">
-        <div class="gi-hero-copy">
-          <p class="gi-eyebrow">3 Kildare Street · Newry · Open 7 Days</p>
-          <h1 id="gi-hero-title">Clay-oven spice &amp; evening hospitality.</h1>
-          <p class="gi-hero-lead">
-            Regional Indian cooking in the heart of Newry. Dine beneath brass lanterns, order hot
-            from our tandoor, or send a VoucherHub gift card.
-          </p>
-          <div class="gi-hero-actions">
-            <a class="gi-btn gi-btn--primary" href={orderHref} target="_blank" rel="noopener noreferrer">Order takeaway online ↗</a>
-            <SpecimenSheet
-              id="gi-menu-sheet"
-              triggerLabel="Menu & spice guide"
-              kicker="Guru Indian Cuisine · 3 Kildare Street, Newry"
-              title="Tandoor, Curries & Gift Vouchers"
-              subtitle="Open 7 days on Kildare Street — order online or call 028 3005 3659 for tables."
-              groups={menuGroups}
-              ctaLabel="Order Online Now ↗"
-              ctaHref={orderHref}
-              ctaExternal={true}
-              secondaryLabel={`Call ${phone}`}
-              secondaryHref={phoneHref}
-              buttonClass="gi-ghost-link"
-            />
-          </div>
-          <p class="gi-service-note">Mon–Thu from 17:00 · Fri–Sat from 16:00 · Sun from 12:30</p>
-        </div>
+      <span class="gi-hero-sentinel" aria-hidden="true" data-gi-sentinel></span>
+      <div class="gi-hero-media">
+        <picture>
+          <source
+            srcset="/media/concepts/guru-indian-newry/guru-indian-feast-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-feast-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/guru-indian-newry/guru-indian-feast.jpg"
+            alt="Evening spread of saffron butter chicken, tandoori lamb tikka, blistered garlic naan, and pilau in copper bowls"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+        <div class="gi-hero-scrim" aria-hidden="true"></div>
+      </div>
 
-        <figure class="gi-hero-plate">
-          <div class="gi-brass-frame">
-            <picture>
-              <source srcset="/media/concepts/guru-indian-newry/guru-indian-feast-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-feast-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
-              <img src="/media/concepts/guru-indian-newry/guru-indian-feast.jpg" alt="Evening spread of saffron butter chicken, tandoori lamb tikka, blistered garlic naan and pilau in copper bowls" width="1408" height="768" loading="eager" />
-            </picture>
-          </div>
-          <figcaption>Evening spice feast · indicative visualisation.</figcaption>
-        </figure>
+      <div class="gi-wrap gi-hero-inner">
+        <div class="gi-hero-copy">
+          <h1 id="gi-hero-title">Clay-oven spice and evening hospitality.</h1>
+          <p class="gi-hero-lead">
+            Regional Indian cooking on Kildare Street. Dine beneath brass lanterns, order hot from the tandoor, or send gift cards.
+          </p>
+          <a class="gi-btn gi-btn--primary" href={orderHref} target="_blank" rel="noopener noreferrer">
+            Order takeaway online ↗
+          </a>
+        </div>
+        <div class="gi-hero-foot">
+          <p class="gi-hero-caption">Evening spice feast. Indicative visualisation.</p>
+        </div>
       </div>
     </section>
 
-    <section class="gi-section gi-dining" id="dining" aria-labelledby="gi-din-title">
-      <div class="gi-wrap gi-split">
-        <figure class="gi-plate">
-          <picture>
-            <source srcset="/media/concepts/guru-indian-newry/guru-indian-dining-room-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-dining-room-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/guru-indian-newry/guru-indian-dining-room.jpg" alt="Upscale indigo and brass-lantern Indian dining room ready for evening table service" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Evening dining room on Kildare Street · indicative room visualisation.</figcaption>
-        </figure>
-        <div id="hours">
-          <p class="gi-kicker">Open seven days · Kildare Street</p>
-          <h2 id="gi-din-title">Dine in beneath the lanterns or collect hot from the tandoor.</h2>
-          <p class="gi-body">
-            Reserve a table for evening dinner or Sunday afternoon service by calling
-            <a href={phoneHref}>{phone}</a>, or place a direct takeaway order straight into our kitchen.
+    <section class="gi-section gi-menu-band" id="menu" aria-labelledby="gi-menu-title">
+      <div class="gi-wrap">
+        <div class="gi-band-head">
+          <h2 id="gi-menu-title">Dine beneath the lanterns or collect hot from the tandoor.</h2>
+          <p class="gi-band-intro">
+            Explore our Kildare Street dining room, clay-oven specials, and direct takeaway kitchen cooked to order seven days a week.
           </p>
-          <div class="gi-hours-card">
-            <h3>Kitchen &amp; Dining Hours</h3>
-            <dl class="gi-hours-list">
-              <div><dt>Monday – Thursday</dt><dd>17:00 – 22:30</dd></div>
-              <div><dt>Friday – Saturday</dt><dd>16:00 – 23:00</dd></div>
-              <div><dt>Sunday</dt><dd>12:30 – 21:00</dd></div>
-            </dl>
-          </div>
-          <div class="gi-inline-actions">
-            <a class="gi-btn gi-btn--primary" href={orderHref} target="_blank" rel="noopener noreferrer">Order online ↗</a>
-            <a class="gi-link" href={voucherHref} target="_blank" rel="noopener noreferrer">Buy gift cards ↗</a>
-          </div>
         </div>
+
+        <div class="gi-menu-stage" data-gi-tabs>
+          <div class="gi-menu-body">
+            <div class="gi-tabs" role="tablist" aria-label="Dining room, tandoor, and takeaway">
+              {experienceTabs.map((tab, idx) => (
+                <button
+                  type="button"
+                  role="tab"
+                  id={`gi-tab-${tab.id}`}
+                  aria-selected={idx === 0 ? "true" : "false"}
+                  aria-controls={`gi-panel-${tab.id}`}
+                  class:list={["gi-tab", idx === 0 && "is-active"]}
+                  data-gi-tab={tab.id}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {experienceTabs.map((tab, idx) => (
+              <div
+                class="gi-panel"
+                role="tabpanel"
+                id={`gi-panel-${tab.id}`}
+                aria-labelledby={`gi-tab-${tab.id}`}
+                data-gi-panel={tab.id}
+                hidden={idx !== 0}
+              >
+                <p class="gi-panel-summary">{tab.summary}</p>
+                <dl class="gi-ledger gi-ledger--light">
+                  {tab.rows.map((row) => (
+                    <div class="gi-ledger-row">
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+
+            <div class="gi-menu-foot">
+              <SpecimenSheet
+                id="gi-menu-sheet"
+                triggerLabel="Open menu and spice guide"
+                kicker="Guru Indian Cuisine, 3 Kildare Street, Newry"
+                title="Tandoor, curries, and gift vouchers"
+                subtitle="Open 7 days on Kildare Street. Order online or call 028 3005 3659 for tables."
+                groups={menuGroups}
+                ctaLabel="Order online now ↗"
+                ctaHref={orderHref}
+                ctaExternal={true}
+                secondaryLabel={`Call ${phone}`}
+                secondaryHref={phoneHref}
+                buttonClass="gi-sheet-trigger"
+              />
+              <a class="gi-text-link" href={voucherHref} target="_blank" rel="noopener noreferrer">
+                Buy a VoucherHub gift card ↗
+              </a>
+            </div>
+          </div>
+
+          <figure class="gi-plate">
+            <picture>
+              <source
+                srcset="/media/concepts/guru-indian-newry/guru-indian-dining-room-640.webp 640w, /media/concepts/guru-indian-newry/guru-indian-dining-room-1265.webp 1265w"
+                sizes="(max-width: 900px) 100vw, 46vw"
+                type="image/webp"
+              />
+              <img
+                src="/media/concepts/guru-indian-newry/guru-indian-dining-room.jpg"
+                alt="Indigo and brass-lantern Indian dining room ready for evening table service"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Evening dining room on Kildare Street. Indicative room visualisation.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="gi-section gi-hours-band" id="hours" aria-labelledby="gi-hours-title">
+      <div class="gi-wrap gi-split">
+        <div class="gi-split-col">
+          <h2 id="gi-hours-title">Open seven days on Kildare Street.</h2>
+          <p class="gi-body gi-body--dark">
+            Call <a href={phoneHref}>{phone}</a> to book an evening table or Sunday afternoon sitting,
+            or prepare a group table enquiry for our dining room team.
+          </p>
+          <dl class="gi-ledger gi-ledger--dark gi-hours-ledger">
+            {weeklyHours.map((entry) => (
+              <div class="gi-ledger-row gi-hours-row">
+                <dt>{entry.day}</dt>
+                <dd>{entry.hours}</dd>
+              </div>
+            ))}
+          </dl>
+          <p class="gi-voucher-line">
+            Sending dinner as a gift? <a href={voucherHref} target="_blank" rel="noopener noreferrer">Order instant VoucherHub gift cards ↗</a>
+          </p>
+        </div>
+
+        <form class="gi-form" data-gi-form>
+          <div class="gi-form-row">
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+            </label>
+            <label>
+              <span>Telephone</span>
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+            </label>
+          </div>
+          <div class="gi-form-row">
+            <label>
+              <span>Service</span>
+              <select name="service">
+                <option value="Evening table (Mon to Thu, from 17:00)">Evening table (Mon to Thu)</option>
+                <option value="Weekend evening table (Fri to Sat, from 16:00)">Weekend evening (Fri to Sat)</option>
+                <option value="Sunday afternoon dining (from 12:30)">Sunday dining (from 12:30)</option>
+                <option value="Group celebration table">Group celebration table</option>
+              </select>
+            </label>
+            <label>
+              <span>Party size</span>
+              <select name="guests">
+                <option value="2 guests">2 guests</option>
+                <option value="4 guests">4 guests</option>
+                <option value="6 guests">6 guests</option>
+                <option value="8 or more guests">8 or more guests</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>Preferred date, time, or dietary notes</span>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Preferred date and sitting time, celebration notes, or dietary requirements..."
+            ></textarea>
+          </label>
+          <button class="gi-btn gi-btn--primary" type="submit">Prepare table enquiry</button>
+        </form>
       </div>
     </section>
 
@@ -139,8 +320,8 @@ const menuGroups = [
         <LocalAreaMap
           id="gi-map"
           tone="dark"
-          kicker="3 Kildare Street · Newry City"
-          businessName="Guru Indian Cuisine"
+          kicker=""
+          businessName="Guru Indian"
           address="3 Kildare Street, Newry, BT34 1DQ"
           lon={-6.3367911}
           lat={54.1772558}
@@ -164,10 +345,82 @@ const menuGroups = [
       </div>
       <div class="gi-footer-links">
         <a href={phoneHref}>{phone}</a>
-        <a href={orderHref} target="_blank" rel="noopener noreferrer">Order Online ↗</a>
+        <a href={orderHref} target="_blank" rel="noopener noreferrer">Order online ↗</a>
+        <a href={voucherHref} target="_blank" rel="noopener noreferrer">Gift cards ↗</a>
         <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
         <a href={igHref} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-gi-header]");
+      const sentinel = document.querySelector("[data-gi-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tabRoot = document.querySelector("[data-gi-tabs]");
+      if (tabRoot) {
+        const tabs = [...tabRoot.querySelectorAll("[data-gi-tab]")];
+        const panels = [...tabRoot.querySelectorAll("[data-gi-panel]")];
+        const selectTab = (id) => {
+          tabs.forEach((t) => {
+            const active = t.getAttribute("data-gi-tab") === id;
+            t.classList.toggle("is-active", active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          panels.forEach((p) => {
+            p.hidden = p.getAttribute("data-gi-panel") !== id;
+          });
+        };
+        tabs.forEach((btn, idx) => {
+          btn.addEventListener("click", () => selectTab(btn.getAttribute("data-gi-tab")));
+          btn.addEventListener("keydown", (e) => {
+            if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+            e.preventDefault();
+            const next = e.key === "ArrowRight" ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+            tabs[next].focus();
+            selectTab(tabs[next].getAttribute("data-gi-tab"));
+          });
+        });
+      }
+
+      const form = document.querySelector("[data-gi-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Guru Indian table enquiry: ${fd.get("guests")}, ${fd.get("service")}`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Service: ${fd.get("service")}`,
+            `Party size: ${fd.get("guests")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "Guru Indian Cuisine (028 3005 3659)",
+              subject,
+              body,
+              url: "tel:+442830053659",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = "tel:+442830053659";
+          }
+        });
+      }
+    })();
+  </script>
 </ConceptLayout>

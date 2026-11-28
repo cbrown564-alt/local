@@ -1,137 +1,688 @@
-/* Guru Indian Cuisine — Deep Indigo Supper Club & Brass Frame */
+/* Guru Indian Cuisine — Nocturnal Clay-Oven Feast & Warm Sandstone Editorial */
 body.concept-gurunewry {
-  --gi-bg: #161221;
-  --gi-panel: #1f1a2e;
-  --gi-ink: #f8f2e8;
-  --gi-muted: rgba(248, 242, 232, 0.72);
-  --gi-line: rgba(224, 164, 72, 0.24);
-  --gi-accent: #e0a448;
+  --gi-dark: #140f19;
+  --gi-dark-panel: #1d1624;
+  --gi-sand: #f5f2ec;
+  --gi-sand-surface: #ffffff;
+  --gi-ink-light: #f8f2e8;
+  --gi-muted-light: rgba(248, 242, 232, 0.78);
+  --gi-ink-dark: #1b1420;
+  --gi-muted-dark: #54495a;
+  --gi-line-dark: rgba(229, 170, 74, 0.24);
+  --gi-line-light: rgba(27, 20, 32, 0.14);
+  --gi-accent: #e5aa4a;
+  --gi-accent-hover: #d49635;
+  --gi-accent-deep: #85520a;
   --gi-display: "Yeseva One", Georgia, serif;
-  --gi-sans: "Karla", sans-serif;
-  --gi-gutter: clamp(24px, 5.5vw, 76px);
-  background: var(--gi-bg);
-  color: var(--gi-ink);
+  --gi-sans: "Karla", -apple-system, sans-serif;
+  --gi-max: 1240px;
+  --gi-gutter: clamp(20px, 4.8vw, 68px);
+  --gi-header-h: 74px;
+  --gi-text-heading: clamp(1.9rem, 3.2vw, 2.7rem);
+  --gi-text-body: 1.0625rem;
+  --gi-text-sm: 0.875rem;
+  --concept-accent: var(--gi-accent);
+  --concept-focus: var(--gi-accent);
+  background: var(--gi-dark);
+  color: var(--gi-ink-light);
   font-family: var(--gi-sans);
+  font-size: var(--gi-text-body);
+  line-height: 1.6;
   margin: 0;
   -webkit-font-smoothing: antialiased;
 }
 
-.gi-wrap { width: min(1240px, calc(100% - var(--gi-gutter) * 2)); margin: 0 auto; }
+body.concept-gurunewry .mm-map-kicker {
+  display: none;
+}
 
-/* Centred Supper-Club Monograph Header */
+body.concept-gurunewry .mm-map-card--dark {
+  --map-bg: #140f19;
+  --map-land: #1d1624;
+  --map-water: #0e0a12;
+  --map-border: rgba(229, 170, 74, 0.26);
+}
+
+.gi-wrap {
+  width: min(var(--gi-max), calc(100% - (var(--gi-gutter) * 2)));
+  margin: 0 auto;
+}
+
+/* Borderless sticky header over nocturnal clay-oven feast */
 .gi-header {
   display: block;
-  position: sticky; top: 0; z-index: 40;
-  background: rgba(22, 18, 33, 0.94); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gi-line);
-}
-.gi-header-inner {
-  width: min(1240px, calc(100% - var(--gi-gutter) * 2));
-  margin: 0 auto; height: 76px;
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
-}
-.gi-nav { justify-self: start; display: flex; gap: 24px; }
-.gi-nav a { text-decoration: none; color: var(--gi-muted); font-size: 0.9rem; font-weight: 500; }
-.gi-nav a:hover { color: var(--gi-accent); }
-.gi-brand {
-  justify-self: center; text-decoration: none; color: var(--gi-accent);
-  font-family: var(--gi-display); font-size: 1.45rem; letter-spacing: 0.02em;
-}
-.gi-header-actions { justify-self: end; display: inline-flex; align-items: center; gap: 18px; }
-.gi-header-tel { text-decoration: none; color: var(--gi-muted); font-size: 0.88rem; font-variant-numeric: tabular-nums; }
-.gi-header-cta {
-  text-decoration: none; background: var(--gi-accent); color: #161221;
-  padding: 9px 18px; border-radius: 2px; font-size: 0.88rem; font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--gi-header-h);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 200ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Framed Dark Supper-Club Hero */
-.gi-hero {
-  padding: clamp(48px, 6.5vw, 84px) 0 clamp(56px, 7.5vw, 96px);
-  border-bottom: 1px solid var(--gi-line);
+.gi-header.is-scrolled {
+  background: rgba(20, 15, 25, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--gi-line-dark);
 }
-.gi-hero-frame {
+
+.gi-header-inner {
+  width: min(var(--gi-max), calc(100% - (var(--gi-gutter) * 2)));
+  margin: 0 auto;
+  height: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.15fr);
-  gap: clamp(32px, 5.5vw, 72px);
-  align-items: start;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
 }
-.gi-hero-copy { padding-top: 8px; }
-.gi-eyebrow {
-  margin: 0 0 14px; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--gi-accent); font-weight: 600;
+
+.gi-brand {
+  justify-self: start;
+  text-decoration: none;
+  color: var(--gi-accent);
+  font-family: var(--gi-display);
+  font-size: 1.48rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  white-space: nowrap;
 }
+
+.gi-nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.gi-nav a {
+  text-decoration: none;
+  color: rgba(248, 242, 232, 0.9);
+  font-size: var(--gi-text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gi-nav a:hover {
+  color: var(--gi-accent);
+}
+
+.gi-header-actions {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.gi-header-tel {
+  text-decoration: none;
+  color: rgba(248, 242, 232, 0.88);
+  font-size: var(--gi-text-sm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.gi-header-cta {
+  text-decoration: none;
+  background: var(--gi-accent);
+  color: var(--gi-dark);
+  padding: 9px 18px;
+  border-radius: 3px;
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gi-header-cta:hover {
+  background: var(--gi-accent-hover);
+}
+
+.gi-header .mm-menu-trigger {
+  color: var(--gi-ink-light);
+  border-color: rgba(248, 242, 232, 0.45);
+}
+
+/* Nocturnal Clay-Oven Feast Takeover */
+.gi-hero {
+  position: relative;
+  margin-top: calc(var(--gi-header-h) * -1);
+  min-height: clamp(580px, 92svh, 840px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: var(--gi-dark);
+}
+
+.gi-hero-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 64px;
+  pointer-events: none;
+}
+
+.gi-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.gi-hero-media picture,
+.gi-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  display: block;
+}
+
+.gi-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 72% at 22% 80%, rgba(16, 11, 21, 0.84) 0%, rgba(16, 11, 21, 0.42) 56%, transparent 100%),
+    linear-gradient(
+      180deg,
+      rgba(20, 15, 25, 0.72) 0%,
+      rgba(20, 15, 25, 0.22) 34%,
+      rgba(20, 15, 25, 0.36) 58%,
+      rgba(20, 15, 25, 0.92) 100%
+    );
+}
+
+.gi-hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: calc(var(--gi-header-h) + clamp(96px, 16vh, 180px)) 0 clamp(28px, 4vw, 44px);
+  color: var(--gi-ink-light);
+}
+
+.gi-hero-copy {
+  max-width: 700px;
+}
+
 .gi-hero-copy h1 {
-  margin: 0 0 18px; font-family: var(--gi-display); font-weight: 400;
-  font-size: clamp(2.5rem, 4.6vw, 3.9rem); line-height: 1.06; color: var(--gi-ink);
+  margin: 0 0 18px;
+  font-family: var(--gi-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.3vw, 4.45rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--gi-ink-light);
 }
-.gi-hero-lead { margin: 0 0 28px; color: var(--gi-muted); font-size: 1rem; line-height: 1.66; max-width: 42ch; }
-.gi-hero-actions, .gi-inline-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+
+.gi-hero-lead {
+  margin: 0 0 28px;
+  font-size: var(--gi-text-body);
+  line-height: 1.6;
+  color: rgba(248, 242, 232, 0.9);
+  max-width: 48ch;
+}
 
 .gi-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 22px; border-radius: 2px; font-weight: 700; font-size: 0.9rem;
-  text-decoration: none; cursor: pointer; border: 0; font-family: var(--gi-sans);
-}
-.gi-btn--primary { background: var(--gi-accent); color: #161221; }
-
-body.concept-gurunewry button.gi-ghost-link {
-  background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 6px 0;
-  color: var(--gi-ink); font-family: var(--gi-sans); font-size: 0.9rem; font-weight: 600;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
-  border-bottom: 1px solid rgba(248, 242, 232, 0.36);
-}
-.gi-link {
-  color: var(--gi-accent); text-decoration: none; font-size: 0.9rem; font-weight: 600;
-  padding-bottom: 3px; border-bottom: 1px solid var(--gi-accent);
-}
-.gi-service-note {
-  margin: 28px 0 0; padding-top: 18px; border-top: 1px solid var(--gi-line);
-  font-size: 0.86rem; color: var(--gi-muted); font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  border-radius: 3px;
+  font-family: var(--gi-sans);
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.gi-hero-plate { margin: 0; }
-.gi-brass-frame {
-  padding: 10px;
-  border: 1px solid var(--gi-line);
-  background: var(--gi-panel);
+.gi-btn--primary {
+  background: var(--gi-accent);
+  color: var(--gi-dark);
 }
-.gi-brass-frame img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 10.5; object-fit: cover; }
-.gi-hero-plate figcaption { margin-top: 10px; font-size: 0.78rem; color: var(--gi-muted); text-align: right; }
 
-.gi-section { padding: clamp(64px, 8vw, 108px) 0; }
-.gi-kicker { margin: 0 0 12px; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gi-accent); font-weight: 600; }
-.gi-dining { background: var(--gi-panel); border-bottom: 1px solid var(--gi-line); }
-.gi-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 6vw, 80px); align-items: start; }
-.gi-split h2 { margin: 0 0 16px; font-family: var(--gi-display); font-weight: 400; font-size: clamp(1.9rem, 3.3vw, 2.75rem); line-height: 1.1; }
-.gi-body { margin: 0 0 24px; color: var(--gi-muted); font-size: 0.98rem; line-height: 1.66; max-width: 46ch; }
-.gi-body a { color: var(--gi-accent); font-weight: 600; }
-
-.gi-plate { margin: 0; }
-.gi-plate img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 10.5; object-fit: cover; border: 1px solid var(--gi-line); }
-.gi-plate figcaption { margin-top: 10px; font-size: 0.78rem; color: var(--gi-muted); }
-
-.gi-hours-card { padding-top: 20px; border-top: 1px solid var(--gi-line); margin-bottom: 26px; }
-.gi-hours-card h3 { margin: 0 0 12px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gi-accent); font-weight: 600; }
-.gi-hours-list { margin: 0; display: grid; gap: 10px; }
-.gi-hours-list > div {
-  display: flex; justify-content: space-between; gap: 16px; font-size: 0.94rem;
-  padding-bottom: 10px; border-bottom: 1px solid rgba(248, 242, 232, 0.1); font-variant-numeric: tabular-nums;
+.gi-btn--primary:hover {
+  background: var(--gi-accent-hover);
 }
-.gi-hours-list > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.gi-hours-list dt { font-weight: 600; color: var(--gi-ink); }
-.gi-hours-list dd { margin: 0; color: var(--gi-muted); }
-.gi-map-band { padding-top: 0; }
 
-.gi-footer { background: #100d18; border-top: 1px solid var(--gi-line); padding: 44px 0; }
-.gi-footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
-.gi-footer strong { font-family: var(--gi-display); font-size: 1.28rem; color: var(--gi-accent); display: block; margin-bottom: 6px; }
-.gi-footer p { margin: 0; font-size: 0.9rem; color: var(--gi-muted); }
-.gi-footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-.gi-footer-links a { color: var(--gi-accent); text-decoration: none; font-size: 0.9rem; }
+.gi-hero-foot {
+  margin-top: clamp(28px, 4vw, 44px);
+  padding-top: 16px;
+  border-top: 1px solid rgba(248, 242, 232, 0.2);
+}
+
+.gi-hero-caption {
+  margin: 0;
+  font-size: var(--gi-text-sm);
+  line-height: 1.45;
+  color: rgba(248, 242, 232, 0.78);
+}
+
+/* Warm Sandstone Menu & Dining Stage */
+.gi-section {
+  padding: clamp(68px, 8.5vw, 112px) 0;
+}
+
+.gi-menu-band {
+  background: var(--gi-sand);
+  color: var(--gi-ink-dark);
+}
+
+.gi-band-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: clamp(20px, 4vw, 56px);
+  align-items: end;
+  margin-bottom: clamp(32px, 4.5vw, 52px);
+}
+
+.gi-band-head h2,
+.gi-split h2 {
+  margin: 0;
+  font-family: var(--gi-display);
+  font-weight: 400;
+  font-size: var(--gi-text-heading);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.gi-band-intro {
+  margin: 0;
+  font-size: var(--gi-text-body);
+  line-height: 1.62;
+  color: var(--gi-muted-dark);
+  max-width: 50ch;
+}
+
+.gi-menu-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: clamp(32px, 5vw, 68px);
+  align-items: start;
+}
+
+.gi-menu-body {
+  min-width: 0;
+}
+
+.gi-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px;
+  background: #eae4d9;
+  border: 1px solid var(--gi-line-light);
+  border-radius: 4px;
+  margin-bottom: 26px;
+  max-width: 100%;
+}
+
+.gi-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--gi-muted-dark);
+  font-family: var(--gi-sans);
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gi-tab:hover {
+  color: var(--gi-ink-dark);
+}
+
+.gi-tab.is-active {
+  background: var(--gi-dark);
+  color: var(--gi-ink-light);
+}
+
+.gi-panel[hidden] {
+  display: none;
+}
+
+.gi-panel-summary {
+  margin: 0 0 24px;
+  font-size: var(--gi-text-body);
+  line-height: 1.62;
+  color: var(--gi-ink-dark);
+  max-width: 54ch;
+}
+
+.gi-ledger {
+  margin: 0;
+  border-top: 1px solid var(--gi-line-light);
+}
+
+.gi-ledger--dark {
+  border-top-color: var(--gi-line-dark);
+}
+
+.gi-ledger-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 185px) minmax(0, 1fr);
+  gap: 8px 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--gi-line-light);
+  align-items: baseline;
+}
+
+.gi-ledger--dark .gi-ledger-row {
+  border-bottom-color: rgba(248, 242, 232, 0.14);
+}
+
+.gi-ledger dt {
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  color: var(--gi-accent-deep);
+}
+
+.gi-ledger--dark dt {
+  color: var(--gi-ink-light);
+}
+
+.gi-ledger dd {
+  margin: 0;
+  font-size: var(--gi-text-body);
+  line-height: 1.55;
+  color: var(--gi-ink-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.gi-ledger--dark dd {
+  color: var(--gi-muted-light);
+}
+
+.gi-hours-row {
+  grid-template-columns: minmax(120px, 1fr) auto;
+  padding: 12px 0;
+}
+
+.gi-hours-row dd {
+  text-align: right;
+  color: var(--gi-accent);
+  font-weight: 600;
+}
+
+.gi-menu-foot {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+body.concept-gurunewry button.gi-sheet-trigger {
+  background: var(--gi-dark);
+  color: var(--gi-ink-light);
+  border: 1px solid var(--gi-dark);
+  border-radius: 3px;
+  padding: 11px 18px;
+  font-family: var(--gi-sans);
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.concept-gurunewry button.gi-sheet-trigger:hover {
+  background: #271e30;
+}
+
+.gi-text-link {
+  color: var(--gi-accent-deep);
+  text-decoration: none;
+  font-size: var(--gi-text-sm);
+  font-weight: 700;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--gi-accent-deep);
+}
+
+.gi-text-link:hover {
+  color: var(--gi-ink-dark);
+  border-bottom-color: var(--gi-ink-dark);
+}
+
+.gi-plate {
+  margin: 0;
+  min-width: 0;
+}
+
+.gi-plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+
+.gi-plate figcaption {
+  margin-top: 12px;
+  font-size: var(--gi-text-sm);
+  line-height: 1.45;
+  color: var(--gi-muted-dark);
+}
+
+/* Deep Aubergine 7-Day Hours & Table Enquiry */
+.gi-hours-band {
+  background: var(--gi-dark);
+  color: var(--gi-ink-light);
+  border-block: 1px solid var(--gi-line-dark);
+}
+
+.gi-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: clamp(36px, 5.5vw, 76px);
+  align-items: start;
+}
+
+.gi-split-col {
+  min-width: 0;
+}
+
+.gi-split h2 {
+  margin-bottom: 18px;
+}
+
+.gi-body {
+  margin: 0 0 26px;
+  font-size: var(--gi-text-body);
+  line-height: 1.62;
+  max-width: 50ch;
+}
+
+.gi-body--dark {
+  color: var(--gi-muted-light);
+}
+
+.gi-body--dark a {
+  color: var(--gi-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gi-body--dark a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gi-voucher-line {
+  margin: 22px 0 0;
+  font-size: var(--gi-text-sm);
+  color: var(--gi-muted-light);
+}
+
+.gi-voucher-line a {
+  color: var(--gi-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gi-voucher-line a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gi-form {
+  min-width: 0;
+  background: var(--gi-dark-panel);
+  border: 1px solid var(--gi-line-dark);
+  border-radius: 4px;
+  padding: clamp(24px, 3.6vw, 38px);
+  display: grid;
+  gap: 18px;
+}
+
+.gi-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gi-form label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.gi-form label > span {
+  font-size: var(--gi-text-sm);
+  font-weight: 600;
+  color: var(--gi-ink-light);
+}
+
+.gi-form input,
+.gi-form select,
+.gi-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid rgba(248, 242, 232, 0.24);
+  border-radius: 3px;
+  background: var(--gi-dark);
+  color: var(--gi-ink-light);
+  font-family: var(--gi-sans);
+  font-size: var(--gi-text-body);
+  line-height: 1.4;
+}
+
+.gi-form input::placeholder,
+.gi-form textarea::placeholder {
+  color: rgba(248, 242, 232, 0.5);
+}
+
+/* Warm Sandstone Location Map Band */
+.gi-map-band {
+  background: var(--gi-sand);
+}
+
+/* Footer */
+.gi-footer {
+  background: #0d0911;
+  border-top: 1px solid var(--gi-line-dark);
+  padding: 48px 0;
+  color: var(--gi-ink-light);
+}
+
+.gi-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.gi-footer strong {
+  font-family: var(--gi-display);
+  font-size: var(--gi-text-body);
+  font-weight: 400;
+  color: var(--gi-accent);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.gi-footer p {
+  margin: 0;
+  font-size: var(--gi-text-sm);
+  color: var(--gi-muted-light);
+}
+
+.gi-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.gi-footer-links a {
+  color: var(--gi-accent);
+  text-decoration: none;
+  font-size: var(--gi-text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.gi-footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 @media (max-width: 900px) {
-  .gi-header-inner { grid-template-columns: auto 1fr; }
-  .gi-nav, .gi-header-tel { display: none; }
-  .gi-brand { justify-self: start; }
-  .gi-hero-frame, .gi-split { grid-template-columns: minmax(0, 1fr); }
+  .gi-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gi-nav,
+  .gi-header-tel {
+    display: none;
+  }
+
+  .gi-band-head,
+  .gi-menu-stage,
+  .gi-split,
+  .gi-form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gi-ledger-row:not(.gi-hours-row) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .gi-tabs {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 6px;
+  }
+
+  .gi-tab {
+    flex: 1 1 auto;
+    padding: 9px 12px;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gi-header,
+  .gi-nav a,
+  .gi-header-cta,
+  .gi-btn,
+  .gi-tab,
+  body.concept-gurunewry button.gi-sheet-trigger {
+    transition: none;
+  }
 }

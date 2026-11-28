@@ -5,8 +5,8 @@ import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
 /* Carrive Grove Garden Centre — 79 Carrive Road, Forkhill, Newry BT35 9TF.
-   Verified live 26 Nov 2026: carrivegrovegardencentre.co.uk misspells "Specimin Hedging" in main nav
-   and uses an ageing text-heavy WordPress layout. 8 miles from Newry, 5 miles from Dundalk.
+   Verified live 26 Nov 2026: carrivegrovegardencentre.co.uk.
+   8 miles from Newry, 5 miles from Dundalk.
    Phone: 028 3088 9188 / Mobile: 07752 719 472. */
 const phone = "028 3088 9188";
 const phoneHref = "tel:+442830889188";
@@ -18,134 +18,280 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Carrive+Grove+
 const stockGroups = [
   {
     id: "hedging",
-    label: "Hedging & Trees",
+    label: "Hedging and trees",
     items: [
-      { name: "Bare-Root Hedging", note: "Seasonal bundles of native hawthorn, beech, laurel and hornbeam for rural boundaries", meta: "Seasonal stock" },
-      { name: "Specimen Hedging & Trees", note: "Established root-balled and container-grown hedging for instant screening", meta: "In stock" },
-      { name: "Fruit Trees & Bushes", note: "Apple, pear, plum and soft-fruit bushes selected for County Down & South Armagh soils", meta: "Orchard range" },
+      {
+        name: "Bare-root hedging",
+        note: "Seasonal bundles of native hawthorn, beech, laurel, and hornbeam for rural boundaries",
+        meta: "Seasonal stock",
+      },
+      {
+        name: "Specimen hedging and trees",
+        note: "Established root-balled and container-grown hedging for instant screening",
+        meta: "In stock",
+      },
+      {
+        name: "Fruit trees and bushes",
+        note: "Apple, pear, plum, and soft-fruit bushes selected for County Down and South Armagh soils",
+        meta: "Orchard range",
+      },
     ],
   },
   {
     id: "garden",
-    label: "Topiary, Pots & Furniture",
+    label: "Topiary, pots, and furniture",
     items: [
-      { name: "Evergreen Topiary & Shrubs", note: "Shaped bays, boxwood, ornamental shrubs and hardy perennials", meta: "Year-round" },
-      { name: "Pots, Window Boxes & Ornaments", note: "Frost-proof earthenware planters, stoneware urns and outdoor garden furniture", meta: "Nursery yard" },
+      {
+        name: "Evergreen topiary and shrubs",
+        note: "Shaped bays, boxwood, ornamental shrubs, and hardy perennials",
+        meta: "Year-round",
+      },
+      {
+        name: "Pots, window boxes, and ornaments",
+        note: "Frost-proof earthenware planters, stoneware urns, and outdoor timber garden furniture",
+        meta: "Nursery yard",
+      },
+    ],
+  },
+];
+
+const stockTabs = [
+  {
+    id: "hedging",
+    label: "Hedging",
+    summary: "From newly built rural lanes needing 200 bare-root beech plants to established specimen hedging for immediate screening.",
+    rows: [
+      { label: "Bare-root bundles", value: "Native hawthorn, beech, laurel, and hornbeam lifted for rural boundaries" },
+      { label: "Specimen screening", value: "Established root-balled and container-grown hedging ready to plant" },
+      { label: "Collection", value: "Call ahead so bundles and heights are set aside for your trailer" },
+    ],
+  },
+  {
+    id: "trees",
+    label: "Trees",
+    summary: "Hardy eating and cooking fruit trees alongside crisp evergreen topiary and container-grown specimen trees.",
+    rows: [
+      { label: "Fruit trees", value: "Apple, pear, plum, and soft-fruit bushes suited to local soils" },
+      { label: "Evergreen topiary", value: "Shaped bays, boxwood, ornamental shrubs, and hardy perennials" },
+      { label: "Yard guidance", value: "Honest planting and spacing advice from the Carrive Road team" },
+    ],
+  },
+  {
+    id: "planters",
+    label: "Planters",
+    summary: "Heavyweight frost-proof planters, window boxes, garden ornaments, and outdoor timber furniture ready for the patio.",
+    rows: [
+      { label: "Planters and urns", value: "Frost-proof earthenware planters and stoneware urns" },
+      { label: "Window boxes", value: "Seasonal planted and unplanted troughs for sills and gates" },
+      { label: "Garden furniture", value: "Outdoor timber seating and ornaments held in the Forkhill yard" },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Carrive Grove Garden Centre — Forkhill, Ring of Gullion"
+  title="Carrive Grove Garden Centre, Forkhill, Ring of Gullion"
   slug="carrive-grove-garden"
   bodyClass="concept-page concept-carrivegrove"
   businessName="Carrive Grove Garden Centre"
   town="Forkhill"
   bannerNote="Imagery comprises indicative Ring of Gullion plant nursery and hedging visualisations."
 >
-  <header class="cg-header">
+  <header class="cg-header" data-cg-header>
     <div class="cg-header-inner">
-      <a class="cg-brand" href="#top">Carrive Grove Garden Centre</a>
+      <a class="cg-brand" href="#top">Carrive Grove</a>
       <nav class="cg-nav" aria-label="Primary">
-        <a href="#stock">Hedging &amp; Trees</a>
-        <a href="#yard">The Nursery Yard</a>
+        <a href="#stock">Hedging and trees</a>
+        <a href="#yard">Yard advice</a>
         <a href="#location">Forkhill</a>
       </nav>
       <div class="cg-header-actions">
         <a class="cg-header-tel" href={phoneHref}>{phone}</a>
-        <a class="cg-header-cta" href={mobileHref}>Call yard</a>
+        <a class="cg-header-cta" href={phoneHref}>Call yard</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="cg-hero" aria-labelledby="cg-hero-title">
-      <div class="cg-wrap cg-hero-gallery">
-        <figure class="cg-hero-plate">
-          <picture>
-            <source srcset="/media/concepts/carrive-grove-garden/carrive-grove-nursery-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-nursery-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 52vw" type="image/webp" />
-            <img src="/media/concepts/carrive-grove-garden/carrive-grove-nursery.jpg" alt="Independent plant nursery in the Ring of Gullion countryside with specimen hedging, terracotta pots and green hills" width="1408" height="768" loading="eager" />
-          </picture>
-          <figcaption>Forkhill nursery yard &amp; hedging beds · indicative visualisation.</figcaption>
-        </figure>
+      <span class="cg-hero-sentinel" aria-hidden="true" data-cg-sentinel></span>
+      <div class="cg-hero-media">
+        <picture>
+          <source
+            srcset="/media/concepts/carrive-grove-garden/carrive-grove-nursery-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-nursery-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/carrive-grove-garden/carrive-grove-nursery.jpg"
+            alt="Independent plant nursery in the Ring of Gullion countryside with specimen hedging, terracotta pots, and green hills"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+        <div class="cg-hero-scrim" aria-hidden="true"></div>
+      </div>
 
+      <div class="cg-wrap cg-hero-inner">
         <div class="cg-hero-copy">
-          <p class="cg-eyebrow">79 Carrive Road · Forkhill</p>
-          <h1 id="cg-hero-title">Hardy hedging, fruit trees &amp; <em>honest advice.</em></h1>
-          <p class="cg-lead">
-            Bare-root and specimen hedging, fruit bushes, topiary and frost-proof planters chosen
-            for Ring of Gullion and County Down soils.
+          <h1 id="cg-hero-title">Hardy hedging, fruit trees, and honest advice.</h1>
+          <p class="cg-hero-lead">
+            Bare-root hedging, specimen trees, and frost-proof planters grown for Ring of Gullion and County Down soils.
           </p>
-          <div class="cg-actions">
-            <a class="cg-btn cg-btn--primary" href={mobileHref}>Call yard · {mobile}</a>
-            <SpecimenSheet
-              id="cg-stock-sheet"
-              triggerLabel="Browse stock guide"
-              kicker="Carrive Grove · 79 Carrive Road, Forkhill"
-              title="Hedging, Fruit Trees, Topiary & Planters"
-              subtitle="Ring 028 3088 9188 or 07752 719 472 to check current bare-root & specimen stock."
-              groups={stockGroups}
-              ctaLabel={`Call Nursery · ${phone}`}
-              ctaHref={phoneHref}
-              secondaryLabel={`Mobile · ${mobile}`}
-              secondaryHref={mobileHref}
-              buttonClass="cg-ghost-link"
-            />
-          </div>
-          <p class="cg-distance">8 miles from Newry · 5 miles from Dundalk</p>
+          <a class="cg-btn cg-btn--primary" href={phoneHref}>Call the yard</a>
+        </div>
+        <div class="cg-hero-foot">
+          <p class="cg-hero-caption">Forkhill nursery yard and hedging beds. Indicative visualisation.</p>
         </div>
       </div>
     </section>
 
     <section class="cg-section cg-stock" id="stock" aria-labelledby="cg-st-title">
       <div class="cg-wrap">
-        <div class="cg-section-head">
-          <p class="cg-kicker">Grown for local soil</p>
-          <h2 id="cg-st-title">Three things we are known for on Carrive Road.</h2>
+        <div class="cg-stock-head">
+          <h2 id="cg-st-title">Grown for local soil on Carrive Road.</h2>
+          <p class="cg-stock-intro">
+            Browse bare-root hedging, orchard stock, and frost-proof planters held in our Forkhill yard, eight miles from Newry and five miles from Dundalk.
+          </p>
         </div>
-        <div class="cg-three">
-          <article>
-            <span>01</span>
-            <h3>Bare-root &amp; specimen hedging</h3>
-            <p>From newly built rural lanes needing 200 bare-root beech plants to mature specimen hedging for immediate screening.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Fruit trees, bushes &amp; topiary</h3>
-            <p>Hardy eating and cooking fruit trees alongside crisp evergreen topiary and container-grown specimen trees.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Pots, window boxes &amp; furniture</h3>
-            <p>Heavyweight planters, window boxes, garden ornaments and timber furniture ready for the patio.</p>
-          </article>
+
+        <div class="cg-stock-stage" data-cg-tabs>
+          <div class="cg-stock-body">
+            <div class="cg-tabs" role="tablist" aria-label="Nursery stock range">
+              {stockTabs.map((tab, idx) => (
+                <button
+                  type="button"
+                  role="tab"
+                  id={`cg-tab-${tab.id}`}
+                  aria-selected={idx === 0 ? "true" : "false"}
+                  aria-controls={`cg-panel-${tab.id}`}
+                  class:list={["cg-tab", idx === 0 && "is-active"]}
+                  data-cg-tab={tab.id}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {stockTabs.map((tab, idx) => (
+              <div
+                class="cg-panel"
+                role="tabpanel"
+                id={`cg-panel-${tab.id}`}
+                aria-labelledby={`cg-tab-${tab.id}`}
+                data-cg-panel={tab.id}
+                hidden={idx !== 0}
+              >
+                <p class="cg-panel-summary">{tab.summary}</p>
+                <dl class="cg-ledger cg-ledger--dark">
+                  {tab.rows.map((row) => (
+                    <div class="cg-ledger-row">
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+
+            <div class="cg-stock-foot">
+              <SpecimenSheet
+                id="cg-stock-sheet"
+                triggerLabel="Open full stock guide"
+                kicker="Carrive Grove, 79 Carrive Road, Forkhill"
+                title="Hedging, fruit trees, topiary, and planters"
+                subtitle="Ring 028 3088 9188 or 07752 719 472 to check current bare-root and specimen stock."
+                groups={stockGroups}
+                ctaLabel={`Call nursery: ${phone}`}
+                ctaHref={phoneHref}
+                secondaryLabel={`Mobile: ${mobile}`}
+                secondaryHref={mobileHref}
+                buttonClass="cg-sheet-trigger"
+              />
+            </div>
+          </div>
+
+          <figure class="cg-plate">
+            <picture>
+              <source
+                srcset="/media/concepts/carrive-grove-garden/carrive-grove-hedging-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-hedging-1265.webp 1265w"
+                sizes="(max-width: 900px) 100vw, 46vw"
+                type="image/webp"
+              />
+              <img
+                src="/media/concepts/carrive-grove-garden/carrive-grove-hedging.jpg"
+                alt="Pruned evergreen topiary, hessian-wrapped bare-root fruit trees, and earthenware planters along a nursery path"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Evergreen topiary and bare-root fruit stock. Indicative visualisation.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
     <section class="cg-section cg-yard" id="yard" aria-labelledby="cg-yard-title">
       <div class="cg-wrap cg-split">
-        <div>
-          <p class="cg-kicker">Direct nursery advice</p>
-          <h2 id="cg-yard-title">Checking heights or how many plants per metre?</h2>
+        <div class="cg-split-col">
+          <h2 id="cg-yard-title">Checking heights or plants per metre?</h2>
           <p class="cg-body">
             Give us a quick ring before you drive over with a trailer. We will confirm exact heights
             in stock and set aside bare-root bundles or specimen hedging ready for collection.
           </p>
-          <dl class="cg-contact-list">
-            <div><dt>Garden Centre Desk</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Direct Mobile</dt><dd><a href={mobileHref}>{mobile}</a></dd></div>
-            <div><dt>Address</dt><dd>79 Carrive Road, Forkhill, BT35 9TF</dd></div>
+          <dl class="cg-ledger cg-ledger--light">
+            <div class="cg-ledger-row">
+              <dt>Garden centre desk</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div class="cg-ledger-row">
+              <dt>Direct mobile</dt>
+              <dd><a href={mobileHref}>{mobile}</a></dd>
+            </div>
+            <div class="cg-ledger-row">
+              <dt>Address</dt>
+              <dd>79 Carrive Road, Forkhill, BT35 9TF</dd>
+            </div>
+            <div class="cg-ledger-row">
+              <dt>Distance</dt>
+              <dd>8 miles from Newry, 5 miles from Dundalk</dd>
+            </div>
           </dl>
         </div>
-        <figure class="cg-plate">
-          <picture>
-            <source srcset="/media/concepts/carrive-grove-garden/carrive-grove-hedging-640.webp 640w, /media/concepts/carrive-grove-garden/carrive-grove-hedging-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/carrive-grove-garden/carrive-grove-hedging.jpg" alt="Pruned evergreen topiary, hessian-wrapped bare-root fruit trees and earthenware planters along a nursery path" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Evergreen topiary &amp; bare-root fruit stock · indicative visualisation.</figcaption>
-        </figure>
+
+        <form class="cg-form" data-cg-form>
+          <div class="cg-form-row">
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+            </label>
+            <label>
+              <span>Telephone</span>
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+            </label>
+          </div>
+          <label>
+            <span>Stock enquiry</span>
+            <select name="category">
+              <option value="Bare-root hedging">Bare-root hedging</option>
+              <option value="Specimen hedging and trees">Specimen hedging and trees</option>
+              <option value="Fruit trees and bushes">Fruit trees and bushes</option>
+              <option value="Evergreen topiary and shrubs">Evergreen topiary and shrubs</option>
+              <option value="Planters, window boxes, and furniture">Planters, window boxes, and furniture</option>
+            </select>
+          </label>
+          <label>
+            <span>Hedge length, heights, or collection notes</span>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Species, approximate metres to plant, or when you plan to visit Carrive Road..."
+            ></textarea>
+          </label>
+          <button class="cg-btn cg-btn--primary" type="submit">Prepare yard enquiry</button>
+        </form>
       </div>
     </section>
 
@@ -153,8 +299,8 @@ const stockGroups = [
       <div class="cg-wrap">
         <LocalAreaMap
           id="cg-map"
-          kicker="79 Carrive Road · Ring of Gullion"
-          businessName="Carrive Grove Garden Centre"
+          kicker=""
+          businessName="Carrive Grove"
           address="79 Carrive Road, Forkhill, Newry, BT35 9TF"
           lon={-6.480479}
           lat={54.077829}
@@ -183,4 +329,74 @@ const stockGroups = [
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const header = document.querySelector("[data-cg-header]");
+      const sentinel = document.querySelector("[data-cg-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tabRoot = document.querySelector("[data-cg-tabs]");
+      if (tabRoot) {
+        const tabs = [...tabRoot.querySelectorAll("[data-cg-tab]")];
+        const panels = [...tabRoot.querySelectorAll("[data-cg-panel]")];
+        const selectTab = (id) => {
+          tabs.forEach((t) => {
+            const active = t.getAttribute("data-cg-tab") === id;
+            t.classList.toggle("is-active", active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          panels.forEach((p) => {
+            p.hidden = p.getAttribute("data-cg-panel") !== id;
+          });
+        };
+        tabs.forEach((btn, idx) => {
+          btn.addEventListener("click", () => selectTab(btn.getAttribute("data-cg-tab")));
+          btn.addEventListener("keydown", (e) => {
+            if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+            e.preventDefault();
+            const next = e.key === "ArrowRight" ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+            tabs[next].focus();
+            selectTab(tabs[next].getAttribute("data-cg-tab"));
+          });
+        });
+      }
+
+      const form = document.querySelector("[data-cg-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Carrive Grove yard enquiry: ${fd.get("category")}`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Stock category: ${fd.get("category")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "Carrive Grove Garden Centre (028 3088 9188)",
+              subject,
+              body,
+              url: "tel:+442830889188",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = "tel:+442830889188";
+          }
+        });
+      }
+    })();
+  </script>
 </ConceptLayout>
