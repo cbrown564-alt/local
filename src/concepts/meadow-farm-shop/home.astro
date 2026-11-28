@@ -4,7 +4,7 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
-/* Meadow Farm Shop — 123 Downpatrick Road, Crossgar / Downpatrick BT30 9EH.
+/* Meadow Farm Shop, 123 Downpatrick Road, Crossgar / Downpatrick BT30 9EH.
    Verified live 27 Nov 2026: meadowfarmpotatoes.com/farm-shop blocks automated requests and link previews
    behind a hard Cloudflare 403 challenge.
    Contacts: 028 4483 1543, 123 Downpatrick Road, Crossgar / Downpatrick BT30 9EH. */
@@ -13,170 +13,308 @@ const phoneHref = "tel:+442844831543";
 const siteHref = "https://meadowfarmpotatoes.com/farm-shop";
 const mapsHref = "https://www.google.com/maps/search/?api=1&query=Meadow+Farm+Shop+123+Downpatrick+Road+Crossgar+BT30+9EH";
 
+const counterTabs = [
+  {
+    id: "farm-shop",
+    label: "Farm shop",
+    intro: "Stocked daily on the Downpatrick Road with County Down soil produce and regional Northern Ireland makers.",
+    items: [
+      {
+        title: "Meadow Farm County Down potatoes",
+        detail: "Freshly lifted seasonal varieties grown in County Down soil and bagged straight from the farm.",
+        meta: "Grown on site",
+      },
+      {
+        title: "Seasonal vegetables and fruit",
+        detail: "Crisp greens, root vegetables, orchard fruit and free-range local eggs stocked every morning.",
+        meta: "Fresh daily",
+      },
+      {
+        title: "Artisan Northern Ireland larder",
+        detail: "Small-batch jams, chutneys, honey, home-baked traybakes and farm-reared meats.",
+        meta: "Local makers",
+      },
+    ],
+  },
+  {
+    id: "tearoom",
+    label: "Tearoom",
+    intro: "Settle beside the window overlooking Mid-Down fields for home baking and proper pots of tea.",
+    items: [
+      {
+        title: "Warm buttermilk scones and baking",
+        detail: "Freshly baked scones, wheaten bread and cakes served warm with butter, cream and berry jam.",
+        meta: "Baked daily",
+      },
+      {
+        title: "Light farm lunches and soup",
+        detail: "Hearty seasonal vegetable soups and fresh sandwiches overlooking the County Down countryside.",
+        meta: "Tearoom tables",
+      },
+      {
+        title: "Easy A7 roadside stop",
+        detail: "Generous off-road parking between Crossgar and Downpatrick for morning coffee or a relaxed lunch.",
+        meta: "Free parking",
+      },
+    ],
+  },
+  {
+    id: "seasonal-harvest",
+    label: "Seasonal harvest",
+    intro: "From floury maincrops to bespoke local hampers, our counters follow the County Down growing calendar.",
+    items: [
+      {
+        title: "Floury maincrops and baby potatoes",
+        detail: "Seasonal varieties lifted to match the time of year, ready for roasting, mashing or boiling.",
+        meta: "Lifted in season",
+      },
+      {
+        title: "Regional gift hampers",
+        detail: "Packed to order with Northern Ireland preserves, chutneys, honey and home-baked treats.",
+        meta: "Call to reserve",
+      },
+      {
+        title: "Direct farm desk advice",
+        detail: "Ring 028 4483 1543 ahead of your visit to check current potato lifts or hold a hamper.",
+        meta: "028 4483 1543",
+      },
+    ],
+  },
+];
+
 const farmGroups = [
   {
     id: "produce",
-    label: "Home-Grown Potatoes & Local Produce",
+    label: "Home-Grown Potatoes and Local Produce",
     items: [
       { name: "Meadow Farm County Down Potatoes", note: "Freshly lifted seasonal varieties grown in County Down soil, bagged straight from the farm", meta: "Grown on site" },
-      { name: "Seasonal Vegetables & Fruit", note: "Crisp greens, root vegetables, orchard fruit and free-range local eggs stocked daily", meta: "Fresh daily" },
+      { name: "Seasonal Vegetables and Fruit", note: "Crisp greens, root vegetables, orchard fruit and free-range local eggs stocked daily", meta: "Fresh daily" },
       { name: "Artisan Northern Ireland Larder", note: "Local chutneys, preserves, honey, home-baked traybakes and farm-reared meats", meta: "Downpatrick Road" },
     ],
   },
   {
     id: "tearoom",
-    label: "Country Tearoom & Bakery",
+    label: "Country Tearoom and Bakery",
     items: [
-      { name: "Freshly Baked Scones & Home Baking", note: "Warm buttermilk scones, wheaten bread and cakes served with proper tea and coffee", meta: "Tearoom tables" },
-      { name: "Light Farm Lunches & Soup", note: "Hearty seasonal vegetable soups and sandwiches overlooking the County Down countryside", meta: "Easy roadside stop" },
+      { name: "Freshly Baked Scones and Home Baking", note: "Warm buttermilk scones, wheaten bread and cakes served with proper tea and coffee", meta: "Tearoom tables" },
+      { name: "Light Farm Lunches and Soup", note: "Hearty seasonal vegetable soups and sandwiches overlooking the County Down countryside", meta: "Easy roadside stop" },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Meadow Farm Shop — Home-Grown Potatoes, Local Produce & Tearoom, Crossgar"
+  title="Meadow Farm Shop | Potatoes, Local Produce and Tearoom, Crossgar"
   slug="meadow-farm-shop"
   bodyClass="concept-page concept-meadowfarm"
   businessName="Meadow Farm Shop"
   town="Crossgar"
   bannerNote="Imagery comprises indicative County Down farm shop harvest and countryside tearoom visualisations."
 >
-  <header class="mf-header" data-mf-header>
-    <div class="mf-header-inner">
-      <a class="mf-brand" href="#top">
-        <span class="mf-mark" aria-hidden="true"></span>
-        <span>Meadow Farm Shop</span>
-      </a>
+  <header class="mfs-header" data-mfs-header>
+    <div class="mfs-header-inner">
+      <a class="mfs-brand" href="#top">Meadow Farm Shop</a>
 
-      <nav class="mf-nav" aria-label="Primary">
-        <a class="mf-nav-link" href="#produce">Farm Shop</a>
-        <a class="mf-nav-link" href="#tearoom">Tearoom</a>
-        <a class="mf-nav-link" href="#location">Crossgar</a>
+      <nav class="mfs-nav" aria-label="Primary">
+        <a class="mfs-nav-link" href="#produce">Farm shop</a>
+        <a class="mfs-nav-link" href="#tearoom" data-mfs-jump="tearoom">Tearoom</a>
+        <a class="mfs-nav-link" href="#enquire">Enquire</a>
+        <a class="mfs-nav-link" href="#location">Crossgar</a>
       </nav>
 
-      <div class="mf-header-actions">
-        <a class="mf-header-tel" href={phoneHref}>{phone}</a>
-        <a class="mf-pill-cta" href={mapsHref} target="_blank" rel="noopener noreferrer">Directions</a>
+      <div class="mfs-header-actions">
+        <a class="mfs-header-tel" href={phoneHref}>{phone}</a>
+        <a class="mfs-header-cta" href={mapsHref} target="_blank" rel="noopener noreferrer">Directions</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="mf-hero" aria-labelledby="mf-hero-title">
-      <figure class="mf-hero-media">
+    <section class="mfs-hero" aria-labelledby="mfs-hero-title">
+      <span class="mfs-hero-sentinel" aria-hidden="true" data-mfs-sentinel></span>
+      <div class="mfs-hero-media">
         <picture>
           <source srcset="/media/concepts/meadow-farm-shop/meadow-farm-harvest-640.webp 640w, /media/concepts/meadow-farm-shop/meadow-farm-harvest-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/meadow-farm-shop/meadow-farm-harvest.jpg" alt="Sunlit County Down farm shop wooden harvest crates overflowing with brushed potatoes, heirloom carrots, fresh greens and preserve jars" width="1408" height="768" loading="eager" />
+          <img
+            src="/media/concepts/meadow-farm-shop/meadow-farm-harvest.jpg"
+            alt="Sunlit County Down farm shop wooden harvest crates overflowing with brushed potatoes, heirloom carrots, fresh greens and preserve jars"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
         </picture>
-        <div class="mf-hero-scrim" aria-hidden="true"></div>
-      </figure>
+        <div class="mfs-hero-scrim" aria-hidden="true"></div>
+      </div>
 
-      <div class="mf-wrap mf-hero-stage">
-        <div class="mf-hero-headline">
-          <h1 id="mf-hero-title" class="mf-reveal mf-reveal-1">
-            County Down harvest<br /><em>and a warm tearoom.</em>
+      <div class="mfs-wrap mfs-hero-stage">
+        <div class="mfs-hero-lockup">
+          <h1 id="mfs-hero-title" class="mfs-reveal mfs-reveal-1">
+            County Down harvest and a warm tearoom.
           </h1>
-        </div>
-
-        <div class="mf-hero-foot">
-          <div class="mf-hero-copy mf-reveal mf-reveal-2">
-            <p>
-              Home-grown Meadow Farm potatoes, seasonal vegetables, local larder produce and warm
-              scones on the Downpatrick Road.
-            </p>
-            <div class="mf-hero-actions">
-              <a class="mf-arrow-btn" href={mapsHref} target="_blank" rel="noopener noreferrer">
-                <span class="mf-arrow-label">Get directions</span>
-                <span class="mf-arrow-circle" aria-hidden="true">
-                  <svg class="mf-arrow mf-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  <svg class="mf-arrow mf-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </span>
+          <div class="mfs-hero-foot mfs-reveal mfs-reveal-2">
+            <div class="mfs-hero-copy">
+              <p>
+                Home-grown County Down potatoes, local larder produce and warm scones on the Downpatrick Road.
+              </p>
+              <a class="mfs-primary-btn" href={mapsHref} target="_blank" rel="noopener noreferrer">
+                Get directions
               </a>
-              <SpecimenSheet
-                id="mf-shop-sheet"
-                triggerLabel="What's in the farm shop"
-                kicker="Meadow Farm Shop · 123 Downpatrick Road, Crossgar"
-                title="Potatoes, Local Larder & Tearoom"
-                subtitle="Easy parking straight off the Downpatrick Road — ring 028 4483 1543 for seasonal potato varieties or hampers."
-                groups={farmGroups}
-                ctaLabel={`Call ${phone}`}
-                ctaHref={phoneHref}
-                secondaryLabel="Google Maps ↗"
-                secondaryHref={mapsHref}
-                buttonClass="mf-ghost-link"
-              />
             </div>
-          </div>
-
-          <div class="mf-hero-meta mf-reveal mf-reveal-3">
-            <a class="mf-scroll-cue" href="#produce">
-              <span>Scroll down</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-            <p class="mf-visual-note">Seasonal farm counter · indicative visualisation</p>
+            <p class="mfs-hero-caption">Indicative harvest counter visualisation.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mf-section mf-produce" id="produce" aria-labelledby="mf-p-title">
-      <div class="mf-wrap">
-        <div class="mf-section-head">
-          <p class="mf-eyebrow">123 Downpatrick Road · Crossgar</p>
-          <h2 id="mf-p-title">Lifted from County Down soil, stocked fresh every day.</h2>
+    <section class="mfs-band mfs-band--linen" id="produce" aria-labelledby="mfs-p-title">
+      <div class="mfs-wrap mfs-split">
+        <div class="mfs-col">
+          <h2 id="mfs-p-title">Lifted from County Down soil, stocked fresh every day.</h2>
+
+          <div class="mfs-tabs" role="tablist" aria-label="Farm shop, tearoom and seasonal harvest">
+            {counterTabs.map((tab, idx) => (
+              <button
+                type="button"
+                role="tab"
+                id={`mfs-tab-${tab.id}`}
+                aria-selected={idx === 0 ? "true" : "false"}
+                aria-controls={`mfs-panel-${tab.id}`}
+                tabindex={idx === 0 ? 0 : -1}
+                class:list={["mfs-tab", idx === 0 && "is-active"]}
+                data-mfs-tab={tab.id}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {counterTabs.map((tab, idx) => (
+            <div
+              id={`mfs-panel-${tab.id}`}
+              role="tabpanel"
+              aria-labelledby={`mfs-tab-${tab.id}`}
+              hidden={idx !== 0}
+              class="mfs-panel"
+              data-mfs-panel={tab.id}
+            >
+              <p class="mfs-panel-intro">{tab.intro}</p>
+              <ul class="mfs-ledger">
+                {tab.items.map((item) => (
+                  <li class="mfs-ledger-row">
+                    <div class="mfs-ledger-main">
+                      <h3>{item.title}</h3>
+                      <p>{item.detail}</p>
+                    </div>
+                    <span class="mfs-ledger-meta">{item.meta}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div class="mfs-sheet-row">
+            <SpecimenSheet
+              id="mf-shop-sheet"
+              triggerLabel="Browse shop and tearoom guide"
+              kicker="Meadow Farm Shop, Crossgar"
+              title="Potatoes, Local Larder and Tearoom"
+              subtitle="Easy parking off the Downpatrick Road. Ring 028 4483 1543 for seasonal potato varieties or hampers."
+              groups={farmGroups}
+              ctaLabel={`Call ${phone}`}
+              ctaHref={phoneHref}
+              secondaryLabel="Google Maps ↗"
+              secondaryHref={mapsHref}
+              buttonClass="mfs-sheet-trigger"
+            />
+          </div>
         </div>
 
-        <div class="mf-three">
-          <article>
-            <span class="mf-num">01</span>
-            <h3>Meadow Farm potatoes</h3>
-            <p>Grown right here in County Down and lifted in season — floury maincrops alongside crisp baby potatoes and root veg.</p>
-          </article>
-          <article>
-            <span class="mf-num">02</span>
-            <h3>Local artisan larder</h3>
-            <p>Free-range eggs, small-batch jams, chutneys, home-baked breads and gift hampers packed with regional produce.</p>
-          </article>
-          <article>
-            <span class="mf-num">03</span>
-            <h3>Easy roadside stop</h3>
-            <p>Generous off-road parking on the A7 between Crossgar and Downpatrick for weekly shopping or morning coffee.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <div class="mfs-col mfs-media-col" id="tearoom">
+          <figure class="mfs-plate">
+            <picture>
+              <source srcset="/media/concepts/meadow-farm-shop/meadow-farm-tearoom-640.webp 640w, /media/concepts/meadow-farm-shop/meadow-farm-tearoom-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 46vw" type="image/webp" />
+              <img
+                src="/media/concepts/meadow-farm-shop/meadow-farm-tearoom.jpg"
+                alt="Sunlit country farm tearoom table set with golden buttermilk scones, clotted cream, berry jam and stoneware teapot overlooking green County Down fields"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Indicative country tearoom visualisation.</figcaption>
+          </figure>
 
-    <section class="mf-section mf-tearoom" id="tearoom" aria-labelledby="mf-tr-title">
-      <div class="mf-wrap mf-split">
-        <figure class="mf-plate">
-          <picture>
-            <source srcset="/media/concepts/meadow-farm-shop/meadow-farm-tearoom-640.webp 640w, /media/concepts/meadow-farm-shop/meadow-farm-tearoom-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/meadow-farm-shop/meadow-farm-tearoom.jpg" alt="Sunlit country farm tearoom table set with golden buttermilk scones, clotted cream, berry jam and stoneware teapot overlooking green County Down fields" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Farm tearoom baking &amp; countryside views · indicative tearoom visualisation.</figcaption>
-        </figure>
-        <div>
-          <p class="mf-eyebrow">Country tearoom · Downpatrick Road</p>
-          <h2 id="mf-tr-title">Pause for warm scones, homemade soup and proper tea.</h2>
-          <p class="mf-body">
-            Make your farm-shop run a pleasure — settle beside the window for fresh home baking,
-            seasonal lunches and wide countryside views across Mid-Down.
-          </p>
-          <dl class="mf-contact-list">
-            <div><dt>Shop &amp; Tearoom</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Address</dt><dd>123 Downpatrick Road, Crossgar, BT30 9EH</dd></div>
-            <div><dt>Website</dt><dd><a href={siteHref} target="_blank" rel="noopener noreferrer">meadowfarmpotatoes.com ↗</a></dd></div>
+          <dl class="mfs-details">
+            <div>
+              <dt>Shop and tearoom</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>123 Downpatrick Road, Crossgar, BT30 9EH</dd>
+            </div>
+            <div>
+              <dt>Website</dt>
+              <dd><a href={siteHref} target="_blank" rel="noopener noreferrer">meadowfarmpotatoes.com ↗</a></dd>
+            </div>
           </dl>
         </div>
       </div>
     </section>
 
-    <section class="mf-section mf-map-band" id="location" aria-label="Crossgar Downpatrick Road map">
-      <div class="mf-wrap">
+    <section class="mfs-band mfs-band--olive" id="enquire" aria-labelledby="mfs-enq-title">
+      <div class="mfs-wrap mfs-split mfs-split--enquire">
+        <div class="mfs-col">
+          <h2 id="mfs-enq-title">Ask about potato varieties, hampers or tearoom visits.</h2>
+          <p class="mfs-dark-copy">
+            Planning a hamper order, checking which County Down potato varieties are freshly lifted,
+            or stopping in with family along the A7? Send a quick note below or call the shop
+            directly on <a href={phoneHref}>{phone}</a>.
+          </p>
+        </div>
+
+        <div class="mfs-col">
+          <form class="mfs-form" data-mfs-form>
+            <div class="mfs-form-row">
+              <label>
+                <span>Your name</span>
+                <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              </label>
+              <label>
+                <span>Telephone</span>
+                <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+              </label>
+            </div>
+            <div class="mfs-form-row">
+              <label>
+                <span>Enquiry topic</span>
+                <select name="topic">
+                  <option value="Seasonal potato varieties">Seasonal potato varieties</option>
+                  <option value="Local larder gift hamper">Local larder gift hamper</option>
+                  <option value="Tearoom group visit">Tearoom group visit</option>
+                  <option value="General farm shop question">General farm shop question</option>
+                </select>
+              </label>
+              <label>
+                <span>Preferred visit day</span>
+                <input name="day" type="text" placeholder="e.g. Friday morning" />
+              </label>
+            </div>
+            <label>
+              <span>Message</span>
+              <textarea name="notes" rows="3" placeholder="Let us know what produce, hamper items or table numbers you have in mind."></textarea>
+            </label>
+            <button class="mfs-submit-btn" type="submit">Send shop enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="mfs-band mfs-band--linen mfs-map-band" id="location" aria-label="Crossgar Downpatrick Road map">
+      <div class="mfs-wrap">
         <LocalAreaMap
           id="mf-map"
-          kicker="123 Downpatrick Road · A7 Corridor"
+          kicker=""
           businessName="Meadow Farm Shop"
           address="123 Downpatrick Road, Crossgar, Downpatrick, BT30 9EH"
           lon={-5.7401}
@@ -193,15 +331,15 @@ const farmGroups = [
     </section>
   </main>
 
-  <footer class="mf-footer">
-    <div class="mf-wrap mf-footer-inner">
+  <footer class="mfs-footer">
+    <div class="mfs-wrap mfs-footer-inner">
       <div>
-        <strong>Meadow Farm Shop</strong>
+        <strong class="mfs-footer-brand">Meadow Farm Shop</strong>
         <p>123 Downpatrick Road, Crossgar, Downpatrick, Co. Down, BT30 9EH</p>
       </div>
-      <div class="mf-footer-links">
+      <div class="mfs-footer-links">
         <a href={phoneHref}>{phone}</a>
-        <a href={siteHref} target="_blank" rel="noopener noreferrer">Official Website ↗</a>
+        <a href={siteHref} target="_blank" rel="noopener noreferrer">Official website ↗</a>
         <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
       </div>
     </div>
@@ -209,11 +347,81 @@ const farmGroups = [
 
   <script is:inline>
     (() => {
-      const header = document.querySelector("[data-mf-header]");
-      if (!header) return;
-      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
+      const header = document.querySelector("[data-mfs-header]");
+      const sentinel = document.querySelector("[data-mfs-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const tabs = [...document.querySelectorAll("[data-mfs-tab]")];
+      const panels = [...document.querySelectorAll("[data-mfs-panel]")];
+      const activateTab = (id, focusTab = false) => {
+        tabs.forEach((btn) => {
+          const active = btn.dataset.mfsTab === id;
+          btn.classList.toggle("is-active", active);
+          btn.setAttribute("aria-selected", active ? "true" : "false");
+          btn.tabIndex = active ? 0 : -1;
+          if (active && focusTab) btn.focus();
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.mfsPanel !== id;
+        });
+      };
+
+      tabs.forEach((btn, idx) => {
+        btn.addEventListener("click", () => activateTab(btn.dataset.mfsTab));
+        btn.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            activateTab(tabs[(idx + 1) % tabs.length].dataset.mfsTab, true);
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            activateTab(tabs[(idx - 1 + tabs.length) % tabs.length].dataset.mfsTab, true);
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-mfs-jump]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const id = link.dataset.mfsJump;
+          if (id) activateTab(id);
+        });
+      });
+
+      const form = document.querySelector("[data-mfs-form]");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Shop enquiry: ${fd.get("topic")} (${fd.get("name")})`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Topic: ${fd.get("topic")}`,
+            `Preferred day: ${fd.get("day") || "Flexible"}`,
+            `Message: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "Meadow Farm Shop (028 4483 1543)",
+              subject,
+              body,
+              url: "tel:+442844831543",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = "tel:+442844831543";
+          }
+        });
+      }
     })();
   </script>
 </ConceptLayout>

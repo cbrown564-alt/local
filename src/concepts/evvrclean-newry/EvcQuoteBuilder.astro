@@ -1,140 +1,141 @@
 ---
-/* Evvrclean Newry — Editorial Service Selector (Unslopped). */
+/* Evvrclean Newry — Deep Slate-Teal Contrast Stage with Commercial, Domestic & Laundrette Tabs. */
 const services = [
   {
     id: "commercial",
     label: "Commercial",
-    title: "Dependable scheduled cleaning for offices, retail units, clinics and business parks.",
+    optionValue: "Commercial Cleaning Contract",
+    title: "Dependable scheduled cleaning for offices, retail units and clinics.",
     points: [
-      "Early-morning, evening or weekend schedules built around your staff",
-      "Consistent local operatives covering Newry, Armagh Road and County Down",
-      "Clear monthly scope covering washrooms, glazing, floors and touchpoints",
+      {
+        label: "Flexible hours",
+        detail: "Early-morning, evening or weekend schedules built around your staff.",
+      },
+      {
+        label: "Local team",
+        detail: "Consistent operatives covering Newry, Armagh Road and County Down.",
+      },
+      {
+        label: "Site walkaround",
+        detail: "Free on-site walkaround before quoting so your scope matches how the space is used.",
+      },
     ],
-    note: "We arrange a free on-site walkaround before quoting so your schedule fits how the space is used.",
+    note: "Most Newry and South Down site visits can be scheduled promptly with written pricing.",
   },
   {
     id: "domestic",
     label: "Domestic",
+    optionValue: "Domestic Housekeeping / Deep Clean",
     title: "Thorough weekly, fortnightly or deep-clean visits for busy households.",
     points: [
-      "Kitchens, bathrooms, floors and living areas finished to a consistent standard",
-      "One-off deep cleans, end-of-tenancy handovers and seasonal refreshes",
-      "Direct scheduling with our Newry office on 028 3005 0330",
+      {
+        label: "Full rooms",
+        detail: "Kitchens, bathrooms, floors and living areas finished to a consistent standard.",
+      },
+      {
+        label: "Deep cleans",
+        detail: "One-off deep cleans, end-of-tenancy handovers and seasonal refreshes.",
+      },
+      {
+        label: "Direct booking",
+        detail: "Arrange visits directly with our Newry desk on 028 3005 0330.",
+      },
     ],
     note: "Share your number of bedrooms and preferred frequency for a straightforward guide price.",
   },
   {
     id: "laundrette",
     label: "Laundrette",
-    title: "Crisp wash, dry and press turnaround from our ITEC Business Park unit.",
+    optionValue: "Laundrette / Commercial Linen",
+    title: "Drop-off laundrette and commercial linen turnaround on Armagh Road.",
     points: [
-      "Service washes, duvets, workwear and hospitality linen care",
-      "Convenient door-side parking outside Unit 11 on Armagh Road, Newry",
-      "Regular commercial collection and return schedules available",
+      {
+        label: "Hospitality & home",
+        detail: "Service washes, bed linen, towels, salon wear, workwear and bulky duvets.",
+      },
+      {
+        label: "Unit 11 access",
+        detail: "Heavy-duty washing, drying and crisp folding with door-side parking at ITEC Business Park.",
+      },
+      {
+        label: "Regular runs",
+        detail: "Commercial collection and return schedules available for local businesses.",
+      },
     ],
-    note: "Ideal for guesthouses, salons, sports clubs and households needing bulky items pressed cleanly.",
-  },
-  {
-    id: "visit",
-    label: "Site visit",
-    title: "No-obligation walkaround at your Newry or County Down premises.",
-    points: [
-      "Practical advice on cleaning frequency, consumables and keyholder access",
-      "Written quote delivered promptly with no hidden extras",
-      "Dedicated support desk at customersupport@evvrclean.co.uk",
-    ],
-    note: "Most Newry and South Down site visits can be scheduled within 48 hours.",
+    note: "Dedicated support is always available at customersupport@evvrclean.co.uk.",
   },
 ];
 ---
 
-<section class="evc-section evc-scope-band" id="services" aria-labelledby="evc-scope-title">
-  <div class="evc-wrap">
-    <div class="evc-scope-shell" data-evc-scope>
-      <div class="evc-scope-head">
-        <div>
-          <p class="evc-eyebrow">Commercial · Domestic · Laundrette</p>
-          <h2 id="evc-scope-title">Choose the service you need.</h2>
-        </div>
-        <div class="evc-tabs" role="tablist" aria-label="Choose cleaning service">
-          {services.map((svc, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["evc-tab", idx === 0 && "is-active"]}
-              data-evc-tab={svc.id}
-            >
-              {svc.label}
-            </button>
-          ))}
-        </div>
+<section class="evc-stage" id="services" aria-labelledby="evc-stage-title">
+  <div class="evc-wrap" data-evc-scope>
+    <div class="evc-stage-head">
+      <h2 id="evc-stage-title">Choose the service you need.</h2>
+      <div class="evc-tabs" role="tablist" aria-label="Choose cleaning service">
+        {services.map((svc, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`evc-tab-${svc.id}`}
+            aria-controls={`evc-panel-${svc.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            class:list={["evc-tab", idx === 0 && "is-active"]}
+            data-evc-tab={svc.id}
+          >
+            {svc.label}
+          </button>
+        ))}
       </div>
+    </div>
 
-      {services.map((svc, idx) => (
-        <div class="evc-panel" role="tabpanel" data-evc-panel={svc.id} hidden={idx !== 0}>
-          <h3>{svc.title}</h3>
-          <ul class="evc-points">
-            {svc.points.map((pt, pIdx) => (
-              <li>
-                <span class="evc-pt-num">0{pIdx + 1}</span>
-                <span>{pt}</span>
-              </li>
-            ))}
-          </ul>
-          <div class="evc-panel-foot">
-            <p class="evc-note"><strong>Good to know:</strong> {svc.note}</p>
-            <a class="evc-arrow-btn evc-arrow-btn--dark" href="#quote">
-              <span class="evc-arrow-label">Request a quote</span>
-              <span class="evc-arrow-circle" aria-hidden="true">
-                <svg class="evc-arrow evc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                <svg class="evc-arrow evc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </span>
+    <div class="evc-stage-grid">
+      <div class="evc-stage-copy">
+        {services.map((svc, idx) => (
+          <div
+            class="evc-panel"
+            role="tabpanel"
+            id={`evc-panel-${svc.id}`}
+            aria-labelledby={`evc-tab-${svc.id}`}
+            data-evc-panel={svc.id}
+            hidden={idx !== 0}
+          >
+            <h3>{svc.title}</h3>
+            <dl class="evc-stage-ledger">
+              {svc.points.map((pt) => (
+                <div>
+                  <dt>{pt.label}</dt>
+                  <dd>{pt.detail}</dd>
+                </div>
+              ))}
+            </dl>
+            <p class="evc-stage-note">{svc.note}</p>
+            <a class="evc-stage-cta" href="#quote" data-evc-prefill={svc.optionValue}>
+              Request a {svc.label.toLowerCase()} quote
             </a>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <figure class="evc-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/evvrclean-newry/evvrclean-laundrette-linens-640.webp 640w, /media/concepts/evvrclean-newry/evvrclean-laundrette-linens-1265.webp 1265w"
+            sizes="(max-width: 900px) 100vw, 46vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/evvrclean-newry/evvrclean-laundrette-linens.jpg"
+            alt="Crisp folded white hotel-grade cotton towels and pressed linens beside stainless steel commercial laundry drums"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Indicative laundrette and pressed linen facility visualisation.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
-
-<style>
-  .evc-scope-shell { border-top: 1px solid var(--evc-line); padding-top: clamp(32px, 4.5vw, 52px); }
-  .evc-scope-head {
-    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;
-    padding-bottom: 28px; border-bottom: 1px solid var(--evc-line);
-  }
-  .evc-scope-head h2 {
-    margin: 0; font-family: var(--evc-display); font-size: clamp(1.9rem, 3.3vw, 2.75rem);
-    font-weight: 500; letter-spacing: -0.025em; line-height: 1.06;
-  }
-  .evc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .evc-tab {
-    padding: 9px 16px; border: 1px solid var(--evc-line); background: transparent; color: var(--evc-muted);
-    font-family: var(--evc-sans); font-size: 0.84rem; font-weight: 500; border-radius: 999px; cursor: pointer;
-    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
-  }
-  .evc-tab:hover { color: var(--evc-ink); border-color: rgba(16, 40, 42, 0.34); }
-  .evc-tab.is-active { background: var(--evc-accent); border-color: var(--evc-accent); color: #ffffff; }
-  .evc-panel { padding-top: 32px; }
-  .evc-panel h3 {
-    margin: 0 0 26px; font-family: var(--evc-display); font-size: clamp(1.3rem, 2.1vw, 1.65rem);
-    font-weight: 500; line-height: 1.25; max-width: 48ch;
-  }
-  .evc-points {
-    list-style: none; padding: 0; margin: 0 0 32px;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px);
-  }
-  .evc-points li {
-    padding-top: 16px; border-top: 1px solid var(--evc-line); display: grid; gap: 8px;
-    font-size: 0.92rem; line-height: 1.6; color: var(--evc-muted);
-  }
-  .evc-pt-num { font-size: 0.74rem; font-variant-numeric: tabular-nums; color: var(--evc-accent); font-weight: 600; }
-  .evc-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
-  .evc-note { margin: 0; font-size: 0.88rem; color: var(--evc-muted); max-width: 54ch; line-height: 1.55; }
-  .evc-note strong { color: var(--evc-ink); font-weight: 600; }
-  @media (max-width: 820px) { .evc-points { grid-template-columns: minmax(0, 1fr); } }
-</style>
 
 <script is:inline>
   (() => {
@@ -142,15 +143,41 @@ const services = [
     if (!root) return;
     const tabs = [...root.querySelectorAll("[data-evc-tab]")];
     const panels = [...root.querySelectorAll("[data-evc-panel]")];
+
+    const selectTab = (id) => {
+      const target = tabs.find((t) => t.getAttribute("data-evc-tab") === id);
+      if (!target) return;
+      tabs.forEach((t) => {
+        const active = t === target;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute("data-evc-panel") !== id;
+      });
+      window.dispatchEvent(new CustomEvent("evc:tab-changed", { detail: { id } }));
+    };
+
     tabs.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-evc-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => { p.hidden = p.getAttribute("data-evc-panel") !== id; });
+        selectTab(btn.getAttribute("data-evc-tab"));
+      });
+    });
+
+    window.addEventListener("evc:select-tab", (e) => {
+      if (e && e.detail && e.detail.id) {
+        selectTab(e.detail.id);
+      }
+    });
+
+    root.querySelectorAll("[data-evc-prefill]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const value = link.getAttribute("data-evc-prefill");
+        const select = document.querySelector("[data-evc-service-select]");
+        if (select && value) {
+          select.value = value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       });
     });
   })();

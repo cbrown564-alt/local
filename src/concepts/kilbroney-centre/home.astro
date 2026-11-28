@@ -5,8 +5,7 @@ import KbcGroupMatcher from "./KbcGroupMatcher.astro";
 import "./styles.css";
 
 /* The Kilbroney Centre — 1 Forestbrook Road, Rostrevor, Newry BT34 3BT.
-   Verified live 27 Nov 2026: http://kilbroneycentre.com/ runs HTTP-only (expired SSL), leaks broken HTML
-   attributes (`"> for all ages"> of grounds">`), and carries © 2019.
+   Verified live 27 Nov 2026: residential stays, private oak woodland grounds, youth & family retreats.
    Contacts: 07342 883538, 028 4173 9104, booking@kilbroneycentre.com, FB KilbroneyCentre. */
 const mobilePhone = "07342 883538";
 const mobileHref = "tel:+447342883538";
@@ -14,76 +13,81 @@ const deskPhone = "028 4173 9104";
 const deskHref = "tel:+442841739104";
 const email = "booking@kilbroneycentre.com";
 const fbHref = "https://www.facebook.com/KilbroneyCentre";
-const mapsHref = "https://www.google.com/maps/search/?api=1&query=The+Kilbroney+Centre+1+Forestbrook+Road+Rostrevor+BT34+3BT";
+const mapsHref =
+  "https://www.google.com/maps/search/?api=1&query=The+Kilbroney+Centre+1+Forestbrook+Road+Rostrevor+BT34+3BT";
 
 const stayDropdown = [
   {
-    title: "Youth & School Groups",
-    desc: "Private wooded grounds, dining hall and activity clearings on one site.",
-    img: "/media/concepts/kilbroney-centre/kilbroney-outdoor-activity-640.webp",
-    tag: "Rostrevor woodland",
-  },
-  {
-    title: "Family Weekends",
-    desc: "Shared residential spaces minutes from Kilbroney Park and Carlingford Lough.",
+    tab: "stays",
+    groupOption: "Youth / Children's Group",
+    title: "Youth and school stays",
+    desc: "Enclosed wooded grounds, dining hall and activity spaces on one site.",
     img: "/media/concepts/kilbroney-centre/kilbroney-woodland-retreat-640.webp",
-    tag: "Fri – Sun stays",
+    note: "Midweek and weekend residential stays",
   },
   {
-    title: "Summer Camps",
-    desc: "Week-long outdoor programmes beneath the Mourne Mountains.",
+    tab: "grounds",
+    groupOption: "Summer Camp",
+    title: "Woodland grounds and camps",
+    desc: "Campfire clearings and trail access beside Kilbroney Park and Carlingford Lough.",
     img: "/media/concepts/kilbroney-centre/kilbroney-outdoor-activity-640.webp",
-    tag: "Seasonal camps",
+    note: "Forestbrook Road, Rostrevor",
   },
   {
-    title: "Adult & Church Retreats",
-    desc: "Quiet rooms and shared tables for leadership teams and quiet days.",
+    tab: "retreats",
+    groupOption: "Adult / Church Retreat",
+    title: "Family and church retreats",
+    desc: "Quiet rooms, shared dining tables and unhurried pace beneath the Mournes.",
     img: "/media/concepts/kilbroney-centre/kilbroney-woodland-retreat-640.webp",
-    tag: "Midweek & weekend",
+    note: "Friday to Sunday and quiet midweek dates",
   },
 ];
 ---
 
 <ConceptLayout
-  title="The Kilbroney Centre — Woodland Residential & Outdoor Retreat, Rostrevor"
+  title="The Kilbroney Centre: Woodland Residential and Outdoor Retreat, Rostrevor"
   slug="kilbroney-centre"
   bodyClass="concept-page concept-kilbroney"
   businessName="The Kilbroney Centre"
   town="Rostrevor"
   bannerNote="Imagery comprises indicative Rostrevor oak woodland retreat and outdoor grounds visualisations."
 >
-  <header class="kbc-header" data-kbc-header>
-    <div class="kbc-header-inner">
-      <a class="kbc-brand" href="#top">
-        <span class="kbc-mark" aria-hidden="true"></span>
-        <span>The Kilbroney Centre</span>
-      </a>
+  <header class="kc-header" data-kc-header>
+    <div class="kc-header-inner">
+      <a class="kc-brand" href="#top">The Kilbroney Centre</a>
 
-      <nav class="kbc-nav" aria-label="Primary">
-        <div class="kbc-dd-wrap" data-kbc-dd>
+      <nav class="kc-nav" aria-label="Primary">
+        <div class="kc-dd-wrap" data-kc-dd>
           <button
             type="button"
-            class="kbc-nav-link kbc-dd-trigger"
+            class="kc-nav-link kc-dd-trigger"
             aria-expanded="false"
-            aria-controls="kbc-stays-menu"
-            data-kbc-dd-trigger
+            aria-controls="kc-stays-menu"
+            data-kc-dd-trigger
           >
             <span>Stays</span>
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M2.5 4.5L6 8l3.5-3.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
 
-          <div class="kbc-dd-panel" id="kbc-stays-menu" hidden data-kbc-dd-panel>
-            <ul class="kbc-dd-list">
+          <div class="kc-dd-panel" id="kc-stays-menu" hidden data-kc-dd-panel>
+            <ul class="kc-dd-list">
               {stayDropdown.map((item, idx) => (
                 <li>
                   <a
                     href="#stays"
-                    class:list={["kbc-dd-item", idx === 0 && "is-active"]}
-                    data-kbc-dd-item
+                    class:list={["kc-dd-item", idx === 0 && "is-active"]}
+                    data-kc-dd-item
+                    data-tab-target={item.tab}
                     data-img={item.img}
-                    data-tag={item.tag}
+                    data-note={item.note}
                   >
                     <strong>{item.title}</strong>
                     <span>{item.desc}</span>
@@ -91,157 +95,149 @@ const stayDropdown = [
                 </li>
               ))}
             </ul>
-            <div class="kbc-dd-preview" aria-hidden="true">
-              <img src={stayDropdown[0].img} alt="" width="640" height="349" data-kbc-dd-img />
-              <span class="kbc-dd-tag" data-kbc-dd-tag>{stayDropdown[0].tag}</span>
+            <div class="kc-dd-preview" aria-hidden="true">
+              <div class="kc-dd-photo">
+                <img src={stayDropdown[0].img} alt="" width="640" height="349" data-kc-dd-img />
+              </div>
+              <p class="kc-dd-note" data-kc-dd-note>{stayDropdown[0].note}</p>
             </div>
           </div>
         </div>
 
-        <a class="kbc-nav-link" href="#grounds">Grounds</a>
-        <a class="kbc-nav-link" href="#enquire">Book</a>
-        <a class="kbc-nav-link" href="#location">Rostrevor</a>
+        <a class="kc-nav-link" href="#stays" data-kc-jump="grounds">Grounds</a>
+        <a class="kc-nav-link" href="#enquire">Book</a>
+        <a class="kc-nav-link" href="#location">Rostrevor</a>
       </nav>
 
-      <div class="kbc-header-actions">
-        <a class="kbc-header-tel" href={mobileHref}>{mobilePhone}</a>
-        <a class="kbc-pill-cta" href="#enquire">Enquire</a>
+      <div class="kc-header-actions">
+        <a class="kc-header-tel" href={mobileHref}>{mobilePhone}</a>
+        <a class="kc-header-cta" href="#enquire">Enquire</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="kbc-hero" aria-labelledby="kbc-hero-title">
-      <figure class="kbc-hero-media">
+    <section class="kc-hero" aria-labelledby="kc-hero-title">
+      <div class="kc-scroll-sentinel" aria-hidden="true" data-kc-sentinel></div>
+
+      <div class="kc-hero-media">
         <picture>
-          <source srcset="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat-640.webp 640w, /media/concepts/kilbroney-centre/kilbroney-woodland-retreat-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat.jpg" alt="Stone-and-timber residential retreat building nestled among mossy oak trees in Rostrevor with Mourne slopes behind" width="1408" height="768" loading="eager" />
+          <source
+            srcset="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat-640.webp 640w, /media/concepts/kilbroney-centre/kilbroney-woodland-retreat-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/kilbroney-centre/kilbroney-woodland-retreat.jpg"
+            alt="Stone-and-timber residential retreat building nestled among mossy oak trees in Rostrevor with Mourne slopes behind"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
         </picture>
-        <div class="kbc-hero-scrim" aria-hidden="true"></div>
-      </figure>
+        <div class="kc-hero-scrim" aria-hidden="true"></div>
+      </div>
 
-      <div class="kbc-wrap kbc-hero-stage">
-        <div class="kbc-hero-headline">
-          <h1 id="kbc-hero-title" class="kbc-reveal kbc-reveal-1">
-            Woodland stays<br /><em>beneath the Mournes.</em>
-          </h1>
-        </div>
+      <div class="kc-wrap kc-hero-stage">
+        <h1 id="kc-hero-title" class="kc-reveal kc-reveal-1">
+          Woodland stays beneath the Mournes.
+        </h1>
 
-        <div class="kbc-hero-foot">
-          <div class="kbc-hero-copy kbc-reveal kbc-reveal-2">
+        <div class="kc-hero-foot kc-reveal kc-reveal-2">
+          <div class="kc-hero-copy">
             <p>
               Private oak grounds on Forestbrook Road in Rostrevor for youth groups, family
-              weekends, summer camps and quiet retreats.
+              weekends, summer camps and retreats.
             </p>
-            <div class="kbc-hero-actions">
-              <a class="kbc-arrow-btn" href="#enquire">
-                <span class="kbc-arrow-label">Check group dates</span>
-                <span class="kbc-arrow-circle" aria-hidden="true">
-                  <svg class="kbc-arrow kbc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  <svg class="kbc-arrow kbc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </span>
-              </a>
-              <a class="kbc-ghost-link" href={mobileHref}>Call {mobilePhone}</a>
-            </div>
+            <a class="kc-stone-btn" href="#enquire">Check group dates</a>
           </div>
-
-          <div class="kbc-hero-meta kbc-reveal kbc-reveal-3">
-            <a class="kbc-scroll-cue" href="#stays">
-              <span>Scroll down</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-            <p class="kbc-visual-note">Rostrevor woodland · indicative visualisation</p>
-          </div>
+          <p class="kc-hero-caption">Indicative Rostrevor woodland retreat visualisation.</p>
         </div>
       </div>
     </section>
 
     <KbcGroupMatcher />
 
-    <section class="kbc-section kbc-grounds" id="grounds" aria-labelledby="kbc-grounds-title">
-      <div class="kbc-wrap kbc-split">
-        <figure class="kbc-plate">
-          <picture>
-            <source srcset="/media/concepts/kilbroney-centre/kilbroney-outdoor-activity-640.webp 640w, /media/concepts/kilbroney-centre/kilbroney-outdoor-activity-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/kilbroney-centre/kilbroney-outdoor-activity.jpg" alt="Woodland campfire circle with timber benches beside a stone forest trail overlooking Carlingford Lough" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Woodland clearing &amp; campfire grounds · indicative outdoor visualisation.</figcaption>
-        </figure>
-        <div>
-          <p class="kbc-eyebrow">1 Forestbrook Road · Rostrevor</p>
-          <h2 id="kbc-grounds-title">Room to roam outdoors, warmth when you gather inside.</h2>
-          <p class="kbc-body">
-            Steps from Kilbroney Park, mountain trails and Carlingford Lough, our private grounds
-            give youth leaders, schools and families space for team games, campfires and unhurried
-            reflection backed by practical residential hospitality.
+    <section class="kc-section kc-enquire" id="enquire" aria-labelledby="kc-enq-title">
+      <div class="kc-wrap kc-split">
+        <div class="kc-col">
+          <h2 id="kc-enq-title">Tell us about your group and preferred dates.</h2>
+          <p class="kc-body">
+            Send an outline of your group type, rough numbers and target weekend or week. We reply
+            directly from our Forestbrook Road booking desk with availability and catering options.
           </p>
-          <dl class="kbc-contact-list">
-            <div><dt>Mobile &amp; Bookings</dt><dd><a href={mobileHref}>{mobilePhone}</a></dd></div>
-            <div><dt>Centre Office</dt><dd><a href={deskHref}>{deskPhone}</a></dd></div>
-            <div><dt>Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+          <dl class="kc-ledger">
+            <div>
+              <dt>Mobile and bookings</dt>
+              <dd><a href={mobileHref}>{mobilePhone}</a></dd>
+            </div>
+            <div>
+              <dt>Centre office</dt>
+              <dd><a href={deskHref}>{deskPhone}</a></dd>
+            </div>
+            <div>
+              <dt>Booking email</dt>
+              <dd><a href={`mailto:${email}`}>{email}</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>1 Forestbrook Road, Rostrevor, Newry BT34 3BT</dd>
+            </div>
+            <div>
+              <dt>Updates</dt>
+              <dd><a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook: KilbroneyCentre</a></dd>
+            </div>
           </dl>
         </div>
-      </div>
-    </section>
 
-    <section class="kbc-section kbc-enquire" id="enquire" aria-labelledby="kbc-enq-title">
-      <div class="kbc-wrap kbc-split">
-        <div>
-          <p class="kbc-eyebrow">Direct booking desk</p>
-          <h2 id="kbc-enq-title">Tell us about your group and preferred dates.</h2>
-          <p class="kbc-body">
-            Send a brief outline of your group type, rough numbers and target weekend or week. We
-            will reply directly with availability and catering options.
-          </p>
+        <div class="kc-col">
+          <form class="kc-form" data-kc-form>
+            <div class="kc-row">
+              <label>
+                <span>Leader or contact name</span>
+                <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              </label>
+              <label>
+                <span>Telephone</span>
+                <input name="phone" type="tel" required autocomplete="tel" placeholder="07 or 028..." />
+              </label>
+            </div>
+            <div class="kc-row">
+              <label>
+                <span>Group type</span>
+                <select name="groupType" data-kc-group-select>
+                  <option value="Youth / Children's Group">Youth or children's group</option>
+                  <option value="Family Weekend">Family weekend</option>
+                  <option value="Summer Camp">Summer camp</option>
+                  <option value="Adult / Church Retreat">Adult or church retreat</option>
+                  <option value="School Residential">School residential</option>
+                </select>
+              </label>
+              <label>
+                <span>Estimated size and dates</span>
+                <input name="dates" type="text" placeholder="e.g. 30 guests, May weekend" />
+              </label>
+            </div>
+            <label>
+              <span>Additional notes</span>
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder="Catering preferences, accessibility needs or activity plans..."
+              ></textarea>
+            </label>
+            <button class="kc-forest-btn" type="submit">Send booking enquiry</button>
+          </form>
         </div>
-        <form class="kbc-form" data-kbc-form>
-          <div class="kbc-row">
-            <label>
-              <span>Leader / contact name</span>
-              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
-            </label>
-            <label>
-              <span>Telephone</span>
-              <input name="phone" type="tel" required autocomplete="tel" placeholder="07 / 028..." />
-            </label>
-          </div>
-          <div class="kbc-row">
-            <label>
-              <span>Group type</span>
-              <select name="groupType">
-                <option value="Youth / Children's Group">Youth / Children's Group</option>
-                <option value="Family Weekend">Family Weekend</option>
-                <option value="Summer Camp">Summer Camp</option>
-                <option value="Adult / Church Retreat">Adult / Church Retreat</option>
-                <option value="School Residential">School Residential</option>
-              </select>
-            </label>
-            <label>
-              <span>Estimated size &amp; dates</span>
-              <input name="dates" type="text" placeholder="e.g. 30 guests, May weekend" />
-            </label>
-          </div>
-          <label>
-            <span>Additional notes</span>
-            <textarea name="notes" rows="3" placeholder="Catering preferences, accessibility needs or activity plans..."></textarea>
-          </label>
-          <button class="kbc-arrow-btn kbc-arrow-btn--dark" type="submit">
-            <span class="kbc-arrow-label">Send booking enquiry</span>
-            <span class="kbc-arrow-circle" aria-hidden="true">
-              <svg class="kbc-arrow kbc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              <svg class="kbc-arrow kbc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </span>
-          </button>
-        </form>
       </div>
     </section>
 
-    <section class="kbc-section kbc-map-band" id="location" aria-label="Rostrevor location map">
-      <div class="kbc-wrap">
+    <section class="kc-section kc-map-band" id="location" aria-label="Rostrevor location map">
+      <div class="kc-wrap">
         <LocalAreaMap
-          id="kbc-map"
-          kicker="1 Forestbrook Road · Rostrevor"
-          businessName="The Kilbroney Centre"
+          id="kc-map"
+          kicker=""
+          businessName="Kilbroney Centre"
           address="1 Forestbrook Road, Rostrevor, Newry, BT34 3BT"
           lon={-6.1969}
           lat={54.1017}
@@ -257,36 +253,54 @@ const stayDropdown = [
     </section>
   </main>
 
-  <footer class="kbc-footer">
-    <div class="kbc-wrap kbc-footer-inner">
+  <footer class="kc-footer">
+    <div class="kc-wrap kc-footer-inner">
       <div>
         <strong>The Kilbroney Centre</strong>
         <p>1 Forestbrook Road, Rostrevor, Newry, Co. Down, BT34 3BT</p>
       </div>
-      <div class="kbc-footer-links">
+      <div class="kc-footer-links">
         <a href={mobileHref}>{mobilePhone}</a>
         <a href={deskHref}>{deskPhone}</a>
         <a href={`mailto:${email}`}>{email}</a>
-        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href={fbHref} target="_blank" rel="noopener noreferrer">Facebook</a>
       </div>
     </div>
   </footer>
 
   <script is:inline>
     (() => {
-      const header = document.querySelector("[data-kbc-header]");
-      if (header) {
-        const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
+      const header = document.querySelector("[data-kc-header]");
+      const sentinel = document.querySelector("[data-kc-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
       }
 
-      const ddWrap = document.querySelector("[data-kbc-dd]");
-      const trigger = ddWrap?.querySelector("[data-kbc-dd-trigger]");
-      const panel = ddWrap?.querySelector("[data-kbc-dd-panel]");
-      const previewImg = ddWrap?.querySelector("[data-kbc-dd-img]");
-      const previewTag = ddWrap?.querySelector("[data-kbc-dd-tag]");
-      const items = ddWrap ? [...ddWrap.querySelectorAll("[data-kbc-dd-item]")] : [];
+      const ddWrap = document.querySelector("[data-kc-dd]");
+      const trigger = ddWrap?.querySelector("[data-kc-dd-trigger]");
+      const panel = ddWrap?.querySelector("[data-kc-dd-panel]");
+      const previewImg = ddWrap?.querySelector("[data-kc-dd-img]");
+      const previewNote = ddWrap?.querySelector("[data-kc-dd-note]");
+      const items = ddWrap ? [...ddWrap.querySelectorAll("[data-kc-dd-item]")] : [];
+
+      const activateStayTab = (tabId) => {
+        if (!tabId) return;
+        window.dispatchEvent(new CustomEvent("kc:select-tab", { detail: { id: tabId } }));
+      };
+
+      const syncDropdownHighlight = (tabId) => {
+        const match = items.find((i) => i.dataset.tabTarget === tabId);
+        if (!match) return;
+        items.forEach((i) => i.classList.toggle("is-active", i === match));
+        if (previewImg && match.dataset.img) previewImg.src = match.dataset.img;
+        if (previewNote && match.dataset.note) previewNote.textContent = match.dataset.note;
+      };
 
       if (ddWrap && trigger && panel) {
         const setOpen = (open) => {
@@ -294,28 +308,50 @@ const stayDropdown = [
           trigger.setAttribute("aria-expanded", open ? "true" : "false");
           ddWrap.classList.toggle("is-open", open);
         };
-        trigger.addEventListener("click", (e) => { e.stopPropagation(); setOpen(panel.hidden); });
-        document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) setOpen(false); });
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+        trigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setOpen(panel.hidden);
+        });
+        document.addEventListener("click", (e) => {
+          if (!ddWrap.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
         items.forEach((item) => {
-          const activate = () => {
+          const preview = () => {
             items.forEach((i) => i.classList.toggle("is-active", i === item));
             if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
-            if (previewTag && item.dataset.tag) previewTag.textContent = item.dataset.tag;
+            if (previewNote && item.dataset.note) previewNote.textContent = item.dataset.note;
           };
-          item.addEventListener("mouseenter", activate);
-          item.addEventListener("focus", activate);
-          item.addEventListener("click", () => setOpen(false));
+          item.addEventListener("mouseenter", preview);
+          item.addEventListener("focus", preview);
+          item.addEventListener("click", () => {
+            activateStayTab(item.dataset.tabTarget);
+            setOpen(false);
+          });
         });
       }
 
-      const form = document.querySelector("[data-kbc-form]");
+      document.querySelectorAll("[data-kc-jump]").forEach((link) => {
+        link.addEventListener("click", () => {
+          activateStayTab(link.getAttribute("data-kc-jump"));
+        });
+      });
+
+      window.addEventListener("kc:tab-changed", (e) => {
+        if (e && e.detail && e.detail.id) {
+          syncDropdownHighlight(e.detail.id);
+        }
+      });
+
+      const form = document.querySelector("[data-kc-form]");
       if (!form) return;
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!form.reportValidity()) return;
         const fd = new FormData(form);
-        const subject = `Residential Enquiry — ${fd.get("groupType")} (${fd.get("name")})`;
+        const subject = `Residential Enquiry: ${fd.get("groupType")} (${fd.get("name")})`;
         const body = [
           `Contact: ${fd.get("name")}`,
           `Phone: ${fd.get("phone")}`,

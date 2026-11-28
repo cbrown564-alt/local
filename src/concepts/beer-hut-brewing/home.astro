@@ -4,18 +4,19 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import BhbTaproomTabs from "./BhbTaproomTabs.astro";
 import "./styles.css";
 
-/* Beer Hut Brewing — 32A Greencastle Street / Unit 14 Binnian Enterprise Park, Kilkeel BT34 4BH.
+/* Beer Hut Brewing: 32A Greencastle Street / Unit 14 Binnian Enterprise Park, Kilkeel BT34 4BH.
    Verified live 27 Nov 2026: beerhutbrewing.co.uk duplicates its 10-item Shopify nav bar twice, obscuring
    its Saturday Kilkeel taproom (fresh IPAs, stouts, sours + artisan pizza), Sub Club, and Running Club.
-   Contacts: 07885 566599, https://beerhutbrewing.co.uk/. */
+   Contacts: 07885 566599, andrew@beerhutbrewing.co.uk, https://beerhutbrewing.co.uk/. */
 const phone = "07885 566599";
 const phoneHref = "tel:+447885566599";
+const email = "andrew@beerhutbrewing.co.uk";
 const shopHref = "https://beerhutbrewing.co.uk/";
 const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewing+Unit+14+Binnian+Enterprise+Park+Kilkeel+BT34+4BH";
 ---
 
 <ConceptLayout
-  title="Beer Hut Brewing — Small-Batch Craft Brewery & Taproom, Kilkeel"
+  title="Beer Hut Brewing: Small-Batch Craft Brewery and Taproom, Kilkeel"
   slug="beer-hut-brewing"
   bodyClass="concept-page concept-beerhut"
   businessName="Beer Hut Brewing"
@@ -24,95 +25,130 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewi
 >
   <header class="bhb-header" data-bhb-header>
     <div class="bhb-header-inner">
-      <a class="bhb-brand" href="#top">
-        <span class="bhb-mark" aria-hidden="true"></span>
-        <span>Beer Hut Brewing</span>
-      </a>
+      <a class="bhb-brand" href="#top">Beer Hut Brewing</a>
 
       <nav class="bhb-nav" aria-label="Primary">
-        <a class="bhb-nav-link" href="#taproom">Taproom</a>
-        <a class="bhb-nav-link" href="#brews">Small-Batch</a>
+        <a class="bhb-nav-link" href="#taproom" data-bhb-nav-tab="cans">Small-batch</a>
+        <a class="bhb-nav-link" href="#taproom" data-bhb-nav-tab="taproom">Taproom</a>
+        <a class="bhb-nav-link" href="#taproom" data-bhb-nav-tab="pizza">Pizza</a>
+        <a class="bhb-nav-link" href="#trade">Trade desk</a>
         <a class="bhb-nav-link" href="#location">Kilkeel</a>
       </nav>
 
       <div class="bhb-header-actions">
         <a class="bhb-header-tel" href={phoneHref}>{phone}</a>
-        <a class="bhb-pill-cta" href={shopHref} target="_blank" rel="noopener noreferrer">Shop beers</a>
+        <a class="bhb-header-cta" href={shopHref} target="_blank" rel="noopener noreferrer">Shop beers</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="bhb-hero" aria-labelledby="bhb-hero-title">
-      <figure class="bhb-hero-media">
+      <div class="bhb-hero-sentinel" aria-hidden="true" data-bhb-sentinel></div>
+      <div class="bhb-hero-media">
         <picture>
-          <source srcset="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-taproom-evening-1265.webp 1265w" sizes="100vw" type="image/webp" />
-          <img src="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening.jpg" alt="Moody Saturday craft brewery taproom under warm festoon bulbs with stainless steel fermenters and poured hazy IPA and stout" width="1408" height="768" loading="eager" />
+          <source
+            srcset="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-taproom-evening-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/beer-hut-brewing/beer-hut-taproom-evening.jpg"
+            alt="Moody Saturday craft brewery taproom under warm festoon bulbs with stainless steel fermenters and poured hazy IPA and stout"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
         </picture>
         <div class="bhb-hero-scrim" aria-hidden="true"></div>
-      </figure>
+      </div>
 
       <div class="bhb-wrap bhb-hero-stage">
-        <div class="bhb-hero-headline">
+        <div class="bhb-hero-poster">
           <h1 id="bhb-hero-title" class="bhb-reveal bhb-reveal-1">
-            Small-batch Mourne<br /><span>pours on Saturdays.</span>
+            Small&#8209;batch Mourne pours on Saturdays.
           </h1>
+          <p class="bhb-hero-lead bhb-reveal bhb-reveal-2">
+            Independent Kilkeel microbrewery pouring hazy IPAs, lagers and stouts beside the tanks with artisan pizza.
+          </p>
+          <div class="bhb-reveal bhb-reveal-2">
+            <a class="bhb-amber-btn" href={shopHref} target="_blank" rel="noopener noreferrer">Shop fresh cans</a>
+          </div>
         </div>
 
-        <div class="bhb-hero-foot">
-          <div class="bhb-hero-copy bhb-reveal bhb-reveal-2">
-            <p>
-              Independent Kilkeel microbrewery crafting hazy IPAs, lagers and rich stouts, poured
-              beside the tanks with artisan pizza.
-            </p>
-            <div class="bhb-hero-actions">
-              <a class="bhb-arrow-btn" href={shopHref} target="_blank" rel="noopener noreferrer">
-                <span class="bhb-arrow-label">Shop fresh cans</span>
-                <span class="bhb-arrow-circle" aria-hidden="true">
-                  <svg class="bhb-arrow bhb-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  <svg class="bhb-arrow bhb-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </span>
-              </a>
-              <a class="bhb-ghost-link" href={phoneHref}>Call {phone}</a>
-            </div>
-          </div>
-
-          <div class="bhb-hero-meta bhb-reveal bhb-reveal-3">
-            <a class="bhb-scroll-cue" href="#taproom">
-              <span>Scroll down</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-            <p class="bhb-visual-note">Kilkeel taproom · indicative visualisation</p>
-          </div>
+        <div class="bhb-hero-foot bhb-reveal bhb-reveal-3">
+          <p class="bhb-hero-caption">Indicative Kilkeel craft brewery taproom visualisation.</p>
         </div>
       </div>
     </section>
 
     <BhbTaproomTabs />
 
-    <section class="bhb-section bhb-brews" id="brews" aria-labelledby="bhb-br-title">
-      <div class="bhb-wrap bhb-split">
-        <figure class="bhb-plate">
-          <picture>
-            <source srcset="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour.jpg" alt="Golden hazy IPA pouring from a brushed steel tap into a stemmed tasting glass against dark slate and stainless steel tanks" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Small-batch tap pour · indicative brewery visualisation.</figcaption>
-        </figure>
-        <div>
-          <p class="bhb-eyebrow">Brewed below Slieve Binnian</p>
-          <h2 id="bhb-br-title">Unfiltered flavour, brewed in small runs on the Mourne coast.</h2>
-          <p class="bhb-body">
-            Every batch leaves our Kilkeel tanks cold-conditioned and packed with aroma. Drop into
-            our Saturday taproom for pizza and pints beside the stainless fermenters, or join our
-            monthly Sub Club anywhere in the UK and Ireland.
+    <section class="bhb-section bhb-trade" id="trade" aria-labelledby="bhb-trade-title">
+      <div class="bhb-wrap bhb-trade-grid">
+        <div class="bhb-trade-info">
+          <h2 id="bhb-trade-title">Stock Mourne cans, plan a taproom group or talk kegs.</h2>
+          <p class="bhb-trade-copy">
+            We supply fresh kegs and 440ml cans to independent bars, restaurants and bottle shops across Northern Ireland, and welcome weekend groups in Kilkeel.
           </p>
-          <dl class="bhb-contact-list">
-            <div><dt>Taproom &amp; Trade Desk</dt><dd><a href={phoneHref}>{phone}</a></dd></div>
-            <div><dt>Address</dt><dd>Unit 14 Binnian Enterprise Park, Kilkeel</dd></div>
-            <div><dt>Online Store</dt><dd><a href={shopHref} target="_blank" rel="noopener noreferrer">beerhutbrewing.co.uk ↗</a></dd></div>
+
+          <dl class="bhb-contact-ledger">
+            <div>
+              <dt>Taproom and trade desk</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href={`mailto:${email}`}>{email}</a></dd>
+            </div>
+            <div>
+              <dt>Brewhouse</dt>
+              <dd>Unit 14 Binnian Enterprise Park, Kilkeel, BT34 4BH</dd>
+            </div>
+            <div>
+              <dt>Online shop</dt>
+              <dd><a href={shopHref} target="_blank" rel="noopener noreferrer">beerhutbrewing.co.uk</a></dd>
+            </div>
           </dl>
         </div>
+
+        <form class="bhb-form" data-bhb-form novalidate>
+          <div class="bhb-form-row">
+            <label class="bhb-field">
+              <span>Your name</span>
+              <input type="text" name="name" required autocomplete="name" placeholder="Gareth Hanna" />
+            </label>
+            <label class="bhb-field">
+              <span>Telephone or email</span>
+              <input type="text" name="contact" required placeholder="07885 000000" />
+            </label>
+          </div>
+
+          <div class="bhb-form-row">
+            <label class="bhb-field">
+              <span>Enquiry type</span>
+              <select name="topic">
+                <option value="Trade kegs and 440ml cans">Trade kegs and 440ml cans</option>
+                <option value="Saturday taproom group visit">Saturday taproom group visit</option>
+                <option value="Sub Club or gift packs">Sub Club or gift packs</option>
+                <option value="Beer Hut Running Club">Beer Hut Running Club</option>
+              </select>
+            </label>
+            <label class="bhb-field">
+              <span>Venue or group size</span>
+              <input type="text" name="group" placeholder="Bar name or number of guests" />
+            </label>
+          </div>
+
+          <label class="bhb-field">
+            <span>Notes</span>
+            <textarea name="notes" rows="3" placeholder="Styles, keg lines, preferred Saturday or delivery town"></textarea>
+          </label>
+
+          <div class="bhb-form-foot">
+            <button type="submit" class="bhb-amber-btn">Send brewery enquiry</button>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -121,7 +157,7 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewi
         <LocalAreaMap
           id="bhb-map"
           tone="dark"
-          kicker="Binnian Enterprise Park · Kilkeel"
+          kicker=""
           businessName="Beer Hut Brewing"
           address="Unit 14 Binnian Enterprise Park, Kilkeel, BT34 4BH"
           lon={-5.9941}
@@ -141,13 +177,14 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewi
   <footer class="bhb-footer">
     <div class="bhb-wrap bhb-footer-inner">
       <div>
-        <strong>Beer Hut Brewing</strong>
-        <p>Unit 14 Binnian Enterprise Park / 32A Greencastle St, Kilkeel, BT34 4BH</p>
+        <strong class="bhb-footer-brand">Beer Hut Brewing</strong>
+        <p class="bhb-footer-addr">Unit 14 Binnian Enterprise Park / 32A Greencastle St, Kilkeel, BT34 4BH</p>
       </div>
       <div class="bhb-footer-links">
         <a href={phoneHref}>{phone}</a>
-        <a href={shopHref} target="_blank" rel="noopener noreferrer">Online Shop ↗</a>
-        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={shopHref} target="_blank" rel="noopener noreferrer">Online shop</a>
+        <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions</a>
       </div>
     </div>
   </footer>
@@ -155,10 +192,48 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Beer+Hut+Brewi
   <script is:inline>
     (() => {
       const header = document.querySelector("[data-bhb-header]");
-      if (!header) return;
-      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
+      const sentinel = document.querySelector("[data-bhb-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            if (!entry) return;
+            header.classList.toggle("is-scrolled", !entry.isIntersecting && entry.boundingClientRect.top < 0);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      const form = document.querySelector("[data-bhb-form]");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        const fd = new FormData(form);
+        const topic = String(fd.get("topic") || "Brewery enquiry");
+        const name = String(fd.get("name") || "").trim();
+        const subject = `${topic}: ${name}`;
+        const body = [
+          `Name: ${name}`,
+          `Contact: ${fd.get("contact") || ""}`,
+          `Topic: ${topic}`,
+          `Venue or group: ${fd.get("group") || "Not specified"}`,
+          `Notes: ${fd.get("notes") || "None"}`,
+        ].join("\n");
+
+        const ev = new CustomEvent("mm:enquiry", {
+          cancelable: true,
+          detail: {
+            to: "andrew@beerhutbrewing.co.uk",
+            subject,
+            body,
+          },
+        });
+        if (window.dispatchEvent(ev)) {
+          window.location.href = `mailto:andrew@beerhutbrewing.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+      });
     })();
   </script>
 </ConceptLayout>

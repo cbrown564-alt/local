@@ -4,11 +4,10 @@ import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import SpecimenSheet from "../_shell/SpecimenSheet.astro";
 import "./styles.css";
 
-/* Ring of Gullion Cycles — 140 Forkhill Road, Drumintee, Newry BT35 8SY.
-   Verified live 27 Nov 2026: ringofgullioncycles.co.uk renders title as lowercase unspaced `ringofgullioncycles`
-   on a generic Shopify theme mixing Cube, Cannondale, Colnago, Fuji & Transition bikes with Rolly Toys.
+/* Ring of Gullion Cycles, 140 Forkhill Road, Drumintee, Newry BT35 8SY.
+   Verified live 27 Nov 2026: ringofgullioncycles.co.uk mixes Cube, Cannondale, Colnago, Fuji & Transition bikes with Rolly Toys.
    Contacts: 028 3088 8352, ringofgullioncycles@outlook.com.
-   Hours: Mon–Fri 09:30–17:30, Sat 10:00–17:00, Sun 12:00–16:00. */
+   Hours: Mon-Fri 09:30-17:30, Sat 10:00-17:00, Sun 12:00-16:00. */
 const phone = "028 3088 8352";
 const phoneHref = "tel:+442830888352";
 const email = "ringofgullioncycles@outlook.com";
@@ -18,57 +17,145 @@ const mapsHref = "https://www.google.com/maps/search/?api=1&query=Ring+of+Gullio
 const dropdownCategories = [
   {
     id: "road",
-    title: "Road & Gravel",
+    tab: "bikes",
+    title: "Road and gravel",
     desc: "Colnago, Cannondale and Fuji frames built for South Armagh climbs.",
     img: "/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-640.webp",
-    tag: "In-store frame sizing",
+    caption: "In-store frame sizing for road and gravel",
   },
   {
     id: "mtb",
-    title: "Mountain & Trail",
+    tab: "bikes",
+    title: "Mountain and trail",
     desc: "Cube and Transition trail bikes tuned for Slieve Gullion and Rostrevor.",
     img: "/media/concepts/ring-of-gullion-cycles/gullion-cycles-showroom-640.webp",
-    tag: "Suspension setup",
+    caption: "Suspension setup on the Drumintee stand",
   },
   {
     id: "ebikes",
-    title: "Electric Bikes",
-    desc: "Bosch-powered Cube and Cannondale e-bikes with local aftercare.",
+    tab: "sizing",
+    title: "Electric bikes",
+    desc: "Bosch-powered Cube and Cannondale e-bikes with Cycle to Work support.",
     img: "/media/concepts/ring-of-gullion-cycles/gullion-cycles-showroom-640.webp",
-    tag: "Cycle to Work",
+    caption: "Bosch e-bike fitting and local aftercare",
   },
   {
     id: "family",
-    title: "Kids & Rolly Toys",
-    desc: "Junior bikes and genuine Rolly pedal tractors assembled ready to go.",
+    tab: "workshop",
+    title: "Kids and Rolly Toys",
+    desc: "Junior bikes and genuine Rolly pedal tractors built ready to ride.",
     img: "/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-640.webp",
-    tag: "Ready from day one",
+    caption: "Safety-checked in our Forkhill Road workshop",
+  },
+];
+
+const showroomTabs = [
+  {
+    id: "bikes",
+    label: "Bikes",
+    intro: "Six specialist marques stocked on Forkhill Road, from carbon road frames and Bosch e-bikes to junior cycles and Rolly Toys.",
+    items: [
+      {
+        id: "road",
+        title: "Colnago, Cannondale and Fuji road and gravel",
+        detail: "Performance carbon road and all-road gravel frames matched to your riding posture and local South Armagh climbs.",
+        meta: "Authorised stockist",
+      },
+      {
+        id: "mtb",
+        title: "Cube and Transition mountain bikes",
+        detail: "Hardtail, trail and gravity-ready full-suspension rigs set up for Slieve Gullion, Rostrevor and Castlewellan singletrack.",
+        meta: "Trail setup",
+      },
+      {
+        id: "ebikes",
+        title: "Cube and Cannondale electric bikes",
+        detail: "Bosch-powered electric hybrids and e-MTBs built in Drumintee with full local diagnostics and aftercare.",
+        meta: "Bosch systems",
+      },
+      {
+        id: "family",
+        title: "Kids bikes and Rolly Toys",
+        detail: "Lightweight junior cycles and genuine Rolly pedal tractors and trailers built in-store ready for the lane.",
+        meta: "Built ready",
+      },
+    ],
+  },
+  {
+    id: "sizing",
+    label: "Sizing",
+    intro: "Every adult and junior bike leaves Drumintee matched to your height, reach and terrain rather than straight out of a cardboard box.",
+    items: [
+      {
+        id: "fit",
+        title: "In-store frame sizing and reach check",
+        detail: "Try Cube, Cannondale, Colnago, Fuji and Transition geometry in person before committing to a frame size.",
+        meta: "Open 7 days",
+      },
+      {
+        id: "cycle-to-work",
+        title: "Cycle to Work scheme guidance",
+        detail: "Bring your workplace scheme details and we will match commuter, road or Bosch e-bike floor stock cleanly.",
+        meta: "Scheme support",
+      },
+      {
+        id: "weekend-visits",
+        title: "Weekend and Sunday afternoon calls",
+        detail: "Minutes from Slieve Gullion Forest Park and the Dundalk border, with Saturday and Sunday hours for family visits.",
+        meta: "Sun 12:00 to 16:00",
+      },
+    ],
+  },
+  {
+    id: "workshop",
+    label: "Workshop",
+    intro: "Dedicated mechanical setup, suspension tuning and safety checks handled on the stand at 140 Forkhill Road.",
+    items: [
+      {
+        id: "setup",
+        title: "Full mechanical build and gearing setup",
+        detail: "Brakes, drivetrains and cockpit ergonomics dialled in before collection so your first ride feels planted.",
+        meta: "On the stand",
+      },
+      {
+        id: "suspension",
+        title: "Suspension servicing and trail prep",
+        detail: "Fork and shock servicing, tubeless checks and trail readiness for riders heading up Slieve Gullion or Rostrevor.",
+        meta: "MTB and e-MTB",
+      },
+      {
+        id: "aftercare",
+        title: "E-bike and family bike aftercare",
+        detail: "Ongoing mechanical maintenance, spares and safety checks for Bosch electric bikes and children's cycles.",
+        meta: "Local support",
+      },
+    ],
   },
 ];
 
 const rangeGroups = [
   {
     id: "adult",
-    label: "Road, MTB, Gravel & E-Bikes",
+    label: "Road, MTB, Gravel and E-Bikes",
     items: [
-      { name: "Cube & Cannondale E-Bikes & MTB", note: "Full-suspension trail bikes, hardtails and Bosch-powered electric bikes fitted properly in Drumintee", meta: "In-store sizing" },
-      { name: "Colnago, Fuji & Transition", note: "Performance carbon road, gravel and gravity-ready mountain frames with full setup", meta: "Authorised stockist" },
-      { name: "Workshop & Cycle to Work", note: "Full mechanical setup, suspension servicing and Cycle to Work scheme support", meta: "Open 7 days" },
+      { name: "Cube and Cannondale E-Bikes and MTB", note: "Full-suspension trail bikes, hardtails and Bosch-powered electric bikes fitted properly in Drumintee", meta: "In-store sizing" },
+      { name: "Colnago, Fuji and Transition", note: "Performance carbon road, gravel and gravity-ready mountain frames with full setup", meta: "Authorised stockist" },
+      { name: "Workshop and Cycle to Work", note: "Full mechanical setup, suspension servicing and Cycle to Work scheme support", meta: "Open 7 days" },
     ],
   },
   {
     id: "family",
-    label: "Kids Bikes & Rolly Ride-Ons",
+    label: "Kids Bikes and Rolly Ride-Ons",
     items: [
-      { name: "Junior & Kids Mountain Bikes", note: "Lightweight children's bikes built and safety-checked ready for family spins", meta: "Ready to ride" },
-      { name: "Rolly Toys & Pedal Tractors", note: "Genuine Rolly pedal tractors, trailers and farm ride-ons stocked for South Armagh & Down families", meta: "In stock" },
+      { name: "Junior and Kids Mountain Bikes", note: "Lightweight children's bikes built and safety-checked ready for family spins", meta: "Ready to ride" },
+      { name: "Rolly Toys and Pedal Tractors", note: "Genuine Rolly pedal tractors, trailers and farm ride-ons stocked for South Armagh and Down families", meta: "In stock" },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Ring of Gullion Cycles — Bikes, E-Bikes & Workshop, Drumintee, Newry"
+  title="Ring of Gullion Cycles | Bikes, E-Bikes and Workshop, Drumintee, Newry"
   slug="ring-of-gullion-cycles"
   bodyClass="concept-page concept-gullioncycles"
   businessName="Ring of Gullion Cycles"
@@ -77,10 +164,7 @@ const rangeGroups = [
 >
   <header class="rgc-header" data-rgc-header>
     <div class="rgc-header-inner">
-      <a class="rgc-brand" href="#top">
-        <span class="rgc-mark" aria-hidden="true"></span>
-        <span>Ring of Gullion Cycles</span>
-      </a>
+      <a class="rgc-brand" href="#top">Ring of Gullion Cycles</a>
 
       <nav class="rgc-nav" aria-label="Primary">
         <div class="rgc-dd-wrap" data-rgc-dd>
@@ -105,9 +189,10 @@ const rangeGroups = [
                     href="#brands"
                     class:list={["rgc-dd-item", idx === 0 && "is-active"]}
                     data-rgc-dd-item
+                    data-tab={cat.tab}
+                    data-focus-item={cat.id}
                     data-img={cat.img}
-                    data-tag={cat.tag}
-                    data-alt={cat.title}
+                    data-caption={cat.caption}
                   >
                     <strong>{cat.title}</strong>
                     <span>{cat.desc}</span>
@@ -123,7 +208,7 @@ const rangeGroups = [
                 height="349"
                 data-rgc-dd-img
               />
-              <span class="rgc-dd-tag" data-rgc-dd-tag>{dropdownCategories[0].tag}</span>
+              <p class="rgc-dd-caption" data-rgc-dd-caption>{dropdownCategories[0].caption}</p>
             </div>
           </div>
         </div>
@@ -135,16 +220,15 @@ const rangeGroups = [
 
       <div class="rgc-header-actions">
         <a class="rgc-header-tel" href={phoneHref}>{phone}</a>
-        <a class="rgc-pill-cta" href={shopHref} target="_blank" rel="noopener noreferrer">
-          <span>Online Store</span>
-        </a>
+        <a class="rgc-header-cta" href={shopHref} target="_blank" rel="noopener noreferrer">Online store</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="rgc-hero" aria-labelledby="rgc-hero-title">
-      <figure class="rgc-hero-media">
+      <span class="rgc-hero-sentinel" aria-hidden="true" data-rgc-sentinel></span>
+      <div class="rgc-hero-media">
         <picture>
           <source srcset="/media/concepts/ring-of-gullion-cycles/gullion-cycles-showroom-640.webp 640w, /media/concepts/ring-of-gullion-cycles/gullion-cycles-showroom-1265.webp 1265w" sizes="100vw" type="image/webp" />
           <img
@@ -156,185 +240,172 @@ const rangeGroups = [
           />
         </picture>
         <div class="rgc-hero-scrim" aria-hidden="true"></div>
-      </figure>
+      </div>
 
       <div class="rgc-wrap rgc-hero-stage">
-        <div class="rgc-hero-headline">
+        <div class="rgc-hero-lockup">
           <h1 id="rgc-hero-title" class="rgc-reveal rgc-reveal-1">
-            Built for Gullion<br /><em>roads and trails.</em>
+            Built for Gullion roads and trails.
           </h1>
-        </div>
-
-        <div class="rgc-hero-foot">
-          <div class="rgc-hero-copy rgc-reveal rgc-reveal-2">
-            <p>
-              Cube, Cannondale, Colnago, Fuji and Transition bikes. Properly built and sized on
-              Forkhill Road in Drumintee, open seven days.
-            </p>
-            <div class="rgc-hero-actions">
-              <a class="rgc-arrow-btn" href="#enquire">
-                <span class="rgc-arrow-btn-label">Book a bike fit</span>
-                <span class="rgc-arrow-circle" aria-hidden="true">
-                  <svg class="rgc-arrow rgc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none">
-                    <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <svg class="rgc-arrow rgc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none">
-                    <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </a>
-
-              <SpecimenSheet
-                id="rgc-brands-sheet"
-                triggerLabel="Brands & stock guide"
-                kicker="Ring of Gullion Cycles · 140 Forkhill Road, Drumintee"
-                title="Bikes, E-Bikes & Rolly Ride-Ons"
-                subtitle="Open Monday through Sunday — call 028 3088 8352 to hold a model or arrange a fit."
-                groups={rangeGroups}
-                ctaLabel="Browse Online Store ↗"
-                ctaHref={shopHref}
-                ctaExternal={true}
-                secondaryLabel={`Call ${phone}`}
-                secondaryHref={phoneHref}
-                buttonClass="rgc-ghost-link"
-              />
+          <div class="rgc-hero-foot rgc-reveal rgc-reveal-2">
+            <div class="rgc-hero-copy">
+              <p>
+                Cube, Cannondale, Colnago, Fuji and Transition bikes built and sized in Drumintee, open seven days.
+              </p>
+              <a class="rgc-primary-btn" href="#enquire">Book a bike fit</a>
             </div>
-          </div>
-
-          <div class="rgc-hero-meta rgc-reveal rgc-reveal-3">
-            <a class="rgc-scroll-cue" href="#brands">
-              <span>Scroll down</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M6 2.5v7M3 6.5L6 9.5l3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-            <p class="rgc-visual-note">Drumintee showroom · indicative visualisation</p>
+            <p class="rgc-hero-caption">Indicative Drumintee showroom visualisation.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="rgc-section rgc-brands" id="brands" aria-labelledby="rgc-br-title">
-      <div class="rgc-wrap">
-        <div class="rgc-section-head">
-          <p class="rgc-eyebrow">What we stock</p>
-          <h2 id="rgc-br-title">Six specialist marques, one Drumintee workshop.</h2>
-        </div>
-
-        <div class="rgc-three">
-          <article>
-            <span class="rgc-num">01</span>
-            <h3>Cube, Cannondale &amp; Colnago</h3>
-            <p>Road, gravel and Bosch-powered electric bikes matched properly to your riding height, gearing and local climbs.</p>
-          </article>
-          <article>
-            <span class="rgc-num">02</span>
-            <h3>Fuji &amp; Transition MTB</h3>
-            <p>Trail, hardtail and enduro bikes set up on the stand for Slieve Gullion, Rostrevor and Castlewellan singletrack.</p>
-          </article>
-          <article>
-            <span class="rgc-num">03</span>
-            <h3>Kids Bikes &amp; Rolly Toys</h3>
-            <p>Lightweight junior cycles and genuine Rolly pedal tractors built in-store so they leave ready for the lane.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="rgc-section rgc-trails" id="hours" aria-labelledby="rgc-tr-title">
+    <section class="rgc-band rgc-band--stone" id="brands" aria-labelledby="rgc-br-title">
       <div class="rgc-wrap rgc-split">
-        <figure class="rgc-plate">
-          <picture>
-            <source srcset="/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-640.webp 640w, /media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road.jpg" alt="Gravel and mountain bike resting beside a mossy granite wall overlooking Slieve Gullion hills at dawn" width="1408" height="768" loading="lazy" />
-          </picture>
-          <figcaption>Slieve Gullion riding country · indicative landscape visualisation.</figcaption>
-        </figure>
+        <div class="rgc-col">
+          <h2 id="rgc-br-title">Six specialist marques, one Drumintee workshop.</h2>
 
-        <div class="rgc-hours-col">
-          <p class="rgc-eyebrow">Open seven days · Forkhill Road</p>
-          <h2 id="rgc-tr-title">Call in any day of the week, including Sunday afternoons.</h2>
-          <p class="rgc-body">
-            Minutes from Slieve Gullion Forest Park and the Dundalk border, we stay open seven days
-            so weekend riders and families can size bikes, collect spares or test an e-bike in person.
-          </p>
+          <div class="rgc-tabs" role="tablist" aria-label="Bikes, sizing and workshop">
+            {showroomTabs.map((tab, idx) => (
+              <button
+                type="button"
+                role="tab"
+                id={`rgc-tab-${tab.id}`}
+                aria-selected={idx === 0 ? "true" : "false"}
+                aria-controls={`rgc-panel-${tab.id}`}
+                tabindex={idx === 0 ? 0 : -1}
+                class:list={["rgc-tab", idx === 0 && "is-active"]}
+                data-rgc-tab={tab.id}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
-          <div class="rgc-hours-card">
-            <h3>Showroom &amp; Workshop</h3>
+          {showroomTabs.map((tab, idx) => (
+            <div
+              id={`rgc-panel-${tab.id}`}
+              role="tabpanel"
+              aria-labelledby={`rgc-tab-${tab.id}`}
+              hidden={idx !== 0}
+              class="rgc-panel"
+              data-rgc-panel={tab.id}
+            >
+              <p class="rgc-panel-intro">{tab.intro}</p>
+              <ul class="rgc-ledger">
+                {tab.items.map((item) => (
+                  <li class="rgc-ledger-row" data-rgc-row={item.id}>
+                    <div class="rgc-ledger-main">
+                      <h3>{item.title}</h3>
+                      <p>{item.detail}</p>
+                    </div>
+                    <span class="rgc-ledger-meta">{item.meta}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div class="rgc-sheet-row">
+            <SpecimenSheet
+              id="rgc-brands-sheet"
+              triggerLabel="Browse full brands and stock guide"
+              kicker="Ring of Gullion Cycles, Drumintee"
+              title="Bikes, E-Bikes and Rolly Ride-Ons"
+              subtitle="Open Monday through Sunday. Call 028 3088 8352 to hold a model or arrange a fit."
+              groups={rangeGroups}
+              ctaLabel="Browse online store ↗"
+              ctaHref={shopHref}
+              ctaExternal={true}
+              secondaryLabel={`Call ${phone}`}
+              secondaryHref={phoneHref}
+              buttonClass="rgc-sheet-trigger"
+            />
+          </div>
+        </div>
+
+        <div class="rgc-col" id="hours">
+          <figure class="rgc-plate">
+            <picture>
+              <source srcset="/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-640.webp 640w, /media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 46vw" type="image/webp" />
+              <img
+                src="/media/concepts/ring-of-gullion-cycles/gullion-cycles-mountain-road.jpg"
+                alt="Gravel and mountain bike resting beside a mossy granite wall overlooking Slieve Gullion hills at dawn"
+                width="1408"
+                height="768"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Indicative Slieve Gullion road visualisation.</figcaption>
+          </figure>
+
+          <div class="rgc-hours-block">
+            <h3>Showroom and workshop hours</h3>
             <dl class="rgc-hours-list">
-              <div><dt>Monday – Friday</dt><dd>09:30 – 17:30</dd></div>
-              <div><dt>Saturday</dt><dd>10:00 – 17:00</dd></div>
-              <div><dt>Sunday</dt><dd>12:00 – 16:00</dd></div>
+              <div><dt>Monday to Friday</dt><dd>09:30 to 17:30</dd></div>
+              <div><dt>Saturday</dt><dd>10:00 to 17:00</dd></div>
+              <div><dt>Sunday</dt><dd>12:00 to 16:00</dd></div>
             </dl>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="rgc-section rgc-enquire" id="enquire" aria-labelledby="rgc-enq-title">
-      <div class="rgc-wrap rgc-split">
-        <div class="rgc-enq-intro">
-          <p class="rgc-eyebrow">Direct sizing &amp; stock desk</p>
-          <h2 id="rgc-enq-title">Ask about frame sizes, e-bikes or Cycle to Work.</h2>
-          <p class="rgc-body">
+    <section class="rgc-band rgc-band--obsidian" id="enquire" aria-labelledby="rgc-enq-title">
+      <div class="rgc-wrap rgc-split rgc-split--enquire">
+        <div class="rgc-col">
+          <h2 id="rgc-enq-title">Ask about frame sizes, electric bikes or Cycle to Work.</h2>
+          <p class="rgc-dark-copy">
             Tell us what you ride and roughly your height. We will confirm current Drumintee floor
             stock, or you can ring the shop directly on <a href={phoneHref}>{phone}</a>.
           </p>
           <p class="rgc-email-line">Email <a href={`mailto:${email}`}>{email}</a></p>
         </div>
 
-        <form class="rgc-form" data-rgc-form>
-          <div class="rgc-row">
+        <div class="rgc-col">
+          <form class="rgc-form" data-rgc-form>
+            <div class="rgc-form-row">
+              <label>
+                <span>Your name</span>
+                <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              </label>
+              <label>
+                <span>Telephone</span>
+                <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
+              </label>
+            </div>
+            <div class="rgc-form-row">
+              <label>
+                <span>Bike category</span>
+                <select name="category">
+                  <option value="Electric bike (e-bike)">Electric bike (e-bike)</option>
+                  <option value="Mountain or trail bike">Mountain or trail bike</option>
+                  <option value="Road or gravel bike">Road or gravel bike</option>
+                  <option value="Kids bike or Rolly Toy">Kids bike or Rolly Toy</option>
+                  <option value="Workshop service">Workshop service</option>
+                </select>
+              </label>
+              <label>
+                <span>Rider height or size</span>
+                <input name="size" type="text" placeholder="e.g. 5'10 or Medium" />
+              </label>
+            </div>
             <label>
-              <span>Your name</span>
-              <input name="name" type="text" required autocomplete="name" placeholder="Full name" />
+              <span>Models or questions</span>
+              <textarea name="notes" rows="3" placeholder="Preferred brand (Cube, Cannondale, Colnago, Fuji, Transition) or Cycle to Work details."></textarea>
             </label>
-            <label>
-              <span>Telephone</span>
-              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
-            </label>
-          </div>
-          <div class="rgc-row">
-            <label>
-              <span>Bike category</span>
-              <select name="category">
-                <option value="Electric Bike (E-Bike)">Electric Bike (E-Bike)</option>
-                <option value="Mountain / Trail Bike">Mountain / Trail Bike</option>
-                <option value="Road / Gravel Bike">Road / Gravel Bike</option>
-                <option value="Kids Bike / Rolly Toy">Kids Bike / Rolly Toy</option>
-                <option value="Workshop Service">Workshop Service</option>
-              </select>
-            </label>
-            <label>
-              <span>Rider height / size</span>
-              <input name="size" type="text" placeholder="e.g. 5'10 / Medium" />
-            </label>
-          </div>
-          <label>
-            <span>Models or questions</span>
-            <textarea name="notes" rows="3" placeholder="Preferred brand (Cube, Cannondale, Colnago, Fuji, Transition) or Cycle to Work..."></textarea>
-          </label>
-          <button class="rgc-arrow-btn" type="submit">
-            <span class="rgc-arrow-btn-label">Send stock enquiry</span>
-            <span class="rgc-arrow-circle" aria-hidden="true">
-              <svg class="rgc-arrow rgc-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              <svg class="rgc-arrow rgc-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-          </button>
-        </form>
+            <button class="rgc-primary-btn rgc-submit-btn" type="submit">Send stock enquiry</button>
+          </form>
+        </div>
       </div>
     </section>
 
-    <section class="rgc-section rgc-map-band" id="location" aria-label="Drumintee Forkhill Road map">
+    <section class="rgc-band rgc-band--obsidian rgc-map-band" id="location" aria-label="Drumintee Forkhill Road map">
       <div class="rgc-wrap">
         <LocalAreaMap
           id="rgc-map"
           tone="dark"
-          kicker="140 Forkhill Road · Drumintee"
+          kicker=""
           businessName="Ring of Gullion Cycles"
           address="140 Forkhill Road, Drumintee, Newry, BT35 8SY"
           lon={-6.4161}
@@ -354,13 +425,13 @@ const rangeGroups = [
   <footer class="rgc-footer">
     <div class="rgc-wrap rgc-footer-inner">
       <div>
-        <strong>Ring of Gullion Cycles</strong>
+        <strong class="rgc-footer-brand">Ring of Gullion Cycles</strong>
         <p>140 Forkhill Road, Drumintee, Newry, BT35 8SY</p>
       </div>
       <div class="rgc-footer-links">
         <a href={phoneHref}>{phone}</a>
         <a href={`mailto:${email}`}>{email}</a>
-        <a href={shopHref} target="_blank" rel="noopener noreferrer">Online Store ↗</a>
+        <a href={shopHref} target="_blank" rel="noopener noreferrer">Online store ↗</a>
         <a href={mapsHref} target="_blank" rel="noopener noreferrer">Directions ↗</a>
       </div>
     </div>
@@ -368,20 +439,51 @@ const rangeGroups = [
 
   <script is:inline>
     (() => {
-      // 1. Floating transparent header -> glass bar on scroll
       const header = document.querySelector("[data-rgc-header]");
-      if (header) {
-        const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
+      const sentinel = document.querySelector("[data-rgc-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
       }
 
-      // 2. Editorial Navigation Dropdown with live preview swap
+      const tabs = [...document.querySelectorAll("[data-rgc-tab]")];
+      const panels = [...document.querySelectorAll("[data-rgc-panel]")];
+      const activateTab = (id, focusTab = false) => {
+        tabs.forEach((btn) => {
+          const active = btn.dataset.rgcTab === id;
+          btn.classList.toggle("is-active", active);
+          btn.setAttribute("aria-selected", active ? "true" : "false");
+          btn.tabIndex = active ? 0 : -1;
+          if (active && focusTab) btn.focus();
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.rgcPanel !== id;
+        });
+      };
+
+      tabs.forEach((btn, idx) => {
+        btn.addEventListener("click", () => activateTab(btn.dataset.rgcTab));
+        btn.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            activateTab(tabs[(idx + 1) % tabs.length].dataset.rgcTab, true);
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            activateTab(tabs[(idx - 1 + tabs.length) % tabs.length].dataset.rgcTab, true);
+          }
+        });
+      });
+
       const ddWrap = document.querySelector("[data-rgc-dd]");
       const trigger = ddWrap?.querySelector("[data-rgc-dd-trigger]");
       const panel = ddWrap?.querySelector("[data-rgc-dd-panel]");
       const previewImg = ddWrap?.querySelector("[data-rgc-dd-img]");
-      const previewTag = ddWrap?.querySelector("[data-rgc-dd-tag]");
+      const previewCaption = ddWrap?.querySelector("[data-rgc-dd-caption]");
       const items = ddWrap ? [...ddWrap.querySelectorAll("[data-rgc-dd-item]")] : [];
 
       if (ddWrap && trigger && panel) {
@@ -401,30 +503,32 @@ const rangeGroups = [
           if (e.key === "Escape") setOpen(false);
         });
         items.forEach((item) => {
-          const activate = () => {
+          const preview = () => {
             items.forEach((i) => i.classList.toggle("is-active", i === item));
             if (previewImg && item.dataset.img) previewImg.src = item.dataset.img;
-            if (previewTag && item.dataset.tag) previewTag.textContent = item.dataset.tag;
+            if (previewCaption && item.dataset.caption) previewCaption.textContent = item.dataset.caption;
           };
-          item.addEventListener("mouseenter", activate);
-          item.addEventListener("focus", activate);
-          item.addEventListener("click", () => setOpen(false));
+          item.addEventListener("mouseenter", preview);
+          item.addEventListener("focus", preview);
+          item.addEventListener("click", () => {
+            if (item.dataset.tab) activateTab(item.dataset.tab);
+            setOpen(false);
+          });
         });
       }
 
-      // 3. Direct enquiry confirmation sheet
       const form = document.querySelector("[data-rgc-form]");
       if (form) {
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           if (!form.reportValidity()) return;
           const fd = new FormData(form);
-          const subject = `Bike Enquiry — ${fd.get("category")} (${fd.get("name")})`;
+          const subject = `Bike enquiry: ${fd.get("category")} (${fd.get("name")})`;
           const body = [
             `Name: ${fd.get("name")}`,
             `Phone: ${fd.get("phone")}`,
             `Category: ${fd.get("category")}`,
-            `Rider Height / Size: ${fd.get("size") || "Not specified"}`,
+            `Rider height or size: ${fd.get("size") || "Not specified"}`,
             `Notes: ${fd.get("notes") || "None"}`,
           ].join("\n");
           const ev = new CustomEvent("mm:enquiry", {

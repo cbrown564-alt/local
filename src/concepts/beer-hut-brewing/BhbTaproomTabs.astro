@@ -1,140 +1,153 @@
 ---
-/* Beer Hut Brewing — Editorial Taproom, Shop & Community Tabs (Unslopped). */
-const channels = [
+/* Beer Hut Brewing: Small-Batch Cans, Taproom, and Pizza segmented tablist paired with fermenters pour plate */
+const shopHref = "https://beerhutbrewing.co.uk/";
+const phone = "07885 566599";
+
+const tabs = [
+  {
+    id: "cans",
+    label: "Small-batch cans",
+    summary: "Unfiltered flavour brewed below Slieve Binnian, cold-conditioned in Kilkeel and packed fresh to order.",
+    rows: [
+      {
+        title: "Rotating 440ml brewery releases",
+        detail: "Hazy pale ales, hop-forward IPAs, crisp lagers and dark stouts straight from cold storage.",
+        meta: "beerhutbrewing.co.uk",
+      },
+      {
+        title: "Beer Hut Sub Club",
+        detail: "Curated monthly boxes of our newest Kilkeel small-batch brews delivered across the UK and Ireland.",
+        meta: "Monthly boxes",
+      },
+      {
+        title: "Online shop and local pickup",
+        detail: "Order mixed packs, gift packs and brewery merch online with local click-and-collect in Kilkeel.",
+        meta: "Kilkeel collection",
+      },
+    ],
+    ctaLabel: "Shop fresh cans online",
+  },
   {
     id: "taproom",
-    label: "Saturday taproom",
-    title: "Fresh pours from the bright tanks alongside artisan pizza every Saturday.",
-    points: [
-      "Hazy IPAs, crisp pilsners, rich stouts and seasonal sours straight off the lines",
-      "Wood-fired artisan pizza served beside the brewhouse tanks in Kilkeel",
-      "Relaxed coastal atmosphere minutes from Kilkeel harbour and the Mournes",
+    label: "Taproom",
+    summary: "Fresh pours straight from the bright tanks beside the stainless fermenters every Saturday.",
+    rows: [
+      {
+        title: "Saturday brewhouse pours",
+        detail: "Hazy IPAs, crisp pilsners, rich stouts and seasonal sours served fresh off the Kilkeel lines.",
+        meta: "Saturdays",
+      },
+      {
+        title: "Minutes from the Mournes and harbour",
+        detail: "Relaxed coastal atmosphere at Binnian Enterprise Park after a day on the Mourne trails.",
+        meta: "Kilkeel BT34",
+      },
+      {
+        title: "Beer Hut Running Club",
+        detail: "Friendly local social runs across South Down finishing back at the brewhouse taproom.",
+        meta: "All welcome",
+      },
     ],
-    note: "Bring friends straight off the Mourne trails — check our shop or call 07885 566599 for seasonal hours.",
+    ctaLabel: "Check taproom releases",
   },
   {
-    id: "shop",
-    label: "Online shop",
-    title: "Small-batch cans, mixed packs and fresh brewery releases delivered to your door.",
-    points: [
-      "Direct-from-brewery cold-stored cans packed in Kilkeel",
-      "Rotating small-batch hazy pale ales, IPAs and dark releases",
-      "Gift packs and brewery merch ready to order at beerhutbrewing.co.uk",
+    id: "pizza",
+    label: "Pizza",
+    summary: "Artisan wood-fired pizza served right beside the tanks to match Saturday taproom pours.",
+    rows: [
+      {
+        title: "Served hot beside the fermenters",
+        detail: "Freshly baked artisan pizza pairing directly with cold-conditioned lagers, pale ales and IPAs.",
+        meta: "Taproom Saturdays",
+      },
+      {
+        title: "Built for groups off the trails",
+        detail: "Gather around timber tables in Kilkeel with friends, walkers and visiting brewery fans.",
+        meta: "Walk-ins and groups",
+      },
+      {
+        title: "Seasonal hours and updates",
+        detail: "Check beerhutbrewing.co.uk or ring the brewhouse desk directly ahead of your Saturday visit.",
+        meta: phone,
+      },
     ],
-    note: "Fresh releases drop regularly online alongside local click-and-collect in Kilkeel.",
-  },
-  {
-    id: "clubs",
-    label: "Sub Club & Running",
-    title: "Monthly brewery subscriptions and social Mourne running meet-ups.",
-    points: [
-      "Beer Hut Sub Club: curated monthly boxes of our newest Kilkeel brews",
-      "Beer Hut Running Club: friendly local runs finishing back at the taproom",
-      "First access to limited small-batch collaborations and taproom nights",
-    ],
-    note: "Both clubs are open to locals and weekend visitors across South Down.",
-  },
-  {
-    id: "trade",
-    label: "Trade stockists",
-    title: "Kegs and cans supplied to independent bars, restaurants and bottle shops.",
-    points: [
-      "Reliable independent Northern Ireland craft beer range",
-      "Fresh kegs and 440ml cans brewed at Binnian Enterprise Park",
-      "Direct trade support from our Kilkeel brewery team on 07885 566599",
-    ],
-    note: "Ring the brewery directly to discuss tap lines, mixed cases or seasonal pours.",
+    ctaLabel: "See Saturday updates",
   },
 ];
 ---
 
-<section class="bhb-section bhb-tabs-band" id="taproom" aria-labelledby="bhb-tabs-title">
-  <div class="bhb-wrap">
-    <div class="bhb-tabs-shell" data-bhb-tabs>
-      <div class="bhb-tabs-head">
-        <div>
-          <p class="bhb-eyebrow">Kilkeel brewhouse · Taproom &amp; community</p>
-          <h2 id="bhb-tabs-title">Four ways to experience Beer Hut.</h2>
-        </div>
-        <div class="bhb-tab-list" role="tablist" aria-label="Choose Beer Hut section">
-          {channels.map((ch, idx) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={idx === 0 ? "true" : "false"}
-              class:list={["bhb-tab", idx === 0 && "is-active"]}
-              data-bhb-tab={ch.id}
-            >
-              {ch.label}
-            </button>
-          ))}
-        </div>
+<section class="bhb-section bhb-bone" id="taproom" aria-labelledby="bhb-tabs-title">
+  <div class="bhb-wrap bhb-stage-grid">
+    <div class="bhb-stage-main" data-bhb-tabs>
+      <h2 id="bhb-tabs-title">Fresh off the Kilkeel tanks, in cans or at the bar.</h2>
+
+      <div class="bhb-tabs" role="tablist" aria-label="Small-batch cans, taproom and pizza">
+        {tabs.map((tab, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`bhb-tab-${tab.id}`}
+            aria-controls={`bhb-panel-${tab.id}`}
+            aria-selected={idx === 0 ? "true" : "false"}
+            class:list={["bhb-tab", idx === 0 && "is-active"]}
+            data-bhb-tab={tab.id}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      {channels.map((ch, idx) => (
-        <div class="bhb-panel" role="tabpanel" data-bhb-panel={ch.id} hidden={idx !== 0}>
-          <h3>{ch.title}</h3>
-          <ul class="bhb-points">
-            {ch.points.map((pt, pIdx) => (
-              <li>
-                <span class="bhb-pt-num">0{pIdx + 1}</span>
-                <span>{pt}</span>
-              </li>
+      {tabs.map((tab, idx) => (
+        <div
+          class="bhb-panel"
+          role="tabpanel"
+          id={`bhb-panel-${tab.id}`}
+          aria-labelledby={`bhb-tab-${tab.id}`}
+          data-bhb-panel={tab.id}
+          hidden={idx !== 0}
+        >
+          <p class="bhb-panel-summary">{tab.summary}</p>
+          <dl class="bhb-ledger">
+            {tab.rows.map((row) => (
+              <div class="bhb-ledger-row">
+                <dt>{row.title}</dt>
+                <dd>
+                  <span class="bhb-ledger-detail">{row.detail}</span>
+                  <span class="bhb-ledger-meta">{row.meta}</span>
+                </dd>
+              </div>
             ))}
-          </ul>
+          </dl>
           <div class="bhb-panel-foot">
-            <p class="bhb-note"><strong>Brewhouse note:</strong> {ch.note}</p>
-            <a class="bhb-arrow-btn" href="https://beerhutbrewing.co.uk/" target="_blank" rel="noopener noreferrer">
-              <span class="bhb-arrow-label">Visit online shop</span>
-              <span class="bhb-arrow-circle" aria-hidden="true">
-                <svg class="bhb-arrow bhb-arrow--primary" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                <svg class="bhb-arrow bhb-arrow--clone" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </span>
+            <a class="bhb-obsidian-btn" href={shopHref} target="_blank" rel="noopener noreferrer">
+              {tab.ctaLabel}
             </a>
           </div>
         </div>
       ))}
     </div>
+
+    <div class="bhb-stage-visual">
+      <figure class="bhb-plate">
+        <picture>
+          <source
+            srcset="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-640.webp 640w, /media/concepts/beer-hut-brewing/beer-hut-fermenters-pour-1265.webp 1265w"
+            sizes="(max-width: 960px) 100vw, 44vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/beer-hut-brewing/beer-hut-fermenters-pour.jpg"
+            alt="Golden hazy IPA pouring from a brushed steel tap into a stemmed tasting glass against dark slate and stainless steel tanks"
+            width="1408"
+            height="768"
+            loading="lazy"
+          />
+        </picture>
+        <figcaption>Indicative small-batch hazy IPA tap pour visualisation.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
-
-<style>
-  .bhb-tabs-shell { border-top: 1px solid var(--bhb-line); padding-top: clamp(32px, 4.5vw, 52px); }
-  .bhb-tabs-head {
-    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;
-    padding-bottom: 28px; border-bottom: 1px solid var(--bhb-line);
-  }
-  .bhb-tabs-head h2 {
-    margin: 0; font-family: var(--bhb-display); font-size: clamp(1.85rem, 3.2vw, 2.65rem);
-    font-weight: 700; letter-spacing: -0.02em; line-height: 1.06; color: var(--bhb-ink);
-  }
-  .bhb-tab-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .bhb-tab {
-    padding: 9px 16px; border: 1px solid var(--bhb-line); background: transparent; color: var(--bhb-muted);
-    font-family: var(--bhb-sans); font-size: 0.86rem; font-weight: 500; border-radius: 999px; cursor: pointer;
-    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
-  }
-  .bhb-tab:hover { color: var(--bhb-ink); border-color: rgba(243, 244, 246, 0.34); }
-  .bhb-tab.is-active { background: var(--bhb-accent); border-color: var(--bhb-accent); color: #101315; font-weight: 600; }
-  .bhb-panel { padding-top: 32px; }
-  .bhb-panel h3 {
-    margin: 0 0 26px; font-family: var(--bhb-display); font-size: clamp(1.28rem, 2vw, 1.6rem);
-    font-weight: 600; line-height: 1.25; color: var(--bhb-ink); max-width: 48ch;
-  }
-  .bhb-points {
-    list-style: none; padding: 0; margin: 0 0 32px;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px);
-  }
-  .bhb-points li {
-    padding-top: 16px; border-top: 1px solid var(--bhb-line); display: grid; gap: 8px;
-    font-size: 0.94rem; line-height: 1.6; color: var(--bhb-muted);
-  }
-  .bhb-pt-num { font-size: 0.74rem; font-variant-numeric: tabular-nums; color: var(--bhb-accent); font-weight: 600; }
-  .bhb-panel-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
-  .bhb-note { margin: 0; font-size: 0.9rem; color: var(--bhb-muted); max-width: 54ch; line-height: 1.55; }
-  .bhb-note strong { color: var(--bhb-ink); font-weight: 600; }
-  @media (max-width: 820px) { .bhb-points { grid-template-columns: minmax(0, 1fr); } }
-</style>
 
 <script is:inline>
   (() => {
@@ -142,16 +155,25 @@ const channels = [
     if (!root) return;
     const tabs = [...root.querySelectorAll("[data-bhb-tab]")];
     const panels = [...root.querySelectorAll("[data-bhb-panel]")];
-    tabs.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-bhb-tab");
-        tabs.forEach((t) => {
-          const active = t === btn;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        panels.forEach((p) => { p.hidden = p.getAttribute("data-bhb-panel") !== id; });
+
+    const activateTab = (id) => {
+      if (!id) return;
+      tabs.forEach((t) => {
+        const active = t.getAttribute("data-bhb-tab") === id;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", active ? "true" : "false");
       });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute("data-bhb-panel") !== id;
+      });
+    };
+
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => activateTab(btn.getAttribute("data-bhb-tab")));
+    });
+
+    document.querySelectorAll("[data-bhb-nav-tab]").forEach((link) => {
+      link.addEventListener("click", () => activateTab(link.getAttribute("data-bhb-nav-tab")));
     });
   })();
 </script>
