@@ -13,161 +13,318 @@ const phoneHref = "tel:+442844841141";
 const email = "burfordlodge30@aol.com";
 const mapsHref = "https://www.google.com/maps/search/?api=1&query=Burford+Lodge+Guest+House+30+Quay+Street+Ardglass+BT30+7SA";
 
+const roomViews = [
+  {
+    id: "harbour",
+    tabLabel: "Harbour view",
+    title: "Seafront king and double rooms",
+    roomValue: "Seafront King / Double",
+    summary:
+      "Front-facing sash windows look directly across Ardglass Marina, stone harbour walls, and open Irish Sea light, with private en-suite bathrooms and tea and coffee trays ready for quiet mornings.",
+    details: [
+      { label: "Outlook", value: "Directly opposite Ardglass Marina and the Irish Sea" },
+      { label: "In the room", value: "Private en-suite, Wi-Fi, flat-screen TV, tea and coffee tray" },
+      { label: "Best suited to", value: "Couples, solo coastal breaks, and early tee times" },
+    ],
+    imgBase: "/media/concepts/burford-lodge/burford-lodge-harbour-view",
+    alt: "Seafront guest-house bedroom looking through white sash windows across stone marina walls, sailboats, and morning Irish Sea light",
+    caption: "Harbour-facing bedroom overlooking Ardglass Marina. Indicative visualisation.",
+  },
+  {
+    id: "family",
+    tabLabel: "Family and golf",
+    title: "Triple and family en-suite bedrooms",
+    roomValue: "Triple / Family En-Suite",
+    summary:
+      "Generous en-suite layouts built for golf fourballs playing Ardglass links, coastal cyclists, and families exploring Downpatrick, Castle Ward, and the Lecale shore together.",
+    details: [
+      { label: "Layout", value: "Spacious double-and-twin or triple en-suite configurations" },
+      { label: "Golf access", value: "Two minutes on foot to Ardglass Golf Club and the 1405 clubhouse" },
+      { label: "Best suited to", value: "Golf pairings, visiting families, and coastal walkers" },
+    ],
+    imgBase: "/media/concepts/burford-lodge/burford-lodge-family-room",
+    alt: "Bright coastal guest-house family bedroom with oak double and twin beds, white linen, slate-blue wool throws, kettle tray, and tall sash windows looking over the sea",
+    caption: "Coastal triple and family guest bedroom. Indicative visualisation.",
+  },
+  {
+    id: "dogs",
+    tabLabel: "Dog-friendly",
+    title: "Bring the family dog along",
+    roomValue: "Dog-Friendly Stay",
+    summary:
+      "Burford Lodge is a family-run house where well-behaved dogs stay alongside you. Harbour paths, quiet stone walls, and open Lecale coastal walks begin right across Quay Street.",
+    details: [
+      { label: "House policy", value: "Well-behaved family dogs welcomed by direct arrangement" },
+      { label: "Morning walks", value: "Quay Street seafront and harbour wall steps from the front door" },
+      { label: "Nearby coast", value: "Killough Bay five minutes south and quiet strands along Lecale" },
+    ],
+    imgBase: "/media/concepts/burford-lodge/burford-lodge-coastal-walk",
+    alt: "Golden-brown retriever walking along a sunlit grassy coastal path beside a granite stone harbour wall, fishing boats, and green clifftop links",
+    caption: "Morning walk along the County Down harbour wall and clifftop links. Indicative visualisation.",
+  },
+];
+
 const stayGroups = [
   {
     id: "rooms",
     label: "Six En-Suite Rooms",
     items: [
-      { name: "Seafront King & Double Rooms", note: "Front-facing sash windows looking directly over Ardglass Marina and the Irish Sea", meta: "Harbour view" },
-      { name: "Triple & Family Bedrooms", note: "Spacious en-suite family rooms with tea & coffee trays, Wi-Fi and flat-screen TVs", meta: "Families welcome" },
+      { name: "Seafront King and Double Rooms", note: "Front-facing sash windows looking directly over Ardglass Marina and the Irish Sea", meta: "Harbour view" },
+      { name: "Triple and Family Bedrooms", note: "Spacious en-suite family rooms with tea and coffee trays, Wi-Fi, and flat-screen TVs", meta: "Families welcome" },
       { name: "Dog-Friendly Stays", note: "Family-run guest house where well-behaved family dogs are welcome alongside guests", meta: "Pets welcome" },
     ],
   },
   {
     id: "breakfast",
-    label: "Breakfast & Golf Base",
+    label: "Breakfast and Golf Base",
     items: [
-      { name: "Cooked-to-Order Breakfast", note: "Full Irish breakfast, smoked salmon on wheaten bread, eggs and fresh coffee", meta: "Included" },
-      { name: "Ardglass Golf Club", note: "Minutes from the world-famous clifftop links and 1405 castle clubhouse", meta: "2 mins away" },
-      { name: "Lecale & Strangford Coast", note: "Easy base for Castle Ward, Downpatrick, Strangford Ferry and coastal walks", meta: "Quay Street" },
+      { name: "Cooked-to-Order Breakfast", note: "Full Irish breakfast, smoked salmon on wheaten bread, poached eggs, and fresh coffee", meta: "Included" },
+      { name: "Ardglass Golf Club", note: "Minutes on foot from the clifftop links and 1405 castle clubhouse", meta: "2 mins away" },
+      { name: "Lecale and Strangford Coast", note: "Easy base for Killough Bay, Downpatrick, Castle Ward, and Strangford Ferry", meta: "Quay Street" },
     ],
   },
 ];
 ---
 
 <ConceptLayout
-  title="Burford Lodge Guest House — Quay Street, Ardglass"
+  title="Burford Lodge Guest House, 30 Quay Street, Ardglass"
   slug="burford-lodge"
   bodyClass="concept-page concept-burford"
   businessName="Burford Lodge Guest House"
   town="Ardglass"
-  bannerNote="Imagery comprises indicative harbour-view bedroom and coastal breakfast visualisations."
+  bannerNote="Imagery comprises indicative harbour-view bedroom, coastal breakfast, and Lecale walk visualisations."
 >
-  <header class="bl-header">
+  <header class="bl-header" data-bl-header>
     <div class="bl-header-inner">
-      <a class="bl-brand" href="#top">
-        <strong>Burford Lodge</strong>
-        <span>30 Quay Street · Ardglass</span>
-      </a>
+      <a class="bl-brand" href="#top">Burford Lodge</a>
       <nav class="bl-nav" aria-label="Primary">
         <a href="#rooms">Rooms</a>
-        <a href="#breakfast">Breakfast &amp; Golf</a>
-        <a href="#direct-booking">Book Direct</a>
+        <a href="#breakfast">Morning table</a>
+        <a href="#direct-booking">Book direct</a>
         <a href="#location">Quay Street</a>
       </nav>
       <div class="bl-header-actions">
         <a class="bl-header-tel" href={phoneHref}>{phone}</a>
-        <a class="bl-header-cta" href="#direct-booking">Enquire Direct</a>
+        <a class="bl-header-cta" href="#direct-booking">Enquire direct</a>
       </div>
     </div>
   </header>
 
   <main id="top">
     <section class="bl-hero" aria-labelledby="bl-hero-title">
-      <div class="bl-wrap">
-        <div class="bl-hero-head">
-          <p class="bl-kicker">30 Quay Street · Ardglass Marina · County Down</p>
-          <h1 id="bl-hero-title">Six seafront rooms opposite Ardglass Marina.</h1>
-          <p class="bl-lead">
-            A family-run guest house on the harbour front, two minutes from Ardglass Golf Club,
-            with smoked salmon or a Full Irish on the breakfast table and a warm welcome for dogs.
+      <div class="bl-hero-sentinel" data-bl-sentinel aria-hidden="true"></div>
+
+      <div class="bl-hero-media">
+        <picture>
+          <source
+            srcset="/media/concepts/burford-lodge/burford-lodge-harbour-view-640.webp 640w, /media/concepts/burford-lodge/burford-lodge-harbour-view-1265.webp 1265w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="/media/concepts/burford-lodge/burford-lodge-harbour-view.jpg"
+            alt="Seafront guest-house bedroom looking through white sash windows across Ardglass stone marina walls, sailboats, and morning Irish Sea light"
+            width="1408"
+            height="768"
+            loading="eager"
+          />
+        </picture>
+      </div>
+
+      <div class="bl-hero-scrim" aria-hidden="true"></div>
+
+      <div class="bl-wrap bl-hero-content">
+        <div class="bl-hero-copy">
+          <h1 id="bl-hero-title">Wake to Ardglass harbour outside your window.</h1>
+          <p class="bl-hero-sub">
+            Six family-run en-suite bedrooms facing Ardglass Marina, two minutes from the golf club,
+            with cooked-to-order breakfast and dogs welcome.
           </p>
-          <div class="bl-actions">
-            <a class="bl-btn bl-btn--primary" href="#direct-booking">Check Dates Direct</a>
-            <SpecimenSheet
-              id="bl-stay-sheet"
-              triggerLabel="Rooms & Golf Guide"
-              kicker="Burford Lodge · 30 Quay Street, Ardglass"
-              title="Seafront Rooms, Breakfast & Local Links"
-              subtitle="Six en-suite rooms opposite the marina. Ring or message direct for best rates."
-              groups={stayGroups}
-              ctaLabel="Send Direct Room Request"
-              ctaHref="#direct-booking"
-              secondaryLabel={`Call ${phone}`}
-              secondaryHref={phoneHref}
-              buttonClass="bl-link-trigger"
-            />
+          <div class="bl-hero-foot">
+            <a class="bl-btn bl-btn--light" href="#direct-booking">Check dates direct</a>
+            <p class="bl-hero-caption">
+              Harbour-facing room, 30 Quay Street. Indicative visualisation.
+            </p>
           </div>
         </div>
-
-        <figure class="bl-hero-figure">
-          <picture>
-            <source srcset="/media/concepts/burford-lodge/burford-lodge-harbour-view-640.webp 640w, /media/concepts/burford-lodge/burford-lodge-harbour-view-1265.webp 1265w" sizes="(max-width: 900px) 100vw, 90vw" type="image/webp" />
-            <img src="/media/concepts/burford-lodge/burford-lodge-harbour-view.jpg" alt="Seafront guest-house bedroom looking out across stone marina walls and morning Irish Sea light" width="1408" height="768" loading="eager" />
-          </picture>
-          <figcaption>Morning view over Ardglass harbour. Indicative seafront bedroom visualisation.</figcaption>
-        </figure>
-
-        <dl class="bl-facts">
-          <div><dt>Accommodation</dt><dd>6 En-Suite Bedrooms</dd></div>
-          <div><dt>Ardglass Golf Club</dt><dd>2 Minutes on Foot</dd></div>
-          <div><dt>Morning Table</dt><dd>Smoked Salmon &amp; Full Irish</dd></div>
-          <div><dt>Family Dogs</dt><dd>Welcome Throughout</dd></div>
-        </dl>
       </div>
     </section>
 
     <section class="bl-section bl-rooms" id="rooms" aria-labelledby="bl-rooms-title">
       <div class="bl-wrap">
-        <p class="bl-kicker">Accommodation</p>
-        <h2 id="bl-rooms-title">Quiet coastal rooms built for golfers, walkers and families.</h2>
-        <div class="bl-cards">
-          <article class="bl-card">
-            <h3>Harbour-View King &amp; Double</h3>
-            <p>Front rooms overlooking Ardglass Marina so you wake to fishing boats, rigging and open Irish Sea light.</p>
-          </article>
-          <article class="bl-card">
-            <h3>Triple &amp; Family Rooms</h3>
-            <p>Generous en-suite rooms suited to golf fourballs, coastal cyclists and families exploring Lecale.</p>
-          </article>
-          <article class="bl-card">
-            <h3>Dogs Welcome Too</h3>
-            <p>Bring the family dog along. Coastal paths, quiet beaches and harbour walls begin across the road.</p>
-          </article>
+        <div class="bl-rooms-head">
+          <div>
+            <h2 id="bl-rooms-title">Quiet coastal rooms on the quay.</h2>
+            <p class="bl-section-copy">
+              Every bedroom is en-suite, calm after a day on the links or coast, and looked after directly
+              by the family running 30 Quay Street.
+            </p>
+          </div>
+          <div class="bl-guide-slot">
+            <SpecimenSheet
+              id="bl-stay-sheet"
+              triggerLabel="Rooms and golf guide"
+              kicker="Burford Lodge · 30 Quay Street, Ardglass"
+              title="Seafront Rooms, Breakfast and Local Links"
+              subtitle="Six en-suite rooms opposite the marina. Ring or message direct for room availability."
+              groups={stayGroups}
+              ctaLabel="Send direct room request"
+              ctaHref="#direct-booking"
+              secondaryLabel={`Call ${phone}`}
+              secondaryHref={phoneHref}
+              buttonClass="bl-guide-trigger"
+            />
+          </div>
+        </div>
+
+        <div class="bl-tabs" role="tablist" aria-label="Room and stay options">
+          {roomViews.map((view, idx) => (
+            <button
+              type="button"
+              role="tab"
+              id={`bl-tab-${view.id}`}
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`bl-panel-${view.id}`}
+              tabindex={idx === 0 ? "0" : "-1"}
+              class={`bl-tab${idx === 0 ? " is-active" : ""}`}
+              data-bl-tab={view.id}
+            >
+              {view.tabLabel}
+            </button>
+          ))}
+        </div>
+
+        <div class="bl-room-stage">
+          {roomViews.map((view, idx) => (
+            <article
+              id={`bl-panel-${view.id}`}
+              role="tabpanel"
+              aria-labelledby={`bl-tab-${view.id}`}
+              class={`bl-room-panel${idx === 0 ? " is-active" : ""}`}
+              data-bl-panel={view.id}
+              hidden={idx !== 0}
+            >
+              <figure class="bl-room-figure">
+                <picture>
+                  <source
+                    srcset={`${view.imgBase}-640.webp 640w, ${view.imgBase}-1265.webp 1265w`}
+                    sizes="(max-width: 900px) 100vw, 58vw"
+                    type="image/webp"
+                  />
+                  <img
+                    src={`${view.imgBase}.jpg`}
+                    alt={view.alt}
+                    width="1408"
+                    height="768"
+                    loading="lazy"
+                  />
+                </picture>
+                <figcaption>{view.caption}</figcaption>
+              </figure>
+
+              <div class="bl-room-info">
+                <h3>{view.title}</h3>
+                <p>{view.summary}</p>
+                <dl class="bl-spec-list">
+                  {view.details.map((row) => (
+                    <div class="bl-spec-row">
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <a
+                  class="bl-btn bl-btn--primary"
+                  href="#direct-booking"
+                  data-bl-select-room={view.roomValue}
+                >
+                  Enquire about this stay
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
     <section class="bl-section bl-breakfast" id="breakfast" aria-labelledby="bl-breakfast-title">
-      <div class="bl-wrap bl-split">
+      <div class="bl-wrap bl-breakfast-grid">
         <figure class="bl-plate">
           <picture>
-            <source srcset="/media/concepts/burford-lodge/burford-lodge-morning-breakfast-640.webp 640w, /media/concepts/burford-lodge/burford-lodge-morning-breakfast-1265.webp 1265w" sizes="(max-width: 860px) 100vw, 48vw" type="image/webp" />
-            <img src="/media/concepts/burford-lodge/burford-lodge-morning-breakfast.jpg" alt="Smoked salmon on dark wheaten bread with poached eggs and fresh coffee beside a sunlit sash window" width="1408" height="768" loading="lazy" />
+            <source
+              srcset="/media/concepts/burford-lodge/burford-lodge-morning-breakfast-640.webp 640w, /media/concepts/burford-lodge/burford-lodge-morning-breakfast-1265.webp 1265w"
+              sizes="(max-width: 900px) 100vw, 52vw"
+              type="image/webp"
+            />
+            <img
+              src="/media/concepts/burford-lodge/burford-lodge-morning-breakfast.jpg"
+              alt="Smoked salmon on dark wheaten bread with poached eggs, butter, and fresh coffee beside a sunlit harbour sash window"
+              width="1408"
+              height="768"
+              loading="lazy"
+            />
           </picture>
           <figcaption>Cooked-to-order morning table at Quay Street. Indicative breakfast visualisation.</figcaption>
         </figure>
-        <div>
-          <p class="bl-kicker">Morning Table &amp; Nearby</p>
-          <h2 id="bl-breakfast-title">Smoked salmon or a Full Irish before your first tee time.</h2>
+
+        <div class="bl-breakfast-copy">
+          <h2 id="bl-breakfast-title">Smoked salmon or a Full Irish before the first tee.</h2>
           <p>
-            Start the morning with locally smoked salmon, poached eggs, or a traditional Full Irish breakfast
-            before walking up to Ardglass Golf Club or driving ten minutes to Downpatrick and Castle Ward.
+            Every stay starts with a freshly cooked morning table beside the harbour windows, from
+            locally smoked salmon on dark wheaten bread and poached eggs to a traditional Full Irish
+            breakfast with fresh coffee.
           </p>
           <ul class="bl-nearby">
-            <li><span>Ardglass Golf Club</span><strong>2 mins</strong></li>
-            <li><span>Ardglass Marina &amp; Seafront</span><strong>Opposite</strong></li>
-            <li><span>Downpatrick &amp; St Patrick Centre</span><strong>12 mins</strong></li>
-            <li><span>Strangford Ferry &amp; Castle Ward</span><strong>15 mins</strong></li>
+            <li>
+              <span>Ardglass Marina and seafront</span>
+              <strong>Opposite</strong>
+            </li>
+            <li>
+              <span>Ardglass Golf Club and 1405 clubhouse</span>
+              <strong>2 mins on foot</strong>
+            </li>
+            <li>
+              <span>Killough Bay</span>
+              <strong>5 mins</strong>
+            </li>
+            <li>
+              <span>Downpatrick and St Patrick Centre</span>
+              <strong>12 mins</strong>
+            </li>
+            <li>
+              <span>Strangford Ferry and Castle Ward</span>
+              <strong>15 mins</strong>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="bl-section bl-booking" id="direct-booking" aria-labelledby="bl-book-title">
-      <div class="bl-wrap bl-split">
-        <div>
-          <p class="bl-kicker">Direct Enquiries</p>
+      <div class="bl-wrap bl-booking-grid">
+        <div class="bl-booking-intro">
           <h2 id="bl-book-title">Book straight with Quay Street.</h2>
           <p>
-            Tell us your arrival date, nights and room mix, whether it is a seafront double, a golf fourball,
-            or a dog-friendly family stay, and we will reply directly from Burford Lodge.
+            Send your dates, room mix, and any early tee times or dog details directly to Burford Lodge
+            and we will reply personally from the house.
           </p>
-          <p class="bl-direct-meta">
-            Telephone: <a href={phoneHref}>{phone}</a><br />
-            Email: <a href={`mailto:${email}`}>{email}</a>
-          </p>
+
+          <dl class="bl-contact-list">
+            <div class="bl-contact-row">
+              <dt>Telephone</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div class="bl-contact-row">
+              <dt>Email</dt>
+              <dd><a href={`mailto:${email}`}>{email}</a></dd>
+            </div>
+            <div class="bl-contact-row">
+              <dt>Address</dt>
+              <dd>30 Quay Street, Ardglass, Co. Down, BT30 7SA</dd>
+            </div>
+          </dl>
         </div>
+
         <form class="bl-form" data-bl-form>
           <div class="bl-row">
             <label>
@@ -176,7 +333,7 @@ const stayGroups = [
             </label>
             <label>
               <span>Telephone</span>
-              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 / 07..." />
+              <input name="phone" type="tel" required autocomplete="tel" placeholder="028 or 07..." />
             </label>
           </div>
           <div class="bl-row">
@@ -191,7 +348,7 @@ const stayGroups = [
           </div>
           <label>
             <span>Room preference</span>
-            <select name="room">
+            <select name="room" data-bl-room-select>
               <option value="Seafront King / Double">Seafront King / Double (Harbour View)</option>
               <option value="Twin / Golf Pairing">Twin Room / Golf Group</option>
               <option value="Triple / Family En-Suite">Triple or Family En-Suite</option>
@@ -199,24 +356,36 @@ const stayGroups = [
             </select>
           </label>
           <label>
-            <span>Notes (tee times, early breakfast, bringing a dog)</span>
-            <textarea name="notes" rows="3" placeholder="Let us know any early golf start or dog details..."></textarea>
+            <span>Notes for your stay</span>
+            <textarea name="notes" rows="3" placeholder="Early golf breakfast, twin beds, or bringing a family dog..."></textarea>
           </label>
-          <button class="bl-btn bl-btn--primary" type="submit">Send Direct Stay Request</button>
+          <p class="bl-stay-echo" data-bl-echo aria-live="polite">
+            2 nights, Seafront King / Double (Harbour View)
+          </p>
+          <button class="bl-btn bl-btn--primary" type="submit">Send direct stay request</button>
         </form>
       </div>
     </section>
 
-    <section class="bl-section bl-map-band" id="location" aria-label="Ardglass location map">
+    <section class="bl-section bl-map-band" id="location" aria-labelledby="bl-location-title">
       <div class="bl-wrap">
+        <div class="bl-location-head">
+          <h2 id="bl-location-title">On the harbour wall in Ardglass.</h2>
+          <p class="bl-section-copy">
+            Set on Quay Street on the Lecale Peninsula, an easy coastal drive from Downpatrick,
+            Killough Bay, and the Strangford Lough ferry crossing.
+          </p>
+        </div>
+
         <LocalAreaMap
           id="bl-map"
-          kicker="Lecale Peninsula & Irish Sea"
-          businessName="Burford Lodge Guest House"
+          kicker=""
+          businessName="Burford Lodge"
           address="30 Quay Street, Ardglass, Downpatrick, BT30 7SA"
           lon={-5.608527}
           lat={54.2612987}
           spanKm={16}
+          showFerry={true}
           mapHref={mapsHref}
           markers={[
             { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "12 mins west", side: "l" },
@@ -237,35 +406,129 @@ const stayGroups = [
       <div class="bl-footer-links">
         <a href={phoneHref}>{phone}</a>
         <a href={`mailto:${email}`}>{email}</a>
+        <a href="#top">Back to top</a>
       </div>
     </div>
   </footer>
 
   <script is:inline>
     (() => {
-      const form = document.querySelector("[data-bl-form]");
-      if (!form) return;
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-        const fd = new FormData(form);
-        const subject = `Room Enquiry — ${fd.get("checkin")} (${fd.get("nights")} nights)`;
-        const body = [
-          `Name: ${fd.get("name")}`,
-          `Phone: ${fd.get("phone")}`,
-          `Check-in: ${fd.get("checkin")}`,
-          `Nights: ${fd.get("nights")}`,
-          `Room: ${fd.get("room")}`,
-          `Notes: ${fd.get("notes") || "None"}`,
-        ].join("\n");
-        const ev = new CustomEvent("mm:enquiry", {
-          cancelable: true,
-          detail: { to: "burfordlodge30@aol.com", subject, body, phone: "028 4484 1141", phoneHref: "tel:+442844841141" },
+      // Sticky header surface separation once scrolled past opening edge
+      const header = document.querySelector("[data-bl-header]");
+      const sentinel = document.querySelector("[data-bl-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
+      }
+
+      // Interactive Rooms & Stay segmented tablist
+      const tabs = Array.from(document.querySelectorAll("[data-bl-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-bl-panel]"));
+
+      const activateTab = (targetId, moveFocus = false) => {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute("data-bl-tab") === targetId;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.setAttribute("tabindex", active ? "0" : "-1");
+          if (active && moveFocus) tab.focus();
         });
-        if (window.dispatchEvent(ev)) {
-          window.location.href = `mailto:burfordlodge30@aol.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
+        panels.forEach((panel) => {
+          const active = panel.getAttribute("data-bl-panel") === targetId;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      };
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-bl-tab");
+          if (id) activateTab(id);
+        });
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+          e.preventDefault();
+          let next = idx;
+          if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+          if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+          if (e.key === "Home") next = 0;
+          if (e.key === "End") next = tabs.length - 1;
+          const nextId = tabs[next]?.getAttribute("data-bl-tab");
+          if (nextId) activateTab(nextId, true);
+        });
       });
+
+      // Pre-select room preference when jumping from a stay panel to the direct booking form
+      const roomSelect = document.querySelector("[data-bl-room-select]");
+      const echo = document.querySelector("[data-bl-echo]");
+      const form = document.querySelector("[data-bl-form]");
+
+      const updateEcho = () => {
+        if (!form || !echo) return;
+        const checkin = form.querySelector('input[name="checkin"]')?.value || "";
+        const nightsVal = Number(form.querySelector('input[name="nights"]')?.value || 2);
+        const nightsLabel = nightsVal === 1 ? "1 night" : `${nightsVal} nights`;
+        const roomLabel = roomSelect?.selectedOptions?.[0]?.textContent || "Seafront King / Double";
+        if (checkin) {
+          const dt = new Date(`${checkin}T12:00:00`);
+          const formatted = Number.isNaN(dt.getTime())
+            ? checkin
+            : dt.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+          echo.textContent = `${nightsLabel} from ${formatted}, ${roomLabel}`;
+        } else {
+          echo.textContent = `${nightsLabel}, ${roomLabel}`;
+        }
+      };
+
+      document.querySelectorAll("[data-bl-select-room]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const val = link.getAttribute("data-bl-select-room");
+          if (roomSelect && val) {
+            roomSelect.value = val;
+            roomSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            updateEcho();
+          }
+        });
+      });
+
+      if (form) {
+        form.addEventListener("input", updateEcho);
+        form.addEventListener("change", updateEcho);
+        updateEcho();
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const fd = new FormData(form);
+          const subject = `Room enquiry: ${fd.get("checkin")} (${fd.get("nights")} nights)`;
+          const body = [
+            `Name: ${fd.get("name")}`,
+            `Phone: ${fd.get("phone")}`,
+            `Check-in: ${fd.get("checkin")}`,
+            `Nights: ${fd.get("nights")}`,
+            `Room: ${fd.get("room")}`,
+            `Notes: ${fd.get("notes") || "None"}`,
+          ].join("\n");
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: {
+              to: "burfordlodge30@aol.com",
+              subject,
+              body,
+              phone: "028 4484 1141",
+              phoneHref: "tel:+442844841141",
+            },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = `mailto:burfordlodge30@aol.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          }
+        });
+      }
     })();
   </script>
 </ConceptLayout>

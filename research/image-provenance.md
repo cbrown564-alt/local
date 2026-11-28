@@ -1896,13 +1896,23 @@ Twenty bespoke atmospheric visualisations (two per business) generated on 26 Nov
 - `public/media/concepts/burford-lodge/burford-lodge-harbour-view.jpg`
   - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
   - Subject: Bright seafront guest-house window overlooking Ardglass-style stone marina walls, white sailboats, and Irish Sea morning light with crisp cotton linen
-  - Usage: Full-bleed seafront hero on `/concepts/burford-lodge/` & `/for/burford-lodge-b5g4/`
+  - Usage: Full-bleed seafront hero and harbour-view stay panel on `/concepts/burford-lodge/` & `/for/burford-lodge-b5g4/`
   - Limits: Indicative coastal room visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
 - `public/media/concepts/burford-lodge/burford-lodge-morning-breakfast.jpg`
   - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 26 November 2026
   - Subject: Sunlit coastal breakfast table with smoked salmon on dark wheaten bread, poached eggs, lemon wedges, and stoneware coffee pot
   - Usage: Breakfast & coastal stay section plate
   - Limits: Indicative breakfast visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/burford-lodge/burford-lodge-family-room.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 28 November 2026
+  - Subject: Bright coastal guest-house family and twin bedroom with oak headboards, white cotton linen, slate-blue wool throws, tea and kettle tray, and tall sash windows looking over the Irish Sea
+  - Usage: Interactive Rooms & Stay explorer (Family and golf rooms tab) on `/concepts/burford-lodge/` & `/for/burford-lodge-b5g4/`
+  - Limits: Indicative guest-house bedroom visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
+- `public/media/concepts/burford-lodge/burford-lodge-coastal-walk.jpg`
+  - Mode: AI-generated editorial visualisation; built-in `image-generator`; generated 28 November 2026
+  - Subject: Sunlit morning coastal walk with a golden-brown retriever beside a weathered granite stone harbour wall overlooking calm fishing boats and green clifftop links along the County Down coast
+  - Usage: Interactive Rooms & Stay explorer (Dog-friendly stays tab) on `/concepts/burford-lodge/` & `/for/burford-lodge-b5g4/`
+  - Limits: Indicative County Down coastal walk visualisation; disclosed in visible `<figcaption>` and `ConceptLayout` bannerNote.
 
 ### Meelmore Lodge (Bryansford)
 - `public/media/concepts/meelmore-lodge/meelmore-lodge-trassey-trailhead.jpg`
