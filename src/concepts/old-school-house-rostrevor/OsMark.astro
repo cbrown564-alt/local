@@ -1,10 +1,17 @@
 ---
 interface Props {
   size?: number;
-  tone?: "brick" | "cream" | "slate";
+  tone?: "brick" | "cream" | "slate" | "current";
 }
 const { size = 40, tone = "brick" } = Astro.props;
-const stroke = tone === "cream" ? "#faf6ed" : tone === "slate" ? "#22272a" : "#c0563c";
+const stroke =
+  tone === "current"
+    ? "currentColor"
+    : tone === "cream"
+      ? "#faf6ed"
+      : tone === "slate"
+        ? "#22272a"
+        : "#b84426";
 ---
 <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
   <rect x="3" y="3" width="42" height="42" rx="4" stroke={stroke} stroke-width="1.5" />

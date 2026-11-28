@@ -1,266 +1,195 @@
-/* The Mulberry Tree — Seaforde Gastronomic Broadsheet & Larder Provenance Trace */
+/* The Mulberry Tree: Modern Woodland Broadsheet (Centered Lockup + Wide Plate) */
 
-.concept-mulberry {
-  --mt-paper: #f5efe4;
-  --mt-sheet: #fbf8f1;
-  --mt-plum: #4a1d31;
-  --mt-plum-deep: #2e101e;
-  --mt-moss: #284133;
-  --mt-brass: #8a6b28;
-  --mt-ink: #191716;
-  --mt-muted: #56504b;
-  --mt-rule: rgba(25, 23, 22, 0.22);
+body.concept-mulberry {
+  --mt-ground: #f6f5f2;
+  --mt-surface: #ffffff;
+  --mt-limestone: #eceae4;
+  --mt-mulberry: #321120;
+  --mt-mulberry-deep: #220a15;
+  --mt-accent: #5c1e3a;
+  --mt-gold-light: #e5c79e;
+  --mt-ink: #1a1618;
+  --mt-muted: #544d50;
+  --mt-ink-on-dark: #f6f5f2;
+  --mt-muted-on-dark: rgba(246, 245, 242, 0.78);
+  --mt-line: rgba(26, 22, 24, 0.14);
+  --mt-line-dark: rgba(246, 245, 242, 0.18);
+
   --mt-serif: "Crimson Pro", Georgia, serif;
   --mt-sans: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Strict 3-size body scale below hero */
+  --mt-text-heading: clamp(2rem, 3.4vw, 2.85rem);
+  --mt-text-body: 1.0625rem;
+  --mt-text-sm: 0.875rem;
+
   --mt-max: 1240px;
   --mt-gutter: clamp(20px, 4.5vw, 56px);
+  --mt-header-h: 72px;
+  --mt-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  background: var(--mt-paper);
+  margin: 0;
+  background: var(--mt-ground);
   color: var(--mt-ink);
   font-family: var(--mt-sans);
+  font-size: var(--mt-text-body);
   line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
 }
 
 .mt-wrap {
   width: min(var(--mt-max), calc(100% - (var(--mt-gutter) * 2)));
   margin: 0 auto;
-  padding: 0;
 }
 
-/* Broadsheet Newspaper Masthead */
-.mt-masthead {
+/* Single-line borderless header on gallery-limestone */
+.mt-header {
   display: block;
-  background: var(--mt-paper);
-  padding-top: 12px;
-}
-
-.mt-dateline {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  padding: 8px 0;
-  border-top: 2px solid var(--mt-ink);
-  border-bottom: 1px solid var(--mt-rule);
-  font-size: 0.76rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--mt-muted);
-}
-
-.mt-dateline strong {
-  color: var(--mt-plum);
-}
-
-.mt-dateline a {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--mt-header-h);
+  background: rgba(246, 245, 242, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
   color: var(--mt-ink);
-  font-weight: 700;
-  text-decoration: none;
+  transition: border-color 200ms var(--mt-ease);
 }
 
-.mt-titleplate {
-  text-align: center;
-  padding: 14px 0 10px;
-  border-bottom: 3px double var(--mt-ink);
+.mt-header.is-scrolled {
+  border-bottom-color: var(--mt-line);
 }
 
-.mt-flag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--mt-plum);
-  font-family: var(--mt-serif);
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-.mt-subnav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px 28px;
-  margin-top: 10px;
-  padding-top: 9px;
-  border-top: 1px solid var(--mt-rule);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.mt-subnav a {
-  color: var(--mt-ink);
-  text-decoration: none;
-}
-
-.mt-subnav a:hover {
-  color: var(--mt-plum);
-}
-
-/* Asymmetric Broadsheet Front Page */
-.mt-frontpage {
-  padding: 22px 0 56px;
-  border-bottom: 1px solid var(--mt-rule);
-}
-
-.mt-broadsheet-grid {
+.mt-header-inner {
+  width: min(var(--mt-max), calc(100% - (var(--mt-gutter) * 2)));
+  height: 100%;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.55fr 0.75fr;
-  gap: 36px;
-  align-items: start;
-}
-
-.mt-lead-story {
-  padding-right: 36px;
-  border-right: 1px solid var(--mt-rule);
-}
-
-.mt-kicker {
-  margin: 0 0 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mt-plum);
-}
-
-.mt-kicker--center {
-  text-align: center;
-}
-
-.mt-kicker--light {
-  color: #e4c496;
-}
-
-.mt-lead-story h1 {
-  margin: 0 0 16px;
-  font-family: var(--mt-serif);
-  font-size: clamp(1.95rem, 3.3vw, 2.85rem);
-  font-weight: 500;
-  line-height: 1.07;
-  color: var(--mt-ink);
-}
-
-.mt-lead-story h1 em {
-  font-style: italic;
-  color: var(--mt-plum);
-}
-
-.mt-lead-plate {
-  margin: 0;
-}
-
-.mt-lead-plate picture,
-.mt-lead-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.mt-lead-plate figcaption {
-  margin-top: 8px;
-  font-size: 0.78rem;
-  color: var(--mt-muted);
-}
-
-/* Narrow Right Gazette Column */
-.mt-gazette-col {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   gap: 24px;
 }
 
-.mt-byob-seal {
-  background: var(--mt-plum);
-  color: #fbf8f1;
-  padding: 22px;
-  text-align: center;
-}
-
-.mt-byob-seal span {
-  display: block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #e4c496;
-}
-
-.mt-byob-seal strong {
-  display: block;
-  margin: 4px 0 6px;
+.mt-brand {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--mt-mulberry);
   font-family: var(--mt-serif);
-  font-size: 1.65rem;
-  font-weight: 500;
-  color: #ffffff;
+  font-size: 1.56rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.mt-byob-seal p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: rgba(251, 248, 241, 0.84);
-}
-
-.mt-hours {
-  margin: 0;
-  border-top: 1px solid var(--mt-ink);
-}
-
-.mt-hours > div {
+.mt-nav {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--mt-rule);
-  font-size: 0.86rem;
+  align-items: center;
+  gap: 28px;
+  justify-self: center;
 }
 
-.mt-hours dt {
-  font-weight: 700;
-}
-
-.mt-hours dd {
-  margin: 0;
-  text-align: right;
+.mt-nav a {
+  text-decoration: none;
   color: var(--mt-muted);
+  font-size: var(--mt-text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 180ms var(--mt-ease);
 }
 
-.mt-gazette-actions {
+.mt-nav a:hover {
+  color: var(--mt-mulberry);
+}
+
+.mt-header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
+
+.mt-header-tel {
+  font-size: var(--mt-text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--mt-mulberry);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms var(--mt-ease);
+}
+
+.mt-header-tel:hover {
+  color: var(--mt-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Sentinel inside hero */
+.mt-hero-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Centered Modern Woodland Broadsheet Opening */
+.mt-hero {
+  position: relative;
+  background: var(--mt-ground);
+  padding: clamp(24px, 3.2vw, 42px) 0 clamp(56px, 6.5vw, 88px);
+}
+
+.mt-hero-lockup {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto clamp(28px, 3.4vw, 40px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
 }
 
-.mt-menu-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding-top: 6px;
-}
-
-.mt-menu-pair a {
-  padding: 9px 10px;
-  border: 1px solid var(--mt-ink);
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.84rem;
-  font-weight: 700;
+.mt-hero h1 {
+  margin: 0 0 14px;
+  font-family: var(--mt-serif);
+  font-size: clamp(2.55rem, 4.9vw, 4.35rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.028em;
   color: var(--mt-ink);
+  max-width: 19ch;
 }
 
-.mt-tel-line {
-  margin: 4px 0 0;
-  font-size: 0.86rem;
+.mt-hero-sub {
+  margin: 0 0 22px;
+  max-width: 56ch;
+  font-size: var(--mt-text-body);
+  line-height: 1.54;
   color: var(--mt-muted);
 }
 
-.mt-tel-line a {
-  color: var(--mt-plum);
-  font-weight: 700;
+.mt-hero-plate {
+  margin: 0;
+}
+
+.mt-hero-plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+  border-radius: 3px;
+}
+
+.mt-hero-plate figcaption {
+  margin-top: 10px;
+  font-size: var(--mt-text-sm);
+  color: var(--mt-muted);
 }
 
 /* Buttons */
@@ -268,367 +197,566 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 700;
+  gap: 8px;
+  min-height: 46px;
+  padding: 11px 26px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  font-family: var(--mt-sans);
+  font-size: var(--mt-text-body);
+  font-weight: 600;
   text-decoration: none;
-  border: 1.5px solid transparent;
   cursor: pointer;
   white-space: nowrap;
+  transition:
+    background-color 180ms var(--mt-ease),
+    color 180ms var(--mt-ease),
+    transform 180ms var(--mt-ease);
 }
 
 .mt-btn--plum {
-  background: var(--mt-plum);
+  background: var(--mt-mulberry);
   color: #ffffff;
 }
 
-.mt-btn--moss {
-  background: var(--mt-moss);
-  color: #ffffff;
+.mt-btn--plum:hover {
+  background: var(--mt-accent);
 }
 
 .mt-btn--cream {
-  background: var(--mt-paper);
-  color: var(--mt-plum-deep);
+  background: var(--mt-ground);
+  color: var(--mt-mulberry-deep);
 }
 
-.mt-btn--full {
-  width: 100%;
+.mt-btn--cream:hover {
+  background: #ffffff;
 }
 
-/* County Down Larder Provenance Trace */
+.mt-link-on-dark {
+  color: var(--mt-gold-light);
+  font-size: var(--mt-text-body);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(229, 199, 158, 0.55);
+  padding-bottom: 2px;
+  transition: color 180ms var(--mt-ease), border-color 180ms var(--mt-ease);
+}
+
+.mt-link-on-dark:hover {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* Shared section rhythm */
+.mt-section {
+  padding: clamp(68px, 7.5vw, 110px) 0;
+}
+
+.mt-section h2 {
+  margin: 0 0 14px;
+  font-family: var(--mt-serif);
+  font-size: var(--mt-text-heading);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  max-width: 24ch;
+}
+
+.mt-section-copy {
+  margin: 0;
+  max-width: 58ch;
+  font-size: var(--mt-text-body);
+  color: var(--mt-muted);
+}
+
+/* Band 2: Deep Mulberry County Down Larder & Menus */
 .mt-larder {
-  padding: 76px 0;
-  border-bottom: 1px solid var(--mt-rule);
+  background: var(--mt-mulberry);
+  color: var(--mt-ink-on-dark);
 }
 
 .mt-larder-head {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 36px;
-  align-items: end;
-  margin-bottom: 42px;
+  margin-bottom: clamp(28px, 3.8vw, 42px);
 }
 
-.mt-larder-head h2 {
-  margin: 0;
-  font-family: var(--mt-serif);
-  font-size: clamp(2rem, 3.4vw, 2.95rem);
-  font-weight: 500;
-  line-height: 1.08;
-}
-
-.mt-larder-head p {
-  margin: 0;
-  color: var(--mt-muted);
-}
-
-.mt-larder-split {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.mt-trace-list {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 22px;
-  border-left: 2px solid var(--mt-plum);
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.mt-trace-stop {
-  position: relative;
-}
-
-.mt-trace-stop::before {
-  content: "";
-  position: absolute;
-  left: -29px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--mt-plum);
-  border: 2px solid var(--mt-paper);
-}
-
-.mt-trace-step {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mt-brass);
-}
-
-.mt-trace-stop h3 {
-  margin: 2px 0 4px;
-  font-family: var(--mt-serif);
-  font-size: 1.55rem;
-  font-weight: 600;
-  color: var(--mt-plum);
-}
-
-.mt-trace-stop p {
-  margin: 0;
-  font-size: 0.94rem;
-  color: var(--mt-muted);
-}
-
-.mt-larder-plate {
-  margin: 0;
-}
-
-.mt-larder-plate picture,
-.mt-larder-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border: 1px solid var(--mt-rule);
-}
-
-.mt-larder-plate figcaption {
-  margin-top: 8px;
-  font-size: 0.78rem;
-  color: var(--mt-muted);
-}
-
-/* Two-Floor Blueprint */
-.mt-floors {
-  padding: 74px 0;
-  background: var(--mt-sheet);
-  border-bottom: 1px solid var(--mt-rule);
-}
-
-.mt-floors-title {
-  margin: 0 0 36px;
-  text-align: center;
-  font-family: var(--mt-serif);
-  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
-  font-weight: 500;
-}
-
-.mt-floors-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--mt-ink);
-}
-
-.mt-floor {
-  padding: 40px 38px;
-}
-
-.mt-floor--up {
-  background: var(--mt-paper);
-  border-left: 1px solid var(--mt-ink);
-}
-
-.mt-floor-tag {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mt-moss);
-  margin-bottom: 8px;
-}
-
-.mt-floor h3 {
-  margin: 0 0 10px;
-  font-family: var(--mt-serif);
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--mt-plum);
-}
-
-.mt-floor p {
-  margin: 0;
-  color: var(--mt-muted);
-}
-
-/* Outside Catering Dispatch */
-.mt-catering {
-  background: var(--mt-moss);
-  color: #f5efe4;
-  padding: 76px 0;
-}
-
-.mt-catering-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.mt-catering h2 {
-  margin: 0 0 14px;
-  font-family: var(--mt-serif);
-  font-size: clamp(2rem, 3.2vw, 2.85rem);
-  font-weight: 500;
-  line-height: 1.08;
+.mt-larder h2 {
   color: #ffffff;
 }
 
-.mt-catering p {
+.mt-larder-copy {
   margin: 0;
-  color: rgba(245, 239, 228, 0.85);
+  max-width: 60ch;
+  font-size: var(--mt-text-body);
+  color: var(--mt-muted-on-dark);
 }
 
-.mt-catering-dispatch {
-  border: 1px solid rgba(245, 239, 228, 0.28);
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.14);
+.mt-tabs {
+  display: flex;
+  gap: clamp(20px, 3.5vw, 40px);
+  border-bottom: 1px solid var(--mt-line-dark);
+  margin-bottom: clamp(30px, 4vw, 44px);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.mt-catering-dispatch h3 {
-  margin: 0 0 14px;
+.mt-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.mt-tab {
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0 0 14px;
+  font-family: var(--mt-sans);
+  font-size: var(--mt-text-body);
+  font-weight: 500;
+  color: var(--mt-muted-on-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms var(--mt-ease);
+}
+
+.mt-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--mt-gold-light);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms var(--mt-ease);
+}
+
+.mt-tab:hover {
+  color: #ffffff;
+}
+
+.mt-tab.is-active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.mt-tab.is-active::after {
+  transform: scaleX(1);
+}
+
+.mt-larder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(34px, 5vw, 72px);
+  align-items: start;
+}
+
+.mt-menu-panel[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mt-menu-panel.is-active {
+    animation: mt-panel-in 220ms var(--mt-ease) both;
+  }
+}
+
+@keyframes mt-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mt-menu-panel h3 {
+  margin: 0 0 12px;
   font-family: var(--mt-serif);
-  font-size: 1.45rem;
-  color: #e4c496;
+  font-size: var(--mt-text-body);
+  font-weight: 600;
+  color: var(--mt-gold-light);
 }
 
-.mt-catering-dispatch ul {
-  margin: 0 0 22px;
-  padding-left: 18px;
-  font-size: 0.94rem;
+.mt-menu-panel p {
+  margin: 0 0 26px;
+  max-width: 54ch;
+  font-size: var(--mt-text-body);
+  color: var(--mt-muted-on-dark);
 }
 
-.mt-catering-dispatch li + li {
-  margin-top: 6px;
+.mt-spec-list {
+  margin: 0 0 30px;
+  border-top: 1px solid var(--mt-line-dark);
 }
 
-/* Enquiry Desk */
+.mt-spec-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.34fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--mt-line-dark);
+  align-items: baseline;
+}
+
+.mt-spec-row dt {
+  font-size: var(--mt-text-sm);
+  font-weight: 600;
+  color: var(--mt-gold-light);
+}
+
+.mt-spec-row dd {
+  margin: 0;
+  font-size: var(--mt-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--mt-ink-on-dark);
+}
+
+.mt-panel-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 26px;
+}
+
+.mt-larder-visual {
+  display: grid;
+  gap: 24px;
+}
+
+.mt-plate {
+  margin: 0;
+}
+
+.mt-plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+
+.mt-plate figcaption {
+  margin-top: 10px;
+  font-size: var(--mt-text-sm);
+  color: var(--mt-muted-on-dark);
+}
+
+.mt-provenance-ledger {
+  margin: 0;
+  border-top: 1px solid var(--mt-line-dark);
+}
+
+.mt-prov-row {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--mt-line-dark);
+  display: grid;
+  gap: 3px;
+}
+
+.mt-prov-row dt {
+  font-family: var(--mt-serif);
+  font-size: var(--mt-text-body);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.mt-prov-row dd {
+  margin: 0;
+  font-size: var(--mt-text-sm);
+  color: var(--mt-muted-on-dark);
+}
+
+/* Band 3: Two Floors & Opening Hours Ledger */
+.mt-hours-band {
+  background: var(--mt-ground);
+  border-bottom: 1px solid var(--mt-line);
+}
+
+.mt-hours-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.mt-floors-copy p {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--mt-text-body);
+  color: var(--mt-muted);
+}
+
+.mt-hours-ledger {
+  margin: 0;
+  border-top: 1px solid var(--mt-mulberry);
+}
+
+.mt-hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--mt-line);
+}
+
+.mt-hours-row dt {
+  font-size: var(--mt-text-body);
+  font-weight: 600;
+  color: var(--mt-ink);
+}
+
+.mt-hours-row dd {
+  margin: 0;
+  font-size: var(--mt-text-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--mt-muted);
+  text-align: right;
+}
+
+/* Band 4: Direct Table & Catering Enquiry */
 .mt-enquire {
-  padding: 80px 0;
+  background: var(--mt-surface);
+  border-bottom: 1px solid var(--mt-line);
 }
 
 .mt-enquire-grid {
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 52px;
-  align-items: center;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(36px, 5.5vw, 76px);
+  align-items: start;
 }
 
-.mt-enquire-copy h2 {
-  margin: 0 0 12px;
-  font-family: var(--mt-serif);
-  font-size: clamp(1.9rem, 3vw, 2.55rem);
-  font-weight: 500;
-}
-
-.mt-enquire-copy p {
-  margin: 0 0 14px;
+.mt-enquire-intro p {
+  margin: 0 0 28px;
+  max-width: 48ch;
   color: var(--mt-muted);
 }
 
-.mt-enquire-copy a {
-  color: var(--mt-plum);
-  font-weight: 700;
+.mt-contact-list {
+  margin: 0;
+  border-top: 1px solid var(--mt-line);
 }
 
-.mt-find-block {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--mt-rule);
-  font-size: 0.92rem;
+.mt-contact-row {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--mt-line);
+  align-items: baseline;
+}
+
+.mt-contact-row dt {
+  font-size: var(--mt-text-sm);
+  font-weight: 600;
+  color: var(--mt-muted);
+}
+
+.mt-contact-row dd {
+  margin: 0;
+  font-size: var(--mt-text-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--mt-ink);
+}
+
+.mt-contact-row a {
+  color: var(--mt-mulberry);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.mt-contact-row a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .mt-form {
-  background: var(--mt-sheet);
-  border: 1px solid var(--mt-ink);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  background: var(--mt-ground);
+  border: 1px solid var(--mt-line);
+  border-radius: 3px;
+  padding: clamp(24px, 3.6vw, 38px);
+  display: grid;
+  gap: 18px;
 }
 
 .mt-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
 .mt-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: grid;
+  gap: 7px;
 }
 
-.mt-form label span {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mt-muted);
+.mt-form label > span {
+  font-size: var(--mt-text-sm);
+  font-weight: 600;
+  color: var(--mt-ink);
 }
 
 .mt-form input,
 .mt-form select,
 .mt-form textarea {
   width: 100%;
-  padding: 10px 11px;
-  border: 1px solid rgba(25, 23, 22, 0.28);
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid rgba(26, 22, 24, 0.22);
+  border-radius: 3px;
   background: #ffffff;
   color: var(--mt-ink);
-  font: inherit;
-  font-size: 0.92rem;
+  font-family: var(--mt-sans);
+  font-size: var(--mt-text-body);
+  transition: border-color 160ms var(--mt-ease);
 }
 
+.mt-form input:focus,
+.mt-form select:focus,
+.mt-form textarea:focus {
+  border-color: var(--mt-mulberry);
+}
+
+.mt-form-echo {
+  margin: 2px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--mt-line);
+  font-size: var(--mt-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--mt-muted);
+}
+
+.mt-form button[type="submit"] {
+  justify-self: start;
+}
+
+/* Band 5: Seaforde Map */
+.mt-map-band {
+  background: var(--mt-ground);
+}
+
+.mt-location-head {
+  margin-bottom: clamp(28px, 3.5vw, 40px);
+}
+
+body.concept-mulberry .mm-map-kicker {
+  display: none;
+}
+
+/* Footer */
 .mt-footer {
-  background: var(--mt-plum-deep);
-  color: rgba(245, 239, 228, 0.78);
-  padding: 22px 0;
-  font-size: 0.85rem;
+  background: var(--mt-mulberry-deep);
+  color: var(--mt-ink-on-dark);
+  padding: 40px 0;
 }
 
 .mt-footer-inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 18px 28px;
+}
+
+.mt-footer-brand {
+  display: inline-flex;
+  align-items: center;
   gap: 12px;
 }
 
-.mt-footer-inner strong {
+.mt-footer-brand strong {
   font-family: var(--mt-serif);
+  font-size: var(--mt-text-body);
+  font-weight: 500;
   color: #ffffff;
 }
 
-.mt-footer-inner a {
-  color: #e4c496;
+.mt-footer-brand p {
+  margin: 2px 0 0;
+  font-size: var(--mt-text-sm);
+  color: var(--mt-muted-on-dark);
+}
+
+.mt-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: var(--mt-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.mt-footer-links a {
+  color: var(--mt-ink-on-dark);
   text-decoration: none;
+  transition: color 160ms var(--mt-ease);
+}
+
+.mt-footer-links a:hover {
+  color: var(--mt-gold-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 980px) {
-  .mt-broadsheet-grid,
-  .mt-larder-head,
-  .mt-larder-split,
-  .mt-floors-grid,
-  .mt-catering-grid,
+  .mt-header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mt-nav {
+    display: none;
+  }
+
+  .mt-larder-grid,
+  .mt-hours-grid,
   .mt-enquire-grid {
-    grid-template-columns: 1fr;
-  }
-  .mt-lead-story {
-    padding-right: 0;
-    border-right: 0;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--mt-rule);
-  }
-  .mt-floor--up {
-    border-left: 0;
-    border-top: 1px solid var(--mt-ink);
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .mt-row {
-    grid-template-columns: 1fr;
+@media (max-width: 720px) {
+  .mt-tabs {
+    gap: 18px;
   }
-  .mt-floor {
-    padding: 28px 22px;
+
+  .mt-tab {
+    font-size: var(--mt-text-sm);
+  }
+
+  .mt-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mt-hours-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mt-hours-row dd {
+    text-align: left;
+  }
+
+  .mt-spec-row,
+  .mt-contact-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-header,
+  .mt-nav a,
+  .mt-header-tel,
+  .mt-btn,
+  .mt-link-on-dark,
+  .mt-tab,
+  .mt-tab::after,
+  .mt-footer-links a {
+    transition: none;
   }
 }

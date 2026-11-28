@@ -1,260 +1,300 @@
-/* Crossgar Dental Practice — Sunlit Scandinavian Sanctuary & Calm Patient Triage */
-
-.concept-crossgardental {
-  --cd-porcelain: #fbfcfb;
-  --cd-sage-wash: #ebf2ef;
-  --cd-sand: #f3efe8;
-  --cd-teal: #154b45;
-  --cd-teal-deep: #0e3531;
-  --cd-urgent: #a3412e;
-  --cd-ink: #1b2826;
-  --cd-muted: #526360;
-  --cd-line: rgba(21, 75, 69, 0.14);
-  --cd-serif: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+/* Crossgar Dental Practice: Architectural Daylight Sanctuary */
+body.concept-crossgardental {
+  --cd-ground: #f8faf9;
+  --cd-surface: #ffffff;
+  --cd-sage: #ebf1ee;
+  --cd-eucalyptus: #102b26;
+  --cd-eucalyptus-surface: #173a33;
+  --cd-pine: #165249;
+  --cd-pine-hover: #0e3832;
+  --cd-urgent: #9e3f2d;
+  --cd-urgent-hover: #7f3122;
+  --cd-ink: #122421;
+  --cd-muted: #4b5e5a;
+  --cd-ink-on-dark: #f4f8f6;
+  --cd-muted-on-dark: rgba(244, 248, 246, 0.8);
+  --cd-line: rgba(16, 43, 38, 0.14);
+  --cd-line-dark: rgba(244, 248, 246, 0.18);
+  --cd-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --cd-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Alias for concept-pickers.css */
+  --cd-serif: var(--cd-display);
+
+  /* Strict 3-size body scale below hero */
+  --cd-text-heading: clamp(1.95rem, 3.3vw, 2.75rem);
+  --cd-text-body: 1.0625rem;
+  --cd-text-sm: 0.875rem;
+
   --cd-max: 1240px;
   --cd-gutter: clamp(20px, 4.5vw, 56px);
+  --cd-header-h: 74px;
+  --cd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  background: var(--cd-porcelain);
+  margin: 0;
+  background: var(--cd-ground);
   color: var(--cd-ink);
   font-family: var(--cd-sans);
-  line-height: 1.65;
+  font-size: var(--cd-text-body);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
 }
 
 .cd-wrap {
   width: min(var(--cd-max), calc(100% - (var(--cd-gutter) * 2)));
   margin: 0 auto;
-  padding: 0;
 }
 
-.cd-topbar {
-  display: block;
-  background: var(--cd-sage-wash);
-  border-bottom: 1px solid var(--cd-line);
-  font-size: 0.8rem;
-  color: var(--cd-teal-deep);
-}
-
-.cd-topbar-inner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-}
-
-.cd-topbar a {
-  color: var(--cd-teal);
-  font-weight: 700;
-}
-
+/* Light-adaptive borderless header floating directly over sunlit clinic ceiling */
 .cd-header {
   display: block;
-  background: var(--cd-porcelain);
-  border-bottom: 1px solid var(--cd-line);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--cd-header-h);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  color: var(--cd-eucalyptus);
+  transition:
+    background-color 220ms var(--cd-ease),
+    border-color 220ms var(--cd-ease);
+}
+
+.cd-header.is-scrolled {
+  background: rgba(248, 250, 249, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--cd-line);
 }
 
 .cd-header-inner {
+  width: min(var(--cd-max), calc(100% - (var(--cd-gutter) * 2)));
+  height: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 20px;
-  padding: 15px 0;
-}
-
-@media (max-width: 960px) {
-  .cd-header-inner {
-    grid-template-columns: 1fr auto;
-  }
 }
 
 .cd-brand {
+  justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
   text-decoration: none;
-  color: var(--cd-teal-deep);
-  justify-self: start;
-}
-
-.cd-brand span {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.cd-brand strong {
-  font-family: var(--cd-serif);
-  font-size: 1.12rem;
+  color: var(--cd-eucalyptus);
+  font-family: var(--cd-display);
+  font-size: 1.32rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.cd-brand small {
-  font-size: 0.72rem;
-  color: var(--cd-muted);
+.cd-brand svg {
+  flex: none;
 }
 
 .cd-nav {
   display: flex;
-  gap: 26px;
-  font-size: 0.88rem;
-  font-weight: 600;
+  align-items: center;
+  gap: 24px;
   justify-self: center;
 }
 
 .cd-nav a {
-  color: var(--cd-ink);
   text-decoration: none;
+  color: var(--cd-eucalyptus);
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
   white-space: nowrap;
+  transition: color 180ms var(--cd-ease);
 }
 
 .cd-nav a:hover {
-  color: var(--cd-teal);
+  color: var(--cd-pine);
 }
 
-.cd-header-cta {
-  padding: 10px 20px;
-  border-radius: 999px;
-  background: var(--cd-teal);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 700;
-  white-space: nowrap;
+.cd-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   justify-self: end;
 }
 
-/* Sunlit Full-Bleed Sanctuary Hero with Frosted Porcelain Card (ZERO dark overlay!) */
-.cd-hero {
-  position: relative;
-  min-height: min(78vh, 660px);
-  display: flex;
-  align-items: flex-end;
-  background: var(--cd-sage-wash);
-  overflow: hidden;
-}
-
-.cd-hero-plate {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-}
-
-.cd-hero-plate picture,
-.cd-hero-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 45%;
-}
-
-.cd-hero-cap {
-  position: absolute;
-  right: max(var(--cd-gutter), calc((100vw - var(--cd-max)) / 2));
-  bottom: 16px;
-  z-index: 2;
-  font-size: 0.72rem;
-  color: var(--cd-teal-deep);
-  background: rgba(251, 252, 251, 0.84);
-  padding: 4px 11px;
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-}
-
-.cd-hero-overlay {
-  position: relative;
-  z-index: 2;
-  padding-top: 84px;
-  padding-bottom: 44px;
-}
-
-.cd-porcelain-card {
-  max-width: 610px;
-  padding: 38px 40px;
-  background: rgba(251, 252, 251, 0.92);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  box-shadow: 0 24px 56px rgba(14, 53, 49, 0.14);
-}
-
-.cd-badge {
-  display: inline-block;
-  margin: 0 0 14px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--cd-sage-wash);
-  color: var(--cd-teal);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.cd-hero h1 {
-  margin: 0 0 14px;
-  font-family: var(--cd-serif);
-  font-size: clamp(2.15rem, 3.8vw, 3.15rem);
-  font-weight: 700;
-  line-height: 1.16;
-  letter-spacing: -0.03em;
-  color: var(--cd-teal-deep);
-}
-
-.cd-hero h1 .cd-hl {
-  background: #d6ebe2;
-  color: var(--cd-teal-deep);
-  padding: 0.02em 0.22em 0.06em;
-  border-radius: 8px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.cd-lede {
-  margin: 0 0 24px;
-  font-size: 0.97rem;
-  color: var(--cd-muted);
-}
-
-.cd-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-/* Pill Buttons */
-.cd-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 700;
+.cd-header-tel {
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--cd-eucalyptus);
   text-decoration: none;
-  border: 1.5px solid transparent;
-  cursor: pointer;
   white-space: nowrap;
 }
 
-.cd-btn--teal {
-  background: var(--cd-teal);
+.cd-header-cta {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border-radius: 6px;
+  background: var(--cd-pine);
+  color: #ffffff;
+  font-family: var(--cd-sans);
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 180ms var(--cd-ease);
+}
+
+.cd-header-cta:hover {
+  background: var(--cd-eucalyptus);
+}
+
+/* Sentinel inside hero */
+.cd-hero-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Full-bleed sunlit architectural clinic hero with daylight clearing */
+.cd-hero {
+  position: relative;
+  margin-top: calc(var(--cd-header-h) * -1);
+  min-height: clamp(600px, 87svh, 810px);
+  display: grid;
+  align-items: end;
+  background: var(--cd-sage);
+  overflow: hidden;
+}
+
+.cd-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cd-hero-media picture,
+.cd-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
+  display: block;
+}
+
+.cd-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(248, 250, 249, 0.72) 0%,
+      rgba(248, 250, 249, 0.14) 19%,
+      rgba(248, 250, 249, 0) 42%,
+      rgba(244, 248, 246, 0.76) 69%,
+      rgba(244, 248, 246, 0.96) 100%
+    ),
+    radial-gradient(
+      ellipse 72% 58% at 18% 88%,
+      rgba(244, 248, 246, 0.92) 0%,
+      rgba(244, 248, 246, 0.45) 56%,
+      rgba(244, 248, 246, 0) 100%
+    );
+}
+
+.cd-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: calc(var(--cd-header-h) + 84px) 0 clamp(44px, 5.5vw, 66px);
+}
+
+.cd-hero-copy {
+  width: 100%;
+}
+
+.cd-hero h1 {
+  margin: 0 0 16px;
+  font-family: var(--cd-display);
+  font-size: clamp(2.55rem, 5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  color: var(--cd-eucalyptus);
+  max-width: 16.5ch;
+}
+
+.cd-hero-sub {
+  margin: 0 0 28px;
+  max-width: 50ch;
+  font-size: var(--cd-text-body);
+  line-height: 1.56;
+  color: #213a35;
+}
+
+.cd-hero-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+}
+
+.cd-hero-caption {
+  margin: 0;
+  font-size: var(--cd-text-sm);
+  color: var(--cd-muted);
+}
+
+/* Primary button system */
+.cd-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-family: var(--cd-sans);
+  font-size: var(--cd-text-body);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 100%;
+  transition:
+    background-color 180ms var(--cd-ease),
+    color 180ms var(--cd-ease),
+    transform 180ms var(--cd-ease);
+}
+
+.cd-btn--pine {
+  background: var(--cd-pine);
   color: #ffffff;
 }
 
-.cd-btn--soft {
-  background: var(--cd-sage-wash);
-  color: var(--cd-teal-deep);
+.cd-btn--pine:hover {
+  background: var(--cd-eucalyptus);
 }
 
-.cd-btn--outline {
-  background: transparent;
-  color: var(--cd-teal-deep);
-  border-color: rgba(21, 75, 69, 0.3);
+.cd-btn--light {
+  background: #ffffff;
+  color: var(--cd-eucalyptus);
+}
+
+.cd-btn--light:hover {
+  background: var(--cd-sage);
 }
 
 .cd-btn--urgent {
@@ -262,282 +302,444 @@
   color: #ffffff;
 }
 
-.cd-btn--full {
-  width: 100%;
+.cd-btn--urgent:hover {
+  background: var(--cd-urgent-hover);
 }
 
-/* Interactive 4-Path Calm Patient Triage */
-.cd-triage-section {
-  background: var(--cd-sage-wash);
-  padding: 76px 0;
-  border-top: 1px solid var(--cd-line);
-  border-bottom: 1px solid var(--cd-line);
+/* Shared section rhythm */
+.cd-section {
+  padding: clamp(68px, 7.5vw, 112px) 0;
 }
 
-.cd-kicker {
-  margin: 0 0 10px;
-  font-size: 0.72rem;
+.cd-section h2 {
+  margin: 0 0 16px;
+  font-family: var(--cd-display);
+  font-size: var(--cd-text-heading);
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cd-teal);
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  max-width: 24ch;
+  color: var(--cd-eucalyptus);
 }
 
-.cd-triage-head {
-  margin-bottom: 30px;
-}
-
-.cd-triage-head h2 {
+.cd-section-copy {
   margin: 0;
-  font-family: var(--cd-serif);
-  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
-  font-weight: 400;
-  color: var(--cd-teal-deep);
-}
-
-.cd-triage-box {
-  background: var(--cd-porcelain);
-  border: 1px solid var(--cd-line);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(14, 53, 49, 0.06);
-}
-
-.cd-triage-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--cd-line);
-  background: #f4f8f6;
-}
-
-.cd-triage-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  padding: 20px 22px;
-  border: 0;
-  border-right: 1px solid var(--cd-line);
-  background: transparent;
-  text-align: left;
-  font: inherit;
-  cursor: pointer;
-  color: var(--cd-ink);
-  transition: background 0.15s ease;
-}
-
-.cd-triage-tab:last-child {
-  border-right: 0;
-}
-
-.cd-triage-tab strong {
-  font-size: 0.94rem;
-  color: var(--cd-teal-deep);
-}
-
-.cd-triage-tab span {
-  font-size: 0.79rem;
+  max-width: 58ch;
+  font-size: var(--cd-text-body);
   color: var(--cd-muted);
 }
 
-.cd-triage-tab.is-active {
-  background: var(--cd-porcelain);
-  box-shadow: inset 0 3px 0 var(--cd-teal);
+/* Band 2: Interactive Care & Treatments Tablist + Botanical Plate */
+.cd-care {
+  background: var(--cd-ground);
 }
 
-.cd-triage-tab--urgent.is-active {
-  box-shadow: inset 0 3px 0 var(--cd-urgent);
+.cd-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 4vw, 44px);
 }
 
-.cd-triage-tab--urgent strong {
-  color: var(--cd-urgent);
+body.concept-crossgardental button.cd-guide-trigger {
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--cd-pine);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+  color: var(--cd-eucalyptus);
+  font-family: var(--cd-sans);
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 180ms var(--cd-ease), border-color 180ms var(--cd-ease);
 }
 
-.cd-triage-stage {
-  padding: 36px 40px;
+body.concept-crossgardental button.cd-guide-trigger:hover {
+  color: var(--cd-pine);
+  border-bottom-color: var(--cd-eucalyptus);
 }
 
-.cd-triage-panel[hidden] {
+.cd-tabs {
+  display: flex;
+  gap: clamp(20px, 3.5vw, 44px);
+  border-bottom: 1px solid var(--cd-line);
+  margin-bottom: clamp(32px, 4vw, 44px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cd-tabs::-webkit-scrollbar {
   display: none;
 }
 
-.cd-panel-eyebrow {
-  margin: 0 0 8px;
-  font-size: 0.72rem;
+.cd-tab {
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0 0 15px;
+  font-family: var(--cd-sans);
+  font-size: var(--cd-text-body);
+  font-weight: 500;
+  color: var(--cd-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms var(--cd-ease);
+}
+
+.cd-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--cd-pine);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms var(--cd-ease);
+}
+
+.cd-tab:hover {
+  color: var(--cd-eucalyptus);
+}
+
+.cd-tab.is-active {
+  color: var(--cd-eucalyptus);
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cd-teal);
 }
 
-.cd-panel-eyebrow--urgent {
-  color: var(--cd-urgent);
+.cd-tab.is-active::after {
+  transform: scaleX(1);
 }
 
-.cd-triage-panel h3 {
+.cd-care-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.cd-panel[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cd-panel.is-active {
+    animation: cd-panel-in 240ms var(--cd-ease) both;
+  }
+}
+
+@keyframes cd-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cd-panel h3 {
   margin: 0 0 12px;
-  font-family: var(--cd-serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 400;
-  color: var(--cd-teal-deep);
+  font-family: var(--cd-display);
+  font-size: var(--cd-text-body);
+  font-weight: 700;
+  color: var(--cd-eucalyptus);
 }
 
-.cd-triage-panel p {
-  margin: 0 0 24px;
-  max-width: 64ch;
+.cd-panel > p {
+  margin: 0 0 26px;
+  max-width: 54ch;
+  font-size: var(--cd-text-body);
   color: var(--cd-muted);
 }
 
-.cd-panel-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-/* Treatments Hairline Index + Botanical Column */
-.cd-section {
-  padding: 86px 0;
-}
-
-.cd-treatments-layout {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.cd-treatments-list h2 {
+.cd-spec-list {
   margin: 0 0 30px;
-  font-family: var(--cd-serif);
-  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
-  font-weight: 400;
-  color: var(--cd-teal-deep);
+  padding: 0;
+  border-top: 1px solid var(--cd-line);
 }
 
-.cd-index {
+.cd-spec-row {
+  display: grid;
+  grid-template-columns: minmax(126px, 0.34fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cd-line);
+  align-items: baseline;
+}
+
+.cd-spec-row dt {
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  color: var(--cd-eucalyptus);
+}
+
+.cd-spec-row dd {
+  margin: 0;
+  font-size: var(--cd-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--cd-muted);
+}
+
+.cd-plate {
+  margin: 0;
+}
+
+.cd-plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.cd-plate figcaption {
+  margin-top: 10px;
+  font-size: var(--cd-text-sm);
+  color: var(--cd-muted);
+}
+
+/* Hairline Treatment Index (no decorative 01/02 numbering) */
+.cd-treatment-index {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1.5px solid var(--cd-teal);
-}
-
-.cd-index-row {
+  border-top: 1px solid var(--cd-line);
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 16px;
-  padding: 22px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(32px, 4.5vw, 64px);
+}
+
+.cd-treatment-row {
+  padding: 20px 0;
   border-bottom: 1px solid var(--cd-line);
 }
 
-.cd-index-no {
-  font-family: var(--cd-serif);
-  font-size: 1.15rem;
-  color: var(--cd-teal);
-}
-
-.cd-index-copy h3 {
-  margin: 0 0 5px;
-  font-family: var(--cd-serif);
-  font-size: 1.32rem;
-  font-weight: 400;
-}
-
-.cd-index-copy h3 a {
-  color: var(--cd-teal-deep);
-  text-decoration: none;
-}
-
-.cd-index-copy h3 a:hover {
-  color: var(--cd-teal);
-  text-decoration: underline;
-}
-
-.cd-index-copy p {
-  margin: 0;
-  font-size: 0.93rem;
-  color: var(--cd-muted);
-}
-
-.cd-botanical-col {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.cd-botanical-plate {
-  margin: 0;
-}
-
-.cd-botanical-plate picture,
-.cd-botanical-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.cd-botanical-plate figcaption {
-  margin-top: 8px;
-  font-size: 0.76rem;
-  color: var(--cd-muted);
-}
-
-.cd-find-box {
-  background: var(--cd-sand);
-  border-radius: 16px;
-  padding: 28px;
-}
-
-.cd-find-box h3 {
-  margin: 0 0 8px;
-  font-family: var(--cd-serif);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--cd-teal-deep);
-}
-
-.cd-find-box > p {
-  margin: 0 0 18px;
-  font-size: 0.9rem;
-  color: var(--cd-muted);
-}
-
-.cd-find-dl {
-  margin: 0 0 20px;
-  border-top: 1px solid var(--cd-line);
-}
-
-.cd-find-dl > div {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--cd-line);
-}
-
-.cd-find-dl dt {
-  font-size: 0.7rem;
+.cd-treatment-row h3 {
+  margin: 0 0 6px;
+  font-family: var(--cd-display);
+  font-size: var(--cd-text-body);
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cd-muted);
 }
 
-.cd-find-dl dd {
-  margin: 2px 0 0;
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.cd-find-dl a {
-  color: var(--cd-teal);
+.cd-treatment-row h3 a {
+  color: var(--cd-eucalyptus);
   text-decoration: none;
+  transition: color 160ms var(--cd-ease);
 }
 
-.cd-footer {
-  border-top: 1px solid var(--cd-line);
-  background: var(--cd-sage-wash);
-  padding: 22px 0;
-  font-size: 0.85rem;
+.cd-treatment-row h3 a:hover {
+  color: var(--cd-pine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cd-treatment-row p {
+  margin: 0;
+  font-size: var(--cd-text-body);
   color: var(--cd-muted);
+}
+
+/* Band 3: Deep-Eucalyptus Emergency & Sedation Contrast Band */
+.cd-reassurance {
+  background: var(--cd-eucalyptus);
+  color: var(--cd-ink-on-dark);
+}
+
+.cd-reassurance-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(36px, 5vw, 76px);
+  align-items: start;
+}
+
+.cd-reassurance-intro h2 {
+  color: #ffffff;
+}
+
+.cd-reassurance-intro p {
+  margin: 0 0 30px;
+  max-width: 48ch;
+  font-size: var(--cd-text-body);
+  color: var(--cd-muted-on-dark);
+}
+
+.cd-reassurance-list {
+  margin: 0;
+  border-top: 1px solid var(--cd-line-dark);
+}
+
+.cd-reassurance-row {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--cd-line-dark);
+  display: grid;
+  gap: 6px;
+}
+
+.cd-reassurance-row dt {
+  font-family: var(--cd-display);
+  font-size: var(--cd-text-body);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cd-reassurance-row dd {
+  margin: 0;
+  font-size: var(--cd-text-body);
+  color: var(--cd-muted-on-dark);
+}
+
+.cd-reassurance-row a {
+  color: #ffffff;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Band 4: Direct Appointments & Enquiry */
+.cd-appointments {
+  background: var(--cd-sage);
+  border-bottom: 1px solid var(--cd-line);
+}
+
+.cd-appointments-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(36px, 5.5vw, 80px);
+  align-items: start;
+}
+
+.cd-appointments-intro > p {
+  margin: 0 0 30px;
+  max-width: 48ch;
+  color: var(--cd-muted);
+}
+
+.cd-contact-list {
+  margin: 0;
+  border-top: 1px solid var(--cd-line);
+}
+
+.cd-contact-row {
+  display: grid;
+  grid-template-columns: 152px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cd-line);
+  align-items: baseline;
+}
+
+.cd-contact-row dt {
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  color: var(--cd-muted);
+}
+
+.cd-contact-row dd {
+  margin: 0;
+  font-size: var(--cd-text-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--cd-ink);
+}
+
+.cd-contact-row a {
+  color: var(--cd-pine);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.cd-contact-row a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cd-form {
+  background: var(--cd-surface);
+  border: 1px solid var(--cd-line);
+  padding: clamp(26px, 3.6vw, 40px);
+  border-radius: 6px;
+  display: grid;
+  gap: 18px;
+}
+
+.cd-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cd-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.cd-form label > span {
+  font-size: var(--cd-text-sm);
+  font-weight: 600;
+  color: var(--cd-eucalyptus);
+}
+
+.cd-form select,
+.cd-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid rgba(16, 43, 38, 0.24);
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--cd-ink);
+  font-family: var(--cd-sans);
+  font-size: var(--cd-text-body);
+  transition: border-color 160ms var(--cd-ease);
+}
+
+.cd-form select:focus,
+.cd-form textarea:focus {
+  border-color: var(--cd-pine);
+}
+
+.cd-echo {
+  margin: 2px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--cd-line);
+  font-size: var(--cd-text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--cd-muted);
+}
+
+.cd-form button[type="submit"] {
+  justify-self: start;
+}
+
+/* Band 5: Killyleagh Street Map */
+.cd-map-band {
+  background: var(--cd-surface);
+}
+
+.cd-location-head {
+  margin-bottom: clamp(28px, 3.5vw, 40px);
+}
+
+body.concept-crossgardental .mm-map-kicker {
+  display: none;
+}
+
+/* Footer */
+.cd-footer {
+  background: var(--cd-eucalyptus);
+  color: var(--cd-ink-on-dark);
+  padding: 44px 0;
 }
 
 .cd-footer-inner {
@@ -545,57 +747,122 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 18px 28px;
 }
 
-.cd-footer-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+.cd-footer strong {
+  font-family: var(--cd-display);
+  font-size: var(--cd-text-body);
+  font-weight: 700;
+  color: #ffffff;
 }
 
-.cd-footer-brand strong {
-  font-family: var(--cd-serif);
-  color: var(--cd-teal-deep);
-  font-weight: 400;
+.cd-footer p {
+  margin: 4px 0 0;
+  font-size: var(--cd-text-sm);
+  color: var(--cd-muted-on-dark);
 }
 
-.cd-footer-right {
-  margin: 0;
+.cd-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  font-size: var(--cd-text-sm);
+  font-variant-numeric: tabular-nums;
 }
 
-.cd-footer-right a {
-  color: var(--cd-teal);
-  font-weight: 600;
+.cd-footer-links a {
+  color: var(--cd-ink-on-dark);
   text-decoration: none;
+  transition: color 160ms var(--cd-ease);
 }
 
-@media (max-width: 960px) {
+.cd-footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1020px) {
+  .cd-header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
   .cd-nav {
     display: none;
   }
-  .cd-triage-tabs {
-    grid-template-columns: 1fr 1fr;
-  }
-  .cd-triage-tab {
-    border-bottom: 1px solid var(--cd-line);
-  }
-  .cd-treatments-layout {
-    grid-template-columns: 1fr;
+
+  .cd-care-layout,
+  .cd-treatment-index,
+  .cd-reassurance-grid,
+  .cd-appointments-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .cd-porcelain-card {
-    padding: 26px 22px;
+@media (max-width: 820px) {
+  .cd-header-tel {
+    display: none;
   }
-  .cd-triage-tabs {
-    grid-template-columns: 1fr;
+
+  .cd-brand {
+    font-size: 1.15rem;
   }
-  .cd-triage-tab {
-    border-right: 0;
+
+  .cd-hero {
+    min-height: clamp(540px, 82svh, 690px);
   }
-  .cd-triage-stage {
-    padding: 24px 20px;
+
+  .cd-hero-scrim {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(248, 250, 249, 0.78) 0%,
+        rgba(248, 250, 249, 0.16) 22%,
+        rgba(244, 248, 246, 0.56) 48%,
+        rgba(244, 248, 246, 0.92) 76%,
+        rgba(244, 248, 246, 0.98) 100%
+      );
+  }
+
+  .cd-hero-content {
+    padding-bottom: 30px;
+  }
+
+  .cd-tabs {
+    gap: 18px;
+  }
+
+  .cd-tab {
+    font-size: var(--cd-text-sm);
+  }
+
+  .cd-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cd-spec-row,
+  .cd-contact-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .cd-btn {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cd-header,
+  .cd-nav a,
+  .cd-header-cta,
+  .cd-btn,
+  .cd-tab,
+  .cd-tab::after,
+  .cd-treatment-row h3 a,
+  .cd-form select,
+  .cd-form textarea,
+  .cd-footer-links a {
+    transition: none;
   }
 }

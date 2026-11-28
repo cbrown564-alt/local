@@ -2,25 +2,24 @@
 import "../../site/styles/global.css";
 import "./styles.css";
 import ConceptLayout from "../_shell/ConceptLayout.astro";
-import ResponsiveImage from "../../site/components/ResponsiveImage.astro";
+import LocalAreaMap from "../_shell/LocalAreaMap.astro";
 import MtMark from "./MtMark.astro";
 
-/* The Mulberry Tree — 2 Main Street, Seaforde, Downpatrick, Co. Down, BT30 8PA.
+/* The Mulberry Tree: 2 Main Street, Seaforde, Downpatrick, Co. Down, BT30 8PA.
    Sources (live-fetched 26 Nov 2026): restaurantseaforde.co.uk (/, /about-us/,
    /outside-catering/) and FSA FHRS register (Authority 145, inspected 2025-03-11).
-   - Owned & led by fully qualified chef George Hanna.
-   - Setting: main Belfast–Newcastle road in Seaforde, with woodland views.
-     Intimate downstairs café + modern, spacious upstairs restaurant.
+   - Owned and led by fully qualified chef George Hanna.
+   - Setting: main Belfast to Newcastle road in Seaforde, with woodland views.
+     Intimate downstairs cafe + modern, spacious upstairs restaurant.
    - Unlicensed: Bring Your Own Wine with NO corkage charge.
    - Provenance named on site: Downpatrick Finnebrogue Meats venison, fresh
      fish from Ardglass, locally grown vegetables, homemade desserts, morning
      coffees, A La Carte lunches, evening dinner menu, children's menu.
-   - Outside catering: business lunches, private functions & special occasions
-     across Seaforde, Downpatrick, Newcastle & County Down — George attends in
+   - Outside catering: business lunches, private functions and special occasions
+     across Seaforde, Downpatrick, Newcastle and County Down; George attends in
      person with his staff.
-   - Hours: Tuesday–Thursday 10am–4pm · Friday & Saturday 10am–8pm.
-   - Phone: 028 4481 2085 · Email (from live header): g.hanna43@yahoo.com.
-   Brief: research/concepts/mulberry-tree-seaforde/mulberry-tree-seaforde-elevation-brief.md */
+   - Hours: Tuesday to Thursday 10am to 4pm, Friday and Saturday 10am to 8pm.
+   - Phone: 028 4481 2085, Email (from live header): g.hanna43@yahoo.com. */
 
 const phone = "028 4481 2085";
 const phoneHref = "tel:+442844812085";
@@ -29,234 +28,325 @@ const facebook = "https://www.facebook.com/Mulberry-Tree-Restaurant-340619866057
 const lunchUrl = "https://www.restaurantseaforde.co.uk/lunch-menu/";
 const dinnerUrl = "https://www.restaurantseaforde.co.uk/dinner-menu/";
 const mapHref = "https://maps.app.goo.gl/UrGgAtzbZZWvVrYf7";
-const fontHref =
-  "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Public+Sans:wght@400;500;600;700&display=swap";
 
-const trace = [
+const menuTabs = [
   {
-    step: "01 · Downpatrick",
-    source: "Finnebrogue Meats",
-    detail: "Local speciality venison brought straight from Finnebrogue in Downpatrick to Seaforde.",
+    id: "cafe-lunch",
+    label: "Café and lunch",
+    title: "Morning coffee, homemade desserts, and A La Carte lunch",
+    summary:
+      "Start the morning or pause along the Belfast to Newcastle road in our intimate downstairs café for fresh coffee, homemade desserts, children's choices, and cooked-to-order lunches built around local County Down produce.",
+    rows: [
+      { label: "Room", value: "Intimate downstairs café on Seaforde Main Street" },
+      { label: "Serving", value: "Tuesday to Thursday 10:00am to 4:00pm; Friday and Saturday from 10:00am" },
+      { label: "On the menu", value: "Morning coffees, A La Carte lunches, steak dishes, Ardglass fish, and children's menu" },
+      { label: "Wine policy", value: "Unlicensed: bring your own wine with zero corkage charge" },
+    ],
+    ctaLabel: "View lunch menu",
+    ctaHref: lunchUrl,
+    ctaExternal: true,
+    secondaryLabel: "Book a lunch table",
+    secondaryKind: "Table Booking",
   },
   {
-    step: "02 · The Coast",
-    source: "Ardglass Boats",
-    detail: "Daily fresh fish dishes cooked by Chef George Hanna from local Ardglass landings.",
+    id: "dinner",
+    label: "Friday and Saturday dinner",
+    title: "Upstairs woodland dining room for evening menus",
+    summary:
+      "Spend Friday or Saturday evening in our spacious, modern upstairs restaurant looking straight into the Seaforde trees. Chef George Hanna cooks Finnebrogue venison, fresh Ardglass fish, steaks, and homemade desserts while you bring your favourite bottle with no corkage.",
+    rows: [
+      { label: "Room", value: "Modern, airy first-floor dining room with woodland views" },
+      { label: "Serving", value: "Friday and Saturday, open until 8:00pm" },
+      { label: "Specialities", value: "Downpatrick Finnebrogue Meats venison, daily Ardglass fish, locally grown vegetables" },
+      { label: "Group tables", value: "Private upstairs bookings available for seasonal and family celebrations" },
+    ],
+    ctaLabel: "View dinner menu",
+    ctaHref: dinnerUrl,
+    ctaExternal: true,
+    secondaryLabel: "Book an evening table",
+    secondaryKind: "Table Booking",
   },
   {
-    step: "03 · 2 Main Street",
-    source: "Seaforde Kitchen",
-    detail: "Locally grown vegetables, A La Carte lunches, steak dishes, homemade desserts & children's choices.",
+    id: "catering",
+    label: "Outside catering",
+    title: "Chef George Hanna attends your event in person",
+    summary:
+      "Beyond Seaforde, George personally oversees outside catering with his own staff across Downpatrick, Newcastle, and wider County Down, from corporate business lunches to private family occasions and seasonal menus.",
+    rows: [
+      { label: "Events catered", value: "Business lunches, corporate meetings, private functions, and milestone dinners" },
+      { label: "Seasonal menus", value: "Easter, Valentine's Day, and Christmas dining" },
+      { label: "Attendance", value: "Chef-owner George Hanna attends in person with his own team" },
+      { label: "Area covered", value: "Seaforde, Downpatrick, Newcastle, and surrounding County Down" },
+    ],
+    ctaLabel: "Request a catering quote",
+    ctaHref: "#enquire",
+    ctaExternal: false,
+    secondaryLabel: `Call ${phone}`,
+    secondaryKind: "Outside Catering",
+  },
+];
+
+const provenance = [
+  {
+    source: "Finnebrogue Meats, Downpatrick",
+    detail: "Local speciality venison brought straight from Finnebrogue to our Seaforde kitchen.",
+  },
+  {
+    source: "Ardglass Harbour boats",
+    detail: "Daily fresh fish dishes prepared by George Hanna from County Down coastal landings.",
+  },
+  {
+    source: "Seaforde kitchen and local growers",
+    detail: "Locally grown vegetables, A La Carte lunches, steaks, children's dishes, and homemade desserts.",
   },
 ];
 
 const hours = [
-  { day: "Tue – Thu", time: "10:00am – 4:00pm" },
-  { day: "Fri & Sat", time: "10:00am – 8:00pm" },
-  { day: "Sun & Mon", time: "Closed · Catering by arrangement" },
+  { day: "Tuesday to Thursday", time: "10:00am to 4:00pm" },
+  { day: "Friday and Saturday", time: "10:00am to 8:00pm" },
+  { day: "Sunday and Monday", time: "Closed (outside catering by arrangement)" },
+  { day: "Wine and corkage", time: "Unlicensed, bring your own wine at no charge" },
 ];
 ---
 
 <ConceptLayout
-  title="The Mulberry Tree — Restaurant, Café & Outside Catering, Seaforde"
+  title="The Mulberry Tree: Restaurant, Café and Outside Catering, Seaforde"
   slug="mulberry-tree-seaforde"
   bodyClass="concept-page concept-mulberry"
   lang="en-GB"
   businessName="The Mulberry Tree"
   town="Seaforde"
-  fontHref={fontHref}
-  bannerNote="The upstairs woodland dining table and County Down larder plate are AI-generated visualisations. Table and outside-catering enquiries compose an email to g.hanna43@yahoo.com or call 028 4481 2085."
+  bannerNote="The upstairs woodland dining table and County Down larder plate are indicative visualisations. Table and outside-catering enquiries compose an email to g.hanna43@yahoo.com or call 028 4481 2085."
 >
-  <header class="mt-masthead">
-    <div class="mt-wrap">
-      <div class="mt-dateline">
-        <span>2 Main Street, Seaforde, BT30 8PA · Belfast – Newcastle Road</span>
-        <span><strong>Bring Your Own Wine · Zero Corkage</strong></span>
-        <span>Chef-Owner George Hanna · <a href={phoneHref}>{phone}</a></span>
-      </div>
-
-      <div class="mt-titleplate">
-        <a class="mt-flag" href="#top">
-          <MtMark size={38} tone="plum" />
-          <span>The Mulberry Tree</span>
-        </a>
-        <nav class="mt-subnav" aria-label="The Mulberry Tree">
-          <a href="#larder">County Down Larder</a>
-          <a href="#two-floors">Café &amp; Upstairs Dining</a>
-          <a href="#catering">Outside Catering</a>
-          <a href="#enquire">Book or Enquire</a>
-        </nav>
+  <header class="mt-header" data-mt-header>
+    <div class="mt-header-inner">
+      <a class="mt-brand" href="#top">
+        <MtMark size={28} tone="plum" />
+        <span>The Mulberry Tree</span>
+      </a>
+      <nav class="mt-nav" aria-label="Primary">
+        <a href="#menus">Larder and menus</a>
+        <a href="#hours">Two floors and hours</a>
+        <a href="#enquire">Book or enquire</a>
+        <a href="#location">Seaforde</a>
+      </nav>
+      <div class="mt-header-actions">
+        <a class="mt-header-tel" href={phoneHref}>{phone}</a>
       </div>
     </div>
   </header>
 
   <main id="top" class="mt-main">
-    <section class="mt-frontpage" aria-labelledby="mt-hero-title">
-      <div class="mt-wrap mt-broadsheet-grid">
-        <div class="mt-lead-story">
-          <p class="mt-kicker">Seaforde, County Down · Unlicensed Dining Room</p>
-          <h1 id="mt-hero-title">Woodland views, Finnebrogue venison, <em>and zero corkage.</em></h1>
+    <section class="mt-hero" aria-labelledby="mt-hero-title">
+      <div class="mt-hero-sentinel" data-mt-sentinel aria-hidden="true"></div>
 
-          <figure class="mt-lead-plate">
-            <ResponsiveImage
-              src="/media/concepts/mulberry-tree-seaforde/mulberry-tree-woodland-table.jpg"
-              alt="Sunlit upstairs bistro table by a tall window looking into green woodland with unlabelled wine bottle, crystal glasses and seared local fish"
-              width={1376}
-              height={768}
-              loading="eager"
-              sizes="(max-width: 960px) 100vw, 66vw"
-              class="mt-lead-img"
-            />
-            <figcaption>Upstairs woodland window table &amp; BYOB dining mood. Visualisation (AI-generated).</figcaption>
-          </figure>
+      <div class="mt-wrap">
+        <div class="mt-hero-lockup">
+          <h1 id="mt-hero-title">Woodland views, Finnebrogue venison, and zero corkage.</h1>
+          <p class="mt-hero-sub">
+            Chef-owner George Hanna cooks County Down fish and venison on Seaforde Main Street,
+            with bring-your-own wine and no corkage.
+          </p>
+          <a class="mt-btn mt-btn--plum" href="#enquire" data-mt-kind="Table Booking">
+            Book a table
+          </a>
         </div>
 
-        <aside class="mt-gazette-col" aria-label="Hours, menus and quick bookings">
-          <div class="mt-byob-seal">
-            <span>UNLICENSED · BYOB</span>
-            <strong>Zero Corkage Charge</strong>
-            <p>Bring your favourite bottle to pair with lunch or Friday &amp; Saturday dinner.</p>
+        <figure class="mt-hero-plate">
+          <picture>
+            <source
+              srcset="/media/concepts/mulberry-tree-seaforde/mulberry-tree-woodland-table-640.webp 640w, /media/concepts/mulberry-tree-seaforde/mulberry-tree-woodland-table-1265.webp 1265w"
+              sizes="(max-width: 960px) 100vw, 1240px"
+              type="image/webp"
+            />
+            <img
+              src="/media/concepts/mulberry-tree-seaforde/mulberry-tree-woodland-table.jpg"
+              alt="Sunlit upstairs bistro table by a tall window looking into green woodland with unlabelled wine bottle, crystal glasses, and seared local fish"
+              width="1376"
+              height="768"
+              loading="eager"
+            />
+          </picture>
+          <figcaption>
+            Upstairs woodland window table and bring-your-own dining room. Indicative visualisation.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="mt-section mt-larder" id="menus" aria-labelledby="mt-larder-title">
+      <div class="mt-wrap">
+        <div class="mt-larder-head">
+          <h2 id="mt-larder-title">County Down larder, cooked fresh by George Hanna.</h2>
+          <p class="mt-larder-copy">
+            From Downpatrick Finnebrogue Meats venison and daily Ardglass landings to locally
+            grown vegetables and homemade desserts, everything is prepared hands-on at 2 Main
+            Street.
+          </p>
+        </div>
+
+        <div class="mt-tabs" role="tablist" aria-label="Dining and catering menus">
+          {menuTabs.map((tab, idx) => (
+            <button
+              type="button"
+              role="tab"
+              id={`mt-tab-${tab.id}`}
+              aria-selected={idx === 0 ? "true" : "false"}
+              aria-controls={`mt-panel-${tab.id}`}
+              tabindex={idx === 0 ? "0" : "-1"}
+              class={`mt-tab${idx === 0 ? " is-active" : ""}`}
+              data-mt-tab={tab.id}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div class="mt-larder-grid">
+          <div class="mt-menu-panels">
+            {menuTabs.map((tab, idx) => (
+              <article
+                id={`mt-panel-${tab.id}`}
+                role="tabpanel"
+                aria-labelledby={`mt-tab-${tab.id}`}
+                class={`mt-menu-panel${idx === 0 ? " is-active" : ""}`}
+                data-mt-panel={tab.id}
+                hidden={idx !== 0}
+              >
+                <h3>{tab.title}</h3>
+                <p>{tab.summary}</p>
+                <dl class="mt-spec-list">
+                  {tab.rows.map((row) => (
+                    <div class="mt-spec-row">
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <div class="mt-panel-actions">
+                  {tab.ctaExternal ? (
+                    <a
+                      class="mt-btn mt-btn--cream"
+                      href={tab.ctaHref}
+                      rel="noopener noreferrer"
+                    >
+                      {tab.ctaLabel}
+                    </a>
+                  ) : (
+                    <a
+                      class="mt-btn mt-btn--cream"
+                      href={tab.ctaHref}
+                      data-mt-kind={tab.secondaryKind}
+                    >
+                      {tab.ctaLabel}
+                    </a>
+                  )}
+                  {tab.ctaExternal ? (
+                    <a
+                      class="mt-link-on-dark"
+                      href="#enquire"
+                      data-mt-kind={tab.secondaryKind}
+                    >
+                      {tab.secondaryLabel}
+                    </a>
+                  ) : (
+                    <a class="mt-link-on-dark" href={phoneHref}>
+                      {tab.secondaryLabel}
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
           </div>
 
-          <div class="mt-hours-block">
-            <p class="mt-kicker">Opening Times</p>
-            <dl class="mt-hours">
-              {hours.map((h) => (
-                <div>
-                  <dt>{h.day}</dt>
-                  <dd>{h.time}</dd>
+          <div class="mt-larder-visual">
+            <figure class="mt-plate">
+              <picture>
+                <source
+                  srcset="/media/concepts/mulberry-tree-seaforde/mulberry-tree-larder-plate-640.webp 640w, /media/concepts/mulberry-tree-seaforde/mulberry-tree-larder-plate-1265.webp 1265w"
+                  sizes="(max-width: 960px) 100vw, 48vw"
+                  type="image/webp"
+                />
+                <img
+                  src="/media/concepts/mulberry-tree-seaforde/mulberry-tree-larder-plate.jpg"
+                  alt="Overhead culinary plate of rosy roasted venison medallions, heritage root vegetables, and rustic homemade pear tart on linen"
+                  width="1200"
+                  height="896"
+                  loading="lazy"
+                />
+              </picture>
+              <figcaption>
+                County Down venison, root vegetables, and homemade tart. Indicative visualisation.
+              </figcaption>
+            </figure>
+
+            <dl class="mt-provenance-ledger">
+              {provenance.map((item) => (
+                <div class="mt-prov-row">
+                  <dt>{item.source}</dt>
+                  <dd>{item.detail}</dd>
                 </div>
               ))}
             </dl>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="mt-gazette-actions">
-            <a class="mt-btn mt-btn--plum" href="#enquire" data-mt-kind="Table Booking">Book a table</a>
-            <a class="mt-btn mt-btn--moss" href="#enquire" data-mt-kind="Outside Catering">Outside catering quote</a>
-            <div class="mt-menu-pair">
-              <a href={lunchUrl} rel="noopener noreferrer">Lunch Menu ↗</a>
-              <a href={dinnerUrl} rel="noopener noreferrer">Dinner Menu ↗</a>
+    <section class="mt-section mt-hours-band" id="hours" aria-labelledby="mt-hours-title">
+      <div class="mt-wrap mt-hours-grid">
+        <div class="mt-floors-copy">
+          <h2 id="mt-hours-title">Two floors on Main Street, open Tuesday to Saturday.</h2>
+          <p>
+            Step into our warm downstairs café for morning coffees, homemade desserts, and
+            midday lunches, or head upstairs to the airy woodland dining room for Friday and
+            Saturday evening menus. Because The Mulberry Tree is unlicensed, you are welcome to
+            bring your own wine at no corkage charge.
+          </p>
+        </div>
+
+        <dl class="mt-hours-ledger">
+          {hours.map((row) => (
+            <div class="mt-hours-row">
+              <dt>{row.day}</dt>
+              <dd>{row.time}</dd>
             </div>
-            <p class="mt-tel-line">Direct desk: <a href={phoneHref}>{phone}</a></p>
-          </div>
-        </aside>
+          ))}
+        </dl>
       </div>
     </section>
 
-    <section class="mt-larder" id="larder" aria-labelledby="mt-larder-title">
-      <div class="mt-wrap">
-        <div class="mt-larder-head">
-          <div>
-            <p class="mt-kicker">Provenance Trace · County Down</p>
-            <h2 id="mt-larder-title">From Downpatrick estates and Ardglass boats straight to Seaforde.</h2>
-          </div>
-          <p>
-            Chef-owner George Hanna cooks hands-on from the County Down larder —
-            morning coffees, A La Carte lunches, evening dinners and homemade
-            desserts, all prepared fresh on Main Street.
-          </p>
-        </div>
-
-        <div class="mt-larder-split">
-          <ol class="mt-trace-list">
-            {trace.map((t) => (
-              <li class="mt-trace-stop">
-                <span class="mt-trace-step">{t.step}</span>
-                <h3>{t.source}</h3>
-                <p>{t.detail}</p>
-              </li>
-            ))}
-          </ol>
-
-          <figure class="mt-larder-plate">
-            <ResponsiveImage
-              src="/media/concepts/mulberry-tree-seaforde/mulberry-tree-larder-plate.jpg"
-              alt="Overhead editorial culinary plate of rosy roasted venison medallions, heritage root vegetables and rustic homemade pear tart on linen"
-              width={1200}
-              height={896}
-              sizes="(max-width: 960px) 100vw, 48vw"
-              class="mt-larder-img"
-            />
-            <figcaption>County Down venison, root vegetables &amp; homemade tart mood. Visualisation (AI-generated).</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="mt-floors" id="two-floors" aria-labelledby="mt-floors-title">
-      <div class="mt-wrap">
-        <p class="mt-kicker mt-kicker--center">Two Floors Under One Roof</p>
-        <h2 class="mt-floors-title" id="mt-floors-title">Intimate downstairs café, spacious upstairs dining room.</h2>
-
-        <div class="mt-floors-grid">
-          <article class="mt-floor">
-            <span class="mt-floor-tag">Ground Floor</span>
-            <h3>The Downstairs Café</h3>
-            <p>
-              Warm, unhurried room on Main Street for morning coffees, homemade
-              desserts, children's choices and midday A La Carte lunches — an
-              easy stop right on the Belfast–Newcastle road.
-            </p>
-          </article>
-
-          <article class="mt-floor mt-floor--up">
-            <span class="mt-floor-tag">First Floor · Woodland Views</span>
-            <h3>The Upstairs Restaurant</h3>
-            <p>
-              Modern, airy dining room looking straight out across the Seaforde
-              trees — ideal for Friday &amp; Saturday evening menus (10am – 8pm),
-              seasonal celebrations, and private group bookings with BYOB and no
-              corkage.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="mt-catering" id="catering" aria-labelledby="mt-catering-title">
-      <div class="mt-wrap mt-catering-grid">
-        <div>
-          <p class="mt-kicker mt-kicker--light">Outside Catering · County Down</p>
-          <h2 id="mt-catering-title">Chef George Hanna attends your event in person.</h2>
-          <p>
-            Beyond Seaforde, George personally oversees outside catering with
-            his own staff across Downpatrick, Newcastle and surrounding County
-            Down — from corporate business lunches to private family occasions
-            and seasonal dinners for Easter, Valentine's Day and Christmas.
-          </p>
-        </div>
-
-        <div class="mt-catering-dispatch">
-          <h3>Events we cater</h3>
-          <ul>
-            <li>Business lunches &amp; corporate meetings</li>
-            <li>Private family functions &amp; milestone dinners</li>
-            <li>Seasonal menus (Easter, Valentine's &amp; Christmas)</li>
-            <li>Private upstairs restaurant bookings in Seaforde</li>
-          </ul>
-          <a class="mt-btn mt-btn--cream" href="#enquire" data-mt-kind="Outside Catering">Request an outside catering quote →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="mt-enquire" id="enquire" aria-labelledby="mt-enquire-title">
+    <section class="mt-section mt-enquire" id="enquire" aria-labelledby="mt-enquire-title">
       <div class="mt-wrap mt-enquire-grid">
-        <div class="mt-enquire-copy">
-          <p class="mt-kicker">Chef's Desk · Seaforde</p>
-          <h2 id="mt-enquire-title">Book lunch, dinner or outside catering.</h2>
+        <div class="mt-enquire-intro">
+          <h2 id="mt-enquire-title">Book lunch, dinner, or outside catering.</h2>
           <p>
-            Send your preferred date and numbers below to compose a direct email
-            to <a href={`mailto:${email}`}>{email}</a>, or call the restaurant
-            on <a href={phoneHref}><strong>{phone}</strong></a>.
+            Send your preferred date and guest numbers to George Hanna in Seaforde, or ring the
+            restaurant directly for same-day tables.
           </p>
-          <div class="mt-find-block" id="find">
-            <p><strong>2 Main Street, Seaforde, Downpatrick, BT30 8PA</strong></p>
-            <p>Right on the main Belfast–Newcastle road between Ballynahinch, Clough and Downpatrick.</p>
-            <p>
-              <a href={mapHref} rel="noopener noreferrer">Open Google Maps ↗</a> ·{" "}
-              <a href={facebook} rel="noopener noreferrer">Facebook ↗</a>
-            </p>
-          </div>
+
+          <dl class="mt-contact-list">
+            <div class="mt-contact-row">
+              <dt>Telephone</dt>
+              <dd><a href={phoneHref}>{phone}</a></dd>
+            </div>
+            <div class="mt-contact-row">
+              <dt>Email</dt>
+              <dd><a href={`mailto:${email}`}>{email}</a></dd>
+            </div>
+            <div class="mt-contact-row">
+              <dt>Address</dt>
+              <dd>2 Main Street, Seaforde, Downpatrick, Co. Down, BT30 8PA</dd>
+            </div>
+            <div class="mt-contact-row">
+              <dt>Links</dt>
+              <dd>
+                <a href={mapHref} rel="noopener noreferrer">Google Maps</a>
+                {" · "}
+                <a href={facebook} rel="noopener noreferrer">Facebook</a>
+              </dd>
+            </div>
+          </dl>
         </div>
 
         <form class="mt-form" id="mt-form" data-email={email}>
@@ -264,9 +354,9 @@ const hours = [
             <label>
               <span>Enquiry type</span>
               <select name="kind" id="mt-kind">
-                <option value="Table Booking">Table Booking (Lunch / Dinner)</option>
-                <option value="Outside Catering">Outside Catering</option>
-                <option value="Private Function">Private Function at The Mulberry Tree</option>
+                <option value="Table Booking">Table booking (lunch or dinner)</option>
+                <option value="Outside Catering">Outside catering</option>
+                <option value="Private Function">Private function upstairs</option>
               </select>
             </label>
             <label>
@@ -276,58 +366,195 @@ const hours = [
           </div>
           <div class="mt-row">
             <label>
-              <span>Time &amp; guests</span>
+              <span>Time and guests</span>
               <input name="guests" placeholder="e.g. 6:30pm, 4 guests" />
             </label>
             <label>
               <span>Phone number</span>
-              <input name="phone" type="tel" autocomplete="tel" required />
+              <input name="phone" type="tel" autocomplete="tel" required placeholder="028 or 07..." />
             </label>
           </div>
           <label>
-            <span>Your name &amp; notes</span>
-            <textarea name="notes" rows="2" placeholder="Name, location (if outside catering) and any dietary needs"></textarea>
+            <span>Your name and notes</span>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Your name, venue location (for outside catering), and any dietary requirements"
+            ></textarea>
           </label>
-          <button class="mt-btn mt-btn--plum mt-btn--full" type="submit">Open enquiry email to George →</button>
+          <p class="mt-form-echo" data-mt-echo aria-live="polite">
+            Table booking (lunch or dinner)
+          </p>
+          <button class="mt-btn mt-btn--plum" type="submit">Send enquiry to George</button>
         </form>
+      </div>
+    </section>
+
+    <section class="mt-section mt-map-band" id="location" aria-labelledby="mt-location-title">
+      <div class="mt-wrap">
+        <div class="mt-location-head">
+          <h2 id="mt-location-title">On the Belfast to Newcastle road in Seaforde.</h2>
+          <p class="mt-section-copy">
+            Find us at 2 Main Street in Seaforde village, between Ballynahinch, Clough, and
+            Downpatrick, with easy access from Newcastle and the Mournes.
+          </p>
+        </div>
+
+        <LocalAreaMap
+          id="mulberry-tree-map"
+          kicker=""
+          businessName="The Mulberry Tree"
+          address="2 Main Street, Seaforde, Downpatrick, BT30 8PA"
+          lon={-5.8420823}
+          lat={54.3067918}
+          spanKm={18}
+          mapHref={mapHref}
+          markers={[
+            { name: "Downpatrick", lon: -5.7168, lat: 54.3286, note: "12 mins east", side: "r" },
+            { name: "Ballynahinch", lon: -5.8965, lat: 54.4009, note: "10 mins north", side: "t" },
+            { name: "Clough", lon: -5.8404, lat: 54.2877, note: "3 mins south", side: "r" },
+            { name: "Newcastle", lon: -5.8891, lat: 54.2143, note: "12 mins south", side: "b" },
+          ]}
+        />
       </div>
     </section>
   </main>
 
   <footer class="mt-footer">
     <div class="mt-wrap mt-footer-inner">
-      <span><strong>The Mulberry Tree</strong> · 2 Main Street, Seaforde, Downpatrick, BT30 8PA</span>
-      <span><a href={phoneHref}>{phone}</a> · <a href={`mailto:${email}`}>{email}</a> · <a href={facebook} rel="noopener noreferrer">Facebook</a></span>
+      <div class="mt-footer-brand">
+        <MtMark size={24} tone="linen" />
+        <div>
+          <strong>The Mulberry Tree</strong>
+          <p>2 Main Street, Seaforde, Downpatrick, Co. Down, BT30 8PA</p>
+        </div>
+      </div>
+      <div class="mt-footer-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+        <a href={facebook} rel="noopener noreferrer">Facebook</a>
+        <a href="#top">Back to top</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const kindSelect = document.getElementById("mt-kind") as HTMLSelectElement | null;
-    document.querySelectorAll<HTMLElement>("[data-mt-kind]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (kindSelect && btn.dataset.mtKind) kindSelect.value = btn.dataset.mtKind;
-      });
-    });
-
-    const form = document.getElementById("mt-form") as HTMLFormElement | null;
-    form?.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const d = new FormData(form);
-      const kind = String(d.get("kind") || "Enquiry");
-      const body = [
-        `Type: ${kind}`,
-        `Date: ${d.get("date") || ""}`,
-        `Time & guests: ${d.get("guests") || ""}`,
-        `Phone: ${d.get("phone") || ""}`,
-        "",
-        String(d.get("notes") || ""),
-      ].join("\n");
-      const to = form.dataset.email ?? "";
-      const subject = `${kind} — The Mulberry Tree, Seaforde`;
-      const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (window.dispatchEvent(new CustomEvent("mm:enquiry", { cancelable: true, detail: { to, subject, body, url } }))) {
-        window.location.href = url;
+  <script is:inline>
+    (() => {
+      // Sticky header border separation once scrolled
+      const header = document.querySelector("[data-mt-header]");
+      const sentinel = document.querySelector("[data-mt-sentinel]");
+      if (header && sentinel && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+          },
+          { threshold: 0 },
+        );
+        io.observe(sentinel);
       }
-    });
+
+      // County Down Larder & Menus segmented tablist
+      const tabs = Array.from(document.querySelectorAll("[data-mt-tab]"));
+      const panels = Array.from(document.querySelectorAll("[data-mt-panel]"));
+
+      const activateTab = (id, moveFocus = false) => {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute("data-mt-tab") === id;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.setAttribute("tabindex", active ? "0" : "-1");
+          if (active && moveFocus && tab instanceof HTMLElement) tab.focus();
+        });
+        panels.forEach((panel) => {
+          const active = panel.getAttribute("data-mt-panel") === id;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      };
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-mt-tab");
+          if (id) activateTab(id);
+        });
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+          e.preventDefault();
+          let next = idx;
+          if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+          if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+          if (e.key === "Home") next = 0;
+          if (e.key === "End") next = tabs.length - 1;
+          const nextId = tabs[next]?.getAttribute("data-mt-tab");
+          if (nextId) activateTab(nextId, true);
+        });
+      });
+
+      // Pre-select enquiry kind and maintain live summary echo
+      const kindSelect = document.getElementById("mt-kind");
+      const echo = document.querySelector("[data-mt-echo]");
+      const form = document.getElementById("mt-form");
+
+      const updateEcho = () => {
+        if (!form || !echo) return;
+        const kindLabel =
+          kindSelect instanceof HTMLSelectElement
+            ? kindSelect.selectedOptions?.[0]?.textContent || kindSelect.value
+            : "Table booking";
+        const dateInput = form.querySelector('input[name="date"]');
+        const dateVal = dateInput instanceof HTMLInputElement ? dateInput.value : "";
+        if (dateVal) {
+          const dt = new Date(`${dateVal}T12:00:00`);
+          const formatted = Number.isNaN(dt.getTime())
+            ? dateVal
+            : dt.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+          echo.textContent = `${kindLabel} on ${formatted}`;
+        } else {
+          echo.textContent = kindLabel;
+        }
+      };
+
+      document.querySelectorAll("[data-mt-kind]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const val = btn.getAttribute("data-mt-kind");
+          if (kindSelect instanceof HTMLSelectElement && val) {
+            kindSelect.value = val;
+            kindSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            updateEcho();
+          }
+        });
+      });
+
+      if (form instanceof HTMLFormElement) {
+        form.addEventListener("input", updateEcho);
+        form.addEventListener("change", updateEcho);
+        updateEcho();
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) return;
+          const d = new FormData(form);
+          const kind = String(d.get("kind") || "Table Booking");
+          const body = [
+            `Type: ${kind}`,
+            `Date: ${d.get("date") || ""}`,
+            `Time and guests: ${d.get("guests") || ""}`,
+            `Phone: ${d.get("phone") || ""}`,
+            "",
+            String(d.get("notes") || ""),
+          ].join("\n");
+          const to = form.dataset.email || "g.hanna43@yahoo.com";
+          const subject = `${kind}: The Mulberry Tree, Seaforde`;
+          const url = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          const ev = new CustomEvent("mm:enquiry", {
+            cancelable: true,
+            detail: { to, subject, body, url, phone: "028 4481 2085", phoneHref: "tel:+442844812085" },
+          });
+          if (window.dispatchEvent(ev)) {
+            window.location.href = url;
+          }
+        });
+      }
+    })();
   </script>
 </ConceptLayout>
